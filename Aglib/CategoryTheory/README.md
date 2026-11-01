@@ -76,3 +76,8 @@ and `Q` of `D` with `L` sending `P` into `Q`, and `F` on `Q` represented by `Y`,
 `R.obj Y.obj` when that object satisfies `P`, through `(T ⟶ R Y) ≃ (L T ⟶ Y)`; the adjunction need
 not restrict to the full subcategories. Consumer:
 [Picard/BaseChangeRepresentableBy](../AlgebraicGeometry/Picard/BaseChangeRepresentableBy.lean).
+
+## Additional source entry points
+
+- [Filtered/InvertibleDiagramTargetEquation](Filtered/InvertibleDiagramTargetEquation.lean)
+- [Filtered/InvertibleDiagramToTarget](Filtered/InvertibleDiagramToTarget.lean)

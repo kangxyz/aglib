@@ -132,7 +132,7 @@ through the original open immersion. -/
 
 
 /-- The field square retains the actual original map, rather than an arbitrary embedding. -/
-@[simp] theorem baseChangeFieldHom_open (x : X.functionField) :
+theorem baseChangeFieldHom_open (x : X.functionField) :
     FunctionField.fieldEquiv j (baseChangeFieldHom j g x) = functionFieldMap g x :=
   (FunctionField.fieldEquiv j).apply_symm_apply _
 
@@ -169,6 +169,7 @@ theorem openGenericMap_generic :
 
 variable (Y : FiniteEtale X) [IsIntegral Y.obj.left]
 
+/-- The coefficient algebra on the covering function field induced by the original cover. -/
 @[instance_reducible] local instance coveringFieldAlgebra :
     Algebra X.functionField Y.obj.left.functionField := GenericGalois.algebra Y
 local instance : IsDominant Y.obj.hom := GenericGalois.dominant Y
@@ -258,6 +259,7 @@ through its unchanged function-field spectrum and the right tensor inclusion. -/
 section AffineScalars
 
 set_option backward.isDefEq.respectTransparency false in
+/-- The canonical coefficient algebra on the function field of an integral affine spectrum. -/
 local instance affineFunctionFieldAlgebra (A : Type u) [CommRing A] [IsDomain A] :
     Algebra A (Spec (.of A)).functionField :=
   AlgebraicGeometry.instAlgebraCarrierFunctionFieldSpec (CommRingCat.of A)

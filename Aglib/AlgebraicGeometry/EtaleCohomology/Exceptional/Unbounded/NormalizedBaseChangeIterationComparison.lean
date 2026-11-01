@@ -49,28 +49,46 @@ variable
     c)).Xbar Λ)]
   [HasDerivedCategory.{wN₂} (ModuleSheaf (((baseChange c).obj ((baseChange b).obj C))).Xbar Λ)]
 
+/-- The derived-category instance in universe `wR₂` for `Λ`-module sheaves on `(pullback c
+    ((C.toCompactification.baseChange b)).p)`.
+-/
 local instance unboundedIterationComparisonRawNativeModel :
     HasDerivedCategory.{wR₂} (ModuleSheaf (pullback c ((C.toCompactification.baseChange b)).p) Λ) :=
   inferInstanceAs (HasDerivedCategory.{wR₂} (ModuleSheaf (((C.toCompactification.baseChange
     b).baseChange c)).Xbar Λ))
+/-- The derived-category instance in universe `wRN` for `Λ`-module sheaves on `(pullback c
+    (((baseChange b).obj C)).p)`.
+-/
 local instance unboundedIterationComparisonNormalizedRawNativeModel :
     HasDerivedCategory.{wRN} (ModuleSheaf (pullback c (((baseChange b).obj C)).p) Λ) :=
   inferInstanceAs (HasDerivedCategory.{wRN} (ModuleSheaf ((((baseChange b).obj
     C).toCompactification.baseChange c)).Xbar Λ))
+/-- The derived-category instance in universe `wN₁` for `Λ`-module sheaves on
+    `(Hom.Compactification.densify (C.toCompactification.baseChange b)).Xbar`.
+-/
 local instance unboundedIterationComparisonFirstDensificationModel :
     HasDerivedCategory.{wN₁} (ModuleSheaf (Hom.Compactification.densify
       (C.toCompactification.baseChange b)).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN₁} (ModuleSheaf (((baseChange b).obj C)).Xbar Λ))
+/-- The derived-category instance in universe `wN₂` for `Λ`-module sheaves on
+    `(Hom.Compactification.densify (((baseChange b).obj C).toCompactification.baseChange c)).Xbar`.
+-/
 local instance unboundedIterationComparisonSecondDensificationModel :
     HasDerivedCategory.{wN₂} (ModuleSheaf (Hom.Compactification.densify (((baseChange b).obj
       C).toCompactification.baseChange c)).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN₂} (ModuleSheaf (((baseChange c).obj ((baseChange b).obj
     C))).Xbar Λ))
 
+/-- The derived-category instance in universe `wN₂` for `Λ`-module sheaves on `(baseChangeObj c
+    ((baseChange b).obj C)).Xbar`.
+-/
 local instance unboundedIterationComparisonNextDenseModel :
     HasDerivedCategory.{wN₂} (ModuleSheaf (baseChangeObj c ((baseChange b).obj C)).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN₂}
     (ModuleSheaf ((baseChange c).obj ((baseChange b).obj C)).Xbar Λ))
+/-- The derived-category instance in universe `wRN` for `Λ`-module sheaves on `(pullback c
+    (Hom.Compactification.densify (C.toCompactification.baseChange b)).p)`.
+-/
 local instance unboundedIterationComparisonDensifiedPullbackModel :
     HasDerivedCategory.{wRN}
       (ModuleSheaf (pullback c (Hom.Compactification.densify

@@ -1,4 +1,4 @@
-# Compactly supported étale cohomology along an open immersion
+# Compactly supported étale cohomology
 
 This family defines compactly supported cohomology for an open immersion `j : U ⟶ X` of schemes
 in `Scheme.{u}` as the original cohomology of the extension by zero, with coefficients
@@ -9,6 +9,25 @@ comparisons of [OpenLocalization](OpenLocalization.lean)
 `etaleLowerShriekDirectImageIso`), which are in `AlgebraicGeometry.Scheme.EtaleCohomology`. Ext
 universes are explicit and independent (`w` on `X`, `w'` on a closed part or finite point
 scheme); `HasExt` is a size hypothesis.
+
+## Derived module coefficients
+
+[GlobalSections](GlobalSections.lean) and
+[GlobalSectionsUnderlying](GlobalSectionsUnderlying.lean) construct native
+module sections and their original scalar-forgetting comparison.
+[FieldSections](FieldSections.lean) identifies sections over a separably
+closed field with the original geometric fibre, using the terminal germ.
+
+[Unbounded/DirectImage](Unbounded/DirectImage.lean) defines derived compact
+support by composing the same chosen exceptional direct image with actual
+unbounded module sections. [Unbounded/GeometricFiber](Unbounded/GeometricFiber.lean)
+identifies the stalk of `H^q(Rf_! K)` with `H^q RΓ_c(X_s, i_s^* K)` on the
+literal geometric fibre. It keeps the quasi-compact and quasi-separated
+target, separated finite-type morphism, commutative coefficient ring with a
+positive annihilator, and the displayed independent derived worlds and
+compactification models. [Unbounded/SingleGeometricFiber](Unbounded/SingleGeometricFiber.lean)
+specializes this to an ordinary module sheaf and its original pullback,
+naturally in coefficient morphisms over the fixed ring.
 
 ## Definition and long exact sequences
 
@@ -129,3 +148,23 @@ no curve or finite-complement hypothesis.
 pullback and transfer across an actual finite/open cartesian square, with the
 stated finite étale, coefficient and rank hypotheses. Its original rank and
 roots-level laws retain those maps.
+
+## Additional source entry points
+
+- [BoundedBelow](BoundedBelow.lean)
+- [CartesianGeometricFiber](CartesianGeometricFiber.lean)
+- [DerivedGeometricStalk](DerivedGeometricStalk.lean)
+- [FieldSections](FieldSections.lean)
+- [GeometricStalk](GeometricStalk.lean)
+- [GlobalSectionsUnderlying](GlobalSectionsUnderlying.lean)
+- [GlobalSections](GlobalSections.lean)
+- [HigherDirectImage](HigherDirectImage.lean)
+- [SinglePullback](SinglePullback.lean)
+- [Single](Single.lean)
+- [Unbounded/CartesianGeometricFiber](Unbounded/CartesianGeometricFiber.lean)
+- [Unbounded/DirectImage](Unbounded/DirectImage.lean)
+- [Unbounded/FieldSections](Unbounded/FieldSections.lean)
+- [Unbounded/GeometricFiber](Unbounded/GeometricFiber.lean)
+- [Unbounded/GeometricStalk](Unbounded/GeometricStalk.lean)
+- [Unbounded/GlobalSections](Unbounded/GlobalSections.lean)
+- [Unbounded/SingleGeometricFiber](Unbounded/SingleGeometricFiber.lean)

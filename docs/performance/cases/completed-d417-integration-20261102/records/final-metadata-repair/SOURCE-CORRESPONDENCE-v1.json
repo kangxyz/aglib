@@ -1,0 +1,464 @@
+{
+  "question": "Do the final1714 source metadata repairs preserve original code, types, RHS, mathematical statements and current headers?",
+  "basis": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/publication/d417-integration/SOURCE-VECTOR-1714-v4.json",
+  "head": "c4880830a7ebfea496a348d361cd50b109ea536d",
+  "method": "Delete each exact inserted docstring, reverse only recorded whole-token explicit renames or remove newly inserted local instance names, restore the one reassoc simp annotation; compare all nonwhitespace bytes against exact pre-edit v4-matching bytes. Compare pre-namespace header literally.",
+  "result": "PASS",
+  "coverage": {
+    "sources": 64,
+    "documentation": 157,
+    "renames": 18,
+    "simp_registration_withdrawals": 1
+  },
+  "limitations": "Mechanical source correspondence; not a blind independent review or a compiler/native-linter result. CPP/native validation remains broker-owned and pending.",
+  "sources": [
+    {
+      "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean",
+      "before_sha256": "b3ae687e8db471caa4a84678d06312ebd175a9731b908c4c79c8ad03cf15e6a3",
+      "after_sha256": "c65e0430db4d356ff82969b6c9ebdf37eece7e0c19914e244de47478869cf71b",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/Compactification/Refinements/CompositionBaseChangeGeometry.lean",
+      "before_sha256": "046ba5aefa419fc2bd5ef1a220e5af25f7fe5a5d98bee1200b1f06e185236f77",
+      "after_sha256": "c3a02ad7b9bef7e1a525d1e3724ab6f51acf368ce40f96181ab590725b5f28af",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionBCModelComparison.lean",
+      "before_sha256": "42bf458f00e3580a00a3e801860c56d6ccb4636c89f77d53932b5f815f0feec7",
+      "after_sha256": "7f9b9962aa51a77fd66e0846b436a7c582f2ec16851e2dcabc97fa063456940a",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionMixedRefinementFaces.lean",
+      "before_sha256": "1251a6a07b1bc79eb8c32cb646ee1596f6506c1b0bdb816b0c99ccbac6d191c9",
+      "after_sha256": "60b7030169b23b4d1d3c5108db9bd3379d8eaa4ced74f14c3eee8edd05cbb745",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionMixedRefinementWhole.lean",
+      "before_sha256": "81a2305dc048282f71f412fb11d1ab732871f39a9e3fe720282454de2ae8488a",
+      "after_sha256": "029dbc30954a6aa0542a4d888b201d20fbfb0f00a46223db7d5b3ed03e6307b9",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionModelMaps.lean",
+      "before_sha256": "3b84bcced6bb5a2b96bad234a37c4ee180dca3964fc654aa571847003f7d2052",
+      "after_sha256": "a773aa6a129821b4b20a15466d3ae6fa0aff6db88e8a216903eaf6f621b618cd",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean",
+      "before_sha256": "5f4e059ce472c16ae69888d2e80d2d40cd2778c3c54cfb93883d6ba37f223583",
+      "after_sha256": "ad31a6aebdf20314cba585bbba5fab5fc84cb2d71bfd718aadfaee1c93c34aad",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean",
+      "before_sha256": "094784947f29a1707474111e1e512dd64b794a40752bb5c804b1b08734f0d15c",
+      "after_sha256": "76200c4d479549d337d8ef11f1601b8ed52c86929ffd251fb016f226ff869e4e",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementFaces.lean",
+      "before_sha256": "f4bb8e3953a0be4e6fb9bcc01493f1d269c962931dd05a1df0db731b4ddc050c",
+      "after_sha256": "029bda45d94865e262c43b6c24be0884c21219d6697a9297b4267e2108ec683e",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionTripleInterchange.lean",
+      "before_sha256": "2237c88bd899aa51dc137483dbd72f6f25e898224a6c60473be0cb828153f5e8",
+      "after_sha256": "ba7c4c83c68df0aace4d361a084f56c5d8b369479fc8473f2cae30fac7942e85",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/NormalizedToDirectImageBaseChange.lean",
+      "before_sha256": "6f28c5f58b88b71190615944518c54a1eaafb8955fcaaa7682c3e7c5972766a4",
+      "after_sha256": "fd945573b61fa55f93747cb8461f41c223a6143bf8682393bfbca1d2614e4059",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/RawToDirectImageBaseChange.lean",
+      "before_sha256": "33caa8185257fd138adac57e86114c5a3dbc3c67367530e138951efa819467bd",
+      "after_sha256": "3cef81854593abf32c1a8fad18eb2e6895d540f1a76e596887dc10a2e6a2b4c0",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/ToDirectImageCompositionModel.lean",
+      "before_sha256": "b1f44c42d474de9cb8415ea03eb89600dc5fbd507c8255a2703724cf46b1b5d2",
+      "after_sha256": "05e337e7bb0e09a0d68debcfc850fec405aa589ffe18e6a980f2c9501a4c84de",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleCartesianComposition.lean",
+      "before_sha256": "4d564a9137907a94c981dfb6f2f5c459ac78af85e80770ed68f6a005d3fe1963",
+      "after_sha256": "090b98418dfb84f491be230a671c342cb9ce077676332ce05daeb80469b6d39f",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleCartesianLeftRoute.lean",
+      "before_sha256": "ed61e6d15a2e28e5acdae409f8bb84c5cf3813b032ee084603522dcf32716e43",
+      "after_sha256": "82a90f3fedf161b0fa31abe5ffcec4707e73206b9c8f68f0f1f3776d2ee70aa2",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleCartesianMaps.lean",
+      "before_sha256": "34ad2671501e7bcd806025a911255dbbf4321a723da59f322c5f678ab1e8f7e8",
+      "after_sha256": "a73390b3ded8c90ab87cca836ee25980552ca7cc38709ae517bf763ce4c4a870",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleCartesianRightRoute.lean",
+      "before_sha256": "dceb05027c2ad5bf2437b78c486b90545b5067a787fa2187670d96cd3bf357aa",
+      "after_sha256": "9b0362fecf1436d03c37ba7e70aa11e7016553fd11eae0ec066fc91065cda94f",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleHorizontalOpenTransport.lean",
+      "before_sha256": "5b93efad571332a88b8cf788aeb6a34b1bdc27ad88f8735a2678e4dbfd156b1e",
+      "after_sha256": "12617289de431ae9de75d2b3d041e312b6a372ccbc5c5c97c8cddb5cb62809b3",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleRawComposition.lean",
+      "before_sha256": "a33aad884b110110043358d9265729c82aa088c5959c902d37a27d28369cbfbf",
+      "after_sha256": "52b3cfd5c0cab1d80ddbc6a7095e40407aad092581cc1f4405f5d4de83e86198",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleSingleModelAssociativity.lean",
+      "before_sha256": "5bc1a7a93cea7bca41aa990a4ba11cb4659d4feab7c8584b9622124ce1e35ce3",
+      "after_sha256": "b14a43ed71274ca86ea7daa6520efe86cb36d95a787858cb2bf99e0aa008ad05",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleTotalArrowComparison.lean",
+      "before_sha256": "d8fd3693d7fb7e201f731551b268bc73760a967369d528f58bead09da25ea8d8",
+      "after_sha256": "79cd015fc27fa241fdfecfbf2ba61c47d11d1d63bb7cae5f247f6be00a7d69b0",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleTotalComparison.lean",
+      "before_sha256": "65775b1e061416c4f2199fbd9102667079d5fb047127ed4c9f3b28792eca21a8",
+      "after_sha256": "3ea8b3ffe796dd1e666b3b269a909273f3f865247ed74a12bd5cb212cea49e5b",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCChosenModel.lean",
+      "before_sha256": "34bcf1727973c9a4e59afcdba2d15f77d2f97fbe1524ddb6e9f092251566f05d",
+      "after_sha256": "7131ec3f3c68fc697dee96f8e3227d90947719ddcc79e0ac14e0af090e440c02",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCModelSquare.lean",
+      "before_sha256": "2285d39a00074dd1d09801baadd2b78be4e0f5caa766dcec0b5d0aabe2a03d8d",
+      "after_sha256": "3f002fef63ee91a66f41e4082611e7f15fc11ade63d9051316640c2545f530a4",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCRawSource.lean",
+      "before_sha256": "cdd0c7835d40c0788eba9f90e1152b20b9efa0cfe8fc6a72ceca7b6386a431cb",
+      "after_sha256": "8ff2c96a9d51b122bf99dbb4831fd3905ec4af48d3e979fa3053fc680b983739",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCTorsion.lean",
+      "before_sha256": "e276b19604e9dd104c14c323a35862d4ac042a15518abb2355d91cdd6e52d24a",
+      "after_sha256": "579e9bc2ce79deb28c17b79b0add4938b0def32e299500e86daff3214a201600",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoIdentity.lean",
+      "before_sha256": "c3c45ed7e133039840baf21f9c6aa1a45cf2ea63b503e8483173d29cd3ed4152",
+      "after_sha256": "99aa68e8b68fa1932829d1f98efe67c5433cb1cb1e013155ab225228af37c1b7",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianCompositionCanonical.lean",
+      "before_sha256": "1fdca6c1a0f9dec598c10df68df63edaf02b5ff154e1d4ef09289e5844069746",
+      "after_sha256": "386f63f07df83b31c5175ea28223a2d63d74178a2e750e16426f59c6195c24f6",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianFirstCube.lean",
+      "before_sha256": "cefdb6b7b6dcfae8b1ef489060bf13bc3b15fe1f8f072c94b294dff1c1a41d1c",
+      "after_sha256": "3ae80c31266f6f61b39213f1a5b55e23f423100aacfc3df07f6a057f605ed4bc",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianFirstHorizontal.lean",
+      "before_sha256": "ef5215440b751381267bf90b4ca344a9358f1c91a5ca4817b0a70d98ad7e7309",
+      "after_sha256": "609aa876a8475478aff6d8c2e5c47b93e562f39a21902af030f370c1a9afe39c",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianFirstNaturality.lean",
+      "before_sha256": "1c99d82b5f3734f0f2f982132f12a2a6569ed9c96c4a97dbe97efcdf9bd495e7",
+      "after_sha256": "a8477fe9b9a6c26ddd75eff9ab5e07fe8c7ba4cba14e196c37be4416d7fb05f2",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCModelComparison.lean",
+      "before_sha256": "f48e5f93eff9368d2405e9951b4ab4b1ea5d0fd185c63d0753cafd7a63007c50",
+      "after_sha256": "8e816275ea6eb2e76977ccf5abc443a3064e1f07ca045bd9d2c2e026bfae1f13",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCModelSquare.lean",
+      "before_sha256": "40039c17bc188acfaf2adc1872a3939f3f4ed311992e04715f1772421a115aef",
+      "after_sha256": "ed49dac5668b77a9c2aa34634e17a19b8c4cce255cb62933dfb8b8a697e26e12",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCRawSource.lean",
+      "before_sha256": "1e7e864eb099c8b1351f7c71463e0171b1d38eaac44a028089e4d3275878e536",
+      "after_sha256": "dc3cd839e5af9119c39d10c98c10182377c3b0fe0f70e5fec024cc35c69f1cf3",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBaseChangeChosenModel.lean",
+      "before_sha256": "55469d543ed84f159b1afed7759e99000f950c1f1b70bfb344d0ac2a451f198a",
+      "after_sha256": "138960916545d846d774639c62109b77e576ff975057aa44674d16ac3cda202e",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionLeftUnitImage.lean",
+      "before_sha256": "8245992c5ac5d91fdbe90e6f33aa6220d41239311acdcf5a7bfcd6b21035fd28",
+      "after_sha256": "4000972115cd19514144f62e5c092b255f09e88ad1cdaa0d55eb347885c4f532",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionLeftUnitSource.lean",
+      "before_sha256": "0f1cc5e8cace0f24377fee8ef2ba64bb23227accc92d4634d4ea442c89c32047",
+      "after_sha256": "1a83a6e7eedc2b939b31a7f93f7a792e9a0d44b9e3e0a704736f369871c4e976",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionMixedRefinementFaces.lean",
+      "before_sha256": "e9250ae75225a05b730225414911aa55dce909273a4140970add948565a59096",
+      "after_sha256": "8661d30bd469e81acf6c79304c7f6dcc27a006f87c2870cf59884a4366e32830",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionMixedRefinementWhole.lean",
+      "before_sha256": "54772746fb11fc31173e1da96b668623fba3d6cb62923143db894edc9cdfda86",
+      "after_sha256": "07245c26a75d9ecca57323f7632da1134f5a667d235da637e4058a6528d90e22",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionModelMaps.lean",
+      "before_sha256": "f50d661ae178c04dbbfe6e9f3b54f24910c893354724f2f8cef01594458b10e0",
+      "after_sha256": "5ffc31c0bc63fba866e7e6e711294a34ff2b1a2f59a393c90a6fae225c95ae5d",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementCube.lean",
+      "before_sha256": "81dbb1d81212a0fd9a197cdbac85aa971290088498fba565558b4cab7d1dea81",
+      "after_sha256": "73f65e67966a5423530fb08999f982b025f89e1b903781322633916e01896c0e",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementFaces.lean",
+      "before_sha256": "144a6831a092bfa2a2bccec4cc21650d4f2eb0e152e83a47ac3b589f7f2117cc",
+      "after_sha256": "b8cefc8a185ae7c45062168f8d35e2d58867b6ba77fc0ece306a10401e91d2bd",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionTripleInterchange.lean",
+      "before_sha256": "ebd97d84fa8e7066d9219817797a629fd34accf3ac8daa1e8274918ff7be40bb",
+      "after_sha256": "bda73b530d2b17f28dd8f393b43b49cfe89cca9524643f1a6902d30c62153098",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/LeftUnitSourceExpansion.lean",
+      "before_sha256": "d5c28c91e5d86a521948414bae945f7689a1c590fef039be22700a7344eff250",
+      "after_sha256": "42d9808d759d7943b525c72b54b69948b551ee2786eccf4b5b859e912e2c958a",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/LeftUnitSourceRestriction.lean",
+      "before_sha256": "d2eb341083cc44d7ca40d1bac81e0597eb6b47d7fd5b3bfe990191ceda160298",
+      "after_sha256": "865d2de16668efb2b3aeecad3b155100f29ee6b570205148478f9875f1f41092",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/LeftUnitSupplied.lean",
+      "before_sha256": "82b1eac4a43a1d05cbcc0f235270bcdb98995b628c79649b5b1e9b4a530aef8c",
+      "after_sha256": "8aaec8cdecbe4a71d3167d48da497bef20ecc8f238cd34d2726e12bc5e719e31",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/LeftUnitSuppliedIso.lean",
+      "before_sha256": "5e0cc1ec634039f10f1bde20c455e23b3465e32f57e5049cf48ef24f26b33d90",
+      "after_sha256": "3c35d270a03dbbe38a9d0e2c78c81e81f4cbdfabfabc07d7f9e92eebcc48d59a",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/Localization.lean",
+      "before_sha256": "46e99f9b8a9952e651779ec2514cb39fec3fc1755fe0b9fb9eb5032ec794bef5",
+      "after_sha256": "e0574030bcf54aa99f7bbaf97c5935dd07d9656f5b5e1e9722f09838dad2979a",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseIdentityModel.lean",
+      "before_sha256": "95cd1a4dc250b6e3078411ae8d198947827e81ca3f693ec4a548e0d32b97b4a7",
+      "after_sha256": "4f46448e13045bf016309d699be8aaee3ee2c0448abaf7bb555026e4dacf1cfd",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedToDirectImageBaseChange.lean",
+      "before_sha256": "f7644661439fd830433f9dc9870a55aab961c0fa1f13aad0c8d91373797c2531",
+      "after_sha256": "7413c271ccdf82cc0017d249de720ad1831d3ea1c3e241ca23f3160b9eafcbd2",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoIdentity.lean",
+      "before_sha256": "8cf05cff247b0045bdabad8e7ef2317c9287f8aee6b005629b5635280cc13481",
+      "after_sha256": "d13653ec0db22f4e5227f122458a17d02a5e24a019381d2facbcc9bc3b5324d6",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceToDirectImage.lean",
+      "before_sha256": "5c8c4a7d1660759231016af4997d2fca221943386596cc5f5fc94094e8bfa7cc",
+      "after_sha256": "dc35efe4e6fcce4083f2d559ef11fcb7eb8c1f73dbb0cbe4d8ce7e4a4a653b05",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawToDirectImageBaseChange.lean",
+      "before_sha256": "a6e2c429751240178c682cf7ea6abf1e4f5aec5dbd4aa52bf80ea719d2d9ab22",
+      "after_sha256": "83197b4e8641ca94076f5516cde86146004012afe02982c5846b4a0d4c8f0632",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ToDirectImageCompositionModel.lean",
+      "before_sha256": "68e7d9a26d0c1ca3487dda29f1758c33ff52f8a4c01c37ac6907bf1cd9198f03",
+      "after_sha256": "21d0aad024bdd4ba689611964ec3a02e88d32b41a4e3958179fcd79a3e3ece15",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleCartesianComposition.lean",
+      "before_sha256": "72583ea339473f5a95150e12ccdf5ab17faadab8a7533930a27be9da4a35ab5c",
+      "after_sha256": "9a46de2b27a41279021a65b1e2c87b7399f3c2fb9b875c00cc289b3e1a2e7e56",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleCartesianLeftRoute.lean",
+      "before_sha256": "22f4c89c85e468e5de9c9df9e5c57cdab478d8a36bb88d01efb9ecd7aaa09f32",
+      "after_sha256": "3e6ff77bbb9bddb8d3c89de985e0edd5979e5314214bbfc8631129981ba13b64",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleCartesianMaps.lean",
+      "before_sha256": "6ac83fd461b54318691e98f0a5c3e4fb704013b66611a744ba106619f0c53432",
+      "after_sha256": "8f36c14b8b9716004f27bb250bec3c51a292e458d286e8d56b641c9512160ea2",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleCartesianRightRoute.lean",
+      "before_sha256": "d94feec796c145286f89adc502048a6ec7342d45a985d9778f3dace644cd62dc",
+      "after_sha256": "2f2324679f2b1d6b4ff4e6e7a4cf2e6d6030a79a5a0a136471d841e5544d1c93",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleHorizontalOpenTransport.lean",
+      "before_sha256": "b5eb4c1ded29e696807d40664b2d9911537bf9936ce976e63a71113edee84384",
+      "after_sha256": "dbc4e8388eeeb9a37743facfbd923c2eb7b76561542061b33fd1fb042de74ad1",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleRawComposition.lean",
+      "before_sha256": "6ea738d42f3e704d156d635182a4aea1cf66274122ba16914756d2827c9fef0b",
+      "after_sha256": "55c7309a1232c047297e5b2add839c0319b851ebdef805976f493e05ceebc1ab",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelAssociativity.lean",
+      "before_sha256": "156ec6b24dcb4ed3ecb66b8b72ee009a9bf518c99f4c01187156983741a0b219",
+      "after_sha256": "2fa1a4172ec7f123477acbb564dba0c99fd98255b109cf0da0ce7eaafeb46083",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelMaps.lean",
+      "before_sha256": "39d2171a96d27ce903b00c24ccf54723a320ccf78947e65ead9c9fcdda182d06",
+      "after_sha256": "a098cc821220eb950652cd8825219fc2e654768e315f0c8e855538c19ef2b484",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleTotalArrowComparison.lean",
+      "before_sha256": "20d3e6fe67176e16c080a28f276994f73c853c7f1890f6f57c2c2a698a53dd38",
+      "after_sha256": "efcb75f9225e0b55e798af17f3f87510126bcae83876f14dab51ec4a76f34e62",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/FunctionField/SplitSections.lean",
+      "before_sha256": "a1174476c3e3f43f2fdcd33de52f48ba20f19a14690db2040bc7dccfd8596642",
+      "after_sha256": "ca2515855e2b24cd41a554a14eb42bba8c295cccf37e583ee6db43dfd83052c5",
+      "inverse_metadata_change_preserves_nonwhitespace_bytes": true,
+      "header_unchanged": true
+    }
+  ]
+}

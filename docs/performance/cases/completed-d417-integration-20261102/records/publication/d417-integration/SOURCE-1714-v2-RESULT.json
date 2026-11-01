@@ -1,0 +1,15 @@
+{
+  "command": [
+    "python3",
+    "-m",
+    "lean_tools",
+    "source",
+    "--root",
+    "."
+  ],
+  "cwd": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+  "exit": 0,
+  "seconds": 38.51174508300028,
+  "HEAD": "c4880830a7ebfea496a348d361cd50b109ea536d",
+  "scope": "Whole ready current1714input after sole precise TripleMate import fix; native source-only. EarlierSOURCE1714 solecompatfinding remains immutable."
+}

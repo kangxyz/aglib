@@ -51,7 +51,7 @@ theorem isConstructible_cokernel_finite_unit
 /-- In positive degree the preceding-degree hypothesis is on the actual
 cokernel, and the covering hypothesis is on the same original composite. -/
 theorem higherDirectImage_isConstructible_succ_of_finiteSurjective
-    {Y X S : Scheme.{u}} [IsNoetherian X] [IsNoetherian S]
+    {Y X S : Scheme.{u}} [IsNoetherian S]
     (f : X ⟶ S) (p : Y ⟶ X) [IsFinite p] [Surjective p]
     (F : AbelianSheaf.{u, u + 1} X) (n : ℕ)
     (hQ : Constructible.IsConstructible ((higherDirectImage f n).obj

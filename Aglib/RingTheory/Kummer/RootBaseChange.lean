@@ -47,7 +47,7 @@ attribute [local instance] rootBaseChangeAlgebra
       AdjoinRoot.root (rootPolynomial N (algebraMap R B f)) :=
   genericRootEquiv_root N f
 
-@[simp] theorem rootBaseChangeHom_algebraMap (r : R) :
+theorem rootBaseChangeHom_algebraMap (r : R) :
     rootBaseChangeHom B N f (algebraMap R (RootAlgebra N f) r) =
       algebraMap R (RootAlgebra N (algebraMap R B f)) r :=
   (rootBaseChangeHom B N f).commutes r

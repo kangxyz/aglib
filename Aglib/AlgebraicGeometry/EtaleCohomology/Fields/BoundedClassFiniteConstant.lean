@@ -83,7 +83,7 @@ theorem exists_finiteGalois_constant_class
     [hExtY : HasExt.{e} (AbelianSheaf.{u, u + 1} Y)]
     [hExtL : ∀ L : FiniteGaloisIntermediateField K (SeparableClosure K),
       HasExt.{eL} (AbelianSheaf.{u, u + 1} (pullback p (Spec.algebraMap K L)))]
-    [HasColimitsOfSize.{u + 1, u + 1} AddCommGrpCat.{e}] [UnivLE.{u + 1, e}]
+    [UnivLE.{u + 1, e}]
     (q : ℕ) (c : Sheaf.H.{e} ((inverseImage p).obj F) q) :
     ∃ (E : AbelianSheaf.{u, u + 1} (Spec (.of K))) (a : E ⟶ F),
       n • 𝟙 E = 0 ∧ IsFiniteLocallyConstant E ∧
@@ -102,7 +102,7 @@ theorem exists_finiteGalois_constant_class
               cohomologyPullback.{u, e, eL} f ((inverseImage p).obj F) q c := by
   have hstage :=
     @exists_finiteLocallyConstant_coefficient_class.{u, e} K inferInstance F n hn hF
-      Y p inferInstance inferInstance hExtY inferInstance inferInstance q c
+      Y p inferInstance inferInstance hExtY inferInstance q c
   obtain ⟨E, a, hE, hfinite, d, hd⟩ := hstage
   have htrivial := @exists_finiteGalois_bounded_small_trivialization.{u}
     K inferInstance E hfinite n hE

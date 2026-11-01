@@ -100,7 +100,7 @@ def originalBaseOpenSectionTensorAlgEquiv
   have H : IsPullback r q (D.obj.hom ≫ U.ι) c :=
     (IsPullback.of_hasPullback D.obj.hom (c ∣_ U)).paste_vert
       (isPullback_morphismRestrict c U)
-  exact Cohomology.ringSectionsTensorAlgEquiv_of_flat_of_isPullback r σ q
+  exact Cohomology.ringSectionsTensorAlgEquivOfFlatOfIsPullback r σ q
     (D.obj.hom ≫ U.ι) H hflat
 
 /-- One original algebra recovery construction, including both original
@@ -293,7 +293,7 @@ def powerSeriesHartogsAlgebraComparison
 recovers exactly the native tensor map followed by the geometric cover map.
 The equation's type is inferred from the complete original construction;
 its comparison is definitionally `powerSeriesHartogsAlgebraComparison`. -/
-abbrev powerSeriesHartogsAlgebraComparison_restriction
+abbrev powerSeriesHartogsAlgebraComparisonRestriction
     (U : (Spec (.of A)).Opens) [QuasiCompact U.ι] [QuasiSeparated U.ι]
     (hU : Function.Bijective (affineScalarMap U.ι))
     (V : (Spec (.of B)).Opens) (hUV : c ⁻¹ᵁ U ≤ V)

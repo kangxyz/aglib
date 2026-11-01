@@ -70,14 +70,23 @@ structure IndexedGermComparisonData
     (A B : Type*) (C D : Type e)
     [∀ i, AddCommGroup (V i)] [∀ j, AddCommGroup (W j)]
     [AddCommGroup C] [AddCommGroup D] where
+  /-- The source germ associated to an index, point and neighborhood element. -/
   sourceGerm : ∀ i, P i → V i → A
+  /-- The target germ associated to an index, point and neighborhood element. -/
   targetGerm : ∀ j, Q j → W j → B
+  /-- The map from source indices to target indices. -/
   indexMap : I → J
+  /-- The map from source points to points at the corresponding target index. -/
   pointMap : ∀ i, P i → Q (indexMap i)
+  /-- The map between the source and target germ sets. -/
   unitMap : A → B
+  /-- The additive group map between the two direct targets. -/
   directMap : AddCommGrpCat.of C ⟶ AddCommGrpCat.of D
+  /-- The additive map between neighborhood groups at corresponding indices. -/
   neighborhoodMap : ∀ i, AddCommGrpCat.of (V i) ⟶ AddCommGrpCat.of (W (indexMap i))
+  /-- The source neighborhood map into the source direct target at each point. -/
   sourceMap : ∀ i, P i → (AddCommGrpCat.of (V i) ⟶ AddCommGrpCat.of C)
+  /-- The target neighborhood map into the target direct target at each point. -/
   targetMap : ∀ j, Q j → (AddCommGrpCat.of (W j) ⟶ AddCommGrpCat.of D)
   representatives : ∀ z : A, ∃ i p y, sourceGerm i p y = z
   rectangle : ∀ i p, neighborhoodMap i ≫ targetMap (indexMap i) (pointMap i p) =

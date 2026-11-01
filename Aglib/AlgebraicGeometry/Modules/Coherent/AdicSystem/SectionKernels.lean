@@ -63,7 +63,7 @@ def quotientSectionKernel
   exact h
 
 /-- Original vertex and thickening kernels transfer completeness to the left term. -/
-def idealSheafSectionCone_isLimit_of_universallyExact
+def idealSheafSectionConeIsLimitOfUniversallyExact
     (hS : S.Exact) [Mono S.f]
     (hbase : ∀ (Y : Scheme.{u}) (a : Y ⟶ X),
       (S.map (pullback a)).Exact ∧ Mono ((pullback a).map S.f))
@@ -82,7 +82,7 @@ def idealSheafSectionCone_isLimit_of_universallyExact
   have hb (n : ℕᵒᵖ) : E.map S.g ≫ (idealSheafSectionCone X K S.X₃).π.app n =
       (idealSheafSectionCone X K S.X₂).π.app n ≫ g.app n :=
     congrArg (fun t => t.app n) (idealSheafSectionCone_naturality X K S.g)
-  refine isLimit_of_kernelCones i g w
+  refine isLimitOfKernelCones i g w
     (idealSheafSectionCone X K S.X₁) (idealSheafSectionCone X K S.X₂)
     (idealSheafSectionCone X K S.X₃) (E.map S.f) (E.map S.g)
     (S.map E).zero ha hb (sectionKernel X S hS) ?_ h₂ h₃

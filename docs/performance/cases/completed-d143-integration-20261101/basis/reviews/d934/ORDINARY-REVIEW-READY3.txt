@@ -1,0 +1,73 @@
+Independent complex ordinary review of D934 f! composition and associativity
+Reviewer: /root/review_d_composition
+Date: 2026-11-01
+Outcome: ordinary mathematical PASS on READY-3, subject to the accepted-provider boundary below. This is not an established-status review or a compiler acceptance.
+
+Question and fixed source basis
+
+The question is whether the recovered D934 construction proves associativity of the actual chosen exceptional compositor on intrinsic torsion D+, preserving the original maps, hypotheses, independent derived worlds, and seven model families. It is not merely associativity of R*, a source-isomorphism comparison, or an abstract implication with the desired exceptional coherence assumed.
+
+Native MAIN: /Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/release-integrator-20261030/integration-30b6
+Native HEAD recorded by source owner: b0f8ca3f44be620dde8b40f65e1eec0143e45db4; this report identifies the candidate by file bytes, not HEAD alone.
+Candidate: /Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-composition/source-manifest-3.json
+Manifest SHA256: 81de7249b3b31aa08ff5b20fd062a6c0fb5e66fbf8aba1673114335a2858b8a6
+READY-3 SHA256: 1aa0415ff7cac335b84577cb418e6917db36288610609e057d5e22fe3f5f5385
+Current root: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionAssociativity.lean
+Current root SHA256: 6640dbeb31cf6639eabfb9a75bf022861dac05d6d955b504614a13b8a7b47b1e
+Archive source root: /Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/snapshot/agent-c-independent-ext-quasifinite-source-20261027T101616Z/aglib
+Original root SHA256, independently matched: 2e813dbfb6d1c3b5bef1a76aeba97642564d8173d9078de1a382d29191b30a22
+Current supplier binding: /Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-composition/current-supplier-identities.json
+Supplier-binding SHA256: 09a382f83e05fa6264fef94913db0fe21060f3db474955ca7915bfef021d748c
+Original assignment and conditions: /Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/remaining/D-AUTHOR-PACKETS.json, cohorts.D934.
+
+All 122 proposed source hashes and all 38 supplier hashes matched at the final identity check. The four declared roots reach all 122 proposed leaves and cut at exactly the 38 listed current Aglib suppliers; there are no unexpected Aglib cuts and none of the five omitted legacy paths occurs at this boundary. Captured READY-2 bytes were used for the unchanged derivation; READY-3 changes were inspected separately and integrated into this verdict.
+
+Version reconciliation
+
+READY-2 replaced a duplicate private inversion argument in ProperOpen/HorizontalCoherence with the accepted CategoryTheory.forward_horizontal_of_inverse_vertical at the same equation. READY-3 changes only UnitModelComparison and UnitModelTorsion. Its three explicit source constructor applications pin (models C), or the model at moduleExceptionalCompactification f, while the target keeps the separately supplied hC. This repairs the compiler's ambiguity between wM and wC without identifying those universes, changing the mixed identity-refinement map, or introducing a new premise. READY-3 supersedes READY-2 as the integrated candidate; no completion verdict is issued on READY-2. No reviewer-authored derivation or repair was incorporated.
+
+Conditions
+
+Schemes are in the original universe u. The three composable maps f : X -> Y, g : Y -> Z, h : Z -> W are quasi-compact, separated, and locally of finite type; Y, Z, W are quasi-compact and quasi-separated. Lambda : Type (u + 1) is an arbitrary Ring. The domain and codomain are the native full subcategories of bounded-below derived module sheaves with intrinsic torsion cohomology. There is no uniform coefficient annihilator, commutativity assumption, finite cohomological-amplitude premise, or new six-functor existence premise. The four endpoint HasDerivedCategory instances and the seven families for f, g, h, fg, gh, (fg)h, f(gh) remain independent. Derived-category existence and accepted mathematical providers are retained at their displayed original hypotheses.
+
+Result-specific verdicts
+
+D934#moduleProperOpenComparisonIso — PASS. For an actual Cartesian proper/open square, the original adjoint transpose of inverse restriction exchange is invertible on torsion D+. Comparison.lean:91-118 defines and identifies the restriction exchange; :182-213 retains its inverse followed by the original lower-shriek counit. Invertibility uses the actual complementary closed subscheme, proper base change on the original open extension, and open/closed detection. MateNormalization.lean:41 identifies this same transformation with the global mixed mate. Properness and torsion are used for invertibility, not smuggled into the map-level coherence.
+
+D934#moduleExceptionalCompositionIso — PASS. Under the binary specialization of the conditions above, the actual chosen torsion-valued f! followed by g! has a canonical isomorphism to (f >> g)!. CompositionModel.lean:46-86 constructs the supplied-tower map from the original proper/open comparison, inverse open compositor, and inverse R* compositor; the torsion lift preserves its components. CompositionRefinementCube.lean:51-160 proves the whole original refinement square from actual horizontal-unit, vertical-mate, and structural-direct-image faces. Composition.lean:47-115 descends it through the actual common tower to tower independence and the chosen compositor.
+
+D934#moduleExceptionalCompositionSingleModelIso_underlying_hom_app — PASS. With the explicitly displayed refinement a : F -> C.first, the specified Cartesian first square, the additional Cartesian comparison square sqMid, and the source-open factorization, the transported single-model compositor has exactly the original Cartesian underlying map. The normalization is proved through CompositionRawSquare and the first/total-model refinement faces, not defined by assuming the desired equality. All these geometric premises are supplied in the four triple applications.
+
+D934#moduleTripleChosenTotalComparison — PASS. The original scheme-arrow equality and independent total-family comparison agree with the inverse actual total refinement after the canonical single-value comparisons. The factored total refinement has literal identity ambient arrow; TripleTotalArrowComparison normalizes its original transition to the original associativity transport of the proper structural arrow. No exceptional-compositor equality enters the definition of this congruence.
+
+D934#moduleTripleSingleModelAssociativity — PASS. For the genuine three-level compactification tower, the four single-model exceptional maps satisfy the stated associativity equation with the inverse total refinement. TripleComposition constructs the tower from actual Nagata compactifications; the inner and first refinements come from pasted pullbacks and preserve the original open embeddings. The raw equation is proved by horizontal and vertical coherence of the same mixed mate, naturality, and the original open/R* contractions. TripleCartesianComposition identifies its two routes with the actual four Cartesian maps. The five component formulas in TripleSingleModelAssociativity then reflect this equation through the faithful torsion inclusion.
+
+D934#compositionAssociativity_transfer — PASS as an abstract dependency. Four specified binary comparison squares, one total-target square, and associativity of the specified model maps imply associativity of the specified chosen maps. The proof pastes the horizontal comparison isomorphisms and cancels the final isomorphism. In the D934 consumer, all six premises are supplied by the preceding proved results.
+
+D934#moduleExceptionalCompositionIso_assoc — PASS. Writing c(f,g) for the actual moduleExceptionalCompositionIso and A for moduleExceptionalDirectImagePlusTorsionCongr applied to Category.assoc f g h and the two independent total families, the exact conclusion is
+  (c(f,g) whiskered by h!) ; c(f >> g,h) ; A
+    = associator(f!,g!,h!) ; (f! whiskered with c(g,h)) ; c(f,g >> h).
+CompositionAssociativity.lean:56-113 applies the transfer theorem to the four original single-model compositor squares, the proved total-arrow comparison, and the proved triple single-model equation. The shared raw top model is confined to the comparison boundary; rightModels remains arbitrary and is connected by the genuine mixed-model transition. This proves the actual requested f! equation, not just its R* factor.
+
+Accepted dependencies and applicability
+
+The principal expressly authorizes reuse of the 38 current providers and their already accepted current-1151/public-library closure at the original displayed premises, including the D164 ordinary v3/v4/v5 scope. That acceptance is an input to this report, not inferred from the supplier hash file or the historical archive.
+
+Load-bearing current interfaces checked for this use include:
+- Native chosen exceptional values/comparisons and intrinsic torsion preservation in BoundedBelow/DirectImage, Torsion, Derived/OpenTorsion, TorsionPreservation, and proper torsion base change.
+- Given-Cartesian original open exchange, its exact identification with moduleDerivedBaseChangeMap, conjugacy, inverse-image square pasting, and identity-source normalization. Actual pullback squares and etale/open hypotheses are supplied at every D934 application.
+- The original mixed refinement transitions and their composition with independent middle models, through Compactification/ModelComparisonCoherence and the actual Refinement/Comparison implementation behind ProperComparison. These require the actual proper common-open refinement and torsion input, both supplied here.
+- Actual binary tower/common-refinement geometry and cofiltered compactification comparisons. The transitive common-tower source CompositionRefinement.lean was inspected at SHA256 0358d1be2f7b3dc1f50a743755d4838fa443f35a7456f602404b1c40ba2ce583; its lift and two refinement maps are constructed, not hypothesized.
+- Native adjunction mate/identity/pasting laws, exact deriving of lower-shriek, and injective-preserving deriving of direct image. The corresponding additivity, exactness, injective preservation, and independent model premises are supplied by the accepted module-sheaf interfaces.
+- Faithful full-subcategory lifts preserve the original objects and components.
+
+The four retired localization-model wrappers are absent. The fifth, BoundedBelow/ModelComparison, supplied aliases and a different unused localization comparator; the live aliases have direct selected-constructor replacements, while family and single-model comparisons use the original mixed identity refinement. No equality with the retired alternative comparator is claimed or needed. No archive-only original draft is introduced outside the accepted current-provider boundary.
+
+Coverage and remaining boundary
+
+All 122 proposed derivations and their nontrivial explanatory claims were inspected, including the generic map-assembly proofs. No unresolved mathematical obligation or new geometric/model/coherence hypothesis was found in the stated conditional scope. This report does not claim unit coherence or any additional six-functor theorem.
+
+Current compiler/CPP evidence is separate and still pending in the READY-3 packet. No build, test, kernel replay, or axiom audit was run for this review. In particular, historical bare D build279 is unbound and supplies no acceptance. Native elaboration and the owner's existing source/axiom predicates must be reconciled with the admitted bytes by the principal and compiler owner; any later source repair needs affected review continuation. This ordinary verdict authorizes no established-status assignment, restoration, or retention.
+
+Result artifact identity can be reproduced without compilation by comparing every source_sha256 entry in source-manifest-3.json and every actual_main_sha256 entry in current-supplier-identities.json with SHA256 of the corresponding file under MAIN.
+

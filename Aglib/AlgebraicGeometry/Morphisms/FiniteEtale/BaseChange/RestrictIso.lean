@@ -23,7 +23,7 @@ namespace AlgebraicGeometry.Scheme.FiniteEtale
 universe u
 
 /-- Full faithfulness on the actual inverse-image open transports across an ambient iso. -/
-def restriction_fullyFaithful_comp_iso {X Y Z : Scheme.{u}}
+def restrictionFullyFaithfulCompIso {X Y Z : Scheme.{u}}
     (f : X ⟶ Y) (g : Y ⟶ Z) [IsIso g] (W : Z.Opens)
     (hf : (baseChange (f ∣_ g ⁻¹ᵁ W)).FullyFaithful) :
     (baseChange ((f ≫ g) ∣_ W)).FullyFaithful := by

@@ -36,9 +36,9 @@ variable {X Y : Scheme.{u}} [IsAffine Y] (q : X ⟶ Y)
   [QuasiCompact q] [QuasiSeparated q] [IsIso q.c]
 
 /-- Literal pullback of maps into an affine represented target is bijective
-on each actual affine étale test. -/
+on each actual étale test. -/
 theorem affineEtaleTest_pullbackHom_bijective_of_structureIso
-    (U : Y.Etale) [IsAffine U.left] (Z : Over Y) [IsAffine Z.left] :
+    (U : Y.Etale) (Z : Over Y) [IsAffine Z.left] :
     Function.Bijective (fun b : (Scheme.Etale.forget Y).obj U ⟶ Z =>
       (Over.pullback q).map b) := by
   let V := (Scheme.Etale.forget Y).obj U
@@ -71,10 +71,10 @@ theorem affineEtaleTest_pullbackHom_bijective_of_structureIso
     simpa only [Function.comp_def, he] using hb
   exact hb'
 
-/-- The literal represented coefficient unit is bijective on affine tests. -/
+/-- The literal represented coefficient unit is bijective on étale tests. -/
 theorem representedCoefficientUnit_bijective_affine_of_structureIso
     (H : Grp (Over Y)) [IsCommMonObj H.X] [IsFinite H.X.hom]
-    (U : Y.Etale) [IsAffine U.left] :
+    (U : Y.Etale) :
     Function.Bijective
       ((SchemeTorsorBaseChange.representedCoefficientUnit q H).hom.app (op U)) := by
   have : IsAffine H.X.left := isAffine_of_isAffineHom H.X.hom
@@ -97,13 +97,12 @@ theorem representedCoefficientUnit_isIso_of_structureIso
     (H : Grp (Over Y)) [IsCommMonObj H.X] [IsFinite H.X.hom] :
     IsIso (SchemeTorsorBaseChange.representedCoefficientUnit q H) := by
   let a := SchemeTorsorBaseChange.representedCoefficientUnit q H
-  have h (U : Y.Etale) (hU : IsAffine U.left) : Function.Bijective (a.hom.app (op U)) := by
-    let : IsAffine U.left := hU
-    exact representedCoefficientUnit_bijective_affine_of_structureIso q H U
+  have h (U : Y.Etale) : Function.Bijective (a.hom.app (op U)) :=
+    representedCoefficientUnit_bijective_affine_of_structureIso q H U
   have hmono : Sheaf.IsLocallyInjective a :=
-    Scheme.Etale.locallyInjective_of_affine Y a.hom (fun U hU => (h U hU).injective)
+    Scheme.Etale.locallyInjective_of_affine Y a.hom (fun U _ => (h U).injective)
   have hepi : Sheaf.IsLocallySurjective a :=
-    Scheme.Etale.locallySurjective_of_affine Y a.hom (fun U hU => (h U hU).surjective)
+    Scheme.Etale.locallySurjective_of_affine Y a.hom (fun U _ => (h U).surjective)
   exact (Sheaf.isLocallyBijective_iff_isIso a).mp ⟨hmono, hepi⟩
 
 /-- The represented section map is the actual adjunction unit, not an

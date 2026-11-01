@@ -36,6 +36,7 @@ local notation "C" => GeometricEtaleColimit R Ω
 local notation "T" => RootAlgebra N π
 local notation "T'" => RootAlgebra N (algebraMap R C π)
 
+/-- The base-change algebra structure from the root algebra `T` to `T'`. -/
 local instance : Algebra T T' := rootBaseChangeAlgebra C N π
 
 variable (K F L K' F' : Type u)
@@ -84,7 +85,7 @@ theorem dvrRoot_normalTensor_etale (hN : 0 < N) (hπ : Irreducible π)
       hπ' N hN hunit' hcard F'
   let eA := IsDiscreteValuationRing.genericTensorBaseChange T T' F F' K K' L
     (FaithfulSMul.algebraMap_injective T T')
-  let e := (strictRoot_integralClosureEquiv R Ω N π (F ⊗[K] L) hN).trans
+  let e := (strictRootIntegralClosureEquiv R Ω N π (F ⊗[K] L) hN).trans
     eA.mapIntegralClosure
   let : Algebra.Etale T' (T' ⊗[T] integralClosure T (F ⊗[K] L)) :=
     Algebra.Etale.of_equiv

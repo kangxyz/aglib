@@ -31,7 +31,8 @@ variable (A : Type u) [CommRing A] [IsDomain A]
   (ρ : Γ(Spec (.of A), U) →+* A)
   (hρ : ρ.comp (hartogsScalarMap A U) = RingHom.id A)
 
-local instance : Algebra A (Spec (.of A)).functionField :=
+/-- The algebra structure of the affine function field over its coordinate ring. -/
+local instance splitSectionsFunctionFieldAlgebra : Algebra A (Spec (.of A)).functionField :=
   AlgebraicGeometry.instAlgebraCarrierFunctionFieldSpec (.of A)
 
 local instance : IsFractionRing A (Spec (.of A)).functionField :=

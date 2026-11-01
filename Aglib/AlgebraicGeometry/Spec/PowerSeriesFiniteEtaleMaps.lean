@@ -63,7 +63,7 @@ theorem powerSeriesPuncturedFiniteEtale_baseChange_faithful
   exact FiniteEtale.Adic.firstStage_baseChange_faithful_of_unitSectionCone _ hunit
 
 /-- The actual first-stage functor is fully faithful, with no assumed completion property. -/
-def powerSeriesPuncturedFiniteEtale_fullyFaithful
+def powerSeriesPuncturedFiniteEtaleFullyFaithful
     {σ : Type} [Finite σ] {A : Type u} [CommRing A] [IsDomain A]
     [IsLocalRing A] [IsNoetherianRing A] [IsIntegrallyClosed A]
     (V : (Spec (.of (MvPowerSeries σ A))).Opens)
@@ -77,7 +77,7 @@ def powerSeriesPuncturedFiniteEtale_fullyFaithful
   exact Functor.FullyFaithful.ofFullyFaithful _
 
 /-- Restriction along the actual zero-section map is fully faithful on finite-etale covers. -/
-def powerSeriesPuncturedFiniteEtale_zeroSection_fullyFaithful
+def powerSeriesPuncturedFiniteEtaleZeroSectionFullyFaithful
     {σ : Type} [Finite σ] {A : Type u} [CommRing A] [IsDomain A]
     [IsLocalRing A] [IsNoetherianRing A] [IsIntegrallyClosed A]
     (V : (Spec (.of (MvPowerSeries σ A))).Opens)
@@ -90,7 +90,7 @@ def powerSeriesPuncturedFiniteEtale_zeroSection_fullyFaithful
     (constantCoeff : MvPowerSeries σ A →+* A))
   have hK : (baseChange K.subschemeι).FullyFaithful := by
     have hp : (baseChange (K ^ 1).subschemeι).FullyFaithful :=
-      powerSeriesPuncturedFiniteEtale_fullyFaithful V hdim hV
+      powerSeriesPuncturedFiniteEtaleFullyFaithful V hdim hV
     exact Eq.mp (congrArg
       (fun J : V.toScheme.IdealSheafData => (baseChange J.subschemeι).FullyFaithful)
       (pow_one K)) hp

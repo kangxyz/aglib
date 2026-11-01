@@ -50,7 +50,7 @@ def underCocone : Cocone (GeometricEtaleNeighborhood.underDiagram R Ω) where
     exact congrArg AlgHom.toRingHom (ι_naturality f)
 
 /-- Forgetting the base map gives exactly the already constructed ring cocone. -/
-def underCocone_isColimit : IsColimit (underCocone R Ω) := by
+def underCoconeIsColimit : IsColimit (underCocone R Ω) := by
   let : IsConnected (GeometricEtaleNeighborhood R Ω) := IsFiltered.isConnected _
   apply isColimitOfReflects (Under.forget (CommRingCat.of R))
   exact ringCoconeIsColimit R Ω
@@ -64,7 +64,7 @@ theorem toIntegralClosure_bijective :
   apply TensorProduct.toIntegralClosure_bijective_of_isColimit
     (CommRingCat.of R) (CommRingCat.of B)
     (GeometricEtaleNeighborhood.underDiagram R Ω) (underCocone R Ω)
-    (underCocone_isColimit R Ω)
+    (underCoconeIsColimit R Ω)
   intro X
   change @Function.Bijective _ _
     (@TensorProduct.toIntegralClosure R X.algebra _ _

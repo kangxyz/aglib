@@ -75,6 +75,7 @@ variable (R : Type u) [CommRing R] [IsDomain R] (x : R)
 local instance embeddingOpenIntegral : IsIntegral (Spec (.of (Localization.Away x))) :=
   isIntegral_of_isOpenImmersion (Spec.algebraMap R (Localization.Away x))
 
+/-- The coordinate-ring algebra structure on the function field of its spectrum. -/
 local instance embeddingAffineFieldAlgebra : Algebra R (Spec (.of R)).functionField :=
   AlgebraicGeometry.instAlgebraCarrierFunctionFieldSpec (.of R)
 

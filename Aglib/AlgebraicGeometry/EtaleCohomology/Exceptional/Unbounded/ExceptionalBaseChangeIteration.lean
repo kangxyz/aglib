@@ -74,13 +74,25 @@ variable (C : Hom.DenseCompactification f)
   [HasDerivedCategory.{wRi}
     (ModuleSheaf ((C.toCompactification.baseChange b).baseChange c).Xbar Λ)]
 
+/-- The derived-category instance in universe `wR₁` for `Λ`-module sheaves on
+    `(C.toCompactification.baseChange b).Xbar`.
+-/
 local instance unboundedChosenIterationFirstRawModel : HasDerivedCategory.{wR₁}
     (ModuleSheaf (C.toCompactification.baseChange b).Xbar Λ) := rawFirstModels C
+/-- The derived-category instance in universe `wR₂` for `Λ`-module sheaves on `(((baseChange b).obj
+    C).toCompactification.baseChange c).Xbar`.
+-/
 local instance unboundedChosenIterationSecondRawModel : HasDerivedCategory.{wR₂}
     (ModuleSheaf (((baseChange b).obj C).toCompactification.baseChange c).Xbar Λ) :=
   rawSecondModels ((baseChange b).obj C)
+/-- The derived-category instance in universe `wRs` for `Λ`-module sheaves on
+    `(C.toCompactification.baseChange (c ≫ b)).Xbar`.
+-/
 local instance unboundedChosenIterationSingleRawModel : HasDerivedCategory.{wRs}
     (ModuleSheaf (C.toCompactification.baseChange (c ≫ b)).Xbar Λ) := rawSingleModels C
+/-- The derived-category instance in universe `wMs` for `Λ`-module sheaves on `((baseChange (c ≫ b)
+    ⋙ iteratedSourceTransport b c).obj C).Xbar`.
+-/
 local instance unboundedChosenIterationTransportedSingleModel : HasDerivedCategory.{wMs}
     (ModuleSheaf ((baseChange (c ≫ b) ⋙ iteratedSourceTransport b c).obj C).Xbar Λ) :=
   singleModels ((baseChange (c ≫ b)).obj C)

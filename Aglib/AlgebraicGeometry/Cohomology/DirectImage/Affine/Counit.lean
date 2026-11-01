@@ -39,7 +39,7 @@ variable {R : Type u} [CommRing R] {X : Scheme.{u}}
   (M : X.Modules)
 
 /-- The actual higher image from the original resolution counit. -/
-def moduleHigherDirectImageAffineIso_of_counit_quasiIso
+def moduleHigherDirectImageAffineIsoOfCounitQuasiIso
     (I : InjectiveResolution M)
     (hI : QuasiIso (Scheme.Modules.Complex.tildeGlobalSectionsCounit
       (CommRingCat.of R) (.up ℤ)
@@ -67,7 +67,7 @@ theorem moduleHigherDirectImageAffineIso_of_counit_quasiIso_hom_comp
     let K := ((Scheme.Modules.pushforward f).mapHomologicalComplex (.up ℤ)).obj I.cochainComplex
     letI : QuasiIso (Scheme.Modules.Complex.tildeGlobalSectionsCounit
       (CommRingCat.of R) (.up ℤ) K) := hI
-    (moduleHigherDirectImageAffineIso_of_counit_quasiIso f M I hI n).hom ≫
+    (moduleHigherDirectImageAffineIsoOfCounitQuasiIso f M I hI n).hom ≫
         (Scheme.Modules.Complex.tildeGlobalSectionsHomologyIso
           (CommRingCat.of R) (.up ℤ) K (n : ℤ)).hom =
       (I.isoRightDerivedObjCochain (Scheme.Modules.pushforward f) n).hom := by

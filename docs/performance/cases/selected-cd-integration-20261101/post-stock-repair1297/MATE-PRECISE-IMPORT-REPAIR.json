@@ -1,0 +1,7 @@
+{
+  "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/ProperOpen/Mate.lean",
+  "before_sha256": "4f99a49c3026fcc7a4aa21d6977840812ea26dab2eb600f89f0de4ae8e85bbf3",
+  "after_sha256": "169dcfdb9e265855612860dc7eb2606a155844f8337bc9a54c6fdf668e9a6218",
+  "reason": "Use the exact sole implementation owner imported by the existing compatibility-only facade. Proof bodies/options/declarations/full transitive import closure unchanged. Native source policy forbids implementation import of facade; no policy/linter suppression.",
+  "cpp_boundary": "Current nativeA1297 source6b47 alreadycaptured before this header repair; preserve oldpasses, only actual current-header followup needed."
+}

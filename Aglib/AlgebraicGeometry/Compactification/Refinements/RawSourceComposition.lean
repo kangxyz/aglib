@@ -19,11 +19,17 @@ variable {X₀ X₁ X₂ S : Scheme.{u}} (f₀ : X₀ ⟶ S) (f₁ : X₁ ⟶ S)
   (e₁ : X₁ ≅ X₀) (e₂ : X₂ ≅ X₁) (h₁ : e₁.hom ≫ f₀ = f₁)
   (h₂ : e₂.hom ≫ f₁ = f₂) (C : Hom.DenseCompactification f₀)
 
+/-- The compactification obtained by transporting `C` along the first source isomorphism.
+-/
 abbrev rawSourceFirstModel := (sourceIso f₁ e₁ h₁).obj C
 
+/-- The compactification obtained by transporting `C` successively along both source isomorphisms.
+-/
 abbrev rawSourceSequentialModel :=
   (sourceIso f₂ e₂ h₂).obj (rawSourceFirstModel f₀ f₁ e₁ h₁ C)
 
+/-- The compactification obtained by transporting `C` along the composite source isomorphism.
+-/
 abbrev rawSourceCompositeModel :=
   (sourceIso f₂ (e₂ ≪≫ e₁) (sourceIso_comp_fac f₀ f₁ f₂ e₁ e₂ h₁ h₂)).obj C
 

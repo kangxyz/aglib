@@ -62,7 +62,6 @@ theorem frobeniusBaseChange_tmul (s : S) (m : M) :
     frobeniusBaseChange p hp hA Φ S (s ⊗ₜ[A] m) = (s ^ p) ⊗ₜ[A] Φ m := rfl
 
 /-- The extension retains the original map under the original unit tensor map. -/
-@[simp]
 theorem frobeniusBaseChange_one_tmul (m : M) :
     frobeniusBaseChange p hp hA Φ S (1 ⊗ₜ[A] m) = 1 ⊗ₜ[A] Φ m := by
   simp

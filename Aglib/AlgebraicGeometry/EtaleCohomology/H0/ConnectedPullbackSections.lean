@@ -190,7 +190,7 @@ private theorem matching_of_geometric_lifts
 /-- Bounded coefficients give equal restrictions at the two lifts of the
 same original geometric point. This producer retains the actual point field
 and its original map, rather than an abstract replacement field. -/
-abbrev relative_section_eq_at_point_lifts_of_killed
+abbrev relativeSectionEqAtPointLiftsOfKilled
     {X : Scheme.{u}} (F : AbelianSheaf.{u, u + 1} X)
     (n : ℕ) (hn : 0 < n) (hF : n • 𝟙 F = 0) (T : Over X)
     [QuasiCompact T.hom] [QuasiSeparated T.hom] [GeometricallyConnected T.hom]

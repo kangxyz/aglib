@@ -192,11 +192,17 @@ and the section equation. This shares the complete local construction without
 introducing another sheaf or another realization of its sections. -/
 structure RelativePointSectionRepresentative
     (P : (Over X)ᵒᵖ ⥤ Ab.{u + 1}) (T : Over X) (s : P.obj (op T)) (x : T.left) where
+  /-- The representing scheme over `X`. -/
   scheme : Over X
+  /-- The chosen point of the representing scheme. -/
   point : scheme.left
+  /-- The étale test object over `X`. -/
   test : X.Etale
+  /-- The map from the representing scheme to the source object `T`. -/
   toSource : scheme ⟶ T
+  /-- The map from the representing scheme to the underlying object of the test. -/
   toTest : scheme ⟶ (Etale.forget X).obj test
+  /-- The section on the étale test object representing the source section after pullback. -/
   value : P.obj (op ((Etale.forget X).obj test))
   point_eq : toSource.left point = x
   section_eq : P.map toSource.op s = P.map toTest.op value

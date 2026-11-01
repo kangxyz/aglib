@@ -34,12 +34,23 @@ variable {X S : Scheme.{u}} {f : X ⟶ S} [QuasiCompact f]
   [HasDerivedCategory.{wN}
     (ModuleSheaf (Hom.DenseCompactification.baseChangeObj (𝟙 S) C).Xbar Λ)]
 
+/-- Derived-category instance on module sheaves over `(C.toCompactification.baseChange (𝟙 S)).Xbar`,
+using the instance on `(pullback (𝟙 S) C.p)`.
+-/
 local instance normalizedIdentityRawModel : HasDerivedCategory.{wR}
     (ModuleSheaf (C.toCompactification.baseChange (𝟙 S)).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wR} (ModuleSheaf (pullback (𝟙 S) C.p) Λ))
+/-- Derived-category instance on module sheaves over
+`((Hom.DenseCompactification.identitySourceTransport f).obj C).Xbar`, using the instance on
+`C.Xbar`.
+-/
 local instance normalizedIdentityTransportModel : HasDerivedCategory.{wM}
     (ModuleSheaf ((Hom.DenseCompactification.identitySourceTransport f).obj C).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ))
+/-- Derived-category instance on module sheaves over `(Hom.Compactification.densify
+(C.toCompactification.baseChange (𝟙 S))).Xbar`, using the instance on
+`(Hom.DenseCompactification.baseChangeObj (𝟙 S) C).Xbar`.
+-/
 local instance normalizedIdentityDenseModel : HasDerivedCategory.{wN}
     (ModuleSheaf (Hom.Compactification.densify (C.toCompactification.baseChange (𝟙 S))).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN}

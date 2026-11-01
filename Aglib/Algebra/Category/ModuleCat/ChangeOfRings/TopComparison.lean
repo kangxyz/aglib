@@ -25,15 +25,25 @@ namespace ModuleCat
 
 /-- The complete data of the original scalar mate and its top comparison. -/
 structure TensorTopComparison {R S : Type u} [CommRing R] [CommRing S] (σ : R →+* S) where
+  /-- The raw source module over `R`. -/
   sourceRaw : ModuleCat.{max u w} R
+  /-- The source module indexed by the open object. -/
   sourceOpen : ModuleCat.{max u w} R
+  /-- The global source module. -/
   sourceGlobal : ModuleCat.{max u w} R
+  /-- The target module indexed by the open object. -/
   targetOpen : ModuleCat.{max u w} S
+  /-- The global target module. -/
   targetGlobal : ModuleCat.{max u w} S
+  /-- The map from the raw source to the open source. -/
   sourceIndex : sourceRaw ⟶ sourceOpen
+  /-- The coefficient map into the target with scalars restricted along `σ`. -/
   coefficientMap : sourceOpen ⟶ (restrictScalars σ).obj targetOpen
+  /-- The comparison from the open source to the global source. -/
   sourceTop : sourceOpen ≅ sourceGlobal
+  /-- The comparison from the open target to the global target. -/
   targetTop : targetOpen ≅ targetGlobal
+  /-- The global map after extension of source scalars along `σ`. -/
   globalTensor : (extendScalars σ).obj sourceGlobal ⟶ targetGlobal
   top_fac : ((extendRestrictScalarsAdj.{max u w, u, u} σ).homEquiv _ _).symm
       coefficientMap ≫ targetTop.hom = (extendScalars σ).map sourceTop.hom ≫ globalTensor

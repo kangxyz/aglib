@@ -1,0 +1,19 @@
+{
+  "phase": "EXTENSION-REPAIR-07",
+  "source_owner": "/root/d_composition_integration",
+  "main": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/release-integrator-20261030/integration-30b6",
+  "source_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoIdentity.lean": "fe0ca68dbbccdc709a947b6e5e1ec4514630c67a6da99a7db55a800e9b5c5a5f"
+  },
+  "changes_from_V6": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoIdentity.lean": {
+      "previous": "ec936a505291f5dd7a5099c4d20b4b4704415c54690be4f50ab6aa578e0b16f8",
+      "current": "fe0ca68dbbccdc709a947b6e5e1ec4514630c67a6da99a7db55a800e9b5c5a5f"
+    }
+  },
+  "roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.SourceIsoIdentity"
+  ],
+  "diagnostic_basis": "runtime/d47-repair6-D/Unbounded-SourceIsoIdentity-errors.log",
+  "repair": "Adapt four original reflexive source comparison applications to current target-family + selected original source-model API. Source model is models0 C (or chosenC), target family remains models1; no model equality, new premise or original-map change."
+}

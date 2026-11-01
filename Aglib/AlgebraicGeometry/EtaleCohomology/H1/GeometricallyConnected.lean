@@ -40,7 +40,7 @@ theorem h1Pullback_injective_of_geometricallyConnected
     (hE : ∀ U : FiniteEtale X, EffectiveEpi (pullback.fst U.obj.hom q))
     (F : AbelianSheaf.{u, u + 1} X) (hF : IsFiniteLocallyConstant F) :
     Function.Injective (h1Pullback q F) := by
-  let ff := FiniteEtale.fullyFaithfulBaseChange_of_geometricallyConnected q hE
+  let ff := FiniteEtale.fullyFaithfulBaseChangeOfGeometricallyConnected q hE
   let := ff.full
   exact FiniteEtaleRigidity.h1Pullback_injective_finite_of_full q
     (stacks03AJ X) (stacks03RV X) (stacks03AJ Y) F hF

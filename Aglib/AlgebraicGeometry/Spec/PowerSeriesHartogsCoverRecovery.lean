@@ -73,12 +73,12 @@ theorem powerSeriesBaseOpenSection_retraction (U : (Spec (.of A)).Opens) :
 
 /-- Full faithfulness on the actual restricted section follows from the
 proved nondomain Hartogs unit cone and the canonical source isomorphism. -/
-def powerSeriesBaseOpenSection_fullyFaithful [Finite σ] [IsNoetherianRing A]
+def powerSeriesBaseOpenSectionFullyFaithful [Finite σ] [IsNoetherianRing A]
     (U : (Spec (.of A)).Opens) [QuasiCompact U.ι] [QuasiSeparated U.ι]
     (hU : Function.Bijective (affineScalarMap U.ι)) :
     (FiniteEtale.baseChange (powerSeriesBaseOpenSection (σ := σ) U)).FullyFaithful := by
   let e := (Spec (.of A)).isoOfEq (powerSeriesZero_preimage_baseOpen (σ := σ) U)
-  have hz := powerSeriesHartogsFiniteEtale_zeroSection_fullyFaithful
+  have hz := powerSeriesHartogsFiniteEtaleZeroSectionFullyFaithful
     U hU (c ⁻¹ᵁ U) le_rfl (powerSeriesZero_preimage_baseOpen (σ := σ) U)
   let : (FiniteEtale.baseChange e.inv).Full := FiniteEtale.baseChange_full_of_isIso e.inv
   let : (FiniteEtale.baseChange e.inv).Faithful :=
@@ -97,7 +97,7 @@ def powerSeriesBaseOpenCoverRecovery [Finite σ] [IsNoetherianRing A]
   FiniteEtale.coverIsoOfFullyFaithfulSection
     (powerSeriesBaseOpenSection (σ := σ) U) (c ∣_ U)
     (powerSeriesBaseOpenSection_retraction (σ := σ) U)
-    (powerSeriesBaseOpenSection_fullyFaithful (σ := σ) U hU) D
+    (powerSeriesBaseOpenSectionFullyFaithful (σ := σ) U hU) D
 
 /-- Recovery preserves the prescribed original section comparison exactly. -/
 @[simp]

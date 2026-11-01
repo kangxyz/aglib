@@ -51,7 +51,8 @@ section BaseChange
 variable (R S T : Type u) [CommRing R] [CommRing S] [CommRing T]
   [Algebra R S] [Algebra R T]
 
-local instance : Algebra S (T ⊗[R] S) := TensorProduct.rightAlgebra
+/-- The right-factor `S`-algebra structure on the original tensor product. -/
+local instance pointwiseTensorRightAlgebra : Algebra S (T ⊗[R] S) := TensorProduct.rightAlgebra
 
 /-- Etaleness at one specified point after flat base change descends to the
 original point. The base is Noetherian; no flatness of the original source,

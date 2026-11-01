@@ -35,7 +35,7 @@ theorem powerSeriesPuncturedFiniteEtale_exists_section
     ∃ s : V.toScheme ⟶ C.obj.left, s ≫ C.obj.hom = 𝟙 V.toScheme ∧
       (Spec.map (CommRingCat.ofHom
         (constantCoeff : MvPowerSeries σ A →+* A)) ∣_ V) ≫ s = a := by
-  let := (powerSeriesPuncturedFiniteEtale_zeroSection_fullyFaithful V hdim hV).full
+  let := (powerSeriesPuncturedFiniteEtaleZeroSectionFullyFaithful V hdim hV).full
   exact FiniteEtale.exists_section_of_baseChange_full _ C a ha
 
 end AlgebraicGeometry.Scheme

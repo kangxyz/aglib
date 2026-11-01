@@ -43,7 +43,7 @@ def integralClosureSourceIso : Spec (.of (integralClosure R A)) ≅ q.normalizat
   simp only [integralClosureSourceIso, Iso.trans_hom, Category.assoc,
     normalizationSourceIso_hom_over, specIntegralClosureNormalizationIso_hom_over]
 
-@[reassoc (attr := simp)] theorem integralClosureSourceIso_hom_generic :
+@[reassoc] theorem integralClosureSourceIso_hom_generic :
     Spec.map (CommRingCat.ofHom (integralClosure R A).val.toRingHom) ≫
       (integralClosureSourceIso R A q e he).hom = e.hom ≫ q.toNormalization := by
   rw [integralClosureSourceIso, Iso.trans_hom, ← Category.assoc,

@@ -47,31 +47,53 @@ variable {X S T U : Scheme.{u}} {f : X ⟶ S} [QuasiCompact f]
     (ModuleSheaf (((baseChange b).obj C).toCompactification.baseChange c).Xbar Λ)]
   [HasDerivedCategory.{wN₂} (ModuleSheaf ((baseChange c).obj ((baseChange b).obj C)).Xbar Λ)]
 
+/-- Derived-category instance on module sheaves over `(pullback b C.p)`, using the instance on
+`(C.toCompactification.baseChange b).Xbar`.
+-/
 local instance normalizedIterationFirstRawNativeModel :
     HasDerivedCategory.{wR₁} (ModuleSheaf (pullback b C.p) Λ) :=
   inferInstanceAs (HasDerivedCategory.{wR₁}
     (ModuleSheaf (C.toCompactification.baseChange b).Xbar Λ))
+/-- Derived-category instance on module sheaves over `(pullback c (C.toCompactification.baseChange
+b).p)`, using the instance on `((C.toCompactification.baseChange b).baseChange c).Xbar`.
+-/
 local instance normalizedIterationSecondRawNativeModel :
     HasDerivedCategory.{wR₂}
       (ModuleSheaf (pullback c (C.toCompactification.baseChange b).p) Λ) :=
   inferInstanceAs (HasDerivedCategory.{wR₂}
     (ModuleSheaf ((C.toCompactification.baseChange b).baseChange c).Xbar Λ))
+/-- Derived-category instance on module sheaves over `(pullback c ((baseChange b).obj C).p)`, using
+the instance on `(((baseChange b).obj C).toCompactification.baseChange c).Xbar`.
+-/
 local instance normalizedIterationSecondNormalizedRawNativeModel :
     HasDerivedCategory.{wRN} (ModuleSheaf (pullback c ((baseChange b).obj C).p) Λ) :=
   inferInstanceAs (HasDerivedCategory.{wRN}
     (ModuleSheaf (((baseChange b).obj C).toCompactification.baseChange c).Xbar Λ))
 
+/-- Derived-category instance on module sheaves over `(baseChangeObj b C).Xbar`, using the instance
+on `((baseChange b).obj C).Xbar`.
+-/
 local instance normalizedIterationFirstDenseModel :
     HasDerivedCategory.{wN₁} (ModuleSheaf (baseChangeObj b C).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN₁} (ModuleSheaf ((baseChange b).obj C).Xbar Λ))
+/-- Derived-category instance on module sheaves over `(Hom.Compactification.densify
+(C.toCompactification.baseChange b)).Xbar`, using the instance on `((baseChange b).obj C).Xbar`.
+-/
 local instance normalizedIterationFirstDensificationModel :
     HasDerivedCategory.{wN₁}
       (ModuleSheaf (Hom.Compactification.densify (C.toCompactification.baseChange b)).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN₁} (ModuleSheaf ((baseChange b).obj C).Xbar Λ))
+/-- Derived-category instance on module sheaves over `(baseChangeObj c ((baseChange b).obj
+C)).Xbar`, using the instance on `((baseChange c).obj ((baseChange b).obj C)).Xbar`.
+-/
 local instance normalizedIterationSecondDenseModel :
     HasDerivedCategory.{wN₂} (ModuleSheaf (baseChangeObj c ((baseChange b).obj C)).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN₂}
     (ModuleSheaf ((baseChange c).obj ((baseChange b).obj C)).Xbar Λ))
+/-- Derived-category instance on module sheaves over `(Hom.Compactification.densify (((baseChange
+b).obj C).toCompactification.baseChange c)).Xbar`, using the instance on `((baseChange c).obj
+((baseChange b).obj C)).Xbar`.
+-/
 local instance normalizedIterationSecondDensificationModel :
     HasDerivedCategory.{wN₂} (ModuleSheaf (Hom.Compactification.densify
       (((baseChange b).obj C).toCompactification.baseChange c)).Xbar Λ) :=

@@ -1,0 +1,48 @@
+{
+  "question": "Exceptions to exact inherited-D programme source identity, not new mathematical gaps",
+  "input_identity": {
+    "disposition": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/current-public-disposition-20261030/DISPOSITION-MAP.json",
+      "sha256": "fa311ff46e11413d396a2cf8623633a74f907eda15adf0303e390db4e7f2e366"
+    },
+    "D164_candidate": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/completed-d-cartesian-coherence-20261101/v5/CANDIDATE.json",
+      "sha256": "4302905c87d7a9c81f0a1a93f0a0b3172c5480e9b488de71a949f154e5084dd5"
+    },
+    "D164_completion": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/completed-d-cartesian-coherence-20261101/COMPLETION.json",
+      "sha256": "611d28e422a18b2895ca7793a7deb52b2c9b0446969310e8c31944a2c224a221"
+    },
+    "D164_current_header_delta": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/completed-d-cartesian-coherence-20261101/header-repair-v7/REPAIR.json",
+      "sha256": "182995c41262e527c2e976135e2498ad3ad835c7da32aa601d463e32c08356e9"
+    },
+    "D47_frozen": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/remaining/D47-TERMINAL-DECISION.json",
+      "sha256": "e0f32730ce6ff9567039d1dd8d987f2b72ff26cdcf119ed6057a69a4a91f5433"
+    },
+    "D47_ordinary_review": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/reviews/d47-correspondences/VERDICTS.json",
+      "sha256": "eaf2e98c54153dbcd284d9bdbfa5f0938f65c8d214eb9cb5f13671e03386b16c"
+    }
+  },
+  "independent_unrouted_completed_D": [],
+  "known_original40_intersection": [],
+  "claim_identity_exceptions": [
+    {
+      "D_claim_index": 1130,
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/FieldComparison.lean",
+      "claimed_sha256": "0590ef027c2282a7ce62adc55ea7ff151d2c62dfc06a0db29bd5c4a51daadca7",
+      "actual_archived_sha256": "3237122b17f84728a73ff8f36cb54e5d7ed57c2d22713414079393ee96b29d72",
+      "receipt": "build415",
+      "receipt_boundary": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+      "original_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/current-public-disposition-20261030/DISPOSITION-MAP.json#/rows/912/claims",
+      "terminal_route_index": 39,
+      "actual_current_mathematics_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/remaining/D47-TERMINAL-DECISION.json#/decisions/39",
+      "accepted_ordinary_review_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/reviews/d47-correspondences/VERDICTS.json#/results/11",
+      "interpretation": "The actual archived/current finite-P1 field-comparison endpoints are already mathematically/source matched in ordinary reviewed route39. The absent claimed byte revision is not admitted, and its bare build415 is not current CPP. This is a known source-identity exception, not an independent unrouted mathematical result.",
+      "missing_input_only_for_stronger_historical_identity_claim": "Exact claimed source bytes at0590ef... or explicit owner withdrawal/supersession of that historical hash. Neither is needed to rerun or re-audit the accepted current endpoint."
+    }
+  ],
+  "conclusion": "No independent unrouted completed-D result. D1130 historical byte mismatch remains unadmitted; current actual field-comparison mathematics is covered by reviewed route39."
+}

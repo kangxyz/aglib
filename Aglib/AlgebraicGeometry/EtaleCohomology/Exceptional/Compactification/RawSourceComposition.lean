@@ -31,12 +31,21 @@ variable {X₀ X₁ X₂ S : Scheme.{u}} (f₀ : X₀ ⟶ S) (f₁ : X₁ ⟶ S)
   [HasDerivedCategory.{wS} (ModuleSheaf S Λ)]
   [HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ)]
 
+/-- Derived-category instance on module sheaves over `(rawSourceFirstModel f₀ f₁ e₁ h₁ C).Xbar`,
+using the instance on `C.Xbar`.
+-/
 local instance rawSourceCompositionFirstModel :
     HasDerivedCategory.{wM} (ModuleSheaf (rawSourceFirstModel f₀ f₁ e₁ h₁ C).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ))
+/-- Derived-category instance on module sheaves over `(rawSourceSequentialModel f₀ f₁ f₂ e₁ e₂ h₁ h₂
+C).Xbar`, using the instance on `C.Xbar`.
+-/
 local instance rawSourceCompositionSequentialModel : HasDerivedCategory.{wM}
     (ModuleSheaf (rawSourceSequentialModel f₀ f₁ f₂ e₁ e₂ h₁ h₂ C).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ))
+/-- Derived-category instance on module sheaves over `(rawSourceCompositeModel f₀ f₁ f₂ e₁ e₂ h₁ h₂
+C).Xbar`, using the instance on `C.Xbar`.
+-/
 local instance rawSourceCompositionCompositeModel : HasDerivedCategory.{wM}
     (ModuleSheaf (rawSourceCompositeModel f₀ f₁ f₂ e₁ e₂ h₁ h₂ C).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ))

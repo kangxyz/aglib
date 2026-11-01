@@ -41,9 +41,14 @@ variable (Λ : Type (u + 1)) [Ring Λ]
   [HasDerivedCategory.{wU} (ModuleSheaf U Λ)]
   [HasDerivedCategory.{wM₂} (ModuleSheaf (((C.baseChange b).baseChange c)).Xbar Λ)]
 
+/-- The derived-category instance in universe `wM₁` for `Λ`-module sheaves on `(pullback b C.p)`.
+-/
 local instance unboundedRawIterationFirstNativeModel :
     HasDerivedCategory.{wM₁} (ModuleSheaf (pullback b C.p) Λ) :=
   inferInstanceAs (HasDerivedCategory.{wM₁} (ModuleSheaf ((C.baseChange b)).Xbar Λ))
+/-- The derived-category instance in universe `wM₂` for `Λ`-module sheaves on `(pullback c
+    ((C.baseChange b)).p)`.
+-/
 local instance unboundedRawIterationSecondNativeModel :
     HasDerivedCategory.{wM₂} (ModuleSheaf (pullback c ((C.baseChange b)).p) Λ) :=
   inferInstanceAs (HasDerivedCategory.{wM₂} (ModuleSheaf (((C.baseChange b).baseChange c)).Xbar Λ))

@@ -54,10 +54,16 @@ variable (Λ : Type (u + 1)) [Ring Λ]
   [HasDerivedCategory.{wMi}
     (ModuleSheaf ((C.toCompactification.baseChange b).baseChange c).Xbar Λ)]
 
+/-- The derived-category instance in universe `wMs` for `Λ`-module sheaves on `(pullback (c ≫ b)
+    C.p)`.
+-/
 local instance unboundedRawIterationSinglePullbackModel :
     HasDerivedCategory.{wMs} (ModuleSheaf (pullback (c ≫ b) C.p) Λ) :=
   inferInstanceAs
     (HasDerivedCategory.{wMs} (ModuleSheaf (C.toCompactification.baseChange (c ≫ b)).Xbar Λ))
+/-- The derived-category instance in universe `wMs` for `Λ`-module sheaves on
+    `(iterationSingleRawModel b c C).Xbar`.
+-/
 local instance unboundedRawIterationSingleTransportModel :
     HasDerivedCategory.{wMs} (ModuleSheaf (iterationSingleRawModel b c C).Xbar Λ) :=
   inferInstanceAs

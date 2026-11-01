@@ -1,0 +1,136 @@
+{
+  "question": "Family A: bounded-below intrinsic-torsion and unbounded torsion-ring compact support on the GIVEN Cartesian geometric fibre with the GIVEN ordinary coefficient map and naturality",
+  "assignment_continuation": "Extends the completed literal D1238 chain to both family-A given-Cartesian endpoints. The prior10 product/evidence keeps its original literal question and basis; it is retained, not relabelled as this extension.",
+  "conclusions": {
+    "bounded_derived": "For all integer q and internally torsion-cohomology bounded-below K, the actual stalk of H^q(Rf_! K) at s is naturally isomorphic to H^q(RΓ_c(a)(b* K)) on the given Y.",
+    "bounded_ordinary": "For every internally torsion ordinary module sheaf F, the original moduleHigherExceptionalCartesianFiberIso has target actual compact support on Y with the original ordinary inverse image along b; the added naturality theorem uses each fixed-Λ coefficient morphism.",
+    "unbounded": "Under positive N annihilating 1 in Λ, the actual full unbounded given-Cartesian fibre comparison, its native ordinary-single specialization and fixed-Λ naturality are supplied on the given Y and b.",
+    "actual_maps": "Both whole comparisons whisker the accepted original given-Cartesian exceptional exchange by the SAME native module stalk/sections bridge and their actual respective bounded-below/unbounded global-sections functors. Exact ordinary pullback is supplied by the original exact-single comparison, not an endpoint isomorphism choice."
+  },
+  "conditions": {
+    "bounded": "Original qcqs S; f qc, separated, locally finite type; separably closed Ω:Type u; s:Spec Ω→S; arbitrary CommRing Λ:Type(u+1); intrinsic torsion coefficients, no common annihilator; arbitrary integer q. Given Y, a:Y→Spec Ω separated/lft/qc, b:Y→X, h:IsPullback a b s f. Independent X,S,literal fibre,Spec Ω,ModuleCat,Y derived worlds and source/literal/presentation/raw compactification families.",
+    "unbounded": "Same geometry and independent worlds; sq:IsPullback b a f s; positive N with N • (1:Λ)=0; arbitrary full unbounded input and ordinary fixed-Λ single coefficient morphisms; all q:ℤ."
+  },
+  "delivered_declarations": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/CartesianGeometricFiber.lean": [
+      "moduleExceptionalCartesianGeometricFiberIso",
+      "moduleHigherExceptionalCartesianFiberIso",
+      "moduleHigherExceptionalCartesianFiberIso_naturality"
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/CartesianGeometricFiber.lean": [
+      "moduleExceptionalUnboundedCartesianGeometricFiberIso",
+      "moduleExceptionalUnboundedSingleCartesianGeometricFiberIso",
+      "moduleExceptionalUnboundedSingleCartesianGeometricFiberIso_naturality"
+    ]
+  },
+  "source_identity": {
+    "main_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/release-integrator-20261030/integration-30b6",
+    "main_head": "b0f8ca3f44be620dde8b40f65e1eec0143e45db4",
+    "source_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-compact-support/extension-A/EXTENSION-READY-2.json",
+    "new_source_count": 7,
+    "retained_prior_source_count": 10,
+    "archive_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/snapshot/agent-c-independent-ext-quasifinite-source-20261027T101616Z/aglib",
+    "archive_bounded_root_sha256": "f7a6676e51a956790817f343ee4e263cd668fbcd0b57509678eb474133f4d96f",
+    "current_bounded_root_sha256": "b115cdf1868bbb124b3d8562ebe7a029442511ddb9c0613f5b93510da6eee509",
+    "archive_and_current_unbounded_root_sha256": "f2a060b2e269412cb66a4ac3ff93ef253548d371b1e17c02ddbbac4c72c9e052",
+    "Lean": "v4.34.1",
+    "Mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+  },
+  "map_correspondence": {
+    "argument": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-compact-support/extension-A/MAP-CORRESPONDENCE.txt",
+    "basis": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-compact-support/extension-A/extension-basis.json",
+    "bounded_archive_adaptation": "The direct derived Cartesian assembly equals the original literal-single/source-transport assembly: the existing CartesianSourceExchange component is literal exchange; canonical source comparison; inverse derived coefficient compositor. Original exact-derived unit equations and pinned single-complex composition/natural-transformation equations commute the exact-single comparisons with that compositor and source transport. Their faithful torsion lifts retain exactly those arrows. Given Y/b and all independent worlds remain unchanged.",
+    "formal_equality_boundary": "No Lean equality against absent archive wrapper definitions is claimed. The mathematical source-correspondence argument received independent ordinary review on the actual definitions/unit equations."
+  },
+  "material_changes": [
+    "Bounded HigherDirectImage and compact-support values require one chosen compactification model; all-model comparisons and original endpoint independent families remain.",
+    "Bounded Cartesian whole comparison is assembled from existing given exchange before ordinary specialization; the original ordinary endpoint and explicit fixed-ring naturality are supplied.",
+    "Single.lean initial c67ade7471fce970e7cfa0a8949e23574385ddc09cb2dc7a04674c0b3afee54a is superseded by 940176805f715f46d0f18da52e4b64571a3446440fe48369d790c1cd500ef54b: the original zero-monomorphism dictionary is supplied explicitly with no map or hypothesis change.",
+    "Archive-local elaboration options are not introduced. Four unneeded allowed wrappers are omitted; see omitted paths."
+  ],
+  "omitted_allowed_archive_paths": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/GeometricFiber.lean": "Literal D+ fibre wrapper not needed; use actual given-Cartesian exchange directly.",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/SingleGeometricFiber.lean": "Literal D+ single wrapper not needed; specialize the whole given-Cartesian law directly.",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/SourceIso.lean": "Actual source transport already embedded in the current D164 given-Cartesian exchange.",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/CoefficientPullbackComposition.lean": "Native derived inverse-image compositor already embedded in exchange; exact-single comparison retains the given b directly."
+  },
+  "compiler_status": {
+    "new7_current_CPP": "PASS: 5 fresh current frontends from repair2 and 2 compatible retained new-extension frontends from initial capture; zero unmatched source hashes.",
+    "coverage": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/DerivedGeometricStalk.lean",
+        "sha256": "decc308906652ea4da7ff121a4d8fc31ca56d63de10e00b6a078c084433fe2af",
+        "run": "remote-0115dcffcfd448dba09053a8a52fddf6",
+        "captured_source": "3347c3410caaecdbd6b4f0837616b15583278861d24fb1a4e2d9c60c2980b9e4",
+        "frontend_exit": 0,
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/d47-A7-DE35-B-ready1/remote-runs/remote-0115dcffcfd448dba09053a8a52fddf6/receipt.json"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/CartesianGeometricFiber.lean",
+        "sha256": "f2a060b2e269412cb66a4ac3ff93ef253548d371b1e17c02ddbbac4c72c9e052",
+        "run": "remote-0115dcffcfd448dba09053a8a52fddf6",
+        "captured_source": "3347c3410caaecdbd6b4f0837616b15583278861d24fb1a4e2d9c60c2980b9e4",
+        "frontend_exit": 0,
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/d47-A7-DE35-B-ready1/remote-runs/remote-0115dcffcfd448dba09053a8a52fddf6/receipt.json"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Single.lean",
+        "sha256": "940176805f715f46d0f18da52e4b64571a3446440fe48369d790c1cd500ef54b",
+        "run": "remote-efbed4f48b7743118bdfebe6c1bd4cd9",
+        "captured_source": "7dd62b2132cacbbbb4e9b92d0c5efb185071358f32195f298fd842a0dd7db316",
+        "frontend_exit": 0,
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/d47-A-repair2-DE-repair2-B/remote-runs/remote-efbed4f48b7743118bdfebe6c1bd4cd9/receipt.json"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/SinglePullback.lean",
+        "sha256": "fd994de61063031da761275ce88f11289fa2a7164f3ed0e0d0e83eeb61d117df",
+        "run": "remote-efbed4f48b7743118bdfebe6c1bd4cd9",
+        "captured_source": "7dd62b2132cacbbbb4e9b92d0c5efb185071358f32195f298fd842a0dd7db316",
+        "frontend_exit": 0,
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/d47-A-repair2-DE-repair2-B/remote-runs/remote-efbed4f48b7743118bdfebe6c1bd4cd9/receipt.json"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/HigherDirectImage.lean",
+        "sha256": "ded23baa044bc50eb2066831bd059d04e2e2f33bdb444c58e06c0ded1fedcb61",
+        "run": "remote-efbed4f48b7743118bdfebe6c1bd4cd9",
+        "captured_source": "7dd62b2132cacbbbb4e9b92d0c5efb185071358f32195f298fd842a0dd7db316",
+        "frontend_exit": 0,
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/d47-A-repair2-DE-repair2-B/remote-runs/remote-efbed4f48b7743118bdfebe6c1bd4cd9/receipt.json"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/BoundedBelow.lean",
+        "sha256": "8214b7450be80bf8ff3bd497d1ba919d930d05d7481da90ab74e1464ab1feef3",
+        "run": "remote-efbed4f48b7743118bdfebe6c1bd4cd9",
+        "captured_source": "7dd62b2132cacbbbb4e9b92d0c5efb185071358f32195f298fd842a0dd7db316",
+        "frontend_exit": 0,
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/d47-A-repair2-DE-repair2-B/remote-runs/remote-efbed4f48b7743118bdfebe6c1bd4cd9/receipt.json"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/CartesianGeometricFiber.lean",
+        "sha256": "b115cdf1868bbb124b3d8562ebe7a029442511ddb9c0613f5b93510da6eee509",
+        "run": "remote-efbed4f48b7743118bdfebe6c1bd4cd9",
+        "captured_source": "7dd62b2132cacbbbb4e9b92d0c5efb185071358f32195f298fd842a0dd7db316",
+        "frontend_exit": 0,
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/d47-A-repair2-DE-repair2-B/remote-runs/remote-efbed4f48b7743118bdfebe6c1bd4cd9/receipt.json"
+      }
+    ],
+    "source_event_projection": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/d47-A-repair2-DE-repair2-B/FAMILY-A-CURRENT-7-CPP.json",
+    "retained_prior10": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-compact-support/RESULT.json",
+    "resource_profile": "jobs8, threads4, memory12800MiB, RSS65536MiB; standard heartbeat200000/trust/pins unchanged",
+    "mixed_batch_boundary": "Both mixed B batch commands exited1: the first included superseded Single elaboration and independent ordinary-localization failures; the second had independent scalar-restriction failures. Every current family-A source has its own source-bound frontend exit0. No whole-batch-zero claim.",
+    "checks_not_added": "No standalone final predicates, tests, axiom audit, replay/client checks, whole-library build or original10 recompilation was added by this author."
+  },
+  "ordinary_mathematical_review": {
+    "verdict": "PASS on exact EXTENSION-READY-2/current7 with prior10 review unchanged",
+    "report": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/reviews/d1238/extension-A/REVIEW.txt",
+    "source_basis": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/reviews/d1238/extension-A/SOURCE-BASIS.json",
+    "status_boundary": "Relative to the named accepted current suppliers; no established-status assignment."
+  },
+  "remaining_gap": "No target-specific mathematical or current authored-chain compilation gap for either endpoint. Principal retains shared integration/publication and its existing final native-check scope.",
+  "write_scope_preserved": "Only 7 previously absent newly owned leaves and assigned extension-A task state were written. Existing suppliers, prior10 sources, foreign author paths, shared facades/README and Git remain untouched.",
+  "reproduction": {
+    "cwd": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/release-integrator-20261030/integration-30b6",
+    "command": "lake build +Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.CartesianGeometricFiber +Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Unbounded.CartesianGeometricFiber",
+    "basis": "Prepared pinned workspace and matching retained dependencies; actual compiler execution remains with broker."
+  }
+}

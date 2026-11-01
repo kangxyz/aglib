@@ -43,7 +43,8 @@ variable (q : Ideal (integralClosure R (K' ⊗[K] L))) [q.IsMaximal]
 local notation "S" => Localization.AtPrime q
 local notation "M" => K' ⊗[R] S
 
-local instance : Field M := genericField R K' A q
+/-- The field structure on the generic tensor of the selected local normalization factor. -/
+local instance baseChangeGenericField : Field M := genericField R K' A q
 
 /-- The literal generic field selected by the original normalization prime is
 Galois after coefficient extension, and its order divides the original one. -/
@@ -56,19 +57,19 @@ theorem baseChange_genericField_isGalois_and_card_dvd :
 
 /-- The actual selected-field automorphisms restrict into the original Galois
 group through the unchanged generic algebra map. -/
-def baseChange_genericRestriction : (M ≃ₐ[K'] M) →* (L ≃ₐ[K] L) :=
+def baseChangeGenericRestriction : (M ≃ₐ[K'] M) →* (L ≃ₐ[K] L) :=
   Algebra.TensorProduct.factorRestriction (genericMap R K' A q)
 
 /-- The original restriction is injective; no component automorphism is lost. -/
 theorem baseChange_genericRestriction_injective :
-    Function.Injective (baseChange_genericRestriction R K L K' q) :=
+    Function.Injective (baseChangeGenericRestriction R K L K' q) :=
   Algebra.TensorProduct.factorRestriction_injective (genericMap R K' A q)
     (genericMap_surjective R K' A q)
 
 /-- Original old-field elements satisfy the actual automorphism-restriction
 square inside the literal selected generic field. -/
 theorem baseChange_genericRestriction_commutes (σ : M ≃ₐ[K'] M) (x : L) :
-    genericMap R K' A q (1 ⊗ₜ[K] (baseChange_genericRestriction R K L K' q σ x)) =
+    genericMap R K' A q (1 ⊗ₜ[K] (baseChangeGenericRestriction R K L K' q σ x)) =
       σ (genericMap R K' A q (1 ⊗ₜ[K] x)) :=
   Algebra.TensorProduct.factorRestriction_commutes (genericMap R K' A q) σ x
 

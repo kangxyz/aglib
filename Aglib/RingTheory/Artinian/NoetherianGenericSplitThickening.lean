@@ -37,8 +37,8 @@ universe u v w x y
 This is an existence proposition over the original rings and maps, not an
 additional model or a hypothesis asserting that a splitting has been found. -/
 def finiteSplitThickeningOnPrincipalOpen
-    (R : Type u) [CommRing R] [IsDomain R]
-    (K : Type v) [Field K] [Algebra R K] [IsFractionRing R K]
+    (R : Type u) [CommRing R]
+    (K : Type v) [Field K] [Algebra R K]
     (Ω : Type w) [Field Ω] [Algebra K Ω]
     (A : Type x) [CommRing A] [Algebra R A] : Prop :=
   ∃ n : ℕ, 0 < n ∧ ∃ L : IntermediateField K Ω,

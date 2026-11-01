@@ -1,0 +1,176 @@
+[
+  {
+    "source": "Aglib/AlgebraicGeometry/Compactification/Refinements/RawRefinementBaseChange.lean",
+    "declaration": "baseChange_j_refinementMap",
+    "old_attribute": "reassoc (attr := simp)",
+    "new_attribute": "@[reassoc, simp]"
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/Normalization/Affine.lean",
+    "declaration": "specIntegralClosureNormalizationIso_hom_generic",
+    "old_attribute": "reassoc (attr := simp)",
+    "new_attribute": "@[reassoc]"
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/Normalization/AffineMap.lean",
+    "declaration": "integralClosureSourceIso_hom_generic",
+    "old_attribute": "reassoc (attr := simp)",
+    "new_attribute": "@[reassoc]"
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/EtaleExtension.lean",
+    "declaration": "normalizationFiniteEtale_restrictionIso_hom_fst",
+    "old_attribute": "reassoc (attr := simp)",
+    "new_attribute": "@[reassoc]"
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/GenericPullback.lean",
+    "declaration": "baseChangeFieldHom_open",
+    "old_attribute": "simp",
+    "new_attribute": ""
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/Points/FieldExtensionBoundary.lean",
+    "declaration": "fieldExtensionPoint_fst",
+    "old_attribute": "simp",
+    "new_attribute": ""
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/Points/FieldExtensionBoundary.lean",
+    "declaration": "fieldExtensionPoint_mem_preimage_iff",
+    "old_attribute": "simp",
+    "new_attribute": ""
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/Spec/GeometricNeighborhoodPrincipalStages.lean",
+    "declaration": "principalStagePoint_algebraMap",
+    "old_attribute": "simp",
+    "new_attribute": ""
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/Spec/RootPrincipalNeighborhoodSpreading.lean",
+    "declaration": "rootOrdinaryBaseChangeIso_hom_fst",
+    "old_attribute": "reassoc (attr := simp)",
+    "new_attribute": "@[reassoc]"
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/Spec/RootPrincipalNeighborhoodSpreading.lean",
+    "declaration": "rootOrdinaryBaseChangeIso_hom_snd",
+    "old_attribute": "reassoc (attr := simp)",
+    "new_attribute": "@[reassoc]"
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/Spec/RootPrincipalNeighborhoodSpreading.lean",
+    "declaration": "rootPrincipalComparison_rootMap",
+    "old_attribute": "reassoc (attr := simp)",
+    "new_attribute": "@[reassoc]"
+  },
+  {
+    "source": "Aglib/FieldTheory/IntermediateField/FiniteCompositum.lean",
+    "declaration": "finiteCompositumInclusion_comp_algebraMap",
+    "old_attribute": "simp",
+    "new_attribute": ""
+  },
+  {
+    "source": "Aglib/FieldTheory/IntermediateField/MappedFiniteCompositum.lean",
+    "declaration": "mappedFiniteCompositumInclusion_comp_algebraMap",
+    "old_attribute": "simp",
+    "new_attribute": ""
+  },
+  {
+    "source": "Aglib/FieldTheory/IntermediateField/MappedFiniteCompositum.lean",
+    "declaration": "val_comp_mappedFiniteCompositumInclusion",
+    "old_attribute": "simp",
+    "new_attribute": ""
+  },
+  {
+    "source": "Aglib/LinearAlgebra/FrobeniusBaseChange.lean",
+    "declaration": "frobeniusBaseChange_one_tmul",
+    "old_attribute": "simp",
+    "new_attribute": ""
+  },
+  {
+    "source": "Aglib/RingTheory/Etale/ResidueCompletionIso.lean",
+    "declaration": "residuePowerRingEquiv_mk",
+    "old_attribute": "simp",
+    "new_attribute": ""
+  },
+  {
+    "source": "Aglib/RingTheory/FiniteType/ArrowSubalgebraColimit.lean",
+    "declaration": "sourceCocone_algebraMap",
+    "old_attribute": "simp",
+    "new_attribute": ""
+  },
+  {
+    "source": "Aglib/RingTheory/FiniteType/ArrowSubalgebraColimit.lean",
+    "declaration": "targetCocone_algebraMap",
+    "old_attribute": "simp",
+    "new_attribute": ""
+  },
+  {
+    "source": "Aglib/RingTheory/IntegralClosure/ChangeBaseMap.lean",
+    "declaration": "changeBaseMap_algebraMap",
+    "old_attribute": "simp",
+    "new_attribute": ""
+  },
+  {
+    "source": "Aglib/RingTheory/Kummer/RegularParameterRecognition.lean",
+    "declaration": "parameterRootIntegralClosureEquiv_algebraMap",
+    "old_attribute": "simp",
+    "new_attribute": ""
+  },
+  {
+    "source": "Aglib/RingTheory/Kummer/RegularParameterRecognition.lean",
+    "declaration": "parameterRootIntegralClosureEquiv_root",
+    "old_attribute": "simp",
+    "new_attribute": ""
+  },
+  {
+    "source": "Aglib/RingTheory/Kummer/RootBaseChange.lean",
+    "declaration": "rootBaseChangeHom_algebraMap",
+    "old_attribute": "simp",
+    "new_attribute": ""
+  },
+  {
+    "source": "Aglib/RingTheory/Kummer/RootDivisibility.lean",
+    "declaration": "chartRootHom_algebraMap",
+    "old_attribute": "simp",
+    "new_attribute": ""
+  },
+  {
+    "source": "Aglib/RingTheory/Kummer/RootDivisibility.lean",
+    "declaration": "rootChartCoefficientHom_algebraMap",
+    "old_attribute": "simp",
+    "new_attribute": ""
+  },
+  {
+    "source": "Aglib/RingTheory/Kummer/RootDivisibility.lean",
+    "declaration": "rootChartGenericHom_includeLeft",
+    "old_attribute": "simp",
+    "new_attribute": ""
+  },
+  {
+    "source": "Aglib/RingTheory/Kummer/RootDivisibility.lean",
+    "declaration": "rootChartGenericHom_includeRight",
+    "old_attribute": "simp",
+    "new_attribute": ""
+  },
+  {
+    "source": "Aglib/RingTheory/Kummer/RootDivisibility.lean",
+    "declaration": "rootDivisibilityHom_algebraMap",
+    "old_attribute": "simp",
+    "new_attribute": ""
+  },
+  {
+    "source": "Aglib/RingTheory/Nagata/FiniteTypeFieldLocalModel.lean",
+    "declaration": "localModelToField_algebraMap",
+    "old_attribute": "simp",
+    "new_attribute": ""
+  },
+  {
+    "source": "Aglib/RingTheory/Smooth/SplitSectionCompletion.lean",
+    "declaration": "splitSectionQuotientEquiv_mk",
+    "old_attribute": "simp",
+    "new_attribute": ""
+  }
+]

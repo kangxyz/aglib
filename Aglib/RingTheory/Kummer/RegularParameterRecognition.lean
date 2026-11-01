@@ -173,13 +173,13 @@ def parameterRootIntegralClosureEquiv : D ≃ₐ[R] integralClosure R L := by
   exact IsIntegralClosure.algebraMap_equiv R D L (integralClosure R L) x
 
 /-- In particular, the original quotient root has exactly the specified value. -/
-@[simp] theorem parameterRootIntegralClosureEquiv_root :
+theorem parameterRootIntegralClosureEquiv_root :
     (parameterRootIntegralClosureEquiv R K L N hN f hf hreg β hpow hgen
       (AdjoinRoot.root (rootPolynomial N f)) : L) = β := by
   rw [parameterRootIntegralClosureEquiv_coe, rootEvaluation_root]
 
 /-- The comparison is linear over the unchanged coefficient ring. -/
-@[simp] theorem parameterRootIntegralClosureEquiv_algebraMap (r : R) :
+theorem parameterRootIntegralClosureEquiv_algebraMap (r : R) :
     parameterRootIntegralClosureEquiv R K L N hN f hf hreg β hpow hgen
       (algebraMap R D r) = algebraMap R (integralClosure R L) r :=
   (parameterRootIntegralClosureEquiv R K L N hN f hf hreg β hpow hgen).commutes r

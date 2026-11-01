@@ -50,14 +50,14 @@ theorem baseChange_mapAut_bijective_of_connected :
     (baseChange g) (fiberToFiniteBaseChangeIso g s) Y
 
 /-- The original base-change map, viewed as a deck-group isomorphism. -/
-def baseChange_autEquiv_of_connected : Aut Y ≃* Aut ((baseChange g).obj Y) :=
+def baseChangeAutEquivOfConnected : Aut Y ≃* Aut ((baseChange g).obj Y) :=
   MulEquiv.ofBijective (Functor.mapAut Y (baseChange g))
     (baseChange_mapAut_bijective_of_connected g Y)
 
 /-- The literal connected base-change cover has the unchanged deck-group order. -/
 theorem baseChange_card_aut_of_connected :
     Nat.card (Aut ((baseChange g).obj Y)) = Nat.card (Aut Y) :=
-  (Nat.card_congr (baseChange_autEquiv_of_connected g Y).toEquiv).symm
+  (Nat.card_congr (baseChangeAutEquivOfConnected g Y).toEquiv).symm
 
 end Connected
 
@@ -89,18 +89,18 @@ theorem fieldExtension_baseChange_isGalois :
   exact baseChange_isGalois_of_connected _ Y
 
 /-- The unchanged original field base-change homomorphism is a deck-group equivalence. -/
-def fieldExtension_baseChange_autEquiv :
+def fieldExtensionBaseChangeAutEquiv :
     Aut Y ≃* Aut ((baseChange (pullback.fst p (Spec.algebraMap k K))).obj Y) := by
   letI : ConnectedSpace (pullback p (Spec.algebraMap k K) : Scheme.{u}) :=
     Geometrically.connectedSpace_fieldBaseChange k K p
   letI := fieldExtension_baseChange_connected k K p Y
-  exact baseChange_autEquiv_of_connected _ Y
+  exact baseChangeAutEquivOfConnected _ Y
 
 /-- Field base change preserves the actual deck-group order. -/
 theorem fieldExtension_baseChange_card_aut :
     Nat.card (Aut ((baseChange (pullback.fst p (Spec.algebraMap k K))).obj Y)) =
       Nat.card (Aut Y) :=
-  (Nat.card_congr (fieldExtension_baseChange_autEquiv k K p Y).toEquiv).symm
+  (Nat.card_congr (fieldExtensionBaseChangeAutEquiv k K p Y).toEquiv).symm
 
 end Field
 

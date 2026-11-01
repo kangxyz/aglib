@@ -36,23 +36,23 @@ def normalizationFiniteEtale : FiniteEtale X :=
       inferInstanceAs (Etale (genericMap j Y.obj.hom).fromNormalization)⟩⟩
 
 /-- Restriction of that same object recovers the unchanged original cover. -/
-def normalizationFiniteEtale_restrictionIso :
+def normalizationFiniteEtaleRestrictionIso :
     Y ≅ (baseChange j).obj (normalizationFiniteEtale j Y) :=
   ObjectProperty.isoMk _ (Over.isoMk (iso j Y.obj.hom) (iso_hom_snd j Y.obj.hom))
 
 @[simp]
 theorem normalizationFiniteEtale_restrictionIso_hom_left :
-    (normalizationFiniteEtale_restrictionIso j Y).hom.hom.left =
+    (normalizationFiniteEtaleRestrictionIso j Y).hom.hom.left =
       (iso j Y.obj.hom).hom := rfl
 
 @[simp]
 theorem normalizationFiniteEtale_restrictionIso_inv_left :
-    (normalizationFiniteEtale_restrictionIso j Y).inv.hom.left =
+    (normalizationFiniteEtaleRestrictionIso j Y).inv.hom.left =
       (iso j Y.obj.hom).inv := rfl
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem normalizationFiniteEtale_restrictionIso_hom_fst :
-    (normalizationFiniteEtale_restrictionIso j Y).hom.hom.left ≫
+    (normalizationFiniteEtaleRestrictionIso j Y).hom.hom.left ≫
       pullback.fst (normalizationFiniteEtale j Y).obj.hom j = inclusion j Y.obj.hom := rfl
 
 /-- An integral original cover gives the same integral normalization source. -/

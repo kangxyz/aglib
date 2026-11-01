@@ -1,0 +1,3 @@
+warning: nolints file could not be read; treating as empty: scripts/nolints-style.txt
+error: found 1 new style error(s)! Try `lake exe lint-style --fix` to apply automatic fixes.
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRawSquare.lean:87: This line ends with some whitespace: please remove this

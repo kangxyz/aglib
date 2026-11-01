@@ -1,0 +1,62 @@
+{
+  "question": "Family A: bounded-below intrinsic-torsion and unbounded torsion-ring compact support on the GIVEN Cartesian geometric fibre with the GIVEN ordinary coefficient map and naturality",
+  "main_head": "b0f8ca3f44be620dde8b40f65e1eec0143e45db4",
+  "source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/release-integrator-20261030/integration-30b6",
+  "source": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Single.lean",
+      "sha256": "940176805f715f46d0f18da52e4b64571a3446440fe48369d790c1cd500ef54b",
+      "archive_sha256": "05f8ec9693be30b24252029aea88228cfc232b9fa0ccd1d69c92f2b3539bd46f"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/SinglePullback.lean",
+      "sha256": "fd994de61063031da761275ce88f11289fa2a7164f3ed0e0d0e83eeb61d117df",
+      "archive_sha256": "fb0b266ac785d6b2effecb92bccd156fe9d18e6c1b147f4e0f2e256fc400a216"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/HigherDirectImage.lean",
+      "sha256": "ded23baa044bc50eb2066831bd059d04e2e2f33bdb444c58e06c0ded1fedcb61",
+      "archive_sha256": "7a699dc5474cc8ded5705075f1e50e56e7971afbee81e3f593001e50b2a87fa9"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/BoundedBelow.lean",
+      "sha256": "8214b7450be80bf8ff3bd497d1ba919d930d05d7481da90ab74e1464ab1feef3",
+      "archive_sha256": "23a5c4bd25ba5cbaff9265b7e419e0ee8cfe9f2d18dc65536f1e7eaf5f75df1a"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/DerivedGeometricStalk.lean",
+      "sha256": "decc308906652ea4da7ff121a4d8fc31ca56d63de10e00b6a078c084433fe2af",
+      "archive_sha256": "decc308906652ea4da7ff121a4d8fc31ca56d63de10e00b6a078c084433fe2af"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/CartesianGeometricFiber.lean",
+      "sha256": "f2a060b2e269412cb66a4ac3ff93ef253548d371b1e17c02ddbbac4c72c9e052",
+      "archive_sha256": "f2a060b2e269412cb66a4ac3ff93ef253548d371b1e17c02ddbbac4c72c9e052"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/CartesianGeometricFiber.lean",
+      "sha256": "b115cdf1868bbb124b3d8562ebe7a029442511ddb9c0613f5b93510da6eee509",
+      "archive_sha256": "f7a6676e51a956790817f343ee4e263cd668fbcd0b57509678eb474133f4d96f"
+    }
+  ],
+  "roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.CartesianGeometricFiber",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Unbounded.CartesianGeometricFiber"
+  ],
+  "source_owner": "/root/d_compact_support_integration",
+  "retained_prior10": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-compact-support/current-ready-sources.json",
+  "pending_mathematical_premise": null,
+  "omitted_allowed_archive_paths": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/GeometricFiber.lean": "Literal D+ fibre wrapper not needed; use actual given-Cartesian exchange directly.",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/SingleGeometricFiber.lean": "Literal D+ single wrapper not needed; specialize the whole given-Cartesian law directly.",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/SourceIso.lean": "Actual source transport already embedded in the current D164 given-Cartesian exchange.",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/CoefficientPullbackComposition.lean": "Native derived inverse-image compositor already embedded in exchange; exact-single comparison retains the given b directly."
+  },
+  "boundary": "Only these new7 sources require incremental compiler coverage. Prior10 current closure, source suppliers and compatible review/CPP remain retained; no final standalone checks/Git/facades/README or existing supplier changes.",
+  "previous_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-compact-support/extension-A/EXTENSION-READY-1.json",
+  "changed_source": [
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Single.lean"
+  ],
+  "repair": "Only explicit original zero-monomorphism dictionary passed to Sheaf.IsTorsion.of_mono; same original map \u03c6 and torsion argument.",
+  "retained_extension_coverage": "Native unbounded Cartesian endpoint passed on the prior extension snapshot; retain that success and unaffected completed sources. Current bounded dependency repair requires new CPP."
+}

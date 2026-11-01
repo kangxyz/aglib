@@ -32,39 +32,73 @@ variable {X X' S T : Scheme.{u}} {f : X ⟶ S} (f' : X' ⟶ S)
   [HasDerivedCategory.{wN} (ModuleSheaf ((baseChange b).obj C).Xbar Λ)]
   [HasDerivedCategory.{wN'} (ModuleSheaf ((sourceIso f' e he ⋙ baseChange b).obj C).Xbar Λ)]
 
+/-- The derived-category instance in universe `wM` for `Λ`-module sheaves on `((sourceIso f' e
+    he).obj C).Xbar`.
+-/
 local instance unboundedNormalizedSourceBCSourceModel : HasDerivedCategory.{wM}
     (ModuleSheaf ((sourceIso f' e he).obj C).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ))
+/-- The derived-category instance in universe `wM` for `Λ`-module sheaves on
+    `(C.toCompactification.ofSourceIso f' e he).Xbar`.
+-/
 local instance unboundedNormalizedSourceBCRawSourceModel : HasDerivedCategory.{wM}
     (ModuleSheaf (C.toCompactification.ofSourceIso f' e he).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ))
+/-- The derived-category instance in universe `wR` for `Λ`-module sheaves on
+    `(C.toCompactification.baseChange b).Xbar`.
+-/
 local instance unboundedNormalizedSourceBCRawModel : HasDerivedCategory.{wR}
     (ModuleSheaf (C.toCompactification.baseChange b).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wR} (ModuleSheaf (pullback b C.p) Λ))
+/-- The derived-category instance in universe `wR` for `Λ`-module sheaves on `(((sourceIso f' e
+    he).obj C).toCompactification.baseChange b).Xbar`.
+-/
 local instance unboundedNormalizedSourceBCRawActualModel : HasDerivedCategory.{wR}
     (ModuleSheaf (((sourceIso f' e he).obj C).toCompactification.baseChange b).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wR} (ModuleSheaf (pullback b C.p) Λ))
+/-- The derived-category instance in universe `wR` for `Λ`-module sheaves on `(pullback b
+    ((sourceIso f' e he).obj C).p)`.
+-/
 local instance unboundedNormalizedSourceBCNativeActualModel : HasDerivedCategory.{wR}
     (ModuleSheaf (pullback b ((sourceIso f' e he).obj C).p) Λ) :=
   inferInstanceAs (HasDerivedCategory.{wR} (ModuleSheaf (pullback b C.p) Λ))
+/-- The derived-category instance in universe `wR` for `Λ`-module sheaves on
+    `(sourceBaseChangeTransportModel f f' e he b C.toCompactification).Xbar`.
+-/
 local instance unboundedNormalizedSourceBCRawTransportModel : HasDerivedCategory.{wR}
     (ModuleSheaf (sourceBaseChangeTransportModel f f' e he b C.toCompactification).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wR} (ModuleSheaf (pullback b C.p) Λ))
+/-- The derived-category instance in universe `wN` for `Λ`-module sheaves on
+    `(Hom.Compactification.densify (C.toCompactification.baseChange b)).Xbar`.
+-/
 local instance unboundedNormalizedSourceBCDensificationModel : HasDerivedCategory.{wN}
     (ModuleSheaf (Hom.Compactification.densify (C.toCompactification.baseChange b)).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN} (ModuleSheaf ((baseChange b).obj C).Xbar Λ))
+/-- The derived-category instance in universe `wN` for `Λ`-module sheaves on `((baseChange b ⋙
+    pullbackSourceTransport f' e he b).obj C).Xbar`.
+-/
 local instance unboundedNormalizedSourceBCTransportModel : HasDerivedCategory.{wN}
     (ModuleSheaf ((baseChange b ⋙ pullbackSourceTransport f' e he b).obj C).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN} (ModuleSheaf ((baseChange b).obj C).Xbar Λ))
+/-- The derived-category instance in universe `wN'` for `Λ`-module sheaves on
+    `(Hom.Compactification.densify (((sourceIso f' e he).obj C).toCompactification.baseChange
+    b)).Xbar`.
+-/
 local instance unboundedNormalizedSourceBCActualDensificationModel : HasDerivedCategory.{wN'}
     (ModuleSheaf (Hom.Compactification.densify
       (((sourceIso f' e he).obj C).toCompactification.baseChange b)).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN'}
     (ModuleSheaf ((sourceIso f' e he ⋙ baseChange b).obj C).Xbar Λ))
 
+/-- The derived-category instance in universe `wN` for `Λ`-module sheaves on `(baseChangeObj b
+    C).Xbar`.
+-/
 local instance unboundedNormalizedSourceBCOriginalBaseChangeObj : HasDerivedCategory.{wN}
     (ModuleSheaf (baseChangeObj b C).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN} (ModuleSheaf ((baseChange b).obj C).Xbar Λ))
+/-- The derived-category instance in universe `wN'` for `Λ`-module sheaves on `(baseChangeObj b
+    ((sourceIso f' e he).obj C)).Xbar`.
+-/
 local instance unboundedNormalizedSourceBCActualBaseChangeObj : HasDerivedCategory.{wN'}
     (ModuleSheaf (baseChangeObj b ((sourceIso f' e he).obj C)).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN'}

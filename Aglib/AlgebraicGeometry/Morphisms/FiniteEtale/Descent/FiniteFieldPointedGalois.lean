@@ -27,7 +27,7 @@ universe u
 /-- The original finite cover remains Galois with unchanged order after a
 particular base change whose further surjective pullback is connected. -/
 private theorem galois_furtherStage {U V W : Scheme.{u}}
-    [ConnectedSpace U] [ConnectedSpace V] [ConnectedSpace W]
+    [ConnectedSpace U] [ConnectedSpace V]
     (g : V ⟶ U) (v : W ⟶ V) [Surjective v]
     (Z : FiniteEtale U) [IsGalois Z]
     [ConnectedSpace ((baseChange (v ≫ g)).obj Z).obj.left] :
@@ -124,7 +124,7 @@ include w H in
 /-- A Galois cover with connected original extension has a rational lift at a
 finite further field, on the same actual iterated cover and with unchanged order. -/
 theorem exists_pointed_further_galois_stage
-    [GeometricallyConnected p] [ConnectedSpace U] [ConnectedSpace W]
+    [GeometricallyConnected p] [ConnectedSpace U]
     (Z : FiniteEtale U) [IsGalois Z]
     [ConnectedSpace ((baseChange v₀).obj Z).obj.left]
     (x : Spec (.of k) ⟶ U) (hx : x ≫ p = 𝟙 _)

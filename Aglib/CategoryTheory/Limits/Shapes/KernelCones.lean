@@ -33,7 +33,7 @@ variable {C : Type u} [Category.{v} C] [HasZeroMorphisms C]
 
 include ha hb in
 /-- Original stage kernels and the original vertex kernel preserve the limit cone. -/
-def isLimit_of_kernelCones
+def isLimitOfKernelCones
     (h₀ : IsLimit (KernelFork.ofι a wab))
     (hstage : ∀ j, IsLimit (KernelFork.ofι (i.app j) (w j)))
     (hG : IsLimit cG) (hH : IsLimit cH) : IsLimit cF := by

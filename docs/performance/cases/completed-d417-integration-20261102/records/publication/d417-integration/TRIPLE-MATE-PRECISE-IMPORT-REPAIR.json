@@ -1,0 +1,7 @@
+{
+  "path": "Aglib/CategoryTheory/Adjunction/TripleMateCompatibility.lean",
+  "before_sha256": "9d6193f96687ebc54f960f0f805a267cd9906f9bc62f16d026e4f13004eb4dbe",
+  "after_sha256": "e75efd6b8fd659bd44eb4b7c4f883001da2f4002f07abada5d40a0ba40347dc1",
+  "reason": "Native source policy sole remaining1714finding. Replace compatibility-only derived BaseChange import by its exact sole categorical Mates.Whole implementation owner. Proof/statement/options/full transitive imports unchanged; fixes the lower category owner dependency.",
+  "basis": "All MAIN source/math/CPP coverage retained on before-header source; current PUBLIC CPP will bind actual after-header source."
+}

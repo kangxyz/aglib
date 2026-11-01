@@ -52,7 +52,7 @@ variable (sq : IsPullback C.j (𝟙 X) h D.j)
 
 include sq in
 /-- The original Cartesian open comparison is preserved by the literal lift. -/
-@[reassoc (attr := simp)]
+@[reassoc, simp]
 theorem baseChange_j_refinementMap :
     (C.baseChange b).j ≫ refinementBaseChangeMap C D h hp b = (D.baseChange b).j := by
   let jC : pullback b f ⟶ pullback b C.p := (C.baseChange b).j

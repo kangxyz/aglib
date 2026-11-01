@@ -32,39 +32,73 @@ variable {X X' S T : Scheme.{u}} {f : X ⟶ S} (f' : X' ⟶ S)
   [HasDerivedCategory.{wN} (ModuleSheaf ((baseChange b).obj C).Xbar Λ)]
   [HasDerivedCategory.{wN'} (ModuleSheaf ((sourceIso f' e he ⋙ baseChange b).obj C).Xbar Λ)]
 
+/-- Derived-category instance on module sheaves over `((sourceIso f' e he).obj C).Xbar`, using the
+instance on `C.Xbar`.
+-/
 local instance normalizedSourceBCSourceModel : HasDerivedCategory.{wM}
     (ModuleSheaf ((sourceIso f' e he).obj C).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ))
+/-- Derived-category instance on module sheaves over `(C.toCompactification.ofSourceIso f' e
+he).Xbar`, using the instance on `C.Xbar`.
+-/
 local instance normalizedSourceBCRawSourceModel : HasDerivedCategory.{wM}
     (ModuleSheaf (C.toCompactification.ofSourceIso f' e he).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ))
+/-- Derived-category instance on module sheaves over `(C.toCompactification.baseChange b).Xbar`,
+using the instance on `(pullback b C.p)`.
+-/
 local instance normalizedSourceBCRawModel : HasDerivedCategory.{wR}
     (ModuleSheaf (C.toCompactification.baseChange b).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wR} (ModuleSheaf (pullback b C.p) Λ))
+/-- Derived-category instance on module sheaves over `(((sourceIso f' e he).obj
+C).toCompactification.baseChange b).Xbar`, using the instance on `(pullback b C.p)`.
+-/
 local instance normalizedSourceBCRawActualModel : HasDerivedCategory.{wR}
     (ModuleSheaf (((sourceIso f' e he).obj C).toCompactification.baseChange b).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wR} (ModuleSheaf (pullback b C.p) Λ))
+/-- Derived-category instance on module sheaves over `(pullback b ((sourceIso f' e he).obj C).p)`,
+using the instance on `(pullback b C.p)`.
+-/
 local instance normalizedSourceBCNativeActualModel : HasDerivedCategory.{wR}
     (ModuleSheaf (pullback b ((sourceIso f' e he).obj C).p) Λ) :=
   inferInstanceAs (HasDerivedCategory.{wR} (ModuleSheaf (pullback b C.p) Λ))
+/-- Derived-category instance on module sheaves over `(sourceBaseChangeTransportModel f f' e he b
+C.toCompactification).Xbar`, using the instance on `(pullback b C.p)`.
+-/
 local instance normalizedSourceBCRawTransportModel : HasDerivedCategory.{wR}
     (ModuleSheaf (sourceBaseChangeTransportModel f f' e he b C.toCompactification).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wR} (ModuleSheaf (pullback b C.p) Λ))
+/-- Derived-category instance on module sheaves over `(Hom.Compactification.densify
+(C.toCompactification.baseChange b)).Xbar`, using the instance on `((baseChange b).obj C).Xbar`.
+-/
 local instance normalizedSourceBCDensificationModel : HasDerivedCategory.{wN}
     (ModuleSheaf (Hom.Compactification.densify (C.toCompactification.baseChange b)).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN} (ModuleSheaf ((baseChange b).obj C).Xbar Λ))
+/-- Derived-category instance on module sheaves over `((baseChange b ⋙ pullbackSourceTransport f' e
+he b).obj C).Xbar`, using the instance on `((baseChange b).obj C).Xbar`.
+-/
 local instance normalizedSourceBCTransportModel : HasDerivedCategory.{wN}
     (ModuleSheaf ((baseChange b ⋙ pullbackSourceTransport f' e he b).obj C).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN} (ModuleSheaf ((baseChange b).obj C).Xbar Λ))
+/-- Derived-category instance on module sheaves over `(Hom.Compactification.densify (((sourceIso f'
+e he).obj C).toCompactification.baseChange b)).Xbar`, using the instance on `((sourceIso f' e he
+⋙ baseChange b).obj C).Xbar`.
+-/
 local instance normalizedSourceBCActualDensificationModel : HasDerivedCategory.{wN'}
     (ModuleSheaf (Hom.Compactification.densify
       (((sourceIso f' e he).obj C).toCompactification.baseChange b)).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN'}
     (ModuleSheaf ((sourceIso f' e he ⋙ baseChange b).obj C).Xbar Λ))
 
+/-- Derived-category instance on module sheaves over `(baseChangeObj b C).Xbar`, using the instance
+on `((baseChange b).obj C).Xbar`.
+-/
 local instance normalizedSourceBCOriginalBaseChangeObj : HasDerivedCategory.{wN}
     (ModuleSheaf (baseChangeObj b C).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN} (ModuleSheaf ((baseChange b).obj C).Xbar Λ))
+/-- Derived-category instance on module sheaves over `(baseChangeObj b ((sourceIso f' e he).obj
+C)).Xbar`, using the instance on `((sourceIso f' e he ⋙ baseChange b).obj C).Xbar`.
+-/
 local instance normalizedSourceBCActualBaseChangeObj : HasDerivedCategory.{wN'}
     (ModuleSheaf (baseChangeObj b ((sourceIso f' e he).obj C)).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN'}

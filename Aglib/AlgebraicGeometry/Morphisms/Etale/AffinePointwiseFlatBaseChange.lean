@@ -26,7 +26,9 @@ universe u
 variable (R S T : Type u) [CommRing R] [CommRing S] [CommRing T]
   [Algebra R S] [Algebra R T]
 
-local instance : Algebra S (T ⊗[R] S) := Algebra.TensorProduct.rightAlgebra
+/-- The right-factor `S`-algebra structure on the original tensor product. -/
+local instance affinePointwiseTensorRightAlgebra : Algebra S (T ⊗[R] S) :=
+  Algebra.TensorProduct.rightAlgebra
 
 /-- Etaleness at the original chosen tensor-product point descends to its actual image. -/
 theorem specAlgebraMap_etaleAt_of_flat_baseChange

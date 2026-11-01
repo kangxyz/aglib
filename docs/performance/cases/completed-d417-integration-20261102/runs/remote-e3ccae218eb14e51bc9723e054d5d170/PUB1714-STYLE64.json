@@ -1,0 +1,27 @@
+{
+  "question": "Only64 actual changed documentation/naming source-style inputs, same final1714 milestone; retain other631 and completed entry/source/audit",
+  "source": "f259b0e2d1b134c028e4aefad5f9675b5ea73d68e0af53c67f2e3e977f7b4ab1",
+  "style_input_count": 64,
+  "style_source_vector_sha256": "0f6c6f417c44b8a06508097ec54ca31f592c0945a82b36f1e620ad8fd58867de",
+  "commands": [
+    {
+      "kind": "text-style-current64",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "env",
+        "python3",
+        "-c",
+        "import os,sys;os.environ['LEAN_SRC_PATH']=sys.argv[1]+os.pathsep+os.environ.get('LEAN_SRC_PATH','');os.execv(sys.argv[2],[sys.argv[2],sys.argv[3]])",
+        "/root/autodl-tmp/lean-build/logs/remote-e3ccae218eb14e51bc9723e054d5d170/source-selection-data",
+        "/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/bin/lint-style",
+        "Aglib.LatestCDStyleSelection"
+      ],
+      "exit": 0,
+      "seconds": 2.7508662194013596,
+      "log": "/root/autodl-tmp/lean-build/logs/remote-e3ccae218eb14e51bc9723e054d5d170/text-style-current64.log"
+    }
+  ],
+  "style_binary_sha256": "e01b2c5c321385f8b9600d89b967694f66332c3a2daa3e4f97204367662e3fb0",
+  "boundary": "Actual existing native source predicates only. No production frontend/client/kernel/tests/replay or source writes. Success is reused in the one final1714 environment, not repeated."
+}

@@ -42,7 +42,7 @@ def originalHartogsFiniteEtaleExtension
 
 /-- The actual original affinization square gives the actual cover-category
 recovery isomorphism, without a different affine realization. -/
-def originalHartogsFiniteEtaleExtension_recovery
+def originalHartogsFiniteEtaleExtensionRecovery
     (B : Type u) [CommRing B] [IsNoetherianRing B]
     (V : (Spec (.of B)).Opens) (hV : Function.Bijective (affineScalarMap V.ι))
     (D : FiniteEtale V.toScheme) (he : (affineScalarMap (D.obj.hom ≫ V.ι)).Etale) :
@@ -57,7 +57,7 @@ theorem originalHartogsFiniteEtaleExtension_recovery_hom_fst
     (B : Type u) [CommRing B] [IsNoetherianRing B]
     (V : (Spec (.of B)).Opens) (hV : Function.Bijective (affineScalarMap V.ι))
     (D : FiniteEtale V.toScheme) (he : (affineScalarMap (D.obj.hom ≫ V.ι)).Etale) :
-    (originalHartogsFiniteEtaleExtension_recovery B V hV D he).hom.hom.left ≫
+    (originalHartogsFiniteEtaleExtensionRecovery B V hV D he).hom.hom.left ≫
       pullback.fst (originalHartogsFiniteEtaleExtension B V hV D he).obj.hom V.ι =
         D.obj.left.toSpecΓ :=
   (isPullback_hartogs_finiteAlgebra B V hV D.obj.hom).flip.isoPullback_hom_fst
@@ -67,7 +67,7 @@ theorem originalHartogsFiniteEtaleExtension_recovery_inv_affinization
     (B : Type u) [CommRing B] [IsNoetherianRing B]
     (V : (Spec (.of B)).Opens) (hV : Function.Bijective (affineScalarMap V.ι))
     (D : FiniteEtale V.toScheme) (he : (affineScalarMap (D.obj.hom ≫ V.ι)).Etale) :
-    (originalHartogsFiniteEtaleExtension_recovery B V hV D he).inv.hom.left ≫
+    (originalHartogsFiniteEtaleExtensionRecovery B V hV D he).inv.hom.left ≫
         D.obj.left.toSpecΓ =
       pullback.fst (originalHartogsFiniteEtaleExtension B V hV D he).obj.hom V.ι :=
   (isPullback_hartogs_finiteAlgebra B V hV D.obj.hom).flip.isoPullback_inv_fst
@@ -92,7 +92,7 @@ def powerSeriesHartogsCoverExtension
       U hU V hUV hzero D hmem).2
 
 /-- Restricting the same actual extension recovers the original cover. -/
-def powerSeriesHartogsCoverExtension_recovery
+def powerSeriesHartogsCoverExtensionRecovery
     (U : (Spec (.of A)).Opens) [QuasiCompact U.ι] [QuasiSeparated U.ι]
     (hU : Function.Bijective (affineScalarMap U.ι))
     (V : (Spec (.of B)).Opens) (hUV : c ⁻¹ᵁ U ≤ V)
@@ -100,7 +100,7 @@ def powerSeriesHartogsCoverExtension_recovery
     (hmem : powerSeriesClosedFiberPoint σ A ∈ V) :
     D ≅ (FiniteEtale.baseChange V.ι).obj
       (powerSeriesHartogsCoverExtension U hU V hUV hzero D hmem) :=
-  originalHartogsFiniteEtaleExtension_recovery B V
+  originalHartogsFiniteEtaleExtensionRecovery B V
     (powerSeriesAffineScalar_bijective_of_baseOpen_le U hU V hUV) D
     (powerSeriesHartogsAmbientScalar_finite_etale_of_extendedMaximal_mem
       U hU V hUV hzero D hmem).2

@@ -126,3 +126,25 @@ without adding a new existence theorem or coefficient category.
 base change and source transport, including the square of the original ambient
 refinement map. The open-square refinement result retains quasi-compactness of
 `f`, and all projection maps are the original scheme morphisms.
+
+## Additional source entry points
+
+- [ArrowEquality](ArrowEquality.lean)
+- [CompositionBaseChangeFaces](CompositionBaseChangeFaces.lean)
+- [CompositionBaseChangeGeometry](CompositionBaseChangeGeometry.lean)
+- [CompositionBaseChangeRefinement](CompositionBaseChangeRefinement.lean)
+- [CompositionBaseChangeSource](CompositionBaseChangeSource.lean)
+- [CompositionBaseChangeTower](CompositionBaseChangeTower.lean)
+- [CompositionRightUnitRefinements](CompositionRightUnitRefinements.lean)
+- [CompositionUnitRefinements](CompositionUnitRefinements.lean)
+- [CompositionUnitTotals](CompositionUnitTotals.lean)
+- [CompositionUnits](CompositionUnits.lean)
+- [TripleCompositionArrowTotal](TripleCompositionArrowTotal.lean)
+- [TripleCompositionComparisonSquares](TripleCompositionComparisonSquares.lean)
+- [TripleCompositionComparison](TripleCompositionComparison.lean)
+- [TripleCompositionFirst](TripleCompositionFirst.lean)
+- [TripleCompositionRefinement](TripleCompositionRefinement.lean)
+- [TripleCompositionRestriction](TripleCompositionRestriction.lean)
+- [TripleCompositionSquares](TripleCompositionSquares.lean)
+- [TripleCompositionTotal](TripleCompositionTotal.lean)
+- [TripleComposition](TripleComposition.lean)

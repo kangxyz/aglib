@@ -143,7 +143,7 @@ variable (R : Type u) [CommRing R] [IsDomain R] [IsDiscreteValuationRing R]
 /-- Root cancellation in the literal normalization over the actual uniformizer
 root algebra. A strict-Henselian bounded root chart supplies the one embedding;
 no splitting or etaleness premise is retained here. -/
-def uniformizerRoot_normalTensorEquivPi (σ : L →ₐ[K] F) :
+def uniformizerRootNormalTensorEquivPi (σ : L →ₐ[K] F) :
     integralClosure (RootAlgebra N π) (F ⊗[K] L) ≃ₐ[RootAlgebra N π]
       ((L →ₐ[K] F) → RootAlgebra N π) := by
   let := uniformizerRoot_isDomain R π hπ N hN
@@ -156,6 +156,6 @@ product comparison and the original root algebra's normality. -/
 theorem uniformizerRoot_normalTensor_etale (σ : L →ₐ[K] F) :
     Algebra.Etale (RootAlgebra N π)
       (integralClosure (RootAlgebra N π) (F ⊗[K] L)) :=
-  Algebra.Etale.of_equiv (uniformizerRoot_normalTensorEquivPi R π hπ N hN K L F σ).symm
+  Algebra.Etale.of_equiv (uniformizerRootNormalTensorEquivPi R π hπ N hN K L F σ).symm
 
 end Algebra.Kummer

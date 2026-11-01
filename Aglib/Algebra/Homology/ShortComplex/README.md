@@ -12,3 +12,9 @@ binary products. This is generic homological algebra; no field or scheme
 hypotheses occur in this leaf. The extraction preserves Quillen source names,
 so downstream Quillen must replace its historical implementation by an import
 of this canonical leaf before importing both libraries together.
+
+## Additional source entry points
+
+- [LocalizationPullbackComplex](LocalizationPullbackComplex.lean)
+- [LocalizationPullback](LocalizationPullback.lean)
+- [ThirdIso](ThirdIso.lean)

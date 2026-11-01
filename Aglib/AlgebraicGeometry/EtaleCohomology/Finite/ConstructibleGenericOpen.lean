@@ -62,8 +62,8 @@ def constructibleFiniteImageOnPrincipalOpen
 /-- Extract the original finite integral base map and original quotient from
 the already constructed splitting, and use their actual structure maps. -/
 theorem constructibleFiniteImageOnPrincipalOpen_of_splitThickening
-    (R : Type u) [CommRing R] [IsDomain R]
-    (K : Type u) [Field K] [Algebra R K] [IsFractionRing R K]
+    (R : Type u) [CommRing R]
+    (K : Type u) [Field K] [Algebra R K]
     (Ω : Type u) [Field Ω] [Algebra K Ω]
     (A : Type u) [CommRing A] [Algebra R A] [Module.Finite R A]
     (hsplit : Algebra.FiniteAlgebra.finiteSplitThickeningOnPrincipalOpen R K Ω A) :

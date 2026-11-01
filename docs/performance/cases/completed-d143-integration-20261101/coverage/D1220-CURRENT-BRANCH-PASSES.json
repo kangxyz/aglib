@@ -1,0 +1,474 @@
+{
+  "question": "Actual current D1220 native branch passes in mixedD invocation",
+  "run": "remote-7fe2aeb108204fc2b16808602177c50a",
+  "source": "4a2f836b64a3faf6fe446a0ccadf70f13101aab8a9982e9a387bacf47e2718a5",
+  "native_run_status_at_projection": "running",
+  "source_owner": "/root/d_coproduct_integration",
+  "source_branch_passes": {
+    "Aglib/Algebra/Homology/HomotopyCategory/Coproducts.lean": {
+      "started_event": {
+        "event": "started",
+        "time": "2026-11-01T14:15:36.785775+00:00",
+        "monotonic": 75792118.69303317,
+        "wrapper_pid": 515743,
+        "pgid": 515610,
+        "compiler_pid": 515765,
+        "slot": 0,
+        "args": [
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/Algebra/Homology/HomotopyCategory/Coproducts.lean",
+          "-o",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/Algebra/Homology/HomotopyCategory/Coproducts.olean",
+          "-i",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/Algebra/Homology/HomotopyCategory/Coproducts.ilean",
+          "-c",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/Algebra/Homology/HomotopyCategory/Coproducts.c",
+          "--setup",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/Algebra/Homology/HomotopyCategory/Coproducts.setup.json",
+          "--json",
+          "-j4",
+          "-M12800"
+        ],
+        "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean",
+        "admission": {
+          "mode": "elastic"
+        },
+        "scope_lease_mode": "inherited"
+      },
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-11-01T14:15:39.761054+00:00",
+        "monotonic": 75792121.66831362,
+        "wrapper_pid": 515743,
+        "pgid": 515610,
+        "compiler_pid": 515765,
+        "slot": 0,
+        "exit_code": 0
+      },
+      "source_sha256": "8d9aae99cb7839efd77eefd9dc9f919ae3f637fa0e7678a4c69247de806ba164"
+    },
+    "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/CoefficientComparison.lean": {
+      "started_event": {
+        "event": "started",
+        "time": "2026-11-01T14:15:36.751429+00:00",
+        "monotonic": 75792118.65868898,
+        "wrapper_pid": 515745,
+        "pgid": 515610,
+        "compiler_pid": 515768,
+        "slot": 1,
+        "args": [
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/CoefficientComparison.lean",
+          "-o",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/CoefficientComparison.olean",
+          "-i",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/CoefficientComparison.ilean",
+          "-c",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/CoefficientComparison.c",
+          "--setup",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/CoefficientComparison.setup.json",
+          "--json",
+          "-j4",
+          "-M12800"
+        ],
+        "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean",
+        "admission": {
+          "mode": "elastic"
+        },
+        "scope_lease_mode": "inherited"
+      },
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-11-01T14:15:39.982342+00:00",
+        "monotonic": 75792121.88960636,
+        "wrapper_pid": 515745,
+        "pgid": 515610,
+        "compiler_pid": 515768,
+        "slot": 1,
+        "exit_code": 0
+      },
+      "source_sha256": "7abdaff06dce5bcb8915062fe512ac7d712f7303fea47c167f742fbb17ed17cf"
+    },
+    "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/QuasiIso.lean": {
+      "started_event": {
+        "event": "started",
+        "time": "2026-11-01T14:15:36.691175+00:00",
+        "monotonic": 75792118.59843071,
+        "wrapper_pid": 515747,
+        "pgid": 515610,
+        "compiler_pid": 515772,
+        "slot": 2,
+        "args": [
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/QuasiIso.lean",
+          "-o",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/QuasiIso.olean",
+          "-i",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/QuasiIso.ilean",
+          "-c",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/QuasiIso.c",
+          "--setup",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/QuasiIso.setup.json",
+          "--json",
+          "-j4",
+          "-M12800"
+        ],
+        "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean",
+        "admission": {
+          "mode": "elastic"
+        },
+        "scope_lease_mode": "inherited"
+      },
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-11-01T14:15:40.261735+00:00",
+        "monotonic": 75792122.1690036,
+        "wrapper_pid": 515747,
+        "pgid": 515610,
+        "compiler_pid": 515772,
+        "slot": 2,
+        "exit_code": 0
+      },
+      "source_sha256": "809db792bdb4196f51744f6ce1f011a53470f3eac88bf656ca8f7f66f54ef1f8"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CoefficientCoproducts.lean": {
+      "started_event": {
+        "event": "started",
+        "time": "2026-11-01T14:15:36.699531+00:00",
+        "monotonic": 75792118.60678649,
+        "wrapper_pid": 515749,
+        "pgid": 515610,
+        "compiler_pid": 515775,
+        "slot": 3,
+        "args": [
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CoefficientCoproducts.lean",
+          "-o",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CoefficientCoproducts.olean",
+          "-i",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CoefficientCoproducts.ilean",
+          "-c",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CoefficientCoproducts.c",
+          "--setup",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CoefficientCoproducts.setup.json",
+          "--json",
+          "-j4",
+          "-M12800"
+        ],
+        "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean",
+        "admission": {
+          "mode": "elastic"
+        },
+        "scope_lease_mode": "inherited"
+      },
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-11-01T14:15:44.047361+00:00",
+        "monotonic": 75792125.95462881,
+        "wrapper_pid": 515749,
+        "pgid": 515610,
+        "compiler_pid": 515775,
+        "slot": 3,
+        "exit_code": 0
+      },
+      "source_sha256": "99484448acfd51243e6a2aa5ef650ea8431a33713270e9ddaaf05fc97fceb616"
+    },
+    "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Basic.lean": {
+      "started_event": {
+        "event": "started",
+        "time": "2026-11-01T14:15:40.790572+00:00",
+        "monotonic": 75792122.69783045,
+        "wrapper_pid": 515853,
+        "pgid": 515610,
+        "compiler_pid": 515855,
+        "slot": 1,
+        "args": [
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Basic.lean",
+          "-o",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Basic.olean",
+          "-i",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Basic.ilean",
+          "-c",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Basic.c",
+          "--setup",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Basic.setup.json",
+          "--json",
+          "-j4",
+          "-M12800"
+        ],
+        "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean",
+        "admission": {
+          "mode": "elastic"
+        },
+        "scope_lease_mode": "inherited"
+      },
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-11-01T14:15:45.011829+00:00",
+        "monotonic": 75792126.91909973,
+        "wrapper_pid": 515853,
+        "pgid": 515610,
+        "compiler_pid": 515855,
+        "slot": 1,
+        "exit_code": 0
+      },
+      "source_sha256": "7cef187d0107a785d31bfde54e32f58e57155c1ae651ffa67547dcb3cc5d68fe"
+    },
+    "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean": {
+      "started_event": {
+        "event": "started",
+        "time": "2026-11-01T14:15:40.204439+00:00",
+        "monotonic": 75792122.11170039,
+        "wrapper_pid": 515840,
+        "pgid": 515610,
+        "compiler_pid": 515843,
+        "slot": 0,
+        "args": [
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean",
+          "-o",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.olean",
+          "-i",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.ilean",
+          "-c",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.c",
+          "--setup",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.setup.json",
+          "--json",
+          "-j4",
+          "-M12800"
+        ],
+        "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean",
+        "admission": {
+          "mode": "elastic"
+        },
+        "scope_lease_mode": "inherited"
+      },
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-11-01T14:15:45.912573+00:00",
+        "monotonic": 75792127.8198416,
+        "wrapper_pid": 515840,
+        "pgid": 515610,
+        "compiler_pid": 515843,
+        "slot": 0,
+        "exit_code": 0
+      },
+      "source_sha256": "b3ae687e8db471caa4a84678d06312ebd175a9731b908c4c79c8ad03cf15e6a3"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperAmplitude.lean": {
+      "started_event": {
+        "event": "started",
+        "time": "2026-11-01T14:15:37.123892+00:00",
+        "monotonic": 75792119.0311502,
+        "wrapper_pid": 515780,
+        "pgid": 515610,
+        "compiler_pid": 515806,
+        "slot": 5,
+        "args": [
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperAmplitude.lean",
+          "-o",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperAmplitude.olean",
+          "-i",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperAmplitude.ilean",
+          "-c",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperAmplitude.c",
+          "--setup",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperAmplitude.setup.json",
+          "--json",
+          "-j4",
+          "-M12800"
+        ],
+        "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean",
+        "admission": {
+          "mode": "elastic"
+        },
+        "scope_lease_mode": "inherited"
+      },
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-11-01T14:15:47.329544+00:00",
+        "monotonic": 75792129.23680894,
+        "wrapper_pid": 515780,
+        "pgid": 515610,
+        "compiler_pid": 515806,
+        "slot": 5,
+        "exit_code": 0
+      },
+      "source_sha256": "b79ae1983a0fc1037ea236a08953e81f409c7068c9fe79e495ee17671807cabd"
+    },
+    "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Preservation.lean": {
+      "started_event": {
+        "event": "started",
+        "time": "2026-11-01T14:15:46.333733+00:00",
+        "monotonic": 75792128.24099328,
+        "wrapper_pid": 515900,
+        "pgid": 515610,
+        "compiler_pid": 515902,
+        "slot": 0,
+        "args": [
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Preservation.lean",
+          "-o",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Preservation.olean",
+          "-i",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Preservation.ilean",
+          "-c",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Preservation.c",
+          "--setup",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Preservation.setup.json",
+          "--json",
+          "-j4",
+          "-M12800"
+        ],
+        "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean",
+        "admission": {
+          "mode": "elastic"
+        },
+        "scope_lease_mode": "inherited"
+      },
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-11-01T14:15:51.039528+00:00",
+        "monotonic": 75792132.94679639,
+        "wrapper_pid": 515900,
+        "pgid": 515610,
+        "compiler_pid": 515902,
+        "slot": 0,
+        "exit_code": 0
+      },
+      "source_sha256": "d61a3162e81a22ad048b4383a8d44dd4db7a55fa024495dfade7f7679c5bf5e1"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ModuleCoefficientCoproducts.lean": {
+      "started_event": {
+        "event": "started",
+        "time": "2026-11-01T14:15:44.582154+00:00",
+        "monotonic": 75792126.48941357,
+        "wrapper_pid": 515881,
+        "pgid": 515610,
+        "compiler_pid": 515883,
+        "slot": 2,
+        "args": [
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ModuleCoefficientCoproducts.lean",
+          "-o",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ModuleCoefficientCoproducts.olean",
+          "-i",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ModuleCoefficientCoproducts.ilean",
+          "-c",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ModuleCoefficientCoproducts.c",
+          "--setup",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ModuleCoefficientCoproducts.setup.json",
+          "--json",
+          "-j4",
+          "-M12800"
+        ],
+        "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean",
+        "admission": {
+          "mode": "elastic"
+        },
+        "scope_lease_mode": "inherited"
+      },
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-11-01T14:15:53.874869+00:00",
+        "monotonic": 75792135.78213824,
+        "wrapper_pid": 515881,
+        "pgid": 515610,
+        "compiler_pid": 515883,
+        "slot": 2,
+        "exit_code": 0
+      },
+      "source_sha256": "83b9ccd4af111be60071a1c523a3d9ba06bbf9cba699e07ea09d4246b1648718"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperCoproducts.lean": {
+      "started_event": {
+        "event": "started",
+        "time": "2026-11-01T14:15:54.622100+00:00",
+        "monotonic": 75792136.52935743,
+        "wrapper_pid": 515946,
+        "pgid": 515610,
+        "compiler_pid": 515948,
+        "slot": 1,
+        "args": [
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperCoproducts.lean",
+          "-o",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperCoproducts.olean",
+          "-i",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperCoproducts.ilean",
+          "-c",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperCoproducts.c",
+          "--setup",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperCoproducts.setup.json",
+          "--json",
+          "-j4",
+          "-M12800"
+        ],
+        "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean",
+        "admission": {
+          "mode": "elastic"
+        },
+        "scope_lease_mode": "inherited"
+      },
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-11-01T14:16:01.371419+00:00",
+        "monotonic": 75792143.27868304,
+        "wrapper_pid": 515946,
+        "pgid": 515610,
+        "compiler_pid": 515948,
+        "slot": 1,
+        "exit_code": 0
+      },
+      "source_sha256": "22a15fe375bee99f003160f3b6577a1ed15c48f4caf3c6f3721ee87e7e89f541"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalCoproducts.lean": {
+      "started_event": {
+        "event": "started",
+        "time": "2026-11-01T14:16:02.142180+00:00",
+        "monotonic": 75792144.04943886,
+        "wrapper_pid": 516034,
+        "pgid": 515610,
+        "compiler_pid": 516036,
+        "slot": 1,
+        "args": [
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalCoproducts.lean",
+          "-o",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalCoproducts.olean",
+          "-i",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalCoproducts.ilean",
+          "-c",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalCoproducts.c",
+          "--setup",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalCoproducts.setup.json",
+          "--json",
+          "-j4",
+          "-M12800"
+        ],
+        "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean",
+        "admission": {
+          "mode": "elastic"
+        },
+        "scope_lease_mode": "inherited"
+      },
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-11-01T14:16:14.510317+00:00",
+        "monotonic": 75792156.41758169,
+        "wrapper_pid": 516034,
+        "pgid": 515610,
+        "compiler_pid": 516036,
+        "slot": 1,
+        "exit_code": 0
+      },
+      "source_sha256": "7d9dfdfe1318fc21a27724d38d852128522eb93da45da67bdf893f009873160c"
+    }
+  },
+  "requested_sources": [
+    "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Basic.lean",
+    "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/QuasiIso.lean",
+    "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/CoefficientComparison.lean",
+    "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean",
+    "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Preservation.lean",
+    "Aglib/Algebra/Homology/HomotopyCategory/Coproducts.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CoefficientCoproducts.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalCoproducts.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ModuleCoefficientCoproducts.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperAmplitude.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperCoproducts.lean"
+  ],
+  "boundary": "Actual fresh CPP branch events only; no native lint/audit or unrelated whole-batch claim."
+}

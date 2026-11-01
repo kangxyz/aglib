@@ -1,0 +1,104 @@
+{
+  "question": "Final current publication1714 native execution result on the fixed v5 metadata repair",
+  "source_identity": {
+    "publication_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+    "HEAD": "c4880830a7ebfea496a348d361cd50b109ea536d",
+    "authoritative_vector": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/publication/d417-integration/SOURCE-VECTOR-1714-v5.json",
+    "authoritative_vector_file_sha256": "5f041a3de49a5c2859cb7046c358a57ee6036c6574f9231abe6dc311002dad0a",
+    "captured_source": "f259b0e2d1b134c028e4aefad5f9675b5ea73d68e0af53c67f2e3e977f7b4ab1",
+    "selected_vector_sha256": "93c308a9179c614130749e06223c1dd725a383bedc627a769a98c4bcd5fe5367",
+    "checked_source_count": 1714,
+    "lean": "4.34.1",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+  },
+  "final_stock_run": {
+    "run": "remote-2bc6e78cb545473ebfd7b4dd660f2b97",
+    "native_exit": 0,
+    "commands": [
+      {
+        "kind": "cache-only-final1714",
+        "exit": 0,
+        "seconds": 5.893801242113113,
+        "log": "/root/autodl-tmp/lean-build/logs/remote-2bc6e78cb545473ebfd7b4dd660f2b97/cache-only-final1714.log"
+      },
+      {
+        "kind": "import-only-environment",
+        "exit": 0,
+        "seconds": 7.832194164395332,
+        "log": "/root/autodl-tmp/lean-build/logs/remote-2bc6e78cb545473ebfd7b4dd660f2b97/import-only-environment.log"
+      },
+      {
+        "kind": "one-stock-selected-union",
+        "exit": 0,
+        "seconds": 227.44622388482094,
+        "log": "/root/autodl-tmp/lean-build/logs/remote-2bc6e78cb545473ebfd7b4dd660f2b97/one-stock-selected-union.log"
+      }
+    ],
+    "configured_linter_count": 15,
+    "passed_linters": [
+      "checkType",
+      "defsWithUnderscore",
+      "deprecatedNoSince",
+      "docBlame",
+      "impossibleInstance",
+      "nonClassInstance",
+      "simpComm",
+      "simpNF",
+      "structureInType",
+      "subsetDotNotationLinter",
+      "synTaut",
+      "tacticAlt",
+      "tacticDocs",
+      "unusedArguments",
+      "unusedHavesSuffices"
+    ],
+    "nolints_entries": 0,
+    "raw_result": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/pub1714-v5-stock-only/remote-runs/remote-2bc6e78cb545473ebfd7b4dd660f2b97/PUB1714-V5-STOCK-RESULT.json",
+    "raw_stock_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/pub1714-v5-stock-only/remote-runs/remote-2bc6e78cb545473ebfd7b4dd660f2b97/one-stock-selected-union.log"
+  },
+  "current_v5_changed_checks": {
+    "CPP": {
+      "run": "remote-60b5df3c29de4942989f26a6116d2580",
+      "source": "f259b0e2d1b134c028e4aefad5f9675b5ea73d68e0af53c67f2e3e977f7b4ab1",
+      "exit": 0,
+      "fresh_frontends": 152,
+      "fresh_passes": 152,
+      "changed_inputs": 64,
+      "affected_maximal_consumers": 66,
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/pub1714-v5-metadata-C/remote-runs/remote-60b5df3c29de4942989f26a6116d2580/receipt.json"
+    },
+    "style": {
+      "run": "remote-e3ccae218eb14e51bc9723e054d5d170",
+      "source": "f259b0e2d1b134c028e4aefad5f9675b5ea73d68e0af53c67f2e3e977f7b4ab1",
+      "exit": 0,
+      "current_inputs": 64,
+      "retained_unchanged_prior_inputs": 631,
+      "result": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/pub1714-v5-style64-A/remote-runs/remote-e3ccae218eb14e51bc9723e054d5d170/PUB1714-STYLE64.json"
+    }
+  },
+  "retained_native_predicates": {
+    "SOURCE": "Root SOURCE1714-v2 exit0 with exact import/whitespace and metadata-only code correspondence retained; no global source repeat for phases/commits.",
+    "generated_entry": {
+      "run": "remote-a7202e18f330402e837be4bcaaea00ff",
+      "source": "9ed4d75a0f9bda69aab842c511af0b47984da315f61e88b7f60277da7a3145d5",
+      "exit": 0,
+      "seconds": 1.874921202659607,
+      "condition": "Metadata/enrollment and literal headers unchanged by current64 repair."
+    },
+    "approved_axiom": {
+      "run": "remote-289ef7386f3b4fbda620eb0f80d293dd",
+      "source": "50523553834f8ecf9a15c8aafa2c64d2a1597c4c1b6c34f91d7d8edf42b4d831",
+      "requested_gap_modules": 695,
+      "exit": 0,
+      "seconds": 43.55616447329521,
+      "audited": 60008,
+      "violations": [],
+      "condition": "Root accepted inverse metadata transformation on all64 current changes: original types/RHS/proofs/options and headers preserved. No new mathematical code or axiom predicate replay."
+    },
+    "prior_CPP": "A785, public-context C217+Rectangle1+C43+current-v4gap20 and source-bound MAIN joins remain actual historical source frames. Their compatible inputs and artifact cache are reused; failed old whole runs are not relabeled."
+  },
+  "material_status_change": "Actual v4 stock failed176/64, then the precise current64 metadata repair passed CPP152, source-style64 and the unfiltered full1714 stock. Earlier v4/1151 failed logs remain immutable. Earlier informal17-linter count is corrected to the actual configured15; no predicate filtering occurred.",
+  "process_state": "All owned native jobs are terminal; no compiler or source writer remains with broker.",
+  "remaining_runtime_gap": "None within the assigned fixed source/programme and native predicates. Publication/Git and final mathematical/release decisions remain Root-owned.",
+  "bounds": "jobs8, threads4, Lean memory12800MiB, RSS65536MiB; no source/Git writes by broker, whole-library test, AglibTest, client/kernel replay, new model/checker or source suppression."
+}

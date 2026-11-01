@@ -66,7 +66,7 @@ theorem factor_lift_eq_localization (P : StandardEtalePresentation R S)
 
 /-- The original root evaluation of an irreducible factor is injective.
 The UFD condition is imposed on the actual polynomial ring. -/
-theorem factor_lift_injective [IsDomain R] [UniqueFactorizationMonoid R[X]]
+theorem factor_lift_injective [UniqueFactorizationMonoid R[X]]
     (P : StandardEtalePresentation R S) (p q : R[X])
     (hirr : Irreducible p) (hf : P.f = p * q) (hp : aeval P.x p = 0) :
     Function.Injective (AdjoinRoot.liftAlgHom p (Algebra.ofId R S) P.x hp) := by
@@ -80,7 +80,7 @@ theorem factor_lift_injective [IsDomain R] [UniqueFactorizationMonoid R[X]]
 
 /-- Flat extension of scalars preserves the same original factor embedding.
 The smaller base ring may be a field below the original coefficient ring. -/
-theorem lTensor_factor_lift_injective [IsDomain R] [UniqueFactorizationMonoid R[X]]
+theorem lTensor_factor_lift_injective [UniqueFactorizationMonoid R[X]]
     {K L : Type*} [CommRing K] [Algebra K R] [Algebra K S] [IsScalarTower K R S]
     [AddCommGroup L] [Module K L] [Module.Flat K L]
     (P : StandardEtalePresentation R S) (p q : R[X])

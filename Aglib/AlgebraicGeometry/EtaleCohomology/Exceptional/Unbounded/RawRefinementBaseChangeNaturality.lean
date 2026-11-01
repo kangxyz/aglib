@@ -32,9 +32,15 @@ variable {X S T : Scheme.{u}} {f : X ⟶ S}
   [HasDerivedCategory.{wCR} (ModuleSheaf (pullback b C.p) Λ)]
   [HasDerivedCategory.{wDR} (ModuleSheaf (pullback b D.p) Λ)]
 
+/-- The derived-category instance in universe `wCR` for `Λ`-module sheaves on `(C.baseChange
+    b).Xbar`.
+-/
 local instance unboundedRawRefinementNaturalityCModel :
     HasDerivedCategory.{wCR} (ModuleSheaf (C.baseChange b).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wCR} (ModuleSheaf (pullback b C.p) Λ))
+/-- The derived-category instance in universe `wDR` for `Λ`-module sheaves on `(D.baseChange
+    b).Xbar`.
+-/
 local instance unboundedRawRefinementNaturalityDModel :
     HasDerivedCategory.{wDR} (ModuleSheaf (D.baseChange b).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wDR} (ModuleSheaf (pullback b D.p) Λ))
@@ -85,11 +91,17 @@ variable {X S T : Scheme.{u}} {f : X ⟶ S}
     (ModuleSheaf (pullback b (Hom.Compactification.densify E).p) Λ)]
   [HasDerivedCategory.{wDR} (ModuleSheaf (pullback b E.p) Λ)]
 
+/-- The derived-category instance in universe `wCR` for `Λ`-module sheaves on
+    `((Hom.Compactification.densify E).toCompactification.baseChange b).Xbar`.
+-/
 local instance unboundedDensificationPullbackDenseModel :
     HasDerivedCategory.{wCR}
       (ModuleSheaf ((Hom.Compactification.densify E).toCompactification.baseChange b).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wCR}
     (ModuleSheaf (pullback b (Hom.Compactification.densify E).p) Λ))
+/-- The derived-category instance in universe `wDR` for `Λ`-module sheaves on `(E.baseChange
+    b).Xbar`.
+-/
 local instance unboundedDensificationPullbackRawModel :
     HasDerivedCategory.{wDR} (ModuleSheaf (E.baseChange b).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wDR} (ModuleSheaf (pullback b E.p) Λ))

@@ -38,9 +38,11 @@ local notation "S₀" => Localization.AtPrime q
 local notation "L₀" => K ⊗[R] S₀
 
 local instance : Module.Finite K A := Algebra.FormallyUnramified.finite_of_free K A
+/-- The field structure on the generic local factor supplied by `genericField`. -/
 local instance : Field L₀ := integralClosure.LocalFactor.genericField R K A q
 local instance : Module.Finite K L₀ := integralClosure.LocalFactor.generic_finite R K A q
 local instance : Algebra.Etale K L₀ := integralClosure.LocalFactor.generic_etale R K A q
+/-- The right tensor-factor algebra structure on the generic local factor. -/
 local instance : Algebra S₀ L₀ := Algebra.TensorProduct.rightAlgebra
 
 variable (Ω : Type u) [Field Ω] [Algebra K Ω] [IsSepClosed Ω]

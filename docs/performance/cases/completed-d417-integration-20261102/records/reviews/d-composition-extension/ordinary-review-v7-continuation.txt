@@ -1,0 +1,41 @@
+Independent ordinary continuation V5 → V7 — PASS
+
+The six V6 repairs and their one V7 affected-consumer repair preserve the original maps, hypotheses and independent models. The fixed V7 295-source/173-supplier closure retains the V5 ordinary PASS. No mathematical obligation remains. CPP stays separate.
+
+Fixed basis:
+/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-composition/extension/EXTENSION-SOURCE-V7.json
+SHA256 aa60670182280dd445427ec0d2af334ab820bf3ca7d64f5076f6e8f2634743ff
+
+Retained review:
+/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/reviews/d-composition-extension/ordinary-review-v5.json
+SHA256 991b0659c8deec1545bc16d632320ba8493800f59cfe2b3f366795a4628c7cf8
+
+V6 manifest SHA256 4ef8fae2876db8c8b7f0e92a5c4c83bfee323f19983bf9289f74081ca2a16e44; repair06 SHA256 8e86be569814babf7eb363656349568a4455024920cdd2ddfc70bcc21616e1d2.
+V7 repair07 SHA256 cae0fb5ebe49a85cf3f3bed79f563f53d1ed08d25431c158f9ddf982b3f5ded0.
+The final identity check at 2026-11-01T15:55:43.648545+00:00 found no drift. All173 supplier hashes,295 source names and archive identities remain unchanged. Only the seven source hashes recorded in the companion JSON override V5.
+
+Numbered affected conclusions:
+
+1. BoundedBelow/CompositionRightUnitOpen: explicit Etale evidence is transported from the original C.j through first_j_middleOpen. The native congruence and compositor receive the existing hB,hA,hX. The map remains the original open expansion; its inverse still gives the actual supplied-tower compositor used by CompositionRightUnitSource.
+
+2. BoundedBelow/IdentityFactorizationCoherence: the added Category.assoc.symm merely aligns the existing component identity after postcomposition with identity. The original mixed-refinement contraction and arbitrary-model/chosen consequences are unchanged.
+
+3. Compactification/SourceIsoIdentity: sequential tactic spelling and a combined component reduction retain sourceIsoAmbientModel, original torsion inclusion and original source-identity map. The same rawSource_identity_algebra proves reflexive normalization.
+
+4. Unbounded/ChosenIdentityNormalization: the original canonical-to-direct-image factorization is unchanged; explicit Category.assoc.symm replaces implicit reassociation. The independently chosen single identity model still yields the original epsilon used by the left-unit theorem.
+
+5. Unbounded/CompositionModelComparison: the six-family component equation is the actual original whole mixed-refinement equation evaluated at K. The explicit τf,τg,τh retain their paired independent model dictionaries; G uses G₀ and V uses F₁ exactly as required by that equation. Both actual compositor formulas are supplied. No family equality or desired-coherence premise is introduced. The whole comparison and chosen-family consumer remain valid.
+
+6. Unbounded/RawSourceIsoIdentity: identity cleanup and sequential tactic spelling leave the original raw source comparison unchanged. Its proof remains the direct-image map_comp/map_id image of the original open source-identity equation, for arbitrary Ring on full unbounded inputs, without an added annihilator assumption.
+
+7. Unbounded/SourceIsoIdentity (V7): four constructor applications now use the current native target-family/pointwise-source API. SourceIso.lean:42/70 were inspected: targetModels remains models₁, while the source is precisely models₀ C or models₀ at the original chosen compactification. The normalized and denormalized family statements retain independent families. Only the explicitly same-family specialization reduces the comparison to identity; the literal-pullback consumer uses exactly that specialization.
+
+All original conditions remain as in V5. In particular bounded torsion statements need no common annihilator, full-unbounded isomorphisms retain positive N killing1, and the raw unbounded reflexivity equality keeps its weaker arbitrary-Ring range. No new-base qcqs assumption, model-world identification or canonical-map replacement appears.
+
+The actual affected consumer call sites were checked, including the right-unit source equation, bounded chosen identity normalization, unbounded chosen family comparison, both family source-reflexivity consumers, the unbounded left unit, and literal pullback specialization. Unchanged V5 proof coverage is retained. None of these seven changed files belongs to the separate D/E fixed57 shared-provider cut.
+
+The six V6 files were reviewed on their own captured bytes. A final V6 identity check detected the author's already versioned V7 downstream change, which was separately captured and inspected before this integrated verdict. No old evidence was relabeled.
+
+No production edits, builds, tests, replay, Git operations or new axiom checks were performed by this reviewer. Author-reported compiler progress is not promoted to whole-closure CPP acceptance. This report is an ordinary mathematical/source-applicability verdict, not established-status authorization. No replacement proof was authored.
+
+The companion JSON records all seven old/new hashes, 16 affected result IDs, exact conclusions and line locators, conditions, consumer identities and retained evidence boundaries.

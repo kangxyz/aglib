@@ -85,7 +85,7 @@ def specIntegralClosureNormalizationIso :
   Scheme.Spec.mapIso (affineNormalizationSectionsIso R A).op ≪≫
     (f).normalization.isoSpec.symm
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem specIntegralClosureNormalizationIso_hom_generic :
     Spec.map (CommRingCat.ofHom (integralClosure R A).val.toRingHom) ≫
       (specIntegralClosureNormalizationIso R A).hom = (f).toNormalization := by

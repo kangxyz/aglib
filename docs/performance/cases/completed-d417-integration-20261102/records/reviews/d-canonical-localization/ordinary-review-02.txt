@@ -1,0 +1,176 @@
+D47 families D/E — independent complex ordinary review, version 02
+
+No mathematical or original-source correspondence gap found in the full own115 derivations. Ordinary geometric/scalar triangle transport passes relative to accepted baseline. D canonical calculus and exceptional composite triangles pass relative to the exact pending shared B/C providers; no unconditional completion or CPP/status claim for the assembled closure.
+
+Fixed source basis:
+REVIEW-01: /Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-canonical-localization/REVIEW-01.json
+SHA256: 8b30821ab3f58bf6b2d7551911b89db1ad2bff2528458c2343fde156afb9c067
+REVIEW-02-DELTA: /Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-canonical-localization/REVIEW-02-DELTA.json
+SHA256: 4fe2c4c279883d56993a401e9105cc9653ee5fdeae5be6a94a8ff62532a7f864
+MAIN HEAD: b0f8ca3f44be620dde8b40f65e1eec0143e45db4
+
+Coverage and proof findings:
+- The canonical open arrow is the installed adjoint triple leftToRight. Its characterizing original-unit equation is derived without assuming that arrow invertible. Target comparison uses the universal right-derived unit and the actual quotient/canonical-equivalence comparison.
+- For a compactification f=p∘j, b_C is Rp*(b_j) followed by the original direct-image structural compositor. Mixed-mate/refinement equations prove preservation before cofiltered descent; raw densification and comparison use the same equation, not endpoint invertibility alone.
+- Proper normalization contracts the literal identity-open factorization and identifies its hom with b. Open normalization uses a raw compactification, its closed densification inverse, and independent raw/target models. It does not assert that an arbitrary open immersion is dense.
+- Composition compatibility is pasted from actual open-composition, mixed-mate, and ordinary structural squares. The actual ambient/torsion compositor formula and model comparison are supplied at the application. Generic square predicates are proved by providers, not left as new premises at terminal statements.
+- Base change first proves the raw equality of original maps without torsion/properness. Torsion or a positive annihilator is used only for the required exchange/comparison isomorphisms. The given unbounded square is recovered through the actual source isomorphism and ordinary horizontal-pasting/identity normalization; the target is the given-square ordinary mate.
+- Geometric transport assembles the actual open counit and closed unit square. Exactness plus the first two invertible sequence components proves invertibility of the actual third component. Scalar transport proves the native restriction comparisons are actual mates and uses the same counit/unit maps.
+- ShortExactMap explicitly checks map_triangleOfSESδ with its commShift factor. Bounded transport is reflected through the fully faithful bounded-below inclusion. Naturality is an equality of triangle morphisms; Localization.liftNatIso descends along Q. No faithfulness of geometric inverse image is presumed.
+- Exceptional localization applies the chosen ambient triangulated functor to the actual ambient triangle. The normalized third arrow is e₃⁻¹ ≫ mapped(δ) ≫ shift(e₁); first and third vertex isomorphisms use actual inverse open/proper normalizations followed by the actual compositor. No torsion-subcategory triangulation or t-structure is assumed.
+
+Conditions:
+- G: Geometric triangle transport: arbitrary Ring Λ; specified Cartesian squares for open j,j′ and closed i,i′; exact complementary ranges on both bases; independent derived worlds for X,X′,U,U′,Z,Z′. No torsion, qcqs, or flatness premise.
+- S: Scalar triangle transport: CommRing Λ,Γ and any ring homomorphism Λ→Γ; one complementary open/closed pair; independent derived worlds for both coefficient rings and all three schemes. No flatness, injective-preservation, or torsion premise.
+- BP: Bounded proper normalization: Ring Λ and intrinsic torsion-cohomology D+ inputs; proper f; independent source, target, and dense middle models. Chosen normalization additionally has qcqs target.
+- BO: Bounded open normalization: Ring Λ and intrinsic torsion-cohomology D+ inputs; quasi-compact open immersion with qcqs target; independent source, target, dense middle family, and raw open model.
+- BB: Bounded literal base change: Ring Λ on intrinsic torsion D+; quasi-compact f with supplied nonempty dense compactifications; arbitrary base map b and its literal pullback; separate source, target, raw, and dense derived worlds. No qcqs assumption on the new base.
+- BC: Bounded composition: Ring Λ on intrinsic torsion D+; f,g quasi-compact, separated, locally of finite type; intermediate and target schemes qcqs; independent endpoint and three compactification families; any supplied compactified-composition tower.
+- BL: Bounded composite localization: Ring Λ and intrinsic torsion D+ input; X and S qcqs; f quasi-compact, separated, locally of finite type; quasi-compact open j, complementary closed i; independent U,Z,X,S,f,j,i,jf,if and raw-open derived worlds.
+- UB: Unbounded given-square base change: Ring Λ, positive N with N·1=0; specified Cartesian square (f,f′,g,g′); quasi-compact f,f′ with supplied dense compactifications; separate given-presentation, literal pullback, endpoint, dense and raw models; arbitrary new base.
+- UO: Unbounded chosen open normalization: Ring Λ, positive N with N·1=0; quasi-compact open immersion with qcqs target; independent endpoint/dense/raw derived worlds.
+- UOraw: Unbounded raw postcomposition: Ring Λ; f is a scheme isomorphism and g an open immersion; independent source, middle and target worlds; the over version also fixes k and equality g≫f=k. No torsion premise for this raw equality.
+- UC: Unbounded composition: the BC geometric/world hypotheses, with all unbounded objects and positive N satisfying N·1=0.
+- UL: Unbounded composite localization: the BL geometric/world hypotheses, with all unbounded objects and positive N satisfying N·1=0.
+
+Result-specific verdicts (D47#label is an inventory identifier; no exposé status is assigned):
+
+D47#moduleExceptionalLocalizationClosedIso
+Outcome: PASS_RELATIVE_TO_SHARED_BC_PROVIDERS; conditions: BL
+The mapped closed vertex f!_ambient(Ri* i* K) is isomorphic to (i≫f)! i* K by the inverse proper normalization followed by the actual chosen compositor.
+
+D47#moduleExceptionalLocalizationOpenIso
+Outcome: PASS_RELATIVE_TO_SHARED_BC_PROVIDERS; conditions: BL
+The mapped open vertex f!_ambient(j! j* K) is isomorphic to (j≫f)! j* K by the inverse raw-open normalization followed by the actual chosen compositor.
+
+D47#moduleExceptionalLocalizationTriangle
+Outcome: PASS_RELATIVE_TO_SHARED_BC_PROVIDERS; conditions: BL
+Constructs the triangle with vertices (j≫f)! j* K, f!K, (i≫f)! i* K by conjugating every arrow of the actual ambient mapped localization triangle.
+
+D47#moduleExceptionalLocalizationTriangleIso
+Outcome: PASS_RELATIVE_TO_SHARED_BC_PROVIDERS; conditions: BL
+The specified vertex comparisons give a genuine isomorphism from the ambient mapped localization triangle to that composite-vertex triangle, including the connecting arrow.
+
+D47#moduleExceptionalLocalizationTriangle_distinguished
+Outcome: PASS_RELATIVE_TO_SHARED_BC_PROVIDERS; conditions: BL
+That composite-vertex triangle is distinguished in the ambient D+(ModuleSheaf S Λ).
+
+D47#moduleExceptionalOpenNormalization_canonical
+Outcome: PASS_RELATIVE_TO_SHARED_BC_PROVIDERS; conditions: BO
+The chosen open normalization n satisfies n.hom ≫ j!-to-Rj* = the original chosen exceptional-to-ordinary map, after the original torsion inclusion.
+
+D47#moduleProperCompactificationNormalization_canonical
+Outcome: PASS_RELATIVE_TO_SHARED_BC_PROVIDERS; conditions: BP
+On the literal proper compactification, the canonical map equals the hom of the specified proper normalization.
+
+D47#moduleExceptionalProperNormalization_canonical
+Outcome: PASS_RELATIVE_TO_SHARED_BC_PROVIDERS; conditions: BP
+On the chosen compactification, the canonical exceptional-to-ordinary map equals the hom of the specified proper normalization.
+
+D47#moduleExceptionalToDirectImage_baseChange_model
+Outcome: PASS_RELATIVE_TO_SHARED_BC_PROVIDERS; conditions: BB
+The actual literal exceptional exchange β! satisfies β! ≫ pullback(b_f′) = pullback(b_f) ≫ β*, with the original ordinary base-change mate; the identity is computed through every supplied dense compactification.
+
+D47#moduleExceptionalToDirectImage_composition_model
+Outcome: PASS_RELATIVE_TO_SHARED_BC_PROVIDERS; conditions: BC
+For the actual chosen compositor κ and ordinary compositor ρ, ι(κ_K) ≫ b_fg(K) = b_g(f!K) ≫ Rg*(b_f(K)) ≫ ρ_K; this holds through every supplied tower.
+
+D47#moduleExceptionalToDirectImageUnbounded_cartesianBaseChange
+Outcome: PASS_RELATIVE_TO_SHARED_BC_PROVIDERS; conditions: UB
+The actual exceptional exchange on the given Cartesian presentation commutes with the same canonical maps and the ordinary mate of that given square; the literal-to-given source comparison and its equality transports are retained.
+
+D47#moduleExceptionalUnboundedLocalizationClosedIso
+Outcome: PASS_RELATIVE_TO_SHARED_BC_PROVIDERS; conditions: UL
+The actual unbounded mapped closed vertex is identified with (i≫f)! i* K using inverse proper normalization and the actual unbounded compositor.
+
+D47#moduleExceptionalUnboundedLocalizationOpenIso
+Outcome: PASS_RELATIVE_TO_SHARED_BC_PROVIDERS; conditions: UL
+The actual unbounded mapped open vertex is identified with (j≫f)! j* K using inverse raw-open normalization and the actual unbounded compositor.
+
+D47#moduleExceptionalUnboundedLocalizationTriangle
+Outcome: PASS_RELATIVE_TO_SHARED_BC_PROVIDERS; conditions: UL
+Constructs the unbounded composite-vertex localization triangle by transporting all three arrows of the chosen functor applied to the original ambient localization triangle.
+
+D47#moduleExceptionalUnboundedLocalizationTriangleIso
+Outcome: PASS_RELATIVE_TO_SHARED_BC_PROVIDERS; conditions: UL
+The chosen vertex isomorphisms form an isomorphism of the entire unbounded raw and normalized triangles, including δ.
+
+D47#moduleExceptionalUnboundedLocalizationTriangle_distinguished
+Outcome: PASS_RELATIVE_TO_SHARED_BC_PROVIDERS; conditions: UL
+The unbounded composite-vertex triangle is distinguished in DerivedCategory(ModuleSheaf S Λ).
+
+D47#moduleUnboundedOpenPostcomposeNormalization_toDirectImage
+Outcome: PASS_RELATIVE_TO_SHARED_BC_PROVIDERS; conditions: UOraw
+Contraction of g! followed by Rf*, for invertible f, intertwines the original canonical maps and the inverse ordinary direct-image compositor.
+
+D47#moduleUnboundedOpenPostcomposeOverNormalization_toDirectImage
+Outcome: PASS_RELATIVE_TO_SHARED_BC_PROVIDERS; conditions: UOraw
+The same contraction identity retains the specified geometric equality g≫f=k and the actual over-composition map.
+
+D47#moduleExceptionalUnboundedOpenNormalization_canonical
+Outcome: PASS_RELATIVE_TO_SHARED_BC_PROVIDERS; conditions: UO
+The chosen unbounded open normalization intertwines the original unbounded canonical j!-to-Rj* map and the same chosen exceptional-to-ordinary map.
+
+D47#moduleExceptionalToDirectImageUnbounded_composition_model
+Outcome: PASS_RELATIVE_TO_SHARED_BC_PROVIDERS; conditions: UC
+The actual chosen unbounded compositor satisfies the same canonical-map composition square with the ordinary derived compositor, on every unbounded object and through every supplied tower.
+
+D47#moduleLocalizationComplexTrianglePullbackIso_naturality
+Outcome: PASS; conditions: G
+The actual geometric comparison of the complete short-exact-complex triangles is natural in every bounded-below complex map.
+
+D47#moduleLocalizationComplexTrianglePullbackNatIso
+Outcome: PASS; conditions: G
+The geometric complex-triangle comparisons assemble into a natural isomorphism of triangle-valued functors, preserving δ.
+
+D47#moduleLocalizationTrianglePullbackNatIso
+Outcome: PASS; conditions: G
+Q descent gives a natural isomorphism T_X ⋙ f*.mapTriangle ≅ f* ⋙ T_X′ of the original D+ localization-triangle functors.
+
+D47#moduleDerivedLocalizationTrianglePullbackIso
+Outcome: PASS; conditions: G
+For every D+ object K, pullback of the actual native-vertex localization triangle is isomorphic as a triangle to the native-vertex localization triangle of f*K.
+
+D47#moduleLocalizationComplexTriangleScalarRestrictionIso_naturality
+Outcome: PASS; conditions: S
+The scalar comparison of complete short-exact-complex triangles is natural in every bounded-below complex map.
+
+D47#moduleLocalizationComplexTriangleScalarRestrictionNatIso
+Outcome: PASS; conditions: S
+Actual scalar restriction gives a natural isomorphism of the original complex-triangle functors, retaining counit, unit, and δ.
+
+D47#moduleLocalizationTriangleScalarRestrictionNatIso
+Outcome: PASS; conditions: S
+Q descent gives a natural isomorphism T_Γ ⋙ Res.mapTriangle ≅ Res ⋙ T_Λ of the entire original D+ localization-triangle functors.
+
+Source correspondence and repairs:
+All 115 owned files and their nontrivial mathematical prose were inspected in full. The 11 original terminal files are byte-identical to their original archive versions in both review bases. The current application of the accepted ambient triangle/short-exact factories was inspected separately.
+REVIEW-01 differs from the original archive in 14 owned files: wrapper elimination to explicit native Q/RF/units/comparison, current import/normalization adaptation, the direct additive proof and routine proof/options/whitespace adjustments. All were inspected.
+ScalarRestrictionEtale replaces only its proof by generic adjunction-hom-equivalence cancellation with both original unit-square premises discharged; no statement or map change. Other two files differ only in whitespace.
+None. Earlier provisional REVIEW-01 ordinary-localization coverage is retained and integrated with the inspected delta02.
+
+Remaining boundary:
+- Full acceptance of the exact shared B/C supplier closure, including actual unbounded compositor/normalizations and native model/unit comparison, remains with the separate B/C ordinary reviewer. The fixed 57 hashes match that reviewer's V2 basis.
+- Full current terminal native compilation/import/axiom closure is unfinished and outside this read-only review. No builds, tests, kernel replay, Git mutation, or production source edits were performed. No fresh CPP claim is made.
+- Root must reconcile future compiler repairs and publication stock/API changes to this fixed basis. Publication-only stock renames/API generalizations were not silently imported into MAIN or this verdict. A changed shared supplier can affect D/E even if the 11 terminal files remain unchanged.
+
+Shared source correspondence: all 57 hashes match /Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-composition/extension/EXTENSION-SOURCE-V2.json
+B/C manifest SHA256: b0748f1e513bfcf2c28d342e13bd08ec90fe771f3245fa06819ed8840c2573ab
+Live source drift at delivery: 0
+
+The JSON companion records all 27 result outcomes, terminal hashes, exact source manifests, numbered accepted basis, and accepted ambient-factory interface hashes.
+
+Retained partial compiler evidence:
+All 30 bounded-canonical-ready-1 leaves have an actual started+finished frontend pair with exit0 in this existing run, including both bounded BC/composition terminals. Current 30 bytes match READY1; both terminal source hashes and all three project config/pin inputs match the receipt. This is reused partial frontend evidence, not a new invocation or full D/E CPP/audit/lint/test pass.
+Whole run remains exit1 with 3 other shared-provider failures; current source closure acceptance remains separate.
+Projection: /Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-canonical-localization/CPP-BOUNDED-PARTIAL-01.json
+Source basis: 7dd62b2132cacbbbb4e9b92d0c5efb185071358f32195f298fd842a0dd7db316; operation: 9b497d7113784ef9839daa19356115bb
+
+Shared-provider notice:
+The module prose says native torsion full subcategory and one restriction-isIso docstring says declared torsion source. Actual definitions have the full unbounded source; restriction invertibility is independent of N, while the final proper/open comparison is invertible under N>0 and N·1=0.
+RESOLVED: the two prose sentences were corrected to full native unbounded categories/input. The exact prose-only diff was independently inspected and frozen; all code, hypotheses, maps, and D/E applications are unchanged. The broader B/C verdict remains pending.
+The reported constructor repairs in RightUnitTorsionSupplied and unbounded FamilyModelComparison/CompositionModelComparison are outside this 57-file supplier cut.
+
+Additional fixed source delta: /Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/reviews/d-canonical-localization/shared-prose-repair/ProperOpenComparison.lean
+SHA256: 4a0959ab8fd99b8ea7aeb4e70159685fb6c63123ca178b409c2fe8aba865f73d
+This explicitly overrides only the corresponding REVIEW-01 source row. No mathematical conclusion is changed or withdrawn. Live drift after this overlay: 0

@@ -28,6 +28,7 @@ attribute [local instance] EtaleCohomology.hasSheafifyLarge
 variable {R A B : Type u} [CommRing R] [CommRing A] [CommRing B]
   [Algebra R A] [Algebra R B] (α : A →ₐ[R] B)
 
+/-- The quiver underlying the opposite category of finite-type arrow indices. -/
 local instance : Quiver (Index A B)ᵒᵖ :=
   (inferInstance : Category (Index A B)ᵒᵖ).toQuiver
 

@@ -98,3 +98,34 @@ conservativity and the proved finite abelian exchange. It proves invertibility
 of the original genuine-module D+ exchange for finite morphisms over arbitrary
 rings, retaining the eight independent derived universes. This finite case
 does not require general torsion proper base change.
+
+## Additional source entry points
+
+- [BaseChangeCompositeUnit](BaseChangeCompositeUnit.lean)
+- [BaseChangeTargetModels](BaseChangeTargetModels.lean)
+- [CompactifiedToDirectImageComposition](CompactifiedToDirectImageComposition.lean)
+- [DirectImageContraction](DirectImageContraction.lean)
+- [DirectImageStructuralSquare](DirectImageStructuralSquare.lean)
+- [DirectImageTargetModels](DirectImageTargetModels.lean)
+- [IdentityFactorizationAdjunctionTransport](IdentityFactorizationAdjunctionTransport.lean)
+- [IdentityFactorizationCoherence](IdentityFactorizationCoherence.lean)
+- [IdentityFactorizationCounit](IdentityFactorizationCounit.lean)
+- [IdentityFactorizationUnit](IdentityFactorizationUnit.lean)
+- [IdentityFactorization](IdentityFactorization.lean)
+- [IdentityTargetComposition](IdentityTargetComposition.lean)
+- [IdentityTripleComparison](IdentityTripleComparison.lean)
+- [InverseImageModelIdentity](InverseImageModelIdentity.lean)
+- [InverseImageTorsionUnit](InverseImageTorsionUnit.lean)
+- [LowerShriekCompositionCoherence](LowerShriekCompositionCoherence.lean)
+- [LowerShriekComposition](LowerShriekComposition.lean)
+- [ModelComparisonTorsion](ModelComparisonTorsion.lean)
+- [NormalizationNaturality](NormalizationNaturality.lean)
+- [NormalizationStructural](NormalizationStructural.lean)
+- [Normalization](Normalization.lean)
+- [OpenComposition](OpenComposition.lean)
+- [OpenTargetModels](OpenTargetModels.lean)
+- [OpenToDirectImageBaseChange](OpenToDirectImageBaseChange.lean)
+- [OpenToDirectImageComposition](OpenToDirectImageComposition.lean)
+- [OpenToDirectImageOverComposition](OpenToDirectImageOverComposition.lean)
+- [OpenTripleComparison](OpenTripleComparison.lean)
+- [ProperNormalizationComparison](ProperNormalizationComparison.lean)

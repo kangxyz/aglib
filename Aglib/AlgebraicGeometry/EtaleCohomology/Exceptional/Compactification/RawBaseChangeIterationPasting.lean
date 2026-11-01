@@ -43,9 +43,15 @@ variable (Λ : Type (u + 1)) [Ring Λ]
   [HasDerivedCategory.{wU} (ModuleSheaf U Λ)]
   [HasDerivedCategory.{wM₂} (ModuleSheaf (((C.baseChange b).baseChange c)).Xbar Λ)]
 
+/-- Derived-category instance on module sheaves over `(pullback b C.p)`, using the instance on
+`((C.baseChange b)).Xbar`.
+-/
 local instance rawIterationFirstNativeModel :
     HasDerivedCategory.{wM₁} (ModuleSheaf (pullback b C.p) Λ) :=
   inferInstanceAs (HasDerivedCategory.{wM₁} (ModuleSheaf ((C.baseChange b)).Xbar Λ))
+/-- Derived-category instance on module sheaves over `(pullback c ((C.baseChange b)).p)`, using the
+instance on `(((C.baseChange b).baseChange c)).Xbar`.
+-/
 local instance rawIterationSecondNativeModel :
     HasDerivedCategory.{wM₂} (ModuleSheaf (pullback c ((C.baseChange b)).p) Λ) :=
   inferInstanceAs (HasDerivedCategory.{wM₂} (ModuleSheaf (((C.baseChange b).baseChange c)).Xbar Λ))

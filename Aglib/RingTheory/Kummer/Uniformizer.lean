@@ -110,7 +110,7 @@ theorem uniformizerRoot_isDomain : IsDomain D :=
     (irreducible_iff_prime.mp (IsDiscreteValuationRing.uniformizer_binomial_irreducible hπ n hn))
 
 /-- The actual quotient by the original root is the original residue field. -/
-def uniformizerRoot_quotientEquivResidue :
+def uniformizerRootQuotientEquivResidue :
     (D ⧸ Ideal.span {θ}) ≃ₐ[R] ResidueField R :=
   (rootQuotientEquiv n hn π).trans
     (Ideal.quotientEquivAlgOfEq R hπ.maximalIdeal_eq.symm)
@@ -119,7 +119,7 @@ include hπ in
 /-- The root generates a maximal ideal, by the actual residue-field comparison. -/
 theorem uniformizerRoot_span_isMaximal : (Ideal.span {θ} : Ideal D).IsMaximal :=
   Ideal.Quotient.maximal_of_isField _
-    ((uniformizerRoot_quotientEquivResidue R π hπ n hn).toRingEquiv.isField
+    ((uniformizerRootQuotientEquivResidue R π hπ n hn).toRingEquiv.isField
       (Field.toIsField (ResidueField R)))
 
 include hπ in

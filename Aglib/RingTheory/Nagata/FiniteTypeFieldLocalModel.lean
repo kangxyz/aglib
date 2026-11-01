@@ -40,7 +40,6 @@ def localModelToField (q : Ideal (integralClosure R L)) [q.IsPrime] :
     q.primeCompl_le_nonZeroDivisors
 
 /-- The canonical map retains the literal inclusion of integral elements. -/
-@[simp]
 theorem localModelToField_algebraMap (q : Ideal (integralClosure R L)) [q.IsPrime]
     (c : integralClosure R L) :
     localModelToField R K L q (algebraMap _ (Localization.AtPrime q) c) = c :=

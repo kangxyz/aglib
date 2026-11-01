@@ -1,0 +1,110 @@
+{
+  "question": "Family A: bounded-below intrinsic-torsion and unbounded torsion-ring compact support on the GIVEN Cartesian geometric fibre with the GIVEN ordinary coefficient map and naturality",
+  "verdict": "ordinary PASS",
+  "reviewer": "/root/review_compact_support",
+  "captured_utc": "2026-11-01T14:37:26.258479+00:00",
+  "source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/release-integrator-20261030/integration-30b6",
+  "main_head": "b0f8ca3f44be620dde8b40f65e1eec0143e45db4",
+  "r5_guard_head": "9cebda0b83f50954a8269a364a662218d300a8c8",
+  "effective_manifest": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-compact-support/extension-A/EXTENSION-READY-2.json",
+    "sha256": "64b5521177ccc11087e20432bba899c775cd0691e391a6fedee2cfc9a28db660"
+  },
+  "inputs": {
+    "EXTENSION-READY-1.json": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-compact-support/extension-A/EXTENSION-READY-1.json",
+      "sha256": "719e62c017df9a0ebac7486378f49f1db4a11f08948af0c94fe6203d5b2c2906"
+    },
+    "EXTENSION-READY-2.json": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-compact-support/extension-A/EXTENSION-READY-2.json",
+      "sha256": "64b5521177ccc11087e20432bba899c775cd0691e391a6fedee2cfc9a28db660"
+    },
+    "extension-basis.json": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-compact-support/extension-A/extension-basis.json",
+      "sha256": "803f703975bc919bc2b0e93830eda42213e79c62db00eddc29e9219f115e7e7a"
+    },
+    "MAP-CORRESPONDENCE.txt": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-compact-support/extension-A/MAP-CORRESPONDENCE.txt",
+      "sha256": "b5ecf4e871d010bbc2274194f16e7a68711abd1f2a0bcb8e11f11e0d773eac46"
+    }
+  },
+  "source": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Single.lean": "940176805f715f46d0f18da52e4b64571a3446440fe48369d790c1cd500ef54b",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/SinglePullback.lean": "fd994de61063031da761275ce88f11289fa2a7164f3ed0e0d0e83eeb61d117df",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/HigherDirectImage.lean": "ded23baa044bc50eb2066831bd059d04e2e2f33bdb444c58e06c0ded1fedcb61",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/BoundedBelow.lean": "8214b7450be80bf8ff3bd497d1ba919d930d05d7481da90ab74e1464ab1feef3",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/DerivedGeometricStalk.lean": "decc308906652ea4da7ff121a4d8fc31ca56d63de10e00b6a078c084433fe2af",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/CartesianGeometricFiber.lean": "f2a060b2e269412cb66a4ac3ff93ef253548d371b1e17c02ddbbac4c72c9e052",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/CartesianGeometricFiber.lean": "b115cdf1868bbb124b3d8562ebe7a029442511ddb9c0613f5b93510da6eee509"
+  },
+  "accepted_current_anchors": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChange.lean": "49b46e1f15de57233c30681f6cf8fdd800e013915c15319c33029ce5a053bef4",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianBaseChange.lean": "2d14351c1e7c75e427f9c1827c510db13f9db35fa6ff34ca7a697e4ae09fe9bb",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SuppliedDirectImage.lean": "db03d23b2c8dd87d3f441a2cf3613b911b459268b57a1b3c3280ce55809e12f0",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/Torsion.lean": "77fbf028e71277382742d4dd4a2d3cef72b755a328366fb8d1a6a02712f4a93a",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsion.lean": "adff86560b91fa63972b7d174bfaa6dfd1529f66a9a76688f3af0b0cf1e5b4bd",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionCoherence.lean": "aa2639e008165b930783b21cc391e939c76465ef9b7a3fc1c19f4c43618387cc",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/Composition.lean": "0b3f1b019943b4000d635343b14af905b9c9eae359f0066c1f5577b7e1cbb148",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/TorsionRange.lean": "256bc46b586b0127d5c0387c222aec6fbd07714b64b0476212594f6993845597",
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/SingleHomology.lean": "f10ab33111b50b50ecfcd9b156161ddd9c7f97032652e093aa6001143e11d4ea",
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Composition.lean": "69401b1d39a43ffdf92a62c5f9b364539851e48f0184dd7ca9af3cf65dd8258c",
+    "Aglib/CategoryTheory/NatTrans/CartesianSourceExchange.lean": "529665d332adb865d811f583f9c69ab895809bce3cf5a8c291216699d0e9720c"
+  },
+  "additional_inspected_dependency_spans": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIso.lean": "f13cb589da842e070d1d6c8e1a7bfc55a5d27c5c88c60b47fb9fd7b7b1bbb9f6",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIso.lean": "17c427bd6c1649cf1b45c4c8c6ca73a43688d5ec42f6f67e74cf3e4902dc6372",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/StructuralComparisons.lean": "61ed1048ba87fd99304d3e1651b5798948c225f1eda57f2c7e797ed43dfaed6b",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleComparisons.lean": "ed7a33279c0ceef5ac8b668cf69d7ab6ee9c77e4f00471cc9c77ef7880291244",
+    "Aglib/Algebra/Homology/CochainComplexPlus/Functoriality.lean": "8ad37ae4d3fc2385e17eaaddb8b5ec0aa960c3e7fe3771f91fe995ff5b5df663",
+    "Aglib/Algebra/Category/ModuleCat/Sheaf/ConstantRing/Torsion/Derived.lean": "7d444bb618536e083e5f32dca687688f22e99a1c726d3cb9ac47e68021f2fdf6"
+  },
+  "retained_prior_review": {
+    "report_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/reviews/d1238/REVIEW.txt",
+    "report_sha256": "ab2144da70602070c8a00ddffacd6e7971d72156405631be6d96c81c779026f7",
+    "basis_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/reviews/d1238/SOURCE-BASIS.json",
+    "basis_sha256": "81845694541f26a7480b8cfce599e76d69d27af98c2fbc286cabb70cdc153955",
+    "all_38_prior_native_source_hashes_reconciled": true
+  },
+  "archive_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/snapshot/agent-c-independent-ext-quasifinite-source-20261027T101616Z/aglib",
+  "archive_sources": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Single.lean": "05f8ec9693be30b24252029aea88228cfc232b9fa0ccd1d69c92f2b3539bd46f",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/SinglePullback.lean": "fb0b266ac785d6b2effecb92bccd156fe9d18e6c1b147f4e0f2e256fc400a216",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/HigherDirectImage.lean": "7a699dc5474cc8ded5705075f1e50e56e7971afbee81e3f593001e50b2a87fa9",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/BoundedBelow.lean": "23a5c4bd25ba5cbaff9265b7e419e0ee8cfe9f2d18dc65536f1e7eaf5f75df1a",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/DerivedGeometricStalk.lean": "decc308906652ea4da7ff121a4d8fc31ca56d63de10e00b6a078c084433fe2af",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/CartesianGeometricFiber.lean": "f2a060b2e269412cb66a4ac3ff93ef253548d371b1e17c02ddbbac4c72c9e052",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/CartesianGeometricFiber.lean": "f7a6676e51a956790817f343ee4e263cd668fbcd0b57509678eb474133f4d96f",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/GeometricFiber.lean": "740d24bcce64fbad548c5a19ac014fe15f0f0d57c6f3805b40e433c51a8f6bfc",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/SingleGeometricFiber.lean": "5528692d1315792bcd08d597519203b4340d578a70e2c80b0edf4314a9c64777",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/SourceIso.lean": "dc7b5ba23bf8b3e2cef6784bda0417c2ee162ba3fa975357375cc0e664403018",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/CoefficientPullbackComposition.lean": "0c94a35f2cef5f5eb506cd3c9c018db6342a88a230cd75c2a070bf00d6df03bb"
+  },
+  "ownership_input": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/remaining/D47-EXTENSION-OWNERSHIP.json",
+    "sha256": "007300d2f645eb98a1da8fb85cd5d8dd009b43fe02f65dac16bb489b17a4d789",
+    "locator": "owners/d_compact_support_integration"
+  },
+  "original_routing_input": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/remaining/D47-TERMINAL-DECISION.json",
+    "sha256": "e0f32730ce6ff9567039d1dd8d987f2b72ff26cdcf119ed6057a69a4a91f5433",
+    "covered_original_claims": [
+      849,
+      1398
+    ]
+  },
+  "upstream_root": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib",
+  "mathlib_pin": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "upstream_inspected_spans": {
+    "Mathlib/Algebra/Homology/Additive.lean": "bf407023524f04bb5fd26f576eedb96bddc1c52d13f757c668f224e4256dce43",
+    "Mathlib/Algebra/Homology/DerivedCategory/FullyFaithful.lean": "778409ca107215fc181b1204ba5090aa7cf883411bbdd36ad1ce86fd31a401d8"
+  },
+  "original40_exclusion": {
+    "disposition_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/current-public-disposition-20261030/DISPOSITION-MAP.json",
+    "disposition_sha256": "fa311ff46e11413d396a2cf8623633a74f907eda15adf0303e390db4e7f2e366",
+    "actual_native_import_path_count": 4149,
+    "intersection": [],
+    "missing_native_imports": [],
+    "meaning": "Import-edge source exclusion only; no audit of all reachable declarations."
+  },
+  "evidence_boundary": "Independent ordinary mathematical/source-applicability continuation. No compiler, test, lint, axiom-audit, replay, writing-acceptance or established-status verdict. Current native anchors are accepted background for this assignment."
+}

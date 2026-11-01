@@ -42,9 +42,15 @@ variable {X S T : Scheme.{u}} {f : X ⟶ S}
   [HasDerivedCategory.{wCR} (ModuleSheaf (pullback b C.p) Λ)]
   [HasDerivedCategory.{wDR} (ModuleSheaf (pullback b D.p) Λ)]
 
+/-- Derived-category instance on module sheaves over `(C.baseChange b).Xbar`, using the instance on
+`(pullback b C.p)`.
+-/
 local instance rawRefinementNaturalityCModel :
     HasDerivedCategory.{wCR} (ModuleSheaf (C.baseChange b).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wCR} (ModuleSheaf (pullback b C.p) Λ))
+/-- Derived-category instance on module sheaves over `(D.baseChange b).Xbar`, using the instance on
+`(pullback b D.p)`.
+-/
 local instance rawRefinementNaturalityDModel :
     HasDerivedCategory.{wDR} (ModuleSheaf (D.baseChange b).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wDR} (ModuleSheaf (pullback b D.p) Λ))
@@ -94,11 +100,18 @@ variable {X S T : Scheme.{u}} {f : X ⟶ S}
     (ModuleSheaf (pullback b (Hom.Compactification.densify E).p) Λ)]
   [HasDerivedCategory.{wDR} (ModuleSheaf (pullback b E.p) Λ)]
 
+/-- Derived-category instance on module sheaves over `((Hom.Compactification.densify
+E).toCompactification.baseChange b).Xbar`, using the instance on `(pullback b
+(Hom.Compactification.densify E).p)`.
+-/
 local instance densificationPullbackDenseModel :
     HasDerivedCategory.{wCR}
       (ModuleSheaf ((Hom.Compactification.densify E).toCompactification.baseChange b).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wCR}
     (ModuleSheaf (pullback b (Hom.Compactification.densify E).p) Λ))
+/-- Derived-category instance on module sheaves over `(E.baseChange b).Xbar`, using the instance on
+`(pullback b E.p)`.
+-/
 local instance densificationPullbackRawModel :
     HasDerivedCategory.{wDR} (ModuleSheaf (E.baseChange b).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wDR} (ModuleSheaf (pullback b E.p) Λ))

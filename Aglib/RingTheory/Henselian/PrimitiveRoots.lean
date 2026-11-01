@@ -51,8 +51,8 @@ theorem exists_primitiveRoot_of_isSepClosed_residue
   exact ⟨ζ, hζ⟩
 
 /-- The original fraction field contains the primitive roots lifted in the
-strictly Henselian domain; its native coefficient map is retained. -/
-theorem primitiveRoots_fraction_nonempty [IsDomain R] [IsSepClosed (ResidueField R)]
+strictly Henselian ring through its injective fraction map. -/
+theorem primitiveRoots_fraction_nonempty [IsSepClosed (ResidueField R)]
     (K : Type*) [Field K] [Algebra R K] [IsFractionRing R K]
     (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : R)) :
     (primitiveRoots n K).Nonempty := by

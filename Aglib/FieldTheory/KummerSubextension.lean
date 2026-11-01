@@ -46,7 +46,7 @@ private theorem finrank_adjoin_le_of_pow {m : ℕ} (hm : 0 < m) {x : F} {b : K}
   exact (natDegree_le_natDegree (minpoly.min K x (monic_X_pow_sub_C b hm.ne') hp)).trans_eq
     natDegree_X_pow_sub_C
 
-private theorem finrank_adjoin_pow [FiniteDimensional K F] {N e : ℕ}
+private theorem finrank_adjoin_pow {N e : ℕ}
     (hN : 0 < N) (he : 0 < e) (heN : e ∣ N) {a : K} {θ : F}
     (hθ : θ ^ N = algebraMap K F a) (hgen : K⟮θ⟯ = ⊤)
     (hdegree : finrank K F = N) : finrank K K⟮θ ^ (N / e)⟯ = e := by

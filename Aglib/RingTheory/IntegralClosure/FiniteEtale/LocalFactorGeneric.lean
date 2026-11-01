@@ -40,7 +40,8 @@ local notation "L₀" => K ⊗[R] S₀
 
 local instance : Module.Finite K A := Algebra.FormallyUnramified.finite_of_free K A
 
-local instance : Algebra S₀ L₀ := Algebra.TensorProduct.rightAlgebra
+/-- The selected local factor acts through the right factor of its generic tensor. -/
+local instance genericRightTensorAlgebra : Algebra S₀ L₀ := Algebra.TensorProduct.rightAlgebra
 
 include K
 

@@ -27,11 +27,19 @@ variable {X S : Scheme.{u}} (f : X ⟶ S) [QuasiCompact f]
   [targetModels : ∀ C : Hom.DenseCompactification (pullback.fst (𝟙 S) f),
     HasDerivedCategory.{wN} (ModuleSheaf C.Xbar Λ)]
 
+/-- The derived-category instance in universe `wM` for `Λ`-module sheaves on `C.Xbar`.
+-/
 local instance unboundedIdentityCanonicalOriginal (C : Hom.DenseCompactification f) :
     HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ) := sourceModels C
+/-- The derived-category instance in universe `wN` for `Λ`-module sheaves on `(baseChangeObj (𝟙 S)
+    C).Xbar`.
+-/
 local instance unboundedIdentityCanonicalNormalized (C : Hom.DenseCompactification f) :
     HasDerivedCategory.{wN} (ModuleSheaf (baseChangeObj (𝟙 S) C).Xbar Λ) :=
   targetModels (baseChangeObj (𝟙 S) C)
+/-- The derived-category instance in universe `wM` for `Λ`-module sheaves on
+    `((identitySourceTransport f).obj C).Xbar`.
+-/
 local instance unboundedIdentityCanonicalTransported (C : Hom.DenseCompactification f) :
     HasDerivedCategory.{wM} (ModuleSheaf ((identitySourceTransport f).obj C).Xbar Λ) :=
   sourceModels C

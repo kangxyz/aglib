@@ -110,7 +110,7 @@ theorem exists_finiteLocallyConstant_coefficient_class
     {Y : Scheme.{u}} (p : Y ⟶ Spec (.of K))
     [CompactSpace Y] [QuasiSeparatedSpace Y]
     [HasExt.{e} (AbelianSheaf.{u, u + 1} Y)]
-    [HasColimitsOfSize.{u + 1, u + 1} AddCommGrpCat.{e}] [UnivLE.{u + 1, e}]
+    [UnivLE.{u + 1, e}]
     (q : ℕ) (c : Sheaf.H.{e} ((inverseImage p).obj F) q) :
     ∃ (E : AbelianSheaf.{u, u + 1} (Spec (.of K))) (a : E ⟶ F),
       n • 𝟙 E = 0 ∧ IsFiniteLocallyConstant E ∧

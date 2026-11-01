@@ -64,7 +64,6 @@ theorem fieldExtensionPoint_val (x : ClosedPoint X) :
     (fieldExtensionPoint p q x).val = ((rationalPoint p x).baseChange q).point := rfl
 
 /-- The original projection recovers the original closed point. -/
-@[simp]
 theorem fieldExtensionPoint_fst (x : ClosedPoint X) :
     pullback.fst p q (fieldExtensionPoint p q x).val = x.val := by
   have h := congrArg (fun f : Spec (.of K) ⟶ X => f (IsLocalRing.closedPoint K))
@@ -155,7 +154,6 @@ theorem mem_range_fieldExtensionPoint_of_not_mem_preimage
   mem_range_fieldExtensionEmbedding_of_not_mem_preimage p q hdim V y hy
 
 /-- Boundary membership of the lifted point is exactly original boundary membership. -/
-@[simp]
 theorem fieldExtensionPoint_mem_preimage_iff (V : X.Opens) (x : ClosedPoint X) :
     (fieldExtensionPoint p q x).val ∈ (pullback.fst p q) ⁻¹ᵁ V ↔ x.val ∈ V := by
   change pullback.fst p q (fieldExtensionPoint p q x).val ∈ V ↔ x.val ∈ V

@@ -36,7 +36,7 @@ def residuePowerRingEquiv (n : ℕ) :
     (R ⧸ I ^ n) ≃+* (S ⧸ (RingHom.ker g.toRingHom) ^ n) :=
   RingEquiv.ofBijective (residuePowerMap I g n).toRingHom (residuePowerMap_bijective I g n)
 
-@[simp] theorem residuePowerRingEquiv_mk (n : ℕ) (r : R) :
+theorem residuePowerRingEquiv_mk (n : ℕ) (r : R) :
     residuePowerRingEquiv I g n (Ideal.Quotient.mk (I ^ n) r) =
       Ideal.Quotient.mk ((RingHom.ker g.toRingHom) ^ n) (algebraMap R S r) := rfl
 

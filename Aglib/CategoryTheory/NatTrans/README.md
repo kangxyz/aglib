@@ -23,3 +23,25 @@ exchange through an actual source comparison. Its component formula keeps the
 original exchange, source comparison and inverse source compositor in that
 order, and its model equation preserves the given comparison square. These
 generic constructions retain independent categories and their original maps.
+
+## Additional source entry points
+
+- [CanonicalMapNormalization](CanonicalMapNormalization.lean)
+- [CartesianExchangeNormalization](CartesianExchangeNormalization.lean)
+- [CartesianExchangePasting](CartesianExchangePasting.lean)
+- [CartesianSourceToTarget](CartesianSourceToTarget.lean)
+- [CompositeExchangeLiftFormula](CompositeExchangeLiftFormula.lean)
+- [CompositeExchangeLift](CompositeExchangeLift.lean)
+- [CompositeExchangeTarget](CompositeExchangeTarget.lean)
+- [CompositeExchangeToTargetRestriction](CompositeExchangeToTargetRestriction.lean)
+- [CompositeExchangeToTarget](CompositeExchangeToTarget.lean)
+- [CompositeTargetRestriction](CompositeTargetRestriction.lean)
+- [ExchangeToTarget](ExchangeToTarget.lean)
+- [IdentityBasePastingFactor](IdentityBasePastingFactor.lean)
+- [IdentityExchangePasting](IdentityExchangePasting.lean)
+- [ImageComparisonTargetEquation](ImageComparisonTargetEquation.lean)
+- [SourceIsoToTarget](SourceIsoToTarget.lean)
+- [StructuralTriangleComponents](StructuralTriangleComponents.lean)
+- [TargetComparisonEquation](TargetComparisonEquation.lean)
+- [TargetComparisonTransport](TargetComparisonTransport.lean)
+- [TargetComparisonWhiskering](TargetComparisonWhiskering.lean)

@@ -1,0 +1,74 @@
+Stock repair V3 — independent ordinary bounded mathematical/API review
+
+Verdict: PASS for the fourteen identified signature/premise changes, the 42-entry rename correspondence, and the retained laws affected by simp metadata changes. No mathematical gap or new desired-comparison/conclusion premise was found in this bounded delta. This is not a new all-source review, an established-status verdict, a writing-acceptance verdict, or a compilation/CPP/lint result.
+
+Fixed basis: publication root
+/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101
+at tracked HEAD c4880830a7ebfea496a348d361cd50b109ea536d, with the V3 working-tree source hashes in READY-v3.json. V3 source-manifest identity: af3498a3b5a2d6769ad3ecbc1b9d89f44a29df69ee4d6a07c7447c6576330459.
+READY-v3.json SHA-256: 3cddd34ead0300d37839125f47cf85f17fe0369fb2242da78d6d1a87e219f617.
+API-CHANGES-v3.json SHA-256: a854e9a143a75e0f7a342e773edcf0bc401d853dd59c2de3f206472f3ea38d1b.
+All 132 current source hashes were checked against that packet and rechecked for this report. REVIEWED-IDENTITY-V3.json records old/current hashes and supporting supplier identities.
+
+V1 was captured in FIXED-REVIEW-BASIS01.json on its actual old/current basis. V2 changes only the H0 helper propagation; V3 changes only the pointed-Galois helper propagation and adds the conditional split-thickening consumer. Their exact deltas are retained separately in V2-CONTINUATION-BASIS.json and V3-CONTINUATION-BASIS.json. V1/V2 are superseded as integrated candidates, while unchanged source coverage is retained. No output from one phase is represented as another phase's execution evidence. The earlier D1220 verdict is separate and unchanged.
+
+Result-specific outcomes (each PASS):
+
+1. StockAPI#exists_finiteLocallyConstant_coefficient_class:
+The same original bounded cohomology class comes from an actual finite locally constant coefficient E killed by the same positive n, through the same coefficient arrow E → F. Only the redundant HasColimitsOfSize existence proof is removed; qcqs Y, positivity, n-annihilation, HasExt in the chosen e universe, and UnivLE remain.
+
+2. StockAPI#exists_finiteGalois_constant_class:
+The same finite coefficient and class become finite constant after one produced finite Galois extension, with the original inverse trivialization followed by the pulled-back coefficient arrow giving the prescribed pulled-back class. The two Ext worlds remain independent. The redundant colimit-existence argument is removed consistently from the telescope and the explicit @exists_finiteLocallyConstant_coefficient_class call; the remaining inferInstance occupies exactly the UnivLE slot. All field, qcqs, positivity and annihilator conditions remain.
+
+For 1–2, pinned Mathlib AddCommGrpCat.hasColimitsOfSize at Algebra/Category/Grp/Colimits.lean:285–286 supplies precisely HasColimitsOfSize.{u+1,u+1} under retained UnivLE.{u+1,e}. HasColimit/HasColimitsOfShape/HasColimitsOfSize are propositions (CategoryTheory/Limits/HasLimits.lean:96,119,142), not new selected realization data. The actual filtered presentation, stage class, coefficient arrow, trivialization, and forward map are unchanged.
+
+3. StockAPI#higherDirectImage_isConstructible_succ_of_finiteSurjective:
+The successor-step helper remains valid without Noetherian X: its existing argument needs Noetherian S, the actual finite surjection p, the preceding-degree image of the literal unit cokernel, and the next-degree image through p ≫ f. These hypotheses and maps are unchanged. The lower mono/short-exact helper has precisely those conditions. The full constructibility-induction endpoint still assumes Noetherian X and S.
+
+4. StockAPI#affineEtaleTest_pullbackHom_bijective_of_structureIso:
+The SAME pullback map on Over morphisms into affine Z is bijective for any actual étale test U, without requiring U.left affine. Gamma–Spec precomposition requires the base and represented target to be affine, not the test. Flat base change of the actual structure-sheaf isomorphism applies to arbitrary étale U. Affine Y, qcqs q, IsIso q.c and affine Z remain.
+
+5. StockAPI#representedCoefficientUnit_bijective_affine_of_structureIso:
+The SAME represented coefficient unit is bijective on any étale test, using 4 and the unchanged underlying additive/ULift maps. Finiteness of H.X.hom still supplies the affine represented target. The global representedCoefficientUnit_isIso_of_structureIso endpoint retains its original statement and geometry; its proof only omits the now-unneeded local affine instance and applies the stronger test result. The literal represented/adjunction unit normalization is unchanged.
+
+6. StockAPI#galois_furtherStage:
+The same base-changed cover remains Galois with the same automorphism-group cardinality without ConnectedSpace W. Connected U/V, surjective v, Galois Z, and connectedness of the actual further pullback remain. The proof reflects connectedness through the SAME baseChangeComp isomorphism and surjective pullback projection, then applies the existing connected-base-change theorems.
+
+7. StockAPI#exists_pointed_further_galois_stage:
+The same further finite field stage, original pulled-back cover, rational point, point equations, Galois property and automorphism order are produced without a separate ConnectedSpace W input. GeometricallyConnected p, the original pullback square H, original cover-connectedness, the algebraic field extension and all point equations remain. Its unchanged proof uses 6. The qcqs pointed-cover producer's actual geometric and field hypotheses remain intact; this does not assert unconditional preservation of connected/Galois covers by arbitrary field extensions.
+
+8. StockAPI#constructibleFiniteImageOnPrincipalOpen_of_splitThickening:
+The existing conditional helper derives constructibility on the same actual principal open from the same supplied split-thickening proposition without domain/fraction-ring binders. It still uses finite A, the original finite integral base map and its spectrum-surjectivity, and the original surjective quotient with nilpotent kernel. No new splitting or constructibility premise is introduced. The Noetherian generic existence producer retains domain and Noetherian hypotheses and constructs its splitting as before.
+
+9. StockAPI#exists_clopen_stage_containing_family:
+The same clopen and literal stage containment descend without quasi-separatedness of the D stages. Compact D stages and affine D transitions suffice for pinned Mathlib AffineTransitionLimit.exists_map_eq_top (:180–194). The E-stage clopen descent still has qcqs E stages. Both original limit cones and all family/section equations remain. The principal smooth/domain/fraction-field producer's geometric hypotheses remain unchanged.
+
+10. StockAPI#finrank_adjoin_pow:
+The same power-generated intermediate field has finrank e under the original positivity, divisibility, power equation, generator equality and finrank=N inputs, without a separate FiniteDimensional K F binder. The unchanged proof uses the root's integrality and the tower finrank identity; pinned LinearAlgebra/Dimension/Free.lean:35–38,68–71 needs freeness, which fields provide, and no finite-dimensionality hypothesis. The public Kummer result still constructs finite dimensionality and retains irreducibility and primitive roots.
+
+11. StockAPI#finiteSplitThickeningOnPrincipalOpen:
+Only the domain of this conclusion predicate is broadened. Its existential body, localization maps, finite/surjective conditions, actual quotient and kernel equation are literally unchanged and are meaningful for the retained general ring-to-field algebra. FiniteIntegralCaptureBase.finiteSubalgebraAwayBaseMap itself only requires CommRing R, Field L and Algebra R L. This is not an assertion that a splitting exists for every such ring. Both splitting producers retain their original domain/fraction-ring conditions; the Noetherian existence producer retains Noetherianity.
+
+12. StockAPI#factor_lift_injective:
+The SAME root-evaluation map of the original irreducible factor is injective without IsDomain R. Polynomial UniqueFactorizationMonoid, irreducibility, the original factorization/root equations and nontrivial receiving algebra remain. Pinned UFD Defs.lean:133–136 gives irreducible ⇒ prime; AdjoinRoot.lean:384–386 gives the required domain quotient without a domain condition on R. The original nonzero denominator and original localization comparison then prove injection.
+
+13. StockAPI#lTensor_factor_lift_injective:
+The SAME factor injection stays injective after the SAME flat left tensor operation, without the now-unneeded IsDomain R binder. Polynomial UFD, scalar towers and flatness are unchanged. Pinned Flat/Basic.lean:131–133 applies directly to 12.
+
+14. StockAPI#primitiveRoots_fraction_nonempty:
+The SAME algebraMap R K carries a lifted primitive root into the original fraction field without a separate IsDomain R input. Henselian structure, separably closed residue field, IsFractionRing R K, positive n and invertibility of n in R all remain. Pinned Localization/FractionRing.lean:128–139 proves injectivity of this total-fraction map over a commutative ring, without a domain hypothesis. No alternative field or coefficient embedding is selected.
+
+Rename and law correspondence:
+The 42-entry map consists of 34 existing named-definition renames and eight explicit names for previously anonymous local instances. Exact old/current code comparison, modulo those names and comments/attributes, preserves all types, RHSs, object choices, scalar actions, original forward maps, model universes and proof terms. The eight raw instance diffs keep exactly the original HasDerivedCategory.standard, section/function-field algebra, right tensor algebra, and selected generic-field constructors. No dummy argument use, substitute model, priority change or compatibility framework is introduced. All required direct source consumers are normalized; a read-only exact old-identifier search over current Aglib Lean sources found no remaining references to the old bare renamed identifiers. This is source correspondence, not a fresh global proof review.
+
+The 29 simp-entry changes in 19 source files retain their actual equations and proof bodies. Twenty-two ordinary simp tags are removed; six reassoc(attr := simp) annotations become reassoc (removing two registrations each); the remaining annotation becomes reassoc,simp (retaining the base simp law and removing only its generated registration). Thus the supplied 35 registrations are withdrawn without removing a mathematical law. Pinned Tactic/CategoryTheory/Reassoc.lean:68–86,141–159 confirms that the same _assoc law is still generated. Rewriting availability changes as intended; the equations remain callable explicitly. The 248 documentation diagnostics add no separate writing gate, and no blanket writing verdict is asserted.
+
+Evidence boundary and remaining obligation:
+I reviewed the actual complete helper/predicate proofs, original versus current telescopes, necessary supplier conditions, selected relevant prose, explicit-argument normalization, rename/RHS correspondence and retained laws. In particular the packet's finite-Galois signature excerpt stops within its conclusion; coverage here uses the complete captured source, including its original class-map equation. Do not use that truncated excerpt alone as the endpoint statement.
+
+Pinned Mathlib is the existing local tree at lean/.lake/packages/mathlib, HEAD d13f23b723b8a846827a245b89c10fc7d3f11612; the nine selected supplier files are clean and hash-bound in REVIEWED-IDENTITY-V3.json. Native supporting supplier hashes are also recorded. Accepted old mathematics and original f861/fe6f execution evidence remain on their supplied basis; this report does not convert them into V3 evidence or an independent re-proof of every imported theorem.
+
+No mathematical/source-correspondence obligation remains open within this bounded V3 delta under those accepted suppliers. Current elaboration, CPP and stock-lint validation remain with the assigned lead/compiler broker on their actual runtime vector. No build, test, client check, lint run, audit, replay, production source write or Git mutation was performed here. A later source/premise repair needs only affected-closure reconciliation in this ordinary cycle.
+
+Read-only identity reproduction from this report directory:
+python3 -c 'import hashlib,json,pathlib; d=json.load(open("REVIEWED-IDENTITY-V3.json")); assert all(hashlib.sha256((pathlib.Path(d["publication_root"])/s["path"]).read_bytes()).hexdigest()==s["v3_sha256"] for s in d["old_and_current_sources"]); print("all 132 recorded V3 source hashes match")'
+

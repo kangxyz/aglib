@@ -44,3 +44,12 @@ constant inverse-image comparison for any scheme morphism.
 [ZMod](ZMod.lean) provides `moduleCat_uLiftZMod_forget₂_full` and
 `moduleSheaf_uLiftZMod_toSheaf_full`; both unit and roots inverse-image
 adapters use this scalar-forgetting provider.
+
+## Additional source entry points
+
+- [ScalarRestrictionAdjunction](ScalarRestrictionAdjunction.lean)
+- [ScalarRestrictionEtale](ScalarRestrictionEtale.lean)
+- [ScalarRestrictionExact](ScalarRestrictionExact.lean)
+- [ScalarRestrictionImages](ScalarRestrictionImages.lean)
+- [ScalarRestrictionMate](ScalarRestrictionMate.lean)
+- [ScalarRestrictionNativeAdjunction](ScalarRestrictionNativeAdjunction.lean)

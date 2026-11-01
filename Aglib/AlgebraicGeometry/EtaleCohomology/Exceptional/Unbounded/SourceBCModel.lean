@@ -44,15 +44,28 @@ variable {X X' S T : Scheme.{u}} (f : X ⟶ S) (f' : X' ⟶ S)
 variable (N : ℕ) (hN : 0 < N) (hΛ : N • (1 : Λ) = 0)
 variable (C : Hom.DenseCompactification f)
 
+/-- The derived-category instance in universe `wM` for `Λ`-module sheaves on `C.Xbar`.
+-/
 local instance unboundedSourceBCModelOriginal : HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ) :=
   models C
+/-- The derived-category instance in universe `wR` for `Λ`-module sheaves on `(pullback b C.p)`.
+-/
 local instance unboundedSourceBCModelOriginalRaw : HasDerivedCategory.{wR}
     (ModuleSheaf (pullback b C.p) Λ) := rawModels C
+/-- The derived-category instance in universe `wN` for `Λ`-module sheaves on `((baseChange b).obj
+    C).Xbar`.
+-/
 local instance unboundedSourceBCModelOriginalTarget : HasDerivedCategory.{wN}
     (ModuleSheaf ((baseChange b).obj C).Xbar Λ) := targetModels ((baseChange b).obj C)
+/-- The derived-category instance in universe `wN'` for `Λ`-module sheaves on `((sourceIso f' e he ⋙
+    baseChange b).obj C).Xbar`.
+-/
 local instance unboundedSourceBCModelNewTarget : HasDerivedCategory.{wN'}
     (ModuleSheaf ((sourceIso f' e he ⋙ baseChange b).obj C).Xbar Λ) :=
   changedTargetModels ((sourceIso f' e he ⋙ baseChange b).obj C)
+/-- The derived-category instance in universe `wN` for `Λ`-module sheaves on `(baseChangeObj b
+    C).Xbar`.
+-/
 local instance unboundedSourceBCModelOriginalBaseChangeObj : HasDerivedCategory.{wN}
     (ModuleSheaf (baseChangeObj b C).Xbar Λ) := targetModels ((baseChange b).obj C)
 

@@ -33,6 +33,7 @@ local notation "C" => GeometricEtaleColimit R Ω
 local notation "T" => RootAlgebra N π
 local notation "T'" => RootAlgebra N (algebraMap R C π)
 
+/-- The algebra on the coefficient-changed root algebra induced by the original root map. -/
 local instance : Algebra T T' := rootBaseChangeAlgebra C N π
 local instance : IsScalarTower R T T' :=
   IsScalarTower.of_algebraMap_eq fun r => ((rootBaseChangeHom C N π).commutes r).symm
@@ -78,7 +79,7 @@ theorem strictRoot_toIntegralClosure_bijective (hN : 0 < N) :
 
 /-- This equivalence is the original tensor-to-integral-closure map, linear
 over the literal coefficient-changed root algebra. -/
-def strictRoot_integralClosureEquiv (hN : 0 < N) :
+def strictRootIntegralClosureEquiv (hN : 0 < N) :
     T' ⊗[T] integralClosure T A ≃ₐ[T'] integralClosure T' (T' ⊗[T] A) :=
   AlgEquiv.ofBijective (_root_.TensorProduct.toIntegralClosure T T' A)
     (strictRoot_toIntegralClosure_bijective R Ω N π A hN)
@@ -86,7 +87,7 @@ def strictRoot_integralClosureEquiv (hN : 0 < N) :
 /-- Original integral elements and root-base coefficients are unchanged. -/
 @[simp] theorem strictRoot_integralClosureEquiv_tmul_val (hN : 0 < N)
     (t : T') (b : integralClosure T A) :
-    (strictRoot_integralClosureEquiv R Ω N π A hN (t ⊗ₜ[T] b) : T' ⊗[T] A) =
+    (strictRootIntegralClosureEquiv R Ω N π A hN (t ⊗ₜ[T] b) : T' ⊗[T] A) =
       t ⊗ₜ[T] (b : A) := rfl
 
 end Algebra.Kummer

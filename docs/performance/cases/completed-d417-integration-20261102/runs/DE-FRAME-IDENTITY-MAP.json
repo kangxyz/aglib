@@ -1,0 +1,22 @@
+[
+  {
+    "phase": "d47-BC16-DE30-D-ready23",
+    "remote_run": "e2c0026add754409981a4e7d9c96e965",
+    "receipt_operation_id": "9b497d7113784ef9839daa19356115bb"
+  },
+  {
+    "phase": "d47-BC37-DE45-repair1-D",
+    "remote_run": "d685b2be603e46a099742b2eed9856ff",
+    "receipt_operation_id": "9758a8b009664efbb1d6c3b232174576"
+  },
+  {
+    "phase": "d47-BC231-repair23-D",
+    "remote_run": "c40414f83190461da168445dab21fc15",
+    "receipt_operation_id": "be570168eb10452c8f61175d48075aac"
+  },
+  {
+    "phase": "d47-repair45-DEdelta2-D",
+    "remote_run": "95d1a72136ac4fcaabab891157efab9d",
+    "receipt_operation_id": "5282a5eb026141f0ac628c24f882b1cb"
+  }
+]

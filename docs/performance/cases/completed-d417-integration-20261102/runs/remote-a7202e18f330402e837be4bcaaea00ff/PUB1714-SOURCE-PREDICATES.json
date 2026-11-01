@@ -1,0 +1,42 @@
+{
+  "question": "Same final1714 milestone: native generated-entry and actual695 changed/new pure-source style gaps on idle A; no production CPP",
+  "source": "9ed4d75a0f9bda69aab842c511af0b47984da315f61e88b7f60277da7a3145d5",
+  "style_input_count": 695,
+  "style_source_vector_sha256": "44e80d39ca8970044080fbd3970552dc8e669be0863eae552d3c831ac5ff5156",
+  "commands": [
+    {
+      "kind": "generated-entry-current",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "exe",
+        "mathlib/mk_all",
+        "--lib",
+        "Aglib",
+        "--check"
+      ],
+      "exit": 0,
+      "seconds": 1.874921202659607,
+      "log": "/root/autodl-tmp/lean-build/logs/remote-a7202e18f330402e837be4bcaaea00ff/generated-entry-current.log"
+    },
+    {
+      "kind": "text-style-current695",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "env",
+        "python3",
+        "-c",
+        "import os,sys;os.environ['LEAN_SRC_PATH']=sys.argv[1]+os.pathsep+os.environ.get('LEAN_SRC_PATH','');os.execv(sys.argv[2],[sys.argv[2],sys.argv[3]])",
+        "/root/autodl-tmp/lean-build/logs/remote-a7202e18f330402e837be4bcaaea00ff/source-selection-data",
+        "/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/bin/lint-style",
+        "Aglib.LatestCDStyleSelection"
+      ],
+      "exit": 1,
+      "seconds": 3.0414840281009674,
+      "log": "/root/autodl-tmp/lean-build/logs/remote-a7202e18f330402e837be4bcaaea00ff/text-style-current695.log"
+    }
+  ],
+  "style_binary_sha256": "e01b2c5c321385f8b9600d89b967694f66332c3a2daa3e4f97204367662e3fb0",
+  "boundary": "Actual existing native source predicates only. No production frontend/client/kernel/tests/replay or source writes. Success is reused in the one final1714 environment, not repeated."
+}

@@ -51,6 +51,16 @@ base-change and composition calculus.
 Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
 
 - [ClosedSummandDetection](ClosedSummandDetection.lean)
+- [GeometricPullbackComplex](GeometricPullbackComplex.lean)
+- [GeometricPullbackDerived](GeometricPullbackDerived.lean)
+- [GeometricPullbackTriangle](GeometricPullbackTriangle.lean)
+- [GeometricPullback](GeometricPullback.lean)
 - [ModuleInjectiveRetract](ModuleInjectiveRetract.lean)
 - [OpenInjectiveHigherVanishing](OpenInjectiveHigherVanishing.lean)
 - [OpenSummandDetection](OpenSummandDetection.lean)
+- [ScalarRestrictionComplex](ScalarRestrictionComplex.lean)
+- [ScalarRestrictionDerived](ScalarRestrictionDerived.lean)
+- [ScalarRestrictionNaturality](ScalarRestrictionNaturality.lean)
+- [ScalarRestrictionTriangleHom](ScalarRestrictionTriangleHom.lean)
+- [ScalarRestrictionTriangle](ScalarRestrictionTriangle.lean)
+- [ScalarRestriction](ScalarRestriction.lean)

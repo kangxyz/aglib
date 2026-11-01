@@ -155,7 +155,7 @@ theorem splitSection_surjective : Function.Surjective ε :=
 def splitSectionQuotientEquiv : (B ⧸ RingHom.ker ε.toRingHom) ≃ₐ[R] R :=
   Ideal.quotientKerAlgEquivOfSurjective (splitSection_surjective ε)
 
-@[simp] theorem splitSectionQuotientEquiv_mk (b : B) :
+theorem splitSectionQuotientEquiv_mk (b : B) :
     splitSectionQuotientEquiv ε (Ideal.Quotient.mk (RingHom.ker ε.toRingHom) b) = ε b :=
   Ideal.quotientKerAlgEquivOfSurjective_mk (splitSection_surjective ε) b
 

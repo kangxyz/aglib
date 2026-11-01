@@ -80,7 +80,7 @@ variable [Etale (restrictedNormalizationMap j Y ∣_ Z)]
 abbrev restrictedNormalizationCover : FiniteEtale Z := FiniteEtale.mk (f ∣_ Z)
 
 /-- The original cover restriction maps to the literal normalization restriction. -/
-def restrictedNormalization_restrictionIso :
+def restrictedNormalizationRestrictionIso :
     FiniteEtale.mk (Y.obj.hom ∣_ W) ≅
       (baseChange (j ∣_ Z)).obj (restrictedNormalizationCover j Y Z) :=
   ObjectProperty.isoMk _ (Over.isoMk
@@ -143,7 +143,7 @@ theorem restrictedNormalization_isGalois_card [IsGalois Y] :
   let : IsIntegral E.obj.left := inferInstanceAs (IsIntegral EZ)
   let : IsIntegral G.obj.left := inferInstanceAs (IsIntegral NZ)
   let eY : E ≅ (baseChange (W).ι).obj Y := originalCoverRestrictionIso j Y Z
-  let eG : E ≅ (baseChange (j ∣_ Z)).obj G := restrictedNormalization_restrictionIso j Y Z
+  let eG : E ≅ (baseChange (j ∣_ Z)).obj G := restrictedNormalizationRestrictionIso j Y Z
   let : IsIntegral ((forgetToScheme W).obj E) := by
     rw [forgetToScheme_obj]
     infer_instance

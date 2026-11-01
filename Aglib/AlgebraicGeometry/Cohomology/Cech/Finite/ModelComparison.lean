@@ -82,8 +82,12 @@ section FiniteModels
 variable {R₀ : Type u} [CommRing R₀] (X₀ : Scheme.{u}) (α₀ : R₀ →+* Γ(X₀, ⊤))
   {ι₀ : Type u} (U₀ : ι₀ → X₀.Opens)
 
-local instance : HasDerivedCategory.{u + 1} X₀.Modules := HasDerivedCategory.standard _
-local instance : HasDerivedCategory.{u + 1} (ModuleCat.{u} R₀) := HasDerivedCategory.standard _
+/-- The standard derived-category realization for module sheaves on `X₀`, in universe `u + 1`. -/
+local instance finiteCechModulesHasDerivedCategory :
+    HasDerivedCategory.{u + 1} X₀.Modules := HasDerivedCategory.standard _
+/-- The standard derived-category realization for `R₀`-modules, in universe `u + 1`. -/
+local instance finiteCechModuleCatHasDerivedCategory :
+    HasDerivedCategory.{u + 1} (ModuleCat.{u} R₀) := HasDerivedCategory.standard _
 
 /-- Construct the actual lift between the two chosen resolutions before specialization. -/
 theorem moduleFiniteCechCanonicalResolution_naturality [X₀.IsSeparated]

@@ -33,7 +33,7 @@ local notation "S" => GeometricEtaleColimit.stageLocalRing R Ω X
 def principalStagePoint (s : Finset M) : stage M s →+* Ω :=
   (Localization.ResiduePoint.point X.point.toRingHom).comp (projection M S s)
 
-@[simp] theorem principalStagePoint_algebraMap (s : Finset M) (b : X.algebra) :
+theorem principalStagePoint_algebraMap (s : Finset M) (b : X.algebra) :
     principalStagePoint R Ω X s (algebraMap X.algebra (stage M s) b) = X.point b := by
   change Localization.ResiduePoint.point X.point.toRingHom
     (projection M S s (algebraMap X.algebra (stage M s) b)) = X.point b

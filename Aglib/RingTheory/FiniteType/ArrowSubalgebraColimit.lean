@@ -161,9 +161,11 @@ def diagramMap (α : A →ₐ[R] B) : sourceDiagram α ⟶ targetDiagram α :=
     (sourceStage α) (targetStage α) (sourceStage_monotone α) (targetStage_monotone α)
     α (map_mem_targetStage α)
 
+/-- The cocone of inclusions of the finite-type source stages into the original algebra. -/
 def sourceCocone (α : A →ₐ[R] B) : Cocone (sourceDiagram α) :=
   FiniteTypeSubalgebraLimit.subalgebraCocone R A (sourceStage α) (sourceStage_monotone α)
 
+/-- The cocone of inclusions of the finite-type target stages into the original algebra. -/
 def targetCocone (α : A →ₐ[R] B) : Cocone (targetDiagram α) :=
   FiniteTypeSubalgebraLimit.subalgebraCocone R B (targetStage α) (targetStage_monotone α)
 
@@ -189,13 +191,11 @@ theorem diagramMap_cocone (α : A →ₐ[R] B) (s : Index A B) :
     α (map_mem_targetStage α) s
 
 /-- Source inclusion retains the original coefficient map. -/
-@[simp]
 theorem sourceCocone_algebraMap (α : A →ₐ[R] B) (s : Index A B) (r : R) :
     ((sourceCocone α).ι.app s).hom (algebraMap R (sourceStage α s) r) =
       algebraMap R A r := rfl
 
 /-- Target inclusion retains the original coefficient map. -/
-@[simp]
 theorem targetCocone_algebraMap (α : A →ₐ[R] B) (s : Index A B) (r : R) :
     ((targetCocone α).ι.app s).hom (algebraMap R (targetStage α s) r) =
       algebraMap R B r := rfl

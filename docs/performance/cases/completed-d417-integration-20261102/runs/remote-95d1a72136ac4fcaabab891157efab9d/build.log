@@ -1,0 +1,191 @@
+✔ [8637/8696] Built Aglib.CategoryTheory.NatTrans.CartesianExchangeNormalization (2.5s)
+✔ [8661/8699] Built Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.ChangeTargetNatTrans (3.8s)
+✔ [8662/8761] Built Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.IdentityTargetComposition (4.1s)
+✖ [8710/8766] Building Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.IdentityFactorizationCoherence (8.5s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-95d1a72136ac4fcaabab891157efab9d/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IdentityFactorizationCoherence.lean -o /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IdentityFactorizationCoherence.olean -i /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IdentityFactorizationCoherence.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IdentityFactorizationCoherence.c --setup /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IdentityFactorizationCoherence.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IdentityFactorizationCoherence.lean:56:2: Type mismatch
+  congrArg (fun m => m ≫ 𝟙 K.obj) hk
+has type
+  ((CategoryTheory.imageComparison δ t).app K.obj ≫ (moduleDerivedIdentityFactorizationIso Λ X hE hE).hom.app K.obj) ≫
+      𝟙 K.obj =
+    (moduleDerivedIdentityFactorizationIso Λ X hE hM).hom.app K.obj ≫ 𝟙 K.obj
+but is expected to have type
+  (CategoryTheory.imageComparison δ t).app K.obj ≫
+      (moduleDerivedIdentityFactorizationIso Λ X hE hE).hom.app K.obj ≫ 𝟙 K.obj =
+    (moduleDerivedIdentityFactorizationIso Λ X hE hM).hom.app K.obj ≫ 𝟙 K.obj
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  rightDerivedFunctorPlus ↦ 54
+✖ [8729/8797] Building Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionRightUnitOpen (14s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-95d1a72136ac4fcaabab891157efab9d/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRightUnitOpen.lean -o /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRightUnitOpen.olean -i /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRightUnitOpen.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRightUnitOpen.c --setup /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRightUnitOpen.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRightUnitOpen.lean:45:17: failed to synthesize instance of type class
+  Etale ((Hom.CompactifiedComposition.rightUnit C).first.j ≫ (Hom.CompactifiedComposition.rightUnit C).middleOpen)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+✖ [8751/8797] Building Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.SourceIsoIdentity (12s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-95d1a72136ac4fcaabab891157efab9d/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoIdentity.lean -o /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoIdentity.olean -i /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoIdentity.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoIdentity.c --setup /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoIdentity.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoIdentity.lean:81:70: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoIdentity.lean:110:2: `dsimp` made no progress
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    sourceIsoAmbientModel (Iso.refl X) Λ f ⋯ C
+  has type
+    @HasDerivedCategory (ModuleSheaf (C.ofSourceIso f (Iso.refl X) ⋯).Xbar Λ) SheafOfModules.instCategory
+      (SheafOfModules.instAbelian (constantRing (C.ofSourceIso f (Iso.refl X) ⋯).Xbar Λ))
+  but is expected to have type
+    @HasDerivedCategory (ModuleSheaf C.Xbar Λ) SheafOfModules.instCategory
+      (SheafOfModules.instAbelian
+        (constantRing
+          { Xbar := C.Xbar, j := 𝟙 X ≫ C.j, p := C.p, isOpenImmersion_j := ⋯, isProper_p := ⋯, fac := ⋯ }.Xbar Λ))
+  in the application
+    @DerivedCategory.Plus (ModuleSheaf C.Xbar Λ) SheafOfModules.instCategory
+      (SheafOfModules.instAbelian
+        (constantRing
+          { Xbar := C.Xbar, j := 𝟙 X ≫ C.j, p := C.p, isOpenImmersion_j := ⋯, isProper_p := ⋯, fac := ⋯ }.Xbar Λ))
+      (sourceIsoAmbientModel (Iso.refl X) Λ f ⋯ C)
+✔ [8761/8822] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.OpenTargetModels (16s)
+✔ [8762/8825] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.CompositionBaseChangeExchange (18s)
+✔ [8763/8841] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionModelComparison (22s)
+✔ [8792/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.IdentityFactorizationUnit (26s)
+✔ [8796/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CompositionBCRefinementRaw (14s)
+✔ [8797/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.FamilyModelComparison (7.6s)
+✔ [8798/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.UnitModelComparison (14s)
+✔ [8799/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.ExceptionalBaseModelIdentity (23s)
+✔ [8800/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.IdentityTargetComposition (15s)
+✔ [8801/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.ProperOpenComparison (35s)
+✔ [8811/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.CompositionBCNormalization (17s)
+✔ [8832/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.UnitModelSelf (9.8s)
+✔ [8853/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.UnitModelRefinement (11s)
+✔ [8854/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.UnitModelToDirectImage (11s)
+✔ [8856/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.BaseModelIdentityCoherence (12s)
+✔ [8857/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.OpenNormalizationComparison (9.6s)
+✖ [8859/8895] Building Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.ChosenIdentityNormalization (6.2s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-95d1a72136ac4fcaabab891157efab9d/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ChosenIdentityNormalization.lean -o /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ChosenIdentityNormalization.olean -i /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ChosenIdentityNormalization.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ChosenIdentityNormalization.c --setup /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ChosenIdentityNormalization.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ChosenIdentityNormalization.lean:34:2: Tactic `rfl` failed: The left-hand side
+  Functor.whiskerRight (moduleUnboundedLowerShriekToDirectImage Λ (𝟙 X)) (moduleUnboundedDerivedDirectImage Λ (𝟙 X)) ≫
+    (moduleUnboundedDerivedDirectImageOverIso Λ (𝟙 X) (𝟙 X) (𝟙 X) ⋯).hom ≫
+      (moduleUnboundedDerivedDirectImageIdIso Λ X).hom
+is not definitionally equal to the right-hand side
+  (Functor.whiskerRight (moduleUnboundedLowerShriekToDirectImage Λ (Hom.DenseCompactification.ofProper (𝟙 X)).j)
+        (moduleUnboundedDerivedDirectImage Λ (Hom.DenseCompactification.ofProper (𝟙 X)).p) ≫
+      (moduleUnboundedDerivedDirectImageOverIso Λ (𝟙 X) (Hom.DenseCompactification.ofProper (𝟙 X)).p
+          (Hom.DenseCompactification.ofProper (𝟙 X)).j ⋯).hom) ≫
+    (moduleUnboundedDerivedDirectImageIdIso Λ X).hom
+
+X : Scheme
+Λ : Type (u + 1)
+inst✝ : Ring Λ
+hX : HasDerivedCategory (ModuleSheaf X Λ)
+hC : HasDerivedCategory (ModuleSheaf X Λ)
+⊢ Functor.whiskerRight (moduleUnboundedLowerShriekToDirectImage Λ (𝟙 X)) (moduleUnboundedDerivedDirectImage Λ (𝟙 X)) ≫
+      (moduleUnboundedDerivedDirectImageOverIso Λ (𝟙 X) (𝟙 X) (𝟙 X) ⋯).hom ≫
+        (moduleUnboundedDerivedDirectImageIdIso Λ X).hom =
+    (Functor.whiskerRight (moduleUnboundedLowerShriekToDirectImage Λ (Hom.DenseCompactification.ofProper (𝟙 X)).j)
+          (moduleUnboundedDerivedDirectImage Λ (Hom.DenseCompactification.ofProper (𝟙 X)).p) ≫
+        (moduleUnboundedDerivedDirectImageOverIso Λ (𝟙 X) (Hom.DenseCompactification.ofProper (𝟙 X)).p
+            (Hom.DenseCompactification.ofProper (𝟙 X)).j ⋯).hom) ≫
+      (moduleUnboundedDerivedDirectImageIdIso Λ X).hom
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ChosenIdentityNormalization.lean:33:59: This simp argument is unused:
+  Category.assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [moduleUnboundedSingleIdentityValueIso, moduleUnboundedSingleValueToDirectImage, Iso.trans_hom,
+    Functor.isoWhiskerRight_hom, asIso_hom]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✖ [8860/8895] Building Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceIsoIdentity (13s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-95d1a72136ac4fcaabab891157efab9d/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoIdentity.lean -o /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoIdentity.olean -i /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoIdentity.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoIdentity.c --setup /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoIdentity.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoIdentity.lean:68:72: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoIdentity.lean:102:74: Application type mismatch: The argument
+  hk
+has type
+  (moduleUnboundedDerivedLowerShriekSourceIso (Iso.refl X) C.j Λ).hom.app K ≫
+      (moduleUnboundedDerivedLowerShriek C.j Λ).map ((moduleUnboundedDerivedInverseImageIdIso Λ X).hom.app K) ≫
+        𝟙 ((moduleUnboundedDerivedLowerShriek C.j Λ).obj ((𝟭 (DerivedCategory (ModuleSheaf X Λ))).obj K)) =
+    𝟙 ((moduleUnboundedDerivedLowerShriek C.j Λ).obj K)
+but is expected to have type
+  (moduleUnboundedDerivedLowerShriekSourceIso (Iso.refl X) C.j Λ).hom.app K ≫
+      (moduleUnboundedDerivedLowerShriek C.j Λ).map ((moduleUnboundedDerivedInverseImageIdIso Λ X).hom.app K) =
+    𝟙 ((moduleUnboundedDerivedLowerShriek C.j Λ).obj K)
+in the application
+  congrArg (fun z => (moduleUnboundedDerivedDirectImage Λ C.p).map z) hk
+✔ [8868/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.CompositionBCRefinement (11s)
+✖ [8869/8895] Building Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CompositionModelComparison (15s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-95d1a72136ac4fcaabab891157efab9d/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionModelComparison.lean -o /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionModelComparison.olean -i /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionModelComparison.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionModelComparison.c --setup /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionModelComparison.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionModelComparison.lean:87:2: Type mismatch: After simplification, term
+  hk
+ has type
+  @Eq
+    ((moduleUnboundedDerivedDirectImage Λ C.targetCompactification.p).obj
+        ((moduleUnboundedDerivedLowerShriek C.targetCompactification.j Λ).obj
+          ((moduleUnboundedDerivedDirectImage Λ C.first.p).obj
+            ((moduleUnboundedDerivedLowerShriek C.first.j Λ).obj K))) ⟶
+      (moduleUnboundedDerivedDirectImage Λ C.composite.p).obj
+        ((moduleUnboundedDerivedLowerShriek C.composite.j Λ).obj K))
+    ((Functor.whiskerRight (moduleUnboundedCompactificationMixedTransition Λ (𝟙 C.first))
+            (moduleUnboundedDerivedLowerShriek C.targetCompactification.j Λ ⋙
+              moduleUnboundedDerivedDirectImage Λ C.targetCompactification.p)).app
+        K ≫
+      ((moduleUnboundedDerivedLowerShriek C.first.j Λ ⋙ moduleUnboundedDerivedDirectImage Λ C.first.p).whiskerLeft
+              (moduleUnboundedCompactificationMixedTransition Λ (𝟙 C.targetCompactification))).app
+          K ≫
+        (moduleUnboundedCompactifiedCompositionIso f g Λ C N hN hΛ).hom.app K)
+    (((moduleUnboundedCompactifiedCompositionIso f g Λ C N hN hΛ).hom ≫
+          moduleUnboundedCompactificationMixedTransition Λ (𝟙 C.composite)).app
+      K)
+but is expected to have type
+  @Eq
+    ((moduleUnboundedDerivedDirectImage Λ C.targetCompactification.p).obj
+        ((moduleUnboundedDerivedLowerShriek C.targetCompactification.j Λ).obj
+          ((moduleUnboundedDerivedDirectImage Λ C.first.p).obj
+            ((moduleUnboundedDerivedLowerShriek C.first.j Λ).obj K))) ⟶
+      (moduleUnboundedDerivedDirectImage Λ C.composite.p).obj
+        ((moduleUnboundedDerivedLowerShriek C.composite.j Λ).obj K))
+    ((moduleUnboundedDerivedDirectImage Λ C.targetCompactification.p).map
+        ((moduleUnboundedDerivedLowerShriek C.targetCompactification.j Λ).map
+          ((asIso (moduleUnboundedCompactificationMixedTransition Λ (𝟙 C.first))).hom.app K)) ≫
+      (asIso (moduleUnboundedCompactificationMixedTransition Λ (𝟙 C.targetCompactification))).hom.app
+          ((moduleUnboundedDerivedDirectImage Λ C.first.p).obj
+            ((moduleUnboundedDerivedLowerShriek C.first.j Λ).obj K)) ≫
+        (moduleUnboundedCompactifiedCompositionIso f g Λ C N hN hΛ).hom.app K)
+    ((moduleUnboundedCompactifiedCompositionIso f g Λ C N hN hΛ).hom.app K ≫
+      (asIso (moduleUnboundedCompactificationMixedTransition Λ (𝟙 C.composite))).hom.app K)
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  Functor.rightDerivedFunctorOfKInjectiveReplacementUnit ↦ 14
+  Functor.rightDerivedFunctorOfKInjectiveReplacement ↦ 466
+  Functor.mapDerivedCategoryCompIso ↦ 34
+✔ [8872/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CompositionSingleModel (16s)
+✔ [8873/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.LeftUnitSuppliedIso (16s)
+✔ [8876/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.CompositionBCRestriction (15s)
+✔ [8877/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CompositionSingleSource (15s)
+✔ [8878/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.CompositionBCTorsion (20s)
+✔ [8879/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.TripleSingleModels (35s)
+✔ [8880/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CompositionRawSquare (19s)
+✔ [8881/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CompositionSingleModelFormula (18s)
+✔ [8882/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.CompositionBCModelSquare (40s)
+✔ [8883/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CompositionSingleModelFormulaBoundary (16s)
+✔ [8884/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CompositionBaseChangeChosenModel (108s)
+✔ [8885/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CompositionBCModelComparison (21s)
+✔ [8886/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.CompositionBCChosenModel (102s)
+✔ [8887/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionBCModelComparison (18s)
+✔ [8888/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.BaseChangeComposition (28s)
+✔ [8889/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.BaseChangeComposition (21s)
+✔ [8890/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.TripleSingleModelMaps (82s)
+✔ [8891/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.BaseChangeCompositionOriginal (42s)
+✔ [8892/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.BaseChangeCompositionOriginal (34s)
+✔ [8893/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.TripleSingleModelAssociativity (43s)
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.IdentityFactorizationCoherence
+- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionRightUnitOpen
+- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.SourceIsoIdentity
+- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.ChosenIdentityNormalization
+- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceIsoIdentity
+- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CompositionModelComparison
+error: build failed

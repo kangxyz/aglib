@@ -31,18 +31,33 @@ variable {X X' S T : Scheme.{u}} (f : X ⟶ S) (f' : X' ⟶ S)
   [HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ)]
   [HasDerivedCategory.{wN} (ModuleSheaf (pullback b C.p) Λ)]
 
+/-- Derived-category instance on module sheaves over `(C.ofSourceIso f' e he).Xbar`, using the
+instance on `C.Xbar`.
+-/
 local instance rawSourceBCSourceModel : HasDerivedCategory.{wM}
     (ModuleSheaf (C.ofSourceIso f' e he).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ))
+/-- Derived-category instance on module sheaves over `(C.baseChange b).Xbar`, using the instance on
+`(pullback b C.p)`.
+-/
 local instance rawSourceBCPullbackModel : HasDerivedCategory.{wN}
     (ModuleSheaf (C.baseChange b).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN} (ModuleSheaf (pullback b C.p) Λ))
+/-- Derived-category instance on module sheaves over `(pullback b (C.ofSourceIso f' e he).p)`, using
+the instance on `(pullback b C.p)`.
+-/
 local instance rawSourceBCPullbackSourceModel : HasDerivedCategory.{wN}
     (ModuleSheaf (pullback b (C.ofSourceIso f' e he).p) Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN} (ModuleSheaf (pullback b C.p) Λ))
+/-- Derived-category instance on module sheaves over `((C.ofSourceIso f' e he).baseChange b).Xbar`,
+using the instance on `(pullback b C.p)`.
+-/
 local instance rawSourceBCActualModel : HasDerivedCategory.{wN}
     (ModuleSheaf ((C.ofSourceIso f' e he).baseChange b).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN} (ModuleSheaf (pullback b C.p) Λ))
+/-- Derived-category instance on module sheaves over `(sourceBaseChangeTransportModel f f' e he b
+C).Xbar`, using the instance on `(pullback b C.p)`.
+-/
 local instance rawSourceBCTransportModel : HasDerivedCategory.{wN}
     (ModuleSheaf (sourceBaseChangeTransportModel f f' e he b C).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN} (ModuleSheaf (pullback b C.p) Λ))

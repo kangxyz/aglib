@@ -63,7 +63,7 @@ theorem powerSeriesHartogsFiniteEtale_baseChange_faithful
   exact FiniteEtale.Adic.firstStage_baseChange_faithful_of_unitSectionCone _ hunit
 
 /-- The actual first-stage functor is fully faithful, with no assumed completion property. -/
-def powerSeriesHartogsFiniteEtale_fullyFaithful
+def powerSeriesHartogsFiniteEtaleFullyFaithful
     {σ : Type} [Finite σ] {A : Type u} [CommRing A] [IsNoetherianRing A]
     (U : (Spec (.of A)).Opens) [QuasiCompact U.ι] [QuasiSeparated U.ι]
     (hU : Function.Bijective (affineScalarMap U.ι))
@@ -77,7 +77,7 @@ def powerSeriesHartogsFiniteEtale_fullyFaithful
   exact Functor.FullyFaithful.ofFullyFaithful _
 
 /-- Restriction along the actual zero-section map is fully faithful on finite-etale covers. -/
-def powerSeriesHartogsFiniteEtale_zeroSection_fullyFaithful
+def powerSeriesHartogsFiniteEtaleZeroSectionFullyFaithful
     {σ : Type} [Finite σ] {A : Type u} [CommRing A] [IsNoetherianRing A]
     (U : (Spec (.of A)).Opens) [QuasiCompact U.ι] [QuasiSeparated U.ι]
     (hU : Function.Bijective (affineScalarMap U.ι))
@@ -90,7 +90,7 @@ def powerSeriesHartogsFiniteEtale_zeroSection_fullyFaithful
     (constantCoeff : MvPowerSeries σ A →+* A))
   have hK : (baseChange K.subschemeι).FullyFaithful := by
     have hp : (baseChange (K ^ 1).subschemeι).FullyFaithful :=
-      powerSeriesHartogsFiniteEtale_fullyFaithful U hU V hUV hV
+      powerSeriesHartogsFiniteEtaleFullyFaithful U hU V hUV hV
     exact Eq.mp (congrArg
       (fun J : V.toScheme.IdealSheafData => (baseChange J.subschemeι).FullyFaithful)
       (pow_one K)) hp

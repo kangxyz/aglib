@@ -1,0 +1,393 @@
+Running linter on specified modules: [Aglib.Selected1714Lint]
+[Aglib.Selected1714Lint] Starting lint...
+[Aglib.Selected1714Lint] Running linters:
+  checkType
+  defsWithUnderscore
+  deprecatedNoSince
+  docBlame
+  impossibleInstance
+  nonClassInstance
+  simpComm
+  simpNF
+  structureInType
+  subsetDotNotationLinter
+  synTaut
+  tacticAlt
+  tacticDocs
+  unusedArguments
+  unusedHavesSuffices
+[Aglib.Selected1714Lint] - checkType: (0/2) Starting...
+[Aglib.Selected1714Lint] - defsWithUnderscore: (0/2) Starting...
+[Aglib.Selected1714Lint] - deprecatedNoSince: (0/2) Starting...
+[Aglib.Selected1714Lint] - docBlame: (0/2) Starting...
+[Aglib.Selected1714Lint] - impossibleInstance: (0/2) Starting...
+[Aglib.Selected1714Lint] - nonClassInstance: (0/2) Starting...
+[Aglib.Selected1714Lint] - simpComm: (0/2) Starting...
+[Aglib.Selected1714Lint] - simpNF: (0/2) Starting...
+[Aglib.Selected1714Lint] - structureInType: (0/2) Starting...
+[Aglib.Selected1714Lint] - subsetDotNotationLinter: (0/2) Starting...
+[Aglib.Selected1714Lint] - synTaut: (0/2) Starting...
+[Aglib.Selected1714Lint] - tacticAlt: (0/2) Starting...
+[Aglib.Selected1714Lint] - tacticDocs: (0/2) Starting...
+[Aglib.Selected1714Lint] - unusedArguments: (0/2) Starting...
+[Aglib.Selected1714Lint] - unusedHavesSuffices: (0/2) Starting...
+[Aglib.Selected1714Lint] - checkType: (1/2) Getting...
+[Aglib.Selected1714Lint] - checkType: (2/2) Passed!
+[Aglib.Selected1714Lint] - defsWithUnderscore: (1/2) Getting...
+[Aglib.Selected1714Lint] - defsWithUnderscore: (2/2) Failed with 18 messages, but these may include declarations in `nolints.json`.
+[Aglib.Selected1714Lint] - deprecatedNoSince: (1/2) Getting...
+[Aglib.Selected1714Lint] - deprecatedNoSince: (2/2) Passed!
+[Aglib.Selected1714Lint] - docBlame: (1/2) Getting...
+[Aglib.Selected1714Lint] - docBlame: (2/2) Failed with 157 messages, but these may include declarations in `nolints.json`.
+[Aglib.Selected1714Lint] - impossibleInstance: (1/2) Getting...
+[Aglib.Selected1714Lint] - impossibleInstance: (2/2) Passed!
+[Aglib.Selected1714Lint] - nonClassInstance: (1/2) Getting...
+[Aglib.Selected1714Lint] - nonClassInstance: (2/2) Passed!
+[Aglib.Selected1714Lint] - simpComm: (1/2) Getting...
+[Aglib.Selected1714Lint] - simpComm: (2/2) Passed!
+[Aglib.Selected1714Lint] - simpNF: (1/2) Getting...
+[Aglib.Selected1714Lint] - simpNF: (2/2) Failed with 1 messages, but these may include declarations in `nolints.json`.
+[Aglib.Selected1714Lint] - structureInType: (1/2) Getting...
+[Aglib.Selected1714Lint] - structureInType: (2/2) Passed!
+[Aglib.Selected1714Lint] - subsetDotNotationLinter: (1/2) Getting...
+[Aglib.Selected1714Lint] - subsetDotNotationLinter: (2/2) Passed!
+[Aglib.Selected1714Lint] - synTaut: (1/2) Getting...
+[Aglib.Selected1714Lint] - synTaut: (2/2) Passed!
+[Aglib.Selected1714Lint] - tacticAlt: (1/2) Getting...
+[Aglib.Selected1714Lint] - tacticAlt: (2/2) Passed!
+[Aglib.Selected1714Lint] - tacticDocs: (1/2) Getting...
+[Aglib.Selected1714Lint] - tacticDocs: (2/2) Passed!
+[Aglib.Selected1714Lint] - unusedArguments: (1/2) Getting...
+[Aglib.Selected1714Lint] - unusedArguments: (2/2) Passed!
+[Aglib.Selected1714Lint] - unusedHavesSuffices: (1/2) Getting...
+[Aglib.Selected1714Lint] - unusedHavesSuffices: (2/2) Passed!
+[Aglib.Selected1714Lint] Completed linting!
+[Aglib.Selected1714Lint] scripts/nolints.json summary (number of nolints per linter):
+  
+-- Found 176 errors in 41757 declarations (plus 30926 automatically generated ones) in Aglib.Selected1714Lint with 15 linters
+
+/- The `defsWithUnderscore` linter reports:
+FOUND definitions with an underscore in their name.
+This linter can be disabled with `@[nolint defsWithUnderscore]`. -/
+-- Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Coproducts.Localization
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean:39:1: error: @DerivedCategory.Q_coproductCofanIsColimit_of_kInjectiveReplacement The definition `DerivedCategory.Q_coproductCofanIsColimit_of_kInjectiveReplacement` contains an underscore. This almost surely violates mathlib's naming convention; use lowerCamelCase or UpperCamelCase instead.
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean:80:1: error: @DerivedCategory.Q_coproductCofanIsColimit The definition `DerivedCategory.Q_coproductCofanIsColimit` contains an underscore. This almost surely violates mathlib's naming convention; use lowerCamelCase or UpperCamelCase instead.
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean:109:1: error: @DerivedCategory.Q_coproductIso The definition `DerivedCategory.Q_coproductIso` contains an underscore. This almost surely violates mathlib's naming convention; use lowerCamelCase or UpperCamelCase instead.
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean:125:1: error: @DerivedCategory.Q_coproductHomologyIso The definition `DerivedCategory.Q_coproductHomologyIso` contains an underscore. This almost surely violates mathlib's naming convention; use lowerCamelCase or UpperCamelCase instead.
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionRefinementAdapters
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean:40:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_3 The definition `AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_3` contains an underscore. This almost surely violates mathlib's naming convention; use lowerCamelCase or UpperCamelCase instead.
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean:41:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_4 The definition `AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_4` contains an underscore. This almost surely violates mathlib's naming convention; use lowerCamelCase or UpperCamelCase instead.
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean:42:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_3 The definition `AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_3` contains an underscore. This almost surely violates mathlib's naming convention; use lowerCamelCase or UpperCamelCase instead.
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean:44:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_4 The definition `AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_4` contains an underscore. This almost surely violates mathlib's naming convention; use lowerCamelCase or UpperCamelCase instead.
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean:46:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_3 The definition `AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_3` contains an underscore. This almost surely violates mathlib's naming convention; use lowerCamelCase or UpperCamelCase instead.
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean:48:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_4 The definition `AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_4` contains an underscore. This almost surely violates mathlib's naming convention; use lowerCamelCase or UpperCamelCase instead.
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionRefinementCube
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean:39:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_5 The definition `AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_5` contains an underscore. This almost surely violates mathlib's naming convention; use lowerCamelCase or UpperCamelCase instead.
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean:40:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_6 The definition `AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_6` contains an underscore. This almost surely violates mathlib's naming convention; use lowerCamelCase or UpperCamelCase instead.
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean:41:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_5 The definition `AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_5` contains an underscore. This almost surely violates mathlib's naming convention; use lowerCamelCase or UpperCamelCase instead.
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean:43:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_6 The definition `AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_6` contains an underscore. This almost surely violates mathlib's naming convention; use lowerCamelCase or UpperCamelCase instead.
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean:45:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_5 The definition `AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_5` contains an underscore. This almost surely violates mathlib's naming convention; use lowerCamelCase or UpperCamelCase instead.
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean:47:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_6 The definition `AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_6` contains an underscore. This almost surely violates mathlib's naming convention; use lowerCamelCase or UpperCamelCase instead.
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.Localization
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/Localization.lean:29:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.moduleExceptionalDirectImageUnbounded_commShift The definition `AlgebraicGeometry.Scheme.EtaleCohomology.moduleExceptionalDirectImageUnbounded_commShift` contains an underscore. This almost surely violates mathlib's naming convention; use lowerCamelCase or UpperCamelCase instead.
+
+-- Aglib.AlgebraicGeometry.FunctionField.SplitSections
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/FunctionField/SplitSections.lean:34:1: error: AlgebraicGeometry.Scheme.instAlgebraCarrierFunctionFieldSpecOf_aglib The definition `AlgebraicGeometry.Scheme.instAlgebraCarrierFunctionFieldSpecOf_aglib` contains an underscore. This almost surely violates mathlib's naming convention; use lowerCamelCase or UpperCamelCase instead.
+
+/- The `docBlame` linter reports:
+DEFINITIONS ARE MISSING DOCUMENTATION STRINGS:
+This linter can be disabled with `@[nolint docBlame]`. -/
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionBCModelComparison
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionBCModelComparison.lean:43:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionComparisonOldModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionBCModelComparison.lean:45:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionComparisonNewModel definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionMixedRefinementFaces
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionMixedRefinementFaces.lean:44:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarComposite definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionMixedRefinementFaces.lean:45:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarComposite_1 definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionMixedRefinementWhole
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionMixedRefinementWhole.lean:47:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instMixedWholeCompositeModelC definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionMixedRefinementWhole.lean:49:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instMixedWholeCompositeModelD definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionModelMaps
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionModelMaps.lean:41:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionModelMaps.lean:42:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionModelMaps.lean:44:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionRefinementAdapters
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean:40:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_3 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean:41:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_4 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean:42:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_3 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean:44:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_4 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean:46:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_3 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean:48:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_4 definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionRefinementCube
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean:39:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_5 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean:40:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_6 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean:41:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_5 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean:43:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_6 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean:45:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_5 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean:47:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_6 definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionRefinementFaces
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementFaces.lean:44:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_1 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementFaces.lean:45:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_2 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementFaces.lean:46:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_1 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementFaces.lean:48:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_2 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementFaces.lean:50:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_1 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementFaces.lean:52:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_2 definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionTripleInterchange
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionTripleInterchange.lean:34:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactificationTail definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.NormalizedToDirectImageBaseChange
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/NormalizedToDirectImageBaseChange.lean:27:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarBaseChange_2 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/NormalizedToDirectImageBaseChange.lean:30:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarDensifyBaseChange_1 definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.RawToDirectImageBaseChange
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/RawToDirectImageBaseChange.lean:27:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.rawToDirectImageBaseChangeModel definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.ToDirectImageCompositionModel
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/ToDirectImageCompositionModel.lean:32:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.toDirectImageCompositionFirstModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/ToDirectImageCompositionModel.lean:34:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.toDirectImageCompositionSecondModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/ToDirectImageCompositionModel.lean:37:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.toDirectImageCompositionSourceModel definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.TripleCartesianComposition
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleCartesianComposition.lean:38:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.tripleCartesianCompositionLocal1 definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.TripleCartesianLeftRoute
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleCartesianLeftRoute.lean:36:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.tripleCartesianLeftLocal1 definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.TripleCartesianMaps
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleCartesianMaps.lean:39:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.tripleCartesianMapsLocal1 definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.TripleCartesianRightRoute
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleCartesianRightRoute.lean:38:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.tripleCartesianRightLocal1 definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.TripleHorizontalOpenTransport
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleHorizontalOpenTransport.lean:27:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.tripleHorizontalTransportLocal1 definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.TripleRawComposition
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleRawComposition.lean:39:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactificationTail_1 definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.TripleSingleModelAssociativity
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleSingleModelAssociativity.lean:46:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.tripleSingleAssocA0 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleSingleModelAssociativity.lean:49:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.tripleSingleAssocA1 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleSingleModelAssociativity.lean:52:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.tripleSingleAssocA2 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleSingleModelAssociativity.lean:55:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.tripleSingleAssocB0 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleSingleModelAssociativity.lean:57:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.tripleSingleAssocB1 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleSingleModelAssociativity.lean:59:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.tripleSingleAssocC definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.TripleTotalArrowComparison
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleTotalArrowComparison.lean:27:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.tripleTotalArrowLeftModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleTotalArrowComparison.lean:29:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.tripleTotalArrowRightModel definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.TripleTotalComparison
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleTotalComparison.lean:26:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarCompositeLeftOuter definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleTotalComparison.lean:27:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarRightTotalTransport definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.CompositionBCChosenModel
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCChosenModel.lean:69:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionChosenOldModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCChosenModel.lean:71:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionChosenLiteralModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCChosenModel.lean:73:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionChosenFinalModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCChosenModel.lean:75:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionChosenRawModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCChosenModel.lean:77:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionChosenTransportDenseModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCChosenModel.lean:79:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionChosenTransportRawModel definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.CompositionBCModelSquare
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCModelSquare.lean:59:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionBCModelF definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCModelSquare.lean:61:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionBCModelG definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCModelSquare.lean:64:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionBCModelH definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCModelSquare.lean:66:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionBCModelF' definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCModelSquare.lean:68:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionBCModelG' definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCModelSquare.lean:71:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionBCModelH' definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.CompositionBCRawSource
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCRawSource.lean:33:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionRawSourceLiteralModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCRawSource.lean:36:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionRawSourceTransportModel definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.CompositionBCTorsion
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCTorsion.lean:69:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionBCTorsionSourceModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCTorsion.lean:71:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionBCTorsionTargetModel definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.SourceIsoIdentity
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoIdentity.lean:72:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.sourceIsoIdentityRawAmbientModel definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CartesianCompositionCanonical
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianCompositionCanonical.lean:36:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCartesianCanonicalFirst definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianCompositionCanonical.lean:38:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCartesianCanonicalTarget definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianCompositionCanonical.lean:41:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCartesianCanonicalTotal definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianCompositionCanonical.lean:45:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCartesianCanonicalCategory definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CartesianFirstCube
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianFirstCube.lean:41:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCartesianFirstCubeCategory definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CartesianFirstHorizontal
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianFirstHorizontal.lean:36:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCartesianFirstHorizontalTotal definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianFirstHorizontal.lean:39:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCartesianFirstHorizontalCategory definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CartesianFirstNaturality
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianFirstNaturality.lean:44:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCartesianFirstNaturalityCategory definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CompositionBCModelComparison
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCModelComparison.lean:42:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionComparisonOldModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCModelComparison.lean:45:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionComparisonNewModel definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CompositionBCModelSquare
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCModelSquare.lean:57:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionBCModelF definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCModelSquare.lean:60:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionBCModelG definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCModelSquare.lean:63:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionBCModelH definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCModelSquare.lean:65:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionBCModelF' definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCModelSquare.lean:68:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionBCModelG' definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCModelSquare.lean:71:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionBCModelH' definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CompositionBCRawSource
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCRawSource.lean:33:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionRawSourceLiteralModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCRawSource.lean:36:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionRawSourceTransportModel definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CompositionBaseChangeChosenModel
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBaseChangeChosenModel.lean:71:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionChosenOldModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBaseChangeChosenModel.lean:74:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionChosenLiteralModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBaseChangeChosenModel.lean:77:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionChosenFinalModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBaseChangeChosenModel.lean:80:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionChosenRawModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBaseChangeChosenModel.lean:83:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionChosenTransportDenseModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBaseChangeChosenModel.lean:85:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionChosenTransportRawModel definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CompositionLeftUnitImage
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionLeftUnitImage.lean:42:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.leftUnitImageFirstModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionLeftUnitImage.lean:45:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.leftUnitImageTargetModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionLeftUnitImage.lean:47:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.leftUnitImageTotalModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionLeftUnitImage.lean:50:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.leftUnitImageTotalCategory definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionLeftUnitImage.lean:55:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.leftUnitImageTargetCategory definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CompositionLeftUnitSource
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionLeftUnitSource.lean:48:1: error: AlgebraicGeometry.Scheme.EtaleCohomology.leftUnitSourceIdentityCategory definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CompositionMixedRefinementFaces
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionMixedRefinementFaces.lean:45:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionMixedFacesSourceModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionMixedRefinementFaces.lean:47:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionMixedFacesTargetModel definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CompositionMixedRefinementWhole
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionMixedRefinementWhole.lean:42:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionMixedWholeSourceModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionMixedRefinementWhole.lean:44:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionMixedWholeTargetModel definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CompositionModelMaps
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionModelMaps.lean:42:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionMapsFirstModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionModelMaps.lean:44:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionMapsTargetModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionModelMaps.lean:47:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionMapsTotalModel definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CompositionRefinementCube
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementCube.lean:43:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionCubeModel0 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementCube.lean:45:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionCubeModel1 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementCube.lean:47:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionCubeModel2 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementCube.lean:50:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionCubeModel3 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementCube.lean:53:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionCubeModel4 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementCube.lean:56:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionCubeModel5 definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CompositionRefinementFaces
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementFaces.lean:45:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionFacesModel0 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementFaces.lean:47:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionFacesModel1 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementFaces.lean:49:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionFacesModel2 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementFaces.lean:52:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionFacesModel3 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementFaces.lean:55:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionFacesModel4 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementFaces.lean:58:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.compositionFacesModel5 definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CompositionTripleInterchange
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionTripleInterchange.lean:34:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionTripleInterchangeModel definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.LeftUnitSourceExpansion
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/LeftUnitSourceExpansion.lean:30:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.sourceExpansionEndpointCategory definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/LeftUnitSourceExpansion.lean:33:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.sourceExpansionAmbientCategory definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.LeftUnitSourceRestriction
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/LeftUnitSourceRestriction.lean:30:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.sourceRestrictionEndpointCategory definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/LeftUnitSourceRestriction.lean:33:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.sourceRestrictionAmbientCategory definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/LeftUnitSourceRestriction.lean:71:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.sourceRestrictionIdentityCategory definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.LeftUnitSupplied
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/LeftUnitSupplied.lean:39:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.suppliedLeftUnitTotalCategory definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/LeftUnitSupplied.lean:44:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.suppliedLeftUnitTargetCategory definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.LeftUnitSuppliedIso
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/LeftUnitSuppliedIso.lean:35:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.leftUnitSuppliedIsoTotalCategory definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/LeftUnitSuppliedIso.lean:40:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.leftUnitSuppliedIsoTargetCategory definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedBaseIdentityModel
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseIdentityModel.lean:55:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.normalizedBaseIdentityRaw definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseIdentityModel.lean:58:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.normalizedBaseIdentityTransport definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseIdentityModel.lean:61:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.normalizedBaseIdentityDense definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedToDirectImageBaseChange
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedToDirectImageBaseChange.lean:27:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedNormalizedToTargetRawModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedToDirectImageBaseChange.lean:30:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedNormalizedToTargetDenseModel definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceIsoIdentity
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoIdentity.lean:58:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedSourceIsoIdentityRawModel definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceToDirectImage
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceToDirectImage.lean:29:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedRawSourceComparisonModel definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawToDirectImageBaseChange
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawToDirectImageBaseChange.lean:27:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedRawToDirectImageBaseChangeModel definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.ToDirectImageCompositionModel
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ToDirectImageCompositionModel.lean:31:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedToTargetCompositionFirstModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ToDirectImageCompositionModel.lean:33:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedToTargetCompositionSecondModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ToDirectImageCompositionModel.lean:36:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedToTargetCompositionSourceModel definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.TripleCartesianComposition
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleCartesianComposition.lean:40:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleCartesianCompositionLocal1 definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.TripleCartesianLeftRoute
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleCartesianLeftRoute.lean:36:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleCartesianLeftLocal1 definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.TripleCartesianMaps
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleCartesianMaps.lean:39:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleCartesianMapsLocal1 definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.TripleCartesianRightRoute
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleCartesianRightRoute.lean:39:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleCartesianRightLocal1 definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.TripleHorizontalOpenTransport
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleHorizontalOpenTransport.lean:27:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleHorizontalTransportLocal1 definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.TripleRawComposition
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleRawComposition.lean:40:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleRawCompositionModel definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.TripleSingleModelAssociativity
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelAssociativity.lean:42:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleFinalA0 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelAssociativity.lean:45:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleFinalA1 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelAssociativity.lean:48:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleFinalA2 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelAssociativity.lean:51:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleFinalB0 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelAssociativity.lean:53:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleFinalB1 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelAssociativity.lean:55:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleFinalC definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.TripleSingleModelMaps
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelMaps.lean:49:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleAssocA0 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelMaps.lean:52:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleAssocA1 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelMaps.lean:55:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleAssocA2 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelMaps.lean:58:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleAssocB0 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelMaps.lean:60:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleAssocB1 definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelMaps.lean:62:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleAssocC definition missing documentation string
+
+-- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.TripleTotalArrowComparison
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleTotalArrowComparison.lean:29:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleTotalArrowLeftModel definition missing documentation string
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleTotalArrowComparison.lean:31:1: error: @AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleTotalArrowRightModel definition missing documentation string
+
+/- The `simpNF` linter reports:
+SOME SIMP LEMMAS ARE NOT IN SIMP-NORMAL FORM.
+Please change the lemma to make sure their left-hand sides are in simp normal form.
+To learn about simp normal forms, see
+https://leanprover-community.github.io/extras/simp.html#simp-normal-form
+and https://lean-lang.org/doc/reference/latest/The-Simplifier/Simp-Normal-Forms/.
+This linter can be disabled with `@[nolint simpNF]`. -/
+-- Aglib.AlgebraicGeometry.Compactification.Refinements.CompositionBaseChangeGeometry
+/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Compactification/Refinements/CompositionBaseChangeGeometry.lean:32:3: error: @AlgebraicGeometry.Scheme.Hom.Compactification.cartesianBaseChange_j_snd_assoc simp can prove this:
+  by simp only [*,
+ @AlgebraicGeometry.Scheme.Hom.Compactification.cartesianBaseChange_j_snd,
+ @CategoryTheory.Category.assoc]
+One of the lemmas above could be a duplicate.
+If that's not the case try reordering lemmas or adding @[priority].

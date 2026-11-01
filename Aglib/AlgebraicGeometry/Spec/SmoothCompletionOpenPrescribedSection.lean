@@ -66,7 +66,7 @@ theorem smoothCompletion_etaleAt_prescribedSection_of_open
   have hWzero : ζ ⁻¹ᵁ W = puncturedSpecOpen A :=
     (smoothCompletionOpen_zeroSection A B ε U).trans hzero
   let : (FiniteEtale.baseChange (ζ ∣_ W)).Full :=
-    (smoothSplitSectionPuncturedFiniteEtale_fullyFaithful ε W hdim hWzero).full
+    (smoothSplitSectionPuncturedFiniteEtaleFullyFaithful ε W hdim hWzero).full
   have hW : Function.Bijective (affineScalarMap W.ι) :=
     smoothCompletionOpenScalar_bijective A B ε U hheight
   have hV : Function.Bijective (affineScalarMap (f ⁻¹ᵁ W).ι) :=

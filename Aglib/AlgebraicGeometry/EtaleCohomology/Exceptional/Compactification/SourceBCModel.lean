@@ -53,14 +53,27 @@ def moduleSourceBaseChangeSquareIso :
 
 variable (C : Hom.DenseCompactification f)
 
+/-- Derived-category instance on module sheaves over `C.Xbar`, supplied by `models C`.
+-/
 local instance sourceBCModelOriginal : HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ) := models C
+/-- Derived-category instance on module sheaves over `(pullback b C.p)`, supplied by `rawModels C`.
+-/
 local instance sourceBCModelOriginalRaw : HasDerivedCategory.{wR}
     (ModuleSheaf (pullback b C.p) Λ) := rawModels C
+/-- Derived-category instance on module sheaves over `((baseChange b).obj C).Xbar`, supplied by
+`targetModels ((baseChange b).obj C)`.
+-/
 local instance sourceBCModelOriginalTarget : HasDerivedCategory.{wN}
     (ModuleSheaf ((baseChange b).obj C).Xbar Λ) := targetModels ((baseChange b).obj C)
+/-- Derived-category instance on module sheaves over `((sourceIso f' e he ⋙ baseChange b).obj
+C).Xbar`, supplied by `changedTargetModels ((sourceIso f' e he ⋙ baseChange b).obj C)`.
+-/
 local instance sourceBCModelNewTarget : HasDerivedCategory.{wN'}
     (ModuleSheaf ((sourceIso f' e he ⋙ baseChange b).obj C).Xbar Λ) :=
   changedTargetModels ((sourceIso f' e he ⋙ baseChange b).obj C)
+/-- Derived-category instance on module sheaves over `(baseChangeObj b C).Xbar`, supplied by
+`targetModels ((baseChange b).obj C)`.
+-/
 local instance sourceBCModelOriginalBaseChangeObj : HasDerivedCategory.{wN}
     (ModuleSheaf (baseChangeObj b C).Xbar Λ) := targetModels ((baseChange b).obj C)
 

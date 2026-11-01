@@ -42,7 +42,7 @@ def changeBaseMap (i : L →ₐ[R] A) : integralClosure R L →ₐ[R] integralCl
 @[simp] theorem changeBaseMap_coe (i : L →ₐ[R] A) (c : integralClosure R L) :
     (changeBaseMap R T L A i c : A) = i (c : L) := rfl
 
-@[simp] theorem changeBaseMap_algebraMap (i : L →ₐ[R] A) (r : R) :
+theorem changeBaseMap_algebraMap (i : L →ₐ[R] A) (r : R) :
     changeBaseMap R T L A i (algebraMap R (integralClosure R L) r) =
       algebraMap R (integralClosure T A) r :=
   (changeBaseMap R T L A i).commutes r

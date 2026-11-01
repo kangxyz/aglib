@@ -48,7 +48,7 @@ def finiteCompositumInclusion : F →ₐ[k] adjoin K (F : Set Ω) :=
   rfl
 
 /-- The whole scalar triangle retains the original map from the base field. -/
-@[simp] theorem finiteCompositumInclusion_comp_algebraMap :
+theorem finiteCompositumInclusion_comp_algebraMap :
     (finiteCompositumInclusion K F).toRingHom.comp (algebraMap k F) =
       algebraMap k (adjoin K (F : Set Ω)) := by
   exact RingHom.ext fun x => (finiteCompositumInclusion K F).commutes x

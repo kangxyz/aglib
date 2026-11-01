@@ -37,14 +37,14 @@ def rootOrdinaryBaseChangeIso :
   rootBaseChangeSpecIso R A n f ≪≫ pullbackSymmetry _ _
 
 /-- The ordinary root comparison retains the original root map. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem rootOrdinaryBaseChangeIso_hom_fst :
     (rootOrdinaryBaseChangeIso R A n f).hom ≫ pullback.fst _ _ =
       Spec.map (CommRingCat.ofHom (rootBaseChangeHom A n f).toRingHom) := by
   simp [rootOrdinaryBaseChangeIso]
 
 /-- The ordinary root comparison retains the coefficient map. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem rootOrdinaryBaseChangeIso_hom_snd :
     (rootOrdinaryBaseChangeIso R A n f).hom ≫ pullback.snd _ _ =
       Spec.algebraMap A (RootAlgebra n (algebraMap R A f)) := by
@@ -63,7 +63,7 @@ def rootPrincipalComparison (j : Over (op (∅ : Finset M))) :
     (fun j => rootOrdinaryBaseChangeIso R (stage M j.left.unop) n f) j
 
 /-- The actual root comparison retains the original root projection. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem rootPrincipalComparison_rootMap (j : Over (op (∅ : Finset M))) :
     rootPrincipalComparison n f M S j ≫
       Spec.map (CommRingCat.ofHom (rootBaseChangeHom (stage M j.left.unop) n f).toRingHom) =

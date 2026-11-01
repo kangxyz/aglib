@@ -1,0 +1,256 @@
+✔ [8394/8437] Built Aglib.CategoryTheory.Adjunction.LocalizationPullback (2.6s)
+✔ [8395/8437] Built Aglib.Algebra.Homology.ShortComplex.ThirdIso (2.7s)
+✔ [8396/8437] Built Aglib.CategoryTheory.Adjunction.CoefficientMateDescent (2.8s)
+✖ [8397/8437] Building Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Single (5.6s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-0115dcffcfd448dba09053a8a52fddf6/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Single.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Single.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Single.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Single.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Single.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Single.lean:49:10: failed to synthesize instance of type class
+  Mono ((SheafOfModules.toSheaf (constantRing X Λ)).map φ)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+✔ [8401/8437] Built Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.DerivedGeometricStalk (5.8s)
+✔ [8403/8437] Built Aglib.Algebra.Homology.DerivedCategory.Plus.ShortExactMap (4.9s)
+✔ [8404/8437] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ScalarRestriction (5.4s)
+✔ [8405/8437] Built Aglib.Algebra.Homology.ShortComplex.LocalizationPullback (3.1s)
+✔ [8406/8437] Built Aglib.Algebra.Homology.DerivedCategory.Plus.ShortExactMapNaturality (5.2s)
+✔ [8407/8437] Built Aglib.Algebra.Homology.ShortComplex.LocalizationPullbackComplex (4.6s)
+✔ [8408/8437] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleScalarRestriction (5.8s)
+✔ [8409/8437] Built Aglib.AlgebraicGeometry.EtaleCohomology.Localization.GeometricPullback (5.4s)
+✖ [8410/8437] Building Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ScalarRestrictionExact (7.0s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-0115dcffcfd448dba09053a8a52fddf6/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Coefficients/ScalarRestrictionExact.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Coefficients/ScalarRestrictionExact.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Coefficients/ScalarRestrictionExact.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Coefficients/ScalarRestrictionExact.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Coefficients/ScalarRestrictionExact.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Coefficients/ScalarRestrictionExact.lean:36:2: failed to synthesize instance of type class
+  (ModuleCat.Sheaf.ConstantRing.moduleRestrictScalars X.smallEtaleTopology φ).Additive
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+✔ [8418/8437] Built Aglib.Algebra.Homology.DerivedCategory.Plus.ShortExactMapNatural (4.8s)
+✖ [8419/8437] Building Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleLowerShriekValuedUnit (5.9s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-0115dcffcfd448dba09053a8a52fddf6/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleLowerShriekValuedUnit.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleLowerShriekValuedUnit.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleLowerShriekValuedUnit.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleLowerShriekValuedUnit.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleLowerShriekValuedUnit.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleLowerShriekValuedUnit.lean:41:2: Type mismatch
+  Eq.trans
+    (congrArg
+      (fun k =>
+        k ≫
+          (moduleSheafEquivalence U R).unitIso.inv.app
+            ((moduleValuedInverseImage j R).obj ((moduleSheafEquivalence X R).inverse.obj N)))
+      ((moduleSheafEquivalence U R).inverse.map_id
+        ((moduleSheafEquivalence U R).functor.obj
+          ((moduleValuedInverseImage j R).obj ((moduleSheafEquivalence X R).inverse.obj N)))))
+    (Category.id_comp
+      ((moduleSheafEquivalence U R).unitIso.inv.app
+        ((moduleValuedInverseImage j R).obj ((moduleSheafEquivalence X R).inverse.obj N))))
+has type
+  (moduleSheafEquivalence U R).inverse.map
+        (𝟙
+          ((moduleSheafEquivalence U R).functor.obj
+            ((moduleValuedInverseImage j R).obj ((moduleSheafEquivalence X R).inverse.obj N)))) ≫
+      (moduleSheafEquivalence U R).unitIso.inv.app
+        ((moduleValuedInverseImage j R).obj ((moduleSheafEquivalence X R).inverse.obj N)) =
+    (moduleSheafEquivalence U R).unitIso.inv.app
+      ((moduleValuedInverseImage j R).obj ((moduleSheafEquivalence X R).inverse.obj N))
+but is expected to have type
+  (moduleSheafEquivalence U R).inverse.map
+        (((moduleSheafEquivalence U R).coefficientRightIso (moduleSheafEquivalence X R) (moduleInverseImage j R)
+                (moduleInverseImageTransportIso j R)).hom.app
+          N) ≫
+      (ValuedComparison.inverseValuedIso (moduleSheafEquivalence X R) (moduleSheafEquivalence U R)
+              (moduleInverseImageTransportIso j R)).hom.app
+        N =
+    (moduleSheafEquivalence U R).unitIso.inv.app
+      ((moduleValuedInverseImage j R).obj ((moduleSheafEquivalence X R).inverse.obj N))
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  inv ↦ 44
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleLowerShriekValuedUnit.lean:35:4: This simp argument is unused:
+  Iso.trans_hom
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [moduleLowerShriekRightIso, moduleInverseImageValuedIso, Iso.symm_hom, NatTrans.comp_app,
+    Functor.isoWhiskerLeft_hom, Functor.isoWhiskerRight_hom, Functor.whiskerLeft_app, Functor.whiskerRight_app,
+    Functor.associator_hom_app, Functor.associator_inv_app, Functor.rightUnitor_hom_app, Category.id_comp,
+    ← Functor.map_comp_assoc, Iso.inv_hom_id_app]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleLowerShriekValuedUnit.lean:35:19: This simp argument is unused:
+  Iso.symm_hom
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [moduleLowerShriekRightIso, moduleInverseImageValuedIso, Iso.trans_hom, NatTrans.comp_app,
+    Functor.isoWhiskerLeft_hom, Functor.isoWhiskerRight_hom, Functor.whiskerLeft_app, Functor.whiskerRight_app,
+    Functor.associator_hom_app, Functor.associator_inv_app, Functor.rightUnitor_hom_app, Category.id_comp,
+    ← Functor.map_comp_assoc, Iso.inv_hom_id_app]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleLowerShriekValuedUnit.lean:35:33: This simp argument is unused:
+  NatTrans.comp_app
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [moduleLowerShriekRightIso, moduleInverseImageValuedIso, Iso.trans_hom, Iso.symm_hom,
+    Functor.isoWhiskerLeft_hom, Functor.isoWhiskerRight_hom, Functor.whiskerLeft_app, Functor.whiskerRight_app,
+    Functor.associator_hom_app, Functor.associator_inv_app, Functor.rightUnitor_hom_app, Category.id_comp,
+    ← Functor.map_comp_assoc, Iso.inv_hom_id_app]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleLowerShriekValuedUnit.lean:36:4: This simp argument is unused:
+  Functor.isoWhiskerLeft_hom
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [moduleLowerShriekRightIso, moduleInverseImageValuedIso, Iso.trans_hom, Iso.symm_hom,
+    NatTrans.comp_app, Functor.isoWhiskerRight_hom, Functor.whiskerLeft_app, Functor.whiskerRight_app,
+    Functor.associator_hom_app, Functor.associator_inv_app, Functor.rightUnitor_hom_app, Category.id_comp,
+    ← Functor.map_comp_assoc, Iso.inv_hom_id_app]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleLowerShriekValuedUnit.lean:36:32: This simp argument is unused:
+  Functor.isoWhiskerRight_hom
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [moduleLowerShriekRightIso, moduleInverseImageValuedIso, Iso.trans_hom, Iso.symm_hom,
+    NatTrans.comp_app, Functor.isoWhiskerLeft_hom, Functor.whiskerLeft_app, Functor.whiskerRight_app,
+    Functor.associator_hom_app, Functor.associator_inv_app, Functor.rightUnitor_hom_app, Category.id_comp,
+    ← Functor.map_comp_assoc, Iso.inv_hom_id_app]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleLowerShriekValuedUnit.lean:37:4: This simp argument is unused:
+  Functor.whiskerLeft_app
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [moduleLowerShriekRightIso, moduleInverseImageValuedIso, Iso.trans_hom, Iso.symm_hom,
+    NatTrans.comp_app, Functor.isoWhiskerLeft_hom, Functor.isoWhiskerRight_hom, Functor.whiskerRight_app,
+    Functor.associator_hom_app, Functor.associator_inv_app, Functor.rightUnitor_hom_app, Category.id_comp,
+    ← Functor.map_comp_assoc, Iso.inv_hom_id_app]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleLowerShriekValuedUnit.lean:37:29: This simp argument is unused:
+  Functor.whiskerRight_app
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [moduleLowerShriekRightIso, moduleInverseImageValuedIso, Iso.trans_hom, Iso.symm_hom,
+    NatTrans.comp_app, Functor.isoWhiskerLeft_hom, Functor.isoWhiskerRight_hom, Functor.whiskerLeft_app,
+    Functor.associator_hom_app, Functor.associator_inv_app, Functor.rightUnitor_hom_app, Category.id_comp,
+    ← Functor.map_comp_assoc, Iso.inv_hom_id_app]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleLowerShriekValuedUnit.lean:38:4: This simp argument is unused:
+  Functor.associator_hom_app
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [moduleLowerShriekRightIso, moduleInverseImageValuedIso, Iso.trans_hom, Iso.symm_hom,
+    NatTrans.comp_app, Functor.isoWhiskerLeft_hom, Functor.isoWhiskerRight_hom, Functor.whiskerLeft_app,
+    Functor.whiskerRight_app, Functor.associator_inv_app, Functor.rightUnitor_hom_app, Category.id_comp,
+    ← Functor.map_comp_assoc, Iso.inv_hom_id_app]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleLowerShriekValuedUnit.lean:38:32: This simp argument is unused:
+  Functor.associator_inv_app
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [moduleLowerShriekRightIso, moduleInverseImageValuedIso, Iso.trans_hom, Iso.symm_hom,
+    NatTrans.comp_app, Functor.isoWhiskerLeft_hom, Functor.isoWhiskerRight_hom, Functor.whiskerLeft_app,
+    Functor.whiskerRight_app, Functor.associator_hom_app, Functor.rightUnitor_hom_app, Category.id_comp,
+    ← Functor.map_comp_assoc, Iso.inv_hom_id_app]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleLowerShriekValuedUnit.lean:38:60: This simp argument is unused:
+  Functor.rightUnitor_hom_app
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [moduleLowerShriekRightIso, moduleInverseImageValuedIso, Iso.trans_hom, Iso.symm_hom,
+    NatTrans.comp_app, Functor.isoWhiskerLeft_hom, Functor.isoWhiskerRight_hom, Functor.whiskerLeft_app,
+    Functor.whiskerRight_app, Functor.associator_hom_app, Functor.associator_inv_app, Category.id_comp,
+    ← Functor.map_comp_assoc, Iso.inv_hom_id_app]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleLowerShriekValuedUnit.lean:39:4: This simp argument is unused:
+  Category.id_comp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [moduleLowerShriekRightIso, moduleInverseImageValuedIso, Iso.trans_hom, Iso.symm_hom,
+    NatTrans.comp_app, Functor.isoWhiskerLeft_hom, Functor.isoWhiskerRight_hom, Functor.whiskerLeft_app,
+    Functor.whiskerRight_app, Functor.associator_hom_app, Functor.associator_inv_app, Functor.rightUnitor_hom_app,
+    ← Functor.map_comp_assoc, Iso.inv_hom_id_app]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleLowerShriekValuedUnit.lean:40:4: This simp argument is unused:
+  ← Functor.map_comp_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [moduleLowerShriekRightIso, moduleInverseImageValuedIso, Iso.trans_hom, Iso.symm_hom,
+    NatTrans.comp_app, Functor.isoWhiskerLeft_hom, Functor.isoWhiskerRight_hom, Functor.whiskerLeft_app,
+    Functor.whiskerRight_app, Functor.associator_hom_app, Functor.associator_inv_app, Functor.rightUnitor_hom_app,
+    Category.id_comp, Iso.inv_hom_id_app]
+
+Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleLowerShriekValuedUnit.lean:40:30: This simp argument is unused:
+  Iso.inv_hom_id_app
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [moduleLowerShriekRightIso, moduleInverseImageValuedIso, Iso.trans_hom, Iso.symm_hom,
+    NatTrans.comp_app, Functor.isoWhiskerLeft_hom, Functor.isoWhiskerRight_hom, Functor.whiskerLeft_app,
+    Functor.whiskerRight_app, Functor.associator_hom_app, Functor.associator_inv_app, Functor.rightUnitor_hom_app,
+    Category.id_comp, ← Functor.map_comp_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✖ [8421/8437] Building Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleScalarRestrictionSliceMate (6.0s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-0115dcffcfd448dba09053a8a52fddf6/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleScalarRestrictionSliceMate.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleScalarRestrictionSliceMate.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleScalarRestrictionSliceMate.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleScalarRestrictionSliceMate.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleScalarRestrictionSliceMate.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleScalarRestrictionSliceMate.lean:52:51: This simp argument is unused:
+  Iso.trans_inv
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [moduleEtaleSliceScalarRestrictionIso, Iso.symm_inv, Functor.isoWhiskerLeft_inv,
+    Functor.isoWhiskerRight_inv, Functor.whiskerLeft_app, Functor.whiskerRight_app, NatTrans.comp_app,
+    Functor.leftUnitor_inv_app, Functor.rightUnitor_hom_app, Functor.associator_hom_app, Functor.associator_inv_app,
+    Functor.comp_map, CategoryTheory.Functor.map_id, Category.id_comp, Category.assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleScalarRestrictionSliceMate.lean:52:66: This simp argument is unused:
+  Iso.symm_inv
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [moduleEtaleSliceScalarRestrictionIso, Iso.trans_inv, Functor.isoWhiskerLeft_inv,
+    Functor.isoWhiskerRight_inv, Functor.whiskerLeft_app, Functor.whiskerRight_app, NatTrans.comp_app,
+    Functor.leftUnitor_inv_app, Functor.rightUnitor_hom_app, Functor.associator_hom_app, Functor.associator_inv_app,
+    Functor.comp_map, CategoryTheory.Functor.map_id, Category.id_comp, Category.assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleScalarRestrictionSliceMate.lean:53:4: This simp argument is unused:
+  Functor.isoWhiskerLeft_inv
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [moduleEtaleSliceScalarRestrictionIso, Iso.trans_inv, Iso.symm_inv, Functor.isoWhiskerRight_inv,
+    Functor.whiskerLeft_app, Functor.whiskerRight_app, NatTrans.comp_app, Functor.leftUnitor_inv_app,
+    Functor.rightUnitor_hom_app, Functor.associator_hom_app, Functor.associator_inv_app, Functor.comp_map,
+    CategoryTheory.Functor.map_id, Category.id_comp, Category.assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleScalarRestrictionSliceMate.lean:53:32: This simp argument is unused:
+  Functor.isoWhiskerRight_inv
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [moduleEtaleSliceScalarRestrictionIso, Iso.trans_inv, Iso.symm_inv, Functor.isoWhiskerLeft_inv,
+    Functor.whiskerLeft_app, Functor.whiskerRight_app, NatTrans.comp_app, Functor.leftUnitor_inv_app,
+    Functor.rightUnitor_hom_app, Functor.associator_hom_app, Functor.associator_inv_app, Functor.comp_map,
+    CategoryTheory.Functor.map_id, Category.id_comp, Category.assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleScalarRestrictionSliceMate.lean:58:22: This simp argument is unused:
+  Category.assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [moduleEtaleSliceScalarRestrictionIso, Iso.trans_inv, Iso.symm_inv, Functor.isoWhiskerLeft_inv,
+    Functor.isoWhiskerRight_inv, Functor.whiskerLeft_app, Functor.whiskerRight_app, NatTrans.comp_app,
+    Functor.leftUnitor_inv_app, Functor.rightUnitor_hom_app, Functor.associator_hom_app, Functor.associator_inv_app,
+    Functor.comp_map, CategoryTheory.Functor.map_id, Category.id_comp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8432/8437] Built Aglib.Algebra.Homology.DerivedCategory.Plus.ShortExactMapSquare (5.5s)
+✔ [8434/8437] Built Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Unbounded.CartesianGeometricFiber (21s)
+✔ [8435/8437] Built Aglib.AlgebraicGeometry.EtaleCohomology.Localization.GeometricPullbackComplex (190s)
+✔ [8436/8437] Built Aglib.AlgebraicGeometry.EtaleCohomology.Localization.GeometricPullbackTriangle (21s)
+✔ [8437/8437] Built Aglib.AlgebraicGeometry.EtaleCohomology.Localization.GeometricPullbackDerived (11s)
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Single
+- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ScalarRestrictionExact
+- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleLowerShriekValuedUnit
+- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleScalarRestrictionSliceMate
+error: build failed

@@ -1,0 +1,61 @@
+{
+  "question": "D1238 actual native unbounded exceptional geometric-fibre and ordinary single comparison, with its fixed-ring coefficient naturality",
+  "main_head": "b0f8ca3f44be620dde8b40f65e1eec0143e45db4",
+  "archive_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/snapshot/agent-c-independent-ext-quasifinite-source-20261027T101616Z/aglib",
+  "archive_root_path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/SingleGeometricFiber.lean",
+  "archive_root_sha256": "3cee415f5f588475c2a5e1e9b0f0aa47a759fd1a5204732dae2644ac8a89cdac",
+  "actual_original_conditions": "qc separated locally-finite-type f to qcqs base S; separably closed field \u03a9 and actual point s:Spec \u03a9\u2192S; CommRing \u039b in original value universe; positive N annihilating1; independent X,S,literal fibre,Spec\u03a9,ModuleCat worlds and source/target/raw compactification families. All q:\u2124. Naturality is in sheaf-module morphisms over fixed \u039b, not scalar-ring change.",
+  "current_source_anchors": {
+    "Aglib/Algebra/Homology/DerivedCategory/ExactFunctorHomology.lean": "cabe4803228fafbed0aedc49376c990a1c08eb0e924ef93491d22fac35cae0b7",
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Homology.lean": "d7d0f1ac0d2c0995f4c011a6cad7a60a065fc0f065590110a09acd862c9b1ef3",
+    "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Comparison.lean": "a5c337037d6308da1bf2f7f7ee22f1cae0bc22b4945f47ae2670b2e6f15c3da6",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/Modules/ConnectedTorsionSections.lean": "83d986896b67958931d8dba971d7a660494582efe246723b042e91c960c29e1a",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Coefficients/Pullback.lean": "ea34ece956c810669716b51d4fe2a194db3ca1dae041b877a52a7c2ab84e1ee5",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Coefficients/Underlying.lean": "aadb32a9cfc20c39fd1bcfee1cda2ed25e439fc06d904a66c4b98b06c440f33b",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/DirectImage.lean": "fb7f1596b3609a308d6ff4095b4d7dd01a4ee718fd63808a86a3263c450034cb",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/UnboundedDirectImage.lean": "c89f731858c427b8ce7baa50052f0b34a66354b189c3dbc0522f8639f7aa2f62",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/DirectImage.lean": "55e39c4806b4ec8e34408bed7cfeed11d5a9a8b41ee39b174df6ab8e15905348",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalBaseChange.lean": "348ee7d3b469dea946c16a1985574aae7cf713db2b9bb8e8cd4f7dd48a97b346",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/GeometricPoints/FieldTerminal.lean": "6faae8daabe28c3a4f2786fe75bac9185c989d01586c0b40783b3ec974d8532f",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/GeometricPoints/InverseImage/Skyscraper.lean": "391d711b14ae395dcd47aa620091c0016ea3443a0ecc3b48fe1f258db2a4e38f",
+    "Aglib/CategoryTheory/Sites/SectionsAdditive.lean": "a0a46e700341fe9a10fce6056864c09e7261ae6d6cc67043e6a1d1925d1a5dd3"
+  },
+  "route": [
+    {
+      "step": "actual global sections",
+      "constructor": "inverse original constant-ring coefficient equivalence followed by original terminal sheaf sections",
+      "generic_suppliers": "native sheafSections, actual coefficient equivalence, rightDerivedFunctorPlus, unboundedRightDerivedFunctor"
+    },
+    {
+      "step": "field sections exactness",
+      "constructor": "asIso of the original terminal germ; initial identity pointed terminal object gives invertibility in ModuleCat",
+      "generic_suppliers": "isIso_\u03b9_of_isTerminal; native sheaf point-fibre exactness"
+    },
+    {
+      "step": "stalk/sections comparison",
+      "constructor": "existing moduleStalkInverseImageIso, then inverse of field terminal-germ iso",
+      "replaces": "archive duplicate module stalk, valued inverse-image and skyscraper-product constructions; no new model"
+    },
+    {
+      "step": "unbounded stalk/homology comparison",
+      "constructor": "native exact inverse-image homology comparison and field exact derived sections compared by universal right-derived units"
+    },
+    {
+      "step": "compact support",
+      "constructor": "chosen original unbounded exceptional image followed by actual unbounded sections"
+    },
+    {
+      "step": "geometric fibre",
+      "constructor": "whiskered stalk/homology comparison, actual existing chosen exceptional literal-pullback exchange, functor associators"
+    },
+    {
+      "step": "ordinary single and naturality",
+      "constructor": "whisker full fibre iso by original singleFunctor; use pinned exact inverse-image single comparison; naturality is the actual natural transformation law"
+    }
+  ],
+  "pending_mathematical_premises": [],
+  "evidence_boundary": "Original D build491 remains unbound; archive complete does not supply current compilation or independent mathematical review. Current compile pending with shared broker; no established status.",
+  "omitted_archive_paths": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/ModuleStalkPullback.lean": "Current native moduleStalkInverseImageIso already owns the original adjunction-mate comparison and its generic product reindexing producers; copying it would duplicate definitions."
+  }
+}

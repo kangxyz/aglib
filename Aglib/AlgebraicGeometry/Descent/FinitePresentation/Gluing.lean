@@ -460,7 +460,7 @@ lemma isIso_overPullback_map_of_isPullback
 
 /-- The literal further base change of a canonical diagram object is the
 literal base change along the composite base map. -/
-def baseChangeDiagram_rebaseIso {S S₁ S₂ X : Scheme.{u}}
+def baseChangeDiagramRebaseIso {S S₁ S₂ X : Scheme.{u}}
     (f : X ⟶ S) (g : S₁ ⟶ S) (h : S₂ ⟶ S₁) :
     (Over.pullback h).obj (Over.mk (pullback.fst g f)) ≅
       (Over.pullback (h ≫ g)).obj (Over.mk f) :=
@@ -478,8 +478,8 @@ lemma baseChangeDiagram_rebaseIso_map_snd
     let ef := eqToIso (congrArg (fun b : S₂ ⟶ S ↦ (Over.pullback b).obj (Over.mk f)) hβ)
     let eg := eqToIso (congrArg (fun b : S₂ ⟶ S ↦ (Over.pullback b).obj (Over.mk g)) hβ)
     (pullbackSymmetry β f).hom ≫
-        (ef.inv ≫ (baseChangeDiagram_rebaseIso f k h).inv ≫
-          (Over.pullback h).map a ≫ (baseChangeDiagram_rebaseIso g k h).hom ≫ eg.hom).left ≫
+        (ef.inv ≫ (baseChangeDiagramRebaseIso f k h).inv ≫
+          (Over.pullback h).map a ≫ (baseChangeDiagramRebaseIso g k h).hom ≫ eg.hom).left ≫
         (pullbackSymmetry β g).inv ≫ pullback.snd β g =
       pullback.lift (pullback.fst β f ≫ h) (pullback.snd β f)
         (by rw [Category.assoc, hβ]; exact pullback.condition) ≫
@@ -490,7 +490,7 @@ lemma baseChangeDiagram_rebaseIso_map_snd
       pullback.lift (pullback.fst (h ≫ k) f ≫ h) (pullback.snd (h ≫ k) f)
         (by rw [Category.assoc]; exact pullback.condition) := by
     apply pullback.hom_ext <;> simp
-  simp [baseChangeDiagram_rebaseIso, Over.pullback_map_left, Category.assoc,
+  simp [baseChangeDiagramRebaseIso, Over.pullback_map_left, Category.assoc,
     reassoc_of% hx]
 
 /-- A specified isomorphism between limit base changes descends to an actual
@@ -541,9 +541,9 @@ lemma exists_iso_between_baseChanges_with_comparison_of_isLimit [IsCofiltered I]
   have hβ : D.map k.hom ≫ D.map j.hom = D.map l.hom := (D.map_comp _ _).symm
   let result : (Over.pullback (D.map k.hom ≫ D.map j.hom)).obj (Over.mk f) ≅
       (Over.pullback (D.map k.hom ≫ D.map j.hom)).obj (Over.mk g) :=
-    (baseChangeDiagram_rebaseIso f (D.map j.hom) (D.map k.hom)).symm ≪≫
+    (baseChangeDiagramRebaseIso f (D.map j.hom) (D.map k.hom)).symm ≪≫
       asIso ((Over.pullback (D.map k.hom)).map a') ≪≫
-      baseChangeDiagram_rebaseIso g (D.map j.hom) (D.map k.hom)
+      baseChangeDiagramRebaseIso g (D.map j.hom) (D.map k.hom)
   let ef := eqToIso (congrArg (fun β : D.obj k.left ⟶ D.obj i ↦
     (Over.pullback β).obj (Over.mk f)) hβ)
   let eg := eqToIso (congrArg (fun β : D.obj k.left ⟶ D.obj i ↦

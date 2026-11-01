@@ -49,6 +49,7 @@ local notation "T" => RootAlgebra N f
 local notation "T'" => RootAlgebra N (algebraMap R D f)
 local notation "J" => (Ideal.span {AdjoinRoot.root (rootPolynomial N f)} : Ideal T)
 
+/-- The base-change algebra structure from the root algebra `T` to `T'`. -/
 local instance : Algebra T T' := rootBaseChangeAlgebra D N f
 
 omit hθ in

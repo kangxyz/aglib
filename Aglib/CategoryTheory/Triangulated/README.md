@@ -16,3 +16,7 @@ group is subsingleton. The displayed triangle must be distinguished, and
 the integer degrees satisfy `i + 1 = j`; the coefficient object is arbitrary.
 The ambient assumptions are the native pretriangulated and additive-shift
 structures. No replacement boundary or derived functor is defined.
+
+## Additional source entry points
+
+- [VertexTransport](VertexTransport.lean)

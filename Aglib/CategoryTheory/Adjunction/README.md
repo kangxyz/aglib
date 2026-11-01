@@ -75,3 +75,37 @@ the given unit, mate and comparison maps remain explicit.
 [LowerShriekExchange](LowerShriekExchange.lean) constructs the original
 exchange as a mate from the displayed invertible right mate and source unit,
 with its whole unit and counit normalizations.
+
+## Additional source entry points
+
+- [CoefficientMateDescent](CoefficientMateDescent.lean)
+- [CompositeUnitMateNormalization](CompositeUnitMateNormalization.lean)
+- [CompositeUnitMate](CompositeUnitMate.lean)
+- [ConjugacyOfInverseMate](ConjugacyOfInverseMate.lean)
+- [IdentitySourceMate](IdentitySourceMate.lean)
+- [IdentitySourceOuterComparison](IdentitySourceOuterComparison.lean)
+- [LocalizationPullback](LocalizationPullback.lean)
+- [MateCounitEquation](MateCounitEquation.lean)
+- [MixedMateBaseChange](MixedMateBaseChange.lean)
+- [MixedMateNormalization](MixedMateNormalization.lean)
+- [MixedMatePastingCube](MixedMatePastingCube.lean)
+- [MixedMateRestriction](MixedMateRestriction.lean)
+- [NaturalPastedRectangleSource](NaturalPastedRectangleSource.lean)
+- [NaturalPastedRectangle](NaturalPastedRectangle.lean)
+- [OpenPostcomposeNormalization](OpenPostcomposeNormalization.lean)
+- [OuterComparisonEquation](OuterComparisonEquation.lean)
+- [PastedRectangleNormalization](PastedRectangleNormalization.lean)
+- [PastedRectangleSource](PastedRectangleSource.lean)
+- [PastedRectangle](PastedRectangle.lean)
+- [RefinementOuterComparison](RefinementOuterComparison.lean)
+- [TripleBaseChange](TripleBaseChange.lean)
+- [TripleCompositionInverse](TripleCompositionInverse.lean)
+- [TripleCompositionTransport](TripleCompositionTransport.lean)
+- [TripleComposition](TripleComposition.lean)
+- [TripleIdentity](TripleIdentity.lean)
+- [TripleLocalization](TripleLocalization.lean)
+- [TripleMateCompatibility](TripleMateCompatibility.lean)
+- [TripleMateStructural](TripleMateStructural.lean)
+- [TripleTransport](TripleTransport.lean)
+- [UnitMateHorizontal](UnitMateHorizontal.lean)
+- [UnitRestriction](UnitRestriction.lean)

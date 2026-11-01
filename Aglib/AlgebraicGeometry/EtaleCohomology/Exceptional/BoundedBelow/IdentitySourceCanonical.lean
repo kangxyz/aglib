@@ -27,11 +27,19 @@ variable {X S : Scheme.{u}} (f : X ⟶ S) [QuasiCompact f]
   [targetModels : ∀ C : Hom.DenseCompactification (pullback.fst (𝟙 S) f),
     HasDerivedCategory.{wN} (ModuleSheaf C.Xbar Λ)]
 
+/-- Derived-category instance on module sheaves over `C.Xbar`, supplied by `sourceModels C`.
+-/
 local instance identityCanonicalOriginal (C : Hom.DenseCompactification f) :
     HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ) := sourceModels C
+/-- Derived-category instance on module sheaves over `(baseChangeObj (𝟙 S) C).Xbar`, supplied by
+`targetModels (baseChangeObj (𝟙 S) C)`.
+-/
 local instance identityCanonicalNormalized (C : Hom.DenseCompactification f) :
     HasDerivedCategory.{wN} (ModuleSheaf (baseChangeObj (𝟙 S) C).Xbar Λ) :=
   targetModels (baseChangeObj (𝟙 S) C)
+/-- Derived-category instance on module sheaves over `((identitySourceTransport f).obj C).Xbar`,
+supplied by `sourceModels C`.
+-/
 local instance identityCanonicalTransported (C : Hom.DenseCompactification f) :
     HasDerivedCategory.{wM} (ModuleSheaf ((identitySourceTransport f).obj C).Xbar Λ) :=
   sourceModels C

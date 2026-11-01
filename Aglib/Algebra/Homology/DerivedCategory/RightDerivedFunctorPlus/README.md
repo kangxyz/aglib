@@ -136,3 +136,19 @@ comparison as the derived mate. Four genuinely different categories retain
 independent derived realizations. The native module/abelian forgetting
 consumer uses its existing relative-acyclicity proof, without requiring
 forgetting to preserve injectives.
+
+## Additional source entry points
+
+- [Adjunction/TransportLeft](Adjunction/TransportLeft.lean)
+- [Adjunction/TripleComparison](Adjunction/TripleComparison.lean)
+- [Adjunction/TripleNatTransComparison](Adjunction/TripleNatTransComparison.lean)
+- [BaseChange/TargetMateModels](BaseChange/TargetMateModels.lean)
+- [BaseChange/TargetModels](BaseChange/TargetModels.lean)
+- [ChangeTargetCoherence](ChangeTargetCoherence.lean)
+- [ChangeTargetComposition](ChangeTargetComposition.lean)
+- [ChangeTargetExact](ChangeTargetExact.lean)
+- [ChangeTargetNatTrans](ChangeTargetNatTrans.lean)
+- [ChangeTargetTransport](ChangeTargetTransport.lean)
+- [ChangeTargetUnit](ChangeTargetUnit.lean)
+- [IdentityModelComparison](IdentityModelComparison.lean)
+- [IdentityTargetComposition](IdentityTargetComposition.lean)

@@ -33,6 +33,8 @@ variable {X₀ X₁ X₂ S : Scheme.{u}} (f₀ : X₀ ⟶ S) (f₁ : X₁ ⟶ S)
   [targetModels : ∀ D : Hom.DenseCompactification f₂,
     HasDerivedCategory.{wM₂} (ModuleSheaf D.Xbar Λ)]
 
+/-- Derived-category instance on module sheaves over `C.Xbar`, supplied by `sourceModels C`.
+-/
 local instance sourceCompositionOriginalModel : HasDerivedCategory.{wM₀}
     (ModuleSheaf C.Xbar Λ) := sourceModels C
 

@@ -70,13 +70,25 @@ variable (C : Hom.DenseCompactification f)
   [HasDerivedCategory.{wRi}
     (ModuleSheaf ((C.toCompactification.baseChange b).baseChange c).Xbar Λ)]
 
+/-- Derived-category instance on module sheaves over `(C.toCompactification.baseChange b).Xbar`,
+supplied by `rawFirstModels C`.
+-/
 local instance firstRawModel : HasDerivedCategory.{wR₁}
     (ModuleSheaf (C.toCompactification.baseChange b).Xbar Λ) := rawFirstModels C
+/-- Derived-category instance on module sheaves over `(((baseChange b).obj
+C).toCompactification.baseChange c).Xbar`, supplied by `rawSecondModels ((baseChange b).obj C)`.
+-/
 local instance secondRawModel : HasDerivedCategory.{wR₂}
     (ModuleSheaf (((baseChange b).obj C).toCompactification.baseChange c).Xbar Λ) :=
   rawSecondModels ((baseChange b).obj C)
+/-- Derived-category instance on module sheaves over `(C.toCompactification.baseChange (c ≫
+b)).Xbar`, supplied by `rawSingleModels C`.
+-/
 local instance singleRawModel : HasDerivedCategory.{wRs}
     (ModuleSheaf (C.toCompactification.baseChange (c ≫ b)).Xbar Λ) := rawSingleModels C
+/-- Derived-category instance on module sheaves over `((baseChange (c ≫ b) ⋙ iteratedSourceTransport
+b c).obj C).Xbar`, supplied by `singleModels ((baseChange (c ≫ b)).obj C)`.
+-/
 local instance transportedSingleModel : HasDerivedCategory.{wMs}
     (ModuleSheaf ((baseChange (c ≫ b) ⋙ iteratedSourceTransport b c).obj C).Xbar Λ) :=
   singleModels ((baseChange (c ≫ b)).obj C)

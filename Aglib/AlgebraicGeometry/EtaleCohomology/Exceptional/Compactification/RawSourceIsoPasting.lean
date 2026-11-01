@@ -34,6 +34,9 @@ variable {X S X₁ T X₂ : Scheme.{u}} {f : X ⟶ S} {f₁ : X₁ ⟶ T}
   [HasDerivedCategory.{wD} (ModuleSheaf D.Xbar Λ)]
   [HasDerivedCategory.{wX₂} (ModuleSheaf X₂ Λ)]
 
+/-- Derived-category instance on module sheaves over `(D.ofSourceIso f₂ e hf₂).Xbar`, using the
+instance on `D.Xbar`.
+-/
 local instance rawPastingTransportModel :
     HasDerivedCategory.{wD} (ModuleSheaf (D.ofSourceIso f₂ e hf₂).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wD} (ModuleSheaf D.Xbar Λ))

@@ -25,9 +25,15 @@ variable {X S : Scheme.{u}} {f : X ⟶ S} [QuasiCompact f]
   [HasDerivedCategory.{wX'} (ModuleSheaf (pullback (𝟙 S) f) Λ)]
   [HasDerivedCategory.{wR} (ModuleSheaf (pullback (𝟙 S) C.p) Λ)]
 
+/-- The derived-category instance in universe `wR` for `Λ`-module sheaves on
+    `(C.toCompactification.baseChange (𝟙 S)).Xbar`.
+-/
 local instance unboundedRawIdentityModel : HasDerivedCategory.{wR}
     (ModuleSheaf (C.toCompactification.baseChange (𝟙 S)).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wR} (ModuleSheaf (pullback (𝟙 S) C.p) Λ))
+/-- The derived-category instance in universe `wM` for `Λ`-module sheaves on
+    `((Hom.DenseCompactification.identitySourceTransport f).obj C).Xbar`.
+-/
 local instance unboundedRawIdentityTransportModel : HasDerivedCategory.{wM}
     (ModuleSheaf ((Hom.DenseCompactification.identitySourceTransport f).obj C).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ))

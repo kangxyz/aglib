@@ -42,7 +42,7 @@ def rootDivisibilityHom (e N : ℕ) (h : e ∣ N) (π : R) :
       AdjoinRoot.root (rootPolynomial N π) ^ (N / e) :=
   AdjoinRoot.liftAlgHom_root _ _ _ _
 
-@[simp] theorem rootDivisibilityHom_algebraMap (e N : ℕ) (h : e ∣ N)
+theorem rootDivisibilityHom_algebraMap (e N : ℕ) (h : e ∣ N)
     (π r : R) :
     rootDivisibilityHom e N h π (algebraMap R (RootAlgebra e π) r) =
       algebraMap R (RootAlgebra N π) r :=
@@ -63,7 +63,7 @@ def chartRootHom (E : RootAlgebra e π ≃ₐ[R] S) (h : e ∣ N) :
       AdjoinRoot.root (rootPolynomial N π) ^ (N / e) := by
   simp [chartRootHom]
 
-@[simp] theorem chartRootHom_algebraMap (E : RootAlgebra e π ≃ₐ[R] S)
+theorem chartRootHom_algebraMap (E : RootAlgebra e π ≃ₐ[R] S)
     (h : e ∣ N) (r : R) :
     chartRootHom E h (algebraMap R S r) = algebraMap R (RootAlgebra N π) r :=
   (chartRootHom E h).commutes r
@@ -79,7 +79,7 @@ def rootChartCoefficientHom : K →ₐ[R] F :=
   IsFractionRing.liftAlgHom (g := Algebra.ofId R F)
     (FaithfulSMul.algebraMap_injective R F)
 
-@[simp] theorem rootChartCoefficientHom_algebraMap (r : R) :
+theorem rootChartCoefficientHom_algebraMap (r : R) :
     rootChartCoefficientHom (R := R) K F (algebraMap R K r) = algebraMap R F r :=
   (rootChartCoefficientHom (R := R) K F).commutes r
 
@@ -97,13 +97,13 @@ def rootChartGenericHom (E : RootAlgebra e π ≃ₐ[R] S) (h : e ∣ N) :
       rootChartCoefficientHom (R := R) K F k *
         algebraMap (RootAlgebra N π) F (chartRootHom E h s) := rfl
 
-@[simp] theorem rootChartGenericHom_includeRight (E : RootAlgebra e π ≃ₐ[R] S)
+theorem rootChartGenericHom_includeRight (E : RootAlgebra e π ≃ₐ[R] S)
     (h : e ∣ N) (s : S) :
     rootChartGenericHom K F E h (1 ⊗ₜ[R] s) =
       algebraMap (RootAlgebra N π) F (chartRootHom E h s) := by
   rw [rootChartGenericHom_tmul, map_one, one_mul]
 
-@[simp] theorem rootChartGenericHom_includeLeft (E : RootAlgebra e π ≃ₐ[R] S)
+theorem rootChartGenericHom_includeLeft (E : RootAlgebra e π ≃ₐ[R] S)
     (h : e ∣ N) (k : K) :
     rootChartGenericHom K F E h (k ⊗ₜ[R] (1 : S)) =
       rootChartCoefficientHom (R := R) K F k := by

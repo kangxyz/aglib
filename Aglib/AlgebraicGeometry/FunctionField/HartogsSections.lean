@@ -31,7 +31,9 @@ universe u
 
 variable (A : Type u) [CommRing A]
 
-local instance (U : (Spec (.of A)).Opens) : Algebra A Γ(Spec (.of A), U) :=
+/-- The canonical `A`-algebra structure on sections over an open of `Spec A`. -/
+local instance hartogsSectionsAlgebra (U : (Spec (.of A)).Opens) :
+    Algebra A Γ(Spec (.of A), U) :=
   IsAffineOpen.instAlgebraCarrierObjOppositeOpensCarrierCarrierCommRingCatSpecPresheafOpOpens
     (R := .of A) (U := U)
 
@@ -45,7 +47,8 @@ theorem hartogsScalarMap_eq_algebraMap (U : (Spec (.of A)).Opens) :
 
 variable [IsDomain A]
 
-local instance : Algebra A (Spec (.of A)).functionField :=
+/-- The canonical coefficient algebra on the function field of `Spec A`. -/
+local instance hartogsFunctionFieldAlgebra : Algebra A (Spec (.of A)).functionField :=
   AlgebraicGeometry.instAlgebraCarrierFunctionFieldSpec (.of A)
 
 local instance : IsFractionRing A (Spec (.of A)).functionField :=

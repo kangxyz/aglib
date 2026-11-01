@@ -44,7 +44,7 @@ theorem moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso_appl
       (((Scheme.Modules.pushforward f).mapHomologicalComplex (.up ℤ)).obj I.cochainComplex)))
     (n : ℕ)
     (x : moduleSpecΓFunctor.obj (((Scheme.Modules.pushforward f).rightDerived n).obj M)) :
-    moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso f M I hI n x =
+    moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso f M I hI n x =
       moduleResolutionSectionsCohomologyLinearEquiv X
         (f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom) I n
         (homologyMap (moduleSpecPushforwardGlobalSectionsComplexIso
@@ -54,7 +54,7 @@ theorem moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso_appl
               (((Scheme.Modules.pushforward f).mapHomologicalComplex (.up ℤ)).obj
                 I.cochainComplex)).homology (n : ℤ))
             (moduleSpecΓFunctor.map
-              (moduleHigherDirectImageAffineIso_of_counit_quasiIso f M I hI n).hom x))) := rfl
+              (moduleHigherDirectImageAffineIsoOfCounitQuasiIso f M I hI n).hom x))) := rfl
 
 /-- Use the installed standard derived categories of the actual module sheaves. -/
 local instance affineHigherImageCohomologyStandard (Z : Scheme.{u}) :
@@ -62,7 +62,7 @@ local instance affineHigherImageCohomologyStandard (Z : Scheme.{u}) :
 
 /-- Original affine sections of homology of the installed derived direct image at the actual
 single are the unchanged original cohomology module. -/
-def moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_of_counit_quasiIso
+def moduleDerivedPushforwardSingleAffineSectionsLinearEquivOfCounitQuasiIso
     (I : InjectiveResolution M)
     (hI : QuasiIso (Scheme.Modules.Complex.tildeGlobalSectionsCounit
       (CommRingCat.of R) (.up ℤ)
@@ -77,7 +77,7 @@ def moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_of_counit_quasiIso
       Sheaf.H.{u + 1} (moduleAddSheaf X M) n :=
   (moduleSpecΓFunctor.mapIso
       (((Scheme.Modules.pushforward f).rightDerivedSingleHomologyIso n).app M).symm).toLinearEquiv
-    |>.trans (moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso f M I hI n)
+    |>.trans (moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso f M I hI n)
 
 end Constructors
 
@@ -132,8 +132,8 @@ variable {R : Type u} [CommRing R] {X : Scheme.{u}}
 @[reassoc]
 theorem moduleHigherDirectImageAffineIso_hom_naturality_of_counit_quasiIso (n : ℕ) :
     ((Scheme.Modules.pushforward f).rightDerived n).map v ≫
-        (moduleHigherDirectImageAffineIso_of_counit_quasiIso f N J hJ n).hom =
-      (moduleHigherDirectImageAffineIso_of_counit_quasiIso f M I hI n).hom ≫
+        (moduleHigherDirectImageAffineIsoOfCounitQuasiIso f N J hJ n).hom =
+      (moduleHigherDirectImageAffineIsoOfCounitQuasiIso f M I hI n).hom ≫
         (tilde.functor (CommRingCat.of R)).map
           (homologyMap ((moduleSpecΓFunctor.mapHomologicalComplex (.up ℤ)).map
             (((Scheme.Modules.pushforward f).mapHomologicalComplex (.up ℤ)).map φ.hom'))
@@ -152,8 +152,8 @@ theorem moduleHigherDirectImageAffineIso_hom_naturality_of_counit_quasiIso (n : 
   apply (cancel_mono e₁.hom).mp
   simp only [Category.assoc]
   change ((Scheme.Modules.pushforward f).rightDerived n).map v ≫
-      (moduleHigherDirectImageAffineIso_of_counit_quasiIso f N J hJ n).hom ≫ e₁.hom =
-    (moduleHigherDirectImageAffineIso_of_counit_quasiIso f M I hI n).hom ≫
+      (moduleHigherDirectImageAffineIsoOfCounitQuasiIso f N J hJ n).hom ≫ e₁.hom =
+    (moduleHigherDirectImageAffineIsoOfCounitQuasiIso f M I hI n).hom ≫
       (tilde.functor (CommRingCat.of R)).map
         (homologyMap ((moduleSpecΓFunctor.mapHomologicalComplex (.up ℤ)).map q) (n : ℤ)) ≫
       e₁.hom
@@ -167,11 +167,11 @@ theorem moduleHigherDirectImageAffineIso_hom_naturality_of_counit_quasiIso (n : 
 coefficient map to the unchanged original cohomology coefficient map. -/
 theorem moduleHigherDirectImageAffineSectionsLinearEquiv_naturality_of_counit_quasiIso (n : ℕ)
     (x : moduleSpecΓFunctor.obj (((Scheme.Modules.pushforward f).rightDerived n).obj M)) :
-    moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso f N J hJ n
+    moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso f N J hJ n
         (moduleSpecΓFunctor.map (((Scheme.Modules.pushforward f).rightDerived n).map v) x) =
       moduleCohomologyMapOfHom X
         (f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom) v n
-        (moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso f M I hI n x) := by
+        (moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso f M I hI n x) := by
   let φ : InjectiveResolution.Hom I J v :=
     ⟨InjectiveResolution.desc v J I, by
       simpa only [CochainComplex.single₀_map_f_zero] using
@@ -182,9 +182,9 @@ theorem moduleHigherDirectImageAffineSectionsLinearEquiv_naturality_of_counit_qu
   let q := ((Scheme.Modules.pushforward f).mapHomologicalComplex (.up ℤ)).map φ.hom'
   let δ := (moduleSpecΓFunctor.mapHomologicalComplex (.up ℤ)).map q
   let t := homologyMap δ (n : ℤ)
-  let a₀ := moduleSpecΓFunctor.map (moduleHigherDirectImageAffineIso_of_counit_quasiIso
+  let a₀ := moduleSpecΓFunctor.map (moduleHigherDirectImageAffineIsoOfCounitQuasiIso
     f M I hI n).hom
-  let a₁ := moduleSpecΓFunctor.map (moduleHigherDirectImageAffineIso_of_counit_quasiIso
+  let a₁ := moduleSpecΓFunctor.map (moduleHigherDirectImageAffineIsoOfCounitQuasiIso
     f N J hJ n).hom
   let r := moduleSpecΓFunctor.map (((Scheme.Modules.pushforward f).rightDerived n).map v)
   let e₀ := (tilde.toTildeΓNatIso (R := CommRingCat.of R)).app
@@ -240,14 +240,14 @@ theorem moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_naturality_of_co
       ((DerivedCategory.Plus.homologyFunctor (Spec (CommRingCat.of R)).Modules (n : ℤ)).obj
         ((Scheme.Modules.pushforward f).rightDerivedFunctorPlus.obj
           ((DerivedCategory.Plus.singleFunctor X.Modules 0).obj M)))) :
-    moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_of_counit_quasiIso f N J hJ n
+    moduleDerivedPushforwardSingleAffineSectionsLinearEquivOfCounitQuasiIso f N J hJ n
         (moduleSpecΓFunctor.map
           ((DerivedCategory.Plus.homologyFunctor (Spec (CommRingCat.of R)).Modules (n : ℤ)).map
             ((Scheme.Modules.pushforward f).rightDerivedFunctorPlus.map
               ((DerivedCategory.Plus.singleFunctor X.Modules 0).map v))) x) =
       moduleCohomologyMapOfHom X
         (f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom) v n
-        (moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_of_counit_quasiIso
+        (moduleDerivedPushforwardSingleAffineSectionsLinearEquivOfCounitQuasiIso
           f M I hI n x) := by
   let F : X.Modules ⥤ (Spec (CommRingCat.of R)).Modules := Scheme.Modules.pushforward f
   let H := DerivedCategory.Plus.homologyFunctor (Spec (CommRingCat.of R)).Modules (n : ℤ)
@@ -260,11 +260,11 @@ theorem moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_naturality_of_co
   change moduleSpecΓFunctor.map (E.inv.app N) (moduleSpecΓFunctor.map t x) =
     moduleSpecΓFunctor.map ((F.rightDerived n).map v)
       (moduleSpecΓFunctor.map (E.inv.app M) x) at hx
-  change moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso f N J hJ n
+  change moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso f N J hJ n
       (moduleSpecΓFunctor.map (E.inv.app N) (moduleSpecΓFunctor.map t x)) =
     moduleCohomologyMapOfHom X
       (f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom) v n
-      (moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso f M I hI n
+      (moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso f M I hI n
         (moduleSpecΓFunctor.map (E.inv.app M) x))
   rw [hx]
   exact moduleHigherDirectImageAffineSectionsLinearEquiv_naturality_of_counit_quasiIso f I J hI hJ n

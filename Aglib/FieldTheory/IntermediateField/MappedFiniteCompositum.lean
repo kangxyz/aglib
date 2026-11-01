@@ -37,14 +37,14 @@ def mappedFiniteCompositumInclusion :
   (finiteCompositumInclusion K (F.map e)).comp (F.equivMap e).toAlgHom
 
 /-- The full ambient equation uses the specified embedding, not a new extension. -/
-@[simp] theorem val_comp_mappedFiniteCompositumInclusion :
+theorem val_comp_mappedFiniteCompositumInclusion :
     ((adjoin K ((F.map e : IntermediateField k Ω) : Set Ω)).val.restrictScalars k).comp
       (mappedFiniteCompositumInclusion K F e) = e.comp F.val := by
   ext x
   rfl
 
 /-- The original base-field maps commute through the same source-field inclusion. -/
-@[simp] theorem mappedFiniteCompositumInclusion_comp_algebraMap :
+theorem mappedFiniteCompositumInclusion_comp_algebraMap :
     (mappedFiniteCompositumInclusion K F e).toRingHom.comp (algebraMap k F) =
       algebraMap k (adjoin K ((F.map e : IntermediateField k Ω) : Set Ω)) := by
   exact RingHom.ext fun x => (mappedFiniteCompositumInclusion K F e).commutes x

@@ -38,12 +38,21 @@ variable [HasDerivedCategory.{wX'} (ModuleSheaf (pullback (𝟙 S) f) Λ)]
   [HasDerivedCategory.{wN}
     (ModuleSheaf (Hom.DenseCompactification.baseChangeObj (𝟙 S) C).Xbar Λ)]
 
+/-- The derived-category instance in universe `wR` for `Λ`-module sheaves on
+    `(C.toCompactification.baseChange (𝟙 S)).Xbar`.
+-/
 local instance unboundedIdentityRawModel :
     HasDerivedCategory.{wR} (ModuleSheaf (C.toCompactification.baseChange (𝟙 S)).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wR} (ModuleSheaf (pullback (𝟙 S) C.p) Λ))
+/-- The derived-category instance in universe `wM` for `Λ`-module sheaves on
+    `((Hom.DenseCompactification.identitySourceTransport f).obj C).Xbar`.
+-/
 local instance unboundedIdentityTransportModel : HasDerivedCategory.{wM}
     (ModuleSheaf ((Hom.DenseCompactification.identitySourceTransport f).obj C).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ))
+/-- The derived-category instance in universe `wN` for `Λ`-module sheaves on
+    `(Hom.Compactification.densify (C.toCompactification.baseChange (𝟙 S))).Xbar`.
+-/
 local instance unboundedIdentityDenseModel : HasDerivedCategory.{wN}
     (ModuleSheaf (Hom.Compactification.densify (C.toCompactification.baseChange (𝟙 S))).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN}

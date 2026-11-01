@@ -1,0 +1,15 @@
+{
+  "command": [
+    "python3",
+    "-m",
+    "lean_tools",
+    "source",
+    "--root",
+    "."
+  ],
+  "cwd": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+  "exit": 1,
+  "seconds": 41.29437491699355,
+  "HEAD": "c4880830a7ebfea496a348d361cd50b109ea536d",
+  "scope": "Whole available completed C/D programme input1714=1297+417, guarded19metadataapplied; source-only native predicate, no Lean frontend/tests."
+}

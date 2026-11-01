@@ -31,6 +31,9 @@ variable {X₀ X₁ X₂ S T : Scheme.{u}} {f₀ : X₀ ⟶ S} {f₂ : X₂ ⟶ 
   [HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ)]
   [HasDerivedCategory.{wN} (ModuleSheaf D.Xbar Λ)]
 
+/-- The derived-category instance in universe `wM` for `Λ`-module sheaves on `(C.ofSourceIso f₁ e
+    hf₁).Xbar`.
+-/
 local instance unboundedRawSourceBeforeTransportModel : HasDerivedCategory.{wM}
     (ModuleSheaf (C.ofSourceIso f₁ e hf₁).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ))

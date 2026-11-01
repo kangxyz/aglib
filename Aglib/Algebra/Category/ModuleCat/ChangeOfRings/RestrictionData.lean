@@ -25,17 +25,29 @@ namespace ModuleCat
 
 /-- All original module objects and maps, with their unit-tensor laws. -/
 structure TensorRestrictionData {R S : Type u} [CommRing R] [CommRing S] (σ : R →+* S) where
+  /-- The source module before extension of scalars. -/
   A : ModuleCat.{max u w} R
+  /-- The comparison source module over `R`. -/
   A' : ModuleCat.{max u w} R
+  /-- The target module over `S`. -/
   B : ModuleCat.{max u w} S
+  /-- The intermediate comparison target over `S`. -/
   B' : ModuleCat.{max u w} S
+  /-- The final comparison target over `S`. -/
   D : ModuleCat.{max u w} S
+  /-- The map from the extension of `A` to `B`. -/
   q : (extendScalars σ).obj A ⟶ B
+  /-- The map from the extension of `A'` to `D`. -/
   δ : (extendScalars σ).obj A' ⟶ D
+  /-- The isomorphism between the two source modules. -/
   eX : A ≅ A'
+  /-- The isomorphism from `B` to the intermediate target. -/
   eY : B ≅ B'
+  /-- The isomorphism from the intermediate to the final target. -/
   eε : B' ≅ D
+  /-- The function represented by `q` on tensors with first factor one. -/
   g : A → B
+  /-- The function represented by `δ` on tensors with first factor one. -/
   r : A' → D
   hq : ∀ x, q ((1 : S) ⊗ₜ[R,σ] x) = g x
   hδ : ∀ x, δ ((1 : S) ⊗ₜ[R,σ] x) = r x

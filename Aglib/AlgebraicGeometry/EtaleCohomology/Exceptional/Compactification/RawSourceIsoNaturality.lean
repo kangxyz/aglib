@@ -31,9 +31,15 @@ variable {X X' S : Scheme.{u}} {f : X ⟶ S}
   [HasDerivedCategory.{wD} (ModuleSheaf D.Xbar Λ)]
   [HasDerivedCategory.{wS} (ModuleSheaf S Λ)]
 
+/-- Derived-category instance on module sheaves over `(C.ofSourceIso f' e hf').Xbar`, using the
+instance on `C.Xbar`.
+-/
 local instance rawNaturalityTransportCModel :
     HasDerivedCategory.{wC} (ModuleSheaf (C.ofSourceIso f' e hf').Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wC} (ModuleSheaf C.Xbar Λ))
+/-- Derived-category instance on module sheaves over `(D.ofSourceIso f' e hf').Xbar`, using the
+instance on `D.Xbar`.
+-/
 local instance rawNaturalityTransportDModel :
     HasDerivedCategory.{wD} (ModuleSheaf (D.ofSourceIso f' e hf').Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wD} (ModuleSheaf D.Xbar Λ))

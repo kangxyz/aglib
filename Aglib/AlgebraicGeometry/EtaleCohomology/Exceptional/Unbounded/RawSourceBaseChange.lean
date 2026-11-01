@@ -33,18 +33,33 @@ variable {X X' S T : Scheme.{u}} (f : X ⟶ S) (f' : X' ⟶ S)
   [HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ)]
   [HasDerivedCategory.{wN} (ModuleSheaf (pullback b C.p) Λ)]
 
+/-- The derived-category instance in universe `wM` for `Λ`-module sheaves on `(C.ofSourceIso f' e
+    he).Xbar`.
+-/
 local instance unboundedRawSourceBCSourceModel : HasDerivedCategory.{wM}
     (ModuleSheaf (C.ofSourceIso f' e he).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ))
+/-- The derived-category instance in universe `wN` for `Λ`-module sheaves on `(C.baseChange
+    b).Xbar`.
+-/
 local instance unboundedRawSourceBCPullbackModel : HasDerivedCategory.{wN}
     (ModuleSheaf (C.baseChange b).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN} (ModuleSheaf (pullback b C.p) Λ))
+/-- The derived-category instance in universe `wN` for `Λ`-module sheaves on `(pullback b
+    (C.ofSourceIso f' e he).p)`.
+-/
 local instance unboundedRawSourceBCPullbackSourceModel : HasDerivedCategory.{wN}
     (ModuleSheaf (pullback b (C.ofSourceIso f' e he).p) Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN} (ModuleSheaf (pullback b C.p) Λ))
+/-- The derived-category instance in universe `wN` for `Λ`-module sheaves on `((C.ofSourceIso f' e
+    he).baseChange b).Xbar`.
+-/
 local instance unboundedRawSourceBCActualModel : HasDerivedCategory.{wN}
     (ModuleSheaf ((C.ofSourceIso f' e he).baseChange b).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN} (ModuleSheaf (pullback b C.p) Λ))
+/-- The derived-category instance in universe `wN` for `Λ`-module sheaves on
+    `(sourceBaseChangeTransportModel f f' e he b C).Xbar`.
+-/
 local instance unboundedRawSourceBCTransportModel : HasDerivedCategory.{wN}
     (ModuleSheaf (sourceBaseChangeTransportModel f f' e he b C).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN} (ModuleSheaf (pullback b C.p) Λ))

@@ -27,7 +27,7 @@ universe u
 
 /-- Actual finite-etale restriction to a punctured section of its original smooth
 section-adic completion is fully faithful over a normal Noetherian local domain. -/
-def smoothSplitSectionPuncturedFiniteEtale_fullyFaithful
+def smoothSplitSectionPuncturedFiniteEtaleFullyFaithful
     {R B : Type u} [CommRing R] [IsDomain R] [IsLocalRing R]
     [IsNoetherianRing R] [IsIntegrallyClosed R] [CommRing B] [Algebra R B]
     [Algebra.Smooth R B] (ε : B →ₐ[R] R)
@@ -64,8 +64,8 @@ def smoothSplitSectionPuncturedFiniteEtale_fullyFaithful
     change s ⁻¹ᵁ k ⁻¹ᵁ W = _
     rw [← Hom.comp_preimage, hs]
     exact hW
-  let hf := powerSeriesPuncturedFiniteEtale_zeroSection_fullyFaithful (k ⁻¹ᵁ W) hdim hV
-  let hc := restriction_fullyFaithful_comp_iso s k W hf
+  let hf := powerSeriesPuncturedFiniteEtaleZeroSectionFullyFaithful (k ⁻¹ᵁ W) hdim hV
+  let hc := restrictionFullyFaithfulCompIso s k W hf
   exact ⟨Eq.mp (congrArg
     (fun f => (baseChange (f ∣_ W)).FullyFaithful) hs) hc⟩
 

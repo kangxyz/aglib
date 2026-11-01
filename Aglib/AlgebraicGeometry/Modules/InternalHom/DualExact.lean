@@ -45,7 +45,7 @@ def affineDualSectionsIso {X : Scheme.{u}} {R : CommRingCat.{u}}
       (M := moduleSpecΓFunctor.obj (M.restrict j)) (N := ModuleCat.of R R)).symm).toModuleIso
 
 /-- Actual sections of the reversed dual sequence are the reversed original Hom sequence. -/
-def dualShortComplex_sectionsIso {X : Scheme.{u}} {R : CommRingCat.{u}}
+def dualShortComplexSectionsIso {X : Scheme.{u}} {R : CommRingCat.{u}}
     (j : Spec R ⟶ X) [IsOpenImmersion j] (S : ShortComplex X.Modules)
     [(S.X₁.restrict j).IsQuasicoherent] [(S.X₂.restrict j).IsQuasicoherent]
     [(S.X₃.restrict j).IsQuasicoherent] :
@@ -92,7 +92,7 @@ theorem dual_shortExact_affineRestriction {X : Scheme.{u}}
   let : Projective P := ModuleCat.projective_of_categoryTheory_projective P
   let split := (hΓ.splittingOfProjective.op.map
     ((linearYoneda R (ModuleCat.{u} R)).obj (ModuleCat.of R R))).ofIso
-      (dualShortComplex_sectionsIso j S).symm
+      (dualShortComplexSectionsIso j S).symm
   let : IsIso T.X₁.fromTildeΓ := isIso_fromTildeΓ_of_isQuasicoherent T.X₁
   let : IsIso T.X₂.fromTildeΓ := isIso_fromTildeΓ_of_isQuasicoherent T.X₂
   let : IsIso T.X₃.fromTildeΓ := isIso_fromTildeΓ_of_isQuasicoherent T.X₃

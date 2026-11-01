@@ -40,6 +40,9 @@ variable {X S T : Scheme.{u}} {f : X ⟶ S}
   [HasDerivedCategory.{wT} (ModuleSheaf T Λ)]
   [HasDerivedCategory.{wCR} (ModuleSheaf (pullback b C.p) Λ)]
 
+/-- Derived-category instance on module sheaves over `(C.baseChange b).Xbar`, using the instance on
+`(pullback b C.p)`.
+-/
 local instance rawBaseChangeFormulaModel :
     HasDerivedCategory.{wCR} (ModuleSheaf (C.baseChange b).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wCR} (ModuleSheaf (pullback b C.p) Λ))
@@ -69,10 +72,16 @@ variable {X S T : Scheme.{u}} {f : X ⟶ S} [QuasiCompact f]
   [HasDerivedCategory.{wCR} (ModuleSheaf (pullback b C.p) Λ)]
   [HasDerivedCategory.{wDR} (ModuleSheaf (pullback b D.p) Λ)]
 
+/-- Derived-category instance on module sheaves over `(C.toCompactification.baseChange b).Xbar`,
+using the instance on `(pullback b C.p)`.
+-/
 local instance rawBaseChangeNaturalityCModel :
     HasDerivedCategory.{wCR}
     (ModuleSheaf (C.toCompactification.baseChange b).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wCR} (ModuleSheaf (pullback b C.p) Λ))
+/-- Derived-category instance on module sheaves over `(D.toCompactification.baseChange b).Xbar`,
+using the instance on `(pullback b D.p)`.
+-/
 local instance rawBaseChangeNaturalityDModel :
     HasDerivedCategory.{wDR}
     (ModuleSheaf (D.toCompactification.baseChange b).Xbar Λ) :=

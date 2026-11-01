@@ -32,18 +32,23 @@ open Algebra.FiniteTypeArrowLimit
 variable {R A B : Type u} [CommRing R] [CommRing A] [CommRing B]
   [Algebra R A] [Algebra R B] (α : A →ₐ[R] B)
 
+/-- The quiver underlying the opposite category of finite-type arrow indices. -/
 local instance : Quiver (Index A B)ᵒᵖ :=
   (inferInstance : Category (Index A B)ᵒᵖ).toQuiver
 
+/-- The spectrum diagram associated to the source rings of the finite-type arrows. -/
 def sourceSpecDiagram : (Index A B)ᵒᵖ ⥤ Scheme.{u} :=
   (sourceDiagram α).op ⋙ Scheme.Spec
 
+/-- The spectrum diagram associated to the target rings of the finite-type arrows. -/
 def targetSpecDiagram : (Index A B)ᵒᵖ ⥤ Scheme.{u} :=
   (targetDiagram α).op ⋙ Scheme.Spec
 
+/-- The cone obtained by applying spectrum to the opposite source cocone. -/
 def sourceSpecCone : Cone (sourceSpecDiagram α) :=
   Scheme.Spec.mapCone (sourceCocone α).op
 
+/-- The cone obtained by applying spectrum to the opposite target cocone. -/
 def targetSpecCone : Cone (targetSpecDiagram α) :=
   Scheme.Spec.mapCone (targetCocone α).op
 

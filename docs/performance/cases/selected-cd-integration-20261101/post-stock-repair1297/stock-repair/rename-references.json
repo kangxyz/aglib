@@ -1,0 +1,634 @@
+{
+  "Aglib/AlgebraicGeometry/Spec/PowerSeriesSectionLifting.lean": [
+    {
+      "old": "powerSeriesPuncturedFiniteEtale_zeroSection_fullyFaithful",
+      "new": "powerSeriesPuncturedFiniteEtaleZeroSectionFullyFaithful",
+      "line": 38
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Spec/PowerSeriesHartogsAlgebraComparison.lean": [
+    {
+      "old": "ringSectionsTensorAlgEquiv_of_flat_of_isPullback",
+      "new": "ringSectionsTensorAlgEquivOfFlatOfIsPullback",
+      "line": 103
+    },
+    {
+      "old": "powerSeriesHartogsAlgebraComparison_restriction",
+      "new": "powerSeriesHartogsAlgebraComparisonRestriction",
+      "line": 296
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Spec/SmoothSplitSectionFiniteEtaleMaps.lean": [
+    {
+      "old": "restriction_fullyFaithful_comp_iso",
+      "new": "restrictionFullyFaithfulCompIso",
+      "line": 68
+    },
+    {
+      "old": "powerSeriesPuncturedFiniteEtale_zeroSection_fullyFaithful",
+      "new": "powerSeriesPuncturedFiniteEtaleZeroSectionFullyFaithful",
+      "line": 67
+    },
+    {
+      "old": "smoothSplitSectionPuncturedFiniteEtale_fullyFaithful",
+      "new": "smoothSplitSectionPuncturedFiniteEtaleFullyFaithful",
+      "line": 30
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Spec/PowerSeriesHartogsCoverRecovery.lean": [
+    {
+      "old": "powerSeriesBaseOpenSection_fullyFaithful",
+      "new": "powerSeriesBaseOpenSectionFullyFaithful",
+      "line": 76
+    },
+    {
+      "old": "powerSeriesBaseOpenSection_fullyFaithful",
+      "new": "powerSeriesBaseOpenSectionFullyFaithful",
+      "line": 100
+    },
+    {
+      "old": "powerSeriesHartogsFiniteEtale_zeroSection_fullyFaithful",
+      "new": "powerSeriesHartogsFiniteEtaleZeroSectionFullyFaithful",
+      "line": 81
+    }
+  ],
+  "Aglib/CategoryTheory/Limits/Shapes/KernelCones.lean": [
+    {
+      "old": "isLimit_of_kernelCones",
+      "new": "isLimitOfKernelCones",
+      "line": 36
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Spec/SmoothCompletionPrescribedSection.lean": [
+    {
+      "old": "smoothSplitSectionPuncturedFiniteEtale_fullyFaithful",
+      "new": "smoothSplitSectionPuncturedFiniteEtaleFullyFaithful",
+      "line": 65
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Spec/SmoothCompletionOpenPrescribedSection.lean": [
+    {
+      "old": "smoothSplitSectionPuncturedFiniteEtale_fullyFaithful",
+      "new": "smoothSplitSectionPuncturedFiniteEtaleFullyFaithful",
+      "line": 69
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Spec/PowerSeriesHartogsCoverExtension.lean": [
+    {
+      "old": "originalHartogsFiniteEtaleExtension_recovery",
+      "new": "originalHartogsFiniteEtaleExtensionRecovery",
+      "line": 45
+    },
+    {
+      "old": "originalHartogsFiniteEtaleExtension_recovery",
+      "new": "originalHartogsFiniteEtaleExtensionRecovery",
+      "line": 60
+    },
+    {
+      "old": "originalHartogsFiniteEtaleExtension_recovery",
+      "new": "originalHartogsFiniteEtaleExtensionRecovery",
+      "line": 70
+    },
+    {
+      "old": "originalHartogsFiniteEtaleExtension_recovery",
+      "new": "originalHartogsFiniteEtaleExtensionRecovery",
+      "line": 103
+    },
+    {
+      "old": "powerSeriesHartogsCoverExtension_recovery",
+      "new": "powerSeriesHartogsCoverExtensionRecovery",
+      "line": 95
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Spec/PowerSeriesFiniteEtaleMaps.lean": [
+    {
+      "old": "powerSeriesPuncturedFiniteEtale_fullyFaithful",
+      "new": "powerSeriesPuncturedFiniteEtaleFullyFaithful",
+      "line": 66
+    },
+    {
+      "old": "powerSeriesPuncturedFiniteEtale_fullyFaithful",
+      "new": "powerSeriesPuncturedFiniteEtaleFullyFaithful",
+      "line": 93
+    },
+    {
+      "old": "powerSeriesPuncturedFiniteEtale_zeroSection_fullyFaithful",
+      "new": "powerSeriesPuncturedFiniteEtaleZeroSectionFullyFaithful",
+      "line": 80
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Spec/PowerSeriesHartogsFiniteEtaleMaps.lean": [
+    {
+      "old": "powerSeriesHartogsFiniteEtale_fullyFaithful",
+      "new": "powerSeriesHartogsFiniteEtaleFullyFaithful",
+      "line": 66
+    },
+    {
+      "old": "powerSeriesHartogsFiniteEtale_fullyFaithful",
+      "new": "powerSeriesHartogsFiniteEtaleFullyFaithful",
+      "line": 93
+    },
+    {
+      "old": "powerSeriesHartogsFiniteEtale_zeroSection_fullyFaithful",
+      "new": "powerSeriesHartogsFiniteEtaleZeroSectionFullyFaithful",
+      "line": 80
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/GaloisExtension.lean": [
+    {
+      "old": "normalizationFiniteEtale_restrictionIso",
+      "new": "normalizationFiniteEtaleRestrictionIso",
+      "line": 40
+    },
+    {
+      "old": "normalizationFiniteEtale_restrictionIso",
+      "new": "normalizationFiniteEtaleRestrictionIso",
+      "line": 57
+    },
+    {
+      "old": "normalizationFiniteEtale_autEquiv",
+      "new": "normalizationFiniteEtaleAutEquiv",
+      "line": 33
+    },
+    {
+      "old": "normalizationFiniteEtale_autEquiv",
+      "new": "normalizationFiniteEtaleAutEquiv",
+      "line": 45
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/GaloisRestrictedExtension.lean": [
+    {
+      "old": "restrictedNormalization_restrictionIso",
+      "new": "restrictedNormalizationRestrictionIso",
+      "line": 83
+    },
+    {
+      "old": "restrictedNormalization_restrictionIso",
+      "new": "restrictedNormalizationRestrictionIso",
+      "line": 146
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Descent/FinitePresentation/Gluing.lean": [
+    {
+      "old": "baseChangeDiagram_rebaseIso",
+      "new": "baseChangeDiagramRebaseIso",
+      "line": 463
+    },
+    {
+      "old": "baseChangeDiagram_rebaseIso",
+      "new": "baseChangeDiagramRebaseIso",
+      "line": 481
+    },
+    {
+      "old": "baseChangeDiagram_rebaseIso",
+      "new": "baseChangeDiagramRebaseIso",
+      "line": 482
+    },
+    {
+      "old": "baseChangeDiagram_rebaseIso",
+      "new": "baseChangeDiagramRebaseIso",
+      "line": 493
+    },
+    {
+      "old": "baseChangeDiagram_rebaseIso",
+      "new": "baseChangeDiagramRebaseIso",
+      "line": 544
+    },
+    {
+      "old": "baseChangeDiagram_rebaseIso",
+      "new": "baseChangeDiagramRebaseIso",
+      "line": 546
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Descent/FinitePresentation/OverBaseGluing.lean": [
+    {
+      "old": "baseChangeDiagram_rebaseIso",
+      "new": "baseChangeDiagramRebaseIso",
+      "line": 43
+    },
+    {
+      "old": "baseChangeDiagram_rebaseIso",
+      "new": "baseChangeDiagramRebaseIso",
+      "line": 56
+    },
+    {
+      "old": "baseChangeDiagram_rebaseIso",
+      "new": "baseChangeDiagramRebaseIso",
+      "line": 73
+    },
+    {
+      "old": "baseChangeDiagram_rebaseIso",
+      "new": "baseChangeDiagramRebaseIso",
+      "line": 77
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/EtaleExtension.lean": [
+    {
+      "old": "normalizationFiniteEtale_restrictionIso",
+      "new": "normalizationFiniteEtaleRestrictionIso",
+      "line": 39
+    },
+    {
+      "old": "normalizationFiniteEtale_restrictionIso",
+      "new": "normalizationFiniteEtaleRestrictionIso",
+      "line": 45
+    },
+    {
+      "old": "normalizationFiniteEtale_restrictionIso",
+      "new": "normalizationFiniteEtaleRestrictionIso",
+      "line": 50
+    },
+    {
+      "old": "normalizationFiniteEtale_restrictionIso",
+      "new": "normalizationFiniteEtaleRestrictionIso",
+      "line": 55
+    }
+  ],
+  "Aglib/RingTheory/Henselian/StrictHenselization/IntegralClosure.lean": [
+    {
+      "old": "underCocone_isColimit",
+      "new": "underCoconeIsColimit",
+      "line": 53
+    },
+    {
+      "old": "underCocone_isColimit",
+      "new": "underCoconeIsColimit",
+      "line": 67
+    }
+  ],
+  "Aglib/AlgebraicGeometry/EtaleCohomology/H1/GeometricallyConnected.lean": [
+    {
+      "old": "fullyFaithfulBaseChange_of_geometricallyConnected",
+      "new": "fullyFaithfulBaseChangeOfGeometricallyConnected",
+      "line": 43
+    }
+  ],
+  "Aglib/RingTheory/Kummer/Uniformizer.lean": [
+    {
+      "old": "uniformizerRoot_quotientEquivResidue",
+      "new": "uniformizerRootQuotientEquivResidue",
+      "line": 113
+    },
+    {
+      "old": "uniformizerRoot_quotientEquivResidue",
+      "new": "uniformizerRootQuotientEquivResidue",
+      "line": 122
+    }
+  ],
+  "Aglib/RingTheory/Kummer/StrictHenselianRootCancellation.lean": [
+    {
+      "old": "uniformizerRoot_normalTensorEquivPi",
+      "new": "uniformizerRootNormalTensorEquivPi",
+      "line": 146
+    },
+    {
+      "old": "uniformizerRoot_normalTensorEquivPi",
+      "new": "uniformizerRootNormalTensorEquivPi",
+      "line": 159
+    }
+  ],
+  "Aglib/RingTheory/Kummer/StrictHenselianRootNormalization.lean": [
+    {
+      "old": "strictRoot_integralClosureEquiv",
+      "new": "strictRootIntegralClosureEquiv",
+      "line": 81
+    },
+    {
+      "old": "strictRoot_integralClosureEquiv",
+      "new": "strictRootIntegralClosureEquiv",
+      "line": 89
+    }
+  ],
+  "Aglib/RingTheory/Kummer/DVRRootCancellation.lean": [
+    {
+      "old": "strictRoot_integralClosureEquiv",
+      "new": "strictRootIntegralClosureEquiv",
+      "line": 87
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/SectionsCounit.lean": [
+    {
+      "old": "moduleHigherDirectImageAffineIso_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineIsoOfCounitQuasiIso",
+      "line": 63
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso",
+      "line": 48
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/CounitDegreeZero.lean": [
+    {
+      "old": "moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso",
+      "line": 40
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso",
+      "line": 56
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso",
+      "line": 165
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso",
+      "line": 169
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso",
+      "line": 145
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso",
+      "line": 162
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso",
+      "line": 197
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/CounitNaturality.lean": [
+    {
+      "old": "moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_of_counit_quasiIso",
+      "new": "moduleDerivedPushforwardSingleAffineSectionsLinearEquivOfCounitQuasiIso",
+      "line": 65
+    },
+    {
+      "old": "moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_of_counit_quasiIso",
+      "new": "moduleDerivedPushforwardSingleAffineSectionsLinearEquivOfCounitQuasiIso",
+      "line": 243
+    },
+    {
+      "old": "moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_of_counit_quasiIso",
+      "new": "moduleDerivedPushforwardSingleAffineSectionsLinearEquivOfCounitQuasiIso",
+      "line": 250
+    },
+    {
+      "old": "moduleHigherDirectImageAffineIso_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineIsoOfCounitQuasiIso",
+      "line": 57
+    },
+    {
+      "old": "moduleHigherDirectImageAffineIso_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineIsoOfCounitQuasiIso",
+      "line": 135
+    },
+    {
+      "old": "moduleHigherDirectImageAffineIso_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineIsoOfCounitQuasiIso",
+      "line": 136
+    },
+    {
+      "old": "moduleHigherDirectImageAffineIso_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineIsoOfCounitQuasiIso",
+      "line": 155
+    },
+    {
+      "old": "moduleHigherDirectImageAffineIso_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineIsoOfCounitQuasiIso",
+      "line": 156
+    },
+    {
+      "old": "moduleHigherDirectImageAffineIso_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineIsoOfCounitQuasiIso",
+      "line": 185
+    },
+    {
+      "old": "moduleHigherDirectImageAffineIso_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineIsoOfCounitQuasiIso",
+      "line": 187
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso",
+      "line": 47
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso",
+      "line": 80
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso",
+      "line": 170
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso",
+      "line": 174
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso",
+      "line": 263
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso",
+      "line": 267
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/SectionsCounitHomology.lean": [
+    {
+      "old": "moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso",
+      "line": 27
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso",
+      "line": 49
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso",
+      "line": 50
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso",
+      "line": 70
+    },
+    {
+      "old": "moduleHigherDirectImageAffineIso_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineIsoOfCounitQuasiIso",
+      "line": 36
+    },
+    {
+      "old": "moduleHigherDirectImageAffineIso_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineIsoOfCounitQuasiIso",
+      "line": 86
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Counit.lean": [
+    {
+      "old": "moduleHigherDirectImageAffineIso_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineIsoOfCounitQuasiIso",
+      "line": 42
+    },
+    {
+      "old": "moduleHigherDirectImageAffineIso_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineIsoOfCounitQuasiIso",
+      "line": 70
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology.lean": [
+    {
+      "old": "moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_of_counit_quasiIso",
+      "new": "moduleDerivedPushforwardSingleAffineSectionsLinearEquivOfCounitQuasiIso",
+      "line": 89
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso",
+      "line": 108
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso",
+      "line": 57
+    }
+  ],
+  "Aglib/AlgebraicGeometry/EtaleCohomology/H0/ConnectedPullbackSections.lean": [
+    {
+      "old": "relative_section_eq_at_point_lifts_of_killed",
+      "new": "relativeSectionEqAtPointLiftsOfKilled",
+      "line": 193
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/BaseChange/RestrictIso.lean": [
+    {
+      "old": "restriction_fullyFaithful_comp_iso",
+      "new": "restrictionFullyFaithfulCompIso",
+      "line": 26
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Cohomology/BaseChange/NativeRingSections.lean": [
+    {
+      "old": "ringSectionsTensorAlgEquiv_of_flat_of_isPullback",
+      "new": "ringSectionsTensorAlgEquivOfFlatOfIsPullback",
+      "line": 129
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Modules/InternalHom/DualExact.lean": [
+    {
+      "old": "dualShortComplex_sectionsIso",
+      "new": "dualShortComplexSectionsIso",
+      "line": 48
+    },
+    {
+      "old": "dualShortComplex_sectionsIso",
+      "new": "dualShortComplexSectionsIso",
+      "line": 95
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/GaloisBaseChange.lean": [
+    {
+      "old": "baseChange_autEquiv_of_connected",
+      "new": "baseChangeAutEquivOfConnected",
+      "line": 53
+    },
+    {
+      "old": "baseChange_autEquiv_of_connected",
+      "new": "baseChangeAutEquivOfConnected",
+      "line": 60
+    },
+    {
+      "old": "baseChange_autEquiv_of_connected",
+      "new": "baseChangeAutEquivOfConnected",
+      "line": 97
+    },
+    {
+      "old": "fieldExtension_baseChange_autEquiv",
+      "new": "fieldExtensionBaseChangeAutEquiv",
+      "line": 92
+    },
+    {
+      "old": "fieldExtension_baseChange_autEquiv",
+      "new": "fieldExtensionBaseChangeAutEquiv",
+      "line": 103
+    }
+  ],
+  "Aglib/RingTheory/IntegralClosure/FiniteEtale/LocalFactorGaloisBaseChange.lean": [
+    {
+      "old": "baseChange_genericRestriction",
+      "new": "baseChangeGenericRestriction",
+      "line": 59
+    },
+    {
+      "old": "baseChange_genericRestriction",
+      "new": "baseChangeGenericRestriction",
+      "line": 64
+    },
+    {
+      "old": "baseChange_genericRestriction",
+      "new": "baseChangeGenericRestriction",
+      "line": 71
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/GeometricallyConnected.lean": [
+    {
+      "old": "fullyFaithfulBaseChange_of_geometricallyConnected",
+      "new": "fullyFaithfulBaseChangeOfGeometricallyConnected",
+      "line": 55
+    },
+    {
+      "old": "fullyFaithfulBaseChange_of_geometricallyConnected",
+      "new": "fullyFaithfulBaseChangeOfGeometricallyConnected",
+      "line": 70
+    },
+    {
+      "old": "fullyFaithfulBaseChange_of_geometricallyConnected",
+      "new": "fullyFaithfulBaseChangeOfGeometricallyConnected",
+      "line": 76
+    },
+    {
+      "old": "fullyFaithfulBaseChange_of_flat_quasiCompact",
+      "new": "fullyFaithfulBaseChangeOfFlatQuasiCompact",
+      "line": 68
+    },
+    {
+      "old": "fullyFaithfulBaseChange_of_flat_quasiCompact",
+      "new": "fullyFaithfulBaseChangeOfFlatQuasiCompact",
+      "line": 86
+    },
+    {
+      "old": "fullyFaithfulBaseChange_of_flat_lfp",
+      "new": "fullyFaithfulBaseChangeOfFlatLfp",
+      "line": 74
+    },
+    {
+      "old": "fullyFaithfulBaseChange_fieldExtension",
+      "new": "fullyFaithfulBaseChangeFieldExtension",
+      "line": 80
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Modules/Coherent/AdicSystem/SectionKernels.lean": [
+    {
+      "old": "idealSheafSectionCone_isLimit_of_universallyExact",
+      "new": "idealSheafSectionConeIsLimitOfUniversallyExact",
+      "line": 66
+    },
+    {
+      "old": "isLimit_of_kernelCones",
+      "new": "isLimitOfKernelCones",
+      "line": 85
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Modules/Coherent/AdicSystem/SectionCompleteness.lean": [
+    {
+      "old": "idealSheafSectionCone_isLimit_of_universallyExact",
+      "new": "idealSheafSectionConeIsLimitOfUniversallyExact",
+      "line": 42
+    }
+  ]
+}

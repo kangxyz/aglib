@@ -30,12 +30,21 @@ variable {X₀ X₁ X₂ S : Scheme.{u}} (f₀ : X₀ ⟶ S) (f₁ : X₁ ⟶ S)
   [HasDerivedCategory.{wS} (ModuleSheaf S Λ)]
   [HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ)]
 
+/-- The derived-category instance in universe `wM` for `Λ`-module sheaves on `(rawSourceFirstModel
+    f₀ f₁ e₁ h₁ C).Xbar`.
+-/
 local instance unboundedRawSourceCompositionFirstModel :
     HasDerivedCategory.{wM} (ModuleSheaf (rawSourceFirstModel f₀ f₁ e₁ h₁ C).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ))
+/-- The derived-category instance in universe `wM` for `Λ`-module sheaves on
+    `(rawSourceSequentialModel f₀ f₁ f₂ e₁ e₂ h₁ h₂ C).Xbar`.
+-/
 local instance unboundedRawSourceCompositionSequentialModel : HasDerivedCategory.{wM}
     (ModuleSheaf (rawSourceSequentialModel f₀ f₁ f₂ e₁ e₂ h₁ h₂ C).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ))
+/-- The derived-category instance in universe `wM` for `Λ`-module sheaves on
+    `(rawSourceCompositeModel f₀ f₁ f₂ e₁ e₂ h₁ h₂ C).Xbar`.
+-/
 local instance unboundedRawSourceCompositionCompositeModel : HasDerivedCategory.{wM}
     (ModuleSheaf (rawSourceCompositeModel f₀ f₁ f₂ e₁ e₂ h₁ h₂ C).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wM} (ModuleSheaf C.Xbar Λ))

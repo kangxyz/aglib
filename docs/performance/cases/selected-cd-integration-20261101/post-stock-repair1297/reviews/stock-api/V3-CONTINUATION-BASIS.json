@@ -1,0 +1,1636 @@
+{
+  "assignment_continuation": "V2 to V3 affected Galois auxiliary and split-thickening consumer closure only",
+  "v1_fixed_basis": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/reviews/stock-api/FIXED-REVIEW-BASIS01.json",
+  "v2_fixed_basis": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/reviews/stock-api/V2-CONTINUATION-BASIS.json",
+  "v3_source_manifest_sha256": "af3498a3b5a2d6769ad3ecbc1b9d89f44a29df69ee4d6a07c7447c6576330459",
+  "packets": {
+    "READY-v3.json": {
+      "sha256": "3cddd34ead0300d37839125f47cf85f17fe0369fb2242da78d6d1a87e219f617",
+      "data": {
+        "version": 3,
+        "question": "Compile the coherent actual native stock repair, preserving existing compatible evidence and preparing one final1294stock environment",
+        "source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+        "source_head": "c4880830a7ebfea496a348d361cd50b109ea536d",
+        "source_manifest": [
+          {
+            "path": "Aglib/Algebra/Category/ModuleCat/ChangeOfRings/RestrictionData.lean",
+            "module": "Aglib.Algebra.Category.ModuleCat.ChangeOfRings.RestrictionData",
+            "sha256": "5a7b5a2ae21aa77026a814c70832d1880a70bfb944a8b3d47731d696a401923c",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/Algebra/Category/ModuleCat/ChangeOfRings/TopComparison.lean",
+            "module": "Aglib.Algebra.Category.ModuleCat.ChangeOfRings.TopComparison",
+            "sha256": "bde7b87ef09f65ee10593d7e6f2a1fc261059937aa9f252f47d1455a408e0705",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Cohomology/BaseChange/NativeRingSections.lean",
+            "module": "Aglib.AlgebraicGeometry.Cohomology.BaseChange.NativeRingSections",
+            "sha256": "1bb6701cd0dc02e03668e33de1173c09f6a45a90029fcd313c3e487eef50ec8a",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Cohomology/Cech/Finite/ModelComparison.lean",
+            "module": "Aglib.AlgebraicGeometry.Cohomology.Cech.Finite.ModelComparison",
+            "sha256": "693878faa7abbb348b36f21fcb70c2ccb7ccef7428c04e556aea1ee8084988a0",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology.lean",
+            "module": "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology",
+            "sha256": "356689695cc48d6e37fc8c3e7c8134d7c04bf1a5e7d354fff19ef259f0cffd84",
+            "reason": "necessary direct API reference consumer"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/CounitDegreeZero.lean",
+            "module": "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.CounitDegreeZero",
+            "sha256": "2d0289c6c90b63b541bdd8bb8dcbade8c633395b639b305a75ebf5da3e034ca8",
+            "reason": "necessary direct API reference consumer"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/CounitNaturality.lean",
+            "module": "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.CounitNaturality",
+            "sha256": "1ea57facfde2ad1fbe7023821bde152a8626ed56fde1cdb4030bdef07ff12eac",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/SectionsCounitHomology.lean",
+            "module": "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.SectionsCounitHomology",
+            "sha256": "1b3f8a7ea0028d7df561faf9c3a83888c814791b79df1b13df53e2fcccfb7f68",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Counit.lean",
+            "module": "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Counit",
+            "sha256": "5959a3196a02b8a74e2b6cc84df4cbed3fc3249cc33ec013dd2441467ccb5edf",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/SectionsCounit.lean",
+            "module": "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.SectionsCounit",
+            "sha256": "4fcbfd5e1dc1f33eb47dd54df3795edf0b485802320ce0ce185f47ca260bcf8a",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Compactification/Refinements/RawRefinementBaseChange.lean",
+            "module": "Aglib.AlgebraicGeometry.Compactification.Refinements.RawRefinementBaseChange",
+            "sha256": "192b496f3f728d306539ea84d5267cd0a4bf764628d52b18365e9bc244ddbef0",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Compactification/Refinements/RawSourceComposition.lean",
+            "module": "Aglib.AlgebraicGeometry.Compactification.Refinements.RawSourceComposition",
+            "sha256": "99f63a55f799a36b1e3ec60661dcc45288037e1d8a5ad3f36e4d3bdab387ce5d",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Descent/FinitePresentation/FiniteTypeArrowLimit.lean",
+            "module": "Aglib.AlgebraicGeometry.Descent.FinitePresentation.FiniteTypeArrowLimit",
+            "sha256": "9ace75b3cf62852ccdd3ce9825a9e4808fa242ad5e439292a48c995ab152c874",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Descent/FinitePresentation/Gluing.lean",
+            "module": "Aglib.AlgebraicGeometry.Descent.FinitePresentation.Gluing",
+            "sha256": "41a5121e49e8ede9afb731ca0ecf4d566f105c76f2e814f36ecf6ffc5d256c92",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Descent/FinitePresentation/OverBaseGluing.lean",
+            "module": "Aglib.AlgebraicGeometry.Descent.FinitePresentation.OverBaseGluing",
+            "sha256": "4891d5c5dab87ad5e3846e6e8bfcb522f9fa2a68ce409785192171a533534a2c",
+            "reason": "necessary direct API reference consumer"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/FiniteTypeArrowCoefficients.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.FiniteTypeArrowCoefficients",
+            "sha256": "aa0d561f50e7769b5b7a39cdf355e49781a2154500271a3891dbaae0af6c45ca",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeIteration.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.BaseChangeIteration",
+            "sha256": "5b3c7ffeb89a8c0716f54b99bd48f0e0b09900d478cbadbbbf2762f0ae4baacd",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IdentitySourceCanonical.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.IdentitySourceCanonical",
+            "sha256": "2a5c415084485fbb51c0579833e13ad85911c7abdff51de1f411f7cdad34d178",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeIdentityTransition.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.BaseChangeIdentityTransition",
+            "sha256": "8dda0589e4f3df0ebd51a3c45b6d59e76537def2f9916a5a7bb26cd79e8e3eaf",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/IdentitySourceModel.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.IdentitySourceModel",
+            "sha256": "eea2d0fe074f69c16b9cce51505ec477acf69e11ae96072e823eb4191cddd0e0",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChange.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedBaseChange",
+            "sha256": "0435a22e99c9a1e7752365858bc75e29e1cdcf38e4ac17752be9bb6948087a45",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIdentity.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedBaseChangeIdentity",
+            "sha256": "3e821d866c402abb755df9ce01140bbdc7d74a1eeaa049d078cb0496d823ca16",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIterationComparison.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedBaseChangeIterationComparison",
+            "sha256": "9fc6fa2f98092d1217265226256644afca33cb58bd4626964b5896d5d3929bad",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIterationPasting.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedBaseChangeIterationPasting",
+            "sha256": "f656f00fecbd140197bbadf72713cf051a3246ffaa1afcb650c16972eab8882e",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeNaturality.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedBaseChangeNaturality",
+            "sha256": "9aa6125821eb98d7a6ef372544aa636b01d34b9895f16608d3e37a18185d2667",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedIterationSource.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedIterationSource",
+            "sha256": "cd083e999b060b17b0652c4dcf8a8e21a407a378fc7c22a61c0b396d09c867cc",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedSourceBC.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedSourceBC",
+            "sha256": "44eb13d6e3944147657922dc1c24f99e4bee659ca267d7b9bf89a3269d120938",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChangeIterationPasting.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawBaseChangeIterationPasting",
+            "sha256": "38c33c0adc02c253184ad151c0b5c60b6800cb548d4350d88870206a348e14b3",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChangeNaturality.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawBaseChangeNaturality",
+            "sha256": "2bd115dae095cb83541f0135e044b74295d22cf3eb85df4459bed857944b9732",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIdentityBaseChange.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawIdentityBaseChange",
+            "sha256": "5f42626e173c791199a6e080093d217287c2ea659dcb5d13ffcf4b3a5d9516d5",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIterationSource.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawIterationSource",
+            "sha256": "58e4d5ba1be83f9780dfd2e86a9081546c0f6173341f4c477513961f5db55770",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawRefinementBaseChangeNaturality.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawRefinementBaseChangeNaturality",
+            "sha256": "9466b7fedbeac1d1994618316a769058f0d25f36c28c0c7016cfff01cba76888",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceBaseChange.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceBaseChange",
+            "sha256": "775122b05fc960ddbcfdbf572311b7cb70424a652d647e461775cca3177b7686",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceComposition.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceComposition",
+            "sha256": "099f8700cdf2b4bf0c7731d03f8cfee3c40d4153bf2f69415fcb90bec5dd6a58",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoBefore.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceIsoBefore",
+            "sha256": "971de90006a1134db07e4a23f3607caa93b3988c28823bd73618ac27ef2bd420",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoExchange.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceIsoExchange",
+            "sha256": "5483ccfe7a276c086911e026b9e36c37ff8564c9a95ca2af09d21743d78f4187",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoNaturality.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceIsoNaturality",
+            "sha256": "6b1ede16ceae68140f27c2f062dd00b305478f2de2fb5743ab6638889f55c6c0",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoPasting.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceIsoPasting",
+            "sha256": "d6b77f1fc0479261fb3aebf57f5eb9f1b229de32889c1839b071134c05cf300e",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCModel.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.SourceBCModel",
+            "sha256": "f76337ea3a12c96fb46b0987c0dbb47873f137ac9d8c8e9d22a16a7e4e31914e",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCNormalization.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.SourceBCNormalization",
+            "sha256": "8fec8553f257c4cdbd24b71ab56e2a553ec1c7af560ed0af5a63811121be5173",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceCompositionModel.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.SourceCompositionModel",
+            "sha256": "706be5586d5c88cc2f267e5a91bbd0af35affbbceea9a0377cf9ffeb8311b54e",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoCompatibility.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.SourceIsoCompatibility",
+            "sha256": "f25726db5da7cda0f54cb0092a90b852ffd05f0cda08717d17d187c8a91bed62",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeIdentityTransition.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.BaseChangeIdentityTransition",
+            "sha256": "5eed860b53dc9d0c775b15b317a4422dfa333dac9f1e80d8622ccf020b2fef9c",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalBaseChangeIteration.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.ExceptionalBaseChangeIteration",
+            "sha256": "8c5553fb49a20da263e6c50df2c4bf6e231ad29c64aeeddd41d53651134148bf",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/IdentitySourceCanonical.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.IdentitySourceCanonical",
+            "sha256": "795493f00a97c3655eb071666a106138373f333a88506253ff00a9763e6f12c7",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/IdentitySourceModel.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.IdentitySourceModel",
+            "sha256": "94ee2f95c1cf1916e3057d9bba062516ade786b67e4a58c8e0f962c5e073e1db",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIdentity.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedBaseChangeIdentity",
+            "sha256": "ae5907a001f64cb4ad808a6a93cc0286d5f91a292a1fdbda8da635ca0f4a3a99",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIterationComparison.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedBaseChangeIterationComparison",
+            "sha256": "1b1942bc838be57694999a6a61cc0843efab45c45324b948bb27596e3c6d5fa5",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIterationPasting.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedBaseChangeIterationPasting",
+            "sha256": "15ab0ccbbbea95b4de2aa60e3f6b9e9f12b70475f9d89ec08c5c739fc32c8b46",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedIterationSource.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedIterationSource",
+            "sha256": "24c27eb3fe8f08f7d76c4c51591fcd66a84e2d5041a3c431236c6c403af77368",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedSourceBC.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedSourceBC",
+            "sha256": "956d569d16ff9552ec8c65be9eb55bb0f1770b30b6a2d1e76c140baa4f2c734c",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawBaseChangeIterationPasting.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawBaseChangeIterationPasting",
+            "sha256": "c3194e44b7075a9c434413ce9bc95569c8a7b8b1b036c652239b699a990b6e0f",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIdentityBaseChange.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawIdentityBaseChange",
+            "sha256": "60fb5a1effda09d1c7102813eb8d2592aed44e2f7c77325895ed5d9df1175527",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIterationSource.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawIterationSource",
+            "sha256": "2a861a4e3ff1bdaac8a77c72b76f450a2b5587ca69d54ea2e9476c35afde8b86",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawRefinementBaseChangeNaturality.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawRefinementBaseChangeNaturality",
+            "sha256": "53606af0c7af673db61b6cb1eae0e24589d8fa2b7b58b5d9732249e91cc907b7",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceBaseChange.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceBaseChange",
+            "sha256": "25f5232e17224513d972db6c390cca8129c6830dfaf90e6b94e912152dc0f09b",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceComposition.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceComposition",
+            "sha256": "f833105f8f9bc08a7e30d1a49280292c49bd56217fb3c58f86e947f99e3a2846",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoBefore.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceIsoBefore",
+            "sha256": "9a0426aceefed0174c1bbb6e590ce4aceaf4f95925aa667806e31fbd9f3258bc",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoExchange.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceIsoExchange",
+            "sha256": "f48387f2344d8fbe2eff454557e37c58ef8d8cb827c945d01a3956981a9f0eb7",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoNaturality.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceIsoNaturality",
+            "sha256": "863eab9f11f44d4c1e3c2a40ec8abfd9531fa6f342bcc0db02d140f313b6d4d7",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoPasting.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceIsoPasting",
+            "sha256": "5c92e208b34065dbba163af21ff7745e4dd1ac2b914c526c4b20dd98aa118dae",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceBCModel.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.SourceBCModel",
+            "sha256": "a97d7e059839fee25e9aaaf2b6d6615da42ce772310b9216bfc204d3ad70c89c",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceBCNormalization.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.SourceBCNormalization",
+            "sha256": "5b05e5caa899eb75909c8cd6302df4131e4cb757fd39ac5e4788eae64bfd909b",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceCompositionModel.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.SourceCompositionModel",
+            "sha256": "a0b785b4ba3c518f1968e101c30ba705070e6e773f3dea8c051ea7a55e1e1553",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/BoundedClassFiniteConstant.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.BoundedClassFiniteConstant",
+            "sha256": "043a8ecc661231373d5d87f9cd9c0154491229bee19166c5e410718e43969409",
+            "reason": "necessary direct API reference consumer"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/BoundedCoefficientClass.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.BoundedCoefficientClass",
+            "sha256": "d0c778e892aef2d31b08f993dfc76b4c7e7e41fcfbb969974e87241d261fb35a",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ConstructibleGenericOpen.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ConstructibleGenericOpen",
+            "sha256": "417e934396c8b125d75d87b671ea164ec813f88b55f38cfd126c89a256766179",
+            "reason": "necessary direct API reference consumer"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/FiniteSurjectiveDescent.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.FiniteSurjectiveDescent",
+            "sha256": "ffec37dca3ca7f65b1c2b15a55925edb7111f73bcfb8666b338f45a864fdf8e7",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H0/ConnectedPullbackSections.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.H0.ConnectedPullbackSections",
+            "sha256": "64bc56a28035b15029a50bbe20a6eab9561de03e73bc6bb80762748922b34051",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H0/ConstantUnitOfStructureIso.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.H0.ConstantUnitOfStructureIso",
+            "sha256": "16514eb4710cee7e4dccec6308daaed18574db81942ac562cdee930bca1def66",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H0/UniversallyOpenAmalgamation.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.H0.UniversallyOpenAmalgamation",
+            "sha256": "18c228a78ad44caa0cc742833afb94700667e954e92a61830844579f4d397faf",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/GeometricallyConnected.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.GeometricallyConnected",
+            "sha256": "7bd0dbe61ea1bf2e8a5dab893ce948696652a269e4466754604e377164e694fb",
+            "reason": "necessary direct API reference consumer"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonEquation.lean",
+            "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricComparisonEquation",
+            "sha256": "9df6f62c008d13d9d57469b1acc722b257a1f34348279ddeb3736b19489d0e42",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/FunctionField/HartogsSections.lean",
+            "module": "Aglib.AlgebraicGeometry.FunctionField.HartogsSections",
+            "sha256": "41819f17bf45f938849ad874e88936d369169f841c2f8b9c81084fd50e8f279a",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/FunctionField/SplitSections.lean",
+            "module": "Aglib.AlgebraicGeometry.FunctionField.SplitSections",
+            "sha256": "a1174476c3e3f43f2fdcd33de52f48ba20f19a14690db2040bc7dccfd8596642",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Modules/Coherent/AdicSystem/SectionCompleteness.lean",
+            "module": "Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.SectionCompleteness",
+            "sha256": "5bedd5e6e251e55ddd2c6f2dfc0cac3f196a6a20af0b24be127371ee866f3a50",
+            "reason": "necessary direct API reference consumer"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Modules/Coherent/AdicSystem/SectionKernels.lean",
+            "module": "Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.SectionKernels",
+            "sha256": "178be47cfab5201ffa359d61b111e8acb367c99403185d420161dd09c4ae7383",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Modules/InternalHom/DualExact.lean",
+            "module": "Aglib.AlgebraicGeometry.Modules.InternalHom.DualExact",
+            "sha256": "57800af43c6dc4c3ae169a4ec3dd8086bd2458fcb6d4ea0044e06d1a21f18cdd",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Morphisms/Etale/AffinePointwiseFlatBaseChange.lean",
+            "module": "Aglib.AlgebraicGeometry.Morphisms.Etale.AffinePointwiseFlatBaseChange",
+            "sha256": "89c65b22f69cac5ebb2c16598e50143d952f08536afd744429efc8653f5d5fea",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/BaseChange/RestrictIso.lean",
+            "module": "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.BaseChange.RestrictIso",
+            "sha256": "5470b13dd0aa61043e4e34a6b7de2ce6f3cf6c2875fe73db44b41122411fbc3a",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/Descent/FiniteFieldPointedGalois.lean",
+            "module": "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.FiniteFieldPointedGalois",
+            "sha256": "148a728727516d43bc156004c0a683824ee97b625d6f8656edf79246b9bb5cd5",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/GaloisBaseChange.lean",
+            "module": "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisBaseChange",
+            "sha256": "b5ceae7f755127d7ccd029df353c33be3ac545c0bbb36096c2224ed4d35dad00",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/GeometricallyConnected.lean",
+            "module": "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GeometricallyConnected",
+            "sha256": "1ec30e08c8e8d32a074e1e58fb1ade7398e75dc985c2174faed3f88902e89476",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Morphisms/Smooth/GenericSectionComponentSpreading.lean",
+            "module": "Aglib.AlgebraicGeometry.Morphisms.Smooth.GenericSectionComponentSpreading",
+            "sha256": "a9f1d51c6ce588d811f45291cd281262d7a87ea05b7f5e56bef7b5c9ff6bb7c4",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Normalization/Affine.lean",
+            "module": "Aglib.AlgebraicGeometry.Normalization.Affine",
+            "sha256": "08ebfdbcb18574308d7a46f0b8e9e3a0ecaa144cc0d2dda615aa587e954125f3",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Normalization/AffineMap.lean",
+            "module": "Aglib.AlgebraicGeometry.Normalization.AffineMap",
+            "sha256": "3a1f204fafad8e3e4d4fd680f53772326d14c27027de82b2744ab4859ef995e0",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/EtaleExtension.lean",
+            "module": "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.EtaleExtension",
+            "sha256": "4473cced6ae07fe9b45217c19da392da36aee9e96ffc363501ddcf8c837c7868",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/GaloisExtension.lean",
+            "module": "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.GaloisExtension",
+            "sha256": "1b691fd68a5d850c8619d0c9e8f9a5af1afb7f8d414fcaaea1e72eac72b1e0fd",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/GaloisRestrictedExtension.lean",
+            "module": "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.GaloisRestrictedExtension",
+            "sha256": "13c994bd9b88f47f805597fd019b7db5714d344208d5df11ce4fe7e137d1b7ba",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/GenericPullback.lean",
+            "module": "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.GenericPullback",
+            "sha256": "6c7de0f0293388dc3a46cde85a125ad426e612ad56e2ce50fd0b1e7597983457",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/LocalFactor.lean",
+            "module": "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.LocalFactor",
+            "sha256": "81b3daf06f8d0111b6288e25ca5b41fb8277e2ba35253aea35dfb8a48ac8b9f6",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/LocalFactorRootChart.lean",
+            "module": "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.LocalFactorRootChart",
+            "sha256": "efa659c51c4b9e585ce18c33b20671d95f9321ffd363f181145504de9e871cd0",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/OpenRecoveryAffine.lean",
+            "module": "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.OpenRecoveryAffine",
+            "sha256": "465bd4380174aeb7f236cfdbb580eca5b1c9bf492ed5e2832ad10c23efaedb75",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/RootEmbedding.lean",
+            "module": "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RootEmbedding",
+            "sha256": "a2939d6133e36143acf1b96ec5e9d6f4b389f8a3e75cb2981d5bec59c520783a",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Points/FieldExtensionBoundary.lean",
+            "module": "Aglib.AlgebraicGeometry.Points.FieldExtensionBoundary",
+            "sha256": "c2108877c37374baa48a808831128c05ed7bd943339a797702bbbf67e0509f7b",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Spec/GeometricNeighborhoodPrincipalStages.lean",
+            "module": "Aglib.AlgebraicGeometry.Spec.GeometricNeighborhoodPrincipalStages",
+            "sha256": "c0871cb5fe65084d59592d896e11b21549b786950100b420e107950d8784eef2",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Spec/PowerSeriesFiniteEtaleMaps.lean",
+            "module": "Aglib.AlgebraicGeometry.Spec.PowerSeriesFiniteEtaleMaps",
+            "sha256": "8299f31a0857ec3528075fd528b34d3d70e76fd4289ff4b77fcc611b8ff3e8ed",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Spec/PowerSeriesHartogsAlgebraComparison.lean",
+            "module": "Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsAlgebraComparison",
+            "sha256": "0d8c7d421f778d8235f6ce2111a0615c5dc1eb5cf70e35035e28b32aa2932126",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Spec/PowerSeriesHartogsCoverExtension.lean",
+            "module": "Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsCoverExtension",
+            "sha256": "ce341ea72efea1b74fdc3cd1c7dc00abc2e3ff610b0b4f0c5547a9fb28758aa7",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Spec/PowerSeriesHartogsCoverRecovery.lean",
+            "module": "Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsCoverRecovery",
+            "sha256": "167eecbf73041b5ed003f88bd5b3be0f27bc0c6d8a85991be1a8cff0c0f15fc8",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Spec/PowerSeriesHartogsFiniteEtaleMaps.lean",
+            "module": "Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsFiniteEtaleMaps",
+            "sha256": "c36542557957b008f206599830f7bc93e57b3d5535a1a1cb347ae3f2a79c29cf",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Spec/PowerSeriesSectionLifting.lean",
+            "module": "Aglib.AlgebraicGeometry.Spec.PowerSeriesSectionLifting",
+            "sha256": "a5eda5f04baca617c118fe05a7a96081d2d97515c5d0a833afd490596fcd9962",
+            "reason": "necessary direct API reference consumer"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Spec/RootPrincipalNeighborhoodSpreading.lean",
+            "module": "Aglib.AlgebraicGeometry.Spec.RootPrincipalNeighborhoodSpreading",
+            "sha256": "df70309ef3927335a2b329226575d34fd913d490354f994534fe54b0d2936918",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Spec/SmoothCompletionOpenPrescribedSection.lean",
+            "module": "Aglib.AlgebraicGeometry.Spec.SmoothCompletionOpenPrescribedSection",
+            "sha256": "4ee815548fb0375be92248364c6d6c848dcad1e2d377451584af933e6e681c6a",
+            "reason": "necessary direct API reference consumer"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Spec/SmoothCompletionPrescribedSection.lean",
+            "module": "Aglib.AlgebraicGeometry.Spec.SmoothCompletionPrescribedSection",
+            "sha256": "499cd3c9cb866681eb5224beca7fc436b2c251e221a07953c8ed2ef1484b5e8d",
+            "reason": "necessary direct API reference consumer"
+          },
+          {
+            "path": "Aglib/AlgebraicGeometry/Spec/SmoothSplitSectionFiniteEtaleMaps.lean",
+            "module": "Aglib.AlgebraicGeometry.Spec.SmoothSplitSectionFiniteEtaleMaps",
+            "sha256": "2e0b6e73b42f03ebb613ebb9607d039e9af419c6a7cb7a00dd481fee1e3abc3b",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/CategoryTheory/Limits/Shapes/KernelCones.lean",
+            "module": "Aglib.CategoryTheory.Limits.Shapes.KernelCones",
+            "sha256": "9ea3ffa72ddb74e81a37155fb3a08728a874a702077f804ef06ae98a46952465",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/FieldTheory/IntermediateField/FiniteCompositum.lean",
+            "module": "Aglib.FieldTheory.IntermediateField.FiniteCompositum",
+            "sha256": "595eed4d9cefe035dc0fa2be950b8f5385b634aaec8a1b1d8f80d1b412081f00",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/FieldTheory/IntermediateField/MappedFiniteCompositum.lean",
+            "module": "Aglib.FieldTheory.IntermediateField.MappedFiniteCompositum",
+            "sha256": "49037bd528bc3c325b8c0e595d9379749d94c9163f2c15b89d0745f296893f0a",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/FieldTheory/KummerSubextension.lean",
+            "module": "Aglib.FieldTheory.KummerSubextension",
+            "sha256": "6d352c905dda568d828f2b5d2dd9f58b57dfa415f83d21c250322e2d509a4443",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/LinearAlgebra/FrobeniusBaseChange.lean",
+            "module": "Aglib.LinearAlgebra.FrobeniusBaseChange",
+            "sha256": "4f7ebb7debedc15e5b8711c1d3280a05d726ee502ca0514e05299b518be145cb",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/RingTheory/Artinian/NoetherianGenericSplitThickening.lean",
+            "module": "Aglib.RingTheory.Artinian.NoetherianGenericSplitThickening",
+            "sha256": "118442247e957fb2ff8866b8d13df5b160090f86f812b509c0491d041d815f65",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/RingTheory/Etale/PointwiseFlatBaseChange.lean",
+            "module": "Aglib.RingTheory.Etale.PointwiseFlatBaseChange",
+            "sha256": "9ac6dae12437827d9d2c4c3acb044be295019e118f0dd811e10339a28093e743",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/RingTheory/Etale/ResidueCompletionIso.lean",
+            "module": "Aglib.RingTheory.Etale.ResidueCompletionIso",
+            "sha256": "7c2a61c3d4d98beaad7c7cb1fef85437af7e9e1f53cb9b1337077705070ff6a9",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/RingTheory/Etale/StandardEtaleDomainEmbedding.lean",
+            "module": "Aglib.RingTheory.Etale.StandardEtaleDomainEmbedding",
+            "sha256": "ab1828c94ee0c9f781e9dbbe4d13e69ca545663e776c6dd7c801667c242d1150",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/RingTheory/FiniteType/ArrowSubalgebraColimit.lean",
+            "module": "Aglib.RingTheory.FiniteType.ArrowSubalgebraColimit",
+            "sha256": "94dc2a099d71e4fc2e2fc155eac242a736ad609ddfa9650e0223897b755f060b",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/RingTheory/Henselian/PrimitiveRoots.lean",
+            "module": "Aglib.RingTheory.Henselian.PrimitiveRoots",
+            "sha256": "78db9e3dc805f329779b742c2a9e169cc9b8358168b5d8a436af986221963e0a",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/RingTheory/Henselian/StrictHenselization/IntegralClosure.lean",
+            "module": "Aglib.RingTheory.Henselian.StrictHenselization.IntegralClosure",
+            "sha256": "2571b8d9e6933c786ab0811719944a188fdb80c1435bf1f12f24712491e8e4e0",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/RingTheory/Henselian/StrictHenselization/RootPoint.lean",
+            "module": "Aglib.RingTheory.Henselian.StrictHenselization.RootPoint",
+            "sha256": "8975da55d51f303c82ce4a54c5b387a0b1296635f1c1e206ee0b2429aadeff24",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/RingTheory/IntegralClosure/ChangeBaseMap.lean",
+            "module": "Aglib.RingTheory.IntegralClosure.ChangeBaseMap",
+            "sha256": "b796c16eb64cb7c3c3de7ec5ec8c36a40c5988ee7d9c1ba8754cb991cedb7be9",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/RingTheory/IntegralClosure/FiniteEtale/LocalFactorGaloisBaseChange.lean",
+            "module": "Aglib.RingTheory.IntegralClosure.FiniteEtale.LocalFactorGaloisBaseChange",
+            "sha256": "05aa265b87d60177950cbad891c12b05c0812680507094bf1bdd670f0f6699dc",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/RingTheory/IntegralClosure/FiniteEtale/LocalFactorGeneric.lean",
+            "module": "Aglib.RingTheory.IntegralClosure.FiniteEtale.LocalFactorGeneric",
+            "sha256": "00771ee46d8d92ef15d753ebd1c37a7e4d37c973134ec3635117303a48aa5f63",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/RingTheory/Kummer/DVRRootCancellation.lean",
+            "module": "Aglib.RingTheory.Kummer.DVRRootCancellation",
+            "sha256": "9b08b13d1ea4639d6b2e426012425396df96623026211d95c1a6b9ad5528e4a5",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/RingTheory/Kummer/HeightOneRootLocalization.lean",
+            "module": "Aglib.RingTheory.Kummer.HeightOneRootLocalization",
+            "sha256": "2e70539feadd9f75c29c0b2b4f26a8ac3e78d43c4675cfbdbae1905df752b7c8",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/RingTheory/Kummer/RegularParameterRecognition.lean",
+            "module": "Aglib.RingTheory.Kummer.RegularParameterRecognition",
+            "sha256": "d0d998a27b4ada850d82c7cced579693147e334ceeef55015af0bb5fc5ade340",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/RingTheory/Kummer/RootBaseChange.lean",
+            "module": "Aglib.RingTheory.Kummer.RootBaseChange",
+            "sha256": "26207285c58959ca20198b0282311612775d757ad3bfe318c740db65694c63c3",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/RingTheory/Kummer/RootDivisibility.lean",
+            "module": "Aglib.RingTheory.Kummer.RootDivisibility",
+            "sha256": "96969d95c3036c6977c9e1261a8dd864f4e5611e02aa53610ec1258917c29895",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/RingTheory/Kummer/StrictHenselianRootCancellation.lean",
+            "module": "Aglib.RingTheory.Kummer.StrictHenselianRootCancellation",
+            "sha256": "4f20f3586d12135740b0d7b7c73e0ff403fb77695833360ddb69ada5209e58a2",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/RingTheory/Kummer/StrictHenselianRootNormalization.lean",
+            "module": "Aglib.RingTheory.Kummer.StrictHenselianRootNormalization",
+            "sha256": "068242516e333e4ba03a070a406d59a69aecffbb90fe98f971fc2b9062b78be5",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/RingTheory/Kummer/Uniformizer.lean",
+            "module": "Aglib.RingTheory.Kummer.Uniformizer",
+            "sha256": "e33b8c56467c2246ee78ebb99026b3e4f188251595ef55f4529a4de7fd8b836d",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/RingTheory/Nagata/FiniteTypeFieldLocalModel.lean",
+            "module": "Aglib.RingTheory.Nagata.FiniteTypeFieldLocalModel",
+            "sha256": "f0ea587a47b82e5407ef881abf6070604ba3c78d780dfdf3daef5d788fac1c02",
+            "reason": "actual native stock diagnostic source"
+          },
+          {
+            "path": "Aglib/RingTheory/Smooth/SplitSectionCompletion.lean",
+            "module": "Aglib.RingTheory.Smooth.SplitSectionCompletion",
+            "sha256": "261e911f172e1fa2edbcab048be0242e5bc9a0e00aab73ea23dfeaa5804efcad",
+            "reason": "actual native stock diagnostic source"
+          }
+        ],
+        "changed_modules": [
+          "Aglib.Algebra.Category.ModuleCat.ChangeOfRings.RestrictionData",
+          "Aglib.Algebra.Category.ModuleCat.ChangeOfRings.TopComparison",
+          "Aglib.AlgebraicGeometry.Cohomology.BaseChange.NativeRingSections",
+          "Aglib.AlgebraicGeometry.Cohomology.Cech.Finite.ModelComparison",
+          "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology",
+          "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.CounitDegreeZero",
+          "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.CounitNaturality",
+          "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.SectionsCounitHomology",
+          "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Counit",
+          "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.SectionsCounit",
+          "Aglib.AlgebraicGeometry.Compactification.Refinements.RawRefinementBaseChange",
+          "Aglib.AlgebraicGeometry.Compactification.Refinements.RawSourceComposition",
+          "Aglib.AlgebraicGeometry.Descent.FinitePresentation.FiniteTypeArrowLimit",
+          "Aglib.AlgebraicGeometry.Descent.FinitePresentation.Gluing",
+          "Aglib.AlgebraicGeometry.Descent.FinitePresentation.OverBaseGluing",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.FiniteTypeArrowCoefficients",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.BaseChangeIteration",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.IdentitySourceCanonical",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.BaseChangeIdentityTransition",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.IdentitySourceModel",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedBaseChange",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedBaseChangeIdentity",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedBaseChangeIterationComparison",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedBaseChangeIterationPasting",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedBaseChangeNaturality",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedIterationSource",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedSourceBC",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawBaseChangeIterationPasting",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawBaseChangeNaturality",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawIdentityBaseChange",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawIterationSource",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawRefinementBaseChangeNaturality",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceBaseChange",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceComposition",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceIsoBefore",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceIsoExchange",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceIsoNaturality",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceIsoPasting",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.SourceBCModel",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.SourceBCNormalization",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.SourceCompositionModel",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.SourceIsoCompatibility",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.BaseChangeIdentityTransition",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.ExceptionalBaseChangeIteration",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.IdentitySourceCanonical",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.IdentitySourceModel",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedBaseChangeIdentity",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedBaseChangeIterationComparison",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedBaseChangeIterationPasting",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedIterationSource",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedSourceBC",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawBaseChangeIterationPasting",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawIdentityBaseChange",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawIterationSource",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawRefinementBaseChangeNaturality",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceBaseChange",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceComposition",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceIsoBefore",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceIsoExchange",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceIsoNaturality",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceIsoPasting",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.SourceBCModel",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.SourceBCNormalization",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.SourceCompositionModel",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.BoundedClassFiniteConstant",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.BoundedCoefficientClass",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ConstructibleGenericOpen",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.FiniteSurjectiveDescent",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.H0.ConnectedPullbackSections",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.H0.ConstantUnitOfStructureIso",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.H0.UniversallyOpenAmalgamation",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.H1.GeometricallyConnected",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricComparisonEquation",
+          "Aglib.AlgebraicGeometry.FunctionField.HartogsSections",
+          "Aglib.AlgebraicGeometry.FunctionField.SplitSections",
+          "Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.SectionCompleteness",
+          "Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.SectionKernels",
+          "Aglib.AlgebraicGeometry.Modules.InternalHom.DualExact",
+          "Aglib.AlgebraicGeometry.Morphisms.Etale.AffinePointwiseFlatBaseChange",
+          "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.BaseChange.RestrictIso",
+          "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.FiniteFieldPointedGalois",
+          "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisBaseChange",
+          "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GeometricallyConnected",
+          "Aglib.AlgebraicGeometry.Morphisms.Smooth.GenericSectionComponentSpreading",
+          "Aglib.AlgebraicGeometry.Normalization.Affine",
+          "Aglib.AlgebraicGeometry.Normalization.AffineMap",
+          "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.EtaleExtension",
+          "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.GaloisExtension",
+          "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.GaloisRestrictedExtension",
+          "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.GenericPullback",
+          "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.LocalFactor",
+          "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.LocalFactorRootChart",
+          "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.OpenRecoveryAffine",
+          "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RootEmbedding",
+          "Aglib.AlgebraicGeometry.Points.FieldExtensionBoundary",
+          "Aglib.AlgebraicGeometry.Spec.GeometricNeighborhoodPrincipalStages",
+          "Aglib.AlgebraicGeometry.Spec.PowerSeriesFiniteEtaleMaps",
+          "Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsAlgebraComparison",
+          "Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsCoverExtension",
+          "Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsCoverRecovery",
+          "Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsFiniteEtaleMaps",
+          "Aglib.AlgebraicGeometry.Spec.PowerSeriesSectionLifting",
+          "Aglib.AlgebraicGeometry.Spec.RootPrincipalNeighborhoodSpreading",
+          "Aglib.AlgebraicGeometry.Spec.SmoothCompletionOpenPrescribedSection",
+          "Aglib.AlgebraicGeometry.Spec.SmoothCompletionPrescribedSection",
+          "Aglib.AlgebraicGeometry.Spec.SmoothSplitSectionFiniteEtaleMaps",
+          "Aglib.CategoryTheory.Limits.Shapes.KernelCones",
+          "Aglib.FieldTheory.IntermediateField.FiniteCompositum",
+          "Aglib.FieldTheory.IntermediateField.MappedFiniteCompositum",
+          "Aglib.FieldTheory.KummerSubextension",
+          "Aglib.LinearAlgebra.FrobeniusBaseChange",
+          "Aglib.RingTheory.Artinian.NoetherianGenericSplitThickening",
+          "Aglib.RingTheory.Etale.PointwiseFlatBaseChange",
+          "Aglib.RingTheory.Etale.ResidueCompletionIso",
+          "Aglib.RingTheory.Etale.StandardEtaleDomainEmbedding",
+          "Aglib.RingTheory.FiniteType.ArrowSubalgebraColimit",
+          "Aglib.RingTheory.Henselian.PrimitiveRoots",
+          "Aglib.RingTheory.Henselian.StrictHenselization.IntegralClosure",
+          "Aglib.RingTheory.Henselian.StrictHenselization.RootPoint",
+          "Aglib.RingTheory.IntegralClosure.ChangeBaseMap",
+          "Aglib.RingTheory.IntegralClosure.FiniteEtale.LocalFactorGaloisBaseChange",
+          "Aglib.RingTheory.IntegralClosure.FiniteEtale.LocalFactorGeneric",
+          "Aglib.RingTheory.Kummer.DVRRootCancellation",
+          "Aglib.RingTheory.Kummer.HeightOneRootLocalization",
+          "Aglib.RingTheory.Kummer.RegularParameterRecognition",
+          "Aglib.RingTheory.Kummer.RootBaseChange",
+          "Aglib.RingTheory.Kummer.RootDivisibility",
+          "Aglib.RingTheory.Kummer.StrictHenselianRootCancellation",
+          "Aglib.RingTheory.Kummer.StrictHenselianRootNormalization",
+          "Aglib.RingTheory.Kummer.Uniformizer",
+          "Aglib.RingTheory.Nagata.FiniteTypeFieldLocalModel",
+          "Aglib.RingTheory.Smooth.SplitSectionCompletion"
+        ],
+        "scope": "122 actual diagnostic source files plus10 necessary direct API consumers; no foreign D143/facade/README changes owned by this worker",
+        "native_stock_final_scope": "Parent/broker authoritative ready union1294 = original1151 plus closed newD143; separate MAIN47 WIP excluded",
+        "rename_map": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/stock-repair/rename-map.json",
+        "api_changes": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/stock-repair/API-CHANGES.json",
+        "simp_changes": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/stock-repair/simp-changes.json",
+        "coverage_boundary": "Source changes only, no fresh compilation/lint/audit yet. Existing f861 stock failed334/122 on its actual fe6f basis.",
+        "source_manifest_sha256": "af3498a3b5a2d6769ad3ecbc1b9d89f44a29df69ee4d6a07c7447c6576330459"
+      }
+    },
+    "API-CHANGES-v3.json": {
+      "sha256": "a854e9a143a75e0f7a342e773edcf0bc401d853dd59c2de3f206472f3ea38d1b",
+      "data": {
+        "version": 3,
+        "question": "Actual stock-failure repair API delta for bounded ordinary independent review and exact consumer normalization",
+        "basis": {
+          "publication_source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+          "publication_head": "c4880830a7ebfea496a348d361cd50b109ea536d",
+          "diagnostic_run": "remote-f8616b9382a24138a45871f1e1d4a645",
+          "diagnostic_source": "fe6f4c4e602703c8acf76b97679a7f870dbca4e2ba8a70bf4fa8ff67ff56adf7",
+          "diagnostic_question": "Actual unfilteredstock failure projection for source/repair assignment; diagnostic evidence only"
+        },
+        "status": "Coherent source repair ready for incremental compilation; mathematical/API review pending. This packet is not an independent verdict.",
+        "invariants": [
+          "No original map, mathematical object, derived-category world or realization replaced.",
+          "Original geometric/torsion/annihilator hypotheses on producer endpoints preserved.",
+          "No linter suppression, option/budget change, sorry, axiom, native_decide or new framework."
+        ],
+        "statement_deltas": [
+          {
+            "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/BoundedCoefficientClass.lean",
+            "declaration": "exists_finiteLocallyConstant_coefficient_class",
+            "removed_arguments": [
+              "HasColimitsOfSize.{u + 1, u + 1} AddCommGrpCat.{e}"
+            ],
+            "old_signature": "theorem exists_finiteLocallyConstant_coefficient_class\n    (K : Type u) [Field K]\n    (F : AbelianSheaf.{u, u + 1} (Spec (.of K)))\n    (n : \u2115) (hn : 0 < n) (hF : n \u2022 \ud835\udfd9 F = 0)\n    {Y : Scheme.{u}} (p : Y \u27f6 Spec (.of K))\n    [CompactSpace Y] [QuasiSeparatedSpace Y]\n    [HasExt.{e} (AbelianSheaf.{u, u + 1} Y)]\n    [HasColimitsOfSize.{u + 1, u + 1} AddCommGrpCat.{e}] [UnivLE.{u + 1, e}]\n    (q : \u2115) (c : Sheaf.H.{e} ((inverseImage p).obj F) q) :\n    \u2203 (E : AbelianSheaf.{u, u + 1} (Spec (.of K))) (a : E \u27f6 F),\n      n \u2022 \ud835\udfd9 E = 0 \u2227 IsFiniteLocallyConstant E \u2227\n      \u2203 d : Sheaf.H.{e} ((inverseImage p).obj E) q,\n        Sheaf.H.map ((inverseImage p).map a) q d = c",
+            "new_signature": "theorem exists_finiteLocallyConstant_coefficient_class\n    (K : Type u) [Field K]\n    (F : AbelianSheaf.{u, u + 1} (Spec (.of K)))\n    (n : \u2115) (hn : 0 < n) (hF : n \u2022 \ud835\udfd9 F = 0)\n    {Y : Scheme.{u}} (p : Y \u27f6 Spec (.of K))\n    [CompactSpace Y] [QuasiSeparatedSpace Y]\n    [HasExt.{e} (AbelianSheaf.{u, u + 1} Y)]\n    [UnivLE.{u + 1, e}]\n    (q : \u2115) (c : Sheaf.H.{e} ((inverseImage p).obj F) q) :\n    \u2203 (E : AbelianSheaf.{u, u + 1} (Spec (.of K))) (a : E \u27f6 F),\n      n \u2022 \ud835\udfd9 E = 0 \u2227 IsFiniteLocallyConstant E \u2227\n      \u2203 d : Sheaf.H.{e} ((inverseImage p).obj E) q,\n        Sheaf.H.map ((inverseImage p).map a) q d = c",
+            "conditions_and_consumer_boundary": "Canonical colimit existence is inferred internally; UnivLE, independent Ext world, qcqs source, coefficient annihilator n and positivity all retained.",
+            "proof_change": "Proof or predicate body unchanged."
+          },
+          {
+            "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/BoundedClassFiniteConstant.lean",
+            "declaration": "exists_finiteGalois_constant_class",
+            "removed_arguments": [
+              "HasColimitsOfSize.{u + 1, u + 1} AddCommGrpCat.{e}"
+            ],
+            "old_signature": "theorem exists_finiteGalois_constant_class\n    (K : Type u) [Field K]\n    (F : AbelianSheaf.{u, u + 1} (Spec (.of K)))\n    (n : \u2115) (hn : 0 < n) (hF : n \u2022 \ud835\udfd9 F = 0)\n    {Y : Scheme.{u}} (p : Y \u27f6 Spec (.of K))\n    [CompactSpace Y] [QuasiSeparatedSpace Y]\n    [hExtY : HasExt.{e} (AbelianSheaf.{u, u + 1} Y)]\n    [hExtL : \u2200 L : FiniteGaloisIntermediateField K (SeparableClosure K),\n      HasExt.{eL} (AbelianSheaf.{u, u + 1} (pullback p (Spec.algebraMap K L)))]\n    [HasColimitsOfSize.{u + 1, u + 1} AddCommGrpCat.{e}] [UnivLE.{u + 1, e}]\n    (q : \u2115) (c : Sheaf.H.{e} ((inverseImage p).obj F) q) :\n    \u2203 (E : AbelianSheaf.{u, u + 1} (Spec (.of K))) (a : E \u27f6 F),\n      n \u2022 \ud835\udfd9 E = 0 \u2227 IsFiniteLocallyConstant E \u2227\n      \u2203 (L : FiniteGaloisIntermediateField K (SeparableClosure K))\n        (B : Type u) (_ : AddCommGroup B) (_ : Finite B),\n        (\u2200 b : B, n \u2022 b = 0) \u2227\n        \u2203 t : (inverseImage (Spec.algebraMap K L)).obj E \u2245\n            ConstantFinite.coefficient B (Spec (.of L)),\n          let f",
+            "new_signature": "theorem exists_finiteGalois_constant_class\n    (K : Type u) [Field K]\n    (F : AbelianSheaf.{u, u + 1} (Spec (.of K)))\n    (n : \u2115) (hn : 0 < n) (hF : n \u2022 \ud835\udfd9 F = 0)\n    {Y : Scheme.{u}} (p : Y \u27f6 Spec (.of K))\n    [CompactSpace Y] [QuasiSeparatedSpace Y]\n    [hExtY : HasExt.{e} (AbelianSheaf.{u, u + 1} Y)]\n    [hExtL : \u2200 L : FiniteGaloisIntermediateField K (SeparableClosure K),\n      HasExt.{eL} (AbelianSheaf.{u, u + 1} (pullback p (Spec.algebraMap K L)))]\n    [UnivLE.{u + 1, e}]\n    (q : \u2115) (c : Sheaf.H.{e} ((inverseImage p).obj F) q) :\n    \u2203 (E : AbelianSheaf.{u, u + 1} (Spec (.of K))) (a : E \u27f6 F),\n      n \u2022 \ud835\udfd9 E = 0 \u2227 IsFiniteLocallyConstant E \u2227\n      \u2203 (L : FiniteGaloisIntermediateField K (SeparableClosure K))\n        (B : Type u) (_ : AddCommGroup B) (_ : Finite B),\n        (\u2200 b : B, n \u2022 b = 0) \u2227\n        \u2203 t : (inverseImage (Spec.algebraMap K L)).obj E \u2245\n            ConstantFinite.coefficient B (Spec (.of L)),\n          let f",
+            "conditions_and_consumer_boundary": "Affected consumer endpoint normalized consistently; original field, qcqs, torsion, positivity and independent source/pullback Ext worlds retained. Exactly one obsolete explicit @ argument removed.",
+            "proof_change": "Only one obsolete explicit @ argument removed in exists_finiteGalois_constant_class; otherwise proof/body unchanged."
+          },
+          {
+            "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/FiniteSurjectiveDescent.lean",
+            "declaration": "higherDirectImage_isConstructible_succ_of_finiteSurjective",
+            "removed_arguments": [
+              "IsNoetherian X"
+            ],
+            "old_signature": "theorem higherDirectImage_isConstructible_succ_of_finiteSurjective\n    {Y X S : Scheme.{u}} [IsNoetherian X] [IsNoetherian S]\n    (f : X \u27f6 S) (p : Y \u27f6 X) [IsFinite p] [Surjective p]\n    (F : AbelianSheaf.{u, u + 1} X) (n : \u2115)\n    (hQ : Constructible.IsConstructible ((higherDirectImage f n).obj\n      (cokernel ((inverseImageAdjunction p).unit.app F))))\n    (hcover : Constructible.IsConstructible ((higherDirectImage (p \u226b f) (n + 1)).obj\n      ((inverseImage p).obj F))) :\n    Constructible.IsConstructible ((higherDirectImage f (n + 1)).obj F)",
+            "new_signature": "theorem higherDirectImage_isConstructible_succ_of_finiteSurjective\n    {Y X S : Scheme.{u}} [IsNoetherian S]\n    (f : X \u27f6 S) (p : Y \u27f6 X) [IsFinite p] [Surjective p]\n    (F : AbelianSheaf.{u, u + 1} X) (n : \u2115)\n    (hQ : Constructible.IsConstructible ((higherDirectImage f n).obj\n      (cokernel ((inverseImageAdjunction p).unit.app F))))\n    (hcover : Constructible.IsConstructible ((higherDirectImage (p \u226b f) (n + 1)).obj\n      ((inverseImage p).obj F))) :\n    Constructible.IsConstructible ((higherDirectImage f (n + 1)).obj F)",
+            "conditions_and_consumer_boundary": "Successor helper retains Noetherian S, finite surjection p, actual cokernel preceding-degree hypothesis and covering composite hypothesis. Full induction endpoint higherDirectImage_isConstructible_of_finiteSurjective retains Noetherian X and S.",
+            "proof_change": "Proof or predicate body unchanged."
+          },
+          {
+            "source": "Aglib/AlgebraicGeometry/EtaleCohomology/H0/ConstantUnitOfStructureIso.lean",
+            "declaration": "affineEtaleTest_pullbackHom_bijective_of_structureIso",
+            "removed_arguments": [
+              "IsAffine U.left"
+            ],
+            "old_signature": "theorem affineEtaleTest_pullbackHom_bijective_of_structureIso\n    (U : Y.Etale) [IsAffine U.left] (Z : Over Y) [IsAffine Z.left] :\n    Function.Bijective (fun b : (Scheme.Etale.forget Y).obj U \u27f6 Z =>\n      (Over.pullback q).map b)",
+            "new_signature": "theorem affineEtaleTest_pullbackHom_bijective_of_structureIso\n    (U : Y.Etale) (Z : Over Y) [IsAffine Z.left] :\n    Function.Bijective (fun b : (Scheme.Etale.forget Y).obj U \u27f6 Z =>\n      (Over.pullback q).map b)",
+            "conditions_and_consumer_boundary": "Map-bijection helper now covers any original etale test U. Affine target Y and represented target Z, qcqs q and actual structure-sheaf isomorphism retained. Original represented-unit endpoints still use affine tests.",
+            "proof_change": "Proof or predicate body unchanged."
+          },
+          {
+            "source": "Aglib/AlgebraicGeometry/EtaleCohomology/H0/ConstantUnitOfStructureIso.lean",
+            "declaration": "representedCoefficientUnit_bijective_affine_of_structureIso",
+            "removed_arguments": [
+              "IsAffine U.left"
+            ],
+            "old_signature": "theorem representedCoefficientUnit_bijective_affine_of_structureIso\n    (H : Grp (Over Y)) [IsCommMonObj H.X] [IsFinite H.X.hom]\n    (U : Y.Etale) [IsAffine U.left] :\n    Function.Bijective\n      ((SchemeTorsorBaseChange.representedCoefficientUnit q H).hom.app (op U))",
+            "new_signature": "theorem representedCoefficientUnit_bijective_affine_of_structureIso\n    (H : Grp (Over Y)) [IsCommMonObj H.X] [IsFinite H.X.hom]\n    (U : Y.Etale) :\n    Function.Bijective\n      ((SchemeTorsorBaseChange.representedCoefficientUnit q H).hom.app (op U))",
+            "conditions_and_consumer_boundary": "Necessary direct-helper propagation: the same proof now uses the generalized pullbackHom bijection on any etale test. Global representedCoefficientUnit_isIso_of_structureIso retains all original map, affine base and finite-representative conditions; its test proof drops an unused local affine instance.",
+            "proof_change": "Proof or predicate body unchanged."
+          },
+          {
+            "source": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/Descent/FiniteFieldPointedGalois.lean",
+            "declaration": "galois_furtherStage",
+            "removed_arguments": [
+              "ConnectedSpace W"
+            ],
+            "old_signature": "private theorem galois_furtherStage {U V W : Scheme.{u}}\n    [ConnectedSpace U] [ConnectedSpace V] [ConnectedSpace W]\n    (g : V \u27f6 U) (v : W \u27f6 V) [Surjective v]\n    (Z : FiniteEtale U) [IsGalois Z]\n    [ConnectedSpace ((baseChange (v \u226b g)).obj Z).obj.left] :\n    IsGalois ((baseChange g).obj Z) \u2227\n      Nat.card (Aut ((baseChange g).obj Z)) = Nat.card (Aut Z)",
+            "new_signature": "private theorem galois_furtherStage {U V W : Scheme.{u}}\n    [ConnectedSpace U] [ConnectedSpace V]\n    (g : V \u27f6 U) (v : W \u27f6 V) [Surjective v]\n    (Z : FiniteEtale U) [IsGalois Z]\n    [ConnectedSpace ((baseChange (v \u226b g)).obj Z).obj.left] :\n    IsGalois ((baseChange g).obj Z) \u2227\n      Nat.card (Aut ((baseChange g).obj Z)) = Nat.card (Aut Z)",
+            "conditions_and_consumer_boundary": "Private helper retains ConnectedSpace U/V, surjective v, original Galois Z and connectedness of the actual further pullback; same proof reflects connectedness from that pullback.",
+            "proof_change": "Proof or predicate body unchanged."
+          },
+          {
+            "source": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/Descent/FiniteFieldPointedGalois.lean",
+            "declaration": "exists_pointed_further_galois_stage",
+            "removed_arguments": [
+              "ConnectedSpace W"
+            ],
+            "old_signature": "theorem exists_pointed_further_galois_stage\n    [GeometricallyConnected p] [ConnectedSpace U] [ConnectedSpace W]\n    (Z : FiniteEtale U) [IsGalois Z]\n    [ConnectedSpace ((baseChange v\u2080).obj Z).obj.left]\n    (x : Spec (.of k) \u27f6 U) (hx : x \u226b p = \ud835\udfd9 _)\n    (z : Spec (.of \u03a9) \u27f6 Z.obj.left)\n    (hz : z \u226b Z.obj.hom = Spec.algebraMap k \u03a9 \u226b x) :\n    \u2203 (t : Finset \u03a9),\n      let F",
+            "new_signature": "theorem exists_pointed_further_galois_stage\n    [GeometricallyConnected p] [ConnectedSpace U]\n    (Z : FiniteEtale U) [IsGalois Z]\n    [ConnectedSpace ((baseChange v\u2080).obj Z).obj.left]\n    (x : Spec (.of k) \u27f6 U) (hx : x \u226b p = \ud835\udfd9 _)\n    (z : Spec (.of \u03a9) \u27f6 Z.obj.left)\n    (hz : z \u226b Z.obj.hom = Spec.algebraMap k \u03a9 \u226b x) :\n    \u2203 (t : Finset \u03a9),\n      let F",
+            "conditions_and_consumer_boundary": "Necessary same-proof propagation. The existing local point_limitConnected supplies connectedness of the native pullback of p to the field spectrum. The original IsPullback H identifies W with that pullback, so ConnectedSpace W follows by transport; no such instance is needed in the unchanged current proof. Original p, H, algebraic field extension, actual connected base-changed cover, points and point equations remain; unchanged proof.",
+            "proof_change": "Proof or predicate body unchanged."
+          },
+          {
+            "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ConstructibleGenericOpen.lean",
+            "declaration": "constructibleFiniteImageOnPrincipalOpen_of_splitThickening",
+            "removed_arguments": [
+              "IsDomain R",
+              "IsFractionRing R K"
+            ],
+            "old_signature": "theorem constructibleFiniteImageOnPrincipalOpen_of_splitThickening\n    (R : Type u) [CommRing R] [IsDomain R]\n    (K : Type u) [Field K] [Algebra R K] [IsFractionRing R K]\n    (\u03a9 : Type u) [Field \u03a9] [Algebra K \u03a9]\n    (A : Type u) [CommRing A] [Algebra R A] [Module.Finite R A]\n    (hsplit : Algebra.FiniteAlgebra.finiteSplitThickeningOnPrincipalOpen R K \u03a9 A) :\n    constructibleFiniteImageOnPrincipalOpen R A",
+            "new_signature": "theorem constructibleFiniteImageOnPrincipalOpen_of_splitThickening\n    (R : Type u) [CommRing R]\n    (K : Type u) [Field K] [Algebra R K]\n    (\u03a9 : Type u) [Field \u03a9] [Algebra K \u03a9]\n    (A : Type u) [CommRing A] [Algebra R A] [Module.Finite R A]\n    (hsplit : Algebra.FiniteAlgebra.finiteSplitThickeningOnPrincipalOpen R K \u03a9 A) :\n    constructibleFiniteImageOnPrincipalOpen R A",
+            "conditions_and_consumer_boundary": "Direct consumer of the minimized splitting predicate; same proof consumes its actual finite-surjective base map and actual nilpotent split quotient without requiring those constraints. Original exists_noetherianGeneric_constructibleFiniteImage retains IsDomain R and IsNoetherianRing R and calls the original generic producer.",
+            "proof_change": "Proof or predicate body unchanged."
+          },
+          {
+            "source": "Aglib/AlgebraicGeometry/Morphisms/Smooth/GenericSectionComponentSpreading.lean",
+            "declaration": "exists_clopen_stage_containing_family",
+            "removed_arguments": [
+              "forall i, QuasiSeparatedSpace (D.obj i)"
+            ],
+            "old_signature": "theorem exists_clopen_stage_containing_family\n    {I : Type u} [Category.{u} I] [IsCofiltered I]\n    (D E : I \u2964 Scheme.{u}) (cD : Cone D) (cE : Cone E)\n    (hD : IsLimit cD) (hE : IsLimit cE)\n    [\u2200 {i j} (a : i \u27f6 j), IsAffineHom (D.map a)]\n    [\u2200 {i j} (a : i \u27f6 j), IsAffineHom (E.map a)]\n    [\u2200 i, CompactSpace (D.obj i)] [\u2200 i, QuasiSeparatedSpace (D.obj i)]\n    [\u2200 i, CompactSpace (E.obj i)] [\u2200 i, QuasiSeparatedSpace (E.obj i)]\n    (a : \u2200 i, D.obj i \u27f6 E.obj i)\n    (ha : \u2200 {i j} (r : i \u27f6 j), D.map r \u226b a j = a i \u226b E.map r)\n    (aLimit : cD.pt \u27f6 cE.pt)\n    (hcone : \u2200 i, cD.\u03c0.app i \u226b a i = aLimit \u226b cE.\u03c0.app i)\n    (U : cE.pt.Opens) (hU : IsClosed (U : Set cE.pt))\n    (hsection : aLimit \u207b\u00b9\u1d41 U = \u22a4) :\n    \u2203 (i : I) (V : (E.obj i).Opens), IsClosed (V : Set (E.obj i)) \u2227\n      cE.\u03c0.app i \u207b\u00b9\u1d41 V = U \u2227 a i \u207b\u00b9\u1d41 V = \u22a4",
+            "new_signature": "theorem exists_clopen_stage_containing_family\n    {I : Type u} [Category.{u} I] [IsCofiltered I]\n    (D E : I \u2964 Scheme.{u}) (cD : Cone D) (cE : Cone E)\n    (hD : IsLimit cD) (hE : IsLimit cE)\n    [\u2200 {i j} (a : i \u27f6 j), IsAffineHom (D.map a)]\n    [\u2200 {i j} (a : i \u27f6 j), IsAffineHom (E.map a)]\n    [\u2200 i, CompactSpace (D.obj i)]\n    [\u2200 i, CompactSpace (E.obj i)] [\u2200 i, QuasiSeparatedSpace (E.obj i)]\n    (a : \u2200 i, D.obj i \u27f6 E.obj i)\n    (ha : \u2200 {i j} (r : i \u27f6 j), D.map r \u226b a j = a i \u226b E.map r)\n    (aLimit : cD.pt \u27f6 cE.pt)\n    (hcone : \u2200 i, cD.\u03c0.app i \u226b a i = aLimit \u226b cE.\u03c0.app i)\n    (U : cE.pt.Opens) (hU : IsClosed (U : Set cE.pt))\n    (hsection : aLimit \u207b\u00b9\u1d41 U = \u22a4) :\n    \u2203 (i : I) (V : (E.obj i).Opens), IsClosed (V : Set (E.obj i)) \u2227\n      cE.\u03c0.app i \u207b\u00b9\u1d41 V = U \u2227 a i \u207b\u00b9\u1d41 V = \u22a4",
+            "conditions_and_consumer_boundary": "General family-containment helper retains compact D stages, qcqs E stages, affine transition maps, both limit cones and original compatible family/section containment. Original principal smooth producer hypotheses retained.",
+            "proof_change": "Proof or predicate body unchanged."
+          },
+          {
+            "source": "Aglib/FieldTheory/KummerSubextension.lean",
+            "declaration": "finrank_adjoin_pow",
+            "removed_arguments": [
+              "FiniteDimensional K F"
+            ],
+            "old_signature": "private theorem finrank_adjoin_pow [FiniteDimensional K F] {N e : \u2115}\n    (hN : 0 < N) (he : 0 < e) (heN : e \u2223 N) {a : K} {\u03b8 : F}\n    (h\u03b8 : \u03b8 ^ N = algebraMap K F a) (hgen : K\u27ee\u03b8\u27ef = \u22a4)\n    (hdegree : finrank K F = N) : finrank K K\u27ee\u03b8 ^ (N / e)\u27ef = e",
+            "new_signature": "private theorem finrank_adjoin_pow {N e : \u2115}\n    (hN : 0 < N) (he : 0 < e) (heN : e \u2223 N) {a : K} {\u03b8 : F}\n    (h\u03b8 : \u03b8 ^ N = algebraMap K F a) (hgen : K\u27ee\u03b8\u27ef = \u22a4)\n    (hdegree : finrank K F = N) : finrank K K\u27ee\u03b8 ^ (N / e)\u27ef = e",
+            "conditions_and_consumer_boundary": "Private finrank helper retains the original power equation, generator equality, finrank equality and divisibility/positivity. Public Kummer theorem still constructs finite dimensionality and retains irreducibility and primitive roots.",
+            "proof_change": "Proof or predicate body unchanged."
+          },
+          {
+            "source": "Aglib/RingTheory/Artinian/NoetherianGenericSplitThickening.lean",
+            "declaration": "finiteSplitThickeningOnPrincipalOpen",
+            "removed_arguments": [
+              "IsDomain R",
+              "IsFractionRing R K"
+            ],
+            "old_signature": "def finiteSplitThickeningOnPrincipalOpen\n    (R : Type u) [CommRing R] [IsDomain R]\n    (K : Type v) [Field K] [Algebra R K] [IsFractionRing R K]\n    (\u03a9 : Type w) [Field \u03a9] [Algebra K \u03a9]\n    (A : Type x) [CommRing A] [Algebra R A] : Prop",
+            "new_signature": "def finiteSplitThickeningOnPrincipalOpen\n    (R : Type u) [CommRing R]\n    (K : Type v) [Field K] [Algebra R K]\n    (\u03a9 : Type w) [Field \u03a9] [Algebra K \u03a9]\n    (A : Type x) [CommRing A] [Algebra R A] : Prop",
+            "conditions_and_consumer_boundary": "Only the conclusion predicate loses constraints unused in its unchanged body. Both finiteSplitThickeningOnPrincipalOpen_of_basis and exists_noetherianGeneric_splitThickening retain the original domain/fraction hypotheses and original maps.",
+            "proof_change": "Proof or predicate body unchanged."
+          },
+          {
+            "source": "Aglib/RingTheory/Etale/StandardEtaleDomainEmbedding.lean",
+            "declaration": "factor_lift_injective",
+            "removed_arguments": [
+              "IsDomain R"
+            ],
+            "old_signature": "theorem factor_lift_injective [IsDomain R] [UniqueFactorizationMonoid R[X]]\n    (P : StandardEtalePresentation R S) (p q : R[X])\n    (hirr : Irreducible p) (hf : P.f = p * q) (hp : aeval P.x p = 0) :\n    Function.Injective (AdjoinRoot.liftAlgHom p (Algebra.ofId R S) P.x hp)",
+            "new_signature": "theorem factor_lift_injective [UniqueFactorizationMonoid R[X]]\n    (P : StandardEtalePresentation R S) (p q : R[X])\n    (hirr : Irreducible p) (hf : P.f = p * q) (hp : aeval P.x p = 0) :\n    Function.Injective (AdjoinRoot.liftAlgHom p (Algebra.ofId R S) P.x hp)",
+            "conditions_and_consumer_boundary": "Irreducibility and UniqueFactorizationMonoid R[X] remain; the same proof uses primality in the polynomial ring, the actual factor denominator and the original localization map.",
+            "proof_change": "Proof or predicate body unchanged."
+          },
+          {
+            "source": "Aglib/RingTheory/Etale/StandardEtaleDomainEmbedding.lean",
+            "declaration": "lTensor_factor_lift_injective",
+            "removed_arguments": [
+              "IsDomain R"
+            ],
+            "old_signature": "theorem lTensor_factor_lift_injective [IsDomain R] [UniqueFactorizationMonoid R[X]]\n    {K L : Type*} [CommRing K] [Algebra K R] [Algebra K S] [IsScalarTower K R S]\n    [AddCommGroup L] [Module K L] [Module.Flat K L]\n    (P : StandardEtalePresentation R S) (p q : R[X])\n    (hirr : Irreducible p) (hf : P.f = p * q) (hp : aeval P.x p = 0) :\n    Function.Injective (LinearMap.lTensor L\n      ((AdjoinRoot.liftAlgHom p (Algebra.ofId R S) P.x hp).restrictScalars K).toLinearMap)",
+            "new_signature": "theorem lTensor_factor_lift_injective [UniqueFactorizationMonoid R[X]]\n    {K L : Type*} [CommRing K] [Algebra K R] [Algebra K S] [IsScalarTower K R S]\n    [AddCommGroup L] [Module K L] [Module.Flat K L]\n    (P : StandardEtalePresentation R S) (p q : R[X])\n    (hirr : Irreducible p) (hf : P.f = p * q) (hp : aeval P.x p = 0) :\n    Function.Injective (LinearMap.lTensor L\n      ((AdjoinRoot.liftAlgHom p (Algebra.ofId R S) P.x hp).restrictScalars K).toLinearMap)",
+            "conditions_and_consumer_boundary": "Necessary same-file propagation from factor_lift_injective; polynomial UFD, original scalar towers and flat tensor module remain.",
+            "proof_change": "Proof or predicate body unchanged."
+          },
+          {
+            "source": "Aglib/RingTheory/Henselian/PrimitiveRoots.lean",
+            "declaration": "primitiveRoots_fraction_nonempty",
+            "removed_arguments": [
+              "IsDomain R"
+            ],
+            "old_signature": "theorem primitiveRoots_fraction_nonempty [IsDomain R] [IsSepClosed (ResidueField R)]\n    (K : Type*) [Field K] [Algebra R K] [IsFractionRing R K]\n    (n : \u2115) (hn : 0 < n) (hunit : IsUnit (n : R)) :\n    (primitiveRoots n K).Nonempty",
+            "new_signature": "theorem primitiveRoots_fraction_nonempty [IsSepClosed (ResidueField R)]\n    (K : Type*) [Field K] [Algebra R K] [IsFractionRing R K]\n    (n : \u2115) (hn : 0 < n) (hunit : IsUnit (n : R)) :\n    (primitiveRoots n K).Nonempty",
+            "conditions_and_consumer_boundary": "Fraction-ring structure, separated-closed residue field, positive invertible order and Henselian structure remain; actual coefficient injection is IsFractionRing.injective. Original downstream strictly Henselian domain producer unchanged.",
+            "proof_change": "Proof or predicate body unchanged."
+          }
+        ],
+        "definition_renames": [
+          {
+            "old": "ringSectionsTensorAlgEquiv_of_flat_of_isPullback",
+            "new": "ringSectionsTensorAlgEquivOfFlatOfIsPullback",
+            "qualified_old": "AlgebraicGeometry.Scheme.Cohomology.ringSectionsTensorAlgEquiv_of_flat_of_isPullback",
+            "qualified_new": "AlgebraicGeometry.Scheme.Cohomology.ringSectionsTensorAlgEquivOfFlatOfIsPullback",
+            "source": "Aglib/AlgebraicGeometry/Cohomology/BaseChange/NativeRingSections.lean"
+          },
+          {
+            "old": "instHasDerivedCategoryModules_aglib",
+            "new": "finiteCechModulesHasDerivedCategory",
+            "qualified_old": "AlgebraicGeometry.Scheme.Cohomology.instHasDerivedCategoryModules_aglib",
+            "qualified_new": "AlgebraicGeometry.Scheme.Cohomology.finiteCechModulesHasDerivedCategory",
+            "source": "Aglib/AlgebraicGeometry/Cohomology/Cech/Finite/ModelComparison.lean",
+            "source_form": "Explicit name assigned to the existing anonymous local instance; type and RHS unchanged."
+          },
+          {
+            "old": "instHasDerivedCategoryModuleCat_aglib",
+            "new": "finiteCechModuleCatHasDerivedCategory",
+            "qualified_old": "AlgebraicGeometry.Scheme.Cohomology.instHasDerivedCategoryModuleCat_aglib",
+            "qualified_new": "AlgebraicGeometry.Scheme.Cohomology.finiteCechModuleCatHasDerivedCategory",
+            "source": "Aglib/AlgebraicGeometry/Cohomology/Cech/Finite/ModelComparison.lean",
+            "source_form": "Explicit name assigned to the existing anonymous local instance; type and RHS unchanged."
+          },
+          {
+            "old": "moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_of_counit_quasiIso",
+            "new": "moduleDerivedPushforwardSingleAffineSectionsLinearEquivOfCounitQuasiIso",
+            "qualified_old": "AlgebraicGeometry.Scheme.Cohomology.moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_of_counit_quasiIso",
+            "qualified_new": "AlgebraicGeometry.Scheme.Cohomology.moduleDerivedPushforwardSingleAffineSectionsLinearEquivOfCounitQuasiIso",
+            "source": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/CounitNaturality.lean"
+          },
+          {
+            "old": "moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso",
+            "new": "moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso",
+            "qualified_old": "AlgebraicGeometry.Scheme.Cohomology.moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso",
+            "qualified_new": "AlgebraicGeometry.Scheme.Cohomology.moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso",
+            "source": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/SectionsCounitHomology.lean"
+          },
+          {
+            "old": "moduleHigherDirectImageAffineIso_of_counit_quasiIso",
+            "new": "moduleHigherDirectImageAffineIsoOfCounitQuasiIso",
+            "qualified_old": "AlgebraicGeometry.Scheme.Cohomology.moduleHigherDirectImageAffineIso_of_counit_quasiIso",
+            "qualified_new": "AlgebraicGeometry.Scheme.Cohomology.moduleHigherDirectImageAffineIsoOfCounitQuasiIso",
+            "source": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Counit.lean"
+          },
+          {
+            "old": "moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso",
+            "new": "moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso",
+            "qualified_old": "AlgebraicGeometry.Scheme.Cohomology.moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso",
+            "qualified_new": "AlgebraicGeometry.Scheme.Cohomology.moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso",
+            "source": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/SectionsCounit.lean"
+          },
+          {
+            "old": "baseChangeDiagram_rebaseIso",
+            "new": "baseChangeDiagramRebaseIso",
+            "qualified_old": "AlgebraicGeometry.Scheme.baseChangeDiagram_rebaseIso",
+            "qualified_new": "AlgebraicGeometry.Scheme.baseChangeDiagramRebaseIso",
+            "source": "Aglib/AlgebraicGeometry/Descent/FinitePresentation/Gluing.lean"
+          },
+          {
+            "old": "relative_section_eq_at_point_lifts_of_killed",
+            "new": "relativeSectionEqAtPointLiftsOfKilled",
+            "qualified_old": "AlgebraicGeometry.Scheme.EtaleCohomology.relative_section_eq_at_point_lifts_of_killed",
+            "qualified_new": "AlgebraicGeometry.Scheme.EtaleCohomology.relativeSectionEqAtPointLiftsOfKilled",
+            "source": "Aglib/AlgebraicGeometry/EtaleCohomology/H0/ConnectedPullbackSections.lean"
+          },
+          {
+            "old": "instAlgebraCarrierObjOppositeOpensCarrierCarrierCommRingCatSpecOfPresheafOpOpens_aglib",
+            "new": "hartogsSectionsAlgebra",
+            "qualified_old": "AlgebraicGeometry.Scheme.instAlgebraCarrierObjOppositeOpensCarrierCarrierCommRingCatSpecOfPresheafOpOpens_aglib",
+            "qualified_new": "AlgebraicGeometry.Scheme.hartogsSectionsAlgebra",
+            "source": "Aglib/AlgebraicGeometry/FunctionField/HartogsSections.lean",
+            "source_form": "Explicit name assigned to the existing anonymous local instance; type and RHS unchanged."
+          },
+          {
+            "old": "instAlgebraCarrierFunctionFieldSpecOf_aglib",
+            "new": "hartogsFunctionFieldAlgebra",
+            "qualified_old": "AlgebraicGeometry.Scheme.instAlgebraCarrierFunctionFieldSpecOf_aglib",
+            "qualified_new": "AlgebraicGeometry.Scheme.hartogsFunctionFieldAlgebra",
+            "source": "Aglib/AlgebraicGeometry/FunctionField/HartogsSections.lean",
+            "source_form": "Explicit name assigned to the existing anonymous local instance; type and RHS unchanged."
+          },
+          {
+            "old": "idealSheafSectionCone_isLimit_of_universallyExact",
+            "new": "idealSheafSectionConeIsLimitOfUniversallyExact",
+            "qualified_old": "AlgebraicGeometry.Scheme.Modules.Coherent.idealSheafSectionCone_isLimit_of_universallyExact",
+            "qualified_new": "AlgebraicGeometry.Scheme.Modules.Coherent.idealSheafSectionConeIsLimitOfUniversallyExact",
+            "source": "Aglib/AlgebraicGeometry/Modules/Coherent/AdicSystem/SectionKernels.lean"
+          },
+          {
+            "old": "dualShortComplex_sectionsIso",
+            "new": "dualShortComplexSectionsIso",
+            "qualified_old": "AlgebraicGeometry.Scheme.Modules.InternalHom.dualShortComplex_sectionsIso",
+            "qualified_new": "AlgebraicGeometry.Scheme.Modules.InternalHom.dualShortComplexSectionsIso",
+            "source": "Aglib/AlgebraicGeometry/Modules/InternalHom/DualExact.lean"
+          },
+          {
+            "old": "instAlgebraTensorProduct_aglib",
+            "new": "affinePointwiseTensorRightAlgebra",
+            "qualified_old": "AlgebraicGeometry.Scheme.Hom.instAlgebraTensorProduct_aglib",
+            "qualified_new": "AlgebraicGeometry.Scheme.Hom.affinePointwiseTensorRightAlgebra",
+            "source": "Aglib/AlgebraicGeometry/Morphisms/Etale/AffinePointwiseFlatBaseChange.lean",
+            "source_form": "Explicit name assigned to the existing anonymous local instance; type and RHS unchanged."
+          },
+          {
+            "old": "restriction_fullyFaithful_comp_iso",
+            "new": "restrictionFullyFaithfulCompIso",
+            "qualified_old": "AlgebraicGeometry.Scheme.FiniteEtale.restriction_fullyFaithful_comp_iso",
+            "qualified_new": "AlgebraicGeometry.Scheme.FiniteEtale.restrictionFullyFaithfulCompIso",
+            "source": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/BaseChange/RestrictIso.lean"
+          },
+          {
+            "old": "baseChange_autEquiv_of_connected",
+            "new": "baseChangeAutEquivOfConnected",
+            "qualified_old": "AlgebraicGeometry.Scheme.FiniteEtale.baseChange_autEquiv_of_connected",
+            "qualified_new": "AlgebraicGeometry.Scheme.FiniteEtale.baseChangeAutEquivOfConnected",
+            "source": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/GaloisBaseChange.lean"
+          },
+          {
+            "old": "fieldExtension_baseChange_autEquiv",
+            "new": "fieldExtensionBaseChangeAutEquiv",
+            "qualified_old": "AlgebraicGeometry.Scheme.FiniteEtale.fieldExtension_baseChange_autEquiv",
+            "qualified_new": "AlgebraicGeometry.Scheme.FiniteEtale.fieldExtensionBaseChangeAutEquiv",
+            "source": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/GaloisBaseChange.lean"
+          },
+          {
+            "old": "fullyFaithfulBaseChange_of_geometricallyConnected",
+            "new": "fullyFaithfulBaseChangeOfGeometricallyConnected",
+            "qualified_old": "AlgebraicGeometry.Scheme.FiniteEtale.fullyFaithfulBaseChange_of_geometricallyConnected",
+            "qualified_new": "AlgebraicGeometry.Scheme.FiniteEtale.fullyFaithfulBaseChangeOfGeometricallyConnected",
+            "source": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/GeometricallyConnected.lean"
+          },
+          {
+            "old": "fullyFaithfulBaseChange_of_flat_quasiCompact",
+            "new": "fullyFaithfulBaseChangeOfFlatQuasiCompact",
+            "qualified_old": "AlgebraicGeometry.Scheme.FiniteEtale.fullyFaithfulBaseChange_of_flat_quasiCompact",
+            "qualified_new": "AlgebraicGeometry.Scheme.FiniteEtale.fullyFaithfulBaseChangeOfFlatQuasiCompact",
+            "source": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/GeometricallyConnected.lean"
+          },
+          {
+            "old": "fullyFaithfulBaseChange_of_flat_lfp",
+            "new": "fullyFaithfulBaseChangeOfFlatLfp",
+            "qualified_old": "AlgebraicGeometry.Scheme.FiniteEtale.fullyFaithfulBaseChange_of_flat_lfp",
+            "qualified_new": "AlgebraicGeometry.Scheme.FiniteEtale.fullyFaithfulBaseChangeOfFlatLfp",
+            "source": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/GeometricallyConnected.lean"
+          },
+          {
+            "old": "fullyFaithfulBaseChange_fieldExtension",
+            "new": "fullyFaithfulBaseChangeFieldExtension",
+            "qualified_old": "AlgebraicGeometry.Scheme.FiniteEtale.fullyFaithfulBaseChange_fieldExtension",
+            "qualified_new": "AlgebraicGeometry.Scheme.FiniteEtale.fullyFaithfulBaseChangeFieldExtension",
+            "source": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/GeometricallyConnected.lean"
+          },
+          {
+            "old": "normalizationFiniteEtale_restrictionIso",
+            "new": "normalizationFiniteEtaleRestrictionIso",
+            "qualified_old": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.OpenRecovery.normalizationFiniteEtale_restrictionIso",
+            "qualified_new": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.OpenRecovery.normalizationFiniteEtaleRestrictionIso",
+            "source": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/EtaleExtension.lean"
+          },
+          {
+            "old": "normalizationFiniteEtale_autEquiv",
+            "new": "normalizationFiniteEtaleAutEquiv",
+            "qualified_old": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.OpenRecovery.normalizationFiniteEtale_autEquiv",
+            "qualified_new": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.OpenRecovery.normalizationFiniteEtaleAutEquiv",
+            "source": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/GaloisExtension.lean"
+          },
+          {
+            "old": "restrictedNormalization_restrictionIso",
+            "new": "restrictedNormalizationRestrictionIso",
+            "qualified_old": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.OpenRecovery.restrictedNormalization_restrictionIso",
+            "qualified_new": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.OpenRecovery.restrictedNormalizationRestrictionIso",
+            "source": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/GaloisRestrictedExtension.lean"
+          },
+          {
+            "old": "powerSeriesPuncturedFiniteEtale_fullyFaithful",
+            "new": "powerSeriesPuncturedFiniteEtaleFullyFaithful",
+            "qualified_old": "AlgebraicGeometry.Scheme.powerSeriesPuncturedFiniteEtale_fullyFaithful",
+            "qualified_new": "AlgebraicGeometry.Scheme.powerSeriesPuncturedFiniteEtaleFullyFaithful",
+            "source": "Aglib/AlgebraicGeometry/Spec/PowerSeriesFiniteEtaleMaps.lean"
+          },
+          {
+            "old": "powerSeriesPuncturedFiniteEtale_zeroSection_fullyFaithful",
+            "new": "powerSeriesPuncturedFiniteEtaleZeroSectionFullyFaithful",
+            "qualified_old": "AlgebraicGeometry.Scheme.powerSeriesPuncturedFiniteEtale_zeroSection_fullyFaithful",
+            "qualified_new": "AlgebraicGeometry.Scheme.powerSeriesPuncturedFiniteEtaleZeroSectionFullyFaithful",
+            "source": "Aglib/AlgebraicGeometry/Spec/PowerSeriesFiniteEtaleMaps.lean"
+          },
+          {
+            "old": "powerSeriesHartogsAlgebraComparison_restriction",
+            "new": "powerSeriesHartogsAlgebraComparisonRestriction",
+            "qualified_old": "AlgebraicGeometry.Scheme.powerSeriesHartogsAlgebraComparison_restriction",
+            "qualified_new": "AlgebraicGeometry.Scheme.powerSeriesHartogsAlgebraComparisonRestriction",
+            "source": "Aglib/AlgebraicGeometry/Spec/PowerSeriesHartogsAlgebraComparison.lean"
+          },
+          {
+            "old": "originalHartogsFiniteEtaleExtension_recovery",
+            "new": "originalHartogsFiniteEtaleExtensionRecovery",
+            "qualified_old": "AlgebraicGeometry.Scheme.originalHartogsFiniteEtaleExtension_recovery",
+            "qualified_new": "AlgebraicGeometry.Scheme.originalHartogsFiniteEtaleExtensionRecovery",
+            "source": "Aglib/AlgebraicGeometry/Spec/PowerSeriesHartogsCoverExtension.lean"
+          },
+          {
+            "old": "powerSeriesHartogsCoverExtension_recovery",
+            "new": "powerSeriesHartogsCoverExtensionRecovery",
+            "qualified_old": "AlgebraicGeometry.Scheme.powerSeriesHartogsCoverExtension_recovery",
+            "qualified_new": "AlgebraicGeometry.Scheme.powerSeriesHartogsCoverExtensionRecovery",
+            "source": "Aglib/AlgebraicGeometry/Spec/PowerSeriesHartogsCoverExtension.lean"
+          },
+          {
+            "old": "powerSeriesBaseOpenSection_fullyFaithful",
+            "new": "powerSeriesBaseOpenSectionFullyFaithful",
+            "qualified_old": "AlgebraicGeometry.Scheme.powerSeriesBaseOpenSection_fullyFaithful",
+            "qualified_new": "AlgebraicGeometry.Scheme.powerSeriesBaseOpenSectionFullyFaithful",
+            "source": "Aglib/AlgebraicGeometry/Spec/PowerSeriesHartogsCoverRecovery.lean"
+          },
+          {
+            "old": "powerSeriesHartogsFiniteEtale_fullyFaithful",
+            "new": "powerSeriesHartogsFiniteEtaleFullyFaithful",
+            "qualified_old": "AlgebraicGeometry.Scheme.powerSeriesHartogsFiniteEtale_fullyFaithful",
+            "qualified_new": "AlgebraicGeometry.Scheme.powerSeriesHartogsFiniteEtaleFullyFaithful",
+            "source": "Aglib/AlgebraicGeometry/Spec/PowerSeriesHartogsFiniteEtaleMaps.lean"
+          },
+          {
+            "old": "powerSeriesHartogsFiniteEtale_zeroSection_fullyFaithful",
+            "new": "powerSeriesHartogsFiniteEtaleZeroSectionFullyFaithful",
+            "qualified_old": "AlgebraicGeometry.Scheme.powerSeriesHartogsFiniteEtale_zeroSection_fullyFaithful",
+            "qualified_new": "AlgebraicGeometry.Scheme.powerSeriesHartogsFiniteEtaleZeroSectionFullyFaithful",
+            "source": "Aglib/AlgebraicGeometry/Spec/PowerSeriesHartogsFiniteEtaleMaps.lean"
+          },
+          {
+            "old": "smoothSplitSectionPuncturedFiniteEtale_fullyFaithful",
+            "new": "smoothSplitSectionPuncturedFiniteEtaleFullyFaithful",
+            "qualified_old": "AlgebraicGeometry.Scheme.smoothSplitSectionPuncturedFiniteEtale_fullyFaithful",
+            "qualified_new": "AlgebraicGeometry.Scheme.smoothSplitSectionPuncturedFiniteEtaleFullyFaithful",
+            "source": "Aglib/AlgebraicGeometry/Spec/SmoothSplitSectionFiniteEtaleMaps.lean"
+          },
+          {
+            "old": "isLimit_of_kernelCones",
+            "new": "isLimitOfKernelCones",
+            "qualified_old": "CategoryTheory.Limits.isLimit_of_kernelCones",
+            "qualified_new": "CategoryTheory.Limits.isLimitOfKernelCones",
+            "source": "Aglib/CategoryTheory/Limits/Shapes/KernelCones.lean"
+          },
+          {
+            "old": "instTensorProduct_aglib",
+            "new": "pointwiseTensorRightAlgebra",
+            "qualified_old": "Algebra.instTensorProduct_aglib",
+            "qualified_new": "Algebra.pointwiseTensorRightAlgebra",
+            "source": "Aglib/RingTheory/Etale/PointwiseFlatBaseChange.lean",
+            "source_form": "Explicit name assigned to the existing anonymous local instance; type and RHS unchanged."
+          },
+          {
+            "old": "underCocone_isColimit",
+            "new": "underCoconeIsColimit",
+            "qualified_old": "GeometricEtaleColimit.underCocone_isColimit",
+            "qualified_new": "GeometricEtaleColimit.underCoconeIsColimit",
+            "source": "Aglib/RingTheory/Henselian/StrictHenselization/IntegralClosure.lean"
+          },
+          {
+            "old": "instFieldTensorProductAtPrimeSubtypeMemSubalgebra_aglib",
+            "new": "baseChangeGenericField",
+            "qualified_old": "integralClosure.LocalFactor.instFieldTensorProductAtPrimeSubtypeMemSubalgebra_aglib",
+            "qualified_new": "integralClosure.LocalFactor.baseChangeGenericField",
+            "source": "Aglib/RingTheory/IntegralClosure/FiniteEtale/LocalFactorGaloisBaseChange.lean",
+            "source_form": "Explicit name assigned to the existing anonymous local instance; type and RHS unchanged."
+          },
+          {
+            "old": "baseChange_genericRestriction",
+            "new": "baseChangeGenericRestriction",
+            "qualified_old": "integralClosure.LocalFactor.baseChange_genericRestriction",
+            "qualified_new": "integralClosure.LocalFactor.baseChangeGenericRestriction",
+            "source": "Aglib/RingTheory/IntegralClosure/FiniteEtale/LocalFactorGaloisBaseChange.lean"
+          },
+          {
+            "old": "instAlgebraAtPrimeSubtypeMemSubalgebraTensorProduct_aglib",
+            "new": "genericRightTensorAlgebra",
+            "qualified_old": "integralClosure.LocalFactor.instAlgebraAtPrimeSubtypeMemSubalgebraTensorProduct_aglib",
+            "qualified_new": "integralClosure.LocalFactor.genericRightTensorAlgebra",
+            "source": "Aglib/RingTheory/IntegralClosure/FiniteEtale/LocalFactorGeneric.lean",
+            "source_form": "Explicit name assigned to the existing anonymous local instance; type and RHS unchanged."
+          },
+          {
+            "old": "uniformizerRoot_normalTensorEquivPi",
+            "new": "uniformizerRootNormalTensorEquivPi",
+            "qualified_old": "Algebra.Kummer.uniformizerRoot_normalTensorEquivPi",
+            "qualified_new": "Algebra.Kummer.uniformizerRootNormalTensorEquivPi",
+            "source": "Aglib/RingTheory/Kummer/StrictHenselianRootCancellation.lean"
+          },
+          {
+            "old": "strictRoot_integralClosureEquiv",
+            "new": "strictRootIntegralClosureEquiv",
+            "qualified_old": "Algebra.Kummer.strictRoot_integralClosureEquiv",
+            "qualified_new": "Algebra.Kummer.strictRootIntegralClosureEquiv",
+            "source": "Aglib/RingTheory/Kummer/StrictHenselianRootNormalization.lean"
+          },
+          {
+            "old": "uniformizerRoot_quotientEquivResidue",
+            "new": "uniformizerRootQuotientEquivResidue",
+            "qualified_old": "Algebra.Kummer.uniformizerRoot_quotientEquivResidue",
+            "qualified_new": "Algebra.Kummer.uniformizerRootQuotientEquivResidue",
+            "source": "Aglib/RingTheory/Kummer/Uniformizer.lean"
+          }
+        ],
+        "simp_attribute_deltas": [
+          {
+            "source": "Aglib/AlgebraicGeometry/Compactification/Refinements/RawRefinementBaseChange.lean",
+            "declaration": "baseChange_j_refinementMap",
+            "old_attribute": "reassoc (attr := simp)",
+            "new_attribute": "@[reassoc, simp]"
+          },
+          {
+            "source": "Aglib/AlgebraicGeometry/Normalization/Affine.lean",
+            "declaration": "specIntegralClosureNormalizationIso_hom_generic",
+            "old_attribute": "reassoc (attr := simp)",
+            "new_attribute": "@[reassoc]"
+          },
+          {
+            "source": "Aglib/AlgebraicGeometry/Normalization/AffineMap.lean",
+            "declaration": "integralClosureSourceIso_hom_generic",
+            "old_attribute": "reassoc (attr := simp)",
+            "new_attribute": "@[reassoc]"
+          },
+          {
+            "source": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/EtaleExtension.lean",
+            "declaration": "normalizationFiniteEtale_restrictionIso_hom_fst",
+            "old_attribute": "reassoc (attr := simp)",
+            "new_attribute": "@[reassoc]"
+          },
+          {
+            "source": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/GenericPullback.lean",
+            "declaration": "baseChangeFieldHom_open",
+            "old_attribute": "simp",
+            "new_attribute": ""
+          },
+          {
+            "source": "Aglib/AlgebraicGeometry/Points/FieldExtensionBoundary.lean",
+            "declaration": "fieldExtensionPoint_fst",
+            "old_attribute": "simp",
+            "new_attribute": ""
+          },
+          {
+            "source": "Aglib/AlgebraicGeometry/Points/FieldExtensionBoundary.lean",
+            "declaration": "fieldExtensionPoint_mem_preimage_iff",
+            "old_attribute": "simp",
+            "new_attribute": ""
+          },
+          {
+            "source": "Aglib/AlgebraicGeometry/Spec/GeometricNeighborhoodPrincipalStages.lean",
+            "declaration": "principalStagePoint_algebraMap",
+            "old_attribute": "simp",
+            "new_attribute": ""
+          },
+          {
+            "source": "Aglib/AlgebraicGeometry/Spec/RootPrincipalNeighborhoodSpreading.lean",
+            "declaration": "rootOrdinaryBaseChangeIso_hom_fst",
+            "old_attribute": "reassoc (attr := simp)",
+            "new_attribute": "@[reassoc]"
+          },
+          {
+            "source": "Aglib/AlgebraicGeometry/Spec/RootPrincipalNeighborhoodSpreading.lean",
+            "declaration": "rootOrdinaryBaseChangeIso_hom_snd",
+            "old_attribute": "reassoc (attr := simp)",
+            "new_attribute": "@[reassoc]"
+          },
+          {
+            "source": "Aglib/AlgebraicGeometry/Spec/RootPrincipalNeighborhoodSpreading.lean",
+            "declaration": "rootPrincipalComparison_rootMap",
+            "old_attribute": "reassoc (attr := simp)",
+            "new_attribute": "@[reassoc]"
+          },
+          {
+            "source": "Aglib/FieldTheory/IntermediateField/FiniteCompositum.lean",
+            "declaration": "finiteCompositumInclusion_comp_algebraMap",
+            "old_attribute": "simp",
+            "new_attribute": ""
+          },
+          {
+            "source": "Aglib/FieldTheory/IntermediateField/MappedFiniteCompositum.lean",
+            "declaration": "mappedFiniteCompositumInclusion_comp_algebraMap",
+            "old_attribute": "simp",
+            "new_attribute": ""
+          },
+          {
+            "source": "Aglib/FieldTheory/IntermediateField/MappedFiniteCompositum.lean",
+            "declaration": "val_comp_mappedFiniteCompositumInclusion",
+            "old_attribute": "simp",
+            "new_attribute": ""
+          },
+          {
+            "source": "Aglib/LinearAlgebra/FrobeniusBaseChange.lean",
+            "declaration": "frobeniusBaseChange_one_tmul",
+            "old_attribute": "simp",
+            "new_attribute": ""
+          },
+          {
+            "source": "Aglib/RingTheory/Etale/ResidueCompletionIso.lean",
+            "declaration": "residuePowerRingEquiv_mk",
+            "old_attribute": "simp",
+            "new_attribute": ""
+          },
+          {
+            "source": "Aglib/RingTheory/FiniteType/ArrowSubalgebraColimit.lean",
+            "declaration": "sourceCocone_algebraMap",
+            "old_attribute": "simp",
+            "new_attribute": ""
+          },
+          {
+            "source": "Aglib/RingTheory/FiniteType/ArrowSubalgebraColimit.lean",
+            "declaration": "targetCocone_algebraMap",
+            "old_attribute": "simp",
+            "new_attribute": ""
+          },
+          {
+            "source": "Aglib/RingTheory/IntegralClosure/ChangeBaseMap.lean",
+            "declaration": "changeBaseMap_algebraMap",
+            "old_attribute": "simp",
+            "new_attribute": ""
+          },
+          {
+            "source": "Aglib/RingTheory/Kummer/RegularParameterRecognition.lean",
+            "declaration": "parameterRootIntegralClosureEquiv_algebraMap",
+            "old_attribute": "simp",
+            "new_attribute": ""
+          },
+          {
+            "source": "Aglib/RingTheory/Kummer/RegularParameterRecognition.lean",
+            "declaration": "parameterRootIntegralClosureEquiv_root",
+            "old_attribute": "simp",
+            "new_attribute": ""
+          },
+          {
+            "source": "Aglib/RingTheory/Kummer/RootBaseChange.lean",
+            "declaration": "rootBaseChangeHom_algebraMap",
+            "old_attribute": "simp",
+            "new_attribute": ""
+          },
+          {
+            "source": "Aglib/RingTheory/Kummer/RootDivisibility.lean",
+            "declaration": "chartRootHom_algebraMap",
+            "old_attribute": "simp",
+            "new_attribute": ""
+          },
+          {
+            "source": "Aglib/RingTheory/Kummer/RootDivisibility.lean",
+            "declaration": "rootChartCoefficientHom_algebraMap",
+            "old_attribute": "simp",
+            "new_attribute": ""
+          },
+          {
+            "source": "Aglib/RingTheory/Kummer/RootDivisibility.lean",
+            "declaration": "rootChartGenericHom_includeLeft",
+            "old_attribute": "simp",
+            "new_attribute": ""
+          },
+          {
+            "source": "Aglib/RingTheory/Kummer/RootDivisibility.lean",
+            "declaration": "rootChartGenericHom_includeRight",
+            "old_attribute": "simp",
+            "new_attribute": ""
+          },
+          {
+            "source": "Aglib/RingTheory/Kummer/RootDivisibility.lean",
+            "declaration": "rootDivisibilityHom_algebraMap",
+            "old_attribute": "simp",
+            "new_attribute": ""
+          },
+          {
+            "source": "Aglib/RingTheory/Nagata/FiniteTypeFieldLocalModel.lean",
+            "declaration": "localModelToField_algebraMap",
+            "old_attribute": "simp",
+            "new_attribute": ""
+          },
+          {
+            "source": "Aglib/RingTheory/Smooth/SplitSectionCompletion.lean",
+            "declaration": "splitSectionQuotientEquiv_mk",
+            "old_attribute": "simp",
+            "new_attribute": ""
+          }
+        ],
+        "documentation": {
+          "diagnostics": 248,
+          "helper_doc_only": 235,
+          "inline_mixed_source": 13,
+          "meaning": "Accurate declaration/structure-field docstrings only; no claim of independent mathematical review."
+        }
+      }
+    }
+  },
+  "source_changes": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ConstructibleGenericOpen.lean",
+      "prior_basis": "HEAD c488",
+      "prior_sha256": "26b4bf89893e411c2e5eee9ed47a63e8c2b3e481001a740f8a4cb9535ebedd89",
+      "v3_sha256": "417e934396c8b125d75d87b671ea164ec813f88b55f38cfd126c89a256766179",
+      "prior_text": "/-\nCopyright (c) 2026 Aglib contributors. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: kangxyz\n-/\nmodule\n\npublic import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ConstructibleSplitBase\npublic import Aglib.RingTheory.Artinian.NoetherianGenericSplitThickening\n\n/-! # Actual generic principal opens for finite-image constructibility\n\nThe same original split quotient is transported by the native\ncancel-base-change equivalence. Its surjectivity and kernel power descend\nthrough the actual map square. The finite integral base map is surjective\nonly over the second principal open. The Noetherian specialization consumes\nthe existing generic splitting producer without assuming a basis, quotient\nor constructibility conclusion. Global stratification is a separate step.\n-/\n\n@[expose] public noncomputable section\n\nopen CategoryTheory\nopen scoped TensorProduct\n\nnamespace AlgebraicGeometry.Scheme.EtaleCohomology.Finite\n\nuniverse u\n\nattribute [local instance] hasSheafifyLarge\n\n/-- Transport the same quotient along the original base-change cancellation,\nthen use the actual spectrum base change over `S`. -/\ntheorem isConstructible_directImage_of_splitBaseChangeTower\n    {R S C A : Type u} [CommRing R] [CommRing S] [CommRing C] [CommRing A]\n    [Algebra R S] [Algebra R C] [Algebra S C] [IsScalarTower R S C]\n    [Algebra R A] [Module.Finite R A]\n    (hC : Function.Surjective (PrimeSpectrum.comap (algebraMap S C)))\n    {J : Type u} [Finite J] (q : C \u2297[R] A \u2192\u2090[C] (J \u2192 C))\n    (hq : Function.Surjective q) (n : \u2115) (hn : (RingHom.ker q.toRingHom) ^ n = \u22a5)\n    {F : AbelianSheaf.{u, u + 1} (Spec (.of (S \u2297[R] A)))}\n    (hF : Constructible.IsConstructible F) :\n    Constructible.IsConstructible ((directImage (Spec.algebraMap S (S \u2297[R] A))).obj F) := by\n  let e := Algebra.TensorProduct.cancelBaseChange R S C C A\n  let q' := q.comp e.toAlgHom\n  have hq' : Function.Surjective q' := hq.comp e.surjective\n  have hn' : (RingHom.ker q'.toRingHom) ^ n = \u22a5 :=\n    RingHom.ker_pow_eq_bot_of_injective_square e.toAlgHom q'.toRingHom q.toRingHom\n      (RingHom.id _) e.injective (fun _ => rfl) n hn\n  exact isConstructible_directImage_of_splitBase hC q' hq' n hn' hF\n\n/-- The actual principal-open conclusion, uniformly for all original\nconstructible abelian coefficients on the restricted finite algebra. -/\ndef constructibleFiniteImageOnPrincipalOpen\n    (R A : Type u) [CommRing R] [CommRing A] [Algebra R A] : Prop :=\n  \u2203 b : R, b \u2260 0 \u2227\n    \u2200 (F : AbelianSheaf.{u, u + 1} (Spec (.of ((Localization.Away b) \u2297[R] A)))),\n      Constructible.IsConstructible F \u2192 Constructible.IsConstructible\n        ((directImage (Spec.algebraMap (Localization.Away b)\n          ((Localization.Away b) \u2297[R] A))).obj F)\n\n/-- Extract the original finite integral base map and original quotient from\nthe already constructed splitting, and use their actual structure maps. -/\ntheorem constructibleFiniteImageOnPrincipalOpen_of_splitThickening\n    (R : Type u) [CommRing R] [IsDomain R]\n    (K : Type u) [Field K] [Algebra R K] [IsFractionRing R K]\n    (\u03a9 : Type u) [Field \u03a9] [Algebra K \u03a9]\n    (A : Type u) [CommRing A] [Algebra R A] [Module.Finite R A]\n    (hsplit : Algebra.FiniteAlgebra.finiteSplitThickeningOnPrincipalOpen R K \u03a9 A) :\n    constructibleFiniteImageOnPrincipalOpen R A := by\n  have : IsArtinianRing (\u03a9 \u2297[K] (K \u2297[R] A)) := IsArtinianRing.of_finite \u03a9 _\n  obtain \u27e8n, _hn, L, hL\u27e9 := hsplit\n  let : Algebra R L := ((algebraMap K L).comp (algebraMap R K)).toAlgebra\n  obtain \u27e8b, hb, B, _hB, _hfinite, hsurj, q, hq, hnil\u27e9 := hL\n  let S := Localization.Away b\n  let C := Localization.Away (algebraMap R B b)\n  let \u03b2 := IsFractionRing.finiteSubalgebraAwayBaseMap B b\n  let : Algebra S C := \u03b2.toRingHom.toAlgebra\n  have : IsScalarTower R S C :=\n    IsScalarTower.of_algebraMap_eq fun x => (\u03b2.commutes x).symm\n  refine \u27e8b, hb, ?_\u27e9\n  intro F hF\n  exact isConstructible_directImage_of_splitBaseChangeTower\n    (R := R) (S := S) (C := C) (A := A) hsurj q hq n hnil hF\n\n/-- A finite algebra over a Noetherian domain has two genuine nonzero\nprincipal restrictions on which every original constructible abelian\ncoefficient has constructible finite direct image. Neither a basis nor a\nsplitting certificate is an input. -/\ntheorem exists_noetherianGeneric_constructibleFiniteImage\n    (R A : Type u) [CommRing R] [IsDomain R] [IsNoetherianRing R]\n    [CommRing A] [Algebra R A] [Module.Finite R A] :\n    \u2203 a : R, a \u2260 0 \u2227 constructibleFiniteImageOnPrincipalOpen\n      (Localization.Away a) ((Localization.Away a) \u2297[R] A) := by\n  obtain \u27e8a, ha, hsplit\u27e9 :=\n    Algebra.FiniteAlgebra.exists_noetherianGeneric_splitThickening R A\n  refine \u27e8a, ha, ?_\u27e9\n  let : IsDomain (Localization.Away a) := Localization.Away.isDomain ha\n  exact constructibleFiniteImageOnPrincipalOpen_of_splitThickening\n    (Localization.Away a) (FractionRing (Localization.Away a))\n    (AlgebraicClosure (FractionRing (Localization.Away a)))\n    ((Localization.Away a) \u2297[R] A) hsplit\n\nend AlgebraicGeometry.Scheme.EtaleCohomology.Finite\n",
+      "v3_text": "/-\nCopyright (c) 2026 Aglib contributors. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: kangxyz\n-/\nmodule\n\npublic import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ConstructibleSplitBase\npublic import Aglib.RingTheory.Artinian.NoetherianGenericSplitThickening\n\n/-! # Actual generic principal opens for finite-image constructibility\n\nThe same original split quotient is transported by the native\ncancel-base-change equivalence. Its surjectivity and kernel power descend\nthrough the actual map square. The finite integral base map is surjective\nonly over the second principal open. The Noetherian specialization consumes\nthe existing generic splitting producer without assuming a basis, quotient\nor constructibility conclusion. Global stratification is a separate step.\n-/\n\n@[expose] public noncomputable section\n\nopen CategoryTheory\nopen scoped TensorProduct\n\nnamespace AlgebraicGeometry.Scheme.EtaleCohomology.Finite\n\nuniverse u\n\nattribute [local instance] hasSheafifyLarge\n\n/-- Transport the same quotient along the original base-change cancellation,\nthen use the actual spectrum base change over `S`. -/\ntheorem isConstructible_directImage_of_splitBaseChangeTower\n    {R S C A : Type u} [CommRing R] [CommRing S] [CommRing C] [CommRing A]\n    [Algebra R S] [Algebra R C] [Algebra S C] [IsScalarTower R S C]\n    [Algebra R A] [Module.Finite R A]\n    (hC : Function.Surjective (PrimeSpectrum.comap (algebraMap S C)))\n    {J : Type u} [Finite J] (q : C \u2297[R] A \u2192\u2090[C] (J \u2192 C))\n    (hq : Function.Surjective q) (n : \u2115) (hn : (RingHom.ker q.toRingHom) ^ n = \u22a5)\n    {F : AbelianSheaf.{u, u + 1} (Spec (.of (S \u2297[R] A)))}\n    (hF : Constructible.IsConstructible F) :\n    Constructible.IsConstructible ((directImage (Spec.algebraMap S (S \u2297[R] A))).obj F) := by\n  let e := Algebra.TensorProduct.cancelBaseChange R S C C A\n  let q' := q.comp e.toAlgHom\n  have hq' : Function.Surjective q' := hq.comp e.surjective\n  have hn' : (RingHom.ker q'.toRingHom) ^ n = \u22a5 :=\n    RingHom.ker_pow_eq_bot_of_injective_square e.toAlgHom q'.toRingHom q.toRingHom\n      (RingHom.id _) e.injective (fun _ => rfl) n hn\n  exact isConstructible_directImage_of_splitBase hC q' hq' n hn' hF\n\n/-- The actual principal-open conclusion, uniformly for all original\nconstructible abelian coefficients on the restricted finite algebra. -/\ndef constructibleFiniteImageOnPrincipalOpen\n    (R A : Type u) [CommRing R] [CommRing A] [Algebra R A] : Prop :=\n  \u2203 b : R, b \u2260 0 \u2227\n    \u2200 (F : AbelianSheaf.{u, u + 1} (Spec (.of ((Localization.Away b) \u2297[R] A)))),\n      Constructible.IsConstructible F \u2192 Constructible.IsConstructible\n        ((directImage (Spec.algebraMap (Localization.Away b)\n          ((Localization.Away b) \u2297[R] A))).obj F)\n\n/-- Extract the original finite integral base map and original quotient from\nthe already constructed splitting, and use their actual structure maps. -/\ntheorem constructibleFiniteImageOnPrincipalOpen_of_splitThickening\n    (R : Type u) [CommRing R]\n    (K : Type u) [Field K] [Algebra R K]\n    (\u03a9 : Type u) [Field \u03a9] [Algebra K \u03a9]\n    (A : Type u) [CommRing A] [Algebra R A] [Module.Finite R A]\n    (hsplit : Algebra.FiniteAlgebra.finiteSplitThickeningOnPrincipalOpen R K \u03a9 A) :\n    constructibleFiniteImageOnPrincipalOpen R A := by\n  have : IsArtinianRing (\u03a9 \u2297[K] (K \u2297[R] A)) := IsArtinianRing.of_finite \u03a9 _\n  obtain \u27e8n, _hn, L, hL\u27e9 := hsplit\n  let : Algebra R L := ((algebraMap K L).comp (algebraMap R K)).toAlgebra\n  obtain \u27e8b, hb, B, _hB, _hfinite, hsurj, q, hq, hnil\u27e9 := hL\n  let S := Localization.Away b\n  let C := Localization.Away (algebraMap R B b)\n  let \u03b2 := IsFractionRing.finiteSubalgebraAwayBaseMap B b\n  let : Algebra S C := \u03b2.toRingHom.toAlgebra\n  have : IsScalarTower R S C :=\n    IsScalarTower.of_algebraMap_eq fun x => (\u03b2.commutes x).symm\n  refine \u27e8b, hb, ?_\u27e9\n  intro F hF\n  exact isConstructible_directImage_of_splitBaseChangeTower\n    (R := R) (S := S) (C := C) (A := A) hsurj q hq n hnil hF\n\n/-- A finite algebra over a Noetherian domain has two genuine nonzero\nprincipal restrictions on which every original constructible abelian\ncoefficient has constructible finite direct image. Neither a basis nor a\nsplitting certificate is an input. -/\ntheorem exists_noetherianGeneric_constructibleFiniteImage\n    (R A : Type u) [CommRing R] [IsDomain R] [IsNoetherianRing R]\n    [CommRing A] [Algebra R A] [Module.Finite R A] :\n    \u2203 a : R, a \u2260 0 \u2227 constructibleFiniteImageOnPrincipalOpen\n      (Localization.Away a) ((Localization.Away a) \u2297[R] A) := by\n  obtain \u27e8a, ha, hsplit\u27e9 :=\n    Algebra.FiniteAlgebra.exists_noetherianGeneric_splitThickening R A\n  refine \u27e8a, ha, ?_\u27e9\n  let : IsDomain (Localization.Away a) := Localization.Away.isDomain ha\n  exact constructibleFiniteImageOnPrincipalOpen_of_splitThickening\n    (Localization.Away a) (FractionRing (Localization.Away a))\n    (AlgebraicClosure (FractionRing (Localization.Away a)))\n    ((Localization.Away a) \u2297[R] A) hsplit\n\nend AlgebraicGeometry.Scheme.EtaleCohomology.Finite\n",
+      "diff": "--- HEAD c488/Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ConstructibleGenericOpen.lean\n+++ V3/Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ConstructibleGenericOpen.lean\n@@ -62,8 +62,8 @@\n /-- Extract the original finite integral base map and original quotient from\n the already constructed splitting, and use their actual structure maps. -/\n theorem constructibleFiniteImageOnPrincipalOpen_of_splitThickening\n-    (R : Type u) [CommRing R] [IsDomain R]\n-    (K : Type u) [Field K] [Algebra R K] [IsFractionRing R K]\n+    (R : Type u) [CommRing R]\n+    (K : Type u) [Field K] [Algebra R K]\n     (\u03a9 : Type u) [Field \u03a9] [Algebra K \u03a9]\n     (A : Type u) [CommRing A] [Algebra R A] [Module.Finite R A]\n     (hsplit : Algebra.FiniteAlgebra.finiteSplitThickeningOnPrincipalOpen R K \u03a9 A) :\n"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/Descent/FiniteFieldPointedGalois.lean",
+      "prior_basis": "V2",
+      "prior_sha256": "ed5444ac4d1bd7de605a1fa71538a48acb3d7d77fe9960443ac638b6aa42348f",
+      "v3_sha256": "148a728727516d43bc156004c0a683824ee97b625d6f8656edf79246b9bb5cd5",
+      "prior_text": "/-\nCopyright (c) 2026 Aglib contributors. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: kangxyz\n-/\nmodule\n\npublic import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.FiniteFieldGalois\npublic import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.FiniteFieldPoint\n\n/-! # Pointed Galois descent through actual finite field stages\n\nA descended cover is pulled back once more to the finite field of definition\nof its prescribed point. Connectedness of this particular pullback is reflected\nfrom the original extension-valued cover; no unconditional field-invariance\nclaim for Galois covers is used.\n-/\n\n@[expose] public noncomputable section\n\nopen CategoryTheory CategoryTheory.Limits CategoryTheory.PreGaloisCategory Opposite\n\nnamespace AlgebraicGeometry.Scheme.FiniteEtale.FieldCoverDescent\n\nuniverse u\n\n/-- The original finite cover remains Galois with unchanged order after a\nparticular base change whose further surjective pullback is connected. -/\nprivate theorem galois_furtherStage {U V W : Scheme.{u}}\n    [ConnectedSpace U] [ConnectedSpace V]\n    (g : V \u27f6 U) (v : W \u27f6 V) [Surjective v]\n    (Z : FiniteEtale U) [IsGalois Z]\n    [ConnectedSpace ((baseChange (v \u226b g)).obj Z).obj.left] :\n    IsGalois ((baseChange g).obj Z) \u2227\n      Nat.card (Aut ((baseChange g).obj Z)) = Nat.card (Aut Z) := by\n  let ZF := (baseChange g).obj Z\n  let e : ((baseChange (v \u226b g)).obj Z).obj.left \u2245\n      ((baseChange v).obj ZF).obj.left :=\n    (forgetToScheme W).mapIso ((baseChangeComp g v).app Z)\n  let : ConnectedSpace ((baseChange v).obj ZF).obj.left :=\n    e.hom.surjective.connectedSpace e.hom.continuous\n  let : ConnectedSpace (pullback ZF.obj.hom v : Scheme.{u}) :=\n    inferInstanceAs (ConnectedSpace ((baseChange v).obj ZF).obj.left)\n  let : ConnectedSpace ZF.obj.left :=\n    (pullback.fst ZF.obj.hom v).surjective.connectedSpace (pullback.fst ZF.obj.hom v).continuous\n  exact \u27e8baseChange_isGalois_of_connected g Z, baseChange_card_aut_of_connected g Z\u27e9\n\nvariable (k \u03a9 : Type u) [Field k] [Field \u03a9] [Algebra k \u03a9]\n  {U W : Scheme.{u}} (p : U \u27f6 Spec (.of k))\n  (v\u2080 : W \u27f6 U) (w : W \u27f6 Spec (.of \u03a9))\n  (H : IsPullback v\u2080 w p (Spec.algebraMap k \u03a9))\n\n/-- The single further-stage field. -/\nabbrev pointField (t : Finset \u03a9) := FieldLimit.finiteField k \u03a9 t\n\n/-- The single further-stage base scheme. -/\nabbrev pointBase (t : Finset \u03a9) : Scheme.{u} :=\n  pullback p (Spec.algebraMap k (pointField k \u03a9 t))\n\nprivate theorem pointField_tower (t : Finset \u03a9) :\n    Spec.algebraMap (pointField k \u03a9 t) \u03a9 \u226b Spec.algebraMap k (pointField k \u03a9 t) =\n      Spec.algebraMap k \u03a9 := by\n  rw [\u2190 Spec.map_comp]\n  congr 1\n\n/-- The original extension scheme maps to the native further-stage pullback. -/\ndef pointProjection (t : Finset \u03a9) : W \u27f6 pointBase k \u03a9 p t :=\n  pullback.lift v\u2080 (w \u226b Spec.algebraMap (pointField k \u03a9 t) \u03a9) (by\n    rw [Category.assoc, pointField_tower]\n    exact H.w)\n\n@[reassoc] theorem pointProjection_fst (t : Finset \u03a9) :\n    pointProjection k \u03a9 p v\u2080 w H t \u226b\n      pullback.fst p (Spec.algebraMap k (pointField k \u03a9 t)) = v\u2080 :=\n  pullback.lift_fst _ _ _\n\n@[reassoc] theorem pointProjection_snd (t : Finset \u03a9) :\n    pointProjection k \u03a9 p v\u2080 w H t \u226b\n      pullback.snd p (Spec.algebraMap k (pointField k \u03a9 t)) =\n        w \u226b Spec.algebraMap (pointField k \u03a9 t) \u03a9 := pullback.lift_snd _ _ _\n\n/-- This original projection is an actual field-base-change square. -/\ntheorem pointProjection_isPullback (t : Finset \u03a9) :\n    IsPullback (pointProjection k \u03a9 p v\u2080 w H t) w\n      (pullback.snd p (Spec.algebraMap k (pointField k \u03a9 t)))\n      (Spec.algebraMap (pointField k \u03a9 t) \u03a9) := by\n  apply IsPullback.of_right (h\u2081\u2082 := pullback.fst p\n    (Spec.algebraMap k (pointField k \u03a9 t)))\n    (h\u2082\u2082 := Spec.algebraMap k (pointField k \u03a9 t))\n  \u00b7 rw [pointProjection_fst, pointField_tower]\n    exact H\n  \u00b7 exact pointProjection_snd k \u03a9 p v\u2080 w H t\n  \u00b7 exact IsPullback.of_hasPullback _ _\n\n/-- The native reconstruction of the same cover across the further point field. -/\ndef pointCoverIso (t : Finset \u03a9) (Z : FiniteEtale U) :\n    (baseChange (pointProjection k \u03a9 p v\u2080 w H t)).obj\n      ((baseChange (pullback.fst p (Spec.algebraMap k (pointField k \u03a9 t)))).obj Z) \u2245\n      (baseChange v\u2080).obj Z :=\n  ((baseChangeComp (pullback.fst p (Spec.algebraMap k (pointField k \u03a9 t)))\n    (pointProjection k \u03a9 p v\u2080 w H t)).app Z).symm \u226a\u226b\n      eqToIso (congrArg (fun g => (baseChange g).obj Z)\n        (pointProjection_fst k \u03a9 p v\u2080 w H t))\n\nlocal instance point_baseConnected [GeometricallyConnected p] (t : Finset \u03a9) :\n    ConnectedSpace (pointBase k \u03a9 p t) :=\n  GeometricallyConnected.connectedSpace_of_subsingleton\n    (pullback.snd p (Spec.algebraMap k (pointField k \u03a9 t)))\n\nlocal instance point_limitConnected [GeometricallyConnected p] :\n    ConnectedSpace (pullback p (Spec.algebraMap k \u03a9) : Scheme.{u}) :=\n  GeometricallyConnected.connectedSpace_of_subsingleton (pullback.snd p (Spec.algebraMap k \u03a9))\n\nlocal instance point_stageConnected [GeometricallyConnected p] (s : Finset \u03a9) :\n    ConnectedSpace (((FieldLimit.schemeDiagram k \u03a9 p).obj (op s)).left) := by\n  change ConnectedSpace\n    (pullback (Spec.algebraMap k (FieldLimit.finiteField k \u03a9 s)) p : Scheme.{u})\n  exact GeometricallyConnected.connectedSpace_of_subsingleton\n    (pullback.fst (Spec.algebraMap k (FieldLimit.finiteField k \u03a9 s)) p)\n\nvariable [Algebra.IsAlgebraic k \u03a9]\n\ninclude w H in\n/-- A Galois cover with connected original extension has a rational lift at a\nfinite further field, on the same actual iterated cover and with unchanged order. -/\ntheorem exists_pointed_further_galois_stage\n    [GeometricallyConnected p] [ConnectedSpace U] [ConnectedSpace W]\n    (Z : FiniteEtale U) [IsGalois Z]\n    [ConnectedSpace ((baseChange v\u2080).obj Z).obj.left]\n    (x : Spec (.of k) \u27f6 U) (hx : x \u226b p = \ud835\udfd9 _)\n    (z : Spec (.of \u03a9) \u27f6 Z.obj.left)\n    (hz : z \u226b Z.obj.hom = Spec.algebraMap k \u03a9 \u226b x) :\n    \u2203 (t : Finset \u03a9),\n      let F := pointField k \u03a9 t\n      let g := pullback.fst p (Spec.algebraMap k F)\n      let ZF := (baseChange g).obj Z\n      \u2203 (xF : Spec (.of F) \u27f6 pointBase k \u03a9 p t) (zF : Spec (.of F) \u27f6 ZF.obj.left),\n        xF \u226b pullback.snd p (Spec.algebraMap k F) = \ud835\udfd9 _ \u2227\n        xF \u226b g = Spec.algebraMap k F \u226b x \u2227\n        zF \u226b ZF.obj.hom = xF \u2227\n        Spec.algebraMap F \u03a9 \u226b (zF \u226b pullback.fst Z.obj.hom g) = z \u2227\n        IsGalois ZF \u2227 Nat.card (Aut ZF) = Nat.card (Aut Z) := by\n  obtain \u27e8t, a, ha, he\u27e9 := exists_finite_field_point k \u03a9 Z.obj.hom x z hz\n  let F := pointField k \u03a9 t\n  let b := Spec.algebraMap k F\n  let g : pointBase k \u03a9 p t \u27f6 U := pullback.fst p b\n  let v := pointProjection k \u03a9 p v\u2080 w H t\n  let : ConnectedSpace U := GeometricallyConnected.connectedSpace_of_subsingleton p\n  let : ConnectedSpace (pointBase k \u03a9 p t) :=\n    GeometricallyConnected.connectedSpace_of_subsingleton (pullback.snd p b)\n  let : Surjective v := MorphismProperty.of_isPullback\n    (pointProjection_isPullback k \u03a9 p v\u2080 w H t).flip\n    (inferInstanceAs (Surjective (Spec.algebraMap F \u03a9)))\n  let : ConnectedSpace ((baseChange (v \u226b g)).obj Z).obj.left := by\n    rw [pointProjection_fst]\n    infer_instance\n  obtain \u27e8hG, hcard\u27e9 := galois_furtherStage g v Z\n  let xF : Spec (.of F) \u27f6 pointBase k \u03a9 p t :=\n    pullback.lift (b \u226b x) (\ud835\udfd9 _) (by\n      rw [Category.assoc, hx, Category.comp_id, Category.id_comp])\n  have hxF : xF \u226b g = b \u226b x := pullback.lift_fst _ _ _\n  let zF : Spec (.of F) \u27f6 ((baseChange g).obj Z).obj.left :=\n    pullback.lift a xF (ha.trans hxF.symm)\n  refine \u27e8t, xF, zF, pullback.lift_snd _ _ _, hxF, pullback.lift_snd _ _ _, ?_, hG, hcard\u27e9\n  have hzF : zF \u226b pullback.fst Z.obj.hom g = a := pullback.lift_fst _ _ _\n  exact (congrArg (fun q => Spec.algebraMap F \u03a9 \u226b q) hzF).trans he\n\nomit [Algebra.IsAlgebraic k \u03a9] in\n/-- The same iterated point-field base remains a native pullback of the original base. -/\ntheorem pointBase_original_isPullback\n    {X : Scheme.{u}} (p\u2080 : X \u27f6 Spec (.of k)) (s : Finset \u03a9)\n    (t : Finset \u03a9) :\n    let k\u2080 := FieldLimit.finiteField k \u03a9 s\n    let U\u2080 := ((FieldLimit.schemeDiagram k \u03a9 p\u2080).obj (op s)).left\n    let q\u2080 : U\u2080 \u27f6 Spec (.of k\u2080) := pullback.fst (Spec.algebraMap k k\u2080) p\u2080\n    let F := pointField k\u2080 \u03a9 t\n    IsPullback\n      (pullback.fst q\u2080 (Spec.algebraMap k\u2080 F) \u226b pullback.snd (Spec.algebraMap k k\u2080) p\u2080)\n      (pullback.snd q\u2080 (Spec.algebraMap k\u2080 F)) p\u2080 (Spec.algebraMap k F) := by\n  dsimp only\n  have h := (IsPullback.of_hasPullback\n    (pullback.fst (Spec.algebraMap k (FieldLimit.finiteField k \u03a9 s)) p\u2080)\n    (Spec.algebraMap (FieldLimit.finiteField k \u03a9 s)\n      (pointField (FieldLimit.finiteField k \u03a9 s) \u03a9 t))).paste_horiz\n        (IsPullback.of_hasPullback\n          (Spec.algebraMap k (FieldLimit.finiteField k \u03a9 s)) p\u2080).flip\n  have he : Spec.algebraMap (FieldLimit.finiteField k \u03a9 s)\n      (pointField (FieldLimit.finiteField k \u03a9 s) \u03a9 t) \u226b\n      Spec.algebraMap k (FieldLimit.finiteField k \u03a9 s) =\n      Spec.algebraMap k (pointField (FieldLimit.finiteField k \u03a9 s) \u03a9 t) := by\n    rw [\u2190 Spec.map_comp]\n    congr 1\n  exact he \u25b8 h\n\n/-- An original pointed Galois cover over an algebraic extension descends\nthrough two native finite field stages, preserving its order and prescribed point.\nThe second stage is the literal pullback of the first; no flattened cover is chosen. -/\ntheorem exists_qcqs_pointed_galois_cover\n    {X : Scheme.{u}} [CompactSpace X] [QuasiSeparatedSpace X]\n    (p\u2080 : X \u27f6 Spec (.of k)) [GeometricallyConnected p\u2080]\n    (x : Spec (.of k) \u27f6 X) (hx : x \u226b p\u2080 = \ud835\udfd9 _)\n    (Y : FiniteEtale (pullback p\u2080 (Spec.algebraMap k \u03a9))) [IsGalois Y]\n    (z : Spec (.of \u03a9) \u27f6 Y.obj.left)\n    (hz\u2081 : z \u226b Y.obj.hom \u226b pullback.fst p\u2080 (Spec.algebraMap k \u03a9) =\n      Spec.algebraMap k \u03a9 \u226b x)\n    (hz\u2082 : z \u226b Y.obj.hom \u226b pullback.snd p\u2080 (Spec.algebraMap k \u03a9) = \ud835\udfd9 _) :\n    \u2203 (s : Finset \u03a9)\n      (Z : FiniteEtale (((FieldLimit.schemeDiagram k \u03a9 p\u2080).obj (op s)).left))\n      (E : (baseChange (FieldLimit.fieldProjection k \u03a9 p\u2080 (op s))).obj Z \u2245 Y),\n      IsGalois Z \u2227 Nat.card (Aut Z) = Nat.card (Aut Y) \u2227\n      \u2203 (t : Finset \u03a9),\n        let k\u2080 := FieldLimit.finiteField k \u03a9 s\n        let q\u2080 := pullback.fst (Spec.algebraMap k k\u2080) p\u2080\n        let F := pointField k\u2080 \u03a9 t\n        let g := pullback.fst q\u2080 (Spec.algebraMap k\u2080 F)\n        let ZF := (baseChange g).obj Z\n        \u2203 (xF : Spec (.of F) \u27f6 pointBase k\u2080 \u03a9 q\u2080 t)\n          (zF : Spec (.of F) \u27f6 ZF.obj.left),\n          Module.Finite k F \u2227\n          IsPullback (g \u226b pullback.snd (Spec.algebraMap k k\u2080) p\u2080)\n            (pullback.snd q\u2080 (Spec.algebraMap k\u2080 F)) p\u2080 (Spec.algebraMap k F) \u2227\n          xF \u226b pullback.snd q\u2080 (Spec.algebraMap k\u2080 F) = \ud835\udfd9 _ \u2227\n          xF \u226b g \u226b pullback.snd (Spec.algebraMap k k\u2080) p\u2080 = Spec.algebraMap k F \u226b x \u2227\n          zF \u226b ZF.obj.hom = xF \u2227\n          Spec.algebraMap F \u03a9 \u226b (zF \u226b pullback.fst Z.obj.hom g) =\n            z \u226b E.inv.hom.left \u226b pullback.fst Z.obj.hom\n              (FieldLimit.fieldProjection k \u03a9 p\u2080 (op s)) \u2227\n          IsGalois ZF \u2227 Nat.card (Aut ZF) = Nat.card (Aut Y) \u2227\n          Nonempty ((baseChange (pointProjection k\u2080 \u03a9 q\u2080\n            (FieldLimit.fieldProjection k \u03a9 p\u2080 (op s))\n            (pullback.snd p\u2080 (Spec.algebraMap k \u03a9))\n            (fieldProjection_isPullback k \u03a9 p\u2080 s) t)).obj ZF \u2245 Y) := by\n  obtain \u27e8s, Z, hG, hcard, \u27e8E\u27e9\u27e9 := exists_qcqs_galois_cover k \u03a9 p\u2080 Y\n  let k\u2080 := FieldLimit.finiteField k \u03a9 s\n  let U\u2080 := ((FieldLimit.schemeDiagram k \u03a9 p\u2080).obj (op s)).left\n  let q\u2080 : U\u2080 \u27f6 Spec (.of k\u2080) := pullback.fst (Spec.algebraMap k k\u2080) p\u2080\n  let u\u2080 : U\u2080 \u27f6 X := pullback.snd (Spec.algebraMap k k\u2080) p\u2080\n  let v\u2080 : pullback p\u2080 (Spec.algebraMap k \u03a9) \u27f6 U\u2080 :=\n    FieldLimit.fieldProjection k \u03a9 p\u2080 (op s)\n  let w := pullback.snd p\u2080 (Spec.algebraMap k \u03a9)\n  let : GeometricallyConnected q\u2080 :=\n    inferInstanceAs (GeometricallyConnected (pullback.fst (Spec.algebraMap k k\u2080) p\u2080))\n  let : IsGalois Z := hG\n  let : ConnectedSpace (pullback p\u2080 (Spec.algebraMap k \u03a9) : Scheme.{u}) :=\n    GeometricallyConnected.connectedSpace_of_subsingleton w\n  let : ConnectedSpace Y.obj.left := Connectedness.connectedSpace_of_categoricalConnected Y\n  let eY : ((baseChange v\u2080).obj Z).obj.left \u2245 Y.obj.left :=\n    (forgetToScheme (pullback p\u2080 (Spec.algebraMap k \u03a9))).mapIso E\n  let : ConnectedSpace ((baseChange v\u2080).obj Z).obj.left :=\n    eY.inv.surjective.connectedSpace eY.inv.continuous\n  let x\u2080 : Spec (.of k\u2080) \u27f6 pullback (Spec.algebraMap k k\u2080) p\u2080 :=\n    pullback.lift (\ud835\udfd9 _) (Spec.algebraMap k k\u2080 \u226b x) (by\n      rw [Category.assoc, hx, Category.comp_id, Category.id_comp])\n  have hx\u2080 : x\u2080 \u226b q\u2080 = \ud835\udfd9 _ := pullback.lift_fst _ _ _\n  have hx\u2080u : x\u2080 \u226b u\u2080 = Spec.algebraMap k k\u2080 \u226b x := pullback.lift_snd _ _ _\n  let z\u2080 : Spec (.of \u03a9) \u27f6 Z.obj.left := z \u226b E.inv.hom.left \u226b pullback.fst Z.obj.hom v\u2080\n  have hpoint : (z \u226b Y.obj.hom) \u226b v\u2080 = Spec.algebraMap k\u2080 \u03a9 \u226b x\u2080 := by\n    have hv\u2081 : v\u2080 \u226b q\u2080 = w \u226b Spec.algebraMap k\u2080 \u03a9 := fieldProjection_field k \u03a9 p\u2080 s\n    have hv\u2082 : v\u2080 \u226b u\u2080 = pullback.fst p\u2080 (Spec.algebraMap k \u03a9) :=\n      FieldLimit.fieldProjection_base k \u03a9 p\u2080 (op s)\n    apply pullback.hom_ext\n    \u00b7 change ((z \u226b Y.obj.hom) \u226b v\u2080) \u226b q\u2080 = (Spec.algebraMap k\u2080 \u03a9 \u226b x\u2080) \u226b q\u2080\n      rw [Category.assoc, hv\u2081, \u2190 Category.assoc, Category.assoc z, hz\u2082,\n        Category.id_comp, Category.assoc, hx\u2080, Category.comp_id]\n    \u00b7 change ((z \u226b Y.obj.hom) \u226b v\u2080) \u226b u\u2080 = (Spec.algebraMap k\u2080 \u03a9 \u226b x\u2080) \u226b u\u2080\n      rw [Category.assoc, hv\u2082, Category.assoc z, hz\u2081, Category.assoc, hx\u2080u,\n        \u2190 Category.assoc, pointField_tower]\n  have hz\u2080 : z\u2080 \u226b Z.obj.hom = Spec.algebraMap k\u2080 \u03a9 \u226b x\u2080 := by\n    have hE : E.inv.hom.left \u226b pullback.snd Z.obj.hom v\u2080 = Y.obj.hom := Over.w E.inv.hom\n    have hsquare : (E.inv.hom.left \u226b pullback.fst Z.obj.hom v\u2080) \u226b Z.obj.hom =\n        Y.obj.hom \u226b v\u2080 :=\n      (Category.assoc _ _ _).trans\n        ((congrArg (fun a => E.inv.hom.left \u226b a)\n          (pullback.condition (f := Z.obj.hom) (g := v\u2080))).trans\n          ((Category.assoc _ _ _).symm.trans (congrArg (fun a => a \u226b v\u2080) hE)))\n    exact (Category.assoc _ _ _).trans\n      ((congrArg (fun a => z \u226b a) hsquare).trans\n        ((Category.assoc _ _ _).symm.trans hpoint))\n  obtain \u27e8t, xF, zF, hxF, hxFg, hzF, he, hGF, hcardF\u27e9 :=\n    exists_pointed_further_galois_stage k\u2080 \u03a9 q\u2080 v\u2080 w\n      (fieldProjection_isPullback k \u03a9 p\u2080 s) Z x\u2080 hx\u2080 z\u2080 hz\u2080\n  refine \u27e8s, Z, E, hG, hcard, t, xF, zF, ?_,\n    pointBase_original_isPullback k \u03a9 p\u2080 s t, hxF, ?_, hzF, he, hGF,\n    hcardF.trans hcard, ?_\u27e9\n  \u00b7 exact Module.Finite.trans k\u2080 (pointField k\u2080 \u03a9 t)\n  \u00b7 change xF \u226b pullback.fst q\u2080 (Spec.algebraMap k\u2080 (pointField k\u2080 \u03a9 t)) \u226b u\u2080 =\n      Spec.algebraMap k (pointField k\u2080 \u03a9 t) \u226b x\n    have htower : Spec.algebraMap k\u2080 (pointField k\u2080 \u03a9 t) \u226b Spec.algebraMap k k\u2080 =\n        Spec.algebraMap k (pointField k\u2080 \u03a9 t) := by\n      rw [\u2190 Spec.map_comp]\n      congr 1\n    exact (Category.assoc _ _ _).symm.trans\n      ((congrArg (fun a => a \u226b u\u2080) hxFg).trans\n        ((Category.assoc _ _ _).trans\n          ((congrArg (fun a => Spec.algebraMap k\u2080 (pointField k\u2080 \u03a9 t) \u226b a) hx\u2080u).trans\n            ((Category.assoc _ _ _).symm.trans (congrArg (fun a => a \u226b x) htower)))))\n  \u00b7 exact \u27e8pointCoverIso k\u2080 \u03a9 q\u2080 v\u2080 w\n      (fieldProjection_isPullback k \u03a9 p\u2080 s) t Z \u226a\u226b E\u27e9\n\nend AlgebraicGeometry.Scheme.FiniteEtale.FieldCoverDescent\n",
+      "v3_text": "/-\nCopyright (c) 2026 Aglib contributors. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: kangxyz\n-/\nmodule\n\npublic import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.FiniteFieldGalois\npublic import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.FiniteFieldPoint\n\n/-! # Pointed Galois descent through actual finite field stages\n\nA descended cover is pulled back once more to the finite field of definition\nof its prescribed point. Connectedness of this particular pullback is reflected\nfrom the original extension-valued cover; no unconditional field-invariance\nclaim for Galois covers is used.\n-/\n\n@[expose] public noncomputable section\n\nopen CategoryTheory CategoryTheory.Limits CategoryTheory.PreGaloisCategory Opposite\n\nnamespace AlgebraicGeometry.Scheme.FiniteEtale.FieldCoverDescent\n\nuniverse u\n\n/-- The original finite cover remains Galois with unchanged order after a\nparticular base change whose further surjective pullback is connected. -/\nprivate theorem galois_furtherStage {U V W : Scheme.{u}}\n    [ConnectedSpace U] [ConnectedSpace V]\n    (g : V \u27f6 U) (v : W \u27f6 V) [Surjective v]\n    (Z : FiniteEtale U) [IsGalois Z]\n    [ConnectedSpace ((baseChange (v \u226b g)).obj Z).obj.left] :\n    IsGalois ((baseChange g).obj Z) \u2227\n      Nat.card (Aut ((baseChange g).obj Z)) = Nat.card (Aut Z) := by\n  let ZF := (baseChange g).obj Z\n  let e : ((baseChange (v \u226b g)).obj Z).obj.left \u2245\n      ((baseChange v).obj ZF).obj.left :=\n    (forgetToScheme W).mapIso ((baseChangeComp g v).app Z)\n  let : ConnectedSpace ((baseChange v).obj ZF).obj.left :=\n    e.hom.surjective.connectedSpace e.hom.continuous\n  let : ConnectedSpace (pullback ZF.obj.hom v : Scheme.{u}) :=\n    inferInstanceAs (ConnectedSpace ((baseChange v).obj ZF).obj.left)\n  let : ConnectedSpace ZF.obj.left :=\n    (pullback.fst ZF.obj.hom v).surjective.connectedSpace (pullback.fst ZF.obj.hom v).continuous\n  exact \u27e8baseChange_isGalois_of_connected g Z, baseChange_card_aut_of_connected g Z\u27e9\n\nvariable (k \u03a9 : Type u) [Field k] [Field \u03a9] [Algebra k \u03a9]\n  {U W : Scheme.{u}} (p : U \u27f6 Spec (.of k))\n  (v\u2080 : W \u27f6 U) (w : W \u27f6 Spec (.of \u03a9))\n  (H : IsPullback v\u2080 w p (Spec.algebraMap k \u03a9))\n\n/-- The single further-stage field. -/\nabbrev pointField (t : Finset \u03a9) := FieldLimit.finiteField k \u03a9 t\n\n/-- The single further-stage base scheme. -/\nabbrev pointBase (t : Finset \u03a9) : Scheme.{u} :=\n  pullback p (Spec.algebraMap k (pointField k \u03a9 t))\n\nprivate theorem pointField_tower (t : Finset \u03a9) :\n    Spec.algebraMap (pointField k \u03a9 t) \u03a9 \u226b Spec.algebraMap k (pointField k \u03a9 t) =\n      Spec.algebraMap k \u03a9 := by\n  rw [\u2190 Spec.map_comp]\n  congr 1\n\n/-- The original extension scheme maps to the native further-stage pullback. -/\ndef pointProjection (t : Finset \u03a9) : W \u27f6 pointBase k \u03a9 p t :=\n  pullback.lift v\u2080 (w \u226b Spec.algebraMap (pointField k \u03a9 t) \u03a9) (by\n    rw [Category.assoc, pointField_tower]\n    exact H.w)\n\n@[reassoc] theorem pointProjection_fst (t : Finset \u03a9) :\n    pointProjection k \u03a9 p v\u2080 w H t \u226b\n      pullback.fst p (Spec.algebraMap k (pointField k \u03a9 t)) = v\u2080 :=\n  pullback.lift_fst _ _ _\n\n@[reassoc] theorem pointProjection_snd (t : Finset \u03a9) :\n    pointProjection k \u03a9 p v\u2080 w H t \u226b\n      pullback.snd p (Spec.algebraMap k (pointField k \u03a9 t)) =\n        w \u226b Spec.algebraMap (pointField k \u03a9 t) \u03a9 := pullback.lift_snd _ _ _\n\n/-- This original projection is an actual field-base-change square. -/\ntheorem pointProjection_isPullback (t : Finset \u03a9) :\n    IsPullback (pointProjection k \u03a9 p v\u2080 w H t) w\n      (pullback.snd p (Spec.algebraMap k (pointField k \u03a9 t)))\n      (Spec.algebraMap (pointField k \u03a9 t) \u03a9) := by\n  apply IsPullback.of_right (h\u2081\u2082 := pullback.fst p\n    (Spec.algebraMap k (pointField k \u03a9 t)))\n    (h\u2082\u2082 := Spec.algebraMap k (pointField k \u03a9 t))\n  \u00b7 rw [pointProjection_fst, pointField_tower]\n    exact H\n  \u00b7 exact pointProjection_snd k \u03a9 p v\u2080 w H t\n  \u00b7 exact IsPullback.of_hasPullback _ _\n\n/-- The native reconstruction of the same cover across the further point field. -/\ndef pointCoverIso (t : Finset \u03a9) (Z : FiniteEtale U) :\n    (baseChange (pointProjection k \u03a9 p v\u2080 w H t)).obj\n      ((baseChange (pullback.fst p (Spec.algebraMap k (pointField k \u03a9 t)))).obj Z) \u2245\n      (baseChange v\u2080).obj Z :=\n  ((baseChangeComp (pullback.fst p (Spec.algebraMap k (pointField k \u03a9 t)))\n    (pointProjection k \u03a9 p v\u2080 w H t)).app Z).symm \u226a\u226b\n      eqToIso (congrArg (fun g => (baseChange g).obj Z)\n        (pointProjection_fst k \u03a9 p v\u2080 w H t))\n\nlocal instance point_baseConnected [GeometricallyConnected p] (t : Finset \u03a9) :\n    ConnectedSpace (pointBase k \u03a9 p t) :=\n  GeometricallyConnected.connectedSpace_of_subsingleton\n    (pullback.snd p (Spec.algebraMap k (pointField k \u03a9 t)))\n\nlocal instance point_limitConnected [GeometricallyConnected p] :\n    ConnectedSpace (pullback p (Spec.algebraMap k \u03a9) : Scheme.{u}) :=\n  GeometricallyConnected.connectedSpace_of_subsingleton (pullback.snd p (Spec.algebraMap k \u03a9))\n\nlocal instance point_stageConnected [GeometricallyConnected p] (s : Finset \u03a9) :\n    ConnectedSpace (((FieldLimit.schemeDiagram k \u03a9 p).obj (op s)).left) := by\n  change ConnectedSpace\n    (pullback (Spec.algebraMap k (FieldLimit.finiteField k \u03a9 s)) p : Scheme.{u})\n  exact GeometricallyConnected.connectedSpace_of_subsingleton\n    (pullback.fst (Spec.algebraMap k (FieldLimit.finiteField k \u03a9 s)) p)\n\nvariable [Algebra.IsAlgebraic k \u03a9]\n\ninclude w H in\n/-- A Galois cover with connected original extension has a rational lift at a\nfinite further field, on the same actual iterated cover and with unchanged order. -/\ntheorem exists_pointed_further_galois_stage\n    [GeometricallyConnected p] [ConnectedSpace U]\n    (Z : FiniteEtale U) [IsGalois Z]\n    [ConnectedSpace ((baseChange v\u2080).obj Z).obj.left]\n    (x : Spec (.of k) \u27f6 U) (hx : x \u226b p = \ud835\udfd9 _)\n    (z : Spec (.of \u03a9) \u27f6 Z.obj.left)\n    (hz : z \u226b Z.obj.hom = Spec.algebraMap k \u03a9 \u226b x) :\n    \u2203 (t : Finset \u03a9),\n      let F := pointField k \u03a9 t\n      let g := pullback.fst p (Spec.algebraMap k F)\n      let ZF := (baseChange g).obj Z\n      \u2203 (xF : Spec (.of F) \u27f6 pointBase k \u03a9 p t) (zF : Spec (.of F) \u27f6 ZF.obj.left),\n        xF \u226b pullback.snd p (Spec.algebraMap k F) = \ud835\udfd9 _ \u2227\n        xF \u226b g = Spec.algebraMap k F \u226b x \u2227\n        zF \u226b ZF.obj.hom = xF \u2227\n        Spec.algebraMap F \u03a9 \u226b (zF \u226b pullback.fst Z.obj.hom g) = z \u2227\n        IsGalois ZF \u2227 Nat.card (Aut ZF) = Nat.card (Aut Z) := by\n  obtain \u27e8t, a, ha, he\u27e9 := exists_finite_field_point k \u03a9 Z.obj.hom x z hz\n  let F := pointField k \u03a9 t\n  let b := Spec.algebraMap k F\n  let g : pointBase k \u03a9 p t \u27f6 U := pullback.fst p b\n  let v := pointProjection k \u03a9 p v\u2080 w H t\n  let : ConnectedSpace U := GeometricallyConnected.connectedSpace_of_subsingleton p\n  let : ConnectedSpace (pointBase k \u03a9 p t) :=\n    GeometricallyConnected.connectedSpace_of_subsingleton (pullback.snd p b)\n  let : Surjective v := MorphismProperty.of_isPullback\n    (pointProjection_isPullback k \u03a9 p v\u2080 w H t).flip\n    (inferInstanceAs (Surjective (Spec.algebraMap F \u03a9)))\n  let : ConnectedSpace ((baseChange (v \u226b g)).obj Z).obj.left := by\n    rw [pointProjection_fst]\n    infer_instance\n  obtain \u27e8hG, hcard\u27e9 := galois_furtherStage g v Z\n  let xF : Spec (.of F) \u27f6 pointBase k \u03a9 p t :=\n    pullback.lift (b \u226b x) (\ud835\udfd9 _) (by\n      rw [Category.assoc, hx, Category.comp_id, Category.id_comp])\n  have hxF : xF \u226b g = b \u226b x := pullback.lift_fst _ _ _\n  let zF : Spec (.of F) \u27f6 ((baseChange g).obj Z).obj.left :=\n    pullback.lift a xF (ha.trans hxF.symm)\n  refine \u27e8t, xF, zF, pullback.lift_snd _ _ _, hxF, pullback.lift_snd _ _ _, ?_, hG, hcard\u27e9\n  have hzF : zF \u226b pullback.fst Z.obj.hom g = a := pullback.lift_fst _ _ _\n  exact (congrArg (fun q => Spec.algebraMap F \u03a9 \u226b q) hzF).trans he\n\nomit [Algebra.IsAlgebraic k \u03a9] in\n/-- The same iterated point-field base remains a native pullback of the original base. -/\ntheorem pointBase_original_isPullback\n    {X : Scheme.{u}} (p\u2080 : X \u27f6 Spec (.of k)) (s : Finset \u03a9)\n    (t : Finset \u03a9) :\n    let k\u2080 := FieldLimit.finiteField k \u03a9 s\n    let U\u2080 := ((FieldLimit.schemeDiagram k \u03a9 p\u2080).obj (op s)).left\n    let q\u2080 : U\u2080 \u27f6 Spec (.of k\u2080) := pullback.fst (Spec.algebraMap k k\u2080) p\u2080\n    let F := pointField k\u2080 \u03a9 t\n    IsPullback\n      (pullback.fst q\u2080 (Spec.algebraMap k\u2080 F) \u226b pullback.snd (Spec.algebraMap k k\u2080) p\u2080)\n      (pullback.snd q\u2080 (Spec.algebraMap k\u2080 F)) p\u2080 (Spec.algebraMap k F) := by\n  dsimp only\n  have h := (IsPullback.of_hasPullback\n    (pullback.fst (Spec.algebraMap k (FieldLimit.finiteField k \u03a9 s)) p\u2080)\n    (Spec.algebraMap (FieldLimit.finiteField k \u03a9 s)\n      (pointField (FieldLimit.finiteField k \u03a9 s) \u03a9 t))).paste_horiz\n        (IsPullback.of_hasPullback\n          (Spec.algebraMap k (FieldLimit.finiteField k \u03a9 s)) p\u2080).flip\n  have he : Spec.algebraMap (FieldLimit.finiteField k \u03a9 s)\n      (pointField (FieldLimit.finiteField k \u03a9 s) \u03a9 t) \u226b\n      Spec.algebraMap k (FieldLimit.finiteField k \u03a9 s) =\n      Spec.algebraMap k (pointField (FieldLimit.finiteField k \u03a9 s) \u03a9 t) := by\n    rw [\u2190 Spec.map_comp]\n    congr 1\n  exact he \u25b8 h\n\n/-- An original pointed Galois cover over an algebraic extension descends\nthrough two native finite field stages, preserving its order and prescribed point.\nThe second stage is the literal pullback of the first; no flattened cover is chosen. -/\ntheorem exists_qcqs_pointed_galois_cover\n    {X : Scheme.{u}} [CompactSpace X] [QuasiSeparatedSpace X]\n    (p\u2080 : X \u27f6 Spec (.of k)) [GeometricallyConnected p\u2080]\n    (x : Spec (.of k) \u27f6 X) (hx : x \u226b p\u2080 = \ud835\udfd9 _)\n    (Y : FiniteEtale (pullback p\u2080 (Spec.algebraMap k \u03a9))) [IsGalois Y]\n    (z : Spec (.of \u03a9) \u27f6 Y.obj.left)\n    (hz\u2081 : z \u226b Y.obj.hom \u226b pullback.fst p\u2080 (Spec.algebraMap k \u03a9) =\n      Spec.algebraMap k \u03a9 \u226b x)\n    (hz\u2082 : z \u226b Y.obj.hom \u226b pullback.snd p\u2080 (Spec.algebraMap k \u03a9) = \ud835\udfd9 _) :\n    \u2203 (s : Finset \u03a9)\n      (Z : FiniteEtale (((FieldLimit.schemeDiagram k \u03a9 p\u2080).obj (op s)).left))\n      (E : (baseChange (FieldLimit.fieldProjection k \u03a9 p\u2080 (op s))).obj Z \u2245 Y),\n      IsGalois Z \u2227 Nat.card (Aut Z) = Nat.card (Aut Y) \u2227\n      \u2203 (t : Finset \u03a9),\n        let k\u2080 := FieldLimit.finiteField k \u03a9 s\n        let q\u2080 := pullback.fst (Spec.algebraMap k k\u2080) p\u2080\n        let F := pointField k\u2080 \u03a9 t\n        let g := pullback.fst q\u2080 (Spec.algebraMap k\u2080 F)\n        let ZF := (baseChange g).obj Z\n        \u2203 (xF : Spec (.of F) \u27f6 pointBase k\u2080 \u03a9 q\u2080 t)\n          (zF : Spec (.of F) \u27f6 ZF.obj.left),\n          Module.Finite k F \u2227\n          IsPullback (g \u226b pullback.snd (Spec.algebraMap k k\u2080) p\u2080)\n            (pullback.snd q\u2080 (Spec.algebraMap k\u2080 F)) p\u2080 (Spec.algebraMap k F) \u2227\n          xF \u226b pullback.snd q\u2080 (Spec.algebraMap k\u2080 F) = \ud835\udfd9 _ \u2227\n          xF \u226b g \u226b pullback.snd (Spec.algebraMap k k\u2080) p\u2080 = Spec.algebraMap k F \u226b x \u2227\n          zF \u226b ZF.obj.hom = xF \u2227\n          Spec.algebraMap F \u03a9 \u226b (zF \u226b pullback.fst Z.obj.hom g) =\n            z \u226b E.inv.hom.left \u226b pullback.fst Z.obj.hom\n              (FieldLimit.fieldProjection k \u03a9 p\u2080 (op s)) \u2227\n          IsGalois ZF \u2227 Nat.card (Aut ZF) = Nat.card (Aut Y) \u2227\n          Nonempty ((baseChange (pointProjection k\u2080 \u03a9 q\u2080\n            (FieldLimit.fieldProjection k \u03a9 p\u2080 (op s))\n            (pullback.snd p\u2080 (Spec.algebraMap k \u03a9))\n            (fieldProjection_isPullback k \u03a9 p\u2080 s) t)).obj ZF \u2245 Y) := by\n  obtain \u27e8s, Z, hG, hcard, \u27e8E\u27e9\u27e9 := exists_qcqs_galois_cover k \u03a9 p\u2080 Y\n  let k\u2080 := FieldLimit.finiteField k \u03a9 s\n  let U\u2080 := ((FieldLimit.schemeDiagram k \u03a9 p\u2080).obj (op s)).left\n  let q\u2080 : U\u2080 \u27f6 Spec (.of k\u2080) := pullback.fst (Spec.algebraMap k k\u2080) p\u2080\n  let u\u2080 : U\u2080 \u27f6 X := pullback.snd (Spec.algebraMap k k\u2080) p\u2080\n  let v\u2080 : pullback p\u2080 (Spec.algebraMap k \u03a9) \u27f6 U\u2080 :=\n    FieldLimit.fieldProjection k \u03a9 p\u2080 (op s)\n  let w := pullback.snd p\u2080 (Spec.algebraMap k \u03a9)\n  let : GeometricallyConnected q\u2080 :=\n    inferInstanceAs (GeometricallyConnected (pullback.fst (Spec.algebraMap k k\u2080) p\u2080))\n  let : IsGalois Z := hG\n  let : ConnectedSpace (pullback p\u2080 (Spec.algebraMap k \u03a9) : Scheme.{u}) :=\n    GeometricallyConnected.connectedSpace_of_subsingleton w\n  let : ConnectedSpace Y.obj.left := Connectedness.connectedSpace_of_categoricalConnected Y\n  let eY : ((baseChange v\u2080).obj Z).obj.left \u2245 Y.obj.left :=\n    (forgetToScheme (pullback p\u2080 (Spec.algebraMap k \u03a9))).mapIso E\n  let : ConnectedSpace ((baseChange v\u2080).obj Z).obj.left :=\n    eY.inv.surjective.connectedSpace eY.inv.continuous\n  let x\u2080 : Spec (.of k\u2080) \u27f6 pullback (Spec.algebraMap k k\u2080) p\u2080 :=\n    pullback.lift (\ud835\udfd9 _) (Spec.algebraMap k k\u2080 \u226b x) (by\n      rw [Category.assoc, hx, Category.comp_id, Category.id_comp])\n  have hx\u2080 : x\u2080 \u226b q\u2080 = \ud835\udfd9 _ := pullback.lift_fst _ _ _\n  have hx\u2080u : x\u2080 \u226b u\u2080 = Spec.algebraMap k k\u2080 \u226b x := pullback.lift_snd _ _ _\n  let z\u2080 : Spec (.of \u03a9) \u27f6 Z.obj.left := z \u226b E.inv.hom.left \u226b pullback.fst Z.obj.hom v\u2080\n  have hpoint : (z \u226b Y.obj.hom) \u226b v\u2080 = Spec.algebraMap k\u2080 \u03a9 \u226b x\u2080 := by\n    have hv\u2081 : v\u2080 \u226b q\u2080 = w \u226b Spec.algebraMap k\u2080 \u03a9 := fieldProjection_field k \u03a9 p\u2080 s\n    have hv\u2082 : v\u2080 \u226b u\u2080 = pullback.fst p\u2080 (Spec.algebraMap k \u03a9) :=\n      FieldLimit.fieldProjection_base k \u03a9 p\u2080 (op s)\n    apply pullback.hom_ext\n    \u00b7 change ((z \u226b Y.obj.hom) \u226b v\u2080) \u226b q\u2080 = (Spec.algebraMap k\u2080 \u03a9 \u226b x\u2080) \u226b q\u2080\n      rw [Category.assoc, hv\u2081, \u2190 Category.assoc, Category.assoc z, hz\u2082,\n        Category.id_comp, Category.assoc, hx\u2080, Category.comp_id]\n    \u00b7 change ((z \u226b Y.obj.hom) \u226b v\u2080) \u226b u\u2080 = (Spec.algebraMap k\u2080 \u03a9 \u226b x\u2080) \u226b u\u2080\n      rw [Category.assoc, hv\u2082, Category.assoc z, hz\u2081, Category.assoc, hx\u2080u,\n        \u2190 Category.assoc, pointField_tower]\n  have hz\u2080 : z\u2080 \u226b Z.obj.hom = Spec.algebraMap k\u2080 \u03a9 \u226b x\u2080 := by\n    have hE : E.inv.hom.left \u226b pullback.snd Z.obj.hom v\u2080 = Y.obj.hom := Over.w E.inv.hom\n    have hsquare : (E.inv.hom.left \u226b pullback.fst Z.obj.hom v\u2080) \u226b Z.obj.hom =\n        Y.obj.hom \u226b v\u2080 :=\n      (Category.assoc _ _ _).trans\n        ((congrArg (fun a => E.inv.hom.left \u226b a)\n          (pullback.condition (f := Z.obj.hom) (g := v\u2080))).trans\n          ((Category.assoc _ _ _).symm.trans (congrArg (fun a => a \u226b v\u2080) hE)))\n    exact (Category.assoc _ _ _).trans\n      ((congrArg (fun a => z \u226b a) hsquare).trans\n        ((Category.assoc _ _ _).symm.trans hpoint))\n  obtain \u27e8t, xF, zF, hxF, hxFg, hzF, he, hGF, hcardF\u27e9 :=\n    exists_pointed_further_galois_stage k\u2080 \u03a9 q\u2080 v\u2080 w\n      (fieldProjection_isPullback k \u03a9 p\u2080 s) Z x\u2080 hx\u2080 z\u2080 hz\u2080\n  refine \u27e8s, Z, E, hG, hcard, t, xF, zF, ?_,\n    pointBase_original_isPullback k \u03a9 p\u2080 s t, hxF, ?_, hzF, he, hGF,\n    hcardF.trans hcard, ?_\u27e9\n  \u00b7 exact Module.Finite.trans k\u2080 (pointField k\u2080 \u03a9 t)\n  \u00b7 change xF \u226b pullback.fst q\u2080 (Spec.algebraMap k\u2080 (pointField k\u2080 \u03a9 t)) \u226b u\u2080 =\n      Spec.algebraMap k (pointField k\u2080 \u03a9 t) \u226b x\n    have htower : Spec.algebraMap k\u2080 (pointField k\u2080 \u03a9 t) \u226b Spec.algebraMap k k\u2080 =\n        Spec.algebraMap k (pointField k\u2080 \u03a9 t) := by\n      rw [\u2190 Spec.map_comp]\n      congr 1\n    exact (Category.assoc _ _ _).symm.trans\n      ((congrArg (fun a => a \u226b u\u2080) hxFg).trans\n        ((Category.assoc _ _ _).trans\n          ((congrArg (fun a => Spec.algebraMap k\u2080 (pointField k\u2080 \u03a9 t) \u226b a) hx\u2080u).trans\n            ((Category.assoc _ _ _).symm.trans (congrArg (fun a => a \u226b x) htower)))))\n  \u00b7 exact \u27e8pointCoverIso k\u2080 \u03a9 q\u2080 v\u2080 w\n      (fieldProjection_isPullback k \u03a9 p\u2080 s) t Z \u226a\u226b E\u27e9\n\nend AlgebraicGeometry.Scheme.FiniteEtale.FieldCoverDescent\n",
+      "diff": "--- V2/Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/Descent/FiniteFieldPointedGalois.lean\n+++ V3/Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/Descent/FiniteFieldPointedGalois.lean\n@@ -124,7 +124,7 @@\n /-- A Galois cover with connected original extension has a rational lift at a\n finite further field, on the same actual iterated cover and with unchanged order. -/\n theorem exists_pointed_further_galois_stage\n-    [GeometricallyConnected p] [ConnectedSpace U] [ConnectedSpace W]\n+    [GeometricallyConnected p] [ConnectedSpace U]\n     (Z : FiniteEtale U) [IsGalois Z]\n     [ConnectedSpace ((baseChange v\u2080).obj Z).obj.left]\n     (x : Spec (.of k) \u27f6 U) (hx : x \u226b p = \ud835\udfd9 _)\n"
+    }
+  ]
+}

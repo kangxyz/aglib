@@ -126,7 +126,7 @@ theorem ringSectionsTensorAlgHom_bijective_of_flat_of_isPullback
 
 /-- The algebra equivalence has the literal tensor comparison as its forward
 map; its inverse is obtained only after proving that same map bijective. -/
-def ringSectionsTensorAlgEquiv_of_flat_of_isPullback
+def ringSectionsTensorAlgEquivOfFlatOfIsPullback
     (q : Y ⟶ Spec (.of B)) (f : X ⟶ Spec (.of A))
     [QuasiCompact f] [QuasiSeparated f]
     (H : IsPullback p q f (Spec.map (CommRingCat.ofHom σ))) (hflat : σ.Flat) :

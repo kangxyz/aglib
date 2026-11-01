@@ -29,6 +29,7 @@ variable (R Ω : Type u) [CommRing R] [IsLocalRing R] [Field Ω] [Algebra R Ω]
 
 local notation "C" => GeometricEtaleColimit R Ω
 
+/-- The algebra structure on `Ω` induced by the residue ring homomorphism. -/
 local instance residueAlgebra : Algebra C Ω := (residue R Ω).toRingHom.toAlgebra
 
 local instance residueTower : IsScalarTower R C Ω :=

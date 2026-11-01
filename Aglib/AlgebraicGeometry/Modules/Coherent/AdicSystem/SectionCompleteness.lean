@@ -39,7 +39,7 @@ theorem idealSheafSectionCone_finiteLocallyFree_isLimit
   let := hmono
   obtain ⟨h₂⟩ := idealSheafSectionCone_finiteFree_isLimit X K I hunit
   obtain ⟨h₃⟩ := idealSheafSectionCone_finiteFree_isLimit X K J hunit
-  exact ⟨idealSheafSectionCone_isLimit_of_universallyExact X K
+  exact ⟨idealSheafSectionConeIsLimitOfUniversallyExact X K
     (ShortComplex.mk i d w) hex hbase h₂ h₃⟩
 
 end AlgebraicGeometry.Scheme.Modules.Coherent

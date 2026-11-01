@@ -38,10 +38,17 @@ variable {X S T : Scheme.{u}} {f : X ⟶ S} [QuasiCompact f]
   [HasDerivedCategory.{wR} (ModuleSheaf (pullback b C.p) Λ)]
   [HasDerivedCategory.{wN} (ModuleSheaf (Hom.DenseCompactification.baseChangeObj b C).Xbar Λ)]
 
+/-- Derived-category instance on module sheaves over `(C.toCompactification.baseChange b).Xbar`,
+using the instance on `(pullback b C.p)`.
+-/
 local instance : HasDerivedCategory.{wR}
     (ModuleSheaf (C.toCompactification.baseChange b).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wR} (ModuleSheaf (pullback b C.p) Λ))
 
+/-- Derived-category instance on module sheaves over `(Hom.Compactification.densify
+(C.toCompactification.baseChange b)).Xbar`, using the instance on
+`(Hom.DenseCompactification.baseChangeObj b C).Xbar`.
+-/
 local instance : HasDerivedCategory.{wN}
     (ModuleSheaf (Hom.Compactification.densify (C.toCompactification.baseChange b)).Xbar Λ) :=
   inferInstanceAs (HasDerivedCategory.{wN}

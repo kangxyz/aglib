@@ -1,0 +1,82 @@
+{
+  "question": "Actual direct supplier deltas for D417, MAIN vs publication; transitive closure not yet established",
+  "supplier_count": 193,
+  "changed": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/ProperOpen/Mate.lean",
+      "main": "4f99a49c3026fcc7a4aa21d6977840812ea26dab2eb600f89f0de4ae8e85bbf3",
+      "pub": "169dcfdb9e265855612860dc7eb2606a155844f8337bc9a54c6fdf668e9a6218",
+      "consumers": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRightUnitFace.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBaseChangeCube.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/ProperOpen/ToDirectImageCompatibility.lean"
+      ],
+      "admitted1714": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoPasting.lean",
+      "main": "6bf4da6f9e8ea86e6cdecfd88e9c7b3586621c03f866a3cf50c66c554f7a1174",
+      "pub": "d6b77f1fc0479261fb3aebf57f5eb9f1b229de32889c1839b071134c05cf300e",
+      "consumers": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCRawSource.lean"
+      ],
+      "admitted1714": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChange.lean",
+      "main": "b8230d49feda69fbcf0e9f22d9cd1db2cd7296258c4cfa272b8d2e4080893b68",
+      "pub": "0435a22e99c9a1e7752365858bc75e29e1cdcf38e4ac17752be9bb6948087a45",
+      "consumers": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/NormalizedToDirectImageBaseChange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedTargetModels.lean"
+      ],
+      "admitted1714": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoCompatibility.lean",
+      "main": "92aaaa83316f8031a7b9cc336831ed29c3ad7ed4c38d3fe7e2c5c992cda74ae1",
+      "pub": "f25726db5da7cda0f54cb0092a90b852ffd05f0cda08717d17d187c8a91bed62",
+      "consumers": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoIdentity.lean"
+      ],
+      "admitted1714": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoPasting.lean",
+      "main": "129375f2d866cb34cade906e4c9bb5ccc34ef04036f88e83978f663b0837754d",
+      "pub": "5c92e208b34065dbba163af21ff7745e4dd1ac2b914c526c4b20dd98aa118dae",
+      "consumers": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCRawSource.lean"
+      ],
+      "admitted1714": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIdentityBaseChange.lean",
+      "main": "7c03b4699bf6521cf996bda267c4f883245bf0a2169cdcc0373f813f0a42d9da",
+      "pub": "60fb5a1effda09d1c7102813eb8d2592aed44e2f7c77325895ed5d9df1175527",
+      "consumers": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawBaseIdentityModel.lean"
+      ],
+      "admitted1714": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/IdentitySourceModel.lean",
+      "main": "c394f505298016cc1af1d6722805a8b154ea767864d5e1abad24cefd309a5d48",
+      "pub": "94ee2f95c1cf1916e3057d9bba062516ade786b67e4a58c8e0f962c5e073e1db",
+      "consumers": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawBaseIdentityModel.lean"
+      ],
+      "admitted1714": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoExchange.lean",
+      "main": "fad5c48f9682c438e844aa002533a8452ec2e83e6cdcc093d8d597723d6cc49c",
+      "pub": "f48387f2344d8fbe2eff454557e37c58ef8d8cb827c945d01a3956981a9f0eb7",
+      "consumers": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceToDirectImage.lean"
+      ],
+      "admitted1714": true
+    }
+  ],
+  "boundary": "Compare exact changed impacts against existing graph before native coverage claims."
+}

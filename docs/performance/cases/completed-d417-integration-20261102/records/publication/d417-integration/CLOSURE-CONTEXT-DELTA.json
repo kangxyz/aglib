@@ -1,0 +1,462 @@
+{
+  "question": "D417 affected Aglib closure from cached graph, current admitted1714 headers, and only reached missing-header fills",
+  "reachable_nodes": 4665,
+  "new_header_fills": [
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Coefficients/ScalarRestriction.lean",
+    "Aglib/Algebra/Category/ModuleCat/Sheaf/ConstantRing/ScalarRestriction.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleScalarRestriction.lean",
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange.lean",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/Composition.lean",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/OpenRestriction.lean",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/CompositionRestriction.lean",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/CompositionRefinement.lean"
+  ],
+  "missing": [],
+  "context_differences": [
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology.lean",
+      "main": "1415e7aebafab74f3f093c90534942e306b9084482d9c6393fb71b8ad9482db3",
+      "pub": "356689695cc48d6e37fc8c3e7c8134d7c04bf1a5e7d354fff19ef259f0cffd84",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "-  moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso f M I",
+        "+  moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso f M I",
+        "-  moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_of_counit_quasiIso f M I",
+        "+  moduleDerivedPushforwardSingleAffineSectionsLinearEquivOfCounitQuasiIso f M I",
+        "-  moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso f M I",
+        "+  moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso f M I"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/CounitDegreeZero.lean",
+      "main": "028bc91831b430d76907e130522f459edc4c301404cc8b84931d4e2b2546f074",
+      "pub": "2d0289c6c90b63b541bdd8bb8dcbade8c633395b639b305a75ebf5da3e034ca8",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "-        moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso f M I hI 0 =",
+        "+        moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso f M I hI 0 =",
+        "-  let A := moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso f M I hI 0",
+        "+  let A := moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso f M I hI 0",
+        "-        (moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso f M I hI 0",
+        "+        (moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso f M I hI 0",
+        "-  have hE : moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso f M I hI 0",
+        "+  have hE : moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso f M I hI 0",
+        "-    change moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso f M I hI 0",
+        "+    change moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso f M I hI 0",
+        "-          (moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso f M I hI 0",
+        "+          (moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso f M I hI 0"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/CounitNaturality.lean",
+      "main": "6897281126e0a0e6e709e1d7d1ef3cbcfe2e0e1b564933c6f627c2b29b766bf1",
+      "pub": "1ea57facfde2ad1fbe7023821bde152a8626ed56fde1cdb4030bdef07ff12eac",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "-    moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso f M I hI n x =",
+        "+    moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso f M I hI n x =",
+        "-              (moduleHigherDirectImageAffineIso_of_counit_quasiIso f M I hI n).hom x))) := rfl",
+        "+              (moduleHigherDirectImageAffineIsoOfCounitQuasiIso f M I hI n).hom x))) := rfl",
+        "-def moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_of_counit_quasiIso",
+        "+def moduleDerivedPushforwardSingleAffineSectionsLinearEquivOfCounitQuasiIso",
+        "-    |>.trans (moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso f M I hI n)",
+        "+    |>.trans (moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso f M I hI n)",
+        "-        (moduleHigherDirectImageAffineIso_of_counit_quasiIso f N J hJ n).hom =",
+        "-      (moduleHigherDirectImageAffineIso_of_counit_quasiIso f M I hI n).hom \u226b",
+        "+        (moduleHigherDirectImageAffineIsoOfCounitQuasiIso f N J hJ n).hom =",
+        "+      (moduleHigherDirectImageAffineIsoOfCounitQuasiIso f M I hI n).hom \u226b"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/SectionsCounitHomology.lean",
+      "main": "b3d6b8dfda738e166e275d41a4136c0aebc196ae01efc657026b097c63f9d2bb",
+      "pub": "1b3f8a7ea0028d7df561faf9c3a83888c814791b79df1b13df53e2fcccfb7f68",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "-def moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso (I : InjectiveResolution M)",
+        "+def moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso (I : InjectiveResolution M)",
+        "-  moduleSpec\u0393Functor.map (moduleHigherDirectImageAffineIso_of_counit_quasiIso f M I hI n).hom \u226b",
+        "+  moduleSpec\u0393Functor.map (moduleHigherDirectImageAffineIsoOfCounitQuasiIso f M I hI n).hom \u226b",
+        "-    IsIso (moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso f M I hI n) := by",
+        "-  dsimp only [moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso]",
+        "+    IsIso (moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso f M I hI n) := by",
+        "+  dsimp only [moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso]",
+        "-    moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso f M I hI n \u226b",
+        "+    moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso f M I hI n \u226b",
+        "-  change moduleSpec\u0393Functor.map (moduleHigherDirectImageAffineIso_of_counit_quasiIso",
+        "+  change moduleSpec\u0393Functor.map (moduleHigherDirectImageAffineIsoOfCounitQuasiIso"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Counit.lean",
+      "main": "a62fc25b4f7d6be27767ce2cd2279cc47539f4bc40f4bbb9df165719a3059115",
+      "pub": "5959a3196a02b8a74e2b6cc84df4cbed3fc3249cc33ec013dd2441467ccb5edf",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "-def moduleHigherDirectImageAffineIso_of_counit_quasiIso",
+        "+def moduleHigherDirectImageAffineIsoOfCounitQuasiIso",
+        "-    (moduleHigherDirectImageAffineIso_of_counit_quasiIso f M I hI n).hom \u226b",
+        "+    (moduleHigherDirectImageAffineIsoOfCounitQuasiIso f M I hI n).hom \u226b"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/SectionsCounit.lean",
+      "main": "f51888a26fb41cb3c961dd06d924981241dd76a029da5ae2690e75877cda65c8",
+      "pub": "4fcbfd5e1dc1f33eb47dd54df3795edf0b485802320ce0ce185f47ca260bcf8a",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "-def moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso",
+        "+def moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso",
+        "-    (moduleHigherDirectImageAffineIso_of_counit_quasiIso f M I hI n)",
+        "+    (moduleHigherDirectImageAffineIsoOfCounitQuasiIso f M I hI n)"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Descent/FinitePresentation/Gluing.lean",
+      "main": "d2b5981a7ba109ec424c9c138233e16f40ba028a7f4077f671dfc868a58a0842",
+      "pub": "41a5121e49e8ede9afb731ca0ecf4d566f105c76f2e814f36ecf6ffc5d256c92",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "-def baseChangeDiagram_rebaseIso {S S\u2081 S\u2082 X : Scheme.{u}}",
+        "+def baseChangeDiagramRebaseIso {S S\u2081 S\u2082 X : Scheme.{u}}",
+        "-        (ef.inv \u226b (baseChangeDiagram_rebaseIso f k h).inv \u226b",
+        "-          (Over.pullback h).map a \u226b (baseChangeDiagram_rebaseIso g k h).hom \u226b eg.hom).left \u226b",
+        "+        (ef.inv \u226b (baseChangeDiagramRebaseIso f k h).inv \u226b",
+        "+          (Over.pullback h).map a \u226b (baseChangeDiagramRebaseIso g k h).hom \u226b eg.hom).left \u226b",
+        "-  simp [baseChangeDiagram_rebaseIso, Over.pullback_map_left, Category.assoc,",
+        "+  simp [baseChangeDiagramRebaseIso, Over.pullback_map_left, Category.assoc,",
+        "-    (baseChangeDiagram_rebaseIso f (D.map j.hom) (D.map k.hom)).symm \u226a\u226b",
+        "+    (baseChangeDiagramRebaseIso f (D.map j.hom) (D.map k.hom)).symm \u226a\u226b",
+        "-      baseChangeDiagram_rebaseIso g (D.map j.hom) (D.map k.hom)",
+        "+      baseChangeDiagramRebaseIso g (D.map j.hom) (D.map k.hom)"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeIdentityTransition.lean",
+      "main": "9f15d908ccc7ef5b735cd47fe48a9b3855590071d8597cfa45e424b5085354d0",
+      "pub": "8dda0589e4f3df0ebd51a3c45b6d59e76537def2f9916a5a7bb26cd79e8e3eaf",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "+/-- Derived-category instance on module sheaves over `(C.toCompactification.baseChange (\ud835\udfd9 S)).Xbar`,",
+        "+using the instance on `(pullback (\ud835\udfd9 S) C.p)`.",
+        "+-/",
+        "+/-- Derived-category instance on module sheaves over",
+        "+`((Hom.DenseCompactification.identitySourceTransport f).obj C).Xbar`, using the instance on",
+        "+`C.Xbar`.",
+        "+-/",
+        "+/-- Derived-category instance on module sheaves over `(Hom.Compactification.densify",
+        "+(C.toCompactification.baseChange (\ud835\udfd9 S))).Xbar`, using the instance on",
+        "+`(Hom.DenseCompactification.baseChangeObj (\ud835\udfd9 S) C).Xbar`.",
+        "+-/"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/IdentitySourceModel.lean",
+      "main": "1bf71de7b4bac602f94247747be9cb53547d93d2fc7cfe85bcf35c2993c769e8",
+      "pub": "eea2d0fe074f69c16b9cce51505ec477acf69e11ae96072e823eb4191cddd0e0",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "+/-- Derived-category instance on module sheaves over",
+        "+`((Hom.DenseCompactification.identitySourceTransport f).obj C).Xbar`, using the instance on",
+        "+`C.Xbar`.",
+        "+-/",
+        "+/-- Derived-category instance on module sheaves over `((Hom.DenseCompactification.baseChange (\ud835\udfd9",
+        "+S)).obj C).Xbar`, using the instance on `(Hom.DenseCompactification.baseChangeObj (\ud835\udfd9 S)",
+        "+C).Xbar`.",
+        "+-/"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChange.lean",
+      "main": "b8230d49feda69fbcf0e9f22d9cd1db2cd7296258c4cfa272b8d2e4080893b68",
+      "pub": "0435a22e99c9a1e7752365858bc75e29e1cdcf38e4ac17752be9bb6948087a45",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "+/-- Derived-category instance on module sheaves over `(C.toCompactification.baseChange b).Xbar`,",
+        "+using the instance on `(pullback b C.p)`.",
+        "+-/",
+        "+/-- Derived-category instance on module sheaves over `(Hom.Compactification.densify",
+        "+(C.toCompactification.baseChange b)).Xbar`, using the instance on",
+        "+`(Hom.DenseCompactification.baseChangeObj b C).Xbar`.",
+        "+-/"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIdentity.lean",
+      "main": "029978f82ad4a59bd2d68d33be1219ca90a276f35c383beea76dc4ad548725e8",
+      "pub": "3e821d866c402abb755df9ce01140bbdc7d74a1eeaa049d078cb0496d823ca16",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "+/-- Derived-category instance on module sheaves over `(C.toCompactification.baseChange (\ud835\udfd9 S)).Xbar`,",
+        "+using the instance on `(pullback (\ud835\udfd9 S) C.p)`.",
+        "+-/",
+        "+/-- Derived-category instance on module sheaves over",
+        "+`((Hom.DenseCompactification.identitySourceTransport f).obj C).Xbar`, using the instance on",
+        "+`C.Xbar`.",
+        "+-/",
+        "+/-- Derived-category instance on module sheaves over `(Hom.Compactification.densify",
+        "+(C.toCompactification.baseChange (\ud835\udfd9 S))).Xbar`, using the instance on",
+        "+`(Hom.DenseCompactification.baseChangeObj (\ud835\udfd9 S) C).Xbar`.",
+        "+-/"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeNaturality.lean",
+      "main": "8ce096ffd990b4ccad9969f042a45a6a99adde2911121f1c7c5ae9c34a418a8a",
+      "pub": "9aa6125821eb98d7a6ef372544aa636b01d34b9895f16608d3e37a18185d2667",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "+/-- Derived-category instance on module sheaves over `(C.toCompactification.baseChange b).Xbar`,",
+        "+using the instance on `(pullback b C.p)`.",
+        "+-/",
+        "+/-- Derived-category instance on module sheaves over `(D.toCompactification.baseChange b).Xbar`,",
+        "+using the instance on `(pullback b D.p)`.",
+        "+-/",
+        "+/-- Derived-category instance on module sheaves over `(Hom.Compactification.densify",
+        "+(C.toCompactification.baseChange b)).Xbar`, using the instance on",
+        "+`(Hom.DenseCompactification.baseChangeObj b C).Xbar`.",
+        "+-/",
+        "+/-- Derived-category instance on module sheaves over `(Hom.Compactification.densify",
+        "+(D.toCompactification.baseChange b)).Xbar`, using the instance on"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChangeNaturality.lean",
+      "main": "985047823c4593a26e50b6fe5ccf26862c7cc6f7ef4452bf654f87f01f9a1521",
+      "pub": "2bd115dae095cb83541f0135e044b74295d22cf3eb85df4459bed857944b9732",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "+/-- Derived-category instance on module sheaves over `(C.baseChange b).Xbar`, using the instance on",
+        "+`(pullback b C.p)`.",
+        "+-/",
+        "+/-- Derived-category instance on module sheaves over `(C.toCompactification.baseChange b).Xbar`,",
+        "+using the instance on `(pullback b C.p)`.",
+        "+-/",
+        "+/-- Derived-category instance on module sheaves over `(D.toCompactification.baseChange b).Xbar`,",
+        "+using the instance on `(pullback b D.p)`.",
+        "+-/"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIdentityBaseChange.lean",
+      "main": "7844cbe2f998c5ad39597fe9411e756246a5140acea4a0ac2f09703845235ea9",
+      "pub": "5f42626e173c791199a6e080093d217287c2ea659dcb5d13ffcf4b3a5d9516d5",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "+/-- Derived-category instance on module sheaves over `(C.toCompactification.baseChange (\ud835\udfd9 S)).Xbar`,",
+        "+using the instance on `(pullback (\ud835\udfd9 S) C.p)`.",
+        "+-/",
+        "+/-- Derived-category instance on module sheaves over",
+        "+`((Hom.DenseCompactification.identitySourceTransport f).obj C).Xbar`, using the instance on",
+        "+`C.Xbar`.",
+        "+-/"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoExchange.lean",
+      "main": "a283f5eb518bc378c0fc2358309d899775fa45cd71eeb1254af4629b46cc416b",
+      "pub": "5483ccfe7a276c086911e026b9e36c37ff8564c9a95ca2af09d21743d78f4187",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "+/-- Derived-category instance on module sheaves over `(C.ofSourceIso f' e h).Xbar`, using the",
+        "+instance on `C.Xbar`.",
+        "+-/"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoNaturality.lean",
+      "main": "73b382702678416b2cddef7daad75bbd97721db2fb28f5c1b3fe9de5069f2b86",
+      "pub": "6b1ede16ceae68140f27c2f062dd00b305478f2de2fb5743ab6638889f55c6c0",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "+/-- Derived-category instance on module sheaves over `(C.ofSourceIso f' e hf').Xbar`, using the",
+        "+instance on `C.Xbar`.",
+        "+-/",
+        "+/-- Derived-category instance on module sheaves over `(D.ofSourceIso f' e hf').Xbar`, using the",
+        "+instance on `D.Xbar`.",
+        "+-/"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoPasting.lean",
+      "main": "6bf4da6f9e8ea86e6cdecfd88e9c7b3586621c03f866a3cf50c66c554f7a1174",
+      "pub": "d6b77f1fc0479261fb3aebf57f5eb9f1b229de32889c1839b071134c05cf300e",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "+/-- Derived-category instance on module sheaves over `(D.ofSourceIso f\u2082 e hf\u2082).Xbar`, using the",
+        "+instance on `D.Xbar`.",
+        "+-/"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoCompatibility.lean",
+      "main": "92aaaa83316f8031a7b9cc336831ed29c3ad7ed4c38d3fe7e2c5c992cda74ae1",
+      "pub": "f25726db5da7cda0f54cb0092a90b852ffd05f0cda08717d17d187c8a91bed62",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "+/-- Derived-category instance on module sheaves over `(C.ofSourceIso f' e h).Xbar`, using the",
+        "+instance on `C.Xbar`.",
+        "+-/"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/ProperOpen/Mate.lean",
+      "main": "4f99a49c3026fcc7a4aa21d6977840812ea26dab2eb600f89f0de4ae8e85bbf3",
+      "pub": "169dcfdb9e265855612860dc7eb2606a155844f8337bc9a54c6fdf668e9a6218",
+      "classification": "Mate precise-import",
+      "admitted": true,
+      "diff_excerpt": [
+        "-public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange",
+        "+public import Aglib.CategoryTheory.Adjunction.Mates.Whole"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeIdentityTransition.lean",
+      "main": "d0d29717cb6086aa608d9311d65fca36df8f37b082867ab357a727e26b11b5b3",
+      "pub": "5eed860b53dc9d0c775b15b317a4422dfa333dac9f1e80d8622ccf020b2fef9c",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "+/-- The derived-category instance in universe `wR` for `\u039b`-module sheaves on",
+        "+    `(C.toCompactification.baseChange (\ud835\udfd9 S)).Xbar`.",
+        "+-/",
+        "+/-- The derived-category instance in universe `wM` for `\u039b`-module sheaves on",
+        "+    `((Hom.DenseCompactification.identitySourceTransport f).obj C).Xbar`.",
+        "+-/",
+        "+/-- The derived-category instance in universe `wN` for `\u039b`-module sheaves on",
+        "+    `(Hom.Compactification.densify (C.toCompactification.baseChange (\ud835\udfd9 S))).Xbar`.",
+        "+-/"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/IdentitySourceModel.lean",
+      "main": "c394f505298016cc1af1d6722805a8b154ea767864d5e1abad24cefd309a5d48",
+      "pub": "94ee2f95c1cf1916e3057d9bba062516ade786b67e4a58c8e0f962c5e073e1db",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "+/-- The derived-category instance in universe `wM` for `\u039b`-module sheaves on",
+        "+    `((Hom.DenseCompactification.identitySourceTransport f).obj C).Xbar`.",
+        "+-/",
+        "+/-- The derived-category instance in universe `wN` for `\u039b`-module sheaves on",
+        "+    `((Hom.DenseCompactification.baseChange (\ud835\udfd9 S)).obj C).Xbar`.",
+        "+-/"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIdentity.lean",
+      "main": "8095bb99dd2117e366f4f742b4459ae9a0881fd316e60b43928ee93b87d3909c",
+      "pub": "ae5907a001f64cb4ad808a6a93cc0286d5f91a292a1fdbda8da635ca0f4a3a99",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "+/-- The derived-category instance in universe `wR` for `\u039b`-module sheaves on",
+        "+    `(C.toCompactification.baseChange (\ud835\udfd9 S)).Xbar`.",
+        "+-/",
+        "+/-- The derived-category instance in universe `wM` for `\u039b`-module sheaves on",
+        "+    `((Hom.DenseCompactification.identitySourceTransport f).obj C).Xbar`.",
+        "+-/",
+        "+/-- The derived-category instance in universe `wN` for `\u039b`-module sheaves on",
+        "+    `(Hom.Compactification.densify (C.toCompactification.baseChange (\ud835\udfd9 S))).Xbar`.",
+        "+-/"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIdentityBaseChange.lean",
+      "main": "7c03b4699bf6521cf996bda267c4f883245bf0a2169cdcc0373f813f0a42d9da",
+      "pub": "60fb5a1effda09d1c7102813eb8d2592aed44e2f7c77325895ed5d9df1175527",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "+/-- The derived-category instance in universe `wR` for `\u039b`-module sheaves on",
+        "+    `(C.toCompactification.baseChange (\ud835\udfd9 S)).Xbar`.",
+        "+-/",
+        "+/-- The derived-category instance in universe `wM` for `\u039b`-module sheaves on",
+        "+    `((Hom.DenseCompactification.identitySourceTransport f).obj C).Xbar`.",
+        "+-/"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoExchange.lean",
+      "main": "fad5c48f9682c438e844aa002533a8452ec2e83e6cdcc093d8d597723d6cc49c",
+      "pub": "f48387f2344d8fbe2eff454557e37c58ef8d8cb827c945d01a3956981a9f0eb7",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "+/-- The derived-category instance in universe `wM` for `\u039b`-module sheaves on `(C.ofSourceIso f' e",
+        "+    h).Xbar`.",
+        "+-/"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoPasting.lean",
+      "main": "129375f2d866cb34cade906e4c9bb5ccc34ef04036f88e83978f663b0837754d",
+      "pub": "5c92e208b34065dbba163af21ff7745e4dd1ac2b914c526c4b20dd98aa118dae",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "+/-- The derived-category instance in universe `wD` for `\u039b`-module sheaves on `(D.ofSourceIso f\u2082 e",
+        "+    hf\u2082).Xbar`.",
+        "+-/"
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonEquation.lean",
+      "main": "0fb4bc59cd4881074b685ec0b91c918e9a4a4037768bc89b8abef8daeef83f82",
+      "pub": "9df6f62c008d13d9d57469b1acc722b257a1f34348279ddeb3736b19489d0e42",
+      "classification": "stock repair",
+      "admitted": true,
+      "diff_excerpt": [
+        "+  /-- The source germ associated to an index, point and neighborhood element. -/",
+        "+  /-- The target germ associated to an index, point and neighborhood element. -/",
+        "+  /-- The map from source indices to target indices. -/",
+        "+  /-- The map from source points to points at the corresponding target index. -/",
+        "+  /-- The map between the source and target germ sets. -/",
+        "+  /-- The additive group map between the two direct targets. -/",
+        "+  /-- The additive map between neighborhood groups at corresponding indices. -/",
+        "+  /-- The source neighborhood map into the source direct target at each point. -/",
+        "+  /-- The target neighborhood map into the target direct target at each point. -/"
+      ]
+    },
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/ModuleCoefficients/DerivedGammaZero.lean",
+      "main": "f558a119131fd8d75fc05dc8b7901d89e48eb2eb96a027fca593acf660f3b205",
+      "pub": "0880dc6366bd7e2869ff095a7cdb6a8bffc4e54047e335f4647e5d8b5d5e9045",
+      "classification": "selected public-context source difference",
+      "admitted": false,
+      "diff_excerpt": [
+        "-public import Aglib.Algebra.Homology.ShortComplex.MapHomology.Components",
+        "+public import Aglib.Algebra.Homology.RightDerived.Zero",
+        "-      \u03b1.app X \u226b G.toRightDerivedZero.app X := by",
+        "-  let I := injectiveResolution X",
+        "-  let \u03c6 := (NatTrans.mapHomologicalComplex \u03b1 (.up \u2115)).app I.cocomplex",
+        "-  have h : I.toRightDerivedZero' F \u226b HomologicalComplex.cyclesMap \u03c6 0 =",
+        "-      \u03b1.app X \u226b I.toRightDerivedZero' G := by",
+        "-    rw [\u2190 cancel_mono (((G.mapHomologicalComplex (.up \u2115)).obj I.cocomplex).iCycles 0)]",
+        "-    simp only [Category.assoc, HomologicalComplex.cyclesMap_i,",
+        "-      InjectiveResolution.toRightDerivedZero'_comp_iCycles,",
+        "-      InjectiveResolution.toRightDerivedZero'_comp_iCycles_assoc]",
+        "-    exact \u03b1.naturality (I.\u03b9.f 0)"
+      ]
+    }
+  ],
+  "boundary": "MAIN CPP does not itself close changed PUBLIC input contexts; exact affected native follow-up to be coordinated with broker. Unchanged cached headers retained."
+}

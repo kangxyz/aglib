@@ -31,3 +31,16 @@ original shift comparison. It preserves Yoneda composition, degree-zero maps
 and the actual unsigned `singleTrianglePlus` connecting arrow. No
 injective or projective availability hypothesis is added. A protected signed
 `Ext.δ` must retain its original sign when used by a derived comparison.
+
+## Additional source entry points
+
+- [ExactDerivedContractionAdjunction](ExactDerivedContractionAdjunction.lean)
+- [ExactDerivedContractionIdentity](ExactDerivedContractionIdentity.lean)
+- [ExactDerivedContractionModels](ExactDerivedContractionModels.lean)
+- [ExactDerivedContractionNaturality](ExactDerivedContractionNaturality.lean)
+- [ExactDerivedContractionPresentation](ExactDerivedContractionPresentation.lean)
+- [ModelComparisonCoherence](ModelComparisonCoherence.lean)
+- [ShortExactMapNatural](ShortExactMapNatural.lean)
+- [ShortExactMapNaturality](ShortExactMapNaturality.lean)
+- [ShortExactMapSquare](ShortExactMapSquare.lean)
+- [ShortExactMap](ShortExactMap.lean)

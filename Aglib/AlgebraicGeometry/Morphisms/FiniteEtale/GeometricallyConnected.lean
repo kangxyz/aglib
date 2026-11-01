@@ -52,7 +52,7 @@ theorem baseChange_map_bijective_of_geometricallyConnected (U V : FiniteEtale X)
 
 /-- Full faithfulness of the actual functor, constructed using only the
 proved bijectivity of its original maps. -/
-def fullyFaithfulBaseChange_of_geometricallyConnected : (baseChange q).FullyFaithful := by
+def fullyFaithfulBaseChangeOfGeometricallyConnected : (baseChange q).FullyFaithful := by
   let : (baseChange q).Full := {
     map_surjective := fun {U V} =>
       (baseChange_map_bijective_of_geometricallyConnected q hE U V).surjective }
@@ -65,25 +65,25 @@ end Descent
 
 /-- Flat quasi-compact geometrically connected morphisms supply the effective
 epimorphism on every finite-etale test. -/
-def fullyFaithfulBaseChange_of_flat_quasiCompact
+def fullyFaithfulBaseChangeOfFlatQuasiCompact
     [Flat q] [QuasiCompact q] : (baseChange q).FullyFaithful :=
-  fullyFaithfulBaseChange_of_geometricallyConnected q (fun _ => inferInstance)
+  fullyFaithfulBaseChangeOfGeometricallyConnected q (fun _ => inferInstance)
 
 /-- Flat locally finitely presented geometrically connected morphisms supply
 full faithfulness without a quasi-compactness hypothesis. -/
-def fullyFaithfulBaseChange_of_flat_lfp
+def fullyFaithfulBaseChangeOfFlatLfp
     [Flat q] [LocallyOfFinitePresentation q] : (baseChange q).FullyFaithful :=
-  fullyFaithfulBaseChange_of_geometricallyConnected q (fun _ => inferInstance)
+  fullyFaithfulBaseChangeOfGeometricallyConnected q (fun _ => inferInstance)
 
 /-- Arbitrary extension of an algebraically closed field gives full
 faithfulness on the actual finite-etale base-change functor of every scheme. -/
-def fullyFaithfulBaseChange_fieldExtension
+def fullyFaithfulBaseChangeFieldExtension
     (k K : Type u) [Field k] [IsAlgClosed k] [Field K] [Algebra k K]
     {Z : Scheme.{u}} (p : Z ⟶ Spec (.of k)) :
     (baseChange (pullback.fst p
       (Spec.map (CommRingCat.ofHom (algebraMap k K))))).FullyFaithful := by
   let := Scheme.Geometrically.fieldSpec_geometricallyConnected k K
-  exact fullyFaithfulBaseChange_of_flat_quasiCompact
+  exact fullyFaithfulBaseChangeOfFlatQuasiCompact
     (pullback.fst p (Spec.map (CommRingCat.ofHom (algebraMap k K))))
 
 end AlgebraicGeometry.Scheme.FiniteEtale

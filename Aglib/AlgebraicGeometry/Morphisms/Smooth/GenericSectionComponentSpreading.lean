@@ -33,7 +33,7 @@ theorem exists_clopen_stage_containing_family
     (hD : IsLimit cD) (hE : IsLimit cE)
     [∀ {i j} (a : i ⟶ j), IsAffineHom (D.map a)]
     [∀ {i j} (a : i ⟶ j), IsAffineHom (E.map a)]
-    [∀ i, CompactSpace (D.obj i)] [∀ i, QuasiSeparatedSpace (D.obj i)]
+    [∀ i, CompactSpace (D.obj i)]
     [∀ i, CompactSpace (E.obj i)] [∀ i, QuasiSeparatedSpace (E.obj i)]
     (a : ∀ i, D.obj i ⟶ E.obj i)
     (ha : ∀ {i j} (r : i ⟶ j), D.map r ≫ a j = a i ≫ E.map r)

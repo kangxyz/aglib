@@ -30,19 +30,19 @@ variable {X U : Scheme.{u}} [IsIntegral X] [IsLocallyNoetherian X]
   [Etale (genericMap j Y.obj.hom).fromNormalization]
 
 /-- The original open restriction and recovery induce the actual deck-group equivalence. -/
-def normalizationFiniteEtale_autEquiv :
+def normalizationFiniteEtaleAutEquiv :
     Aut (normalizationFiniteEtale j Y) ≃* Aut Y := by
   let : IsIntegral U := isIntegral_of_isOpenImmersion j
   let : (baseChange j).Full := (baseChange_open_full_faithful j).1
   let : (baseChange j).Faithful := (baseChange_open_full_faithful j).2
   exact ((Functor.FullyFaithful.ofFullyFaithful (baseChange j)).autMulEquivOfFullyFaithful
     (normalizationFiniteEtale j Y)).trans
-      (Aut.autMulEquivOfIso (normalizationFiniteEtale_restrictionIso j Y).symm)
+      (Aut.autMulEquivOfIso (normalizationFiniteEtaleRestrictionIso j Y).symm)
 
 /-- The same normalization extension has the unchanged original deck-group order. -/
 theorem normalizationFiniteEtale_card_aut :
     Nat.card (Aut (normalizationFiniteEtale j Y)) = Nat.card (Aut Y) :=
-  Nat.card_congr (normalizationFiniteEtale_autEquiv j Y).toEquiv
+  Nat.card_congr (normalizationFiniteEtaleAutEquiv j Y).toEquiv
 
 /-- Original Galoisness reflects through the original open-recovery isomorphism. -/
 theorem normalizationFiniteEtale_isGalois [IsIntegral Y.obj.left] :
@@ -54,7 +54,7 @@ theorem normalizationFiniteEtale_isGalois [IsIntegral Y.obj.left] :
     normalizationFiniteEtale_isIntegral j Y
   let x := algebraicClosureResiduePoint U (Classical.choice (inferInstance : Nonempty U))
   let : IsGalois ((baseChange j).obj (normalizationFiniteEtale j Y)) :=
-    isGalois_of_iso (fiberToFinite x) (normalizationFiniteEtale_restrictionIso j Y)
+    isGalois_of_iso (fiberToFinite x) (normalizationFiniteEtaleRestrictionIso j Y)
   exact isGalois_of_open_baseChange j (normalizationFiniteEtale j Y)
 
 end AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.OpenRecovery

@@ -1,0 +1,941 @@
+{
+  "version": 3,
+  "question": "Compile the coherent actual native stock repair, preserving existing compatible evidence and preparing one final1294stock environment",
+  "source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+  "source_head": "c4880830a7ebfea496a348d361cd50b109ea536d",
+  "source_manifest": [
+    {
+      "path": "Aglib/Algebra/Category/ModuleCat/ChangeOfRings/RestrictionData.lean",
+      "module": "Aglib.Algebra.Category.ModuleCat.ChangeOfRings.RestrictionData",
+      "sha256": "5a7b5a2ae21aa77026a814c70832d1880a70bfb944a8b3d47731d696a401923c",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/Algebra/Category/ModuleCat/ChangeOfRings/TopComparison.lean",
+      "module": "Aglib.Algebra.Category.ModuleCat.ChangeOfRings.TopComparison",
+      "sha256": "bde7b87ef09f65ee10593d7e6f2a1fc261059937aa9f252f47d1455a408e0705",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/BaseChange/NativeRingSections.lean",
+      "module": "Aglib.AlgebraicGeometry.Cohomology.BaseChange.NativeRingSections",
+      "sha256": "1bb6701cd0dc02e03668e33de1173c09f6a45a90029fcd313c3e487eef50ec8a",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Cech/Finite/ModelComparison.lean",
+      "module": "Aglib.AlgebraicGeometry.Cohomology.Cech.Finite.ModelComparison",
+      "sha256": "693878faa7abbb348b36f21fcb70c2ccb7ccef7428c04e556aea1ee8084988a0",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology.lean",
+      "module": "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology",
+      "sha256": "356689695cc48d6e37fc8c3e7c8134d7c04bf1a5e7d354fff19ef259f0cffd84",
+      "reason": "necessary direct API reference consumer"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/CounitDegreeZero.lean",
+      "module": "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.CounitDegreeZero",
+      "sha256": "2d0289c6c90b63b541bdd8bb8dcbade8c633395b639b305a75ebf5da3e034ca8",
+      "reason": "necessary direct API reference consumer"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/CounitNaturality.lean",
+      "module": "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.CounitNaturality",
+      "sha256": "1ea57facfde2ad1fbe7023821bde152a8626ed56fde1cdb4030bdef07ff12eac",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/SectionsCounitHomology.lean",
+      "module": "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.SectionsCounitHomology",
+      "sha256": "1b3f8a7ea0028d7df561faf9c3a83888c814791b79df1b13df53e2fcccfb7f68",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Counit.lean",
+      "module": "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Counit",
+      "sha256": "5959a3196a02b8a74e2b6cc84df4cbed3fc3249cc33ec013dd2441467ccb5edf",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/SectionsCounit.lean",
+      "module": "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.SectionsCounit",
+      "sha256": "4fcbfd5e1dc1f33eb47dd54df3795edf0b485802320ce0ce185f47ca260bcf8a",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Compactification/Refinements/RawRefinementBaseChange.lean",
+      "module": "Aglib.AlgebraicGeometry.Compactification.Refinements.RawRefinementBaseChange",
+      "sha256": "192b496f3f728d306539ea84d5267cd0a4bf764628d52b18365e9bc244ddbef0",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Compactification/Refinements/RawSourceComposition.lean",
+      "module": "Aglib.AlgebraicGeometry.Compactification.Refinements.RawSourceComposition",
+      "sha256": "99f63a55f799a36b1e3ec60661dcc45288037e1d8a5ad3f36e4d3bdab387ce5d",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Descent/FinitePresentation/FiniteTypeArrowLimit.lean",
+      "module": "Aglib.AlgebraicGeometry.Descent.FinitePresentation.FiniteTypeArrowLimit",
+      "sha256": "9ace75b3cf62852ccdd3ce9825a9e4808fa242ad5e439292a48c995ab152c874",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Descent/FinitePresentation/Gluing.lean",
+      "module": "Aglib.AlgebraicGeometry.Descent.FinitePresentation.Gluing",
+      "sha256": "41a5121e49e8ede9afb731ca0ecf4d566f105c76f2e814f36ecf6ffc5d256c92",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Descent/FinitePresentation/OverBaseGluing.lean",
+      "module": "Aglib.AlgebraicGeometry.Descent.FinitePresentation.OverBaseGluing",
+      "sha256": "4891d5c5dab87ad5e3846e6e8bfcb522f9fa2a68ce409785192171a533534a2c",
+      "reason": "necessary direct API reference consumer"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/FiniteTypeArrowCoefficients.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.FiniteTypeArrowCoefficients",
+      "sha256": "aa0d561f50e7769b5b7a39cdf355e49781a2154500271a3891dbaae0af6c45ca",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeIteration.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.BaseChangeIteration",
+      "sha256": "5b3c7ffeb89a8c0716f54b99bd48f0e0b09900d478cbadbbbf2762f0ae4baacd",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IdentitySourceCanonical.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.IdentitySourceCanonical",
+      "sha256": "2a5c415084485fbb51c0579833e13ad85911c7abdff51de1f411f7cdad34d178",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeIdentityTransition.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.BaseChangeIdentityTransition",
+      "sha256": "8dda0589e4f3df0ebd51a3c45b6d59e76537def2f9916a5a7bb26cd79e8e3eaf",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/IdentitySourceModel.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.IdentitySourceModel",
+      "sha256": "eea2d0fe074f69c16b9cce51505ec477acf69e11ae96072e823eb4191cddd0e0",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChange.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedBaseChange",
+      "sha256": "0435a22e99c9a1e7752365858bc75e29e1cdcf38e4ac17752be9bb6948087a45",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIdentity.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedBaseChangeIdentity",
+      "sha256": "3e821d866c402abb755df9ce01140bbdc7d74a1eeaa049d078cb0496d823ca16",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIterationComparison.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedBaseChangeIterationComparison",
+      "sha256": "9fc6fa2f98092d1217265226256644afca33cb58bd4626964b5896d5d3929bad",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIterationPasting.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedBaseChangeIterationPasting",
+      "sha256": "f656f00fecbd140197bbadf72713cf051a3246ffaa1afcb650c16972eab8882e",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeNaturality.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedBaseChangeNaturality",
+      "sha256": "9aa6125821eb98d7a6ef372544aa636b01d34b9895f16608d3e37a18185d2667",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedIterationSource.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedIterationSource",
+      "sha256": "cd083e999b060b17b0652c4dcf8a8e21a407a378fc7c22a61c0b396d09c867cc",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedSourceBC.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedSourceBC",
+      "sha256": "44eb13d6e3944147657922dc1c24f99e4bee659ca267d7b9bf89a3269d120938",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChangeIterationPasting.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawBaseChangeIterationPasting",
+      "sha256": "38c33c0adc02c253184ad151c0b5c60b6800cb548d4350d88870206a348e14b3",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChangeNaturality.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawBaseChangeNaturality",
+      "sha256": "2bd115dae095cb83541f0135e044b74295d22cf3eb85df4459bed857944b9732",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIdentityBaseChange.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawIdentityBaseChange",
+      "sha256": "5f42626e173c791199a6e080093d217287c2ea659dcb5d13ffcf4b3a5d9516d5",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIterationSource.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawIterationSource",
+      "sha256": "58e4d5ba1be83f9780dfd2e86a9081546c0f6173341f4c477513961f5db55770",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawRefinementBaseChangeNaturality.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawRefinementBaseChangeNaturality",
+      "sha256": "9466b7fedbeac1d1994618316a769058f0d25f36c28c0c7016cfff01cba76888",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceBaseChange.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceBaseChange",
+      "sha256": "775122b05fc960ddbcfdbf572311b7cb70424a652d647e461775cca3177b7686",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceComposition.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceComposition",
+      "sha256": "099f8700cdf2b4bf0c7731d03f8cfee3c40d4153bf2f69415fcb90bec5dd6a58",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoBefore.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceIsoBefore",
+      "sha256": "971de90006a1134db07e4a23f3607caa93b3988c28823bd73618ac27ef2bd420",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoExchange.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceIsoExchange",
+      "sha256": "5483ccfe7a276c086911e026b9e36c37ff8564c9a95ca2af09d21743d78f4187",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoNaturality.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceIsoNaturality",
+      "sha256": "6b1ede16ceae68140f27c2f062dd00b305478f2de2fb5743ab6638889f55c6c0",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoPasting.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceIsoPasting",
+      "sha256": "d6b77f1fc0479261fb3aebf57f5eb9f1b229de32889c1839b071134c05cf300e",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCModel.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.SourceBCModel",
+      "sha256": "f76337ea3a12c96fb46b0987c0dbb47873f137ac9d8c8e9d22a16a7e4e31914e",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCNormalization.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.SourceBCNormalization",
+      "sha256": "8fec8553f257c4cdbd24b71ab56e2a553ec1c7af560ed0af5a63811121be5173",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceCompositionModel.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.SourceCompositionModel",
+      "sha256": "706be5586d5c88cc2f267e5a91bbd0af35affbbceea9a0377cf9ffeb8311b54e",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoCompatibility.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.SourceIsoCompatibility",
+      "sha256": "f25726db5da7cda0f54cb0092a90b852ffd05f0cda08717d17d187c8a91bed62",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeIdentityTransition.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.BaseChangeIdentityTransition",
+      "sha256": "5eed860b53dc9d0c775b15b317a4422dfa333dac9f1e80d8622ccf020b2fef9c",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalBaseChangeIteration.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.ExceptionalBaseChangeIteration",
+      "sha256": "8c5553fb49a20da263e6c50df2c4bf6e231ad29c64aeeddd41d53651134148bf",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/IdentitySourceCanonical.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.IdentitySourceCanonical",
+      "sha256": "795493f00a97c3655eb071666a106138373f333a88506253ff00a9763e6f12c7",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/IdentitySourceModel.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.IdentitySourceModel",
+      "sha256": "94ee2f95c1cf1916e3057d9bba062516ade786b67e4a58c8e0f962c5e073e1db",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIdentity.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedBaseChangeIdentity",
+      "sha256": "ae5907a001f64cb4ad808a6a93cc0286d5f91a292a1fdbda8da635ca0f4a3a99",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIterationComparison.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedBaseChangeIterationComparison",
+      "sha256": "1b1942bc838be57694999a6a61cc0843efab45c45324b948bb27596e3c6d5fa5",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIterationPasting.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedBaseChangeIterationPasting",
+      "sha256": "15ab0ccbbbea95b4de2aa60e3f6b9e9f12b70475f9d89ec08c5c739fc32c8b46",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedIterationSource.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedIterationSource",
+      "sha256": "24c27eb3fe8f08f7d76c4c51591fcd66a84e2d5041a3c431236c6c403af77368",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedSourceBC.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedSourceBC",
+      "sha256": "956d569d16ff9552ec8c65be9eb55bb0f1770b30b6a2d1e76c140baa4f2c734c",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawBaseChangeIterationPasting.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawBaseChangeIterationPasting",
+      "sha256": "c3194e44b7075a9c434413ce9bc95569c8a7b8b1b036c652239b699a990b6e0f",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIdentityBaseChange.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawIdentityBaseChange",
+      "sha256": "60fb5a1effda09d1c7102813eb8d2592aed44e2f7c77325895ed5d9df1175527",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIterationSource.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawIterationSource",
+      "sha256": "2a861a4e3ff1bdaac8a77c72b76f450a2b5587ca69d54ea2e9476c35afde8b86",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawRefinementBaseChangeNaturality.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawRefinementBaseChangeNaturality",
+      "sha256": "53606af0c7af673db61b6cb1eae0e24589d8fa2b7b58b5d9732249e91cc907b7",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceBaseChange.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceBaseChange",
+      "sha256": "25f5232e17224513d972db6c390cca8129c6830dfaf90e6b94e912152dc0f09b",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceComposition.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceComposition",
+      "sha256": "f833105f8f9bc08a7e30d1a49280292c49bd56217fb3c58f86e947f99e3a2846",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoBefore.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceIsoBefore",
+      "sha256": "9a0426aceefed0174c1bbb6e590ce4aceaf4f95925aa667806e31fbd9f3258bc",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoExchange.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceIsoExchange",
+      "sha256": "f48387f2344d8fbe2eff454557e37c58ef8d8cb827c945d01a3956981a9f0eb7",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoNaturality.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceIsoNaturality",
+      "sha256": "863eab9f11f44d4c1e3c2a40ec8abfd9531fa6f342bcc0db02d140f313b6d4d7",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoPasting.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceIsoPasting",
+      "sha256": "5c92e208b34065dbba163af21ff7745e4dd1ac2b914c526c4b20dd98aa118dae",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceBCModel.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.SourceBCModel",
+      "sha256": "a97d7e059839fee25e9aaaf2b6d6615da42ce772310b9216bfc204d3ad70c89c",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceBCNormalization.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.SourceBCNormalization",
+      "sha256": "5b05e5caa899eb75909c8cd6302df4131e4cb757fd39ac5e4788eae64bfd909b",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceCompositionModel.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.SourceCompositionModel",
+      "sha256": "a0b785b4ba3c518f1968e101c30ba705070e6e773f3dea8c051ea7a55e1e1553",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/BoundedClassFiniteConstant.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.BoundedClassFiniteConstant",
+      "sha256": "043a8ecc661231373d5d87f9cd9c0154491229bee19166c5e410718e43969409",
+      "reason": "necessary direct API reference consumer"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/BoundedCoefficientClass.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.BoundedCoefficientClass",
+      "sha256": "d0c778e892aef2d31b08f993dfc76b4c7e7e41fcfbb969974e87241d261fb35a",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ConstructibleGenericOpen.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ConstructibleGenericOpen",
+      "sha256": "417e934396c8b125d75d87b671ea164ec813f88b55f38cfd126c89a256766179",
+      "reason": "necessary direct API reference consumer"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/FiniteSurjectiveDescent.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.FiniteSurjectiveDescent",
+      "sha256": "ffec37dca3ca7f65b1c2b15a55925edb7111f73bcfb8666b338f45a864fdf8e7",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H0/ConnectedPullbackSections.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.H0.ConnectedPullbackSections",
+      "sha256": "64bc56a28035b15029a50bbe20a6eab9561de03e73bc6bb80762748922b34051",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H0/ConstantUnitOfStructureIso.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.H0.ConstantUnitOfStructureIso",
+      "sha256": "16514eb4710cee7e4dccec6308daaed18574db81942ac562cdee930bca1def66",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H0/UniversallyOpenAmalgamation.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.H0.UniversallyOpenAmalgamation",
+      "sha256": "18c228a78ad44caa0cc742833afb94700667e954e92a61830844579f4d397faf",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/GeometricallyConnected.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.GeometricallyConnected",
+      "sha256": "7bd0dbe61ea1bf2e8a5dab893ce948696652a269e4466754604e377164e694fb",
+      "reason": "necessary direct API reference consumer"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonEquation.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricComparisonEquation",
+      "sha256": "9df6f62c008d13d9d57469b1acc722b257a1f34348279ddeb3736b19489d0e42",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/FunctionField/HartogsSections.lean",
+      "module": "Aglib.AlgebraicGeometry.FunctionField.HartogsSections",
+      "sha256": "41819f17bf45f938849ad874e88936d369169f841c2f8b9c81084fd50e8f279a",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/FunctionField/SplitSections.lean",
+      "module": "Aglib.AlgebraicGeometry.FunctionField.SplitSections",
+      "sha256": "a1174476c3e3f43f2fdcd33de52f48ba20f19a14690db2040bc7dccfd8596642",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/Coherent/AdicSystem/SectionCompleteness.lean",
+      "module": "Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.SectionCompleteness",
+      "sha256": "5bedd5e6e251e55ddd2c6f2dfc0cac3f196a6a20af0b24be127371ee866f3a50",
+      "reason": "necessary direct API reference consumer"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/Coherent/AdicSystem/SectionKernels.lean",
+      "module": "Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.SectionKernels",
+      "sha256": "178be47cfab5201ffa359d61b111e8acb367c99403185d420161dd09c4ae7383",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/InternalHom/DualExact.lean",
+      "module": "Aglib.AlgebraicGeometry.Modules.InternalHom.DualExact",
+      "sha256": "57800af43c6dc4c3ae169a4ec3dd8086bd2458fcb6d4ea0044e06d1a21f18cdd",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Morphisms/Etale/AffinePointwiseFlatBaseChange.lean",
+      "module": "Aglib.AlgebraicGeometry.Morphisms.Etale.AffinePointwiseFlatBaseChange",
+      "sha256": "89c65b22f69cac5ebb2c16598e50143d952f08536afd744429efc8653f5d5fea",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/BaseChange/RestrictIso.lean",
+      "module": "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.BaseChange.RestrictIso",
+      "sha256": "5470b13dd0aa61043e4e34a6b7de2ce6f3cf6c2875fe73db44b41122411fbc3a",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/Descent/FiniteFieldPointedGalois.lean",
+      "module": "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.FiniteFieldPointedGalois",
+      "sha256": "148a728727516d43bc156004c0a683824ee97b625d6f8656edf79246b9bb5cd5",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/GaloisBaseChange.lean",
+      "module": "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisBaseChange",
+      "sha256": "b5ceae7f755127d7ccd029df353c33be3ac545c0bbb36096c2224ed4d35dad00",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/GeometricallyConnected.lean",
+      "module": "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GeometricallyConnected",
+      "sha256": "1ec30e08c8e8d32a074e1e58fb1ade7398e75dc985c2174faed3f88902e89476",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Morphisms/Smooth/GenericSectionComponentSpreading.lean",
+      "module": "Aglib.AlgebraicGeometry.Morphisms.Smooth.GenericSectionComponentSpreading",
+      "sha256": "a9f1d51c6ce588d811f45291cd281262d7a87ea05b7f5e56bef7b5c9ff6bb7c4",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Normalization/Affine.lean",
+      "module": "Aglib.AlgebraicGeometry.Normalization.Affine",
+      "sha256": "08ebfdbcb18574308d7a46f0b8e9e3a0ecaa144cc0d2dda615aa587e954125f3",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Normalization/AffineMap.lean",
+      "module": "Aglib.AlgebraicGeometry.Normalization.AffineMap",
+      "sha256": "3a1f204fafad8e3e4d4fd680f53772326d14c27027de82b2744ab4859ef995e0",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/EtaleExtension.lean",
+      "module": "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.EtaleExtension",
+      "sha256": "4473cced6ae07fe9b45217c19da392da36aee9e96ffc363501ddcf8c837c7868",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/GaloisExtension.lean",
+      "module": "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.GaloisExtension",
+      "sha256": "1b691fd68a5d850c8619d0c9e8f9a5af1afb7f8d414fcaaea1e72eac72b1e0fd",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/GaloisRestrictedExtension.lean",
+      "module": "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.GaloisRestrictedExtension",
+      "sha256": "13c994bd9b88f47f805597fd019b7db5714d344208d5df11ce4fe7e137d1b7ba",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/GenericPullback.lean",
+      "module": "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.GenericPullback",
+      "sha256": "6c7de0f0293388dc3a46cde85a125ad426e612ad56e2ce50fd0b1e7597983457",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/LocalFactor.lean",
+      "module": "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.LocalFactor",
+      "sha256": "81b3daf06f8d0111b6288e25ca5b41fb8277e2ba35253aea35dfb8a48ac8b9f6",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/LocalFactorRootChart.lean",
+      "module": "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.LocalFactorRootChart",
+      "sha256": "efa659c51c4b9e585ce18c33b20671d95f9321ffd363f181145504de9e871cd0",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/OpenRecoveryAffine.lean",
+      "module": "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.OpenRecoveryAffine",
+      "sha256": "465bd4380174aeb7f236cfdbb580eca5b1c9bf492ed5e2832ad10c23efaedb75",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/RootEmbedding.lean",
+      "module": "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RootEmbedding",
+      "sha256": "a2939d6133e36143acf1b96ec5e9d6f4b389f8a3e75cb2981d5bec59c520783a",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Points/FieldExtensionBoundary.lean",
+      "module": "Aglib.AlgebraicGeometry.Points.FieldExtensionBoundary",
+      "sha256": "c2108877c37374baa48a808831128c05ed7bd943339a797702bbbf67e0509f7b",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Spec/GeometricNeighborhoodPrincipalStages.lean",
+      "module": "Aglib.AlgebraicGeometry.Spec.GeometricNeighborhoodPrincipalStages",
+      "sha256": "c0871cb5fe65084d59592d896e11b21549b786950100b420e107950d8784eef2",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Spec/PowerSeriesFiniteEtaleMaps.lean",
+      "module": "Aglib.AlgebraicGeometry.Spec.PowerSeriesFiniteEtaleMaps",
+      "sha256": "8299f31a0857ec3528075fd528b34d3d70e76fd4289ff4b77fcc611b8ff3e8ed",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Spec/PowerSeriesHartogsAlgebraComparison.lean",
+      "module": "Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsAlgebraComparison",
+      "sha256": "0d8c7d421f778d8235f6ce2111a0615c5dc1eb5cf70e35035e28b32aa2932126",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Spec/PowerSeriesHartogsCoverExtension.lean",
+      "module": "Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsCoverExtension",
+      "sha256": "ce341ea72efea1b74fdc3cd1c7dc00abc2e3ff610b0b4f0c5547a9fb28758aa7",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Spec/PowerSeriesHartogsCoverRecovery.lean",
+      "module": "Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsCoverRecovery",
+      "sha256": "167eecbf73041b5ed003f88bd5b3be0f27bc0c6d8a85991be1a8cff0c0f15fc8",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Spec/PowerSeriesHartogsFiniteEtaleMaps.lean",
+      "module": "Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsFiniteEtaleMaps",
+      "sha256": "c36542557957b008f206599830f7bc93e57b3d5535a1a1cb347ae3f2a79c29cf",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Spec/PowerSeriesSectionLifting.lean",
+      "module": "Aglib.AlgebraicGeometry.Spec.PowerSeriesSectionLifting",
+      "sha256": "a5eda5f04baca617c118fe05a7a96081d2d97515c5d0a833afd490596fcd9962",
+      "reason": "necessary direct API reference consumer"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Spec/RootPrincipalNeighborhoodSpreading.lean",
+      "module": "Aglib.AlgebraicGeometry.Spec.RootPrincipalNeighborhoodSpreading",
+      "sha256": "df70309ef3927335a2b329226575d34fd913d490354f994534fe54b0d2936918",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Spec/SmoothCompletionOpenPrescribedSection.lean",
+      "module": "Aglib.AlgebraicGeometry.Spec.SmoothCompletionOpenPrescribedSection",
+      "sha256": "4ee815548fb0375be92248364c6d6c848dcad1e2d377451584af933e6e681c6a",
+      "reason": "necessary direct API reference consumer"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Spec/SmoothCompletionPrescribedSection.lean",
+      "module": "Aglib.AlgebraicGeometry.Spec.SmoothCompletionPrescribedSection",
+      "sha256": "499cd3c9cb866681eb5224beca7fc436b2c251e221a07953c8ed2ef1484b5e8d",
+      "reason": "necessary direct API reference consumer"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Spec/SmoothSplitSectionFiniteEtaleMaps.lean",
+      "module": "Aglib.AlgebraicGeometry.Spec.SmoothSplitSectionFiniteEtaleMaps",
+      "sha256": "2e0b6e73b42f03ebb613ebb9607d039e9af419c6a7cb7a00dd481fee1e3abc3b",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Limits/Shapes/KernelCones.lean",
+      "module": "Aglib.CategoryTheory.Limits.Shapes.KernelCones",
+      "sha256": "9ea3ffa72ddb74e81a37155fb3a08728a874a702077f804ef06ae98a46952465",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/FieldTheory/IntermediateField/FiniteCompositum.lean",
+      "module": "Aglib.FieldTheory.IntermediateField.FiniteCompositum",
+      "sha256": "595eed4d9cefe035dc0fa2be950b8f5385b634aaec8a1b1d8f80d1b412081f00",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/FieldTheory/IntermediateField/MappedFiniteCompositum.lean",
+      "module": "Aglib.FieldTheory.IntermediateField.MappedFiniteCompositum",
+      "sha256": "49037bd528bc3c325b8c0e595d9379749d94c9163f2c15b89d0745f296893f0a",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/FieldTheory/KummerSubextension.lean",
+      "module": "Aglib.FieldTheory.KummerSubextension",
+      "sha256": "6d352c905dda568d828f2b5d2dd9f58b57dfa415f83d21c250322e2d509a4443",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/LinearAlgebra/FrobeniusBaseChange.lean",
+      "module": "Aglib.LinearAlgebra.FrobeniusBaseChange",
+      "sha256": "4f7ebb7debedc15e5b8711c1d3280a05d726ee502ca0514e05299b518be145cb",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/RingTheory/Artinian/NoetherianGenericSplitThickening.lean",
+      "module": "Aglib.RingTheory.Artinian.NoetherianGenericSplitThickening",
+      "sha256": "118442247e957fb2ff8866b8d13df5b160090f86f812b509c0491d041d815f65",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/RingTheory/Etale/PointwiseFlatBaseChange.lean",
+      "module": "Aglib.RingTheory.Etale.PointwiseFlatBaseChange",
+      "sha256": "9ac6dae12437827d9d2c4c3acb044be295019e118f0dd811e10339a28093e743",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/RingTheory/Etale/ResidueCompletionIso.lean",
+      "module": "Aglib.RingTheory.Etale.ResidueCompletionIso",
+      "sha256": "7c2a61c3d4d98beaad7c7cb1fef85437af7e9e1f53cb9b1337077705070ff6a9",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/RingTheory/Etale/StandardEtaleDomainEmbedding.lean",
+      "module": "Aglib.RingTheory.Etale.StandardEtaleDomainEmbedding",
+      "sha256": "ab1828c94ee0c9f781e9dbbe4d13e69ca545663e776c6dd7c801667c242d1150",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/RingTheory/FiniteType/ArrowSubalgebraColimit.lean",
+      "module": "Aglib.RingTheory.FiniteType.ArrowSubalgebraColimit",
+      "sha256": "94dc2a099d71e4fc2e2fc155eac242a736ad609ddfa9650e0223897b755f060b",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/RingTheory/Henselian/PrimitiveRoots.lean",
+      "module": "Aglib.RingTheory.Henselian.PrimitiveRoots",
+      "sha256": "78db9e3dc805f329779b742c2a9e169cc9b8358168b5d8a436af986221963e0a",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/RingTheory/Henselian/StrictHenselization/IntegralClosure.lean",
+      "module": "Aglib.RingTheory.Henselian.StrictHenselization.IntegralClosure",
+      "sha256": "2571b8d9e6933c786ab0811719944a188fdb80c1435bf1f12f24712491e8e4e0",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/RingTheory/Henselian/StrictHenselization/RootPoint.lean",
+      "module": "Aglib.RingTheory.Henselian.StrictHenselization.RootPoint",
+      "sha256": "8975da55d51f303c82ce4a54c5b387a0b1296635f1c1e206ee0b2429aadeff24",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/RingTheory/IntegralClosure/ChangeBaseMap.lean",
+      "module": "Aglib.RingTheory.IntegralClosure.ChangeBaseMap",
+      "sha256": "b796c16eb64cb7c3c3de7ec5ec8c36a40c5988ee7d9c1ba8754cb991cedb7be9",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/RingTheory/IntegralClosure/FiniteEtale/LocalFactorGaloisBaseChange.lean",
+      "module": "Aglib.RingTheory.IntegralClosure.FiniteEtale.LocalFactorGaloisBaseChange",
+      "sha256": "05aa265b87d60177950cbad891c12b05c0812680507094bf1bdd670f0f6699dc",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/RingTheory/IntegralClosure/FiniteEtale/LocalFactorGeneric.lean",
+      "module": "Aglib.RingTheory.IntegralClosure.FiniteEtale.LocalFactorGeneric",
+      "sha256": "00771ee46d8d92ef15d753ebd1c37a7e4d37c973134ec3635117303a48aa5f63",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/RingTheory/Kummer/DVRRootCancellation.lean",
+      "module": "Aglib.RingTheory.Kummer.DVRRootCancellation",
+      "sha256": "9b08b13d1ea4639d6b2e426012425396df96623026211d95c1a6b9ad5528e4a5",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/RingTheory/Kummer/HeightOneRootLocalization.lean",
+      "module": "Aglib.RingTheory.Kummer.HeightOneRootLocalization",
+      "sha256": "2e70539feadd9f75c29c0b2b4f26a8ac3e78d43c4675cfbdbae1905df752b7c8",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/RingTheory/Kummer/RegularParameterRecognition.lean",
+      "module": "Aglib.RingTheory.Kummer.RegularParameterRecognition",
+      "sha256": "d0d998a27b4ada850d82c7cced579693147e334ceeef55015af0bb5fc5ade340",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/RingTheory/Kummer/RootBaseChange.lean",
+      "module": "Aglib.RingTheory.Kummer.RootBaseChange",
+      "sha256": "26207285c58959ca20198b0282311612775d757ad3bfe318c740db65694c63c3",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/RingTheory/Kummer/RootDivisibility.lean",
+      "module": "Aglib.RingTheory.Kummer.RootDivisibility",
+      "sha256": "96969d95c3036c6977c9e1261a8dd864f4e5611e02aa53610ec1258917c29895",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/RingTheory/Kummer/StrictHenselianRootCancellation.lean",
+      "module": "Aglib.RingTheory.Kummer.StrictHenselianRootCancellation",
+      "sha256": "4f20f3586d12135740b0d7b7c73e0ff403fb77695833360ddb69ada5209e58a2",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/RingTheory/Kummer/StrictHenselianRootNormalization.lean",
+      "module": "Aglib.RingTheory.Kummer.StrictHenselianRootNormalization",
+      "sha256": "068242516e333e4ba03a070a406d59a69aecffbb90fe98f971fc2b9062b78be5",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/RingTheory/Kummer/Uniformizer.lean",
+      "module": "Aglib.RingTheory.Kummer.Uniformizer",
+      "sha256": "e33b8c56467c2246ee78ebb99026b3e4f188251595ef55f4529a4de7fd8b836d",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/RingTheory/Nagata/FiniteTypeFieldLocalModel.lean",
+      "module": "Aglib.RingTheory.Nagata.FiniteTypeFieldLocalModel",
+      "sha256": "f0ea587a47b82e5407ef881abf6070604ba3c78d780dfdf3daef5d788fac1c02",
+      "reason": "actual native stock diagnostic source"
+    },
+    {
+      "path": "Aglib/RingTheory/Smooth/SplitSectionCompletion.lean",
+      "module": "Aglib.RingTheory.Smooth.SplitSectionCompletion",
+      "sha256": "261e911f172e1fa2edbcab048be0242e5bc9a0e00aab73ea23dfeaa5804efcad",
+      "reason": "actual native stock diagnostic source"
+    }
+  ],
+  "changed_modules": [
+    "Aglib.Algebra.Category.ModuleCat.ChangeOfRings.RestrictionData",
+    "Aglib.Algebra.Category.ModuleCat.ChangeOfRings.TopComparison",
+    "Aglib.AlgebraicGeometry.Cohomology.BaseChange.NativeRingSections",
+    "Aglib.AlgebraicGeometry.Cohomology.Cech.Finite.ModelComparison",
+    "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology",
+    "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.CounitDegreeZero",
+    "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.CounitNaturality",
+    "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.SectionsCounitHomology",
+    "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Counit",
+    "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.SectionsCounit",
+    "Aglib.AlgebraicGeometry.Compactification.Refinements.RawRefinementBaseChange",
+    "Aglib.AlgebraicGeometry.Compactification.Refinements.RawSourceComposition",
+    "Aglib.AlgebraicGeometry.Descent.FinitePresentation.FiniteTypeArrowLimit",
+    "Aglib.AlgebraicGeometry.Descent.FinitePresentation.Gluing",
+    "Aglib.AlgebraicGeometry.Descent.FinitePresentation.OverBaseGluing",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.FiniteTypeArrowCoefficients",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.BaseChangeIteration",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.IdentitySourceCanonical",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.BaseChangeIdentityTransition",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.IdentitySourceModel",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedBaseChange",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedBaseChangeIdentity",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedBaseChangeIterationComparison",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedBaseChangeIterationPasting",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedBaseChangeNaturality",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedIterationSource",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.NormalizedSourceBC",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawBaseChangeIterationPasting",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawBaseChangeNaturality",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawIdentityBaseChange",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawIterationSource",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawRefinementBaseChangeNaturality",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceBaseChange",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceComposition",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceIsoBefore",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceIsoExchange",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceIsoNaturality",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawSourceIsoPasting",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.SourceBCModel",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.SourceBCNormalization",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.SourceCompositionModel",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.SourceIsoCompatibility",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.BaseChangeIdentityTransition",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.ExceptionalBaseChangeIteration",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.IdentitySourceCanonical",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.IdentitySourceModel",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedBaseChangeIdentity",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedBaseChangeIterationComparison",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedBaseChangeIterationPasting",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedIterationSource",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedSourceBC",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawBaseChangeIterationPasting",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawIdentityBaseChange",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawIterationSource",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawRefinementBaseChangeNaturality",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceBaseChange",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceComposition",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceIsoBefore",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceIsoExchange",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceIsoNaturality",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RawSourceIsoPasting",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.SourceBCModel",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.SourceBCNormalization",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.SourceCompositionModel",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.BoundedClassFiniteConstant",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.BoundedCoefficientClass",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ConstructibleGenericOpen",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.FiniteSurjectiveDescent",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.H0.ConnectedPullbackSections",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.H0.ConstantUnitOfStructureIso",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.H0.UniversallyOpenAmalgamation",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.H1.GeometricallyConnected",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricComparisonEquation",
+    "Aglib.AlgebraicGeometry.FunctionField.HartogsSections",
+    "Aglib.AlgebraicGeometry.FunctionField.SplitSections",
+    "Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.SectionCompleteness",
+    "Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.SectionKernels",
+    "Aglib.AlgebraicGeometry.Modules.InternalHom.DualExact",
+    "Aglib.AlgebraicGeometry.Morphisms.Etale.AffinePointwiseFlatBaseChange",
+    "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.BaseChange.RestrictIso",
+    "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.FiniteFieldPointedGalois",
+    "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisBaseChange",
+    "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GeometricallyConnected",
+    "Aglib.AlgebraicGeometry.Morphisms.Smooth.GenericSectionComponentSpreading",
+    "Aglib.AlgebraicGeometry.Normalization.Affine",
+    "Aglib.AlgebraicGeometry.Normalization.AffineMap",
+    "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.EtaleExtension",
+    "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.GaloisExtension",
+    "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.GaloisRestrictedExtension",
+    "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.GenericPullback",
+    "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.LocalFactor",
+    "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.LocalFactorRootChart",
+    "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.OpenRecoveryAffine",
+    "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RootEmbedding",
+    "Aglib.AlgebraicGeometry.Points.FieldExtensionBoundary",
+    "Aglib.AlgebraicGeometry.Spec.GeometricNeighborhoodPrincipalStages",
+    "Aglib.AlgebraicGeometry.Spec.PowerSeriesFiniteEtaleMaps",
+    "Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsAlgebraComparison",
+    "Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsCoverExtension",
+    "Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsCoverRecovery",
+    "Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsFiniteEtaleMaps",
+    "Aglib.AlgebraicGeometry.Spec.PowerSeriesSectionLifting",
+    "Aglib.AlgebraicGeometry.Spec.RootPrincipalNeighborhoodSpreading",
+    "Aglib.AlgebraicGeometry.Spec.SmoothCompletionOpenPrescribedSection",
+    "Aglib.AlgebraicGeometry.Spec.SmoothCompletionPrescribedSection",
+    "Aglib.AlgebraicGeometry.Spec.SmoothSplitSectionFiniteEtaleMaps",
+    "Aglib.CategoryTheory.Limits.Shapes.KernelCones",
+    "Aglib.FieldTheory.IntermediateField.FiniteCompositum",
+    "Aglib.FieldTheory.IntermediateField.MappedFiniteCompositum",
+    "Aglib.FieldTheory.KummerSubextension",
+    "Aglib.LinearAlgebra.FrobeniusBaseChange",
+    "Aglib.RingTheory.Artinian.NoetherianGenericSplitThickening",
+    "Aglib.RingTheory.Etale.PointwiseFlatBaseChange",
+    "Aglib.RingTheory.Etale.ResidueCompletionIso",
+    "Aglib.RingTheory.Etale.StandardEtaleDomainEmbedding",
+    "Aglib.RingTheory.FiniteType.ArrowSubalgebraColimit",
+    "Aglib.RingTheory.Henselian.PrimitiveRoots",
+    "Aglib.RingTheory.Henselian.StrictHenselization.IntegralClosure",
+    "Aglib.RingTheory.Henselian.StrictHenselization.RootPoint",
+    "Aglib.RingTheory.IntegralClosure.ChangeBaseMap",
+    "Aglib.RingTheory.IntegralClosure.FiniteEtale.LocalFactorGaloisBaseChange",
+    "Aglib.RingTheory.IntegralClosure.FiniteEtale.LocalFactorGeneric",
+    "Aglib.RingTheory.Kummer.DVRRootCancellation",
+    "Aglib.RingTheory.Kummer.HeightOneRootLocalization",
+    "Aglib.RingTheory.Kummer.RegularParameterRecognition",
+    "Aglib.RingTheory.Kummer.RootBaseChange",
+    "Aglib.RingTheory.Kummer.RootDivisibility",
+    "Aglib.RingTheory.Kummer.StrictHenselianRootCancellation",
+    "Aglib.RingTheory.Kummer.StrictHenselianRootNormalization",
+    "Aglib.RingTheory.Kummer.Uniformizer",
+    "Aglib.RingTheory.Nagata.FiniteTypeFieldLocalModel",
+    "Aglib.RingTheory.Smooth.SplitSectionCompletion"
+  ],
+  "scope": "122 actual diagnostic source files plus10 necessary direct API consumers; no foreign D143/facade/README changes owned by this worker",
+  "native_stock_final_scope": "Parent/broker authoritative ready union1294 = original1151 plus closed newD143; separate MAIN47 WIP excluded",
+  "rename_map": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/stock-repair/rename-map.json",
+  "api_changes": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/stock-repair/API-CHANGES.json",
+  "simp_changes": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/stock-repair/simp-changes.json",
+  "coverage_boundary": "Source changes only, no fresh compilation/lint/audit yet. Existing f861 stock failed334/122 on its actual fe6f basis.",
+  "source_manifest_sha256": "af3498a3b5a2d6769ad3ecbc1b9d89f44a29df69ee4d6a07c7447c6576330459"
+}

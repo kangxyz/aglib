@@ -1,0 +1,173 @@
+✔ [4492/4756] Built Aglib.CategoryTheory.Functor.CompositionChoice (1.9s)
+✔ [7962/7996] Built Aglib.CategoryTheory.Functor.CompositionAssociativityTransfer (2.5s)
+✔ [7969/7997] Built Aglib.CategoryTheory.Functor.OpenCompositionCoherence (3.2s)
+✔ [7972/8002] Built Aglib.AlgebraicGeometry.Compactification.Refinements.ArrowEquality (3.8s)
+✔ [7973/8004] Built Aglib.CategoryTheory.Adjunction.UnitRestriction (2.3s)
+✔ [7974/8004] Built Aglib.CategoryTheory.Adjunction.IdentitySourceMate (2.6s)
+✔ [7975/8004] Built Aglib.AlgebraicGeometry.Compactification.Refinements.Composition (4.9s)
+✔ [7976/8004] Built Aglib.CategoryTheory.Adjunction.UnitMateHorizontal (2.4s)
+✔ [7977/8009] Built Aglib.CategoryTheory.Adjunction.PastedRectangle (2.0s)
+✔ [7978/8009] Built Aglib.CategoryTheory.Functor.OpenCompositionPost (3.2s)
+✔ [7979/8009] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.ProperOpen.Mate (5.1s)
+✔ [7980/8009] Built Aglib.CategoryTheory.Adjunction.PastedRectangleNormalization (2.0s)
+✔ [7981/8009] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.ProperOpen.RefinementTarget (4.9s)
+✔ [7982/8016] Built Aglib.CategoryTheory.Functor.FaithfulComposition (3.2s)
+✔ [7983/8016] Built Aglib.AlgebraicGeometry.Compactification.Refinements.TripleComposition (4.7s)
+✔ [7984/8016] Built Aglib.CategoryTheory.Adjunction.PastedRectangleSource (2.2s)
+✔ [7985/8018] Built Aglib.CategoryTheory.Adjunction.NaturalPastedRectangle (3.0s)
+✔ [7986/8022] Built Aglib.CategoryTheory.Adjunction.MixedMateNormalization (2.8s)
+✔ [7987/8022] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.LowerShriekComposition (11s)
+✔ [7988/8022] Built Aglib.AlgebraicGeometry.Compactification.Refinements.TripleCompositionRestriction (4.7s)
+✔ [7989/8022] Built Aglib.CategoryTheory.Adjunction.NaturalPastedRectangleSource (2.4s)
+✔ [7990/8022] Built Aglib.CategoryTheory.Adjunction.MixedMateRestriction (2.8s)
+✔ [7991/8026] Built Aglib.AlgebraicGeometry.Compactification.Refinements.TripleCompositionTotal (4.2s)
+✔ [7992/8026] Built Aglib.AlgebraicGeometry.Compactification.Refinements.CompositionRefinement (11s)
+✔ [7993/8028] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.ProperOpen.Identity (8.8s)
+✔ [7995/8028] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.ProperOpen.Coherence (12s)
+✔ [7996/8028] Built Aglib.CategoryTheory.Functor.ImageCompositionRefinement (3.7s)
+✔ [7997/8028] Built Aglib.AlgebraicGeometry.Compactification.Refinements.TripleCompositionComparison (5.0s)
+✔ [7998/8028] Built Aglib.AlgebraicGeometry.Compactification.Refinements.TripleCompositionArrowTotal (4.6s)
+✔ [7999/8028] Built Aglib.CategoryTheory.Functor.ImageCompositionAssembly (2.8s)
+✔ [8000/8028] Built Aglib.CategoryTheory.Functor.ImageStructuralRectangle (2.4s)
+✔ [8001/8029] Built Aglib.AlgebraicGeometry.Compactification.Refinements.CompositionRestriction (5.1s)
+✔ [8002/8031] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.ProperOpen.Congruence (10s)
+✔ [8003/8034] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.ComparisonFormulas (2.1s)
+✔ [8004/8034] Built Aglib.CategoryTheory.Functor.ImageCompositionRestriction (2.3s)
+✔ [8005/8038] Built Aglib.CategoryTheory.Functor.ChosenImageComparison (1.0s)
+✔ [8006/8041] Built Aglib.CategoryTheory.Functor.ImageFirstRefinement (2.2s)
+✔ [8007/8041] Built Aglib.AlgebraicGeometry.Compactification.Refinements.TripleCompositionRefinement (4.6s)
+✔ [8008/8041] Built Aglib.CategoryTheory.Functor.ImageTargetRefinement (2.4s)
+✔ [8009/8043] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.ProperOpen.VerticalPasting (8.5s)
+✔ [8010/8051] Built Aglib.CategoryTheory.Functor.ImageCompositionMap (2.2s)
+✔ [8011/8054] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.ProperOpen.HorizontalCoherence (15s)
+✔ [8012/8054] Built Aglib.CategoryTheory.Functor.ImageComparisonRestriction (2.1s)
+✔ [8013/8058] Built Aglib.CategoryTheory.Functor.ImageFirstTargetRefinement (2.2s)
+✖ [8014/8058] Building Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.UnitModelComparison (12s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-66f6e88025754162baa64b2e6599b169/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/UnitModelComparison.lean -o /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/UnitModelComparison.olean -i /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/UnitModelComparison.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/UnitModelComparison.c --setup /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/UnitModelComparison.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/UnitModelComparison.lean:36:4: Application type mismatch: The argument
+  moduleCompactificationMixedTransition Λ (𝟙 C)
+has type
+  moduleCompactificationValue Λ C ⟶ moduleCompactificationValue Λ C
+but is expected to have type
+  moduleCompactificationFunctor f Λ C ⟶ moduleCompactificationValue Λ C
+in the application
+  @asIso ((moduleTorsionCohomologyPlus X Λ).FullSubcategory ⥤ DerivedCategory.Plus (ModuleSheaf S Λ)) Functor.category
+    (moduleCompactificationFunctor f Λ C) (moduleCompactificationValue Λ C)
+    (moduleCompactificationMixedTransition Λ (𝟙 C))
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  Functor.rightDerivedFunctorPlus ↦ 34
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/UnitModelComparison.lean:46:6: Type mismatch
+  (moduleCompactificationSingleModelIso f Λ D hD).hom ≫ moduleCompactificationMixedTransition Λ a
+has type
+  moduleCompactificationFunctor.{u, wX, wS, wD} f Λ D ⟶ moduleCompactificationValue Λ C
+but is expected to have type
+  moduleCompactificationFunctor.{u, wX, wS, wM} f Λ D ⟶ ?m.41
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  Functor.rightDerivedFunctorPlus ↦ 34
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/UnitModelComparison.lean:61:47: Application type mismatch: The argument
+  moduleCompactificationSingleModelIso f Λ C hC
+has type
+  moduleCompactificationFunctor.{u, wX, wS, wC} f Λ C ≅ moduleCompactificationValue Λ C
+but is expected to have type
+  moduleCompactificationFunctor.{u, wX, wS, wM} f Λ C ≅ moduleCompactificationValue Λ C
+in the application
+  moduleExceptionalDirectImagePlusIso f Λ C ≪≫ moduleCompactificationSingleModelIso f Λ C hC
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  Functor.rightDerivedFunctorPlus ↦ 34
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/UnitModelComparison.lean:84:13: Unknown identifier `moduleCompactificationSingleModelIso_refinement`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/UnitModelComparison.lean:83:54: unsolved goals
+X S : Scheme
+f : X ⟶ S
+inst✝⁵ : QuasiCompact f
+Λ : Type (u + 1)
+inst✝⁴ : Ring Λ
+hX : HasDerivedCategory (ModuleSheaf X Λ)
+hS : HasDerivedCategory (ModuleSheaf S Λ)
+models : (C : Hom.DenseCompactification f) → HasDerivedCategory (ModuleSheaf C.Xbar Λ)
+inst✝³ : CompactSpace ↥S
+inst✝² : QuasiSeparatedSpace ↥S
+inst✝¹ : IsSeparated f
+inst✝ : LocallyOfFiniteType f
+C D : Hom.DenseCompactification f
+a : C ⟶ D
+hC : HasDerivedCategory (ModuleSheaf C.Xbar Λ)
+hD : HasDerivedCategory (ModuleSheaf D.Xbar Λ)
+⊢ (moduleExceptionalSingleValueIso f Λ D hD).hom ≫ moduleCompactificationMixedTransition Λ a =
+    (moduleExceptionalSingleValueIso f Λ C hC).hom
+✔ [8018/8066] Built Aglib.CategoryTheory.Functor.CartesianImageNaturality (2.5s)
+✔ [8019/8066] Built Aglib.CategoryTheory.Functor.ImageCompositionPrewhisker (2.3s)
+✔ [8020/8066] Built Aglib.AlgebraicGeometry.Compactification.Refinements.TripleCompositionFirst (4.0s)
+✔ [8021/8067] Built Aglib.CategoryTheory.Functor.ImageInterchangeAssociativity (2.9s)
+✔ [8022/8067] Built Aglib.CategoryTheory.Functor.ImageRightRoute (2.8s)
+✔ [8023/8070] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.ProperOpen.Comparison (31s)
+✔ [8024/8072] Built Aglib.CategoryTheory.Functor.ImageCompositionTarget (2.2s)
+✔ [8025/8072] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.DirectImageContraction (6.1s)
+✔ [8026/8072] Built Aglib.CategoryTheory.Functor.ImageInterchangeAssembly (2.6s)
+✔ [8027/8072] Built Aglib.AlgebraicGeometry.Compactification.Refinements.TripleCompositionSquares (4.3s)
+✔ [8028/8072] Built Aglib.CategoryTheory.Functor.ImageCompositionTransport (2.3s)
+✔ [8029/8072] Built Aglib.CategoryTheory.Functor.ImageLeftRoute (2.9s)
+✔ [8030/8079] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CartesianCompositionIdentity (11s)
+✔ [8031/8079] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.LowerShriekCompositionCoherence (10s)
+✔ [8032/8079] Built Aglib.CategoryTheory.Functor.ImageRightOpenTransport (2.4s)
+✔ [8033/8079] Built Aglib.CategoryTheory.Functor.ImageInterchangeHorizontal (2.2s)
+✔ [8034/8100] Built Aglib.CategoryTheory.Functor.ImageRightRealization (2.4s)
+✔ [8050/8100] Built Aglib.CategoryTheory.Functor.ImageTripleComposition (4.4s)
+✔ [8052/8100] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.ProperOpen.MateNormalization (8.8s)
+✔ [8053/8100] Built Aglib.CategoryTheory.Functor.ImageTripleCompositionPredicate (3.5s)
+✔ [8054/8100] Built Aglib.AlgebraicGeometry.Compactification.Refinements.TripleCompositionComparisonSquares (4.4s)
+✔ [8055/8100] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.OpenComposition (8.4s)
+✔ [8056/8100] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionModel (14s)
+✔ [8057/8101] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.ProperOpen.RefinementRectangle (22s)
+✔ [8058/8104] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionHorizontalPasting (8.9s)
+✔ [8059/8104] Built Aglib.CategoryTheory.Functor.ImageCartesianComposition (3.8s)
+✔ [8060/8104] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.IdentityAmbientComparison (7.0s)
+✔ [8061/8106] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawComparisonCongruence (8.4s)
+✔ [8063/8106] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionRefinementDirectImage (7.5s)
+✔ [8064/8212] Built Aglib.CategoryTheory.Functor.IsoSquarePostcompose (1.8s)
+✔ [8160/8212] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionRefinement (13s)
+✔ [8162/8212] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionInterchange (11s)
+✔ [8163/8212] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.ProperOpen.TorsionCoherence (17s)
+✔ [8165/8212] Built Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.FieldSections (5.3s)
+✔ [8166/8212] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.FamilyModelComparison (19s)
+✔ [8168/8214] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionRefinementHorizontal (14s)
+✔ [8171/8221] Built Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Unbounded.FieldSections (4.8s)
+✔ [8178/8221] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.FamilyModelDiagram (15s)
+✔ [8179/8221] Built Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.GeometricStalk (4.1s)
+✔ [8180/8298] Built Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Unbounded.GeometricStalk (5.4s)
+✔ [8448/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.FamilyModelComparison (12s)
+✔ [8450/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.TripleHorizontalOpenTransport (63s)
+✔ [8451/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Unbounded.GeometricFiber (11s)
+✔ [8452/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CartesianFirstRectangle (43s)
+✔ [8453/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.FamilyCongruence (9.5s)
+✔ [8454/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CartesianFirstStructural (8.3s)
+✔ [8455/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.FamilyArrowComparison (9.1s)
+✔ [8458/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Unbounded.SingleGeometricFiber (15s)
+✔ [8459/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionModelMaps (82s)
+✔ [8460/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.TripleTotalArrowComparison (95s)
+✔ [8461/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.TripleOpenContraction (129s)
+✔ [8462/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionRefinementFaces (52s)
+✔ [8463/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionMixedRefinementFaces (72s)
+✔ [8464/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionTripleInterchange (251s)
+✔ [8465/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionRefinementAdapters (143s)
+✔ [8466/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CartesianCompositionMap (10s)
+✔ [8467/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CartesianUnderlyingMap (18s)
+✔ [8468/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CartesianFirstHorizontal (32s)
+✔ [8469/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionMixedRefinementWhole (169s)
+✔ [8470/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.TripleCartesianMaps (25s)
+✔ [8471/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CartesianCompositionCanonical (56s)
+✔ [8472/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionRefinementCube (69s)
+✔ [8473/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionSingleTarget (29s)
+✔ [8474/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.Composition (17s)
+✔ [8478/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CartesianFirstCube (52s)
+✔ [8479/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CartesianFirstNaturality (54s)
+✔ [8480/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CartesianFirstTargetComparison (29s)
+✔ [8484/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.TripleCartesianLeftRoute (208s)
+✔ [8485/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.TripleCartesianRightRoute (218s)
+✔ [8486/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.TripleRawComposition (415s)
+✔ [8487/8489] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.TripleCartesianComposition (78s)
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.UnitModelComparison
+error: build failed

@@ -76,23 +76,50 @@ public versions, twelve accepted W07 correspondences and eighteen migrated
 W03/W13 clauses. This is an original-scope disposition, not a new mathematical
 status or an assertion that the later six-operation programme is complete.
 
-The current admitted C/D cut contains 1,151 checking source versions: the
-selected 863 and the remaining 288 actual source changes. GenericPullback is
-already public; canonical public Field and PowerDescent versions remain
-unchanged. The combined source and family metadata are committed at
-`1183f1d8`; the normal peer merge is `621d14bb`. The user-requested source checkpoint publishes this admitted cut while its
-remaining final package predicates continue on their actual source snapshots. All 288 tail files have
-bound successful production compilation. The only selected consumer of the
-seventeen public-provider replacements, CoefficientTransport, already has a
-matching pass on its full native input. No extra affected compiler invocation
-is assigned merely because these sources are assembled together.
+The first admitted C/D source cut was published in the user-requested
+checkpoint `c4880830`, preserving the concurrent peer commit `cdcb8825`.
+Its 1,151 checking source versions comprise the selected 863 and the remaining
+288 actual source changes. GenericPullback was already public; canonical public
+Field and PowerDescent remain unchanged. All 288 tail files have bound
+successful production compilation. The only selected consumer of the seventeen
+public-provider replacements, CoefficientTransport, has a matching pass on its
+full native input.
 
 The stalk comparison and bounded-below and unbounded Cartesian
 identity/iteration consumers have successful compilation after the
 duplicate-header repairs. The earlier 713-module approved-axiom check and the
 later OpenTopClass.Source check are retained on their actual inputs. The
-coherent stock check and genuinely uncovered tail predicates remain in progress;
-successful compilation alone is not their result.
+coherent 1,151-module import and uncovered 222-module axiom checks passed on
+their recorded input. The unfiltered stock check found 334 diagnostics in 122
+admitted sources: missing documentation, definition naming, redundant simp
+registrations and unused arguments. The repair covers 132 actual source and
+consumer paths. Its fourteen same-proof premise minimizations, rename
+correspondence and retained equations have ordinary mathematical review;
+current compilation and the failed stock predicate retain separate results.
+
+The integrated publication input now contains 1,714 checking versions: the
+first 1,151, 143 completed exceptional-composition/compact-support/coproduct
+sources, three existing public implementation-import repairs, and 417 further
+completed composition/normalization/localization/fibre sources. All 132
+stock-repair paths already belong to the first 1,151. The earlier 1,297 input
+was the same set before those 417 additions; the 1,294/1,304 estimates were
+superseded by this explicit set reconciliation. All constituent mathematical
+derivations and current source branches have ordinary review and bound
+production compilation. The actual publication-context builds and their
+header/whitespace continuations retain separate input identities.
+
+Native source policy, generated entries, production compilation and source
+style have passed, with compatible earlier successes retained. The first full
+1,714-version stock run exposed 176 additional documentation, naming and
+redundant-simp diagnostics in 64 sources. Their types, proof bodies, equations
+and model choices were preserved while the metadata was repaired. The current
+source's affected compilation and style checks passed. The final coherent
+import and unfiltered stock check passed on `f259b0e2`, with all fifteen
+standard linters passing. Approved-axiom coverage is retained on its recorded
+proof-identical inputs. Exact vectors, transformations and invocation results
+in the owning evidence cases govern acceptance; source counts are not proof
+or completion percentages. Final Git publication is recorded by its actual
+commit, independently of a later hosted CI run.
 
 The selected source vector and execution evidence are under
 `intake/latest-cd-20261101/` in the research workspace. The 1,133-path earlier
@@ -102,26 +129,39 @@ repair or companion paths outside that earlier vector. Two of those 290 are
 the retained public Field and PowerDescent versions. These are source
 dispositions, not remaining theorem counts.
 
-Closure of this admitted cut does not by itself settle every inherited C/D
-claim. The retained 1,397-claim join still contains unassessed semantic
-correspondences. The original D ExactFunctorBounds result is already a direct
+The earlier 1,397-claim path join contains historical unassessed semantic
+correspondences; it is not the current completion ledger. Current result and
+consumer correspondences govern this delivery. The original D
+ExactFunctorBounds result is already a direct
 consequence of the current exact-functor homology comparison under the same
 hypotheses; its historical filename is not a missing mathematical input.
 The original residue-fibre dimension and geometric proper-exchange claims
 also have actual current realizations.
 
-Three completed D consumer families still require their current integration:
-exceptional composition and associativity, compact-support geometric-fibre
-and single comparisons, and arbitrary coproduct preservation for the same
-unbounded exceptional functor. These are additional laws and consumers of
-existing operations, rather than new six-operation existence targets. Their
-source adaptation, ordinary review and coupled compiler repair proceed in
-the separate main integration checkout while this admitted cut is published.
+The original exceptional-composition/associativity, literal compact-support
+fibre and arbitrary-coproduct targets are implemented in the 143-source cut.
+The additional given-Cartesian compact-support family is also complete in its
+seven necessary sources, with ordinary mathematical review and current compiler
+coverage; these seven belong to the 417-source addition after the earlier
+1,297-version cut.
+The coupled bounded/unbounded unital-composition, horizontal-exchange,
+independent-model normalization, canonical exceptional-to-ordinary map and
+full localization-triangle consumers are now included in the integrated
+input. Their source branches and mathematical correspondence are closed with
+the displayed conditions, connecting arrows and original unit/counit maps.
+They are completed inherited results, not new six-operation existence targets.
 The fixed source packets and current-supplier correspondences are under
 `intake/latest-cd-20261101/resume-20261101/remaining/` in the research workspace.
-The latest C source supersedes the older C packet. Reconcile the remaining
-inherited D bindings without reintroducing superseded C sources or unfinished
-theory; a historical path or unjoined receipt alone is not a proof gap.
+The retained graph accounts for all 951 inherited completed-D source paths:
+869 feed the 47 terminal routes and 82 have exact D164 origin bindings. The
+thirteen current and four stronger-corollary mathematical correspondences
+have independent ordinary review. This is programme coverage, not a new
+951-theorem proof or a literal-file-copy mandate. D1130 retains its known
+claimed-hash/available-archive mismatch; its actual available mathematical
+endpoint has been reviewed against current source. The latest C source
+supersedes the older C packet. A historical path or unjoined receipt alone is
+not a proof gap. The draft-dependent GenericLocalPointedExtension and the
+original unaccepted/draft sources remain outside the admitted implementation.
 
 Hosted CI on the public branch at `26d14b24` passed in
 [run 41300447153](https://github.com/kangxyz/aglib/actions/runs/41300447153).
