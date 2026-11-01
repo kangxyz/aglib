@@ -72,3 +72,7 @@ the original germ. No properness of the scheme map, Noetherianity, completeness,
 or flatness is required. The
 [finite-etale good-open construction](../Morphisms/FiniteEtale/Adic/CoherentGoodOpens.lean)
 uses this proper-ideal condition in the finite local etaleness criterion.
+
+[GenericPoint](GenericPoint.lean) identifies the image of the zero prime
+under the actual local-spectrum map with the generic point of an integral
+scheme.

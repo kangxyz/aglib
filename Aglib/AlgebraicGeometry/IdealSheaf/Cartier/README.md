@@ -42,3 +42,7 @@ adapters retain the same original ideal module and canonical maps.
 
 Interface source: R5 packet revision `f8a3314ddecffcada2ec721d26d56a937bed9690`,
 `R5Lab.Aglib.AlgebraicGeometry.Divisors.Cartier.{Interfaces,Restriction}`.
+
+[Dimension](Dimension.lean) proves the original codimension-one stalk-kernel
+and effective-Cartier criteria under its displayed integral, regular,
+locally Noetherian, dimension and proper-subset hypotheses.

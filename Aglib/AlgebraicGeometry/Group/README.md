@@ -105,3 +105,7 @@ multiplication étale for a smooth commutative field group when `n` is a unit.
 retain the general finite-surjective homomorphism flatness and finite-kernel
 interfaces; positive-level projective conclusions belong to
 [AbelianScheme/OverField](../AbelianScheme/README.md).
+
+[Translation/Incidence](Translation/Incidence.lean) constructs the original
+translation incidence pullback over any base. Its closed-point comparison
+retains reduced source and Jacobson ambient hypotheses.

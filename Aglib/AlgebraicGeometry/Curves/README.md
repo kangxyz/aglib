@@ -164,3 +164,27 @@ the actual generic fibre and relative normalization to construct a curve, a
 finite dominant map, an open immersion and the original cartesian square.
 For a finite closed complement, including the empty set, the actual inverse
 image is finite and closed. Étaleness at the boundary is not asserted.
+
+The based [theta family](Jacobian/Theta/Principal.lean) uses the original
+ordered Abel image and its actual positive Cartier ideal. Over algebraically
+closed constants at positive genus, with the stated origin and supplied
+representatives, its original line-bundle morphism is monic with trivial
+scheme kernel and its line bundle is ample. The principal isomorphism still
+requires `finrank k (structureCohomology k J 1) ≤ finrank k
+(Cotangent.Space η[J])`; its inverse is the original Abel pullback followed
+by inversion. [IntrinsicCartier](Jacobian/Theta/IntrinsicCartier.lean)
+keeps the origin-free positive ordered image on the degree stratum. Its
+Kleiman Euler polynomial uses the inverse line bundle and is
+`m * deg O(1) + 1 - g - d`; no unreduced Hilbert-image identification is
+asserted. [GenusZero](Jacobian/Theta/GenusZero.lean) instead gives the original
+identity component isomorphic to the base over any field, without an origin.
+
+The supporting [effective classes](Picard/EffectiveClass.lean) and
+[uniqueness](Picard/EffectiveClass/Uniqueness.lean), [positive family](Abel/BoundedFamily/Positive.lean),
+[parameters](Abel/BoundedFamily/PositiveParameters.lean),
+[tuple classes](Abel/BoundedFamily/PositivePoints.lean),
+[repeated divisors](Abel/RepeatedDivisor.lean), [evaluation degree](Abel/EvaluationDegree.lean),
+[finite Cartier reducedness](Abel/FiniteCartierReduced.lean),
+[rank-one support](Abel/RankOneSupport.lean), [rank-one family](Abel/RankOneFamily.lean)
+and [section bound](RiemannRoch/SectionBound.lean) retain their original
+objects and the displayed geometric, finiteness and vanishing hypotheses.
