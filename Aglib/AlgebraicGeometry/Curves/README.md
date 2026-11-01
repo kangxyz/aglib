@@ -188,3 +188,10 @@ The supporting [effective classes](Picard/EffectiveClass.lean) and
 [rank-one support](Abel/RankOneSupport.lean), [rank-one family](Abel/RankOneFamily.lean)
 and [section bound](RiemannRoch/SectionBound.lean) retain their original
 objects and the displayed geometric, finiteness and vanishing hypotheses.
+
+[OriginIndependence](Jacobian/Theta/OriginIndependence.lean) proves the
+whole Abel change-of-origin translation law over any field for two actual
+origins and the same supplied representative. Independence of the original
+Picard pullback and principal isomorphism retains algebraic closedness,
+positive genus, the stated second representative hypotheses and the original
+coherent-H¹ inequality. Arbitrary-field descent remains separate.

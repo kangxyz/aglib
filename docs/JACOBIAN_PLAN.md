@@ -379,9 +379,12 @@ For genus zero over any field the original Jacobian is isomorphic to the
 base without choosing an origin or a negative-degree theta divisor. See
 [theta sources](../Aglib/AlgebraicGeometry/Curves/README.md).
 
-Origin independence and descent remain separate obligations. In particular,
-this does not assert a theta line bundle on `J` defined over an arbitrary
-ground field. [Milne JVs](REFERENCES.md#milne2021jacobianvarieties),
+The whole Abel change-of-origin translation law holds over any field for
+two actual origins. Independence of the original Picard pullback and
+principal isomorphism is supplied under the same algebraically closed,
+positive-genus and coherent-H¹ hypotheses. Arbitrary-field descent remains
+open; this does not assert a theta line bundle on `J` defined over an
+arbitrary ground field. [Milne JVs](REFERENCES.md#milne2021jacobianvarieties),
 5.1 and 6.6–6.11, remains a source locator with its actual hypotheses.
 
 Construct the Weil pairing first on the actual `n` kernels of an abelian
@@ -436,7 +439,7 @@ close the planned programme.
 | D2–D6 | **Partial source supplied:** module trace and smaller-open compatibility, exact finite-module dualization, finite biduality, and constant-coefficient perfectness in degrees 0 and 2 with transposes, for finite complement including empty and positive invertible `n`. Original one-point module Ext purity and Kummer trace-one normalization are supplied; the original finite-lcc roots internal-Hom/Ext comparison is supplied under its field and level hypotheses; finite point-support roots Ext and its whole trace sum are supplied; degree-one and general lcc perfectness, general-coefficient purity, finite-pushforward compatibility and comparison source/connecting and cup laws remain open. |
 | D7 | **Open:** constructible devissage/local comparison, with the unchecked Milne EC reference and alternative Artin route kept explicit. |
 | W1 | **Partial source supplied:** the same Poincaré pair and original line-bundle morphism, with locally Noetherian classification; an ample original `φ_L` is finite. Dual properness, smoothness, dimension, geometric integrality, projectivity and finite-flat surjectivity are conditional on the original coherent-H¹ inequality `finrank H¹(O_A) ≤ finrank Cotangent(unit_A)` and the displayed source assumptions. Conditional homogeneity and source multiplication laws hold when the actual dual component is proper and geometrically integral. The original bidual map and its naturality/line-bundle laws are supplied with a second representative; the coherent-H¹ inequality, unconditional dual geometry, bidual isomorphism, general dual homomorphisms and character descent remain open. |
-| W2–W3 | **Partial source supplied:** based positive-genus theta Cartier geometry, monicity, trivial scheme kernel and ampleness; principal isomorphism retains the original coherent-H¹ inequality. Genus zero has the separate any-field trivial-Jacobian theorem. Origin independence, descent and general Weil pairing remain open. |
+| W2–W3 | **Partial source supplied:** based positive-genus theta Cartier geometry, monicity, trivial scheme kernel and ampleness; principal isomorphism retains the original coherent-H¹ inequality. Genus zero has the separate any-field trivial-Jacobian theorem. The any-field Abel origin-change law and conditional principal-isomorphism independence are supplied; arbitrary-field descent and general Weil pairing remain open. |
 | W4 | **Open:** original-map and sign comparison of Yoneda, cup, Kummer, Abel–Jacobi, Cartier and polarization constructions. |
 
 ## Work order and source obligations

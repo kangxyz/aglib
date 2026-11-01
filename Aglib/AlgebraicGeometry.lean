@@ -1318,6 +1318,7 @@ public import Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.IntrinsicTranslation
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.NonSpecial
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.NonSpecialOpen
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.OrderedUniversal
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.OriginIndependence
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.Principal
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.RankOne
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.RationalEvaluation
