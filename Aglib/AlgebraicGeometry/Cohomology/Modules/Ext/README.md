@@ -96,3 +96,10 @@ precomposition agrees with the original Mayer–Vietoris boundary in all
 degrees; the whole five-arrow comparison, biproduct restrictions and top-open
 unit normalization retain their original maps. This generic result does not
 establish geometric Künneth or the dual coherent-H¹ bound.
+
+[OpenPullback](OpenPullback.lean) identifies the whole original open Ext
+comparison with geometric open cohomology pullback for flat scheme maps,
+using the original coefficient mate and exact-functor Ext map. Its generator,
+top-unit, identity and composition laws hold for arbitrary scheme maps; the
+cohomological comparison retains flatness. No quasicoherence or field
+hypothesis is needed.

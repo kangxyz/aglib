@@ -195,8 +195,10 @@ Before native perfectness, supply the following maps and their diagrams:
    supplies the original one-point supported module Ext in every degree,
    including the supported class mapping to the original Kummer boundary of
    the point bundle with trace one, over algebraically closed constants at
-   positive invertible levels. Extend this to the finite-set
-   and general-coefficient local comparisons needed by the subsequent route.
+   positive invertible levels. [Finite point support](../Aglib/AlgebraicGeometry/EtaleCohomology/Duality/PointPurity/Finite.lean)
+   supplies the same native finite-source Ext decomposition and whole
+   support-forgetting and trace sum, including empty support. General
+   coefficient local comparisons remain a separate obligation.
 4. Finite pushforward and pairing/trace compatibility, with the finite-map or
    finite-étale hypotheses needed by each constituent.
 5. Exact dualization into `ZMod n` and the unsigned source-extension squares
@@ -279,9 +281,9 @@ roots H¹ with rational torsion on the same supplied `P,R,J`. See
 The open-curve target remains `#H¹(U, Z/n) = n^(2g + #D - 1)`.
 
 The open target retains algebraically closed `k`, positive invertible `n`,
-and `D.Nonempty`. It still needs the actual finite-sum point-purity and
-localization comparison, or compact-support localization followed by duality;
-the proper Picard/Kummer table alone does not compute it. [Stacks](REFERENCES.md#stacksproject), 0C1Z and 0AMB, supplies
+and `D.Nonempty`. The finite-support sum is supplied, but its remaining
+localization and cardinality argument is still needed; the proper
+Picard/Kummer table alone does not compute it. [Stacks](REFERENCES.md#stacksproject), 0C1Z and 0AMB, supplies
 source locators for this branch, with their actual hypotheses retained.
 
 The original Picard sheaf and supplied representative admit contravariant
@@ -405,7 +407,7 @@ close the planned programme.
 | B3–B4 | **Field source supplied:** normalized and rigidified families, projective geometrically integral group cube, square and multiplication laws; the unrestricted relative cube remains open. |
 | B5 | **Source supplied over every field:** same `P,R,J` projectivity and positive multiplication rank `n^(2*g)`. |
 | B6–B7 | **Partial source supplied:** positive multiplication and its native kernel have rank `n^(2*g)` over every field; at unit levels geometric degree and torsion counts and noncanonical native-action basis existence are supplied through all-divisor counts. Proper roots and constant H¹ have cardinality `n^(2*g)` and noncanonical native-action bases over algebraically closed constants at positive invertible levels; the open-curve rank remains open. |
-| D2–D6 | **Partial source supplied:** module trace and smaller-open compatibility, exact finite-module dualization, finite biduality, and constant-coefficient perfectness in degrees 0 and 2 with transposes, for finite complement including empty and positive invertible `n`. Original one-point module Ext purity and Kummer trace-one normalization are supplied; the original finite-lcc roots internal-Hom/Ext comparison is supplied under its field and level hypotheses; degree-one and general lcc perfectness, finite-set purity, finite-pushforward compatibility and comparison source/connecting and cup laws remain open. |
+| D2–D6 | **Partial source supplied:** module trace and smaller-open compatibility, exact finite-module dualization, finite biduality, and constant-coefficient perfectness in degrees 0 and 2 with transposes, for finite complement including empty and positive invertible `n`. Original one-point module Ext purity and Kummer trace-one normalization are supplied; the original finite-lcc roots internal-Hom/Ext comparison is supplied under its field and level hypotheses; finite point-support roots Ext and its whole trace sum are supplied; degree-one and general lcc perfectness, general-coefficient purity, finite-pushforward compatibility and comparison source/connecting and cup laws remain open. |
 | D7 | **Open:** constructible devissage/local comparison, with the unchecked Milne EC reference and alternative Artin route kept explicit. |
 | W1 | **Partial source supplied:** the same Poincaré pair and original line-bundle morphism, with locally Noetherian classification; an ample original `φ_L` is finite. Dual properness, smoothness, dimension, geometric integrality, projectivity and finite-flat surjectivity are conditional on the original coherent-H¹ inequality `finrank H¹(O_A) ≤ finrank Cotangent(unit_A)` and the displayed source assumptions. Conditional homogeneity and source multiplication laws hold when the actual dual component is proper and geometrically integral. The coherent-H¹ inequality, unconditional dual geometry, biduality, general dual homomorphisms and character descent remain open. |
 | W2–W3 | **Open:** [Cartier theta geometry, canonical principal polarization and general Weil pairing](#theta-principal-polarization-and-weil-pairing), with all-positive-level group-scheme and prime-to-characteristic point conclusions distinguished. |

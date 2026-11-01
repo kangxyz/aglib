@@ -1724,6 +1724,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.Linear
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.MayerVietoris
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.Open
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.OpenKernel
+public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.OpenPullback
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.Pullback
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.Restriction
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.Scalars
@@ -2625,6 +2626,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekDirectI
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PairingRestriction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PairingTranspose
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PointPurity
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PointPurity.Finite
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.Trace
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.TracePairing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.YonedaPairing
@@ -2981,6 +2983,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant.Cover
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant.Naturality
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant.Sections
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.LowerShriekCohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.ModuleCohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.ModuleRootsComposition
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.PowerFiber
