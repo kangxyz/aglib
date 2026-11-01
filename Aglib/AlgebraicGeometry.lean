@@ -1658,6 +1658,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.Fiel
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteConstantCharts
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteEtaleImage
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteEtaleProduct
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteEtaleTrivialization
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GaloisAction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GaloisActionMaps
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GaloisInvariantSections
@@ -1821,6 +1822,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CyclicCoefficientSe
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CyclicVanishing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.EtaleDimensionOne
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteClosedSupport
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteCoefficientsVanishing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteConstantReduction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteSupportDiagram
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteSupportExhaustion
@@ -1889,8 +1891,10 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.HorizontalComposit
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.OriginalDivisibility
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.PullbackIsomorphism
 public import Aglib.AlgebraicGeometry.EtaleCohomology.DirectImage
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.CoefficientExactness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.CompactSupportPairing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantCoefficients
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantOnePerfectness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantPerfectness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LocallyConstantExt
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekCohomology
@@ -2185,6 +2189,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Coeffici
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.ProperHenselian
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Representatives
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ContinuousTorsors
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.CyclicKilling
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.DegreeZeroPullback
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.EtaleRestriction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ExtensionFiberClass

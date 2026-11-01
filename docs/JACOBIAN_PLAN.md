@@ -219,6 +219,16 @@ proper curve over algebraically closed constants, including finite empty
 boundary. It does not assert étaleness at the boundary or complete general
 locally constant perfectness.
 
+Native foundations now supply actual finite étale H¹ killing covers,
+finite-locally-constant trivializations, proper-curve finite-coefficient
+vanishing above degree two, and the original lower-shriek counit and unsigned
+source-boundary squares. The degree-zero and degree-one chases retain their
+actual component-map and vanishing premises. Unconditional proper degree-zero
+and degree-one perfectness still needs the same finite-pushforward trace
+comparison isomorphism and its degree-two/zero pairing square. See
+[curve sources](../Aglib/AlgebraicGeometry/EtaleCohomology/Curves/README.md)
+and [duality](../Aglib/AlgebraicGeometry/EtaleCohomology/Duality/README.md).
+
 The selected native route studies the transpose
 `ψ^s(F) : Ext^s(F, μ_n) → H_c^(2-s)(F)^∨`. Use a source short exact
 sequence `K → B → F` with `B` a finite étale pushforward of a finite free

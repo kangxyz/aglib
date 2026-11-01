@@ -79,3 +79,11 @@ cardinality `n^(2*g)` over an algebraically closed field for positive `n`
 invertible in the field. Each has noncanonical coordinates and a basis for
 its native `ZMod n` action, including level one and genus zero. This makes no
 `ZMod 1` finrank or canonical or Galois-equivariant basis assertion.
+
+[FiniteCoefficientsVanishing](FiniteCoefficientsVanishing.lean) proves
+original cohomology and module-unit Ext vanish in degrees above two for
+finite-type locally constant native coefficients on a smooth proper
+geometrically connected curve over an algebraically closed field, at
+positive field-invertible level. Its Sylow trace argument does not assume
+that the original trivializing cover has coprime degree. This is a proper
+curve result.

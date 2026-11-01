@@ -90,3 +90,8 @@ actual small-etale sites. These retain the selected source-specific topos data
 and the original actions, pullbacks and translation maps.
 [Kummer/RootStalk](../Kummer/RootStalk.lean) selects intrinsic fibre evaluation
 for the root-stalk action and proves its original root-marked scalar formula.
+
+[CyclicKilling](CyclicKilling.lean) constructs an actual surjective finite
+étale cover killing an original H¹ class of a finite locally constant
+abelian sheaf on any scheme. On a connected base it gives a connected Galois
+refinement.
