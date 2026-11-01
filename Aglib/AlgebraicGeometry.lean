@@ -992,6 +992,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.DegreeZero
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.Exact
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.Invertible
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.Linear
+public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.MayerVietoris
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.Open
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.OpenKernel
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.Pullback
@@ -1263,6 +1264,7 @@ public import Aglib.AlgebraicGeometry.Curves.Jacobian.Dimension
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.Etale
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.FiniteFlat
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.IdentityComponent
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.Kummer
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.LineBundle
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.Multiplication
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.PicardScheme
@@ -1856,6 +1858,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PrimePowerReduction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PrimeToCharacteristicDegreeTwo
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PrimeToCharacteristicVanishing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.Proper
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.Rank
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ResidueFiber
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ResidueFiberDimension
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ResidueRootsVanishing
@@ -3099,6 +3102,7 @@ public import Aglib.AlgebraicGeometry.Modules.Generators.GlobalSections
 public import Aglib.AlgebraicGeometry.Modules.Generators.LocalLifting
 public import Aglib.AlgebraicGeometry.Modules.Generators.OpenFreeFunctor
 public import Aglib.AlgebraicGeometry.Modules.Generators.OpenFreeStalk
+public import Aglib.AlgebraicGeometry.Modules.Generators.Pullback
 public import Aglib.AlgebraicGeometry.Modules.IdealPowers.AffineEvaluation
 public import Aglib.AlgebraicGeometry.Modules.IdealPowers.AffinePushforward
 public import Aglib.AlgebraicGeometry.Modules.IdealPowers.AffineQuotientChart

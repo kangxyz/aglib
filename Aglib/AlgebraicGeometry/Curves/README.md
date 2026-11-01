@@ -150,3 +150,9 @@ Abel map to the same identity component and its inclusion equation.
 [AbelCurve](Jacobian/AbelCurve.lean) uses the original rational origin and
 represents the based curve map; its classifying formula is on represented
 locally Noetherian tests.
+
+[Jacobian/Kummer](Jacobian/Kummer.lean) identifies the original proper
+Kummer H¹ map with rational torsion on the same supplied `P,R,J`, over an
+algebraically closed field at positive invertible level. The whole inclusion
+into the supplied Picard representative retains the original Picard point
+and Kummer maps.

@@ -89,3 +89,10 @@ for an actual line bundle on a field scheme. The equivalence
 `Ext⁰(L, M) ≃ₗ[K] H⁰(M tensor L.dual)` uses the original structural field
 scalar action. Its lower tensor equivalence works on arbitrary schemes in
 [DualTensorEquivalence](../../../Modules/Invertible/DualTensorEquivalence.lean).
+
+[MayerVietoris](MayerVietoris.lean) constructs the original module-open short
+exact sequence with maps `(iU,-iV)` and `(jU,jV)`. Unsigned source-extension
+precomposition agrees with the original Mayer–Vietoris boundary in all
+degrees; the whole five-arrow comparison, biproduct restrictions and top-open
+unit normalization retain their original maps. This generic result does not
+establish geometric Künneth or the dual coherent-H¹ bound.
