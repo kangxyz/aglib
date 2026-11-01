@@ -2585,6 +2585,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericUnitTuple
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.HigherImageAffineCriterion
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.LowDegree
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.OnePointRestriction
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.OpenRank
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PointSupportedClosedUnit
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PointSupportedFactor
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PointSupportedSections

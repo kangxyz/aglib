@@ -87,3 +87,12 @@ geometrically connected curve over an algebraically closed field, at
 positive field-invertible level. Its Sylow trace argument does not assume
 that the original trivializing cover has coprime degree. This is a proper
 curve result.
+
+[OpenRank](OpenRank.lean) gives original roots and constant H¹ cardinality
+`n^(2*g + #D - 1)` for the actual open complement of a finite nonempty set
+of closed points in a smooth proper geometrically connected curve over an
+algebraically closed field, at positive invertible `n`. Its original
+restriction, unsigned boundary and kernel-of-sum laws also allow empty
+support. Composite levels, level one and genus zero are included. No
+splitting, free basis or canonical or Galois-equivariant coordinates are
+asserted.
