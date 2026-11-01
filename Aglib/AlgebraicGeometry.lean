@@ -1857,6 +1857,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.Fiel
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FieldSections
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteConstantCharts
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteEtaleImage
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteEtalePresentation
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteEtaleProduct
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteEtaleTrivialization
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteImageAffine
@@ -1887,6 +1888,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.Gene
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GenericTrivializationFixedValue
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GenericTrivializationGalois
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.Images
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.InternalHom
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.LocallyConstant
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.Pullback
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.PullbackAffine
@@ -2129,6 +2131,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.HorizontalComposit
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.OriginalDivisibility
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.PullbackIsomorphism
 public import Aglib.AlgebraicGeometry.EtaleCohomology.DirectImage
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.CoefficientDevissage
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.CoefficientExactness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.CompactSupportPairing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantCoefficients
@@ -2149,6 +2152,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PairingTranspose
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PointPurity
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PointPurity.Finite
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PointRemoval
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ProperCompactFiniteness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.Trace
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.TracePairing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.YonedaPairing

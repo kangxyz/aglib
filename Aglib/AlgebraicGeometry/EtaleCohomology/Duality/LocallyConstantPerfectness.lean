@@ -7,9 +7,15 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PointRemoval
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PointPurity.Finite
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.CoefficientExactness
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.CoefficientDevissage
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ProperCompactFiniteness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantOnePerfectness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.FiniteTracePairing
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.FiniteTracePairing.Compatibility
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteEtalePresentation
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteEtaleImage
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.InternalHom
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LocallyConstantExt
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteCoefficientsVanishing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekComposition
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekCohomology
@@ -459,7 +465,6 @@ private theorem moduleSheaf_compact_H_high_subsingleton_of_galois_prime_triviali
 
 end CompactSylow
 
-
 private theorem compact_nsmul_id_naturality {C : Type*} [Category* C] [Preadditive C]
     (p : ℕ) {A B : C} (f : A ⟶ B) :
     f ≫ (p • 𝟙 B) = (p • 𝟙 A) ≫ f := by
@@ -617,7 +622,6 @@ private theorem compact_moduleSheaf_H_high_subsingleton_of_pos_nsmul
         ((hS.map_of_exact (moduleUnderlying R U)).map_of_exact (etaleLowerShriek j)) q
 
 end CompactGlobal
-
 
 section CompactNative
 variable {k : Type u} [Field k] [IsAlgClosed k] (X : FScheme k) (hX : Curve.Properties X)
@@ -973,50 +977,8 @@ theorem moduleDualityMap_unit_proper_one_isPerfPair :
   exact proper_one_isPerfPair_of_transpose_injective.{u, wX, wA, wP}
     X hX n hn hunit hinv (moduleUnit X.left Λ) hinj hcard
 
-
 end ProperFinitePerfectness
 
-section SourceChase
-variable {k : Type u} [Field k] [IsAlgClosed k] (X : FScheme k) (hX : Curve.Properties X)
-  (D : Set X.left) (hfin : D.Finite) (hclosed : ∀ x ∈ D, IsClosed ({x} : Set X.left))
-  {U : Scheme.{u}} (j : U ⟶ X.left) [IsOpenImmersion j] (hD : Set.range j = Dᶜ)
-  (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : k)) (hinv : IsUnit (n : Γ(X.left, ⊤)))
-  [HasExt.{wU} (ModuleSheaf U (ULift.{u + 1} (ZMod n)))]
-  [HasExt.{wX} (ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))]
-  [HasExt.{wA} (AbelianSheaf.{u, u + 1} X.left)]
-/-- Whole coefficient naturality for the ORIGINAL adjoint, on its canonical
-Ext scalar parents. It follows by evaluating the proved trace-pairing law. -/
-theorem moduleDualityMap_naturality
-    {F F' : ModuleSheaf U (ULift.{u + 1} (ZMod n))} (f : F ⟶ F')
-    (r : ℕ) (hr : r ≤ 2) :
-    (moduleDualityMap X hX D hfin hclosed j hD n hn hunit hinv F' r hr).comp
-        (AddMonoidHom.toZModLinearMap n
-          ((Ext.mk₀ ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).map f)).postcomp
-            (moduleUnit X.left (ULift.{u + 1} (ZMod n))) (add_zero r))) =
-      (AddMonoidHom.toZModLinearMap n
-        ((Ext.mk₀ f).precomp (moduleRootsOfUnity U n) (zero_add (2 - r)))).dualMap.comp
-          (moduleDualityMap X hX D hfin hclosed j hD n hn hunit hinv F r hr) := by
-  have h := moduleTracePairingLinearMap_naturality X hX D hfin hclosed j hD
-    n hn hunit hinv f r (2 - r) (by lia)
-  ext c e
-  exact LinearMap.congr_fun (LinearMap.congr_fun h c) e
-/-- The original compact-zero/source-one unsigned boundary square, in native
-adjoint form. No supplied commutativity equation or signed Ext.δ is used. -/
-theorem moduleDualityMap_zero_one_extClass
-    {S : ShortComplex (ModuleSheaf U (ULift.{u + 1} (ZMod n)))} (hS : S.ShortExact) :
-    (moduleDualityMap X hX D hfin hclosed j hD n hn hunit hinv S.X₁ 1 (by decide)).comp
-        (AddMonoidHom.toZModLinearMap n
-          ((shortExact_moduleLowerShriek j (ULift.{u + 1} (ZMod n)) hS).extClass.postcomp
-            (moduleUnit X.left (ULift.{u + 1} (ZMod n))) (show 0 + 1 = 1 from rfl))) =
-      (AddMonoidHom.toZModLinearMap n
-        (hS.extClass.precomp (moduleRootsOfUnity U n) (show 1 + 1 = 2 from rfl))).dualMap.comp
-          (moduleDualityMap X hX D hfin hclosed j hD n hn hunit hinv S.X₃ 0 (by decide)) := by
-  have h := moduleTracePairingLinearMap_extClass X hX D hfin hclosed j hD n hn hunit hinv
-    hS 0 1 1 2 rfl rfl rfl rfl
-  ext c e
-  exact LinearMap.congr_fun (LinearMap.congr_fun h c) e
-
-end SourceChase
 private theorem originalAddEquiv_toAddHom_apply
     {M : Type uC} {N : Type vC} [AddCommGroup M] [AddCommGroup N]
     (e : M ≃+ N) (x : M) : e.toAddMonoidHom x = e x := rfl
@@ -1119,5 +1081,413 @@ theorem moduleDualityMap_lowerShriek_isPerfPair_iff
     rw [← hs]
     exact LinearMap.IsPerfPair.compl₁₂ C L R
 end Shrinking
+
+section ProperSourceHighVanishing
+
+variable {k : Type u} [Field k] [IsAlgClosed k] (X : FScheme k) (hX : Curve.Properties X)
+  (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : k))
+  [HasExt.{wP} (ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wA} (AbelianSheaf.{u, u + 1} X.left)]
+
+include hX hn hunit in
+set_option backward.isDefEq.respectTransparency false in
+/-- Proper higher source Ext vanishes for every original finite local system.
+The actual internal Hom is finite locally constant by its finite-presentation
+charts; the original Ext/cohomology comparison and proper high vanishing then
+give the result. The source and abelian Ext worlds are independent. -/
+theorem moduleSourceExt_high_subsingleton_of_finiteLocallyConstant
+    (F : ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))
+    (hF : Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence X.left (ULift.{u + 1} (ZMod n))).inverse.obj F))
+    (q : ℕ) (hq : 2 < q) :
+    Subsingleton (Ext.{wP} F (moduleRootsOfUnity X.left n) q) := by
+  let : NeZero n := ⟨Nat.ne_of_gt hn⟩
+  let Λ := ULift.{u + 1} (ZMod n)
+  let : (forget₂ (ModuleCat.{u + 1} Λ) AddCommGrpCat.{u + 1}).Full :=
+    ModuleCat.uLiftZMod_forget₂_full n
+  let E := moduleSheafEquivalence X.left Λ
+  have hRoots : Constructible.Modules.IsFiniteTypeLocallyConstant
+      (E.inverse.obj (moduleRootsOfUnity X.left n)) :=
+    (Constructible.Modules.isFiniteTypeLocallyConstant_iff_of_iso
+      (E.inverse.mapIso (moduleUnitRootsIso k n hn hunit X.hom))).mp
+        (moduleUnit_isFiniteTypeLocallyConstant X.left Λ)
+  let H := SheafOfModules.InternalHom.sheaf
+    (ModuleCat.Sheaf.ConstantRing.commutativeSheaf X.left.smallEtaleTopology Λ)
+      F (moduleRootsOfUnity X.left n)
+  have hH : Constructible.Modules.IsFiniteTypeLocallyConstant (E.inverse.obj H) :=
+    Constructible.Modules.isFiniteTypeLocallyConstant_nativeInternalHom
+      Λ F (moduleRootsOfUnity X.left n) hF hRoots
+  let : Subsingleton (Ext.{wP} (moduleUnit X.left Λ) H q) :=
+    Curves.moduleUnitExt_subsingleton_of_finiteLocallyConstant X hX n hn hunit q hq H hH
+  let Q := SheafOfModules.toSheaf (constantRing X.left Λ)
+  let E₀ : Ext.{wP} (moduleUnit X.left Λ) H q ≃+ Sheaf.H.{wA} (Q.obj H) q :=
+    etaleModuleExtCohomologyAddEquivLargeScalars X.left (constantRing X.left Λ) H q
+  let : Subsingleton (Sheaf.H.{wA} (Q.obj H) q) := E₀.symm.injective.subsingleton
+  let E₁ : Ext.{wP} F (moduleRootsOfUnity X.left n) q ≃+ Sheaf.H.{wA} (Q.obj H) q :=
+    locallyConstantExtCohomologyAddEquiv.{u, wP, wA} k n hn hunit X.hom F hF q
+  exact E₁.injective.subsingleton
+
+end ProperSourceHighVanishing
+
+section ProperCoverAllDegrees
+
+universe wSY wAY
+
+variable {k : Type u} [Field k] [IsAlgClosed k] (X : FScheme k) (hX : Curve.Properties X)
+  (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : k)) (hinv : IsUnit (n : Γ(X.left, ⊤)))
+  [HasExt.{wP} (ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wX} (ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wA} (AbelianSheaf.{u, u + 1} X.left)]
+
+open GroupCohomology.Kummer.CoefficientBaseChange
+
+private theorem proper_finiteLowerShriek_isPerfPair
+    (Y : FScheme k) (hY : Curve.Properties Y) (f : Y ⟶ X)
+    [IsFinite f.left] [IsDominant f.left] [Etale f.left]
+    (d : ℕ) (hd : ∀ x : X.left, f.left.finrank x = d)
+    [HasExt.{wY} (ModuleSheaf Y.left (ULift.{u + 1} (ZMod n)))]
+    [HasExt.{wSY} (ModuleSheaf Y.left (ULift.{u + 1} (ZMod n)))]
+    [HasExt.{wAY} (AbelianSheaf.{u, u + 1} Y.left)]
+    (P : ModuleSheaf Y.left (ULift.{u + 1} (ZMod n))) (r : ℕ) (hr : r ≤ 2)
+    (hP : (moduleDualityMap.{u, wSY, wY, wAY} Y hY ∅ Set.finite_empty (by simp)
+      (𝟙 Y.left) (by simp) n hn hunit (levelInvertible f.left n hinv) P r hr).IsPerfPair) :
+    (moduleDualityMap.{u, wP, wX, wA} X hX ∅ Set.finite_empty (by simp)
+      (𝟙 X.left) (by simp) n hn hunit hinv
+        ((moduleLowerShriek f.left (ULift.{u + 1} (ZMod n))).obj P) r hr).IsPerfPair := by
+  let L := AddEquiv.toZModLinearEquiv n
+    (moduleFiniteLowerShriekCompactExtAddEquiv.{u, wX, wY} f.left n d hd P r)
+  let R := AddEquiv.toZModLinearEquiv n
+    (moduleFiniteLowerShriekRootsExtAddEquiv.{u, wP, wSY} f.left n hn hinv P (2 - r))
+  let B := moduleDualityMap.{u, wP, wX, wA} X hX ∅ Set.finite_empty (by simp)
+    (𝟙 X.left) (by simp) n hn hunit hinv
+      ((moduleLowerShriek f.left (ULift.{u + 1} (ZMod n))).obj P) r hr
+  let C := moduleDualityMap.{u, wSY, wY, wAY} Y hY ∅ Set.finite_empty (by simp)
+    (𝟙 Y.left) (by simp) n hn hunit (levelInvertible f.left n hinv) P r hr
+  have hs : C.compl₁₂ L R = B := by
+    ext c e
+    simp only [LinearMap.compl₁₂_apply, L, R, LinearEquiv.coe_coe,
+      originalAddEquiv_toZModLinearEquiv_apply]
+    exact (moduleTracePairingLinearMap_finiteLowerShriek.{u, wX, wY, wA, wAY, wP, wSY}
+      X Y hX hY f n d hd hn hunit hinv P r (2 - r) (by lia) c e).symm
+  let : C.IsPerfPair := hP
+  change B.IsPerfPair
+  rw [← hs]
+  exact LinearMap.IsPerfPair.compl₁₂ C L R
+
+/-- The original proper unit pairing is perfect in every allowed degree. -/
+theorem moduleDualityMap_unit_proper_isPerfPair (r : ℕ) (hr : r ≤ 2) :
+    (moduleDualityMap.{u, wP, wX, wA} X hX ∅ Set.finite_empty (by simp)
+      (𝟙 X.left) (by simp) n hn hunit hinv
+      (moduleUnit X.left (ULift.{u + 1} (ZMod n))) r hr).IsPerfPair := by
+  interval_cases r
+  · exact moduleDualityMap_unit_zero_isPerfPair.{u, wP, wX, wA}
+      X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp) n hn hunit hinv
+  · exact moduleDualityMap_unit_proper_one_isPerfPair.{u, wX, wA, wP}
+      X hX n hn hunit hinv
+  · exact moduleDualityMap_unit_two_isPerfPair.{u, wP, wX, wA}
+      X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp) n hn hunit hinv
+
+private theorem proper_unit_biproduct_isPerfPair (m r : ℕ) (hr : r ≤ 2) :
+    (moduleDualityMap.{u, wP, wX, wA} X hX ∅ Set.finite_empty (by simp)
+      (𝟙 X.left) (by simp) n hn hunit hinv
+      (⨁ fun _ : Fin m => moduleUnit X.left (ULift.{u + 1} (ZMod n))) r hr).IsPerfPair := by
+  exact moduleDualityMap_bicone_isPerfPair.{u, 0, wP, wX, wA}
+    X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp) n hn hunit hinv
+    (biproduct.isBilimit (fun _ : Fin m => moduleUnit X.left (ULift.{u + 1} (ZMod n))))
+    r hr (fun _ => moduleDualityMap_unit_proper_isPerfPair.{u, wX, wA, wP}
+      X hX n hn hunit hinv r hr)
+
+/-- Actual finite étale direct images of original unit powers have the
+original proper perfect pairing in every complementary degree. -/
+theorem moduleDualityMap_galois_unit_biproduct_directImage_isPerfPair
+    (Y : Scheme.FiniteEtale X.left) [ConnectedSpace Y.obj.left] [Surjective Y.obj.hom]
+    (m r : ℕ) (hr : r ≤ 2) :
+    (moduleDualityMap.{u, wP, wX, wA} X hX ∅ Set.finite_empty (by simp)
+      (𝟙 X.left) (by simp) n hn hunit hinv
+      ((moduleDirectImage Y.obj.hom (ULift.{u + 1} (ZMod n))).obj
+        (⨁ fun _ : Fin m => moduleUnit Y.obj.left (ULift.{u + 1} (ZMod n)))) r hr).IsPerfPair := by
+  let : ConnectedSpace X.left := Curve.curveProperties_connectedSpace hX
+  let Z : FScheme k := Over.mk (Y.obj.hom ≫ X.hom)
+  let hZ : Curve.Properties Z := Curves.curveProperties_of_connected_finiteEtale X hX Y
+  let f : Z ⟶ X := Over.homMk Y.obj.hom rfl
+  let : IsFinite f.left := inferInstanceAs (IsFinite Y.obj.hom)
+  let : Etale f.left := inferInstanceAs (Etale Y.obj.hom)
+  let : IsDominant f.left := ⟨Y.obj.hom.surjective.denseRange⟩
+  let x : X.left := Classical.ofNonempty
+  let d := Y.obj.hom.finrank x
+  have hd : ∀ z : X.left, f.left.finrank z = d := fun z =>
+    Y.obj.hom.isLocallyConstant_finrank.apply_eq_of_preconnectedSpace z x
+  let : HasExt.{u + 2} (ModuleSheaf Z.left (ULift.{u + 1} (ZMod n))) :=
+    SheafOfModules.hasExt (constantRing Z.left (ULift.{u + 1} (ZMod n)))
+  let : HasExt.{u + 2} (AbelianSheaf.{u, u + 1} Z.left) := hasExtStandard Z.left
+  let P := ⨁ fun _ : Fin m => moduleUnit Z.left (ULift.{u + 1} (ZMod n))
+  have hP : (moduleDualityMap.{u, wP, wX, wA} X hX ∅ Set.finite_empty (by simp)
+      (𝟙 X.left) (by simp) n hn hunit hinv
+      ((moduleLowerShriek Y.obj.hom (ULift.{u + 1} (ZMod n))).obj P) r hr).IsPerfPair :=
+    proper_finiteLowerShriek_isPerfPair.{u, wX, wA, wP, u + 2, u + 2, u + 2}
+      X hX n hn hunit hinv Z hZ f d hd P r hr
+      (proper_unit_biproduct_isPerfPair.{u, u + 2, u + 2, u + 2}
+        Z hZ n hn hunit (levelInvertible f.left n hinv) m r hr)
+  exact (moduleDualityMap_isPerfPair_iff_of_iso.{u, wP, wX, wA}
+    X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp) n hn hunit hinv
+    ((moduleFiniteEtaleLowerShriekDirectImageIso Y.obj.hom n d hd).app P) r hr).mp hP
+
+end ProperCoverAllDegrees
+
+section ProperTopTranspose
+
+variable {k : Type u} [Field k] [IsAlgClosed k] (X : FScheme k) (hX : Curve.Properties X)
+  (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : k)) (hinv : IsUnit (n : Γ(X.left, ⊤)))
+  [HasExt.{wP} (ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wX} (ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wA} (AbelianSheaf.{u, u + 1} X.left)]
+
+private theorem proper_two_transpose_eq_flip
+    (F : ModuleSheaf X.left (ULift.{u + 1} (ZMod n))) :
+    moduleDualityTransposeMap.{u, wP, wX, wA} X hX ∅ Set.finite_empty (by simp)
+      (𝟙 X.left) (by simp) n hn hunit hinv F 2 le_rfl =
+    (moduleDualityMap.{u, wP, wX, wA} X hX ∅ Set.finite_empty (by simp)
+      (𝟙 X.left) (by simp) n hn hunit hinv F 0 (by decide)).flip := rfl
+
+private theorem proper_two_transpose_bijective_of_zero_isPerfPair
+    (F : ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))
+    (hF : (moduleDualityMap.{u, wP, wX, wA} X hX ∅ Set.finite_empty (by simp)
+      (𝟙 X.left) (by simp) n hn hunit hinv F 0 (by decide)).IsPerfPair) :
+    Function.Bijective (moduleDualityTransposeMap.{u, wP, wX, wA}
+      X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp)
+      n hn hunit hinv F 2 le_rfl) := by
+  rw [proper_two_transpose_eq_flip.{u, wX, wA, wP} X hX n hn hunit hinv F]
+  exact hF.bijective_right
+
+private theorem proper_dualityTranspose_two_surjective
+    (F : ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))
+    (hF : Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence X.left (ULift.{u + 1} (ZMod n))).inverse.obj F)) :
+    Function.Surjective (moduleDualityTransposeMap.{u, wP, wX, wA}
+      X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp)
+      n hn hunit hinv F 2 le_rfl) := by
+  let : ConnectedSpace X.left := Curve.curveProperties_connectedSpace hX
+  obtain ⟨Y, _, hc, hs, m, a, ha⟩ := exists_galois_unit_biproduct_directImage_mono n hn F hF
+  let : ConnectedSpace Y.obj.left := hc
+  let : Surjective Y.obj.hom := hs
+  let S := ShortComplex.cokernelSequence a
+  have hS : S.ShortExact := { exact := ShortComplex.cokernelSequence_exact a, mono_f := ha }
+  have hB : (moduleDualityMap.{u, wP, wX, wA} X hX ∅ Set.finite_empty (by simp)
+      (𝟙 X.left) (by simp) n hn hunit hinv S.X₂ 0 (by decide)).IsPerfPair :=
+    moduleDualityMap_galois_unit_biproduct_directImage_isPerfPair.{u, wX, wA, wP}
+      X hX n hn hunit hinv Y m 0 (by decide)
+  apply moduleDualityTransposeMap_two_surjective_of_shortExact.{u, wP, wX, wA}
+    X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp) n hn hunit hinv hS
+  exact (proper_two_transpose_bijective_of_zero_isPerfPair.{u, wX, wA, wP}
+    X hX n hn hunit hinv S.X₂ hB).surjective
+
+/-- The original source-degree-two proper adjoint is bijective for every
+finite local system. First extend compact-zero functionals uniformly through
+actual cofree embeddings, then use genuine E3 vanishing and the same exact
+dual row for injectivity. No copresentation object or finite-group premise is used. -/
+theorem moduleDualityTransposeMap_proper_two_bijective
+    (F : ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))
+    (hF : Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence X.left (ULift.{u + 1} (ZMod n))).inverse.obj F)) :
+    Function.Bijective (moduleDualityTransposeMap.{u, wP, wX, wA}
+      X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp)
+      n hn hunit hinv F 2 le_rfl) := by
+  let : NeZero n := ⟨Nat.ne_of_gt hn⟩
+  let : ConnectedSpace X.left := Curve.curveProperties_connectedSpace hX
+  refine ⟨?_, proper_dualityTranspose_two_surjective.{u, wX, wA, wP}
+    X hX n hn hunit hinv F hF⟩
+  obtain ⟨Y, _, hc, hs, m, a, ha⟩ := exists_galois_unit_biproduct_directImage_mono n hn F hF
+  let : ConnectedSpace Y.obj.left := hc
+  let : Surjective Y.obj.hom := hs
+  let Λ := ULift.{u + 1} (ZMod n)
+  let B := (moduleDirectImage Y.obj.hom Λ).obj
+    (⨁ fun _ : Fin m => moduleUnit Y.obj.left Λ)
+  have hBLC := moduleDirectImage_isFiniteTypeLocallyConstant Λ Y.obj.hom
+    (⨁ fun _ : Fin m => moduleUnit Y.obj.left Λ)
+    (moduleUnitBiproduct_isFiniteTypeLocallyConstant Y.obj.left Λ m)
+  have hKLC := moduleCokernel_isFiniteTypeLocallyConstant Λ a hF hBLC
+  let S := ShortComplex.cokernelSequence a
+  have hS : S.ShortExact := { exact := ShortComplex.cokernelSequence_exact a, mono_f := ha }
+  let : Subsingleton (Ext.{wP} S.X₃ (moduleRootsOfUnity X.left n) 3) := by
+    change Subsingleton (Ext.{wP} (cokernel a) (moduleRootsOfUnity X.left n) 3)
+    exact moduleSourceExt_high_subsingleton_of_finiteLocallyConstant.{u, wA, wP}
+      X hX n hn hunit (cokernel a) hKLC 3 (by decide)
+  have hB : (moduleDualityMap.{u, wP, wX, wA} X hX ∅ Set.finite_empty (by simp)
+      (𝟙 X.left) (by simp) n hn hunit hinv B 0 (by decide)).IsPerfPair :=
+    moduleDualityMap_galois_unit_biproduct_directImage_isPerfPair.{u, wX, wA, wP}
+      X hX n hn hunit hinv Y m 0 (by decide)
+  have hK : Function.Surjective (moduleDualityTransposeMap.{u, wP, wX, wA}
+      X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp)
+      n hn hunit hinv S.X₃ 2 le_rfl) :=
+    proper_dualityTranspose_two_surjective.{u, wX, wA, wP}
+      X hX n hn hunit hinv S.X₃ hKLC
+  apply moduleDualityTransposeMap_two_injective_of_shortExact.{u, wP, wX, wA}
+    X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp) n hn hunit hinv hS
+  · dsimp only [S, ShortComplex.cokernelSequence]
+    exact (proper_two_transpose_bijective_of_zero_isPerfPair.{u, wX, wA, wP}
+      X hX n hn hunit hinv B hB).injective
+  · exact hK
+
+end ProperTopTranspose
+
+section ProperMiddleTranspose
+
+variable {k : Type u} [Field k] [IsAlgClosed k] (X : FScheme k) (hX : Curve.Properties X)
+  (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : k)) (hinv : IsUnit (n : Γ(X.left, ⊤)))
+  [HasExt.{wP} (ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wX} (ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wA} (AbelianSheaf.{u, u + 1} X.left)]
+
+private theorem proper_one_transpose_bijective_of_one_isPerfPair
+    (F : ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))
+    (hF : (moduleDualityMap.{u, wP, wX, wA} X hX ∅ Set.finite_empty (by simp)
+      (𝟙 X.left) (by simp) n hn hunit hinv F 1 (by decide)).IsPerfPair) :
+    Function.Bijective (moduleDualityTransposeMap.{u, wP, wX, wA}
+      X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp)
+      n hn hunit hinv F 1 (by decide)) := by
+  rw [proper_one_transpose_eq_flip.{u, wX, wA, wP} X hX n hn hunit hinv F]
+  exact hF.bijective_right
+
+private theorem proper_dualityTranspose_one_surjective
+    (F : ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))
+    (hF : Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence X.left (ULift.{u + 1} (ZMod n))).inverse.obj F)) :
+    Function.Surjective (moduleDualityTransposeMap.{u, wP, wX, wA}
+      X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp)
+      n hn hunit hinv F 1 (by decide)) := by
+  let : NeZero n := ⟨Nat.ne_of_gt hn⟩
+  let : ConnectedSpace X.left := Curve.curveProperties_connectedSpace hX
+  obtain ⟨Y, _, hc, hs, m, a, ha⟩ := exists_galois_unit_biproduct_directImage_mono n hn F hF
+  let : ConnectedSpace Y.obj.left := hc
+  let : Surjective Y.obj.hom := hs
+  let Λ := ULift.{u + 1} (ZMod n)
+  let B := (moduleDirectImage Y.obj.hom (ULift.{u + 1} (ZMod n))).obj
+    (⨁ fun _ : Fin m => moduleUnit Y.obj.left (ULift.{u + 1} (ZMod n)))
+  have hBLC := moduleDirectImage_isFiniteTypeLocallyConstant Λ Y.obj.hom
+    (⨁ fun _ : Fin m => moduleUnit Y.obj.left Λ)
+    (moduleUnitBiproduct_isFiniteTypeLocallyConstant Y.obj.left Λ m)
+  have hKLC := moduleCokernel_isFiniteTypeLocallyConstant Λ a hF hBLC
+  have hB : (moduleDualityMap.{u, wP, wX, wA} X hX ∅ Set.finite_empty (by simp)
+      (𝟙 X.left) (by simp) n hn hunit hinv B 1 (by decide)).IsPerfPair :=
+    moduleDualityMap_galois_unit_biproduct_directImage_isPerfPair.{u, wX, wA, wP}
+      X hX n hn hunit hinv Y m 1 (by decide)
+  have hB₁ : Function.Bijective (moduleDualityTransposeMap.{u, wP, wX, wA}
+      X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp)
+      n hn hunit hinv B 1 (by decide)) :=
+    proper_one_transpose_bijective_of_one_isPerfPair.{u, wX, wA, wP}
+      X hX n hn hunit hinv B hB
+  have hB₂ : Function.Bijective (moduleDualityTransposeMap.{u, wP, wX, wA}
+      X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp)
+      n hn hunit hinv B 2 le_rfl) :=
+    moduleDualityTransposeMap_proper_two_bijective.{u, wX, wA, wP}
+      X hX n hn hunit hinv B hBLC
+  have hK₂ : Function.Bijective (moduleDualityTransposeMap.{u, wP, wX, wA}
+      X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp)
+      n hn hunit hinv (cokernel a) 2 le_rfl) :=
+    moduleDualityTransposeMap_proper_two_bijective.{u, wX, wA, wP}
+      X hX n hn hunit hinv (cokernel a) hKLC
+  let S := ShortComplex.cokernelSequence a
+  have hS : S.ShortExact := { exact := ShortComplex.cokernelSequence_exact a, mono_f := ha }
+  apply moduleDualityTransposeMap_one_surjective_of_shortExact.{u, wP, wX, wA}
+    X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp) n hn hunit hinv hS
+  · dsimp only [S, ShortComplex.cokernelSequence]
+    exact hB₁.surjective
+  · dsimp only [S, ShortComplex.cokernelSequence]
+    exact hK₂.surjective
+  · dsimp only [S, ShortComplex.cokernelSequence]
+    exact hB₂.injective
+
+/-- The original middle proper adjoint is bijective on every finite local
+system. Surjectivity is proved uniformly first; only then is it used for the
+actual cokernel in the original unsigned-boundary injectivity row. -/
+theorem moduleDualityTransposeMap_proper_one_bijective
+    (F : ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))
+    (hF : Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence X.left (ULift.{u + 1} (ZMod n))).inverse.obj F)) :
+    Function.Bijective (moduleDualityTransposeMap.{u, wP, wX, wA}
+      X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp)
+      n hn hunit hinv F 1 (by decide)) := by
+  let : NeZero n := ⟨Nat.ne_of_gt hn⟩
+  let : ConnectedSpace X.left := Curve.curveProperties_connectedSpace hX
+  refine ⟨?_, proper_dualityTranspose_one_surjective.{u, wX, wA, wP}
+    X hX n hn hunit hinv F hF⟩
+  obtain ⟨Y, _, hc, hs, m, a, ha⟩ := exists_galois_unit_biproduct_directImage_mono n hn F hF
+  let : ConnectedSpace Y.obj.left := hc
+  let : Surjective Y.obj.hom := hs
+  let Λ := ULift.{u + 1} (ZMod n)
+  let B := (moduleDirectImage Y.obj.hom (ULift.{u + 1} (ZMod n))).obj
+    (⨁ fun _ : Fin m => moduleUnit Y.obj.left (ULift.{u + 1} (ZMod n)))
+  have hBLC := moduleDirectImage_isFiniteTypeLocallyConstant Λ Y.obj.hom
+    (⨁ fun _ : Fin m => moduleUnit Y.obj.left Λ)
+    (moduleUnitBiproduct_isFiniteTypeLocallyConstant Y.obj.left Λ m)
+  have hKLC := moduleCokernel_isFiniteTypeLocallyConstant Λ a hF hBLC
+  have hB : (moduleDualityMap.{u, wP, wX, wA} X hX ∅ Set.finite_empty (by simp)
+      (𝟙 X.left) (by simp) n hn hunit hinv B 1 (by decide)).IsPerfPair :=
+    moduleDualityMap_galois_unit_biproduct_directImage_isPerfPair.{u, wX, wA, wP}
+      X hX n hn hunit hinv Y m 1 (by decide)
+  have hB₁ : Function.Bijective (moduleDualityTransposeMap.{u, wP, wX, wA}
+      X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp)
+      n hn hunit hinv B 1 (by decide)) :=
+    proper_one_transpose_bijective_of_one_isPerfPair.{u, wX, wA, wP}
+      X hX n hn hunit hinv B hB
+  have hK₁ : Function.Surjective (moduleDualityTransposeMap.{u, wP, wX, wA}
+      X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp)
+      n hn hunit hinv (cokernel a) 1 (by decide)) :=
+    proper_dualityTranspose_one_surjective.{u, wX, wA, wP}
+      X hX n hn hunit hinv (cokernel a) hKLC
+  have hK₂ : Function.Bijective (moduleDualityTransposeMap.{u, wP, wX, wA}
+      X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp)
+      n hn hunit hinv (cokernel a) 2 le_rfl) :=
+    moduleDualityTransposeMap_proper_two_bijective.{u, wX, wA, wP}
+      X hX n hn hunit hinv (cokernel a) hKLC
+  let S := ShortComplex.cokernelSequence a
+  have hS : S.ShortExact := { exact := ShortComplex.cokernelSequence_exact a, mono_f := ha }
+  apply moduleDualityTransposeMap_one_injective_of_shortExact.{u, wP, wX, wA}
+    X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp) n hn hunit hinv hS
+  · dsimp only [S, ShortComplex.cokernelSequence]
+    exact hB₁.injective
+  · dsimp only [S, ShortComplex.cokernelSequence]
+    exact hK₁
+  · dsimp only [S, ShortComplex.cokernelSequence]
+    exact hK₂.injective
+
+end ProperMiddleTranspose
+
+section ProperFinalPerfectness
+
+variable {k : Type u} [Field k] [IsAlgClosed k] (X : FScheme k) (hX : Curve.Properties X)
+  (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : k)) (hinv : IsUnit (n : Γ(X.left, ⊤)))
+  [HasExt.{wP} (ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wX} (ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wA} (AbelianSheaf.{u, u + 1} X.left)]
+
+/-- Both adjoints of the original proper trace pairing are bijective for
+every finite local system, at every positive invertible level. -/
+theorem moduleDualityMap_proper_isPerfPair
+    (F : ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))
+    (hF : Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence X.left (ULift.{u + 1} (ZMod n))).inverse.obj F))
+    (r : ℕ) (hr : r ≤ 2) :
+    (moduleDualityMap.{u, wP, wX, wA} X hX ∅ Set.finite_empty (by simp)
+      (𝟙 X.left) (by simp) n hn hunit hinv F r hr).IsPerfPair := by
+  let : NeZero n := ⟨Nat.ne_of_gt hn⟩
+  let : Finite (Ext.{wX} (moduleUnit X.left (ULift.{u + 1} (ZMod n)))
+      ((moduleLowerShriek (𝟙 X.left) (ULift.{u + 1} (ZMod n))).obj F) r) :=
+    moduleUnitCompactIdExt_finite_of_finiteLocallyConstant.{u, wX, wA} X hX n hn hunit F hF r
+  interval_cases r
+  · have h := moduleDualityTransposeMap_proper_two_bijective.{u, wX, wA, wP}
+      X hX n hn hunit hinv F hF
+    rw [proper_two_transpose_eq_flip.{u, wX, wA, wP} X hX n hn hunit hinv F] at h
+    exact (ZMod.isPerfPair_iff_flip_bijective n _).mpr h
+  · have h := moduleDualityTransposeMap_proper_one_bijective.{u, wX, wA, wP}
+      X hX n hn hunit hinv F hF
+    rw [proper_one_transpose_eq_flip.{u, wX, wA, wP} X hX n hn hunit hinv F] at h
+    exact (ZMod.isPerfPair_iff_flip_bijective n _).mpr h
+  · have h := moduleDualityTransposeMap_proper_zero_bijective.{u, wX, wA, wP}
+      X hX n hn hunit hinv F hF
+    rw [proper_zero_transpose_eq_flip.{u, wX, wA, wP} X hX n hn hunit hinv F] at h
+    exact (ZMod.isPerfPair_iff_flip_bijective n _).mpr h
+
+end ProperFinalPerfectness
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

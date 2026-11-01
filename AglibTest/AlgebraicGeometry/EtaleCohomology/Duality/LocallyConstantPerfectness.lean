@@ -90,3 +90,69 @@ example : (moduleDualityMap.{u, wP, wX, wA}
 [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms AlgebraicGeometry.Scheme.EtaleCohomology.moduleDualityMap_unit_proper_one_isPerfPair
+
+/-- The proper higher source Ext supplier uses the same original internal-Hom
+coefficient, with independent module and abelian worlds. -/
+example (F : ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))
+    (hF : Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence X.left (ULift.{u + 1} (ZMod n))).inverse.obj F))
+    (q : ℕ) (hq : 2 < q) :
+    Subsingleton (Ext.{wP} F (moduleRootsOfUnity X.left n) q) :=
+  moduleSourceExt_high_subsingleton_of_finiteLocallyConstant X hX n hn hunit F hF q hq
+
+/-- info: 'AlgebraicGeometry.Scheme.EtaleCohomology.moduleSourceExt_high_subsingleton_of_finiteLocallyConstant' depends on axioms:
+[propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms AlgebraicGeometry.Scheme.EtaleCohomology.moduleSourceExt_high_subsingleton_of_finiteLocallyConstant
+
+/-- All three original unit pairings are used on actual proper covers. -/
+example (r : ℕ) (hr : r ≤ 2) :
+    (moduleDualityMap.{u, wP, wX, wA} X hX ∅ Set.finite_empty (by simp)
+      (𝟙 X.left) (by simp) n hn hunit hinv
+      (moduleUnit X.left (ULift.{u + 1} (ZMod n))) r hr).IsPerfPair :=
+  moduleDualityMap_unit_proper_isPerfPair.{u, wX, wA, wP} X hX n hn hunit hinv r hr
+
+/-- The original top source adjoint is bijective on every proper finite local
+system, preserving the independent source/compact/abelian Ext worlds. -/
+example (F : ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))
+    (hF : Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence X.left (ULift.{u + 1} (ZMod n))).inverse.obj F)) :
+    Function.Bijective (moduleDualityTransposeMap.{u, wP, wX, wA}
+      X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp)
+      n hn hunit hinv F 2 le_rfl) :=
+  moduleDualityTransposeMap_proper_two_bijective.{u, wX, wA, wP} X hX n hn hunit hinv F hF
+
+/-- info: 'AlgebraicGeometry.Scheme.EtaleCohomology.moduleDualityTransposeMap_proper_two_bijective' depends on axioms:
+[propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms AlgebraicGeometry.Scheme.EtaleCohomology.moduleDualityTransposeMap_proper_two_bijective
+
+/-- The original middle adjoint is bijective for every proper finite local
+system, using the unsigned actual source boundary and independent Ext worlds. -/
+example (F : ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))
+    (hF : Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence X.left (ULift.{u + 1} (ZMod n))).inverse.obj F)) :
+    Function.Bijective (moduleDualityTransposeMap.{u, wP, wX, wA}
+      X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp)
+      n hn hunit hinv F 1 (by decide)) :=
+  moduleDualityTransposeMap_proper_one_bijective.{u, wX, wA, wP} X hX n hn hunit hinv F hF
+
+/-- info: 'AlgebraicGeometry.Scheme.EtaleCohomology.moduleDualityTransposeMap_proper_one_bijective' depends on axioms:
+[propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms AlgebraicGeometry.Scheme.EtaleCohomology.moduleDualityTransposeMap_proper_one_bijective
+
+/-- Both original proper adjoints are perfect for every finite local system,
+with all three Ext worlds independent and no rank/free-module premise. -/
+example (F : ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))
+    (hF : Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence X.left (ULift.{u + 1} (ZMod n))).inverse.obj F))
+    (r : ℕ) (hr : r ≤ 2) :
+    (moduleDualityMap.{u, wP, wX, wA} X hX ∅ Set.finite_empty (by simp)
+      (𝟙 X.left) (by simp) n hn hunit hinv F r hr).IsPerfPair :=
+  moduleDualityMap_proper_isPerfPair.{u, wX, wA, wP} X hX n hn hunit hinv F hF r hr
+
+/-- info: 'AlgebraicGeometry.Scheme.EtaleCohomology.moduleDualityMap_proper_isPerfPair' depends on axioms:
+[propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms AlgebraicGeometry.Scheme.EtaleCohomology.moduleDualityMap_proper_isPerfPair
