@@ -208,3 +208,7 @@ remain outside this family.
 [ModuleRootsComposition](Kummer/ModuleRootsComposition.lean) retain the
 original roots inverse-image composition for positive globally invertible
 levels, including its module-sheaf lift.
+
+[Kummer/RootsSquare](Kummer/RootsSquare.lean) and
+[Kummer/LevelMaps](Kummer/LevelMaps.lean) retain the original roots maps and
+level-change squares used by finite compact trace.

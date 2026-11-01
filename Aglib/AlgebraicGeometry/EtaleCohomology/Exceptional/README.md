@@ -87,3 +87,11 @@ first/third vertex comparisons with the original open counit, closed unit
 and mapping-cone connecting map. Full-unbounded localization gains no
 lower-bound or finite-cohomological-dimension premise. These statements
 do not assert an additional chosen exceptional coherence calculus.
+
+[Finite/LowerShriek](Finite/LowerShriek.lean) proves invertibility of the
+original finite-étale lower-shriek/direct-image comparison and its original
+unit, counit and canonical trace laws under the stated separatedness and
+finite-rank hypotheses. [ModuleComparison](Finite/ModuleComparison.lean)
+and [ModuleTraceNormalization](Finite/ModuleTraceNormalization.lean) lift
+the same maps through original scalar forgetting, including levels zero
+and one.

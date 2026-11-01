@@ -38,3 +38,7 @@ and adjugate sheaf maps for the fixed finite field basis and discriminant,
 with their scalar composite identities; separability supplies injectivity
 where required. These feed the finite separable surface H1 bound and do not
 assert a global canonical-module trace.
+
+[OpenSquare](OpenSquare.lean) compares the original function-field maps
+across a commuting open square, retaining the displayed hypotheses and
+transporting finite-dimensionality and finrank through those maps.

@@ -235,6 +235,13 @@ and trace-one point generator. This [point-unit result](../Aglib/AlgebraicGeomet
 retains its curve, positive invertible-level and finite-complement conditions;
 it does not prove arbitrary point coefficients or the point-removal step.
 
+The compact finite-locally-constant `C³` vanishing and the original finite
+trace base are supplied. The latter includes the whole `r = 2, s = 0`
+original pairing square for the stated finite étale restriction and finite
+dominant completion, which may ramify at the boundary. It does not supply
+the all-degree/open pairing compatibility or unconditional proper or open
+perfectness. See [duality](../Aglib/AlgebraicGeometry/EtaleCohomology/Duality/README.md).
+
 The selected native route studies the transpose
 `ψ^s(F) : Ext^s(F, μ_n) → H_c^(2-s)(F)^∨`. Use a source short exact
 sequence `K → B → F` with `B` a finite étale pushforward of a finite free

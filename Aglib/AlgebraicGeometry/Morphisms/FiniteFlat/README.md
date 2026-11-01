@@ -26,3 +26,8 @@ predicates are statements, and are not witnesses merely by being defined.
 
 Source: R5 packet revision `f8a3314ddecffcada2ec721d26d56a937bed9690`,
 `R5Lab.Aglib.AlgebraicGeometry.Morphisms.FiniteFlat`.
+
+[FibreDegree](FibreDegree.lean) identifies every field-valued fibre degree
+with the actual function-field degree for a finite flat locally finitely
+presented dominant morphism between integral schemes. It does not bound
+fibres outside the flat locus.

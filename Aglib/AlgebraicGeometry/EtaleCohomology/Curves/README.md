@@ -96,3 +96,8 @@ restriction, unsigned boundary and kernel-of-sum laws also allow empty
 support. Composite levels, level one and genus zero are included. No
 splitting, free basis or canonical or Galois-equivariant coordinates are
 asserted.
+
+[TracePullback](TracePullback.lean) proves the original normalized compact
+trace identity for the stated finite dominant curve completion and its actual
+finite étale restriction, and the original roots level-reduction law. The
+completion need not be étale at the boundary.

@@ -124,3 +124,8 @@ trace `H^2(X, μ_n) ≅ ℤ/n`, and duality.
 extension and whole cohomology roots-extension squares in every degree, using
 the composed counit and compatible roots isomorphisms. The map equations need
 no curve or finite-complement hypothesis.
+
+[FinitePushforward](FinitePushforward.lean) constructs the original compact
+pullback and transfer across an actual finite/open cartesian square, with the
+stated finite étale, coefficient and rank hypotheses. Its original rank and
+roots-level laws retain those maps.

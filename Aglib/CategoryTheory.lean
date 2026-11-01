@@ -51,6 +51,7 @@ public import Aglib.CategoryTheory.Adjunction.InjectiveTests
 public import Aglib.CategoryTheory.Adjunction.KernelSupport
 public import Aglib.CategoryTheory.Adjunction.LeftAdjointComparison
 public import Aglib.CategoryTheory.Adjunction.LeftExact
+public import Aglib.CategoryTheory.Adjunction.LowerShriekExchange
 public import Aglib.CategoryTheory.Adjunction.LowerShriekUnderlying
 public import Aglib.CategoryTheory.Adjunction.MateHomEquiv
 public import Aglib.CategoryTheory.Adjunction.MateHomEquiv.Composition
@@ -432,6 +433,7 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.Source
 public import Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.Terminal
 public import Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.Zero
 public import Aglib.CategoryTheory.Sites.SheafCohomology.RepresentedTransfer.Adjunction
+public import Aglib.CategoryTheory.Sites.SheafCohomology.RepresentedTransfer.LocalFormula
 public import Aglib.CategoryTheory.Sites.SheafCohomology.RepresentedTransfer.Module
 public import Aglib.CategoryTheory.Sites.SheafCohomology.RepresentedTransfer.Trace
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Adjunction
