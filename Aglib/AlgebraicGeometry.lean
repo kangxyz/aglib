@@ -1654,6 +1654,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.Dime
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.EtaleClopenPartition
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.EtaleRestriction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FieldSections
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteConstantCharts
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteEtaleImage
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteEtaleProduct
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GaloisAction
@@ -1890,6 +1891,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.DirectImage
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.CompactSupportPairing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantCoefficients
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantPerfectness
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LocallyConstantExt
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekCohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekComposition
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekDirectImage

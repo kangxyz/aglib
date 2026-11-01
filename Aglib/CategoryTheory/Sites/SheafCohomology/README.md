@@ -112,3 +112,8 @@ comparison. [Adjunction](RepresentedTransfer/Adjunction.lean) returns it to the
 original inverse image through uniqueness of the actual adjunction. The native
 small-etale adapters supply their original maps and continuity, without adding a
 free-sheaf, module-sheaf or cohomology realization.
+
+[InternalExtComparison](InternalExtComparison.lean) specializes the original
+left-exact comparison to module-sheaf internal Hom using proved injective-image
+acyclicity. Its ordinary-cohomology inverse, degree-zero and target naturality
+laws retain actual target acyclicity and independent Ext universes.

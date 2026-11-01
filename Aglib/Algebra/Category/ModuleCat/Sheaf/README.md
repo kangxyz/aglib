@@ -98,3 +98,8 @@ shriek specializes this construction.
 comparison and original exchanged isomorphism, proving their whole unit,
 preimage and direct-image comparison laws before taking components. The
 coefficient categories and their genuinely distinct worlds are retained.
+
+The internal-Hom source functor and source-complex construction give original
+short exactness in the source into an actual injective target and its
+resolution terms. Their availability does not itself prove source-coefficient
+or source-connecting compatibility of the Ext/cohomology comparison.

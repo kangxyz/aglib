@@ -78,3 +78,11 @@ coefficient isomorphism preserves perfectness. The public index condition
 is `Finite I`; the empty family and level one are included. Component
 perfectness is an input, with no finite-free or domain assumption on the
 Ext modules.
+
+[LeftExactComparison](LeftExactComparison.lean) constructs the canonical
+reverse map independently through the original derived single unit and
+inverse composition comparison. On an actually acyclic target it is inverse
+to the original forward comparison. Its original Ext degree-zero and target
+naturality laws retain their stated hypotheses; ordinary-cohomology versions
+require the displayed target acyclicity. Source connecting compatibility is
+a separate obligation.

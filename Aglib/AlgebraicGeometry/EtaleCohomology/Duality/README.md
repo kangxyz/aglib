@@ -68,3 +68,12 @@ Kummer boundary of the positive point bundle and has trace one. The construction
 uses the actual point and localization maps, and includes composite levels and
 level one. Finite-set purity, general locally constant coefficients and SGA
 sign comparison remain open.
+
+[LocallyConstantExt](LocallyConstantExt.lean) compares the original module
+Ext with ordinary cohomology of the original internal Hom for an actual
+finite-type locally constant `ULift (ZMod n)` module over any scheme over an
+algebraically closed field, at positive invertible `n`. It gives the whole
+inverse, degree-zero normalization and roots-coefficient endomorphism laws
+with independent Ext universes. No smoothness, properness, finite-free source
+or projectivity is assumed. Source-coefficient and connecting-map laws, cup
+comparison and SGA/Weil signs remain separate.
