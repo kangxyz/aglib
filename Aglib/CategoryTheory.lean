@@ -74,7 +74,9 @@ public import Aglib.CategoryTheory.Adjunction.UnderlyingEquivalence
 public import Aglib.CategoryTheory.Adjunction.UnderlyingHomEquiv
 public import Aglib.CategoryTheory.Adjunction.UnderlyingMate
 public import Aglib.CategoryTheory.Adjunction.Unit
+public import Aglib.CategoryTheory.Adjunction.UnitComparisonBaseChange
 public import Aglib.CategoryTheory.Adjunction.UnitComparisonCoherence
+public import Aglib.CategoryTheory.Adjunction.UnitComparisonNaturality
 public import Aglib.CategoryTheory.Adjunction.UnitHomMap
 public import Aglib.CategoryTheory.EffectiveEpi.Over
 public import Aglib.CategoryTheory.ExactCategory.Abelian
@@ -172,6 +174,12 @@ public import Aglib.CategoryTheory.Monoidal.UnitMultiplication
 public import Aglib.CategoryTheory.Monoidal.Untwist
 public import Aglib.CategoryTheory.Monoidal.UntwistVanishing
 public import Aglib.CategoryTheory.MorphismProperty.OverPullbackCoherence
+public import Aglib.CategoryTheory.NatTrans.CartesianSourceExchange
+public import Aglib.CategoryTheory.NatTrans.CompositeExchange
+public import Aglib.CategoryTheory.NatTrans.CompositeExchangeNaturality
+public import Aglib.CategoryTheory.NatTrans.IsIsoOn
+public import Aglib.CategoryTheory.NatTrans.NormalizedExchangeNaturality
+public import Aglib.CategoryTheory.NatTrans.OverComparisonEquation
 public import Aglib.CategoryTheory.NatTrans.Unit
 public import Aglib.CategoryTheory.ObjectProperty.EquivalenceRelation
 public import Aglib.CategoryTheory.ObjectProperty.GrpObj
@@ -425,6 +433,7 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.CoefficientMates
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Coefficients
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Comparison
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Coproduct
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.ExactCoefficients
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.ExtComparison
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.FreeRepresentable
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Injectives

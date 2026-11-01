@@ -139,3 +139,14 @@ no canonical or Galois-equivariant basis or arbitrary-field rational-point
 count is asserted. The supplied representative remains separated and locally
 of finite type. [LineBundle](Jacobian/LineBundle.lean) specializes
 the cube, square and multiplication laws to the same component.
+
+[OnePointRestriction](Picard/OnePointRestriction.lean) identifies the kernel
+of the original Picard restriction across one closed point with multiples of
+its positive point class, and proves the original unit and positive-level
+Picard torsion restriction maps bijective under its curve hypotheses.
+
+[AbelGeometry](Jacobian/AbelGeometry.lean) retains the original ordered
+Abel map to the same identity component and its inclusion equation.
+[AbelCurve](Jacobian/AbelCurve.lean) uses the original rational origin and
+represents the based curve map; its classifying formula is on represented
+locally Noetherian tests.

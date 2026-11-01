@@ -68,3 +68,8 @@ scheme. Root coordinates are constructed rather than supplied as markings.
 
 Proper base change, proper-surjective descent and the unbounded exceptional
 functor are documented by their own families.
+
+[OnePointRestriction](OnePointRestriction.lean) proves that the original
+roots-cohomology pullback across one closed point is bijective in degrees
+zero and one for a smooth proper geometrically connected curve over an
+algebraically closed field at positive invertible levels.
