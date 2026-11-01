@@ -10,6 +10,7 @@ public import Aglib.AlgebraicGeometry.Group.RootsFiniteEtale
 public import Aglib.AlgebraicGeometry.FundamentalGroup.Field.Basic
 public import Aglib.RingTheory.RootsOfUnity.Galois
 public import Aglib.GroupCohomology.H1.Continuous
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.MarkedComparisonTransport
 
 /-!
 Native migration from `R5Lab.Aglib.AlgebraicGeometry.Cohomology.Kummer.RootStalk` at R5 revision
@@ -40,8 +41,10 @@ isomorphism, C's actual scheme representation of roots and the canonical
 Gamma(Spec)-isomorphism. The characteristic-zero, positive-level assumptions
 prove actual etaleness through the constructed polynomial model.
 
-The stalk action is defined using this additive marking, then proved equal
-to precomposition by the actual Galois point automorphism and to evaluation
+The stalk action reuses intrinsic fibre evaluation, restricted along the actual
+field fundamental-group equivalence. Its scalar value is proved equal to the
+original additive marking and to precomposition by the actual Galois point automorphism.
+Evaluation
 of the existing field fundamental-group equivalence. Thus equivariance is
 anchored to the actual scheme/stalk action, not merely a transported action
 asserted to be monodromy. The induced continuous coefficient map and its
@@ -129,24 +132,83 @@ def stalkMarking : stalk K n ≃+ Field.absoluteGaloisGroup.RootsOfUnity.Mu K n 
       n)).addCommGroupIsoToAddEquiv.trans
     (sectionRootsEquiv K n)
 
-/-- Transport along the literal root evaluation; the next theorem identifies its
-map with precomposition by the actual Galois point automorphism. -/
-@[instance_reducible] def stalkGaloisAction :
+local instance rootsFinite : IsFinite (MultiplicativeGroup.rootsGroupScheme (Spec (.of K))
+    n).X.hom :=
+  RootsFiniteEtale.rootsScheme_finite _ n (NeZero.pos n)
+
+/-- The actual root sheaf has this literal represented coefficient realization. -/
+def rootRepresentation : CoefficientRepresentation
+    (GroupCohomology.Kummer.Coefficients.mu (Spec (.of K)) n) where
+  group := MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n
+  finite := inferInstance
+  etale := inferInstance
+  commutative := inferInstance
+  iso := Iso.refl _
+
+/-- The selected root representative has the original actual stalk evaluation map. -/
+theorem rootRepresentation_fiberPointEquiv (a : stalk K n) :
+    (rootRepresentation K n).fiberPointEquiv (geometricPoint K) a =
+      (representedFiberEvaluation (geometricPoint K)
+        (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) a).down := by
+  rw [CoefficientRepresentation.fiberPointEquiv_apply]
+  let F := (Scheme.pointSmallEtale (geometricPoint K)).sheafFiber
+    (A := AddCommGrpCat.{u + 1})
+  have hi : F.map (rootRepresentation K n).iso.inv a = a :=
+    ConcreteCategory.congr_hom (F.map_id _) a
+  rw [hi]
+  rfl
+
+/-- The root stalk uses the selected intrinsic actual fibre action, restricted along
+its original field fundamental-group equivalence. -/
+@[instance_reducible] def intrinsicStalkGaloisAction :
     DistribMulAction (Field.absoluteGaloisGroup K) (stalk K n) := by
-  let e := stalkMarking K n
-  exact { e.toEquiv.mulAction (Field.absoluteGaloisGroup K) with
-    smul_zero σ := by
-      change e.symm (σ • e 0) = 0
-      simp
-    smul_add σ a b := by
-      change e.symm (σ • e (a + b)) = e.symm (σ • e a) + e.symm (σ • e b)
-      simp [smul_add] }
+  letI := MarkedComparisonTransport.stalkEvaluationAction (geometricPoint K)
+    (rootRepresentation K n)
+  exact DistribMulAction.compHom (stalk K n)
+    (fundamentalGroupContinuousEquiv K).toMonoidHom
+
+/-- The root-stalk Galois action reuses its actual intrinsic fibre evaluation. -/
+@[instance_reducible] def stalkGaloisAction :
+    DistribMulAction (Field.absoluteGaloisGroup K) (stalk K n) :=
+  intrinsicStalkGaloisAction K n
+
+/-- The intrinsic action evaluates through the original actual Galois point morphism. -/
+theorem stalkGaloisAction_intrinsic_evaluation
+    (σ : Field.absoluteGaloisGroup K) (a : stalk K n) :
+    letI := stalkGaloisAction K n
+    representedFiberEvaluation (geometricPoint K)
+      (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) (σ • a) =
+    representedSectionsPullback (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n)
+      (pointEnd K σ)
+      (representedFiberEvaluation (geometricPoint K)
+        (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) a) := by
+  letI := stalkGaloisAction K n
+  have hp := MarkedComparisonTransport.stalkEvaluation_points (geometricPoint K)
+    (rootRepresentation K n) (fundamentalGroupContinuousEquiv K σ) a
+  change (rootRepresentation K n).fiberPointEquiv (geometricPoint K) (σ • a) = _ at hp
+  rw [rootRepresentation_fiberPointEquiv, rootRepresentation_fiberPointEquiv] at hp
+  apply ULift.ext
+  exact hp
+
 
 theorem stalkMarking_galois (σ : Field.absoluteGaloisGroup K) (a : stalk K n) :
     letI := stalkGaloisAction K n
     stalkMarking K n (σ • a) = σ • stalkMarking K n a := by
   letI := stalkGaloisAction K n
-  exact (stalkMarking K n).apply_symm_apply _
+  change sectionRootsEquiv K n (representedFiberEvaluation (geometricPoint K)
+    (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) (σ • a)) = _
+  rw [stalkGaloisAction_intrinsic_evaluation]
+  exact sectionRootsEquiv_galois K n σ
+    (representedFiberEvaluation (geometricPoint K)
+      (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) a).down.toMul
+
+/-- The selected intrinsic action has exactly the original root-marked scalar value. -/
+theorem stalkGaloisAction_smul_eq_original (σ : Field.absoluteGaloisGroup K) (a : stalk K n) :
+    letI := stalkGaloisAction K n
+    σ • a = (stalkMarking K n).symm (σ • stalkMarking K n a) := by
+  letI := stalkGaloisAction K n
+  exact (stalkMarking K n).injective
+    ((stalkMarking_galois K n σ a).trans ((stalkMarking K n).apply_symm_apply _).symm)
 
 theorem stalkGaloisAction_evaluation (σ : Field.absoluteGaloisGroup K) (a : stalk K n) :
     letI := stalkGaloisAction K n
@@ -163,10 +225,6 @@ theorem stalkGaloisAction_evaluation (σ : Field.absoluteGaloisGroup K) (a : sta
       (representedFiberEvaluation (geometricPoint K)
         (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) a).down.toMul).symm
 
-local instance rootsFinite : IsFinite (MultiplicativeGroup.rootsGroupScheme (Spec (.of K))
-    n).X.hom :=
-  RootsFiniteEtale.rootsScheme_finite _ n (NeZero.pos n)
-
 /-- The finite etale roots-of-unity scheme over a characteristic-zero field at nonzero level. -/
 def rootsCover : Scheme.FiniteEtale (Spec (.of K)) :=
   ⟨(MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n).X, by constructor <;> infer_instance⟩
@@ -182,17 +240,24 @@ theorem stalkGaloisAction_fiberAut (σ : Field.absoluteGaloisGroup K) (a : stalk
   letI := stalkGaloisAction K n
   exact congrArg (fun x => x.down.toMul) (stalkGaloisAction_evaluation K n σ a)
 
+/-- The retained public action is literally the selected intrinsic action. -/
+theorem stalkGaloisAction_eq_intrinsic :
+    stalkGaloisAction K n = intrinsicStalkGaloisAction K n := rfl
+
 /-- The literal finite stalk is equipped with its discrete topology. -/
 instance stalkTopology : TopologicalSpace (stalk K n) := ⊥
 instance stalkDiscreteTopology : DiscreteTopology (stalk K n) := ⟨rfl⟩
 
 /-- The Galois action on the root stalk transported through its root-evaluation marking. -/
-local instance : DistribMulAction (Field.absoluteGaloisGroup K) (stalk K n) := stalkGaloisAction K n
+local instance : DistribMulAction (Field.absoluteGaloisGroup K) (stalk K n) :=
+  stalkGaloisAction K n
 
 instance stalkContinuousSMul : ContinuousSMul (Field.absoluteGaloisGroup K) (stalk K n) where
   continuous_smul := by
-    change Continuous (fun p : Field.absoluteGaloisGroup K × stalk K n =>
-      (stalkMarking K n).symm (p.1 • stalkMarking K n p.2))
+    have he : (fun p : Field.absoluteGaloisGroup K × stalk K n => p.1 • p.2) =
+        (fun p => (stalkMarking K n).symm (p.1 • stalkMarking K n p.2)) :=
+      funext (fun p => stalkGaloisAction_smul_eq_original K n p.1 p.2)
+    rw [he]
     exact continuous_of_discreteTopology.comp
       (continuous_fst.smul (continuous_of_discreteTopology.comp continuous_snd))
 

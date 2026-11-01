@@ -8,6 +8,7 @@ module
 
 /- Current interface basis: 46f53465aaf3b0167049e9c8e9e2294111bb4281.
 Original construction and mathematical provenance are retained below. -/
+public import Aglib.CategoryTheory.Sites.Representable.GroupHom
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedTorsor
 public import Aglib.CategoryTheory.Monoidal.Cartesian.RepresentedGroupReflection
 public import Mathlib.CategoryTheory.Monoidal.Cartesian.CommGrp_
@@ -235,15 +236,34 @@ theorem representedSheafPreimage_map (q : H ⟶ K) :
     (Y := _root_.AlgebraicGeometry.Scheme.FiniteEtale.mk H.X.hom)
     (Z := _root_.AlgebraicGeometry.Scheme.FiniteEtale.mk K.X.hom) q.hom.hom
 
-/-- Full faithfulness on actual finite commutative étale group schemes. -/
+/-- Recover group maps from a finite commutative étale source into a represented
+commutative target. -/
 def representedSheafHomEquiv (H K : Grp (Over X))
     [IsCommMonObj H.X] [IsCommMonObj K.X]
-    [IsFinite H.X.hom] [Etale H.X.hom] [IsFinite K.X.hom] [Etale K.X.hom] :
-    (H ⟶ K) ≃ (representedSheaf H ⟶ representedSheaf K) where
-  toFun := representedSheafMap
-  invFun := representedSheafGroupPreimage
-  left_inv := representedSheafPreimage_map
-  right_inv := representedSheafMap_preimage
+    [IsFinite H.X.hom] [Etale H.X.hom] :
+    (H ⟶ K) ≃ (representedSheaf H ⟶ representedSheaf K) := by
+  let T := Scheme.Etale.forget X
+  let HC := _root_.AlgebraicGeometry.Scheme.FiniteEtale.mk H.X.hom
+  let U₂ := (toEtale X).obj (HC ⊗ HC)
+  let κ₀ : T.obj (etaleTerminal X) ≅ 𝟙_ (Over X) := Iso.refl _
+  let : (_root_.AlgebraicGeometry.Scheme.FiniteEtale.forget X).Monoidal :=
+    CoefficientRepresentation.coverForgetMonoidal (X := X)
+  let κ₂ : T.obj U₂ ≅ H.X ⊗ H.X :=
+    (Functor.Monoidal.μIso (_root_.AlgebraicGeometry.Scheme.FiniteEtale.forget X) HC HC).symm
+  exact CommutativeGroupSections.testSheafHomEquiv.{u + 1} T
+    (Scheme.smallEtaleTopology X) H K ((toEtale X).obj HC) (Iso.refl _)
+    (etaleTerminal X) U₂ κ₀ κ₂ (representedSheaf H).property (representedSheaf K).property
+
+omit [IsFinite K.X.hom] [Etale K.X.hom] in
+/-- The whole lower Hom equivalence retains the original postcomposition map. -/
+@[simp] theorem representedSheafHomEquiv_apply (q : H ⟶ K) :
+    representedSheafHomEquiv H K q = representedSheafMap q := rfl
+
+/-- Its inverse is exactly the original recovered group-scheme map. -/
+@[simp] theorem representedSheafHomEquiv_symm_apply (q : representedSheaf H ⟶ representedSheaf K) :
+    (representedSheafHomEquiv H K).symm q = representedSheafGroupPreimage q := by
+  apply (representedSheafHomEquiv H K).injective
+  rw [Equiv.apply_symm_apply, representedSheafHomEquiv_apply, representedSheafMap_preimage]
 
 end AlgebraicGeometry.Scheme.EtaleCohomology
 

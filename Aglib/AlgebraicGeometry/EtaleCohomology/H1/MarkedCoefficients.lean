@@ -196,6 +196,71 @@ def pointModuleMark : (Over.mk s ⟶ H.X) ≃* Multiplicative (PointModule s H) 
   right_inv _ := rfl
   map_mul' _ _ := rfl
 
+omit [GaloisCategory (Scheme.FiniteEtale X)]
+  [PreGaloisCategory.FiberFunctor (fiberToFinite s)] in
+/-- Actual natural evaluation preserves the coefficient identity, by naturality
+of its unit morphism from the genuine terminal finite-etale cover. -/
+theorem pointEvaluation_one (γ : FiberAutGroup s) :
+    γ.hom.app (coefficientCover H) (1 : Over.mk s ⟶ H.X) = (1 : Over.mk s ⟶ H.X) := by
+  have h := Scheme.FiniteEtale.FiberTorsorActions.evaluation_naturality s γ
+    (Z := 𝟙_ (Scheme.FiniteEtale X))
+    (W := coefficientCover H) (η[H.X]) (toUnit (Over.mk s))
+  change γ.hom.app (coefficientCover H) (1 : Over.mk s ⟶ H.X) =
+    γ.hom.app (𝟙_ (Scheme.FiniteEtale X)) (toUnit (Over.mk s)) ≫ η[H.X] at h
+  calc
+    _ = γ.hom.app (𝟙_ (Scheme.FiniteEtale X)) (toUnit (Over.mk s)) ≫ η[H.X] := h
+    _ = toUnit (Over.mk s) ≫ η[H.X] := congrArg (fun p => p ≫ η[H.X])
+      (toUnit_unique (γ.hom.app (𝟙_ (Scheme.FiniteEtale X)) (toUnit (Over.mk s)))
+        (toUnit (Over.mk s)))
+    _ = 1 := rfl
+
+omit [GaloisCategory (Scheme.FiniteEtale X)]
+  [PreGaloisCategory.FiberFunctor (fiberToFinite s)] [IsCommMonObj H.X] in
+/-- Actual evaluation preserves coefficient multiplication, by naturality of
+the group law on the universal finite-etale product. -/
+theorem pointEvaluation_mul (γ : FiberAutGroup s) (a b : Over.mk s ⟶ H.X) :
+    γ.hom.app (coefficientCover H) (a * b) =
+      (show Over.mk s ⟶ H.X from γ.hom.app (coefficientCover H) a) *
+        (show Over.mk s ⟶ H.X from γ.hom.app (coefficientCover H) b) := by
+  have h := Scheme.FiniteEtale.FiberTorsorActions.evaluation_naturality s γ
+    (Z := coefficientCover H ⊗ coefficientCover H)
+    (W := coefficientCover H) (μ[H.X]) (lift a b)
+  rw [evaluation_product s H (coefficientCover H)] at h
+  exact h
+
+omit [GaloisCategory (Scheme.FiniteEtale X)]
+  [PreGaloisCategory.FiberFunctor (fiberToFinite s)] in
+/-- Intrinsic monodromy on actual coefficient points. No marked module or
+external action is used: scalar action is the actual natural fibre evaluation. -/
+@[instance_reducible] def pointIntrinsicAction :
+    DistribMulAction (FiberAutGroup s) (PointModule s H) where
+  smul γ a := Additive.ofMul (γ.hom.app (coefficientCover H) a.toMul)
+  one_smul _ := rfl
+  mul_smul _ _ _ := rfl
+  smul_zero γ := congrArg Additive.ofMul (pointEvaluation_one s H γ)
+  smul_add γ a b := congrArg Additive.ofMul (pointEvaluation_mul s H γ a.toMul b.toMul)
+
+omit [GaloisCategory (Scheme.FiniteEtale X)]
+  [PreGaloisCategory.FiberFunctor (fiberToFinite s)] in
+/-- The intrinsic finite coefficient action is continuous for the actual
+fibre-automorphism evaluation topology and the discrete point topology. -/
+theorem pointIntrinsicContinuousSMul :
+    letI := pointIntrinsicAction s H
+    ContinuousSMul (FiberAutGroup s) (PointModule s H) := by
+  let := pointIntrinsicAction s H
+  exact PreGaloisCategory.continuousSMul_aut_fiber (fiberToFinite s) (coefficientCover H)
+
+omit [GaloisCategory (Scheme.FiniteEtale X)]
+  [PreGaloisCategory.FiberFunctor (fiberToFinite s)] in
+/-- The identity point marking is equivariant for the one actual evaluation action. -/
+theorem pointIntrinsicMark_equivariant :
+    letI := pointIntrinsicAction s H
+    ∀ (γ : FiberAutGroup s) a,
+      pointModuleMark s H (γ.hom.app (coefficientCover H) a) =
+        Multiplicative.ofAdd (γ • (pointModuleMark s H a).toAdd) := by
+  intro γ a
+  rfl
+
 variable (M : Type v) [AddCommGroup M] [Finite M] [TopologicalSpace M] [DiscreteTopology M]
 variable [DistribMulAction (FiberAutGroup s) M] [ContinuousSMul (FiberAutGroup s) M]
 variable (mark : (Over.mk s ⟶ H.X) ≃* Multiplicative M)
@@ -258,6 +323,33 @@ theorem pointModuleMark_equivariant :
   let := pointModuleAction s H M mark
   intro γ a
   exact congrArg Multiplicative.ofAdd (pointModuleAction_evaluation s H M mark hmark γ a).symm
+
+omit [GaloisCategory (Scheme.FiniteEtale X)]
+  [PreGaloisCategory.FiberFunctor (fiberToFinite s)] [Finite M] [TopologicalSpace M]
+  [DiscreteTopology M] [ContinuousSMul (FiberAutGroup s) M] in
+include hmark in
+/-- A genuine equivariant marking identifies its transported action with actual evaluation. -/
+theorem pointModuleAction_eq_intrinsic :
+    pointModuleAction s H M mark = pointIntrinsicAction s H := by
+  ext γ a
+  apply (pointModuleEquiv s H M mark).injective
+  change (pointModuleEquiv s H M mark)
+    ((pointModuleEquiv s H M mark).symm (γ • (mark a.toMul).toAdd)) =
+      (mark (γ.hom.app (coefficientCover H) a.toMul)).toAdd
+  rw [AddEquiv.apply_symm_apply]
+  exact (congrArg Multiplicative.toAdd (hmark γ a.toMul)).symm
+
+omit [GaloisCategory (Scheme.FiniteEtale X)]
+  [PreGaloisCategory.FiberFunctor (fiberToFinite s)] [Finite M] [TopologicalSpace M]
+  [DiscreteTopology M] [ContinuousSMul (FiberAutGroup s) M] in
+include hmark in
+/-- The original external marking is equivariant from the intrinsic point module. -/
+theorem pointModuleEquiv_intrinsic_equivariant :
+    letI := pointIntrinsicAction s H
+    ∀ (γ : FiberAutGroup s) a,
+      pointModuleEquiv s H M mark (γ • a) = γ • pointModuleEquiv s H M mark a := by
+  intro γ a
+  exact congrArg Multiplicative.toAdd (hmark γ a.toMul)
 
 /-- The actual represented sheaf is identified with descent of its small
 point module. This is the proved finite-universe bridge for comparison. -/

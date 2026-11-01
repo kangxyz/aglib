@@ -80,3 +80,13 @@ It also descends the same charts along an actual surjective étale map;
 [RepresentedCoefficients](RepresentedCoefficients.lean) obtains its original additive stalk evaluation and inverse from [the general point construction](../../../CategoryTheory/Sites/Point/RepresentedAdditive.lean). The coefficient group, field-valued point, lifted section values and original germs remain unchanged.
 
 [Naturality](Naturality.lean) defines stalk pullback by the inverse of the one original all-coefficient stalk-unit isomorphism and proves agreement with its represented coordinate view. [CoefficientStalkBaseChange](CoefficientStalkBaseChange.lean) and [PointedNaturality](PointedNaturality.lean) retain the actual unit, coefficient, section, point and action equations. The finite/Galois/marking hypotheses of the represented H1 comparison remain at their existing callers; the underlying all-coefficient stalk comparison is separate from H1 classification.
+
+## Represented and torsor constructions
+
+The original H1 maps, hypotheses and universe ranges use the general
+[representable](../../../CategoryTheory/Sites/Representable/README.md) and
+[torsor](../../../CategoryTheory/Sites/Torsors/README.md) constructions at the
+actual small-etale sites. These retain the selected source-specific topos data
+and the original actions, pullbacks and translation maps.
+[Kummer/RootStalk](../Kummer/RootStalk.lean) selects intrinsic fibre evaluation
+for the root-stalk action and proves its original root-marked scalar formula.

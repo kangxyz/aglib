@@ -293,6 +293,8 @@ head expected by their provider.
 `Z`, with the original construction equation `Z = U ⋙ single`, then supplies
 the actual `zmodSingle` and `rfl` at the native call. The full assembly and
 original data remain intact. [Proper injective follow-up](performance/inferred-native-comparison-equations.md#proper-injective-follow-up-retain-the-original-single-head).
+The [original étale migration closeout](performance/cases/original-etale-migration-closeout-20261101/README.md) records this method over 27 source files and its scoped native build evidence.
+
 For localization triangles, share the actual lift, whole vertex factorization
 and specified first/second arrows with the transported original connecting
 arrow; retain named original-value equations for existing unfolding consumers.

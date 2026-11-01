@@ -1,0 +1,8 @@
+✔ [3899/3905] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.CoefficientRepresentation (11s)
+✔ [3900/3905] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.FundamentalGroupComparison (97s)
+✔ [3901/3905] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.MarkedComparisonTransport (23s)
+✔ [3902/3905] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootStalk (6.0s)
+✔ [3903/3905] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.Naturality (126s)
+✔ [3904/3905] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.CoefficientStalkBaseChange (8.2s)
+✔ [3905/3905] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.PointedFieldTransport (14s)
+Build completed successfully (3905 jobs).

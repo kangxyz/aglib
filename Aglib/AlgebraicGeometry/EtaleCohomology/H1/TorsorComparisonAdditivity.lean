@@ -10,6 +10,7 @@ module
 Original construction and mathematical provenance are retained below. -/
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.SchemeTorsorClassification
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorSum
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorClassification
 
 /-!
 # Contracted-sum additivity of the actual torsor/fundamental-group comparison
@@ -245,13 +246,44 @@ def moduleTorsorClassAddEquiv :
   rw [← torsorClass_cocycle_add s M c d hA, moduleTorsorClassEquiv_cocycle,
     moduleTorsorClassEquiv_cocycle, moduleTorsorClassEquiv_cocycle, map_add]
 
+/-- The actual finite-module H1 comparison uses the proved intrinsic classifier.
+No annihilating level, invertibility or separate classifier proof is needed here. -/
+def moduleH1AddEquivCore :
+    H1Etale X (moduleSheaf s M) ≃+ H1 (FiberAutGroup s) M := by
+  let hA₀ : Stacks03AJ.{u, w} X := stacks03AJ X
+  let := torsorClassAddCommGroup hA₀ (moduleSheaf s M)
+  exact (torsorClassAddEquiv hA₀ (moduleSheaf s M)).symm.trans
+    (moduleTorsorClassAddEquiv s M hA₀ hR)
+
+/-- The new minimal core has the literal original positive torsor representative value. -/
+theorem moduleH1AddEquivCore_torsor (P : Torsor (moduleSheaf s M)) :
+    moduleH1AddEquivCore s M hR (torsorExtClass P) =
+      representedTorsorClass s (moduleScheme s M) (moduleFiberMulEquiv s M)
+        (moduleFiber_action s M) hR (moduleSheaf_isFiniteLocallyConstant (s := s) M) P := by
+  let hA₀ : Stacks03AJ.{u, w} X := stacks03AJ X
+  let := torsorClassAddCommGroup hA₀ (moduleSheaf s M)
+  change moduleTorsorClassEquiv s M hR
+    ((torsorClassAddEquiv hA₀ (moduleSheaf s M)).symm (torsorExtClass P)) = _
+  rw [show torsorExtClass P = (torsorClassAddEquiv hA₀ (moduleSheaf s M)) (Quotient.mk _ P) from
+    rfl, AddEquiv.symm_apply_apply, moduleTorsorClassEquiv_mk]
+
+/-- The same original descended affine torsor is the inverse of every actual cocycle class. -/
+theorem moduleH1AddEquivCore_symm_classOf (c : Cocycle (FiberAutGroup s) M) :
+    (moduleH1AddEquivCore s M hR).symm (classOf (FiberAutGroup s) M c) =
+      torsorExtClass (cocycleSheafTorsor s M c) := by
+  apply (moduleH1AddEquivCore s M hR).injective
+  rw [AddEquiv.apply_symm_apply, moduleH1AddEquivCore_torsor, representedTorsorClass_cocycle]
+
 /-- The actual finite-coefficient Ext-H¹/common-continuous-H¹ additive
 comparison for a descended finite module sheaf. The displayed coefficient
 scope retains positivity, annihilation and level invertibility on X. -/
 def moduleH1AddEquiv (_hcoeff : FiniteCoefficient (moduleSheaf s M)) :
-    H1Etale X (moduleSheaf s M) ≃+ H1 (FiberAutGroup s) M := by
-  letI := torsorClassAddCommGroup hA (moduleSheaf s M)
-  exact (torsorClassAddEquiv hA (moduleSheaf s M)).symm.trans (moduleTorsorClassAddEquiv s M hA hR)
+    H1Etale X (moduleSheaf s M) ≃+ H1 (FiberAutGroup s) M :=
+  (fun (_ : Stacks03AJ.{u, w} X) => moduleH1AddEquivCore s M hR) hA
+
+/-- The legacy stronger-input wrapper is exactly the same minimal comparison map. -/
+theorem moduleH1AddEquiv_eq_core (hcoeff : FiniteCoefficient (moduleSheaf s M)) :
+    moduleH1AddEquiv s M hA hR hcoeff = moduleH1AddEquivCore s M hR := rfl
 
 /-- The additive comparison is the actual torsor-representative construction,
 not an unspecified automorphism of either cohomology group. -/
@@ -260,12 +292,7 @@ theorem moduleH1AddEquiv_torsor (hcoeff : FiniteCoefficient (moduleSheaf s M))
     moduleH1AddEquiv s M hA hR hcoeff (torsorExtClass P) =
       representedTorsorClass s (moduleScheme s M) (moduleFiberMulEquiv s M)
         (moduleFiber_action s M) hR (moduleSheaf_isFiniteLocallyConstant (s := s) M) P := by
-  let := torsorClassAddCommGroup hA (moduleSheaf s M)
-  change moduleTorsorClassEquiv s M hR
-    ((torsorClassAddEquiv hA (moduleSheaf s M)).symm (torsorExtClass P)) = _
-  rw [show (torsorExtClass P) = (torsorClassAddEquiv hA (moduleSheaf s M)) (Quotient.mk _ P) from
-    rfl,
-    AddEquiv.symm_apply_apply, moduleTorsorClassEquiv_mk]
+  exact moduleH1AddEquivCore_torsor s M hR P
 
 /-- Every original common cocycle has the explicitly descended affine torsor
 as its inverse image under the actual Ext comparison. -/
@@ -273,8 +300,7 @@ theorem moduleH1AddEquiv_symm_classOf (hcoeff : FiniteCoefficient (moduleSheaf s
     (c : Cocycle (FiberAutGroup s) M) :
     (moduleH1AddEquiv s M hA hR hcoeff).symm (classOf (FiberAutGroup s) M c) =
       torsorExtClass (cocycleSheafTorsor s M c) := by
-  apply (moduleH1AddEquiv s M hA hR hcoeff).injective
-  rw [AddEquiv.apply_symm_apply, moduleH1AddEquiv_torsor, representedTorsorClass_cocycle]
+  exact moduleH1AddEquivCore_symm_classOf s M hR c
 
 end AdditiveComparison
 

@@ -74,7 +74,9 @@ public import Aglib.CategoryTheory.Adjunction.UnderlyingEquivalence
 public import Aglib.CategoryTheory.Adjunction.UnderlyingHomEquiv
 public import Aglib.CategoryTheory.Adjunction.UnderlyingMate
 public import Aglib.CategoryTheory.Adjunction.Unit
+public import Aglib.CategoryTheory.Adjunction.UnitComparisonBaseChange
 public import Aglib.CategoryTheory.Adjunction.UnitComparisonCoherence
+public import Aglib.CategoryTheory.Adjunction.UnitComparisonNaturality
 public import Aglib.CategoryTheory.Adjunction.UnitHomMap
 public import Aglib.CategoryTheory.EffectiveEpi.Over
 public import Aglib.CategoryTheory.ExactCategory.Abelian
@@ -172,6 +174,12 @@ public import Aglib.CategoryTheory.Monoidal.UnitMultiplication
 public import Aglib.CategoryTheory.Monoidal.Untwist
 public import Aglib.CategoryTheory.Monoidal.UntwistVanishing
 public import Aglib.CategoryTheory.MorphismProperty.OverPullbackCoherence
+public import Aglib.CategoryTheory.NatTrans.CartesianSourceExchange
+public import Aglib.CategoryTheory.NatTrans.CompositeExchange
+public import Aglib.CategoryTheory.NatTrans.CompositeExchangeNaturality
+public import Aglib.CategoryTheory.NatTrans.IsIsoOn
+public import Aglib.CategoryTheory.NatTrans.NormalizedExchangeNaturality
+public import Aglib.CategoryTheory.NatTrans.OverComparisonEquation
 public import Aglib.CategoryTheory.NatTrans.Unit
 public import Aglib.CategoryTheory.ObjectProperty.EquivalenceRelation
 public import Aglib.CategoryTheory.ObjectProperty.GrpObj
@@ -207,6 +215,7 @@ public import Aglib.CategoryTheory.Sites.Descent.Composition
 public import Aglib.CategoryTheory.Sites.Descent.OfEpi
 public import Aglib.CategoryTheory.Sites.Descent.OverForget
 public import Aglib.CategoryTheory.Sites.Descent.OverSigma
+public import Aglib.CategoryTheory.Sites.Descent.Represented.TorsorAction
 public import Aglib.CategoryTheory.Sites.Descent.Rigidification
 public import Aglib.CategoryTheory.Sites.Descent.SiteChange
 public import Aglib.CategoryTheory.Sites.Descent.Transfer
@@ -243,6 +252,10 @@ public import Aglib.CategoryTheory.Sites.Pullback.FlatCoefficients
 public import Aglib.CategoryTheory.Sites.Pullback.LocalDescription
 public import Aglib.CategoryTheory.Sites.Pullback.RepresentedTarget
 public import Aglib.CategoryTheory.Sites.PushforwardSections
+public import Aglib.CategoryTheory.Sites.Representable.BinaryOperation
+public import Aglib.CategoryTheory.Sites.Representable.GroupHom
+public import Aglib.CategoryTheory.Sites.Representable.ImageHom
+public import Aglib.CategoryTheory.Sites.Representable.LiftedYoneda
 public import Aglib.CategoryTheory.Sites.Representable.SectionComparison
 public import Aglib.CategoryTheory.Sites.Representable.SectionComparisonValues
 public import Aglib.CategoryTheory.Sites.RepresentedTransfer.OverProducts
@@ -488,6 +501,12 @@ public import Aglib.CategoryTheory.Sites.Torsor.Pushout
 public import Aglib.CategoryTheory.Sites.Torsor.Sum
 public import Aglib.CategoryTheory.Sites.Torsor.Transport
 public import Aglib.CategoryTheory.Sites.Torsor.Trivial
+public import Aglib.CategoryTheory.Sites.Torsors.AdjointPullback
+public import Aglib.CategoryTheory.Sites.Torsors.AffineDisplacement
+public import Aglib.CategoryTheory.Sites.Torsors.CartesianMaps
+public import Aglib.CategoryTheory.Sites.Torsors.PointTranslation
+public import Aglib.CategoryTheory.Sites.Torsors.Represented
+public import Aglib.CategoryTheory.Sites.Torsors.RepresentedIso
 public import Aglib.CategoryTheory.SmallModel.Abelian
 public import Aglib.CategoryTheory.SmallModel.Exact
 public import Aglib.CategoryTheory.SmallModel.Functor

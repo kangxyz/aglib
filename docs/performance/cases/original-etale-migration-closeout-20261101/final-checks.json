@@ -1,0 +1,62 @@
+{
+  "question": "Final current original27 evidence, with old inputs kept separate",
+  "base_public": "95f48533543152a47317a71334c11993fe33d3d5",
+  "current_source_vector": "99d59d8cf82616d969aa6dee2edf5dfbb7f1e19e510bc569d7057d53bfdf3c22",
+  "current_source_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/CoefficientRepresentation.lean": "9f97d8ea80149febc711768e66a5a297d07c2e74faaf165d92274288d5c502ac",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/ActionDescent.lean": "e67b09a102f446cfbed6d26d47a13666a53207d277cbe2281b530427b4949a72",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/ContinuousTorsors.lean": "517f412301d643f78f401979148dd358e2a21d7d42494d44aa3fe89e73502f92",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/FundamentalGroupComparison.lean": "f4e55892e7f97e12eaf8d677f8c4ffa51f358572287db4b3e21ce41737a37734",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/MarkedCoefficients.lean": "79c887bf4fb60770f2dcbfe171752576a2c444f9142dd146e9774b503c54e84a",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/MarkedComparisonTransport.lean": "290d21ead3a4ea4401cc69b8bccbd77f43965276a583ab633ccde299ff458241",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PointedFieldTransport.lean": "45b2649ad9430572bef5f3e33ec572a23f785536d3ea7ac42faae33ec07c4b75",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/RepresentedComparisonNaturality.lean": "485181418107d1e0a42cf94df0b7a879bfda4b1dfb742bd97d122145fc2793b5",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/RepresentedTorsor.lean": "8f0f470e18828ba222c14c76cf32d5c8fd11b43a64fc6d363fa7071701793e40",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SchemeTorsorBaseChange.lean": "14a41005d3a9d713940c0bc06b669b281f3d77954005614ac1f9c70a3e4dea10",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SchemeTorsorClassification.lean": "fd1b05d99a7f9e5e1a3af6b58f9dfc61716a70d3ee19cc04300aab765a658760",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/TorsorComparisonAdditivity.lean": "ec39f9392487248ad68d7572b598216c9a340a51030bb2b13ec370b633729eb5",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/RootStalk.lean": "6af35334974811fae23a605eb6b7beea693b974c5b6c8d0fef018803a722967f",
+    "Aglib/CategoryTheory/Sites/Representable/GroupHom.lean": "9a171a738eb8e23b649a21b25d026a41be1d6227932fbc7e402679a7d9fe42af",
+    "Aglib/CategoryTheory/Sites/Representable/ImageHom.lean": "b8d5c83b8e283bcb2b53a4824a7014219ab98e3f3ae60e04ce1d5c5ff12efd0a",
+    "Aglib/CategoryTheory/Sites/Representable/LiftedYoneda.lean": "81ead3d4c520533d8b23970a584bc39d03fc6dec2c041c6510a27619124b3fab",
+    "Aglib/CategoryTheory/Sites/Representable/BinaryOperation.lean": "470fd36063eb100de8c95a81c84f313c6dd55ae5d06bcde9e5b10d7fb015e0ff",
+    "Aglib/CategoryTheory/Sites/Torsors/AdjointPullback.lean": "a88a37c8f6c2865a10ebb6c29cbb42ce4bd22a7c962e4dada20d5d5b0dfaddaa",
+    "Aglib/CategoryTheory/Sites/Torsors/AffineDisplacement.lean": "6cbd0b4ea4ffade57b5ae3f43fa9e6c30ce553c5e4864d9c45f0db65ad23ea55",
+    "Aglib/CategoryTheory/Sites/Torsors/PointTranslation.lean": "d3b3dab199d055fbdbeefc758fb9a1cb2ea0ad7587d41193d2fba10db4adceee",
+    "Aglib/CategoryTheory/Sites/Torsors/Represented.lean": "20576f249cfb735dcf70e3f6fa968b22fa2098f94b43021541b6c8af49ad06ba",
+    "Aglib/CategoryTheory/Sites/Torsors/RepresentedIso.lean": "3d6bb01dec189e341e68e461bcf6fdf5d556f1f1f2b6b06e710f5ddfffb8f1a5",
+    "Aglib/CategoryTheory/Sites/Torsors/CartesianMaps.lean": "e9fc5f76241296d45363d7a88b31abebbff1c22533b0f07884e12ae3369797b7",
+    "Aglib/CategoryTheory/Sites/Descent/Represented/TorsorAction.lean": "8879ec13e48195abd89b4444dfcb521f50cb6f89dae05f8751efd248623e9e75",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/GeometricPoints/InverseImage.lean": "626af23ec9c0b5c13ae36ccee21f5dcd7813c105aec19bc4f06d4fe4f96e1687",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/GeometricPoints/InverseImage/Skyscraper.lean": "391d711b14ae395dcd47aa620091c0016ea3443a0ecc3b48fe1f258db2a4e38f",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/CoefficientStalkBaseChange.lean": "0dbffbadfb423bd3a3ea9a2ef2b25589f7c1c6dfdf42543f71ea9a5ccbdc60fb"
+  },
+  "initial_CPP": {
+    "run": "remote-9cfc663619c84da096228795540227de",
+    "source": "9918491d10c40660a40ea3c48817e2d9647f6f6609a57baa352a960ce8ff6e7d",
+    "fresh": "23/23",
+    "preserved": "Initial patch/hash manifest/receipt/build/events unchanged."
+  },
+  "two_file_declaration_repair": "Remove two redundant/conflicting simp enrollments, preserve equations/proofs; omit only unused target finite/etale helper premises, retain inverse formula genuine premises and all main endpoint conditions. No new import/declaration/proof body or budget.",
+  "current_CPP": {
+    "run": "remote-ae5e4e5dde2941cf9a3399d43313cc63",
+    "source": "54f27e1bc71f342d0386865df13bafc5047106d437177af0f6b83e8da34c82f0",
+    "fresh": "7/7",
+    "compatible_retained": "Current Affine/ActionDescent pass and all unchanged graph outputs retained from actual prior successes.",
+    "closed": true,
+    "native_exit": 0,
+    "input_drift": []
+  },
+  "final_stock_declaration": {
+    "run": "remote-0f12c8f5740e442e88b475ac569336cc",
+    "source": "54f27e1bc71f342d0386865df13bafc5047106d437177af0f6b83e8da34c82f0",
+    "closed": true,
+    "native_exit": 0,
+    "input_drift": [],
+    "compiler_invocations": 0,
+    "predicate": "Pinned full stock Batteries getDeclsInPackage Aglib/getChecks slow=true runAlways=None runOnly=None; coherent ready imported package, no filters or suppressions.",
+    "header": "Already compiled declaration-free import-only header reused; run-local read-only namespace links resolve the actual protected Linux artifacts. No new compilation or API/client checks."
+  },
+  "retained_native": "Initial original27 builtin/style/audit all0 and source-token/policy0. Two repair transformations add no imports/declarations/proof bodies/axioms or prohibited source flags; source identifiers/semantic maps remain. Only the actually failed declaration predicate rerun after affected CPP.",
+  "limits": "No claim of whole hosted CI or unrelated C/D completion; original421 publication closes only after actual verified push."
+}

@@ -48,19 +48,31 @@ variable (d : finiteRepresentedSetSheaf Z ≅ Q.carrier)
 /-- The actual scheme map associated to an ordinary coefficient-equivariant
 sheaf torsor morphism, using the proved Yoneda inverse. -/
 def Torsor.Hom.representedMap : Y.obj ⟶ Z.obj :=
-  finiteRepresentedSetSheafPreimage (e.hom ≫ r.map ≫ d.inv)
+  CategoryTheory.Sheaf.Torsor.Represented.carrierMap.{u + 1}
+    (F := Scheme.Etale.forget X) (J := Scheme.smallEtaleTopology X)
+    (H := A) (K := B) (hH := (representedSheaf A).property)
+    (hK := (representedSheaf B).property) (hY := (finiteRepresentedSetSheaf Y).property)
+    (hZ := (finiteRepresentedSetSheaf Z).property)
+    P Y.obj e ((toEtale X).obj Y) (CategoryTheory.Iso.refl _) Q Z.obj d q r
+
+/-- The lower carrier-map constructor equals the original identity-section preimage. -/
+theorem Torsor.Hom.representedMap_eq_original :
+    r.representedMap A B q Y Z e d =
+      finiteRepresentedSetSheafPreimage (e.hom ≫ r.map ≫ d.inv) := by
+  change (𝟙 Y.obj) ≫ finiteRepresentedSetSheafPreimage (e.hom ≫ r.map ≫ d.inv) = _
+  exact Category.id_comp _
 
 /-- Exact section evaluation of the recovered actual scheme morphism. -/
 theorem Torsor.Hom.representedMap_section (U : X.Etale)
     (x : (Scheme.Etale.forget X).obj U ⟶ Y.obj) :
     d.hom.hom.app (op U) (ULift.up (x ≫ r.representedMap A B q Y Z e d)) =
-      r.map.hom.app (op U) (e.hom.hom.app (op U) (ULift.up x)) := by
-  have h := finiteRepresentedSetSheafPreimage_app (e.hom ≫ r.map ≫ d.inv) U x
-  change ULift.up (x ≫ r.representedMap A B q Y Z e d) =
-    d.inv.hom.app (op U) (r.map.hom.app (op U) (e.hom.hom.app (op U) (ULift.up x))) at h
-  rw [h]
-  exact congrArg (fun a : Q.carrier ⟶ Q.carrier => a.hom.app (op U)
-    (r.map.hom.app (op U) (e.hom.hom.app (op U) (ULift.up x)))) d.inv_hom_id
+      r.map.hom.app (op U) (e.hom.hom.app (op U) (ULift.up x)) :=
+  CategoryTheory.Sheaf.Torsor.Represented.carrierMap_section.{u + 1}
+    (F := Scheme.Etale.forget X) (J := Scheme.smallEtaleTopology X)
+    (H := A) (K := B) (hH := (representedSheaf A).property)
+    (hK := (representedSheaf B).property) (hY := (finiteRepresentedSetSheaf Y).property)
+    (hZ := (finiteRepresentedSetSheaf Z).property)
+    P Y.obj e ((toEtale X).obj Y) (CategoryTheory.Iso.refl _) Q Z.obj d q r U x
 
 variable [IsFinite A.X.hom] [Etale A.X.hom] [IsFinite B.X.hom] [Etale B.X.hom]
 
@@ -71,23 +83,34 @@ theorem Torsor.Hom.representedMap_equivariant_etale (U : X.Etale)
     (x : (Scheme.Etale.forget X).obj U ⟶ Y.obj) :
     (P.representedSchemeAction A Y e).act a x ≫ r.representedMap A B q Y Z e d =
       (Q.representedSchemeAction B Z d).act (a ≫ q.hom.hom)
-        (x ≫ r.representedMap A B q Y Z e d) := by
-  apply (Q.representedSectionEquiv B Z d U).injective
-  change d.hom.hom.app (op U) (ULift.up _) = d.hom.hom.app (op U) (ULift.up _)
-  rw [r.representedMap_section, P.representedSchemeAction_section,
-    Q.representedSchemeAction_section, r.representedMap_section]
-  exact r.equivariant (op U) (ULift.up (Additive.ofMul a)) (e.hom.hom.app (op U) (ULift.up x))
+        (x ≫ r.representedMap A B q Y Z e d) :=
+  CategoryTheory.Sheaf.Torsor.Represented.carrierMap_equivariant.{u + 1}
+    (F := Scheme.Etale.forget X) (J := Scheme.smallEtaleTopology X)
+    (H := A) (K := B) (hH := (representedSheaf A).property)
+    (hK := (representedSheaf B).property) (hY := (finiteRepresentedSetSheaf Y).property)
+    (hZ := (finiteRepresentedSetSheaf Z).property)
+    P Y.obj e ((toEtale X).obj (Torsor.representedActionDomain A Y))
+    (CategoryTheory.Iso.refl _)
+    ((toEtale X).obj Y) (CategoryTheory.Iso.refl _) Q Z.obj d q r
+    ((toEtale X).obj (Torsor.representedActionDomain B Z))
+    (CategoryTheory.Iso.refl _) a x
 
 /-- The universal finite coefficient-times-torsor product extends the proved
 action compatibility to every scheme-valued point, including geometric fibres. -/
 theorem Torsor.Hom.representedMap_equivariant {T : Over X} (a : T ⟶ A.X) (x : T ⟶ Y.obj) :
     (P.representedSchemeAction A Y e).act a x ≫ r.representedMap A B q Y Z e d =
       (Q.representedSchemeAction B Z d).act (a ≫ q.hom.hom)
-        (x ≫ r.representedMap A B q Y Z e d) := by
-  have h := r.representedMap_equivariant_etale A B q Y Z e d
-    ((toEtale X).obj (Torsor.representedActionDomain A Y)) (fst A.X Y.obj) (snd A.X Y.obj)
-  have hh := congrArg (fun m => lift a x ≫ m) h
-  simpa only [← Category.assoc, TorsorAction.naturality, lift_fst, lift_snd] using hh
+        (x ≫ r.representedMap A B q Y Z e d) :=
+  CategoryTheory.Sheaf.Torsor.Represented.carrierMap_equivariant.{u + 1}
+    (F := Scheme.Etale.forget X) (J := Scheme.smallEtaleTopology X)
+    (H := A) (K := B) (hH := (representedSheaf A).property)
+    (hK := (representedSheaf B).property) (hY := (finiteRepresentedSetSheaf Y).property)
+    (hZ := (finiteRepresentedSetSheaf Z).property)
+    P Y.obj e ((toEtale X).obj (Torsor.representedActionDomain A Y))
+    (CategoryTheory.Iso.refl _)
+    ((toEtale X).obj Y) (CategoryTheory.Iso.refl _) Q Z.obj d q r
+    ((toEtale X).obj (Torsor.representedActionDomain B Z))
+    (CategoryTheory.Iso.refl _) a x
 
 section Classes
 open ContinuousTorsors SchemeTorsorClassification

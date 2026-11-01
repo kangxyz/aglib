@@ -53,18 +53,8 @@ variable (H : Grp (Over X)) [IsCommMonObj H.X] [IsFinite H.X.hom] [Etale H.X.hom
 /-- Actual natural evaluation preserves the coefficient identity, by naturality
 of its unit morphism from the genuine terminal finite-etale cover. -/
 theorem evaluation_one (γ : FiberAutGroup s) :
-    γ.hom.app (coefficientCover H) (1 : Over.mk s ⟶ H.X) = (1 : Over.mk s ⟶ H.X) := by
-  have h := Scheme.FiniteEtale.FiberTorsorActions.evaluation_naturality s γ
-    (Z := 𝟙_ (Scheme.FiniteEtale X))
-    (W := coefficientCover H) (η[H.X]) (toUnit (Over.mk s))
-  change γ.hom.app (coefficientCover H) (1 : Over.mk s ⟶ H.X) =
-    γ.hom.app (𝟙_ (Scheme.FiniteEtale X)) (toUnit (Over.mk s)) ≫ η[H.X] at h
-  calc
-    _ = γ.hom.app (𝟙_ (Scheme.FiniteEtale X)) (toUnit (Over.mk s)) ≫ η[H.X] := h
-    _ = toUnit (Over.mk s) ≫ η[H.X] := congrArg (fun p => p ≫ η[H.X])
-      (toUnit_unique (γ.hom.app (𝟙_ (Scheme.FiniteEtale X)) (toUnit (Over.mk s)))
-        (toUnit (Over.mk s)))
-    _ = 1 := rfl
+    γ.hom.app (coefficientCover H) (1 : Over.mk s ⟶ H.X) = (1 : Over.mk s ⟶ H.X) :=
+  MarkedCoefficients.pointEvaluation_one s H γ
 
 set_option linter.unusedSectionVars false in
 -- Preserve the original auto-included hypotheses and binder order.
@@ -75,30 +65,21 @@ the group law on the universal finite-etale product. -/
 theorem evaluation_mul (γ : FiberAutGroup s) (a b : Over.mk s ⟶ H.X) :
     γ.hom.app (coefficientCover H) (a * b) =
       (show Over.mk s ⟶ H.X from γ.hom.app (coefficientCover H) a) *
-        (show Over.mk s ⟶ H.X from γ.hom.app (coefficientCover H) b) := by
-  have h := Scheme.FiniteEtale.FiberTorsorActions.evaluation_naturality s γ
-    (Z := coefficientCover H ⊗ coefficientCover H)
-    (W := coefficientCover H) (μ[H.X]) (lift a b)
-  rw [evaluation_product s H (coefficientCover H)] at h
-  exact h
+        (show Over.mk s ⟶ H.X from γ.hom.app (coefficientCover H) b) :=
+  MarkedCoefficients.pointEvaluation_mul s H γ a b
 
 /-- Intrinsic monodromy on actual coefficient points. No marked module or
 external action is used: scalar action is the actual natural fibre evaluation. -/
 @[instance_reducible] def pointEvaluationAction :
-    DistribMulAction (FiberAutGroup s) (PointModule s H) where
-  smul γ a := Additive.ofMul (γ.hom.app (coefficientCover H) a.toMul)
-  one_smul _ := rfl
-  mul_smul _ _ _ := rfl
-  smul_zero γ := congrArg Additive.ofMul (evaluation_one s H γ)
-  smul_add γ a b := congrArg Additive.ofMul (evaluation_mul s H γ a.toMul b.toMul)
+    DistribMulAction (FiberAutGroup s) (PointModule s H) :=
+  MarkedCoefficients.pointIntrinsicAction s H
 
 /-- The intrinsic finite coefficient action is continuous for the actual
 fibre-automorphism evaluation topology and the discrete point topology. -/
 theorem pointEvaluationContinuousSMul :
     letI := pointEvaluationAction s H
-    ContinuousSMul (FiberAutGroup s) (PointModule s H) := by
-  let := pointEvaluationAction s H
-  exact PreGaloisCategory.continuousSMul_aut_fiber (fiberToFinite s) (coefficientCover H)
+    ContinuousSMul (FiberAutGroup s) (PointModule s H) :=
+  MarkedCoefficients.pointIntrinsicContinuousSMul s H
 
 variable [IsSepClosed K]
 variable {L : AbelianSheaf.{u, u + 1} X} (R : CoefficientRepresentation L)
@@ -259,6 +240,7 @@ theorem representedH1AddEquiv_marking (hA : Stacks03AJ.{u, w} X) (hR : Stacks03R
     coefficientH1Equiv_classOf,
     markedBasedCocycle_marking s H M₀ M mark₀ mark hmark₀ hmark e he hm]
 
+omit [Finite M] in
 /-- On a genuine scheme torsor the comparison uses its original action exactly,
 by the proved represented-action roundtrip. This holds in every marking universe. -/
 theorem representedH1AddEquiv_schemeAction
@@ -309,9 +291,11 @@ theorem transport_pullback (Y : Scheme.FiniteEtale X) (τ : TorsorAction H (toUn
       (SchemeTorsorBaseChange.pullbackSchemeAction f H Y τ)
       (fiberBaseChangeEquiv f s Y t) (fiberBaseChangeEquiv f s Y x) =
       pullbackFiberMulEquiv f s H (transport (s ≫ f) H Y τ t x) := by
-  apply (transport_unique s (baseChangedGroup f H) ((baseChange f).obj Y)
-    (SchemeTorsorBaseChange.pullbackSchemeAction f H Y τ) _ _ _ ?_).symm
-  rw [SchemeTorsorBaseChange.pullbackSchemeAction_fiber, transport_act]
+  symm
+  exact τ.positiveTransport_map
+    (SchemeTorsorBaseChange.pullbackSchemeAction f H Y τ)
+    (pullbackFiberMulEquiv f s H) (fiberBaseChangeEquiv f s Y)
+    (fun a x => (SchemeTorsorBaseChange.pullbackSchemeAction_fiber f H Y τ s a x).symm) t x
 
 variable [TopologicalSpace M] [DiscreteTopology M]
 variable [DistribMulAction (FiberAutGroup (s ≫ f)) M] [ContinuousSMul (FiberAutGroup (s ≫ f)) M]
@@ -391,6 +375,7 @@ def compareH1OfStalkMark : H1Etale X L ≃+ H1 (FiberAutGroup s) M :=
   compareH1 s hA hR L hcoeff M mark
     (pointMark_equivariant_of_stalk s (finiteCoefficientRepresentation hR L hcoeff) mark hmark)
 
+omit [Finite M] in
 /-- Intrinsic-stalk formulation retains the exact original positive-transport
 representative, rather than an unspecified additive comparison. -/
 theorem compareH1OfStalkMark_torsor_representative (P : Torsor L) (Y : Scheme.FiniteEtale X)

@@ -8,6 +8,7 @@ module
 
 /- Current interface basis: 46f53465aaf3b0167049e9c8e9e2294111bb4281.
 Original construction and mathematical provenance are retained below. -/
+public import Aglib.CategoryTheory.Sites.Torsors.AdjointPullback
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorAdjunction
 public import Aglib.AlgebraicGeometry.Sites.EtaleTopos
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedTorsor
@@ -53,14 +54,8 @@ abbrev pullbackSectionEquiv (T : Over S) (Y : Over X) :
 
 /-- The coefficient section comparison preserves multiplication on all tests. -/
 def pullbackSectionMulEquiv (T : Over S) (A : Grp (Over X)) :
-    ((Over.map f).obj T ⟶ A.X) ≃* (T ⟶ (baseChangedGroup f A).X) where
-  __ := pullbackSectionEquiv f T A.X
-  map_mul' a b := by
-    let : GrpObj ((Over.pullback f).obj A.X) := (baseChangedGroup f A).grp
-    change (Over.mapPullbackAdj f).unit.app T ≫ (Over.pullback f).map (a * b) =
-      ((Over.mapPullbackAdj f).unit.app T ≫ (Over.pullback f).map a) *
-        ((Over.mapPullbackAdj f).unit.app T ≫ (Over.pullback f).map b)
-    rw [(Over.pullback f).map_mul, comp_mul]
+    ((Over.map f).obj T ⟶ A.X) ≃* (T ⟶ (baseChangedGroup f A).X) :=
+  CategoryTheory.TorsorAction.adjointPointMulEquiv (Over.mapPullbackAdj f) T A
 
 /-- Naturality of the inverse section comparison in arbitrary test schemes. -/
 theorem pullbackSectionEquiv_symm_naturality {T U : Over S} (g : T ⟶ U) (Y : Over X)
@@ -81,49 +76,14 @@ variable (A : Grp (Over X)) (Y : Scheme.FiniteEtale X) (τ : TorsorAction A (toU
 /-- Pullback of a genuine scheme torsor, with the action and unique transport
 constructed on every scheme over S. -/
 def pullbackSchemeAction :
-    TorsorAction (baseChangedGroup f A) (toUnit ((baseChange f).obj Y).obj) where
-  act {T} a x := pullbackSectionEquiv f T Y.obj
-    (τ.act ((pullbackSectionMulEquiv f T A).symm a) ((pullbackSectionEquiv f T Y.obj).symm x))
-  naturality {T U} g a x := by
-    apply (pullbackSectionEquiv f T Y.obj).symm.injective
-    rw [pullbackSectionEquiv_symm_naturality, Equiv.symm_apply_apply, Equiv.symm_apply_apply,
-      τ.naturality]
-    congr 1
-  one_act {T} x := by
-    rw [map_one, τ.one_act, Equiv.apply_symm_apply]
-  mul_act {T} a b x := by
-    rw [map_mul, τ.mul_act]
-    congr 1
-    rw [Equiv.symm_apply_apply]
-  over _ _ := toUnit_unique _ _
-  transport {T} x y _ := by
-    obtain ⟨a, ha, hu⟩ := τ.transport ((pullbackSectionEquiv f T Y.obj).symm x)
-      ((pullbackSectionEquiv f T Y.obj).symm y) (toUnit_unique _ _)
-    refine ⟨pullbackSectionMulEquiv f T A a, ?_, ?_⟩
-    · exact (congrArg (fun b => pullbackSectionEquiv f T Y.obj
-        (τ.act b ((pullbackSectionEquiv f T Y.obj).symm x)))
-          ((pullbackSectionMulEquiv f T A).symm_apply_apply a)).trans
-        ((congrArg (pullbackSectionEquiv f T Y.obj) ha).trans
-          ((pullbackSectionEquiv f T Y.obj).apply_symm_apply y))
-    · intro b hb
-      apply (pullbackSectionMulEquiv f T A).symm.injective
-      rw [MulEquiv.symm_apply_apply]
-      apply hu
-      exact (pullbackSectionEquiv f T Y.obj).injective (hb.trans
-        ((pullbackSectionEquiv f T Y.obj).apply_symm_apply y).symm)
+    TorsorAction (baseChangedGroup f A) (toUnit ((baseChange f).obj Y).obj) :=
+  CategoryTheory.TorsorAction.pullback (Over.mapPullbackAdj f) A Y.obj τ
 
 /-- Pullback of actual sections intertwines the actual scheme actions. -/
 theorem pullbackSchemeAction_map {U : Over X} (a : U ⟶ A.X) (x : U ⟶ Y.obj) :
     (pullbackSchemeAction f A Y τ).act ((Over.pullback f).map a) ((Over.pullback f).map x) =
-      (Over.pullback f).map (τ.act a x) := by
-  apply (pullbackSectionEquiv f ((Over.pullback f).obj U) Y.obj).symm.injective
-  change (pullbackSectionEquiv f _ Y.obj).symm
-      ((pullbackSectionEquiv f _ Y.obj) (τ.act _ _)) = _
-  rw [Equiv.symm_apply_apply]
-  change τ.act ((pullbackSectionEquiv f ((Over.pullback f).obj U) A.X).symm
-    ((Over.pullback f).map a)) ((pullbackSectionEquiv f ((Over.pullback f).obj U) Y.obj).symm
-      ((Over.pullback f).map x)) = _
-  simp only [pullbackSectionEquiv_symm_map, τ.naturality]
+      (Over.pullback f).map (τ.act a x) :=
+  CategoryTheory.TorsorAction.pullback_map (Over.mapPullbackAdj f) A Y.obj τ a x
 
 /-- Actual fibre pullback intertwines translation with the canonical
 multiplicative coefficient-point pullback, fixing the positive convention. -/

@@ -20,8 +20,8 @@ stalkUnitNatIso f η :
     inverseImage f ⋙ (pointSmallEtale η).sheafFiber
 ```
 
-`stalkUnitNatIso_hom` identifies each component definitionally with the original
-`stalkUnit`. `germ_stalkUnitNatIso` retains the original section, the native
+`stalkUnitNatIso_hom`, via `nativeStalkIso_hom`, proves that each component is
+the original `stalkUnit`. `germ_stalkUnitNatIso` retains the original section, the native
 inverse-image adjunction unit, and `pulledBackPoint`; coefficient-map
 naturality is retained. When a finite representation is supplied,
 `stalkUnitNatIso_app_eq` identifies this isomorphism with the existing

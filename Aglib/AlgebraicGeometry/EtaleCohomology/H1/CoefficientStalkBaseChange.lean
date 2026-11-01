@@ -147,7 +147,8 @@ def stalkUnitIso (R : CoefficientRepresentation L) :
 
 /-- The isomorphism has exactly the constructed germ-unit morphism, not merely the same source and
 target. -/
-theorem stalkUnitIso_hom : (stalkUnitIso f s L R).hom = stalkUnit f s L := rfl
+theorem stalkUnitIso_hom : (stalkUnitIso f s L R).hom = stalkUnit f s L :=
+  StalkInverseImage.stalkUnitNatIso_hom f s L
 
 end FiniteRepresentation
 
@@ -278,7 +279,8 @@ theorem stalkUnitNatIso_app_eq (L : AbelianSheaf.{u, u + 1} X)
     (R : CoefficientRepresentation L) :
     (stalkUnitNatIso f «η»).app L = CoefficientStalkBaseChange.stalkUnitIso f «η» L R := by
   apply Iso.ext
-  exact (CoefficientStalkBaseChange.stalkUnitIso_hom f «η» L R).symm
+  exact (stalkUnitNatIso_hom f «η» L).trans
+    (CoefficientStalkBaseChange.stalkUnitIso_hom f «η» L R).symm
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.StalkInverseImage
 

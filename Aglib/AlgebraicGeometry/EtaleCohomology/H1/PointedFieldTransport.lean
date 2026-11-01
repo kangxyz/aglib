@@ -151,9 +151,8 @@ theorem transport_point (Y : Scheme.FiniteEtale X) (τ : TorsorAction A (toUnit 
     (t u : Fiber (FieldGalois.geometricPoint F ≫ o) Y) :
     coefficientPointEquiv i o A (transport (FieldGalois.geometricPoint F ≫ o) A Y τ t u) =
     transport (extensionPoint i ≫ o) A Y τ (pointEquiv i o Y t) (pointEquiv i o Y u) := by
-  apply transport_unique (extensionPoint i ≫ o) A Y τ
-  rw [coefficientPointEquiv_apply, pointEquiv_apply, pointEquiv_apply, ← τ.naturality,
-    transport_act]
+  rw [coefficientPointEquiv_apply, pointEquiv_apply, pointEquiv_apply]
+  exact τ.positiveTransport_naturality (pointArrow i o) t u
 
 variable [PreconnectedSpace X] [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
 
