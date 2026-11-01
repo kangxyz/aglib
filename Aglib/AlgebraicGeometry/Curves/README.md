@@ -156,3 +156,11 @@ Kummer H¹ map with rational torsion on the same supplied `P,R,J`, over an
 algebraically closed field at positive invertible level. The whole inclusion
 into the supplied Picard representative retains the original Picard point
 and Kummer maps.
+
+[FiniteEtaleCompletion](FiniteEtaleCompletion.lean) completes the original
+connected surjective finite étale cover of a nonempty open in a smooth proper
+geometrically connected curve over an algebraically closed field. It uses
+the actual generic fibre and relative normalization to construct a curve, a
+finite dominant map, an open immersion and the original cartesian square.
+For a finite closed complement, including the empty set, the actual inverse
+image is finite and closed. Étaleness at the boundary is not asserted.

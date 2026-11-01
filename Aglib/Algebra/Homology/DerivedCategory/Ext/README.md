@@ -69,3 +69,12 @@ it also supplies the unsigned source connecting-class laws (sign `+1` in
 the first variable and `(-1)^p` in the second) and native signed connecting-map
 compatibility. These categorical results do not identify a
 geometric cohomology product or establish Künneth or degree-one duality.
+
+[PairingBiproduct](PairingBiproduct.lean) gives the whole component-sum
+law for the original trace-composed exact-functor Yoneda pairing and both
+dual naturality laws. Component perfectness for the same trace implies
+perfectness at the actual finite coefficient biproduct, and an actual
+coefficient isomorphism preserves perfectness. The public index condition
+is `Finite I`; the empty family and level one are included. Component
+perfectness is an input, with no finite-free or domain assumption on the
+Ext modules.

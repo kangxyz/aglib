@@ -266,6 +266,7 @@ public import Aglib.Algebra.Homology.DerivedCategory.Ext.EffacementComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Equivalence
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.InjectiveColimit
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.LinearEquiv
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.PairingBiproduct
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.PairingComposition
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.PairingZero
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Quotient

@@ -260,6 +260,7 @@ public import Aglib.Algebra.Homology.DerivedCategory.Ext.EffacementComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Equivalence
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.InjectiveColimit
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.LinearEquiv
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.PairingBiproduct
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.PairingComposition
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.PairingZero
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Quotient
@@ -1945,6 +1946,7 @@ public import Aglib.AlgebraicGeometry.Curves.Divisors.Basic
 public import Aglib.AlgebraicGeometry.Curves.Divisors.Pullback
 public import Aglib.AlgebraicGeometry.Curves.Divisors.RegularSections
 public import Aglib.AlgebraicGeometry.Curves.Duality
+public import Aglib.AlgebraicGeometry.Curves.FiniteEtaleCompletion
 public import Aglib.AlgebraicGeometry.Curves.FiniteEtaleGenusZero
 public import Aglib.AlgebraicGeometry.Curves.GenericExtension
 public import Aglib.AlgebraicGeometry.Curves.Genus

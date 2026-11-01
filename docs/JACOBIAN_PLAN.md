@@ -204,6 +204,17 @@ Before native perfectness, supply the following maps and their diagrams:
    interpretation requires the actual internal-Hom/Ext comparison and
    evaluation, including the local-to-global comparison of Milne Lemma 14.21.
 
+The generic [finite-biproduct pairing](../Aglib/Algebra/Homology/DerivedCategory/Ext/PairingBiproduct.lean)
+retains the original trace-composed pairing, its component sum, both dual
+naturality laws and coefficient-isomorphism transport. Perfectness of every
+component is an input to the finite-biproduct conclusion, including an empty
+index. [Finite étale completion](../Aglib/AlgebraicGeometry/Curves/FiniteEtaleCompletion.lean)
+constructs the actual finite dominant completion and cartesian square for a
+connected surjective finite étale cover of a nonempty open in the original
+proper curve over algebraically closed constants, including finite empty
+boundary. It does not assert étaleness at the boundary or complete general
+locally constant perfectness.
+
 The selected native route studies the transpose
 `ψ^s(F) : Ext^s(F, μ_n) → H_c^(2-s)(F)^∨`. Use a source short exact
 sequence `K → B → F` with `B` a finite étale pushforward of a finite free

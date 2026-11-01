@@ -1251,6 +1251,7 @@ public import Aglib.AlgebraicGeometry.Curves.Divisors.Basic
 public import Aglib.AlgebraicGeometry.Curves.Divisors.Pullback
 public import Aglib.AlgebraicGeometry.Curves.Divisors.RegularSections
 public import Aglib.AlgebraicGeometry.Curves.Duality
+public import Aglib.AlgebraicGeometry.Curves.FiniteEtaleCompletion
 public import Aglib.AlgebraicGeometry.Curves.FiniteEtaleGenusZero
 public import Aglib.AlgebraicGeometry.Curves.GenericExtension
 public import Aglib.AlgebraicGeometry.Curves.Genus
