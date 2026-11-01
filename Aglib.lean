@@ -2984,6 +2984,8 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantOnePerfect
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantPerfectness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.FinitePushforward
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.FiniteTracePairing
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.FiniteTracePairing.Compatibility
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.FiniteTracePairing.Open
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.InternalHomPairing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LocallyConstantExt
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LocallyConstantPerfectness
