@@ -1,0 +1,32 @@
+✖ [4238/4239] Building Aglib.AlgebraicGeometry.EtaleCohomology.Duality.InternalHomPairing (166s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-0bd41a823b964f62899343a7f4028d2d/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean -o /root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.olean -i /root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.c --setup /root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.setup.json --json
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:295:6: W4.target.type.start
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:299:6: W4.target.type.before-family
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:312:6: W4.target.type.family-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:317:6: W4.target.type.before-original
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:319:6: W4.target.coefficient-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:321:6: W4.target.first-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:323:6: W4.target.second-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:326:6: W4.target.output-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:328:6: W4.target.actions-ready
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:285:8: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:377:6: W4.source.type.start
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:381:6: W4.source.type.before-family
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:387:6: W4.source.type.family-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:392:6: W4.source.type.before-original
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:394:6: W4.source.first-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:396:6: W4.source.second-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:399:6: W4.source.input-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:401:6: W4.source.actions-ready
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:373:8: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Duality.InternalHomPairing
+error: build failed

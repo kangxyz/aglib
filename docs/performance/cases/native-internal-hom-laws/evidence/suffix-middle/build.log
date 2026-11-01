@@ -1,0 +1,835 @@
+{"diagnostic_argv": ["lake", "--no-build", "lean", "/tmp/w4-logger-diagnostic-3q05_j9b/LoggerValidation.lean", "--", "--json"], "purpose": "validate exact main-context logger before native prefix"}
+{"caption":"","data":"W4.actual.hAction: typeHead=@Eq, lhsHead=x","endPos":{"column":87,"line":55},"fileName":"/tmp/w4-logger-diagnostic-3q05_j9b/LoggerValidation.lean","isSilent":false,"keepFullRange":false,"kind":"[anonymous]","pos":{"column":2,"line":7},"severity":"information"}
+{"caption":"","data":"W4.actual.hNative: typeHead=@Eq, lhsHead=z","endPos":{"column":87,"line":55},"fileName":"/tmp/w4-logger-diagnostic-3q05_j9b/LoggerValidation.lean","isSilent":false,"keepFullRange":false,"kind":"[anonymous]","pos":{"column":2,"line":7},"severity":"information"}
+{"caption":"","data":"W4.middle.rawSame=false","endPos":{"column":87,"line":55},"fileName":"/tmp/w4-logger-diagnostic-3q05_j9b/LoggerValidation.lean","isSilent":false,"keepFullRange":false,"kind":"[anonymous]","pos":{"column":2,"line":7},"severity":"information"}
+{"caption":"","data":"W4.middle.rawPath=middle","endPos":{"column":87,"line":55},"fileName":"/tmp/w4-logger-diagnostic-3q05_j9b/LoggerValidation.lean","isSilent":false,"keepFullRange":false,"kind":"[anonymous]","pos":{"column":2,"line":7},"severity":"information"}
+{"caption":"","data":"W4.middle.rawLeft=Lean.Expr.fvar (Lean.Name.mkNum `_uniq 19)","endPos":{"column":87,"line":55},"fileName":"/tmp/w4-logger-diagnostic-3q05_j9b/LoggerValidation.lean","isSilent":false,"keepFullRange":false,"kind":"[anonymous]","pos":{"column":2,"line":7},"severity":"information"}
+{"caption":"","data":"W4.middle.rawRight=Lean.Expr.fvar (Lean.Name.mkNum `_uniq 21)","endPos":{"column":87,"line":55},"fileName":"/tmp/w4-logger-diagnostic-3q05_j9b/LoggerValidation.lean","isSilent":false,"keepFullRange":false,"kind":"[anonymous]","pos":{"column":2,"line":7},"severity":"information"}
+{"caption":"","data":"W4.middle.ringSame=false","endPos":{"column":87,"line":55},"fileName":"/tmp/w4-logger-diagnostic-3q05_j9b/LoggerValidation.lean","isSilent":false,"keepFullRange":false,"kind":"[anonymous]","pos":{"column":2,"line":7},"severity":"information"}
+{"caption":"","data":"W4.middle.ringPath=middle","endPos":{"column":87,"line":55},"fileName":"/tmp/w4-logger-diagnostic-3q05_j9b/LoggerValidation.lean","isSilent":false,"keepFullRange":false,"kind":"[anonymous]","pos":{"column":2,"line":7},"severity":"information"}
+{"caption":"","data":"W4.middle.ringLeft=Lean.Expr.fvar (Lean.Name.mkNum `_uniq 19)","endPos":{"column":87,"line":55},"fileName":"/tmp/w4-logger-diagnostic-3q05_j9b/LoggerValidation.lean","isSilent":false,"keepFullRange":false,"kind":"[anonymous]","pos":{"column":2,"line":7},"severity":"information"}
+{"caption":"","data":"W4.middle.ringRight=Lean.Expr.fvar (Lean.Name.mkNum `_uniq 21)","endPos":{"column":87,"line":55},"fileName":"/tmp/w4-logger-diagnostic-3q05_j9b/LoggerValidation.lean","isSilent":false,"keepFullRange":false,"kind":"[anonymous]","pos":{"column":2,"line":7},"severity":"information"}
+
+{"logger_exit": 0, "both_actual_types_observed": true}
+{"native_argv": ["lake", "--rehash", "build", "Aglib.AlgebraicGeometry.EtaleCohomology.Duality.InternalHomPairing", "AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.InternalHomPairing"], "logger_validated": true}
+✖ [8198/8199] Building Aglib.AlgebraicGeometry.EtaleCohomology.Duality.InternalHomPairing (553s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-2b94eca5f56745ab91263749dab59a5a/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean -o /root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.olean -i /root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.c --setup /root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.setup.json --json
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:405:2: W4.actual.hAction: typeHead=@Eq, lhsHead=@DFunLike.coe
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:405:2: W4.actual.hNative: typeHead=@Eq, lhsHead=@DFunLike.coe
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:405:2: W4.middle.rawSame=false
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:405:2: W4.middle.rawPath=middle.arg.fn.fn.fn.fn.fn.arg.fn.fn.fn.arg.fn.fn.fn.fn.fn.fn.arg.arg
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:405:2: W4.middle.rawLeft=Lean.Expr.fvar (Lean.Name.mkNum (Lean.Name.mkNum `_uniq 435489) 5489)
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:405:2: W4.middle.rawRight=Lean.Expr.app
+  (Lean.Expr.app
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.const
+                  `ModuleCat.Sheaf.ConstantRing.commutativeSheaf
+                  [Lean.Level.succ (Lean.Level.param `u), Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+                (Lean.Expr.app
+                  (Lean.Expr.const `AlgebraicGeometry.Scheme.Etale [Lean.Level.param `u])
+                  (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+              (Lean.Expr.app
+                (Lean.Expr.const `AlgebraicGeometry.Scheme.instCategoryEtale [Lean.Level.param `u])
+                (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+            (Lean.Expr.app
+              (Lean.Expr.const `AlgebraicGeometry.Scheme.smallEtaleTopology [Lean.Level.param `u])
+              (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+          (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418440)))
+        (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418443)))
+      (Lean.Expr.app
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.const
+                    `CategoryTheory.instHasWeakSheafifyOfHasSheafify
+                    [Lean.Level.param `u,
+                     Lean.Level.succ (Lean.Level.param `u),
+                     Lean.Level.succ (Lean.Level.param `u),
+                     Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+                  (Lean.Expr.app
+                    (Lean.Expr.const `AlgebraicGeometry.Scheme.Etale [Lean.Level.param `u])
+                    (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                (Lean.Expr.app
+                  (Lean.Expr.const `AlgebraicGeometry.Scheme.instCategoryEtale [Lean.Level.param `u])
+                  (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+              (Lean.Expr.app
+                (Lean.Expr.const `AlgebraicGeometry.Scheme.smallEtaleTopology [Lean.Level.param `u])
+                (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+            (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)]))
+          (Lean.Expr.const `RingCat.instCategory [Lean.Level.succ (Lean.Level.param `u)]))
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.const
+                `CategoryTheory.TorsionZMod.Ringed.hasSheafifyRingStandard
+                [Lean.Level.succ (Lean.Level.param `u), Lean.Level.param `u])
+              (Lean.Expr.app
+                (Lean.Expr.const `AlgebraicGeometry.Scheme.Etale [Lean.Level.param `u])
+                (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+            (Lean.Expr.app
+              (Lean.Expr.const `AlgebraicGeometry.Scheme.instCategoryEtale [Lean.Level.param `u])
+              (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+          (Lean.Expr.app
+            (Lean.Expr.const `AlgebraicGeometry.Scheme.smallEtaleTopology [Lean.Level.param `u])
+            (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))))
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app
+          (Lean.Expr.const
+            `CategoryTheory.TorsionZMod.Ringed.ringWEqualsLocallyBijectiveStandard
+            [Lean.Level.succ (Lean.Level.param `u), Lean.Level.param `u])
+          (Lean.Expr.app
+            (Lean.Expr.const `AlgebraicGeometry.Scheme.Etale [Lean.Level.param `u])
+            (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+        (Lean.Expr.app
+          (Lean.Expr.const `AlgebraicGeometry.Scheme.instCategoryEtale [Lean.Level.param `u])
+          (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+      (Lean.Expr.app
+        (Lean.Expr.const `AlgebraicGeometry.Scheme.smallEtaleTopology [Lean.Level.param `u])
+        (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356)))))
+  (Lean.Expr.app
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.const
+                      `CategoryTheory.hasSheafCompose_of_preservesMulticospan
+                      [Lean.Level.param `u,
+                       Lean.Level.succ (Lean.Level.param `u),
+                       Lean.Level.succ (Lean.Level.param `u),
+                       Lean.Level.succ (Lean.Level.param `u),
+                       Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+                       Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+                    (Lean.Expr.app
+                      (Lean.Expr.const `AlgebraicGeometry.Scheme.Etale [Lean.Level.param `u])
+                      (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                  (Lean.Expr.app
+                    (Lean.Expr.const `AlgebraicGeometry.Scheme.instCategoryEtale [Lean.Level.param `u])
+                    (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)]))
+              (Lean.Expr.const `RingCat.instCategory [Lean.Level.succ (Lean.Level.param `u)]))
+            (Lean.Expr.sort (Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)))))
+          (Lean.Expr.const `CategoryTheory.types [Lean.Level.succ (Lean.Level.param `u)]))
+        (Lean.Expr.app
+          (Lean.Expr.const `AlgebraicGeometry.Scheme.smallEtaleTopology [Lean.Level.param `u])
+          (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+      (Lean.Expr.app
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.const
+                    `CategoryTheory.forget
+                    [Lean.Level.succ (Lean.Level.param `u),
+                     Lean.Level.succ (Lean.Level.param `u),
+                     Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+                     Lean.Level.succ (Lean.Level.param `u)])
+                  (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)]))
+                (Lean.Expr.const `RingCat.instCategory [Lean.Level.succ (Lean.Level.param `u)]))
+              (Lean.Expr.lam
+                `R
+                (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)])
+                (Lean.Expr.lam
+                  `S
+                  (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)])
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.const
+                            `RingHom
+                            [Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.param `u)])
+                          (Lean.Expr.app
+                            (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                            (Lean.Expr.bvar 1)))
+                        (Lean.Expr.app
+                          (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                          (Lean.Expr.bvar 0)))
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.const `Semiring.toNonAssocSemiring [Lean.Level.succ (Lean.Level.param `u)])
+                          (Lean.Expr.app
+                            (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                            (Lean.Expr.bvar 1)))
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.const `Ring.toSemiring [Lean.Level.succ (Lean.Level.param `u)])
+                            (Lean.Expr.app
+                              (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                              (Lean.Expr.bvar 1)))
+                          (Lean.Expr.app
+                            (Lean.Expr.const `RingCat.ring [Lean.Level.succ (Lean.Level.param `u)])
+                            (Lean.Expr.bvar 1)))))
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.const `Semiring.toNonAssocSemiring [Lean.Level.succ (Lean.Level.param `u)])
+                        (Lean.Expr.app
+                          (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                          (Lean.Expr.bvar 0)))
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.const `Ring.toSemiring [Lean.Level.succ (Lean.Level.param `u)])
+                          (Lean.Expr.app
+                            (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                            (Lean.Expr.bvar 0)))
+                        (Lean.Expr.app
+                          (Lean.Expr.const `RingCat.ring [Lean.Level.succ (Lean.Level.param `u)])
+                          (Lean.Expr.bvar 0)))))
+                  (Lean.BinderInfo.default))
+                (Lean.BinderInfo.default)))
+            (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)]))
+          (Lean.Expr.lam
+            `X
+            (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)])
+            (Lean.Expr.lam
+              `Y
+              (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)])
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.const
+                        `RingHom.instFunLike
+                        [Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.param `u)])
+                      (Lean.Expr.app
+                        (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                        (Lean.Expr.bvar 1)))
+                    (Lean.Expr.app
+                      (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                      (Lean.Expr.bvar 0)))
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.const `Semiring.toNonAssocSemiring [Lean.Level.succ (Lean.Level.param `u)])
+                      (Lean.Expr.app
+                        (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                        (Lean.Expr.bvar 1)))
+                    (Lean.Expr.app
+                      (Lean.Expr.lam
+                        `X
+                        (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)])
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.const `Ring.toSemiring [Lean.Level.succ (Lean.Level.param `u)])
+                            (Lean.Expr.app
+                              (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                              (Lean.Expr.bvar 0)))
+                          (Lean.Expr.app
+                            (Lean.Expr.const `RingCat.ring [Lean.Level.succ (Lean.Level.param `u)])
+                            (Lean.Expr.bvar 0)))
+                        (Lean.BinderInfo.default))
+                      (Lean.Expr.bvar 1))))
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.const `Semiring.toNonAssocSemiring [Lean.Level.succ (Lean.Level.param `u)])
+                    (Lean.Expr.app
+                      (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                      (Lean.Expr.bvar 0)))
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.const `Ring.toSemiring [Lean.Level.succ (Lean.Level.param `u)])
+                      (Lean.Expr.app
+                        (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                        (Lean.Expr.bvar 0)))
+                    (Lean.Expr.app
+                      (Lean.Expr.const `RingCat.ring [Lean.Level.succ (Lean.Level.param `u)])
+                      (Lean.Expr.bvar 0)))))
+              (Lean.BinderInfo.default))
+            (Lean.BinderInfo.default)))
+        (Lean.Expr.const `RingCat.instConcreteCategoryRingHomCarrier [Lean.Level.succ (Lean.Level.param `u)])))
+    (Lean.Expr.lam
+      `X
+      (Lean.Expr.app
+        (Lean.Expr.const `AlgebraicGeometry.Scheme.Etale [Lean.Level.param `u])
+        (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356)))
+      (Lean.Expr.lam
+        `S
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.const
+                  `CategoryTheory.GrothendieckTopology.Cover
+                  [Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+                (Lean.Expr.app
+                  (Lean.Expr.const `AlgebraicGeometry.Scheme.Etale [Lean.Level.param `u])
+                  (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+              (Lean.Expr.app
+                (Lean.Expr.const `AlgebraicGeometry.Scheme.instCategoryEtale [Lean.Level.param `u])
+                (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+            (Lean.Expr.app
+              (Lean.Expr.const `AlgebraicGeometry.Scheme.smallEtaleTopology [Lean.Level.param `u])
+              (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+          (Lean.Expr.bvar 0))
+        (Lean.Expr.lam
+          `P
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.const
+                    `CategoryTheory.Functor
+                    [Lean.Level.param `u,
+                     Lean.Level.succ (Lean.Level.param `u),
+                     Lean.Level.succ (Lean.Level.param `u),
+                     Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+                  (Lean.Expr.app
+                    (Lean.Expr.const `Opposite [Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+                    (Lean.Expr.app
+                      (Lean.Expr.const `AlgebraicGeometry.Scheme.Etale [Lean.Level.param `u])
+                      (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356)))))
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.const
+                      `CategoryTheory.Category.opposite
+                      [Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+                    (Lean.Expr.app
+                      (Lean.Expr.const `AlgebraicGeometry.Scheme.Etale [Lean.Level.param `u])
+                      (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                  (Lean.Expr.app
+                    (Lean.Expr.const `AlgebraicGeometry.Scheme.instCategoryEtale [Lean.Level.param `u])
+                    (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356)))))
+              (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)]))
+            (Lean.Expr.const `RingCat.instCategory [Lean.Level.succ (Lean.Level.param `u)]))
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.const
+                              `CategoryTheory.Limits.PreservesLimitsOfShape.preservesLimit
+                              [Lean.Level.succ (Lean.Level.param `u),
+                               Lean.Level.succ (Lean.Level.param `u),
+                               Lean.Level.succ (Lean.Level.param `u),
+                               Lean.Level.succ (Lean.Level.param `u),
+                               Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+                               Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+                            (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)]))
+                          (Lean.Expr.const `RingCat.instCategory [Lean.Level.succ (Lean.Level.param `u)]))
+                        (Lean.Expr.sort (Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)))))
+                      (Lean.Expr.const `CategoryTheory.types [Lean.Level.succ (Lean.Level.param `u)]))
+                    (Lean.Expr.app
+                      (Lean.Expr.const
+                        `CategoryTheory.Limits.WalkingMulticospan
+                        [Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.param `u)])
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.const
+                                  `CategoryTheory.GrothendieckTopology.Cover.shape
+                                  [Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `AlgebraicGeometry.Scheme.Etale [Lean.Level.param `u])
+                                  (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                              (Lean.Expr.app
+                                (Lean.Expr.const `AlgebraicGeometry.Scheme.instCategoryEtale [Lean.Level.param `u])
+                                (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                            (Lean.Expr.bvar 2))
+                          (Lean.Expr.app
+                            (Lean.Expr.const `AlgebraicGeometry.Scheme.smallEtaleTopology [Lean.Level.param `u])
+                            (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                        (Lean.Expr.bvar 1))))
+                  (Lean.Expr.app
+                    (Lean.Expr.const
+                      `CategoryTheory.Limits.WalkingMulticospan.instSmallCategory
+                      [Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.param `u)])
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.const
+                                `CategoryTheory.GrothendieckTopology.Cover.shape
+                                [Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+                              (Lean.Expr.app
+                                (Lean.Expr.const `AlgebraicGeometry.Scheme.Etale [Lean.Level.param `u])
+                                (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                            (Lean.Expr.app
+                              (Lean.Expr.const `AlgebraicGeometry.Scheme.instCategoryEtale [Lean.Level.param `u])
+                              (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                          (Lean.Expr.bvar 2))
+                        (Lean.Expr.app
+                          (Lean.Expr.const `AlgebraicGeometry.Scheme.smallEtaleTopology [Lean.Level.param `u])
+                          (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                      (Lean.Expr.bvar 1))))
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.const
+                              `CategoryTheory.forget
+                              [Lean.Level.succ (Lean.Level.param `u),
+                               Lean.Level.succ (Lean.Level.param `u),
+                               Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+                               Lean.Level.succ (Lean.Level.param `u)])
+                            (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)]))
+                          (Lean.Expr.const `RingCat.instCategory [Lean.Level.succ (Lean.Level.param `u)]))
+                        (Lean.Expr.lam
+                          `R
+                          (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)])
+                          (Lean.Expr.lam
+                            `S
+                            (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)])
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const
+                                      `RingHom
+                                      [Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.param `u)])
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                                      (Lean.Expr.bvar 1)))
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                                    (Lean.Expr.bvar 0)))
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const
+                                      `Semiring.toNonAssocSemiring
+                                      [Lean.Level.succ (Lean.Level.param `u)])
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                                      (Lean.Expr.bvar 1)))
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `Ring.toSemiring [Lean.Level.succ (Lean.Level.param `u)])
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                                        (Lean.Expr.bvar 1)))
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `RingCat.ring [Lean.Level.succ (Lean.Level.param `u)])
+                                      (Lean.Expr.bvar 1)))))
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `Semiring.toNonAssocSemiring [Lean.Level.succ (Lean.Level.param `u)])
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                                    (Lean.Expr.bvar 0)))
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `Ring.toSemiring [Lean.Level.succ (Lean.Level.param `u)])
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                                      (Lean.Expr.bvar 0)))
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `RingCat.ring [Lean.Level.succ (Lean.Level.param `u)])
+                                    (Lean.Expr.bvar 0)))))
+                            (Lean.BinderInfo.default))
+                          (Lean.BinderInfo.default)))
+                      (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)]))
+                    (Lean.Expr.lam
+                      `X
+                      (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)])
+                      (Lean.Expr.lam
+                        `Y
+                        (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)])
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.const
+                                  `RingHom.instFunLike
+                                  [Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.param `u)])
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                                  (Lean.Expr.bvar 1)))
+                              (Lean.Expr.app
+                                (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                                (Lean.Expr.bvar 0)))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.const `Semiring.toNonAssocSemiring [Lean.Level.succ (Lean.Level.param `u)])
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                                  (Lean.Expr.bvar 1)))
+                              (Lean.Expr.app
+                                (Lean.Expr.lam
+                                  `X
+                                  (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)])
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `Ring.toSemiring [Lean.Level.succ (Lean.Level.param `u)])
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                                        (Lean.Expr.bvar 0)))
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `RingCat.ring [Lean.Level.succ (Lean.Level.param `u)])
+                                      (Lean.Expr.bvar 0)))
+                                  (Lean.BinderInfo.default))
+                                (Lean.Expr.bvar 1))))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.const `Semiring.toNonAssocSemiring [Lean.Level.succ (Lean.Level.param `u)])
+                              (Lean.Expr.app
+                                (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                                (Lean.Expr.bvar 0)))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.const `Ring.toSemiring [Lean.Level.succ (Lean.Level.param `u)])
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                                  (Lean.Expr.bvar 0)))
+                              (Lean.Expr.app
+                                (Lean.Expr.const `RingCat.ring [Lean.Level.succ (Lean.Level.param `u)])
+                                (Lean.Expr.bvar 0)))))
+                        (Lean.BinderInfo.default))
+                      (Lean.BinderInfo.default)))
+                  (Lean.Expr.const
+                    `RingCat.instConcreteCategoryRingHomCarrier
+                    [Lean.Level.succ (Lean.Level.param `u)])))
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.lam
+                    `X
+                    (Lean.Expr.app
+                      (Lean.Expr.const `AlgebraicGeometry.Scheme.Etale [Lean.Level.param `u])
+                      (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356)))
+                    (Lean.Expr.lam
+                      `S
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.const
+                                `CategoryTheory.GrothendieckTopology.Cover
+                                [Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+                              (Lean.Expr.app
+                                (Lean.Expr.const `AlgebraicGeometry.Scheme.Etale [Lean.Level.param `u])
+                                (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                            (Lean.Expr.app
+                              (Lean.Expr.const `AlgebraicGeometry.Scheme.instCategoryEtale [Lean.Level.param `u])
+                              (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                          (Lean.Expr.app
+                            (Lean.Expr.const `AlgebraicGeometry.Scheme.smallEtaleTopology [Lean.Level.param `u])
+                            (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                        (Lean.Expr.bvar 0))
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const
+                                        `CategoryTheory.Limits.PreservesLimitsOfSize.preservesLimitsOfShape
+                                        [Lean.Level.succ (Lean.Level.param `u),
+                                         Lean.Level.succ (Lean.Level.param `u),
+                                         Lean.Level.succ (Lean.Level.param `u),
+                                         Lean.Level.succ (Lean.Level.param `u),
+                                         Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+                                         Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+                                      (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)]))
+                                    (Lean.Expr.const `RingCat.instCategory [Lean.Level.succ (Lean.Level.param `u)]))
+                                  (Lean.Expr.sort (Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)))))
+                                (Lean.Expr.const `CategoryTheory.types [Lean.Level.succ (Lean.Level.param `u)]))
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.app
+                                          (Lean.Expr.const
+                                            `CategoryTheory.forget
+                                            [Lean.Level.succ (Lean.Level.param `u),
+                                             Lean.Level.succ (Lean.Level.param `u),
+                                             Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+                                             Lean.Level.succ (Lean.Level.param `u)])
+                                          (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)]))
+                                        (Lean.Expr.const `RingCat.instCategory [Lean.Level.succ (Lean.Level.param `u)]))
+                                      (Lean.Expr.lam
+                                        `R
+                                        (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)])
+                                        (Lean.Expr.lam
+                                          `S
+                                          (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)])
+                                          (Lean.Expr.app
+                                            (Lean.Expr.app
+                                              (Lean.Expr.app
+                                                (Lean.Expr.app
+                                                  (Lean.Expr.const
+                                                    `RingHom
+                                                    [Lean.Level.succ (Lean.Level.param `u),
+                                                     Lean.Level.succ (Lean.Level.param `u)])
+                                                  (Lean.Expr.app
+                                                    (Lean.Expr.const
+                                                      `RingCat.carrier
+                                                      [Lean.Level.succ (Lean.Level.param `u)])
+                                                    (Lean.Expr.bvar 1)))
+                                                (Lean.Expr.app
+                                                  (Lean.Expr.const
+                                                    `RingCat.carrier
+                                                    [Lean.Level.succ (Lean.Level.param `u)])
+                                                  (Lean.Expr.bvar 0)))
+                                              (Lean.Expr.app
+                                                (Lean.Expr.app
+                                                  (Lean.Expr.const
+                                                    `Semiring.toNonAssocSemiring
+                                                    [Lean.Level.succ (Lean.Level.param `u)])
+                                                  (Lean.Expr.app
+                                                    (Lean.Expr.const
+                                                      `RingCat.carrier
+                                                      [Lean.Level.succ (Lean.Level.param `u)])
+                                                    (Lean.Expr.bvar 1)))
+                                                (Lean.Expr.app
+                                                  (Lean.Expr.app
+                                                    (Lean.Expr.const
+                                                      `Ring.toSemiring
+                                                      [Lean.Level.succ (Lean.Level.param `u)])
+                                                    (Lean.Expr.app
+                                                      (Lean.Expr.const
+                                                        `RingCat.carrier
+                                                        [Lean.Level.succ (Lean.Level.param `u)])
+                                                      (Lean.Expr.bvar 1)))
+                                                  (Lean.Expr.app
+                                                    (Lean.Expr.const
+                                                      `RingCat.ring
+                                                      [Lean.Level.succ (Lean.Level.param `u)])
+                                                    (Lean.Expr.bvar 1)))))
+                                            (Lean.Expr.app
+                                              (Lean.Expr.app
+                                                (Lean.Expr.const
+                                                  `Semiring.toNonAssocSemiring
+                                                  [Lean.Level.succ (Lean.Level.param `u)])
+                                                (Lean.Expr.app
+                                                  (Lean.Expr.const
+                                                    `RingCat.carrier
+                                                    [Lean.Level.succ (Lean.Level.param `u)])
+                                                  (Lean.Expr.bvar 0)))
+                                              (Lean.Expr.app
+                                                (Lean.Expr.app
+                                                  (Lean.Expr.const
+                                                    `Ring.toSemiring
+                                                    [Lean.Level.succ (Lean.Level.param `u)])
+                                                  (Lean.Expr.app
+                                                    (Lean.Expr.const
+                                                      `RingCat.carrier
+                                                      [Lean.Level.succ (Lean.Level.param `u)])
+                                                    (Lean.Expr.bvar 0)))
+                                                (Lean.Expr.app
+                                                  (Lean.Expr.const
+                                                    `RingCat.ring
+                                                    [Lean.Level.succ (Lean.Level.param `u)])
+                                                  (Lean.Expr.bvar 0)))))
+                                          (Lean.BinderInfo.default))
+                                        (Lean.BinderInfo.default)))
+                                    (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)]))
+                                  (Lean.Expr.lam
+                                    `X
+                                    (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)])
+                                    (Lean.Expr.lam
+                                      `Y
+                                      (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)])
+                                      (Lean.Expr.app
+                                        (Lean.Expr.app
+                                          (Lean.Expr.app
+                                            (Lean.Expr.app
+                                              (Lean.Expr.const
+                                                `RingHom.instFunLike
+                                                [Lean.Level.succ (Lean.Level.param `u),
+                                                 Lean.Level.succ (Lean.Level.param `u)])
+                                              (Lean.Expr.app
+                                                (Lean.Expr.const
+                                                  `RingCat.carrier
+                                                  [Lean.Level.succ (Lean.Level.param `u)])
+                                                (Lean.Expr.bvar 1)))
+                                            (Lean.Expr.app
+                                              (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                                              (Lean.Expr.bvar 0)))
+                                          (Lean.Expr.app
+                                            (Lean.Expr.app
+                                              (Lean.Expr.const
+                                                `Semiring.toNonAssocSemiring
+                                                [Lean.Level.succ (Lean.Level.param `u)])
+                                              (Lean.Expr.app
+                                                (Lean.Expr.const
+                                                  `RingCat.carrier
+                                                  [Lean.Level.succ (Lean.Level.param `u)])
+                                                (Lean.Expr.bvar 1)))
+                                            (Lean.Expr.app
+                                              (Lean.Expr.lam
+                                                `X
+                                                (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)])
+                                                (Lean.Expr.app
+                                                  (Lean.Expr.app
+                                                    (Lean.Expr.const
+                                                      `Ring.toSemiring
+                                                      [Lean.Level.succ (Lean.Level.param `u)])
+                                                    (Lean.Expr.app
+                                                      (Lean.Expr.const
+                                                        `RingCat.carrier
+                                                        [Lean.Level.succ (Lean.Level.param `u)])
+                                                      (Lean.Expr.bvar 0)))
+                                                  (Lean.Expr.app
+                                                    (Lean.Expr.const
+                                                      `RingCat.ring
+                                                      [Lean.Level.succ (Lean.Level.param `u)])
+                                                    (Lean.Expr.bvar 0)))
+                                                (Lean.BinderInfo.default))
+                                              (Lean.Expr.bvar 1))))
+                                        (Lean.Expr.app
+                                          (Lean.Expr.app
+                                            (Lean.Expr.const
+                                              `Semiring.toNonAssocSemiring
+                                              [Lean.Level.succ (Lean.Level.param `u)])
+                                            (Lean.Expr.app
+                                              (Lean.Expr.const `RingCat.carrier [Lean.Level.succ (Lean.Level.param `u)])
+                                              (Lean.Expr.bvar 0)))
+                                          (Lean.Expr.app
+                                            (Lean.Expr.app
+                                              (Lean.Expr.const `Ring.toSemiring [Lean.Level.succ (Lean.Level.param `u)])
+                                              (Lean.Expr.app
+                                                (Lean.Expr.const
+                                                  `RingCat.carrier
+                                                  [Lean.Level.succ (Lean.Level.param `u)])
+                                                (Lean.Expr.bvar 0)))
+                                            (Lean.Expr.app
+                                              (Lean.Expr.const `RingCat.ring [Lean.Level.succ (Lean.Level.param `u)])
+                                              (Lean.Expr.bvar 0)))))
+                                      (Lean.BinderInfo.default))
+                                    (Lean.BinderInfo.default)))
+                                (Lean.Expr.const
+                                  `RingCat.instConcreteCategoryRingHomCarrier
+                                  [Lean.Level.succ (Lean.Level.param `u)])))
+                            (Lean.Expr.const `RingCat.forget_preservesLimits [Lean.Level.succ (Lean.Level.param `u)]))
+                          (Lean.Expr.app
+                            (Lean.Expr.const
+                              `CategoryTheory.Limits.WalkingMulticospan
+                              [Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.param `u)])
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const
+                                        `CategoryTheory.GrothendieckTopology.Cover.shape
+                                        [Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `AlgebraicGeometry.Scheme.Etale [Lean.Level.param `u])
+                                        (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const
+                                        `AlgebraicGeometry.Scheme.instCategoryEtale
+                                        [Lean.Level.param `u])
+                                      (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                                  (Lean.Expr.bvar 1))
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `AlgebraicGeometry.Scheme.smallEtaleTopology [Lean.Level.param `u])
+                                  (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                              (Lean.Expr.bvar 0))))
+                        (Lean.Expr.app
+                          (Lean.Expr.const
+                            `CategoryTheory.Limits.WalkingMulticospan.instSmallCategory
+                            [Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.param `u)])
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const
+                                      `CategoryTheory.GrothendieckTopology.Cover.shape
+                                      [Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `AlgebraicGeometry.Scheme.Etale [Lean.Level.param `u])
+                                      (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `AlgebraicGeometry.Scheme.instCategoryEtale [Lean.Level.param `u])
+                                    (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                                (Lean.Expr.bvar 1))
+                              (Lean.Expr.app
+                                (Lean.Expr.const `AlgebraicGeometry.Scheme.smallEtaleTopology [Lean.Level.param `u])
+                                (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                            (Lean.Expr.bvar 0))))
+                      (Lean.BinderInfo.default))
+                    (Lean.BinderInfo.default))
+                  (Lean.Expr.bvar 2))
+                (Lean.Expr.bvar 1)))
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.const
+                      `CategoryTheory.Limits.MulticospanIndex.multicospan
+                      [Lean.Level.succ (Lean.Level.param `u),
+                       Lean.Level.succ (Lean.Level.param `u),
+                       Lean.Level.succ (Lean.Level.param `u),
+                       Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+                    (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)]))
+                  (Lean.Expr.const `RingCat.instCategory [Lean.Level.succ (Lean.Level.param `u)]))
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.const
+                            `CategoryTheory.GrothendieckTopology.Cover.shape
+                            [Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+                          (Lean.Expr.app
+                            (Lean.Expr.const `AlgebraicGeometry.Scheme.Etale [Lean.Level.param `u])
+                            (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                        (Lean.Expr.app
+                          (Lean.Expr.const `AlgebraicGeometry.Scheme.instCategoryEtale [Lean.Level.param `u])
+                          (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                      (Lean.Expr.bvar 2))
+                    (Lean.Expr.app
+                      (Lean.Expr.const `AlgebraicGeometry.Scheme.smallEtaleTopology [Lean.Level.param `u])
+                      (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                  (Lean.Expr.bvar 1)))
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.const
+                                `CategoryTheory.GrothendieckTopology.Cover.index
+                                [Lean.Level.succ (Lean.Level.param `u),
+                                 Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+                                 Lean.Level.param `u,
+                                 Lean.Level.succ (Lean.Level.param `u)])
+                              (Lean.Expr.app
+                                (Lean.Expr.const `AlgebraicGeometry.Scheme.Etale [Lean.Level.param `u])
+                                (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                            (Lean.Expr.app
+                              (Lean.Expr.const `AlgebraicGeometry.Scheme.instCategoryEtale [Lean.Level.param `u])
+                              (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                          (Lean.Expr.bvar 2))
+                        (Lean.Expr.app
+                          (Lean.Expr.const `AlgebraicGeometry.Scheme.smallEtaleTopology [Lean.Level.param `u])
+                          (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 418356))))
+                      (Lean.Expr.const `RingCat [Lean.Level.succ (Lean.Level.param `u)]))
+                    (Lean.Expr.const `RingCat.instCategory [Lean.Level.succ (Lean.Level.param `u)]))
+                  (Lean.Expr.bvar 1))
+                (Lean.Expr.bvar 0))))
+          (Lean.BinderInfo.default))
+        (Lean.BinderInfo.default))
+      (Lean.BinderInfo.default)))
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:405:2: W4.middle.ringSame=true
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:454:36: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Duality.InternalHomPairing
+error: build failed

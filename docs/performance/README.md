@@ -109,6 +109,7 @@ original runs; current operating guides own present procedures.
 
 Additional complete cases:
 
+- [Native internal-Hom laws: literal public equations after inferred producer laws](cases/native-internal-hom-laws/README.md)
 - [Surface-resolution constructor boundaries](surface-resolution-constructor-boundaries.md)
 - [Private PBC original-map and finite-model boundaries](pbc-original-map-and-finite-model-boundaries.md)
 - [Abstract foundation constructions: native parents, universes, counits and triangles](abstract-foundation-construction-boundaries.md)

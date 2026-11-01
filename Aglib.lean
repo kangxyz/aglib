@@ -2984,6 +2984,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantOnePerfect
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantPerfectness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.FinitePushforward
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.FiniteTracePairing
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.InternalHomPairing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LocallyConstantExt
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LocallyConstantPerfectness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekCohomology
@@ -7188,6 +7189,7 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.CyclicSection
 public import Aglib.CategoryTheory.Sites.SheafCohomology.DiagramTransfer
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Global.Comparison
 public import Aglib.CategoryTheory.Sites.SheafCohomology.InternalExtComparison
+public import Aglib.CategoryTheory.Sites.SheafCohomology.InternalExtSource
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Large.DisjointSections
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Large.FiniteCoproduct

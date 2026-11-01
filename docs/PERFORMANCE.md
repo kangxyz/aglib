@@ -152,6 +152,16 @@ not identify the hidden conversion cause, and module times are not proof-only
 or matched speedup evidence.
 [Field follow-up](performance/inferred-native-comparison-equations.md#field-follow-up-infer-the-composed-equality-before-normalization).
 
+**Keep a public law's conclusion literal.** If a computed theorem type invokes
+the full comparison program to extract its conclusion, state the actual whole
+map equality directly. In the proof, retain the producer equation at its
+inferred type, pin opaque original map heads, and supply the unchanged native
+value equations to the generic law. The internal-Hom case reached both native
+proof bodies after this repair; diagnostic markers still caused a failed run,
+and only their removal yielded the actual producer/mirror pass. No unique
+conversion cause or matched speedup is inferred.
+[Native internal-Hom case](performance/cases/native-internal-hom-laws/README.md).
+
 **Transpose the whole original composite over a variable adjunction.** When
 native sheafification zero/naturality laws elaborate but their final concrete
 transport still times out, use a helper whose conclusion is the actual supplied

@@ -554,6 +554,7 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.CyclicSection
 public import Aglib.CategoryTheory.Sites.SheafCohomology.DiagramTransfer
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Global.Comparison
 public import Aglib.CategoryTheory.Sites.SheafCohomology.InternalExtComparison
+public import Aglib.CategoryTheory.Sites.SheafCohomology.InternalExtSource
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Large.DisjointSections
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Large.FiniteCoproduct

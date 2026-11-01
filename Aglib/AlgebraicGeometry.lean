@@ -2136,6 +2136,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantOnePerfect
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantPerfectness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.FinitePushforward
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.FiniteTracePairing
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.InternalHomPairing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LocallyConstantExt
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LocallyConstantPerfectness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekCohomology

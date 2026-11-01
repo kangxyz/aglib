@@ -1,0 +1,86 @@
+✖ [4238/4239] Building Aglib.AlgebraicGeometry.EtaleCohomology.Duality.InternalHomPairing (230s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-59b417c59cac476bbc8b25c22d48b2c1/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean -o /root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.olean -i /root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.c --setup /root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.setup.json --json
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:293:6: W4.target.type.start
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:297:6: W4.target.type.before-family
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:313:6: W4.target.type.family-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:318:6: W4.target.type.before-original
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:319:40: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:336:2: W4.target.value.start
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:340:2: W4.target.value.before-family
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:341:68: Unknown identifier `j`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:343:33: Unknown identifier `j`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:344:32: Unknown identifier `j`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:335:9: unsolved goals
+U : Scheme
+Λ : Type (u + 1)
+inst✝² : CommRing Λ
+inst✝¹ : HasExt (ModuleSheaf U Λ)
+inst✝ : HasExt (AbelianSheaf U)
+F N N' : ModuleSheaf U Λ
+b : N ⟶ N'
+hN :
+  ∀ (q : ℕ),
+    IsZero
+      (((SheafOfModules.InternalHom.homFunctor (ModuleCat.Sheaf.ConstantRing.commutativeSheaf U.smallEtaleTopology Λ)
+                F).rightDerived
+            (q + 1)).obj
+        N)
+hN' :
+  ∀ (q : ℕ),
+    IsZero
+      (((SheafOfModules.InternalHom.homFunctor (ModuleCat.Sheaf.ConstantRing.commutativeSheaf U.smallEtaleTopology Λ)
+                F).rightDerived
+            (q + 1)).obj
+        N')
+r s t : ℕ
+h : r + s = t
+hCoefficient :
+  ∀
+    (x :
+      ((SheafOfModules.toSheaf
+                ((sheafCompose U.smallEtaleTopology (forget₂ CommRingCat RingCat)).obj
+                  (ModuleCat.Sheaf.ConstantRing.commutativeSheaf U.smallEtaleTopology Λ))).obj
+            (SheafOfModules.InternalHom.sheaf (ModuleCat.Sheaf.ConstantRing.commutativeSheaf U.smallEtaleTopology Λ) F
+              N)).H
+        s),
+    (Sheaf.InternalExt.cohomologyExtReverse (ModuleCat.Sheaf.ConstantRing.commutativeSheaf U.smallEtaleTopology Λ)
+          terminalIsTerminal F N' s)
+        ((Sheaf.H.map
+            ((SheafOfModules.toSheaf
+                  ((sheafCompose U.smallEtaleTopology (forget₂ CommRingCat RingCat)).obj
+                    (ModuleCat.Sheaf.ConstantRing.commutativeSheaf U.smallEtaleTopology Λ))).map
+              (SheafOfModules.InternalHom.map (ModuleCat.Sheaf.ConstantRing.commutativeSheaf U.smallEtaleTopology Λ)
+                (𝟙 F) b))
+            s)
+          x) =
+      ((Sheaf.InternalExt.cohomologyExtReverse (ModuleCat.Sheaf.ConstantRing.commutativeSheaf U.smallEtaleTopology Λ)
+              terminalIsTerminal F N s)
+            x).comp
+        (Ext.mk₀ b) ⋯
+⊢ have this :=
+    have hCoefficient := ⋯;
+    sorry hCoefficient;
+  this
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:385:6: W4.source.type.start
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:389:6: W4.source.type.before-family
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:395:6: W4.source.type.family-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:400:6: W4.source.type.before-original
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:402:6: W4.source.first-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:404:6: W4.source.second-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:407:6: W4.source.input-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:409:6: W4.source.actions-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:411:6: W4.source.values-ready
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:412:33: Unknown identifier `originalCompactAction_source`
+
+Note: A private declaration `originalCompactAction_source` (from the current module) exists but would need to be public to access here.
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:413:6: W4.source.type.original-ready
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:381:8: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Duality.InternalHomPairing
+error: build failed
