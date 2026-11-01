@@ -304,6 +304,15 @@ are obtained by pullback. See [Picard](../Aglib/AlgebraicGeometry/Picard/README.
 
 ## Dual abelian variety
 
+[Bidual](../Aglib/AlgebraicGeometry/AbelianScheme/OverField/Dual/Bidual.lean)
+constructs the original map `h_A` from the transposed selected Poincaré bundle
+using a second supplied Picard representative `Q,S` of the same native dual.
+It proves the original component and pointed laws, contravariant naturality
+and `h_A ≫ (φ_L)^∨ = φ_L` under the stated hypotheses; the group-map law
+requires the second representative to be separated and locally of finite
+type. Properness or geometric integrality of the dual is not an input to this
+map construction. Bidual isomorphism and dual-isogeny degree remain open.
+
 For the same supplied `P,R` and native `D = Pic⁰(A)`, conditional
 [homogeneity](../Aglib/AlgebraicGeometry/AbelianScheme/OverField/Dual/Homogeneity.lean)
 and [multiplication](../Aglib/AlgebraicGeometry/AbelianScheme/OverField/Dual/Multiplication.lean)
@@ -419,7 +428,7 @@ close the planned programme.
 | B6–B7 | **Partial source supplied:** positive multiplication and its native kernel have rank `n^(2*g)` over every field; at unit levels geometric degree and torsion counts and noncanonical native-action basis existence are supplied through all-divisor counts. Proper roots and constant H¹ have cardinality `n^(2*g)` and noncanonical native-action bases over algebraically closed constants at positive invertible levels; the open-curve rank remains open. |
 | D2–D6 | **Partial source supplied:** module trace and smaller-open compatibility, exact finite-module dualization, finite biduality, and constant-coefficient perfectness in degrees 0 and 2 with transposes, for finite complement including empty and positive invertible `n`. Original one-point module Ext purity and Kummer trace-one normalization are supplied; the original finite-lcc roots internal-Hom/Ext comparison is supplied under its field and level hypotheses; finite point-support roots Ext and its whole trace sum are supplied; degree-one and general lcc perfectness, general-coefficient purity, finite-pushforward compatibility and comparison source/connecting and cup laws remain open. |
 | D7 | **Open:** constructible devissage/local comparison, with the unchecked Milne EC reference and alternative Artin route kept explicit. |
-| W1 | **Partial source supplied:** the same Poincaré pair and original line-bundle morphism, with locally Noetherian classification; an ample original `φ_L` is finite. Dual properness, smoothness, dimension, geometric integrality, projectivity and finite-flat surjectivity are conditional on the original coherent-H¹ inequality `finrank H¹(O_A) ≤ finrank Cotangent(unit_A)` and the displayed source assumptions. Conditional homogeneity and source multiplication laws hold when the actual dual component is proper and geometrically integral. The coherent-H¹ inequality, unconditional dual geometry, biduality, general dual homomorphisms and character descent remain open. |
+| W1 | **Partial source supplied:** the same Poincaré pair and original line-bundle morphism, with locally Noetherian classification; an ample original `φ_L` is finite. Dual properness, smoothness, dimension, geometric integrality, projectivity and finite-flat surjectivity are conditional on the original coherent-H¹ inequality `finrank H¹(O_A) ≤ finrank Cotangent(unit_A)` and the displayed source assumptions. Conditional homogeneity and source multiplication laws hold when the actual dual component is proper and geometrically integral. The original bidual map and its naturality/line-bundle laws are supplied with a second representative; the coherent-H¹ inequality, unconditional dual geometry, bidual isomorphism, general dual homomorphisms and character descent remain open. |
 | W2–W3 | **Open:** [Cartier theta geometry, canonical principal polarization and general Weil pairing](#theta-principal-polarization-and-weil-pairing), with all-positive-level group-scheme and prime-to-characteristic point conclusions distinguished. |
 | W4 | **Open:** original-map and sign comparison of Yoneda, cup, Kummer, Abel–Jacobi, Cartier and polarization constructions. |
 

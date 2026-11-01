@@ -734,6 +734,7 @@ public import Aglib.Algebra.Polynomial.RationalValues
 public import Aglib.Algebra.QuadraticNorm
 public import Aglib.Algebra.Ring.Pi.FiniteProjection
 public import Aglib.AlgebraicGeometry
+public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.Bidual
 public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.Dimension
 public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.Homogeneity
 public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.Isogeny
