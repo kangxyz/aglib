@@ -26,6 +26,10 @@ version removes the image of the complement of the source etale locus.
 The [finite-etale algebraization](../FiniteEtale/Adic/README.md) uses these
 neighborhoods for the original coherent section spectra.
 
+[ConnectedSection](ConnectedSection.lean) proves that the original section
+of a preconnected étale scheme over a field is an isomorphism, with its
+structure map as inverse.
+
 ## Additional source entry points
 
 Each source states the exact hypotheses, maps, and realization bounds of its interfaces.

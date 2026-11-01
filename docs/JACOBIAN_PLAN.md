@@ -229,6 +229,12 @@ comparison isomorphism and its degree-two/zero pairing square. See
 [curve sources](../Aglib/AlgebraicGeometry/EtaleCohomology/Curves/README.md)
 and [duality](../Aglib/AlgebraicGeometry/EtaleCohomology/Duality/README.md).
 
+The original trace pairing is perfect for the actual pushed-forward unit at
+one canonical point in compact degrees `r ≤ 2`, with the original excision
+and trace-one point generator. This [point-unit result](../Aglib/AlgebraicGeometry/EtaleCohomology/Duality/PointRemoval.lean)
+retains its curve, positive invertible-level and finite-complement conditions;
+it does not prove arbitrary point coefficients or the point-removal step.
+
 The selected native route studies the transpose
 `ψ^s(F) : Ext^s(F, μ_n) → H_c^(2-s)(F)^∨`. Use a source short exact
 sequence `K → B → F` with `B` a finite étale pushforward of a finite free
@@ -361,23 +367,25 @@ group. Supplying theta and its actual finite kernel remains separate.
 
 ## Theta, principal polarization and Weil pairing
 
-For `g > 0` over the initial algebraically closed field, or with a specified
-rational base point, construct the translated theta locus on the selected
-`J` as an actual Cartier divisor. Supply the Abel-map image and fibre,
-dimension, flatness/length and ampleness arguments. Over a general field
-without that point, the intrinsic theta locus is on `Pic^(g-1)`; translating
-it to `J` needs additional data. Handle `g = 0` through the trivial Jacobian,
-without using `W_(g-1)` at an invalid bound.
+For positive genus over algebraically closed `k`, with the original curve,
+origin and supplied Picard representatives, the original based ordered Abel
+image is an effective Cartier divisor. The positive theta line bundle has
+monic original morphism, trivial scheme kernel and is ample; the original
+Abel pullback gives its inverse after inversion as a left inverse. The actual
+principal isomorphism additionally retains the original inequality
+`finrank k (structureCohomology k J 1) ≤ finrank k (Cotangent.Space η[J])`. The intrinsic positive ordered image is Cartier on the original
+degree stratum; it is not identified with an unreduced Hilbert-image model.
+For genus zero over any field the original Jacobian is isomorphic to the
+base without choosing an origin or a negative-degree theta divisor. See
+[theta sources](../Aglib/AlgebraicGeometry/Curves/README.md).
 
-Instantiate the general line-bundle homomorphism and duality laws to prove
-autoduality and principal polarization. Prove base-point/translation
-independence and descent for the canonical polarization over the ground
-field. This does not assert a theta line bundle on `J` defined over that
-field. The source is [Milne JVs](REFERENCES.md#milne2021jacobianvarieties),
-5.1 and 6.6–6.11, especially the fibre-length argument in 6.7 (p. 22).
-Retain its actual Cartier, dimension and flatness requirements; a general
-finite-morphism claim `normal target → fibre rank ≤ generic degree` is not
-an available replacement.
+The whole Abel change-of-origin translation law holds over any field for
+two actual origins. Independence of the original Picard pullback and
+principal isomorphism is supplied under the same algebraically closed,
+positive-genus and coherent-H¹ hypotheses. Arbitrary-field descent remains
+open; this does not assert a theta line bundle on `J` defined over an
+arbitrary ground field. [Milne JVs](REFERENCES.md#milne2021jacobianvarieties),
+5.1 and 6.6–6.11, remains a source locator with its actual hypotheses.
 
 Construct the Weil pairing first on the actual `n` kernels of an abelian
 variety and its dual through Cartier/Poincaré duality. Prove the map,
@@ -431,7 +439,7 @@ close the planned programme.
 | D2–D6 | **Partial source supplied:** module trace and smaller-open compatibility, exact finite-module dualization, finite biduality, and constant-coefficient perfectness in degrees 0 and 2 with transposes, for finite complement including empty and positive invertible `n`. Original one-point module Ext purity and Kummer trace-one normalization are supplied; the original finite-lcc roots internal-Hom/Ext comparison is supplied under its field and level hypotheses; finite point-support roots Ext and its whole trace sum are supplied; degree-one and general lcc perfectness, general-coefficient purity, finite-pushforward compatibility and comparison source/connecting and cup laws remain open. |
 | D7 | **Open:** constructible devissage/local comparison, with the unchecked Milne EC reference and alternative Artin route kept explicit. |
 | W1 | **Partial source supplied:** the same Poincaré pair and original line-bundle morphism, with locally Noetherian classification; an ample original `φ_L` is finite. Dual properness, smoothness, dimension, geometric integrality, projectivity and finite-flat surjectivity are conditional on the original coherent-H¹ inequality `finrank H¹(O_A) ≤ finrank Cotangent(unit_A)` and the displayed source assumptions. Conditional homogeneity and source multiplication laws hold when the actual dual component is proper and geometrically integral. The original bidual map and its naturality/line-bundle laws are supplied with a second representative; the coherent-H¹ inequality, unconditional dual geometry, bidual isomorphism, general dual homomorphisms and character descent remain open. |
-| W2–W3 | **Open:** [Cartier theta geometry, canonical principal polarization and general Weil pairing](#theta-principal-polarization-and-weil-pairing), with all-positive-level group-scheme and prime-to-characteristic point conclusions distinguished. |
+| W2–W3 | **Partial source supplied:** based positive-genus theta Cartier geometry, monicity, trivial scheme kernel and ampleness; principal isomorphism retains the original coherent-H¹ inequality. Genus zero has the separate any-field trivial-Jacobian theorem. The any-field Abel origin-change law and conditional principal-isomorphism independence are supplied; arbitrary-field descent and general Weil pairing remain open. |
 | W4 | **Open:** original-map and sign comparison of Yoneda, cup, Kummer, Abel–Jacobi, Cartier and polarization constructions. |
 
 ## Work order and source obligations

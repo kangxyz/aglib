@@ -89,6 +89,11 @@ is stronger than 3.10 (v)), the direct image `E = f_*M` is locally free of rank
 `r` and commutes with every base change, so `Q = E^∨` is locally free
 (3.10 (i)).
 
+[SquareConcentration](SquareConcentration.lean) gives the original fibre
+cohomology isomorphism and concentration transfer for an actual cartesian
+square with the specified coefficient comparison. It makes no nonflat
+higher-direct-image base-change assertion.
+
 ## Additional source entry points
 
 Each source states the exact hypotheses, maps, and realization bounds of its interfaces.

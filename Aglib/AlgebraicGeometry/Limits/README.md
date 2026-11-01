@@ -51,3 +51,7 @@ of the components (`range_pullbackSigmaι`), covering (`exists_pullbackSigmaι_e
 disjoint (`pairwise_disjoint_range_pullbackSigmaι`). For finite index types they are the
 coprojections of [FiniteCoproductPullback](FiniteCoproductPullback.lean)`.iso`, with the factors
 swapped (`pullbackSigmaι_eq_sigmaι_iso`).
+
+[FiniteProducts/Smooth](FiniteProducts/Smooth.lean) adds relative dimensions
+for the original smooth binary and finite products, including the empty
+product over the base.

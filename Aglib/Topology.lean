@@ -16,6 +16,7 @@ public import Aglib.Topology.Constructible.Noetherian
 public import Aglib.Topology.GenericOrClosedDimension
 public import Aglib.Topology.Irreducible.ClosedCover
 public import Aglib.Topology.Irreducible.LocallyFinite
+public import Aglib.Topology.KrullDimension.ClosedEmbedding
 public import Aglib.Topology.KrullDimension.ClosedSubspace
 public import Aglib.Topology.KrullDimension.IrreducibleClosed
 public import Aglib.Topology.KrullDimension.Surjective

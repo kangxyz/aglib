@@ -100,3 +100,8 @@ the dual-ideal section on the actual full closed-point blowup of a regular
 integral locally Noetherian scheme at a two-dimensional stalk. The residue
 field is unrestricted. This is the normalized `O(E)` comparison used by
 later differential and trace consumers.
+
+[Proper/RankOneOpen](Proper/RankOneOpen.lean) constructs the rank-one
+fibre-cohomology open for a proper affine-locally coherent relatively flat
+family over a locally Noetherian base, with its stated amplitude and
+quasicoherence hypotheses.
