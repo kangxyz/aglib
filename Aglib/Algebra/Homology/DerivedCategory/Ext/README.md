@@ -59,3 +59,13 @@ curried linear maps, using `AddCommGroup.zmodModule`.
 [PairingZero](PairingZero.lean) gives original degree-zero source and
 coefficient maps and unit/scalar laws for the exact-functor Yoneda pairing,
 with independent category and Ext universes.
+
+[Effacement](Effacement.lean) kills each positive Ext class by an actual
+epimorphism to its source, without enough injectives or projectives.
+[Bifunctor](Bifunctor.lean) constructs the original external Ext product for
+a genuine biexact additive bifunctor between abelian categories with the
+stated `HasExt` instances. Its whole interchange law has sign `(-1)^(p*q)`;
+it also supplies the unsigned source connecting-class laws (sign `+1` in
+the first variable and `(-1)^p` in the second) and native signed connecting-map
+compatibility. These categorical results do not identify a
+geometric cohomology product or establish Künneth or degree-one duality.

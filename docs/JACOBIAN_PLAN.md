@@ -222,28 +222,30 @@ is insufficient; reduced-base Grauert does not supply that locus. Check the
 line-bundle and cohomology suppliers against [Stacks](REFERENCES.md#stacksproject),
 0BDP, 0BF0, 0BF2, 0BF3 and 0BF4.
 
-The original cube, square and multiplication pullback laws are supplied for projective geometrically integral field groups. For an abelian variety `A`, put `d = dim A`.
-With a symmetric ample line bundle, obtain `deg [n]_A = n^(2d)` for every
-positive `n` from Hilbert polynomials or intersection theory. Specialize to
-`deg [n]_J = n^(2g)` using the supplied B2 theorem `dim J = g`.
-Supply the polynomial-degree/support-dimension theorem and
-leading-coefficient/rank scaling. The unrestricted equality
-`chi(f^*L^m) = rank(f) * chi(L^m)` for a finite flat map is not the available
-degree argument. Relevant source locators are
-[Stacks](REFERENCES.md#stacksproject), 0BF7, 0BFA, 0BFG and 0BFH;
-[Milne AVs](REFERENCES.md#milne1986abelianvarieties), 7.1–7.2 and 8.2–8.3;
-and [Milne AV](REFERENCES.md#milne2008abelianvarietiesnotes), I 6.4 and 7.2.
+The original cube, square and multiplication pullback laws are supplied for
+projective geometrically integral field groups. For a smooth such commutative
+group, put `d` for its identity cotangent dimension. The original `[n]` and
+its native kernel have locally free rank `n^(2*d)` for every positive `n` over
+every field, including characteristic-divisible levels. The same supplied
+`P,R,J` specializes this to `n^(2*g)` using `d = g`. At unit levels the
+original multiplication has geometric degree `n^(2*d)`, and geometric torsion
+and native kernel point counts have that cardinality. All divisor-level counts
+support a noncanonical coordinate equivalence; on the Jacobian the native
+`ZMod n` action also has a basis. Level one and genus zero are included. No
+canonical or Galois-equivariant basis, arbitrary-field rational-point count,
+or `ZMod 1` finrank assertion follows. See
+[Rank](../Aglib/AlgebraicGeometry/AbelianScheme/OverField/Multiplication/Rank.lean),
+[Torsion](../Aglib/AlgebraicGeometry/AbelianScheme/OverField/Multiplication/Torsion.lean)
+and [Jacobian torsion](../Aglib/AlgebraicGeometry/Curves/Jacobian/Torsion.lean).
+The proof uses Hilbert-polynomial support degree and leading-coefficient/rank
+scaling; it does not assert unrestricted finite-flat Euler-characteristic
+scaling. Related source locators are [Stacks](REFERENCES.md#stacksproject),
+0BF7, 0BFA, 0BFG and 0BFH; [Milne AVs](REFERENCES.md#milne1986abelianvarieties),
+7.1–7.2 and 8.2–8.3; and [Milne AV](REFERENCES.md#milne2008abelianvarietiesnotes),
+I 6.4 and 7.2.
 
 Use smoothness and the differential of `[n]` for étaleness at invertible `n`.
-This branch can proceed from smooth-group dimension and the existing
-multiplication differential before cube or the degree formula. Finite flatness and surjectivity for every positive `n` are supplied for projective geometrically integral commutative field groups.
-
-For composite `n`, prove the prime-power/divisor-level kernel cardinalities
-required by a general finite-module classification criterion. Annihilation
-by `n` and the one cardinality `n^(2g)` alone do not identify the module with
-`(Z/n)^(2g)`. Generalize the criterion used by
-[rank-two torsion](../Aglib/GroupTheory/Torsion/RankTwo.lean) before the genus
-specialization; no resulting basis is canonical. The future curve-rank branch
+The future curve-rank branch
 then has the explicit targets
 
 `H¹(X, Z/n) ≃ (Z/n)^(2g)` and `#H¹(U, Z/n) = n^(2g + #D - 1)`.
@@ -258,9 +260,8 @@ source locators for this branch, with their actual hypotheses retained.
 ## Dual abelian variety
 
 Use the same Picard representability technology for a projective abelian
-variety `A`, and use the supplied rigidified Poincaré bundle and line-bundle morphism; construct dual homomorphisms, biduality and isogeny laws. Properness and smoothness of
-`Pic⁰(A)` need abelian-variety suppliers; curve smoothness B1 does not provide
-them. The [inspected preliminary draft](REFERENCES.md#inspected-preliminary-abelian-variety-draft)
+variety `A`, and use the supplied rigidified Poincaré bundle and line-bundle morphism; construct dual homomorphisms, biduality and isogeny laws. Properness and smoothness of `Pic⁰(A)` have criteria retaining the original
+coherent-H¹ bound; curve smoothness B1 does not supply that bound. The [inspected preliminary draft](REFERENCES.md#inspected-preliminary-abelian-variety-draft)
 (**citation needed**), (6.6), (6.12)–(6.18), pp. 90–96, outlines the selected
 coherent-cohomology route.
 
@@ -279,6 +280,12 @@ The draft's (7.2)–(7.5), pp. 98–100, does not discharge this last step or it
 quotient/descent prerequisites merely by stating the dual-kernel theorem.
 Prove the ensuing Poincaré, biduality and homomorphism laws, (7.7)–(7.17),
 pp. 100–104, rather than installing them as curve-specific conditional fields.
+
+The finite-kernel criterion below the field specialization applies to group
+schemes over any base. Over an algebraically closed field, the supplied ample
+criterion proves that an original line bundle with a nonzero section and finite
+actual `φ_L` kernel is ample on a projective geometrically integral commutative
+group. Supplying theta and its actual finite kernel remains separate.
 
 ## Theta, principal polarization and Weil pairing
 
@@ -344,14 +351,14 @@ close the planned programme.
 | B1 | **Implemented:** [curve Picard smoothness](../Aglib/AlgebraicGeometry/Picard/Smooth/Curve.lean), with no rational-point hypothesis in the final curve theorem. |
 | E1–E3 | **Implemented:** [original trace, proper table, open vanishing and compact trace](../Aglib/AlgebraicGeometry/EtaleCohomology/README.md), supported by general quotients/Kummer and geometric point/restriction providers. Trace is normalized to Aglib's boundary; rank and SGA-sign comparison remain open. |
 | E4 | **Implemented:** [compact-support cohomology and localization](../Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/README.md) on the original extension by zero, with finite-complement and point-term comparisons. Purity is a separate target. |
-| E5, D1 | **Implemented formal constructions:** [generic Ext calculus](../Aglib/Algebra/Homology/DerivedCategory/Ext/README.md), canonical module/abelian comparison, and [native pairings and coherence](../Aglib/AlgebraicGeometry/EtaleCohomology/Duality/README.md). The module trace comparisons and exact finite-module dualization are supplied; geometric perfectness remains open. |
+| E5, D1 | **Implemented formal constructions:** [generic Ext calculus](../Aglib/Algebra/Homology/DerivedCategory/Ext/README.md), canonical module/abelian comparison, and [native pairings and coherence](../Aglib/AlgebraicGeometry/EtaleCohomology/Duality/README.md). The generic external Ext product has signed interchange and unsigned source connecting-class laws. The module trace comparisons and exact finite-module dualization are supplied; geometric Künneth, H¹ closure and perfectness remain open. |
 | B2 | **Source supplied:** same `P,R,J` smoothness, geometric integrality and `dim J = g` over every field, through the original cotangent/H1 comparison. |
 | B3–B4 | **Field source supplied:** normalized and rigidified families, projective geometrically integral group cube, square and multiplication laws; the unrestricted relative cube remains open. |
-| B5 | **Projectivity source supplied over every field:** same `P,R,J` through Picard levels and properness descent. Numerical multiplication degree remains open. |
-| B6–B7 | **Partial source supplied:** positive multiplication on the original `J` is finite, flat and surjective over every field; at invertible levels it is finite étale and surjective. The all-divisor torsion criterion is supplied. Numerical degree, geometric divisor-level cardinalities and cohomology ranks remain open. |
+| B5 | **Source supplied over every field:** same `P,R,J` projectivity and positive multiplication rank `n^(2*g)`. |
+| B6–B7 | **Partial source supplied:** positive multiplication and its native kernel have rank `n^(2*g)` over every field; at unit levels geometric degree and torsion counts and noncanonical native-action basis existence are supplied through all-divisor counts. Cohomology ranks remain open. |
 | D2–D6 | **Partial source supplied:** module trace and smaller-open compatibility, exact finite-module dualization, finite biduality, and constant-coefficient perfectness in degrees 0 and 2 with transposes, for finite complement including empty and positive invertible `n`. Degree-one and general lcc perfectness, purity, finite-pushforward compatibility and lcc internal-Hom/Ext comparison remain open. |
 | D7 | **Open:** constructible devissage/local comparison, with the unchecked Milne EC reference and alternative Artin route kept explicit. |
-| W1 | **Partial source supplied:** the same rigidified Poincaré pair and original line-bundle morphism, with their displayed field and locally Noetherian classification bounds. Dual properness and smoothness, biduality, isogeny and character-descent laws remain open. |
+| W1 | **Partial source supplied:** the same Poincaré pair and original line-bundle morphism, with locally Noetherian classification; an ample original `φ_L` is finite. Dual properness, smoothness, dimension, geometric integrality, projectivity and finite-flat surjectivity are conditional on the original coherent-H¹ inequality `finrank H¹(O_A) ≤ finrank Cotangent(unit_A)` and the displayed source assumptions. That inequality, biduality, dual homomorphisms and character descent remain open. |
 | W2–W3 | **Open:** [Cartier theta geometry, canonical principal polarization and general Weil pairing](#theta-principal-polarization-and-weil-pairing), with all-positive-level group-scheme and prime-to-characteristic point conclusions distinguished. |
 | W4 | **Open:** original-map and sign comparison of Yoneda, cup, Kummer, Abel–Jacobi, Cartier and polarization constructions. |
 

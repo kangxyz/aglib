@@ -810,6 +810,7 @@ public import Aglib.RingTheory.NeronModification.RationalSquare
 public import Aglib.RingTheory.NeronModification.Relations
 public import Aglib.RingTheory.NeronModification.ResiduePoint
 public import Aglib.RingTheory.Nilpotent.GeometricallyReduced
+public import Aglib.RingTheory.NoetherNormalization.Dimension
 public import Aglib.RingTheory.NoetherNormalization.DimensionOne
 public import Aglib.RingTheory.PicardGroup.SquareZero
 public import Aglib.RingTheory.PlaneNode.Basic
@@ -995,6 +996,7 @@ public import Aglib.RingTheory.Valuation.ParameterMonomials
 public import Aglib.RingTheory.Valuation.ResidualGalois
 public import Aglib.RingTheory.Valuation.ResidualInertia
 public import Aglib.RingTheory.Valuation.Sequences
+public import Aglib.RingTheory.ZMod.Reduction
 
 /-!
 All modules in the `Aglib.RingTheory` family.

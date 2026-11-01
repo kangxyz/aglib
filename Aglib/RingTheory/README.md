@@ -105,3 +105,8 @@ and needs no characteristic or continuity hypothesis. The differential-basis
 consumer must still supply algebraic generation and the spatial derivations;
 the full field/series rank conclusions and fixed-family applications remain
 separate obligations.
+
+[ZMod/Reduction](ZMod/Reduction.lean) shows that a `d`-annihilated element at
+level `n^(d+1)` maps to zero at level `n` for positive `n,d`, including
+composite `n` and one. Its natural-number divisibility lemma also allows
+`n = 0`.

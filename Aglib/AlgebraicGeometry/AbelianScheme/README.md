@@ -30,5 +30,39 @@ Noetherian tests represented by the supplied Picard object.
 [Positive multiplication](OverField/Multiplication/Finite.lean) is finite,
 flat and surjective for projective geometrically integral commutative field
 groups at every positive level, including characteristic-divisible levels.
-Numerical degree and rank, dual properness and smoothness, biduality, Cartier
-duality, theta, principal polarization and Weil pairing remain separate.
+[Rank](OverField/Multiplication/Rank.lean) gives the original multiplication
+and its native kernel locally free rank `n^(2*d)` over every field for `n > 0`,
+where `d` is the identity cotangent dimension, assuming smoothness. This
+includes characteristic-divisible levels. [Torsion](OverField/Multiplication/Torsion.lean)
+gives geometric degree, geometric torsion and native kernel point counts at
+unit levels, and a noncanonical equivalence with `(ZMod n)^(2*d)` using
+all divisor-level counts. No canonical or Galois-equivariant basis is asserted.
+Dual properness and smoothness remain conditional as described below; biduality,
+Cartier duality, theta, principal polarization and Weil pairing remain separate.
+
+[Translation](OverField/LineBundle/Translation.lean) retains parameter-valued
+translation and whole rigidified-isomorphism coherence, including nonreduced
+tests; classification uses the supplied representation on locally Noetherian
+tests. Pullback of a line bundle by source-group inversion preserves its
+line-bundle morphism; this is distinct from dualizing the bundle and from
+parameter inversion: dualizing the bundle inverts `φ_L`, as does precomposing
+`φ_L` with source-parameter inversion. No general nonreduced-parameter
+rigidity is asserted.
+
+[AmpleCriterion](OverField/LineBundle/AmpleCriterion.lean) proves ampleness of
+an original line bundle with a nonzero global section and finite actual
+`φ_L` kernel on a projective geometrically integral commutative group over an
+algebraically closed field. It does not require dual smoothness or the H¹
+bound. The actual ample `φ_L` is finite without that bound or source smoothness.
+
+[Dual dimension](OverField/Dual/Dimension.lean),
+[properness](OverField/Dual/Properness.lean),
+[smoothness](OverField/Dual/Smoothness.lean),
+[projectivity](OverField/Dual/Projectivity.lean) and
+[isogeny](OverField/Dual/Isogeny.lean) give criteria for the same supplied
+Picard representative and identity component over any field. For the proper
+smooth geometrically integral source and an actual ample bundle, the original
+inequality `finrank H¹(O_A) ≤ finrank Cotangent(unit_A)` is retained in the
+conclusions on dual properness, smoothness, dimension and finite-flat
+surjectivity of `φ_L`; the H-projective source version also gives geometric
+integrality and projectivity. The coherent-H¹ bound itself remains open.
