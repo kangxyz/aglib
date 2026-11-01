@@ -116,6 +116,13 @@ derived forgetting; its eight derived-model universes remain independent.
 
 [ClosedPointStalk](ClosedPointStalk.lean) and [StrictLocalOpenStalk](StrictLocalOpenStalk.lean) use initiality of the same pointed subterminal object; their closed-point, Henselian and ambient-open hypotheses remain explicit. [DirectImageStalkStages](DirectImageStalkStages.lean) assembles the two original final-functor comparisons as one natural isomorphism, and [DirectImageStalkNaturality](DirectImageStalkNaturality.lean) is its original coefficient map law. The stage reindexing itself adds no finiteness premise on the source morphism.
 
+[DirectImageEvaluationComposition](DirectImageEvaluationComposition.lean)
+keeps whole original pointed direct-image evaluation and composition laws.
+[EtaleTraceNormalization](EtaleTraceNormalization.lean) identifies the
+original local represented trace with the actual graph sum, and
+[EtaleTraceStalk](EtaleTraceStalk.lean) transports it to the original
+geometric stalk, including empty fibres.
+
 ## Additional source entry points
 
 Each source states the exact hypotheses, maps, and realization bounds of its interfaces.

@@ -39,6 +39,10 @@ with their scalar composite identities; separability supplies injectivity
 where required. These feed the finite separable surface H1 bound and do not
 assert a global canonical-module trace.
 
+[OpenSquare](OpenSquare.lean) compares the original function-field maps
+across a commuting open square, retaining the displayed hypotheses and
+transporting finite-dimensionality and finrank through those maps.
+
 ## Finite and radicial maps of the original generic fields
 
 [Finite](Finite.lean) owns `Scheme.functionFieldMap_finite` for finite dominant

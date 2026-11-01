@@ -71,3 +71,7 @@ unit comparison through the actual mate and a commuting left-comparison square.
 unit-comparison naturality equation and derives it from the original component
 formulas and comparison cube. The independent category and Hom universes and
 the given unit, mate and comparison maps remain explicit.
+
+[LowerShriekExchange](LowerShriekExchange.lean) constructs the original
+exchange as a mate from the displayed invertible right mate and source unit,
+with its whole unit and counit normalizations.

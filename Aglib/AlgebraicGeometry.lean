@@ -1686,6 +1686,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Cohomology.SliceComparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Cohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.CurveRoots
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.FiniteComplement
+public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.FinitePushforward
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Localization
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.OpenLocalization
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.PointRemoval
@@ -2057,6 +2058,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.StructureComparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.StructureFrobenius
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.StructureScalars
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.Trace
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.TracePullback
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.Adjunction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChange
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChange.Basic
@@ -2078,7 +2080,9 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantCoefficien
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantOnePerfectness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantPerfectness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.FinitePushforward
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.FiniteTracePairing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LocallyConstantExt
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LocallyConstantPerfectness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekCohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekComposition
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekDirectImage
@@ -2220,6 +2224,9 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.Underl
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingAdjunction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingTorsion
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Finite.LowerShriek
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Finite.ModuleComparison
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Finite.ModuleTraceNormalization
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.AbelianAdjunction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.BaseChange
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.Comparisons
@@ -2453,12 +2460,15 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ConstructibleSplitB
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.CoproductCohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.CoproductSections
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.DerivedBaseChange
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.DirectImageEvaluationComposition
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.DirectImageEvaluationGerm
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.DirectImageStalkNaturality
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.DirectImageStalkStages
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.DisjointSections
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.EtaleModuleTrace
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.EtaleTrace
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.EtaleTraceNormalization
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.EtaleTraceStalk
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.EtaleTransfer
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.AffineBaseChangeIndex
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.AffineComponentGeometricIndex
@@ -2703,6 +2713,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant.Cover
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant.Naturality
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant.Sections
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.LevelMaps
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.LocalUnits
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.LowerShriekCohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.ModuleCohomology
@@ -2717,6 +2728,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootStalk
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootsComposition
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootsOfUnity
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootsOfUnityInverseImage
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootsSquare
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.SectionPullback
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Torsor
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.UnitZeroLocus
@@ -3086,6 +3098,7 @@ public import Aglib.AlgebraicGeometry.FunctionField.Map
 public import Aglib.AlgebraicGeometry.FunctionField.MorphismExt
 public import Aglib.AlgebraicGeometry.FunctionField.Normalization
 public import Aglib.AlgebraicGeometry.FunctionField.OpenRestriction
+public import Aglib.AlgebraicGeometry.FunctionField.OpenSquare
 public import Aglib.AlgebraicGeometry.FunctionField.SectionRange
 public import Aglib.AlgebraicGeometry.FunctionField.SmoothConstants
 public import Aglib.AlgebraicGeometry.FunctionField.SplitSections
@@ -4397,6 +4410,7 @@ public import Aglib.AlgebraicGeometry.Morphisms.FiniteFlat.Basic
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteFlat.Degree
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteFlat.DegreeIso
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteFlat.DegreeLength
+public import Aglib.AlgebraicGeometry.Morphisms.FiniteFlat.FibreDegree
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteFlat.Fibres
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteFlat.FunctionField
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteFlat.GeometricDegreeRank

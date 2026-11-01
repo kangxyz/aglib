@@ -118,6 +118,10 @@ left-exact comparison to module-sheaf internal Hom using proved injective-image
 acyclicity. Its ordinary-cohomology inverse, degree-zero and target naturality
 laws retain actual target acyclicity and independent Ext universes.
 
+[RepresentedTransfer/LocalFormula](RepresentedTransfer/LocalFormula.lean)
+identifies the original coefficient-natural restriction trace on a splitting
+chart with the sum along its actual graph maps.
+
 ## Additional source entry points
 
 Each source states the exact hypotheses, maps, and realization bounds of its interfaces.

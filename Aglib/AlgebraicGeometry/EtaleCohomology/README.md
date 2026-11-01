@@ -209,6 +209,10 @@ remain outside this family.
 original roots inverse-image composition for positive globally invertible
 levels, including its module-sheaf lift.
 
+[Kummer/RootsSquare](Kummer/RootsSquare.lean) and
+[Kummer/LevelMaps](Kummer/LevelMaps.lean) retain the original roots maps and
+level-change squares used by finite compact trace.
+
 ## Additional source entry points
 
 Each source states the exact hypotheses, maps, and realization bounds of its interfaces.

@@ -118,3 +118,12 @@ coefficients or a point-removal implication.
 unit Ext equivalence for arbitrary native module coefficients and every
 natural level, with its original unit and cohomology square. It does not
 assert a lower-shriek/direct-image isomorphism or a finite-trace pairing law.
+
+[FiniteTracePairing](FiniteTracePairing.lean) proves the whole original
+module-to-abelian transfer rectangle and the `r = 2, s = 0` pairing square
+for the stated finite étale restriction and original finite dominant curve
+completion. [LocallyConstantPerfectness](LocallyConstantPerfectness.lean)
+proves compact Ext vanishes above degree two for actual finite locally
+constant coefficients under its displayed curve, complement and positive
+invertible-level hypotheses. These results do not assert the all-degree
+finite-pairing square or general finite-locally-constant perfectness.
