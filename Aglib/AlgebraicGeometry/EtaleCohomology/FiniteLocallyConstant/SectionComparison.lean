@@ -107,6 +107,7 @@ variable {B : Scheme.{u}} {L : Type u} [Field L]
     mark (γ.hom.app (coefficientCover A) a) = Multiplicative.ofAdd (γ • (mark a).toAdd))
   (hc : FiniteCoefficient (representedSheaf A))
 
+omit [Finite M] in
 /-- The identity additive representation leaves the actual represented H1 comparison unchanged. -/
 theorem compare_identityRepresentation (a : H1Etale B (representedSheaf A)) :
     compareH1WithRepresentation b hAB hRB (representedSheaf A) (identityRepresentation A)
@@ -121,7 +122,7 @@ variable {X : Scheme.{u}} (p : X ⟶ B) (o : B ⟶ X) (ho : o ≫ p = 𝟙 _)
   [PreconnectedSpace X] [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
   (hAX : Stacks03AJ.{u, w} X) (hRX : Stacks03RV X)
 
-omit [GaloisCategory (Scheme.FiniteEtale B)]
+omit [Finite M] [GaloisCategory (Scheme.FiniteEtale B)]
   [PreGaloisCategory.FiberFunctor (fiberToFinite b)] [PreconnectedSpace B]
   [HasExt.{wB} (AbelianSheaf.{u, u + 1} B)] in
 /-- The same identity-representation simplification for the actual pulled-back comparison. -/
