@@ -1,0 +1,1384 @@
+{
+  "question": "Source candidate for original Cartesian exceptional base-change identity and iteration in D+ intrinsic torsion and annihilated-ring unbounded range",
+  "status": "v5 installed: two concrete D+ source/elaboration repairs after actual four-root run; native retry pending",
+  "archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/snapshot/agent-c-independent-ext-quasifinite-source-20261027T101616Z/aglib",
+  "archive_tar_sha256": "0a26b49033cb47986944110e352b6c12468d40c058310182d7c5a97aa9467738",
+  "main": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/release-integrator-20261030/integration-30b6",
+  "main_HEAD": "95f48533543152a47317a71334c11993fe33d3d5",
+  "roots": [
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIdentity.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIteration.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianBaseChangeIdentity.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianBaseChangeIteration.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIdentityTorsion.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIterationTorsion.lean"
+  ],
+  "candidate_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/completed-d-cartesian-coherence-20261101/v5/candidate",
+  "source_sha256": {
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Adjunction/CompositionPredicate.lean": "6b797970c0a37ec55ce54dc852e2438634714cb40420ee178ce6d50854f2c724",
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/ExactPasting.lean": "6f85170ec08345b5f95569a52525498d617c508759d11bf13a388c5a5f63cd02",
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/IsomorphismComparison.lean": "ed7ffd4b11f58882f36dd763935d3d0f6e991946cd12f3d9a63c113792c6d8c7",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/CartesianIdentity.lean": "96358f235f806fe34c1b432e3fba7c61a2613432f5292a1ebd5f6dcfd7952578",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/CartesianPasting.lean": "5c880250c8d4ebaa1f2880e5b518e8bc6ad79449a71d3de4f1b149cbff6a9251",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/CartesianSourcePolygon.lean": "888f5a1aedeb1e3c86bb5a6c23091426fc54e83044b60723934f1a9b4a657e41",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/IdentityRawProjection.lean": "64578f113233724d24467ed5bdcec0a166972706e5b384151ad227bf91eeaca5",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/NormalizationIteration.lean": "bd5245dc4a439789f5dc8c1dfbf72102182fe067b4d167617aef4fa4097734e4",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/RawCartesianIteration.lean": "3f92e3ecd9fc91caf3fa182f9e6a165b7a9b713e3150d19d99614d530c1d2ac7",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/RawRefinementBaseChange.lean": "d2fbeb0123243f16a1d1d7d2cf5ff3e973eba4ef21163c53f2ddd3a2760bda2e",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/RawSourceComposition.lean": "95214624ab979f6ec0dd5ee576448c04f37c7e34414e0232b4d8cd87907ef2df",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/SourceBaseChange.lean": "4cdd9faa6428098f0c29ded38ec7f25fd5e64d286e9a3e5cebd1ef2e7baccbee",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/SourceBaseChangeSquares.lean": "d4bd1ab91d770fdc3d235a53a9de943d5c1883eae758e465aaf1b28e2002a78d",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/SourceNormalization.lean": "6cb392b324eea828f17cbdd6cb662996e3b26c16313079d44dbcfd8ffcd674e9",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChange.lean": "ffc777a40e5f10a048eb75aab8ba4bd50899ab9c6f2126e191629cc00981a1ca",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeCoherence.lean": "d9d90e34df0fd9ee6ec7b10480d98cbb2a4abd33531a379f24394a0e5992c52d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeIteration.lean": "a250361abc394b92c91d970c2f43c2b9acc588a89e59526244c9f0d41ca8bc0f",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeModelEquation.lean": "d48c74172648f08b039042d7d86287f2d3c0a586cbded76cf28a22fd199a7e43",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChange.lean": "49b46e1f15de57233c30681f6cf8fdd800e013915c15319c33029ce5a053bef4",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIdentity.lean": "6a64e384e5a23d4e3c050733169755a90bf85a76c2996f0baaa4cb05e04a6d7e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIdentityTorsion.lean": "e3a9a4c03806eea8495578f24918ba33a2145ab9c08942f4a481ccd08b57ac5e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIteration.lean": "7504b88293beaff5ea2095d341cd51953d083adc9f7921e47d2f2780beef40ba",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIterationTorsion.lean": "1fad2930dbc192047a4cfbc09c8460f07bb73d085d3749ee2e0f7fa2a77e51af",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianSourcePolygon.lean": "049a5efc4fbb2fa7b5705878703d16d7c25f899cf38d80999e2c96d2073f3006",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IdentitySourceCanonical.lean": "e63870a0464b4634cb3ec271d625ebb48bc9e750d72730de4f0040c41dd5637b",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIso.lean": "f13cb589da842e070d1d6c8e1a7bfc55a5d27c5c88c60b47fb9fd7b7b1bbb9f6",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoBaseChange.lean": "3d9b7ebd98f37737616978af0709d8d15024037d971bcdff48b43a1bc1f711f4",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoComposition.lean": "447c739bddee7c25ac59d6d9655ee72525d74ed2a61203addeafe4dd723256f7",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoCompositionCongruence.lean": "9dbc5c84105e74a0c15d1389e92c3116209650d0bfea88c802e15b7a8092877d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoRefinement.lean": "c106fc8c4a70df85f46444c59ed5c4c8bb807bd796bd0da761059f5da3b5db7c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeCompatibility.lean": "ba8fa6e1d1b46996100a369b33118917b2bab7d6559e3afa4c566ffe555e8272",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeDiagram.lean": "cc5909206a8ae3c4b33b59f48cee1c1a5a3e176a53460a044140f42b52632049",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeIdentityTransition.lean": "9f15d908ccc7ef5b735cd47fe48a9b3855590071d8597cfa45e424b5085354d0",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeIterationCompatibility.lean": "4c77469120b8cb65f2f8f77fd09d0ff48a01476c4d44090242feee459133de3d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Densification.lean": "d48991b20ed6a8b5c800259212bce6d455ce898a27ea1bab29bc45ccb71b2a46",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/DensificationNaturality.lean": "4d23130bc04925d4c7f9af88bf476c871fc0462693e8715fd6110ba99643ddf9",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/IdentitySourceModel.lean": "1bf71de7b4bac602f94247747be9cb53547d93d2fc7cfe85bcf35c2993c769e8",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/ModelComparisonCoherence.lean": "8674cd267c6717cb84d2d42a5461f679294d7386ac7687a7c5dffb6233ca86d4",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChange.lean": "b8230d49feda69fbcf0e9f22d9cd1db2cd7296258c4cfa272b8d2e4080893b68",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIdentity.lean": "029978f82ad4a59bd2d68d33be1219ca90a276f35c383beea76dc4ad548725e8",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIteration.lean": "dcc04fda7d4bb60bad34fcfe1f992bddb9f55dc240f6bfcf07697a1a143df7e9",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIterationComparison.lean": "833e325e6746b8170aa72b574721d4b8367b1491b98609269bfcdacc38060d90",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIterationPasting.lean": "8adb844ebbca8cd007dbce37d54b92b674e250b7482590ce7a888c0413c8bde8",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeNaturality.lean": "8ce096ffd990b4ccad9969f042a45a6a99adde2911121f1c7c5ae9c34a418a8a",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedIterationSource.lean": "0da288f5035e62ef791cf7b6bd99ce157c35b538e49f13914257b1a73a25bb60",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedSourceBC.lean": "e74a93d5a11f53a26ad682f9246b3d7d00d4a1c35a0ddef1fb3d076e861ba849",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChangeIterationPasting.lean": "a3a974a2db7a99dba23c3dea9d35113ab39a08330ed2d0f6f70a00f9c7dde14e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChangeNaturality.lean": "985047823c4593a26e50b6fe5ccf26862c7cc6f7ef4452bf654f87f01f9a1521",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawComparisonCoherence.lean": "a0fdcf14eb397eabc49d81884a20898f841d880cad4582b185583d413335ffac",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawDenseTransition.lean": "415a346c0379c386fd149bfd05c9c92edcb4726122c8f7d0e5ace846ce94e0ac",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIdentityBaseChange.lean": "7844cbe2f998c5ad39597fe9411e756246a5140acea4a0ac2f09703845235ea9",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIdentityComparison.lean": "89c79ddda887ae558c6c3ae97eaa9b071d924d67c21bf85c4b07b59e42ae563f",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIterationSource.lean": "c218fb18ebf64eb14f28295471aa050b92691d2aa252d19ad44cca3244738f50",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawRefinementBaseChangeNaturality.lean": "c354d2446e0a96db8b408f73eb084e44162780e024428a6a6acef33191a5c18d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceBaseChange.lean": "fbfd06c46ac62a91b907f2ad6d1ebd740348b23c3147f991bd114eb694895718",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceComposition.lean": "943e77db89947fc92959024b4588f4ab75773b1e5b203386ef97619c16494b47",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoBefore.lean": "dd262479ad1f9d21eea038ebd8dc90255d864914b185080bd7b85171127b19cd",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoExchange.lean": "a283f5eb518bc378c0fc2358309d899775fa45cd71eeb1254af4629b46cc416b",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoNaturality.lean": "73b382702678416b2cddef7daad75bbd97721db2fb28f5c1b3fe9de5069f2b86",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoPasting.lean": "6bf4da6f9e8ea86e6cdecfd88e9c7b3586621c03f866a3cf50c66c554f7a1174",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSquare.lean": "99d2801d5d27ec22ece83d75ee94cbc3fe77df7b935344e8f4304d61ef8dafdd",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSquareCongruence.lean": "ef803e4c87ffa717296800370f1160a92b101b599b5a6fdd76aa2fb03d60946c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawTargetIso.lean": "47799a9dc939e7d6e8638e58ad2ec1792722eb1a9642964470085af7b9eb2536",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCModel.lean": "c66fc207afc8d1b646e1bfd9fefdf5dccbb326158e6e55d1ec83754c47d64f59",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCNormalization.lean": "abea2b8791b05d362e5c34e87b3ab598c7b06fab0e936ab2066a64893e6bd44c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceCompositionModel.lean": "e72e6303ffe39f61ae3d218d5c360c705e071b3df85952f7946622adf2a77353",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoBeforeExchange.lean": "5e6ae021a798955a768ee1909d6386cf0b709988dd7f38d64c99d05e86af7967",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoBeforeOpen.lean": "ddd8f9a07ffcb76673b32cd7232fe4c4d9f50405f64f45cd36e1b5ec3bea0fb7",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoCompatibility.lean": "92aaaa83316f8031a7b9cc336831ed29c3ad7ed4c38d3fe7e2c5c992cda74ae1",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoDiagram.lean": "18c3b6391aa0926c88611928f1aece8a5e3d2085d7784ddfdde812915e914bc9",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoExchange.lean": "0af703eb27d068e0f05cef48c149ad84c2d7501955818855c93306ed1935d5ed",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoMapPasting.lean": "1a6e38a18c502e69455a09cda6d8b9bc045646295f464d5d1599076e14186d97",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoNaturality.lean": "bc0657f6021ff8fdaaa68936bd512a2effc225fbeb196b35a36339c988cea8d7",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoPasting.lean": "2346aa6c451a55519b37e352b1e8c0f9cd6f42302396772c964dfa55d1c16f41",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/TargetIsoBaseChange.lean": "0cd8838cb019d66bb521c26625ded410d49056524d2cb064cda4113a2bece65a",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangeIdentity.lean": "1cd7e2dcf67014882f460d42347780394d6ce97ab5c14cafe23335c9eee747f1",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangeOverComparison.lean": "0d96a2087ac8fb26bd71426b7c65bbde79c7056b72c8cbc10ec11af1075f582c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangeOverComparisonEquation.lean": "4084633bb4b9dd46e0fe38377930af12a2dadfd0db2b24eb0fa545f7e4b174a1",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangePasting.lean": "122146b62e7bb0b05982325efdb343c69cb072dc045a6cc05e9bd46a48ab130f",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CartesianExchangeComparison.lean": "76961fe60488293dc739c557264e4508a7941594afa8cb872872de6399a01833",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageAssociativity.lean": "a43cd302f7772ad54edcd7a54c64084cb1983d0f83e943db8c5d158928aab145",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageIdentityCoherence.lean": "b0d2198c9e280f9f00dc2dcb1c891fcf0664a33ad6b5211ee7221f9f6bb70bec",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionAssociativity.lean": "2988cd3360a6a8ffde8a9dca96eef6bef3d32e8ac26c8cb7922a5995b149f312",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionCoherence.lean": "aa2639e008165b930783b21cc391e939c76465ef9b7a3fc1c19f4c43618387cc",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionCompositionEq.lean": "63a7cbace2743aaee222c922e3a05abff3bba6b190a2991e418ac57925f988f4",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionForgetCoherence.lean": "a9e1ad3a173e4d488bfb29086527e8c33c1eeed3dd9e9655069b018668a9bf9a",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenBaseChangeConjugacy.lean": "206561a370a676ed30a54bf834145751fb39565bb50318377ba03f80173b8917",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenBaseChangeIdentity.lean": "19564794d0b63cb16e19844c665529275b048d5caf26bd1a31a07bc38d73f652",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenComparisonCube.lean": "f07b98bb69150f2025bbaa54df67fb24aa9ea58475942886df830e1b4825b430",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenRefinementCube.lean": "6ccf67c8cd29d8f6d77b6bcbbf4b541a60e30a0057dd3a0ecf16c90f5b34d55d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperCoherence.lean": "df4018e739ed99f1e5c33367753c01153949a746cedc6b7cb753f80fc384ac33",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeIdentityTransition.lean": "d0d29717cb6086aa608d9311d65fca36df8f37b082867ab357a727e26b11b5b3",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeIterationCompatibility.lean": "dc0d3e7ae27544592c791939f11a588778ba3f64599e2938419a142fb0e0d437",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeModelEquation.lean": "dbae2458676ca9e857214bf46dc912412c01c2f343d71f16da901619ab7ee76f",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianBaseChangeIdentity.lean": "0b429dfae41af0504f495abfb5c3b19cd9bec17f36cb88516c32625f185b2c07",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianBaseChangeIteration.lean": "2a6b8b915704e582982dd9cc21fbaba1bba64e8cac28665f7612a7ed73d8304e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianSourcePolygon.lean": "440c735ff9e324926c635ae01124013a69802b54509b5f4f2f8aaf97585c3270",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalBaseChangeIdentity.lean": "7bd85c89057cec5e9344b3b462c54d29b037d5aeb435443990fb001dfe8bd224",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalBaseChangeIteration.lean": "23cd2719b7f509ad12e6539ea5c5de958a6cef4ec2fe62a8c9d67aaee9a3b553",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/IdentitySourceCanonical.lean": "9f6d2f8f8d6852d48131f6ffe9fc7d283932537a59808010ade8cb7693ea09bf",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/IdentitySourceModel.lean": "c394f505298016cc1af1d6722805a8b154ea767864d5e1abad24cefd309a5d48",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/InverseImageCompositionEq.lean": "49a66b7d9d0e5e9f06c3910082950d0d32b1b157a7bbe000f57a0d3f09052ecc",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIdentity.lean": "8095bb99dd2117e366f4f742b4459ae9a0881fd316e60b43928ee93b87d3909c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIteration.lean": "192e7693ba5a4643ab68f40ce3d907e15c990aac442b2536862c868f9d7bf2cc",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIterationComparison.lean": "2a2d10145f9e666266f0f48c51fa194895cf9cb602ebde870eaac6f20365da42",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIterationPasting.lean": "2eb57684a61f0d28351ac46e8d9152060189290c0249786066d083a1a752885e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedIterationSource.lean": "997dc25e07138f787030a5153c56c5cd96ec7a4c99aec44e02b25df757b214f4",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedSourceBC.lean": "dfce4c1015c53d4ec46f1471df85f86ff6949fc8c4067f3349472302eb6f2598",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawBaseChangeIterationPasting.lean": "e07c1cfe07d0c8e1d50ac815d788277435b82ff8b950a928e4ed48e11e170132",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawDenseTransition.lean": "ccafcc6bb8fe50ae0351984847666eb510a96d0400c0afe1b2cf8c44c43c5f1e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIdentityBaseChange.lean": "7c03b4699bf6521cf996bda267c4f883245bf0a2169cdcc0373f813f0a42d9da",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIdentityComparison.lean": "83f61a7a5c5f36700a59f95da614547efc505379eda54003f6128f539bbd9a15",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIterationSource.lean": "7666ffb6d2dce039c8c94214a6cb2b32e238bd68499c4801d83dbb55175a2339",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawRefinementBaseChangeNaturality.lean": "a660797c6007af2635f56c273ecfd87635401975c1341c54379f2606e7eba94a",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceBaseChange.lean": "d908d69a46d804d545243f1fceac3b24733681d5a231bb74bde1be7a34e6df9d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceComposition.lean": "4595636658b0999195ca1f0ccc4d8efb482c7f979ef5d2fb013993ae985ce0b0",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoBefore.lean": "dc82271ec2584afcef964c2e9290bd748b85a79f6c3f5a83fa59c329424a2c28",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoExchange.lean": "fad5c48f9682c438e844aa002533a8452ec2e83e6cdcc093d8d597723d6cc49c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoNaturality.lean": "ec780177483995774b3a7bce91eb3cb50097514e25747ef6ec539ca2c84beac4",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoPasting.lean": "129375f2d866cb34cade906e4c9bb5ccc34ef04036f88e83978f663b0837754d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSquare.lean": "26c3c8c4d389343ffdf580dcf762897158f21f6197daab0cfa5289094d1ab302",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSquareCongruence.lean": "67c45f24a6e51cd170145ef45696dc1962260d076a9bd66c15d0e758873eeac4",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawTargetIso.lean": "3c68f5b747f4c904309dca06918fa093c70974a204b2a83d63af08b8ae64c97e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceBCModel.lean": "a36f21bf2eab3f8e8a71fb4168cbbf032848b5ff2c2e3a0ec8804b681cd84fdf",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceBCNormalization.lean": "c998d0327b417da4ae70e8fefcd74515e072cb88a0a8c115dbe225db0a774fa8",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceBaseChangeSquare.lean": "b0ffb99e1bc083a559817c7519c5bccaf7a1cd1886e7f309e53b70d903e5e1be",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceCompositionModel.lean": "3cc45b2ca3b9ef86df4e2f216380610f99ec08f28ca9d52559189dc99b422d50",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoBaseChange.lean": "935ba5823ef32ba9332e4f2b40f9ad060208bc6b137494e0b26a2dfd603477d7",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoBeforeExchange.lean": "41ce912e0961117c996bf4e9d01504979a609a9f65982069cd70fd1825d947e9",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoBeforeOpen.lean": "460e6cdd22af52af984dc18f8d1a9893581d626a8d0e86b334d325ab164e5c01",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoComposition.lean": "4ef4c4a0952eda825afb3203b90dfaedb2c54da775cb4636c721b58ce16681be",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoCompositionCongruence.lean": "fbbd7c1edb557eb4bfd7ac7a27cc29b97d46f19747442fbdbb04a564b99da98a",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoMapPasting.lean": "dd7bc827ac375a97cf7c28f9191a127d3c8be5cac06960061ee197214309486e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoPasting.lean": "1a269285c8481298fd74cc5201e0c750717ea680fcd4752df1771e0345fa33e6",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoRefinement.lean": "a0404509194bfacd9d2cfd93e1b3d0f5582bdf506237605ce00976fe3c4fdb7c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TargetIsoBaseChange.lean": "8e1c1fab8458cd90193b810c831b8683595767199deebb0d84b39e3dd49bb2d6",
+    "Aglib/CategoryTheory/NatTrans/CartesianSourceIdentity.lean": "42b1214e08ca6cb16984dc30f57af82728c2e3bbd6793a607551c21e86a8c79a",
+    "Aglib/CategoryTheory/NatTrans/CartesianSourcePasting.lean": "326f7e8dfb9fd4e4179b56a9d25dde1c289e501a41e9d019425a71fcdcced0d3",
+    "Aglib/CategoryTheory/NatTrans/CartesianSourcePastingConclusion.lean": "56484846828596bd0992af32820ee6df561417c4cd7ea5fd5950d8fc9ebb96ed",
+    "Aglib/CategoryTheory/NatTrans/CartesianSourcePolygon.lean": "a62e8cb4b25190eb36b1d28734ad55eb8a5a4d4e5c4abaa86db42c0a416bfc91",
+    "Aglib/CategoryTheory/NatTrans/CartesianSourceTargetTransport.lean": "1aca26f9282989058adef341d133b2721266aedb79a94e9340c1d0477b36e2d9",
+    "Aglib/CategoryTheory/NatTrans/CompositeExchangePasting.lean": "da42afa1de95e2eb57bd80f706386931a6370e9f62dfc60d340d417779c9bf3c",
+    "Aglib/CategoryTheory/NatTrans/CompositeExchangeRestriction.lean": "e4bc2b31ed461ffd671070430da4a908f129e03c289e38fc8b01d609bef51dd1",
+    "Aglib/CategoryTheory/NatTrans/ExchangePastingTransport.lean": "8c8c99c5d5b94774fdba8d2350eb1f48cb20e2881609249ca3b11430f3a40e62",
+    "Aglib/CategoryTheory/NatTrans/IdentityFunctorNormalizer.lean": "944a5a1b674e97c6321765e6d524bb7a4d78e300b0a2992beb3b0413a791bb80",
+    "Aglib/CategoryTheory/NatTrans/NormalizedExchangePasting.lean": "c7614de190ba561d3b56dc31062110d15e7e8bb8a39b6033f860c87497750adf",
+    "Aglib/CategoryTheory/NatTrans/NormalizedIdentity.lean": "5e0999d04e486f02342015de3db106ccdf22b4b6e1b671153e1fe9dc21bdd3f8",
+    "Aglib/CategoryTheory/NatTrans/NormalizedIteration.lean": "e44a36b8ac963cbb373c2fa065ee6cf1cf2246933e24fb4fffad6fe15e91c87b",
+    "Aglib/CategoryTheory/NatTrans/NormalizedIterationSource.lean": "1ebc5f014f99cda563dee644d4ab43661698426694b8c2c789a366f5ad1d8015",
+    "Aglib/CategoryTheory/NatTrans/NormalizedIterationTransport.lean": "6b87fe6d700faa791f82fbbfb1e5a4a3a34e46e9f54f19cf11d5f0f47377f1cf",
+    "Aglib/CategoryTheory/NatTrans/RefinedSourcePasting.lean": "17206637e9d0e35761bcf75298eb791ca3639471278fb8dff0efcdbe40681969",
+    "Aglib/CategoryTheory/NatTrans/SourceBeforeModels.lean": "6359d8e606a9ffbfec61b920ad9c50affab294b28b8967c3b59ae7c329250d70",
+    "Aglib/CategoryTheory/NatTrans/SourceBeforeNormalization.lean": "1333dadf670dce3c8f2505b9822ae58ad505927e9c2f3d0ebe38d967922fc7e9",
+    "Aglib/CategoryTheory/NatTrans/SourceExchange/Identity.lean": "829da81886c49b905075b12f366f81427de2be1639ffb8dcb6b55395842341cf",
+    "Aglib/CategoryTheory/NatTrans/SourceExchange/ModelTransport.lean": "742cdd71ed0782f599e8a8aad37081ce956e556074acf0bffa7c7ec70bc0726b",
+    "Aglib/CategoryTheory/NatTrans/SourceExchange/Normalization.lean": "38357d1aed9721cf6926369c1f8b4546e73f4e432c193820d5b28b882d326dbd",
+    "Aglib/CategoryTheory/NatTrans/SourceExchange/Pasting.lean": "26b039f9a294dee238a786078f9aced5f5b4a25296dd59468bc1e159d41a81e8",
+    "Aglib/CategoryTheory/NatTrans/SourceExchange/Restriction.lean": "7fcf118424a839472791c28834cae1063f4f2b1e0b4baf110ef58cd041bc643c",
+    "Aglib/CategoryTheory/NatTrans/SourceIsoBaseChange.lean": "f7000bd0d86892dbacc411cc84538633f0e1f9a77ffacc2b6a02f8a22001c9f6",
+    "Aglib/CategoryTheory/NatTrans/SourceIsoBaseChangeTransport.lean": "6b554c7f92ec50a63aafe80337ddb57fa89cf5b7743466a0e57a8bb3ab801a16",
+    "Aglib/CategoryTheory/NatTrans/SourceIsoComposition.lean": "6e621ecc0d2767930c16aac714fe7d7d2c546568096109d2e4c71df50bcfac8d",
+    "Aglib/CategoryTheory/NatTrans/SourceIsoCompositionModels.lean": "12658697493f6d3297fa1b80c66ba452d824a3e01a204cd3d430104b41564d2d",
+    "Aglib/CategoryTheory/NatTrans/SourceIsoCompositionTransport.lean": "c704d27e13367d38d3fb05758b3a202d71d5cc11ef4b402c00f3de8960d25c52",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangePastingEquation.lean": "3b14cd90ec2432799b489c4ff48c8651c6f41a6407b007a245fa1b2ec2e22aeb"
+  },
+  "provider_sha256": {
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/BaseChangeIdentity.lean": "e9d072561b3a0b8c3278cfb79e4374d0f419d4067670ec8e891e836bc8f623c9",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/SourceIsoCoherence.lean": "5a38d14a73d76e7d821785b66c8cd09ad2d124fd82f6ac0c90dfea9e043f566a",
+    "Aglib/CategoryTheory/NatTrans/CartesianSourceExchange.lean": "529665d332adb865d811f583f9c69ab895809bce3cf5a8c291216699d0e9720c",
+    "Aglib/CategoryTheory/NatTrans/NormalizedExchangeNaturality.lean": "070f857a22d613eb8b7d90e4cb2f8463e17db499c9abb8104d8c9e3fe429905e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SuppliedDirectImage.lean": "db03d23b2c8dd87d3f441a2cf3613b911b459268b57a1b3c3280ce55809e12f0",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/BaseChange.lean": "0da7181572234a1eac9dbc3f804d88663727d908ebcd7712e3317634762a460f",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/Densification.lean": "b4d390faa16c378f6a80e2c7f87be368a2b7fa6350afbf4526b01847a66c2829",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperIsomorphism.lean": "c7fc6386705365d09ecef1f9d77b7422e6be02a0acbf1605e4e9068b171b16c5",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/ComparisonAlgebra.lean": "71f46412064364330efd4c621f77d55a80a5c2be852e94d837b4468768a9ab16",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CompositionCoherence.lean": "5ead6d087ea70942197fb6832604ffc28fd9b8c2df2fec69578aef12cbc8ac33",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChange.lean": "03abe8df12d495f65cb40d9d988eafa8df83df56f5d57135d3a3ebc71cf6dfa4",
+    "Aglib/CategoryTheory/NatTrans/CompositeExchange.lean": "e21d1698d422ecde201a9cbd86085f2cb1000787cf79e5ecfe081da1dae8bb88",
+    "Aglib/CategoryTheory/Adjunction/UnitComparisonNaturality.lean": "d2f75a063cc7f23864084898725fdc66f5872302687b3cc8d7417f5e06f66202",
+    "Aglib/CategoryTheory/NatTrans/ImageComparisonBaseChange.lean": "e54c7955adde14e3819c503f8835951b31c8203194ed1d038616396465286717",
+    "Aglib/CategoryTheory/Adjunction/OpenRefinementNormalization.lean": "dc96a0eb599d958fabb66c65a58fc2fb208ce089875ca3ca0a299de9e02724ec",
+    "Aglib/CategoryTheory/Adjunction/TwoSidedMateIsomorphism.lean": "d42278b4e2536470a575752dcb869ba213e77aca896a059b397233b6cb361a5f",
+    "Aglib/CategoryTheory/Adjunction/OpenComparisonPasting.lean": "c5f8c7fa222e5cc93f583e5c2ee4d250a69ae914178b9abe7e3a1953ff692aae",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenBaseChange.lean": "de694f1a924d56d7c65884b8a3f4e86b4e668321316c49bdbc96d7ad126cb85f",
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Adjunction/DerivedConjugacy.lean": "1204b66117f50e41b6be15295797200aa0f852739f5ffd3498531d655c9cd138",
+    "Aglib/CategoryTheory/Adjunction/LeftAdjointComparison.lean": "1eaf563897980ccd5ecbc3602b9501f7de9c6d132da6a051c35775bd823a60cc",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChange.lean": "d4e4c03140f6d517bb7d3df038a919516044b56d2038f39b394906a6403dfcd2",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleCartesianExchangeMate.lean": "e5f8b71b6957f948865c4ef441268bb3fdd95a6e5fd3107e9936784a7f9adbbf",
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/OriginalUnitUniqueness.lean": "c2fdfae55594645dbf9524b8e37de599ae0a461d18d409c6a9f25bf58d6695cf",
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Adjunction/ComparisonSquares.lean": "b511139914ba54884365bd2b3ba1afa53287aae7036dcd1df35a4bf62602262d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleExchangePasting.lean": "b71d39351f26e06e0990457c71e08e2c4796421fe8cf0e1d4d6ccf8b32eafa67",
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/ExactSquare.lean": "f368c31abbeebee8bec3ebcc6fc49e0e7c392763825f1ead0dfbc0c22e987e76",
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/SquarePasting.lean": "6e7d25241eb25220f4131f95b9a4c23f293467a0b73776b6362bce130600ae33",
+    "Aglib/CategoryTheory/Adjunction/Mates.lean": "0fee0f17837c36d278638319bbe68cc6e9d4449a75cd1de5adb780f5d1e67f4e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperComparison.lean": "f54d82539419847e22730133f71cf369ca3a9eeca99bb7dc1748ab80b6f9f29f",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/Composition.lean": "0b3f1b019943b4000d635343b14af905b9c9eae359f0066c1f5577b7e1cbb148",
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Adjunction/Naturality.lean": "0ac9825d885f863047fe38585eeab4069e8e12ddf0de5005ae2c89b8c65d4f21",
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Adjunction/IdentityBranches.lean": "25660522cb6728041516af97351295a0ac22c11e97cb6396110f5e9d2acbda9c",
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Adjunction/TransportedComposition.lean": "2eecd2e5ed2c519e9178710fcdaf1029148a55a54a8b47f252f7cd5170a1fd47",
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Adjunction/Transport.lean": "709b028a0352cae6ce7e4250f138057815a587855497f4e169b8dc2b80416b1a",
+    "Aglib/CategoryTheory/NatTrans/OverComparisonEquation.lean": "ae5b8a7f0202d80f91583d741f157f52bd05dcc54d3ea6efe0ac4352351588bc",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/CartesianBaseChange.lean": "4877c9a43f4af4cbf86bcb490edff7213c6af0f96e346ab2f84ba0295dfd0102",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/PullbackCoherence.lean": "e598a3caceaad383252c3440a34503d0d1f3512b90ea1281ee890f6c5c1da79d",
+    "Aglib/CategoryTheory/Adjunction/UnitComparisonCoherence.lean": "b3f3843216c0b72749e20b06784865cae3cb47c13b47a23b700b084494197489",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/OpenSquare.lean": "98621ec0a473ed07f5c550500077d0802131d7af3b7208db5a8991748aa8c52d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Independence.lean": "c9798072b668f24f658a1b1974ee54ca9d30aaa68bf33164186c030d041932ff",
+    "Aglib/CategoryTheory/Filtered/InvertibleDiagramNaturality.lean": "49b37f531768b82334e599e91b08ea8641524d06267b5b91106139307294edda",
+    "Aglib/CategoryTheory/Adjunction/Mates/Whole.lean": "0e08de18803abf6008e23bd2593d39759fbce78add02965b06bbddef61dad6e4",
+    "Aglib/CategoryTheory/Functor/ImageComparison.lean": "d4019d3463d474beab54a3388f9d4085a1833c97d8ebb430df09fb8310b86194",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/SourceIso.lean": "2982aaa92dde4a4b87c0a96809e1283ffa84b20408392b87fa48ac4b8d485299",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Diagram.lean": "0bda98be195f04a520fa1bd9a57444dce7d4202ed17ae056dacd8558ee59481e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsion.lean": "adff86560b91fa63972b7d174bfaa6dfd1529f66a9a76688f3af0b0cf1e5b4bd",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/FullSubcategory.lean": "c57ad7ee73bef89de88e001912d18827f94d0a0f1821d839d8c3b9dc7dfbaa15",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/BaseChangeIterationAmbient.lean": "65de5129da941cbc0cf1806262183e8c630ad4f177a318df57ce8329a79cbbb0",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/BaseChangeSourceIso.lean": "691548df0ca82d9c0d226518901d30603f6ddf5c7da2dd706d11f00e40809287",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/BaseChangeIteration.lean": "5a6b95eb346f0d0c095ee60b784b3646008f6405d7c678c80d0a454444b1524b",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleInverseImageCoherence.lean": "2bc79c0b0d82e84ba4131c7ecdc6e2cbe86f6a268ce1d609e7c64e8d406db777",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianBaseChange.lean": "2d14351c1e7c75e427f9c1827c510db13f9db35fa6ff34ca7a697e4ae09fe9bb",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalBaseChange.lean": "348ee7d3b469dea946c16a1985574aae7cf713db2b9bb8e8cd4f7dd48a97b346",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawTransitionCoherence.lean": "385a6d579814476bc181d746fcb34a8251c9e6980f26c179c687a4f82377653e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/Densification.lean": "2f158bc7685463be61ef46dc83eb6bc0d71f242a20e7441c33a470ee191a785a",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RefinementPullbackCoherence.lean": "d1f594535699ea2c4d1a4fabfcf776e2ca1146cc5d527e7fe21373387150e61f",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoExchange.lean": "53a135861ae539f3204401b6fda6e9404b81752ac35d1cbd4c6dda124ce4c375",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawBaseChangeNaturality.lean": "ea38e8cdaf7cf9e15a80b3d7c7e3f4fcb4127120266c0ad7903722a90144c8f0",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChange.lean": "76ebbbc7f38f11d0ada4587c09e040140c889d1a2483399173e1b08054c37d30",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawTransition.lean": "7a8be9bca60787e8ed0b4f08a798f500a00c0c20a23107c4269786636e265a99",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/MixedModelTransition.lean": "4880693b795bed696877fd46e26fa529a312d2be682bd5ec6386a9536b1b745b",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIso.lean": "17c427bd6c1649cf1b45c4c8c6ca73a43688d5ec42f6f67e74cf3e4902dc6372",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawBaseChange.lean": "192664a04ba473d05123c22b4213c3da6f290cdb6ff7a7e5ee8530563ce79722",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/OpenComparisonPasting.lean": "6a350a3224fd25ae7039eb2fd2d23688b5b56cb8cb2636f6a0437cf70e18ac14",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/StructuralCoherence.lean": "88207151475dd08862a8728211da77ebc50a2dad034e2ef152020de2d808dee0",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeCompatibility.lean": "763ba44fe74d4813828cd9111c8ddd8d0b00845350538621de323fbd36ab92ff",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoNaturality.lean": "9b10e6557d12517c39c10f091ffcbdcb6041c5b6078555222f5db6f1aa329dc4",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/StructuralComparisons.lean": "61ed1048ba87fd99304d3e1651b5798948c225f1eda57f2c7e797ed43dfaed6b",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompactifiedBaseChange.lean": "3a49f37cae83dd278ec96ef5ad30f91494995d0467f70340fbcc84c5193e7884",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangePasting.lean": "5cf7a82935fb9865ca1bc99d323d55185841b300b8972ef35daed61a0e0345de",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeDiagram.lean": "52bbcf50771b6c0a5d212ca1fd67ca3b365670e590909f8a727a838e16d4705f"
+  },
+  "source_origins": {
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Adjunction/CompositionPredicate.lean": [
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Adjunction/CompositionPredicate.lean",
+        "sha256": "6b797970c0a37ec55ce54dc852e2438634714cb40420ee178ce6d50854f2c724"
+      }
+    ],
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/ExactPasting.lean": [
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/ExactPasting.lean",
+        "sha256": "c420086a9e4b620be154c07625f0e6851d97ca7c86f66b67fabd83b505b7ab67"
+      }
+    ],
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/IsomorphismComparison.lean": [
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/IsomorphismComparison.lean",
+        "sha256": "dafe7e69e00074e45511e3a3af04a1f9b8f4a8dfa2ba9a40aa327d054bbbc1f9"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/CartesianIdentity.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIdentity.lean",
+        "sha256": "40e218d2421fc71190a4c06b203f9d8f39a7451f28397883126f2b77b3ed8622"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/CartesianPasting.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangePastingGeometry.lean",
+        "sha256": "5c880250c8d4ebaa1f2880e5b518e8bc6ad79449a71d3de4f1b149cbff6a9251"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/CartesianSourcePolygon.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianSourcePolygonGeometry.lean",
+        "sha256": "e2317d6729bcf312f35620db5398224ce056359b19829fd71fd1426db04f2bb6"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/IdentityRawProjection.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeIdentityGeometry.lean",
+        "sha256": "1d602ddfc46721808dd54cf3aca9db42f73fed80423e193f5afba3aaa465eb33"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/NormalizationIteration.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIteration.lean",
+        "sha256": "57049b0ee7b3858182aa6326316d85b9d816691acabc4549aa7c6899bd96dc07"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIterationComparison.lean",
+        "sha256": "c1e26afd0bd8a823ca38a2b87e77f13bb00d0bae949401e54f21b76d508d04d2"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/RawCartesianIteration.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChangeIterationPasting.lean",
+        "sha256": "4bd7360116d84838b32d1c9bdc04817426d69ee90bf094aed41181cc04cb4e96"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/RawRefinementBaseChange.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawRefinementBaseChangeNaturality.lean",
+        "sha256": "390af3ec171ee86e4d680a2faaf2b51bb193139fc6740704a66664618fcd1305"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/RawSourceComposition.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceComposition.lean",
+        "sha256": "7ea836b6249175d6bae9362510c146a952ab4b0eac41d5bd36c10c2d81708135"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/SourceBaseChange.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBaseChangeGeometry.lean",
+        "sha256": "06bccffc679a23d6a61488ec502e496ab06ddf4f1cc609fa1e83458890273262"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/SourceBaseChangeSquares.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBaseChangeSquares.lean",
+        "sha256": "4c84bd491e97376dfaebb69fa0060b1ea5a7f2d2978c97cd9cbabd7a02a4b446"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/SourceNormalization.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCNormalizationGeometry.lean",
+        "sha256": "f968aae949bf2a9ad058e6a24473cef4befb476f98ae5ca4becfd4a761d55cbe"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChange.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChange.lean",
+        "sha256": "e02e1674abc90e8b75afe8e5037bf328b820766278a43d2f6a9902df8f4e141b"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeCoherence.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeCoherence.lean",
+        "sha256": "81b7073e5270505cbe085d6fedeab4ca9c324ff16f6a9c371a8c71b32d84140c"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeIteration.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeIteration.lean",
+        "sha256": "f0cc3a245b798dabc5fdffc43f1879e7ac8ecd16a1c35d2820b8e4ec5316d4c7"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeModelEquation.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeModelEquation.lean",
+        "sha256": "202baf80efcf6d0297d311893c09d017b7c79ed5081a692adbb5ea5d469beb14"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChange.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChange.lean",
+        "sha256": "98e2dbcf7f0a702fb5b7b7947b41b73fb555b90236904b6bb7495d1db8d45dcf"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIdentity.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIdentity.lean",
+        "sha256": "40e218d2421fc71190a4c06b203f9d8f39a7451f28397883126f2b77b3ed8622"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIdentityTorsion.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIdentityTorsion.lean",
+        "sha256": "a20e91afcff1873524bf2637ef856391a6dbd5d6b26b29c9a50443bb280acf6a"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIteration.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIteration.lean",
+        "sha256": "3957d957712d96b8cfba2cf942f20de746df3d314181b0f179707fe10497066f"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIterationTorsion.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIterationTorsion.lean",
+        "sha256": "c87627d350d543e2f673c076e6feb6861494632285a602fafeae785d0c6601ad"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianSourcePolygon.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianSourcePolygon.lean",
+        "sha256": "58876d94c64b6c4e1e7654a236481d2d2044910fa95f848f5500bd5e807efb7e"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IdentitySourceCanonical.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IdentitySourceCanonical.lean",
+        "sha256": "a3835aca025b30305e27a6da932e550645d8a5e5f9ff18bfd42b89cd8c1f0f65"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIso.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIso.lean",
+        "sha256": "561eab57c7e9d923210fe9ef5ec324ea4527ede9d7cd417d923c65e028d38f58"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoBaseChange.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoBaseChange.lean",
+        "sha256": "528f171a05d3f58d76a0d26ceb6ba452d9b72ab68570d42bbbcb93e46c20e7e3"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoComposition.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoComposition.lean",
+        "sha256": "af5afa7702e3a2ff84f617d1f03807f954676a636f7d56112013b760d2296b1e"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoCompositionCongruence.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoCompositionCongruence.lean",
+        "sha256": "9dbc5c84105e74a0c15d1389e92c3116209650d0bfea88c802e15b7a8092877d"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoRefinement.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoRefinement.lean",
+        "sha256": "8db0cde5d9f192fa85d2e17e6748881f5c3fac3d0497c9c3aa06076e6a78613e"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeCompatibility.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeCompatibility.lean",
+        "sha256": "02be3b0367c16c09872bf2be8b55d31ce64eb22a9048cfe35768688efd44d6f6"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeDiagram.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeDiagram.lean",
+        "sha256": "fcbe1d4aaee973dcbe56ca6bf2672521ca0ca40cf411e2edf61b7ac7ecada66f"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeIdentityTransition.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeIdentityTransition.lean",
+        "sha256": "1910ac0dc3afbcc6c5bb7a8cb29dfe4202f93817c3ca93ca317e1dbe4b702997"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeIterationCompatibility.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeIterationCompatibility.lean",
+        "sha256": "8864c26a97eba795cbfa10b4a07a89acd757f175b6268d2c019c22d9e71eba31"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Densification.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Densification.lean",
+        "sha256": "dad8cdad171172ac33f462c2118dc722f3686fe796c9995e5845c98bb10ff06f"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/DensificationNaturality.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/DensificationNaturality.lean",
+        "sha256": "4d23130bc04925d4c7f9af88bf476c871fc0462693e8715fd6110ba99643ddf9"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/IdentitySourceModel.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/IdentitySourceModel.lean",
+        "sha256": "8e23947023d7fe1320385b4490127ee63ea1b0955f07a13d23a0b4ea25618891"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/ModelComparisonCoherence.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/ModelComparisonCoherence.lean",
+        "sha256": "2c2ad31cd111723471ba49563a738bdd9110e86df62a7a99ed58243fd02751a8"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChange.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChange.lean",
+        "sha256": "b8230d49feda69fbcf0e9f22d9cd1db2cd7296258c4cfa272b8d2e4080893b68"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIdentity.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIdentity.lean",
+        "sha256": "08787e2b483a4fea0d29b24bd7610a03b1c2f8aeb9ca20ab699852e82d1bfe75"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIteration.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIteration.lean",
+        "sha256": "57049b0ee7b3858182aa6326316d85b9d816691acabc4549aa7c6899bd96dc07"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIterationComparison.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIterationComparison.lean",
+        "sha256": "c1e26afd0bd8a823ca38a2b87e77f13bb00d0bae949401e54f21b76d508d04d2"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIterationPasting.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIterationPasting.lean",
+        "sha256": "8adb844ebbca8cd007dbce37d54b92b674e250b7482590ce7a888c0413c8bde8"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeNaturality.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeNaturality.lean",
+        "sha256": "8ce096ffd990b4ccad9969f042a45a6a99adde2911121f1c7c5ae9c34a418a8a"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedIterationSource.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedIterationSource.lean",
+        "sha256": "e19d0ad805278ca58039dcbab153bb9fb80e89d0eb6945179c0c7d6119520985"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedSourceBC.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedSourceBC.lean",
+        "sha256": "ca14ce3c6aa74e55193e3dc00f292b6e70fbc7b58914507312e1351ddf65b5b1"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChangeIterationPasting.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChangeIterationPasting.lean",
+        "sha256": "4bd7360116d84838b32d1c9bdc04817426d69ee90bf094aed41181cc04cb4e96"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChangeNaturality.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChangeNaturality.lean",
+        "sha256": "681820c45327f18de0bd832196740d98adc75770a0a5c2bae265fa2a75d1125b"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawComparisonCoherence.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawComparisonCoherence.lean",
+        "sha256": "281f559d938a0aeff0ebecf26511ea04061dc6599d76b4dab981165d85d4bcef"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawDenseTransition.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawDenseTransition.lean",
+        "sha256": "1c5868e6c95a70fb0fcdc5953c7817e1109f32d8541ae0ee4d1b849f764fcc05"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIdentityBaseChange.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIdentityBaseChange.lean",
+        "sha256": "7844cbe2f998c5ad39597fe9411e756246a5140acea4a0ac2f09703845235ea9"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIdentityComparison.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIdentityComparison.lean",
+        "sha256": "75260e91021bcbf10888ddbdcfeb95fd28ddd9e395ae4f29186b7a618cb456be"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIterationSource.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIterationSource.lean",
+        "sha256": "e4aca3a51cfbf6fa698022488dc67c2afbdbaaab4690985ddd81ed1f0e2b2eb7"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawRefinementBaseChangeNaturality.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawRefinementBaseChangeNaturality.lean",
+        "sha256": "390af3ec171ee86e4d680a2faaf2b51bb193139fc6740704a66664618fcd1305"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceBaseChange.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceBaseChange.lean",
+        "sha256": "875c926883888114f800d3063601053ef3dc380ff481f2551e7d3936f4894825"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceComposition.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceComposition.lean",
+        "sha256": "7ea836b6249175d6bae9362510c146a952ab4b0eac41d5bd36c10c2d81708135"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoBefore.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoBefore.lean",
+        "sha256": "6b0b73ce59b9f9026118b1ea37ec6262a8593f59db24e53092544f6f8c0fb173"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoExchange.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoExchange.lean",
+        "sha256": "863e2653b3c6ee1bc885f3b5460fc2c9e3443014887e0655ce3e3987361ac25f"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoNaturality.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoNaturality.lean",
+        "sha256": "6f5078844c1272a0827bae058de5ccd9b65807444f84f7d2ae54bc097b19357d"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoPasting.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoPasting.lean",
+        "sha256": "02467e9446b1e3d87559ab1e384609b56230c8b71a9313e35dd1847c3644ae9c"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSquare.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSquare.lean",
+        "sha256": "99d2801d5d27ec22ece83d75ee94cbc3fe77df7b935344e8f4304d61ef8dafdd"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSquareCongruence.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSquareCongruence.lean",
+        "sha256": "ef803e4c87ffa717296800370f1160a92b101b599b5a6fdd76aa2fb03d60946c"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawTargetIso.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawTargetIso.lean",
+        "sha256": "5302fb97706d1408e567f82b3ff22d532e36945b5ddcdd035e3190629520ed4b"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCModel.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCModel.lean",
+        "sha256": "6c8fe6dde59d4c8b970e9b813e67a04c516ff357ab8b07b9409a55636d12e3c0"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCNormalization.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCNormalization.lean",
+        "sha256": "049c24afbf77535e80dad2b4f3da45e5f9e9e647c002e9ee7386ade06bcf85ca"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceCompositionModel.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceCompositionModel.lean",
+        "sha256": "64df7b60a9174bb3ee205ec49d8fc5ff749a8dbc718594a15aa0ed62b513a426"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoBeforeExchange.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoBeforeExchange.lean",
+        "sha256": "383efb2a242a8ea7b557c0279f04f55eba9998a108ec68abda7c230bfcbef3d4"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoBeforeOpen.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoBeforeOpen.lean",
+        "sha256": "8fb6c4970c017bf651a62b221e62704dbf09a47347486f243e1ef28c6f4ffcc0"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoCompatibility.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoCompatibility.lean",
+        "sha256": "61ecef64af06cfe6a6a0b09ea756e17d5ca9b716320b1cae5f07362a010ac4d8"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoDiagram.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoDiagram.lean",
+        "sha256": "c8bfb878754c8db01494344f8d79b44ff539b45b22b20e536a6ebce0659207c4"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoExchange.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoExchange.lean",
+        "sha256": "1afc9201eefa4ae74710865f703d301a3c7ff32639933619c08b0fe24c2fbfab"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoMapPasting.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoMapPasting.lean",
+        "sha256": "e2988fc9f245c099ca5c0a9c13006ee5c379aac28a7ebd972f68fe7685ab9a3a"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoNaturality.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoNaturality.lean",
+        "sha256": "ed1a94d6051eb50f77077a0c283ee14eb5391457e6b88dc004f6bcf7f9f89821"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoPasting.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoPasting.lean",
+        "sha256": "328de3f6d22f876963051f84dfcb2c41075fc8786f5f8618e5ed793216944aec"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/TargetIsoBaseChange.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/TargetIsoBaseChange.lean",
+        "sha256": "e7b767e1afe928cdf6b79215c5e571a76ec56befff51ecd1c538399ace137751"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangeIdentity.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangeIdentity.lean",
+        "sha256": "ed43c677ad83961f655689221ba0ce6088cbfeeb6173b2e0d36f5f45ee5f854f"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangeOverComparison.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangeOverComparison.lean",
+        "sha256": "f08f4818e8070bda0b30126c24d2965f9dce5595e713cb98805328304b4fca08"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangeOverComparisonEquation.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangeOverComparisonEquation.lean",
+        "sha256": "4084633bb4b9dd46e0fe38377930af12a2dadfd0db2b24eb0fa545f7e4b174a1"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangePasting.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangePasting.lean",
+        "sha256": "1a403e33f40ec6b66d430e5e019e30b1d1e4feecf9ebe712c02ae9729717cd61"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CartesianExchangeComparison.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CartesianExchangeComparison.lean",
+        "sha256": "bce072f6ee122d35b577ac7b04b7539e2e78a3119f3da21cae8cd00315322763"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageAssociativity.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageAssociativity.lean",
+        "sha256": "767ac81783d1c9fa7ea1ce2067b674cd307248d2fe7958ffddc11e986bcd105f"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageIdentityCoherence.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageIdentityCoherence.lean",
+        "sha256": "382b611cef3b38597fd015cc7a50a79593701bb17c7a70b83263a9aef8affad2"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionAssociativity.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionAssociativity.lean",
+        "sha256": "d3c2b2a84d8c32781a5b55ac59146a7ef3bc4b0af1cb22305d87011a5a6263eb"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionCoherence.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionCoherence.lean",
+        "sha256": "aa2639e008165b930783b21cc391e939c76465ef9b7a3fc1c19f4c43618387cc"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionCompositionEq.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionCompositionEq.lean",
+        "sha256": "8b0050240866cfc6ac408ba4b7f0a9846283b8ecbcd837c5ccd852d161e9da3b"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionForgetCoherence.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionForgetCoherence.lean",
+        "sha256": "a04409aa6a562850d2aa520635cf01758039aa90fe41ac006918eb3695f04deb"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenBaseChangeConjugacy.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenBaseChangeConjugacy.lean",
+        "sha256": "aa314aefb43c9476be0decb88a842884da64768817127b7ec8ddc88742d5f314"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenBaseChangeIdentity.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenBaseChangeIdentity.lean",
+        "sha256": "34cc6a33202f9c2df5a78bc17e7b85e0b3721863cff0ec5622d4265cef54d7cc"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenComparisonCube.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenComparisonCube.lean",
+        "sha256": "30a449a26f747591ff1d1acb328af3b52d3e35d4bb2e0391303de08535f3b169"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenRefinementCube.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenRefinementCube.lean",
+        "sha256": "3df6ad63ccb077790f7ebaf3e1dd938ab73db5a7084ebcccee46680514a28119"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperCoherence.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperCoherence.lean",
+        "sha256": "df4018e739ed99f1e5c33367753c01153949a746cedc6b7cb753f80fc384ac33"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeIdentityTransition.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeIdentityTransition.lean",
+        "sha256": "6f2f8f1ff4bd81625e920a615d18ffd4f458f536db725f114df8ca8066de5252"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeIterationCompatibility.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeIterationCompatibility.lean",
+        "sha256": "062c90b12b36a82bbcb38f2b5c4525795c8dc468bd63ce324e675c8e1d0b3db7"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeModelEquation.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeModelEquation.lean",
+        "sha256": "da93b461f9c73b7d747a18c368deccd7121d5993bad9dcefbde726fa6a8ba090"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianBaseChangeIdentity.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianBaseChangeIdentity.lean",
+        "sha256": "4d62c0d5f3acbbc85fb7dbc89aecf4aef4f554635ab6cb87410c99024c485006"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianBaseChangeIteration.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianBaseChangeIteration.lean",
+        "sha256": "7bf0754b3f98d3868ea790199d2b04744ef25fd04bcb36658144705cd942634e"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianSourcePolygon.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianSourcePolygon.lean",
+        "sha256": "66dc94453ef095b31293d13ea4c42c273c6dede23fb88bfe6376699a7acabbd5"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalBaseChangeIdentity.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalBaseChangeIdentity.lean",
+        "sha256": "bc250a6b46e625e6ffa7a14747591ae11d3df3a6575a688f8581507ecfae52cc"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalBaseChangeIteration.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalBaseChangeIteration.lean",
+        "sha256": "cd4b06e7f135aa759f0cd054ec47efd6f63ab90554f634eed8d6c64f590e89c2"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/IdentitySourceCanonical.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/IdentitySourceCanonical.lean",
+        "sha256": "4f24d6d5fd3433f21a4fc4dcc4c98e7614f6542d61073fa2f429705e850d675b"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/IdentitySourceModel.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/IdentitySourceModel.lean",
+        "sha256": "2627bb412dfd11fbdfa73b17b524659d8f125a2a044dbd30bd07c90930f43531"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/InverseImageCompositionEq.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/InverseImageCompositionEq.lean",
+        "sha256": "d98167ffed67ca971f301d6ca8108c5fcff3395328d48546b5ee9217b48e2ed3"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIdentity.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIdentity.lean",
+        "sha256": "2acad1260e6cbf4ae0d570a37d772702740d994b43865e43b3fe8eb5b572a0fd"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIteration.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIteration.lean",
+        "sha256": "1d5cd850f8f43655c61ec5d3d8e13a28a1824e66d4b4833457a3ab4bbb043295"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIterationComparison.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIterationComparison.lean",
+        "sha256": "935a6a13b95bf207eaabeae08f01cdb408f03b505b98c39439481192f05b2b2f"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIterationPasting.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIterationPasting.lean",
+        "sha256": "2eb57684a61f0d28351ac46e8d9152060189290c0249786066d083a1a752885e"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedIterationSource.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedIterationSource.lean",
+        "sha256": "8cab5bd179d59aceb5a7cbe70087cade748163b818ca809b21efd67090e7476b"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedSourceBC.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedSourceBC.lean",
+        "sha256": "7598eb4c028c5c5e1e5806f55543496286bbed35158873ddd030c74c58f704c1"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawBaseChangeIterationPasting.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawBaseChangeIterationPasting.lean",
+        "sha256": "b5e33691519444261b7cb01825fedfdb1c57ef2e0b8cb24d220df88dc30e6588"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawDenseTransition.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawDenseTransition.lean",
+        "sha256": "ccafcc6bb8fe50ae0351984847666eb510a96d0400c0afe1b2cf8c44c43c5f1e"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIdentityBaseChange.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIdentityBaseChange.lean",
+        "sha256": "7c03b4699bf6521cf996bda267c4f883245bf0a2169cdcc0373f813f0a42d9da"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIdentityComparison.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIdentityComparison.lean",
+        "sha256": "fcb76bbcc3bb3a4b1621fcec92c9fd2ab1bf7f91deef6ce8a18acd93dd888df1"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIterationSource.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIterationSource.lean",
+        "sha256": "c358aa2e5060c1504a7b0b7983f4f5e40a98f3b990e8017c6911f51877b91666"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawRefinementBaseChangeNaturality.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawRefinementBaseChangeNaturality.lean",
+        "sha256": "a968a57700c35632e74c9321a10757e5d879d5e7ecb0d0133392b09c4431dd69"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceBaseChange.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceBaseChange.lean",
+        "sha256": "27d5b480b18db8c088a49462fc1cccdef7fa446b3e1d53db3b3615497343c00c"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceComposition.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceComposition.lean",
+        "sha256": "e8d01203c2066e713a03b3346bbef73536d1dd873ac0b26ebc3f31c0dd221dc6"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoBefore.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoBefore.lean",
+        "sha256": "49a67b25e95aa84e97d26a61c641d6342f375ef20a505c98781b62e2387b99a6"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoExchange.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoExchange.lean",
+        "sha256": "fad5c48f9682c438e844aa002533a8452ec2e83e6cdcc093d8d597723d6cc49c"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoNaturality.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoNaturality.lean",
+        "sha256": "ec780177483995774b3a7bce91eb3cb50097514e25747ef6ec539ca2c84beac4"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoPasting.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoPasting.lean",
+        "sha256": "129375f2d866cb34cade906e4c9bb5ccc34ef04036f88e83978f663b0837754d"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSquare.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSquare.lean",
+        "sha256": "26c3c8c4d389343ffdf580dcf762897158f21f6197daab0cfa5289094d1ab302"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSquareCongruence.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSquareCongruence.lean",
+        "sha256": "67c45f24a6e51cd170145ef45696dc1962260d076a9bd66c15d0e758873eeac4"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawTargetIso.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawTargetIso.lean",
+        "sha256": "3c68f5b747f4c904309dca06918fa093c70974a204b2a83d63af08b8ae64c97e"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceBCModel.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceBCModel.lean",
+        "sha256": "809a383cd822d3cadb79f81fb6d0c65068f73816134b7879f78a7c6e8b2f0cfc"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceBCNormalization.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceBCNormalization.lean",
+        "sha256": "cdfe4b09c3e6724c23e120c0db840915027abfaf4dab410d69cae9b00e47fc89"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceBaseChangeSquare.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceBaseChangeSquare.lean",
+        "sha256": "e7460108db270ce1abae0425fbd08574a814a25ddc6acf5bb04184f6e50063ca"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceCompositionModel.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceCompositionModel.lean",
+        "sha256": "7ec13d838ee99cb4e9b19e286011891516bcfd86c7e9f0130f68ed725e3da5a3"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoBaseChange.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoBaseChange.lean",
+        "sha256": "0f1b2005132f7a2b00e8a64726802a982fbef06a27aff671920e6c16d34180f3"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoBeforeExchange.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoBeforeExchange.lean",
+        "sha256": "0583818fe356cded884c821da7093d385de54d54bcac5871c4b4b2bd730228e0"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoBeforeOpen.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoBeforeOpen.lean",
+        "sha256": "3f02535a35172ffca180ff6aa83e9edc969148543a46982397c20e6506f52950"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoComposition.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoComposition.lean",
+        "sha256": "3e36c6f8a39e3bd8653bfedc05a2ac6fe990b8a369e9005acdfd647bfca21889"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoCompositionCongruence.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoCompositionCongruence.lean",
+        "sha256": "fbbd7c1edb557eb4bfd7ac7a27cc29b97d46f19747442fbdbb04a564b99da98a"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoMapPasting.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoMapPasting.lean",
+        "sha256": "8643e2748b04f227d9e55318727e4b2e0b3185292d2944ff854b11b5e9ea16da"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoPasting.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoPasting.lean",
+        "sha256": "e0090f662787027bc87beee6aaafc0734a80285c28b109f037211a48f3f392e8"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoRefinement.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoRefinement.lean",
+        "sha256": "46ac4d37e9a7936573a18c21cb96824dda545c957c2647a737be9f9d2d74b764"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TargetIsoBaseChange.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TargetIsoBaseChange.lean",
+        "sha256": "f34ef7d473d39f4bf51e9609ef0ad8efc14e9edd60a338c6ba6f69ad44d62413"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/CartesianSourceIdentity.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianIdentityAlgebra.lean",
+        "sha256": "65c096ec762a330813411fa4b4889bc8bff9df588a26b48b0bff3507e0cf38e5"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianBaseChangeIdentity.lean",
+        "sha256": "4d62c0d5f3acbbc85fb7dbc89aecf4aef4f554635ab6cb87410c99024c485006"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/CartesianSourcePasting.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianPastingAlgebra.lean",
+        "sha256": "2eca05b6177fb95d13804b5922be980d38bdadba8f2a814c59a965e5607e3b18"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/CartesianSourcePastingConclusion.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianPastingConclusion.lean",
+        "sha256": "6554d317a49e9447e3fd9b9af9583eb0fe92445241be6ad7682a827764b4e391"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/CartesianSourcePolygon.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianSourcePolygonAlgebra.lean",
+        "sha256": "cf62a0f61622890623784d4b8f4acdacf4ba18b8cf44279d48ebb3df27592d4d"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/CartesianSourceTargetTransport.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianPastingTarget.lean",
+        "sha256": "514083cd3afb0a39202cb18812cd7efa2dfb0dc91beac2c347eb450ad7f4cf3d"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/CompositeExchangePasting.lean": [
+      {
+        "path": "Aglib/CategoryTheory/NatTrans/CompositeExchangePasting.lean",
+        "sha256": "cc15205419d2e2719c8e0fca570e4bcb41f545cf1e418cb60ee37fba988f49ac"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/CompositeExchangeRestriction.lean": [
+      {
+        "path": "Aglib/CategoryTheory/NatTrans/CompositeExchangeRestriction.lean",
+        "sha256": "742a9d0e534f7fb78c226e3458ccff1d2c3ad61353b8b271d8ffa7846b49970f"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/ExchangePastingTransport.lean": [
+      {
+        "path": "Aglib/CategoryTheory/NatTrans/ExchangePastingTransport.lean",
+        "sha256": "f8f0c03ca768ad06850eb33a72c43fcbf94174d103496e9584cb36a0f892c327"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/IdentityFunctorNormalizer.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IdentityBaseChangeAlgebra.lean",
+        "sha256": "9705a697995ca7dd0e53be44dcda09e6594f783d90bbb4c5809c9a5ea28dd7e6"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/NormalizedExchangePasting.lean": [
+      {
+        "path": "Aglib/CategoryTheory/NatTrans/NormalizedExchangePasting.lean",
+        "sha256": "65ed35167ff4e10e281f1170595955b81e8046bf749965e999c33a7a56d1723c"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/NormalizedIdentity.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedIdentityAlgebra.lean",
+        "sha256": "31ffad8a704199a7faf7d3c9895bdff6f08600c6cb5f2a5a952d5ac055db0cca"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/NormalizedIteration.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedIterationEquation.lean",
+        "sha256": "68dbded7286623edca644e0a7c0330959ee2f15ddfd17356a7d0257b67a557d1"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/NormalizedIterationSource.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedIterationSourceAlgebra.lean",
+        "sha256": "5856f7ed0db6395304e55bafba6289cc646754b3f24d5c6a826d427074351e74"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/NormalizedIterationTransport.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IterationModelTransport.lean",
+        "sha256": "72ea2dba97f008622e1e88f27bb4778754ce63bdde966989fb5e38bb8d911a35"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/RefinedSourcePasting.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RefinedSourcePasting.lean",
+        "sha256": "9316cfd82b2d145ae865c86962597623341892212d4c46ac81a4436f7c1788fe"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/SourceBeforeModels.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBeforeModels.lean",
+        "sha256": "9941119d5dab01a380e08f6d1b67cb57094bfa3663ce1339f50a4bfb31eb5821"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/SourceBeforeNormalization.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBeforeNormalization.lean",
+        "sha256": "83082716077ec21997469c78870c5bd6c11b9a9bd1ef3f4f670094a83d15b8de"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/SourceExchange/Identity.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IdentitySourceCanonical.lean",
+        "sha256": "a3835aca025b30305e27a6da932e550645d8a5e5f9ff18bfd42b89cd8c1f0f65"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/IdentitySourceModel.lean",
+        "sha256": "8e23947023d7fe1320385b4490127ee63ea1b0955f07a13d23a0b4ea25618891"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIdentityComparison.lean",
+        "sha256": "75260e91021bcbf10888ddbdcfeb95fd28ddd9e395ae4f29186b7a618cb456be"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/SourceExchange/ModelTransport.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeIteration.lean",
+        "sha256": "f0cc3a245b798dabc5fdffc43f1879e7ac8ecd16a1c35d2820b8e4ec5316d4c7"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeModelEquation.lean",
+        "sha256": "202baf80efcf6d0297d311893c09d017b7c79ed5081a692adbb5ea5d469beb14"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoComposition.lean",
+        "sha256": "af5afa7702e3a2ff84f617d1f03807f954676a636f7d56112013b760d2296b1e"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoRefinement.lean",
+        "sha256": "8db0cde5d9f192fa85d2e17e6748881f5c3fac3d0497c9c3aa06076e6a78613e"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/SourceExchange/Normalization.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIterationComparison.lean",
+        "sha256": "c1e26afd0bd8a823ca38a2b87e77f13bb00d0bae949401e54f21b76d508d04d2"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/SourceExchange/Pasting.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositeBaseChangeEquation.lean",
+        "sha256": "8a10af3054180fcdbbbe00fc9ab8e147b211f7dcf4c0af30605dedfdf873d9d5"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceComposition.lean",
+        "sha256": "7ea836b6249175d6bae9362510c146a952ab4b0eac41d5bd36c10c2d81708135"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoBeforeExchange.lean",
+        "sha256": "383efb2a242a8ea7b557c0279f04f55eba9998a108ec68abda7c230bfcbef3d4"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoBeforeOpen.lean",
+        "sha256": "8fb6c4970c017bf651a62b221e62704dbf09a47347486f243e1ef28c6f4ffcc0"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoMapPasting.lean",
+        "sha256": "e2988fc9f245c099ca5c0a9c13006ee5c379aac28a7ebd972f68fe7685ab9a3a"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoPasting.lean",
+        "sha256": "328de3f6d22f876963051f84dfcb2c41075fc8786f5f8618e5ed793216944aec"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/TargetIsoBaseChange.lean",
+        "sha256": "e7b767e1afe928cdf6b79215c5e571a76ec56befff51ecd1c538399ace137751"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/SourceExchange/Restriction.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoBefore.lean",
+        "sha256": "6b0b73ce59b9f9026118b1ea37ec6262a8593f59db24e53092544f6f8c0fb173"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoExchange.lean",
+        "sha256": "863e2653b3c6ee1bc885f3b5460fc2c9e3443014887e0655ce3e3987361ac25f"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoNaturality.lean",
+        "sha256": "6f5078844c1272a0827bae058de5ccd9b65807444f84f7d2ae54bc097b19357d"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoPasting.lean",
+        "sha256": "02467e9446b1e3d87559ab1e384609b56230c8b71a9313e35dd1847c3644ae9c"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawTargetIso.lean",
+        "sha256": "5302fb97706d1408e567f82b3ff22d532e36945b5ddcdd035e3190629520ed4b"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/SourceIsoBaseChange.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCInterchangeAlgebra.lean",
+        "sha256": "b575cdd5dd205a53e2f099e5416f375042373a997dd67e4b9368409ac415cc46"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/SourceIsoBaseChangeTransport.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceBCModelTransport.lean",
+        "sha256": "caa77502a0a06b8d80d6c2ec1e1c251a5c4ccc9b25553a8b78730363de8f1cdd"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/SourceIsoComposition.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoCompositionAlgebra.lean",
+        "sha256": "546efaa646787232c6586542d2d118f6ad45a3b0086b7459042e6888d351e7b6"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/SourceIsoCompositionModels.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceCompositionModels.lean",
+        "sha256": "8fca6d0a858317f1e4786b68fd4b12deb92d9891ede03303334dfe6964ffddee"
+      }
+    ],
+    "Aglib/CategoryTheory/NatTrans/SourceIsoCompositionTransport.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceCompositionTransport.lean",
+        "sha256": "d1cc86e1db0872649b264ebc58ec0f92aa72d7378ca95196784b03bf92cdd9da"
+      }
+    ],
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangePastingEquation.lean": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangePastingEquation.lean",
+        "sha256": "3b14cd90ec2432799b489c4ff48c8651c6f41a6407b007a245fa1b2ec2e22aeb"
+      }
+    ]
+  },
+  "existing_replacements": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeAlgebra.lean": "Aglib/CategoryTheory/NatTrans/CartesianSourceExchange.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/DirectImageComparison.lean": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CompositionCoherence.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/ComparisonNaturalityAlgebra.lean": "Aglib/CategoryTheory/NatTrans/ImageComparisonBaseChange.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeGeometry.lean": "Aglib/AlgebraicGeometry/Compactification/Refinements/CartesianBaseChange.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianIdentityAlgebra.lean": "Aglib/CategoryTheory/NatTrans/CartesianSourceIdentity.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IdentityBaseChangeAlgebra.lean": "Aglib/CategoryTheory/NatTrans/IdentityFunctorNormalizer.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianPastingTarget.lean": "Aglib/CategoryTheory/NatTrans/CartesianSourceTargetTransport.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianPastingAlgebra.lean": "Aglib/CategoryTheory/NatTrans/CartesianSourcePasting.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianPastingConclusion.lean": "Aglib/CategoryTheory/NatTrans/CartesianSourcePastingConclusion.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianSourcePolygonAlgebra.lean": "Aglib/CategoryTheory/NatTrans/CartesianSourcePolygon.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceCompositionTransport.lean": "Aglib/CategoryTheory/NatTrans/SourceIsoCompositionTransport.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceBCModelTransport.lean": "Aglib/CategoryTheory/NatTrans/SourceIsoBaseChangeTransport.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IterationModelTransport.lean": "Aglib/CategoryTheory/NatTrans/NormalizedIterationTransport.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoCompositionAlgebra.lean": "Aglib/CategoryTheory/NatTrans/SourceIsoComposition.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedIdentityAlgebra.lean": "Aglib/CategoryTheory/NatTrans/NormalizedIdentity.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceCompositionModels.lean": "Aglib/CategoryTheory/NatTrans/SourceIsoCompositionModels.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCInterchangeAlgebra.lean": "Aglib/CategoryTheory/NatTrans/SourceIsoBaseChange.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RefinedSourcePasting.lean": "Aglib/CategoryTheory/NatTrans/RefinedSourcePasting.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedIterationEquation.lean": "Aglib/CategoryTheory/NatTrans/NormalizedIteration.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBeforeNormalization.lean": "Aglib/CategoryTheory/NatTrans/SourceBeforeNormalization.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedIterationSourceAlgebra.lean": "Aglib/CategoryTheory/NatTrans/NormalizedIterationSource.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBeforeModels.lean": "Aglib/CategoryTheory/NatTrans/SourceBeforeModels.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositeBaseChangeEquation.lean": "Aglib/CategoryTheory/NatTrans/SourceExchange/Pasting.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeIdentityGeometry.lean": "Aglib/AlgebraicGeometry/Compactification/Refinements/IdentityRawProjection.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangePastingGeometry.lean": "Aglib/AlgebraicGeometry/Compactification/Refinements/CartesianPasting.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianSourcePolygonGeometry.lean": "Aglib/AlgebraicGeometry/Compactification/Refinements/CartesianSourcePolygon.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBaseChangeGeometry.lean": "Aglib/AlgebraicGeometry/Compactification/Refinements/SourceBaseChange.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBaseChangeSquares.lean": "Aglib/AlgebraicGeometry/Compactification/Refinements/SourceBaseChangeSquares.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCNormalizationGeometry.lean": "Aglib/AlgebraicGeometry/Compactification/Refinements/SourceNormalization.lean"
+  },
+  "omitted_unneeded_archive_paths": [
+    "Aglib/Algebra/Homology/DerivedCategory/Plus/ModelComparison.lean",
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/MiddleModelComparison.lean",
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/ModelComparison.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/ModelComparison.lean"
+  ],
+  "evidence_boundary": "Import/source closure and archive claim hashes only. Archived build IDs are unbound/colliding provenance. No new Lean compilation, lint or axiom coverage.",
+  "compile_roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CartesianBaseChangeIdentity",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CartesianBaseChangeIteration",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CartesianBaseChangeIdentityTorsion",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CartesianBaseChangeIterationTorsion"
+  ],
+  "source_vector_sha256": "b9f23ae53e541944fc8f9ee120f14057d346e25c41be63208f863ca202d28cf4",
+  "provider_vector_sha256": "8459995ac9f51ff53ec6456c5f42944615a7383c573bb0df1a2375c71090edce",
+  "accepted_provider_bindings": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/completed-d-cartesian-coherence-20261101/PROVIDER-BINDINGS.json",
+  "accepted_provider_bindings_sha256": "60f2a0f277ac155afdad3a091d5fd4fba6a002679a3b1c9dccebf5e4fc2c1c39",
+  "endpoint_correspondence": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/completed-d-cartesian-coherence-20261101/v5/SOURCE-CHECK.json",
+  "claim_provenance": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/completed-d-cartesian-coherence-20261101/CLAIM-PROVENANCE.json",
+  "owned_afterimage_boundary": "Original163 Root-owned author paths plus explicitly authorized Derived/BaseChangePastingEquation.lean. Existing providers/Git/entries/README readonly.",
+  "native_cpp": "v4/0689 naturally CLOSED1 with33 fresh passes2 failures; SourceBCModel and Unbounded Cartesian iteration passed. v5 changed two failed sites only and has not yet compiled.",
+  "provider_basis_change": "Current readonly supplier adff retained. Root-owned RawBaseChange doc03abe delta is accepted code-identical per Root; observed hash delta recorded separately from author code changes.",
+  "parent_candidate": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/completed-d-cartesian-coherence-20261101/v4/CANDIDATE.json",
+    "sha256": "3238849714842ee0cec16090a2d38565c40324c2bbd20676054bbe7c36446eb7",
+    "source_vector_sha256": "cf41ccd6a836f86722272094214514f1247bdb46181589ce1ba4d8773c25f818"
+  },
+  "repair": {
+    "diagnostic_run": "remote-41f1118cb0d342dd95fd1e381e1c91d2",
+    "diagnostic_source": "06898222e4cf6d1cd21e1ba3626798c7c73c259174601094941083259690f81f",
+    "changes": {
+      "OpenComparisonCube": "Form the already proved whole original inverse-mate equation first; evaluate it using NatTrans.congr_app before TwoSquare.ext. No producer inputs or square maps changed.",
+      "RawDenseTransition": "Call current dense specialization in its actual argument order (a, \u039b); same rfl supplier and same imageComparison congruence."
+    }
+  },
+  "claim_provenance_delta": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/completed-d-cartesian-coherence-20261101/v2/REPAIR.json",
+  "provider_delta": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChange.lean",
+      "before": "248818d3632438e3e87ccb3ca4a7c9e6de327d6a3e538c7166e02bd110f4000a",
+      "after": "03abe8df12d495f65cb40d9d988eafa8df83df56f5d57135d3a3ebc71cf6dfa4"
+    }
+  ]
+}

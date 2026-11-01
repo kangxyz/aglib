@@ -1,0 +1,34 @@
+{
+  "baseline": "e21da4116108e9b645ee5e81fbc71ac4f54d37a9",
+  "checking_cohort_sources": 851,
+  "CD_changed_sources": 850,
+  "applied_companions": [
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/DerivedModel.lean",
+      "before_sha256": "e0f0cde5f3e9cf2190908658805da1ade5e7341d1796d6e327a7d527e62bec5c",
+      "after_sha256": "285cfc1eb2622a09a45b0f0910d38de75f2a5a1996864e4654e5688afa1b27c3",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/snapshot/source/Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/DerivedModel.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Localization.lean",
+      "before_sha256": "fa71a3b2b5989264b316ff9631e3aff11eda9c504759c5eeddb1ba198390e0b9",
+      "after_sha256": "46440e4adb82d1c50ca13363ab9743d22ee117fb1374a8735ec1847e52b24005",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/snapshot/source/Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Localization.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Localization/Principal.lean",
+      "before_sha256": "d55460eb76769e76ddc67cec378b3c797d97c32bb9ba5133f4ababe0389ba0fb",
+      "after_sha256": "e32c7b17eb00fbe9bc4957646e5616b03826c7ce932969dfabf8d570e779724c",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/snapshot/source/Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Localization/Principal.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Resolution.lean",
+      "before_sha256": "2cab52cd19dcf082cee0adf065ae1be53188d46f4a6fa04bc6bfc428cf7f7db5",
+      "after_sha256": "3a3ce6d7f8b0452f9dc5029c0691528684389b72698c88fe7e01dd9d5b360d45",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/snapshot/source/Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Resolution.lean"
+    }
+  ],
+  "input_source_record": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/integration/geometry-owner/affine-companions-applied.json",
+  "Git_index_HEAD_mutation": false,
+  "compiler": "Normal maximal DerivedModel leaf pending; no new green claim."
+}

@@ -1,0 +1,12 @@
+{
+  "source_sha256": {
+    "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Coefficients.lean": "2a6da24f76e4f3ef0feb3425a918caa92399e4ceb8259c888d70208dfff741a0"
+  },
+  "checks": [
+    "tokens",
+    "policy"
+  ],
+  "errors": [],
+  "count": 1,
+  "checker_sha256": "1b8aeee8b2db34caa57ff30e415d81b1ce7fae622b89b96dc24e841147d3db4e"
+}

@@ -1,0 +1,96 @@
+{
+  "question": "Tiny847source/staging delta ontoRoot-applied844+metadata+PERF, preserving originalbasis",
+  "baseline": "374f73ce34df7d53e2590b4f028d6e8014f47b28",
+  "original844_packet": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/SUBSET-PACKET.json",
+  "source_vector847": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/public-companions-847/SELECTED-SOURCE-VECTOR-847.json",
+  "added_sources": [
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology.lean",
+      "public374f_before_sha256": "fbbe8f3463fab0774acacbfde09999b6e014696ecb89f0bcfb796372ca92e8f9",
+      "current_selected_sha256": "1415e7aebafab74f3f093c90534942e306b9084482d9c6393fb71b8ad9482db3",
+      "old844_member": false,
+      "existing_public_filename": true,
+      "publicExchange579_member": false,
+      "CPP_status": "PASS8.3s"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/Naturality.lean",
+      "public374f_before_sha256": "d7b67e56a7f9801128a53a9e219c50e277cf3597f8c8581ed15314ac7c33e370",
+      "current_selected_sha256": "d2cb07660e12afc1619477d3e41b8f0c5a6482f5b40e6714c82af69503db83e7",
+      "old844_member": false,
+      "existing_public_filename": true,
+      "publicExchange579_member": false,
+      "CPP_status": "PASS11s"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Normalization/InertiaTorsor/GenericPullback.lean",
+      "public374f_before_sha256": "3631fd93dfccf75a185172b20b63b52a82aeb60524fe2341c5b88f448c985b28",
+      "current_selected_sha256": "38a44417d19bb8edc88e665e2adece80a22bee78942263059eec7e8d6aa0a4eb",
+      "old844_member": false,
+      "existing_public_filename": true,
+      "publicExchange579_member": false,
+      "CPP_status": "Pendingactual38aCPP; no success inferred"
+    }
+  ],
+  "context_delta": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/public-companions-847/IMPORT-CONTEXT-DELTA.json",
+  "metadata_and_PERF": "Original911metadata/source staging and27PERF files remain untouched. Allthree filenames alreadypublic:0entry/navigation additions. ExistingPERFcase marked superseded byactualcombinednamespace collision and mustrecordactual847 results later, byitsowner.",
+  "staging_counts": {
+    "checking_cohort_sources": 847,
+    "CD_changed_sources_after_CI38a_first": 846,
+    "existing_entry_files": 10,
+    "existing_README_files": 57,
+    "cohort_before_PERF": 914,
+    "CD_after_CI_first_before_PERF": 913,
+    "already_applied_PERF_paths": 27,
+    "cohort_with_existing_PERF": 941,
+    "CD_after_CI_first_with_existing_PERF": 940
+  },
+  "staging_files": {
+    "ADDITIONAL-SOURCE-PATHS": {
+      "text": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/public-companions-847/ADDITIONAL-SOURCE-PATHS.txt",
+      "NUL": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/public-companions-847/ADDITIONAL-SOURCE-PATHS.z"
+    },
+    "CANDIDATE-COHORT-847-PATHS": {
+      "text": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/public-companions-847/CANDIDATE-COHORT-847-PATHS.txt",
+      "NUL": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/public-companions-847/CANDIDATE-COHORT-847-PATHS.z"
+    },
+    "CD-SOURCE-846-AFTER-CI-FIRST": {
+      "text": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/public-companions-847/CD-SOURCE-846-AFTER-CI-FIRST.txt",
+      "NUL": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/public-companions-847/CD-SOURCE-846-AFTER-CI-FIRST.z"
+    },
+    "STAGING-COHORT-914-BEFORE-PERF": {
+      "text": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/public-companions-847/STAGING-COHORT-914-BEFORE-PERF.txt",
+      "NUL": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/public-companions-847/STAGING-COHORT-914-BEFORE-PERF.z"
+    },
+    "STAGING-CD-913-AFTER-CI-FIRST-BEFORE-PERF": {
+      "text": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/public-companions-847/STAGING-CD-913-AFTER-CI-FIRST-BEFORE-PERF.txt",
+      "NUL": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/public-companions-847/STAGING-CD-913-AFTER-CI-FIRST-BEFORE-PERF.z"
+    },
+    "STAGING-COHORT-941-WITH-EXISTING-PERF": {
+      "text": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/public-companions-847/STAGING-COHORT-941-WITH-EXISTING-PERF.txt",
+      "NUL": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/public-companions-847/STAGING-COHORT-941-WITH-EXISTING-PERF.z"
+    },
+    "STAGING-CD-940-AFTER-CI-FIRST-WITH-EXISTING-PERF": {
+      "text": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/public-companions-847/STAGING-CD-940-AFTER-CI-FIRST-WITH-EXISTING-PERF.txt",
+      "NUL": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/public-companions-847/STAGING-CD-940-AFTER-CI-FIRST-WITH-EXISTING-PERF.z"
+    }
+  },
+  "source_supersessions": {
+    "Affine_Cohomology": "4e02initialwrapper superseded by1415comment-fixed exactsource",
+    "GenericPullback": "976initialFiniteM change superseded by38a afteractualunusedFinite cascades; no976CPPclaim reused as38agreen",
+    "original844": "Actual e2fc import-only environment failed onduplicate affineHigherImageCohomologyStandard. Thus no combined844stock/audit closure; two exactPUBLICcompanions restore onecanonical owner. No new maps/types/models/premises reported bytheauthor."
+  },
+  "actual_coverage": {
+    "two_wrappers": "d4e192f263cd46e486d403cd77876fd8/source5f20...:Cohomology1415PASS8.3s,Naturalityd2cbPASS11s asRoot/executorhandback",
+    "Generic38a": "HealthyCPP132s atlatest handback, no greeninferred",
+    "combined_namespace_stock_axiom": "Normalupdatedcohort rerun pendingactualresult; stock/axiom712notruninearlierfailedformation. Retained132audit origins remainactualscopeonly."
+  },
+  "Root_staging_recipe": [
+    "Waitonlyforthealreadynecessaryactual3leaf/normalcoherentchecks; no new acceptance cycle is introduced bythisdelta.",
+    "PublishCI38afirstfromtheindependentci-generic-pullbackcheckoutonceitsactualCPP/stock0.",
+    "RetainRootselectedcheckout appliedthreeafterimages and911+27PERF. UseCD-SOURCE-846 andSTAGING-CD-940 manifests afterCI-first, plusonlyanylateractualPERFcase additions/replacements supplied byitsowner.",
+    "BeforeCIpublication/merge, cohort941manifest includesGeneric38aasmodified; afterCIispublicitmaybeno-op. EffectiveC/Dpayload846sources; checkingvector847 includespublicCIcomponent.",
+    "Rootalone performs nativeSCM reconciliation/commit/push. Preserveallheldwork/fullplans; do not reapply old911metadata or recopyold976/4e02 sources."
+  ],
+  "mutations": "Onlythisnewdelta directory written. No code/README/PERF/MAIN/Git mutations or CPP/check invocations."
+}

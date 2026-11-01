@@ -1,0 +1,73 @@
+[
+  {
+    "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+    "identity": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/latest-cd-large-authorized-executor/IDENTITY.json",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+    "closed": true,
+    "exit": 1,
+    "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+    "events_Aglib": {
+      "pass": 1226,
+      "fail": 3
+    }
+  },
+  {
+    "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+    "identity": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/latest-cd-retry-authorized-executor/IDENTITY.json",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+    "closed": true,
+    "exit": 1,
+    "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+    "events_Aglib": {
+      "pass": 444,
+      "fail": 2
+    }
+  },
+  {
+    "run": "remote-be04ff2f9b8a4f80ac5487c17e4bafe6",
+    "identity": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/latest-cd-repair2-authorized-executor/IDENTITY.json",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/receipt.json",
+    "closed": true,
+    "exit": 1,
+    "source_digest": "5b8e092c102cf3337c5bd0296827e5287053328598fde13c9138a79d91dd2da9",
+    "events_Aglib": {
+      "fail": 2,
+      "pass": 41
+    }
+  },
+  {
+    "run": "remote-84011d3de8894710a57cb715873761bb",
+    "identity": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/latest-cd-cech-fallback-authorized-executor/IDENTITY.json",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-84011d3de8894710a57cb715873761bb/receipt.json",
+    "closed": true,
+    "exit": 1,
+    "source_digest": "963604bed891e9dbe12269eae8bcc982aeef5566a16be983ef531ed98aa3f0eb",
+    "events_Aglib": {
+      "pass": 78,
+      "fail": 2
+    }
+  },
+  {
+    "run": "remote-582393300ce44024a8435668a08f0769",
+    "identity": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/latest-cd-exchange-repair-authorized-executor/IDENTITY.json",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-582393300ce44024a8435668a08f0769/receipt.json",
+    "closed": true,
+    "exit": 1,
+    "source_digest": "e0fcbecf8c119b4eb9c81244b11908e230d38d0eba3dad0f45b24c3b826b805b",
+    "events_Aglib": {
+      "pass": 33,
+      "fail": 1
+    }
+  },
+  {
+    "run": "remote-39262e98520848ac8c64ea8fb4456e27",
+    "identity": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/latest-cd-exchange-1c86-authorized-executor/IDENTITY.json",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-39262e98520848ac8c64ea8fb4456e27/receipt.json",
+    "closed": true,
+    "exit": 1,
+    "source_digest": "36d1977c4de82002b79952f98e5c6db35a37e11bf0dc89195e231ce89927c2da",
+    "events_Aglib": {
+      "fail": 1
+    }
+  }
+]

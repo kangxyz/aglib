@@ -1,0 +1,52 @@
+error: Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenTopClass/Source.lean:52:24: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (tilde.functor S).map (homologyMap q n) ≫
+    ((((moduleSpecΓFunctor.mapHomologicalComplex (ComplexShape.up ℤ)).obj K).sc n).mapHomologyIso (tilde.functor S)).inv
+in the target expression
+  (tilde.functor S).map (homologyMap q n) ≫
+      homologyCounitMap (tilde.functor S) (ComplexShape.up ℤ)
+        ((moduleSpecΓFunctor.mapHomologicalComplex (ComplexShape.up ℤ)).obj K)
+        (Complex.tildeGlobalSectionsCounit S (ComplexShape.up ℤ) K) n =
+    (((sc C n).mapHomologyIso (tilde.functor S)).inv ≫
+        homologyMap (((tilde.functor S).mapHomologicalComplex (ComplexShape.up ℤ)).map q) n) ≫
+      homologyMap (Complex.tildeGlobalSectionsCounit S (ComplexShape.up ℤ) K) n
+
+S : CommRingCat
+C : CochainComplex (ModuleCat ↑S) ℤ
+K : CochainComplex (Spec S).Modules ℤ
+q : C ⟶ (moduleSpecΓFunctor.mapHomologicalComplex (ComplexShape.up ℤ)).obj K
+n : ℤ
+hn :
+  (tilde.functor S).map (homologyMap q n) ≫
+      ((((moduleSpecΓFunctor.mapHomologicalComplex (ComplexShape.up ℤ)).obj K).sc n).mapHomologyIso
+          (tilde.functor S)).inv =
+    ((sc C n).mapHomologyIso (tilde.functor S)).inv ≫
+      homologyMap (((tilde.functor S).mapHomologicalComplex (ComplexShape.up ℤ)).map q) n
+⊢ (tilde.functor S).map (homologyMap q n) ≫
+      homologyCounitMap (tilde.functor S) (ComplexShape.up ℤ)
+        ((moduleSpecΓFunctor.mapHomologicalComplex (ComplexShape.up ℤ)).obj K)
+        (Complex.tildeGlobalSectionsCounit S (ComplexShape.up ℤ) K) n =
+    (((sc C n).mapHomologyIso (tilde.functor S)).inv ≫
+        homologyMap (((tilde.functor S).mapHomologicalComplex (ComplexShape.up ℤ)).map q) n) ≫
+      homologyMap (Complex.tildeGlobalSectionsCounit S (ComplexShape.up ℤ) K) n
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    homologyMap (((tilde.functor S).mapHomologicalComplex (ComplexShape.up ℤ)).map q) n
+  has type
+    @Quiver.Hom (Spec S).Modules instCategory.toQuiver
+      ((((tilde.functor S).mapHomologicalComplex (ComplexShape.up ℤ)).obj C).homology n)
+      ((((tilde.functor S).mapHomologicalComplex (ComplexShape.up ℤ)).obj
+            ((moduleSpecΓFunctor.mapHomologicalComplex (ComplexShape.up ℤ)).obj K)).homology
+        n)
+  but is expected to have type
+    @Quiver.Hom (Spec S).Modules instCategory.toQuiver ((sc C n).map (tilde.functor S)).homology
+      ((((tilde.functor S).mapHomologicalComplex (ComplexShape.up ℤ)).obj
+            ((moduleSpecΓFunctor.mapHomologicalComplex (ComplexShape.up ℤ)).obj K)).homology
+        n)
+  in the application
+    ((sc C n).mapHomologyIso (tilde.functor S)).inv ≫
+      homologyMap (((tilde.functor S).mapHomologicalComplex (ComplexShape.up ℤ)).map q) n
+  
+  Note: The following definitions were not unfolded because their definition is not exposed:
+    OreLocalization.instAdd ↦ 24

@@ -6,7 +6,8 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenCounit
-public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Class
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel
+public import Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.RegularList.Sheaf.Class
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Principal.AmbientIsomorphism.Classes
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Principal.NormalizedClass
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Principal.Derived

@@ -1,0 +1,2937 @@
+{
+  "question": "Reuse actual source-bound successful compilation for the288 additional source paths; not a fresh cohort acceptance run",
+  "source_vector": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/remaining/TAIL-SOURCE-VECTOR-288.json",
+  "source_count": 288,
+  "later_native_pass_paths": 149,
+  "retained_exact_source_pass_paths": 139,
+  "uncovered_current_tail_sources": [],
+  "runs": [
+    {
+      "runtime": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/latest-cd-retired-unused-0fb-authorized-executor",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-66d0626707cd4c34bdf9d65d0fa64dec/receipt.json",
+      "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-66d0626707cd4c34bdf9d65d0fa64dec/build.log",
+      "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-66d0626707cd4c34bdf9d65d0fa64dec/compiler-events.jsonl",
+      "native_exit": 1,
+      "fresh_frontends": {
+        "started": 132,
+        "passed": 129,
+        "failed": 3
+      },
+      "input_drift": [],
+      "core_events": [
+        {
+          "path": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonEquation.lean",
+          "exit": 0,
+          "seconds": 483.0842683315277
+        },
+        {
+          "path": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean",
+          "exit": 0,
+          "seconds": 129.23296809196472
+        },
+        {
+          "path": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricStalkExchange.lean",
+          "exit": 0,
+          "seconds": 29.23821783065796
+        }
+      ]
+    },
+    {
+      "runtime": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/latest-cd-D-three-headers-retry",
+      "run": "remote-10e29f36898940d8ba75c7f80f7d3008",
+      "source": "b1c7e1aad367c47bf385ffbce71ee23ad8c1b32b014e7ad85bd37031a166b827",
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-10e29f36898940d8ba75c7f80f7d3008/receipt.json",
+      "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-10e29f36898940d8ba75c7f80f7d3008/build.log",
+      "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-10e29f36898940d8ba75c7f80f7d3008/compiler-events.jsonl",
+      "native_exit": 1,
+      "fresh_frontends": {
+        "started": 8,
+        "passed": 6,
+        "failed": 2
+      },
+      "input_drift": [],
+      "core_events": []
+    },
+    {
+      "runtime": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/latest-cd-D-header-family-retry",
+      "run": "remote-3aef150601924a268fd418e52fd4ff30",
+      "source": "c76e1ad7dead5901cb5f156f5543aeee2ca473f4866bf58560687b2ea4832ada",
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-3aef150601924a268fd418e52fd4ff30/receipt.json",
+      "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-3aef150601924a268fd418e52fd4ff30/build.log",
+      "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-3aef150601924a268fd418e52fd4ff30/compiler-events.jsonl",
+      "native_exit": 0,
+      "fresh_frontends": {
+        "started": 19,
+        "passed": 19,
+        "failed": 0
+      },
+      "input_drift": [],
+      "core_events": []
+    }
+  ],
+  "coverage": {
+    "Aglib/AlgebraicGeometry/Descent/FinitePresentation/CommonOpen.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "6ce6eb0379cf1e6547976a6e32661475f445fb63faf02f41ecb0880b984d0b5b",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Descent/FinitePresentation/FiniteEtaleGenericModel.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "4c8d62fb4c8e11579f76fa18f85e73cecbc63396f6924faa2f36257414293635",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Descent/FinitePresentation/FiniteGenericModel.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "ab50b9ad65d7caea10fa6315cdcdbd94576fdbfbaeef2965c5633e5487bb327e",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Descent/FinitePresentation/FiniteSubalgebraModel.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "c86fd52496e415ffe4c010b74e68d39f4a37c52821bea1cdb843ca57e957cebb",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Descent/FinitePresentation/GenericIsomorphism.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "d978b437e1f720d0643e412229bbbdb747f212d62ab9766be7952724b5f08a83",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Descent/FinitePresentation/Gluing.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "d2b5981a7ba109ec424c9c138233e16f40ba028a7f4077f671dfc868a58a0842",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Descent/FinitePresentation/MorphismSections.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "4bda232a93f46bf4f74c74ff20d80c03f336452d1bb2fe78bf390aaaf9602784",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Descent/FinitePresentation/OverBaseCharts.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "dd71d35134353a4637e3a2bb022ea21eb39104a499d75a1bff20d1f2343d1284",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Descent/FinitePresentation/OverBaseCommonOpen.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "ff1920c5f8a79c0b44b952aad4de7c10f51f30ee012d66c8b1b781f9256a6375",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Descent/FinitePresentation/OverBaseGluing.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "69b3cb5e4fb78a641a3a719015e4b0221f0b0cd20c9fadabe98090253852b7c7",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/ConstructibleTarget.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "bea8d1af5f1105896d8f8e425368f5615ea6ea8fab655f502c9dbaeebe1f02af",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Constructible.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "539cf6df76b1e4b616f0900f0e6c804998019ec616f907646bad745a8ceba8bc",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/Modules/FiniteImageAffine.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "09155b51dddf39a5d04f61fd2ec9302a3acfb54c17576998f9b877e7be728143",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/Modules/FiniteImageClosed.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "b818084bce33579aecf61e5514f8806bfca8d37437d5ce628b75d765228fd950",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/Modules/FiniteImageClosedComparison.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "cfdcee5c87ffd8d89c699b130050c422ad14d2b88433e656c1e74ea65495854e",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/Modules/FiniteImageClosedDescent.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "d24e3d67a61c1aab9d3a2154b32bd1cba075674282b7241f673f6779c0e63666",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/Modules/FiniteImageLocallyNoetherian.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "4f01a53d86b6bf972bf03aeea5ebfe7428cf365a814de9d5de63687ff9b841d5",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/Modules/FiniteImageNoetherian.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "af912e3d7ccc76f46c072fd3d64a22a5909207b0e61590fe7e992270123165dd",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/Modules/FiniteImageRadicialAffineChart.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "04a78cc6298ac2139b1ca30515696dcffa6db5253079ce6cf177494fc9fbaa5a",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/Modules/FiniteImageRadicialChartCoefficients.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "73b116925dc405aa1fa3cda10903a6c295b701695d25614926ded991bc38390d",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/Modules/FiniteImageRadicialCharts.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "74a18feb787c5e194ac5ec33b9f2fb94408f3e51358dddc8d25f0157a8b9219a",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/Modules/FiniteImageRadicialComparison.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "c08b82b7172cbbf7b729d5ef487ce5232cb0c83a557131dc4833eb7b9d10b9f8",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/Modules/FiniteImageRadicialGeneric.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "2f8747f6574bf12cffeb43d69597e8ad1a877c67d32ab1704f662deb8d512a10",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/Modules/FiniteImageRadicialModules.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "f2975c2b1487224f10f6fdb5b4ea55b7a8417464dedf5f0caab06ec29ef3b423",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/Modules/FiniteImageRadicialNoetherian.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "db9d3014a8df35862b83759b493dd3f60cb67e92643dfb2099a2a66bc3ff3cc4",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/Modules/FiniteImageSourceReduction.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "d787933ad64364d8b0265c755b6779529b664f0dc40f5840958da5e2465befbf",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/CounitCoefficientColimit.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "5b28ed0dafaf242a528f8140ae4baf28455592f30cbd137c43065bdebce65293",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/FiniteTypeArrowCoefficients.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "bc0f739b5806b8653a73cb5d434971b29c5dbc639ec3f11a65c256c77417b140",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/GenericCoefficientZeroSpreading.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-be04ff2f9b8a4f80ac5487c17e4bafe6",
+        "exit": 0,
+        "source_sha256": "0f2dd417b8745cf10a693aacb20f1fa5c84f2909e1ed96e186f20167023904a4",
+        "source_digest": "5b8e092c102cf3337c5bd0296827e5287053328598fde13c9138a79d91dd2da9",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/GenericCoverCoefficientZeroSpreading.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-be04ff2f9b8a4f80ac5487c17e4bafe6",
+        "exit": 0,
+        "source_sha256": "e1255973268752139af1ab8101b837a9a5fddb47ba85ddb9a515ebb1a9e21102",
+        "source_digest": "5b8e092c102cf3337c5bd0296827e5287053328598fde13c9138a79d91dd2da9",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/GenericCoverZeroSpreading.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-be04ff2f9b8a4f80ac5487c17e4bafe6",
+        "exit": 0,
+        "source_sha256": "8dde63340c8bb6d602f4995c6511da64f9812f45dc657e5037b75eb544591f23",
+        "source_digest": "5b8e092c102cf3337c5bd0296827e5287053328598fde13c9138a79d91dd2da9",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PrincipalLocalizationCoefficientZero.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-be04ff2f9b8a4f80ac5487c17e4bafe6",
+        "exit": 0,
+        "source_sha256": "3950c12c368fadd386a5eb82442dc8222519826596d6061a01eb3aaa95292f92",
+        "source_digest": "5b8e092c102cf3337c5bd0296827e5287053328598fde13c9138a79d91dd2da9",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PrincipalLocalizationInjectiveAcyclic.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-be04ff2f9b8a4f80ac5487c17e4bafe6",
+        "exit": 0,
+        "source_sha256": "8fb60207095e3b0bf1f4cbb9db7e9f877f88cb9c47de37e53549479728abb909",
+        "source_digest": "5b8e092c102cf3337c5bd0296827e5287053328598fde13c9138a79d91dd2da9",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PrincipalLocalizationZero.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-be04ff2f9b8a4f80ac5487c17e4bafe6",
+        "exit": 0,
+        "source_sha256": "c618a8a8559507bb9705ab8f250ac729540c27f7d2e69881be63b45d7c8c0447",
+        "source_digest": "5b8e092c102cf3337c5bd0296827e5287053328598fde13c9138a79d91dd2da9",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:08:43.576020+00:00",
+      "finish": "2026-11-01T12:09:00.762253+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeCoherence.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:27.239857+00:00",
+      "finish": "2026-11-01T12:09:41.840940+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeIteration.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:12:03.453448+00:00",
+      "finish": "2026-11-01T12:12:52.149336+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeModelEquation.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:08.680050+00:00",
+      "finish": "2026-11-01T12:09:17.739174+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:33.577906+00:00",
+      "finish": "2026-11-01T12:10:36.625596+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIdentity.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:10:37.216870+00:00",
+      "finish": "2026-11-01T12:11:03.325979+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIdentityTorsion.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:11:03.940319+00:00",
+      "finish": "2026-11-01T12:11:13.840574+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIteration.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:13:55.536600+00:00",
+      "finish": "2026-11-01T12:14:30.451508+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIterationTorsion.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:14:31.018322+00:00",
+      "finish": "2026-11-01T12:15:05.509234+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianSourcePolygon.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:13:31.903771+00:00",
+      "finish": "2026-11-01T12:13:41.490980+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/DirectImage.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:53.978251+00:00",
+      "finish": "2026-11-01T12:08:02.618517+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IdentitySourceCanonical.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:45.513429+00:00",
+      "finish": "2026-11-01T12:09:59.695955+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIso.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:13.768316+00:00",
+      "finish": "2026-11-01T12:09:32.831976+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoBaseChange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:13:31.772395+00:00",
+      "finish": "2026-11-01T12:13:54.910839+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoComposition.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:59.005845+00:00",
+      "finish": "2026-11-01T12:10:13.631877+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoCompositionCongruence.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:10:14.340160+00:00",
+      "finish": "2026-11-01T12:10:22.789580+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoRefinement.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:33.588615+00:00",
+      "finish": "2026-11-01T12:09:44.734080+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SuppliedDirectImage.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:08:27.124741+00:00",
+      "finish": "2026-11-01T12:08:37.907758+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/Torsion.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:08:04.169621+00:00",
+      "finish": "2026-11-01T12:08:20.686758+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeCompatibility.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:01.200159+00:00",
+      "finish": "2026-11-01T12:06:13.829259+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeDiagram.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:43.407363+00:00",
+      "finish": "2026-11-01T12:08:06.511137+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeIdentityTransition.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:00.729630+00:00",
+      "finish": "2026-11-01T12:07:17.688624+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeIterationCompatibility.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:01.645706+00:00",
+      "finish": "2026-11-01T12:06:15.615078+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Densification.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:01.409606+00:00",
+      "finish": "2026-11-01T12:06:10.340581+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/DensificationNaturality.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:49.477162+00:00",
+      "finish": "2026-11-01T12:06:59.236847+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Diagram.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:05:57.043220+00:00",
+      "finish": "2026-11-01T12:07:24.514894+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/IdentitySourceModel.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:09.329629+00:00",
+      "finish": "2026-11-01T12:09:26.316544+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Independence.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:27.190213+00:00",
+      "finish": "2026-11-01T12:07:39.063230+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/ModelComparisonCoherence.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:46.164359+00:00",
+      "finish": "2026-11-01T12:08:56.216272+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:11.069836+00:00",
+      "finish": "2026-11-01T12:06:27.302780+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIdentity.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:39.664445+00:00",
+      "finish": "2026-11-01T12:07:53.386287+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIteration.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:41.395954+00:00",
+      "finish": "2026-11-01T12:07:53.239536+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIterationComparison.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:08:03.000626+00:00",
+      "finish": "2026-11-01T12:09:11.135130+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIterationPasting.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:13.057623+00:00",
+      "finish": "2026-11-01T12:10:03.329299+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeNaturality.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:13.927675+00:00",
+      "finish": "2026-11-01T12:07:34.269905+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedIterationSource.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:10:03.962442+00:00",
+      "finish": "2026-11-01T12:12:02.791400+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedSourceBC.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:12:03.477187+00:00",
+      "finish": "2026-11-01T12:13:00.923395+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:05:38.617301+00:00",
+      "finish": "2026-11-01T12:06:00.544329+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChangeIterationPasting.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:18.533665+00:00",
+      "finish": "2026-11-01T12:07:35.076404+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChangeNaturality.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:49.454218+00:00",
+      "finish": "2026-11-01T12:07:13.012090+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawComparisonCoherence.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:02.221613+00:00",
+      "finish": "2026-11-01T12:06:48.713244+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawDenseTransition.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:01.361323+00:00",
+      "finish": "2026-11-01T12:09:07.951350+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIdentityBaseChange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:22.906578+00:00",
+      "finish": "2026-11-01T12:07:36.987626+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIdentityComparison.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:49.497690+00:00",
+      "finish": "2026-11-01T12:06:59.824538+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIterationSource.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:56.271469+00:00",
+      "finish": "2026-11-01T12:08:20.182931+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawRefinementBaseChangeNaturality.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:18.631284+00:00",
+      "finish": "2026-11-01T12:07:38.699783+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceBaseChange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:25.219579+00:00",
+      "finish": "2026-11-01T12:07:55.544432+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceComposition.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:25.266994+00:00",
+      "finish": "2026-11-01T12:07:40.673764+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoBefore.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:01.911698+00:00",
+      "finish": "2026-11-01T12:07:12.156965+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoExchange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:25.317611+00:00",
+      "finish": "2026-11-01T12:06:36.823247+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoNaturality.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:49.543740+00:00",
+      "finish": "2026-11-01T12:07:00.535858+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoPasting.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:50.033609+00:00",
+      "finish": "2026-11-01T12:07:00.404319+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSquare.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:01.296430+00:00",
+      "finish": "2026-11-01T12:06:07.344070+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSquareCongruence.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:08.062528+00:00",
+      "finish": "2026-11-01T12:06:16.464106+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawTargetIso.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:09.820153+00:00",
+      "finish": "2026-11-01T12:07:17.762470+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCModel.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:13:01.497529+00:00",
+      "finish": "2026-11-01T12:13:31.189388+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCNormalization.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:08:03.181587+00:00",
+      "finish": "2026-11-01T12:08:38.939004+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceCompositionModel.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:45.533243+00:00",
+      "finish": "2026-11-01T12:09:58.203618+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoBeforeExchange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:53.411549+00:00",
+      "finish": "2026-11-01T12:07:01.163495+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoBeforeOpen.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:40.425605+00:00",
+      "finish": "2026-11-01T12:06:52.652937+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoCompatibility.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:01.445605+00:00",
+      "finish": "2026-11-01T12:06:10.689316+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoDiagram.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:00.359045+00:00",
+      "finish": "2026-11-01T12:09:12.933897+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoExchange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:14.549093+00:00",
+      "finish": "2026-11-01T12:06:24.545620+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoMapPasting.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:40.389807+00:00",
+      "finish": "2026-11-01T12:06:49.292113+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoNaturality.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:25.751881+00:00",
+      "finish": "2026-11-01T12:06:34.360019+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoPasting.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:25.271675+00:00",
+      "finish": "2026-11-01T12:06:39.666120+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/TargetIsoBaseChange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:00.592328+00:00",
+      "finish": "2026-11-01T12:07:09.095975+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/HigherTorsion.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-be04ff2f9b8a4f80ac5487c17e4bafe6",
+        "exit": 0,
+        "source_sha256": "0de6f5b8299ba4bb9c70a69bc59391b3d73fb3e7b773de419ab4735f525679ae",
+        "source_digest": "5b8e092c102cf3337c5bd0296827e5287053328598fde13c9138a79d91dd2da9",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsion.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "adff86560b91fa63972b7d174bfaa6dfd1529f66a9a76688f3af0b0cf1e5b4bd",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionAssociativity.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "2988cd3360a6a8ffde8a9dca96eef6bef3d32e8ac26c8cb7922a5995b149f312",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionCoherence.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "aa2639e008165b930783b21cc391e939c76465ef9b7a3fc1c19f4c43618387cc",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionCompositionEq.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "63a7cbace2743aaee222c922e3a05abff3bba6b190a2991e418ac57925f988f4",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionForgetCoherence.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "a9e1ad3a173e4d488bfb29086527e8c33c1eeed3dd9e9655069b018668a9bf9a",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:05:33.319343+00:00",
+      "finish": "2026-11-01T12:05:37.968989+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/TorsionPreservation.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-be04ff2f9b8a4f80ac5487c17e4bafe6",
+        "exit": 0,
+        "source_sha256": "0ccd35b740217479c833fc89d7a3d6fcc8a10bf964e8247e8950abb11cccd647",
+        "source_digest": "5b8e092c102cf3337c5bd0296827e5287053328598fde13c9138a79d91dd2da9",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/FiniteDirectImage.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "5d32e9fad0f947c22cea913c9ea2c97bcbae39e025aeb412a490e63f86aeba18",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/Isomorphism.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:05:49.360566+00:00",
+      "finish": "2026-11-01T12:05:56.252063+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperIsomorphism.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:05:38.563082+00:00",
+      "finish": "2026-11-01T12:05:48.792929+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeCompatibility.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:13.108980+00:00",
+      "finish": "2026-11-01T12:07:24.422448+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeDiagram.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:17.671991+00:00",
+      "finish": "2026-11-01T12:09:43.183117+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeIdentityTransition.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:08:49.450266+00:00",
+      "finish": "2026-11-01T12:09:05.704208+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeIterationCompatibility.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:13.061650+00:00",
+      "finish": "2026-11-01T12:07:22.029326+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeModelEquation.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:58.749459+00:00",
+      "finish": "2026-11-01T12:10:08.315791+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianBaseChange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:58.714833+00:00",
+      "finish": "2026-11-01T12:11:00.545769+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianBaseChangeIdentity.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-3aef150601924a268fd418e52fd4ff30",
+      "source": "c76e1ad7dead5901cb5f156f5543aeee2ca473f4866bf58560687b2ea4832ada",
+      "start": "2026-11-01T12:52:23.257339+00:00",
+      "finish": "2026-11-01T12:52:34.372331+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianBaseChangeIteration.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-3aef150601924a268fd418e52fd4ff30",
+      "source": "c76e1ad7dead5901cb5f156f5543aeee2ca473f4866bf58560687b2ea4832ada",
+      "start": "2026-11-01T12:55:54.332942+00:00",
+      "finish": "2026-11-01T12:56:33.181564+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianSourcePolygon.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-3aef150601924a268fd418e52fd4ff30",
+      "source": "c76e1ad7dead5901cb5f156f5543aeee2ca473f4866bf58560687b2ea4832ada",
+      "start": "2026-11-01T12:52:00.687038+00:00",
+      "finish": "2026-11-01T12:52:08.803015+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CohomologicalBound.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "b72b6fd8627cbc0c7543e0cbd4e86db4178902a59734f67bda348b6cfddd25c7",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompactificationDiagram.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:11.451875+00:00",
+      "finish": "2026-11-01T12:08:09.915745+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompactificationIndependence.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:08:20.918206+00:00",
+      "finish": "2026-11-01T12:08:33.129106+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompactifiedBaseChange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:01.155777+00:00",
+      "finish": "2026-11-01T12:07:12.284974+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/Densification.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:08:19.812448+00:00",
+      "finish": "2026-11-01T12:08:28.935871+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/DensificationNaturality.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:08:34.315460+00:00",
+      "finish": "2026-11-01T12:08:42.848982+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/DirectImage.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:08:42.475086+00:00",
+      "finish": "2026-11-01T12:08:54.351229+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalBaseChange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:43.890340+00:00",
+      "finish": "2026-11-01T12:09:57.976585+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalBaseChangeIdentity.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:59.896976+00:00",
+      "finish": "2026-11-01T12:10:15.608274+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalBaseChangeIteration.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-3aef150601924a268fd418e52fd4ff30",
+      "source": "c76e1ad7dead5901cb5f156f5543aeee2ca473f4866bf58560687b2ea4832ada",
+      "start": "2026-11-01T12:53:55.992736+00:00",
+      "finish": "2026-11-01T12:54:49.740747+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/GeometricBounds.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:35.423602+00:00",
+      "finish": "2026-11-01T12:06:40.454715+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/GeometricLocality.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:41.625603+00:00",
+      "finish": "2026-11-01T12:06:50.229310+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/IdentitySourceCanonical.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:10:16.194742+00:00",
+      "finish": "2026-11-01T12:10:31.463681+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/IdentitySourceModel.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:39.706918+00:00",
+      "finish": "2026-11-01T12:09:59.156644+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/Locality.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:05:48.332400+00:00",
+      "finish": "2026-11-01T12:06:01.443885+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/MixedModelTransition.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:08:29.688780+00:00",
+      "finish": "2026-11-01T12:08:59.326283+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:08:38.630702+00:00",
+      "finish": "2026-11-01T12:08:52.714323+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIdentity.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:22.103398+00:00",
+      "finish": "2026-11-01T12:09:39.004512+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIteration.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:08:32.049618+00:00",
+      "finish": "2026-11-01T12:08:48.714297+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIterationComparison.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-10e29f36898940d8ba75c7f80f7d3008",
+      "source": "b1c7e1aad367c47bf385ffbce71ee23ad8c1b32b014e7ad85bd37031a166b827",
+      "start": "2026-11-01T12:26:18.371114+00:00",
+      "finish": "2026-11-01T12:27:22.900716+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIterationPasting.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-10e29f36898940d8ba75c7f80f7d3008",
+      "source": "b1c7e1aad367c47bf385ffbce71ee23ad8c1b32b014e7ad85bd37031a166b827",
+      "start": "2026-11-01T12:27:23.491149+00:00",
+      "finish": "2026-11-01T12:28:14.031085+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeNaturality.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:08:55.080272+00:00",
+      "finish": "2026-11-01T12:09:16.915822+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedIterationSource.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-3aef150601924a268fd418e52fd4ff30",
+      "source": "c76e1ad7dead5901cb5f156f5543aeee2ca473f4866bf58560687b2ea4832ada",
+      "start": "2026-11-01T12:52:00.697654+00:00",
+      "finish": "2026-11-01T12:53:55.394368+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedSourceBC.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-3aef150601924a268fd418e52fd4ff30",
+      "source": "c76e1ad7dead5901cb5f156f5543aeee2ca473f4866bf58560687b2ea4832ada",
+      "start": "2026-11-01T12:53:56.005042+00:00",
+      "finish": "2026-11-01T12:54:56.866756+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/OpenClosedDetection.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "94b79c280b05473cb563a44175d56c291b1c4279dc0fb0480148ac7983e472c2",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperBaseChange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:05:38.550147+00:00",
+      "finish": "2026-11-01T12:05:47.776162+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperBaseChangeTheorem.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:51.073467+00:00",
+      "finish": "2026-11-01T12:06:59.931605+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperRefinementIsomorphism.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:00.503914+00:00",
+      "finish": "2026-11-01T12:07:11.123064+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawBaseChange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:13.033624+00:00",
+      "finish": "2026-11-01T12:07:26.373832+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawBaseChangeIterationPasting.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:35.006939+00:00",
+      "finish": "2026-11-01T12:07:54.387641+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawBaseChangeNaturality.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:08:17.049651+00:00",
+      "finish": "2026-11-01T12:08:31.288720+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawDenseTransition.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:06.414052+00:00",
+      "finish": "2026-11-01T12:09:12.148535+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIdentityBaseChange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:09.247344+00:00",
+      "finish": "2026-11-01T12:09:21.390032+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIdentityComparison.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:08:33.877636+00:00",
+      "finish": "2026-11-01T12:08:41.744952+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIterationSource.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-3aef150601924a268fd418e52fd4ff30",
+      "source": "c76e1ad7dead5901cb5f156f5543aeee2ca473f4866bf58560687b2ea4832ada",
+      "start": "2026-11-01T12:51:41.393993+00:00",
+      "finish": "2026-11-01T12:52:00.116224+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawRefinementBaseChangeNaturality.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:08:39.683807+00:00",
+      "finish": "2026-11-01T12:09:08.580943+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceBaseChange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-3aef150601924a268fd418e52fd4ff30",
+      "source": "c76e1ad7dead5901cb5f156f5543aeee2ca473f4866bf58560687b2ea4832ada",
+      "start": "2026-11-01T12:51:50.253233+00:00",
+      "finish": "2026-11-01T12:52:16.172573+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceComposition.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-3aef150601924a268fd418e52fd4ff30",
+      "source": "c76e1ad7dead5901cb5f156f5543aeee2ca473f4866bf58560687b2ea4832ada",
+      "start": "2026-11-01T12:51:41.427127+00:00",
+      "finish": "2026-11-01T12:51:53.645350+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoBefore.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-3aef150601924a268fd418e52fd4ff30",
+      "source": "c76e1ad7dead5901cb5f156f5543aeee2ca473f4866bf58560687b2ea4832ada",
+      "start": "2026-11-01T12:51:41.464002+00:00",
+      "finish": "2026-11-01T12:51:49.640693+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoExchange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:08:07.826178+00:00",
+      "finish": "2026-11-01T12:08:16.218789+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoNaturality.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:08:21.422646+00:00",
+      "finish": "2026-11-01T12:08:33.097321+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoPasting.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-3aef150601924a268fd418e52fd4ff30",
+      "source": "c76e1ad7dead5901cb5f156f5543aeee2ca473f4866bf58560687b2ea4832ada",
+      "start": "2026-11-01T12:51:32.532933+00:00",
+      "finish": "2026-11-01T12:51:40.814910+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSquare.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:35.918190+00:00",
+      "finish": "2026-11-01T12:07:42.671884+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSquareCongruence.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:54.225877+00:00",
+      "finish": "2026-11-01T12:08:02.234431+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawTargetIso.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-10e29f36898940d8ba75c7f80f7d3008",
+      "source": "b1c7e1aad367c47bf385ffbce71ee23ad8c1b32b014e7ad85bd37031a166b827",
+      "start": "2026-11-01T12:26:26.163925+00:00",
+      "finish": "2026-11-01T12:26:32.690971+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawTransition.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:39.449603+00:00",
+      "finish": "2026-11-01T12:08:07.110911+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawTransitionCoherence.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:08:18.601813+00:00",
+      "finish": "2026-11-01T12:08:26.429262+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RefinementIsomorphism.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:01.289634+00:00",
+      "finish": "2026-11-01T12:07:10.796112+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceBCModel.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-3aef150601924a268fd418e52fd4ff30",
+      "source": "c76e1ad7dead5901cb5f156f5543aeee2ca473f4866bf58560687b2ea4832ada",
+      "start": "2026-11-01T12:54:57.568162+00:00",
+      "finish": "2026-11-01T12:55:27.939062+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceBCNormalization.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-3aef150601924a268fd418e52fd4ff30",
+      "source": "c76e1ad7dead5901cb5f156f5543aeee2ca473f4866bf58560687b2ea4832ada",
+      "start": "2026-11-01T12:52:16.829431+00:00",
+      "finish": "2026-11-01T12:52:42.209337+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceCompositionModel.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-3aef150601924a268fd418e52fd4ff30",
+      "source": "c76e1ad7dead5901cb5f156f5543aeee2ca473f4866bf58560687b2ea4832ada",
+      "start": "2026-11-01T12:51:54.206767+00:00",
+      "finish": "2026-11-01T12:52:07.899663+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIso.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:18.149620+00:00",
+      "finish": "2026-11-01T12:09:36.193739+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoBaseChange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-3aef150601924a268fd418e52fd4ff30",
+      "source": "c76e1ad7dead5901cb5f156f5543aeee2ca473f4866bf58560687b2ea4832ada",
+      "start": "2026-11-01T12:55:28.548190+00:00",
+      "finish": "2026-11-01T12:55:53.712927+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoBeforeExchange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-3aef150601924a268fd418e52fd4ff30",
+      "source": "c76e1ad7dead5901cb5f156f5543aeee2ca473f4866bf58560687b2ea4832ada",
+      "start": "2026-11-01T12:51:24.865919+00:00",
+      "finish": "2026-11-01T12:51:31.878998+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoBeforeOpen.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-10e29f36898940d8ba75c7f80f7d3008",
+      "source": "b1c7e1aad367c47bf385ffbce71ee23ad8c1b32b014e7ad85bd37031a166b827",
+      "start": "2026-11-01T12:26:29.657968+00:00",
+      "finish": "2026-11-01T12:26:38.701165+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoCompatibility.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:37.720229+00:00",
+      "finish": "2026-11-01T12:07:45.435202+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoComposition.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-3aef150601924a268fd418e52fd4ff30",
+      "source": "c76e1ad7dead5901cb5f156f5543aeee2ca473f4866bf58560687b2ea4832ada",
+      "start": "2026-11-01T12:52:08.484584+00:00",
+      "finish": "2026-11-01T12:52:22.538783+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoCompositionCongruence.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-3aef150601924a268fd418e52fd4ff30",
+      "source": "c76e1ad7dead5901cb5f156f5543aeee2ca473f4866bf58560687b2ea4832ada",
+      "start": "2026-11-01T12:52:23.175094+00:00",
+      "finish": "2026-11-01T12:52:32.498530+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoDiagram.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:01.487469+00:00",
+      "finish": "2026-11-01T12:09:17.429210+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoExchange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:07:55.161708+00:00",
+      "finish": "2026-11-01T12:08:03.348503+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoMapPasting.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-3aef150601924a268fd418e52fd4ff30",
+      "source": "c76e1ad7dead5901cb5f156f5543aeee2ca473f4866bf58560687b2ea4832ada",
+      "start": "2026-11-01T12:51:24.879080+00:00",
+      "finish": "2026-11-01T12:51:31.838514+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoNaturality.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:08:10.626718+00:00",
+      "finish": "2026-11-01T12:08:17.865928+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoPasting.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-10e29f36898940d8ba75c7f80f7d3008",
+      "source": "b1c7e1aad367c47bf385ffbce71ee23ad8c1b32b014e7ad85bd37031a166b827",
+      "start": "2026-11-01T12:26:18.326976+00:00",
+      "finish": "2026-11-01T12:26:28.964909+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoRefinement.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:09:36.941848+00:00",
+      "finish": "2026-11-01T12:09:47.388188+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SuppliedDirectImage.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:08:57.360427+00:00",
+      "finish": "2026-11-01T12:09:08.513603+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TargetIsoBaseChange.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-10e29f36898940d8ba75c7f80f7d3008",
+      "source": "b1c7e1aad367c47bf385ffbce71ee23ad8c1b32b014e7ad85bd37031a166b827",
+      "start": "2026-11-01T12:26:18.395712+00:00",
+      "finish": "2026-11-01T12:26:25.543446+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/AlgebraicExtension/FiniteConstantDescent.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-be04ff2f9b8a4f80ac5487c17e4bafe6",
+        "exit": 0,
+        "source_sha256": "01c165f266d08ac82956362367f86f3818d821913a8a79d4289624950c6b15a0",
+        "source_digest": "5b8e092c102cf3337c5bd0296827e5287053328598fde13c9138a79d91dd2da9",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/FinitePureZeroDetection.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "3f0cd842a44ec9a99344ebd773edd29dbdf2f490f9af32cfbafc610acddaa8a9",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/FiniteSeparableZero.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "b8a6f1a284054438bae3d55795ac1d0f72219d3d1d76ad612d7e7ad995c28c6c",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/ConstantMaps.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-be04ff2f9b8a4f80ac5487c17e4bafe6",
+        "exit": 0,
+        "source_sha256": "0439a2f6846f718a3be4cc771ae56a18daaa515bca6906e6d42b16a787a5092f",
+        "source_digest": "5b8e092c102cf3337c5bd0296827e5287053328598fde13c9138a79d91dd2da9",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/FiniteTypeCohomology.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-be04ff2f9b8a4f80ac5487c17e4bafe6",
+        "exit": 0,
+        "source_sha256": "c8c5546b0678174069410be465f53c5bb86ef2a6adafa17340e2f32123226cba",
+        "source_digest": "5b8e092c102cf3337c5bd0296827e5287053328598fde13c9138a79d91dd2da9",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/StageCohomology.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "8aef4de5eba8c764e588dc798dc170f4d51da66ee92e92f6273fe16f3c5a6ad1",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/CommonFieldCompositeZero.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-be04ff2f9b8a4f80ac5487c17e4bafe6",
+        "exit": 0,
+        "source_sha256": "bd9f962f32f382da2630ee7adbbf1f883e71ec5102dc5ed3628fc78fb6196a90",
+        "source_digest": "5b8e092c102cf3337c5bd0296827e5287053328598fde13c9138a79d91dd2da9",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/CompositeZero.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-be04ff2f9b8a4f80ac5487c17e4bafe6",
+        "exit": 0,
+        "source_sha256": "105b1f3480f5cc7c722eeb4c2c25bdd40855c7bd82b7b929a4710cd53e0858f4",
+        "source_digest": "5b8e092c102cf3337c5bd0296827e5287053328598fde13c9138a79d91dd2da9",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/FiniteSource.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "d9cf592669f0d10d259724af7c3388c91e669204df40bf5abc8fb62ebd3386e0",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/CohomologyPullback.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "bcd853d2ab14b385d8f48e23424605db93b8a7e2eb34b0618097eaae8552a295",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ConstructibleAffineGenericOpen.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "363d031b30560d6f427a891bdf6c7bc2bb3c6064811d8337c46f2ebf5b225adc",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ConstructibleAffineNoetherian.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "9f54a2b03bf68205a628ac2d1d612188e6a398cf22b644173a442f47ec06c750",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ConstructibleDescent.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "1382a81b16def10b611944a4553cead666c0badbc838c414a8327afaa40a7536",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ConstructibleGenericOpen.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "26b4bf89893e411c2e5eee9ed47a63e8c2b3e481001a740f8a4cb9535ebedd89",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ConstructibleNoetherian.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "25af3bbb8123b48af096b01682c19dd11b052982726d1170c75eb556f8e71557",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ConstructibleSplitBase.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "f867bca332644db103cab575e6ea41333413dc072c474a0d990f314c13f44ba7",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/GeometricNeighborhoodBaseChange.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "4f3c79c1095660e89ad9f2dc05ed7b1a32663bd5505189386793c374f9318b0c",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/GeometricNeighborhoodLimit.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "a5d2b89bcbb12287ce46c5ed4906e7f3fe877ce22fb77dc2a3e32ad79d202adf",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/HigherComposition.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "2068246875394225b2a8c85baa66127fda85f8e98645f6ed83d7c368e798d2f2",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/IsoOpenUnitCokernel.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "b686ccee437f32d561047ff36284abd26a22a59742bc96323995745ac511a212",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/MonomorphismCounit.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "f100b750055ec0bda3f4865d0f713742358a526dd8d6869ea77fabe9810775be",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/SplitThickeningImage.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "e8a571324fb30ffa596fb0cac34eec472462b0e87ce76bee7d832bee8954fcc9",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/SurjectiveMonomorphism.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "fe3da6bb094af4f83deddf49b3c39b7ca8ab0eecef4f5ddac28c098e0fb522a6",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/SurjectiveUnit.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "db38a48023785a86391f30e5ce1b4ddd217bf06fa3024072c09ed75010083af4",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/AffineOpenLocalization.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "3e02a54ce3c6a9901bfd2aafb5a0b829fd8549b00daa886be66382e4c6a2937f",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/FiniteSurjectiveDescent.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "3538c5aef56e1dc1fe908c82e8aae01fa825acd595ba0a5984e506807bdc67d3",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/HigherImageConstructibleInduction.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "2df1abc6a6622fd7fe738c730c208cce646a6ac64def1a9e11f5208fb1c1732e",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/HigherImageFiniteCogenerators.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "ebf41360b70810ecd29bdcc5523d59fa7cff78263d7fd24a8d1135a19f93afe7",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/ProjectiveFromCurves.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "5badf0c1282f9d7376872a732da24f93abbcf05b861a850cfb7ef3d30fe5d379",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/ProjectiveFromCurves/Relative.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "ddcedd61ed7e0138abbec48b6cb2c658338b504a5912ba6cd22c10e4cb7e0bc0",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/ProperConstantDegreeZero.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "d4b32fcfc47691a25c804eefcacf89829de6878e07712c30a6cf2680fe8ee16f",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/ProperFromCurves.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "dbe83dffef581dd630d4e616ad89e9e479e2e28c15c471e63982b7ef30fb7a9b",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/SurjectiveCompositionDescent.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "d66ed5a6f3bfdfd043e7b9f36dbfd2aa0a33c1aad309677e4e42e25409bf15f2",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H0/ConnectedBaseChangeSections.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "0faf3b8e78cd9789a87bacb164fbabb398895e7ceefa6d6c460a5e19d4a4b3a1",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H0/ConnectedPullbackSections.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "ea3583b166e587dea1f063a90d507d4c5e0fbbb2c794cf80d45d808f61f91d17",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H0/ConnectedPullbackUnit.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "db3ad965e7ea3701eaeb1eab63bdafd153335d44745c411dfc67b3388e2065da",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H0/UniversallyOpenAmalgamation.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "5a70b89d467633ea680924d574e740e1cac1ffa8799c96d0473ed4420623e401",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/FiniteEtaleCoinduction.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "d1442efa67bdae3803b4ce1fb88d301015454fcb7d0f5f73b956c8acd3dfca20",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Localization/ClosedSummandDetection.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "0aa0b00067b24fee258a902420792275cdb440e48286c0e86128e60556a58db0",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Localization/DerivedDetection.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "2cd3a53bb704ab766203bc63f76e992e92e08f4b602f423a42ca7d8198fe0e39",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Localization/DerivedOpenClosed.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "c1f42cf62ce89ac28532ed824507c461069d473c8c34e0df5613022aab51bbea",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Localization/ModuleInjectiveRetract.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "34384dc5c16de89e2b0eafb573d073cfea5e53eb1821825a18925a05b43989fd",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Localization/ModuleRestrictionDetection.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "b38e4faeba5ba1a09e0776ea9bbe742bea708d249f7ed10fecdcf7a2a1a52c10",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/ModuleCoefficients/FiniteEtaleDescent.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "a5f8127696fb156ef2965b1e1053f18c20180b9d166347c26f02e2abbd708aea",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/FiniteTests.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "891d5d55572faebdec5c78e0387d00061f7a91b33c21df52d854e0d2ae967eed",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/Ordinary.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "83b37a354c2183a67e172ab94df0ec7bc7a03150256ad5434e274a17f519f7c1",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/OrdinaryCartesian.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "b376869f97ee98eb9b308733cfdf6e762778a314e28a9e8b45bbb6c2f2f16786",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/OrdinaryConnectedCharts.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "c0aefd72e71726bf203b6afcf0fbaae20a7b4fc4a69d1e0596a3780b98f27815",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeChartSections.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "6a05cb8fd57df49b8528b301380fd7599a50712ff6b63bf3e06662e2a3dc6739",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeNeighborhoodGerms.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "25a8dd36232bee5d28f5e1edab02a6f79acc103ab77d26477df51427327385d9",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartLimitZero.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-be04ff2f9b8a4f80ac5487c17e4bafe6",
+        "exit": 0,
+        "source_sha256": "58e4ac3572ed015d9e1f1c13365d6d41dd6fbe8c500b41ea1d976198fdce1551",
+        "source_digest": "5b8e092c102cf3337c5bd0296827e5287053328598fde13c9138a79d91dd2da9",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/EtaleDirectImageMate.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "cd67dc39629e8b26d3aed86d4a704ac4ce8c73e6f5aa5bed807b60f2562a866f",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricCohomologyDiagram.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-be04ff2f9b8a4f80ac5487c17e4bafe6",
+        "exit": 0,
+        "source_sha256": "8a2c3e45b3ae868474324781a2c70a3de0d632e6e327ada71e3a7b24692d2440",
+        "source_digest": "5b8e092c102cf3337c5bd0296827e5287053328598fde13c9138a79d91dd2da9",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonEquation.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T11:54:21.756465+00:00",
+      "finish": "2026-11-01T12:02:24.840736+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackCohomologyCocone.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-be04ff2f9b8a4f80ac5487c17e4bafe6",
+        "exit": 0,
+        "source_sha256": "dfe8ee004b074c32ea35edbc475e0e3779cedd14bd94dc96a643871e5a762dd3",
+        "source_digest": "5b8e092c102cf3337c5bd0296827e5287053328598fde13c9138a79d91dd2da9",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackCohomologyDescent.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "aecf4b67bdf8145d31538c90ffc0094f473f769e04e9614459c9765f8e511845",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackConstantDescent.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-be04ff2f9b8a4f80ac5487c17e4bafe6",
+        "exit": 0,
+        "source_sha256": "a69d746ff3fe435aec8ac4aa2ce92b908227c2d5973397009d3757cff8d7a168",
+        "source_digest": "5b8e092c102cf3337c5bd0296827e5287053328598fde13c9138a79d91dd2da9",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackLimitCoefficient.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "33e9a98e9cfd4627b47338fbb7c3c0e12252245e68670d9a77773e91c99ca63d",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Torsion/DirectImage.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-be04ff2f9b8a4f80ac5487c17e4bafe6",
+        "exit": 0,
+        "source_sha256": "fdf0ecff1a828a5aa14aa4ecfb9f81cb8b2f0c352877e2abdf7d08ebb7b36017",
+        "source_digest": "5b8e092c102cf3337c5bd0296827e5287053328598fde13c9138a79d91dd2da9",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Vanishing/BoundedHypercohomology.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "345d57a712fc275b043f9ded72751873109902dfc4beb0fc01943acb6c890869",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Vanishing/ClosedImmersion.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "43ab5f0637dcd850a6e72f37761dde8755a83c4b4fed094a5af1b1bbe5b2c2a2",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Vanishing/CurveConstants.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "b7215acd82b9171ad78dee866e58a6dc96ffec8279d0b5ee35c9cda0ac28bd0c",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Vanishing/CurveFiniteConstants.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "3a76cbbb85fa9df2bcf21f83802e794428355627afb4b9f198cf9788b729e8f9",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Vanishing/CurveGaloisCoefficients.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "b78d9f8fc3295e83a586de9baef499ece79133e2d69a7e440340b9b486957fe6",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Vanishing/CurveOpenConstants.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "741836f522aaab7207515e6923186553efbb8a46d68ae4226438162e638a8a87",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Vanishing/FiniteDimension.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:16.711638+00:00",
+      "finish": "2026-11-01T12:06:27.856089+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Vanishing/FiniteEtaleDescent.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "40dfbac319101fd20ce0ce30571dd8780f1d2515c4465541128775e0ff0f0641",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Vanishing/FiniteModification.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "3a03274ddc72bf40ce241784243f819b35390389177d244ffe1b21abc87f890a",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Vanishing/FiniteModificationTorsion.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-be04ff2f9b8a4f80ac5487c17e4bafe6",
+        "exit": 0,
+        "source_sha256": "2c6a89a9107b0d766be8749f0a94592fe3e66fa5546d665caa013a5ee039dcb1",
+        "source_digest": "5b8e092c102cf3337c5bd0296827e5287053328598fde13c9138a79d91dd2da9",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Vanishing/IntegralBoundaryReduction.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-be04ff2f9b8a4f80ac5487c17e4bafe6",
+        "exit": 0,
+        "source_sha256": "4ffc4bdb534346e33504b546cafd2b021f53341503a102533d2eda21efbc3eee",
+        "source_digest": "5b8e092c102cf3337c5bd0296827e5287053328598fde13c9138a79d91dd2da9",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Vanishing/IntegralCurves.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "bf2b63268d443e37fbf4a592f1f827df6335876a3d80ff43010366c52e260e3a",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Vanishing/IntegralDimensionStep.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:05:57.561298+00:00",
+      "finish": "2026-11-01T12:06:16.154658+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Vanishing/LerayBound.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "40ab8679e774ed4e1d32cd01e11e01569a36177d18b6453afa9ce1e6f156d5aa",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Vanishing/ModificationCone.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-be04ff2f9b8a4f80ac5487c17e4bafe6",
+        "exit": 0,
+        "source_sha256": "abd691668dfb0c2d6d04498e4ed6de9dfb1e8090b95c0b4ff346abd71cf99a4e",
+        "source_digest": "5b8e092c102cf3337c5bd0296827e5287053328598fde13c9138a79d91dd2da9",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Vanishing/ProperCurves.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "8ad96f04c16b6790021345813d5ad6eb368e89f9ebe0171b14a73cf8cf1724d0",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Vanishing/ProperFiniteDimension.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:06:28.673862+00:00",
+      "finish": "2026-11-01T12:06:34.714787+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Vanishing/ProperGeometricFibres.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:05:33.251958+00:00",
+      "finish": "2026-11-01T12:05:50.996186+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Vanishing/ProperRelativeCurves.lean": {
+      "kind": "actual_later_native_frontend_pass",
+      "run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+      "source": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+      "start": "2026-11-01T12:05:51.631534+00:00",
+      "finish": "2026-11-01T12:05:57.004101+00:00",
+      "exit_code": 0
+    },
+    "Aglib/AlgebraicGeometry/Geometrically/Integral/GenericCommonOpen.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "560cb71340097918a11dc2443f96877012abf16bf5006b2a519704353336b5d7",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Geometrically/Integral/SmoothGenericIntegrality.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "2d8019000e4ef7220d66fdd88406aefa62db55bdcbc339c2457d073e9bf6f559",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Geometrically/Integral/SmoothGenericSpreading.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "7ce94b84f903cba7f7dc9e6510bb223936dbf60c04063c0417f83c0267d9d348",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/Descent/FiniteFieldGalois.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "152dfd32241640cb09db20ad2338c7ba7161823fe118a4b8f04adf09f7f34771",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/Descent/FiniteFieldPointedGalois.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "1d39e3867079d82046a2080d7656b58f41515db49971fead89c5108dcb6a9e26",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/Descent/GenericBaseOpenGalois.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "cba577fbd13936cbb8a6261ee92e5c7a5e359c2f8a2a4331b045f717335d1149",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/Descent/GenericFractionGalois.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "a8916d358459a98febf795bed71a29c71234e0d2630edd1961a2aa5065e1466b",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/Descent/GenericRadicialAffineChart.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "7aebb9d2d919919c2f8f9b75aab564da901fc5255ea9dd627bec8dcb03c9916d",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/Descent/GenericRadicialChart.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-8e40915da29e4ced87e6e3bd9857e104",
+        "exit": 0,
+        "source_sha256": "e6d73b08f4550f9b557008f07b26816c780b3669b853261a8e5fd20b8476825a",
+        "source_digest": "7dbb3d0e6e7284ca2e8e14608aed4476e568139952fc846e1246e2c053ada33c",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-8e40915da29e4ced87e6e3bd9857e104/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/Descent/LimitAutomorphisms.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "778c1207b149dbab5932ccecfb7a727aedf665b07e4388a2ca7bdd304781233f",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Morphisms/Smooth/ConnectedLocalFactorization.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "5727b7de8087fe3e7b818c5edfb54b196b342b797810386774d632fbe388b4fb",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Morphisms/Smooth/GenericSectionComponentDenseOpen.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "ff17f093e38f1a42a40f6e17567da74f6abd3c88c6e5ac2252c2d41bf88352c5",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Morphisms/Smooth/PointedAffineEtaleComponent.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "9ddb8bb56349c917d95c7aec36124213171475e207e937eff8c1d63869d836b3",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Morphisms/Smooth/SectionComponentLocusConstructible.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "67c8e00f4b049851ace5dec79c9373c7132c675e133388bf955a24ae87429a08",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Morphisms/Smooth/SectionComponentLocusOpen.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "d16048a17ea49fe9794e5c71bf6d27d66cd7d6c599e99b554d2fd879925d9e7b",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Morphisms/Smooth/SectionComponentLocusRestriction.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "a403c03d392437d3f5c271690791dbbf6f95474e20c374258c1ba8a8e422732e",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Morphisms/Smooth/StandardSectionComponentBaseChange.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "0ca2ef8661a4e6b4edbe792120f5f53b5517fe66320a39b49a4fbfff0f692cad",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Morphisms/Smooth/StandardSectionComponentOpen.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "fdfad02749ed675e00b8603ffd0339a32f30e843a70502ba3c4a5821421e14bb",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Morphisms/Smooth/StandardSectionComponentRestriction.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "0fab96884916427ecbf6c5d1337528bbf23dc1cebcba6cca1b1b5f8816e9ccf9",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Sites/EtaleAffineBasis/RepresentativeSections.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "0515bde6266dd70f373d34c0fba19e3894d452a5c47fea2e97398a9061ff768d",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Spec/PrincipalCommonOpen.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "659824cafe0b9fd69590dbc5ebc80b03c7d0a551afffd21cc00647ece9f93941",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Spec/PrincipalNeighborhoodSpreading.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "14f0cef438b8980ce6470c9133cd6a767ec4a15b1d42b657a423956ae07c410c",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    },
+    "Aglib/AlgebraicGeometry/Spec/RootPrincipalNeighborhoodSpreading.lean": {
+      "kind": "retained_exact_source_pass",
+      "origin": {
+        "run": "remote-ffb5ed4480b14a4384a1ba8e996ceba2",
+        "exit": 0,
+        "source_sha256": "94d2083297cb69502432a56f4ebe3e3584d1ae4791add246f9d555ef879618e4",
+        "source_digest": "acd6b37a8901ed26462e4804e57a944188473fe70fde9d92d154f5fec154e6d6",
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-main-p-d-runs/remote-ffb5ed4480b14a4384a1ba8e996ceba2/receipt.json",
+        "changed_scope_provider_drift": []
+      },
+      "context": "Existing CPP-COVERAGE-MAP matching changed-context coverage retained; no new invocation"
+    }
+  },
+  "boundary": "Each native pass keeps its actual source epoch. First two runs failed only on named header inputs; later passes cover those repairs. Do not sum frontend counts into theorem or source totals. Final combined ordinary predicates and publication remain open. No new source/proof/native/axiom check was run by this reconciliation owner."
+}

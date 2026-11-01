@@ -1,0 +1,128 @@
+{
+  "B_source": "d44fd3b64f49e5255e2360612503b82c7149d01b7fc67aff70917e4735c5c3aa",
+  "D_source": "72442aa899c4beb50d2b2c971528e60795e4252aabb12e0f8aa96a3bbf66ea58",
+  "rows": [
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenCounit.lean",
+      "B_source_sha256": "f313724fa8793076f582aebbf44e212c15bda13acfa31944f2198fff9c84c20b",
+      "D_source_sha256": "f313724fa8793076f582aebbf44e212c15bda13acfa31944f2198fff9c84c20b",
+      "B_olean_exists": true,
+      "B_ilean_exists": true,
+      "D_olean_exists": true,
+      "trace_exists": true,
+      "trace_keys": [
+        "synthetic",
+        "schemaVersion",
+        "outputs",
+        "log",
+        "inputs",
+        "depHash"
+      ],
+      "trace_depHash": "ab3ddd8089c611fa",
+      "trace_hash": null
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/AtIdeal/Data.lean",
+      "B_source_sha256": "1d1b8701fc37f027b5a3993d2a5239d3442d764ab62bd02d16d82ae5d97b2e57",
+      "D_source_sha256": "1d1b8701fc37f027b5a3993d2a5239d3442d764ab62bd02d16d82ae5d97b2e57",
+      "B_olean_exists": true,
+      "B_ilean_exists": true,
+      "D_olean_exists": true,
+      "trace_exists": true,
+      "trace_keys": [
+        "synthetic",
+        "schemaVersion",
+        "outputs",
+        "log",
+        "inputs",
+        "depHash"
+      ],
+      "trace_depHash": "53a4d8ab01eb866d",
+      "trace_hash": null
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/PointDivisor/DivisorClass.lean",
+      "B_source_sha256": "b9e7e37a06fb2bc6d034f519a38dcae4c3f755469156edf88b2ec90e8a7c0ecd",
+      "D_source_sha256": "b9e7e37a06fb2bc6d034f519a38dcae4c3f755469156edf88b2ec90e8a7c0ecd",
+      "B_olean_exists": false,
+      "B_ilean_exists": false,
+      "D_olean_exists": true,
+      "trace_exists": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/PullbackComposition.lean",
+      "B_source_sha256": "03b1ec39221f5357c816fca805ad642ab306cae9b1098457208fc0ec067b0cb6",
+      "D_source_sha256": "03b1ec39221f5357c816fca805ad642ab306cae9b1098457208fc0ec067b0cb6",
+      "B_olean_exists": false,
+      "B_ilean_exists": false,
+      "D_olean_exists": true,
+      "trace_exists": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermNaturality.lean",
+      "B_source_sha256": "bffc650e6ed79a9dd2b1b5942bbc9a6999a6486a935cb063d4e8e65c7d3bc2a6",
+      "D_source_sha256": "bffc650e6ed79a9dd2b1b5942bbc9a6999a6486a935cb063d4e8e65c7d3bc2a6",
+      "B_olean_exists": true,
+      "B_ilean_exists": true,
+      "D_olean_exists": true,
+      "trace_exists": true,
+      "trace_keys": [
+        "synthetic",
+        "schemaVersion",
+        "outputs",
+        "log",
+        "inputs",
+        "depHash"
+      ],
+      "trace_depHash": "b11be7d199904ba4",
+      "trace_hash": null
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductOriginalDiagram.lean",
+      "B_source_sha256": "c44b571f721a715814aaea39843ed9f6d11942ad46efb844cf780b1e1b7abbf6",
+      "D_source_sha256": "c44b571f721a715814aaea39843ed9f6d11942ad46efb844cf780b1e1b7abbf6",
+      "B_olean_exists": true,
+      "B_ilean_exists": true,
+      "D_olean_exists": true,
+      "trace_exists": true,
+      "trace_keys": [
+        "synthetic",
+        "schemaVersion",
+        "outputs",
+        "log",
+        "inputs",
+        "depHash"
+      ],
+      "trace_depHash": "39c14a0cdf013200",
+      "trace_hash": null
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductRestrictionValues.lean",
+      "B_source_sha256": "66763808b564cdbe351b3f1d588ca127a924eb451cf6b35fe364eef14a9fbaa0",
+      "D_source_sha256": "66763808b564cdbe351b3f1d588ca127a924eb451cf6b35fe364eef14a9fbaa0",
+      "B_olean_exists": false,
+      "B_ilean_exists": false,
+      "D_olean_exists": true,
+      "trace_exists": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Picard/PowerDescent.lean",
+      "B_source_sha256": "b3f222a521a966a242934ecd625809680dada4f40c8b3c7f85c38acf4026ef77",
+      "D_source_sha256": "b3f222a521a966a242934ecd625809680dada4f40c8b3c7f85c38acf4026ef77",
+      "B_olean_exists": true,
+      "B_ilean_exists": true,
+      "D_olean_exists": true,
+      "trace_exists": true,
+      "trace_keys": [
+        "synthetic",
+        "schemaVersion",
+        "outputs",
+        "log",
+        "inputs",
+        "depHash"
+      ],
+      "trace_depHash": "b24dbb86156fb23f",
+      "trace_hash": null
+    }
+  ]
+}

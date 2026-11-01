@@ -1,0 +1,3550 @@
+{
+  "archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/snapshot/agent-c-independent-ext-quasifinite-source-20261027T101616Z/aglib",
+  "supplied_archive_tar_sha256": "0a26b49033cb47986944110e352b6c12468d40c058310182d7c5a97aa9467738",
+  "disposition_map": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/current-public-disposition-20261030/DISPOSITION-MAP.json",
+  "boundary": "All listed origins are completed_claim. Bare D build IDs are UNBOUND/colliding historical provenance, not fresh evidence on this candidate. Original40 is excluded.",
+  "rows": [
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Adjunction/CompositionPredicate.lean",
+      "source_sha256": "6b797970c0a37ec55ce54dc852e2438634714cb40420ee178ce6d50854f2c724",
+      "claims": [
+        {
+          "index": 549,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 62,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "6b797970c0a37ec55ce54dc852e2438634714cb40420ee178ce6d50854f2c724",
+          "receipt": "build516",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build516",
+            "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Adjunction/CompositionPredicate.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "6b797970c0a37ec55ce54dc852e2438634714cb40420ee178ce6d50854f2c724"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/ExactPasting.lean",
+      "source_sha256": "c420086a9e4b620be154c07625f0e6851d97ca7c86f66b67fabd83b505b7ab67",
+      "claims": [
+        {
+          "index": 520,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 33,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "c420086a9e4b620be154c07625f0e6851d97ca7c86f66b67fabd83b505b7ab67",
+          "receipt": "build493",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build493",
+            "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/ExactPasting.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "c420086a9e4b620be154c07625f0e6851d97ca7c86f66b67fabd83b505b7ab67"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/IsomorphismComparison.lean",
+      "source_sha256": "dafe7e69e00074e45511e3a3af04a1f9b8f4a8dfa2ba9a40aa327d054bbbc1f9",
+      "claims": [
+        {
+          "index": 518,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 31,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "dafe7e69e00074e45511e3a3af04a1f9b8f4a8dfa2ba9a40aa327d054bbbc1f9",
+          "receipt": "build493",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build493",
+            "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/IsomorphismComparison.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "dafe7e69e00074e45511e3a3af04a1f9b8f4a8dfa2ba9a40aa327d054bbbc1f9"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChange.lean",
+      "source_sha256": "e02e1674abc90e8b75afe8e5037bf328b820766278a43d2f6a9902df8f4e141b",
+      "claims": [
+        {
+          "index": 585,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 98,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "e02e1674abc90e8b75afe8e5037bf328b820766278a43d2f6a9902df8f4e141b",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChange.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "e02e1674abc90e8b75afe8e5037bf328b820766278a43d2f6a9902df8f4e141b"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeCoherence.lean",
+      "source_sha256": "81b7073e5270505cbe085d6fedeab4ca9c324ff16f6a9c371a8c71b32d84140c",
+      "claims": [
+        {
+          "index": 666,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 179,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "81b7073e5270505cbe085d6fedeab4ca9c324ff16f6a9c371a8c71b32d84140c",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeCoherence.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "81b7073e5270505cbe085d6fedeab4ca9c324ff16f6a9c371a8c71b32d84140c"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeIteration.lean",
+      "source_sha256": "f0cc3a245b798dabc5fdffc43f1879e7ac8ecd16a1c35d2820b8e4ec5316d4c7",
+      "claims": [
+        {
+          "index": 691,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 204,
+          "claim_kind": "historical_accepted",
+          "claimed_sha256": "f0cc3a245b798dabc5fdffc43f1879e7ac8ecd16a1c35d2820b8e4ec5316d4c7",
+          "receipt": "build176",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build176",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeIteration.lean",
+            "provenance": "historical accepted source restored unchanged; NOT recompiled or revalidated",
+            "snapshot_sha256": "f0cc3a245b798dabc5fdffc43f1879e7ac8ecd16a1c35d2820b8e4ec5316d4c7"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeModelEquation.lean",
+      "source_sha256": "202baf80efcf6d0297d311893c09d017b7c79ed5081a692adbb5ea5d469beb14",
+      "claims": [
+        {
+          "index": 667,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 180,
+          "claim_kind": "historical_accepted",
+          "claimed_sha256": "202baf80efcf6d0297d311893c09d017b7c79ed5081a692adbb5ea5d469beb14",
+          "receipt": "build163",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build163",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeModelEquation.lean",
+            "provenance": "historical accepted source restored unchanged; NOT recompiled or revalidated",
+            "snapshot_sha256": "202baf80efcf6d0297d311893c09d017b7c79ed5081a692adbb5ea5d469beb14"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChange.lean",
+      "source_sha256": "98e2dbcf7f0a702fb5b7b7947b41b73fb555b90236904b6bb7495d1db8d45dcf",
+      "claims": [
+        {
+          "index": 865,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 378,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "98e2dbcf7f0a702fb5b7b7947b41b73fb555b90236904b6bb7495d1db8d45dcf",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChange.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "98e2dbcf7f0a702fb5b7b7947b41b73fb555b90236904b6bb7495d1db8d45dcf"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIdentity.lean",
+      "source_sha256": "40e218d2421fc71190a4c06b203f9d8f39a7451f28397883126f2b77b3ed8622",
+      "claims": [
+        {
+          "index": 1025,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 538,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "40e218d2421fc71190a4c06b203f9d8f39a7451f28397883126f2b77b3ed8622",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIdentity.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "40e218d2421fc71190a4c06b203f9d8f39a7451f28397883126f2b77b3ed8622"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIdentityTorsion.lean",
+      "source_sha256": "a20e91afcff1873524bf2637ef856391a6dbd5d6b26b29c9a50443bb280acf6a",
+      "claims": [
+        {
+          "index": 1045,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 558,
+          "claim_kind": "historical_accepted",
+          "claimed_sha256": "a20e91afcff1873524bf2637ef856391a6dbd5d6b26b29c9a50443bb280acf6a",
+          "receipt": "build352",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build352",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIdentityTorsion.lean",
+            "provenance": "historical accepted source restored unchanged; NOT recompiled or revalidated",
+            "snapshot_sha256": "a20e91afcff1873524bf2637ef856391a6dbd5d6b26b29c9a50443bb280acf6a"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIteration.lean",
+      "source_sha256": "3957d957712d96b8cfba2cf942f20de746df3d314181b0f179707fe10497066f",
+      "claims": [
+        {
+          "index": 1042,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 555,
+          "claim_kind": "historical_accepted",
+          "claimed_sha256": "3957d957712d96b8cfba2cf942f20de746df3d314181b0f179707fe10497066f",
+          "receipt": "build349",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build349",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIteration.lean",
+            "provenance": "historical accepted source restored unchanged; NOT recompiled or revalidated",
+            "snapshot_sha256": "3957d957712d96b8cfba2cf942f20de746df3d314181b0f179707fe10497066f"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIterationTorsion.lean",
+      "source_sha256": "c87627d350d543e2f673c076e6feb6861494632285a602fafeae785d0c6601ad",
+      "claims": [
+        {
+          "index": 1043,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 556,
+          "claim_kind": "historical_accepted",
+          "claimed_sha256": "c87627d350d543e2f673c076e6feb6861494632285a602fafeae785d0c6601ad",
+          "receipt": "build349",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build349",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIterationTorsion.lean",
+            "provenance": "historical accepted source restored unchanged; NOT recompiled or revalidated",
+            "snapshot_sha256": "c87627d350d543e2f673c076e6feb6861494632285a602fafeae785d0c6601ad"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangePastingGeometry.lean",
+      "source_sha256": "5c880250c8d4ebaa1f2880e5b518e8bc6ad79449a71d3de4f1b149cbff6a9251",
+      "claims": [
+        {
+          "index": 949,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 462,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "5c880250c8d4ebaa1f2880e5b518e8bc6ad79449a71d3de4f1b149cbff6a9251",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangePastingGeometry.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "5c880250c8d4ebaa1f2880e5b518e8bc6ad79449a71d3de4f1b149cbff6a9251"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianIdentityAlgebra.lean",
+      "source_sha256": "65c096ec762a330813411fa4b4889bc8bff9df588a26b48b0bff3507e0cf38e5",
+      "claims": [
+        {
+          "index": 1018,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 531,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "65c096ec762a330813411fa4b4889bc8bff9df588a26b48b0bff3507e0cf38e5",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianIdentityAlgebra.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "65c096ec762a330813411fa4b4889bc8bff9df588a26b48b0bff3507e0cf38e5"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianPastingAlgebra.lean",
+      "source_sha256": "2eca05b6177fb95d13804b5922be980d38bdadba8f2a814c59a965e5607e3b18",
+      "claims": [
+        {
+          "index": 1033,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 546,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "2eca05b6177fb95d13804b5922be980d38bdadba8f2a814c59a965e5607e3b18",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianPastingAlgebra.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "2eca05b6177fb95d13804b5922be980d38bdadba8f2a814c59a965e5607e3b18"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianPastingConclusion.lean",
+      "source_sha256": "6554d317a49e9447e3fd9b9af9583eb0fe92445241be6ad7682a827764b4e391",
+      "claims": [
+        {
+          "index": 1040,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 553,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "6554d317a49e9447e3fd9b9af9583eb0fe92445241be6ad7682a827764b4e391",
+          "receipt": "build519",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build519",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianPastingConclusion.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "6554d317a49e9447e3fd9b9af9583eb0fe92445241be6ad7682a827764b4e391"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianPastingTarget.lean",
+      "source_sha256": "514083cd3afb0a39202cb18812cd7efa2dfb0dc91beac2c347eb450ad7f4cf3d",
+      "claims": [
+        {
+          "index": 1026,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 539,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "514083cd3afb0a39202cb18812cd7efa2dfb0dc91beac2c347eb450ad7f4cf3d",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianPastingTarget.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "514083cd3afb0a39202cb18812cd7efa2dfb0dc91beac2c347eb450ad7f4cf3d"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianSourcePolygon.lean",
+      "source_sha256": "58876d94c64b6c4e1e7654a236481d2d2044910fa95f848f5500bd5e807efb7e",
+      "claims": [
+        {
+          "index": 1041,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 554,
+          "claim_kind": "historical_accepted",
+          "claimed_sha256": "58876d94c64b6c4e1e7654a236481d2d2044910fa95f848f5500bd5e807efb7e",
+          "receipt": "build348",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build348",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianSourcePolygon.lean",
+            "provenance": "historical accepted source restored unchanged; NOT recompiled or revalidated",
+            "snapshot_sha256": "58876d94c64b6c4e1e7654a236481d2d2044910fa95f848f5500bd5e807efb7e"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianSourcePolygonAlgebra.lean",
+      "source_sha256": "cf62a0f61622890623784d4b8f4acdacf4ba18b8cf44279d48ebb3df27592d4d",
+      "claims": [
+        {
+          "index": 1039,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 552,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "cf62a0f61622890623784d4b8f4acdacf4ba18b8cf44279d48ebb3df27592d4d",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianSourcePolygonAlgebra.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "cf62a0f61622890623784d4b8f4acdacf4ba18b8cf44279d48ebb3df27592d4d"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianSourcePolygonGeometry.lean",
+      "source_sha256": "e2317d6729bcf312f35620db5398224ce056359b19829fd71fd1426db04f2bb6",
+      "claims": [
+        {
+          "index": 1032,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 545,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "e2317d6729bcf312f35620db5398224ce056359b19829fd71fd1426db04f2bb6",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianSourcePolygonGeometry.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "e2317d6729bcf312f35620db5398224ce056359b19829fd71fd1426db04f2bb6"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IdentityBaseChangeAlgebra.lean",
+      "source_sha256": "9705a697995ca7dd0e53be44dcda09e6594f783d90bbb4c5809c9a5ea28dd7e6",
+      "claims": [
+        {
+          "index": 633,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 146,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "9705a697995ca7dd0e53be44dcda09e6594f783d90bbb4c5809c9a5ea28dd7e6",
+          "receipt": "build499",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build499",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IdentityBaseChangeAlgebra.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "9705a697995ca7dd0e53be44dcda09e6594f783d90bbb4c5809c9a5ea28dd7e6"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IdentitySourceCanonical.lean",
+      "source_sha256": "a3835aca025b30305e27a6da932e550645d8a5e5f9ff18bfd42b89cd8c1f0f65",
+      "claims": [
+        {
+          "index": 1024,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 537,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "a3835aca025b30305e27a6da932e550645d8a5e5f9ff18bfd42b89cd8c1f0f65",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IdentitySourceCanonical.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "a3835aca025b30305e27a6da932e550645d8a5e5f9ff18bfd42b89cd8c1f0f65"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IterationModelTransport.lean",
+      "source_sha256": "72ea2dba97f008622e1e88f27bb4778754ce63bdde966989fb5e38bb8d911a35",
+      "claims": [
+        {
+          "index": 665,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 178,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "72ea2dba97f008622e1e88f27bb4778754ce63bdde966989fb5e38bb8d911a35",
+          "receipt": "build503",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build503",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/IterationModelTransport.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "72ea2dba97f008622e1e88f27bb4778754ce63bdde966989fb5e38bb8d911a35"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceBCModelTransport.lean",
+      "source_sha256": "caa77502a0a06b8d80d6c2ec1e1c251a5c4ccc9b25553a8b78730363de8f1cdd",
+      "claims": [
+        {
+          "index": 999,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 512,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "caa77502a0a06b8d80d6c2ec1e1c251a5c4ccc9b25553a8b78730363de8f1cdd",
+          "receipt": "build519",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build519",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceBCModelTransport.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "caa77502a0a06b8d80d6c2ec1e1c251a5c4ccc9b25553a8b78730363de8f1cdd"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceCompositionTransport.lean",
+      "source_sha256": "d1cc86e1db0872649b264ebc58ec0f92aa72d7378ca95196784b03bf92cdd9da",
+      "claims": [
+        {
+          "index": 960,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 473,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "d1cc86e1db0872649b264ebc58ec0f92aa72d7378ca95196784b03bf92cdd9da",
+          "receipt": "build514",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build514",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceCompositionTransport.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "d1cc86e1db0872649b264ebc58ec0f92aa72d7378ca95196784b03bf92cdd9da"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIso.lean",
+      "source_sha256": "561eab57c7e9d923210fe9ef5ec324ea4527ede9d7cd417d923c65e028d38f58",
+      "claims": [
+        {
+          "index": 674,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 187,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "561eab57c7e9d923210fe9ef5ec324ea4527ede9d7cd417d923c65e028d38f58",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIso.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "561eab57c7e9d923210fe9ef5ec324ea4527ede9d7cd417d923c65e028d38f58"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoBaseChange.lean",
+      "source_sha256": "528f171a05d3f58d76a0d26ceb6ba452d9b72ab68570d42bbbcb93e46c20e7e3",
+      "claims": [
+        {
+          "index": 1013,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 526,
+          "claim_kind": "historical_accepted",
+          "claimed_sha256": "528f171a05d3f58d76a0d26ceb6ba452d9b72ab68570d42bbbcb93e46c20e7e3",
+          "receipt": "build333",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build333",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoBaseChange.lean",
+            "provenance": "historical accepted source restored unchanged; NOT recompiled or revalidated",
+            "snapshot_sha256": "528f171a05d3f58d76a0d26ceb6ba452d9b72ab68570d42bbbcb93e46c20e7e3"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoComposition.lean",
+      "source_sha256": "af5afa7702e3a2ff84f617d1f03807f954676a636f7d56112013b760d2296b1e",
+      "claims": [
+        {
+          "index": 967,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 480,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "af5afa7702e3a2ff84f617d1f03807f954676a636f7d56112013b760d2296b1e",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoComposition.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "af5afa7702e3a2ff84f617d1f03807f954676a636f7d56112013b760d2296b1e"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoCompositionCongruence.lean",
+      "source_sha256": "9dbc5c84105e74a0c15d1389e92c3116209650d0bfea88c802e15b7a8092877d",
+      "claims": [
+        {
+          "index": 1023,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 536,
+          "claim_kind": "historical_accepted",
+          "claimed_sha256": "9dbc5c84105e74a0c15d1389e92c3116209650d0bfea88c802e15b7a8092877d",
+          "receipt": "build336",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build336",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoCompositionCongruence.lean",
+            "provenance": "historical accepted source restored unchanged; NOT recompiled or revalidated",
+            "snapshot_sha256": "9dbc5c84105e74a0c15d1389e92c3116209650d0bfea88c802e15b7a8092877d"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoRefinement.lean",
+      "source_sha256": "8db0cde5d9f192fa85d2e17e6748881f5c3fac3d0497c9c3aa06076e6a78613e",
+      "claims": [
+        {
+          "index": 682,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 195,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "8db0cde5d9f192fa85d2e17e6748881f5c3fac3d0497c9c3aa06076e6a78613e",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoRefinement.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "8db0cde5d9f192fa85d2e17e6748881f5c3fac3d0497c9c3aa06076e6a78613e"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeCompatibility.lean",
+      "source_sha256": "02be3b0367c16c09872bf2be8b55d31ce64eb22a9048cfe35768688efd44d6f6",
+      "claims": [
+        {
+          "index": 561,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 74,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "02be3b0367c16c09872bf2be8b55d31ce64eb22a9048cfe35768688efd44d6f6",
+          "receipt": "build499",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build499",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeCompatibility.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "02be3b0367c16c09872bf2be8b55d31ce64eb22a9048cfe35768688efd44d6f6"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeDiagram.lean",
+      "source_sha256": "fcbe1d4aaee973dcbe56ca6bf2672521ca0ca40cf411e2edf61b7ac7ecada66f",
+      "claims": [
+        {
+          "index": 580,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 93,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "fcbe1d4aaee973dcbe56ca6bf2672521ca0ca40cf411e2edf61b7ac7ecada66f",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeDiagram.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "fcbe1d4aaee973dcbe56ca6bf2672521ca0ca40cf411e2edf61b7ac7ecada66f"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeIdentityGeometry.lean",
+      "source_sha256": "1d602ddfc46721808dd54cf3aca9db42f73fed80423e193f5afba3aaa465eb33",
+      "claims": [
+        {
+          "index": 616,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 129,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "1d602ddfc46721808dd54cf3aca9db42f73fed80423e193f5afba3aaa465eb33",
+          "receipt": "build499",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build499",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeIdentityGeometry.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "1d602ddfc46721808dd54cf3aca9db42f73fed80423e193f5afba3aaa465eb33"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeIdentityTransition.lean",
+      "source_sha256": "1910ac0dc3afbcc6c5bb7a8cb29dfe4202f93817c3ca93ca317e1dbe4b702997",
+      "claims": [
+        {
+          "index": 634,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 147,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "1910ac0dc3afbcc6c5bb7a8cb29dfe4202f93817c3ca93ca317e1dbe4b702997",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeIdentityTransition.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "1910ac0dc3afbcc6c5bb7a8cb29dfe4202f93817c3ca93ca317e1dbe4b702997"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeIterationCompatibility.lean",
+      "source_sha256": "8864c26a97eba795cbfa10b4a07a89acd757f175b6268d2c019c22d9e71eba31",
+      "claims": [
+        {
+          "index": 590,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 103,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "8864c26a97eba795cbfa10b4a07a89acd757f175b6268d2c019c22d9e71eba31",
+          "receipt": "build500",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build500",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeIterationCompatibility.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "8864c26a97eba795cbfa10b4a07a89acd757f175b6268d2c019c22d9e71eba31"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositeBaseChangeEquation.lean",
+      "source_sha256": "8a10af3054180fcdbbbe00fc9ab8e147b211f7dcf4c0af30605dedfdf873d9d5",
+      "claims": [
+        {
+          "index": 589,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 102,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "8a10af3054180fcdbbbe00fc9ab8e147b211f7dcf4c0af30605dedfdf873d9d5",
+          "receipt": "build493",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build493",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositeBaseChangeEquation.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "8a10af3054180fcdbbbe00fc9ab8e147b211f7dcf4c0af30605dedfdf873d9d5"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Densification.lean",
+      "source_sha256": "dad8cdad171172ac33f462c2118dc722f3686fe796c9995e5845c98bb10ff06f",
+      "claims": [
+        {
+          "index": 516,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 29,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "dad8cdad171172ac33f462c2118dc722f3686fe796c9995e5845c98bb10ff06f",
+          "receipt": "build492",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build492",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Densification.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "dad8cdad171172ac33f462c2118dc722f3686fe796c9995e5845c98bb10ff06f"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/DensificationNaturality.lean",
+      "source_sha256": "4d23130bc04925d4c7f9af88bf476c871fc0462693e8715fd6110ba99643ddf9",
+      "claims": [
+        {
+          "index": 538,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 51,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "4d23130bc04925d4c7f9af88bf476c871fc0462693e8715fd6110ba99643ddf9",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/DensificationNaturality.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "4d23130bc04925d4c7f9af88bf476c871fc0462693e8715fd6110ba99643ddf9"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/IdentitySourceModel.lean",
+      "source_sha256": "8e23947023d7fe1320385b4490127ee63ea1b0955f07a13d23a0b4ea25618891",
+      "claims": [
+        {
+          "index": 662,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 175,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "8e23947023d7fe1320385b4490127ee63ea1b0955f07a13d23a0b4ea25618891",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/IdentitySourceModel.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "8e23947023d7fe1320385b4490127ee63ea1b0955f07a13d23a0b4ea25618891"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/ModelComparisonCoherence.lean",
+      "source_sha256": "2c2ad31cd111723471ba49563a738bdd9110e86df62a7a99ed58243fd02751a8",
+      "claims": [
+        {
+          "index": 644,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 157,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "2c2ad31cd111723471ba49563a738bdd9110e86df62a7a99ed58243fd02751a8",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/ModelComparisonCoherence.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "2c2ad31cd111723471ba49563a738bdd9110e86df62a7a99ed58243fd02751a8"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChange.lean",
+      "source_sha256": "b8230d49feda69fbcf0e9f22d9cd1db2cd7296258c4cfa272b8d2e4080893b68",
+      "claims": [
+        {
+          "index": 529,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 42,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "b8230d49feda69fbcf0e9f22d9cd1db2cd7296258c4cfa272b8d2e4080893b68",
+          "receipt": "build503",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build503",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChange.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "b8230d49feda69fbcf0e9f22d9cd1db2cd7296258c4cfa272b8d2e4080893b68"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIdentity.lean",
+      "source_sha256": "08787e2b483a4fea0d29b24bd7610a03b1c2f8aeb9ca20ab699852e82d1bfe75",
+      "claims": [
+        {
+          "index": 636,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 149,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "08787e2b483a4fea0d29b24bd7610a03b1c2f8aeb9ca20ab699852e82d1bfe75",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIdentity.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "08787e2b483a4fea0d29b24bd7610a03b1c2f8aeb9ca20ab699852e82d1bfe75"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIteration.lean",
+      "source_sha256": "57049b0ee7b3858182aa6326316d85b9d816691acabc4549aa7c6899bd96dc07",
+      "claims": [
+        {
+          "index": 603,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 116,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "57049b0ee7b3858182aa6326316d85b9d816691acabc4549aa7c6899bd96dc07",
+          "receipt": "build503",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build503",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIteration.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "57049b0ee7b3858182aa6326316d85b9d816691acabc4549aa7c6899bd96dc07"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIterationComparison.lean",
+      "source_sha256": "c1e26afd0bd8a823ca38a2b87e77f13bb00d0bae949401e54f21b76d508d04d2",
+      "claims": [
+        {
+          "index": 637,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 150,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "c1e26afd0bd8a823ca38a2b87e77f13bb00d0bae949401e54f21b76d508d04d2",
+          "receipt": "build503",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build503",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIterationComparison.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "c1e26afd0bd8a823ca38a2b87e77f13bb00d0bae949401e54f21b76d508d04d2"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIterationPasting.lean",
+      "source_sha256": "8adb844ebbca8cd007dbce37d54b92b674e250b7482590ce7a888c0413c8bde8",
+      "claims": [
+        {
+          "index": 643,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 156,
+          "claim_kind": "historical_accepted",
+          "claimed_sha256": "8adb844ebbca8cd007dbce37d54b92b674e250b7482590ce7a888c0413c8bde8",
+          "receipt": "build151",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build151",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeIterationPasting.lean",
+            "provenance": "historical accepted source restored unchanged; NOT recompiled or revalidated",
+            "snapshot_sha256": "8adb844ebbca8cd007dbce37d54b92b674e250b7482590ce7a888c0413c8bde8"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeNaturality.lean",
+      "source_sha256": "8ce096ffd990b4ccad9969f042a45a6a99adde2911121f1c7c5ae9c34a418a8a",
+      "claims": [
+        {
+          "index": 575,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 88,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "8ce096ffd990b4ccad9969f042a45a6a99adde2911121f1c7c5ae9c34a418a8a",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedBaseChangeNaturality.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "8ce096ffd990b4ccad9969f042a45a6a99adde2911121f1c7c5ae9c34a418a8a"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedIdentityAlgebra.lean",
+      "source_sha256": "31ffad8a704199a7faf7d3c9895bdff6f08600c6cb5f2a5a952d5ac055db0cca",
+      "claims": [
+        {
+          "index": 630,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 143,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "31ffad8a704199a7faf7d3c9895bdff6f08600c6cb5f2a5a952d5ac055db0cca",
+          "receipt": "build499",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build499",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedIdentityAlgebra.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "31ffad8a704199a7faf7d3c9895bdff6f08600c6cb5f2a5a952d5ac055db0cca"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedIterationEquation.lean",
+      "source_sha256": "68dbded7286623edca644e0a7c0330959ee2f15ddfd17356a7d0257b67a557d1",
+      "claims": [
+        {
+          "index": 650,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 163,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "68dbded7286623edca644e0a7c0330959ee2f15ddfd17356a7d0257b67a557d1",
+          "receipt": "build503",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build503",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedIterationEquation.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "68dbded7286623edca644e0a7c0330959ee2f15ddfd17356a7d0257b67a557d1"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedIterationSource.lean",
+      "source_sha256": "e19d0ad805278ca58039dcbab153bb9fb80e89d0eb6945179c0c7d6119520985",
+      "claims": [
+        {
+          "index": 664,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 177,
+          "claim_kind": "historical_accepted",
+          "claimed_sha256": "e19d0ad805278ca58039dcbab153bb9fb80e89d0eb6945179c0c7d6119520985",
+          "receipt": "build162",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build162",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedIterationSource.lean",
+            "provenance": "historical accepted source restored unchanged; NOT recompiled or revalidated",
+            "snapshot_sha256": "e19d0ad805278ca58039dcbab153bb9fb80e89d0eb6945179c0c7d6119520985"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedIterationSourceAlgebra.lean",
+      "source_sha256": "5856f7ed0db6395304e55bafba6289cc646754b3f24d5c6a826d427074351e74",
+      "claims": [
+        {
+          "index": 659,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 172,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "5856f7ed0db6395304e55bafba6289cc646754b3f24d5c6a826d427074351e74",
+          "receipt": "build503",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build503",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedIterationSourceAlgebra.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "5856f7ed0db6395304e55bafba6289cc646754b3f24d5c6a826d427074351e74"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedSourceBC.lean",
+      "source_sha256": "ca14ce3c6aa74e55193e3dc00f292b6e70fbc7b58914507312e1351ddf65b5b1",
+      "claims": [
+        {
+          "index": 1005,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 518,
+          "claim_kind": "historical_accepted",
+          "claimed_sha256": "ca14ce3c6aa74e55193e3dc00f292b6e70fbc7b58914507312e1351ddf65b5b1",
+          "receipt": "build331",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build331",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedSourceBC.lean",
+            "provenance": "historical accepted source restored unchanged; NOT recompiled or revalidated",
+            "snapshot_sha256": "ca14ce3c6aa74e55193e3dc00f292b6e70fbc7b58914507312e1351ddf65b5b1"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChangeIterationPasting.lean",
+      "source_sha256": "4bd7360116d84838b32d1c9bdc04817426d69ee90bf094aed41181cc04cb4e96",
+      "claims": [
+        {
+          "index": 627,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 140,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "4bd7360116d84838b32d1c9bdc04817426d69ee90bf094aed41181cc04cb4e96",
+          "receipt": "build500",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build500",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChangeIterationPasting.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "4bd7360116d84838b32d1c9bdc04817426d69ee90bf094aed41181cc04cb4e96"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChangeNaturality.lean",
+      "source_sha256": "681820c45327f18de0bd832196740d98adc75770a0a5c2bae265fa2a75d1125b",
+      "claims": [
+        {
+          "index": 565,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 78,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "681820c45327f18de0bd832196740d98adc75770a0a5c2bae265fa2a75d1125b",
+          "receipt": "build500",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build500",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChangeNaturality.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "681820c45327f18de0bd832196740d98adc75770a0a5c2bae265fa2a75d1125b"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawComparisonCoherence.lean",
+      "source_sha256": "281f559d938a0aeff0ebecf26511ea04061dc6599d76b4dab981165d85d4bcef",
+      "claims": [
+        {
+          "index": 537,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 50,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "281f559d938a0aeff0ebecf26511ea04061dc6599d76b4dab981165d85d4bcef",
+          "receipt": "build500",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build500",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawComparisonCoherence.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "281f559d938a0aeff0ebecf26511ea04061dc6599d76b4dab981165d85d4bcef"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawDenseTransition.lean",
+      "source_sha256": "1c5868e6c95a70fb0fcdc5953c7817e1109f32d8541ae0ee4d1b849f764fcc05",
+      "claims": [
+        {
+          "index": 648,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 161,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "1c5868e6c95a70fb0fcdc5953c7817e1109f32d8541ae0ee4d1b849f764fcc05",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawDenseTransition.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "1c5868e6c95a70fb0fcdc5953c7817e1109f32d8541ae0ee4d1b849f764fcc05"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIdentityBaseChange.lean",
+      "source_sha256": "7844cbe2f998c5ad39597fe9411e756246a5140acea4a0ac2f09703845235ea9",
+      "claims": [
+        {
+          "index": 635,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 148,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "7844cbe2f998c5ad39597fe9411e756246a5140acea4a0ac2f09703845235ea9",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIdentityBaseChange.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "7844cbe2f998c5ad39597fe9411e756246a5140acea4a0ac2f09703845235ea9"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIdentityComparison.lean",
+      "source_sha256": "75260e91021bcbf10888ddbdcfeb95fd28ddd9e395ae4f29186b7a618cb456be",
+      "claims": [
+        {
+          "index": 617,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 130,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "75260e91021bcbf10888ddbdcfeb95fd28ddd9e395ae4f29186b7a618cb456be",
+          "receipt": "build503",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build503",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIdentityComparison.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "75260e91021bcbf10888ddbdcfeb95fd28ddd9e395ae4f29186b7a618cb456be"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIterationSource.lean",
+      "source_sha256": "e4aca3a51cfbf6fa698022488dc67c2afbdbaaab4690985ddd81ed1f0e2b2eb7",
+      "claims": [
+        {
+          "index": 658,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 171,
+          "claim_kind": "historical_accepted",
+          "claimed_sha256": "e4aca3a51cfbf6fa698022488dc67c2afbdbaaab4690985ddd81ed1f0e2b2eb7",
+          "receipt": "build157",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build157",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIterationSource.lean",
+            "provenance": "historical accepted source restored unchanged; NOT recompiled or revalidated",
+            "snapshot_sha256": "e4aca3a51cfbf6fa698022488dc67c2afbdbaaab4690985ddd81ed1f0e2b2eb7"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawRefinementBaseChangeNaturality.lean",
+      "source_sha256": "390af3ec171ee86e4d680a2faaf2b51bb193139fc6740704a66664618fcd1305",
+      "claims": [
+        {
+          "index": 587,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 100,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "390af3ec171ee86e4d680a2faaf2b51bb193139fc6740704a66664618fcd1305",
+          "receipt": "build503",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build503",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawRefinementBaseChangeNaturality.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "390af3ec171ee86e4d680a2faaf2b51bb193139fc6740704a66664618fcd1305"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceBaseChange.lean",
+      "source_sha256": "875c926883888114f800d3063601053ef3dc380ff481f2551e7d3936f4894825",
+      "claims": [
+        {
+          "index": 996,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 509,
+          "claim_kind": "historical_accepted",
+          "claimed_sha256": "875c926883888114f800d3063601053ef3dc380ff481f2551e7d3936f4894825",
+          "receipt": "build325",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build325",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceBaseChange.lean",
+            "provenance": "historical accepted source restored unchanged; NOT recompiled or revalidated",
+            "snapshot_sha256": "875c926883888114f800d3063601053ef3dc380ff481f2551e7d3936f4894825"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceComposition.lean",
+      "source_sha256": "7ea836b6249175d6bae9362510c146a952ab4b0eac41d5bd36c10c2d81708135",
+      "claims": [
+        {
+          "index": 951,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 464,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "7ea836b6249175d6bae9362510c146a952ab4b0eac41d5bd36c10c2d81708135",
+          "receipt": "build514",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build514",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceComposition.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "7ea836b6249175d6bae9362510c146a952ab4b0eac41d5bd36c10c2d81708135"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoBefore.lean",
+      "source_sha256": "6b0b73ce59b9f9026118b1ea37ec6262a8593f59db24e53092544f6f8c0fb173",
+      "claims": [
+        {
+          "index": 985,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 498,
+          "claim_kind": "historical_accepted",
+          "claimed_sha256": "6b0b73ce59b9f9026118b1ea37ec6262a8593f59db24e53092544f6f8c0fb173",
+          "receipt": "build321",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build321",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoBefore.lean",
+            "provenance": "historical accepted source restored unchanged; NOT recompiled or revalidated",
+            "snapshot_sha256": "6b0b73ce59b9f9026118b1ea37ec6262a8593f59db24e53092544f6f8c0fb173"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoExchange.lean",
+      "source_sha256": "863e2653b3c6ee1bc885f3b5460fc2c9e3443014887e0655ce3e3987361ac25f",
+      "claims": [
+        {
+          "index": 628,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 141,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "863e2653b3c6ee1bc885f3b5460fc2c9e3443014887e0655ce3e3987361ac25f",
+          "receipt": "build499",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build499",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoExchange.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "863e2653b3c6ee1bc885f3b5460fc2c9e3443014887e0655ce3e3987361ac25f"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoNaturality.lean",
+      "source_sha256": "6f5078844c1272a0827bae058de5ccd9b65807444f84f7d2ae54bc097b19357d",
+      "claims": [
+        {
+          "index": 632,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 145,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "6f5078844c1272a0827bae058de5ccd9b65807444f84f7d2ae54bc097b19357d",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoNaturality.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "6f5078844c1272a0827bae058de5ccd9b65807444f84f7d2ae54bc097b19357d"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoPasting.lean",
+      "source_sha256": "02467e9446b1e3d87559ab1e384609b56230c8b71a9313e35dd1847c3644ae9c",
+      "claims": [
+        {
+          "index": 651,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 164,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "02467e9446b1e3d87559ab1e384609b56230c8b71a9313e35dd1847c3644ae9c",
+          "receipt": "build514",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build514",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSourceIsoPasting.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "02467e9446b1e3d87559ab1e384609b56230c8b71a9313e35dd1847c3644ae9c"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSquare.lean",
+      "source_sha256": "99d2801d5d27ec22ece83d75ee94cbc3fe77df7b935344e8f4304d61ef8dafdd",
+      "claims": [
+        {
+          "index": 631,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 144,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "99d2801d5d27ec22ece83d75ee94cbc3fe77df7b935344e8f4304d61ef8dafdd",
+          "receipt": "build514",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build514",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSquare.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "99d2801d5d27ec22ece83d75ee94cbc3fe77df7b935344e8f4304d61ef8dafdd"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSquareCongruence.lean",
+      "source_sha256": "ef803e4c87ffa717296800370f1160a92b101b599b5a6fdd76aa2fb03d60946c",
+      "claims": [
+        {
+          "index": 638,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 151,
+          "claim_kind": "historical_accepted",
+          "claimed_sha256": "ef803e4c87ffa717296800370f1160a92b101b599b5a6fdd76aa2fb03d60946c",
+          "receipt": "build149",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build149",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSquareCongruence.lean",
+            "provenance": "historical accepted source restored unchanged; NOT recompiled or revalidated",
+            "snapshot_sha256": "ef803e4c87ffa717296800370f1160a92b101b599b5a6fdd76aa2fb03d60946c"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawTargetIso.lean",
+      "source_sha256": "5302fb97706d1408e567f82b3ff22d532e36945b5ddcdd035e3190629520ed4b",
+      "claims": [
+        {
+          "index": 640,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 153,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "5302fb97706d1408e567f82b3ff22d532e36945b5ddcdd035e3190629520ed4b",
+          "receipt": "build514",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build514",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawTargetIso.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "5302fb97706d1408e567f82b3ff22d532e36945b5ddcdd035e3190629520ed4b"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RefinedSourcePasting.lean",
+      "source_sha256": "9316cfd82b2d145ae865c86962597623341892212d4c46ac81a4436f7c1788fe",
+      "claims": [
+        {
+          "index": 649,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 162,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "9316cfd82b2d145ae865c86962597623341892212d4c46ac81a4436f7c1788fe",
+          "receipt": "build503",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build503",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RefinedSourcePasting.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "9316cfd82b2d145ae865c86962597623341892212d4c46ac81a4436f7c1788fe"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCInterchangeAlgebra.lean",
+      "source_sha256": "b575cdd5dd205a53e2f099e5416f375042373a997dd67e4b9368409ac415cc46",
+      "claims": [
+        {
+          "index": 995,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 508,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "b575cdd5dd205a53e2f099e5416f375042373a997dd67e4b9368409ac415cc46",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCInterchangeAlgebra.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "b575cdd5dd205a53e2f099e5416f375042373a997dd67e4b9368409ac415cc46"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCModel.lean",
+      "source_sha256": "6c8fe6dde59d4c8b970e9b813e67a04c516ff357ab8b07b9409a55636d12e3c0",
+      "claims": [
+        {
+          "index": 1009,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 522,
+          "claim_kind": "historical_accepted",
+          "claimed_sha256": "6c8fe6dde59d4c8b970e9b813e67a04c516ff357ab8b07b9409a55636d12e3c0",
+          "receipt": "build332",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build332",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCModel.lean",
+            "provenance": "historical accepted source restored unchanged; NOT recompiled or revalidated",
+            "snapshot_sha256": "6c8fe6dde59d4c8b970e9b813e67a04c516ff357ab8b07b9409a55636d12e3c0"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCNormalization.lean",
+      "source_sha256": "049c24afbf77535e80dad2b4f3da45e5f9e9e647c002e9ee7386ade06bcf85ca",
+      "claims": [
+        {
+          "index": 1002,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 515,
+          "claim_kind": "historical_accepted",
+          "claimed_sha256": "049c24afbf77535e80dad2b4f3da45e5f9e9e647c002e9ee7386ade06bcf85ca",
+          "receipt": "build329",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build329",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCNormalization.lean",
+            "provenance": "historical accepted source restored unchanged; NOT recompiled or revalidated",
+            "snapshot_sha256": "049c24afbf77535e80dad2b4f3da45e5f9e9e647c002e9ee7386ade06bcf85ca"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCNormalizationGeometry.lean",
+      "source_sha256": "f968aae949bf2a9ad058e6a24473cef4befb476f98ae5ca4becfd4a761d55cbe",
+      "claims": [
+        {
+          "index": 989,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 502,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "f968aae949bf2a9ad058e6a24473cef4befb476f98ae5ca4becfd4a761d55cbe",
+          "receipt": "build519",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build519",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBCNormalizationGeometry.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "f968aae949bf2a9ad058e6a24473cef4befb476f98ae5ca4becfd4a761d55cbe"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBaseChangeGeometry.lean",
+      "source_sha256": "06bccffc679a23d6a61488ec502e496ab06ddf4f1cc609fa1e83458890273262",
+      "claims": [
+        {
+          "index": 979,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 492,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "06bccffc679a23d6a61488ec502e496ab06ddf4f1cc609fa1e83458890273262",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBaseChangeGeometry.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "06bccffc679a23d6a61488ec502e496ab06ddf4f1cc609fa1e83458890273262"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBaseChangeSquares.lean",
+      "source_sha256": "4c84bd491e97376dfaebb69fa0060b1ea5a7f2d2978c97cd9cbabd7a02a4b446",
+      "claims": [
+        {
+          "index": 980,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 493,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "4c84bd491e97376dfaebb69fa0060b1ea5a7f2d2978c97cd9cbabd7a02a4b446",
+          "receipt": "build519",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build519",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBaseChangeSquares.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "4c84bd491e97376dfaebb69fa0060b1ea5a7f2d2978c97cd9cbabd7a02a4b446"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBeforeModels.lean",
+      "source_sha256": "9941119d5dab01a380e08f6d1b67cb57094bfa3663ce1339f50a4bfb31eb5821",
+      "claims": [
+        {
+          "index": 994,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 507,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "9941119d5dab01a380e08f6d1b67cb57094bfa3663ce1339f50a4bfb31eb5821",
+          "receipt": "build519",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build519",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBeforeModels.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "9941119d5dab01a380e08f6d1b67cb57094bfa3663ce1339f50a4bfb31eb5821"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBeforeNormalization.lean",
+      "source_sha256": "83082716077ec21997469c78870c5bd6c11b9a9bd1ef3f4f670094a83d15b8de",
+      "claims": [
+        {
+          "index": 990,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 503,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "83082716077ec21997469c78870c5bd6c11b9a9bd1ef3f4f670094a83d15b8de",
+          "receipt": "build519",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build519",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceBeforeNormalization.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "83082716077ec21997469c78870c5bd6c11b9a9bd1ef3f4f670094a83d15b8de"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceCompositionModel.lean",
+      "source_sha256": "64df7b60a9174bb3ee205ec49d8fc5ff749a8dbc718594a15aa0ed62b513a426",
+      "claims": [
+        {
+          "index": 961,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 474,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "64df7b60a9174bb3ee205ec49d8fc5ff749a8dbc718594a15aa0ed62b513a426",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceCompositionModel.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "64df7b60a9174bb3ee205ec49d8fc5ff749a8dbc718594a15aa0ed62b513a426"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceCompositionModels.lean",
+      "source_sha256": "8fca6d0a858317f1e4786b68fd4b12deb92d9891ede03303334dfe6964ffddee",
+      "claims": [
+        {
+          "index": 958,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 471,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "8fca6d0a858317f1e4786b68fd4b12deb92d9891ede03303334dfe6964ffddee",
+          "receipt": "build514",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build514",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceCompositionModels.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "8fca6d0a858317f1e4786b68fd4b12deb92d9891ede03303334dfe6964ffddee"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoBeforeExchange.lean",
+      "source_sha256": "383efb2a242a8ea7b557c0279f04f55eba9998a108ec68abda7c230bfcbef3d4",
+      "claims": [
+        {
+          "index": 984,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 497,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "383efb2a242a8ea7b557c0279f04f55eba9998a108ec68abda7c230bfcbef3d4",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoBeforeExchange.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "383efb2a242a8ea7b557c0279f04f55eba9998a108ec68abda7c230bfcbef3d4"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoBeforeOpen.lean",
+      "source_sha256": "8fb6c4970c017bf651a62b221e62704dbf09a47347486f243e1ef28c6f4ffcc0",
+      "claims": [
+        {
+          "index": 981,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 494,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "8fb6c4970c017bf651a62b221e62704dbf09a47347486f243e1ef28c6f4ffcc0",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoBeforeOpen.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "8fb6c4970c017bf651a62b221e62704dbf09a47347486f243e1ef28c6f4ffcc0"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoCompatibility.lean",
+      "source_sha256": "61ecef64af06cfe6a6a0b09ea756e17d5ca9b716320b1cae5f07362a010ac4d8",
+      "claims": [
+        {
+          "index": 586,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 99,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "61ecef64af06cfe6a6a0b09ea756e17d5ca9b716320b1cae5f07362a010ac4d8",
+          "receipt": "build499",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build499",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoCompatibility.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "61ecef64af06cfe6a6a0b09ea756e17d5ca9b716320b1cae5f07362a010ac4d8"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoCompositionAlgebra.lean",
+      "source_sha256": "546efaa646787232c6586542d2d118f6ad45a3b0086b7459042e6888d351e7b6",
+      "claims": [
+        {
+          "index": 946,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 459,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "546efaa646787232c6586542d2d118f6ad45a3b0086b7459042e6888d351e7b6",
+          "receipt": "build514",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build514",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoCompositionAlgebra.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "546efaa646787232c6586542d2d118f6ad45a3b0086b7459042e6888d351e7b6"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoDiagram.lean",
+      "source_sha256": "c8bfb878754c8db01494344f8d79b44ff539b45b22b20e536a6ebce0659207c4",
+      "claims": [
+        {
+          "index": 663,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 176,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "c8bfb878754c8db01494344f8d79b44ff539b45b22b20e536a6ebce0659207c4",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoDiagram.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "c8bfb878754c8db01494344f8d79b44ff539b45b22b20e536a6ebce0659207c4"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoExchange.lean",
+      "source_sha256": "1afc9201eefa4ae74710865f703d301a3c7ff32639933619c08b0fe24c2fbfab",
+      "claims": [
+        {
+          "index": 604,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 117,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "1afc9201eefa4ae74710865f703d301a3c7ff32639933619c08b0fe24c2fbfab",
+          "receipt": "build499",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build499",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoExchange.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "1afc9201eefa4ae74710865f703d301a3c7ff32639933619c08b0fe24c2fbfab"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoMapPasting.lean",
+      "source_sha256": "e2988fc9f245c099ca5c0a9c13006ee5c379aac28a7ebd972f68fe7685ab9a3a",
+      "claims": [
+        {
+          "index": 611,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 124,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "e2988fc9f245c099ca5c0a9c13006ee5c379aac28a7ebd972f68fe7685ab9a3a",
+          "receipt": "build503",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build503",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoMapPasting.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "e2988fc9f245c099ca5c0a9c13006ee5c379aac28a7ebd972f68fe7685ab9a3a"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoNaturality.lean",
+      "source_sha256": "ed1a94d6051eb50f77077a0c283ee14eb5391457e6b88dc004f6bcf7f9f89821",
+      "claims": [
+        {
+          "index": 605,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 118,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "ed1a94d6051eb50f77077a0c283ee14eb5391457e6b88dc004f6bcf7f9f89821",
+          "receipt": "build501",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build501",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoNaturality.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "ed1a94d6051eb50f77077a0c283ee14eb5391457e6b88dc004f6bcf7f9f89821"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoPasting.lean",
+      "source_sha256": "328de3f6d22f876963051f84dfcb2c41075fc8786f5f8618e5ed793216944aec",
+      "claims": [
+        {
+          "index": 610,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 123,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "328de3f6d22f876963051f84dfcb2c41075fc8786f5f8618e5ed793216944aec",
+          "receipt": "build503",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build503",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoPasting.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "328de3f6d22f876963051f84dfcb2c41075fc8786f5f8618e5ed793216944aec"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/TargetIsoBaseChange.lean",
+      "source_sha256": "e7b767e1afe928cdf6b79215c5e571a76ec56befff51ecd1c538399ace137751",
+      "claims": [
+        {
+          "index": 621,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 134,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "e7b767e1afe928cdf6b79215c5e571a76ec56befff51ecd1c538399ace137751",
+          "receipt": "build503",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build503",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/TargetIsoBaseChange.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "e7b767e1afe928cdf6b79215c5e571a76ec56befff51ecd1c538399ace137751"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangeIdentity.lean",
+      "source_sha256": "ed43c677ad83961f655689221ba0ce6088cbfeeb6173b2e0d36f5f45ee5f854f",
+      "claims": [
+        {
+          "index": 524,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 37,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "ed43c677ad83961f655689221ba0ce6088cbfeeb6173b2e0d36f5f45ee5f854f",
+          "receipt": "build499",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build499",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangeIdentity.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "ed43c677ad83961f655689221ba0ce6088cbfeeb6173b2e0d36f5f45ee5f854f"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangeOverComparison.lean",
+      "source_sha256": "f08f4818e8070bda0b30126c24d2965f9dce5595e713cb98805328304b4fca08",
+      "claims": [
+        {
+          "index": 528,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 41,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "f08f4818e8070bda0b30126c24d2965f9dce5595e713cb98805328304b4fca08",
+          "receipt": "build499",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build499",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangeOverComparison.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "f08f4818e8070bda0b30126c24d2965f9dce5595e713cb98805328304b4fca08"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangeOverComparisonEquation.lean",
+      "source_sha256": "4084633bb4b9dd46e0fe38377930af12a2dadfd0db2b24eb0fa545f7e4b174a1",
+      "claims": [
+        {
+          "index": 560,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 73,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "4084633bb4b9dd46e0fe38377930af12a2dadfd0db2b24eb0fa545f7e4b174a1",
+          "receipt": "build499",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build499",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangeOverComparisonEquation.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "4084633bb4b9dd46e0fe38377930af12a2dadfd0db2b24eb0fa545f7e4b174a1"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangePasting.lean",
+      "source_sha256": "1a403e33f40ec6b66d430e5e019e30b1d1e4feecf9ebe712c02ae9729717cd61",
+      "claims": [
+        {
+          "index": 522,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 35,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "1a403e33f40ec6b66d430e5e019e30b1d1e4feecf9ebe712c02ae9729717cd61",
+          "receipt": "build493",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build493",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangePasting.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "1a403e33f40ec6b66d430e5e019e30b1d1e4feecf9ebe712c02ae9729717cd61"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CartesianExchangeComparison.lean",
+      "source_sha256": "bce072f6ee122d35b577ac7b04b7539e2e78a3119f3da21cae8cd00315322763",
+      "claims": [
+        {
+          "index": 519,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 32,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "bce072f6ee122d35b577ac7b04b7539e2e78a3119f3da21cae8cd00315322763",
+          "receipt": "build493",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build493",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CartesianExchangeComparison.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "bce072f6ee122d35b577ac7b04b7539e2e78a3119f3da21cae8cd00315322763"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageAssociativity.lean",
+      "source_sha256": "767ac81783d1c9fa7ea1ce2067b674cd307248d2fe7958ffddc11e986bcd105f",
+      "claims": [
+        {
+          "index": 1016,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 529,
+          "claim_kind": "historical_accepted",
+          "claimed_sha256": "767ac81783d1c9fa7ea1ce2067b674cd307248d2fe7958ffddc11e986bcd105f",
+          "receipt": "build334",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build334",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageAssociativity.lean",
+            "provenance": "historical accepted source restored unchanged; NOT recompiled or revalidated",
+            "snapshot_sha256": "767ac81783d1c9fa7ea1ce2067b674cd307248d2fe7958ffddc11e986bcd105f"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageIdentityCoherence.lean",
+      "source_sha256": "382b611cef3b38597fd015cc7a50a79593701bb17c7a70b83263a9aef8affad2",
+      "claims": [
+        {
+          "index": 523,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 36,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "382b611cef3b38597fd015cc7a50a79593701bb17c7a70b83263a9aef8affad2",
+          "receipt": "build499",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build499",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageIdentityCoherence.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "382b611cef3b38597fd015cc7a50a79593701bb17c7a70b83263a9aef8affad2"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionAssociativity.lean",
+      "source_sha256": "d3c2b2a84d8c32781a5b55ac59146a7ef3bc4b0af1cb22305d87011a5a6263eb",
+      "claims": [
+        {
+          "index": 1017,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 530,
+          "claim_kind": "historical_accepted",
+          "claimed_sha256": "d3c2b2a84d8c32781a5b55ac59146a7ef3bc4b0af1cb22305d87011a5a6263eb",
+          "receipt": "build334",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build334",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionAssociativity.lean",
+            "provenance": "historical accepted source restored unchanged; NOT recompiled or revalidated",
+            "snapshot_sha256": "d3c2b2a84d8c32781a5b55ac59146a7ef3bc4b0af1cb22305d87011a5a6263eb"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionCoherence.lean",
+      "source_sha256": "aa2639e008165b930783b21cc391e939c76465ef9b7a3fc1c19f4c43618387cc",
+      "claims": [
+        {
+          "index": 592,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 105,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "aa2639e008165b930783b21cc391e939c76465ef9b7a3fc1c19f4c43618387cc",
+          "receipt": "build500",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build500",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionCoherence.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "aa2639e008165b930783b21cc391e939c76465ef9b7a3fc1c19f4c43618387cc"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionCompositionEq.lean",
+      "source_sha256": "8b0050240866cfc6ac408ba4b7f0a9846283b8ecbcd837c5ccd852d161e9da3b",
+      "claims": [
+        {
+          "index": 1035,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 548,
+          "claim_kind": "historical_accepted",
+          "claimed_sha256": "8b0050240866cfc6ac408ba4b7f0a9846283b8ecbcd837c5ccd852d161e9da3b",
+          "receipt": "build342",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build342",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionCompositionEq.lean",
+            "provenance": "historical accepted source restored unchanged; NOT recompiled or revalidated",
+            "snapshot_sha256": "8b0050240866cfc6ac408ba4b7f0a9846283b8ecbcd837c5ccd852d161e9da3b"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionForgetCoherence.lean",
+      "source_sha256": "a04409aa6a562850d2aa520635cf01758039aa90fe41ac006918eb3695f04deb",
+      "claims": [
+        {
+          "index": 608,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 121,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "a04409aa6a562850d2aa520635cf01758039aa90fe41ac006918eb3695f04deb",
+          "receipt": "build500",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build500",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionForgetCoherence.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "a04409aa6a562850d2aa520635cf01758039aa90fe41ac006918eb3695f04deb"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenBaseChangeConjugacy.lean",
+      "source_sha256": "aa314aefb43c9476be0decb88a842884da64768817127b7ec8ddc88742d5f314",
+      "claims": [
+        {
+          "index": 513,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 26,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "aa314aefb43c9476be0decb88a842884da64768817127b7ec8ddc88742d5f314",
+          "receipt": "build493",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build493",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenBaseChangeConjugacy.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "aa314aefb43c9476be0decb88a842884da64768817127b7ec8ddc88742d5f314"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenBaseChangeIdentity.lean",
+      "source_sha256": "34cc6a33202f9c2df5a78bc17e7b85e0b3721863cff0ec5622d4265cef54d7cc",
+      "claims": [
+        {
+          "index": 510,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 23,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "34cc6a33202f9c2df5a78bc17e7b85e0b3721863cff0ec5622d4265cef54d7cc",
+          "receipt": "build499",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build499",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenBaseChangeIdentity.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "34cc6a33202f9c2df5a78bc17e7b85e0b3721863cff0ec5622d4265cef54d7cc"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenComparisonCube.lean",
+      "source_sha256": "30a449a26f747591ff1d1acb328af3b52d3e35d4bb2e0391303de08535f3b169",
+      "claims": [
+        {
+          "index": 532,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 45,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "30a449a26f747591ff1d1acb328af3b52d3e35d4bb2e0391303de08535f3b169",
+          "receipt": "build493",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build493",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenComparisonCube.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "30a449a26f747591ff1d1acb328af3b52d3e35d4bb2e0391303de08535f3b169"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenRefinementCube.lean",
+      "source_sha256": "3df6ad63ccb077790f7ebaf3e1dd938ab73db5a7084ebcccee46680514a28119",
+      "claims": [
+        {
+          "index": 545,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 58,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "3df6ad63ccb077790f7ebaf3e1dd938ab73db5a7084ebcccee46680514a28119",
+          "receipt": "build499",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build499",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenRefinementCube.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "3df6ad63ccb077790f7ebaf3e1dd938ab73db5a7084ebcccee46680514a28119"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperCoherence.lean",
+      "source_sha256": "df4018e739ed99f1e5c33367753c01153949a746cedc6b7cb753f80fc384ac33",
+      "claims": [
+        {
+          "index": 534,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 47,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "df4018e739ed99f1e5c33367753c01153949a746cedc6b7cb753f80fc384ac33",
+          "receipt": "build500",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build500",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperCoherence.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "df4018e739ed99f1e5c33367753c01153949a746cedc6b7cb753f80fc384ac33"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeIdentityTransition.lean",
+      "source_sha256": "6f2f8f1ff4bd81625e920a615d18ffd4f458f536db725f114df8ca8066de5252",
+      "claims": [
+        {
+          "index": 1273,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 786,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "6f2f8f1ff4bd81625e920a615d18ffd4f458f536db725f114df8ca8066de5252",
+          "receipt": "build502",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build502",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeIdentityTransition.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "6f2f8f1ff4bd81625e920a615d18ffd4f458f536db725f114df8ca8066de5252"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeIterationCompatibility.lean",
+      "source_sha256": "062c90b12b36a82bbcb38f2b5c4525795c8dc468bd63ce324e675c8e1d0b3db7",
+      "claims": [
+        {
+          "index": 1244,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 757,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "062c90b12b36a82bbcb38f2b5c4525795c8dc468bd63ce324e675c8e1d0b3db7",
+          "receipt": "build493",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build493",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeIterationCompatibility.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "062c90b12b36a82bbcb38f2b5c4525795c8dc468bd63ce324e675c8e1d0b3db7"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeModelEquation.lean",
+      "source_sha256": "da93b461f9c73b7d747a18c368deccd7121d5993bad9dcefbde726fa6a8ba090",
+      "claims": [
+        {
+          "index": 1288,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 801,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "da93b461f9c73b7d747a18c368deccd7121d5993bad9dcefbde726fa6a8ba090",
+          "receipt": "build504",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build504",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangeModelEquation.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "da93b461f9c73b7d747a18c368deccd7121d5993bad9dcefbde726fa6a8ba090"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianBaseChangeIdentity.lean",
+      "source_sha256": "4d62c0d5f3acbbc85fb7dbc89aecf4aef4f554635ab6cb87410c99024c485006",
+      "claims": [
+        {
+          "index": 1381,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 894,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "4d62c0d5f3acbbc85fb7dbc89aecf4aef4f554635ab6cb87410c99024c485006",
+          "receipt": "build524",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build524",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianBaseChangeIdentity.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "4d62c0d5f3acbbc85fb7dbc89aecf4aef4f554635ab6cb87410c99024c485006"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianBaseChangeIteration.lean",
+      "source_sha256": "7bf0754b3f98d3868ea790199d2b04744ef25fd04bcb36658144705cd942634e",
+      "claims": [
+        {
+          "index": 1371,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 884,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "7bf0754b3f98d3868ea790199d2b04744ef25fd04bcb36658144705cd942634e",
+          "receipt": "build519",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build519",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianBaseChangeIteration.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "7bf0754b3f98d3868ea790199d2b04744ef25fd04bcb36658144705cd942634e"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianSourcePolygon.lean",
+      "source_sha256": "66dc94453ef095b31293d13ea4c42c273c6dede23fb88bfe6376699a7acabbd5",
+      "claims": [
+        {
+          "index": 1361,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 874,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "66dc94453ef095b31293d13ea4c42c273c6dede23fb88bfe6376699a7acabbd5",
+          "receipt": "build519",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build519",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianSourcePolygon.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "66dc94453ef095b31293d13ea4c42c273c6dede23fb88bfe6376699a7acabbd5"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalBaseChangeIdentity.lean",
+      "source_sha256": "bc250a6b46e625e6ffa7a14747591ae11d3df3a6575a688f8581507ecfae52cc",
+      "claims": [
+        {
+          "index": 1299,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 812,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "bc250a6b46e625e6ffa7a14747591ae11d3df3a6575a688f8581507ecfae52cc",
+          "receipt": "build507",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build507",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalBaseChangeIdentity.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "bc250a6b46e625e6ffa7a14747591ae11d3df3a6575a688f8581507ecfae52cc"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalBaseChangeIteration.lean",
+      "source_sha256": "cd4b06e7f135aa759f0cd054ec47efd6f63ab90554f634eed8d6c64f590e89c2",
+      "claims": [
+        {
+          "index": 1303,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 816,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "cd4b06e7f135aa759f0cd054ec47efd6f63ab90554f634eed8d6c64f590e89c2",
+          "receipt": "build507",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build507",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalBaseChangeIteration.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "cd4b06e7f135aa759f0cd054ec47efd6f63ab90554f634eed8d6c64f590e89c2"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/IdentitySourceCanonical.lean",
+      "source_sha256": "4f24d6d5fd3433f21a4fc4dcc4c98e7614f6542d61073fa2f429705e850d675b",
+      "claims": [
+        {
+          "index": 1339,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 852,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "4f24d6d5fd3433f21a4fc4dcc4c98e7614f6542d61073fa2f429705e850d675b",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/IdentitySourceCanonical.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "4f24d6d5fd3433f21a4fc4dcc4c98e7614f6542d61073fa2f429705e850d675b"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/IdentitySourceModel.lean",
+      "source_sha256": "2627bb412dfd11fbdfa73b17b524659d8f125a2a044dbd30bd07c90930f43531",
+      "claims": [
+        {
+          "index": 1298,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 811,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "2627bb412dfd11fbdfa73b17b524659d8f125a2a044dbd30bd07c90930f43531",
+          "receipt": "build507",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build507",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/IdentitySourceModel.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "2627bb412dfd11fbdfa73b17b524659d8f125a2a044dbd30bd07c90930f43531"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/InverseImageCompositionEq.lean",
+      "source_sha256": "d98167ffed67ca971f301d6ca8108c5fcff3395328d48546b5ee9217b48e2ed3",
+      "claims": [
+        {
+          "index": 1360,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 873,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "d98167ffed67ca971f301d6ca8108c5fcff3395328d48546b5ee9217b48e2ed3",
+          "receipt": "build519",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build519",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/InverseImageCompositionEq.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "d98167ffed67ca971f301d6ca8108c5fcff3395328d48546b5ee9217b48e2ed3"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIdentity.lean",
+      "source_sha256": "2acad1260e6cbf4ae0d570a37d772702740d994b43865e43b3fe8eb5b572a0fd",
+      "claims": [
+        {
+          "index": 1287,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 800,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "2acad1260e6cbf4ae0d570a37d772702740d994b43865e43b3fe8eb5b572a0fd",
+          "receipt": "build504",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build504",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIdentity.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "2acad1260e6cbf4ae0d570a37d772702740d994b43865e43b3fe8eb5b572a0fd"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIteration.lean",
+      "source_sha256": "1d5cd850f8f43655c61ec5d3d8e13a28a1824e66d4b4833457a3ab4bbb043295",
+      "claims": [
+        {
+          "index": 1278,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 791,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "1d5cd850f8f43655c61ec5d3d8e13a28a1824e66d4b4833457a3ab4bbb043295",
+          "receipt": "build503",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build503",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIteration.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "1d5cd850f8f43655c61ec5d3d8e13a28a1824e66d4b4833457a3ab4bbb043295"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIterationComparison.lean",
+      "source_sha256": "935a6a13b95bf207eaabeae08f01cdb408f03b505b98c39439481192f05b2b2f",
+      "claims": [
+        {
+          "index": 1300,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 813,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "935a6a13b95bf207eaabeae08f01cdb408f03b505b98c39439481192f05b2b2f",
+          "receipt": "build507",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build507",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIterationComparison.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "935a6a13b95bf207eaabeae08f01cdb408f03b505b98c39439481192f05b2b2f"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIterationPasting.lean",
+      "source_sha256": "2eb57684a61f0d28351ac46e8d9152060189290c0249786066d083a1a752885e",
+      "claims": [
+        {
+          "index": 1301,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 814,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "2eb57684a61f0d28351ac46e8d9152060189290c0249786066d083a1a752885e",
+          "receipt": "build507",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build507",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIterationPasting.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "2eb57684a61f0d28351ac46e8d9152060189290c0249786066d083a1a752885e"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedIterationSource.lean",
+      "source_sha256": "8cab5bd179d59aceb5a7cbe70087cade748163b818ca809b21efd67090e7476b",
+      "claims": [
+        {
+          "index": 1302,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 815,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "8cab5bd179d59aceb5a7cbe70087cade748163b818ca809b21efd67090e7476b",
+          "receipt": "build507",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build507",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedIterationSource.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "8cab5bd179d59aceb5a7cbe70087cade748163b818ca809b21efd67090e7476b"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedSourceBC.lean",
+      "source_sha256": "7598eb4c028c5c5e1e5806f55543496286bbed35158873ddd030c74c58f704c1",
+      "claims": [
+        {
+          "index": 1368,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 881,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "7598eb4c028c5c5e1e5806f55543496286bbed35158873ddd030c74c58f704c1",
+          "receipt": "build519",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build519",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedSourceBC.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "7598eb4c028c5c5e1e5806f55543496286bbed35158873ddd030c74c58f704c1"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawBaseChangeIterationPasting.lean",
+      "source_sha256": "b5e33691519444261b7cb01825fedfdb1c57ef2e0b8cb24d220df88dc30e6588",
+      "claims": [
+        {
+          "index": 1263,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 776,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "b5e33691519444261b7cb01825fedfdb1c57ef2e0b8cb24d220df88dc30e6588",
+          "receipt": "build500",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build500",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawBaseChangeIterationPasting.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "b5e33691519444261b7cb01825fedfdb1c57ef2e0b8cb24d220df88dc30e6588"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawDenseTransition.lean",
+      "source_sha256": "ccafcc6bb8fe50ae0351984847666eb510a96d0400c0afe1b2cf8c44c43c5f1e",
+      "claims": [
+        {
+          "index": 1281,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 794,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "ccafcc6bb8fe50ae0351984847666eb510a96d0400c0afe1b2cf8c44c43c5f1e",
+          "receipt": "build503",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build503",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawDenseTransition.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "ccafcc6bb8fe50ae0351984847666eb510a96d0400c0afe1b2cf8c44c43c5f1e"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIdentityBaseChange.lean",
+      "source_sha256": "7c03b4699bf6521cf996bda267c4f883245bf0a2169cdcc0373f813f0a42d9da",
+      "claims": [
+        {
+          "index": 1274,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 787,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "7c03b4699bf6521cf996bda267c4f883245bf0a2169cdcc0373f813f0a42d9da",
+          "receipt": "build502",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build502",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIdentityBaseChange.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "7c03b4699bf6521cf996bda267c4f883245bf0a2169cdcc0373f813f0a42d9da"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIdentityComparison.lean",
+      "source_sha256": "fcb76bbcc3bb3a4b1621fcec92c9fd2ab1bf7f91deef6ce8a18acd93dd888df1",
+      "claims": [
+        {
+          "index": 1264,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 777,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "fcb76bbcc3bb3a4b1621fcec92c9fd2ab1bf7f91deef6ce8a18acd93dd888df1",
+          "receipt": "build501",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build501",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIdentityComparison.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "fcb76bbcc3bb3a4b1621fcec92c9fd2ab1bf7f91deef6ce8a18acd93dd888df1"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIterationSource.lean",
+      "source_sha256": "c358aa2e5060c1504a7b0b7983f4f5e40a98f3b990e8017c6911f51877b91666",
+      "claims": [
+        {
+          "index": 1297,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 810,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "c358aa2e5060c1504a7b0b7983f4f5e40a98f3b990e8017c6911f51877b91666",
+          "receipt": "build506",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build506",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawIterationSource.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "c358aa2e5060c1504a7b0b7983f4f5e40a98f3b990e8017c6911f51877b91666"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawRefinementBaseChangeNaturality.lean",
+      "source_sha256": "a968a57700c35632e74c9321a10757e5d879d5e7ecb0d0133392b09c4431dd69",
+      "claims": [
+        {
+          "index": 1290,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 803,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "a968a57700c35632e74c9321a10757e5d879d5e7ecb0d0133392b09c4431dd69",
+          "receipt": "build504",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build504",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawRefinementBaseChangeNaturality.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "a968a57700c35632e74c9321a10757e5d879d5e7ecb0d0133392b09c4431dd69"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceBaseChange.lean",
+      "source_sha256": "27d5b480b18db8c088a49462fc1cccdef7fa446b3e1d53db3b3615497343c00c",
+      "claims": [
+        {
+          "index": 1365,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 878,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "27d5b480b18db8c088a49462fc1cccdef7fa446b3e1d53db3b3615497343c00c",
+          "receipt": "build519",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build519",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceBaseChange.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "27d5b480b18db8c088a49462fc1cccdef7fa446b3e1d53db3b3615497343c00c"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceComposition.lean",
+      "source_sha256": "e8d01203c2066e713a03b3346bbef73536d1dd873ac0b26ebc3f31c0dd221dc6",
+      "claims": [
+        {
+          "index": 1320,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 833,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "e8d01203c2066e713a03b3346bbef73536d1dd873ac0b26ebc3f31c0dd221dc6",
+          "receipt": "build514",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build514",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceComposition.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "e8d01203c2066e713a03b3346bbef73536d1dd873ac0b26ebc3f31c0dd221dc6"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoBefore.lean",
+      "source_sha256": "49a67b25e95aa84e97d26a61c641d6342f375ef20a505c98781b62e2387b99a6",
+      "claims": [
+        {
+          "index": 1364,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 877,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "49a67b25e95aa84e97d26a61c641d6342f375ef20a505c98781b62e2387b99a6",
+          "receipt": "build519",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build519",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoBefore.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "49a67b25e95aa84e97d26a61c641d6342f375ef20a505c98781b62e2387b99a6"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoExchange.lean",
+      "source_sha256": "fad5c48f9682c438e844aa002533a8452ec2e83e6cdcc093d8d597723d6cc49c",
+      "claims": [
+        {
+          "index": 1267,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 780,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "fad5c48f9682c438e844aa002533a8452ec2e83e6cdcc093d8d597723d6cc49c",
+          "receipt": "build501",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build501",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoExchange.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "fad5c48f9682c438e844aa002533a8452ec2e83e6cdcc093d8d597723d6cc49c"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoNaturality.lean",
+      "source_sha256": "ec780177483995774b3a7bce91eb3cb50097514e25747ef6ec539ca2c84beac4",
+      "claims": [
+        {
+          "index": 1280,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 793,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "ec780177483995774b3a7bce91eb3cb50097514e25747ef6ec539ca2c84beac4",
+          "receipt": "build503",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build503",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoNaturality.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "ec780177483995774b3a7bce91eb3cb50097514e25747ef6ec539ca2c84beac4"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoPasting.lean",
+      "source_sha256": "129375f2d866cb34cade906e4c9bb5ccc34ef04036f88e83978f663b0837754d",
+      "claims": [
+        {
+          "index": 1296,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 809,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "129375f2d866cb34cade906e4c9bb5ccc34ef04036f88e83978f663b0837754d",
+          "receipt": "build506",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build506",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoPasting.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "129375f2d866cb34cade906e4c9bb5ccc34ef04036f88e83978f663b0837754d"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSquare.lean",
+      "source_sha256": "26c3c8c4d389343ffdf580dcf762897158f21f6197daab0cfa5289094d1ab302",
+      "claims": [
+        {
+          "index": 1291,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 804,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "26c3c8c4d389343ffdf580dcf762897158f21f6197daab0cfa5289094d1ab302",
+          "receipt": "build504",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build504",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSquare.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "26c3c8c4d389343ffdf580dcf762897158f21f6197daab0cfa5289094d1ab302"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSquareCongruence.lean",
+      "source_sha256": "67c45f24a6e51cd170145ef45696dc1962260d076a9bd66c15d0e758873eeac4",
+      "claims": [
+        {
+          "index": 1294,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 807,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "67c45f24a6e51cd170145ef45696dc1962260d076a9bd66c15d0e758873eeac4",
+          "receipt": "build504",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build504",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSquareCongruence.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "67c45f24a6e51cd170145ef45696dc1962260d076a9bd66c15d0e758873eeac4"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawTargetIso.lean",
+      "source_sha256": "3c68f5b747f4c904309dca06918fa093c70974a204b2a83d63af08b8ae64c97e",
+      "claims": [
+        {
+          "index": 1292,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 805,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "3c68f5b747f4c904309dca06918fa093c70974a204b2a83d63af08b8ae64c97e",
+          "receipt": "build504",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build504",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawTargetIso.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "3c68f5b747f4c904309dca06918fa093c70974a204b2a83d63af08b8ae64c97e"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceBCModel.lean",
+      "source_sha256": "809a383cd822d3cadb79f81fb6d0c65068f73816134b7879f78a7c6e8b2f0cfc",
+      "claims": [
+        {
+          "index": 1369,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 882,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "809a383cd822d3cadb79f81fb6d0c65068f73816134b7879f78a7c6e8b2f0cfc",
+          "receipt": "build519",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build519",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceBCModel.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "809a383cd822d3cadb79f81fb6d0c65068f73816134b7879f78a7c6e8b2f0cfc"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceBCNormalization.lean",
+      "source_sha256": "cdfe4b09c3e6724c23e120c0db840915027abfaf4dab410d69cae9b00e47fc89",
+      "claims": [
+        {
+          "index": 1366,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 879,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "cdfe4b09c3e6724c23e120c0db840915027abfaf4dab410d69cae9b00e47fc89",
+          "receipt": "build519",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build519",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceBCNormalization.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "cdfe4b09c3e6724c23e120c0db840915027abfaf4dab410d69cae9b00e47fc89"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceBaseChangeSquare.lean",
+      "source_sha256": "e7460108db270ce1abae0425fbd08574a814a25ddc6acf5bb04184f6e50063ca",
+      "claims": [
+        {
+          "index": 1341,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 854,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "e7460108db270ce1abae0425fbd08574a814a25ddc6acf5bb04184f6e50063ca",
+          "receipt": "build517",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build517",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceBaseChangeSquare.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "e7460108db270ce1abae0425fbd08574a814a25ddc6acf5bb04184f6e50063ca"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceCompositionModel.lean",
+      "source_sha256": "7ec13d838ee99cb4e9b19e286011891516bcfd86c7e9f0130f68ed725e3da5a3",
+      "claims": [
+        {
+          "index": 1321,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 834,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "7ec13d838ee99cb4e9b19e286011891516bcfd86c7e9f0130f68ed725e3da5a3",
+          "receipt": "build514",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build514",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceCompositionModel.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "7ec13d838ee99cb4e9b19e286011891516bcfd86c7e9f0130f68ed725e3da5a3"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoBaseChange.lean",
+      "source_sha256": "0f1b2005132f7a2b00e8a64726802a982fbef06a27aff671920e6c16d34180f3",
+      "claims": [
+        {
+          "index": 1370,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 883,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "0f1b2005132f7a2b00e8a64726802a982fbef06a27aff671920e6c16d34180f3",
+          "receipt": "build519",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build519",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoBaseChange.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "0f1b2005132f7a2b00e8a64726802a982fbef06a27aff671920e6c16d34180f3"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoBeforeExchange.lean",
+      "source_sha256": "0583818fe356cded884c821da7093d385de54d54bcac5871c4b4b2bd730228e0",
+      "claims": [
+        {
+          "index": 1363,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 876,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "0583818fe356cded884c821da7093d385de54d54bcac5871c4b4b2bd730228e0",
+          "receipt": "build519",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build519",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoBeforeExchange.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "0583818fe356cded884c821da7093d385de54d54bcac5871c4b4b2bd730228e0"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoBeforeOpen.lean",
+      "source_sha256": "3f02535a35172ffca180ff6aa83e9edc969148543a46982397c20e6506f52950",
+      "claims": [
+        {
+          "index": 1362,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 875,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "3f02535a35172ffca180ff6aa83e9edc969148543a46982397c20e6506f52950",
+          "receipt": "build519",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build519",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoBeforeOpen.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "3f02535a35172ffca180ff6aa83e9edc969148543a46982397c20e6506f52950"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoComposition.lean",
+      "source_sha256": "3e36c6f8a39e3bd8653bfedc05a2ac6fe990b8a369e9005acdfd647bfca21889",
+      "claims": [
+        {
+          "index": 1322,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 835,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "3e36c6f8a39e3bd8653bfedc05a2ac6fe990b8a369e9005acdfd647bfca21889",
+          "receipt": "build514",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build514",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoComposition.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "3e36c6f8a39e3bd8653bfedc05a2ac6fe990b8a369e9005acdfd647bfca21889"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoCompositionCongruence.lean",
+      "source_sha256": "fbbd7c1edb557eb4bfd7ac7a27cc29b97d46f19747442fbdbb04a564b99da98a",
+      "claims": [
+        {
+          "index": 1367,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 880,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "fbbd7c1edb557eb4bfd7ac7a27cc29b97d46f19747442fbdbb04a564b99da98a",
+          "receipt": "build519",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build519",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoCompositionCongruence.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "fbbd7c1edb557eb4bfd7ac7a27cc29b97d46f19747442fbdbb04a564b99da98a"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoMapPasting.lean",
+      "source_sha256": "8643e2748b04f227d9e55318727e4b2e0b3185292d2944ff854b11b5e9ea16da",
+      "claims": [
+        {
+          "index": 1295,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 808,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "8643e2748b04f227d9e55318727e4b2e0b3185292d2944ff854b11b5e9ea16da",
+          "receipt": "build506",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build506",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoMapPasting.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "8643e2748b04f227d9e55318727e4b2e0b3185292d2944ff854b11b5e9ea16da"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoPasting.lean",
+      "source_sha256": "e0090f662787027bc87beee6aaafc0734a80285c28b109f037211a48f3f392e8",
+      "claims": [
+        {
+          "index": 1293,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 806,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "e0090f662787027bc87beee6aaafc0734a80285c28b109f037211a48f3f392e8",
+          "receipt": "build504",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build504",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoPasting.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "e0090f662787027bc87beee6aaafc0734a80285c28b109f037211a48f3f392e8"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoRefinement.lean",
+      "source_sha256": "46ac4d37e9a7936573a18c21cb96824dda545c957c2647a737be9f9d2d74b764",
+      "claims": [
+        {
+          "index": 1289,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 802,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "46ac4d37e9a7936573a18c21cb96824dda545c957c2647a737be9f9d2d74b764",
+          "receipt": "build504",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build504",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoRefinement.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "46ac4d37e9a7936573a18c21cb96824dda545c957c2647a737be9f9d2d74b764"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TargetIsoBaseChange.lean",
+      "source_sha256": "f34ef7d473d39f4bf51e9609ef0ad8efc14e9edd60a338c6ba6f69ad44d62413",
+      "claims": [
+        {
+          "index": 1279,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 792,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "f34ef7d473d39f4bf51e9609ef0ad8efc14e9edd60a338c6ba6f69ad44d62413",
+          "receipt": "build503",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build503",
+            "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TargetIsoBaseChange.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "f34ef7d473d39f4bf51e9609ef0ad8efc14e9edd60a338c6ba6f69ad44d62413"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/CategoryTheory/NatTrans/CompositeExchangePasting.lean",
+      "source_sha256": "cc15205419d2e2719c8e0fca570e4bcb41f545cf1e418cb60ee37fba988f49ac",
+      "claims": [
+        {
+          "index": 581,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 94,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "cc15205419d2e2719c8e0fca570e4bcb41f545cf1e418cb60ee37fba988f49ac",
+          "receipt": "build493",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build493",
+            "path": "Aglib/CategoryTheory/NatTrans/CompositeExchangePasting.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "cc15205419d2e2719c8e0fca570e4bcb41f545cf1e418cb60ee37fba988f49ac"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/CategoryTheory/NatTrans/CompositeExchangeRestriction.lean",
+      "source_sha256": "742a9d0e534f7fb78c226e3458ccff1d2c3ad61353b8b271d8ffa7846b49970f",
+      "claims": [
+        {
+          "index": 544,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 57,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "742a9d0e534f7fb78c226e3458ccff1d2c3ad61353b8b271d8ffa7846b49970f",
+          "receipt": "build500",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build500",
+            "path": "Aglib/CategoryTheory/NatTrans/CompositeExchangeRestriction.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "742a9d0e534f7fb78c226e3458ccff1d2c3ad61353b8b271d8ffa7846b49970f"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/CategoryTheory/NatTrans/ExchangePastingTransport.lean",
+      "source_sha256": "f8f0c03ca768ad06850eb33a72c43fcbf94174d103496e9584cb36a0f892c327",
+      "claims": [
+        {
+          "index": 661,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 174,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "f8f0c03ca768ad06850eb33a72c43fcbf94174d103496e9584cb36a0f892c327",
+          "receipt": "build499",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build499",
+            "path": "Aglib/CategoryTheory/NatTrans/ExchangePastingTransport.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "f8f0c03ca768ad06850eb33a72c43fcbf94174d103496e9584cb36a0f892c327"
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aglib/CategoryTheory/NatTrans/NormalizedExchangePasting.lean",
+      "source_sha256": "65ed35167ff4e10e281f1170595955b81e8046bf749965e999c33a7a56d1723c",
+      "claims": [
+        {
+          "index": 614,
+          "agent": "D",
+          "metadata_list": "accepted_new_leaves",
+          "entry_index": 127,
+          "claim_kind": "native_accepted",
+          "claimed_sha256": "65ed35167ff4e10e281f1170595955b81e8046bf749965e999c33a7a56d1723c",
+          "receipt": "build503",
+          "receipt_binding": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+          "frozen_evidence_source_path": null,
+          "original_claim": {
+            "native_receipt": "build503",
+            "path": "Aglib/CategoryTheory/NatTrans/NormalizedExchangePasting.lean",
+            "provenance": "new native successful leaf receipt; source-owner freeze evidence",
+            "snapshot_sha256": "65ed35167ff4e10e281f1170595955b81e8046bf749965e999c33a7a56d1723c"
+          }
+        }
+      ]
+    }
+  ]
+}

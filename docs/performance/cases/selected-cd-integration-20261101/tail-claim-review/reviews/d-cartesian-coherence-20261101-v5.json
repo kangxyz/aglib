@@ -1,0 +1,72 @@
+{
+  "question": "Narrow ordinary continuation on the two actual v5 compiler repairs: original-map/source correspondence and any new mathematical obligation.",
+  "outcome": "PASS_SCOPED_SOURCE_APPLICABILITY",
+  "results": [
+    {
+      "id": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.OpenComparisonCube#mateEquiv_moduleDerivedOpenComparison_inv",
+      "outcome": "PASS_SCOPED_SOURCE_APPLICABILITY",
+      "conclusion": "The mate under the original lower-shriek adjunctions of the inverse original Cartesian lower-shriek comparison is the native TwoSquare built from the original inverse-image-square comparison hom.",
+      "before_sha256": "ceb60159a1fd37b327e017d89aa7c0710ff75191829643a644d846e16a1fac96",
+      "after_sha256": "f07b98bb69150f2025bbaa54df67fb24aa9ea58475942886df830e1b4825b430"
+    },
+    {
+      "id": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawDenseTransition#moduleRawDenseTransition_eq_mixed",
+      "outcome": "PASS_SCOPED_SOURCE_APPLICABILITY",
+      "conclusion": "The original raw compactification transition along a dense refinement a equals the original mixed-model dense transition, with the independently supplied C and D derived models retained.",
+      "before_sha256": "1c5868e6c95a70fb0fcdc5953c7817e1109f32d8541ae0ee4d1b849f764fcc05",
+      "after_sha256": "415a346c0379c386fd149bfd05c9c92edcb4726122c8f7d0e5ace846ce94e0ac"
+    }
+  ],
+  "candidate_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/completed-d-cartesian-coherence-20261101/v5/CANDIDATE.json",
+  "candidate_manifest_sha256": "4302905c87d7a9c81f0a1a93f0a0b3172c5480e9b488de71a949f154e5084dd5",
+  "source_vector_sha256": "b9f23ae53e541944fc8f9ee120f14057d346e25c41be63208f863ca202d28cf4",
+  "provider_vector_sha256": "8459995ac9f51ff53ec6456c5f42944615a7383c573bb0df1a2375c71090edce",
+  "dependencies": {
+    "Aglib/CategoryTheory/Adjunction/TwoSidedMateIsomorphism.lean": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/release-integrator-20261030/integration-30b6/Aglib/CategoryTheory/Adjunction/TwoSidedMateIsomorphism.lean",
+      "sha256": "d42278b4e2536470a575752dcb869ba213e77aca896a059b397233b6cb361a5f"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/Comparison.lean": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/release-integrator-20261030/integration-30b6/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/Comparison.lean",
+      "sha256": "9b036e3db1db0134286c1840c10827c8b406f0ea54933c555c4eebf980f945cf"
+    }
+  },
+  "argument": {
+    "OpenComparisonCube": "The same mateEquiv_inv_eq_of_conjugate instantiation gives hm, an equality of natural transformations. Its adjunctions, inverse lower-shriek comparison, Cartesian right exchange, original inverse-image square, conjugacy witness and actual right-mate identification are unchanged. NatTrans.congr_app hm K is exactly the component equality required by TwoSquare.ext; evaluating hm introduces neither an assumption nor a replacement square.",
+    "RawDenseTransition": "The current dense supplier has explicit arguments (a : C ⟶ D) then (Λ : Type (u+1)); its proof is rfl. Calling it as a Λ yields exactly the equality between the original proper-refinement comparison and moduleDerivedRefinementComparison a Λ. The unchanged congrArg applies the same imageComparison, direct-image compositor and native torsion inclusion to that equality. No source or middle model is changed."
+  },
+  "conditions": [
+    "The unchanged source theorem telescopes, including Ring Λ and the independent native HasDerivedCategory instances.",
+    "OpenComparisonCube retains Etale i, Etale j and the actual IsPullback witness.",
+    "RawDenseTransition retains QuasiCompact f and the actual dense refinement a : C ⟶ D.",
+    "Accepted current provider mathematics and the exact dependency signatures listed above."
+  ],
+  "retained_coverage": {
+    "v3": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/d-cartesian-coherence-20261101.md",
+    "v4": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/d-cartesian-coherence-20261101-v4.md",
+    "scope": "Unaffected v3 mathematics and the unchanged v4 SourceBCModel explicit-slot repair. No whole-family rereview.",
+    "six_endpoints": "All six endpoint file hashes remain equal to v4.",
+    "material_correction": "The actual v4 diagnostics show that the two preceding call sites did not elaborate. The earlier source-applicability assessment for those exact call sites is superseded, and must not be read as compiler acceptance. The v5 replacements receive this scoped verdict."
+  },
+  "evidence_boundary": {
+    "diagnostic_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/D164-v4-authorized-executor/progress.json",
+    "diagnostic_run": "remote-41f1118cb0d342dd95fd1e381e1c91d2",
+    "diagnostic_source": "06898222e4cf6d1cd21e1ba3626798c7c73c259174601094941083259690f81f",
+    "diagnostics": "Two actual failed call sites: unconstrained congrArg component application; reversed dense-supplier explicit arguments. Bound to v4 actual run, not v5.",
+    "fresh_review": "Read-only exact diffs and current complete local derivations/provider signatures; target hashes checked.",
+    "cpp": "V5 retry proceeds independently; no successful current CPP asserted. No build, lint, axiom audit, replay or client check run by reviewer.",
+    "separate_provider_delta": {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChange.lean",
+      "before": "248818d3632438e3e87ccb3ca4a7c9e6de327d6a3e538c7166e02bd110f4000a",
+      "after": "03abe8df12d495f65cb40d9d988eafa8df83df56f5d57135d3a3ebc71cf6dfa4",
+      "scope": "Recorded by v5, outside the assigned two-site continuation. No silent whole-provider-basis renewal."
+    }
+  },
+  "remaining_gap": "No new mathematical or original-map correspondence obligation in either reviewed repair. Native v5 elaboration and separate provider-delta acceptance remain with their owners.",
+  "independence": "Reviewer inspected the fixed author repairs and did not edit source or contribute an incorporated proof repair.",
+  "established_status_authorized": false,
+  "write_scope": [
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/d-cartesian-coherence-20261101-v5.md",
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/d-cartesian-coherence-20261101-v5.json"
+  ]
+}

@@ -1,0 +1,21 @@
+error: Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/AmbientModel.lean:50:54: unsolved goals
+A A' B B' : CommRingCat
+φ : A ⟶ A'
+σ : A ⟶ B
+τ : A' ⟶ B'
+ψ : B ⟶ B'
+inst✝³ : IsOpenImmersion (Spec.map φ)
+inst✝² : IsOpenImmersion (Spec.map ψ)
+inst✝¹ : IsClosedImmersion (Spec.map σ)
+inst✝ : IsClosedImmersion (Spec.map τ)
+h : IsPullback (Spec.map ψ) (Spec.map τ) (Spec.map σ) (Spec.map φ)
+L : (Spec A).Modules
+J : InjectiveResolution L
+n : ℤ
+⊢ homologyCounitMap (restrictFunctor (Spec.map ψ)) (ComplexShape.up ℤ) (canonicalAmbientSourceSheafComplex σ J)
+      (closedImmersionModelOpenIso (Spec.map σ) J (Spec.map ψ) (Spec.map φ) (Spec.map τ) h).hom n =
+    (((((closedImmersionRightAdjoint (Spec.map σ)).mapHomologicalComplex (ComplexShape.up ℤ)).obj J.cochainComplex).sc
+              n).mapHomologyIso
+          (restrictFunctor (Spec.map ψ))).inv ≫
+      homologyMap (closedImmersionModelOpenIso (Spec.map σ) J (Spec.map ψ) (Spec.map φ) (Spec.map τ) h).hom n
+

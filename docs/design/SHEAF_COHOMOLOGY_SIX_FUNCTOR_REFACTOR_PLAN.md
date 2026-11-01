@@ -1,12 +1,12 @@
 # Shared sheaf and cohomology core: implementation plan
 
-Current execution revision: 2026-10-30. The active assignment combines the
+Current execution revision: 2026-11-01. The active assignment combines the
 existing etale migration and the integration of already completed C/D results.
 Section 0 is the current execution contract. Sections 1-11 preserve the dated
 mathematical design, source snapshots and historical scope reports; their old
 running and admission descriptions are not current execution verdicts.
 
-## 0. Unified execution scope: 2026-10-30
+## 0. Unified execution scope: 2026-11-01
 
 This execution amendment governs the existing etale migration and the integration
 of **already completed C/D results together**, with one dependency graph and one
@@ -64,33 +64,76 @@ Unresolved correspondence must remain visible until the actual result is joined.
    research-tree compiler pass as publication, or a containing path as closure
    of every archived result.
 
-The concrete next shared frontier is Cartesian: all 42 selected research sources
-have matching compilation, but their publication is separate. The first ten
-new, dependency-closed sources form a checked publication cut. The other 32
-currently need 27 direct supplier paths absent from the public tree. Reconcile
-and integrate those already completed suppliers together with the archived
-results; they are part of this same plan, not a deferred integration project.
+The original migration's final 27-source closeout was published at
+`ccb5d4be`. Its [source-bound evidence](../performance/cases/original-etale-migration-closeout-20261101/final-checks.json)
+records the affected production compilation, full stock declaration check,
+retained source-style and approved-axiom checks. This replaces the earlier
+W10/W11/W13 and first-ten-Cartesian queue as the continuation basis. It does
+not close the separate C/D integration. Under the retained original hypotheses
+and accepted source correspondences, no identified original-clause migration
+or publication gap remains: the final 40 mapping gaps split into ten identical
+public versions, twelve accepted W07 correspondences and eighteen migrated
+W03/W13 clauses. This is an original-scope disposition, not a new mathematical
+status or an assertion that the later six-operation programme is complete.
 
-The current implementation checkpoint is: ordinary-topos foundations and the
-mature-library migration batches have source-bound completed scopes; W10 has
-29 original findings and 53 current sources with matching compilation; W11 has
-21 source-matching passes; W13 has all 16 original finding bindings; Cartesian
-has 42 source-matching passes. Public cuts and remaining archive integration
-retain their separate actual states. The detailed current record is
-`migration/ci-repair-20261030/CURRENT.json` in the research workspace. These scoped
-facts do not close the combined C/D assignment or claim hosted CI success.
+The current admitted C/D cut contains 1,151 checking source versions: the
+selected 863 and the remaining 288 actual source changes. GenericPullback is
+already public; canonical public Field and PowerDescent versions remain
+unchanged. The combined source and family metadata are committed at
+`1183f1d8`; the normal peer merge is `621d14bb`. The user-requested source checkpoint publishes this admitted cut while its
+remaining final package predicates continue on their actual source snapshots. All 288 tail files have
+bound successful production compilation. The only selected consumer of the
+seventeen public-provider replacements, CoefficientTransport, already has a
+matching pass on its full native input. No extra affected compiler invocation
+is assigned merely because these sources are assembled together.
+
+The stalk comparison and bounded-below and unbounded Cartesian
+identity/iteration consumers have successful compilation after the
+duplicate-header repairs. The earlier 713-module approved-axiom check and the
+later OpenTopClass.Source check are retained on their actual inputs. The
+coherent stock check and genuinely uncovered tail predicates remain in progress;
+successful compilation alone is not their result.
+
+The selected source vector and execution evidence are under
+`intake/latest-cd-20261101/` in the research workspace. The 1,133-path earlier
+release vector and the current 863-path selection overlap but are not nested:
+there were 290 earlier release paths outside the selection and 20 selected
+repair or companion paths outside that earlier vector. Two of those 290 are
+the retained public Field and PowerDescent versions. These are source
+dispositions, not remaining theorem counts.
+
+Closure of this admitted cut does not by itself settle every inherited C/D
+claim. The retained 1,397-claim join still contains unassessed semantic
+correspondences. The original D ExactFunctorBounds result is already a direct
+consequence of the current exact-functor homology comparison under the same
+hypotheses; its historical filename is not a missing mathematical input.
+The original residue-fibre dimension and geometric proper-exchange claims
+also have actual current realizations.
+
+Three completed D consumer families still require their current integration:
+exceptional composition and associativity, compact-support geometric-fibre
+and single comparisons, and arbitrary coproduct preservation for the same
+unbounded exceptional functor. These are additional laws and consumers of
+existing operations, rather than new six-operation existence targets. Their
+source adaptation, ordinary review and coupled compiler repair proceed in
+the separate main integration checkout while this admitted cut is published.
+The fixed source packets and current-supplier correspondences are under
+`intake/latest-cd-20261101/resume-20261101/remaining/` in the research workspace.
+The latest C source supersedes the older C packet. Reconcile the remaining
+inherited D bindings without reintroducing superseded C sources or unfinished
+theory; a historical path or unjoined receipt alone is not a proof gap.
+
+Hosted CI on the public branch at `26d14b24` passed in
+[run 41300447153](https://github.com/kangxyz/aglib/actions/runs/41300447153).
+That result covers its public commit, not the pending C/D candidate.
 
 ### One curve-cohomology family
 
-`EtaleCohomology/Curves` and the four-file `CurveCohomology` directory concern the
-same etale curve theory and already use the mathematical namespace
-`AlgebraicGeometry.Scheme.EtaleCohomology.Curves`. Consolidate their module
-organization under `Curves`, with proper-curve, trace, compact-support and open
-complement leaves as appropriate. Preserve the existing trace normalization,
-coefficient choices and mathematical declarations. Reconcile paths and actual
-imports with the completed curve-result integration in one coherent batch so
-that the reorganization does not create a second implementation or repeated
-unrelated recompilation.
+The former four-file `CurveCohomology` directory was consolidated into
+`EtaleCohomology/Curves` at `95f48533`, preserving the mathematical namespace
+`AlgebraicGeometry.Scheme.EtaleCohomology.Curves`, trace normalization,
+coefficient choices and declarations. New curve results use that same family;
+do not restore a second implementation at the historical paths.
 
 New higher foundations, unfinished C/D endpoints and new six-operation existence
 theory remain outside implementation. The later mathematical design sections

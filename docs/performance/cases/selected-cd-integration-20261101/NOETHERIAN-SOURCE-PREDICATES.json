@@ -1,0 +1,13 @@
+{
+  "question": "Only newNoetheriancompanion sourceflags",
+  "source_sha256": {
+    "Aglib/AlgebraicGeometry/Cohomology/BaseChange/NoetherianPushforward.lean": "3e0f6a354c2f08b967ef3b36c165d20024feda2fcc62faf75190ff9b7decc253"
+  },
+  "count": 1,
+  "errors": [],
+  "exit_code": 0,
+  "checks": [
+    "tokens",
+    "policy"
+  ]
+}

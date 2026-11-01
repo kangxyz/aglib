@@ -1,0 +1,34 @@
+{
+  "question": "Selected847 coherent namespace/stock union and existinguncoveredaxiom712 only",
+  "source": "5f20c26dfae437146cfe28ecbe86e39cff71a0079a5072b55d5a77ecd135d7c2",
+  "selected_count": 847,
+  "uncovered_axiom_count": 712,
+  "retained_audit_count": 135,
+  "CPP_basis": "Original844source-boundmap+actuald4closed0threecompanion/CIleaves; oldCI38a15stock0 retained ascomponent, no separateCIstockrepeat",
+  "commands": [
+    {
+      "kind": "import-only-environment",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "env",
+        "/root/autodl-tmp/lean-build/logs/remote-c7e2117a3aa244a896740fdfb40c4912/toolchain/bin/lean",
+        "--root=/root/autodl-tmp/lean-build/logs/remote-c7e2117a3aa244a896740fdfb40c4912/selected-import-environment",
+        "-DautoImplicit=false",
+        "-DwarningAsError=true",
+        "-Dweak.linter.mathlibStandardSet=true",
+        "-Dweak.linter.style.longFile=1500",
+        "-o",
+        "/root/autodl-tmp/lean-build/logs/remote-c7e2117a3aa244a896740fdfb40c4912/selected-import-environment/Aglib/Selected847Lint.olean",
+        "-i",
+        "/root/autodl-tmp/lean-build/logs/remote-c7e2117a3aa244a896740fdfb40c4912/selected-import-environment/Aglib/Selected847Lint.ilean",
+        "/root/autodl-tmp/lean-build/logs/remote-c7e2117a3aa244a896740fdfb40c4912/selected-import-environment/Aglib/Selected847Lint.lean"
+      ],
+      "exit": 1,
+      "seconds": 3.5290165692567825,
+      "log": "/root/autodl-tmp/lean-build/logs/remote-c7e2117a3aa244a896740fdfb40c4912/import-only-environment.log"
+    }
+  ],
+  "selected_vector_sha256": "a313e705b7f07b3371cb949efbb7eacff3e77a96f40cbb794a5ca5ee0bc10305",
+  "boundary": "Existing unchanged stockgetChecks/no filters and approvedaxiompredicate only; header is declaration-free environment formation, no productionCPP/client/replay/kernelcheck/newprotocol/model/options change. Individual and priorCPP remains its actualbasis."
+}

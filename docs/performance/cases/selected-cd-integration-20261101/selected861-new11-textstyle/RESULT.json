@@ -1,0 +1,44 @@
+{
+  "configuration_sha256": {
+    "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+    "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+  },
+  "workspace": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean",
+  "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "question": "Only actual11changedownerbatchtextstyle gaps; priorunchangedcoverage retained",
+  "source_sha256": {
+    "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Class.lean": "e46d81e95d16e67da84cd1b2108aa88486dbdd4242d0aee0c4f9f03af364f0c6",
+    "Aglib/AlgebraicGeometry/Cohomology/Fibers/BaseChange.lean": "e8b4dbee9d4c938ef06b2f67a8af5186783b5bbf6bcf78c5aa691bd0e765f820",
+    "Aglib/AlgebraicGeometry/Cohomology/Fibers/FieldPoint.lean": "52594c783e777456aab9ab9aa5370ac0bb738b52da357e2ce25bee8395d800c3",
+    "Aglib/AlgebraicGeometry/Cohomology/Projective/EmbeddedFibers/Basic.lean": "28d71ed4364fcd4020e1c8ee8a58d16020578fd04f4fc4321d04b2f713600749",
+    "Aglib/AlgebraicGeometry/Curves/Abel/BoundedFamily.lean": "e535d42ec481a84168bfc40845a8f6df5fbf8324df984a415246aea527dcd5d1",
+    "Aglib/AlgebraicGeometry/Curves/Picard/Degree/ProductFormula.lean": "343f49fbbc1b9482ade3d13afb1c444af6bd3128c82ca90ec1ae204da8114dcc",
+    "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/Restriction.lean": "b12ab5fb2d25be40b51f9ce459e06d7c47926778d83e2adaa8a1a0537a42a33d",
+    "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Coefficients.lean": "3326d5d8944e111507afb5817b1c04d4a9c72150527470519593ee4317b24d18",
+    "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalPurity.lean": "2f94dc2be7c87a58a839bc844f14e2cef6b6b00f490311b427df23c231d621cd",
+    "Aglib/RingTheory/Nagata/FieldCurve.lean": "e24f87f1622a2ae8b5f3c822b4bd382e69b82f802ccc086e7cd3434969fd7ca1",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/CoefficientTransport.lean": "ba6bd1e0e6af376d9ca8b0d410ef6d80abd29b1b7f051c9ffe7ddf2fd70c6ee8"
+  },
+  "run_dir": "/root/autodl-tmp/lean-build/logs/selected861-new11-textstyle-c209bc2a3a9a4b46baf0e05ab2d3fa06",
+  "boundary": "Normalpure-source stylechecker only; no mutationlease/CPP/stock/axiom/CIrepeat or newprotocol.",
+  "command": [
+    "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "--no-build",
+    "env",
+    "python3",
+    "-c",
+    "import os,sys;os.environ['LEAN_SRC_PATH']=sys.argv[1]+os.pathsep+os.environ.get('LEAN_SRC_PATH','');os.execv(sys.argv[2],[sys.argv[2],sys.argv[3]])",
+    "/root/autodl-tmp/lean-build/logs/selected861-new11-textstyle-c209bc2a3a9a4b46baf0e05ab2d3fa06/source-selection-data",
+    "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/bin/lint-style",
+    "Aglib.LatestCDStyleSelection"
+  ],
+  "exit_code": 0,
+  "seconds": 2.1883984953165054,
+  "binary_sha256": "e01b2c5c321385f8b9600d89b967694f66332c3a2daa3e4f97204367662e3fb0",
+  "source_container_at_start": "a5c87df546934078bca2d817ee3f8725a69f886cc4c0b46575dbdedc31d55ca0",
+  "source_container_at_end": "a5c87df546934078bca2d817ee3f8725a69f886cc4c0b46575dbdedc31d55ca0",
+  "style_log": "/root/autodl-tmp/lean-build/logs/selected861-new11-textstyle-c209bc2a3a9a4b46baf0e05ab2d3fa06/text-style.log",
+  "compiled": false,
+  "workspace_mutation_lease": false
+}

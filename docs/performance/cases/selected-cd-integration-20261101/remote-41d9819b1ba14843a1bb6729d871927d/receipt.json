@@ -1,0 +1,369 @@
+{
+  "action": "phase",
+  "actor_executable": "/root/miniconda3/bin/python3.12",
+  "admission": {
+    "ceilings": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+    "final_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-0f694041d65b44c1b18ae6b74dfc8728": 1
+      },
+      "cpu_cores": 1.8811383927182115,
+      "cpu_usage_usec": 2346811850595,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 1610612736,
+      "memory_current_bytes": 48252940288,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 0.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 38618828800
+    },
+    "initial_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-0f694041d65b44c1b18ae6b74dfc8728": 1
+      },
+      "cpu_cores": 1.0824499070653586,
+      "cpu_usage_usec": 2346718548534,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 2147483648,
+      "memory_current_bytes": 48161255424,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 1.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 38526865408
+    },
+    "max_frontends_if_alone": 8,
+    "mode": "elastic"
+  },
+  "allow_library_roots": false,
+  "cache_provenance": {
+    "configuration_sha256": {
+      "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+      "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852"
+    },
+    "environment": {
+      "LAKE_ARTIFACT_CACHE": "true",
+      "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+      "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+    },
+    "lookup": "native Lake traces/artifact cache; no per-dependency prior-hit claim"
+  },
+  "cgroup_average_cpu_cores": 6.493570498192397,
+  "cgroup_cpu_after": {
+    "nr_periods": 9660462,
+    "nr_throttled": 29241,
+    "system_usec": 197190200002,
+    "throttled_usec": 337871221,
+    "usage_usec": 2346811850595,
+    "user_usec": 2149621650593
+  },
+  "cgroup_cpu_attribution": "whole observed cgroup; may include unrelated activity",
+  "cgroup_cpu_before": {
+    "nr_periods": 9660318,
+    "nr_throttled": 29241,
+    "system_usec": 197186476379,
+    "throttled_usec": 337871221,
+    "usage_usec": 2346718556588,
+    "user_usec": 2149532080208
+  },
+  "cgroup_cpu_seconds_delta": 93.294007,
+  "cgroup_memory_events_after": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_before": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_delta": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "command": [
+    "/root/miniconda3/bin/python3.12",
+    "-c",
+    "import os,sys,json,hashlib,subprocess,time\nfrom pathlib import Path\np=json.loads(sys.argv[1]);w=Path.cwd();run=Path(os.environ['LEAN']).parents[2];lake=os.environ['LAKE']\ndef guard():\n assert json.loads((w.parent/'SOURCE.json').read_text())['content_sha256']==p['source_id']\n assert hashlib.sha256((w/p['target']).read_bytes()).hexdigest()==p['target_sha256']\nguard();cmd=[lake,'--no-build','env',str(w/'.lake/packages/batteries/.lake/build/bin/runLinter'),'--no-build','--trace',p['module']];start=time.monotonic()\nwith(run/'CI-Generic38a-stock.log').open('w')as log:q=subprocess.run(cmd,cwd=w,stdout=log,stderr=subprocess.STDOUT)\nguard();result={'question':p['question'],'source':p['source_id'],'target_sha256':p['target_sha256'],'command':cmd,'exit_code':q.returncode,'seconds':time.monotonic()-start,'boundary':'ExistingfullstockgetChecksunchangedonONEactualCIimportcontext; includesneededunusedArguments, no filtered/newchecker, CPP/style/audit/test/replay/client or wholeCIrepeat.'};(run/'CI-Generic38a-RESULT.json').write_text(json.dumps(result,indent=2)+'\\n');print(json.dumps(result),flush=True);sys.exit(q.returncode)\n",
+    "{\"question\":\"ActualCI38a unusedArguments cascade normalstockcontext only\",\"source_id\":\"5f20c26dfae437146cfe28ecbe86e39cff71a0079a5072b55d5a77ecd135d7c2\",\"target\":\"Aglib/AlgebraicGeometry/Normalization/InertiaTorsor/GenericPullback.lean\",\"target_sha256\":\"38a44417d19bb8edc88e665e2adece80a22bee78942263059eec7e8d6aa0a4eb\",\"source\":\"/-\\nCopyright (c) 2026 kangxyz. All rights reserved.\\nReleased under Apache 2.0 license as described in the file LICENSE.\\nAuthors: kangxyz\\n-/\\n\\nmodule\\n\\npublic import Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.SheafClass\\npublic import Aglib.AlgebraicGeometry.FundamentalGroup.Field.ArbitraryGalois\\npublic import Aglib.AlgebraicGeometry.EtaleCohomology.H1.Naturality\\npublic import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GenericRestriction\\n\\n/-!\\n# Actual generic pullback and coefficient restriction\\n\\nThe literal h1Pullback of the same normalization Ext class is identified\\nthrough the represented-sheaf base-change map with the actual pulled-back\\ntorsor class. The Galois factorization uses native GenericRestriction maps.\\nThe final coefficient specialization reuses generic_represented_h1Pullback_injective;\\nits lower connectedness and fibre-surjectivity proofs are not duplicated.\\n-/\\n\\n@[expose] public section\\n\\nnoncomputable section\\nset_option autoImplicit false\\nset_option backward.defeqAttrib.useBackward true\\nset_option backward.isDefEq.respectTransparency false\\nset_option backward.isDefEq.respectTransparency.types false\\n\\nopen CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite\\nopen MonoidalCategory CartesianMonoidalCategory MonObj\\nopen scoped CategoryTheory.MonObj CategoryTheory.PreGaloisCategory FintypeCatDiscrete\\nopen _root_.AlgebraicGeometry.Scheme.FiniteEtale (Fiber baseChange fiberToFinite)\\nopen _root_.AlgebraicGeometry.Scheme.EtaleFundamentalGroups\\nopen _root_.AlgebraicGeometry.Scheme.FiniteEtale.FiberTorsorActions\\nopen _root_.AlgebraicGeometry.Scheme.FiniteEtale.GroupBaseChange\\nopen _root_.GroupCohomology.ContinuousH1\\nopen _root_.AlgebraicGeometry.Scheme.EtaleCohomology _root_.CategoryTheory.Abelian\\nopen _root_.CategoryTheory.Functor.LargePresheaf\\nopen AlgebraicGeometry.Scheme.FiniteEtale\\nopen AlgebraicGeometry.Scheme.FiniteEtale.InertiaTorsor\\nopen AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.OverRing Algebra.FiniteEtale.TorsorExtension\\nopen integralClosure Algebra.FiniteEtale.TorsorCoordinates\\nopen AlgebraicGeometry.Scheme.FiniteEtale.InertiaTorsor.SheafClass\\n\\nopen _root_.AlgebraicGeometry.Scheme.FiniteEtale.GenericRestriction\\n  (genericInclusion genericPoint_compat genericFibreMap)\\n\\nnamespace AlgebraicGeometry.Scheme.FiniteEtale.InertiaTorsor.GenericPullback\\nuniverse u v w w'\\n\\n/-- Pointed base change preserves literal precomposition when its source and\\nbase endomorphisms have the same underlying map of geometric-point schemes. -/\\nprivate theorem pointedMap_precomposition {F : Type u} [Field F]\\n    {S X : PointedScheme F} (fp : S \\u27f6 X)\\n    (a : FiberAutGroup S.hom) (b : FiberAutGroup X.hom)\\n    (eS : Over.mk S.hom \\u27f6 Over.mk S.hom)\\n    (eX : Over.mk X.hom \\u27f6 Over.mk X.hom)\\n    (he : eS.left = eX.left)\\n    (ha : \\u2200 (Y : Scheme.FiniteEtale S.right) (p : Fiber S.hom Y), a.hom.app Y p = eS \\u226b p)\\n    (hb : \\u2200 (Y : Scheme.FiniteEtale X.right) (p : Fiber X.hom Y), b.hom.app Y p = eX \\u226b p) :\\n    pointedMap fp a = b := by\\n  apply Aut.ext\\n  apply NatTrans.ext\\n  funext Y\\n  apply FintypeCat.hom_ext\\n  intro p\\n  rw [pointedMap_apply, ha, hb]\\n  apply Over.OverMorphism.ext\\n  simp only [pointedFiberEquiv_symm_left, Over.comp_left,\\n    pointedFiberEquiv_left, Category.assoc, pullback.lift_fst, he]\\n\\n/-- Identity coefficients for a continuous group pullback between the supplied actions.\\nThe equivariance equation is explicit, and the underlying coefficient function is `id`. -/\\ndef identityCoefficientPullback {G J M : Type*}\\n    [Group G] [TopologicalSpace G] [Group J] [TopologicalSpace J]\\n    [AddCommGroup M] [TopologicalSpace M]\\n    [DistribMulAction G M] [DistribMulAction J M]\\n    (\\u03c6 : J \\u2192\\u209c* G) (h\\u03c6 : \\u2200 (j : J) (a : M), \\u03c6 j \\u2022 a = j \\u2022 a) :\\n    PullbackMap (A := M) (B := M) \\u03c6 where\\n  toFun := id\\n  map_zero' := rfl\\n  map_add' _ _ := rfl\\n  continuous_toFun := continuous_id\\n  map_smul' := h\\u03c6\\n\\n/-- Literal cohomology pullback followed by the canonical coefficient comparison.\\nThe actual group homomorphism is retained with its equation to the pointed group map,\\nso the coefficient action uses that same map. Both Ext universes remain independent. -/\\ndef pointedH1PullbackHom\\n    {X S : Scheme.{u}} {F : Type u} [Field F]\\n    (f : S \\u27f6 X) (s : Spec (.of F) \\u27f6 S) (x : Spec (.of F) \\u27f6 X) (hx : s \\u226b f = x)\\n    (\\u03c6 : FiberAutGroup s \\u2192\\u209c* FiberAutGroup x)\\n    (h\\u03c6 : \\u03c6 = Naturality.pointedGroupHom f s x hx)\\n    (G : Grp (Over X)) [IsCommMonObj G.X] [IsFinite G.X.hom] [Etale G.X.hom]\\n    (M : Type v) [AddCommGroup M] [TopologicalSpace M] [DiscreteTopology M]\\n    [DistribMulAction (FiberAutGroup x) M] [ContinuousSMul (FiberAutGroup x) M]\\n    [GaloisCategory (Scheme.FiniteEtale S)]\\n    [PreGaloisCategory.FiberFunctor (fiberToFinite s)]\\n    [PreconnectedSpace S]\\n    [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]\\n    [HasExt.{w'} (AbelianSheaf.{u, u + 1} S)]\\n    (mark : (Over.mk x \\u27f6 G.X) \\u2243* Multiplicative M)\\n    (hmark : \\u2200 (\\u03b3 : FiberAutGroup x) a,\\n      mark (\\u03b3.hom.app (coefficientCover G) a) = Multiplicative.ofAdd (\\u03b3 \\u2022 (mark a).toAdd))\\n    (hAS : Stacks03AJ.{u, w'} S) (hRS : Stacks03RV S)\\n    (hcoeff : FiniteCoefficient (representedSheaf G)) :\\n    letI := restrictedAction M \\u03c6\\n    letI := restrictedAction_continuous M \\u03c6\\n    H1Etale X (representedSheaf G) \\u2192+ H1 (FiberAutGroup s) M := by\\n  subst \\u03c6\\n  letI := restrictedAction M (Naturality.pointedGroupHom f s x hx)\\n  letI := restrictedAction_continuous M (Naturality.pointedGroupHom f s x hx)\\n  exact (Naturality.pointedInverseImageH1AddEquiv f s x hx G M mark hmark hAS hRS\\n    hcoeff).toAddMonoidHom.comp (h1Pullback f (representedSheaf G))\\n\\n/-- The named homomorphism has exactly the original forward pullback/coefficient formula. -/\\n@[simp] theorem pointedH1PullbackHom_apply\\n    {X S : Scheme.{u}} {F : Type u} [Field F]\\n    (f : S \\u27f6 X) (s : Spec (.of F) \\u27f6 S) (x : Spec (.of F) \\u27f6 X) (hx : s \\u226b f = x)\\n    (G : Grp (Over X)) [IsCommMonObj G.X] [IsFinite G.X.hom] [Etale G.X.hom]\\n    (M : Type v) [AddCommGroup M] [TopologicalSpace M] [DiscreteTopology M]\\n    [DistribMulAction (FiberAutGroup x) M] [ContinuousSMul (FiberAutGroup x) M]\\n    [GaloisCategory (Scheme.FiniteEtale S)]\\n    [PreGaloisCategory.FiberFunctor (fiberToFinite s)]\\n    [PreconnectedSpace S]\\n    [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]\\n    [HasExt.{w'} (AbelianSheaf.{u, u + 1} S)]\\n    (mark : (Over.mk x \\u27f6 G.X) \\u2243* Multiplicative M)\\n    (hmark : \\u2200 (\\u03b3 : FiberAutGroup x) a,\\n      mark (\\u03b3.hom.app (coefficientCover G) a) = Multiplicative.ofAdd (\\u03b3 \\u2022 (mark a).toAdd))\\n    (hAS : Stacks03AJ.{u, w'} S) (hRS : Stacks03RV S)\\n    (hcoeff : FiniteCoefficient (representedSheaf G)) (a : H1Etale X (representedSheaf G)) :\\n    letI := restrictedAction M (Naturality.pointedGroupHom f s x hx)\\n    letI := restrictedAction_continuous M (Naturality.pointedGroupHom f s x hx)\\n    pointedH1PullbackHom f s x hx (Naturality.pointedGroupHom f s x hx) rfl\\n      G M mark hmark hAS hRS hcoeff a =\\n      Naturality.pointedInverseImageH1AddEquiv f s x hx G M mark hmark hAS hRS hcoeff\\n        (h1Pullback f (representedSheaf G) a) := rfl\\n\\n/-- Injectivity of the actual pullback is retained through its coefficient equivalence. -/\\ntheorem pointedH1PullbackHom_injective\\n    {X S : Scheme.{u}} {F : Type u} [Field F]\\n    (f : S \\u27f6 X) (s : Spec (.of F) \\u27f6 S) (x : Spec (.of F) \\u27f6 X) (hx : s \\u226b f = x)\\n    (\\u03c6 : FiberAutGroup s \\u2192\\u209c* FiberAutGroup x)\\n    (h\\u03c6 : \\u03c6 = Naturality.pointedGroupHom f s x hx)\\n    (G : Grp (Over X)) [IsCommMonObj G.X] [IsFinite G.X.hom] [Etale G.X.hom]\\n    (M : Type v) [AddCommGroup M] [TopologicalSpace M] [DiscreteTopology M]\\n    [DistribMulAction (FiberAutGroup x) M] [ContinuousSMul (FiberAutGroup x) M]\\n    [GaloisCategory (Scheme.FiniteEtale S)]\\n    [PreGaloisCategory.FiberFunctor (fiberToFinite s)]\\n    [PreconnectedSpace S]\\n    [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]\\n    [HasExt.{w'} (AbelianSheaf.{u, u + 1} S)]\\n    (mark : (Over.mk x \\u27f6 G.X) \\u2243* Multiplicative M)\\n    (hmark : \\u2200 (\\u03b3 : FiberAutGroup x) a,\\n      mark (\\u03b3.hom.app (coefficientCover G) a) = Multiplicative.ofAdd (\\u03b3 \\u2022 (mark a).toAdd))\\n    (hAS : Stacks03AJ.{u, w'} S) (hRS : Stacks03RV S)\\n    (hcoeff : FiniteCoefficient (representedSheaf G))\\n    (hinj : Function.Injective (h1Pullback f (representedSheaf G))) :\\n    letI := restrictedAction M \\u03c6\\n    letI := restrictedAction_continuous M \\u03c6\\n    Function.Injective (pointedH1PullbackHom f s x hx \\u03c6 h\\u03c6 G M mark hmark hAS hRS hcoeff) := by\\n  subst \\u03c6\\n  let := restrictedAction M (Naturality.pointedGroupHom f s x hx)\\n  let := restrictedAction_continuous M (Naturality.pointedGroupHom f s x hx)\\n  intro a b hab\\n  exact hinj ((Naturality.pointedInverseImageH1AddEquiv f s x hx G M mark hmark\\n    hAS hRS hcoeff).injective hab)\\n\\n/-- Pointed naturality, with the same named forward map, before concrete spectra\\nor a normalization class are substituted. -/\\nprivate theorem pointedComparison_of_modelComparison\\n    {X S : Scheme.{u}} {F : Type u} [Field F]\\n    (f : S \\u27f6 X) (s : Spec (.of F) \\u27f6 S) (x : Spec (.of F) \\u27f6 X) (hx : s \\u226b f = x)\\n    (\\u03c6 : FiberAutGroup s \\u2192\\u209c* FiberAutGroup x)\\n    (h\\u03c6 : \\u03c6 = Naturality.pointedGroupHom f s x hx)\\n    (G : Grp (Over X)) [IsCommMonObj G.X] [IsFinite G.X.hom] [Etale G.X.hom]\\n    (M : Type v) [AddCommGroup M] [TopologicalSpace M] [DiscreteTopology M] [Finite M]\\n    [DistribMulAction (FiberAutGroup x) M] [ContinuousSMul (FiberAutGroup x) M]\\n    [GaloisCategory (Scheme.FiniteEtale X)]\\n    [PreGaloisCategory.FiberFunctor (fiberToFinite x)]\\n    [GaloisCategory (Scheme.FiniteEtale S)]\\n    [PreGaloisCategory.FiberFunctor (fiberToFinite s)]\\n    [PreconnectedSpace X] [PreconnectedSpace S]\\n    [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]\\n    [HasExt.{w'} (AbelianSheaf.{u, u + 1} S)]\\n    (mark : (Over.mk x \\u27f6 G.X) \\u2243* Multiplicative M)\\n    (hmark : \\u2200 (\\u03b3 : FiberAutGroup x) a,\\n      mark (\\u03b3.hom.app (coefficientCover G) a) = Multiplicative.ofAdd (\\u03b3 \\u2022 (mark a).toAdd))\\n    (hAX : Stacks03AJ.{u, w} X) (hAS : Stacks03AJ.{u, w'} S)\\n    (hRX : Stacks03RV X) (hRS : Stacks03RV S)\\n    (hcoeff : FiniteCoefficient (representedSheaf G))\\n    (a : H1Etale X (representedSheaf G)) (b : H1 (FiberAutGroup x) M)\\n    (hab : FundamentalGroupComparison.representedH1AddEquiv x G hAX hRX M\\n      mark hmark hcoeff a = b) :\\n    letI := restrictedAction M \\u03c6\\n    letI := restrictedAction_continuous M \\u03c6\\n    pointedH1PullbackHom f s x hx \\u03c6 h\\u03c6 G M mark hmark hAS hRS hcoeff a =\\n      restriction M \\u03c6 b := by\\n  subst \\u03c6\\n  let := restrictedAction M (Naturality.pointedGroupHom f s x hx)\\n  let := restrictedAction_continuous M (Naturality.pointedGroupHom f s x hx)\\n  exact (Naturality.pointedInverseImageH1AddEquiv_pullback f s x hx G M mark hmark\\n    hAX hAS hRX hRS hcoeff a).trans\\n      (congrArg (restriction M (Naturality.pointedGroupHom f s x hx)) hab)\\n\\n/-- Carry three equalities through the specified coefficient map. -/\\nprivate theorem map_eq_of_three_equalities {S T : Type*}\\n    (f : S \\u2192 T) (a b : S) (c d : T)\\n    (hab : a = b) (hbc : f b = c) (hcd : c = d) : f a = d :=\\n  (congrArg f hab).trans (hbc.trans hcd)\\n\\n/-- Cocycles prove the compatibility of a genuine group restriction with\\nany two compatible coefficient pullbacks. -/\\nprivate theorem pullbackH1_after_restriction {G J L M N : Type*}\\n    [Group G] [TopologicalSpace G] [Group J] [TopologicalSpace J]\\n    [Group L] [TopologicalSpace L]\\n    [AddCommGroup M] [TopologicalSpace M] [IsTopologicalAddGroup M]\\n    [AddCommGroup N] [TopologicalSpace N] [IsTopologicalAddGroup N]\\n    [DistribMulAction G M] [ContinuousSMul G M]\\n    [DistribMulAction L N] [ContinuousSMul L N]\\n    (\\u03c6 : J \\u2192\\u209c* G) (\\u03c8 : L \\u2192\\u209c* J) (\\u03c7 : L \\u2192\\u209c* G) (hcomp : \\u03c6.comp \\u03c8 = \\u03c7)\\n    (f : letI := restrictedAction M \\u03c6\\n      PullbackMap (A := M) (B := N) \\u03c8)\\n    (g : PullbackMap (A := M) (B := N) \\u03c7)\\n    (hcoeff : \\u2200 m, f m = g m) :\\n    letI := restrictedAction M \\u03c6\\n    letI := restrictedAction_continuous M \\u03c6\\n    \\u2200 a : H1 G M, f.onH1 (restriction M \\u03c6 a) = g.onH1 a := by\\n  let := restrictedAction M \\u03c6\\n  let := restrictedAction_continuous M \\u03c6\\n  intro a\\n  obtain \\u27e8c, rfl\\u27e9 := classOf_surjective G M a\\n  rw [restriction_classOf, _root_.GroupCohomology.ContinuousH1.PullbackMap.onH1_classOf,\\n    _root_.GroupCohomology.ContinuousH1.PullbackMap.onH1_classOf]\\n  apply congrArg (classOf L N)\\n  apply _root_.GroupCohomology.ContinuousH1.Cocycle.ext\\n  intro l\\n  change f (c.val (\\u03c6 (\\u03c8 l))) = g (c.val (\\u03c7 l))\\n  rw [show \\u03c6 (\\u03c8 l) = \\u03c7 l from DFunLike.congr_fun hcomp l]\\n  exact hcoeff _\\n\\nsection GenericMap\\nvariable (R K \\u03a9 : Type u) [CommRing R] [Field K] [Algebra R K]\\n  [Field \\u03a9] [Algebra K \\u03a9] [Algebra R \\u03a9] [IsScalarTower R K \\u03a9]\\n\\n\\nvariable [Algebra.IsIntegral K \\u03a9]\\n\\n/-- Source K2-018#prop:k2018-arithmetic-characters, revision\\ne73d98b1b5c1e5abcdebf7d058e436d792b87982, local generic functoriality subset.\\nThe literal Galois map factors through the ACTUAL generic pointed-scheme map,\\nusing the same Omega and Spec precomposition at R=K. -/\\ntheorem galoisToFibre_factorization :\\n    (genericFibreMap R K \\u03a9).comp (galoisToFibre K K \\u03a9) = galoisToFibre R K \\u03a9 := by\\n  apply ContinuousMonoidHom.ext\\n  intro sigma\\n  exact pointedMap_precomposition\\n    (Under.homMk (genericInclusion R K) (genericPoint_compat R K \\u03a9) :\\n      Under.mk (basePoint K \\u03a9) \\u27f6 Under.mk (basePoint R \\u03a9))\\n    (galoisToFibre K K \\u03a9 sigma) (galoisToFibre R K \\u03a9 sigma)\\n    (pointEnd K K \\u03a9 sigma) (pointEnd R K \\u03a9 sigma) rfl\\n    (galoisToFibre_apply K K \\u03a9 sigma) (galoisToFibre_apply R K \\u03a9 sigma)\\n\\n@[simp] theorem galoisToFibre_factorization_apply (sigma : \\u03a9 \\u2243\\u2090[K] \\u03a9) :\\n    genericFibreMap R K \\u03a9 (galoisToFibre K K \\u03a9 sigma) = galoisToFibre R K \\u03a9 sigma :=\\n  DFunLike.congr_fun (galoisToFibre_factorization R K \\u03a9) sigma\\n\\nend GenericMap\\n\\nsection Normalization\\nvariable (R K \\u03a9 A H Lambda : Type u)\\n  [CommRing R] [IsDomain R] [IsDiscreteValuationRing R]\\n  [Field K] [Algebra R K] [IsFractionRing R K]\\n  [Field \\u03a9] [Algebra K \\u03a9] [Algebra R \\u03a9] [IsScalarTower R K \\u03a9]\\n  [IsGalois K \\u03a9] [IsAlgClosed \\u03a9]\\n  [CommRing A] [Algebra K A] [Algebra R A] [IsScalarTower R K A] [Algebra.Etale K A]\\n  [CommRing H] [HopfAlgebra R H] [Coalgebra.IsCocomm R H]\\n  [Module.Finite R H] [Algebra.Etale R H]\\n  [AddCommGroup Lambda] [TopologicalSpace Lambda] [hLambdaDiscrete : DiscreteTopology Lambda]\\n  [IsTopologicalAddGroup Lambda] [DistribMulAction (\\u03a9 \\u2243\\u2090[K] \\u03a9) Lambda]\\n  [ContinuousSMul (\\u03a9 \\u2243\\u2090[K] \\u03a9) Lambda]\\n\\nlocal instance : Module.Finite K A := Algebra.FormallyUnramified.finite_of_free K A\\n\\nvariable (tau : OriginalTorsorData R K A H (Bialgebra.counitAlgHom R H) (Bialgebra.comulAlgHom R H))\\n  (coords : CoefficientPointCoordinates R K \\u03a9 H Lambda\\n    (Bialgebra.counitAlgHom R H) (Bialgebra.comulAlgHom R H))\\n  (f : A \\u2192\\u2090[K] \\u03a9)\\n  (Q : Ideal (integralClosure R \\u03a9)) [Q.IsPrime] [Q.LiesOver (IsLocalRing.maximalIdeal R)]\\n  (hvan : inertiaClass R K \\u03a9 A H Lambda tau coords f Q = 0)\\n\\n/-- The generic full fibre group acts by actual generic pointed restriction\\nof the already constructed coefficient action over R. -/\\nabbrev genericCoefficientAction : DistribMulAction (FiberAutGroup (basePoint K \\u03a9)) Lambda :=\\n  letI := modelCoefficientAction R K \\u03a9 H Lambda coords\\n  restrictedAction Lambda (genericFibreMap R K \\u03a9)\\n\\ntheorem genericCoefficientAction_continuous :\\n    letI := genericCoefficientAction R K \\u03a9 H Lambda coords\\n    ContinuousSMul (FiberAutGroup (basePoint K \\u03a9)) Lambda := by\\n  let := modelCoefficientAction R K \\u03a9 H Lambda coords\\n  let := modelCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n  exact restrictedAction_continuous Lambda (genericFibreMap R K \\u03a9)\\n\\ninclude coords in\\n/-- Restriction of the generic action along the literal R=K Galois map is\\nthe ORIGINAL Galois action, by the proved factorization. -/\\ntheorem genericCoefficientAction_restrict (sigma : \\u03a9 \\u2243\\u2090[K] \\u03a9) (a : Lambda) :\\n    letI := genericCoefficientAction R K \\u03a9 H Lambda coords\\n    (galoisToFibre K K \\u03a9 sigma) \\u2022 a = sigma \\u2022 a := by\\n  let := modelCoefficientAction R K \\u03a9 H Lambda coords\\n  change (genericFibreMap R K \\u03a9 (galoisToFibre K K \\u03a9 sigma)) \\u2022 a = sigma \\u2022 a\\n  rw [galoisToFibre_factorization_apply]\\n  exact modelCoefficientAction_restrict R K \\u03a9 H Lambda coords sigma a\\n\\n/-- Identity-coefficient Galois restriction of the ACTUAL generic fibre group,\\nwith equivariance derived from generic functoriality and the original marking. -/\\ndef genericCoefficientRestriction :\\n    letI := genericCoefficientAction R K \\u03a9 H Lambda coords\\n    PullbackMap (A := Lambda) (B := Lambda) (galoisToFibre K K \\u03a9) := by\\n  letI := genericCoefficientAction R K \\u03a9 H Lambda coords\\n  exact identityCoefficientPullback (galoisToFibre K K \\u03a9)\\n    (genericCoefficientAction_restrict R K \\u03a9 H Lambda coords)\\n\\n/-- The two literal restriction routes agree on every native H\\u00b9 class; the\\nequality follows on cocycles from the actual generic Galois-map factorization. -/\\ntheorem genericRestriction_onH1 :\\n    letI := modelCoefficientAction R K \\u03a9 H Lambda coords\\n    letI := modelCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n    letI := genericCoefficientAction R K \\u03a9 H Lambda coords\\n    letI := genericCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n    \\u2200 a : H1 (FiberAutGroup (basePoint R \\u03a9)) Lambda,\\n      (genericCoefficientRestriction R K \\u03a9 H Lambda coords).onH1\\n        (restriction Lambda (genericFibreMap R K \\u03a9) a) =\\n      (coefficientRestriction R K \\u03a9 H Lambda coords).onH1 a := by\\n  let := modelCoefficientAction R K \\u03a9 H Lambda coords\\n  let := modelCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n  let := genericCoefficientAction R K \\u03a9 H Lambda coords\\n  let := genericCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n  exact pullbackH1_after_restriction\\n    (genericFibreMap R K \\u03a9) (galoisToFibre K K \\u03a9) (galoisToFibre R K \\u03a9)\\n    (galoisToFibre_factorization R K \\u03a9)\\n    (genericCoefficientRestriction R K \\u03a9 H Lambda coords)\\n    (coefficientRestriction R K \\u03a9 H Lambda coords) (fun _ => rfl)\\n\\nsection Ext\\nvariable [HasExt.{w} (AbelianSheaf.{u, u + 1} (Spec (.of R)))]\\n  [HasExt.{w'} (AbelianSheaf.{u, u + 1} (Spec (.of K)))]\\n\\n/-- The actual generic \\u00e9tale-cohomology class, after the canonical represented\\ncoefficient isomorphism. This is the genuine h1Pullback of normalizationExtClass. -/\\ndef genericExtClass :\\n    H1Etale (Spec (.of K))\\n      (representedSheaf (baseChangedGroup (genericInclusion R K) (coefficientGroup R H))) :=\\n  coefficientMap (representedSheafBaseChangeIso (genericInclusion R K) (coefficientGroup R H)).hom\\n    (h1Pullback (genericInclusion R K) (normalizationCoefficientSheaf R H)\\n      (normalizationExtClass R K \\u03a9 A H Lambda tau coords f Q hvan))\\n\\nomit hLambdaDiscrete in\\n/-- The canonical coefficient comparison carries actual cohomological\\npullback to the class of the ACTUAL pulled-back cover and scheme action.\\nThis uses SchemeTorsorBaseChange.torsorExtClass_pullbackSchemeAction directly. -/\\ntheorem genericExtClass_eq_torsor [_hLambdaDiscrete : DiscreteTopology Lambda] :\\n    genericExtClass R K \\u03a9 A H Lambda tau coords f Q hvan =\\n      (by\\n        letI : Surjective (normalizationCover R K \\u03a9 A H Lambda tau coords f Q hvan).obj.hom :=\\n          normalizationCover_surjective R K \\u03a9 A H Lambda tau coords f Q hvan\\n        exact torsorExtClass (torsorOfSchemeAction\\n          (baseChangedGroup (genericInclusion R K) (coefficientGroup R H))\\n          ((baseChange (genericInclusion R K)).obj (normalizationCover R K \\u03a9 A H Lambda tau coords f\\n            Q hvan))\\n          (SchemeTorsorBaseChange.pullbackSchemeAction (genericInclusion R K) (coefficientGroup R H)\\n            (normalizationCover R K \\u03a9 A H Lambda tau coords f Q hvan)\\n            (normalizationSchemeAction R K \\u03a9 A H Lambda tau coords f Q hvan)))) := by\\n  let : Surjective (normalizationCover R K \\u03a9 A H Lambda tau coords f Q hvan).obj.hom :=\\n    normalizationCover_surjective R K \\u03a9 A H Lambda tau coords f Q hvan\\n  unfold genericExtClass normalizationExtClass normalizationSheafTorsor\\n  exact SchemeTorsorBaseChange.torsorExtClass_pullbackSchemeAction\\n    (genericInclusion R K) (coefficientGroup R H)\\n    (normalizationCover R K \\u03a9 A H Lambda tau coords f Q hvan)\\n    (normalizationSchemeAction R K \\u03a9 A H Lambda tau coords f Q hvan)\\n\\nsection Comparison\\nset_option backward.isDefEq.respectTransparency true\\nset_option backward.isDefEq.respectTransparency.types true\\nvariable [GaloisCategory (Scheme.FiniteEtale (Spec (.of R)))]\\n  [PreGaloisCategory.FiberFunctor (fiberToFinite (basePoint R \\u03a9))]\\n  [GaloisCategory (Scheme.FiniteEtale (Spec (.of K)))]\\n  [PreGaloisCategory.FiberFunctor (fiberToFinite (basePoint K \\u03a9))]\\n  (hAR : Stacks03AJ.{u, w} (Spec (.of R))) (hRR : Stacks03RV (Spec (.of R)))\\n  (hAK : Stacks03AJ.{u, w'} (Spec (.of K))) (hRK : Stacks03RV (Spec (.of K)))\\n  (n : \\u2115) (hpos : 0 < n) (hkill : \\u2200 a : Lambda, n \\u2022 a = 0)\\n  (hunit : LevelInvertible (Spec (.of R)) n)\\n\\n/-- The actual generic pullback and canonical coefficient comparison, shared as a\\nsingle additive map. It is the same pointed map used by the general naturality theorem. -/\\ndef genericH1PullbackComparison :\\n    letI := coefficientModule_finite R K \\u03a9 H Lambda coords\\n    letI := modelCoefficientAction R K \\u03a9 H Lambda coords\\n    letI := modelCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n    letI := genericCoefficientAction R K \\u03a9 H Lambda coords\\n    letI := genericCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n    H1Etale (Spec (.of R)) (normalizationCoefficientSheaf R H) \\u2192+\\n      H1 (FiberAutGroup (basePoint K \\u03a9)) Lambda :=\\n  letI := coefficientModule_finite R K \\u03a9 H Lambda coords\\n  letI := modelCoefficientAction R K \\u03a9 H Lambda coords\\n  letI := modelCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n  letI := genericCoefficientAction R K \\u03a9 H Lambda coords\\n  letI := genericCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n  pointedH1PullbackHom (genericInclusion R K) (basePoint K \\u03a9) (basePoint R \\u03a9)\\n    (genericPoint_compat R K \\u03a9) (genericFibreMap R K \\u03a9) rfl\\n    (coefficientGroup R H) Lambda\\n    (coefficientSchemeMark R K \\u03a9 H Lambda coords)\\n    (coefficientFullAction_mark (basePoint R \\u03a9) (coefficientGroup R H) Lambda\\n      (coefficientSchemeMark R K \\u03a9 H Lambda coords)) hAK hRK\\n    (normalizationFiniteCoefficient R K \\u03a9 H Lambda coords n hpos hkill hunit)\\n\\n/-- The generic map is definitionally the actual pointed pullback homomorphism.\\nTogether with `pointedH1PullbackHom_apply`, this identifies its literal old forward formula. -/\\ntheorem genericH1PullbackComparison_eq_pointed :\\n    letI := coefficientModule_finite R K \\u03a9 H Lambda coords\\n    letI := modelCoefficientAction R K \\u03a9 H Lambda coords\\n    letI := modelCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n    letI := genericCoefficientAction R K \\u03a9 H Lambda coords\\n    letI := genericCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n    genericH1PullbackComparison R K \\u03a9 H Lambda coords hAK hRK n hpos hkill hunit =\\n      pointedH1PullbackHom (genericInclusion R K) (basePoint K \\u03a9) (basePoint R \\u03a9)\\n        (genericPoint_compat R K \\u03a9) (genericFibreMap R K \\u03a9) rfl\\n        (coefficientGroup R H) Lambda\\n        (coefficientSchemeMark R K \\u03a9 H Lambda coords)\\n        (coefficientFullAction_mark (basePoint R \\u03a9) (coefficientGroup R H) Lambda\\n          (coefficientSchemeMark R K \\u03a9 H Lambda coords)) hAK hRK\\n        (normalizationFiniteCoefficient R K \\u03a9 H Lambda coords n hpos hkill hunit) := rfl\\n\\ninclude hAR hRR in\\n/-- The same normalization Ext class compares under the actual generic pullback\\nmap to restriction of the same full scheme-torsor class. The map's old literal formula\\nis `genericH1PullbackComparison_eq_pointed` followed by `pointedH1PullbackHom_apply`. -/\\ntheorem normalizationExtClass_generic_comparison :\\n    letI := coefficientModule_finite R K \\u03a9 H Lambda coords\\n    letI := modelCoefficientAction R K \\u03a9 H Lambda coords\\n    letI := modelCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n    letI := genericCoefficientAction R K \\u03a9 H Lambda coords\\n    letI := genericCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n    genericH1PullbackComparison R K \\u03a9 H Lambda coords hAK hRK n hpos hkill hunit\\n      (normalizationExtClass R K \\u03a9 A H Lambda tau coords f Q hvan) =\\n      restriction Lambda (genericFibreMap R K \\u03a9)\\n        (fullSchemeClass R K \\u03a9 A H Lambda tau coords f Q hvan) :=\\n  letI := coefficientModule_finite R K \\u03a9 H Lambda coords\\n  letI := modelCoefficientAction R K \\u03a9 H Lambda coords\\n  letI := modelCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n  letI := genericCoefficientAction R K \\u03a9 H Lambda coords\\n  letI := genericCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n  by\\n    exact pointedComparison_of_modelComparison\\n      (genericInclusion R K) (basePoint K \\u03a9) (basePoint R \\u03a9) (genericPoint_compat R K \\u03a9)\\n      (genericFibreMap R K \\u03a9) rfl (coefficientGroup R H) Lambda\\n      (coefficientSchemeMark R K \\u03a9 H Lambda coords)\\n      (coefficientFullAction_mark (basePoint R \\u03a9) (coefficientGroup R H) Lambda\\n        (coefficientSchemeMark R K \\u03a9 H Lambda coords)) hAR hAK hRR hRK\\n      (normalizationFiniteCoefficient R K \\u03a9 H Lambda coords n hpos hkill hunit)\\n      (normalizationExtClass R K \\u03a9 A H Lambda tau coords f Q hvan)\\n      (fullSchemeClass R K \\u03a9 A H Lambda tau coords f Q hvan)\\n      (normalizationExtClass_comparison R K \\u03a9 A H Lambda tau coords f Q hvan\\n        hAR hRR n hpos hkill hunit)\\n\\ninclude hAR hRR in\\n/-- Original identity-coefficient Galois restriction of the actual generic\\npullback of the same normalization Ext class recovers the original algebraic torsor class. -/\\ntheorem normalizationExtClass_generic_pullback :\\n    letI := coefficientModule_finite R K \\u03a9 H Lambda coords\\n    letI := modelCoefficientAction R K \\u03a9 H Lambda coords\\n    letI := modelCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n    letI := genericCoefficientAction R K \\u03a9 H Lambda coords\\n    letI := genericCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n    (genericCoefficientRestriction R K \\u03a9 H Lambda coords).onH1\\n      (genericH1PullbackComparison R K \\u03a9 H Lambda coords hAK hRK n hpos hkill hunit\\n        (normalizationExtClass R K \\u03a9 A H Lambda tau coords f Q hvan)) =\\n      genericClass R K \\u03a9 A H Lambda tau coords f :=\\n  letI := coefficientModule_finite R K \\u03a9 H Lambda coords\\n  letI := modelCoefficientAction R K \\u03a9 H Lambda coords\\n  letI := modelCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n  letI := genericCoefficientAction R K \\u03a9 H Lambda coords\\n  letI := genericCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n  by\\n    let restrictClass : H1 (FiberAutGroup (basePoint K \\u03a9)) Lambda \\u2192\\n        H1 (\\u03a9 \\u2243\\u2090[K] \\u03a9) Lambda := (genericCoefficientRestriction R K \\u03a9 H Lambda coords).onH1\\n    exact map_eq_of_three_equalities restrictClass\\n      (genericH1PullbackComparison R K \\u03a9 H Lambda coords hAK hRK n hpos hkill hunit\\n        (normalizationExtClass R K \\u03a9 A H Lambda tau coords f Q hvan))\\n      (restriction Lambda (genericFibreMap R K \\u03a9)\\n        (fullSchemeClass R K \\u03a9 A H Lambda tau coords f Q hvan))\\n      ((coefficientRestriction R K \\u03a9 H Lambda coords).onH1\\n        (fullSchemeClass R K \\u03a9 A H Lambda tau coords f Q hvan))\\n      (genericClass R K \\u03a9 A H Lambda tau coords f)\\n      (normalizationExtClass_generic_comparison R K \\u03a9 A H Lambda tau coords f Q hvan\\n        hAR hRR hAK hRK n hpos hkill hunit)\\n      (genericRestriction_onH1 R K \\u03a9 H Lambda coords\\n        (fullSchemeClass R K \\u03a9 A H Lambda tau coords f Q hvan))\\n      (fullSchemeClass_restriction_generic R K \\u03a9 A H Lambda tau coords f Q hvan)\\n\\nend Comparison\\nend Ext\\nend Normalization\\n\\nopen _root_.AlgebraicGeometry.Scheme.FiniteEtale.GenericRestriction\\n  (generic_represented_h1Pullback_injective)\\n\\nuniverse wR wK\\n\\nset_option backward.isDefEq.respectTransparency true in\\nset_option backward.isDefEq.respectTransparency.types true in\\n/-- Generic pullback distinguishes actual model coefficient classes, retaining\\nboth Ext universes and the supplied comparison families. -/\\ntheorem normalizationCoefficient_generic_h1Pullback_injective (R K \\u03a9 H Lambda : Type u)\\n    [CommRing R] [IsDomain R] [IsDiscreteValuationRing R]\\n    [Field K] [Algebra R K] [IsFractionRing R K]\\n    [Field \\u03a9] [Algebra K \\u03a9] [Algebra R \\u03a9] [IsScalarTower R K \\u03a9]\\n    [IsGalois K \\u03a9] [IsAlgClosed \\u03a9]\\n    [CommRing H] [HopfAlgebra R H] [Coalgebra.IsCocomm R H]\\n    [Module.Finite R H] [Algebra.Etale R H]\\n    [AddCommGroup Lambda] [TopologicalSpace Lambda] [DiscreteTopology Lambda]\\n    [IsTopologicalAddGroup Lambda] [DistribMulAction (\\u03a9 \\u2243\\u2090[K] \\u03a9) Lambda]\\n    [ContinuousSMul (\\u03a9 \\u2243\\u2090[K] \\u03a9) Lambda]\\n    (coords : CoefficientPointCoordinates R K \\u03a9 H Lambda\\n      (Bialgebra.counitAlgHom R H) (Bialgebra.comulAlgHom R H))\\n    [GaloisCategory (Scheme.FiniteEtale (Spec (.of R)))]\\n    [PreGaloisCategory.FiberFunctor (fiberToFinite (basePoint R \\u03a9))]\\n    [GaloisCategory (Scheme.FiniteEtale (Spec (.of K)))]\\n    [PreGaloisCategory.FiberFunctor (fiberToFinite (basePoint K \\u03a9))]\\n    [HasExt.{wR} (AbelianSheaf.{u, u + 1} (Spec (.of R)))]\\n    [HasExt.{wK} (AbelianSheaf.{u, u + 1} (Spec (.of K)))]\\n    (hAR : Stacks03AJ.{u, wR} (Spec (.of R))) (hRR : Stacks03RV (Spec (.of R)))\\n    (hAK : Stacks03AJ.{u, wK} (Spec (.of K))) (hRK : Stacks03RV (Spec (.of K)))\\n    (n : \\u2115) (hpos : 0 < n) (hkill : \\u2200 a : Lambda, n \\u2022 a = 0)\\n    (hunit : LevelInvertible (Spec (.of R)) n) :\\n    Function.Injective\\n      (h1Pullback (genericInclusion R K) (normalizationCoefficientSheaf R H)) := by\\n  let := modelCoefficientAction R K \\u03a9 H Lambda coords\\n  let := modelCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n  exact generic_represented_h1Pullback_injective R K \\u03a9 (coefficientGroup R H) Lambda\\n    (coefficientSchemeMark R K \\u03a9 H Lambda coords)\\n    (coefficientFullAction_mark (basePoint R \\u03a9) (coefficientGroup R H) Lambda\\n      (coefficientSchemeMark R K \\u03a9 H Lambda coords)) hAR hRR hAK hRK\\n    (normalizationFiniteCoefficient R K \\u03a9 H Lambda coords n hpos hkill hunit)\\n\\n\\n/-- The actual generic comparison is injective under the original model/field\\ncomparison families, because its literal pullback is injective and the coefficient map is an\\nadditive equivalence. -/\\ntheorem genericH1PullbackComparison_injective (R K \\u03a9 H Lambda : Type u)\\n    [CommRing R] [IsDomain R] [IsDiscreteValuationRing R]\\n    [Field K] [Algebra R K] [IsFractionRing R K]\\n    [Field \\u03a9] [Algebra K \\u03a9] [Algebra R \\u03a9] [IsScalarTower R K \\u03a9]\\n    [IsGalois K \\u03a9] [IsAlgClosed \\u03a9]\\n    [CommRing H] [HopfAlgebra R H] [Coalgebra.IsCocomm R H]\\n    [Module.Finite R H] [Algebra.Etale R H]\\n    [AddCommGroup Lambda] [TopologicalSpace Lambda] [DiscreteTopology Lambda]\\n    [IsTopologicalAddGroup Lambda] [DistribMulAction (\\u03a9 \\u2243\\u2090[K] \\u03a9) Lambda]\\n    [ContinuousSMul (\\u03a9 \\u2243\\u2090[K] \\u03a9) Lambda]\\n    (coords : CoefficientPointCoordinates R K \\u03a9 H Lambda\\n      (Bialgebra.counitAlgHom R H) (Bialgebra.comulAlgHom R H))\\n    [GaloisCategory (Scheme.FiniteEtale (Spec (.of R)))]\\n    [PreGaloisCategory.FiberFunctor (fiberToFinite (basePoint R \\u03a9))]\\n    [GaloisCategory (Scheme.FiniteEtale (Spec (.of K)))]\\n    [PreGaloisCategory.FiberFunctor (fiberToFinite (basePoint K \\u03a9))]\\n    [HasExt.{wR} (AbelianSheaf.{u, u + 1} (Spec (.of R)))]\\n    [HasExt.{wK} (AbelianSheaf.{u, u + 1} (Spec (.of K)))]\\n    (hAR : Stacks03AJ.{u, wR} (Spec (.of R))) (hRR : Stacks03RV (Spec (.of R)))\\n    (hAK : Stacks03AJ.{u, wK} (Spec (.of K))) (hRK : Stacks03RV (Spec (.of K)))\\n    (n : \\u2115) (hpos : 0 < n) (hkill : \\u2200 a : Lambda, n \\u2022 a = 0)\\n    (hunit : LevelInvertible (Spec (.of R)) n) :\\n    letI := coefficientModule_finite R K \\u03a9 H Lambda coords\\n    letI := modelCoefficientAction R K \\u03a9 H Lambda coords\\n    letI := modelCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n    letI := genericCoefficientAction R K \\u03a9 H Lambda coords\\n    letI := genericCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n    Function.Injective\\n      (genericH1PullbackComparison R K \\u03a9 H Lambda coords hAK hRK n hpos hkill hunit) :=\\n  letI := coefficientModule_finite R K \\u03a9 H Lambda coords\\n  letI := modelCoefficientAction R K \\u03a9 H Lambda coords\\n  letI := modelCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n  letI := genericCoefficientAction R K \\u03a9 H Lambda coords\\n  letI := genericCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n  by\\n    exact pointedH1PullbackHom_injective (genericInclusion R K)\\n      (basePoint K \\u03a9) (basePoint R \\u03a9) (genericPoint_compat R K \\u03a9)\\n      (genericFibreMap R K \\u03a9) rfl (coefficientGroup R H) Lambda\\n      (coefficientSchemeMark R K \\u03a9 H Lambda coords)\\n      (coefficientFullAction_mark (basePoint R \\u03a9) (coefficientGroup R H) Lambda\\n        (coefficientSchemeMark R K \\u03a9 H Lambda coords)) hAK hRK\\n      (normalizationFiniteCoefficient R K \\u03a9 H Lambda coords n hpos hkill hunit)\\n      (normalizationCoefficient_generic_h1Pullback_injective R K \\u03a9 H Lambda coords\\n        hAR hRR hAK hRK n hpos hkill hunit)\\n\\n\\n/-- Source K2-018#prop:k2018-arithmetic-characters, revision\\ne73d98b1b5c1e5abcdebf7d058e436d792b87982, original-coefficient field matching.\\nThe EXACT genericCoefficientRestriction used by normalizationExtClass_generic_pullback\\nis injective on arbitrary field fibre-group H1 classes, with the original\\nindependently presented Galois action on Lambda and identity coefficients.\\nNo external-class equality or restriction-injectivity dictionary is assumed. -/\\ntheorem genericCoefficientRestriction_onH1_injective (R K \\u03a9 H Lambda : Type u)\\n    [CommRing R] [IsDomain R] [IsDiscreteValuationRing R]\\n    [Field K] [Algebra R K] [IsFractionRing R K]\\n    [Field \\u03a9] [Algebra K \\u03a9] [Algebra R \\u03a9] [IsScalarTower R K \\u03a9]\\n    [IsGalois K \\u03a9] [IsAlgClosed \\u03a9]\\n    [CommRing H] [HopfAlgebra R H] [Coalgebra.IsCocomm R H]\\n    [Module.Finite R H] [Algebra.Etale R H]\\n    [AddCommGroup Lambda] [TopologicalSpace Lambda] [DiscreteTopology Lambda]\\n    [IsTopologicalAddGroup Lambda] [DistribMulAction (\\u03a9 \\u2243\\u2090[K] \\u03a9) Lambda]\\n    [ContinuousSMul (\\u03a9 \\u2243\\u2090[K] \\u03a9) Lambda]\\n    (coords : CoefficientPointCoordinates R K \\u03a9 H Lambda\\n      (Bialgebra.counitAlgHom R H) (Bialgebra.comulAlgHom R H)) :\\n    letI := genericCoefficientAction R K \\u03a9 H Lambda coords\\n    letI := genericCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n    Function.Injective (genericCoefficientRestriction R K \\u03a9 H Lambda coords).onH1 := by\\n  let := genericCoefficientAction R K \\u03a9 H Lambda coords\\n  let := genericCoefficientAction_continuous R K \\u03a9 H Lambda coords\\n  exact\\n    FieldGalois.Arbitrary.identityPullback_onH1_injective\\n    (galoisToFibre K K \\u03a9)\\n    (FieldGalois.Arbitrary.galoisToFibre_surjective K \\u03a9)\\n      (genericCoefficientRestriction R K \\u03a9 H Lambda coords)\\n    (fun _ => rfl)\\n\\n\\nend AlgebraicGeometry.Scheme.FiniteEtale.InertiaTorsor.GenericPullback\\n\",\"module\":\"Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.GenericPullback\",\"CPP_origin\":\"d4 closed0/no drift3frontends3PASS\",\"run\":\"remote-41d9819b1ba14843a1bb6729d871927d\"}"
+  ],
+  "command_exit_code": 0,
+  "compiler_exit_codes": [],
+  "compiler_failed": 0,
+  "compiler_invocations": 0,
+  "compiler_observation": "wrapper-events-only",
+  "compiler_scope_lease_modes": {},
+  "compiler_scope_policy": "workspace descriptors or verified live supervisor; each compiler inherits its elastic claim",
+  "compiler_succeeded": 0,
+  "concurrency_basis": "compiler wrapper start/finish intervals, each holding one slot",
+  "diagnostics": {
+    "categories": {},
+    "first": [],
+    "observed_missing_count": 0,
+    "observed_missing_prefixes": {},
+    "observed_missing_prefixes_truncated": false,
+    "observed_missing_shortlist": []
+  },
+  "elapsed_seconds": 14.367135465145111,
+  "environment": {
+    "ELAN_HOME": "/root/autodl-tmp/lean-build/elan",
+    "LAKE_ARTIFACT_CACHE": "true",
+    "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+    "LAKE_OVERRIDE_LEAN": "1",
+    "LEAN_NUM_THREADS": "8",
+    "LEAN_SYSROOT": "/root/autodl-tmp/lean-build/logs/remote-41d9819b1ba14843a1bb6729d871927d/toolchain",
+    "R5_LEAN_REMOTE_PROFILE": "{\"jobs\": 8, \"lean\": \"/root/autodl-tmp/lean-build/logs/remote-41d9819b1ba14843a1bb6729d871927d/toolchain/bin/lean\", \"lean_memory_mib\": 12800, \"rss_limit_mib\": 65536, \"schema_version\": 1, \"threads\": 4}",
+    "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+  },
+  "exit_code": 0,
+  "expected_source": "5f20c26dfae437146cfe28ecbe86e39cff71a0079a5072b55d5a77ecd135d7c2",
+  "failure_reason": null,
+  "finished_at": "2026-11-01T09:48:07.349227+00:00",
+  "forbid_compilation": false,
+  "forced_kill": false,
+  "git_head": null,
+  "group_closed": true,
+  "incomplete_compiler_events": 0,
+  "input_drift": [],
+  "input_sha256": {
+    "Aglib/AlgebraicGeometry/Normalization/InertiaTorsor/GenericPullback.lean": "38a44417d19bb8edc88e665e2adece80a22bee78942263059eec7e8d6aa0a4eb",
+    "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+    "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+  },
+  "lock_acquired_at": "2026-11-01T09:47:52.973355+00:00",
+  "locks": {
+    "cache_fetch_exclusive": null,
+    "legacy_shared_gate": "/root/autodl-tmp/lean-build/build.lock",
+    "workspace_exclusive": "/root/autodl-tmp/lean-build/locks/workspace-8b0598140b557e766d369dc5a5ec56620fe63f8cf353486a320251d2fb9f0a54.lock"
+  },
+  "lowest_disk_free_bytes": 28254601216,
+  "modules": [
+    "Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.GenericPullback"
+  ],
+  "operation_id": null,
+  "outcome": "owned_phase_completed",
+  "peak_compiler_concurrency": 0,
+  "peak_rss_bytes": 4965449728,
+  "pgid": 471782,
+  "phase_executable_sha256": "0c05a22b0b180580a76437114a95cf138f67c8f46245acad26017c803b42b8c1",
+  "phase_label": "CI-Generic38a-normal-source-present-stock",
+  "pins": {
+    "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+    "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+    "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+  },
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 8,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536,
+    "threads": 4
+  },
+  "resource_accounting": {
+    "global": "sampled cgroup memory/CPU, startup and growth credits; no peak-envelope reservation",
+    "isolation": "cooperative sampled admission; no per-run kernel memory isolation or OOM guarantee",
+    "run": "frontend/job/thread ceilings, sampled owned-tree RSS cutoff, own-tree pressure retreat"
+  },
+  "resources": {
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "cgroup": "/sys/fs/cgroup",
+    "cgroup_limits": [
+      {
+        "cpu.max": "3200000 100000",
+        "memory.max": "128849018880",
+        "path": "/sys/fs/cgroup"
+      }
+    ],
+    "effective_cpus": 32.0,
+    "memory_bytes": 128849018880
+  },
+  "run_dir": "/root/autodl-tmp/lean-build/logs/remote-41d9819b1ba14843a1bb6729d871927d",
+  "sampled_process_average_cpu_cores": 5.391471402766343,
+  "sampled_process_cpu_seconds": 77.46,
+  "schema_version": 1,
+  "setup_cleanup": {
+    "removed_setup_bytes": 0,
+    "removed_setup_files": 0
+  },
+  "source_content_sha256": "5f20c26dfae437146cfe28ecbe86e39cff71a0079a5072b55d5a77ecd135d7c2",
+  "source_receipt_sha256": "b6fc668e364a220da3ec262f8e1645fdab84992f0a73ff846675090c039ea35a",
+  "started_at": "2026-11-01T09:47:52.513928+00:00",
+  "status": "succeeded",
+  "summary": {
+    "action": "phase",
+    "admission": {
+      "affinity_cpus": null,
+      "ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 65536,
+        "threads": 4
+      },
+      "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+      "final_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-0f694041d65b44c1b18ae6b74dfc8728": 1
+        },
+        "cpu_cores": 1.8811383927182115,
+        "cpu_usage_usec": 2346811850595,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 1610612736,
+        "memory_current_bytes": 48252940288,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 0.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 38618828800
+      },
+      "initial_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-0f694041d65b44c1b18ae6b74dfc8728": 1
+        },
+        "cpu_cores": 1.0824499070653586,
+        "cpu_usage_usec": 2346718548534,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 2147483648,
+        "memory_current_bytes": 48161255424,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 1.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 38526865408
+      },
+      "max_frontends_if_alone": 8,
+      "mode": "elastic",
+      "request": null
+    },
+    "artifacts": {
+      "build.log": "/root/autodl-tmp/lean-build/logs/remote-41d9819b1ba14843a1bb6729d871927d/build.log",
+      "compiler-events.jsonl": "/root/autodl-tmp/lean-build/logs/remote-41d9819b1ba14843a1bb6729d871927d/compiler-events.jsonl",
+      "receipt.json": "/root/autodl-tmp/lean-build/logs/remote-41d9819b1ba14843a1bb6729d871927d/receipt.json"
+    },
+    "cgroup_memory_attribution": "whole observed cgroup; an OOM event alone does not identify its victim",
+    "cgroup_memory_events_delta": {
+      "high": 0,
+      "low": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "compiler_observation": "wrapper-events-only",
+    "compiler_scope_lease_modes": {},
+    "execution_seconds": 14.367135465145111,
+    "exit_code": 0,
+    "expected_source": "5f20c26dfae437146cfe28ecbe86e39cff71a0079a5072b55d5a77ecd135d7c2",
+    "first_diagnostics": [],
+    "frontend_failed": 0,
+    "frontend_invocations": 0,
+    "frontend_observation": "wrapper starts only; arbitrary phase tools may bypass local compiler caps",
+    "frontend_peak": 0,
+    "frontend_succeeded": 0,
+    "group_closed": true,
+    "native_exit": 0,
+    "outcome": "owned_phase_completed",
+    "peak_rss_bytes": 4965449728,
+    "plan": null,
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "reason": "",
+    "run": "remote-41d9819b1ba14843a1bb6729d871927d",
+    "sampled_process_average_cpu_cores": 5.391471402766343,
+    "source_basis": "5f20c26dfae437146cfe28ecbe86e39cff71a0079a5072b55d5a77ecd135d7c2",
+    "status": "succeeded",
+    "unwrapped_frontend_count": "unknown",
+    "wall_seconds": 14.835324615240097
+  },
+  "task_id": "etale-recovery-lane-d-20261029",
+  "unfinished_compiler_records": [],
+  "waiting_for": null,
+  "wall_seconds": 14.835324615240097,
+  "worker_sha256": "7b1d09f535dc951f2f3ecae857f7b77b0ffc95f8f9e55352167a39b4387729a4",
+  "workspace": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean"
+}

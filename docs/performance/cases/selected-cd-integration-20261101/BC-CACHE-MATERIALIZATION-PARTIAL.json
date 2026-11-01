@@ -1,0 +1,21 @@
+{
+  "run": "remote-2c50803db8fd48319f711a1a1a03ac7c",
+  "source": "d44fd3b64f49e5255e2360612503b82c7149d01b7fc67aff70917e4735c5c3aa",
+  "exit": 3,
+  "compiler_invocations": 0,
+  "restored_artifact_records": 9051,
+  "restored_olean_records": 3879,
+  "restored_ilean_records": 1293,
+  "missing_modules": [
+    "Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenCounit",
+    "Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.AtIdeal.Data",
+    "Aglib.AlgebraicGeometry.Curves.PointDivisor.DivisorClass",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.PullbackComposition",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductGermNaturality",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductOriginalDiagram",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductRestrictionValues",
+    "Aglib.AlgebraicGeometry.Picard.PowerDescent"
+  ],
+  "observation_complete": false,
+  "evidence": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/parallel-bc-cache-checks/native-b-runs/remote-2c50803db8fd48319f711a1a1a03ac7c"
+}

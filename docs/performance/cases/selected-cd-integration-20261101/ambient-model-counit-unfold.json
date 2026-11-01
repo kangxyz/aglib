@@ -1,0 +1,10 @@
+{
+  "question": "Repair actual AmbientModel final counit-map equality after completed generic constructor integration",
+  "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/AmbientModel.lean",
+  "before_sha256": "2bb32d69d35fcdfe2b859e7529e7b048bd0fbe279bc56d8023399383bf0d414d",
+  "after_sha256": "41b1618736ce587d5e94dfa5d2e0296b0a9652ef4cd625b807801142a07fe899",
+  "change": "Add only existing HomologicalComplex.homologyCounitMap and canonicalAmbientSourceSheafComplex to final simp_only unfold list",
+  "correspondence": "General homologyCounitMap is literally original mapHomologyIso.inv followed by homologyMap; source complex abbreviation is literally original closed-adjoint complex on supplied J. Existing original cochain-iso equality supplies unchanged arrow. All statements, chosen resolution, coefficient objects, maps, models, hypotheses and options remain byte-identical.",
+  "grant": "Exact publication-executor delegated ownership for this one proof/interface repair",
+  "author_cpp": "None; candidate for actual affected incremental shared executor"
+}

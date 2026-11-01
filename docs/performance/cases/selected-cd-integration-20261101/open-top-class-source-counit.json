@@ -1,0 +1,10 @@
+{
+  "question": "Repair actual A53ff/source72442 native counit rewrite boundary using original inferred whole comparison equation",
+  "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenTopClass/Source.lean",
+  "before_sha256": "95b2d936fe19722ef595a49d59710205ae66327a1c481b3d4b8e8e30de64e2e6",
+  "after_sha256": "f450ec2643f2c2914875e132db1aa4a7ba268fd3faa7f2e816c9e65bcd2341b2",
+  "change": "Postcompose existing hn with original actual tilde counit homology map in inferred hwhole; normalize only original wrapper, complete generic homologyCounitMap, homologyMap_comp and Category.assoc",
+  "correspondence": "The same original naturality equality and same actual complex map/counit are composed. No replacement source complex, resolution, coefficient, category structure, map, hypothesis or option; all other source bytes unchanged.",
+  "grant": "Publication executor exact single path ordinary proof repair",
+  "author_cpp": "None; candidate for existing affected incremental shared executor"
+}

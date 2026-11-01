@@ -1,0 +1,41 @@
+✔ [8315/8500] Built Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.Algebraization.Operations (3.4s)
+✔ [8316/8500] Built Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.Algebraization.QuotientAlgebras (5.3s)
+✔ [8317/8500] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Adic.AlgebraizedCover (11s)
+✔ [8318/8500] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Adic.AlgebraizedCoverComparison (5.5s)
+✔ [8319/8500] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.ProperCompleteLocal (3.9s)
+✔ [8320/8500] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.ProperLocalApproximation (6.1s)
+✔ [8321/8500] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.ProperGeometricLocal (4.1s)
+✔ [8322/8500] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.ProperGeometricBaseChange (6.3s)
+✔ [8323/8500] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.ProperHenselian.Noetherian (5.3s)
+✔ [8324/8500] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.ProperHenselian.Approximation (4.9s)
+✔ [8325/8500] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.ProperHenselian.ApproximationSystem (4.9s)
+✔ [8326/8500] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.ProperHenselian.General (4.8s)
+✔ [8327/8500] Built Aglib.AlgebraicGeometry.EtaleCohomology.H0.ProperHenselian (38s)
+✔ [8328/8500] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.ProperHenselian (54s)
+✖ [8329/8500] Building Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricComparisonExchange (142s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-582393300ce44024a8435668a08f0769/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean -o /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.olean -i /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.c --setup /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean:163:18: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+✔ [8331/8500] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.LowDegree (151s)
+✔ [8332/8500] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CharacteristicPrimaryRestriction (29s)
+✔ [8333/8500] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteConstantReduction (20s)
+✔ [8334/8500] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.StrictlyLocalComparison (33s)
+✔ [8335/8500] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ProjectiveLineTests (34s)
+✔ [8336/8500] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.CoefficientTransport (52s)
+✔ [8337/8500] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.FiniteProducts (88s)
+✔ [8338/8500] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ProjectiveLineCogenerators (22s)
+✔ [8339/8500] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ProjectiveLineCriterion (19s)
+✔ [8340/8500] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.NoetherianComparison (14s)
+✔ [8341/8500] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ProjectiveLineModels (14s)
+✔ [8342/8500] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.LocalFiniteComparison (67s)
+✔ [8343/8500] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.HenselianFieldComparison (73s)
+✔ [8344/8500] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.FieldComparison (131s)
+✔ [8345/8500] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.FiniteImageTests (38s)
+✔ [8346/8500] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.BoundedComparison (19s)
+✔ [8347/8500] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.NativeLineComparison (21s)
+✔ [8348/8500] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ResidueFieldExtension (58s)
+✔ [8349/8500] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ProjectiveLineGeometricTransfer (90s)
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricComparisonExchange
+error: build failed

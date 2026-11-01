@@ -1,0 +1,73 @@
+{
+  "question": "Narrow ordinary continuation: do the two explicit model slots in Unbounded/SourceBCModel preserve the original independent families, comparison map and hypotheses, and discharge the actual constructor applicability boundary?",
+  "outcome": "PASS_SCOPED_MODEL_SLOT_APPLICABILITY",
+  "result_id": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.SourceBCModel#moduleUnboundedCompactificationSourceBaseChange_model",
+  "exact_conclusion": "The unchanged source/base-change interchange argument proves SourceIsoBaseChangeEquation for the canonical source comparison explicitly using sourceModel=models C and targetModel=changedModels C₁, with C₁=(sourceIso f' e he).obj C, the original two normalized exchanges, original target source comparison and original source-square compositor.",
+  "candidate_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/completed-d-cartesian-coherence-20261101/v4/CANDIDATE.json",
+  "candidate_manifest_sha256": "3238849714842ee0cec16090a2d38565c40324c2bbd20676054bbe7c36446eb7",
+  "source_vector_sha256": "cf41ccd6a836f86722272094214514f1247bdb46181589ce1ba4d8773c25f818",
+  "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceBCModel.lean",
+  "before_sha256": "63bcebd480cba17025d9cc6fddcb6d0e8b46f58a2bbacdd3fb06cad11bb8014c",
+  "after_sha256": "a36f21bf2eab3f8e8a71fb4168cbbf032848b5ff2c2e3a0ec8804b681cd84fdf",
+  "conditions": [
+    "Original scheme, quasi-compactness, source-isomorphism and structural-map hypotheses are unchanged.",
+    "Original independent native derived models, including wM and wM', remain independent.",
+    "Ring Λ, N : Nat, 0 < N, N • (1 : Λ) = 0, exactly as before.",
+    "The actual selected source-comparison constructor and accepted provider mathematics are retained at the dependency identities listed below."
+  ],
+  "dependencies": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoDiagram.lean": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/release-integrator-20261030/integration-30b6/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoDiagram.lean",
+      "sha256": "b5799c085c8c2effa46f2d444e2eacfda5f15778b03e794619ac397c3ee0e829"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/MixedModelTransition.lean": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/release-integrator-20261030/integration-30b6/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/MixedModelTransition.lean",
+      "sha256": "4880693b795bed696877fd46e26fa529a312d2be682bd5ec6386a9536b1b745b"
+    },
+    "Aglib/CategoryTheory/NatTrans/SourceBeforeModels.lean": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/completed-d-cartesian-coherence-20261101/v4/candidate/Aglib/CategoryTheory/NatTrans/SourceBeforeModels.lean",
+      "sha256": "6359d8e606a9ffbfec61b920ad9c50affab294b28b8967c3b59ae7c329250d70"
+    },
+    "Aglib/CategoryTheory/NatTrans/SourceIsoBaseChange.lean": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/completed-d-cartesian-coherence-20261101/v4/candidate/Aglib/CategoryTheory/NatTrans/SourceIsoBaseChange.lean",
+      "sha256": "f7000bd0d86892dbacc411cc84538633f0e1f9a77ffacc2b6a02f8a22001c9f6"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedSourceBC.lean": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/completed-d-cartesian-coherence-20261101/v4/candidate/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedSourceBC.lean",
+      "sha256": "dfce4c1015c53d4ec46f1471df85f86ff6949fc8c4067f3349472302eb6f2598"
+    }
+  },
+  "argument": [
+    "At C₁ the raw source comparison inherits models C, called hOld; its codomain is the old-model compactification functor.",
+    "The constructor with targetModel=changedModels C₁ uses exactly m=moduleUnboundedCompactificationMixedTransition for the identity of C₁ from hOld to changedModels C₁. Its hom is the raw source-comparison hom followed by inverse-image whiskering of m.",
+    "The explicit hn square uses changedModels C₁ and hOld on its two sides, and changedRawModels C₁ versus hOldRaw, with the common final target realization changedTargetModels N₁.",
+    "The unchanged ht identifies the final identity-refinement transition with the identity under that single final target model.",
+    "Thus the constructor formula supplies the hs premise of sourceIsoBeforeExchange_changeModel, and hn/ht have the intended original source and target maps. The existing after-exchange and target-refinement equations complete the same interchange proof."
+  ],
+  "prior_coverage": {
+    "report": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/d-cartesian-coherence-20261101.md",
+    "retained": "All unaffected v3 mathematical coverage; no whole 164-file rereview.",
+    "material_correction": "The v3 source-level assessment did not establish this native instance application. The subsequent c099 diagnostic demonstrates failure of its inferred constructor slots; the earlier no-known-source-gap statement must not be used to claim that v3 application compiled or needed no repair. V4 explicitly selects its intended slots.",
+    "endpoint_correspondence": "The manifest delta is only SourceBCModel. All six endpoint file hashes equal v3."
+  },
+  "evidence_boundary": {
+    "review": "Independent source/definition inspection and actual diagnostic reading; no candidate repair authored.",
+    "diagnostic_run": "remote-c0998331488b4e639bf0ecea9a8618e6",
+    "diagnostic_source": "7e0fee3228bd382fa7f33722d9e95cc35ae4f5c5ef78e9023dc323f6d684edff",
+    "diagnostic_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/D164-c099-SourceBCModel-DIAGNOSTIC.txt",
+    "diagnostic_binding": "The hn application mismatch is evidence on the preceding actual compiler input, not a v4 result.",
+    "cpp": "Current v4 CPP remains pending; no compiler, lint, audit, replay or client check was run for this review.",
+    "provider_delta_outside_scope": {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsion.lean",
+      "before": "f11e4222f471a0b8f3f111c9fc9e523ab8cec6460b31ce2baceb1c6790e4fdf1",
+      "after": "adff86560b91fa63972b7d174bfaa6dfd1529f66a9a76688f3af0b0cf1e5b4bd",
+      "decision": "Not reviewed by this one-file continuation; do not silently transfer the whole v3 provider-basis verdict."
+    }
+  },
+  "remaining_gap": "No mathematical or model-slot correspondence gap in the reviewed one-file delta. Actual native elaboration and any further compiler defects remain for the ongoing CPP; separate provider-delta acceptance belongs to its owner.",
+  "established_status_authorized": false,
+  "write_scope": [
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/d-cartesian-coherence-20261101-v4.md",
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/d-cartesian-coherence-20261101-v4.json"
+  ]
+}

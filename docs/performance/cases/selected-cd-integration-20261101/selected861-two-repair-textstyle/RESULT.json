@@ -1,0 +1,35 @@
+{
+  "configuration_sha256": {
+    "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+    "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+  },
+  "workspace": "/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean",
+  "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "question": "Only actual bc2/e57 changed-source text-style gaps; retain prior11 and all compatible earlier coverage",
+  "source_sha256": {
+    "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalPurity.lean": "bc2a75f14741e4c18df992c8f4f70f361a3c3b6928ee01356b53f7cd5253092e",
+    "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/Restriction.lean": "e57f63a7cf0a788eb249c3eff6806137f28322ae419ab897c300a6a82795e741"
+  },
+  "run_dir": "/root/autodl-tmp/lean-build/logs/selected861-two-repair-textstyle-19ae3f269e7549db92e92425fd790869",
+  "boundary": "Normalpure-source stylechecker only; no mutationlease/CPP/stock/axiom/CIrepeat or newprotocol.",
+  "command": [
+    "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "--no-build",
+    "env",
+    "python3",
+    "-c",
+    "import os,sys;os.environ['LEAN_SRC_PATH']=sys.argv[1]+os.pathsep+os.environ.get('LEAN_SRC_PATH','');os.execv(sys.argv[2],[sys.argv[2],sys.argv[3]])",
+    "/root/autodl-tmp/lean-build/logs/selected861-two-repair-textstyle-19ae3f269e7549db92e92425fd790869/source-selection-data",
+    "/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/bin/lint-style",
+    "Aglib.LatestCDStyleSelection"
+  ],
+  "exit_code": 0,
+  "seconds": 2.1576716601848602,
+  "binary_sha256": "e01b2c5c321385f8b9600d89b967694f66332c3a2daa3e4f97204367662e3fb0",
+  "source_container_at_start": "72442aa899c4beb50d2b2c971528e60795e4252aabb12e0f8aa96a3bbf66ea58",
+  "source_container_at_end": "72442aa899c4beb50d2b2c971528e60795e4252aabb12e0f8aa96a3bbf66ea58",
+  "style_log": "/root/autodl-tmp/lean-build/logs/selected861-two-repair-textstyle-19ae3f269e7549db92e92425fd790869/text-style.log",
+  "compiled": false,
+  "workspace_mutation_lease": false
+}

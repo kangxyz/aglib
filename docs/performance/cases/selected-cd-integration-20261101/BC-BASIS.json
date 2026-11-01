@@ -1,0 +1,15 @@
+{
+  "question": "Normal shared native-cache-only materialization for independent selected axiom712 lane",
+  "previous_full_Main_sync": {
+    "source": "72442aa899c4beb50d2b2c971528e60795e4252aabb12e0f8aa96a3bbf66ea58",
+    "git_head": "b0f8ca3f44be620dde8b40f65e1eec0143e45db4",
+    "source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/release-integrator-20261030/integration-30b6",
+    "coverage": "Source/cache transfer only, no proof coverage"
+  },
+  "current_source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+  "targets": 712,
+  "method": "existing native plan forbids production compiler frontends; ordinary Lake native artifact cache restores outputs by actual input hash",
+  "shared_cache": "/root/autodl-tmp/lean-build/cache/native",
+  "pins": "Lean4.34.1/Mathlibd13f23b7/Batteriesf2effa3d",
+  "cold_compilation_authorized": false
+}

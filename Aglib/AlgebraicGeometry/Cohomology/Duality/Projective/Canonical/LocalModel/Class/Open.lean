@@ -5,7 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Class
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel
+public import Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.RegularList.Sheaf.Class
 
 /-!
 # The original model class on an actual affine open

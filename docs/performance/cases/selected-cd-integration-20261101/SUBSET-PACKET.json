@@ -1,0 +1,77 @@
+{
+  "question": "Largest practical source-input-preserving already-validated C/D publication cut, without the unresolved Exchange context",
+  "baseline_public_commit": "374f73ce34df7d53e2590b4f028d6e8014f47b28",
+  "CI_publication_first": "Completed by Root;97b source is already public and excluded from this source payload",
+  "historical_full_plan_preserved": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/scm",
+  "source_cut": {
+    "candidate_count": 844,
+    "candidate_paths": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/candidate-code-paths.txt",
+    "candidate_paths_nul": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/candidate-code-paths.z",
+    "selected_source_vector": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/SELECTED-SOURCE-VECTOR.json",
+    "held_scope_count": 289,
+    "held_paths": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/held-code-paths.txt",
+    "held_existing_public": 18,
+    "held_existing_public_paths": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/held-existing-public-paths.txt",
+    "held_new_unpublished": 271,
+    "held_new_unpublished_paths": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/held-new-unpublished-paths.txt",
+    "actual_working_delta_note": "Historical1134scope partitions844+289+1CI; Exchange is now restored publica5, soactualchangedfullMaincode1133. No selected source changed in that late held-only repair.",
+    "closure_summary": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/SOURCE-CUT-SUMMARY.json"
+  },
+  "public_Exchange_protection": {
+    "minimal_implicated_interface": "Source author latest_cd_etale identifies Equation literal-law API -> projectedData-law API as the demonstrated incompatibility. Equation-only mixed-context sufficiency is not established.",
+    "selected_structural_hold": "Keep all12changed existing public inputs in the actual original publicExchange context at their374f public versions, thenhold current changed reverseconsumers. This gives289held andthe844cut. It is maximal underthis explicit context-identity constraint, not a global semantic minimal-hold theorem.",
+    "context_data": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/PUBLIC-EXCHANGE-CONTEXT.json",
+    "context_graph": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/PUBLIC-EXCHANGE-GRAPH.json",
+    "latest_peer_delta": "The30newpeer paths plusCI97b overlap neither selected code nor original579-modulepublicExchange context. NewPointPurity has0selected reverseconsumers.",
+    "late_frontier_result": "Equation13a/a5graph6276/source2fb CLOSED1/no drift, Equation530:6 maxRecDepth; Exchange/fourconsumersnotattempted. No selected coverage inferred fromthatfailedrun."
+  },
+  "coverage": {
+    "714recent": "Existing source-matched observations with exact selected changed-import input matching; explicit known public before-values included",
+    "129retained": "Source-matched priorP180/C45/D164 origins with cached current changed-input disjointness",
+    "1ExactAdjunction": "Direct26d3 ExactAdjunction3d76 successful leaf +895b whole-root success; de9\u21923d76 is doc-only",
+    "map": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/SELECTED-CPP-COVERAGE.json",
+    "runs": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/CPP-RUNS.json",
+    "ordinary_public_compatibility": "latest_cd_foundations supports Field2481 via unchanged generic inverse-pullback constructor/additive-only kernel names and Powerb3f via unchanged AssociatedBundle/TorsorAction proofs/exact qualified declaration relocations. Retain these public origins distinctly from fresh current-public-file CPP.",
+    "boundary": "No fresh combined subset CPP or native predicate pass claimed. This preparation uses actual source-bound success contexts, retained compatible origins, dependency exclusion and supported public-source correspondence; it doesnotinfercombinedclosure fromleafpasscount alone."
+  },
+  "metadata": {
+    "apply_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/METADATA-APPLY.json",
+    "entry_filter_delta": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/ENTRY-FILTER-DELTA.json",
+    "README_filter_delta": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/README-FILTER-DELTA.json",
+    "new_peer_overlap_resolution": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/PEER-ADVANCE-OVERLAPS.json",
+    "entry_files": 10,
+    "README_files": 57,
+    "removed_held_new_root_imports": 271,
+    "removed_navigation_lines": 16,
+    "deferred_local_prose": [
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/README.md",
+        "reason": "Local non-navigation prose references held new source",
+        "references": [
+          {
+            "line": "The [module finite-image theorem](Modules/FiniteImageLocallyNoetherian.lean)",
+            "held_unpublished_targets": [
+              "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/Modules/FiniteImageLocallyNoetherian.lean"
+            ]
+          }
+        ]
+      }
+    ],
+    "preservation": "Every374f public source/test/root import/README prose is retained. Existing heldpublicsources staypublic by exclusion; newheldfiles are notstaged. Only271unpublishedheld importnames and16navigationlines are removed fromthecompleteprivate metadata; oneConstructibleREADME localchange isdeferred. Canonicalorder andpublicwrappers preserved.",
+    "native_tool_boundary": "No new generator/check or whole-library compilation. Afterimages are controlled filters ofpriornative-derivedfullentry plus boundedactualpeer additions; exact root/facade expected filename sets and wrapper correspondence are recorded bythepreparation."
+  },
+  "staging": {
+    "count_before_PERF": 911,
+    "path_list": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/STAGING-PATHS.txt",
+    "path_list_nul": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/STAGING-PATHS.z",
+    "recipe": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/STAGING-RECIPE.txt",
+    "root_only_copy_script": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/publication/validated-subset/apply_owned_files.py",
+    "existing_publication_checkout": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+    "route": "Root copies exactly844hash-guardedcode +67preparedmetadata files intoexistingpublic374fCIcheckout, leavesprivateMAIN/heldworkuntouched, stages911+separateactualPERFmanifest, makesonecoherentcommit andnormalpushHEAD:refs/heads/etale-abstract. No newworktreeorfullplanrewrite."
+  },
+  "actual_remaining_gaps": [
+    "Equation13a/a5 affected graph6276 closed1 at Equation530:6 maxRecDepth; Exchangea5/four consumer roots not attempted. All remain outside844.",
+    "Equation-only sufficient mixed context is unsupported; this cut instead retains the entire published Exchange input context."
+  ],
+  "ownership": "Read-only MAIN/Git; only this separate packet/afterimages were written. Actual source-applicability owners remain latest_cd_etale/latest_cd_foundations, CPP owner authorized_d_native_executor; finalPERF owner consumesselectedvector/coverage directly."
+}

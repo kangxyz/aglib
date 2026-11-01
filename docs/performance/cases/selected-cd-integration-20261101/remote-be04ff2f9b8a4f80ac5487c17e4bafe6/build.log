@@ -1,0 +1,56 @@
+✖ [8222/8524] Building Aglib.AlgebraicGeometry.Cohomology.Cech.CoproductComputed (56s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/Cech/CoproductComputed.lean -o /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/Cech/CoproductComputed.olean -i /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/Cech/CoproductComputed.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/Cech/CoproductComputed.c --setup /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/Cech/CoproductComputed.setup.json --json
+error: Aglib/AlgebraicGeometry/Cohomology/Cech/CoproductComputed.lean:79:2: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+✔ [8324/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackCohomologyCocone (119s)
+✔ [8325/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackLimitCohomologyLeg (34s)
+✔ [8326/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartLimitCohomologyCocone (17s)
+✔ [8327/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackCohomologyDescent (53s)
+✔ [8328/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.StageCohomology (4.0s)
+✔ [8329/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackLimitLegNaturality (30s)
+✔ [8330/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricCohomologyDiagram (99s)
+✔ [8331/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartCohomologyDiagram (43s)
+✔ [8332/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartLimitContinuity (40s)
+✔ [8333/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackConstantDescent (131s)
+✔ [8334/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.ConstantMaps (3.0s)
+✔ [8336/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartOriginalDiagram (56s)
+✔ [8337/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartLimitZero (23s)
+✔ [8338/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.AlgebraicExtension.FiniteConstantDescent (61s)
+✔ [8339/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PrincipalLocalizationZero (78s)
+✔ [8340/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.CompositeZero (59s)
+✔ [8341/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.FiniteTypeCohomology (121s)
+✔ [8347/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartCohomologyCocone (134s)
+✔ [8348/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PrincipalLocalizationInjectiveAcyclic (75s)
+✔ [8349/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.CommonFieldCompositeZero (66s)
+✔ [8350/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.GenericCoverZeroSpreading (111s)
+✔ [8351/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartCohomologyGerms (57s)
+✔ [8352/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PrincipalLocalizationCoefficientZero (135s)
+✔ [8353/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PointedCohomologyLeg (310s)
+✔ [8354/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.GenericCoefficientZeroSpreading (107s)
+✔ [8355/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartStrictLocalComparison (116s)
+✔ [8356/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.GenericCoverCoefficientZeroSpreading (24s)
+✔ [8357/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartPointedComparison (165s)
+✔ [8358/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartStrictLocalNaturality (193s)
+✔ [8359/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.HigherDirectImageColimits (140s)
+✔ [8360/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.LocalTorsionColimit (4.7s)
+✔ [8361/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.HigherTorsion (4.9s)
+✔ [8362/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.DirectImage (6.7s)
+✔ [8363/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.TorsionPreservation (7.2s)
+✔ [8364/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Vanishing.ModificationCone (6.5s)
+✔ [8365/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Vanishing.FiniteModificationTorsion (17s)
+✔ [8366/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Vanishing.IntegralBoundaryReduction (27s)
+✔ [8367/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartGeometricComparison (250s)
+✔ [8369/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricFibreNeighborhood (5.5s)
+✔ [8370/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricFibreTransfer (138s)
+✔ [8371/8524] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricComparisonEquation (481s)
+✖ [8372/8524] Building Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricComparisonExchange (289s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-be04ff2f9b8a4f80ac5487c17e4bafe6/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean -o /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.olean -i /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.c --setup /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean:131:8: (kernel) deterministic timeout
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean:179:8: (kernel) unknown constant 'AlgebraicGeometry.Scheme.EtaleCohomology.Stalk.geometricCohomologyComparison_exchange'
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.Cohomology.Cech.CoproductComputed
+- Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricComparisonExchange
+error: build failed

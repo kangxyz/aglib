@@ -234,6 +234,8 @@ affine-stage/small-index scope and original section maps.
 
 ## Shared constructions and equations
 
+The [selected C/D integration case](performance/cases/selected-cd-integration-20261101/README.md) records source-matched native coverage and reuse of the documented whole-construction methods.
+
 **Check whether the consumer needs another implementation.** Follow the
 [minimal-choice rule](INTERFACES.md#minimal-implementation-choices): use one
 chosen realization per mathematical category, and prefer Ext, natural-degree

@@ -1,0 +1,13 @@
+✔ [7932/7943] Built Aglib.AlgebraicGeometry.Curves.PointDivisor.BaseChange (4.5s)
+✔ [7933/7943] Built Aglib.AlgebraicGeometry.Curves.Divisors.FieldExtensionBoundary (4.0s)
+✔ [7934/7943] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.GenericRepresentativePullback (38s)
+✔ [7935/7943] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.OriginalPresheafCoefficients (70s)
+✔ [7936/7943] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductRestrictionCanonical (75s)
+✔ [7937/7943] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.KummerResidueNaturality (48s)
+✔ [7938/7943] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.KummerResidueExtension (65s)
+✔ [7939/7943] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductPresheaf (106s)
+✔ [7940/7943] Built Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.HigherDirectImage.TestCoefficientRestriction (34s)
+✔ [7941/7943] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductStalk (47s)
+✔ [7942/7943] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductGermRestriction (89s)
+✔ [7943/7943] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.HigherImageLocalZero (73s)
+Build completed successfully (7943 jobs).

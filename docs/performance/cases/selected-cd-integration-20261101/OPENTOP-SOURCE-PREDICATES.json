@@ -1,0 +1,12 @@
+{
+  "source_sha256": {
+    "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenTopClass/Source.lean": "f450ec2643f2c2914875e132db1aa4a7ba268fd3faa7f2e816c9e65bcd2341b2"
+  },
+  "count": 1,
+  "errors": [],
+  "checks": [
+    "tokens",
+    "policy"
+  ],
+  "checker_sha256": "1b8aeee8b2db34caa57ff30e415d81b1ce7fae622b89b96dc24e841147d3db4e"
+}
