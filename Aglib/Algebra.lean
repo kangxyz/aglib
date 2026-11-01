@@ -19,6 +19,7 @@ public import Aglib.Algebra.Category.FGModuleCat.ScalarAutomorphisms
 public import Aglib.Algebra.Category.FGModuleCat.ScalarExtension
 public import Aglib.Algebra.Category.FGModuleCat.ScalarMatrices
 public import Aglib.Algebra.Category.Grp.AllowedOrders
+public import Aglib.Algebra.Category.Grp.ExactSequenceConsequences
 public import Aglib.Algebra.Category.Grp.FiniteColimits
 public import Aglib.Algebra.Category.Grp.FinitelyGeneratedColimit
 public import Aglib.Algebra.Category.Grp.ProductSections
@@ -26,6 +27,7 @@ public import Aglib.Algebra.Category.Grp.Products.TupleCoordinates
 public import Aglib.Algebra.Category.Grp.ProjectiveInt
 public import Aglib.Algebra.Category.Grp.Resize
 public import Aglib.Algebra.Category.Grp.Resize.Diagram
+public import Aglib.Algebra.Category.Grp.Resize.Naturality
 public import Aglib.Algebra.Category.Grp.ZModEndomorphisms
 public import Aglib.Algebra.Category.Grp.ZModQuotient
 public import Aglib.Algebra.Category.Grp.ZModSequence
@@ -254,10 +256,12 @@ public import Aglib.Algebra.Homology.CompatiblePrimitive
 public import Aglib.Algebra.Homology.Coproduct.Homology
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.AcyclicComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.AdjunctionAcyclic
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.Bifunctor
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.BiproductComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.CogeneratorComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Cokernel
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.CompositeComparison
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.Effacement
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.EffacementComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Equivalence
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.InjectiveColimit
@@ -419,6 +423,7 @@ public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Bas
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.NatTrans
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.Normalization
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.OrdinaryExchange
+public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.OrdinaryNatTrans
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.OriginalUnitUniqueness
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ResolutionComparison
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ResolutionCycleSections
@@ -581,6 +586,8 @@ public import Aglib.Algebra.Homology.QuasiIso
 public import Aglib.Algebra.Homology.QuasiIso.Colimit
 public import Aglib.Algebra.Homology.QuasiIso.Transfinite
 public import Aglib.Algebra.Homology.RightDerived.Postcomp
+public import Aglib.Algebra.Homology.RightDerived.Postcomp.RepresentedSections
+public import Aglib.Algebra.Homology.RightDerived.Postcomp.UnitAssembly
 public import Aglib.Algebra.Homology.RightDerived.Represented
 public import Aglib.Algebra.Homology.Semicontinuity
 public import Aglib.Algebra.Homology.ShortComplex.Adjunction

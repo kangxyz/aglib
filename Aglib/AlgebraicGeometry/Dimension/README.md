@@ -37,3 +37,9 @@ or `dim Y` and no going-up theorem is used. Consumer:
 [Group/MultiplicationSurjective](../Group/MultiplicationSurjective.lean).
 
 The native curve and model interfaces consume these bounds and conditions.
+
+[ProperImage](ProperImage.lean) bounds the dimension of the actual schematic
+image of a proper map by that of its source.
+[FiniteFibreImage](FiniteFibreImage.lean) gives equality with the relative
+dimension for a nonempty smooth field scheme when the proper map has a finite
+actual point fibre; no separability premise is needed.

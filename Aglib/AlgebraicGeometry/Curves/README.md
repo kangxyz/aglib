@@ -129,5 +129,13 @@ over any field with the displayed separated and locally finite-type hypotheses.
 over any field. [FiniteFlat](Jacobian/FiniteFlat.lean) proves the literal
 multiplication on that same `J` finite, flat and surjective for every positive
 level over any field, and finite étale and surjective when the level is a unit.
-The supplied representative remains separated and locally of finite type. [LineBundle](Jacobian/LineBundle.lean) specializes
+[Torsion](Jacobian/Torsion.lean) gives the literal multiplication and native
+kernel on that same `J` locally free rank `n^(2*g)` for every positive `n`,
+including characteristic-divisible levels. For `n` a unit in the field, it
+gives geometric degree and geometric torsion and native kernel point counts,
+and a noncanonical `ZMod n` coordinate equivalence and basis for the native
+action, using all divisor-level counts. Level one and genus zero are included;
+no canonical or Galois-equivariant basis or arbitrary-field rational-point
+count is asserted. The supplied representative remains separated and locally
+of finite type. [LineBundle](Jacobian/LineBundle.lean) specializes
 the cube, square and multiplication laws to the same component.

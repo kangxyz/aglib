@@ -398,3 +398,11 @@ and the left unitor), so the point-fibre cohomology of a module on `X_T` at `t` 
 fibre cohomology at twist `0` (`modulePointFiberCohomologyDimension_eq_embeddedFiberTwistDim_zero`;
 vanishing form for line bundles under a closed immersion,
 `subsingleton_modulePointFiberCohomology_iff_embeddedFiberTwistDim_zero`).
+
+[HilbertPolynomial/SupportDegree](HilbertPolynomial/SupportDegree.lean)
+identifies the degree of the original Hilbert polynomial with the support
+dimension of a nonzero coherent coefficient on projective space over an
+infinite field. The surrounding Hilbert-polynomial modules establish the
+needed support bounds, coefficient comparison and rank scaling for the
+positive multiplication application; they do not assert unrestricted
+finite-flat Euler-characteristic scaling.

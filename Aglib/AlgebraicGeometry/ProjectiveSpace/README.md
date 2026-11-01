@@ -473,3 +473,8 @@ proper (`isProper`; Stacks, Lemma 29.44.5, Tag 01WC). Consumer:
 
 [FromSections/Nonvanishing](FromSections/Nonvanishing.lean) supplies the
 original projective-map and section nonvanishing input for the ample criterion.
+
+[Twisting/Picard](Twisting/Picard.lean) extracts the original integer-twist
+Picard homomorphism to arbitrary commutative rings and coordinate types.
+The former projective-line names remain aliases in
+[PositiveTwist](Line/PositiveTwist.lean).
