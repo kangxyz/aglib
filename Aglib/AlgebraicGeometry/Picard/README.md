@@ -877,3 +877,12 @@ on locally Noetherian tests. The universal-pair comparison additionally uses
 a locally Noetherian base, the stated proper, flat, geometrically integral
 source geometry and an actual compatible choice of origins. Its all-test laws
 follow by pullback, not an extension of representability.
+
+[UniversalTranslation](LineBundleFamily/UniversalTranslation.lean) retains
+the original translation difference, base evaluation and normalization for
+family classes on arbitrary test schemes, including nonreduced ones.
+
+[LineBundleFamily/SourcePullback](LineBundleFamily/SourcePullback.lean)
+retains the original source-family map, translation and parameter naturality
+for arbitrary source morphisms, without a flatness premise. Its inversion and
+difference formulas retain the original coefficient and parameter order.

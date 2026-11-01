@@ -66,3 +66,15 @@ inequality `finrank H¹(O_A) ≤ finrank Cotangent(unit_A)` is retained in the
 conclusions on dual properness, smoothness, dimension and finite-flat
 surjectivity of `φ_L`; the H-projective source version also gives geometric
 integrality and projectivity. The coherent-H¹ bound itself remains open.
+
+[Dual homogeneity](OverField/Dual/Homogeneity.lean) assumes the original
+proper geometrically integral field group `A` and the same supplied `P,R`
+with locally finite-type separated representative, and additionally that its
+actual identity component `D` is proper and geometrically integral. On
+arbitrary tests the original universal translation difference equals the
+pullback of its actual base evaluation; the normalized rigidified pair is
+trivial. [Dual multiplication](OverField/Dual/Multiplication.lean) proves
+that original source pullback by `[n]` is `[n]` on this same `D` for every
+natural `n`, with contravariant composition and field-base-change laws.
+These results do not supply the separate coherent-H¹ bound or these dual
+geometry hypotheses.

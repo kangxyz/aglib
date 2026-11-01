@@ -8,7 +8,9 @@ Authors: R5Lab contributors, kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.Dimension
+public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.Homogeneity
 public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.Isogeny
+public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.Multiplication
 public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.Poincare
 public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.Projectivity
 public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.Properness
@@ -3897,9 +3899,11 @@ public import Aglib.AlgebraicGeometry.Picard.LineBundleFamily.GroupRigidity
 public import Aglib.AlgebraicGeometry.Picard.LineBundleFamily.Normalized
 public import Aglib.AlgebraicGeometry.Picard.LineBundleFamily.ProjectiveCube
 public import Aglib.AlgebraicGeometry.Picard.LineBundleFamily.Rigidified
+public import Aglib.AlgebraicGeometry.Picard.LineBundleFamily.SourcePullback
 public import Aglib.AlgebraicGeometry.Picard.LineBundleFamily.Translation
 public import Aglib.AlgebraicGeometry.Picard.LineBundleFamily.TranslationBaseChange
 public import Aglib.AlgebraicGeometry.Picard.LineBundleFamily.TranslationIso
+public import Aglib.AlgebraicGeometry.Picard.LineBundleFamily.UniversalTranslation
 public import Aglib.AlgebraicGeometry.Picard.LinearSystem.AbelClass
 public import Aglib.AlgebraicGeometry.Picard.LinearSystem.Basic
 public import Aglib.AlgebraicGeometry.Picard.LinearSystem.Bijection

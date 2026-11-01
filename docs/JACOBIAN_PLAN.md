@@ -279,6 +279,18 @@ are obtained by pullback. See [Picard](../Aglib/AlgebraicGeometry/Picard/README.
 
 ## Dual abelian variety
 
+For the same supplied `P,R` and native `D = Pic⁰(A)`, conditional
+[homogeneity](../Aglib/AlgebraicGeometry/AbelianScheme/OverField/Dual/Homogeneity.lean)
+and [multiplication](../Aglib/AlgebraicGeometry/AbelianScheme/OverField/Dual/Multiplication.lean)
+assume the original field group `A` is proper and geometrically integral and
+that this actual `D` is also proper and geometrically integral. The original
+translation difference is the pullback of its actual base evaluation; the
+normalized rigidified pair is trivial. Original source pullback by `[n]` is
+`[n]` on `D` for every natural `n`, with contravariant composition and
+field-base-change compatibility. Classification uses locally Noetherian tests,
+while the resulting class laws pull back to arbitrary tests. These hypotheses
+are not discharged by this package.
+
 Use the same Picard representability technology for a projective abelian
 variety `A`, and use the supplied rigidified Poincaré bundle and line-bundle morphism; construct dual homomorphisms, biduality and isogeny laws. Properness and smoothness of `Pic⁰(A)` have criteria retaining the original
 coherent-H¹ bound; curve smoothness B1 does not supply that bound. The [inspected preliminary draft](REFERENCES.md#inspected-preliminary-abelian-variety-draft)
@@ -382,7 +394,7 @@ close the planned programme.
 | B6–B7 | **Partial source supplied:** positive multiplication and its native kernel have rank `n^(2*g)` over every field; at unit levels geometric degree and torsion counts and noncanonical native-action basis existence are supplied through all-divisor counts. Proper roots and constant H¹ have cardinality `n^(2*g)` and noncanonical native-action bases over algebraically closed constants at positive invertible levels; the open-curve rank remains open. |
 | D2–D6 | **Partial source supplied:** module trace and smaller-open compatibility, exact finite-module dualization, finite biduality, and constant-coefficient perfectness in degrees 0 and 2 with transposes, for finite complement including empty and positive invertible `n`. Original one-point module Ext purity and Kummer trace-one normalization are supplied; degree-one and general lcc perfectness, finite-set purity, finite-pushforward compatibility and lcc internal-Hom/Ext comparison remain open. |
 | D7 | **Open:** constructible devissage/local comparison, with the unchecked Milne EC reference and alternative Artin route kept explicit. |
-| W1 | **Partial source supplied:** the same Poincaré pair and original line-bundle morphism, with locally Noetherian classification; an ample original `φ_L` is finite. Dual properness, smoothness, dimension, geometric integrality, projectivity and finite-flat surjectivity are conditional on the original coherent-H¹ inequality `finrank H¹(O_A) ≤ finrank Cotangent(unit_A)` and the displayed source assumptions. That inequality, biduality, dual homomorphisms and character descent remain open. |
+| W1 | **Partial source supplied:** the same Poincaré pair and original line-bundle morphism, with locally Noetherian classification; an ample original `φ_L` is finite. Dual properness, smoothness, dimension, geometric integrality, projectivity and finite-flat surjectivity are conditional on the original coherent-H¹ inequality `finrank H¹(O_A) ≤ finrank Cotangent(unit_A)` and the displayed source assumptions. Conditional homogeneity and source multiplication laws hold when the actual dual component is proper and geometrically integral. The coherent-H¹ inequality, unconditional dual geometry, biduality, general dual homomorphisms and character descent remain open. |
 | W2–W3 | **Open:** [Cartier theta geometry, canonical principal polarization and general Weil pairing](#theta-principal-polarization-and-weil-pairing), with all-positive-level group-scheme and prime-to-characteristic point conclusions distinguished. |
 | W4 | **Open:** original-map and sign comparison of Yoneda, cup, Kummer, Abel–Jacobi, Cartier and polarization constructions. |
 
