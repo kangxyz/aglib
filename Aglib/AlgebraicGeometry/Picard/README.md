@@ -868,3 +868,12 @@ H-projective, flat, geometrically integral field source and the supplied locally
 finite-type representative; no group or source rational point is required.
 [TranslationIso](LineBundleFamily/TranslationIso.lean) retains the actual
 parameterized translation isomorphisms and pullback coherence.
+
+[Presheaf/Pullback](Presheaf/Pullback.lean) and [Scheme/Pullback](Scheme/Pullback.lean)
+construct contravariant pullback for the original supplied Picard
+representatives and their identity components, with identity, composition and
+base-change laws; the source morphism need not be flat. Classification remains
+on locally Noetherian tests. The universal-pair comparison additionally uses
+a locally Noetherian base, the stated proper, flat, geometrically integral
+source geometry and an actual compatible choice of origins. Its all-test laws
+follow by pullback, not an extension of representability.

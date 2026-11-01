@@ -438,6 +438,7 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.CoefficientMates
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Coefficients
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Comparison
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Coproduct
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.ExactCoefficients
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.ExtComparison
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.FreeRepresentable
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Injectives

@@ -39,7 +39,7 @@ positive invertible `n` and finite closed complement. It compares the original
 module/abelian and proper traces and gives the smaller-open square. The
 normalization is Aglib's Kummer boundary; SGA torsor, connecting and cup/Yoneda
 sign comparisons remain open. Finite-pushforward compatibility, sheaf-dual
-comparison, degree-one and general-coefficient perfectness, purity and local cohomology remain open. It serves Poincaré duality for curves (Milne LEC Thm 14.7, p. 93, and Thm 14.20, p. 101).
+comparison, degree-one and general-coefficient perfectness, general purity and local cohomology remain open. It serves Poincaré duality for curves (Milne LEC Thm 14.7, p. 93, and Thm 14.20, p. 101).
 
 [TracePairing](TracePairing.lean) composes the original linear Yoneda pairing
 with normalized module trace. Its `moduleDualityMap` and
@@ -57,5 +57,14 @@ field; the open immersion has finite closed complement, possibly empty; `n` is
 positive and invertible, including composite levels and one, with the displayed
 global-section level conditions and independent Ext universes. The public
 statement chooses no basis or root. Degree-one constant perfectness, general
-finite locally constant coefficients, purity, finite-pushforward compatibility
+finite locally constant coefficients, general purity, finite-pushforward compatibility
 and SGA torsor, connecting, cup/Yoneda and Weil sign comparisons remain open.
+
+[PointPurity](PointPurity.lean) proves the original supported module Ext
+vanishes in degrees zero, one and above two for a closed point of an open in
+a smooth proper geometrically connected curve over an algebraically closed
+field, at positive invertible `n`. Its degree-two class maps to the original
+Kummer boundary of the positive point bundle and has trace one. The construction
+uses the actual point and localization maps, and includes composite levels and
+level one. Finite-set purity, general locally constant coefficients and SGA
+sign comparison remain open.

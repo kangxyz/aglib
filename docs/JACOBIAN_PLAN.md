@@ -132,7 +132,7 @@ appropriate direction gives trace, with the whole-map equation
 
 Thus `trace (Kummer.picardBoundary c) = degree c mod n`, and the boundary of
 `O(p)` has trace `1` for a rational point. More generally,
-[`Curves.picardQuotientBoundaryAddEquiv`](../Aglib/AlgebraicGeometry/EtaleCohomology/CurveCohomology/Trace.lean#L70)
+[`Curves.picardQuotientBoundaryAddEquiv`](../Aglib/AlgebraicGeometry/EtaleCohomology/Curves/Trace.lean#L70)
 applies to `k : Type u` with `[Field k] [IsSepClosed k]`, `Y : Scheme.{u}`,
 and `p : Y ⟶ Spec (.of k)` with `[LocallyOfFiniteType p] [CompactSpace Y]`,
 `topologicalKrullDim Y ≤ 1`, and
@@ -191,21 +191,33 @@ Before native perfectness, supply the following maps and their diagrams:
    every map used in the argument.
 2. Trace compatibility for a smaller open, using the original lower-shriek
    composition isomorphisms, counits and root pullback, with full coherence.
-3. Point purity/local cohomology and the original module-Ext comparison
-   `Ext^r_U(i_* (Z/n), μ_n) ≃ H^(r-2)(x, Z/n)` in the applicable degrees,
-   including point-class and trace normalization.
+3. [Point purity](../Aglib/AlgebraicGeometry/EtaleCohomology/Duality/PointPurity.lean)
+   supplies the original one-point supported module Ext in every degree,
+   including the supported class mapping to the original Kummer boundary of
+   the point bundle with trace one, over algebraically closed constants at
+   positive invertible levels. Extend this to the finite-set
+   and general-coefficient local comparisons needed by the subsequent route.
 4. Finite pushforward and pairing/trace compatibility, with the finite-map or
    finite-étale hypotheses needed by each constituent.
-5. Exact dualization into `ZMod n`, and the actual sheaf-dual comparison of
-   Milne Lemma 14.21, including local-to-global Ext compatibility.
+5. Exact dualization into `ZMod n` and the unsigned source-extension squares
+   for the native Ext pairing. Separately, the ordinary cohomology and cup
+   interpretation requires the actual internal-Hom/Ext comparison and
+   evaluation, including the local-to-global comparison of Milne Lemma 14.21.
 
-Then follow [Milne LEC](REFERENCES.md#milne2013lecturesetalecohomology), 14.7,
-Steps 0–7 (pp. 94–96): the constant degree-zero and degree-two cases are supplied; degree-one injectivity proceeds from
-torsors and a class-killing cyclic cover; the proper case by equal finite
-orders; point removal through the single localization sequence and five
-lemma; and locally constant coefficients through finite pushforward and exact
-sequences. Finiteness suffices for this route; it does not require a Weil
-pairing or the rank `2g`. Omitted diagram arguments remain actual obligations.
+The selected native route studies the transpose
+`ψ^s(F) : Ext^s(F, μ_n) → H_c^(2-s)(F)^∨`. Use a source short exact
+sequence `K → B → F` with `B` a finite étale pushforward of a finite free
+coefficient, genuine finite-pushforward trace compatibility and unsigned
+source extension-class squares. The planned diagram chases give `ψ^0` for
+finite locally constant `F`; a genuine finite étale surjection kills a
+constant `Ext¹` class and supplies injectivity of `ψ^1`. Equal finite orders
+then give the proper case, followed by point removal and finite pushforward
+for locally constant coefficients. These are proof obligations, not yet closed
+perfectness claims. Internal-Hom source-delta comparison is not needed for
+this native route; D6 remains needed to identify Ext with ordinary
+internal-Hom cohomology and its cup evaluation. See
+[Milne LEC](REFERENCES.md#milne2013lecturesetalecohomology), 14.7,
+Steps 0–7 (pp. 94–96). This route does not require a Weil pairing or rank `2g`.
 
 Retain the constructible extension, Milne 14.20–14.21 (pp. 101–103). Its
 reference to *Étale Cohomology*, p. 177, was not checked and is not an imported
@@ -245,17 +257,25 @@ scaling. Related source locators are [Stacks](REFERENCES.md#stacksproject),
 I 6.4 and 7.2.
 
 Use smoothness and the differential of `[n]` for étaleness at invertible `n`.
-The future curve-rank branch
-then has the explicit targets
+The proper-curve branch supplies `H¹(X, μ_n)` and constant-coefficient H¹
+with cardinality `n^(2g)` and noncanonical native-action coordinates and
+bases, including `n = 1` and `g = 0`; the original Kummer map identifies
+roots H¹ with rational torsion on the same supplied `P,R,J`. See
+[Rank](../Aglib/AlgebraicGeometry/EtaleCohomology/Curves/Rank.lean) and
+[Jacobian Kummer](../Aglib/AlgebraicGeometry/Curves/Jacobian/Kummer.lean).
+The open-curve target remains `#H¹(U, Z/n) = n^(2g + #D - 1)`.
 
-`H¹(X, Z/n) ≃ (Z/n)^(2g)` and `#H¹(U, Z/n) = n^(2g + #D - 1)`.
-
-These targets initially retain algebraically closed `k`, positive invertible
-`n`, and `D.Nonempty` for the affine formula. The latter also needs
-localization/purity and the normalized point map, or compact-support
-localization followed by duality; the proper Picard/Kummer table alone does
-not compute it. [Stacks](REFERENCES.md#stacksproject), 0C1Z and 0AMB, supplies
+The open target retains algebraically closed `k`, positive invertible `n`,
+and `D.Nonempty`. It still needs the actual finite-sum point-purity and
+localization comparison, or compact-support localization followed by duality;
+the proper Picard/Kummer table alone does not compute it. [Stacks](REFERENCES.md#stacksproject), 0C1Z and 0AMB, supplies
 source locators for this branch, with their actual hypotheses retained.
+
+The original Picard sheaf and supplied representative admit contravariant
+source pullback without flatness of the morphism. Universal-pair comparison
+retains actual compatible origins, the stated proper, flat, geometrically
+integral geometry and locally Noetherian representability; its all-test laws
+are obtained by pullback. See [Picard](../Aglib/AlgebraicGeometry/Picard/README.md).
 
 ## Dual abelian variety
 
@@ -264,6 +284,10 @@ variety `A`, and use the supplied rigidified Poincaré bundle and line-bundle mo
 coherent-H¹ bound; curve smoothness B1 does not supply that bound. The [inspected preliminary draft](REFERENCES.md#inspected-preliminary-abelian-variety-draft)
 (**citation needed**), (6.6), (6.12)–(6.18), pp. 90–96, outlines the selected
 coherent-cohomology route.
+
+The generic module-open Mayer–Vietoris source sequence and its unsigned boundary
+comparison are supplied, as is the open-free pullback object isomorphism for
+arbitrary morphisms. Geometric Künneth and the H¹ bound remain open.
 
 For that route, supply finiteness and vanishing, `H⁰ = k`, Künneth, the graded
 bialgebra laws and the field-extension comparison. Require the Borel–Hopf
@@ -350,13 +374,13 @@ close the planned programme.
 | A4 | **Implemented:** [finite surjective multiplication and degree-zero divisibility](../Aglib/AlgebraicGeometry/Curves/Jacobian/Multiplication.lean) over algebraically closed `k` for invertible `n`, with the existing étale-finiteness dependency. |
 | B1 | **Implemented:** [curve Picard smoothness](../Aglib/AlgebraicGeometry/Picard/Smooth/Curve.lean), with no rational-point hypothesis in the final curve theorem. |
 | E1–E3 | **Implemented:** [original trace, proper table, open vanishing and compact trace](../Aglib/AlgebraicGeometry/EtaleCohomology/README.md), supported by general quotients/Kummer and geometric point/restriction providers. Trace is normalized to Aglib's boundary; rank and SGA-sign comparison remain open. |
-| E4 | **Implemented:** [compact-support cohomology and localization](../Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/README.md) on the original extension by zero, with finite-complement and point-term comparisons. Purity is a separate target. |
+| E4 | **Implemented:** [compact-support cohomology and localization](../Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/README.md) on the original extension by zero, with finite-complement and point-term comparisons. Original one-point module Ext purity is supplied; finite-set and general-coefficient purity remain targets. |
 | E5, D1 | **Implemented formal constructions:** [generic Ext calculus](../Aglib/Algebra/Homology/DerivedCategory/Ext/README.md), canonical module/abelian comparison, and [native pairings and coherence](../Aglib/AlgebraicGeometry/EtaleCohomology/Duality/README.md). The generic external Ext product has signed interchange and unsigned source connecting-class laws. The module trace comparisons and exact finite-module dualization are supplied; geometric Künneth, H¹ closure and perfectness remain open. |
 | B2 | **Source supplied:** same `P,R,J` smoothness, geometric integrality and `dim J = g` over every field, through the original cotangent/H1 comparison. |
 | B3–B4 | **Field source supplied:** normalized and rigidified families, projective geometrically integral group cube, square and multiplication laws; the unrestricted relative cube remains open. |
 | B5 | **Source supplied over every field:** same `P,R,J` projectivity and positive multiplication rank `n^(2*g)`. |
-| B6–B7 | **Partial source supplied:** positive multiplication and its native kernel have rank `n^(2*g)` over every field; at unit levels geometric degree and torsion counts and noncanonical native-action basis existence are supplied through all-divisor counts. Cohomology ranks remain open. |
-| D2–D6 | **Partial source supplied:** module trace and smaller-open compatibility, exact finite-module dualization, finite biduality, and constant-coefficient perfectness in degrees 0 and 2 with transposes, for finite complement including empty and positive invertible `n`. Degree-one and general lcc perfectness, purity, finite-pushforward compatibility and lcc internal-Hom/Ext comparison remain open. |
+| B6–B7 | **Partial source supplied:** positive multiplication and its native kernel have rank `n^(2*g)` over every field; at unit levels geometric degree and torsion counts and noncanonical native-action basis existence are supplied through all-divisor counts. Proper roots and constant H¹ have cardinality `n^(2*g)` and noncanonical native-action bases over algebraically closed constants at positive invertible levels; the open-curve rank remains open. |
+| D2–D6 | **Partial source supplied:** module trace and smaller-open compatibility, exact finite-module dualization, finite biduality, and constant-coefficient perfectness in degrees 0 and 2 with transposes, for finite complement including empty and positive invertible `n`. Original one-point module Ext purity and Kummer trace-one normalization are supplied; degree-one and general lcc perfectness, finite-set purity, finite-pushforward compatibility and lcc internal-Hom/Ext comparison remain open. |
 | D7 | **Open:** constructible devissage/local comparison, with the unchecked Milne EC reference and alternative Artin route kept explicit. |
 | W1 | **Partial source supplied:** the same Poincaré pair and original line-bundle morphism, with locally Noetherian classification; an ample original `φ_L` is finite. Dual properness, smoothness, dimension, geometric integrality, projectivity and finite-flat surjectivity are conditional on the original coherent-H¹ inequality `finrank H¹(O_A) ≤ finrank Cotangent(unit_A)` and the displayed source assumptions. That inequality, biduality, dual homomorphisms and character descent remain open. |
 | W2–W3 | **Open:** [Cartier theta geometry, canonical principal polarization and general Weil pairing](#theta-principal-polarization-and-weil-pairing), with all-positive-level group-scheme and prime-to-characteristic point conclusions distinguished. |

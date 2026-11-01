@@ -68,3 +68,14 @@ scheme. Root coordinates are constructed rather than supplied as markings.
 
 Proper base change, proper-surjective descent and the unbounded exceptional
 functor are documented by their own families.
+
+[OnePointRestriction](OnePointRestriction.lean) proves that the original
+roots-cohomology pullback across one closed point is bijective in degrees
+zero and one for a smooth proper geometrically connected curve over an
+algebraically closed field at positive invertible levels.
+
+[Rank](Rank.lean) gives the original proper-curve roots and constant H¹
+cardinality `n^(2*g)` over an algebraically closed field for positive `n`
+invertible in the field. Each has noncanonical coordinates and a basis for
+its native `ZMod n` action, including level one and genus zero. This makes no
+`ZMod 1` finrank or canonical or Galois-equivariant basis assertion.
