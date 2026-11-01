@@ -45,7 +45,7 @@ variable {R : Type u} [CommRing R] {X : Scheme.{u}}
 
 /-- Actual affine sections of the original higher direct image are unchanged original
 cohomology, with its actual structural ring action and original resolution classes. -/
-def moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso
+def moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso
     (I : InjectiveResolution M)
     (hI : QuasiIso (Scheme.Modules.Complex.tildeGlobalSectionsCounit
       (CommRingCat.of R) (.up ℤ)
@@ -60,7 +60,7 @@ def moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso
   let K := ((Scheme.Modules.pushforward f).mapHomologicalComplex (.up ℤ)).obj I.cochainComplex
   let C := (moduleSpecΓFunctor.mapHomologicalComplex (.up ℤ)).obj K
   let e₀ := moduleSpecΓFunctor.mapIso
-    (moduleHigherDirectImageAffineIso_of_counit_quasiIso f M I hI n)
+    (moduleHigherDirectImageAffineIsoOfCounitQuasiIso f M I hI n)
   let e₁ := (tilde.toTildeΓNatIso (R := CommRingCat.of R)).app (C.homology (n : ℤ))
   let e₂ := (homologyFunctor (ModuleCat.{u} R) (.up ℤ) (n : ℤ)).mapIso
     (moduleSpecPushforwardGlobalSectionsComplexIso f (.up ℤ) I.cochainComplex)

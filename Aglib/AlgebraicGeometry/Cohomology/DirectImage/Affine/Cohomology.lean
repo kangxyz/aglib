@@ -54,7 +54,7 @@ def moduleHigherDirectImageAffineSectionsLinearEquiv (I : InjectiveResolution M)
     letI := moduleCohomologyModuleOfHom X α M n
     moduleSpecΓFunctor.obj (((Scheme.Modules.pushforward f).rightDerived n).obj M) ≃ₗ[R]
       Sheaf.H.{u + 1} (moduleAddSheaf X M) n :=
-  moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso f M I
+  moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso f M I
     (moduleResolutionPushforwardTildeCounit_quasiIso f M I) n
 
 /-- Every original factor and the original section-resolution class remain in the forward map. -/
@@ -86,7 +86,7 @@ def moduleDerivedPushforwardSingleAffineSectionsLinearEquiv
         ((Scheme.Modules.pushforward f).rightDerivedFunctorPlus.obj
           ((DerivedCategory.Plus.singleFunctor X.Modules 0).obj M))) ≃ₗ[R]
       Sheaf.H.{u + 1} (moduleAddSheaf X M) n :=
-  moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_of_counit_quasiIso f M I
+  moduleDerivedPushforwardSingleAffineSectionsLinearEquivOfCounitQuasiIso f M I
     (moduleResolutionPushforwardTildeCounit_quasiIso f M I) n
 
 /-- The native derived-single homology sheaves over an affine target are quasicoherent. -/
@@ -105,7 +105,7 @@ def moduleHigherDirectImageAffineSectionsHomologyMap (I : InjectiveResolution M)
       ((moduleSpecΓFunctor.mapHomologicalComplex (.up ℤ)).obj
         (((Scheme.Modules.pushforward f).mapHomologicalComplex (.up ℤ)).obj
           I.cochainComplex)).homology (n : ℤ) :=
-  moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso f M I
+  moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso f M I
     (moduleResolutionPushforwardTildeCounit_quasiIso f M I) n
 
 /-- The original affine section/homology factor is invertible. -/

@@ -24,7 +24,7 @@ variable {R : Type u} [CommRing R] {X : Scheme.{u}}
 
 /-- The unchanged first two affine cohomology factors, from actual higher-image sections
 to homology of the original section complex of the supplied resolution. -/
-def moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso (I : InjectiveResolution M)
+def moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso (I : InjectiveResolution M)
     (hI : QuasiIso (Scheme.Modules.Complex.tildeGlobalSectionsCounit
       (CommRingCat.of R) (.up ℤ)
       (((Scheme.Modules.pushforward f).mapHomologicalComplex (.up ℤ)).obj I.cochainComplex)))
@@ -33,7 +33,7 @@ def moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso (I : Inj
       ((moduleSpecΓFunctor.mapHomologicalComplex (.up ℤ)).obj
         (((Scheme.Modules.pushforward f).mapHomologicalComplex (.up ℤ)).obj
           I.cochainComplex)).homology (n : ℤ) :=
-  moduleSpecΓFunctor.map (moduleHigherDirectImageAffineIso_of_counit_quasiIso f M I hI n).hom ≫
+  moduleSpecΓFunctor.map (moduleHigherDirectImageAffineIsoOfCounitQuasiIso f M I hI n).hom ≫
     (tilde.toTildeΓNatIso (R := CommRingCat.of R)).inv.app
       (((moduleSpecΓFunctor.mapHomologicalComplex (.up ℤ)).obj
         (((Scheme.Modules.pushforward f).mapHomologicalComplex (.up ℤ)).obj
@@ -46,8 +46,8 @@ theorem moduleHigherDirectImageAffineSectionsHomologyMap_isIso_of_counit_quasiIs
       (CommRingCat.of R) (.up ℤ)
       (((Scheme.Modules.pushforward f).mapHomologicalComplex (.up ℤ)).obj I.cochainComplex)))
     (n : ℕ) :
-    IsIso (moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso f M I hI n) := by
-  dsimp only [moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso]
+    IsIso (moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso f M I hI n) := by
+  dsimp only [moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso]
   infer_instance
 
 /-- The unchanged affine factor retains the native homology counit mate and the original
@@ -67,7 +67,7 @@ theorem moduleHigherDirectImageAffineSectionsHomologyMap_counit_of_counit_quasiI
       Scheme.Modules.tilde_preservesHomology (CommRingCat.of R)
     let : (moduleSpecΓFunctor (R := CommRingCat.of R)).Additive :=
       Scheme.Modules.moduleSpecΓFunctor_additive (CommRingCat.of R)
-    moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso f M I hI n ≫
+    moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso f M I hI n ≫
         (tilde.adjunction (R := CommRingCat.of R)).homologyCounitMate (K.sc (n : ℤ)) =
       moduleSpecΓFunctor.map
         (I.isoRightDerivedObjCochain (Scheme.Modules.pushforward f) n).hom := by
@@ -83,7 +83,7 @@ theorem moduleHigherDirectImageAffineSectionsHomologyMap_counit_of_counit_quasiI
   let C := (moduleSpecΓFunctor.mapHomologicalComplex (.up ℤ)).obj K
   let : QuasiIso (Scheme.Modules.Complex.tildeGlobalSectionsCounit
       (CommRingCat.of R) (.up ℤ) K) := hI
-  change moduleSpecΓFunctor.map (moduleHigherDirectImageAffineIso_of_counit_quasiIso
+  change moduleSpecΓFunctor.map (moduleHigherDirectImageAffineIsoOfCounitQuasiIso
     f M I hI n).hom ≫
       (tilde.toTildeΓNatIso (R := CommRingCat.of R)).inv.app (C.homology (n : ℤ)) ≫
       (tilde.toTildeΓNatIso (R := CommRingCat.of R)).hom.app (C.homology (n : ℤ)) ≫

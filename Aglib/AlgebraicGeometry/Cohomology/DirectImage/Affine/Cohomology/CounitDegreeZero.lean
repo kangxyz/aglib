@@ -37,7 +37,7 @@ private theorem affineSectionsHomologyMap_toRightDerivedZero (I : InjectiveResol
     let e : C ≅ ((F ⋙ G).mapHomologicalComplex (.up ℤ)).obj I.cochainComplex :=
       (Functor.mapHomologicalComplexCompIso (Iso.refl (F ⋙ G)) (.up ℤ)).app I.cochainComplex
     G.map (F.toRightDerivedZero.app M) ≫
-        moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso f M I hI 0 =
+        moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso f M I hI 0 =
       I.toRightDerivedZeroCochainCycles (F ⋙ G) ≫ cyclesMap e.inv 0 ≫ C.homologyπ 0 := by
   let F : X.Modules ⥤ (Spec (CommRingCat.of R)).Modules := Scheme.Modules.pushforward f
   let G : (Spec (CommRingCat.of R)).Modules ⥤ ModuleCat.{u} R := moduleSpecΓFunctor
@@ -53,7 +53,7 @@ private theorem affineSectionsHomologyMap_toRightDerivedZero (I : InjectiveResol
   let : T.Additive := CategoryTheory.Functor.additive_of_preserves_binary_products T
   let : T.PreservesHomology := Scheme.Modules.tilde_preservesHomology (CommRingCat.of R)
   let adj : T ⊣ G := tilde.adjunction (R := CommRingCat.of R)
-  let A := moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso f M I hI 0
+  let A := moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso f M I hI 0
   let m : C.homology 0 ⟶ G.obj (K.homology 0) := adj.homologyCounitMate (K.sc 0)
   let zS := I.toRightDerivedZeroCochainCycles F
   let zC := I.toRightDerivedZeroCochainCycles (F ⋙ G) ≫ cyclesMap e.inv 0
@@ -142,7 +142,7 @@ theorem moduleHigherDirectImageAffineSectionsLinearEquiv_toRightDerivedZero_of_c
     let α := f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom
     letI := moduleCohomologyModuleOfHom X α M 0
     moduleH0EquivOfHom X α M
-        (moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso f M I hI 0
+        (moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso f M I hI 0
           (moduleSpecΓFunctor.map ((Scheme.Modules.pushforward f).toRightDerivedZero.app M) x)) =
       (moduleSpecPushforwardGlobalSectionsIso f).hom.app M x := by
   let α := f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom
@@ -159,14 +159,14 @@ theorem moduleHigherDirectImageAffineSectionsLinearEquiv_toRightDerivedZero_of_c
   let cf := moduleSpecPushforwardGlobalSectionsComplexIso f (.up ℤ) I.cochainComplex
   let s : moduleResolutionSectionCycles X α I 0 :=
     (moduleResolutionSectionCyclesIso X α I 0).hom (cyclesMap cf.hom 0 (z x))
-  have hE : moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso f M I hI 0
+  have hE : moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso f M I hI 0
         (G.map (F.toRightDerivedZero.app M) x) = moduleResolutionSectionClass X α I 0 s := by
     have hz := ConcreteCategory.congr_hom (affineSectionsHomologyMap_toRightDerivedZero f M I hI) x
-    change moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso f M I hI 0
+    change moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso f M I hI 0
         (G.map (F.toRightDerivedZero.app M) x) = C.homologyπ 0 (z x) at hz
     change moduleResolutionSectionsCohomologyLinearEquiv X α I 0
         (homologyMap cf.hom 0
-          (moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso f M I hI 0
+          (moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso f M I hI 0
             (G.map (F.toRightDerivedZero.app M) x))) = _
     rw [hz]
     have hπ := ConcreteCategory.congr_hom (homologyπ_naturality cf.hom (0 : ℤ)) (z x)
@@ -194,7 +194,7 @@ theorem moduleHigherDirectImageAffineSectionsLinearEquiv_toRightDerivedZero_of_c
     change C.iCycles 0 (z x) = _
     exact (ConcreteCategory.congr_hom hz x).trans rfl
   change moduleH0EquivOfHom X α M
-      (moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso f M I hI 0
+      (moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso f M I hI 0
         (G.map (F.toRightDerivedZero.app M) x)) = _
   rw [hE]
   exact resolutionSectionClass_zero X α M I s _ hs

@@ -40,7 +40,7 @@ abbrev initialModel (f : X ⟶ B) := pullback.fst (β.app i) f
 def localRebase (f : X ⟶ B) :
     (Over.pullback (c.π.app i)).obj (Over.mk (initialModel D β i f)) ≅
       (Over.pullback α).obj (Over.mk f) :=
-  baseChangeDiagram_rebaseIso f (β.app i) (c.π.app i) ≪≫
+  baseChangeDiagramRebaseIso f (β.app i) (c.π.app i) ≪≫
     eqToIso (congrArg (fun b => (Over.pullback b).obj (Over.mk f))
       (hα i))
 
@@ -53,7 +53,7 @@ theorem stage_structure (j : Over i) :
 def stageRebase (f : X ⟶ B) (j : Over i) :
     (Over.pullback (D.map j.hom)).obj (Over.mk (initialModel D β i f)) ≅
       (Over.pullback (β.app j.left)).obj (Over.mk f) :=
-  baseChangeDiagram_rebaseIso f (β.app i) (D.map j.hom) ≪≫
+  baseChangeDiagramRebaseIso f (β.app i) (D.map j.hom) ≪≫
     eqToIso (congrArg (fun b => (Over.pullback b).obj (Over.mk f)) (stage_structure D β i j))
 
 /-- The actual limit comparison, expressed by canonical pullback reassociation. -/
@@ -70,11 +70,11 @@ def comparison (f : X ⟶ B) (j : Over i) :
 private theorem rebase_hom_fst {T T₀ T₁ Z : Scheme.{u}}
     (f : Z ⟶ T) (k : T₀ ⟶ T) (h : T₁ ⟶ T₀) (b : T₁ ⟶ T)
     (hb : h ≫ k = b) :
-    (baseChangeDiagram_rebaseIso f k h ≪≫
+    (baseChangeDiagramRebaseIso f k h ≪≫
       eqToIso (congrArg (fun a => (Over.pullback a).obj (Over.mk f)) hb)).hom.left ≫
         pullback.fst f b = pullback.fst (pullback.fst k f) h ≫ pullback.snd k f := by
   subst b
-  simp [baseChangeDiagram_rebaseIso]
+  simp [baseChangeDiagramRebaseIso]
 
 /-- Local reassociation preserves the original model projection. -/
 @[reassoc (attr := simp)]
