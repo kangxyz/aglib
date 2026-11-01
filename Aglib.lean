@@ -2625,6 +2625,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.CompactSupportPair
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantCoefficients
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantOnePerfectness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantPerfectness
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.FinitePushforward
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LocallyConstantExt
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekCohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekComposition
@@ -2633,6 +2634,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PairingRestriction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PairingTranspose
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PointPurity
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PointPurity.Finite
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PointRemoval
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.Trace
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.TracePairing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.YonedaPairing

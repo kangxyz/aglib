@@ -103,3 +103,18 @@ class-killing covers, the conditional degree-one injectivity chase and proper
 degree-one finiteness/equal-order inputs. Unconditional proper degree-zero
 and degree-one perfectness still require the actual finite-pushforward trace
 comparison and pairing square.
+
+[PointRemoval](PointRemoval.lean) proves the original trace pairing perfect
+in compact degrees `r ≤ 2` for the actual pushed-forward unit at one
+canonical residue-field point of an open in a smooth proper geometrically
+connected curve over an algebraically closed field. It retains the original
+compact point generator, excision, supported Ext and trace-one normalization,
+independent Ext universes, positive field and global invertibility, and a
+finite closed complement including empty. Composite levels and level one are
+included. This is a single point-unit result, not arbitrary point-supported
+coefficients or a point-removal implication.
+
+[FinitePushforward](FinitePushforward.lean) gives the original finite-image
+unit Ext equivalence for arbitrary native module coefficients and every
+natural level, with its original unit and cohomology square. It does not
+assert a lower-shriek/direct-image isomorphism or a finite-trace pairing law.

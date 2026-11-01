@@ -229,6 +229,12 @@ comparison isomorphism and its degree-two/zero pairing square. See
 [curve sources](../Aglib/AlgebraicGeometry/EtaleCohomology/Curves/README.md)
 and [duality](../Aglib/AlgebraicGeometry/EtaleCohomology/Duality/README.md).
 
+The original trace pairing is perfect for the actual pushed-forward unit at
+one canonical point in compact degrees `r ≤ 2`, with the original excision
+and trace-one point generator. This [point-unit result](../Aglib/AlgebraicGeometry/EtaleCohomology/Duality/PointRemoval.lean)
+retains its curve, positive invertible-level and finite-complement conditions;
+it does not prove arbitrary point coefficients or the point-removal step.
+
 The selected native route studies the transpose
 `ψ^s(F) : Ext^s(F, μ_n) → H_c^(2-s)(F)^∨`. Use a source short exact
 sequence `K → B → F` with `B` a finite étale pushforward of a finite free
