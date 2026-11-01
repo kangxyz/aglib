@@ -224,9 +224,11 @@ boundary. It does not assert étaleness at the boundary or complete general
 locally constant perfectness.
 
 Native foundations now supply actual finite étale H¹ killing covers,
-finite-locally-constant trivializations, proper-curve finite-coefficient
-vanishing above degree two, and the original lower-shriek counit and unsigned
-source-boundary squares. The degree-zero and degree-one chases retain their
+finite-locally-constant trivializations, and the original lower-shriek counit
+and unsigned source-boundary squares. The original finite-local-system
+cohomology and unit-Ext vanish above degree two on connected compact finite-type
+schemes of dimension at most one over separably closed fields at positive
+invertible levels; this does not require properness or smoothness. The degree-zero and degree-one chases retain their
 actual component-map and vanishing premises. The finite-pushforward trace
 comparison and pairing squares support the original proper pairing for every
 finite locally constant coefficient. Both adjoints are bijective for each

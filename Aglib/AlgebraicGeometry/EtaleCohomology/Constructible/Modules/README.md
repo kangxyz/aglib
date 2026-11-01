@@ -7,6 +7,12 @@ commutative and unital; its universe is independent of the scheme universe.
 
 ## Focused imports and public interfaces
 
+[CohomologyVanishing](CohomologyVanishing.lean) reduces vanishing for an
+original finite locally constant module sheaf with positive annihilator to
+prime-constant vanishing on the actual finite étale tests. Its general
+finite-ring form retains the displayed full additive-forgetting hypothesis,
+and the source cohomology universe remains independent.
+
 - `ZMod` is an independent adapter for the original finite-abelian predicate.
   `isFiniteLocallyConstant_zmodSheaf_iff` and
   `isConstructible_zmodSheaf_iff` use the original

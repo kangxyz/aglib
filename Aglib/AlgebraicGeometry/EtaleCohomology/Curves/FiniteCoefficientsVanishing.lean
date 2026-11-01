@@ -5,28 +5,18 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteCoefficientsVanishing.Open
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.Proper
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.PGroupModuleSheaves
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteEtaleTrivialization
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureKernels
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureCokernels
-public import Aglib.AlgebraicGeometry.EtaleCohomology.ModuleCoefficients.FiniteEtaleDescent
-public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisSylowCover
 public import Aglib.AlgebraicGeometry.Geometrically.Connected.PointedCurve
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Coefficients.ModuleCohomology
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.Underlying
-public import Aglib.CategoryTheory.Sites.SheafCohomology.Vanishing.ExactSequence
-public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.ConstantUnderlyingCohomology
-public import Mathlib.Algebra.Field.ZMod
 
 /-!
-# Proper-curve vanishing for actual finite coefficient modules
+# Proper-curve applications of original finite-local-system high vanishing
 
-The proof uses cyclic vanishing, the original tensor comparison, genuine
-p-group extension induction, the actual Sylow quotient and coprime trace
-retraction, and kernel/cokernel induction on a positive annihilator. Native
-lifted-ZMod module-unit Ext vanishing retains independent Ext universes.
-No curve duality, Weil pairing, rank formula or open completion is used.
+The original public proper-curve API is retained. Its coefficient tensor,
+p-group, Sylow/coprime and positive-annihilator proofs are supplied once by
+the generic original-R coefficient family. The finite-type dimension/roots
+application discharges its actual prime-constant tests. Original coefficients,
+cohomology maps, conditions and independent Ext worlds are unchanged.
 -/
 
 @[expose] public noncomputable section
@@ -45,11 +35,6 @@ attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
   Coefficients.hasSheafifyModules
   CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard
 
-private theorem nsmul_id_naturality {C : Type*} [Category* C] [Preadditive C]
-    (p : ℕ) {A B : C} (f : A ⟶ B) :
-    f ≫ (p • 𝟙 B) = (p • 𝟙 A) ≫ f := by
-  simp only [Preadditive.comp_nsmul, Preadditive.nsmul_comp, Category.comp_id, Category.id_comp]
-
 variable {k : Type u} [Field k] [IsAlgClosed k]
   (X : FScheme k) (hX : Curve.Properties X)
   [HasExt.{w} (AbelianSheaf.{u, u + 1} X.left)]
@@ -61,17 +46,11 @@ degree two, by the existing cyclic and roots vanishing theorem. -/
 theorem primeField_subsingleton_H_of_proper_curve
     (p : ℕ) [Fact p.Prime] (hunit : IsUnit (p : k)) (q : ℕ) (hq : 2 < q) :
     Subsingleton (Sheaf.H.{w} (primeFieldSheaf X.left p) q) := by
-  have hinv : IsUnit (p : Γ(X.left, ⊤)) := by
-    simpa only [map_natCast] using
-      hunit.map (((Scheme.ΓSpecIso (.of k)).inv ≫ X.hom.appTop).hom)
-  let : Subsingleton (Sheaf.H.{w}
-      (ConstantFinite.coefficient (ULift.{u} (ZMod p)) X.left) q) :=
-    constant_subsingleton_H_of_curve hX p (Fact.out : p.Prime).pos hunit hinv q hq
-  let e : Sheaf.H.{w} (primeFieldSheaf X.left p) q ≃+
-      Sheaf.H.{w} (ConstantFinite.coefficient (ULift.{u} (ZMod p)) X.left) q :=
-    ((Sheaf.functorH X.left.smallEtaleTopology q).mapIso
-      (cyclicPrimeFieldIso X.left p).symm).addCommGroupIsoToAddEquiv
-  exact e.injective.subsingleton
+  let : LocallyOfFiniteType X.hom := Curve.curveProperties_locallyOfFiniteType hX
+  let := hX.proper
+  let : CompactSpace X.left := QuasiCompact.compactSpace_of_compactSpace X.hom
+  exact primeField_high_subsingleton_of_finiteType_curve X.left X.hom
+    hX.topologicalKrullDim_eq_one.le p hunit q hq
 
 /-- Every original finite constant module killed by an invertible prime has
 zero cohomology above degree two, retaining its original coefficient action. -/
@@ -81,37 +60,8 @@ theorem constantModuleSheaf_subsingleton_H_of_prime_nsmul
     (M : ModuleCat.{u + 1} R) [Module.Finite R M] (hM : ∀ m : M, p • m = 0) :
     Subsingleton ((ModuleCat.Sheaf.cohomology X.left.smallEtaleTopology R q).obj
       ((constantSheaf X.left.smallEtaleTopology (ModuleCat.{u + 1} R)).obj M)) := by
-  let : Finite M := Module.finite_of_finite R
-  let mFp : Module (ZMod p) M := AddCommGroup.zmodModule hM
-  let : Module (ZMod p) M := mFp
-  let fpFinite : Module.Finite (ZMod p) M := Module.Finite.of_finite
-  let fpFree : Module.Free (ZMod p) M :=
-    @Module.Free.of_divisionRing (ZMod p) M inferInstance inferInstance mFp
-  let b : Module.Basis (Fin (Module.finrank (ZMod p) M)) (ZMod p) M :=
-    @Module.finBasis (ZMod p) M inferInstance inferInstance mFp fpFree inferInstance fpFinite
-  let V : ModuleCat.{u + 1} (ZMod p) := ModuleCat.of (ZMod p) M
-  let H : ModuleCat.{u + 1} (ZMod p) ⥤ ModuleCat.{w} (ZMod p) :=
-    ModuleCat.Sheaf.constantCohomology X.left.smallEtaleTopology (ZMod p) q
-  let : Subsingleton (H.obj (ModuleCat.liftedUnit.{0, u + 1} (ZMod p))) :=
-    primeField_subsingleton_H_of_proper_curve X hX p hunit q hq
-  have hsurj := ModuleCat.functorTensorComparison_surjective_of_basis.{0, u + 1, w, 0}
-    H (M := V) b
-  let ht : Unique (H.obj (ModuleCat.liftedUnit.{0, u + 1} (ZMod p)) ⊗[ZMod p] V) :=
-    TensorProduct.uniqueLeft (R := ZMod p)
-      (M := H.obj (ModuleCat.liftedUnit.{0, u + 1} (ZMod p))) (N := V)
-  have hv : Subsingleton (H.obj V) := by
-    refine ⟨fun x y => ?_⟩
-    obtain ⟨a, ha⟩ := hsurj x
-    obtain ⟨c, hc⟩ := hsurj y
-    have hac : a = c := (ht.uniq a).trans ((ht.uniq c).symm)
-    subst c
-    exact ha.symm.trans hc
-  let : Subsingleton
-      ((ModuleCat.Sheaf.constantCohomology X.left.smallEtaleTopology R q).obj M) := by
-    change Subsingleton (H.obj V)
-    exact hv
-  exact ((ModuleCat.Sheaf.constantUnderlyingCohomologyIso
-    X.left.smallEtaleTopology R q).app M).toLinearEquiv.injective.subsingleton
+  exact Constructible.Modules.constantCohomology_subsingleton_of_prime_field
+    X.left R p q (primeField_subsingleton_H_of_proper_curve X hX p hunit q hq) M hM
 
 /-- Actual prime-killed modules trivialized by an actual p-group finite étale
 cover have zero cohomology above degree two on the original proper curve. -/
@@ -127,22 +77,9 @@ theorem moduleSheaf_subsingleton_H_of_pGroup_trivialization
     (t : (moduleInverseImage R Y.obj.hom).obj F ≅
       (constantSheaf Y.obj.left.smallEtaleTopology (ModuleCat.{u + 1} R)).obj M) :
     Subsingleton ((ModuleCat.Sheaf.cohomology X.left.smallEtaleTopology R q).obj F) := by
-  let : ConnectedSpace X.left := Curve.curveProperties_connectedSpace hX
-  apply property_of_pGroup_trivialization Y p hY
-    (fun A => Subsingleton
-      ((ModuleCat.Sheaf.cohomology X.left.smallEtaleTopology R q).obj A))
-    ?_ ?_ ?_ F M hM t
-  · intro N _ hN
-    exact constantModuleSheaf_subsingleton_H_of_prime_nsmul X hX R p hunit q hq N hN
-  · intro A B e hA
-    let := hA
-    exact ((ModuleCat.Sheaf.cohomology X.left.smallEtaleTopology R q).mapIso e).symm.toLinearEquiv
-      |>.injective.subsingleton
-  · intro S hS h₁ h₃
-    let : Subsingleton (Sheaf.H ((S.map (moduleUnderlying R X.left)).X₁) q) := h₁
-    let : Subsingleton (Sheaf.H ((S.map (moduleUnderlying R X.left)).X₃) q) := h₃
-    exact Sheaf.H.subsingleton_middle_of_shortExact
-      (hS.map_of_exact (moduleUnderlying R X.left)) q
+  exact Constructible.Modules.moduleSheaf_cohomology_subsingleton_of_pGroup_trivialization
+    X.left R p q (primeField_subsingleton_H_of_proper_curve X hX p hunit q hq)
+    Y hY F M hM t
 
 omit [HasExt.{w} (AbelianSheaf.{u, u + 1} X.left)] in
 /-- A connected actual finite étale cover of the original proper curve is
@@ -170,31 +107,6 @@ theorem curveProperties_of_connected_finiteEtale
     Scheme.geometricallyConnected_of_pointed_proper_smooth_curve Z.hom
       (pointOfClosedPoint Z.hom x hx) (pointOfClosedPoint_comp Z.hom x hx)⟩
 
-omit hX [IsAlgClosed k] in
-private theorem moduleSheaf_subsingleton_H_of_finiteEtale_coprime
-    (R : Type r) [CommRing R] (Y : Scheme.FiniteEtale X.left)
-    [HasExt.{w'} (AbelianSheaf.{u, u + 1} Y.obj.left)]
-    (d : ℕ) (hd : ∀ x : X.left, Y.obj.hom.finrank x = d)
-    (F : ModuleSheaf R X.left) (p : ℕ) (hcop : d.Coprime p)
-    (hp : p • 𝟙 F = 0) (q : ℕ)
-    (hzero : Subsingleton ((ModuleCat.Sheaf.cohomology Y.obj.left.smallEtaleTopology R q).obj
-      ((moduleInverseImage R Y.obj.hom).obj F))) :
-    Subsingleton ((ModuleCat.Sheaf.cohomology X.left.smallEtaleTopology R q).obj F) := by
-  let H := ModuleCat.Sheaf.cohomology X.left.smallEtaleTopology R q
-  let : Subsingleton (Sheaf.H.{w'} ((moduleUnderlying R Y.obj.left).obj
-      ((moduleInverseImage R Y.obj.hom).obj F)) q) :=
-    hzero
-  let : Subsingleton (H.obj ((moduleDirectImage R Y.obj.hom).obj
-      ((moduleInverseImage R Y.obj.hom).obj F))) :=
-    (Finite.finiteModuleCohomologyDirectImageLinearEquiv R Y.obj.hom
-      ((moduleInverseImage R Y.obj.hom).obj F) q).injective.subsingleton
-  obtain ⟨r, hr⟩ := exists_finiteEtale_moduleSheafRetraction_map R Y d hd F p hcop hp H
-  have hsurj : Function.Surjective r := by
-    intro x
-    refine ⟨H.map ((moduleImageAdjunction R Y.obj.hom).unit.app F) x, ?_⟩
-    exact congrArg (fun a => a x) hr
-  exact hsurj.subsingleton
-
 /-- The actual Sylow quotient and the original coprime trace retraction remove
 the p-group condition on the finite Galois cover. Its degree need not be
 coprime to the coefficient prime. -/
@@ -210,73 +122,19 @@ theorem moduleSheaf_subsingleton_H_of_galois_prime_trivialization
     (t : (moduleInverseImage R Y.obj.hom).obj F ≅
       (constantSheaf Y.obj.left.smallEtaleTopology (ModuleCat.{u + 1} R)).obj M) :
     Subsingleton ((ModuleCat.Sheaf.cohomology X.left.smallEtaleTopology R q).obj F) := by
-  let : ConnectedSpace X.left := Curve.curveProperties_connectedSpace hX
-  let P : Sylow p (Aut Y) := Classical.choice inferInstance
-  let Z₀ := Scheme.FiniteEtale.galoisSubgroupQuotient Y P.toSubgroup
-  let Z : FScheme k := Over.mk (Z₀.obj.hom ≫ X.hom)
-  let V := Scheme.FiniteEtale.galoisSubgroupRelative Y P.toSubgroup
-  let : ConnectedSpace Z.left := inferInstanceAs (ConnectedSpace Z₀.obj.left)
-  let hZ : Curve.Properties Z := curveProperties_of_connected_finiteEtale X hX Z₀
-  let hExtZ : HasExt.{u + 2} (AbelianSheaf.{u, u + 1} Z₀.obj.left) := hasExtStandard Z₀.obj.left
-  let : HasExt.{u + 2} (AbelianSheaf.{u, u + 1} Z₀.obj.left) := hExtZ
-  let : HasExt.{u + 2} (AbelianSheaf.{u, u + 1} Z.left) := hExtZ
-  let : PreGaloisCategory.IsGalois V :=
-    Scheme.FiniteEtale.galoisSubgroupRelative_isGalois Y P.toSubgroup
-  let : Surjective V.obj.hom :=
-    Scheme.FiniteEtale.galoisSubgroupRelative_surjective Y P.toSubgroup
-  let : CompactSpace V.obj.left := inferInstanceAs (CompactSpace Y.obj.left)
-  let : QuasiSeparatedSpace V.obj.left := inferInstanceAs (QuasiSeparatedSpace Y.obj.left)
-  let E := (moduleInverseImage R Z₀.obj.hom).obj F
-  have htriangle : V.obj.hom ≫ Z₀.obj.hom = Y.obj.hom :=
-    Scheme.FiniteEtale.galoisSubgroupQuotientπ_structure Y P.toSubgroup
-  let t' : (moduleInverseImage R V.obj.hom).obj E ≅
-      (constantSheaf V.obj.left.smallEtaleTopology (ModuleCat.{u + 1} R)).obj M :=
-    ((moduleInverseImageComp R Z₀.obj.hom V.obj.hom).app F).symm ≪≫
-      eqToIso (congrArg (fun f => (moduleInverseImage R f).obj F) htriangle) ≪≫ t
-  have hzero : Subsingleton ((ModuleCat.Sheaf.cohomology Z.left.smallEtaleTopology R q).obj E) :=
-    moduleSheaf_subsingleton_H_of_pGroup_trivialization Z hZ R p hunit V
-      (Scheme.FiniteEtale.galoisSylowRelative_isPGroup Y P) q hq E M hM t'
-  exact moduleSheaf_subsingleton_H_of_finiteEtale_coprime X R Z₀
-    P.toSubgroup.index (Scheme.FiniteEtale.galoisSubgroupQuotient_finrank Y P.toSubgroup)
-    F p (Scheme.FiniteEtale.galoisSylow_index_coprime Y P)
-    (moduleSheaf_nsmul_id_eq_zero_of_trivialization R Y.obj.hom F M p hM t) q hzero
-
-omit hX [IsAlgClosed k] [HasExt.{w} (AbelianSheaf.{u, u + 1} X.left)] in
-private theorem constant_value_nsmul_eq_zero_of_trivialization
-    (R : Type r) [CommRing R] [Finite R]
-    {S : Scheme.{u}} (f : S ⟶ X.left) [Etale f]
-    [ConnectedSpace S] [CompactSpace S] [QuasiSeparatedSpace S]
-    (F : ModuleSheaf R X.left) (M : ModuleCat.{u + 1} R) [Module.Finite R M]
-    (p : ℕ) (hp : p • 𝟙 F = 0)
-    (t : (moduleInverseImage R f).obj F ≅
-      (constantSheaf S.smallEtaleTopology (ModuleCat.{u + 1} R)).obj M) :
-    ∀ m : M, p • m = 0 := by
-  let Q := moduleInverseImage R f
-  let C := constantSheaf S.smallEtaleTopology (ModuleCat.{u + 1} R)
-  let : (moduleEtaleRestriction R f).Additive :=
-    { map_add := by intro A B a b; rfl }
-  let : Q.Additive := Functor.additive_of_iso (moduleInverseImageEtaleIso R f).symm
-  have hpull : p • 𝟙 (Q.obj F) = 0 := by
-    have hmap : Q.map (p • 𝟙 F) = 0 := (congrArg Q.map hp).trans (Q.map_zero F F)
-    have hscalar : Q.map (p • 𝟙 F) = p • 𝟙 (Q.obj F) :=
-      Q.map_nsmul.trans (congrArg (fun a => p • a) (Q.map_id F))
-    exact hscalar.symm.trans hmap
-  have hc : p • 𝟙 (C.obj M) = 0 := by
-    apply (cancel_epi t.hom).mp
-    rw [comp_zero]
-    exact (nsmul_id_naturality p t.hom).trans
-      ((congrArg (fun a : Q.obj F ⟶ Q.obj F => a ≫ t.hom) hpull).trans zero_comp)
-  let : Finite M := Module.finite_of_finite R
-  let : IsIso ((moduleConstantAdjunction R S).unit.app M) :=
-    moduleConstantUnit_isIso_of_isAddTorsion R S M _root_.isAddTorsion_of_finite
-  have hCinj : Function.Injective (C.map : (M ⟶ M) → _) :=
-    ((moduleConstantAdjunction R S).bijective_map_of_isIso_unit_app M M).injective
-  have hm : p • 𝟙 M = 0 := by
-    apply hCinj
-    exact (C.map_nsmul.trans (congrArg (fun a => p • a) (C.map_id M))).trans
-      (hc.trans (C.map_zero M M).symm)
-  intro m
-  simpa using congrArg (fun a : M ⟶ M => a m) hm
+  let : IsNoetherian X.left := Curve.curveProperties_isNoetherian hX
+  let : LocallyOfFiniteType X.hom := Curve.curveProperties_locallyOfFiniteType hX
+  let : ConnectedSpace Y.obj.left :=
+    Scheme.FiniteEtale.Connectedness.connectedSpace_of_categoricalConnected Y
+  apply Constructible.Modules.moduleSheaf_cohomology_subsingleton_of_galois_prime_trivialization
+    X.left R p q ?_ Y F M hM t
+  intro Z
+  let : CompactSpace Z.obj.left := QuasiCompact.compactSpace_of_compactSpace Z.obj.hom
+  let : HasExt.{u + 2} (AbelianSheaf.{u, u + 1} Z.obj.left) := hasExtStandard Z.obj.left
+  have hdimZ : topologicalKrullDim Z.obj.left ≤ 1 :=
+    dimension_le_one_of_etale Z.obj.hom hX.topologicalKrullDim_eq_one.le
+  exact primeField_high_subsingleton_of_finiteType_curve Z.obj.left
+    (Z.obj.hom ≫ X.hom) hdimZ p hunit q hq
 
 /-- Every finite-LCC coefficient killed by an invertible prime has zero
 original module cohomology above degree two. Its global cover is constructed. -/
@@ -288,21 +146,11 @@ theorem moduleSheaf_subsingleton_H_of_prime_nsmul
     (hp : p • 𝟙 F = 0) :
     Subsingleton ((ModuleCat.Sheaf.cohomology X.left.smallEtaleTopology R q).obj F) := by
   let : ConnectedSpace X.left := Curve.curveProperties_connectedSpace hX
+  let : LocallyOfFiniteType X.hom := Curve.curveProperties_locallyOfFiniteType hX
   let := hX.proper
-  let T := Classical.choice (nonempty_galoisCoverConstantTrivialization F hF)
-  let Y := T.cover
-  let : PreGaloisCategory.IsGalois Y := T.galois_cover
-  let : ConnectedSpace Y.obj.left := T.connected_cover
-  let : Surjective Y.obj.hom := T.surjective_cover
-  let : CompactSpace Y.obj.left :=
-    QuasiCompact.compactSpace_of_compactSpace (Y.obj.hom ≫ X.hom)
-  let : QuasiSeparatedSpace Y.obj.left :=
-    quasiSeparatedSpace_of_quasiSeparated (Y.obj.hom ≫ X.hom)
-  let : Module.Finite R T.value := T.finite_value
-  have hM : ∀ m : T.value, p • m = 0 :=
-    constant_value_nsmul_eq_zero_of_trivialization X R Y.obj.hom F T.value p hp T.iso
-  exact moduleSheaf_subsingleton_H_of_galois_prime_trivialization X hX R p hunit
-    Y q hq F T.value hM T.iso
+  let : CompactSpace X.left := QuasiCompact.compactSpace_of_compactSpace X.hom
+  exact moduleSheaf_high_subsingleton_of_finiteType_curve X.left X.hom
+    hX.topologicalKrullDim_eq_one.le R p (Fact.out : p.Prime).pos hunit q hq F hF hp
 
 /-- Every finite-LCC coefficient with a positive invertible annihilator has
 zero original cohomology above degree two. The prime dévissage uses the actual
@@ -314,62 +162,12 @@ theorem moduleSheaf_subsingleton_H_of_pos_nsmul
     (F : ModuleSheaf R X.left) (hF : IsFiniteTypeLocallyConstant F)
     (hkill : n • 𝟙 F = 0) :
     Subsingleton ((ModuleCat.Sheaf.cohomology X.left.smallEtaleTopology R q).obj F) := by
-  let : IsNoetherianRing R := inferInstance
-  induction n using Nat.strong_induction_on generalizing F with
-  | h n ih =>
-    by_cases h1 : n = 1
-    · subst n
-      have hzero : IsZero F := (IsZero.iff_id_eq_zero F).mpr
-        (by simpa only [one_nsmul] using hkill)
-      exact ModuleCat.subsingleton_of_isZero
-        ((ModuleCat.Sheaf.cohomology X.left.smallEtaleTopology R q).map_isZero hzero)
-    · obtain ⟨p, hp, hpn⟩ := Nat.exists_prime_and_dvd h1
-      let : Fact p.Prime := ⟨hp⟩
-      let m := n / p
-      have hm : 0 < m := Nat.div_pos (Nat.le_of_dvd hn hpn) hp.pos
-      have hlt : m < n := Nat.div_lt_self hn hp.one_lt
-      have hmp : m * p = n := Nat.div_mul_cancel hpn
-      have humul : IsUnit ((m : k) * (p : k)) := by
-        rw [← Nat.cast_mul, hmp]
-        exact hunit
-      obtain ⟨hum, hup⟩ := IsUnit.mul_iff.mp humul
-      let a : F ⟶ F := m • 𝟙 F
-      let i := kernel.ι a
-      let S := ShortComplex.cokernelSequence i
-      have hS : S.ShortExact := {
-        exact := ShortComplex.cokernelSequence_exact i
-        mono_f := by change Mono (kernel.ι a); infer_instance
-        epi_g := by change Epi (cokernel.π i); infer_instance }
-      have hK : IsFiniteTypeLocallyConstant (kernel a) :=
-        isFiniteTypeLocallyConstant_kernel a hF hF
-      have hQ : IsFiniteTypeLocallyConstant (cokernel i) :=
-        isFiniteTypeLocallyConstant_cokernel i hK hF
-      have hmK : m • 𝟙 (kernel a) = 0 := by
-        apply (cancel_mono i).mp
-        rw [Preadditive.nsmul_comp, Category.id_comp, zero_comp]
-        simpa only [a, Preadditive.comp_nsmul, Category.comp_id] using kernel.condition a
-      have hpa : (p • 𝟙 F) ≫ a = 0 := by
-        simpa only [a, Preadditive.nsmul_comp, Category.id_comp, ← mul_nsmul, hmp] using hkill
-      let l : F ⟶ kernel a := kernel.lift a (p • 𝟙 F) hpa
-      have hl : l ≫ i = p • 𝟙 F := kernel.lift_ι a (p • 𝟙 F) hpa
-      have hpQ : p • 𝟙 (cokernel i) = 0 := by
-        apply (cancel_epi (cokernel.π i)).mp
-        rw [Preadditive.comp_nsmul, Category.comp_id, comp_zero]
-        calc
-          p • cokernel.π i = (p • 𝟙 F) ≫ cokernel.π i := by
-            rw [Preadditive.nsmul_comp, Category.id_comp]
-          _ = (l ≫ i) ≫ cokernel.π i := by rw [hl]
-          _ = 0 := by rw [Category.assoc, cokernel.condition, comp_zero]
-      have hleft : Subsingleton
-          ((ModuleCat.Sheaf.cohomology X.left.smallEtaleTopology R q).obj (kernel a)) :=
-        ih m hlt hm hum (kernel a) hK hmK
-      have hright : Subsingleton
-          ((ModuleCat.Sheaf.cohomology X.left.smallEtaleTopology R q).obj (cokernel i)) :=
-        moduleSheaf_subsingleton_H_of_prime_nsmul X hX R p hup q hq (cokernel i) hQ hpQ
-      let : Subsingleton (Sheaf.H ((S.map (moduleUnderlying R X.left)).X₁) q) := hleft
-      let : Subsingleton (Sheaf.H ((S.map (moduleUnderlying R X.left)).X₃) q) := hright
-      exact Sheaf.H.subsingleton_middle_of_shortExact
-        (hS.map_of_exact (moduleUnderlying R X.left)) q
+  let : ConnectedSpace X.left := Curve.curveProperties_connectedSpace hX
+  let : LocallyOfFiniteType X.hom := Curve.curveProperties_locallyOfFiniteType hX
+  let := hX.proper
+  let : CompactSpace X.left := QuasiCompact.compactSpace_of_compactSpace X.hom
+  exact moduleSheaf_high_subsingleton_of_finiteType_curve X.left X.hom
+    hX.topologicalKrullDim_eq_one.le R n hn hunit q hq F hF hkill
 
 /-- Positive lifted-ZMod finite local systems on the proper curve have zero
 original cohomology above degree two, including composite levels and level one. -/

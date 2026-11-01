@@ -85,8 +85,13 @@ original cohomology and module-unit Ext vanish in degrees above two for
 finite-type locally constant native coefficients on a smooth proper
 geometrically connected curve over an algebraically closed field, at
 positive field-invertible level. Its Sylow trace argument does not assume
-that the original trivializing cover has coprime degree. This is a proper
-curve result.
+that the original trivializing cover has coprime degree. The shared
+[finite-type result](FiniteCoefficientsVanishing/Open.lean) proves the same
+high vanishing for original finite locally constant coefficients on a connected
+compact finite-type scheme of dimension at most one over a separably closed
+field, at positive field-invertible level. It requires neither properness nor
+smoothness; the general finite coefficient-ring form retains its displayed
+annihilator and full-forgetting hypotheses.
 
 [OpenRank](OpenRank.lean) gives original roots and constant H¹ cardinality
 `n^(2*g + #D - 1)` for the actual open complement of a finite nonempty set

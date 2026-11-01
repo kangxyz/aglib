@@ -1844,6 +1844,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.Clos
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosurePartitions
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureProperties
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureSums
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.CohomologyVanishing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ConnectedTorsionSections
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ConstantPullbackSections
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.CoverConservativity
@@ -2056,6 +2057,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CyclicVanishing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.EtaleDimensionOne
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteClosedSupport
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteCoefficientsVanishing
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteCoefficientsVanishing.Open
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteConstantAnnihilator
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteConstantReduction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteSupportDiagram
