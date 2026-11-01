@@ -72,6 +72,32 @@ and content hash. Retired extraction writers remain disabled. Historical
 performance records retain their original command names; current invocations
 are documented here.
 
+### Native check invocation
+
+Use the existing command plan when running selected native phases in a managed
+remote workspace:
+
+```sh
+lean-tools check --root /absolute/package --list
+```
+
+Use the listed native command forms in the prepared execution workspace, resolving
+executable and source paths there. The plan is descriptive: `<pinned-axiom-audit>`
+is resolved by the existing pinned preparation/guarded route, not a literal
+executable. Keep matching checker outputs and the admitted resource profile.
+The declaration-lint step is one configured
+`lake --no-build lint ... -- --trace` invocation, including its required production
+roots together. Reuse that entry instead of reconstructing per-root direct
+`batteries/runLinter` processes. Preserve the stock predicates, package options,
+suppression files and the library's required scope; a leaf diagnostic does not
+replace full-production coverage when required.
+
+After an early failure, distinguish roots actually checked from roots not reached.
+Reuse compatible successes and rerun repaired or unexecuted scope; membership in
+argv is not execution evidence. Independent axiom feedback may still complete.
+A nonzero overall check result blocks dependent publication, even when another
+predicate passed. This changes neither the check set nor its acceptance boundary.
+
 ## Input identity and reusable results
 
 Successful checks retain their actual command, checker, source, environment and

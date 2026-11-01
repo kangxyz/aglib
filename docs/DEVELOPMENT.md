@@ -73,6 +73,10 @@ lake --no-build exe mathlib/lint-style Aglib
 lake --no-build lint Aglib -- --trace
 ```
 
+For selected remote phases, use the [shared native invocation guide](../scripts/README.md#native-check-invocation)
+and its command plan; group compatible required lint roots in one native call
+and retain actual coverage when a root fails before others execute.
+
 Checker executables need prepared matching outputs. The native entry prepares
 those tools and the upstream auditor under its guard; the exact pinned auditor
 and public job boundaries are described in [native CI](../.github/LEAN_CI.md).
