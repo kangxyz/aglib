@@ -34,3 +34,8 @@ cohomology vanishing, without coefficient flatness or Noetherianity.
 unit, augmentation and `moduleTensorTildeSectionsMap` normalization.
 Finite coordinates, the dimension equivalence and common geometric
 universe remain the original ones, including dimension zero.
+
+[The coefficient entry](Coefficients.md) reexports those same two providers
+and retains the original naturality of the finite tensor comparison, bottom
+inclusion and installed derived comparison in the coefficient module. These
+maps have one canonical implementation; the entry does not redeclare them.
