@@ -72,11 +72,12 @@ def runner_arguments(command):
 
 def condition(expression, values, *, success=True, cancelled=False):
     """Evaluate this workflow's conditions, including implicit success()."""
+    values = {'inputs.first-ci-cache': '', **values}
     text = expression.removeprefix('${{').removesuffix('}}').strip()
     explicit_status = re.search(r'\b(always|cancelled|success|failure)\(', text)
     if not explicit_status and not success:
         return False
-    text = re.sub(r'\b(?:needs|steps|github)(?:\.[\w-]+)+',
+    text = re.sub(r'\b(?:needs|steps|github|inputs)(?:\.[\w-]+)+',
                   lambda match: repr(values[match[0]]), text)
     text = text.replace('always()', 'True').replace('cancelled()', repr(cancelled))
     text = text.replace('&&', ' and ').replace('||', ' or ')
@@ -195,14 +196,23 @@ class WorkflowGates(unittest.TestCase):
         restore = next(item for item in JOBS['build']['steps'] if item.get('id') == 'restore')['with']
         values = {'runner.os': 'Linux', 'runner.arch': 'X64', 'github.sha': 'commit',
                   'github.run_id': 'run', 'github.run_attempt': '1',
+                  'inputs.first-ci-cache': '', 'steps.first-ci.outputs.seed-key': 'seed',
                   "hashFiles(format('{0}/lean-toolchain', inputs.package-directory))": 'compiler',
                   "hashFiles(format('{0}/lake-manifest.json', inputs.package-directory))": 'pins',
                   "hashFiles(format('{0}/lean-toolchain', inputs.package-directory), "
                   "format('{0}/lake-manifest.json', inputs.package-directory))": 'legacy-pins'}
 
         def render(text):
-            return re.sub(r'\$\{\{\s*(.*?)\s*\}\}',
-                          lambda match: values[match[1]], text)
+            def evaluate(match):
+                expression = match[1]
+                for key in sorted((key for key in values if key.startswith('hashFiles(')),
+                                  key=len, reverse=True):
+                    expression = expression.replace(key, repr(values[key]))
+                expression = re.sub(r'\b(?:runner|github|inputs|steps)(?:\.[\w-]+)+',
+                                    lambda token: repr(values[token[0]]), expression)
+                expression = expression.replace('&&', ' and ').replace('||', ' or ')
+                return str(eval(expression, {'__builtins__': {}, 'format': str.format}, {}))
+            return re.sub(r'\$\{\{\s*(.*?)\s*\}\}', evaluate, text)
 
         primary = render(restore['key'])
         prefixes = render(restore['restore-keys']).splitlines()
@@ -512,10 +522,17 @@ timeout() {
         restore = next(item for item in actions if item.get('id') == 'restore')['with']
         self.assertEqual(save['with']['key'], '${{ steps.restore.outputs.cache-primary-key }}')
         fields = {'runner.os': 'Linux', 'runner.arch': 'X64', 'github.sha': 'commit',
-                  'github.run_id': 'run', 'github.run_attempt': '1'}
+                  'github.run_id': 'run', 'github.run_attempt': '1',
+                  'inputs.first-ci-cache': '', 'steps.first-ci.outputs.seed-key': 'seed'}
         def render(text):
-            return re.sub(r'\$\{\{\s*(.*?)\s*\}\}', lambda match: (
-                'input-hash' if match[1].startswith('hashFiles(') else fields[match[1]]), text)
+            def evaluate(match):
+                expression = re.sub(r'hashFiles\((?:[^()]|\([^()]*\))*\)',
+                                    repr('input-hash'), match[1])
+                expression = re.sub(r'\b(?:runner|github|inputs|steps)(?:\.[\w-]+)+',
+                                    lambda token: repr(fields[token[0]]), expression)
+                expression = expression.replace('&&', ' and ').replace('||', ' or ')
+                return str(eval(expression, {'__builtins__': {}, 'format': str.format}, {}))
+            return re.sub(r'\$\{\{\s*(.*?)\s*\}\}', evaluate, text)
         previous_key = render(restore['key'])
         fields['github.run_attempt'] = '2'
         self.assertNotEqual(render(restore['key']), previous_key)
@@ -928,12 +945,44 @@ timeout() {
                     result = subprocess.run(
                         ['bash', '-e', '-o', 'pipefail', '-c', mock + lint['run']],
                         env={**os.environ, 'BUILD_TARGETS': 'Aglib Quillen', 'TRACE': str(trace),
-                             'FIRST': str(first), 'SECOND': str(second)},
+                             'FIRST': str(first), 'SECOND': str(second), 'GITHUB_WORKSPACE': ''},
                         capture_output=True, text=True, check=False)
                     self.assertEqual(result.returncode, expected, result.stderr)
                     self.assertEqual(trace.read_text().splitlines(), [
                         '--kill-after=30s 20m env LEAN_ABORT_ON_PANIC=1 lake --no-build lint Aglib Quillen -- --trace'
                     ] * attempts)
+
+    def test_lint_helper_preserves_roots_panic_mode_and_status(self):
+        mock = r'''
+timeout() { shift 2; "$@"; }
+lake() { echo 'unexpected native fallback' >&2; return 99; }
+export -f lake
+'''
+        for status, attempts in ((0, 1), (1, 1), (124, 2), (137, 1)):
+            with self.subTest(status=status):
+                with tempfile.TemporaryDirectory(prefix='lean-ci-lint-helper-') as directory:
+                    workspace = Path(directory) / 'workspace with spaces'
+                    helper = workspace / '.github/lint/run.sh'
+                    helper.parent.mkdir(parents=True)
+                    package = workspace / 'lean package'
+                    package.mkdir()
+                    helper.write_text(
+                        'printf "panic:%s\\n" "$LEAN_ABORT_ON_PANIC" >> "$TRACE"\n'
+                        'printf "cwd:%s\\n" "$PWD" >> "$TRACE"\n'
+                        'printf "root:%s\\n" "$@" >> "$TRACE"\n'
+                        'exit "$HELPER_STATUS"\n')
+                    trace = Path(directory) / 'trace'
+                    result = subprocess.run(
+                        ['bash', '-e', '-o', 'pipefail', '-c', mock + step('test_lint', 'Lint')['run']],
+                        env={**os.environ, 'GITHUB_WORKSPACE': str(workspace),
+                             'BUILD_TARGETS': 'Aglib Quillen', 'TRACE': str(trace),
+                             'HELPER_STATUS': str(status)},
+                        cwd=package,
+                        capture_output=True, text=True, check=False)
+                    self.assertEqual(result.returncode, status, result.stderr)
+                    self.assertEqual(trace.read_text().splitlines(),
+                                     ['panic:1', f'cwd:{package.resolve()}', 'root:Aglib', 'root:Quillen'] * attempts)
+                    self.assertNotIn('unexpected native fallback', result.stderr)
 
 
 class PublishedDependencyTransport(unittest.TestCase):
@@ -1059,7 +1108,7 @@ class RootSelectionAndPublication(unittest.TestCase):
                     ['bash', '-e', '-o', 'pipefail', '-c',
                      'lake() { printf "%s\\n" "$@"; }\n'
                      'timeout() { shift; shift; shift; shift; "$@"; }\n' + step(job, name)['run']],
-                    env={**os.environ, 'BUILD_TARGETS': 'Aglib Quillen'},
+                    env={**os.environ, 'BUILD_TARGETS': 'Aglib Quillen', 'GITHUB_WORKSPACE': ''},
                     capture_output=True, text=True, check=False)
                 self.assertEqual(result.returncode, 0, result.stderr)
                 self.assertEqual(result.stdout.splitlines(), expected)

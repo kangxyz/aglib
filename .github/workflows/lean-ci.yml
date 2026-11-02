@@ -530,8 +530,12 @@ jobs:
             echo '::error::build-targets must name at least one production root.'
             exit 1
           fi
+          lint_command=(lake --no-build lint "${roots[@]}" -- --trace)
+          if test -n "${GITHUB_WORKSPACE:-}" && test -f "$GITHUB_WORKSPACE/.github/lint/run.sh"; then
+            lint_command=(bash "$GITHUB_WORKSPACE/.github/lint/run.sh" "${roots[@]}")
+          fi
           for attempt in 1 2; do
-            if timeout --kill-after=30s 20m env LEAN_ABORT_ON_PANIC=1 lake --no-build lint "${roots[@]}" -- --trace; then
+            if timeout --kill-after=30s 20m env LEAN_ABORT_ON_PANIC=1 "${lint_command[@]}"; then
               exit 0
             else
               status=$?

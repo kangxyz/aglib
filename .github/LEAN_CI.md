@@ -53,15 +53,20 @@ downloads from Reservoir/GitHub. This is separate from
   entries without rewriting them; `lake --no-build exe mathlib/lint-style
   <production-roots>` scans the full import lists without automatic fixes.
   Both source checks collect feedback when checker preparation succeeds.
-  Test also runs `lake test` and `lake --no-build lint <production-roots> -- --trace`.
-  In-package tests compile incrementally. Batteries declaration lint retains its
-  ordinary package-wide predicate. A failed Test or source check does not suppress
+  Test also runs `lake test` and declaration lint. A caller containing
+  `.github/lint/run.sh` uses that CI adapter; other callers retain
+  `lake --no-build lint <production-roots> -- --trace`. The adapter retains
+  builtin lint and the configured Batteries declaration predicate, with bounded
+  worker scheduling for the complete declaration set on every invocation.
+  Unsupported driver configurations use the original full command.
+  In-package tests compile incrementally. A failed Test or source check does not suppress
   the other available checker feedback. Failed checker preparation skips checks
   needing those tools and fails the final Test report.
-  Declaration lint has a ten-minute GNU `timeout`, a thirty-second kill grace
+  Declaration lint has a twenty-minute GNU `timeout`, a thirty-second kill grace
   period and `LEAN_ABORT_ON_PANIC=1`. It retries once only for timeout exit 124;
   ordinary diagnostics, other errors and a second timeout remain failures.
-  The step's twenty-five-minute limit bounds both attempts.
+  The step's forty-five-minute limit bounds both attempts, including adapter
+  preparation and cache validation.
   The existing axiom step prepares the
   [pinned auditor used by lean-action](https://github.com/leanprover-community/axiom-audit/tree/46024e005996495c65ef609368e11ab39c4222e3)
   under `$LAKE_CACHE_DIR/axiom-audit`, checks its exact source revision and uses
@@ -207,3 +212,50 @@ Shared-artifact ctime changes trigger content rechecking rather than a new
 validation attempt. The old Python
 CI/baseline/frozen-request protocols and duplicate custom auditor are retired;
 this does not modify the public YAML or broaden mathematical acceptance.
+
+## Declaration-lint execution
+
+The CI-only adapter in `.github/lint/` uses the package's existing toolchain and
+Batteries APIs. It backports the full-scope worker scheduler from
+[Batteries PR #2026](https://github.com/leanprover-community/batteries/pull/2026).
+The pinned old implementation creates a task for each declaration/linter pair;
+the adapter assigns batches of 64 declarations to a bounded worker pool and
+retains only reported failures. Every enabled linter, including slow linters,
+still checks the complete original declaration set in the full imported root
+environment. It does not filter changed modules or reuse lint results.
+
+Builtin lint remains a required check. The driver, root selection, suppression
+files and production options retain their native meaning. Native
+`lake --no-build --builtin-only lint <production-roots>` runs first, and the
+declaration driver still runs if builtin lint reports findings. Their exit
+statuses are combined as in the original command. The batched backend gives each
+declaration/check fresh Core and Meta state, a distinct name generator and its
+own configured heartbeat budget. Interrupts propagate as failures. Per-batch
+progress reports include checked declaration counts and elapsed time. Unknown
+linter implementations retain the pinned original full scheduler.
+
+The adapter is compiled as a small native executable package under
+`.lake/lint-runner`, requiring the already prepared Batteries package by path.
+It does not check out or build another copy of Aglib or Mathlib. Ordinary Lake
+compilation and the existing Actions cache reuse the executable; declaration
+checks themselves always run. The private tool build explicitly selects its
+generated TOML and refreshes only that tool's dependency resolution while keeping
+the package toolchain. Restored tool configuration or path entries cannot select
+a different executable or provider. As in
+[Batteries PR #2028](https://github.com/leanprover-community/batteries/pull/2028),
+the imported environment is marked persistent only when there is exactly one
+resolved declaration-driver root; multiple roots keep ordinary release behavior.
+
+The adapter defaults to two workers, capped by the process's available CPUs.
+`CI_LINT_WORKERS` selects another positive count, with the same CPU cap. The
+worker setting applies only after preflight accepts the adapter. Build, Test
+and unsupported native fallbacks retain their existing resource settings and
+job scopes. Unsupported toolchains, provider
+versions or driver configurations execute the original configured
+`lake --no-build lint <production-roots> -- --trace` command. Preflight makes that
+decision before the adapter imports the dependency API, including root package
+overrides and competing root/provider configurations. Production Lake
+configuration and dependency pins remain unchanged.
+
+The existing twenty-minute attempt limit, retry policy, final Test report and
+Publish cache gate still require the complete current checks to succeed.
