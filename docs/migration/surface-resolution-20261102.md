@@ -4,7 +4,10 @@
 
 This integration starts from Aglib main
 7545acd876b4ebf73f067d532ffa75263c01e26c and the user-supplied two-part
-source snapshot dated 2026-11-02. The archive identities are:
+source snapshot dated 2026-11-02. The local branch also retains main's
+58f0a8a22159d4bd7e9bdd03035494b394d95baf CI-lint update; that update changes
+no mathematical sources, library operating rules or dependency pins.
+The archive identities are:
 
 - surface-resolution-main-20261102-2100-part1-of2.tar.xz:
   SHA25694ca20289a214454f5903ddebf70724f3bdbb28fc0094f02abeb07275799db9b.
@@ -62,8 +65,17 @@ enrollment is limited to affected families.
 
 ## Validation boundary
 
-Native integration validation is in progress. The publication account must
-be updated from actual successful production compilation, in-package tests,
-generated-entry/text-style, grouped declaration lint and the existing
-pinned axiom audit. Kernel replay, separate clients and CI workflow edits
-are outside this integration.
+The native source-policy check, complete production-library build,
+generated-entry check, text style and in-package tests have passed on the
+reorganized source. The coefficient entry reuses the canonical Model and
+Sections providers and retains its three original naturality proofs;
+[the import-repair case](../performance/cases/canonical-split-providers/README.md)
+records the source correspondence and successful production build.
+
+Full declaration lint and the existing pinned axiom audit remain pending.
+Both encountered a native loader read failure with the build host's mapping
+limit at 65,530; a subsequent actual audit sampled 65,532 mappings. The
+runtime limit adjustment was denied by the host. An isolated official
+Lean 4.34.1 build with `MMAP=OFF` is being prepared for the remaining checks.
+The mathematical source and dependency pins are unchanged. Kernel replay,
+separate clients and CI workflow edits are outside this integration.

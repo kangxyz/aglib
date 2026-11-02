@@ -560,6 +560,13 @@ mathematical conditions govern that choice.
   in a failed graph retains only its actual scope.
 - Use focused dependency owners for independent interfaces. Batch necessary
   edits to widely imported providers, and preserve unaffected consumers.
+- When introducing split providers, compare their declarations with the existing
+  parent. Keep one canonical implementation of each constructor and law; let
+  the parent reexport the providers and retain its independent original laws.
+  An aggregate import can report a generated `_proof_n` name when an entire
+  family is duplicated. Preserve the original models, maps and premises and
+  continue the normal production-root build with compatible artifacts.
+  [Canonical split providers](performance/cases/canonical-split-providers/README.md).
 - Separate primitive coefficient aliases from classification-heavy providers.
   Preserve literal names, types, RHS and native lifts, reexport the leaf from
   the geometric owner, and redirect only coefficient consumers. Bind existing
