@@ -109,6 +109,7 @@ original runs; current operating guides own present procedures.
 
 Additional complete cases:
 
+- [Theta: reuse the selected native group before forming equations](cases/theta-native-group-reuse/README.md)
 - [Open-curve duality: original rows, arrow transport and variable flip laws](cases/open-curve-duality-laws/README.md)
 - [Native internal-Hom laws: literal public equations after inferred producer laws](cases/native-internal-hom-laws/README.md)
 - [Surface-resolution constructor boundaries](surface-resolution-constructor-boundaries.md)

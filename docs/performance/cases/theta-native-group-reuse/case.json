@@ -1,0 +1,144 @@
+{
+  "question": "Construction-time reuse of the already selected canonical native group in the complete geometric-positive Field application",
+  "change": "One local GrpObj B binding before e/hInv/hpull/H; public hH1, scalarGroup A, original maps and geometric hypotheses unchanged",
+  "failed_producer_sha256": "1a08bab3062625be54b9dc6e0d4524a7bc6a6f7236e62748de238060c0778079",
+  "passed_producer_sha256": "dc7bede6cfbafd989ca6181b7c05b21c4201017a86856bf9537a82b0fa0e1096",
+  "evidence_files": [
+    {
+      "path": "sources/FieldComparison.before.lean.txt",
+      "original_path": "/private/tmp/r5-investigations/jacobian/theta-sol/phase3-early-native-B/FieldComparison.1a08.before-early-B.lean.txt",
+      "sha256": "1a08bab3062625be54b9dc6e0d4524a7bc6a6f7236e62748de238060c0778079"
+    },
+    {
+      "path": "sources/FieldComparison.passed.lean.txt",
+      "original_path": "/private/tmp/r5-investigations/jacobian/theta-sol/phase3-early-native-B/FieldComparison.dc7b.PASS.lean.txt",
+      "sha256": "dc7bede6cfbafd989ca6181b7c05b21c4201017a86856bf9537a82b0fa0e1096"
+    },
+    {
+      "path": "sources/FieldComparison.mirror.lean.txt",
+      "original_path": "/private/tmp/r5-investigations/jacobian/theta-sol/phase3-early-native-B/FieldComparison.38bc.PASS.mirror.lean.txt",
+      "sha256": "38bc0a4cadfb40c69fad6a09c5a8b0565438fe2a5b0c30ed0dfea2b7dd699387"
+    },
+    {
+      "path": "sources/FieldComparison.e169.lean.txt",
+      "original_path": "/private/tmp/r5-investigations/jacobian/theta-geometric-repair/phase2-5428/02-original-component-abbreviation.lean",
+      "sha256": "e16991d5f2a701b23c035e7828e8d22c9ff058345f454d246378ae3c21999190"
+    },
+    {
+      "path": "sources/FieldApplicationTypePrefix.lean.txt",
+      "original_path": "/private/tmp/r5-investigations/jacobian/theta-geometric-repair/phase2-5428/FieldApplicationTypePrefix.lean",
+      "sha256": "66076f45b6e439723227f497f012fbc95e96b9702b9c5c0d0dcd810a459d1130"
+    },
+    {
+      "path": "sources/FieldApplicationToolValidation.lean.txt",
+      "original_path": "/private/tmp/r5-investigations/jacobian/theta-geometric-repair/phase2-5428/FieldApplicationToolValidation.lean",
+      "sha256": "61743a9d6fca4a47f63e77dcca4c6124c6850f94a2a7864c3a6b03af0d8a67ab"
+    },
+    {
+      "path": "sources/application-inspector.lean.txt",
+      "original_path": "/private/tmp/r5-investigations/jacobian/theta-geometric-repair/phase2-5428/application-inspector.lean.txt",
+      "sha256": "4d00a3420afb3701a6e4d2da15c7d9e58319a270f5f15e15942239a2906fc54a"
+    },
+    {
+      "path": "evidence/diagnostic/actual-records.json",
+      "original_path": "/private/tmp/r5-investigations/jacobian/theta-geometric-repair/phase2-5428/normalized-83667-actual-records.json",
+      "sha256": "c7666c42f29239ba9d29ae974f1ff028e0e0e4ec206cf4a82388f16c873c549e"
+    },
+    {
+      "path": "evidence/diagnostic/actual-report.txt",
+      "original_path": "/private/tmp/r5-investigations/jacobian/theta-geometric-repair/phase2-5428/normalized-83667-actual-report.txt",
+      "sha256": "a6a0bbf4f36079d000e575adf566dbca5ea4ddf845d1ca57bb96320a5a66884e"
+    },
+    {
+      "path": "evidence/CONDITIONAL_PASS_IDENTITIES.json",
+      "original_path": "/private/tmp/r5-investigations/jacobian/theta-sol/phase3-early-native-B/CONDITIONAL_PASS_IDENTITIES.json",
+      "sha256": "2b07b4222285649c79bb7eebe662df04f32645d1886590eadaec24e431f124c9"
+    },
+    {
+      "path": "evidence/failed/receipt.json",
+      "original_path": "tmp/output/remote-lean-setup/aglib-jacobian-theta-runs/remote-5dd38397193a4c4ab3a54c3ed31ae38d/receipt.json",
+      "sha256": "a981d724b7c1c43f605aa255daebe077c7ae3d6b24f09f581bf69f5607452c5a"
+    },
+    {
+      "path": "evidence/failed/build.log",
+      "original_path": "tmp/output/remote-lean-setup/aglib-jacobian-theta-runs/remote-5dd38397193a4c4ab3a54c3ed31ae38d/build.log",
+      "sha256": "a500eb75e49814a3202f910fc995e03b6771c788d3580779b5836ee855e5c1e0"
+    },
+    {
+      "path": "evidence/failed/compiler-events.jsonl",
+      "original_path": "tmp/output/remote-lean-setup/aglib-jacobian-theta-runs/remote-5dd38397193a4c4ab3a54c3ed31ae38d/compiler-events.jsonl",
+      "sha256": "04626d48cf687fe769fc518e1323cab671e8649b1a6d8b0b4f6d16ae2fbd4d5e"
+    },
+    {
+      "path": "evidence/diagnostic/receipt.json",
+      "original_path": "tmp/output/remote-lean-setup/aglib-jacobian-theta-runs/remote-83667a0eda714c749c3f35cce859b7af/receipt.json",
+      "sha256": "d20f1bf2bdb1b640fce37d3e4b4ff6209f0a929d42ac2116f4abf94fcddeabb4"
+    },
+    {
+      "path": "evidence/diagnostic/build.log",
+      "original_path": "tmp/output/remote-lean-setup/aglib-jacobian-theta-runs/remote-83667a0eda714c749c3f35cce859b7af/build.log",
+      "sha256": "e945ef1c41c0311cd394dc0aedd4dd35c66482c62b9e36429f7cffa548b27dce"
+    },
+    {
+      "path": "evidence/diagnostic/compiler-events.jsonl",
+      "original_path": "tmp/output/remote-lean-setup/aglib-jacobian-theta-runs/remote-83667a0eda714c749c3f35cce859b7af/compiler-events.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/late-normalization/receipt.json",
+      "original_path": "tmp/output/remote-lean-setup/aglib-jacobian-theta-runs/remote-3330c266eadc43d8a51f6861b12d8f93/receipt.json",
+      "sha256": "9209888a5c00f65bd37f0b656f52720cf489b1c62a8547740b128ce4d29dbf19"
+    },
+    {
+      "path": "evidence/late-normalization/build.log",
+      "original_path": "tmp/output/remote-lean-setup/aglib-jacobian-theta-runs/remote-3330c266eadc43d8a51f6861b12d8f93/build.log",
+      "sha256": "b28f76d63714674c30d282c0ff923a2042f58b60807ec246df4aec35175b2dcb"
+    },
+    {
+      "path": "evidence/late-normalization/compiler-events.jsonl",
+      "original_path": "tmp/output/remote-lean-setup/aglib-jacobian-theta-runs/remote-3330c266eadc43d8a51f6861b12d8f93/compiler-events.jsonl",
+      "sha256": "4f2630ae9d0c3f322c8a2e8ea7be4abae022d61b88c33e299ebcd13a7485d56f"
+    },
+    {
+      "path": "evidence/passed/receipt.json",
+      "original_path": "/private/tmp/r5-investigations/jacobian/theta-sol/phase3-early-native-B/receipt.json",
+      "sha256": "37deb4f7840db4245aba2ea08d339c79b88686dba0e37da8d93b36f0c53a9cea"
+    },
+    {
+      "path": "evidence/passed/build.log",
+      "original_path": "/private/tmp/r5-investigations/jacobian/theta-sol/phase3-early-native-B/build.log",
+      "sha256": "4c7628f0e8e472f89559d1876ca6c7fca0fc0010fae42039f1fc755a441e6e6d"
+    },
+    {
+      "path": "evidence/passed/compiler-events.jsonl",
+      "original_path": "/private/tmp/r5-investigations/jacobian/theta-sol/phase3-early-native-B/compiler-events.jsonl",
+      "sha256": "150509cb6509ad47e7fa90057454ea82e4b836480859b86d94d9ede222df5b13"
+    },
+    {
+      "path": "sources/lean-toolchain.txt",
+      "original_path": "tmp/work/jacobian/ready-merge/lean-toolchain",
+      "sha256": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+    },
+    {
+      "path": "sources/lakefile.toml.txt",
+      "original_path": "tmp/work/jacobian/ready-merge/lakefile.toml",
+      "sha256": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852"
+    },
+    {
+      "path": "sources/lake-manifest.json.txt",
+      "original_path": "tmp/work/jacobian/ready-merge/lake-manifest.json",
+      "sha256": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2"
+    },
+    {
+      "path": "sources/IdentityComponent.lean.txt",
+      "original_path": "tmp/work/jacobian/ready-merge/Aglib/AlgebraicGeometry/Picard/IdentityComponent.lean",
+      "sha256": "90be42de98a21960da8820094ff9f2b4f205d682520a20ffe0395a0582b3c548"
+    }
+  ],
+  "not_claimed": [
+    "matched speedup",
+    "unique conversion/kernel cause",
+    "unconditional coherent H1",
+    "independent mathematical review or ready-union final-check coverage"
+  ]
+}

@@ -22,6 +22,11 @@ factorization through the same identity component. [FamilyFormula](OverField/Lin
 [AmpleKernel](OverField/LineBundle/AmpleKernel.lean) and
 [BaseChange](OverField/LineBundle/BaseChange.lean) retain the actual family,
 scheme-valued kernel, ample finite-kernel result and field base-change maps.
+[SourcePullback](OverField/LineBundle/SourcePullback.lean) proves the whole
+translated-family class formula on arbitrary tests and the contravariant
+source-group pullback formula for the original represented line-bundle
+morphism and its same identity-component restriction. The displayed source
+geometry and supplied representative hypotheses remain explicit.
 
 [Poincare](OverField/Dual/Poincare.lean) pulls the same universal rigidified
 pair back to the Picard identity component, with both unit trivializations and

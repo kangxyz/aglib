@@ -1,0 +1,32 @@
+{
+  "run": "remote-0f87d2cb5ba24f9989c8b904f516eba2",
+  "SOURCE": "3114ba4083e0dc539bf5009de9c42c939ee0d36b4175ede572fb7004bf4d904a",
+  "actual_scope": "ordinary full Field producer and current matching mirror,2/2; no standalone final cycle",
+  "source_hashes": {
+    "Aglib/AlgebraicGeometry/Curves/Jacobian/Theta/Descent.lean": "a91c275011d229c8688dd89c27638a2ca56760a99dc0a7ae37c337cb155185cc",
+    "AglibTest/AlgebraicGeometry/Curves/Jacobian/Theta/Descent.lean": "241c2822d2464bb9fd3be16705ef30cb72f6e26ce37d0bc6e6bdf21db2b32788",
+    "Aglib/AlgebraicGeometry/Curves/Jacobian/Theta/Descent/FieldComparison.lean": "dc7bede6cfbafd989ca6181b7c05b21c4201017a86856bf9537a82b0fa0e1096",
+    "AglibTest/AlgebraicGeometry/Curves/Jacobian/Theta/Descent/FieldComparison.lean": "38bc0a4cadfb40c69fad6a09c5a8b0565438fe2a5b0c30ed0dfea2b7dd699387",
+    "Aglib/AlgebraicGeometry/Curves/Jacobian/Theta/Descent/FieldComparison/GeometricPositive.lean": "a2cfe7d92592e2f5b62680cadf0a0fb23974621fd7f02bfe536bd89127077bf5",
+    "AglibTest/AlgebraicGeometry/Curves/Jacobian/Theta/Descent/FieldComparison/GeometricPositive.lean": "b9377cfec35dfbbfee8750d809f32694a0642126d5c78bdd13c0427a12b9614f",
+    "Aglib/AlgebraicGeometry/AbelianScheme/OverField/LineBundle/SourcePullback.lean": "6d6e75baa5108aedcd6fa4f3275c6f9ad53995cada69e858fa5e065489ec6f0d",
+    "AglibTest/AlgebraicGeometry/AbelianScheme/OverField/LineBundle/SourcePullback.lean": "e5a21d1f08029174a3ff441a2aaabaf8a5954896ef44ed42aed0792788ebb79d"
+  },
+  "conditions": "All original hX/P/R/Q/RQ/site/LFT/separatedness conditions and original hH1 remain. Geometric positivity has ALGCl extension K/k and positive base genus.",
+  "change": "Only early existing canonical GrpObj B binding before e/RQB/hInv/hpull/H; no other1a08 code or public header changed.",
+  "caps": {
+    "jobs": 8,
+    "threads": 4,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 110592,
+    "proof_budgets": "unchanged defaults"
+  },
+  "pending": "actual general H1 supplier and thin unconditional CanonicalPrincipal pair; final coherent-family checks/review/integration",
+  "not_claimed": [
+    "unconditional H1",
+    "standalone native15/style/upstream-audit PASS",
+    "unique kernel cause",
+    "matched timing speedup",
+    "all public origin variants beyond their stated hypotheses"
+  ]
+}

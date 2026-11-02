@@ -877,6 +877,7 @@ public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.LineBundle.FamilyF
 public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.LineBundle.KernelClass
 public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.LineBundle.Morphism
 public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.LineBundle.Multiplication
+public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.LineBundle.SourcePullback
 public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.LineBundle.Square
 public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.LineBundle.Symmetric
 public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.LineBundle.Translation
@@ -2237,6 +2238,9 @@ public import Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.AutodualityClass
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.AutodualityMorphism
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.Cartier
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.DegreeComponent
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.Descent
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.Descent.FieldComparison
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.Descent.FieldComparison.GeometricPositive
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.DistinctOpen
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.EffectiveParameters
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.EffectiveRankOne

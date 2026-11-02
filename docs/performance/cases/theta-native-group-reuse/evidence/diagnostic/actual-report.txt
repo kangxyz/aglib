@@ -1,0 +1,31 @@
+APP.transparency=Lean.Meta.TransparencyMode.default
+APP_ORIGINAL_PULLBACK_CALC_FORMED
+KG.TYPE.APP.premise.rawSame=false
+KG.TYPE.APP.premise.nodes=27;proofValuesSkipped=0
+KG.TYPE.APP.premise.path=APP.premise.fn.arg.fn.fn.fn.arg.fn.arg.arg.arg.fn.fn.fn.fn.fn.arg.fn.arg.fn
+KG.TYPE.APP.premise.leftHead=const:AlgebraicGeometry.Scheme.OverField.Base;arity:1
+KG.TYPE.APP.premise.rightHead=const:AlgebraicGeometry.Spec;arity:0
+KG.TYPE.APP.premise.arg.0.rawSame=true
+KG.TYPE.APP.premise.arg.0.nodes=1;proofValuesSkipped=0
+KG.TYPE.APP.premise.arg.0.shapeSameWithPropositionTypes=true
+KG.TYPE.APP.premise.arg.1.rawSame=false
+KG.TYPE.APP.premise.arg.1.nodes=24;proofValuesSkipped=0
+KG.TYPE.APP.premise.arg.1.path=APP.premise.arg.1.fn.fn.fn.arg.fn.arg.arg.arg.fn.fn.fn.fn.fn.arg.fn.arg.fn
+KG.TYPE.APP.premise.arg.1.leftHead=const:AlgebraicGeometry.Scheme.OverField.Base;arity:1
+KG.TYPE.APP.premise.arg.1.rightHead=const:AlgebraicGeometry.Spec;arity:0
+KG.TYPE.APP.premise.arg.2.rawSame=false
+KG.TYPE.APP.premise.arg.2.nodes=10;proofValuesSkipped=0
+KG.TYPE.APP.premise.arg.2.path=APP.premise.arg.2.arg.arg.fn.fn.fn.fn.fn
+KG.TYPE.APP.premise.arg.2.leftHead=const:AlgebraicGeometry.Scheme.RelativePicard.grpObjPicardIdentityComponent;arity:2
+KG.TYPE.APP.premise.arg.2.rightHead=const:AlgebraicGeometry.Scheme.Group.grpObjIdentityComponentOver;arity:0
+KG.TYPE.APP.genus.rawSame=true
+KG.TYPE.APP.genus.nodes=1;proofValuesSkipped=0
+KG.TYPE.APP.genus.shapeSameWithPropositionTypes=true
+KG.TYPE.APP.result.rawSame=false
+KG.TYPE.APP.result.nodes=19;proofValuesSkipped=0
+KG.TYPE.APP.result.path=APP.result.metaR.arg.body.arg.fn.fn.arg.fn.fn.fn.arg.fn.fn
+KG.TYPE.APP.result.leftHead=const:AlgebraicGeometry.Scheme.OverField.FScheme;arity:0
+KG.TYPE.APP.result.rightHead=const:CategoryTheory.Over;arity:1
+maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information

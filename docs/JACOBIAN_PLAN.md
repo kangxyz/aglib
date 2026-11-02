@@ -409,9 +409,17 @@ base without choosing an origin or a negative-degree theta divisor. See
 The whole Abel change-of-origin translation law holds over any field for
 two actual origins. Independence of the original Picard pullback and
 principal isomorphism is supplied under the same algebraically closed,
-positive-genus and coherent-H¹ hypotheses. Arbitrary-field descent remains
-open; this does not assert a theta line bundle on `J` defined over an
-arbitrary ground field. [Milne JVs](REFERENCES.md#milne2021jacobianvarieties),
+positive-genus and coherent-H¹ hypotheses. The origin-free canonical Abel
+dual map is constructed on the original Jacobian and its dual. Its scalar
+comparison and fpqc descent give an isomorphism in every genus over any
+field, conditional on the original coherent-H¹ inequality and the displayed
+locally Noetherian Picard representatives, local-finite-type and separatedness
+hypotheses. Its negative inverse is the canonical principal group
+isomorphism, with its underlying scheme isomorphism. For positive base
+genus, after an algebraically closed field extension, its scalar-extended
+morphism is induced by an ample line bundle on the scalar-extended original
+Jacobian. The coherent-H¹ bound remains open; no theta line bundle over
+the arbitrary ground field is asserted. [Milne JVs](REFERENCES.md#milne2021jacobianvarieties),
 5.1 and 6.6–6.11, remains a source locator with its actual hypotheses.
 
 Construct the Weil pairing first on the actual `n` kernels of an abelian
@@ -466,7 +474,7 @@ close the planned programme.
 | D2–D6 | **Partial source supplied:** module trace and smaller-open compatibility, exact finite-module dualization, finite biduality, and constant-coefficient perfectness in degrees 0 and 2 with transposes, for finite complement including empty and positive invertible `n`. Original one-point module Ext purity and Kummer trace-one normalization are supplied; the original finite-lcc roots internal-Hom/Ext comparison is supplied under its field and level hypotheses; finite point-support roots Ext and its whole trace sum are supplied; both original proper and finite-complement open adjoints are bijective for every finite-lcc coefficient and `r ≤ 2`, with the displayed field, level and Ext-world hypotheses. General-coefficient purity and source Čech/connecting/cup comparisons remain open. The original finite proper/open pairing squares are supplied for all complementary degrees under their stated hypotheses. |
 | D7 | **Open:** constructible devissage/local comparison, with the unchecked Milne EC reference and alternative Artin route kept explicit. |
 | W1 | **Partial source supplied:** the same Poincaré pair and original line-bundle morphism, with locally Noetherian classification; an ample original `φ_L` is finite. Dual properness, smoothness, dimension, geometric integrality, projectivity and finite-flat surjectivity are conditional on the original coherent-H¹ inequality `finrank H¹(O_A) ≤ finrank Cotangent(unit_A)` and the displayed source assumptions. Conditional homogeneity and source multiplication laws hold when the actual dual component is proper and geometrically integral. The original bidual map and its naturality/line-bundle laws are supplied with a second representative; the coherent-H¹ inequality, unconditional dual geometry, bidual isomorphism, general dual homomorphisms and character descent remain open. |
-| W2–W3 | **Partial source supplied:** based positive-genus theta Cartier geometry, monicity, trivial scheme kernel and ampleness; principal isomorphism retains the original coherent-H¹ inequality. Genus zero has the separate any-field trivial-Jacobian theorem. The any-field Abel origin-change law and conditional principal-isomorphism independence are supplied; arbitrary-field descent and general Weil pairing remain open. |
+| W2–W3 | **Partial source supplied:** based positive-genus theta Cartier geometry, monicity, trivial scheme kernel and ampleness; principal isomorphism retains the original coherent-H¹ inequality. Genus zero has the separate any-field trivial-Jacobian theorem. The any-field Abel origin-change law and conditional principal-isomorphism independence are supplied. The origin-free canonical Abel dual map is an isomorphism over any field in every genus under the original coherent-H¹ and representative hypotheses; its negative inverse is the canonical principal group/scheme isomorphism. Positive-genus ampleness is supplied after algebraically closed field extension. The general coherent-H¹ bound, ground-field theta bundle and general Weil pairing remain open. |
 | W4 | **Partial source supplied:** original internal-Hom/source Ext laws and native evaluation/unit/trace comparisons retain their stated acyclicity premises. The final original-map and sign comparison of Yoneda, cup, Kummer, Abel–Jacobi, Cartier and polarization constructions remains open. |
 
 ## Work order and source obligations

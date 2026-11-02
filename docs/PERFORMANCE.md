@@ -430,6 +430,17 @@ projection/delta cause remains a candidate.
 
 ## Instances and universes
 
+**Bind the selected native structure before constructing dependent equations.**
+When two source-defined wrappers select the same canonical group, bind that
+already selected instance before deriving inverses and pullback equations.
+In the theta application, reusing `grpObjPicardIdentityComponent` immediately
+after the original component `B` was defined closed the complete native
+producer and mirror at default limits; late normalization at `H hpull hg'`
+had failed. Keep the statement-given scalar group and all public hypotheses.
+[Source-bound theta case](performance/cases/theta-native-group-reuse/README.md).
+The observations establish this repair, without a unique internal cause or
+matched speedup claim.
+
 **Supply an already proved dictionary at its exact type.** Bind repeated
 universal instances locally, pass existing finite-index witnesses directly,
 use `inferInstanceAs` for the actual `HasExt`, and obtain preservation from

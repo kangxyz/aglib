@@ -194,7 +194,21 @@ whole Abel change-of-origin translation law over any field for two actual
 origins and the same supplied representative. Independence of the original
 Picard pullback and principal isomorphism retains algebraic closedness,
 positive genus, the stated second representative hypotheses and the original
-coherent-H¹ inequality. Arbitrary-field descent remains separate.
+coherent-H¹ inequality.
+
+[Descent](Jacobian/Theta/Descent.lean) constructs the original Abel
+difference and canonical Abel dual map without a ground-field rational
+origin. [FieldComparison](Jacobian/Theta/Descent/FieldComparison.lean)
+compares this same map after field extension and descends its isomorphism
+by fpqc descent, in every genus over any field. The canonical principal
+group isomorphism and its underlying scheme isomorphism are its negative
+inverse. These results retain the original coherent-H¹ inequality and the
+supplied locally Noetherian Picard representatives with their displayed
+local-finite-type and separatedness hypotheses. In positive genus, after
+an algebraically closed field extension, the scalar-extended principal
+morphism comes from an ample line bundle on the scalar-extended original
+Jacobian. The coherent-H¹ bound and a theta line bundle over the ground
+field remain separate obligations.
 
 ## Additional source entry points
 
