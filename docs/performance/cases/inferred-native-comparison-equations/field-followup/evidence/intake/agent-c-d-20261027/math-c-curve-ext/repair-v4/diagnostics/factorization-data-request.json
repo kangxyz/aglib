@@ -1,0 +1,19 @@
+{
+  "question": "Find the actual hidden data or proof-TYPE boundary in the original whole function-factorization equation. Actualb622 failed after both comparison and literal eH were exposed; displayed actual/expected whole functions are identical, and native hcomp/hcoe/hfactor already exist. Compare inferred hfactor type with that exact normalized target, not a reconstructed final scalar normal form.",
+  "accepted_input": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/repair-v4/diagnostics/FieldWholeComparisonV3.lean",
+  "accepted_input_sha256": "b62265bf0b51a6c824cec55f45858d73038e26ffa66a36d857b6e5617237be5f",
+  "native_file": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean",
+  "native_sha256": "616b87a1041f6eed9b19b5d5ecd0bc50c3df4acf636496f42b7c4800883c35ce",
+  "basis_run": "remote-614cbe7476874fcca5b896c5863a9584",
+  "basis_source": "b16675952652f431a224f8f67dc7f79677295b7cc54ccfce99db86006b75ca91",
+  "mechanical_write_scope": "Only retained C staging; do not change N or author O sources. Root authorized C mechanical derived-copy Meta/syntax repairs. Freeze the derived source/patch/request before execution and return exact derived hash.",
+  "prescribed_derivation": [
+    "Retain complete exact original proof/source and private equality supplier from b622. At ONLY the first factorization branch replace trace_state/simpa by `simp only [comparison, eH] at hfactor \u22a2`, the bounded data diagnostic, and `exact hfactor`; second original class branch unchanged.",
+    "Reuse the predeclared diagnostic-only helper approach. Run inside withMainContext and retrieve current local hfactor directly by raw userName from the local context, not a hygienic quotation. Infer its actual type, instantiate assigned mvars in actual and target, reject unresolved expression/level mvars before any DATA verdict.",
+    "Walk syntactically unequal elaborated terms, max20 reported differences/depth80, stripping metadata. For two proof expressions, inspect their inferred proposition TYPES: skip only when those types are syntactically equal; otherwise recurse into those types and tag the path proofType. Do not assume proof irrelevance across unknown proposition types.",
+    "For a remaining differing head log path, head constructor/name and universe-level representation, argument arities, bounded actual/expected terms and their types when available. Descend same-head applications/paired lambda/forall fields as before. Log separate counters for exact matches, same-type proof pairs, proof-type recursion, depth truncation and reports. No zero-count equality or defeq/cause verdict.",
+    "No new solver/resource/recursion limits/options, no axiom or native premise. Meta code only observes existing typed expressions; leave the original failing exact so it cannot certify the theorem. C may fix mechanical plumbing in its own derived copies without changing this semantic question/bounds."
+  ],
+  "acceptance": "Actual source-bound valid data/proof-type difference markers with fully resolved expressions, or a precise mechanical failure without a mathematical conclusion. Preserve all prior invalid-marker/syntax outcomes; no old source relabeling.",
+  "runtime": "Sole C one corrected bounded diagnostic after already healthy work; no duplicate B run or unchanged production retry. Data output is not proof acceptance or permission to change original carriers/maps."
+}

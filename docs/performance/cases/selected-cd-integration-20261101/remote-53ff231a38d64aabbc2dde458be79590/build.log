@@ -1,0 +1,154 @@
+✔ [4775/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalPurity (37s)
+✔ [4776/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.AffineDeterminant (5.4s)
+✔ [4777/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel (6.3s)
+✔ [4778/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Principal (6.8s)
+✔ [4779/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Class (3.8s)
+✔ [4780/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.OpenCoefficient.Units (7.5s)
+✔ [4781/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Principal.Source (5.8s)
+✔ [4782/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Charts (13s)
+✔ [4783/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.NormalBase (22s)
+✔ [4784/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Class.Open (5.8s)
+✔ [4785/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.SerreTransport (5.8s)
+✔ [4786/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Purity (5.6s)
+✔ [4787/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.BaseCoefficient (31s)
+✔ [4788/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.Frames (5.5s)
+✔ [4789/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Principal.Class (19s)
+✔ [4790/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Class.Congruence (4.9s)
+✔ [4791/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Class.Composition (4.8s)
+✔ [4792/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.AmbientNormal (13s)
+✔ [4793/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Insertion (39s)
+✔ [4794/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.NormalFrame (10s)
+✔ [4795/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.BaseDeterminant (31s)
+✔ [4796/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Insertion.OpenComparison (7.7s)
+✔ [4797/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.OpenCoefficient (74s)
+✔ [4798/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.AmbientConormal.Maps (14s)
+✔ [4799/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.AmbientConormal.Positive (7.1s)
+✔ [4800/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.AmbientConormal.Arrows (7.5s)
+✔ [4801/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.GeneratorOverlap (122s)
+✔ [4802/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.AmbientConormal.Complex (9.0s)
+✔ [4803/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Principal.HomologyClass (83s)
+✔ [4804/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts (86s)
+✔ [4805/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.GeneratorOverlap (14s)
+✖ [4806/4872] Building Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Coefficients (135s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-53ff231a38d64aabbc2dde458be79590/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Coefficients.lean -o /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Coefficients.olean -i /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Coefficients.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Coefficients.c --setup /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Coefficients.setup.json --json
+error: Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Coefficients.lean:180:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+✔ [4808/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.SourceIdeal (4.2s)
+✔ [4809/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.BaseDeterminant.Coefficient (20s)
+✔ [4810/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.BaseModel (59s)
+✔ [4812/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.DeterminantSquare (64s)
+✔ [4813/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.DeterminantSquare.Literal (14s)
+✔ [4814/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.AtIdeal (67s)
+✔ [4815/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.DeterminantSquare.Literal.OpenSquare (7.5s)
+✔ [4816/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Principal.Derived (79s)
+✔ [4817/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Principal.NormalizedClass (82s)
+✔ [4818/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Principal.AmbientIsomorphism (11s)
+✔ [4819/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.AtIdeal.Restriction (21s)
+✔ [4820/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.AmbientConormal.Determinant (24s)
+✔ [4821/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Principal.AmbientIsomorphism.Model (20s)
+✔ [4822/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Principal.AmbientIsomorphism.Classes (21s)
+✔ [4823/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.AmbientConormal.Coefficient (45s)
+✔ [4824/4872] Built Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.Restriction (330s)
+✔ [4825/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.AtIdeal.Data (87s)
+✔ [4826/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.AtIdeal.Reflexive (5.8s)
+✔ [4827/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.ModelCore (5.0s)
+✔ [4828/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.BaseComparison (28s)
+✔ [4829/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.BaseDifferentials (28s)
+✔ [4830/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.CoefficientOpen (91s)
+✔ [4831/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.Sections (115s)
+✔ [4832/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.SameData (111s)
+✔ [4833/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenCounit (164s)
+✔ [4834/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.AmbientGeometry (114s)
+✔ [4835/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.Descent (12s)
+✖ [4836/4872] Building Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.AmbientModel (7.5s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-53ff231a38d64aabbc2dde458be79590/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/AmbientModel.lean -o /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/AmbientModel.olean -i /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/AmbientModel.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/AmbientModel.c --setup /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/AmbientModel.setup.json --json
+error: Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/AmbientModel.lean:50:54: unsolved goals
+A A' B B' : CommRingCat
+φ : A ⟶ A'
+σ : A ⟶ B
+τ : A' ⟶ B'
+ψ : B ⟶ B'
+inst✝³ : IsOpenImmersion (Spec.map φ)
+inst✝² : IsOpenImmersion (Spec.map ψ)
+inst✝¹ : IsClosedImmersion (Spec.map σ)
+inst✝ : IsClosedImmersion (Spec.map τ)
+h : IsPullback (Spec.map ψ) (Spec.map τ) (Spec.map σ) (Spec.map φ)
+L : (Spec A).Modules
+J : InjectiveResolution L
+n : ℤ
+⊢ homologyCounitMap (restrictFunctor (Spec.map ψ)) (ComplexShape.up ℤ) (canonicalAmbientSourceSheafComplex σ J)
+      (closedImmersionModelOpenIso (Spec.map σ) J (Spec.map ψ) (Spec.map φ) (Spec.map τ) h).hom n =
+    (((((closedImmersionRightAdjoint (Spec.map σ)).mapHomologicalComplex (ComplexShape.up ℤ)).obj J.cochainComplex).sc
+              n).mapHomologyIso
+          (restrictFunctor (Spec.map ψ))).inv ≫
+      homologyMap (closedImmersionModelOpenIso (Spec.map σ) J (Spec.map ψ) (Spec.map φ) (Spec.map τ) h).hom n
+✔ [4837/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.Base (139s)
+✔ [4838/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.Local (127s)
+✔ [4839/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Class.Degree (127s)
+✔ [4840/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Insertion.Degree (49s)
+✔ [4841/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Insertion.OpenNormal (27s)
+✔ [4842/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.GeneratorOverlap.NormalDegree (50s)
+✖ [4843/4872] Building Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenTopClass.Source (506s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-53ff231a38d64aabbc2dde458be79590/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenTopClass/Source.lean -o /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenTopClass/Source.olean -i /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenTopClass/Source.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenTopClass/Source.c --setup /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenTopClass/Source.setup.json --json
+error: Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenTopClass/Source.lean:52:24: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (tilde.functor S).map (homologyMap q n) ≫
+    ((((moduleSpecΓFunctor.mapHomologicalComplex (ComplexShape.up ℤ)).obj K).sc n).mapHomologyIso (tilde.functor S)).inv
+in the target expression
+  (tilde.functor S).map (homologyMap q n) ≫
+      homologyCounitMap (tilde.functor S) (ComplexShape.up ℤ)
+        ((moduleSpecΓFunctor.mapHomologicalComplex (ComplexShape.up ℤ)).obj K)
+        (Complex.tildeGlobalSectionsCounit S (ComplexShape.up ℤ) K) n =
+    (((sc C n).mapHomologyIso (tilde.functor S)).inv ≫
+        homologyMap (((tilde.functor S).mapHomologicalComplex (ComplexShape.up ℤ)).map q) n) ≫
+      homologyMap (Complex.tildeGlobalSectionsCounit S (ComplexShape.up ℤ) K) n
+
+S : CommRingCat
+C : CochainComplex (ModuleCat ↑S) ℤ
+K : CochainComplex (Spec S).Modules ℤ
+q : C ⟶ (moduleSpecΓFunctor.mapHomologicalComplex (ComplexShape.up ℤ)).obj K
+n : ℤ
+hn :
+  (tilde.functor S).map (homologyMap q n) ≫
+      ((((moduleSpecΓFunctor.mapHomologicalComplex (ComplexShape.up ℤ)).obj K).sc n).mapHomologyIso
+          (tilde.functor S)).inv =
+    ((sc C n).mapHomologyIso (tilde.functor S)).inv ≫
+      homologyMap (((tilde.functor S).mapHomologicalComplex (ComplexShape.up ℤ)).map q) n
+⊢ (tilde.functor S).map (homologyMap q n) ≫
+      homologyCounitMap (tilde.functor S) (ComplexShape.up ℤ)
+        ((moduleSpecΓFunctor.mapHomologicalComplex (ComplexShape.up ℤ)).obj K)
+        (Complex.tildeGlobalSectionsCounit S (ComplexShape.up ℤ) K) n =
+    (((sc C n).mapHomologyIso (tilde.functor S)).inv ≫
+        homologyMap (((tilde.functor S).mapHomologicalComplex (ComplexShape.up ℤ)).map q) n) ≫
+      homologyMap (Complex.tildeGlobalSectionsCounit S (ComplexShape.up ℤ) K) n
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    homologyMap (((tilde.functor S).mapHomologicalComplex (ComplexShape.up ℤ)).map q) n
+  has type
+    @Quiver.Hom (Spec S).Modules instCategory.toQuiver
+      ((((tilde.functor S).mapHomologicalComplex (ComplexShape.up ℤ)).obj C).homology n)
+      ((((tilde.functor S).mapHomologicalComplex (ComplexShape.up ℤ)).obj
+            ((moduleSpecΓFunctor.mapHomologicalComplex (ComplexShape.up ℤ)).obj K)).homology
+        n)
+  but is expected to have type
+    @Quiver.Hom (Spec S).Modules instCategory.toQuiver ((sc C n).map (tilde.functor S)).homology
+      ((((tilde.functor S).mapHomologicalComplex (ComplexShape.up ℤ)).obj
+            ((moduleSpecΓFunctor.mapHomologicalComplex (ComplexShape.up ℤ)).obj K)).homology
+        n)
+  in the application
+    ((sc C n).mapHomologyIso (tilde.functor S)).inv ≫
+      homologyMap (((tilde.functor S).mapHomologicalComplex (ComplexShape.up ℤ)).map q) n
+  
+  Note: The following definitions were not unfolded because their definition is not exposed:
+    OreLocalization.instAdd ↦ 24
+✔ [4862/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.Core (910s)
+✔ [4863/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Comparison (6.3s)
+✔ [4864/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.ClosedEmbedding (9.2s)
+✔ [4865/4872] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.ClosedEmbedding.Structural (8.3s)
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Coefficients
+- Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.AmbientModel
+- Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenTopClass.Source
+error: build failed

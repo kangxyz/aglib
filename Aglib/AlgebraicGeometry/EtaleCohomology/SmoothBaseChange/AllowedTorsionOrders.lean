@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.Algebra.Category.Grp.AllowedOrders
 public import Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.AllowedTorsion
 public import Mathlib.Algebra.Divisibility.Units
 
@@ -29,12 +30,8 @@ theorem IsBaseInvertibleTorsion.geometricStalk_addOrderOf {S X : Scheme.{u}}
     {Ω : Type u} [Field Ω] [IsSepClosed Ω] (η : Spec (.of Ω) ⟶ X)
     (z : ((pointSmallEtale η).sheafFiber (A := AddCommGrpCat.{u + 1})).obj F) :
     IsOfFinAddOrder z ∧ IsUnit (addOrderOf z : Γ(S, ⊤)) := by
-  obtain ⟨n, hn, hm, hs⟩ := hF.geometricStalk η z
-  refine ⟨isOfFinAddOrder_iff_nsmul_eq_zero.mpr ⟨n, hn, hs⟩,
-    isUnit_of_dvd_unit ?_ hm⟩
-  obtain ⟨m, he⟩ := addOrderOf_dvd_iff_nsmul_eq_zero.mpr hs
-  refine ⟨(m : Γ(S, ⊤)), ?_⟩
-  simpa only [Nat.cast_mul] using congrArg (fun k : ℕ => (k : Γ(S, ⊤))) he
+  exact (AddGroup.exists_pos_unit_annihilator_iff Γ(S, ⊤) z).mp
+    (hF.geometricStalk η z)
 
 /-- The allowed-torsion condition is the literal finite-element-order condition
 on original geometric stalks, with invertibility on the whole specified base. -/
@@ -50,7 +47,6 @@ theorem isBaseInvertibleTorsion_iff_geometricStalk_orders {S X : Scheme.{u}}
   · intro h
     apply isBaseInvertibleTorsion_of_geometricStalks F
     intro Ω _ _ η z
-    obtain ⟨hf, hu⟩ := h Ω η z
-    exact ⟨addOrderOf z, hf.addOrderOf_pos, hu, addOrderOf_nsmul_eq_zero z⟩
+    exact (AddGroup.exists_pos_unit_annihilator_iff Γ(S, ⊤) z).mpr (h Ω η z)
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

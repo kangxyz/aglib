@@ -1,0 +1,22 @@
+{
+  "question": "Source repair of actual final1714 176 native stock findings on SOURCE-VECTOR-1714-v4",
+  "status": "All176 implemented coherently; broker CPP/native continuation pending",
+  "input_run": "remote-289ef7386f3b4fbda620eb0f80d293dd",
+  "input_snapshot_sha256": "50523553834f8ecf9a15c8aafa2c64d2a1597c4c1b6c34f91d7d8edf42b4d831",
+  "source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+  "head": "c4880830a7ebfea496a348d361cd50b109ea536d",
+  "changed_source_count": 64,
+  "fixed_source_diagnostics": {
+    "defsWithUnderscore": 18,
+    "docBlame": 157,
+    "simpNF": 1
+  },
+  "ready": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/final-metadata-repair/READY-v1.json",
+  "rename_map": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/final-metadata-repair/rename-map.json",
+  "source_correspondence": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/final-metadata-repair/SOURCE-CORRESPONDENCE-v1.json",
+  "scope": "Only exact64 diagnostic source paths in PUBLIC. No MAIN, facades, README, Git/index/HEAD, mathematical statement, proof, RHS, selected model, option, budget or pin changes.",
+  "withdrawal": "Redundant simp registration on cartesianBaseChange_j_snd_assoc; original equation and generated reassoc API retained.",
+  "consumer": "/root/recover_compile_frontier for incremental affected CPP and failed native stock check; /root for publication integration.",
+  "remaining_gap": "Compiler/native predicate on current repaired hashes. Source-side repair ownership retained here for actual diagnostics; no mathematical gap identified or new mathematical review claimed.",
+  "correspondence_precision": "SOURCE-CORRESPONDENCE-v1.json is authoritative: inverse metadata edits preserve nonwhitespace bytes in all64, and literal pre-namespace headers. READY-v1 source-row shorthand of exact byte restoration must be read with its top-level whitespace_adjustment for the two renamed-instance declaration files; whitespace wrapping occurred after the initial exact-byte check."
+}

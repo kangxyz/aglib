@@ -460,7 +460,7 @@ lemma isIso_overPullback_map_of_isPullback
 
 /-- The literal further base change of a canonical diagram object is the
 literal base change along the composite base map. -/
-private def baseChangeDiagram_rebaseIso {S S₁ S₂ X : Scheme.{u}}
+def baseChangeDiagramRebaseIso {S S₁ S₂ X : Scheme.{u}}
     (f : X ⟶ S) (g : S₁ ⟶ S) (h : S₂ ⟶ S₁) :
     (Over.pullback h).obj (Over.mk (pullback.fst g f)) ≅
       (Over.pullback (h ≫ g)).obj (Over.mk f) :=
@@ -468,12 +468,35 @@ private def baseChangeDiagram_rebaseIso {S S₁ S₂ X : Scheme.{u}}
     (pullbackSymmetry (pullback.fst g f) h ≪≫ pullbackRightPullbackFstIso g f h ≪≫
       pullbackSymmetry (h ≫ g) f) (by simp)
 
-/-- An isomorphism between the literal limit base changes of two supplied
-finitely presented models yields an actual over-isomorphism between their
-literal base changes at one later stage. This is an existence corollary;
-it does not assert that a particular choice of the final isomorphism has
-the prescribed limit comparison. -/
-lemma exists_iso_between_baseChanges_of_isLimit [IsCofiltered I]
+/-- The original right projection of a rebased map, including transport along
+an equality of the composite base map. The equality is eliminated before the
+pullback laws are specialized to a diagram. -/
+lemma baseChangeDiagram_rebaseIso_map_snd
+    {S S₁ S₂ X Y : Scheme.{u}} (f : X ⟶ S) (g : Y ⟶ S)
+    (k : S₁ ⟶ S) (h : S₂ ⟶ S₁) (β : S₂ ⟶ S) (hβ : h ≫ k = β)
+    (a : Over.mk (pullback.fst k f) ⟶ Over.mk (pullback.fst k g)) :
+    let ef := eqToIso (congrArg (fun b : S₂ ⟶ S ↦ (Over.pullback b).obj (Over.mk f)) hβ)
+    let eg := eqToIso (congrArg (fun b : S₂ ⟶ S ↦ (Over.pullback b).obj (Over.mk g)) hβ)
+    (pullbackSymmetry β f).hom ≫
+        (ef.inv ≫ (baseChangeDiagramRebaseIso f k h).inv ≫
+          (Over.pullback h).map a ≫ (baseChangeDiagramRebaseIso g k h).hom ≫ eg.hom).left ≫
+        (pullbackSymmetry β g).inv ≫ pullback.snd β g =
+      pullback.lift (pullback.fst β f ≫ h) (pullback.snd β f)
+        (by rw [Category.assoc, hβ]; exact pullback.condition) ≫
+        a.left ≫ pullback.snd k g := by
+  subst β
+  have hx : (pullbackRightPullbackFstIso k f h).inv ≫
+      pullback.snd h (pullback.fst k f) =
+      pullback.lift (pullback.fst (h ≫ k) f ≫ h) (pullback.snd (h ≫ k) f)
+        (by rw [Category.assoc]; exact pullback.condition) := by
+    apply pullback.hom_ext <;> simp
+  simp [baseChangeDiagramRebaseIso, Over.pullback_map_left, Category.assoc,
+    reassoc_of% hx]
+
+/-- A specified isomorphism between limit base changes descends to an actual
+stage isomorphism with its original forward and inverse comparison equations.
+The equations use the literal cone projections and pullback symmetries. -/
+lemma exists_iso_between_baseChanges_with_comparison_of_isLimit [IsCofiltered I]
     (D : I ⥤ Scheme.{u})
     [∀ {j k} (q : j ⟶ k), IsAffineHom (D.map q)]
     [∀ j, CompactSpace (D.obj j)]
@@ -484,8 +507,16 @@ lemma exists_iso_between_baseChanges_of_isLimit [IsCofiltered I]
     [LocallyOfFinitePresentation g] [QuasiCompact g] [QuasiSeparated g]
     (e : (Over.pullback (c.π.app i)).obj (Over.mk f) ≅
       (Over.pullback (c.π.app i)).obj (Over.mk g)) :
-    ∃ j : Over i, Nonempty ((Over.pullback (D.map j.hom)).obj (Over.mk f) ≅
-      (Over.pullback (D.map j.hom)).obj (Over.mk g)) := by
+    ∃ (j : Over i) (e' : (Over.pullback (D.map j.hom)).obj (Over.mk f) ≅
+        (Over.pullback (D.map j.hom)).obj (Over.mk g)),
+      let E := pullbackSymmetry (c.π.app i) f ≪≫ (Over.forget c.pt).mapIso e ≪≫
+        (pullbackSymmetry (c.π.app i) g).symm
+      let E' := pullbackSymmetry (D.map j.hom) f ≪≫
+        (Over.forget (D.obj j.left)).mapIso e' ≪≫ (pullbackSymmetry (D.map j.hom) g).symm
+      (baseChangeCone D c i f).π.app j ≫ E'.hom =
+        E.hom ≫ (baseChangeCone D c i g).π.app j ∧
+      (baseChangeCone D c i g).π.app j ≫ E'.inv =
+        E.inv ≫ (baseChangeCone D c i f).π.app j := by
   let E : pullback (c.π.app i) f ≅ pullback (c.π.app i) g :=
     pullbackSymmetry (c.π.app i) f ≪≫ (Over.forget c.pt).mapIso e ≪≫
       (pullbackSymmetry (c.π.app i) g).symm
@@ -510,13 +541,63 @@ lemma exists_iso_between_baseChanges_of_isLimit [IsCofiltered I]
   have hβ : D.map k.hom ≫ D.map j.hom = D.map l.hom := (D.map_comp _ _).symm
   let result : (Over.pullback (D.map k.hom ≫ D.map j.hom)).obj (Over.mk f) ≅
       (Over.pullback (D.map k.hom ≫ D.map j.hom)).obj (Over.mk g) :=
-    (baseChangeDiagram_rebaseIso f (D.map j.hom) (D.map k.hom)).symm ≪≫
+    (baseChangeDiagramRebaseIso f (D.map j.hom) (D.map k.hom)).symm ≪≫
       asIso ((Over.pullback (D.map k.hom)).map a') ≪≫
-      baseChangeDiagram_rebaseIso g (D.map j.hom) (D.map k.hom)
+      baseChangeDiagramRebaseIso g (D.map j.hom) (D.map k.hom)
   let ef := eqToIso (congrArg (fun β : D.obj k.left ⟶ D.obj i ↦
     (Over.pullback β).obj (Over.mk f)) hβ)
   let eg := eqToIso (congrArg (fun β : D.obj k.left ⟶ D.obj i ↦
     (Over.pullback β).obj (Over.mk g)) hβ)
-  exact ⟨l, ⟨ef.symm ≪≫ result ≪≫ eg⟩⟩
+  let e' := ef.symm ≪≫ result ≪≫ eg
+  let E' := pullbackSymmetry (D.map l.hom) f ≪≫
+    (Over.forget (D.obj l.left)).mapIso e' ≪≫ (pullbackSymmetry (D.map l.hom) g).symm
+  let q : l ⟶ j := Over.homMk k.hom rfl
+  let b : pullback (D.map l.hom) f ⟶ pullback (D.map l.hom) g :=
+    baseChangeDiagramMapHom D i f g q a ha
+  have hmap : E'.hom = b := by
+    apply pullback.hom_ext (f := D.map l.hom) (g := g)
+    · have he' : e'.hom.left ≫ pullback.snd g (D.map l.hom) =
+          pullback.snd f (D.map l.hom) := Over.w e'.hom
+      calc
+        E'.hom ≫ pullback.fst (D.map l.hom) g = pullback.fst (D.map l.hom) f := by
+          simp [E', Category.assoc, he']
+        _ = b ≫ pullback.fst (D.map l.hom) g :=
+          (baseChangeDiagramMapHom_fst D i f g q a ha).symm
+    · have hp := baseChangeDiagram_rebaseIso_map_snd f g (D.map j.hom)
+        (D.map k.hom) (D.map l.hom) hβ a'
+      change E'.hom ≫ pullback.snd (D.map l.hom) g = _
+      rw [show E'.hom ≫ pullback.snd (D.map l.hom) g = _ from hp]
+      simp [b, baseChangeDiagramMapHom, baseChangeDiagram, q, a',
+        Functor.comp_map, Over.forget_map, Over.pullback_map_left]
+  have hforward : (baseChangeCone D c i f).π.app l ≫ E'.hom =
+      E.hom ≫ (baseChangeCone D c i g).π.app l := by
+    rw [hmap]
+    exact baseChangeDiagramMapHom_comp_π D c i f g q a ha E.hom hE hcomp
+  refine ⟨l, e', hforward, ?_⟩
+  change (baseChangeCone D c i g).π.app l ≫ E'.inv =
+    E.inv ≫ (baseChangeCone D c i f).π.app l
+  apply (cancel_epi E.hom).mp
+  rw [← Category.assoc, ← hforward]
+  simp only [Category.assoc, Iso.hom_inv_id, Category.comp_id, Iso.hom_inv_id_assoc]
+
+/-- An isomorphism between the literal limit base changes of two supplied
+finitely presented models descends to a stage. This forgetful adapter uses
+the complete comparison-preserving construction. -/
+lemma exists_iso_between_baseChanges_of_isLimit [IsCofiltered I]
+    (D : I ⥤ Scheme.{u})
+    [∀ {j k} (q : j ⟶ k), IsAffineHom (D.map q)]
+    [∀ j, CompactSpace (D.obj j)]
+    [∀ j, QuasiSeparatedSpace (D.obj j)]
+    (c : Cone D) (hc : IsLimit c) (i : I)
+    {X Y : Scheme.{u}} (f : X ⟶ D.obj i) (g : Y ⟶ D.obj i)
+    [LocallyOfFinitePresentation f] [QuasiCompact f] [QuasiSeparated f]
+    [LocallyOfFinitePresentation g] [QuasiCompact g] [QuasiSeparated g]
+    (e : (Over.pullback (c.π.app i)).obj (Over.mk f) ≅
+      (Over.pullback (c.π.app i)).obj (Over.mk g)) :
+    ∃ j : Over i, Nonempty ((Over.pullback (D.map j.hom)).obj (Over.mk f) ≅
+      (Over.pullback (D.map j.hom)).obj (Over.mk g)) := by
+  obtain ⟨j, e', _⟩ := exists_iso_between_baseChanges_with_comparison_of_isLimit
+    D c hc i f g e
+  exact ⟨j, ⟨e'⟩⟩
 
 end AlgebraicGeometry.Scheme

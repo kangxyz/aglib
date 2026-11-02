@@ -8,7 +8,9 @@ module
 
 /- Current interface basis: 46f53465aaf3b0167049e9c8e9e2294111bb4281.
 Original construction and mathematical provenance are retained below. -/
+public import Aglib.CategoryTheory.Sites.Torsors.AdjointPullback
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorAdjunction
+public import Aglib.AlgebraicGeometry.Sites.EtaleTopos
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedTorsor
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ContinuousTorsors
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.BaseChange.GroupScheme
@@ -52,14 +54,8 @@ abbrev pullbackSectionEquiv (T : Over S) (Y : Over X) :
 
 /-- The coefficient section comparison preserves multiplication on all tests. -/
 def pullbackSectionMulEquiv (T : Over S) (A : Grp (Over X)) :
-    ((Over.map f).obj T ⟶ A.X) ≃* (T ⟶ (baseChangedGroup f A).X) where
-  __ := pullbackSectionEquiv f T A.X
-  map_mul' a b := by
-    let : GrpObj ((Over.pullback f).obj A.X) := (baseChangedGroup f A).grp
-    change (Over.mapPullbackAdj f).unit.app T ≫ (Over.pullback f).map (a * b) =
-      ((Over.mapPullbackAdj f).unit.app T ≫ (Over.pullback f).map a) *
-        ((Over.mapPullbackAdj f).unit.app T ≫ (Over.pullback f).map b)
-    rw [(Over.pullback f).map_mul, comp_mul]
+    ((Over.map f).obj T ⟶ A.X) ≃* (T ⟶ (baseChangedGroup f A).X) :=
+  CategoryTheory.TorsorAction.adjointPointMulEquiv (Over.mapPullbackAdj f) T A
 
 /-- Naturality of the inverse section comparison in arbitrary test schemes. -/
 theorem pullbackSectionEquiv_symm_naturality {T U : Over S} (g : T ⟶ U) (Y : Over X)
@@ -80,49 +76,14 @@ variable (A : Grp (Over X)) (Y : Scheme.FiniteEtale X) (τ : TorsorAction A (toU
 /-- Pullback of a genuine scheme torsor, with the action and unique transport
 constructed on every scheme over S. -/
 def pullbackSchemeAction :
-    TorsorAction (baseChangedGroup f A) (toUnit ((baseChange f).obj Y).obj) where
-  act {T} a x := pullbackSectionEquiv f T Y.obj
-    (τ.act ((pullbackSectionMulEquiv f T A).symm a) ((pullbackSectionEquiv f T Y.obj).symm x))
-  naturality {T U} g a x := by
-    apply (pullbackSectionEquiv f T Y.obj).symm.injective
-    rw [pullbackSectionEquiv_symm_naturality, Equiv.symm_apply_apply, Equiv.symm_apply_apply,
-      τ.naturality]
-    congr 1
-  one_act {T} x := by
-    rw [map_one, τ.one_act, Equiv.apply_symm_apply]
-  mul_act {T} a b x := by
-    rw [map_mul, τ.mul_act]
-    congr 1
-    rw [Equiv.symm_apply_apply]
-  over _ _ := toUnit_unique _ _
-  transport {T} x y _ := by
-    obtain ⟨a, ha, hu⟩ := τ.transport ((pullbackSectionEquiv f T Y.obj).symm x)
-      ((pullbackSectionEquiv f T Y.obj).symm y) (toUnit_unique _ _)
-    refine ⟨pullbackSectionMulEquiv f T A a, ?_, ?_⟩
-    · exact (congrArg (fun b => pullbackSectionEquiv f T Y.obj
-        (τ.act b ((pullbackSectionEquiv f T Y.obj).symm x)))
-          ((pullbackSectionMulEquiv f T A).symm_apply_apply a)).trans
-        ((congrArg (pullbackSectionEquiv f T Y.obj) ha).trans
-          ((pullbackSectionEquiv f T Y.obj).apply_symm_apply y))
-    · intro b hb
-      apply (pullbackSectionMulEquiv f T A).symm.injective
-      rw [MulEquiv.symm_apply_apply]
-      apply hu
-      exact (pullbackSectionEquiv f T Y.obj).injective (hb.trans
-        ((pullbackSectionEquiv f T Y.obj).apply_symm_apply y).symm)
+    TorsorAction (baseChangedGroup f A) (toUnit ((baseChange f).obj Y).obj) :=
+  CategoryTheory.TorsorAction.pullback (Over.mapPullbackAdj f) A Y.obj τ
 
 /-- Pullback of actual sections intertwines the actual scheme actions. -/
 theorem pullbackSchemeAction_map {U : Over X} (a : U ⟶ A.X) (x : U ⟶ Y.obj) :
     (pullbackSchemeAction f A Y τ).act ((Over.pullback f).map a) ((Over.pullback f).map x) =
-      (Over.pullback f).map (τ.act a x) := by
-  apply (pullbackSectionEquiv f ((Over.pullback f).obj U) Y.obj).symm.injective
-  change (pullbackSectionEquiv f _ Y.obj).symm
-      ((pullbackSectionEquiv f _ Y.obj) (τ.act _ _)) = _
-  rw [Equiv.symm_apply_apply]
-  change τ.act ((pullbackSectionEquiv f ((Over.pullback f).obj U) A.X).symm
-    ((Over.pullback f).map a)) ((pullbackSectionEquiv f ((Over.pullback f).obj U) Y.obj).symm
-      ((Over.pullback f).map x)) = _
-  simp only [pullbackSectionEquiv_symm_map, τ.naturality]
+      (Over.pullback f).map (τ.act a x) :=
+  CategoryTheory.TorsorAction.pullback_map (Over.mapPullbackAdj f) A Y.obj τ a x
 
 /-- Actual fibre pullback intertwines translation with the canonical
 multiplicative coefficient-point pullback, fixing the positive convention. -/
@@ -151,75 +112,21 @@ instance baseChangedGroup_finite [IsFinite A.X.hom] : IsFinite (baseChangedGroup
 section RepresentedSheaves
 variable [IsCommMonObj A.X]
 
-/-- The actual coefficient section pullback, as a morphism into direct image. -/
-def representedCoefficientUnit :
-    representedSheaf A ⟶ (directImage f).obj (representedSheaf (baseChangedGroup f A)) :=
-  ⟨representedBaseChangeUnit f A⟩
-
-/-- The canonical represented-sheaf isomorphism has precisely the actual
-scheme-section pullback as its adjunction unit. -/
-theorem representedSheafBaseChangeIso_unit [Etale A.X.hom] :
-    (inverseImageAdjunction f).unit.app (representedSheaf A) ≫
-        (directImage f).map (representedSheafBaseChangeIso f A).hom =
-      representedCoefficientUnit f A := by
-  let e := Functor.sheafPullbackConstruction.sheafPullbackIso (siteBaseChange f)
-    AddCommGrpCat.{u + 1} (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S)
-  let k := representedPresheafBaseChangeIso f A
-  let R := representedSheaf (baseChangedGroup f A)
-  let F := (siteBaseChange f).op
-  let P := representedPresheaf A
-  have hu := Adjunction.unit_leftAdjointUniq_hom_app (inverseImageAdjunction f)
-    (Functor.sheafPullbackConstruction.sheafAdjunctionContinuous (siteBaseChange f)
-      AddCommGrpCat.{u + 1} (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S))
-    (representedSheaf A)
-  apply Sheaf.hom_ext
-  apply NatTrans.ext
-  funext U
-  let V := F.obj U
-  have huU := congrArg (fun r => r.hom.app U) hu
-  change ((inverseImageAdjunction f).unit.app (representedSheaf A)).hom.app U ≫
-      (e.hom.app (representedSheaf A)).hom.app V =
-    (F.leftKanExtensionUnit P).app U ≫
-      (toSheafify (Scheme.smallEtaleTopology S) (F.lan.obj P)).app V at huU
-  have hk : (F.leftKanExtensionUnit P).app U ≫ k.hom.app V =
-      (representedBaseChangeUnit f A).app U := by
-    exact congr_app (Functor.descOfIsLeftKanExtension_fac _ _ _ _) U
-  have hn := (congr_app (toSheafify_naturality (Scheme.smallEtaleTopology S) k.hom) V).symm
-  change (toSheafify (Scheme.smallEtaleTopology S) (F.lan.obj P)).app V ≫
-      ((presheafToSheaf (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1}).map k.hom).hom.app V =
-    k.hom.app V ≫ (toSheafify (Scheme.smallEtaleTopology S) R.obj).app V at hn
-  have hr := congrArg (fun r => r.hom.app V) (sheafificationIso R).hom_inv_id
-  change (toSheafify (Scheme.smallEtaleTopology S) R.obj).app V ≫
-    (sheafificationIso R).inv.hom.app V = 𝟙 _ at hr
-  change ((inverseImageAdjunction f).unit.app (representedSheaf A)).hom.app U ≫
-      (e.hom.app (representedSheaf A)).hom.app V ≫
-      ((presheafToSheaf (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1}).map k.hom).hom.app V ≫
-      (sheafificationIso R).inv.hom.app V = (representedBaseChangeUnit f A).app U
-  simp only [← Category.assoc]
-  erw [huU]
-  rw [Category.assoc ((F.leftKanExtensionUnit P).app U)
-    ((toSheafify (Scheme.smallEtaleTopology S) (F.lan.obj P)).app V)]
-  erw [hn]
-  rw [← Category.assoc ((F.leftKanExtensionUnit P).app U) (k.hom.app V), hk,
-    Category.assoc, hr]
-  exact Category.comp_id ((representedBaseChangeUnit f A).app U)
-
-/-- Thus the coefficient adjoint is the fixed actual represented-sheaf
-base-change isomorphism, not an arbitrary identification. -/
-theorem representedCoefficientUnit_adjoint [Etale A.X.hom] :
-    ((inverseImageAdjunction f).homEquiv _ _).symm (representedCoefficientUnit f A) =
-      (representedSheafBaseChangeIso f A).hom := by
-  apply ((inverseImageAdjunction f).homEquiv _ _).injective
-  rw [Equiv.apply_symm_apply, Adjunction.homEquiv_unit, representedSheafBaseChangeIso_unit]
-
 /-- Scheme-theoretic pullback of torsor sections defines an actual set-sheaf map. -/
-def representedCarrierUnit : finiteRepresentedSetSheaf Y ⟶
-    (setDirectImage f).obj (finiteRepresentedSetSheaf ((baseChange f).obj Y)) where
+def representedCarrierUnit : (finiteRepresentedSetSheaf Y : Scheme.EtaleTopos X) ⟶
+    (Topos.GeometricMorphism.directImage (Scheme.etaleToposMorphism f)).obj
+      (finiteRepresentedSetSheaf ((baseChange f).obj Y) : Scheme.EtaleTopos S) where
   hom := {
     app U := TypeCat.ofHom (fun t => ULift.up ((Over.pullback f).map t.down))
     naturality {U V} g := by
       ext t
       exact congrArg ULift.up ((Over.pullback f).map_comp _ _) }
+
+/-- The topos carrier map retains the original scheme-theoretic section pullback. -/
+theorem representedCarrierUnit_app (U : X.Etaleᵒᵖ)
+    (t : (finiteRepresentedSetSheaf Y).obj.obj U) :
+    (representedCarrierUnit f Y).hom.app U t =
+      ULift.up ((Over.pullback f).map t.down) := rfl
 
 /-- The canonical represented section maps form a genuine adjoint torsor map. -/
 def representedTorsorAdjointHom [Surjective Y.obj.hom] :

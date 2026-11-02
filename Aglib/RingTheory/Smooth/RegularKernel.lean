@@ -743,4 +743,40 @@ theorem exists_away_regular_kernel_of_surjective
 
 
 
+/-- A smooth split section over a local base admits original etale coordinates
+vanishing on the section after one principal localization along that section. -/
+theorem exists_away_etale_split_coordinates
+    {R : Type u} {B : Type v} [CommRing R] [IsLocalRing R]
+    [CommRing B] [Algebra R B] [Algebra.Smooth R B] (ε : B →ₐ[R] R) :
+    ∃ r : B, IsUnit (ε r) ∧ ∃ (ι : Type v) (_ : Finite ι) (x : ι → RingHom.ker ε),
+      (MvPolynomial.aeval (fun i => algebraMap B (Localization.Away r) (x i).val) :
+        MvPolynomial ι R →ₐ[R] Localization.Away r).toRingHom.Etale := by
+  let p : PrimeSpectrum R := ⟨IsLocalRing.maximalIdeal R, inferInstance⟩
+  let q := PrimeSpectrum.comap ε.toRingHom p
+  obtain ⟨ι, hι, a, b, hb⟩ := regularKernelTangentBasis (R := R) q
+  let : Finite ι := hι
+  let x : ι → RingHom.ker ε := fun i =>
+    ⟨a i - algebraMap R B (ε (a i)), by
+      change ε (a i - algebraMap R B (ε (a i))) = 0
+      rw [map_sub, ε.commutes, Algebra.algebraMap_self, RingHom.id_apply, sub_self]⟩
+  have hx (i : ι) : b i = D R (Localization.AtPrime q.asIdeal)
+      (algebraMap B (Localization.AtPrime q.asIdeal) (x i).val) := by
+    rw [hb i]
+    simp only [x, map_sub, ← IsScalarTower.algebraMap_apply R B,
+      Derivation.map_algebraMap, sub_zero]
+  have hl := regularKernelCanonicalDifferentialMapBijective
+    q.asIdeal.primeCompl (fun i => (x i).val) b hx
+  let l := Finsupp.linearCombination B (fun i => D R B (x i).val)
+  obtain ⟨r, hr, hspread⟩ := regularKernelSpreadCanonicalMap q.asIdeal.primeCompl l hl
+  have hrε : IsUnit (ε r) := by
+    apply IsLocalRing.notMem_maximalIdeal.mp
+    exact hr
+  let b' := regularKernelAwayDifferentialBasis r (fun i => (x i).val) (hspread r dvd_rfl)
+  have hb' := regularKernelAwayDifferentialBasis_apply
+    r (fun i => (x i).val) (hspread r dvd_rfl)
+  let : Algebra.Smooth B (Localization.Away r) := Algebra.Smooth.of_isLocalization_Away r
+  let : Algebra.Smooth R (Localization.Away r) :=
+    Algebra.Smooth.comp R B (Localization.Away r)
+  exact ⟨r, hrε, ι, hι, x, MvPolynomial.etale_aeval_of_basis _ b' hb'⟩
+
 end Algebra.Smooth

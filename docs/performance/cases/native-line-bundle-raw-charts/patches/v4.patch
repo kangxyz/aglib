@@ -1,0 +1,67 @@
+--- a/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean
++++ b/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean
+@@ -77,6 +77,14 @@
+ 
+ @[simp] theorem site_id_left (U : X.Etale) : (𝟙 U : U ⟶ U).left = 𝟙 U.left := rfl
+ 
++private theorem presheafHom_map_eq_pullHom {S : Scheme.{u}}
++    {M N : lineBundles.obj (.mk (op S))} {U V : S.Etale} (f : V ⟶ U)
++    (g : (lineBundles.map U.hom.op.toLoc).toFunctor.obj M ⟶
++      (lineBundles.map U.hom.op.toLoc).toFunctor.obj N) :
++    (lineBundles.presheafHom M N).map ((Scheme.Etale.forget S).map f).op g =
++      pullHom g f.left V.hom V.hom
++        (MorphismProperty.Over.w f) (MorphismProperty.Over.w f) := rfl
++
+ namespace Construction
+ 
+ universe uC vC uF uG uH
+@@ -204,15 +212,26 @@
+     (hu : ∀ U (s : P.carrier.obj.obj U), u U s s = 1) :
+     NaturalFamily P.carrier.obj (rawPresheaf X M) (sectionFamily P M c) := by
+   intro U V f s
+-  change pullHom (F := lineBundles) (c ⟨U.unop, s⟩)
+-    f.unop.left V.unop.hom V.unop.hom
+-    (MorphismProperty.Over.w f.unop) (MorphismProperty.Over.w f.unop) =
+-      c ⟨V.unop, P.carrier.obj.map f s⟩
++  have hview :
++      (rawPresheaf X M).map f (c ⟨U.unop, s⟩) =
++        pullHom (F := lineBundles) (M₁ := M) (M₂ := unitObject X)
++          (f₁ := U.unop.hom) (f₂ := U.unop.hom) (c ⟨U.unop, s⟩)
++          f.unop.left V.unop.hom V.unop.hom
++          (MorphismProperty.Over.w f.unop) (MorphismProperty.Over.w f.unop) :=
++    presheafHom_map_eq_pullHom (S := X) (M := M) (N := unitObject X)
++      f.unop (c ⟨U.unop, s⟩)
+   have hh := hr ⟨U.unop, s⟩ ⟨V.unop, P.carrier.obj.map f s⟩ f.unop (𝟙 V.unop)
+-  simpa only [ChartRelationOn, site_id_left, Quiver.Hom.op_unop, op_id, op_unop,
+-    CategoryTheory.Functor.map_id, types_id_apply, hu, Units.val_one,
+-    AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition_self_one,
+-    Category.comp_id, pullHom_id] using hh
++  have hrestrict :
++      pullHom (F := lineBundles) (M₁ := M) (M₂ := unitObject X)
++          (f₁ := U.unop.hom) (f₂ := U.unop.hom) (c ⟨U.unop, s⟩)
++          f.unop.left V.unop.hom V.unop.hom
++          (MorphismProperty.Over.w f.unop) (MorphismProperty.Over.w f.unop) =
++        c ⟨V.unop, P.carrier.obj.map f s⟩ := by
++    simpa only [ChartRelationOn, site_id_left, Quiver.Hom.op_unop, op_id, op_unop,
++      CategoryTheory.Functor.map_id, types_id_apply, hu, Units.val_one,
++      AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition_self_one,
++      Category.comp_id, pullHom_id] using hh
++  exact hview.trans hrestrict
+ 
+ end Construction
+ 
+@@ -494,14 +513,6 @@
+ end Character
+ 
+ 
+-
+-private theorem presheafHom_map_eq_pullHom {S : Scheme.{u}}
+-    {M N : lineBundles.obj (.mk (op S))} {U V : S.Etale} (f : V ⟶ U)
+-    (g : (lineBundles.map U.hom.op.toLoc).toFunctor.obj M ⟶
+-      (lineBundles.map U.hom.op.toLoc).toFunctor.obj N) :
+-    (lineBundles.presheafHom M N).map ((Scheme.Etale.forget S).map f).op g =
+-      pullHom g f.left V.hom V.hom
+-        (MorphismProperty.Over.w f) (MorphismProperty.Over.w f) := rfl
+ 
+ /-- The unit-line comparison between pullback of the unit object and the unit object on the
+ source. -/

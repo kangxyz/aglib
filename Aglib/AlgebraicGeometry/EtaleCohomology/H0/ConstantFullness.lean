@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H0.ConstantSections
 public import Mathlib.Algebra.Category.Grp.Ulift
+public import Aglib.CategoryTheory.Adjunction.Unit
 
 /-! # Actual morphisms between finite constant additive sheaves
 
@@ -32,29 +33,9 @@ variable (X : Scheme.{u}) [Nonempty X] [Subsingleton X]
 theorem constant_map_bijective : Function.Bijective
     (fun f : value A ⟶ value B =>
       (constantSheaf (smallEtaleTopology X) AddCommGrpCat.{u+1}).map f) := by
-  let adj := constantAdjunction X
-  let e : value B ≅ (globalSections X).obj (coefficient B X) :=
-    (AddEquiv.ofBijective (adj.unit.app (value B)).hom
-      (constantUnit_bijective X B)).toAddCommGrpIso
-  have he : e.hom = adj.unit.app (value B) := by
-    ext x
-    rfl
-  have hmap (f : value A ⟶ value B) :
-      adj.homEquiv (value A) (coefficient B X)
-        ((constantSheaf (smallEtaleTopology X) AddCommGrpCat.{u+1}).map f) = f ≫ e.hom := by
-    rw [he]
-    simpa only [Category.comp_id, Adjunction.homEquiv_id] using
-      adj.homEquiv_naturality_left f (𝟙 (coefficient B X))
-  constructor
-  · intro f g hfg
-    apply (cancel_mono e.hom).mp
-    rw [← hmap, ← hmap]
-    exact congrArg (adj.homEquiv (value A) (coefficient B X)) hfg
-  · intro g
-    refine ⟨adj.homEquiv (value A) (coefficient B X) g ≫ e.inv, ?_⟩
-    apply (adj.homEquiv (value A) (coefficient B X)).injective
-    rw [hmap]
-    simp
+  let : IsIso ((constantAdjunction X).unit.app (value B)) :=
+    (ConcreteCategory.isIso_iff_bijective _).mpr (constantUnit_bijective X B)
+  exact (constantAdjunction X).bijective_map_of_isIso_unit_app (value A) (value B)
 
 /-- Every actual sheaf morphism comes from a unique original additive value map. -/
 theorem constant_addHom_bijective : Function.Bijective

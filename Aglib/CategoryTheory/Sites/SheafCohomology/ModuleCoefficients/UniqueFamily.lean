@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.CechFamily
+public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.FamilyProjective
 public import Aglib.CategoryTheory.Sites.Hypercohomology.Basic
 
 /-! # A unique-index family is the original representable
@@ -18,7 +18,7 @@ assumptions.
 
 @[expose] public noncomputable section
 
-open CategoryTheory Opposite
+open CategoryTheory CategoryTheory.Limits Opposite
 
 namespace CategoryTheory.Presheaf.Cech
 
@@ -55,5 +55,18 @@ def freeUniqueFamilyIso :
         Sheaf.Hypercohomology.freeAbelianSheaf.{w} J U :=
   (presheafToSheaf J AddCommGrpCat).mapIso
     (((Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free).mapIso (uniqueFamilyIso ι U))
+
+/-- Each original free tuple term of a constant unique-index family is the
+free sheaf represented by its actual product over the base. -/
+def sheafComplexUniqueFamilyIso {W : C} (V : Over W)
+    [HasFiniteProducts (Over W)] (n : ℕ) :
+    (sheafComplex (familyMap (fun _ : ι => V)) J).X n ≅
+      Sheaf.Hypercohomology.freeAbelianSheaf.{w} J
+        (∏ᶜ fun _ : Fin (n + 1) => V).left :=
+  (presheafToSheaf J AddCommGrpCat.{max h w}).mapIso
+    (((Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free).mapIso
+      (tupleProductIso (fun _ : ι => V) n)) ≪≫
+    freeUniqueFamilyIso (Fin (n + 1) → ι)
+      (∏ᶜ fun _ : Fin (n + 1) => V).left J
 
 end CategoryTheory.Presheaf.Cech

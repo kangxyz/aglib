@@ -7,7 +7,10 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.CoefficientTransport
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.AnnihilatorProducts
+public import Aglib.CategoryTheory.Preadditive.Annihilator.ProductReindex
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.Comparison
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.BiproductComparison
+public import Mathlib.CategoryTheory.Preadditive.Biproducts
 public import Mathlib.CategoryTheory.Preadditive.AdditiveFunctor
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Products
 public import Mathlib.CategoryTheory.Limits.Types.Products
@@ -15,12 +18,12 @@ public import Mathlib.Algebra.Category.Grp.Limits
 
 /-! # Original cohomology tests on finite products of finite constant direct images
 
-Finite-product preservation of the original additive cohomology functors
-gives coordinate equivalences on both sides of original inverse image.
-The original projection naturality equations give coordinatewise lifting
-and equality, including the empty product. The accepted kernel comparisons
-then give the same tests on every actual n-annihilator and its genuine
-module target, including moduli zero and one.
+The existing finite-biproduct Ext comparison applies to the bicone of the
+literal original product cone, retaining its point and projections. This
+gives the original tests independently for injectivity and surjectivity,
+including the empty product. The accepted kernel comparisons then give the
+same tests on every actual n-annihilator and its genuine module target,
+including moduli zero and one.
 -/
 
 @[expose] public noncomputable section
@@ -33,33 +36,9 @@ open CategoryTheory CategoryTheory.Limits
 
 namespace AlgebraicGeometry.Scheme.EtaleCohomology
 
-universe u eX eS c v e
+universe u eX eS
 
 attribute [local instance] hasSheafifyLarge
-
-section FiniteProductCoordinates
-
-variable {C : Type c} [Category.{v} C] [HasFiniteProducts C]
-  (F : C ⥤ AddCommGrpCat.{e}) [PreservesFiniteProducts F]
-  {k : ℕ} (D : Fin k → C)
-
-/-- The canonical finite-product comparison followed by the native
-type-valued product identification gives the actual coordinate equivalence. -/
-def functorFiniteProductEquiv :
-    F.obj (∏ᶜ D) ≃ ∀ i, F.obj (D i) :=
-  ((PreservesProduct.iso (F ⋙ CategoryTheory.forget AddCommGrpCat) D) ≪≫
-    Types.productIso (fun i => (F.obj (D i) : Type e))).toEquiv
-
-private theorem functorFiniteProductEquiv_apply
-    (x : F.obj (∏ᶜ D)) (i : Fin k) :
-    functorFiniteProductEquiv F D x i = F.map (Pi.π D i) x := by
-  change (Types.productIso (fun i => (F.obj (D i) : Type e))).hom
-      ((PreservesProduct.iso (F ⋙ CategoryTheory.forget AddCommGrpCat) D).hom x) i = _
-  rw [Types.productIso_hom_comp_eval_apply, PreservesProduct.iso_hom]
-  exact ConcreteCategory.congr_hom
-    (piComparison_comp_π (F ⋙ CategoryTheory.forget AddCommGrpCat) D i) x
-
-end FiniteProductCoordinates
 
 private theorem cohomologyFunctor_additive (X : Scheme.{u})
     [HasExt.{eX} (AbelianSheaf.{u, u + 1} X)] (q : ℕ) :
@@ -82,65 +61,29 @@ variable {X S : Scheme.{u}}
   [HasExt.{eS} (AbelianSheaf.{u, u + 1} S)]
   (g : S ⟶ X) {k : ℕ} (F : Fin k → AbelianSheaf.{u, u + 1} X) (q : ℕ)
 
-/-- Finite products in the original coefficient variable give the actual
-cohomology coordinate equivalence, with no value-universe resizing. -/
-def cohomologyFiniteProductEquiv :
-    Sheaf.H.{eX} (∏ᶜ F) q ≃ ∀ i, Sheaf.H.{eX} (F i) q :=
-  functorFiniteProductEquiv (cohomologyFunctor.{u, eX} X q) F
-
-/-- The target equivalence uses the original inverse-image functor itself. -/
-def inverseImageCohomologyFiniteProductEquiv :
-    Sheaf.H.{eS} ((inverseImage g).obj (∏ᶜ F)) q ≃
-      ∀ i, Sheaf.H.{eS} ((inverseImage g).obj (F i)) q :=
-  functorFiniteProductEquiv (inverseImage g ⋙ cohomologyFunctor.{u, eS} S q) F
-
-/-- Source coordinates are the original cohomology maps of the original
-product projections. -/
-theorem cohomologyFiniteProductEquiv_apply
-    (x : Sheaf.H.{eX} (∏ᶜ F) q) (i : Fin k) :
-    cohomologyFiniteProductEquiv F q x i = Sheaf.H.map (Pi.π F i) q x :=
-  functorFiniteProductEquiv_apply (cohomologyFunctor.{u, eX} X q) F x i
-
-omit [HasExt.{eX} (AbelianSheaf.{u, u + 1} X)] in
-/-- Target coordinates retain the original inverse images of those same
-product projections. -/
-theorem inverseImageCohomologyFiniteProductEquiv_apply
-    (x : Sheaf.H.{eS} ((inverseImage g).obj (∏ᶜ F)) q) (i : Fin k) :
-    inverseImageCohomologyFiniteProductEquiv g F q x i =
-      Sheaf.H.map ((inverseImage g).map (Pi.π F i)) q x :=
-  functorFiniteProductEquiv_apply
-    (inverseImage g ⋙ cohomologyFunctor.{u, eS} S q) F x i
-
 /-- Coordinatewise surjectivity gives surjectivity on the actual original
 finite product coefficient. The parameter k may be zero. -/
 theorem cohomologyPullback_surjective_finProduct
     (hF : ∀ i, Function.Surjective (cohomologyPullback.{u, eX, eS} g (F i) q)) :
     Function.Surjective (cohomologyPullback.{u, eX, eS} g (∏ᶜ F) q) := by
-  intro z
-  let t := inverseImageCohomologyFiniteProductEquiv g F q z
-  choose x hx using fun i => hF i (t i)
-  let a := (cohomologyFiniteProductEquiv F q).symm x
-  refine ⟨a, (inverseImageCohomologyFiniteProductEquiv g F q).injective ?_⟩
-  funext i
-  rw [inverseImageCohomologyFiniteProductEquiv_apply]
-  rw [← cohomologyPullback_coefficientMap]
-  have hcoord : Sheaf.H.map (Pi.π F i) q a = x i := by
-    rw [← cohomologyFiniteProductEquiv_apply]
-    exact congrFun ((cohomologyFiniteProductEquiv F q).apply_symm_apply x) i
-  rw [hcoord]
-  exact hx i
+  let a := (((inverseImageConstantIso g).app
+    (AddCommGrpCat.of (ULift.{u + 1} ℤ))).inv)
+  change Function.Surjective ((inverseImage g).extPrecompMap a (∏ᶜ F) q)
+  exact (inverseImage g).extPrecompMap_surjective_biproduct_on_image
+    (𝟭 (AbelianSheaf.{u, u + 1} X)) a
+    (biconeIsBilimitOfLimitConeOfIsLimit (productIsProduct F)) q hF
 
 /-- Coordinatewise injectivity gives injectivity on the same original
 product, independently of surjectivity and including the empty product. -/
 theorem cohomologyPullback_injective_finProduct
     (hF : ∀ i, Function.Injective (cohomologyPullback.{u, eX, eS} g (F i) q)) :
     Function.Injective (cohomologyPullback.{u, eX, eS} g (∏ᶜ F) q) := by
-  intro a b hab
-  apply (cohomologyFiniteProductEquiv F q).injective
-  funext i
-  rw [cohomologyFiniteProductEquiv_apply, cohomologyFiniteProductEquiv_apply]
-  apply hF i
-  rw [cohomologyPullback_coefficientMap, cohomologyPullback_coefficientMap, hab]
+  let a := (((inverseImageConstantIso g).app
+    (AddCommGrpCat.of (ULift.{u + 1} ℤ))).inv)
+  change Function.Injective ((inverseImage g).extPrecompMap a (∏ᶜ F) q)
+  exact (inverseImage g).extPrecompMap_injective_biproduct_on_image
+    (𝟭 (AbelianSheaf.{u, u + 1} X)) a
+    (biconeIsBilimitOfLimitConeOfIsLimit (productIsProduct F)) q hF
 
 end OriginalProducts
 
@@ -150,37 +93,42 @@ variable {X S : Scheme.{u}}
   [HasExt.{eX} (AbelianSheaf.{u, u + 1} X)]
   [HasExt.{eS} (AbelianSheaf.{u, u + 1} S)]
 
-/-- Native product reindexing transports the finite-coordinate test back
-to the literal original product on any finite index in the scheme universe. -/
+/-- The existing Ext comparison applies directly to the literal original
+product on any finite index in the scheme universe. -/
 theorem cohomologyPullback_surjective_finiteProduct
     (g : S ⟶ X) {ι : Type u} [Finite ι]
     (F : ι → AbelianSheaf.{u, u + 1} X) (q : ℕ)
     (hF : ∀ i, Function.Surjective (cohomologyPullback.{u, eX, eS} g (F i) q)) :
     Function.Surjective (cohomologyPullback.{u, eX, eS} g (∏ᶜ F) q) := by
   let := Fintype.ofFinite ι
-  let E := (Fintype.equivFin ι).symm
-  exact cohomologyPullback_surjective_of_iso g (Pi.reindex E F) q
-    (cohomologyPullback_surjective_finProduct g (F ∘ E) q (fun j => hF (E j)))
+  let a := (((inverseImageConstantIso g).app
+    (AddCommGrpCat.of (ULift.{u + 1} ℤ))).inv)
+  change Function.Surjective ((inverseImage g).extPrecompMap a (∏ᶜ F) q)
+  exact (inverseImage g).extPrecompMap_surjective_biproduct_on_image
+    (𝟭 (AbelianSheaf.{u, u + 1} X)) a
+    (biconeIsBilimitOfLimitConeOfIsLimit (productIsProduct F)) q hF
 
-/-- Injectivity returns to the same original finite-index product through
-the canonical reindex isomorphism. -/
+/-- The same literal finite-index product has injective comparison whenever
+each original component comparison is injective. -/
 theorem cohomologyPullback_injective_finiteProduct
     (g : S ⟶ X) {ι : Type u} [Finite ι]
     (F : ι → AbelianSheaf.{u, u + 1} X) (q : ℕ)
     (hF : ∀ i, Function.Injective (cohomologyPullback.{u, eX, eS} g (F i) q)) :
     Function.Injective (cohomologyPullback.{u, eX, eS} g (∏ᶜ F) q) := by
   let := Fintype.ofFinite ι
-  let E := (Fintype.equivFin ι).symm
-  exact cohomologyPullback_injective_of_iso g (Pi.reindex E F) q
-    (cohomologyPullback_injective_finProduct g (F ∘ E) q (fun j => hF (E j)))
+  let a := (((inverseImageConstantIso g).app
+    (AddCommGrpCat.of (ULift.{u + 1} ℤ))).inv)
+  change Function.Injective ((inverseImage g).extPrecompMap a (∏ᶜ F) q)
+  exact (inverseImage g).extPrecompMap_injective_biproduct_on_image
+    (𝟭 (AbelianSheaf.{u, u + 1} X)) a
+    (biconeIsBilimitOfLimitConeOfIsLimit (productIsProduct F)) q hF
 
 end OriginalFiniteIndices
 
 namespace Proper
 
-/-- The accepted finite-coordinate kernel comparison on the literal
-original family indexed by any finite type in the scheme universe. Both
-product transports are the native reindex maps. -/
+/-- The original-family scalar-kernel comparison for any finite index in the
+scheme universe. Its value equals the original reindexed comparison. -/
 def constantDirectImageProductAnnihilatorIsoFiniteIndex
     {X : Scheme.{u}} {ι : Type u} [Finite ι] (n : ℕ)
     (Y : ι → Scheme.{u}) (f : ∀ i, Y i ⟶ X) (A : ι → AddCommGrpCat.{u + 1}) :
@@ -190,21 +138,64 @@ def constantDirectImageProductAnnihilatorIsoFiniteIndex
       ∏ᶜ fun i => (directImage (f i)).obj
         ((constantSheaf (Y i).smallEtaleTopology AddCommGrpCat.{u + 1}).obj
           (kernel (n • 𝟙 (A i)))) := by
+  let L : ι → AddCommGrpCat.{u + 1} ⥤ AbelianSheaf.{u, u + 1} X :=
+    fun i => constantSheaf (Y i).smallEtaleTopology AddCommGrpCat.{u + 1} ⋙ directImage (f i)
+  let (i : ι) : (L i).Additive := by
+    change (constantSheaf (Y i).smallEtaleTopology AddCommGrpCat.{u + 1} ⋙
+      directImage (f i)).Additive
+    infer_instance
+  let (i : ι) : PreservesFiniteLimits (L i) := by
+    let : PreservesFiniteLimits (constantSheaf (Y i).smallEtaleTopology AddCommGrpCat.{u + 1}) :=
+      constantSheaf_preservesFiniteLimits (Y i)
+    change PreservesFiniteLimits
+      (constantSheaf (Y i).smallEtaleTopology AddCommGrpCat.{u + 1} ⋙ directImage (f i))
+    exact Limits.comp_preservesFiniteLimits _ _
+  exact Preadditive.nsmulKernelProductFunctorIso n L A
+
+/-- The complete original Fin/reindex construction has exactly the new
+original-index value, including both maps of the isomorphism. -/
+private theorem constantDirectImageProductAnnihilatorIsoFiniteIndex_eq_originalReindex
+    {X : Scheme.{u}} {ι : Type u} [Finite ι] (n : ℕ)
+    (Y : ι → Scheme.{u}) (f : ∀ i, Y i ⟶ X) (A : ι → AddCommGrpCat.{u + 1}) :
+    constantDirectImageProductAnnihilatorIsoFiniteIndex n Y f A =
+      (by
+        let := Fintype.ofFinite ι
+        let E := (Fintype.equivFin ι).symm
+        let F : ι → AbelianSheaf.{u, u + 1} X := fun i =>
+          (directImage (f i)).obj
+            ((constantSheaf (Y i).smallEtaleTopology AddCommGrpCat.{u + 1}).obj (A i))
+        let K : ι → AbelianSheaf.{u, u + 1} X := fun i =>
+          (directImage (f i)).obj
+            ((constantSheaf (Y i).smallEtaleTopology AddCommGrpCat.{u + 1}).obj
+              (kernel (n • 𝟙 (A i))))
+        let eP : (∏ᶜ (F ∘ E)) ≅ ∏ᶜ F := Pi.reindex E F
+        let eAnn : Sheaf.annihilator (∏ᶜ (F ∘ E)) n ≅ Sheaf.annihilator (∏ᶜ F) n :=
+          kernel.mapIso _ _ eP eP (by simp)
+        let eFin : Sheaf.annihilator (∏ᶜ (F ∘ E)) n ≅ ∏ᶜ (K ∘ E) :=
+          constantDirectImageProductAnnihilatorIso n (Y ∘ E) (fun j => f (E j)) (A ∘ E)
+        exact eAnn.symm ≪≫ eFin ≪≫ Pi.reindex E K
+      ) := by
+  let L : ι → AddCommGrpCat.{u + 1} ⥤ AbelianSheaf.{u, u + 1} X :=
+    fun i => constantSheaf (Y i).smallEtaleTopology AddCommGrpCat.{u + 1} ⋙ directImage (f i)
+  let (i : ι) : (L i).Additive := by
+    change (constantSheaf (Y i).smallEtaleTopology AddCommGrpCat.{u + 1} ⋙
+      directImage (f i)).Additive
+    infer_instance
+  let (i : ι) : PreservesFiniteLimits (L i) := by
+    let : PreservesFiniteLimits (constantSheaf (Y i).smallEtaleTopology AddCommGrpCat.{u + 1}) :=
+      constantSheaf_preservesFiniteLimits (Y i)
+    change PreservesFiniteLimits
+      (constantSheaf (Y i).smallEtaleTopology AddCommGrpCat.{u + 1} ⋙ directImage (f i))
+    exact Limits.comp_preservesFiniteLimits _ _
   let := Fintype.ofFinite ι
   let E := (Fintype.equivFin ι).symm
-  let F : ι → AbelianSheaf.{u, u + 1} X := fun i =>
-    (directImage (f i)).obj
-      ((constantSheaf (Y i).smallEtaleTopology AddCommGrpCat.{u + 1}).obj (A i))
-  let K : ι → AbelianSheaf.{u, u + 1} X := fun i =>
-    (directImage (f i)).obj
-      ((constantSheaf (Y i).smallEtaleTopology AddCommGrpCat.{u + 1}).obj
-        (kernel (n • 𝟙 (A i))))
-  let eP : (∏ᶜ (F ∘ E)) ≅ ∏ᶜ F := Pi.reindex E F
-  let eAnn : Sheaf.annihilator (∏ᶜ (F ∘ E)) n ≅ Sheaf.annihilator (∏ᶜ F) n :=
-    kernel.mapIso _ _ eP eP (by simp)
-  let eFin : Sheaf.annihilator (∏ᶜ (F ∘ E)) n ≅ ∏ᶜ (K ∘ E) :=
-    constantDirectImageProductAnnihilatorIso n (Y ∘ E) (fun j => f (E j)) (A ∘ E)
-  exact eAnn.symm ≪≫ eFin ≪≫ Pi.reindex E K
+  have h := Preadditive.nsmulKernelProductFunctorIso_eq_reindex n L A E
+  simpa only [constantDirectImageProductAnnihilatorIsoFiniteIndex,
+    constantDirectImageProductAnnihilatorIso, annihilatorProductIso,
+    constantDirectImageAnnihilatorIso,
+    AlgebraicGeometry.Scheme.EtaleCohomology.Proper.nsmulKernelIso,
+    CategoryTheory.Functor.comp_obj, Function.comp_def,
+    CategoryTheory.Sheaf.annihilator, L, E] using h
 
 section StrictlyLocalProducts
 

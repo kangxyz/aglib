@@ -1,0 +1,38 @@
+--- failed-stalk-907f.lean
++++ passed-stalk-fdbf.lean
+@@ -30,7 +30,8 @@
+         triangleCoefficientMap a p q ht ((pullbackTriangleIso g f a ha).inv.app F) =
+       (pullbackTriangleIso k g q hq).hom.app F := by
+   simpa only [InjectiveSystem.AdjunctionData.triangleCoefficientMap,
+-    schemeTriangleIso_eq_pullbackTriangleIso, schemeLeft_eq_inverseImage, triangleCoefficientMap, Quiver.Hom.unop_op] using
++    schemeTriangleIso_eq_pullbackTriangleIso, schemeLeft_eq_inverseImage,
++    triangleCoefficientMap, Quiver.Hom.unop_op] using
+     schemeAdjunctionData.triangle_fixed_coefficient schemeAdjunctionData_coherent
+       f.op g.op k.op a.op p.op q.op (congrArg Quiver.Hom.op ha)
+       (congrArg Quiver.Hom.op hp) (congrArg Quiver.Hom.op hq) (congrArg Quiver.Hom.op ht) F
+@@ -122,6 +123,7 @@
+   simp only [InjectiveSystem.AdjunctionData.triangleCoefficientMap,
+     schemeTriangleIso_eq_pullbackTriangleIso, schemeLeft_eq_inverseImage, triangleCoefficientMap,
+     pullbackCoefficientTransition]
++  rfl
+ 
+ /-- The generic constancy isomorphism retains every original structural component. -/
+ theorem pullbackConeCoefficientIso_app (i : I) :
+@@ -153,10 +155,13 @@
+         (pullbackLimitCoefficientIso Y b c l hl F).hom =
+       (pullbackTriangleIso l.unop (b.π.app i).unop (c.ι.app i).unop
+         (congrArg Quiver.Hom.unop (hl i))).inv.app F := by
+-  rw [constantDiagramColimitIso_ι]
+-  change ((pullbackConeCoefficientIso Y b c l hl F).app i).inv = _
+-  rw [pullbackConeCoefficientIso_app]
+-  rfl
++  have hι :
++      colimit.ι (coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)) i ≫
++          (pullbackLimitCoefficientIso Y b c l hl F).hom =
++        (pullbackConeCoefficientComponent Y b c l hl F i).inv :=
++    (constantDiagramColimitIso_ι (pullbackConeCoefficientIso Y b c l hl F) i).trans
++      (congrArg Iso.inv (pullbackConeCoefficientIso_app Y b c l hl F i))
++  exact hι
+ 
+ end Colimit
+ 

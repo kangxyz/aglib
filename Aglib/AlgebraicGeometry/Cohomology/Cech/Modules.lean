@@ -132,9 +132,26 @@ theorem moduleCechAdditiveHomologyIso_scalar (n : ℕ) (a : R)
 
 variable [M.IsQuasicoherent] (hcover : iSup U = ⊤)
   (haff : ∀ (p : ℕ) (a : Fin (p + 1) → ι), IsAffineOpen (∏ᶜ fun k ↦ U (a k)))
-  (I : InjectiveResolution (moduleAddSheaf X M))
 
 /-- Positive Cech cohomology computes actual `Sheaf.H` linearly over any structural ring. -/
+def moduleCechCohomologyLinearEquivCanonical (n : ℕ) :
+    letI := moduleCohomologyModuleOfHom X α M (n + 1)
+    (moduleCechComplex X α M U).homology (n + 1) ≃ₗ[R]
+      Sheaf.H.{u + 1} (moduleAddSheaf X M) (n + 1) := by
+  letI := moduleCohomologyModuleOfHom X α M (n + 1)
+  exact {
+    __ := (moduleCechAdditiveHomologyIso X α M U (n + 1)).addCommGroupIsoToAddEquiv.trans
+      (moduleCechCohomologyAddEquivCanonical U M hcover haff n)
+    map_smul' := fun a x ↦ by
+      change moduleCechCohomologyAddEquivCanonical U M hcover haff n
+        ((moduleCechAdditiveHomologyIso X α M U (n + 1)).hom (a • x)) = _
+      rw [moduleCechAdditiveHomologyIso_scalar]
+      exact moduleCechCohomologyAddEquivCanonical_naturality U hcover haff
+        (moduleScalarOfGlobal X M (α a)) n _ }
+
+variable (I : InjectiveResolution (moduleAddSheaf X M))
+
+/-- Supplied-resolution compatibility view of the canonical structural-ring comparison. -/
 def moduleCechCohomologyLinearEquiv (n : ℕ) :
     letI := moduleCohomologyModuleOfHom X α M (n + 1)
     (moduleCechComplex X α M U).homology (n + 1) ≃ₗ[R]
@@ -145,11 +162,23 @@ def moduleCechCohomologyLinearEquiv (n : ℕ) :
       (moduleCechCohomologyAddEquiv U M I hcover haff n)
     map_smul' := fun a x ↦ by
       change moduleCechCohomologyAddEquiv U M I hcover haff n
-        ((moduleCechAdditiveHomologyIso X α M U (n + 1)).hom (a • x)) = _
-      rw [moduleCechAdditiveHomologyIso_scalar]
-      let δ : InjectiveResolution.Hom I I (moduleScalarOfGlobal X M (α a)) :=
-        ⟨InjectiveResolution.desc (moduleScalarOfGlobal X M (α a)) I I, by simp⟩
-      exact moduleCechCohomologyAddEquiv_naturality U hcover haff δ n _ }
+        ((moduleCechAdditiveHomologyIso X α M U (n + 1)).hom (a • x)) =
+          a • moduleCechCohomologyAddEquiv U M I hcover haff n
+            ((moduleCechAdditiveHomologyIso X α M U (n + 1)).hom x)
+      simp only [moduleCechCohomologyAddEquiv_eq_canonical U M hcover haff I n]
+      exact (moduleCechCohomologyLinearEquivCanonical X α M U hcover haff n).map_smul a x }
+
+/-- The supplied-resolution linear view has the same values as the canonical comparison. -/
+theorem moduleCechCohomologyLinearEquiv_eq_canonical (n : ℕ) :
+    letI := moduleCohomologyModuleOfHom X α M (n + 1)
+    moduleCechCohomologyLinearEquiv X α M U hcover haff I n =
+      moduleCechCohomologyLinearEquivCanonical X α M U hcover haff n := by
+  let := moduleCohomologyModuleOfHom X α M (n + 1)
+  apply LinearEquiv.ext
+  intro x
+  exact congrArg
+    (fun e => e ((moduleCechAdditiveHomologyIso X α M U (n + 1)).hom x))
+    (moduleCechCohomologyAddEquiv_eq_canonical U M hcover haff I n)
 
 /-- On a separated scheme an affine open cover gives the same linear comparison. -/
 def moduleAffineCechCohomologyLinearEquiv [X.IsSeparated] (n : ℕ)

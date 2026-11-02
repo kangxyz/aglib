@@ -1,0 +1,78 @@
+--- sources/v5/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean
++++ sources/v7/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean
+@@ -518,6 +518,27 @@
+     (D.horizontalDiagram_chain hD f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e)
+ 
+ include hD in
++/-- The whole equation for the actual supplied comparisons is derived from
++coherence and their original comparison identities, before evaluating objects. -/
++theorem squareIso_hComp_whole_of_eq
++    (γ : D.left (g₁ ≫ g₂) ≅ D.left g₁ ⋙ D.left g₂)
++    (θ : D.left (h₁ ≫ h₂) ≅ D.left h₁ ⋙ D.left h₂)
++    (s₁ : D.left g₁ ⋙ D.left f₁ ≅ D.left f₀ ⋙ D.left h₁)
++    (s₂ : D.left g₂ ⋙ D.left f₂ ≅ D.left f₁ ⋙ D.left h₂)
++    (s : D.left (g₁ ≫ g₂) ⋙ D.left f₂ ≅ D.left f₀ ⋙ D.left (h₁ ≫ h₂))
++    (hγ : γ = D.leftCompIso g₁ g₂) (hθ : θ = D.leftCompIso h₁ h₂)
++    (hs₁ : s₁ = D.squareIso f₀ f₁ g₁ h₁ e₁)
++    (hs₂ : s₂ = D.squareIso f₁ f₂ g₂ h₂ e₂)
++    (hs : s = D.squareIso f₀ f₂ (g₁ ≫ g₂) (h₁ ≫ h₂) e) :
++    WholeHorizontalSquareEquation s₁.hom s₂.hom s.hom γ.hom θ.hom := by
++  cases hγ
++  cases hθ
++  cases hs₁
++  cases hs₂
++  cases hs
++  exact D.squareIso_hComp_whole hD f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e
++
++include hD in
+ theorem squareIso_hComp (F : A S₀) :
+     HorizontalSquareEquation
+       (TwoSquare.mk _ _ _ _ (D.squareIso f₀ f₁ g₁ h₁ e₁).hom)
+@@ -700,4 +721,47 @@
+     (fun z : F ⟶ R_v₀.obj (R_h.obj (R_q₁.obj K)) => z ≫ R_v₀.map (d.hom.app K)) hc
+   simpa only [Category.assoc] using hv.trans (hn.trans he)
+ 
++section ActualHorizontal
++
++universe uS₀ vS₀ uS₁ vS₁ uS₂ vS₂ uX₀ vX₀ uX₁ vX₁ uX₂ vX₂
++
++variable {S₀ : Type uS₀} [Category.{vS₀} S₀] {S₁ : Type uS₁} [Category.{vS₁} S₁]
++  {S₂ : Type uS₂} [Category.{vS₂} S₂] {X₀ : Type uX₀} [Category.{vX₀} X₀]
++  {X₁ : Type uX₁} [Category.{vX₁} X₁] {X₂ : Type uX₂} [Category.{vX₂} X₂]
++  {G₁ : S₀ ⥤ S₁} {G₂ : S₁ ⥤ S₂} {L₀ : S₀ ⥤ X₀} {L₁ : S₁ ⥤ X₁}
++  {L₂ : S₂ ⥤ X₂} {H₁ : X₀ ⥤ X₁} {H₂ : X₁ ⥤ X₂} {G : S₀ ⥤ S₂} {H : X₀ ⥤ X₂}
++  (γ : G ≅ G₁ ⋙ G₂) (θ : H ≅ H₁ ⋙ H₂)
++  (s₁ : G₁ ⋙ L₁ ≅ L₀ ⋙ H₁) (s₂ : G₂ ⋙ L₂ ≅ L₁ ⋙ H₂) (s : G ⋙ L₂ ≅ L₀ ⋙ H)
++  (h : WholeHorizontalSquareEquation s₁.hom s₂.hom s.hom γ.hom θ.hom)
++
++include h in
++/-- Invert the proved whole equation at the actual comparisons, retaining all
++six independent category/Hom worlds and literal component maps. -/
++theorem inverse_hComp (F : S₀) :
++    θ.hom.app (L₀.obj F) ≫ H₂.map (s₁.inv.app F) ≫ s₂.inv.app (G₁.obj F) =
++      s.inv.app F ≫ L₂.map (γ.hom.app F) := by
++  let a := H₂.mapIso (s₁.app F)
++  let b := s₂.app (G₁.obj F)
++  let c := s.app F
++  exact InjectiveSystem.AdjunctionData.inverse_pasting a b c _ _
++    (wholeHorizontalSquare_app _ _ _ _ _ h F)
++
++include h in
++/-- Actual coefficient-map composition follows from the actual whole square,
++without a post-evaluation canonical-comparison conversion. -/
++theorem coefficient_hComp {F : S₀} {F' : S₁} {F'' : S₂}
++    (φ : G₁.obj F ⟶ F') (ψ : G₂.obj F' ⟶ F'') :
++    θ.hom.app (L₀.obj F) ≫ H₂.map (coefficientMap s₁ φ) ≫ coefficientMap s₂ ψ =
++      coefficientMap s (γ.hom.app F ≫ G₂.map φ ≫ ψ) := by
++  have hn := s₂.inv.naturality φ
++  simp only [Functor.comp_map] at hn
++  have hp := inverse_hComp γ θ s₁ s₂ s h F
++  dsimp only [coefficientMap]
++  simp only [Functor.map_comp, Category.assoc]
++  rw [← Category.assoc (H₂.map (L₁.map φ)), hn]
++  have ht := congrArg (fun k => k ≫ L₂.map (G₂.map φ) ≫ L₂.map ψ) hp
++  simpa only [Category.assoc] using ht
++
++end ActualHorizontal
++
+ end CategoryTheory.Adjunction.CoefficientSquares

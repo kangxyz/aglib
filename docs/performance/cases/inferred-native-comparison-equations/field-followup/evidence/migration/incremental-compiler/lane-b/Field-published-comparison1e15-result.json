@@ -1,0 +1,39 @@
+{
+  "run": "remote-91b7c5172b704bc7b5600f4798e11342",
+  "actual_source": "8cf110ea61686706323e946b78c2c330530fbe87845fa28c9e1cd805fcfe13cb",
+  "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/lane-b/Field-published-proof-91b7c517.json",
+  "source_archive_sha256": "d6ccd6048f3ef561f8406dd4c58ce14add30b152005c71f1b82e022efefe3ac2",
+  "diagnostic_sha256": "1e15238a82628a3b8ff6ab3de1ca66c2a15c8d96a08e3e2108dfbf051a94c25a",
+  "native_file": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean",
+  "native_sha256": "616b87a1041f6eed9b19b5d5ecd0bc50c3df4acf636496f42b7c4800883c35ce",
+  "setup_sha256": "9e447e6ba595b146ce2b4756e31bd636b75c34bdb835579fe90c2a7d76c93ed6",
+  "setup_options": {
+    "autoImplicit": false,
+    "warningAsError": true,
+    "weak.linter.mathlibStandardSet": true,
+    "weak.linter.style.longFile": 1500
+  },
+  "setup_name": "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Field",
+  "command": [
+    "/root/autodl-tmp/lean-build/logs/remote-91b7c5172b704bc7b5600f4798e11342/toolchain/bin/lean",
+    "-M12800",
+    "-j4",
+    "/root/autodl-tmp/lean-build/logs/remote-91b7c5172b704bc7b5600f4798e11342/field-published-comparison/FieldPublishedComparison.lean",
+    "--setup",
+    "/root/autodl-tmp/lean-build/logs/remote-91b7c5172b704bc7b5600f4798e11342/field-published-comparison/Field.setup.json",
+    "-o",
+    "/root/autodl-tmp/lean-build/logs/remote-91b7c5172b704bc7b5600f4798e11342/field-published-comparison/Field.olean",
+    "-i",
+    "/root/autodl-tmp/lean-build/logs/remote-91b7c5172b704bc7b5600f4798e11342/field-published-comparison/Field.ilean",
+    "-c",
+    "/root/autodl-tmp/lean-build/logs/remote-91b7c5172b704bc7b5600f4798e11342/field-published-comparison/Field.c"
+  ],
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-91b7c5172b704bc7b5600f4798e11342/receipt.json",
+  "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-91b7c5172b704bc7b5600f4798e11342/build.log",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-91b7c5172b704bc7b5600f4798e11342/compiler-events.jsonl",
+  "exit_code": 1,
+  "group_closed": true,
+  "outcome": "One faithful candidate failed only final simpa at379:2 maxRecDepth; no proof/production/root closure",
+  "production_source_writes": 0,
+  "budget_option_changes": false
+}

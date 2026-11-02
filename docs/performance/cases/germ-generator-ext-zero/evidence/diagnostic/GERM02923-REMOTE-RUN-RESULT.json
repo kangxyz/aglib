@@ -1,0 +1,18 @@
+{
+  "question": "Inspect hvalue and original chart generator inferred types from exact Germ02923 prefix in native Germ owner context.",
+  "attempt": "The sealed phase reached remote run allocation but stopped at its embedded native-owner SHA assertion, before setup-file or Lean.",
+  "input_source_sha256": "02923c3ff20ff1561526668c57a0b84f45d89f24964bf83655e2f7b5b2b31ea4",
+  "required_native_owner_sha256": "18e5c930c14a1b0b138a5ba02e4c115fa4da4ec55b27587d4439dccd08e07e4e",
+  "current_local_native_owner_sha256": "5764233c0b53f51feecf566ac72f4fd211773418f80137160d0c3a732c1d3944",
+  "actual_remote_source_manifest_sha256": "eff0705357218b9bbd5067106a8fd24270abeafa23bfd0a90b824166b20932d6",
+  "native_run": "remote-1e4939a605ce4290875e354b8d5c0174",
+  "native_exit": 1,
+  "native_outcome": "execution_failure",
+  "group_closed": true,
+  "frontend_invocations": 0,
+  "first_diagnostics": [],
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-1e4939a605ce4290875e354b8d5c0174/receipt.json",
+  "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-1e4939a605ce4290875e354b8d5c0174/build.log",
+  "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-1e4939a605ce4290875e354b8d5c0174/compiler-events.jsonl",
+  "boundary": "No Lean diagnostic trace or native setup was produced; source identity drift prevented evaluation. The required old native18e5 owner context is not the currently synced V21 owner. No proof/pass conclusion."
+}

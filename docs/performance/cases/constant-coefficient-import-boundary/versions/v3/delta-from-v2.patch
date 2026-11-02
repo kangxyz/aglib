@@ -1,0 +1,85 @@
+--- v2/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicCoefficientSequence.lean
++++ v3/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicCoefficientSequence.lean
+@@ -5,7 +5,7 @@
+ -/
+ module
+ 
+-public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ConstantRestriction
++public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Coefficient
+ public import Aglib.CategoryTheory.Sites.SheafCohomology.ConstantCyclic
+ public import Mathlib.Algebra.Category.Grp.Ulift
+ 
+--- /dev/null
++++ v3/Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Coefficient.lean
+@@ -0,0 +1,36 @@
++/-
++Copyright (c) 2026 Aglib contributors. All rights reserved.
++Released under Apache 2.0 license as described in the file LICENSE.
++Authors: kangxyz
++-/
++module
++
++public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.Basic
++
++/-!
++# Constant abelian coefficients on the small étale site
++
++The original lifted value and native constant abelian sheaf are shared by
++finite representation and cohomology consumers.
++-/
++
++@[expose] public noncomputable section
++
++open CategoryTheory
++
++namespace AlgebraicGeometry.Scheme.EtaleCohomology.ConstantFinite
++
++universe u w w'
++
++attribute [local instance] hasSheafifyLarge
++
++variable (A : Type u) [AddCommGroup A] [Finite A]
++
++/-- The finite additive value in the native sheaf-value universe. -/
++abbrev value : AddCommGrpCat.{u + 1} := AddCommGrpCat.of (ULift.{u + 1} A)
++
++/-- The actual native constant abelian sheaf with the displayed finite value. -/
++abbrev coefficient (X : Scheme.{u}) : AbelianSheaf.{u, u + 1} X :=
++  (constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj (value A)
++
++end AlgebraicGeometry.Scheme.EtaleCohomology.ConstantFinite
+--- v2/Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Basic.lean
++++ v3/Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Basic.lean
+@@ -5,6 +5,7 @@
+ -/
+ module
+ 
++public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Coefficient
+ public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorClassification
+ public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteSetRepresentation
+ public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteEtaleRigidity
+@@ -24,13 +25,6 @@
+ attribute [local instance] hasSheafifyLarge Over.cartesianMonoidalCategory
+ 
+ variable (A : Type u) [AddCommGroup A] [Finite A]
+-
+-/-- The finite additive value in the native sheaf-value universe. -/
+-abbrev value : AddCommGrpCat.{u + 1} := AddCommGrpCat.of (ULift.{u + 1} A)
+-
+-/-- The actual native constant abelian sheaf with the displayed finite value. -/
+-abbrev coefficient (X : Scheme.{u}) : AbelianSheaf.{u, u + 1} X :=
+-  (constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj (value A)
+ 
+ /-- The identity chart is an actual finite local trivialization of the constant sheaf. -/
+ def localTrivialization (X : Scheme.{u}) : FiniteLocalTrivialization (coefficient A X) where
+--- v2/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/ConstantRestriction.lean
++++ v3/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/ConstantRestriction.lean
+@@ -5,7 +5,7 @@
+ -/
+ module
+ 
+-public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Basic
++public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Coefficient
+ public import Aglib.AlgebraicGeometry.EtaleCohomology.Pullback
+ 
+ /-!

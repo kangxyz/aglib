@@ -1,0 +1,24 @@
+{
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "status": "v4 selected cohomology functor type; H0 file restored to actual passed v1 bytes",
+  "sources": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H0/ProperHenselian.lean",
+      "sha256": "1e6825b219157b1c88fbca537ac18468314b282c34bca01a9b66d08f816798a3"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/PullbackEquivalence.lean",
+      "sha256": "de615ab090fcbcb10f3db6c9371c4526529a664e18c92313352a10a0ee06db00"
+    }
+  ],
+  "roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.PullbackEquivalence"
+  ],
+  "retained_covered_source": {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H0/ProperHenselian.lean",
+    "sha256": "1e6825b219157b1c88fbca537ac18468314b282c34bca01a9b66d08f816798a3",
+    "actual_receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-e815cd28061549c1a47f7e27f176a0ae/receipt.json",
+    "frontend_seconds": 42
+  },
+  "proof_boundary": "Name exactly Mathlib functorH with its original domain and genuine Ext-world codomain, before mapIso inference. No new model, arbitrary reference functor, universe collapse or changed coefficient map. Public headers/hypotheses remain."
+}

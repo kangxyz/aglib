@@ -1,0 +1,22 @@
+{
+  "status": "READY/HOLD applied after released guard",
+  "native_git_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "path": "Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean",
+  "before_sha256": "4f74591813eb9b2c76d4f7c468e6a96ff21732caeb62f9dbb2b351b5a09527ac",
+  "after_sha256": "87ff6356a978b2998455b6ea671dbfdf3cb09f65a7785282ebe8b7aba4e4b9ec",
+  "delta_sha256": "7b75dcc1bd77937babe94f0866db55a4aae7a89e5b85ac8c8a3be450e7ce859b",
+  "held_other_ten_before_and_after": {
+    "Aglib/CategoryTheory/Sites/LocallyBijective.lean": "b4350cd4f49046a394dd08d56a38ad1d4414cf21bb3af0c9d14dd72782d52166",
+    "Aglib/AlgebraicGeometry/Sites/AffineSheafification.lean": "3bfe797ba31b07d9ee53d39c0850cf274a92179cbb26e8b696f4f4bb5c676b80",
+    "Aglib/CategoryTheory/Functor/RepresentativeSections.lean": "e21b2faead31018cb511484054036f3a8aae67e022474c08b1ea917120bff6c4",
+    "Aglib/AlgebraicGeometry/Sites/EtaleAffineBasis/RepresentativeSections.lean": "0aabd8fc96bf61532a31b347f8ded954c82e5752a93aa7d51240a89d94067349",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricCohomologyDiagram.lean": "cd37c38dc1c715fc76010e5d296cf6e4e962f9e5645b8843ba2f8f8d46f8ee36",
+    "Aglib/CategoryTheory/Sites/Pullback/LocalDescription.lean": "4d61a319d9cb12b4fb355147bd89e76315a56ce7b1855ad19e09f622f3ee5e1d",
+    "Aglib/AlgebraicGeometry/Sites/EtaleAffineBasis/InverseImageLocalRepresentatives.lean": "3ac4694f9cc82ebc35ac763720ce641e4db10dbdaba662f71aafda89a467ac97",
+    "Aglib/AlgebraicGeometry/Sites/EtaleAffineBasis/InverseImageLocalEquality.lean": "3d0c1e4715fafba61ba01b396224c5a7939b01851f3321c340a540b776788ea1",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Frobenius.lean": "5be6b57f14457bda311e65781e412dd7414d43ac6c435217c4d480340a45c922",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Constants.lean": "d2a7c7461e034f05b03adb49fa49b6fc6fab4eb440a45ded2cd2d0ec59ee8fca"
+  },
+  "compiler_or_probe_invoked": false,
+  "scope": "One lower native source only; root retries same completed AS3 plus necessary dependencies."
+}

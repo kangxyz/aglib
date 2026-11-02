@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Exactness
+public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.RightExactComparison
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.FlatTwist
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Naturality
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Modules.Isomorphism
@@ -315,44 +315,37 @@ theorem baseChangeMap_twist_isIso_of_exact {B : Type u} [CommRing B] (σ : A →
   let := moduleCohomologyModuleOfHom (ProjectiveSpace A ι) α (T.obj E₁) 0
   let := moduleCohomologyModuleOfHom (ProjectiveSpace A ι) α (T.obj E₀) 0
   let := moduleCohomologyModuleOfHom (ProjectiveSpace A ι) α (T.obj F) 0
-  -- the bottom row on the fibre product, through the transport to `P^n_B`
-  have hbot : Function.Exact
-        (Sheaf.H.map ((SheafOfModules.toSheaf _).map
-          ((Scheme.Modules.pullback p).map (T.map u))) 0)
-        (Sheaf.H.map ((SheafOfModules.toSheaf _).map
-          ((Scheme.Modules.pullback p).map (T.map v))) 0) ∧
-      Function.Surjective (Sheaf.H.map ((SheafOfModules.toSheaf _).map
-        ((Scheme.Modules.pullback p).map (T.map v))) 0) := by
-    refine ⟨(AddMonoidHom.exact_iff_of_surjective_of_bijective_of_injective _ _ _ _
-      (baseChangeTwistCohomologyHom σ ι d E₁ 0) (baseChangeTwistCohomologyHom σ ι d E₀ 0)
-      (baseChangeTwistCohomologyHom σ ι d F 0)
-      (AddMonoidHom.ext fun x => (baseChangeTwistCohomologyHom_naturality σ ι d u 0 x).symm)
-      (AddMonoidHom.ext fun x => (baseChangeTwistCohomologyHom_naturality σ ι d v 0 x).symm)
-      (baseChangeTwistCohomologyHom_bijective σ ι d E₁ 0).2
-      (baseChangeTwistCohomologyHom_bijective σ ι d E₀ 0)
-      (baseChangeTwistCohomologyHom_bijective σ ι d F 0).1).mpr hB.1, fun z => ?_⟩
-    obtain ⟨n₂, hn₂⟩ := hB.2 (baseChangeTwistCohomologyHom σ ι d F 0 z)
-    obtain ⟨m₂, rfl⟩ := (baseChangeTwistCohomologyHom_bijective σ ι d E₀ 0).2 n₂
-    exact ⟨m₂, (baseChangeTwistCohomologyHom_bijective σ ι d F 0).1
-      ((baseChangeTwistCohomologyHom_naturality σ ι d v 0 m₂).trans hn₂)⟩
-  -- the top row, by right exactness of scalar extension
-  have htop := ModuleCat.extendScalars_map_exact_of_surjective σ
+  let := moduleCohomologyModuleOfHom (pullback (toSpec A ι)
+    (Spec.map (CommRingCat.ofHom σ))) β ((Scheme.Modules.pullback p).obj (T.obj E₁)) 0
+  let := moduleCohomologyModuleOfHom (pullback (toSpec A ι)
+    (Spec.map (CommRingCat.ofHom σ))) β ((Scheme.Modules.pullback p).obj (T.obj E₀)) 0
+  let := moduleCohomologyModuleOfHom (pullback (toSpec A ι)
+    (Spec.map (CommRingCat.ofHom σ))) β ((Scheme.Modules.pullback p).obj (T.obj F)) 0
+  exact ModuleCat.isIso_of_rightExact_scalarChange_transport σ
     (ModuleCat.ofHom (moduleCohomologyMapOfHom (ProjectiveSpace A ι) α (T.map u) 0))
-    (ModuleCat.ofHom (moduleCohomologyMapOfHom (ProjectiveSpace A ι) α (T.map v) 0)) hA.1 hA.2
-  have sq₁ := moduleCohomologyBaseChangeMap_naturality (toSpec A ι) σ (T.map u) 0
-  have sq₂ := moduleCohomologyBaseChangeMap_naturality (toSpec A ι) σ (T.map v) 0
-  rw [ConcreteCategory.isIso_iff_bijective] at h₁ h₀ ⊢
-  exact AddMonoidHom.bijective_of_surjective_of_bijective_of_right_exact
-    ((ModuleCat.extendScalars σ).map (ModuleCat.ofHom
-      (moduleCohomologyMapOfHom (ProjectiveSpace A ι) α (T.map u) 0))).hom.toAddMonoidHom
-    ((ModuleCat.extendScalars σ).map (ModuleCat.ofHom
-      (moduleCohomologyMapOfHom (ProjectiveSpace A ι) α (T.map v) 0))).hom.toAddMonoidHom
-    _ _ (moduleCohomologyBaseChangeMap (toSpec A ι) σ (T.obj E₁) 0).hom.toAddMonoidHom
-    (moduleCohomologyBaseChangeMap (toSpec A ι) σ (T.obj E₀) 0).hom.toAddMonoidHom
-    (moduleCohomologyBaseChangeMap (toSpec A ι) σ (T.obj F) 0).hom.toAddMonoidHom
-    (by ext x; exact (ConcreteCategory.congr_hom sq₁ x).symm)
-    (by ext x; exact (ConcreteCategory.congr_hom sq₂ x).symm)
-    htop.1 hbot.1 h₁.2 h₀ htop.2 hbot.2
+    (ModuleCat.ofHom (moduleCohomologyMapOfHom (ProjectiveSpace A ι) α (T.map v) 0))
+    (ModuleCat.ofHom (moduleCohomologyMapOfHom _ β ((Scheme.Modules.pullback p).map (T.map u)) 0))
+    (ModuleCat.ofHom (moduleCohomologyMapOfHom _ β ((Scheme.Modules.pullback p).map (T.map v)) 0))
+    (Sheaf.H.map ((SheafOfModules.toSheaf _).map
+      ((moduleTensorLeftFunctor (ProjectiveSpace B ι) (twistingSheaf B ι d)).map
+        ((Scheme.Modules.pullback (map σ ι)).map u))) 0)
+    (Sheaf.H.map ((SheafOfModules.toSheaf _).map
+      ((moduleTensorLeftFunctor (ProjectiveSpace B ι) (twistingSheaf B ι d)).map
+        ((Scheme.Modules.pullback (map σ ι)).map v))) 0)
+    (baseChangeTwistCohomologyHom σ ι d E₁ 0)
+    (baseChangeTwistCohomologyHom σ ι d E₀ 0)
+    (baseChangeTwistCohomologyHom σ ι d F 0)
+    (baseChangeTwistCohomologyHom_bijective σ ι d E₁ 0)
+    (baseChangeTwistCohomologyHom_bijective σ ι d E₀ 0)
+    (baseChangeTwistCohomologyHom_bijective σ ι d F 0)
+    (baseChangeTwistCohomologyHom_naturality σ ι d u 0)
+    (baseChangeTwistCohomologyHom_naturality σ ι d v 0)
+    (moduleCohomologyBaseChangeMap (toSpec A ι) σ (T.obj E₁) 0)
+    (moduleCohomologyBaseChangeMap (toSpec A ι) σ (T.obj E₀) 0)
+    (moduleCohomologyBaseChangeMap (toSpec A ι) σ (T.obj F) 0)
+    (moduleCohomologyBaseChangeMap_naturality (toSpec A ι) σ (T.map u) 0)
+    (moduleCohomologyBaseChangeMap_naturality (toSpec A ι) σ (T.map v) 0)
+    hA hB h₁ h₀
 
 variable [IsNoetherianRing A]
 

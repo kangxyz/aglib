@@ -1,0 +1,41 @@
+# Validated exact-coefficient assembly follow-up
+
+This is a further use of the existing same-family shared-original-single method,
+not a new method or a matched speedup claim. It is ready for the existing
+performance documentation owner; that N documentation is outside this author's
+source2 plus bounded README write scope.
+
+The complete lower assembly source c9ee passed in actual run
+remote-ea58796c97b44af5bb5072b84c7a0d3f, SOURCE926bd397ee6c4d7bb9ae084137ace7d9cd5d49033ae153de43b610340845ff4f.
+The thin native source7f83 failed kernel checking at46:8, then reported a
+dependent missing theorem at75:8. The mixed main run closed exit1,29 actual
+passes2failures; the separate Product failure was independent. Full native
+log/receipt/events/progress and exact source before-images are preserved under
+repairs/1/evidence/Aea58796-SOURCE926bd/ and repairs/1/before/.
+
+Repair1 preserves that full assembly theorem body and appends a lower view at
+the actual original coefficient-single functor Z, with its literal construction
+equality Z=U followed by single. Substitution proves the view using the unchanged
+assembly. The native adapter supplies zmodSingle X n and rfl, retaining identical
+hI/conclusion heads. The original beta, native exact-single unit comparison, all
+3 theorem headers, arbitrary n, independent derived universes and killed/higher
+proof tail are unchanged. No new model, desired isomorphism/coherence hypothesis,
+budget, trust or pin change is introduced.
+
+Actual repaired lower source bff0408c72a4155d49a803c31f04dd9db1568048bef526e45eb39331da620183 and
+native b70a3c5d0988000990a1aa8b4a178089191e0ee2ee2f935753d2ec8fe3516e8b
+passed together in the ordinary native AllModule root run
+remote-443ee638fb9841beb2914cfa749af04f,
+SOURCEc07d541986f51ebade660d0fd5e15ab0abc23e50378b02782fda861e002bde31.
+It closed exit0 with2actual frontends2passed,no diagnostics and no input drift.
+Compiler-event intervals are4.365815s and4.610050s; Lake rounds module times to
+4.8s and5.1s. These distinct measurements are not per-tactic costs or a matched
+speedup experiment. The evidence does not identify a unique kernel-reduction pair.
+
+The complete successful receipt/log/events/full source manifest are retained
+under repairs/1/evidence/A443ee638-SOURCEc07d/. The actual source manifest SHA is
+7e8d26bb24af308b6be54c1af613a115a2de221f8547e5d673b25706cde3e5fd; the actual
+receipt SHA is cb925e5b3987d65c9468ae7aff8eb37e31ac765624505747a752bc8414986721.
+The retained independent source review supports the unchanged whole assembly and
+actual live literal-single/native-call delta, with no new obligation. No broader
+Proper/Etale closure, fresh tests/lint/audit or standalone producer gate follows.

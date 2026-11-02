@@ -1,0 +1,45 @@
+{
+  "run": "remote-eba1201c30df4f8990cf355760c20c2a",
+  "source": "748bf623a7e70359ed2eeb1891b22a310ebe4f8e30a123bc3098b92cb621407d",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-eba1201c30df4f8990cf355760c20c2a/receipt.json",
+  "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-eba1201c30df4f8990cf355760c20c2a/build.log",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-eba1201c30df4f8990cf355760c20c2a/compiler-events.jsonl",
+  "group_closed": true,
+  "exit_code": 0,
+  "setup": {
+    "name": "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.SectionPullback",
+    "isModule": true,
+    "options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "setup_sha256": "9137bfeafe632490c8fbc3fe53bcb975beee01430a81ecab39f7b7594ca00d0a",
+    "source_sha256": "b9a6aac2e8befd8d83b22d31ba2014a6691351f320ab89300eba4e4e87a9c884",
+    "meaning": "Three exact original propositions as (_h:P):True; no original proof."
+  },
+  "formation_frontend_seconds": 44.593340054154396,
+  "propositions": [
+    {
+      "declaration": "rootsComposite_identity_formation",
+      "formation": "PASS",
+      "original_proposition_proved": false
+    },
+    {
+      "declaration": "sectionPullback_of_original_coefficients_formation",
+      "formation": "PASS",
+      "original_proposition_proved": false
+    },
+    {
+      "declaration": "sectionPullback_roots_formation",
+      "formation": "PASS",
+      "original_proposition_proved": false
+    }
+  ],
+  "kernel_errors": [],
+  "warnings": [],
+  "informational_linter": "Three #check hashCommand informational notices; normal options/linters unchanged, exit0.",
+  "meaning": "Exact statement formation succeeds for the two public propositions and new private-helper proposition. Actual proof/kernel checking remains unresolved. This is not production theorem coverage.",
+  "basis_reconciliation": "Nativee03/lower810 and all15 bounded inspected source/provider hashes unchanged; actual whole SOURCE748 differs from failed CPP SOURCE4d26 and is retained separately."
+}

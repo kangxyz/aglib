@@ -1,0 +1,5 @@
+{
+  "time_utc": "2026-10-30T10:47:15.993521+00:00",
+  "supervisor_pid": 256776,
+  "reason": "Known source-side debug-option style errors and unbounded explicit type printing; no usable completed named Kernel boundary after prolonged instrumented run. Stop only owned scratch; preserve partial record, no native/source correctness conclusion. Same-question mechanics correction moves debug options to CLI and bounded type heads; no suppression/limit/source change."
+}

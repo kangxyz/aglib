@@ -1,0 +1,26 @@
+{
+  "question": "Remove complete actual old private prefix now publicly supplied by canonical resolution-sections owner after real b12 compiler duplicate findings",
+  "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/Restriction.lean",
+  "before_sha256": "b12ab5fb2d25be40b51f9ce459e06d7c47926778d83e2adaa8a1a0537a42a33d",
+  "after_sha256": "e57f63a7cf0a788eb249c3eff6806137f28322ae419ab897c300a6a82795e741",
+  "canonical_provider": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/ResolutionSections/Restriction.lean",
+  "canonical_provider_sha256": "69f840c73078d0c829b4ddf58a601e1b8e61b0c8a082b6d68eb152d8ced0eace",
+  "all_reused_names": [
+    "moduleGlobalSectionsRestrictionMap",
+    "unitHomGlobalSectionsEquiv_restrict",
+    "moduleResolutionRestrictionSectionsMap",
+    "moduleResolutionRestrictionSectionsMap_f_apply",
+    "moduleResolutionRestrictionSectionCyclesMap",
+    "moduleResolutionRestrictionSectionCyclesMap_unitHom",
+    "moduleResolutionRestrictionSectionCocycle",
+    "moduleResolutionRestrictionSectionClass"
+  ],
+  "prefix_source_correspondence": "All eight declarations, types, maps, equations, supplied resolutions, scalar maps and entire proofs identical after stripping private modifiers/comments and the duplicate identical standard-instance declaration/localattribute",
+  "normalized_prefix_sha256": "e9bbf2aa6d6bc9ac7e1122587153b1ccddc4c9b807be5e9ee07f2720206a91c1",
+  "preserved_tail_start": "section AffineCounit",
+  "preserved_tail_sha256": "6b36a20abc4ee91327163ad52fa721c789a6d0f9ac40e467c62ca9e5f850a96e",
+  "entire_remaining_tail_byte_identical": true,
+  "new_CounitRestriction_dependency": false,
+  "options_models_hypotheses_maps_changed": false,
+  "author_cpp": "None; actual incremental compiler remains with executor"
+}

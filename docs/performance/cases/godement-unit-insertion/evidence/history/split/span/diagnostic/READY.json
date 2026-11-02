@@ -1,0 +1,28 @@
+{
+  "diagnostic": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/span/diagnostic/SpanFactorizedSeam.lean",
+  "sha256": "39291e25dabe0ea685ed7bbb52dc9399441ff39f4d645725fae8d59cb5c7f52e",
+  "actual_basis": "fineA f0e024e250804c8d979a57763b374078/SOURCE4c06; Span1a16 own errors62/99 only; retain6passes",
+  "scope": "Only original factorized declaration through inferred hunit/hw; no component declaration, no final exact, no kernel replay",
+  "inspection": "Pure raw expression comparisons; capdepth5 and ten mismatches per equality part; short heads/arities only; no isDefEq/whnf/prettyprint or production option edits",
+  "expected_outcome": "Deliberate SPAN_SEAM_DIAGNOSTIC_COMPLETE exit1 after compact report; no mathematical proof acceptance claimed",
+  "dependencies": [
+    "Lean",
+    "Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.SpanData",
+    "Aglib.CategoryTheory.Functor.NatTrans.UnitInsertionSpan"
+  ],
+  "production_mutation": "None; common84bd/Span1a16 remain unchanged",
+  "actual_outcome": {
+    "run": "remote-54e4ca3cf4584ccdbc691016b76cb821",
+    "source": "4c06e06973aab5d5814d8883e0bf0ccf02da9c6d798656debb20b98c3de008f2",
+    "wall_seconds": 248.5578,
+    "exit_code": 1,
+    "errors": [
+      "line55 invalid meta definition: spanExprHead not marked meta",
+      "line111 tactic not implemented"
+    ],
+    "report_executed": false,
+    "controlled_stop_marker": false,
+    "conclusion": "Invalid instrumentation only; no raw expression report, proof acceptance or conversion-cause evidence"
+  },
+  "repair_packet": "READY-v2.json"
+}

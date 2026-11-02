@@ -1,0 +1,26 @@
+{
+  "source_digest": "1647aa8d1d19a3ad8c40017f9968a40edd1ca191f79b22efcb206f6bcecbbfee",
+  "roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.BaseChangeMap",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.TriangleCoherence",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.H1.SectionPullback",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.BoundaryNaturality",
+    "Aglib.CategoryTheory.Sites.Representable.SectionComparisonValues"
+  ],
+  "profile": {
+    "jobs": 8,
+    "threads": 4,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536
+  },
+  "action": "phase",
+  "diagnostic_purpose": "Corrected actual proof-valued definitions for body-driven inference after501e header inference rejection; no clean cut outcome accepted yet",
+  "config": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote.json",
+  "run": "remote-d645301c3ea44c46a7d3a16d8e95b66c",
+  "actual_status": "running",
+  "session": 95387,
+  "execution_owner": "/root/roots_section_whole_alternative",
+  "canonical_receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-d645301c3ea44c46a7d3a16d8e95b66c/receipt.json",
+  "allocated_utc": "2026-10-30T10:36:05.049771+00:00",
+  "boundary": "Concrete proof-value definitions with inferred types; distinct from proposition formation and production CPP."
+}

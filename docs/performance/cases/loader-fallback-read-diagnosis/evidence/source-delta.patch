@@ -1,0 +1,526 @@
+diff --git a/.github/LEAN_CI.md b/.github/LEAN_CI.md
+index d98346d4..7a977810 100644
+--- a/.github/LEAN_CI.md
++++ b/.github/LEAN_CI.md
+@@ -110,6 +110,16 @@ Each job restores `.lake` and the native cache directory together once. Build
+ and Test run on separate runners and each saves its completed compilation,
+ including partial progress on failure. Test's Actions restore warms dependency
+ and checker/auditor outputs; it does not substitute for the current Build artifact.
++Before either job first invokes Lake, it removes only read-only, runner-owned
++regular `*.ltar.hash` sidecars under the root package's `.lake/build/ir`.
++Lake 4.34.1 writes these derived hash files directly. Runs 40818968404,
++40846135998 and 40880003859 repeatedly failed while writing the inherited
++`ToUnit.ltar.hash`; their logs establish failed writes and cache reuse, but
++do not record the original sidecar's mode, owner or origin.
++The cleanup requires runner-owned writable real build directories, skips
++symlinks, and unlinks metadata without changing immutable artifact permissions
++or shared cache inodes. The existing rehashed build regenerates those hashes;
++writable sidecars, compiled outputs and cache mappings are preserved.
+ The required current-run artifact overwrites production cache mappings. The
+ no-build check tests availability and applicability of those production outputs
+ against native inputs, without requiring checker outputs from Build. It does not
+diff --git a/.github/workflows/lean-ci.yml b/.github/workflows/lean-ci.yml
+index 1d8be091..ef88af06 100644
+--- a/.github/workflows/lean-ci.yml
++++ b/.github/workflows/lean-ci.yml
+@@ -66,6 +66,45 @@ jobs:
+             lean-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles(format('{0}/lean-toolchain', inputs.package-directory)) }}-
+             lean-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles(format('{0}/lean-toolchain', inputs.package-directory), format('{0}/lake-manifest.json', inputs.package-directory)) }}-
+             lean-${{ runner.os }}-${{ runner.arch }}-
++      - name: Remove read-only restored archive hash sidecars
++        working-directory: ${{ inputs.package-directory }}
++        run: &restore-writable-archive-hashes |
++          python3 - <<'PY'
++          import os
++          from pathlib import Path
++          import stat
++
++          # Lake rewrites these derived hashes, even when the artifact is immutable.
++          # Unlink the sidecar instead of changing permissions on shared cache inodes.
++          def owned_directory(path):
++              metadata = path.lstat()
++              if (not stat.S_ISDIR(metadata.st_mode) or metadata.st_uid != os.getuid()
++                      or not metadata.st_mode & stat.S_IWUSR):
++                  raise SystemExit(f'Unsafe restored build directory: {path}')
++
++          root = Path('.lake/build/ir')
++          for parent in (Path('.lake'), Path('.lake/build'), root):
++              try:
++                  owned_directory(parent)
++              except FileNotFoundError:
++                  raise SystemExit(0)
++          removed = 0
++          for directory, children, files in os.walk(root, followlinks=False):
++              owned_directory(Path(directory))
++              children[:] = [name for name in children
++                             if not (Path(directory) / name).is_symlink()]
++              for name in files:
++                  if not name.endswith('.ltar.hash'):
++                      continue
++                  path = Path(directory) / name
++                  metadata = path.lstat()
++                  if stat.S_ISREG(metadata.st_mode) and not metadata.st_mode & stat.S_IWUSR:
++                      if metadata.st_uid != os.getuid():
++                          raise SystemExit(f'Foreign restored archive hash sidecar: {path}')
++                      path.unlink()
++                      removed += 1
++          print(f'Removed {removed} read-only restored archive hash sidecars; Lake will recompute them.')
++          PY
+       - name: Configure Lean
+         id: lean-setup
+         working-directory: ${{ inputs.package-directory }}
+@@ -252,6 +291,9 @@ jobs:
+           restore-keys: |
+             ${{ needs.build.outputs.cache-key }}-tests-
+             ${{ needs.build.outputs.cache-key }}
++      - name: Remove read-only restored archive hash sidecars
++        working-directory: ${{ inputs.package-directory }}
++        run: *restore-writable-archive-hashes
+       - name: Configure Lean
+         id: lean-setup
+         working-directory: ${{ inputs.package-directory }}
+diff --git a/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean b/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean
+index e4abe79a..f82e993f 100644
+--- a/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean
++++ b/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean
+@@ -36,6 +36,18 @@ set_option backward.defeqAttrib.useBackward true
+ 
+ universe u
+ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
++private lemma unit_span_pasting {C : Type*} [Category C]
++    {A B D E F G : C} {u : A ⟶ B} {p : B ⟶ D} {v : A ⟶ E}
++    {q : E ⟶ D} {r : D ⟶ F} {s : E ⟶ G} {t : G ⟶ F}
++    (h₁ : u ≫ p = v ≫ q) (h₂ : q ≫ r = s ≫ t) :
++    u ≫ p ≫ r = (v ≫ s) ≫ t := by
++  calc
++    u ≫ p ≫ r = (u ≫ p) ≫ r := (Category.assoc _ _ _).symm
++    _ = (v ≫ q) ≫ r := congrArg (fun k => k ≫ r) h₁
++    _ = v ≫ (q ≫ r) := Category.assoc _ _ _
++    _ = v ≫ (s ≫ t) := congrArg (fun k => v ≫ k) h₂
++    _ = (v ≫ s) ≫ t := (Category.assoc _ _ _).symm
++
+ namespace AlgebraicGeometry.Scheme.Modules
+ 
+ namespace Plus
+@@ -288,11 +300,15 @@ lemma local_total_unit_component (K : CochainComplex.Plus X.Modules) (n : ℤ) :
+     ((godementTotalPlusUnit W).app ((Scheme.Modules.pullback b).mapCochainComplexPlus.obj
+       ((Scheme.Modules.restrictFunctor j).mapCochainComplexPlus.obj K))).hom.f n ≫
+         ((godementTotalPlus W).map (openTotalBridge a b f j h K)).hom.f n := by
+-  rw [← openTotalBridge_f]
+-  exact augmentation_component_naturality (godementTotalPlus W) (godementTotalPlusUnit W)
++  have hn := augmentation_component_naturality (godementTotalPlus W) (godementTotalPlusUnit W)
+     ((Scheme.Modules.pullback b).mapCochainComplexPlus.obj
+       ((Scheme.Modules.restrictFunctor j).mapCochainComplexPlus.obj K))
+     (restrictedTotalPlus a f K) (openTotalBridge a b f j h K) n
++  have hb := congrArg
++    (fun q => q ≫ ((godementTotalPlusUnit W).app (restrictedTotalPlus a f K)).hom.f n)
++    (openTotalBridge_f a b f j h K n)
++  have he := hb.symm.trans hn
++  exact he
+ 
+ lemma open_component_first_square (K : CochainComplex.Plus X.Modules) (n : ℤ) :
+     (((Scheme.Modules.restrictFunctor j).map
+@@ -358,9 +374,10 @@ lemma open_unit_span_component (K : CochainComplex.Plus X.Modules) (n : ℤ) :
+           ((Scheme.Modules.restrictFunctor j).mapCochainComplexPlus.obj K))).hom.f n)) ≫
+       (Scheme.Modules.pushforward b).map
+         (((godementTotalPlus W).map (openTotalBridge a b f j h K)).hom.f n) := by
+-  rw [← Category.assoc, open_component_first_square, Category.assoc,
+-    open_component_second_square]
+-  simp only [Category.assoc]
++  have h₁ := open_component_first_square a b f j h K n
++  have h₂ := open_component_second_square a b f j h K n
++  have he := unit_span_pasting h₁ h₂
++  exact he
+ 
+ lemma open_unit_span_factorized (K : CochainComplex.Plus X.Modules) :
+     ((Scheme.Modules.restrictFunctor j).mapCochainComplexPlus.map
+diff --git a/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleEtaleExchangeMate.lean b/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleEtaleExchangeMate.lean
+index 8bf22afb..27f65462 100644
+--- a/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleEtaleExchangeMate.lean
++++ b/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleEtaleExchangeMate.lean
+@@ -15,12 +15,43 @@ public import Aglib.CategoryTheory.Adjunction.ExchangeTransport
+ 
+ open CategoryTheory CategoryTheory.Limits
+ 
++/-- Evaluate the original two-comparison chain before substituting concrete
++coefficient categories, keeping both actual comparison maps. -/
++private theorem comparison_comp_hom_app
++    {A B C D E F : Type*} [Category* A] [Category* B] [Category* C]
++    [Category* D] [Category* E] [Category* F]
++    (P : A ⥤ B) (Q : B ⥤ C) (U : A ⥤ D) (V : B ⥤ E) (W : C ⥤ F)
++    (P' : D ⥤ E) (Q' : E ⥤ F)
++    (a : P ⋙ V ≅ U ⋙ P') (b : Q ⋙ W ≅ V ⋙ Q')
++    (c : (P ⋙ Q) ⋙ W ≅ U ⋙ P' ⋙ Q')
++    (hc : c = Functor.associator P Q W ≪≫ Functor.isoWhiskerLeft P b ≪≫
++      (Functor.associator P V Q').symm ≪≫ Functor.isoWhiskerRight a Q' ≪≫
++        Functor.associator U P' Q') (M : A) :
++    c.hom.app M = b.hom.app (P.obj M) ≫ Q'.map (a.hom.app M) := by
++  subst c
++  simp
++
+ universe u
+ 
+ namespace AlgebraicGeometry.Scheme.EtaleCohomology
+ 
+ open Coefficients
+ 
++/-- The native alias has the two original factors of the shared constant-ring
++comparison, with no replacement isomorphism or coefficient realization. -/
++private theorem native_compRightIso_hom_app {X S T : Scheme.{u}}
++    (Λ : Type (u + 1)) [Ring Λ] (f : S ⟶ X) (g : T ⟶ S) (M : ModuleSheaf T Λ) :
++    (moduleDirectImageCompRightIso Λ f g).hom.app M =
++      (moduleDirectImageComparison f Λ).hom.app ((moduleDirectImage g Λ).obj M) ≫
++        (moduleValuedDirectImage f Λ).map ((moduleDirectImageComparison g Λ).hom.app M) :=
++  comparison_comp_hom_app
++    (moduleDirectImage g Λ) (moduleDirectImage f Λ)
++    (moduleSheafEquivalence T Λ).inverse (moduleSheafEquivalence S Λ).inverse
++    (moduleSheafEquivalence X Λ).inverse
++    (moduleValuedDirectImage g Λ) (moduleValuedDirectImage f Λ)
++    (moduleDirectImageComparison g Λ) (moduleDirectImageComparison f Λ)
++    (moduleDirectImageCompRightIso Λ f g) rfl M
++
+ variable {X S T : Scheme.{u}} (f : X ⟶ S) (g : T ⟶ S) [Etale g]
+   (Λ : Type (u + 1)) [Ring Λ]
+ 
+@@ -53,11 +84,7 @@ theorem moduleEtaleBaseChangeIso_horizontal_unit (M : ModuleSheaf X Λ) :
+     (moduleEtaleBaseChangeIso_valued f g Λ)
+     (moduleValuedEtaleBaseChangeIso_unit f g Λ) M
+   intro N
+-  simpa only [moduleDirectImageCompRightIso, Iso.trans_hom, NatTrans.comp_app,
+-    Functor.isoWhiskerLeft_hom, Functor.isoWhiskerRight_hom,
+-    Functor.whiskerLeft_app, Functor.whiskerRight_app, Functor.associator_hom_app,
+-    Functor.associator_inv_app, Iso.symm_hom, Functor.map_id,
+-    Functor.comp_obj, Category.id_comp, Category.comp_id, Category.assoc] using
++  simpa only [native_compRightIso_hom_app, Category.assoc] using
+     moduleDirectImageSquareIso_hom_valued Λ f (pullback.fst g f) g
+       (pullback.snd g f) pullback.condition N
+ 
+diff --git a/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/FieldNaturality.lean b/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/FieldNaturality.lean
+index 18e28188..d37c8b20 100644
+--- a/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/FieldNaturality.lean
++++ b/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/FieldNaturality.lean
+@@ -508,14 +508,22 @@ theorem comparison_pullback
+   obtain ⟨p, rfl⟩ := (hAK.bijective (muSheaf n K)).surjective a
+   refine Quotient.inductionOn p ?_
+   intro P
+-  let Y := P.finiteEtaleRepresentative hRK
+-      (GroupCohomology.Kummer.Field.finiteCoefficient K n).locally_constant
+-  let e := P.finiteEtaleRepresentativeIso hRK
+-      (GroupCohomology.Kummer.Field.finiteCoefficient K n).locally_constant
+-  let τ := P.representedSchemeAction (rootsGroup n K) Y e
+-  letI : Surjective Y.obj.hom := P.represented_surjective (rootsGroup n K) Y e
++  let Y :=
++    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.finiteEtaleRepresentative
++      (P := P) hRK (GroupCohomology.Kummer.Field.finiteCoefficient K n).locally_constant
++  let e :=
++    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.finiteEtaleRepresentativeIso
++      (P := P) hRK (GroupCohomology.Kummer.Field.finiteCoefficient K n).locally_constant
++  let τ :=
++    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.representedSchemeAction
++      (H := rootsGroup n K) (P := P) (Y := Y) (e := e)
++  let : Surjective Y.obj.hom :=
++    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.represented_surjective
++      (H := rootsGroup n K) (P := P) (Y := Y) (e := e)
+   have he : torsorExtClass (torsorOfSchemeAction (rootsGroup n K) Y τ) = torsorExtClass P :=
+-    torsorExtClass_iso (P.representedSchemeActionIso (rootsGroup n K) Y e)
++    torsorExtClass_iso
++      (_root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.representedSchemeActionIso
++        (H := rootsGroup n K) (P := P) (Y := Y) (e := e))
+   change GroupCohomology.Kummer.Field.comparison L n hAL hRL (schemePullback
+       (K := K) (L := L) n (torsorExtClass P)) =
+     (muPullback i n).onH1 (GroupCohomology.Kummer.Field.comparison K n hAK hRK
+diff --git a/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/Horizontal.lean b/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/Horizontal.lean
+index ca1b99e7..17ce4cb4 100644
+--- a/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/Horizontal.lean
++++ b/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/Horizontal.lean
+@@ -11,7 +11,8 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.Cartesian
+ 
+ The native exact pasting equation proves composition and cancellation. At an
+ actual étale cartesian second square, the accepted original comparison supplies
+-the invertible second exchange. All six derived-category universes stay independent.
++the invertible second exchange. Its four required derived-category universes
++stay independent; the two ordinary pasting arguments require no derived models.
+ -/
+ 
+ @[expose] public noncomputable section
+@@ -42,6 +43,12 @@ variable {X₀ X₁ X₂ S₀ S₁ S₂ : Scheme.{u}}
+   (e : f₂ ≫ (g₂ ≫ g₁) = (h₂ ≫ h₁) ≫ f₀)
+   (F : AbelianSheaf.{u, u + 1} X₀) (q : ℕ)
+ 
++omit [HasDerivedCategory.{dX₀} (AbelianSheaf.{u, u + 1} X₀)]
++  [HasDerivedCategory.{dX₁} (AbelianSheaf.{u, u + 1} X₁)]
++  [HasDerivedCategory.{dX₂} (AbelianSheaf.{u, u + 1} X₂)]
++  [HasDerivedCategory.{dS₀} (AbelianSheaf.{u, u + 1} S₀)]
++  [HasDerivedCategory.{dS₁} (AbelianSheaf.{u, u + 1} S₁)]
++  [HasDerivedCategory.{dS₂} (AbelianSheaf.{u, u + 1} S₂)] in
+ /-- Original higher exchange is stable under horizontal composition at the
+ specified coefficient, with the literal pulled-back coefficient on the second square. -/
+ theorem higherBaseChangeMap_isIso_hComp
+@@ -55,6 +62,12 @@ theorem higherBaseChangeMap_isIso_hComp
+   rw [← hp]
+   infer_instance
+ 
++omit [HasDerivedCategory.{dX₀} (AbelianSheaf.{u, u + 1} X₀)]
++  [HasDerivedCategory.{dX₁} (AbelianSheaf.{u, u + 1} X₁)]
++  [HasDerivedCategory.{dX₂} (AbelianSheaf.{u, u + 1} X₂)]
++  [HasDerivedCategory.{dS₀} (AbelianSheaf.{u, u + 1} S₀)]
++  [HasDerivedCategory.{dS₁} (AbelianSheaf.{u, u + 1} S₁)]
++  [HasDerivedCategory.{dS₂} (AbelianSheaf.{u, u + 1} S₂)] in
+ /-- Cancelling the original second exchange detects the first exchange after
+ its actual inverse image; neither a replacement endpoint isomorphism nor a
+ conservativity assumption is hidden here. -/
+@@ -72,6 +85,8 @@ theorem higherBaseChangeMap_inverseImage_isIso_of_hComp
+     infer_instance
+   exact (isIso_comp_right_iff _ _).mp ((isIso_comp_left_iff _ _).mp hi)
+ 
++omit [HasDerivedCategory.{dX₀} (AbelianSheaf.{u, u + 1} X₀)]
++  [HasDerivedCategory.{dS₀} (AbelianSheaf.{u, u + 1} S₀)] in
+ /-- At a single actual étale cartesian restriction, original composite exchange
+ invertibility detects the inverse image of the first exchange. The original
+ natural-isomorphism component is typed before an indexed chart is substituted. -/
+diff --git a/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/README.md b/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/README.md
+index 105ee365..a6ddaebf 100644
+--- a/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/README.md
++++ b/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/README.md
+@@ -26,6 +26,11 @@ suppliers. No new extension-by-zero functor is constructed.
+ `EtaleRelativeDimensionZero.lean` specializes both theorems through the native
+ characterization of étaleness as smoothness of relative dimension zero.
+ 
++`Horizontal.lean` proves composition and cancellation for the original ordinary
++higher exchange without derived-category choices. Its étale specialization
++retains the four independent derived worlds used by the existing Cartesian
++comparison supplier.
++
+ ## Allowed torsion and its original filtered presentation
+ 
+ `AllowedTorsion.lean` defines `IsBaseInvertibleTorsion S F` using local positive
+diff --git a/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/Reduction.lean b/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/Reduction.lean
+index f5808e31..e6157a96 100644
+--- a/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/Reduction.lean
++++ b/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/Reduction.lean
+@@ -168,9 +168,11 @@ theorem higherBaseChangeMap_smooth_isIso_of_line
+     (f : X ⟶ S) (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
+     (h : IsPullback g' f' f g) [QuasiCompact f] [QuasiSeparated f] [Smooth g]
+     (hn : IsUnit (n : Γ(S, ⊤))) (F : AbelianSheaf.{u, u + 1} X) (hF : n • 𝟙 F = 0) (q : ℕ) :
+-    IsIso ((higherBaseChangeMap f f' g g' h.w.symm q).app F) :=
+-  Proper.higherBaseChangeMap_isIso_of_boundedExchange f f' g g' h.w.symm n
+-    (uniformHigherBaseChange_smooth_of_line hline g f f' g' h
+-      inferInstance inferInstance hn) F hF q
++    IsIso ((higherBaseChangeMap f f' g g' h.w.symm q).app F) := by
++  simpa only [higherBaseChangeMapFromDerived_eq] using
++    (Proper.higherBaseChangeMap_isIso_of_boundedExchange.{u, dX, dS, dX', dS'}
++      f f' g g' h.w.symm n
++      (uniformHigherBaseChange_smooth_of_line hline g f f' g' h
++        inferInstance inferInstance hn) F hF q)
+ 
+ end AlgebraicGeometry.Scheme.EtaleCohomology.SmoothReduction
+diff --git a/Aglib/AlgebraicGeometry/Group/IsogenyPairing.lean b/Aglib/AlgebraicGeometry/Group/IsogenyPairing.lean
+index d6859c64..287a3ff7 100644
+--- a/Aglib/AlgebraicGeometry/Group/IsogenyPairing.lean
++++ b/Aglib/AlgebraicGeometry/Group/IsogenyPairing.lean
+@@ -100,8 +100,14 @@ theorem transportUnit_iso {Q : Torsor (gm X)} (e : Torsor.Iso P Q)
+   have ht : transport Q (op U) (e.carrierIso.hom.hom.app (op U) s)
+       (e.carrierIso.hom.hom.app (op U) t) = transport P (op U) s t := by
+     apply transport_eq
+-    rw [← e.equivariant, action_transport]
+-  simp only [transportUnit, ht]
++    have he := e.equivariant (op U) (transport P (op U) s t) s
++    exact he.symm.trans
++      (congrArg (fun x : P.carrier.obj.obj (op U) => e.carrierIso.hom.hom.app (op U) x)
++        (action_transport P (op U) s t))
++  change (unitsSections X (op U) (transport Q (op U) (e.carrierIso.hom.hom.app (op U) s)
++      (e.carrierIso.hom.hom.app (op U) t))).toMul =
++    (unitsSections X (op U) (transport P (op U) s t)).toMul
++  exact congrArg (fun a : (gm X).obj.obj (op U) => (unitsSections X (op U) a).toMul) ht
+ 
+ /-- Positive evaluation is natural under an actual equivariant torsor
+ isomorphism, before any frame is selected. -/
+@@ -147,7 +153,11 @@ theorem frameTransport_tensor (L M : LineBundle X)
+     change frameAction etaleLineBundleDescent X L (op U) a s = s' at ha
+     change frameAction etaleLineBundleDescent X M (op U) b t = t' at hb
+     rw [ha, hb]
+-  dsimp only [transportUnit]
++  change (unitsSections X (op U)
++      (transport (frameTorsor etaleLineBundleDescent X (tensorLineBundle X L M)) (op U)
++        (FrameTensor.tensorSection etaleLineBundleDescent X L M (op U) s t)
++        (FrameTensor.tensorSection etaleLineBundleDescent X L M (op U) s' t'))).toMul =
++    (unitsSections X (op U) a).toMul * (unitsSections X (op U) b).toMul
+   rw [ht]
+   exact congrArg Additive.toMul ((unitsSections X (op U)).map_add a b)
+ 
+@@ -738,8 +748,8 @@ theorem class_eq_zero_of_kernelCharacter_eq_one [IsAlgClosed k]
+       exact (congrArg Additive.ofMul ht).trans (map_zero _).symm
+     have ha := action_transport P (op (cover f)) s
+       (P.carrier.obj.map (kernelDeckRepresentation f x).hom.op s)
+-    rw [hzero, P.zero_action] at ha
+-    exact ha.symm
++    rw [hzero] at ha
++    exact ha.symm.trans (P.zero_action (op (cover f)) s)
+   obtain ⟨t, _, _⟩ := deckInvariant_descends f P.carrier s hs
+   let e := ((Scheme.Modules.pullbackId D.X.left).app L.val).symm ≪≫
+     frameSectionsEquiv etaleLineBundleDescent D.X.left L (op (etaleTerminal D.X.left)) t ≪≫
+diff --git a/Aglib/AlgebraicGeometry/Picard/KummerH1.lean b/Aglib/AlgebraicGeometry/Picard/KummerH1.lean
+index a279c724..cc16df13 100644
+--- a/Aglib/AlgebraicGeometry/Picard/KummerH1.lean
++++ b/Aglib/AlgebraicGeometry/Picard/KummerH1.lean
+@@ -302,7 +302,7 @@ theorem pairClassToH1_forget [IsNoetherian X]
+     (hn : 0 < n) (hinv : IsUnit (n : Γ(X, ⊤))) (P : Classes X n) :
+     coefficientMap (inclusion X n) (pairClassToH1 X h n hn hinv P) =
+       torsorClassToH1 (gm X)
+-          (AlgebraicGeometry.Scheme.Modules.Invertible.AssociatedBundle.classEquiv h
++          (AlgebraicGeometry.Scheme.Modules.Invertible.AssociatedBundle.classEquiv X
+           (forgetClass X P)) := by
+   refine Quotient.inductionOn P ?_
+   intro P
+@@ -317,7 +317,7 @@ theorem pairClassToH1_injective_of_global_roots (h : EtaleLineBundleDescent.{u})
+     Function.Injective (pairClassToH1 X h n hn hinv) := by
+   intro P Q hPQ
+   apply forgetClass_injective X hroot
+-  apply (AlgebraicGeometry.Scheme.Modules.Invertible.AssociatedBundle.classEquiv h).injective
++  apply (AlgebraicGeometry.Scheme.Modules.Invertible.AssociatedBundle.classEquiv X).injective
+   apply (h03AJ.bijective (gm X)).injective
+   rw [← pairClassToH1_forget X h n hn hinv, ← pairClassToH1_forget X h n hn hinv, hPQ]
+ 
+@@ -377,8 +377,7 @@ theorem inclusion_H1_injective (h : EtaleLineBundleDescent.{u}) (h03AJ : Stacks0
+   obtain ⟨Q, rfl⟩ := pairClassToH1_surjective X h h03AJ n hn hinv y
+   have hpq : P = Q := by
+     apply forgetClass_injective X hroot
+-    apply (AlgebraicGeometry.Scheme.Modules.Invertible.FrameTensor.picardH1Equiv h X
+-        h03AJ).injective
++    apply (AlgebraicGeometry.Scheme.Modules.Invertible.FrameTensor.picardH1Equiv.{u, w} X).injective
+     exact (pairClassToH1_forget X h n hn hinv P).symm.trans
+       (hxy.trans (pairClassToH1_forget X h n hn hinv Q))
+   rw [hpq]
+@@ -397,11 +396,11 @@ theorem pairClassToH1_add (h : EtaleLineBundleDescent.{u}) (h03AJ : Stacks03AJ.{
+     coefficientMap (X := X) (inclusion X n)
+       (pairClassToH1 X h n hn hinv P + pairClassToH1 X h n hn hinv Q)
+   rw [map_add, pairClassToH1_forget, pairClassToH1_forget, pairClassToH1_forget]
+-  change (AlgebraicGeometry.Scheme.Modules.Invertible.FrameTensor.picardH1Equiv h X h03AJ)
++  change (AlgebraicGeometry.Scheme.Modules.Invertible.FrameTensor.picardH1Equiv.{u, w} X)
+       (forgetClass X (P + Q)) =
+-    (AlgebraicGeometry.Scheme.Modules.Invertible.FrameTensor.picardH1Equiv h X h03AJ)
++    (AlgebraicGeometry.Scheme.Modules.Invertible.FrameTensor.picardH1Equiv.{u, w} X)
+         (forgetClass X P) +
+-      (AlgebraicGeometry.Scheme.Modules.Invertible.FrameTensor.picardH1Equiv h X h03AJ)
++      (AlgebraicGeometry.Scheme.Modules.Invertible.FrameTensor.picardH1Equiv.{u, w} X)
+           (forgetClass X Q)
+   have hf : forgetClass X (P + Q) = forgetClass X P + forgetClass X Q :=
+     congrArg Subtype.val ((picardTorsionAddEquiv X n hroot).map_add P Q)
+diff --git a/scripts/tests/test_lean_ci_workflow.py b/scripts/tests/test_lean_ci_workflow.py
+index 9d0dc311..616fc38f 100644
+--- a/scripts/tests/test_lean_ci_workflow.py
++++ b/scripts/tests/test_lean_ci_workflow.py
+@@ -234,6 +234,113 @@ class WorkflowGates(unittest.TestCase):
+         self.assertIn('--root "$root"', step('test_lint', 'Audit production axioms')['run'])
+ 
+ 
++class RestoredArchiveHashMetadata(unittest.TestCase):
++    name = 'Remove read-only restored archive hash sidecars'
++
++    def cleanup(self, root):
++        return subprocess.run(['bash', '-e', '-o', 'pipefail', '-c',
++                               step('build', self.name)['run']], cwd=root,
++                              capture_output=True, text=True)
++
++    def test_both_jobs_clean_restored_metadata_before_first_lake_invocation(self):
++        for job in ('build', 'test_lint'):
++            actions = JOBS[job]['steps']
++            cleanup = step(job, self.name)
++            restore = next(item for item in actions
++                           if item.get('uses', '').startswith('actions/cache/restore@'))
++            self.assertEqual(cleanup['run'], step('build', self.name)['run'])
++            self.assertEqual(cleanup['working-directory'], '${{ inputs.package-directory }}')
++            self.assertLess(actions.index(restore), actions.index(cleanup))
++            self.assertLess(actions.index(cleanup), actions.index(step(job, 'Configure Lean')))
++        self.assertIn('lake build --rehash', step('build', 'Build')['run'])
++
++    def test_tar_restored_readonly_sidecar_is_regenerated_without_mutating_artifacts(self):
++        with tempfile.TemporaryDirectory(prefix='restored-archive-hash-') as directory:
++            root = Path(directory)
++            source = root / 'source'
++            ir = source / '.lake/build/ir/Aglib/Path with spaces'
++            ir.mkdir(parents=True)
++            cached = source / 'native-cache/artifacts/immutable'
++            cached.parent.mkdir(parents=True)
++            cached.write_text('0123456789abcdef')
++            readonly = ir / 'ToUnit.ltar.hash'
++            os.link(cached, readonly)
++            cached.chmod(0o444)
++            for name, content, mode in (('Writable.ltar.hash', 'keep writable hash', 0o644),
++                                         ('ToUnit.ltar', 'immutable archive', 0o444),
++                                         ('ToUnit.olean.hash', 'other hash metadata', 0o444)):
++                path = ir / name
++                path.write_text(content)
++                path.chmod(mode)
++            archive = root / 'cache.tar'
++            with tarfile.open(archive, 'w') as stream:
++                stream.add(source / '.lake', arcname='.lake')
++                stream.add(source / 'native-cache', arcname='native-cache')
++            restored = root / 'restored'
++            restored.mkdir()
++            subprocess.run(['tar', '-xf', str(archive), '-C', str(restored)], check=True)
++            ir = restored / ir.relative_to(source)
++            cached = restored / cached.relative_to(source)
++            readonly = ir / readonly.name
++            self.assertEqual(readonly.stat().st_ino, cached.stat().st_ino)
++            self.assertEqual(readonly.stat().st_mode & 0o777, 0o444)
++            external = root / 'external'
++            external.mkdir()
++            target = external / 'Outside.ltar.hash'
++            target.write_text('external metadata')
++            target.chmod(0o444)
++            (ir / 'Linked.ltar.hash').symlink_to(target)
++            (ir / 'linked-directory').symlink_to(external, target_is_directory=True)
++            result = self.cleanup(restored)
++            self.assertEqual(result.returncode, 0, result.stderr)
++            self.assertIn('Removed 1 read-only', result.stdout)
++            self.assertFalse(readonly.exists())
++            readonly.write_text('fedcba9876543210')  # Native rehash can recreate the sidecar.
++            self.assertTrue(readonly.stat().st_mode & 0o200)
++            self.assertEqual(cached.read_text(), '0123456789abcdef')
++            self.assertEqual(cached.stat().st_mode & 0o777, 0o444)
++            self.assertEqual((ir / 'ToUnit.ltar').read_text(), 'immutable archive')
++            self.assertEqual((ir / 'ToUnit.ltar').stat().st_mode & 0o777, 0o444)
++            self.assertEqual((ir / 'Writable.ltar.hash').read_text(), 'keep writable hash')
++            self.assertEqual((ir / 'ToUnit.olean.hash').read_text(), 'other hash metadata')
++            self.assertTrue((ir / 'Linked.ltar.hash').is_symlink())
++            self.assertEqual(target.read_text(), 'external metadata')
++            self.assertEqual(target.stat().st_mode & 0o777, 0o444)
++
++    def test_missing_build_tree_is_a_noop(self):
++        with tempfile.TemporaryDirectory(prefix='missing-archive-hash-') as root:
++            self.assertEqual(self.cleanup(root).returncode, 0)
++            self.assertEqual(list(Path(root).iterdir()), [])
++
++    def test_symlink_ancestors_and_nonwritable_directories_fail_before_unlink(self):
++        for ancestor in ('.lake', '.lake/build', '.lake/build/ir'):
++            with self.subTest(ancestor=ancestor), tempfile.TemporaryDirectory() as directory:
++                root = Path(directory)
++                external = root / 'external'
++                external.mkdir()
++                path = root / ancestor
++                path.parent.mkdir(parents=True, exist_ok=True)
++                path.symlink_to(external, target_is_directory=True)
++                result = self.cleanup(root)
++                self.assertNotEqual(result.returncode, 0)
++                self.assertIn('Unsafe restored build directory', result.stderr)
++                self.assertEqual(list(external.iterdir()), [])
++        with tempfile.TemporaryDirectory() as directory:
++            ir = Path(directory) / '.lake/build/ir/Aglib'
++            ir.mkdir(parents=True)
++            sidecar = ir / 'ToUnit.ltar.hash'
++            sidecar.write_text('0123456789abcdef')
++            sidecar.chmod(0o444)
++            ir.chmod(0o555)
++            try:
++                result = self.cleanup(directory)
++                self.assertNotEqual(result.returncode, 0)
++                self.assertIn('Unsafe restored build directory', result.stderr)
++                self.assertTrue(sidecar.exists())
++            finally:
++                ir.chmod(0o755)
++
++
+ class BuildJobBudget(unittest.TestCase):
+     def test_deadline_is_first_and_includes_setup_time(self):
+         first = JOBS['build']['steps'][0]

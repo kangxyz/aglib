@@ -1,0 +1,62 @@
+{
+  "question": "D47 families D_canonical_exceptional_to_ordinary_map and E_localization_full_triangle_and_composite_vertices: actual inherited completed constructions and laws, not new six-functor existence",
+  "completed_utc": "2026-11-01T15:43:15.890617+00:00",
+  "outcome": "Own construction/compile assignment complete.115/115 current owned leaves and11/11 original terminal roots have exact native CPP. All27 original terminal declarations retained. Own ordinary complex mathematical review finds no gap; Root accepts joint mathematical closure after exact shared B/C V5 review.",
+  "mathematical_product": [
+    "Original canonical f!\u2192Rf* arrow from the lower-shriek adjoint-triple map, through raw compactification, densification and chosen comparison. Original proper/open normalization, bounded literal BC, unbounded literal/given BC and actual compositor laws retained.",
+    "Entire geometric/scalar natural triangle isomorphisms descend through current Q from original exact complex squares, retaining counit, unit and canonical connecting arrow.",
+    "Bounded/unbounded exceptional localization triangles use the actual f! compositor and proper/open vertex normalizations. All3 arrows are transported in the ambient derived category; no triangulated structure is assumed on the intrinsic torsion full subcategory."
+  ],
+  "conditions": {
+    "G": "Geometric triangle transport: arbitrary Ring \u039b; specified Cartesian squares for open j,j\u2032 and closed i,i\u2032; exact complementary ranges on both bases; independent derived worlds for X,X\u2032,U,U\u2032,Z,Z\u2032. No torsion, qcqs, or flatness premise.",
+    "S": "Scalar triangle transport: CommRing \u039b,\u0393 and any ring homomorphism \u039b\u2192\u0393; one complementary open/closed pair; independent derived worlds for both coefficient rings and all three schemes. No flatness, injective-preservation, or torsion premise.",
+    "BP": "Bounded proper normalization: Ring \u039b and intrinsic torsion-cohomology D+ inputs; proper f; independent source, target, and dense middle models. Chosen normalization additionally has qcqs target.",
+    "BO": "Bounded open normalization: Ring \u039b and intrinsic torsion-cohomology D+ inputs; quasi-compact open immersion with qcqs target; independent source, target, dense middle family, and raw open model.",
+    "BB": "Bounded literal base change: Ring \u039b on intrinsic torsion D+; quasi-compact f with supplied nonempty dense compactifications; arbitrary base map b and its literal pullback; separate source, target, raw, and dense derived worlds. No qcqs assumption on the new base.",
+    "BC": "Bounded composition: Ring \u039b on intrinsic torsion D+; f,g quasi-compact, separated, locally of finite type; intermediate and target schemes qcqs; independent endpoint and three compactification families; any supplied compactified-composition tower.",
+    "BL": "Bounded composite localization: Ring \u039b and intrinsic torsion D+ input; X and S qcqs; f quasi-compact, separated, locally of finite type; quasi-compact open j, complementary closed i; independent U,Z,X,S,f,j,i,jf,if and raw-open derived worlds.",
+    "UB": "Unbounded given-square base change: Ring \u039b, positive N with N\u00b71=0; specified Cartesian square (f,f\u2032,g,g\u2032); quasi-compact f,f\u2032 with supplied dense compactifications; separate given-presentation, literal pullback, endpoint, dense and raw models; arbitrary new base.",
+    "UO": "Unbounded chosen open normalization: Ring \u039b, positive N with N\u00b71=0; quasi-compact open immersion with qcqs target; independent endpoint/dense/raw derived worlds.",
+    "UOraw": "Unbounded raw postcomposition: Ring \u039b; f is a scheme isomorphism and g an open immersion; independent source, middle and target worlds; the over version also fixes k and equality g\u226bf=k. No torsion premise for this raw equality.",
+    "UC": "Unbounded composition: the BC geometric/world hypotheses, with all unbounded objects and positive N satisfying N\u00b71=0.",
+    "UL": "Unbounded composite localization: the BL geometric/world hypotheses, with all unbounded objects and positive N satisfying N\u00b71=0."
+  },
+  "source_identity": {
+    "main": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/release-integrator-20261030/integration-30b6",
+    "HEAD": "b0f8ca3f44be620dde8b40f65e1eec0143e45db4",
+    "archive_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/snapshot/agent-c-independent-ext-quasifinite-source-20261027T101616Z/aglib",
+    "archive_tar_sha256": "0a26b49033cb47986944110e352b6c12468d40c058310182d7c5a97aa9467738",
+    "original11_terminal_files": "All11 current terminal files remain byte-identical to supplied original source hashes. Historical bare D build IDs were not adopted as CPP.",
+    "retired5_wrappers": "All absent. Native Q/RF/units and actual quotient-normalized equivalences retain genuinely independent source/target/raw/middle worlds.",
+    "source_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-canonical-localization/current-ready-sources.json"
+  },
+  "evidence": {
+    "CPP": {
+      "artifact": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-canonical-localization/CURRENT-115-CPP.json",
+      "owned_count": 115,
+      "matched_current_passes": 115,
+      "terminal_count": 11,
+      "matched_terminals": 11,
+      "new_invocation_for_join": false,
+      "scope": "Existing guarded ordinary/D native frames, exact current source hashes, successful frontend exits. Failed overall runs and old failed/guard-only frames retain their actual status."
+    },
+    "ordinary_math_review": {
+      "artifact": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/reviews/d-canonical-localization/ordinary-review-02.json",
+      "sha256": "c64cb40e679fc3bae60608c37b13f99ba3bddb67700a6631ca05cf6dd66f26f9",
+      "basis": "Fixed REVIEW-01 + REVIEW-02-DELTA + independently reconciled shared prose overlay; all own115 derivations and27 original terminal declarations."
+    },
+    "joint_shared_math_review": {
+      "artifact": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/reviews/d-composition-extension/ordinary-review-v5.json",
+      "sha256": "991b0659c8deec1545bc16d632320ba8493800f59cfe2b3f366795a4628c7cf8",
+      "acceptance": "Root explicit joint-closure acceptance: B/C ordinary V5 actual295+173 suppliers PASS; DE57 shared suppliers within exact reviewed295. Current57 hashes match our actual reviewed basis, with zero unreviewed drift."
+    }
+  },
+  "reconciliations": {
+    "shared_V3": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-canonical-localization/SHARED-V3-RECONCILIATION.json",
+    "publication_stock_symbols": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-canonical-localization/stock-publication-symbol-impact.json",
+    "publication_basis": "42 renames and11 helper API deltas have zero direct symbol hits in own115; no publication-only source/API basis was silently applied to MAIN."
+  },
+  "remaining_obligation": "No owned proof/source/compiler repair remains. Root retains the single final native predicate batch, shared-facade integration, Git and publication actions. This return does not claim those checks/actions or an expos\u00e9 established-status assignment. Unrelated six compositor compiler failures do not block any of these11 terminal roots.",
+  "reproduction": "Use current-ready-sources.json roots on the coherent built MAIN baseline with normal incremental lake build; exact executed commands/source/run/receipt/event identities are retained per module in CURRENT-115-CPP.json.",
+  "changes_and_retractions": "No mathematical statement/map/premise retraction. Inherited model wrappers were replaced by explicit native objects/units at genuine comparison boundaries; original maps and independent worlds retained. Routine interface/additivity/unit-proof/whitespace repairs were checked on their own actual frames; earlier failed routes and a pre-launch capture-guard failure were not relabeled."
+}

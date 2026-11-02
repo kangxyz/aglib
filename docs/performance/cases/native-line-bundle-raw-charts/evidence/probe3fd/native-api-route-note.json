@@ -1,0 +1,140 @@
+{
+  "status": "Read-only native API candidate note; await the one existing probe before choosing production repair. No additional probe or N edit.",
+  "recorded_at_utc": "2026-10-26T20:45:05.500898+00:00",
+  "current_source": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean",
+    "sha256": "2083f9a19bbc86763080cb3539166752b739ba54b4e10f087080b9d83b8e18fb",
+    "full_preserved_copy": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/associated-bundle-core-staging/section-family-boundary-probe/input-source/AssociatedBundle2083.source.txt",
+    "lines": 1120
+  },
+  "probe_unchanged_sha256": "3fd6981aebbae927546414007511ec342534f0e01a7e0924643b08db7c39b674",
+  "read_sources": [
+    {
+      "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/CategoryTheory/Sites/Descent/IsPrestack.lean",
+      "sha256": "470b75a20ab5cb1de6de12444a84d4b50352cbd1b6bba9224cd54779dd8b22b2",
+      "read_ranges": [
+        [
+          52,
+          132
+        ]
+      ]
+    },
+    {
+      "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/CategoryTheory/Functor/Basic.lean",
+      "sha256": "0c1bfdd6dfa1871fb84476916327e7798a9847959d3115b1a8c8408704a8af35",
+      "read_ranges": [
+        [
+          40,
+          47
+        ]
+      ]
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/Picard/UnitDescent.lean",
+      "sha256": "749621906089111541562ace861f977588c06cb8f530411c0d490ac28aeaac26",
+      "read_ranges": [
+        [
+          89,
+          170
+        ]
+      ]
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Sites/Descent/Bind.lean",
+      "sha256": "b0107ea974321e93d4158e9969c56922157ab21192dff91b2f64c3acb0afb6dd",
+      "read_ranges": [
+        [
+          53,
+          133
+        ]
+      ]
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Sites/Descent/OfEpi.lean",
+      "sha256": "317ab62a1313d7de41f5f731b3c07d10fbd9745b3744d2080e92e3b5f355983c",
+      "read_ranges": [
+        [
+          37,
+          46
+        ]
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "constant": "CategoryTheory.Pseudofunctor.LocallyDiscreteOpToCat.pullHom_id",
+      "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/CategoryTheory/Sites/Descent/IsPrestack.lean",
+      "lines": [
+        85,
+        90
+      ],
+      "type": "For variable F, native M1/M2 and local phi:f1* M1 -> f2* M2, pullHom phi (id Y) f1 f2 = phi.",
+      "actual_application": "F=lineBundles, M1=M, M2=unitObject X, f1=f2=V.hom, phi=c< V,t >. Pin these actual arguments and the exact whole phi before any concrete simplification.",
+      "why_legitimate": "It applies to every local chart morphism, not only identities or global pullback maps; uses no descent, site or naturality conclusion.",
+      "performance_status": "Already occurs unqualified inside the failing simpa. Explicit whole instantiation is a candidate if the probe locates that step; no improvement/cause is established."
+    },
+    {
+      "constant": "AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition_self_one",
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/Picard/UnitDescent.lean",
+      "lines": [
+        142,
+        146
+      ],
+      "type": "For f:Y to A, transition f f (1:Gamma(Y,top)) = id of the actual pulled unit object.",
+      "actual_application": "f=V.hom after the already proved hu(op V,t) normalizes the literal unit.",
+      "why_legitimate": "Proved from original pullbackUnitIso/scalarMap_one; does not assume chart naturality or create another unit map."
+    },
+    {
+      "constant": "CategoryTheory.Functor.map_id",
+      "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/CategoryTheory/Functor/Basic.lean",
+      "lines": [
+        40,
+        47
+      ],
+      "type": "For the same functor H and object U, H.map(id U)=id(H.obj U).",
+      "actual_application": "H=Construction.rawPresheaf X M, then evaluate at the actual c< V,t > by ConcreteCategory.congr_hom and the native Types identity rule.",
+      "why_legitimate": "Uses the ordinary functor field of the same original raw-Hom presheaf, no global frame or desired naturality assumption.",
+      "boundary": "Only useful after the actual ChartRelation restriction has been related to this same presheaf map head; do not rebuild a presheaf or assume that view."
+    },
+    {
+      "constant": "AlgebraicGeometry.Scheme.Modules.Invertible.AssociatedBundle.presheafHom_map_eq_pullHom (private same-file theorem)",
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean",
+      "lines": [
+        498,
+        504
+      ],
+      "type": "presheafHom M N .map ((Etale.forget S).map f).op g = pullHom g f.left V.hom V.hom (Over.w f) (Over.w f).",
+      "proof": "rfl on the existing original map constructor.",
+      "actual_application": "Relates H.map f(c_i) to the actual pullHom in ChartRelationOn, for arbitrary local c_i. It is currently declared after the failing helper; any later use there would move/reuse this existing proof, not invent another constructor or imported private data API."
+    }
+  ],
+  "semantic_primitive": {
+    "constant": "CategoryTheory.Pseudofunctor.presheafHom",
+    "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/CategoryTheory/Sites/Descent/IsPrestack.lean",
+    "lines": [
+      122,
+      125
+    ],
+    "data": "obj is the actual pulled Hom; map p is literally pullHom along p.unop.left. This is the existing constructor behind rawPresheaf, not a replacement model."
+  },
+  "not_shortcuts": [
+    {
+      "constant": "LocallyDiscreteOpToCat.pullHom_id' / EtaleDescent.homRestriction_id",
+      "reason": "These preserve an IDENTITY INPUT MORPHISM under arbitrary restriction. The actual c_i is an arbitrary local frame, so they do not give restriction along the identity for c_i."
+    },
+    {
+      "constant": "LocallyDiscreteOpToCat.pullHom_map (OfEpi42-46)",
+      "reason": "Requires the input map to be an image F.map f1 of a global psi. An arbitrary local raw chart need not extend globally. Assuming that form could wrongly assume global bundle triviality."
+    },
+    {
+      "constant": "LocallyDiscreteOpToCat.map_eq_pullHom (Mathlib IsPrestack73-82)",
+      "reason": "Valid for local phi, but relates functorial image to pullHom through extra mapComp conjugators. It is not the plain presheaf restriction equation and by itself need not avoid the native expansion."
+    }
+  ],
+  "proof_input_boundary": "The actual ChartRelations and self-unit rule already proved from P/chi/descent are legitimate inputs. Identity/unit cancellation then derives naturality; no desired-naturality field is supplied.",
+  "latest_parent_report": "08756 CLOSED291 frontends290 success1 failure, no OOM; only sectionFamily_natural199 and709 missing-constant cascade. Power not reached. This is attributed to principal; no new compiler run.",
+  "compiler_run": false,
+  "native_writes": false,
+  "git_actions": false,
+  "production_route_selected": false
+}

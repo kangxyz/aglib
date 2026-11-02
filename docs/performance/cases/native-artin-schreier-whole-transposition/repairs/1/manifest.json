@@ -1,0 +1,91 @@
+{
+  "question": "Repair only the two rejected local notation declarations in lower ArtinSchreier, retaining exact native functor/sheaf values and all mathematics.",
+  "native_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib",
+  "native_git_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "path": "Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean",
+  "input_sha256": "6b222b8bb76624073d7c98672f9a0931eddc78e51a013c0c93ae7dbbbbe7882c",
+  "output_sha256": "8cf60bf91f85537d6a661320945057202a9b919ddf82a54b34046671cdbbdde0",
+  "delta_sha256": "4c41a4641d5164c53b35615c7090fab28c5b85525ad4127719cf396c57108814",
+  "failed_evidence": {
+    "run_dir": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-486cfa353ef442908f1b1c196ce5fed3",
+    "closed": true,
+    "build_log_sha256": "301422ac00424e841c99149a2cffb53da8ca3a0a0644b6edf464d266c6b72f6c",
+    "receipt_sha256": "87d908a05f96592e452269c69e081555b1ee40c0f44e6cc7d91f911857bce3e0",
+    "source_content_sha256": "613bfc35d8cbf63189466bc162d8470193c034f14ef3ccae7c62a593ba72d62b",
+    "source_receipt_sha256": "6a63a8755272f829697d261edf6d8e33d2a76ad4a82e5d40be52ec159cd9ec28",
+    "errors": [
+      {
+        "line": 3,
+        "text": "error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:49:38: no macro or `[quot_precheck]` instance for syntax kind `Lean.Parser.Term.explicitUniv` found"
+      },
+      {
+        "line": 6,
+        "text": "error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:54:66: elaboration function for `_private.Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier.0.CategoryTheory.Sheaf.ArtinSchreier.termRadd` has not been implemented"
+      },
+      {
+        "line": 8,
+        "text": "error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:66:63: elaboration function for `_private.Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier.0.CategoryTheory.Sheaf.ArtinSchreier.termRadd` has not been implemented"
+      },
+      {
+        "line": 10,
+        "text": "error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:68:26: no macro or `[quot_precheck]` instance for syntax kind `Lean.Parser.Term.anonymousCtor` found"
+      },
+      {
+        "line": 13,
+        "text": "error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:72:4: elaboration function for `_private.Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier.0.CategoryTheory.Sheaf.ArtinSchreier.termAadd` has not been implemented"
+      },
+      {
+        "line": 15,
+        "text": "error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:85:4: elaboration function for `_private.Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier.0.CategoryTheory.Sheaf.ArtinSchreier.termAadd` has not been implemented"
+      },
+      {
+        "line": 17,
+        "text": "error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:86:14: Application type mismatch: The argument"
+      },
+      {
+        "line": 25,
+        "text": "error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:91:25: Application type mismatch: The argument"
+      },
+      {
+        "line": 33,
+        "text": "error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:98:6: elaboration function for `_private.Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier.0.CategoryTheory.Sheaf.ArtinSchreier.termAadd` has not been implemented"
+      },
+      {
+        "line": 35,
+        "text": "error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:100:66: elaboration function for `_private.Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier.0.CategoryTheory.Sheaf.ArtinSchreier.termAadd` has not been implemented"
+      },
+      {
+        "line": 37,
+        "text": "error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:107:30: Application type mismatch: The argument"
+      },
+      {
+        "line": 45,
+        "text": "error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:113:27: Application type mismatch: The argument"
+      },
+      {
+        "line": 53,
+        "text": "error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:113:57: Application type mismatch: The argument"
+      }
+    ],
+    "primary_diagnostics": "quotPrecheck rejects explicitUniv in the Radd quotation and anonymousCtor in the Aadd quotation. Notation-elaboration and downstream argument-order errors are reported on this failed notation basis."
+  },
+  "repair": "Replace rejected local notation declarations by fully typed regular abbreviations additivePresheaf.{w,r,v,u} and additiveSheaf.{w,r,v,u}, then refer directly to them with the lift world explicit. Each abbreviation is exactly the original native functor or native Sheaf pair.",
+  "preservation": {
+    "ring_functor": "R\u22d9forget\u2082 CommRingCat RingCat\u22d9forget\u2082 RingCat AddCommGrpCat\u22d9AddCommGrpCat.uliftFunctor.{w,r}",
+    "sheaf_pair": "\u27e8additivePresheaf.{w} R,hR\u27e9 with the same supplied proof",
+    "ring_and_lift_worlds": "r and w remain independent; output native max r w",
+    "wrappers_held": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Frobenius.lean": "5be6b57f14457bda311e65781e412dd7414d43ac6c435217c4d480340a45c922",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Constants.lean": "d2a7c7461e034f05b03adb49fa49b6fc6fab4eb440a45ded2cd2d0ec59ee8fca"
+    },
+    "fixed_initial_R3_packet_held": true,
+    "new_model_record_hypothesis_flags_quotPrecheck_disable": false
+  },
+  "compile_targets": [
+    "Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Frobenius",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Constants"
+  ],
+  "compiler_coverage": "Repaired source UNCOMPILED by author; root immediately retries only these three completed/refactored modules plus necessary dependencies. No untouched AS consumer target.",
+  "remaining_gap": "Clean native elaboration of aliases and existing generic maps, followed by the same two fixed wrapper specializations; no new mathematical obligation is introduced by the notation repair."
+}

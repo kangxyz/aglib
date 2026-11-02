@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.PullbackUnit
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.PullbackSections
 public import Aglib.Algebra.Category.ModuleCat.BaseChange
+public import Aglib.LinearAlgebra.TensorProduct.Map
 public import Mathlib.AlgebraicGeometry.Group.Affine
 
 /-!
@@ -108,5 +109,21 @@ theorem sectionsPresheaf_map_specTensor_tmul {A B : CommAlgCat.{u} R} (f : A ⟶
           (z : Γ((pullback (Spec.map (CommRingCat.ofHom (algebraMap R B)))).obj F, ⊤)) => r • z)
         hR (sectionsPresheaf_map_unit (Spec (CommRingCat.of R)) F k s)).trans
           (specTensorSectionsIso_tmul R F B (f.hom a) s).symm))
+
+/-- The actual tensor-section map with only its additive structure retained. -/
+def tensorSectionsAddHom (A : CommAlgCat.{u} R) :
+    A ⊗[R] moduleSpecΓFunctor.obj F →+
+      Γ((pullback (Spec.map (CommRingCat.ofHom (algebraMap R A)))).obj F, ⊤) :=
+  (specTensorSectionsIso R F A).hom.hom.toAddMonoidHom
+
+/-- All algebra-map compatibility is checked on native additive maps before value lifting. -/
+theorem tensorSectionsAddHom_naturality {A B : CommAlgCat.{u} R} (f : A ⟶ B) :
+    (tensorSectionsAddHom R F B).comp
+      (f.hom.toLinearMap.rTensor (moduleSpecΓFunctor.obj F)).toAddMonoidHom =
+    (sectionsAddHom (Spec (CommRingCat.of R)) F
+      ((algSpec (CommRingCat.of R)).map f.op)).comp (tensorSectionsAddHom R F A) := by
+  apply TensorProduct.addHom_ext
+  intro a s
+  exact (sectionsPresheaf_map_specTensor_tmul R F f a s).symm
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.QuasiCoherent

@@ -26,6 +26,16 @@ suppliers. No new extension-by-zero functor is constructed.
 `EtaleRelativeDimensionZero.lean` specializes both theorems through the native
 characterization of étaleness as smoothness of relative dimension zero.
 
+`Horizontal.lean` proves composition and cancellation for the original ordinary
+higher exchange without derived-category choices. Its étale specialization
+retains the four independent derived worlds used by the existing Cartesian
+comparison supplier.
+
+[Locality](Locality.lean) defines `higherExchangeTest` directly on the intrinsic
+ordinary `higherBaseChangeMap`, with no derived-category choices. Its etale
+cover assembly retains the four independent models used by the actual
+Cartesian comparison on the restricted squares.
+
 ## Allowed torsion and its original filtered presentation
 
 `AllowedTorsion.lean` defines `IsBaseInvertibleTorsion S F` using local positive
@@ -55,3 +65,10 @@ curve effacement, low-degree curve invariance, and tame-cover extension.
 The intended torsion orders are invertible on the entire base, not merely at
 the coefficient point. The étale theorem makes no assertion about this missing
 positive-relative-dimension argument or about an unbounded derived comparison.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [ModuleInjectiveTests](ModuleInjectiveTests.lean)
+- [OrdinaryCartesian](OrdinaryCartesian.lean)

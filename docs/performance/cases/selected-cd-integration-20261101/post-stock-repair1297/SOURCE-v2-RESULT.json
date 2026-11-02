@@ -1,0 +1,16 @@
+{
+  "command": [
+    "python3",
+    "-m",
+    "lean_tools",
+    "source",
+    "--root",
+    "."
+  ],
+  "cwd": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+  "exit": 0,
+  "seconds": 39.809410125002614,
+  "HEAD": "c4880830a7ebfea496a348d361cd50b109ea536d",
+  "scope": "Current1297 checking source set, stockV3andone precise-Mate import header repair; native source-only predicate, no Lean frontend/test.",
+  "predecessor": "SOURCE-RESULT.json failed on soleMatecompatibilityimport; immutable."
+}

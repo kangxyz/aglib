@@ -1,0 +1,1 @@
+{"run": "remote-f8e3e2fd927449d0909820b73e064039", "action": "SIGTERM_to_verified_native_worker", "worker_pid": 934142, "group_leader": 934155, "source": "52bbaced3e2af5032fa8da954da4b127df99799780a8dc2d23fbb14bd3ebc077", "time": 1793139064.8762808, "boundary": "native worker handler owns group shutdown; no direct compiler kill/cache mutation"}

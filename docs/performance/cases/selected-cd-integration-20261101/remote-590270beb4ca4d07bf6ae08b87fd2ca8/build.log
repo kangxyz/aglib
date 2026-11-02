@@ -1,0 +1,7 @@
+✔ [4325/4330] Built Aglib.AlgebraicGeometry.Curves.PointDivisor.DivisorClass (3.9s)
+✔ [4326/4330] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductGermNaturality (47s)
+✔ [4327/4330] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.PullbackComposition (49s)
+✔ [4328/4330] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductRestrictionValues (73s)
+✔ [4329/4330] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductOriginalDiagram (133s)
+✔ [4330/4330] Built Aglib.AlgebraicGeometry.Picard.PowerDescent (271s)
+Build completed successfully (4330 jobs).

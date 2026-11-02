@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.PullbackPushforward
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.GodementUnit
+public import Aglib.CategoryTheory.Functor.NatTrans.UnitInsertion
 
 /-! # The canonical Godement pullback-pushforward unit
 
@@ -43,9 +44,9 @@ def pullbackPushforwardPlus {P X : Scheme.{u}} (p : P ⟶ X) :
 /-- The pullback-pushforward unit followed by pushforward of the Godement total unit. -/
 def pullbackPushforwardPlusUnit {P X : Scheme.{u}} (p : P ⟶ X) :
     𝟭 (CochainComplex.Plus X.Modules) ⟶ pullbackPushforwardPlus p :=
-  Plus.pullbackPushforwardUnit p ≫ Functor.whiskerRight
-    (Functor.whiskerLeft (Scheme.Modules.pullback p).mapCochainComplexPlus
-      (godementTotalPlusUnit P)) (Scheme.Modules.pushforward p).mapCochainComplexPlus
+  NatTrans.unitInsertion (Scheme.Modules.pullback p).mapCochainComplexPlus
+    (Scheme.Modules.pushforward p).mapCochainComplexPlus (godementTotalPlus P)
+    (Plus.pullbackPushforwardUnit p) (godementTotalPlusUnit P)
 
 lemma pullbackPushforwardPlusUnit_app {P X : Scheme.{u}} (p : P ⟶ X)
     (K : CochainComplex.Plus X.Modules) :

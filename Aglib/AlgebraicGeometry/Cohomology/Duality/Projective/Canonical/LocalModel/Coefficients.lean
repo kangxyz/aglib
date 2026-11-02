@@ -177,7 +177,8 @@ variable {A : CommRingCat.{u}} [HasExt.{w} (ModuleCat.{u} A)]
   (eN : moduleSpecΓFunctor.obj N ≅ ModuleCat.of A A)
   (he : eL.inv ≫ moduleSpecΓFunctor.map f = eN.inv)
 
-local instance : (moduleSpecΓFunctor (R := regularListQuotientRing s)).Additive :=
+local instance canonicalModelCoefficientSectionsAdditive :
+    (moduleSpecΓFunctor (R := regularListQuotientRing s)).Additive :=
   moduleSpecΓFunctor_additive _
 
 include he in

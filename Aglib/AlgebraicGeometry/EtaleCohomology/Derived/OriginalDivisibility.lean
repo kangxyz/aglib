@@ -11,7 +11,8 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.DirectImageDivisib
 # Divisibility transfer on original sheaf cohomology
 
 The endpoints use the original coefficient maps on original Ext cohomology.
-Source and target Ext universes, and all derived-category universes, are independent.
+Source and target Ext universes remain independent. The transfer selects one
+existing derived realization for each of its three mathematical categories internally.
 -/
 
 @[expose] public noncomputable section
@@ -20,7 +21,7 @@ open CategoryTheory AlgebraicGeometry DerivedCategory.Plus
 
 namespace AlgebraicGeometry.Scheme.EtaleCohomology
 
-universe u w w' dS dX dA
+universe u w w' dX dA
 
 private theorem bijective_nsmul_iff {A B : Type*} [AddCommGroup A] [AddCommGroup B]
     (e : A ≃+ B) (n : ℕ) :
@@ -63,14 +64,14 @@ theorem cohomology_directImage_nsmul_bijective
     {S X : Scheme.{u}}
     [HasExt.{w} (AbelianSheaf.{u, u + 1} S)]
     [HasExt.{w'} (AbelianSheaf.{u, u + 1} X)]
-    [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} S)]
-    [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
-    [HasDerivedCategory.{dA} AddCommGrpCat.{u + 1}]
     (f : S ⟶ X) (L : AbelianSheaf.{u, u + 1} S) (n q : ℕ)
     (hh : ∀ k : ℕ, 1 ≤ k → IsIso (n • 𝟙 ((higherDirectImage f k).obj L)))
     (hq : Function.Bijective (Sheaf.H.map (n • 𝟙 L) q))
     (hq' : Function.Bijective (Sheaf.H.map (n • 𝟙 L) (q + 1))) :
     Function.Bijective (Sheaf.H.map (n • 𝟙 ((directImage f).obj L)) (q + 1)) := by
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X)
+  let := HasDerivedCategory.standard AddCommGrpCat.{u + 1}
   let := (isIso_nsmul_homology_derivedGlobalSections_iff L q n).mpr hq
   let := (isIso_nsmul_homology_derivedGlobalSections_iff L (q + 1) n).mpr hq'
   apply (isIso_nsmul_homology_derivedGlobalSections_iff

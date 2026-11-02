@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.CategoryTheory.Sites.SheafCohomology.BasisAcyclicity.CechChange
+public import Aglib.CategoryTheory.Over.IteratedSliceComparison
 public import Mathlib.AlgebraicGeometry.Sites.Etale
 public import Mathlib.CategoryTheory.Limits.MorphismProperty
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Over
@@ -47,26 +48,14 @@ instance etaleSliceToScheme_preservesFiniteProducts :
 def etaleSliceBaseIso (T : Over W) :
     (Etale.forget X).obj T.left ≅
       (Over.map W.hom).obj ((etaleSliceToScheme W).obj T) :=
-  Over.isoMk (Iso.refl _) (by
-    dsimp [etaleSliceToScheme]
-    simpa using Over.w ((Etale.forget X).map T.hom))
+  (Over.postIteratedSliceBaseIso (Etale.forget X) W).app T
 
 /-- Restricting original coefficients through the two native slice descriptions agrees. -/
 def etaleSliceCoefficientIso {A : Type a} [Category.{b} A]
     (P : (Over X)ᵒᵖ ⥤ A) :
     (Over.forget W).op ⋙ ((Etale.forget X).op ⋙ P) ≅
       (etaleSliceToScheme W).op ⋙ ((Over.map W.hom).op ⋙ P) :=
-  NatIso.ofComponents (fun T => P.mapIso (etaleSliceBaseIso W T.unop).op.symm) (by
-    intro T S f
-    change P.map ((Etale.forget X).map f.unop.left).op ≫
-        P.map (etaleSliceBaseIso W S.unop).inv.op =
-      P.map (etaleSliceBaseIso W T.unop).inv.op ≫
-        P.map ((Over.map W.hom).map ((etaleSliceToScheme W).map f.unop)).op
-    rw [← P.map_comp, ← P.map_comp]
-    apply P.congr_map
-    apply Quiver.Hom.unop_inj
-    apply Over.OverMorphism.ext
-    simp [etaleSliceBaseIso, etaleSliceToScheme])
+  Over.postIteratedSliceCoefficientIso (Etale.forget X) W P
 
 /-- Actual finite-family Čech comparison from the small étale slice to schemes. -/
 def etaleSliceCechIso {A : Type a} [Category.{b} A] [Preadditive A]

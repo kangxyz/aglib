@@ -9,7 +9,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.CoinductionCohomolo
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.EtaleUnit
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteCokernelGeneral
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.PullbackEffacement
-public import Mathlib.Algebra.Homology.DerivedCategory.Ext.ExactSequences
+public import Aglib.CategoryTheory.Abelian.Ext.ClasswiseDimensionShift
 
 /-! # Classwise dimension shifting for original finite field coefficients
 
@@ -55,9 +55,12 @@ theorem cohomology_eq_zero_of_h2_of_exact_finiteCoinduction
     (F : AbelianSheaf.{u, u + 1} (Spec (.of K)))
     (hF : IsFiniteLocallyConstant F) (hp : KilledBy p F)
     (n : ℕ) (α : Sheaf.H.{w} F (n + 2)) : α = 0 := by
-  induction n generalizing F with
-  | zero => exact (h2 F hF hp).elim _ _
-  | succ n ih =>
+  refine Ext.eq_zero_of_classwise_effaceable _
+    (fun G => IsFiniteLocallyConstant G ∧ KilledBy p G) ?_ ?_ ⟨hF, hp⟩ n α
+  · intro G hG
+    exact h2 G hG.1 hG.2
+  · intro F hFp n α
+    rcases hFp with ⟨hF, hp⟩
     let : ∀ L : FiniteGaloisIntermediateField K (SeparableClosure K),
         HasExt.{u + 2} (AbelianSheaf.{u, u + 1} (Spec (.of L))) :=
       fun L => hasExtStandard (Spec (.of L))
@@ -68,16 +71,13 @@ theorem cohomology_eq_zero_of_h2_of_exact_finiteCoinduction
     let : Surjective f := ⟨fun x => ⟨default, Subsingleton.elim _ _⟩⟩
     let C := (directImage f).obj ((inverseImage f).obj F)
     let i : F ⟶ C := (inverseImageAdjunction f).unit.app F
-    let S := ShortComplex.mk i (cokernel.π i) (cokernel.condition i)
-    have hS : S.ShortExact := { exact := ShortComplex.exact_cokernel i }
     have hi : Sheaf.H.map i (n + 2 + 1) α = 0 :=
       unit_cohomologyMap_eq_zero_of_pullback_eq_zero.{u, w, u + 2} f F (n + 2 + 1) α hL
-    obtain ⟨β, hβ⟩ := Ext.covariant_sequence_exact₁ _ hS α hi rfl
     have hQ : IsFiniteLocallyConstant (cokernel i) :=
       isFiniteLocallyConstant_cokernel K F C hF (hfinite L F hF) i
     have hpQ : KilledBy p (cokernel i) :=
       killedBy_cokernel i p (killedBy_directImage_inverseImage f F hp)
-    rw [← hβ, ih (cokernel i) hQ hpQ β, Ext.zero_comp]
+    exact ⟨C, i, inferInstance, ⟨hQ, hpQ⟩, hi⟩
 
 /-- The original all-degree conclusion, retaining the arbitrary source Ext
 universe and the original finite locally constant coefficient. -/

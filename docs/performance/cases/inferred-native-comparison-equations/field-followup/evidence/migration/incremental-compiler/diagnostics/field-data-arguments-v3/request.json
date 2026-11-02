@@ -1,0 +1,10 @@
+{
+  "question": "Same actual hfinal inferred proposition vs normalized original target; skip equal/proof pairs; at most20 data differences/depth80; retain failing exact",
+  "origin": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/repair-v4/diagnostics/FieldComparisonDataArgumentsV2.lean",
+  "origin_sha256": "9ba716dc743670477b8adfecf3ac975b2cc7755420a53393e0aa0a0c379c9511",
+  "candidate": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/field-data-arguments-v3/FieldComparisonDataArguments.lean",
+  "candidate_sha256": "597e966b854fd813a5f03f8ceb30c489577423008b9d0c960c16c3f12ccee59d",
+  "change": "Only pair-match fallback wildcard arity repair: | _ => to | _, _ =>",
+  "native_sha256": "616b87a1041f6eed9b19b5d5ecd0bc50c3df4acf636496f42b7c4800883c35ce",
+  "authority": "Root assigned C mechanical derived-copy repairs; source author informed; no author/native source writes"
+}

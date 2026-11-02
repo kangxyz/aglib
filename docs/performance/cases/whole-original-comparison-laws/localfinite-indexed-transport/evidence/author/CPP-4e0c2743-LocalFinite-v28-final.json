@@ -1,0 +1,28 @@
+{
+  "run": "remote-4e0c2743acea48b6ab6c56bb886f5d9f",
+  "source": "97107a0b67721e67791420a016ca36ebc5ec9df36a5f3efc4d35a356ad56ec2c",
+  "source_receipt_sha256": "193f2a21653799fe872ec1c8d68637b34517eaab0355ec25a21c300c2e659177",
+  "group_closed": true,
+  "aggregate_exit": 1,
+  "sources": [
+    {
+      "path": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean",
+      "sha256": "b62f08cb91e253f3e3457699cabe925756eb4755039c610ea0f91e83920d3261",
+      "verdict": "fresh_pass",
+      "exit_code": 0,
+      "elapsed_seconds": 4.256506055593491
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean",
+      "sha256": "655b2ec9420861b503e7f1bb59d54ad4983c801f67161fc6bf6d603b0c9841d6",
+      "verdict": "fresh_failure",
+      "exit_code": 1,
+      "elapsed_seconds": 147.40078572928905
+    }
+  ],
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-n-c-runs/remote-4e0c2743acea48b6ab6c56bb886f5d9f/receipt.json",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-n-c-runs/remote-4e0c2743acea48b6ab6c56bb886f5d9f/compiler-events.jsonl",
+  "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-n-c-runs/remote-4e0c2743acea48b6ab6c56bb886f5d9f/build.log",
+  "source_basis": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-whole-source-transport-v28/LIVE_READY.json",
+  "boundary": "b62fhelperPASS/native655bKernel45+99cascade. Generictransport law provescorrectly; fullconcretespecialization remainsunresolved, no attributingtostill-oldht/dataCtor. No unchanged655productionretry. AllindependentGeo/Primitive/Germ/Section/Relativebases retained."
+}

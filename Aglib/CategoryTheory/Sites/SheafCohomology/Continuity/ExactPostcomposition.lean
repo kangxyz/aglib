@@ -52,6 +52,8 @@ theorem rightDerivedPostcompIso_hom_natTrans (n : ℕ) (X : C) :
     simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
   rw [InjectiveResolution.rightDerived_app_eq (Functor.whiskerLeft F τ) I n]
   dsimp only [rightDerivedPostcompIso, rightDerivedPostcompObjIso,
+    CategoryTheory.Functor.rightDerivedPostcompIso,
+    CategoryTheory.Functor.rightDerivedPostcompObjIso,
     NatIso.ofComponents_hom_app, Iso.trans_hom, Functor.mapIso_hom, Iso.symm_hom]
   simp only [Category.assoc]
   change (I.isoRightDerivedObj (F ⋙ G) n).hom ≫

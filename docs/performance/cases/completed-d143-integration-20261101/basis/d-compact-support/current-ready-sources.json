@@ -1,0 +1,57 @@
+{
+  "question": "D1238 actual native single geometric-fibre comparison and its fixed-ring coefficient naturality",
+  "main_head": "b0f8ca3f44be620dde8b40f65e1eec0143e45db4",
+  "root": "Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Unbounded.SingleGeometricFiber",
+  "source": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/GlobalSections.lean",
+      "sha256": "68ded9a0895d4b55fa24308f63e4a9322ac38d280a759cfe9fea3ea43eff518f"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/GlobalSectionsUnderlying.lean",
+      "sha256": "371210b20baddb23ecc134893d22c01d0ac058084e53c368eb6dabcdd95d357a"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/FieldSections.lean",
+      "sha256": "b1f0d7ae245064125481f6e56dfc4fdb79348f2ab75f0ba431ef160e59117a95"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/GlobalSections.lean",
+      "sha256": "639817e1ee1405a7bdf69be216095eaccb3d30da566e23800ece889be45bb17c"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/DirectImage.lean",
+      "sha256": "6a3c5bbd9ff669003bf986b7194471e6e8e83e906019695fa784cc562952308a"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/FieldSections.lean",
+      "sha256": "f67a42d1a07ca0d87e1e7044e31f7ddc6ec83b275ff9eeed2304df1128e0947f"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/GeometricStalk.lean",
+      "sha256": "07e0a47be96ddb45a97bc051ac4630891529c596d7625d6d1100db5405759f3c"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/GeometricStalk.lean",
+      "sha256": "c24dc201148adb47ba847f57aae0545d96c9ce342c664bd43c0e097247b9152a"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/GeometricFiber.lean",
+      "sha256": "263e0f6945b43a0bb8a0ca2061de4ac3014f2b5bf8e9014ffaceb8f18c499ddb"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/SingleGeometricFiber.lean",
+      "sha256": "3cee415f5f588475c2a5e1e9b0f0aa47a759fd1a5204732dae2644ac8a89cdac"
+    }
+  ],
+  "native_replacements": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleStalk.lean": "98dbe8e475105ac849ab06e28c54ae11178bad7c1e5dc956583ebbb75fe9f460",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleStalkInside.lean": "3b328f66397d6049c4d0c0bc226d4153c4ce768eab77bee5226fe8f856beee1c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/GeometricPoints/InverseImage/Module.lean": "b9e9a4d8180dcac49491dda971d4feadf8128590621ccee01949476e2ac2bb80"
+  },
+  "changes_from_initial_ready": [
+    "FieldSections: original terminal-germ IsIso dictionary passed explicitly to asIso; original map unchanged",
+    "Unbounded/DirectImage: only chosen compactification model required for compact-support value/homology; original full family retained on comparison laws"
+  ],
+  "compilation_boundary": "Broker must reconcile captured repair01 and later refinement02; no closure claimed by this source manifest."
+}

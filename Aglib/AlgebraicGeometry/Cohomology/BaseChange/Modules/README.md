@@ -130,3 +130,9 @@ in every degree on a qcqs scheme with quasicoherent coefficients and retains
 the original unit-tensor/geometric-pullback equation. Faithful tensor extension
 reflects vanishing, and native dimensions agree over the respective fields.
 No properness, Noetherianity or finite-dimensional cohomology is required.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [Map/RestrictionValue](Map/RestrictionValue.lean)

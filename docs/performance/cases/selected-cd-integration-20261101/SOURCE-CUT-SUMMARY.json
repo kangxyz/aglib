@@ -1,0 +1,48 @@
+{
+  "baseline": "374f73ce34df7d53e2590b4f028d6e8014f47b28",
+  "CI_first_source": "Aglib/AlgebraicGeometry/EtaleCohomology/FiniteLocallyConstant/SectionComparison.lean",
+  "CI_source_already_published_sha256": "97b3bc27e3b93ecdf7d0d3314a60813484619043de89f50207cb6e840938dc39",
+  "assigned_historical_universe": 1134,
+  "late_actual_working_count_note": "Exchange restored publica5, so actual full changed code is now1133; candidate844 unchanged. Preserve historical1205plan.",
+  "candidate": 844,
+  "held_scope_members": 289,
+  "held_existing_public": 18,
+  "held_new_unpublished": 271,
+  "held_context_public_seeds": [
+    "Aglib/AlgebraicGeometry/Descent/FinitePresentation/Gluing.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/GeometricNeighborhoodBaseChange.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/GeometricNeighborhoodLimit.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeChartSections.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeNeighborhoodGerms.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/EtaleDirectImageMate.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricCohomologyDiagram.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonEquation.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackCohomologyCocone.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackLimitCoefficient.lean",
+    "Aglib/AlgebraicGeometry/Sites/EtaleAffineBasis/RepresentativeSections.lean"
+  ],
+  "new_peer_30_and_CI_overlap_candidate": [],
+  "new_peer_30_and_CI_overlap_public_Exchange_context": [],
+  "coverage_counts": {
+    "recent_CPP": 714,
+    "retained_old_CPP": 129,
+    "ExactAdjunction_direct_old_CPP": 1
+  },
+  "missing_private_imports": [],
+  "candidate_imports_held": [],
+  "scope_partition": "844candidate +289held +1CI-already-published =1134historicalscope",
+  "late_held_only_repair": {
+    "Equation": "13a22ef2cb8038bef9a727f9923c657cb2c73526c58d620da27e82cf0a81bfea",
+    "Exchange": "a5a82ff7849fb3acdc8e428553d75d470fd98644fe0567f53709c578e7dfc843",
+    "status": "6276e52c9c9b406bbee944573a5a5d0f/source2fb0af6e40e8fbebf178427fa19cc81546919804c15638797d291b6141bc6b65 CLOSED1/no drift, Equation13a530:6 maxRecDepth; Exchangea5 andfourconsumersnotattempted"
+  },
+  "remaining_coverage_gaps": [
+    "Equation13a/a5 affected graph6276 closed1 at Equation530:6 maxRecDepth; Exchangea5/four consumer roots not attempted. All remain outside844.",
+    "Equation-only sufficient mixed context is unsupported; this cut instead retains the entire published Exchange input context."
+  ],
+  "evidence_boundaries": [
+    "No fresh combined subset run or fresh current-public Field/Power CPP; actual per-source matching contexts/retained origins and supported source correspondences remain distinct.",
+    "Native predicate/style/source-policy evidence retains only its actual matching recorded scope; this preparation launches no new checks or acceptance cycle."
+  ]
+}

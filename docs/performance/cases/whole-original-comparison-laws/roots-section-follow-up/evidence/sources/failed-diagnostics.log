@@ -1,0 +1,37 @@
+✖ [8351/8352] Building Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.SectionPullback (175s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-cfe95b216f474e619bd1810e34ee2a9e/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean:50:4: Type mismatch: After simplification, term
+  hu
+ has type
+  @Eq ((inverseImage (𝟙 X ≫ 𝟙 X)).obj (mu X n) ⟶ (inverseImage (𝟙 X)).obj (mu X n))
+    ((inverseImageComp (𝟙 X) (𝟙 X)).hom.app (mu X n) ≫
+      (inverseImage (𝟙 X)).map ((inverseImageId X).hom.app (mu X n)) ≫ 𝟙 ((inverseImage (𝟙 X)).obj (mu X n)))
+    j
+but is expected to have type
+  @Eq ((inverseImage (𝟙 X ≫ 𝟙 X)).obj (mu X n) ⟶ (inverseImage (𝟙 X)).obj ((𝟭 (AbelianSheaf X)).obj (mu X n)))
+    ((inverseImageComp (𝟙 X) (𝟙 X)).hom.app (mu X n) ≫ (inverseImage (𝟙 X)).map ((inverseImageId X).hom.app (mu X n))) j
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean:56:8: (kernel) deterministic timeout
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean:66:8: (kernel) unknown constant 'AlgebraicGeometry.Scheme.EtaleCohomology.Kummer.SectionPullback.rootsComposite_identity'
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean:104:2: Type mismatch: After simplification, term
+  hx
+ has type
+  @Eq (Abelian.Ext ((constantSheaf X.smallEtaleTopology AddCommGrpCat).obj Z) (mu X n) 1)
+    ((((inverseImage a).extPrecompMap ((inverseImageConstantIso a).inv.app Z) ((inverseImage r).obj (mu X n)) 1)
+          (Abelian.Ext.comp x (Abelian.Ext.mk₀ (rootsPullbackIso r n hn hinv).inv) ⋯)).comp
+      (Abelian.Ext.mk₀ (sectionCoefficientIso r a ha (mu X n)).hom) ⋯)
+    ((((inverseImage a).extPrecompMap ((inverseImageConstantIso a).inv.app Z) (mu Y n) 1) x).comp
+      (Abelian.Ext.mk₀ (rootsPullbackIso a n hn ⋯).hom) ⋯)
+but is expected to have type
+  @Eq (H1Etale X (mu X n)) ((sectionPullback r a ha (mu X n)) ((coefficientMap (rootsPullbackIso r n hn hinv).inv) x))
+    ((rootsCohomologyPullback a n hn ⋯ 1) x)
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  equivShrink ↦ 148
+Some required targets logged failures:
+- Aglib.CategoryTheory.Sites.Point.SectionValuesTransport
+- Aglib.AlgebraicGeometry.EtaleCohomology.Fields.GaloisPrimitives
+- Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestConeSections
+- Aglib.AlgebraicGeometry.EtaleCohomology.Localization.Unbounded
+- Aglib.AlgebraicGeometry.EtaleCohomology.Localization.Derived
+- Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.SectionPullback
+error: build failed

@@ -58,11 +58,9 @@ theorem homPresheaf_isSheaf_fppf :
 def homPresheafObjEquiv (T : Over X) :
     (homPresheaf X F).obj (op T) ≃
       ((pullback T.hom).obj (SheafOfModules.unit X.ringCatSheaf) ⟶
-        (pullback T.hom).obj F) where
-  toFun h := h.hom
-  invFun h := ObjectProperty.homMk h
-  left_inv _ := rfl
-  right_inv _ := rfl
+        (pullback T.hom).obj F) :=
+  (ObjectProperty.fullyFaithfulι
+    (SheafOfModules.isQuasicoherent T.left.ringCatSheaf)).homEquiv
 
 /-- Evaluation on one after the original pullback-unit comparison. -/
 def sectionsEquiv (T : Over X) :

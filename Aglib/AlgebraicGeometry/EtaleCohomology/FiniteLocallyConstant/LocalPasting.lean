@@ -5,8 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.TriangleCoherence
+public import Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.TriangleCoherence.Basic
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.SectionPullback
+public import Aglib.CategoryTheory.Abelian.Ext.CoefficientSquare
 
 /-!
 Native migration from
@@ -30,20 +31,17 @@ set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 open AlgebraicGeometry.Scheme.EtaleCohomology
   _root_.AlgebraicGeometry.Scheme.EtaleCohomology.PointedNaturality
-open _root_.AlgebraicGeometry.Scheme.FiniteEtale (fiberToFinite)
 namespace AlgebraicGeometry.Scheme.EtaleCohomology.LocalPasting
 universe u
-attribute [local instance] Over.cartesianMonoidalCategory hasSheafifyLarge hasExtStandard
+attribute [local instance] hasSheafifyLarge hasExtStandard
 section SheafPasting
-variable {B X Y Z : Scheme.{u}} {D : Type u} [Field D] [IsSepClosed D]
+variable {B X Y Z : Scheme.{u}}
   (p : X ⟶ B) (l : Y ⟶ X) (g : Z ⟶ Y) (k : Z ⟶ X) (hgl : g ≫ l = k)
   (r : Y ⟶ B) (hl : l ≫ p = r) (s : Z ⟶ B) (hg : g ≫ r = s)
-  (hk : k ≫ p = s) (z : Spec (.of D) ⟶ Z)
-  [GaloisCategory (Scheme.FiniteEtale Z)] [PreGaloisCategory.FiberFunctor (fiberToFinite z)]
-  {L T : AbelianSheaf.{u, u + 1} B} (RT : CoefficientRepresentation T)
+  (hk : k ≫ p = s)
+  {L T : AbelianSheaf.{u, u + 1} B}
 
-include z RT in
-/-- The two actual inverse-image triangle paths agree for a represented finite coefficient. -/
+/-- The two actual inverse-image triangle paths agree for every coefficient sheaf. -/
 theorem triangle_pasting :
     (inverseImage g).map (AlgebraicGeometry.Scheme.EtaleCohomology.TriangleCoherence.triangleIso p
       l r
@@ -52,14 +50,14 @@ theorem triangle_pasting :
     (AlgebraicGeometry.Scheme.EtaleCohomology.TriangleCoherence.triangleIso l g k hgl ((inverseImage
         p).obj T)).hom ≫
       (AlgebraicGeometry.Scheme.EtaleCohomology.TriangleCoherence.triangleIso p k s hk T).hom := by
-  apply (cancel_epi ((inverseImageComp l g).hom.app ((inverseImage p).obj T))).mp
-  rw [AlgebraicGeometry.Scheme.EtaleCohomology.TriangleCoherence.triangleIso_comp p l g r hl s hg
-    z RT]
-  have ht := AlgebraicGeometry.Scheme.EtaleCohomology.TriangleCoherence.triangleIso_congr p hgl s
-    ((Category.assoc g l p).trans ((congrArg (fun a => g ≫ a) hl).trans hg)) hk T
-  simpa only [AlgebraicGeometry.Scheme.EtaleCohomology.TriangleCoherence.triangleIso, Iso.trans_hom,
-      Iso.symm_hom,
-    Iso.app_inv, Category.assoc, Iso.hom_inv_id_app_assoc] using ht.symm
+  simpa only [TriangleCoherence.triangleIso_eq_originalData,
+    CategoryTheory.InjectiveSystem.AdjunctionData.OrdinaryTriangle.pull,
+    CategoryTheory.InjectiveSystem.AdjunctionData.OrdinaryTriangle.composition,
+    Continuity.schemeLeftCompIso_eq_inverseImageComp,
+    Continuity.schemeLeft_eq_inverseImage, Quiver.Hom.unop_op] using
+    CategoryTheory.InjectiveSystem.AdjunctionData.OrdinaryTriangle.triangle_pasting
+      Continuity.schemeAdjunctionData Continuity.schemeAdjunctionData_coherent p l g k hgl r hl s hg
+      hk
 
 /-- Transport the original iterated curve coefficient to the affine coefficient. -/
 def localCoefficientIso (alpha : L ≅ T) :
@@ -67,23 +65,34 @@ def localCoefficientIso (alpha : L ≅ T) :
   (inverseImage l).mapIso ((inverseImage p).mapIso alpha) ≪≫
     AlgebraicGeometry.Scheme.EtaleCohomology.TriangleCoherence.triangleIso p l r hl T
 
-include z RT in
-/-- The local coefficient conversion commutes with an arbitrary field-point triangle. -/
+/-- The original local conversion uses the same mapped coefficient and triangle. -/
+private theorem localCoefficientIso_eq_originalData
+    (alpha : L ≅ T) :
+    localCoefficientIso p l r hl alpha =
+      CategoryTheory.InjectiveSystem.AdjunctionData.OrdinaryTriangle.localIso
+        Continuity.schemeAdjunctionData p l r hl alpha := by
+  simp only [localCoefficientIso,
+    CategoryTheory.InjectiveSystem.AdjunctionData.OrdinaryTriangle.localIso,
+    TriangleCoherence.triangleIso_eq_originalData,
+    Continuity.schemeLeft_eq_inverseImage, Quiver.Hom.unop_op]
+
+/-- The local coefficient conversion commutes with an arbitrary scheme triangle. -/
 theorem localCoefficientIso_pasting (alpha : L ≅ T) :
     (inverseImage g).map (localCoefficientIso p l r hl alpha).hom ≫
       (AlgebraicGeometry.Scheme.EtaleCohomology.TriangleCoherence.triangleIso r g s hg T).hom =
     (AlgebraicGeometry.Scheme.EtaleCohomology.TriangleCoherence.triangleIso l g k hgl ((inverseImage
         p).obj L)).hom ≫
       (localCoefficientIso p k s hk alpha).hom := by
-  simp only [localCoefficientIso, Iso.trans_hom, Functor.mapIso_hom,
-    Functor.map_comp, Category.assoc]
-  rw [triangle_pasting p l g k hgl r hl s hg hk z RT]
-  rw [reassoc_of%
-    (AlgebraicGeometry.Scheme.EtaleCohomology.TriangleCoherence.triangleIso_naturality l
-      g k hgl
-    ((inverseImage p).map alpha.hom))]
+  simpa only [localCoefficientIso_eq_originalData,
+    TriangleCoherence.triangleIso_eq_originalData,
+    CategoryTheory.InjectiveSystem.AdjunctionData.OrdinaryTriangle.pull,
+    CategoryTheory.InjectiveSystem.AdjunctionData.OrdinaryTriangle.composition,
+    Continuity.schemeLeftCompIso_eq_inverseImageComp,
+    Continuity.schemeLeft_eq_inverseImage, Quiver.Hom.unop_op] using
+    CategoryTheory.InjectiveSystem.AdjunctionData.OrdinaryTriangle.local_pasting
+      Continuity.schemeAdjunctionData Continuity.schemeAdjunctionData_coherent p l g k hgl r hl s hg
+      hk alpha
 
-include z RT in
 /-- The corresponding inverse conversion, used before native local restriction. -/
 theorem localCoefficientIso_inv_pasting (alpha : L ≅ T) :
     (inverseImage g).map (localCoefficientIso p l r hl alpha).inv ≫
@@ -93,10 +102,16 @@ theorem localCoefficientIso_inv_pasting (alpha : L ≅ T) :
       (localCoefficientIso p k s hk alpha).hom =
         (AlgebraicGeometry.Scheme.EtaleCohomology.TriangleCoherence.triangleIso r g s hg T).hom :=
           by
-  rw [← localCoefficientIso_pasting p l g k hgl r hl s hg hk z RT alpha]
-  rw [← Functor.map_comp_assoc, Iso.inv_hom_id, CategoryTheory.Functor.map_id, Category.id_comp]
+  simpa only [localCoefficientIso_eq_originalData,
+    TriangleCoherence.triangleIso_eq_originalData,
+    CategoryTheory.InjectiveSystem.AdjunctionData.OrdinaryTriangle.pull,
+    CategoryTheory.InjectiveSystem.AdjunctionData.OrdinaryTriangle.composition,
+    Continuity.schemeLeftCompIso_eq_inverseImageComp,
+    Continuity.schemeLeft_eq_inverseImage, Quiver.Hom.unop_op] using
+    CategoryTheory.InjectiveSystem.AdjunctionData.OrdinaryTriangle.local_inv_pasting
+      Continuity.schemeAdjunctionData Continuity.schemeAdjunctionData_coherent p l g k hgl r hl s hg
+      hk alpha
 
-include z RT in
 /-- In H1 the converted original local restriction is the ordinary affine pullback. -/
 theorem local_h1_pasting (alpha : L ≅ T)
     (a : H1Etale Y ((inverseImage r).obj T)) :
@@ -109,10 +124,14 @@ theorem local_h1_pasting (alpha : L ≅ T)
     coefficientMap (AlgebraicGeometry.Scheme.EtaleCohomology.TriangleCoherence.triangleIso r g s
       hg T).hom
       (h1Pullback g ((inverseImage r).obj T) a) := by
-  rw [h1Pullback_coefficientMap]
-  rw [AlgebraicGeometry.Scheme.EtaleCohomology.TriangleCoherence.coefficientMap_comp_apply,
-    AlgebraicGeometry.Scheme.EtaleCohomology.TriangleCoherence.coefficientMap_comp_apply]
-  rw [localCoefficientIso_inv_pasting p l g k hgl r hl s hg hk z RT alpha]
+  exact CategoryTheory.Functor.extPrecompMap_postcomp_of_comp_eq
+    (inverseImage g)
+    ((inverseImageConstantIso g).inv.app (AddCommGrpCat.of (ULift.{u + 1} ℤ)))
+    (localCoefficientIso p l r hl alpha).inv
+    (TriangleCoherence.triangleIso l g k hgl ((inverseImage p).obj L)).hom
+    (localCoefficientIso p k s hk alpha).hom
+    (TriangleCoherence.triangleIso r g s hg T).hom
+    (localCoefficientIso_inv_pasting p l g k hgl r hl s hg hk alpha) 1 a
 
 end SheafPasting
 section IdentityCoefficient

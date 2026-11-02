@@ -24,9 +24,8 @@ theorem additiveTwiceReindexUliftIso_apply
     (β : G ⋙ AddCommGrpCat.uliftFunctor.{r, e} ≅
       H ⋙ AddCommGrpCat.uliftFunctor.{e, r}) (i : I) (x : F.obj i) :
     (additiveTwiceReindexUliftIso A B F G H α β).hom.app i (ULift.up x) =
-      β.hom.app (B.obj (A.obj i)) (ULift.up (α.hom.app i x)) := by
-  simp [additiveTwiceReindexUliftIso, additiveReindexUliftIso]
-  rfl
+      β.hom.app (B.obj (A.obj i)) (ULift.up (α.hom.app i x)) :=
+  CategoryTheory.additiveTwiceReindexUliftIso_apply A B F G H α β i x
 
 section NativeCohomology
 universe u w s t

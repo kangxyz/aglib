@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.Algebra.Module.Equiv.ScalarMaps
 public import Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.ZariskiComparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.StructureComparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.ZariskiNaturality
@@ -129,11 +130,18 @@ theorem structureCohomologyComparison_scalar (q : ℕ) (a : k)
 
 attribute [local instance] structureCohomologyModule
 
+/-- Retain the original scalar map as a whole value law before packaging linearity. -/
+theorem structureCohomology_smul_map (q : ℕ) (a : k)
+    (x : Sheaf.H.{w} (additiveStructureSheaf Y.left) q) :
+    a • x = Sheaf.H.map (structureScalar Y.left (Scheme.constants Y a)) q x := rfl
+
 /-- The comparison is linear for the installed original structural field actions. -/
 def structureCohomologyLinearComparison (q : ℕ) :
     Scheme.structureCohomology k Y q ≃ₗ[k]
-      Sheaf.H.{w} (additiveStructureSheaf Y.left) q where
-  __ := structureCohomologyComparison Y.left q
-  map_smul' a x := structureCohomologyComparison_scalar Y q a x
+      Sheaf.H.{w} (additiveStructureSheaf Y.left) q :=
+  (structureCohomologyComparison Y.left q).toLinearEquiv
+    (AddEquiv.map_smul_of_scalarMaps (R := k) (structureCohomologyComparison Y.left q) _ _
+      (Scheme.structureCohomology_smul Y q) (structureCohomology_smul_map Y q)
+      (structureCohomologyComparison_scalar Y q))
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Curves

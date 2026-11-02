@@ -1,0 +1,14 @@
+--- captured5f28/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestConeSections.lean
++++ repair-v9/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestConeSections.lean
+@@ -63,7 +63,10 @@
+     diagramTestArrowSectionsFunctor X F i T ⟶
+       Arrow.leftFunc ⋙ diagramTestRawConeSectionsFunctor X F c i T where
+   app := diagramTestConeArrowSectionsMap X F c i T
+-  naturality _ _ m := diagramTestConeArrowSectionsMap_naturality X F c i T m
++  naturality a _ m :=
++    (diagramTestConeArrowSectionsMap_naturality X F c i T m).trans
++      (congrArg (fun k => diagramTestConeArrowSectionsMap X F c i T a ≫ k)
++        (diagramTestConeSystemSectionsMap_eq X F c i T m.left))
+ 
+ /-- The genuine natural comparison is a composition of whole original transformations. -/
+ def diagramTestConeSectionsNatTrans :

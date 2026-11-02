@@ -39,7 +39,7 @@ on every bounded-torsion coefficient in independently supplied models. -/
 theorem higherBaseChangeMap_isIso_of_universallyBoundedBaseChange
     (hf : universallyBoundedBaseChange n f)
     (F : AbelianSheaf.{u, u + 1} X) (hF : n • 𝟙 F = 0) (q : ℕ) :
-    IsIso ((higherBaseChangeMap f f' g g' h.w.symm q).app F) :=
+    IsIso ((higherBaseChangeMapFromDerived f f' g g' h.w.symm q).app F) :=
   higherBaseChangeMap_isIso_of_boundedExchange f f' g g' h.w.symm n
     (((boundedBaseChange n).universally_le f hf) f' g g' h) F hF q
 
@@ -51,7 +51,9 @@ theorem derivedBaseChangeMap_single_isIso_of_universallyBoundedBaseChange
     IsIso ((derivedBaseChangeMap f f' g g' h.w.symm).app
       ((DerivedCategory.Plus.singleFunctor (AbelianSheaf.{u, u + 1} X) 0).obj F)) :=
   (Reduction.derivedBaseChangeMap_single_isIso_iff_higher f f' g g' h.w.symm F).mpr
-    (higherBaseChangeMap_isIso_of_universallyBoundedBaseChange f f' g g' h n hf F hF)
+    (by
+      simpa only [higherBaseChangeMapFromDerived_eq] using
+        (higherBaseChangeMap_isIso_of_universallyBoundedBaseChange f f' g g' h n hf F hF))
 
 section Affine
 
@@ -66,7 +68,7 @@ the original higher exchange for every proper morphism over its spectrum. -/
 theorem properHigherBaseChange_isIso_of_projectiveLine
     (hline : universallyBoundedBaseChange n (ProjectiveLine.structureMap R))
     (F : AbelianSheaf.{u, u + 1} X) (hF : n • 𝟙 F = 0) (q : ℕ) :
-    IsIso ((higherBaseChangeMap p p' b b' hp.w.symm q).app F) :=
+    IsIso ((higherBaseChangeMapFromDerived p p' b b' hp.w.symm q).app F) :=
   higherBaseChangeMap_isIso_of_universallyBoundedBaseChange p p' b b' hp n
     (universallyBoundedBaseChange_proper_affine_of_projectiveLine n R hline p) F hF q
 

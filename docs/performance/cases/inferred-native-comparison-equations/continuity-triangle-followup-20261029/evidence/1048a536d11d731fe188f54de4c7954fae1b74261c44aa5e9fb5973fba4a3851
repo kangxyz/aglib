@@ -1,0 +1,17 @@
+NATIVE_LAKE_SETUP_COMMAND ["/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake", "--no-build", "setup-file", "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean"]
+NATIVE_MODULE_SETUP {"complete_options_equal": true, "isModule": true, "name": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DirectImageSquareTriangle", "options": {"autoImplicit": false, "warningAsError": true, "weak.linter.mathlibStandardSet": true, "weak.linter.style.longFile": 1500}, "sha256": "93978a6f42bf6422a1453879986ab3d506234b1e990173f10c5239fe534ade41"}
+SQUARE_V9_FORMATION_BEGIN sha256=1126e06c76ee3df038d7bd044f9dca14daefe078973acf86a55093effd9a8164
+NATIVE_DIAGNOSTIC_ARGV ["/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake", "--no-build", "env", "/root/autodl-tmp/lean-build/logs/remote-2f15f0b9897649f3a410d48b9a3d7f7e/toolchain/bin/lean", "/root/autodl-tmp/lean-build/logs/remote-2f15f0b9897649f3a410d48b9a3d7f7e/Square-v9-formation.lean", "--setup", "/root/autodl-tmp/lean-build/logs/remote-2f15f0b9897649f3a410d48b9a3d7f7e/NativeSquare.setup.json"]
+/root/autodl-tmp/lean-build/logs/remote-2f15f0b9897649f3a410d48b9a3d7f7e/Square-v9-formation.lean:8:0: error: The module doc-string for a file should be the first command after the imports.
+Please, add a module doc-string (`/-! ... -/`) before `@[expose] public noncomputable section`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+/root/autodl-tmp/lean-build/logs/remote-2f15f0b9897649f3a410d48b9a3d7f7e/Square-v9-formation.lean:1:1: error: * `-/`:
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+SQUARE_V9_FORMATION_END exit=1
+{"prefix_exit": 1, "source_sha256": "1126e06c76ee3df038d7bd044f9dca14daefe078973acf86a55093effd9a8164", "native_setup_sha256": "93978a6f42bf6422a1453879986ab3d506234b1e990173f10c5239fe534ade41", "boundary": "Formation-only: exact original propositions are assumptions and conclusion True; no original proof or production-module coverage, no automatic production continuation."}

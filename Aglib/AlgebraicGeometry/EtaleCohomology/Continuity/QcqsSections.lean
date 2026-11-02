@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.AffineSections
 public import Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.AffineObjects
 public import Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.QcqsHypercover
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.FiniteMatchingCocone
 
 /-!
 # Filtered coefficient colimits of sections over qcqs étale objects
@@ -39,32 +40,6 @@ abbrev affineObjectSectionsPreservesFilteredColimits (U : S.Etale) [IsAffine U.l
     ((sheafSections S.smallEtaleTopology AddCommGrpCat.{u + 1}).mapIso
       (EtaleAffineBasis.affineModelIso U).op.symm)
 
-private theorem isIso_app_of_multiforks {U : S.Etale}
-    (E : S.smallEtaleTopology.OneHypercover.{u} U)
-    {P Q : S.Etaleᵒᵖ ⥤ AddCommGrpCat.{u + 1}} (τ : P ⟶ Q)
-    (hP : IsLimit (E.multifork P)) (hQ : IsLimit (E.multifork Q))
-    [hτX : ∀ i, IsIso (τ.app (op (E.X i)))]
-    [hτY : ∀ i j (k : E.I₁ i j), IsIso (τ.app (op (E.Y k)))] :
-    IsIso (τ.app (op U)) := by
-  let e : (E.multicospanIndex P).multicospan ≅ (E.multicospanIndex Q).multicospan :=
-    WalkingMulticospan.functorExt
-      (fun i ↦ @asIso _ _ _ _ (τ.app (op (E.X i))) (hτX i))
-      (fun i ↦ @asIso _ _ _ _ (τ.app (op (E.Y i.2))) (hτY _ _ i.2))
-      (fun i ↦ τ.naturality (E.p₁ i.2).op)
-      (fun i ↦ τ.naturality (E.p₂ i.2).op)
-  let hc := (IsLimit.postcomposeHomEquiv e (E.multifork P)).symm hP
-  have heq : τ.app (op U) = (hc.conePointUniqueUpToIso hQ).hom := by
-    apply Multifork.IsLimit.hom_ext hQ
-    intro i
-    have hi := (hc.conePointUniqueUpToIso_hom_comp hQ
-      (WalkingMulticospan.left i)).symm
-    have hi' : P.map (E.f i).op ≫ τ.app (op (E.X i)) =
-        (hc.conePointUniqueUpToIso hQ).hom ≫ (E.multifork Q).ι i := by
-      exact hi
-    exact (τ.naturality (E.f i).op).symm.trans hi'
-  rw [heq]
-  exact Iso.isIso_hom _
-
 variable (G : I ⥤ Sheaf S.smallEtaleTopology AddCommGrpCat.{u + 1}) [HasColimit G]
 
 /-- The original comparison from the pointwise coefficient colimit to the
@@ -93,12 +68,6 @@ theorem pointwiseToSheafColimit_app (U : S.Etale) :
   simp only [Functor.mapCocone_ι_app, colimit.cocone_ι] at h
   exact h.trans h'.symm
 
-private theorem isIso_pointwiseToSheafColimit_affine (U : S.Etale) [IsAffine U.left] :
-    IsIso ((pointwiseToSheafColimit G).app (op U)) := by
-  let := affineObjectSectionsPreservesFilteredColimits (I := I) U
-  rw [pointwiseToSheafColimit_app]
-  infer_instance
-
 /-- The canonical sections comparison is an isomorphism on every original
 qcqs étale object. -/
 theorem isIso_pointwiseToSheafColimit_qcqs (U : S.Etale)
@@ -109,26 +78,24 @@ theorem isIso_pointwiseToSheafColimit_qcqs (U : S.Etale)
       (S.smallEtaleTopology.top_mem U)
   let : Finite E.I₀ := h₀
   let (i j : E.I₀) : Finite (E.I₁ i j) := h₁ i j
-  let : Finite E.multicospanShape.L := inferInstanceAs (Finite E.I₀)
-  let : Finite E.multicospanShape.R :=
-    inferInstanceAs (Finite (Σ ij : E.I₀ × E.I₀, E.I₁ ij.1 ij.2))
   let (i : E.I₀) : IsAffine (E.X i).left := hX i
   let (i j : E.I₀) (k : E.I₁ i j) : IsAffine (E.Y k).left := hY i j k
-  let (i : E.I₀) : IsIso ((pointwiseToSheafColimit G).app (op (E.X i))) :=
-    isIso_pointwiseToSheafColimit_affine G (E.X i)
-  let (i j : E.I₀) (k : E.I₁ i j) :
-      IsIso ((pointwiseToSheafColimit G).app (op (E.Y k))) :=
-    isIso_pointwiseToSheafColimit_affine G (E.Y k)
-  let P := (G ⋙ sheafToPresheaf S.smallEtaleTopology AddCommGrpCat.{u + 1}).flip
-  have hP : IsLimit (E.multifork P) := by
-    apply evaluationJointlyReflectsLimits
-    intro i
-    exact (Multifork.isLimitMapEquiv (E.multifork P)
-      ((CategoryTheory.evaluation I AddCommGrpCat.{u + 1}).obj i)).symm
-      (E.isLimitMultifork (G.obj i))
-  exact isIso_app_of_multiforks E (pointwiseToSheafColimit G)
-    (Multifork.isLimitMapOfPreserves (E.multifork P) colim hP)
-    (E.isLimitMultifork (colimit G))
+  let H := G ⋙ sheafToPresheaf S.smallEtaleTopology AddCommGrpCat.{u + 1}
+  let c := (sheafToPresheaf S.smallEtaleTopology AddCommGrpCat.{u + 1}).mapCocone
+    (colimit.cocone G)
+  have hU := E.isColimitEvaluationOfFiniteMatching H c
+    (fun i => (G.obj i).property) (colimit G).property
+    (fun i => by
+      let := affineObjectSectionsPreservesFilteredColimits (I := I) (E.X i)
+      exact isColimitOfPreserves
+        ((sheafSections S.smallEtaleTopology AddCommGrpCat.{u + 1}).obj (op (E.X i)))
+        (colimit.isColimit G))
+    (fun i j k => by
+      let := affineObjectSectionsPreservesFilteredColimits (I := I) (E.Y k)
+      exact isColimitOfPreserves
+        ((sheafSections S.smallEtaleTopology AddCommGrpCat.{u + 1}).obj (op (E.Y k)))
+        (colimit.isColimit G))
+  exact GrothendieckTopology.OneHypercover.isIso_pointwiseDesc_app_of_isColimit H c (op U) hU
 
 /-- Sections over a qcqs original étale object commute with filtered
 coefficient colimits in the original universe. -/

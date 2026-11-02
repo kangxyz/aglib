@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.ZModImages
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.HigherImageAcyclic
-public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.InjectiveAcyclic
+public import Aglib.CategoryTheory.Sites.Torsion.ZMod.Cohomology.RepresentedExt
 
 /-! # Relative acyclicity of the original underlying injective module
 
@@ -38,23 +38,9 @@ theorem zmodInjective_representedExt_subsingleton
     (X : Scheme.{u}) [HasExt.{e} (AbelianSheaf.{u, u + 1} X)]
     (n : ℕ) (I : ZModSheaf X n) [Injective I] (U : X.Etale) (q : ℕ) :
     Subsingleton (Ext.{e} (freeAbelianSheaf.{u + 1} X.smallEtaleTopology U)
-      ((zmodUnderlying X n).obj I) (q + 1)) := by
-  let J := X.smallEtaleTopology
-  let R : Sheaf J RingCat.{u + 1} :=
-    TorsionZMod.Ringed.constantRingSheaf.{u + 1, u, u + 1} J n
-  let E : ZModSheaf X n ≌ SheafOfModules.{u + 1} R :=
-    TorsionZMod.Ringed.equivalenceStandard.{u + 1, u} J n
-  let η : E.functor ⋙ SheafOfModules.toSheaf R ≅ zmodUnderlying X n :=
-    TorsionZMod.Ringed.forwardUnderlyingIsoStandard.{u + 1, u} J n
-  have : Injective (E.functor.obj I) :=
-    E.functor.injective_obj_of_injective (inferInstance : Injective I)
-  have hM : Subsingleton
-      (Ext.{e} (freeAbelianSheaf.{u + 1} J U)
-        ((SheafOfModules.toSheaf R).obj (E.functor.obj I)) (q + 1)) :=
-    Sheaf.ModuleCoefficients.toSheaf_injective_ext_subsingleton_largeScalars
-      R (E.functor.obj I) U q
-  exact TorsionZMod.subsingleton_of_additiveIso
-    ((extFunctorObj (freeAbelianSheaf.{u + 1} J U) (q + 1)).mapIso (η.app I)) hM
+      ((zmodUnderlying X n).obj I) (q + 1)) :=
+  TorsionZMod.underlying_injective_representedExt_subsingleton.{u + 1, u, e}
+    X.smallEtaleTopology n I U q
 
 /-- A genuine injective ZMod-module sheaf has acyclic original underlying
 coefficients for the actual direct image along every scheme morphism. -/

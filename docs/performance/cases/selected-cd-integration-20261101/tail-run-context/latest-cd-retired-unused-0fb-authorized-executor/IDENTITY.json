@@ -1,0 +1,31 @@
+{
+  "operation": "pending-retired-unused-0fb-parallel",
+  "lane": "D",
+  "head_observed": "b0f8ca3f44be620dde8b40f65e1eec0143e45db4",
+  "ready_source_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonEquation.lean": "0fb4bc59cd4881074b685ec0b91c918e9a4a4037768bc89b8abef8daeef83f82",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean": "a5a82ff7849fb3acdc8e428553d75d470fd98644fe0567f53709c578e7dfc843"
+  },
+  "roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricComparisonEquation",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricComparisonExchange",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CartesianBaseChangeIdentityTorsion",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CartesianBaseChangeIterationTorsion",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CartesianBaseChangeIdentity",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CartesianBaseChangeIteration"
+  ],
+  "profile": {
+    "jobs": 8,
+    "threads": 4,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536,
+    "default_maxHeartbeats": 200000
+  },
+  "actual_CI_baseline": "remote-2d98a7c5d5e24f9d8938757689780a87/sourcea2f8957c8f8f33e15a38b323726022ae23c40154a3e76e4dbeb2acdd59dc6db2",
+  "boundary": "Root changedassignment: retireonly48lineunpublishedunusednativecomparisonDatawrapper(0publicb0FQName/0consumers). GenericData/ofMaps/square/schemefactories/liveproofs/rawpublicAPIs/maps/models/options/defaultbudgets retained. Actualsame6rootcoupledgraph; no supersededb3outputrelabeled, no newprobe/client/replay/Git.",
+  "previous_actual_failure": "remote-4f6481d1ab5c4a32a718bd94e7dfaf68/source72442/Equationd6kernel472",
+  "previous_actual_cancelled": "remote-01e5c85636054e11a26948fe3b95b692/sourcefa397/nativeSIGINTbecauseassignmentreplaced",
+  "actual_run": "remote-66d0626707cd4c34bdf9d65d0fa64dec",
+  "actual_source_digest": "72c5c5d775fe1dc5a5d2e4805930beab934f3fac8c5c39bfed8813a28c13096a",
+  "local_session": 91958
+}

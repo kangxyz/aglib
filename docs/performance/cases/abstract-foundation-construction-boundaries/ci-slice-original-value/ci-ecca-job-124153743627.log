@@ -1,0 +1,1692 @@
+﻿2026-10-30T15:35:43.5947012Z Current runner version: '2.338.2'
+2026-10-30T15:35:43.5990649Z ##[group]Runner Image Provisioner
+2026-10-30T15:35:43.5991541Z Hosted Compute Agent
+2026-10-30T15:35:43.5992083Z Version: 20261021.618
+2026-10-30T15:35:43.5992714Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-30T15:35:43.5993328Z Build Date: 2026-10-21T00:45:21Z
+2026-10-30T15:35:43.5993919Z Worker ID: {1929c233-8ade-43c3-bfa2-d75ffc021df1}
+2026-10-30T15:35:43.5994586Z Region: centralus
+2026-10-30T15:35:43.5995139Z Cloud: Azure
+2026-10-30T15:35:43.5995620Z ##[endgroup]
+2026-10-30T15:35:43.5996801Z ##[group]Operating System
+2026-10-30T15:35:43.5997342Z Ubuntu
+2026-10-30T15:35:43.5997856Z 24.04.5
+2026-10-30T15:35:43.5998328Z LTS
+2026-10-30T15:35:43.5999109Z ##[endgroup]
+2026-10-30T15:35:43.5999691Z ##[group]Runner Image
+2026-10-30T15:35:43.6000223Z Image: ubuntu-24.04
+2026-10-30T15:35:43.6000771Z Version: 20261025.353.1
+2026-10-30T15:35:43.6001944Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261025.353/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-30T15:35:43.6003222Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261025.353
+2026-10-30T15:35:43.6004027Z ##[endgroup]
+2026-10-30T15:35:43.6005019Z ##[group]GITHUB_TOKEN Permissions
+2026-10-30T15:35:43.6006790Z Contents: read
+2026-10-30T15:35:43.6007370Z Metadata: read
+2026-10-30T15:35:43.6007848Z ##[endgroup]
+2026-10-30T15:35:43.6010059Z Secret source: Actions
+2026-10-30T15:35:43.6011104Z Cache mode: write
+2026-10-30T15:35:43.6011718Z Prepare workflow directory
+2026-10-30T15:35:43.6462591Z Prepare all required actions
+2026-10-30T15:35:43.6508719Z Getting action download info
+2026-10-30T15:35:43.8922257Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-10-30T15:35:43.9923342Z Download action repository 'actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9' (SHA:55cc8345863c7cc4c66a329aec7e433d2d1c52a9)
+2026-10-30T15:35:44.1592743Z Download action repository 'actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+2026-10-30T15:35:44.3475138Z Uses: kangxyz/aglib/.github/workflows/lean-ci.yml@refs/heads/etale-abstract (ecca5070e0df98c4260a35b92f5bea0ca49801e8)
+2026-10-30T15:35:44.3479030Z ##[group] Inputs
+2026-10-30T15:35:44.3479466Z   package-directory: .
+2026-10-30T15:35:44.3479869Z   build-targets: Aglib
+2026-10-30T15:35:44.3480240Z   check-targets: 
+2026-10-30T15:35:44.3480600Z ##[endgroup]
+2026-10-30T15:35:44.3480962Z Complete job name: lean / Build
+2026-10-30T15:35:44.4140638Z ##[group]Run echo "BUILD_DEADLINE=$(( $(date +%s) + 330 * 60 ))" >> "$GITHUB_ENV"
+2026-10-30T15:35:44.4141450Z [36;1mecho "BUILD_DEADLINE=$(( $(date +%s) + 330 * 60 ))" >> "$GITHUB_ENV"[0m
+2026-10-30T15:35:44.4162669Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-30T15:35:44.4163373Z env:
+2026-10-30T15:35:44.4163703Z   LAKE_NO_CACHE: true
+2026-10-30T15:35:44.4164120Z   LAKE_ARTIFACT_CACHE: true
+2026-10-30T15:35:44.4164541Z   BUILD_TARGETS: Aglib
+2026-10-30T15:35:44.4164901Z ##[endgroup]
+2026-10-30T15:35:44.4431147Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+2026-10-30T15:35:44.4431766Z with:
+2026-10-30T15:35:44.4432134Z   persist-credentials: false
+2026-10-30T15:35:44.4432570Z   repository: kangxyz/aglib
+2026-10-30T15:35:44.4435538Z   token: ***
+2026-10-30T15:35:44.4435897Z   ssh-strict: true
+2026-10-30T15:35:44.4436263Z   ssh-user: git
+2026-10-30T15:35:44.4436595Z   clean: true
+2026-10-30T15:35:44.4436972Z   sparse-checkout-cone-mode: true
+2026-10-30T15:35:44.4437391Z   fetch-depth: 1
+2026-10-30T15:35:44.4437728Z   fetch-tags: false
+2026-10-30T15:35:44.4438078Z   show-progress: true
+2026-10-30T15:35:44.4438431Z   lfs: false
+2026-10-30T15:35:44.4438769Z   submodules: false
+2026-10-30T15:35:44.4439297Z   set-safe-directory: true
+2026-10-30T15:35:44.4439701Z   allow-unsafe-pr-checkout: false
+2026-10-30T15:35:44.4440098Z env:
+2026-10-30T15:35:44.4440417Z   LAKE_NO_CACHE: true
+2026-10-30T15:35:44.4441004Z   LAKE_ARTIFACT_CACHE: true
+2026-10-30T15:35:44.4441421Z   BUILD_TARGETS: Aglib
+2026-10-30T15:35:44.4441813Z   BUILD_DEADLINE: 1793394344
+2026-10-30T15:35:44.4442217Z ##[endgroup]
+2026-10-30T15:35:45.1294336Z Syncing repository: kangxyz/aglib
+2026-10-30T15:35:45.1296373Z ##[group]Getting Git version info
+2026-10-30T15:35:45.1296987Z Working directory is '/home/runner/work/aglib/aglib'
+2026-10-30T15:35:45.1298245Z [command]/usr/bin/git version
+2026-10-30T15:35:45.1353861Z git version 2.56.0
+2026-10-30T15:35:45.1374033Z ##[endgroup]
+2026-10-30T15:35:45.1393486Z Temporarily overriding HOME='/home/runner/work/_temp/9766e5ba-5cc7-4580-b3b8-06065052156e' before making global git config changes
+2026-10-30T15:35:45.1395747Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-30T15:35:45.1399156Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/aglib/aglib
+2026-10-30T15:35:45.1447984Z Deleting the contents of '/home/runner/work/aglib/aglib'
+2026-10-30T15:35:45.1459234Z ##[group]Determining repository object format
+2026-10-30T15:35:45.1464318Z ##[endgroup]
+2026-10-30T15:35:45.1465703Z ##[group]Initializing the repository
+2026-10-30T15:35:45.1466684Z [command]/usr/bin/git init /home/runner/work/aglib/aglib
+2026-10-30T15:35:45.1563094Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-30T15:35:45.1564574Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-30T15:35:45.1565481Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-30T15:35:45.1566257Z hint: call:
+2026-10-30T15:35:45.1566618Z hint:
+2026-10-30T15:35:45.1567294Z hint: 	git config --global init.defaultBranch <name>
+2026-10-30T15:35:45.1568131Z hint:
+2026-10-30T15:35:45.1569165Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-30T15:35:45.1570491Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-30T15:35:45.1571507Z hint:
+2026-10-30T15:35:45.1571887Z hint: 	git branch -m <name>
+2026-10-30T15:35:45.1572336Z hint:
+2026-10-30T15:35:45.1573063Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-30T15:35:45.1574668Z Initialized empty Git repository in /home/runner/work/aglib/aglib/.git/
+2026-10-30T15:35:45.1581690Z [command]/usr/bin/git remote add origin https://github.com/kangxyz/aglib
+2026-10-30T15:35:45.1635163Z ##[endgroup]
+2026-10-30T15:35:45.1636447Z ##[group]Disabling automatic garbage collection
+2026-10-30T15:35:45.1637703Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-30T15:35:45.1684219Z ##[endgroup]
+2026-10-30T15:35:45.1685684Z ##[group]Setting up auth
+2026-10-30T15:35:45.1686460Z Removing SSH command configuration
+2026-10-30T15:35:45.1689786Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-30T15:35:45.1742983Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-30T15:35:45.5222856Z Removing HTTP extra header
+2026-10-30T15:35:45.5226964Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-30T15:35:45.5267218Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-30T15:35:45.5473159Z Removing includeIf entries pointing to credentials config files
+2026-10-30T15:35:45.5477166Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-30T15:35:45.5522527Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-30T15:35:45.5738374Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-2f417ebc-2a56-44e5-8b83-d79110d4a3d1.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-30T15:35:45.5787829Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/aglib/aglib/.git.path /home/runner/work/_temp/git-credentials-2f417ebc-2a56-44e5-8b83-d79110d4a3d1.config
+2026-10-30T15:35:45.5828997Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/aglib/aglib/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-2f417ebc-2a56-44e5-8b83-d79110d4a3d1.config
+2026-10-30T15:35:45.5869425Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-2f417ebc-2a56-44e5-8b83-d79110d4a3d1.config
+2026-10-30T15:35:45.5908138Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-2f417ebc-2a56-44e5-8b83-d79110d4a3d1.config
+2026-10-30T15:35:45.5945425Z ##[endgroup]
+2026-10-30T15:35:45.5946982Z ##[group]Fetching the repository
+2026-10-30T15:35:45.5951764Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +ecca5070e0df98c4260a35b92f5bea0ca49801e8:refs/remotes/origin/etale-abstract
+2026-10-30T15:35:48.9592487Z From https://github.com/kangxyz/aglib
+2026-10-30T15:35:48.9594035Z  * [new ref]         ecca5070e0df98c4260a35b92f5bea0ca49801e8 -> origin/etale-abstract
+2026-10-30T15:35:48.9601988Z [command]/usr/bin/git branch --list --remote origin/etale-abstract
+2026-10-30T15:35:48.9636856Z   origin/etale-abstract
+2026-10-30T15:35:48.9644766Z [command]/usr/bin/git rev-parse refs/remotes/origin/etale-abstract
+2026-10-30T15:35:48.9677286Z ecca5070e0df98c4260a35b92f5bea0ca49801e8
+2026-10-30T15:35:48.9680851Z ##[endgroup]
+2026-10-30T15:35:48.9681259Z ##[group]Determining the checkout info
+2026-10-30T15:35:48.9686164Z ##[endgroup]
+2026-10-30T15:35:48.9686799Z [command]/usr/bin/git sparse-checkout disable
+2026-10-30T15:35:48.9743085Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-30T15:35:48.9783991Z ##[group]Checking out the ref
+2026-10-30T15:35:48.9788011Z [command]/usr/bin/git checkout --progress --force -B etale-abstract refs/remotes/origin/etale-abstract
+2026-10-30T15:35:49.8141164Z Switched to a new branch 'etale-abstract'
+2026-10-30T15:35:49.8157123Z branch 'etale-abstract' set up to track 'origin/etale-abstract'.
+2026-10-30T15:35:49.8220548Z ##[endgroup]
+2026-10-30T15:35:49.8272967Z [command]/usr/bin/git log -1 --format=%H
+2026-10-30T15:35:49.8310300Z ecca5070e0df98c4260a35b92f5bea0ca49801e8
+2026-10-30T15:35:49.8320357Z ##[group]Removing auth
+2026-10-30T15:35:49.8320949Z Removing SSH command configuration
+2026-10-30T15:35:49.8322371Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-30T15:35:49.8363662Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-30T15:35:49.8612200Z Removing HTTP extra header
+2026-10-30T15:35:49.8616447Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-30T15:35:49.8657372Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-30T15:35:49.8887868Z Removing includeIf entries pointing to credentials config files
+2026-10-30T15:35:49.8891243Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-30T15:35:49.8930343Z includeif.gitdir:/home/runner/work/aglib/aglib/.git.path
+2026-10-30T15:35:49.8930923Z includeif.gitdir:/home/runner/work/aglib/aglib/.git/worktrees/*.path
+2026-10-30T15:35:49.8931300Z includeif.gitdir:/github/workspace/.git.path
+2026-10-30T15:35:49.8931657Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-30T15:35:49.8949938Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/aglib/aglib/.git.path
+2026-10-30T15:35:49.8969590Z /home/runner/work/_temp/git-credentials-2f417ebc-2a56-44e5-8b83-d79110d4a3d1.config
+2026-10-30T15:35:49.8978594Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/aglib/aglib/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-2f417ebc\-2a56\-44e5\-8b83\-d79110d4a3d1\.config
+2026-10-30T15:35:49.9027116Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/aglib/aglib/.git/worktrees/*.path
+2026-10-30T15:35:49.9060661Z /home/runner/work/_temp/git-credentials-2f417ebc-2a56-44e5-8b83-d79110d4a3d1.config
+2026-10-30T15:35:49.9069238Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/aglib/aglib/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-2f417ebc\-2a56\-44e5\-8b83\-d79110d4a3d1\.config
+2026-10-30T15:35:49.9276675Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-30T15:35:49.9314940Z /github/runner_temp/git-credentials-2f417ebc-2a56-44e5-8b83-d79110d4a3d1.config
+2026-10-30T15:35:49.9322481Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-2f417ebc\-2a56\-44e5\-8b83\-d79110d4a3d1\.config
+2026-10-30T15:35:49.9362503Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-30T15:35:49.9392436Z /github/runner_temp/git-credentials-2f417ebc-2a56-44e5-8b83-d79110d4a3d1.config
+2026-10-30T15:35:49.9399419Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-2f417ebc\-2a56\-44e5\-8b83\-d79110d4a3d1\.config
+2026-10-30T15:35:49.9439945Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-30T15:35:49.9669693Z Removing credentials config '/home/runner/work/_temp/git-credentials-2f417ebc-2a56-44e5-8b83-d79110d4a3d1.config'
+2026-10-30T15:35:49.9683168Z ##[endgroup]
+2026-10-30T15:35:49.9809645Z ##[group]Run echo "LAKE_CACHE_DIR=$RUNNER_TEMP/lake-native-cache" >> "$GITHUB_ENV"
+2026-10-30T15:35:49.9810115Z [36;1mecho "LAKE_CACHE_DIR=$RUNNER_TEMP/lake-native-cache" >> "$GITHUB_ENV"[0m
+2026-10-30T15:35:49.9830320Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail -c "ci_memory_mb=$(( $(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) / 1048576 - 2048 )); if test \"$ci_memory_mb\" -gt 13824; then ci_memory_mb=13824; fi; printf \"Native resources: group=%s MiB, Lake threads=1, CPUs=%s\n\" \"$ci_memory_mb\" \"$(nproc)\"; scope_dir=\"$RUNNER_TEMP/lean-ci-scopes/$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB\"; scope=\"lean-ci-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB-$(printf '%s' \"$0\" | sha256sum | cut -c1-20).scope\"; mkdir -p \"$scope_dir\"; printf '%s\n' \"$scope\" > \"$scope_dir/$scope\"; exec sudo --preserve-env systemd-run --scope --quiet --collect --unit=\"$scope\" --uid=\"$(id -u)\" --gid=\"$(id -g)\" --property=\"MemoryMax=$ci_memory_mb\"M --property=MemorySwapMax=0 /usr/bin/env \"PATH=$PATH\" LEAN_NUM_THREADS=1 /bin/bash --noprofile --norc -eo pipefail \"$0\"" "{0}"
+2026-10-30T15:35:49.9832471Z env:
+2026-10-30T15:35:49.9832641Z   LAKE_NO_CACHE: true
+2026-10-30T15:35:49.9832836Z   LAKE_ARTIFACT_CACHE: true
+2026-10-30T15:35:49.9833045Z   BUILD_TARGETS: Aglib
+2026-10-30T15:35:49.9833230Z   BUILD_DEADLINE: 1793394344
+2026-10-30T15:35:49.9833418Z ##[endgroup]
+2026-10-30T15:35:49.9908360Z Native resources: group=13824 MiB, Lake threads=1, CPUs=4
+2026-10-30T15:35:50.3588619Z ##[group]Run actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+2026-10-30T15:35:50.3589256Z with:
+2026-10-30T15:35:50.3589561Z   path: ./.lake
+/home/runner/work/_temp/lake-native-cache
+
+2026-10-30T15:35:50.3590378Z   key: lean-Linux-X64-d791b020c21edcc7e9e22797f1d59fde59e8af8f675af62dc2f1fd7521bfef93-89d6106bc6c779e9737fee10c1c69f89008822de7c0ccaf47ee2412f3aae0bb2-ecca5070e0df98c4260a35b92f5bea0ca49801e8-41075798788-1
+2026-10-30T15:35:50.3592282Z   restore-keys: lean-Linux-X64-d791b020c21edcc7e9e22797f1d59fde59e8af8f675af62dc2f1fd7521bfef93-89d6106bc6c779e9737fee10c1c69f89008822de7c0ccaf47ee2412f3aae0bb2-
+lean-Linux-X64-d791b020c21edcc7e9e22797f1d59fde59e8af8f675af62dc2f1fd7521bfef93-
+lean-Linux-X64-135b2bd6700ad9122929955be7db66485a320bdf3ebb2a14538cae7f54480dcf-
+lean-Linux-X64-
+
+2026-10-30T15:35:50.3593405Z   enableCrossOsArchive: false
+2026-10-30T15:35:50.3593624Z   fail-on-cache-miss: false
+2026-10-30T15:35:50.3593815Z   lookup-only: false
+2026-10-30T15:35:50.3594042Z env:
+2026-10-30T15:35:50.3594198Z   LAKE_NO_CACHE: true
+2026-10-30T15:35:50.3594378Z   LAKE_ARTIFACT_CACHE: true
+2026-10-30T15:35:50.3594559Z   BUILD_TARGETS: Aglib
+2026-10-30T15:35:50.3594740Z   BUILD_DEADLINE: 1793394344
+2026-10-30T15:35:50.3594973Z   LAKE_CACHE_DIR: /home/runner/work/_temp/lake-native-cache
+2026-10-30T15:35:50.3595224Z ##[endgroup]
+2026-10-30T15:35:50.6019516Z Cache hit for restore-key: lean-Linux-X64-d791b020c21edcc7e9e22797f1d59fde59e8af8f675af62dc2f1fd7521bfef93-89d6106bc6c779e9737fee10c1c69f89008822de7c0ccaf47ee2412f3aae0bb2-87b919a6a073a96b20f907834c0b91bf6468710b-41060140578-1
+2026-10-30T15:35:51.7947651Z Received 113246208 of 6052608242 (1.9%), 107.8 MBs/sec
+2026-10-30T15:35:52.7935447Z Received 327155712 of 6052608242 (5.4%), 155.8 MBs/sec
+2026-10-30T15:35:53.7933429Z Received 536870912 of 6052608242 (8.9%), 170.5 MBs/sec
+2026-10-30T15:35:54.7987834Z Received 780140544 of 6052608242 (12.9%), 185.6 MBs/sec
+2026-10-30T15:35:55.8020422Z Received 985661440 of 6052608242 (16.3%), 187.7 MBs/sec
+2026-10-30T15:35:56.8002115Z Received 1207959552 of 6052608242 (20.0%), 191.7 MBs/sec
+2026-10-30T15:35:57.8011638Z Received 1421869056 of 6052608242 (23.5%), 193.4 MBs/sec
+2026-10-30T15:35:58.8025894Z Received 1610612736 of 6052608242 (26.6%), 191.7 MBs/sec
+2026-10-30T15:35:59.8055942Z Received 1799356416 of 6052608242 (29.7%), 190.3 MBs/sec
+2026-10-30T15:36:00.8059601Z Received 2009071616 of 6052608242 (33.2%), 191.3 MBs/sec
+2026-10-30T15:36:01.8063792Z Received 2164260864 of 6052608242 (35.8%), 187.4 MBs/sec
+2026-10-30T15:36:02.8067716Z Received 2336227328 of 6052608242 (38.6%), 185.4 MBs/sec
+2026-10-30T15:36:03.8068104Z Received 2407530496 of 6052608242 (39.8%), 176.4 MBs/sec
+2026-10-30T15:36:04.8072781Z Received 2411724800 of 6052608242 (39.8%), 164.1 MBs/sec
+2026-10-30T15:36:05.8084727Z Received 2411724800 of 6052608242 (39.8%), 153.1 MBs/sec
+2026-10-30T15:36:06.8090624Z Received 2428502016 of 6052608242 (40.1%), 144.6 MBs/sec
+2026-10-30T15:36:07.8104661Z Received 2608857088 of 6052608242 (43.1%), 146.2 MBs/sec
+2026-10-30T15:36:08.8105932Z Received 2764046336 of 6052608242 (45.7%), 146.3 MBs/sec
+2026-10-30T15:36:09.8108745Z Received 2894069760 of 6052608242 (47.8%), 145.1 MBs/sec
+2026-10-30T15:36:10.8143757Z Received 3019898880 of 6052608242 (49.9%), 143.8 MBs/sec
+2026-10-30T15:36:11.8146703Z Received 3221225472 of 6052608242 (53.2%), 146.1 MBs/sec
+2026-10-30T15:36:12.8169994Z Received 3451912192 of 6052608242 (57.0%), 149.5 MBs/sec
+2026-10-30T15:36:13.8147056Z Received 3619684352 of 6052608242 (59.8%), 149.9 MBs/sec
+2026-10-30T15:36:14.8170473Z Received 3753902080 of 6052608242 (62.0%), 149.0 MBs/sec
+2026-10-30T15:36:15.8147848Z Received 3888119808 of 6052608242 (64.2%), 148.2 MBs/sec
+2026-10-30T15:36:16.8166228Z Received 4009754624 of 6052608242 (66.2%), 146.9 MBs/sec
+2026-10-30T15:36:17.8164925Z Received 4131389440 of 6052608242 (68.3%), 145.8 MBs/sec
+2026-10-30T15:36:18.8162639Z Received 4248829952 of 6052608242 (70.2%), 144.6 MBs/sec
+2026-10-30T15:36:19.8162587Z Received 4374659072 of 6052608242 (72.3%), 143.7 MBs/sec
+2026-10-30T15:36:20.8164254Z Received 4525654016 of 6052608242 (74.8%), 143.7 MBs/sec
+2026-10-30T15:36:21.8172283Z Received 4693426176 of 6052608242 (77.5%), 144.3 MBs/sec
+2026-10-30T15:36:22.8176499Z Received 4857004032 of 6052608242 (80.2%), 144.6 MBs/sec
+2026-10-30T15:36:23.8180236Z Received 5028970496 of 6052608242 (83.1%), 145.2 MBs/sec
+2026-10-30T15:36:24.8192361Z Received 5226102784 of 6052608242 (86.3%), 146.5 MBs/sec
+2026-10-30T15:36:25.8196259Z Received 5419040768 of 6052608242 (89.5%), 147.5 MBs/sec
+2026-10-30T15:36:26.8197976Z Received 5632950272 of 6052608242 (93.1%), 149.1 MBs/sec
+2026-10-30T15:36:27.8202275Z Received 5817499648 of 6052608242 (96.1%), 149.8 MBs/sec
+2026-10-30T15:36:28.8214220Z Received 6027214848 of 6052608242 (99.6%), 151.1 MBs/sec
+2026-10-30T15:36:29.3566547Z Received 6052608242 of 6052608242 (100.0%), 149.7 MBs/sec
+2026-10-30T15:36:29.3568408Z Cache Size: ~5772 MB (6052608242 B)
+2026-10-30T15:36:29.3667232Z [command]/usr/bin/tar -xf /home/runner/work/_temp/b40d4bad-3b46-46e4-8374-15a4d1c28af1/cache.tzst -P -C /home/runner/work/aglib/aglib --use-compress-program unzstd
+2026-10-30T15:39:28.1784532Z Cache restored successfully
+2026-10-30T15:39:28.2690053Z Cache restored from key: lean-Linux-X64-d791b020c21edcc7e9e22797f1d59fde59e8af8f675af62dc2f1fd7521bfef93-89d6106bc6c779e9737fee10c1c69f89008822de7c0ccaf47ee2412f3aae0bb2-87b919a6a073a96b20f907834c0b91bf6468710b-41060140578-1
+2026-10-30T15:39:28.4999484Z ##[group]Run python3 - <<'PY'
+2026-10-30T15:39:28.4999916Z [36;1mpython3 - <<'PY'[0m
+2026-10-30T15:39:28.5000265Z [36;1mimport os[0m
+2026-10-30T15:39:28.5000567Z [36;1mfrom pathlib import Path[0m
+2026-10-30T15:39:28.5000895Z [36;1mimport stat[0m
+2026-10-30T15:39:28.5001156Z [36;1m[0m
+2026-10-30T15:39:28.5001587Z [36;1m# Lake rewrites these derived hashes, even when the artifact is immutable.[0m
+2026-10-30T15:39:28.5002330Z [36;1m# Unlink the sidecar instead of changing permissions on shared cache inodes.[0m
+2026-10-30T15:39:28.5002878Z [36;1mdef owned_directory(path):[0m
+2026-10-30T15:39:28.5003195Z [36;1m    metadata = path.lstat()[0m
+2026-10-30T15:39:28.5003674Z [36;1m    if (not stat.S_ISDIR(metadata.st_mode) or metadata.st_uid != os.getuid()[0m
+2026-10-30T15:39:28.5004222Z [36;1m            or not metadata.st_mode & stat.S_IWUSR):[0m
+2026-10-30T15:39:28.5004763Z [36;1m        raise SystemExit(f'Unsafe restored build directory: {path}')[0m
+2026-10-30T15:39:28.5005287Z [36;1m[0m
+2026-10-30T15:39:28.5005565Z [36;1mroot = Path('.lake/build/ir')[0m
+2026-10-30T15:39:28.5006010Z [36;1mfor parent in (Path('.lake'), Path('.lake/build'), root):[0m
+2026-10-30T15:39:28.5006443Z [36;1m    try:[0m
+2026-10-30T15:39:28.5006731Z [36;1m        owned_directory(parent)[0m
+2026-10-30T15:39:28.5007098Z [36;1m    except FileNotFoundError:[0m
+2026-10-30T15:39:28.5007496Z [36;1m        raise SystemExit(0)[0m
+2026-10-30T15:39:28.5007827Z [36;1mremoved = 0[0m
+2026-10-30T15:39:28.5008265Z [36;1mfor directory, children, files in os.walk(root, followlinks=False):[0m
+2026-10-30T15:39:28.5008723Z [36;1m    owned_directory(Path(directory))[0m
+2026-10-30T15:39:28.5009288Z [36;1m    children[:] = [name for name in children[0m
+2026-10-30T15:39:28.5009723Z [36;1m                   if not (Path(directory) / name).is_symlink()][0m
+2026-10-30T15:39:28.5010141Z [36;1m    for name in files:[0m
+2026-10-30T15:39:28.5010547Z [36;1m        if not name.endswith('.ltar.hash'):[0m
+2026-10-30T15:39:28.5010923Z [36;1m            continue[0m
+2026-10-30T15:39:28.5011237Z [36;1m        path = Path(directory) / name[0m
+2026-10-30T15:39:28.5011541Z [36;1m        metadata = path.lstat()[0m
+2026-10-30T15:39:28.5011897Z [36;1m        if stat.S_ISREG(metadata.st_mode) and not metadata.st_mode & stat.S_IWUSR:[0m
+2026-10-30T15:39:28.5012250Z [36;1m            if metadata.st_uid != os.getuid():[0m
+2026-10-30T15:39:28.5012588Z [36;1m                raise SystemExit(f'Foreign restored archive hash sidecar: {path}')[0m
+2026-10-30T15:39:28.5012911Z [36;1m            path.unlink()[0m
+2026-10-30T15:39:28.5013120Z [36;1m            removed += 1[0m
+2026-10-30T15:39:28.5013491Z [36;1mprint(f'Removed {removed} read-only restored archive hash sidecars; Lake will recompute them.')[0m
+2026-10-30T15:39:28.5013867Z [36;1mPY[0m
+2026-10-30T15:39:28.5781942Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail -c "ci_memory_mb=$(( $(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) / 1048576 - 2048 )); if test \"$ci_memory_mb\" -gt 13824; then ci_memory_mb=13824; fi; printf \"Native resources: group=%s MiB, Lake threads=1, CPUs=%s\n\" \"$ci_memory_mb\" \"$(nproc)\"; scope_dir=\"$RUNNER_TEMP/lean-ci-scopes/$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB\"; scope=\"lean-ci-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB-$(printf '%s' \"$0\" | sha256sum | cut -c1-20).scope\"; mkdir -p \"$scope_dir\"; printf '%s\n' \"$scope\" > \"$scope_dir/$scope\"; exec sudo --preserve-env systemd-run --scope --quiet --collect --unit=\"$scope\" --uid=\"$(id -u)\" --gid=\"$(id -g)\" --property=\"MemoryMax=$ci_memory_mb\"M --property=MemorySwapMax=0 /usr/bin/env \"PATH=$PATH\" LEAN_NUM_THREADS=1 /bin/bash --noprofile --norc -eo pipefail \"$0\"" "{0}"
+2026-10-30T15:39:28.5784343Z env:
+2026-10-30T15:39:28.5784554Z   LAKE_NO_CACHE: true
+2026-10-30T15:39:28.5784754Z   LAKE_ARTIFACT_CACHE: true
+2026-10-30T15:39:28.5784953Z   BUILD_TARGETS: Aglib
+2026-10-30T15:39:28.5785141Z   BUILD_DEADLINE: 1793394344
+2026-10-30T15:39:28.5785584Z   LAKE_CACHE_DIR: /home/runner/work/_temp/lake-native-cache
+2026-10-30T15:39:28.5785870Z ##[endgroup]
+2026-10-30T15:39:28.5949922Z Native resources: group=13824 MiB, Lake threads=1, CPUs=4
+2026-10-30T15:39:29.0431944Z Removed 0 read-only restored archive hash sidecars; Lake will recompute them.
+2026-10-30T15:39:29.0518602Z ##[group]Run installer="$RUNNER_TEMP/elan-init.sh"
+2026-10-30T15:39:29.0520223Z [36;1minstaller="$RUNNER_TEMP/elan-init.sh"[0m
+2026-10-30T15:39:29.0520583Z [36;1mcurl --fail --silent --show-error --location --retry 2 --retry-all-errors \[0m
+2026-10-30T15:39:29.0520941Z [36;1m  --connect-timeout 20 --max-time 120 \[0m
+2026-10-30T15:39:29.0521284Z [36;1m  https://elan.lean-lang.org/elan-init.sh \[0m
+2026-10-30T15:39:29.0521543Z [36;1m  --output "$installer"[0m
+2026-10-30T15:39:29.0521757Z [36;1mchmod +x "$installer"[0m
+2026-10-30T15:39:29.0521985Z [36;1m"$installer" -y --default-toolchain none[0m
+2026-10-30T15:39:29.0522251Z [36;1mecho "$HOME/.elan/bin" >> "$GITHUB_PATH"[0m
+2026-10-30T15:39:29.0522511Z [36;1mexport PATH="$HOME/.elan/bin:$PATH"[0m
+2026-10-30T15:39:29.0522731Z [36;1m[0m
+2026-10-30T15:39:29.0522896Z [36;1mfor attempt in 1 2 3; do[0m
+2026-10-30T15:39:29.0523125Z [36;1m  if LAKE_PATH=$(elan which lake); then[0m
+2026-10-30T15:39:29.0523390Z [36;1m    lean --version[0m
+2026-10-30T15:39:29.0523594Z [36;1m    "$LAKE_PATH" --version[0m
+2026-10-30T15:39:29.0523797Z [36;1m    exit 0[0m
+2026-10-30T15:39:29.0523967Z [36;1m  fi[0m
+2026-10-30T15:39:29.0524150Z [36;1m  if test "$attempt" -lt 3; then[0m
+2026-10-30T15:39:29.0524494Z [36;1m    echo "::warning::Lean toolchain acquisition failed (attempt $attempt/3); retrying."[0m
+2026-10-30T15:39:29.0524842Z [36;1m    sleep "$((attempt * 5))"[0m
+2026-10-30T15:39:29.0525043Z [36;1m  fi[0m
+2026-10-30T15:39:29.0525206Z [36;1mdone[0m
+2026-10-30T15:39:29.0525449Z [36;1mecho '::error::Lean toolchain acquisition failed after 3 attempts.'[0m
+2026-10-30T15:39:29.0525758Z [36;1mexit 1[0m
+2026-10-30T15:39:29.0545993Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail -c "ci_memory_mb=$(( $(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) / 1048576 - 2048 )); if test \"$ci_memory_mb\" -gt 13824; then ci_memory_mb=13824; fi; printf \"Native resources: group=%s MiB, Lake threads=1, CPUs=%s\n\" \"$ci_memory_mb\" \"$(nproc)\"; scope_dir=\"$RUNNER_TEMP/lean-ci-scopes/$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB\"; scope=\"lean-ci-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB-$(printf '%s' \"$0\" | sha256sum | cut -c1-20).scope\"; mkdir -p \"$scope_dir\"; printf '%s\n' \"$scope\" > \"$scope_dir/$scope\"; exec sudo --preserve-env systemd-run --scope --quiet --collect --unit=\"$scope\" --uid=\"$(id -u)\" --gid=\"$(id -g)\" --property=\"MemoryMax=$ci_memory_mb\"M --property=MemorySwapMax=0 /usr/bin/env \"PATH=$PATH\" LEAN_NUM_THREADS=1 /bin/bash --noprofile --norc -eo pipefail \"$0\"" "{0}"
+2026-10-30T15:39:29.0548118Z env:
+2026-10-30T15:39:29.0548294Z   LAKE_NO_CACHE: true
+2026-10-30T15:39:29.0548485Z   LAKE_ARTIFACT_CACHE: true
+2026-10-30T15:39:29.0549012Z   BUILD_TARGETS: Aglib
+2026-10-30T15:39:29.0549266Z   BUILD_DEADLINE: 1793394344
+2026-10-30T15:39:29.0549623Z   LAKE_CACHE_DIR: /home/runner/work/_temp/lake-native-cache
+2026-10-30T15:39:29.0549885Z ##[endgroup]
+2026-10-30T15:39:29.0660538Z Native resources: group=13824 MiB, Lake threads=1, CPUs=4
+2026-10-30T15:39:29.3476899Z info: downloading installer
+2026-10-30T15:39:30.9913968Z info: downloading https://releases.lean-lang.org/lean4/v4.34.1/lean-4.34.1-linux.tar.zst
+2026-10-30T15:39:37.8982024Z info: installing /home/runner/.elan/toolchains/leanprover--lean4---v4.34.1
+2026-10-30T15:39:49.3776924Z Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+2026-10-30T15:39:49.4165265Z Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)
+2026-10-30T15:39:49.4580784Z ##[group]Run lake exe cache get
+2026-10-30T15:39:49.4581199Z [36;1mlake exe cache get[0m
+2026-10-30T15:39:49.4606898Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail -c "ci_memory_mb=$(( $(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) / 1048576 - 2048 )); if test \"$ci_memory_mb\" -gt 13824; then ci_memory_mb=13824; fi; printf \"Native resources: group=%s MiB, Lake threads=1, CPUs=%s\n\" \"$ci_memory_mb\" \"$(nproc)\"; scope_dir=\"$RUNNER_TEMP/lean-ci-scopes/$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB\"; scope=\"lean-ci-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB-$(printf '%s' \"$0\" | sha256sum | cut -c1-20).scope\"; mkdir -p \"$scope_dir\"; printf '%s\n' \"$scope\" > \"$scope_dir/$scope\"; exec sudo --preserve-env systemd-run --scope --quiet --collect --unit=\"$scope\" --uid=\"$(id -u)\" --gid=\"$(id -g)\" --property=\"MemoryMax=$ci_memory_mb\"M --property=MemorySwapMax=0 /usr/bin/env \"PATH=$PATH\" LEAN_NUM_THREADS=1 /bin/bash --noprofile --norc -eo pipefail \"$0\"" "{0}"
+2026-10-30T15:39:49.4609159Z env:
+2026-10-30T15:39:49.4609344Z   LAKE_NO_CACHE: true
+2026-10-30T15:39:49.4609537Z   LAKE_ARTIFACT_CACHE: true
+2026-10-30T15:39:49.4609736Z   BUILD_TARGETS: Aglib
+2026-10-30T15:39:49.4609960Z   BUILD_DEADLINE: 1793394344
+2026-10-30T15:39:49.4610211Z   LAKE_CACHE_DIR: /home/runner/work/_temp/lake-native-cache
+2026-10-30T15:39:49.4610476Z ##[endgroup]
+2026-10-30T15:39:49.5047696Z Native resources: group=13824 MiB, Lake threads=1, CPUs=4
+2026-10-30T15:40:14.1284712Z Current branch: HEAD
+2026-10-30T15:40:14.1285148Z Using cache from origin: (some leanprover-community/mathlib4)
+2026-10-30T15:40:14.1285951Z Attempting to download 8908 file(s) from leanprover-community/mathlib4 cache at https://cache.mathlib.org/mathlib4-master
+2026-10-30T15:40:14.3994547Z 
+2026-10-30T15:40:14.5004609Z Downloaded: 1 file(s) [attempted 1/8908 = 0%, 181 KB/s], Decompressed: 0[K
+2026-10-30T15:40:14.6010486Z Downloaded: 65 file(s) [attempted 65/8908 = 0%, 267 KB/s], Decompressed: 55[K
+2026-10-30T15:40:14.7007434Z Downloaded: 161 file(s) [attempted 161/8908 = 1%, 2185 KB/s], Decompressed: 60[K
+2026-10-30T15:40:14.8000837Z Downloaded: 270 file(s) [attempted 270/8908 = 3%, 1616 KB/s], Decompressed: 60[K
+2026-10-30T15:40:14.9025447Z Downloaded: 380 file(s) [attempted 380/8908 = 4%, 1563 KB/s], Decompressed: 60[K
+2026-10-30T15:40:15.0250126Z Downloaded: 496 file(s) [attempted 496/8908 = 5%, 972 KB/s], Decompressed: 60[K
+2026-10-30T15:40:15.1273113Z Downloaded: 599 file(s) [attempted 599/8908 = 6%, 1286 KB/s], Decompressed: 133[K
+2026-10-30T15:40:15.2272057Z Downloaded: 720 file(s) [attempted 720/8908 = 8%, 2100 KB/s], Decompressed: 133[K
+2026-10-30T15:40:15.3274697Z Downloaded: 829 file(s) [attempted 829/8908 = 9%, 959 KB/s], Decompressed: 813[K
+2026-10-30T15:40:15.4290826Z Downloaded: 943 file(s) [attempted 943/8908 = 10%, 3142 KB/s], Decompressed: 917[K
+2026-10-30T15:40:15.5333756Z Downloaded: 1047 file(s) [attempted 1047/8908 = 11%, 97 KB/s], Decompressed: 1044[K
+2026-10-30T15:40:15.6389735Z Downloaded: 1165 file(s) [attempted 1165/8908 = 13%, 2181 KB/s], Decompressed: 1162[K
+2026-10-30T15:40:15.7385600Z Downloaded: 1268 file(s) [attempted 1268/8908 = 14%, 779 KB/s], Decompressed: 1266[K
+2026-10-30T15:40:15.8557365Z Downloaded: 1363 file(s) [attempted 1363/8908 = 15%, 1087 KB/s], Decompressed: 1357[K
+2026-10-30T15:40:15.9555995Z Downloaded: 1422 file(s) [attempted 1422/8908 = 15%, 252 KB/s], Decompressed: 1364[K
+2026-10-30T15:40:16.0557663Z Downloaded: 1513 file(s) [attempted 1513/8908 = 16%, 982 KB/s], Decompressed: 1508[K
+2026-10-30T15:40:16.1552804Z Downloaded: 1622 file(s) [attempted 1622/8908 = 18%, 968 KB/s], Decompressed: 1619[K
+2026-10-30T15:40:16.2610113Z Downloaded: 1729 file(s) [attempted 1729/8908 = 19%, 3214 KB/s], Decompressed: 1722[K
+2026-10-30T15:40:16.3620554Z Downloaded: 1838 file(s) [attempted 1838/8908 = 20%, 2210 KB/s], Decompressed: 1830[K
+2026-10-30T15:40:16.4619382Z Downloaded: 1926 file(s) [attempted 1926/8908 = 21%, 1567 KB/s], Decompressed: 1900[K
+2026-10-30T15:40:16.5612945Z Downloaded: 2031 file(s) [attempted 2031/8908 = 22%, 502 KB/s], Decompressed: 2023[K
+2026-10-30T15:40:16.6612976Z Downloaded: 2136 file(s) [attempted 2136/8908 = 23%, 2379 KB/s], Decompressed: 2054[K
+2026-10-30T15:40:16.7611357Z Downloaded: 2239 file(s) [attempted 2239/8908 = 25%, 244 KB/s], Decompressed: 2162[K
+2026-10-30T15:40:16.8747692Z Downloaded: 2337 file(s) [attempted 2337/8908 = 26%, 323 KB/s], Decompressed: 2313[K
+2026-10-30T15:40:16.9739207Z Downloaded: 2431 file(s) [attempted 2431/8908 = 27%, 1305 KB/s], Decompressed: 2429[K
+2026-10-30T15:40:17.0737723Z Downloaded: 2520 file(s) [attempted 2520/8908 = 28%, 1778 KB/s], Decompressed: 2510[K
+2026-10-30T15:40:17.1736230Z Downloaded: 2607 file(s) [attempted 2607/8908 = 29%, 248 KB/s], Decompressed: 2599[K
+2026-10-30T15:40:17.2740090Z Downloaded: 2715 file(s) [attempted 2715/8908 = 30%, 265 KB/s], Decompressed: 2681[K
+2026-10-30T15:40:17.3744701Z Downloaded: 2818 file(s) [attempted 2818/8908 = 31%, 830 KB/s], Decompressed: 2681[K
+2026-10-30T15:40:17.4772697Z Downloaded: 2898 file(s) [attempted 2898/8908 = 32%, 586 KB/s], Decompressed: 2885[K
+2026-10-30T15:40:17.5790738Z Downloaded: 2953 file(s) [attempted 2953/8908 = 33%, 1209 KB/s], Decompressed: 2950[K
+2026-10-30T15:40:17.6842649Z Downloaded: 3058 file(s) [attempted 3058/8908 = 34%, 2542 KB/s], Decompressed: 3056[K
+2026-10-30T15:40:17.7912417Z Downloaded: 3167 file(s) [attempted 3167/8908 = 35%, 2212 KB/s], Decompressed: 3137[K
+2026-10-30T15:40:17.8915835Z Downloaded: 3256 file(s) [attempted 3256/8908 = 36%, 379 KB/s], Decompressed: 3205[K
+2026-10-30T15:40:17.9912251Z Downloaded: 3366 file(s) [attempted 3366/8908 = 37%, 3716 KB/s], Decompressed: 3361[K
+2026-10-30T15:40:18.0916786Z Downloaded: 3476 file(s) [attempted 3476/8908 = 39%, 69 KB/s], Decompressed: 3465[K
+2026-10-30T15:40:18.1919555Z Downloaded: 3579 file(s) [attempted 3579/8908 = 40%, 583 KB/s], Decompressed: 3573[K
+2026-10-30T15:40:18.2955086Z Downloaded: 3683 file(s) [attempted 3683/8908 = 41%, 4145 KB/s], Decompressed: 3679[K
+2026-10-30T15:40:18.3976510Z Downloaded: 3787 file(s) [attempted 3787/8908 = 42%, 1510 KB/s], Decompressed: 3729[K
+2026-10-30T15:40:18.4972639Z Downloaded: 3897 file(s) [attempted 3897/8908 = 43%, 207 KB/s], Decompressed: 3736[K
+2026-10-30T15:40:18.5990154Z Downloaded: 4005 file(s) [attempted 4005/8908 = 44%, 2659 KB/s], Decompressed: 3957[K
+2026-10-30T15:40:18.7032834Z Downloaded: 4114 file(s) [attempted 4114/8908 = 46%, 445 KB/s], Decompressed: 3969[K
+2026-10-30T15:40:18.8053464Z Downloaded: 4214 file(s) [attempted 4214/8908 = 47%, 619 KB/s], Decompressed: 4114[K
+2026-10-30T15:40:18.9051134Z Downloaded: 4291 file(s) [attempted 4291/8908 = 48%, 384 KB/s], Decompressed: 4287[K
+2026-10-30T15:40:19.0132403Z Downloaded: 4363 file(s) [attempted 4363/8908 = 48%, 86 KB/s], Decompressed: 4356[K
+2026-10-30T15:40:19.1186522Z Downloaded: 4440 file(s) [attempted 4440/8908 = 49%, 1853 KB/s], Decompressed: 4436[K
+2026-10-30T15:40:19.2203241Z Downloaded: 4517 file(s) [attempted 4517/8908 = 50%, 2303 KB/s], Decompressed: 4510[K
+2026-10-30T15:40:19.3245735Z Downloaded: 4630 file(s) [attempted 4630/8908 = 51%, 270 KB/s], Decompressed: 4628[K
+2026-10-30T15:40:19.4327201Z Downloaded: 4714 file(s) [attempted 4714/8908 = 52%, 297 KB/s], Decompressed: 4681[K
+2026-10-30T15:40:19.5328718Z Downloaded: 4813 file(s) [attempted 4813/8908 = 54%, 3428 KB/s], Decompressed: 4808[K
+2026-10-30T15:40:19.6411225Z Downloaded: 4936 file(s) [attempted 4936/8908 = 55%, 270 KB/s], Decompressed: 4842[K
+2026-10-30T15:40:19.7418375Z Downloaded: 5036 file(s) [attempted 5036/8908 = 56%, 380 KB/s], Decompressed: 5029[K
+2026-10-30T15:40:19.8416952Z Downloaded: 5166 file(s) [attempted 5166/8908 = 57%, 1517 KB/s], Decompressed: 5142[K
+2026-10-30T15:40:19.9443101Z Downloaded: 5276 file(s) [attempted 5276/8908 = 59%, 198 KB/s], Decompressed: 5267[K
+2026-10-30T15:40:20.0473112Z Downloaded: 5385 file(s) [attempted 5385/8908 = 60%, 3214 KB/s], Decompressed: 5380[K
+2026-10-30T15:40:20.1481232Z Downloaded: 5498 file(s) [attempted 5498/8908 = 61%, 2351 KB/s], Decompressed: 5443[K
+2026-10-30T15:40:20.2493767Z Downloaded: 5606 file(s) [attempted 5606/8908 = 62%, 491 KB/s], Decompressed: 5575[K
+2026-10-30T15:40:20.3493241Z Downloaded: 5714 file(s) [attempted 5714/8908 = 64%, 302 KB/s], Decompressed: 5575[K
+2026-10-30T15:40:20.4491177Z Downloaded: 5820 file(s) [attempted 5820/8908 = 65%, 109 KB/s], Decompressed: 5575[K
+2026-10-30T15:40:20.5491935Z Downloaded: 5916 file(s) [attempted 5916/8908 = 66%, 720 KB/s], Decompressed: 5904[K
+2026-10-30T15:40:20.6580013Z Downloaded: 5999 file(s) [attempted 5999/8908 = 67%, 232 KB/s], Decompressed: 5981[K
+2026-10-30T15:40:20.7610949Z Downloaded: 6072 file(s) [attempted 6072/8908 = 68%, 623 KB/s], Decompressed: 6015[K
+2026-10-30T15:40:21.0037354Z Downloaded: 6164 file(s) [attempted 6164/8908 = 69%, 110 KB/s], Decompressed: 6015[K
+2026-10-30T15:40:21.1105586Z Downloaded: 6214 file(s) [attempted 6214/8908 = 69%, 564 KB/s], Decompressed: 6019[K
+2026-10-30T15:40:21.2126782Z Downloaded: 6320 file(s) [attempted 6320/8908 = 70%, 423 KB/s], Decompressed: 6019[K
+2026-10-30T15:40:21.3169857Z Downloaded: 6418 file(s) [attempted 6418/8908 = 72%, 813 KB/s], Decompressed: 6019[K
+2026-10-30T15:40:21.4196775Z Downloaded: 6517 file(s) [attempted 6517/8908 = 73%, 487 KB/s], Decompressed: 6515[K
+2026-10-30T15:40:21.5241259Z Downloaded: 6628 file(s) [attempted 6628/8908 = 74%, 1050 KB/s], Decompressed: 6620[K
+2026-10-30T15:40:21.6241239Z Downloaded: 6743 file(s) [attempted 6743/8908 = 75%, 185 KB/s], Decompressed: 6709[K
+2026-10-30T15:40:21.7265083Z Downloaded: 6856 file(s) [attempted 6856/8908 = 76%, 1483 KB/s], Decompressed: 6709[K
+2026-10-30T15:40:21.8263442Z Downloaded: 6957 file(s) [attempted 6957/8908 = 78%, 361 KB/s], Decompressed: 6714[K
+2026-10-30T15:40:21.9308697Z Downloaded: 7063 file(s) [attempted 7063/8908 = 79%, 396 KB/s], Decompressed: 7035[K
+2026-10-30T15:40:22.0369266Z Downloaded: 7180 file(s) [attempted 7180/8908 = 80%, 1837 KB/s], Decompressed: 7038[K
+2026-10-30T15:40:22.1371264Z Downloaded: 7300 file(s) [attempted 7300/8908 = 81%, 1123 KB/s], Decompressed: 7291[K
+2026-10-30T15:40:22.2508096Z Downloaded: 7401 file(s) [attempted 7401/8908 = 83%, 325 KB/s], Decompressed: 7400[K
+2026-10-30T15:40:22.3509298Z Downloaded: 7483 file(s) [attempted 7483/8908 = 84%, 726 KB/s], Decompressed: 7466[K
+2026-10-30T15:40:22.4501920Z Downloaded: 7565 file(s) [attempted 7565/8908 = 84%, 2235 KB/s], Decompressed: 7562[K
+2026-10-30T15:40:22.5584960Z Downloaded: 7677 file(s) [attempted 7677/8908 = 86%, 438 KB/s], Decompressed: 7666[K
+2026-10-30T15:40:22.6589995Z Downloaded: 7788 file(s) [attempted 7788/8908 = 87%, 706 KB/s], Decompressed: 7781[K
+2026-10-30T15:40:22.7582435Z Downloaded: 7901 file(s) [attempted 7901/8908 = 88%, 2191 KB/s], Decompressed: 7896[K
+2026-10-30T15:40:22.8585423Z Downloaded: 8007 file(s) [attempted 8007/8908 = 89%, 622 KB/s], Decompressed: 8003[K
+2026-10-30T15:40:22.9583316Z Downloaded: 8110 file(s) [attempted 8110/8908 = 91%, 319 KB/s], Decompressed: 8101[K
+2026-10-30T15:40:23.0581643Z Downloaded: 8197 file(s) [attempted 8197/8908 = 92%, 362 KB/s], Decompressed: 8194[K
+2026-10-30T15:40:23.1584874Z Downloaded: 8300 file(s) [attempted 8300/8908 = 93%, 775 KB/s], Decompressed: 8295[K
+2026-10-30T15:40:23.2591076Z Downloaded: 8368 file(s) [attempted 8368/8908 = 93%, 1183 KB/s], Decompressed: 8365[K
+2026-10-30T15:40:23.3606956Z Downloaded: 8476 file(s) [attempted 8476/8908 = 95%, 1001 KB/s], Decompressed: 8471[K
+2026-10-30T15:40:23.4634312Z Downloaded: 8593 file(s) [attempted 8593/8908 = 96%, 463 KB/s], Decompressed: 8579[K
+2026-10-30T15:40:23.5702820Z Downloaded: 8704 file(s) [attempted 8704/8908 = 97%, 233 KB/s], Decompressed: 8639[K
+2026-10-30T15:40:23.6621143Z Downloaded: 8812 file(s) [attempted 8812/8908 = 98%, 1786 KB/s], Decompressed: 8808[K
+2026-10-30T15:40:23.6621679Z Downloaded: 8908 file(s) [attempted 8908/8908 = 100%, 1786 KB/s], Decompressed: 8896[K
+2026-10-30T15:40:24.2762662Z Decompressed 8908 file(s)
+2026-10-30T15:40:24.2763050Z Already decompressed 8908 file(s)
+2026-10-30T15:40:24.3236246Z ##[group]Run compiler=$(lean --version)
+2026-10-30T15:40:24.3236695Z [36;1mcompiler=$(lean --version)[0m
+2026-10-30T15:40:24.3237178Z [36;1mdomain="$RUNNER_OS-$RUNNER_ARCH-$(sha256sum lean-toolchain | cut -c 1-16)"[0m
+2026-10-30T15:40:24.3237771Z [36;1mwhile IFS=$'\t' read -r package repository pin; do[0m
+2026-10-30T15:40:24.3238341Z [36;1m  exact=$(gh api "repos/$repository/releases/tags/lean-native-$pin" 2>/dev/null) || exact=null[0m
+2026-10-30T15:40:24.3239087Z [36;1m  recent=$(gh api "repos/$repository/releases?per_page=20" 2>/dev/null) || recent='[]'[0m
+2026-10-30T15:40:24.3239813Z [36;1m  candidates=$(printf '%s' "$recent" | jq -r --argjson exact "$exact" --arg domain "$domain" '[0m
+2026-10-30T15:40:24.3240414Z [36;1m    [([$exact] + (map(select(.id != $exact.id)) | sort_by(.published_at) | reverse))[] | select(.draft == false)[0m
+2026-10-30T15:40:24.3240846Z [36;1m    | select(.tag_name | test("^lean-native-[0-9a-f]{40}$"))[0m
+2026-10-30T15:40:24.3241236Z [36;1m    | select(.target_commitish == (.tag_name | ltrimstr("lean-native-")))[0m
+2026-10-30T15:40:24.3241614Z [36;1m    | .tag_name as $tag | (.assets | sort_by(.created_at) | reverse)[][0m
+2026-10-30T15:40:24.3241975Z [36;1m    | select((.name | startswith("lake-native-cache-" + $domain + "-"))[0m
+2026-10-30T15:40:24.3242327Z [36;1m        or (.name | test("^lake-native-cache-[0-9]+-[0-9]+[.]tar$")))[0m
+2026-10-30T15:40:24.3242642Z [36;1m    | [$tag, .name]][:5][] | @tsv') || candidates=''[0m
+2026-10-30T15:40:24.3242897Z [36;1m  imported=false[0m
+2026-10-30T15:40:24.3243114Z [36;1m  while IFS=$'\t' read -r tag asset; do[0m
+2026-10-30T15:40:24.3243357Z [36;1m    test -n "$tag" || continue[0m
+2026-10-30T15:40:24.3243641Z [36;1m    temporary=$(mktemp -d "$RUNNER_TEMP/native-seed.XXXXXX")[0m
+2026-10-30T15:40:24.3244065Z [36;1m    if gh release download "$tag" --repo "$repository" --pattern "$asset" --dir "$temporary"; then[0m
+2026-10-30T15:40:24.3244440Z [36;1m      archive="$temporary/$asset"[0m
+2026-10-30T15:40:24.3244777Z [36;1m      # Native staging contains flat regular files, never links or nested paths.[0m
+2026-10-30T15:40:24.3245223Z [36;1m      if tar -tvf "$archive" | awk 'substr($1,1,1)!="-" && !(substr($1,1,1)=="d" && $NF=="./") {exit 1}' &&[0m
+2026-10-30T15:40:24.3245783Z [36;1m          tar -tf "$archive" | awk '!/^(\.\/)?$|^(\.\/)?(outputs[.]jsonl|producer[.]json|[0-9a-f]{16}([.][A-Za-z0-9_.+-]+)?)$/ {bad=1} END {exit bad}'; then[0m
+2026-10-30T15:40:24.3246235Z [36;1m        mkdir "$temporary/staged"[0m
+2026-10-30T15:40:24.3246496Z [36;1m        if tar -xf "$archive" -C "$temporary/staged"; then[0m
+2026-10-30T15:40:24.3246759Z [36;1m          compatible=false[0m
+2026-10-30T15:40:24.3247009Z [36;1m          if test -f "$temporary/staged/producer.json"; then[0m
+2026-10-30T15:40:24.3247384Z [36;1m            if jq -e --arg repository "$repository" --arg revision "${tag#lean-native-}" \[0m
+2026-10-30T15:40:24.3247854Z [36;1m                --arg package "${package#«}" --arg domain "$domain" --arg compiler "$compiler" '[0m
+2026-10-30T15:40:24.3248277Z [36;1m                .repository == $repository and .revision == $revision[0m
+2026-10-30T15:40:24.3248598Z [36;1m                and .package == ($package | rtrimstr("»"))[0m
+2026-10-30T15:40:24.3249376Z [36;1m                and .domain == $domain and .compiler == $compiler' \[0m
+2026-10-30T15:40:24.3249760Z [36;1m                "$temporary/staged/producer.json" >/dev/null; then compatible=true; fi[0m
+2026-10-30T15:40:24.3250163Z [36;1m          elif [[ "$asset" =~ ^lake-native-cache-[0-9]+-[0-9]+[.]tar$ ]]; then[0m
+2026-10-30T15:40:24.3250582Z [36;1m            echo "$package: legacy native seed; current Lake inputs decide applicability."[0m
+2026-10-30T15:40:24.3250922Z [36;1m            compatible=true[0m
+2026-10-30T15:40:24.3251129Z [36;1m          fi[0m
+2026-10-30T15:40:24.3251412Z [36;1m          if "$compatible" && lake cache unstage "$temporary/staged" "$package"; then[0m
+2026-10-30T15:40:24.3252001Z [36;1m            echo "$package: imported $repository producer ${tag#lean-native-} for pin $pin."[0m
+2026-10-30T15:40:24.3252357Z [36;1m            imported=true[0m
+2026-10-30T15:40:24.3252557Z [36;1m          fi[0m
+2026-10-30T15:40:24.3252745Z [36;1m        fi[0m
+2026-10-30T15:40:24.3252912Z [36;1m      fi[0m
+2026-10-30T15:40:24.3253073Z [36;1m    fi[0m
+2026-10-30T15:40:24.3253246Z [36;1m    rm -rf "$temporary"[0m
+2026-10-30T15:40:24.3253456Z [36;1m    "$imported" && break[0m
+2026-10-30T15:40:24.3253666Z [36;1m  done <<< "$candidates"[0m
+2026-10-30T15:40:24.3253992Z [36;1m  "$imported" || echo "$package: no compatible published cache; ordinary incremental build."[0m
+2026-10-30T15:40:24.3254382Z [36;1mdone < <(jq -r '.packages[] | select(.type == "git")[0m
+2026-10-30T15:40:24.3254723Z [36;1m  | select(.url | test("^https://github[.]com/kangxyz/[^/]+/?$"))[0m
+2026-10-30T15:40:24.3255023Z [36;1m  | select(.rev | test("^[0-9a-f]{40}$"))[0m
+2026-10-30T15:40:24.3255381Z [36;1m  | [.name, (.url | sub("^https://github[.]com/"; "") | sub("[.]git/?$"; "") | rtrimstr("/")), .rev][0m
+2026-10-30T15:40:24.3255723Z [36;1m  | @tsv' lake-manifest.json)[0m
+2026-10-30T15:40:24.3275039Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail -c "ci_memory_mb=$(( $(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) / 1048576 - 2048 )); if test \"$ci_memory_mb\" -gt 13824; then ci_memory_mb=13824; fi; printf \"Native resources: group=%s MiB, Lake threads=1, CPUs=%s\n\" \"$ci_memory_mb\" \"$(nproc)\"; scope_dir=\"$RUNNER_TEMP/lean-ci-scopes/$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB\"; scope=\"lean-ci-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB-$(printf '%s' \"$0\" | sha256sum | cut -c1-20).scope\"; mkdir -p \"$scope_dir\"; printf '%s\n' \"$scope\" > \"$scope_dir/$scope\"; exec sudo --preserve-env systemd-run --scope --quiet --collect --unit=\"$scope\" --uid=\"$(id -u)\" --gid=\"$(id -g)\" --property=\"MemoryMax=$ci_memory_mb\"M --property=MemorySwapMax=0 /usr/bin/env \"PATH=$PATH\" LEAN_NUM_THREADS=1 /bin/bash --noprofile --norc -eo pipefail \"$0\"" "{0}"
+2026-10-30T15:40:24.3277121Z env:
+2026-10-30T15:40:24.3277289Z   LAKE_NO_CACHE: true
+2026-10-30T15:40:24.3277480Z   LAKE_ARTIFACT_CACHE: true
+2026-10-30T15:40:24.3277677Z   BUILD_TARGETS: Aglib
+2026-10-30T15:40:24.3277858Z   BUILD_DEADLINE: 1793394344
+2026-10-30T15:40:24.3278126Z   LAKE_CACHE_DIR: /home/runner/work/_temp/lake-native-cache
+2026-10-30T15:40:24.3280375Z   GH_TOKEN: ***
+2026-10-30T15:40:24.3280557Z ##[endgroup]
+2026-10-30T15:40:24.3351285Z Native resources: group=13824 MiB, Lake threads=1, CPUs=4
+2026-10-30T15:40:24.4029542Z ##[group]Run python3 - <<'PY'
+2026-10-30T15:40:24.4030042Z [36;1mpython3 - <<'PY'[0m
+2026-10-30T15:40:24.4030445Z [36;1mimport os[0m
+2026-10-30T15:40:24.4030788Z [36;1mfrom pathlib import Path[0m
+2026-10-30T15:40:24.4031198Z [36;1mimport stat[0m
+2026-10-30T15:40:24.4031472Z [36;1m[0m
+2026-10-30T15:40:24.4031878Z [36;1m# Lake rewrites these derived hashes, even when the artifact is immutable.[0m
+2026-10-30T15:40:24.4032474Z [36;1m# Unlink the sidecar instead of changing permissions on shared cache inodes.[0m
+2026-10-30T15:40:24.4046149Z [36;1mdef owned_directory(path):[0m
+2026-10-30T15:40:24.4046522Z [36;1m    metadata = path.lstat()[0m
+2026-10-30T15:40:24.4047332Z [36;1m    if (not stat.S_ISDIR(metadata.st_mode) or metadata.st_uid != os.getuid()[0m
+2026-10-30T15:40:24.4047836Z [36;1m            or not metadata.st_mode & stat.S_IWUSR):[0m
+2026-10-30T15:40:24.4048288Z [36;1m        raise SystemExit(f'Unsafe restored build directory: {path}')[0m
+2026-10-30T15:40:24.4048784Z [36;1m[0m
+2026-10-30T15:40:24.4049156Z [36;1mroot = Path('.lake/build/ir')[0m
+2026-10-30T15:40:24.4049563Z [36;1mfor parent in (Path('.lake'), Path('.lake/build'), root):[0m
+2026-10-30T15:40:24.4049929Z [36;1m    try:[0m
+2026-10-30T15:40:24.4050122Z [36;1m        owned_directory(parent)[0m
+2026-10-30T15:40:24.4050350Z [36;1m    except FileNotFoundError:[0m
+2026-10-30T15:40:24.4050573Z [36;1m        raise SystemExit(0)[0m
+2026-10-30T15:40:24.4050775Z [36;1mremoved = 0[0m
+2026-10-30T15:40:24.4051045Z [36;1mfor directory, children, files in os.walk(root, followlinks=False):[0m
+2026-10-30T15:40:24.4051371Z [36;1m    owned_directory(Path(directory))[0m
+2026-10-30T15:40:24.4051639Z [36;1m    children[:] = [name for name in children[0m
+2026-10-30T15:40:24.4051935Z [36;1m                   if not (Path(directory) / name).is_symlink()][0m
+2026-10-30T15:40:24.4052208Z [36;1m    for name in files:[0m
+2026-10-30T15:40:24.4052440Z [36;1m        if not name.endswith('.ltar.hash'):[0m
+2026-10-30T15:40:24.4052672Z [36;1m            continue[0m
+2026-10-30T15:40:24.4052891Z [36;1m        path = Path(directory) / name[0m
+2026-10-30T15:40:24.4053128Z [36;1m        metadata = path.lstat()[0m
+2026-10-30T15:40:24.4053447Z [36;1m        if stat.S_ISREG(metadata.st_mode) and not metadata.st_mode & stat.S_IWUSR:[0m
+2026-10-30T15:40:24.4053783Z [36;1m            if metadata.st_uid != os.getuid():[0m
+2026-10-30T15:40:24.4054119Z [36;1m                raise SystemExit(f'Foreign restored archive hash sidecar: {path}')[0m
+2026-10-30T15:40:24.4054437Z [36;1m            path.unlink()[0m
+2026-10-30T15:40:24.4054649Z [36;1m            removed += 1[0m
+2026-10-30T15:40:24.4055019Z [36;1mprint(f'Removed {removed} read-only restored archive hash sidecars; Lake will recompute them.')[0m
+2026-10-30T15:40:24.4055398Z [36;1mPY[0m
+2026-10-30T15:40:24.4074886Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail -c "ci_memory_mb=$(( $(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) / 1048576 - 2048 )); if test \"$ci_memory_mb\" -gt 13824; then ci_memory_mb=13824; fi; printf \"Native resources: group=%s MiB, Lake threads=1, CPUs=%s\n\" \"$ci_memory_mb\" \"$(nproc)\"; scope_dir=\"$RUNNER_TEMP/lean-ci-scopes/$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB\"; scope=\"lean-ci-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB-$(printf '%s' \"$0\" | sha256sum | cut -c1-20).scope\"; mkdir -p \"$scope_dir\"; printf '%s\n' \"$scope\" > \"$scope_dir/$scope\"; exec sudo --preserve-env systemd-run --scope --quiet --collect --unit=\"$scope\" --uid=\"$(id -u)\" --gid=\"$(id -g)\" --property=\"MemoryMax=$ci_memory_mb\"M --property=MemorySwapMax=0 /usr/bin/env \"PATH=$PATH\" LEAN_NUM_THREADS=1 /bin/bash --noprofile --norc -eo pipefail \"$0\"" "{0}"
+2026-10-30T15:40:24.4077048Z env:
+2026-10-30T15:40:24.4077226Z   LAKE_NO_CACHE: true
+2026-10-30T15:40:24.4077416Z   LAKE_ARTIFACT_CACHE: true
+2026-10-30T15:40:24.4077610Z   BUILD_TARGETS: Aglib
+2026-10-30T15:40:24.4077791Z   BUILD_DEADLINE: 1793394344
+2026-10-30T15:40:24.4078227Z   LAKE_CACHE_DIR: /home/runner/work/_temp/lake-native-cache
+2026-10-30T15:40:24.4078501Z ##[endgroup]
+2026-10-30T15:40:24.4144144Z Native resources: group=13824 MiB, Lake threads=1, CPUs=4
+2026-10-30T15:40:24.7400391Z Removed 0 read-only restored archive hash sidecars; Lake will recompute them.
+2026-10-30T15:40:24.7483863Z ##[group]Run read -r -a targets <<< "$BUILD_TARGETS"
+2026-10-30T15:40:24.7484218Z [36;1mread -r -a targets <<< "$BUILD_TARGETS"[0m
+2026-10-30T15:40:24.7484485Z [36;1mif test "${#targets[@]}" -eq 0; then[0m
+2026-10-30T15:40:24.7484818Z [36;1m  echo '::error::build-targets must name at least one production root.'[0m
+2026-10-30T15:40:24.7485392Z [36;1m  exit 1[0m
+2026-10-30T15:40:24.7485570Z [36;1mfi[0m
+2026-10-30T15:40:24.7485765Z [36;1mremaining=$((BUILD_DEADLINE - $(date +%s)))[0m
+2026-10-30T15:40:24.7486031Z [36;1mif test "$remaining" -le 0; then[0m
+2026-10-30T15:40:24.7486578Z [36;1m  echo '::warning::The Build job has used its 330-minute compiler budget. Cache saving will still be attempted; rerun this branch to resume from saved partial outputs.'[0m
+2026-10-30T15:40:24.7487099Z [36;1m  exit 124[0m
+2026-10-30T15:40:24.7487275Z [36;1mfi[0m
+2026-10-30T15:40:24.7487734Z [36;1mif timeout --signal=INT --kill-after=60s "${remaining}s" lake build --rehash "${targets[@]}" -o "$RUNNER_TEMP/outputs.jsonl"; then[0m
+2026-10-30T15:40:24.7488197Z [36;1m  exit 0[0m
+2026-10-30T15:40:24.7488366Z [36;1melse[0m
+2026-10-30T15:40:24.7488532Z [36;1m  status=$?[0m
+2026-10-30T15:40:24.7488710Z [36;1mfi[0m
+2026-10-30T15:40:24.7489177Z [36;1mif test "$status" -eq 124 || test "$status" -eq 137; then[0m
+2026-10-30T15:40:24.7489894Z [36;1m  echo "::warning::Build stopped with timeout/kill status $status at the job's compiler cutoff. Partial outputs will be saved where possible by the following cache steps; rerun this branch to resume the incremental build."[0m
+2026-10-30T15:40:24.7490606Z [36;1mfi[0m
+2026-10-30T15:40:24.7490779Z [36;1mexit "$status"[0m
+2026-10-30T15:40:24.7511241Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail -c "ci_memory_mb=$(( $(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) / 1048576 - 2048 )); if test \"$ci_memory_mb\" -gt 13824; then ci_memory_mb=13824; fi; printf \"Native resources: group=%s MiB, Lake threads=1, CPUs=%s\n\" \"$ci_memory_mb\" \"$(nproc)\"; scope_dir=\"$RUNNER_TEMP/lean-ci-scopes/$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB\"; scope=\"lean-ci-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB-$(printf '%s' \"$0\" | sha256sum | cut -c1-20).scope\"; mkdir -p \"$scope_dir\"; printf '%s\n' \"$scope\" > \"$scope_dir/$scope\"; exec sudo --preserve-env systemd-run --scope --quiet --collect --unit=\"$scope\" --uid=\"$(id -u)\" --gid=\"$(id -g)\" --property=\"MemoryMax=$ci_memory_mb\"M --property=MemorySwapMax=0 /usr/bin/env \"PATH=$PATH\" LEAN_NUM_THREADS=1 /bin/bash --noprofile --norc -eo pipefail \"$0\"" "{0}"
+2026-10-30T15:40:24.7513345Z env:
+2026-10-30T15:40:24.7513505Z   LAKE_NO_CACHE: true
+2026-10-30T15:40:24.7513699Z   LAKE_ARTIFACT_CACHE: true
+2026-10-30T15:40:24.7513892Z   BUILD_TARGETS: Aglib
+2026-10-30T15:40:24.7514074Z   BUILD_DEADLINE: 1793394344
+2026-10-30T15:40:24.7514315Z   LAKE_CACHE_DIR: /home/runner/work/_temp/lake-native-cache
+2026-10-30T15:40:24.7514597Z ##[endgroup]
+2026-10-30T15:40:24.7581640Z Native resources: group=13824 MiB, Lake threads=1, CPUs=4
+2026-10-30T15:40:35.1460025Z ✔ [4564/4569] Built Aglib.Algebra.Category.Grp.ExactSequenceConsequences (3.2s)
+2026-10-30T15:40:38.1477316Z ✔ [4569/4583] Built Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.OrdinaryNatTrans (2.7s)
+2026-10-30T15:40:40.6517201Z ✔ [4581/4583] Built Aglib.Algebra.Homology.RightDerived.Postcomp.UnitAssembly (2.3s)
+2026-10-30T15:40:42.7537322Z ✔ [4582/4583] Built Aglib.Algebra.Homology.RightDerived.Postcomp.RepresentedSections (1.9s)
+2026-10-30T15:40:51.2578087Z ✔ [7937/7940] Built Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections (1.5s)
+2026-10-30T15:40:52.7596746Z ✔ [7938/7979] Built Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.Pullback (1.3s)
+2026-10-30T15:40:54.4633155Z ✔ [7970/7979] Built Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.SourceCoherence (1.5s)
+2026-10-30T15:40:57.0658176Z ✔ [7973/7979] Built Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.Terminal (2.3s)
+2026-10-30T15:40:58.6723263Z ✔ [7974/7980] Built Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.ConstantCoherence (1.4s)
+2026-10-30T15:41:02.8743427Z ✔ [7975/7980] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.PullbackCoherence (3.0s)
+2026-10-30T15:41:08.2788548Z ✔ [7977/7980] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.PullbackComposition (5.1s)
+2026-10-30T15:41:10.1811358Z ✔ [7978/7980] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.Torsors (1.7s)
+2026-10-30T15:41:32.7998030Z ✔ [7979/7996] Built Aglib.AlgebraicGeometry.Picard.FrameTorsor (22s)
+2026-10-30T15:41:52.2182218Z ✔ [7994/7996] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedBaseChange (19s)
+2026-10-30T15:41:54.7222464Z ✔ [7995/8001] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.EtaleRestriction (2.3s)
+2026-10-30T15:42:04.6315622Z ✔ [7996/8001] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorCohomology (9.7s)
+2026-10-30T15:42:11.9396384Z ✔ [7997/8001] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorClass (7.1s)
+2026-10-30T15:42:13.9431889Z ✔ [7998/8002] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.ExtensionTorsor (1.7s)
+2026-10-30T15:42:18.2491025Z ✔ [7999/8004] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorPushout (4.0s)
+2026-10-30T15:42:21.6513467Z ✔ [8001/8009] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.ExtensionFiberClass (3.2s)
+2026-10-30T15:42:28.7568312Z ✔ [8004/8009] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorTrivial (6.9s)
+2026-10-30T15:43:11.2974942Z ✔ [8006/8011] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorSum (42s)
+2026-10-30T15:43:34.1236554Z ✔ [8007/8011] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorPullback (22s)
+2026-10-30T15:44:41.5898239Z ✔ [8009/8011] Built Aglib.AlgebraicGeometry.Picard.AssociatedBundle (67s)
+2026-10-30T15:44:43.8919703Z ✔ [8011/8014] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.ExtensionFiberTransport (1.8s)
+2026-10-30T15:44:54.2012034Z ✔ [8012/8014] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorClassification (10s)
+2026-10-30T15:46:32.0957168Z ✔ [8013/8018] Built Aglib.AlgebraicGeometry.Picard.FrameTensor (97s)
+2026-10-30T15:46:48.2090114Z ✔ [8017/8021] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Torsor (15s)
+2026-10-30T15:46:52.7136153Z ✔ [8018/8021] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteTrivialization (4.2s)
+2026-10-30T15:46:56.1168139Z ✔ [8020/8035] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteTorsorRepresentation (3.0s)
+2026-10-30T15:47:06.0314956Z ✔ [8029/8035] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorBaseChange (9.4s)
+2026-10-30T15:47:09.3376800Z ✔ [8030/8036] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedTorsor (3.0s)
+2026-10-30T15:47:16.6451368Z ✔ [8031/8038] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorAdjunction (7.0s)
+2026-10-30T15:47:21.6487121Z ✔ [8032/8038] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootCover (4.8s)
+2026-10-30T15:47:23.8519038Z ✔ [8035/8041] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.PowerFiber (1.0s)
+2026-10-30T15:48:16.2022194Z ✔ [8037/8046] Built Aglib.AlgebraicGeometry.Picard.TrivializedPowerTorsor (52s)
+2026-10-30T15:48:21.5075415Z ✔ [8040/8046] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.SchemeTorsorClassification (4.6s)
+2026-10-30T15:48:29.0153138Z ✔ [8041/8046] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.SchemeTorsorBaseChange (7.3s)
+2026-10-30T15:48:34.1195175Z ✔ [8043/8049] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.MarkedCoefficients (4.8s)
+2026-10-30T15:48:35.8213847Z ✔ [8044/8049] Built Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.Zero (1.5s)
+2026-10-30T15:48:52.2374926Z ✔ [8045/8049] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.CoefficientBaseChange (16s)
+2026-10-30T15:48:54.4402756Z ✔ [8046/8049] Built Aglib.AlgebraicGeometry.EtaleCohomology.DirectImage (1.9s)
+2026-10-30T15:49:17.9622516Z ✔ [8047/8058] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.DegreeZeroPullback (23s)
+2026-10-30T15:49:36.6823773Z ✔ [8048/8058] Built Aglib.AlgebraicGeometry.Picard.PowerBaseChange (18s)
+2026-10-30T15:49:40.2865912Z ✔ [8049/8058] Built Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.DerivedPullback (3.2s)
+2026-10-30T15:49:43.0911465Z ✔ [8050/8061] Built Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.ExtPullback (2.6s)
+2026-10-30T15:51:28.0021570Z ✔ [8051/8062] Built Aglib.AlgebraicGeometry.EtaleCohomology.Pullback (104s)
+2026-10-30T15:51:50.5237896Z ✔ [8053/8062] Built Aglib.AlgebraicGeometry.EtaleCohomology.Picard.Pullback (22s)
+2026-10-30T15:52:05.1378333Z ✔ [8056/8062] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Boundary (14s)
+2026-10-30T15:52:27.5600168Z ✔ [8057/8064] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.BoundaryNaturality (22s)
+2026-10-30T15:53:27.3120016Z ✔ [8058/8065] Built Aglib.AlgebraicGeometry.EtaleCohomology.Picard.KummerPreimage (59s)
+2026-10-30T15:54:02.1474874Z ✔ [8060/8067] Built Aglib.AlgebraicGeometry.Curves.Abel.BoundedFamily.TorsionLocus.Kummer (34s)
+2026-10-30T15:56:35.4909580Z ✔ [8063/8068] Built Aglib.AlgebraicGeometry.Curves.Abel.BoundedFamily.TorsionLocus.FiniteCover (153s)
+2026-10-30T15:57:21.0313185Z ✔ [8065/8120] Built Aglib.AlgebraicGeometry.Curves.Abel.BoundedFamily.TorsionLocus.FiniteCover.Parameters (45s)
+2026-10-30T15:57:27.2374184Z ✔ [8167/8172] Built Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.InverseImage.Unit (5.8s)
+2026-10-30T15:57:29.8404229Z ✔ [8168/8173] Built Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.InverseImage.Skyscraper (2.4s)
+2026-10-30T15:57:32.6422452Z ✔ [8171/8174] Built Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.InverseImage (2.5s)
+2026-10-30T15:57:46.7569510Z ✔ [8172/8174] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorComparisonAdditivity (13s)
+2026-10-30T15:57:50.2591184Z ✔ [8173/8179] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedComparisonNaturality (3.3s)
+2026-10-30T15:57:54.6634954Z ✔ [8176/8180] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.CoefficientRepresentation (4.1s)
+2026-10-30T15:58:33.0029118Z ✔ [8177/8180] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.FundamentalGroupComparison (38s)
+2026-10-30T15:58:35.1031998Z ✔ [8178/8180] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteCoefficientPullback (1.9s)
+2026-10-30T15:58:44.6134157Z ✔ [8179/8184] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.MarkedComparisonTransport (9.3s)
+2026-10-30T15:59:46.9751143Z ✔ [8182/8186] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.Naturality (62s)
+2026-10-30T15:59:50.4788721Z ✔ [8183/8189] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.CoefficientStalkBaseChange (3.2s)
+2026-10-30T16:00:52.8420097Z ✔ [8188/8197] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Field (62s)
+2026-10-30T16:01:21.7676171Z ✔ [8193/8197] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.GeometricCoefficients (28s)
+2026-10-30T16:01:26.8753286Z ✔ [8194/8197] Built Aglib.AlgebraicGeometry.Group.BaseChange.PointTransport (4.8s)
+2026-10-30T16:02:16.4256161Z ✔ [8195/8197] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.FieldNaturality (49s)
+2026-10-30T16:02:24.7370158Z ✔ [8196/8207] Built Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.SheafCoherence (8.0s)
+2026-10-30T16:02:31.1439215Z ✔ [8202/8207] Built Aglib.AlgebraicGeometry.EtaleCohomology.BaseChangeMap (6.1s)
+2026-10-30T16:02:34.6477455Z ✔ [8204/8207] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.InjectiveSystem (3.2s)
+2026-10-30T16:02:36.5513919Z ✔ [8205/8210] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramInjectives (1.7s)
+2026-10-30T16:02:40.8549552Z ✔ [8206/8210] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramPullbacks (4.1s)
+2026-10-30T16:02:49.6641609Z ✔ [8207/8210] Built Aglib.AlgebraicGeometry.EtaleCohomology.Derived.Adjunction (8.5s)
+2026-10-30T16:03:58.9344740Z ✔ [8208/8211] Built Aglib.AlgebraicGeometry.EtaleCohomology.PullbackComposition (69s)
+2026-10-30T16:04:24.6581800Z ✔ [8209/8220] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackCohomologySystem (25s)
+2026-10-30T16:04:48.9804449Z ✔ [8215/8223] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramLimitCoefficients (24s)
+2026-10-30T16:04:50.7830532Z ✔ [8218/8223] Built Aglib.CategoryTheory.Sites.SheafCohomology.SourceSection (1.6s)
+2026-10-30T16:04:52.2843804Z ✔ [8219/8225] Built Aglib.CategoryTheory.Sites.SheafCohomology.SourceSection.Transport (1.3s)
+2026-10-30T16:04:56.9895119Z ✔ [8220/8228] Built Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.TriangleCoherence.Basic (4.5s)
+2026-10-30T16:05:18.6116915Z ✔ [8221/8228] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.SectionPullback (21s)
+2026-10-30T16:05:20.1120932Z ✔ [8222/8228] Built Aglib.CategoryTheory.Sites.Representable.SectionComparison (1.3s)
+2026-10-30T16:05:25.0161493Z ✔ [8223/8228] Built Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.TriangleCoherence (4.5s)
+2026-10-30T16:05:27.8188177Z ✔ [8224/8228] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootsComposition (2.5s)
+2026-10-30T16:05:29.5206891Z ✔ [8225/8228] Built Aglib.CategoryTheory.Sites.Representable.SectionComparisonValues (1.5s)
+2026-10-30T16:05:41.5283745Z ✔ [8226/8228] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.SectionPullback (11s)
+2026-10-30T16:05:49.2350937Z ✔ [8227/8232] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.KummerFamilyValues (7.5s)
+2026-10-30T16:06:29.1704906Z ✔ [8231/8233] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.ProperCurveH1Family.FibreValues (39s)
+2026-10-30T16:06:31.6720844Z ✔ [8232/8238] Built Aglib.AlgebraicGeometry.EtaleCohomology.H0.ProperHenselian.Sections (2.2s)
+2026-10-30T16:06:34.6753598Z ✔ [8236/8242] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.ActionDescent (2.7s)
+2026-10-30T16:06:36.4762643Z ✔ [8238/8243] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.FiniteRepresentedRestriction (1.5s)
+2026-10-30T16:06:40.0801597Z ✔ [8240/8243] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.AffineSheafAlgebraDatum (3.4s)
+2026-10-30T16:06:42.2813157Z ✔ [8241/8243] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.EtaleSectionDescent (1.9s)
+2026-10-30T16:06:44.8845103Z ✔ [8242/8246] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.AffineSheafSectionCompatibility (2.4s)
+2026-10-30T16:06:46.8868076Z ✔ [8244/8249] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.EtaleRestrictionConservative (1.7s)
+2026-10-30T16:06:51.9918569Z ✔ [8245/8251] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.AffineSingleChartSheafDescent (4.8s)
+2026-10-30T16:06:54.1947488Z ✔ [8247/8254] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.FiniteSetLocalCharts (1.9s)
+2026-10-30T16:06:55.9976099Z ✔ [8248/8254] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.FiniteRepresentedTransitions (1.6s)
+2026-10-30T16:06:58.7004329Z ✔ [8249/8254] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.AffineTrivializingNeighborhood (2.4s)
+2026-10-30T16:07:00.6038183Z ✔ [8251/8257] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.OpenRepresentatives (1.7s)
+2026-10-30T16:07:02.9068303Z ✔ [8252/8260] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.AffineNeighborhoodRepresentation (1.0s)
+2026-10-30T16:07:05.1105436Z ✔ [8253/8260] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.ChartSections (1.0s)
+2026-10-30T16:07:07.1141017Z ✔ [8254/8263] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.GoodOpenCover (1.7s)
+2026-10-30T16:07:09.4186727Z ✔ [8255/8263] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.DirectedSectionGluing (2.1s)
+2026-10-30T16:07:11.8229899Z ✔ [8256/8263] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.OpenTransitions (2.2s)
+2026-10-30T16:07:49.2578777Z ✔ [8257/8263] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteEtaleRigidity (37s)
+2026-10-30T16:07:51.2589671Z ✔ [8258/8263] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.GoodDiagram (1.7s)
+2026-10-30T16:07:53.3617225Z ✔ [8259/8263] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.GluedUniversalSection (1.8s)
+2026-10-30T16:07:55.2637006Z ✔ [8260/8263] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteSetRepresentation (1.7s)
+2026-10-30T16:08:08.3777758Z ✔ [8261/8263] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Basic (12s)
+2026-10-30T16:08:12.1803000Z ✔ [8262/8263] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Representatives (3.6s)
+2026-10-30T16:08:35.8027628Z ✔ [8664/8673] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.ProperHenselian (22s)
+2026-10-30T16:08:38.8050696Z ✔ [8673/8681] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareCoefficients (2.7s)
+2026-10-30T16:09:20.5432730Z ✔ [8676/8681] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.CohomologyTransfers (41s)
+2026-10-30T16:09:57.2764511Z ✔ [8677/8681] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramLimitFunctor (36s)
+2026-10-30T16:10:11.6873269Z ✔ [8678/8681] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomology (14s)
+2026-10-30T16:10:18.1930123Z ✔ [8679/8681] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.CohomologyConnectingTransfer (6.2s)
+2026-10-30T16:11:37.1672241Z ✔ [8680/8687] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyCocone (78s)
+2026-10-30T16:11:40.0692146Z ✔ [8683/8692] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSectionTransfers (2.5s)
+2026-10-30T16:11:41.8700887Z ✔ [8685/8692] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSectionNaturality (1.6s)
+2026-10-30T16:11:43.8718203Z ✔ [8686/8692] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramConeNaturality (1.8s)
+2026-10-30T16:11:56.7838955Z ✔ [8687/8693] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyNaturality (12s)
+2026-10-30T16:11:59.2864106Z ✔ [8688/8693] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramShortExact (2.3s)
+2026-10-30T16:12:01.2873772Z ✔ [8690/8693] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCokernelTransitions (1.8s)
+2026-10-30T16:13:00.7370106Z ✔ [8691/8693] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyConnecting (59s)
+2026-10-30T16:13:48.5818646Z ✔ [8692/8697] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyExact (47s)
+2026-10-30T16:13:50.4833479Z ✔ [8693/8697] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareSections (1.6s)
+2026-10-30T16:13:52.3854052Z ✔ [8695/8697] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramArrowSections (1.7s)
+2026-10-30T16:13:54.2867739Z ✔ [8696/8717] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSystemSquares (1.6s)
+2026-10-30T16:13:56.2879079Z ✔ [8710/8717] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramLimitSections (1.8s)
+2026-10-30T16:13:58.9913969Z ✔ [8711/8717] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeHorizontalUnit (2.4s)
+2026-10-30T16:14:00.8936536Z ✔ [8712/8717] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramConeSquares (1.7s)
+2026-10-30T16:14:06.2006864Z ✔ [8713/8719] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramAdjointCocone (5.1s)
+2026-10-30T16:14:08.7032001Z ✔ [8714/8719] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SquareCoefficientAdjoint (2.3s)
+2026-10-30T16:14:13.1081470Z ✔ [8716/8719] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramDirectImageTriangleComp (4.2s)
+2026-10-30T16:14:18.4122094Z ✔ [8718/8723] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramRightTail (5.1s)
+2026-10-30T16:14:20.5152010Z ✔ [8721/8723] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.StageSupport.Objects (1.8s)
+2026-10-30T16:14:22.7164218Z ✔ [8722/8723] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.StageSupport.FiniteFamilies (2.0s)
+2026-10-30T16:14:26.8240462Z ✔ [8732/8739] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.StageSupport.TupleProducts (3.4s)
+2026-10-30T16:14:29.6259901Z ✔ [8734/8739] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.FamilyBaseChange (2.6s)
+2026-10-30T16:14:43.2435767Z ✔ [8738/8751] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.FamilyTailCochains (13s)
+2026-10-30T16:14:45.1445894Z ✔ [8748/8751] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleRestrictionUnit (1.7s)
+2026-10-30T16:14:48.1477669Z ✔ [8749/8752] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackEtaleEvaluation (2.7s)
+2026-10-30T16:14:50.1533809Z ✔ [8750/8755] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.SectionsSeparation (1.8s)
+2026-10-30T16:14:51.9555432Z ✔ [8751/8759] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleRestrictionComposition (1.6s)
+2026-10-30T16:14:54.1582036Z ✔ [8754/8759] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleRestrictionCoherence (1.9s)
+2026-10-30T16:15:10.9736647Z ✔ [8755/8759] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackEtaleNaturality (16s)
+2026-10-30T16:16:00.1206474Z ✔ [8756/8759] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.RepresentativeSections (48s)
+2026-10-30T16:16:02.3230136Z ✔ [8757/8762] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.StageRepresentativeEquality (1.9s)
+2026-10-30T16:16:04.8245926Z ✔ [8758/8764] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.AffineRepresentativeEquality (2.2s)
+2026-10-30T16:16:07.1280109Z ✔ [8762/8764] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.InverseImageUnit (2.1s)
+2026-10-30T16:16:09.4303550Z ✔ [8763/8776] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.InverseImageSections (2.0s)
+2026-10-30T16:16:11.4325147Z ✔ [8764/8780] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.InverseImageUnitComposition (1.8s)
+2026-10-30T16:16:13.5349156Z ✔ [8765/8780] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackUnitSections (1.9s)
+2026-10-30T16:16:15.7377448Z ✔ [8767/8780] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackUnitRepresentatives (1.7s)
+2026-10-30T16:16:17.7402664Z ✔ [8769/8782] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackUnitGeometry (1.8s)
+2026-10-30T16:16:19.8395957Z ✔ [8770/8782] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackUnitTransport (1.8s)
+2026-10-30T16:16:51.4759590Z ✔ [8772/8782] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.RepresentativeEqualityWitnesses (31s)
+2026-10-30T16:17:23.5060696Z ✔ [8773/8783] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramDiagonalSections (31s)
+2026-10-30T16:17:25.4082030Z ✔ [8774/8783] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.AffineSectionEquality (1.7s)
+2026-10-30T16:17:27.4103817Z ✔ [8775/8783] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramRelativeTail (1.6s)
+2026-10-30T16:17:29.9132070Z ✔ [8776/8783] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.AffineSchemeSectionEquality (2.3s)
+2026-10-30T16:17:32.1156946Z ✔ [8777/8787] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.AffineSchemeCoverModels (1.0s)
+2026-10-30T16:17:34.7174078Z ✔ [8778/8790] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.StageSupport.AffineRefinements (2.3s)
+2026-10-30T16:17:43.5254255Z ✔ [8779/8790] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareIdentity (8.6s)
+2026-10-30T16:17:45.6276925Z ✔ [8780/8792] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.StageSupport.FiniteRefinements (1.9s)
+2026-10-30T16:17:47.5297582Z ✔ [8781/8792] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSmallIndex (1.7s)
+2026-10-30T16:17:49.4353119Z ✔ [8782/8792] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTopIdentity (1.6s)
+2026-10-30T16:17:53.2392925Z ✔ [8783/8792] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.InjectiveLimitAcyclic (3.6s)
+2026-10-30T16:18:22.1693303Z ✔ [8785/8792] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramConeComparison (28s)
+2026-10-30T16:18:44.7964913Z ✔ [8786/8792] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramDimensionShift (22s)
+2026-10-30T16:18:53.1019008Z ✔ [8787/8792] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTailSections (8.1s)
+2026-10-30T16:18:59.1073964Z ✔ [8788/8793] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SchemeLimitHigher (5.8s)
+2026-10-30T16:19:43.4538013Z ✔ [8789/8795] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTailCocones (44s)
+2026-10-30T16:19:46.1554983Z ✔ [8790/8795] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramEtaleTest (2.5s)
+2026-10-30T16:20:09.2781777Z ✔ [8791/8795] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramNativeCocone (22s)
+2026-10-30T16:21:11.5355862Z ✔ [8793/8795] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramH0Sections (62s)
+2026-10-30T16:21:13.5375393Z ✔ [8794/8797] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestArrowSections (1.8s)
+2026-10-30T16:22:15.9969293Z ✔ [8795/8801] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackSectionsBase (62s)
+2026-10-30T16:22:32.1136791Z ✔ [8796/8803] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramEtaleSections (15s)
+2026-10-30T16:22:39.8229202Z ✔ [8799/8804] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestChartComparisons (7.5s)
+2026-10-30T16:22:47.7353357Z ✔ [8800/8804] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestRelativeCone (7.7s)
+2026-10-30T16:22:54.8441397Z ✔ [8801/8804] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestRightTailLeg (6.9s)
+2026-10-30T16:23:48.3936842Z ✔ [8802/8804] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestRightTailComparison (53s)
+2026-10-30T16:23:50.3962893Z ✔ [8803/8807] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestOuterSections (1.7s)
+2026-10-30T16:23:52.6990681Z ✔ [8804/8810] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestBaseSections (2.1s)
+2026-10-30T16:23:54.4007839Z ✔ [8805/8810] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramRawConeSections (1.6s)
+2026-10-30T16:23:56.8031221Z ✔ [8806/8811] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramConeExtension (2.1s)
+2026-10-30T16:24:08.1152215Z ✔ [8808/8813] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestConeSections (11s)
+2026-10-30T16:24:10.3176234Z ✔ [8809/8813] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestRelativeTail (2.0s)
+2026-10-30T16:24:38.6414208Z ✔ [8810/8813] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestRightTailCocone (28s)
+2026-10-30T16:24:48.8520361Z ✔ [8812/8817] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestTailSections (9.9s)
+2026-10-30T16:24:50.8539043Z ✔ [8813/8817] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackRestrictionSections (1.8s)
+2026-10-30T16:24:53.5562432Z ✔ [8814/8820] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackScalarTransport (2.5s)
+2026-10-30T16:25:11.1725746Z ✔ [8815/8820] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.FiniteSectionRepresentatives (17s)
+2026-10-30T16:25:13.4741320Z ✔ [8817/8820] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.FiniteRepresentativeCover (2.0s)
+2026-10-30T16:25:16.1769770Z ✔ [8818/8820] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.MappedAffineCoverModels (2.5s)
+2026-10-30T16:25:18.4796637Z ✔ [8819/8825] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.MappedCoverModel (2.0s)
+2026-10-30T16:25:21.1828964Z ✔ [8821/8825] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.BaseChangeRepresentativeSections (2.5s)
+2026-10-30T16:25:30.2922068Z ✔ [8822/8829] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.MappedCoverSectionRepresentatives (8.8s)
+2026-10-30T16:25:32.2936086Z ✔ [8823/8829] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.RepresentativeEquation (1.8s)
+2026-10-30T16:25:34.7970194Z ✔ [8824/8829] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.FiniteRepresentativeEqualities (2.2s)
+2026-10-30T16:25:37.2999746Z ✔ [8825/8829] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.AffineSectionData (2.3s)
+2026-10-30T16:25:40.0010784Z ✔ [8826/8829] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.FiniteBaseChangeEqualities (2.4s)
+2026-10-30T16:25:42.5029177Z ✔ [8827/8829] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.StageOverlapEquality (2.3s)
+2026-10-30T16:25:44.5050086Z ✔ [8828/8830] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.NativeStageMatching (1.8s)
+2026-10-30T16:25:46.7078484Z ✔ [8829/8833] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.ChartRepresentativeTests (1.9s)
+2026-10-30T16:26:04.1225307Z ✔ [8830/8835] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.UnitRepresentativeEquality (17s)
+2026-10-30T16:26:06.1238031Z ✔ [8831/8838] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.EtaleMatching (1.8s)
+2026-10-30T16:26:08.1259234Z ✔ [8832/8838] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.UnitSectionsAmalgamation (1.8s)
+2026-10-30T16:26:15.3332695Z ✔ [8833/8842] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.BaseChangeUnitMatching (6.0s)
+2026-10-30T16:26:17.4353536Z ✔ [8834/8842] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.CanonicalSectionGluing (1.9s)
+2026-10-30T16:26:19.6375179Z ✔ [8835/8842] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.StageSectionsAmalgamation (1.9s)
+2026-10-30T16:26:35.2540893Z ✔ [8836/8844] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.NativeEtaleSectionRestriction (15s)
+2026-10-30T16:26:37.3595301Z ✔ [8837/8845] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.CanonicalStageAmalgamation (1.9s)
+2026-10-30T16:26:45.5692810Z ✔ [8838/8845] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.RepresentativeSeeds (8.0s)
+2026-10-30T16:26:47.9721543Z ✔ [8839/8846] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.NativeStageAmalgamation (2.1s)
+2026-10-30T16:26:50.2729113Z ✔ [8840/8846] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.SectionReindex (2.1s)
+2026-10-30T16:26:53.3765483Z ✔ [8841/8848] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.StageSectionsInjectivity (2.8s)
+2026-10-30T16:27:15.4987918Z ✔ [8842/8848] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.NativeStageImage (21s)
+2026-10-30T16:27:17.4011699Z ✔ [8843/8848] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTailLimit (1.7s)
+2026-10-30T16:27:33.3176000Z ✔ [8845/8848] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.NativeStageSection (15s)
+2026-10-30T16:27:42.4270883Z ✔ [8846/8851] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.NativeStageSource (8.9s)
+2026-10-30T16:28:17.7580530Z ✔ [8847/8855] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.AffineLimitSections (35s)
+2026-10-30T16:28:19.9603463Z ✔ [8850/8855] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.RelativeChartTails (1.0s)
+2026-10-30T16:28:22.2674365Z ✔ [8851/8855] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.RelativeChartTailCone (2.0s)
+2026-10-30T16:28:29.6723467Z ✔ [8852/8855] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.QcqsLimitSections (7.1s)
+2026-10-30T16:28:31.9747612Z ✔ [8853/8855] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestRightTailColimit (2.1s)
+2026-10-30T16:28:54.8940739Z ✔ [8854/8859] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SchemeLimit (22s)
+2026-10-30T16:29:28.0231301Z ✔ [8856/8863] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackCoefficientSystem (32s)
+2026-10-30T16:32:05.2594484Z ✔ [8857/8863] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackLimitCoefficient (156s)
+2026-10-30T16:32:07.0611895Z ✔ [8859/8864] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.RelativePullbackCoefficient (1.6s)
+2026-10-30T16:32:09.2685516Z ✔ [8862/8864] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricPullbackCoefficient (1.9s)
+2026-10-30T16:32:11.3706691Z ✔ [8863/8874] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartPullbackCoefficient (1.9s)
+2026-10-30T16:32:13.5729043Z ✔ [8864/8874] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleSliceCategory (1.9s)
+2026-10-30T16:32:15.6760610Z ✔ [8866/8874] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleSliceTopology (1.6s)
+2026-10-30T16:32:17.8794025Z ✔ [8867/8874] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleSliceSheaves (1.0s)
+2026-10-30T16:33:00.4167135Z ✔ [8868/8874] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleSliceCohomology (42s)
+2026-10-30T16:33:23.3422918Z ✔ [8869/8874] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartSourceMap (22s)
+2026-10-30T16:33:26.2446081Z ✔ [8870/8881] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartSourceSections (2.7s)
+2026-10-30T16:33:29.3476753Z ✔ [8871/8881] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartSourceGenerator (2.9s)
+2026-10-30T16:33:31.7492938Z ✔ [8872/8883] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ResolutionPresheaf (2.1s)
+2026-10-30T16:33:50.5691142Z ✔ [8873/8885] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartHomSections (18s)
+2026-10-30T16:33:52.0728519Z ✔ [8874/8885] Built Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.FixedSourceCohomology (1.3s)
+2026-10-30T16:34:35.4081228Z ✔ [8875/8885] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.OriginalCohomology (43s)
+2026-10-30T16:34:57.0308694Z ✔ [8876/8885] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartRestrictionNaturality (21s)
+2026-10-30T16:35:47.8786200Z ✔ [8878/8885] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.OriginalRestriction (50s)
+2026-10-30T16:35:58.5852972Z ✔ [8879/8890] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.OriginalPresheaf (10s)
+2026-10-30T16:36:20.4065112Z ✔ [8880/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.OriginalGerms (21s)
+2026-10-30T16:36:25.6117811Z ✔ [8881/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackCohomologyNormalization (4.9s)
+2026-10-30T16:36:50.3319721Z ✔ [8882/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductCohomology (24s)
+2026-10-30T16:36:59.7387942Z ✔ [8884/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackCohomologyCocone (9.2s)
+2026-10-30T16:37:52.1924102Z ✔ [8885/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductRestriction (52s)
+2026-10-30T16:38:06.4072140Z ✔ [8886/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackLimitCohomologyLeg (14s)
+2026-10-30T16:39:03.6606462Z ✔ [8887/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricCohomologyDiagram (57s)
+2026-10-30T16:39:10.9682335Z ✔ [8888/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartLimitCohomologyCocone (7.1s)
+2026-10-30T16:39:30.3899255Z ✔ [8889/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartCohomologyDiagram (19s)
+2026-10-30T16:39:46.7032353Z ✔ [8890/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartLimitContinuity (16s)
+2026-10-30T16:40:33.0391003Z ✔ [8891/8895] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartLimitZero (46s)
+2026-10-30T16:41:12.7719847Z ✔ [8892/8896] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.ProperHenselian.EtaleZeroSpreading (39s)
+2026-10-30T16:41:32.6906557Z ✔ [8893/8896] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.ProperCurveH1Family.EtaleNeighborhood (19s)
+2026-10-30T16:41:47.7045656Z ✔ [8895/8901] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.ProperCurveH1Family (14s)
+2026-10-30T16:41:49.7066937Z ✔ [8896/8901] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.FiniteCoverSheafBaseChange (1.8s)
+2026-10-30T16:41:51.5091529Z ✔ [8898/8902] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.CoverSheafQuotient (1.6s)
+2026-10-30T16:41:54.6124739Z ✔ [8899/8904] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.TrivialCoverFunctor (2.9s)
+2026-10-30T16:41:56.3142191Z ✔ [8901/8904] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.TrivialCoverNormalize (1.6s)
+2026-10-30T16:41:58.2162672Z ✔ [8906/8913] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.TrivialCoverSheafFunctor (1.6s)
+2026-10-30T16:41:59.9168313Z ✔ [8907/8913] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.CoverSheafBaseChangeNat (1.5s)
+2026-10-30T16:42:01.8188672Z ✔ [8908/8913] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.LocalSplittingMaps (1.6s)
+2026-10-30T16:42:03.9208312Z ✔ [8909/8918] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.LocalSplitting (1.9s)
+2026-10-30T16:42:05.8238450Z ✔ [8910/8923] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.FiniteActionLocalSplit (1.6s)
+2026-10-30T16:42:08.7259613Z ✔ [8912/8923] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.FiniteActionSheafColimit (2.7s)
+2026-10-30T16:42:10.5278061Z ✔ [8914/8925] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.EtaleSheafDescentAction (1.6s)
+2026-10-30T16:42:12.4310756Z ✔ [8915/8925] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.CoverGroupQuotients (1.6s)
+2026-10-30T16:42:14.2300848Z ✔ [8916/8925] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.CoverSheafPoint (1.6s)
+2026-10-30T16:42:16.0320730Z ✔ [8918/8928] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.CoverFiberQuotients (1.6s)
+2026-10-30T16:42:17.7331109Z ✔ [8920/8928] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.ActualCoverQuotients (1.5s)
+2026-10-30T16:42:19.5347715Z ✔ [8922/8930] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisInstances (1.5s)
+2026-10-30T16:42:33.6491705Z ✔ [8924/8934] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.KummerChartFiniteValues (13s)
+2026-10-30T16:43:07.8776358Z ✔ [8927/8934] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.KummerCurveTorsion (33s)
+2026-10-30T16:43:11.4810833Z ✔ [8930/8935] Built Aglib.AlgebraicGeometry.Curves.Jacobian.Multiplication (3.4s)
+2026-10-30T16:43:14.4830572Z ✔ [8934/8947] Built Aglib.AlgebraicGeometry.Curves.Jacobian.Etale (2.7s)
+2026-10-30T16:43:17.1839843Z ✔ [8942/9025] Built Aglib.AlgebraicGeometry.Curves.Jacobian.FiniteFlat (2.5s)
+2026-10-30T16:43:19.5866061Z ✔ [9027/9043] Built Aglib.AlgebraicGeometry.Curves.Picard.DegreeQuotient (2.1s)
+2026-10-30T16:43:21.8891802Z ✔ [9042/9048] Built Aglib.AlgebraicGeometry.Curves.Picard.OpenDivisibility (2.1s)
+2026-10-30T16:43:24.4918386Z ✔ [9165/9178] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.Images (2.2s)
+2026-10-30T16:43:26.3939387Z ✔ [9169/9178] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.EtaleRestriction (1.6s)
+2026-10-30T16:43:28.7971232Z ✔ [9170/9178] Built Aglib.AlgebraicGeometry.EtaleCohomology.H0.ConstantSections (2.2s)
+2026-10-30T16:43:30.9041869Z ✔ [9171/9178] Built Aglib.AlgebraicGeometry.EtaleCohomology.Artin.SheafEquivalence (1.8s)
+2026-10-30T16:43:32.7060994Z ✔ [9172/9178] Built Aglib.AlgebraicGeometry.EtaleCohomology.H0.ConnectedConstantSections (1.6s)
+2026-10-30T16:43:34.5080005Z ✔ [9173/9178] Built Aglib.AlgebraicGeometry.EtaleCohomology.H0.ConnectedConstantValues (1.6s)
+2026-10-30T16:43:36.7094295Z ✔ [9174/9178] Built Aglib.AlgebraicGeometry.EtaleCohomology.H0.ConnectedTorsionSections (1.9s)
+2026-10-30T16:43:39.2119888Z ✔ [9175/9178] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ConnectedTorsionSections (2.3s)
+2026-10-30T16:43:42.2143784Z ✔ [9176/9183] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ConstantPullbackSections (2.8s)
+2026-10-30T16:43:44.4165830Z ✔ [9177/9222] Built Aglib.AlgebraicGeometry.EtaleCohomology.Artin.ModuleSheafEquivalence (1.0s)
+2026-10-30T16:43:47.0191379Z ✔ [9220/9222] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.AbelianAdjunction (2.4s)
+2026-10-30T16:44:11.4456333Z ✔ [9221/9226] Built Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Cohomology (24s)
+2026-10-30T16:44:13.5479382Z ✔ [9222/9227] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.FullyFaithful (1.9s)
+2026-10-30T16:44:15.7500463Z ✔ [9224/9227] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.Stalk (2.0s)
+2026-10-30T16:44:17.7522021Z ✔ [9226/9231] Built Aglib.AlgebraicGeometry.EtaleCohomology.Localization.OpenCounitStalk (1.6s)
+2026-10-30T16:44:19.9527019Z ✔ [9227/9231] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.SquareComparison (2.1s)
+2026-10-30T16:44:22.0539966Z ✔ [9228/9231] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.PointedStalkSquare (1.8s)
+2026-10-30T16:44:24.2561138Z ✔ [9229/9231] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.PointedEvaluationBaseChange (1.8s)
+2026-10-30T16:44:26.0578996Z ✔ [9230/9277] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.GlobalEvaluationTuple (1.6s)
+2026-10-30T16:44:28.1601098Z ✔ [9274/9281] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.DirectImageEvaluationGerm (1.8s)
+2026-10-30T16:44:30.2602109Z ✔ [9275/9281] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.DirectImageStalkStages (1.0s)
+2026-10-30T16:44:32.5624227Z ✔ [9276/9281] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.AffineDirectImageStalk (2.0s)
+2026-10-30T16:44:34.9648766Z ✔ [9277/9284] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.AffineExtendedPoint (2.2s)
+2026-10-30T16:44:37.1671112Z ✔ [9278/9286] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.AffineStalkCoordinates (1.0s)
+2026-10-30T16:44:41.5713711Z ✔ [9280/9286] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.AffineExtendedCoordinates (4.1s)
+2026-10-30T16:44:43.5734463Z ✔ [9283/9290] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.AffineExtendedStalkIso (1.8s)
+2026-10-30T16:44:46.0758278Z ✔ [9287/9292] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.AffineComponentGeometricIndex (2.2s)
+2026-10-30T16:44:47.9834206Z ✔ [9288/9295] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.AffineBaseChangeIndex (1.7s)
+2026-10-30T16:44:50.3800953Z ✔ [9289/9295] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleDirectImageRestriction (2.1s)
+2026-10-30T16:44:52.9822469Z ✔ [9290/9297] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.AffineOrdinaryBaseChange (2.5s)
+2026-10-30T16:44:58.0877370Z ✔ [9292/9299] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleDirectImageSiteSquare (4.9s)
+2026-10-30T16:44:59.9898510Z ✔ [9293/9299] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.ChartEvaluationIndex (1.6s)
+2026-10-30T16:46:15.7521693Z ✔ [9294/9299] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleDirectImageMate (75s)
+2026-10-30T16:46:17.7550868Z ✔ [9296/9302] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.ChartStalkComparison (1.7s)
+2026-10-30T16:46:19.8562368Z ✔ [9298/9302] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.ChartEvaluationCoordinate (1.9s)
+2026-10-30T16:46:21.7562600Z ✔ [9299/9302] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.GlobalEvaluationChart (1.7s)
+2026-10-30T16:46:23.5578097Z ✔ [9300/9303] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.GlobalEvaluationIso (1.6s)
+2026-10-30T16:46:25.5598536Z ✔ [9301/9311] Built Aglib.AlgebraicGeometry.EtaleCohomology.Localization.ClosedStalk (1.8s)
+2026-10-30T16:46:29.7637511Z ✔ [9308/9311] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteClosedSupport (3.9s)
+2026-10-30T16:46:32.1659689Z ✔ [9309/9312] Built Aglib.AlgebraicGeometry.EtaleCohomology.Localization.AbelianShortExact (2.2s)
+2026-10-30T16:46:44.5764297Z ✔ [9310/9315] Built Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Localization (12s)
+2026-10-30T16:46:46.3784685Z ✔ [9311/9317] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.DirectImageStalkNaturality (1.6s)
+2026-10-30T16:46:48.3806159Z ✔ [9313/9317] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.Exact (1.8s)
+2026-10-30T16:46:50.4872172Z ✔ [9314/9317] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.AffineStalkExactness (1.8s)
+2026-10-30T16:46:52.5842039Z ✔ [9315/9317] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.FiniteDirectImageExactness (1.9s)
+2026-10-30T16:46:54.3860215Z ✔ [9316/9325] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.HigherVanishing (1.6s)
+2026-10-30T16:46:55.2870125Z ✔ [9318/9325] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.SquareTransport (767ms)
+2026-10-30T16:46:57.2888739Z ✔ [9319/9325] Built Aglib.CategoryTheory.Abelian.Ext.OriginalComparison (1.8s)
+2026-10-30T16:47:25.6138675Z ✔ [9320/9325] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.Cohomology (28s)
+2026-10-30T16:47:38.1224414Z ✔ [9321/9325] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.CohomologySquare (12s)
+2026-10-30T16:47:49.1347573Z ✔ [9322/9326] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.CohomologyBaseChange (10s)
+2026-10-30T16:48:05.3517436Z ✔ [9323/9326] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.Cohomology (15s)
+2026-10-30T16:48:07.3545010Z ✔ [9324/9326] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ClosedSupportUnit (1.9s)
+2026-10-30T16:49:12.8167069Z ✔ [9325/9330] Built Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.FiniteComplement (65s)
+2026-10-30T16:49:14.7178020Z ✔ [9328/9331] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PointSupportedClosedUnit (1.6s)
+2026-10-30T16:49:23.0253921Z ✔ [9330/9341] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ClosedSupportAcyclic (8.1s)
+2026-10-30T16:49:26.6282723Z ✔ [9335/9344] Built Aglib.AlgebraicGeometry.EtaleCohomology.Picard.LocalRing (3.4s)
+2026-10-30T16:49:30.5323761Z ✔ [9337/9344] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericArtin (3.7s)
+2026-10-30T16:49:32.8350488Z ✔ [9339/9347] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericArtinEtalePullback (1.7s)
+2026-10-30T16:49:34.7351539Z ✔ [9340/9347] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericArtinEtalePoints (1.7s)
+2026-10-30T16:49:36.7363679Z ✔ [9342/9347] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericEtalePointLifting (1.8s)
+2026-10-30T16:49:38.6386058Z ✔ [9344/9347] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.EtaleDimensionOne (1.7s)
+2026-10-30T16:49:40.5406319Z ✔ [9345/9347] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.SectionSupportGeometry (1.7s)
+2026-10-30T16:49:42.9433141Z ✔ [9346/9348] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteSupportExhaustion (2.1s)
+2026-10-30T16:49:44.8456419Z ✔ [9347/9350] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericArtinGeometry (1.7s)
+2026-10-30T16:49:48.4490264Z ✔ [9348/9350] Built Aglib.AlgebraicGeometry.EtaleCohomology.Picard.Semilocal (3.4s)
+2026-10-30T16:49:52.0514624Z ✔ [9349/9351] Built Aglib.AlgebraicGeometry.EtaleCohomology.Picard.Artinian (3.4s)
+2026-10-30T16:50:03.9601446Z ✔ [9350/9357] Built Aglib.AlgebraicGeometry.EtaleCohomology.Derived.DirectImageTruncation (11s)
+2026-10-30T16:50:18.3706426Z ✔ [9352/9361] Built Aglib.AlgebraicGeometry.EtaleCohomology.Derived.CohomologyComparison (14s)
+2026-10-30T16:50:22.3746131Z ✔ [9353/9361] Built Aglib.AlgebraicGeometry.EtaleCohomology.Derived.DirectImageDivisibility (3.8s)
+2026-10-30T16:50:30.3819552Z ✔ [9355/9364] Built Aglib.AlgebraicGeometry.EtaleCohomology.Derived.OriginalDivisibility (7.7s)
+2026-10-30T16:50:36.6864929Z ✔ [9357/9364] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericArtinCohomology (6.1s)
+2026-10-30T16:50:38.6900515Z ✔ [9359/9366] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericArtinEtaleIndex (1.8s)
+2026-10-30T16:50:40.6913991Z ✔ [9360/9366] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericUnitRepresentatives (1.8s)
+2026-10-30T16:50:42.5936390Z ✔ [9361/9368] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericArtinBaseChange (1.7s)
+2026-10-30T16:50:44.6965945Z ✔ [9362/9369] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericArtinBaseChangeIndex (1.9s)
+2026-10-30T16:50:46.9987768Z ✔ [9364/9371] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericUnitCoordinates (2.0s)
+2026-10-30T16:50:49.5023302Z ✔ [9367/9371] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericLocalUnitExtension (2.2s)
+2026-10-30T16:50:52.1047686Z ✔ [9369/9371] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericCokernelLocalLifting (2.3s)
+2026-10-30T16:50:55.3071219Z ✔ [9370/9376] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericCokernelSupport (2.9s)
+2026-10-30T16:50:57.8083365Z ✔ [9373/9378] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericKernelSupport (2.3s)
+2026-10-30T16:51:00.4097979Z ✔ [9374/9378] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericKernelSheafSupport (2.3s)
+2026-10-30T16:51:02.7129438Z ✔ [9376/9378] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericDefectExhaustion (2.0s)
+2026-10-30T16:51:06.5207342Z ✔ [9377/9385] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.QcqsAcyclic (3.6s)
+2026-10-30T16:51:20.9340297Z ✔ [9383/9385] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.QcqsCoefficientContinuity (14s)
+2026-10-30T16:51:27.5397263Z ✔ [9384/9388] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericDefectAcyclic (6.4s)
+2026-10-30T16:51:34.9462230Z ✔ [9385/9388] Built Aglib.AlgebraicGeometry.EtaleCohomology.PullbackEquivalence (7.1s)
+2026-10-30T16:51:46.3564108Z ✔ [9386/9392] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.ArtinPullback (11s)
+2026-10-30T16:51:52.2611424Z ✔ [9387/9392] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.ArtinNilpotent (5.6s)
+2026-10-30T16:52:28.5953159Z ✔ [9388/9392] Built Aglib.AlgebraicGeometry.EtaleCohomology.Picard.KummerQuotient (36s)
+2026-10-30T16:52:43.6105993Z ✔ [9389/9394] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.CohomologyConsequences (14s)
+2026-10-30T16:52:48.1167522Z ✔ [9390/9394] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Divisibility (4.3s)
+2026-10-30T16:53:01.3298713Z ✔ [9392/9401] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.ArtinResidue (13s)
+2026-10-30T16:53:06.7345208Z ✔ [9404/9408] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.HigherImageAffineCriterion (5.1s)
+2026-10-30T16:53:30.9565078Z ✔ [9406/9408] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericArtinResidue (24s)
+2026-10-30T16:53:36.6612379Z ✔ [9407/9408] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericHigherImageOne (5.4s)
+2026-10-30T16:53:59.9843517Z ✔ [9414/9418] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.CoinductionCohomology (22s)
+2026-10-30T16:54:01.7853397Z ✔ [9417/9420] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.EtaleUnit (1.6s)
+2026-10-30T16:54:03.8904903Z ✔ [9419/9495] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteCoefficientClosure (1.8s)
+2026-10-30T16:54:05.8927912Z ✔ [9484/9495] Built Aglib.AlgebraicGeometry.EtaleCohomology.H0.ConstantFullness (1.7s)
+2026-10-30T16:54:18.6045603Z ✔ [9488/9502] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GenericRestriction (12s)
+2026-10-30T16:54:24.7124857Z ✔ [9489/9502] Built Aglib.CategoryTheory.Sites.SheafCohomology.Slice.OriginalPullback (5.8s)
+2026-10-30T16:54:27.2162203Z ✔ [9492/9502] Built Aglib.AlgebraicGeometry.EtaleCohomology.SlicePullback (2.0s)
+2026-10-30T16:54:33.2221559Z ✔ [9493/9504] Built Aglib.AlgebraicGeometry.FundamentalGroup.Field.ArbitraryGalois (5.7s)
+2026-10-30T16:55:05.4489104Z ✔ [9494/9504] Built Aglib.AlgebraicGeometry.EtaleCohomology.SlicePullback.SourceSquare (32s)
+2026-10-30T16:55:08.0517575Z ✔ [9495/9504] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteGaloisCover (2.4s)
+2026-10-30T16:55:09.8534601Z ✔ [9496/9504] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteProducts (1.6s)
+2026-10-30T16:55:15.4563572Z ✔ [9497/9504] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.CoverEffacement (5.4s)
+2026-10-30T16:55:18.0581307Z ✔ [9498/9504] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteTrivialization (2.3s)
+2026-10-30T16:55:29.2684512Z ✔ [9499/9504] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.PullbackEffacement (11s)
+2026-10-30T16:55:32.5745957Z ✔ [9500/9504] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteCokernel (3.0s)
+2026-10-30T16:55:35.3774265Z ✔ [9501/9504] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteCokernelGeneral (2.6s)
+2026-10-30T16:55:37.4794576Z ✔ [9502/9505] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.CoinductionCoefficients (1.9s)
+2026-10-30T16:55:46.0861985Z ✔ [9503/9507] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.DimensionShift (8.3s)
+2026-10-30T16:55:47.7869447Z ✔ [9504/9514] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.TrivialCoverLocalTransition (1.5s)
+2026-10-30T16:55:49.9890957Z ✔ [9507/9514] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteEtaleTransfer (1.9s)
+2026-10-30T16:55:52.5907177Z ✔ [9509/9514] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteEtaleTransfer.Gluing (2.3s)
+2026-10-30T16:55:55.2935523Z ✔ [9510/9514] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteDirectImageExact.Splitting (2.5s)
+2026-10-30T16:55:57.3985402Z ✔ [9511/9514] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteDirectImageExact.Sections (1.8s)
+2026-10-30T16:55:59.6999440Z ✔ [9512/9514] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteDirectImageExact.LocalProduct (2.1s)
+2026-10-30T16:56:01.8021407Z ✔ [9513/9521] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteCoinduction (1.9s)
+2026-10-30T16:56:03.9043410Z ✔ [9519/9521] Built Aglib.AlgebraicGeometry.FundamentalGroup.Field.Restriction (1.9s)
+2026-10-30T16:56:06.9075572Z ✔ [9520/9528] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SylowMonodromy (2.6s)
+2026-10-30T16:56:08.8120029Z ✔ [9525/9528] Built Aglib.AlgebraicGeometry.EtaleCohomology.H0.PGroupSections (1.7s)
+2026-10-30T16:56:17.8202877Z ✔ [9527/9536] Built Aglib.AlgebraicGeometry.EtaleCohomology.H0.CyclicSection (8.8s)
+2026-10-30T16:56:20.1227642Z ✔ [9530/9536] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiberCokernel (2.1s)
+2026-10-30T16:56:22.5252681Z ✔ [9531/9538] Built Aglib.AlgebraicGeometry.EtaleCohomology.H0.CyclicMonomorphism (2.0s)
+2026-10-30T16:56:24.4261856Z ✔ [9532/9540] Built Aglib.AlgebraicGeometry.EtaleCohomology.H0.CyclicLine (1.7s)
+2026-10-30T16:56:26.8341810Z ✔ [9534/9540] Built Aglib.AlgebraicGeometry.EtaleCohomology.H0.PGroupLine (2.2s)
+2026-10-30T16:56:29.0309371Z ✔ [9536/9540] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteEtaleTransfer.Trace (2.0s)
+2026-10-30T16:56:31.5333419Z ✔ [9537/9540] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SylowLine (2.3s)
+2026-10-30T16:56:41.8420487Z ✔ [9538/9540] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteEtaleTransfer.Injectivity (10s)
+2026-10-30T16:56:44.4442818Z ✔ [9539/9541] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteCyclicLine (2.4s)
+2026-10-30T16:56:52.1512552Z ✔ [9606/9612] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.ArtinianOverlap (7.3s)
+2026-10-30T16:56:57.8567256Z ✔ [9608/9612] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.GaloisCech (5.4s)
+2026-10-30T16:57:00.9601358Z ✔ [9610/9614] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.GaloisCechCover (2.9s)
+2026-10-30T16:57:05.1641091Z ✔ [9611/9616] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.GaloisOverlapH1 (3.0s)
+2026-10-30T16:57:07.3648259Z ✔ [9613/9620] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.GaloisPrimitives (1.0s)
+2026-10-30T16:57:14.6725976Z ✔ [9618/9620] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.GmH2 (7.0s)
+2026-10-30T16:57:20.4785457Z ✔ [9619/9642] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.RootsH2 (5.6s)
+2026-10-30T16:57:24.3823884Z ✔ [9635/9643] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.PurelyInseparable.RootsPullback (3.6s)
+2026-10-30T16:57:33.3911154Z ✔ [9642/9661] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparablyClosedRootsH2 (8.8s)
+2026-10-30T16:57:36.2946428Z ✔ [9660/9669] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.HenselianEquivalence (2.5s)
+2026-10-30T16:57:37.4956998Z ✔ [9661/9670] Built Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.ConstantComposition (1.0s)
+2026-10-30T16:57:39.2974826Z ✔ [9663/9673] Built Aglib.AlgebraicGeometry.EtaleCohomology.H0.FiberZero (1.6s)
+2026-10-30T16:57:41.0993256Z ✔ [9666/9673] Built Aglib.AlgebraicGeometry.EtaleCohomology.H0.ConstantFiber (1.6s)
+2026-10-30T16:57:43.7021145Z ✔ [9668/9678] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant.Cover (2.4s)
+2026-10-30T16:57:46.7044156Z ✔ [9669/9678] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant (2.7s)
+2026-10-30T16:57:52.2090276Z ✔ [9671/9682] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparablyClosedConstantH2 (5.3s)
+2026-10-30T16:58:02.4182486Z ✔ [9673/9682] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteH2 (9.0s)
+2026-10-30T16:58:04.2201806Z ✔ [9675/9682] Built Aglib.AlgebraicGeometry.EtaleCohomology.PullbackIsomorphism (1.5s)
+2026-10-30T16:58:10.3251044Z ✔ [9677/9686] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteCohomologicalDimension (5.9s)
+2026-10-30T16:58:31.3448706Z ✔ [9678/9686] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.ArtinPoints (20s)
+2026-10-30T16:58:37.8507032Z ✔ [9679/9687] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.RootsVanishing (6.2s)
+2026-10-30T16:58:42.7543984Z ✔ [9681/9687] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ResidueRootsVanishing (4.7s)
+2026-10-30T16:58:54.9663140Z ✔ [9682/9689] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericSupportDivisibility (11s)
+2026-10-30T16:59:55.8221185Z ✔ [9683/9689] Built Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.PointRemoval (60s)
+2026-10-30T17:00:31.2561170Z ✔ [9684/9689] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericHigherImages (35s)
+2026-10-30T17:00:33.1577811Z ✔ [9685/9689] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.Comparisons (1.8s)
+2026-10-30T17:00:45.1690709Z ✔ [9686/9692] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PrimeToCharacteristicVanishing (11s)
+2026-10-30T17:02:17.3492051Z ✔ [9687/9693] Built Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.OpenLocalization (91s)
+2026-10-30T17:02:39.7693039Z ✔ [9688/9694] Built Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.CurveRoots (22s)
+2026-10-30T17:02:41.7775073Z ✔ [9691/9695] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Basic (1.8s)
+2026-10-30T17:02:43.7810838Z ✔ [9692/9695] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Basic.FiniteCover (1.8s)
+2026-10-30T17:02:51.9899208Z ✔ [9693/9695] Built Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.RootsComposition (8.0s)
+2026-10-30T17:02:55.7932577Z ✔ [9694/9699] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FieldTrivialization (3.6s)
+2026-10-30T17:02:57.6975558Z ✔ [9697/9700] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.TorsionColimit.ConstructibleTorsion (1.7s)
+2026-10-30T17:03:00.0998312Z ✔ [9698/9700] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Strata (2.2s)
+2026-10-30T17:03:02.5020091Z ✔ [9699/9704] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.LocallyConstant (2.1s)
+2026-10-30T17:03:06.3097934Z ✔ [9701/9707] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.GenericDetection.Represented (3.5s)
+2026-10-30T17:03:08.3118648Z ✔ [9702/9709] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.DominantDetection (1.8s)
+2026-10-30T17:03:12.3142846Z ✔ [9703/9709] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.NormalConstants.Represented (3.8s)
+2026-10-30T17:03:14.5169016Z ✔ [9704/9709] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.IntegralStrata (1.9s)
+2026-10-30T17:03:17.3193277Z ✔ [9705/9709] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.GenericTrivialization (2.6s)
+2026-10-30T17:03:19.5202950Z ✔ [9706/9709] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.NormalConstants (2.0s)
+2026-10-30T17:03:22.0229011Z ✔ [9707/9709] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.GenericExtension (2.2s)
+2026-10-30T17:03:36.3334783Z ✔ [9708/9710] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.NormalGenericModel (14s)
+2026-10-30T17:03:38.7358998Z ✔ [9709/9718] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.Sections (2.2s)
+2026-10-30T17:03:42.6394886Z ✔ [9713/9718] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.RepresentedSections (3.7s)
+2026-10-30T17:03:55.0526582Z ✔ [9714/9719] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.SheafColimit (12s)
+2026-10-30T17:03:57.4596742Z ✔ [9715/9719] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.Factorization (2.2s)
+2026-10-30T17:05:14.0355786Z ✔ [9716/9719] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction (76s)
+2026-10-30T17:05:17.0404669Z ✔ [9717/9722] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Spectrum (2.7s)
+2026-10-30T17:05:19.1423832Z ✔ [9718/9725] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Affine (1.0s)
+2026-10-30T17:05:26.4494363Z ✔ [9722/9726] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.AffineStageFactorization (7.1s)
+2026-10-30T17:05:30.6535373Z ✔ [9725/9737] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.LocalStageFactorization (3.9s)
+2026-10-30T17:05:33.9565967Z ✔ [9733/9737] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.StageMaps (3.1s)
+2026-10-30T17:05:37.0595459Z ✔ [9735/9738] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.ComparisonMono (2.9s)
+2026-10-30T17:05:40.6627290Z ✔ [9736/9740] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.FiniteStageModel (3.3s)
+2026-10-30T17:05:42.4644692Z ✔ [9738/9740] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.LocalFactorization (1.6s)
+2026-10-30T17:05:59.3805135Z ✔ [9739/9748] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.ConstantFactorization (16s)
+2026-10-30T17:06:02.7870118Z ✔ [9743/9749] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.GenericModel (3.2s)
+2026-10-30T17:06:04.6879912Z ✔ [9744/9749] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteColimits.Values (1.7s)
+2026-10-30T17:06:06.9900740Z ✔ [9745/9751] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.GenericDetection (2.1s)
+2026-10-30T17:06:09.0919759Z ✔ [9746/9751] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.GenericModelExistence (1.9s)
+2026-10-30T17:06:10.9946316Z ✔ [9747/9751] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteColimits.Partitions (1.7s)
+2026-10-30T17:06:13.1976630Z ✔ [9748/9751] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteColimits.LocalTrivialization (1.9s)
+2026-10-30T17:06:17.1012339Z ✔ [9749/9753] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global (3.7s)
+2026-10-30T17:06:20.6043248Z ✔ [9750/9755] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteColimits.Artinian (3.3s)
+2026-10-30T17:06:24.3082735Z ✔ [9752/9756] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteColimits.ConstantRestriction (3.4s)
+2026-10-30T17:06:26.9138781Z ✔ [9753/9756] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteColimits.LocalMaps (2.4s)
+2026-10-30T17:06:30.1168722Z ✔ [9754/9756] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteLocallyConstantCompactness (2.9s)
+2026-10-30T17:06:33.2199277Z ✔ [9755/9757] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteColimits.General (2.8s)
+2026-10-30T17:06:35.2208574Z ✔ [9767/9771] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteStratification.ClosedComplement (1.7s)
+2026-10-30T17:06:37.1225195Z ✔ [9768/9774] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteStratification.BaseChange (1.6s)
+2026-10-30T17:06:39.1244230Z ✔ [9769/9774] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteStratification.NoetherianAffine (1.9s)
+2026-10-30T17:06:45.0292430Z ✔ [9770/9775] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.FreeSet (5.5s)
+2026-10-30T17:06:47.7310037Z ✔ [9771/9776] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteStratification.AffineEtale (2.5s)
+2026-10-30T17:06:49.6346363Z ✔ [9772/9776] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteStratification.CompactOpen (1.6s)
+2026-10-30T17:06:51.6356106Z ✔ [9773/9777] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.RepresentablePullback (1.8s)
+2026-10-30T17:06:53.4392808Z ✔ [9775/9778] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteStratification.AffineRepresentable (1.6s)
+2026-10-30T17:06:55.5416011Z ✔ [9776/9778] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteStratification.EtaleConstructibleRefinement (1.9s)
+2026-10-30T17:06:57.7436779Z ✔ [9777/9783] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteStratification.OpenGluing (1.0s)
+2026-10-30T17:06:59.5455008Z ✔ [9780/9783] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteStratification.Representable (1.7s)
+2026-10-30T17:07:01.3473833Z ✔ [9781/9783] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.GenericDetection (1.5s)
+2026-10-30T17:07:03.1492168Z ✔ [9782/9785] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteStratification.ReducedPartition (1.6s)
+2026-10-30T17:07:05.3513852Z ✔ [9783/9785] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.LocallyConstant (1.0s)
+2026-10-30T17:07:09.0545535Z ✔ [9784/9790] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureLocality (3.5s)
+2026-10-30T17:07:10.9553963Z ✔ [9785/9791] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.Basic (1.6s)
+2026-10-30T17:07:12.6571327Z ✔ [9786/9791] Built Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.FieldTerminal (1.6s)
+2026-10-30T17:07:14.6626397Z ✔ [9787/9792] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.PullbackAffine (1.7s)
+2026-10-30T17:07:16.4653986Z ✔ [9788/9794] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.PullbackLocality (1.6s)
+2026-10-30T17:07:18.8677181Z ✔ [9789/9794] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.SigmaSections (2.2s)
+2026-10-30T17:07:20.7696890Z ✔ [9790/9795] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.Pullback (1.7s)
+2026-10-30T17:07:22.9719310Z ✔ [9791/9795] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FieldSections (1.0s)
+2026-10-30T17:07:25.0739647Z ✔ [9793/9795] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureCharts (1.8s)
+2026-10-30T17:07:27.0758779Z ✔ [9794/9798] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ArtinSections (1.8s)
+2026-10-30T17:07:29.1779851Z ✔ [9795/9798] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureConstant (1.8s)
+2026-10-30T17:07:31.2810354Z ✔ [9796/9798] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureMorphisms (1.9s)
+2026-10-30T17:07:33.7841026Z ✔ [9797/9801] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureCokernels (2.2s)
+2026-10-30T17:07:35.5858524Z ✔ [9798/9801] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosurePartitions (1.5s)
+2026-10-30T17:07:37.8885783Z ✔ [9799/9801] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureSums (2.1s)
+2026-10-30T17:07:39.7911715Z ✔ [9800/9803] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureConstructibleSums (1.6s)
+2026-10-30T17:07:42.1922844Z ✔ [9801/9807] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureKernels (2.2s)
+2026-10-30T17:07:44.6950769Z ✔ [9802/9809] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureExtensionCharts (2.2s)
+2026-10-30T17:07:46.9960016Z ✔ [9804/9810] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureExtensions (2.1s)
+2026-10-30T17:07:48.8979986Z ✔ [9805/9810] Built Aglib.AlgebraicGeometry.EtaleCohomology.EtaleCover (1.7s)
+2026-10-30T17:07:50.6997289Z ✔ [9806/9810] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureProperties (1.6s)
+2026-10-30T17:07:52.5003930Z ✔ [9807/9810] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.DescentEtale (1.6s)
+2026-10-30T17:07:54.6027223Z ✔ [9808/9810] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.CoverConservativity (1.8s)
+2026-10-30T17:07:56.6048557Z ✔ [9809/9814] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureConstructible (1.8s)
+2026-10-30T17:07:58.5058421Z ✔ [9811/9814] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.DescentOpen (1.6s)
+2026-10-30T17:08:00.5080419Z ✔ [9812/9814] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.EtaleClopenPartition (1.7s)
+2026-10-30T17:08:02.5100583Z ✔ [9813/9821] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.DescentEtaleConstructible (1.8s)
+2026-10-30T17:08:05.1125629Z ✔ [9817/9821] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteEtaleProduct (2.3s)
+2026-10-30T17:08:07.4180267Z ✔ [9818/9821] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GaloisAction (2.1s)
+2026-10-30T17:08:09.4211535Z ✔ [9819/9821] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteEtaleImage (1.7s)
+2026-10-30T17:08:16.5251318Z ✔ [9820/9826] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.DimensionZero (6.9s)
+2026-10-30T17:08:19.6283013Z ✔ [9821/9827] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisOverlap (2.8s)
+2026-10-30T17:08:22.5303736Z ✔ [9822/9827] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GenericTrivialization (2.6s)
+2026-10-30T17:08:25.0339015Z ✔ [9823/9827] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GaloisInvariantSections (2.3s)
+2026-10-30T17:08:27.1349205Z ✔ [9824/9827] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GenericTrivializationDense (1.9s)
+2026-10-30T17:08:31.9396085Z ✔ [9825/9827] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GaloisTrivialSubobject (4.5s)
+2026-10-30T17:08:35.9435509Z ✔ [9826/9831] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GaloisActionMaps (3.8s)
+2026-10-30T17:08:37.7455158Z ✔ [9827/9831] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisRefinement (1.6s)
+2026-10-30T17:08:39.7474279Z ✔ [9828/9833] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GenericTrivializationGalois (1.8s)
+2026-10-30T17:08:41.6480822Z ✔ [9829/9833] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GenericTrivializationFixedValue (1.8s)
+2026-10-30T17:08:43.7496766Z ✔ [9830/9833] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.TorsionColimit.Bounded (1.8s)
+2026-10-30T17:08:45.8508562Z ✔ [9831/9835] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GenericTrivializationDenseGalois (1.9s)
+2026-10-30T17:08:47.9530890Z ✔ [9832/9835] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ZMod (1.9s)
+2026-10-30T17:08:50.8556275Z ✔ [9833/9835] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ZModLocallyConstant (2.7s)
+2026-10-30T17:08:52.7581376Z ✔ [9834/9855] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ZModComparison (1.6s)
+2026-10-30T17:08:54.6586349Z ✔ [9852/9855] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.SurjectivePullback (1.7s)
+2026-10-30T17:08:56.7608282Z ✔ [9853/9855] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.FiniteEtalePartitions (1.9s)
+2026-10-30T17:08:59.0631765Z ✔ [9854/9862] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.ZModImages (2.1s)
+2026-10-30T17:09:51.6138634Z ✔ [9855/9864] Built Aglib.AlgebraicGeometry.EtaleCohomology.Derived.Composition (52s)
+2026-10-30T17:09:54.0143926Z ✔ [9857/9864] Built Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChange.Basic (2.2s)
+2026-10-30T17:10:00.8202198Z ✔ [9859/9867] Built Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChange.Higher (6.5s)
+2026-10-30T17:12:17.1470760Z ✔ [9860/9870] Built Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChange (135s)
+2026-10-30T17:12:19.3499293Z ✔ [9862/9872] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.Composition (1.9s)
+2026-10-30T17:12:21.0513848Z ✔ [9864/9872] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.Retracts (1.6s)
+2026-10-30T17:12:23.0532572Z ✔ [9866/9873] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.Artinian (1.8s)
+2026-10-30T17:12:24.9544354Z ✔ [9868/9874] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.InjectiveRetract (1.6s)
+2026-10-30T17:12:26.7566806Z ✔ [9869/9874] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.ModulusOne (1.6s)
+2026-10-30T17:12:28.6587022Z ✔ [9870/9875] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.ZModRetract (1.7s)
+2026-10-30T17:12:31.2616302Z ✔ [9872/9875] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.GenuineModules (2.3s)
+2026-10-30T17:12:33.5640625Z ✔ [9873/9875] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.BaseChange (2.1s)
+2026-10-30T17:12:35.8662604Z ✔ [9874/9887] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.AffineRestriction (2.0s)
+2026-10-30T17:12:38.6683047Z ✔ [9876/9887] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.HomCocones (2.5s)
+2026-10-30T17:12:44.4735142Z ✔ [9878/9887] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.HomLifts (5.5s)
+2026-10-30T17:12:59.0862754Z ✔ [9879/9887] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.FixedTargetTriangle (14s)
+2026-10-30T17:14:04.4476073Z ✔ [9880/9887] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.FixedTargetData (65s)
+2026-10-30T17:14:36.3732191Z ✔ [9881/9890] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.FixedTargetHom (31s)
+2026-10-30T17:14:52.8939938Z ✔ [9882/9892] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.HomAbove (16s)
+2026-10-30T17:14:55.7962648Z ✔ [9883/9892] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ModuleCogenerators (2.7s)
+2026-10-30T17:14:57.7985367Z ✔ [9884/9894] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.FiniteDiagrams (1.8s)
+2026-10-30T17:15:02.1031670Z ✔ [9885/9894] Built Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.ZModCohomology (4.1s)
+2026-10-30T17:15:06.2074705Z ✔ [9886/9894] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.AnnihilatorProducts (3.9s)
+2026-10-30T17:15:08.4096636Z ✔ [9887/9894] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.ModelClosure (1.0s)
+2026-10-30T17:15:10.4118115Z ✔ [9888/9896] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.OrdinaryBaseChange (1.8s)
+2026-10-30T17:15:12.5139934Z ✔ [9889/9896] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.FiniteCogenerators (1.9s)
+2026-10-30T17:15:14.5170420Z ✔ [9890/9897] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.GeneratorModels (1.8s)
+2026-10-30T17:15:16.4190447Z ✔ [9891/9897] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.AffineFPTransport (1.7s)
+2026-10-30T17:15:22.4245895Z ✔ [9892/9897] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.CogeneratorCriterion (5.7s)
+2026-10-30T17:15:25.0263731Z ✔ [9893/9897] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.ChartGenerators (2.4s)
+2026-10-30T17:15:27.6281212Z ✔ [9895/9900] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.EmbeddingTransport (2.3s)
+2026-10-30T17:15:29.7305750Z ✔ [9897/9900] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.ModelEmbedding (1.9s)
+2026-10-30T17:15:40.8397463Z ✔ [9899/9901] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramAdjointFamilies (10s)
+2026-10-30T17:15:49.3479166Z ✔ [9900/9905] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.ConstantCoefficients (8.2s)
+2026-10-30T17:15:51.1487666Z ✔ [9901/9906] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTransport (1.5s)
+2026-10-30T17:15:53.2506798Z ✔ [9902/9907] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramNativeNaturality (1.9s)
+2026-10-30T17:16:04.9617502Z ✔ [9903/9907] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramPullbackSystem (11s)
+2026-10-30T17:16:06.8618491Z ✔ [9904/9907] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramPullbackTriangle (1.6s)
+2026-10-30T17:16:48.0032630Z ✔ [9905/9907] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DirectImageSquareTriangle (40s)
+2026-10-30T17:17:03.6171437Z ✔ [9906/9913] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramEtaleTestSystem (15s)
+2026-10-30T17:18:02.7703348Z ✔ [9907/9913] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductOriginalDiagram (58s)
+2026-10-30T17:18:58.6165579Z ✔ [9908/9915] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductPresheaf (55s)
+2026-10-30T17:19:04.1223529Z ✔ [9909/9915] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ResizeCohomologyDiagram (5.3s)
+2026-10-30T17:19:09.6279464Z ✔ [9911/9920] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.CohomologyDiagramUlift (5.3s)
+2026-10-30T17:19:31.8502327Z ✔ [9912/9921] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartOriginalDiagram (21s)
+2026-10-30T17:19:33.5521611Z ✔ [9913/9921] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.CohomologyDiagramReindex (1.5s)
+2026-10-30T17:19:59.0796955Z ✔ [9914/9921] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductStalk (25s)
+2026-10-30T17:20:10.6911295Z ✔ [9915/9921] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackLimitLegNaturality (11s)
+2026-10-30T17:20:17.7966992Z ✔ [9916/9924] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.CohomologyUliftComponents (6.8s)
+2026-10-30T17:20:33.8106793Z ✔ [9917/9924] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartCohomologyStalk (15s)
+2026-10-30T17:21:00.1407971Z ✔ [9918/9924] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartCoefficientNaturality (26s)
+2026-10-30T17:21:32.3711945Z ✔ [9919/9924] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartCohomologyCocone (32s)
+2026-10-30T17:21:50.0824631Z ✔ [9920/9924] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductGermNaturality (17s)
+2026-10-30T17:22:12.2022368Z ✔ [9921/9924] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartCohomologyGerms (21s)
+2026-10-30T17:22:57.9450319Z ✔ [9922/9930] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartStrictLocalComparison (45s)
+2026-10-30T17:24:12.9196618Z ✔ [9924/9932] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartStrictLocalNaturality (74s)
+2026-10-30T17:24:31.6370803Z ✔ [9927/9933] Built Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.Comparison (18s)
+2026-10-30T17:24:50.6546842Z ✔ [9929/9933] Built Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.QcqsComparison (18s)
+2026-10-30T17:24:52.5565424Z ✔ [9930/9933] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.TriangleSquareAdjoint (1.7s)
+2026-10-30T17:24:55.1583243Z ✔ [9931/9935] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SectionComparison (2.3s)
+2026-10-30T17:25:51.6021552Z ✔ [9932/9935] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.HigherDirectImageColimits (56s)
+2026-10-30T17:26:33.6428278Z ✔ [9933/9937] Built Aglib.AlgebraicGeometry.EtaleCohomology.CurveCohomology.Trace (41s)
+2026-10-30T17:26:59.2660418Z ✔ [9934/9937] Built Aglib.AlgebraicGeometry.EtaleCohomology.CurveCohomology.CompactSupportTrace (25s)
+2026-10-30T17:28:40.5577449Z ✔ [9935/9937] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.UnitsQuotient (100s)
+2026-10-30T17:28:50.3667761Z ✔ [9936/9941] Built Aglib.AlgebraicGeometry.EtaleCohomology.CurveCohomology.Complement (9.6s)
+2026-10-30T17:29:00.1769903Z ✔ [9937/9942] Built Aglib.AlgebraicGeometry.Picard.PowerRoot (9.5s)
+2026-10-30T17:30:45.6697807Z ✔ [9938/9942] Built Aglib.AlgebraicGeometry.Picard.PowerDescent (105s)
+2026-10-30T17:32:22.2606315Z ✔ [9940/9942] Built Aglib.AlgebraicGeometry.Picard.KummerH1 (96s)
+2026-10-30T17:33:55.9435244Z ✔ [9941/10007] Built Aglib.AlgebraicGeometry.EtaleCohomology.CurveCohomology.Proper (93s)
+2026-10-30T17:34:12.4622247Z ✔ [10012/10018] Built Aglib.AlgebraicGeometry.EtaleCohomology.H0.ProperHenselian (16s)
+2026-10-30T17:34:27.3742792Z ✔ [10014/10021] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ConstantRestriction (14s)
+2026-10-30T17:34:38.2887819Z ✔ [10015/10022] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CoefficientNaturality (10s)
+2026-10-30T17:35:38.5374367Z ✔ [10016/10023] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.LowDegree (60s)
+2026-10-30T17:35:47.0462300Z ✔ [10017/10023] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.SplitCoefficients (8.3s)
+2026-10-30T17:35:49.5488541Z ✔ [10018/10023] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericCokernelRepresentedSupport (2.2s)
+2026-10-30T17:36:01.2580482Z ✔ [10019/10023] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CharacteristicPrimaryRestriction (11s)
+2026-10-30T17:36:05.3613704Z ✔ [10020/10023] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericDirectImageDivisibility (3.9s)
+2026-10-30T17:36:11.4665185Z ✔ [10021/10025] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PrimePowerReduction (5.8s)
+2026-10-30T17:36:19.3726117Z ✔ [10022/10027] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteConstantReduction (7.8s)
+2026-10-30T17:36:21.8749184Z ✔ [10024/10027] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericUnitRestriction (2.3s)
+2026-10-30T17:36:23.9816275Z ✔ [10025/10027] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericIsolatedNeighborhood (1.9s)
+2026-10-30T17:36:49.8022654Z ✔ [10026/10028] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericUnitTuple (25s)
+2026-10-30T17:37:11.4219797Z ✔ [10027/10033] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant.Naturality (21s)
+2026-10-30T17:37:24.7373848Z ✔ [10052/10061] Built Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChangeResolution (12s)
+2026-10-30T17:37:31.2431181Z ✔ [10054/10062] Built Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChangeCycleSections (6.3s)
+2026-10-30T17:37:33.1457410Z ✔ [10055/10062] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeSections (1.7s)
+2026-10-30T17:37:35.0487820Z ✔ [10057/10064] Built Aglib.AlgebraicGeometry.EtaleCohomology.Derived.HorizontalComposition (1.7s)
+2026-10-30T17:37:37.3500358Z ✔ [10059/10064] Built Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChangeResolutionSections (2.1s)
+2026-10-30T17:38:09.0827488Z ✔ [10061/10064] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PrimeToCharacteristicDegreeTwo (31s)
+2026-10-30T17:38:10.8844175Z ✔ [10062/10064] Built Aglib.AlgebraicGeometry.EtaleCohomology.Derived.PullbackIsomorphism (1.6s)
+2026-10-30T17:38:24.5941992Z ✔ [10063/10069] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.StrictlyLocalComparison (13s)
+2026-10-30T17:38:27.5973906Z ✔ [10064/10071] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.GeometricFunctors (2.8s)
+2026-10-30T17:38:35.6035654Z ✔ [10065/10074] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.Pullback (7.8s)
+2026-10-30T17:38:38.7065843Z ✔ [10067/10075] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.Underlying (2.9s)
+2026-10-30T17:38:40.7086890Z ✔ [10068/10075] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.EtaleRestriction (1.8s)
+2026-10-30T17:38:46.2130015Z ✔ [10071/10075] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleAdjunction (5.2s)
+2026-10-30T17:38:48.2148507Z ✔ [10072/10079] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleSliceUnderlying (1.8s)
+2026-10-30T17:38:50.1155643Z ✔ [10073/10079] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleUnderlying (1.7s)
+2026-10-30T17:38:52.0174294Z ✔ [10074/10079] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.Exactness (1.7s)
+2026-10-30T17:39:07.7367920Z ✔ [10075/10080] Built Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekCohomology (15s)
+2026-10-30T17:39:12.5406709Z ✔ [10076/10081] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.LowerShriekExt (4.6s)
+2026-10-30T17:39:17.0462099Z ✔ [10078/10081] Built Aglib.AlgebraicGeometry.EtaleCohomology.Duality.YonedaPairing (4.3s)
+2026-10-30T17:39:19.0483050Z ✔ [10079/10081] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ZMod (1.8s)
+2026-10-30T17:39:44.1688728Z ✔ [10080/10084] Built Aglib.AlgebraicGeometry.EtaleCohomology.Duality.CompactSupportPairing (24s)
+2026-10-30T17:39:48.4738970Z ✔ [10081/10084] Built Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PairingTranspose (4.1s)
+2026-10-30T17:40:00.8870135Z ✔ [10082/10084] Built Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ZModLinear (12s)
+2026-10-30T17:40:07.0920854Z ✔ [10083/10086] Built Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantCoefficients (6.0s)
+2026-10-30T17:40:09.0928712Z ✔ [10084/10086] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.AdjunctionUnderlying (1.8s)
+2026-10-30T17:40:16.7017380Z ✔ [10085/10093] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.NativeAdjunctionUnderlying (7.4s)
+2026-10-30T17:40:21.4062266Z ✔ [10086/10096] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleComparisons (4.4s)
+2026-10-30T17:40:23.8079497Z ✔ [10089/10100] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModulePullbackCoherence (2.2s)
+2026-10-30T17:40:29.9138733Z ✔ [10090/10101] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleDirectImageCoherence (5.8s)
+2026-10-30T17:40:31.7157659Z ✔ [10091/10101] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootsOfUnityInverseImage (1.6s)
+2026-10-30T17:40:33.6176766Z ✔ [10092/10103] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleInverseImageCoherence (1.7s)
+2026-10-30T17:40:35.3196956Z ✔ [10093/10103] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleIsomorphism (1.5s)
+2026-10-30T17:40:37.4238252Z ✔ [10094/10104] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleExchangeMate (1.9s)
+2026-10-30T17:40:39.2256434Z ✔ [10095/10104] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ModuleUnitInverseImage (1.6s)
+2026-10-30T17:43:02.4603757Z ✔ [10096/10105] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.UnderlyingComposition (143s)
+2026-10-30T17:43:05.6637232Z ✔ [10097/10105] Built Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekComposition (2.0s)
+2026-10-30T17:43:13.8720731Z ✔ [10098/10106] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.ModuleRootsComposition (7.0s)
+2026-10-30T17:43:29.3859644Z ✖ [10099/10106] Building Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleUnderlyingCoherence (15s)
+2026-10-30T17:43:29.3864632Z trace: .> LEAN_PATH=/home/runner/work/aglib/aglib/.lake/packages/Cli/.lake/build/lib/lean:/home/runner/work/aglib/aglib/.lake/packages/batteries/.lake/build/lib/lean:/home/runner/work/aglib/aglib/.lake/packages/Qq/.lake/build/lib/lean:/home/runner/work/aglib/aglib/.lake/packages/aesop/.lake/build/lib/lean:/home/runner/work/aglib/aglib/.lake/packages/proofwidgets/.lake/build/lib/lean:/home/runner/work/aglib/aglib/.lake/packages/importGraph/.lake/build/lib/lean:/home/runner/work/aglib/aglib/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/home/runner/work/aglib/aglib/.lake/packages/plausible/.lake/build/lib/lean:/home/runner/work/aglib/aglib/.lake/packages/mathlib/.lake/build/lib/lean:/home/runner/work/aglib/aglib/.lake/build/lib/lean /home/runner/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean -M12800 -j4 /home/runner/work/aglib/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlyingCoherence.lean -o /home/runner/work/aglib/aglib/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlyingCoherence.olean -i /home/runner/work/aglib/aglib/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlyingCoherence.ilean -c /home/runner/work/aglib/aglib/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlyingCoherence.c --setup /home/runner/work/aglib/aglib/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlyingCoherence.setup.json --json
+2026-10-30T17:43:29.3869608Z error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlyingCoherence.lean:40:0: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+2026-10-30T17:43:29.3870151Z 
+2026-10-30T17:43:29.3870281Z Note: Use `set_option maxHeartbeats <num>` to set the limit.
+2026-10-30T17:43:29.3870471Z 
+2026-10-30T17:43:29.3870725Z Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+2026-10-30T17:43:29.3871582Z error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlyingCoherence.lean:126:8: (kernel) unknown constant 'AlgebraicGeometry.Scheme.EtaleCohomology.mate_moduleEtaleSliceUnderlyingIso_inv'
+2026-10-30T17:43:45.2993936Z ✔ [10101/10106] Built Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekDirectImage (15s)
+2026-10-30T17:43:48.0020074Z ✔ [10105/10110] Built Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PairingRestriction (2.5s)
+2026-10-30T17:43:49.7037518Z ✔ [10107/10111] Built Aglib.AlgebraicGeometry.EtaleCohomology.EtaleInverseImageInjectives (1.5s)
+2026-10-30T17:43:52.7070833Z ✔ [10109/10118] Built Aglib.AlgebraicGeometry.EtaleCohomology.EtaleProductTests (2.7s)
+2026-10-30T17:43:55.2085256Z ✔ [10114/10118] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ClosedExactness (2.3s)
+2026-10-30T17:43:59.2115230Z ✔ [10115/10118] Built Aglib.AlgebraicGeometry.EtaleCohomology.EtaleRepresentedTransfer (3.8s)
+2026-10-30T17:44:01.4138185Z ✔ [10116/10118] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.EtaleBaseChange (2.0s)
+2026-10-30T17:44:04.9171174Z ✔ [10117/10122] Built Aglib.AlgebraicGeometry.EtaleCohomology.EtaleRepresentedModuleTransfer (3.3s)
+2026-10-30T17:44:07.0181123Z ✔ [10119/10122] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ScalarRestriction (1.9s)
+2026-10-30T17:44:10.0198437Z ✔ [10120/10122] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.EtaleBaseChangeUnit (2.8s)
+2026-10-30T17:44:11.8216397Z ✔ [10121/10126] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.Torsion (1.5s)
+2026-10-30T17:44:13.9237830Z ✔ [10122/10126] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.DirectImage (1.9s)
+2026-10-30T17:44:17.4298976Z ✔ [10123/10126] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleIdentityCoherence (3.3s)
+2026-10-30T17:44:21.4331975Z ✔ [10124/10126] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.Composition (3.8s)
+2026-10-30T17:44:26.7409808Z ✔ [10125/10135] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.BaseChange (5.1s)
+2026-10-30T17:44:30.9451387Z ✔ [10127/10136] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.HigherImageAcyclic (4.0s)
+2026-10-30T17:44:32.9470866Z ✔ [10128/10136] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.Exchange (1.7s)
+2026-10-30T17:44:36.3500345Z ✔ [10129/10136] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingAcyclic (3.2s)
+2026-10-30T17:44:48.0590609Z ✔ [10130/10136] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.Open (11s)
+2026-10-30T17:44:49.9630481Z ✔ [10131/10138] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.DerivedBaseChange (1.7s)
+2026-10-30T17:45:29.2962176Z ✔ [10132/10139] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.Underlying (39s)
+2026-10-30T17:45:31.3030375Z ✔ [10133/10139] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleFullyFaithful (1.8s)
+2026-10-30T17:45:48.3155662Z ✔ [10134/10140] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingAdjunction (16s)
+2026-10-30T17:45:50.0173599Z ✔ [10135/10140] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.TorsionRange (1.5s)
+2026-10-30T17:45:58.8245725Z ✔ [10136/10141] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.OpenFullyFaithful (8.5s)
+2026-10-30T17:46:01.8272588Z ✔ [10137/10141] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange (2.8s)
+2026-10-30T17:46:05.1283059Z ✔ [10138/10142] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnboundedDirectImage (2.9s)
+2026-10-30T17:46:07.5305704Z ✔ [10139/10142] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.FiniteBaseChange (2.2s)
+2026-10-30T17:46:20.8429097Z ✔ [10140/10142] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnboundedOpen (13s)
+2026-10-30T17:46:22.7446407Z ✔ [10141/10145] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.BaseChange (1.7s)
+2026-10-30T17:46:24.8456067Z ✔ [10142/10145] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleBaseChange (1.9s)
+2026-10-30T17:46:26.9478612Z ✔ [10143/10145] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleCartesianBaseChange (1.9s)
+2026-10-30T17:46:36.0556245Z ✔ [10144/10149] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleAdjunctionCompatibility (8.9s)
+2026-10-30T17:46:46.2709286Z ✔ [10146/10149] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleExchangePasting (9.9s)
+2026-10-30T17:46:48.2730895Z ✔ [10147/10149] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleSourceExchange (1.8s)
+2026-10-30T17:47:00.4835234Z ✔ [10148/10152] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleExchangeSourcePasting (12s)
+2026-10-30T17:47:02.8851432Z ✔ [10149/10153] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleDirectImageValued (2.1s)
+2026-10-30T17:47:08.7883475Z ✔ [10150/10156] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleValuedDirectImageSquare (5.7s)
+2026-10-30T17:47:10.8923634Z ✔ [10151/10156] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleExchangeComparison (1.8s)
+2026-10-30T17:47:49.2341406Z ✔ [10152/10157] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleDirectImageSquareValued (38s)
+2026-10-30T17:47:50.9351025Z ✔ [10154/10157] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleRefinementCoherence (1.5s)
+2026-10-30T17:47:53.0373587Z ✔ [10155/10158] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleEtaleExchangeMate (1.8s)
+2026-10-30T17:48:03.8455550Z ✔ [10156/10161] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleCartesianExchangeMate (10s)
+2026-10-30T17:48:05.9526318Z ✔ [10158/10162] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleRefinementExchangeCoherence (1.9s)
+2026-10-30T17:48:08.2579648Z ✔ [10159/10162] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleScalarRestriction (2.1s)
+2026-10-30T17:48:10.0598421Z ✔ [10160/10162] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleRefinementComposition (1.6s)
+2026-10-30T17:48:12.2620417Z ✔ [10161/10166] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleStalk (1.0s)
+2026-10-30T17:48:14.2629580Z ✔ [10163/10168] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleStalkInside (1.8s)
+2026-10-30T17:48:18.4657141Z ✔ [10164/10169] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Refinement.Comparison (3.9s)
+2026-10-30T17:48:22.6689838Z ✔ [10166/10170] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Refinement.PullbackCoherence (3.0s)
+2026-10-30T17:48:30.1708414Z ✔ [10167/10170] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.ConstantH2 (7.3s)
+2026-10-30T17:48:36.1799479Z ✔ [10168/10171] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Refinement.Coherence (5.8s)
+2026-10-30T17:48:38.1819470Z ✔ [10169/10171] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteMonodromy (1.9s)
+2026-10-30T17:48:49.8943206Z ✔ [10170/10173] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.OverlapH1 (11s)
+2026-10-30T17:48:52.5016637Z ✔ [10171/10175] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.PurelyInseparable.FiniteConstants.SectionUnit (2.2s)
+2026-10-30T17:49:03.3126215Z ✔ [10172/10175] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.PurelyInseparable.FiniteConstants.Cohomology (10s)
+2026-10-30T17:49:08.4176849Z ✔ [10174/10178] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.PurelyInseparable.ProjectionH1 (4.9s)
+2026-10-30T17:49:29.2376227Z ✔ [10175/10178] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.StageCohomology (20s)
+2026-10-30T17:49:39.7467745Z ✔ [10176/10179] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.ConstantMaps (10s)
+2026-10-30T17:51:44.4580265Z ✔ [10177/10182] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.FiniteTypeCohomology (124s)
+2026-10-30T17:51:46.3590804Z ✔ [10179/10182] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.Presentations (1.6s)
+2026-10-30T17:51:48.5593344Z ✔ [10180/10182] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.CohomologyColimits (2.0s)
+2026-10-30T17:51:54.2660910Z ✔ [10181/10186] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ConstructibleComparison (5.4s)
+2026-10-30T17:52:13.3816952Z ✔ [10182/10191] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.FiniteTests (18s)
+2026-10-30T17:52:28.2928146Z ✔ [10184/10194] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ProjectiveLineTests (14s)
+2026-10-30T17:52:50.7147291Z ✔ [10186/10194] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.CoefficientTransport (22s)
+2026-10-30T17:52:52.8158707Z ✔ [10187/10194] Built Aglib.CategoryTheory.Abelian.Ext.OriginalComparisonValues (1.8s)
+2026-10-30T17:53:33.4521239Z ✔ [10188/10194] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.FiniteProducts (40s)
+2026-10-30T17:53:43.0609405Z ✔ [10189/10200] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ProjectiveLineCogenerators (9.4s)
+2026-10-30T17:53:50.6688156Z ✔ [10190/10201] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ProjectiveLineCriterion (7.4s)
+2026-10-30T17:53:56.4771552Z ✔ [10192/10202] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.NoetherianComparison (5.6s)
+2026-10-30T17:54:24.2037040Z ✔ [10194/10204] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.LocalFiniteComparison (27s)
+2026-10-30T17:54:26.2057496Z ✔ [10197/10204] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.EtaleModuleTrace (1.7s)
+2026-10-30T17:54:54.1320963Z ✔ [10198/10205] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.HenselianFieldComparison (27s)
+2026-10-30T17:54:56.0331157Z ✔ [10199/10205] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.EtaleTrace (1.8s)
+2026-10-30T17:55:42.0694112Z ✔ [10200/10206] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.FieldComparison (45s)
+2026-10-30T17:56:30.0150064Z ✔ [10201/10206] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.EtaleTransfer (47s)
+2026-10-30T17:56:48.4317103Z ✔ [10202/10206] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.FiniteImageTests (18s)
+2026-10-30T17:56:50.2329082Z ✔ [10203/10206] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.AffineOrdinaryBaseChangeIso (1.6s)
+2026-10-30T17:56:59.6421744Z ✔ [10204/10206] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.BoundedComparison (9.2s)
+2026-10-30T17:57:11.1525027Z ✔ [10205/10214] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.NativeLineComparison (11s)
+2026-10-30T17:57:20.4603961Z ✔ [10211/10216] Built Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.CoefficientSquare (9.1s)
+2026-10-30T17:57:26.9653539Z ✔ [10213/10216] Built Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.LocalPasting (6.3s)
+2026-10-30T17:58:17.9112873Z ✔ [10214/10216] Built Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.GenericRestriction (50s)
+2026-10-30T17:58:35.3274909Z ✔ [10215/10222] Built Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.PullbackZero (17s)
+2026-10-30T17:59:38.6849798Z ✔ [10218/10225] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.PointedNaturality (63s)
+2026-10-30T18:00:08.6111822Z ✔ [10222/10225] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.AbelBoundary (29s)
+2026-10-30T18:01:47.3997152Z ✔ [10223/10225] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.PointedCoefficientNaturality (98s)
+2026-10-30T18:02:08.0187261Z ✔ [10224/10228] Built Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.SectionComparison (20s)
+2026-10-30T18:02:11.9239996Z ✔ [10229/10232] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.ConstantModules (3.6s)
+2026-10-30T18:02:30.4396161Z ✔ [10230/10236] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.ConstantPrimaryModules (18s)
+2026-10-30T18:02:39.7490113Z ✔ [10235/10242] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.ConstantModuleSheaves (9.1s)
+2026-10-30T18:02:43.8522655Z ✔ [10236/10242] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.KummerCurveH1 (3.9s)
+2026-10-30T18:02:47.0556044Z ✔ [10237/10244] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.PrimeToCharacteristicCurveH1 (2.0s)
+2026-10-30T18:02:52.8589568Z ✔ [10238/10244] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.SeparablyClosedCurveH1 (5.6s)
+2026-10-30T18:02:59.3648442Z ✔ [10239/10244] Built Aglib.AlgebraicGeometry.EtaleCohomology.Vanishing.DimensionZero (6.2s)
+2026-10-30T18:03:10.5753816Z ✔ [10240/10244] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.PrimeToCharacteristicCurveModules (11s)
+2026-10-30T18:03:15.0798978Z ✔ [10241/10245] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.DimensionZeroModules (4.3s)
+2026-10-30T18:03:31.8934721Z ✔ [10242/10245] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.ConstantTorsionCurveH1 (16s)
+2026-10-30T18:03:41.4021115Z ✔ [10244/10251] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.ConstantTorsionCurveModuleSheaves (9.3s)
+2026-10-30T18:06:11.8413020Z ✔ [10248/10251] Built Aglib.AlgebraicGeometry.EtaleCohomology.ModuleCoefficients.FiniteDirectImage (150s)
+2026-10-30T18:06:17.7488668Z ✔ [10249/10253] Built Aglib.AlgebraicGeometry.EtaleCohomology.ModuleCoefficients.FiniteEtaleDescent (5.7s)
+2026-10-30T18:06:28.5573519Z ✔ [10250/10253] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.PGroupModuleSheaves (10s)
+2026-10-30T18:06:33.0616436Z ✔ [10251/10257] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisSubgroupQuotient (4.3s)
+2026-10-30T18:06:35.5641846Z ✔ [10252/10258] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisSubgroupRelative (2.2s)
+2026-10-30T18:06:37.5652453Z ✔ [10253/10259] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GeometricFiberRank (1.7s)
+2026-10-30T18:06:43.7705058Z ✔ [10254/10259] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.PrimeToCharacteristicCurveModuleSheaves (5.9s)
+2026-10-30T18:06:45.5723065Z ✔ [10255/10260] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisSubgroupRank (1.6s)
+2026-10-30T18:06:47.4741017Z ✔ [10257/10261] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisSylowCover (1.7s)
+2026-10-30T18:06:49.5753405Z ✔ [10258/10261] Built Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.FieldConservative (1.7s)
+2026-10-30T18:06:59.0847948Z ✔ [10259/10262] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.GaloisModuleSheaves (9.3s)
+2026-10-30T18:07:01.1866619Z ✔ [10260/10262] Built Aglib.AlgebraicGeometry.EtaleCohomology.H0.ConnectedTorsionPullback (1.9s)
+2026-10-30T18:07:03.5881139Z ✔ [10261/10264] Built Aglib.AlgebraicGeometry.EtaleCohomology.H0.ConstantSectionFiniteValues (2.1s)
+2026-10-30T18:07:05.4901104Z ✔ [10262/10265] Built Aglib.AlgebraicGeometry.EtaleCohomology.H0.SepClosedConstant (1.7s)
+2026-10-30T18:07:07.5921481Z ✔ [10263/10266] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite (1.8s)
+2026-10-30T18:07:27.5123477Z ✔ [10264/10266] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.GroupBaseChange (19s)
+2026-10-30T18:09:07.2128575Z ✔ [10265/10275] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.OverField (99s)
+2026-10-30T18:09:57.1582153Z ✔ [10271/10276] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.PullbackSquare (49s)
+2026-10-30T18:10:20.3758713Z ✔ [10273/10277] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorFunctoriality (22s)
+2026-10-30T18:10:25.2803123Z ✔ [10274/10277] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootNaturality (4.7s)
+2026-10-30T18:10:31.0859374Z ✔ [10275/10277] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.PointedFieldTransport (5.5s)
+2026-10-30T18:10:33.5881568Z ✔ [10276/10279] Built Aglib.AlgebraicGeometry.EtaleCohomology.Localization.AbelianNaturality (2.3s)
+2026-10-30T18:10:35.9910036Z ✔ [10278/10286] Built Aglib.AlgebraicGeometry.EtaleCohomology.Localization.ModuleOpenPart (2.1s)
+2026-10-30T18:10:37.9921464Z ✔ [10279/10287] Built Aglib.AlgebraicGeometry.EtaleCohomology.Localization.ModuleClosedStalk (1.8s)
+2026-10-30T18:10:39.7941247Z ✔ [10281/10287] Built Aglib.AlgebraicGeometry.EtaleCohomology.Localization.ModuleClosedUnit (1.6s)
+2026-10-30T18:10:42.1946336Z ✔ [10282/10287] Built Aglib.AlgebraicGeometry.EtaleCohomology.Localization.ModuleShortExact (2.2s)
+2026-10-30T18:10:44.8976446Z ✔ [10283/10290] Built Aglib.AlgebraicGeometry.EtaleCohomology.Localization.ModuleNaturality (2.5s)
+2026-10-30T18:11:19.0306026Z ✔ [10284/10290] Built Aglib.AlgebraicGeometry.EtaleCohomology.Localization.ModuleComplex (33s)
+2026-10-30T18:11:46.2530721Z ✔ [10285/10290] Built Aglib.AlgebraicGeometry.EtaleCohomology.Localization.UnboundedComplex (26s)
+2026-10-30T18:12:34.2988183Z ✔ [10286/10291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Localization.DerivedComparison (47s)
+2026-10-30T18:12:48.8134246Z ✔ [10287/10293] Built Aglib.AlgebraicGeometry.EtaleCohomology.Localization.UnboundedComparison (14s)
+2026-10-30T18:13:39.5553303Z ✔ [10288/10293] Built Aglib.AlgebraicGeometry.EtaleCohomology.Localization.Derived (50s)
+2026-10-30T18:13:41.4576188Z ✔ [10289/10294] Built Aglib.AlgebraicGeometry.EtaleCohomology.ModuleCoefficients.ImageMates (1.7s)
+2026-10-30T18:14:19.2970455Z ✔ [10290/10295] Built Aglib.AlgebraicGeometry.EtaleCohomology.Localization.Unbounded (37s)
+2026-10-30T18:15:32.2613824Z ✔ [10292/10295] Built Aglib.AlgebraicGeometry.EtaleCohomology.ModuleCoefficients.BaseChangeMap (72s)
+2026-10-30T18:15:45.8761497Z ✔ [10293/10295] Built Aglib.AlgebraicGeometry.EtaleCohomology.ModuleCoefficients.ImageComposition (13s)
+2026-10-30T18:15:47.6767585Z ✔ [10294/10296] Built Aglib.AlgebraicGeometry.EtaleCohomology.ModuleCoefficients.FiniteBaseChange (1.6s)
+2026-10-30T18:15:49.3799012Z ✔ [10295/10297] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Universal.Property (1.4s)
+2026-10-30T18:15:51.3807143Z ✔ [10296/10305] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.ExchangeShift (1.8s)
+2026-10-30T18:15:53.2826757Z ✔ [10298/10305] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.SingleHigher (1.7s)
+2026-10-30T18:15:56.7858574Z ✔ [10299/10306] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.ZModAcyclic (3.2s)
+2026-10-30T18:15:59.1873971Z ✔ [10300/10306] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.ZModDerivedImage (2.1s)
+2026-10-30T18:16:01.0891461Z ✔ [10302/10306] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.InjectiveExchange (1.8s)
+2026-10-30T18:16:03.0983810Z ✔ [10303/10306] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.AllModuleCoefficients (1.7s)
+2026-10-30T18:16:05.2008704Z ✔ [10304/10306] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.BoundedCoefficients (1.9s)
+2026-10-30T18:16:07.1029071Z ✔ [10305/10322] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.HigherReduction (1.7s)
+2026-10-30T18:16:09.2051655Z ✔ [10321/10325] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Universal.Basic (1.8s)
+2026-10-30T18:16:13.2086648Z ✔ [10322/10325] Built Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.Etale (3.8s)
+2026-10-30T18:16:25.2207540Z ✔ [10324/10328] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartExchangeMaps (11s)
+2026-10-30T18:16:29.3239851Z ✔ [10326/10328] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeChartCoefficient (3.9s)
+2026-10-30T18:16:47.7394950Z ✔ [10327/10330] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeChartRelative (18s)
+2026-10-30T18:16:49.6412586Z ✔ [10328/10331] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductBaseChangeMap (1.7s)
+2026-10-30T18:17:06.1537865Z ✔ [10329/10332] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeSectionComparison (15s)
+2026-10-30T18:17:27.2741377Z ✔ [10332/10334] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GlobalSections (20s)
+2026-10-30T18:18:04.7081913Z ✔ [10333/10336] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.OriginalCohomologyCycles (37s)
+2026-10-30T18:18:11.4154563Z ✔ [10334/10337] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ResolutionPresheafHomology (6.4s)
+2026-10-30T18:18:17.0197034Z ✔ [10335/10339] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ResolutionPresheafCycles (5.4s)
+2026-10-30T18:18:43.3467588Z ✔ [10336/10341] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.OriginalCohomologyZero (26s)
+2026-10-30T18:18:45.0503904Z ✔ [10337/10343] Built Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.GeneratorZero (1.5s)
+2026-10-30T18:19:32.5907807Z ✔ [10339/10345] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductGermZero (47s)
+2026-10-30T18:19:34.5926366Z ✔ [10340/10345] Built Aglib.AlgebraicGeometry.EtaleCohomology.SlicePullback.AugmentationSections (1.8s)
+2026-10-30T18:19:48.6093479Z ✔ [10341/10348] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.OriginalHigherCycles (13s)
+2026-10-30T18:20:16.0307038Z ✔ [10343/10348] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GlobalSectionsCycles (27s)
+2026-10-30T18:20:18.9323976Z ✔ [10344/10349] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartResolutionSections (2.7s)
+2026-10-30T18:20:33.4481455Z ✔ [10345/10353] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackCycleSections (14s)
+2026-10-30T18:20:52.5672183Z ✔ [10347/10353] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartTargetCycles (18s)
+2026-10-30T18:20:54.7683945Z ✔ [10348/10354] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleTerminalSite (2.0s)
+2026-10-30T18:21:04.0753143Z ✔ [10349/10354] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeGlobalSections (9.1s)
+2026-10-30T18:21:22.4917263Z ✔ [10350/10356] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartCycleWitness (18s)
+2026-10-30T18:21:24.6939800Z ✔ [10351/10356] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleTerminalSections (1.0s)
+2026-10-30T18:21:30.0990224Z ✔ [10352/10356] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GlobalSectionsNaturality (5.2s)
+2026-10-30T18:23:27.3991564Z ✔ [10354/10357] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeChartSections (116s)
+2026-10-30T18:24:55.5790606Z ✔ [10355/10357] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeNeighborhoodGerms (87s)
+2026-10-30T18:25:05.1883542Z ✔ [10356/10364] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductStalkRepresentatives (9.3s)
+2026-10-30T18:25:32.9140796Z ✔ [10359/10366] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.RelativeCohomologyTransfer (27s)
+2026-10-30T18:26:15.4515739Z ✔ [10360/10366] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductGermRestriction (42s)
+2026-10-30T18:27:55.5456942Z ✔ [10361/10366] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PointedCohomologyLeg (99s)
+2026-10-30T18:29:05.1115311Z ✔ [10363/10368] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartPointedComparison (69s)
+2026-10-30T18:30:45.5095963Z ✔ [10364/10373] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartGeometricComparison (100s)
+2026-10-30T18:30:46.8113803Z ✔ [10365/10373] Built Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.InverseRectangle (1.1s)
+2026-10-30T18:30:48.8126756Z ✔ [10366/10373] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricFibreNeighborhood (1.8s)
+2026-10-30T18:30:50.1139918Z ✔ [10367/10373] Built Aglib.CategoryTheory.Abelian.Ext.TransferConsequences (1.1s)
+2026-10-30T18:31:03.1256052Z ✔ [10368/10373] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.RelativeCohomologySquare (12s)
+2026-10-30T18:31:55.2691362Z ✔ [10369/10377] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricFibreTransfer (51s)
+2026-10-30T18:34:56.9297460Z ✔ [10370/10377] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricComparisonEquation (181s)
+2026-10-30T18:35:02.7333269Z ✔ [10371/10377] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ProjectiveLineModels (5.6s)
+2026-10-30T18:36:12.0962008Z ✔ [10372/10378] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricComparisonExchange (69s)
+2026-10-30T18:36:43.0212177Z ✔ [10373/10380] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ResidueFieldExtension (30s)
+2026-10-30T18:36:58.6350205Z ✔ [10374/10380] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricStalkExchange (15s)
+2026-10-30T18:37:02.0383298Z ✔ [10375/10382] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Universal.ModelTransport (3.2s)
+2026-10-30T18:37:45.0763889Z ✔ [10376/10382] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ProjectiveLineGeometricTransfer (42s)
+2026-10-30T18:37:47.6780303Z ✔ [10377/10382] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Universal.RelativeExchangeIso (2.3s)
+2026-10-30T18:37:49.6801782Z ✔ [10378/10382] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Universal.AffineReduction (1.8s)
+2026-10-30T18:37:59.9902610Z ✔ [10379/10384] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Universal.ProjectiveLine (10s)
+2026-10-30T18:38:02.5945552Z ✔ [10380/10386] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Universal.TargetLocality (2.3s)
+2026-10-30T18:38:04.9977408Z ✔ [10382/10386] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Bounded (2.2s)
+2026-10-30T18:38:07.1023242Z ✔ [10383/10386] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.TorsionPostnikov (1.9s)
+2026-10-30T18:38:09.0077485Z ✔ [10384/10388] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.LocalTorsionColimit (1.7s)
+2026-10-30T18:38:11.4092115Z ✔ [10385/10404] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.BaseChange (2.2s)
+2026-10-30T18:38:13.3112209Z ✔ [10398/10404] Built Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.EtaleDerived (1.7s)
+2026-10-30T18:38:15.2131839Z ✔ [10399/10405] Built Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.EtaleRelativeDimensionZero (1.6s)
+2026-10-30T18:38:17.1187114Z ✔ [10400/10407] Built Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.Cartesian (1.7s)
+2026-10-30T18:38:19.7213760Z ✔ [10402/10407] Built Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.Horizontal (2.4s)
+2026-10-30T18:38:21.9223533Z ✔ [10404/10409] Built Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.Locality (1.9s)
+2026-10-30T18:38:23.9232750Z ✔ [10405/10409] Built Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.Bounded (1.8s)
+2026-10-30T18:38:25.8251601Z ✔ [10406/10409] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GlobalSectionsPullbackGerm (1.7s)
+2026-10-30T18:38:28.0274639Z ✔ [10407/10409] Built Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.Reduction (1.0s)
+2026-10-30T18:38:34.0335522Z ✔ [10408/10413] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeGlobalGerms (5.8s)
+2026-10-30T18:38:35.9367765Z ✔ [10410/10413] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartRelativeSections (1.7s)
+2026-10-30T18:38:37.8374836Z ✔ [10411/10415] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.RelativeUnitGerm (1.7s)
+2026-10-30T18:38:39.7393822Z ✔ [10412/10415] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartEvaluationGerm (1.7s)
+2026-10-30T18:38:44.9438157Z ✔ [10413/10417] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackLimitLegZero (4.9s)
+2026-10-30T18:39:38.8932413Z ✔ [10414/10417] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartStrictLocalZero (53s)
+2026-10-30T18:39:44.9995455Z ✔ [10415/10418] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GlobalSectionsField (5.9s)
+2026-10-30T18:39:48.7032586Z ✔ [10416/10420] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ConstantHigherImageField (3.5s)
+2026-10-30T18:40:16.3283422Z ✔ [10417/10421] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricOriginalDiagram (27s)
+2026-10-30T18:40:32.0438162Z ✔ [10418/10422] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricCohomologyStalk (15s)
+2026-10-30T18:41:03.6761182Z ✔ [10419/10423] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricCohomologyCocone (31s)
+2026-10-30T18:41:10.7816816Z ✔ [10420/10423] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricLimitCohomologyCocone (6.9s)
+2026-10-30T18:41:33.2028613Z ✔ [10421/10423] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricCohomologyGerms (22s)
+2026-10-30T18:41:35.0066317Z ✔ [10422/10426] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ResizeCohomologyReindex (1.5s)
+2026-10-30T18:41:41.1120602Z ✔ [10425/10428] Built Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.InjectiveCriterion (5.8s)
+2026-10-30T18:41:42.8126326Z ✔ [10426/10429] Built Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.InverseImage (1.5s)
+2026-10-30T18:41:55.6234574Z ✔ [10427/10430] Built Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.SurjectivityCriterion (12s)
+2026-10-30T18:42:00.9284291Z ✔ [10428/10437] Built Aglib.AlgebraicGeometry.EtaleCohomology.Vanishing.FilteredCoefficients (5.1s)
+2026-10-30T18:42:02.9303182Z ✔ [10475/10480] Built Aglib.AlgebraicGeometry.Group.BaseChange.Composition (1.7s)
+2026-10-30T18:42:13.8426230Z ✔ [10492/10496] Built Aglib.AlgebraicGeometry.Group.IsogenyPairing (10s)
+2026-10-30T18:42:27.2601239Z ✔ [10493/10505] Built Aglib.AlgebraicGeometry.Group.IsogenyPairing.Galois (13s)
+2026-10-30T18:42:55.2905789Z ✔ [10520/10524] Built Aglib.AlgebraicGeometry.Picard.TranslationLift (27s)
+2026-10-30T18:43:06.2036236Z ✔ [10522/10564] Built Aglib.AlgebraicGeometry.Group.WeilPairing (10s)
+2026-10-30T18:43:19.3165919Z ✔ [10777/10781] Built Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.SheafClass (12s)
+2026-10-30T18:43:24.8203207Z ✔ [10778/10781] Built Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.FieldRealization (5.3s)
+2026-10-30T18:44:48.5983744Z ✔ [10779/10781] Built Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.GenericPullback (83s)
+2026-10-30T18:45:22.0270907Z ✔ [10780/10786] Built Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.ClassExtension (33s)
+2026-10-30T18:45:30.2339936Z ✔ [10783/10786] Built Aglib.AlgebraicGeometry.Picard.LocalKummer (7.9s)
+2026-10-30T18:45:32.7366084Z ✔ [10784/10787] Built Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.OriginalRepresentation (2.3s)
+2026-10-30T18:45:41.3435184Z ✔ [10785/10789] Built Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.UnramifiedExtension (8.3s)
+2026-10-30T18:45:43.6450537Z ✔ [10819/10822] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.RelativeChartComparison (1.8s)
+2026-10-30T18:45:45.4469046Z ✔ [10820/10823] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.RelativeChartTransition (1.6s)
+2026-10-30T18:46:28.7860975Z ✔ [10821/10824] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.RelativeSectionsSeparation (43s)
+2026-10-30T18:46:30.9873338Z ✔ [10822/10824] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.SectionsCompatibility (1.0s)
+2026-10-30T18:46:48.0029555Z ✔ [10823/10828] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.SimultaneousSectionRepresentatives (16s)
+2026-10-30T18:46:56.3113552Z ✔ [10824/10829] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.StageSectionsImage (8.0s)
+2026-10-30T18:46:58.2123016Z ✔ [10826/10830] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.StageSectionImageExistence (1.8s)
+2026-10-30T18:47:00.1133061Z ✔ [10828/10851] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.StageRepresentativeImage (1.6s)
+2026-10-30T18:47:02.6161506Z ✔ [10958/10963] Built Aglib.AlgebraicGeometry.Compactification.Refinements.CartesianBaseChange (1.5s)
+2026-10-30T18:47:04.4169774Z ✔ [10961/10964] Built Aglib.AlgebraicGeometry.Compactification.Refinements.Supplied (1.6s)
+2026-10-30T18:47:06.8183729Z ✔ [10962/10964] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingTorsion (2.1s)
+2026-10-30T18:47:08.6202909Z ✔ [10963/10964] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.Torsion (1.6s)
+2026-10-30T18:47:10.1211973Z ✔ [11129/11132] Built Aglib.CategoryTheory.Adjunction.UnitComparisonBaseChange (943ms)
+2026-10-30T18:47:11.1222357Z ✔ [11130/11132] Built Aglib.CategoryTheory.Adjunction.UnitComparisonNaturality (821ms)
+2026-10-30T18:47:12.2233942Z ✔ [11131/11135] Built Aglib.CategoryTheory.NatTrans.CartesianSourceExchange (837ms)
+2026-10-30T18:47:13.1243777Z ✔ [11132/11136] Built Aglib.CategoryTheory.NatTrans.IsIsoOn (686ms)
+2026-10-30T18:47:14.2256658Z ✔ [11133/11136] Built Aglib.CategoryTheory.NatTrans.CompositeExchangeNaturality (907ms)
+2026-10-30T18:47:15.2300047Z ✔ [11134/11137] Built Aglib.CategoryTheory.NatTrans.CompositeExchange (740ms)
+2026-10-30T18:47:16.1309982Z ✔ [11135/11137] Built Aglib.CategoryTheory.NatTrans.OverComparisonEquation (757ms)
+2026-10-30T18:47:17.2321493Z ✔ [11136/11140] Built Aglib.CategoryTheory.NatTrans.NormalizedExchangeNaturality (880ms)
+2026-10-30T18:47:18.3371948Z Some required targets logged failures:
+2026-10-30T18:47:18.3372590Z - Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleUnderlyingCoherence
+2026-10-30T18:47:18.3459900Z error: build failed
+2026-10-30T18:47:18.3912464Z ##[error]Process completed with exit code 1.
+2026-10-30T18:47:18.3959048Z ##[group]Run # Cancellation can end systemd-run while Lake/Lean remain in its scope.
+2026-10-30T18:47:18.3959550Z [36;1m# Cancellation can end systemd-run while Lake/Lean remain in its scope.[0m
+2026-10-30T18:47:18.3959965Z [36;1m# Stop only units recorded by this exact run/attempt/job; never scan PIDs.[0m
+2026-10-30T18:47:18.3960353Z [36;1mprefix="lean-ci-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB-"[0m
+2026-10-30T18:47:18.3960781Z [36;1mdirectory="$RUNNER_TEMP/lean-ci-scopes/$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB"[0m
+2026-10-30T18:47:18.3961147Z [36;1mtest ! -L "$directory"[0m
+2026-10-30T18:47:18.3961360Z [36;1mshopt -s nullglob[0m
+2026-10-30T18:47:18.3961593Z [36;1mfor marker in "$directory"/*.scope; do[0m
+2026-10-30T18:47:18.3961866Z [36;1m  test -f "$marker" && test ! -L "$marker"[0m
+2026-10-30T18:47:18.3962118Z [36;1m  unit=$(basename "$marker")[0m
+2026-10-30T18:47:18.3962498Z [36;1m  case "$unit" in[0m
+2026-10-30T18:47:18.3962719Z [36;1m    "$prefix"*.scope) ;;[0m
+2026-10-30T18:47:18.3963018Z [36;1m    *) echo "::error::Unexpected native scope marker: $unit"; exit 1 ;;[0m
+2026-10-30T18:47:18.3963309Z [36;1m  esac[0m
+2026-10-30T18:47:18.3963502Z [36;1m  test "$(cat "$marker")" = "$unit"[0m
+2026-10-30T18:47:18.3963817Z [36;1m  load=$(sudo systemctl show --property=LoadState --value -- "$unit")[0m
+2026-10-30T18:47:18.3964131Z [36;1m  if test "$load" = not-found; then[0m
+2026-10-30T18:47:18.3964443Z [36;1m    continue  # --collect already removed a scope whose processes exited.[0m
+2026-10-30T18:47:18.3964746Z [36;1m  fi[0m
+2026-10-30T18:47:18.3964994Z [36;1m  # No --no-block: cache readers must wait for the scope's processes.[0m
+2026-10-30T18:47:18.3965310Z [36;1m  if ! sudo systemctl stop -- "$unit"; then[0m
+2026-10-30T18:47:18.3965623Z [36;1m    # A naturally exiting --collect scope can disappear after show.[0m
+2026-10-30T18:47:18.3966009Z [36;1m    load=$(sudo systemctl show --property=LoadState --value -- "$unit")[0m
+2026-10-30T18:47:18.3966341Z [36;1m    if test "$load" = not-found; then continue; fi[0m
+2026-10-30T18:47:18.3966633Z [36;1m    echo "::error::Could not stop native scope: $unit"[0m
+2026-10-30T18:47:18.3966887Z [36;1m    exit 1[0m
+2026-10-30T18:47:18.3967067Z [36;1m  fi[0m
+2026-10-30T18:47:18.3967318Z [36;1m  state=$(sudo systemctl show --property=ActiveState --value -- "$unit")[0m
+2026-10-30T18:47:18.3967628Z [36;1m  if test "$state" != inactive; then[0m
+2026-10-30T18:47:18.3967922Z [36;1m    echo "::error::Native scope did not quiesce: $unit ($state)"[0m
+2026-10-30T18:47:18.3968192Z [36;1m    exit 1[0m
+2026-10-30T18:47:18.3968353Z [36;1m  fi[0m
+2026-10-30T18:47:18.3968509Z [36;1mdone[0m
+2026-10-30T18:47:18.3986114Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-30T18:47:18.3986392Z env:
+2026-10-30T18:47:18.3986563Z   LAKE_NO_CACHE: true
+2026-10-30T18:47:18.3986747Z   LAKE_ARTIFACT_CACHE: true
+2026-10-30T18:47:18.3986951Z   BUILD_TARGETS: Aglib
+2026-10-30T18:47:18.3987145Z   BUILD_DEADLINE: 1793394344
+2026-10-30T18:47:18.3987397Z   LAKE_CACHE_DIR: /home/runner/work/_temp/lake-native-cache
+2026-10-30T18:47:18.3987659Z ##[endgroup]
+2026-10-30T18:47:18.4994342Z ##[group]Run actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+2026-10-30T18:47:18.4994654Z with:
+2026-10-30T18:47:18.4994887Z   path: ./.lake
+/home/runner/work/_temp/lake-native-cache
+
+2026-10-30T18:47:18.4995717Z   key: lean-Linux-X64-d791b020c21edcc7e9e22797f1d59fde59e8af8f675af62dc2f1fd7521bfef93-89d6106bc6c779e9737fee10c1c69f89008822de7c0ccaf47ee2412f3aae0bb2-ecca5070e0df98c4260a35b92f5bea0ca49801e8-41075798788-1
+2026-10-30T18:47:18.4996511Z   enableCrossOsArchive: false
+2026-10-30T18:47:18.4996719Z env:
+2026-10-30T18:47:18.4996882Z   LAKE_NO_CACHE: true
+2026-10-30T18:47:18.4997065Z   LAKE_ARTIFACT_CACHE: true
+2026-10-30T18:47:18.4997261Z   BUILD_TARGETS: Aglib
+2026-10-30T18:47:18.4997444Z   BUILD_DEADLINE: 1793394344
+2026-10-30T18:47:18.4997721Z   LAKE_CACHE_DIR: /home/runner/work/_temp/lake-native-cache
+2026-10-30T18:47:18.4997982Z ##[endgroup]
+2026-10-30T18:47:18.6219805Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/aglib/aglib --files-from manifest.txt --use-compress-program zstdmt
+2026-10-30T18:50:01.4960970Z Sent 0 of 6078442035 (0.0%), 0.0 MBs/sec
+2026-10-30T18:50:02.4925661Z Sent 268435456 of 6078442035 (4.4%), 127.9 MBs/sec
+2026-10-30T18:50:03.4927119Z Sent 536870912 of 6078442035 (8.8%), 170.6 MBs/sec
+2026-10-30T18:50:04.4932305Z Sent 1006632960 of 6078442035 (16.6%), 239.9 MBs/sec
+2026-10-30T18:50:05.4934939Z Sent 1342177280 of 6078442035 (22.1%), 255.9 MBs/sec
+2026-10-30T18:50:06.4970100Z Sent 1610612736 of 6078442035 (26.5%), 255.9 MBs/sec
+2026-10-30T18:50:07.4967554Z Sent 2080374784 of 6078442035 (34.2%), 283.3 MBs/sec
+2026-10-30T18:50:08.4960045Z Sent 2281701376 of 6078442035 (37.5%), 271.9 MBs/sec
+2026-10-30T18:50:09.4940551Z Sent 2684354560 of 6078442035 (44.2%), 284.4 MBs/sec
+2026-10-30T18:50:10.4964259Z Sent 3154116608 of 6078442035 (51.9%), 300.7 MBs/sec
+2026-10-30T18:50:11.4944495Z Sent 3489660928 of 6078442035 (57.4%), 302.5 MBs/sec
+2026-10-30T18:50:12.4980069Z Sent 3690987520 of 6078442035 (60.7%), 293.3 MBs/sec
+2026-10-30T18:50:13.4962601Z Sent 4227858432 of 6078442035 (69.6%), 310.0 MBs/sec
+2026-10-30T18:50:14.5000412Z Sent 4630511616 of 6078442035 (76.2%), 315.3 MBs/sec
+2026-10-30T18:50:15.4984748Z Sent 4831838208 of 6078442035 (79.5%), 307.1 MBs/sec
+2026-10-30T18:50:16.4984966Z Sent 5301600256 of 6078442035 (87.2%), 315.9 MBs/sec
+2026-10-30T18:50:17.4986292Z Sent 5704253440 of 6078442035 (93.8%), 319.9 MBs/sec
+2026-10-30T18:50:18.4990081Z Sent 5944224307 of 6078442035 (97.8%), 314.8 MBs/sec
+2026-10-30T18:50:18.7291725Z Sent 6078442035 of 6078442035 (100.0%), 317.8 MBs/sec
+2026-10-30T18:50:19.2215529Z Cache saved with key: lean-Linux-X64-d791b020c21edcc7e9e22797f1d59fde59e8af8f675af62dc2f1fd7521bfef93-89d6106bc6c779e9737fee10c1c69f89008822de7c0ccaf47ee2412f3aae0bb2-ecca5070e0df98c4260a35b92f5bea0ca49801e8-41075798788-1
+2026-10-30T18:50:19.2400557Z ##[group]Run if test -s "$RUNNER_TEMP/outputs.jsonl"; then
+2026-10-30T18:50:19.2400951Z [36;1mif test -s "$RUNNER_TEMP/outputs.jsonl"; then[0m
+2026-10-30T18:50:19.2401317Z [36;1m  lake cache stage "$RUNNER_TEMP/outputs.jsonl" "$RUNNER_TEMP/cache-staging"[0m
+2026-10-30T18:50:19.2401760Z [36;1m  domain="$RUNNER_OS-$RUNNER_ARCH-$(sha256sum lean-toolchain | cut -c 1-16)"[0m
+2026-10-30T18:50:19.2402522Z [36;1m  package=$(python3 -c 'import tomllib; print(tomllib.load(open("lakefile.toml", "rb"))["name"])')[0m
+2026-10-30T18:50:19.2403000Z [36;1m  jq -n --arg repository "$GITHUB_REPOSITORY" --arg revision "$GITHUB_SHA" \[0m
+2026-10-30T18:50:19.2403458Z [36;1m    --arg package "$package" --arg domain "$domain" --arg compiler "$(lean --version)" \[0m
+2026-10-30T18:50:19.2404017Z [36;1m    '{repository: $repository, revision: $revision, package: $package, domain: $domain, compiler: $compiler}' \[0m
+2026-10-30T18:50:19.2404526Z [36;1m    > "$RUNNER_TEMP/cache-staging/producer.json"[0m
+2026-10-30T18:50:19.2404899Z [36;1m  tar -cf "$RUNNER_TEMP/lake-native-cache.tar" -C "$RUNNER_TEMP/cache-staging" .[0m
+2026-10-30T18:50:19.2405278Z [36;1m  echo 'staged=true' >> "$GITHUB_OUTPUT"[0m
+2026-10-30T18:50:19.2405517Z [36;1mfi[0m
+2026-10-30T18:50:19.2595548Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail -c "ci_memory_mb=$(( $(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) / 1048576 - 2048 )); if test \"$ci_memory_mb\" -gt 13824; then ci_memory_mb=13824; fi; printf \"Native resources: group=%s MiB, Lake threads=1, CPUs=%s\n\" \"$ci_memory_mb\" \"$(nproc)\"; scope_dir=\"$RUNNER_TEMP/lean-ci-scopes/$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB\"; scope=\"lean-ci-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB-$(printf '%s' \"$0\" | sha256sum | cut -c1-20).scope\"; mkdir -p \"$scope_dir\"; printf '%s\n' \"$scope\" > \"$scope_dir/$scope\"; exec sudo --preserve-env systemd-run --scope --quiet --collect --unit=\"$scope\" --uid=\"$(id -u)\" --gid=\"$(id -g)\" --property=\"MemoryMax=$ci_memory_mb\"M --property=MemorySwapMax=0 /usr/bin/env \"PATH=$PATH\" LEAN_NUM_THREADS=1 /bin/bash --noprofile --norc -eo pipefail \"$0\"" "{0}"
+2026-10-30T18:50:19.2597773Z env:
+2026-10-30T18:50:19.2597942Z   LAKE_NO_CACHE: true
+2026-10-30T18:50:19.2598140Z   LAKE_ARTIFACT_CACHE: true
+2026-10-30T18:50:19.2598358Z   BUILD_TARGETS: Aglib
+2026-10-30T18:50:19.2598574Z   BUILD_DEADLINE: 1793394344
+2026-10-30T18:50:19.2598958Z   LAKE_CACHE_DIR: /home/runner/work/_temp/lake-native-cache
+2026-10-30T18:50:19.2599231Z ##[endgroup]
+2026-10-30T18:50:19.2670013Z Native resources: group=13824 MiB, Lake threads=1, CPUs=4
+2026-10-30T18:50:20.7271258Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+2026-10-30T18:50:20.7271632Z with:
+2026-10-30T18:50:20.7271805Z   name: cache-staging
+2026-10-30T18:50:20.7271998Z   overwrite: true
+2026-10-30T18:50:20.7272215Z   path: /home/runner/work/_temp/lake-native-cache.tar
+2026-10-30T18:50:20.7272637Z   compression-level: 0
+2026-10-30T18:50:20.7272840Z   if-no-files-found: warn
+2026-10-30T18:50:20.7273047Z   include-hidden-files: false
+2026-10-30T18:50:20.7273248Z   archive: true
+2026-10-30T18:50:20.7273424Z env:
+2026-10-30T18:50:20.7273588Z   LAKE_NO_CACHE: true
+2026-10-30T18:50:20.7273788Z   LAKE_ARTIFACT_CACHE: true
+2026-10-30T18:50:20.7273985Z   BUILD_TARGETS: Aglib
+2026-10-30T18:50:20.7274172Z   BUILD_DEADLINE: 1793394344
+2026-10-30T18:50:20.7274435Z   LAKE_CACHE_DIR: /home/runner/work/_temp/lake-native-cache
+2026-10-30T18:50:20.7274699Z ##[endgroup]
+2026-10-30T18:50:20.8899630Z With the provided path, there will be 1 file uploaded
+2026-10-30T18:50:21.0712091Z Artifact name is valid!
+2026-10-30T18:50:21.0712627Z Root directory input is valid!
+2026-10-30T18:50:21.3355748Z Uploading artifact: cache-staging.zip
+2026-10-30T18:50:21.3385553Z Beginning upload of artifact content to blob storage
+2026-10-30T18:50:21.8909738Z Uploaded bytes 8388608
+2026-10-30T18:50:21.9013629Z Uploaded bytes 16777216
+2026-10-30T18:50:22.0263402Z Uploaded bytes 25165824
+2026-10-30T18:50:22.0847098Z Uploaded bytes 33554432
+2026-10-30T18:50:22.1068485Z Uploaded bytes 41943040
+2026-10-30T18:50:22.1718415Z Uploaded bytes 50331648
+2026-10-30T18:50:22.2129560Z Uploaded bytes 58720256
+2026-10-30T18:50:22.2713566Z Uploaded bytes 67108864
+2026-10-30T18:50:22.3713807Z Uploaded bytes 75497472
+2026-10-30T18:50:22.4146774Z Uploaded bytes 83886080
+2026-10-30T18:50:22.4441077Z Uploaded bytes 92274688
+2026-10-30T18:50:22.4827397Z Uploaded bytes 100663296
+2026-10-30T18:50:22.6285884Z Uploaded bytes 109051904
+2026-10-30T18:50:22.6617623Z Uploaded bytes 117440512
+2026-10-30T18:50:22.6643398Z Uploaded bytes 125829120
+2026-10-30T18:50:22.7309590Z Uploaded bytes 134217728
+2026-10-30T18:50:22.8149513Z Uploaded bytes 142606336
+2026-10-30T18:50:22.8422672Z Uploaded bytes 150994944
+2026-10-30T18:50:22.9380973Z Uploaded bytes 159383552
+2026-10-30T18:50:23.0465008Z Uploaded bytes 160163996
+2026-10-30T18:50:23.0951592Z Finished uploading artifact content to blob storage!
+2026-10-30T18:50:23.0955963Z SHA256 digest of uploaded artifact is 1ce882c31b747d78c6f5bc96e4eea6971c2d93df637bd1b511df3ce088e8bf2b
+2026-10-30T18:50:23.0957751Z Finalizing artifact upload
+2026-10-30T18:50:23.6767443Z Artifact cache-staging successfully finalized. Artifact ID 13002698830
+2026-10-30T18:50:23.6768517Z Artifact cache-staging has been successfully uploaded! Final size is 160163996 bytes. Artifact ID is 13002698830
+2026-10-30T18:50:23.6769594Z Artifact download URL: https://github.com/kangxyz/aglib/actions/runs/41075798788/artifacts/13002698830
+2026-10-30T18:50:23.6991680Z ##[group]Run printf 'Build: %s\n' "$RESULT" >> "$GITHUB_STEP_SUMMARY"
+2026-10-30T18:50:23.6992075Z [36;1mprintf 'Build: %s\n' "$RESULT" >> "$GITHUB_STEP_SUMMARY"[0m
+2026-10-30T18:50:23.6992367Z [36;1mtest "$RESULT" = success[0m
+2026-10-30T18:50:23.7012347Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail -c "ci_memory_mb=$(( $(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) / 1048576 - 2048 )); if test \"$ci_memory_mb\" -gt 13824; then ci_memory_mb=13824; fi; printf \"Native resources: group=%s MiB, Lake threads=1, CPUs=%s\n\" \"$ci_memory_mb\" \"$(nproc)\"; scope_dir=\"$RUNNER_TEMP/lean-ci-scopes/$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB\"; scope=\"lean-ci-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB-$(printf '%s' \"$0\" | sha256sum | cut -c1-20).scope\"; mkdir -p \"$scope_dir\"; printf '%s\n' \"$scope\" > \"$scope_dir/$scope\"; exec sudo --preserve-env systemd-run --scope --quiet --collect --unit=\"$scope\" --uid=\"$(id -u)\" --gid=\"$(id -g)\" --property=\"MemoryMax=$ci_memory_mb\"M --property=MemorySwapMax=0 /usr/bin/env \"PATH=$PATH\" LEAN_NUM_THREADS=1 /bin/bash --noprofile --norc -eo pipefail \"$0\"" "{0}"
+2026-10-30T18:50:23.7014512Z env:
+2026-10-30T18:50:23.7014690Z   LAKE_NO_CACHE: true
+2026-10-30T18:50:23.7014907Z   LAKE_ARTIFACT_CACHE: true
+2026-10-30T18:50:23.7015116Z   BUILD_TARGETS: Aglib
+2026-10-30T18:50:23.7015331Z   BUILD_DEADLINE: 1793394344
+2026-10-30T18:50:23.7015590Z   LAKE_CACHE_DIR: /home/runner/work/_temp/lake-native-cache
+2026-10-30T18:50:23.7016036Z   RESULT: failure
+2026-10-30T18:50:23.7016219Z ##[endgroup]
+2026-10-30T18:50:23.7085519Z Native resources: group=13824 MiB, Lake threads=1, CPUs=4
+2026-10-30T18:50:23.7325617Z ##[error]Process completed with exit code 1.
+2026-10-30T18:50:23.7434667Z Post job cleanup.
+2026-10-30T18:50:23.8152793Z [command]/usr/bin/git version
+2026-10-30T18:50:23.8191869Z git version 2.56.0
+2026-10-30T18:50:23.8221683Z Temporarily overriding HOME='/home/runner/work/_temp/70d40007-7fc8-41e2-a060-21b57635c157' before making global git config changes
+2026-10-30T18:50:23.8222684Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-30T18:50:23.8226355Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/aglib/aglib
+2026-10-30T18:50:23.8257250Z Removing SSH command configuration
+2026-10-30T18:50:23.8263004Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-30T18:50:23.8295830Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-30T18:50:23.8551191Z Removing HTTP extra header
+2026-10-30T18:50:23.8571967Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-30T18:50:23.8600789Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-30T18:50:23.8850223Z Removing includeIf entries pointing to credentials config files
+2026-10-30T18:50:23.8858689Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-30T18:50:23.8900066Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-30T18:50:23.9303815Z Evaluate and set job outputs
+2026-10-30T18:50:23.9309206Z Set output 'outcome'
+2026-10-30T18:50:23.9311081Z Set output 'cache-key'
+2026-10-30T18:50:23.9311598Z Set output 'staged'
+2026-10-30T18:50:23.9312104Z Cleaning up orphan processes
+

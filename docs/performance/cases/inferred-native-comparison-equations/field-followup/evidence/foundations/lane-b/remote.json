@@ -1,0 +1,13 @@
+{
+  "host": "lean-build-cqa1",
+  "base": "/root/autodl-tmp/lean-build",
+  "source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib",
+  "local_logs": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs",
+  "jobs": 8,
+  "threads": 4,
+  "lean_memory_mib": 12800,
+  "rss_limit_mib": 65536,
+  "workspace_owner": "etale-incremental-smallblocks-20261027",
+  "task_id": "etale-incremental-smallblocks-20261027",
+  "workspace": "/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean"
+}

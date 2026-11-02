@@ -1,0 +1,13 @@
+{
+  "question": "After V34 cheapened original-map binding, does normalizing the SAME original constructor heads in the core and component producer types remove the now-localized component-value application conversion?",
+  "input": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/diagnostics/NormalizedConstructorValues-v35.lean",
+  "sha256": "cb75ca1f8f77c5313d49bd943532d02354cae6796ed570240c57f24676c23181",
+  "production_source_vector": {
+    "Aglib/CategoryTheory/Functor/CopyObjRestriction.lean": "e6cd595f727539698609abb2ede1d9691a3b494337164a57da4048a673be04a6",
+    "Aglib/CategoryTheory/Over/RelativeTests.lean": "5ab29b5478f311465cafa54ae92c84a1f1d83cf57007ae011ed8613a6527ba35",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean": "76aac49b4af2dc1e2c07615e3b94f023d5275901f6ebae346ce02797a0b7bd0c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean": "e537aa98d10c228eff992b111596458733e3694d2c61c3576bb990aea3341a6f"
+  },
+  "runtime": "Official Global native4/default200000; retain fresh Rep76aa/SheafColimit Aa556 passes and unchanged core/lower. Standard trace markers only; no run_tac lint suppression or unused diagnostic commands.",
+  "coverage": "Complete raw section/generic literal/finite prefix. On actualPASS/currentguards continue ordinary fullGlobal+confirmedProperendpoint2 without newgate."
+}

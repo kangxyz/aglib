@@ -1,0 +1,20 @@
+--- failed-root-b36.lean
++++ passed-root-3fb.lean
+@@ -40,6 +40,16 @@
+         (colimit.ι (coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)) i) n
+         (cohomologyPullback (X := (Y.obj i).unop) (S := c.pt.unop)
+           (c.ι.app i).unop _ n x)) = _
+-  rw [← Sheaf.H.map_comp_apply, ι_pullbackLimitCoefficientIso_hom Y b c l hl F i]
++  let z : Sheaf.H.{e}
++      ((coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)).obj i) n :=
++    cohomologyPullback (X := (Y.obj i).unop) (S := c.pt.unop)
++      (c.ι.app i).unop ((pullbackCoefficientSystem Y b F).obj i) n x
++  exact (Sheaf.H.map_comp_apply
++    (colimit.ι (coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)) i)
++    (pullbackLimitCoefficientIso Y b c l hl F).hom z).symm.trans
++      (congrArg
++        (fun t : (coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)).obj i ⟶
++          (inverseImage l.unop).obj F => Sheaf.H.map t n z)
++        (ι_pullbackLimitCoefficientIso_hom Y b c l hl F i))
+ 
+ end AlgebraicGeometry.Scheme.EtaleCohomology.Stalk

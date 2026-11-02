@@ -1,0 +1,63 @@
+✖ [3156/3158] Building Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier (3.3s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-486cfa353ef442908f1b1c196ce5fed3/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean -o /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.olean -i /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.c --setup /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.setup.json --json
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:49:38: no macro or `[quot_precheck]` instance for syntax kind `Lean.Parser.Term.explicitUniv` found
+  CommRingCat.{r}
+This means we cannot eagerly check your notation/quotation for unbound identifiers; you can use `set_option quotPrecheck false` to disable this check.
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:54:66: elaboration function for `_private.Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier.0.CategoryTheory.Sheaf.ArtinSchreier.termRadd` has not been implemented
+  failed to pretty print term (use 'set_option pp.rawOnError true' for raw representation)
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:66:63: elaboration function for `_private.Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier.0.CategoryTheory.Sheaf.ArtinSchreier.termRadd` has not been implemented
+  Radd
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:68:26: no macro or `[quot_precheck]` instance for syntax kind `Lean.Parser.Term.anonymousCtor` found
+  ⟨Radd, hR⟩
+This means we cannot eagerly check your notation/quotation for unbound identifiers; you can use `set_option quotPrecheck false` to disable this check.
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:72:4: elaboration function for `_private.Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier.0.CategoryTheory.Sheaf.ArtinSchreier.termAadd` has not been implemented
+  failed to pretty print term (use 'set_option pp.rawOnError true' for raw representation)
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:85:4: elaboration function for `_private.Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier.0.CategoryTheory.Sheaf.ArtinSchreier.termAadd` has not been implemented
+  failed to pretty print term (use 'set_option pp.rawOnError true' for raw representation)
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:86:14: Application type mismatch: The argument
+  J
+has type
+  GrothendieckTopology C
+of sort `Type (max u v)` but is expected to have type
+  ℕ
+of sort `Type` in the application
+  frobenius R J
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:91:25: Application type mismatch: The argument
+  J
+has type
+  GrothendieckTopology C
+of sort `Type (max u v)` but is expected to have type
+  ℕ
+of sort `Type` in the application
+  artinSchreierMap R J
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:98:6: elaboration function for `_private.Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier.0.CategoryTheory.Sheaf.ArtinSchreier.termAadd` has not been implemented
+  failed to pretty print term (use 'set_option pp.rawOnError true' for raw representation)
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:100:66: elaboration function for `_private.Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier.0.CategoryTheory.Sheaf.ArtinSchreier.termAadd` has not been implemented
+  failed to pretty print term (use 'set_option pp.rawOnError true' for raw representation)
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:107:30: Application type mismatch: The argument
+  J
+has type
+  GrothendieckTopology C
+of sort `Type (max u v)` but is expected to have type
+  ℕ
+of sort `Type` in the application
+  primeFieldToAdditive R J
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:113:27: Application type mismatch: The argument
+  J
+has type
+  GrothendieckTopology C
+of sort `Type (max u v)` but is expected to have type
+  ℕ
+of sort `Type` in the application
+  primeFieldToAdditive R J
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:113:57: Application type mismatch: The argument
+  J
+has type
+  GrothendieckTopology C
+of sort `Type (max u v)` but is expected to have type
+  ℕ
+of sort `Type` in the application
+  artinSchreierMap R J
+Some required targets logged failures:
+- Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier
+error: build failed

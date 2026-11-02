@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.Algebra.Homology.DerivedCategory.Plus.SingleComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.Postnikov.Comparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.SingleHigher
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.ExchangeShift
@@ -25,20 +26,6 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 open CategoryTheory CategoryTheory.Limits
-
-private theorem derivedSingle_isIso_of_zero
-    {A B : Type*} [Category* A] [Abelian A] [HasDerivedCategory A]
-    [Category* B] [Abelian B] [HasDerivedCategory B]
-    {F G : DerivedCategory.Plus A ⥤ DerivedCategory.Plus B}
-    [F.CommShift ℤ] [G.CommShift ℤ] (τ : F ⟶ G) [τ.CommShift ℤ]
-    (M : A) (h : IsIso (τ.app ((DerivedCategory.Plus.singleFunctor A 0).obj M)))
-    (i : ℤ) : IsIso (τ.app ((DerivedCategory.Plus.singleFunctor A i).obj M)) := by
-  let e := ((DerivedCategory.Plus.singleFunctors A).shiftIso (-i) i 0 (by omega)).app M
-  rw [← NatTrans.isIso_app_iff_of_iso τ e]
-  dsimp only [Functor.comp_obj]
-  rw [τ.app_shift]
-  have : IsIso (τ.app ((DerivedCategory.Plus.singleFunctor A 0).obj M)) := h
-  infer_instance
 
 namespace AlgebraicGeometry.Scheme.EtaleCohomology.Proper.Reduction
 
@@ -82,6 +69,8 @@ theorem derivedBaseChangeMap_isIso_of_torsion_homology
     have hM : IsIso (τ.app
         ((DerivedCategory.Plus.singleFunctor (AbelianSheaf.{u, u + 1} X) 0).obj M)) :=
       (derivedBaseChangeMap_single_isIso_iff_higher f f' g g' h M).mpr (hbc M (hK i))
-    exact derivedSingle_isIso_of_zero τ M hM i
+    let : IsIso (τ.app
+        ((DerivedCategory.Plus.singleFunctor (AbelianSheaf.{u, u + 1} X) 0).obj M)) := hM
+    exact DerivedCategory.Plus.isIso_app_single_of_zero τ M i
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Proper.Reduction

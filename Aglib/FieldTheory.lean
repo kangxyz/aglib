@@ -55,8 +55,14 @@ public import Aglib.FieldTheory.Galois.FiniteCoefficientDependence
 public import Aglib.FieldTheory.Galois.FiniteStabilizers
 public import Aglib.FieldTheory.Galois.Sylow
 public import Aglib.FieldTheory.Galois.SylowFactorization
+public import Aglib.FieldTheory.Galois.TensorFactor
 public import Aglib.FieldTheory.Galois.TensorProduct
 public import Aglib.FieldTheory.Galois.TensorProductCochains
+public import Aglib.FieldTheory.IntermediateField.FiniteCompositum
+public import Aglib.FieldTheory.IntermediateField.MappedFiniteCompositum
+public import Aglib.FieldTheory.IsSepClosed
+public import Aglib.FieldTheory.KummerEmbedding
+public import Aglib.FieldTheory.KummerSubextension
 public import Aglib.FieldTheory.Norm.RootFactorization
 public import Aglib.FieldTheory.PGroupNormalSubfield
 public import Aglib.FieldTheory.PGroupNormalSubfieldEmbedding
@@ -74,6 +80,7 @@ public import Aglib.FieldTheory.RatFuncTranslation
 public import Aglib.FieldTheory.RationalCoefficientRoot
 public import Aglib.FieldTheory.ResidueMinpolyBranch
 public import Aglib.FieldTheory.Separable.TensorProductSplitting
+public import Aglib.FieldTheory.SeparableDegree.Invertible
 public import Aglib.FieldTheory.SeparablyGenerated.EmbeddedField
 public import Aglib.FieldTheory.SeparablyGenerated.Equivalence
 public import Aglib.FieldTheory.SeparablyGenerated.FiniteBasis

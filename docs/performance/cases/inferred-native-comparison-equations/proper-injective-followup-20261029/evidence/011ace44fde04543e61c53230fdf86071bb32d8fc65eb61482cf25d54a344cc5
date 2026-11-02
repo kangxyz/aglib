@@ -1,0 +1,200 @@
+{
+  "run": "remote-ea58796c97b44af5bb5072b84c7a0d3f",
+  "observed_utc": "2026-10-29T00:14:27.685596+00:00",
+  "source_receipt_sha256": "5661b38b31c8ab0febba048bd6fa0f4b9ebd2685d55447cd42f4902888d7e389",
+  "group_closed": true,
+  "exit_code": 1,
+  "counts": {
+    "pass": 29,
+    "fail": 2,
+    "active": 0
+  },
+  "frontends": [
+    {
+      "path": "Aglib/CategoryTheory/Adjunction/UnderlyingHomEquiv.lean",
+      "wrapper_pid": 13213,
+      "status": "pass",
+      "seconds": 2.259
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparisonExact.lean",
+      "wrapper_pid": 13215,
+      "status": "pass",
+      "seconds": 3.871
+    },
+    {
+      "path": "Aglib/CategoryTheory/Preadditive/Annihilator/ProductReindex.lean",
+      "wrapper_pid": 13227,
+      "status": "fail",
+      "seconds": 4.354
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/ZModImages.lean",
+      "wrapper_pid": 13238,
+      "status": "pass",
+      "seconds": 6.348
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/ZModAcyclic.lean",
+      "wrapper_pid": 13262,
+      "status": "pass",
+      "seconds": 10.645
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/ZModRetract.lean",
+      "wrapper_pid": 13264,
+      "status": "pass",
+      "seconds": 4.263
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/ModuleCogenerators.lean",
+      "wrapper_pid": 13288,
+      "status": "pass",
+      "seconds": 8.508
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/PositivePresentation/GenuineModules.lean",
+      "wrapper_pid": 13290,
+      "status": "pass",
+      "seconds": 6.341
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/ZModDerivedImage.lean",
+      "wrapper_pid": 13309,
+      "status": "pass",
+      "seconds": 6.927
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/PositivePresentation/NoetherianModels/BaseChange.lean",
+      "wrapper_pid": 13316,
+      "status": "pass",
+      "seconds": 5.883
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/PositivePresentation/AffineRestriction.lean",
+      "wrapper_pid": 13318,
+      "status": "pass",
+      "seconds": 6.451
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/CohomologyColimits.lean",
+      "wrapper_pid": 13320,
+      "status": "pass",
+      "seconds": 6.355
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/AnnihilatorProducts.lean",
+      "wrapper_pid": 13338,
+      "status": "pass",
+      "seconds": 11.751
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/PositivePresentation/NoetherianModels/HomCocones.lean",
+      "wrapper_pid": 13363,
+      "status": "pass",
+      "seconds": 7.163
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/InjectiveExchange.lean",
+      "wrapper_pid": 13368,
+      "status": "pass",
+      "seconds": 5.276
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/Presentations.lean",
+      "wrapper_pid": 13376,
+      "status": "pass",
+      "seconds": 4.991
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean",
+      "wrapper_pid": 13396,
+      "status": "fail",
+      "seconds": 161.042
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/PositivePresentation/NoetherianModels/HomLifts.lean",
+      "wrapper_pid": 13403,
+      "status": "pass",
+      "seconds": 17.96
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/FiniteCogenerators.lean",
+      "wrapper_pid": 13405,
+      "status": "pass",
+      "seconds": 5.133
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/CogeneratorCriterion.lean",
+      "wrapper_pid": 13429,
+      "status": "pass",
+      "seconds": 16.61
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/PositivePresentation/NoetherianModels/FixedTargetTriangle.lean",
+      "wrapper_pid": 13439,
+      "status": "pass",
+      "seconds": 47.206
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/PositivePresentation/NoetherianModels/EmbeddingTransport.lean",
+      "wrapper_pid": 13450,
+      "status": "pass",
+      "seconds": 7.059
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/ConstructibleComparison.lean",
+      "wrapper_pid": 13452,
+      "status": "pass",
+      "seconds": 18.254
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/PositivePresentation/NoetherianModels/FixedTargetData.lean",
+      "wrapper_pid": 13471,
+      "status": "pass",
+      "seconds": 231.871
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/PositivePresentation/NoetherianModels/FixedTargetHom.lean",
+      "wrapper_pid": 13518,
+      "status": "pass",
+      "seconds": 109.039
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/PositivePresentation/NoetherianModels/HomAbove.lean",
+      "wrapper_pid": 13708,
+      "status": "pass",
+      "seconds": 59.164
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/PositivePresentation/NoetherianModels/FiniteDiagrams.lean",
+      "wrapper_pid": 13719,
+      "status": "pass",
+      "seconds": 5.256
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/PositivePresentation/NoetherianModels/ModelClosure.lean",
+      "wrapper_pid": 13729,
+      "status": "pass",
+      "seconds": 5.294
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/PositivePresentation/NoetherianModels/GeneratorModels.lean",
+      "wrapper_pid": 13741,
+      "status": "pass",
+      "seconds": 4.849
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/PositivePresentation/NoetherianModels/ModelEmbedding.lean",
+      "wrapper_pid": 13754,
+      "status": "pass",
+      "seconds": 4.873
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/PositivePresentation/NoetherianModels/ChartGenerators.lean",
+      "wrapper_pid": 13752,
+      "status": "pass",
+      "seconds": 5.373
+    }
+  ]
+}

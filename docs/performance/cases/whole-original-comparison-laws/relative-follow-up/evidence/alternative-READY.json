@@ -1,0 +1,58 @@
+{
+  "question": "New bounded alternative for actual RelativeCohomologySquare1d32 public coefficient rectangle kernel failure, independent of closed Section route.",
+  "phase_status": "Complete staged lower/native proof candidate; NOT RUN. No mathematical-review or compiler-closure verdict.",
+  "native_head_as_supplied": "3ab570353d8ccfb0db62b01300f7be9a79ec44a8",
+  "sources": [
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/InverseRectangle.lean",
+      "before_sha256": "4bcff42ba740375ed8923f035b8e5257c119a21303f7a163810e11faaa240fa2",
+      "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/relative-whole-alternative-20261030/InverseRectangle.lean",
+      "sha256": "20269ada008afa55594a013ffbb89663a89edeaf778f405ce948843895bfdd48"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/RelativeCohomologySquare.lean",
+      "before_sha256": "1d32a4d082077ae138d4a7f63a616ecdae398a2efcc35eb49d97d3ee09a03274",
+      "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/relative-whole-alternative-20261030/RelativeCohomologySquare.lean",
+      "sha256": "e44959c6c7941a1e64cb440000dd09a0838b11e3ccd013784f09ef981459dd9d"
+    }
+  ],
+  "actual_failure_basis": {
+    "run": "remote-73e08631689f43e2ab14fa0e1544ffee",
+    "source": "f204986329b4dccb6264cff6af24f682a6f6db14ce2f90b8a397ec36e10bf75f",
+    "primary_diagnostic": "first public coefficient theorem line36 kernel deterministic timeout",
+    "later_line90": "unknown constant cascade, not an independent theorem verdict",
+    "formation_only_probe": "9ac430a39fa7b918482c56c547be05fcf857fde157526df42196143129fcada7; owned by broker, result not consumed or assumed here"
+  },
+  "inspected_dependency_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/BaseChangeMap.lean": "92334fb01cc9af91776313ff4d270c2e3aa2c69a616037ac3db2e9ffc708ef7a",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitCoefficients.lean": "a82b41d96b938e27219687366e94a26157a314dcf4f28d1690714ea31e525d03",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean": "265ebda49e0ed61776fd0c3f5ba6fcfb367302dd2c9acbe77d01c38d8eae5b49",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean": "c606965663f63dbafd529166563abf3710113cc0883716fb801852115b2c0e82",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackCohomologySystem.lean": "8ec1bbf610e14b6633a45d6d72675b85b15bb2c037c19bc07cb5fb3cea9d5285",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean": "d83329fbb8acfc60ce876d0a81edf793090d5fe9c0082b0c0d137c177ec55d50",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean": "b90c6e00cebc0a318c791295d95c72dd8d2e2cddcff650f59e569d25799d7afe"
+  },
+  "guards": {
+    "all_original_native_headers_byte_identical": {
+      "relativeCohomologySquare_coefficient": true,
+      "transfer_square_of_coefficients": true,
+      "cohomologyTransfer_relative_square": true
+    },
+    "private_transfer_and_last_public_theorem_bodies_byte_identical": true,
+    "all_existing_lower_declarations_byte_identical": true,
+    "native_imports_unchanged": true,
+    "native_data_definitions": "none introduced; existing original functors and maps unchanged"
+  },
+  "derivation": [
+    "Use existing triangleSquare_whole_of_eq at the opposite-arrow indices (p,p-prime,g,r,sigma,a,v,a-prime,v-prime), with equations (hR.symm,hv,hv-prime,hS,hRect). The five comparison inputs are the actual two triangle isos, inverse of the actual p/p-prime square, actual a/a-prime square, and actual v/v-prime square.",
+    "Prove every comparison identity before choosing F using existing schemeTriangleIso_eq_pullbackTriangleIso, schemeSquareIso_eq_inverseImageSquareIso, and the actual inverseImageSquareIso_transpose. No coherence is assumed at the native boundary.",
+    "The generic inverse_triangle_coefficient_of_whole evaluates the proved whole triangle-square equation over six independent category/Hom worlds. Existing five_iso_inverse_prefixed performs the complete five-Iso inverse cancellation.",
+    "Prefix cancellation uses the actual last-square factorization theta.symm trans eqToIso(congrArg K hij) trans kappa. The generic K/hij telescope proves the literal eqToHom(congrArg (fun k => (K k).obj ...) hij) form before native specialization.",
+    "The native coefficient theorem supplies K(k)=inverseImage k for the original A-prime-to-B arrows and hij=hRect, theta=inverseImageComp r v-prime, kappa=inverseImageComp v sigma, and the existing original factorization theorem inverseImageSquareIso_eq_comp. Final proof is one evaluator application at original F."
+  ],
+  "preserved_conditions": "Exact six schemes, nine scheme arrows, hv/hv-prime/hR/hS/hRect, coefficient F, original inverse-image functors/comparison isos, orientations and original hRect transport are retained. No extra geometry, cohomology square/naturality premise, model/realization/reference iso, universe identification, budget/recursion/pin/trust option or theory is added.",
+  "remaining_gap": "Ordinary compilation of the new generic evaluator and native whole-Iso adapter has not run. The decisive untested boundary is native application of the existing whole triangle-square identities, without post-F normalization. Formation-only results cannot prove these values.",
+  "owner_and_execution": "Write ownership is only this alternative directory. cohomology_cocone_author retains N integration and coupled CPP/repair. Sole broker owns all execution. No run/probe, source sync, Git operation or N/P write was requested or performed.",
+  "next_action": "Author may select this pair after reconciling the already-running exact P36 formation diagnostic; request one ordinary incremental changed-provider/native build through the existing broker/cache only. No duplicate P36, broad rebuild, replay or client check.",
+  "coverage": "Read-only actual source investigation; full staged derivation; mechanical original-header/prior-body checks. No fresh CPP/lint/audit, accepted-status or speedup claim."
+}

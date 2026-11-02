@@ -1,0 +1,120 @@
+{
+  "question": "Default-budget repair of the original native slice comparison mate",
+  "source_base": "ecca5070e0df98c4260a35b92f5bea0ca49801e8",
+  "source": {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlyingCoherence.lean",
+    "before_sha256": "da0cf55ea2036d43854bfd021ef852631e71ae8b64b357794472d1cfe1c80ed2",
+    "after_sha256": "160c719b1a952b1c7ce438f614096fc39713dce04c60cb3c37fce7a15d760447"
+  },
+  "providers": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlying.lean",
+      "sha256": "c8bceb61cf01522988d543502c67f4408d09c84936ef004baf015f9cae8f97e6",
+      "snapshot": "providers/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlying.lean.txt"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleSliceUnderlying.lean",
+      "sha256": "dff88e8fbddd102cf55d77021297c4b90c0066f565e10a56c33b7db58c1b9254",
+      "snapshot": "providers/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleSliceUnderlying.lean.txt"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Topos/Slice/ForwardComparison.lean",
+      "sha256": "8b4c8214c0762c27e5ab5bead33681e0c6fb3649ea0f453faad2659bd841f1f5",
+      "snapshot": "providers/Aglib/CategoryTheory/Topos/Slice/ForwardComparison.lean.txt"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Adjunction/LowerShriekUnderlying.lean",
+      "sha256": "b1eaf529a1f17db1628d5e67e46e867ff884b7501de807e2cbde3ce9cd63508e",
+      "snapshot": "providers/Aglib/CategoryTheory/Adjunction/LowerShriekUnderlying.lean.txt"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Coefficients/NativeAdjunctionUnderlying.lean",
+      "sha256": "2e85b64b650b83d437ab9b0e0a2a6d47d859e6bbca9939e174d2be4a883b2b1d",
+      "snapshot": "providers/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Coefficients/NativeAdjunctionUnderlying.lean.txt"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Coefficients/UnderlyingComposition.lean",
+      "sha256": "a1c3205d8872c1dc39bd9fe3c2a4c5bf7f86ca2d667d6d6e9b8f68629e5a7869",
+      "snapshot": "providers/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Coefficients/UnderlyingComposition.lean.txt"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Slice/CoefficientMates.lean",
+      "sha256": "490277deb6ee3f7fbf6908f2dc5fb078199d7c4f24d2fd9971e9343b70e3eca5",
+      "snapshot": "providers/Aglib/CategoryTheory/Sites/SheafCohomology/Slice/CoefficientMates.lean.txt"
+    }
+  ],
+  "failed_CI": {
+    "run": 41075798788,
+    "job": 124153743627,
+    "commit": "ecca5070e0df98c4260a35b92f5bea0ca49801e8",
+    "errors": [
+      "line40: whnf heartbeat200000",
+      "line126: cascading unknown mate constant"
+    ],
+    "cache_save_and_native_upload": "success"
+  },
+  "successful_frontend": {
+    "question": "Fresh ordinary default200k frontend of priority CI160 repair",
+    "native_run": "remote-1c16d780b2a643809e27b31a3f982d47",
+    "source_content_sha256": "bb2e2d802a93b4164169b0586ba5b04c8ebc0d0d62eee58a416064a7f4144539",
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlyingCoherence.lean",
+    "source_sha256": "160c719b1a952b1c7ce438f614096fc39713dce04c60cb3c37fce7a15d760447",
+    "started_event": {
+      "event": "started",
+      "time": "2026-11-01T00:41:10.952812+00:00",
+      "monotonic": 75743252.8600698,
+      "wrapper_pid": 353060,
+      "pgid": 350796,
+      "compiler_pid": 353064,
+      "slot": 0,
+      "args": [
+        "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlyingCoherence.lean",
+        "-o",
+        "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlyingCoherence.olean",
+        "-i",
+        "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlyingCoherence.ilean",
+        "-c",
+        "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlyingCoherence.c",
+        "--setup",
+        "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlyingCoherence.setup.json",
+        "--json",
+        "-j4",
+        "-M12800"
+      ],
+      "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean",
+      "admission": {
+        "mode": "elastic"
+      },
+      "scope_lease_mode": "inherited"
+    },
+    "finished_event": {
+      "event": "finished",
+      "time": "2026-11-01T00:41:25.064857+00:00",
+      "monotonic": 75743266.97212271,
+      "wrapper_pid": 353060,
+      "pgid": 350796,
+      "compiler_pid": 353064,
+      "slot": 0,
+      "exit_code": 0
+    },
+    "frontend_seconds": 14.112052917480469,
+    "native_profile": {
+      "jobs": 8,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "maxHeartbeats": "ordinary default200000; no override"
+    },
+    "boundary": "Completed producing frontend on fixed locked source. D broader Curves native group still running; final group closure/input_drift and separate final predicates pending. This is not cache-only, high-budget, replay, or full CI closure.",
+    "remote_log": "/root/autodl-tmp/lean-build/logs/remote-1c16d780b2a643809e27b31a3f982d47/build.log",
+    "remote_events": "/root/autodl-tmp/lean-build/logs/remote-1c16d780b2a643809e27b31a3f982d47/compiler-events.jsonl"
+  },
+  "mathematical_delta": "Proof argument only: existing equality moduleEtaleSliceUnderlyingIso_eq_original replaces rfl; no statement/import/hypothesis/universe/map/model/option changes.",
+  "checks": {
+    "all_four_native_predicates": "PASS; exact commands and subjects in CI160-FINAL-PREDICATES.json",
+    "native_check_phase": "closed exit0, no input drift",
+    "axiom_audit": "2577 declarations, no violations, only propext/Classical.choice/Quot.sound",
+    "retained": "Seven unchanged public provider sources and compatible coverage retained."
+  },
+  "coverage_limit": "Independent completed CI leaf; broader Curves group and whole GitHub CI are not claimed successful."
+}

@@ -6,8 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.DerivedSections
-public import Aglib.Algebra.Homology.Embedding.MapExtend
-public import Mathlib.Algebra.Homology.Embedding.ExtendHomology
+public import Aglib.Algebra.Homology.RightDerived.Represented
 
 /-!
 # Represented Ext and actual right-derived sections
@@ -30,9 +29,15 @@ variable {C : Type u} [Category.{v} C] [Abelian C] [HasExt.{w} C]
   [EnoughInjectives C]
 
 /-- The original represented Ext agrees with the native right-derived represented functor. -/
-def extRightDerivedRepresentedAddEquiv (X Y : C) (n : ℕ) :
+abbrev extRightDerivedRepresentedAddEquiv (X Y : C) (n : ℕ) :
     Ext.{w} X Y n ≃+
-      (((preadditiveCoyoneda.obj (op X)).rightDerived n).obj Y) := by
+      (((preadditiveCoyoneda.obj (op X)).rightDerived n).obj Y) :=
+  CategoryTheory.Abelian.extRightDerivedRepresentedAddEquiv X Y n
+
+/-- The shared native constructor has the original module-comparison value,
+including its original Hom-complex and extension-by-zero maps. -/
+theorem extRightDerivedRepresentedAddEquiv_eq_original (X Y : C) (n : ℕ) :
+    extRightDerivedRepresentedAddEquiv X Y n = by
   let I := injectiveResolution Y
   let G := preadditiveCoyoneda.obj (op X)
   let e : ((G.mapHomologicalComplex (.up ℤ)).obj I.cochainComplex) ≅
@@ -47,6 +52,8 @@ def extRightDerivedRepresentedAddEquiv (X Y : C) (n : ℕ) :
           e).addCommGroupIsoToAddEquiv).trans
           ((((G.mapHomologicalComplex (.up ℕ)).obj I.cocomplex).extendHomologyIso
             ComplexShape.embeddingUpNat (j := n) rfl).addCommGroupIsoToAddEquiv.trans
-            (I.isoRightDerivedObj G n).symm.addCommGroupIsoToAddEquiv))))
+            (I.isoRightDerivedObj G n).symm.addCommGroupIsoToAddEquiv)))) := by
+  ext x
+  rfl
 
 end CategoryTheory.Sheaf.ModuleCoefficients

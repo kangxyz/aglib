@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Picard.KummerQuotient
+public import Aglib.Algebra.Category.Grp.ExactSequenceConsequences
 
 /-!
 # Original Kummer consequences of power-map divisibility
@@ -27,26 +28,6 @@ namespace AlgebraicGeometry.Scheme.EtaleCohomology.Kummer
 
 universe u w
 
-private theorem surjective_of_exact_of_injective {A B C D : Type*}
-    [AddCommGroup A] [AddCommGroup B] [AddCommGroup C] [AddCommGroup D]
-    (d : A →+ B) (i : B →+ C) (p : C →+ D)
-    (hdi : Function.Exact d i) (hip : Function.Exact i p)
-    (hp : Function.Injective p) : Function.Surjective d := by
-  intro b
-  apply (hdi b).mp
-  apply hp
-  exact (hip.apply_apply_eq_zero b).trans (map_zero p).symm
-
-private theorem subsingleton_of_exact_of_surjective {A B C : Type*}
-    [AddCommGroup A] [AddCommGroup B] [AddCommGroup C]
-    (p : A →+ B) (d : B →+ C) (hpd : Function.Exact p d)
-    (hp : Function.Surjective p) (hd : Function.Surjective d) : Subsingleton C := by
-  apply subsingleton_of_forall_eq (0 : C)
-  intro c
-  obtain ⟨b, rfl⟩ := hd c
-  obtain ⟨a, rfl⟩ := hp b
-  exact hpd.apply_apply_eq_zero a
-
 variable (X : Scheme.{u}) [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
   (n : ℕ) (hn : 0 < n) (hinv : IsUnit (n : Γ(X, ⊤)))
 
@@ -54,7 +35,7 @@ variable (X : Scheme.{u}) [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
 theorem boundary_surjective_of_power_injective (q : ℕ)
     (hp : Function.Injective (Sheaf.H.map (power X n) (q + 1))) :
     Function.Surjective (boundary X n hn hinv q) := by
-  exact surjective_of_exact_of_injective (boundary X n hn hinv q)
+  exact AddCommGroupExact.surjective_of_exact_of_injective (boundary X n hn hinv q)
     (Sheaf.H.map (inclusion X n) (q + 1)) (Sheaf.H.map (power X n) (q + 1))
     ((ShortComplex.ab_exact_iff_function_exact _).mp
       (Sheaf.H.longSequence_exact₁' (shortExact X n hn hinv) q (q + 1) rfl))
@@ -67,7 +48,7 @@ theorem roots_subsingleton_of_power_surjective_injective (q : ℕ)
     (hp : Function.Surjective (Sheaf.H.map (power X n) q))
     (hq : Function.Injective (Sheaf.H.map (power X n) (q + 1))) :
     Subsingleton (Sheaf.H.{w} (mu X n) (q + 1)) := by
-  exact subsingleton_of_exact_of_surjective (Sheaf.H.map (power X n) q)
+  exact AddCommGroupExact.subsingleton_of_exact_of_surjective (Sheaf.H.map (power X n) q)
     (boundary X n hn hinv q)
     ((ShortComplex.ab_exact_iff_function_exact _).mp
       (Sheaf.H.longSequence_exact₃' (shortExact X n hn hinv) q (q + 1) rfl)) hp

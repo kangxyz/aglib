@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant.Cover
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Basic
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.CoefficientBaseChange
+public import Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.ConstantComposition
 
 /-!
 # Actual constant-root coefficients over a strictly henselian local base
@@ -36,18 +37,6 @@ namespace AlgebraicGeometry.Scheme.EtaleCohomology.Kummer.HenselianConstant
 universe u
 attribute [local instance] hasSheafifyLarge
 
-private theorem map_factor_through_iso {C D E : Type*}
-    [Category C] [Category D] [Category E]
-    (F : C ⥤ D) (G : C ⥤ E) (H : D ⥤ E) (e : F ⋙ H ≅ G)
-    {A B : C} {L : D} (a : A ⟶ B) (c : F.obj B ⟶ L)
-    (d : G.obj B ⟶ H.obj L) (hc : H.map c = e.hom.app B ≫ d) :
-    e.inv.app A ≫ H.map (F.map a ≫ c) = G.map a ≫ d := by
-  have hn : G.map a ≫ e.inv.app B = e.inv.app A ≫ H.map (F.map a) :=
-    e.inv.naturality a
-  rw [CategoryTheory.Functor.map_comp, ← Category.assoc, ← hn]
-  rw [Category.assoc, hc, ← Category.assoc (e.inv.app B),
-    e.inv_hom_id_app, Category.id_comp]
-
 private theorem forget_constant_adjoint (X : Scheme.{u})
     (A : AddCommGrpCat.{u + 1}) (L : AbelianSheaf.{u, u + 1} X)
     (e : A ⟶ (globalSections X).obj L) :
@@ -56,17 +45,9 @@ private theorem forget_constant_adjoint (X : Scheme.{u})
       (underlyingSetFunctor X).map (((constantAdjunction X).homEquiv A L).symm e) =
     ((constantSheafAdj (Scheme.smallEtaleTopology X) (Type (u + 1))
       (etaleTerminalIsTerminal X)).homEquiv _ _).symm
-        ((CategoryTheory.forget AddCommGrpCat.{u + 1}).map e) := by
-  rw [Adjunction.homEquiv_symm_apply, Adjunction.homEquiv_symm_apply]
-  exact map_factor_through_iso
-    (constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1})
-    (CategoryTheory.forget AddCommGrpCat.{u + 1} ⋙
-      constantSheaf (Scheme.smallEtaleTopology X) (Type (u + 1)))
-    (underlyingSetFunctor X)
-    (constantCommuteCompose (Scheme.smallEtaleTopology X)
-      (CategoryTheory.forget AddCommGrpCat.{u + 1})) e _ _
-    (constantSheafAdj_counit_w (Scheme.smallEtaleTopology X)
-      (CategoryTheory.forget AddCommGrpCat.{u + 1}) L (etaleTerminalIsTerminal X)).symm
+        ((CategoryTheory.forget AddCommGrpCat.{u + 1}).map e) :=
+  Sheaf.OriginalSections.constantAdjoint_compose (Scheme.smallEtaleTopology X)
+    (CategoryTheory.forget AddCommGrpCat.{u + 1}) (etaleTerminalIsTerminal X) A L e
 
 private theorem trivialCoverConstantIso_adjoint (X : Scheme.{u})
     (A : Type u) [Finite A] :

@@ -1,0 +1,27 @@
+{
+  "status": "Not ready for generic/native production adoption; actual typed factorization remains open",
+  "current_native": {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean",
+    "sha256": "616b87a1041f6eed9b19b5d5ecd0bc50c3df4acf636496f42b7c4800883c35ce"
+  },
+  "conditional_generic": {
+    "path": "Aglib/Logic/Function/SquareTransport.lean",
+    "unchanged_sha256": "926601b0ad2d94754657c6bbcd2375d8cfa4828115de5b12fed92802ce35bbce"
+  },
+  "valid_latest_route_result": {
+    "candidate_sha256": "b62265bf0b51a6c824cec55f45858d73038e26ffa66a36d857b6e5617237be5f",
+    "run": "remote-614cbe7476874fcca5b896c5863a9584",
+    "source": "b16675952652f431a224f8f67dc7f79677295b7cc54ccfce99db86006b75ca91",
+    "result": "One frontend exit1/no drift, only native original whole factorization hfactor type mismatch after comparison/eH exposure; h/hclass/hcomp/hcoe/hfactor infer, but exact original E-definition equality remains required. No recursion failure on this changed candidate.",
+    "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/field-whole-comparison-v3/stdout.log"
+  },
+  "mathematical_boundary": "The same displayed function heads are not proof of the same hidden carrier/action/instance arguments. The Prop topology-witness difference in pp output is not a unique cause, and skipped-proof counts cannot identify different proposition types. No original map is replaced by an endpoint Iso; no new native equality guard or model is admitted.",
+  "diagnostic_frontier": {
+    "request": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/repair-v4/diagnostics/factorization-data-request.json",
+    "sha256": "f6f63865c2953ec3589dac43eac208959fdd8823e36bf284124b14589cd005bb",
+    "owner": "/root/incremental_compile_owner",
+    "pending": "C-only mechanically corrected derived copy, exact whole hfactor equation, grounded Exprs, inspect proof TYPES before skipping, max20 data reports/depth80; no mathematical verdict delegated."
+  },
+  "earlier_artifact_limits": "equation-route.json and generic-route.json are unapplied route prototypes; their original factorization encoding did not close. Earlier DATA parser/evaluator/hygiene failures supply no usable type/cause evidence, including the root ?m difference. The generic pure equality theorem is elementary, but its concrete original-map premise must be proved before adoption.",
+  "next_action": "Author consumes valid actual data/type diagnostics, repairs the same native factorization or returns a precise genuine owner/applicability issue, then applies only authorized completed source and resumes three curve roots via B. Retain Bounded26a8 and all exact prior matching passes."
+}

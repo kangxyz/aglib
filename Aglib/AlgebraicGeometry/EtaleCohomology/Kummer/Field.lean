@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootStalk
 public import Aglib.GroupCohomology.Kummer.Basic
+public import Aglib.GroupCohomology.H1.Continuous.GroupEquivalence
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteTrivialization
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FundamentalGroupComparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootCover
@@ -259,33 +260,12 @@ def fundamentalRestriction : PullbackMap (A := Field.absoluteGaloisGroup.RootsOf
 equivalence. -/
 def galoisRestrictionEquiv : H1 (FieldFundamentalGroup K)
     (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) ≃+
-    H1 (Field.absoluteGaloisGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) where
-  toFun := (galoisRestriction K n).onH1
-  invFun := (fundamentalRestriction K n).onH1
-  left_inv x := by
-    obtain ⟨c, rfl⟩ := classOf_surjective (FieldFundamentalGroup K)
-        (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) x
-    change classOf _ _ ((fundamentalRestriction K n).onCocycles ((galoisRestriction K
-        n).onCocycles c)) = classOf _ _ c
-    congr 1
-    apply _root_.GroupCohomology.ContinuousH1.Cocycle.ext
-    intro γ
-    change c.val ((fundamentalGroupContinuousEquiv K) ((fundamentalGroupContinuousEquiv K).symm
-        γ)) = c.val γ
-    rw [ContinuousMulEquiv.apply_symm_apply]
-  right_inv x := by
-    obtain ⟨c, rfl⟩ := classOf_surjective (Field.absoluteGaloisGroup K)
-        (Field.absoluteGaloisGroup.RootsOfUnity.Mu
-        K n) x
-    change classOf _ _ ((galoisRestriction K n).onCocycles ((fundamentalRestriction K
-        n).onCocycles c)) = classOf _ _ c
-    congr 1
-    apply _root_.GroupCohomology.ContinuousH1.Cocycle.ext
-    intro σ
-    change c.val ((fundamentalGroupContinuousEquiv K).symm ((fundamentalGroupContinuousEquiv K)
-        σ)) = c.val σ
-    rw [ContinuousMulEquiv.symm_apply_apply]
-  map_add' := map_add _
+    H1 (Field.absoluteGaloisGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) :=
+  _root_.GroupCohomology.ContinuousH1.GroupEquivalence.ofInversePullbackMaps
+    (fieldGroupHom K) (absoluteGroupHom K)
+    (fun γ => (fundamentalGroupContinuousEquiv K).apply_symm_apply γ)
+    (fun σ => (fundamentalGroupContinuousEquiv K).symm_apply_apply σ)
+    (galoisRestriction K n) (fundamentalRestriction K n) (fun _ => rfl) (fun _ => rfl)
 
 variable [HasExt.{w} (AbelianSheaf.{u, u + 1} (Spec (.of K)))]
 
@@ -361,14 +341,24 @@ theorem comparison_torsor_representative
         (fieldCocycle K n Y
           (P.representedSchemeAction (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) Y
               e) t) := by
-  change (galoisRestriction K n).onH1
-    (Scheme.EtaleCohomology.FundamentalGroupComparison.representedH1AddEquiv
-        (geometricPoint K)
-      (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) hA hR
-      (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n) (pointMark_equivariant K n)
-      (finiteCoefficient K n) (torsorExtClass P)) = _
-  rw [Scheme.EtaleCohomology.FundamentalGroupComparison.representedH1AddEquiv_torsor_representative]
-  rfl
+  have h :=
+    Scheme.EtaleCohomology.FundamentalGroupComparison.representedH1AddEquiv_torsor_representative
+      (geometricPoint K) (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) hA hR
+      (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n)
+      (pointMark_equivariant K n) (finiteCoefficient K n) P Y e t
+  have hmap := congrArg ((galoisRestriction K n).onH1) h
+  have hclass :=
+    _root_.GroupCohomology.ContinuousH1.PullbackMap.onH1_classOf (galoisRestriction K n)
+      (Scheme.EtaleCohomology.FundamentalGroupComparison.markedBasedCocycle
+        (geometricPoint K) (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n)
+        (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n)
+        (pointMark_equivariant K n) Y
+        (P.representedSchemeAction (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) Y e) t)
+  have hfinal := hmap.trans hclass
+  simp only [comparison, AddMonoidHom.comp_apply, AddEquiv.coe_toAddMonoidHom,
+    fieldCocycle] at hfinal ⊢
+  exact hfinal
+
 
 
 

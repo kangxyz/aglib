@@ -28,19 +28,20 @@ theorem pointSupportedSubobject_factors_iff (Z : Set X) (a : A ⟶ F) :
       ∀ (x : X), x ∉ Z → a ≫
         (pointSmallEtale (FibrewiseClosed.geometricPoint x)).skyscraperSheafAdjunction.unit.app F =
           0 := by
-  constructor
-  · intro h x hx
-    rw [← Subobject.factorThru_arrow _ _ h, Category.assoc,
-      pointSupportedSubobject_arrow_unit F Z x hx, comp_zero]
-  · intro h
-    have hi : imageSubobject a ≤ pointSupportedSubobject F Z := by
-      apply Subobject.le_sInf.{u + 1}
-      rintro _ ⟨x, rfl⟩
-      exact le_kernelSubobject _ _ (imageSubobject_arrow_comp_eq_zero (h x.val x.property))
-    apply (Subobject.factors_iff _ _).mpr
-    refine ⟨factorThruImageSubobject a ≫ Subobject.ofLE _ _ hi, ?_⟩
-    change (factorThruImageSubobject a ≫ Subobject.ofLE _ _ hi) ≫
-      (pointSupportedSubobject F Z).arrow = a
-    rw [Category.assoc, Subobject.ofLE_arrow, imageSubobject_arrow_comp]
+  exact Adjunction.kernelSupport_factors_iff.{u + 1}
+    (fun x : X => (pointSmallEtale (FibrewiseClosed.geometricPoint x)).skyscraperSheafAdjunction
+      (A := Ab.{u + 1})) F Z a
+
+/-- The original native factor through the supported subobject composes to the given morphism. -/
+theorem pointSupportedSubobject_factorThru_arrow (Z : Set X) (a : A ⟶ F)
+    (h : ∀ (x : X), x ∉ Z → a ≫
+      (pointSmallEtale (FibrewiseClosed.geometricPoint x)).skyscraperSheafAdjunction.unit.app F =
+        0) :
+    (pointSupportedSubobject F Z).factorThru a
+        ((pointSupportedSubobject_factors_iff Z a).mpr h) ≫
+      (pointSupportedSubobject F Z).arrow = a := by
+  exact Adjunction.kernelSupport_factorThru_arrow.{u + 1}
+    (fun x : X => (pointSmallEtale (FibrewiseClosed.geometricPoint x)).skyscraperSheafAdjunction
+      (A := Ab.{u + 1})) F Z a h
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Curves

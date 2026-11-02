@@ -1,0 +1,426 @@
+✔ [4907/5100] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.EtaleUnit (4.4s)
+✔ [4925/5125] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleExchangeComparison (5.0s)
+✔ [4927/5125] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedTorsor (7.1s)
+✔ [4928/5125] Built Aglib.AlgebraicGeometry.EtaleCohomology.EtaleRepresentedModuleTransfer (9.1s)
+✔ [4929/5125] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootCover (13s)
+✔ [4930/5125] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.SplitCoefficients (23s)
+✔ [4931/5125] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.SchemeTorsorBaseChange (17s)
+✔ [4932/5125] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleEtaleExchangeMate (23s)
+✔ [4933/5125] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.CoverSheafQuotient (4.4s)
+✖ [4934/5125] Building Aglib.AlgebraicGeometry.EtaleCohomology.H1.SchemeTorsorClassification (9.0s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-79f8282a62cb44aea2a061e580f2f8d4/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/H1/SchemeTorsorClassification.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/H1/SchemeTorsorClassification.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/H1/SchemeTorsorClassification.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/H1/SchemeTorsorClassification.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/H1/SchemeTorsorClassification.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/H1/SchemeTorsorClassification.lean:278:0: automatically included section variable(s) unused in theorem `AlgebraicGeometry.Scheme.EtaleCohomology.SchemeTorsorClassification.basedFiberEquiv_translation`:
+  [GaloisCategory X.FiniteEtale]
+  [PreGaloisCategory.FiberFunctor (fiberToFinite s)]
+  [IsFinite A.X.hom]
+  [Etale A.X.hom]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [GaloisCategory
+  X.FiniteEtale] [PreGaloisCategory.FiberFunctor (fiberToFinite s)] [IsFinite A.X.hom] [Etale A.X.hom] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/H1/SchemeTorsorClassification.lean:320:0: automatically included section variable(s) unused in theorem `AlgebraicGeometry.Scheme.EtaleCohomology.SchemeTorsorClassification.basedFiberEquiv_monodromy`:
+  [GaloisCategory X.FiniteEtale]
+  [PreGaloisCategory.FiberFunctor (fiberToFinite s)]
+  [ContinuousSMul (FiberAutGroup s) M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [GaloisCategory
+  X.FiniteEtale] [PreGaloisCategory.FiberFunctor (fiberToFinite s)] [ContinuousSMul (FiberAutGroup s) M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [4938/5126] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.PowerFiber (5.3s)
+✔ [4939/5127] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.CoefficientRepresentation (15s)
+✔ [4943/5130] Built Aglib.AlgebraicGeometry.EtaleCohomology.H0.ProperHenselian.Sections (6.2s)
+✔ [4946/5137] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.TrivialCoverFunctor (9.1s)
+✔ [4953/5139] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.TrivialCoverLocalTransition (4.6s)
+✔ [4961/5143] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteEtaleTransfer (5.7s)
+✔ [4969/5143] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteEtaleTransfer.Gluing (6.0s)
+✖ [4974/5173] Building Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.ActionDescent (26s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-79f8282a62cb44aea2a061e580f2f8d4/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/ActionDescent.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/ActionDescent.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/ActionDescent.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/ActionDescent.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/ActionDescent.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/ActionDescent.lean:158:38: Application type mismatch: The argument
+  Eq.symm (liftedArrow f ?m.160 ?m.161 ?m.167).property
+has type
+  ?m.167 = (Over.pullback f).map ↑(liftedArrow f ?m.160 ?m.161 ?m.167)
+but is expected to have type
+  CartesianMonoidalCategory.prodComparison (Over.pullback f) G.X Y.obj ≫ τ.actionMap =
+    (Over.pullback f).map
+      ↑(liftedArrow f (FiniteEtale.mk G.X.hom ⊗ Y) Y
+          (CartesianMonoidalCategory.prodComparison (Over.pullback f) G.X Y.obj ≫ τ.actionMap))
+in the application
+  Eq.trans (map_actionMap f G Y τ) (Eq.symm (liftedArrow f ?m.160 ?m.161 ?m.167).property)
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  getLimitCone ↦ 2715
+error: Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/ActionDescent.lean:170:51: Application type mismatch: The argument
+  Eq.symm (liftedArrow f ?m.156 ?m.157 ?m.163).property
+has type
+  ?m.163 = (Over.pullback f).map ↑(liftedArrow f ?m.156 ?m.157 ?m.163)
+but is expected to have type
+  CartesianMonoidalCategory.prodComparison (Over.pullback f) Y.obj Y.obj ≫ differenceMap τ =
+    (Over.pullback f).map
+      ↑(liftedArrow f (Y ⊗ Y) (FiniteEtale.mk G.X.hom)
+          (CartesianMonoidalCategory.prodComparison (Over.pullback f) Y.obj Y.obj ≫ differenceMap τ))
+in the application
+  Eq.trans (map_descendedDifferenceMap f G Y τ) (Eq.symm (liftedArrow f ?m.156 ?m.157 ?m.163).property)
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  getLimitCone ↦ 2715
+✖ [5005/5187] Building Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleCartesianExchangeMate (34s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-79f8282a62cb44aea2a061e580f2f8d4/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleCartesianExchangeMate.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleCartesianExchangeMate.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleCartesianExchangeMate.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleCartesianExchangeMate.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleCartesianExchangeMate.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleCartesianExchangeMate.lean:60:2: Type mismatch: After simplification, term
+  moduleBaseChangeMap_source_comp Λ p q j f h e he M
+ has type
+  @Eq
+    ((moduleDirectImage f Λ ⋙ moduleInverseImage j Λ).obj M ⟶
+      (moduleDirectImage p Λ).obj
+        ((moduleDirectImage e Λ).obj ((moduleInverseImage q Λ ⋙ moduleInverseImage e Λ).obj M)))
+    ((moduleBaseChangeMap Λ f (e ≫ p) j (e ≫ q) he).app M ≫
+      (moduleDirectImageCompIso Λ p e).hom.app ((moduleInverseImage (e ≫ q) Λ).obj M) ≫
+        (moduleDirectImage p Λ).map ((moduleDirectImage e Λ).map ((moduleInverseImageCompIso Λ q e).hom.app M)))
+    ((moduleBaseChangeMap Λ f p j q h).app M ≫
+      (moduleDirectImage p Λ).map ((moduleInverseImageAdjunction e Λ).unit.app ((moduleInverseImage q Λ).obj M)))
+but is expected to have type
+  @Eq
+    ((moduleDirectImage f Λ ⋙ moduleInverseImage j Λ).obj M ⟶
+      (moduleDirectImage p Λ).obj
+        ((moduleDirectImage e Λ).obj ((moduleInverseImage q Λ ⋙ moduleInverseImage e Λ).obj M)))
+    ((moduleBaseChangeMap Λ f (e ≫ p) j (e ≫ q) he).app M ≫
+      (moduleDirectImageCompIso Λ p e).hom.app ((moduleInverseImage (e ≫ q) Λ).obj M) ≫
+        (moduleDirectImage p Λ).map
+          ((moduleDirectImage e Λ).map
+            ((SourceChange.sourceComparison (fun k => moduleInverseImage k Λ) ⋯
+                    (moduleInverseImageCompIso Λ q e)).hom.app
+              M)))
+    ((moduleBaseChangeMap Λ f p j q h).app M ≫
+      (moduleDirectImage p Λ).map ((moduleInverseImageAdjunction e Λ).unit.app ((moduleInverseImage q Λ).obj M)))
+✔ [5009/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteDirectImageExact.Splitting (7.6s)
+✔ [5010/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteDirectImageExact.Sections (5.2s)
+✔ [5011/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.Cohomology (76s)
+✖ [5012/5187] Building Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteDirectImageExact.LocalProduct (6.1s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-79f8282a62cb44aea2a061e580f2f8d4/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/FiniteDirectImageExact/LocalProduct.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/FiniteDirectImageExact/LocalProduct.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/FiniteDirectImageExact/LocalProduct.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/FiniteDirectImageExact/LocalProduct.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/FiniteDirectImageExact/LocalProduct.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Fields/FiniteDirectImageExact/LocalProduct.lean:37:13: Variable name `U` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _U
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Fields/FiniteDirectImageExact/LocalProduct.lean:37:15: Variable name `W` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _W
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Fields/FiniteDirectImageExact/LocalProduct.lean:43:10: failed to synthesize instance of type class
+  (siteEtalePostcompose V.hom).IsContinuous V.left.smallEtaleTopology X.smallEtaleTopology
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+✔ [5013/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.PullbackEquivalence (20s)
+✔ [5014/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.SlicePullback.SourceSquare (84s)
+✔ [5015/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.PullbackIsomorphism (4.4s)
+✔ [5016/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.SlicePullback.AugmentationSections (5.1s)
+✔ [5017/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleSliceCohomology (115s)
+✔ [5018/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GlobalSections (57s)
+✖ [5019/5187] Building Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GlobalSectionsField (17s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-79f8282a62cb44aea2a061e580f2f8d4/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GlobalSectionsField.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GlobalSectionsField.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GlobalSectionsField.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GlobalSectionsField.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GlobalSectionsField.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GlobalSectionsField.lean:55:12: Unknown constant `CategoryTheory.Abelian.Ext.extFunctor`
+✔ [5020/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.PullbackComposition (167s)
+✔ [5021/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.RelativeChartTails (5.4s)
+✔ [5022/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.RelativeChartTailCone (5.3s)
+✔ [5023/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartSourceMap (61s)
+✔ [5024/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductCohomology (64s)
+✔ [5025/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartSourceSections (6.5s)
+✔ [5026/5187] Built Aglib.AlgebraicGeometry.Picard.TrivializedPowerTorsor (162s)
+✖ [5034/5187] Building Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartCoefficientNaturality (100s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-79f8282a62cb44aea2a061e580f2f8d4/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartCoefficientNaturality.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartCoefficientNaturality.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartCoefficientNaturality.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartCoefficientNaturality.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartCoefficientNaturality.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartCoefficientNaturality.lean:31:8: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+✔ [5036/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackCohomologySystem (74s)
+✔ [5037/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackEtaleEvaluation (6.8s)
+✔ [5038/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.SectionsSeparation (4.6s)
+✔ [5039/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartSourceGenerator (7.0s)
+✔ [5040/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackEtaleNaturality (49s)
+✔ [5041/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackUnitSections (5.2s)
+✔ [5042/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackUnitRepresentatives (4.6s)
+✔ [5043/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackUnitGeometry (4.9s)
+✔ [5044/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramLimitCoefficients (71s)
+✔ [5045/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.ChartRepresentativeTests (4.3s)
+✔ [5046/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.RelativeUnitGerm (4.2s)
+✔ [5047/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackUnitTransport (5.1s)
+✔ [5048/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareCoefficients (7.7s)
+✖ [5049/5187] Building Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartEvaluationGerm (4.2s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-79f8282a62cb44aea2a061e580f2f8d4/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartEvaluationGerm.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartEvaluationGerm.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartEvaluationGerm.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartEvaluationGerm.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartEvaluationGerm.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartEvaluationGerm.lean:44:63: unsolved goals
+case h₀
+S : Scheme
+U : S.Etale
+Ω : Type u
+inst✝¹ : Field Ω
+inst✝ : IsSepClosed Ω
+η : Spec ↧Ω ⟶ U.left
+F : AbelianSheaf S
+p : (pointSmallEtale η).fiber.obj (etaleTerminal U.left)
+⊢ (MorphismProperty.Over.homMk (pullback.lift (𝟙 U.left) (𝟙 ((𝟭 Scheme).obj U.left)) ⋯) ⋯ ⋯).left ≫
+      pullback.fst U.hom U.hom =
+    (MorphismProperty.Over.homMk (pullback.diagonal U.hom) ⋯ ⋯).left ≫ pullback.fst U.hom U.hom
+
+case h₁
+S : Scheme
+U : S.Etale
+Ω : Type u
+inst✝¹ : Field Ω
+inst✝ : IsSepClosed Ω
+η : Spec ↧Ω ⟶ U.left
+F : AbelianSheaf S
+p : (pointSmallEtale η).fiber.obj (etaleTerminal U.left)
+⊢ (MorphismProperty.Over.homMk (pullback.lift (𝟙 U.left) (𝟙 ((𝟭 Scheme).obj U.left)) ⋯) ⋯ ⋯).left ≫
+      pullback.snd U.hom U.hom =
+    (MorphismProperty.Over.homMk (pullback.diagonal U.hom) ⋯ ⋯).left ≫ pullback.snd U.hom U.hom
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartEvaluationGerm.lean:52:2: Type mismatch: After simplification, term
+  h
+ has type
+  @Eq (F.obj.obj (op U) ⟶ (inverseImage U.hom ⋙ (pointSmallEtale η).sheafFiber).obj F)
+    ((pointSmallEtale (η ≫ U.hom)).toPresheafFiber U (Over.homMk η ⋯) F.obj ≫
+      (StalkInverseImage.stalkUnitNatIso U.hom η).hom.app F)
+    ((((inverseImageAdjunction U.hom).unit.app F).hom.app (op U) ≫
+        ((inverseImage U.hom).obj F).obj.map (Continuity.chartDiagonal U).op) ≫
+      (pointSmallEtale η).toPresheafFiber (etaleTerminal ((𝟭 Scheme).obj U.left)) p ((inverseImage U.hom).obj F).obj)
+but is expected to have type
+  @Eq (F.obj.obj (op U) ⟶ (inverseImage U.hom ⋙ (pointSmallEtale η).sheafFiber).obj F)
+    ((pointSmallEtale (η ≫ U.hom)).toPresheafFiber U (Over.homMk η ⋯) F.obj ≫
+      (StalkInverseImage.stalkUnitNatIso U.hom η).hom.app F)
+    ((((inverseImageAdjunction U.hom).unit.app F).hom.app (op U) ≫
+        ((inverseImage U.hom).obj F).obj.map (Continuity.chartDiagonal U).op) ≫
+      (pointSmallEtale η).toPresheafFiber (etaleTerminal U.left) p ((inverseImage U.hom).obj F).obj)
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  getColimitCocone ↦ 20
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartEvaluationGerm.lean:48:8: This simp argument is unused:
+  pullback.lift_fst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Continuity.relativeTerminalTest, Continuity.chartDiagonal, pullback.lift_snd,
+    pullback.diagonal_fst, pullback.diagonal_snd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartEvaluationGerm.lean:48:27: This simp argument is unused:
+  pullback.lift_snd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Continuity.relativeTerminalTest, Continuity.chartDiagonal, pullback.lift_fst,
+    pullback.diagonal_fst, pullback.diagonal_snd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartEvaluationGerm.lean:48:46: This simp argument is unused:
+  pullback.diagonal_fst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Continuity.relativeTerminalTest, Continuity.chartDiagonal, pullback.lift_fst, pullback.lift_snd,
+    pullback.diagonal_snd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartEvaluationGerm.lean:48:69: This simp argument is unused:
+  pullback.diagonal_snd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Continuity.relativeTerminalTest, Continuity.chartDiagonal, pullback.lift_fst, pullback.lift_snd,
+    pullback.diagonal_fst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [5050/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackRestrictionSections (4.7s)
+✔ [5051/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareSections (4.3s)
+✔ [5052/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackScalarTransport (6.9s)
+✔ [5053/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTransport (4.1s)
+✔ [5054/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramArrowSections (4.6s)
+✔ [5055/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareIdentity (26s)
+✔ [5056/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartHomSections (57s)
+✔ [5057/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSystemSquares (4.3s)
+✖ [5058/5187] Building Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramPullbackSystem (8.7s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-79f8282a62cb44aea2a061e580f2f8d4/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackSystem.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackSystem.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackSystem.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackSystem.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackSystem.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackSystem.lean:54:2: Type mismatch: After simplification, term
+  InjectiveSystem.System.pullbackTransition_comp schemeAdjunctionData X Y τ F schemeAdjunctionData_coherent a b
+ has type
+  @Eq
+    ((schemeAdjunctionData.left (Y.map (a ≫ b))).obj ((schemeAdjunctionData.left (τ.app i)).obj (F.obj i)) ⟶
+      (schemeAdjunctionData.left (τ.app k)).obj (F.obj k))
+    (diagramPullbackTransition X Y τ F (a ≫ b))
+    ((diagramInverseImageComp Y a b).hom.app ((schemeAdjunctionData.left (τ.app i)).obj (F.obj i)) ≫
+      (schemeAdjunctionData.left (Y.map b)).map (diagramPullbackTransition X Y τ F a) ≫
+        diagramPullbackTransition X Y τ F b)
+but is expected to have type
+  @Eq
+    ((inverseImage (Y.map (a ≫ b)).unop).obj ((inverseImage (τ.app i).unop).obj (F.obj i)) ⟶
+      (inverseImage (τ.app k).unop).obj (F.obj k))
+    (diagramPullbackTransition X Y τ F (a ≫ b))
+    ((diagramInverseImageComp Y a b).hom.app ((inverseImage (τ.app i).unop).obj (F.obj i)) ≫
+      (inverseImage (Y.map b).unop).map (diagramPullbackTransition X Y τ F a) ≫ diagramPullbackTransition X Y τ F b)
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  getLimitCone ↦ 972
+✔ [5059/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTopIdentity (4.3s)
+✔ [5060/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.NativeEtaleSectionRestriction (46s)
+✖ [5061/5187] Building Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackCoefficientSystem (97s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-79f8282a62cb44aea2a061e580f2f8d4/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackCoefficientSystem.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackCoefficientSystem.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackCoefficientSystem.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackCoefficientSystem.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackCoefficientSystem.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackCoefficientSystem.lean:63:2: Type mismatch: After simplification, term
+  InjectiveSystem.System.fixedSourceTransition_comp schemeAdjunctionData Y schemeAdjunctionData_coherent b F a d
+ has type
+  @Eq
+    ((schemeAdjunctionData.left (Y.map (a ≫ d))).obj ((schemeAdjunctionData.left (b.π.app i)).obj F) ⟶
+      (schemeAdjunctionData.left (b.π.app k)).obj F)
+    (pullbackCoefficientTransition Y b F (a ≫ d))
+    ((diagramInverseImageComp Y a d).hom.app ((schemeAdjunctionData.left (b.π.app i)).obj F) ≫
+      (schemeAdjunctionData.left (Y.map d)).map (pullbackCoefficientTransition Y b F a) ≫
+        pullbackCoefficientTransition Y b F d)
+but is expected to have type
+  @Eq
+    ((inverseImage (Y.map (a ≫ d)).unop).obj ((inverseImage (b.π.app i).unop).obj F) ⟶
+      (inverseImage (b.π.app k).unop).obj F)
+    (pullbackCoefficientTransition Y b F (a ≫ d))
+    ((diagramInverseImageComp Y a d).hom.app ((inverseImage (b.π.app i).unop).obj F) ≫
+      (inverseImage (Y.map d).unop).map (pullbackCoefficientTransition Y b F a) ≫ pullbackCoefficientTransition Y b F d)
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  getLimitCone ↦ 972
+✔ [5062/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartRestrictionNaturality (55s)
+✔ [5063/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.CohomologyTransfers (106s)
+✔ [5064/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramLimitFunctor (113s)
+✔ [5065/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSectionTransfers (6.8s)
+✔ [5066/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.RepresentativeSections (150s)
+✔ [5067/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.CohomologyConnectingTransfer (17s)
+✔ [5068/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSectionNaturality (4.3s)
+✔ [5069/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomology (37s)
+✔ [5070/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.RepresentativeSeeds (25s)
+✔ [5071/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.BaseChangeRepresentativeSections (6.7s)
+✖ [5072/5187] Building Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramLimitSections (63s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-79f8282a62cb44aea2a061e580f2f8d4/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitSections.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitSections.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitSections.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitSections.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitSections.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitSections.lean:46:2: failed to synthesize
+  HasColimit ((diagramConeAdjunctionData X c).coefficientFunctor F)
+(deterministic) timeout at `typeclass`, maximum number of heartbeats (20000) has been reached
+
+Note: Use `set_option synthInstance.maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitSections.lean:51:6: Type mismatch
+  (globalSections (unop c.pt)).map (colimit.ι (coneCoefficientFunctor X c F) i)
+has type
+  (globalSections (unop c.pt)).obj ((coneCoefficientFunctor X c F).obj i) ⟶
+    Functor.obj.{u + 1, u + 1, u + 2, u + 2} (globalSections (unop c.pt)) (colimit (coneCoefficientFunctor X c F))
+but is expected to have type
+  (coneCoefficientSectionsFunctor X c F).obj i ⟶
+    Functor.obj.{vI, u + 1, uI, u + 2} ((Functor.const I).obj (coneCoefficientSectionsCocone X c F).pt) i
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  getColimitCocone ↦ 5
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitSections.lean:68:2: Type mismatch
+  isColimitOfPreserves (globalSections (unop c.pt)) (colimit.isColimit (coneCoefficientFunctor X c F))
+has type
+  IsColimit ((globalSections (unop c.pt)).mapCocone (colimit.cocone (coneCoefficientFunctor X c F)))
+but is expected to have type
+  IsColimit (coneCoefficientSectionsCocone X c F)
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  getColimitCocone ↦ 5
+✔ [5073/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.RelativeCohomologyTransfer (76s)
+✔ [5074/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackSectionsBase (194s)
+✔ [5076/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.StageRepresentativeEquality (5.4s)
+✔ [5080/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramConeNaturality (4.8s)
+✔ [5084/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.UnitRepresentativeEquality (51s)
+✔ [5085/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestBaseSections (5.5s)
+✔ [5088/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.AffineRepresentativeEquality (6.3s)
+✔ [5095/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramShortExact (6.1s)
+✔ [5102/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCokernelTransitions (4.7s)
+✔ [5105/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.FiniteSectionRepresentatives (52s)
+✔ [5106/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.UnitSectionsAmalgamation (4.8s)
+✔ [5107/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.FiniteRepresentativeCover (4.9s)
+✔ [5108/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramDiagonalSections (98s)
+✔ [5110/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.CanonicalSectionGluing (5.2s)
+✔ [5111/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductRestriction (138s)
+✔ [5114/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramEtaleSections (48s)
+✔ [5122/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.RepresentativeEqualityWitnesses (97s)
+✔ [5123/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.AffineSectionEquality (4.6s)
+✔ [5124/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.AffineSchemeSectionEquality (6.2s)
+✔ [5125/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.AffineSchemeCoverModels (5.2s)
+✖ [5126/5187] Building Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.RelativeCohomologySquare (183s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-79f8282a62cb44aea2a061e580f2f8d4/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/RelativeCohomologySquare.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/RelativeCohomologySquare.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/RelativeCohomologySquare.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/RelativeCohomologySquare.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/RelativeCohomologySquare.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/RelativeCohomologySquare.lean:57:2: Type mismatch: After simplification, term
+  h
+ has type
+  @Eq
+    ((schemeAdjunctionData.left (r.op ≫ v'.op)).obj ((schemeAdjunctionData.left p.op).obj F) ⟶
+      (schemeAdjunctionData.left a'.op).obj ((schemeAdjunctionData.left g.op).obj F))
+    ((inverseImageComp r v').hom.app ((schemeAdjunctionData.left p.op).obj F) ≫
+      (schemeAdjunctionData.left v'.op).map ((inverseImageSquareIso p p' g r ⋯).inv.app F) ≫
+        (pullbackTriangleIso a' p' v' ⋯).inv.app ((schemeAdjunctionData.left g.op).obj F))
+    (eqToHom ⋯ ≫
+      (inverseImageComp v σ).hom.app ((schemeAdjunctionData.left p.op).obj F) ≫
+        (schemeAdjunctionData.left σ.op).map ((pullbackTriangleIso a p v ⋯).inv.app F) ≫
+          (inverseImageSquareIso a a' g σ ⋯).inv.app F)
+but is expected to have type
+  @Eq ((inverseImage (v' ≫ r)).obj ((inverseImage p).obj F) ⟶ (inverseImage a').obj ((inverseImage g).obj F))
+    ((inverseImageComp r v').hom.app ((inverseImage p).obj F) ≫
+      (inverseImage v').map ((inverseImageSquareIso p p' g r hR).inv.app F) ≫
+        (pullbackTriangleIso a' p' v' hv').inv.app ((inverseImage g).obj F))
+    (eqToHom ⋯ ≫
+      (inverseImageComp v σ).hom.app ((inverseImage p).obj F) ≫
+        (inverseImage σ).map ((pullbackTriangleIso a p v hv).inv.app F) ≫ (inverseImageSquareIso a a' g σ hS).inv.app F)
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  getLimitCone ↦ 3888
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/RelativeCohomologySquare.lean:60:16: (kernel) deterministic timeout
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/RelativeCohomologySquare.lean:109:8: (kernel) unknown constant '_private.Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.RelativeCohomologySquare.0.AlgebraicGeometry.Scheme.EtaleCohomology.transfer_square_of_coefficients'
+✔ [5127/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.FiniteRepresentativeEqualities (5.2s)
+✔ [5128/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.StageSectionsInjectivity (6.4s)
+✔ [5129/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.FiniteBaseChangeEqualities (5.5s)
+✔ [5130/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.StageSupport.AffineRefinements (6.2s)
+✔ [5131/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.MappedAffineCoverModels (6.3s)
+✔ [5132/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.MappedCoverModel (4.6s)
+✔ [5133/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.StageOverlapEquality (5.5s)
+✔ [5134/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.StageSupport.FiniteRefinements (4.0s)
+✔ [5136/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.MappedCoverSectionRepresentatives (24s)
+✔ [5137/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.BaseChangeUnitMatching (21s)
+✔ [5138/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.RepresentativeEquation (4.2s)
+✔ [5139/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.SectionReindex (5.0s)
+✔ [5140/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.StageSectionsAmalgamation (4.9s)
+✔ [5141/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.NativeStageMatching (4.3s)
+✔ [5142/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.AffineSectionData (5.3s)
+✖ [5143/5187] Building Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductGermZero (91s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-79f8282a62cb44aea2a061e580f2f8d4/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean:133:2: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+✔ [5144/5187] Built Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.CanonicalStageAmalgamation (4.9s)
+✔ [5145/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.NativeStageAmalgamation (5.1s)
+✔ [5146/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductOriginalDiagram (164s)
+✔ [5148/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyCocone (209s)
+✔ [5157/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.NativeStageImage (63s)
+✔ [5158/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyNaturality (33s)
+✔ [5159/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.NativeStageSection (45s)
+✔ [5160/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.NativeStageSource (24s)
+✔ [5164/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductPresheaf (134s)
+✔ [5165/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ResizeCohomologyDiagram (14s)
+✔ [5166/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyConnecting (152s)
+✔ [5167/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.CohomologyDiagramUlift (14s)
+✔ [5168/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.CohomologyDiagramReindex (3.0s)
+✔ [5169/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.CohomologyUliftComponents (18s)
+✔ [5170/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductStalk (67s)
+✔ [5171/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartCohomologyStalk (43s)
+✔ [5174/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyExact (122s)
+✔ [5183/5187] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductGermRestriction (123s)
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.H1.SchemeTorsorClassification
+- Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.ActionDescent
+- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleCartesianExchangeMate
+- Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteDirectImageExact.LocalProduct
+- Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GlobalSectionsField
+- Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartCoefficientNaturality
+- Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartEvaluationGerm
+- Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramPullbackSystem
+- Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackCoefficientSystem
+- Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramLimitSections
+- Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.RelativeCohomologySquare
+- Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductGermZero
+error: build failed

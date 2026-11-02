@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.CategoryTheory.Sites.Torsor.Classification
 public import Aglib.CategoryTheory.Abelian.Ext1.Extension
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorPullback
 
@@ -44,39 +45,28 @@ variable {X : Scheme.{u}} {F L : AbelianSheaf.{u, u + 1} X}
 
 /-- The middle sheaf map of an identity-endpoint extension isomorphism restricts
 to an equivariant map on the actual fibres over the same global section. -/
-def extensionFiberHom
+abbrev extensionFiberHom
     {E E' : _root_.CategoryTheory.Abelian.Ext1.Extension F L}
     (e : _root_.CategoryTheory.Abelian.Ext1.Extension.Iso E E')
     (z : F.obj.obj (op (etaleTerminal X))) :
     _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.Hom (𝟙 L)
       (extensionFiberTorsor E.toShortComplex z E.shortExact)
-      (extensionFiberTorsor E'.toShortComplex z E'.shortExact) where
-  map := ⟨{
-    app U := TypeCat.ofHom (fun t => ⟨e.middleIso.hom.hom.app U t.val, by
-      exact (congrArg (fun q : E.middle ⟶ F =>
-        q.hom.app U (show E.middle.obj.obj U from t.val)) e.comm_p).trans t.property⟩)
-    naturality {U V} f := by
-      ext t
-      apply Subtype.ext
-      exact ConcreteCategory.congr_hom (e.middleIso.hom.hom.naturality f) t.val }⟩
-  equivariant U a t := by
-    apply Subtype.ext
-    change e.middleIso.hom.hom.app U
-      (E.i.hom.app U a + (show E.middle.obj.obj U from t.val)) =
-      E'.i.hom.app U a + e.middleIso.hom.hom.app U t.val
-    rw [map_add]
-    exact congrArg (· + e.middleIso.hom.hom.app U t.val)
-      (congrArg (fun q : L ⟶ E'.middle => q.hom.app U a) e.comm_i)
+      (extensionFiberTorsor E'.toShortComplex z E'.shortExact) :=
+  CategoryTheory.Sheaf.extensionFiberHom e
+    ((Topos.globalPointTerminalEquiv (etaleTerminalIsTerminal X)
+      (underlyingSetSheaf F)).symm z)
 
 /-- Identity-endpoint isomorphic short-exact extensions have equivariantly
 isomorphic fibre torsors, with no Ext or cohomology classification input. -/
-def extensionFiberIso
+abbrev extensionFiberIso
     {E E' : _root_.CategoryTheory.Abelian.Ext1.Extension F L}
     (e : _root_.CategoryTheory.Abelian.Ext1.Extension.Iso E E')
     (z : F.obj.obj (op (etaleTerminal X))) :
     _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.Iso
       (extensionFiberTorsor E.toShortComplex z E.shortExact)
       (extensionFiberTorsor E'.toShortComplex z E'.shortExact) :=
-  (extensionFiberHom e z).toIso
+  CategoryTheory.Sheaf.extensionFiberIso e
+    ((Topos.globalPointTerminalEquiv (etaleTerminalIsTerminal X)
+      (underlyingSetSheaf F)).symm z)
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

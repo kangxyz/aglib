@@ -95,7 +95,7 @@ def pointedH1PullbackHom
     (φ : FiberAutGroup s →ₜ* FiberAutGroup x)
     (hφ : φ = Naturality.pointedGroupHom f s x hx)
     (G : Grp (Over X)) [IsCommMonObj G.X] [IsFinite G.X.hom] [Etale G.X.hom]
-    (M : Type v) [AddCommGroup M] [TopologicalSpace M] [DiscreteTopology M] [Finite M]
+    (M : Type v) [AddCommGroup M] [TopologicalSpace M] [DiscreteTopology M]
     [DistribMulAction (FiberAutGroup x) M] [ContinuousSMul (FiberAutGroup x) M]
     [GaloisCategory (Scheme.FiniteEtale S)]
     [PreGaloisCategory.FiberFunctor (fiberToFinite s)]
@@ -121,7 +121,7 @@ def pointedH1PullbackHom
     {X S : Scheme.{u}} {F : Type u} [Field F]
     (f : S ⟶ X) (s : Spec (.of F) ⟶ S) (x : Spec (.of F) ⟶ X) (hx : s ≫ f = x)
     (G : Grp (Over X)) [IsCommMonObj G.X] [IsFinite G.X.hom] [Etale G.X.hom]
-    (M : Type v) [AddCommGroup M] [TopologicalSpace M] [DiscreteTopology M] [Finite M]
+    (M : Type v) [AddCommGroup M] [TopologicalSpace M] [DiscreteTopology M]
     [DistribMulAction (FiberAutGroup x) M] [ContinuousSMul (FiberAutGroup x) M]
     [GaloisCategory (Scheme.FiniteEtale S)]
     [PreGaloisCategory.FiberFunctor (fiberToFinite s)]
@@ -147,7 +147,7 @@ theorem pointedH1PullbackHom_injective
     (φ : FiberAutGroup s →ₜ* FiberAutGroup x)
     (hφ : φ = Naturality.pointedGroupHom f s x hx)
     (G : Grp (Over X)) [IsCommMonObj G.X] [IsFinite G.X.hom] [Etale G.X.hom]
-    (M : Type v) [AddCommGroup M] [TopologicalSpace M] [DiscreteTopology M] [Finite M]
+    (M : Type v) [AddCommGroup M] [TopologicalSpace M] [DiscreteTopology M]
     [DistribMulAction (FiberAutGroup x) M] [ContinuousSMul (FiberAutGroup x) M]
     [GaloisCategory (Scheme.FiniteEtale S)]
     [PreGaloisCategory.FiberFunctor (fiberToFinite s)]

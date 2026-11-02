@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.AffineScheme.AlgebraMapTriangles
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.LocallyNoetherianOver
-public import Aglib.AlgebraicGeometry.Stalk.Scalar
+public import Aglib.AlgebraicGeometry.Stalk.SpecLocalRing
 public import Aglib.RingTheory.LocalRing.SquareZeroLift
 public import Aglib.RingTheory.TrivSqZeroExt
 public import Mathlib.Algebra.Category.Grp.Basic
@@ -111,37 +111,6 @@ abbrev locallyNoetherianSpecOverMap {A B : Type u} [CommRing A] [CommRing B] [Al
   ObjectProperty.homMk (specOverMap f)
 
 end SpecOver
-
-section Stalk
-
-/-- The canonical morphism `Spec 𝒪_{X,x} ⟶ X`, followed by the structure map `X ⟶ Spec R`, is
-`Spec` of the structural scalar map `R → 𝒪_{X,x}`. -/
-theorem fromSpecStalk_comp_eq_spec_map_stalkScalar {R : Type u} [CommRing R] {X : Scheme.{u}}
-    (π : X ⟶ Spec (.of R)) (x : X) :
-    X.fromSpecStalk x ≫ π = Spec.map (CommRingCat.ofHom (π.stalkScalar x)) := by
-  rw [← SpecMap_stalkMap_fromSpecStalk, Spec.fromSpecStalk_eq, ← Spec.map_comp]
-  congr 1
-  ext r
-  rw [Hom.stalkScalar_eq_local]
-  rfl
-
-/-- Local maps from a stalk to a local ring are determined by the morphism of spectra. -/
-theorem spec_map_comp_fromSpecStalk_injective {X : Scheme.{u}} {x : X} {R : CommRingCat.{u}}
-    [IsLocalRing R] {φ φ' : X.presheaf.stalk x ⟶ R} [IsLocalHom φ.hom] [IsLocalHom φ'.hom]
-    (h : Spec.map φ ≫ X.fromSpecStalk x = Spec.map φ' ≫ X.fromSpecStalk x) : φ = φ' := by
-  have := (SpecToEquivOfLocalRing X R).symm.injective
-    (a₁ := ⟨x, φ, inferInstance⟩) (a₂ := ⟨x, φ', inferInstance⟩) h
-  exact congrArg Subtype.val (eq_of_heq (Sigma.mk.inj_iff.mp this).2)
-
-/-- A morphism from the spectrum of a local ring sending the closed point to `x` factors through a
-local map from the stalk at `x`. -/
-theorem exists_spec_map_comp_fromSpecStalk {X : Scheme.{u}} {R : CommRingCat.{u}}
-    [IsLocalRing R] (g : Spec R ⟶ X) {x : X} (hx : g (closedPoint R) = x) :
-    ∃ φ : X.presheaf.stalk x ⟶ R, IsLocalHom φ.hom ∧ Spec.map φ ≫ X.fromSpecStalk x = g := by
-  subst hx
-  exact ⟨stalkClosedPointTo g, inferInstance, Spec_stalkClosedPointTo_fromSpecStalk g⟩
-
-end Stalk
 
 section TangentKernel
 

@@ -1,0 +1,150 @@
+{
+  "question": "Complete source-bound SectionPullback performance episode for Root serial documentation, not a new benchmark/review/check",
+  "source_owner": "whole-w10-remaining; original native maps/source/conditions preserved",
+  "episodes": [
+    {
+      "phase": "V1 native app/proof mismatch",
+      "run": "remote-c5a65e5a950841bf84f4630ab251aa3d",
+      "source": "7059a705817cec7e67e4f6586b99fe339d685a0292f3ea70469f86db85451d94",
+      "version": "nativea433 beforeV9",
+      "group_closed": true,
+      "aggregate_exit": 1,
+      "elapsed_phase_seconds": 353.41053725779057,
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-c5a65e5a950841bf84f4630ab251aa3d/receipt.json",
+      "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-c5a65e5a950841bf84f4630ab251aa3d/compiler-events.jsonl",
+      "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-c5a65e5a950841bf84f4630ab251aa3d/build.log",
+      "boundary": "kernel52; later110/138 mismatches; unknownconstant118 cascade",
+      "exact_source_sha256": {
+        "native": "a433e8aacacd222ad988c9c60e0779c593172f4eadfce2be8fa3fa384586d747"
+      }
+    },
+    {
+      "phase": "V9 whole-Iso app bridge",
+      "run": "remote-28352af3def54c329a4e8df98996160f",
+      "source": "fa706f5af7815a71b77557a26516aed2ea4df5a88162c006ab22f2a103759389",
+      "version": "54827938",
+      "group_closed": true,
+      "aggregate_exit": 1,
+      "elapsed_phase_seconds": 449.52297781407833,
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-28352af3def54c329a4e8df98996160f/receipt.json",
+      "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-28352af3def54c329a4e8df98996160f/compiler-events.jsonl",
+      "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-28352af3def54c329a4e8df98996160f/build.log",
+      "boundary": "kernel85/128; earlier52/mismatches gone; no native module pass",
+      "exact_source_sha256": {
+        "lower": "1af9eadc0e50ec6b1c9995c98d16096b2268d54245562293405938fdea3c66ba",
+        "native": "54827938e612b1945ac212115ec394572be025da4688e9be4e5dd6ceb45437a7"
+      }
+    },
+    {
+      "phase": "Exact proposition formation",
+      "run": "remote-d07189daa6e84086b16a6f9352b340f5",
+      "source": "fa706f5af7815a71b77557a26516aed2ea4df5a88162c006ab22f2a103759389",
+      "version": "probe c1b2263a",
+      "group_closed": true,
+      "aggregate_exit": 0,
+      "elapsed_phase_seconds": 41.248226284980774,
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-d07189daa6e84086b16a6f9352b340f5/receipt.json",
+      "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-d07189daa6e84086b16a6f9352b340f5/compiler-events.jsonl",
+      "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-d07189daa6e84086b16a6f9352b340f5/build.log",
+      "boundary": "exit0 only (_h:P):True at exact native setup; no P proof",
+      "exact_source_sha256": {
+        "probe": "c1b2263a6281eca0ae8d6b4de7349bf8874c27654e5c99a2d9546872429e3c76",
+        "native_basis": "54827938e612b1945ac212115ec394572be025da4688e9be4e5dd6ceb45437a7"
+      }
+    },
+    {
+      "phase": "V11 raw maps first run",
+      "run": "remote-07fadeace97844c980fab82dad1dd8fe",
+      "source": "a3228f271f023fd6f2b076d844a6addc8f9d2f73dfc133efa592dbb70573dd8b",
+      "version": "a724/568deb6f",
+      "group_closed": true,
+      "aggregate_exit": 143,
+      "elapsed_phase_seconds": 47.32123780250549,
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-07fadeace97844c980fab82dad1dd8fe/receipt.json",
+      "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-07fadeace97844c980fab82dad1dd8fe/compiler-events.jsonl",
+      "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-07fadeace97844c980fab82dad1dd8fe/build.log",
+      "boundary": "Transport pass; native interrupted143 by resource governor, no code verdict",
+      "exact_source_sha256": {
+        "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection/Transport.lean": "a72491881b24f9de8591bb0fceb3afaebbef44a8a783bf3094717611b9da1d57",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean": "568deb6ff1dc5ce90ee361ed676db3ea44f706a3cde26d947ea330dbafa45643"
+      }
+    },
+    {
+      "phase": "V11 raw maps ordinary retry",
+      "run": "remote-36528327c7334c1b8f0582710386bf3e",
+      "source": "a3228f271f023fd6f2b076d844a6addc8f9d2f73dfc133efa592dbb70573dd8b",
+      "version": "a724/568deb6f",
+      "group_closed": true,
+      "aggregate_exit": 1,
+      "elapsed_phase_seconds": 297.06162199378014,
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-36528327c7334c1b8f0582710386bf3e/receipt.json",
+      "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-36528327c7334c1b8f0582710386bf3e/compiler-events.jsonl",
+      "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-36528327c7334c1b8f0582710386bf3e/build.log",
+      "boundary": "native kernel108 only, actual failed run; distinct resource event",
+      "exact_source_sha256": {
+        "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection/Transport.lean": "a72491881b24f9de8591bb0fceb3afaebbef44a8a783bf3094717611b9da1d57",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean": "568deb6ff1dc5ce90ee361ed676db3ea44f706a3cde26d947ea330dbafa45643"
+      }
+    },
+    {
+      "phase": "Selected ordinary H1 first run",
+      "run": "remote-9050f0cfd5f4475d9b8919c873e07a40",
+      "source": "7a9ebb144c952f86eb3406b38266c6718c85835c5b5927c788b5b3ec863170b3",
+      "version": "2dee/7633e1a2",
+      "group_closed": true,
+      "aggregate_exit": 1,
+      "elapsed_phase_seconds": 5.860163003206253,
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-9050f0cfd5f4475d9b8919c873e07a40/receipt.json",
+      "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-9050f0cfd5f4475d9b8919c873e07a40/compiler-events.jsonl",
+      "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-9050f0cfd5f4475d9b8919c873e07a40/build.log",
+      "boundary": "lower70 rw-hp lambda issue; native unreached",
+      "exact_source_sha256": {
+        "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean": "7633e1a279c7b0b61ff16f2d8cc5a4fc967a55b0084a56b9307298cb87c0d295",
+        "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection/Transport.lean": "2dee3b021c79520b0d20be7f742c630916d0f3d6c690ee64c3449a4a80a593f6"
+      }
+    },
+    {
+      "phase": "Selected ordinary H1 final",
+      "run": "remote-0882edf6151a45638017b3eb30b55c9b",
+      "source": "b9f7528b14265354da1e6e4aee832a5e4fb2c5c3db888d7807551c7c49e26c70",
+      "version": "a1fb5123/7633e1a2",
+      "group_closed": true,
+      "aggregate_exit": 0,
+      "elapsed_phase_seconds": 57.18928661942482,
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-0882edf6151a45638017b3eb30b55c9b/receipt.json",
+      "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-0882edf6151a45638017b3eb30b55c9b/compiler-events.jsonl",
+      "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-0882edf6151a45638017b3eb30b55c9b/build.log",
+      "boundary": "closed0 twofreshpasses",
+      "exact_source_sha256": {
+        "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection/Transport.lean": "a1fb5123c6bbf273d62feff730e3e788abbab1e3615b3bc1afe20ddaf8b5a938",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean": "7633e1a279c7b0b61ff16f2d8cc5a4fc967a55b0084a56b9307298cb87c0d295"
+      }
+    }
+  ],
+  "final_sources": {
+    "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection/Transport.lean": "a1fb5123c6bbf273d62feff730e3e788abbab1e3615b3bc1afe20ddaf8b5a938",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean": "7633e1a279c7b0b61ff16f2d8cc5a4fc967a55b0084a56b9307298cb87c0d295"
+  },
+  "final_source_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/continuation-D-N-b9f7-section-0882edf6.json",
+  "final_manifest_raw_sha256": "5abd16e79880eff594a3c76bb5ea9919e96829e1f0535e8591c84c6fe8074f4f",
+  "actual_final_frontends_seconds": {
+    "Transporta1fb": 2.755458,
+    "Section7633": 50.201721
+  },
+  "current_review": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/whole-w10-final-continuation.json",
+    "sha256_at_return": "84fb31fbffc1423b4bde2ec1a534d16101bfe3f44c808ebfdc995bd4ed1263f0"
+  },
+  "method": "Keep actual existing h1Functor and complete original functions E/P/x/y/a. Prove variable-category inverse/transport/id evaluation and coefficient-square pasting, then consume existing actual h1 composition/equality/id/coefficient facts at matching H1 heads. Native only rfl function views; no H1-to-Ext map conversion. Use whole-Iso transport component law before native projection for original coefficient Iso.",
+  "preserved": "Three originalnative data blocks, six public theorem headers; actual inverse-image Comp/Id/equality coefficient, original source/generator/scalars/signs, independent H1 w/wprime and input/output worlds; no model/reference category/newGamma, desired section law premise, budget/pin/options/trust change. SourceSection885 stable.",
+  "evidence_limits": "No isolated expensive kernel pair or unique causal explanation. Module/phase durations are not per-kernel timings. Formation0 is not originalP/native proof closure; resource143 is not code failure; lower failure/nativeunreached distinct. Source/dependencies/cache contexts differ, so no controlled speedup ratio asserted. Final evidence closes this native Section leaf and compatible source contract only, not whole W10/Etale migration.",
+  "recorded_case_inputs": [
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/lower-repairs-v9/PERFORMANCE_EPISODE.json",
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/lower-repairs-v11/PERFORMANCE_EPISODE.json",
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/section-kernel-diagnostic-v1/READY.json",
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/section-kernel-diagnostic-v1/RESULT.json",
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/section-kernel-alternative/READY.json",
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/section-h1-route-v14/LIVE_READY.json",
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/section-h1-route-v15/LIVE_READY.json"
+  ]
+}

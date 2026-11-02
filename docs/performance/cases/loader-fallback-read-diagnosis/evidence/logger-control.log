@@ -1,0 +1,7 @@
+LEAN_LOADER_SYSCALL pid=98305 op=mmap fd=-1 requested=18446744073709551615 result=-1 errno=12 buffer_null=1
+LEAN_LOADER_SYSCALL pid=98305 op=read fd=-1 requested=1 result=-1 errno=9 buffer_null=1
+LEAN_LOADER_SYSCALL pid=98305 op=count_mmap_ENOMEM fd=-1 requested=1 result=0 errno=0 buffer_null=0
+LEAN_LOADER_SYSCALL pid=98305 op=count_mmap_EEXIST fd=-1 requested=0 result=0 errno=0 buffer_null=0
+LEAN_LOADER_SYSCALL pid=98305 op=count_mmap_other fd=-1 requested=0 result=0 errno=0 buffer_null=0
+LEAN_LOADER_SYSCALL pid=98305 op=count_read_failure fd=-1 requested=1 result=0 errno=0 buffer_null=0
+LEAN_LOADER_SYSCALL pid=98305 op=count_read_short fd=-1 requested=0 result=0 errno=0 buffer_null=0

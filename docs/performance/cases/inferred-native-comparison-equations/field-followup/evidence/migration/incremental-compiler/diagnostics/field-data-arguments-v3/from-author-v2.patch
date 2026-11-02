@@ -1,0 +1,11 @@
+--- author-v2
++++ C-derived-v3
+@@ -408,7 +408,7 @@
+           | .forallE _ aType aBody _, .forallE _ bType bBody _ =>
+             visit fuel (path ++ "/domain") aType bType
+             visit fuel (path ++ "/body") aBody bBody
+-          | _ =>
++          | _, _ =>
+             count.modify (· + 1)
+             Lean.logInfo m!"FIELD_DATA_DIFF {path} actual-head={af} expected-head={bf}"
+             Lean.logInfo m!"FIELD_DATA_ARGS actual={aa.size} expected={ba.size}"

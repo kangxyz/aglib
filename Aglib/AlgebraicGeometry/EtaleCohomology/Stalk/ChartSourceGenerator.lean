@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartSourceSections
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackEtaleEvaluation
+public import Aglib.CategoryTheory.Sites.ConstantRestriction.TerminalValues
 
 /-! # The original identity generator of the chart comparison source -/
 
@@ -19,26 +20,6 @@ set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory CategoryTheory.Limits Opposite
 
 universe v
-
-private theorem constant_sections_app {C : Type*} [Category* C]
-    (J : GrothendieckTopology C) [HasSheafify J AddCommGrpCat.{v}] {T : C}
-    (hT : IsTerminal T) (A : AddCommGrpCat.{v}) (F : Sheaf J AddCommGrpCat.{v})
-    (a : (constantSheaf J AddCommGrpCat.{v}).obj A ⟶ F) :
-    (constantSheafAdj J AddCommGrpCat.{v} hT).homEquiv A F a =
-      (toSheafify J ((Functor.const Cᵒᵖ).obj A) ≫ a.hom).app (op T) := by
-  ext x
-  rfl
-
-private theorem constant_sections_restrict {C : Type*} [Category* C]
-    (J : GrothendieckTopology C) [HasSheafify J AddCommGrpCat.{v}] {T T' : C}
-    (hT : IsTerminal T) (hT' : IsTerminal T') (g : T' ⟶ T)
-    (A : AddCommGrpCat.{v}) (F : Sheaf J AddCommGrpCat.{v})
-    (a : (constantSheaf J AddCommGrpCat.{v}).obj A ⟶ F) :
-    (constantSheafAdj J AddCommGrpCat.{v} hT).homEquiv A F a ≫ F.obj.map g.op =
-      (constantSheafAdj J AddCommGrpCat.{v} hT').homEquiv A F a := by
-  rw [constant_sections_app, constant_sections_app]
-  exact ((toSheafify J ((Functor.const Cᵒᵖ).obj A) ≫ a.hom).naturality g.op).symm.trans
-    (Category.id_comp _)
 
 private theorem cancel_inverse_sections {C D : Type*} [Category* C] [Category* D]
     (G : C ⥤ D) {A B : C} (e : A ≅ B) {Z H : D}
@@ -96,7 +77,7 @@ theorem chartComparisonSource_sections :
   change (adj.homEquiv _ _
     (chartSliceSource U ≫ (etaleSliceSheafEquivalence U).inverse.map a)) ≫ _ = _
   rw [chartSliceSource_sections U (F.over U) a]
-  exact constant_sections_restrict ((Scheme.smallEtaleTopology X).over U)
+  exact Sheaf.ConstantTerminalValues.homEquiv_restrict ((Scheme.smallEtaleTopology X).over U)
     ((etaleTerminalIsTerminal U.left).isTerminalObj (etaleSliceBackward U))
     Over.mkIdTerminal (etaleSliceTerminalIso U).inv _ (F.over U) a
 

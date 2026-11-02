@@ -1,0 +1,42 @@
+{
+  "run": "remote-1629cb74b6c74f928ec4dbbb203a09f0",
+  "actual_source": "0329c470c50cbd8465e64908f2f2560c8a8e90dd28ce8227db0b4a4331ec3c62",
+  "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/lane-b/Field-minimal1de5-1629cb74.json",
+  "source_archive_sha256": "b4cc51d2b4ef2950703d64453a467604436c45a4ba3b70526e55a2c052190af5",
+  "diagnostic_sha256": "1de5eb6705762fed19b3c648cb5b962117e1a0f3a79011b432fe7fa0df138257",
+  "native_file": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean",
+  "native_sha256": "616b87a1041f6eed9b19b5d5ecd0bc50c3df4acf636496f42b7c4800883c35ce",
+  "setup_sha256": "9e447e6ba595b146ce2b4756e31bd636b75c34bdb835579fe90c2a7d76c93ed6",
+  "setup_name": "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Field",
+  "setup_options": {
+    "autoImplicit": false,
+    "warningAsError": true,
+    "weak.linter.mathlibStandardSet": true,
+    "weak.linter.style.longFile": 1500
+  },
+  "command": [
+    "/root/autodl-tmp/lean-build/logs/remote-1629cb74b6c74f928ec4dbbb203a09f0/toolchain/bin/lean",
+    "-M12800",
+    "-j4",
+    "/root/autodl-tmp/lean-build/logs/remote-1629cb74b6c74f928ec4dbbb203a09f0/field-minimal-inplace/FieldInPlaceMinimal.lean",
+    "--setup",
+    "/root/autodl-tmp/lean-build/logs/remote-1629cb74b6c74f928ec4dbbb203a09f0/field-minimal-inplace/Field.setup.json",
+    "-o",
+    "/root/autodl-tmp/lean-build/logs/remote-1629cb74b6c74f928ec4dbbb203a09f0/field-minimal-inplace/Field.olean",
+    "-i",
+    "/root/autodl-tmp/lean-build/logs/remote-1629cb74b6c74f928ec4dbbb203a09f0/field-minimal-inplace/Field.ilean",
+    "-c",
+    "/root/autodl-tmp/lean-build/logs/remote-1629cb74b6c74f928ec4dbbb203a09f0/field-minimal-inplace/Field.c"
+  ],
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-1629cb74b6c74f928ec4dbbb203a09f0/receipt.json",
+  "receipt_sha256": "e3f6b56ef6b52e8a9a48012f0933aaf57dd4a033c89e75495a5bc261bc126804",
+  "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-1629cb74b6c74f928ec4dbbb203a09f0/build.log",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-1629cb74b6c74f928ec4dbbb203a09f0/compiler-events.jsonl",
+  "events_sha256": "8f86bad030dac190dc97141a4f853d44a5ea376b8fc6c23e39b52434cb1e9ba1",
+  "exit_code": 0,
+  "group_closed": true,
+  "fresh_frontends": 1,
+  "elapsed_seconds": 124.17859371006489,
+  "outcome": "Literal full-old-Field minimal-in-place faithful candidate passed; production616 remained unchanged",
+  "boundary": "Exact1de5 source/current setup only; not C5bb pass relabel, not generic/root/production adoption or additional acceptance gate. No new options/models/premises/native source write."
+}

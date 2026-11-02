@@ -124,3 +124,14 @@ composed with the actual map on global sections. The resulting original
 cohomology linear equivalence preserves units and coefficient naturality,
 without Noetherianity or properness. Its current consumer is the finite
 trace-coordinate cohomology comparison.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [Cohomology/CounitDegreeZero](Cohomology/CounitDegreeZero.lean)
+- [Cohomology/CounitNaturality](Cohomology/CounitNaturality.lean)
+- [DerivedModelCounit](DerivedModelCounit.lean)
+- [Localization/PrincipalGeometry](Localization/PrincipalGeometry.lean)
+- [Localization/Separated](Localization/Separated.lean)
+- [ResolutionLocality](ResolutionLocality.lean)

@@ -1,0 +1,113 @@
+{
+  "Aglib/AlgebraicGeometry/Spec/PowerSeriesSectionLifting.lean": [
+    {
+      "old": "powerSeriesPuncturedFiniteEtale_zeroSection_fullyFaithful",
+      "new": "powerSeriesPuncturedFiniteEtaleZeroSectionFullyFaithful",
+      "line": 38
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Spec/SmoothCompletionPrescribedSection.lean": [
+    {
+      "old": "smoothSplitSectionPuncturedFiniteEtale_fullyFaithful",
+      "new": "smoothSplitSectionPuncturedFiniteEtaleFullyFaithful",
+      "line": 65
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Spec/SmoothCompletionOpenPrescribedSection.lean": [
+    {
+      "old": "smoothSplitSectionPuncturedFiniteEtale_fullyFaithful",
+      "new": "smoothSplitSectionPuncturedFiniteEtaleFullyFaithful",
+      "line": 69
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Descent/FinitePresentation/OverBaseGluing.lean": [
+    {
+      "old": "baseChangeDiagram_rebaseIso",
+      "new": "baseChangeDiagramRebaseIso",
+      "line": 43
+    },
+    {
+      "old": "baseChangeDiagram_rebaseIso",
+      "new": "baseChangeDiagramRebaseIso",
+      "line": 56
+    },
+    {
+      "old": "baseChangeDiagram_rebaseIso",
+      "new": "baseChangeDiagramRebaseIso",
+      "line": 73
+    },
+    {
+      "old": "baseChangeDiagram_rebaseIso",
+      "new": "baseChangeDiagramRebaseIso",
+      "line": 77
+    }
+  ],
+  "Aglib/AlgebraicGeometry/EtaleCohomology/H1/GeometricallyConnected.lean": [
+    {
+      "old": "fullyFaithfulBaseChange_of_geometricallyConnected",
+      "new": "fullyFaithfulBaseChangeOfGeometricallyConnected",
+      "line": 43
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/CounitDegreeZero.lean": [
+    {
+      "old": "moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso",
+      "line": 40
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso",
+      "line": 56
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso",
+      "line": 165
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso",
+      "line": 169
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso",
+      "line": 145
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso",
+      "line": 162
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso",
+      "line": 197
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology.lean": [
+    {
+      "old": "moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_of_counit_quasiIso",
+      "new": "moduleDerivedPushforwardSingleAffineSectionsLinearEquivOfCounitQuasiIso",
+      "line": 89
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsHomologyMap_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsHomologyMapOfCounitQuasiIso",
+      "line": 108
+    },
+    {
+      "old": "moduleHigherDirectImageAffineSectionsLinearEquiv_of_counit_quasiIso",
+      "new": "moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso",
+      "line": 57
+    }
+  ],
+  "Aglib/AlgebraicGeometry/Modules/Coherent/AdicSystem/SectionCompleteness.lean": [
+    {
+      "old": "idealSheafSectionCone_isLimit_of_universallyExact",
+      "new": "idealSheafSectionConeIsLimitOfUniversallyExact",
+      "line": 42
+    }
+  ]
+}

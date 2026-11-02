@@ -6,6 +6,8 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Modules.Locality.Isomorphisms
+public import Aglib.AlgebraicGeometry.Modules.Stalk.Basic
+public import Mathlib.CategoryTheory.Functor.ReflectsIso.Exact
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Kernels
 /-!
 # Detecting module-sheaf exactness on open covers
@@ -44,26 +46,11 @@ lemma isIso_of_restrict_openCover {M N : X.Modules} (f : M ⟶ N)
       ((Scheme.Modules.restrictFunctor (a i)).map f))))
 
 lemma shortExact_of_restrict_openCover (S : ShortComplex X.Modules)
-    (hS : ∀ i, (S.map (Scheme.Modules.restrictFunctor (a i))).ShortExact) : S.ShortExact where
-  mono_f := by
-    apply Preadditive.mono_of_isZero_kernel
-    apply isZero_of_restrict_openCover Y a hcover
-    intro i
-    let : Mono ((Scheme.Modules.restrictFunctor (a i)).map S.f) := (hS i).mono_f
-    exact (isZero_kernel_of_mono ((Scheme.Modules.restrictFunctor (a i)).map S.f)).of_iso
-      (PreservesKernel.iso (Scheme.Modules.restrictFunctor (a i)) S.f)
-  epi_g := by
-    apply Preadditive.epi_of_isZero_cokernel
-    apply isZero_of_restrict_openCover Y a hcover
-    intro i
-    let : Epi ((Scheme.Modules.restrictFunctor (a i)).map S.g) := (hS i).epi_g
-    exact (isZero_cokernel_of_epi ((Scheme.Modules.restrictFunctor (a i)).map S.g)).of_iso
-      (PreservesCokernel.iso (Scheme.Modules.restrictFunctor (a i)) S.g)
-  exact := by
-    rw [ShortComplex.exact_iff_isZero_homology]
-    apply isZero_of_restrict_openCover Y a hcover
-    intro i
-    exact ((ShortComplex.exact_iff_isZero_homology _).mp (hS i).exact).of_iso
-      (S.mapHomologyIso (Scheme.Modules.restrictFunctor (a i))).symm
+    (hS : ∀ i, (S.map (Scheme.Modules.restrictFunctor (a i))).ShortExact) : S.ShortExact := by
+  let hF : JointlyReflectIsomorphisms (fun i => Scheme.Modules.restrictFunctor (a i)) := by
+    refine ⟨?_⟩
+    intro M N f hf
+    exact isIso_of_restrict_openCover Y a hcover f hf
+  exact (hF.shortExact_iff S).mpr hS
 
 end AlgebraicGeometry.Scheme.Modules

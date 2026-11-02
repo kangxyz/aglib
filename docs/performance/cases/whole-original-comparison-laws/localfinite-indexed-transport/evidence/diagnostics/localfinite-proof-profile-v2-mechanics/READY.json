@@ -1,0 +1,20 @@
+{
+  "question": "ONE faithful failed-proof-boundary/profile diagnostic for V26 native f656 after normal P34 formation PASS. Locate named mate/sourceFirst/sourceSecond/finiteIso component checks and original full native proof; inspect inferred whole proof type vs expected native goal without native unfolding.",
+  "native_sha256": "f656cc8ca88d909b0fc911fb8c77af8c7c87d9a09932a2b73d9fbdf1675af831",
+  "newlower_sha256": "aa3d6ef9922cf4ed7e2ebff5852afb1380faf579e60ede4663587069630474e8",
+  "diagnostic_source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-proof-profile-v2-mechanics/LocalFiniteProofProfile.lean",
+  "diagnostic_sha256": "1b41c792b9b455f0a8a39a6e681746df6719697deb6b4a09d4ed3740b51a4d3f",
+  "mode": "ONE samepurpose correctedprofilefrontend; allnewflagsdiagnosticCLI only; sourceanyStyleFailure reportedwithoutnativeCPPclaim. No newassemblycandidate/productionretry/oldformation.",
+  "scope_boundary": "Component checks use minimal ordinary contexts with same original maps; their pass/failure is only diagnostic. Full original public-proof profile remains target. No production/module/P closure or unique-cause/speedup claim from scratch. No oldformation question/replay/client/limit/suppression/sourceedit.",
+  "actual_failure_basis": "D2f7f1878/SOURCE0f467, GenericValuesaa3dPASS/nativef656Kernel45+102cascade. P34formationalreadyseparate7f2cPASS.",
+  "context": "D is now healthyP22; maincoordinator allocating equivalentidleC actualsourcea5 afterneededclosure compatibility and necessaryaa3dimport preparation. Do notrestore/cancel D.",
+  "version": "same-question-mechanics-correction",
+  "previous_attempt": {
+    "run": "remote-45e93e5b25e2477a8b960f028fdcf647",
+    "source": "a5e1d20d99830a0d4c1d3139e0a204de7e2b35f5491427e88d544647aa1b1f6f",
+    "outcome": "Owneddiagnosticinterrupted143viaverifiedsupervisorafterknownsourceDebugOptionstyleerrors/unboundedexplicitpp/no usablecompletednamedKernelframes",
+    "canonical": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-proof-profile-v1/raw-45e93e5b",
+    "native_module_failure_inferred": false
+  },
+  "mechanics_correction": "Move trace.profiler/threshold to native LeanCLI -D options; no sourceprofiler/pp declarations/no linterdisable. Diagnostics onlyscopedtooriginalfirsttheorem. Replacefulltrace_state with boundedexpected/inferredheads/arghead/hash and syntactic-onlycomparisons (depth2/max6+4args), no nativeunfolding/isDefEq call. Same originalproof+namedcomponentchecks, default200k/fullnative4options."
+}

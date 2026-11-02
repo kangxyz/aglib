@@ -9,6 +9,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericCokernelLoca
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericEtalePointLifting
 public import Aglib.AlgebraicGeometry.Sites.EtaleLocalPreimage
 public import Aglib.AlgebraicGeometry.Sites.EtaleSectionZeroLocus
+public import Aglib.CategoryTheory.Sites.SheafCokernel
 public import Aglib.Topology.NoetherianCurveSupport
 public import Mathlib.CategoryTheory.Sites.EpiMono
 
@@ -43,15 +44,8 @@ private theorem represented_mem_zeroLocus (U : X.Etale) [QuasiCompact U.hom]
     (genericArtinBaseChangeIndexEquiv_val (X := X) (U := U.left) U.hom (e.symm η)).symm.trans
       (congrArg Subtype.val (e.apply_symm_apply η))
   refine ⟨Etale.openChart U W, Etale.openChartHom U W, ⟨η.val, he ▸ hpW⟩, rfl, ?_⟩
-  have hn := ConcreteCategory.congr_hom
-    ((cokernel.π (genericArtinUnit X)).hom.naturality (Etale.openChartHom U W).op) a
-  have hz := congrArg (fun k : gm X ⟶ cokernel (genericArtinUnit X) =>
-    k.hom.app (op (Etale.openChart U W))) (cokernel.condition (genericArtinUnit X))
-  have hzv := ConcreteCategory.congr_hom hz b
-  change (cokernel.π (genericArtinUnit X)).hom.app _
-    ((genericArtinUnit X).hom.app _ b) = 0 at hzv
-  exact hn.symm.trans ((congrArg (fun c =>
-    (cokernel.π (genericArtinUnit X)).hom.app _ c) hb.symm).trans hzv)
+  exact CategoryTheory.Sheaf.cokernel_restriction_zero (genericArtinUnit X)
+    (Etale.openChartHom U W) a b hb
 
 /-- Every generic point belongs to the actual etale-local zero locus of any cokernel section. -/
 theorem genericCokernel_generic_mem_zeroLocus (U : X.Etale)

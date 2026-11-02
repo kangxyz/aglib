@@ -11,7 +11,8 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.Cartesian
 
 The native exact pasting equation proves composition and cancellation. At an
 actual étale cartesian second square, the accepted original comparison supplies
-the invertible second exchange. All six derived-category universes stay independent.
+the invertible second exchange. Its four required derived-category universes
+stay independent; the two ordinary pasting arguments require no derived models.
 -/
 
 @[expose] public noncomputable section
@@ -42,6 +43,12 @@ variable {X₀ X₁ X₂ S₀ S₁ S₂ : Scheme.{u}}
   (e : f₂ ≫ (g₂ ≫ g₁) = (h₂ ≫ h₁) ≫ f₀)
   (F : AbelianSheaf.{u, u + 1} X₀) (q : ℕ)
 
+omit [HasDerivedCategory.{dX₀} (AbelianSheaf.{u, u + 1} X₀)]
+  [HasDerivedCategory.{dX₁} (AbelianSheaf.{u, u + 1} X₁)]
+  [HasDerivedCategory.{dX₂} (AbelianSheaf.{u, u + 1} X₂)]
+  [HasDerivedCategory.{dS₀} (AbelianSheaf.{u, u + 1} S₀)]
+  [HasDerivedCategory.{dS₁} (AbelianSheaf.{u, u + 1} S₁)]
+  [HasDerivedCategory.{dS₂} (AbelianSheaf.{u, u + 1} S₂)] in
 /-- Original higher exchange is stable under horizontal composition at the
 specified coefficient, with the literal pulled-back coefficient on the second square. -/
 theorem higherBaseChangeMap_isIso_hComp
@@ -55,6 +62,12 @@ theorem higherBaseChangeMap_isIso_hComp
   rw [← hp]
   infer_instance
 
+omit [HasDerivedCategory.{dX₀} (AbelianSheaf.{u, u + 1} X₀)]
+  [HasDerivedCategory.{dX₁} (AbelianSheaf.{u, u + 1} X₁)]
+  [HasDerivedCategory.{dX₂} (AbelianSheaf.{u, u + 1} X₂)]
+  [HasDerivedCategory.{dS₀} (AbelianSheaf.{u, u + 1} S₀)]
+  [HasDerivedCategory.{dS₁} (AbelianSheaf.{u, u + 1} S₁)]
+  [HasDerivedCategory.{dS₂} (AbelianSheaf.{u, u + 1} S₂)] in
 /-- Cancelling the original second exchange detects the first exchange after
 its actual inverse image; neither a replacement endpoint isomorphism nor a
 conservativity assumption is hidden here. -/
@@ -72,6 +85,8 @@ theorem higherBaseChangeMap_inverseImage_isIso_of_hComp
     infer_instance
   exact (isIso_comp_right_iff _ _).mp ((isIso_comp_left_iff _ _).mp hi)
 
+omit [HasDerivedCategory.{dX₀} (AbelianSheaf.{u, u + 1} X₀)]
+  [HasDerivedCategory.{dS₀} (AbelianSheaf.{u, u + 1} S₀)] in
 /-- At a single actual étale cartesian restriction, original composite exchange
 invertibility detects the inverse image of the first exchange. The original
 natural-isomorphism component is typed before an indexed chart is substituted. -/

@@ -1,0 +1,22 @@
+{
+  "aglib_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "sources": [
+    {
+      "relative_path": "Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparisonExact.lean",
+      "candidate": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/candidate/Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparisonExact.lean",
+      "sha256": "bff0408c72a4155d49a803c31f04dd9db1568048bef526e45eb39331da620183",
+      "before": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/before/Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparisonExact.lean",
+      "before_sha256": "c9ee952332ea060208cefe1cd392978fd244ea3735e1786a4873f2b00c6fd2cb"
+    },
+    {
+      "relative_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean",
+      "candidate": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/candidate/Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean",
+      "sha256": "b70a3c5d0988000990a1aa8b4a178089191e0ee2ee2f935753d2ec8fe3516e8b",
+      "before": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/before/Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean",
+      "before_sha256": "7f83a301df8be8fa8e35acba008626b8ff34a36a99c4be2b204da8425d232d89"
+    }
+  ],
+  "unchanged_core_sha256": "7e54af9098fc49f2b09564e30facada627d7ab8b4a05c89d0c460e8c1cd7fc6f",
+  "phase": "LIVE READY: repair1 exact lowerbff/nativeb70 published; compiler pending",
+  "publication": "Broker explicit repair window after Aea58796 and B12a2 closed; all exact source/core/HEAD guards passed"
+}

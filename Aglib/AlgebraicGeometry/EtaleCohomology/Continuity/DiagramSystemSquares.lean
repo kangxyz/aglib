@@ -26,6 +26,17 @@ def systemSquareSectionsMap {i j : I} (a : i ⟶ j) {Y Z : Scheme.{u}}
       (globalSections Z).obj ((inverseImage g).obj (F.obj j)) :=
   squareSectionsMap f g (X.map a).unop h e (diagramInverseTransition X F a)
 
+/-- The system square retains the whole original section-map value. -/
+lemma systemSquareSectionsMap_eq_sectionSystemSquareMap {i j : I} (a : i ⟶ j)
+    {Y Z : Scheme.{u}} (f : Y ⟶ (X.obj i).unop) (g : Z ⟶ (X.obj j).unop) (h : Z ⟶ Y)
+    (e : g ≫ (X.map a).unop = h ≫ f) :
+    systemSquareSectionsMap X F a f g h e =
+      schemeSectionData.systemSquareMap X F a f.op g.op h.op
+        (congrArg Quiver.Hom.op e) := by
+  symm
+  exact schemeSectionSquareMap_eq f.op g.op (X.map a) h.op
+    (congrArg Quiver.Hom.op e) (diagramInverseTransition X F a)
+
 lemma systemSquareSectionsMap_comp {i j k : I} (a : i ⟶ j) (b : j ⟶ k)
     {Y₀ Y₁ Y₂ : Scheme.{u}} (f₀ : Y₀ ⟶ (X.obj i).unop)
     (f₁ : Y₁ ⟶ (X.obj j).unop) (f₂ : Y₂ ⟶ (X.obj k).unop)
@@ -36,22 +47,9 @@ lemma systemSquareSectionsMap_comp {i j k : I} (a : i ⟶ j) (b : j ⟶ k)
     systemSquareSectionsMap X F (a ≫ b) f₀ f₂ t e =
       systemSquareSectionsMap X F a f₀ f₁ h₁ e₁ ≫
         systemSquareSectionsMap X F b f₁ f₂ h₂ e₂ := by
-  dsimp only [systemSquareSectionsMap]
-  rw [diagramInverseTransition_comp]
-  simp only [diagramInverseImageComp, Iso.trans_hom, NatTrans.comp_app,
-    eqToIso.hom, eqToHom_app]
-  let e' : f₂ ≫ ((X.map b).unop ≫ (X.map a).unop) = (h₂ ≫ h₁) ≫ f₀ := by
-    rw [← Category.assoc, e₂, Category.assoc, e₁, ← Category.assoc]
-  let φ : (inverseImage ((X.map b).unop ≫ (X.map a).unop)).obj (F.obj i) ⟶ F.obj k :=
-    (inverseImageComp (X.map a).unop (X.map b).unop).hom.app (F.obj i) ≫
-      (inverseImage (X.map b).unop).map (diagramInverseTransition X F a) ≫
-        diagramInverseTransition X F b
-  have ht := squareSectionsMap_transport f₀ f₂
-    ((X.map b).unop ≫ (X.map a).unop) (X.map (a ≫ b)).unop
-    (h₂ ≫ h₁) t
-    (congrArg (fun s : X.obj i ⟶ X.obj k => s.unop) (X.map_comp a b)) et e' e φ
-  have hp := squareSectionsMap_hComp f₀ f₁ f₂ (X.map a).unop (X.map b).unop
-    h₁ h₂ e₁ e₂ e' (diagramInverseTransition X F a) (diagramInverseTransition X F b)
-  exact ht.trans hp.symm
+  simp only [systemSquareSectionsMap_eq_sectionSystemSquareMap]
+  exact schemeSectionData.systemSquareMap_comp schemeAdjunctionData_coherent X F a b
+    f₀.op f₁.op f₂.op h₁.op h₂.op t.op (congrArg Quiver.Hom.op et)
+    (congrArg Quiver.Hom.op e₁) (congrArg Quiver.Hom.op e₂) (congrArg Quiver.Hom.op e)
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Continuity

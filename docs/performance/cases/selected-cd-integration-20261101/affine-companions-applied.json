@@ -1,0 +1,61 @@
+{
+  "question": "Complete the actual affine source-split companion family after selected normal-cohort DerivedModel namespace collision",
+  "basis": {
+    "main": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/release-integrator-20261030/integration-30b6",
+    "head": "b0f8ca3f44be620dde8b40f65e1eec0143e45db4",
+    "snapshot_source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/snapshot/source",
+    "root_grant": "Existing public companions strictly under Cohomology/DirectImage/Affine/ whose canonical providers are already admitted; no other owner writes"
+  },
+  "applied": [
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/DerivedModel.lean",
+      "before_sha256": "e0f0cde5f3e9cf2190908658805da1ade5e7341d1796d6e327a7d527e62bec5c",
+      "after_sha256": "285cfc1eb2622a09a45b0f0910d38de75f2a5a1996864e4654e5688afa1b27c3",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/snapshot/source/Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/DerivedModel.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Localization.lean",
+      "before_sha256": "fa71a3b2b5989264b316ff9631e3aff11eda9c504759c5eeddb1ba198390e0b9",
+      "after_sha256": "46440e4adb82d1c50ca13363ab9743d22ee117fb1374a8735ec1847e52b24005",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/snapshot/source/Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Localization.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Localization/Principal.lean",
+      "before_sha256": "d55460eb76769e76ddc67cec378b3c797d97c32bb9ba5133f4ababe0389ba0fb",
+      "after_sha256": "e32c7b17eb00fbe9bc4957646e5616b03826c7ce932969dfabf8d570e779724c",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/snapshot/source/Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Localization/Principal.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Resolution.lean",
+      "before_sha256": "2cab52cd19dcf082cee0adf065ae1be53188d46f4a6fa04bc6bfc428cf7f7db5",
+      "after_sha256": "3a3ce6d7f8b0452f9dc5029c0691528684389b72698c88fe7e01dd9d5b360d45",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/snapshot/source/Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Resolution.lean"
+    }
+  ],
+  "stable": {
+    "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology.lean": "1415e7aebafab74f3f093c90534942e306b9084482d9c6393fb71b8ad9482db3",
+    "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/Naturality.lean": "d2cb07660e12afc1619477d3e41b8f0c5a6482f5b40e6714c82af69503db83e7"
+  },
+  "correspondence": [
+    "DerivedModel canonical moved declarations and original counit/derived-unit/section maps remain owned once in DerivedModelCounit; native adapter uses the same HasDerivedCategory.standard per actual category",
+    "Localization preserves original scalar mate, structural actions, original pullback unit, Cartesian square and actual Sheaf.H; qcqs/quasicoherence discharge the same original tensor-invertibility premise",
+    "Principal geometry preserves the literal principal inverse-image open, actual restricted morphism/isoSpec, same sections algebra and localization scalar",
+    "Resolution preserves the supplied original injective resolution, original section-homology restriction in all integer degrees, and original tilde counit; native localization premise is supplied by the existing principal result"
+  ],
+  "not_applied": [
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Localization/Open.lean",
+      "reason": "Snapshot imports absent OpenScalarMate, excluded_accepted through unrecovered Ext/DiagramMap/Coefficients draft; current complete public proof retained"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/Restriction.lean",
+      "reason": "Snapshot imports CounitRestriction, which is absent from MAIN and source-kind inventory; current complete public proof retained"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine.lean",
+      "reason": "Outside exact directory grant; no moved-declaration namespace collision and current complete original-map proof retained"
+    }
+  ],
+  "changed_family_maximal_leaf": "Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.DerivedModel",
+  "evidence": "Source correspondence and mutation guards only; no new CPP, probe, audit, tests, options, models, hypotheses or filenames"
+}

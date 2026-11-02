@@ -1,0 +1,14 @@
+{
+  "run": "remote-d07189daa6e84086b16a6f9352b340f5",
+  "source": "fa706f5af7815a71b77557a26516aed2ea4df5a88162c006ab22f2a103759389",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-d07189daa6e84086b16a6f9352b340f5/receipt.json",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-d07189daa6e84086b16a6f9352b340f5/compiler-events.jsonl",
+  "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-d07189daa6e84086b16a6f9352b340f5/build.log",
+  "group_closed": true,
+  "exit_code": 0,
+  "frontend_count": 1,
+  "phase_elapsed_seconds": 41.248226284980774,
+  "probe_sha256": "c1b2263a6281eca0ae8d6b4de7349bf8874c27654e5c99a2d9546872429e3c76",
+  "native_setup_sha256": "283917335d2fd67c8450fe2d889d3a06e6c0482ec77bdfec4279dac414f2751f",
+  "boundary": "ExactP85/P128 formed only in (_h:P):True with twooriginaldata definitions; noPproof/nativeModuleclosure/speedup/exactkernelpair."
+}

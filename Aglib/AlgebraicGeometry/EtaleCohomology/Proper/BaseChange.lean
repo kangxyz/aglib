@@ -14,7 +14,8 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.TorsionPo
 The original proper higher exchange is invertible on every internally torsion
 sheaf. The same defined derived exchange is invertible on every bounded-below
 complex whose homology sheaves are internally torsion. The base schemes and
-base change are arbitrary, and the four supplied derived models are independent.
+base change are arbitrary. The higher exchange is intrinsic; the four supplied
+derived models remain independent in the derived statements.
 -/
 
 @[expose] public noncomputable section
@@ -28,10 +29,6 @@ universe u dX dS dX' dS'
 attribute [local instance] hasSheafifyLarge
 
 variable {X S X' S' : Scheme.{u}}
-  [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
-  [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} S)]
-  [HasDerivedCategory.{dX'} (AbelianSheaf.{u, u + 1} X')]
-  [HasDerivedCategory.{dS'} (AbelianSheaf.{u, u + 1} S')]
   (f : X ⟶ S) [IsProper f] (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
   (H : IsPullback g' f' f g)
 
@@ -40,10 +37,22 @@ coefficients, with no uniform annihilator or restriction on the base. -/
 theorem properHigherBaseChange_isIso
     (F : AbelianSheaf.{u, u + 1} X) (hF : IsTorsion X F) (q : ℕ) :
     IsIso ((higherBaseChangeMap f f' g g' H.w.symm q).app F) := by
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X')
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S')
   have : IsProper f' := MorphismProperty.of_isPullback H (inferInstance : IsProper f)
   exact Reduction.higherBaseChangeMap_isIso_of_torsion_of_killed f f' g g' H.w.symm q
-    (fun n hn M hM => properHigherBaseChange_isIso_of_killed f f' g g' H n hn M hM q)
+    (fun n hn M hM => by
+      simpa only [higherBaseChangeMapFromDerived_eq] using
+        (properHigherBaseChange_isIso_of_killed f f' g g' H n hn M hM q))
     F hF
+
+variable
+  [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
+  [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} S)]
+  [HasDerivedCategory.{dX'} (AbelianSheaf.{u, u + 1} X')]
+  [HasDerivedCategory.{dS'} (AbelianSheaf.{u, u + 1} S')]
 
 /-- The same proper derived exchange on the original single of a locally
 torsion sheaf. -/

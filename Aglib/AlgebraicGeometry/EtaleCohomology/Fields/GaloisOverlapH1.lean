@@ -23,7 +23,7 @@ open GroupCohomology.Kummer.Coefficients
 
 namespace AlgebraicGeometry.Scheme.EtaleCohomology.Fields
 
-universe u w₁ w₂ w₃
+universe u w₁
 
 variable (E L : Type u) [Field E] [Field L] [Algebra E L]
   [FiniteDimensional E L] [Algebra.IsSeparable E L]
@@ -37,33 +37,21 @@ def galoisCechFreeIso (n : ℕ) :
     (Presheaf.Cech.sheafComplex (Presheaf.Cech.familyMap (galoisCoverFamily E L))
       (Scheme.smallEtaleTopology (Spec (.of E)))).X n ≅
         freeAbelianSheaf.{u + 1} (Scheme.smallEtaleTopology (Spec (.of E)))
-          (∏ᶜ fun _ : Fin (n + 1) => galoisCoverOver E L).left := by
-  refine (presheafToSheaf _ AddCommGrpCat.{u + 1}).mapIso
-    (((Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free).mapIso
-      (Presheaf.Cech.tupleProductIso
-        (fun _ : PUnit.{u + 2} => galoisCoverOver E L) n)) ≪≫ ?_
-  exact
-    (Presheaf.Cech.freeUniqueFamilyIso (Fin (n + 1) → PUnit.{u + 2})
-      (∏ᶜ fun _ : Fin (n + 1) => galoisCoverOver E L).left
-      (Scheme.smallEtaleTopology (Spec (.of E))))
+          (∏ᶜ fun _ : Fin (n + 1) => galoisCoverOver E L).left :=
+  Presheaf.Cech.sheafComplexUniqueFamilyIso PUnit.{u + 2}
+    (Scheme.smallEtaleTopology (Spec (.of E))) (galoisCoverOver E L) n
 
 variable [HasExt.{w₁} (AbelianSheaf.{u, u + 1} (Spec (.of E)))]
-  [HasExt.{w₂} (Sheaf ((Scheme.smallEtaleTopology (Spec (.of E))).over
-    (∏ᶜ fun _ : Fin 2 => galoisCoverOver E L).left) AddCommGrpCat.{u + 1})]
-  [HasExt.{w₃} (AbelianSheaf.{u, u + 1}
-    (∏ᶜ fun _ : Fin 2 => galoisCoverOver E L).left.left)]
 
 /-- Degree-one Ext of the actual first free-resolution term vanishes. -/
 theorem galoisCech_ext_one_eq_zero
     (β : Ext.{w₁}
       ((Presheaf.Cech.sheafComplex (Presheaf.Cech.familyMap (galoisCoverFamily E L))
         (Scheme.smallEtaleTopology (Spec (.of E)))).X 1) (gm (Spec (.of E))) 1) : β = 0 := by
-  let e := galoisCechFreeIso E L 1
-  have h := (subsingleton_ext_one_gm_of_isArtinianScheme.{u, w₁, w₂, w₃}
-    (∏ᶜ fun _ : Fin 2 => galoisCoverOver E L).left).elim
-      ((Ext.mk₀ e.inv).comp β (Nat.zero_add 1)) 0
-  have h' := congrArg (fun γ => (Ext.mk₀ e.hom).comp γ (Nat.zero_add 1)) h
-  simpa only [Ext.mk₀_comp_mk₀_assoc, Iso.hom_inv_id,
-    Ext.mk₀_id_comp, Ext.comp_zero] using h'
+  let e := (((extFunctor 1).mapIso (galoisCechFreeIso E L 1).op).app
+    (gm (Spec (.of E)))).addCommGroupIsoToAddEquiv
+  exact e.symm.injective
+    ((subsingleton_ext_one_gm_of_isArtinianScheme.{u, w₁}
+      (∏ᶜ fun _ : Fin 2 => galoisCoverOver E L).left).elim _ _)
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Fields

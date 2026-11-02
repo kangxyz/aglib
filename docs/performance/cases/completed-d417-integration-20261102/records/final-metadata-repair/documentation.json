@@ -1,0 +1,944 @@
+[
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionBCModelComparison.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionComparisonOldModel",
+    "type": "HasDerivedCategory.{wM} (ModuleSheaf C.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionBCModelComparison.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionComparisonNewModel",
+    "type": "HasDerivedCategory.{wP} (ModuleSheaf E.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf E.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionMixedRefinementFaces.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarComposite",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf C.composite.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.composite.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionMixedRefinementFaces.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarComposite_1",
+    "type": "HasDerivedCategory.{wFGD} (ModuleSheaf D.composite.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.composite.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionMixedRefinementWhole.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instMixedWholeCompositeModelC",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf C.composite.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.composite.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionMixedRefinementWhole.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instMixedWholeCompositeModelD",
+    "type": "HasDerivedCategory.{wFGD} (ModuleSheaf D.composite.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.composite.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionModelMaps.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst",
+    "type": "HasDerivedCategory.{wF} (ModuleSheaf C.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionModelMaps.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification",
+    "type": "HasDerivedCategory.{wG} (ModuleSheaf C.targetCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.targetCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionModelMaps.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf C.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_3",
+    "type": "HasDerivedCategory.{wF} (ModuleSheaf C.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_4",
+    "type": "HasDerivedCategory.{wF} (ModuleSheaf D.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_3",
+    "type": "HasDerivedCategory.{wG} (ModuleSheaf C.targetCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.targetCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_4",
+    "type": "HasDerivedCategory.{wG} (ModuleSheaf D.targetCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.targetCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_3",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf C.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_4",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf D.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_5",
+    "type": "HasDerivedCategory.{wF} (ModuleSheaf C.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_6",
+    "type": "HasDerivedCategory.{wF} (ModuleSheaf D.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_5",
+    "type": "HasDerivedCategory.{wG} (ModuleSheaf C.targetCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.targetCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_6",
+    "type": "HasDerivedCategory.{wG} (ModuleSheaf D.targetCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.targetCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_5",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf C.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_6",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf D.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementFaces.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_1",
+    "type": "HasDerivedCategory.{wF} (ModuleSheaf C.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementFaces.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_2",
+    "type": "HasDerivedCategory.{wF} (ModuleSheaf D.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementFaces.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_1",
+    "type": "HasDerivedCategory.{wG} (ModuleSheaf C.targetCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.targetCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementFaces.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_2",
+    "type": "HasDerivedCategory.{wG} (ModuleSheaf D.targetCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.targetCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementFaces.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_1",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf C.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementFaces.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_2",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf D.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionTripleInterchange.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactificationTail",
+    "type": "HasDerivedCategory.{wB\u2081} (ModuleSheaf T.tail.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.tail.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/NormalizedToDirectImageBaseChange.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarBaseChange_2",
+    "type": "HasDerivedCategory.{wR} (ModuleSheaf (C.toCompactification.baseChange b).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (C.toCompactification.baseChange b).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/NormalizedToDirectImageBaseChange.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarDensifyBaseChange_1",
+    "type": "HasDerivedCategory.{wN} (ModuleSheaf (Hom.Compactification.densify (C.toCompactification.baseChange b)).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (Hom.Compactification.densify (C.toCompactification.baseChange b)).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/RawToDirectImageBaseChange.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.rawToDirectImageBaseChangeModel",
+    "type": "HasDerivedCategory.{wR} (ModuleSheaf (C.baseChange b).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (C.baseChange b).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/ToDirectImageCompositionModel.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.toDirectImageCompositionFirstModel",
+    "type": "HasDerivedCategory.{wF} (ModuleSheaf C.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/ToDirectImageCompositionModel.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.toDirectImageCompositionSecondModel",
+    "type": "HasDerivedCategory.{wG} (ModuleSheaf C.targetCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.targetCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/ToDirectImageCompositionModel.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.toDirectImageCompositionSourceModel",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf C.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleCartesianComposition.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.tripleCartesianCompositionLocal1",
+    "type": "HasDerivedCategory.{wB\u2081} (ModuleSheaf T.tail.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.tail.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleCartesianLeftRoute.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.tripleCartesianLeftLocal1",
+    "type": "HasDerivedCategory.{wB\u2081} (ModuleSheaf T.tail.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.tail.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleCartesianMaps.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.tripleCartesianMapsLocal1",
+    "type": "HasDerivedCategory.{wB\u2081} (ModuleSheaf T.tail.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.tail.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleCartesianRightRoute.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.tripleCartesianRightLocal1",
+    "type": "HasDerivedCategory.{wB\u2081} (ModuleSheaf T.tail.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.tail.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleHorizontalOpenTransport.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.tripleHorizontalTransportLocal1",
+    "type": "HasDerivedCategory.{wM} (ModuleSheaf T.tail.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.tail.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleRawComposition.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactificationTail_1",
+    "type": "HasDerivedCategory.{wB\u2081} (ModuleSheaf T.tail.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.tail.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleSingleModelAssociativity.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.tripleSingleAssocA0",
+    "type": "HasDerivedCategory.{wF} (ModuleSheaf T.leftInner.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.leftInner.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleSingleModelAssociativity.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.tripleSingleAssocA1",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf T.leftInner.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.leftInner.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleSingleModelAssociativity.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.tripleSingleAssocA2",
+    "type": "HasDerivedCategory.{wL} (ModuleSheaf T.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleSingleModelAssociativity.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.tripleSingleAssocB0",
+    "type": "HasDerivedCategory.{wG} (ModuleSheaf T.tail.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.tail.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleSingleModelAssociativity.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.tripleSingleAssocB1",
+    "type": "HasDerivedCategory.{wGH} (ModuleSheaf T.middle.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.middle.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleSingleModelAssociativity.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.tripleSingleAssocC",
+    "type": "HasDerivedCategory.{wH} (ModuleSheaf T.last.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.last.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleTotalArrowComparison.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.tripleTotalArrowLeftModel",
+    "type": "HasDerivedCategory.{wT} (ModuleSheaf T.leftOuter.composite.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.leftOuter.composite.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleTotalArrowComparison.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.tripleTotalArrowRightModel",
+    "type": "HasDerivedCategory.{wT} (ModuleSheaf T.rightTotalArrowTransport.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.rightTotalArrowTransport.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleTotalComparison.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarCompositeLeftOuter",
+    "type": "HasDerivedCategory.{wT} (ModuleSheaf T.leftOuter.composite.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.leftOuter.composite.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleTotalComparison.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarRightTotalTransport",
+    "type": "HasDerivedCategory.{wT} (ModuleSheaf T.rightTotalTransport.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.rightTotalTransport.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCChosenModel.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionChosenOldModel",
+    "type": "HasDerivedCategory.{wM} (ModuleSheaf C.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCChosenModel.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionChosenLiteralModel",
+    "type": "HasDerivedCategory.{wN} (ModuleSheaf (D).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (D).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCChosenModel.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionChosenFinalModel",
+    "type": "HasDerivedCategory.{wP} (ModuleSheaf E.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf E.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCChosenModel.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionChosenRawModel",
+    "type": "HasDerivedCategory.{wR} (ModuleSheaf (R).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (R).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCChosenModel.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionChosenTransportDenseModel",
+    "type": "HasDerivedCategory.{wN} (ModuleSheaf (Dt).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (Dt).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCChosenModel.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionChosenTransportRawModel",
+    "type": "HasDerivedCategory.{wR} (ModuleSheaf (Rt).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (Rt).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCModelSquare.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionBCModelF",
+    "type": "HasDerivedCategory.{wF} (ModuleSheaf C.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCModelSquare.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionBCModelG",
+    "type": "HasDerivedCategory.{wG} (ModuleSheaf C.targetCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.targetCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCModelSquare.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionBCModelH",
+    "type": "HasDerivedCategory.{wH} (ModuleSheaf C.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCModelSquare.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionBCModelF'",
+    "type": "HasDerivedCategory.{wF'} (ModuleSheaf D.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCModelSquare.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionBCModelG'",
+    "type": "HasDerivedCategory.{wG'} (ModuleSheaf D.targetCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.targetCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCModelSquare.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionBCModelH'",
+    "type": "HasDerivedCategory.{wH'} (ModuleSheaf D.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCRawSource.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionRawSourceLiteralModel",
+    "type": "HasDerivedCategory.{wR} (ModuleSheaf (C.baseChange b).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (C.baseChange b).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCRawSource.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionRawSourceTransportModel",
+    "type": "HasDerivedCategory.{wR} (ModuleSheaf (C.cartesianBaseChange f' a b sq).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (C.cartesianBaseChange f' a b sq).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCTorsion.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionBCTorsionSourceModel",
+    "type": "HasDerivedCategory.{wM} (ModuleSheaf C.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/CompositionBCTorsion.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionBCTorsionTargetModel",
+    "type": "HasDerivedCategory.{wN} (ModuleSheaf D.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoIdentity.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.sourceIsoIdentityRawAmbientModel",
+    "type": "HasDerivedCategory.{dM} (ModuleSheaf (C.ofSourceIso f (Iso.refl X) (Category.id_comp f)).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (C.ofSourceIso f (Iso.refl X) (Category.id_comp f)).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianCompositionCanonical.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCartesianCanonicalFirst",
+    "type": "HasDerivedCategory.{wF} (ModuleSheaf C.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianCompositionCanonical.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCartesianCanonicalTarget",
+    "type": "HasDerivedCategory.{wG} (ModuleSheaf C.targetCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.targetCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianCompositionCanonical.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCartesianCanonicalTotal",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf C.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianCompositionCanonical.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCartesianCanonicalCategory",
+    "type": "Category.{wFG} (@DerivedCategory (ModuleSheaf C.sourceCompactification.Xbar \u039b) inferInstance inferInstance (compositeModels C.composite))",
+    "doc": "The category structure for the specified derived-category model."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianFirstCube.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCartesianFirstCubeCategory",
+    "type": "Category.{wFG} (@DerivedCategory (ModuleSheaf C.composite.Xbar \u039b) inferInstance inferInstance hFG)",
+    "doc": "The category structure for the specified derived-category model."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianFirstHorizontal.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCartesianFirstHorizontalTotal",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf C.composite.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.composite.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianFirstHorizontal.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCartesianFirstHorizontalCategory",
+    "type": "Category.{wFG} (@DerivedCategory (ModuleSheaf C.composite.Xbar \u039b) inferInstance inferInstance hFG)",
+    "doc": "The category structure for the specified derived-category model."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianFirstNaturality.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCartesianFirstNaturalityCategory",
+    "type": "Category.{wFG} (@DerivedCategory (ModuleSheaf C.composite.Xbar \u039b) inferInstance inferInstance hFG)",
+    "doc": "The category structure for the specified derived-category model."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCModelComparison.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionComparisonOldModel",
+    "type": "HasDerivedCategory.{wM} (ModuleSheaf C.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCModelComparison.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionComparisonNewModel",
+    "type": "HasDerivedCategory.{wP} (ModuleSheaf E.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf E.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCModelSquare.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionBCModelF",
+    "type": "HasDerivedCategory.{wF} (ModuleSheaf C.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCModelSquare.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionBCModelG",
+    "type": "HasDerivedCategory.{wG} (ModuleSheaf C.targetCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.targetCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCModelSquare.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionBCModelH",
+    "type": "HasDerivedCategory.{wH} (ModuleSheaf C.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCModelSquare.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionBCModelF'",
+    "type": "HasDerivedCategory.{wF'} (ModuleSheaf D.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCModelSquare.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionBCModelG'",
+    "type": "HasDerivedCategory.{wG'} (ModuleSheaf D.targetCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.targetCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCModelSquare.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionBCModelH'",
+    "type": "HasDerivedCategory.{wH'} (ModuleSheaf D.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCRawSource.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionRawSourceLiteralModel",
+    "type": "HasDerivedCategory.{wR} (ModuleSheaf (C.baseChange b).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (C.baseChange b).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBCRawSource.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionRawSourceTransportModel",
+    "type": "HasDerivedCategory.{wR} (ModuleSheaf (C.cartesianBaseChange f' a b sq).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (C.cartesianBaseChange f' a b sq).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBaseChangeChosenModel.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionChosenOldModel",
+    "type": "HasDerivedCategory.{wM} (ModuleSheaf C.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBaseChangeChosenModel.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionChosenLiteralModel",
+    "type": "HasDerivedCategory.{wN} (ModuleSheaf (D).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (D).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBaseChangeChosenModel.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionChosenFinalModel",
+    "type": "HasDerivedCategory.{wP} (ModuleSheaf E.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf E.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBaseChangeChosenModel.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionChosenRawModel",
+    "type": "HasDerivedCategory.{wR} (ModuleSheaf (R).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (R).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBaseChangeChosenModel.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionChosenTransportDenseModel",
+    "type": "HasDerivedCategory.{wN} (ModuleSheaf (Dt).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (Dt).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionBaseChangeChosenModel.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionChosenTransportRawModel",
+    "type": "HasDerivedCategory.{wR} (ModuleSheaf (Rt).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (Rt).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionLeftUnitImage.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.leftUnitImageFirstModel",
+    "type": "HasDerivedCategory.{wA} (ModuleSheaf (Hom.CompactifiedComposition.leftUnit C).first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (Hom.CompactifiedComposition.leftUnit C).first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionLeftUnitImage.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.leftUnitImageTargetModel",
+    "type": "HasDerivedCategory.{wD} (ModuleSheaf C.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionLeftUnitImage.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.leftUnitImageTotalModel",
+    "type": "HasDerivedCategory.{wB} (ModuleSheaf C.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionLeftUnitImage.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.leftUnitImageTotalCategory",
+    "type": "Category.{wB} (@DerivedCategory (ModuleSheaf C.Xbar \u039b) inferInstance inferInstance (compositeModels (Hom.CompactifiedComposition.leftUnit C).composite))",
+    "doc": "The category structure for the specified derived-category model."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionLeftUnitImage.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.leftUnitImageTargetCategory",
+    "type": "Category.{wD} (@DerivedCategory (ModuleSheaf C.Xbar \u039b) inferInstance inferInstance (targetModels C))",
+    "doc": "The category structure for the specified derived-category model."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionLeftUnitSource.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.leftUnitSourceIdentityCategory",
+    "type": "Category.{wX} (@DerivedCategory (ModuleSheaf (Hom.DenseCompactification.ofProper (\ud835\udfd9 X)).Xbar \u039b) inferInstance inferInstance hX)",
+    "doc": "The category structure for the specified derived-category model."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionMixedRefinementFaces.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionMixedFacesSourceModel",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf C.composite.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.composite.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionMixedRefinementFaces.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionMixedFacesTargetModel",
+    "type": "HasDerivedCategory.{wFGD} (ModuleSheaf D.composite.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.composite.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionMixedRefinementWhole.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionMixedWholeSourceModel",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf C.composite.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.composite.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionMixedRefinementWhole.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionMixedWholeTargetModel",
+    "type": "HasDerivedCategory.{wFGD} (ModuleSheaf D.composite.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.composite.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionModelMaps.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionMapsFirstModel",
+    "type": "HasDerivedCategory.{wF} (ModuleSheaf C.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionModelMaps.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionMapsTargetModel",
+    "type": "HasDerivedCategory.{wG} (ModuleSheaf C.targetCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.targetCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionModelMaps.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionMapsTotalModel",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf C.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementCube.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionCubeModel0",
+    "type": "HasDerivedCategory.{wF} (ModuleSheaf C.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementCube.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionCubeModel1",
+    "type": "HasDerivedCategory.{wF} (ModuleSheaf D.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementCube.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionCubeModel2",
+    "type": "HasDerivedCategory.{wG} (ModuleSheaf C.targetCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.targetCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementCube.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionCubeModel3",
+    "type": "HasDerivedCategory.{wG} (ModuleSheaf D.targetCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.targetCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementCube.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionCubeModel4",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf C.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementCube.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionCubeModel5",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf D.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementFaces.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionFacesModel0",
+    "type": "HasDerivedCategory.{wF} (ModuleSheaf C.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementFaces.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionFacesModel1",
+    "type": "HasDerivedCategory.{wF} (ModuleSheaf D.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementFaces.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionFacesModel2",
+    "type": "HasDerivedCategory.{wG} (ModuleSheaf C.targetCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.targetCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementFaces.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionFacesModel3",
+    "type": "HasDerivedCategory.{wG} (ModuleSheaf D.targetCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.targetCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementFaces.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionFacesModel4",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf C.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionRefinementFaces.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionFacesModel5",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf D.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf D.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompositionTripleInterchange.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedCompositionTripleInterchangeModel",
+    "type": "HasDerivedCategory.{wB\u2081} (ModuleSheaf T.tail.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.tail.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/LeftUnitSourceExpansion.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.sourceExpansionEndpointCategory",
+    "type": "Category.{wX} (@DerivedCategory (ModuleSheaf X \u039b) inferInstance inferInstance hX)",
+    "doc": "The category structure for the specified derived-category model."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/LeftUnitSourceExpansion.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.sourceExpansionAmbientCategory",
+    "type": "Category.{wD} (@DerivedCategory (ModuleSheaf C.Xbar \u039b) inferInstance inferInstance hD)",
+    "doc": "The category structure for the specified derived-category model."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/LeftUnitSourceRestriction.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.sourceRestrictionEndpointCategory",
+    "type": "Category.{wX} (@DerivedCategory (ModuleSheaf X \u039b) inferInstance inferInstance hX)",
+    "doc": "The category structure for the specified derived-category model."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/LeftUnitSourceRestriction.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.sourceRestrictionAmbientCategory",
+    "type": "Category.{wD} (@DerivedCategory (ModuleSheaf C.Xbar \u039b) inferInstance inferInstance hD)",
+    "doc": "The category structure for the specified derived-category model."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/LeftUnitSourceRestriction.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.sourceRestrictionIdentityCategory",
+    "type": "Category.{wX} (@DerivedCategory (ModuleSheaf (Hom.DenseCompactification.ofProper (\ud835\udfd9 X)).Xbar \u039b) inferInstance inferInstance hX)",
+    "doc": "The category structure for the specified derived-category model."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/LeftUnitSupplied.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.suppliedLeftUnitTotalCategory",
+    "type": "Category.{wB} (@DerivedCategory (ModuleSheaf C.Xbar \u039b) inferInstance inferInstance (compositeModels (Hom.CompactifiedComposition.leftUnit C).composite))",
+    "doc": "The category structure for the specified derived-category model."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/LeftUnitSupplied.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.suppliedLeftUnitTargetCategory",
+    "type": "Category.{wD} (@DerivedCategory (ModuleSheaf C.Xbar \u039b) inferInstance inferInstance (targetModels C))",
+    "doc": "The category structure for the specified derived-category model."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/LeftUnitSuppliedIso.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.leftUnitSuppliedIsoTotalCategory",
+    "type": "Category.{wB} (@DerivedCategory (ModuleSheaf C.Xbar \u039b) inferInstance inferInstance (compositeModels (Hom.CompactifiedComposition.leftUnit C).composite))",
+    "doc": "The category structure for the specified derived-category model."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/LeftUnitSuppliedIso.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.leftUnitSuppliedIsoTargetCategory",
+    "type": "Category.{wD} (@DerivedCategory (ModuleSheaf C.Xbar \u039b) inferInstance inferInstance (targetModels C))",
+    "doc": "The category structure for the specified derived-category model."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseIdentityModel.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.normalizedBaseIdentityRaw",
+    "type": "HasDerivedCategory.{wR} (ModuleSheaf (C.toCompactification.baseChange (\ud835\udfd9 S)).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (C.toCompactification.baseChange (\ud835\udfd9 S)).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseIdentityModel.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.normalizedBaseIdentityTransport",
+    "type": "HasDerivedCategory.{wM} (ModuleSheaf ((Hom.DenseCompactification.identitySourceTransport f).obj C).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf ((Hom.DenseCompactification.identitySourceTransport f).obj C).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseIdentityModel.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.normalizedBaseIdentityDense",
+    "type": "HasDerivedCategory.{wD} (ModuleSheaf (Hom.Compactification.densify (C.toCompactification.baseChange (\ud835\udfd9 S))).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (Hom.Compactification.densify (C.toCompactification.baseChange (\ud835\udfd9 S))).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedToDirectImageBaseChange.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedNormalizedToTargetRawModel",
+    "type": "HasDerivedCategory.{wR} (ModuleSheaf (C.toCompactification.baseChange b).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (C.toCompactification.baseChange b).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedToDirectImageBaseChange.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedNormalizedToTargetDenseModel",
+    "type": "HasDerivedCategory.{wN} (ModuleSheaf (Hom.Compactification.densify (C.toCompactification.baseChange b)).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (Hom.Compactification.densify (C.toCompactification.baseChange b)).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceIsoIdentity.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedSourceIsoIdentityRawModel",
+    "type": "HasDerivedCategory.{dM} (ModuleSheaf (C.ofSourceIso f (Iso.refl X) (Category.id_comp f)).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (C.ofSourceIso f (Iso.refl X) (Category.id_comp f)).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawSourceToDirectImage.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedRawSourceComparisonModel",
+    "type": "HasDerivedCategory.{wM} (ModuleSheaf (C.ofSourceIso f' e h).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (C.ofSourceIso f' e h).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/RawToDirectImageBaseChange.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedRawToDirectImageBaseChangeModel",
+    "type": "HasDerivedCategory.{wR} (ModuleSheaf (C.baseChange b).Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf (C.baseChange b).Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ToDirectImageCompositionModel.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedToTargetCompositionFirstModel",
+    "type": "HasDerivedCategory.{wF} (ModuleSheaf C.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ToDirectImageCompositionModel.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedToTargetCompositionSecondModel",
+    "type": "HasDerivedCategory.{wG} (ModuleSheaf C.targetCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.targetCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ToDirectImageCompositionModel.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedToTargetCompositionSourceModel",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf C.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf C.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleCartesianComposition.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleCartesianCompositionLocal1",
+    "type": "HasDerivedCategory.{wB\u2081} (ModuleSheaf T.tail.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.tail.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleCartesianLeftRoute.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleCartesianLeftLocal1",
+    "type": "HasDerivedCategory.{wB\u2081} (ModuleSheaf T.tail.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.tail.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleCartesianMaps.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleCartesianMapsLocal1",
+    "type": "HasDerivedCategory.{wB\u2081} (ModuleSheaf T.tail.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.tail.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleCartesianRightRoute.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleCartesianRightLocal1",
+    "type": "HasDerivedCategory.{wB\u2081} (ModuleSheaf T.tail.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.tail.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleHorizontalOpenTransport.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleHorizontalTransportLocal1",
+    "type": "HasDerivedCategory.{wM} (ModuleSheaf T.tail.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.tail.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleRawComposition.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleRawCompositionModel",
+    "type": "HasDerivedCategory.{wB\u2081} (ModuleSheaf T.tail.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.tail.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelAssociativity.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleFinalA0",
+    "type": "HasDerivedCategory.{wF} (ModuleSheaf T.leftInner.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.leftInner.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelAssociativity.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleFinalA1",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf T.leftInner.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.leftInner.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelAssociativity.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleFinalA2",
+    "type": "HasDerivedCategory.{wL} (ModuleSheaf T.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelAssociativity.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleFinalB0",
+    "type": "HasDerivedCategory.{wG} (ModuleSheaf T.tail.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.tail.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelAssociativity.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleFinalB1",
+    "type": "HasDerivedCategory.{wGH} (ModuleSheaf T.middle.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.middle.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelAssociativity.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleFinalC",
+    "type": "HasDerivedCategory.{wH} (ModuleSheaf T.last.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.last.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelMaps.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleAssocA0",
+    "type": "HasDerivedCategory.{wF} (ModuleSheaf T.leftInner.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.leftInner.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelMaps.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleAssocA1",
+    "type": "HasDerivedCategory.{wFG} (ModuleSheaf T.leftInner.sourceCompactification.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.leftInner.sourceCompactification.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelMaps.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleAssocA2",
+    "type": "HasDerivedCategory.{wL} (ModuleSheaf T.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelMaps.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleAssocB0",
+    "type": "HasDerivedCategory.{wG} (ModuleSheaf T.tail.first.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.tail.first.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelMaps.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleAssocB1",
+    "type": "HasDerivedCategory.{wGH} (ModuleSheaf T.middle.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.middle.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleSingleModelMaps.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleSingleAssocC",
+    "type": "HasDerivedCategory.{wH} (ModuleSheaf T.last.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.last.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleTotalArrowComparison.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleTotalArrowLeftModel",
+    "type": "HasDerivedCategory.{wT} (ModuleSheaf T.leftOuter.composite.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.leftOuter.composite.Xbar \u039b`."
+  },
+  {
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TripleTotalArrowComparison.lean",
+    "qualified_name": "AlgebraicGeometry.Scheme.EtaleCohomology.unboundedTripleTotalArrowRightModel",
+    "type": "HasDerivedCategory.{wT} (ModuleSheaf T.rightTotalArrowTransport.Xbar \u039b)",
+    "doc": "The local derived-category model on `ModuleSheaf T.rightTotalArrowTransport.Xbar \u039b`."
+  }
+]

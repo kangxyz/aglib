@@ -1,0 +1,265 @@
+[
+  {
+    "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Adjunction/ComparisonBranches.lean",
+    "actual_main_sha256": "e3d435e6572abecb2c3913a47bd43a9bc4301f24dc325cd024aa35caaee048dc",
+    "packet_current1151_hashes": {
+      "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Adjunction/ComparisonBranches.lean": null
+    }
+  },
+  {
+    "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Adjunction/CompositionPredicate.lean",
+    "actual_main_sha256": "6b797970c0a37ec55ce54dc852e2438634714cb40420ee178ce6d50854f2c724",
+    "packet_current1151_hashes": {
+      "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Adjunction/CompositionPredicate.lean": "6b797970c0a37ec55ce54dc852e2438634714cb40420ee178ce6d50854f2c724"
+    }
+  },
+  {
+    "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Adjunction/PullbackCoherence.lean",
+    "actual_main_sha256": "e88e8378fa50e458d65be2679b7458c4a300777cb5f439173e9bd3fa2fe77fb5",
+    "packet_current1151_hashes": {
+      "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Adjunction/PullbackCoherence.lean": null
+    }
+  },
+  {
+    "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange.lean",
+    "actual_main_sha256": "d0a90deeded98068bfaafbe8b918d58aedade2c0b1fe29d02152fee5b7bf3d82",
+    "packet_current1151_hashes": {
+      "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange.lean": null
+    }
+  },
+  {
+    "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/IdentityNormalization.lean",
+    "actual_main_sha256": "6e7d25241eb25220f4131f95b9a4c23f293467a0b73776b6362bce130600ae33",
+    "packet_current1151_hashes": {
+      "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/IdentityNormalization.lean": null
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/Compactification/Refinements/Category.lean",
+    "actual_main_sha256": "6480acb52a6018cc8763bbc307784515ecb1e6fa38719ae9a939790ea7215067",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/Compactification/Refinements/Category.lean": null
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/Compactification/Refinements/Composition.lean",
+    "actual_main_sha256": "70df70bf7896c08e9dec3a39818a93800ce0c6362d2829e748903982ddb05325",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/Compactification/Refinements/Composition.lean": null
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/Compactification/Refinements/CompositionRestriction.lean",
+    "actual_main_sha256": "f6bc6a982f20a520244b806135faaf8d92b4cbbc761e269328696f34f49efc74",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/Compactification/Refinements/CompositionRestriction.lean": null
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/Compactification/Refinements/OpenSquare.lean",
+    "actual_main_sha256": "98621ec0a473ed07f5c550500077d0802131d7af3b7208db5a8991748aa8c52d",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/Compactification/Refinements/OpenSquare.lean": null
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/Compactification/Refinements/SourceIso.lean",
+    "actual_main_sha256": "2982aaa92dde4a4b87c0a96809e1283ffa84b20408392b87fa48ac4b8d485299",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/Compactification/Refinements/SourceIso.lean": null
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/DirectImage.lean",
+    "actual_main_sha256": "d309916d57bfff43941f48ec769e29628d7f25c02b93d5dab67d3af53d2f0027",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/DirectImage.lean": "d309916d57bfff43941f48ec769e29628d7f25c02b93d5dab67d3af53d2f0027"
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/Torsion.lean",
+    "actual_main_sha256": "77fbf028e71277382742d4dd4a2d3cef72b755a328366fb8d1a6a02712f4a93a",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/Torsion.lean": "77fbf028e71277382742d4dd4a2d3cef72b755a328366fb8d1a6a02712f4a93a"
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Diagram.lean",
+    "actual_main_sha256": "0bda98be195f04a520fa1bd9a57444dce7d4202ed17ae056dacd8558ee59481e",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Diagram.lean": "0bda98be195f04a520fa1bd9a57444dce7d4202ed17ae056dacd8558ee59481e"
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/ModelComparisonCoherence.lean",
+    "actual_main_sha256": "8674cd267c6717cb84d2d42a5461f679294d7386ac7687a7c5dffb6233ca86d4",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/ModelComparisonCoherence.lean": "8674cd267c6717cb84d2d42a5461f679294d7386ac7687a7c5dffb6233ca86d4"
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIdentityComparison.lean",
+    "actual_main_sha256": "89c79ddda887ae558c6c3ae97eaa9b071d924d67c21bf85c4b07b59e42ae563f",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawIdentityComparison.lean": "89c79ddda887ae558c6c3ae97eaa9b071d924d67c21bf85c4b07b59e42ae563f"
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CartesianExchangeComparison.lean",
+    "actual_main_sha256": "76961fe60488293dc739c557264e4508a7941594afa8cb872872de6399a01833",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CartesianExchangeComparison.lean": "76961fe60488293dc739c557264e4508a7941594afa8cb872872de6399a01833"
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/Composition.lean",
+    "actual_main_sha256": "0b3f1b019943b4000d635343b14af905b9c9eae359f0066c1f5577b7e1cbb148",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/Composition.lean": null
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CompositionCoherence.lean",
+    "actual_main_sha256": "5ead6d087ea70942197fb6832604ffc28fd9b8c2df2fec69578aef12cbc8ac33",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/DirectImageComparison.lean": "5ead6d087ea70942197fb6832604ffc28fd9b8c2df2fec69578aef12cbc8ac33",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CompositionCoherence.lean": "5ead6d087ea70942197fb6832604ffc28fd9b8c2df2fec69578aef12cbc8ac33"
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/Open.lean",
+    "actual_main_sha256": "dd89026e296518e07026f59b837de0491f0b320dd48381a9ca8f505b6600e3fa",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/Open.lean": null
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenBaseChangeConjugacy.lean",
+    "actual_main_sha256": "206561a370a676ed30a54bf834145751fb39565bb50318377ba03f80173b8917",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenBaseChangeConjugacy.lean": "206561a370a676ed30a54bf834145751fb39565bb50318377ba03f80173b8917"
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenBaseChangeIdentity.lean",
+    "actual_main_sha256": "19564794d0b63cb16e19844c665529275b048d5caf26bd1a31a07bc38d73f652",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenBaseChangeIdentity.lean": "19564794d0b63cb16e19844c665529275b048d5caf26bd1a31a07bc38d73f652"
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenComparisonCube.lean",
+    "actual_main_sha256": "f07b98bb69150f2025bbaa54df67fb24aa9ea58475942886df830e1b4825b430",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenComparisonCube.lean": "f07b98bb69150f2025bbaa54df67fb24aa9ea58475942886df830e1b4825b430"
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenFullyFaithful.lean",
+    "actual_main_sha256": "d74529321eace83bcc7490dce4dd1630249b7c172104acf43239864511bfd5ba",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenFullyFaithful.lean": null
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenTorsion.lean",
+    "actual_main_sha256": "e3480366302c0d0819885ef14be73229d8a8c7cb3f2c22b6fcd9e1a835458790",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenTorsion.lean": "e3480366302c0d0819885ef14be73229d8a8c7cb3f2c22b6fcd9e1a835458790"
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+    "actual_main_sha256": "7f7ddd67dbab5b61f062332dc01e99b4d6c4a9c8d6531a465ab08f554bddf9f4",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean": "7f7ddd67dbab5b61f062332dc01e99b4d6c4a9c8d6531a465ab08f554bddf9f4"
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/TorsionPreservation.lean",
+    "actual_main_sha256": "0ccd35b740217479c833fc89d7a3d6fcc8a10bf964e8247e8950abb11cccd647",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/TorsionPreservation.lean": "0ccd35b740217479c833fc89d7a3d6fcc8a10bf964e8247e8950abb11cccd647"
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleComparisons.lean",
+    "actual_main_sha256": "ed7a33279c0ceef5ac8b668cf69d7ab6ee9c77e4f00471cc9c77ef7880291244",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleComparisons.lean": null
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleRefinementComposition.lean",
+    "actual_main_sha256": "151a5549d3f9ef9310cf216a155a2b08997a4109ef656af01f1504c6116e2c1f",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleRefinementComposition.lean": null
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperComparison.lean",
+    "actual_main_sha256": "f54d82539419847e22730133f71cf369ca3a9eeca99bb7dc1748ab80b6f9f29f",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperComparison.lean": "f54d82539419847e22730133f71cf369ca3a9eeca99bb7dc1748ab80b6f9f29f"
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Localization/DerivedDetection.lean",
+    "actual_main_sha256": "2cd3a53bb704ab766203bc63f76e992e92e08f4b602f423a42ca7d8198fe0e39",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Localization/DerivedDetection.lean": "2cd3a53bb704ab766203bc63f76e992e92e08f4b602f423a42ca7d8198fe0e39"
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Localization/DerivedOpenClosed.lean",
+    "actual_main_sha256": "c1f42cf62ce89ac28532ed824507c461069d473c8c34e0df5613022aab51bbea",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Localization/DerivedOpenClosed.lean": "c1f42cf62ce89ac28532ed824507c461069d473c8c34e0df5613022aab51bbea"
+    }
+  },
+  {
+    "path": "Aglib/AlgebraicGeometry/Limits/Range.lean",
+    "actual_main_sha256": "007d960c9740344cbd39ae11435f32dd8ce3c07ceb1e6b844784b6d2323fd2e7",
+    "packet_current1151_hashes": {
+      "Aglib/AlgebraicGeometry/Limits/Range.lean": null
+    }
+  },
+  {
+    "path": "Aglib/CategoryTheory/Adjunction/LeftAdjointComparison.lean",
+    "actual_main_sha256": "1eaf563897980ccd5ecbc3602b9501f7de9c6d132da6a051c35775bd823a60cc",
+    "packet_current1151_hashes": {
+      "Aglib/CategoryTheory/Adjunction/LeftAdjointComparison.lean": null
+    }
+  },
+  {
+    "path": "Aglib/CategoryTheory/Adjunction/MateHomEquiv.lean",
+    "actual_main_sha256": "d8bf27e7e4218fd4063ff2ddacd86dd0cb8787e7c60a05c4e33412d16af1506c",
+    "packet_current1151_hashes": {
+      "Aglib/CategoryTheory/Adjunction/MateHomEquiv.lean": null
+    }
+  },
+  {
+    "path": "Aglib/CategoryTheory/Adjunction/MatePastingIdentification.lean",
+    "actual_main_sha256": "0dd2e6c5048a6ae086129b511d4234f2c1f7f0bacf027810587f7aa95d9e5fdb",
+    "packet_current1151_hashes": {
+      "Aglib/CategoryTheory/Adjunction/MatePastingIdentification.lean": "0dd2e6c5048a6ae086129b511d4234f2c1f7f0bacf027810587f7aa95d9e5fdb"
+    }
+  },
+  {
+    "path": "Aglib/CategoryTheory/Adjunction/Mates/Whole.lean",
+    "actual_main_sha256": "0e08de18803abf6008e23bd2593d39759fbce78add02965b06bbddef61dad6e4",
+    "packet_current1151_hashes": {}
+  },
+  {
+    "path": "Aglib/CategoryTheory/Filtered/InvertibleDiagramNaturality.lean",
+    "actual_main_sha256": "49b37f531768b82334e599e91b08ea8641524d06267b5b91106139307294edda",
+    "packet_current1151_hashes": {
+      "Aglib/CategoryTheory/Filtered/InvertibleDiagramNaturality.lean": "49b37f531768b82334e599e91b08ea8641524d06267b5b91106139307294edda"
+    }
+  },
+  {
+    "path": "Aglib/CategoryTheory/Functor/ImageComparison.lean",
+    "actual_main_sha256": "d4019d3463d474beab54a3388f9d4085a1833c97d8ebb430df09fb8310b86194",
+    "packet_current1151_hashes": {}
+  }
+]

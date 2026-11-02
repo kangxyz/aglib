@@ -97,6 +97,12 @@ theorem projectiveProjection_higherDirectImage_isZero
     hG.of_iso ((Scheme.Modules.higherDirectImageOpenRestrictionIso u v p j H q).app M)
   have hs := (Scheme.Modules.stalkFunctor (Spec A) y).map_isZero hrestrict
   have hs' := hs.of_iso ((Scheme.Modules.restrictStalkNatIso j y).app F).symm
-  simpa only [hy] using hs'
+  have hs'' : IsZero ((Scheme.Modules.stalkFunctor Y (j y)).obj F) := by
+    change IsZero ((TopCat.Presheaf.stalkFunctor AddCommGrpCat.{u}
+      (X := (Y : TopCat.{u})) (j y)).obj F.presheaf)
+    change IsZero ((TopCat.Presheaf.stalkFunctor AddCommGrpCat.{u}
+      (X := (Y : TopCat.{u})) (j y)).obj F.presheaf) at hs'
+    exact hs'
+  simpa only [hy] using hs''
 
 end AlgebraicGeometry.Scheme.Cohomology

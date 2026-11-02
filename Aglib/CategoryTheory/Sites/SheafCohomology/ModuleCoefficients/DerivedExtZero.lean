@@ -45,24 +45,7 @@ variable {C : Type u} [Category.{v} C] [Abelian C] [EnoughInjectives C]
 /-- The actual represented Ext comparison sends `Ext.mk₀` to the native derived-functor unit. -/
 lemma extRightDerivedRepresentedAddEquiv_mk₀ (f : X ⟶ Y) :
     extRightDerivedRepresentedAddEquiv X Y 0 (Ext.mk₀ f) =
-      (preadditiveCoyoneda.obj (op X)).toRightDerivedZero.app Y f := by
-  let I := injectiveResolution Y
-  let G := preadditiveCoyoneda.obj (op X)
-  let K := (G.mapHomologicalComplex (.up ℕ)).obj I.cocomplex
-  have hf : (f ≫ I.ι.f 0) ≫ I.cocomplex.d 0 1 = 0 := by
-    erw [Category.assoc, I.ι.comm 0 1]
-    simp
-  have hp : I.toRightDerivedZero' G f = K.cyclesMk (f ≫ I.ι.f 0) 1 (by simp) hf := by
-    apply (AddCommGrpCat.mono_iff_injective (K.iCycles 0)).mp inferInstance
-    have hi : K.iCycles 0 (K.cyclesMk (f ≫ I.ι.f 0) 1 (by simp) hf) = f ≫ I.ι.f 0 :=
-      K.i_cyclesMk _ _ _ _
-    rw [hi]
-    exact ConcreteCategory.congr_hom (I.toRightDerivedZero'_comp_iCycles G) f
-  rw [← I.extMk_ι_zero f, extRightDerivedRepresentedAddEquiv_extMk,
-    I.toRightDerivedZero_eq G]
-  change (I.isoRightDerivedObj G 0).inv (K.homologyπ 0
-      (K.cyclesMk (f ≫ I.ι.f 0) 1 (by simp) hf)) =
-    (I.isoRightDerivedObj G 0).inv (K.homologyπ 0 (I.toRightDerivedZero' G f))
-  rw [hp]
+      (preadditiveCoyoneda.obj (op X)).toRightDerivedZero.app Y f :=
+  CategoryTheory.Abelian.extRightDerivedRepresentedAddEquiv_mk₀ f
 
 end CategoryTheory.Sheaf.ModuleCoefficients

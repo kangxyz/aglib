@@ -1,0 +1,46 @@
+{
+  "question": "Resolve operation UUIDs mistakenly labeled as native run names in the earlier DE115 join",
+  "rows": [
+    {
+      "phase": "d47-BC16-DE30-D-ready23",
+      "native_run": "remote-e2c0026add754409981a4e7d9c96e965",
+      "operation_id": "9b497d7113784ef9839daa19356115bb",
+      "source": "7dd62b2132cacbbbb4e9b92d0c5efb185071358f32195f298fd842a0dd7db316",
+      "native_exit": 1,
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/d47-BC16-DE30-D-ready23/remote-runs/remote-e2c0026add754409981a4e7d9c96e965/receipt.json",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/d47-BC16-DE30-D-ready23/remote-runs/remote-e2c0026add754409981a4e7d9c96e965/build.log",
+      "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/d47-BC16-DE30-D-ready23/remote-runs/remote-e2c0026add754409981a4e7d9c96e965/compiler-events.jsonl"
+    },
+    {
+      "phase": "d47-BC37-DE45-repair1-D",
+      "native_run": "remote-d685b2be603e46a099742b2eed9856ff",
+      "operation_id": "9758a8b009664efbb1d6c3b232174576",
+      "source": "a651142c80cf4075f5efc61279cb95c59ea0f0957b8cb69f0660eaa6f0896609",
+      "native_exit": 1,
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/d47-BC37-DE45-repair1-D/remote-runs/remote-d685b2be603e46a099742b2eed9856ff/receipt.json",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/d47-BC37-DE45-repair1-D/remote-runs/remote-d685b2be603e46a099742b2eed9856ff/build.log",
+      "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/d47-BC37-DE45-repair1-D/remote-runs/remote-d685b2be603e46a099742b2eed9856ff/compiler-events.jsonl"
+    },
+    {
+      "phase": "d47-BC231-repair23-D",
+      "native_run": "remote-c40414f83190461da168445dab21fc15",
+      "operation_id": "be570168eb10452c8f61175d48075aac",
+      "source": "30723fcb6b9712d99636ae9b31967fe7cc062b306168728acbdf6671992c92d3",
+      "native_exit": 1,
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/d47-BC231-repair23-D/remote-runs/remote-c40414f83190461da168445dab21fc15/receipt.json",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/d47-BC231-repair23-D/remote-runs/remote-c40414f83190461da168445dab21fc15/build.log",
+      "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/d47-BC231-repair23-D/remote-runs/remote-c40414f83190461da168445dab21fc15/compiler-events.jsonl"
+    },
+    {
+      "phase": "d47-repair45-DEdelta2-D",
+      "native_run": "remote-95d1a72136ac4fcaabab891157efab9d",
+      "operation_id": "5282a5eb026141f0ac628c24f882b1cb",
+      "source": "5f94bd8af24af7a35e41c6b20feca886c5e98c82c5e3bb81a5eb6783a629f078",
+      "native_exit": 1,
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/d47-repair45-DEdelta2-D/remote-runs/remote-95d1a72136ac4fcaabab891157efab9d/receipt.json",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/d47-repair45-DEdelta2-D/remote-runs/remote-95d1a72136ac4fcaabab891157efab9d/build.log",
+      "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/d47-repair45-DEdelta2-D/remote-runs/remote-95d1a72136ac4fcaabab891157efab9d/compiler-events.jsonl"
+    }
+  ],
+  "boundary": "Metadata identity correction only. Source bindings and successful module events remain their actual original frames; failed whole-run exits remain failed."
+}

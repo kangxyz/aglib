@@ -6,12 +6,14 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Modules.InternalHom
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.InternalHom.TensorAdjunction
 public import Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.Restriction
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.Pullback.Tensor
 
 /-!
 # Tensor pullback for arbitrary module sheaves
 
-The tensor-Hom universal property and the actual restricted pullback adjunction
+The generic tensor-Hom universal property and the actual restricted pullback adjunction
 construct an explicit inverse to the existing canonical `pullbackTensorMap`.
 Both inverse equations retain arbitrary schemes, morphisms and module sheaves;
 no quasicoherence, flatness, finiteness or rank hypothesis is used.
@@ -42,177 +44,94 @@ namespace AlgebraicGeometry.Scheme.Modules.Pullback.Tensor
 universe u
 variable (X : Scheme.{u}) (M N P : X.Modules)
 
-/-- Currying a tensor arrow on sections over the over-category of an open. -/
-def currySection (h : tensorSheaf X M N ⟶ P) (U : X.Opensᵒᵖ) (m : M.val.obj U) :
+/-- The original currying section, from the actual generic tensor–Hom constructor. -/
+abbrev currySection (h : tensorSheaf X M N ⟶ P) (U : X.Opensᵒᵖ) (m : M.val.obj U) :
     (_root_.AlgebraicGeometry.Scheme.Modules.InternalHom.sheaf X N P).val.obj U :=
-  ⟨{
-    app V := AddCommGrpCat.ofHom {
-      toFun n := h.val.app (op V.unop.left)
-        ((tensorSheafUnit X M N).app (op V.unop.left)
-          (M.val.map V.unop.hom.op m ⊗ₜ n))
-      map_zero' := by simp
-      map_add' n n' := by simp [TensorProduct.tmul_add] }
-    naturality {V W} i := by
-      ext n
-      change h.val.app (op W.unop.left)
-        ((tensorSheafUnit X M N).app (op W.unop.left)
-          (M.val.map W.unop.hom.op m ⊗ₜ N.val.map i.unop.left.op n)) =
-        P.val.map i.unop.left.op
-          (h.val.app (op V.unop.left)
-            ((tensorSheafUnit X M N).app (op V.unop.left)
-              (M.val.map V.unop.hom.op m ⊗ₜ n)))
-      rw [← PresheafOfModules.naturality_apply]
-      have ht := PresheafOfModules.naturality_apply (tensorSheafUnit X M N)
-        i.unop.left.op (M.val.map V.unop.hom.op m ⊗ₜ n)
-      change (tensorSheafUnit X M N).app (op W.unop.left)
-        (M.val.map i.unop.left.op (M.val.map V.unop.hom.op m) ⊗ₜ
-          N.val.map i.unop.left.op n) = _ at ht
-      rw [← M.val.map_comp_apply, ← op_comp, Over.w i.unop] at ht
-      exact congrArg (h.val.app (op W.unop.left)) ht
-  }, by
-    intro V r n
-    change h.val.app (op V.unop.left)
-      ((tensorSheafUnit X M N).app (op V.unop.left)
-        (M.val.map V.unop.hom.op m ⊗ₜ (r • n))) =
-      r • h.val.app (op V.unop.left)
-        ((tensorSheafUnit X M N).app (op V.unop.left)
-          (M.val.map V.unop.hom.op m ⊗ₜ n))
-    rw [TensorProduct.tmul_smul, _root_.map_smul, _root_.map_smul]⟩
+  _root_.SheafOfModules.InternalHom.currySection.{u, u, u}
+    (C := X.Opens) (J := Opens.grothendieckTopology X) X.sheaf M N P h U m
 
-/-- Currying a tensor arrow as a morphism into internal Hom. -/
-def curry (h : tensorSheaf X M N ⟶ P) : M ⟶
-  _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.sheaf X N P where
-  val.app U := ModuleCat.ofHom {
-    toFun := currySection X M N P h U
-    map_add' m m' := by
-      apply Subtype.ext
-      change (_ : _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.RawHom X N P U.unop) = _
-      ext V n
-      change h.val.app (op V.unop.left) ((tensorSheafUnit X M N).app (op V.unop.left)
-        (M.val.map V.unop.hom.op (m + m') ⊗ₜ n)) = _
-      rw [map_add, TensorProduct.add_tmul, map_add, map_add]
-      rfl
-    map_smul' r m := by
-      apply Subtype.ext
-      change (_ : _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.RawHom X N P U.unop) = _
-      ext V n
-      change h.val.app (op V.unop.left) ((tensorSheafUnit X M N).app (op V.unop.left)
-        (M.val.map V.unop.hom.op (r • m) ⊗ₜ n)) =
-        X.presheaf.map V.unop.hom.op r •
-          h.val.app (op V.unop.left) ((tensorSheafUnit X M N).app (op V.unop.left)
-            (M.val.map V.unop.hom.op m ⊗ₜ n))
-      rw [M.val.map_smul]
-      change h.val.app (op V.unop.left) ((tensorSheafUnit X M N).app (op V.unop.left)
-        ((X.presheaf.map V.unop.hom.op r • M.val.map V.unop.hom.op m) ⊗ₜ n)) = _
-      have ht := (TensorProduct.smul_tmul' (R := Γ(X, V.unop.left))
-        (X.presheaf.map V.unop.hom.op r)
-        (M.val.map V.unop.hom.op m : M.val.obj (op V.unop.left))
-        (n : N.val.obj (op V.unop.left))).symm
-      have hu := ((tensorSheafUnit X M N).app (op V.unop.left)).hom.map_smul
-        (X.presheaf.map V.unop.hom.op r) (M.val.map V.unop.hom.op m ⊗ₜ n)
-      have hh := (h.val.app (op V.unop.left)).hom.map_smul
-        (X.presheaf.map V.unop.hom.op r)
-        ((tensorSheafUnit X M N).app (op V.unop.left) (M.val.map V.unop.hom.op m ⊗ₜ n))
-      exact (congrArg (fun z ↦ h.val.app (op V.unop.left)
-        ((tensorSheafUnit X M N).app (op V.unop.left) z)) ht).trans
-          ((congrArg (h.val.app (op V.unop.left)) hu).trans hh) }
-  val.naturality {U V} i := by
-    apply ModuleCat.hom_ext
-    apply LinearMap.ext
-    intro m
-    apply Subtype.ext
-    change (_ : _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.RawHom X N P V.unop) = _
-    ext W n
-    change h.val.app (op W.unop.left) ((tensorSheafUnit X M N).app (op W.unop.left)
-      (M.val.map W.unop.hom.op (M.val.map i m) ⊗ₜ n)) =
-      h.val.app (op W.unop.left) ((tensorSheafUnit X M N).app (op W.unop.left)
-        (M.val.map ((Over.map i.unop).obj W.unop).hom.op m ⊗ₜ n))
-    rw [← M.val.map_comp_apply]
-    rfl
+/-- The original currying morphism, from the actual generic tensor–Hom constructor. -/
+abbrev curry (h : tensorSheaf X M N ⟶ P) : M ⟶
+    _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.sheaf X N P :=
+  _root_.SheafOfModules.InternalHom.curry.{u, u, u}
+    (C := X.Opens) (J := Opens.grothendieckTopology X) X.sheaf M N P h
 
-/-- The presheaf arrow evaluating an internal-Hom morphism on tensor generators. -/
-def uncurryPresheaf (h : M ⟶ _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.sheaf X N P) :
+/-- The original presheaf uncurrying map, from the actual generic constructor. -/
+abbrev uncurryPresheaf
+    (h : M ⟶ _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.sheaf X N P) :
     PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := X.presheaf) M.val N.val ⟶ P.val :=
-  PresheafOfModulesOfCommRing.homMk (fun U ↦
-      ModuleCat.MonoidalCategory.tensorLift
-        (fun m n ↦ (h.val.app U m).val.app (op (Over.mk (𝟙 U.unop))) n)
-        (by intro m m' n; rw [map_add]; rfl)
-        (by
-          intro r m n
-          rw [(h.val.app U).hom.map_smul]
-          change X.presheaf.map (𝟙 U.unop).op r •
-            (show P.val.obj U from (h.val.app U m).val.app (op (Over.mk (𝟙 U.unop))) n) = _
-          simp)
-        (by intro m n n'; exact ((h.val.app U m).val.app _).hom.map_add _ _)
-        (by intro r m n; exact (h.val.app U m).property (op (Over.mk (𝟙 U.unop))) r n))
-      (by
-        intro U V i
-        apply ModuleCat.MonoidalCategory.tensor_ext
-        intro m n
-        have hh := PresheafOfModules.naturality_apply h.val i m
-        have hn := NatTrans.naturality_apply (h.val.app U m).val
-          (Over.homMk i.unop : Over.mk i.unop ⟶ Over.mk (𝟙 U.unop)).op n
-        change (h.val.app V (M.val.map i m)).val.app (op (Over.mk (𝟙 V.unop)))
-          (N.val.map i n) = P.val.map i ((h.val.app U m).val.app (op (Over.mk (𝟙 U.unop))) n)
-        rw [hh]
-        exact hn)
+  _root_.SheafOfModules.InternalHom.uncurryPresheaf.{u, u, u}
+    (C := X.Opens) (J := Opens.grothendieckTopology X) X.sheaf M N P h
 
-/-- Uncurrying an internal-Hom morphism through module sheafification. -/
-def uncurry (h : M ⟶ _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.sheaf X N P) :
-  tensorSheaf X M N ⟶ P :=
-  (PresheafOfModules.sheafificationHomEquiv (𝟙 X.ringCatSheaf.obj)).symm
-    (uncurryPresheaf X M N P h)
+/-- The original uncurrying morphism uses the same native sheafification map. -/
+abbrev uncurry (h : M ⟶ _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.sheaf X N P) :
+    tensorSheaf X M N ⟶ P :=
+  _root_.SheafOfModules.InternalHom.uncurry.{u, u, u}
+    (C := X.Opens) (J := Opens.grothendieckTopology X) X.sheaf M N P h
 
-theorem uncurry_tmul (h : M ⟶ _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.sheaf X N P) (U
-  : X.Opensᵒᵖ)
-    (m : M.val.obj U) (n : N.val.obj U) :
+/-- The original pure-section formula for the actual uncurrying morphism. -/
+theorem uncurry_tmul
+    (h : M ⟶ _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.sheaf X N P)
+    (U : X.Opensᵒᵖ) (m : M.val.obj U) (n : N.val.obj U) :
     (uncurry X M N P h).val.app U ((tensorSheafUnit X M N).app U (m ⊗ₜ n)) =
-      (h.val.app U m).val.app (op (Over.mk (𝟙 U.unop))) n := by
-  have hh := (PresheafOfModules.sheafificationHomEquiv (𝟙 X.ringCatSheaf.obj)).apply_symm_apply
-    (uncurryPresheaf X M N P h)
-  exact congrArg (fun k ↦ k.app U (m ⊗ₜ n)) hh
+      (h.val.app U m).val.app (op (Over.mk (𝟙 U.unop))) n :=
+  _root_.SheafOfModules.InternalHom.uncurry_tmul.{u, u, u}
+    (C := X.Opens) (J := Opens.grothendieckTopology X) X.sheaf M N P h U m n
 
 theorem uncurry_curry (h : tensorSheaf X M N ⟶ P) :
-    uncurry X M N P (curry X M N P h) = h := by
-  apply (PresheafOfModules.sheafificationHomEquiv (𝟙 X.ringCatSheaf.obj)).injective
-  ext U : 1
-  apply ModuleCat.MonoidalCategory.tensor_ext
-  intro m n
-  change (uncurry X M N P (curry X M N P h)).val.app U
-    ((tensorSheafUnit X M N).app U (m ⊗ₜ n)) = _
-  rw [uncurry_tmul]
-  change h.val.app U ((tensorSheafUnit X M N).app U (M.val.map (𝟙 U.unop).op m ⊗ₜ n)) =
-    h.val.app U ((tensorSheafUnit X M N).app U (m ⊗ₜ n))
-  have hi := ConcreteCategory.congr_hom (M.val.presheaf.map_id U) m
-  change M.val.map (𝟙 U) m = m at hi
-  rw [show (𝟙 U.unop).op = 𝟙 U from rfl, hi]
+    uncurry X M N P (curry X M N P h) = h :=
+  _root_.SheafOfModules.InternalHom.uncurry_curry.{u, u, u}
+    (C := X.Opens) (J := Opens.grothendieckTopology X) X.sheaf M N P h
 
-theorem curry_uncurry (h : M ⟶ _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.sheaf X N P) :
-    curry X M N P (uncurry X M N P h) = h := by
-  apply SheafOfModules.hom_ext
-  ext U : 1
-  apply ModuleCat.hom_ext
-  apply LinearMap.ext
-  intro m
-  apply Subtype.ext
-  change (_ : _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.RawHom X N P U.unop) = _
-  ext V n
-  change (uncurry X M N P h).val.app (op V.unop.left)
-    ((tensorSheafUnit X M N).app (op V.unop.left)
-      (M.val.map V.unop.hom.op m ⊗ₜ n)) = (h.val.app U m).val.app V n
-  rw [uncurry_tmul, PresheafOfModules.naturality_apply]
-  rfl
+theorem curry_uncurry
+    (h : M ⟶ _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.sheaf X N P) :
+    curry X M N P (uncurry X M N P h) = h :=
+  _root_.SheafOfModules.InternalHom.curry_uncurry.{u, u, u}
+    (C := X.Opens) (J := Opens.grothendieckTopology X) X.sheaf M N P h
 
-/-- The tensor/internal-Hom equivalence on the actual module-sheaf arrows. -/
-def tensorHomEquiv :
-    (tensorSheaf X M N ⟶ P) ≃ (M ⟶ _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.sheaf X N
-      P) where
-  toFun := curry X M N P
-  invFun := uncurry X M N P
-  left_inv := uncurry_curry X M N P
-  right_inv := curry_uncurry X M N P
+/-- The original tensor/internal-Hom equivalence is the actual generic equivalence. -/
+abbrev tensorHomEquiv :
+    (tensorSheaf X M N ⟶ P) ≃
+      (M ⟶ _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.sheaf X N P) :=
+  _root_.SheafOfModules.InternalHom.tensorHomEquiv.{u, u, u}
+    (C := X.Opens) (J := Opens.grothendieckTopology X) X.sheaf M N P
+
+/-- The whole original currying map is the actual generic map on the same arrow. -/
+theorem curry_eq_generic (h : tensorSheaf X M N ⟶ P) :
+    curry X M N P h =
+      _root_.SheafOfModules.InternalHom.curry.{u, u, u}
+        (C := X.Opens) (J := Opens.grothendieckTopology X) X.sheaf M N P h := rfl
+
+/-- The whole original uncurrying map is the actual generic map on the same arrow. -/
+theorem uncurry_eq_generic
+    (h : M ⟶ _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.sheaf X N P) :
+    uncurry X M N P h =
+      _root_.SheafOfModules.InternalHom.uncurry.{u, u, u}
+        (C := X.Opens) (J := Opens.grothendieckTopology X) X.sheaf M N P h := rfl
+
+/-- The whole original equivalence is the actual generic equivalence on the same tensor. -/
+theorem tensorHomEquiv_eq_generic :
+    tensorHomEquiv X M N P =
+      _root_.SheafOfModules.InternalHom.tensorHomEquiv.{u, u, u}
+        (C := X.Opens) (J := Opens.grothendieckTopology X) X.sheaf M N P := rfl
 
 variable {X Y : Scheme.{u}} (f : X ⟶ Y) (N : Y.Modules) (P : X.Modules)
+
+local instance preimageOverContinuous : ∀ U : Y.Opens,
+    (Over.post (Opens.map f.base)).IsContinuous
+      ((Opens.grothendieckTopology Y).over U)
+      ((Opens.grothendieckTopology X).over (f ⁻¹ᵁ U)) :=
+  fun U ↦ _root_.SheafOfModules.Pullback.overPost_isContinuous
+    (F := Opens.map f.base) (J := Opens.grothendieckTopology Y)
+    (K := Opens.grothendieckTopology X) U
+
+local instance preimageOverPushforwardRightAdjoint : ∀ U : Y.Opens,
+    (SheafOfModules.pushforward.{u}
+      (_root_.SheafOfModules.Pullback.restrictedRingHom
+        (_root_.SheafOfModules.Pullback.ringHom
+          (F := Opens.map f.base) (S := Y.sheaf) (R := X.sheaf) ⟨f.c⟩) U)).IsRightAdjoint :=
+  fun _ ↦ inferInstance
+
 
 /-- The inverse-image functor between over-categories of opens. -/
 def preimageOverFunctor (U : Y.Opens) : Over U ⥤ Over (f ⁻¹ᵁ U) where
@@ -226,33 +145,8 @@ def pushforwardHomSection (U : Y.Opensᵒᵖ)
       (op (f ⁻¹ᵁ U.unop))) :
     (_root_.AlgebraicGeometry.Scheme.Modules.InternalHom.sheaf Y N ((Scheme.Modules.pushforward
       f).obj P)).val.obj U :=
-  ⟨{
-    app V := AddCommGrpCat.ofHom <|
-      ((s.val.app ((preimageOverFunctor f U.unop).op.obj V)).hom).comp
-        (((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app N).val.app
-          (op V.unop.left)).hom.toAddMonoidHom
-    naturality {V W} i := by
-      ext m
-      change s.val.app ((preimageOverFunctor f U.unop).op.obj W)
-        (((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app N).val.app
-          (op W.unop.left) (N.val.map i.unop.left.op m)) =
-        P.val.map ((Opens.map f.base).map i.unop.left).op
-          (s.val.app ((preimageOverFunctor f U.unop).op.obj V)
-            (((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app N).val.app
-              (op V.unop.left) m))
-      have hu := PresheafOfModules.naturality_apply
-        ((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app N).val i.unop.left.op m
-      have hs := NatTrans.naturality_apply s.val
-        ((preimageOverFunctor f U.unop).map i.unop).op
-        (((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app N).val.app (op V.unop.left) m)
-      exact (congrArg (s.val.app ((preimageOverFunctor f U.unop).op.obj W)) hu).trans hs
-  }, by
-    intro V r m
-    have hu := (((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app N).val.app
-      (op V.unop.left)).hom.map_smul r m
-    have hs := s.property ((preimageOverFunctor f U.unop).op.obj V) (f.app V.unop.left r)
-      (((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app N).val.app (op V.unop.left) m)
-    exact (congrArg (s.val.app ((preimageOverFunctor f U.unop).op.obj V)) hu).trans hs⟩
+  _root_.SheafOfModules.Pullback.pushforwardHomSection.{u, u, u, u, u, u}
+    (F := Opens.map f.base) (S := Y.sheaf) (R := X.sheaf) ⟨f.c⟩ N P U s
 
 /-- The direct-image/internal-Hom comparison with the pulled-back first argument. -/
 def pushforwardHomMap :
@@ -260,45 +154,9 @@ def pushforwardHomMap :
       (_root_.AlgebraicGeometry.Scheme.Modules.InternalHom.sheaf X ((Scheme.Modules.pullback
         f).obj N) P) ⟶
     _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.sheaf Y N ((Scheme.Modules.pushforward
-      f).obj P) where
-  val.app U := ModuleCat.ofHom
-    (X := ((Scheme.Modules.pushforward f).obj
-      (_root_.AlgebraicGeometry.Scheme.Modules.InternalHom.sheaf X ((Scheme.Modules.pullback
-        f).obj N) P)).val.obj U)
-    (Y := (_root_.AlgebraicGeometry.Scheme.Modules.InternalHom.sheaf Y N
-      ((Scheme.Modules.pushforward f).obj P)).val.obj U) {
-    toFun := pushforwardHomSection f N P U
-    map_add' s t := by
-      apply Subtype.ext
-      change (_ : _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.RawHom Y N
-        ((Scheme.Modules.pushforward f).obj P) U.unop) = _
-      ext V m
-      rfl
-    map_smul' r s := by
-      apply Subtype.ext
-      change (_ : _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.RawHom Y N
-        ((Scheme.Modules.pushforward f).obj P) U.unop) = _
-      ext V m
-      change X.presheaf.map ((Opens.map f.base).map V.unop.hom).op
-          (f.app U.unop r) •
-          (show P.val.obj (op (f ⁻¹ᵁ V.unop.left)) from
-            s.val.app ((preimageOverFunctor f U.unop).op.obj V)
-              (((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app N).val.app _ m)) =
-        f.app V.unop.left (Y.presheaf.map V.unop.hom.op r) •
-          (show P.val.obj (op (f ⁻¹ᵁ V.unop.left)) from
-            s.val.app ((preimageOverFunctor f U.unop).op.obj V)
-              (((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app N).val.app _ m))
-      congr 1
-      exact (ConcreteCategory.congr_hom (f.naturality V.unop.hom.op) r).symm }
-  val.naturality {U V} i := by
-    apply ModuleCat.hom_ext
-    apply LinearMap.ext
-    intro s
-    apply Subtype.ext
-    change (_ : _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.RawHom Y N
-      ((Scheme.Modules.pushforward f).obj P) V.unop) = _
-    ext W m
-    rfl
+      f).obj P) :=
+  _root_.SheafOfModules.Pullback.pushforwardHomMap.{u, u, u, u, u, u}
+    (F := Opens.map f.base) (S := Y.sheaf) (R := X.sheaf) ⟨f.c⟩ N P
 
 variable (X : Scheme.{u}) (M N : X.Modules)
 /-- Internal-Hom sections over an open as arrows between restricted modules. -/
@@ -382,13 +240,20 @@ theorem pullbackHomSectionsEquiv_apply (U : Y.Opens)
     (restrictedPushforwardIso f U P).inv = _
   simp
 
-theorem pushforwardHomMap_isIso : IsIso (pushforwardHomMap f N P) := by
-  rw [Scheme.Modules.Hom.isIso_iff_isIso_app]
-  intro U
-  rw [ConcreteCategory.isIso_iff_bijective]
-  convert (pullbackHomSectionsEquiv f N P U).bijective using 1
-  funext s
-  exact (pullbackHomSectionsEquiv_apply f N P U s).symm
+/-- The original open-subscheme equivalence is the generic native slice equivalence. -/
+theorem pullbackHomSectionsEquiv_eq_generic (U : Y.Opens) :
+    pullbackHomSectionsEquiv f N P U =
+      _root_.SheafOfModules.Pullback.pullbackHomSectionsEquiv.{u, u, u, u, u, u}
+        (F := Opens.map f.base) (S := Y.sheaf) (R := X.sheaf) ⟨f.c⟩ N P U := by
+  apply Equiv.ext
+  intro s
+  exact (pullbackHomSectionsEquiv_apply f N P U s).trans
+    (_root_.SheafOfModules.Pullback.pullbackHomSectionsEquiv_apply.{u, u, u, u, u, u}
+      (F := Opens.map f.base) (S := Y.sheaf) (R := X.sheaf) ⟨f.c⟩ N P U s).symm
+
+theorem pushforwardHomMap_isIso : IsIso (pushforwardHomMap f N P) :=
+  _root_.SheafOfModules.Pullback.pushforwardHomMap_isIso.{u, u, u, u, u, u}
+    (F := Opens.map f.base) (S := Y.sheaf) (R := X.sheaf) ⟨f.c⟩ N P
 
 /-- The direct-image/internal-Hom isomorphism from the actual section equivalences. -/
 def pushforwardHomIso :
@@ -396,12 +261,17 @@ def pushforwardHomIso :
       (_root_.AlgebraicGeometry.Scheme.Modules.InternalHom.sheaf X ((Scheme.Modules.pullback
         f).obj N) P) ≅
     _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.sheaf Y N ((Scheme.Modules.pushforward
-      f).obj P) := by
-  haveI := pushforwardHomMap_isIso f N P
-  exact asIso (pushforwardHomMap f N P)
-
+      f).obj P) :=
+  _root_.SheafOfModules.Pullback.pushforwardHomIso.{u, u, u, u, u, u}
+    (F := Opens.map f.base) (S := Y.sheaf) (R := X.sheaf) ⟨f.c⟩ N P
 
 variable {X Y : Scheme.{u}} (f : X ⟶ Y)
+/-- The literal original Scheme tensor arrow is the generic native adjunction arrow. -/
+theorem pullbackTensorMap_eq_generic (M N : Y.Modules) :
+    pullbackTensorMap f M N =
+      _root_.SheafOfModules.Pullback.Tensor.pullbackTensorMap.{u, u, u, u, u}
+        (F := Opens.map f.base) (S := Y.sheaf) (R := X.sheaf) ⟨f.c⟩ M N := rfl
+
 theorem curry_pullback_adjoint (M N : Y.Modules) (P : X.Modules)
     (g : tensorSheaf X ((Scheme.Modules.pullback f).obj M)
       ((Scheme.Modules.pullback f).obj N) ⟶ P) :
@@ -413,78 +283,25 @@ theorem curry_pullback_adjoint (M N : Y.Modules) (P : X.Modules)
     (Scheme.Modules.pullbackPushforwardAdjunction f).unit.app M ≫
       (Scheme.Modules.pushforward f).map
         (curry X ((Scheme.Modules.pullback f).obj M) ((Scheme.Modules.pullback f).obj N) P g) ≫
-      pushforwardHomMap f N P := by
-  apply SheafOfModules.hom_ext
-  ext U : 1
-  apply ModuleCat.hom_ext
-  apply LinearMap.ext
-  intro m
-  apply Subtype.ext
-  change (_ : _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.RawHom Y N
-    ((Scheme.Modules.pushforward f).obj P) U.unop) = _
-  ext V n
-  change g.val.app (op (f ⁻¹ᵁ V.unop.left))
-    ((pushforwardTensorMap f ((Scheme.Modules.pullback f).obj M)
-      ((Scheme.Modules.pullback f).obj N)).val.app (op V.unop.left)
-      ((tensorSheafMap Y ((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app M)
-        ((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app N)).val.app (op V.unop.left)
-        ((tensorSheafUnit Y M N).app (op V.unop.left)
-          (M.val.map V.unop.hom.op m ⊗ₜ n)))) =
-    g.val.app (op (f ⁻¹ᵁ V.unop.left))
-      ((tensorSheafUnit X ((Scheme.Modules.pullback f).obj M)
-        ((Scheme.Modules.pullback f).obj N)).app (op (f ⁻¹ᵁ V.unop.left))
-        (((Scheme.Modules.pullback f).obj M).val.map
-          ((Opens.map f.base).map V.unop.hom).op
-          (((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app M).val.app U m) ⊗ₜ
-        ((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app N).val.app (op V.unop.left) n))
-  have h₁ := tensorSheafMap_tmul Y
-    ((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app M)
-    ((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app N) (op V.unop.left)
-    (M.val.map V.unop.hom.op m : M.val.obj (op V.unop.left)) n
-  have h₂ := pushforwardTensorMap_tmul f ((Scheme.Modules.pullback f).obj M)
-    ((Scheme.Modules.pullback f).obj N) (op V.unop.left)
-    (((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app M).val.app
-      (op V.unop.left) (M.val.map V.unop.hom.op m))
-    (((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app N).val.app (op V.unop.left) n)
-  have he := congrArg (g.val.app (op (f ⁻¹ᵁ V.unop.left)))
-    ((congrArg ((pushforwardTensorMap f ((Scheme.Modules.pullback f).obj M)
-      ((Scheme.Modules.pullback f).obj N)).val.app (op V.unop.left)) h₁).trans h₂)
-  have hu := PresheafOfModules.naturality_apply
-    ((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app M).val V.unop.hom.op m
-  exact he.trans (congrArg (fun z ↦ g.val.app (op (f ⁻¹ᵁ V.unop.left))
-    ((tensorSheafUnit X ((Scheme.Modules.pullback f).obj M)
-      ((Scheme.Modules.pullback f).obj N)).app (op (f ⁻¹ᵁ V.unop.left))
-      (z ⊗ₜ ((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app N).val.app
-        (op V.unop.left) n))) hu)
+      pushforwardHomMap f N P :=
+  _root_.SheafOfModules.Pullback.Tensor.curry_pullback_adjoint.{u, u, u, u, u}
+    (F := Opens.map f.base) (S := Y.sheaf) (R := X.sheaf) ⟨f.c⟩ M N P g
 
 /-- The tensor pullback equivalence induced by currying and the actual adjunction. -/
 def tensorPullbackHomEquiv (M N : Y.Modules) (P : X.Modules) :
     (tensorSheaf X ((Scheme.Modules.pullback f).obj M)
       ((Scheme.Modules.pullback f).obj N) ⟶ P) ≃
     ((Scheme.Modules.pullback f).obj (tensorSheaf Y M N) ⟶ P) :=
-  (tensorHomEquiv X ((Scheme.Modules.pullback f).obj M)
-    ((Scheme.Modules.pullback f).obj N) P).trans
-    (((Scheme.Modules.pullbackPushforwardAdjunction f).homEquiv _ _).trans
-      ((Iso.homCongr (Iso.refl M) (pushforwardHomIso f N P)).trans
-        ((tensorHomEquiv Y M N ((Scheme.Modules.pushforward f).obj P)).symm.trans
-          ((Scheme.Modules.pullbackPushforwardAdjunction f).homEquiv _ _).symm)))
+  _root_.SheafOfModules.Pullback.Tensor.tensorPullbackHomEquiv.{u, u, u, u, u}
+    (F := Opens.map f.base) (S := Y.sheaf) (R := X.sheaf) ⟨f.c⟩ M N P
 
 theorem tensorPullbackHomEquiv_apply (M N : Y.Modules) (P : X.Modules)
     (g : tensorSheaf X ((Scheme.Modules.pullback f).obj M)
       ((Scheme.Modules.pullback f).obj N) ⟶ P) :
     tensorPullbackHomEquiv f M N P g = pullbackTensorMap f M N ≫ g := by
-  apply ((Scheme.Modules.pullbackPushforwardAdjunction f).homEquiv _ _).injective
-  simp only [tensorPullbackHomEquiv, Equiv.trans_apply, Equiv.apply_symm_apply]
-  apply (tensorHomEquiv Y M N ((Scheme.Modules.pushforward f).obj P)).injective
-  rw [Equiv.apply_symm_apply]
-  change (Scheme.Modules.pullbackPushforwardAdjunction f).homEquiv _ _
-      (curry X ((Scheme.Modules.pullback f).obj M) ((Scheme.Modules.pullback f).obj N) P g) ≫
-      pushforwardHomMap f N P =
-    curry Y M N ((Scheme.Modules.pushforward f).obj P)
-      ((Scheme.Modules.pullbackPushforwardAdjunction f).homEquiv _ _ (pullbackTensorMap f M N ≫ g))
-  rw [Adjunction.homEquiv_naturality_right, pullbackTensorMap_adjoint,
-    Adjunction.homEquiv_unit]
-  exact (curry_pullback_adjoint f M N P g).symm
+  rw [pullbackTensorMap_eq_generic]
+  exact _root_.SheafOfModules.Pullback.Tensor.tensorPullbackHomEquiv_apply.{u, u, u, u, u}
+    (F := Opens.map f.base) (S := Y.sheaf) (R := X.sheaf) ⟨f.c⟩ M N P g
 
 /-- The inverse is obtained from the bilinear universal property and the actual pullback
   adjunction. -/
@@ -492,21 +309,24 @@ def pullbackTensorInverse (M N : Y.Modules) :
     tensorSheaf X ((Scheme.Modules.pullback f).obj M)
       ((Scheme.Modules.pullback f).obj N) ⟶
     (Scheme.Modules.pullback f).obj (tensorSheaf Y M N) :=
-  (tensorPullbackHomEquiv f M N _).symm (𝟙 _)
+  _root_.SheafOfModules.Pullback.Tensor.pullbackTensorInverse.{u, u, u, u, u}
+    (F := Opens.map f.base) (S := Y.sheaf) (R := X.sheaf) ⟨f.c⟩ M N
 
 theorem pullbackTensorMap_inverse (M N : Y.Modules) :
     pullbackTensorMap f M N ≫ pullbackTensorInverse f M N = 𝟙 _ := by
-  rw [← tensorPullbackHomEquiv_apply]
-  exact (tensorPullbackHomEquiv f M N _).apply_symm_apply (𝟙 _)
+  rw [pullbackTensorMap_eq_generic]
+  exact _root_.SheafOfModules.Pullback.Tensor.pullbackTensorMap_inverse.{u, u, u, u, u}
+    (F := Opens.map f.base) (S := Y.sheaf) (R := X.sheaf) ⟨f.c⟩ M N
 
 theorem pullbackTensorInverse_map (M N : Y.Modules) :
     pullbackTensorInverse f M N ≫ pullbackTensorMap f M N = 𝟙 _ := by
-  apply (tensorPullbackHomEquiv f M N _).injective
-  rw [tensorPullbackHomEquiv_apply, tensorPullbackHomEquiv_apply,
-    ← Category.assoc, pullbackTensorMap_inverse, Category.id_comp, Category.comp_id]
+  rw [pullbackTensorMap_eq_generic]
+  exact _root_.SheafOfModules.Pullback.Tensor.pullbackTensorInverse_map.{u, u, u, u, u}
+    (F := Opens.map f.base) (S := Y.sheaf) (R := X.sheaf) ⟨f.c⟩ M N
 
-theorem pullbackTensorMap_isIso (M N : Y.Modules) : IsIso (pullbackTensorMap f M N) :=
-  ⟨⟨pullbackTensorInverse f M N, pullbackTensorMap_inverse f M N,
-    pullbackTensorInverse_map f M N⟩⟩
+theorem pullbackTensorMap_isIso (M N : Y.Modules) : IsIso (pullbackTensorMap f M N) := by
+  rw [pullbackTensorMap_eq_generic]
+  exact _root_.SheafOfModules.Pullback.Tensor.pullbackTensorMap_isIso.{u, u, u, u, u}
+    (F := Opens.map f.base) (S := Y.sheaf) (R := X.sheaf) ⟨f.c⟩ M N
 
 end AlgebraicGeometry.Scheme.Modules.Pullback.Tensor

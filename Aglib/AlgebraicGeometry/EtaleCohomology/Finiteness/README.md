@@ -23,13 +23,17 @@ group is finite.
 - `ProperCurveH1Family/RationalValues` proves finite image from rational local
   constancy on a compact locally finite-type scheme over an algebraically
   closed field. Jacobson closed-complement coverage precedes compactness.
-- `ProperCurveH1Family/FibreValues` constructs actual constant-family fibre
-  arrows on the original proper scheme and the original class-difference
-  calculus. The fixed scheme need not be a curve.
+- `ProperCurveH1Family/FibreValues` constructs the original constant-family
+  fibre arrow from the specified-square split-base lift, retaining both
+  projections and its identity composite to the fixed scheme. Its
+  class-difference calculus uses the original H¹ pullback and section
+  coefficient isomorphism.
 - `KummerFamilyValues` identifies original fixed-coefficient section pullback
-  with original roots cohomology pullback, using the native roots composition
-  and inverse-image unit laws. Only the receiving scheme needs the displayed
-  geometric Galois-category point; the family need not be connected.
+  with original roots cohomology pullback through the
+  [native roots section producer](../Kummer/SectionPullback.lean) and the
+  [original roots composition laws](../Kummer/RootsComposition.lean). Only the
+  receiving scheme needs the displayed geometric Galois-category point; the
+  family need not be connected.
 
 ## Actual curve H1 consumers
 
@@ -84,3 +88,12 @@ intermediate uses no Noetherianity. `DimensionZeroModules` combines actual
 constructible H0 finiteness with positive vanishing to give all-degree original
 module finiteness in proper dimension zero over separably closed fields,
 without Noetherianity, torsion or reducedness assumptions.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [ConstructibleConstantReduction](ConstructibleConstantReduction.lean)
+- [HigherImageFiniteCogenerators](HigherImageFiniteCogenerators.lean)
+- [ProperConstantDegreeZero](ProperConstantDegreeZero.lean)
+- [ProperFromCurves](ProperFromCurves.lean)

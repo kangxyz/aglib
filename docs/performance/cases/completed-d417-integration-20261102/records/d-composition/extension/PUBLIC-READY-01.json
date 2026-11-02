@@ -1,0 +1,30 @@
+{
+  "phase": "PUBLIC duplicate-import repair01 after current C capture",
+  "question": "Remove the actual duplicate CompositionCoherence import in the exact authorized public originalD934 supplier while preserving import set and all proof/mathematical bytes",
+  "source_owner": "/root/d_composition_integration",
+  "public_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+  "public_HEAD_at_write": "c4880830a7ebfea496a348d361cd50b109ea536d",
+  "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/ProperOpen/RefinementRectangle.lean",
+  "previous_sha256": "685368c22281436c2496c6fe3b08e517f5d4c79fb6e2bd50e0531382b9a816f3",
+  "current_sha256": "04a3aa59c236ece5512fdf8ebde15d232f4afc8467bfd66507ec60ba732727ad",
+  "source_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/ProperOpen/RefinementRectangle.lean": "04a3aa59c236ece5512fdf8ebde15d232f4afc8467bfd66507ec60ba732727ad"
+  },
+  "roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.ProperOpen.RefinementRectangle"
+  ],
+  "diagnostic_run": "remote-ae81874a646e4582a2a86dc3ae55db03",
+  "diagnostic_source_prefix": "78426eaa",
+  "diagnostic_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/pub1714-new417-C-build/RefinementRectangle-errors.log",
+  "actual_captured_source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/pub1714-new417-C-build/RefinementRectangle-captured.lean",
+  "change": "Delete exactly one repeated identical import line; import set and body from module documentation onward are byte-identical. No maps, proofs, worlds, premises, options, pins or checker suppressions changed.",
+  "verification": {
+    "exact_single_line_deletion": true,
+    "same_import_set": true,
+    "same_mathematical_body": true,
+    "MAIN_unchanged_at_original_sha256": "685368c22281436c2496c6fe3b08e517f5d4c79fb6e2bd50e0531382b9a816f3"
+  },
+  "boundary": "PUBLIC bytes differ after current C capture. MAIN source295/122 and their retained CPP/review remain frozen actual historical evidence. This source repair does not itself claim new public CPP; broker owns affected native continuation and retains healthy independent roots.",
+  "write_scope": "Only this exact public source file plus task return state; no shared roots/README/Git/Mate169/TripleMatee75 edits.",
+  "review": "No new mathematical premise/map/statement or new review stage. Existing ordinary mathematical acceptance remains applicable to byte-identical body."
+}

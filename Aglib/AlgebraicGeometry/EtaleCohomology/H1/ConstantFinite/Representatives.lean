@@ -45,13 +45,23 @@ theorem exists_schemeTorsorRepresentative (c : H1Etale X (coefficient A X)) :
   revert ha
   refine Quotient.inductionOn a ?_
   intro P hP
-  let Y := P.finiteEtaleRepresentative (stacks03RV X) hG
-  let e := P.finiteEtaleRepresentativeIso (stacks03RV X) hG
-  have hY : Surjective Y.obj.hom := P.represented_surjective D.group Y e
-  let τ := P.representedSchemeAction D.group Y e
+  let Y :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.finiteEtaleRepresentative
+      (P := P) (stacks03RV X) hG
+  let e :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.finiteEtaleRepresentativeIso
+      (P := P) (stacks03RV X) hG
+  have hY : Surjective Y.obj.hom :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.represented_surjective
+      (H := D.group) (P := P) (Y := Y) (e := e)
+  let τ :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.representedSchemeAction
+      (H := D.group) (P := P) (Y := Y) (e := e)
   refine ⟨Y, τ, hY, ?_⟩
   have heq : torsorExtClass (torsorOfSchemeAction D.group Y τ) = torsorExtClass P :=
-    torsorExtClass_iso (P.representedSchemeActionIso D.group Y e)
+    torsorExtClass_iso
+      (_root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.representedSchemeActionIso
+        (H := D.group) (P := P) (Y := Y) (e := e))
   rw [heq]
   change coefficientIso D.iso (torsorExtClass P) = c
   change torsorExtClass P = (coefficientIso D.iso).symm c at hP

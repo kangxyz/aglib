@@ -1,0 +1,45 @@
+{
+  "phase": "full-original-constantGroup_square-fixed-proof-probe",
+  "question": "Does the FULL original constantGroup_square statement pass at the unchanged native/default kernel budget when all actual producer equations feed complete variable-category cancellation and faithful reflection directly?",
+  "metadata": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/constant-square-r4/PROBE_READY.json",
+  "metadata_sha256": "1d4b39bf47943df89625a3ef785fa4b6ab58af6ab535b45a2985d63284900701",
+  "probe_source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/constant-square-r4/ConstantGroupSquareProbe.lean",
+  "probe_sha256": "b25715530df8929906f38d9e3eee95d5c20aa2b1a1391895aa6b6c98e7e090b1",
+  "declared_native_basis": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean",
+    "sha256": "5634b442fefe42102ba7f079c0f2d896ae65324d1ea820d8fc6a52269aa4f14b"
+  },
+  "module_scope": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.SheafColimit",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleDirectImageMate"
+  ],
+  "payload": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/lane-a/constant-group-square-full-probe-payload.py",
+  "payload_sha256": "eef797e6511f953ccf8f7e65d7c2a1d8ad038a6936d5554aeae4c2489ba2c168",
+  "previous_actual_source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/lane-a/coordinate-value-formation-b3b1c7fb.json",
+  "profile": {
+    "jobs": 8,
+    "threads": 4,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536
+  },
+  "boundary": "Exact frozen5634 native prefix through all actual R/N/C/L/T producers, generic variable-category proof, and full original G statement/proof only. Original G header retained byte-for-byte. Ends namespace after G; no canonical coordinate tail.",
+  "no_new_premises_declaration": "All helper hypotheses are supplied by original producers or native isomorphism instances. No desired G-square premise, alternate map, new representation, model family, option or budget.",
+  "execution": "normal owned scratch phase, no-build matching-import readiness then managed LEAN; no production Global build/N mutation/options/budget/replay",
+  "session_id": 61191,
+  "phase_state": "closed raw-scratch proofdiagnostic1:kernel390/unused96warning; no native proof verdict",
+  "updated_utc": "2026-10-28T11:05:00.415141+00:00",
+  "run": "remote-6ade13625ede4848945b82209e3f27c3",
+  "source": "b16675952652f431a224f8f67dc7f79677295b7cc54ccfce99db86006b75ca91",
+  "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/lane-a/constant-group-square-full-probe-6ade1362.json",
+  "native_library_options_forwarded": false,
+  "native_option_equivalence_withdrawn": true,
+  "raw_option_evidence": "Managed LEAN resource wrapper used but scratch argv had no native module.setup or per-library -D flags. Full raw effective option map was not separately recorded; G96 was observed as warning. Source-local options remain exactly those in each frozen input.",
+  "coverage_correction": "Preserve actual raw result/source/argv and conditional utility; do not infer equivalent native-option formation or proof acceptance. No old-input replay requested by Root.",
+  "native_exit": 1,
+  "probe_exit": 1,
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-6ade13625ede4848945b82209e3f27c3/receipt.json",
+  "observed_diagnostics": [
+    "96 unused Category.assoc warning",
+    "390 kernel deterministic timeout"
+  ]
+}

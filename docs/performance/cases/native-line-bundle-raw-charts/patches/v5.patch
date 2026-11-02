@@ -1,0 +1,88 @@
+--- a/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean
++++ b/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean
+@@ -113,6 +113,18 @@
+     _ = b V (F.map f s) := hn f s
+     _ = r V (t V (F.map f s)) := (hb V _).symm
+ 
++/-- Keep a whole chart equation shared before specializing its category and maps. -/
++private def ChartComposition {C : Type uC} [Category.{vC} C] {M N : C}
++    (f : M ⟶ N) (t : N ⟶ N) (g : M ⟶ N) : Prop :=
++  f ≫ t = g
++
++/-- Cancel the actual identity transition before evaluating the native chart maps. -/
++private theorem chartComposition_eq {C : Type uC} [Category.{vC} C] {M N : C}
++    {f g : M ⟶ N} {t : N ⟶ N} (h : ChartComposition f t g) (ht : t = 𝟙 N) :
++    f = g := by
++  subst t
++  exact (Category.comp_id f).symm.trans h
++
+ /-- The original raw-Hom presheaf at its actual native line-bundle object. -/
+ abbrev rawPresheaf (X : Scheme.{u}) (M : lineBundles.obj (.mk (op X))) :
+     X.Etaleᵒᵖ ⥤ Type u :=
+@@ -189,13 +201,14 @@
+ def ChartRelationOn (M : lineBundles.obj (.mk (op X))) (c : RawChartFamily P M)
+     (u : ∀ U : X.Etaleᵒᵖ, P.carrier.obj.obj U → P.carrier.obj.obj U → Γ(U.unop.left, ⊤)ˣ)
+     {V : X.Etale} (i j : Index P) (a : V ⟶ i.1) (b : V ⟶ j.1) : Prop :=
+-  pullHom (F := lineBundles) (c i) a.left V.hom V.hom
+-      (MorphismProperty.Over.w a) (MorphismProperty.Over.w a) ≫
+-    AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition V.hom V.hom
++  ChartComposition
++    (pullHom (F := lineBundles) (c i) a.left V.hom V.hom
++      (MorphismProperty.Over.w a) (MorphismProperty.Over.w a))
++    (AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition V.hom V.hom
+       ((u (op V) (P.carrier.obj.map a.op i.2) (P.carrier.obj.map b.op j.2) :
+-        Γ(V.left, ⊤)ˣ) : Γ(V.left, ⊤)) =
+-    pullHom (F := lineBundles) (c j) b.left V.hom V.hom
+-      (MorphismProperty.Over.w b) (MorphismProperty.Over.w b)
++        Γ(V.left, ⊤)ˣ) : Γ(V.left, ⊤)))
++    (pullHom (F := lineBundles) (c j) b.left V.hom V.hom
++      (MorphismProperty.Over.w b) (MorphismProperty.Over.w b))
+ 
+ /-- The same regular transition relation for every original common refinement. -/
+ def ChartRelations (M : lineBundles.obj (.mk (op X))) (c : RawChartFamily P M)
+@@ -221,17 +234,35 @@
+     presheafHom_map_eq_pullHom (S := X) (M := M) (N := unitObject X)
+       f.unop (c ⟨U.unop, s⟩)
+   have hh := hr ⟨U.unop, s⟩ ⟨V.unop, P.carrier.obj.map f s⟩ f.unop (𝟙 V.unop)
+-  have hrestrict :
++  have hunit :
++      u (op V.unop) (P.carrier.obj.map f.unop.op s)
++        (P.carrier.obj.map (𝟙 V.unop).op (P.carrier.obj.map f s)) = 1 :=
++    (congrArg (u V (P.carrier.obj.map f s))
++      (P.carrier.obj.map_id_apply V (P.carrier.obj.map f s))).trans
++        (hu V (P.carrier.obj.map f s))
++  have htransition :
++      AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition
++          V.unop.hom V.unop.hom
++          ((u (op V.unop) (P.carrier.obj.map f.unop.op s)
++            (P.carrier.obj.map (𝟙 V.unop).op (P.carrier.obj.map f s)) :
++              Γ(V.unop.left, ⊤)ˣ) : Γ(V.unop.left, ⊤)) = 𝟙 _ :=
++    (congrArg
++      (fun a : Γ(V.unop.left, ⊤)ˣ =>
++        AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition
++          V.unop.hom V.unop.hom (a : Γ(V.unop.left, ⊤))) hunit).trans
++      (AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition_self_one V.unop.hom)
++  have hid :
+       pullHom (F := lineBundles) (M₁ := M) (M₂ := unitObject X)
+-          (f₁ := U.unop.hom) (f₂ := U.unop.hom) (c ⟨U.unop, s⟩)
+-          f.unop.left V.unop.hom V.unop.hom
+-          (MorphismProperty.Over.w f.unop) (MorphismProperty.Over.w f.unop) =
+-        c ⟨V.unop, P.carrier.obj.map f s⟩ := by
+-    simpa only [ChartRelationOn, site_id_left, Quiver.Hom.op_unop, op_id, op_unop,
+-      CategoryTheory.Functor.map_id, types_id_apply, hu, Units.val_one,
+-      AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition_self_one,
+-      Category.comp_id, pullHom_id] using hh
+-  exact hview.trans hrestrict
++          (f₁ := V.unop.hom) (f₂ := V.unop.hom)
++          (c ⟨V.unop, P.carrier.obj.map f s⟩)
++          (𝟙 V.unop).left V.unop.hom V.unop.hom
++          (MorphismProperty.Over.w (𝟙 V.unop))
++          (MorphismProperty.Over.w (𝟙 V.unop)) =
++        c ⟨V.unop, P.carrier.obj.map f s⟩ :=
++    pullHom_id (F := lineBundles) (M₁ := M) (M₂ := unitObject X)
++      (f₁ := V.unop.hom) (f₂ := V.unop.hom)
++      (c ⟨V.unop, P.carrier.obj.map f s⟩)
++  exact hview.trans ((chartComposition_eq hh htransition).trans hid)
+ 
+ end Construction
+ 

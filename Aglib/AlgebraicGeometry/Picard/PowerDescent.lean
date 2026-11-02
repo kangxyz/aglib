@@ -97,18 +97,14 @@ theorem transport_eq (U : X.Etaleᵒᵖ) (s t : P.carrier.obj.obj U)
     transport P U s s = 0 := transport_eq P U s s 0 (P.zero_action U s)
 
 theorem transport_trans (U : X.Etaleᵒᵖ) (s t r : P.carrier.obj.obj U) :
-    transport P U s t + transport P U t r = transport P U s r := by
-  symm
-  apply transport_eq
-  rw [add_comm, P.add_action, action_transport, action_transport]
+    transport P U s t + transport P U t r = transport P U s r :=
+  AssociatedBundle.transport_trans P U s t r
 
 theorem transport_naturality {U V : X.Etaleᵒᵖ} (f : U ⟶ V)
     (s t : P.carrier.obj.obj U) :
     (mu X n).obj.map f (transport P U s t) =
-      transport P V (P.carrier.obj.map f s) (P.carrier.obj.map f t) := by
-  symm
-  apply transport_eq
-  rw [← P.naturality, action_transport]
+      transport P V (P.carrier.obj.map f s) (P.carrier.obj.map f t) :=
+  AssociatedBundle.transport_naturality P f s t
 
 /-- Literal root of unity carrying one section to another. -/
 def transportRoot (U : X.Etaleᵒᵖ) (s t : P.carrier.obj.obj U) :

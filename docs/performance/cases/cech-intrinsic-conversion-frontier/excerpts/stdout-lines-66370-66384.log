@@ -1,0 +1,15 @@
+                                            G.map ι ≫ G.map (I.cocomplex.d (n + 1) (n + 2))
+                              [Elab.step] [5.323079] ✅️ rw [← G.map_comp, kernel.condition, G.map_zero]
+                                [Elab.step] [5.322474] ✅️ (rewrite [← G.map_comp, kernel.condition, G.map_zero];
+                                      with_annotate_state"]" (try (with_reducible rfl)))
+                                  [Elab.step] [5.322416] ✅️ rewrite [← G.map_comp, kernel.condition, G.map_zero];
+                                        with_annotate_state"]" (try (with_reducible rfl))
+                                    [Elab.step] [5.322357] ✅️ rewrite [← G.map_comp, kernel.condition, G.map_zero];
+                                          with_annotate_state"]" (try (with_reducible rfl))
+                                      [Elab.step] [5.307797] ✅️ rewrite [← G.map_comp, kernel.condition, G.map_zero]
+                                        [Elab.step] [5.018690] ✅️ expected type: <not-available>, term
+                                            G.map_zero
+                                          [Elab.app.args] [5.018184] ✅️ elabAppArgs (1 args) `@Functor.map_zero`
+                                            [Elab.app.finalize] [5.016356] ✅️ Functor.map_zero
+                                                  G : ∀ (X_1 Y : X.Modules), G.map 0 = 0
+                                              [Meta.synthInstance] [5.011014] ✅️ G.PreservesZeroMorphisms

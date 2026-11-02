@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantLinearNatTrans
+public import Aglib.CategoryTheory.Sites.SheafCohomology.RepresentedTransfer.Module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.EtaleRestriction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.EtaleRepresentedTransfer
 
@@ -52,21 +52,16 @@ underlying module product coefficient with the original abelian one. -/
 def etaleModuleProductUnderlyingIso :
     etaleModuleProductSheaf R U ⋙ moduleUnderlying R X ≅
       moduleUnderlying R X ⋙ etaleProductSheaf U :=
-  Functor.isoWhiskerLeft (moduleEtaleRestriction R (X := X) (S := U.left) U.hom)
-      (moduleDirectImageUnderlyingIso R (X := X) (S := U.left) U.hom) ≪≫
-    Functor.isoWhiskerRight
-      (ModuleCat.Sheaf.pushforwardUnderlyingIso R
-        (siteEtalePostcompose (X := X) (S := U.left) U.hom)
-        U.left.smallEtaleTopology X.smallEtaleTopology)
-      (directImage (X := X) (S := U.left) U.hom)
+  ModuleCat.Sheaf.continuousCompositeUnderlyingIso.{u + 1, u, r} R X.smallEtaleTopology
+    U.left.smallEtaleTopology (siteEtalePostcompose (X := X) (S := U.left) U.hom)
+    (siteBaseChange (X := X) (S := U.left) U.hom)
 
 /-- The actual abelian represented trace is linear for every constant scalar ring. -/
 def etaleRepresentedModuleRestrictionTrace :
     etaleModuleProductSheaf R U ⟶ 𝟭 (ModuleSheaf R X) :=
-  ModuleCat.Sheaf.natTransOfUnderlying R X.smallEtaleTopology
-    (etaleModuleProductSheaf R U) (𝟭 (ModuleSheaf R X))
-    ((etaleModuleProductUnderlyingIso R U).hom ≫
-      Functor.whiskerLeft (moduleUnderlying R X) (etaleRepresentedRestrictionTrace U a))
+  ModuleCat.Sheaf.traceOfUnderlying.{u + 1, u, r} R X.smallEtaleTopology
+    (etaleModuleProductSheaf R U) (etaleProductSheaf U)
+    (etaleModuleProductUnderlyingIso R U) (etaleRepresentedRestrictionTrace U a)
 
 /-- Forgetting the linear trace gives exactly the original abelian trace after
 its native source comparison. -/
@@ -88,10 +83,11 @@ theorem etaleModuleProductUnderlyingIso_unit (F : ModuleSheaf R X) :
     ((siteEtalePostcomposeAdj (X := X) (S := U.left) U.hom).sheafPushforwardContinuous
       (E := AddCommGrpCat.{u + 1}) U.left.smallEtaleTopology
       X.smallEtaleTopology).unit.app ((moduleUnderlying R X).obj F) := by
-  apply Sheaf.hom_ext
-  apply NatTrans.ext
-  funext V
-  rfl
+  exact ModuleCat.Sheaf.continuousCompositeUnderlyingIso_unit.{u + 1, u, r}
+    R X.smallEtaleTopology
+    U.left.smallEtaleTopology (siteEtalePostcompose (X := X) (S := U.left) U.hom)
+    (siteBaseChange (X := X) (S := U.left) U.hom)
+    (siteEtalePostcomposeAdj (X := X) (S := U.left) U.hom) F
 
 /-- The linear restriction trace retains the represented rank and actual unit. -/
 theorem etaleRepresentedModuleRestrictionTrace_rank (n : ℕ)
@@ -102,26 +98,24 @@ theorem etaleRepresentedModuleRestrictionTrace_rank (n : ℕ)
       (E := ModuleCat.{u + 1} R) (Scheme.smallEtaleTopology U.left)
       (Scheme.smallEtaleTopology X)).unit.app F ≫
         (etaleRepresentedModuleRestrictionTrace R U a).app F = n • 𝟙 F := by
-  have hs : (moduleUnderlying R X).map (n • 𝟙 F) =
-      n • 𝟙 ((moduleUnderlying R X).obj F) := by
-    apply Sheaf.hom_ext
-    apply NatTrans.ext
-    funext V
-    ext x
-    rfl
-  apply (moduleUnderlying R X).map_injective
-  rw [(moduleUnderlying R X).map_comp, hs,
-    etaleRepresentedModuleRestrictionTrace_underlying, ← Category.assoc,
-    etaleModuleProductUnderlyingIso_unit]
-  exact etaleRepresentedRestrictionTrace_rank U a n ha ((moduleUnderlying R X).obj F)
+  exact ModuleCat.Sheaf.traceOfUnderlying_rank.{u + 1, u, r} R X.smallEtaleTopology
+    (etaleModuleProductSheaf R U) (etaleProductSheaf U)
+    (etaleModuleProductUnderlyingIso R U) (etaleRepresentedRestrictionTrace U a)
+    ((siteEtalePostcomposeAdj (X := X) (S := U.left) U.hom).sheafPushforwardContinuous
+      (E := ModuleCat.{u + 1} R) U.left.smallEtaleTopology X.smallEtaleTopology).unit
+    ((siteEtalePostcomposeAdj (X := X) (S := U.left) U.hom).sheafPushforwardContinuous
+      (E := AddCommGrpCat.{u + 1}) U.left.smallEtaleTopology X.smallEtaleTopology).unit
+    n F (etaleModuleProductUnderlyingIso_unit R U F)
+    (etaleRepresentedRestrictionTrace_rank U a n ha ((moduleUnderlying R X).obj F))
 
 /-- The scalar-linear trace on the original native module inverse image. -/
 def etaleRepresentedModuleTrace :
     moduleInverseImage R (X := X) (S := U.left) U.hom ⋙
       moduleDirectImage R (X := X) (S := U.left) U.hom ⟶ 𝟭 (ModuleSheaf R X) :=
-  Functor.whiskerRight (moduleInverseImageEtaleIso R (X := X) (S := U.left) U.hom).hom
-    (moduleDirectImage R (X := X) (S := U.left) U.hom) ≫
-    etaleRepresentedModuleRestrictionTrace R U a
+  Adjunction.traceThroughLeftAdjointUniq (moduleImageAdjunction R (X := X) (S := U.left) U.hom)
+    ((siteEtalePostcomposeAdj (X := X) (S := U.left) U.hom).sheafPushforwardContinuous
+      (E := ModuleCat.{u + 1} R) U.left.smallEtaleTopology X.smallEtaleTopology)
+    (etaleRepresentedModuleRestrictionTrace R U a)
 
 /-- The exact original module adjunction unit has composite equal to the represented rank. -/
 theorem etaleRepresentedModuleTrace_rank (n : ℕ)
@@ -130,11 +124,11 @@ theorem etaleRepresentedModuleTrace_rank (n : ℕ)
     (F : ModuleSheaf R X) :
     (moduleImageAdjunction R (X := X) (S := U.left) U.hom).unit.app F ≫
       (etaleRepresentedModuleTrace R U a).app F = n • 𝟙 F := by
-  change (moduleImageAdjunction R (X := X) (S := U.left) U.hom).unit.app F ≫
-    ((moduleDirectImage R (X := X) (S := U.left) U.hom).map
-      ((moduleInverseImageEtaleIso R (X := X) (S := U.left) U.hom).hom.app F) ≫
-      (etaleRepresentedModuleRestrictionTrace R U a).app F) = _
-  rw [← Category.assoc, moduleInverseImageEtaleIso_unit]
-  exact etaleRepresentedModuleRestrictionTrace_rank R U a n ha F
+  exact Adjunction.traceThroughLeftAdjointUniq_rank
+    (moduleImageAdjunction R (X := X) (S := U.left) U.hom)
+    ((siteEtalePostcomposeAdj (X := X) (S := U.left) U.hom).sheafPushforwardContinuous
+      (E := ModuleCat.{u + 1} R) U.left.smallEtaleTopology X.smallEtaleTopology)
+    (etaleRepresentedModuleRestrictionTrace R U a) n F
+    (etaleRepresentedModuleRestrictionTrace_rank R U a n ha F)
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

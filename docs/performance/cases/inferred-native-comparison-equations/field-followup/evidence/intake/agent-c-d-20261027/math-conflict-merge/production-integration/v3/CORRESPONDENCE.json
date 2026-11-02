@@ -1,0 +1,23 @@
+{
+  "question": "Remove only proof-only abelian realizations from the newly integrated module torsion-preservation theorem.",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "entries": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/TorsionPreservation.lean",
+      "before_sha256": "c4d8883adeb3db3f7fbbc1744dc8c5e44a41799d728a05a5fe52d83e92d61db5",
+      "after_sha256": "0ccd35b740217479c833fc89d7a3d6fcc8a10bf964e8247e8950abb11cccd647"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/Torsion.lean",
+      "before_sha256": "4f93ed13dd6ab65ac7195006883e3db11f30bde95eae28410fc44d9b3234f589",
+      "after_sha256": "77fbf028e71277382742d4dd4a2d3cef72b755a328366fb8d1a6a02712f4a93a"
+    }
+  ],
+  "public_mathematical_statement": "For arbitrary Ring \u039b, an actual qcqs f and a given native bounded-below module K with internally torsion homology, the literal original moduleDerivedDirectImage \u039b f of K has internally torsion homology.",
+  "model_boundary": "The two ModuleSheaf HasDerivedCategory data remain public and independent because they occur in the conclusion. The genuine abelian theorem retains both actual abelian models because its K and homology conclusion use them. The module theorem chooses one standard abelian realization for each of X and S locally; no new model transport or universe bound is imposed.",
+  "actual_map_argument": "The original module-derived direct image, original underlying comparison iso, same underlying K and original homology functors are unchanged. Only the proof-only Ab instance scope changes. The scalar-forgetting torsion iff and native Ab preservation theorem apply at the two local standard realizations exactly as at arbitrary proof-only ones.",
+  "proof_body": "Old proof after the two new local instance selections is literal. The sole owned specified-C caller removes its now-unused Ab selections and calls the same stronger implementation-independent theorem.",
+  "compile_boundary": "B confirmed archive27 has not been captured or dispatched; current healthyC56 snapshot is preserved. Exactly one of the five pending roots changes source. No old candidate result is relabeled.",
+  "policy": "No new source options, premises, axioms, placeholders, diagnostics, runtime or Git mutations.",
+  "timestamp_utc": "2026-10-27T21:48:51.662916+00:00"
+}

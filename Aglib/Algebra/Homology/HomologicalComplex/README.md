@@ -13,3 +13,9 @@ integer-cochain homotopy adjunction is the higher
 is higher again. The first present consumers are these two interfaces and the
 existing geometric chain adjunctions for open restriction/direct image and
 extension by zero.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [Adjunction/ResolutionCounit](Adjunction/ResolutionCounit.lean)

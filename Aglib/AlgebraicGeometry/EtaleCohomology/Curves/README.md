@@ -5,6 +5,27 @@ all-degree finite-constant restriction surjectivity for finite schemes over
 the native projective line of a strictly henselian local ring. Coefficients
 have value universe `u+1`; source and target Ext universes remain independent.
 
+[GenericDirectImageDivisibility](GenericDirectImageDivisibility.lean) retains
+independent source and target Ext universes for the original generic
+direct-image scalar bijectivity theorem; its ordinary cohomological statement
+requires no derived-category model.
+
+## Proper and open curves
+
+For a smooth proper geometrically connected curve over an algebraically
+closed field and a positive invertible integer `n`, [Trace](Trace.lean)
+constructs the degree-normalized trace `H²(X, μ_n) ≃+ ℤ/n`.
+[Proper](Proper.lean) supplies the root-coefficient comparisons in degrees
+zero and one and the stated transport to constant coefficients.
+[CompactSupportTrace](CompactSupportTrace.lean) retains the original
+extension-by-zero cohomology for the complement of a finite set of closed
+points. [Complement](Complement.lean) proves root-cohomology vanishing in
+degrees at least two for an open curve missing a closed point. Their stated
+coefficient and geometric hypotheses are retained in each module.
+
+These modules share the `AlgebraicGeometry.Scheme.EtaleCohomology.Curves`
+namespace and this directory with the restriction and strictly local results.
+
 ## Strictly local endpoint
 
 [StrictlyLocalComparison](StrictlyLocalComparison.lean) proves
@@ -45,6 +66,53 @@ inseparable root comparison. Artin–Schreier is used on the characteristic-p
 fibre, without asserting such a sequence on a mixed-characteristic total
 scheme. Root coordinates are constructed rather than supplied as markings.
 
-The stated curve module is mathematically complete. General torsion proper
-base change, its proper-surjective descent and the unbounded six-operation
-assembly remain separate work.
+Proper base change, proper-surjective descent and the unbounded exceptional
+functor are documented by their own families.
+
+[OnePointRestriction](OnePointRestriction.lean) proves that the original
+roots-cohomology pullback across one closed point is bijective in degrees
+zero and one for a smooth proper geometrically connected curve over an
+algebraically closed field at positive invertible levels.
+
+[Rank](Rank.lean) gives the original proper-curve roots and constant H¹
+cardinality `n^(2*g)` over an algebraically closed field for positive `n`
+invertible in the field. Each has noncanonical coordinates and a basis for
+its native `ZMod n` action, including level one and genus zero. This makes no
+`ZMod 1` finrank or canonical or Galois-equivariant basis assertion.
+
+[FiniteCoefficientsVanishing](FiniteCoefficientsVanishing.lean) proves
+original cohomology and module-unit Ext vanish in degrees above two for
+finite-type locally constant native coefficients on a smooth proper
+geometrically connected curve over an algebraically closed field, at
+positive field-invertible level. Its Sylow trace argument does not assume
+that the original trivializing cover has coprime degree. The shared
+[finite-type result](FiniteCoefficientsVanishing/Open.lean) proves the same
+high vanishing for original finite locally constant coefficients on a connected
+compact finite-type scheme of dimension at most one over a separably closed
+field, at positive field-invertible level. It requires neither properness nor
+smoothness; the general finite coefficient-ring form retains its displayed
+annihilator and full-forgetting hypotheses.
+
+[OpenRank](OpenRank.lean) gives original roots and constant H¹ cardinality
+`n^(2*g + #D - 1)` for the actual open complement of a finite nonempty set
+of closed points in a smooth proper geometrically connected curve over an
+algebraically closed field, at positive invertible `n`. Its original
+restriction, unsigned boundary and kernel-of-sum laws also allow empty
+support. Composite levels, level one and genus zero are included. No
+splitting, free basis or canonical or Galois-equivariant coordinates are
+asserted.
+
+[TracePullback](TracePullback.lean) proves the original normalized compact
+trace identity for the stated finite dominant curve completion and its actual
+finite étale restriction, and the original roots level-reduction law. The
+completion need not be étale at the boundary.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [FiniteConstantAnnihilator](FiniteConstantAnnihilator.lean)
+- [GenericArtinEtalePoints](GenericArtinEtalePoints.lean)
+- [KummerResidueExtension](KummerResidueExtension.lean)
+- [KummerResidueNaturality](KummerResidueNaturality.lean)
+- [StructureComparison](StructureComparison.lean)

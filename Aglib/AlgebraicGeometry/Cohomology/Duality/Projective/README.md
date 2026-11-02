@@ -153,3 +153,12 @@ duality over a Noetherian separated base and retains that exact forward formula.
 Arbitrary coefficients in the general closed-embedding result retain the actual
 right-adjoint object; no arbitrary-coefficient purity or embedding-independence
 claim is added.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [Canonical/GeneratorOverlap](Canonical/GeneratorOverlap.lean)
+- [Canonical/LocalModel/OpenCounit](Canonical/LocalModel/OpenCounit.lean)
+- [Canonical/LocalPurity](Canonical/LocalPurity.lean)
+- [Canonical/ModelCharts/AtIdeal/Data](Canonical/ModelCharts/AtIdeal/Data.lean)

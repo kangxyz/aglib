@@ -1,0 +1,142 @@
+✔ [4516/4562] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleRefinementCoherence (4.3s)
+✔ [4517/4596] Built Aglib.AlgebraicGeometry.EtaleCohomology.Derived.PullbackIsomorphism (4.4s)
+✔ [4929/5179] Built Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.EtaleDerived (4.8s)
+✖ [6032/6144] Building Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingTorsion (5.6s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-5f28bb81f2e540949c2b69c63cf42655/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/UnderlyingTorsion.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/UnderlyingTorsion.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/UnderlyingTorsion.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/UnderlyingTorsion.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/UnderlyingTorsion.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/UnderlyingTorsion.lean:54:10: failed to synthesize instance of type class
+  Mono e.hom
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/UnderlyingTorsion.lean:56:10: failed to synthesize instance of type class
+  Mono e.inv
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+✔ [6046/6146] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleRefinementComposition (3.4s)
+✔ [6051/6150] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RefinementComparison (8.9s)
+✔ [6052/6150] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.StructuralComparisons (9.9s)
+✔ [6053/6150] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GeometricFiberRank (4.6s)
+✔ [6054/6150] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RefinementPullbackCoherence (7.7s)
+✔ [6055/6150] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestRelativeCone (18s)
+✔ [6056/6150] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisSubgroupQuotient (12s)
+✔ [6057/6150] Built Aglib.AlgebraicGeometry.EtaleCohomology.Vanishing.PGroupCoefficients (15s)
+✔ [6058/6150] Built Aglib.AlgebraicGeometry.EtaleCohomology.Vanishing.DimensionZero (16s)
+✔ [6059/6151] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.StructuralCoherence (9.4s)
+✔ [6060/6152] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestRelativeTail (4.9s)
+✔ [6126/6218] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisSubgroupRank (3.0s)
+✔ [6127/6221] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RefinementCoherence (8.5s)
+✔ [6128/6221] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisSubgroupRelative (4.7s)
+✔ [6129/6221] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.Basic (3.5s)
+✔ [6130/6224] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisSylowCover (3.4s)
+✔ [6131/6225] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosurePartitions (4.0s)
+✔ [6132/6229] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureConstant (6.5s)
+✔ [6133/6229] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RefinementDirectImage (9.9s)
+✔ [6134/6238] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureMorphisms (4.4s)
+✔ [6141/6246] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureExtensionCharts (5.8s)
+✔ [6146/6246] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureSums (6.3s)
+✔ [6147/6246] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureLocality (10s)
+✔ [6148/6248] Built Aglib.AlgebraicGeometry.EtaleCohomology.Vanishing.ConstructibleCoefficients (15s)
+✔ [6149/6248] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteLocallyConstantCompactness (5.2s)
+✔ [6150/6248] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GenericLocalConstancy (4.2s)
+✔ [6152/6252] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ZModLocallyConstant (4.0s)
+✔ [6153/6252] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureConstructibleSums (4.0s)
+✔ [6154/6261] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureKernels (4.5s)
+✔ [6180/6283] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureCokernels (5.1s)
+✔ [6181/6284] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.TorsionColimit.Bounded (4.3s)
+✔ [6182/6292] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GenericTrivializationDense (4.6s)
+✔ [6190/6292] Built Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisRefinement (4.2s)
+✔ [6191/6292] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureExtensions (3.6s)
+✔ [6192/6313] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Universal.Property (3.5s)
+✔ [6210/6314] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ZMod (4.0s)
+✔ [6211/6314] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GenericTrivializationFixedValue (4.8s)
+✔ [6213/6314] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureProperties (4.2s)
+✔ [6214/6314] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.InjectiveExchange (4.3s)
+✔ [6215/6370] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ZModComparison (4.2s)
+✖ [6379/6481] Building Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestConeSections (37s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-5f28bb81f2e540949c2b69c63cf42655/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestConeSections.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestConeSections.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestConeSections.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestConeSections.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestConeSections.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestConeSections.lean:66:22: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestConeSections.lean:72:2: Unknown identifier `diagramTestRawConeSectionsNatTrans`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestConeSections.lean:81:2: 'change' tactic failed, pattern
+  diagramTestConeArrowSectionsMap X F c i T a ≫ (diagramTestConeSectionsIso X F c i T a.left).hom = ?m.108
+is not definitionally equal to target
+  (diagramTestConeSectionsNatTrans X F c i T).app a =
+    pullbackSectionsMap (F.obj a.left.right) (diagramTestConeArrowOverHom X c i T a) ≫
+      (pullbackSectionsBaseEtaleIso (c.ι.app a.left.right).unop (F.obj a.left.right)).hom.app
+        (op (diagramEtaleTestLimitChart X i T c))
+✔ [6415/6507] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureConstructible (4.1s)
+✔ [6417/6510] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GenericTrivializationDenseGalois (5.1s)
+✔ [6418/6512] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.AllModuleCoefficients (3.8s)
+✔ [6420/6528] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GenericTrivializationConstructible (3.3s)
+✔ [6433/6528] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.BoundedCoefficients (4.2s)
+✔ [6434/6538] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.HigherReduction (3.6s)
+✔ [7808/7944] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Universal.RelativeExchangeIso (5.9s)
+✔ [7811/7970] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.TorsionPostnikov (4.6s)
+✔ [7827/7972] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductStalkRepresentatives (19s)
+✔ [7830/7982] Built Aglib.AlgebraicGeometry.EtaleCohomology.Vanishing.ConstructiblePrimeReduction (25s)
+✔ [7840/7995] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartExchangeMaps (27s)
+✔ [7849/8026] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.InverseImageCube (4.4s)
+✔ [7867/8026] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.EtaleCover (3.4s)
+✔ [7868/8026] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.BaseChange (10s)
+✔ [7869/8026] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CohomologicalBound (10s)
+✔ [7870/8026] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.EtaleCover (9.1s)
+✔ [7871/8051] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RestrictionCube (11s)
+✖ [8088/8253] Building Aglib.AlgebraicGeometry.EtaleCohomology.H1.FundamentalGroupComparison (102s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-5f28bb81f2e540949c2b69c63cf42655/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/H1/FundamentalGroupComparison.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/H1/FundamentalGroupComparison.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/H1/FundamentalGroupComparison.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/H1/FundamentalGroupComparison.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/H1/FundamentalGroupComparison.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/H1/FundamentalGroupComparison.lean:339:2: Type mismatch: After simplification, term
+  hh
+ has type
+  @Eq (H1 (FiberAutGroup s) M) ((representedH1AddEquivCore s H hR M mark hmark) (torsorExtClass P))
+    ((coefficientH1Equiv (pointModuleEquiv s H M mark) ⋯) (representedTorsorClass s H (pointModuleMark s H) ⋯ hR ⋯ P))
+but is expected to have type
+  @Eq (H1 (FiberAutGroup s) M) ((representedH1AddEquivCore s H hR M mark hmark) (torsorExtClass P))
+    ((coefficientH1Equiv (pointModuleEquiv s H M mark) ⋯) (representedTorsorClass s H (pointModuleMark s H) ⋯ hR ⋯ P))
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  getLimitCone ↦ 666
+error: Aglib/AlgebraicGeometry/EtaleCohomology/H1/FundamentalGroupComparison.lean:467:0: automatically included section variable(s) unused in theorem `AlgebraicGeometry.Scheme.EtaleCohomology.FundamentalGroupComparison.compareH1WithRepresentation_torsor_representative`:
+  [Finite M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Finite M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8125/8253] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.BaseChangePlusComparison (8.1s)
+✔ [8140/8255] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.OpenFullyFaithful (17s)
+✔ [8188/8271] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.OpenBaseChange (8.4s)
+✔ [8220/8278] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Refinement.ProperComparison (3.1s)
+✖ [8227/8286] Building Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.Torsion (4.2s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-5f28bb81f2e540949c2b69c63cf42655/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/Torsion.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/Torsion.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/Torsion.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/Torsion.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/Torsion.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/Torsion.lean:61:8: failed to synthesize instance of type class
+  Mono ((moduleLowerShriekUnderlyingIso j Λ).hom.app M)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+✔ [8231/8304] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.CompositionCoherence (9.7s)
+✔ [8245/8309] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.OpenFullyFaithful (7.1s)
+✔ [8249/8309] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Refinement.PullbackCoherence (9.8s)
+✔ [8250/8309] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.LowerShriekBaseChange (9.5s)
+✔ [8251/8316] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.ProperRefinementComparison (9.4s)
+✔ [8253/8364] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.InverseImageSquareComparison (5.5s)
+✔ [8295/8364] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.LowerShriekBaseChangeMate (6.2s)
+✔ [8296/8364] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.ProperRefinementCoherence (6.8s)
+✔ [8297/8364] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.BaseChangePasting (14s)
+✔ [8298/8364] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Refinement.Coherence (15s)
+✔ [8299/8364] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.BaseChangeOverComparisonEquation (7.6s)
+✔ [8300/8364] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.BaseChangeIdentity (8.4s)
+✔ [8301/8364] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.OpenComparisonPasting (8.9s)
+✖ [8302/8364] Building Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductGermZero (89s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-5f28bb81f2e540949c2b69c63cf42655/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean:144:7: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+✔ [8325/8364] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.OpenRefinementCube (13s)
+✔ [8326/8364] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.CoproductCohomology (116s)
+✔ [8328/8364] Built Aglib.AlgebraicGeometry.EtaleCohomology.ModuleCoefficients.FiniteDirectImage (296s)
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingTorsion
+- Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestConeSections
+- Aglib.AlgebraicGeometry.EtaleCohomology.H1.FundamentalGroupComparison
+- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.Torsion
+- Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductGermZero
+error: build failed

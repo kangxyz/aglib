@@ -1,0 +1,21 @@
+{
+  "phase": "square-v9-formation-only",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "source_guards": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.lean": "fa14c8fb37ea897c0c722a6a073485cdc5841e082b8e46d54ff723fcea71efec",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitFunctor.lean": "4a7f4e31f433d4ae5a18cfab10c98695ad31f63edd02924332163368443223da",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean": "8d5300bfb51eacc4e94fce2b6b3a36a5925f32812c3daa34000d8d479c837b49",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackSectionsBase.lean": "f4048a82dda28c139e856828bafc476546fde3565e937ca05e7bce6eb42b9bf4",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cone.lean": "f61149f13918388487eeffb9ccd7b59f431b09c62dc696dfd80f3708c46d9c20",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean": "b90c6e00cebc0a318c791295d95c72dd8d2e2cddcff650f59e569d25799d7afe",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.lean": "12eb7648ff15f4ebad9055f601067313ae5e6fa215e88af175c34495e06d24f4",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean": "d83329fbb8acfc60ce876d0a81edf793090d5fe9c0082b0c0d137c177ec55d50"
+  },
+  "source_owner": "/root/cohomology_cocone_author",
+  "metadata": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-triangle-calculus-core-staging/diagnostics/square-v9-formation.json",
+  "source_sha256": "1126e06c76ee3df038d7bd044f9dca14daefe078973acf86a55093effd9a8164",
+  "payload": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/square-v9-formation-payload.py",
+  "payload_sha256": "bb7844ed049350ab9bca5fb14c9fedebcf8b3447cb0a4409ad8be645c7eb7815",
+  "prior_source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/recovery-raw14-independent-category-d47f59de.json",
+  "scope": "One cached-import native-faithful diagnostic frontend; actualSquare lake --no-build setup-file, exact moduleName/isModule/full4options/default200k. Formation-only assumptions, not proof/module closure."
+}

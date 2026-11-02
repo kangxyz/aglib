@@ -1,0 +1,73 @@
+{
+  "question": "Root-selected bounded native whole-zero repair after serious whnf timeout; no production rewrite or probe was made before native API applicability was returned and selected.",
+  "native_git_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "path": "Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean",
+  "input_sha256": "4d4bf8cfc7046ee352aae7cf123774b473fc4fd473cf8bf50b2431dc779bb51a",
+  "output_sha256": "4f74591813eb9b2c76d4f7c468e6a96ff21732caeb62f9dbb2b351b5a09527ac",
+  "delta_sha256": "1661dd55479fde4e17948799a0d81edad9a72f8b24cd3bf565b6d969c8d02379",
+  "prior_failure": {
+    "run_dir": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-64d200f146334c3db7402e9da2137d2f",
+    "build_log_sha256": "1bf19761e00b8ec9f1ec853d639dc94864e02ebe00de137a121e3cfa5ee955b2",
+    "receipt_sha256": "c4486ea04a8bb94c99f3e023213cf905fe40ee128a805b34e18c58a34d0b95f7",
+    "source_content_sha256": "61d5247827b3848216e52210813b26632e41f98f5090cdd5716215e94610d77a",
+    "source_line": 118,
+    "diagnostic": "deterministic whnf timeout at standard 200000 heartbeats; no phase-specific attribution from this log"
+  },
+  "native_API_bound": [
+    {
+      "path": "Mathlib/CategoryTheory/Adjunction/Additive.lean",
+      "sha256": "a37b194f64c6bf5a2583f0a509710e7e8ed0cbe7ec27cf7ef95c2138ace620b7",
+      "declaration": "left_adjoint_additive",
+      "lines": [
+        41,
+        43
+      ]
+    },
+    {
+      "path": "Mathlib/CategoryTheory/Adjunction/Additive.lean",
+      "sha256": "a37b194f64c6bf5a2583f0a509710e7e8ed0cbe7ec27cf7ef95c2138ace620b7",
+      "declaration": "homAddEquiv_symm_zero",
+      "lines": [
+        85,
+        86
+      ]
+    },
+    {
+      "path": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+      "sha256": "e186b91a924c25ec3bdf802a47a2f83aeacac23e085e93025c0c875c07f4b1de",
+      "declaration": "sheafToPresheaf = ObjectProperty.\u03b9",
+      "lines": [
+        328,
+        328
+      ]
+    },
+    {
+      "path": "Mathlib/CategoryTheory/Preadditive/AdditiveFunctor.lean",
+      "sha256": "7fd726d06fdffa09b499c5cf930bc40840543794962ace7b5b72acc66afde7ab",
+      "declaration": "ObjectProperty.\u03b9 additive instance",
+      "lines": [
+        180,
+        182
+      ]
+    }
+  ],
+  "applicability": "The same actual sheafification adjunction has right functor sheafToPresheaf, literally ObjectProperty.\u03b9 and natively additive. left_adjoint_additive therefore supplies left-functor additivity under the existing HasWeakSheafify only. Native homAddEquiv_symm_zero then gives the exact whole original HomEquiv inverse-zero law at P0/A0, eliminating concrete unit projection.",
+  "change": "One focused native import Adjunction.Additive; replace hzE/concrete-unit and hzE\u2032-injectivity proofs with original-adjunction left_adjoint_additive and exact native homAddEquiv_symm_zero. No instrumented prefix probe is produced because the root selected this explicit alternative.",
+  "preservation": {
+    "presheaf_hz_calculation_and_native_naturality_transport_byte_identical": true,
+    "same_left_functor_sites_worlds_HasWeakSheafify_and_native_pair": true,
+    "wrappers_held": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Frobenius.lean": "5be6b57f14457bda311e65781e412dd7414d43ac6c435217c4d480340a45c922",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Constants.lean": "d2a7c7461e034f05b03adb49fa49b6fc6fab4eb440a45ded2cd2d0ec59ee8fca"
+    },
+    "new_hypothesis_flags_model_record_or_law_assumption": false
+  },
+  "compile_targets": [
+    "Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Frobenius",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Constants"
+  ],
+  "compiler_coverage": "UNCOMPILED by author. Root retries only the same AS3 completed changed modules plus necessary dependencies. No unchanged Proper3 repeat or untouched AS consumer.",
+  "evidence_boundary": "Native source applicability is established by the inspected exact APIs and hypotheses. It is not phase attribution, a timing claim, proof of a performance cure, or a module pass.",
+  "remaining_gap": "Actual native elaboration/performance and same wrapper specialization. A scoped phase probe remains the next diagnostic only if clean actual feedback is still insufficient."
+}

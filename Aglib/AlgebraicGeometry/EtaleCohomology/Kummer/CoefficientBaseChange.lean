@@ -108,9 +108,10 @@ theorem rootsPullbackIso_unit (hn : 0 < n) (hinv : IsUnit (n : Γ(X, ⊤))) :
 /-- The actual adjoint coefficient map is the displayed roots isomorphism. -/
 theorem rootsUnit_adjoint (hn : 0 < n) (hinv : IsUnit (n : Γ(X, ⊤))) :
     torsorAdjunctionCoefficient f (q := rootsUnit f n) = (rootsPullbackIso f n hn hinv).hom := by
-  apply ((inverseImageAdjunction f).homEquiv _ _).injective
-  rw [torsorAdjunctionCoefficient, Equiv.apply_symm_apply]
-  exact (rootsPullbackIso_unit f n hn hinv).symm
+  let e := (inverseImageAdjunction f).homEquiv (mu X n) (mu S n)
+  change e.symm (rootsUnit f n) = (rootsPullbackIso f n hn hinv).hom
+  apply e.injective
+  exact (e.apply_symm_apply (rootsUnit f n)).trans (rootsPullbackIso_unit f n hn hinv).symm
 
 /-- Positive invertibility of the level is preserved by the actual structural ring map. -/
 theorem levelInvertible (f : S ⟶ X) (n : ℕ) (hinv : IsUnit (n : Γ(X, ⊤))) : IsUnit (n : Γ(S,

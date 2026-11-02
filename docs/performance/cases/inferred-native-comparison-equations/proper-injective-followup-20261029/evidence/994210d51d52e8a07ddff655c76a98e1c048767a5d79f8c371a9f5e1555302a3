@@ -1,0 +1,16 @@
+{
+  "phase": "Independent actual AllModule repair1 while Product has a concrete failed lower source",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "source_guards": {
+    "Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparisonExact.lean": "bff0408c72a4155d49a803c31f04dd9db1568048bef526e45eb39331da620183",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean": "b70a3c5d0988000990a1aa8b4a178089191e0ee2ee2f935753d2ec8fe3516e8b",
+    "Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparison.lean": "7e54af9098fc49f2b09564e30facada627d7ab8b4a05c89d0c460e8c1cd7fc6f"
+  },
+  "roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.AllModuleCoefficients"
+  ],
+  "live_packet": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/LIVE_READY.json",
+  "source_owner": "/root/proper_injective_assembly_author",
+  "prior_source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/recovery-proper-residual-coherent-v1-ea58796c.json",
+  "boundary": "Complete regular original-single view plus native specialization in one normal changed graph; current failedProduct4135 is not a prerequisite of this root. Retain ZMod3 and other29 passes; no generic gate, base edit, extra test or budget change."
+}

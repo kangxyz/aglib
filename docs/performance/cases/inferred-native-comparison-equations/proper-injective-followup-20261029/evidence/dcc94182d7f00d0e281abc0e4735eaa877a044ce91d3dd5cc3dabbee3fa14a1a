@@ -1,0 +1,22 @@
+# Repair 1: preserve the actual coefficient-single head
+
+The actual native adapter kernel-check timed out on source 7f83 in Aea58796 /
+SOURCE926bd. Its lower assembly c9ee passed. The missing native theorem reported
+later in the same file is a consequence, not an independent source failure.
+
+The recorded same-family PERFORMANCE case supplies a concrete next repair:
+retain the original protected single functor as a variable data head at the
+generic/native boundary. The appended lower view receives Z and its whole
+original construction equation Z = U followed by the actual single. Substitution
+reduces its proof to the unchanged complete assembly theorem. In the native
+adapter Z is literally zmodSingle X n and the construction equation is rfl.
+Thus hI and the output have exactly the same original Z.obj head. The actual
+beta, four ordinary functors, unit-defined exact-single comparison, all real
+category worlds and all original theorem signatures are preserved.
+
+This is a proof-presentation delta to the reviewed original construction. It
+adds no desired isomorphism or coherence hypothesis to the native theorem, and
+creates no additional realization. The original lower assembly theorem body is
+unchanged; the existing c9ee module pass stays bound to that old file. The new
+module hash still needs ordinary incremental compilation because it appends a
+corollary. No speedup or exact kernel-cause claim follows from the old timeout.

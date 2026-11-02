@@ -1,0 +1,81 @@
+{
+  "phase": "V30NativeSharedRepresentedConstruction",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "run": "remote-6c24abe6e2524b43890800031ccf6773",
+  "source": "a056658aa68bf33f8055849ea0a89895ebdb4d32628516229574fb89727e8950",
+  "group_closed": true,
+  "exit_code": 1,
+  "input_drift": [],
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 8,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536,
+    "threads": 4
+  },
+  "pins": {
+    "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+    "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+    "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+  },
+  "execution_seconds": 118.49535618722439,
+  "compiler_invocations": 1,
+  "compiler_succeeded": 0,
+  "compiler_failed": 1,
+  "command": "See guarded input/payload and native receipt for phase argv",
+  "source_guards": {
+    "Aglib/CategoryTheory/Functor/CopyObjRestriction.lean": "e6cd595f727539698609abb2ede1d9691a3b494337164a57da4048a673be04a6",
+    "Aglib/CategoryTheory/Over/RelativeTests.lean": "5ab29b5478f311465cafa54ae92c84a1f1d83cf57007ae011ed8613a6527ba35",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean": "de7ca8da360c2e46e78ff742c6e01f00505861b319c917d7bb539420f5a181d0",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean": "7f855c431cb16eec134c96c0ec4ae6041cd4f22c40699e9ccb809dc57f8ac703"
+  },
+  "all_frontend_coverage": [
+    {
+      "path": "/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean",
+      "sha256": null,
+      "exit_code": 1,
+      "elapsed_seconds": 113.16149887442589
+    }
+  ],
+  "input": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/global-shared-construction-v30-input.json",
+    "sha256": "21770ab7a98cc7c7472614e06281bf370f33a1e69ef9c37d2aae6106f34d34ea"
+  },
+  "source_archive": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/recovery-global-v30-prefix-6c24abe6.json",
+    "sha256": "f71787fe3e46056e54380497d3068e9e385e35ab3cb08eed51e2dd27f994c211"
+  },
+  "artifacts": {
+    "receipt.json": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-6c24abe6e2524b43890800031ccf6773/receipt.json",
+      "sha256": "da063da48eb510647c27ed9586d1b2069be1f88bd34a3f6a2dc6ba4a6d98ee8a"
+    },
+    "build.log": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-6c24abe6e2524b43890800031ccf6773/build.log",
+      "sha256": "4048b4e0ce9648270866ed22a9a95911ed9070fc726ac00c0cab9decab1ccffb"
+    },
+    "compiler-events.jsonl": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-6c24abe6e2524b43890800031ccf6773/compiler-events.jsonl",
+      "sha256": "2e1bc49e4d5780555375897acff9db6a30a0ad0f5c6067439d769658e0d356f8"
+    }
+  },
+  "compiler_error_headers": [
+    "/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:379:6: error: Type mismatch",
+    "/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:385:6: error: Type mismatch",
+    "/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:391:6: error: Type mismatch",
+    "/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:598:0: error: Not a definitional equality: the left-hand side",
+    "/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:608:62: error: Type mismatch",
+    "/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:618:2: error: Type mismatch",
+    "/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:639:6: error: Type mismatch",
+    "/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:662:6: error: Type mismatch",
+    "/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:683:4: error: Application type mismatch: The argument",
+    "/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:702:2: error: Type mismatch",
+    "/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:854:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached",
+    "/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:931:2: error: Type mismatch"
+  ],
+  "boundary": "Existing producing-source observations only. Matching passes remain usable after a mixed failure. No mathematical verdict, broad closure or new validation run is supplied."
+}

@@ -35,3 +35,9 @@ The same construction gives H1 bijectivity for every actual finite locally
 constant abelian sheaf, without an order-invertibility condition. The H0 owner
 also supplies original sections bijectivity for every such sheaf. These are
 bounded finite-coefficient results, not arbitrary-sheaf proper base change.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [PointedEffacement](PointedEffacement.lean)

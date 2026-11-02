@@ -1,0 +1,21 @@
+{
+  "reason": "Native source policy rejects implementation imports of import-only compatibility facade Class. Replace each such import by exactly the two imports already in that facade; keep facade compatibility public, proof bodies/options/declarations and full transitive import set unchanged. No checker suppression or policy/tooling change.",
+  "head": "621d14bb55daad72dacc1e8a8868439fba226b6a",
+  "sources": [
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Class/Open.lean",
+      "before_sha256": "d56a0e4f1cdf3d6e186f1ae0369a39249bf16ab7468cb1ad6fd638c581b8dc79",
+      "after_sha256": "ffb037c0470667f0b113fdc876febc501d18be9d68d3e509326e78e5b06b8c3b"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Insertion.lean",
+      "before_sha256": "5f3b0debbd7f5e7a033fc16ea8c6ddd74c1cbf13abc1eb44bf613b7b4205759b",
+      "after_sha256": "1e314b8a2e182b0dd8da876f262c4dfbafcbc7c02213e914f5d0298746801c48"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenTopClass.lean",
+      "before_sha256": "cb99a803ffe67e394c8a81048d230001db459d14f98d50da3326daa90a85e1a5",
+      "after_sha256": "8e86d749a263cf1b4b14384b6c373db7ca0f6745d7c526db9a454c075d7a4d72"
+    }
+  ]
+}

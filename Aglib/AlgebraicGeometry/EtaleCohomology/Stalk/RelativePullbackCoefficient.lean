@@ -19,12 +19,8 @@ open Continuity
 variable {I : Type uI} [Category.{vI} I] {X : Scheme.{u}} (D : I ⥤ Over X)
 
 /-- Structural maps of the actual relative system, in the coefficient direction. -/
-def relativeCoefficientBaseCone : Cone (D ⋙ Over.forget X).op where
-  pt := op X
-  π.app i := (D.obj i.unop).hom.op
-  π.naturality i j a := by
-    apply Quiver.Hom.unop_inj
-    exact (Category.comp_id (D.obj j.unop).hom).trans (Over.w (D.map a.unop)).symm
+def relativeCoefficientBaseCone : Cone (D ⋙ Over.forget X).op :=
+  ((Over.forgetCocone X).whisker D).op
 
 /-- The actual relative inverse system carries the fixed original coefficients. -/
 def relativePullbackCoefficientSystem (F : AbelianSheaf.{u, u + 1} X) :

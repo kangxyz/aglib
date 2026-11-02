@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.Composition
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChange.Higher
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.HigherWholePasting
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.NatTrans
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Homology
@@ -71,62 +71,6 @@ variable {X S X' S' : Scheme.{u}}
   (f : X ⟶ S) (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
   (h : f' ≫ g = g' ≫ f)
 
-/-- The canonical derived exchange map for a commuting square of schemes. -/
-def derivedBaseChangeMap :
-    derivedDirectImage f ⋙ derivedInverseImage g ⟶
-      derivedInverseImage g' ⋙ derivedDirectImage f' :=
-  (mateEquiv (derivedImageAdjunction f) (derivedImageAdjunction f')
-    (TwoSquare.mk _ _ _ _ (derivedInverseImageSquareIso f f' g g' h).hom)).natTrans
-
-/-- The exchange component retains the original derived unit and counit. -/
-theorem derivedBaseChangeMap_app
-    (K : DerivedCategory.Plus (AbelianSheaf.{u, u + 1} X)) :
-    MateComponentEquation (derivedImageAdjunction f) (derivedImageAdjunction f')
-      (derivedInverseImageSquareIso f f' g g' h).hom K :=
-  mateComponentEquation (derivedImageAdjunction f) (derivedImageAdjunction f')
-    (derivedInverseImageSquareIso f f' g g' h).hom K
-
-/-- The adjoint equation of the canonical derived exchange. -/
-theorem derivedBaseChangeMap_counit
-    (K : DerivedCategory.Plus (AbelianSheaf.{u, u + 1} X)) :
-    MateCounitEquation (derivedImageAdjunction f) (derivedImageAdjunction f')
-      (derivedInverseImageSquareIso f f' g g' h).hom K :=
-  mateCounitEquation (derivedImageAdjunction f) (derivedImageAdjunction f')
-    (derivedInverseImageSquareIso f f' g g' h).hom K
-
-/-- The adjoint equation characterizes the derived exchange, independently of resolutions. -/
-theorem eq_derivedBaseChangeMap_iff
-    (β : derivedDirectImage f ⋙ derivedInverseImage g ⟶
-      derivedInverseImage g' ⋙ derivedDirectImage f') :
-    β = derivedBaseChangeMap f f' g g' h ↔
-      ∀ K : DerivedCategory.Plus (AbelianSheaf.{u, u + 1} X),
-        (derivedInverseImage f').map (β.app K) ≫
-            (derivedImageAdjunction f').counit.app ((derivedInverseImage g').obj K) =
-          (derivedInverseImageSquareIso f f' g g' h).hom.app
-              ((derivedDirectImage f).obj K) ≫
-            (derivedInverseImage g').map ((derivedImageAdjunction f).counit.app K) :=
-  eq_mateEquiv_iff (derivedImageAdjunction f) (derivedImageAdjunction f') _ β
-
-/-- Morphisms of derived coefficients commute with the canonical exchange. -/
-@[reassoc]
-theorem derivedBaseChangeMap_naturality
-    {K L : DerivedCategory.Plus (AbelianSheaf.{u, u + 1} X)} (a : K ⟶ L) :
-    (derivedInverseImage g).map ((derivedDirectImage f).map a) ≫
-        (derivedBaseChangeMap f f' g g' h).app L =
-      (derivedBaseChangeMap f f' g g' h).app K ≫
-        (derivedDirectImage f').map ((derivedInverseImage g').map a) :=
-  (derivedBaseChangeMap f f' g g' h).naturality a
-
-/-- Base change on every natural-degree higher direct image, induced by the actual derived map. -/
-def higherBaseChangeMap (q : ℕ) :
-    higherDirectImage f q ⋙ inverseImage g ⟶ inverseImage g' ⋙ higherDirectImage f' q :=
-  (higherBaseChangeSourceIso f g q).hom ≫
-    Functor.whiskerLeft
-      (DerivedCategory.Plus.singleFunctor (AbelianSheaf.{u, u + 1} X) 0)
-      (Functor.whiskerRight (derivedBaseChangeMap f f' g g' h)
-        (DerivedCategory.Plus.homologyFunctor (AbelianSheaf.{u, u + 1} S') (q : ℤ))) ≫
-    (higherBaseChangeTargetIso f' g' q).hom
-
 /-- The all-degree exchange formula with its native higher-direct-image, homology,
 and exact-single comparison maps. -/
 theorem higherBaseChangeMap_app (q : ℕ) (F : AbelianSheaf.{u, u + 1} X) :
@@ -153,16 +97,6 @@ theorem higherBaseChangeMap_app (q : ℕ) (F : AbelianSheaf.{u, u + 1} X) :
     (higherBaseChangeSourceIso_hom_app f g q F)
     (higherBaseChangeTargetIso_hom_app f' g' q F)
 
-/-- Naturality of higher base change in the coefficient sheaf. -/
-@[reassoc]
-theorem higherBaseChangeMap_naturality (q : ℕ)
-    {F G : AbelianSheaf.{u, u + 1} X} (a : F ⟶ G) :
-    (inverseImage g).map ((higherDirectImage f q).map a) ≫
-        (higherBaseChangeMap f f' g g' h q).app G =
-      (higherBaseChangeMap f f' g g' h q).app F ≫
-        (higherDirectImage f' q).map ((inverseImage g').map a) :=
-  (higherBaseChangeMap f f' g g' h q).naturality a
-
 /-- The canonical exchange for identity horizontal maps is the identity after the
 original inverse-image identity comparisons, not a newly chosen exchange. -/
 @[reassoc]
@@ -187,83 +121,20 @@ theorem derivedBaseChangeMap_id (e : f ≫ 𝟙 S = 𝟙 X ≫ f)
   simpa [derivedBaseChangeMap, mateEquiv_hId, TwoSquare.vId] using he.symm
 
 
-/-- The canonical derived exchange preserves the original right-derived units.
-The shared formula retains the original degreewise underived exchange and both
-exact inverse-image comparisons; no nonexact right-derived unit is cancelled. -/
-theorem derivedBaseChangeMap_unit
-    (K : CochainComplex.Plus (AbelianSheaf.{u, u + 1} X)) :
-    DerivedMateUnitEquation (inverseImageAdjunction f) (inverseImageAdjunction f')
-      (TwoSquare.mk _ _ _ _ (inverseImageSquareIso f f' g g' h).hom)
-      (TwoSquare.mk _ _ _ _ (derivedInverseImageSquareIso f f' g g' h).hom) K :=
-  derivedMateUnitEquation_of_exactSquare (inverseImageAdjunction f) (inverseImageAdjunction f')
-    (TwoSquare.mk _ _ _ _ (inverseImageSquareIso f f' g g' h).hom)
-    (TwoSquare.mk _ _ _ _ (derivedInverseImageSquareIso f f' g g' h).hom)
-    (derivedInverseImageSquareIso_exactComparison f f' g g' h) K
-
 omit [HasDerivedCategory.{wX} (AbelianSheaf.{u, u + 1} X)]
-    [HasDerivedCategory.{wS} (AbelianSheaf.{u, u + 1} S)]
-    [HasDerivedCategory.{wX'} (AbelianSheaf.{u, u + 1} X')]
-    [HasDerivedCategory.{wS'} (AbelianSheaf.{u, u + 1} S')] in
-/-- The original exchange is the literal ordinary adjunction mate. -/
-theorem baseChangeMap_eq_mate :
-    baseChangeMap f f' g g' h =
-      (mateEquiv (inverseImageAdjunction f) (inverseImageAdjunction f')
-        (TwoSquare.mk _ _ _ _ (inverseImageSquareIso f f' g g' h).hom)).natTrans := rfl
-
-/-- The derived sheaf adjunction is the native right-derived adjunction. -/
-theorem derivedImageAdjunction_eq_rightDerivedFunctorPlus :
-    derivedImageAdjunction f = (inverseImageAdjunction f).rightDerivedFunctorPlus := rfl
-
-/-- The derived exchange retains the native derived adjunctions explicitly. -/
-theorem derivedBaseChangeMap_eq_nativeMate :
-    derivedBaseChangeMap f f' g g' h =
-      (mateEquiv (inverseImageAdjunction f).rightDerivedFunctorPlus
-        (inverseImageAdjunction f').rightDerivedFunctorPlus
-        (TwoSquare.mk _ _ _ _ (derivedInverseImageSquareIso f f' g g' h).hom)).natTrans := by
-  calc
-    derivedBaseChangeMap f f' g g' h =
-        (mateEquiv (derivedImageAdjunction f) (derivedImageAdjunction f')
-          (TwoSquare.mk _ _ _ _ (derivedInverseImageSquareIso f f' g g' h).hom)).natTrans := rfl
-    _ = _ := congrArg₂ (fun a b =>
-      (mateEquiv a b
-        (TwoSquare.mk _ _ _ _ (derivedInverseImageSquareIso f f' g g' h).hom)).natTrans)
-      (derivedImageAdjunction_eq_rightDerivedFunctorPlus f)
-      (derivedImageAdjunction_eq_rightDerivedFunctorPlus f')
-
-/-- The higher-direct-image comparison is the original native comparison. -/
-theorem higherDirectImageIso_eq_native (q : ℕ) :
-    higherDirectImageIso f q = (directImage f).rightDerivedSingleHomologyIso q := rfl
-
-/-- The actual higher exchange is its original source/mate/target transport. -/
-theorem higherBaseChangeMap_eq_transport (q : ℕ) :
-    higherBaseChangeMap f f' g g' h q =
-      (higherBaseChangeSourceIso f g q).hom ≫
-        Functor.whiskerLeft
-          (DerivedCategory.Plus.singleFunctor (AbelianSheaf.{u, u + 1} X) 0)
-          (Functor.whiskerRight (derivedBaseChangeMap f f' g g' h)
-            (DerivedCategory.Plus.homologyFunctor (AbelianSheaf.{u, u + 1} S') (q : ℤ))) ≫
-        (higherBaseChangeTargetIso f' g' q).hom := rfl
-
-/-- The original unit equation written using the actual canonical exchange maps. -/
-theorem derivedBaseChangeMap_actualUnit
-    (K : CochainComplex.Plus (AbelianSheaf.{u, u + 1} X)) :
-    Functor.ActualDerivedUnitEquation
-      (directImage f) (directImage f') (inverseImage g) (inverseImage g')
-      (baseChangeMap f f' g g' h) (derivedBaseChangeMap f f' g g' h) K :=
-  actualDerivedUnitEquation_of_mate
-    (inverseImageAdjunction f) (inverseImageAdjunction f')
-    (TwoSquare.mk _ _ _ _ (inverseImageSquareIso f f' g g' h).hom)
-    (TwoSquare.mk _ _ _ _ (derivedInverseImageSquareIso f f' g g' h).hom)
-    (baseChangeMap f f' g g' h) (derivedBaseChangeMap f f' g g' h)
-    (baseChangeMap_eq_mate f f' g g' h) (derivedBaseChangeMap_eq_nativeMate f f' g g' h) K
-    (derivedBaseChangeMap_unit f f' g g' h K)
-
+  [HasDerivedCategory.{wS} (AbelianSheaf.{u, u + 1} S)]
+  [HasDerivedCategory.{wX'} (AbelianSheaf.{u, u + 1} X')]
+  [HasDerivedCategory.{wS'} (AbelianSheaf.{u, u + 1} S')] in
 /-- The original R0 normalization, with all actual maps kept opaque. -/
 theorem higherBaseChangeMap_zero (F : AbelianSheaf.{u, u + 1} X) :
     Functor.HigherExchangeZeroEquation
       (directImage f) (directImage f') (inverseImage g) (inverseImage g')
-      (baseChangeMap f f' g g' h) F ((higherBaseChangeMap f f' g g' h 0).app F) :=
-  Functor.higherExchangeZero_normalization_actual
+      (baseChangeMap f f' g g' h) F ((higherBaseChangeMap f f' g g' h 0).app F) := by
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X')
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S')
+  exact Functor.higherExchangeZero_normalization_actual
     (directImage f) (directImage f') (inverseImage g) (inverseImage g')
     (baseChangeMap f f' g g' h) (derivedBaseChangeMap f f' g g' h)
     (higherDirectImageIso f 0) (higherDirectImageIso f' 0)
@@ -360,39 +231,14 @@ theorem inverseImageSquareIso_constant (A : AddCommGrpCat.{u + 1}) :
 
 end OriginalConstants
 
-universe eY eV dY
-
-private theorem homPostcomp_square
-    {C D : Type*} [Category* C] [Category* D] (J : C ⥤ D)
-    {P Q R U : C} {Z : D}
-    (a : P ⟶ Q) (s : Q ⟶ U) (t : P ⟶ R) (b : R ⟶ U)
-    (hs : a ≫ s = t ≫ b)
-    (x : Z ⟶ J.obj P) (y : Z ⟶ J.obj Q)
-    (z : Z ⟶ J.obj R) (w : Z ⟶ J.obj U)
-    (ha : x ≫ J.map a = y) (ht : x ≫ J.map t = z)
-    (hb : z ≫ J.map b = w) : y ≫ J.map s = w := by
-  rw [← ha, Category.assoc, ← J.map_comp, hs, J.map_comp,
-    ← Category.assoc, ht, hb]
+universe eY eV
 
 section TargetAction
 variable {Y : Scheme.{u}}
   [HasExt.{eY} (AbelianSheaf.{u, u + 1} Y)]
 
-/-- Coefficient change is literal postcomposition on the native Ext lift. -/
-private theorem h1CoefficientMap_homPlus
-    [HasDerivedCategory.{dY} (AbelianSheaf.{u, u + 1} Y)]
-    {P Q : AbelianSheaf.{u, u + 1} Y} (q : P ⟶ Q)
-    (a : H1Etale.{u, u + 1, eY} Y P) :
-    (coefficientMap q a).homPlus = a.homPlus ≫
-      ((DerivedCategory.Plus.singleFunctor
-        (AbelianSheaf.{u, u + 1} Y) 0).map q)⟦(1 : ℤ)⟧' := by
-  change (a.comp (Abelian.Ext.mk₀ q) (add_zero 1)).homPlus = _
-  rw [Abelian.Ext.homPlus_comp, Abelian.Ext.homPlus_mk₀]
-  exact ShiftedHom.comp_mk₀ a.homPlus (0 : ℤ) rfl
-    ((DerivedCategory.Plus.singleFunctor (AbelianSheaf.{u, u + 1} Y) 0).map q)
-
 /-- An ordinary coefficient square acts on the original H1 classes.
-The derived category is local, not an extra hypothesis of this theorem. -/
+The original coefficient functoriality suffices, without a derived category. -/
 private theorem h1CoefficientMap_square_homPlus
     {P Q R U : AbelianSheaf.{u, u + 1} Y}
     (a : P ⟶ Q) (s : Q ⟶ U) (t : P ⟶ R) (b : R ⟶ U)
@@ -403,17 +249,11 @@ private theorem h1CoefficientMap_square_homPlus
     (w : H1Etale.{u, u + 1, eY} Y U)
     (ha : coefficientMap a x = y) (ht : coefficientMap t x = z)
     (hb : coefficientMap b z = w) : coefficientMap s y = w := by
-  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} Y)
-  have ha' := congrArg Abelian.Ext.homPlus ha
-  have ht' := congrArg Abelian.Ext.homPlus ht
-  have hb' := congrArg Abelian.Ext.homPlus hb
-  rw [h1CoefficientMap_homPlus] at ha' ht' hb'
-  apply Abelian.Ext.homPlus_injective 1
-  rw [h1CoefficientMap_homPlus]
-  exact homPostcomp_square
-    (DerivedCategory.Plus.singleFunctor (AbelianSheaf.{u, u + 1} Y) 0 ⋙
-      shiftFunctor (DerivedCategory.Plus (AbelianSheaf.{u, u + 1} Y)) (1 : ℤ))
-    a s t b hs x.homPlus y.homPlus z.homPlus w.homPlus ha' ht' hb'
+  calc
+    coefficientMap s y = coefficientMap (a ≫ s) x := by
+      rw [coefficientMap_comp, AddMonoidHom.comp_apply, ha]
+    _ = coefficientMap (t ≫ b) x := by rw [hs]
+    _ = w := by rw [coefficientMap_comp, AddMonoidHom.comp_apply, ht, hb]
 
 end TargetAction
 
@@ -996,20 +836,22 @@ theorem higherBaseChangeMap_id_target :
     ((higherBaseChangeTargetIso f (𝟙 X) q).app F)
     (higherBaseChangeTargetIso_hom_app f (𝟙 X) q F)
 
+omit [HasDerivedCategory.{wHigherIdX} (AbelianSheaf.{u, u + 1} X)]
+  [HasDerivedCategory.{wHigherIdS} (AbelianSheaf.{u, u + 1} S)] in
 /-- The actual higher exchange over identity horizontal maps uses the native identity maps. -/
 theorem higherBaseChangeMap_id :
     (inverseImageId S).hom.app ((higherDirectImage f q).obj F) =
       (higherBaseChangeMap f f (𝟙 S) (𝟙 X) e q).app F ≫
         (higherDirectImage f q).map ((inverseImageId X).hom.app F) := by
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S)
   let J := (DerivedCategory.Plus.singleFunctor (AbelianSheaf.{u, u + 1} X) 0).obj F
   let Hq := DerivedCategory.Plus.homologyFunctor (AbelianSheaf.{u, u + 1} S) (q : ℤ)
   have hb : (higherBaseChangeMap f f (𝟙 S) (𝟙 X) e q).app F ≫
       (higherBaseChangeTargetIso f (𝟙 X) q).inv.app F =
     (higherBaseChangeSourceIso f (𝟙 S) q).hom.app F ≫
       Hq.map ((derivedBaseChangeMap f f (𝟙 S) (𝟙 X) e).app J) := by
-    dsimp only [J, Hq, higherBaseChangeMap, NatTrans.comp_app, Functor.whiskerLeft_app,
-      Functor.whiskerRight_app]
-    simp only [Category.assoc, Iso.hom_inv_id_app, Category.comp_id]
+    exact higherBaseChangeMap_target_inv_component f f (𝟙 S) (𝟙 X) e q F
   exact mapped_identity_transport Hq
     ((derivedBaseChangeMap f f (𝟙 S) (𝟙 X) e).app J)
     ((derivedInverseImageIdIso S).hom.app ((derivedDirectImage f).obj J))
@@ -1166,9 +1008,7 @@ theorem higherBaseChangeMap_vId_homology {S S' : Scheme.{u}}
       (higherBaseChangeTargetIso (𝟙 S') g q).inv.app F =
     (higherBaseChangeSourceIso (𝟙 S) g q).hom.app F ≫
       Hq.map ((derivedBaseChangeMap (𝟙 S) (𝟙 S') g g e).app J) := by
-    dsimp only [J, Hq, higherBaseChangeMap, NatTrans.comp_app, Functor.whiskerLeft_app,
-      Functor.whiskerRight_app]
-    simp only [Category.assoc, Iso.hom_inv_id_app, Category.comp_id]
+    exact higherBaseChangeMap_target_inv_component (𝟙 S) (𝟙 S') g g e q F
   have hm := congrArg Hq.map (derivedBaseChangeMap_vId g e J)
   simp only [Functor.map_comp] at hm
   change (higherBaseChangeSourceIso (𝟙 S) g q).hom.app F ≫
@@ -1313,72 +1153,92 @@ local notation "V₂" => higherDirectImage f₂ q
 /-- Canonical whole functor data. All comparison isomorphisms are the original
 native NatIsos, not isomorphisms reconstructed from coefficient components. -/
 def higherHorizontalWholeLadder :
-    HigherPastingLadder (AbelianSheaf.{u, u + 1} X₀ ⥤ AbelianSheaf.{u, u + 1} S₂) where
-  A := J₀ ⋙ (R₀ ⋙ derivedInverseImage (g₂ ≫ g₁)) ⋙ H₂
-  B := J₀ ⋙ (R₀ ⋙ D₁ ⋙ D₂) ⋙ H₂
-  C₀ := J₀ ⋙ (E₁ ⋙ R₁ ⋙ D₂) ⋙ H₂
-  D := J₀ ⋙ (E₁ ⋙ E₂ ⋙ R₂) ⋙ H₂
-  T := J₀ ⋙ (derivedInverseImage (h₂ ≫ h₁) ⋙ R₂) ⋙ H₂
-  A' := V₀ ⋙ inverseImage (g₂ ≫ g₁)
-  B' := (V₀ ⋙ G₁) ⋙ G₂
-  C' := (L₁ ⋙ V₁) ⋙ G₂
-  D' := L₁ ⋙ L₂ ⋙ V₂
-  T' := inverseImage (h₂ ≫ h₁) ⋙ V₂
-  a := Functor.whiskerLeft J₀ (Functor.whiskerRight
-    (Functor.whiskerLeft R₀ (derivedInverseImageCompIso g₁ g₂).hom) H₂)
-  b := Functor.whiskerLeft J₀ (Functor.whiskerRight
-    (Functor.whiskerRight (derivedBaseChangeMap f₀ f₁ g₁ h₁ e₁) D₂) H₂)
-  c := Functor.whiskerLeft J₀ (Functor.whiskerRight
-    (Functor.whiskerLeft E₁ (derivedBaseChangeMap f₁ f₂ g₂ h₂ e₂)) H₂)
-  d := Functor.whiskerLeft J₀ (Functor.whiskerRight
-    (derivedBaseChangeMap f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e) H₂)
-  e := Functor.whiskerLeft J₀ (Functor.whiskerRight
-    (Functor.whiskerRight (derivedInverseImageCompIso h₁ h₂).hom R₂) H₂)
-  a' := Functor.whiskerLeft V₀ (inverseImageComp g₁ g₂).hom
-  b' := Functor.whiskerRight (higherBaseChangeMap f₀ f₁ g₁ h₁ e₁ q) G₂
-  c' := Functor.whiskerLeft L₁ (higherBaseChangeMap f₁ f₂ g₂ h₂ e₂ q)
-  d' := higherBaseChangeMap f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e q
-  e' := Functor.whiskerRight (inverseImageComp h₁ h₂).hom V₂
-  iA := higherBaseChangeSourceIso f₀ (g₂ ≫ g₁) q
-  iB := Functor.isoWhiskerRight (higherBaseChangeSourceIso f₀ g₁ q) G₂ ≪≫
-    Functor.isoWhiskerLeft (J₀ ⋙ R₀ ⋙ D₁)
-      ((inverseImage g₂).rightDerivedFunctorPlusHomologyIso (q : ℤ)).symm
-  iC := Functor.isoWhiskerRight (higherBaseChangeTargetIso f₁ h₁ q).symm G₂ ≪≫
-    Functor.isoWhiskerLeft (J₀ ⋙ E₁ ⋙ R₁)
-      ((inverseImage g₂).rightDerivedFunctorPlusHomologyIso (q : ℤ)).symm
-  iD := Functor.isoWhiskerLeft L₁ (higherBaseChangeTargetIso f₂ h₂ q).symm ≪≫
-    Functor.isoWhiskerRight ((inverseImage h₁).rightDerivedFunctorPlusSingleIso 0).symm
-      (E₂ ⋙ R₂ ⋙ H₂)
-  iT := (higherBaseChangeTargetIso f₂ (h₂ ≫ h₁) q).symm
+    HigherPastingLadder (AbelianSheaf.{u, u + 1} X₀ ⥤ AbelianSheaf.{u, u + 1} S₂) :=
+  HigherPastingLadder.ofHigherExchange
+    (inverseImageComp g₁ g₂)
+    (derivedInverseImageCompIso g₁ g₂)
+    (inverseImageComp h₁ h₂)
+    (derivedInverseImageCompIso h₁ h₂)
+    (derivedBaseChangeMap f₀ f₁ g₁ h₁ e₁)
+    (derivedBaseChangeMap f₁ f₂ g₂ h₂ e₂)
+    (derivedBaseChangeMap f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e)
+    (higherBaseChangeMap f₀ f₁ g₁ h₁ e₁ q)
+    (higherBaseChangeMap f₁ f₂ g₂ h₂ e₂ q)
+    (higherBaseChangeMap f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e q)
+    (higherBaseChangeSourceIso f₀ g₁ q)
+    (higherBaseChangeTargetIso f₁ h₁ q)
+    (higherBaseChangeTargetIso f₂ h₂ q)
+    (higherBaseChangeSourceIso f₀ (g₂ ≫ g₁) q)
+    (higherBaseChangeTargetIso f₂ (h₂ ≫ h₁) q)
+    ((inverseImage g₂).rightDerivedFunctorPlusHomologyIso (q : ℤ))
+    ((inverseImage h₁).rightDerivedFunctorPlusSingleIso 0)
 
 local notation "Δ" => higherHorizontalWholeLadder f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e q
 
 /-- The original source composition law, now a whole natural transformation equation. -/
 theorem higherHorizontalWholeLadder_source : (Δ).SourceEquation :=
-  whole_three_edge_of_app
-    (Functor.whiskerLeft V₀ (inverseImageComp g₁ g₂).hom)
-    (Functor.whiskerRight (higherBaseChangeSourceIso f₀ g₁ q).hom G₂)
-    (Functor.whiskerLeft (J₀ ⋙ R₀ ⋙ D₁)
-      ((inverseImage g₂).rightDerivedFunctorPlusHomologyIso (q : ℤ)).inv)
-    (higherBaseChangeSourceIso f₀ (g₂ ≫ g₁) q).hom
-    (Functor.whiskerLeft J₀ (Functor.whiskerRight
-      (Functor.whiskerLeft R₀ (derivedInverseImageCompIso g₁ g₂).hom) H₂))
+  HigherPastingLadder.ofHigherExchange_source
+    (inverseImageComp g₁ g₂)
+    (derivedInverseImageCompIso g₁ g₂)
+    (inverseImageComp h₁ h₂)
+    (derivedInverseImageCompIso h₁ h₂)
+    (derivedBaseChangeMap f₀ f₁ g₁ h₁ e₁)
+    (derivedBaseChangeMap f₁ f₂ g₂ h₂ e₂)
+    (derivedBaseChangeMap f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e)
+    (higherBaseChangeMap f₀ f₁ g₁ h₁ e₁ q)
+    (higherBaseChangeMap f₁ f₂ g₂ h₂ e₂ q)
+    (higherBaseChangeMap f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e q)
+    (higherBaseChangeSourceIso f₀ g₁ q)
+    (higherBaseChangeTargetIso f₁ h₁ q)
+    (higherBaseChangeTargetIso f₂ h₂ q)
+    (higherBaseChangeSourceIso f₀ (g₂ ≫ g₁) q)
+    (higherBaseChangeTargetIso f₂ (h₂ ≫ h₁) q)
+    ((inverseImage g₂).rightDerivedFunctorPlusHomologyIso (q : ℤ))
+    ((inverseImage h₁).rightDerivedFunctorPlusSingleIso 0)
     (higherBaseChangeSourceIso_comp f₀ g₁ g₂ q)
 
 /-- The outer edge is the actual higher exchange, not a substituted map. -/
 theorem higherHorizontalWholeLadder_outer : (Δ).OuterEquation :=
-  higherBaseChangeMap_target_inv_whole f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e q
+  HigherPastingLadder.ofHigherExchange_outer
+    (inverseImageComp g₁ g₂)
+    (derivedInverseImageCompIso g₁ g₂)
+    (inverseImageComp h₁ h₂)
+    (derivedInverseImageCompIso h₁ h₂)
+    (derivedBaseChangeMap f₀ f₁ g₁ h₁ e₁)
+    (derivedBaseChangeMap f₁ f₂ g₂ h₂ e₂)
+    (derivedBaseChangeMap f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e)
+    (higherBaseChangeMap f₀ f₁ g₁ h₁ e₁ q)
+    (higherBaseChangeMap f₁ f₂ g₂ h₂ e₂ q)
+    (higherBaseChangeMap f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e q)
+    (higherBaseChangeSourceIso f₀ g₁ q)
+    (higherBaseChangeTargetIso f₁ h₁ q)
+    (higherBaseChangeTargetIso f₂ h₂ q)
+    (higherBaseChangeSourceIso f₀ (g₂ ≫ g₁) q)
+    (higherBaseChangeTargetIso f₂ (h₂ ≫ h₁) q)
+    ((inverseImage g₂).rightDerivedFunctorPlusHomologyIso (q : ℤ))
+    ((inverseImage h₁).rightDerivedFunctorPlusSingleIso 0)
+    (higherBaseChangeMap_target_inv_whole f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e q)
 
 /-- The final edge is the original exact-single composition law. -/
 theorem higherHorizontalWholeLadder_target : (Δ).TargetEquation :=
-  whole_three_edge_of_app
-    (Functor.whiskerRight (inverseImageComp h₁ h₂).hom V₂)
-    (Functor.whiskerLeft L₁ (higherBaseChangeTargetIso f₂ h₂ q).inv)
-    (Functor.whiskerRight ((inverseImage h₁).rightDerivedFunctorPlusSingleIso 0).inv
-      (E₂ ⋙ R₂ ⋙ H₂))
-    (higherBaseChangeTargetIso f₂ (h₂ ≫ h₁) q).inv
-    (Functor.whiskerLeft J₀ (Functor.whiskerRight
-      (Functor.whiskerRight (derivedInverseImageCompIso h₁ h₂).hom R₂) H₂))
+  HigherPastingLadder.ofHigherExchange_target
+    (inverseImageComp g₁ g₂)
+    (derivedInverseImageCompIso g₁ g₂)
+    (inverseImageComp h₁ h₂)
+    (derivedInverseImageCompIso h₁ h₂)
+    (derivedBaseChangeMap f₀ f₁ g₁ h₁ e₁)
+    (derivedBaseChangeMap f₁ f₂ g₂ h₂ e₂)
+    (derivedBaseChangeMap f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e)
+    (higherBaseChangeMap f₀ f₁ g₁ h₁ e₁ q)
+    (higherBaseChangeMap f₁ f₂ g₂ h₂ e₂ q)
+    (higherBaseChangeMap f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e q)
+    (higherBaseChangeSourceIso f₀ g₁ q)
+    (higherBaseChangeTargetIso f₁ h₁ q)
+    (higherBaseChangeTargetIso f₂ h₂ q)
+    (higherBaseChangeSourceIso f₀ (g₂ ≫ g₁) q)
+    (higherBaseChangeTargetIso f₂ (h₂ ≫ h₁) q)
+    ((inverseImage g₂).rightDerivedFunctorPlusHomologyIso (q : ℤ))
+    ((inverseImage h₁).rightDerivedFunctorPlusSingleIso 0)
     (higherBaseChangeTargetIso_comp f₂ h₁ h₂ q)
 
 /-- Native first whole edge in the canonical coefficient convention, independently of the ladder. -/
@@ -1444,28 +1304,111 @@ theorem derivedHorizontalHomology_whole :
 
 /-- The accepted native first edge supplies the ladder's first compatibility. -/
 theorem higherHorizontalWholeLadder_first : (Δ).FirstEquation :=
-  higherHorizontalFirst_whole f₀ f₁ g₁ g₂ h₁ e₁ q
+  HigherPastingLadder.ofHigherExchange_first
+    (inverseImageComp g₁ g₂)
+    (derivedInverseImageCompIso g₁ g₂)
+    (inverseImageComp h₁ h₂)
+    (derivedInverseImageCompIso h₁ h₂)
+    (derivedBaseChangeMap f₀ f₁ g₁ h₁ e₁)
+    (derivedBaseChangeMap f₁ f₂ g₂ h₂ e₂)
+    (derivedBaseChangeMap f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e)
+    (higherBaseChangeMap f₀ f₁ g₁ h₁ e₁ q)
+    (higherBaseChangeMap f₁ f₂ g₂ h₂ e₂ q)
+    (higherBaseChangeMap f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e q)
+    (higherBaseChangeSourceIso f₀ g₁ q)
+    (higherBaseChangeTargetIso f₁ h₁ q)
+    (higherBaseChangeTargetIso f₂ h₂ q)
+    (higherBaseChangeSourceIso f₀ (g₂ ≫ g₁) q)
+    (higherBaseChangeTargetIso f₂ (h₂ ≫ h₁) q)
+    ((inverseImage g₂).rightDerivedFunctorPlusHomologyIso (q : ℤ))
+    ((inverseImage h₁).rightDerivedFunctorPlusSingleIso 0)
+    (higherBaseChangeMap_target_inv_whole f₀ f₁ g₁ h₁ e₁ q)
 
 /-- The accepted native second edge supplies the ladder's second compatibility. -/
 theorem higherHorizontalWholeLadder_second : (Δ).SecondEquation :=
-  whole_second_reassociate J₀ E₁ R₁
-    ((inverseImage g₂).rightDerivedFunctorPlusHomologyIso (q : ℤ)).inv _ _ _
-    (higherHorizontalSecond_whole f₁ f₂ g₂ h₁ h₂ e₂ q)
+  HigherPastingLadder.ofHigherExchange_second
+    (inverseImageComp g₁ g₂)
+    (derivedInverseImageCompIso g₁ g₂)
+    (inverseImageComp h₁ h₂)
+    (derivedInverseImageCompIso h₁ h₂)
+    (derivedBaseChangeMap f₀ f₁ g₁ h₁ e₁)
+    (derivedBaseChangeMap f₁ f₂ g₂ h₂ e₂)
+    (derivedBaseChangeMap f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e)
+    (higherBaseChangeMap f₀ f₁ g₁ h₁ e₁ q)
+    (higherBaseChangeMap f₁ f₂ g₂ h₂ e₂ q)
+    (higherBaseChangeMap f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e q)
+    (higherBaseChangeSourceIso f₀ g₁ q)
+    (higherBaseChangeTargetIso f₁ h₁ q)
+    (higherBaseChangeTargetIso f₂ h₂ q)
+    (higherBaseChangeSourceIso f₀ (g₂ ≫ g₁) q)
+    (higherBaseChangeTargetIso f₂ (h₂ ≫ h₁) q)
+    ((inverseImage g₂).rightDerivedFunctorPlusHomologyIso (q : ℤ))
+    ((inverseImage h₁).rightDerivedFunctorPlusSingleIso 0)
+    (higherDirectImageIso f₁ q)
+    (higherBaseChangeSourceIso f₁ g₂ q)
+    (higherBaseChangeTargetIso_inv_whole_factor f₁ h₁ q)
+    (higherBaseChangeSourceIso_hom_whole_factor f₁ g₂ q)
+    (higherBaseChangeMap_target_inv_whole f₁ f₂ g₂ h₂ e₂ q)
 
 /-- The accepted mapped derived path supplies the ladder's upper equation. -/
 theorem higherHorizontalWholeLadder_derived : (Δ).DerivedEquation :=
-  derivedHorizontalHomology_whole f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e q
+  HigherPastingLadder.ofHigherExchange_derived
+    (inverseImageComp g₁ g₂)
+    (derivedInverseImageCompIso g₁ g₂)
+    (inverseImageComp h₁ h₂)
+    (derivedInverseImageCompIso h₁ h₂)
+    (derivedBaseChangeMap f₀ f₁ g₁ h₁ e₁)
+    (derivedBaseChangeMap f₁ f₂ g₂ h₂ e₂)
+    (derivedBaseChangeMap f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e)
+    (higherBaseChangeMap f₀ f₁ g₁ h₁ e₁ q)
+    (higherBaseChangeMap f₁ f₂ g₂ h₂ e₂ q)
+    (higherBaseChangeMap f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e q)
+    (higherBaseChangeSourceIso f₀ g₁ q)
+    (higherBaseChangeTargetIso f₁ h₁ q)
+    (higherBaseChangeTargetIso f₂ h₂ q)
+    (higherBaseChangeSourceIso f₀ (g₂ ≫ g₁) q)
+    (higherBaseChangeTargetIso f₂ (h₂ ≫ h₁) q)
+    ((inverseImage g₂).rightDerivedFunctorPlusHomologyIso (q : ℤ))
+    ((inverseImage h₁).rightDerivedFunctorPlusSingleIso 0)
+    (derivedBaseChangeMap_hComp f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e)
 
 /-- Whole all-degree pasting before any coefficient specialization. -/
 theorem higherHorizontalWholeLadder_pasting : (Δ).HigherEquation :=
-  (Δ).pasting
-    (higherHorizontalWholeLadder_source f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e q)
-    (higherHorizontalWholeLadder_first f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e q)
-    (higherHorizontalWholeLadder_second f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e q)
-    (higherHorizontalWholeLadder_outer f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e q)
-    (higherHorizontalWholeLadder_target f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e q)
-    (higherHorizontalWholeLadder_derived f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e q)
+  HigherPastingLadder.ofHigherExchange_pasting
+    (inverseImageComp g₁ g₂)
+    (derivedInverseImageCompIso g₁ g₂)
+    (inverseImageComp h₁ h₂)
+    (derivedInverseImageCompIso h₁ h₂)
+    (derivedBaseChangeMap f₀ f₁ g₁ h₁ e₁)
+    (derivedBaseChangeMap f₁ f₂ g₂ h₂ e₂)
+    (derivedBaseChangeMap f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e)
+    (higherBaseChangeMap f₀ f₁ g₁ h₁ e₁ q)
+    (higherBaseChangeMap f₁ f₂ g₂ h₂ e₂ q)
+    (higherBaseChangeMap f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e q)
+    (higherBaseChangeSourceIso f₀ g₁ q)
+    (higherBaseChangeTargetIso f₁ h₁ q)
+    (higherBaseChangeTargetIso f₂ h₂ q)
+    (higherBaseChangeSourceIso f₀ (g₂ ≫ g₁) q)
+    (higherBaseChangeTargetIso f₂ (h₂ ≫ h₁) q)
+    ((inverseImage g₂).rightDerivedFunctorPlusHomologyIso (q : ℤ))
+    ((inverseImage h₁).rightDerivedFunctorPlusSingleIso 0)
+    (higherBaseChangeSourceIso_comp f₀ g₁ g₂ q)
+    (higherBaseChangeTargetIso_comp f₂ h₁ h₂ q)
+    (higherDirectImageIso f₁ q)
+    (higherBaseChangeSourceIso f₁ g₂ q)
+    (higherBaseChangeTargetIso_inv_whole_factor f₁ h₁ q)
+    (higherBaseChangeSourceIso_hom_whole_factor f₁ g₂ q)
+    (higherBaseChangeMap_target_inv_whole f₀ f₁ g₁ h₁ e₁ q)
+    (higherBaseChangeMap_target_inv_whole f₁ f₂ g₂ h₂ e₂ q)
+    (higherBaseChangeMap_target_inv_whole f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e q)
+    (derivedBaseChangeMap_hComp f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e)
 
+omit [HasDerivedCategory.{wHC0} (AbelianSheaf.{u, u + 1} X₀)]
+  [HasDerivedCategory.{wHC1} (AbelianSheaf.{u, u + 1} X₁)]
+  [HasDerivedCategory.{wHC2} (AbelianSheaf.{u, u + 1} X₂)]
+  [HasDerivedCategory.{wHC3} (AbelianSheaf.{u, u + 1} S₀)]
+  [HasDerivedCategory.{wHC4} (AbelianSheaf.{u, u + 1} S₁)]
+  [HasDerivedCategory.{wHC5} (AbelianSheaf.{u, u + 1} S₂)] in
 /-- Horizontal pasting of the actual higher exchange with native comparisons. -/
 theorem higherBaseChangeMap_hComp (F : AbelianSheaf.{u, u + 1} X₀) :
     MappedHorizontalPastingEquation G₂
@@ -1473,8 +1416,25 @@ theorem higherBaseChangeMap_hComp (F : AbelianSheaf.{u, u + 1} X₀) :
       ((higherBaseChangeMap f₀ f₁ g₁ h₁ e₁ q).app F)
       ((higherBaseChangeMap f₁ f₂ g₂ h₂ e₂ q).app ((L₁).obj F))
       ((higherBaseChangeMap f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e q).app F)
-      ((V₂).map ((inverseImageComp h₁ h₂).hom.app F)) :=
-  HigherPastingLadder.pasting_app (Δ)
+      ((V₂).map ((inverseImageComp h₁ h₂).hom.app F)) := by
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X₀)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X₁)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X₂)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S₀)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S₁)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S₂)
+  exact HigherPastingLadder.pasting_app (Δ)
     (higherHorizontalWholeLadder_pasting f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e q) F
+
+/-- Horizontal pasting of the original transports in the six independently selected models. -/
+theorem higherBaseChangeMapFromDerived_hComp (F : AbelianSheaf.{u, u + 1} X₀) :
+    MappedHorizontalPastingEquation G₂
+      ((inverseImageComp g₁ g₂).hom.app ((V₀).obj F))
+      ((higherBaseChangeMapFromDerived f₀ f₁ g₁ h₁ e₁ q).app F)
+      ((higherBaseChangeMapFromDerived f₁ f₂ g₂ h₂ e₂ q).app ((L₁).obj F))
+      ((higherBaseChangeMapFromDerived f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e q).app F)
+      ((V₂).map ((inverseImageComp h₁ h₂).hom.app F)) := by
+  simpa only [higherBaseChangeMapFromDerived_eq] using
+    higherBaseChangeMap_hComp f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e q F
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

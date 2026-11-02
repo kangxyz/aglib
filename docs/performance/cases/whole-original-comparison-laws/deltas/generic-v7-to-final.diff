@@ -1,0 +1,163 @@
+--- sources/v7/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean
++++ sources/v10/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean
+@@ -29,6 +29,30 @@
+ abbrev coefficientMap (s : L_g ⋙ L_v₁ ≅ L_v₀ ⋙ L_h)
+     {F : A} {G : B} (φ : L_g.obj F ⟶ G) : L_h.obj (L_v₀.obj F) ⟶ L_v₁.obj G :=
+   s.inv.app F ≫ L_v₁.map φ
++
++section TriangleEquation
++
++universe uT₀ vT₀ uT₁ vT₁
++
++variable {T₀ : Type uT₀} [Category.{vT₀} T₀]
++  {T₁ : Type uT₁} [Category.{vT₁} T₁]
++  {L : T₀ ⥤ T₁} {P₀ : A ⥤ T₀} {P₁ : B ⥤ T₀}
++  {Q₀ : C ⥤ T₁} {Q₁ : D ⥤ T₁}
++
++/-- The whole triangle-square equation, before evaluating objects or coefficient maps. -/
++def WholeTriangleSquareEquation
++    (t_g : P₀ ≅ L_g ⋙ P₁) (t_h : Q₀ ≅ L_h ⋙ Q₁)
++    (s : L_g ⋙ L_v₁ ≅ L_v₀ ⋙ L_h)
++    (s₀ : L_v₀ ⋙ Q₀ ≅ P₀ ⋙ L) (s₁ : L_v₁ ⋙ Q₁ ≅ P₁ ⋙ L) : Prop :=
++  Functor.whiskerLeft L_v₀ t_h.hom ≫
++      (Functor.associator L_v₀ L_h Q₁).inv ≫
++      Functor.whiskerRight s.inv Q₁ ≫
++      (Functor.associator L_g L_v₁ Q₁).hom ≫
++      Functor.whiskerLeft L_g s₁.hom =
++    s₀.hom ≫ Functor.whiskerRight t_g.hom L ≫
++      (Functor.associator L_g P₁ L).hom
++
++end TriangleEquation
+ 
+ end CategoryTheory.Adjunction.CoefficientSquares
+ 
+@@ -638,6 +662,52 @@
+     Category.id_comp, Category.comp_id] using h
+ 
+ include hD in
++/-- Coherence proves the whole original triangle-square equation before coefficients. -/
++theorem triangleSquare_whole {X₀ X₁ Y₀ Y₁ Z W : J}
++    (f : X₀ ⟶ X₁) (h : Y₀ ⟶ Y₁) (v₀ : X₀ ⟶ Y₀) (v₁ : X₁ ⟶ Y₁)
++    (l : Z ⟶ W) (p₀ : X₀ ⟶ Z) (p₁ : X₁ ⟶ Z) (q₀ : Y₀ ⟶ W) (q₁ : Y₁ ⟶ W)
++    (he : f ≫ v₁ = v₀ ≫ h) (hp : f ≫ p₁ = p₀) (hq : h ≫ q₁ = q₀)
++    (hi : v₀ ≫ q₀ = p₀ ≫ l) (hj : v₁ ≫ q₁ = p₁ ≫ l) :
++    Adjunction.CoefficientSquares.WholeTriangleSquareEquation
++      (D.triangleIso p₀ f p₁ hp) (D.triangleIso q₀ h q₁ hq)
++      (D.squareIso v₀ v₁ f h he) (D.squareIso p₀ q₀ v₀ l hi)
++      (D.squareIso p₁ q₁ v₁ l hj) := by
++  cases hp
++  cases hq
++  have hs := D.squareIso_vComp_whole hD f p₁ h q₁ v₀ v₁ l he.symm hj hi
++  rw [D.squareIso_transpose v₀ v₁ f h he, Iso.symm_hom] at hs
++  have ht := congrArg
++    (fun z => z ≫ (Functor.associator (D.left f) (D.left p₁) (D.left l)).hom) hs
++  simpa only [Adjunction.CoefficientSquares.WholeTriangleSquareEquation, triangleIso,
++    Iso.trans_hom, eqToIso.hom, eqToHom_refl, Category.id_comp,
++    Category.assoc, Iso.inv_hom_id, Category.comp_id] using ht
++
++include hD in
++/-- Actual supplied comparisons inherit that whole equation from their original identities. -/
++theorem triangleSquare_whole_of_eq {X₀ X₁ Y₀ Y₁ Z W : J}
++    (f : X₀ ⟶ X₁) (h : Y₀ ⟶ Y₁) (v₀ : X₀ ⟶ Y₀) (v₁ : X₁ ⟶ Y₁)
++    (l : Z ⟶ W) (p₀ : X₀ ⟶ Z) (p₁ : X₁ ⟶ Z) (q₀ : Y₀ ⟶ W) (q₁ : Y₁ ⟶ W)
++    (he : f ≫ v₁ = v₀ ≫ h) (hp : f ≫ p₁ = p₀) (hq : h ≫ q₁ = q₀)
++    (hi : v₀ ≫ q₀ = p₀ ≫ l) (hj : v₁ ≫ q₁ = p₁ ≫ l)
++    (t_f : D.left p₀ ≅ D.left f ⋙ D.left p₁)
++    (t_h : D.left q₀ ≅ D.left h ⋙ D.left q₁)
++    (s : D.left f ⋙ D.left v₁ ≅ D.left v₀ ⋙ D.left h)
++    (s₀ : D.left v₀ ⋙ D.left q₀ ≅ D.left p₀ ⋙ D.left l)
++    (s₁ : D.left v₁ ⋙ D.left q₁ ≅ D.left p₁ ⋙ D.left l)
++    (ht_f : t_f = D.triangleIso p₀ f p₁ hp)
++    (ht_h : t_h = D.triangleIso q₀ h q₁ hq)
++    (hs : s = D.squareIso v₀ v₁ f h he)
++    (hs₀ : s₀ = D.squareIso p₀ q₀ v₀ l hi)
++    (hs₁ : s₁ = D.squareIso p₁ q₁ v₁ l hj) :
++    Adjunction.CoefficientSquares.WholeTriangleSquareEquation t_f t_h s s₀ s₁ := by
++  cases ht_f
++  cases ht_h
++  cases hs
++  cases hs₀
++  cases hs₁
++  exact D.triangleSquare_whole hD f h v₀ v₁ l p₀ p₁ q₀ q₁ he hp hq hi hj
++
++include hD in
+ /-- Actual coefficient squares commute with the original cone triangles. -/
+ theorem triangleCoefficientMap_square {X₀ X₁ Y₀ Y₁ Z W : J}
+     (f : X₀ ⟶ X₁) (h : Y₀ ⟶ Y₁) (v₀ : X₀ ⟶ Y₀) (v₁ : X₁ ⟶ Y₁)
+@@ -764,4 +834,76 @@
+ 
+ end ActualHorizontal
+ 
++section ActualUnits
++
++universe uT vT
++
++variable {T : Type uT} [Category.{vT} T]
++
++/-- Evaluate the proved base-unit equation using the actual supplied comparisons. -/
++theorem coefficient_base_id {I : A ⥤ A} {F : A ⥤ B} {P : A ⥤ T} {H : B ⥤ T}
++    (e : I ≅ 𝟭 A) (s : I ⋙ P ≅ F ⋙ H) (t : P ≅ F ⋙ H)
++    (h : s.symm ≪≫ Functor.isoWhiskerRight e P ≪≫ Functor.leftUnitor P = t.symm)
++    (X : A) : coefficientMap s (e.hom.app X) = t.inv.app X := by
++  have hc := congrArg (fun z => z.hom.app X) h
++  simp only [Iso.trans_hom, Iso.symm_hom, NatTrans.comp_app,
++    Functor.isoWhiskerRight_hom, Functor.whiskerRight_app,
++    Functor.leftUnitor_hom_app] at hc
++  let m : P.obj (I.obj X) ⟶ P.obj X := P.map (e.hom.app X)
++  change s.inv.app X ≫ m ≫ 𝟙 _ = _ at hc
++  exact (congrArg (fun k => s.inv.app X ≫ k) (Category.comp_id m)).symm.trans hc
++
++/-- Evaluate the proved top-unit equation with an arbitrary actual coefficient morphism. -/
++theorem coefficient_top_id {I : B ⥤ B} {F : A ⥤ B} {P : T ⥤ B} {G : A ⥤ T}
++    (e : I ≅ 𝟭 B) (s : G ⋙ P ≅ F ⋙ I) (t : F ≅ G ⋙ P)
++    (h : (Functor.rightUnitor F).symm ≪≫
++      Functor.isoWhiskerLeft F e.symm ≪≫ s.symm = t)
++    {X : A} {Y : T} (φ : G.obj X ⟶ Y) :
++    e.inv.app (F.obj X) ≫ coefficientMap s φ = t.hom.app X ≫ P.map φ := by
++  have hc := congrArg (fun z => z.hom.app X) h
++  simp only [Iso.trans_hom, Iso.symm_hom, NatTrans.comp_app,
++    Functor.isoWhiskerLeft_hom, Functor.whiskerLeft_app,
++    Functor.rightUnitor_inv_app] at hc
++  let m : F.obj X ⟶ P.obj (G.obj X) := e.inv.app (F.obj X) ≫ s.inv.app X
++  change 𝟙 _ ≫ m = _ at hc
++  have hc' := (Category.id_comp m).symm.trans hc
++  have ht := congrArg (fun k => k ≫ P.map φ) hc'
++  simpa only [coefficientMap, Category.assoc, m] using ht
++
++end ActualUnits
++
++section ActualTriangleSquare
++
++universe uT₀ vT₀ uT₁ vT₁
++
++variable {T₀ : Type uT₀} [Category.{vT₀} T₀]
++  {T₁ : Type uT₁} [Category.{vT₁} T₁]
++  {L : T₀ ⥤ T₁} {P₀ : A ⥤ T₀} {P₁ : B ⥤ T₀}
++  {Q₀ : C ⥤ T₁} {Q₁ : D ⥤ T₁}
++
++/-- The actual whole triangle-square identity gives its arbitrary coefficient-map value. -/
++theorem triangle_square
++    (t_g : P₀ ≅ L_g ⋙ P₁) (t_h : Q₀ ≅ L_h ⋙ Q₁)
++    (s : L_g ⋙ L_v₁ ≅ L_v₀ ⋙ L_h)
++    (s₀ : L_v₀ ⋙ Q₀ ≅ P₀ ⋙ L) (s₁ : L_v₁ ⋙ Q₁ ≅ P₁ ⋙ L)
++    (h : WholeTriangleSquareEquation t_g t_h s s₀ s₁)
++    {X : A} {Y : B} (φ : L_g.obj X ⟶ Y) :
++    (t_h.hom.app (L_v₀.obj X) ≫ Q₁.map (coefficientMap s φ)) ≫ s₁.hom.app Y =
++      s₀.hom.app X ≫ L.map (t_g.hom.app X ≫ P₁.map φ) := by
++  have hc : t_h.hom.app (L_v₀.obj X) ≫ Q₁.map (s.inv.app X) ≫
++      s₁.hom.app (L_g.obj X) = s₀.hom.app X ≫ L.map (t_g.hom.app X) := by
++    have ht := congrArg (fun η => η.app X) h
++    simpa only [NatTrans.comp_app, Functor.whiskerLeft_app, Functor.whiskerRight_app,
++      Functor.associator_inv_app, Functor.associator_hom_app,
++      Category.id_comp, Category.comp_id] using ht
++  have hn := s₁.hom.naturality φ
++  simp only [Functor.comp_map] at hn
++  dsimp only [coefficientMap]
++  simp only [Functor.map_comp, Category.assoc]
++  rw [hn]
++  have ht := congrArg (fun k => k ≫ L.map (P₁.map φ)) hc
++  simpa only [Category.assoc] using ht
++
++end ActualTriangleSquare
++
+ end CategoryTheory.Adjunction.CoefficientSquares

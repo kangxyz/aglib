@@ -96,3 +96,10 @@ Euler characteristics of `b^* M` at `t'` and of `M` at `b t'` agree
 (`modulePointFiberCohomologyDimension_familyBaseChange`,
 `modulePointFiberEulerChar_familyBaseChange`), and so does vanishing
 (`subsingleton_modulePointFiberCohomology_familyBaseChange_iff`). Consumer: the Picard strata.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [BaseChange/Core](BaseChange/Core.lean)
+- [SeparatedFieldPoint](SeparatedFieldPoint.lean)

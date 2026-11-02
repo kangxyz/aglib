@@ -6,7 +6,8 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.PresheafTensor
-public import Aglib.Algebra.Category.ModuleCat.Sheaf.TensorPushforward
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.Monoidal.LocalIso
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.Monoidal.Stability
 public import Mathlib.Algebra.Category.ModuleCat.Sheaf.Localization
 public import Mathlib.CategoryTheory.Localization.Monoidal.Basic
 
@@ -29,7 +30,9 @@ on `PresheafOfModulesOfCommRing X.sheaf.obj`. Stability under `P ◁ -`
 `InternalHom.PresheafSource.tensorHomEquiv` into the presheaf-source Hom sheaf, as in
 Mathlib's `GrothendieckTopology.W.whiskerLeft` for presheaves with values in a closed monoidal
 category. Stability under `- ▷ Q` (`presheafLocalIso_whiskerRight`) follows through the
-symmetric braiding. No hypothesis is imposed on the scheme or the module presheaves.
+symmetric braiding. These stability results and the monoidality instance specialize the actual
+generic supplier in the native `(u,u,u)` universe sector. No hypothesis is imposed on the
+scheme or the module presheaves.
 
 Declarations whose proofs mix the coefficient rings `X.sheaf.obj ⋙ forget₂ CommRingCat RingCat`
 and `X.ringCatSheaf.obj` set `backward.isDefEq.respectTransparency false` locally: these rings
@@ -47,7 +50,7 @@ universe u
 /-- Morphisms of module presheaves on `X` that become isomorphisms after sheafification. -/
 abbrev presheafLocalIso (X : Scheme.{u}) :
     MorphismProperty (PresheafOfModulesOfCommRing.{u} X.sheaf.obj) :=
-  (Opens.grothendieckTopology X).W.inverseImage (PresheafOfModules.toPresheaf X.ringCatSheaf.obj)
+  SheafOfModulesOfCommRing.presheafLocalIso X.sheaf
 
 variable {X : Scheme.{u}}
 
@@ -56,18 +59,13 @@ set_option backward.isDefEq.respectTransparency false in
 sheafification is an isomorphism. -/
 theorem presheafLocalIso_iff {P Q : PresheafOfModulesOfCommRing.{u} X.sheaf.obj} (f : P ⟶ Q) :
     presheafLocalIso X f ↔ IsIso ((SheafOfModulesOfCommRing.associatedSheaf X.sheaf).map f) := by
-  have h := PresheafOfModules.inverseImage_W_toPresheaf_eq_inverseImage_isomorphisms
-    (J := Opens.grothendieckTopology X) (R := X.ringCatSheaf) (𝟙 X.ringCatSheaf.obj)
-  exact Iff.of_eq (congrArg
-    (fun (V : MorphismProperty (_root_.PresheafOfModules.{u} X.ringCatSheaf.obj)) => V f) h)
+  exact SheafOfModulesOfCommRing.presheafLocalIso_iff X.sheaf f
 
 set_option backward.isDefEq.respectTransparency false in
 /-- The unit of module sheafification is a local isomorphism. -/
 theorem presheafLocalIso_unit (P : PresheafOfModulesOfCommRing.{u} X.sheaf.obj) :
     presheafLocalIso X ((SheafOfModulesOfCommRing.associatedSheafUnit X.sheaf).app P) := by
-  rw [presheafLocalIso_iff]
-  exact isIso_of_comp_hom_eq_id _ ((PresheafOfModules.sheafificationAdjunction
-    (R := X.ringCatSheaf) (𝟙 X.ringCatSheaf.obj)).left_triangle_components P)
+  exact SheafOfModulesOfCommRing.presheafLocalIso_unit X.sheaf P
 
 set_option backward.isDefEq.respectTransparency false in
 /-- A morphism of module presheaves is a local isomorphism if and only if precomposition
@@ -75,60 +73,39 @@ with it is bijective on morphisms into the underlying presheaf of every module s
 theorem presheafLocalIso_iff_bijective {P Q : PresheafOfModulesOfCommRing.{u} X.sheaf.obj}
     (f : P ⟶ Q) :
     presheafLocalIso X f ↔ ∀ N : X.Modules, Function.Bijective (fun g : Q ⟶ N.val => f ≫ g) := by
-  let adj := PresheafOfModules.sheafificationAdjunction (R := X.ringCatSheaf)
-    (𝟙 X.ringCatSheaf.obj)
-  refine (presheafLocalIso_iff f).trans ((isIso_iff_coyoneda_map_bijective _).trans
-    (forall_congr' fun N => ?_))
-  have key : (fun g : Q ⟶ N.val => f ≫ g) =
-      (adj.homEquiv P N) ∘ (fun x => (SheafOfModulesOfCommRing.associatedSheaf X.sheaf).map f ≫ x) ∘
-        (adj.homEquiv Q N).symm := by
-    funext g
-    exact ((adj.homEquiv_naturality_left f ((adj.homEquiv Q N).symm g)).trans
-      (congrArg (fun y => f ≫ y) ((adj.homEquiv Q N).apply_symm_apply g))).symm
-  rw [key]
-  exact ((Equiv.comp_bijective _ (adj.homEquiv P N)).trans
-    (Equiv.bijective_comp (adj.homEquiv Q N).symm _)).symm
+  exact SheafOfModulesOfCommRing.presheafLocalIso_iff_bijective X.sheaf f
 
 set_option backward.isDefEq.respectTransparency false in
 /-- Local isomorphisms of module presheaves are stable under `P ◁ -`. -/
 theorem presheafLocalIso_whiskerLeft (P : PresheafOfModulesOfCommRing.{u} X.sheaf.obj)
     {Q₁ Q₂ : PresheafOfModulesOfCommRing.{u} X.sheaf.obj} (g : Q₁ ⟶ Q₂)
     (hg : presheafLocalIso X g) : presheafLocalIso X (P ◁ g) := by
-  rw [presheafLocalIso_iff_bijective] at hg ⊢
-  intro N
-  have key : (fun h : P ⊗ Q₂ ⟶ N.val => P ◁ g ≫ h) =
-      (InternalHom.PresheafSource.tensorHomEquiv X P Q₁ N).symm ∘
-        (fun k => g ≫ k) ∘ (InternalHom.PresheafSource.tensorHomEquiv X P Q₂ N) := by
-    funext h
-    apply (InternalHom.PresheafSource.tensorHomEquiv X P Q₁ N).injective
-    exact (InternalHom.PresheafSource.tensorHomEquiv_whiskerLeft_comp g h).trans
-      ((InternalHom.PresheafSource.tensorHomEquiv X P Q₁ N).apply_symm_apply _).symm
-  rw [key, Equiv.comp_bijective, Equiv.bijective_comp]
-  exact hg (InternalHom.PresheafSource.sheaf X P N)
+  exact SheafOfModulesOfCommRing.presheafLocalIso_whiskerLeft.{u, u, u}
+    (C := X.Opens) (J := _root_.Opens.grothendieckTopology X) X.sheaf P g hg
 
 set_option backward.isDefEq.respectTransparency false in
 /-- Local isomorphisms of module presheaves are closed under isomorphisms of arrows. -/
 instance presheafLocalIso_respectsIso : (presheafLocalIso X).RespectsIso :=
-  inferInstanceAs ((Opens.grothendieckTopology X).W.inverseImage
-    (_root_.PresheafOfModules.toPresheaf X.ringCatSheaf.obj)).RespectsIso
+  SheafOfModulesOfCommRing.presheafLocalIso_respectsIso X.sheaf
 
+set_option backward.isDefEq.respectTransparency false in
 /-- Local isomorphisms of module presheaves are stable under `- ▷ Q`. -/
 theorem presheafLocalIso_whiskerRight {P₁ P₂ : PresheafOfModulesOfCommRing.{u} X.sheaf.obj}
     (f : P₁ ⟶ P₂) (hf : presheafLocalIso X f) (Q : PresheafOfModulesOfCommRing.{u} X.sheaf.obj) :
     presheafLocalIso X (f ▷ Q) :=
-  ((presheafLocalIso X).arrow_mk_iso_iff (Arrow.isoMk (β_ P₁ Q) (β_ P₂ Q)
-    (BraidedCategory.braiding_naturality_left f Q).symm)).2 (presheafLocalIso_whiskerLeft Q f hf)
+  SheafOfModulesOfCommRing.presheafLocalIso_whiskerRight.{u, u, u}
+    (C := X.Opens) (J := _root_.Opens.grothendieckTopology X) X.sheaf Q f hf
 
 set_option backward.isDefEq.respectTransparency false in
 /-- Local isomorphisms of module presheaves are closed under identities and composition. -/
 instance presheafLocalIso_isMultiplicative : (presheafLocalIso X).IsMultiplicative :=
-  inferInstanceAs ((Opens.grothendieckTopology X).W.inverseImage
-    (_root_.PresheafOfModules.toPresheaf X.ringCatSheaf.obj)).IsMultiplicative
+  SheafOfModulesOfCommRing.presheafLocalIso_isMultiplicative X.sheaf
 
+set_option backward.isDefEq.respectTransparency false in
 /-- Local isomorphisms of module presheaves are stable under tensor products. -/
-instance presheafLocalIso_isMonoidal : (presheafLocalIso X).IsMonoidal where
-  whiskerLeft P _ _ g hg := presheafLocalIso_whiskerLeft P g hg
-  whiskerRight f hf Q := presheafLocalIso_whiskerRight f hf Q
+instance presheafLocalIso_isMonoidal : (presheafLocalIso X).IsMonoidal :=
+  SheafOfModulesOfCommRing.presheafLocalIso_isMonoidal.{u, u, u}
+    (C := X.Opens) (J := _root_.Opens.grothendieckTopology X) X.sheaf
 
 -- Mathlib's instance is stated on the `X.ringCatSheaf.obj` spelling of module presheaves; matching
 -- it with the commutative-ring spelling needs the transparency override.
@@ -137,7 +114,6 @@ set_option backward.isDefEq.respectTransparency false in
 /-- Module sheafification is a localization at the local isomorphisms of module presheaves. -/
 instance isLocalization_associatedSheaf :
     (SheafOfModulesOfCommRing.associatedSheaf X.sheaf).IsLocalization (presheafLocalIso X) :=
-  inferInstanceAs
-    ((_root_.PresheafOfModules.sheafification (R := X.ringCatSheaf) (𝟙 _)).IsLocalization _)
+  SheafOfModulesOfCommRing.isLocalization_associatedSheaf X.sheaf
 
 end AlgebraicGeometry.Scheme.Modules

@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.OriginalRestriction
-public import Mathlib.Algebra.Group.Shrink
+public import Aglib.Algebra.Category.Grp.Resize
 
 /-!
 # Sheafification of original represented cohomology
@@ -44,17 +44,8 @@ instance originalCohomologyPresheaf_small (U : S.Etaleᵒᵖ) :
 
 /-- Resize the original groups, not the coefficient sheaf, and transport
 literal original restrictions. -/
-def smallOriginalCohomologyPresheaf : S.Etaleᵒᵖ ⥤ AddCommGrpCat.{u + 1} where
-  obj U := AddCommGrpCat.of (Shrink.{u + 1} ((originalCohomologyPresheaf f F q).obj U))
-  map g := AddCommGrpCat.ofHom
-    (Shrink.addEquiv.symm.toAddMonoidHom.comp
-      (((originalCohomologyPresheaf f F q).map g).hom.comp Shrink.addEquiv.toAddMonoidHom))
-  map_id U := by
-    ext a
-    simp
-  map_comp g h := by
-    ext a
-    simp
+def smallOriginalCohomologyPresheaf : S.Etaleᵒᵖ ⥤ AddCommGrpCat.{u + 1} :=
+  CategoryTheory.resizeAdditiveDiagram.{u + 1} (originalCohomologyPresheaf f F q)
 
 /-- Original restrictions and the canonical value comparison give the
 actual natural isomorphism with the resolution presheaf. -/

@@ -82,6 +82,10 @@ theorem derivedBaseChangeMap_isIso_congr (hg : g₁ = g₂) (hk : k₁ = k₂) :
   dependentProperty_congr
     (fun g k h => IsIso (derivedBaseChangeMap f f' g k h)) e₁ e₂ hg hk
 
+omit [HasDerivedCategory.{dX₀} (AbelianSheaf.{u, u + 1} X)]
+  [HasDerivedCategory.{dS₀} (AbelianSheaf.{u, u + 1} S)]
+  [HasDerivedCategory.{dX₁} (AbelianSheaf.{u, u + 1} X')]
+  [HasDerivedCategory.{dS₁} (AbelianSheaf.{u, u + 1} S')] in
 /-- Equality of horizontal arrows transports the actual higher exchange component. -/
 theorem higherBaseChangeMap_isIso_app_congr (hg : g₁ = g₂) (hk : k₁ = k₂)
     (q : ℕ) (F : AbelianSheaf.{u, u + 1} X) :

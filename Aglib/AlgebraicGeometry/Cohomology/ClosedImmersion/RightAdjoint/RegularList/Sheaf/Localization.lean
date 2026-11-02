@@ -324,7 +324,8 @@ private theorem cartesianOpenBaseChange_inv_globalRestriction (M : U.Modules)
       openGlobalRestriction j ((pushforward f).obj M) m := by
   rw [← cartesianOpenBaseChange_globalRestriction a b f j h M m]
   exact Iso.hom_inv_id_apply
-    ((TwoOpen.sectionsFunctor V ⊤).mapIso ((cartesianOpenBaseChange a b f j h).app M)) _
+    ((SheafOfModules.additiveEvaluation V.ringCatSheaf (op ⊤)).mapIso
+      ((cartesianOpenBaseChange a b f j h).app M)) _
 end AlgebraicGeometry.Scheme.Modules
 end
 

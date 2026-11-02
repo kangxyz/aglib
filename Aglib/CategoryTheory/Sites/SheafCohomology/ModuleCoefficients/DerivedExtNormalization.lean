@@ -124,7 +124,8 @@ lemma extRightDerivedRepresentedAddEquiv_extMk
         (n : ℤ) ((HomComplex ((CochainComplex.singleFunctor C 0).obj X) I.cochainComplex).cyclesMk
           z.val (n + 1) (by simp) z.property) :=
     (AddEquiv.symm_apply_eq _).mpr hz.symm
-  simp only [extRightDerivedRepresentedAddEquiv, AddEquiv.trans_apply,
+  rw [extRightDerivedRepresentedAddEquiv_eq_original]
+  simp only [AddEquiv.trans_apply,
     InjectiveResolution.extAddEquivCohomologyClass_apply,
     InjectiveResolution.extEquivCohomologyClass_extMk]
   change (I.isoRightDerivedObj G n).inv

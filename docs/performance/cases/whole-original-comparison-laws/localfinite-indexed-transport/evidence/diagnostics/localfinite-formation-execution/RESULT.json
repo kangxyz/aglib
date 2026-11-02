@@ -1,0 +1,23 @@
+{
+  "question": "ExactoriginalP34 normal-kernel formation only, corrected samequestionmechanics",
+  "run": "remote-7f2c797b1c3a44099f3d32519a98cc95",
+  "actual_SOURCE": "755f892ddd60ca1b1a8910026d88645ce854cb096d8b0161a5d4752d9c7bf599",
+  "expected_SOURCE": "755f892ddd60ca1b1a8910026d88645ce854cb096d8b0161a5d4752d9c7bf599",
+  "native9f80_unchanged": true,
+  "source_blob_sha256": "5af9fb6ca18e6bfcc0364f2d0d6e853c4ce76905d3549d6b5fc23e982ae2fdcb",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-formation-execution/raw-7f2c797b/receipt.json",
+  "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-formation-execution/raw-7f2c797b/build.log",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-formation-execution/raw-7f2c797b/compiler-events.jsonl",
+  "native_setup": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-formation-execution/raw-7f2c797b/ACTUAL-NATIVE-LOCALFINITE-SETUP.json",
+  "scratch_setup": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-formation-execution/raw-7f2c797b/NEW-FORMATION-SETUP.json",
+  "native_setup_sha256": "cea58f5c05c32c9cb92c2378d00b1622709e8fb516123afce56c5b4a5addaacf",
+  "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-formation-execution/SOURCE-755f-before.json",
+  "source_archive_sha256": "c7df5d37c8c76f11164a78027c822a53905703b26b302e4bb6f8bb4440f953b3",
+  "normal_kernel_formation": "PASS exit0 onefrontend, exact(_h:P):True underactualnativeModule/isModule/full4opts/default200k",
+  "frontend_seconds": 13.227717369794846,
+  "phase_seconds": 23.418727844953537,
+  "P_proved": false,
+  "production_module_pass": false,
+  "compatibility": "Actualnative7148importArts excludes both changed RootSection modules; direct4Aglibproviders/native/pins unchanged748\u2192755. Rebindingmessage inlog precedesScratchLean. No sourceupload/resync/highlevelphase/nativeolean/client/replay.",
+  "old_attempts": "11094stylefailure didnotestablishKernelP; 5d845highlevelphasefailedbeforeworker/setup/Lean andwronglyresynced2files. V2preparedunexecuted. This onecorrected actualquestion resolves formation, notproof."
+}

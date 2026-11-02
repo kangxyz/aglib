@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramEtaleTest
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSystemSquares
+public import Aglib.CategoryTheory.Filtered.SectionDiagrams
 
 /-! # Original coefficient sections on the double tail of an étale test object
 
@@ -22,10 +23,21 @@ attribute [local instance] hasSheafifyLarge
 variable {I : Type uI} [Category.{vI} I] (X : I ⥤ Scheme.{u}ᵒᵖ)
   (F : DiagramCoefficientSystem X) (i : I) (T : (X.obj i).unop.Etale)
 
+/-- The actual source-coefficient/target-test structural family on the double tail. -/
+def diagramTestArrowProjection :
+    (Arrow.leftFunc ⋙ Under.forget i) ⋙ X ⟶ Arrow.rightFunc ⋙ diagramEtaleTest X i T :=
+  Functor.arrowProjection (Under.forget i) X (diagramEtaleTest X i T)
+    (diagramEtaleTestProjection X i T)
+
 /-- The target test scheme maps to the original source coefficient scheme. -/
 def diagramTestArrowSchemeMap (a : Arrow (Under i)) :
     ((diagramEtaleTest X i T).obj a.right).unop ⟶ (X.obj a.left.right).unop :=
-  (diagramEtaleTestChart X i T a.right).hom ≫ (X.map a.hom.right).unop
+  ((diagramTestArrowProjection X i T).app a).unop
+
+/-- The shared structural construction keeps the literal original composite. -/
+theorem diagramTestArrowSchemeMap_value (a : Arrow (Under i)) :
+    diagramTestArrowSchemeMap X i T a =
+      (diagramEtaleTestChart X i T a.right).hom ≫ (X.map a.hom.right).unop := rfl
 
 lemma diagramTestArrowSchemeMap_diagonal (a : Under i) :
     diagramTestArrowSchemeMap X i T (Arrow.mk (𝟙 a)) =
@@ -42,20 +54,7 @@ abbrev diagramTestArrowSectionsObj (a : Arrow (Under i)) : AddCommGrpCat.{u + 1}
 lemma diagramTestArrowSquare {a b : Arrow (Under i)} (m : a ⟶ b) :
     diagramTestArrowSchemeMap X i T b ≫ (X.map m.left.right).unop =
       ((diagramEtaleTest X i T).map m.right).unop ≫ diagramTestArrowSchemeMap X i T a := by
-  have hs := arrowSectionsSquare (diagramSchemeTail X i) m
-  change (X.map b.hom.right).unop ≫ (X.map m.left.right).unop =
-    (X.map m.right.right).unop ≫ (X.map a.hom.right).unop at hs
-  have hp := diagramEtaleTest_map_fst X i T m.right
-  change ((diagramEtaleTest X i T).map m.right).unop ≫
-      (diagramEtaleTestChart X i T a.right).hom =
-    (diagramEtaleTestChart X i T b.right).hom ≫ (X.map m.right.right).unop at hp
-  dsimp only [diagramTestArrowSchemeMap]
-  change ((diagramEtaleTestChart X i T b.right).hom ≫ (X.map b.hom.right).unop) ≫
-      (X.map m.left.right).unop =
-    ((diagramEtaleTest X i T).map m.right).unop ≫
-      ((diagramEtaleTestChart X i T a.right).hom ≫ (X.map a.hom.right).unop)
-  rw [Category.assoc, hs, ← Category.assoc, ← hp]
-  exact Category.assoc _ _ _
+  exact congrArg Quiver.Hom.unop ((diagramTestArrowProjection X i T).naturality m)
 
 /-- Original square transfer for a morphism of test arrows. -/
 def diagramTestArrowSectionsMap {a b : Arrow (Under i)} (m : a ⟶ b) :
@@ -64,44 +63,43 @@ def diagramTestArrowSectionsMap {a b : Arrow (Under i)} (m : a ⟶ b) :
     (diagramTestArrowSchemeMap X i T b) ((diagramEtaleTest X i T).map m.right).unop
     (diagramTestArrowSquare X i T m)
 
+/-- The original native square map is the shared actual indexed square. -/
+lemma diagramTestArrowSectionsMap_eq_generic {a b : Arrow (Under i)} (m : a ⟶ b) :
+    diagramTestArrowSectionsMap X F i T m =
+      schemeSectionData.indexedMap X F (Arrow.leftFunc ⋙ Under.forget i)
+        (Arrow.rightFunc ⋙ diagramEtaleTest X i T) (diagramTestArrowProjection X i T) m :=
+  systemSquareSectionsMap_eq_sectionSystemSquareMap X F m.left.right
+    (diagramTestArrowSchemeMap X i T a) (diagramTestArrowSchemeMap X i T b)
+    ((diagramEtaleTest X i T).map m.right).unop (diagramTestArrowSquare X i T m)
+
 lemma diagramTestArrowSectionsMap_id (a : Arrow (Under i)) :
     diagramTestArrowSectionsMap X F i T (𝟙 a) = 𝟙 (diagramTestArrowSectionsObj X F i T a) := by
-  dsimp only [diagramTestArrowSectionsMap, systemSquareSectionsMap]
-  change squareSectionsMap (diagramTestArrowSchemeMap X i T a)
-    (diagramTestArrowSchemeMap X i T a) (X.map (𝟙 a.left.right)).unop
-    ((diagramEtaleTest X i T).map (𝟙 a.right)).unop _
-    (diagramInverseTransition X F (𝟙 a.left.right)) = _
-  rw [diagramInverseTransition_id]
-  simp only [diagramInverseImageId, Iso.trans_hom, NatTrans.comp_app,
-    eqToIso.hom, eqToHom_app]
-  exact (squareSectionsMap_transport (diagramTestArrowSchemeMap X i T a)
-    (diagramTestArrowSchemeMap X i T a)
-    (𝟙 _) (X.map (𝟙 a.left.right)).unop
-    (𝟙 _) ((diagramEtaleTest X i T).map (𝟙 a.right)).unop
-    (congrArg Quiver.Hom.unop (X.map_id a.left.right))
-    (congrArg Quiver.Hom.unop ((diagramEtaleTest X i T).map_id a.right))
-    ((Category.comp_id _).trans (Category.id_comp _).symm) _
-    ((inverseImageId (X.obj a.left.right).unop).hom.app (F.obj a.left.right))).trans
-      (squareSectionsMap_id _ _ _)
+  exact (diagramTestArrowSectionsMap_eq_generic X F i T (𝟙 a)).trans
+    (schemeSectionData.indexedMap_id schemeAdjunctionData_coherent X F
+      (Arrow.leftFunc ⋙ Under.forget i) (Arrow.rightFunc ⋙ diagramEtaleTest X i T)
+      (diagramTestArrowProjection X i T) a)
 
 lemma diagramTestArrowSectionsMap_comp {a b c : Arrow (Under i)} (m : a ⟶ b) (n : b ⟶ c) :
     diagramTestArrowSectionsMap X F i T (m ≫ n) =
-      diagramTestArrowSectionsMap X F i T m ≫ diagramTestArrowSectionsMap X F i T n :=
-  systemSquareSectionsMap_comp X F m.left.right n.left.right
-    (diagramTestArrowSchemeMap X i T a) (diagramTestArrowSchemeMap X i T b)
-    (diagramTestArrowSchemeMap X i T c)
-    ((diagramEtaleTest X i T).map m.right).unop
-    ((diagramEtaleTest X i T).map n.right).unop
-    ((diagramEtaleTest X i T).map (m.right ≫ n.right)).unop
-    (congrArg Quiver.Hom.unop ((diagramEtaleTest X i T).map_comp m.right n.right))
-    (diagramTestArrowSquare X i T m) (diagramTestArrowSquare X i T n)
-    (diagramTestArrowSquare X i T (m ≫ n))
+      diagramTestArrowSectionsMap X F i T m ≫ diagramTestArrowSectionsMap X F i T n := by
+  have hcomp := schemeSectionData.indexedMap_comp schemeAdjunctionData_coherent X F
+    (Arrow.leftFunc ⋙ Under.forget i) (Arrow.rightFunc ⋙ diagramEtaleTest X i T)
+    (diagramTestArrowProjection X i T) m n
+  have hmaps := congrArg₂
+    (fun (f : diagramTestArrowSectionsObj X F i T a ⟶ diagramTestArrowSectionsObj X F i T b)
+      (g : diagramTestArrowSectionsObj X F i T b ⟶ diagramTestArrowSectionsObj X F i T c) => f ≫ g)
+    (diagramTestArrowSectionsMap_eq_generic X F i T m)
+    (diagramTestArrowSectionsMap_eq_generic X F i T n)
+  have hfinal := (diagramTestArrowSectionsMap_eq_generic X F i T (m ≫ n)).trans
+    (hcomp.trans hmaps.symm)
+  exact hfinal
 
 /-- The actual Ab-valued double-tail functor. -/
-def diagramTestArrowSectionsFunctor : Arrow (Under i) ⥤ AddCommGrpCat.{u + 1} where
-  obj := diagramTestArrowSectionsObj X F i T
-  map := diagramTestArrowSectionsMap X F i T
-  map_id := diagramTestArrowSectionsMap_id X F i T
-  map_comp := diagramTestArrowSectionsMap_comp X F i T
+def diagramTestArrowSectionsFunctor : Arrow (Under i) ⥤ AddCommGrpCat.{u + 1} :=
+  schemeSectionData.indexedFunctorWithMap schemeAdjunctionData_coherent X F
+    (Arrow.leftFunc ⋙ Under.forget i) (Arrow.rightFunc ⋙ diagramEtaleTest X i T)
+    (diagramTestArrowProjection X i T)
+    (fun m => diagramTestArrowSectionsMap X F i T m)
+    (fun m => diagramTestArrowSectionsMap_eq_generic X F i T m)
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Continuity

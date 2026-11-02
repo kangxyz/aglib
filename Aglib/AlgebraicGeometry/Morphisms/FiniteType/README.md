@@ -45,3 +45,9 @@ base. The affine-base
 [closed envelope](../../Approximation/FinitePresentationEnvelope/README.md)
 is the interface used to construct
 [proper fixed-base approximation](../../Approximation/Proper/README.md).
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [ClosedFiberSpecialization](ClosedFiberSpecialization.lean)

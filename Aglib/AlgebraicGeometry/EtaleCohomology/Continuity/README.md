@@ -4,6 +4,39 @@ This family owns continuity for original small-etale cohomology and the
 canonical sections and coefficient maps used in scheme-limit comparisons.
 Its namespace is `AlgebraicGeometry.Scheme.EtaleCohomology.Continuity`.
 
+[CohomologyTransfers](CohomologyTransfers.lean) retains the original transfer
+and constructs the actual constant-integer source system from native inverse
+image and constant-sheaf comparison maps. [DiagramCohomology](DiagramCohomology.lean)
+specializes the [general represented Ext diagram](../../../CategoryTheory/Sites/SheafCohomology/Continuity/RepresentedDiagram.lean),
+with whole original-map equality and the same independent Ext universe.
+Geometric section-colimit and injective-acyclicity suppliers remain in this
+family and provide the continuity hypotheses used below.
+
+The original Arrow and cone section maps specialize the complete
+[section calculus](../../../CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/SectionArrows.lean)
+and [coefficient-cone constructors](../../../CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cone.lean).
+Their inputs are the actual scheme adjunctions, global sections and pullback
+maps. Native object and map values are retained.
+
+The varying and fixed-source systems use the complete generic
+[system constructors](../../../CategoryTheory/Filtered/SystemConstructions.lean).
+[DiagramLimitSections](DiagramLimitSections.lean),
+[DiagramSmallIndex](DiagramSmallIndex.lean) and
+[DiagramRawConeSections](DiagramRawConeSections.lean) evaluate one shared
+[coefficient-section functor](../../../CategoryTheory/Filtered/CoefficientSections.lean).
+The test Arrow row and its canonical Tail cocone specialize the whole
+[indexed cone comparison](../../../CategoryTheory/Filtered/IndexedConeSections.lean),
+with the original pullback and chart-comparison component values. The geometric
+colimit hypotheses remain in their native suppliers.
+
+[DiagramCohomologyCocone](DiagramCohomologyCocone.lean) specializes the complete
+[source-system transfer and cocone construction](../../../CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CohomologyCocone.lean).
+The original coefficient functor has the same colimit, and every leg is the
+original stage pullback followed by its coefficient insertion. Only the actual
+stage and apex Ext instances are needed. Source cartesianness stays explicit;
+no cohomology-comparison invertibility or scheme-limit continuity premise is
+introduced.
+
 ## Filtered coefficients on a fixed qcqs scheme
 
 Let `S : Scheme.{u}` be quasi-compact and quasi-separated, let
@@ -60,6 +93,9 @@ import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.QcqsCoefficientContinu
 [AffineLimitSections](AffineLimitSections.lean) proves the actual relative
 section cocone is colimiting on affine inverse limits using real finite local
 representatives, matching, original-stage gluing and eventual equality.
+Its final presheaf criterion is the
+[general filtered-colimit argument](../../../CategoryTheory/Limits/Preserves/PresheafSections.lean),
+applied to the same original cocone and legs.
 [QcqsLimitSections](QcqsLimitSections.lean) extends this to qcqs stages with
 affine transitions using one finite affine one-hypercover at a fixed stage.
 It also proves `isColimitCompatibleSectionsOfQcqsStages` for the original
@@ -103,3 +139,12 @@ naturality and original degree-zero normalization. The
 [proper family](../Proper/README.md) uses these inputs for the original locally
 torsion higher and D+ exchange; properness and torsion remain conditions of
 those endpoints.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [FiniteTypeArrowCoefficients](FiniteTypeArrowCoefficients.lean)
+- [GenericCoverCoefficientZeroSpreading](GenericCoverCoefficientZeroSpreading.lean)
+- [GenericCoverZeroSpreading](GenericCoverZeroSpreading.lean)
+- [PrincipalLocalizationInjectiveAcyclic](PrincipalLocalizationInjectiveAcyclic.lean)

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange
+public import Aglib.CategoryTheory.Adjunction.Mates.Whole
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Adjunction.Complex
 public import Aglib.Algebra.Homology.CochainComplexPlus.Functoriality
 public import Aglib.Algebra.Homology.CochainComplexPlus.NatTrans

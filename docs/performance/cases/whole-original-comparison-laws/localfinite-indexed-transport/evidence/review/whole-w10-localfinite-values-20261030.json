@@ -1,0 +1,623 @@
+{
+  "schema_version": 1,
+  "review_kind": "independent_complex_ordinary",
+  "reviewer": "/root/review_localfinite_whole_values",
+  "reported_at_utc": "2026-10-30T13:08:56.987904+00:00",
+  "question": "Review the fixed v29 indexed comparison wrapper that derives and consumes transported source coherence inside the generic mate-values construction; retain the five unchanged original Values declarations and all three original native conclusions under their original premises.",
+  "verdict": "SUPPORTED_INTEGRATED_V29_MATHEMATICAL_DERIVATION_AND_NATIVE_SOURCE_CORRESPONDENCE; MATCHING_ORDINARY_CPP_PASS",
+  "status_authority": "Independent ordinary mathematical/source verdict plus reused source-bound owning CPP success. No established-status, writing-acceptance, whole-W10, NativeLine or blanket downstream closure decision.",
+  "independence": "Reviewer did not author the candidate or contribute a load-bearing repair. No implementation changes, helper delegation or execution of Lean/tests/lint/probes/network/replay/client checks.",
+  "entry_head": "3467423400c765167730d4372704650a52ab3a95",
+  "native_head": "3ab570353d8ccfb0db62b01300f7be9a79ec44a8",
+  "source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib",
+  "fixed_packet": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-indexed-transport-v29",
+  "packet_sha256": {
+    "READY.json": "dfc700b916b6c1b177f02a07b1b039525637adc1d4a4db220aa03544c08da32a",
+    "LIVE_READY.json": "b35957397fe14f07665cbb66ac4e73aa8861a3808c6c84a549bb2644b1538077",
+    "CORRESPONDENCE.md": "920865d25a9b33afae7df0daae568ae759b483651760135e6b6d67f8e2a36ba1",
+    "DELTA.patch": "3ad0aa33286c98dbbda7683a9f4e1b3c57c1d54481a7a8d2820c888a91bbbd2a"
+  },
+  "sources": [
+    {
+      "path": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean",
+      "before_sha256": "b62f08cb91e253f3e3457699cabe925756eb4755039c610ea0f91e83920d3261",
+      "sha256": "e1d0a92737405aec68ed643078b79eaf9bcbbab736d82ea9aa429caed14a133d",
+      "before_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-indexed-transport-v29/before/Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean",
+      "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-indexed-transport-v29/source/Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean",
+      "before_sha256": "655b2ec9420861b503e7f1bb59d54ad4983c801f67161fc6bf6d603b0c9841d6",
+      "sha256": "0997517ed89eba60a57505a6665d1fc722afec046cf6afaa726ff8e4462d6988",
+      "before_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-indexed-transport-v29/before/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean",
+      "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-indexed-transport-v29/source/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean"
+    }
+  ],
+  "provider_sha256": {
+    "Aglib/CategoryTheory/Abelian/Ext/OriginalComparison.lean": "b4326fdbaf28b225738ddb9f5dedc254db39b3f641c440cab60b98c6f05a311e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Pullback.lean": "61895cf04e779cd4b0d7b7ba685ab189577175a7f6391084d3c7808ff4f67500",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/BaseChangeMap.lean": "92334fb01cc9af91776313ff4d270c2e3aa2c69a616037ac3db2e9ffc708ef7a",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection.lean": "8856b0f8b5ba12512ef628a1d6fe4cfa2b0d7fcd041563cf3989bc316b7a74db",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackComposition.lean": "90f83c812551762229d078f12246e7d2efa853ebcb78563e991ff18559a9edab",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ExactImageComparison/OrdinaryBaseChange.lean": "339ad3d5c39b1728a19f1473c16236197625a9c03bbe36cb99937e94a0aa6a75",
+    "Aglib/CategoryTheory/Abelian/Ext/CoefficientSquare.lean": "d26b367a96e97cf834cd085da1105f77b9ddee33c0ad4bcf98e5a1992d5fecf9",
+    "Aglib/CategoryTheory/Abelian/Ext/SourceTransfer.lean": "a33c4e34d9c08e4185562fdb4496a6180edb4deba5aef64614740b041868fe44",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/Pullback.lean": "607722a4b520bb733a67018cc85ebac43081eb784194b79894093a418df422b5",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/HigherVanishing.lean": "de39d2fdf7092f32975e1516d84524595a4f8ce441619d148c80572ffbccd82e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/DirectImage.lean": "4c08906f2a0c6b8ab37a7edecc9ac9ffa6f125fcea151d041f60089807ee6165",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/ConstantRestriction.lean": "376451d3f07c588890c5ae425d67eeab12b21f834f6b550df8c9c5886a1042c6",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/NoetherianComparison.lean": "1fb7e6de2eae0048b2be4bbb8521f52d35e5eacf640d48418144f467c6c575d0",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/ProjectiveLineTests.lean": "837a76146e11b6373bcadef48cbe5832f03e243b468ccc8e58d393354d632195"
+  },
+  "mathlib": {
+    "root": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib",
+    "revision": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "inspected": [
+      "Mathlib/Algebra/Homology/DerivedCategory/Ext/MapAdjunction.lean",
+      "Mathlib/Algebra/Homology/DerivedCategory/Ext/Basic.lean#extFunctorObj",
+      "Mathlib/CategoryTheory/Adjunction/Mates.lean#mateEquiv_counit"
+    ],
+    "MapAdjunction_sha256": "8f043986474471abb4068a3197f87a4798469a1ac7cd7bf81a7e4d9c65d5d8d7"
+  },
+  "conditions": {
+    "G0": "Four abelian categories C0,C1,C2,C3 with independent HasExt e0,e1,e2,e3; additive exact L,R,Lprime,Rprime with adjunctions L ⊣ R and Lprime ⊣ Rprime; source isomorphisms e:L(U0)≅U1 and eprime:Lprime(U2)≅U3; functors G:C0→C2, H:C1→C3; beta:R⋙G→H⋙Rprime; whole additive family pG(N,n):Ext[e0](U0,N,n)→Ext[e2](U2,G(N),n).",
+    "G1": "G0 plus additive exact G,H,L0; c:L0≅G⋙Lprime, d:L0≅L⋙H; source arrows sG,sH,s0 with s0;c_U0=eprime.inv;Lprime(sG) and s0;d_U0=sH;H(e.inv); beta equals the original mate of c.symm≪≫d; pG and pH equal the whole original extPrecompMap families for sG,sH.",
+    "N1": "Four Scheme.{u} objects X,S,Xprime,Sprime and four independent HasExt eX,eS,eXprime,eSprime for AbelianSheaf.{u,u+1}; f:X→S finite, fprime:Xprime→Sprime, g:Sprime→S, gprime:Xprime→X, h:IsPullback gprime fprime f g, arbitrary F on X and q:Nat. Assume bijectivity of the original cohomologyPullback.{u,eS,eSprime} g ((directImage f).obj F) q.",
+    "N2": "CommRing R, IsNoetherianRing R, HenselianLocalRing R, IsSepClosed (ResidueField R), finite f:Y→projectiveP1 R; n:Nat with n≠0, F:AbelianSheaf.{u,u+1} Y with n • identity(F)=0, q:Nat; the same standard Ext worlds u+2 as the original header.",
+    "N3": "The same base-ring and finite-cover hypotheses as N2, A:Type u with AddCommGroup A and Finite A, q:Nat; the same standard Ext worlds u+2.",
+    "G2": "G0 plus additive exact G,H; index type I and family K:I→(C0⥤C3), h:i=j, additive exact K(i), c0:K(i)≅G⋙Lprime, d1:K(j)≅L⋙H, and original source-arrow family s(k):U3→K(k)(U0). Require hleft:s(i);c0_U0=eprime.inv;Lprime(sG), hright:s(j);d1_U0=sH;H(e.inv), beta equal to the original mate of c0.symm ≪≫ eqToIso(congrArg K h) ≪≫ d1, and the whole defining pG/pH identities. The transported ht is derived, not assumed. No exactness of all K(k) is required."
+  },
+  "results": [
+    {
+      "id": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean#originalExtSourceComparisonConjugate",
+      "outcome": "SUPPORTED_CONSTRUCTION",
+      "conditions": [
+        "G0"
+      ],
+      "conclusion": "K(M,n) is the additive hom Eprime(M,n) ∘ (beta_M)_* ∘ pG(R(M),n) ∘ E(M,n).symm, where both E and Eprime are constructed internally by originalExtSourceComparison from the stated adjunction/source isomorphism.",
+      "lines": "44-52",
+      "basis": "current v29, retaining byte-identical v26 construction and unchanged native conditions/corollary uses",
+      "compilation_coverage": {
+        "run": "remote-22047e1ff0a3472cb67017d7b5df75fd",
+        "source": "3bac8faa52cdef9b8a34cc9a7fea0a1558bf6e8df9fcd59edf15112cd9c1fd1f",
+        "module_sha256": "e1d0a92737405aec68ed643078b79eaf9bcbbab736d82ea9aa429caed14a133d",
+        "outcome": "source-bound ordinary module pass; existing owning run, no reviewer rerun"
+      }
+    },
+    {
+      "id": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean#originalExtSourceComparisonConjugate_apply",
+      "outcome": "SUPPORTED",
+      "conditions": [
+        "G0"
+      ],
+      "conclusion": "For every M,n,a, evaluation of K is exactly Eprime((pG(R(M),n)(E.symm(a))).comp(Ext.mk0(beta_M)), with add_zero n).",
+      "lines": "56-63",
+      "basis": "current v29, retaining byte-identical v26 construction and unchanged native conditions/corollary uses",
+      "compilation_coverage": {
+        "run": "remote-22047e1ff0a3472cb67017d7b5df75fd",
+        "source": "3bac8faa52cdef9b8a34cc9a7fea0a1558bf6e8df9fcd59edf15112cd9c1fd1f",
+        "module_sha256": "e1d0a92737405aec68ed643078b79eaf9bcbbab736d82ea9aa429caed14a133d",
+        "outcome": "source-bound ordinary module pass; existing owning run, no reviewer rerun"
+      }
+    },
+    {
+      "id": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean#originalExtSourceComparisonConjugate_bijective",
+      "outcome": "SUPPORTED",
+      "conditions": [
+        "G0",
+        "IsIso(beta.app M)",
+        "Bijective(pG(R(M),n))"
+      ],
+      "conclusion": "Bijective(K(M,n)); invertibility is required only for the selected beta component.",
+      "lines": "67-80",
+      "basis": "current v29, retaining byte-identical v26 construction and unchanged native conditions/corollary uses",
+      "compilation_coverage": {
+        "run": "remote-22047e1ff0a3472cb67017d7b5df75fd",
+        "source": "3bac8faa52cdef9b8a34cc9a7fea0a1558bf6e8df9fcd59edf15112cd9c1fd1f",
+        "module_sha256": "e1d0a92737405aec68ed643078b79eaf9bcbbab736d82ea9aa429caed14a133d",
+        "outcome": "source-bound ordinary module pass; existing owning run, no reviewer rerun"
+      }
+    },
+    {
+      "id": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean#originalExtSourceComparisonConjugate_eq",
+      "outcome": "SUPPORTED",
+      "conditions": [
+        "G1"
+      ],
+      "conclusion": "Equality K=pH of whole dependent families of additive homomorphisms, for every coefficient M and every n:Nat.",
+      "lines": "95-114",
+      "basis": "current v29, retaining byte-identical v26 construction and unchanged native conditions/corollary uses",
+      "compilation_coverage": {
+        "run": "remote-22047e1ff0a3472cb67017d7b5df75fd",
+        "source": "3bac8faa52cdef9b8a34cc9a7fea0a1558bf6e8df9fcd59edf15112cd9c1fd1f",
+        "module_sha256": "e1d0a92737405aec68ed643078b79eaf9bcbbab736d82ea9aa429caed14a133d",
+        "outcome": "source-bound ordinary module pass; existing owning run, no reviewer rerun"
+      }
+    },
+    {
+      "id": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean#originalExtSourceComparison_bijective_of_mate_values",
+      "outcome": "SUPPORTED",
+      "conditions": [
+        "G1",
+        "IsIso(beta.app M)",
+        "Bijective(pG(R(M),n))"
+      ],
+      "conclusion": "Bijective(pH(M,n)) for the supplied original target family itself.",
+      "lines": "119-133",
+      "basis": "current v29, retaining byte-identical v26 construction and unchanged native conditions/corollary uses",
+      "compilation_coverage": {
+        "run": "remote-22047e1ff0a3472cb67017d7b5df75fd",
+        "source": "3bac8faa52cdef9b8a34cc9a7fea0a1558bf6e8df9fcd59edf15112cd9c1fd1f",
+        "module_sha256": "e1d0a92737405aec68ed643078b79eaf9bcbbab736d82ea9aa429caed14a133d",
+        "outcome": "source-bound ordinary module pass; existing owning run, no reviewer rerun"
+      }
+    },
+    {
+      "id": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean#originalExtSourceComparison_bijective_of_transport_values",
+      "outcome": "SUPPORTED_NEW_V29_DERIVATION_AND_NATIVE_APPLICATION_MATCHING_CPP_PASS",
+      "conditions": [
+        "G2",
+        "IsIso(beta.app M)",
+        "Bijective(pG(R(M),n))"
+      ],
+      "conclusion": "Bijective(pH(M,n)) for the supplied original target family, with the transported source equation derived and consumed internally.",
+      "lines": "140-164",
+      "proof": "Equality induction on h proves ht:s(i);(eqToIso(congrArg K h)≪≫d1)_U0=sH;H(e.inv) from hright, using eqToIso_refl and Iso.refl_trans. Apply the unchanged originalExtSourceComparison_bijective_of_mate_values with L0=K(i), c=c0, d=eqToIso(congrArg K h)≪≫d1, s0=s(i), hleft and derived ht. All adjunctions, source maps, beta and pG/pH values are unchanged.",
+      "native_correspondence": "I=(Xprime→S), i=fprime≫g, j=gprime≫f, h=h.w.symm; K(k)=inverseImage k, s(k)=((inverseImageConstantIso k).app A).inv, c0=inverseImageComp g fprime, d1=inverseImageComp f gprime, hleft=hs, hright=inverseImageComp_constant_inv f gprime A. The existing hMate has exactly c0.symm≪≫(eqToIso(K h)≪≫d1), since Iso.trans notation is right-associative. The final supplied pH is the literal cohomologyPullback gprime family.",
+      "compilation_coverage": {
+        "run": "remote-22047e1ff0a3472cb67017d7b5df75fd",
+        "source": "3bac8faa52cdef9b8a34cc9a7fea0a1558bf6e8df9fcd59edf15112cd9c1fd1f",
+        "module_sha256": "e1d0a92737405aec68ed643078b79eaf9bcbbab736d82ea9aa429caed14a133d",
+        "outcome": "source-bound ordinary module pass; existing owning run, no reviewer rerun"
+      }
+    },
+    {
+      "id": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean#cohomologyPullback_originalFamily",
+      "outcome": "SUPPORTED_DEFINITIONAL_IDENTIFICATION",
+      "conditions": [
+        "A single scheme arrow k:S→X and independent source/target HasExt worlds"
+      ],
+      "conclusion": "The whole cohomologyPullback k family is inverseImage(k).extPrecompMap of the inverse component of inverseImageConstantIso(k) at AddCommGrpCat.of(ULift.{u+1} integers).",
+      "lines": "34-41",
+      "basis": "current v29, retaining byte-identical v26 construction and unchanged native conditions/corollary uses",
+      "compilation_coverage": {
+        "run": "remote-22047e1ff0a3472cb67017d7b5df75fd",
+        "source": "3bac8faa52cdef9b8a34cc9a7fea0a1558bf6e8df9fcd59edf15112cd9c1fd1f",
+        "module_sha256": "0997517ed89eba60a57505a6665d1fc722afec046cf6afaa726ff8e4462d6988",
+        "outcome": "source-bound ordinary module pass; existing owning run, no reviewer rerun"
+      }
+    },
+    {
+      "id": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean#cohomologyPullback_source_bijective_of_finiteDirectImage",
+      "outcome": "SUPPORTED_MATHEMATICS_AND_SOURCE_CORRESPONDENCE_MATCHING_CPP_PASS",
+      "conditions": [
+        "N1"
+      ],
+      "conclusion": "The original cohomologyPullback.{u,eX,eXprime} gprime F q is bijective.",
+      "lines": "45-87",
+      "basis": "current v29, retaining byte-identical v26 construction and unchanged native conditions/corollary uses",
+      "compilation_coverage": {
+        "run": "remote-22047e1ff0a3472cb67017d7b5df75fd",
+        "source": "3bac8faa52cdef9b8a34cc9a7fea0a1558bf6e8df9fcd59edf15112cd9c1fd1f",
+        "module_sha256": "0997517ed89eba60a57505a6665d1fc722afec046cf6afaa726ff8e4462d6988",
+        "outcome": "source-bound ordinary module pass; existing owning run, no reviewer rerun"
+      }
+    },
+    {
+      "id": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean#finite_projectiveLine_residuePullback_bijective_of_killed_of_isNoetherian",
+      "outcome": "SUPPORTED_AFFECTED_USE_UNCHANGED_BODY_MATCHING_CPP_PASS",
+      "conditions": [
+        "N2"
+      ],
+      "conclusion": "The original cohomologyPullback.{u,u+2,u+2} (pullback.fst (f≫ProjectiveLine.structureMap R) (LocalRing.residueSpecMap R)) F q is bijective.",
+      "lines": "97-111",
+      "basis": "current v29, retaining byte-identical v26 construction and unchanged native conditions/corollary uses",
+      "compilation_coverage": {
+        "run": "remote-22047e1ff0a3472cb67017d7b5df75fd",
+        "source": "3bac8faa52cdef9b8a34cc9a7fea0a1558bf6e8df9fcd59edf15112cd9c1fd1f",
+        "module_sha256": "0997517ed89eba60a57505a6665d1fc722afec046cf6afaa726ff8e4462d6988",
+        "outcome": "source-bound ordinary module pass; existing owning run, no reviewer rerun"
+      }
+    },
+    {
+      "id": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean#finite_projectiveLine_constantRestriction_bijective_of_isNoetherian",
+      "outcome": "SUPPORTED_AFFECTED_USE_UNCHANGED_BODY_MATCHING_CPP_PASS",
+      "conditions": [
+        "N3"
+      ],
+      "conclusion": "The literal constantRestriction.{u,u+2,u+2} A (pullback.fst (f≫ProjectiveLine.structureMap R) (LocalRing.residueSpecMap R)) q is bijective.",
+      "lines": "127-151",
+      "basis": "current v29, retaining byte-identical v26 construction and unchanged native conditions/corollary uses",
+      "compilation_coverage": {
+        "run": "remote-22047e1ff0a3472cb67017d7b5df75fd",
+        "source": "3bac8faa52cdef9b8a34cc9a7fea0a1558bf6e8df9fcd59edf15112cd9c1fd1f",
+        "module_sha256": "0997517ed89eba60a57505a6665d1fc722afec046cf6afaa726ff8e4462d6988",
+        "outcome": "source-bound ordinary module pass; existing owning run, no reviewer rerun"
+      }
+    }
+  ],
+  "argument": [
+    "V29 derives indexed source transport inside the generic comparison wrapper and immediately consumes it through the unchanged mate-values theorem. Equality induction on h uses the existing hright at j; no transported native equality is a new parameter or separately materialized native proof result.",
+    "E and Eprime are the original exact-adjunction Ext equivalences followed by inverse source-isomorphism transport. Pinned extEquiv uses the actual functor map, unit and counit over independent HasExt worlds.",
+    "The mate-counit law supplies the ordinary coefficient equation. The two original source laws and extCoefficientTransfer_square give originalExtSourceComparison_mate_square. Substituting E.symm(a), then additive-hom and dependent-function extensionality, gives K=pH. No desired cohomology square is a premise.",
+    "extFunctorObj maps a coefficient arrow to exactly postcomposition by its degree-zero Ext class. Thus IsIso(beta_M) makes this factor bijective; the two constructed comparisons and the supplied base-map bijectivity prove the selected K bijective.",
+    "Native C0,C1,C2,C3 are sheaves on S,X,Sprime,Xprime with eS,eX,eSprime,eXprime. L,R and Lprime,Rprime are the original inverse/direct images, G,H the original horizontal inverse images, and each Ui the original constant lifted-integer sheaf.",
+    "Native K(k)=inverseImage k and s(k)=the original inverse constant-integer source component. The equal indices are fprime≫g and gprime≫f. c0=inverseImageComp g fprime, d1=inverseImageComp f gprime, hleft=the unchanged hs, and hright=the inferred existing inverseImageComp_constant_inv f gprime A. The wrapper internally produces the same d and ht required by the original comparison. Existing hMate and pG/pH definitions match exactly.",
+    "hMate follows from baseChangeMap_eq_nativeMate and inverseImageSquareIso_eq_comp. Both whole pG/pH equalities are rfl at the original Pullback.lean definition. Native beta remains the literal baseChangeMap, so finiteBaseChange_app_isIso supplies the exact selected IsIso input.",
+    "h supplies IsFinite fprime. Finite.HigherVanishing supplies finite-colimit preservation for both direct images; DirectImage supplies finite limits/additivity; H1.Pullback supplies exact additive inverse images. These are consequences of the original hypotheses, not new public assumptions.",
+    "The first unchanged corollary sends n • identity(F)=0 through the additive direct image and applies the same existing projective-line theorem and finiteResidueMap_isPullback. The second uses the nonzero cardinal of the finite additive group to kill its constant sheaf and composes with the original constant-coefficient isomorphism."
+  ],
+  "correspondence": {
+    "public_headers": "All three byte-identical to before-native 9f80c35b47e879a9a26fd0b60182abfa9af221473456a8d8b809a28e3138065a.",
+    "later_corollary_bodies": "Byte-identical, including subsequent standard HasExt instance scope.",
+    "excluded_new_premises": "No arbitrary comparison equivalences, replacement cohomology, common value-universe identification, new geometric assumption, torsion or dimension premise on N1, positivity restriction on q, or invertibility of every beta component.",
+    "v26_alternative_to_v26_published": "Generic fb3ce070b87cc5eb83fa32586a0c1989f50f22bcb0bc065e34126db7398de17b differs from aa3d only by removal of scratch-status prose; native alternative is byte-identical f656.",
+    "v26_to_v28_historical": "Exactly one new CategoryTheory.Functor.sourceInverse_composite_transport declaration is inserted. The complete prior CategoryTheory.Adjunction namespace is byte-identical. Native differs only in construction of ht; before and after the changed block, all bytes match, hence all three headers, corollary bodies, maps, imports/options and HasExt scopes are preserved.",
+    "v28_to_v29": "Remove the sole-use Functor.sourceInverse_composite_transport declaration; preserve all five original Values declarations and context exactly; append the indexed comparison wrapper. Native removes the explicit ht helper application and changes only the final factory application, passing the same hSourceComp, hMate, hs and original map/source data. All three public headers, private original-family helper and complete corollary suffix remain unchanged."
+  },
+  "accepted_background_boundary": "Existing finite-base-change, finite-direct-image exactness, source coherence, exact Ext functoriality and projective-line comparison providers retain their original statements and accepted dependencies. This review checks their applicability and the new complete derivation, not their full geometric proof towers or unrelated prior W10 scopes.",
+  "prior_coverage": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/whole-w10-final-continuation.md",
+    "sha256": "f14693972f4709ab17f6f3d8cb76ff313f8be6199f17242d529b6c07d0c94511",
+    "reuse": "Only unchanged OriginalComparison b432 and original-map/provider context relevant to this target; Germ, Section, Relative, Primitive and the other existing module outcomes are not reissued or reopened."
+  },
+  "execution_evidence": {
+    "old_native_failure": {
+      "source_sha256": "9f80c35b47e879a9a26fd0b60182abfa9af221473456a8d8b809a28e3138065a",
+      "record": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/CPP-4dbef214-LocalFinite-final.json",
+      "basis": "Supplied historical D4dbef/SOURCE748 kernel failure plus dependent cascade; not evidence about v26."
+    },
+    "formation_only": {
+      "directory": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-formation-execution/raw-7f2c797b",
+      "run_id": "remote-7f2c797b1c3a44099f3d32519a98cc95",
+      "source_content_sha256": "755f892ddd60ca1b1a8910026d88645ce854cb096d8b0161a5d4752d9c7bf599",
+      "scratch_sha256": "5af9fb6ca18e6bfcc0364f2d0d6e853c4ce76905d3549d6b5fc23e982ae2fdcb",
+      "receipt_sha256": "881ca4ea0c0e943c152b2b58c5955590cfa7c19ea18280480cccedd51ddf3cff",
+      "exit_code": 0,
+      "compiler_invocations": 1,
+      "compiler_succeeded": 1,
+      "compiler_failed": 0,
+      "input_drift": [],
+      "group_closed": true,
+      "covered_question": "Exact original proposition occurs only as (_h:P):True; source proves True. Formation only, not P or the v26 proof.",
+      "setup": "Inspected native module name, isModule=true, same four options and 7148 import-artifact counts; supplied provider/import compatibility is retained."
+    },
+    "v26_reported_pending_at_previous_cut": {
+      "status": "pending at review cut",
+      "source_author_report": "/root/cohomology_cocone_author: actual D client 28521 running; sealed SOURCE 0f46750592aec8cc2718833f0dfe763e6cad34db10a11d5fe86d483a03d278f6; pair guards passed; remote run outcome pending.",
+      "evidence_boundary": "No raw completed v26 compiler receipt was supplied or claimed."
+    },
+    "v26_actual_completed": {
+      "record": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/CPP-2f7f1878-LocalFinite-v26-final.json",
+      "record_sha256": "ad25e8cb08a9201f5ff85f7f1fd0b6feb2b3c645e79d2f08740e05569afdc786",
+      "run": "remote-2f7f18787712437fb879d329b7835330",
+      "source": "0f46750592aec8cc2718833f0dfe763e6cad34db10a11d5fe86d483a03d278f6",
+      "group_closed": true,
+      "aggregate_exit": 1,
+      "sources": [
+        {
+          "path": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean",
+          "sha256": "aa3d6ef9922cf4ed7e2ebff5852afb1380faf579e60ede4663587069630474e8",
+          "verdict": "fresh_pass",
+          "exit_code": 0,
+          "elapsed_seconds": 3.3264523297548294
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean",
+          "sha256": "f656cc8ca88d909b0fc911fb8c77af8c7c87d9a09932a2b73d9fbdf1675af831",
+          "verdict": "fresh_failure",
+          "exit_code": 1,
+          "elapsed_seconds": 126.9684910774231
+        }
+      ],
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-2f7f18787712437fb879d329b7835330/receipt.json",
+      "receipt_inspected": {
+        "compiler_invocations": 2,
+        "compiler_succeeded": 1,
+        "compiler_failed": 1,
+        "input_drift": []
+      },
+      "boundary": "The generic aa3d module passed and native f656 failed. Unchanged generic declaration coverage is compatible; this does not pass the current b62f module containing an added lemma. Native kernel failure is not a mathematical counterexample."
+    },
+    "v26_profile_diagnostic": {
+      "record": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-proof-profile-v2-mechanics/RESULT.json",
+      "record_sha256": "7d1c22718d206600b21cbf11b4da45055565c5cf2eed3a6d7c14fca78e960a36",
+      "run": "remote-d5e3b3b4f2ac40b587d51510e0f14d90",
+      "source": "a5e1d20d99830a0d4c1d3139e0a204de7e2b35f5491427e88d544647aa1b1f6f",
+      "group_closed": true,
+      "exit_code": 1,
+      "actual_named_kernel": {
+        "original_wholeFamily": {
+          "verdict": "pass",
+          "seconds": 15.477305
+        },
+        "standalone_sourceSecond_ht": {
+          "verdict": "kernel_timeout",
+          "seconds": 131.121053
+        },
+        "original_full_proof": {
+          "verdict": "kernel_timeout",
+          "seconds": 146.337639
+        }
+      },
+      "full_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-proof-profile-v2-mechanics/raw-d5e3b3b4/build.log",
+      "full_log_sha256": "9a829549abad242e398b39085e6beb5ab750e62e916a0e3bbf0057402041056c",
+      "full_log_bytes": 90790252,
+      "inspection_boundary": "Read the source-bound RESULT and selected raw receipt fields; no independent execution or full 90 MB log reread. Its corrected diagnostic isolated standalone sourceSecond ht in ordinary Scheme context without HasExt/F/q. It proves no new v28 success or unique total-cost cause. Metadata-head summaries do not identify an actual expected/inferred argument pair."
+    },
+    "v28_reported_pending_at_previous_cut": {
+      "status": "pending at continuation review cut",
+      "input_pair": {
+        "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean": "b62f08cb91e253f3e3457699cabe925756eb4755039c610ea0f91e83920d3261",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean": "655b2ec9420861b503e7f1bb59d54ad4983c801f67161fc6bf6d603b0c9841d6"
+      },
+      "basis": "Current LIVE_READY and source-author continuation report one ordinary owning LocalFinite CPP including changed Values; no completed current-pair result supplied."
+    },
+    "v28_actual_completed": {
+      "record": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/CPP-4e0c2743-LocalFinite-v28-final.json",
+      "record_sha256": "b3d4e668260a81500184c0a5638682e89b6d750adeb4b090fae355ccd2281f9d",
+      "run": "remote-4e0c2743acea48b6ab6c56bb886f5d9f",
+      "source": "97107a0b67721e67791420a016ca36ebc5ec9df36a5f3efc4d35a356ad56ec2c",
+      "sources": [
+        {
+          "path": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean",
+          "sha256": "b62f08cb91e253f3e3457699cabe925756eb4755039c610ea0f91e83920d3261",
+          "verdict": "fresh_pass",
+          "exit_code": 0,
+          "elapsed_seconds": 4.256506055593491
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean",
+          "sha256": "655b2ec9420861b503e7f1bb59d54ad4983c801f67161fc6bf6d603b0c9841d6",
+          "verdict": "fresh_failure",
+          "exit_code": 1,
+          "elapsed_seconds": 147.40078572928905
+        }
+      ],
+      "group_closed": true,
+      "aggregate_exit": 1,
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-n-c-runs/remote-4e0c2743acea48b6ab6c56bb886f5d9f/receipt.json",
+      "receipt_inspected": {
+        "compiler_invocations": 2,
+        "compiler_succeeded": 1,
+        "compiler_failed": 1,
+        "input_drift": []
+      },
+      "boundary": "Generic b62f PASS and native 655b FAIL belong to v28. They do not pass or fail current e1d0/099."
+    },
+    "ordinary_source_equation_diagnostics": {
+      "source_basis": [
+        {
+          "question": "Normal current ordinary sourceSecond with whole-functor transport helper",
+          "run": "remote-f94cbbd112f441ee862f57fa10e240a2",
+          "source": "a6900933b6f95bed43897ed4902dc03cefad54333bf4b53801386ef5f77d396d",
+          "scratch_sha256": "fe59264a1712d3b1876e221314b73fdd604d3578565561c0951963a13ed82155",
+          "outcome": "kernel timeout; no HasExt/F/q"
+        },
+        {
+          "question": "Same equation with reduced pointwise source-arrow transport helper",
+          "run": "remote-e2d8b8ce14a3479eacc998b0f5835fe8",
+          "source": "a6900933b6f95bed43897ed4902dc03cefad54333bf4b53801386ef5f77d396d",
+          "scratch_sha256": "86fe6ef137da28646e37604b649306d22e78d0cb540a45192bfd7345e6b7674d",
+          "result": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-literal-transport-normal-v1/RESULT.json",
+          "outcome": "kernel timeout; no HasExt/F/q"
+        }
+      ],
+      "literal_result": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-literal-transport-normal-v1/RESULT.json",
+      "literal_result_sha256": "0ef1c3faca0f033180ce655f835f472d3ae52d1effe6b153f11b31f8472da28b",
+      "literal_diagnostics": [
+        {
+          "line": 54,
+          "column": 8,
+          "message": "(kernel) deterministic timeout",
+          "declaration": "Proper.diag_original_sourceSecond_literal"
+        }
+      ],
+      "literal_evidence": {
+        "receipt.json": {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-literal-transport-normal-v1/raw-e2d8b8ce/receipt.json",
+          "sha256": "646fee9a465537b149389c0a27ca06b1abbded7d20f862fbb1d1a8140033487a"
+        },
+        "build.log": {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-literal-transport-normal-v1/raw-e2d8b8ce/build.log",
+          "sha256": "e18d8a8da60e63c82899646d8d1c4cd7d3962f5bb3fc45d47810927545c13990"
+        },
+        "compiler-events.jsonl": {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-literal-transport-normal-v1/raw-e2d8b8ce/compiler-events.jsonl",
+          "sha256": "11be6a6916027e2ffd767525603c0d00f1ac9a60df3f437ce9c0844be3353a2a"
+        },
+        "ACTUAL-NATIVE-SETUP.json": {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-literal-transport-normal-v1/raw-e2d8b8ce/ACTUAL-NATIVE-SETUP.json",
+          "sha256": "310a06fa4f84c472053068289edca6332bd0faebb8dee597839ff23b51081955"
+        },
+        "EXTERNAL-SCRATCH-SETUP.json": {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-literal-transport-normal-v1/raw-e2d8b8ce/EXTERNAL-SCRATCH-SETUP.json",
+          "sha256": "2aba4493c28e2c8bb659c3dabff03b284774bd94eafb403c6eb2a3543ff3a72c"
+        },
+        "NORMAL-TRANSPORT-SETUP.json": {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-literal-transport-normal-v1/raw-e2d8b8ce/NORMAL-TRANSPORT-SETUP.json",
+          "sha256": "6ea22ec56f4883aac380e45b8f3246d2d775a4d35132eb056a7a072f9121b6da"
+        },
+        "LiteralOriginalSourceTransport.lean": {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-literal-transport-normal-v1/raw-e2d8b8ce/LiteralOriginalSourceTransport.lean",
+          "sha256": "86fe6ef137da28646e37604b649306d22e78d0cb540a45192bfd7345e6b7674d"
+        }
+      },
+      "literal_seconds": 99.7971239387989,
+      "literal_group_closed": true,
+      "literal_exit_code": 1,
+      "inspection_boundary": "Read source-owned bounded results and the actual e2d8 scratch ordinary source equation. Both failures concern standalone original ordinary sourceSecond with no HasExt/coefficient F/degree q. They do not distinguish equality type formation from proof checking or identify a concrete conversion pair. The earlier full cohomology proposition formation check is a different question."
+    },
+    "v29_reported_pending_at_previous_cut": {
+      "status": "pending at v29 review cut",
+      "input_pair": {
+        "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean": "e1d0a92737405aec68ed643078b79eaf9bcbbab736d82ea9aa429caed14a133d",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean": "0997517ed89eba60a57505a6665d1fc722afec046cf6afaa726ff8e4462d6988"
+      },
+      "publication": "Fixed R-only candidate became LIVE with identical bytes while review ran; LIVE_READY b35957397fe14f07665cbb66ac4e73aa8861a3808c6c84a549bb2644b1538077.",
+      "basis": "One ordinary owning LocalFinite root graph including changed Values requested directly by source owner; no completed current-pair result supplied."
+    },
+    "current_v29": {
+      "status": "passed",
+      "run": "remote-22047e1ff0a3472cb67017d7b5df75fd",
+      "source": "3bac8faa52cdef9b8a34cc9a7fea0a1558bf6e8df9fcd59edf15112cd9c1fd1f",
+      "source_receipt_sha256": "23ed33f2115e7f411738badebe5d0c47172ecc45c130d9e4b4da5902f7e438db",
+      "record": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/CPP-22047e1f-LocalFinite-v29-final.json",
+      "record_sha256": "8b8f79cf1bbbb55ab9139184fd33110b3ada05df35e80af5228fd11f94054a26",
+      "canonical_evidence": {
+        "receipt.json": {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-22047e1ff0a3472cb67017d7b5df75fd/receipt.json",
+          "sha256": "6931db7ca1c9f07128936e0a395d55b64bfda135bec5cf3d7398316250a8d68e"
+        },
+        "compiler-events.jsonl": {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-22047e1ff0a3472cb67017d7b5df75fd/compiler-events.jsonl",
+          "sha256": "3d159c1fb83410d88f23e32fb937c3563e666c1384b8acdc18ed7ad3ee3eb33e"
+        },
+        "build.log": {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-22047e1ff0a3472cb67017d7b5df75fd/build.log",
+          "sha256": "80984f252e4d537fa0530dc2b67dbf44795fe7ae92153a0387baedb5051939ec"
+        }
+      },
+      "passed": [
+        {
+          "path": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean",
+          "sha256": "e1d0a92737405aec68ed643078b79eaf9bcbbab736d82ea9aa429caed14a133d",
+          "verdict": "fresh_pass",
+          "exit_code": 0,
+          "elapsed_seconds": 3.6481851637363434,
+          "compiler_pid": 303326,
+          "wrapper_pid": 303324,
+          "started_utc": "2026-10-30T13:00:32.838180+00:00",
+          "finished_utc": "2026-10-30T13:00:36.486360+00:00",
+          "run": "remote-22047e1ff0a3472cb67017d7b5df75fd",
+          "source": "3bac8faa52cdef9b8a34cc9a7fea0a1558bf6e8df9fcd59edf15112cd9c1fd1f"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean",
+          "sha256": "0997517ed89eba60a57505a6665d1fc722afec046cf6afaa726ff8e4462d6988",
+          "verdict": "fresh_pass",
+          "exit_code": 0,
+          "elapsed_seconds": 49.771697878837585,
+          "compiler_pid": 303336,
+          "wrapper_pid": 303334,
+          "started_utc": "2026-10-30T13:00:37.051164+00:00",
+          "finished_utc": "2026-10-30T13:01:26.822870+00:00",
+          "run": "remote-22047e1ff0a3472cb67017d7b5df75fd",
+          "source": "3bac8faa52cdef9b8a34cc9a7fea0a1558bf6e8df9fcd59edf15112cd9c1fd1f"
+        }
+      ],
+      "group_closed": true,
+      "exit_code": 0,
+      "compiler_invocations": 2,
+      "compiler_succeeded": 2,
+      "compiler_failed": 0,
+      "input_drift": [],
+      "incomplete_compiler_events": 0,
+      "unfinished_compiler_records": [],
+      "profile": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 65536,
+        "threads": 4
+      },
+      "pins": {
+        "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+        "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+        "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+        "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+        "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+        "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+      },
+      "input_sha256": {
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean": "0997517ed89eba60a57505a6665d1fc722afec046cf6afaa726ff8e4462d6988",
+        "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+        "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+        "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+      },
+      "source_guard_boundary": "Broker exact53 source/public-header guards plus author exact current e1d0/099 checks. Full SOURCE descriptor requested as archival only; receipt binds its raw SHA23ed33f2. No blanket downstream pass inferred.",
+      "inspection": "Independently read canonical receipt, both compiler started/finished event pairs and the complete short build log; checked canonical hashes, matching native/configuration hashes, current source pair and relevant unchanged provider hashes. Reused the source-owner exact-vector/changed-lower binding. No new run.",
+      "coverage_limit": "Two exact fresh ordinary module passes only. No new replay/client check, separate axiom audit, tests, benchmark, NativeLine pass or blanket downstream pass is inferred."
+    }
+  },
+  "remaining_gap": "No remaining mathematical/source-correspondence or ordinary-CPP gap within this fixed v29 LocalFinite review closure under the accepted existing provider statements. Broader project/NativeLine completion, formal status and writing acceptance are outside this assignment.",
+  "performance_boundary": "The matching v29 ordinary run succeeds on its recorded pair. Old-source full/native/component failures still do not split ordinary equality formation from proof checking, identify an actual conversion pair or establish a unique data/model cause. The unmatched runs establish no controlled speedup claim.",
+  "write_scope": [
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/whole-w10-localfinite-values-20261030.md",
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/whole-w10-localfinite-values-20261030.json"
+  ],
+  "revision": "v29_integrated_ordinary_with_matching_cpp",
+  "review_history": [
+    {
+      "revision": "v26",
+      "markdown_sha256": "b998873affabd7788caa3499008bde7604efc4f9dfe81f943d30421fc17ee86d",
+      "json_sha256": "f909744581bcd172b9f383311af5d6e84523d1af1ea72267aa43bad7a6bf6ed2",
+      "sources": [
+        {
+          "path": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean",
+          "before_sha256": null,
+          "sha256": "aa3d6ef9922cf4ed7e2ebff5852afb1380faf579e60ede4663587069630474e8",
+          "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-conjugate-values-v26/source/Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean",
+          "before_path": null
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean",
+          "before_sha256": "9f80c35b47e879a9a26fd0b60182abfa9af221473456a8d8b809a28e3138065a",
+          "sha256": "f656cc8ca88d909b0fc911fb8c77af8c7c87d9a09932a2b73d9fbdf1675af831",
+          "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-conjugate-values-v26/source/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean",
+          "before_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-conjugate-values-v26/before/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean"
+        }
+      ],
+      "material_update": "The earlier v26 pending-execution state is superseded by the recovered same-source mixed CPP: aa3d passed, f656 failed. No earlier mathematical conclusion is withdrawn. This report now binds current v28 bytes; old executions remain on old source bases."
+    },
+    {
+      "revision": "v28",
+      "markdown_sha256": "331bfa8ed40b3f056b8298e16583cfaa58c5fc8039d43008f67c42ab312c7ec5",
+      "json_sha256": "f9b3a46e851de70e79483c12ac437200a91beeb26231ef65709c5a4ef4c6709c",
+      "sources": [
+        {
+          "path": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean",
+          "before_sha256": "aa3d6ef9922cf4ed7e2ebff5852afb1380faf579e60ede4663587069630474e8",
+          "sha256": "b62f08cb91e253f3e3457699cabe925756eb4755039c610ea0f91e83920d3261",
+          "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-whole-source-transport-v28/source/Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean",
+          "before_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-whole-source-transport-v28/before/Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean",
+          "before_sha256": "f656cc8ca88d909b0fc911fb8c77af8c7c87d9a09932a2b73d9fbdf1675af831",
+          "sha256": "655b2ec9420861b503e7f1bb59d54ad4983c801f67161fc6bf6d603b0c9841d6",
+          "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-whole-source-transport-v28/source/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean",
+          "before_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-whole-source-transport-v28/before/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean"
+        }
+      ],
+      "material_update": "The earlier v28 pending execution state is superseded by actual b62f generic PASS / 655b native FAIL. Its ordinary transport helper is removed from the current source, with its mathematical verdict retained only historically; the new indexed comparison wrapper is independently reviewed here."
+    }
+  ],
+  "retired_results": [
+    {
+      "result": {
+        "id": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean#sourceInverse_composite_transport",
+        "outcome": "SUPPORTED_NEW_V28_LEMMA_AND_NATIVE_APPLICATION",
+        "conditions": [
+          "T0"
+        ],
+        "conclusion": "((q_i).app A).inv ; (eqToIso(congrArg K h) ≪≫ c).hom.app(T(A)) = (eprime.app A).inv ; G.map((e.app A).inv).",
+        "lines": "30-44",
+        "proof": "Equality induction on h reduces eqToIso(congrArg K h) to identity and the composite isomorphism to c. Iso.app_inv then identifies the displayed component inverses with the supplied hc.",
+        "native_correspondence": "I=(Xprime→S), i=fprime≫g, j=gprime≫f, h=h.w.symm, C=AbelianSheaf S, E=AbelianSheaf X, D=AbelianSheaf Xprime, V=AddCommGrpCat.{u+1}; K(k)=inverseImage k, q(k)=inverseImageConstantIso k; T,R,S are the original constant-sheaf functors; F=inverseImage f, G=inverseImage gprime; e,eprime are their original constant isomorphisms; c=inverseImageComp f gprime; A=AddCommGrpCat.of(ULift.{u+1} integers); hc=inverseImageComp_constant_inv f gprime A. The conclusion is the unchanged ht required by originalExtSourceComparison_bijective_of_mate_values."
+      },
+      "conditions": {
+        "T0": "Ordinary categories C,E,D,V, index type I, K:I→(C⥤D), T:V⥤C, R:V⥤E, S:V⥤D, source isomorphism family q_i:T⋙K(i)≅S, equality h:i=j, F:C⥤E, G:E⥤D, e:T⋙F≅R, eprime:R⋙G≅S, c:K(j)≅F⋙G, A:V, and the existing target-index composition law hc:(q_j).inv.app A ; c.hom.app(T(A)) = eprime.inv.app A ; G.map(e.inv.app A). No additive, abelian, exactness or HasExt assumptions."
+      },
+      "source_sha256": "b62f08cb91e253f3e3457699cabe925756eb4755039c610ea0f91e83920d3261",
+      "current_disposition": "Removed sole-use declaration; prior mathematical validity is not withdrawn, but it is no longer a declaration or load-bearing dependency of the current v29 candidate."
+    }
+  ],
+  "evidence_only_update": {
+    "previous_markdown_sha256": "7ac09cc3c0fc1f54500149cab511877ebdab96d1901417b8fe725fd08d78d5a1",
+    "previous_json_sha256": "aff1f6ea5fd137acd92dadcf8f106e7e871cce498abbc4cd9972302afeac6400",
+    "unchanged": "All reviewed v29 source bytes, mathematical conditions, derivations and result-specific mathematical conclusions. No new review cycle or reviewer execution.",
+    "material_change": "The exact v29 CPP-pending state is superseded by completed matching generic and native PASS evidence. The prior formation-only and failed-source evidence is not relabeled."
+  }
+}

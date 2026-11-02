@@ -7,16 +7,20 @@ Authors: kangxyz
 module
 
 public import Mathlib.CategoryTheory.FintypeCat
+public import Mathlib.CategoryTheory.Opposites
+public import Mathlib.CategoryTheory.NatIso
 
 /-!
-# NaturalityTransport
+# Naturality and factors through actual comparison maps
 
-General constructions and comparisons for this native mathematical family.
+Naturality and the supplied original chart conjugacy give the whole original
+coefficient square. Lifts through the actual comparison isomorphisms retain
+the same original arrow and the same local factor.
 -/
 
 @[expose] public section
 
-open CategoryTheory
+open CategoryTheory Opposite
 namespace CategoryTheory.Functor.NaturalityTransport
 universe u v
 
@@ -41,6 +45,42 @@ theorem naturality_via_injective {A A' B B' : Type u}
     _ = b' (g (i x)) := hg _
     _ = b' (j (f x)) := congrArg b' (hsq x).symm
     _ = j (b (f x)) := (hja _).symm
+
+/-- Original relative-object naturality transports through the two supplied
+original chart isomorphisms, using their original conjugacy equation. -/
+theorem contraFunctorIso_chart_naturality
+    {A B C D : Type*} [Category* A] [Category* B] [Category* C] [Category* D]
+    (P : Aᵒᵖ ⥤ C) (Q : Bᵒᵖ ⥤ D) (R : A ⥤ B) (L : C ⥤ D)
+    (e : P ⋙ L ≅ R.op ⋙ Q) {Y Z : A} (h : Y ⟶ Z)
+    {Y' Z' : B} (a : Y' ≅ R.obj Y) (b : Z' ≅ R.obj Z) (r : Y' ⟶ Z')
+    (hc : a.hom ≫ R.map h = r ≫ b.hom) :
+    L.map (P.map h.op) ≫ (e.hom.app (op Y) ≫ Q.map a.hom.op) =
+      (e.hom.app (op Z) ≫ Q.map b.hom.op) ≫ Q.map r.op := by
+  have he : L.map (P.map h.op) ≫ e.hom.app (op Y) =
+      e.hom.app (op Z) ≫ Q.map (R.map h).op := e.hom.naturality h.op
+  have hm : Q.map (R.map h).op ≫ Q.map a.hom.op =
+      Q.map b.hom.op ≫ Q.map r.op :=
+    (Q.map_comp (R.map h).op a.hom.op).symm.trans
+      ((congrArg (fun k => Q.map k.op) hc).trans (Q.map_comp b.hom.op r.op))
+  exact (Category.assoc (L.map (P.map h.op)) (e.hom.app (op Y))
+    (Q.map a.hom.op)).symm.trans
+      ((congrArg (fun k => k ≫ Q.map a.hom.op) he).trans
+        ((Category.assoc (e.hom.app (op Z)) (Q.map (R.map h).op)
+          (Q.map a.hom.op)).trans
+            ((congrArg (fun k => e.hom.app (op Z) ≫ k) hm).trans
+              (Category.assoc (e.hom.app (op Z)) (Q.map b.hom.op) (Q.map r.op)).symm)))
+
+/-- A lift in the actual supplied iso square gives a lift through the
+original arrow, preserving that same original coefficient map. -/
+theorem factor_through_original_iso_square
+    {C : Type*} [Category* C] {A B A' B' F : C}
+    (eA : A ≅ A') (eB : B ≅ B') (τ : B ⟶ A) (τ' : B' ⟶ A')
+    (hτ : τ ≫ eA.hom = eB.hom ≫ τ')
+    (α : F ⟶ A) (β : F ⟶ B') (hβ : β ≫ τ' = α ≫ eA.hom) :
+    (β ≫ eB.inv) ≫ τ = α := by
+  apply (cancel_mono eA.hom).mp
+  simp only [Category.assoc, hτ, Iso.inv_hom_id_assoc, hβ]
+
 
 end CategoryTheory.Functor.NaturalityTransport
 

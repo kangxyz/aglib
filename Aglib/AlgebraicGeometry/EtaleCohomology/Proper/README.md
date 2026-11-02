@@ -20,9 +20,9 @@ with maps `f'` and `g'`, [BaseChange](BaseChange.lean) supplies:
   invertible on every D+ object whose homology sheaves are internally locally
   torsion.
 
-The four supplied derived-category data records and their universes remain
-independent. The base, base change and locally torsion coefficient are
-arbitrary: the final statements add no uniform annihilator, Noetherian,
+The higher-exchange statement has no derived-model parameter. The two derived
+statements retain four independently supplied derived categories and their
+universes. The base, base change and locally torsion coefficient are arbitrary: the final statements add no uniform annihilator, Noetherian,
 constructibility, finite-presentation or coefficient-order-invertibility
 condition. The D+ statement retains bounded-below scope and imposes no common
 annihilator on its homology sheaves or terms.
@@ -32,7 +32,11 @@ coefficient killed by a supplied positive integer. The actual universal-P1
 input is constructed in [Universal/ProjectiveLine](Universal/ProjectiveLine.lean)
 from original local and geometric-stalk comparisons. The original factorial
 kernel cocone and sheaf-valued sequential higher-image continuity give local
-torsion; the native finite Postnikov windows give D+.
+torsion through the general-site
+[natural-transformation criterion](../../../CategoryTheory/Sites/Torsion/NatTrans.lean).
+The actual equality between the intrinsic and selected-model higher maps
+connects the killed-coefficient supplier to this criterion. The native finite
+Postnikov windows give D+.
 
 ## Formal and geometric reduction inputs
 

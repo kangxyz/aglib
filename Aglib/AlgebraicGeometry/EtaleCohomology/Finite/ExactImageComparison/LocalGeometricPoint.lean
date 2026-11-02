@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.RingTheory.Finite.LocalPoints.LocalPoint
 public import
   Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.FiniteFiberIndex
 
@@ -31,32 +32,20 @@ variable (R : Type u) [CommRing R] [HenselianLocalRing R]
 
 /-- The actual ring map defining the geometric point of a finite local component. -/
 def finiteLocalGeometricPoint : C →+* Ω :=
-  (finiteLocalResidueEmbedding R C Ω).toRingHom.comp (residue C)
+  Algebra.FiniteLocalPoints.finiteLocalGeometricPoint R C Ω
 
 /-- The geometric point lies over the original base residue map. -/
 theorem finiteLocalGeometricPoint_comp_algebraMap :
     (finiteLocalGeometricPoint R C Ω).comp (algebraMap R C) =
       (algebraMap (ResidueField R) Ω).comp (residue R) :=
-  finiteLocalResidueEmbedding_comp_residue R C Ω
+  Algebra.FiniteLocalPoints.finiteLocalGeometricPoint_comp_algebraMap R C Ω
 
 /-- Any local map from the component into the same geometric field, lying over
 that original base map, is the chosen geometric point. -/
 theorem finiteLocalGeometricPoint_unique (a : C →+* Ω) [IsLocalHom a]
     (ha : a.comp (algebraMap R C) =
       (algebraMap (ResidueField R) Ω).comp (residue R)) :
-    a = finiteLocalGeometricPoint R C Ω := by
-  let b : ResidueField C →ₐ[ResidueField R] Ω :=
-    { ResidueField.lift a with
-      commutes' := by
-        intro x
-        obtain ⟨r, rfl⟩ := residue_surjective x
-        rw [ResidueField.algebraMap_residue]
-        change a (algebraMap R C r) = _
-        exact RingHom.congr_fun ha r }
-  have hb := finiteLocalResidueEmbedding_unique R C Ω b
-  ext c
-  have hc := congrArg (fun z : ResidueField C →ₐ[ResidueField R] Ω =>
-    z (residue C c)) hb
-  exact hc
+    a = finiteLocalGeometricPoint R C Ω :=
+  Algebra.FiniteLocalPoints.finiteLocalGeometricPoint_unique R C Ω a ha
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

@@ -1,0 +1,30 @@
+{
+  "status": "PRODUCTION PASS for exact adopted Field only",
+  "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean",
+  "sha256": "1de5eb6705762fed19b3c648cb5b962117e1a0f3a79011b432fe7fa0df138257",
+  "run": "remote-012592f60c0140bcae45c12e6ba60d6b",
+  "source": "1d0b5938b40716e5f90a1e63eac08ab11c5e0db6e0c55d274964b875f1a36c74",
+  "source_receipt_sha256": "f728559a3a59f5675fdb0815d1f0149631763528dd94e43e370208859b9cb613",
+  "own_frontend": {
+    "wrapper_pid": 958596,
+    "exit_code": 0,
+    "elapsed_seconds": 122.4589021652937
+  },
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-012592f60c0140bcae45c12e6ba60d6b/receipt.json",
+  "receipt_sha256": "0fc24390e5866666404b92efbb5a5c45514be4c91a4b0028a782d06959d58b8d",
+  "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-012592f60c0140bcae45c12e6ba60d6b/build.log",
+  "log_sha256": "105c95f4f15cbac25be23857e21709b8843b4c3d9374c6f7aa53e9af1956d819",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-012592f60c0140bcae45c12e6ba60d6b/compiler-events.jsonl",
+  "events_sha256": "addada645b317b019f6d247d25aa86910bad556230660ee24f711d3d8138224e",
+  "group_closed": true,
+  "group_exit_code": 1,
+  "group_frontends": 21,
+  "group_pass": 20,
+  "group_fail": 1,
+  "input_drift": [],
+  "adoption_packet": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/production-v7/READY.json",
+  "adoption_packet_sha256": "d08304729d0b3d19915f3af0db30d6ad3653c66268d07f303769452458936d9f",
+  "source_delta": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/production-v7/source-delta.patch",
+  "selected_minimal_proof": "Infer hfinal from the existing native hmap/class equations with no expected type; normalize hfinal and original goal in place; exact hfinal. No mathematical model/map/action/unit/generator/public condition/universe change.",
+  "boundary": "Whole mixed command exit1 comes from unrelated P6 ModuleMate, not Field. The three curve entries were not selected because their actual closures reach another owner current failed/pending Global producer. No C56/global closure. SquareTransport926601 unchanged; no shared-constructor backup or new generic helper admitted. Earlier isolated successes and all failures remain tied to their real inputs."
+}

@@ -1,0 +1,95 @@
+{
+  "Q_coproductCofanIsColimit_of_kInjectiveReplacement": [
+    {
+      "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean",
+      "line": 41,
+      "text": "def Q_coproductCofanIsColimit_of_kInjectiveReplacement"
+    },
+    {
+      "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean",
+      "line": 84,
+      "text": "Q_coproductCofanIsColimit_of_kInjectiveReplacement"
+    }
+  ],
+  "Q_coproductCofanIsColimit": [
+    {
+      "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean",
+      "line": 82,
+      "text": "def Q_coproductCofanIsColimit (K : \u03ba \u2192 CochainComplex C \u2124) :"
+    },
+    {
+      "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean",
+      "line": 93,
+      "text": "((isColimitMapCoconeCofanMkEquiv _ _ _).symm (Q_coproductCofanIsColimit K))"
+    },
+    {
+      "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean",
+      "line": 101,
+      "text": "HasColimit.mk \u27e8_, Q_coproductCofanIsColimit L\u27e9"
+    }
+  ],
+  "Q_coproductIso": [
+    {
+      "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean",
+      "line": 110,
+      "text": "def Q_coproductIso (K : \u03ba \u2192 CochainComplex C \u2124) :"
+    },
+    {
+      "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean",
+      "line": 117,
+      "text": "Q.map (Sigma.\u03b9 K a) \u226b (Q_coproductIso K).hom ="
+    },
+    {
+      "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean",
+      "line": 119,
+      "text": "apply (cancel_mono (Q_coproductIso K).inv).mp"
+    },
+    {
+      "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean",
+      "line": 129,
+      "text": "(homologyFunctor C n).mapIso (Q_coproductIso K).symm \u226a\u226b"
+    },
+    {
+      "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean",
+      "line": 142,
+      "text": "have h\u03b9 : Sigma.\u03b9 (fun a => Q.obj (K a)) a \u226b (Q_coproductIso K).inv ="
+    }
+  ],
+  "Q_coproductHomologyIso": [
+    {
+      "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean",
+      "line": 126,
+      "text": "def Q_coproductHomologyIso (K : \u03ba \u2192 CochainComplex C \u2124) (n : \u2124) :"
+    },
+    {
+      "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean",
+      "line": 139,
+      "text": "(Q_coproductHomologyIso K n).hom ="
+    },
+    {
+      "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean",
+      "line": 146,
+      "text": "dsimp only [Q_coproductHomologyIso, Iso.trans_hom, Functor.mapIso_hom,"
+    }
+  ],
+  "instHasDerivedCategoryModuleSheafXbarFirst_3": [],
+  "instHasDerivedCategoryModuleSheafXbarFirst_4": [],
+  "instHasDerivedCategoryModuleSheafXbarTargetCompactification_3": [],
+  "instHasDerivedCategoryModuleSheafXbarTargetCompactification_4": [],
+  "instHasDerivedCategoryModuleSheafXbarSourceCompactification_3": [],
+  "instHasDerivedCategoryModuleSheafXbarSourceCompactification_4": [],
+  "instHasDerivedCategoryModuleSheafXbarFirst_5": [],
+  "instHasDerivedCategoryModuleSheafXbarFirst_6": [],
+  "instHasDerivedCategoryModuleSheafXbarTargetCompactification_5": [],
+  "instHasDerivedCategoryModuleSheafXbarTargetCompactification_6": [],
+  "instHasDerivedCategoryModuleSheafXbarSourceCompactification_5": [],
+  "instHasDerivedCategoryModuleSheafXbarSourceCompactification_6": [],
+  "moduleExceptionalDirectImageUnbounded_commShift": [
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/Localization.lean",
+      "line": 30,
+      "text": "instance moduleExceptionalDirectImageUnbounded_commShift :"
+    }
+  ],
+  "instAlgebraCarrierFunctionFieldSpecOf_aglib": []
+}

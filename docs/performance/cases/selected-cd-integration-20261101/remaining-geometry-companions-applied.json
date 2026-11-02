@@ -1,0 +1,91 @@
+{
+  "question": "Apply the exact nine completed-geometry owner-collision repairs authorized by publication executor under Root-delegated scope",
+  "classification": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/integration/geometry-owner/remaining-geometry-companions-classification.json",
+  "main": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/release-integrator-20261030/integration-30b6",
+  "head_observed": "b0f8ca3f44be620dde8b40f65e1eec0143e45db4",
+  "applied": [
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Class.lean",
+      "action": "exact_snapshot_completed_companion",
+      "before_sha256": "6aa7c9985b98bcbdbd7170d2bd2d71a43d8e7058cd8a98dc7914b438fe626cf1",
+      "after_sha256": "e46d81e95d16e67da84cd1b2108aa88486dbdd4242d0aee0c4f9f03af364f0c6",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/snapshot/source/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Class.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Fibers/BaseChange.lean",
+      "action": "exact_snapshot_completed_companion",
+      "before_sha256": "b942c812dacadd61d5d88d8476eeb3425ef3e19ce37d105ff824b7185bec69c7",
+      "after_sha256": "e8b4dbee9d4c938ef06b2f67a8af5186783b5bbf6bcf78c5aa691bd0e765f820",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/snapshot/source/Aglib/AlgebraicGeometry/Cohomology/Fibers/BaseChange.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Fibers/FieldPoint.lean",
+      "action": "exact_snapshot_completed_companion",
+      "before_sha256": "5eb7cd957e1eb0c59a98c654e79c72eb0e84322dc54619590b1f2f0f75781b11",
+      "after_sha256": "52594c783e777456aab9ab9aa5370ac0bb738b52da357e2ce25bee8395d800c3",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/snapshot/source/Aglib/AlgebraicGeometry/Cohomology/Fibers/FieldPoint.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Projective/EmbeddedFibers/Basic.lean",
+      "action": "exact_snapshot_completed_companion",
+      "before_sha256": "0428bb3c787e97c811394cbee1c94288dec44c28ef6c27ed9e60a0ebdd3a715a",
+      "after_sha256": "28d71ed4364fcd4020e1c8ee8a58d16020578fd04f4fc4321d04b2f713600749",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/snapshot/source/Aglib/AlgebraicGeometry/Cohomology/Projective/EmbeddedFibers/Basic.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Abel/BoundedFamily.lean",
+      "action": "exact_snapshot_completed_companion",
+      "before_sha256": "9d05fe2e59639660b3dfec6bb905aef40a7b3930fe6e60bc28287e5c99c5ca57",
+      "after_sha256": "e535d42ec481a84168bfc40845a8f6df5fbf8324df984a415246aea527dcd5d1",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/snapshot/source/Aglib/AlgebraicGeometry/Curves/Abel/BoundedFamily.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Picard/Degree/ProductFormula.lean",
+      "action": "exact_snapshot_completed_companion",
+      "before_sha256": "1ef847a24c375960d8a578eeff17be9b79261c6dea188d8d126abc40c5a95c17",
+      "after_sha256": "343f49fbbc1b9482ade3d13afb1c444af6bd3128c82ca90ec1ae204da8114dcc",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/snapshot/source/Aglib/AlgebraicGeometry/Curves/Picard/Degree/ProductFormula.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/Restriction.lean",
+      "action": "public_import_canonical_ResolutionSections_Restriction_and_replace_identical_local_instance_by_local_attribute",
+      "before_sha256": "36d6a160d0f19c54f73616c6742ec16e84896195523c7a8ffe98032730d20e14",
+      "after_sha256": "b12ab5fb2d25be40b51f9ce459e06d7c47926778d83e2adaa8a1a0537a42a33d",
+      "preserve": "All remaining760-line original public proof retained; no absent CounitRestriction adopted"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Coefficients.lean",
+      "action": "give_existing_local_additive_instance_unique_explicit_name",
+      "before_sha256": "08c49a243b64bc20b4c2a1339c9959cd429b3270ac4646119d4192dfe4c20593",
+      "after_sha256": "3326d5d8944e111507afb5817b1c04d4a9c72150527470519593ee4317b24d18",
+      "new_name": "canonicalModelCoefficientSectionsAdditive",
+      "preserve": "Same instance type, proof RHS, local scope and priority; no data/model/map/proof change"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalPurity.lean",
+      "action": "give_existing_local_additive_instance_unique_explicit_name",
+      "before_sha256": "f2d69b87ca6180f29a1d8fb65f0df3bcb42b5c8ed346685f39ddecc680a5f06f",
+      "after_sha256": "2f94dc2be7c87a58a839bc844f14e2cef6b6b00f490311b427df23c231d621cd",
+      "new_name": "canonicalLocalPuritySectionsAdditive",
+      "preserve": "Same instance type, proof RHS, local scope and priority; no data/model/map/proof change"
+    }
+  ],
+  "source_correspondence": {
+    "regular_list": "Original model top-class constructor and four frame/extensionality statements move to admitted regular-list sheaf owner with same ordered list, quotient coordinate, supplied injective resolution, coefficient frame and Ext universe; projective Class becomes compatibility import",
+    "restriction": "Same HasDerivedCategory.standard instance function already in admitted ResolutionSections.Restriction; preserve complete stronger old proof because snapshot CounitRestriction dependency absent",
+    "additive_collision": "Class wrapper removes one generated duplicate; Coefficients and LocalPurity still independently emit the same auto name, so name the same existing local proofs distinctly; no global instance or new realization",
+    "fibers": "Cores retain original Sheaf.H and structural field actions, original coproduct/fibre-product maps and coefficient transports. Remaining geometric field-extension comparisons keep qcqs/quasicoherence and all degrees; actual dimensions/Euler/vanishing forms unchanged",
+    "embedded_fibers": "Core keeps original twist, tensor, field-extension/fibre maps, dimensions and Euler invariants; Basic supplies original qcqs flat-base-change map invertibility to already admitted complete FieldComparison, without adding assumptions",
+    "bounded_family": "Core is original native finite-product parameter, coordinate maps, graph-sum line bundle and tuple specialization, including empty parameter; wrapper retains actual field specialization/degree proofs with same full hypotheses",
+    "closed_point": "Exact original integral one-dimensional closed-point/coheight theorem now in admitted Stalk owner; no Noetherian/proper/smooth premise added; all remaining product-formula proofs unchanged"
+  },
+  "minimal_repairs_exact_inverse_preserves_other_bytes": true,
+  "no_missing_CounitRestriction_import": true,
+  "new_theory_models_maps_hypotheses_options": false,
+  "coverage": "Mutation/source-correspondence guards only; no author CPP, tests, probes or metadata-generation check; fresh coherent CPP remains with authorized native executor",
+  "maximal_changed_roots": [
+    "Aglib.AlgebraicGeometry.Cohomology.Fibers.BaseChange",
+    "Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.Basic",
+    "Aglib.AlgebraicGeometry.Curves.Abel.BoundedFamily"
+  ]
+}

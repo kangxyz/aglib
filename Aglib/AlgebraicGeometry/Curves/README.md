@@ -22,6 +22,7 @@ morphism providers.
 | `Aglib.AlgebraicGeometry.Curves.Picard.DivisorInverse` | Actual fractional-ideal divisor sheaves, the divisor/Picard correspondence and residue-weighted line-bundle degree. Retains integral, Noetherian, closed-DVR, dimension and principal-product-formula conditions. |
 | `Aglib.AlgebraicGeometry.Curves.Picard.Degree.ProperCurveProductFormula` | The proved proper-curve principal product-formula family with original residue weights and scalar action, using native proper cohomology finiteness. |
 | `Aglib.AlgebraicGeometry.Curves.Picard.NormDegree.OrderFormula` | The proved all-field finite norm/order family, summing all maximal branches with actual residue degrees. No separability or perfectness condition is inserted. |
+| `Aglib.AlgebraicGeometry.Curves.Projectivity.AffineMap` | A proper integral dimension-one scheme over any field has an affine morphism to the literal projective line, through the existing finite native-line map and its original comparison isomorphism. |
 | `Aglib.AlgebraicGeometry.Curves.Projectivity.Integral` | Actual projective embedding of the original proper integral dimension-one field scheme, preserving its structural triangle. |
 | `Aglib.AlgebraicGeometry.Curves.Duality` | Actual canonical Ext/cohomology duality on a smooth curve with a closed projective embedding, retaining coefficient finiteness and original structural field actions. |
 | `Aglib.AlgebraicGeometry.Curves.RiemannRoch.LineBundle` | The proved `LineBundleRiemannRoch` family for actual line bundles, their actual O(D)-transferred degree and H0/H1 finranks. Closed-DVR, dimension, properness and constants hypotheses remain explicit. |
@@ -37,6 +38,7 @@ morphism providers.
 | `Aglib.AlgebraicGeometry.Curves.Jacobian.DegreeStrata` | Riemann–Roch as `χ(X, L) = deg L + 1 - g`. For a curve `X ⊆ P^N_k` and any representing `P`, the rational point of a class `c` lies in the stratum of `φ` (Kleiman (4.8.1), `χ(X_t, L_t^{-1}(n)) = φ(n)`) if and only if `φ(n) = n · deg O(1) + 1 - g - deg c`, so in the stratum of `m ↦ m · deg O(1) + 1 - g - d` if and only if `deg c = d`; the strata are open and closed and the degree-zero one contains the unit. Other points of `P` are not described. Any field. |
 | `Aglib.AlgebraicGeometry.Curves.Jacobian.IdentityComponent` | Over an algebraically closed field, for `P` locally of finite type and separated and an open and closed `Z` containing the unit whose points `picardPoint P R L` have degree zero: `a_g(X^g) = Z = Pic⁰_{X/k}`, the rational points of `Pic⁰` are the degree-zero classes, and `Pic⁰` is proper. Also `Curve.Properties.exists_rationalPoint_of_isAlgClosed`. |
 | `Aglib.AlgebraicGeometry.Curves.Jacobian.DegreeZero` | The Jacobian `J = Pic⁰_{X/k}` over an algebraically closed field, for every representing `P` locally of finite type and separated: `J` is proper, is the image of `abelMorphism o ho P R g` for every rational point `o` and the degree-zero stratum of every embedding, and `degreeZeroAddEquivOfIsAlgClosed : ker deg ≃+ Additive (Spec k ⟶ J)`. Smoothness and `dim J = g` are not treated. |
+| `Aglib.AlgebraicGeometry.Curves.Jacobian.Multiplication` | Over an algebraically closed field, for `Curve.Properties X`, every separated `P` locally of finite type representing `Pic_{X/k,(fppf)}` and `n` invertible in `k`: on `J = Pic⁰_{X/k}` (`identityComponentOver P.obj`), `[n] = (𝟙 J) ^ n` is finite (`isFinite_multiplication_identityComponentOver_of_isUnit_of_isAlgClosed`) and surjective (`surjective_multiplication_identityComponentOver_of_isUnit_of_isAlgClosed`), its `k`-point fibres are finite and `J(k)` is `n`-divisible; `Pic⁰(X) = ker deg` is `n`-divisible (`exists_nsmul_eq_of_curveDegree_eq_zero_of_isUnit_of_isAlgClosed`, `surjective_nsmul_curveDegree_ker_of_isUnit_of_isAlgClosed`, with no `P` in the statement). Uses `degreeZeroAddEquivOfIsAlgClosed` and `finite_picard_torsion`, so the module imports the étale-cohomology closure through `EtaleCohomology.Finiteness.KummerCurveTorsion`; smoothness of `J`, `dim J = g` and `deg [n]` are not used. |
 | `Aglib.AlgebraicGeometry.Curves.GenusOneGroupLaw` | Exact-origin genus-one group law transported from the selected Picard representing witness; the general representability premise remains explicit. |
 
 The [pointed Weierstrass presentation](../EllipticCurve/Weierstrass/Presentation.md)
@@ -56,6 +58,10 @@ colliding with the historical global Quillen names. The projectivity graph
 uses this pure geometry without the optional older Laurent-module H1 proof.
 `ProjectiveLine.Native` retains the actual over-field isomorphism from literal
 homogeneous P1 to finite-coordinate projective space lifted to the field universe.
+[Projectivity/AffineMap](Projectivity/AffineMap.lean) owns
+`OverField.Curve.Projectivity.exists_isAffineHom_to_projectiveP1`, with the
+proper, integral and dimension-one hypotheses on the original field scheme.
+Picard smoothness imports this lower curve result.
 The general integral separated retraction theorem lives outside the curve family,
 in `Aglib.AlgebraicGeometry.Morphisms.GeometricRetraction`.
 
@@ -90,3 +96,125 @@ Focused interface guides: [Actual model component geometry](Models/Components/RE
 [Isogeny.Etale](Isogeny/Etale.md) proves the characteristic-zero finite
 surjective curve-group homomorphism family and binds it to the original
 pointed proper-curve consumer.
+
+## Point classes and Picard restriction
+
+[PointDivisor/IdealClass](PointDivisor/IdealClass.lean) identifies the divisor of
+the rational-point ideal inclusion with that point on an integral Noetherian
+scheme with DVR closed stalks. In dimension at most one its dual has the native
+point-divisor Picard class, without a trivializing chart in the final theorem.
+`PointDivisor/PoleFunctions` consumes these shared arguments.
+
+[Picard/PointDegree](Picard/PointDegree.lean) gives degree one for a rational
+point line bundle over any field. Over algebraically closed constants a closed
+point supplies degree and modulo-degree surjectivity.
+[Picard/OpenRestriction](Picard/OpenRestriction.lean) proves Picard restriction
+surjective for every open immersion into the curve; if a closed point is missed,
+its restriction on degree-zero classes is surjective. These two pure providers
+have no Jacobian or étale-cohomology module in their Aglib dependency closure.
+
+[Picard/DegreeQuotient](Picard/DegreeQuotient.lean) identifies the original
+`Pic(X)/n` with `ZMod n` over algebraically closed constants for `n` invertible
+in the field, using point degree and A4 divisibility.
+[Picard/OpenDivisibility](Picard/OpenDivisibility.lean) combines open restriction
+with A4 to give `n`-divisibility of the actual open Picard group under the same
+conditions. A4 retains its existing étale-finiteness input described above.
+
+[Jacobian smoothness and dimension](Jacobian/Dimension.lean) retain the same
+supplied `P,R` and identity component over any field: the component is smooth,
+geometrically integral and has dimension `coherentGenus k X`.
+[Projectivity](Jacobian/ProjectivityField.lean) holds for that same component
+over any field with the displayed separated and locally finite-type hypotheses.
+[Etale](Jacobian/Etale.lean) gives invertible-level multiplication étaleness
+over any field. [FiniteFlat](Jacobian/FiniteFlat.lean) proves the literal
+multiplication on that same `J` finite, flat and surjective for every positive
+level over any field, and finite étale and surjective when the level is a unit.
+[Torsion](Jacobian/Torsion.lean) gives the literal multiplication and native
+kernel on that same `J` locally free rank `n^(2*g)` for every positive `n`,
+including characteristic-divisible levels. For `n` a unit in the field, it
+gives geometric degree and geometric torsion and native kernel point counts,
+and a noncanonical `ZMod n` coordinate equivalence and basis for the native
+action, using all divisor-level counts. Level one and genus zero are included;
+no canonical or Galois-equivariant basis or arbitrary-field rational-point
+count is asserted. The supplied representative remains separated and locally
+of finite type. [LineBundle](Jacobian/LineBundle.lean) specializes
+the cube, square and multiplication laws to the same component.
+
+[OnePointRestriction](Picard/OnePointRestriction.lean) identifies the kernel
+of the original Picard restriction across one closed point with multiples of
+its positive point class, and proves the original unit and positive-level
+Picard torsion restriction maps bijective under its curve hypotheses.
+
+[AbelGeometry](Jacobian/AbelGeometry.lean) retains the original ordered
+Abel map to the same identity component and its inclusion equation.
+[AbelCurve](Jacobian/AbelCurve.lean) uses the original rational origin and
+represents the based curve map; its classifying formula is on represented
+locally Noetherian tests.
+
+[Jacobian/Kummer](Jacobian/Kummer.lean) identifies the original proper
+Kummer H¹ map with rational torsion on the same supplied `P,R,J`, over an
+algebraically closed field at positive invertible level. The whole inclusion
+into the supplied Picard representative retains the original Picard point
+and Kummer maps.
+
+[FiniteEtaleCompletion](FiniteEtaleCompletion.lean) completes the original
+connected surjective finite étale cover of a nonempty open in a smooth proper
+geometrically connected curve over an algebraically closed field. It uses
+the actual generic fibre and relative normalization to construct a curve, a
+finite dominant map, an open immersion and the original cartesian square.
+For a finite closed complement, including the empty set, the actual inverse
+image is finite and closed. Étaleness at the boundary is not asserted.
+
+The based [theta family](Jacobian/Theta/Principal.lean) uses the original
+ordered Abel image and its actual positive Cartier ideal. Over algebraically
+closed constants at positive genus, with the stated origin and supplied
+representatives, its original line-bundle morphism is monic with trivial
+scheme kernel and its line bundle is ample. The principal isomorphism still
+requires `finrank k (structureCohomology k J 1) ≤ finrank k
+(Cotangent.Space η[J])`; its inverse is the original Abel pullback followed
+by inversion. [IntrinsicCartier](Jacobian/Theta/IntrinsicCartier.lean)
+keeps the origin-free positive ordered image on the degree stratum. Its
+Kleiman Euler polynomial uses the inverse line bundle and is
+`m * deg O(1) + 1 - g - d`; no unreduced Hilbert-image identification is
+asserted. [GenusZero](Jacobian/Theta/GenusZero.lean) instead gives the original
+identity component isomorphic to the base over any field, without an origin.
+
+The supporting [effective classes](Picard/EffectiveClass.lean) and
+[uniqueness](Picard/EffectiveClass/Uniqueness.lean), [positive family](Abel/BoundedFamily/Positive.lean),
+[parameters](Abel/BoundedFamily/PositiveParameters.lean),
+[tuple classes](Abel/BoundedFamily/PositivePoints.lean),
+[repeated divisors](Abel/RepeatedDivisor.lean), [evaluation degree](Abel/EvaluationDegree.lean),
+[finite Cartier reducedness](Abel/FiniteCartierReduced.lean),
+[rank-one support](Abel/RankOneSupport.lean), [rank-one family](Abel/RankOneFamily.lean)
+and [section bound](RiemannRoch/SectionBound.lean) retain their original
+objects and the displayed geometric, finiteness and vanishing hypotheses.
+
+[OriginIndependence](Jacobian/Theta/OriginIndependence.lean) proves the
+whole Abel change-of-origin translation law over any field for two actual
+origins and the same supplied representative. Independence of the original
+Picard pullback and principal isomorphism retains algebraic closedness,
+positive genus, the stated second representative hypotheses and the original
+coherent-H¹ inequality.
+
+[Descent](Jacobian/Theta/Descent.lean) constructs the original Abel
+difference and canonical Abel dual map without a ground-field rational
+origin. [FieldComparison](Jacobian/Theta/Descent/FieldComparison.lean)
+compares this same map after field extension and descends its isomorphism
+by fpqc descent, in every genus over any field. The canonical principal
+group isomorphism and its underlying scheme isomorphism are its negative
+inverse. These results retain the original coherent-H¹ inequality and the
+supplied locally Noetherian Picard representatives with their displayed
+local-finite-type and separatedness hypotheses. In positive genus, after
+an algebraically closed field extension, the scalar-extended principal
+morphism comes from an ample line bundle on the scalar-extended original
+Jacobian. The coherent-H¹ bound and a theta line bundle over the ground
+field remain separate obligations.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [Abel/BoundedFamily/RepresentedMorphism](Abel/BoundedFamily/RepresentedMorphism.lean)
+- [Divisors/FieldExtensionBoundary](Divisors/FieldExtensionBoundary.lean)
+- [FiniteEtaleCompactification](FiniteEtaleCompactification.lean)
+- [FiniteNormalCompactification](FiniteNormalCompactification.lean)

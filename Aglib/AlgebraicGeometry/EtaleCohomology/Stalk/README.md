@@ -16,6 +16,7 @@ object.
 | [BaseChangeChartRelative](BaseChangeChartRelative.lean) | Whole `TwoSquare` interchange of the four original higher exchanges retains both inverse-image square comparisons and eight independent derived models. Its original component formula remains available without Cartesian or invertibility assumptions. |
 | [BaseChangeSectionComparison](BaseChangeSectionComparison.lean) | The original whole unit and relative-exchange equations give the actual section square before coefficient evaluation. Its component view retains the original section pullback and inverse coefficient comparison. This supplies an input to neighborhood-germ comparison, not proper base change by itself. |
 | [ChartExchangeMaps](ChartExchangeMaps.lean) | The chart witness uses the shared whole comparison family. Its original-factor, family-value and `IsIso` views preserve the four arbitrary models and obtain invertibility from the original etale exchange. |
+| [ChartCoefficientNaturality](ChartCoefficientNaturality.lean) | The original chart comparison is natural in the actual coefficient morphism, retaining the independent source, slice and chart Ext worlds. |
 
 ## Geometric neighborhood colimit
 
@@ -100,3 +101,25 @@ route to locally torsion higher and D+ proper exchange. Unbounded exchange
 retains its separate homological obligations.
 [ChartLimitZero](ChartLimitZero.lean) separately spreads original vanishing
 on an actual qcqs affine-transition limit to a genuine pointed etale stage.
+
+[GeometricFibreBaseChange](GeometricFibreBaseChange.lean) keeps the actual pullback map over one specified common point and both original projections; the original Cartesian-square hypothesis proves that same map invertible. [PointedNeighborhoodLimit](PointedNeighborhoodLimit.lean) extends the original spectrum cone along the initial marked-chart index, retaining its apex, structural map, legs and chosen geometric point.
+
+[ChartEvaluationGerm](ChartEvaluationGerm.lean) identifies the original chart-evaluation inverse with the terminal germ after the original stalk unit. [ChartExchangeMaps](ChartExchangeMaps.lean) keeps one witness for the same chart-comparison family component and its invertibility, retaining the actual exchange and all four independent supplied derived worlds.
+
+[ChartSourceGenerator](ChartSourceGenerator.lean) uses the actual terminal constant-sheaf value, and [RelativeUnitGerm](RelativeUnitGerm.lean) uses the original relative-terminal test and its specified point. [BaseChangeNeighborhoodGerms](BaseChangeNeighborhoodGerms.lean) transports the actual whole chart comparison before applying the original scalar law, then assembles the full section and arbitrary-neighborhood germ equations. The original unit, cohomology transfers, scalar values, independent Ext worlds and eight supplied derived models are retained; the only cancellations use genuine etale chart comparisons.
+
+[ChartGeometricComparison](ChartGeometricComparison.lean) composes the original strict-local comparison with cohomology transfer along the retained geometric point, using the same chosen fibre products. Its germ formula keeps the original pointed-neighborhood maps; bijectivity retains the given bijectivity condition on that transfer. The source, slice, stage, apex and geometric-fibre cohomology inputs remain explicit. [GeometricFibreNeighborhood](GeometricFibreNeighborhood.lean) proves the original rectangle from the two projection equations of the actual pulled-back point.
+
+[GeometricComparisonExchange](GeometricComparisonExchange.lean) proves that the original higher exchange commutes with the two common-point geometric comparisons, using their original neighborhood-germ formulas. [GeometricStalkExchange](GeometricStalkExchange.lean) obtains invertibility of that exact stalk map from the actual Cartesian square and the two given local-to-geometric transfer bijectivities. The original stalk unit, maps, coefficient identifications and independent derived-category worlds are retained.
+
+[ProjectiveLineGeometricTransfer](ProjectiveLineGeometricTransfer.lean) transports the actual projective-line chart to its strict-local and geometric fibres. The transfer for a sheaf killed by a nonzero natural number is bijective through the actual native residue-field embedding, with the original maps and chosen models retained.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [GeometricCohomologyDiagram](GeometricCohomologyDiagram.lean)
+- [GeometricComparisonEquation](GeometricComparisonEquation.lean)
+- [HigherImageLocalZero](HigherImageLocalZero.lean)
+- [OriginalPresheafCoefficients](OriginalPresheafCoefficients.lean)
+- [PullbackLimitCoefficient](PullbackLimitCoefficient.lean)

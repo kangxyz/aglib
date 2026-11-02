@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChange
+public import Aglib.CategoryTheory.Functor.WhiskeredTransport
 
 /-! # Composition and cancellation for the original derived exchange
 
@@ -99,9 +100,8 @@ theorem isIso_app_of_whiskered_transport
     (δ : U ⟶ V)
     (hδ : δ = s.hom ≫ Functor.whiskerLeft J (Functor.whiskerRight β H) ≫ t.hom)
     (X : A) [IsIso (β.app (J.obj X))] : IsIso (δ.app X) := by
-  rw [hδ]
-  change IsIso (s.hom.app X ≫ H.map (β.app (J.obj X)) ≫ t.hom.app X)
-  infer_instance
+  exact (CategoryTheory.isIso_app_iff_of_whiskered_transport s β t δ hδ X).mpr
+    inferInstance
 
 end Transport
 

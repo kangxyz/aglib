@@ -38,3 +38,16 @@ and adjugate sheaf maps for the fixed finite field basis and discriminant,
 with their scalar composite identities; separability supplies injectivity
 where required. These feed the finite separable surface H1 bound and do not
 assert a global canonical-module trace.
+
+[OpenSquare](OpenSquare.lean) compares the original function-field maps
+across a commuting open square, retaining the displayed hypotheses and
+transporting finite-dimensionality and finrank through those maps.
+
+## Finite and radicial maps of the original generic fields
+
+[Finite](Finite.lean) owns `Scheme.functionFieldMap_finite` for finite dominant
+maps of integral schemes, through the original generic-fibre isomorphism.
+`Curves/Isogeny/Etale` imports this lower owner. [FiniteRadicial](FiniteRadicial.lean)
+passes universal injectivity to that same function-field map and proves it
+purely inseparable. No normality, perfection, characteristic or Noetherian
+hypothesis is added.

@@ -1,0 +1,133 @@
+{
+  "raw_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-522b2137e14347c5926fc4dcb5b0d775/build.log",
+  "selected": [
+    {
+      "raw_line": 6,
+      "pos": {
+        "column": 0,
+        "line": 54
+      },
+      "diagnostics": "[diag] Diagnostics\n  [reduction] unfolded declarations (max: 45, num: 1):\n    [reduction] Quiver.Hom \u21a6 45\n  [reduction] unfolded reducible declarations (max: 75, num: 11):\n    [reduction] toLocallyRingedSpace \u21a6 75\n    [reduction] LocallyRingedSpace.toSheafedSpace \u21a6 72\n    [reduction] SheafedSpace.toPresheafedSpace \u21a6 69\n    [reduction] Functor.obj \u21a6 67\n    [reduction] PresheafedSpace.presheaf \u21a6 63\n    [reduction] outParam \u21a6 61\n    [reduction] semiOutParam \u21a6 56\n    [reduction] Opens \u21a6 40\n    [reduction] CommRingCat.carrier \u21a6 34\n    [reduction] FunLike \u21a6 30\n    [reduction] AbelianSheaf \u21a6 22\n  use `set_option diagnostics.threshold <num>` to control threshold for reporting counters"
+    },
+    {
+      "raw_line": 9,
+      "pos": {
+        "column": 0,
+        "line": 54
+      },
+      "diagnostics": "[diag] Diagnostics\n  [reduction] unfolded declarations (max: 6928, num: 18):\n    [reduction] Limits.limit.cone \u21a6 6928\n    [reduction] CategoryStruct.comp \u21a6 2306\n    [reduction] CategoryStruct.id \u21a6 2304\n    [reduction] Quiver.Hom \u21a6 1577\n    [reduction] MorphismProperty.Over.pullback \u21a6 592\n    [reduction] MorphismProperty.Over.mk \u21a6 496\n    [reduction] ContinuousMap.id \u21a6 288\n    [reduction] DFunLike.coe \u21a6 288\n    [reduction] LocallyRingedSpace.comp \u21a6 288\n    [reduction] LocallyRingedSpace.id \u21a6 288\n    [reduction] PresheafedSpace.comp \u21a6 288\n    [reduction] PresheafedSpace.id \u21a6 288\n    [reduction] Classical.indefiniteDescription \u21a6 272\n    [reduction] Classical.choose \u21a6 160\n    [reduction] Functor.leftAdjoint \u21a6 160\n    [reduction] Functor.sheafPullback \u21a6 160\n    [reduction] inverseImage \u21a6 160\n    [reduction] Functor.sheafPushforwardContinuous \u21a6 80\n  [reduction] unfolded reducible declarations (max: 6928, num: 36):\n    [reduction] Limits.LimitCone.cone \u21a6 6928\n    [reduction] Limits.Cone.\u03c0 \u21a6 3968\n    [reduction] Functor.obj \u21a6 2755\n    [reduction] Hom.toLRSHom \u21a6 1728\n    [reduction] Hom.toLRSHom' \u21a6 1728\n    [reduction] LocallyRingedSpace.Hom.toHom \u21a6 1440\n    [reduction] PresheafedSpace.Hom.base \u21a6 1152\n    [reduction] siteBaseChange \u21a6 1072\n    [reduction] Eq.ndrec \u21a6 992\n    [reduction] Limits.WalkingPair.casesOn \u21a6 992\n    [reduction] TopCat.Hom.hom' \u21a6 864\n    [reduction] toLocallyRingedSpace \u21a6 651\n    [reduction] LocallyRingedSpace.toSheafedSpace \u21a6 648\n    [reduction] SheafedSpace.toPresheafedSpace \u21a6 645\n    [reduction] PresheafedSpace.carrier \u21a6 579\n    [reduction] TopCat.carrier \u21a6 578\n    [reduction] sheafToPresheaf \u21a6 576\n    [reduction] Limits.pullback \u21a6 496\n    [reduction] NatTrans.app \u21a6 496\n    [reduction] Limits.Cone.pt \u21a6 496\n    [reduction] Limits.pullback.snd \u21a6 496\n    [reduction] Limits.WidePullbackShape.Hom.casesOn \u21a6 496\n    [reduction] ContinuousMap.toFun \u21a6 288\n    [reduction] ObjectProperty.FullSubcategory.obj \u21a6 288\n    [reduction] Exists.choose \u21a6 160\n    [reduction] Subtype.val \u21a6 160\n    [reduction] Sheaf \u21a6 137\n    [reduction] MorphismProperty.Over \u21a6 120\n    [reduction] Opposite.unop \u21a6 64\n    [reduction] PresheafedSpace.presheaf \u21a6 63\n    [reduction] outParam \u21a6 61\n    [reduction] semiOutParam \u21a6 56\n    [reduction] AbelianSheaf \u21a6 49\n    [reduction] Opens \u21a6 40\n    [reduction] CommRingCat.carrier \u21a6 34\n    [reduction] FunLike \u21a6 31\n  [def_eq] heuristic for solving `f a =?= f b` (max: 496, num: 11):\n    [def_eq] Limits.limit.cone \u21a6 496\n    [def_eq] Limits.cospan \u21a6 248\n    [def_eq] Limits.limit \u21a6 248\n    [def_eq] Limits.WidePullbackShape.wideCospan \u21a6 248\n    [def_eq] Limits.limit.\u03c0 \u21a6 248\n    [def_eq] MorphismProperty.Over.mk \u21a6 248\n    [def_eq] Functor.comp \u21a6 128\n    [def_eq] MorphismProperty.Over.pullback \u21a6 104\n    [def_eq] Functor.op \u21a6 88\n    [def_eq] Functor.sheafPushforwardContinuous \u21a6 40\n    [def_eq] ObjectProperty.lift \u21a6 40\n  [reduction] Axioms (possibly imported non-exposed defs) that were tried to be unfolded (max: 12880, num: 4):\n    [reduction] Limits.getLimitCone \u21a6 12880\n    [reduction] Limits.WidePullbackShape.struct._proof_2 \u21a6 1488\n    [reduction] Limits.WidePullbackShape.struct._proof_7 \u21a6 1488\n    [reduction] Classical.choice \u21a6 336\n  use `set_option diagnostics.threshold <num>` to control threshold for reporting counters"
+    },
+    {
+      "raw_line": 10,
+      "head": "[Elab.async] [206.507042] \u2705\ufe0f elaborating proof of AlgebraicGeometry.Scheme.EtaleCohomology.Kummer.SectionPullback.rootsComposite_identity",
+      "trace_chars": 910434,
+      "frame_count": 626,
+      "largest_defeq_frames": [
+        {
+          "seconds": 5.60329,
+          "trace_line": 34,
+          "comparison": "                      [Meta.isDefEq] [5.603290] \u2705\ufe0f eqToHom \u22ef \u226b ?m.94 =\n                            (rootsPullbackIso (a \u226b r) n hn\n                                hinv).hom =?= (eqToIso \u22ef).hom \u226b (rootsPullbackIso (\ud835\udfd9 X) n hn hinv).hom =\n                            (rootsPullbackIso (a \u226b r) n hn hinv).hom"
+        },
+        {
+          "seconds": 5.603212,
+          "trace_line": 38,
+          "comparison": "                        [Meta.isDefEq] [5.603212] \u2705\ufe0f eqToHom \u22ef \u226b ?m.94 =\n                              (rootsPullbackIso (a \u226b r) n hn\n                                  hinv).hom =?= (eqToIso \u22ef).hom \u226b (rootsPullbackIso (\ud835\udfd9 X) n hn hinv).hom =\n                              (rootsPullbackIso (a \u226b r) n hn hinv).hom"
+        },
+        {
+          "seconds": 5.602873,
+          "trace_line": 42,
+          "comparison": "                          [Meta.isDefEq] [5.602873] \u2705\ufe0f eqToHom \u22ef \u226b\n                                ?m.94 =?= (eqToIso \u22ef).hom \u226b (rootsPullbackIso (\ud835\udfd9 X) n hn hinv).hom"
+        },
+        {
+          "seconds": 5.601551,
+          "trace_line": 46,
+          "comparison": "                              [Meta.isDefEq] [5.601551] \u2705\ufe0f eqToHom \u22ef =?= (eqToIso \u22ef).hom"
+        },
+        {
+          "seconds": 5.601418,
+          "trace_line": 47,
+          "comparison": "                                [Meta.isDefEq] [5.601418] \u2705\ufe0f \u22ef.mpr\n                                      (\ud835\udfd9 ((inverseImage (\ud835\udfd9 X)).obj (mu X n))) =?= (eqToIso \u22ef).hom"
+        },
+        {
+          "seconds": 5.601292,
+          "trace_line": 49,
+          "comparison": "                                  [Meta.isDefEq] [5.601292] \u2705\ufe0f \u22ef \u25b8\n                                        \ud835\udfd9 ((inverseImage (\ud835\udfd9 X)).obj (mu X n)) =?= (eqToIso \u22ef).hom"
+        },
+        {
+          "seconds": 5.595213,
+          "trace_line": 4622,
+          "comparison": "              [Meta.isDefEq] [5.595213] \u2705\ufe0f (eqToIso \u22ef).hom \u226b (rootsPullbackIso (\ud835\udfd9 X) n hn hinv).hom =\n                    (rootsPullbackIso (a \u226b r) n hn\n                        hinv).hom =?= eqToHom \u22ef \u226b (rootsPullbackIso (\ud835\udfd9 X) n hn hinv).hom =\n                    (rootsPullbackIso (a \u226b r) n hn hinv).hom"
+        },
+        {
+          "seconds": 5.595137,
+          "trace_line": 4626,
+          "comparison": "                [Meta.isDefEq] [5.595137] \u2705\ufe0f (eqToIso \u22ef).hom \u226b (rootsPullbackIso (\ud835\udfd9 X) n hn hinv).hom =\n                      (rootsPullbackIso (a \u226b r) n hn\n                          hinv).hom =?= eqToHom \u22ef \u226b (rootsPullbackIso (\ud835\udfd9 X) n hn hinv).hom =\n                      (rootsPullbackIso (a \u226b r) n hn hinv).hom"
+        }
+      ]
+    },
+    {
+      "raw_line": 16,
+      "pos": {
+        "column": 0,
+        "line": 84
+      },
+      "diagnostics": "[diag] Diagnostics\n  [reduction] unfolded declarations (max: 140, num: 9):\n    [reduction] HomologicalComplex.single \u21a6 140\n    [reduction] Add.add \u21a6 136\n    [reduction] HAdd.hAdd \u21a6 136\n    [reduction] Quiver.Hom \u21a6 132\n    [reduction] HSMul.hSMul \u21a6 80\n    [reduction] SMul.smul \u21a6 80\n    [reduction] OfNat.ofNat \u21a6 44\n    [reduction] Zero.zero \u21a6 44\n    [reduction] ZSMul.zsmul \u21a6 40\n  [reduction] unfolded reducible declarations (max: 1712, num: 23):\n    [reduction] Functor.obj \u21a6 1712\n    [reduction] CochainComplex.singleFunctor \u21a6 1172\n    [reduction] CochainComplex.singleFunctors \u21a6 1172\n    [reduction] SingleFunctors.functor \u21a6 1172\n    [reduction] ObjectProperty.FullSubcategory.obj \u21a6 960\n    [reduction] HomologicalComplex.X \u21a6 932\n    [reduction] Sheaf \u21a6 355\n    [reduction] AbelianSheaf \u21a6 291\n    [reduction] Int.casesOn \u21a6 272\n    [reduction] AddCommGrpCat.str \u21a6 252\n    [reduction] Decidable.casesOn \u21a6 136\n    [reduction] Sheaf.H \u21a6 132\n    [reduction] HasExt \u21a6 64\n    [reduction] outParam \u21a6 54\n    [reduction] Localization.HasSmallLocalizedShiftedHom \u21a6 52\n    [reduction] Function.Injective.addCommGroup \u21a6 48\n    [reduction] Function.Injective.addGroup \u21a6 48\n    [reduction] Function.Injective.subNegMonoid \u21a6 48\n    [reduction] inferInstance \u21a6 44\n    [reduction] AddCommGrpCat.carrier \u21a6 36\n    [reduction] H1Etale \u21a6 31\n    [reduction] Equiv.toFun \u21a6 28\n    [reduction] NatTrans.app \u21a6 28\n  [def_eq] heuristic for solving `f a =?= f b` (max: 36, num: 3):\n    [def_eq] instHSMul \u21a6 36\n    [def_eq] Functor.obj \u21a6 29\n    [def_eq] ZSMul.toSMul \u21a6 24\n  [reduction] Axioms (possibly imported non-exposed defs) that were tried to be unfolded (max: 28, num: 1):\n    [reduction] HasExt._proof_1 \u21a6 28\n  use `set_option diagnostics.threshold <num>` to control threshold for reporting counters"
+    },
+    {
+      "raw_line": 19,
+      "pos": {
+        "column": 0,
+        "line": 84
+      },
+      "diagnostics": "[diag] Diagnostics\n  [reduction] unfolded declarations (max: 1352, num: 39):\n    [reduction] Add.add \u21a6 1352\n    [reduction] HAdd.hAdd \u21a6 1352\n    [reduction] HomologicalComplex.single \u21a6 1300\n    [reduction] Limits.limit.cone \u21a6 1080\n    [reduction] HSMul.hSMul \u21a6 560\n    [reduction] SMul.smul \u21a6 560\n    [reduction] Quiver.Hom \u21a6 559\n    [reduction] CategoryStruct.comp \u21a6 374\n    [reduction] DFunLike.coe \u21a6 350\n    [reduction] CategoryStruct.id \u21a6 320\n    [reduction] OfNat.ofNat \u21a6 308\n    [reduction] Zero.zero \u21a6 308\n    [reduction] ZSMul.zsmul \u21a6 280\n    [reduction] Abelian.Ext \u21a6 138\n    [reduction] Localization.SmallHom \u21a6 138\n    [reduction] Localization.SmallShiftedHom \u21a6 138\n    [reduction] ConcreteCategory.hom \u21a6 122\n    [reduction] ConcreteCategory.ofHom \u21a6 117\n    [reduction] EquivLike.coe \u21a6 112\n    [reduction] InducedCategory.homEquiv \u21a6 112\n    [reduction] HasShift.shift \u21a6 92\n    [reduction] MorphismProperty.Over.mk \u21a6 72\n    [reduction] MorphismProperty.Over.pullback \u21a6 72\n    [reduction] MorphismProperty \u21a6 69\n    [reduction] Sheaf.functorH \u21a6 54\n    [reduction] Equiv.trans \u21a6 48\n    [reduction] Classical.indefiniteDescription \u21a6 46\n    [reduction] AddMonoidHom.mk' \u21a6 44\n    [reduction] ContinuousMap.id \u21a6 40\n    [reduction] LocallyRingedSpace.comp \u21a6 40\n    [reduction] LocallyRingedSpace.id \u21a6 40\n    [reduction] PresheafedSpace.comp \u21a6 40\n    [reduction] PresheafedSpace.id \u21a6 40\n    [reduction] Trans.trans \u21a6 32\n    [reduction] Classical.choose \u21a6 29\n    [reduction] Functor.leftAdjoint \u21a6 29\n    [reduction] Functor.sheafPullback \u21a6 29\n    [reduction] inverseImage \u21a6 29\n    [reduction] Abelian.Ext.bilinearComp \u21a6 22\n  [reduction] unfolded reducible declarations (max: 9546, num: 65):\n    [reduction] Functor.obj \u21a6 9546\n    [reduction] CochainComplex.singleFunctor \u21a6 5716\n    [reduction] CochainComplex.singleFunctors \u21a6 5716\n    [reduction] SingleFunctors.functor \u21a6 5716\n    [reduction] ObjectProperty.FullSubcategory.obj \u21a6 5152\n    [reduction] HomologicalComplex.X \u21a6 4732\n    [reduction] Int.casesOn \u21a6 2704\n    [reduction] AddCommGrpCat.str \u21a6 2068\n    [reduction] Decidable.casesOn \u21a6 1352\n    [reduction] Sheaf \u21a6 1333\n    [reduction] Limits.LimitCone.cone \u21a6 1080\n    [reduction] AbelianSheaf \u21a6 1069\n    [reduction] Sheaf.H \u21a6 619\n    [reduction] Limits.Cone.\u03c0 \u21a6 576\n    [reduction] outParam \u21a6 319\n    [reduction] HasExt \u21a6 318\n    [reduction] AddMonoidHom.toZeroHom \u21a6 310\n    [reduction] AddCommGrpCat.carrier \u21a6 307\n    [reduction] Equiv.toFun \u21a6 266\n    [reduction] inferInstance \u21a6 260\n    [reduction] Localization.HasSmallLocalizedShiftedHom \u21a6 258\n    [reduction] NatTrans.app \u21a6 244\n    [reduction] Function.Injective.addCommGroup \u21a6 240\n    [reduction] Function.Injective.addGroup \u21a6 240\n    [reduction] Function.Injective.subNegMonoid \u21a6 240\n    [reduction] Hom.toLRSHom \u21a6 240\n    [reduction] Hom.toLRSHom' \u21a6 240\n    [reduction] H1Etale \u21a6 220\n    [reduction] LocallyRingedSpace.Hom.toHom \u21a6 200\n    [reduction] ZeroHom.toFun \u21a6 186\n    [reduction] Equiv.invFun \u21a6 172\n    [reduction] AddCommGrpCat.of \u21a6 161\n    [reduction] PresheafedSpace.Hom.base \u21a6 160\n    [reduction] Eq.ndrec \u21a6 144\n    [reduction] Limits.WalkingPair.casesOn \u21a6 144\n    [reduction] FunLike \u21a6 131\n    [reduction] AddCommGrpCat.Hom.hom' \u21a6 122\n    [reduction] TopCat.Hom.hom' \u21a6 120\n    [reduction] siteBaseChange \u21a6 120\n    [reduction] AddCommGrpCat.ofHom \u21a6 117\n    [reduction] AddCommGrpCat.Hom.hom \u21a6 112\n    [reduction] h1Functor \u21a6 110\n    [reduction] sheafToPresheaf \u21a6 96\n    [reduction] Equiv.addCommGroup \u21a6 92\n    [reduction] Equiv.smul \u21a6 92\n    [reduction] HomologicalComplex.d \u21a6 92\n    [reduction] ShiftMkCore.F \u21a6 92\n    [reduction] TopCat.carrier \u21a6 80\n    [reduction] LocallyRingedSpace.toSheafedSpace \u21a6 80\n    [reduction] PresheafedSpace.carrier \u21a6 80\n    [reduction] toLocallyRingedSpace \u21a6 80\n    [reduction] SheafedSpace.toPresheafedSpace \u21a6 80\n    [reduction] Limits.pullback \u21a6 72\n    [reduction] Limits.Cone.pt \u21a6 72\n    [reduction] Limits.pullback.snd \u21a6 72\n    [reduction] Limits.WidePullbackShape.Hom.casesOn \u21a6 72\n    [reduction] CochainComplex \u21a6 70\n    [reduction] Iso.hom \u21a6 66\n    [reduction] Function.Injective.addMonoid \u21a6 56\n    [reduction] Function.Injective.addZeroClass \u21a6 56\n    [reduction] InducedCategory.Hom.hom \u21a6 56\n    [reduction] ContinuousMap.toFun \u21a6 40\n    [reduction] Exists.choose \u21a6 29\n    [reduction] Subtype.val \u21a6 29\n    [reduction] ObjectProperty \u21a6 22\n  [def_eq] heuristic for solving `f a =?= f b` (max: 150, num: 14):\n    [def_eq] ite \u21a6 150\n    [def_eq] Functor.obj \u21a6 138\n    [def_eq] instHSMul \u21a6 108\n    [def_eq] ZSMul.toSMul \u21a6 72\n    [def_eq] Limits.limit.cone \u21a6 72\n    [def_eq] Quiver.Hom \u21a6 46\n    [def_eq] Limits.cospan \u21a6 36\n    [def_eq] Limits.limit \u21a6 36\n    [def_eq] Limits.WidePullbackShape.wideCospan \u21a6 36\n    [def_eq] Limits.limit.\u03c0 \u21a6 36\n    [def_eq] MorphismProperty.Over.mk \u21a6 36\n    [def_eq] HomologicalComplex.instCategory \u21a6 29\n    [def_eq] InducedCategory.homMk \u21a6 28\n    [def_eq] Preadditive.preadditiveHasZeroMorphisms \u21a6 26\n  [reduction] Axioms (possibly imported non-exposed defs) that were tried to be unfolded (max: 1944, num: 8):\n    [reduction] Limits.getLimitCone \u21a6 1944\n    [reduction] Shrink \u21a6 551\n    [reduction] Limits.WidePullbackShape.struct._proof_2 \u21a6 216\n    [reduction] Limits.WidePullbackShape.struct._proof_7 \u21a6 216\n    [reduction] HasExt._proof_1 \u21a6 152\n    [reduction] equivShrink \u21a6 80\n    [reduction] Classical.choice \u21a6 62\n    [reduction] categoryWithHomology_of_abelian \u21a6 38\n  use `set_option diagnostics.threshold <num>` to control threshold for reporting counters"
+    },
+    {
+      "raw_line": 20,
+      "head": "[Elab.async] [175.600378] \u2705\ufe0f elaborating proof of _private.Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.SectionPullback.0.AlgebraicGeometry.Scheme.EtaleCohomology.Kummer.SectionPullback.sectionPullback_of_original_coefficients",
+      "trace_chars": 9670280,
+      "frame_count": 2066,
+      "largest_defeq_frames": [
+        {
+          "seconds": 0.901094,
+          "trace_line": 136,
+          "comparison": "                                      [Meta.isDefEq] [0.901094] \u2705\ufe0f (sectionCoefficientIso r a ha A).hom =\n                                            (Functor.sourceSectionIso c i).hom.app\n                                              A =?= (sectionCoefficientIso r a ha A).hom =\n                                            ((sectionCoefficientNatIso r a ha).app A).hom"
+        },
+        {
+          "seconds": 0.895882,
+          "trace_line": 140,
+          "comparison": "                                        [Meta.isDefEq] [0.895882] \u2705\ufe0f (Functor.sourceSectionIso c i).hom.app\n                                              A =?= ((sectionCoefficientNatIso r a ha).app A).hom"
+        },
+        {
+          "seconds": 0.895724,
+          "trace_line": 142,
+          "comparison": "                                          [Meta.isDefEq] [0.895724] \u2705\ufe0f (Functor.sourceSectionIso c i).hom.1\n                                                A =?= ((sectionCoefficientNatIso r a ha).app A).1"
+        },
+        {
+          "seconds": 0.893128,
+          "trace_line": 144,
+          "comparison": "                                            [Meta.isDefEq] [0.893128] \u2705\ufe0f c.symm.hom.app A \u226b\n                                                  i.hom.app A =?= (sectionCoefficientNatIso r a ha).hom.app A"
+        },
+        {
+          "seconds": 0.892669,
+          "trace_line": 146,
+          "comparison": "                                              [Meta.isDefEq] [0.892669] \u2705\ufe0f c.symm.hom.app A \u226b\n                                                    i.hom.app A =?= (sectionCoefficientNatIso r a ha).hom.1 A"
+        },
+        {
+          "seconds": 0.89123,
+          "trace_line": 148,
+          "comparison": "                                                [Meta.isDefEq] [0.891230] \u2705\ufe0f c.symm.hom.app A \u226b\n                                                      i.hom.app\n                                                        A =?= (inverseImageComp r a).symm.hom.app A \u226b\n                                                      (eqToIso \u22ef \u226a\u226b inverseImageId X).hom.app A"
+        },
+        {
+          "seconds": 0.891126,
+          "trace_line": 152,
+          "comparison": "                                                  [Meta.isDefEq] [0.891126] \u2705\ufe0f (ObjectProperty.FullSubcategory.category\n                                                              (Presheaf.IsSheaf\n                                                                X.smallEtaleTopology)).toCategoryStruct.3\n                                                        (c.symm.hom.app A)\n                                                        (i.hom.app\n                                                          A) =?= (ObjectProperty.FullSubcategory.category\n                                                              (Presheaf.IsSheaf\n                                                                X.smallEtaleTopology)).toCategoryStruct.3\n                                                        ((inverseImageComp r a).symm.hom.app A)\n                                                        ((eqToIso \u22ef \u226a\u226b inverseImageId X).hom.app A)"
+        },
+        {
+          "seconds": 0.890804,
+          "trace_line": 1330,
+          "comparison": "                              [Meta.isDefEq] [0.890804] \u2705\ufe0f (sectionCoefficientIso r a ha A).hom =\n                                    ((sectionCoefficientNatIso r a ha).app\n                                        A).hom =?= (sectionCoefficientIso r a ha A).hom =\n                                    (Functor.sourceSectionIso c i).hom.app A"
+        }
+      ]
+    }
+  ]
+}

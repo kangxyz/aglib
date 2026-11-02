@@ -118,3 +118,33 @@ triple associator theorem; only then is thinness applied. It records naturality,
 equality after the original final normalization inclusion, and its structural
 projection. This geometric coherence is not a derived exchange or
 exceptional-direct-image coherence theorem.
+
+`Supplied.lean` selects one dense compactification from an explicit
+`Nonempty (DenseCompactification f)` instance. It uses that supplied existence
+without adding a new existence theorem or coefficient category.
+`CartesianBaseChange.lean` proves the actual Cartesian open squares for raw
+base change and source transport, including the square of the original ambient
+refinement map. The open-square refinement result retains quasi-compactness of
+`f`, and all projection maps are the original scheme morphisms.
+
+## Additional source entry points
+
+- [ArrowEquality](ArrowEquality.lean)
+- [CompositionBaseChangeFaces](CompositionBaseChangeFaces.lean)
+- [CompositionBaseChangeGeometry](CompositionBaseChangeGeometry.lean)
+- [CompositionBaseChangeRefinement](CompositionBaseChangeRefinement.lean)
+- [CompositionBaseChangeSource](CompositionBaseChangeSource.lean)
+- [CompositionBaseChangeTower](CompositionBaseChangeTower.lean)
+- [CompositionRightUnitRefinements](CompositionRightUnitRefinements.lean)
+- [CompositionUnitRefinements](CompositionUnitRefinements.lean)
+- [CompositionUnitTotals](CompositionUnitTotals.lean)
+- [CompositionUnits](CompositionUnits.lean)
+- [TripleCompositionArrowTotal](TripleCompositionArrowTotal.lean)
+- [TripleCompositionComparisonSquares](TripleCompositionComparisonSquares.lean)
+- [TripleCompositionComparison](TripleCompositionComparison.lean)
+- [TripleCompositionFirst](TripleCompositionFirst.lean)
+- [TripleCompositionRefinement](TripleCompositionRefinement.lean)
+- [TripleCompositionRestriction](TripleCompositionRestriction.lean)
+- [TripleCompositionSquares](TripleCompositionSquares.lean)
+- [TripleCompositionTotal](TripleCompositionTotal.lean)
+- [TripleComposition](TripleComposition.lean)

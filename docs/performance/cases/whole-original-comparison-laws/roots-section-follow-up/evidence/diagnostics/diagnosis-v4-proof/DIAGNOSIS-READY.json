@@ -1,0 +1,25 @@
+{
+  "question": "Find actual kernel unfolding/proof component boundary after v4 repeats kernel54/85 despite exact P formation pass.",
+  "basis": {
+    "actual_failed_run": "remote-05824407503d4f9ab9400a0ea4be9b2f",
+    "actual_failed_SOURCE": "755f892ddd60ca1b1a8910026d88645ce854cb096d8b0161a5d4752d9c7bf599",
+    "native_sha256": "72f3cf29f5074edace4ad239c05f3571488c92e4c8db6d665f943decfc11ab3c",
+    "lower_sha256": "4ba68c21bc0b2da297849ca121d5c0e122e60a2c2d6507a94b0b0c22ba0bf356"
+  },
+  "probe": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/performance/roots-section-native/diagnosis-v4-proof/ProofProfile.lean",
+    "sha256": "a01a7a59f728fe397e298d04076dcd474661e1eb04c2d167035286684e323d70",
+    "change": "Only diagnostics=true scoped to the two actual failed proof declarations. Original data, statements and proof bodies unchanged."
+  },
+  "controls": "Actual native setup/name/isModule/imports/exact4options; default200k; profile8/4/M12800/RSS65536; native trace.profiler=true and100ms display threshold, no resource/proof-budget raise. No failedmodule import, client, replay or production output write.",
+  "command": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/performance/roots-section-native/diagnosis-v4-proof/COMMAND.json",
+  "roots": [
+    "Aglib.CategoryTheory.Sites.Representable.SectionComparisonValues",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.BaseChangeMap",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.TriangleCoherence",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.H1.SectionPullback",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.BoundaryNaturality"
+  ],
+  "status": "Prepared, not yet dispatched.",
+  "evidence_boundary": "Counters are unfolding counts, not per-constant timings or an exact conversion pair. This is actual-proof diagnosis, not original-P formation or production CPP."
+}

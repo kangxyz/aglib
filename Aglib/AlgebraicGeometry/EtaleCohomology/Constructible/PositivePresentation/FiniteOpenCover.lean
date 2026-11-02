@@ -44,8 +44,11 @@ local instance coefficientHasFiniteColimits :
     (BoundedPresentation.coefficient_hasColimits X n)
 
 local instance coefficientHasFiniteBiproducts :
-    HasFiniteBiproducts (BoundedPresentation.Coefficient X n) :=
-  HasFiniteBiproducts.of_hasFiniteCoproducts
+    HasFiniteBiproducts (BoundedPresentation.Coefficient X n) := by
+  let : HasFiniteCoproducts (BoundedPresentation.Coefficient X n) :=
+    @hasFiniteCoproducts_of_hasFiniteColimits (BoundedPresentation.Coefficient X n) _
+      (coefficientHasFiniteColimits X n)
+  exact HasFiniteBiproducts.of_hasFiniteCoproducts
 
 local instance coefficientHasBinaryBiproducts :
     HasBinaryBiproducts (BoundedPresentation.Coefficient X n) :=
@@ -58,15 +61,8 @@ local instance boundedInclusionPreservesFiniteColimits :
     (BoundedPresentation.inclusion X n) (BoundedPresentation.inclusion_preservesColimits X n)
 
 /-- Original free scalar-quotient maps, inside the native full bounded coefficient category. -/
-def coefficientFreeFunctor : X.Etale ⥤ BoundedPresentation.Coefficient X n where
-  obj U := BoundedPresentation.free X n U
-  map f := ObjectProperty.homMk (FiniteCover.freeMap X.smallEtaleTopology n f)
-  map_id U := by
-    apply ObjectProperty.hom_ext
-    exact FiniteCover.freeMap_id X.smallEtaleTopology n U
-  map_comp f g := by
-    apply ObjectProperty.hom_ext
-    exact FiniteCover.freeMap_comp X.smallEtaleTopology n f g
+def coefficientFreeFunctor : X.Etale ⥤ BoundedPresentation.Coefficient X n :=
+  TorsionZMod.Presentation.coefficientFreeFunctor X.smallEtaleTopology n
 
 /-- The full bounded inclusion retains every original generator and its original map. -/
 theorem coefficientFreeFunctor_inclusion :
@@ -78,7 +74,7 @@ theorem sections_restriction {U V : X.Etale} (f : U ⟶ V) (F : BoundedPresentat
     (b : BoundedPresentation.free X n V ⟶ F) :
     BoundedPresentation.sectionsEquiv X n U F ((coefficientFreeFunctor X n).map f ≫ b) =
       F.obj.obj.map f.op (BoundedPresentation.sectionsEquiv X n V F b) :=
-  FiniteCover.sections_naturality_left X.smallEtaleTopology n f F.obj b.hom
+  TorsionZMod.Presentation.sections_restriction X.smallEtaleTopology n f F b
 
 variable (sq : Square X.Etale) [Mono sq.f₂₄] [Mono sq.f₃₄]
   (hp : sq.IsPullback) (hcover : Sieve.ofTwoArrows sq.f₂₄ sq.f₃₄ ∈ X.smallEtaleTopology sq.X₄)
@@ -89,46 +85,8 @@ def coefficientSquare : Square (BoundedPresentation.Coefficient X n) :=
 
 include hp hcover in
 /-- Original binary-cover section amalgamation proves the actual bounded-generator pushout. -/
-theorem coefficientSquare_isPushout : (coefficientSquare X n sq).IsPushout := by
-  let J := X.smallEtaleTopology
-  let F := coefficientFreeFunctor X n
-  let E₀ (s : PushoutCocone (F.map sq.f₁₂) (F.map sq.f₁₃)) :=
-    BoundedPresentation.sectionsEquiv X n sq.X₂ s.pt s.inl
-  let E₁ (s : PushoutCocone (F.map sq.f₁₂) (F.map sq.f₁₃)) :=
-    BoundedPresentation.sectionsEquiv X n sq.X₃ s.pt s.inr
-  have he (s : PushoutCocone (F.map sq.f₁₂) (F.map sq.f₁₃)) :
-      s.pt.obj.obj.map sq.f₁₂.op (E₀ s) = s.pt.obj.obj.map sq.f₁₃.op (E₁ s) :=
-    (sections_restriction X n sq.f₁₂ s.pt s.inl).symm.trans
-      ((congrArg (BoundedPresentation.sectionsEquiv X n sq.X₁ s.pt) s.condition).trans
-        (sections_restriction X n sq.f₁₃ s.pt s.inr))
-  let t (s : PushoutCocone (F.map sq.f₁₂) (F.map sq.f₁₃)) :=
-    FiniteCover.glue.{u + 1} J sq hp hcover s.pt.obj (E₀ s) (E₁ s) (he s)
-  let d (s : PushoutCocone (F.map sq.f₁₂) (F.map sq.f₁₃)) : F.obj sq.X₄ ⟶ s.pt :=
-    (BoundedPresentation.sectionsEquiv X n sq.X₄ s.pt).symm (t s)
-  have hd (s : PushoutCocone (F.map sq.f₁₂) (F.map sq.f₁₃)) :
-      BoundedPresentation.sectionsEquiv X n sq.X₄ s.pt (d s) = t s :=
-    (BoundedPresentation.sectionsEquiv X n sq.X₄ s.pt).apply_symm_apply (t s)
-  have h₀ (s : PushoutCocone (F.map sq.f₁₂) (F.map sq.f₁₃)) : F.map sq.f₂₄ ≫ d s = s.inl := by
-    apply (BoundedPresentation.sectionsEquiv X n sq.X₂ s.pt).injective
-    rw [sections_restriction, hd]
-    exact FiniteCover.glue_left.{u + 1} J sq hp hcover s.pt.obj (E₀ s) (E₁ s) (he s)
-  have h₁ (s : PushoutCocone (F.map sq.f₁₂) (F.map sq.f₁₃)) : F.map sq.f₃₄ ≫ d s = s.inr := by
-    apply (BoundedPresentation.sectionsEquiv X n sq.X₃ s.pt).injective
-    rw [sections_restriction, hd]
-    exact FiniteCover.glue_right.{u + 1} J sq hp hcover s.pt.obj (E₀ s) (E₁ s) (he s)
-  apply Square.IsPushout.mk
-  refine PushoutCocone.IsColimit.mk _ d h₀ h₁ ?_
-  intro s m hm₀ hm₁
-  apply (BoundedPresentation.sectionsEquiv X n sq.X₄ s.pt).injective
-  apply FiniteCover.sections_ext.{u + 1} J sq hp hcover s.pt.obj
-  · exact (sections_restriction X n sq.f₂₄ s.pt m).symm.trans
-      ((congrArg (BoundedPresentation.sectionsEquiv X n sq.X₂ s.pt) hm₀).trans
-        ((congrArg (BoundedPresentation.sectionsEquiv X n sq.X₂ s.pt) (h₀ s)).symm.trans
-          (sections_restriction X n sq.f₂₄ s.pt (d s))))
-  · exact (sections_restriction X n sq.f₃₄ s.pt m).symm.trans
-      ((congrArg (BoundedPresentation.sectionsEquiv X n sq.X₃ s.pt) hm₁).trans
-        ((congrArg (BoundedPresentation.sectionsEquiv X n sq.X₃ s.pt) (h₁ s)).symm.trans
-          (sections_restriction X n sq.f₃₄ s.pt (d s))))
+theorem coefficientSquare_isPushout : (coefficientSquare X n sq).IsPushout :=
+  TorsionZMod.Presentation.coefficientSquare_isPushout X.smallEtaleTopology n sq hp hcover
 
 /-- The original bounded difference-map cokernel cofork. -/
 def coefficientCokernelCofork :

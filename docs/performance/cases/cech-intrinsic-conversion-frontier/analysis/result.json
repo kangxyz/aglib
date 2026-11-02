@@ -1,0 +1,433 @@
+{
+  "question": "Dominant declarations/phases in the passed Scheme Comparison a9ff, and whether a bounded existing-proof repair is justified.",
+  "source_sha256": "a9ff484188f60dc58dfe142249bc28ed0cf9fbde1280020dba63d2c5b9a76e8a",
+  "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/source.lean",
+  "production_module": "Aglib.AlgebraicGeometry.Cohomology.Cech.Comparison",
+  "native_run": "remote-6536a79189ea41d098aedfdb4272f3a9",
+  "setup_kind": "reconstructed via pinnedLake --no-build; originalfa261bytes unavailable",
+  "regenerated_setup_sha256": "1f0adc79ba795e65b54db2f53e679690f57b51a999495f3ededacfb42099a159",
+  "original_setup_byte_identity": false,
+  "profile_invocations": 1,
+  "preparation_compiler_starts": 0,
+  "exit_code": 0,
+  "wall_seconds": 641.305450886488,
+  "native_resource_observation": {
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 2,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768,
+      "threads": 4
+    },
+    "peak_rss_bytes": 2355453952,
+    "sampled_process_average_cpu_cores": 1.8051825585201795,
+    "cgroup_memory_events_delta": {
+      "high": 0,
+      "low": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0
+    }
+  },
+  "trace_bytes": 66793397,
+  "recorded_timed_frames": 16792,
+  "recorded_kernel_frames": 38,
+  "top_kernel": [
+    {
+      "trace_line": 91094,
+      "phase": "Kernel",
+      "seconds": 16.698327,
+      "message": "\u2705\ufe0f typechecking declarations [AlgebraicGeometry.Scheme.Cohomology.moduleHPrimeTopAddEquiv_scalar]",
+      "owner": "moduleHPrimeTopAddEquiv_scalar",
+      "depth": 2,
+      "source_line": 249
+    },
+    {
+      "trace_line": 54622,
+      "phase": "Kernel",
+      "seconds": 16.484972,
+      "message": "\u2705\ufe0f typechecking declarations [AlgebraicGeometry.Scheme.Cohomology.sheafHPrimeTopAddEquiv]",
+      "owner": "sheafHPrimeTopAddEquiv",
+      "depth": 2,
+      "source_line": 96
+    },
+    {
+      "trace_line": 151177,
+      "phase": "Kernel",
+      "seconds": 15.258794,
+      "message": "\u2705\ufe0f typechecking declarations [AlgebraicGeometry.Scheme.Cohomology.module_additiveResolutionHomologyEquiv_scalar]",
+      "owner": "module_additiveResolutionHomologyEquiv_scalar",
+      "depth": 2,
+      "source_line": 428
+    },
+    {
+      "trace_line": 144888,
+      "phase": "Kernel",
+      "seconds": 13.339767,
+      "message": "\u2705\ufe0f typechecking declarations [AlgebraicGeometry.Scheme.Cohomology.resolutionSectionShortHomologyEquiv]",
+      "owner": "resolutionSectionShortHomologyEquiv",
+      "depth": 2,
+      "source_line": 410
+    },
+    {
+      "trace_line": 118033,
+      "phase": "Kernel",
+      "seconds": 13.130905,
+      "message": "\u2705\ufe0f typechecking declarations [AlgebraicGeometry.Scheme.Cohomology.additiveResolutionHomologyEquiv]",
+      "owner": "additiveResolutionHomologyEquiv",
+      "depth": 2,
+      "source_line": 298
+    },
+    {
+      "trace_line": 216969,
+      "phase": "Kernel",
+      "seconds": 11.660609,
+      "message": "\u2705\ufe0f typechecking declarations [AlgebraicGeometry.Scheme.Cohomology.moduleCechCohomologyAddEquiv_scalar]",
+      "owner": "moduleCechCohomologyAddEquiv_scalar",
+      "depth": 2,
+      "source_line": 740
+    },
+    {
+      "trace_line": 245789,
+      "phase": "Kernel",
+      "seconds": 10.734222,
+      "message": "\u2705\ufe0f typechecking declarations [AlgebraicGeometry.Scheme.Cohomology.moduleCechCohomologyAddEquivCanonical]",
+      "owner": "moduleCechCohomologyAddEquivCanonical",
+      "depth": 2,
+      "source_line": 786
+    },
+    {
+      "trace_line": 184122,
+      "phase": "Kernel",
+      "seconds": 10.223996,
+      "message": "\u2705\ufe0f typechecking declarations [AlgebraicGeometry.Scheme.Cohomology.moduleCechCohomologyAddEquiv]",
+      "owner": "moduleCechCohomologyAddEquiv",
+      "depth": 2,
+      "source_line": 709
+    },
+    {
+      "trace_line": 277894,
+      "phase": "Kernel",
+      "seconds": 10.108101,
+      "message": "\u2705\ufe0f typechecking declarations [AlgebraicGeometry.Scheme.Cohomology.moduleCechCohomologyAddEquiv_eq_canonical]",
+      "owner": "moduleCechCohomologyAddEquiv_eq_canonical",
+      "depth": 2,
+      "source_line": 793
+    },
+    {
+      "trace_line": 216839,
+      "phase": "Kernel",
+      "seconds": 9.970382,
+      "message": "\u2705\ufe0f typechecking declarations [AlgebraicGeometry.Scheme.Cohomology.moduleCechCohomologyAddEquiv_independent]",
+      "owner": "moduleCechCohomologyAddEquiv_independent",
+      "depth": 2,
+      "source_line": 729
+    },
+    {
+      "trace_line": 65658,
+      "phase": "Kernel",
+      "seconds": 5.548971,
+      "message": "\u2705\ufe0f typechecking declarations [AlgebraicGeometry.Scheme.Cohomology.sheafHPrimeTopAddEquiv_equiv\u2080]",
+      "owner": "sheafHPrimeTopAddEquiv_equiv\u2080",
+      "depth": 2,
+      "source_line": 111
+    },
+    {
+      "trace_line": 55614,
+      "phase": "Kernel",
+      "seconds": 5.171336,
+      "message": "\u2705\ufe0f typechecking declarations [AlgebraicGeometry.Scheme.Cohomology.sheafHPrimeTopAddEquiv_naturality]",
+      "owner": "sheafHPrimeTopAddEquiv_naturality",
+      "depth": 2,
+      "source_line": 102
+    }
+  ],
+  "top_elaboration_value": [
+    {
+      "trace_line": 67143,
+      "phase": "Elab.definition.value",
+      "seconds": 36.434128,
+      "message": "\u2705\ufe0f AlgebraicGeometry.Scheme.Cohomology.subsingleton_sheafHPrime_of_moduleResolution_sections_exact",
+      "owner": "subsingleton_sheafHPrime_of_moduleResolution_sections_exact",
+      "depth": 2,
+      "source_line": 188
+    },
+    {
+      "trace_line": 336071,
+      "phase": "Elab.definition.value",
+      "seconds": 23.258468,
+      "message": "\u2705\ufe0f AlgebraicGeometry.Scheme.Cohomology.geometricCechRowAugmentation_naturality",
+      "owner": "geometricCechRowAugmentation_naturality",
+      "depth": 2,
+      "source_line": 928
+    },
+    {
+      "trace_line": 65857,
+      "phase": "Elab.definition.value",
+      "seconds": 13.848922,
+      "message": "\u2705\ufe0f AlgebraicGeometry.Scheme.Cohomology.moduleResolution_openKernelSections_surjective",
+      "owner": "moduleResolution_openKernelSections_surjective",
+      "depth": 2,
+      "source_line": 157
+    },
+    {
+      "trace_line": 298515,
+      "phase": "Elab.definition.value",
+      "seconds": 11.638394,
+      "message": "\u2705\ufe0f AlgebraicGeometry.Scheme.Cohomology.additiveCechPushforwardIso_augmentation",
+      "owner": "additiveCechPushforwardIso_augmentation",
+      "depth": 2,
+      "source_line": 855
+    },
+    {
+      "trace_line": 374339,
+      "phase": "Elab.definition.value",
+      "seconds": 11.330646,
+      "message": "\u2705\ufe0f AlgebraicGeometry.Scheme.Cohomology.integerSheafHomEquiv_geometric",
+      "owner": "integerSheafHomEquiv_geometric",
+      "depth": 2,
+      "source_line": 963
+    },
+    {
+      "trace_line": 310702,
+      "phase": "Elab.definition.value",
+      "seconds": 8.62767,
+      "message": "\u2705\ufe0f AlgebraicGeometry.Scheme.Cohomology.additiveCechGeometricMap_naturality",
+      "owner": "additiveCechGeometricMap_naturality",
+      "depth": 2,
+      "source_line": 876
+    },
+    {
+      "trace_line": 329508,
+      "phase": "Elab.definition.value",
+      "seconds": 6.862945,
+      "message": "\u2705\ufe0f AlgebraicGeometry.Scheme.Cohomology.geometricCechResolutionMap",
+      "owner": "geometricCechResolutionMap",
+      "depth": 2,
+      "source_line": 921
+    },
+    {
+      "trace_line": 372977,
+      "phase": "Elab.definition.value",
+      "seconds": 6.360102,
+      "message": "\u2705\ufe0f AlgebraicGeometry.Scheme.Cohomology.geometricCechColumnAugmentation_naturality",
+      "owner": "geometricCechColumnAugmentation_naturality",
+      "depth": 2,
+      "source_line": 949
+    }
+  ],
+  "top_elaboration_header": [
+    {
+      "trace_line": 216907,
+      "phase": "Elab.definition.header",
+      "seconds": 9.408431,
+      "message": "\u2705\ufe0f AlgebraicGeometry.Scheme.Cohomology.moduleCechCohomologyAddEquiv_scalar",
+      "owner": "moduleCechCohomologyAddEquiv_scalar",
+      "depth": 2,
+      "source_line": 740
+    },
+    {
+      "trace_line": 217036,
+      "phase": "Elab.definition.header",
+      "seconds": 7.542276,
+      "message": "\u2705\ufe0f AlgebraicGeometry.Scheme.Cohomology.moduleAffineCechCohomologyAddEquiv",
+      "owner": "moduleAffineCechCohomologyAddEquiv",
+      "depth": 2,
+      "source_line": 755
+    },
+    {
+      "trace_line": 155905,
+      "phase": "Elab.definition.header",
+      "seconds": 7.463417,
+      "message": "\u2705\ufe0f AlgebraicGeometry.Scheme.Cohomology.additiveCechToTotal_quasiIso",
+      "owner": "additiveCechToTotal_quasiIso",
+      "depth": 2,
+      "source_line": 644
+    },
+    {
+      "trace_line": 152654,
+      "phase": "Elab.definition.header",
+      "seconds": 7.445726,
+      "message": "\u2705\ufe0f AlgebraicGeometry.Scheme.Cohomology.additiveCechResolution_column_exact_succ",
+      "owner": "additiveCechResolution_column_exact_succ",
+      "depth": 2,
+      "source_line": 577
+    },
+    {
+      "trace_line": 152715,
+      "phase": "Elab.definition.header",
+      "seconds": 7.397779,
+      "message": "\u2705\ufe0f AlgebraicGeometry.Scheme.Cohomology.additiveCechColumnAugmentation_quasiIso",
+      "owner": "additiveCechColumnAugmentation_quasiIso",
+      "depth": 2,
+      "source_line": 586
+    },
+    {
+      "trace_line": 150878,
+      "phase": "Elab.definition.header",
+      "seconds": 6.889716,
+      "message": "\u2705\ufe0f AlgebraicGeometry.Scheme.Cohomology.module_additiveResolutionHomologyEquiv_scalar",
+      "owner": "module_additiveResolutionHomologyEquiv_scalar",
+      "depth": 2,
+      "source_line": 428
+    },
+    {
+      "trace_line": 67109,
+      "phase": "Elab.definition.header",
+      "seconds": 6.780536,
+      "message": "\u2705\ufe0f AlgebraicGeometry.Scheme.Cohomology.subsingleton_sheafHPrime_of_moduleResolution_sections_exact",
+      "owner": "subsingleton_sheafHPrime_of_moduleResolution_sections_exact",
+      "depth": 2,
+      "source_line": 188
+    },
+    {
+      "trace_line": 91801,
+      "phase": "Elab.definition.header",
+      "seconds": 6.625491,
+      "message": "\u2705\ufe0f AlgebraicGeometry.Scheme.Cohomology.additiveResolution_sections_exact_of_isAffineOpen",
+      "owner": "additiveResolution_sections_exact_of_isAffineOpen",
+      "depth": 2,
+      "source_line": 289
+    }
+  ],
+  "top_instance_search": [
+    {
+      "trace_line": 67127,
+      "phase": "Meta.synthInstance",
+      "seconds": 5.044878,
+      "message": "\u2705\ufe0f (sectionsFunctor X U).PreservesZeroMorphisms",
+      "owner": "subsingleton_sheafHPrime_of_moduleResolution_sections_exact",
+      "depth": 22,
+      "source_line": 188
+    },
+    {
+      "trace_line": 65850,
+      "phase": "Meta.synthInstance",
+      "seconds": 5.028471,
+      "message": "\u2705\ufe0f (sectionsFunctor X U).PreservesZeroMorphisms",
+      "owner": "moduleResolution_openKernelSections_surjective",
+      "depth": 18,
+      "source_line": 157
+    },
+    {
+      "trace_line": 66384,
+      "phase": "Meta.synthInstance",
+      "seconds": 5.011014,
+      "message": "\u2705\ufe0f G.PreservesZeroMorphisms",
+      "owner": "moduleResolution_openKernelSections_surjective",
+      "depth": 46,
+      "source_line": 157
+    },
+    {
+      "trace_line": 66220,
+      "phase": "Meta.synthInstance",
+      "seconds": 3.835991,
+      "message": "\u2705\ufe0f Mono",
+      "owner": "moduleResolution_openKernelSections_surjective",
+      "depth": 42,
+      "source_line": 157
+    },
+    {
+      "trace_line": 42,
+      "phase": "Meta.synthInstance",
+      "seconds": 2.907917,
+      "message": "\u2705\ufe0f HasWeakSheafify (Opens.grothendieckTopology \u21a5X) AddCommGrpCat",
+      "owner": "additiveOpenTopIsoInteger",
+      "depth": 20,
+      "source_line": 90
+    },
+    {
+      "trace_line": 109,
+      "phase": "Meta.synthInstance",
+      "seconds": 2.880343,
+      "message": "\u2705\ufe0f HasSheafify (Opens.grothendieckTopology \u21a5X) AddCommGrpCat",
+      "owner": "sheafHPrimeTopAddEquiv",
+      "depth": 16,
+      "source_line": 96
+    },
+    {
+      "trace_line": 81,
+      "phase": "Meta.synthInstance",
+      "seconds": 2.877661,
+      "message": "\u2705\ufe0f HasSheafify (Opens.grothendieckTopology \u21a5X) AddCommGrpCat",
+      "owner": "sheafHPrimeTopAddEquiv",
+      "depth": 14,
+      "source_line": 96
+    },
+    {
+      "trace_line": 68518,
+      "phase": "Meta.synthInstance",
+      "seconds": 2.846997,
+      "message": "\u2705\ufe0f Abelian",
+      "owner": "subsingleton_sheafHPrime_of_moduleResolution_sections_exact",
+      "depth": 36,
+      "source_line": 188
+    }
+  ],
+  "direct_conversion_evidence": [
+    {
+      "trace_lines": [
+        142,
+        174
+      ],
+      "finding": "The AddEquiv alias compares original Scheme HPrime/Ext expressions over Opens of the Scheme carrier against Opens of X.toTopCat."
+    },
+    {
+      "trace_lines": [
+        179,
+        1130
+      ],
+      "finding": "That elaboration conversion descends through the Ext additive structure, Ext.homEquiv, Localization.SmallHom.equiv and equivShrink. These are nested inclusive frames, not per-constant timing."
+    },
+    {
+      "trace_lines": [
+        71175,
+        71220
+      ],
+      "finding": "The module-resolution proof synthesizes F.PreservesZeroMorphisms while comparing the sheaf full-subcategory zero dictionary with the preadditive zero dictionary; one observed nested comparison is about2.33s."
+    }
+  ],
+  "repair_judgment": [
+    {
+      "priority": 1,
+      "status": "A bounded existing-proof attempt is justified; not implemented or measured in this diagnostic phase.",
+      "scope": [
+        "moduleResolution_openKernelSections_surjective",
+        "subsingleton_sheafHPrime_of_moduleResolution_sections_exact"
+      ],
+      "proposal": "Provide the already proved zero-preservation dictionaries at the literal Scheme/module and additive-sheaf category/zero heads, once in the smallest local scope that also covers the theorem headers. Reuse the original sectionsFunctor and SheafOfModules.additiveEvaluation_preservesZeroMorphisms API; do not add hypotheses, new functors or global-priority changes.",
+      "support": "Three observed sectionsFunctor/G preservation searches are about5.01\u20135.04s, with explicit source/target zero-head conversion in the same existing resolution proof. The native evaluation dictionary method is already documented and the precise producer exists."
+    },
+    {
+      "priority": 2,
+      "status": "The cohomology-adapter boundary warrants a targeted one-wrapper plus actual scalar-consumer pilot; exact kernel mechanism and cost relocation are unresolved.",
+      "scope": [
+        "sheafHPrimeTopAddEquiv",
+        "moduleHPrimeTopAddEquiv_scalar"
+      ],
+      "proposal": "Inspect and align the one native site/Ext/additive-structure presentation at this boundary; consider preserving the whole existing generic comparison head rather than reconstructing a second fully annotated AddEquiv type. Keep literal maps, public types up to their required conversion, HPrime/H normalization and the actual scalar consumer. Do not blindly drop result types, replace all defs/abbrevs, or add a universal transport package.",
+      "support": "Kernel intervals16.485/16.698s despite very short wrappers, plus the actual elaboration conversion through Ext add-structure/small-Hom machinery. The profile does not prove which constant causes kernel time or that changing presentation would reduce rather than move cost."
+    }
+  ],
+  "interpretation_limits": [
+    "The641.305s wall time and66.8MB trace describe an instrumented diagnostic, not a matched comparison with the earlier155s ordinary pass or a speedup/regression ratio.",
+    "Nested and async timings overlap. No frame sums or wall-time percentages are used.",
+    "Large Elab.command/Elab.async intervals may include waiting for async kernel work; the named Kernel frames are reported separately.",
+    "No sufficiently labelled import/serialization phase breakdown was observed. Absence of such a frame does not establish zero cost.",
+    "No production source changed, no second profile ran, and the settled all-nine native compiler/source-review evidence is unaffected."
+  ],
+  "evidence": {
+    "delivery": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/delivery.json",
+    "runtime": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/profile.json",
+    "preparation": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/preparation.json",
+    "stdout": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/profile.stdout.log",
+    "stderr": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/profile.stderr.log",
+    "setup": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/Comparison.setup.json",
+    "native_receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-6536a79189ea41d098aedfdb4272f3a9/receipt.json",
+    "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-6536a79189ea41d098aedfdb4272f3a9/compiler-events.jsonl",
+    "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-cech-profile-6536a791.json",
+    "source_archive_sha256": "2eed2f5f696c7169121c972d004889f9bbf5b5c270beedd461b8d94cae119046"
+  },
+  "reproduce_analysis": "python3 /Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/cech-comparison-intrinsic-core-staging/profile/analyze.py",
+  "remaining_gap": "A source-preserving performance repair and its ordinary changed-input validation are a next assignment, not an achieved speedup or a missing mathematical proof. No further profiling is authorized by this packet."
+}

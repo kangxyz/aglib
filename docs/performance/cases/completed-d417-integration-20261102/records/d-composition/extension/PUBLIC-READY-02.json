@@ -1,0 +1,30 @@
+{
+  "phase": "PUBLIC mechanical trailing-whitespace repair02",
+  "question": "Remove exactly the reported trailing whitespace on PUBLIC CompositionRawSquare line87",
+  "source_owner": "/root/d_composition_integration",
+  "public_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+  "public_HEAD_at_write": "c4880830a7ebfea496a348d361cd50b109ea536d",
+  "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRawSquare.lean",
+  "line": 87,
+  "previous_sha256": "0aa91d2128ff3f93829c3484b2244bc40760744c96424b85201c9d640750c723",
+  "current_sha256": "efd9dfcff978d8103072f1220efa934e49abae1a365a2092ee92090ae3dc57a2",
+  "source_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRawSquare.lean": "efd9dfcff978d8103072f1220efa934e49abae1a365a2092ee92090ae3dc57a2"
+  },
+  "roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionRawSquare"
+  ],
+  "diagnostic_run": "remote-a7202e18f330402e837be4bcaaea00ff",
+  "diagnostic_public_source_prefix": "9ed4d75a",
+  "diagnostic_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/pub1714-source-predicates-A/remote-runs/remote-a7202e18f330402e837be4bcaaea00ff/text-style-current695.log",
+  "change": "Delete exactly one trailing ASCII space before the newline on line87. All non-whitespace bytes and mathematical tokens, linecount, proof/maps/premises/options unchanged.",
+  "verification": {
+    "exact_bytes_removed": 1,
+    "same_whitespace_token_stream": true,
+    "MAIN_unchanged_at_sha256": "0aa91d2128ff3f93829c3484b2244bc40760744c96424b85201c9d640750c723",
+    "accepted_PUBLIC_Rectangle_unchanged_at_sha256": "04a3aa59c236ece5512fdf8ebde15d232f4afc8467bfd66507ec60ba732727ad"
+  },
+  "boundary": "Current healthy C consumer continuation remains on its actual captured old9ed4 input. This new public byte change is subsequent source; no old CPP/style result relabeled. MAIN295/122 historical evidence remains frozen. Root/broker own only the needed public continuation and failed style check.",
+  "write_scope": "Only this exact PUBLIC line and task return state. No blanket fix, shared roots/README/Git, preciseMate169/TripleMatee75 or Rectangle edits.",
+  "review": "Mechanical whitespace-only edit, no new mathematical review stage or helper check invocation."
+}

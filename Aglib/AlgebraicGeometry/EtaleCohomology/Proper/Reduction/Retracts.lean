@@ -43,6 +43,10 @@ theorem derivedBaseChangeMap_isIso_of_retract
   MorphismProperty.of_retract (P := MorphismProperty.isomorphisms _)
     ((derivedBaseChangeMap f f' g g' h).retractArrowApp r) inferInstance
 
+omit [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
+  [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} S)]
+  [HasDerivedCategory.{dX'} (AbelianSheaf.{u, u + 1} X')]
+  [HasDerivedCategory.{dS'} (AbelianSheaf.{u, u + 1} S')] in
 /-- The original exchange on every higher direct image preserves actual
 coefficient retracts, with no change to either original sheaf morphism. -/
 theorem higherBaseChangeMap_isIso_of_retract

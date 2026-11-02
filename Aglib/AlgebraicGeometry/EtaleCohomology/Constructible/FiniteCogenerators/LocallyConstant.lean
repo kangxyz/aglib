@@ -9,6 +9,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteSetRepresentation
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.CoefficientRepresentation
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteTrivialization
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisInstances
+public import Aglib.CategoryTheory.Adjunction.MonicProducts
 public import Mathlib.AlgebraicGeometry.Morphisms.Flat
 public import Mathlib.CategoryTheory.Limits.FunctorCategory.EpiMono
 
@@ -41,9 +42,7 @@ private theorem mono_unit_of_mono_rightTarget
     {C D : Type*} [Category* C] [Category* D] {L : C ⥤ D} {R : D ⥤ C}
     (adj : L ⊣ R) {F : C} {M : D} (α : F ⟶ R.obj M) [Mono α] :
     Mono (adj.unit.app F) := by
-  have h : adj.unit.app F ≫ R.map ((adj.homEquiv F M).symm α) = α := by
-    exact (adj.homEquiv F M).apply_symm_apply α
-  exact mono_of_mono_fac h
+  exact Adjunction.mono_unit_app_of_mono_rightTarget adj α
 
 /-- The original represented-section map, regarded as a map of actual sheaves.
 Its component sends an original scheme section to its scheme-theoretic pullback. -/

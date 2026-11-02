@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteStratification.AffineOpen
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteStratification.ClosedComplement
 public import Aglib.AlgebraicGeometry.IdealSheaf.Closed.RadicalSubscheme
+public import Aglib.AlgebraicGeometry.Properties.IrreducibleComponents.IntegralOpen
 
 /-! # Actual finite strata for affine quasi-finite morphisms over a Noetherian base
 
@@ -42,18 +43,9 @@ private theorem vanishingIdeal_radical {X : Scheme.{u}} (Z : Closeds X) :
 
 private theorem exists_integral_affine_open (X : Scheme.{u})
     [IsNoetherian X] [IsReduced X] [Nonempty X] :
-    ∃ V : X.Opens, IsAffineOpen V ∧ Nonempty V.toScheme ∧ IsIntegral V.toScheme := by
-  let x : X := Classical.choice inferInstance
-  obtain ⟨O, hO, ⟨y, hy⟩, hOsub⟩ :=
-    NoetherianSpace.exists_isOpen_nonempty_subset_irreducibleComponent
-      (irreducibleComponent x) (irreducibleComponent_mem_irreducibleComponents x)
-  obtain ⟨V, hV, hyV, hVO⟩ :=
-    exists_isAffineOpen_mem_and_subset (U := ⟨O, hO⟩) hy
-  have hVirr : IsIrreducible (V : Set X) :=
-    ⟨⟨y, hyV⟩, (irreducibleComponent_mem_irreducibleComponents x).1.2.open_subset
-      V.isOpen (hVO.trans hOsub)⟩
-  have : IrreducibleSpace V.toScheme := Subtype.irreducibleSpace hVirr
-  exact ⟨V, hV, ⟨⟨y, hyV⟩⟩, isIntegral_of_irreducibleSpace_of_isReduced _⟩
+    ∃ V : X.Opens, IsAffineOpen V ∧ Nonempty V.toScheme ∧ IsIntegral V.toScheme :=
+  Scheme.exists_integral_affine_open_of_noetherian_reduced X
+
 
 /-- An affine quasi-finite finite-type morphism over a Noetherian base
 admits an actual finite constructible locally closed partition on which

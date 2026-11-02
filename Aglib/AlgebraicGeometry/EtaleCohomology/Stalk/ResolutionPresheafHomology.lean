@@ -50,36 +50,11 @@ theorem resolutionCohomologyToHigherDirectImage_resolution
         (homologyMap ((NatTrans.mapHomologicalComplex
           (directImagePresheafSheafificationIso f).hom (.up ℤ)).app I.cochainComplex)
             (q : ℤ)).hom := by
-  let P := directImagePresheaf f
-  let L := presheafToSheaf (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1}
-  let U := sheafToPresheaf (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1}
-  let d := Sheaf.ModuleCoefficients.rightDerivedPostcompIso P L q
-  let K := (P.mapHomologicalComplex (.up ℤ)).obj I.cochainComplex
-  let e := (K.sc (q : ℤ)).mapHomologyIso L
-  have hp := Sheaf.ModuleCoefficients.rightDerivedPostcompIso_hom_resolution_cochain
-    P L I q
-  have hi : d.inv.app F ≫ (I.isoRightDerivedObjCochain (P ⋙ L) q).hom =
-      L.map (I.isoRightDerivedObjCochain P q).hom ≫ e.inv := by
-    apply (cancel_mono e.hom).mp
-    simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
-    rw [← hp, Iso.inv_hom_id_app_assoc]
-  have hn := InjectiveResolution.isoRightDerivedObjCochain_hom_natTrans
-    (directImagePresheafSheafificationIso f).hom I q
-  have hu := (sheafificationAdjunction (Scheme.smallEtaleTopology S)
-    AddCommGrpCat.{u + 1}).unit.naturality
-      (I.isoRightDerivedObjCochain P q).hom
-  change (I.isoRightDerivedObjCochain P q).hom ≫
-      toSheafify (Scheme.smallEtaleTopology S) (K.homology (q : ℤ)) =
-    toSheafify (Scheme.smallEtaleTopology S) ((P.rightDerived q).obj F) ≫
-      U.map (L.map (I.isoRightDerivedObjCochain P q).hom) at hu
-  change toSheafify (Scheme.smallEtaleTopology S) ((P.rightDerived q).obj F) ≫
-      U.map (d.inv.app F ≫
-        (NatTrans.rightDerived (directImagePresheafSheafificationIso f).hom q).app F) ≫
-      U.map (I.isoRightDerivedObjCochain (directImage f) q).hom = _
-  rw [U.map_comp, Category.assoc, ← U.map_comp, hn, U.map_comp]
-  rw [← U.map_comp_assoc, hi, U.map_comp]
-  simp only [Category.assoc]
-  rw [← reassoc_of% hu]
-  rfl
+  exact Sheaf.ModuleCoefficients.rightDerivedPostcompIso_transpose_resolution_cochain
+    (directImagePresheaf f) (directImage f)
+    (presheafToSheaf (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1})
+    (sheafToPresheaf (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1})
+    (sheafificationAdjunction (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1})
+    (directImagePresheafSheafificationIso f) I q
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

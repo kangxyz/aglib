@@ -1,0 +1,14 @@
+{
+  "version": "v7",
+  "status": "Applied; READY for principal native compilation, HOLD further writes",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "before_sha256": "1ce133bfe3604320c20dc0693bdb7e2b4b47c7d85d4b37e8950d71eae1c53e58",
+  "after_sha256": "6fde11f53cd6d52b388ff5a0c8a217ec9705ced15688ccff2198b201e76cf349",
+  "delta_sha256": "53d65f3531e3a347c77033727983eea8f499b8f6c79d399e6f7ed98b0e218790",
+  "compiler_run": false,
+  "only_change": "Remove private modifier from regular def ChartComposition; public ChartRelationOn references this equation definition. Private cancellation proof remains unchanged.",
+  "previous_run": "remote-f2e4a9346d5b44cf88032c409f8ecff8",
+  "previous_log_sha256": "83dbcd163b45b94b7ea3a3d6bb8a4bdf11ca371b8d70d05742c08a7857c95180",
+  "previous_log_has_timeout": false,
+  "previous_run_limit": "Invalid private definition access and consequent invalid-head cascades; not a clean successful performance result."
+}

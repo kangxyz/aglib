@@ -57,7 +57,8 @@ theorem moduleBaseChangeMap_source_transport {V P U Y X : Scheme.{u}}
         ((moduleInverseImageAdjunction e Λ).unit.app ((moduleInverseImage q Λ).obj M)) := by
   subst g
   subst i
-  simpa only [moduleSourceInverseImageIso, eqToIso_refl, Iso.trans_hom,
+  simpa only [moduleSourceInverseImageIso, SourceChange.sourceComparison_refl,
+    eqToIso_refl, Iso.trans_hom,
     NatTrans.comp_app, Iso.refl_hom, NatTrans.id_app, Category.id_comp] using
     moduleBaseChangeMap_source_comp Λ p q j f h e he M
 

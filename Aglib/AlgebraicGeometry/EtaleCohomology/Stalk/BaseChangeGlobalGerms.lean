@@ -13,8 +13,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GlobalSectionsPullba
 The original stalk-unit comparison followed by the original higher exchange
 preserves the original germ of every global Ext class. This is the genuine
 all-degree map equality for these germs, not an assertion that every pointed
-neighborhood class extends globally. The source and target Ext universes and
-all four derived-category models remain independent.
+neighborhood class extends globally. The source and target Ext universes remain independent.
 -/
 
 @[expose] public noncomputable section
@@ -41,6 +40,10 @@ variable {X S X' S' : Scheme.{u}}
   (f : X ⟶ S) (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
   (h : f' ≫ g = g' ≫ f)
 
+omit [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
+  [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} S)]
+  [HasDerivedCategory.{dX'} (AbelianSheaf.{u, u + 1} X')]
+  [HasDerivedCategory.{dS'} (AbelianSheaf.{u, u + 1} S')] in
 /-- The original higher exchange preserves the actual original germ of a global
 class, with the original cohomology pullback on the total spaces. -/
 theorem higherBaseChangeMap_globalCohomologyGerm

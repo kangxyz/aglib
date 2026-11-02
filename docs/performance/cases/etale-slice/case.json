@@ -1,0 +1,105 @@
+{
+  "case": "Intrinsic slice presentation: shared native equation and typed product bridge",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "lean_version": "4.34.1",
+  "lean_commit": "5045d0056413266e57c625dcd7c365b10e377c52",
+  "mathlib_pin": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "profile": {
+    "jobs": 8,
+    "threads": 4,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 110592,
+    "allow_cpu_oversubscription": false
+  },
+  "runs": [
+    {
+      "id": "remote-01041402ec244c8fa67ea45af0c0bf04",
+      "source_version": "v4",
+      "slice_source_sha256": "aeb8c409ce35804dd7a0b8ea4cbc2c1aed4db809519955ac7e7cdf0864a73097",
+      "exit_code": 1,
+      "elapsed_seconds": 155.8019,
+      "summary": "Kernel deterministic timeout at line 651 plus other source errors",
+      "receipt_sha256": "6c04f1035cf393920dc29f0df166a1ad5e0e3ce3965bc70102b65519b2386243",
+      "source_capsule": "source-capsule-v4.json",
+      "full_source_manifest_original_r_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/foundation-closures-01041402.json",
+      "full_source_manifest_content_sha256": "7eefe68c7b7bbd4db5a89af3a2daed9848f107ceb34ac60dce3e08750be6c076",
+      "full_source_manifest_file_count": 7256,
+      "source_capsule_sha256": "6227d31ee24eb5f45893281d1185cfac265bc0ce6c48762e59d3b83fc792bd7f",
+      "mates_whole_sha256": "1062ecc3bc4c3f4a816b33c87ea63633509a69af7a466aa2914f527d438f32a5"
+    },
+    {
+      "id": "remote-0825a8ce10854e49a7488fb686431c0b",
+      "source_version": "v5",
+      "slice_source_sha256": "3271faca603e39020f2262f4020ae8890a69e361d7b61ff1338bca80c0fe9516",
+      "exit_code": 1,
+      "elapsed_seconds": 32.645,
+      "summary": "Five SlicePresentation source errors; 14 frontends passed, including 12 pure mate owners and Etale BaseChangeMap",
+      "receipt_sha256": "9f65ca19e2353a3ed1c71f4f12a6820fb4b95ff9d295d90ac6f3c876183c5b90",
+      "source_capsule": "source-capsule-v5.json",
+      "full_source_manifest_original_r_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/etale-shared-core-0825a8ce.json",
+      "full_source_manifest_content_sha256": "edd393aacfad9eac6a61bc7413f5bd30a4241e7b0f66f6f13917d74d68cbd790",
+      "full_source_manifest_file_count": 7258,
+      "source_capsule_sha256": "6eabf946210c5bd3250cb86979e440289e0de2584e956f0f1c470beccdb12f5f"
+    },
+    {
+      "id": "remote-8c5ba5cbd63b45149e8a52cd3016b7e4",
+      "source_version": "v6",
+      "slice_source_sha256": "7c9d08a3b001b8cc9eab19cd5af522883be3001d7715d0643b99abd82e39e0f2",
+      "consumer_source_sha256": "2dfd8f69750b9749c23b61c58ea8031b687b772a5da5ed25828b5f1adc734187",
+      "manifest_content_sha256": "e7c176b1c5b39d7b70a36e8f186d7ee57b45511a1cf881e7b01daef5ed839549",
+      "modules": [
+        "Aglib.CategoryTheory.Topos.SlicePresentation",
+        "Aglib.CategoryTheory.Topos.Slice.Grothendieck"
+      ],
+      "frontend_seconds": [
+        14,
+        2.1
+      ],
+      "exit_code": 0,
+      "compiler_succeeded": 2,
+      "compiler_failed": 0,
+      "receipt_sha256": "6f87f52dd7dc83fe828350c6d7d5be9bc96eab05b7a9f4419685ae8f3f8437fc",
+      "source_capsule": "source-capsule-v6.json",
+      "full_source_manifest_original_r_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/etale-slice-closure-8c5ba5cb.json",
+      "full_source_manifest_content_sha256": "e7c176b1c5b39d7b70a36e8f186d7ee57b45511a1cf881e7b01daef5ed839549",
+      "full_source_manifest_file_count": 7258,
+      "source_capsule_sha256": "b99077e169ed8d50734a07d5518c167e6d0b3e696f31ba140fb4fe9bbf684fb2"
+    }
+  ],
+  "source_methods": [
+    "same native Iso.compInverseIso constructor",
+    "whole counit equation proved over variable categories then specialized",
+    "explicit identity-on-original-section-values fibre equivalence"
+  ],
+  "limitations": [
+    "Different target sets and coupled repairs: no matched speedup",
+    "No isolated compiler-cause attribution",
+    "Peak RSS is whole-group, not per-file",
+    "No resource-budget change",
+    "No new established mathematical status",
+    "Broader Etale consumer coverage remains open",
+    "General h_U^# presentation outside scope"
+  ],
+  "reproduction_command": "lake --rehash build Aglib.CategoryTheory.Topos.SlicePresentation Aglib.CategoryTheory.Topos.Slice.Grothendieck",
+  "reproduction_boundary": "Exact command, toolchain, profile and inputs are in per-run receipts; command alone does not imply cache equivalence.",
+  "source_reconstruction_deltas": [
+    {
+      "patch": "slice-v4-to-v5.patch",
+      "patch_sha256": "6928f9af121e5027bd04e4798d92ff3a465e695252e21786eb2845fbe09a9b3a",
+      "before_sha256": "aeb8c409ce35804dd7a0b8ea4cbc2c1aed4db809519955ac7e7cdf0864a73097",
+      "after_sha256": "3271faca603e39020f2262f4020ae8890a69e361d7b61ff1338bca80c0fe9516"
+    },
+    {
+      "patch": "slice-v5-to-v6.patch",
+      "patch_sha256": "32399849210ad15105e786d129315746c6a452032271d043ce2597faca9420cb",
+      "before_sha256": "3271faca603e39020f2262f4020ae8890a69e361d7b61ff1338bca80c0fe9516",
+      "after_sha256": "7c9d08a3b001b8cc9eab19cd5af522883be3001d7715d0643b99abd82e39e0f2"
+    },
+    {
+      "patch": "mates-whole-v4-to-v5.patch",
+      "patch_sha256": "e68e092e1726089bc8423ee8e7bcb59218e7a738d5b317d9605d92a8e3d4f705",
+      "before_sha256": "1062ecc3bc4c3f4a816b33c87ea63633509a69af7a466aa2914f527d438f32a5",
+      "after_sha256": "0e08de18803abf6008e23bd2593d39759fbce78add02965b06bbddef61dad6e4"
+    }
+  ]
+}

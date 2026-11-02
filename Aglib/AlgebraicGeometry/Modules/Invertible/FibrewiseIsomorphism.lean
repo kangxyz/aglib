@@ -153,11 +153,10 @@ theorem lineBundleMap_isIso_of_geometricPullback_isIso {X : Scheme.{u}}
     IsIso.of_isIso_comp_right _ eMV.hom
   have : IsIso ((Scheme.Modules.restrictFunctor j).map φ) :=
     (NatIso.isIso_map_iff (Scheme.Modules.restrictFunctorIsoPullback j) φ).mpr inferInstance
-  have : IsIso (((Scheme.Modules.restrictFunctor j) ⋙
-      Scheme.Modules.stalkFunctor V.toScheme y).map φ) := by
-    change IsIso ((Scheme.Modules.stalkFunctor V.toScheme y).map
-      ((Scheme.Modules.restrictFunctor j).map φ))
-    infer_instance
-  exact (NatIso.isIso_map_iff (Scheme.Modules.restrictStalkNatIso j y) φ).mp inferInstance
+  have hstalk : IsIso ((Scheme.Modules.stalkFunctor V.toScheme y).map
+      ((Scheme.Modules.restrictFunctor j).map φ)) :=
+    (Scheme.Modules.stalkFunctor V.toScheme y).map_isIso
+      ((Scheme.Modules.restrictFunctor j).map φ)
+  exact (NatIso.isIso_map_iff (Scheme.Modules.restrictStalkNatIso j y) φ).mp hstalk
 
 end AlgebraicGeometry.Scheme.Modules.Invertible

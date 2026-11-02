@@ -5,6 +5,8 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.ExactCoefficients
+
 public import Mathlib.Algebra.Category.Grp.Abelian
 public import Mathlib.Algebra.Category.Grp.EpiMono
 public import Mathlib.Algebra.Homology.ShortComplex.ExactFunctor
@@ -39,26 +41,19 @@ universe u v m w w'
 variable {C : Type u} [Category.{v} C] (J : GrothendieckTopology C) (U : C)
 
 /-- Actual slice restriction is additive on its original maps. -/
-instance overPullback_additive : (J.overPullback AddCommGrpCat.{m} U).Additive where
-  map_add := by intros; rfl
+instance overPullback_additive : (J.overPullback AddCommGrpCat.{m} U).Additive :=
+  GrothendieckTopology.overPullback_additive J AddCommGrpCat.{m} U
 
 /-- Restriction preserves every limit whose shape is admitted by the coefficient category. -/
 instance overPullback_preservesLimitsOfShape {K : Type w} [Category.{w'} K]
     [HasLimitsOfShape K AddCommGrpCat.{m}] :
-    PreservesLimitsOfShape K (J.overPullback AddCommGrpCat.{m} U) := by
-  let R := J.overPullback AddCommGrpCat.{m} U
-  let I := sheafToPresheaf (J.over U) AddCommGrpCat.{m}
-  have : PreservesLimitsOfShape K (R ⋙ I) := by
-    change PreservesLimitsOfShape K
-      (sheafToPresheaf J AddCommGrpCat.{m} ⋙
-        (Functor.whiskeringLeft _ _ AddCommGrpCat.{m}).obj (Over.forget U).op)
-    infer_instance
-  exact preservesLimitsOfShape_of_reflects_of_preserves R I
+    PreservesLimitsOfShape K (J.overPullback AddCommGrpCat.{m} U) :=
+  GrothendieckTopology.overPullback_preservesLimitsOfShape J AddCommGrpCat.{m} U
 
 /-- The literal restriction functor preserves finite limits. -/
 instance overPullback_preservesFiniteLimits :
     PreservesFiniteLimits (J.overPullback AddCommGrpCat.{m} U) :=
-  ⟨fun _ => inferInstance⟩
+  GrothendieckTopology.overPullback_preservesFiniteLimits J AddCommGrpCat.{m} U
 
 variable [HasSheafify J AddCommGrpCat.{m}]
   [J.WEqualsLocallyBijective AddCommGrpCat.{m}]
@@ -71,14 +66,11 @@ variable [HasSheafify J AddCommGrpCat.{m}]
 and therefore epimorphisms of abelian sheaves. -/
 instance overPullback_preservesEpimorphisms :
     (J.overPullback AddCommGrpCat.{m} U).PreservesEpimorphisms where
-  preserves {F G} f hf := by
-    let : Sheaf.IsLocallySurjective f :=
-      (Sheaf.isLocallySurjective_iff_epi' AddCommGrpCat.{m} f).mpr hf
-    apply (Sheaf.isLocallySurjective_iff_epi' AddCommGrpCat.{m}
+  preserves f hf :=
+    (Sheaf.isLocallySurjective_iff_epi' AddCommGrpCat.{m}
       ((J.overPullback AddCommGrpCat.{m} U).map f)).mp
-    change Presheaf.IsLocallySurjective (J.over U)
-      (Functor.whiskerLeft (Over.forget U).op f.hom)
-    exact Presheaf.isLocallySurjective_whisker (J.over U) J (Over.forget U) f.hom
+        (GrothendieckTopology.overPullback_map_isLocallySurjective
+          J AddCommGrpCat.{m} U f hf)
 
 /-- Exactness of restriction follows from kernels and the actual local lifting of epis. -/
 instance overPullback_preservesHomology :

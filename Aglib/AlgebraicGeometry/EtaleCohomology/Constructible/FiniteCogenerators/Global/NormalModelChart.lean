@@ -30,16 +30,16 @@ universe u
 /-- The original factorization through a monomorphism identifies its actual
 pullback source with the original source. -/
 def factorPullbackIso {K U X : Scheme.{u}} (p : K ⟶ U) (j : U ⟶ X) [Mono j] :
-    K ≅ pullback (p ≫ j) j where
-  hom := pullback.lift (𝟙 K) p (by simp)
-  inv := pullback.fst _ _
-  hom_inv_id := by exact pullback.lift_fst _ _ _
-  inv_hom_id := by
-    apply pullback.hom_ext
-    · simp only [Category.assoc, pullback.lift_fst, Category.comp_id, Category.id_comp]
-    · simp only [Category.assoc, pullback.lift_snd, Category.id_comp]
-      apply (cancel_mono j).mp
-      exact (Category.assoc _ _ _).trans (pullback.condition (f := p ≫ j) (g := j))
+    K ≅ pullback (p ≫ j) j := by
+  let e := (asIso (pullback.fst (p ≫ j) j)).symm
+  have hhom : pullback.lift (𝟙 K) p (by simp) = e.hom := by
+    apply (cancel_mono (pullback.fst (p ≫ j) j)).mp
+    exact (pullback.lift_fst _ _ _).trans e.hom_inv_id.symm
+  exact {
+    hom := pullback.lift (𝟙 K) p (by simp)
+    inv := e.inv
+    hom_inv_id := pullback.lift_fst _ _ _
+    inv_hom_id := by rw [hhom]; exact e.inv_hom_id }
 
 @[reassoc]
 theorem factorPullbackIso_hom_fst {K U X : Scheme.{u}}

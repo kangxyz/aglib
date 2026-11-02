@@ -1,0 +1,305 @@
+{
+  "family": "represented-relative-test-core",
+  "candidate": "v28",
+  "head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "native_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib",
+  "changed": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean": "91a18323faa9b32f68947f6d289ad7fa9a4ee60568fbb24243d494f73842b5eb",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean": "4fa61d3620e9f12878b9aa40ffd5f6b67e3057ae6152e65ab9380a8473a59f79",
+    "Aglib/CategoryTheory/Functor/CopyObjRestriction.lean": "e6cd595f727539698609abb2ede1d9691a3b494337164a57da4048a673be04a6",
+    "Aglib/CategoryTheory/Over/RelativeTests.lean": "5ab29b5478f311465cafa54ae92c84a1f1d83cf57007ae011ed8613a6527ba35"
+  },
+  "readonly_suppliers": {
+    "Aglib/CategoryTheory/Over/ChartTails.lean": "c278e907a9bee6359d5f6dd72731c295d97ac6f1cc71773cf47feee1697e4bab",
+    "Aglib/CategoryTheory/Over/SitePullbackPasting.lean": "80e9a5d4d44ae0d3bc08c7deba3db49e8a3d130de88d9b50578887addb208fcf",
+    "Aglib/CategoryTheory/Functor/NaturalityTransport.lean": "19d4ac331cb444727e4e13b3da5a67b035df7057c0258561bc160ec9cf80beb2",
+    "Aglib/CategoryTheory/Functor/WhiskeredTransport.lean": "f8394d979331eec967951cdf091994f04d4082b1e9434fd765e9b9140aab845c",
+    "Aglib/AlgebraicGeometry/Sites/EtaleTopos.lean": "9aaad4f8608cb3624a8826139a431318bc17d03075cd129bca6f8d3e45d5993b",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/EtaleRestriction.lean": "c4de9afa37af7ba68c0870fcadaa320b55f2dea9a0862a4768fc3818ae90a284",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/EtaleDirectImageMate.lean": "42dac0fc6c143a299c241ae5ef3def9fddd53eb0a802a61050ad3e3b3d7469cc",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/Sections.lean": "5fda316bf90c454a65e87f633a308d1bfbcf8337192fe304c0820f09361c9b38",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/SheafColimit.lean": "29a2ae6660a08e1113bae53642ae0cb416b9caaf2872a540f1c426b2f070bc28",
+    "Aglib/CategoryTheory/Monoidal/Cartesian/CommutativeGroupSections.lean": "e09de728865f06cabf66fc87bf0197837d25f4e57835c145dca0b053f8626753",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/RepresentedBaseChange.lean": "2a4eb01c34058dc3e2cd8507e360ebd27c3516768747586d3a278b37cfc98abd",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackComposition.lean": "4d9aa5c71baed05fef5f284e3dc92da87e53c922a722d2f22b23d4e6f514a049",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/CoefficientRepresentation.lean": "a345e9c7ad35028f6faa6f994448f6bc6091af309e960ef132d74ad5085bb7e0",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeHorizontalUnit.lean": "72eef83bc71a88e4956dafcd2fa68017d9f0492ff5a44472980d6d8fe55826c1",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/EtaleDirectImageRestriction.lean": "34b52ce6ffbbdc74f4599dfe4b974885298f4f0bc176beaccec08f635ff47f2e",
+    "Aglib/CategoryTheory/Functor/ActualDiagramLift.lean": "640bb1af56cbdad388f7005ac6fa6fa73daafbf96c42402acfbd0a2922400508"
+  },
+  "public_header_comparison": {
+    "Aglib/CategoryTheory/Functor/CopyObjRestriction.lean": {
+      "prior_headers_preserved": 4,
+      "new_total_headers": 9,
+      "identical_prior_order_and_types": true
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean": {
+      "prior_headers_preserved": 23,
+      "new_total_headers": 24,
+      "identical_prior_order_and_types": true
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean": {
+      "prior_headers_preserved": 38,
+      "new_total_headers": 38,
+      "identical_prior_order_and_types": true
+    }
+  },
+  "afterimages": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/candidate-v28",
+  "beforeimages": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/before",
+  "plan": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/PLAN.md",
+  "correspondence": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/CORRESPONDENCE-v27.md",
+  "explicit_roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction"
+  ],
+  "runtime": "Resumed lane A sole owned provider3 + its actual ProjectiveLine/Bounded callers5 graph; default200000/pins/trust unchanged. No new replay/lint/tests/client roots.",
+  "evidence_boundary": "V28 explicit actual-input capture after informative V27 inspection. GenericCoree6cd/NativeRep4fa6/SheafColimit current passes retained; lower5ab retained. Independent V27 math/source/minimum-model verdict remains fixed old6188; V28 is a named application-only delta. Current changed native consumer/fullGlobal/callers pending.",
+  "no_extra_checks": true,
+  "supersedes_unexecuted_ready": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/candidate-v9/READY.json",
+  "source_only_repair": "Explicitly supply the ORIGINAL actual I/C/D/U/V/A/B functors and original M/N/E map endpoints to the existing full generic assembly, then bind actual morphisms and primitive component values before final proven comparison. This prevents inference of missing functors/objects through forgetful composites; it is a repair hypothesis, not an identified cause. No new object/category realization, theorem, interface, map, hypothesis, option or transport layer.",
+  "actual_v3_feedback": {
+    "run": "remote-fdd36d606fc74661bdfc5161dd67c175",
+    "lane": "A dependent invocation, not a B v3 request",
+    "CopyObjRestriction": "e4ed PASS2.0s",
+    "RelativeTests": "df3077 FAIL at implicit endpoint/proof views, op namespace and unused binders",
+    "native2": "not reached, no pass claimed"
+  },
+  "retained_pass": {
+    "Aglib.CategoryTheory.Over.RelativeTests": {
+      "sha256": "5ab29b5478f311465cafa54ae92c84a1f1d83cf57007ae011ed8613a6527ba35",
+      "run": "remote-c8a493ac9f8a4104b934704b6092bdba",
+      "frontend_seconds": 7.2,
+      "boundary": "Restored exact owned lower source5ab29; not relabeled5272 pass."
+    },
+    "Aglib.CategoryTheory.Functor.CopyObjRestriction": {
+      "sha256": "e6cd595f727539698609abb2ede1d9691a3b494337164a57da4048a673be04a6",
+      "run": "remote-f0475947973144a5baed37b01bca90df",
+      "frontend_seconds": 2.7
+    },
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.RepresentedSections": {
+      "sha256": "4fa61d3620e9f12878b9aa40ffd5f6b67e3057ae6152e65ab9380a8473a59f79",
+      "run": "remote-f0475947973144a5baed37b01bca90df",
+      "frontend_seconds": 10.0
+    }
+  },
+  "canonical_extension": {
+    "derivation": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/CANONICAL-COMPARISON-WORK.md",
+    "completed_proof_candidates": [
+      "constantGroupBaseChangeIso_normalization",
+      "representedGroupCompIso with original value",
+      "representedGroupEqIso with original equality value",
+      "representedGroupSquareIso with exact native Over.square value",
+      "representedBaseChange_square",
+      "constantComparison_square",
+      "iteratedConstantGroup_normalization",
+      "constantGroup_square",
+      "pasting_homEquiv_fst"
+    ],
+    "remaining": "No mathematical assertion intentionally left open in v6 source. The final \u03b4\u03ba hom and Iso equalities have complete proof candidates and require native compiler feedback/author repair and affected ordinary review before closure.",
+    "final_conclusions": [
+      "constantPushforwardRestrictionIso_hom_eq_etaleBaseChangeComponent",
+      "constantPushforwardRestrictionIso_eq_etaleBaseChangeComponent"
+    ]
+  },
+  "actual_v5_run": {
+    "run": "remote-0116fbac",
+    "source_prefix": "f99d9848",
+    "state_at_dispatch": "SEALED and healthy; no result claimed, retains v5 actual sources4b22/ac054/430358/e4ed",
+    "old_results_not_relabelled": true
+  },
+  "needed_pending_roots_from_v5": [
+    "Aglib.CategoryTheory.Over.RelativeTests",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.RepresentedSections"
+  ],
+  "actual_v6_feedback": {
+    "B": "0116/sourcef99 on v5 4b22 fails lower; native ac054 unreached",
+    "A": "3fa4c16c/source21ed6989 on v6 4b22 fails lower; currentf123 not compiled",
+    "preservation": "Live and frozen v6 source remain separate from the v7 repair; healthy independent branches are not interrupted."
+  },
+  "actual_v7_feedback": {
+    "run": "remote-94f49cbdd09d4c33b3b2d44e561d8ad3",
+    "source_prefix": "b8beef4f",
+    "result": "closed/native1; old mapApp/kernel/syntax cascades resolved; remaining384/414/470 exact three encoding errors; native2 unreached",
+    "full_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-94f49cbdd09d4c33b3b2d44e561d8ad3/build.log"
+  },
+  "actual_v8_feedback": {
+    "run": "remote-509574082d2f4069bc1fb5eb8a8be1b8",
+    "source_prefix": "ead92afd",
+    "RelativeTests38b4": "PASS5.9s",
+    "Represented430358": "PASS11s on old body, retained as history; v9 necessary constructor-sharing change requires new coverage",
+    "Global2ba": "FAIL235s; first96/105 actionable errors, kernel166/230 and later native conversion failures; all preserved on actual basis",
+    "external": "AtZero outside this ownership, separately repaired57e3 by its source author"
+  },
+  "diagnostic_formation": {
+    "input_sha256": "55c4d276604ae1b371deda0edb86e845ff5fe6a70fbccbb6e09be84ebf4641a6",
+    "run": "remote-9971871b51874eee85fb256b97040c89",
+    "source": "bcd6d52dad5c73643d09b6ee31eafc6db93824731fe091c568d4147f47e9196a",
+    "result": "exit0, no diagnostics, both faithful theorem-binder square propositions form after only first96/105 prefix fixes",
+    "boundary": "Formation only, not either square proof/Global pass or speedup; import no-build readiness reused existing coherent cache."
+  },
+  "actual_v9_state": "Lane A explicitly confirmed no v9 capture/dispatch; its local prepared union is superseded unexecuted, not interrupted or relabeled.",
+  "coauthor_G": {
+    "author": "/root/r4_dictionary_source_alignment",
+    "boundary": "R-only proposal integrated into prepared candidate only; no N mutation, no native pass claimed",
+    "helper_source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/constant-square-r4/v2-native/ConstantSquareHelper.lean",
+    "helper_sha256": "431c86cf83079aaeec71fd515bc302bc49d68eae7015a7881492a017d648e1b1",
+    "native_proof_source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/constant-square-r4/v2-native/NativeProof.txt",
+    "native_proof_sha256": "719d471a739f8b1e9a89ea6aaa19a5d74e46bed21e8411f1f76f8fbf26c2f4a2",
+    "integration": "Complete generic body under RelativeTests.Comparison; native proof only qualifies its generic call. All actual hR/hN/hC/hL/hT and3 map-comp equations inferred; original native HomEquiv.injective once.",
+    "review_boundary": "Primary author reviewed mathematical/map correspondence; no independent review or applicable native execution result yet. Preserve v1 raw failure/v2 operational no-frontend history.",
+    "integration_state": "Native group-reflection route retired in v12; generic mapped comparison theorem retained unchanged below Scheme. R4 mathematical/diagnostic support remains attributed, not independent review or a v12 native pass.",
+    "native_probe_state": "New official-native-setup379c probe in progress on captured frozen v10; prior raw/operational histories preserved, no G pass claimed."
+  },
+  "actual_v10_feedback": {
+    "run": "remote-2d987486529143608f6d819df200b69e",
+    "source": "544b2bce5f6202c44b330ae22aa7227c1e3f2eb87d1527f83ccaf0750943b6c2",
+    "Global5634": "failed251s; first G347 kernel; source/final value/proof conversion failures; earlier represented/constant square kernel errors absent",
+    "Repbbe8": "PASS16s retained on its exact previous native functor body; v11 interface change requires fresh coverage",
+    "lower38b4": "earlier PASS retained for unchanged prior content; v11 lower adds/moves actual current proofs and requires coverage",
+    "CopyObje4ed": "unchanged matching PASS retained/excluded"
+  },
+  "diagnostic_interpretation_correction": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/DIAGNOSTIC-OPTIONS-CORRECTION.json",
+  "route_retirement": {
+    "retired": "PRIVATE constantGroup_square/iterated group-normalization path and extra H_Y/H_P references; no public native consumer changed.",
+    "reason": "Actual public coefficient/unit comparison needs only H_X/H_T and q_g; direct sheaf-arrow route removes unnecessary realizations and reflection.",
+    "preserved": "The actual original coefficient arrow, t/t.inv values, q/p/g maps, canonical \u03b4\u03ba and SAME g-unit/HomEquiv proof.",
+    "negative_history": "R4 v2 native-configured379c on frozen5634/source7400/setupf2b7741e failed sole kernel389; valid abstract mapped helper retained, no native G pass inferred."
+  },
+  "actual_v11_feedback": {
+    "run": "remote-f79e3003a26f465485ec7997eaf67756",
+    "source_prefix": "8cf110ea",
+    "Relative19f3": "PASS6.8s on previous lower body",
+    "NativeRep7484": "PASS15s, unchanged current bytes",
+    "Globalabc4": "FAIL first private G kernel293 plus later native projection/conversion failures; exact old basis retained",
+    "callers": "not reached; external PullbackEquivalence error separately repaired/owned by Root"
+  },
+  "actual_v12_feedback": {
+    "run": "remote-2ee77373d62f4690964d58de2fd13af2",
+    "source_prefix": "d79d",
+    "result": "Early sole own failure lower2adb unit proof770/771; actual h\u03b7 reverse simp did not match unresolved functor view. Native direct-SHEAF Globale5b5 not yet invoked. Healthy independent branches preserved."
+  },
+  "actual_v13_feedback": {
+    "run": "remote-107c5bb3c7614351ada7a0b5ac567d77",
+    "source": "9fbeb4b0760c694af69eaa5a5b46237474b42bdc780c35aca49d718f264b7364",
+    "Relative9a39": "PASS6.5s",
+    "NativeRep7484": "needed-import PASS14s",
+    "Globale5b5": "invoked160s; line259style/privatecoefficient261kernel/hSource745whnf; laterunknowncoefficient cascade; retiredGabsent",
+    "callers": "not invoked"
+  },
+  "scoped_new_diagnostic": {
+    "input": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/diagnostics/CapturedCoordinateAssembly-v28.lean",
+    "metadata": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/diagnostics/CapturedCoordinateAssembly-v28.json",
+    "sha256": "bfa83a11cdc4594859b6a25ce19c8afb518c144ae26e8c569e4d2caa98d31375",
+    "scope": "One changed full-producer prefix covering existing generic facts, whole variable comparison and concrete actual-input capture. Not fullGlobal/callers. Onpass run currentGlobal+Rootendpoint2 under matching guards."
+  },
+  "actual_v14_feedback": {
+    "run": "remote-1007ae3acbaa43d4a2639057c65bb261",
+    "source": "a97a6b72557b4259177eba302d67c185d8e48d0821a7f5ff0990fb14e07771d8",
+    "preparation": "Relativee9bb PASS6.2s, NativeRep9643 PASS11s, requiredSheafColimit PASS27s",
+    "prefix46648": "Correct native options; only formation unusedha and empty-simp no-progress diagnostics; no prefix acceptance, no fullGlobal/canonical verdict"
+  },
+  "actual_v15_full_feedback": {
+    "run_prefix": "remote-c8d30f3c",
+    "source_prefix": "43427",
+    "Globalfd4": "invoked144s, only line760 combined-rewrite whnf timeout; no coefficient proof or kernel errors remain",
+    "state": "early healthy snapshot secure; full receipt pending, no Global pass inferred"
+  },
+  "actual_v16_feedback": {
+    "run": "remote-4b5bce12f25745068894bb0d1fb3a352",
+    "source": "3c177c48e71c36b69e791d71885c2f56e6825ddb1c00a31a7faccccd7e93736f",
+    "result": "sole line760:9 whnf200000 at refine hL.trans, before coordinate equation step; no fullGlobal invocation"
+  },
+  "actual_v16_context": {
+    "run": "remote-af45115daba244a2a08ed99ba2c26702",
+    "source": "46ea9ba775f376b4a19696c9efc241dd2c9a1377bc9900b48f9b822f38c3bfd4",
+    "result": "intended trace-only failure; hL and target print the same left side; full actual coordinate source/right map heads exposed. No proof coverage."
+  },
+  "unexecuted_predecessor": "candidate-v17 is superseded before dispatch; no tool result on its source is claimed. V18 names the same two actual coordinate arrows locally and uses the existing apply NatTrans.ext form; final Eq.trans chain remains fully inferred.",
+  "actual_v18_feedback": {
+    "run": "remote-ce8ef6243ae14d3dbc71c548a89c0772",
+    "source_prefix": "af57a950",
+    "result": "first822 whnf in native change unfolding inverse original HomEquiv; later tactic/outer timeouts are budget cascades; no fullGlobal invocation"
+  },
+  "actual_v19_feedback": {
+    "run": "remote-c8a493ac9f8a4104b934704b6092bdba",
+    "source_prefix": "f202d314",
+    "Relative5ab29": "PASS7.2s",
+    "NativeRep9643": "PASS12s necessary import",
+    "SheafColimit": "PASS28s necessary import",
+    "prefix": "first802 whnf at native change Additive.ofMul; onlyouter731 cascade, no fullGlobal invocation"
+  },
+  "actual_v20_feedback": {
+    "run": "remote-e22e4675815b434ebfde57b68da73f0c",
+    "source_prefix": "89882c56",
+    "result": "first807 whnf at exact hvalue after actual postcompose/naturality/value equations inferred; onlyouterbudgetcascade; no fullGlobal"
+  },
+  "actual_v20_value_context": {
+    "run": "remote-9bbcf5fdf4784430b3f0b200bc9e3f99",
+    "source_prefix": "89882c56",
+    "result": "intentional trace-only failure, no timeout; hvalue is complete raw Additive equality, target still Hom.hom(composite.app U) s .down on both sides, requiring explicit original component projections"
+  },
+  "actual_v21_feedback": {
+    "run": "remote-5526056ac2034f72aade2551a75c7b14",
+    "source_prefix": "2e65d769",
+    "result": "first810 isDefEq at concrete hGroupMap statement, before rfl and before forward normalization; onlyouter731 budgetcascade, no fullGlobal"
+  },
+  "actual_v22_feedback": {
+    "run": "remote-6d7b6413cccf4949b533e6a2abead109",
+    "source_prefix": "70388558",
+    "Relative5272": "PASS7.9s; helper itself true/native accepted on this source, later retired as no successful current native consumer",
+    "NativeRep9643": "PASS14s necessary import",
+    "prefix": "first809 isDefEq at concrete generic helper application, before component normalization; onlyouter731cascade, no fullGlobal"
+  },
+  "actual_v23_feedback": {
+    "run": "remote-f7f3579a02d44736bb7fd00b96b36069",
+    "source_prefix": "2a56145a",
+    "imports": "matching cached5ab29/9643/SheafColimit restored; no fresh provider frontends claimed",
+    "prefix": "first812 nestedwhnf at combined actual value dsimp, onlyouter731cascade; no fullGlobal"
+  },
+  "coauthor_section_route": {
+    "author": "/root/global_unit_functor_route",
+    "scope": "Read-only frozenv23 source-applicability and complete variable-H/K whole-section route; no N write or independent execution/review.",
+    "fixed_source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/PROPOSED-variable-section-v25.lean",
+    "sha256": "7e910d02e9a5469b15da25564c8c1e103075f696df8ddc1a3f9d41eb86d4ff65",
+    "source_check": "Exact whole EX/EQ/\u03ba/exchange/coefficient/symmetry equation, parameters H/K commutative and existing Etale g, c original Iso; prefix/tail/header preservation checked. No missing source fact/hypothesis found.",
+    "remaining_elaboration": "Variable helper single original-value change and concrete completed-equation specialization uncompiled; source author owns all repair."
+  },
+  "actual_v24_feedback": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/candidate-v24/ACTUAL-RESULT.json",
+  "actual_v25_feedback": {
+    "run": "remote-5e495c71d3f846ec911d45317afe75f5",
+    "source_prefix": "075a512e",
+    "result": "sole791 command-whnf at representedRestriction_literal; no diagnostics preceding complete variable helper, no wholeprefix/fullGlobal/callers pass"
+  },
+  "ordinary_review_V25": {
+    "kind": "independent ordinary inline continuation",
+    "reviewer": "/root/review_represented_resolution_transpose",
+    "fixed_request": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/REVIEW-REQUEST-v25.json",
+    "fixed_source": "7e910d02e9a5469b15da25564c8c1e103075f696df8ddc1a3f9d41eb86d4ff65",
+    "verdict": "ACCEPTED affected mathematics/original-map/source/minimum-model correspondence; no gap. Native encoding/fullGlobal/callers pending; source-only V26 tactic delta is named separately."
+  },
+  "actual_v26_feedback": {
+    "run": "remote-82f42d1653c349409f98b509744005d3",
+    "source_prefix": "342d0c28",
+    "result": "four exact markers reached through whole comparison specialization; whole Eq.trans chain marker absent; sole791 command-whnf. No fullGlobal/caller invocation."
+  },
+  "shared_constructors": {
+    "map": "Existing Mathlib Iso.homCongr inverse, exactly eSource.hom \u226b map \u226b eTarget.inv; no new transport model.",
+    "coordinates": "Existing MorphismProperty.Over.RelativeTests.coordinates/coordinateMap.",
+    "native_adapter": "NEW representedDirectImageCoordinatesIso H Y, same original whiskered inverse Over-adjunction section iso, shared by old B alias and variable-H proof.",
+    "old_native_headers": "All prior61 native headers/55legacy preserved exactly; native Rep adds only this one meaningful current-consumer adapter."
+  },
+  "actual_v27_feedback": {
+    "run": "remote-f0475947973144a5baed37b01bca90df",
+    "source_prefix": "ca464f9f",
+    "Coree6cd": "PASS2.7s",
+    "NativeRep4fa6": "PASS10s",
+    "SheafColimit": "PASS38s",
+    "prefix": "sole784 commandwhnf on native literal; no fullGlobal/callers"
+  },
+  "actual_v27_inspection": {
+    "run": "remote-1d7349a808ce4b18a32408e2e6ee1744",
+    "source_prefix": "dcaef234",
+    "stage": "all7 markers through original source/target component producers; complete generic result absent, Core application is actual frontier",
+    "implementation": "Captured baseChangedGroup and shared-H ctor use Scheme.instCartesianMonoidalCategoryOverScheme and Braided.toMonoidal(Over.instBraidedPullback); pinned Mathlib AlgebraicGeometry/Pullbacks711 defines Scheme instance exactly as Over.cartesianMonoidalCategory. No divergent captured implementation identified; deep variable theorem print elides terms, not proof of every endpoint conversion.",
+    "diagnostic_limits": "Print-only query retains #print linter and2longline diagnostics as well as command801whnf; no acceptance/replay to clean old receipt."
+  }
+}

@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.FunctionField.Map
 public import Aglib.AlgebraicGeometry.Morphisms.Etale.Reduced
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedBaseChange
+public import Aglib.CategoryTheory.Sites.Continuous.KanUnit
 public import Mathlib.AlgebraicGeometry.Morphisms.Separated
 public import Mathlib.AlgebraicGeometry.Morphisms.UniversallyOpen
 public import Mathlib.CategoryTheory.Limits.FunctorCategory.EpiMono
@@ -83,38 +84,10 @@ private theorem mono_unit_of_leftKanIso {S T : Scheme.{u}} (f : T ⟶ S)
     (α : L.obj ⟶ (siteBaseChange f).op ⋙ M.obj)
     (h : (siteBaseChange f).op.leftKanExtensionUnit L.obj ≫
       Functor.whiskerLeft (siteBaseChange f).op e.hom = α) [Mono α] :
-    Mono ((inverseImageAdjunction f).unit.app L) := by
-  have : Mono ((siteBaseChange f).op.leftKanExtensionUnit L.obj) := mono_of_mono_fac h
-  have hsheaf : Presheaf.IsSheaf (Scheme.smallEtaleTopology T)
-      ((siteBaseChange f).op.lan.obj L.obj) :=
-    (Presheaf.isSheaf_of_iso_iff e).mpr M.property
-  have : IsIso (toSheafify (Scheme.smallEtaleTopology T)
-      ((siteBaseChange f).op.lan.obj L.obj)) := isIso_toSheafify _ hsheaf
-  let adj := Functor.sheafPullbackConstruction.sheafAdjunctionContinuous
-    (siteBaseChange f) AddCommGrpCat.{u + 1}
+    Mono ((inverseImageAdjunction f).unit.app L) :=
+  Functor.mono_unit_of_leftKanIso (siteBaseChange f) AddCommGrpCat.{u + 1}
     (Scheme.smallEtaleTopology S) (Scheme.smallEtaleTopology T)
-  have hu : (adj.unit.app L).hom =
-      (siteBaseChange f).op.leftKanExtensionUnit L.obj ≫
-        Functor.whiskerLeft (siteBaseChange f).op
-          (toSheafify (Scheme.smallEtaleTopology T)
-            ((siteBaseChange f).op.lan.obj L.obj)) := by
-    change (sheafToPresheaf _ _).map (adj.unit.app L) = _
-    simp only [adj, Functor.sheafPullbackConstruction.sheafAdjunctionContinuous,
-      Adjunction.map_restrictFullyFaithful_unit_app, Iso.refl_hom, NatTrans.id_app,
-      Adjunction.comp_unit_app, Functor.lanAdjunction_unit]
-    rfl
-  have : Mono (adj.unit.app L) := by
-    apply (sheafToPresheaf _ _).mono_of_mono_map
-    change Mono (adj.unit.app L).hom
-    rw [hu]
-    infer_instance
-  let c := Functor.sheafPullbackConstruction.sheafPullbackIso
-    (siteBaseChange f) AddCommGrpCat.{u + 1}
-    (Scheme.smallEtaleTopology S) (Scheme.smallEtaleTopology T)
-  have hc : (inverseImageAdjunction f).unit.app L ≫
-      (directImage f).map (c.app L).hom = adj.unit.app L :=
-    Adjunction.unit_leftAdjointUniq_hom_app (inverseImageAdjunction f) adj L
-  exact mono_of_mono_fac hc
+    (inverseImageAdjunction f) L M e α h
 
 /-- The actual generic adjunction unit is monic for separated etale represented
 abelian coefficients over every integral base. -/

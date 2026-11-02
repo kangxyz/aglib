@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.CategoryTheory.Sites.PresheafTransport
 public import Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.SectionsDescent
 
 /-! # Native restrictions of quasi-coherent pullback sections -/
@@ -19,22 +20,10 @@ open AlgebraicGeometry.Scheme.Modules
 namespace AlgebraicGeometry.Scheme.EtaleCohomology.QuasiCoherent
 
 /-- Transport the values of a Type-valued functor through specified equivalences. -/
-def transportTypeFunctor {C : Type*} [Category* C] (P : C ⥤ Type u)
-    (A : C → Type u) (e : ∀ T, P.obj T ≃ A T) : C ⥤ Type u where
-  obj := A
-  map {T U} f := ↾fun s => e U (P.map f ((e T).symm s))
-  map_id T := by ext s; simp
-  map_comp f g := by ext s; simp
+abbrev transportTypeFunctor := @CategoryTheory.PresheafTransport.transportTypeFunctor
 
 /-- The specified value equivalences give the natural transport isomorphism. -/
-def transportTypeFunctorIso {C : Type*} [Category* C] (P : C ⥤ Type u)
-    (A : C → Type u) (e : ∀ T, P.obj T ≃ A T) :
-    P ≅ transportTypeFunctor P A e :=
-  NatIso.ofComponents (fun T => (e T).toIso) (by
-    intro T U f
-    ext h
-    change e U (P.map f h) = e U (P.map f ((e T).symm (e T h)))
-    rw [Equiv.symm_apply_apply])
+abbrev transportTypeFunctorIso := @CategoryTheory.PresheafTransport.transportTypeFunctorIso
 
 variable (X : Scheme.{u}) (F : X.Modules) [F.IsQuasicoherent]
 
@@ -70,12 +59,7 @@ def nativeSectionPullback {U V : Scheme.{u}} (f : U ⟶ V) (M : V.Modules)
 theorem pullbackUnitIso_inv_comp {U V W : Scheme.{u}} (f : U ⟶ V) (g : V ⟶ W) :
     (pullbackUnitIso (f ≫ g)).inv ≫
         (pullbackComp f g).inv.app (SheafOfModules.unit W.ringCatSheaf) =
-      (pullbackUnitIso f).inv ≫ (pullback f).map (pullbackUnitIso g).inv := by
-  have h : (pullbackComp f g).app (SheafOfModules.unit W.ringCatSheaf) ≪≫
-      pullbackUnitIso (f ≫ g) =
-      (pullback f).mapIso (pullbackUnitIso g) ≪≫ pullbackUnitIso f := by
-    apply Iso.ext
-    exact pullbackUnitIso_comp f g
-  exact congrArg Iso.inv h
+      (pullbackUnitIso f).inv ≫ (pullback f).map (pullbackUnitIso g).inv :=
+  Scheme.Modules.pullbackUnitIso_inv_comp f g
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.QuasiCoherent

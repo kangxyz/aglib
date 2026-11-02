@@ -107,12 +107,22 @@ theorem h1Pullback_eq_zero_of_full
   refine Quotient.inductionOn p ?_
   intro P hP
   change h1Pullback f (representedSheaf A) (torsorExtClass P) = 0 at hP
-  let Y := P.finiteEtaleRepresentative hRS hA
-  let e := P.finiteEtaleRepresentativeIso hRS hA
-  let τ := P.representedSchemeAction A Y e
-  let : Surjective Y.obj.hom := P.represented_surjective A Y e
+  let Y :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.finiteEtaleRepresentative
+      (P := P) hRS hA
+  let e :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.finiteEtaleRepresentativeIso
+      (P := P) hRS hA
+  let τ :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.representedSchemeAction
+      (H := A) (P := P) (Y := Y) (e := e)
+  let : Surjective Y.obj.hom :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.represented_surjective
+      (H := A) (P := P) (Y := Y) (e := e)
   have heq : torsorExtClass (torsorOfSchemeAction A Y τ) = torsorExtClass P :=
-    torsorExtClass_iso (P.representedSchemeActionIso A Y e)
+    torsorExtClass_iso
+      (_root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.representedSchemeActionIso
+        (H := A) (P := P) (Y := Y) (e := e))
   have hz : torsorExtClass
       (torsorOfSchemeAction (baseChangedGroup f A) ((baseChange f).obj Y)
         (Scheme.EtaleCohomology.SchemeTorsorBaseChange.pullbackSchemeAction f

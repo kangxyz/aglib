@@ -1,0 +1,90 @@
+{
+  "product": "ONE cached-parent scratch frontend: exact current final theorem plus faithful formation-only theorem-binder check and compact phase instrumentation.",
+  "probe_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/diagnostic-1/ASFinalTheoremProbe.lean",
+  "probe_sha256": "fe49f7228fcd8631581a7515fabddb030bd651eabc919dd5cad044dd0ce09f4c",
+  "held_production_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean",
+  "held_production_sha256": "4f74591813eb9b2c76d4f7c468e6a96ff21732caeb62f9dbb2b351b5a09527ac",
+  "held_wrappers": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Frobenius.lean": "5be6b57f14457bda311e65781e412dd7414d43ac6c435217c4d480340a45c922",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Constants.lean": "d2a7c7461e034f05b03adb49fa49b6fc6fab4eb440a45ded2cd2d0ec59ee8fca"
+  },
+  "lean": "leanprover/lean4:v4.34.1",
+  "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "basis_failure": {
+    "closed_run": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-a5e3496e48ac4278a033d9abdb074871",
+    "build_log_sha256": "919235d027276ca614b627a31392eb92a80fa1abcfc38ab271b5597f3ff73dea",
+    "source_line": 119,
+    "diagnostic": "standard deterministic whnf timeout at 200000; declaration line does not locate a phase"
+  },
+  "execution_owner": "Principal/root only; author has not run compiler or probe.",
+  "requested_frontend": {
+    "count": 1,
+    "prepared_imports": "Same six production imports and exact admitted dependency/options basis; do not import the failed lower module itself. Prefix definitions copied literally.",
+    "arguments": [
+      "-M12800",
+      "-j4"
+    ],
+    "maxHeartbeats": "unchanged native default 200000",
+    "trust": "unchanged default; no sorry/axiom/debug.skipKernelTC/kernel replay",
+    "scope": "Only this scratch file. No AS wrapper or untouched consumer build target; no cache cleaning or unrelated frontend."
+  },
+  "scoped_options": {
+    "profiler": true,
+    "diagnostics": true,
+    "trace.Kernel": true,
+    "trace.Elab.definition.header": true,
+    "trace.Elab.definition.value": true,
+    "scope": "Formation check and exact final theorem only; prefix imports/definitions retain original options.",
+    "excluded": "No trace.profiler trees, no goal/expression printing, no budget, transparency, async, trust or suppression changes."
+  },
+  "phase_markers": [
+    "AS_DIAG1 prefix-complete formation-start",
+    "AS_DIAG1 formation-body",
+    "AS_DIAG1 formation-command-end proof-start",
+    "AS_DIAG1 body-entry",
+    "AS_DIAG1 after-hz",
+    "AS_DIAG1 after-left-additive-instance",
+    "AS_DIAG1 after-native-zero",
+    "AS_DIAG1 before-final-transport",
+    "AS_DIAG1 proof-command-end"
+  ],
+  "named_declarations": [
+    "CategoryTheory.Sheaf.ArtinSchreier.primeFieldToAdditive_artinSchreierMap_formationProbe",
+    "CategoryTheory.Sheaf.ArtinSchreier.primeFieldToAdditive_artinSchreierMap"
+  ],
+  "distinctions_requested": [
+    "Exact proposition formation versus proof/value checking: P occurs in theorem binder (_h : P) : True, not a def : Prop.",
+    "Proof entry and hz elaboration versus left-adjoint-additive dictionary versus whole native zero specialization versus final transport.",
+    "Named declaration header/value tasks and Kernel tasks versus exclusive simple-profiler component summaries; keep asynchronous checking interpretation explicit.",
+    "Select diagnostic unfolding counters/compact expression heads from actual output; counters are not per-constant timings."
+  ],
+  "interpretation_limits": "Markers indicate tactic/command progress, not kernel completion. Asynchronous kernel checks may finish later. Instrumentation/formation check can add cost; a probe pass is no source pass/speedup. If named summary does not separate phases, retain that gap and request only the implicated further datum.",
+  "instrumentation_source_APIs": [
+    {
+      "path": "/Users/kang/.elan/toolchains/leanprover--lean4---v4.34.1/src/lean/Lean/Util/Profile.lean",
+      "sha256": "bb6f45b4c357fa61c9bc647e4129343489af018505cdbc2422a92081053c890f"
+    },
+    {
+      "path": "/Users/kang/.elan/toolchains/leanprover--lean4---v4.34.1/src/lean/Lean/CoreM.lean",
+      "sha256": "0e94919972c60e8f2bdc73ecc9845a745c9a3373fce4069b9e27ae52560c0a7a"
+    },
+    {
+      "path": "/Users/kang/.elan/toolchains/leanprover--lean4---v4.34.1/src/lean/Lean/AddDecl.lean",
+      "sha256": "7e6e74107d8f0116dff7cde2de3e60ed556bbab3ca56309311ea90dfc931bd40"
+    },
+    {
+      "path": "/Users/kang/.elan/toolchains/leanprover--lean4---v4.34.1/src/lean/Lean/Elab/MutualDef.lean",
+      "sha256": "73a278e79b6fa2a355c3076c40eec8f0cd607c8b68f21e1fa344b56d14e6c3b9"
+    },
+    {
+      "path": "/Users/kang/.elan/toolchains/leanprover--lean4---v4.34.1/src/lean/Lean/Elab/Tactic/BuiltinTactic.lean",
+      "sha256": "21e8b53aec5ff85dd19e15b5ba2eed56d9da9883fdc09b1c410c77b0d1f567b4"
+    },
+    {
+      "path": "/Users/kang/.elan/toolchains/leanprover--lean4---v4.34.1/src/lean/Lean/Elab/BuiltinEvalCommand.lean",
+      "sha256": "2f6bdac9d72d21a4354a9821b69e4cc7a0658abb7639ba56e4b3db78b8bae0d6"
+    }
+  ],
+  "production_mutation": false,
+  "probe_executed_by_author": false
+}

@@ -1,0 +1,11 @@
+{
+  "coverage": "Static candidate/original source correspondence; no Lean execution",
+  "three_original_theorem_statements_identical": {
+    "derivedExchange_on_all_zmodCoefficients": true,
+    "derivedExchange_on_killedCoefficients": true,
+    "higherExchange_on_killedCoefficients": true
+  },
+  "killed_and_higher_proof_tail_identical": true,
+  "candidate_line_length_exceptions_over100": [],
+  "compiler_status": "pending broker"
+}

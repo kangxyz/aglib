@@ -15,6 +15,8 @@ public import Aglib.GroupCohomology.H1.AffineTorsor
 public import Aglib.GroupCohomology.H1.CharacterFactorization
 public import Aglib.GroupCohomology.H1.Continuous
 public import Aglib.GroupCohomology.H1.Continuous.CocycleValues
+public import Aglib.GroupCohomology.H1.Continuous.CoefficientTransport
+public import Aglib.GroupCohomology.H1.Continuous.GroupEquivalence
 public import Aglib.GroupCohomology.H1.Continuous.Hilbert90
 public import Aglib.GroupCohomology.H1.Continuous.Inflation
 public import Aglib.GroupCohomology.H1.Continuous.InnerConjugacy

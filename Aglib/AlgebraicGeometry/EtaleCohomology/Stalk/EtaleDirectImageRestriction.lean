@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleRestrictionUnit
-public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.Pasting
+public import Aglib.CategoryTheory.Over.SitePullbackPasting
 
 /-! # Original direct image restricted to an étale chart -/
 
@@ -30,22 +30,19 @@ variable {X S T : Scheme.{u}} (f : X ⟶ S) (g : T ⟶ S) [Etale g]
 def siteEtaleDirectImageRestrictionIso :
     siteBaseChange (pullback.fst g f) ⋙ siteEtalePostcompose (pullback.snd g f) ≅
       siteEtalePostcompose g ⋙ siteBaseChange f :=
-  NatIso.ofComponents
-    (fun U => MorphismProperty.Over.isoMk (pullbackRightPullbackFstIso g f U.hom)
-      (pullbackRightPullbackFstIso_hom_snd g f U.hom))
-    (fun {U V} a => by
-      apply MorphismProperty.Over.Hom.ext
-      change pullback.lift (pullback.fst U.hom (pullback.fst g f) ≫ a.left)
-          (pullback.snd U.hom (pullback.fst g f)) _ ≫
-            (pullbackRightPullbackFstIso g f V.hom).hom =
-        (pullbackRightPullbackFstIso g f U.hom).hom ≫
-          pullback.lift (pullback.fst (U.hom ≫ g) f ≫ a.left)
-            (pullback.snd (U.hom ≫ g) f) _
-      apply pullback.hom_ext
-      · simp only [Category.assoc, pullbackRightPullbackFstIso_hom_fst,
-          pullback.lift_fst, pullbackRightPullbackFstIso_hom_fst_assoc]
-      · simp only [Category.assoc, pullbackRightPullbackFstIso_hom_snd,
-          pullback.lift_snd_assoc, pullback.lift_snd])
+  MorphismProperty.Over.pullbackPostcomposeIso @Etale f g inferInstance
+
+/-- The entire native comparison is the restriction of the same Over comparison. -/
+theorem siteEtaleDirectImageRestrictionIso_forget :
+    Functor.whiskerRight (siteEtaleDirectImageRestrictionIso f g).hom
+        (Scheme.Etale.forget X) =
+      Functor.whiskerLeft (Scheme.Etale.forget T) (Over.pullbackPostcomposeIso f g).hom :=
+  MorphismProperty.Over.forget_pullbackPostcomposeIso_hom @Etale f g inferInstance
+
+/-- Restriction preserves the literal pasted-pullback component. -/
+theorem siteEtaleDirectImageRestrictionIso_hom_left (U : T.Etale) :
+    ((siteEtaleDirectImageRestrictionIso f g).hom.app U).left =
+      (pullbackRightPullbackFstIso g f U.hom).hom := rfl
 
 /-- Actual sheaf restriction of direct image is direct image on the actual pullback chart.
 The isomorphism is natural in the original coefficient sheaf. -/

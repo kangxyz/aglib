@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Mathlib.AlgebraicGeometry.AlgClosed.Basic
-public import Mathlib.Topology.JacobsonSpace
+public import Aglib.Topology.Connected.JacobsonValues
 
 /-! # Finite locally constant values on rational points
 
@@ -34,21 +34,11 @@ theorem finite_range_of_closedPoint_open_neighborhoods
     (hlocal : ∀ i, ∃ U : Set T, IsOpen U ∧ point i ∈ U ∧
       ∀ j, point j ∈ U → value j = value i) :
     (Set.range value).Finite := by
-  classical
-  choose U hU hiU hvalue using hlocal
-  have hcover : (Set.univ : Set T) ⊆ ⋃ i, U i := by
-    intro x _
-    by_contra hx
-    obtain ⟨z, hz, hzc⟩ := nonempty_inter_closedPoints
-      (show (⋃ i, U i)ᶜ.Nonempty from ⟨x, hx⟩)
-      (isOpen_iUnion hU).isClosed_compl.isLocallyClosed
-    obtain ⟨i, rfl⟩ := hclosed z hzc
-    exact hz (Set.mem_iUnion.mpr ⟨i, hiU i⟩)
-  obtain ⟨s, hs⟩ := isCompact_univ.elim_finite_subcover U hU hcover
-  refine (s.finite_toSet.image value).subset ?_
+  obtain ⟨g, hg⟩ := exists_locallyConstant_of_closedPoint_open_neighborhoods
+    point value hclosed hlocal
+  apply g.range_finite.subset
   rintro _ ⟨i, rfl⟩
-  obtain ⟨j, hj, hij⟩ := Set.mem_iUnion₂.mp (hs (Set.mem_univ (point i)))
-  exact ⟨j, hj, (hvalue j i hij).symm⟩
+  exact ⟨point i, hg i⟩
 
 end TopologicalSpace
 

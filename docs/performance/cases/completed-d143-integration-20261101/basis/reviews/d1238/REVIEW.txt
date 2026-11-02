@@ -1,0 +1,79 @@
+D1238 ordinary mathematical and source-applicability review
+
+Verdict: ordinary PASS, relative to the current source anchors accepted for this assignment. No additional target-specific mathematical premise is left open in the reviewed construction. This is not compiler acceptance, an axiom audit, writing acceptance, or established-status review. The reviewer did not author the construction or either repair.
+
+Question and fixed source basis
+
+The reviewed question is the inherited actual unbounded exceptional geometric-fibre comparison, its specialization to an ordinary sheaf coefficient, and its naturality in sheaf-module morphisms over a fixed ring. No new general existence theorem for the six operations was assigned or concluded.
+
+The source root is MAIN integration-30b6 at b0f8ca3f44be620dde8b40f65e1eec0143e45db4. The effective 10-source basis is first-ready-sources.json plus remaining-ready-sources.json, superseding FieldSections.lean by repair-01-ready.json and Unbounded/DirectImage.lean by refinement-02-ready.json. current-ready-sources.json projects exactly these bytes. SOURCE-BASIS.json records all full SHA-256 values, the 13 accepted current anchors, the three selected native stalk replacements, the inspected dependency spans, archived comparison sources and pinned Mathlib spans. Fixed copies are kept in snapshot/. These copies, not a mutable path alone, identify this verdict.
+
+The endpoint CompactSupport/Unbounded/SingleGeometricFiber.lean remains exactly the original archived source, SHA-256 3cee415f5f588475c2a5e1e9b0f0aa47a759fd1a5204732dae2644ac8a89cdac. The original D1238 packet, archived source and original conditions were inspected. No historical accepted/complete label or unbound build491 receipt was used as proof or compiler evidence.
+
+Conditions and exact result-specific conclusions
+
+All statements below retain the original conditions: X and S are schemes in universe u; S is quasi-compact and quasi-separated; f:X -> S is quasi-compact, separated and locally of finite type; Omega is a separably closed field in Type u; s:Spec(Omega) -> S is the actual point; Lambda:Type(u+1) is a commutative ring; N is a positive natural number with N * 1_Lambda = 0. Derived-category worlds for X, S, the literal pullback s x_S X, Spec(Omega), and ModuleCat Lambda remain independent. The original source, target and raw compactification-model families remain explicit in the geometric-fibre result. Every q is an arbitrary integer. No constructibility, finite underlying coefficient value, Noetherianity, residue-characteristic invertibility, scalar-ring-change naturality, or bounded-below restriction is added.
+
+Write i_s for pullback.snd s f and a_s for pullback.fst s f. H^q denotes the actual native DerivedCategory.homologyFunctor at q, and Rf_!, s^*, RΓ and RΓ_c denote the actual source functors below, not abstract endpoint placeholders.
+
+1. D1238#moduleExceptionalUnboundedGeometricFiberIso — PASS.
+   Naturally in every K in the full unbounded D(ModuleSheaf X Lambda), the source constructs
+       (H^q(Rf_! K))_s ~= H^q(RΓ_c(a_s)(i_s^* K)).
+   The fibre is the literal categorical pullback s x_S X, and i_s^* is moduleUnboundedDerivedInverseImage. RΓ_c(a_s) is moduleExceptionalDirectImageUnbounded a_s Lambda followed by actual unbounded module global sections.
+
+2. D1238#moduleExceptionalUnboundedSingleGeometricFiberIso — PASS.
+   For every ordinary ModuleSheaf F on X, the isomorphism above specializes via the original degree-zero singleFunctor to
+       (H^q(Rf_!(F[0])))_s ~= H^q(RΓ_c(a_s)((i_s^* F)[0])).
+   The displayed right coefficient is the actual native moduleInverseImage i_s Lambda applied to F. This is the ordinary coefficient in the original requested fibre law.
+
+3. D1238#moduleExceptionalUnboundedSingleGeometricFiberIso_naturality — PASS.
+   For every phi:F -> G over the same Lambda, the square between these two fibre isomorphisms commutes with the actual functor maps of phi. The proof is exactly the naturality law of the constructed natural isomorphism. It proves fixed-ring coefficient naturality, without asserting change of scalar ring.
+
+Coverage and map normalization
+
+The ten target files were read in full, including their mathematical prose. The relevant statements, definitions and normalization proofs in the named current anchors and native stalk replacements were read; accepted background existence results were not reopened into a global audit.
+
+Actual sections: Coefficients.moduleGlobalSections is the inverse of the existing ringed/module-valued sheaf equivalence followed by Constructible.Modules.moduleGlobalSections. That supplier is the native sheafSections evaluated at the original etaleTerminal object. The transported constant/sections adjunction proves the right-adjoint and finite-limit assertions; additive underlying sections use the existing moduleSheafInverseUnderlyingIso. No extra coefficient model is introduced.
+
+Field exactness: moduleFieldTerminalGerm_isIso applies the terminal-index colimit theorem to the opposite of fieldTerminalPointIsInitial. This uses the actual identity point of Spec(Omega). moduleFieldSectionsFiberIso has the original terminal germ as its hom component in ModuleCat Lambda and uses its actual naturality. Finite colimits follow from the native point-fibre exactness and the existing coefficient equivalence; finite limits follow from the sections adjunction. Thus the exactness used by all later comparisons is supplied, not assumed as a conclusion-shaped interface.
+
+Selected native stalk: moduleGeometricStalk is the existing ConstantRing.pointFibre, definitionally the same coefficient equivalence followed by the actual point's module-valued fibre. moduleStalkInverseImageIso has no open-immersion hypothesis: that hypothesis begins later in its source file. Its inverse-image-valued bridge is the same four-factor transport through moduleInverseImageTransportIso and the inverse coefficient equivalence as in the archive. Native pullback is the original ringed pullback and its transport retains the original adjunction unit.
+
+Archived mate versus current point-comap route: the current geometricPointComapFiberIso uses exactly the archived pointEquiv, namely the Hom bijection from Over.mapPullbackAdj; its forward map is pulledBackPoint. The induced map on point fibres sends the germ indexed by p at U to the germ indexed by pointEquiv(U,p). The pinned sheafFiberComapIso is the adjunction mate of the identity comparison on the skyscraper of the comap point. Consequently the composite sends that germ through the original inverse-image adjunction unit and then to the target germ indexed by pointEquiv(U,p). This is precisely the archived skyscraper-product reindexing mate, whose product coordinate at p is the coordinate at pointEquiv(U,p). Germs determine the maps out of each fibre colimit, and adjunction mates are unique, so this preserves the original normalization. This is an independent mathematical correspondence argument, not a claim that a new Lean equality lemma was compiled. Reusing the current supplier avoids copying legacy ModuleStalkPullback and its duplicate stalk definitions.
+
+Unbounded sections and homology: moduleUnboundedDerivedGlobalSections is the actual unboundedRightDerivedFunctor of those sections, with the existing Grothendieck source instance and constructed K-injective replacement. It has the original universal localization unit. Over Spec(Omega), rightDerivedUnique compares this functor with the exact mapDerivedCategory, using those actual units on all complexes; the source proves the unit equation. The homology comparison is the existing exact-functor localization comparison, with its original cochain/short-complex homology maps. This is a full unbounded comparison, not extension from values known only on D+.
+
+Actual compact support and exchange: RΓ_c is the chosen actual exceptional functor composed with actual unbounded sections. Its compactification comparison is simply the existing exceptional comparison whiskered by sections, with the stated hom-app equation. The geometric-fibre comparison first applies the proved stalk/homology comparison, then the existing moduleExceptionalDirectImageUnboundedBaseChangeIsoOfNonempty. That supplier uses normalized raw exchange, closed densification and canonical compactification comparison. It has the model-transport equation and is not an arbitrary isomorphism chosen between the desired endpoints. On the Nagata range its supplied compactification choice and the existing exceptional functor coincide. For a_s, Spec(Omega) supplies the base geometry and base change supplies separatedness, local finite type and quasi-compactness. The stated original model families supply every selected ambient model without identifying their independent worlds.
+
+Ordinary specialization: the final single comparison is the pinned mapDerivedCategorySingleFunctor. Its definition retains the singleFunctorIsoCompQ, the exact localization factor and the native singleMapHomologicalComplex comparison. Whiskering the whole fibre isomorphism by the degree-zero singleFunctor and applying this comparison yields exactly the requested ordinary coefficient law. Functor associators only rebracket the composites.
+
+Versioned continuation and minimal models
+
+The initially frozen FieldSections source fa124d934a8d8cbfeeeb0bf317749c6f85802347399f8f270cb5aaac16b3db6b is superseded for current use by repair01 b1f0d7ae245064125481f6e56dfc4fdb79348f2ab75f0ba431ef160e59117a95. The only relevant change passes the identical terminal-germ IsIso proof explicitly to asIso. The forward morphism and its naturality are unchanged; no new mathematical hypothesis or arbitrary inverse is introduced.
+
+The initial Unbounded/DirectImage source c2be1b872f76600943b253f214600d9bb844e7cef63878c516ae4fa715d7c6c1 is superseded by refinement02 6a3c5bbd9ff669003bf986b7194471e6e8e83e906019695fa784cc562952308a. The compact-support value and homology now require only the derived model of moduleExceptionalCompactification a, matching the existing exceptional value supplier. Full middleModels remains on comparisons with every compactification. Constructors and operational maps are unchanged, and the original endpoint's full families instantiate this one chosen model. This reduces unnecessary implementation input without collapsing distinct categories or universes.
+
+Exclusions, evidence and remaining limits
+
+An import-edge traversal from the actual native D1238 endpoint found no intersection with the original 40 held/unaccepted draft paths and no missing Aglib import path. This is a source-exclusion check only; it is not an audit of all declarations reached or of all 1397 inherited claims. The original compact-support candidate closure also contains none of those held paths.
+
+The mathematical verdict uses the accepted current supplier closure identified in SOURCE-BASIS.json. There is no extra target-specific existence, comparison or finiteness premise hidden behind a generic interface in these ten files. Broader operations such as composition, pasting coherence, finiteness/constructibility conclusions and scalar-ring-change naturality are outside this result.
+
+Compiler validation remains with /root/recover_compile_frontier and repairs with /root/d_compact_support_integration. No compiler invocation, test, lint, axiom audit, replay, client check, source repair or Git mutation was performed by this reviewer. The original build491 is unbound. A reported earlier native failure on the superseded FieldSections presentation supplies no acceptance of repair01 or refinement02. Reconcile the broker's actual invocation, captured source and dependency identities with this basis before claiming current compiler acceptance. This report introduces no extra acceptance chain.
+
+No mathematical repair is requested for this fixed basis. Later load-bearing changes require affected review continuation; unchanged coverage remains reusable. Established-status assignment or retention would require the separate formal review capability and writing gate, which this ordinary verdict cannot supply.
+
+Reproduction of source identity
+
+From the review directory, the following command checks the fixed copies and, while MAIN retains this candidate, the live source hashes. It does not compile anything:
+
+python3 - <<'CHECK'
+from pathlib import Path
+import hashlib, json
+b=json.loads(Path('SOURCE-BASIS.json').read_text())
+for k in ('target_sources','accepted_current_anchors','selected_replacement_suppliers','additional_inspected_dependency_spans'):
+    for p,h in b[k].items():
+        assert hashlib.sha256((Path('snapshot/main')/p).read_bytes()).hexdigest()==h, p
+        assert hashlib.sha256((Path(b['main_root'])/p).read_bytes()).hexdigest()==h, p
+print('Reviewed source identities match.')
+CHECK

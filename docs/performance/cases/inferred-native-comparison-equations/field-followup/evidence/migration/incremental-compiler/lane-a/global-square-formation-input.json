@@ -1,0 +1,35 @@
+{
+  "phase": "Global-square-faithful-formation-diagnostic",
+  "diagnostic_source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/diagnostics/GlobalSquareFormation.lean",
+  "source_sha256": "55c4d276604ae1b371deda0edb86e845ff5fe6a70fbccbb6e09be84ebf4641a6",
+  "metadata": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/diagnostics/GlobalSquareFormation.json",
+  "metadata_sha256": "79b2b5de7256bf33d0ceb6326832aeb99a290ede8d2d686bcec85d77cbb4c542",
+  "declared_basis": "candidate-v8 Global2ba754 actualA50957408/sourceead92 and fixed first96/105 repairs in candidate-v9-prepared",
+  "predicates": [
+    "representedBaseChange_square_formation",
+    "constantComparison_square_formation"
+  ],
+  "module_scope": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.SheafColimit",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleDirectImageMate"
+  ],
+  "payload": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/lane-a/global-square-formation-payload.py",
+  "payload_sha256": "9389d78d9bf3cda0ed541a45194a05a989e03716bcc3d93e3719e7026c8517eb",
+  "previous_actual_source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/lane-a/zero-v3-coefficient4-2d527dd0.json",
+  "boundary": "Scoped faithful formation probes for the actual two native square propositions after only first96/105 root repairs. Each proposition is a theorem binder (_h : P), not a def : Prop. This is diagnostic-only, not mathematical proof or acceptance.",
+  "execution": "normal r5tools owned phase; native no-build import readiness (no rebuild) then exact run-scratch formation module with managed LEAN",
+  "phase_state": "raw-scratch formation0; native-option-equivalence withdrawn; conditional utility only",
+  "updated_utc": "2026-10-28T11:05:00.413169+00:00",
+  "session_id": 43921,
+  "run": "remote-9971871b51874eee85fb256b97040c89",
+  "source": "bcd6d52dad5c73643d09b6ee31eafc6db93824731fe091c568d4147f47e9196a",
+  "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/lane-a/global-square-formation-9971871b.json",
+  "native_exit": 0,
+  "diagnostic_exit": 0,
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-9971871b51874eee85fb256b97040c89/receipt.json",
+  "observed_diagnostics": [],
+  "native_library_options_forwarded": false,
+  "native_option_equivalence_withdrawn": true,
+  "raw_option_evidence": "Managed LEAN resource wrapper used but scratch argv had no native module.setup or per-library -D flags. Full raw effective option map was not separately recorded; G96 was observed as warning. Source-local options remain exactly those in each frozen input.",
+  "coverage_correction": "Preserve actual raw result/source/argv and conditional utility; do not infer equivalent native-option formation or proof acceptance. No old-input replay requested by Root."
+}

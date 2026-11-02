@@ -1,0 +1,214 @@
+/- Active R-only final assembly. Uses the same native constants, selected
+relative objects, group-square arrow and original inverseImageAdjunction g.
+No final-square assumption is added. -/
+
+private theorem representedGroupEqIso_inv {V W : Scheme.{u}}
+    {f k : W ⟶ V} (h : f = k) (H : Grp (Over V)) :
+    (representedGroupEqIso h H).inv.hom.hom =
+      (eqToIso (congrArg (fun a => Over.pullback a) h)).inv.app H.X := by
+  subst k
+  rfl
+
+private theorem representedGroupSquareIso_inv {V W V' W' : Scheme.{u}}
+    (f : V ⟶ W) (f' : V' ⟶ W') (g : W' ⟶ W) (g' : V' ⟶ V)
+    (h : f' ≫ g = g' ≫ f) (H : Grp (Over W)) :
+    (representedGroupSquareIso f f' g g' h H).inv.hom.hom =
+      (Over.pullbackSquareIso f f' g g' h).inv.app H.X := by
+  change (representedGroupCompIso f g' H).hom.hom.hom ≫
+      (representedGroupEqIso h H).inv.hom.hom ≫
+      (representedGroupCompIso g f' H).inv.hom.hom = _
+  rw [representedGroupCompIso_hom, representedGroupEqIso_inv,
+    representedGroupCompIso_inv]
+  rfl
+
+private theorem representedRestriction_literal (Y : Over X) :
+    (representedDirectImageRestrictionIso g B).hom.app (op Y) =
+      (etaleDirectImageRestrictionIso Y.hom g).hom.app
+          (representedSheaf (baseChangedGroup Y.hom (ConstantFinite.representation B X).group)) ≫
+        (directImage (pullback.fst g Y.hom)).map
+          ((representedEtaleRestrictionIso (pullback.snd g Y.hom)
+            (baseChangedGroup Y.hom (ConstantFinite.representation B X).group)).hom ≫
+            representedSheafMap
+              ((representedGroupSquareIso Y.hom (pullback.fst g Y.hom) g
+                  (pullback.snd g Y.hom) pullback.condition
+                  (ConstantFinite.representation B X).group).inv ≫
+                (Over.pullback (pullback.fst g Y.hom)).mapGrp.map
+                  (constantGroupBaseChangeIso g B).hom)) ≫
+        constantRepresentedDirectImageMap B (pullbackSymmetryOverIso g Y).inv := by
+  apply Sheaf.hom_ext
+  apply (cancel_mono
+    (constantDirectImageCoordinatesIso B ((Over.pullback g).obj Y)).hom).mp
+  have hL := representedDirectImageRestrictionIso_coordinates g B Y
+  change ((representedDirectImageRestrictionIso g B).hom.app (op Y)).hom ≫
+      (constantDirectImageCoordinatesIso B ((Over.pullback g).obj Y)).hom =
+    Functor.whiskerLeft (siteEtalePostcompose g).op
+        (constantDirectImageCoordinatesIso B Y).hom ≫
+      (coordinateRestrictionIso g B Y).hom at hL
+  change ((representedDirectImageRestrictionIso g B).hom.app (op Y)).hom ≫ _ =
+    _ ≫ _ ≫ (constantRepresentedDirectImageMap B (pullbackSymmetryOverIso g Y).inv).hom ≫ _
+  rw [hL, constantRepresentedDirectImageMap_coordinates]
+  apply NatTrans.ext
+  funext U
+  apply AddCommGrpCat.hom_ext
+  apply AddMonoidHom.ext
+  intro s
+  apply ULift.ext
+  let U₀ := (Scheme.Etale.forget T).obj U.unop
+  let H := (ConstantFinite.representation B X).group
+  let q := pullback.fst g Y.hom
+  let p := pullback.snd g Y.hom
+  let D := (Over.pullback q).obj U₀
+  let a : (Over.pullback Y.hom).obj ((Over.map g).obj U₀) ⟶
+      (Over.pullback Y.hom).obj H.X := s.down.toMul
+  let e := (Over.pullbackPostcomposeIso Y.hom g).hom.app U₀
+  let j := Over.RelativeTests.mapApp U₀ (Over.RelativeTests.symmetryOverIso g Y).inv
+  let r := (restrictionTestsIso g Y).hom.app U.unop
+  let t := representedGroupSquareIso Y.hom q g p pullback.condition H
+  let m := (Over.mapPullbackAdj p).homEquiv D ((Over.pullback Y.hom).obj H.X) (e ≫ a)
+  let k := ((Over.mapPullbackAdj q).homEquiv D ((Over.pullback g).obj H.X)).symm
+    (m ≫ t.inv.hom.hom)
+  have hK : k.left ≫ pullback.fst H.X.hom g = e.left ≫ a.left ≫ pullback.fst H.X.hom Y.hom := by
+    change (((Over.mapPullbackAdj q).homEquiv D ((Over.pullback g).obj H.X)).symm
+        (m ≫ t.inv.hom.hom)).left ≫ pullback.fst H.X.hom g = _
+    rw [representedGroupSquareIso_inv]
+    exact Over.RelativeTests.pasting_homEquiv_fst Y.hom g H.X U₀ a
+  have hR : r.left = j.left ≫ e.left :=
+    Over.RelativeTests.restrictionSchemeIso_hom_eq_pasting g Y U₀
+  have hOver :
+      (Over.mapPullbackAdj g).homEquiv
+          ((directImageTests ((Over.pullback g).obj Y)).obj U.unop) H.X
+          (r ≫ ((Over.mapPullbackAdj Y.hom).homEquiv _ H.X).symm a) = j ≫ k := by
+    apply Over.OverMorphism.ext
+    apply pullback.hom_ext
+    · have hl :
+          ((Over.mapPullbackAdj g).homEquiv _ H.X
+            (r ≫ ((Over.mapPullbackAdj Y.hom).homEquiv _ H.X).symm a)).left ≫
+              pullback.fst H.X.hom g =
+            (r ≫ ((Over.mapPullbackAdj Y.hom).homEquiv _ H.X).symm a).left :=
+        pullback.lift_fst _ _ _
+      rw [hl, Over.comp_left, Over.comp_left, Category.assoc, hK, hR]
+      change (j.left ≫ e.left) ≫ (a.left ≫ pullback.fst H.X.hom Y.hom) = _
+      simp only [Category.assoc]
+    · exact (Over.w _).trans (Over.w (j ≫ k)).symm
+  change Additive.ofMul
+      ((Over.mapPullbackAdj g).homEquiv _ H.X
+        (r ≫ ((Over.mapPullbackAdj Y.hom).homEquiv _ H.X).symm a) ≫
+          (constantGroupBaseChangeIso g B).hom.hom.hom) =
+    Additive.ofMul
+      (j ≫ (((Over.mapPullbackAdj q).homEquiv D
+          (ConstantFinite.representation B T).group.X).symm
+        ((m ≫ t.inv.hom.hom) ≫
+          (Over.pullback q).map (constantGroupBaseChangeIso g B).hom.hom.hom)))
+  rw [(Over.mapPullbackAdj q).homEquiv_naturality_right_symm]
+  apply congrArg Additive.ofMul
+  rw [← Category.assoc, hOver]
+
+private theorem representedRestriction_canonical (Y : Over X) :
+    (inverseImageEtaleIso g).hom.app (constantRepresentedDirectImage B Y) ≫
+        (representedDirectImageRestrictionIso g B).hom.app (op Y) =
+      (etaleBaseChangeIso Y.hom g).hom.app
+          (representedSheaf (baseChangedGroup Y.hom (ConstantFinite.representation B X).group)) ≫
+        (directImage (pullback.fst g Y.hom)).map
+          ((representedSheafBaseChangeIso (pullback.snd g Y.hom)
+              (baseChangedGroup Y.hom (ConstantFinite.representation B X).group)).hom ≫
+            representedSheafMap
+              ((representedGroupSquareIso Y.hom (pullback.fst g Y.hom) g
+                  (pullback.snd g Y.hom) pullback.condition
+                  (ConstantFinite.representation B X).group).inv ≫
+                (Over.pullback (pullback.fst g Y.hom)).mapGrp.map
+                  (constantGroupBaseChangeIso g B).hom)) ≫
+        constantRepresentedDirectImageMap B (pullbackSymmetryOverIso g Y).inv := by
+  rw [representedRestriction_literal]
+  simp only [etaleBaseChangeIso, Iso.trans_hom, Functor.isoWhiskerLeft_hom,
+    Functor.isoWhiskerRight_hom, NatTrans.comp_app, Functor.whiskerLeft_app,
+    Functor.whiskerRight_app, Iso.symm_hom, Functor.map_comp, Category.assoc]
+  rw [← Functor.map_comp_assoc, representedEtaleRestrictionIso_original]
+
+/-- The original coordinate comparison is the actual canonical exchange
+component, proved through their same original g-adjunction unit. -/
+theorem constantPushforwardRestrictionIso_hom_eq_etaleBaseChangeComponent (Y : Over X) :
+    (constantPushforwardRestrictionIso g B).hom.app (op Y) =
+      (constantPushforwardEtaleBaseChangeComponent g B Y).hom := by
+  let q := pullback.fst g Y.hom
+  let p := pullback.snd g Y.hom
+  let Q : Over T := Over.mk q
+  let R := (Over.pullback g).obj Y
+  let E := constantRepresentedDirectImageIso B Y
+  let E' := constantRepresentedDirectImageIso B R
+  let EQ := constantRepresentedDirectImageIso B Q
+  let H := (ConstantFinite.representation B X).group
+  let e₀ := (representedSheafBaseChangeIso Y.hom H).symm ≪≫
+    (inverseImage Y.hom).mapIso (ConstantFinite.representation B X).iso ≪≫
+    (inverseImageConstantIso Y.hom).app (ConstantFinite.value B)
+  let e₁ := (representedSheafBaseChangeIso q (ConstantFinite.representation B T).group).symm ≪≫
+    (inverseImage q).mapIso (ConstantFinite.representation B T).iso ≪≫
+    (inverseImageConstantIso q).app (ConstantFinite.value B)
+  let d := (representedGroupSquareIso Y.hom q g p pullback.condition H).inv ≫
+    (Over.pullback q).mapGrp.map (constantGroupBaseChangeIso g B).hom
+  let δ := (constantPushforwardRestrictionIso g B).hom.app (op Y)
+  let κ := (constantPushforwardEtaleBaseChangeComponent g B Y).hom
+  have hδ : δ = (inverseImage g).map E.inv ≫
+      (inverseImageEtaleIso g).hom.app (constantRepresentedDirectImage B Y) ≫
+      (representedDirectImageRestrictionIso g B).hom.app (op Y) ≫ E'.hom := rfl
+  have hLeft : (inverseImage g).map E.hom ≫ δ ≫ E'.inv =
+      (inverseImageEtaleIso g).hom.app (constantRepresentedDirectImage B Y) ≫
+        (representedDirectImageRestrictionIso g B).hom.app (op Y) := by
+    rw [hδ]
+    simp only [Category.assoc, ← Functor.map_comp_assoc, Iso.hom_inv_id,
+      Functor.map_id, Category.id_comp, Category.comp_id]
+  have hn := (etaleBaseChangeIso Y.hom g).hom.naturality e₀.hom
+  change (inverseImage g).map E.hom ≫
+      (etaleBaseChangeIso Y.hom g).hom.app (ConstantFinite.coefficient B Y.left) =
+    (etaleBaseChangeIso Y.hom g).hom.app (representedSheaf (baseChangedGroup Y.hom H)) ≫
+      (directImage q).map ((inverseImage p).map e₀.hom) at hn
+  have hs := constantPushforwardFunctor_map B (pullbackSymmetryOverIso g Y).inv.op
+  change (constantPushforwardFunctor (X := T) B).map (pullbackSymmetryOverIso g Y).inv.op =
+    EQ.inv ≫ constantRepresentedDirectImageMap B (pullbackSymmetryOverIso g Y).inv ≫ E'.hom at hs
+  have hRight : (inverseImage g).map E.hom ≫ κ ≫ E'.inv =
+      (inverseImageEtaleIso g).hom.app (constantRepresentedDirectImage B Y) ≫
+        (representedDirectImageRestrictionIso g B).hom.app (op Y) := by
+    calc
+      _ = ((inverseImage g).map E.hom ≫
+          (etaleBaseChangeIso Y.hom g).hom.app (ConstantFinite.coefficient B Y.left)) ≫
+          (directImage q).map ((inverseImageConstantIso p).hom.app (ConstantFinite.value B)) ≫
+          EQ.inv ≫ constantRepresentedDirectImageMap B (pullbackSymmetryOverIso g Y).inv := by
+        rw [constantPushforwardEtaleBaseChangeComponent_hom, ← etaleBaseChangeIso_hom, hs]
+        simp only [Category.assoc, Iso.hom_inv_id, Category.comp_id]
+      _ = (etaleBaseChangeIso Y.hom g).hom.app
+            (representedSheaf (baseChangedGroup Y.hom H)) ≫
+          (directImage q).map
+            ((inverseImage p).map e₀.hom ≫
+              (inverseImageConstantIso p).hom.app (ConstantFinite.value B) ≫ e₁.inv) ≫
+          constantRepresentedDirectImageMap B (pullbackSymmetryOverIso g Y).inv := by
+        rw [hn]
+        change _ = _ ≫ (directImage q).map
+          ((inverseImage p).map e₀.hom ≫
+            (inverseImageConstantIso p).hom.app (ConstantFinite.value B) ≫ e₁.inv) ≫ _
+        simp only [Functor.map_comp, Category.assoc]
+      _ = (etaleBaseChangeIso Y.hom g).hom.app
+            (representedSheaf (baseChangedGroup Y.hom H)) ≫
+          (directImage q).map
+            ((representedSheafBaseChangeIso p (baseChangedGroup Y.hom H)).hom ≫
+              representedSheafMap d) ≫
+          constantRepresentedDirectImageMap B (pullbackSymmetryOverIso g Y).inv := by
+        rw [constantCoefficient_square Y.hom q g p pullback.condition B]
+      _ = _ := (representedRestriction_canonical g B Y).symm
+  have hMaps := hLeft.trans hRight.symm
+  apply ((inverseImageAdjunction g).homEquiv _ _).injective
+  change (inverseImageAdjunction g).unit.app _ ≫ (directImage g).map δ =
+    (inverseImageAdjunction g).unit.app _ ≫ (directImage g).map κ
+  apply (cancel_epi E.hom).mp
+  apply (cancel_mono ((directImage g).map E'.inv)).mp
+  have hη := (inverseImageAdjunction g).unit.naturality E.hom
+  have hu := congrArg
+    (fun k => (inverseImageAdjunction g).unit.app (constantRepresentedDirectImage B Y) ≫
+      (directImage g).map k) hMaps
+  simpa only [Functor.map_comp, ← Category.assoc, ← hη] using hu
+
+/-- Both original constructions retain the same isomorphism after their
+actual homs are identified by the original adjunction. -/
+theorem constantPushforwardRestrictionIso_eq_etaleBaseChangeComponent (Y : Over X) :
+    (constantPushforwardRestrictionIso g B).app (op Y) =
+      constantPushforwardEtaleBaseChangeComponent g B Y := by
+  apply Iso.ext
+  exact constantPushforwardRestrictionIso_hom_eq_etaleBaseChangeComponent g B Y

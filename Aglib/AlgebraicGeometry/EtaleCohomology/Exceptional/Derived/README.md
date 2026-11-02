@@ -67,6 +67,10 @@ Ext vanishing. It does not assert that the underlying sheaf is injective.
 comparison with abelian sheaves; exactness supplies the inverse-image
 comparison. Both comparisons retain their original composite-unit equations,
 and all four derived-category universes remain independent.
+They use the shared `rightDerivedFunctorPlusThreeFactorIso` constructor and
+its unit law. The two `_eq_original` theorems identify the resulting maps
+with the original homology-preservation and relative-acyclicity factors;
+the coefficient ring remains arbitrary.
 
 `UnderlyingAdjunction` proves that these same specified comparisons are mates
 under the original native derived adjunctions. Its exact inverse-image square
@@ -84,12 +88,44 @@ source cube, the six exact-comparison equations, and the original adjunction
 mate identifications. All eight derived universes remain independent. Neither
 properness nor torsion nor exchange invertibility is assumed or concluded.
 
-General torsion proper base change is still an external mathematical supplier.
-The forgetting square identifies the original maps but does not itself prove
-that either exchange, or a proper-refinement comparison, is invertible.
+General torsion proper base change has its separate
+[proper-exchange suppliers](../../Proper/README.md). The forgetting square
+identifies the original maps; invertibility of an exchange or a
+proper-refinement comparison requires the corresponding supplier and range.
 
 `FiniteBaseChange` combines that same forgetting square with exact
 conservativity and the proved finite abelian exchange. It proves invertibility
 of the original genuine-module D+ exchange for finite morphisms over arbitrary
 rings, retaining the eight independent derived universes. This finite case
 does not require general torsion proper base change.
+
+## Additional source entry points
+
+- [BaseChangeCompositeUnit](BaseChangeCompositeUnit.lean)
+- [BaseChangeTargetModels](BaseChangeTargetModels.lean)
+- [CompactifiedToDirectImageComposition](CompactifiedToDirectImageComposition.lean)
+- [DirectImageContraction](DirectImageContraction.lean)
+- [DirectImageStructuralSquare](DirectImageStructuralSquare.lean)
+- [DirectImageTargetModels](DirectImageTargetModels.lean)
+- [IdentityFactorizationAdjunctionTransport](IdentityFactorizationAdjunctionTransport.lean)
+- [IdentityFactorizationCoherence](IdentityFactorizationCoherence.lean)
+- [IdentityFactorizationCounit](IdentityFactorizationCounit.lean)
+- [IdentityFactorizationUnit](IdentityFactorizationUnit.lean)
+- [IdentityFactorization](IdentityFactorization.lean)
+- [IdentityTargetComposition](IdentityTargetComposition.lean)
+- [IdentityTripleComparison](IdentityTripleComparison.lean)
+- [InverseImageModelIdentity](InverseImageModelIdentity.lean)
+- [InverseImageTorsionUnit](InverseImageTorsionUnit.lean)
+- [LowerShriekCompositionCoherence](LowerShriekCompositionCoherence.lean)
+- [LowerShriekComposition](LowerShriekComposition.lean)
+- [ModelComparisonTorsion](ModelComparisonTorsion.lean)
+- [NormalizationNaturality](NormalizationNaturality.lean)
+- [NormalizationStructural](NormalizationStructural.lean)
+- [Normalization](Normalization.lean)
+- [OpenComposition](OpenComposition.lean)
+- [OpenTargetModels](OpenTargetModels.lean)
+- [OpenToDirectImageBaseChange](OpenToDirectImageBaseChange.lean)
+- [OpenToDirectImageComposition](OpenToDirectImageComposition.lean)
+- [OpenToDirectImageOverComposition](OpenToDirectImageOverComposition.lean)
+- [OpenTripleComparison](OpenTripleComparison.lean)
+- [ProperNormalizationComparison](ProperNormalizationComparison.lean)

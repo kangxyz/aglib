@@ -6,6 +6,8 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.HomSection
+public import Aglib.AlgebraicGeometry.Modules.InternalHom.BidualLocallyFree
+public import Aglib.AlgebraicGeometry.Modules.Invertible.Affine
 public import Aglib.AlgebraicGeometry.Modules.InternalHom
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Basic
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Dual
@@ -64,87 +66,6 @@ namespace AlgebraicGeometry.Scheme.Modules.Invertible
 universe u
 variable (X : Scheme.{u}) (M : SheafOfModules.{u} X.ringCatSheaf)
 
-/-- Evaluation by a section, on every smaller open. -/
-def bidualSection (U : X.Opens) (m : M.val.obj (op U)) :
-    (dualSheaf X (dualSheaf X M)).val.obj (op U) :=
-  ⟨{
-    app V := AddCommGrpCat.ofHom {
-      toFun ell := ell.val.app (op (Over.mk (𝟙 V.unop.left)))
-        (M.val.map V.unop.hom.op m)
-      map_zero' := rfl
-      map_add' ell ell' := rfl }
-    naturality {V W} i := by
-      ext ell
-      change ell.val.app (op (Over.mk i.unop.left)) (M.val.map W.unop.hom.op m) =
-        X.presheaf.map i.unop.left.op
-          (ell.val.app (op (Over.mk (𝟙 V.unop.left))) (M.val.map V.unop.hom.op m))
-      have hn := NatTrans.naturality_apply ell.val
-        (Over.homMk i.unop.left : Over.mk i.unop.left ⟶
-          Over.mk (𝟙 V.unop.left)).op (M.val.map V.unop.hom.op m)
-      change ell.val.app (op (Over.mk i.unop.left))
-          (M.val.map i.unop.left.op (M.val.map V.unop.hom.op m)) = _ at hn
-      rw [← M.val.map_comp_apply, ← op_comp, Over.w i.unop] at hn
-      exact hn
-  }, by
-    intro V r ell
-    change X.presheaf.map (𝟙 V.unop.left).op r •
-      (show Γ(X, V.unop.left) from ell.val.app (op (Over.mk (𝟙 V.unop.left)))
-        (M.val.map V.unop.hom.op m)) = _
-    simp⟩
-
-/-- The canonical evaluation morphism to the actual double dual. -/
-def bidualMap : M ⟶ dualSheaf X (dualSheaf X M) where
-  val.app U := ModuleCat.ofHom {
-    toFun m := bidualSection X M U.unop m
-    map_add' m n := by
-      apply Subtype.ext
-      change (_ : _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.RawHom X (dualSheaf X M)
-        (SheafOfModules.unit X.ringCatSheaf) U.unop) = _
-      ext V ell
-      change ell.val.app (op (Over.mk (𝟙 V.unop.left))) (M.val.map V.unop.hom.op (m + n)) = _
-      rw [map_add, map_add]
-      rfl
-    map_smul' r m := by
-      apply Subtype.ext
-      change (_ : _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.RawHom X (dualSheaf X M)
-        (SheafOfModules.unit X.ringCatSheaf) U.unop) = _
-      ext V ell
-      change ell.val.app (op (Over.mk (𝟙 V.unop.left)))
-          (M.val.map V.unop.hom.op (r • m)) =
-        X.presheaf.map V.unop.hom.op r •
-          (show Γ(X, V.unop.left) from ell.val.app (op (Over.mk (𝟙 V.unop.left)))
-            (M.val.map V.unop.hom.op m))
-      rw [M.val.map_smul]
-      exact ell.property _ _ _ }
-  val.naturality {U V} i := by
-    apply ModuleCat.hom_ext
-    apply LinearMap.ext
-    intro m
-    apply Subtype.ext
-    change (_ : _root_.AlgebraicGeometry.Scheme.Modules.InternalHom.RawHom X (dualSheaf X M)
-      (SheafOfModules.unit X.ringCatSheaf) V.unop) = _
-    ext W ell
-    change ell.val.app (op (Over.mk (𝟙 W.unop.left))) (M.val.map W.unop.hom.op (M.val.map i m)) =
-      ell.val.app (op (Over.mk (𝟙 W.unop.left))) (M.val.map (W.unop.hom ≫ i.unop).op m)
-    rw [← M.val.map_comp_apply, op_comp]
-    rfl
-
-/-- The defining formula is literally evaluation, with restriction to the chosen open. -/
--- Keep bidual evaluation; simpNF only unfolds the implicit open-restriction component types.
-@[nolint simpNF, simp] theorem bidualMap_apply (U : X.Opens) (m : M.val.obj (op U))
-    (V : (Over U)ᵒᵖ) (ell : (dualSheaf X M).val.obj (op V.unop.left)) :
-    ((bidualMap X M).val.app (op U) m).val.app V ell =
-      ell.val.app (op (Over.mk (𝟙 V.unop.left))) (M.val.map V.unop.hom.op m) := rfl
-
-theorem bidualMap_evaluate (U : X.Opens) (m : M.val.obj (op U))
-    (ell : (dualSheaf X M).val.obj (op U)) :
-    ((bidualMap X M).val.app (op U) m).val.app (op (Over.mk (𝟙 U))) ell =
-      ell.val.app (op (Over.mk (𝟙 U))) m := by
-  rw [bidualMap_apply]
-  congr 1
-  change M.val.presheaf.map (𝟙 (op U)) m = m
-  exact ConcreteCategory.congr_hom (M.val.presheaf.map_id (op U)) m
-
 /-- In the dual unit coordinates induced from a local basis, bidual evaluation
 has exactly the original coordinates. -/
 theorem bidualMap_local_coordinates (U : X.Opens)
@@ -181,20 +102,8 @@ theorem bidualMap_over_isIso (U : X.Opens)
 
 /-- Actual local unit bases prove that the canonical map, rather than an
 isomorphism merely obtained from a Picard-class equality, is invertible. -/
-instance bidualMap_isIso (L : LineBundle X) : IsIso (bidualMap X L.val) := by
-  have h := locallyBijective_of_local_isIso X (bidualMap X L.val).val (by
-    intro x
-    obtain ⟨U, hxU, ⟨e⟩⟩ := (isLocallyRankOne_iff_local_unit X L.val).mp L.property x
-    refine ⟨U, hxU, ?_⟩
-    have := bidualMap_over_isIso X L.val U e
-    exact Functor.map_isIso (SheafOfModules.forget (X.ringCatSheaf.over U))
-      ((SheafOfModules.overFunctor X.ringCatSheaf U).map (bidualMap X L.val)))
-  have := h.1
-  have := h.2
-  have : IsIso ((SheafOfModules.forget X.ringCatSheaf).map (bidualMap X L.val)) :=
-    _root_.PresheafOfModules.isIso_of_locallyBijective (J := Opens.grothendieckTopology X)
-      (bidualMap X L.val).val L.val.isSheaf (dualSheaf X (dualSheaf X L.val)).isSheaf
-  exact isIso_of_reflects_iso (bidualMap X L.val) (SheafOfModules.forget X.ringCatSheaf)
+instance bidualMap_isIso (L : LineBundle X) : IsIso (bidualMap X L.val) :=
+  bidualMap_isIso_of_finiteLocallyFree L.val
 
 /-- The canonical bidual isomorphism of an actual line bundle. -/
 def bidualIso (L : LineBundle X) : L.val ≅ (dualLineBundle X (dualLineBundle X L)).val :=

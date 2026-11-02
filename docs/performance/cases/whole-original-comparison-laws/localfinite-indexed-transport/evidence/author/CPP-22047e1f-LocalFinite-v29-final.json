@@ -1,0 +1,73 @@
+{
+  "question": "Ordinary LocalFinite owning-root CPP on the complete integrated indexed-transport Values/native construction",
+  "run": "remote-22047e1ff0a3472cb67017d7b5df75fd",
+  "source": "3bac8faa52cdef9b8a34cc9a7fea0a1558bf6e8df9fcd59edf15112cd9c1fd1f",
+  "source_receipt_sha256": "23ed33f2115e7f411738badebe5d0c47172ecc45c130d9e4b4da5902f7e438db",
+  "group_closed": true,
+  "exit_code": 0,
+  "input_drift": [],
+  "fresh_frontends": 2,
+  "fresh_passes": 2,
+  "passed": [
+    {
+      "path": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean",
+      "sha256": "e1d0a92737405aec68ed643078b79eaf9bcbbab736d82ea9aa429caed14a133d",
+      "verdict": "fresh_pass",
+      "exit_code": 0,
+      "elapsed_seconds": 3.6481851637363434,
+      "compiler_pid": 303326,
+      "wrapper_pid": 303324,
+      "started_utc": "2026-10-30T13:00:32.838180+00:00",
+      "finished_utc": "2026-10-30T13:00:36.486360+00:00",
+      "run": "remote-22047e1ff0a3472cb67017d7b5df75fd",
+      "source": "3bac8faa52cdef9b8a34cc9a7fea0a1558bf6e8df9fcd59edf15112cd9c1fd1f"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean",
+      "sha256": "0997517ed89eba60a57505a6665d1fc722afec046cf6afaa726ff8e4462d6988",
+      "verdict": "fresh_pass",
+      "exit_code": 0,
+      "elapsed_seconds": 49.771697878837585,
+      "compiler_pid": 303336,
+      "wrapper_pid": 303334,
+      "started_utc": "2026-10-30T13:00:37.051164+00:00",
+      "finished_utc": "2026-10-30T13:01:26.822870+00:00",
+      "run": "remote-22047e1ff0a3472cb67017d7b5df75fd",
+      "source": "3bac8faa52cdef9b8a34cc9a7fea0a1558bf6e8df9fcd59edf15112cd9c1fd1f"
+    }
+  ],
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 8,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536,
+    "threads": 4
+  },
+  "wall_seconds": 59.58710178732872,
+  "peak_rss_bytes": 4347551744,
+  "OOM": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "canonical_evidence": {
+    "receipt.json": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-22047e1ff0a3472cb67017d7b5df75fd/receipt.json",
+      "sha256": "6931db7ca1c9f07128936e0a395d55b64bfda135bec5cf3d7398316250a8d68e"
+    },
+    "compiler-events.jsonl": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-22047e1ff0a3472cb67017d7b5df75fd/compiler-events.jsonl",
+      "sha256": "3d159c1fb83410d88f23e32fb937c3563e666c1384b8acdc18ed7ad3ee3eb33e"
+    },
+    "build.log": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-22047e1ff0a3472cb67017d7b5df75fd/build.log",
+      "sha256": "80984f252e4d537fa0530dc2b67dbf44795fe7ae92153a0387baedb5051939ec"
+    }
+  },
+  "fixed_source_packet": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-indexed-transport-v29/LIVE_READY.json",
+  "source_guard_boundary": "Broker exact53 source/public-header guards plus author exact current e1d0/099 checks. Full SOURCE descriptor requested as archival only; receipt binds its raw SHA23ed33f2. No blanket downstream pass inferred.",
+  "meaning": "The complete current helper module and original native LocalFinite module actually pass under native package options/default budget. The original finding is eligible for scoped closure together with exact supported review/original conditions. NativeLine has no pass inferred.",
+  "historical_limits": "Old V25/V26/V28 native timeouts, f94/fe592 and e2d8/86fe ordinary component failures, and P34 formation-only evidence retain their source and question; no unique-cause or matched-speedup claim."
+}

@@ -32,3 +32,8 @@ General generic-section constructions live in
 The source identities are recorded in each leaf against the frozen R5 packet
 at `f8a3314ddecffcada2ec721d26d56a937bed9690`. These are ordinary scheme and
 local-ring interfaces; no arithmetic-model existence is assumed or proved.
+
+[ProperImage](ProperImage.lean) identifies algebraically closed field points
+of an original proper schematic image with actual source lifts.
+[SurjectiveLift](SurjectiveLift.lean) supplies actual field-point lifts for
+surjective locally finite-type maps over algebraically closed fields.

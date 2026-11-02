@@ -49,21 +49,12 @@ theorem galoisCech_exists_primitive
   apply Presheaf.Cech.sheaf_primitive_of_free_primitive _ _ _ 1 _ c hc
   intro a ha
   let e := galoisCechAmitsurIso E L
-  let q (n : ℕ) := (HomologicalComplex.Hom.isoApp e n).addCommGroupIsoToAddEquiv
-  have ha' : (amitsurUnitComplex E L).d 2 3 (q 2 a) = 0 := by
-    have h := ConcreteCategory.congr_hom (e.hom.comm 2 3) a
-    change (amitsurUnitComplex E L).d 2 3 (q 2 a) =
-      q 3 ((Presheaf.Cech.freeComplex
-        (Presheaf.Cech.familyMap (galoisCoverFamily E L))).d 3 2 ≫ a) at h
-    rw [ha, map_zero] at h
-    exact h
-  obtain ⟨b, hb⟩ := amitsurUnitComplex_exists_primitive E L K (q 2 a) ha'
-  refine ⟨(q 1).symm b, (q 2).injective ?_⟩
-  have h := ConcreteCategory.congr_hom (e.hom.comm 1 2) ((q 1).symm b)
-  change (amitsurUnitComplex E L).d 1 2 (q 1 ((q 1).symm b)) =
-    q 2 ((Presheaf.Cech.freeComplex
-      (Presheaf.Cech.familyMap (galoisCoverFamily E L))).d 2 1 ≫ (q 1).symm b) at h
-  rw [AddEquiv.apply_symm_apply] at h
-  exact h.symm.trans hb
+  have hExact : (amitsurUnitComplex E L).ExactAt 2 := by
+    rw [HomologicalComplex.exactAt_iff' _ 1 2 3 (by simp) (by simp)]
+    exact (ShortComplex.ab_exact_iff _).mpr
+      (amitsurUnitComplex_exists_primitive E L K)
+  have hOriginal := hExact.of_iso e.symm
+  rw [HomologicalComplex.exactAt_iff' _ 1 2 3 (by simp) (by simp)] at hOriginal
+  exact ((ShortComplex.ab_exact_iff _).mp hOriginal) a ha
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Fields

@@ -1,0 +1,89 @@
+# Ordinary final-source review: continuity triangle calculus8
+
+**PASS on the exact coherent-v11 eight-source closure.** Complete whole comparison, coefficient and section assembly is below Scheme; native wrappers supply original actual data and evaluate proved whole laws. Actual-head origins are identified to the same adjunction data, and all26 old native headers/data/worlds are preserved. No proof-critical gap remains within the assigned mathematical/source/model/hypothesis and compiler boundary.
+
+This is an independent ordinary review, distinct from the closed cohoCocone5/units5 reports. It creates no formal status action, new acceptance/test/replay/audit gate or hold on independent work. The reviewer authored no source repair or load-bearing derivation and performed no new execution. Other accepted reports are unchanged.
+
+## Fixed inputs and retained review
+
+Native HEAD: `54d6974ace11bf7d197aa925cb8cade86db8a24f`.
+Frozen source: `/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-triangle-calculus-core-staging/coherent-v11/source`.
+Current READY/RUN/RESULT/CORRESPONDENCE and captured baseline/RELOCATION_SCOPE packets live under `/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-triangle-calculus-core-staging`. Current execution rules in `/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/CURRENT_EXECUTION.md` were read; old freeze/unexecuted notes retain their historical basis and do not override final actual source/run.
+
+| Current source | Exact SHA-256 |
+|---|---|
+| `Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.lean` | `fa14c8fb37ea897c0c722a6a073485cdc5841e082b8e46d54ff723fcea71efec` |
+| `Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitFunctor.lean` | `4a7f4e31f433d4ae5a18cfab10c98695ad31f63edd02924332163368443223da` |
+| `Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean` | `ac9d78c2e93ec218429c2d91bb992044a61545c990a307f1c7e9e4386f7847b8` |
+| `Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackSectionsBase.lean` | `f4048a82dda28c139e856828bafc476546fde3565e937ca05e7bce6eb42b9bf4` |
+| `Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cone.lean` | `f61149f13918388487eeffb9ccd7b59f431b09c62dc696dfd80f3708c46d9c20` |
+| `Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean` | `b90c6e00cebc0a318c791295d95c72dd8d2e2cddcff650f59e569d25799d7afe` |
+| `Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.lean` | `0f177c76cd1785fc033a9305faa79ca85bb1e58ccd3258060ae010c881dbaace` |
+| `Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean` | `d83329fbb8acfc60ce876d0a81edf793090d5fe9c0082b0c0d137c177ec55d50` |
+
+The existing Square9 v10 independent ordinary verdict is reused only for unchanged original CoefficientSquares c419 bodies and read-only SquareCoefficientAdjoint bfea whole-source correspondence, with its stated conditions. Its review pair is `/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/docs/performance/cases/whole-original-comparison-laws/review/continuity-coefficient-squares.{md,json}`. The exact relocation and all new TRIANGLE8 laws/raw factories/native wrappers are independently reviewed here; the old cohoCocone5 verdict is not broadened.
+
+## Result-specific verdicts
+
+- **triangle8#whole-right-composition-transport: PASS.** Existing actual Cone right_comp and coherent source right comparison/transport calculations give complete whole right composition/transport equations, then their original component laws. The native existing Cone.ofCocone internally proves its right fields from the same source Coherent certificate; desired native composition is not reintroduced as a premise. Sources: `Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cone.lean:58-88,227-315`, `Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean:59-99`.
+
+- **triangle8#original-mate-relocation: PASS.** The original conjugate_triangleIso_hom docstring/name/binder e/type/body is moved verbatim into Constancy before hD. Its original ordered used uJ/vJ/uA/vA context and explicit parameters are preserved, with no Coherent premise; existing public imports reexport it. All other CoefficientSquares bytes are unchanged. Sources: `Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean:25-57`, `Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean:original block removed at144-150`.
+
+- **triangle8#coefficient-unit-and-transport: PASS.** Whole identity-triangle cancellation follows from the original left-unit law, and its component gives actual coefficient identity. Coefficient composition with supplied arrow equality follows from the existing coherent original triangle composition; no final native law is an input. Sources: `Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.lean:151-194`.
+
+- **triangle8#whole-square-triangle-assembly: PASS.** The original whole right square contracts through its original compositors/equality transport. Complete square/triangle pasting is derived from the same D right-triangle composition paths and contraction before native realization or coefficient-system selection. Sources: `Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.lean:100-149`.
+
+- **triangle8#actual-head-factories-and-evaluation: PASS.** Regular whole propositions retain the actual original comparison heads. D factories derive the whole laws from the same original D and independently proved whole identities to its comparisons. Raw evaluators keep independent category/Hom worlds and evaluate only those proved laws. Their intermediate whole-equation proof parameters are internally discharged in native callers, not new public desired-coherence premises or arbitrary same-endpoint Iso substitutions. Sources: `Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.lean:22-86,276-332,351-370`.
+
+- **triangle8#relative-triangle-and-section-construction: PASS.** Relative forward/inverse/pre/postcomposition triangle laws follow from actual left associativity and elementary inverse cancellation. Ordinary original section-transformation naturality and the proved triangle yield the full whole section square. The existing complete coefficientExtendIso/SectionsIso construction retains its actual component/naturality/whole-value formulas; no new realization is chosen. Sources: `Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.lean:196-274,334-440`.
+
+- **triangle8#native-coefficient-cone: PASS.** Same schemeAdjunctionData whole triangle equals the original directImageTriangleIso, and original left/right triangle mate, coefficient unit and transported composition specialize lower laws. Original directImageTriangleIso, diagramConeAdjunctionData with its literal leftTriangle override, and cone coefficient objects/maps/functor data are preserved. Sources: `Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitFunctor.lean:21-111`.
+
+- **triangle8#native-direct-image-composition: PASS.** Original native cone triangles and reindexed right compositor satisfy original component composition/transport by specializing whole source/Cone laws before evaluation. Literal original diagramDirectImageComp_inv and all four original public headers are preserved. Sources: `Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.lean:20-100`.
+
+- **triangle8#native-original-square: PASS.** The three original public transport/contraction/square-triangle equations come from complete lower whole factories at the actual original comparisons. Existing read-only SquareCoefficientAdjoint supplies whole right functor/compositor/square origins. Definitional input normalization retains actual Eq proof types; raw evaluators deliver original values without new native coherence premises. Sources: `Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean:21-137`.
+
+- **triangle8#native-relative-sections: PASS.** Whole relative forward/inverse triangle and section squares specialize the lower complete calculus before component evaluation. The original section bifunctor, evaluation, base and étale comparison Iso definitions/maps and all eleven old public headers retain their actual data and original values. Sources: `Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackSectionsBase.lean:18-186`.
+
+- **triangle8#coefficient-square-dependency-retention: PASS on the stated retained dependency scope plus verified relocation.** Eligible fixed Square9 v10 ordinary review of original c419 coefficient-square bodies and original SCA correspondence is reused on unchanged mathematics. Current removal-only CoefficientSquares diff and exact earlier-context relocation preserve that dependency. This does not reuse old cohoCocone5 as a verdict on TRIANGLE8. Sources: `Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean:all unchanged source outside original mate block`, `Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean:20-66 and retained whole-source correspondence`.
+
+## Complete lower construction and original-map boundary
+
+Existing Cone.ofCocone retains one original source D, actual apex adjunctions/comparison maps and its proofs of right_id/right_comp from D.Coherent. Exposing their whole natural-transformation form does not ask native callers for the desired composition conclusion. The original source right transport proof reduces ordinary arrow equalities and applies right inv_assoc; whole triangle transport/composition follows before evaluation.
+
+Coefficient identity/composition and relative forward/inverse/pre/postcomposition use existing original left-unit/associativity, actual Iso cancellation and ordinary section-transformation naturality. Full square/triangle pasting compares two actual coherent triangle paths and contracts the original square below Scheme. The complete operational coefficientExtendIso/SectionsIso constructors retain their stage maps, naturality and whole section values. The migration therefore contains the full argument, rather than only its last component chase.
+
+Regular whole propositions retain original comparison heads. The D factories require independently proved **whole equalities** of those supplied heads to the same D comparisons, eliminate these identities and apply the lower derived laws. Native actual-comparison factories prove those identities with original bridges first. Raw variable-category evaluators then obtain literal original component values. Their intermediate whole-law proof parameters are discharged inside the native construction; no desired public coherence/naturality hypothesis or arbitrary endpoint Iso is substituted.
+
+Native ac9 normalizes only required original projection/unop/symmetry views in the partially instantiated factory and proof-input types with dsimp. Its original Eq proofs remain Eq, addressing the historical af9 encoding failure. This adds no model, source/target object, comparison map or premise. Final public component proofs directly use the raw evaluators.
+
+All26 original native headers remain: DiagramDirectImageTriangleComp4, DiagramLimitFunctor8, DirectImageSquareTriangle3, PullbackSectionsBase11. Complete native baseline diffs preserve original data definitions, including directImageTriangleIso, literal diagramDirectImageComp_inv, selected diagramConeAdjunctionData and original leftTriangle override, coefficient objects/maps/functor, pullbackSectionsBifunctor and base/étale comparison Iso data. Three proposed duplicate native bridge copies are absent; the existing read-only SquareCoefficientAdjoint is the single right-functor/composition/transport/square producer. Inspected import directions are acyclic, with no generic Scheme backedge.
+
+The original conjugate_triangleIso_hom block is moved verbatim from CoefficientSquares to Constancy before hD: identical doc/name/binder e/type/body, used universes uJ/vJ/uA/vA and ordered context/explicit parameters. It gains no Coherent premise. Current CoefficientSquares is exactly old prefix/suffix after that one removal, and its public import reexports the original name. All other coefficient-square bytes are unchanged.
+
+One selected D and the existing genuine native Cone/models are reused. Raw evaluation has independent category object/Hom worlds through u4/v4; raw section output B remains independently sized. Original D index/family and native u/uI/vI worlds and AbelianSheaf.u,u+1 are retained. No Ext/injective-existence, cartesian-square, continuity, new geometry or arbitrary base-change-mate invertibility premise is introduced. Original functor units/counits, triangles and actual global-section maps remain the suppliers.
+
+The complete new lower derivations, full four native files and diffs, exact mate relocation and required retained interfaces were read. For unchanged native f404, coherent-v8 Extension12eb→current0f is insertion-only: required precomposition/section definitions are byte-identical, while the new additions are independently reviewed. Its earlier source-bound frontend pass is therefore explicitly compatible, not relabeled as a later fresh build.
+
+## Actual compiler scope and CPP boundary
+
+| Module | Exact source prefix | Actual producing run | Actual producing SOURCE |
+|---|---|---|---|
+| Cone | `f61149f1` | `remote-f62382ef588a4cf688c44bedd08c4b8b` | `b8599555240b2b76c3686efb7eb6216cca8e2b05f9cea9e53948c374a606ca93` |
+| ConeConstancy | `b90c6e00` | `remote-32b0b319b0534121836b5d69a22718d0` | `998a4a2e7b38a97ee4251fb4664d9580fb999929189fd80e7fe92d2b80cb4b0d` |
+| CoefficientSquares | `d83329fb` | `remote-32b0b319b0534121836b5d69a22718d0` | `998a4a2e7b38a97ee4251fb4664d9580fb999929189fd80e7fe92d2b80cb4b0d` |
+| ConeExtension | `0f177c76` | `remote-88d1a641efd34eeabbd07613e356406c` | `4cdfbe282316fc8e3505d64d6bbbcc3c0499fb11815f4493bc1535bb14a3a07a` |
+| DiagramLimitFunctor | `4a7f4e31` | `remote-88d1a641efd34eeabbd07613e356406c` | `4cdfbe282316fc8e3505d64d6bbbcc3c0499fb11815f4493bc1535bb14a3a07a` |
+| DiagramDirectImageTriangleComp | `fa14c8fb` | `remote-88d1a641efd34eeabbd07613e356406c` | `4cdfbe282316fc8e3505d64d6bbbcc3c0499fb11815f4493bc1535bb14a3a07a` |
+| PullbackSectionsBase | `f4048a82` | `remote-556fecfbf1ef45c7931df903bbe2d1b9` | `4b47226fa78183173602fc8a5ef85b48c5f88e1f2b307d44ed57fd4ab5075e4b` |
+| DirectImageSquareTriangle | `ac9d78c2` | `remote-81ad62292d6e4d6198d85ddbdf51ea0f` | `71a5a26ba00dd0d8a55518986734d3fbcddb2e06927b9c9cf7df707de7d16734` |
+
+Only final DirectImageSquareTriangle ac9 was freshly compiled in `remote-81ad62292d6e4d6198d85ddbdf51ea0f`, source `71a5a26ba00dd0d8a55518986734d3fbcddb2e06927b9c9cf7df707de7d16734`, frontend0/4.778887823 s. Selected actual receipt/native coverage records were inspected; source receipt SHA is `511eee6003474e35780ffd3435695da44a7ad7717246843f640a2bedcb08fd9f`. It closed with no drift, two frontends0/1 and aggregate exit1 solely from foreign FiniteLocallyConstantCompactness/FP7bf. No aggregate or TorsionColimit.Bounded pass is inferred. Other seven passes remain exact or explicitly compatible retained evidence at their actual sources.
+
+Actual final receipt/log/events are `/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-81ad62292d6e4d6198d85ddbdf51ea0f/`; other source-bound RUN/RESULT records identify the retained producers. Actual runtime/pins remain Lean4.34.1 (`5045d0056413266e57c625dcd7c365b10e377c52`), Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, original native options/default200000, jobs8/threads4, Lean memory12800 MiB/RSS65536 MiB. No build/test/lint/replay/client/audit was run by the reviewer.
+
+Historical8d530 failed EqToHom-app34 and kernel200k37/54 in B7d460/source4a6f489.583 s; historicalaf9 failed two Eq-proof-input applications after normalization to True in D88d1/source4cdf. These are their own failed sources, not ac9 outcomes. The formation-only1126/B2f15 diagnostic exited1 with two file-header lints; it is neither clean PASS nor a proof of original P. Unexecuted v4/v5 proposals and the Cgraph coverage correction remain historical.
+
+CPP supports only identified source implementation, module compiler coverage and this scoped semantic/source verdict. No isolated formation cost, unique kernel cause or matched speedup is inferred from historical diagnostics versus current elapsed time. Full Etale/PBC, whole migration, formal status and final client/certification claims remain outside the report. The precise8 chain may be recorded complete on this basis while preserving the mixed aggregate FP failure; this report creates no new gate for other work.
+
+Remaining gap: none within the exact assigned eight-source closure under the explicit premises. Root owns broader integration and existing final predicates. Observed prepared root: `lake --rehash build Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DirectImageSquareTriangle`; this locates existing evidence, with no rerun requested.

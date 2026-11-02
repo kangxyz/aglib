@@ -1,0 +1,7 @@
+# Current completed D cohorts: source-bound evidence
+
+This case records the 143-source candidate: D934 READY-3 (122 sources), D1238 current (10), and D1220 READY01 (11). The [applied vector](basis/publication/new-d-integration/APPLIED-143.json) records source identities and 59 matched direct suppliers. Later D extensions are excluded.
+
+The [D934 coverage map](coverage/D934-CURRENT-122-CPP.json) binds all 122 current sources to successful frontend events across actual mixed-D runs. The [D1238 branch](coverage/D1238-CURRENT-BRANCH-PASSES.json) records three later passes with seven earlier passes retained; [D1220](coverage/D1220-CURRENT-BRANCH-PASSES.json) records eleven current branch passes. The [7fe2 receipt](remote-7fe2aeb108204fc2b16808602177c50a/receipt.json), [66f6 receipt](remote-66f6e88025754162baa64b2e6599b169/receipt.json), and [0242 receipt](remote-024252a8a3e8416fb70e91b98f3d85c7/receipt.json) retain their distinct source bases and full raw logs/events. The 0242 run exited 1 after four passes and an older FieldSections failure; 66f6 exited 1 after 115 passes and an older UnitModelComparison failure; 7fe2 exited 0 with 30 passes. Partial projections are not whole-batch conclusions.
+
+The three [ordinary reviews](basis/reviews/) record mathematical applicability on their stated sources and provider boundaries; they are not established-status reviews. Final native source, entry, stock and audit predicates for the integrated cut remain pending. No closure of the larger inherited D corpus is claimed.

@@ -1,0 +1,23 @@
+[
+  "python3",
+  "-u",
+  "-m",
+  "r5tools",
+  "lean",
+  "remote",
+  "--config",
+  "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/runtime/d934-repair3-d1238-refine2-d1220-ready1/config.json",
+  "build",
+  "--jobs",
+  "8",
+  "--threads",
+  "4",
+  "--lean-memory-mib",
+  "12800",
+  "--rss-limit-mib",
+  "65536",
+  "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionAssociativity",
+  "Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Unbounded.DirectImage",
+  "Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Unbounded.SingleGeometricFiber",
+  "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.ExceptionalCoproducts"
+]

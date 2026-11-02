@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.Algebra.Category.ModuleCat.CoprimeTrace
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.EtaleModuleTrace
 public import Aglib.AlgebraicGeometry.EtaleCohomology.ModuleCoefficients.FiniteDirectImage
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.CoverConservativity
@@ -86,11 +87,10 @@ theorem moduleSheaf_cohomology_finite_of_finiteEtale_coprime
       ((moduleInverseImage R Y.obj.hom).obj F))) :=
     (Finite.finite_moduleCohomology_directImage_iff R Y.obj.hom
       ((moduleInverseImage R Y.obj.hom).obj F) q).mpr inferInstance
-  let := hfinite
-  obtain ⟨r, hr⟩ := exists_finiteEtale_moduleSheafRetraction_map R Y n hn F p hcop hp H
-  apply Module.Finite.of_surjective r.hom
-  intro x
-  refine ⟨H.map ((moduleImageAdjunction R Y.obj.hom).unit.app F) x, ?_⟩
-  exact congrArg (fun a => a x) hr
+  let : Module.Finite R (H.obj
+      ((moduleInverseImage R Y.obj.hom ⋙ moduleDirectImage R Y.obj.hom).obj F)) := hfinite
+  obtain ⟨tr, htr⟩ := exists_finiteEtale_moduleSheafTrace R Y n hn
+  exact ModuleCat.finite_obj_of_coprime_trace
+    ((moduleImageAdjunction R Y.obj.hom).unit.app F) (tr.app F) n p (htr F) hcop hp H
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

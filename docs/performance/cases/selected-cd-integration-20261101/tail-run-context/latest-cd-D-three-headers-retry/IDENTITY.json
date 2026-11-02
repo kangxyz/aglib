@@ -1,0 +1,21 @@
+{
+  "operation": "pending-D-three-header-retry",
+  "lane": "D",
+  "source_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoPasting.lean": "5b0209166190213595c038c4282c7838e47dd8a01b3db12ef2c077765af767f6",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/TargetIsoBaseChange.lean": "db4f3eb8f27602d15ca9c217717c3e84d8a892b3cfbe4a077ce2e2f91bf3800d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/NormalizedBaseChangeIterationComparison.lean": "12ca04f836d3785d6490a4290286cea4709f6db6e42eb4e6b29976d93705aa3e"
+  },
+  "roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.SourceIsoPasting",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.TargetIsoBaseChange",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.NormalizedBaseChangeIterationComparison",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CartesianBaseChangeIdentity",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CartesianBaseChangeIteration"
+  ],
+  "prior_actual": "66d/72c5 CLOSED1=129PASS3duplicateheaderFAIL; Eq0fb/publicExchangea5/StalkExchange+bddbelowterminalsgreen",
+  "boundary": "Only3identicalduplicateimportsremoved, importSET/body/maps/models/premises/options unchanged; preserve129passes/boundedbelow2/core3, compile3changedleaves+2actualunboundedconsumers only. No newmath/probe/client/replay/Git.",
+  "actual_run": "remote-10e29f36898940d8ba75c7f80f7d3008",
+  "actual_source_digest": "b1c7e1aad367c47bf385ffbce71ee23ad8c1b32b014e7ad85bd37031a166b827",
+  "local_session": 93111
+}

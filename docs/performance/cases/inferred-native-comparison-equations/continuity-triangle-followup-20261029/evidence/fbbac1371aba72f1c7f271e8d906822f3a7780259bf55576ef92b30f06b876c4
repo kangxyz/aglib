@@ -1,0 +1,33 @@
+{
+  "authorization": "Root explicit additional exact path grant for single-declaration relocation only; all other CoefficientSquares bytes frozen. Current captured A34 untouched.",
+  "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean",
+  "baseline_sha256": "c4192e757a270f45c2fa220d6576036f56a55f30bf0a08dfa9f3bb1c05fd8cad",
+  "declaration": "CategoryTheory.InjectiveSystem.AdjunctionData.conjugate_triangleIso_hom",
+  "original_block": "/-- The actual triangle comparisons have their actual right-triangle mates. -/\ntheorem conjugate_triangleIso_hom {x y t : J}\n    (p : x \u27f6 t) (f : x \u27f6 y) (q : y \u27f6 t) (e : f \u226b q = p) :\n    conjugateEquiv ((D.adj f).comp (D.adj q)) (D.adj p)\n      (D.triangleIso p f q e).hom = (D.triangleRightIso p f q e).hom := by\n  rw [D.triangleIso_eq_leftAdjointCompIso]\n  exact Adjunction.conjugateEquiv_leftAdjointCompIso_inv _ _ _ _\n\n",
+  "original_block_sha256": "de25ad69762e2d6b4ebdb63938a27c826de6dad774c91c2e94a44211fb643be1",
+  "used_universe_order": [
+    "uJ",
+    "vJ",
+    "uA",
+    "vA"
+  ],
+  "context_order": [
+    "J",
+    "Category J",
+    "A",
+    "forall j Category (A j)",
+    "D"
+  ],
+  "explicit_parameter_order": [
+    "x",
+    "y",
+    "t",
+    "p",
+    "f",
+    "q",
+    "e"
+  ],
+  "coherent_premise": "none; moved before hD declaration",
+  "preservation": "Verbatim original docstring/name/binder e/type/body; same namespace and exact ordered used context. Existing public CoefficientSquares import reexports Constancy. No alias or duplicate implementation.",
+  "other_bytes": "New CoefficientSquares equals original prefix+suffix after removing exactly the recorded declaration block."
+}

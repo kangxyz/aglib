@@ -1,0 +1,9 @@
+{
+  "question": "Repair actual frontend longLine finding only",
+  "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalPurity.lean",
+  "before_sha256": "2f94dc2be7c87a58a839bc844f14e2cef6b6b00f490311b427df23c231d621cd",
+  "after_sha256": "bc2a75f14741e4c18df992c8f4f70f361a3c3b6928ee01356b53f7cd5253092e",
+  "change": "Wrap existing canonicalLocalPuritySectionsAdditive declaration after colon; name/type/RHS/locality/priority/options unchanged",
+  "input_basis": "Actual002a/sourcea5 shared owner-batch CPP frontend longLine finding line55",
+  "compiler": "Not run by author; old2f94 finding retained on old source"
+}

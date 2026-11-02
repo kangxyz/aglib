@@ -1,0 +1,377 @@
+{
+  "action": "phase",
+  "actor_executable": "/root/miniconda3/bin/python3.12",
+  "admission": {
+    "ceilings": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+    "final_observation": {
+      "active_compilers_by_run": {},
+      "cpu_cores": 0.6860030045276447,
+      "cpu_usage_usec": 1615389563904,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 268435456,
+      "memory_current_bytes": 33819262976,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 0.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 27415658496
+    },
+    "initial_observation": {
+      "active_compilers_by_run": {},
+      "cpu_cores": 0.02406146837172214,
+      "cpu_usage_usec": 1615152915439,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 805306368,
+      "memory_current_bytes": 33804435456,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 1.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 27405627392
+    },
+    "max_frontends_if_alone": 8,
+    "mode": "elastic"
+  },
+  "allow_library_roots": false,
+  "cache_provenance": {
+    "configuration_sha256": {
+      "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+      "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852"
+    },
+    "environment": {
+      "LAKE_ARTIFACT_CACHE": "true",
+      "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+      "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+    },
+    "lookup": "native Lake traces/artifact cache; no per-dependency prior-hit claim"
+  },
+  "cgroup_average_cpu_cores": 1.5893779543112658,
+  "cgroup_cpu_after": {
+    "nr_periods": 6790295,
+    "nr_throttled": 18522,
+    "system_usec": 147464927326,
+    "throttled_usec": 205534316,
+    "usage_usec": 1615389565746,
+    "user_usec": 1467924638419
+  },
+  "cgroup_cpu_attribution": "whole observed cgroup; may include unrelated activity",
+  "cgroup_cpu_before": {
+    "nr_periods": 6788806,
+    "nr_throttled": 18522,
+    "system_usec": 147458040580,
+    "throttled_usec": 205534316,
+    "usage_usec": 1615152917263,
+    "user_usec": 1467694876682
+  },
+  "cgroup_cpu_seconds_delta": 236.648483,
+  "cgroup_memory_events_after": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_before": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_delta": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "command": [
+    "/root/miniconda3/bin/python3.12",
+    "-c",
+    "from pathlib import Path\nimport base64,hashlib,json,os,subprocess,sys,zlib\nb=zlib.decompress(base64.b64decode('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'));sha=hashlib.sha256(b).hexdigest();assert sha=='e9eed14736800b3c4ad655affa2d7bc8d16cd7adeb50ba74c1631da0dd821209'\ncmd=[os.environ[\"LAKE\"],\"--no-build\",\"setup-file\",'Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean']\nprint(\"NATIVE_LAKE_SETUP_COMMAND \"+json.dumps(cmd),flush=True)\nr=subprocess.run(cmd,text=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)\nif r.stderr:print(r.stderr,flush=True)\nif r.returncode:print(json.dumps({\"setup_exit\":r.returncode,\"prefix_executed\":False,\"no_rebuild_attempted\":True}),flush=True);sys.exit(r.returncode)\ns=json.loads(r.stdout);o=s.get(\"options\",{});sb=r.stdout.encode();hs=hashlib.sha256(sb).hexdigest()\nprint(\"NATIVE_MODULE_SETUP \"+json.dumps({\"name\":s.get(\"name\"),\"isModule\":s.get(\"isModule\"),\"options\":o,\"sha256\":hs,\"complete_options_equal\":o=={'autoImplicit': False, 'weak.linter.mathlibStandardSet': True, 'weak.linter.style.longFile': 1500, 'warningAsError': True}},sort_keys=True),flush=True)\nif s.get(\"name\")!='Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction' or s.get(\"isModule\") is not True or o!={'autoImplicit': False, 'weak.linter.mathlibStandardSet': True, 'weak.linter.style.longFile': 1500, 'warningAsError': True}:sys.exit(3)\nrun=Path(os.environ[\"LEAN\"]).parents[2];sp=run/\"NativeGlobal.setup.json\";sp.write_bytes(sb);p=run/\"OperationalSectionEquation-v32.lean\";p.write_bytes(b)\nargv=[os.environ[\"LAKE\"],\"--no-build\",\"env\",os.environ[\"LEAN\"],str(p),\"--setup\",str(sp)]\nprint(\"V32_NATIVE_OPERATIONAL_SECTION_EQUATION_BEGIN sha256=\"+sha,flush=True);print(\"NATIVE_DIAGNOSTIC_ARGV \"+json.dumps(argv),flush=True)\nr=subprocess.Popen(argv,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,bufsize=1)\nfor line in r.stdout: print(line,end=\"\",flush=True)\nr.wait()\nprint(\"V32_NATIVE_OPERATIONAL_SECTION_EQUATION_END exit=\"+str(r.returncode),flush=True)\nprint(json.dumps({\"prefix_exit\":r.returncode,\"source_sha256\":sha,\"native_setup_sha256\":hs,\"boundary\":\"author complete operational represented H/K/c family with finite aliases; no fullGlobalfollowup until authorrelease\"}),flush=True);sys.exit(r.returncode)\n"
+  ],
+  "command_exit_code": 1,
+  "compiler_exit_codes": [
+    1
+  ],
+  "compiler_failed": 1,
+  "compiler_invocations": 1,
+  "compiler_observation": "wrapper-events-only",
+  "compiler_scope_lease_modes": {
+    "supervisor-only": 1
+  },
+  "compiler_scope_policy": "workspace descriptors or verified live supervisor; each compiler inherits its elastic claim",
+  "compiler_succeeded": 0,
+  "concurrency_basis": "compiler wrapper start/finish intervals, each holding one slot",
+  "diagnostics": {
+    "categories": {
+      "heartbeat_budget": 2,
+      "source_name": 1
+    },
+    "first": [
+      "/root/autodl-tmp/lean-build/logs/remote-bb87efc976514e17a282d5a4cf83894a/OperationalSectionEquation-v32.lean:923:16: error: (kernel) unknown constant '_private.Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction.0.AlgebraicGeometry.Scheme.EtaleCohomology.Constructible.FiniteCogenerators.Global.representedRest",
+      "/root/autodl-tmp/lean-build/logs/remote-bb87efc976514e17a282d5a4cf83894a/OperationalSectionEquation-v32.lean:826:2: error: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (200000) has been reached"
+    ],
+    "observed_missing_count": 0,
+    "observed_missing_prefixes": {},
+    "observed_missing_prefixes_truncated": false,
+    "observed_missing_shortlist": []
+  },
+  "elapsed_seconds": 148.8937746733427,
+  "environment": {
+    "ELAN_HOME": "/root/autodl-tmp/lean-build/elan",
+    "LAKE_ARTIFACT_CACHE": "true",
+    "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+    "LAKE_OVERRIDE_LEAN": "1",
+    "LEAN_NUM_THREADS": "8",
+    "LEAN_SYSROOT": "/root/autodl-tmp/lean-build/logs/remote-bb87efc976514e17a282d5a4cf83894a/toolchain",
+    "R5_LEAN_REMOTE_PROFILE": "{\"jobs\": 8, \"lean\": \"/root/autodl-tmp/lean-build/logs/remote-bb87efc976514e17a282d5a4cf83894a/toolchain/bin/lean\", \"lean_memory_mib\": 12800, \"rss_limit_mib\": 65536, \"schema_version\": 1, \"threads\": 4}",
+    "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+  },
+  "exit_code": 1,
+  "expected_source": "54dd5654c3759f340c6dfec2e62215e67309b5e28ef52b9f7d9f9ddb8fd998ff",
+  "failure_reason": null,
+  "finished_at": "2026-10-28T19:32:59.489585+00:00",
+  "forbid_compilation": false,
+  "forced_kill": false,
+  "git_head": null,
+  "group_closed": true,
+  "incomplete_compiler_events": 0,
+  "input_drift": [],
+  "input_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/SheafColimit.lean": "29a2ae6660a08e1113bae53642ae0cb416b9caaf2872a540f1c426b2f070bc28",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/EtaleDirectImageMate.lean": "42dac0fc6c143a299c241ae5ef3def9fddd53eb0a802a61050ad3e3b3d7469cc",
+    "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+    "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+  },
+  "lock_acquired_at": "2026-10-28T19:30:30.587782+00:00",
+  "locks": {
+    "cache_fetch_exclusive": null,
+    "legacy_shared_gate": "/root/autodl-tmp/lean-build/build.lock",
+    "workspace_exclusive": "/root/autodl-tmp/lean-build/locks/workspace-fff48b6425e43ac1291c2d857ab51425b5dbb67c2ef9d8a41db237a6b2112a2d.lock"
+  },
+  "lowest_disk_free_bytes": 44702330880,
+  "modules": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.SheafColimit",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleDirectImageMate"
+  ],
+  "operation_id": "69c6eac433df45269c4b41e5b59bc89f",
+  "outcome": "source_name",
+  "peak_compiler_concurrency": 1,
+  "peak_rss_bytes": 3007369216,
+  "pgid": 982313,
+  "phase_executable_sha256": "0c05a22b0b180580a76437114a95cf138f67c8f46245acad26017c803b42b8c1",
+  "phase_label": "V32NativeOperationalSectionEquation",
+  "pins": {
+    "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+    "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+    "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+  },
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 8,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536,
+    "threads": 4
+  },
+  "resource_accounting": {
+    "global": "sampled cgroup memory/CPU, startup and growth credits; no peak-envelope reservation",
+    "isolation": "cooperative sampled admission; no per-run kernel memory isolation or OOM guarantee",
+    "run": "frontend/job/thread ceilings, sampled owned-tree RSS cutoff, own-tree pressure retreat"
+  },
+  "resources": {
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "cgroup": "/sys/fs/cgroup",
+    "cgroup_limits": [
+      {
+        "cpu.max": "3200000 100000",
+        "memory.max": "128849018880",
+        "path": "/sys/fs/cgroup"
+      }
+    ],
+    "effective_cpus": 32.0,
+    "memory_bytes": 128849018880
+  },
+  "run_dir": "/root/autodl-tmp/lean-build/logs/remote-bb87efc976514e17a282d5a4cf83894a",
+  "sampled_process_average_cpu_cores": 1.5432478658299393,
+  "sampled_process_cpu_seconds": 229.78,
+  "schema_version": 1,
+  "setup_cleanup": {
+    "removed_setup_bytes": 0,
+    "removed_setup_files": 0
+  },
+  "source_content_sha256": "54dd5654c3759f340c6dfec2e62215e67309b5e28ef52b9f7d9f9ddb8fd998ff",
+  "source_receipt_sha256": "9d3b6488ec83df747cc461cda58a552292ccbe6074c1900d0ac524dda74b9ab9",
+  "started_at": "2026-10-28T19:30:30.131190+00:00",
+  "status": "failed",
+  "summary": {
+    "action": "phase",
+    "admission": {
+      "affinity_cpus": null,
+      "ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 65536,
+        "threads": 4
+      },
+      "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+      "final_observation": {
+        "active_compilers_by_run": {},
+        "cpu_cores": 0.6860030045276447,
+        "cpu_usage_usec": 1615389563904,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 268435456,
+        "memory_current_bytes": 33819262976,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 0.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 27415658496
+      },
+      "initial_observation": {
+        "active_compilers_by_run": {},
+        "cpu_cores": 0.02406146837172214,
+        "cpu_usage_usec": 1615152915439,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 805306368,
+        "memory_current_bytes": 33804435456,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 1.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 27405627392
+      },
+      "max_frontends_if_alone": 8,
+      "mode": "elastic",
+      "request": null
+    },
+    "artifacts": {
+      "build.log": "/root/autodl-tmp/lean-build/logs/remote-bb87efc976514e17a282d5a4cf83894a/build.log",
+      "compiler-events.jsonl": "/root/autodl-tmp/lean-build/logs/remote-bb87efc976514e17a282d5a4cf83894a/compiler-events.jsonl",
+      "receipt.json": "/root/autodl-tmp/lean-build/logs/remote-bb87efc976514e17a282d5a4cf83894a/receipt.json"
+    },
+    "cgroup_memory_attribution": "whole observed cgroup; an OOM event alone does not identify its victim",
+    "cgroup_memory_events_delta": {
+      "high": 0,
+      "low": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "compiler_observation": "wrapper-events-only",
+    "compiler_scope_lease_modes": {
+      "supervisor-only": 1
+    },
+    "execution_seconds": 148.8937746733427,
+    "exit_code": 1,
+    "expected_source": "54dd5654c3759f340c6dfec2e62215e67309b5e28ef52b9f7d9f9ddb8fd998ff",
+    "first_diagnostics": [
+      "/root/autodl-tmp/lean-build/logs/remote-bb87efc976514e17a282d5a4cf83894a/OperationalSectionEquation-v32.lean:923:16: error: (kernel) unknown constant '_private.Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction.0.AlgebraicGeometry.Scheme.EtaleCohomology.Constructible.FiniteCogenerators.Global.representedRest",
+      "/root/autodl-tmp/lean-build/logs/remote-bb87efc976514e17a282d5a4cf83894a/OperationalSectionEquation-v32.lean:826:2: error: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (200000) has been reached"
+    ],
+    "frontend_failed": 1,
+    "frontend_invocations": 1,
+    "frontend_observation": "wrapper starts only; arbitrary phase tools may bypass local compiler caps",
+    "frontend_peak": 1,
+    "frontend_succeeded": 0,
+    "group_closed": true,
+    "native_exit": 1,
+    "outcome": "source_name",
+    "peak_rss_bytes": 3007369216,
+    "plan": null,
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "reason": "",
+    "run": "remote-bb87efc976514e17a282d5a4cf83894a",
+    "sampled_process_average_cpu_cores": 1.5432478658299393,
+    "source_basis": "54dd5654c3759f340c6dfec2e62215e67309b5e28ef52b9f7d9f9ddb8fd998ff",
+    "status": "failed",
+    "unwrapped_frontend_count": "unknown",
+    "wall_seconds": 149.35842071473598
+  },
+  "task_id": "etale-mainline-universal-20261024",
+  "unfinished_compiler_records": [],
+  "waiting_for": null,
+  "wall_seconds": 149.35842071473598,
+  "worker_sha256": "7b1d09f535dc951f2f3ecae857f7b77b0ffc95f8f9e55352167a39b4387729a4",
+  "workspace": "/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean"
+}

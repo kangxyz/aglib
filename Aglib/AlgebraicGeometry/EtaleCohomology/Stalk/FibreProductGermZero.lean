@@ -8,6 +8,9 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductCohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.OriginalCohomologyZero
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartHomSections
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramEtaleSections
+public import Aglib.Algebra.Homology.RightDerived.Postcomp.UnitAssembly
+public import Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.GeneratorZero
 
 /-! # Degree-zero normalization of original fibre-product cohomology germs
 
@@ -22,52 +25,6 @@ open CategoryTheory CategoryTheory.Limits CategoryTheory.Abelian Opposite
 
 universe u w s e
 
-namespace CategoryTheory.Sheaf.ModuleCoefficients
-
-private theorem derived_postcomp_zero_unit
-    {C D E : Type*} [Category* C] [Category* D] [Category* E]
-    [Abelian C] [EnoughInjectives C] [Abelian D] [Abelian E]
-    (P : C ⥤ D) (L : D ⥤ E) (Q : C ⥤ E)
-    [P.Additive] [L.Additive] [L.PreservesHomology] [Q.Additive]
-    (α : P ⋙ L ≅ Q) (M : C) :
-    L.map (P.toRightDerivedZero.app M) ≫
-        ((rightDerivedPostcompIso P L 0).symm ≪≫ rightDerivedNatIso α 0).hom.app M =
-      α.hom.app M ≫ Q.toRightDerivedZero.app M := by
-  let d := (rightDerivedPostcompIso P L 0).app M
-  have hp : (P ⋙ L).toRightDerivedZero.app M ≫ d.hom =
-      L.map (P.toRightDerivedZero.app M) := toRightDerivedZero_postcomp P L M
-  change L.map (P.toRightDerivedZero.app M) ≫
-    d.inv ≫ (NatTrans.rightDerived α.hom 0).app M = _
-  have hc : ((P ⋙ L).toRightDerivedZero.app M ≫ d.hom) ≫
-      d.inv ≫ (NatTrans.rightDerived α.hom 0).app M =
-      (P ⋙ L).toRightDerivedZero.app M ≫ (NatTrans.rightDerived α.hom 0).app M :=
-    (Category.assoc _ _ _).trans
-      (congrArg (fun k => (P ⋙ L).toRightDerivedZero.app M ≫ k)
-        (d.hom_inv_id_assoc ((NatTrans.rightDerived α.hom 0).app M)))
-  exact (congrArg (fun k => k ≫ d.inv ≫ (NatTrans.rightDerived α.hom 0).app M)
-    hp.symm).trans (hc.trans (toRightDerivedZero_naturality α.hom M))
-
-private theorem adjunction_unit_paste
-    {C D : Type*} [Category* C] [Category* D]
-    {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R)
-    {A B : C} {Y Z : D} (g : A ⟶ B) (h : L.obj B ⟶ Z)
-    (a : L.obj A ⟶ Y) (b : Y ⟶ Z) (hab : L.map g ≫ h = a ≫ b) :
-    g ≫ adj.unit.app B ≫ R.map h =
-      adj.unit.app A ≫ R.map a ≫ R.map b := by
-  rw [← Category.assoc, ← adj.unit_naturality, Category.assoc,
-    ← R.map_comp, hab, R.map_comp]
-
-private theorem source_ext_map_mk₀
-    {C D : Type*} [Category* C] [Category* D] [Abelian C] [Abelian D]
-    [HasExt.{w} C] [HasExt.{e} D]
-    (L : C ⥤ D) [L.Additive] [PreservesFiniteLimits L] [PreservesFiniteColimits L]
-    {P F : C} {Q : D} (b : Q ⟶ L.obj P) (a : P ⟶ F) :
-    (Ext.mk₀ b).comp ((Ext.mk₀ a).mapExactFunctor L) (Nat.zero_add 0) =
-      Ext.mk₀ (b ≫ L.map a) := by
-  rw [Ext.mapExactFunctor_mk₀, Ext.mk₀_comp_mk₀]
-
-end CategoryTheory.Sheaf.ModuleCoefficients
-
 namespace AlgebraicGeometry.Scheme.EtaleCohomology
 
 attribute [local instance] hasSheafifyLarge
@@ -78,11 +35,12 @@ variable {X S : Scheme.{u}} (f : X ⟶ S)
 theorem directImagePresheafSheafificationIso_unit
     (F : AbelianSheaf.{u, u + 1} X) :
     toSheafify (Scheme.smallEtaleTopology S) ((directImage f).obj F).obj ≫
-        ((directImagePresheafSheafificationIso f).hom.app F).hom = 𝟙 _ := by
-  change toSheafify (Scheme.smallEtaleTopology S) ((directImage f).obj F).obj ≫
-    (isoSheafify (Scheme.smallEtaleTopology S) ((directImage f).obj F).property).inv = _
-  rw [← isoSheafify_hom]
-  exact Iso.hom_inv_id _
+        ((directImagePresheafSheafificationIso f).hom.app F).hom = 𝟙 _ :=
+  Functor.postcompUnitIso_unit (directImage f)
+    (presheafToSheaf (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1})
+    (sheafToPresheaf (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1})
+    (sheafificationAdjunction (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1})
+    (sheafificationNatIso (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1}) rfl F
 
 /-- Exact sheafification preserves the native original degree-zero derived unit. -/
 theorem resolutionCohomologySheafificationIso_zero_unit
@@ -92,7 +50,7 @@ theorem resolutionCohomologySheafificationIso_zero_unit
         (resolutionCohomologySheafificationIso f 0).hom.app F =
       (directImagePresheafSheafificationIso f).hom.app F ≫
         (directImage f).toRightDerivedZero.app F :=
-  Sheaf.ModuleCoefficients.derived_postcomp_zero_unit
+  Functor.rightDerivedPostcompIso_comparison_zero_unit
     (directImagePresheaf f)
     (presheafToSheaf (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1})
     (directImage f) (directImagePresheafSheafificationIso f) F
@@ -102,19 +60,22 @@ theorem resolutionCohomologyToHigherDirectImage_zero_unit
     (F : AbelianSheaf.{u, u + 1} X) :
     (directImagePresheaf f).toRightDerivedZero.app F ≫
         (resolutionCohomologyToHigherDirectImage f 0).app F =
-      ((directImage f).toRightDerivedZero.app F).hom := by
-  have h := Sheaf.ModuleCoefficients.adjunction_unit_paste
+      ((directImage f).toRightDerivedZero.app F).hom :=
+  NatTrans.congr_app (Functor.rightDerivedPostcompUnitIso_transpose_zero_unit
+    (directImage f)
+    (presheafToSheaf (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1})
+    (sheafToPresheaf (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1})
     (sheafificationAdjunction (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1})
-    ((directImagePresheaf f).toRightDerivedZero.app F)
-    ((resolutionCohomologySheafificationIso f 0).hom.app F)
-    ((directImagePresheafSheafificationIso f).hom.app F)
-    ((directImage f).toRightDerivedZero.app F)
-    (resolutionCohomologySheafificationIso_zero_unit f F)
-  change _ = toSheafify (Scheme.smallEtaleTopology S) ((directImage f).obj F).obj ≫
-    ((directImagePresheafSheafificationIso f).hom.app F).hom ≫
-    ((directImage f).toRightDerivedZero.app F).hom at h
-  exact h.trans (by
-    rw [← Category.assoc, directImagePresheafSheafificationIso_unit, Category.id_comp])
+    (sheafificationNatIso (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1}) rfl) F
+
+/-- Original Hom-to-sections isomorphism at a variable coefficient arrow. -/
+private theorem originalIntegerHomSections_value {Y : Scheme.{u}}
+    (M : AbelianSheaf.{u, u + 1} Y)
+    (a : (constantSheaf (Scheme.smallEtaleTopology Y) AddCommGrpCat.{u + 1}).obj
+      (AddCommGrpCat.of (ULift.{u + 1} ℤ)) ⟶ M) :
+    (constantIntegerHomGlobalSectionsIso Y).hom.app M a =
+      Adjunction.integerHomSectionsAddEquiv (constantAdjunction Y) M a := rfl
+
 
 variable [hFibreProductGermZeroBaseExt : HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
 
@@ -155,6 +116,17 @@ local instance fibreProductGermZeroIdentityChartExt : HasExt.{e}
     (Sheaf ((𝟭 Scheme.{u}).obj V.left).smallEtaleTopology AddCommGrpCat.{u + 1}) :=
   hGermZeroChartExt
 
+omit hFibreProductGermZeroBaseExt
+    [HasExt.{s} (Sheaf ((Scheme.smallEtaleTopology X).over V) AddCommGrpCat.{u + 1})] in
+/-- The complete original zero-degree chart evaluation is its original
+Hom-section comparison after Ext-to-Hom, before inserting the source generator. -/
+private theorem originalChartZeroSections_value
+    (M : AbelianSheaf.{u, u + 1} X) :
+    (fun y : Sheaf.H.{e} ((inverseImage V.hom).obj M) 0 =>
+      (Continuity.pullbackSectionsEtaleEvaluationIso M V).hom
+        (Sheaf.H.equiv₀ ((inverseImage V.hom).obj M) (etaleTerminalIsTerminal V.left) y)) =
+      fun y => chartHomSectionsEquiv V M (Ext.addEquiv₀ y) := rfl
+
 /-- The original chart equivalence in degree zero retains the actual chart section. -/
 theorem originalCohomologyChartEquiv_equiv₀
     (F : AbelianSheaf.{u, u + 1} X)
@@ -164,29 +136,33 @@ theorem originalCohomologyChartEquiv_equiv₀
         (Sheaf.H.equiv₀ ((inverseImage V.hom).obj F) (etaleTerminalIsTerminal V.left)
           (originalCohomologyChartEquiv V F 0 x)) =
       Sheaf.Hypercohomology.sectionsAddEquiv (Scheme.smallEtaleTopology X) V F
-        (Ext.addEquiv₀ x) := by
-  obtain ⟨a, rfl⟩ := (Ext.mk₀_bijective _ _).surjective x
-  have hchart := (originalCohomologyChartEquiv_apply V F 0 (Ext.mk₀ a)).trans
-    (Sheaf.ModuleCoefficients.source_ext_map_mk₀
-      (inverseImage V.hom) (chartComparisonSource V) a)
-  have heval := congrArg (fun z =>
-    (Continuity.pullbackSectionsEtaleEvaluationIso F V).hom
-      (Sheaf.H.equiv₀ ((inverseImage V.hom).obj F)
-        (etaleTerminalIsTerminal V.left) z)) hchart
-  have hHom := congrArg (chartHomSectionsEquiv V F)
-    (Ext.addEquiv₀.apply_symm_apply
-      (chartComparisonSource V ≫ (inverseImage V.hom).map a))
-  have hcoefficient := chartHomSectionsEquiv_naturality V a (chartComparisonSource V)
-  have hsource := congrArg (a.hom.app (op V)) (chartHomSectionsEquiv_source V)
-  have hrepresented := (Sheaf.Hypercohomology.sectionsEquiv_naturality
-    (Scheme.smallEtaleTopology X) V (𝟙 _) a).symm.trans
-      (congrArg (Sheaf.Hypercohomology.sectionsAddEquiv
-        (Scheme.smallEtaleTopology X) V F) (Category.id_comp a))
-  have hzero := congrArg
-    (Sheaf.Hypercohomology.sectionsAddEquiv (Scheme.smallEtaleTopology X) V F)
-    (Ext.addEquiv₀.apply_symm_apply a)
-  exact heval.trans
-    (hHom.trans (hcoefficient.trans (hsource.trans (hrepresented.trans hzero.symm))))
+        (Ext.addEquiv₀ x) :=
+  by
+  let P := Sheaf.Hypercohomology.freeAbelianSheaf.{u + 1} (Scheme.smallEtaleTopology X) V
+  let β : preadditiveCoyoneda.obj (op P) ≅
+      (sheafSections (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj (op V) :=
+    NatIso.ofComponents
+      (fun M => (Sheaf.Hypercohomology.sectionsAddEquiv
+        (Scheme.smallEtaleTopology X) V M).toAddCommGrpIso)
+      (by
+        intro M N q
+        ext a
+        exact Sheaf.Hypercohomology.sectionsEquiv_naturality
+          (Scheme.smallEtaleTopology X) V a q)
+  have hsource := chartHomSectionsEquiv_source V
+  have hmap := originalCohomologyChartEquiv_apply V F 0 x
+  exact Functor.extZero_source_value_of_generator.{u + 2, u + 1, u + 2, u + 1, w, e}
+    (inverseImage V.hom)
+    (S := (sheafSections (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj (op V))
+    (fun M a => chartHomSectionsEquiv V M a)
+    (fun {M N} q a => chartHomSectionsEquiv_naturality V q a)
+    β.hom (chartComparisonSource V) hsource x (originalCohomologyChartEquiv V F 0 x) hmap
+    (fun y : Sheaf.H.{e} ((inverseImage V.hom).obj F) 0 =>
+      (Continuity.pullbackSectionsEtaleEvaluationIso F V).hom
+        (Sheaf.H.equiv₀ ((inverseImage V.hom).obj F) (etaleTerminalIsTerminal V.left) y))
+    (originalChartZeroSections_value V F)
+    (Sheaf.Hypercohomology.sectionsAddEquiv (Scheme.smallEtaleTopology X) V F
+      (Ext.addEquiv₀ x)) rfl
 
 end Chart
 

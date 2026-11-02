@@ -9,6 +9,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.SliceComparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.EtaleRestriction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Pullback
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Naturality
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.OriginalPullback
 public import Aglib.CategoryTheory.Sites.Hypercohomology.Terminal
 
 /-! # Original scheme pullback and the actual etale slice
@@ -61,32 +62,10 @@ theorem globalSectionsPullback_etaleRestriction {S : Scheme.{u}} (f : S ⟶ X) [
     globalSectionsPullback f F ≫
       ((inverseImageEtaleIso f).hom.app F).hom.app (op (etaleTerminal S)) =
       F.obj.map ((etaleTerminalIsTerminal X).from
-        ((siteEtalePostcompose f).obj (etaleTerminal S))).op := by
-  let := siteEtalePostcompose_continuous f
-  let adj := (siteEtalePostcomposeAdj f).sheafPushforwardContinuous
-    (E := AddCommGrpCat.{u + 1}) (Scheme.smallEtaleTopology S)
-      (Scheme.smallEtaleTopology X)
-  have hu := Adjunction.unit_leftAdjointUniq_hom_app
-    (inverseImageAdjunction f) adj F
-  have h := congrArg
-    (fun a : F ⟶ (directImage f).obj ((etaleRestriction f).obj F) =>
-      a.hom.app (op (etaleTerminal X))) hu
-  change ((inverseImageAdjunction f).unit.app F).hom.app (op (etaleTerminal X)) ≫
-      ((inverseImageEtaleIso f).hom.app F).hom.app
-        (op ((siteBaseChange f).obj (etaleTerminal X))) =
-    F.obj.map ((siteEtalePostcomposeAdj f).counit.app (etaleTerminal X)).op at h
-  change (((inverseImageAdjunction f).unit.app F).hom.app (op (etaleTerminal X)) ≫
-      ((inverseImage f).obj F).obj.map (siteBaseChangeTerminalIso f).inv.op) ≫ _ = _
-  rw [Category.assoc,
-    ((inverseImageEtaleIso f).hom.app F).hom.naturality,
-    ← Category.assoc]
-  refine (congrArg (fun k => k ≫
-    ((etaleRestriction f).obj F).obj.map (siteBaseChangeTerminalIso f).inv.op) h).trans ?_
-  change F.obj.map ((siteEtalePostcomposeAdj f).counit.app (etaleTerminal X)).op ≫
-    F.obj.map ((siteEtalePostcompose f).map (siteBaseChangeTerminalIso f).inv).op = _
-  rw [← F.obj.map_comp, ← op_comp]
-  congr 1
-  congr 1
-  exact (etaleTerminalIsTerminal X).hom_ext _ _
+        ((siteEtalePostcompose f).obj (etaleTerminal S))).op :=
+  Sheaf.SliceCohomology.unitSections_restriction
+    (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1}
+    (siteEtalePostcomposeAdj f) (inverseImageAdjunction f)
+    (etaleTerminalIsTerminal X) (siteBaseChangeTerminalIso f) F
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

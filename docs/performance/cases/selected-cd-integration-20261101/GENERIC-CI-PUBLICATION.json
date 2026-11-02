@@ -1,0 +1,24 @@
+{
+  "base": "374f73ce34df7d53e2590b4f028d6e8014f47b28",
+  "fix_commit": "e21da4116108e9b645ee5e81fbc71ac4f54d37a9",
+  "merged_peer": "374f73ce34df7d53e2590b4f028d6e8014f47b28",
+  "published_head": "e21da4116108e9b645ee5e81fbc71ac4f54d37a9",
+  "source": "Aglib/AlgebraicGeometry/Normalization/InertiaTorsor/GenericPullback.lean",
+  "sha256": "38a44417d19bb8edc88e665e2adece80a22bee78942263059eec7e8d6aa0a4eb",
+  "CPP": {
+    "run": "remote-d4e192f263cd46e486d403cd77876fd8",
+    "source": "5f20c26dfae437146cfe28ecbe86e39cff71a0079a5072b55d5a77ecd135d7c2",
+    "exit": 0,
+    "frontends_passed": 3,
+    "frontends_failed": 0
+  },
+  "stock_lint": {
+    "run": "remote-41d9819b1ba14843a1bb6729d871927d",
+    "exit": 0,
+    "linters_passed": 15,
+    "reported_unusedArguments": "passed",
+    "compiler_frontends": 0
+  },
+  "diff_check": 0,
+  "push": "success"
+}

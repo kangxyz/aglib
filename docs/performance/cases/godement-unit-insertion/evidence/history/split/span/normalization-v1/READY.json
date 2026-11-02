@@ -1,0 +1,38 @@
+{
+  "actual_basis": {
+    "source": "4c06e06973aab5d5814d8883e0bf0ccf02da9c6d798656debb20b98c3de008f2",
+    "Span_sha256": "1a16c95ff69560297946bea77015734d639c9f9298e1431fe9ef7e28dfe290a1",
+    "valid_diagnostic_run": "remote-688514002ee045b58d50b08e5af15241",
+    "diagnostic_sha256": "c335ff45f56b3b88d8050bd0dc05c6cb1bee6243147b8bc5bbb4c7b07fe29285"
+  },
+  "observed_boundary": "Inferred carrier/left composition target uses Functor.obj versus goal openBaseChangeSpanTarget. Left intermediate object has Functor.comp versus lifted mapCochainComplexPlus. Raw differences are representation evidence, not a model/defeq verdict.",
+  "repair": "Normalize only original goal aliases/value definitions and comp/id object projections. Normalize the partially applied original point theorem telescope before H/epsilon/Godement object and arrow inputs; keep original equality hunit through definitional-only normalization. Original bridge and its rfl value unchanged.",
+  "ownership": "Root exact Q SpanFactorized extension granted; operator Second69d1 snapshot sealed and Qreader released before guarded coherent two-path publication.",
+  "factorized": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/span/normalization-v1/staged/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanFactorized.lean",
+    "sha256": "a7a6c669435401df73953223f26cffc3ca3bc1352e7ef94d873853499b8dfe5e",
+    "status": "LIVE Q, ready for new Factorized-only ordinary CPP",
+    "production_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-etale-abstract-20261029/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanFactorized.lean"
+  },
+  "span": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/span/normalization-v1/staged/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Span.lean",
+    "sha256": "1b6974dd7fd40f34d75891d82913e6b78d91c5ca243a9bdd57c5beff7942a26a",
+    "status": "Only moves factorized proof to import; original failing component body retained and NOT ready to rebuild until its separate repair",
+    "production_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-etale-abstract-20261029/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Span.lean"
+  },
+  "validation": "No compile result yet. Preserve six fine passes; compile only new Factorized proof, not wholeSpan/facade or old two-claim input.",
+  "header_correspondence": "Original four public headers retained exactly once across Factorized+Span; original conditions/maps/model activation unchanged.",
+  "publication": "Both exact source hashes live in Q; common84/allpassedproducers unchanged; only ownedtwo paths written.",
+  "actual_outcome": {
+    "status": "Historical failedFactorizeda7, notadopted",
+    "run": "remote-af1771079adf4946a23184d3063684fa",
+    "source": "195516dc2e10c3011bdcaec7475f590bcb744c151738bb188ce44c665c55bb48",
+    "exit_code": 1,
+    "phase_seconds": 544.6671440005302,
+    "errors": [
+      "finalexact72WHNF200000",
+      "kernelmemory atdeclaration32"
+    ],
+    "successful_successor": "faithful-whole-v1/READY.json"
+  }
+}

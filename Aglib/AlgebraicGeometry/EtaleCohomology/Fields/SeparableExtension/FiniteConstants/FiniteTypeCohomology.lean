@@ -5,10 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.StageCohomology
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.ConstantMaps
-public import Aglib.AlgebraicGeometry.EtaleCohomology.PullbackEquivalence
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartLimitZero
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackConstantDescent
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.RelativePullbackCoefficient
 public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.FiniteTypeBaseChangeLimit
 public import Aglib.AlgebraicGeometry.Spec.CompletionSpecialization
@@ -131,35 +128,13 @@ theorem exists_cohomologyClass_over_finiteTypeSubalgebra
       (coefficient A (pullback (Spec.algebraMap k (stage k K s)) p)) q),
       Curves.constantRestriction A
         (LocalRing.coefficientBaseChangeMap p (stage k K s).val) q cₛ = c := by
-  let X : Finset K ⥤ Scheme.{u}ᵒᵖ := coefficientDiagram k K p
-  let b : Cone X := coefficientBaseCone k K p
-  let d : Cocone X := coefficientLimitCocone k K p
-  let : ∀ t : Finset K, HasExt.{e} (AbelianSheaf.{u, u + 1}
-      (unop (((Functor.const (Finset K)).obj d.pt).obj t))) :=
-    fun _ => inferInstanceAs (HasExt.{e} (AbelianSheaf.{u, u + 1}
-      (pullback p (Spec.algebraMap k K))))
-  let l := (pullback.fst p (Spec.algebraMap k K)).op
-  let hl := coefficient_cone_composite k K p
-  let E := (inverseImageConstantIso l.unop).app (value A)
-  obtain ⟨c', hc'⟩ := (cohomologyMapIso_bijective E q).surjective c
-  obtain ⟨s, a, ha⟩ := exists_stage_cohomologyClass X b d
-    (coefficientLimitIsColimit k K p) l hl (coefficient A Y) q c'
-  let f := (b.π.app s).unop
-  let v := (d.ι.app s).unop
-  let h : v ≫ f = l.unop := congrArg Quiver.Hom.unop (hl s)
-  refine ⟨s, Sheaf.H.map ((inverseImageConstantIso f).app (value A)).hom q a, ?_⟩
+  obtain ⟨s, a, ha⟩ := exists_stage_constantCohomologyClass
+    (coefficientDiagram k K p) (coefficientBaseCone k K p) (coefficientLimitCocone k K p)
+    (coefficientLimitIsColimit k K p) (pullback.fst p (Spec.algebraMap k K)).op
+    (coefficient_cone_composite k K p) A q c
+  refine ⟨s, a, ?_⟩
   rw [← coefficientProjection_eq k K p s]
-  change Curves.constantRestriction A v q
-    (Sheaf.H.map ((inverseImageConstantIso f).app (value A)).hom q a) = c
-  calc
-    Curves.constantRestriction A v q
-        (Sheaf.H.map ((inverseImageConstantIso f).app (value A)).hom q a) =
-      Sheaf.H.map E.hom q
-        (cohomologyTransfer v ((pullbackTriangleIso l.unop f v h).inv.app
-          (coefficient A Y)) q a) :=
-      (constantRestriction_triangleTransfer A f l.unop v h q a).symm
-    _ = Sheaf.H.map E.hom q c' := congrArg (Sheaf.H.map E.hom q) ha
-    _ = c := hc'
+  exact ha
 
 variable [HasExt.{e} (AbelianSheaf.{u, u + 1} Y)]
 
@@ -172,42 +147,12 @@ theorem exists_cohomologyZero_over_finiteTypeSubalgebra
       (pullback.fst p (Spec.algebraMap k K)) q a = 0) :
     ∃ s : Finset K, Curves.constantRestriction A
       (pullback.snd (Spec.algebraMap k (stage k K s)) p) q a = 0 := by
-  let X : Finset K ⥤ Scheme.{u}ᵒᵖ := coefficientDiagram k K p
-  let b : Cone X := coefficientBaseCone k K p
-  let d : Cocone X := coefficientLimitCocone k K p
-  let : HasExt.{e} (AbelianSheaf.{u, u + 1} b.pt.unop) :=
+  let : HasExt.{e} (AbelianSheaf.{u, u + 1} (coefficientBaseCone k K p).pt.unop) :=
     inferInstanceAs (HasExt.{e} (AbelianSheaf.{u, u + 1} Y))
-  let : ∀ t : Finset K, HasExt.{e} (AbelianSheaf.{u, u + 1}
-      (unop (((Functor.const (Finset K)).obj b.pt).obj t))) :=
-    fun _ => inferInstanceAs (HasExt.{e} (AbelianSheaf.{u, u + 1} Y))
-  let : ∀ t : Finset K, HasExt.{e} (AbelianSheaf.{u, u + 1}
-      (unop (((Functor.const (Finset K)).obj d.pt).obj t))) :=
-    fun _ => inferInstanceAs (HasExt.{e} (AbelianSheaf.{u, u + 1}
-      (pullback p (Spec.algebraMap k K))))
-  let l := (pullback.fst p (Spec.algebraMap k K)).op
-  let hl := coefficient_cone_composite k K p
-  let E := (inverseImageConstantIso l.unop).app (value A)
-  have hraw : cohomologyPullback.{u, e, e} l.unop (coefficient A Y) q a = 0 := by
-    apply (cohomologyMapIso_bijective E q).injective
-    change Curves.constantRestriction A (pullback.fst p (Spec.algebraMap k K)) q a =
-      Sheaf.H.map E.hom q 0
-    rw [map_zero]
-    exact ha
-  let : PreservesFilteredColimitsOfSize.{u, u}
-      (CategoryTheory.forget AddCommGrpCat.{e}) :=
-    preservesFilteredColimitsOfSize_of_univLE.{e, e, u, u} _
-  obtain ⟨t, ht⟩ := Stalk.exists_pullback_eq_zero_of_colimit X b d l hl
-    (coefficient A Y) q
-    (isColimitPullbackCohomologyCocone X b d
-      (coefficientLimitIsColimit k K p) l hl (coefficient A Y) q) a hraw
-  refine ⟨t, ?_⟩
-  change Sheaf.H.map ((inverseImageConstantIso (b.π.app t).unop).app (value A)).hom q
-    (cohomologyPullback.{u, e, e} (b.π.app t).unop (coefficient A Y) q a) = 0
-  calc
-    _ = Sheaf.H.map ((inverseImageConstantIso (b.π.app t).unop).app (value A)).hom q 0 :=
-      congrArg (Sheaf.H.map
-        ((inverseImageConstantIso (b.π.app t).unop).app (value A)).hom q) ht
-    _ = 0 := map_zero _
+  exact exists_stage_constantCohomologyZero
+    (coefficientDiagram k K p) (coefficientBaseCone k K p) (coefficientLimitCocone k K p)
+    (coefficientLimitIsColimit k K p) (pullback.fst p (Spec.algebraMap k K)).op
+    (coefficient_cone_composite k K p) A q a ha
 
 /-- Equality of original source classes over the full coefficient algebra is
 already equality over a genuine finite-type subalgebra. -/

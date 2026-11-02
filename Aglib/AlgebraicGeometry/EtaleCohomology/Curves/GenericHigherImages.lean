@@ -114,8 +114,6 @@ theorem genericHigherImage_nsmul_isIso
     inferInstanceAs (HasExt.{u + 2} (AbelianSheaf.{u, u + 1} T.left))
   have hb := genericArtinBaseChange_power_bijective.{u, u + 2}
     X p hdim U n hn hunit q hq
-  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} T.left)
-  let := HasDerivedCategory.standard AddCommGrpCat.{u + 1}
   have he : (Sheaf.H.map (power T.left n) q : _ → _) = (fun x => n • x) :=
     funext (cohomology_map_nsmul_id (gm T.left) q n)
   have hb' : Function.Bijective (fun x : Sheaf.H.{u + 2} (gm T.left) q => n • x) :=

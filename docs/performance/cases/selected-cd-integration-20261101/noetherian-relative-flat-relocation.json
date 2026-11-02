@@ -1,0 +1,17 @@
+{
+  "question": "Resolve selected normal-environment global duplicate by completing exact native relative-flatness relocation only",
+  "main": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/release-integrator-20261030/integration-30b6",
+  "head": "b0f8ca3f44be620dde8b40f65e1eec0143e45db4",
+  "path": "Aglib/AlgebraicGeometry/Cohomology/BaseChange/NoetherianPushforward.lean",
+  "before_sha256": "317aac5d14be8d601f03ee654f2a1b957f0a1c5a167ec31fa2de97b6308365b1",
+  "after_sha256": "3e0f6a354c2f08b967ef3b36c165d20024feda2fcc62faf75190ff9b7decc253",
+  "canonical_provider": "Aglib/AlgebraicGeometry/Modules/Flat/Relative/LocallyFree.lean",
+  "canonical_provider_sha256": "b0fc32df38a98ac2158aa8c221799de89be651fc69e149a40c1c826942ea337c",
+  "duplicate_declaration": "AlgebraicGeometry.Scheme.Modules.relativeFlat_of_isLocallyFree_of_flat",
+  "removed_entire_declaration_and_proof_sha256": "ad1ddb52e41ca08f69be03a87b9f4fdaae779d43232b526a0719c275368cec27",
+  "removed_block_byte_identical_to_canonical": true,
+  "all_other_source_bytes_preserved": true,
+  "change": "One public import added; exact duplicate theorem+proof removed; existing original fullname publicly reexported",
+  "excluded": "No archive ddaa92 overlay, no OrdinaryAffine/DerivedZero, no other proof changes",
+  "cpp": "Not run by author; next actual coherent compiler/existing cohort retry"
+}

@@ -22,16 +22,11 @@ lemma inverseImageSquareIso_top_id {X S T : Scheme.{u}}
         Functor.isoWhiskerLeft (inverseImage f) (inverseImageId X).symm ≪≫
         (inverseImageSquareIso f p g (𝟙 X) (e.trans (Category.id_comp f).symm)).symm =
       pullbackTriangleIso f g p e := by
-  have hu := congrArg Iso.symm (inverseImageComp_comp_id f)
-  have ht := congrArg
-    (fun z : inverseImage f ≅ inverseImage (𝟙 X ≫ f) =>
-      z ≪≫ (eqToIso (congrArg (fun k : X ⟶ S => inverseImage k)
-        (e.trans (Category.id_comp f).symm))).symm ≪≫ inverseImageComp g p) hu
-  apply Iso.ext
-  have hth := congrArg Iso.hom ht
-  simpa only [inverseImageSquareIso, pullbackTriangleIso, Iso.trans_hom, Iso.trans_inv,
-    Iso.symm_hom, Iso.symm_inv, Functor.isoWhiskerLeft_inv, Functor.isoWhiskerLeft_hom,
-    Category.assoc, eqToIso.hom, eqToIso.inv, eqToHom_trans_assoc] using hth
+  simpa only [schemeSquareIso_eq_inverseImageSquareIso, schemeLeftIdIso_eq_inverseImageId,
+    schemeTriangleIso_eq_pullbackTriangleIso, schemeLeft_eq_inverseImage,
+    unop_id, Quiver.Hom.unop_op] using
+    schemeAdjunctionData.squareIso_top_id schemeAdjunctionData_coherent
+      f.op p.op g.op (congrArg Quiver.Hom.op e)
 
 lemma squareCoefficientMap_top_id {X S T : Scheme.{u}}
     (f : X ⟶ S) (p : X ⟶ T) (g : T ⟶ S) (e : p ≫ g = f)
@@ -40,18 +35,9 @@ lemma squareCoefficientMap_top_id {X S T : Scheme.{u}}
     (inverseImageId X).inv.app ((inverseImage f).obj F) ≫
       squareCoefficientMap f p g (𝟙 X) (e.trans (Category.id_comp f).symm) φ =
         triangleCoefficientMap g f p e φ := by
-  have hc := congrArg (fun z => z.hom.app F) (inverseImageSquareIso_top_id f p g e)
-  simp only [Iso.trans_hom, Iso.symm_hom, NatTrans.comp_app,
-    Functor.isoWhiskerLeft_hom, Functor.whiskerLeft_app, Functor.rightUnitor_inv_app] at hc
-  let m : (inverseImage f).obj F ⟶ (inverseImage p).obj ((inverseImage g).obj F) :=
-    (inverseImageId X).inv.app ((inverseImage f).obj F) ≫
-      (inverseImageSquareIso f p g (𝟙 X) (e.trans (Category.id_comp f).symm)).inv.app F
-  change 𝟙 ((inverseImage f).obj F) ≫ m = _ at hc
-  have hc' := (Category.id_comp m).symm.trans hc
-  have ht := congrArg
-    (fun k : (inverseImage f).obj F ⟶ (inverseImage p).obj ((inverseImage g).obj F) =>
-      k ≫ (inverseImage p).map φ) hc'
-  simpa only [squareCoefficientMap, triangleCoefficientMap, Category.assoc, m] using ht
+  exact Adjunction.CoefficientSquares.coefficient_top_id (inverseImageId X)
+    (inverseImageSquareIso f p g (𝟙 X) (e.trans (Category.id_comp f).symm))
+    (pullbackTriangleIso f g p e) (inverseImageSquareIso_top_id f p g e) φ
 
 private lemma globalSectionsPullback_id_inverse (X : Scheme.{u})
     (F : AbelianSheaf.{u, u + 1} X) :

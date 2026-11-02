@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Modules.Tensor.Monoidal.Basic
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.Monoidal.Symmetric
 
 /-!
 # The symmetric monoidal category of scheme modules
@@ -36,21 +37,24 @@ theorem toLocalizedMonoidal_μ_comp_map_braiding (M N : X.Modules) :
         (toLocalizedMonoidal X).map (tensorSheafBraiding X M N).hom =
       (β_ ((toLocalizedMonoidal X).obj M) ((toLocalizedMonoidal X).obj N)).hom ≫
         Functor.LaxMonoidal.μ (toLocalizedMonoidal X) N M :=
-  μOf_hom_comp_map_braiding (toLocalizedMonoidalCounitIso X M) (toLocalizedMonoidalCounitIso X N)
+  SheafOfModulesOfCommRing.toLocalizedMonoidal_μ_comp_map_braiding X.sheaf M N
 
 /-- Scheme modules form a braided monoidal category under the existing braiding. -/
 instance braidedCategory : BraidedCategory X.Modules :=
-  BraidedCategory.ofFaithful (toLocalizedMonoidal X) (fun M N ↦ tensorSheafBraiding X M N)
-    (toLocalizedMonoidal_μ_comp_map_braiding X)
+  SheafOfModulesOfCommRing.braidedCategory X.sheaf
 
 /-- The identity into the localized monoidal category is a braided functor. -/
-instance instBraidedToLocalizedMonoidal : (toLocalizedMonoidal X).Braided where
-  braided := toLocalizedMonoidal_μ_comp_map_braiding X
+instance instBraidedToLocalizedMonoidal : (toLocalizedMonoidal X).Braided :=
+  SheafOfModulesOfCommRing.instBraidedToLocalizedMonoidal X.sheaf
 
 /-- Scheme modules form a symmetric monoidal category under the existing tensor maps and
 braiding. -/
 instance symmetricCategory : SymmetricCategory X.Modules :=
-  SymmetricCategory.ofFaithful (toLocalizedMonoidal X)
+  SheafOfModulesOfCommRing.symmetricCategory X.sheaf
+
+/-- The original Scheme symmetry is the actual generic chosen symmetry. -/
+theorem symmetricCategory_eq_generic :
+    symmetricCategory X = SheafOfModulesOfCommRing.symmetricCategory X.sheaf := rfl
 
 theorem braiding_eq_tensorSheafBraiding (M N : X.Modules) :
     β_ M N = tensorSheafBraiding X M N :=

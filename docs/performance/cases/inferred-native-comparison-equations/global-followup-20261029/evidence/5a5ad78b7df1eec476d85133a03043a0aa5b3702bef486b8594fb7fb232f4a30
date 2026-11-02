@@ -1,0 +1,33 @@
+{
+  "phase": "V34NativeNormalizedOperationalObjects",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "source_guards": {
+    "Aglib/CategoryTheory/Functor/CopyObjRestriction.lean": "e6cd595f727539698609abb2ede1d9691a3b494337164a57da4048a673be04a6",
+    "Aglib/CategoryTheory/Over/RelativeTests.lean": "5ab29b5478f311465cafa54ae92c84a1f1d83cf57007ae011ed8613a6527ba35",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean": "76aac49b4af2dc1e2c07615e3b94f023d5275901f6ebae346ce02797a0b7bd0c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean": "a02d460e490904cd82b8cc951404dd33893ee4bb688755a8f3ed552e11d1bb21"
+  },
+  "ready": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/candidate-v34/READY.json",
+  "ready_sha256": "813914d4a3a5889fdce79c33df26a4a45e7c70ad81e9e37997b26a6e3fd665ce",
+  "metadata": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/diagnostics/NormalizedOperationalObjects-v34.json",
+  "metadata_sha256": "e9247af413cb00f1f8a29e54e1c70c402c88e63acdc829841fffff4094a307b0",
+  "prefix_source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/diagnostics/NormalizedOperationalObjects-v34.lean",
+  "prefix_sha256": "c85359795a3003586069cec9b771279dab797deabe13219a80a5faa28ae45605",
+  "payload": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/global-normalized-objects-v34-payload.py",
+  "payload_sha256": "969e9bcfa389b357f9f970af28ecec4f26be7477f9a62d931248360ccbe69cc6",
+  "module_scope": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.SheafColimit",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleDirectImageMate"
+  ],
+  "expected_native_module": "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction",
+  "expected_native_options": {
+    "autoImplicit": false,
+    "weak.linter.mathlibStandardSet": true,
+    "weak.linter.style.longFile": 1500,
+    "warningAsError": true
+  },
+  "prior_source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/recovery-global-v34-import-a5561b4b.json",
+  "prior_source_archive_sha256": "339d64d115fff2bc47c0281fdda21b5b279a981cb7ef5df7581cbe8d892c77cc",
+  "retained_preparation": "ActualAa556 changedRep76aa and affectedSheafColimit passed; Coree6cd/lower5ab unchanged passes retained, no new prep.",
+  "boundary": "Complete new proof candidate c853, not intentional stop. Official native full4/default200000. If actualprefixPASS/sourceguardsmatch, automatically build currentGlobal+verifiedProjectiveLine01c9/ProperBounded1cde graph; otherwise return errors."
+}

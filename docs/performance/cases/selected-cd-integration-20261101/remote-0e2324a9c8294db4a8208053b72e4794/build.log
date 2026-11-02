@@ -1,0 +1,9 @@
+✔ [4962/4969] Built Aglib.Algebra.Homology.RightDerived.Postcomp.UnitAssembly (3.8s)
+✔ [4963/4969] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ResizeCohomologyDiagram (10s)
+✔ [4964/4969] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductStalkRepresentatives (19s)
+✔ [4965/4969] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartCohomologyStalk (30s)
+✔ [4966/4969] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GlobalSections (41s)
+✔ [4967/4969] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.OriginalCohomologyZero (50s)
+✔ [4968/4969] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericHigherImages (65s)
+✔ [4969/4969] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricCohomologyDiagram (74s)
+Build completed successfully (4969 jobs).

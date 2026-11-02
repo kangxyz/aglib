@@ -1,0 +1,10 @@
+{
+  "path": "Aglib/RingTheory/Nagata/FieldCurve.lean",
+  "before": "bbf1726c9175fc76e36036982d11aa1f9ed852539e9bfd0a4e1546272a40e730",
+  "after": "e24f87f1622a2ae8b5f3c822b4bd382e69b82f802ccc086e7cd3434969fd7ca1",
+  "canonical_producer": "Aglib/RingTheory/Nagata/FiniteTypeField.lean",
+  "interface": "(k : Type u) [Field k] : IsJapaneseRing.{u,0} k",
+  "other_endpoint": "dim<=1 tail unchanged",
+  "count_change": 0,
+  "CPP": "Pending ordinary affected leaf compilation; no current pass claimed."
+}

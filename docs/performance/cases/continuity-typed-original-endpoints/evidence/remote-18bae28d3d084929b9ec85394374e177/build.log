@@ -1,0 +1,64 @@
+✖ [3377/3380] Building Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyConnecting (115s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-18bae28d3d084929b9ec85394374e177/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.lean -o /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.olean -i /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.c --setup /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.lean:60:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+✔ [3379/3380] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackLimitCoefficient (353s)
+✖ [3380/3380] Building Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackCohomologyNormalization (7.8s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-18bae28d3d084929b9ec85394374e177/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackCohomologyNormalization.lean -o /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackCohomologyNormalization.olean -i /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackCohomologyNormalization.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackCohomologyNormalization.c --setup /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackCohomologyNormalization.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackCohomologyNormalization.lean:43:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (Sheaf.H.map ?g ?n) ((Sheaf.H.map ?f ?n) ?x)
+in the target expression
+  (Sheaf.H.map (pullbackLimitCoefficientIso Y b c l hl F).hom n)
+      ((Sheaf.H.map (colimit.ι (coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)) i) n)
+        ((cohomologyPullback (c.ι.app i).unop ((pullbackCoefficientSystem Y b F).obj i) n) x)) =
+    (ConcreteCategory.hom
+        (cohomologyTransfer (c.ι.app i).unop
+          ((pullbackTriangleIso l.unop (b.π.app i).unop (c.ι.app i).unop ⋯).inv.app F) n))
+      x
+
+I : Type uI
+inst✝⁴ : Category.{vI, uI} I
+Y : I ⥤ Schemeᵒᵖ
+b : Cone Y
+c : Cocone Y
+l : b.pt ⟶ c.pt
+hl : ∀ (i : I), b.π.app i ≫ c.ι.app i = l
+F : AbelianSheaf (unop b.pt)
+inst✝³ : ∀ (i : I), HasExt (AbelianSheaf (unop (Y.obj i)))
+inst✝² : HasExt (AbelianSheaf (unop c.pt))
+inst✝¹ : CategoryTheory.IsConnected I
+inst✝ : HasColimit (coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F))
+n : ℕ
+i : I
+x : ↑(diagramCohomologyObj Y (pullbackCoefficientSystem Y b F) n i)
+⊢ (Sheaf.H.map (pullbackLimitCoefficientIso Y b c l hl F).hom n)
+      ((Sheaf.H.map (colimit.ι (coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)) i) n)
+        ((cohomologyPullback (c.ι.app i).unop ((pullbackCoefficientSystem Y b F).obj i) n) x)) =
+    (ConcreteCategory.hom
+        (cohomologyTransfer (c.ι.app i).unop
+          ((pullbackTriangleIso l.unop (b.π.app i).unop (c.ι.app i).unop ⋯).inv.app F) n))
+      x
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    x
+  has type
+    ↑(diagramCohomologyObj Y (pullbackCoefficientSystem Y b F) n i)
+  but is expected to have type
+    Sheaf.H ((pullbackCoefficientSystem Y b F).obj i) n
+  in the application
+    (cohomologyPullback (c.ι.app i).unop ((pullbackCoefficientSystem Y b F).obj i) n) x
+  
+  Note: The following definitions were not unfolded because their definition is not exposed:
+    Shrink ↦ 13
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyConnecting
+- Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackCohomologyNormalization
+error: build failed

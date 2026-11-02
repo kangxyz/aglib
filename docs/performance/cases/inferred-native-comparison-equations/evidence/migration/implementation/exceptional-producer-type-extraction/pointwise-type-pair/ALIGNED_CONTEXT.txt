@@ -1,0 +1,60 @@
+PRODUCER_LEVELS [`u, `wMX, `wMS, `wMX', `wMS', `wAX, `wAS, `wAX', `wAS']
+ORIGINAL_BINDER 0 Λ Lean.BinderInfo.default head=(sort Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)))
+ORIGINAL_LOCAL index=0 id=Lean.Name.mkNum `_uniq 103076 name=Λ
+ORIGINAL_BINDER 1 inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.3 Lean.BinderInfo.instImplicit head=(const Ring universes=[Lean.Level.succ (Lean.Level.param `u)])
+ORIGINAL_LOCAL index=1 id=Lean.Name.mkNum `_uniq 103077 name=inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.3
+ORIGINAL_BINDER 2 X Lean.BinderInfo.implicit head=(const AlgebraicGeometry.Scheme universes=[Lean.Level.param `u])
+ORIGINAL_LOCAL index=2 id=Lean.Name.mkNum `_uniq 103078 name=X
+ORIGINAL_BINDER 3 S Lean.BinderInfo.implicit head=(const AlgebraicGeometry.Scheme universes=[Lean.Level.param `u])
+ORIGINAL_LOCAL index=3 id=Lean.Name.mkNum `_uniq 103079 name=S
+ORIGINAL_BINDER 4 X' Lean.BinderInfo.implicit head=(const AlgebraicGeometry.Scheme universes=[Lean.Level.param `u])
+ORIGINAL_LOCAL index=4 id=Lean.Name.mkNum `_uniq 103080 name=X'
+ORIGINAL_BINDER 5 S' Lean.BinderInfo.implicit head=(const AlgebraicGeometry.Scheme universes=[Lean.Level.param `u])
+ORIGINAL_LOCAL index=5 id=Lean.Name.mkNum `_uniq 103081 name=S'
+ORIGINAL_BINDER 6 inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.10 Lean.BinderInfo.instImplicit head=(const HasDerivedCategory universes=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+ORIGINAL_LOCAL index=6 id=Lean.Name.mkNum `_uniq 103082 name=inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.10
+ORIGINAL_BINDER 7 inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.17 Lean.BinderInfo.instImplicit head=(const HasDerivedCategory universes=[Lean.Level.param `wMS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+ORIGINAL_LOCAL index=7 id=Lean.Name.mkNum `_uniq 103083 name=inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.17
+ORIGINAL_BINDER 8 inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.24 Lean.BinderInfo.instImplicit head=(const HasDerivedCategory universes=[Lean.Level.param `wMX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+ORIGINAL_LOCAL index=8 id=Lean.Name.mkNum `_uniq 103084 name=inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.24
+ORIGINAL_BINDER 9 inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.31 Lean.BinderInfo.instImplicit head=(const HasDerivedCategory universes=[Lean.Level.param `wMS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+ORIGINAL_LOCAL index=9 id=Lean.Name.mkNum `_uniq 103085 name=inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.31
+ORIGINAL_BINDER 10 inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.38 Lean.BinderInfo.instImplicit head=(const HasDerivedCategory universes=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+ORIGINAL_LOCAL index=10 id=Lean.Name.mkNum `_uniq 103086 name=inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.38
+ORIGINAL_BINDER 11 inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.44 Lean.BinderInfo.instImplicit head=(const HasDerivedCategory universes=[Lean.Level.param `wAS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+ORIGINAL_LOCAL index=11 id=Lean.Name.mkNum `_uniq 103087 name=inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.44
+ORIGINAL_BINDER 12 inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.50 Lean.BinderInfo.instImplicit head=(const HasDerivedCategory universes=[Lean.Level.param `wAX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+ORIGINAL_LOCAL index=12 id=Lean.Name.mkNum `_uniq 103088 name=inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.50
+ORIGINAL_BINDER 13 inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.56 Lean.BinderInfo.instImplicit head=(const HasDerivedCategory universes=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+ORIGINAL_LOCAL index=13 id=Lean.Name.mkNum `_uniq 103089 name=inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.56
+ORIGINAL_BINDER 14 f Lean.BinderInfo.default head=(const Quiver.Hom universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+ORIGINAL_LOCAL index=14 id=Lean.Name.mkNum `_uniq 103090 name=f
+ORIGINAL_BINDER 15 f' Lean.BinderInfo.default head=(const Quiver.Hom universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+ORIGINAL_LOCAL index=15 id=Lean.Name.mkNum `_uniq 103091 name=f'
+ORIGINAL_BINDER 16 g Lean.BinderInfo.default head=(const Quiver.Hom universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+ORIGINAL_LOCAL index=16 id=Lean.Name.mkNum `_uniq 103092 name=g
+ORIGINAL_BINDER 17 g' Lean.BinderInfo.default head=(const Quiver.Hom universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+ORIGINAL_LOCAL index=17 id=Lean.Name.mkNum `_uniq 103093 name=g'
+ORIGINAL_BINDER 18 h Lean.BinderInfo.default head=(const Eq universes=[Lean.Level.succ (Lean.Level.param `u)])
+ORIGINAL_LOCAL index=18 id=Lean.Name.mkNum `_uniq 103094 name=h
+ACTUAL_INFER_START producerArgs=19 KType=(const DerivedCategory.Plus universes=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+EXPECTED_BINDER Λ mapsTo=(fvar Λ) typeHead=(sort Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)))
+EXPECTED_BINDER inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.3515732006._hygCtx._hyg.3 mapsTo=(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.3) typeHead=(const Ring universes=[Lean.Level.succ (Lean.Level.param `u)])
+EXPECTED_BINDER X mapsTo=(fvar X) typeHead=(const AlgebraicGeometry.Scheme universes=[Lean.Level.param `u])
+EXPECTED_BINDER S mapsTo=(fvar S) typeHead=(const AlgebraicGeometry.Scheme universes=[Lean.Level.param `u])
+EXPECTED_BINDER X' mapsTo=(fvar X') typeHead=(const AlgebraicGeometry.Scheme universes=[Lean.Level.param `u])
+EXPECTED_BINDER S' mapsTo=(fvar S') typeHead=(const AlgebraicGeometry.Scheme universes=[Lean.Level.param `u])
+EXPECTED_BINDER inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.3515732006._hygCtx._hyg.10 mapsTo=(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.10) typeHead=(const HasDerivedCategory universes=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+EXPECTED_BINDER inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.3515732006._hygCtx._hyg.17 mapsTo=(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.17) typeHead=(const HasDerivedCategory universes=[Lean.Level.param `wMS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+EXPECTED_BINDER inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.3515732006._hygCtx._hyg.24 mapsTo=(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.24) typeHead=(const HasDerivedCategory universes=[Lean.Level.param `wMX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+EXPECTED_BINDER inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.3515732006._hygCtx._hyg.31 mapsTo=(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.31) typeHead=(const HasDerivedCategory universes=[Lean.Level.param `wMS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+EXPECTED_BINDER inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.3515732006._hygCtx._hyg.38 mapsTo=(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.38) typeHead=(const HasDerivedCategory universes=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+EXPECTED_BINDER inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.3515732006._hygCtx._hyg.44 mapsTo=(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.44) typeHead=(const HasDerivedCategory universes=[Lean.Level.param `wAS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+EXPECTED_BINDER inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.3515732006._hygCtx._hyg.50 mapsTo=(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.50) typeHead=(const HasDerivedCategory universes=[Lean.Level.param `wAX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+EXPECTED_BINDER inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.3515732006._hygCtx._hyg.56 mapsTo=(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.56) typeHead=(const HasDerivedCategory universes=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+EXPECTED_BINDER f mapsTo=(fvar f) typeHead=(const Quiver.Hom universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+EXPECTED_BINDER f' mapsTo=(fvar f') typeHead=(const Quiver.Hom universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+EXPECTED_BINDER g mapsTo=(fvar g) typeHead=(const Quiver.Hom universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+EXPECTED_BINDER g' mapsTo=(fvar g') typeHead=(const Quiver.Hom universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+EXPECTED_BINDER h mapsTo=(fvar h) typeHead=(const Eq universes=[Lean.Level.succ (Lean.Level.param `u)])
+EXPECTED_BINDER K mapsTo=(fvar K) typeHead=(const DerivedCategory.Plus universes=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])

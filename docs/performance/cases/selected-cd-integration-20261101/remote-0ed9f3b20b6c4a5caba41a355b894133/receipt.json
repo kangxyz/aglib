@@ -1,0 +1,371 @@
+{
+  "action": "phase",
+  "actor_executable": "/root/miniconda3/bin/python3.12",
+  "admission": {
+    "ceilings": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+    "final_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-578462ff014e46bebab2b0558fb56625": 1,
+        "/root/autodl-tmp/lean-build/logs/remote-e3b81f4d6628407e9b04661fe88f28ba": 5
+      },
+      "cpu_cores": 6.943066477768236,
+      "cpu_usage_usec": 2376823067950,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 7247757312,
+      "memory_current_bytes": 57435111424,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 0.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 42216435712
+    },
+    "initial_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-578462ff014e46bebab2b0558fb56625": 1
+      },
+      "cpu_cores": 1.7824663951557476,
+      "cpu_usage_usec": 2376675282013,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 2147483648,
+      "memory_current_bytes": 54912970752,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 1.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 39704408064
+    },
+    "max_frontends_if_alone": 8,
+    "mode": "elastic"
+  },
+  "allow_library_roots": false,
+  "cache_provenance": {
+    "configuration_sha256": {
+      "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+      "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852"
+    },
+    "environment": {
+      "LAKE_ARTIFACT_CACHE": "true",
+      "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+      "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+    },
+    "lookup": "native Lake traces/artifact cache; no per-dependency prior-hit claim"
+  },
+  "cgroup_average_cpu_cores": 5.046255383333867,
+  "cgroup_cpu_after": {
+    "nr_periods": 9734129,
+    "nr_throttled": 29241,
+    "system_usec": 198836627727,
+    "throttled_usec": 337871221,
+    "usage_usec": 2376823068632,
+    "user_usec": 2177986440905
+  },
+  "cgroup_cpu_attribution": "whole observed cgroup; may include unrelated activity",
+  "cgroup_cpu_before": {
+    "nr_periods": 9733836,
+    "nr_throttled": 29241,
+    "system_usec": 198823049385,
+    "throttled_usec": 337871221,
+    "usage_usec": 2376675299994,
+    "user_usec": 2177852250609
+  },
+  "cgroup_cpu_seconds_delta": 147.768638,
+  "cgroup_memory_events_after": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_before": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_delta": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "command": [
+    "/root/miniconda3/bin/python3.12",
+    "-c",
+    "import os,sys,json,hashlib,subprocess,time\nfrom pathlib import Path\np=json.loads(sys.argv[1]);w=Path.cwd();run=Path(os.environ[\"LEAN\"]).parents[2];lake=os.environ[\"LAKE\"];lib=w/\".lake/build/lib/lean\";paths=[n.replace(\".\",\"/\")+\".lean\" for n in p[\"modules\"]]\nmanifest=json.loads((w.parent/\"SOURCE.json\").read_text());expected={n:manifest[\"files\"][n] for n in paths};assert hashlib.sha256(json.dumps(expected,sort_keys=True,separators=(\",\",\":\")).encode()).hexdigest()==p[\"selected_vector_sha256\"]\ndef guard():\n assert json.loads((w.parent/\"SOURCE.json\").read_text())[\"content_sha256\"]==p[\"source\"]\n for n,h in expected.items():assert hashlib.sha256((w/n).read_bytes()).hexdigest()==h,n\n return {n:{e:[q.stat().st_ino,q.stat().st_size,q.stat().st_mtime_ns] for e in [\"olean\",\"ilean\"] for q in [(lib/n).with_suffix(\".\"+e)]} for n in paths}\nstate=guard();tool=Path(\"/root/autodl-tmp/lean-build/tools/axiom-audit-46024e005996\");assert subprocess.check_output([\"git\",\"-C\",str(tool),\"rev-parse\",\"HEAD\"],text=True).strip()==\"46024e005996495c65ef609368e11ab39c4222e3\"\ncmd=[lake,\"--no-build\",\"env\",str(tool/\".lake/build/bin/axiom-audit\"),\"--root\",\"Aglib\",\"--modules\",\",\".join(p[\"modules\"]),\"--json\"];start=time.monotonic()\nwith (run/\"approved-axiom713.log\").open(\"w\") as out:q=subprocess.run(cmd,cwd=w,stdout=out,stderr=subprocess.STDOUT)\nassert guard()==state\nrecord={\"question\":\"Existing approved-axiom predicate on uncovered selected713 modules only; independent B parallel lane\",\"source\":p[\"source\"],\"selected_vector_sha256\":p[\"selected_vector_sha256\"],\"module_count\":len(p[\"modules\"]),\"command\":cmd,\"exit\":q.returncode,\"seconds\":time.monotonic()-start,\"log\":str(run/\"approved-axiom713.log\"),\"artifact_stat_before_after\":state,\"coverage\":\"No CPP, stock/client/kernel replay, new checker, mathematical proof verdict or changed predicate.\"};(run/\"AXIOM713-RESULT.json\").write_text(json.dumps(record,indent=2)+chr(10));print(json.dumps({k:v for k,v in record.items() if k not in [\"artifact_stat_before_after\",\"command\"]}),flush=True);sys.exit(q.returncode)\n",
+    "{\"source\":\"aa725721a00e10156d2ff7c201b87aad1832d9683c54070fc13090006d7ff5df\",\"modules\":[\"Aglib.Algebra.Category.Grp.ComparisonComposite\",\"Aglib.Algebra.Category.Grp.FiniteProperty\",\"Aglib.Algebra.Category.ModuleCat.AdditiveComposite\",\"Aglib.Algebra.Category.ModuleCat.ChangeOfRings.RestrictionData\",\"Aglib.Algebra.Category.ModuleCat.ChangeOfRings.RestrictionData.Linearization\",\"Aglib.Algebra.Category.ModuleCat.ChangeOfRings.RestrictionData.OfMaps\",\"Aglib.Algebra.Category.ModuleCat.ChangeOfRings.RestrictionData.OriginalMates\",\"Aglib.Algebra.Category.ModuleCat.ChangeOfRings.RestrictionSquare\",\"Aglib.Algebra.Category.ModuleCat.ChangeOfRings.RightExactComparison\",\"Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Square\",\"Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Square.IsIso\",\"Aglib.Algebra.Category.ModuleCat.ChangeOfRings.TopComparison\",\"Aglib.Algebra.Category.ModuleCat.CoprimeTrace\",\"Aglib.Algebra.Category.ModuleCat.FilteredColimitFinitePresentation\",\"Aglib.Algebra.Category.ModuleCat.Sheaf.InternalHom.BidualNaturality\",\"Aglib.Algebra.Category.ModuleCat.Sheaf.PointFinitePresentation\",\"Aglib.Algebra.Category.Ring.Descent.Integrality\",\"Aglib.Algebra.Category.Ring.Descent.PrimitiveRoots\",\"Aglib.Algebra.Category.Ring.LocalizationColimit\",\"Aglib.Algebra.Group.Equiv.ComparisonComposite\",\"Aglib.Algebra.Group.Subgroup.KernelSquare\",\"Aglib.Algebra.Homology.DerivedCategory.Ext.AdjunctionPostcomp\",\"Aglib.Algebra.Homology.DerivedCategory.Ext.ExactFunctorSquare\",\"Aglib.Algebra.Homology.DerivedCategory.Ext.UniverseChange\",\"Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Adjunction.CompositionPredicate\",\"Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Adjunction.SingleCounit\",\"Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ExactPasting\",\"Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ExtResolutionRepresentatives\",\"Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.IsomorphismComparison\",\"Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.LowDegreeEdge\",\"Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.ObjectProperty\",\"Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.SerreInduction\",\"Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.SerreLeray\",\"Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.SerreLerayEdge\",\"Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.ShortExact\",\"Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.SingleHomology.Shifted\",\"Aglib.Algebra.Homology.HomologicalComplex.AdjointTwoStageCounit\",\"Aglib.Algebra.Homology.HomologicalComplex.Adjunction.CounitNaturality\",\"Aglib.Algebra.Homology.HomologicalComplex.Adjunction.Homology\",\"Aglib.Algebra.Homology.HomologicalComplex.Adjunction.ResolutionCounit\",\"Aglib.Algebra.Homology.HomologicalComplex.TwoStageCounit\",\"Aglib.Algebra.Homology.HomologicalComplex.TwoStageTransport\",\"Aglib.Algebra.Homology.ModuleCat.CoproductEquivalence\",\"Aglib.Algebra.Homology.ShortComplex.Adjunction.CounitNaturality\",\"Aglib.Algebra.Homology.ShortComplex.Adjunction.SectionsRestriction\",\"Aglib.Algebra.Module.Equiv.ScalarMaps\",\"Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineScalarCriterion\",\"Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineTensorCriterion\",\"Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.FieldExtension.Comparison\",\"Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.FieldExtension.Separated\",\"Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Map.RestrictionValue\",\"Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Sections.Flat\",\"Aglib.AlgebraicGeometry.Cohomology.BaseChange.NativeRingSections\",\"Aglib.AlgebraicGeometry.Cohomology.BaseChange.NativeScalarSections\",\"Aglib.AlgebraicGeometry.Cohomology.Cech.CoproductComputed\",\"Aglib.AlgebraicGeometry.Cohomology.Cech.Finite.ModelComparison\",\"Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.RegularList.Sheaf.Class\",\"Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.CounitDegreeZero\",\"Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.CounitNaturality\",\"Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.SectionsCounitHomology\",\"Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Counit\",\"Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.DerivedModelCounit\",\"Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Localization.PrincipalGeometry\",\"Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Localization.ScalarMate\",\"Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Localization.Separated\",\"Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.ResolutionLocality\",\"Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.SectionsCounit\",\"Aglib.AlgebraicGeometry.Cohomology.DirectImage.ResolutionSections.Restriction\",\"Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.GeneratorOverlap\",\"Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenCounit\",\"Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenCounit.Homology\",\"Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenCounit.Transport\",\"Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalPurity\",\"Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.AtIdeal.Data\",\"Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Derived.Coefficients\",\"Aglib.AlgebraicGeometry.Cohomology.Exact.AlternatingEuler\",\"Aglib.AlgebraicGeometry.Cohomology.Fibers.BaseChange.Core\",\"Aglib.AlgebraicGeometry.Cohomology.Fibers.FieldPoint.Core\",\"Aglib.AlgebraicGeometry.Cohomology.Fibers.SeparatedFieldPoint\",\"Aglib.AlgebraicGeometry.Cohomology.Functoriality.Modules.LinearTransport\",\"Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.Algebraization.Maps\",\"Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.Algebraization.NativeOperations\",\"Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.Algebraization.Operations\",\"Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.Algebraization.VectorBundleMaps\",\"Aglib.AlgebraicGeometry.Cohomology.Modules.FunctorCoproduct\",\"Aglib.AlgebraicGeometry.Cohomology.Projective.BaseChangeTwistLinear\",\"Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.Core\",\"Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.FieldComparison\",\"Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.Monotone\",\"Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.Projective\",\"Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.SeparatedFieldComparison\",\"Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.EulerCharacteristic\",\"Aglib.AlgebraicGeometry.Cohomology.Projective.LargeTwistBaseChange\",\"Aglib.AlgebraicGeometry.Compactification.Refinements.CartesianIdentity\",\"Aglib.AlgebraicGeometry.Compactification.Refinements.CartesianPasting\",\"Aglib.AlgebraicGeometry.Compactification.Refinements.CartesianSourcePolygon\",\"Aglib.AlgebraicGeometry.Compactification.Refinements.IdentityRawProjection\",\"Aglib.AlgebraicGeometry.Compactification.Refinements.NormalizationIteration\",\"Aglib.AlgebraicGeometry.Compactification.Refinements.RawCartesianIteration\",\"Aglib.AlgebraicGeometry.Compactification.Refinements.RawRefinementBaseChange\",\"Aglib.AlgebraicGeometry.Compactification.Refinements.RawSourceComposition\",\"Aglib.AlgebraicGeometry.Compactification.Refinements.SourceBaseChange\",\"Aglib.AlgebraicGeometry.Compactification.Refinements.SourceBaseChangeSquares\",\"Aglib.AlgebraicGeometry.Compactification.Refinements.SourceNormalization\",\"Aglib.AlgebraicGeometry.Curves.Abel.BoundedFamily.Core\",\"Aglib.AlgebraicGeometry.Curves.Abel.BoundedFamily.RepresentedMorphism\",\"Aglib.AlgebraicGeometry.Curves.AffineFiniteProjection\",\"Aglib.AlgebraicGeometry.Curves.Divisors.FieldExtensionBoundary\",\"Aglib.AlgebraicGeometry.Curves.Divisors.OpenPrincipal\",\"Aglib.AlgebraicGeometry.Curves.Divisors.OpenRestriction\",\"Aglib.AlgebraicGeometry.Curves.FiniteEtaleCompactification\",\"Aglib.AlgebraicGeometry.Curves.FiniteNormalCompactification\",\"Aglib.AlgebraicGeometry.Curves.Picard.DivisorOpenRestriction\",\"Aglib.AlgebraicGeometry.Curves.Picard.OpenBoundary\",\"Aglib.AlgebraicGeometry.Curves.Picard.OpenClasses\",\"Aglib.AlgebraicGeometry.Curves.PointDivisor.BaseChange\",\"Aglib.AlgebraicGeometry.Curves.PointDivisor.DivisorClass\",\"Aglib.AlgebraicGeometry.Descent.FinitePresentation.FiniteTypeArrowLimit\",\"Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.HigherDirectImageKernel\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Basic.AffineLocality\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Basic.GenericLocallyConstant\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Basic.PullbackAffine\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Basic.PullbackPartition\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Basic.PullbackQcqs\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Closure\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.ClosureLocallyConstant\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Descent.SurjectiveAffine\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.ConnectedTrivialization\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteEtaleCoinduction\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteEtaleImage\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FinitePresentation.Affine\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FinitePresentation.FiniteGeneration\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteStratification.GenericProperty\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FieldRecognition\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.StalkFiniteness\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.StrictLocalFiniteSections\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Noetherian.GenericImage\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Noetherian.StrongSerre\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DirectImageCoefficientSystem\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteConstantAnnihilator\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericArtin\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericArtinEtalePoints\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Curves.KummerGenericRepresentative\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Curves.KummerResidue\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Curves.KummerResidueExtension\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Curves.KummerResidueNaturality\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PrimePowerReduction\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Curves.StructureComparison\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.BaseChangeIdentity\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.BaseChangeOverComparison\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.BaseChangeOverComparisonEquation\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.BaseChangePasting\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.BaseChangePastingEquation\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.CartesianExchangeComparison\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.InverseImageAssociativity\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.InverseImageIdentityCoherence\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.OpenBaseChangeConjugacy\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.OpenBaseChangeIdentity\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.OpenComparisonCube\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.OpenRefinementCube\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleStalkInside\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Refinement.ProperCoherence\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.InverseImageCompositionEq\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.SourceBaseChangeSquare\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Fields.BoundedClassFiniteConstant\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Fields.BoundedCoefficientClass\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Fields.BoundedFiniteTrivialization\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.Boundary\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.CompatibleClosure\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.ScalarSquare\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Finite.EtaleModuleTrace\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ModuleStalkProduct\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.ConstructibleConstantReduction\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.HigherImageConstructibleComposition\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.HigherImageConstructibleExact\",\"Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.EtaleRestriction\",\"Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.FieldConservative\",\"Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.InverseImage.Module\",\"Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.InverseImage.Point\",\"Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.ModuleFieldConservative\",\"Aglib.AlgebraicGeometry.EtaleCohomology.H0.ConstantUnitOfStructureIso\",\"Aglib.AlgebraicGeometry.EtaleCohomology.H0.GeometricallyConnected\",\"Aglib.AlgebraicGeometry.EtaleCohomology.H0.SectionZeroOpen\",\"Aglib.AlgebraicGeometry.EtaleCohomology.H0.UniversallyOpenDescent\",\"Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.PointedEffacement\",\"Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Value\",\"Aglib.AlgebraicGeometry.EtaleCohomology.H1.GenericPoint\",\"Aglib.AlgebraicGeometry.EtaleCohomology.H1.GeometricallyConnected\",\"Aglib.AlgebraicGeometry.EtaleCohomology.H1.SchemeTorsorEffacement\",\"Aglib.AlgebraicGeometry.EtaleCohomology.H1.ShortExactComparison\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.FiniteCoproduct\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.GenericPoint\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.GenericRepresentativePullback\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.LocalUnits\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.PullbackComposition\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RelativeNormalizedPicard\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootAddition\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Localization.LowDegreeEdge\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Localization.OpenInjectiveHigherVanishing\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Localization.OpenSummandDetection\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Picard.DivisibilityReflection\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Picard.KummerUnitImage\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Pullback.UniverseChange\",\"Aglib.AlgebraicGeometry.EtaleCohomology.PullbackCoefficientIso\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AdditiveSectionsPostcomp\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AffineTestSectionsPostcomp\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurSections\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.BaseRestrictionValues\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.EtalePullback\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.HigherDirectImage.TestCoefficientRestriction\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.ModuleCohomologyNaturality\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.ModuleCohomologyPullback\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.ModuleComparisonMap\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.ModuleComparisonPullback\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.ModulePullbackComposition\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.ModulePullbackCompositionCohomology\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.ModuleValueLiftPullback\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.Semilinear.Affine\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.Semilinear.KernelRepresentation\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.Semilinear.KernelRepresentation.GenericFinite\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.Semilinear.KernelRepresentation.GenericFinitePair\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.Semilinear.KernelRepresentation.Restricted\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.Semilinear.LocalLifting\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.Semilinear.LocalLifting.Restricted\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.Semilinear.Sections\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.Semilinear.Sheaf\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.Semilinear.Tensor\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.SpecSections\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.UnitFrobenius\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.UnitFrobeniusCohomology\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.UnitFrobeniusPullback\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.UnitPullbackCohomology\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.ZariskiBaseChange\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.ZariskiBaseChangeValues\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.ZariskiEtalePullbackConstant\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.ZariskiPullbackConstant\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.ZariskiPullbackSections\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.ZariskiPullbackSquare\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.ZariskiPullbackUnit\",\"Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.ZariskiValueLiftCohomology\",\"Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.ModuleInjectiveTests\",\"Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.OrdinaryChartGeometry\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductRestrictionCanonical\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductRestrictionValues\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.HigherImageLocalZero\",\"Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.OriginalPresheafCoefficients\",\"Aglib.AlgebraicGeometry.FunctionField.GenericFiber\",\"Aglib.AlgebraicGeometry.FunctionField.HartogsGoingDownPullback\",\"Aglib.AlgebraicGeometry.FunctionField.HartogsIntegralPullback\",\"Aglib.AlgebraicGeometry.FunctionField.HartogsSections\",\"Aglib.AlgebraicGeometry.FunctionField.HartogsSmoothPullback\",\"Aglib.AlgebraicGeometry.FunctionField.OpenRestriction\",\"Aglib.AlgebraicGeometry.FunctionField.SplitSections\",\"Aglib.AlgebraicGeometry.Geometrically.Integral.CommonOpenFibres\",\"Aglib.AlgebraicGeometry.Geometrically.Integral.Hypersurface\",\"Aglib.AlgebraicGeometry.Geometrically.Integral.HypersurfaceFractionField\",\"Aglib.AlgebraicGeometry.Geometrically.Integral.Smooth\",\"Aglib.AlgebraicGeometry.Geometrically.Integral.SmoothCommonOpen\",\"Aglib.AlgebraicGeometry.Geometrically.Integral.SmoothCurve\",\"Aglib.AlgebraicGeometry.Geometrically.Integral.StandardEtaleFactor\",\"Aglib.AlgebraicGeometry.Geometrically.Integral.StandardEtaleHypersurfaceOpen\",\"Aglib.AlgebraicGeometry.Group.Kernel.ClosedImmersion\",\"Aglib.AlgebraicGeometry.Group.Kernel.ScalarExtension\",\"Aglib.AlgebraicGeometry.IdealSheaf.Cartier.Avoidance\",\"Aglib.AlgebraicGeometry.IdealSheaf.Cartier.RegularQuotient\",\"Aglib.AlgebraicGeometry.IdealSheaf.ClosedImmersionStalk\",\"Aglib.AlgebraicGeometry.Limits.ClosedPoint\",\"Aglib.AlgebraicGeometry.Modules.BaseChange.Affine.Locality\",\"Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.SectionComparison\",\"Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.SectionCompleteness\",\"Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.SectionCone\",\"Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.SectionKernels\",\"Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.UnitSectionComparison\",\"Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.UnitSectionLimit\",\"Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.VectorBundleCompletionMaps\",\"Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.VectorBundleFullness\",\"Aglib.AlgebraicGeometry.Modules.Coherent.Hartogs.FiniteLocallyFreeRestriction\",\"Aglib.AlgebraicGeometry.Modules.Coherent.Hartogs.FiniteSections\",\"Aglib.AlgebraicGeometry.Modules.Flat.Relative.LocallyFree\",\"Aglib.AlgebraicGeometry.Modules.InternalHom.Bidual\",\"Aglib.AlgebraicGeometry.Modules.InternalHom.BidualAffine\",\"Aglib.AlgebraicGeometry.Modules.InternalHom.BidualLocallyFree\",\"Aglib.AlgebraicGeometry.Modules.InternalHom.Dual\",\"Aglib.AlgebraicGeometry.Modules.InternalHom.DualAffine\",\"Aglib.AlgebraicGeometry.Modules.InternalHom.DualExact\",\"Aglib.AlgebraicGeometry.Modules.InternalHom.DualFunctor\",\"Aglib.AlgebraicGeometry.Modules.InternalHom.FreeDual\",\"Aglib.AlgebraicGeometry.Modules.InternalHom.FreeFrameCompatibility\",\"Aglib.AlgebraicGeometry.Modules.InternalHom.LocallyFree\",\"Aglib.AlgebraicGeometry.Modules.Invertible.Affine\",\"Aglib.AlgebraicGeometry.Modules.Invertible.Bidual\",\"Aglib.AlgebraicGeometry.Modules.Invertible.Bidual.Affine\",\"Aglib.AlgebraicGeometry.Modules.Invertible.Dual\",\"Aglib.AlgebraicGeometry.Modules.Locality.AffineIsomorphisms\",\"Aglib.AlgebraicGeometry.Modules.LocallyFree.QuasiAffineCoresolution\",\"Aglib.AlgebraicGeometry.Modules.LocallyFree.Tensor.LocallyFree\",\"Aglib.AlgebraicGeometry.Modules.Pullback.UnitOne\",\"Aglib.AlgebraicGeometry.Modules.Pullback.UnitSectionMaps\",\"Aglib.AlgebraicGeometry.Modules.Pullback.UnitSections\",\"Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.FrameSections\",\"Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.NativeFrameClass\",\"Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.NativeFrameSection\",\"Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.QuasiAffine\",\"Aglib.AlgebraicGeometry.Modules.StructureSheaf.AffineSections\",\"Aglib.AlgebraicGeometry.Modules.StructureSheaf.SectionCones\",\"Aglib.AlgebraicGeometry.Morphisms.Affine.HomPrecomposition\",\"Aglib.AlgebraicGeometry.Morphisms.Dominant.Spec\",\"Aglib.AlgebraicGeometry.Morphisms.Etale.AffinePointwise\",\"Aglib.AlgebraicGeometry.Morphisms.Etale.AffinePointwiseFlatBaseChange\",\"Aglib.AlgebraicGeometry.Morphisms.Etale.AtIso\",\"Aglib.AlgebraicGeometry.Morphisms.Etale.FieldPoint\",\"Aglib.AlgebraicGeometry.Morphisms.Etale.FrobeniusEquation\",\"Aglib.AlgebraicGeometry.Morphisms.Etale.LocalSectionNeighborhood\",\"Aglib.AlgebraicGeometry.Morphisms.Etale.PointwiseBaseChange\",\"Aglib.AlgebraicGeometry.Morphisms.Etale.PointwiseImage\",\"Aglib.AlgebraicGeometry.Morphisms.Etale.PointwiseOpenBaseChange\",\"Aglib.AlgebraicGeometry.Morphisms.Etale.PointwiseSource\",\"Aglib.AlgebraicGeometry.Morphisms.Finite.Birational.NormalLocus\",\"Aglib.AlgebraicGeometry.Morphisms.Finite.Codimension\",\"Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Adic.AlgebraStructure\",\"Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Adic.VectorBundleFaithfulness\",\"Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Adic.VectorBundleFullness\",\"Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.BaseChange.RestrictIso\",\"Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.BaseChange.SectionRecovery\",\"Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.FiniteFieldPoint\",\"Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.FieldGaloisObject\",\"Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisBaseChange\",\"Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisBaseChangeComponent\",\"Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GenericGalois\",\"Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GenericGaloisReflection\",\"Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GeometricallyConnected\",\"Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.OpenGaloisReflection\",\"Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.RestrictSquareComparison\",\"Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.SectionLifting\",\"Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.SplitThickening.SpecQuotient\",\"Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.StrictHenselianBaseChangeSection\",\"Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.StrictHenselianSection\",\"Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.TorsorGaloisComponent\",\"Aglib.AlgebraicGeometry.Morphisms.FiniteType.ClosedFiberSpecialization\",\"Aglib.AlgebraicGeometry.Morphisms.Flat.Codimension\",\"Aglib.AlgebraicGeometry.Morphisms.Flat.GenericPoints\",\"Aglib.AlgebraicGeometry.Morphisms.Flat.StructureSheafIso\",\"Aglib.AlgebraicGeometry.Morphisms.FormallyUnramified.SectionDescent\",\"Aglib.AlgebraicGeometry.Morphisms.GenericOpenDensity\",\"Aglib.AlgebraicGeometry.Morphisms.Proper.AffineStein.Basic\",\"Aglib.AlgebraicGeometry.Morphisms.Proper.AffineStein.Reduced\",\"Aglib.AlgebraicGeometry.Morphisms.Proper.ReducedGlobalSections\",\"Aglib.AlgebraicGeometry.Morphisms.Restrict.BaseChange\",\"Aglib.AlgebraicGeometry.Morphisms.Restrict.BaseOpen\",\"Aglib.AlgebraicGeometry.Morphisms.Smooth.ConnectedComponentsAlongSection\",\"Aglib.AlgebraicGeometry.Morphisms.Smooth.FieldCoordinates\",\"Aglib.AlgebraicGeometry.Morphisms.Smooth.GenericClopenLift\",\"Aglib.AlgebraicGeometry.Morphisms.Smooth.GenericSectionComponentIntegrality\",\"Aglib.AlgebraicGeometry.Morphisms.Smooth.GenericSectionComponentSpreading\",\"Aglib.AlgebraicGeometry.Morphisms.Smooth.NormalBase\",\"Aglib.AlgebraicGeometry.Morphisms.Smooth.NormalStalks\",\"Aglib.AlgebraicGeometry.Morphisms.Smooth.PointedChartBaseChange\",\"Aglib.AlgebraicGeometry.Morphisms.Smooth.RationalPoint\",\"Aglib.AlgebraicGeometry.Morphisms.Smooth.RationalPointEtaleLocal\",\"Aglib.AlgebraicGeometry.Morphisms.Smooth.RegularBase\",\"Aglib.AlgebraicGeometry.Morphisms.Smooth.Regularity\",\"Aglib.AlgebraicGeometry.Morphisms.Smooth.SectionComponentCartesian\",\"Aglib.AlgebraicGeometry.Morphisms.Smooth.SectionComponentFieldExtension\",\"Aglib.AlgebraicGeometry.Morphisms.Smooth.SectionComponentGenerization\",\"Aglib.AlgebraicGeometry.Morphisms.Smooth.SectionComponentLocus\",\"Aglib.AlgebraicGeometry.Morphisms.Smooth.SectionComponentLocusClopen\",\"Aglib.AlgebraicGeometry.Morphisms.Smooth.SectionComponentLocusGenerization\",\"Aglib.AlgebraicGeometry.Morphisms.Smooth.SectionComponentLocusPoints\",\"Aglib.AlgebraicGeometry.Morphisms.Smooth.SectionPurityStep\",\"Aglib.AlgebraicGeometry.Normalization.Affine\",\"Aglib.AlgebraicGeometry.Normalization.AffineMap\",\"Aglib.AlgebraicGeometry.Normalization.FiniteFunctionField.OpenRecovery\",\"Aglib.AlgebraicGeometry.Normalization.GaloisFibers\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.BaseLocalization\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.BaseLocalizationSection\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.ComponentRecognition\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.EtaleBaseChange\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.EtaleExtension\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.FlatPreimmersionBaseChange\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.FlatPreimmersionEtale\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.FullOpenRecovery\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.GaloisAffineChart\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.GaloisExtension\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.GaloisFibers\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.GaloisRestrictedExtension\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.GaloisSectionNeighborhood\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.GenericPullback\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.LocalFactor\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.LocalFactorRootChart\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.OpenEtaleLocus\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.OpenLift\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.OpenRecovery\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.OpenRecoveryAffine\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.OpenSectionEmbedding\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.ParameterBaseChange\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.ParameterPointTransport\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.PointComponent\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.PointComponentLocalization\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.PointComponentOpenRecovery\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RegularBase\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RootBaseChangedComponentChart\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RootCancellation\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RootCartesianChart\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RootChart\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RootCoverLift\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RootEmbedding\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RootNativePoint\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RootOpenChart\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RootOpenLift\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RootPointLift\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RootPointedComponentChart\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RootPointedData\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RootPointedRefinement\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RootPointedSection\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RootSectionDescent\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.SmoothSectionPurityStep\",\"Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.StalkBaseChange\",\"Aglib.AlgebraicGeometry.Points.FieldExtensionBoundary\",\"Aglib.AlgebraicGeometry.Points.OpenImmersion\",\"Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.MonomialMap\",\"Aglib.AlgebraicGeometry.ProjectiveSpace.BinaryFormProduct.ClosedSubschemeReduction\",\"Aglib.AlgebraicGeometry.ProjectiveSpace.Differentials.Euler.MiddleFrame\",\"Aglib.AlgebraicGeometry.Properties.ClopenSections\",\"Aglib.AlgebraicGeometry.Properties.ConstructibleOpen\",\"Aglib.AlgebraicGeometry.Properties.FiniteCoverOpenInduction\",\"Aglib.AlgebraicGeometry.Properties.Normal.OpenRestriction\",\"Aglib.AlgebraicGeometry.Properties.Normal.PointComponent\",\"Aglib.AlgebraicGeometry.Properties.Normal.PointComponentLift\",\"Aglib.AlgebraicGeometry.RationalPoint.BaseChange\",\"Aglib.AlgebraicGeometry.RationalPoint.BaseChangeOrder\",\"Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.AffineAlgebras\",\"Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.ForgetMaps\",\"Aglib.AlgebraicGeometry.Sites.EtaleLocalIsomorphism\",\"Aglib.AlgebraicGeometry.Sites.EtaleLocalZero\",\"Aglib.AlgebraicGeometry.Sites.EtaleSectionZeroDetection\",\"Aglib.AlgebraicGeometry.Sites.ZariskiEtaleBaseChange\",\"Aglib.AlgebraicGeometry.Spec.AdicSectionCone\",\"Aglib.AlgebraicGeometry.Spec.AdicSectionRetraction\",\"Aglib.AlgebraicGeometry.Spec.AffineClosedRestriction\",\"Aglib.AlgebraicGeometry.Spec.AffineFiniteResiduePoint\",\"Aglib.AlgebraicGeometry.Spec.AffineFiniteSectionAlgebra\",\"Aglib.AlgebraicGeometry.Spec.AffineSectionAlgebra\",\"Aglib.AlgebraicGeometry.Spec.DVRPoints\",\"Aglib.AlgebraicGeometry.Spec.GaloisFibers\",\"Aglib.AlgebraicGeometry.Spec.GenericClopenLift\",\"Aglib.AlgebraicGeometry.Spec.GeometricNeighborhoodBaseChange\",\"Aglib.AlgebraicGeometry.Spec.GeometricNeighborhoodIntegralStage\",\"Aglib.AlgebraicGeometry.Spec.GeometricNeighborhoodLimit\",\"Aglib.AlgebraicGeometry.Spec.GeometricNeighborhoodPrincipalStages\",\"Aglib.AlgebraicGeometry.Spec.GeometricNeighborhoodRootLimit\",\"Aglib.AlgebraicGeometry.Spec.HartogsClopenExtension\",\"Aglib.AlgebraicGeometry.Spec.HartogsCoverRestriction\",\"Aglib.AlgebraicGeometry.Spec.HartogsEtaleLocal\",\"Aglib.AlgebraicGeometry.Spec.HartogsEtaleSectionExtension\",\"Aglib.AlgebraicGeometry.Spec.HartogsEtaleSectionFactor\",\"Aglib.AlgebraicGeometry.Spec.HartogsFiniteAlgebraEtaleDetection\",\"Aglib.AlgebraicGeometry.Spec.HartogsFiniteEtaleAlgebra\",\"Aglib.AlgebraicGeometry.Spec.HartogsFiniteFlatLocal\",\"Aglib.AlgebraicGeometry.Spec.HartogsIntegralBaseChange\",\"Aglib.AlgebraicGeometry.Spec.HartogsNestedCoverRestriction\",\"Aglib.AlgebraicGeometry.Spec.HartogsOpenEnlargement\",\"Aglib.AlgebraicGeometry.Spec.HartogsPrescribedSection\",\"Aglib.AlgebraicGeometry.Spec.HartogsSmoothFiniteAlgebraRecovery\",\"Aglib.AlgebraicGeometry.Spec.HartogsSmoothFiniteBaseChange\",\"Aglib.AlgebraicGeometry.Spec.HenselianLocalFactor\",\"Aglib.AlgebraicGeometry.Spec.IntegralChartPoint\",\"Aglib.AlgebraicGeometry.Spec.IntegralPointLift\",\"Aglib.AlgebraicGeometry.Spec.LocalizationIntegralBaseChange\",\"Aglib.AlgebraicGeometry.Spec.OpenMapPrincipalFibres\",\"Aglib.AlgebraicGeometry.Spec.ParameterComplementBaseChange\",\"Aglib.AlgebraicGeometry.Spec.PolynomialRationalPoint\",\"Aglib.AlgebraicGeometry.Spec.PowerSeriesAdicSections\",\"Aglib.AlgebraicGeometry.Spec.PowerSeriesClosedFiberGeneric\",\"Aglib.AlgebraicGeometry.Spec.PowerSeriesClosedFiberPoint\",\"Aglib.AlgebraicGeometry.Spec.PowerSeriesFiniteEtaleMaps\",\"Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsAlgebraComparison\",\"Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsCoverExtension\",\"Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsCoverRecovery\",\"Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsEtaleAlgebra\",\"Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsFiniteEtaleMaps\",\"Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsOpen\",\"Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsSmoothFiniteAlgebra\",\"Aglib.AlgebraicGeometry.Spec.PowerSeriesQuotientOpen\",\"Aglib.AlgebraicGeometry.Spec.PowerSeriesSectionLifting\",\"Aglib.AlgebraicGeometry.Spec.PowerSeriesUnitSectionCone\",\"Aglib.AlgebraicGeometry.Spec.PowerSeriesVectorBundleCompletion\",\"Aglib.AlgebraicGeometry.Spec.PrincipalBaseChangeLimit\",\"Aglib.AlgebraicGeometry.Spec.PrincipalFractionProjection\",\"Aglib.AlgebraicGeometry.Spec.PrincipalNeighborhoodLimit\",\"Aglib.AlgebraicGeometry.Spec.RootBaseChange\",\"Aglib.AlgebraicGeometry.Spec.RootCartesianOpenLift\",\"Aglib.AlgebraicGeometry.Spec.RootTransversePoint\",\"Aglib.AlgebraicGeometry.Spec.RootTransverseSection\",\"Aglib.AlgebraicGeometry.Spec.ScalarIsoReflection\",\"Aglib.AlgebraicGeometry.Spec.ScalarMapFaithfulness\",\"Aglib.AlgebraicGeometry.Spec.SmoothCompletionClosedFiberGeneric\",\"Aglib.AlgebraicGeometry.Spec.SmoothCompletionHartogs\",\"Aglib.AlgebraicGeometry.Spec.SmoothCompletionHartogsOpen\",\"Aglib.AlgebraicGeometry.Spec.SmoothCompletionOpenPrescribedSection\",\"Aglib.AlgebraicGeometry.Spec.SmoothCompletionPrescribedSection\",\"Aglib.AlgebraicGeometry.Spec.SmoothCompletionSection\",\"Aglib.AlgebraicGeometry.Spec.SmoothSectionPurity\",\"Aglib.AlgebraicGeometry.Spec.SmoothSectionPurityOpen\",\"Aglib.AlgebraicGeometry.Spec.SmoothSectionPurityTarget\",\"Aglib.AlgebraicGeometry.Spec.SmoothSplitSectionFiniteEtaleMaps\",\"Aglib.AlgebraicGeometry.Spec.SpecializationValuation\",\"Aglib.AlgebraicGeometry.Spec.SplitAdicSections\",\"Aglib.AlgebraicGeometry.Spec.SplitQuotientOpen\",\"Aglib.AlgebraicGeometry.Stalk.ClosedPointDimension\",\"Aglib.AlgebraicGeometry.Stalk.CodimensionOneOrder\",\"Aglib.AlgebraicGeometry.Stalk.DVRVerticalCodimension\",\"Aglib.AlgebraicGeometry.Stalk.EtaleLocalBase\",\"Aglib.AlgebraicGeometry.Stalk.IntegralBaseChange\",\"Aglib.AlgebraicGeometry.Stalk.SmoothDVRParameter\",\"Aglib.CategoryTheory.Abelian.Ext.DiagramMap\",\"Aglib.CategoryTheory.Abelian.Ext.DiagramMap.RestrictionSquare\",\"Aglib.CategoryTheory.Abelian.Ext.DiagramMap.Scalars\",\"Aglib.CategoryTheory.Abelian.Ext.SourceTransfer.SourceNaturality\",\"Aglib.CategoryTheory.Abelian.SubobjectComparison\",\"Aglib.CategoryTheory.Adjunction.PresheafPullback\",\"Aglib.CategoryTheory.Adjunction.PresheafPullbackNaturality\",\"Aglib.CategoryTheory.Adjunction.SquareCoefficient\",\"Aglib.CategoryTheory.Filtered.FiniteGeneration\",\"Aglib.CategoryTheory.Galois.FiberCompatible\",\"Aglib.CategoryTheory.Galois.FiberCompatibleComponent\",\"Aglib.CategoryTheory.Galois.FiberCompatibleReflection\",\"Aglib.CategoryTheory.Galois.Iso\",\"Aglib.CategoryTheory.Galois.RegularActionComponent\",\"Aglib.CategoryTheory.Limits.NatTransCone\",\"Aglib.CategoryTheory.Limits.Shapes.GeneratorCones\",\"Aglib.CategoryTheory.Limits.Shapes.KernelCones\",\"Aglib.CategoryTheory.Limits.Shapes.PullbackSquareBaseChange\",\"Aglib.CategoryTheory.Limits.Shapes.UnitConeLifting\",\"Aglib.CategoryTheory.Limits.Shapes.UnitMapLifting\",\"Aglib.CategoryTheory.Limits.Types.SurjectiveConeComparison\",\"Aglib.CategoryTheory.NatTrans.CartesianSourceIdentity\",\"Aglib.CategoryTheory.NatTrans.CartesianSourcePasting\",\"Aglib.CategoryTheory.NatTrans.CartesianSourcePastingConclusion\",\"Aglib.CategoryTheory.NatTrans.CartesianSourcePolygon\",\"Aglib.CategoryTheory.NatTrans.CartesianSourceTargetTransport\",\"Aglib.CategoryTheory.NatTrans.CompositeExchangePasting\",\"Aglib.CategoryTheory.NatTrans.CompositeExchangeRestriction\",\"Aglib.CategoryTheory.NatTrans.ExchangePastingTransport\",\"Aglib.CategoryTheory.NatTrans.IdentityFunctorNormalizer\",\"Aglib.CategoryTheory.NatTrans.NormalizedExchangePasting\",\"Aglib.CategoryTheory.NatTrans.NormalizedIdentity\",\"Aglib.CategoryTheory.NatTrans.NormalizedIteration\",\"Aglib.CategoryTheory.NatTrans.NormalizedIterationSource\",\"Aglib.CategoryTheory.NatTrans.NormalizedIterationTransport\",\"Aglib.CategoryTheory.NatTrans.RefinedSourcePasting\",\"Aglib.CategoryTheory.NatTrans.SourceBeforeModels\",\"Aglib.CategoryTheory.NatTrans.SourceBeforeNormalization\",\"Aglib.CategoryTheory.NatTrans.SourceExchange.Identity\",\"Aglib.CategoryTheory.NatTrans.SourceExchange.ModelTransport\",\"Aglib.CategoryTheory.NatTrans.SourceExchange.Normalization\",\"Aglib.CategoryTheory.NatTrans.SourceExchange.Pasting\",\"Aglib.CategoryTheory.NatTrans.SourceExchange.Restriction\",\"Aglib.CategoryTheory.NatTrans.SourceIsoBaseChange\",\"Aglib.CategoryTheory.NatTrans.SourceIsoBaseChangeTransport\",\"Aglib.CategoryTheory.NatTrans.SourceIsoComposition\",\"Aglib.CategoryTheory.NatTrans.SourceIsoCompositionModels\",\"Aglib.CategoryTheory.NatTrans.SourceIsoCompositionTransport\",\"Aglib.CategoryTheory.Preadditive.CoprimeScalar\",\"Aglib.CategoryTheory.Preadditive.ScalarDiagram\",\"Aglib.CategoryTheory.Preadditive.ScalarDiagram.Transfer\",\"Aglib.CategoryTheory.Sites.Continuous.SheafificationComparison\",\"Aglib.CategoryTheory.Sites.Hypercohomology.ContinuousPullbackConstant\",\"Aglib.CategoryTheory.Sites.Hypercohomology.ContinuousPullbackConstantTerminal\",\"Aglib.CategoryTheory.Sites.Point.Constant\",\"Aglib.CategoryTheory.Sites.Point.Over\",\"Aglib.CategoryTheory.Sites.PresheafTransportValues\",\"Aglib.CategoryTheory.Sites.SheafCohomology.BasisAcyclicity.ValueLiftPullback\",\"Aglib.CategoryTheory.Sites.SheafCohomology.BasisAcyclicity.ValueLiftPullbackCoefficientCohomology\",\"Aglib.CategoryTheory.Sites.SheafCohomology.BasisAcyclicity.ValueLiftPullbackCohomology\",\"Aglib.CategoryTheory.Sites.SheafCohomology.BasisAcyclicity.ValueLiftPullbackSource\",\"Aglib.CategoryTheory.Sites.SheafCohomology.DiagramTransfer\",\"Aglib.CategoryTheory.Sites.SheafCohomology.Large.FiniteCoproductComparison\",\"Aglib.CategoryTheory.Sites.SheafCohomology.ModuleComposite\",\"Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCompositeCoefficient\",\"Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCompositeNaturality\",\"Aglib.CategoryTheory.Sites.SheafKernelComponents\",\"Aglib.CategoryTheory.Sites.Torsion.ZMod.ShortExact\",\"Aglib.CategoryTheory.TorsorAction.GlobalAction\",\"Aglib.FieldTheory.Galois.TensorFactor\",\"Aglib.FieldTheory.IntermediateField.FiniteCompositum\",\"Aglib.FieldTheory.IntermediateField.MappedFiniteCompositum\",\"Aglib.FieldTheory.IsSepClosed\",\"Aglib.FieldTheory.KummerEmbedding\",\"Aglib.FieldTheory.KummerSubextension\",\"Aglib.FieldTheory.SeparableDegree.Invertible\",\"Aglib.LinearAlgebra.FrobeniusBaseChange\",\"Aglib.LinearAlgebra.FrobeniusBaseChange.Tower\",\"Aglib.LinearAlgebra.SemilinearConjugate\",\"Aglib.LinearAlgebra.TensorProduct.Basis\",\"Aglib.RingTheory.AdicCompletion.IdealCongr\",\"Aglib.RingTheory.Artinian.AlgebraicallyClosedReduction\",\"Aglib.RingTheory.Artinian.FiniteFreeSplitThickening\",\"Aglib.RingTheory.Artinian.FiniteIntegralSplitQuotient\",\"Aglib.RingTheory.Artinian.NoetherianGenericSplitThickening\",\"Aglib.RingTheory.Artinian.SplitQuotientRestriction\",\"Aglib.RingTheory.Artinian.SplitReductionFieldStage\",\"Aglib.RingTheory.DiscreteValuationRing.OrderTransport\",\"Aglib.RingTheory.DiscreteValuationRing.OrderTransport.FieldMap\",\"Aglib.RingTheory.DiscreteValuationRing.UniformizerRamification\",\"Aglib.RingTheory.Etale.FaithfullyFlatSource\",\"Aglib.RingTheory.Etale.FrobeniusEquation\",\"Aglib.RingTheory.Etale.FrobeniusEquation.Module\",\"Aglib.RingTheory.Etale.FrobeniusEquation.Tower\",\"Aglib.RingTheory.Etale.FrobeniusKernel\",\"Aglib.RingTheory.Etale.FrobeniusKernel.BaseChange\",\"Aglib.RingTheory.Etale.FrobeniusKernel.GenericFinite\",\"Aglib.RingTheory.Etale.FrobeniusKernel.Module\",\"Aglib.RingTheory.Etale.FrobeniusKernel.Tower\",\"Aglib.RingTheory.Etale.LocalFlat\",\"Aglib.RingTheory.Etale.NilpotentScalarIso\",\"Aglib.RingTheory.Etale.PointwiseFlatBaseChange\",\"Aglib.RingTheory.Etale.ResidueCompletionIso\",\"Aglib.RingTheory.Etale.ResiduePowerIso\",\"Aglib.RingTheory.Etale.StandardEtaleDomainEmbedding\",\"Aglib.RingTheory.Etale.StandardEtaleDomainFactor\",\"Aglib.RingTheory.Etale.StandardEtaleDomainLocalization\",\"Aglib.RingTheory.Etale.StandardEtaleDomainOpen\",\"Aglib.RingTheory.FiniteType.ArrowSubalgebraColimit\",\"Aglib.RingTheory.FiniteType.GenericEmpty\",\"Aglib.RingTheory.GenericFreeness.RegularElement\",\"Aglib.RingTheory.Henselian.FiniteDomainLocal\",\"Aglib.RingTheory.Henselian.PrimitiveRoots\",\"Aglib.RingTheory.Henselian.StrictHenselization.DVRFaithfullyFlat\",\"Aglib.RingTheory.Henselian.StrictHenselization.DiscreteValuationRing\",\"Aglib.RingTheory.Henselian.StrictHenselization.IntegralClosure\",\"Aglib.RingTheory.Henselian.StrictHenselization.LocalStages\",\"Aglib.RingTheory.Henselian.StrictHenselization.PrimitiveRoots\",\"Aglib.RingTheory.Henselian.StrictHenselization.PrimitiveRootsLocalStages\",\"Aglib.RingTheory.Henselian.StrictHenselization.RegularParameter\",\"Aglib.RingTheory.Henselian.StrictHenselization.RootPoint\",\"Aglib.RingTheory.Henselian.UnitRoots\",\"Aglib.RingTheory.IntegralClosure.ChangeBaseMap\",\"Aglib.RingTheory.IntegralClosure.Equiv\",\"Aglib.RingTheory.IntegralClosure.FilteredBaseChange\",\"Aglib.RingTheory.IntegralClosure.FiniteEtale.GenericBaseChange\",\"Aglib.RingTheory.IntegralClosure.FiniteEtale.GoingDown\",\"Aglib.RingTheory.IntegralClosure.FiniteEtale.LocalFactor\",\"Aglib.RingTheory.IntegralClosure.FiniteEtale.LocalFactorGaloisBaseChange\",\"Aglib.RingTheory.IntegralClosure.FiniteEtale.LocalFactorGeneric\",\"Aglib.RingTheory.IntegralClosure.FiniteEtale.Purity\",\"Aglib.RingTheory.IntegralClosure.Inertia.GaloisTame\",\"Aglib.RingTheory.IntegralClosure.Inertia.StrictHenselianNormalForm\",\"Aglib.RingTheory.IntegralClosure.Inertia.TameDegree\",\"Aglib.RingTheory.IntegralClosure.IrreduciblePower\",\"Aglib.RingTheory.IntegralClosure.LocalizationUnramified\",\"Aglib.RingTheory.Kaehler.LocalizedBaseChange\",\"Aglib.RingTheory.KrullDimension.FlatLocal\",\"Aglib.RingTheory.KrullDimension.GoingDown\",\"Aglib.RingTheory.Kummer.BoundedRootCancellation\",\"Aglib.RingTheory.Kummer.DVRRootCancellation\",\"Aglib.RingTheory.Kummer.DVRRootCancellationCanonical\",\"Aglib.RingTheory.Kummer.Evaluation\",\"Aglib.RingTheory.Kummer.GenericField\",\"Aglib.RingTheory.Kummer.HeightOneCancellation\",\"Aglib.RingTheory.Kummer.HeightOneNormalizedCancellation\",\"Aglib.RingTheory.Kummer.HeightOneRootLocalization\",\"Aglib.RingTheory.Kummer.NormalizedCancellation\",\"Aglib.RingTheory.Kummer.NormalizedHeightOne\",\"Aglib.RingTheory.Kummer.Point\",\"Aglib.RingTheory.Kummer.RegularParameter\",\"Aglib.RingTheory.Kummer.RegularParameterRecognition\",\"Aglib.RingTheory.Kummer.RootBaseChange\",\"Aglib.RingTheory.Kummer.RootComplement\",\"Aglib.RingTheory.Kummer.RootComplementBaseChange\",\"Aglib.RingTheory.Kummer.RootDivisibility\",\"Aglib.RingTheory.Kummer.StrictHenselianRootBaseChange\",\"Aglib.RingTheory.Kummer.StrictHenselianRootCancellation\",\"Aglib.RingTheory.Kummer.StrictHenselianRootNormalization\",\"Aglib.RingTheory.Kummer.StrictHenselianSubextension\",\"Aglib.RingTheory.Kummer.StrictHenselianTensorCancellation\",\"Aglib.RingTheory.Kummer.StrictHenselianUniformizer\",\"Aglib.RingTheory.Kummer.TransversePoint\",\"Aglib.RingTheory.Kummer.TransverseSection\",\"Aglib.RingTheory.Kummer.Uniformizer\",\"Aglib.RingTheory.Kummer.UniformizerRecognition\",\"Aglib.RingTheory.LocalRing.FiniteFreeResidueLift\",\"Aglib.RingTheory.LocalRing.FiniteResidueSurjective\",\"Aglib.RingTheory.Localization.FiniteIntegralCapture\",\"Aglib.RingTheory.Localization.FiniteIntegralCaptureAway\",\"Aglib.RingTheory.Localization.FiniteIntegralCaptureBase\",\"Aglib.RingTheory.Localization.FractionRing\",\"Aglib.RingTheory.MvPolynomial.AbsoluteIrreducibilitySpecialization\",\"Aglib.RingTheory.MvPolynomial.AbsoluteIrreducibilitySpreading\",\"Aglib.RingTheory.MvPolynomial.FractionFieldSpreading\",\"Aglib.RingTheory.MvPowerSeries.AugmentationUniqueness\",\"Aglib.RingTheory.MvPowerSeries.Flat\",\"Aglib.RingTheory.MvPowerSeries.QuotientCoefficients\",\"Aglib.RingTheory.MvPowerSeries.VariableIdeal\",\"Aglib.RingTheory.Nagata.FiniteTypeField\",\"Aglib.RingTheory.Nagata.FiniteTypeFieldLocalModel\",\"Aglib.RingTheory.Nagata.Localization\",\"Aglib.RingTheory.RegularLocalRing.EtaleParameter\",\"Aglib.RingTheory.Smooth.FiniteResiduePointLocalSection\",\"Aglib.RingTheory.Smooth.Normal\",\"Aglib.RingTheory.Smooth.RationalPointEtaleLocal\",\"Aglib.RingTheory.Smooth.RegularKernel\",\"Aglib.RingTheory.Smooth.SectionNoetherianDescent\",\"Aglib.RingTheory.Smooth.SeparableResiduePointEtaleNeighborhood\",\"Aglib.RingTheory.Smooth.SplitSectionAugmentation\",\"Aglib.RingTheory.Smooth.SplitSectionCompletion\",\"Aglib.RingTheory.Spectrum.Prime.GenericPrincipalDensity\",\"Aglib.RingTheory.Unramified.GenericFinite\",\"Aglib.RingTheory.Unramified.PointFactorization\",\"Aglib.Topology.Clopen.DenseRange\",\"Aglib.Topology.Constructible.Noetherian\",\"Aglib.Topology.Sheaves.AbelianPullback\",\"Aglib.Topology.Sheaves.FiniteCoverComparison\",\"Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.AmbientModel\"],\"selected_vector_sha256\":\"03854cb7522e95f0b78f873c08700edff837717279de7a96e9f061d27d08680a\",\"producer\":\"remote-34f184b003a64866822449792d929cc7\"}"
+  ],
+  "command_exit_code": 0,
+  "compiler_exit_codes": [],
+  "compiler_failed": 0,
+  "compiler_invocations": 0,
+  "compiler_observation": "wrapper-events-only",
+  "compiler_scope_lease_modes": {},
+  "compiler_scope_policy": "workspace descriptors or verified live supervisor; each compiler inherits its elastic claim",
+  "compiler_succeeded": 0,
+  "concurrency_basis": "compiler wrapper start/finish intervals, each holding one slot",
+  "diagnostics": {
+    "categories": {},
+    "first": [],
+    "observed_missing_count": 0,
+    "observed_missing_prefixes": {},
+    "observed_missing_prefixes_truncated": false,
+    "observed_missing_shortlist": []
+  },
+  "elapsed_seconds": 29.282829895615578,
+  "environment": {
+    "ELAN_HOME": "/root/autodl-tmp/lean-build/elan",
+    "LAKE_ARTIFACT_CACHE": "true",
+    "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+    "LAKE_OVERRIDE_LEAN": "1",
+    "LEAN_NUM_THREADS": "8",
+    "LEAN_SYSROOT": "/root/autodl-tmp/lean-build/logs/remote-0ed9f3b20b6c4a5caba41a355b894133/toolchain",
+    "R5_LEAN_REMOTE_PROFILE": "{\"jobs\": 8, \"lean\": \"/root/autodl-tmp/lean-build/logs/remote-0ed9f3b20b6c4a5caba41a355b894133/toolchain/bin/lean\", \"lean_memory_mib\": 12800, \"rss_limit_mib\": 65536, \"schema_version\": 1, \"threads\": 4}",
+    "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+  },
+  "exit_code": 0,
+  "expected_source": "aa725721a00e10156d2ff7c201b87aad1832d9683c54070fc13090006d7ff5df",
+  "failure_reason": null,
+  "finished_at": "2026-11-01T11:52:06.172949+00:00",
+  "forbid_compilation": false,
+  "forced_kill": false,
+  "git_head": null,
+  "group_closed": true,
+  "incomplete_compiler_events": 0,
+  "input_drift": [],
+  "input_sha256": {
+    "Aglib/Algebra/Category/Grp/ComparisonComposite.lean": "0038af0e0ce81f91efb64160b904b3b820b5d38d026d2e023a3cec961241cae2",
+    "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+    "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+  },
+  "lock_acquired_at": "2026-11-01T11:51:36.880652+00:00",
+  "locks": {
+    "cache_fetch_exclusive": null,
+    "legacy_shared_gate": "/root/autodl-tmp/lean-build/build.lock",
+    "workspace_exclusive": "/root/autodl-tmp/lean-build/locks/workspace-00a94ce7aa0bae8d259e921ec7f299f453ba66e862ccc46f20a9a7a8f474cc03.lock"
+  },
+  "lowest_disk_free_bytes": 27586195456,
+  "modules": [
+    "Aglib.Algebra.Category.Grp.ComparisonComposite"
+  ],
+  "operation_id": null,
+  "outcome": "owned_phase_completed",
+  "peak_compiler_concurrency": 0,
+  "peak_rss_bytes": 5998297088,
+  "pgid": 493575,
+  "phase_executable_sha256": "0c05a22b0b180580a76437114a95cf138f67c8f46245acad26017c803b42b8c1",
+  "phase_label": "parallel-B-selected-approved-axiom713",
+  "pins": {
+    "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+    "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+    "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+  },
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 8,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536,
+    "threads": 4
+  },
+  "resource_accounting": {
+    "global": "sampled cgroup memory/CPU, startup and growth credits; no peak-envelope reservation",
+    "isolation": "cooperative sampled admission; no per-run kernel memory isolation or OOM guarantee",
+    "run": "frontend/job/thread ceilings, sampled owned-tree RSS cutoff, own-tree pressure retreat"
+  },
+  "resources": {
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "cgroup": "/sys/fs/cgroup",
+    "cgroup_limits": [
+      {
+        "cpu.max": "3200000 100000",
+        "memory.max": "128849018880",
+        "path": "/sys/fs/cgroup"
+      }
+    ],
+    "effective_cpus": 32.0,
+    "memory_bytes": 128849018880
+  },
+  "run_dir": "/root/autodl-tmp/lean-build/logs/remote-0ed9f3b20b6c4a5caba41a355b894133",
+  "sampled_process_average_cpu_cores": 0.9763400635087077,
+  "sampled_process_cpu_seconds": 28.59,
+  "schema_version": 1,
+  "setup_cleanup": {
+    "removed_setup_bytes": 0,
+    "removed_setup_files": 0
+  },
+  "source_content_sha256": "aa725721a00e10156d2ff7c201b87aad1832d9683c54070fc13090006d7ff5df",
+  "source_receipt_sha256": "b05a8799c87270ec00f45c9a67cddfab31233cc0b5cad0c93efe536c60c6a6bf",
+  "started_at": "2026-11-01T11:51:36.422188+00:00",
+  "status": "succeeded",
+  "summary": {
+    "action": "phase",
+    "admission": {
+      "affinity_cpus": null,
+      "ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 65536,
+        "threads": 4
+      },
+      "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+      "final_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-578462ff014e46bebab2b0558fb56625": 1,
+          "/root/autodl-tmp/lean-build/logs/remote-e3b81f4d6628407e9b04661fe88f28ba": 5
+        },
+        "cpu_cores": 6.943066477768236,
+        "cpu_usage_usec": 2376823067950,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 7247757312,
+        "memory_current_bytes": 57435111424,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 0.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 42216435712
+      },
+      "initial_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-578462ff014e46bebab2b0558fb56625": 1
+        },
+        "cpu_cores": 1.7824663951557476,
+        "cpu_usage_usec": 2376675282013,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 2147483648,
+        "memory_current_bytes": 54912970752,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 1.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 39704408064
+      },
+      "max_frontends_if_alone": 8,
+      "mode": "elastic",
+      "request": null
+    },
+    "artifacts": {
+      "build.log": "/root/autodl-tmp/lean-build/logs/remote-0ed9f3b20b6c4a5caba41a355b894133/build.log",
+      "compiler-events.jsonl": "/root/autodl-tmp/lean-build/logs/remote-0ed9f3b20b6c4a5caba41a355b894133/compiler-events.jsonl",
+      "receipt.json": "/root/autodl-tmp/lean-build/logs/remote-0ed9f3b20b6c4a5caba41a355b894133/receipt.json"
+    },
+    "cgroup_memory_attribution": "whole observed cgroup; an OOM event alone does not identify its victim",
+    "cgroup_memory_events_delta": {
+      "high": 0,
+      "low": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "compiler_observation": "wrapper-events-only",
+    "compiler_scope_lease_modes": {},
+    "execution_seconds": 29.282829895615578,
+    "exit_code": 0,
+    "expected_source": "aa725721a00e10156d2ff7c201b87aad1832d9683c54070fc13090006d7ff5df",
+    "first_diagnostics": [],
+    "frontend_failed": 0,
+    "frontend_invocations": 0,
+    "frontend_observation": "wrapper starts only; arbitrary phase tools may bypass local compiler caps",
+    "frontend_peak": 0,
+    "frontend_succeeded": 0,
+    "group_closed": true,
+    "native_exit": 0,
+    "outcome": "owned_phase_completed",
+    "peak_rss_bytes": 5998297088,
+    "plan": null,
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "reason": "",
+    "run": "remote-0ed9f3b20b6c4a5caba41a355b894133",
+    "sampled_process_average_cpu_cores": 0.9763400635087077,
+    "source_basis": "aa725721a00e10156d2ff7c201b87aad1832d9683c54070fc13090006d7ff5df",
+    "status": "succeeded",
+    "unwrapped_frontend_count": "unknown",
+    "wall_seconds": 29.75078873336315
+  },
+  "task_id": "etale-incremental-smallblocks-20261027",
+  "unfinished_compiler_records": [],
+  "waiting_for": null,
+  "wall_seconds": 29.75078873336315,
+  "worker_sha256": "7b1d09f535dc951f2f3ecae857f7b77b0ffc95f8f9e55352167a39b4387729a4",
+  "workspace": "/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean"
+}

@@ -1,0 +1,152 @@
+{
+  "contract": "support_complex bounded read-only pointwise raw-type-pair extraction; no mathematical proof/verdict/applicability",
+  "question": "What are the aligned actual inferred type of moduleDerivedBaseChangeMap_underlying fully applied to original producer19 fvars and K, and the exact b720 literal expected pointwise proposition; what is their first bounded raw syntactic difference?",
+  "status": "Complete finite raw pointwise type-pair extraction and first bounded syntactic difference; no semantic verdict",
+  "consumer": "exceptional_module_proper_exchange and principal",
+  "inputs": {
+    "target_declaration": "AlgebraicGeometry.Scheme.EtaleCohomology.moduleDerivedBaseChangeMap_underlying",
+    "target_source_sha256": "6a84bc472cb2a3b2841d27fdb753e907371fe633c7d0364fd288518b7a31afbf",
+    "frozen_provider_source_sha256": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "mathlib_pin": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "lean_pin": "4.34.1",
+    "pointwise_reference": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-module-proper-exchange-staging/expanded-p6/diagnostics/phase-5/PointwiseCube.lean",
+    "pointwise_reference_sha256": "b72088c989598e3e26f361def624f8dc2bd00e8d00b7e2386e6b9ef971f4c827",
+    "expected_literal_correspondence": "Copied pointwiseFormation _h binder type, same literal as pointwiseValue conclusion, with only sq.w.symm replaced by h; whitespace-insensitive source equality checked. No IsPullback assumption included.",
+    "expected_literal_whitespace_normalized_sha256": "beec8e63198963d99200c80ff207312448ec2d9a59fb9947c33de7c6a9e8d702"
+  },
+  "expected_declaration": "AlgebraicGeometry.Scheme.EtaleCohomology.PointwiseTypePair.expectedFormation; only its type accessed; _h binder domain is expected Prop",
+  "local_context": "Original producer nineteen locals opened syntactically with withLocalDecl; K type from raw cube B argument; all twenty expected binders mapped to those same fvars by names or raw instance types.",
+  "executed_script": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/PointwiseTypePair.lean",
+  "executed_script_sha256": "b49ec836c5de403db90751ac5ffc883d94e857312442136895c1260fbb10227f",
+  "request": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/REQUEST.json",
+  "request_sha256": "03f280efce0d4fd148b7cb336c7a146ed6f5eed26c4f03bf8b32bd0f4b8cbe2d",
+  "native_run": "remote-d72be55f9df342ea8cb505bb2a6da32e",
+  "native_result": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-pointwise-type-pair-d72be55f/result.json",
+  "native_result_sha256": "2ccb5dc1cf32163c76c9cc48db59760b96f58dc3786cc7dc4a60163405c60277",
+  "native_receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-d72be55f9df342ea8cb505bb2a6da32e/receipt.json",
+  "native_exit_code": 0,
+  "native_wall_seconds": 8.711132287979126,
+  "compiler_starts": 1,
+  "exact_observed_native_command": [
+    "/root/autodl-tmp/lean-build/logs/remote-d72be55f9df342ea8cb505bb2a6da32e/toolchain/bin/lean",
+    "-M12800",
+    "-j4",
+    "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/pointwise-type-pair-v2-23ed9e2e278c44549a274076c3b6e1c4/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+    "--setup",
+    "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+    "-o",
+    "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/pointwise-type-pair-v2-23ed9e2e278c44549a274076c3b6e1c4/outputs/ProperBaseChange.olean",
+    "-i",
+    "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/pointwise-type-pair-v2-23ed9e2e278c44549a274076c3b6e1c4/outputs/ProperBaseChange.ilean",
+    "-c",
+    "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/pointwise-type-pair-v2-23ed9e2e278c44549a274076c3b6e1c4/outputs/ProperBaseChange.c"
+  ],
+  "native_cwd": "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/package",
+  "profile": {
+    "jobs": 2,
+    "threads": 4,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 32768
+  },
+  "setup_options": {
+    "autoImplicit": false,
+    "warningAsError": true,
+    "weak.linter.mathlibStandardSet": true,
+    "weak.linter.style.longFile": 1500
+  },
+  "default_budgets": true,
+  "managed_source_mutations": 0,
+  "frozen_context_mutations": 0,
+  "frozen_source_receipt_sha256": "75b048cdcd3801815b4d5427a60ea77b16d01fc8ab1b8614c464ee3290923f82",
+  "controlled_phase_source": "5ac5c8ee538ba9b67c6f6c993afa00d4555cd301c4791571e009f5fd70b45f2b",
+  "controlled_phase_source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-pointwise-type-pair-v2-d72be55f.json",
+  "controlled_phase_source_archive_sha256": "5fa307d71a4aa81ebf6975dc401eb38a6efa8609df6e0f4ef4d6d89f69264fcb",
+  "source_identity_note": "Controlled phase source identifies runner/current-N snapshot; it is distinct from the frozen65bc mathematical provider and source6a84 target declaration.",
+  "raw_pair_projection": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/RAW_PAIR_PROJECTION.json",
+  "raw_pair_projection_sha256": "8dc707c6987301a8da4488e28268ac3a18c2f24eb57ddd050f656f82451329c2",
+  "actual_raw_type": {
+    "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/ACTUAL.rawexprdag.txt",
+    "sha256": "976ededafb405a30dfe66e98d8850c34536c81291ccc81563eb41b61ecda4820",
+    "bytes": 71343,
+    "root": 1247,
+    "structural_dag_nodes": 1248
+  },
+  "expected_raw_type": {
+    "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/EXPECTED.rawexprdag.txt",
+    "sha256": "f99d7902338ea8e1fa290b80c8f380096b49069846a2820152993767b2276226",
+    "bytes": 100900,
+    "root": 1843,
+    "structural_dag_nodes": 1844
+  },
+  "actual_has_mvars": false,
+  "expected_has_mvars": false,
+  "raw_alpha_equal": false,
+  "raw_structural_equal": false,
+  "first_difference": {
+    "path": "root.arg[1].arg[6].arg[3].arg[5].arg[0].arg[2].arg[5].head",
+    "reason": "raw-constructor-or-payload",
+    "actual_constant": "CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard",
+    "actual_universes_repr": "[Lean.Level.succ (Lean.Level.param `u), Lean.Level.param `u]",
+    "expected_constant": "CategoryTheory.GrothendieckTopology.instWEqualsLocallyBijectiveOfHasWeakSheafifyOfHasSheafComposeOfPreservesSheafificationOfReflectsIsomorphismsForget",
+    "expected_universes_repr": "[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]",
+    "actual_kind": "const",
+    "expected_kind": "const",
+    "parent_path": "root.arg[1].arg[6].arg[3].arg[5].arg[0].arg[2].arg[5]",
+    "actual_parent_application_argument_count": 3,
+    "expected_parent_application_argument_count": 13,
+    "surrounding_parent": "Argument 5 (zero-based) of SheafOfModules.instAbelian within DerivedCategory.Plus at the saved raw path.",
+    "actual_parent_argument_heads": [
+      "AlgebraicGeometry.Scheme.Etale",
+      "AlgebraicGeometry.Scheme.instCategoryEtale",
+      "AlgebraicGeometry.Scheme.smallEtaleTopology"
+    ],
+    "expected_parent_argument_heads": [
+      "AlgebraicGeometry.Scheme.Etale",
+      "AlgebraicGeometry.Scheme.instCategoryEtale",
+      "AlgebraicGeometry.Scheme.smallEtaleTopology",
+      "AddCommGrpCat",
+      "AddCommGrpCat.instCategory",
+      "lambda",
+      "AddCommGrpCat.carrier",
+      "lambda",
+      "AddCommGrpCat.instConcreteCategoryAddMonoidHomCarrier",
+      "CategoryTheory.sheafToPresheaf_isRightAdjoint",
+      "CategoryTheory.hasSheafCompose_of_preservesMulticospan",
+      "CategoryTheory.GrothendieckTopology.instPreservesSheafificationForgetOfPreservesLimitsOfHasColimitsOfShapeOfPreservesColimitsOfShapeOppositeCoverOfHasLimitsOfShapeWalkingMulticospanOfReflectsIsomorphisms",
+      "AddCommGrpCat.forget_reflects_isos"
+    ]
+  },
+  "raw_stdout": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-pointwise-type-pair-d72be55f/stdout.log",
+  "raw_stdout_sha256": "4de9de7405d7b1386872b1e450cc88954974b4b53ed1fa88414c9003c875f6f7",
+  "raw_stdout_bytes": 185578,
+  "raw_stderr": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-pointwise-type-pair-d72be55f/stderr.log",
+  "raw_stderr_bytes": 0,
+  "postprocessor": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/extract_raw_pair.py",
+  "postprocessor_sha256": "47be2944e34cceb1fbeb2f68fd19259f5c788f22a372c470283e6e9a486f8844",
+  "postprocess_reproduction_argv": [
+    "python3",
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/extract_raw_pair.py",
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-pointwise-type-pair-d72be55f/stdout.log",
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair"
+  ],
+  "postprocess_observed_exit_code": 0,
+  "difference_order": "Expr.equal structural comparison, application-spine head before arguments (left to right), binder fields before domains/bodies, at depth at most32. This is the first difference in that fixed traversal, not a unique semantic divergence.",
+  "earlier_attempts": [
+    {
+      "script_sha256": "6fe2c4f4caadb75fd5aeb89abc84d2a5bc6fafbb9e028c1cce059b9d39745fb8",
+      "status": "Prop-def expected mode superseded before seal/launch; never executed; no output relabeled."
+    },
+    {
+      "script_sha256": "3acb6b791f253d91287123b82617660411038af1aa2b2dbca2500ae336f24f19",
+      "native_run": "remote-ebc260dbd96b4f1b93421520a5199dd1",
+      "exit_code": 1,
+      "coverage": "Correct formation mode; serializer syntax error before raw pair. Retained at its actual source basis."
+    }
+  ],
+  "evidence_boundary": "inferType of exact original producer applied to its nineteen fvars and K; no check/defeq against expected. Expected is copied formation _h binder type with only sq.w.symm→h. Both full raw Expr DAGs precede raw equality/difference. No theorem proof-body/value access, native functor/exchange unfolding, Meta defeq, normalization, kernel-skip/replay, new mathematical assertion, or production/source repair.",
+  "coverage": "Both complete raw expression types; exact common local-context alignment; no metavariables; first bounded syntactic difference and complete immediate argument-head projection; exact default-run command/hash/exit evidence.",
+  "remaining_gap": "No tooling gap in this finite product. Mathematical interpretation, definitional equality, timeout causation and production repair remain untested and belong to the mathematical author.",
+  "next_action": "Mathematical author interprets saved pair/difference; no further run requested."
+}

@@ -1,0 +1,27 @@
+{
+  "question": "Only the actual failed native pure-source style input after one trailing-space removal; retain other694 successes and MK_ALL",
+  "source": "50523553834f8ecf9a15c8aafa2c64d2a1597c4c1b6c34f91d7d8edf42b4d831",
+  "style_input_count": 1,
+  "style_source_vector_sha256": "80332312e27c0078d5db0ce08e736f3254f91fa48f3a6f7739c0e8ffd9bbcb91",
+  "commands": [
+    {
+      "kind": "text-style-actual-one",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "env",
+        "python3",
+        "-c",
+        "import os,sys;os.environ['LEAN_SRC_PATH']=sys.argv[1]+os.pathsep+os.environ.get('LEAN_SRC_PATH','');os.execv(sys.argv[2],[sys.argv[2],sys.argv[3]])",
+        "/root/autodl-tmp/lean-build/logs/remote-61527455c875499dbb7706d9672a97eb/source-selection-data",
+        "/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/bin/lint-style",
+        "Aglib.LatestCDStyleSelection"
+      ],
+      "exit": 0,
+      "seconds": 2.5247969329357147,
+      "log": "/root/autodl-tmp/lean-build/logs/remote-61527455c875499dbb7706d9672a97eb/text-style-actual-one.log"
+    }
+  ],
+  "style_binary_sha256": "e01b2c5c321385f8b9600d89b967694f66332c3a2daa3e4f97204367662e3fb0",
+  "boundary": "Actual existing native source predicates only. No production frontend/client/kernel/tests/replay or source writes. Success is reused in the one final1714 environment, not repeated."
+}

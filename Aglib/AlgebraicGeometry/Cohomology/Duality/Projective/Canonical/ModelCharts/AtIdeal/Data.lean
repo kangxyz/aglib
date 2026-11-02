@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.AtIdeal
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.Prefactor
+public import Mathlib.CategoryTheory.HomCongr
 
 /-!
 # The original chart data on the common quotient and degree
@@ -35,6 +36,18 @@ local instance chartDataStandardDerived (Z : Scheme.{u}) :
 
 attribute [local instance] SmoothClosedImmersionLocalChart.openX
   SmoothClosedImmersionLocalChart.openP SmoothClosedImmersionLocalChart.openY
+
+/-- Normalize the complete original five-isomorphism factorization before any chart
+objects are supplied. The grouping matches the original prefactor and model map. -/
+private theorem isoFactorHom {D : Type*} [Category D]
+    {A₀ A₁ A₂ A₃ A₄ A₅ : D} (e : A₀ ≅ A₅)
+    (e₁ : A₀ ≅ A₁) (e₂ : A₁ ≅ A₂) (e₃ : A₂ ≅ A₃)
+    (e₄ : A₃ ≅ A₄) (e₅ : A₅ ≅ A₄)
+    (h : e = e₁ ≪≫ e₂ ≪≫ e₃ ≪≫ e₄ ≪≫ e₅.symm) :
+    Iso.homCongr (((e₁ ≪≫ e₂) ≪≫ e₃).symm) e₅.symm e₄.hom = e.hom := by
+  simpa only [Iso.homCongr_apply, Iso.symm_inv, Iso.trans_hom,
+    Iso.symm_hom, Category.assoc] using
+    (congrArg Iso.hom h).symm
 
 variable {X P Y : Scheme.{u}} {i : X ⟶ P} {p : P ⟶ Y} {n d : ℕ}
   [IsClosedImmersion i] {x : X} (C : SmoothClosedImmersionLocalChart i p n d x)
@@ -99,10 +112,11 @@ def canonicalChartModelFactorAtIdeal (I : Ideal C.A)
       (moduleExteriorPower X (relativeDifferentialSheaf (i ≫ p)) d).restrict
         (canonicalChartSourceAtIdeal C I hI) := by
   letI := canonicalChartCoefficientQuasicoherent C c hc
-  exact (canonicalChartModelPrefactorAtIdeal C J I hI c hc).hom ≫
-    regularListCanonicalModelMapAt C.α I c (canonicalAmbientChartResolution J C.jP)
+  exact Iso.homCongr (canonicalChartModelPrefactorAtIdeal C J I hI c hc).symm
+    (canonicalChartSourceTopIsoAtIdeal C I hI).symm
+    (regularListCanonicalModelMapAt C.α I c (canonicalAmbientChartResolution J C.jP)
       (canonicalChartCoefficientGammaFrame C c hc) (canonicalChartDeterminantAtIdeal C I hI c hc)
-      C.regularList C.weaklyRegular hI hc ≫ (canonicalChartSourceTopIsoAtIdeal C I hI).inv
+      C.regularList C.weaklyRegular hI hc)
 
 /-- The shared factor retains the literal original prefactor, model arrow and target inverse. -/
 theorem canonicalChartModelFactorAtIdeal_formula (I : Ideal C.A)
@@ -122,13 +136,27 @@ theorem canonicalChartModelFactorAtIdeal_eq (I : Ideal C.A)
     canonicalChartModelFactorAtIdeal C J I hI c hc =
       (canonicalCommonModelChartHomologyIsoAtIdeal i p n d J C I hI).hom := by
   subst I c
-  simpa only [canonicalChartModelFactorAtIdeal, canonicalChartModelPrefactorAtIdeal,
-    canonicalChartDeterminantAtIdeal, canonicalChartSourceTopIsoAtIdeal,
-    canonicalChartSourceBasisAtIdeal, canonicalChartSourceAtIdeal, canonicalChartQuotientSource_eq,
-    canonicalCommonModelChartHomologyIsoAtIdeal, regularListCanonicalModelMapAt,
-    regularListCanonicalDeterminantAt, closedImmersionChartModelHomologyIsoInDegree,
-    closedImmersionChartModelHomologyIso,
-    Iso.trans_hom, Iso.symm_hom, Category.assoc] using
-      (congrArg Iso.hom (canonicalCommonModelChartHomologyIso_eq_shared i p n d J C)).symm
+  let := IsClosedImmersion.spec_of_surjective (regularListQuotientMap C.regularList)
+    Ideal.Quotient.mk_surjective
+  let := canonicalChartCoefficientQuasicoherent C C.regularList.length rfl
+  have hfactor := isoFactorHom
+    (canonicalCommonModelChartHomologyIso i p n d J C)
+    (closedImmersionRestrictedModelHomologyIso i J C.quotientSource ((n : ℤ) - d))
+    ((HomologicalComplex.homologyFunctor
+      (Spec (regularListQuotientRing C.regularList)).Modules (.up ℤ) ((n : ℤ) - d)).mapIso
+        (closedImmersionModelOpenIso i J C.quotientSource C.jP
+          (Spec.map (regularListQuotientMap C.regularList)) C.quotientSource_isPullback))
+    (eqToIso (congrArg (fun k : ℤ =>
+      (closedImmersionRightAdjointRegularListResolutionComplex C.regularList
+        (canonicalAmbientChartResolution J C.jP)).homology k)
+      (canonicalChartCodimensionEq C C.regularList.length rfl)))
+    (regularListCanonicalModelTopHomologyIso C.regularList C.weaklyRegular
+      (canonicalChartCoefficientGammaFrame C C.regularList.length rfl) C.α
+      (canonicalAmbientChartResolution J C.jP)
+      (canonicalChartDeterminantAtIdeal C (Ideal.ofList C.regularList) rfl
+        C.regularList.length rfl))
+    (canonicalChartSourceTopIsoAtIdeal C (Ideal.ofList C.regularList) rfl)
+    (canonicalCommonModelChartHomologyIso_eq_shared i p n d J C)
+  exact hfactor
 
 end AlgebraicGeometry.Scheme.Modules

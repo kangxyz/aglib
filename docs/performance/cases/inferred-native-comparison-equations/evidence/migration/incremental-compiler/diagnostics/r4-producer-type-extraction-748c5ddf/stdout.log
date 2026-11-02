@@ -1,0 +1,66 @@
+/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:10:0: error: The module doc-string for a file should be the first command after the imports.
+Please, add a module doc-string (`/-! ... -/`) before `open Lean Meta`.
+
+Hint: Type `m(odule docstring) + [tab]` to insert a template via snippet.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:1:1: error: * `-/`:
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:27:33: error(lean.unknownIdentifier): Unknown identifier `getLocalDecl`
+/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:27:30: error(lean.invalidField): Invalid field notation: Type of
+  __do_lift✝
+is not known; cannot resolve field `userName`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `LocalDecl.userName`
+  • `MetavarDecl.userName`
+  • `Elab.FVarAliasInfo.userName`
+  • `Hypothesis.userName`
+  • `Qq.Impl.PatVarDecl.userName`
+  • `Linter.UnusedVariables.FVarDefinition.userName`
+  • `SimpAll.Entry.userName`
+  • `Elab.Tactic.Doc.TacticDoc.userName`
+  • `Elab.Term.ToDepElimPattern.Context.userName`
+/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:47:100: error: This line exceeds the 100 character limit, please shorten it!
+You can use "string gaps" to format long strings: within a string quotation, using a '\' at the end of a line allows you to continue the string on the following line, removing all intervening whitespace.
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:90:100: error: This line exceeds the 100 character limit, please shorten it!
+You can use "string gaps" to format long strings: within a string quotation, using a '\' at the end of a line allows you to continue the string on the following line, removing all intervening whitespace.
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:115:18: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat MessageData 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  MessageData
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:123:17: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat MessageData 12
+numerals are polymorphic in Lean, but the numeral `12` cannot be used in a context where the expected type is
+  MessageData
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:123:9: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  BEq MessageData
+
+Hint: Adding the command `deriving instance BEq for Lean.MessageData` may allow Lean to derive the missing instance.
+/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:122:14: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HAdd MessageData ℕ MessageData
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:129:100: error: This line exceeds the 100 character limit, please shorten it!
+You can use "string gaps" to format long strings: within a string quotation, using a '\' at the end of a line allows you to continue the string on the following line, removing all intervening whitespace.
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:133:0: error: cannot evaluate code because '_private.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.0.ProducerTypeExtraction.head' uses 'sorry' and/or contains errors
+/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:1:0: error: The current module only contains private declarations.
+
+Consider adding `public section` at the beginning of the module, or selectively marking declarations as `public`. Mark a `def` with `@[expose]` if downstream code needs it to be definitionally equal to its body (e.g. for `unfold`). Alternatively, add `@[expose] public section` to mark every definition as exposed.
+
+Note: This linter can be disabled with `set_option linter.privateModule false`

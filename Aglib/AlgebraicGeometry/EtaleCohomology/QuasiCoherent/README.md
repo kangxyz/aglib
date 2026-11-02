@@ -56,3 +56,16 @@ morphisms and for additive coefficient arrows whose original restriction
 square commutes. This includes the additive scalar/Frobenius transports used
 by the [curve family](../Curves/README.md), without treating semilinear
 Frobenius as a linear endomorphism in the original scalar structure.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [AffineTestSectionsPostcomp](AffineTestSectionsPostcomp.lean)
+- [AmitsurSections](AmitsurSections.lean)
+- [HigherDirectImage/TestCoefficientRestriction](HigherDirectImage/TestCoefficientRestriction.lean)
+- [ModuleCohomologyNaturality](ModuleCohomologyNaturality.lean)
+- [Semilinear/KernelRepresentation/GenericFinitePair](Semilinear/KernelRepresentation/GenericFinitePair.lean)
+- [Semilinear/LocalLifting](Semilinear/LocalLifting.lean)
+- [UnitFrobeniusCohomology](UnitFrobeniusCohomology.lean)
+- [UnitPullbackCohomology](UnitPullbackCohomology.lean)

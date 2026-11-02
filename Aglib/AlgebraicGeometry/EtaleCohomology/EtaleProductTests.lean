@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleRestrictionUnit
+public import Aglib.CategoryTheory.Sites.RepresentedTransfer.OverProducts
 
 /-! # Actual product tests on the small etale site
 
@@ -33,8 +34,7 @@ variable {X : Scheme.{u}}
 
 /-- The actual test-scheme product, with the varying object as first factor. -/
 abbrev etaleProductTest (V : X.Etale) : X.Etale ⥤ X.Etale :=
-  siteBaseChange (X := X) (S := V.left) V.hom ⋙
-    siteEtalePostcompose (X := X) (S := V.left) V.hom
+  MorphismProperty.Over.productTest etaleMorphismProperty V
 
 instance (V : X.Etale) : (etaleProductTest V).IsContinuous
     (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology X) :=
@@ -49,46 +49,23 @@ abbrev etaleProductSheaf (V : X.Etale) :
   etaleRestriction (X := X) (S := V.left) V.hom ⋙
     directImage (X := X) (S := V.left) V.hom
 
-/-- The second projection of the actual product test. -/
-def etaleProductSnd (V U : X.Etale) : (etaleProductTest V).obj U ⟶ V :=
-  MorphismProperty.Over.homMk
-    (P := fun {S T : Scheme.{u}} (g : S ⟶ T) => Etale g)
-    (pullback.snd U.hom V.hom) rfl (by trivial)
+/-- The original first projection of the selected pullback product. -/
+abbrev etaleProductFst (V U : X.Etale) : (etaleProductTest V).obj U ⟶ U :=
+  MorphismProperty.Over.productFst etaleMorphismProperty V U
 
-/-- Variation of the fixed factor of the actual product tests. -/
-def etaleProductMap {V W : X.Etale} (f : V ⟶ W) :
-    etaleProductTest V ⟶ etaleProductTest W where
-  app U := MorphismProperty.Over.homMk
-    (P := fun {S T : Scheme.{u}} (g : S ⟶ T) => Etale g)
-    (pullback.lift (pullback.fst U.hom V.hom)
-      (pullback.snd U.hom V.hom ≫ f.left) (by
-        rw [Category.assoc, MorphismProperty.Over.w f, pullback.condition])) (by
-          change pullback.lift (pullback.fst U.hom V.hom)
-            (pullback.snd U.hom V.hom ≫ f.left) _ ≫
-              (pullback.snd U.hom W.hom ≫ W.hom) =
-            pullback.snd U.hom V.hom ≫ V.hom
-          rw [pullback.lift_snd_assoc, Category.assoc, MorphismProperty.Over.w f]) (by trivial)
-  naturality U U' g := by
-    apply MorphismProperty.Over.Hom.ext
-    change pullback.lift (pullback.fst U.hom V.hom ≫ g.left)
-        (pullback.snd U.hom V.hom) _ ≫
-          pullback.lift (pullback.fst U'.hom V.hom)
-            (pullback.snd U'.hom V.hom ≫ f.left) _ =
-      pullback.lift (pullback.fst U.hom V.hom)
-          (pullback.snd U.hom V.hom ≫ f.left) _ ≫
-        pullback.lift (pullback.fst U.hom W.hom ≫ g.left)
-          (pullback.snd U.hom W.hom) _
-    apply pullback.hom_ext <;>
-      simp only [Category.assoc, pullback.lift_fst, pullback.lift_snd,
-        pullback.lift_fst_assoc, pullback.lift_snd_assoc]
+/-- The original second projection of the selected pullback product. -/
+abbrev etaleProductSnd (V U : X.Etale) : (etaleProductTest V).obj U ⟶ V :=
+  MorphismProperty.Over.productSnd etaleMorphismProperty V U
+
+/-- Variation of the fixed factor retains the actual pullback map. -/
+abbrev etaleProductMap {V W : X.Etale} (f : V ⟶ W) :
+    etaleProductTest V ⟶ etaleProductTest W :=
+  MorphismProperty.Over.productMap etaleMorphismProperty f
 
 @[reassoc]
 theorem etaleProductMap_snd {V W : X.Etale} (f : V ⟶ W) (U : X.Etale) :
-    (etaleProductMap f).app U ≫ etaleProductSnd W U = etaleProductSnd V U ≫ f := by
-  apply MorphismProperty.Over.Hom.ext
-  change pullback.lift (pullback.fst U.hom V.hom)
-    (pullback.snd U.hom V.hom ≫ f.left) _ ≫ pullback.snd U.hom W.hom = _
-  exact pullback.lift_snd _ _ _
+    (etaleProductMap f).app U ≫ etaleProductSnd W U = etaleProductSnd V U ≫ f :=
+  MorphismProperty.Over.productMap_snd etaleMorphismProperty f U
 
 /-- The induced map on the original product-test sheaves. -/
 def etaleProductSheafMap {V W : X.Etale} (f : V ⟶ W) :
@@ -96,76 +73,57 @@ def etaleProductSheafMap {V W : X.Etale} (f : V ⟶ W) :
   Functor.sheafPushforwardContinuousNatTrans (etaleProductMap f)
     AddCommGrpCat.{u + 1} (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology X)
 
-/-- Literal interchange of the two factors. -/
-def etaleProductSymmetry (V U : X.Etale) :
+/-- Literal interchange of the two original pullback factors. -/
+abbrev etaleProductSymmetry (V U : X.Etale) :
     (etaleProductTest V).obj U ≅ (etaleProductTest U).obj V :=
-  MorphismProperty.Over.isoMk
-    (P := fun {S T : Scheme.{u}} (g : S ⟶ T) => Etale g) (pullbackSymmetry U.hom V.hom) (by
-    change (pullbackSymmetry U.hom V.hom).hom ≫
-      (pullback.snd V.hom U.hom ≫ U.hom) = pullback.snd U.hom V.hom ≫ V.hom
-    rw [pullbackSymmetry_hom_comp_snd_assoc]
-    exact pullback.condition)
+  MorphismProperty.Over.productSymmetry etaleMorphismProperty V U
 
-/-- Symmetry respects variation of the actual test scheme. -/
 @[reassoc]
 theorem etaleProductSymmetry_naturality {V W : X.Etale} (f : V ⟶ W) (U : X.Etale) :
     (etaleProductSymmetry V U).hom ≫ (etaleProductTest U).map f =
-      (etaleProductMap f).app U ≫ (etaleProductSymmetry W U).hom := by
-  apply MorphismProperty.Over.Hom.ext
-  change (pullbackSymmetry U.hom V.hom).hom ≫
-      pullback.lift (pullback.fst V.hom U.hom ≫ f.left)
-        (pullback.snd V.hom U.hom) _ =
-    pullback.lift (pullback.fst U.hom V.hom)
-        (pullback.snd U.hom V.hom ≫ f.left) _ ≫
-      (pullbackSymmetry U.hom W.hom).hom
-  apply pullback.hom_ext <;>
-    simp only [Category.assoc, pullback.lift_fst, pullback.lift_snd,
-      pullbackSymmetry_hom_comp_fst, pullbackSymmetry_hom_comp_snd,
-      pullbackSymmetry_hom_comp_fst_assoc]
+      (etaleProductMap f).app U ≫ (etaleProductSymmetry W U).hom :=
+  MorphismProperty.Over.productSymmetry_naturality etaleMorphismProperty f U
 
-/-- Multiplication by the original terminal test is the actual second projection. -/
-def etaleProductTerminalIso (V : X.Etale) :
+/-- Terminal multiplication uses the original second projection. -/
+abbrev etaleProductTerminalIso (V : X.Etale) :
     (etaleProductTest V).obj (etaleTerminal X) ≅ V :=
-  MorphismProperty.Over.isoMk
-    (P := fun {S T : Scheme.{u}} (g : S ⟶ T) => Etale g)
-    (asIso (pullback.snd (𝟙 X) V.hom)) (by
-      change pullback.snd (𝟙 X) V.hom ≫ V.hom = pullback.snd (𝟙 X) V.hom ≫ V.hom
-      rfl)
+  MorphismProperty.Over.productTerminalIso etaleMorphismProperty V
 
 @[simp]
 theorem etaleProductTerminalIso_hom (V : X.Etale) :
-    (etaleProductTerminalIso V).hom = etaleProductSnd V (etaleTerminal X) := by
-  apply MorphismProperty.Over.Hom.ext
-  rfl
+    (etaleProductTerminalIso V).hom = etaleProductSnd V (etaleTerminal X) :=
+  MorphismProperty.Over.productTerminalIso_hom etaleMorphismProperty V
 
-/-- The inverse terminal comparison is natural in the test object. -/
 @[reassoc]
 theorem etaleProductTerminalIso_inv_naturality {V W : X.Etale} (f : V ⟶ W) :
     (etaleProductTerminalIso V).inv ≫ (etaleProductMap f).app (etaleTerminal X) =
-      f ≫ (etaleProductTerminalIso W).inv := by
-  apply (cancel_mono (etaleProductTerminalIso W).hom).1
-  simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
-  rw [etaleProductTerminalIso_hom, etaleProductMap_snd,
-    ← etaleProductTerminalIso_hom, Iso.inv_hom_id_assoc]
+      f ≫ (etaleProductTerminalIso W).inv :=
+  MorphismProperty.Over.productTerminalIso_inv_naturality etaleMorphismProperty f
 
-/-- Symmetry followed by the first projection is the second projection. -/
 @[reassoc]
 theorem etaleProductSymmetry_counit (V U : X.Etale) :
     (etaleProductSymmetry V U).hom ≫ (siteEtalePostcomposeAdj U.hom).counit.app V =
-      etaleProductSnd V U := by
-  apply MorphismProperty.Over.Hom.ext
-  change (pullbackSymmetry U.hom V.hom).hom ≫ pullback.fst V.hom U.hom =
-    pullback.snd U.hom V.hom
-  exact pullbackSymmetry_hom_comp_fst _ _
+      etaleProductSnd V U :=
+  MorphismProperty.Over.productSymmetry_counit etaleMorphismProperty V U
 
-/-- The represented augmentation, followed by terminal transport, is the same projection. -/
 @[reassoc]
 theorem etaleProductTest_terminal (V U : X.Etale) :
     (etaleProductTest V).map ((etaleTerminalIsTerminal X).from U) ≫
-      (etaleProductTerminalIso V).hom = etaleProductSnd V U := by
-  apply MorphismProperty.Over.Hom.ext
-  change pullback.lift (pullback.fst U.hom V.hom ≫ U.hom)
-    (pullback.snd U.hom V.hom) _ ≫ pullback.snd (𝟙 X) V.hom = _
-  exact pullback.lift_snd _ _ _
+      (etaleProductTerminalIso V).hom = etaleProductSnd V U :=
+  MorphismProperty.Over.productTest_terminal etaleMorphismProperty V U
+
+/-- The actual pullback product compared to a chosen categorical product. -/
+abbrev etaleProductIso (V U : X.Etale) : (etaleProductTest V).obj U ≅ U ⨯ V :=
+  MorphismProperty.Over.productIso etaleMorphismProperty V U
+
+@[reassoc (attr := simp)]
+theorem etaleProductIso_hom_fst (V U : X.Etale) :
+    (etaleProductIso V U).hom ≫ prod.fst = etaleProductFst V U :=
+  MorphismProperty.Over.productIso_hom_fst etaleMorphismProperty V U
+
+@[reassoc (attr := simp)]
+theorem etaleProductIso_hom_snd (V U : X.Etale) :
+    (etaleProductIso V U).hom ≫ prod.snd = etaleProductSnd V U :=
+  MorphismProperty.Over.productIso_hom_snd etaleMorphismProperty V U
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

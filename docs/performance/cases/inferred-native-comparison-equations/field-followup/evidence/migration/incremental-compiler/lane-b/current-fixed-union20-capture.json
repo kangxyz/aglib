@@ -1,0 +1,61 @@
+{
+  "phase": "current-fixed-union20-actual-capture",
+  "run": "remote-0116fbacf2d74456ad1c2e7f9bf70ed4",
+  "source": "f99d984824d7d8076ab46ecb1a708647baa16731530f208dd4754a3c6b2f283b",
+  "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/lane-b/current-union20-0116fbac.json",
+  "source_archive_sha256": "06c3917027c1eb898e0a8df1bda7a7dd78f18e1457429e6de3880ae2e28c45ca",
+  "source_archive_mode": "0444",
+  "fixed_sources_verified": 106,
+  "readonly_provider_guards_verified": 119,
+  "source_packets": {
+    "C": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/repair-v2/READY-provider-v4.json",
+      "sha256": "a280a68f4d2b5903f02ad4921468755f8df517258a54df265f9109a441500021"
+    },
+    "P6": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-conflict-merge/production-integration/v3/READY.json",
+      "sha256": "d390cdf02b43d09e59f168badadfb5d87b2c5f75f287d0f723001eb540cfebaa"
+    },
+    "Dscope": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-d-topos-foundation/second-component/SCOPE_MANIFEST.json",
+      "sha256": "12da5422dfcac6855cd33ce33f761deab84991804e9ae2859aa7e5c0efd3992e"
+    },
+    "Dapply": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-d-topos-foundation/second-component/APPLY_RESULT.json",
+      "sha256": "a4ff76c7f86b9a443103b839345a92eaabb7224b374743a6a953fc20023ff01c"
+    },
+    "represented": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/candidate-v5/READY.json",
+      "sha256": "7269e1f3be3a00bdaf38911501393d5d5aaedce060028336a54c77934427f15e"
+    },
+    "Galois": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/galois-invariant-subobject-core-staging/candidate-v1/identity.json",
+      "sha256": "c0edca31eb1790e217a8897eb61a733a9315666ed76b6fbdcc08509119697ddd"
+    }
+  },
+  "modules": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.CurveFieldInvarianceUniverses",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.CurveFieldInvarianceConstantModules",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.CurveFieldInvarianceSeparablyClosed",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.FullSubcategory",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.TorsionPreservation",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.ComparisonAlgebra",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.DirectImageComparison",
+    "Aglib.CategoryTheory.Adjunction.Mates.UnitIsomorphism",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.MateCubeIsomorphism",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.CoefficientBound",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.SpecifiedMateCube",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.PlusExactSquare",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.PlusAdjunctionMate",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.EtaleCover",
+    "Aglib.CategoryTheory.Over.RelativeTests",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.RepresentedSections",
+    "Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.InvariantSubobject",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GaloisTrivialSubobject",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GenericTrivializationGalois"
+  ],
+  "C_changed4_capture_hold": "released; actual new SOURCE and fixed source vector sealed",
+  "represented_v5_capture": "sealed; later v6 is a new source basis, not a relabel of this invocation",
+  "coverage": "capture only; native process running; no pass implied"
+}

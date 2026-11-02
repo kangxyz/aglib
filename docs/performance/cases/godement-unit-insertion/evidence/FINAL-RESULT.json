@@ -1,0 +1,156 @@
+{
+  "status": "Assigned mathematical construction/native compilation scope complete; no required proof repair remains in these owned leaves.",
+  "role": "Mathematical authorship and coupled implementation/CPP; not independent review.",
+  "original_basis": {
+    "Q_head": "7d071440653407d30fd41d8dbbafce1673a3039b",
+    "original_OpenBaseChange_sha256": "48cabc494c9aba779b667c5b6fc4d4b235fae3af40c5479ddf25a5be273867f3"
+  },
+  "source_vector": {
+    "common": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-etale-abstract-20261029/Aglib/CategoryTheory/Functor/NatTrans/UnitInsertionSpan.lean",
+      "sha256": "84bdff5cea154b04a0f2df6429e2ba6505034a7831c0620521da33dd30c62342",
+      "bytes": 10771
+    },
+    "component": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-etale-abstract-20261029/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanComponent.lean",
+      "sha256": "c4da49721d261a5623feac69ec09e6e5a705705fec2d608eaf002a8ee2e7090f",
+      "bytes": 3119
+    },
+    "factorized": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-etale-abstract-20261029/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanFactorized.lean",
+      "sha256": "05927d624a8ec60b52a25efefcdd2ca52eb0b4b334e8769f319102f0d88c6254",
+      "bytes": 2130
+    },
+    "tails": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-etale-abstract-20261029/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Span.lean",
+      "sha256": "b1cd0df977d580645d71aaa6a884a2b3e79e16de66ad8863fd312b7441e57f20",
+      "bytes": 2504
+    },
+    "facade": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-etale-abstract-20261029/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+      "sha256": "d0594d133f27d56747f5a0daeaab4cd296e533e6137dd2df8ce9f069f69f5871",
+      "bytes": 1651
+    }
+  },
+  "mathematical_result": [
+    "Complete generic unit/mate/augmentation bridge and span laws are proved over independent variable categories and functors; the geometric premise is the original independent unit equation.",
+    "The smallest generic first-square point/map view is specialized to the original native comparison and unit. The original native augmentation-natural square is retained, and the exact two proved component equations paste in the same ordinary module category.",
+    "The whole original factorized equality is recovered by the original full-subcategory inclusion and equality in every degree. Original open_unit_span and quasi-isomorphism descent then retain their original proofs."
+  ],
+  "conditions_and_correspondence": {
+    "owned_original_public_headers": [
+      "open_unit_span_factorized",
+      "open_unit_span_component",
+      "open_unit_span",
+      "pullbackPushforwardPlusUnit_restrict_quasiIso"
+    ],
+    "header_count": 4,
+    "duplicates": [],
+    "changed_headers": [],
+    "premises": "All original scheme maps, open-immersion/cartesian hypotheses, cochain boundedness and quasi-isomorphism premise retained. No final span/coherence premise added.",
+    "values": "Original native comparisons/mate, both Godement totals/units, bridge and span legs retained; no same-endpoint replacement iso.",
+    "universes_models": "Native original universes preserved; generic category/Hom universes independent. Original two named standard constants remain once in Basic, reused locally; no new derived/site/topos/replacement model.",
+    "facade": "Import-only original OpenBaseChange facade passed; full29-name ownership/correspondence is held by main integrator."
+  },
+  "compilation": {
+    "common": "Exact84bd freshPASS in mixed f0e024e2/SOURCE4c06; COMMON-READY.json has actual event fields.",
+    "native_runs": [
+      {
+        "expected_source": "e7788ac5f742d948e7ffcb9affe60c9ba87d639fd013b31fd3d7fbbd092297e9",
+        "exit_code": 0,
+        "elapsed_seconds": 361.61781272292137,
+        "compiler_invocations": 1,
+        "compiler_succeeded": 1,
+        "compiler_failed": 0,
+        "group_closed": true,
+        "input_drift": [],
+        "input_sha256": {
+          "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanComponent.lean": "c4da49721d261a5623feac69ec09e6e5a705705fec2d608eaf002a8ee2e7090f",
+          "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+          "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+          "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+        },
+        "peak_rss_bytes": 11805548544,
+        "scope": "component",
+        "run_id": "remote-5c803ce865cb4c8aad12a9ba6412f841",
+        "source_keys": [
+          "component"
+        ],
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-5c803ce865cb4c8aad12a9ba6412f841/receipt.json",
+        "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-5c803ce865cb4c8aad12a9ba6412f841/build.log",
+        "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-5c803ce865cb4c8aad12a9ba6412f841/compiler-events.jsonl"
+      },
+      {
+        "expected_source": "e9ad8c9d8096784793242fecf0712f2d18fdef19c8cde5eece836e90a55f46ff",
+        "exit_code": 0,
+        "elapsed_seconds": 398.0840799063444,
+        "compiler_invocations": 1,
+        "compiler_succeeded": 1,
+        "compiler_failed": 0,
+        "group_closed": true,
+        "input_drift": [],
+        "input_sha256": {
+          "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanFactorized.lean": "05927d624a8ec60b52a25efefcdd2ca52eb0b4b334e8769f319102f0d88c6254",
+          "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+          "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+          "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+        },
+        "peak_rss_bytes": 13060161536,
+        "scope": "factorized",
+        "run_id": "remote-f5e90209372b4bfbace5da3e7dc12d01",
+        "source_keys": [
+          "factorized"
+        ],
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-f5e90209372b4bfbace5da3e7dc12d01/receipt.json",
+        "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-f5e90209372b4bfbace5da3e7dc12d01/build.log",
+        "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-f5e90209372b4bfbace5da3e7dc12d01/compiler-events.jsonl"
+      },
+      {
+        "expected_source": "e9ad8c9d8096784793242fecf0712f2d18fdef19c8cde5eece836e90a55f46ff",
+        "exit_code": 0,
+        "elapsed_seconds": 307.5154719799757,
+        "compiler_invocations": 2,
+        "compiler_succeeded": 2,
+        "compiler_failed": 0,
+        "group_closed": true,
+        "input_drift": [],
+        "input_sha256": {
+          "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean": "d0594d133f27d56747f5a0daeaab4cd296e533e6137dd2df8ce9f069f69f5871",
+          "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+          "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+          "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+        },
+        "peak_rss_bytes": 8780865536,
+        "scope": "tails_and_facade",
+        "run_id": "remote-dc117035f822435c959fbae836ff2c8d",
+        "source_keys": [
+          "tails",
+          "facade"
+        ],
+        "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-dc117035f822435c959fbae836ff2c8d/receipt.json",
+        "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-dc117035f822435c959fbae836ff2c8d/build.log",
+        "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-dc117035f822435c959fbae836ff2c8d/compiler-events.jsonl"
+      }
+    ],
+    "retained": "All matching producer, FirstSquare and SecondSquare passes retained; no producer/baseline repeat triggered by this handoff."
+  },
+  "evidence_limits": [
+    "This is compilation coverage only. Standalone final lint, tests, axiom auditing, aggregate generation, independent review, Git and publication are Root/main responsibilities and were not executed or claimed by this author.",
+    "No controlled speedup, unique kernel-cause conclusion or whole-library closure is claimed. Native full-Plus generic specialization attempts failed and were not adopted.",
+    "Valid selected diagnostics showed original constructor/projection/proof-argument representation differences and substantial heartbeat use before finalexact. Raw differences do not by themselves prove a model or definitional-equality obstruction."
+  ],
+  "preserved_history": [
+    "whole-construction/GENERIC-COMPILER-EVIDENCE.json",
+    "whole-construction/NATIVE-COMPILER-EVIDENCE.json",
+    "whole-construction/alternatives/app-evaluation-v3/COMPILER-EVIDENCE.json",
+    "split/span/diagnostic/READY.json",
+    "split/span/diagnostic/READY-v2.json",
+    "split/span/diagnostic/READY-v3.json",
+    "split/span/normalization-v1/READY.json",
+    "split/span/normalization-v1/diagnostic/READY.json",
+    "split/span/independent-component-v1/READY.json"
+  ],
+  "remaining_gap": "No mathematical/proof-compilation gap in the assigned family. Root/main still owns the broader repository final checks, source integration and publication boundary.",
+  "reproduction": "On this exact source/pin vector with retained matching caches: lake build +Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange. This command describes normal incremental reproduction, not a request to rerun already valid coverage.",
+  "writes": "Only granted Qcommon/Span/SpanFactorized/SpanComponent paths and assigned R scratch were written. No Git/index/push, Rootdocs/aggregate, N or separate CI worktree edits."
+}

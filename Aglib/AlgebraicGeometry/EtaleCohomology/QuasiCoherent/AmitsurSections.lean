@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.SpecSections
+public import Aglib.LinearAlgebra.TensorProduct.Map
 public import Aglib.Algebra.Homology.Amitsur.Positive
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.Comparison
 public import Mathlib.Algebra.Category.Grp.Ulift
@@ -36,11 +37,8 @@ namespace AlgebraicGeometry.Scheme.EtaleCohomology.QuasiCoherent
 /-- Additive maps from a tensor product are determined on actual pure tensors. -/
 theorem tensorSectionAddHom_ext {R M N Z : Type u} [CommRing R]
     [AddCommGroup M] [AddCommGroup N] [AddCommGroup Z] [Module R M] [Module R N]
-    (f g : M ⊗[R] N →+ Z) (h : ∀ m n, f (m ⊗ₜ[R] n) = g (m ⊗ₜ[R] n)) : f = g := by
-  ext s
-  induction s using TensorProduct.inductionOn with
-  | tmul m n => exact h m n
-  | add s t hs ht => simp only [map_add, hs, ht]
+    (f g : M ⊗[R] N →+ Z) (h : ∀ m n, f (m ⊗ₜ[R] n) = g (m ⊗ₜ[R] n)) : f = g :=
+  TensorProduct.addHom_ext f g h
 
 variable (R : Type u) [CommRing R] (F : (Spec (CommRingCat.of R)).Modules)
   [F.IsQuasicoherent]
@@ -52,22 +50,6 @@ def moduleAdditiveLift : ModuleCat.{u} R ⥤ AddCommGrpCat.{u + 1} :=
 instance : (moduleAdditiveLift R).Additive :=
   inferInstanceAs (forget₂ (ModuleCat.{u} R) AddCommGrpCat.{u} ⋙
     AddCommGrpCat.uliftFunctor.{u + 1, u}).Additive
-
-/-- The actual tensor-section map with only its additive structure retained. -/
-def tensorSectionsAddHom (A : CommAlgCat.{u} R) :
-    A ⊗[R] moduleSpecΓFunctor.obj F →+
-      Γ((pullback (Spec.map (CommRingCat.ofHom (algebraMap R A)))).obj F, ⊤) :=
-  (specTensorSectionsIso R F A).hom.hom.toAddMonoidHom
-
-/-- All algebra-map compatibility is checked on native additive maps before value lifting. -/
-theorem tensorSectionsAddHom_naturality {A B : CommAlgCat.{u} R} (f : A ⟶ B) :
-    (tensorSectionsAddHom R F B).comp
-      (f.hom.toLinearMap.rTensor (moduleSpecΓFunctor.obj F)).toAddMonoidHom =
-    (sectionsAddHom (Spec (CommRingCat.of R)) F
-      ((algSpec (CommRingCat.of R)).map f.op)).comp (tensorSectionsAddHom R F A) := by
-  apply tensorSectionAddHom_ext
-  intro a s
-  exact (sectionsPresheaf_map_specTensor_tmul R F f a s).symm
 
 /-- Tensor coordinates form a natural isomorphism for all native algebra maps. -/
 def specTensorSectionsNatIso :

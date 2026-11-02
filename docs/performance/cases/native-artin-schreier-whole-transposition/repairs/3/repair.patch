@@ -1,0 +1,40 @@
+diff --git a/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean b/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean
+--- a/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean
++++ b/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean
+@@ -119,17 +119,24 @@
+ theorem primeFieldToAdditive_artinSchreierMap (p : ℕ) (hp : p.Prime)
+     (h : ∀ U : Cᵒᵖ, (p : R.obj U) = 0) :
+     primeFieldToAdditive R J hR p h ≫ artinSchreierMap R J hR p hp h = 0 := by
+-  apply Sheaf.hom_ext
+-  apply sheafify_hom_ext J _ _ hR
+-  change toSheafify J ((Functor.const Cᵒᵖ).obj (primeFieldCoefficient.{max r w} p)) ≫
+-      ((primeFieldToAdditive R J hR p h).hom ≫ (artinSchreierMap R J hR p hp h).hom) =
+-    toSheafify J ((Functor.const Cᵒᵖ).obj (primeFieldCoefficient.{max r w} p)) ≫ 0
+-  rw [← Category.assoc, toSheafify_primeFieldToAdditive]
+-  ext U a
+-  apply ULift.ext
+-  change (ZMod.castHom (ringChar.dvd (h U)) (R.obj U) a.down) ^ p -
+-    ZMod.castHom (ringChar.dvd (h U)) (R.obj U) a.down = 0
+-  let : Fact p.Prime := ⟨hp⟩
+-  rw [← map_pow, ZMod.pow_card, sub_self]
++  let P₀ : Cᵒᵖ ⥤ AddCommGrpCat.{max r w} :=
++    (Functor.const Cᵒᵖ).obj (primeFieldCoefficient.{max r w} p)
++  let A₀ : Sheaf J AddCommGrpCat.{max r w} := additiveSheaf.{w} R J hR
++  let E : ((presheafToSheaf J AddCommGrpCat.{max r w}).obj P₀ ⟶ A₀) ≃ (P₀ ⟶ A₀.obj) :=
++    (sheafificationAdjunction J AddCommGrpCat.{max r w}).homEquiv P₀ A₀
++  have hz : primeFieldPresheafMap R p h ≫ (artinSchreierMap R J hR p hp h).hom = 0 := by
++    ext U a
++    apply ULift.ext
++    change (ZMod.castHom (ringChar.dvd (h U)) (R.obj U) a.down) ^ p -
++      ZMod.castHom (ringChar.dvd (h U)) (R.obj U) a.down = 0
++    let : Fact p.Prime := ⟨hp⟩
++    rw [← map_pow, ZMod.pow_card, sub_self]
++  have hzE : E (0 : (presheafToSheaf J AddCommGrpCat.{max r w}).obj P₀ ⟶ A₀) = 0 :=
++    CategoryTheory.Limits.comp_zero
++  have hzE' : E.symm (0 : P₀ ⟶ A₀.obj) = 0 :=
++    E.injective ((E.apply_symm_apply _).trans hzE.symm)
++  exact ((sheafificationAdjunction J AddCommGrpCat.{max r w}).homEquiv_naturality_right_symm
++    (primeFieldPresheafMap R p h) (artinSchreierMap R J hR p hp h)).symm.trans
++      ((congrArg E.symm hz).trans hzE')
+ 
+ end CategoryTheory.Sheaf.ArtinSchreier

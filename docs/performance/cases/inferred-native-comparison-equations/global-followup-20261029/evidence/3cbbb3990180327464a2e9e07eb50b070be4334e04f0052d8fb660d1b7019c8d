@@ -1,0 +1,72 @@
+{
+  "phase": "V31NativeSharedConstructorNormalization",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "run": "remote-49c97cedad5c4e929fa64720fdc84bc3",
+  "source": "5ca1ab383ada15b5f6aba0aa3868cb6ea78ba6189b0d2c0eef3e26fddcf6b9b1",
+  "group_closed": true,
+  "exit_code": 1,
+  "input_drift": [],
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 8,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536,
+    "threads": 4
+  },
+  "pins": {
+    "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+    "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+    "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+  },
+  "execution_seconds": 147.5665726363659,
+  "compiler_invocations": 1,
+  "compiler_succeeded": 0,
+  "compiler_failed": 1,
+  "command": "See guarded input/payload and native receipt for phase argv",
+  "source_guards": {
+    "Aglib/CategoryTheory/Functor/CopyObjRestriction.lean": "e6cd595f727539698609abb2ede1d9691a3b494337164a57da4048a673be04a6",
+    "Aglib/CategoryTheory/Over/RelativeTests.lean": "5ab29b5478f311465cafa54ae92c84a1f1d83cf57007ae011ed8613a6527ba35",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean": "de7ca8da360c2e46e78ff742c6e01f00505861b319c917d7bb539420f5a181d0",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean": "fdce269bf721fecd7cf4a79f70156997a9caa88760f57e2d4c1de5731401400c"
+  },
+  "all_frontend_coverage": [
+    {
+      "path": "/root/autodl-tmp/lean-build/logs/remote-49c97cedad5c4e929fa64720fdc84bc3/SharedConstructorNormalization-v31.lean",
+      "sha256": null,
+      "exit_code": 1,
+      "elapsed_seconds": 142.3621088117361
+    }
+  ],
+  "input": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/global-shared-normalization-v31-input.json",
+    "sha256": "284884ed74746803062115d0bd5097d5d3ffa6c6f1557b17ccd4d49f623b45ea"
+  },
+  "source_archive": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/recovery-global-v31-prefix-49c97ced.json",
+    "sha256": "23d39e4d6231901c701c5fce664f3c0f9349ba3a1a81967dd2d5224f6dd1ba59"
+  },
+  "artifacts": {
+    "receipt.json": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-49c97cedad5c4e929fa64720fdc84bc3/receipt.json",
+      "sha256": "c978a77e6f6f7c0ab32c4ab9b2e69a80f8da9234a1e0e6469ddba40231766fec"
+    },
+    "build.log": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-49c97cedad5c4e929fa64720fdc84bc3/build.log",
+      "sha256": "a48cc0622ac2f5630a23253d893b072be045b0a49d4e63c806c5ae2d57ebb9d6"
+    },
+    "compiler-events.jsonl": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-49c97cedad5c4e929fa64720fdc84bc3/compiler-events.jsonl",
+      "sha256": "273f6cbc0fe7edaa2d8d0b986bb822d82025abaf51b6861a0284e9d33cc3c868"
+    }
+  },
+  "compiler_error_headers": [
+    "/root/autodl-tmp/lean-build/logs/remote-49c97cedad5c4e929fa64720fdc84bc3/SharedConstructorNormalization-v31.lean:919:4: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached",
+    "/root/autodl-tmp/lean-build/logs/remote-49c97cedad5c4e929fa64720fdc84bc3/SharedConstructorNormalization-v31.lean:860:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached",
+    "/root/autodl-tmp/lean-build/logs/remote-49c97cedad5c4e929fa64720fdc84bc3/SharedConstructorNormalization-v31.lean:926:16: error: (kernel) unknown constant '_private.Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction.0.AlgebraicGeometry.Scheme.EtaleCohomology.Constructible.FiniteCogenerators.Global.representedRestrictionIso_hom_app'"
+  ],
+  "boundary": "Existing producing-source observations only. Matching passes remain usable after a mixed failure. No mathematical verdict, broad closure or new validation run is supplied."
+}

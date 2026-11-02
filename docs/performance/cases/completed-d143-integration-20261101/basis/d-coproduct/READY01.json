@@ -1,0 +1,96 @@
+{
+  "phase": "D1220 READY01",
+  "head": "b0f8ca3f44be620dde8b40f65e1eec0143e45db4",
+  "main": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/release-integrator-20261030/integration-30b6",
+  "archive_source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/snapshot/agent-c-independent-ext-quasifinite-source-20261027T101616Z/aglib",
+  "archive_root_sha256": "2460e242b3a0324984fa2fdeadd12dc3fb983d8fbd8b902775fbe4afed6c3963",
+  "legacy_receipt": "D1220/build485 unbound, not current CPP",
+  "roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.ExceptionalCoproducts"
+  ],
+  "sources": [
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Basic.lean",
+      "source_sha256": "7cef187d0107a785d31bfde54e32f58e57155c1ae651ffa67547dcb3cc5d68fe",
+      "archive_sha256": "7cef187d0107a785d31bfde54e32f58e57155c1ae651ffa67547dcb3cc5d68fe",
+      "relation": "source-identical"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/QuasiIso.lean",
+      "source_sha256": "809db792bdb4196f51744f6ce1f011a53470f3eac88bf656ca8f7f66f54ef1f8",
+      "archive_sha256": "809db792bdb4196f51744f6ce1f011a53470f3eac88bf656ca8f7f66f54ef1f8",
+      "relation": "source-identical"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/CoefficientComparison.lean",
+      "source_sha256": "7abdaff06dce5bcb8915062fe512ac7d712f7303fea47c167f742fbb17ed17cf",
+      "archive_sha256": "7abdaff06dce5bcb8915062fe512ac7d712f7303fea47c167f742fbb17ed17cf",
+      "relation": "source-identical"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean",
+      "source_sha256": "b3ae687e8db471caa4a84678d06312ebd175a9731b908c4c79c8ad03cf15e6a3",
+      "archive_sha256": "b3ae687e8db471caa4a84678d06312ebd175a9731b908c4c79c8ad03cf15e6a3",
+      "relation": "source-identical"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Preservation.lean",
+      "source_sha256": "d61a3162e81a22ad048b4383a8d44dd4db7a55fa024495dfade7f7679c5bf5e1",
+      "archive_sha256": "d61a3162e81a22ad048b4383a8d44dd4db7a55fa024495dfade7f7679c5bf5e1",
+      "relation": "source-identical"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/HomotopyCategory/Coproducts.lean",
+      "source_sha256": "8d9aae99cb7839efd77eefd9dc9f919ae3f637fa0e7678a4c69247de806ba164",
+      "archive_sha256": "8d9aae99cb7839efd77eefd9dc9f919ae3f637fa0e7678a4c69247de806ba164",
+      "relation": "source-identical"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CoefficientCoproducts.lean",
+      "source_sha256": "99484448acfd51243e6a2aa5ef650ea8431a33713270e9ddaaf05fc97fceb616",
+      "archive_sha256": "39a0383f05d2b5e9205507198880e3932fae84ec1926e0727f4bd51981efb327",
+      "relation": "current-API adaptation"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalCoproducts.lean",
+      "source_sha256": "7d9dfdfe1318fc21a27724d38d852128522eb93da45da67bdf893f009873160c",
+      "archive_sha256": "2460e242b3a0324984fa2fdeadd12dc3fb983d8fbd8b902775fbe4afed6c3963",
+      "relation": "current-API adaptation"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ModuleCoefficientCoproducts.lean",
+      "source_sha256": "83b9ccd4af111be60071a1c523a3d9ba06bbf9cba699e07ea09d4246b1648718",
+      "archive_sha256": "83b9ccd4af111be60071a1c523a3d9ba06bbf9cba699e07ea09d4246b1648718",
+      "relation": "source-identical"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperAmplitude.lean",
+      "source_sha256": "b79ae1983a0fc1037ea236a08953e81f409c7068c9fe79e495ee17671807cabd",
+      "archive_sha256": "b79ae1983a0fc1037ea236a08953e81f409c7068c9fe79e495ee17671807cabd",
+      "relation": "source-identical"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperCoproducts.lean",
+      "source_sha256": "22a15fe375bee99f003160f3b6577a1ed15c48f4caf3c6f3721ee87e7e89f541",
+      "archive_sha256": "22a15fe375bee99f003160f3b6577a1ed15c48f4caf3c6f3721ee87e7e89f541",
+      "relation": "source-identical"
+    }
+  ],
+  "construction": [
+    "arbitrary filtered canonical coefficient continuity via current qcqsCohomologyFunctor_preservesColimitsOfShape",
+    "same marked-stalk comparison and jointly conservative original stalks",
+    "native finite-subcoproducts",
+    "natural exact coefficient comparison, objectwise current comparison by rfl",
+    "same K-injective replacement and derived unit with finite bound",
+    "original localization cofan and summand inclusions",
+    "proper R* composed with left adjoint open lower shriek, canonical compactification comparison"
+  ],
+  "conditions": "Ring \u039b : Type(u+1); \u03ba : Type(u+1); 0<N and N \u2022 1=0; qc target, original qc separated locally finite type endpoint and qs target; independent X/S/actual intermediate derived worlds; no exponent invertibility, Noetherianity, finite target dimension or new final preservation premise",
+  "changes": [
+    "Reuse current generic joint-conservativity supplier instead of archived private duplicate",
+    "Mirror current chosen endpoint: chosen compactification world suffices for chosen-value results; all-compacification family retained for comparison with arbitrary model"
+  ],
+  "evidence": "Sources ready for incremental compilation. No fresh current CPP claimed. Supplier coverage retained separately.",
+  "repair_owner": "/root/d_coproduct_integration",
+  "compiler_owner": "/root/recover_compile_frontier"
+}

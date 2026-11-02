@@ -1,0 +1,232 @@
+{
+  "foundations/lane-a/remote-runs/remote-443ee638fb9841beb2914cfa749af04f/build.log": {
+    "sha256": "e03864cb3e1b19f25a96054ad4648c616bce9f30cee961ce35e17fb783b913d3",
+    "bytes": 248,
+    "blob": "evidence/e03864cb3e1b19f25a96054ad4648c616bce9f30cee961ce35e17fb783b913d3"
+  },
+  "foundations/lane-a/remote-runs/remote-443ee638fb9841beb2914cfa749af04f/compiler-events.jsonl": {
+    "sha256": "4eb49359cdea80513717484d3e02cc41a6f3eeca2b6ecadfeea7840e9434d666",
+    "bytes": 4917,
+    "blob": "evidence/4eb49359cdea80513717484d3e02cc41a6f3eeca2b6ecadfeea7840e9434d666"
+  },
+  "foundations/lane-a/remote-runs/remote-443ee638fb9841beb2914cfa749af04f/receipt.json": {
+    "sha256": "cb925e5b3987d65c9468ae7aff8eb37e31ac765624505747a752bc8414986721",
+    "bytes": 12912,
+    "blob": "evidence/cb925e5b3987d65c9468ae7aff8eb37e31ac765624505747a752bc8414986721"
+  },
+  "foundations/lane-a/remote-runs/remote-ea58796c97b44af5bb5072b84c7a0d3f/build.log": {
+    "sha256": "6639fbab5019e6957eef6d4c529374b47280839ceb4920057f7b8f396a979247",
+    "bytes": 12630,
+    "blob": "evidence/6639fbab5019e6957eef6d4c529374b47280839ceb4920057f7b8f396a979247"
+  },
+  "foundations/lane-a/remote-runs/remote-ea58796c97b44af5bb5072b84c7a0d3f/compiler-events.jsonl": {
+    "sha256": "d10e0b0df8dacc7e332f997154270ecaddacebe08d91ba0fe71a5a51bdea13a4",
+    "bytes": 80161,
+    "blob": "evidence/d10e0b0df8dacc7e332f997154270ecaddacebe08d91ba0fe71a5a51bdea13a4"
+  },
+  "foundations/lane-a/remote-runs/remote-ea58796c97b44af5bb5072b84c7a0d3f/receipt.json": {
+    "sha256": "c6663cf3cbb250ef001643da8a6f01edf154b4254cb426f6dc61e9499ce6d596",
+    "bytes": 13877,
+    "blob": "evidence/c6663cf3cbb250ef001643da8a6f01edf154b4254cb426f6dc61e9499ce6d596"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/CORRESPONDENCE.md": {
+    "sha256": "9274b61c0601b6300e27e3776bb292976a4b32d6560d8fff2a7243354f0d1175",
+    "bytes": 5390,
+    "blob": "evidence/9274b61c0601b6300e27e3776bb292976a4b32d6560d8fff2a7243354f0d1175"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/LIVE_READY.json": {
+    "sha256": "4cf677875dd2a5f00a63b61d52692d996001ca2ec1a81a10dfa7d64352da24d3",
+    "bytes": 5312,
+    "blob": "evidence/4cf677875dd2a5f00a63b61d52692d996001ca2ec1a81a10dfa7d64352da24d3"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/PERFORMANCE_FOLLOWUP.md": {
+    "sha256": "471a7155863fd109069ee0f8f51ab1771bad95eb322f92b30d5ceffc05ed9ea2",
+    "bytes": 2704,
+    "blob": "evidence/471a7155863fd109069ee0f8f51ab1771bad95eb322f92b30d5ceffc05ed9ea2"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/PUBLICATION.json": {
+    "sha256": "50de655038980d6feaabbad87803f0bd107d9e0f263f7a70f62600e642dc28ec",
+    "bytes": 1675,
+    "blob": "evidence/50de655038980d6feaabbad87803f0bd107d9e0f263f7a70f62600e642dc28ec"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/README_ADDITION.md": {
+    "sha256": "5ecc21679de20b4e4b64be4f32b68d550cd6ff6712b2b6a2ecfcaaaee48ebd0f",
+    "bytes": 738,
+    "blob": "evidence/5ecc21679de20b4e4b64be4f32b68d550cd6ff6712b2b6a2ecfcaaaee48ebd0f"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/READY.json": {
+    "sha256": "4cf677875dd2a5f00a63b61d52692d996001ca2ec1a81a10dfa7d64352da24d3",
+    "bytes": 5312,
+    "blob": "evidence/4cf677875dd2a5f00a63b61d52692d996001ca2ec1a81a10dfa7d64352da24d3"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/READY.source2.json": {
+    "sha256": "f4e381b67ec6069a4de27b22c4dd5c8fda491cd5042265a2eda01cb8bee2461d",
+    "bytes": 3357,
+    "blob": "evidence/f4e381b67ec6069a4de27b22c4dd5c8fda491cd5042265a2eda01cb8bee2461d"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/RESULT.json": {
+    "sha256": "2a19e1691017df65a28bb06cb918e15dd2d5c23672a94a9f30799cca17771247",
+    "bytes": 6078,
+    "blob": "evidence/2a19e1691017df65a28bb06cb918e15dd2d5c23672a94a9f30799cca17771247"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/SOURCE_CHECK.json": {
+    "sha256": "690369b2d7f6f764c93e3c2f6db5e8bd250a01bf600b7d64ae1e2e76385833cc",
+    "bytes": 435,
+    "blob": "evidence/690369b2d7f6f764c93e3c2f6db5e8bd250a01bf600b7d64ae1e2e76385833cc"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/ARGUMENT.md": {
+    "sha256": "dcc94182d7f00d0e281abc0e4735eaa877a044ce91d3dd5cc3dabbee3fa14a1a",
+    "bytes": 1445,
+    "blob": "evidence/dcc94182d7f00d0e281abc0e4735eaa877a044ce91d3dd5cc3dabbee3fa14a1a"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/LIVE_READY.json": {
+    "sha256": "ee482ecae5dca8c241f4f4688845a7b9e8c0983d7570215bfb03808422a9bf7d",
+    "bytes": 4061,
+    "blob": "evidence/ee482ecae5dca8c241f4f4688845a7b9e8c0983d7570215bfb03808422a9bf7d"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/PUBLICATION.json": {
+    "sha256": "7b2222d7fb38721f82cbd94ae4451d88866230e98ea5ce76dfa8a1d5cef29139",
+    "bytes": 2024,
+    "blob": "evidence/7b2222d7fb38721f82cbd94ae4451d88866230e98ea5ce76dfa8a1d5cef29139"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/READY.json": {
+    "sha256": "785b31b3830bb67ea5ef8ccba0e349958785b48e7596f7c06008eaffb37842ff",
+    "bytes": 3716,
+    "blob": "evidence/785b31b3830bb67ea5ef8ccba0e349958785b48e7596f7c06008eaffb37842ff"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/RESULT.json": {
+    "sha256": "eb0a805cec3df598eb80f8b74e35bc7259f61f42629d47968e1df9dc671e69fa",
+    "bytes": 4937,
+    "blob": "evidence/eb0a805cec3df598eb80f8b74e35bc7259f61f42629d47968e1df9dc671e69fa"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/REVIEW.json": {
+    "sha256": "b8222666023faa521d7fa3b69b6b5eaba61955452287873ffcbbf31295dc34b2",
+    "bytes": 1467,
+    "blob": "evidence/b8222666023faa521d7fa3b69b6b5eaba61955452287873ffcbbf31295dc34b2"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/before/Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparisonExact.lean": {
+    "sha256": "c9ee952332ea060208cefe1cd392978fd244ea3735e1786a4873f2b00c6fd2cb",
+    "bytes": 4056,
+    "blob": "evidence/c9ee952332ea060208cefe1cd392978fd244ea3735e1786a4873f2b00c6fd2cb"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/before/Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean": {
+    "sha256": "7f83a301df8be8fa8e35acba008626b8ff34a36a99c4be2b204da8425d232d89",
+    "bytes": 4856,
+    "blob": "evidence/7f83a301df8be8fa8e35acba008626b8ff34a36a99c4be2b204da8425d232d89"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/candidate/Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparisonExact.lean": {
+    "sha256": "bff0408c72a4155d49a803c31f04dd9db1568048bef526e45eb39331da620183",
+    "bytes": 5012,
+    "blob": "evidence/bff0408c72a4155d49a803c31f04dd9db1568048bef526e45eb39331da620183"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/candidate/Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean": {
+    "sha256": "b70a3c5d0988000990a1aa8b4a178089191e0ee2ee2f935753d2ec8fe3516e8b",
+    "bytes": 4874,
+    "blob": "evidence/b70a3c5d0988000990a1aa8b4a178089191e0ee2ee2f935753d2ec8fe3516e8b"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/A443ee638-SOURCEc07d/MANIFEST.json": {
+    "sha256": "5dd9f4b453c706d3a63e98450a113644b0bfbdc3fc41bd42aa170815e7b35a40",
+    "bytes": 2521,
+    "blob": "evidence/5dd9f4b453c706d3a63e98450a113644b0bfbdc3fc41bd42aa170815e7b35a40"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/A443ee638-SOURCEc07d/build.log": {
+    "sha256": "e03864cb3e1b19f25a96054ad4648c616bce9f30cee961ce35e17fb783b913d3",
+    "bytes": 248,
+    "blob": "evidence/e03864cb3e1b19f25a96054ad4648c616bce9f30cee961ce35e17fb783b913d3"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/A443ee638-SOURCEc07d/compiler-events.jsonl": {
+    "sha256": "4eb49359cdea80513717484d3e02cc41a6f3eeca2b6ecadfeea7840e9434d666",
+    "bytes": 4917,
+    "blob": "evidence/4eb49359cdea80513717484d3e02cc41a6f3eeca2b6ecadfeea7840e9434d666"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/A443ee638-SOURCEc07d/receipt.json": {
+    "sha256": "cb925e5b3987d65c9468ae7aff8eb37e31ac765624505747a752bc8414986721",
+    "bytes": 12912,
+    "blob": "evidence/cb925e5b3987d65c9468ae7aff8eb37e31ac765624505747a752bc8414986721"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/A443ee638-SOURCEc07d/recovery-proper-injective-repair1-443ee638.json": {
+    "sha256": "7e8d26bb24af308b6be54c1af613a115a2de221f8547e5d673b25706cde3e5fd",
+    "bytes": 1116251,
+    "blob": "evidence/7e8d26bb24af308b6be54c1af613a115a2de221f8547e5d673b25706cde3e5fd"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/Aea58796-SOURCE926bd/MANIFEST.json": {
+    "sha256": "b90e5cf26a4fc191fc8e1342daf3cb4b544a11d833f4d6cb9d44021d078709ba",
+    "bytes": 5005,
+    "blob": "evidence/b90e5cf26a4fc191fc8e1342daf3cb4b544a11d833f4d6cb9d44021d078709ba"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/Aea58796-SOURCE926bd/build.log.partial": {
+    "sha256": "6639fbab5019e6957eef6d4c529374b47280839ceb4920057f7b8f396a979247",
+    "bytes": 12630,
+    "blob": "evidence/6639fbab5019e6957eef6d4c529374b47280839ceb4920057f7b8f396a979247"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/Aea58796-SOURCE926bd/compiler-events.jsonl.partial": {
+    "sha256": "d10e0b0df8dacc7e332f997154270ecaddacebe08d91ba0fe71a5a51bdea13a4",
+    "bytes": 80161,
+    "blob": "evidence/d10e0b0df8dacc7e332f997154270ecaddacebe08d91ba0fe71a5a51bdea13a4"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/Aea58796-SOURCE926bd/final/build.log": {
+    "sha256": "6639fbab5019e6957eef6d4c529374b47280839ceb4920057f7b8f396a979247",
+    "bytes": 12630,
+    "blob": "evidence/6639fbab5019e6957eef6d4c529374b47280839ceb4920057f7b8f396a979247"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/Aea58796-SOURCE926bd/final/compiler-events.jsonl": {
+    "sha256": "d10e0b0df8dacc7e332f997154270ecaddacebe08d91ba0fe71a5a51bdea13a4",
+    "bytes": 80161,
+    "blob": "evidence/d10e0b0df8dacc7e332f997154270ecaddacebe08d91ba0fe71a5a51bdea13a4"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/Aea58796-SOURCE926bd/final/receipt.json": {
+    "sha256": "c6663cf3cbb250ef001643da8a6f01edf154b4254cb426f6dc61e9499ce6d596",
+    "bytes": 13877,
+    "blob": "evidence/c6663cf3cbb250ef001643da8a6f01edf154b4254cb426f6dc61e9499ce6d596"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/Aea58796-SOURCE926bd/progress.json": {
+    "sha256": "011ace44fde04543e61c53230fdf86071bb32d8fc65eb61482cf25d54a344cc5",
+    "bytes": 6439,
+    "blob": "evidence/011ace44fde04543e61c53230fdf86071bb32d8fc65eb61482cf25d54a344cc5"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/Aea58796-SOURCE926bd/receipt.json.partial": {
+    "sha256": "c6663cf3cbb250ef001643da8a6f01edf154b4254cb426f6dc61e9499ce6d596",
+    "bytes": 13877,
+    "blob": "evidence/c6663cf3cbb250ef001643da8a6f01edf154b4254cb426f6dc61e9499ce6d596"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/Aea58796-SOURCE926bd/recovery-proper-residual-coherent-v1-ea58796c.json": {
+    "sha256": "5661b38b31c8ab0febba048bd6fa0f4b9ebd2685d55447cd42f4902888d7e389",
+    "bytes": 1116251,
+    "blob": "evidence/5661b38b31c8ab0febba048bd6fa0f4b9ebd2685d55447cd42f4902888d7e389"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/source-review/proper-injective-assembly-core.json": {
+    "sha256": "a8babc8b194ad46ea845b8ba5c66fbbf7789c503ca90c0fe7db9c56e135d7d70",
+    "bytes": 19281,
+    "blob": "evidence/a8babc8b194ad46ea845b8ba5c66fbbf7789c503ca90c0fe7db9c56e135d7d70"
+  },
+  "migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/source-review/proper-injective-assembly-core.md": {
+    "sha256": "6e12ee70a8186ac7720e562273e3a34ace59b0e2216042589fbc14269ed9689b",
+    "bytes": 13770,
+    "blob": "evidence/6e12ee70a8186ac7720e562273e3a34ace59b0e2216042589fbc14269ed9689b"
+  },
+  "migration/incremental-compiler/recovery-20261029/proper-injective-repair1-input.json": {
+    "sha256": "994210d51d52e8a07ddff655c76a98e1c048767a5d79f8c371a9f5e1555302a3",
+    "bytes": 1446,
+    "blob": "evidence/994210d51d52e8a07ddff655c76a98e1c048767a5d79f8c371a9f5e1555302a3"
+  },
+  "migration/reviews/proper-injective-assembly-core.json": {
+    "sha256": "a8babc8b194ad46ea845b8ba5c66fbbf7789c503ca90c0fe7db9c56e135d7d70",
+    "bytes": 19281,
+    "blob": "evidence/a8babc8b194ad46ea845b8ba5c66fbbf7789c503ca90c0fe7db9c56e135d7d70"
+  },
+  "migration/reviews/proper-injective-assembly-core.md": {
+    "sha256": "6e12ee70a8186ac7720e562273e3a34ace59b0e2216042589fbc14269ed9689b",
+    "bytes": 13770,
+    "blob": "evidence/6e12ee70a8186ac7720e562273e3a34ace59b0e2216042589fbc14269ed9689b"
+  },
+  "migration/source-manifests/recovery-proper-injective-repair1-443ee638.json": {
+    "sha256": "7e8d26bb24af308b6be54c1af613a115a2de221f8547e5d673b25706cde3e5fd",
+    "bytes": 1116251,
+    "blob": "evidence/7e8d26bb24af308b6be54c1af613a115a2de221f8547e5d673b25706cde3e5fd"
+  },
+  "migration/source-manifests/recovery-proper-residual-coherent-v1-ea58796c.json": {
+    "sha256": "5661b38b31c8ab0febba048bd6fa0f4b9ebd2685d55447cd42f4902888d7e389",
+    "bytes": 1116251,
+    "blob": "evidence/5661b38b31c8ab0febba048bd6fa0f4b9ebd2685d55447cd42f4902888d7e389"
+  }
+}

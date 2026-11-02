@@ -7,12 +7,13 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.PullbackComposition
 public import Aglib.AlgebraicGeometry.EtaleCohomology.BaseChangeMap
+public import Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.SourceCoherence
 
 /-! # Original pullback of sections on relative schemes
 
 All section maps are the original adjunction-unit maps at the original terminal
-étale objects. Identity and composition are transported from the already proved
-original degree-zero cohomology laws; no Ext-universe choice occurs in the API.
+étale objects. Identity and composition follow the original constant-sheaf
+adjunction and inverse-image coherence, without an Ext realization in their proofs.
 -/
 
 @[expose] public noncomputable section
@@ -30,16 +31,11 @@ attribute [local instance] hasSheafifyLarge
 theorem globalSectionsPullback_id (X : Scheme.{u})
     (F : AbelianSheaf.{u, u + 1} X) :
     globalSectionsPullback (𝟙 X) F ≫
-        (globalSections X).map ((inverseImageId X).hom.app F) = 𝟙 _ := by
-  let := hasExtStandard.{u, u + 1} X
-  ext z
-  let a := (Sheaf.H.equiv₀ F (etaleTerminalIsTerminal X)).symm z
-  have h := congrArg (Sheaf.H.equiv₀ F (etaleTerminalIsTerminal X))
-    (cohomologyPullback_id X F 0 a)
-  rw [← Sheaf.H.equiv₀_naturality, cohomologyPullback_equiv₀] at h
-  change ((inverseImageId X).hom.app F).hom.app (op (etaleTerminal X))
-    (globalSectionsPullback (𝟙 X) F z) = z
-  simpa only [a, AddEquiv.apply_symm_apply] using h
+        (globalSections X).map ((inverseImageId X).hom.app F) = 𝟙 _ :=
+  Adjunction.unitSectionsNatTrans_id (constantAdjunction X)
+    (inverseImageAdjunction (𝟙 X)) (directImageGlobalSectionsIso (𝟙 X))
+    (inverseImageConstantIso (𝟙 X)) (inverseImageConstantCanonicalIso_eq (𝟙 X)).symm
+    (inverseImageId X) (inverseImageId_constant X) F
 
 /-- Composition of actual section pullbacks, with the original inverse-image comparison. -/
 @[reassoc]
@@ -47,17 +43,16 @@ theorem globalSectionsPullback_comp {X S T : Scheme.{u}}
     (f : S ⟶ X) (g : T ⟶ S) (F : AbelianSheaf.{u, u + 1} X) :
     globalSectionsPullback (g ≫ f) F ≫
         (globalSections T).map ((inverseImageComp f g).hom.app F) =
-      globalSectionsPullback f F ≫ globalSectionsPullback g ((inverseImage f).obj F) := by
-  let := hasExtStandard.{u, u + 1} X
-  let := hasExtStandard.{u, u + 1} S
-  let := hasExtStandard.{u, u + 1} T
-  ext z
-  let a := (Sheaf.H.equiv₀ F (etaleTerminalIsTerminal X)).symm z
-  have h := congrArg (Sheaf.H.equiv₀ ((inverseImage g).obj ((inverseImage f).obj F))
-      (etaleTerminalIsTerminal T)) (cohomologyPullback_comp f g F 0 a)
-  rw [← Sheaf.H.equiv₀_naturality] at h
-  simp only [cohomologyPullback_equiv₀, a, AddEquiv.apply_symm_apply] at h
-  exact h
+      globalSectionsPullback f F ≫ globalSectionsPullback g ((inverseImage f).obj F) :=
+  Adjunction.unitSectionsNatTrans_comp
+    (constantAdjunction X) (constantAdjunction S) (constantAdjunction T)
+    (inverseImageAdjunction f) (inverseImageAdjunction g) (inverseImageAdjunction (g ≫ f))
+    (directImageGlobalSectionsIso f) (directImageGlobalSectionsIso g)
+    (directImageGlobalSectionsIso (g ≫ f))
+    (inverseImageConstantIso f) (inverseImageConstantIso g) (inverseImageConstantIso (g ≫ f))
+    (inverseImageConstantCanonicalIso_eq f).symm (inverseImageConstantCanonicalIso_eq g).symm
+    (inverseImageConstantCanonicalIso_eq (g ≫ f)).symm (inverseImageComp f g)
+    (inverseImageComp_constant_inv f g) F
 
 /-- Native inverse-image identification attached to a commuting triangle. -/
 def pullbackTriangleIso {X Y Z : Scheme.{u}} (f : Y ⟶ X) (g : Z ⟶ X)

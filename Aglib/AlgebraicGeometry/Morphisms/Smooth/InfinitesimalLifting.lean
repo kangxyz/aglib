@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.AffineScheme.AlgebraMapTriangles
-public import Aglib.AlgebraicGeometry.Stalk.Scalar
+public import Aglib.AlgebraicGeometry.Stalk.SpecLocalRing
 public import Aglib.RingTheory.Smooth.ArtinianLifting
 public import Mathlib.AlgebraicGeometry.Morphisms.Smooth
 public import Mathlib.AlgebraicGeometry.Noetherian
@@ -91,12 +91,7 @@ theorem Hom.LiftsAlongNoetherianSquareZero.exists_lift_stalk {π : X ⟶ Spec (.
   have hgl : IsLocalHom (CommRingCat.ofHom g.toRingHom).hom := IsLocalHom.of_surjective _ hg
   have hφl : IsLocalHom (CommRingCat.ofHom φ.toRingHom).hom := IsLocalHom.of_surjective _ hφ
   -- The point `a = Spec φ ≫ (Spec 𝒪_{X,x} → X)` over `Spec k`, and its lift `a'`.
-  have hscalar : X.fromSpecStalk x ≫ π = Spec.map (CommRingCat.ofHom (π.stalkScalar x)) := by
-    rw [← SpecMap_stalkMap_fromSpecStalk, Spec.fromSpecStalk_eq, ← Spec.map_comp]
-    congr 1
-    ext r
-    rw [Hom.stalkScalar_eq_local]
-    rfl
+  have hscalar := fromSpecStalk_comp_eq_spec_map_stalkScalar π x
   let a : Spec (.of A) ⟶ X := Spec.map (CommRingCat.ofHom φ.toRingHom) ≫ X.fromSpecStalk x
   have ha : a ≫ π = Spec.algebraMap k A := by
     rw [Category.assoc, hscalar]
@@ -119,12 +114,7 @@ theorem Hom.LiftsAlongNoetherianSquareZero.exists_lift_stalk {π : X ⟶ Spec (.
           Scheme.Hom.comp_apply _ _ _
       _ = x := by rw [h2, fromSpecStalk_closedPoint]
   -- `a'` factors through a local map `φ' : 𝒪_{X,x} → A'` (Mathlib's `stalkClosedPointTo`).
-  have key : ∀ {y : X}, a' (closedPoint (CommRingCat.of A')) = y →
-      ∃ φ' : X.presheaf.stalk y ⟶ CommRingCat.of A', IsLocalHom φ'.hom ∧
-        Spec.map φ' ≫ X.fromSpecStalk y = a' := by
-    rintro y rfl
-    exact ⟨stalkClosedPointTo a', inferInstance, Spec_stalkClosedPointTo_fromSpecStalk a'⟩
-  obtain ⟨φ', hφ'l, hφ'⟩ := key hx
+  obtain ⟨φ', hφ'l, hφ'⟩ := exists_spec_map_comp_fromSpecStalk a' hx
   -- `φ'` is a `k`-algebra map, since `a'` lies over `Spec k`.
   have hk : CommRingCat.ofHom (π.stalkScalar x) ≫ φ' =
       CommRingCat.ofHom (algebraMap k A') := by
@@ -140,11 +130,7 @@ theorem Hom.LiftsAlongNoetherianSquareZero.exists_lift_stalk {π : X ⟶ Spec (.
   have heq : Spec.map (φ' ≫ CommRingCat.ofHom g.toRingHom) ≫ X.fromSpecStalk x =
       Spec.map (CommRingCat.ofHom φ.toRingHom) ≫ X.fromSpecStalk x := by
     rw [Spec.map_comp_assoc, hφ', hga']
-  have := (SpecToEquivOfLocalRing X (CommRingCat.of A)).symm.injective
-    (a₁ := ⟨x, φ' ≫ CommRingCat.ofHom g.toRingHom, hl₁⟩)
-    (a₂ := ⟨x, CommRingCat.ofHom φ.toRingHom, hφl⟩) heq
-  have h' : φ' ≫ CommRingCat.ofHom g.toRingHom = CommRingCat.ofHom φ.toRingHom :=
-    congrArg Subtype.val (eq_of_heq (Sigma.mk.inj_iff.mp this).2)
+  have h' := spec_map_comp_fromSpecStalk_injective heq
   exact AlgHom.ext fun c => congrArg (fun f => f.hom c) h'
 
 /-- Formal smoothness of the structural scalar map `k → 𝒪_{X,x}` gives formal smoothness of the

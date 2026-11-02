@@ -12,3 +12,7 @@ section, `c ↦ (r c, c - s (r c))`, and `AddMonoidHom.kerAddEquivOfComm`: an ad
 equivalence of sources and an injective additive map of targets, commuting with two additive
 maps, give equivalent kernels. The groups are commutative, in arbitrary universes. The
 consumer is the Picard tangent space.
+
+[KerSurjective](KerSurjective.lean) proves that a surjection `r : A →+ B`
+restricts to a surjection on `ker d` when `d` maps `ker r` onto its codomain.
+The statement chooses no lift; curve Picard restriction uses this correction.

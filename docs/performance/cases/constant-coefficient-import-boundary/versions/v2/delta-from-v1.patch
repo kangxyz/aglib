@@ -1,0 +1,10 @@
+--- v1/Aglib/CategoryTheory/Sites/SheafCohomology/ConstantCyclic.lean
++++ v2/Aglib/CategoryTheory/Sites/SheafCohomology/ConstantCyclic.lean
+@@ -33,6 +33,7 @@
+   (F : AddCommGrpCat.{0} ⥤ Sheaf J AddCommGrpCat.{a})
+   [F.Additive] [PreservesFiniteLimits F] [PreservesFiniteColimits F]
+ 
++omit [HasSheafify J AddCommGrpCat.{a}] in
+ /-- The native cyclic extension remains short exact under the coefficient functor. -/
+ theorem cyclicCoefficient_shortExact (m n : ℕ) (hn : 0 < n) :
+     ((ZMod.mulSequence m n).map F).ShortExact :=

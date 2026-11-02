@@ -1,0 +1,28 @@
+{
+  "question": "Make the now-owned archive prerequisite values obey the same minimum-model rule as the merged core, and reuse the one original torsion construction.",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "delta_kind": "Three-file declaration-scope/minimum-model refinement within exact27; no mathematical premise or map change.",
+  "entries": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/DirectImage.lean",
+      "before_sha256": "6b691bae2eba0d1e4169af949db7695b01f45426486e702897d4197e695156d2",
+      "after_sha256": "d309916d57bfff43941f48ec769e29628d7f25c02b93d5dab67d3af53d2f0027"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/Torsion.lean",
+      "before_sha256": "06b53a1094934ee8d3cc4199b8ee2e49b1653e1cddb14e345f7832f48c8edd7d",
+      "after_sha256": "4f93ed13dd6ab65ac7195006883e3db11f30bde95eae28410fc44d9b3234f589"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SuppliedDirectImage.lean",
+      "before_sha256": "5210fe1c215ee66813c859c38cd07115f7549ffb6757024c8d3d8bf2c122fa85",
+      "after_sha256": "d6835e1d911b4121334901288afba4f7d0734c939b461a5dad141192029771ab"
+    }
+  ],
+  "actual_value_argument": "For a fixed C, the prior family-based definition used only middleModels C. The new definition takes exactly that HasDerivedCategory data. With a family in scope, its instance application recovers the same data and definitionally the same original functor/lift. The chosen Nagata and supplied values similarly take only their actual C0 entry. Arbitrary independent family comparisons retain both families, their data, and their original transport maps.",
+  "proof_argument": "The torsion-preservation proof body is unchanged and now belongs to the specified-C section. Canonical comparisons, cocycles and all geometric hypotheses are unchanged. Supplied value and forgetting isomorphism now directly call the same selected-C constructors rather than restating their lift/property proof. No rfl between independent localization data is added.",
+  "public_API_change": "Value/proof constructors moduleCompactificationFunctor_torsion, moduleCompactificationTorsionFunctor, moduleCompactificationTorsionForgetIso, moduleExceptionalDirectImagePlus, moduleExceptionalDirectImagePlusTorsion and its ForgetIso take only the selected middle data. Their comparison declarations still take the consistent family. Explicit legacy callers outside the current27 need corresponding family-entry application adaptation when assigned; no outside-native paths are edited here.",
+  "compile_boundary": "All five unblocked v1 roots and their actual import closure are unchanged. Held direct/supplied value endpoints get new hashes; no v1 native result has been claimed.",
+  "source_policy": "No new options, models, assumptions, placeholders, compiler invocation or Git mutation. Archive inherited option context preserved.",
+  "timestamp_utc": "2026-10-27T21:37:12.111030+00:00"
+}

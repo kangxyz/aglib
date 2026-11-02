@@ -1,0 +1,39 @@
+{
+  "status": "COMPLETE_OWNED_GODEMENT_NATIVE_FAMILY_SOURCE_AND_CPP",
+  "question": "Preserve the original Godement maps and all29 public statements while repairing native compilation and splitting independent expensive obligations into reusable modules.",
+  "Q_head": "7d071440653407d30fd41d8dbbafce1673a3039b",
+  "files": "SOURCE-VECTOR.json",
+  "source_correspondence": "SOURCE-CORRESPONDENCE.json",
+  "coverage": "CPP-COVERAGE.json",
+  "mathematical_result": "The complete generic unit/augmentation construction is retained. The adopted first square uses the weakest complete actual-data factory and genuine degree evaluation before native specialization. The original augmentation/bridge second-square view is retained; passed original component squares paste in the actual ordinary module category, the whole Plus equality follows by the original faithful inclusion/Hom.ext proof, and the two final native consequences retain their original proofs and conditions. Failed large full-Plus adapters were not adopted.",
+  "models": "The two existing named standard constants occur once in Basic. Other leaves reuse them locally where required; Geometry/FirstSquare introduce no derived model. All11 original public definition bodies and29 headers are preserved.",
+  "performance": "Isolated normal compilation and cache reuse are demonstrated. No matched cold-build speedup is established; some individual proof leaves remain several minutes. See PERFORMANCE-PROPOSAL.md for exact timings and failed-route boundaries.",
+  "native_entry_artifact": {
+    "artifact": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/native-entry-fine-godement/Aglib.native-mk-all.lean",
+    "sha256": "9178148c0d06e45905e3e98fc7017b5513f3b1dbc864ac440b2ea90824289961",
+    "result": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/native-entry-fine-godement/RESULT.json",
+    "diff": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/native-entry-fine-godement/Aglib.native-mk-all.diff",
+    "added_imports": [
+      "public import Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.Basic",
+      "public import Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.Bridge",
+      "public import Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.FirstSquare",
+      "public import Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.Geometry",
+      "public import Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.SecondSquare",
+      "public import Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.Span",
+      "public import Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.SpanComponent",
+      "public import Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.SpanData",
+      "public import Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.SpanFactorized"
+    ],
+    "boundary": "Already produced by native artifact-only mk_all;9 added/0 removed imports against Qroot73210c. Apply its additive imports to newer P while preserving foreign imports; do not overwrite P with the whole older Q artifact."
+  },
+  "final_check_gaps": [
+    "Root publication into clean P HEAD4d4b and reconciliation with newer remote source/provider/pin state are not performed by this author.",
+    "The generated native aggregate artifact is available; adoption plus the actual changed aggregate entry check remain Root-owned.",
+    "Standalone native text-style/package checks and existing affected audit predicates are not claimed by the module CPP receipts; retain compatible coverage and fill only actual gaps, with no new client/replay chain.",
+    "The final modular source review was assigned by Root to its retained ordinary reviewer and is separate from this author/source/CPP handback.",
+    "No whole Etale migration, N adoption, hosted CI pass or cold-build speedup is claimed."
+  ],
+  "policy_docs": "Q mirrored AGENTS/architecture/development/interface policy edits already exist remotely per Root; they are not part of this source vector and must not be republished as separate author changes.",
+  "ownership_release": "I release my exact Basic/Geometry/Bridge/SpanData and legacy facade source ownership and this integration packet to Root. Whole-construction author separately released common/SpanComponent/SpanFactorized/Span; no pending producer proof repair or runtime process remains with me. Root retains Git/index/push/docs/aggregates; N remains read-only and independently active.",
+  "prior_failures": "Preserved at production-integration/PRODUCTION-v3.json; V5/V6/V7 observations; split/second-square/RESULT.json and split/span/FINAL-RESULT.json. Each remains attached to its actual source and invocation."
+}

@@ -1,0 +1,36 @@
+{
+  "question": "Separate exact proposition formation from actual proof/kernel checking after nativee03 kernel54/85 on ce6640a4.",
+  "source": {
+    "native_sha256": "e03cfe26fda95e308601af1d0e94e8492397640275a860d215af4e5d2e3d68e1",
+    "lower_sha256": "8107dc2a090ac63aecad698a2c6724f63d352cfba01cfd5ad588b2108cee7f14",
+    "actual_run": "remote-ce6640a43a86458e8992b92316a374c3",
+    "actual_SOURCE": "4d26d30123ef4411969b82423c919500d51d34be6ad26687e159bfce181317ef"
+  },
+  "probe": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/performance/roots-section-native/diagnosis-v3/Formation.lean",
+    "sha256": "b9a6aac2e8befd8d83b22d31ba2014a6691351f320ab89300eba4e4e87a9c884",
+    "kind": "Exact original public rootsComposite_identity and sectionPullback_roots propositions, plus actual new private helper proposition, each as a binder _original_statement:P with result True.intro.",
+    "original_proof_claim": false
+  },
+  "setup": "Read actual current native lake --no-build setup-file; use identical name/isModule/imports/options unchanged. Probe imports textually match native. No production artifact overwritten.",
+  "profile": {
+    "jobs": 8,
+    "threads": 4,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536,
+    "maxHeartbeats": 200000
+  },
+  "roots": [
+    "Aglib.CategoryTheory.Sites.Representable.SectionComparisonValues",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.BaseChangeMap",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.TriangleCoherence",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.H1.SectionPullback",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.BoundaryNaturality"
+  ],
+  "command": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/performance/roots-section-native/diagnosis-v3/COMMAND.json",
+  "status": "Prepared, not dispatched yet. No duplicate earlier probe exists.",
+  "mechanics": "All diagnostic declarations public; unused original proof-only hcomp/hid binders alpha-prefixed. Original library warning/options retained. Three #check commands identify successful declaration formation separately; no proof of any P.",
+  "guard_SOURCE": "748bf623a7e70359ed2eeb1891b22a310ebe4f8e30a123bc3098b92cb621407d",
+  "source_reconciliation": "Whole N snapshot differs from ce6640a4; all 15 bounded target/provider hashes inspected for the fixed derivation are unchanged. Actual diagnostic must be attributed to its own new SOURCE.",
+  "mechanical_prelaunch": "Initial local parser exit2 because an old argv pattern put resource options before phase. No synchronization, remote RunId or Lean invocation occurred. Reordered according to current phase --help; diagnostic source and profile unchanged."
+}

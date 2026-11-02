@@ -51,13 +51,39 @@ instance, without an additivity assumption on the replacement functor.
 These conditional leaves do not claim replacement existence on their own;
 `Grothendieck` supplies that specialization from the actual tower theorem.
 
+## Finite-amplitude computation and coproducts
+
+[Computation/Basic](Computation/Basic.lean) and
+[Computation/QuasiIso](Computation/QuasiIso.lean) compare the original
+unbounded derived image with the termwise image of an acyclic complex under
+the stated finite cohomological-dimension hypothesis. The comparison retains
+the original localization unit.
+
+[Coproducts/CoefficientComparison](Coproducts/CoefficientComparison.lean)
+retains the original higher-derived maps through an exact coefficient
+comparison. [Localization](Coproducts/Localization.lean) and
+[Preservation](Coproducts/Preservation.lean) descend coproduct preservation
+from the homotopy computation to the same derived functor, with the canonical
+comparison and original inclusions. Their finite-amplitude and coefficient
+hypotheses remain explicit.
+
 ## Boundary and consumers
 
 The current consumer is the unbounded direct-image construction in the
 exceptional-direct-image task. No Noetherian, torsion, finite-dimensional, or
 base-invertibility hypothesis is used by this generic homological input.
 
-Finite-cohomological-dimension computation on unbounded acyclic complexes,
-the geometric direct-image specializations, and unbounded proper base change
-remain separate obligations. This family does not by itself close D4's
-finite-dimensional computation or the exceptional calculus.
+The finite-amplitude interfaces consume a cohomological-dimension bound;
+they do not provide geometric bounds. Scheme-specific direct images and
+proper exchange belong to the exceptional-direct-image family.
+
+## Additional source entry points
+
+- [ChangeTarget](ChangeTarget.lean)
+- [Computation/Basic](Computation/Basic.lean)
+- [Computation/QuasiIso](Computation/QuasiIso.lean)
+- [Coproducts/CoefficientComparison](Coproducts/CoefficientComparison.lean)
+- [Coproducts/Localization](Coproducts/Localization.lean)
+- [Coproducts/Preservation](Coproducts/Preservation.lean)
+- [ExactAdjunctionComposition](ExactAdjunctionComposition.lean)
+- [ExactAdjunctionIdentity](ExactAdjunctionIdentity.lean)

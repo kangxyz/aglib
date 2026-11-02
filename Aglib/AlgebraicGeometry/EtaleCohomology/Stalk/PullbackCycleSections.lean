@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GlobalSectionsCycles
 public import Aglib.AlgebraicGeometry.EtaleCohomology.PullbackComposition
+public import Aglib.CategoryTheory.Abelian.Injective.ExactFunctorSections
 
 /-! # Original cohomology pullback on actual higher-image cycle sections
 
@@ -76,33 +77,12 @@ private theorem original_section_extendedLift {X X' : Scheme.{u}} (g : X' ⟶ X)
           (globalSectionsPullback g (I.cochainComplex.X (q : ℤ))
             ((constantIntegerHomGlobalSectionsIso X).hom.app _
               (a ≫ (I.cochainComplexXIso q q rfl).inv))) := by
-  let a' := ((inverseImageConstantIso g).app (AddCommGrpCat.of (ULift.{u + 1} ℤ))).inv ≫
-    (inverseImage g).map (a ≫ (I.cochainComplexXIso q q rfl).inv)
-  have hn := ConcreteCategory.congr_hom
-    ((constantIntegerHomGlobalSectionsIso X').hom.naturality
-      ((InjectiveResolution.ExactFunctor.extendedLift (inverseImage g) I J φ).f (q : ℤ))) a'
-  have hp := constantIntegerHomGlobalSectionsIso_pullback g
-    (a ≫ (I.cochainComplexXIso q q rfl).inv)
-  change (constantIntegerHomGlobalSectionsIso X').hom.app _
-      (a' ≫ (InjectiveResolution.ExactFunctor.extendedLift (inverseImage g) I J φ).f
-        (q : ℤ)) =
-    (globalSections X').map
-      ((InjectiveResolution.ExactFunctor.extendedLift (inverseImage g) I J φ).f (q : ℤ))
-        ((constantIntegerHomGlobalSectionsIso X').hom.app _ a') at hn
-  have hterm :
-      ((((inverseImageConstantIso g).app (AddCommGrpCat.of (ULift.{u + 1} ℤ))).inv ≫
-        (inverseImage g).map a ≫ φ.f q) ≫ (J.cochainComplexXIso q q rfl).inv) =
-      a' ≫ (InjectiveResolution.ExactFunctor.extendedLift (inverseImage g) I J φ).f
-        (q : ℤ) := by
-    dsimp only [a']
-    rw [InjectiveResolution.ExactFunctor.extendedLift_f, CategoryTheory.Functor.map_comp]
-    simp only [Category.assoc, ← CategoryTheory.Functor.map_comp_assoc,
-      Iso.inv_hom_id, CategoryTheory.Functor.map_id, Category.id_comp]
-  exact (congrArg ((constantIntegerHomGlobalSectionsIso X').hom.app
-    (J.cochainComplex.X (q : ℤ))) hterm).trans (hn.trans (congrArg
-      (fun x => (globalSections X').map
-        ((InjectiveResolution.ExactFunctor.extendedLift (inverseImage g) I J φ).f (q : ℤ)) x)
-      hp))
+  exact InjectiveResolution.ExactFunctor.extendedLift_sections
+    (inverseImage g) I J φ
+    (((inverseImageConstantIso g).app (AddCommGrpCat.of (ULift.{u + 1} ℤ))).inv)
+    (globalSections X') (constantIntegerHomGlobalSectionsIso X') q a _
+    (constantIntegerHomGlobalSectionsIso_pullback g
+      (a ≫ (I.cochainComplexXIso q q rfl).inv))
 
 /-- Source and target original global cohomology classes admit actual higher-image
 cycle sections with exactly the original pullback relation on their terms. -/

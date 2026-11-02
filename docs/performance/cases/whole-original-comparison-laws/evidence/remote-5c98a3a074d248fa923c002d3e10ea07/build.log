@@ -1,0 +1,5 @@
+✔ [3369/3372] Built Aglib.Algebra.Category.Grp.FiniteColimits (2.0s)
+✔ [3370/3372] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteColimits.Values (3.7s)
+✔ [3371/3372] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SquareCoefficientAdjoint (5.5s)
+✔ [3372/3372] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.TriangleSquareAdjoint (3.7s)
+Build completed successfully (3372 jobs).

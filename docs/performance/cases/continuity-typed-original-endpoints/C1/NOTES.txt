@@ -1,0 +1,31 @@
+This is an existing-evidence application packet, not a new experiment.
+
+Old Stalk907f failed with line33 formatting, the residual line108 reflexive
+map goal, and line156 rewrite matching. Exact feedback identifies an implicit-
+transparency mismatch between C.obj i and the original inverse-image composite
+object. The log reports379s for the WHOLE failed Stalk frontend. No per-tactic
+profile exists here, and379s is not attributed wholly to rw.
+
+Passed Stalkfdb retains the exact original public insertion target. It supplies
+the ORIGINAL component.inv at literal C.obj i, composes the native constant-
+diagram colimit leg with congrArg Iso.inv of the proved original component
+equality, and uses exact into that same original target. It closes the normalized
+defining-map equation with rfl and repairs formatting. The fixed coefficient,
+source diagram/System, image functors, triangle maps, A-apex cocone, colimit and
+all insertion values stay original. No new model or desired-law premise enters.
+
+Rootb36 is a SEPARATE related consumer context. Its rw43 failure is separate
+from Stalk coverage. Root3fb explicitly types the ORIGINAL cohomologyPullback z
+at H(C.obj i), applies original H.map_comp_apply directly and composes congrArg
+of the ORIGINAL insertion equation. The cohomology model, input, arrows and
+complete theorem header are unchanged. Old b36 bytes come from immutable
+versions/v1/after.lean; the top-level after.lean now points to3fb and was NOT
+relabeled as old b36.
+
+Successful353s Stalk and11s Root frontend passes use recorded unchanged defaults.
+Failed379s Stalk and failed7.8s Root frontend observations are not paired
+benchmarks with those successes. No matched or whole-library speedup, exact
+kernel reduction pair, causal reduction attribution or per-tactic time is
+established. No new profile, benchmark, compiler invocation, replay or audit
+was run to create this packet. Root may join it with the C2 existing-method case;
+no maintained documentation is written here.

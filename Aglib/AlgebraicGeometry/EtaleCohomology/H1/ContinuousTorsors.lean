@@ -12,6 +12,8 @@ public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.TorsorAction
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.Torsor
 public import Aglib.GroupCohomology.H1.Continuous
 public import Aglib.GroupCohomology.H1.AffineTorsor
+public import Aglib.CategoryTheory.Sites.Torsors.AffineDisplacement
+public import Aglib.CategoryTheory.Sites.Torsors.PointTranslation
 
 /-!
 # Common continuous H¹ representatives of actual finite étale torsors
@@ -52,29 +54,66 @@ variable [DistribMulAction (FiberAutGroup s) M] [ContinuousSMul (FiberAutGroup s
 variable (hmark : ∀ (γ : FiberAutGroup s) (a : Over.mk s ⟶ A.X),
   mark (γ.hom.app (coefficientCover A) a) = Multiplicative.ofAdd (γ • (mark a).toAdd))
 
+omit [IsFinite A.X.hom] [Etale A.X.hom] [TopologicalSpace M] [DiscreteTopology M]
+  [DistribMulAction (FiberAutGroup s) M] [ContinuousSMul (FiberAutGroup s) M] in
+/-- The original fibre basis is the coordinate map of the same marked point action. -/
+theorem fibreCoordinates_eq (t : Fiber s Y) :
+    letI := τ.pointTranslation (Over.mk s) mark
+    GroupCohomology.ContinuousH1.AffineTorsors.coordinates
+      (τ.pointTranslation_unique (Over.mk s) mark) t = fibreBasis s A Y τ mark t := by
+  let := τ.pointTranslation (Over.mk s) mark
+  apply Equiv.ext
+  intro x
+  rw [GroupCohomology.ContinuousH1.AffineTorsors.coordinates_apply,
+    τ.pointTranslation_difference (Over.mk s) mark t x]
+  have ht := τ.positiveTransport_eq t x
+    (Scheme.FiniteEtale.FiberTorsorActions.transport s A Y τ t x)
+    (Scheme.FiniteEtale.FiberTorsorActions.transport_act s A Y τ t x)
+  exact congrArg (fun a => (mark a).toAdd) ht
+
+omit [TopologicalSpace M] [DiscreteTopology M] [ContinuousSMul (FiberAutGroup s) M] in
+include hmark in
+/-- Actual natural fibre evaluation is affine for this same coefficient translation. -/
+theorem fibreTranslation_compatible (γ : FiberAutGroup s) (a : M) (x : Fiber s Y) :
+    letI := τ.pointTranslation (Over.mk s) mark
+    naturalFiberPermutation s Y γ (a +ᵥ x) =
+      (γ • a) +ᵥ naturalFiberPermutation s Y γ x := by
+  let := τ.pointTranslation (Over.mk s) mark
+  change γ.hom.app Y (τ.act (mark.symm (Multiplicative.ofAdd a)) x) =
+    τ.act (mark.symm (Multiplicative.ofAdd (γ • a))) (γ.hom.app Y x)
+  rw [evaluation_torsor_action]
+  congr 1
+  apply mark.injective
+  rw [hmark, mark.apply_symm_apply, mark.apply_symm_apply]
+  rfl
+
+omit [IsFinite A.X.hom] [Etale A.X.hom] [DiscreteTopology M]
+  [DistribMulAction (FiberAutGroup s) M] [ContinuousSMul (FiberAutGroup s) M] in
+/-- Original finite-fibre orbit continuity supplies the actual displacement continuity. -/
+theorem fibreDisplacement_continuous (t : Fiber s Y) :
+    letI := τ.pointTranslation (Over.mk s) mark
+    Continuous (fun γ : FiberAutGroup s =>
+      GroupCohomology.ContinuousH1.AffineTorsors.coordinates
+        (τ.pointTranslation_unique (Over.mk s) mark) t (naturalFiberPermutation s Y γ t)) := by
+  let := τ.pointTranslation (Over.mk s) mark
+  have hcoord : Continuous (fun γ : FiberAutGroup s =>
+      PreGaloisCategory.autEmbedding (fiberToFinite s) γ Y) :=
+    (continuous_apply Y).comp continuous_induced_dom
+  let eval : Aut ((fiberToFinite s).obj Y) → M := fun a => fibreBasis s A Y τ mark t (a.hom t)
+  have hc : Continuous (fun γ : FiberAutGroup s => fibreBasis s A Y τ mark t (γ.hom.app Y t)) :=
+    (continuous_of_discreteTopology (f := eval)).comp hcoord
+  change Continuous (fun γ : FiberAutGroup s =>
+    GroupCohomology.ContinuousH1.AffineTorsors.coordinates
+      (τ.pointTranslation_unique (Over.mk s) mark) t (γ.hom.app Y t))
+  simpa only [fibreCoordinates_eq] using hc
+
 /-- The common continuous cocycle obtained from actual fibre evaluation at a chosen point. -/
 def basedCocycle (t : Fiber s Y) : Cocycle (FiberAutGroup s) M := by
-  have hc : Continuous (fun γ : FiberAutGroup s =>
-      fibreBasis s A Y τ mark t (γ.hom.app Y t)) := by
-    have hcoord : Continuous (fun γ : FiberAutGroup s =>
-        PreGaloisCategory.autEmbedding (fiberToFinite s) γ Y) :=
-      (continuous_apply Y).comp continuous_induced_dom
-    let eval : Aut ((fiberToFinite s).obj Y) → M := fun a =>
-      fibreBasis s A Y τ mark t (a.hom t)
-    exact (continuous_of_discreteTopology (f := eval)).comp hcoord
-  have he (γ : FiberAutGroup s) :
-      rho s A Y τ mark t γ 0 = fibreBasis s A Y τ mark t (γ.hom.app Y t) := by
-    rw [rho_apply, fibreBasis_symm_zero]
-  have hc' : Continuous (fun γ : FiberAutGroup s => rho s A Y τ mark t γ (0 : M)) :=
-    hc.congr (fun γ => (he γ).symm)
-  refine ⟨⟨(fun γ => rho s A Y τ mark t γ 0), hc'⟩, ?_⟩
-  intro γ δ
-  change rho s A Y τ mark t (γ * δ) 0 = _
-  rw [map_mul]
-  change rho s A Y τ mark t γ (rho s A Y τ mark t δ 0) =
-    rho s A Y τ mark t γ 0 + γ • rho s A Y τ mark t δ 0
-  simpa only [zero_add, MonoidHom.id_apply] using
-    rho_affine s A Y τ mark t (MonoidHom.id _) hmark γ 0 (rho s A Y τ mark t δ 0)
+  let := τ.pointTranslation (Over.mk s) mark
+  exact GroupCohomology.ContinuousH1.AffineTorsors.basedCocycle
+    (τ.pointTranslation_unique (Over.mk s) mark) (naturalFiberPermutation s Y)
+    (fibreTranslation_compatible s A Y τ mark hmark)
+    (fibreDisplacement_continuous s A Y τ mark) t
 
 set_option linter.unusedSectionVars false in
 -- Preserve the original auto-included hypotheses and binder order.
@@ -84,8 +123,11 @@ set_option linter.unusedSectionVars false in
 theorem basedCocycle_apply (t : Fiber s Y) (γ : FiberAutGroup s) :
     (basedCocycle s A Y τ mark hmark t).val γ =
       fibreBasis s A Y τ mark t (γ.hom.app Y t) := by
-  change rho s A Y τ mark t γ 0 = _
-  rw [rho_apply, fibreBasis_symm_zero]
+  let := τ.pointTranslation (Over.mk s) mark
+  change GroupCohomology.ContinuousH1.AffineTorsors.coordinates
+    (τ.pointTranslation_unique (Over.mk s) mark) t (naturalFiberPermutation s Y γ t) = _
+  rw [fibreCoordinates_eq]
+  rfl
 
 /-- The defining actual scheme-point equation fixes the cocycle sign. -/
 theorem basedCocycle_action (t : Fiber s Y) (γ : FiberAutGroup s) :
@@ -102,33 +144,22 @@ set_option linter.unusedSectionVars false in
 theorem fibreBasis_change (t t' x : Fiber s Y) :
     fibreBasis s A Y τ mark t' x =
       fibreBasis s A Y τ mark t x - fibreBasis s A Y τ mark t t' := by
-  have h := fibreBasis_action s A Y τ mark t
-    (mark.symm (Multiplicative.ofAdd (fibreBasis s A Y τ mark t' x))) t'
-  have hx : τ.act (mark.symm (Multiplicative.ofAdd (fibreBasis s A Y τ mark t' x))) t' = x :=
-    (fibreBasis s A Y τ mark t').symm_apply_apply x
-  rw [hx, mark.apply_symm_apply] at h
-  change fibreBasis s A Y τ mark t x =
-    fibreBasis s A Y τ mark t t' + fibreBasis s A Y τ mark t' x at h
-  exact (eq_sub_iff_add_eq).mpr ((add_comm _ _).trans h.symm)
+  let := τ.pointTranslation (Over.mk s) mark
+  simpa only [fibreCoordinates_eq] using
+    GroupCohomology.ContinuousH1.AffineTorsors.coordinates_change
+      (τ.pointTranslation_unique (Over.mk s) mark) t t' x
 
 /-- Basepoint change is the positive principal cocycle g·a−a. -/
 theorem basedCocycle_change (t t' : Fiber s Y) :
     basedCocycle s A Y τ mark hmark t' = basedCocycle s A Y τ mark hmark t +
       GroupCohomology.ContinuousH1.principal (FiberAutGroup s) M (fibreBasis s A Y τ mark t t')
         := by
-  apply GroupCohomology.ContinuousH1.Cocycle.ext
-  intro γ
-  rw [GroupCohomology.ContinuousH1.Cocycle.add_apply,
-    GroupCohomology.ContinuousH1.principal_apply, basedCocycle_apply, basedCocycle_apply,
-    fibreBasis_change]
-  · have h := rho_affine s A Y τ mark t (MonoidHom.id _) hmark γ 0
-      (fibreBasis s A Y τ mark t t')
-    rw [zero_add, rho_fibre] at h
-    change fibreBasis s A Y τ mark t (γ.hom.app Y t') =
-      rho s A Y τ mark t γ 0 + γ • fibreBasis s A Y τ mark t t' at h
-    rw [rho_apply, fibreBasis_symm_zero] at h
-    rw [h]
-    abel
+  let := τ.pointTranslation (Over.mk s) mark
+  simpa only [basedCocycle, fibreCoordinates_eq] using
+    GroupCohomology.ContinuousH1.AffineTorsors.basedCocycle_change
+      (τ.pointTranslation_unique (Over.mk s) mark) (naturalFiberPermutation s Y)
+      (fibreTranslation_compatible s A Y τ mark hmark)
+      (fibreDisplacement_continuous s A Y τ mark) t t'
 
 /-- The common continuous H¹ class is independent of the internal point choice. -/
 theorem basedCocycle_class_independent (t t' : Fiber s Y) :
@@ -139,16 +170,24 @@ theorem basedCocycle_class_independent (t t' : Fiber s Y) :
 
 /-- The common continuous H¹ class of a nonempty actual finite étale scheme torsor. -/
 def schemeTorsorClass [Nonempty (Fiber s Y)] : GroupCohomology.ContinuousH1.H1 (FiberAutGroup s)
-  M :=
-  GroupCohomology.ContinuousH1.classOf (FiberAutGroup s) M (basedCocycle s A Y τ mark hmark
-    (Classical.choice inferInstance))
+    M := by
+  let := τ.pointTranslation (Over.mk s) mark
+  exact GroupCohomology.ContinuousH1.AffineTorsors.torsorClass
+    (τ.pointTranslation_unique (Over.mk s) mark) (naturalFiberPermutation s Y)
+    (fibreTranslation_compatible s A Y τ mark hmark)
+    (fibreDisplacement_continuous s A Y τ mark)
 
 /-- Any actual chosen fibre point computes the constructed class. -/
 theorem schemeTorsorClass_eq [Nonempty (Fiber s Y)] (t : Fiber s Y) :
     schemeTorsorClass s A Y τ mark hmark =
       GroupCohomology.ContinuousH1.classOf (FiberAutGroup s) M (basedCocycle s A Y τ mark hmark
-        t) :=
-  basedCocycle_class_independent s A Y τ mark hmark _ _
+        t) := by
+  let := τ.pointTranslation (Over.mk s) mark
+  simpa only [schemeTorsorClass, basedCocycle] using
+    GroupCohomology.ContinuousH1.AffineTorsors.torsorClass_eq
+      (τ.pointTranslation_unique (Over.mk s) mark) (naturalFiberPermutation s Y)
+      (fibreTranslation_compatible s A Y τ mark hmark)
+      (fibreDisplacement_continuous s A Y τ mark) t
 
 section Naturality
 variable (A' : Grp (Over X)) [IsFinite A'.X.hom] [Etale A'.X.hom] (Y' : Scheme.FiniteEtale X)
@@ -173,12 +212,16 @@ coefficient map; neither injectivity nor a chosen global section is required. -/
 @[nolint unusedArguments]
 theorem fibreBasis_naturality (t x : Fiber s Y) :
     fibreBasis s A' Y' τ' mark' (e t) (e x) = q (fibreBasis s A Y τ mark t x) := by
-  have hx := (fibreBasis s A Y τ mark t).symm_apply_apply x
-  change τ.act (mark.symm (Multiplicative.ofAdd (fibreBasis s A Y τ mark t x))) t = x at hx
-  have hh := he (fibreBasis s A Y τ mark t x) t
-  rw [hx] at hh
-  rw [hh, fibreBasis_action, fibreBasis_basepoint, mark'.apply_symm_apply, zero_add]
-  rfl
+  let := τ.pointTranslation (Over.mk s) mark
+  let := τ'.pointTranslation (Over.mk s) mark'
+  calc
+    _ = q.toContinuousAddMonoidHom.toAddMonoidHom (fibreBasis s A Y τ mark t x) := by
+      simpa only [fibreCoordinates_eq] using
+        GroupCohomology.ContinuousH1.AffineTorsors.coordinates_naturality
+          (τ.pointTranslation_unique (Over.mk s) mark)
+          (τ'.pointTranslation_unique (Over.mk s) mark')
+          q.toContinuousAddMonoidHom.toAddMonoidHom e he t x
+    _ = q (fibreBasis s A Y τ mark t x) := rfl
 
 include he in
 /-- Naturality of the literal representative under compatible actual fibre maps. -/

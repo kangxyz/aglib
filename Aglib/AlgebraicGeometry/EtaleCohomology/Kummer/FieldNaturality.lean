@@ -508,14 +508,22 @@ theorem comparison_pullback
   obtain ⟨p, rfl⟩ := (hAK.bijective (muSheaf n K)).surjective a
   refine Quotient.inductionOn p ?_
   intro P
-  let Y := P.finiteEtaleRepresentative hRK
-      (GroupCohomology.Kummer.Field.finiteCoefficient K n).locally_constant
-  let e := P.finiteEtaleRepresentativeIso hRK
-      (GroupCohomology.Kummer.Field.finiteCoefficient K n).locally_constant
-  let τ := P.representedSchemeAction (rootsGroup n K) Y e
-  letI : Surjective Y.obj.hom := P.represented_surjective (rootsGroup n K) Y e
+  let Y :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.finiteEtaleRepresentative
+      (P := P) hRK (GroupCohomology.Kummer.Field.finiteCoefficient K n).locally_constant
+  let e :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.finiteEtaleRepresentativeIso
+      (P := P) hRK (GroupCohomology.Kummer.Field.finiteCoefficient K n).locally_constant
+  let τ :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.representedSchemeAction
+      (H := rootsGroup n K) (P := P) (Y := Y) (e := e)
+  let : Surjective Y.obj.hom :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.represented_surjective
+      (H := rootsGroup n K) (P := P) (Y := Y) (e := e)
   have he : torsorExtClass (torsorOfSchemeAction (rootsGroup n K) Y τ) = torsorExtClass P :=
-    torsorExtClass_iso (P.representedSchemeActionIso (rootsGroup n K) Y e)
+    torsorExtClass_iso
+      (_root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.representedSchemeActionIso
+        (H := rootsGroup n K) (P := P) (Y := Y) (e := e))
   change GroupCohomology.Kummer.Field.comparison L n hAL hRL (schemePullback
       (K := K) (L := L) n (torsorExtClass P)) =
     (muPullback i n).onH1 (GroupCohomology.Kummer.Field.comparison K n hAK hRK

@@ -1,0 +1,18 @@
+          (((sectionsFunctor X U).mapHomologicalComplex _).obj I.cocomplex)
+        [Elab.step] [5.050591] ✅️ expected type: <not-available>, term
+            ((sectionsFunctor X U).mapHomologicalComplex _).obj I.cocomplex
+          [Elab.step] [5.038622] ✅️ expected type: <not-available>, term
+              ((sectionsFunctor X U).mapHomologicalComplex _)
+            [Elab.step] [5.038551] ✅️ expected type: <not-available>, term
+                (sectionsFunctor X U).mapHomologicalComplex _
+              [Elab.app.args] [5.036898] ✅️ elabAppArgs (2 args) `@Functor.mapHomologicalComplex`
+                [Elab.app.finalize] [5.035132] ✅️ (sectionsFunctor X U).mapHomologicalComplex
+                      ?m.13 : HomologicalComplex X.Modules ?m.13 ⥤ HomologicalComplex AddCommGrpCat ?m.13
+                  [Meta.synthInstance] [5.028471] ✅️ (sectionsFunctor X U).PreservesZeroMorphisms
+                    [Meta.synthInstance.apply] [0.112643] ✅️ apply @Functor.instIsHomologicalCompOfIsTriangulated to (sectionsFunctor
+                            X U).IsHomological
+                      [Meta.synthInstance.tryResolve] [0.112231] ✅️ (sectionsFunctor X
+                              U).IsHomological ≟ (SheafOfModules.evaluation X.ringCatSheaf (op U) ⋙
+                              forget₂ (ModuleCat ↑(X.ringCatSheaf.obj.obj (op U))) AddCommGrpCat).IsHomological
+[Elab.async] [13.861416] ✅️ elaborating proof of AlgebraicGeometry.Scheme.Cohomology.moduleResolution_openKernelSections_surjective
+  [Elab.definition.value] [13.848922] ✅️ AlgebraicGeometry.Scheme.Cohomology.moduleResolution_openKernelSections_surjective

@@ -1,0 +1,14 @@
+{
+  "status": "Applied exact candidate after principal release; ready for native compilation",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "before_sha256": "d5550c87c483ad794b02df2e07931c11bb2e5882d54adce1dbe52df0c791c166",
+  "after_sha256": "844a9cc1d6615ee5ef6bdb54afbf1f76eae68f5bc8adbab6112162555be58a0d",
+  "before_lines": 1131,
+  "after_lines": 1162,
+  "delta_sha256": "07cabddd9c88a3d64f2417082b8a8af58a96c8250f5e90dd95847f2c3677ffdf",
+  "native_write": true,
+  "compiler_run": false,
+  "public_signature_changes": false,
+  "scope": "Only local regular whole-equation helper, definitionally identical ChartRelationOn body, and sectionFamily_natural proof.",
+  "suffix_unchanged": true
+}

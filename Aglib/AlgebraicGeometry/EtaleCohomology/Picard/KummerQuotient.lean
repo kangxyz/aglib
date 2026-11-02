@@ -6,14 +6,17 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.BoundaryNaturality
-public import Mathlib.GroupTheory.QuotientGroup.Basic
+public import Aglib.GroupTheory.QuotientGroup.Nsmul
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Nsmul
 
 /-!
 # The Kummer injection from ordinary Picard classes modulo n
 
 Exactness of the existing Kummer sequence identifies the boundary kernel with
 n times the original Picard group. Thus its actual quotient injects into H2.
-This result makes no Brauer-vanishing or surjectivity assertion.
+The quotient pullback uses the shared native multiplication-quotient construction, with
+identity, composition and the whole original boundary square before evaluation. This result
+makes no Brauer-vanishing or surjectivity assertion.
 -/
 
 @[expose] public section
@@ -30,39 +33,18 @@ namespace AlgebraicGeometry.Scheme.EtaleCohomology.Picard
 
 universe u w w'
 
-private theorem cohomology_nsmul_id {C : Type*} [Category C]
-    {J : GrothendieckTopology C} [HasSheafify J AddCommGrpCat.{u}]
-    [HasExt.{w} (Sheaf J AddCommGrpCat.{u})]
-    (L : Sheaf J AddCommGrpCat.{u}) (n q : ℕ) (a : Sheaf.H.{w} L q) :
-    Sheaf.H.map (n • 𝟙 L) q a = n • a := by
-  induction n with
-  | zero => simp [Sheaf.H.map_apply]
-  | succ n ih =>
-      rw [succ_nsmul, Sheaf.H.map_add_apply, ih, Sheaf.H.map_id_apply, succ_nsmul]
-
-private theorem exact_nsmul_transport {A B D : Type*} [AddCommGroup A]
-    [AddCommGroup B] [AddCommGroup D] (e : A ≃+ B) (p : B →+ B) (d : B →+ D)
-    (n : ℕ) (hp : ∀ b, p b = n • b) (hd : Function.Exact p d) (a : A) :
-    d (e a) = 0 ↔ ∃ b, n • b = a := by
-  rw [hd]
-  constructor
-  · rintro ⟨b, hb⟩
-    refine ⟨e.symm b, e.injective ?_⟩
-    rw [map_nsmul, AddEquiv.apply_symm_apply, ← hp, hb]
-  · rintro ⟨b, rfl⟩
-    exact ⟨e b, by rw [hp, map_nsmul]⟩
-
 variable (X : Scheme.{u}) [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
 
 /-- The kernel of the original Picard boundary consists exactly of n-multiples. -/
 theorem picardBoundary_eq_zero_iff (n : ℕ) (hn : 0 < n)
     (hinv : IsUnit (n : Γ(X, ⊤))) (c : PicardGroup X) :
     picardBoundary X n hn hinv c = 0 ↔ ∃ b : PicardGroup X, n • b = c := by
-  exact exact_nsmul_transport (picardCohomologyEquiv X)
+  have hker := AddEquiv.ker_comp_eq_range_nsmul_of_exact (picardCohomologyEquiv X)
     (Sheaf.H.map (power X n) 1) (boundary X n hn hinv 1) n
-    (cohomology_nsmul_id (gm X) n 1)
+    (Sheaf.H.map_nsmul_id (gm X) 1 n)
     ((ShortComplex.ab_exact_iff_function_exact _).mp
-      (Sheaf.H.longSequence_exact₃' (shortExact X n hn hinv) 1 2 rfl)) c
+      (Sheaf.H.longSequence_exact₃' (shortExact X n hn hinv) 1 2 rfl))
+  exact SetLike.ext_iff.mp hker c
 
 /-- Equality of native additive subgroups, not just an elementwise exactness statement. -/
 theorem picardBoundary_ker (n : ℕ) (hn : 0 < n) (hinv : IsUnit (n : Γ(X, ⊤))) :
@@ -97,25 +79,48 @@ variable {X} {S : Scheme.{u}}
 def picardQuotientPullback (f : S ⟶ X) (n : ℕ) :
     PicardGroup X ⧸ (nsmulAddMonoidHom (α := PicardGroup X) n).range →+
       PicardGroup S ⧸ (nsmulAddMonoidHom (α := PicardGroup S) n).range :=
-  QuotientAddGroup.map _ _ (pullbackHom f) (by
-    rintro c ⟨b, rfl⟩
-    exact ⟨pullbackHom f b, (_root_.map_nsmul (pullbackHom f) n b).symm⟩)
+  QuotientAddGroup.nsmulMap (pullbackHom f) n
 
 omit [HasExt.{w} (AbelianSheaf.{u, u + 1} X)] in
 @[simp] theorem picardQuotientPullback_mk (f : S ⟶ X) (n : ℕ) (c : PicardGroup X) :
     picardQuotientPullback f n (QuotientAddGroup.mk c) =
       QuotientAddGroup.mk (pullbackClass f c) := rfl
 
+omit [HasExt.{w} (AbelianSheaf.{u, u + 1} X)] in
+/-- The original Picard quotient pullback preserves identity through the shared construction. -/
+@[simp] theorem picardQuotientPullback_id (n : ℕ) :
+    picardQuotientPullback (𝟙 X) n = AddMonoidHom.id _ := by
+  rw [picardQuotientPullback, pullbackHom_id, QuotientAddGroup.nsmulMap_id]
+
+omit [HasExt.{w} (AbelianSheaf.{u, u + 1} X)] in
+/-- The whole Picard quotient pullback preserves geometric composition. -/
+theorem picardQuotientPullback_comp {T : Scheme.{u}} (f : S ⟶ X) (g : T ⟶ S) (n : ℕ) :
+    (picardQuotientPullback g n).comp (picardQuotientPullback f n) =
+      picardQuotientPullback (g ≫ f) n := by
+  rw [picardQuotientPullback, picardQuotientPullback, QuotientAddGroup.nsmulMap_comp,
+    ← pullbackHom_comp]
+  rfl
+
 variable [HasExt.{w'} (AbelianSheaf.{u, u + 1} S)]
 
-/-- The injection Pic/n into original H2 respects arbitrary geometric pullback. -/
+/-- The whole original Picard-boundary square commutes with geometric pullback. -/
+theorem picardQuotientBoundary_naturality (f : S ⟶ X) (n : ℕ) (hn : 0 < n)
+    (hinv : IsUnit (n : Γ(X, ⊤))) :
+    (rootsCohomologyPullback f n hn hinv 2).comp (picardQuotientBoundary X n hn hinv) =
+      (picardQuotientBoundary S n hn (levelInvertible f n hinv)).comp
+        (picardQuotientPullback f n) := by
+  apply AddMonoidHom.ext
+  intro c
+  induction c using Quotient.inductionOn' with
+  | h c => exact picardBoundary_pullback f n hn hinv c
+
+/-- Evaluation of the whole naturality equation on an actual quotient class. -/
 theorem picardQuotientBoundary_pullback (f : S ⟶ X) (n : ℕ) (hn : 0 < n)
     (hinv : IsUnit (n : Γ(X, ⊤)))
     (c : PicardGroup X ⧸ (nsmulAddMonoidHom (α := PicardGroup X) n).range) :
     rootsCohomologyPullback f n hn hinv 2 (picardQuotientBoundary X n hn hinv c) =
       picardQuotientBoundary S n hn (levelInvertible f n hinv)
-        (picardQuotientPullback f n c) := by
-  induction c using Quotient.inductionOn' with
-  | h c => exact picardBoundary_pullback f n hn hinv c
+        (picardQuotientPullback f n c) :=
+  DFunLike.congr_fun (picardQuotientBoundary_naturality f n hn hinv) c
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Picard

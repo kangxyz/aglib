@@ -1,0 +1,24 @@
+{
+  "semantic_request": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/repair-v4/diagnostics/factorization-data-request.json",
+  "semantic_request_sha256": "f6f63865c2953ec3589dac43eac208959fdd8823e36bf284124b14589cd005bb",
+  "accepted_source_sha256": "b62265bf0b51a6c824cec55f45858d73038e26ffa66a36d857b6e5617237be5f",
+  "candidate": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/field-factorization-data-v1/FieldFactorizationData.lean",
+  "candidate_sha256": "e85d1bfa643182b01b2a0796b9f3e2f5aaf4ea101827476485349712cda92c75",
+  "native_sha256": "616b87a1041f6eed9b19b5d5ecd0bc50c3df4acf636496f42b7c4800883c35ce",
+  "bounds": {
+    "reports": 20,
+    "depth": 80,
+    "rendered_term_characters": 1600
+  },
+  "syntax_equality": "Lean.Expr.equal (binder names/annotations included), metadata consumed",
+  "skip_rule": "proof pairs only if inferred proposition types are structurally equal; otherwise recurse proofType",
+  "name_resolution": "withMainContext and raw existing local hfactor lookup; instantiate assigned mvars, reject unresolved expression/level metas",
+  "statement_boundary": "Original b622 statement/helper/class branch unchanged; original failing exact retained; no zero-count proof/cause claim",
+  "source_options": "identical to accepted native source; no new options",
+  "payload_sha256": "018e9e74dd42a617c3a29f96e5a82aee67831d736274573801a12b04d0c3b08a",
+  "ordinary_native_roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.PullbackEquivalence"
+  ],
+  "ordinary_native_ready": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/h0-natural-iso-transport-staging/candidate-v4/READY.json",
+  "retained_unselected_pass": "H0ProperHenselian1e682 actuale815/source980"
+}

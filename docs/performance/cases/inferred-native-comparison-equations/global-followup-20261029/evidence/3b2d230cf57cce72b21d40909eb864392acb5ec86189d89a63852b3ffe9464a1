@@ -1,0 +1,368 @@
+{
+  "action": "phase",
+  "actor_executable": "/root/miniconda3/bin/python3.12",
+  "admission": {
+    "ceilings": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+    "final_observation": {
+      "active_compilers_by_run": {},
+      "cpu_cores": 1.1433302984579128,
+      "cpu_usage_usec": 1558362879989,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 268435456,
+      "memory_current_bytes": 33438498816,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 0.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 27165974528
+    },
+    "initial_observation": {
+      "active_compilers_by_run": {},
+      "cpu_cores": 0.028402222652342737,
+      "cpu_usage_usec": 1558341733830,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 805306368,
+      "memory_current_bytes": 33433538560,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 1.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 27162128384
+    },
+    "max_frontends_if_alone": 8,
+    "mode": "elastic"
+  },
+  "allow_library_roots": false,
+  "cache_provenance": {
+    "configuration_sha256": {
+      "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+      "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852"
+    },
+    "environment": {
+      "LAKE_ARTIFACT_CACHE": "true",
+      "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+      "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+    },
+    "lookup": "native Lake traces/artifact cache; no per-dependency prior-hit claim"
+  },
+  "cgroup_average_cpu_cores": 1.2323204949125954,
+  "cgroup_cpu_after": {
+    "nr_periods": 6450105,
+    "nr_throttled": 18522,
+    "system_usec": 143961813932,
+    "throttled_usec": 205534316,
+    "usage_usec": 1558362879989,
+    "user_usec": 1414401066057
+  },
+  "cgroup_cpu_attribution": "whole observed cgroup; may include unrelated activity",
+  "cgroup_cpu_before": {
+    "nr_periods": 6449933,
+    "nr_throttled": 18522,
+    "system_usec": 143958236521,
+    "throttled_usec": 205534316,
+    "usage_usec": 1558341735560,
+    "user_usec": 1414383499038
+  },
+  "cgroup_cpu_seconds_delta": 21.144429,
+  "cgroup_memory_events_after": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_before": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_delta": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "command": [
+    "/root/miniconda3/bin/python3.12",
+    "-c",
+    "from pathlib import Path\nimport hashlib,json,os,subprocess,sys\nsource=\"/-\\nCopyright (c) 2026 Aglib contributors. All rights reserved.\\nReleased under Apache 2.0 license as described in the file LICENSE.\\nAuthors: kangxyz\\n-/\\nmodule\\n\\npublic import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.SheafColimit\\npublic import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleDirectImageMate\\n\\n/-! # Original finite-constant pushforwards restricted to an \u00e9tale chart\\n\\nThe original Over adjunction fixes represented section transport. Its\\nnormalization against the original inverse-image unit allows the actual\\n\u00e9tale base-change isomorphism to be used on the original represented\\ncoordinates, including the frozen copyObj transitions.\\n-/\\n\\n@[expose] public noncomputable section\\n\\nset_option backward.defeqAttrib.useBackward true\\nset_option backward.isDefEq.respectTransparency false\\nset_option backward.isDefEq.respectTransparency.types false\\n\\nopen CategoryTheory CategoryTheory.Limits Opposite\\nopen scoped CategoryTheory.MonObj\\n\\nnamespace AlgebraicGeometry.Scheme.EtaleCohomology.Constructible.FiniteCogenerators.Global\\n\\nuniverse u\\n\\nattribute [local instance] hasSheafifyLarge Over.cartesianMonoidalCategory\\n\\nopen AffineIntegralConstants SchemeTorsorBaseChange\\n\\nvariable {X T : Scheme.{u}} (g : T \u27f6 X)\\n\\n/-- The original Over adjunction identifies actual group sections on all\\nrelative test schemes, retaining their additive structure and universe lift. -/\\ndef sectionFunctorBaseChangeIso (H : Grp (Over X)) [IsCommMonObj H.X] :\\n    (Over.map g).op \u22d9 sectionFunctor H \u2245 sectionFunctor (baseChangedGroup g H) :=\\n  CommutativeGroupSections.adjunctionIso.{u + 1} (Over.mapPullbackAdj g) H\\n\\n/-- An actual finite commutative \u00e9tale coefficient isomorphism recovers an\\nactual group-scheme isomorphism by the proved small-site Yoneda equivalence. -/\\ndef representedGroupIsoOfSheafIso\\n    {H K : Grp (Over T)} [IsCommMonObj H.X] [IsCommMonObj K.X]\\n    [IsFinite H.X.hom] [Etale H.X.hom] [IsFinite K.X.hom] [Etale K.X.hom]\\n    (e : representedSheaf H \u2245 representedSheaf K) : H \u2245 K where\\n  hom := representedSheafGroupPreimage e.hom\\n  inv := representedSheafGroupPreimage e.inv\\n  hom_inv_id := by\\n    apply (representedSheafHomEquiv H H).injective\\n    change representedSheafMap (_ \u226b _) = representedSheafMap (\ud835\udfd9 H)\\n    rw [representedSheafMap_comp, representedSheafMap_preimage,\\n      representedSheafMap_preimage, representedSheafMap_id, e.hom_inv_id]\\n  inv_hom_id := by\\n    apply (representedSheafHomEquiv K K).injective\\n    change representedSheafMap (_ \u226b _) = representedSheafMap (\ud835\udfd9 K)\\n    rw [representedSheafMap_comp, representedSheafMap_preimage,\\n      representedSheafMap_preimage, representedSheafMap_id, e.inv_hom_id]\\n\\n/-- Actual postcomposition gives the additive equivalence on one typed\\nscheme-valued section group, before any functor-object coercions are involved. -/\\ndef sectionGroupPostcomposeEquiv\\n    {H K : Grp (Over T)} [IsCommMonObj H.X] [IsCommMonObj K.X] (e : H \u2245 K) :\\n    \u2200 U : Over T, RepresentedSections H U \u2243+ RepresentedSections K U :=\\n  CommutativeGroupSections.postcomposeEquiv.{u + 1} e\\n\\n/-- Postcomposition with an actual group-scheme isomorphism is natural on\\nall original scheme-valued section objects, including non\u00e9tale tests. -/\\ndef sectionFunctorGroupIso\\n    {H K : Grp (Over T)} [IsCommMonObj H.X] [IsCommMonObj K.X] (e : H \u2245 K) :\\n    sectionFunctor H \u2245 sectionFunctor K :=\\n  CommutativeGroupSections.mapIso.{u + 1} e\\n\\n/-- The fixed actual finite constant group at the new base is the original\\npullback group, transported through the original constant coefficient maps. -/\\ndef constantGroupBaseChangeIso (B : Type u) [AddCommGroup B] [Finite B] :\\n    baseChangedGroup g (ConstantFinite.representation B X).group \u2245\\n      (ConstantFinite.representation B T).group :=\\n  representedGroupIsoOfSheafIso\\n    ((representedSheafBaseChangeIso g (ConstantFinite.representation B X).group).symm \u226a\u226b\\n      (inverseImage g).mapIso (ConstantFinite.representation B X).iso \u226a\u226b\\n        (inverseImageConstantIso g).app (ConstantFinite.value B) \u226a\u226b\\n          (ConstantFinite.representation B T).iso.symm)\\n\\n/- The coefficient comparisons retain the native pullback square and its original values. -/\\n\\nprivate theorem constantGroupBaseChangeIso_normalization\\n    {V W : Scheme.{u}} (f : W \u27f6 V) (B : Type u) [AddCommGroup B] [Finite B] :\\n    (representedSheafBaseChangeIso f (ConstantFinite.representation B V).group).hom \u226b\\n        representedSheafMap (constantGroupBaseChangeIso f B).hom \u226b\\n          (ConstantFinite.representation B W).iso.hom =\\n      (inverseImage f).map (ConstantFinite.representation B V).iso.hom \u226b\\n        (inverseImageConstantIso f).hom.app (ConstantFinite.value B) := by\\n  dsimp only [constantGroupBaseChangeIso, representedGroupIsoOfSheafIso]\\n  rw [representedSheafMap_preimage]\\n  simp only [Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom, Category.assoc,\\n    Iso.hom_inv_id_assoc, Iso.inv_hom_id, Category.comp_id, Iso.app_hom]\\n\\nprivate def representedGroupCompIso {V W Z : Scheme.{u}} (f : W \u27f6 V) (k : Z \u27f6 W)\\n    (H : Grp (Over V)) :\\n    baseChangedGroup k (baseChangedGroup f H) \u2245 baseChangedGroup (k \u226b f) H :=\\n  ((Functor.mapGrpCompIso (F := Over.pullback f) (G := Over.pullback k)).symm \u226a\u226b\\n    (Functor.mapGrpNatIso (Over.pullbackComp k f)).symm).app H\\n\\nprivate theorem representedGroupCompIso_hom {V W Z : Scheme.{u}}\\n    (f : W \u27f6 V) (k : Z \u27f6 W) (H : Grp (Over V)) :\\n    (representedGroupCompIso f k H).hom.hom.hom =\\n      (Over.pullbackComp k f).inv.app H.X := by\\n  change (\ud835\udfd9 _) \u226b (Over.pullbackComp k f).inv.app H.X = _\\n  exact Category.id_comp _\\n\\nprivate theorem representedGroupCompIso_inv {V W Z : Scheme.{u}}\\n    (f : W \u27f6 V) (k : Z \u27f6 W) (H : Grp (Over V)) :\\n    (representedGroupCompIso f k H).inv.hom.hom =\\n      (Over.pullbackComp k f).hom.app H.X := by\\n  change (Over.pullbackComp k f).hom.app H.X \u226b (\ud835\udfd9 _) = _\\n  exact Category.comp_id _\\n\\nprivate def representedGroupEqIso {V W : Scheme.{u}} {f k : W \u27f6 V} (h : f = k)\\n    (H : Grp (Over V)) : baseChangedGroup f H \u2245 baseChangedGroup k H :=\\n  (Functor.mapGrpNatIso (eqToIso (congrArg (fun a => Over.pullback a) h))).app H\\n\\nprivate theorem representedGroupEqIso_hom {V W : Scheme.{u}}\\n    {f k : W \u27f6 V} (h : f = k) (H : Grp (Over V)) :\\n    (representedGroupEqIso h H).hom.hom.hom =\\n      (eqToIso (congrArg (fun a => Over.pullback a) h)).hom.app H.X := by\\n  subst k\\n  rfl\\n\\nprivate theorem representedBaseChange_eqTransport {V W : Scheme.{u}}\\n    {f k : W \u27f6 V} (h : f = k) (H : Grp (Over V))\\n    [IsCommMonObj H.X] [Etale H.X.hom] :\\n    (eqToIso (congrArg (fun a => inverseImage a) h)).hom.app (representedSheaf H) \u226b\\n        (representedSheafBaseChangeIso k H).hom =\\n      (representedSheafBaseChangeIso f H).hom \u226b\\n        representedSheafMap (representedGroupEqIso h H).hom := by\\n  subst k\\n  change (\ud835\udfd9 _) \u226b (representedSheafBaseChangeIso f H).hom =\\n    (representedSheafBaseChangeIso f H).hom \u226b\\n      representedSheafMap (\ud835\udfd9 (baseChangedGroup f H))\\n  rw [representedSheafMap_id, Category.id_comp, Category.comp_id]\\n\\nprivate def representedGroupSquareIso {V W V' W' : Scheme.{u}}\\n    (f : V \u27f6 W) (f' : V' \u27f6 W') (g : W' \u27f6 W) (g' : V' \u27f6 V)\\n    (h : f' \u226b g = g' \u226b f) (H : Grp (Over W)) :\\n    baseChangedGroup f' (baseChangedGroup g H) \u2245\\n      baseChangedGroup g' (baseChangedGroup f H) :=\\n  representedGroupCompIso g f' H \u226a\u226b representedGroupEqIso h H \u226a\u226b\\n    (representedGroupCompIso f g' H).symm\\n\\nprivate theorem representedGroupSquareIso_hom {V W V' W' : Scheme.{u}}\\n    (f : V \u27f6 W) (f' : V' \u27f6 W') (g : W' \u27f6 W) (g' : V' \u27f6 V)\\n    (h : f' \u226b g = g' \u226b f) (H : Grp (Over W)) :\\n    (representedGroupSquareIso f f' g g' h H).hom.hom.hom =\\n      (Over.pullbackSquareIso f f' g g' h).hom.app H.X := by\\n  change (representedGroupCompIso g f' H).hom.hom.hom \u226b\\n      (representedGroupEqIso h H).hom.hom.hom \u226b\\n      (representedGroupCompIso f g' H).inv.hom.hom = _\\n  rw [representedGroupCompIso_hom, representedGroupEqIso_hom,\\n    representedGroupCompIso_inv]\\n  rfl\\n\\nprivate theorem representedBaseChange_square_formation {V W V' W' : Scheme.{u}}\\n    (f : V \u27f6 W) (f' : V' \u27f6 W') (g : W' \u27f6 W) (g' : V' \u27f6 V)\\n    (h : f' \u226b g = g' \u226b f) (H : Grp (Over W))\\n    [IsCommMonObj H.X] [Etale H.X.hom] (_h :\\n    (inverseImageSquareIso f f' g g' h).hom.app (representedSheaf H) \u226b\\n        (inverseImage g').map (representedSheafBaseChangeIso f H).hom \u226b\\n        (representedSheafBaseChangeIso g' (baseChangedGroup f H)).hom =\\n      (inverseImage f').map (representedSheafBaseChangeIso g H).hom \u226b\\n        (representedSheafBaseChangeIso f' (baseChangedGroup g H)).hom \u226b\\n        representedSheafMap (representedGroupSquareIso f f' g g' h H).hom) : True := True.intro\\n\\n\\nprivate theorem constantComparison_square_formation {V W V' W' : Scheme.{u}}\\n    (f : V \u27f6 W) (f' : V' \u27f6 W') (g : W' \u27f6 W) (g' : V' \u27f6 V)\\n    (h : f' \u226b g = g' \u226b f) (A : AddCommGrpCat.{u + 1}) (_h :\\n    (inverseImageSquareIso f f' g g' h).hom.app\\n        ((constantSheaf (Scheme.smallEtaleTopology W) AddCommGrpCat.{u + 1}).obj A) \u226b\\n        (inverseImage g').map ((inverseImageConstantIso f).hom.app A) \u226b\\n        (inverseImageConstantIso g').hom.app A =\\n      (inverseImage f').map ((inverseImageConstantIso g).hom.app A) \u226b\\n        (inverseImageConstantIso f').hom.app A) : True := True.intro\\n\\nend AlgebraicGeometry.Scheme.EtaleCohomology.Constructible.FiniteCogenerators.Global\\n\"\nexpected=\"55c4d276604ae1b371deda0edb86e845ff5fe6a70fbccbb6e09be84ebf4641a6\"\nassert hashlib.sha256(source.encode()).hexdigest()==expected\nprint(\"PREPARED_IMPORT_READINESS_BEGIN\",flush=True)\nready=subprocess.run([os.environ[\"LAKE\"],\"--no-build\",\"build\",*['Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.SheafColimit', 'Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleDirectImageMate']],text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)\nprint(ready.stdout,flush=True)\nprint(\"PREPARED_IMPORT_READINESS_END exit=\"+str(ready.returncode),flush=True)\nif ready.returncode:\n print(json.dumps({\"readiness_exit\":ready.returncode,\"diagnostic_executed\":False,\"boundary\":\"prepared matching imports unavailable; no rebuild attempted\"}),flush=True)\n sys.exit(ready.returncode)\nrun=Path(os.environ[\"LEAN\"]).parents[2]\npath=run/\"GlobalSquareFormation.lean\"\nassert not path.exists()\npath.write_text(source)\nprint(\"GLOBAL_SQUARE_FORMATION_DIAGNOSTIC_BEGIN sha256=\"+expected,flush=True)\nresult=subprocess.run([os.environ[\"LAKE\"],\"--no-build\",\"env\",os.environ[\"LEAN\"],str(path)],text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)\nprint(result.stdout,flush=True)\nprint(\"GLOBAL_SQUARE_FORMATION_DIAGNOSTIC_END exit=\"+str(result.returncode),flush=True)\nprint(json.dumps({\"diagnostic_exit\":result.returncode,\"source_sha256\":expected,\"boundary\":\"prefix plus faithful proposition binder probes only; no theorem proof or production coverage\"}),flush=True)\nsys.exit(result.returncode)\n"
+  ],
+  "command_exit_code": 0,
+  "compiler_exit_codes": [
+    0
+  ],
+  "compiler_failed": 0,
+  "compiler_invocations": 1,
+  "compiler_observation": "wrapper-events-only",
+  "compiler_scope_lease_modes": {
+    "supervisor-only": 1
+  },
+  "compiler_scope_policy": "workspace descriptors or verified live supervisor; each compiler inherits its elastic claim",
+  "compiler_succeeded": 1,
+  "concurrency_basis": "compiler wrapper start/finish intervals, each holding one slot",
+  "diagnostics": {
+    "categories": {},
+    "first": [],
+    "observed_missing_count": 0,
+    "observed_missing_prefixes": {},
+    "observed_missing_prefixes_truncated": false,
+    "observed_missing_shortlist": []
+  },
+  "elapsed_seconds": 17.158222302794456,
+  "environment": {
+    "ELAN_HOME": "/root/autodl-tmp/lean-build/elan",
+    "LAKE_ARTIFACT_CACHE": "true",
+    "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+    "LAKE_OVERRIDE_LEAN": "1",
+    "LEAN_NUM_THREADS": "8",
+    "LEAN_SYSROOT": "/root/autodl-tmp/lean-build/logs/remote-9971871b51874eee85fb256b97040c89/toolchain",
+    "R5_LEAN_REMOTE_PROFILE": "{\"jobs\": 8, \"lean\": \"/root/autodl-tmp/lean-build/logs/remote-9971871b51874eee85fb256b97040c89/toolchain/bin/lean\", \"lean_memory_mib\": 12800, \"rss_limit_mib\": 65536, \"schema_version\": 1, \"threads\": 4}",
+    "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+  },
+  "exit_code": 0,
+  "expected_source": "bcd6d52dad5c73643d09b6ee31eafc6db93824731fe091c568d4147f47e9196a",
+  "failure_reason": null,
+  "finished_at": "2026-10-28T09:38:41.234050+00:00",
+  "forbid_compilation": false,
+  "forced_kill": false,
+  "git_head": null,
+  "group_closed": true,
+  "incomplete_compiler_events": 0,
+  "input_drift": [],
+  "input_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/SheafColimit.lean": "29a2ae6660a08e1113bae53642ae0cb416b9caaf2872a540f1c426b2f070bc28",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/EtaleDirectImageMate.lean": "42dac0fc6c143a299c241ae5ef3def9fddd53eb0a802a61050ad3e3b3d7469cc",
+    "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+    "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+  },
+  "lock_acquired_at": "2026-10-28T09:38:24.068026+00:00",
+  "locks": {
+    "cache_fetch_exclusive": null,
+    "legacy_shared_gate": "/root/autodl-tmp/lean-build/build.lock",
+    "workspace_exclusive": "/root/autodl-tmp/lean-build/locks/workspace-fff48b6425e43ac1291c2d857ab51425b5dbb67c2ef9d8a41db237a6b2112a2d.lock"
+  },
+  "lowest_disk_free_bytes": 45061177344,
+  "modules": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.SheafColimit",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleDirectImageMate"
+  ],
+  "operation_id": "007d292f17d34cadb6f005e7c69cf7bb",
+  "outcome": "owned_phase_completed",
+  "peak_compiler_concurrency": 1,
+  "peak_rss_bytes": 3056857088,
+  "pgid": 942755,
+  "phase_executable_sha256": "0c05a22b0b180580a76437114a95cf138f67c8f46245acad26017c803b42b8c1",
+  "phase_label": "GlobalSquareFormation",
+  "pins": {
+    "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+    "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+    "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+  },
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 8,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536,
+    "threads": 4
+  },
+  "resource_accounting": {
+    "global": "sampled cgroup memory/CPU, startup and growth credits; no peak-envelope reservation",
+    "isolation": "cooperative sampled admission; no per-run kernel memory isolation or OOM guarantee",
+    "run": "frontend/job/thread ceilings, sampled owned-tree RSS cutoff, own-tree pressure retreat"
+  },
+  "resources": {
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "cgroup": "/sys/fs/cgroup",
+    "cgroup_limits": [
+      {
+        "cpu.max": "3200000 100000",
+        "memory.max": "128849018880",
+        "path": "/sys/fs/cgroup"
+      }
+    ],
+    "effective_cpus": 32.0,
+    "memory_bytes": 128849018880
+  },
+  "run_dir": "/root/autodl-tmp/lean-build/logs/remote-9971871b51874eee85fb256b97040c89",
+  "sampled_process_average_cpu_cores": 1.1108376884064388,
+  "sampled_process_cpu_seconds": 19.06,
+  "schema_version": 1,
+  "setup_cleanup": {
+    "removed_setup_bytes": 0,
+    "removed_setup_files": 0
+  },
+  "source_content_sha256": "bcd6d52dad5c73643d09b6ee31eafc6db93824731fe091c568d4147f47e9196a",
+  "source_receipt_sha256": "4927931eb06d2be275fd74ac630973be2028d60f1bf9485819e534e5b4cacf14",
+  "started_at": "2026-10-28T09:38:23.610868+00:00",
+  "status": "succeeded",
+  "summary": {
+    "action": "phase",
+    "admission": {
+      "affinity_cpus": null,
+      "ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 65536,
+        "threads": 4
+      },
+      "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+      "final_observation": {
+        "active_compilers_by_run": {},
+        "cpu_cores": 1.1433302984579128,
+        "cpu_usage_usec": 1558362879989,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 268435456,
+        "memory_current_bytes": 33438498816,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 0.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 27165974528
+      },
+      "initial_observation": {
+        "active_compilers_by_run": {},
+        "cpu_cores": 0.028402222652342737,
+        "cpu_usage_usec": 1558341733830,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 805306368,
+        "memory_current_bytes": 33433538560,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 1.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 27162128384
+      },
+      "max_frontends_if_alone": 8,
+      "mode": "elastic",
+      "request": null
+    },
+    "artifacts": {
+      "build.log": "/root/autodl-tmp/lean-build/logs/remote-9971871b51874eee85fb256b97040c89/build.log",
+      "compiler-events.jsonl": "/root/autodl-tmp/lean-build/logs/remote-9971871b51874eee85fb256b97040c89/compiler-events.jsonl",
+      "receipt.json": "/root/autodl-tmp/lean-build/logs/remote-9971871b51874eee85fb256b97040c89/receipt.json"
+    },
+    "cgroup_memory_attribution": "whole observed cgroup; an OOM event alone does not identify its victim",
+    "cgroup_memory_events_delta": {
+      "high": 0,
+      "low": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "compiler_observation": "wrapper-events-only",
+    "compiler_scope_lease_modes": {
+      "supervisor-only": 1
+    },
+    "execution_seconds": 17.158222302794456,
+    "exit_code": 0,
+    "expected_source": "bcd6d52dad5c73643d09b6ee31eafc6db93824731fe091c568d4147f47e9196a",
+    "first_diagnostics": [],
+    "frontend_failed": 0,
+    "frontend_invocations": 1,
+    "frontend_observation": "wrapper starts only; arbitrary phase tools may bypass local compiler caps",
+    "frontend_peak": 1,
+    "frontend_succeeded": 1,
+    "group_closed": true,
+    "native_exit": 0,
+    "outcome": "owned_phase_completed",
+    "peak_rss_bytes": 3056857088,
+    "plan": null,
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "reason": "",
+    "run": "remote-9971871b51874eee85fb256b97040c89",
+    "sampled_process_average_cpu_cores": 1.1108376884064388,
+    "source_basis": "bcd6d52dad5c73643d09b6ee31eafc6db93824731fe091c568d4147f47e9196a",
+    "status": "succeeded",
+    "unwrapped_frontend_count": "unknown",
+    "wall_seconds": 17.6232108771801
+  },
+  "task_id": "etale-mainline-universal-20261024",
+  "unfinished_compiler_records": [],
+  "waiting_for": null,
+  "wall_seconds": 17.6232108771801,
+  "worker_sha256": "7b1d09f535dc951f2f3ecae857f7b77b0ffc95f8f9e55352167a39b4387729a4",
+  "workspace": "/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean"
+}

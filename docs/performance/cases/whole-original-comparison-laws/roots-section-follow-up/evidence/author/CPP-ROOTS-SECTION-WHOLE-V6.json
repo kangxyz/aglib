@@ -1,0 +1,47 @@
+{
+  "run": "remote-a915514036ca413b9bd53740882b4bb5",
+  "source": "e028160ad70b9552e7d57df0cafd9e2796023da2584af05f34ddf2d265da1fc0",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-a915514036ca413b9bd53740882b4bb5/receipt.json",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-a915514036ca413b9bd53740882b4bb5/compiler-events.jsonl",
+  "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-a915514036ca413b9bd53740882b4bb5/build.log",
+  "aggregate_exit": 0,
+  "group_closed": true,
+  "roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.KummerFamilyValues"
+  ],
+  "profile": {
+    "jobs": 8,
+    "threads": 4,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536,
+    "maxHeartbeats": 200000
+  },
+  "rows": [
+    {
+      "path": "Aglib/CategoryTheory/Sites/Representable/SectionComparisonValues.lean",
+      "sha256": "fa8bc2fbd17d52c123cb471e716b468a9ada941320b9fc099ec62132b909746e",
+      "exit_code": 0,
+      "frontend_seconds": 3.3563457131385803,
+      "pid": 266238,
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/roots-section-whole-alternative-20261030/v6/after/Aglib/CategoryTheory/Sites/Representable/SectionComparisonValues.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean",
+      "sha256": "c703ba7109a3019809c0cf06502cecf41e9d6179e94c6a5c365f0d7227828ddf",
+      "exit_code": 0,
+      "frontend_seconds": 29.87920680642128,
+      "pid": 266263,
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/roots-section-whole-alternative-20261030/v6/after/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/KummerFamilyValues.lean",
+      "sha256": "451c01650bf736a429d57074a957b0becba274ad4e3279768256113c0d144152",
+      "exit_code": 0,
+      "frontend_seconds": 19.287935718894005,
+      "pid": 266308,
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/roots-section-whole-alternative-20261030/v6/after/Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/KummerFamilyValues.lean"
+    }
+  ],
+  "fresh_frontends": 3,
+  "boundary": "Three actual source-matched frontend passes. Lake3934 jobs includes retained cached dependencies; this is not3934 fresh compilations. No matched benchmark/speedup or unique kernel-cause claim. Standalone final predicates are separate."
+}

@@ -12,6 +12,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorComparisonAdditiv
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.MarkedCoefficients
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedComparisonNaturality
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.CoefficientRepresentation
+public import Aglib.CategoryTheory.Sites.Torsor.CoefficientIso
 
 /-!
 # The actual finite-coefficient fundamental-group comparison
@@ -58,50 +59,26 @@ def FiniteCoefficient.ofIso {X : Scheme.{u}} {L N : AbelianSheaf.{u, u + 1} X}
 
 /-- Transport of a genuine torsor through an actual coefficient isomorphism:
 the sheaf of sections is unchanged and the action uses the inverse coefficient map. -/
-def Torsor.ofCoefficientIso {X : Scheme.{u}} {L N : AbelianSheaf.{u, u + 1} X}
-    (P : Torsor L) (e : L ≅ N) : Torsor N where
-  carrier := P.carrier
-  action U a t := P.action U (e.inv.hom.app U a) t
-  zero_action U t := by rw [map_zero]; exact P.zero_action U t
-  add_action U a b t := by rw [map_add]; exact P.add_action U _ _ t
-  naturality {U V} f a t := by
-    rw [P.naturality]
-    congr 1
-    exact (ConcreteCategory.congr_hom (e.inv.hom.naturality f) a).symm
-  unique_transport U x y := by
-    obtain ⟨a, ha, hu⟩ := P.unique_transport U x y
-    have hleft (b : L.obj.obj U) : e.inv.hom.app U (e.hom.hom.app U b) = b :=
-      congrArg (fun q : L ⟶ L => q.hom.app U b) e.hom_inv_id
-    have hright (b : N.obj.obj U) : e.hom.hom.app U (e.inv.hom.app U b) = b :=
-      congrArg (fun q : N ⟶ N => q.hom.app U b) e.inv_hom_id
-    refine ⟨e.hom.hom.app U a, ?_, ?_⟩
-    · change P.action U (e.inv.hom.app U (e.hom.hom.app U a)) x = y
-      rw [hleft]; exact ha
-    · intro b hb
-      exact (hright b).symm.trans (congrArg (e.hom.hom.app U) (hu _ hb))
-  locally_nonempty := P.locally_nonempty
+abbrev Torsor.ofCoefficientIso {X : Scheme.{u}} {L N : AbelianSheaf.{u, u + 1} X}
+    (P : Torsor L) (e : L ≅ N) : Torsor N :=
+  CategoryTheory.Sheaf.Torsor.ofCoefficientIso P e
 
 /-- The identity on the carrier is genuinely equivariant for the coefficient iso. -/
-def Torsor.coefficientIsoHom {X : Scheme.{u}} {L N : AbelianSheaf.{u, u + 1} X}
-    (P : Torsor L) (e : L ≅ N) : Torsor.Hom e.hom P (P.ofCoefficientIso e) where
-  map := 𝟙 P.carrier
-  equivariant U a t := by
-    change P.action U a t = P.action U (e.inv.hom.app U (e.hom.hom.app U a)) t
-    rw [show e.inv.hom.app U (e.hom.hom.app U a) = a from
-      congrArg (fun q : L ⟶ L => q.hom.app U a) e.hom_inv_id]
+abbrev Torsor.coefficientIsoHom {X : Scheme.{u}} {L N : AbelianSheaf.{u, u + 1} X}
+    (P : Torsor L) (e : L ≅ N) : Torsor.Hom e.hom P (P.ofCoefficientIso e) :=
+  CategoryTheory.Sheaf.Torsor.coefficientIsoHom P e
 
 /-- The reverse identity carrier map has the inverse actual coefficient. -/
-def Torsor.coefficientIsoInvHom {X : Scheme.{u}} {L N : AbelianSheaf.{u, u + 1} X}
-    (P : Torsor L) (e : L ≅ N) : Torsor.Hom e.inv (P.ofCoefficientIso e) P where
-  map := 𝟙 P.carrier
-  equivariant _ _ _ := rfl
+abbrev Torsor.coefficientIsoInvHom {X : Scheme.{u}} {L N : AbelianSheaf.{u, u + 1} X}
+    (P : Torsor L) (e : L ≅ N) : Torsor.Hom e.inv (P.ofCoefficientIso e) P :=
+  CategoryTheory.Sheaf.Torsor.coefficientIsoInvHom P e
 
 /-- Canonical extension classes commute with this literal coefficient transport. -/
 theorem torsorExtClass_ofCoefficientIso {X : Scheme.{u}}
     [HasExt.{w} (AbelianSheaf.{u, u + 1} X)] {L N : AbelianSheaf.{u, u + 1} X}
     (P : Torsor L) (e : L ≅ N) :
     coefficientIso e (torsorExtClass P) = torsorExtClass (P.ofCoefficientIso e) :=
-  torsorExtClass_naturality (P.coefficientIsoHom e)
+  CategoryTheory.Sheaf.torsorExtClass_ofCoefficientIso P e
 
 /-- An ordinary sheaf coefficient morphism gives its actual finite group-scheme
 morphism by the proved represented-coefficient full faithfulness. -/
@@ -238,10 +215,41 @@ variable (hmark : ∀ (γ : FiberAutGroup s) a,
   mark (γ.hom.app (coefficientCover H) a) = Multiplicative.ofAdd (γ • (mark a).toAdd))
 variable (hcoeff : FiniteCoefficient (representedSheaf H))
 
+omit [HasExt.{w} (AbelianSheaf.{u, u + 1} X)] in
+include s M mark hmark in
+/-- The actual marked finite module proves local constancy of its represented sheaf.
+No annihilator, invertible level or separate representation factory is supplied. -/
+theorem representedLocallyConstantOfMark : IsFiniteLocallyConstant (representedSheaf H) :=
+  (isFiniteLocallyConstant_iff_of_iso (moduleSheafIso s H M mark hmark)).mp
+    (moduleSheaf_isFiniteLocallyConstant (s := s) M)
+
+/-- Minimal finite-module comparison through the original marked descent isomorphism. -/
+def smallRepresentedH1AddEquivCore :
+    H1Etale X (representedSheaf H) ≃+ H1 (FiberAutGroup s) M :=
+  (coefficientIso (moduleSheafIso s H M mark hmark).symm).trans
+    (moduleH1AddEquivCore s M hR)
+
+/-- The minimal comparison has exactly the original positive torsor value. -/
+theorem smallRepresentedH1AddEquivCore_torsor (P : Torsor (representedSheaf H)) :
+    smallRepresentedH1AddEquivCore s H hR M mark hmark (torsorExtClass P) =
+      representedTorsorClass s H mark hmark hR
+        (representedLocallyConstantOfMark s H M mark hmark) P := by
+  let e := moduleSheafIso s H M mark hmark
+  change moduleH1AddEquivCore s M hR (coefficientIso e.symm (torsorExtClass P)) = _
+  rw [torsorExtClass_ofCoefficientIso, moduleH1AddEquivCore_torsor]
+  have hn := representedTorsorClass_naturality (moduleScheme s M) H
+    (moduleGroupIso s H M mark hmark).hom (P.coefficientIsoInvHom e.symm)
+    s (moduleFiberMulEquiv s M) mark (moduleFiber_action s M) hmark
+    (coefficientMapOfEquiv (AddEquiv.refl M) (fun _ _ => rfl))
+    (fun a => congrArg Multiplicative.toAdd (moduleGroupIso_marking s H M mark hmark a))
+    hR (moduleSheaf_isFiniteLocallyConstant (s := s) M)
+    (representedLocallyConstantOfMark s H M mark hmark)
+  exact hn.symm
+
 /-- The small marked coefficient comparison uses the actual descended sheaf iso. -/
 def smallRepresentedH1AddEquiv : H1Etale X (representedSheaf H) ≃+ H1 (FiberAutGroup s) M :=
-  (coefficientIso (moduleSheafIso s H M mark hmark).symm).trans
-    (moduleH1AddEquiv s M hA hR (hcoeff.ofIso (moduleSheafIso s H M mark hmark)))
+  (fun (_ : Stacks03AJ.{u, w} X) (_ : FiniteCoefficient (representedSheaf H)) =>
+    smallRepresentedH1AddEquivCore s H hR M mark hmark) hA hcoeff
 
 /-- The small comparison evaluates on every genuine torsor by its original
 represented scheme action and its original marking. -/
@@ -262,6 +270,16 @@ theorem smallRepresentedH1AddEquiv_torsor (P : Torsor (representedSheaf H)) :
   exact hn.symm
 
 end SmallComparison
+
+/-- The one intrinsic point-module comparison is independent of external markings. -/
+def pointH1AddEquivCore :
+    letI := pointIntrinsicAction s H
+    letI := pointIntrinsicContinuousSMul s H
+    H1Etale X (representedSheaf H) ≃+ H1 (FiberAutGroup s) (PointModule s H) := by
+  letI := pointIntrinsicAction s H
+  letI := pointIntrinsicContinuousSMul s H
+  exact smallRepresentedH1AddEquivCore s H hR (PointModule s H) (pointModuleMark s H)
+    (pointIntrinsicMark_equivariant s H)
 
 section UniverseComparison
 variable (M : Type v) [AddCommGroup M] [Finite M] [TopologicalSpace M] [DiscreteTopology M]
@@ -284,41 +302,33 @@ theorem pointModuleEquiv_equivariant :
   intro γ a
   exact (pointModuleEquiv s H M mark).apply_symm_apply _
 
+/-- Actual finite represented coefficients use intrinsic evaluation once; an external
+marking only transports that same continuous H1 to its independent coefficient world. -/
+def representedH1AddEquivCore :
+    H1Etale X (representedSheaf H) ≃+ H1 (FiberAutGroup s) M := by
+  letI := pointIntrinsicAction s H
+  letI := pointIntrinsicContinuousSMul s H
+  exact (pointH1AddEquivCore s H hR).trans
+    (coefficientH1Equiv (pointModuleEquiv s H M mark)
+      (pointModuleEquiv_intrinsic_equivariant s H M mark hmark))
+
 /-- Actual Ext H¹ is additively equivalent to the one common continuous H¹,
 for a finite represented coefficient with an arbitrary-universe geometric marking. -/
-def representedH1AddEquiv : H1Etale X (representedSheaf H) ≃+ H1 (FiberAutGroup s) M := by
-  letI := pointModuleAction s H M mark
-  letI := pointModuleContinuousSMul s H M mark
-  exact (smallRepresentedH1AddEquiv s H hA hR (PointModule s H) (pointModuleMark s H)
-    (pointModuleMark_equivariant s H M mark hmark) hcoeff).trans
-    (coefficientH1Equiv (pointModuleEquiv s H M mark)
-      (pointModuleEquiv_equivariant s H M mark))
-
-/-- Representative evaluation before the explicit coefficient-universe map. -/
-theorem representedH1AddEquiv_torsor_pointModule (P : Torsor (representedSheaf H)) :
-    letI := pointModuleAction s H M mark
-    letI := pointModuleContinuousSMul s H M mark
-    representedH1AddEquiv s H hA hR M mark hmark hcoeff (torsorExtClass P) =
-      coefficientH1Equiv (pointModuleEquiv s H M mark)
-        (pointModuleEquiv_equivariant s H M mark)
-        (representedTorsorClass s H (pointModuleMark s H)
-          (pointModuleMark_equivariant s H M mark hmark) hR hcoeff.locally_constant P) := by
-  let := pointModuleAction s H M mark
-  let := pointModuleContinuousSMul s H M mark
-  change coefficientH1Equiv _ _ (smallRepresentedH1AddEquiv _ _ _ _ _ _ _ _ _) = _
-  rw [smallRepresentedH1AddEquiv_torsor]
+def representedH1AddEquiv : H1Etale X (representedSheaf H) ≃+ H1 (FiberAutGroup s) M :=
+  (fun (_ : Stacks03AJ.{u, w} X) (_ : FiniteCoefficient (representedSheaf H)) =>
+    representedH1AddEquivCore s H hR M mark hmark) hA hcoeff
 
 /-- The arbitrary-universe cocycle is the common small-point cocycle followed
 by the given marking; no new cocycle quotient or action is introduced. -/
 def markedBasedCocycle (Y : Scheme.FiniteEtale X)
     (τ : CategoryTheory.TorsorAction H (toUnit Y.obj))
     (t : Fiber s Y) : Cocycle (FiberAutGroup s) M := by
-  letI := pointModuleAction s H M mark
-  letI := pointModuleContinuousSMul s H M mark
+  letI := pointIntrinsicAction s H
+  letI := pointIntrinsicContinuousSMul s H
   exact (coefficientMapOfEquiv (pointModuleEquiv s H M mark)
-    (pointModuleEquiv_equivariant s H M mark)).onCocycles
+    (pointModuleEquiv_intrinsic_equivariant s H M mark hmark)).onCocycles
     (basedCocycle s H Y τ (pointModuleMark s H)
-      (pointModuleMark_equivariant s H M mark hmark) t)
+      (pointIntrinsicMark_equivariant s H) t)
 
 set_option linter.unusedSectionVars false in
 -- Preserve the original auto-included hypotheses and binder order.
@@ -330,11 +340,11 @@ theorem markedBasedCocycle_apply (Y : Scheme.FiniteEtale X)
     (t : Fiber s Y) (γ : FiberAutGroup s) :
     (markedBasedCocycle s H M mark hmark Y τ t).val γ =
       (mark (transport s H Y τ t (γ.hom.app Y t))).toAdd := by
-  let := pointModuleAction s H M mark
-  let := pointModuleContinuousSMul s H M mark
+  let := pointIntrinsicAction s H
+  let := pointIntrinsicContinuousSMul s H
   change (pointModuleEquiv s H M mark)
     ((basedCocycle s H Y τ (pointModuleMark s H)
-      (pointModuleMark_equivariant s H M mark hmark) t).val γ) = _
+      (pointIntrinsicMark_equivariant s H) t).val γ) = _
   rw [basedCocycle_apply]
   rfl
 
@@ -350,6 +360,7 @@ theorem markedBasedCocycle_action (Y : Scheme.FiniteEtale X)
   rw [mark.symm_apply_apply]
   exact transport_act s H Y τ t _
 
+omit [Finite M] in
 /-- Any actual finite étale representative and any actual fibre point compute
 the arbitrary-universe comparison by the displayed positive marked cocycle. -/
 theorem representedH1AddEquiv_torsor_representative (P : Torsor (representedSheaf H))
@@ -357,14 +368,54 @@ theorem representedH1AddEquiv_torsor_representative (P : Torsor (representedShea
     representedH1AddEquiv s H hA hR M mark hmark hcoeff (torsorExtClass P) =
       classOf (FiberAutGroup s) M
         (markedBasedCocycle s H M mark hmark Y (P.representedSchemeAction H Y e) t) := by
+  let := pointIntrinsicAction s H
+  let := pointIntrinsicContinuousSMul s H
+  let : Nonempty (Fiber s Y) := ⟨t⟩
+  change coefficientH1Equiv (pointModuleEquiv s H M mark)
+    (pointModuleEquiv_intrinsic_equivariant s H M mark hmark)
+    (smallRepresentedH1AddEquivCore s H hR (PointModule s H) (pointModuleMark s H)
+      (pointIntrinsicMark_equivariant s H) (torsorExtClass P)) = _
+  rw [smallRepresentedH1AddEquivCore_torsor,
+    representedTorsorClass_eq s H (pointModuleMark s H)
+      (pointIntrinsicMark_equivariant s H) hR
+      (representedLocallyConstantOfMark s H (PointModule s H) (pointModuleMark s H)
+        (pointIntrinsicMark_equivariant s H)) P Y e,
+    schemeTorsorClass_eq s H Y (P.representedSchemeAction H Y e)
+      (pointModuleMark s H) (pointIntrinsicMark_equivariant s H) t]
+  rfl
+
+/-- Representative evaluation before the explicit coefficient-universe map. -/
+theorem representedH1AddEquiv_torsor_pointModule (P : Torsor (representedSheaf H)) :
+    letI := pointModuleAction s H M mark
+    letI := pointModuleContinuousSMul s H M mark
+    representedH1AddEquiv s H hA hR M mark hmark hcoeff (torsorExtClass P) =
+      coefficientH1Equiv (pointModuleEquiv s H M mark)
+        (pointModuleEquiv_equivariant s H M mark)
+        (representedTorsorClass s H (pointModuleMark s H)
+          (pointModuleMark_equivariant s H M mark hmark) hR hcoeff.locally_constant P) := by
   let := pointModuleAction s H M mark
   let := pointModuleContinuousSMul s H M mark
-  let : Nonempty (Fiber s Y) := ⟨t⟩
-  rw [representedH1AddEquiv_torsor_pointModule,
+  let Y :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.finiteEtaleRepresentative
+      (P := P) hR hcoeff.locally_constant
+  let e :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.finiteEtaleRepresentativeIso
+      (P := P) hR hcoeff.locally_constant
+  let : Surjective Y.obj.hom :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.represented_surjective
+      (H := H) (P := P) (Y := Y) (e := e)
+  let : Nonempty (Fiber s Y) := nonempty_fiber_of_surjective s Y
+  let t : Fiber s Y := Classical.choice inferInstance
+  rw [representedH1AddEquiv_torsor_representative s H hA hR M mark hmark hcoeff P Y e t,
     representedTorsorClass_eq s H (pointModuleMark s H)
       (pointModuleMark_equivariant s H M mark hmark) hR hcoeff.locally_constant P Y e,
-    schemeTorsorClass_eq s H Y (P.representedSchemeAction H Y e)
-      (pointModuleMark s H) (pointModuleMark_equivariant s H M mark hmark) t]
+    schemeTorsorClass_eq s H Y (P.representedSchemeAction H Y e) (pointModuleMark s H)
+      (pointModuleMark_equivariant s H M mark hmark) t,
+    coefficientH1Equiv_classOf]
+  apply congrArg (classOf (FiberAutGroup s) M)
+  apply Cocycle.ext
+  intro γ
+  rw [markedBasedCocycle_apply, CoefficientMap.onCocycles_apply, basedCocycle_apply]
   rfl
 
 end UniverseComparison
@@ -405,12 +456,19 @@ variable (hmark : ∀ (γ : FiberAutGroup s) a,
   mark (γ.hom.app (coefficientCover R.group) a) = Multiplicative.ofAdd (γ • (mark a).toAdd))
 variable (hcoeff : FiniteCoefficient L)
 
+/-- The general minimal comparison uses the actual representation and intrinsic point action.
+Finite locally constant representability is independent of any chosen annihilating level. -/
+def compareH1WithRepresentationCore : H1Etale X L ≃+ H1 (FiberAutGroup s) M :=
+  (coefficientIso R.iso.symm).trans
+    (representedH1AddEquivCore s R.group hR M mark hmark)
+
 /-- The arbitrary finite coefficient comparison for any actual additive
 representing isomorphism. The representation supplies no cohomology map. -/
 def compareH1WithRepresentation : H1Etale X L ≃+ H1 (FiberAutGroup s) M :=
-  (coefficientIso R.iso.symm).trans
-    (representedH1AddEquiv s R.group hA hR M mark hmark (hcoeff.ofIso R.iso))
+  (fun (_ : Stacks03AJ.{u, w} X) (_ : FiniteCoefficient L) =>
+    compareH1WithRepresentationCore s hR L R M mark hmark) hA hcoeff
 
+omit [Finite M] in
 /-- The general comparison is definitionally the actual coefficient-iso
 transport followed by the proved represented comparison. -/
 theorem compareH1WithRepresentation_apply (a : H1Etale X L) :
@@ -418,6 +476,7 @@ theorem compareH1WithRepresentation_apply (a : H1Etale X L) :
       representedH1AddEquiv s R.group hA hR M mark hmark (hcoeff.ofIso R.iso)
         (coefficientIso R.iso.symm a) := rfl
 
+omit [Finite M] in
 /-- Every actual torsor computes the general comparison after literal
 coefficient transport through the given additive representing isomorphism. -/
 theorem compareH1WithRepresentation_torsor_representative (P : Torsor L)
@@ -450,6 +509,31 @@ theorem compareH1WithRepresentation_torsor
     (coefficientIso R.iso.symm (torsorExtClass P)) = _
   rw [torsorExtClass_ofCoefficientIso, representedH1AddEquiv_torsor]
 
+section LocallyConstantCoefficient
+variable [IsSepClosed K]
+variable (L : AbelianSheaf.{u, u + 1} X) (hL : IsFiniteLocallyConstant L)
+
+/-- The one actual finite coefficient representative uses exactly local constancy. -/
+abbrev locallyConstantRepresentation : CoefficientRepresentation L :=
+  CoefficientRepresentation.ofFiniteLocallyConstant L hR hL
+
+variable (M : Type v) [AddCommGroup M] [Finite M] [TopologicalSpace M] [DiscreteTopology M]
+variable [DistribMulAction (FiberAutGroup s) M] [ContinuousSMul (FiberAutGroup s) M]
+variable (mark : coefficientFiber s L ≃+ M)
+variable (hmark : ∀ (γ : FiberAutGroup s)
+    (a : Over.mk s ⟶ (locallyConstantRepresentation hR L hL).group.X),
+  (locallyConstantRepresentation hR L hL).pointMark s mark
+      (γ.hom.app (coefficientCover (locallyConstantRepresentation hR L hL).group) a) =
+    Multiplicative.ofAdd (γ • ((locallyConstantRepresentation hR L hL).pointMark s mark a).toAdd))
+
+/-- Minimal actual-stalk comparison for finite locally constant coefficients, with the
+original pointed GC/FF, representability and Ext hypotheses and independent scalar world. -/
+def compareH1Core : H1Etale X L ≃+ H1 (FiberAutGroup s) M :=
+  compareH1WithRepresentationCore s hR L (locallyConstantRepresentation hR L hL)
+    M ((locallyConstantRepresentation hR L hL).pointMark s mark) hmark
+
+end LocallyConstantCoefficient
+
 section CanonicalCoefficient
 variable [IsSepClosed K]
 variable (L : AbelianSheaf.{u, u + 1} X) (hcoeff : FiniteCoefficient L)
@@ -457,7 +541,7 @@ variable (L : AbelianSheaf.{u, u + 1} X) (hcoeff : FiniteCoefficient L)
 /-- The actual coefficient group chosen only by the precise finite-set-sheaf
 representability theorem, with group operations constructed by Yoneda. -/
 abbrev finiteCoefficientRepresentation : CoefficientRepresentation L :=
-  CoefficientRepresentation.ofFiniteLocallyConstant L hR hcoeff.locally_constant
+  locallyConstantRepresentation hR L hcoeff.locally_constant
 
 variable (M : Type v) [AddCommGroup M] [Finite M] [TopologicalSpace M] [DiscreteTopology M]
 variable [DistribMulAction (FiberAutGroup s) M] [ContinuousSMul (FiberAutGroup s) M]
@@ -474,9 +558,10 @@ equivalence. Its marking is on the actual geometric stalk, and its equivariance
 condition is literal evaluation of the actual finite-etale fibre automorphisms.
 The positive annihilator and invertible level remain displayed in `hcoeff`. -/
 def compareH1 : H1Etale X L ≃+ H1 (FiberAutGroup s) M :=
-  compareH1WithRepresentation s hA hR L (finiteCoefficientRepresentation hR L hcoeff)
-    M ((finiteCoefficientRepresentation hR L hcoeff).pointMark s mark) hmark hcoeff
+  (fun (_ : Stacks03AJ.{u, w} X) (_ : FiniteCoefficient L) =>
+    compareH1Core s hR L hcoeff.locally_constant M mark hmark) hA hcoeff
 
+omit [Finite M] in
 /-- Every genuine torsor representative computes the canonical arbitrary-L
 comparison by the original actual-stalk marking of positive transport. -/
 theorem compareH1_torsor_representative (P : Torsor L) (Y : Scheme.FiniteEtale X)

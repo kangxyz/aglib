@@ -1,0 +1,23 @@
+{
+  "path": "Aglib/Algebra/Homology/DerivedCategory/Ext/BoundedConstants.lean",
+  "sha256": "26a8e9395085faf85bc4980cfd4f64da3d80913060ef8f184b0310138eeaa254",
+  "status": "PASS",
+  "run": "remote-cb77fa8fafb04cdf90a22aa35244bf81",
+  "source": "f0b68b69eebbb80494fbca4e7263aa733ef3d256ce87f96189dda37167aee22c",
+  "own_frontend": {
+    "wrapper_pid": 941472,
+    "exit_code": 0,
+    "elapsed_seconds": 3.9053443372249603
+  },
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-cb77fa8fafb04cdf90a22aa35244bf81/receipt.json",
+  "receipt_sha256": "377cb990efaeef8e4b60ee5fa18224732eef7cd7118c6b9d104c8aa91c693e43",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-cb77fa8fafb04cdf90a22aa35244bf81/compiler-events.jsonl",
+  "events_sha256": "ab1e8958b782d56c9b236f8a72fbc1fdab694702559ce839d8b851daf8db9990",
+  "group_closed": true,
+  "group_exit_code": 1,
+  "input_drift": [],
+  "group_frontends": 64,
+  "group_pass": 62,
+  "group_fail": 2,
+  "boundary": "Own changed generic leaf passes on its captured source/dependencies. Shared exit1 belongs to separate D/P6 source failures; no C entry-root or Field pass is inferred."
+}

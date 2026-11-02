@@ -1,0 +1,709 @@
+{
+  "input_stdout": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-mixed-w-type-alignment-bc992746/stdout.log",
+  "input_stdout_sha256": "6e7a6910fe75d3e00309338beb73f96efa7fbaaec1439f510231bfaf3c27a27a",
+  "graphs": {
+    "ACTUAL": {
+      "root": 1247,
+      "nodes": 1248,
+      "sha256": "bea986aa0d312012935c7ec312def8cee47a917c5e66aa28fbb155fcf35b37f7",
+      "bytes": 71323,
+      "standard_unique_const_nodes": 1,
+      "generic_unique_const_nodes": 0,
+      "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/ACTUAL.rawexprdag.txt"
+    },
+    "EXPECTED_CLOSED_BINDER_6": {
+      "root": 38,
+      "nodes": 39,
+      "sha256": "86014e14f4921ba52d890afc6da6c78347ffcde7db44255e00baabcdf92d6089",
+      "bytes": 2274,
+      "standard_unique_const_nodes": 1,
+      "generic_unique_const_nodes": 0,
+      "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/CLOSED_BINDER_TYPES.rawexprdag.txt",
+      "bundle_byte_offset": 0
+    },
+    "EXPECTED_CLOSED_BINDER_7": {
+      "root": 38,
+      "nodes": 39,
+      "sha256": "aac5f5ed9724528a3a34294a292aa1751706ef926faa136c58af50be4fda8585",
+      "bytes": 2274,
+      "standard_unique_const_nodes": 1,
+      "generic_unique_const_nodes": 0,
+      "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/CLOSED_BINDER_TYPES.rawexprdag.txt",
+      "bundle_byte_offset": 2274
+    },
+    "EXPECTED_CLOSED_BINDER_8": {
+      "root": 38,
+      "nodes": 39,
+      "sha256": "8a761eccb5957d97f2273b368ef6dbd6f54e3ed7baa5560ac9a313afdd2db66d",
+      "bytes": 2275,
+      "standard_unique_const_nodes": 1,
+      "generic_unique_const_nodes": 0,
+      "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/CLOSED_BINDER_TYPES.rawexprdag.txt",
+      "bundle_byte_offset": 4548
+    },
+    "EXPECTED_CLOSED_BINDER_9": {
+      "root": 38,
+      "nodes": 39,
+      "sha256": "d8393a4d3be21f38d545f34bc61738a9472b64035a89d4e3bd40a3998b800c99",
+      "bytes": 2275,
+      "standard_unique_const_nodes": 1,
+      "generic_unique_const_nodes": 0,
+      "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/CLOSED_BINDER_TYPES.rawexprdag.txt",
+      "bundle_byte_offset": 6823
+    },
+    "EXPECTED_CLOSED_BINDER_10": {
+      "root": 50,
+      "nodes": 51,
+      "sha256": "b0362fc5a9d19da48846bbc00012decdcc02e621bf8ea79cf0c68e3a1263c913",
+      "bytes": 3372,
+      "standard_unique_const_nodes": 0,
+      "generic_unique_const_nodes": 0,
+      "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/CLOSED_BINDER_TYPES.rawexprdag.txt",
+      "bundle_byte_offset": 9098
+    },
+    "EXPECTED_CLOSED_BINDER_11": {
+      "root": 50,
+      "nodes": 51,
+      "sha256": "904fb7dc1e0ba6e2bdfcca0b9c2038c6c3cb129f68a9d5b761dc2bc7a7f0af9d",
+      "bytes": 3372,
+      "standard_unique_const_nodes": 0,
+      "generic_unique_const_nodes": 0,
+      "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/CLOSED_BINDER_TYPES.rawexprdag.txt",
+      "bundle_byte_offset": 12470
+    },
+    "EXPECTED_CLOSED_BINDER_12": {
+      "root": 50,
+      "nodes": 51,
+      "sha256": "a72c7f7dde11fb511610f2cfc031bad7201b530c72aaf655d5f535e2f31fc86d",
+      "bytes": 3373,
+      "standard_unique_const_nodes": 0,
+      "generic_unique_const_nodes": 0,
+      "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/CLOSED_BINDER_TYPES.rawexprdag.txt",
+      "bundle_byte_offset": 15842
+    },
+    "EXPECTED_CLOSED_BINDER_13": {
+      "root": 50,
+      "nodes": 51,
+      "sha256": "01628de253f1b1d0a217be4eb5bd8183f2b69adfc5012f38d8ad0b6b2e46f506",
+      "bytes": 3373,
+      "standard_unique_const_nodes": 0,
+      "generic_unique_const_nodes": 0,
+      "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/CLOSED_BINDER_TYPES.rawexprdag.txt",
+      "bundle_byte_offset": 19215
+    },
+    "EXPECTED_CLOSED_BINDER_19": {
+      "root": 40,
+      "nodes": 41,
+      "sha256": "0ba6a3e356553e67c9ccdfa514bd5b149030c0c7f5977d6b96505b7be9baa9bd",
+      "bytes": 2337,
+      "standard_unique_const_nodes": 1,
+      "generic_unique_const_nodes": 0,
+      "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/CLOSED_BINDER_TYPES.rawexprdag.txt",
+      "bundle_byte_offset": 22588
+    },
+    "EXPECTED_CLOSED_BINDER_20": {
+      "root": 1941,
+      "nodes": 1942,
+      "sha256": "d453b34afa0ee3f6546c39471fe5982f0768e77a90033d951d03835d0e06849d",
+      "bytes": 101923,
+      "standard_unique_const_nodes": 1,
+      "generic_unique_const_nodes": 1,
+      "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/EXPECTED_CLOSED_GOAL.rawexprdag.txt"
+    },
+    "PRODUCER_CLOSED_BINDER_6": {
+      "root": 444,
+      "nodes": 445,
+      "sha256": "52a191a48404a6ec23c06666f4a6bfb974674599e07a3d511bf51f4fb690f115",
+      "bytes": 23908,
+      "standard_unique_const_nodes": 0,
+      "generic_unique_const_nodes": 1,
+      "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/CLOSED_BINDER_TYPES.rawexprdag.txt",
+      "bundle_byte_offset": 24925
+    },
+    "PRODUCER_CLOSED_BINDER_7": {
+      "root": 444,
+      "nodes": 445,
+      "sha256": "0fce8faae27f2ee30f6da50e2a0884d6968b40ade2eecad3cf2d8e61b9c46b2d",
+      "bytes": 23908,
+      "standard_unique_const_nodes": 0,
+      "generic_unique_const_nodes": 1,
+      "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/CLOSED_BINDER_TYPES.rawexprdag.txt",
+      "bundle_byte_offset": 48833
+    },
+    "PRODUCER_CLOSED_BINDER_8": {
+      "root": 444,
+      "nodes": 445,
+      "sha256": "56e2f3b9a7d827d8dcd3f919aa1e4573d33d4f3e115c41280202cf6553ba2f13",
+      "bytes": 23909,
+      "standard_unique_const_nodes": 0,
+      "generic_unique_const_nodes": 1,
+      "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/CLOSED_BINDER_TYPES.rawexprdag.txt",
+      "bundle_byte_offset": 72741
+    },
+    "PRODUCER_CLOSED_BINDER_9": {
+      "root": 444,
+      "nodes": 445,
+      "sha256": "2289cd6f9b6a1020e07a21d5abc4c3a4898620e66d181ce47b067b473e5ba751",
+      "bytes": 23909,
+      "standard_unique_const_nodes": 0,
+      "generic_unique_const_nodes": 1,
+      "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/CLOSED_BINDER_TYPES.rawexprdag.txt",
+      "bundle_byte_offset": 96650
+    },
+    "PRODUCER_CLOSED_BINDER_10": {
+      "root": 50,
+      "nodes": 51,
+      "sha256": "52ed42679407eabf85909e56e09c165ea103cb31be79955d09e26e308ba777fd",
+      "bytes": 3372,
+      "standard_unique_const_nodes": 0,
+      "generic_unique_const_nodes": 0,
+      "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/CLOSED_BINDER_TYPES.rawexprdag.txt",
+      "bundle_byte_offset": 120559
+    },
+    "PRODUCER_CLOSED_BINDER_11": {
+      "root": 50,
+      "nodes": 51,
+      "sha256": "f6abb2282a2214d5cd78a29fceda104d7f0c75e5f232f643f3554cba7266cc5e",
+      "bytes": 3372,
+      "standard_unique_const_nodes": 0,
+      "generic_unique_const_nodes": 0,
+      "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/CLOSED_BINDER_TYPES.rawexprdag.txt",
+      "bundle_byte_offset": 123931
+    },
+    "PRODUCER_CLOSED_BINDER_12": {
+      "root": 50,
+      "nodes": 51,
+      "sha256": "4ec7d524b71179ce9a0780dc5a0014cf872c31cdb44f14f502f59e601ade35dd",
+      "bytes": 3373,
+      "standard_unique_const_nodes": 0,
+      "generic_unique_const_nodes": 0,
+      "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/CLOSED_BINDER_TYPES.rawexprdag.txt",
+      "bundle_byte_offset": 127303
+    },
+    "PRODUCER_CLOSED_BINDER_13": {
+      "root": 50,
+      "nodes": 51,
+      "sha256": "7d7308304413e83977820c224232827d3d9508fe0c4d51c235be0909ea65453f",
+      "bytes": 3373,
+      "standard_unique_const_nodes": 0,
+      "generic_unique_const_nodes": 0,
+      "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/CLOSED_BINDER_TYPES.rawexprdag.txt",
+      "bundle_byte_offset": 130676
+    },
+    "PRODUCER_K_TYPE": {
+      "root": 40,
+      "nodes": 41,
+      "sha256": "09b75808933f19c81c2684ce721f4bcb01961ef2c5fa143835a08ff4a1e30845",
+      "bytes": 2815,
+      "standard_unique_const_nodes": 1,
+      "generic_unique_const_nodes": 0,
+      "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/CLOSED_BINDER_TYPES.rawexprdag.txt",
+      "bundle_byte_offset": 134049
+    }
+  },
+  "raw_graph_count": 20,
+  "w_head_counts": {
+    "ACTUAL": {
+      "standard": 1,
+      "generic": 0
+    },
+    "EXPECTED_CLOSED_BINDER_6": {
+      "standard": 1,
+      "generic": 0
+    },
+    "EXPECTED_CLOSED_BINDER_7": {
+      "standard": 1,
+      "generic": 0
+    },
+    "EXPECTED_CLOSED_BINDER_8": {
+      "standard": 1,
+      "generic": 0
+    },
+    "EXPECTED_CLOSED_BINDER_9": {
+      "standard": 1,
+      "generic": 0
+    },
+    "EXPECTED_CLOSED_BINDER_10": {
+      "standard": 0,
+      "generic": 0
+    },
+    "EXPECTED_CLOSED_BINDER_11": {
+      "standard": 0,
+      "generic": 0
+    },
+    "EXPECTED_CLOSED_BINDER_12": {
+      "standard": 0,
+      "generic": 0
+    },
+    "EXPECTED_CLOSED_BINDER_13": {
+      "standard": 0,
+      "generic": 0
+    },
+    "EXPECTED_CLOSED_BINDER_19": {
+      "standard": 1,
+      "generic": 0
+    },
+    "EXPECTED_CLOSED_BINDER_20": {
+      "standard": 1,
+      "generic": 1
+    },
+    "PRODUCER_CLOSED_BINDER_6": {
+      "standard": 0,
+      "generic": 1
+    },
+    "PRODUCER_CLOSED_BINDER_7": {
+      "standard": 0,
+      "generic": 1
+    },
+    "PRODUCER_CLOSED_BINDER_8": {
+      "standard": 0,
+      "generic": 1
+    },
+    "PRODUCER_CLOSED_BINDER_9": {
+      "standard": 0,
+      "generic": 1
+    },
+    "PRODUCER_CLOSED_BINDER_10": {
+      "standard": 0,
+      "generic": 0
+    },
+    "PRODUCER_CLOSED_BINDER_11": {
+      "standard": 0,
+      "generic": 0
+    },
+    "PRODUCER_CLOSED_BINDER_12": {
+      "standard": 0,
+      "generic": 0
+    },
+    "PRODUCER_CLOSED_BINDER_13": {
+      "standard": 0,
+      "generic": 0
+    },
+    "PRODUCER_K_TYPE": {
+      "standard": 1,
+      "generic": 0
+    }
+  },
+  "closed_binder_names": [
+    {
+      "side": "EXPECTED_CLOSED",
+      "index": 0,
+      "name": "Λ",
+      "binder_info": "Lean.BinderInfo.default"
+    },
+    {
+      "side": "EXPECTED_CLOSED",
+      "index": 1,
+      "name": "inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.3515732006._hygCtx._hyg.3",
+      "binder_info": "Lean.BinderInfo.instImplicit"
+    },
+    {
+      "side": "EXPECTED_CLOSED",
+      "index": 2,
+      "name": "X",
+      "binder_info": "Lean.BinderInfo.implicit"
+    },
+    {
+      "side": "EXPECTED_CLOSED",
+      "index": 3,
+      "name": "S",
+      "binder_info": "Lean.BinderInfo.implicit"
+    },
+    {
+      "side": "EXPECTED_CLOSED",
+      "index": 4,
+      "name": "X'",
+      "binder_info": "Lean.BinderInfo.implicit"
+    },
+    {
+      "side": "EXPECTED_CLOSED",
+      "index": 5,
+      "name": "S'",
+      "binder_info": "Lean.BinderInfo.implicit"
+    },
+    {
+      "side": "EXPECTED_CLOSED",
+      "index": 6,
+      "name": "inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.3515732006._hygCtx._hyg.10",
+      "binder_info": "Lean.BinderInfo.instImplicit"
+    },
+    {
+      "side": "EXPECTED_CLOSED",
+      "index": 7,
+      "name": "inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.3515732006._hygCtx._hyg.17",
+      "binder_info": "Lean.BinderInfo.instImplicit"
+    },
+    {
+      "side": "EXPECTED_CLOSED",
+      "index": 8,
+      "name": "inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.3515732006._hygCtx._hyg.24",
+      "binder_info": "Lean.BinderInfo.instImplicit"
+    },
+    {
+      "side": "EXPECTED_CLOSED",
+      "index": 9,
+      "name": "inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.3515732006._hygCtx._hyg.31",
+      "binder_info": "Lean.BinderInfo.instImplicit"
+    },
+    {
+      "side": "EXPECTED_CLOSED",
+      "index": 10,
+      "name": "inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.3515732006._hygCtx._hyg.38",
+      "binder_info": "Lean.BinderInfo.instImplicit"
+    },
+    {
+      "side": "EXPECTED_CLOSED",
+      "index": 11,
+      "name": "inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.3515732006._hygCtx._hyg.44",
+      "binder_info": "Lean.BinderInfo.instImplicit"
+    },
+    {
+      "side": "EXPECTED_CLOSED",
+      "index": 12,
+      "name": "inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.3515732006._hygCtx._hyg.50",
+      "binder_info": "Lean.BinderInfo.instImplicit"
+    },
+    {
+      "side": "EXPECTED_CLOSED",
+      "index": 13,
+      "name": "inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.3515732006._hygCtx._hyg.56",
+      "binder_info": "Lean.BinderInfo.instImplicit"
+    },
+    {
+      "side": "EXPECTED_CLOSED",
+      "index": 14,
+      "name": "f",
+      "binder_info": "Lean.BinderInfo.default"
+    },
+    {
+      "side": "EXPECTED_CLOSED",
+      "index": 15,
+      "name": "f'",
+      "binder_info": "Lean.BinderInfo.default"
+    },
+    {
+      "side": "EXPECTED_CLOSED",
+      "index": 16,
+      "name": "g",
+      "binder_info": "Lean.BinderInfo.default"
+    },
+    {
+      "side": "EXPECTED_CLOSED",
+      "index": 17,
+      "name": "g'",
+      "binder_info": "Lean.BinderInfo.default"
+    },
+    {
+      "side": "EXPECTED_CLOSED",
+      "index": 18,
+      "name": "h",
+      "binder_info": "Lean.BinderInfo.default"
+    },
+    {
+      "side": "EXPECTED_CLOSED",
+      "index": 19,
+      "name": "K",
+      "binder_info": "Lean.BinderInfo.default"
+    },
+    {
+      "side": "EXPECTED_CLOSED",
+      "index": 20,
+      "name": "_h",
+      "binder_info": "Lean.BinderInfo.default"
+    },
+    {
+      "side": "PRODUCER_CLOSED",
+      "index": 0,
+      "name": "Λ",
+      "binder_info": "Lean.BinderInfo.default"
+    },
+    {
+      "side": "PRODUCER_CLOSED",
+      "index": 1,
+      "name": "inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.3",
+      "binder_info": "Lean.BinderInfo.instImplicit"
+    },
+    {
+      "side": "PRODUCER_CLOSED",
+      "index": 2,
+      "name": "X",
+      "binder_info": "Lean.BinderInfo.implicit"
+    },
+    {
+      "side": "PRODUCER_CLOSED",
+      "index": 3,
+      "name": "S",
+      "binder_info": "Lean.BinderInfo.implicit"
+    },
+    {
+      "side": "PRODUCER_CLOSED",
+      "index": 4,
+      "name": "X'",
+      "binder_info": "Lean.BinderInfo.implicit"
+    },
+    {
+      "side": "PRODUCER_CLOSED",
+      "index": 5,
+      "name": "S'",
+      "binder_info": "Lean.BinderInfo.implicit"
+    },
+    {
+      "side": "PRODUCER_CLOSED",
+      "index": 6,
+      "name": "inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.10",
+      "binder_info": "Lean.BinderInfo.instImplicit"
+    },
+    {
+      "side": "PRODUCER_CLOSED",
+      "index": 7,
+      "name": "inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.17",
+      "binder_info": "Lean.BinderInfo.instImplicit"
+    },
+    {
+      "side": "PRODUCER_CLOSED",
+      "index": 8,
+      "name": "inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.24",
+      "binder_info": "Lean.BinderInfo.instImplicit"
+    },
+    {
+      "side": "PRODUCER_CLOSED",
+      "index": 9,
+      "name": "inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.31",
+      "binder_info": "Lean.BinderInfo.instImplicit"
+    },
+    {
+      "side": "PRODUCER_CLOSED",
+      "index": 10,
+      "name": "inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.38",
+      "binder_info": "Lean.BinderInfo.instImplicit"
+    },
+    {
+      "side": "PRODUCER_CLOSED",
+      "index": 11,
+      "name": "inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.44",
+      "binder_info": "Lean.BinderInfo.instImplicit"
+    },
+    {
+      "side": "PRODUCER_CLOSED",
+      "index": 12,
+      "name": "inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.50",
+      "binder_info": "Lean.BinderInfo.instImplicit"
+    },
+    {
+      "side": "PRODUCER_CLOSED",
+      "index": 13,
+      "name": "inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.56",
+      "binder_info": "Lean.BinderInfo.instImplicit"
+    },
+    {
+      "side": "PRODUCER_CLOSED",
+      "index": 14,
+      "name": "f",
+      "binder_info": "Lean.BinderInfo.default"
+    },
+    {
+      "side": "PRODUCER_CLOSED",
+      "index": 15,
+      "name": "f'",
+      "binder_info": "Lean.BinderInfo.default"
+    },
+    {
+      "side": "PRODUCER_CLOSED",
+      "index": 16,
+      "name": "g",
+      "binder_info": "Lean.BinderInfo.default"
+    },
+    {
+      "side": "PRODUCER_CLOSED",
+      "index": 17,
+      "name": "g'",
+      "binder_info": "Lean.BinderInfo.default"
+    },
+    {
+      "side": "PRODUCER_CLOSED",
+      "index": 18,
+      "name": "h",
+      "binder_info": "Lean.BinderInfo.default"
+    }
+  ],
+  "closed_hasdc_comparisons": [
+    {
+      "index": 6,
+      "producer_graph": "PRODUCER_CLOSED_BINDER_6",
+      "expected_graph": "EXPECTED_CLOSED_BINDER_6",
+      "raw_structural_equal": false,
+      "first_difference": {
+        "path": "root.arg[2].arg[5].head",
+        "reason": "raw-constructor-payload-or-arity",
+        "producer": {
+          "node": 33,
+          "kind": "const",
+          "head_node": 33,
+          "head_payload": "const name=`CategoryTheory.GrothendieckTopology.instWEqualsLocallyBijectiveOfHasWeakSheafifyOfHasSheafComposeOfPreservesSheafificationOfReflectsIsomorphismsForget levels=[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]",
+          "argument_count": 0
+        },
+        "expected": {
+          "node": 33,
+          "kind": "const",
+          "head_node": 33,
+          "head_payload": "const name=`CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard levels=[Lean.Level.succ (Lean.Level.param `u), Lean.Level.param `u]",
+          "argument_count": 0
+        }
+      }
+    },
+    {
+      "index": 7,
+      "producer_graph": "PRODUCER_CLOSED_BINDER_7",
+      "expected_graph": "EXPECTED_CLOSED_BINDER_7",
+      "raw_structural_equal": false,
+      "first_difference": {
+        "path": "root.arg[2].arg[5].head",
+        "reason": "raw-constructor-payload-or-arity",
+        "producer": {
+          "node": 33,
+          "kind": "const",
+          "head_node": 33,
+          "head_payload": "const name=`CategoryTheory.GrothendieckTopology.instWEqualsLocallyBijectiveOfHasWeakSheafifyOfHasSheafComposeOfPreservesSheafificationOfReflectsIsomorphismsForget levels=[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]",
+          "argument_count": 0
+        },
+        "expected": {
+          "node": 33,
+          "kind": "const",
+          "head_node": 33,
+          "head_payload": "const name=`CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard levels=[Lean.Level.succ (Lean.Level.param `u), Lean.Level.param `u]",
+          "argument_count": 0
+        }
+      }
+    },
+    {
+      "index": 8,
+      "producer_graph": "PRODUCER_CLOSED_BINDER_8",
+      "expected_graph": "EXPECTED_CLOSED_BINDER_8",
+      "raw_structural_equal": false,
+      "first_difference": {
+        "path": "root.arg[2].arg[5].head",
+        "reason": "raw-constructor-payload-or-arity",
+        "producer": {
+          "node": 33,
+          "kind": "const",
+          "head_node": 33,
+          "head_payload": "const name=`CategoryTheory.GrothendieckTopology.instWEqualsLocallyBijectiveOfHasWeakSheafifyOfHasSheafComposeOfPreservesSheafificationOfReflectsIsomorphismsForget levels=[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]",
+          "argument_count": 0
+        },
+        "expected": {
+          "node": 33,
+          "kind": "const",
+          "head_node": 33,
+          "head_payload": "const name=`CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard levels=[Lean.Level.succ (Lean.Level.param `u), Lean.Level.param `u]",
+          "argument_count": 0
+        }
+      }
+    },
+    {
+      "index": 9,
+      "producer_graph": "PRODUCER_CLOSED_BINDER_9",
+      "expected_graph": "EXPECTED_CLOSED_BINDER_9",
+      "raw_structural_equal": false,
+      "first_difference": {
+        "path": "root.arg[2].arg[5].head",
+        "reason": "raw-constructor-payload-or-arity",
+        "producer": {
+          "node": 33,
+          "kind": "const",
+          "head_node": 33,
+          "head_payload": "const name=`CategoryTheory.GrothendieckTopology.instWEqualsLocallyBijectiveOfHasWeakSheafifyOfHasSheafComposeOfPreservesSheafificationOfReflectsIsomorphismsForget levels=[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]",
+          "argument_count": 0
+        },
+        "expected": {
+          "node": 33,
+          "kind": "const",
+          "head_node": 33,
+          "head_payload": "const name=`CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard levels=[Lean.Level.succ (Lean.Level.param `u), Lean.Level.param `u]",
+          "argument_count": 0
+        }
+      }
+    },
+    {
+      "index": 10,
+      "producer_graph": "PRODUCER_CLOSED_BINDER_10",
+      "expected_graph": "EXPECTED_CLOSED_BINDER_10",
+      "raw_structural_equal": true,
+      "first_difference": null
+    },
+    {
+      "index": 11,
+      "producer_graph": "PRODUCER_CLOSED_BINDER_11",
+      "expected_graph": "EXPECTED_CLOSED_BINDER_11",
+      "raw_structural_equal": true,
+      "first_difference": null
+    },
+    {
+      "index": 12,
+      "producer_graph": "PRODUCER_CLOSED_BINDER_12",
+      "expected_graph": "EXPECTED_CLOSED_BINDER_12",
+      "raw_structural_equal": true,
+      "first_difference": null
+    },
+    {
+      "index": 13,
+      "producer_graph": "PRODUCER_CLOSED_BINDER_13",
+      "expected_graph": "EXPECTED_CLOSED_BINDER_13",
+      "raw_structural_equal": true,
+      "first_difference": null
+    }
+  ],
+  "successful_alignment_matches": [
+    {
+      "index": 0,
+      "name": "Λ",
+      "alpha": true,
+      "structural": true
+    },
+    {
+      "index": 1,
+      "name": "inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.3515732006._hygCtx._hyg.3",
+      "alpha": true,
+      "structural": true
+    },
+    {
+      "index": 2,
+      "name": "X",
+      "alpha": true,
+      "structural": true
+    },
+    {
+      "index": 3,
+      "name": "S",
+      "alpha": true,
+      "structural": true
+    },
+    {
+      "index": 4,
+      "name": "X'",
+      "alpha": true,
+      "structural": true
+    },
+    {
+      "index": 5,
+      "name": "S'",
+      "alpha": true,
+      "structural": true
+    }
+  ],
+  "raw_alignment_completed": false,
+  "post_alignment_expected_emitted": false,
+  "gap_diagnostics": [
+    "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/mixed-w-type-alignment-61d76381679f4e3f8675d9e613de895e/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:284:0: error: No raw-type-matching original local instance for inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.3515732006._hygCtx._hyg.10"
+  ],
+  "binder_bundle": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/CLOSED_BINDER_TYPES.rawexprdag.txt",
+  "binder_bundle_sha256": "723dea50fb53c48cdf12d16caad65cbf58e1d1ddcdcb8fb7e8f5bc8a3fc2f807",
+  "binder_bundle_bytes": 136864,
+  "capture_context": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/CAPTURE_CONTEXT.txt",
+  "capture_context_sha256": "b83bce9cf8b321b361c093bce809665bee904b231a68601479361c11343b3a3a",
+  "postprocessing_boundary": "Mechanical raw DAG structural comparisons only, identical closed binder ordinal contexts; no normalization, rebinding or Lean execution.",
+  "post_alignment_alpha_equal": null,
+  "post_alignment_structural_equal": null,
+  "actual_has_mvars": null,
+  "expected_has_mvars": null,
+  "post_alignment_first_difference": null
+}

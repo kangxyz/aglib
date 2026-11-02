@@ -1,0 +1,56 @@
+FIELD_FACTOR_BEGIN fully-resolved=true
+FIELD_FACTOR_DIFF path=type
+FIELD_FACTOR_HEAD actual=const Eq levels=[Lean.Level.max (Lean.Level.succ (Lean.Level.param `u)) (Lean.Level.succ (Lean.Level.param `w))]
+FIELD_FACTOR_HEAD expected=const Eq levels=[Lean.Level.max (Lean.Level.succ (Lean.Level.param `w)) (Lean.Level.succ (Lean.Level.param `u))]
+FIELD_FACTOR_ARITY actual=3 expected=3
+FIELD_FACTOR_ACTUAL ⇑((galoisRestriction K n).onH1.comp
+      (FundamentalGroupComparison.representedH1AddEquiv (geometricPoint K)
+          (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) hA hR (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)
+          (pointMark K n) ⋯ (finiteCoefficient K n)).toAddMonoidHom) =
+  ⇑(galoisRestriction K n).onH1 ∘
+    ⇑(FundamentalGroupComparison.representedH1AddEquiv (geometricPoint K)
+        (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) hA hR (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)
+        (pointMark K n) ⋯ (finiteCoefficient K n))
+FIELD_FACTOR_EXPECTED ⇑((galoisRestriction K n).onH1.comp
+      (FundamentalGroupComparison.representedH1AddEquiv (geometricPoint K)
+          (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) hA hR (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)
+          (pointMark K n) ⋯ (finiteCoefficient K n)).toAddMonoidHom) =
+  ⇑(galoisRestriction K n).onH1 ∘
+    ⇑(FundamentalGroupComparison.representedH1AddEquiv (geometricPoint K)
+        (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) hA hR (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)
+        (pointMark K n) ⋯ (finiteCoefficient K n))
+FIELD_FACTOR_ACTUAL_TYPE Prop
+FIELD_FACTOR_EXPECTED_TYPE Prop
+FIELD_FACTOR_END reports=1
+FIELD_FACTOR_STATS exact=0
+FIELD_FACTOR_STATS sameTypeProofs=0
+FIELD_FACTOR_STATS proofTypeSteps=0
+FIELD_FACTOR_STATS depthTruncations=0
+/root/autodl-tmp/lean-build/logs/remote-c20c41042ab64721bf2d51ea8b1cf776/field-factorization-data/source/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean:485:4: error: Unused tactic linter: `run_tac
+  Lean.Elab.Tactic.withMainContext do
+      let target ← Lean.instantiateMVars (← Lean.Elab.Tactic.getMainTarget)
+      let some decl := (← Lean.getLCtx).findFromUserName? (Lean.Name.mkSimple "hfactor") |
+        Lean.throwError "FIELD_FACTOR_INVALID missing current local hfactor"
+        let actual ← Lean.instantiateMVars (← Lean.Meta.inferType (Lean.mkFVar decl.fvarId))
+        if actual.hasMVar || target.hasMVar then 
+          Lean.throwError "FIELD_FACTOR_INVALID unresolved initial expressions"
+        let reports ← IO.mkRef (0 : Nat)
+        let exactMatches ← IO.mkRef (0 : Nat)
+        let sameTypeProofs ← IO.mkRef (0 : Nat)
+        let proofTypeSteps ← IO.mkRef (0 : Nat)
+        let depthTruncations ← IO.mkRef (0 : Nat)
+        let st : CFieldFactorStats :=
+          { reports := reports
+            exactMatches := exactMatches
+            sameTypeProofs := sameTypeProofs
+            proofTypeSteps := proofTypeSteps
+            depthTruncations := depthTruncations }
+        Lean.logInfo "FIELD_FACTOR_BEGIN fully-resolved=true"
+        cFieldFactorVisit st 80 "type" actual target
+        Lean.logInfo m!"FIELD_FACTOR_END reports={← reports.get}"
+        Lean.logInfo m!"FIELD_FACTOR_STATS exact={← exactMatches.get}"
+        Lean.logInfo m!"FIELD_FACTOR_STATS sameTypeProofs={← sameTypeProofs.get}"
+        Lean.logInfo m!"FIELD_FACTOR_STATS proofTypeSteps={← proofTypeSteps.get}"
+        Lean.logInfo m!"FIELD_FACTOR_STATS depthTruncations={← depthTruncations.get}"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`

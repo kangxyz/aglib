@@ -1,0 +1,40 @@
+{
+  "question": "Expose hidden arguments in final native Field616b type mismatch; no proof or cause verdict",
+  "kind": "one faithful pp.all-only diagnostic, no production coverage",
+  "record": {
+    "exit_code": 1,
+    "elapsed_seconds": 119.228744328022,
+    "source_basis": "bcd6d52dad5c73643d09b6ee31eafc6db93824731fe091c568d4147f47e9196a",
+    "candidate_sha256": "deb1656f28b802e084862e8159554937f5c5bf3f6c47f9fddcbac28f10a8a473",
+    "setup_sha256": "8a299ce50e7cedd053744bfc5690f13486d51b67f52764383242576b28e72aa4",
+    "command": [
+      "/root/autodl-tmp/lean-build/logs/remote-18ff194fe0c84b86b7fa6753f714b4e5/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/logs/remote-18ff194fe0c84b86b7fa6753f714b4e5/field-explicit/source/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/logs/remote-18ff194fe0c84b86b7fa6753f714b4e5/field-explicit/Field.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/logs/remote-18ff194fe0c84b86b7fa6753f714b4e5/field-explicit/Field.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/logs/remote-18ff194fe0c84b86b7fa6753f714b4e5/field-explicit/Field.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/logs/remote-18ff194fe0c84b86b7fa6753f714b4e5/field-explicit/Field.c"
+    ],
+    "folder": "/root/autodl-tmp/lean-build/logs/remote-18ff194fe0c84b86b7fa6753f714b4e5/field-explicit",
+    "managed_source_mutations": 0
+  },
+  "native_sha256": "616b87a1041f6eed9b19b5d5ecd0bc50c3df4acf636496f42b7c4800883c35ce",
+  "request_sha256": "bd20297eac49e8b1f21d21c2ce46867d6a3dc59bd6826cc1cb39b5ff27429ff5",
+  "group_closed": true,
+  "input_drift": [],
+  "first_error": "FieldComparisonExplicit.lean:378:2 final type mismatch",
+  "full_stdout": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/field-explicit-output.txt",
+  "full_stdout_sha256": "ddd85de159b1827594efe488d82d41273c2d690605431ad08d380548d7f57f42",
+  "first_lexical_contrast": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/field-explicit-first-contrast.json",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-18ff194fe0c84b86b7fa6753f714b4e5/receipt.json",
+  "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-18ff194fe0c84b86b7fa6753f714b4e5/build.log",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-18ff194fe0c84b86b7fa6753f714b4e5/compiler-events.jsonl",
+  "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-C-torsion-local-v1-cb942570.json",
+  "source_archive_sha256": "e9a009344a67f527e3a83ce60ff7ed5b2474392332e0b9f6f723b92af4e65f0b"
+}

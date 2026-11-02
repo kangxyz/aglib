@@ -40,36 +40,15 @@ def primeFieldSheaf (X : Scheme.{u}) (p : ℕ) : AbelianSheaf.{u, u + 1} X :=
 
 /-- Original residue constants, with the native coefficient universe lifts. -/
 def primeFieldSectionHom {R : Type u} [CommRing R] (p : ℕ) (hR : (p : R) = 0) :
-    ULift.{u + 1} (ZMod p) →+ ULift.{u + 1} R where
-  toFun a := ULift.up (ZMod.castHom (ringChar.dvd hR) R a.down)
-  map_zero' := by
-    apply ULift.ext
-    exact map_zero _
-  map_add' a b := by
-    apply ULift.ext
-    exact map_add _ a.down b.down
+    ULift.{u + 1} (ZMod p) →+ ULift.{u + 1} R :=
+  CategoryTheory.Sheaf.ArtinSchreier.primeFieldSectionHom (T := R) p hR
 
 /-- The original constant-presheaf map sends every residue to its literal scalar. -/
 def primeFieldPresheafMap (X : Scheme.{u}) (p : ℕ) (hX : (p : Γ(X, ⊤)) = 0) :
     (Functor.const X.Etaleᵒᵖ).obj (primeFieldCoefficient p) ⟶
-      additiveStructurePresheaf X where
-  app U := AddCommGrpCat.ofHom
-    (primeFieldSectionHom (R := (structurePresheaf X).obj U) p
-      (primeCast_eq_zero_on_test X p hX U))
-  naturality {U V} f := by
-    ext a
-    apply ULift.ext
-    change ZMod.castHom (ringChar.dvd (primeCast_eq_zero_on_test X p hX V))
-        ((structurePresheaf X).obj V) a.down =
-      ((structurePresheaf X).map f).hom
-        (ZMod.castHom (ringChar.dvd (primeCast_eq_zero_on_test X p hX U))
-          ((structurePresheaf X).obj U) a.down)
-    exact (RingHom.congr_fun (Subsingleton.elim
-      (((structurePresheaf X).map f).hom.comp
-        (ZMod.castHom (ringChar.dvd (primeCast_eq_zero_on_test X p hX U))
-          ((structurePresheaf X).obj U)))
-      (ZMod.castHom (ringChar.dvd (primeCast_eq_zero_on_test X p hX V))
-        ((structurePresheaf X).obj V))) a.down).symm
+      additiveStructurePresheaf X :=
+  CategoryTheory.Sheaf.ArtinSchreier.primeFieldPresheafMap (structurePresheaf X) p
+    (primeCast_eq_zero_on_test X p hX)
 
 /-- The canonical map from the actual constant prime-field sheaf to additive sections. -/
 def primeFieldToStructure (X : Scheme.{u}) (p : ℕ) (hX : (p : Γ(X, ⊤)) = 0) :
@@ -90,23 +69,9 @@ theorem toSheafify_primeFieldToStructure (X : Scheme.{u}) (p : ℕ)
 /-- Prime-field scalars lie in the kernel of the literal Artin--Schreier map. -/
 theorem primeFieldToStructure_artinSchreierMap (X : Scheme.{u}) (p : ℕ) (hp : p.Prime)
     (hX : (p : Γ(X, ⊤)) = 0) :
-    primeFieldToStructure X p hX ≫ artinSchreierMap X p hp hX = 0 := by
-  apply Sheaf.hom_ext
-  apply sheafify_hom_ext (Scheme.smallEtaleTopology X) _ _
-    (additiveStructurePresheaf_isSheaf X)
-  change toSheafify (Scheme.smallEtaleTopology X)
-      ((Functor.const X.Etaleᵒᵖ).obj (primeFieldCoefficient p)) ≫
-      ((primeFieldToStructure X p hX).hom ≫ (artinSchreierMap X p hp hX).hom) =
-    toSheafify (Scheme.smallEtaleTopology X)
-      ((Functor.const X.Etaleᵒᵖ).obj (primeFieldCoefficient p)) ≫ 0
-  rw [← Category.assoc, toSheafify_primeFieldToStructure]
-  ext U a
-  apply ULift.ext
-  change (ZMod.castHom (ringChar.dvd (primeCast_eq_zero_on_test X p hX U))
-      ((structurePresheaf X).obj U) a.down) ^ p -
-    ZMod.castHom (ringChar.dvd (primeCast_eq_zero_on_test X p hX U))
-      ((structurePresheaf X).obj U) a.down = 0
-  let : Fact p.Prime := ⟨hp⟩
-  rw [← map_pow, ZMod.pow_card, sub_self]
+    primeFieldToStructure X p hX ≫ artinSchreierMap X p hp hX = 0 :=
+  CategoryTheory.Sheaf.ArtinSchreier.primeFieldToAdditive_artinSchreierMap
+    (structurePresheaf X) (Scheme.smallEtaleTopology X) (additiveStructurePresheaf_isSheaf X)
+    p hp (primeCast_eq_zero_on_test X p hX)
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

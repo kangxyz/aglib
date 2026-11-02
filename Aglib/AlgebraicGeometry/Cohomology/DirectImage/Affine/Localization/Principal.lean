@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Localization.Open
-public import Aglib.AlgebraicGeometry.Morphisms.OpenImmersion.Affine
+public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Localization.PrincipalGeometry
 
 /-!
 # Original principal-open restriction localizes qcqs cohomology
@@ -31,14 +31,6 @@ namespace AlgebraicGeometry.Scheme.Cohomology
 
 universe u
 
-private abbrev specSectionAlgebra (B : CommRingCat.{u}) (U : (Spec B).Opens) :
-    Algebra B Γ(Spec B, U) := inferInstance
-
-private theorem specBasicLocalization (B : CommRingCat.{u}) (r : B) :
-    letI := specSectionAlgebra B (PrimeSpectrum.basicOpen r)
-    IsLocalization.Away r Γ(Spec B, PrimeSpectrum.basicOpen r) := by
-  infer_instance
-
 variable {R : Type u} [CommRing R] {X : Scheme.{u}}
 
 /-- The unchanged native open-cohomology restriction to the inverse image of a principal
@@ -52,22 +44,9 @@ theorem moduleHPrimeRestriction_isLocalizedModule_principal
     letI := moduleHPrimeModuleOfHom X α M n V
     IsLocalizedModule.Away r
       (moduleHPrimeRestrictionOfHom X α M n (homOfLE (show V ≤ ⊤ from le_top))) := by
-  let U : (Spec (CommRingCat.of R)).Opens := PrimeSpectrum.basicOpen r
-  let hU : IsAffineOpen U := IsAffineOpen.Spec_basicOpen (R := CommRingCat.of R) r
-  let S := Γ(Spec (CommRingCat.of R), U)
-  let : Algebra R S := specSectionAlgebra (CommRingCat.of R) U
-  let : IsLocalization.Away r S := specBasicLocalization (CommRingCat.of R) r
-  let σ : R →+* S := algebraMap R S
-  let V := f ⁻¹ᵁ U
-  let q : V.toScheme ⟶ Spec S := (f ∣_ U) ≫ hU.isoSpec.hom
-  have h : IsPullback V.ι q f (Spec.map (CommRingCat.ofHom σ)) :=
-    Scheme.isPullback_morphismRestrict_isoSpec f U hU
-  have hloc : letI := σ.toAlgebra; IsLocalization (Submonoid.powers r) S := by
-    have hAlg : σ.toAlgebra = (inferInstance : Algebra R S) :=
-      Algebra.algebra_ext _ _ (by intro a; rfl)
-    rw [hAlg]
-    infer_instance
   exact moduleHPrimeRestriction_isLocalizedModule_of_isPullback
-    V q f (Submonoid.powers r) σ h hloc M n
+    (f ⁻¹ᵁ PrimeSpectrum.basicOpen r) (principalLocalizationProjection f r) f
+    (Submonoid.powers r) (principalLocalizationScalar r)
+    (principalLocalization_isPullback f r) (principalLocalization_isLocalization r) M n
 
 end AlgebraicGeometry.Scheme.Cohomology

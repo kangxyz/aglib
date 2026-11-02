@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Modules.LinearAlong
+public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Modules.LinearTransport
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.LargeTwistBaseChange
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.ToSpec
 
@@ -66,30 +66,14 @@ def baseChangeTwistCohomologyLinearEquiv (σ : A →+* B) (ι : Type u) (d : ℤ
       Sheaf.H.{u + 1} (moduleAddSheaf (ProjectiveSpace B ι)
         ((moduleTensorLeftFunctor (ProjectiveSpace B ι) (twistingSheaf B ι d)).obj
           ((Scheme.Modules.pullback (map σ ι)).obj M))) q :=
-  LinearEquiv.ofBijective
-    ((moduleCohomologyMapOfHom (ProjectiveSpace B ι)
-      ((toSpec B ι).appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of B)).inv.hom)
-      (baseChangeTwistIso σ ι d M).hom q).comp
-        (moduleCohomologyPullbackLinearOfEq (baseChangeIso σ ι).hom
-          ((pullback.snd (toSpec A ι) (Spec.map (CommRingCat.ofHom σ))).appTop.hom.comp
-            (Scheme.ΓSpecIso (CommRingCat.of B)).inv.hom)
-          ((toSpec B ι).appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of B)).inv.hom)
-          (baseChangeIso_hom_appTop_comp σ ι)
-          ((Scheme.Modules.pullback (pullback.fst (toSpec A ι)
-            (Spec.map (CommRingCat.ofHom σ)))).obj
-            ((moduleTensorLeftFunctor (ProjectiveSpace A ι) (twistingSheaf A ι d)).obj M)) q))
-    (by
-      refine (Function.Bijective.of_comp_iff' (bijective_sheafH_map_of_iso
-        (baseChangeTwistIso σ ι d M) q) _).mpr ?_
-      have h := moduleCohomologyPullback_bijective (baseChangeIso σ ι).hom
-        ((Scheme.Modules.pullback (pullback.fst (toSpec A ι)
-          (Spec.map (CommRingCat.ofHom σ)))).obj
-          ((moduleTensorLeftFunctor (ProjectiveSpace A ι) (twistingSheaf A ι d)).obj M)) q
-      rw [← funext (moduleCohomologyPullbackLinearOfEq_apply (baseChangeIso σ ι).hom
-        ((pullback.snd (toSpec A ι) (Spec.map (CommRingCat.ofHom σ))).appTop.hom.comp
-          (Scheme.ΓSpecIso (CommRingCat.of B)).inv.hom)
-        ((toSpec B ι).appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of B)).inv.hom)
-        (baseChangeIso_hom_appTop_comp σ ι) _ q)] at h
-      exact h)
+  moduleCohomologyPullbackCoefficientLinearEquiv (baseChangeIso σ ι).hom
+    ((pullback.snd (toSpec A ι) (Spec.map (CommRingCat.ofHom σ))).appTop.hom.comp
+      (Scheme.ΓSpecIso (CommRingCat.of B)).inv.hom)
+    ((toSpec B ι).appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of B)).inv.hom)
+    (baseChangeIso_hom_appTop_comp σ ι)
+    ((Scheme.Modules.pullback (pullback.fst (toSpec A ι)
+      (Spec.map (CommRingCat.ofHom σ)))).obj
+      ((moduleTensorLeftFunctor (ProjectiveSpace A ι) (twistingSheaf A ι d)).obj M))
+    (baseChangeTwistIso σ ι d M) q
 
 end AlgebraicGeometry.Scheme.Cohomology

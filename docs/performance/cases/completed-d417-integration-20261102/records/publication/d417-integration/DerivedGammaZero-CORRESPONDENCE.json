@@ -1,0 +1,15 @@
+{
+  "question": "Actual mathematical/source correspondence for the one public transitive producer difference outsideadmitted1714",
+  "path": "Aglib/CategoryTheory/Sites/SheafCohomology/ModuleCoefficients/DerivedGammaZero.lean",
+  "MAIN_sha256": "f558a119131fd8d75fc05dc8b7901d89e48eb2eb96a027fca593acf660f3b205",
+  "public_sha256": "0880dc6366bd7e2869ff095a7cdb6a8bffc4e54047e335f4647e5d8b5d5e9045",
+  "lower_owner": "Aglib/Algebra/Homology/RightDerived/Zero.lean",
+  "lower_sha256": "70ed3a33aed0821773b0fae554a9b970263e4723115dd00b21f17ef1c22e95fd",
+  "facts": [
+    "Both original site-namespace lemma statements and every hypothesis/universe are unchanged: toRightDerivedZero_naturality and toRightDerivedZero_postcomp, with generated reassociated equations.",
+    "Public file replaces only the two injective-resolution proof bodies by direct applications of identically typed CategoryTheory.Functor declarations in the lower RightDerived.Zero owner. No operational object/functor/action/map definition changes.",
+    "The lower owner contains the same original cycles/natural-transformation computation and the same exact-postcomposition cycles/homology comparison arguments; its scope-local transparency options equal the old source global options.",
+    "The actual maps remain the native toRightDerivedZero, NatTrans.rightDerived, rightDerivedPostcompIso and G.map, with the same EnoughInjectives/Additive/PreservesHomology assumptions. No new model, field/premise or alternative unit is introduced."
+  ],
+  "mathematical_boundary": "Principal source-correspondence reconciliation of already accepted public producer, not new theorem/status or independent review. Public-context CPP/artifact identities still need actual native invocation; MAIN passes not relabeled."
+}

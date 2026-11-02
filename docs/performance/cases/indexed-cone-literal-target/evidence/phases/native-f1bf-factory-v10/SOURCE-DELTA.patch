@@ -1,0 +1,75 @@
+--- failed26fc/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestConeSections.lean
++++ constructor-v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestConeSections.lean
+@@ -9,6 +9,7 @@
+ public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestOuterSections
+ public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramConeExtension
+ public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramRawConeSections
++public import Aglib.CategoryTheory.Limits.NaturalTransformationMapValues
+ 
+ /-! # The original test-row comparison to evaluated limit coefficients -/
+ 
+@@ -61,12 +62,13 @@
+ /-- The original relative row maps, assembled before applying the whole chart comparison. -/
+ def diagramTestRawConeSectionsNatTrans :
+     diagramTestArrowSectionsFunctor X F i T ⟶
+-      Arrow.leftFunc ⋙ diagramTestRawConeSectionsFunctor X F c i T where
+-  app := diagramTestConeArrowSectionsMap X F c i T
+-  naturality a _ m :=
+-    (diagramTestConeArrowSectionsMap_naturality X F c i T m).trans
+-      (congrArg (fun k => diagramTestConeArrowSectionsMap X F c i T a ≫ k)
+-        (diagramTestConeSystemSectionsMap_eq X F c i T m.left))
++      Arrow.leftFunc ⋙ diagramTestRawConeSectionsFunctor X F c i T :=
++  NatTrans.ofMapValues (diagramTestArrowSectionsFunctor X F i T)
++    (Arrow.leftFunc ⋙ diagramTestRawConeSectionsFunctor X F c i T)
++    (diagramTestConeArrowSectionsMap X F c i T)
++    (fun m => diagramTestConeSystemSectionsMap X F c i T m.left)
++    (fun m => diagramTestConeArrowSectionsMap_naturality X F c i T m)
++    (fun m => diagramTestConeSystemSectionsMap_eq X F c i T m.left)
+ 
+ /-- The genuine natural comparison is a composition of whole original transformations. -/
+ def diagramTestConeSectionsNatTrans :
+--- /dev/null
++++ constructor-v10/Aglib/CategoryTheory/Limits/NaturalTransformationMapValues.lean
+@@ -0,0 +1,42 @@
++/-
++Copyright (c) 2026 Aglib contributors. All rights reserved.
++Released under Apache 2.0 license as described in the file LICENSE.
++Authors: kangxyz
++-/
++module
++
++public import Mathlib.CategoryTheory.NatTrans
++
++/-! # Natural transformations from the original component and map values
++
++Keep the two actual functors and the supplied component family. A proved
++square for the original transition and its proved value as the target-functor
++map construct the whole natural transformation over variable categories.
++No alternative functor or desired final naturality law is assumed.
++-/
++
++@[expose] public section
++
++namespace CategoryTheory.NatTrans
++
++universe uI vI uV vV
++
++variable {I : Type uI} [Category.{vI} I]
++  {V : Type uV} [Category.{vV} V]
++  (F G : I ⥤ V) (app : ∀ i, F.obj i ⟶ G.obj i)
++  (map : ∀ {i j : I}, (i ⟶ j) → (G.obj i ⟶ G.obj j))
++  (square : ∀ {i j : I} (f : i ⟶ j), F.map f ≫ app j = app i ≫ map f)
++  (value : ∀ {i j : I} (f : i ⟶ j), map f = G.map f)
++
++/-- Assemble the original component family after its actual target-map normalization. -/
++def ofMapValues : NatTrans F G where
++  app := app
++  naturality {i j} f :=
++    (square f).trans (congrArg (fun k => app i ≫ k) (value f))
++
++/-- The construction retains the literal original component. -/
++@[simp]
++theorem ofMapValues_app (i : I) :
++    (ofMapValues F G app map square value).app i = app i := rfl
++
++end CategoryTheory.NatTrans

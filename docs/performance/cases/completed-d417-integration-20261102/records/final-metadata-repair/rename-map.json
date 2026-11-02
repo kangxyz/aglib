@@ -1,0 +1,146 @@
+[
+  {
+    "old": "Q_coproductCofanIsColimit_of_kInjectiveReplacement",
+    "new": "qCoproductCofanIsColimitOfKInjectiveReplacement",
+    "qualified_old": "DerivedCategory.Q_coproductCofanIsColimit_of_kInjectiveReplacement",
+    "qualified_new": "DerivedCategory.qCoproductCofanIsColimitOfKInjectiveReplacement",
+    "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean",
+    "source_form": "Whole-token explicit declaration/reference rename."
+  },
+  {
+    "old": "Q_coproductCofanIsColimit",
+    "new": "qCoproductCofanIsColimit",
+    "qualified_old": "DerivedCategory.Q_coproductCofanIsColimit",
+    "qualified_new": "DerivedCategory.qCoproductCofanIsColimit",
+    "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean",
+    "source_form": "Whole-token explicit declaration/reference rename."
+  },
+  {
+    "old": "Q_coproductIso",
+    "new": "qCoproductIso",
+    "qualified_old": "DerivedCategory.Q_coproductIso",
+    "qualified_new": "DerivedCategory.qCoproductIso",
+    "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean",
+    "source_form": "Whole-token explicit declaration/reference rename."
+  },
+  {
+    "old": "Q_coproductHomologyIso",
+    "new": "qCoproductHomologyIso",
+    "qualified_old": "DerivedCategory.Q_coproductHomologyIso",
+    "qualified_new": "DerivedCategory.qCoproductHomologyIso",
+    "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Coproducts/Localization.lean",
+    "source_form": "Whole-token explicit declaration/reference rename."
+  },
+  {
+    "old": "instHasDerivedCategoryModuleSheafXbarFirst_3",
+    "new": "compositionRefinementAdaptersFirstModelC",
+    "qualified_old": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_3",
+    "qualified_new": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionRefinementAdaptersFirstModelC",
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean",
+    "source_form": "Explicit name on same existing local instance; unchanged type/RHS."
+  },
+  {
+    "old": "instHasDerivedCategoryModuleSheafXbarFirst_4",
+    "new": "compositionRefinementAdaptersFirstModelD",
+    "qualified_old": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_4",
+    "qualified_new": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionRefinementAdaptersFirstModelD",
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean",
+    "source_form": "Explicit name on same existing local instance; unchanged type/RHS."
+  },
+  {
+    "old": "instHasDerivedCategoryModuleSheafXbarTargetCompactification_3",
+    "new": "compositionRefinementAdaptersSecondModelC",
+    "qualified_old": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_3",
+    "qualified_new": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionRefinementAdaptersSecondModelC",
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean",
+    "source_form": "Explicit name on same existing local instance; unchanged type/RHS."
+  },
+  {
+    "old": "instHasDerivedCategoryModuleSheafXbarTargetCompactification_4",
+    "new": "compositionRefinementAdaptersSecondModelD",
+    "qualified_old": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_4",
+    "qualified_new": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionRefinementAdaptersSecondModelD",
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean",
+    "source_form": "Explicit name on same existing local instance; unchanged type/RHS."
+  },
+  {
+    "old": "instHasDerivedCategoryModuleSheafXbarSourceCompactification_3",
+    "new": "compositionRefinementAdaptersCompositeModelC",
+    "qualified_old": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_3",
+    "qualified_new": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionRefinementAdaptersCompositeModelC",
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean",
+    "source_form": "Explicit name on same existing local instance; unchanged type/RHS."
+  },
+  {
+    "old": "instHasDerivedCategoryModuleSheafXbarSourceCompactification_4",
+    "new": "compositionRefinementAdaptersCompositeModelD",
+    "qualified_old": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_4",
+    "qualified_new": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionRefinementAdaptersCompositeModelD",
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementAdapters.lean",
+    "source_form": "Explicit name on same existing local instance; unchanged type/RHS."
+  },
+  {
+    "old": "instHasDerivedCategoryModuleSheafXbarFirst_5",
+    "new": "compositionRefinementCubeFirstModelC",
+    "qualified_old": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_5",
+    "qualified_new": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionRefinementCubeFirstModelC",
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean",
+    "source_form": "Explicit name on same existing local instance; unchanged type/RHS."
+  },
+  {
+    "old": "instHasDerivedCategoryModuleSheafXbarFirst_6",
+    "new": "compositionRefinementCubeFirstModelD",
+    "qualified_old": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarFirst_6",
+    "qualified_new": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionRefinementCubeFirstModelD",
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean",
+    "source_form": "Explicit name on same existing local instance; unchanged type/RHS."
+  },
+  {
+    "old": "instHasDerivedCategoryModuleSheafXbarTargetCompactification_5",
+    "new": "compositionRefinementCubeSecondModelC",
+    "qualified_old": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_5",
+    "qualified_new": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionRefinementCubeSecondModelC",
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean",
+    "source_form": "Explicit name on same existing local instance; unchanged type/RHS."
+  },
+  {
+    "old": "instHasDerivedCategoryModuleSheafXbarTargetCompactification_6",
+    "new": "compositionRefinementCubeSecondModelD",
+    "qualified_old": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarTargetCompactification_6",
+    "qualified_new": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionRefinementCubeSecondModelD",
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean",
+    "source_form": "Explicit name on same existing local instance; unchanged type/RHS."
+  },
+  {
+    "old": "instHasDerivedCategoryModuleSheafXbarSourceCompactification_5",
+    "new": "compositionRefinementCubeCompositeModelC",
+    "qualified_old": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_5",
+    "qualified_new": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionRefinementCubeCompositeModelC",
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean",
+    "source_form": "Explicit name on same existing local instance; unchanged type/RHS."
+  },
+  {
+    "old": "instHasDerivedCategoryModuleSheafXbarSourceCompactification_6",
+    "new": "compositionRefinementCubeCompositeModelD",
+    "qualified_old": "AlgebraicGeometry.Scheme.EtaleCohomology.instHasDerivedCategoryModuleSheafXbarSourceCompactification_6",
+    "qualified_new": "AlgebraicGeometry.Scheme.EtaleCohomology.compositionRefinementCubeCompositeModelD",
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionRefinementCube.lean",
+    "source_form": "Explicit name on same existing local instance; unchanged type/RHS."
+  },
+  {
+    "old": "moduleExceptionalDirectImageUnbounded_commShift",
+    "new": "moduleExceptionalDirectImageUnboundedCommShift",
+    "qualified_old": "AlgebraicGeometry.Scheme.EtaleCohomology.moduleExceptionalDirectImageUnbounded_commShift",
+    "qualified_new": "AlgebraicGeometry.Scheme.EtaleCohomology.moduleExceptionalDirectImageUnboundedCommShift",
+    "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/Localization.lean",
+    "source_form": "Whole-token explicit declaration/reference rename."
+  },
+  {
+    "old": "instAlgebraCarrierFunctionFieldSpecOf_aglib",
+    "new": "splitSectionsFunctionFieldAlgebra",
+    "qualified_old": "AlgebraicGeometry.Scheme.instAlgebraCarrierFunctionFieldSpecOf_aglib",
+    "qualified_new": "AlgebraicGeometry.Scheme.splitSectionsFunctionFieldAlgebra",
+    "source": "Aglib/AlgebraicGeometry/FunctionField/SplitSections.lean",
+    "source_form": "Explicit name on same existing local instance; unchanged type/RHS."
+  }
+]

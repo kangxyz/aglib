@@ -1,0 +1,91 @@
+{
+  "basis_run": "remote-0116fbacf2d74456ad1c2e7f9bf70ed4",
+  "basis_source": "f99d984824d7d8076ab46ecb1a708647baa16731530f208dd4754a3c6b2f283b",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-0116fbacf2d74456ad1c2e7f9bf70ed4/receipt.json",
+  "receipt_sha256": "78a47d07ade6f6af6d65d55db12441fe2f3ba2a5cc8a6c56116aa3e03dec50cf",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-0116fbacf2d74456ad1c2e7f9bf70ed4/compiler-events.jsonl",
+  "events_sha256": "845802e06ac6fdd848beb1f5ca45c4221bf04554ec7f8652fdce6bae0b80eb0d",
+  "capture": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/lane-b/current-fixed-union20-capture.json",
+  "group_closed": true,
+  "group_exit_code": 1,
+  "group_frontends": 65,
+  "group_pass": 61,
+  "group_fail": 4,
+  "input_drift": [],
+  "own_observed_frontends": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean",
+      "sha256": "ae9a8aa06808167187457001e0bfb5f274454f721b143631e5ae1815f723e35a",
+      "wrapper_pid": 937825,
+      "exit_code": 1,
+      "elapsed_seconds": 102.35475,
+      "status": "FAIL"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceGeneric.lean",
+      "sha256": "a5625a0484a9696cfa9b671ecd83d299e09e622efbc9b9146b78a917111752ef",
+      "wrapper_pid": 937828,
+      "exit_code": 0,
+      "elapsed_seconds": 88.998029,
+      "status": "PASS"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/ModuleCoefficients/Pullback.lean",
+      "sha256": "55ae29805ef3d28e443b59b3ec23269418f0f03c06f9b7cb2b12531938c3c472",
+      "wrapper_pid": 937850,
+      "exit_code": 0,
+      "elapsed_seconds": 92.075068,
+      "status": "PASS"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/Ext/BoundedConstants.lean",
+      "sha256": "ee9a44baaae9f54527e051707cbdca7eda43be3cc28647396790326e3b211f0d",
+      "wrapper_pid": 937852,
+      "exit_code": 1,
+      "elapsed_seconds": 4.360297,
+      "status": "FAIL"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/ModuleCoefficients/Pullback.lean",
+      "sha256": "85b797de2cbce1845bd2f15f84b423997ec23cddaec5034add305c4e8885544c",
+      "wrapper_pid": 938206,
+      "exit_code": 0,
+      "elapsed_seconds": 145.268673,
+      "status": "PASS"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/PointDivisor/FieldBaseChange.lean",
+      "sha256": "69f3e2f0386e5a3b4b079689192ddd06bdb2ac64cc75635a19ef0b1965e8bfc7",
+      "wrapper_pid": 939072,
+      "exit_code": 0,
+      "elapsed_seconds": 4.534642,
+      "status": "PASS"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/PointDivisor/FieldBaseChangeOrders.lean",
+      "sha256": "547cff6cc851d6ca8fbedf8362c589e908662dae67aeb24f1f2ff730a1461a2a",
+      "wrapper_pid": 939083,
+      "exit_code": 0,
+      "elapsed_seconds": 4.958868,
+      "status": "PASS"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceSquare.lean",
+      "sha256": "ad0686f80b53aa04e9b77122e7c6aada1aaa11c7dec2b3f6509ebfb7838d13bc",
+      "wrapper_pid": 939085,
+      "exit_code": 0,
+      "elapsed_seconds": 3.715049,
+      "status": "PASS"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceBoundary.lean",
+      "sha256": "590f6929ffbb4c543ae3763186340b48bb997e0ef63bb853efbc72ee41ebb9bf",
+      "wrapper_pid": 939087,
+      "exit_code": 0,
+      "elapsed_seconds": 5.199062,
+      "status": "PASS"
+    }
+  ],
+  "own_unobserved_count": 48,
+  "boundary": "Only actual frontend outcomes on the captured v2 source/dependencies. Unobserved roots are not claimed passed; independent producer/source revisions have their own coverage. Current Bounded26a8 is newer and uncompiled."
+}

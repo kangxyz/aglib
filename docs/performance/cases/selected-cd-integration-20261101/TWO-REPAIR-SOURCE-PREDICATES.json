@@ -1,0 +1,13 @@
+{
+  "source_sha256": {
+    "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalPurity.lean": "bc2a75f14741e4c18df992c8f4f70f361a3c3b6928ee01356b53f7cd5253092e",
+    "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/Restriction.lean": "e57f63a7cf0a788eb249c3eff6806137f28322ae419ab897c300a6a82795e741"
+  },
+  "count": 2,
+  "errors": [],
+  "checks": [
+    "tokens",
+    "policy"
+  ],
+  "checker_sha256": "1b8aeee8b2db34caa57ff30e415d81b1ce7fae622b89b96dc24e841147d3db4e"
+}

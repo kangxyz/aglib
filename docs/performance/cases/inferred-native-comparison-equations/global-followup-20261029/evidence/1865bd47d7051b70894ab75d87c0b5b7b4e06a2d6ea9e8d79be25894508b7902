@@ -1,0 +1,53 @@
+/- Active R-only extension of the same RelativeTests owner. No new hypothesis,
+options, pullback choice, coefficient realization, or final-square premise. -/
+
+namespace CategoryTheory.Over.RelativeTests
+
+variable {C : Type u} [Category.{v} C] [HasPullbacks C]
+
+private theorem square_inv_fst_fst {X S X' S' : C}
+    (f : X ⟶ S) (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
+    (h : f' ≫ g = g' ≫ f) (H : Over S) :
+    ((Over.pullbackSquareIso f f' g g' h).inv.app H).left ≫
+        Limits.pullback.fst (Limits.pullback.snd H.hom g) f' ≫
+        Limits.pullback.fst H.hom g =
+      Limits.pullback.fst (Limits.pullback.snd H.hom f) g' ≫
+        Limits.pullback.fst H.hom f := by
+  have hh := congrArg
+    (fun k => ((Over.pullbackSquareIso f f' g g' h).inv.app H).left ≫ k)
+    (Over.pullbackSquareIso_fst_fst f f' g g' h H)
+  simpa only [← Category.assoc, ← Over.comp_left, Iso.inv_hom_id_app,
+    Over.id_left, Category.id_comp] using hh.symm
+
+/-- The same original q/p/g adjunctions evaluate the pasted section by its
+original first projection. This is a value law, not a supplied mate equation. -/
+theorem pasting_homEquiv_fst {X S T : C} (f : X ⟶ S) (g : T ⟶ S)
+    (H : Over S) (U : Over T)
+    (a : (Over.pullback f).obj ((Over.map g).obj U) ⟶ (Over.pullback f).obj H) :
+    (((Over.mapPullbackAdj (Limits.pullback.fst g f)).homEquiv
+        ((Over.pullback (Limits.pullback.fst g f)).obj U) ((Over.pullback g).obj H)).symm
+      (((Over.mapPullbackAdj (Limits.pullback.snd g f)).homEquiv
+          ((Over.pullback (Limits.pullback.fst g f)).obj U) ((Over.pullback f).obj H)
+        ((Over.pullbackPostcomposeIso f g).hom.app U ≫ a) ≫
+          (Over.pullbackSquareIso f (Limits.pullback.fst g f) g
+            (Limits.pullback.snd g f) Limits.pullback.condition).inv.app H)).left ≫
+        Limits.pullback.fst H.hom g =
+      ((Over.pullbackPostcomposeIso f g).hom.app U).left ≫ a.left ≫
+        Limits.pullback.fst H.hom f := by
+  let m := (Over.mapPullbackAdj (Limits.pullback.snd g f)).homEquiv
+    ((Over.pullback (Limits.pullback.fst g f)).obj U) ((Over.pullback f).obj H)
+    ((Over.pullbackPostcomposeIso f g).hom.app U ≫ a)
+  change ((m.left ≫
+      ((Over.pullbackSquareIso f (Limits.pullback.fst g f) g
+        (Limits.pullback.snd g f) Limits.pullback.condition).inv.app H).left) ≫
+      Limits.pullback.fst (Limits.pullback.snd H.hom g) (Limits.pullback.fst g f)) ≫
+      Limits.pullback.fst H.hom g = _
+  rw [Category.assoc, Category.assoc, square_inv_fst_fst, ← Category.assoc]
+  have hm : m.left ≫ Limits.pullback.fst (Limits.pullback.snd H.hom f)
+      (Limits.pullback.snd g f) =
+      ((Over.pullbackPostcomposeIso f g).hom.app U ≫ a).left :=
+    Limits.pullback.lift_fst _ _ _
+  rw [hm]
+  exact Category.assoc _ _ _
+
+end CategoryTheory.Over.RelativeTests

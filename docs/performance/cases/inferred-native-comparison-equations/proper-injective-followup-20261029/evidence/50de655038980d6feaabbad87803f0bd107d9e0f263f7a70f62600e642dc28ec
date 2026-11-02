@@ -1,0 +1,32 @@
+{
+  "phase": "published exact source2 plus bounded README; production compilation pending",
+  "aglib_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "release": "broker ACTUAL fixed3 complete SOURCE3dede pair44d6 and main76d1 closed0; explicit atomic publication window",
+  "sources": [
+    {
+      "relative_path": "Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparisonExact.lean",
+      "before_sha256": null,
+      "after_sha256": "c9ee952332ea060208cefe1cd392978fd244ea3735e1786a4873f2b00c6fd2cb"
+    },
+    {
+      "relative_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean",
+      "before_sha256": "3ca8459c118eeba3e9195c2dc5b9f872ac0544b7277850bc6de002967e381049",
+      "after_sha256": "7f83a301df8be8fa8e35acba008626b8ff34a36a99c4be2b204da8425d232d89"
+    },
+    {
+      "relative_path": "Aglib/Algebra/Homology/DerivedCategory/Plus/README.md",
+      "before_sha256": "416c92277304acaf432cdeec3c1096c9794a0d895e8d6d6b842a6bc3e669d598",
+      "after_sha256": "3f27da8b89e260e7110ea48f69fc103b4c293d0ac4749821fb40552d3e956e68"
+    }
+  ],
+  "unchanged_core": {
+    "path": "Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparison.lean",
+    "sha256": "7e54af9098fc49f2b09564e30facada627d7ab8b4a05c89d0c460e8c1cd7fc6f"
+  },
+  "reviewed_source_vector": [
+    "c9ee952332ea060208cefe1cd392978fd244ea3735e1786a4873f2b00c6fd2cb",
+    "7f83a301df8be8fa8e35acba008626b8ff34a36a99c4be2b204da8425d232d89"
+  ],
+  "source_review": "Root reports supported/no material objection at migration/reviews/proper-injective-assembly-core.md and .json",
+  "compiler_status": "pending broker coherent-source production run"
+}

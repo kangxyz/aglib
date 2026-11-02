@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Exactness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.Exactness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.FiniteDirectImageExactness
 public import Mathlib.CategoryTheory.Sites.EpiMono
@@ -31,47 +32,44 @@ universe u
 attribute [local instance] hasSheafifyLarge hasSheafifyModules
   CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard
 
+attribute [local instance] CategoryTheory.TorsionZMod.Ringed.hasSheafifyRingStandard
+  CategoryTheory.TorsionZMod.Ringed.hasSheafifyAbStandard
+  CategoryTheory.TorsionZMod.Ringed.ringWEqualsLocallyBijectiveStandard
+
+
 variable (X : Scheme.{u}) (Λ : Type (u + 1)) [Ring Λ]
 
 /-- Additive forgetting of module-valued sheaves preserves local surjections and epimorphisms. -/
 instance moduleValuedForget_preservesEpimorphisms :
     (sheafCompose (Scheme.smallEtaleTopology X)
-      (forget₂ (ModuleCat.{u + 1} Λ) AddCommGrpCat.{u + 1})).PreservesEpimorphisms where
-  preserves {M N} α hα := by
-    let J := Scheme.smallEtaleTopology X
-    have h : Sheaf.IsLocallySurjective α :=
-      (Sheaf.isLocallySurjective_iff_epi' (ModuleCat.{u + 1} Λ) α).mpr hα
-    apply (Sheaf.isLocallySurjective_iff_epi' AddCommGrpCat.{u + 1} _).mp
-    change Presheaf.IsLocallySurjective J
-      (Functor.whiskerRight α.hom (forget₂ (ModuleCat.{u + 1} Λ) AddCommGrpCat.{u + 1}))
-    apply (Presheaf.isLocallySurjective_iff_whisker_forget J _).mpr
-    exact (Presheaf.isLocallySurjective_iff_whisker_forget J α.hom).mp h
+      (forget₂ (ModuleCat.{u + 1} Λ) AddCommGrpCat.{u + 1})).PreservesEpimorphisms :=
+  ModuleCat.Sheaf.ConstantRing.moduleValuedForget_preservesEpimorphisms
+    (Scheme.smallEtaleTopology X) Λ
 
 /-- The original additive sheaf of a native module sheaf preserves epimorphisms. -/
 instance moduleUnderlying_preservesEpimorphisms :
     (SheafOfModules.toSheaf.{u + 1} (constantRing X Λ)).PreservesEpimorphisms :=
-  Functor.PreservesEpimorphisms.of_iso (moduleSheafInverseUnderlyingIso X Λ)
+  ModuleCat.Sheaf.ConstantRing.moduleUnderlying_preservesEpimorphisms
+    (Scheme.smallEtaleTopology X) Λ
 
 /-- The original additive underlying sheaf functor is exact. -/
 instance moduleUnderlying_preservesHomology :
     (SheafOfModules.toSheaf.{u + 1} (constantRing X Λ)).PreservesHomology :=
-  Functor.preservesHomology_of_preservesEpis_and_kernels _
+  ModuleCat.Sheaf.ConstantRing.moduleUnderlying_preservesHomology (Scheme.smallEtaleTopology X) Λ
 
 variable {X} {S : Scheme.{u}} (f : S ⟶ X) [IsFinite f]
 
 /-- Finite direct image preserves epimorphisms in the genuine constant-ring module category. -/
 instance finiteModuleDirectImage_preservesEpimorphisms :
-    (moduleDirectImage f Λ).PreservesEpimorphisms := by
-  let : (moduleDirectImage f Λ ⋙
-      SheafOfModules.toSheaf.{u + 1} (constantRing X Λ)).PreservesEpimorphisms :=
-    Functor.PreservesEpimorphisms.of_iso (moduleDirectImageUnderlyingIso f Λ).symm
-  exact Functor.preservesEpimorphisms_of_preserves_of_reflects
-    (moduleDirectImage f Λ) (SheafOfModules.toSheaf.{u + 1} (constantRing X Λ))
+    (moduleDirectImage f Λ).PreservesEpimorphisms :=
+  ModuleCat.Sheaf.ConstantRing.moduleDirectImage_preservesEpimorphisms
+    (siteBaseChange f) (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S) Λ
 
 /-- Finite direct image, hence closed direct image, preserves the original module homology. -/
 instance finiteModuleDirectImage_preservesHomology :
     (moduleDirectImage f Λ).PreservesHomology :=
-  Functor.preservesHomology_of_preservesEpis_and_kernels _
+  ModuleCat.Sheaf.ConstantRing.moduleDirectImage_preservesHomology
+    (siteBaseChange f) (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S) Λ
 
 /-- Exactness is on the native module sheaves and their original direct-image maps. -/
 theorem shortExact_finiteModuleDirectImage {T : ShortComplex (ModuleSheaf S Λ)}

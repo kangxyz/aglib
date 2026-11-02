@@ -48,9 +48,10 @@ private theorem tildeHomologyCounit_naturality
         (tilde.functor S)).inv =
     ((C.sc n).mapHomologyIso (tilde.functor S)).inv ≫
       homologyMap (((tilde.functor S).mapHomologicalComplex (.up ℤ)).map q) n at hn
-  simp only [canonicalTildeHomologyCounitMap, homologyMap_comp]
-  rw [← Category.assoc, hn]
-  exact Category.assoc _ _ _
+  have hwhole := congrArg
+    (fun z => z ≫ homologyMap (Complex.tildeGlobalSectionsCounit S (.up ℤ) K) n) hn
+  simpa only [canonicalTildeHomologyCounitMap, HomologicalComplex.homologyCounitMap,
+    homologyMap_comp, Category.assoc] using hwhole
 
 private theorem openComplexHomologyCounit
     (K : CochainComplex (Spec R).Modules ℤ) (K' : CochainComplex (Spec S).Modules ℤ)

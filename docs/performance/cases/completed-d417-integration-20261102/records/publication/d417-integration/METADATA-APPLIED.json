@@ -1,0 +1,101 @@
+{
+  "HEAD": "c4880830a7ebfea496a348d361cd50b109ea536d",
+  "rows": [
+    {
+      "path": "Aglib.lean",
+      "before": "7d39c04864443a0d18ffff095ea858ea3012b3a4d8baea13e66c1d2ce490ed5e",
+      "after": "ffcbd7575a0633ee7a55953ecbbdcb4fc4a1b09053080e7a8060fb3c7aa0cc04"
+    },
+    {
+      "path": "Aglib/Algebra.lean",
+      "before": "4243fdf07a8575f4453f1b7652a7664899724f62f97c8ee5e4d39f9997aa1acc",
+      "after": "1a4b76f9a16f12aab12bb3c2d37e753deb72a705e6ed94259f3e1f812c2b5c7e"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry.lean",
+      "before": "80ce542fd004862a7581e46220b904b3196e1d915d36b00204fac10140568c61",
+      "after": "f8c179acc38463f2cab82f43bce1403dbdf490d2210f96dde288779e8de581d6"
+    },
+    {
+      "path": "Aglib/CategoryTheory.lean",
+      "before": "6a7e28706fb1c80704db529f5f578c7dbf0ce1235b9af21813c43ff541ca2e2f",
+      "after": "e1c9301d4a9536e046fe49e56bf27158fe7ce877708804f62761b10e9b847688"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/Plus/README.md",
+      "before": "3f27da8b89e260e7110ea48f69fc103b4c293d0ac4749821fb40552d3e956e68",
+      "after": "1300f045bba24909da9c983194c48dd8691a9b4aee6cb8a496dc3b008c402203"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/README.md",
+      "before": "5b13978fa098e99c32927d2833fb2da5bd2f7d3d4b50fe7bed43b0dd2ab58c7a",
+      "after": "4ac99122cf00416489ff5ac81e009864b045b20c0bf20c70edc3976c61cbfef6"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/README.md",
+      "before": "5ef62fbea370ed2989bc1a17328690ec06d10c4e38e66f7d78260c6d37614361",
+      "after": "d3d2c4441902232f1e4b3a6d704bf0bcf288b34c063a21d130d148199f009687"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Compactification/Refinements/README.md",
+      "before": "d948ae3405ca58ad4bc3002563688928012a0b7290e9656b0495319f629a7435",
+      "after": "afb8178800e36f04fc6370cff78e417a97ca4b77441d38a9088af4a3dc26a828"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/README.md",
+      "before": "94a646979bed1f42d74123f795297c7cc48e49b1cab6f2d82688fa5ac0c62104",
+      "after": "d3ce194c9945f5c64c2423bc704a9b6b12f26708594b831769fc4e83c39bfa66"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/README.md",
+      "before": "c37ffd15e42de2a08a64b0ff7573f78a3058dbb67705b15da78ed282c728a9e8",
+      "after": "c3ae27033dc3ff72783cabea0be952fdcd21c89c257dc396f5f2d00b28487258"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Adjunction/README.md",
+      "before": "3ecc56742e6e4b20315dd9ec6855216e7afeda0d46c2c10df00d382782f608e0",
+      "after": "c13831e35b8e4d0e565020340b283d210d9773275dd4c9cf163575bc43d8705a"
+    },
+    {
+      "path": "Aglib/CategoryTheory/README.md",
+      "before": "2dbc9eecc1a0490fcce92b6505d1bebe315bae055030f00afd45d6822c9e547d",
+      "after": "bdd318817bf8adaaee44deaaeb1d35c437eacb8dcb36bc8ba0468f6d14187afc"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Functor/README.md",
+      "before": "e8bb8d4e317b4a9c291ac5765f2c23c7bee055318c95b997a45444eee5d824b9",
+      "after": "3d54dda88125d81ad21621ada2179ef6eda2525d206eca3b71abb065816ac734"
+    },
+    {
+      "path": "Aglib/CategoryTheory/NatTrans/README.md",
+      "before": "ff8b41eab1c6701c38d350c74e2ad5de3b5fd13f2febb26286bdcdabfa0f0d71",
+      "after": "ecddbe2c7632c9bd4839a48f8130ccc3cb7fc4f4d84849d2419a147cd333afe8"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/ShortComplex/README.md",
+      "before": "00655c5f670dedadc5913309ee599b1eea7cf977f0e24581ab840421af614343",
+      "after": "b4a7fc737b2eea32ec153e5d4571f31c887a7d365da2525a58ce56241b923046"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Coefficients/README.md",
+      "before": "693cbb9fe562d1961e91ebbf85df8869a70883cd5b13334b5a917e356f2656ba",
+      "after": "4102d714961f0cab74241e1a5e6180d3f93ce0f11ddfbb39e64c7b5d3faafc78"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Localization/README.md",
+      "before": "357958c829443704c9c5d73214f2ef995688f8c09a6256973030dea6d05d4e42",
+      "after": "5f2d18afe51c7f98cf782fcb6be3e92b10b71b4e939d3ab521ee62361105895e"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Triangulated/README.md",
+      "before": "c573cb38130cbbef4a4b0d73b5e814f37015200813276e68691cb45cb34809d0",
+      "after": "c1fe2b738d9d04d6fb512a82140a5b23e731a4aaee69796d03ea1da4e5cbf24c"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/README.md",
+      "before": "9c0901e669dbf463490c547a46945ffc1ef4a20dabc2c2150837d97b403d01c1",
+      "after": "9e0c78d3368438ed69f0732cedf56ceccdf63dfa52a758147903a44eb016edbc"
+    }
+  ],
+  "boundary": "Root accepted guarded additive native entries and source navigation, preserving previous prose; native mk_all and current public context checks remain actual predicates."
+}

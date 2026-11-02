@@ -6,8 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.DirectImage
-public import Aglib.CategoryTheory.Sites.SheafCohomology.BasisAcyclicity.ResolutionSections
-public import Aglib.CategoryTheory.Sites.SheafCohomology.BasisAcyclicity.SectionExactness
+public import Aglib.CategoryTheory.Sites.SheafCohomology.BasisAcyclicity.RestrictionResolution.RightDerived
 
 /-! # Relative higher-image acyclicity from original represented Ext
 
@@ -40,27 +39,10 @@ theorem higherDirectImage_isZero_of_representedExt_vanishing
     (hF : ∀ (U : X.Etale) (n : ℕ),
       Subsingleton (Ext.{e} (freeAbelianSheaf.{u + 1} X.smallEtaleTopology U) F (n + 1)))
     (n : ℕ) : IsZero ((higherDirectImage f (n + 1)).obj F) := by
-  let I := injectiveResolution F
-  let K := ((directImage f).mapHomologicalComplex (.up ℕ)).obj I.cocomplex
-  have hB : ∀ W : S.Etale, ∃ (ι : Type) (U : ι → Over W),
-      Sieve.ofArrows (fun i => (U i).left) (fun i => (U i).hom)
-        ∈ S.smallEtaleTopology W ∧ ∀ i, (fun _ : S.Etale => True) (U i).left := by
-    intro W
-    refine ⟨PUnit, fun _ => Over.mk (𝟙 W), ?_, fun _ => trivial⟩
-    apply S.smallEtaleTopology.superset_covering _ (S.smallEtaleTopology.top_mem W)
-    intro V g _
-    exact (Sieve.mem_ofArrows_iff _ _ _).mpr ⟨PUnit.unit, g, (Category.comp_id g).symm⟩
-  have hK : K.ExactAt (n + 1) := by
-    apply Sheaf.BasisAcyclicity.exactAt_of_sections_on_basis
-      (fun _ : S.Etale => True) hB K (n + 1)
-    intro U _
-    change (((sheafToPresheaf X.smallEtaleTopology AddCommGrpCat.{u + 1} ⋙
-      (CategoryTheory.evaluation X.Etaleᵒᵖ AddCommGrpCat.{u + 1}).obj
-        (op ((siteBaseChange f).obj U))).mapHomologicalComplex (.up ℕ)).obj
-          I.cocomplex).ExactAt (n + 1)
-    exact Sheaf.BasisAcyclicity.resolution_sections_exactAt_succ.{u + 1, u, u + 1, e}
-      X.smallEtaleTopology I ((siteBaseChange f).obj U) n
-      (fun x => (hF ((siteBaseChange f).obj U) n).elim x 0)
-  exact IsZero.of_iso hK.isZero_homology (I.isoRightDerivedObj (directImage f) (n + 1))
+  exact
+    Sheaf.BasisAcyclicity.isZero_rightDerived_pushforward_obj_of_representedExt_vanishing.{
+      u + 1, u, u + 1, u, u + 1, e}
+      (siteBaseChange f) S.smallEtaleTopology X.smallEtaleTopology F
+      (fun W k x => (hF ((siteBaseChange f).obj W) k).elim x 0) n
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Proper.Reduction

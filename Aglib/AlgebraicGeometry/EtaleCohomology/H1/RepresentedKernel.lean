@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedCoefficients
+public import Aglib.CategoryTheory.Sites.SheafKernelComponents
 public import Mathlib.CategoryTheory.Sites.LocallyInjective
 
 /-!
@@ -54,11 +55,9 @@ theorem represented_app_injective (U : S.Etaleᵒᵖ) :
   apply (cancel_mono j.hom.hom).mp
   exact congrArg (fun z => z.down.toMul) h
 
-theorem represented_mono : Mono (representedSheafMap j) := by
-  have : Presheaf.IsLocallyInjective (Scheme.smallEtaleTopology S)
-      (representedSheafMap j).hom :=
-    Presheaf.isLocallyInjective_of_injective _ _ (represented_app_injective j)
-  exact Sheaf.mono_of_isLocallyInjective _
+theorem represented_mono : Mono (representedSheafMap j) :=
+  CategoryTheory.Sheaf.mono_of_component_injective (representedSheafMap j)
+    (represented_app_injective j)
 
 omit [Mono j.hom.hom] in
 -- Retain monicity of the original kernel insertion in this public represented-kernel interface;
@@ -111,54 +110,39 @@ theorem represented_kernel_condition {P : AbelianSheaf.{u, u + 1} S}
     (φ : P ⟶ representedSheaf B) (h : φ ≫ representedSheafMap q = 0)
     (U : S.Etaleᵒᵖ) (a : P.obj.obj U) :
     (representedSheafMap q).hom.app U (φ.hom.app U a) = 0 :=
-  ConcreteCategory.congr_hom (congrArg (fun t => t.hom.app U) h) a
+  CategoryTheory.Sheaf.componentKernel_condition (representedSheafMap q) φ h U a
 
 /-- The sheaf map obtained by lifting kernel sections; the given monomorphic insertion and
 factorization equation ensure additivity and naturality. -/
 def representedKernelLift {P : AbelianSheaf.{u, u + 1} S}
     (φ : P ⟶ representedSheaf B) (h : φ ≫ representedSheafMap q = 0) :
-    P ⟶ representedSheaf A where
-  hom := {
-    app U := AddCommGrpCat.ofHom {
-      toFun a := representedKernelSection q liftOver U (φ.hom.app U a)
-        (represented_kernel_condition q φ h U a)
-      map_zero' := by
-        apply represented_app_injective j U
-        rw [representedKernelSection_fac j q liftOver lift_fac, map_zero, map_zero]
-      map_add' a b := by
-        apply represented_app_injective j U
-        rw [representedKernelSection_fac j q liftOver lift_fac, map_add, map_add,
-          representedKernelSection_fac j q liftOver lift_fac,
-          representedKernelSection_fac j q liftOver lift_fac] }
-    naturality {U V} f := by
-      apply AddCommGrpCat.hom_ext
-      apply AddMonoidHom.ext
-      intro a
-      apply represented_app_injective j V
-      change (representedSheafMap j).hom.app V
-        (representedKernelSection q liftOver V _
-          (represented_kernel_condition q φ h V (P.obj.map f a))) =
-        (representedSheafMap j).hom.app V ((representedSheaf A).obj.map f
-          (representedKernelSection q liftOver U _ (represented_kernel_condition q φ h U a)))
-      rw [representedKernelSection_fac j q liftOver lift_fac,
-        represented_insertion_naturality, representedKernelSection_fac j q liftOver lift_fac]
-      exact ConcreteCategory.congr_hom (φ.hom.naturality f) a }
+    P ⟶ representedSheaf A :=
+  CategoryTheory.Sheaf.componentKernelLift (representedSheafMap j) (representedSheafMap q)
+    (represented_app_injective j) (representedKernelSection q liftOver)
+    (representedKernelSection_fac j q liftOver lift_fac) φ h
+
+/-- The common lift retains the original Over-section lift on each original carrier. -/
+@[simp] theorem representedKernelLift_apply {P : AbelianSheaf.{u, u + 1} S}
+    (φ : P ⟶ representedSheaf B) (h : φ ≫ representedSheafMap q = 0)
+    (U : S.Etaleᵒᵖ) (a : P.obj.obj U) :
+    (representedKernelLift j q liftOver lift_fac φ h).hom.app U a =
+      representedKernelSection q liftOver U (φ.hom.app U a)
+        (represented_kernel_condition q φ h U a) := rfl
 
 @[simp] theorem representedKernelLift_fac {P : AbelianSheaf.{u, u + 1} S}
     (φ : P ⟶ representedSheaf B) (h : φ ≫ representedSheafMap q = 0) :
-    representedKernelLift j q liftOver lift_fac φ h ≫ representedSheafMap j = φ := by
-  ext U a
-  exact representedKernelSection_fac j q liftOver lift_fac U _
-    (represented_kernel_condition q φ h U a)
+    representedKernelLift j q liftOver lift_fac φ h ≫ representedSheafMap j = φ :=
+  CategoryTheory.Sheaf.componentKernelLift_fac (representedSheafMap j) (representedSheafMap q)
+    (represented_app_injective j) (representedKernelSection q liftOver)
+    (representedKernelSection_fac j q liftOver lift_fac) φ h
 
 /-- A supplied actual Over-section lifting operation gives the represented categorical kernel.
 The native application below supplies this operation from the constructed literal kernel iso. -/
 def representedKernelIsLimit (h : j ≫ q = 0) :
-    IsLimit (KernelFork.ofι (representedSheafMap j) (represented_composition_zero j q h)) := by
-  letI := represented_mono j
-  exact KernelFork.IsLimit.ofι' _ _ (fun φ hφ =>
-    ⟨representedKernelLift j q liftOver lift_fac φ hφ,
-      representedKernelLift_fac j q liftOver lift_fac φ hφ⟩)
+    IsLimit (KernelFork.ofι (representedSheafMap j) (represented_composition_zero j q h)) :=
+  CategoryTheory.Sheaf.componentKernelIsLimit (representedSheafMap j) (representedSheafMap q)
+    (represented_app_injective j) (representedKernelSection q liftOver)
+    (representedKernelSection_fac j q liftOver lift_fac) (represented_composition_zero j q h)
 end Represented
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.RepresentedKernel

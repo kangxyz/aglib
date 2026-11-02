@@ -156,6 +156,36 @@ theorem pointedStalkMark_pointMark (f : X ⟶ B)
 
 end StalkMarkings
 
+section CanonicalSectionStalk
+
+variable {B X : Scheme.{u}} {K : Type u} [Field K] [IsSepClosed K]
+  (b : Spec (CommRingCat.of K) ⟶ B) (p : X ⟶ B) (o : B ⟶ X) (h : o ≫ p = 𝟙 B)
+  (L : AbelianSheaf.{u, u + 1} B)
+
+/-- The original section coefficient is the composite of the two actual canonical inverses. -/
+theorem canonical_section_stalk_pullback
+    (a : coefficientFiber b ((inverseImage o).obj ((inverseImage p).obj L))) :
+    ((Scheme.pointSmallEtale b).sheafFiber (A := AddCommGrpCat.{u + 1})).map
+        (sectionCoefficientIso p o h L).hom a =
+      pointedCanonicalPullbackStalkEquiv p (b ≫ o) L b (projection_point b p o h)
+        (pointedCanonicalPullbackStalkEquiv o b ((inverseImage p).obj L) (b ≫ o) rfl a) := by
+  let Ep := pointedCanonicalPullbackStalkEquiv p (b ≫ o) L b (projection_point b p o h)
+  let Eo := pointedCanonicalPullbackStalkEquiv o b ((inverseImage p).obj L) (b ≫ o) rfl
+  let c := ((Scheme.pointSmallEtale b).sheafFiber (A := AddCommGrpCat.{u + 1})).map
+    (sectionCoefficientIso p o h L).hom
+  have hc (x : coefficientFiber b L) : c (Eo.symm (Ep.symm x)) = x := by
+    have hs := ConcreteCategory.congr_hom
+      (CoefficientStalkBaseChange.section_stalkUnit b p o h L) x
+    change c (CoefficientStalkBaseChange.pointedStalkUnit o b ((inverseImage p).obj L)
+      (b ≫ o) rfl (CoefficientStalkBaseChange.pointedStalkUnit p (b ≫ o) L b
+        (projection_point b p o h) x)) = x at hs
+    rw [pointedStalkUnit_eq_canonical_inverse, pointedStalkUnit_eq_canonical_inverse] at hs
+    exact hs
+  exact GrothendieckTopology.Point.UnitTransport.inverse_section
+    Ep.symm.toEquiv Eo.symm.toEquiv c hc a
+
+end CanonicalSectionStalk
+
 section GeneralBaseComparison
 variable {B X : Scheme.{u}} {K : Type u} [Field K]
 variable (b : Spec (CommRingCat.of K) ⟶ B) (p : X ⟶ B)
@@ -248,8 +278,8 @@ theorem general_origin_square [IsSepClosed K]
   let := restrictedAction_continuous M (projection b p o h)
   let RX := pulledBackRepresentation p R
   let mB := representationStalkMark b R M mark
-  let mX := (CoefficientStalkBaseChange.pointedPullbackStalkEquiv p (b ≫ o) L b
-    (projection_point b p o h) R).trans mB
+  let mX := (pointedCanonicalPullbackStalkEquiv p (b ≫ o) L b
+    (projection_point b p o h)).trans mB
   have hb : R.pointMark b mB = mark := representationStalkMark_pointMark b R M mark
   have hx : RX.pointMark (b ≫ o) mX =
       pointedPullbackFiberMark p (b ≫ o) b (projection_point b p o h) R.group M mark := by
@@ -279,7 +309,7 @@ theorem general_origin_square [IsSepClosed K]
       ((inverseImageComp p o).inv.app L ≫
         eqToHom (congrArg (fun k : B ⟶ B => (inverseImage k).obj L) h) ≫
         (inverseImageId B).hom.app L) t) = _
-    exact congrArg mB (CoefficientStalkBaseChange.section_stalk_pullback b p o h L R t)
+    exact congrArg mB (canonical_section_stalk_pullback b p o h L t)
   have hn := compareH1WithRepresentation_stalk_pullback_coefficient o b hAX hAB hRX hRB
     RX R M M (hcoeff.pullback p) hcoeff mX mB hmX hmB
     (sectionCoefficientIso p o h L).hom ψ hq a

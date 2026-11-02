@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.Picard.AssociatedBundle
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Power.UnitPower
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorSum
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorClassification
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Basic
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Tensor
 public import Aglib.AlgebraicGeometry.Modules.Pullback.OpenRestriction
@@ -60,9 +61,9 @@ the actual contracted sum, with no Picard/H1 or additive law as a premise.
 The Picard group used here has its already constructed tensor addition and
 dual inverse. The associated-bundle equivalence and the precise Stacks03AJ
 bijection upgrade the constructed class map to an additive equivalence.
-The only retained mathematical inputs are EtaleLineBundleDescent (actual
-rank-one module-sheaf descent, Stacks 023T/05B2) and, for bijectivity only,
-Stacks03AJ (the constructed torsor/Ext class bijection, Stacks 03AJ).
+The public equivalence selects the proved native rank-one descent and
+canonical torsor/Ext bijectivity suppliers. The original proof-parameter
+constructors remain compatibility views of those same maps.
 The Ext realization is explicitly parameterized by HasExt. All statements
 apply to arbitrary schemes; there are no curve or characteristic hypotheses.
 -/
@@ -331,21 +332,23 @@ def toH1 : PicardGroup X →+ H1Etale X (gm X) where
 and A's precisely parameterized torsor/Ext class equivalence. -/
 theorem toH1_bijective (hAJ : Stacks03AJ.{u, w} X) : Function.Bijective (toH1 h X) :=
   (torsorClassEquiv hAJ (gm X)).bijective.comp
-      (AlgebraicGeometry.Scheme.Modules.Invertible.AssociatedBundle.classEquiv h).bijective
+      (AlgebraicGeometry.Scheme.Modules.Invertible.AssociatedBundle.classEquiv X).bijective
 
 /-- The actual additive Picard--Gm H1 equivalence. Only bijectivity uses
 Stacks03AJ, and the group on Picard remains its fixed tensor/dual group. -/
-def picardH1Equiv (hAJ : Stacks03AJ.{u, w} X) : PicardGroup X ≃+ H1Etale X (gm X) :=
-  AddEquiv.ofBijective (toH1 h X) (toH1_bijective h X hAJ)
+def picardH1Equiv : PicardGroup X ≃+ H1Etale.{u, u + 1, w} X (gm X) :=
+  AddEquiv.ofBijective (toH1 etaleLineBundleDescent X)
+    (toH1_bijective etaleLineBundleDescent X (stacks03AJ.{u, w} X))
 
-@[simp] theorem picardH1Equiv_classOf (hAJ : Stacks03AJ.{u, w} X) (L : LineBundle X) :
-    picardH1Equiv h X hAJ (classOf X L) = torsorExtClass (frameTorsor h X L) := rfl
+@[simp] theorem picardH1Equiv_classOf (L : LineBundle X) :
+    picardH1Equiv.{u, w} X (classOf X L) =
+      torsorExtClass (frameTorsor etaleLineBundleDescent X L) := rfl
 
-@[simp] theorem picardH1Equiv_apply (hAJ : Stacks03AJ.{u, w} X) (c : PicardGroup X) :
-    picardH1Equiv h X hAJ c = classMap h X c := rfl
+@[simp] theorem picardH1Equiv_apply (c : PicardGroup X) :
+    picardH1Equiv.{u, w} X c = classMap etaleLineBundleDescent X c := rfl
 
-theorem picardH1Equiv_toAddMonoidHom (hAJ : Stacks03AJ.{u, w} X) :
-    (picardH1Equiv h X hAJ).toAddMonoidHom = toH1 h X := rfl
+theorem picardH1Equiv_toAddMonoidHom :
+    (picardH1Equiv.{u, w} X).toAddMonoidHom = toH1 etaleLineBundleDescent X := rfl
 
 theorem toH1_injective (hAJ : Stacks03AJ.{u, w} X) : Function.Injective (toH1 h X) :=
   (toH1_bijective h X hAJ).injective

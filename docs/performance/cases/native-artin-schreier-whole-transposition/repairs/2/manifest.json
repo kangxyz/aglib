@@ -1,0 +1,39 @@
+{
+  "question": "Repair only alias declaration-universe syntax after the exact closed AS3-only 46f990 run.",
+  "native_git_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "path": "Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean",
+  "input_sha256": "8cf60bf91f85537d6a661320945057202a9b919ddf82a54b34046671cdbbdde0",
+  "output_sha256": "f71d888bea46a41274070350390522357f5e2658c04715d8353b875b392a8483",
+  "delta_sha256": "667b66957b26018d6016fdefa2ebe920e33aa27d6a4277fa08a67337a69785d7",
+  "closed_failure": {
+    "run_dir": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-46f990d7142a45009bf5d38b0a93e41e",
+    "build_log_sha256": "7f91e40347b796b727b45f662ef5e557f729c93b273032e9eb0290cf696c95d1",
+    "receipt_sha256": "f764545dd242faa7519c283f9839b60bb080283a4da9d9881ca5d68503756eae",
+    "source_content_sha256": "27999490cddd7bf62f6139aba738b72da4fd67f1209b4ed7de97c2d8bd4de9d7",
+    "primary_source_lines": [
+      48,
+      54
+    ],
+    "primary_error": "Explicit declaration universe list reused ambient names already declared by namespace universe u v r w."
+  },
+  "repair": "Two aliases now use fresh declaration-local level names w\u2032,r\u2032,v\u2032,u\u2032 and fully typed C/R parameters. Their explicit argument order remains lift, ring, Hom, object; existing .{w} applications retain their actual lift world.",
+  "preservation": {
+    "same_literal_functor_and_native_sheaf_pair": true,
+    "same_native_sheaf_proof": true,
+    "independent_site_ring_lift_worlds": true,
+    "all_maps_proofs_and_remaining_source_unchanged": true,
+    "wrappers_held": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Frobenius.lean": "5be6b57f14457bda311e65781e412dd7414d43ac6c435217c4d480340a45c922",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Constants.lean": "d2a7c7461e034f05b03adb49fa49b6fc6fab4eb440a45ded2cd2d0ec59ee8fca"
+    },
+    "original_fixed_R3_and_repair1_held": true,
+    "new_flag_model_record_hypothesis_or_source_placeholder": false
+  },
+  "compile_targets": [
+    "Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Frobenius",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Constants"
+  ],
+  "compiler_coverage": "This repaired source is UNCOMPILED; root retries only the same three completed changed modules plus necessary dependencies. No untouched downstream target or extra check cycle.",
+  "remaining_gap": "Clean alias and generic-map elaboration, then the unchanged wrapper specializations; generated sorry/metavariable diagnostics on the rejected declaration basis do not establish a source placeholder or mathematical gap."
+}

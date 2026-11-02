@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.ZModDerivedImage
+public import Aglib.CategoryTheory.Adjunction.InjectiveTests
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.ZModRetract
 
 /-! # Original exchange reductions on genuine injective module tests
@@ -28,43 +29,7 @@ open CategoryTheory CategoryTheory.Limits
 
 namespace AlgebraicGeometry.Scheme.EtaleCohomology.Proper.Reduction
 
-section TypedTests
 
-variable {M N C D E E' : Type*}
-  [Category* M] [Category* N] [Category* C] [Category* D] [Category* E] [Category* E']
-  (V : M ⥤ N) (a : M ⥤ C) (b : N ⥤ D) (R : C ⥤ D)
-  {U W : D ⥤ E} (β : U ⟶ W)
-  {L L' : C ⥤ E'} (γ : L ⟶ L') {T T' : C ⥤ E} (δ : T ⟶ T')
-
-private theorem injectiveTest_comp [V.PreservesInjectiveObjects]
-    (e : ∀ (J : M) [Injective J], R.obj (a.obj J) ≅ b.obj (V.obj J))
-    (hpaste : ∀ K : C, IsIso (β.app (R.obj K)) → IsIso (γ.app K) → IsIso (δ.app K))
-    (hOuter : ∀ (I : N) [Injective I], IsIso (β.app (b.obj I)))
-    (hInner : ∀ (J : M) [Injective J], IsIso (γ.app (a.obj J)))
-    (J : M) [Injective J] : IsIso (δ.app (a.obj J)) := by
-  have : Injective (V.obj J) := inferInstance
-  have hR : IsIso (β.app (R.obj (a.obj J))) :=
-    (NatTrans.isIso_app_iff_of_iso β (e J)).mpr (hOuter (V.obj J))
-  exact hpaste (a.obj J) hR (hInner J)
-
-private theorem injectiveTest_descent
-    (e : ∀ (J : M) [Injective J], R.obj (a.obj J) ≅ b.obj (V.obj J))
-    (rtest : ∀ (I : N) [Injective I],
-      ∃ J : M, Injective J ∧ Nonempty (Retract I (V.obj J)))
-    (hcancel : ∀ K : C, IsIso (γ.app K) → IsIso (δ.app K) → IsIso (β.app (R.obj K)))
-    (hInner : ∀ (J : M) [Injective J], IsIso (γ.app (a.obj J)))
-    (hComposite : ∀ (J : M) [Injective J], IsIso (δ.app (a.obj J)))
-    (I : N) [Injective I] : IsIso (β.app (b.obj I)) := by
-  obtain ⟨J, hJ, ⟨r⟩⟩ := rtest I
-  have : Injective J := hJ
-  have hR : IsIso (β.app (R.obj (a.obj J))) :=
-    hcancel (a.obj J) (hInner J) (hComposite J)
-  let t : Retract (b.obj I) (R.obj (a.obj J)) :=
-    (r.map b).trans (Retract.ofIso (e J).symm)
-  exact MorphismProperty.of_retract (P := MorphismProperty.isomorphisms E)
-    (β.retractArrowApp t) hR
-
-end TypedTests
 
 universe u dS dX dY dS' dX' dY'
 
@@ -131,7 +96,7 @@ theorem derivedExchange_on_zmodInjectives_comp
       ((zmodSingle Y n).obj J)) := by
   have : (zmodDirectImage k n).PreservesInjectiveObjects :=
     zmodDirectImage_preservesInjectiveObjects k n
-  exact injectiveTest_comp (zmodDirectImage k n)
+  exact CategoryTheory.Adjunction.injectiveTest_comp (zmodDirectImage k n)
     (zmodSingle Y n) (zmodSingle X n)
     (derivedDirectImage k) (derivedBaseChangeMap f f' g g' h₁)
     (derivedBaseChangeMap k k' g' g'' h₂)
@@ -155,7 +120,7 @@ theorem derivedExchange_on_zmodInjectives_descent [Surjective k]
     (I : ZModSheaf X n) [Injective I] :
     IsIso ((derivedBaseChangeMap f f' g g' h₁).app
       ((zmodSingle X n).obj I)) := by
-  exact injectiveTest_descent (zmodDirectImage k n)
+  exact CategoryTheory.Adjunction.injectiveTest_descent (zmodDirectImage k n)
     (zmodSingle Y n) (zmodSingle X n)
     (derivedDirectImage k) (derivedBaseChangeMap f f' g g' h₁)
     (derivedBaseChangeMap k k' g' g'' h₂)

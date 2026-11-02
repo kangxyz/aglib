@@ -1,0 +1,51 @@
+--- /Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/input/current/Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/CoefficientTransport.lean
++++ /Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/CoefficientTransport.lean
+@@ -8,7 +8,7 @@
+ public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ProjectiveLineTests
+ public import Aglib.AlgebraicGeometry.EtaleCohomology.PullbackEquivalence
+ public import Mathlib.Algebra.Group.Shrink
+-public import Mathlib.Logic.Function.Basic
++public import Aglib.Logic.Function.SquareTransport
+ 
+ /-! # Original cohomology pullback under coefficient isomorphisms
+ 
+@@ -42,30 +42,21 @@
+ theorem cohomologyPullback_surjective_of_iso (g : S ⟶ X)
+     {F G : AbelianSheaf.{u, u + 1} X} (e : F ≅ G) (q : ℕ)
+     (hF : Function.Surjective (cohomologyPullback.{u, eX, eS} g F q)) :
+-    Function.Surjective (cohomologyPullback.{u, eX, eS} g G q) := by
+-  have hs : cohomologyPullback.{u, eX, eS} g G q ∘ Sheaf.H.map e.hom q =
+-      Sheaf.H.map ((inverseImage g).map e.hom) q ∘ cohomologyPullback.{u, eX, eS} g F q :=
+-    funext (cohomologyPullback_coefficientMap g e.hom q)
+-  have hcomp : Function.Surjective
+-      (cohomologyPullback.{u, eX, eS} g G q ∘ Sheaf.H.map e.hom q) := by
+-    rw [hs]
+-    exact (cohomologyMapIso_bijective ((inverseImage g).mapIso e) q).surjective.comp hF
+-  exact hcomp.of_comp
++    Function.Surjective (cohomologyPullback.{u, eX, eS} g G q) :=
++  Function.surjective_of_commutative_square
++    (funext (cohomologyPullback_coefficientMap g e.hom q))
++    (cohomologyMapIso_bijective ((inverseImage g).mapIso e) q).surjective hF
+ 
+ /-- The same original coefficient square transports injectivity without
+ any surjectivity premise on the pullback itself. -/
+ theorem cohomologyPullback_injective_of_iso (g : S ⟶ X)
+     {F G : AbelianSheaf.{u, u + 1} X} (e : F ≅ G) (q : ℕ)
+     (hF : Function.Injective (cohomologyPullback.{u, eX, eS} g F q)) :
+-    Function.Injective (cohomologyPullback.{u, eX, eS} g G q) := by
+-  have hs : cohomologyPullback.{u, eX, eS} g G q ∘ Sheaf.H.map e.hom q =
+-      Sheaf.H.map ((inverseImage g).map e.hom) q ∘ cohomologyPullback.{u, eX, eS} g F q :=
+-    funext (cohomologyPullback_coefficientMap g e.hom q)
+-  have hcomp : Function.Injective
+-      (cohomologyPullback.{u, eX, eS} g G q ∘ Sheaf.H.map e.hom q) := by
+-    rw [hs]
+-    exact (cohomologyMapIso_bijective ((inverseImage g).mapIso e) q).injective.comp hF
+-  exact hcomp.of_comp_right (cohomologyMapIso_bijective e q).surjective
++    Function.Injective (cohomologyPullback.{u, eX, eS} g G q) :=
++  Function.injective_of_commutative_square
++    (funext (cohomologyPullback_coefficientMap g e.hom q))
++    (cohomologyMapIso_bijective ((inverseImage g).mapIso e) q).injective
++    (cohomologyMapIso_bijective e q).surjective hF
+ 
+ namespace Proper
+ 

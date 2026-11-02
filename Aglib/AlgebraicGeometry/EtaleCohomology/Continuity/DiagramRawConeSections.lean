@@ -11,27 +11,6 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramConeComp
 
 @[expose] public noncomputable section
 open CategoryTheory CategoryTheory.Limits Opposite
-namespace CategoryTheory.Functor
-
-/-- Keep a functor's objects and replace its maps by provably identical original maps. -/
-def withActualMaps {J C : Type*} [Category J] [Category C]
-    (G : J ⥤ C) (r : ∀ {j k}, (j ⟶ k) → (G.obj j ⟶ G.obj k))
-    (hr : ∀ {j k} (m : j ⟶ k), r m = G.map m) : J ⥤ C where
-  obj := G.obj
-  map := r
-  map_id j := (hr (𝟙 j)).trans (G.map_id j)
-  map_comp m n := (hr (m ≫ n)).trans
-    ((G.map_comp m n).trans (by rw [hr m, hr n]))
-
-/-- The original-map presentation is identified by identity components. -/
-def withActualMapsIso {J C : Type*} [Category J] [Category C]
-    (G : J ⥤ C) (r : ∀ {j k}, (j ⟶ k) → (G.obj j ⟶ G.obj k))
-    (hr : ∀ {j k} (m : j ⟶ k), r m = G.map m) : withActualMaps G r hr ≅ G :=
-  NatIso.ofComponents (fun _ => Iso.refl _) (fun m =>
-    (Category.comp_id _).trans ((hr m).trans (Category.id_comp _).symm))
-
-end CategoryTheory.Functor
-
 namespace AlgebraicGeometry.Scheme.EtaleCohomology.Continuity
 universe u uI vI
 attribute [local instance] hasSheafifyLarge
@@ -40,16 +19,16 @@ variable {I : Type uI} [Category.{vI} I] (X : I ⥤ Scheme.{u}ᵒᵖ)
 
 /-- The original square sections on an arbitrary native scheme cone. -/
 def coneOriginalSectionsFunctor : I ⥤ AddCommGrpCat.{u + 1} :=
-  Functor.withActualMaps (coneCoefficientFunctor X c F ⋙ globalSections c.pt.unop)
-    (fun a => coneSystemSectionsMap X F c a)
-    (fun a => coneSystemSectionsMap_eq X F c a)
+  coneCoefficientSectionsFunctor X c F
 
-/-- Identity on objects identifies original square maps with coefficient-section maps. -/
+/-- The selected single operation retains every whole original square-section map. -/
+theorem coneOriginalSectionsFunctor_map {i j : I} (a : i ⟶ j) :
+    (coneOriginalSectionsFunctor X F c).map a = coneSystemSectionsMap X F c a :=
+  (coneSystemSectionsMap_eq X F c a).symm
+
+/-- Compatibility name only: both sides are now the SAME selected operation. -/
 def coneOriginalSectionsIso :
     coneOriginalSectionsFunctor X F c ≅
-      coneCoefficientFunctor X c F ⋙ globalSections c.pt.unop :=
-  Functor.withActualMapsIso (coneCoefficientFunctor X c F ⋙ globalSections c.pt.unop)
-    (fun a => coneSystemSectionsMap X F c a)
-    (fun a => coneSystemSectionsMap_eq X F c a)
+      coneCoefficientFunctor X c F ⋙ globalSections c.pt.unop := Iso.refl _
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Continuity

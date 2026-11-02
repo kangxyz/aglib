@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.StalkUniverse
+public import Aglib.CategoryTheory.Adjunction.KernelSupport
 public import Mathlib.CategoryTheory.Sites.Point.Skyscraper
 public import Mathlib.CategoryTheory.Subobject.Lattice
 public import Mathlib.CategoryTheory.Subobject.Limits
@@ -42,37 +43,32 @@ variable {X : Scheme.{u}} (F : AbelianSheaf.{u, u + 1} X)
 
 /-- The original subobject whose germs vanish outside the indicated point set. -/
 def pointSupportedSubobject (Z : Set X) : Subobject F :=
-  Subobject.sInf.{u + 1} (Set.range (fun x : {x : X // x ∉ Z} => kernelSubobject
-    ((pointSmallEtale (FibrewiseClosed.geometricPoint x.val)).skyscraperSheafAdjunction.unit.app
-      F)))
+  Adjunction.kernelSupport.{u + 1}
+    (fun x : X => (pointSmallEtale (FibrewiseClosed.geometricPoint x)).skyscraperSheafAdjunction
+      (A := Ab.{u + 1})) F Z
+
+/-- The shared constructor is the literal original bounded infimum of unit kernels. -/
+theorem pointSupportedSubobject_eq_sInf (Z : Set X) :
+    pointSupportedSubobject F Z =
+      Subobject.sInf.{u + 1} (Set.range (fun x : {x : X // x ∉ Z} => kernelSubobject
+        ((pointSmallEtale (FibrewiseClosed.geometricPoint x.val)).skyscraperSheafAdjunction.unit.app
+          F))) := rfl
 
 /-- Enlarging the support gives the canonical inclusion of original subobjects. -/
 theorem pointSupportedSubobject_mono {Z W : Set X} (h : Z ⊆ W) :
     pointSupportedSubobject F Z ≤ pointSupportedSubobject F W := by
-  apply Subobject.le_sInf.{u + 1}
-  rintro _ ⟨x, rfl⟩
-  exact Subobject.sInf_le.{u + 1} _ _
-    ⟨⟨x.val, fun hx => x.property (h hx)⟩, rfl⟩
-
-private theorem subobject_arrow_comp_zero_of_le_kernel
-    {C : Type*} [Category* C] [Abelian C] {A B : C}
-    (P : Subobject A) (f : A ⟶ B) (h : P ≤ kernelSubobject f) :
-    P.arrow ≫ f = 0 := by
-  rw [← Subobject.ofLE_arrow h, Category.assoc, kernelSubobject_arrow_comp, comp_zero]
-
-private theorem pointSupportedSubobject_le_kernel (Z : Set X) (x : X) (hx : x ∉ Z) :
-    pointSupportedSubobject F Z ≤ kernelSubobject
-      ((pointSmallEtale (FibrewiseClosed.geometricPoint x)).skyscraperSheafAdjunction.unit.app F) :=
-  Subobject.sInf_le.{u + 1} _ _ ⟨⟨x, hx⟩, rfl⟩
+  exact Adjunction.kernelSupport_mono.{u + 1}
+    (fun x : X => (pointSmallEtale (FibrewiseClosed.geometricPoint x)).skyscraperSheafAdjunction
+      (A := Ab.{u + 1})) F h
 
 /-- The actual supported-subobject inclusion is killed by every outside-point unit. -/
 theorem pointSupportedSubobject_arrow_unit (Z : Set X) (x : X) (hx : x ∉ Z) :
     (pointSupportedSubobject F Z).arrow ≫
       (pointSmallEtale (FibrewiseClosed.geometricPoint x)).skyscraperSheafAdjunction.unit.app F =
         0 := by
-  exact subobject_arrow_comp_zero_of_le_kernel (pointSupportedSubobject F Z)
-    ((pointSmallEtale (FibrewiseClosed.geometricPoint x)).skyscraperSheafAdjunction.unit.app F)
-    (pointSupportedSubobject_le_kernel F Z x hx)
+  exact Adjunction.kernelSupport_arrow_unit.{u + 1}
+    (fun x : X => (pointSmallEtale (FibrewiseClosed.geometricPoint x)).skyscraperSheafAdjunction
+      (A := Ab.{u + 1})) F Z x hx
 
 /-- The original stalk of the supported subobject is zero at each outside point. -/
 theorem pointSupportedSubobject_outside_stalk (Z : Set X) (x : X) (hx : x ∉ Z) :
@@ -80,28 +76,16 @@ theorem pointSupportedSubobject_outside_stalk (Z : Set X) (x : X) (hx : x ∉ Z)
       (pointSupportedSubobject F Z : AbelianSheaf.{u, u + 1} X)) := by
   let Φ := pointSmallEtale (FibrewiseClosed.geometricPoint x)
   let L := Φ.sheafFiber (A := Ab.{u + 1})
-  let a := (pointSupportedSubobject F Z).arrow
-  have hz := pointSupportedSubobject_arrow_unit F Z x hx
-  have h := congrArg (fun q => L.map q ≫ Φ.skyscraperSheafAdjunction.counit.app (L.obj F)) hz
-  have ht : L.map (Φ.skyscraperSheafAdjunction.unit.app F) ≫
-      Φ.skyscraperSheafAdjunction.counit.app (L.obj F) = 𝟙 (L.obj F) :=
-    Φ.skyscraperSheafAdjunction.left_triangle_components F
-  have hm : L.map a = 0 := by
-    change L.map (a ≫ Φ.skyscraperSheafAdjunction.unit.app F) ≫
-      Φ.skyscraperSheafAdjunction.counit.app (L.obj F) = L.map 0 ≫ _ at h
-    simpa only [CategoryTheory.Functor.map_comp, Category.assoc, ht,
-      Category.comp_id, CategoryTheory.Functor.map_zero, zero_comp] using h
-  let : Mono a := inferInstanceAs (Mono (pointSupportedSubobject F Z).arrow)
+  let : LocallySmall.{u} X.Etale := inferInstance
   let : HasFilteredColimitsOfSize.{u, u} AddCommGrpCat.{u + 1} :=
     hasFilteredColimitsOfSize_of_univLE.{u, u, u + 1, u + 1}
   let : AB5OfSize.{u, u} AddCommGrpCat.{u + 1} :=
     AB5OfSize_of_univLE.{u, u, u + 1, u + 1} _
   let : PreservesFiniteLimits L := inferInstanceAs
     (PreservesFiniteLimits (Φ.sheafFiber (A := Ab.{u + 1})))
-  apply AddCommGrpCat.isZero_iff_subsingleton.mpr
-  refine ⟨fun b c => ?_⟩
-  apply (AddCommGrpCat.mono_iff_injective (L.map a)).mp inferInstance
-  rw [hm]
-  rfl
+  let : L.PreservesMonomorphisms := inferInstance
+  exact Adjunction.kernelSupport_outside.{u + 1}
+    (fun x : X => (pointSmallEtale (FibrewiseClosed.geometricPoint x)).skyscraperSheafAdjunction
+      (A := Ab.{u + 1})) F Z x hx
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Curves

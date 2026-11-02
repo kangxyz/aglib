@@ -11,6 +11,15 @@ coefficient/torsor leaves compare actual finite-etale group schemes, coefficient
 sheaves and their canonical maps. They reuse the single generic continuous-H1
 quotient and its affine torsor carrier.
 
+The underlying Set-sheaf language is the actual `Scheme.EtaleTopos X` and its
+induced geometric morphism `Scheme.etaleToposMorphism f`, provided below H1 by
+`Sites/EtaleTopos`. `TorsorAdjunction` uses its direct image in the carrier-map
+data and extension lift; `SchemeTorsorBaseChange` uses it for the represented
+section map. The original section values and native units/counits are retained.
+Abelian and module coefficient images keep their actual coefficient
+adjunctions and universe ranges. `DegreeZeroPullback` obtains the constant/Gamma
+transport equation from the shared adjunction Hom-mate proof.
+
 `FundamentalGroupComparison` gives the finite-coefficient comparison with the
 specified fibre functor and marking. `MarkedComparisonTransport`, `Naturality`,
 `PointedNaturality`, `PointedFieldTransport`, `PointedCoefficientNaturality` and
@@ -22,6 +31,14 @@ theorem. The separate proper-henselian results below apply to every actual
 finite locally constant abelian sheaf and impose no order-invertibility premise.
 No supplier is inferred from the presence of an abstract classification
 interface.
+
+[FiniteTorsorRepresentation](FiniteTorsorRepresentation.lean) specializes the
+[generic slice trivialization](../../../CategoryTheory/Sites/Torsor/ChartTrivialization.lean)
+at the original etale test maps. Its chart components are the same
+`sectionEquiv` maps; geometric covers and the Stacks03RV representative remain
+in this family. [TorsorFunctoriality](TorsorFunctoriality.lean) specializes the
+[generic pushout and inverse-image class operations](../../../CategoryTheory/Sites/Torsor/Functoriality.lean),
+retaining native Stacks03AJ headers and independent Ext universes.
 
 Generic Kan extension and extension-pushout algebra live below this family in
 `CategoryTheory`; finite-etale sheaf descent lives in
@@ -52,3 +69,35 @@ The [all-coefficient stalk inverse-image comparison](../GeometricPoints/InverseI
 proves the original `stalkUnit` isomorphism for every standard-value abelian
 sheaf, independently of finite-local-constant or Ext hypotheses. This is a
 stalk comparison, not an H1 or proper-base-change theorem.
+
+[FiniteCoefficientClosure](FiniteCoefficientClosure.lean) supplies finite-power
+trivializations with the original charts, covering witnesses and finite values.
+Its categorical product comparison and value finiteness come from
+[the generic product leaf](../../../CategoryTheory/Sites/Pullback/FiniteProducts.lean).
+It also descends the same charts along an actual surjective étale map;
+`Fields/FiniteCokernelGeneral` retains its original field helper as a thin instance.
+
+[RepresentedCoefficients](RepresentedCoefficients.lean) obtains its original additive stalk evaluation and inverse from [the general point construction](../../../CategoryTheory/Sites/Point/RepresentedAdditive.lean). The coefficient group, field-valued point, lifted section values and original germs remain unchanged.
+
+[Naturality](Naturality.lean) defines stalk pullback by the inverse of the one original all-coefficient stalk-unit isomorphism and proves agreement with its represented coordinate view. [CoefficientStalkBaseChange](CoefficientStalkBaseChange.lean) and [PointedNaturality](PointedNaturality.lean) retain the actual unit, coefficient, section, point and action equations. The finite/Galois/marking hypotheses of the represented H1 comparison remain at their existing callers; the underlying all-coefficient stalk comparison is separate from H1 classification.
+
+## Represented and torsor constructions
+
+The original H1 maps, hypotheses and universe ranges use the general
+[representable](../../../CategoryTheory/Sites/Representable/README.md) and
+[torsor](../../../CategoryTheory/Sites/Torsors/README.md) constructions at the
+actual small-etale sites. These retain the selected source-specific topos data
+and the original actions, pullbacks and translation maps.
+[Kummer/RootStalk](../Kummer/RootStalk.lean) selects intrinsic fibre evaluation
+for the root-stalk action and proves its original root-marked scalar formula.
+
+[CyclicKilling](CyclicKilling.lean) constructs an actual surjective finite
+étale cover killing an original H¹ class of a finite locally constant
+abelian sheaf on any scheme. On a connected base it gives a connected Galois
+refinement.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [FiniteEtaleCoinduction](FiniteEtaleCoinduction.lean)

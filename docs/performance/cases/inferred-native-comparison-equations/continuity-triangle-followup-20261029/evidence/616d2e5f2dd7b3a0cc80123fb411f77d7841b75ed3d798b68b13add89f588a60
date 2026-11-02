@@ -1,0 +1,17 @@
+{
+  "question": "Remaining native right-square/triangle boundary at exact original maps",
+  "run": "remote-7d460a777767484d8999236e140a6ffe",
+  "source": "4a6f4a53cf41eefaa1a20593dd5ee43e148e9b1bc9d5c0eb5f4c6bc0d22310eb",
+  "native_source": "8d5300bfb51eacc4e94fce2b6b3a36a5925f32812c3daa34000d8d479c837b49",
+  "outcome": "FAILED489.583s; exacttype mismatch34 afterEqToHom-app simplification, unusedeqToHom_app33, kernel200k37/54; full logread",
+  "evidence": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-7d460a777767484d8999236e140a6ffe",
+  "formation_diagnostic": {
+    "source": "1126e06c76ee3df038d7bd044f9dca14daefe078973acf86a55093effd9a8164",
+    "run": "remote-2f15f0b9897649f3a410d48b9a3d7f7e",
+    "source_snapshot": "5a0dae30b0ed966e6adfbc12840595d2c8b49e8eb765bd3627f59ecdd26aaad4",
+    "native_setup": "93978a6f42bf6422a1453879986ab3d506234b1e990173f10c5239fe534ade41",
+    "outcome": "exit1ONLY2 file-header lints,10.386s,no type/kernel diagnostic; no clean formationPASS/originalproof/module coverage",
+    "boundary": "No rerun just for prose. Current inference targets proof specialization; no isolated statement-cost or unique kernel-cause claim."
+  },
+  "next_route": "v10 complete actual-comparison head factory +raw variable-category evaluation; normalize required projection views in factory/proof-input types before maps/proofs; no budget/suppression/premise change."
+}

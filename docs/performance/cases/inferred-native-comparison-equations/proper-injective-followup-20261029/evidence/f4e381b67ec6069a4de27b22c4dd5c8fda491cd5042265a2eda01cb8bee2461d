@@ -1,0 +1,48 @@
+{
+  "question": "Complete lower exact-coefficient injective-test assembly and thin original AllModuleCoefficients instantiation",
+  "phase": "R-only coherent candidate, ready for broker publication scheduling; not compiled",
+  "entry_head": "3467423400c765167730d4372704650a52ab3a95",
+  "aglib_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "fixed3_source_unchanged": "3dede325a048fde9dc106d7561dfb72e3e44a1fc1c469e6d6ae0988a558cbabd",
+  "compiler_owner": "/root/incremental_compile_recovery",
+  "author": "/root/proper_injective_assembly_author",
+  "write_scope_current": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/**",
+  "prospective_source_scope": [
+    "Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparisonExact.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean"
+  ],
+  "sources": [
+    {
+      "relative_path": "Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparisonExact.lean",
+      "candidate": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/candidate/Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparisonExact.lean",
+      "sha256": "c9ee952332ea060208cefe1cd392978fd244ea3735e1786a4873f2b00c6fd2cb",
+      "before": null,
+      "before_sha256": null
+    },
+    {
+      "relative_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean",
+      "candidate": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/candidate/Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean",
+      "sha256": "7f83a301df8be8fa8e35acba008626b8ff34a36a99c4be2b204da8425d232d89",
+      "before": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/before/Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean",
+      "before_sha256": "3ca8459c118eeba3e9195c2dc5b9f872ac0544b7277850bc6de002967e381049"
+    }
+  ],
+  "unchanged_core": {
+    "path": "Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparison.lean",
+    "sha256": "7e54af9098fc49f2b09564e30facada627d7ab8b4a05c89d0c460e8c1cd7fc6f"
+  },
+  "required_roots": [
+    "Aglib.Algebra.Homology.DerivedCategory.Plus.InjectiveComparisonExact",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.AllModuleCoefficients"
+  ],
+  "normal_incremental_command": "lake build +Aglib.Algebra.Homology.DerivedCategory.Plus.InjectiveComparisonExact +Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.AllModuleCoefficients",
+  "constraints": [
+    "No N publication until broker explicitly releases hold",
+    "No direct remote command by author",
+    "No Git/index/commit/push",
+    "standard200000/native options/pins/trust unchanged",
+    "No extra replay/client/audit cycle"
+  ],
+  "correspondence": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/CORRESPONDENCE.md",
+  "evidence": "Source construction only; compiler result pending"
+}

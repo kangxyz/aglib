@@ -62,65 +62,34 @@ namespace AlgebraicGeometry.Scheme.Modules.InternalHom
 universe u
 variable (X : Scheme.{u}) {M M' N N' : SheafOfModules.{u} X.ringCatSheaf}
 /-- Map internal Hom sheaves by precomposition in the source and postcomposition in the target. -/
-def map (a : M' ⟶ M) (b : N ⟶ N') : sheaf X M N ⟶ sheaf X M' N' where
-  val.app U := ModuleCat.ofHom {
-    toFun s := (sectionHomEquiv X M' N' U.unop).symm
-      ((SheafOfModules.overFunctor X.ringCatSheaf U.unop).map a ≫
-        sectionHomEquiv X M N U.unop s ≫
-        (SheafOfModules.overFunctor X.ringCatSheaf U.unop).map b)
-    map_add' s t := by
-      apply Subtype.ext
-      change (_ : RawHom X M' N' U.unop) = _
-      ext V m
-      exact (b.val.app (op V.unop.left)).hom.map_add _ _
-    map_smul' r s := by
-      apply Subtype.ext
-      change (_ : RawHom X M' N' U.unop) = _
-      ext V m
-      exact (b.val.app (op V.unop.left)).hom.map_smul _ _ }
-  val.naturality {U V} i := by
-    apply ModuleCat.hom_ext
-    apply LinearMap.ext
-    intro s
-    apply Subtype.ext
-    change (_ : RawHom X M' N' V.unop) = _
-    ext W m
-    rfl
+abbrev map (a : M' ⟶ M) (b : N ⟶ N') : sheaf X M N ⟶ sheaf X M' N' :=
+  SheafOfModules.InternalHom.map X.sheaf a b
+
+/-- The original coefficient map is the generic construction on the same arrows. -/
+theorem map_eq_generic (a : M' ⟶ M) (b : N ⟶ N') :
+    map X a b = SheafOfModules.InternalHom.map X.sheaf a b := rfl
+
 -- Keep the pointwise internal-Hom map rule; simpNF only unfolds its implicit component types.
 @[nolint simpNF, simp] theorem map_apply (a : M' ⟶ M) (b : N ⟶ N') (U : X.Opens)
     (s : (sheaf X M N).val.obj (op U)) (V : (Over U)ᵒᵖ)
     (m : M'.val.obj (op V.unop.left)) :
     ((map X a b).val.app (op U) s).val.app V m =
       b.val.app (op V.unop.left) (s.val.app V (a.val.app (op V.unop.left) m)) := rfl
-@[simp] theorem map_id : map X (𝟙 M) (𝟙 N) = 𝟙 (sheaf X M N) := by
-  apply SheafOfModules.hom_ext
-  ext U : 1
-  apply ModuleCat.hom_ext
-  apply LinearMap.ext
-  intro s
-  apply Subtype.ext
-  change (_ : RawHom X M N U.unop) = _
-  ext V m
-  rfl
+@[simp] theorem map_id : map X (𝟙 M) (𝟙 N) = 𝟙 (sheaf X M N) :=
+  SheafOfModules.InternalHom.map_id X.sheaf
 variable {M'' N'' : SheafOfModules.{u} X.ringCatSheaf}
 @[reassoc] theorem map_comp (a : M' ⟶ M) (b : N ⟶ N')
     (c : M'' ⟶ M') (d : N' ⟶ N'') :
-    map X a b ≫ map X c d = map X (c ≫ a) (b ≫ d) := by
-  apply SheafOfModules.hom_ext
-  ext U : 1
-  apply ModuleCat.hom_ext
-  apply LinearMap.ext
-  intro s
-  apply Subtype.ext
-  change (_ : RawHom X M'' N'' U.unop) = _
-  ext V m
-  rfl
+    map X a b ≫ map X c d = map X (c ≫ a) (b ≫ d) :=
+  SheafOfModules.InternalHom.map_comp X.sheaf a b c d
 /-- Transport the internal Hom sheaf along the specified source and target isomorphisms. -/
-def iso (e : M ≅ M') (f : N ≅ N') : sheaf X M N ≅ sheaf X M' N' where
-  hom := map X e.inv f.hom
-  inv := map X e.hom f.inv
-  hom_inv_id := by rw [map_comp, e.hom_inv_id, f.hom_inv_id, map_id]
-  inv_hom_id := by rw [map_comp, e.inv_hom_id, f.inv_hom_id, map_id]
+abbrev iso (e : M ≅ M') (f : N ≅ N') : sheaf X M N ≅ sheaf X M' N' :=
+  SheafOfModules.InternalHom.iso X.sheaf e f
+
+/-- The original coefficient isomorphism is the generic one on the same isomorphisms. -/
+theorem iso_eq_generic (e : M ≅ M') (f : N ≅ N') :
+    iso X e f = SheafOfModules.InternalHom.iso X.sheaf e f := rfl
+
 @[reassoc] theorem transpose_map (a : M' ⟶ M) (b : N ⟶ N') (φ : M ⟶ N) :
     transpose X φ ≫ map X a b = transpose X (a ≫ φ ≫ b) := by
   apply SheafOfModules.hom_ext

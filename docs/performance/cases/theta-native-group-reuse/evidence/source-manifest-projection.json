@@ -1,0 +1,22 @@
+{
+  "content_sha256": "3114ba4083e0dc539bf5009de9c42c939ee0d36b4175ede572fb7004bf4d904a",
+  "git_head": "4447b30aa15a87a61987cc427aa36d1343e7c57e",
+  "source_root": "/Users/kang/Documents/New project/tmp/work/jacobian/lane-refactor",
+  "workspace": "/root/autodl-tmp/lean-build/workspaces/managed-7a36fa7e1297-315a5e4a9466/lean",
+  "boundary": "Selected original source-manifest entries only; whole manifest is not duplicated.",
+  "original_manifest_sha256": "5005fb3983d1d8cf96fbf696a830b20dd2bbfdf2a893513bdd101b6a42703211",
+  "files": {
+    "Aglib/AlgebraicGeometry/Curves/Jacobian/Theta/Descent.lean": "a91c275011d229c8688dd89c27638a2ca56760a99dc0a7ae37c337cb155185cc",
+    "AglibTest/AlgebraicGeometry/Curves/Jacobian/Theta/Descent.lean": "241c2822d2464bb9fd3be16705ef30cb72f6e26ce37d0bc6e6bdf21db2b32788",
+    "Aglib/AlgebraicGeometry/Curves/Jacobian/Theta/Descent/FieldComparison.lean": "dc7bede6cfbafd989ca6181b7c05b21c4201017a86856bf9537a82b0fa0e1096",
+    "AglibTest/AlgebraicGeometry/Curves/Jacobian/Theta/Descent/FieldComparison.lean": "38bc0a4cadfb40c69fad6a09c5a8b0565438fe2a5b0c30ed0dfea2b7dd699387",
+    "Aglib/AlgebraicGeometry/Curves/Jacobian/Theta/Descent/FieldComparison/GeometricPositive.lean": "a2cfe7d92592e2f5b62680cadf0a0fb23974621fd7f02bfe536bd89127077bf5",
+    "AglibTest/AlgebraicGeometry/Curves/Jacobian/Theta/Descent/FieldComparison/GeometricPositive.lean": "b9377cfec35dfbbfee8750d809f32694a0642126d5c78bdd13c0427a12b9614f",
+    "Aglib/AlgebraicGeometry/AbelianScheme/OverField/LineBundle/SourcePullback.lean": "6d6e75baa5108aedcd6fa4f3275c6f9ad53995cada69e858fa5e065489ec6f0d",
+    "AglibTest/AlgebraicGeometry/AbelianScheme/OverField/LineBundle/SourcePullback.lean": "e5a21d1f08029174a3ff441a2aaabaf8a5954896ef44ed42aed0792788ebb79d",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+    "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+    "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+    "Aglib/AlgebraicGeometry/Picard/IdentityComponent.lean": "90be42de98a21960da8820094ff9f2b4f205d682520a20ffe0395a0582b3c548"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "basis_sha256": "48cabc494c9aba779b667c5b6fc4d4b235fae3af40c5479ddf25a5be273867f3",
+  "question": "Exact source ownership and original public-header preservation for the newly split native family; no compiler acceptance is inferred.",
+  "public_declaration_count": 29,
+  "original_public_names": [
+    "pushforward_quasiIso_of_flasque",
+    "quasiIso_of_isIso_Q_map",
+    "quasiIso_of_span",
+    "totalPlus_terms_isFlasque",
+    "openPushPlusIso",
+    "openPullPlusIso",
+    "open_geometric_unit",
+    "openTotalBridge",
+    "openTotalBridge_quasiIso",
+    "restrictedTotalPlus_flasque",
+    "restrictedPullbackPushforwardPlus",
+    "localPullbackPushforwardPlus",
+    "restrictedTotalPlus",
+    "openBaseChangeSpanTarget",
+    "restrictedPullbackPushforwardPlusUnit",
+    "openPullbackPushforwardComparison",
+    "openBaseChangeGlobalLeg",
+    "openBaseChangeLocalLeg",
+    "restrictedPullbackPushforwardPlusUnit_factor",
+    "openBaseChangeGlobalLeg_quasiIso",
+    "openBaseChangeLocalLeg_quasiIso",
+    "openTotalBridge_f",
+    "local_total_unit_component",
+    "open_component_first_square",
+    "open_component_second_square",
+    "open_unit_span_component",
+    "open_unit_span_factorized",
+    "open_unit_span",
+    "pullbackPushforwardPlusUnit_restrict_quasiIso"
+  ],
+  "changed_or_missing_headers": [],
+  "owners": {
+    "pushforward_quasiIso_of_flasque": "Basic",
+    "quasiIso_of_isIso_Q_map": "Basic",
+    "quasiIso_of_span": "Basic",
+    "totalPlus_terms_isFlasque": "Basic",
+    "openPushPlusIso": "Geometry",
+    "openPullPlusIso": "Geometry",
+    "open_geometric_unit": "Geometry",
+    "openTotalBridge": "Bridge",
+    "openTotalBridge_quasiIso": "Bridge",
+    "restrictedTotalPlus_flasque": "Bridge",
+    "openTotalBridge_f": "Bridge",
+    "restrictedPullbackPushforwardPlus": "SpanData",
+    "localPullbackPushforwardPlus": "SpanData",
+    "restrictedTotalPlus": "SpanData",
+    "openBaseChangeSpanTarget": "SpanData",
+    "restrictedPullbackPushforwardPlusUnit": "SpanData",
+    "openPullbackPushforwardComparison": "SpanData",
+    "openBaseChangeGlobalLeg": "SpanData",
+    "openBaseChangeLocalLeg": "SpanData",
+    "restrictedPullbackPushforwardPlusUnit_factor": "SpanData",
+    "openBaseChangeGlobalLeg_quasiIso": "SpanData",
+    "openBaseChangeLocalLeg_quasiIso": "SpanData",
+    "open_component_first_square": "FirstSquare",
+    "local_total_unit_component": "SecondSquare",
+    "open_component_second_square": "SecondSquare",
+    "open_unit_span_factorized": "Span",
+    "open_unit_span_component": "Span",
+    "open_unit_span": "Span",
+    "pullbackPushforwardPlusUnit_restrict_quasiIso": "Span"
+  },
+  "source_sha256": {
+    "Basic": "a3c32be2f1ef4768b058dc006c5c79446b643a6d298f2967a99858839142ead0",
+    "Geometry": "8b2bb306df1a7fc007f2c37e7eb52146e7d3858c7d314b63122cef0708a48537",
+    "Bridge": "ed96fbf7d031ec78c541d5eabdb225e8b98efeb884df7a1ba147597abcc0fd47",
+    "SpanData": "3241adae150f33d252df65728316fa92ed5613387ef79caa63844188f17821df",
+    "FirstSquare": "f5b264357254605e1124c194f7b2c31e3d9af87779502a7fdecbb76263f6bb94",
+    "SecondSquare": "d1b33f84ed591e0a79c5085d695ed61b2f9e76928cd11e4969250fbad8c840b8",
+    "Span": "1a16c95ff69560297946bea77015734d639c9f9298e1431fe9ef7e28dfe290a1"
+  },
+  "standard_constructor_occurrences": {
+    "Basic": 2,
+    "Geometry": 0,
+    "Bridge": 0,
+    "SpanData": 0,
+    "FirstSquare": 0,
+    "SecondSquare": 0,
+    "Span": 0
+  },
+  "standard_names": [
+    "AlgebraicGeometry.Scheme.Modules.Plus.openBaseChangeDerivedStandard",
+    "AlgebraicGeometry.Scheme.Modules.Godement.openBaseChangeDerivedStandard"
+  ],
+  "dag": {
+    "Basic": "original providers",
+    "Geometry": "original ordinary functoriality/complex providers",
+    "Bridge": [
+      "Basic",
+      "Geometry"
+    ],
+    "SpanData": [
+      "Bridge"
+    ],
+    "FirstSquare": [
+      "Geometry",
+      "existing TotalComplex.QuasiIso",
+      "UnitInsertionSpan"
+    ],
+    "SecondSquare": [
+      "SpanData",
+      "UnitInsertionSpan"
+    ],
+    "Span": [
+      "SpanData",
+      "UnitInsertionSpan"
+    ],
+    "compatibility_facade": [
+      "FirstSquare",
+      "SecondSquare",
+      "Span"
+    ]
+  },
+  "runtime_boundary": "The first coalesced leaf graph may capture legacydde71 before its facade replacement, but it targets only the new proof leaves; the legacy root is not part of their import closure. Facade compilation remains a distinct required changed-root gap after source publication."
+}

@@ -9,6 +9,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.Galo
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisOverlap
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.EtaleSectionDescent
 public import Mathlib.RepresentationTheory.Invariants
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.InvariantSections
 
 /-! # Original module sections as deck invariants
 
@@ -61,21 +62,17 @@ theorem finiteEtaleTerminalMap_covering (Y : Scheme.FiniteEtale X)
 theorem finiteEtaleGlobalRestriction_invariant (F : ModuleSheaf R X)
     (Y : Scheme.FiniteEtale X) (s : (moduleGlobalSections R X).obj F) :
     finiteEtaleGlobalRestriction F Y s ∈ (finiteEtaleSectionsRepresentation F Y).invariants := by
-  intro σ
-  change F.obj.map ((toEtale X).map σ.inv).op
-      (F.obj.map (finiteEtaleTerminalMap Y).op s) = _
-  rw [← ModuleCat.comp_apply, ← CategoryTheory.Functor.map_comp, ← op_comp]
-  have h : (toEtale X).map σ.inv ≫ finiteEtaleTerminalMap Y =
-      finiteEtaleTerminalMap Y := (etaleTerminalIsTerminal X).hom_ext _ _
-  rw [h]
-  rfl
+  exact ModuleCat.Sheaf.ConstantRing.sectionRestriction_invariant F
+    (Functor.mapAut Y (toEtale X)) (finiteEtaleTerminalMap Y)
+    (fun _ => (etaleTerminalIsTerminal X).hom_ext _ _) s
 
 /-- Restriction with codomain the native invariant submodule. -/
 def finiteEtaleInvariantRestriction (F : ModuleSheaf R X) (Y : Scheme.FiniteEtale X) :
     (moduleGlobalSections R X).obj F ⟶
       ModuleCat.of R (finiteEtaleSectionsRepresentation F Y).invariants :=
-  ModuleCat.ofHom (LinearMap.codRestrict _ (finiteEtaleGlobalRestriction F Y).hom
-    (finiteEtaleGlobalRestriction_invariant F Y))
+  ModuleCat.Sheaf.ConstantRing.invariantRestriction F
+    (Functor.mapAut Y (toEtale X)) (finiteEtaleTerminalMap Y)
+    (fun _ => (etaleTerminalIsTerminal X).hom_ext _ _)
 
 /-- Forgetting invariance gives exactly the original restriction map. -/
 @[reassoc (attr := simp)]
@@ -84,6 +81,41 @@ theorem finiteEtaleInvariantRestriction_subtype (F : ModuleSheaf R X)
     finiteEtaleInvariantRestriction F Y ≫
       ModuleCat.ofHom (finiteEtaleSectionsRepresentation F Y).invariants.subtype =
         finiteEtaleGlobalRestriction F Y := rfl
+
+/-- The selected original self-overlap is the native pullback in the small-etale site. -/
+theorem finiteEtaleOverlap_isPullback (Y : Scheme.FiniteEtale X) :
+    IsPullback ((toEtale X).map (productFirst Y Y))
+      ((toEtale X).map (productSecond Y Y))
+      (finiteEtaleTerminalMap Y) (finiteEtaleTerminalMap Y) := by
+  let lift : ∀ s : PullbackCone (finiteEtaleTerminalMap Y) (finiteEtaleTerminalMap Y),
+      s.pt ⟶ (toEtale X).obj (productCover Y Y) := fun s =>
+    MorphismProperty.Over.homMk
+      (pullback.lift s.fst.left s.snd.left
+        ((MorphismProperty.Over.w s.fst).trans (MorphismProperty.Over.w s.snd).symm)) (by
+        change pullback.lift _ _ _ ≫ (pullback.fst _ _ ≫ Y.obj.hom) = s.pt.hom
+        rw [← Category.assoc, pullback.lift_fst]
+        exact MorphismProperty.Over.w s.fst) (by trivial)
+  have hl₁ (s : PullbackCone (finiteEtaleTerminalMap Y) (finiteEtaleTerminalMap Y)) :
+      lift s ≫ (toEtale X).map (productFirst Y Y) = s.fst := by
+    apply MorphismProperty.Over.Hom.ext
+    exact pullback.lift_fst _ _ _
+  have hl₂ (s : PullbackCone (finiteEtaleTerminalMap Y) (finiteEtaleTerminalMap Y)) :
+      lift s ≫ (toEtale X).map (productSecond Y Y) = s.snd := by
+    apply MorphismProperty.Over.Hom.ext
+    exact pullback.lift_snd _ _ _
+  apply IsPullback.of_isLimit
+    (c := PullbackCone.mk ((toEtale X).map (productFirst Y Y))
+      ((toEtale X).map (productSecond Y Y)) ((etaleTerminalIsTerminal X).hom_ext _ _))
+  refine PullbackCone.IsLimit.mk ((etaleTerminalIsTerminal X).hom_ext _ _) lift hl₁ hl₂ ?_
+  intro s m h₁ h₂
+  apply MorphismProperty.Over.Hom.ext
+  apply pullback.hom_ext
+  · change (m ≫ (toEtale X).map (productFirst Y Y)).left =
+      (lift s ≫ (toEtale X).map (productFirst Y Y)).left
+    exact congrArg (fun f => f.left) (h₁.trans (hl₁ s).symm)
+  · change (m ≫ (toEtale X).map (productSecond Y Y)).left =
+      (lift s ≫ (toEtale X).map (productSecond Y Y)).left
+    exact congrArg (fun f => f.left) (h₂.trans (hl₂ s).symm)
 
 variable [ConnectedSpace X] (Y : Scheme.FiniteEtale X) [PreGaloisCategory.IsGalois Y]
 
@@ -101,13 +133,16 @@ theorem invariantLinearSection_overlap (F : ModuleSheaf R X) {E : ModuleCat.{u +
     (ha : ∀ σ : Aut Y, a ≫ F.obj.map ((toEtale X).map σ.hom).op = a) :
     a ≫ F.obj.map ((toEtale X).map (productFirst Y Y)).op =
       a ≫ F.obj.map ((toEtale X).map (productSecond Y Y)).op := by
-  apply F.property.hom_ext_ofArrows
+  apply ModuleCat.Sheaf.ConstantRing.invariantSection_overlap F
+    (Functor.mapAut Y (toEtale X))
+    ((toEtale X).map (productFirst Y Y)) ((toEtale X).map (productSecond Y Y))
     (fun σ => (toEtale X).map (galoisOverlapGraph Y σ)) (galoisOverlapGraph_covering Y)
-  intro σ
-  simp only [Category.assoc, ← CategoryTheory.Functor.map_comp, ← op_comp,
-    galoisOverlapGraph_fst, galoisOverlapGraph_snd,
-    CategoryTheory.Functor.map_id, op_id, Category.comp_id]
-  exact (ha σ).symm
+    _ _ a ha
+  · intro σ
+    rw [← Functor.map_comp, galoisOverlapGraph_fst, CategoryTheory.Functor.map_id]
+  · intro σ
+    rw [← Functor.map_comp, galoisOverlapGraph_snd]
+    rfl
 
 /-- Pairwise compatibility for the original single-cover sheaf condition. -/
 theorem invariantLinearSection_compatible (F : ModuleSheaf R X)
@@ -115,22 +150,11 @@ theorem invariantLinearSection_compatible (F : ModuleSheaf R X)
     (ha : ∀ σ : Aut Y, a ≫ F.obj.map ((toEtale X).map σ.hom).op = a)
     {W : X.Etale} (b c : W ⟶ (toEtale X).obj Y) :
     a ≫ F.obj.map b.op = a ≫ F.obj.map c.op := by
-  let k : W ⟶ (toEtale X).obj (productCover Y Y) :=
-    MorphismProperty.Over.homMk
-      (pullback.lift b.left c.left
-        ((MorphismProperty.Over.w b).trans (MorphismProperty.Over.w c).symm)) (by
-        change pullback.lift _ _ _ ≫ (pullback.fst _ _ ≫ Y.obj.hom) = W.hom
-        rw [← Category.assoc, pullback.lift_fst]
-        exact MorphismProperty.Over.w b) (by trivial)
-  have hk₁ : k ≫ (toEtale X).map (productFirst Y Y) = b := by
-    apply MorphismProperty.Over.Hom.ext
-    exact pullback.lift_fst _ _ _
-  have hk₂ : k ≫ (toEtale X).map (productSecond Y Y) = c := by
-    apply MorphismProperty.Over.Hom.ext
-    exact pullback.lift_snd _ _ _
-  rw [← hk₁, ← hk₂, op_comp, op_comp, CategoryTheory.Functor.map_comp,
-    CategoryTheory.Functor.map_comp, ← Category.assoc, ← Category.assoc,
-    invariantLinearSection_overlap Y F a ha]
+  exact ModuleCat.Sheaf.ConstantRing.invariantSection_compatible F
+    (Functor.mapAut Y (toEtale X)) (finiteEtaleTerminalMap Y)
+    ((toEtale X).map (productFirst Y Y)) ((toEtale X).map (productSecond Y Y))
+    (finiteEtaleOverlap_isPullback Y) (invariantLinearSection_overlap Y F) a ha b c
+    ((etaleTerminalIsTerminal X).hom_ext _ _)
 
 variable [Surjective Y.obj.hom]
 
@@ -139,9 +163,11 @@ def invariantLinearSectionDescend (F : ModuleSheaf R X) {E : ModuleCat.{u + 1} R
     (a : E ⟶ finiteEtaleSections F Y)
     (ha : ∀ σ : Aut Y, a ≫ F.obj.map ((toEtale X).map σ.hom).op = a) :
     E ⟶ (moduleGlobalSections R X).obj F :=
-  F.property.amalgamateOfArrows (fun _ : Unit => finiteEtaleTerminalMap Y)
-    (finiteEtaleTerminalMap_covering Y) (fun _ => a)
-    (fun _ _ _ b c _ => invariantLinearSection_compatible Y F a ha b c)
+  ModuleCat.Sheaf.ConstantRing.invariantSectionDescend F
+    (Functor.mapAut Y (toEtale X)) (finiteEtaleTerminalMap Y)
+    (finiteEtaleTerminalMap_covering Y)
+    ((toEtale X).map (productFirst Y Y)) ((toEtale X).map (productSecond Y Y))
+    (finiteEtaleOverlap_isPullback Y) (invariantLinearSection_overlap Y F) a ha
 
 /-- The descended linear map restricts to the supplied original map exactly. -/
 @[reassoc (attr := simp)]
@@ -149,9 +175,11 @@ theorem invariantLinearSectionDescend_restriction (F : ModuleSheaf R X)
     {E : ModuleCat.{u + 1} R} (a : E ⟶ finiteEtaleSections F Y)
     (ha : ∀ σ : Aut Y, a ≫ F.obj.map ((toEtale X).map σ.hom).op = a) :
     invariantLinearSectionDescend Y F a ha ≫ finiteEtaleGlobalRestriction F Y = a :=
-  F.property.amalgamateOfArrows_map (fun _ : Unit => finiteEtaleTerminalMap Y)
-    (finiteEtaleTerminalMap_covering Y) (fun _ => a)
-    (fun _ _ _ b c _ => invariantLinearSection_compatible Y F a ha b c) ()
+  ModuleCat.Sheaf.ConstantRing.invariantSectionDescend_restriction F
+    (Functor.mapAut Y (toEtale X)) (finiteEtaleTerminalMap Y)
+    (finiteEtaleTerminalMap_covering Y)
+    ((toEtale X).map (productFirst Y Y)) ((toEtale X).map (productSecond Y Y))
+    (finiteEtaleOverlap_isPullback Y) (invariantLinearSection_overlap Y F) a ha
 
 omit [ConnectedSpace X] [PreGaloisCategory.IsGalois Y] [Surjective Y.obj.hom] in
 /-- The native invariant-submodule inclusion is fixed under original deck restriction. -/
@@ -159,8 +187,8 @@ theorem invariantSections_subtype_fixed (F : ModuleSheaf R X) (σ : Aut Y) :
     ModuleCat.ofHom (finiteEtaleSectionsRepresentation F Y).invariants.subtype ≫
       F.obj.map ((toEtale X).map σ.hom).op =
         ModuleCat.ofHom (finiteEtaleSectionsRepresentation F Y).invariants.subtype := by
-  ext s
-  exact s.property σ⁻¹
+  exact ModuleCat.Sheaf.ConstantRing.invariantSections_subtype_fixed F
+    (Functor.mapAut Y (toEtale X)) σ
 
 /-- Descent of the original invariant submodule, directly in ModuleCat R. -/
 def finiteEtaleInvariantDescent (F : ModuleSheaf R X) :
@@ -173,23 +201,13 @@ def finiteEtaleInvariantDescent (F : ModuleSheaf R X) :
 /-- Original global sections are precisely original invariant cover sections. -/
 def finiteEtaleInvariantSectionsIso (F : ModuleSheaf R X) :
     (moduleGlobalSections R X).obj F ≅
-      ModuleCat.of R (finiteEtaleSectionsRepresentation F Y).invariants where
-  hom := finiteEtaleInvariantRestriction F Y
-  inv := finiteEtaleInvariantDescent Y F
-  hom_inv_id := by
-    apply F.property.hom_ext_ofArrows (fun _ : Unit => finiteEtaleTerminalMap Y)
-      (finiteEtaleTerminalMap_covering Y)
-    intro i
-    change (finiteEtaleInvariantRestriction F Y ≫ finiteEtaleInvariantDescent Y F) ≫
-      finiteEtaleGlobalRestriction F Y = 𝟙 _ ≫ finiteEtaleGlobalRestriction F Y
-    rw [Category.assoc, finiteEtaleInvariantDescent, invariantLinearSectionDescend_restriction,
-      finiteEtaleInvariantRestriction_subtype, Category.id_comp]
-  inv_hom_id := by
-    ext s
-    exact ConcreteCategory.congr_hom
-      (invariantLinearSectionDescend_restriction Y F
-        (ModuleCat.ofHom (finiteEtaleSectionsRepresentation F Y).invariants.subtype)
-        (invariantSections_subtype_fixed Y F)) s
+      ModuleCat.of R (finiteEtaleSectionsRepresentation F Y).invariants :=
+  ModuleCat.Sheaf.ConstantRing.invariantSectionsIso F
+    (Functor.mapAut Y (toEtale X)) (finiteEtaleTerminalMap Y)
+    (finiteEtaleTerminalMap_covering Y)
+    ((toEtale X).map (productFirst Y Y)) ((toEtale X).map (productSecond Y Y))
+    (finiteEtaleOverlap_isPullback Y) (invariantLinearSection_overlap Y F)
+    (fun _ => (etaleTerminalIsTerminal X).hom_ext _ _)
 
 /-- The R-linear equivalence retains the original global-section module. -/
 def finiteEtaleInvariantSectionsLinearEquiv (F : ModuleSheaf R X) :

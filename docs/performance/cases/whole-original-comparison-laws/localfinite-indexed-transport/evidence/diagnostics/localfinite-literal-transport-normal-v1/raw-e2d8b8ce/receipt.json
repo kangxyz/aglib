@@ -1,0 +1,384 @@
+{
+  "action": "phase",
+  "actor_executable": "/root/miniconda3/bin/python3.12",
+  "admission": {
+    "ceilings": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+    "final_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-b1fa15a22d7d4e3f94ece0a33e4fcf66": 2,
+        "/root/autodl-tmp/lean-build/logs/remote-c68725405af94990877ec9301f35c90d": 1,
+        "/root/autodl-tmp/lean-build/logs/remote-e112c341d9934afaa492b4736685a87c": 1
+      },
+      "cpu_cores": 5.232644450592196,
+      "cpu_usage_usec": 2120210310633,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 5368709120,
+      "memory_current_bytes": 46975062016,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 0.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 38062940160
+    },
+    "initial_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-b1fa15a22d7d4e3f94ece0a33e4fcf66": 3
+      },
+      "cpu_cores": 4.093363558363972,
+      "cpu_usage_usec": 2119603049497,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 4294967296,
+      "memory_current_bytes": 45997080576,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 1.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 37101416448
+    },
+    "max_frontends_if_alone": 8,
+    "mode": "elastic"
+  },
+  "allow_library_roots": false,
+  "cache_provenance": {
+    "configuration_sha256": {
+      "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+      "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852"
+    },
+    "environment": {
+      "LAKE_ARTIFACT_CACHE": "true",
+      "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+      "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+    },
+    "lookup": "native Lake traces/artifact cache; no per-dependency prior-hit claim"
+  },
+  "cgroup_average_cpu_cores": 5.486097291859069,
+  "cgroup_cpu_after": {
+    "nr_periods": 8243377,
+    "nr_throttled": 27053,
+    "system_usec": 182583153319,
+    "throttled_usec": 313477514,
+    "usage_usec": 2120210311689,
+    "user_usec": 1937627158370
+  },
+  "cgroup_cpu_attribution": "whole observed cgroup; may include unrelated activity",
+  "cgroup_cpu_before": {
+    "nr_periods": 8242270,
+    "nr_throttled": 27053,
+    "system_usec": 182536650503,
+    "throttled_usec": 313477514,
+    "usage_usec": 2119603066685,
+    "user_usec": 1937066416182
+  },
+  "cgroup_cpu_seconds_delta": 607.245004,
+  "cgroup_memory_events_after": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_before": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_delta": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "command": [
+    "/root/miniconda3/bin/python3.12",
+    "-c",
+    "import os,subprocess,json,hashlib,base64,sys,time\nfrom pathlib import Path\nw=Path.cwd();run=Path(os.environ.get(\"LEAN\")or os.environ[\"LAKE_OVERRIDE_LEAN\"]).parents[2]\nstate=json.loads((w.parent/\"SOURCE.json\").read_text());assert state[\"content_sha256\"]==\"a6900933b6f95bed43897ed4902dc03cefad54333bf4b53801386ef5f77d396d\"\nowner=w/'Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean';assert hashlib.sha256(owner.read_bytes()).hexdigest()=='655b2ec9420861b503e7f1bb59d54ad4983c801f67161fc6bf6d603b0c9841d6'\nfor p,h in {'Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/NoetherianComparison.lean': '1fb7e6de2eae0048b2be4bbb8521f52d35e5eacf640d48418144f467c6c575d0', 'Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/ProjectiveLineTests.lean': '837a76146e11b6373bcadef48cbe5832f03e243b468ccc8e58d393354d632195', 'Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean': 'b62f08cb91e253f3e3457699cabe925756eb4755039c610ea0f91e83920d3261', 'Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection.lean': '8856b0f8b5ba12512ef628a1d6fe4cfa2b0d7fcd041563cf3989bc316b7a74db'}.items():assert hashlib.sha256((w/p).read_bytes()).hexdigest()==h\nfor p,h in {'lake-manifest.json': '4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2', 'lakefile.toml': '74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852', 'lean-toolchain': 'd5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b'}.items():assert hashlib.sha256((w/p).read_bytes()).hexdigest()==h\nblob=base64.b64decode('Ly0KQ29weXJpZ2h0IChjKSAyMDI2IEFnbGliIGNvbnRyaWJ1dG9ycy4gQWxsIHJpZ2h0cyByZXNlcnZlZC4KUmVsZWFzZWQgdW5kZXIgQXBhY2hlIDIuMCBsaWNlbnNlIGFzIGRlc2NyaWJlZCBpbiB0aGUgZmlsZSBMSUNFTlNFLgpBdXRob3JzOiBrYW5neHl6Ci0vCm1vZHVsZQoKcHVibGljIGltcG9ydCBBZ2xpYi5BbGdlYnJhaWNHZW9tZXRyeS5FdGFsZUNvaG9tb2xvZ3kuUHJvcGVyLkxvY2FsLk5vZXRoZXJpYW5Db21wYXJpc29uCnB1YmxpYyBpbXBvcnQgQWdsaWIuQWxnZWJyYWljR2VvbWV0cnkuRXRhbGVDb2hvbW9sb2d5LlByb3Blci5Mb2NhbC5Qcm9qZWN0aXZlTGluZVRlc3RzCnB1YmxpYyBpbXBvcnQgTWF0aGxpYi5Hcm91cFRoZW9yeS5PcmRlck9mRWxlbWVudApwdWJsaWMgaW1wb3J0IEFnbGliLkNhdGVnb3J5VGhlb3J5LkFiZWxpYW4uRXh0Lk9yaWdpbmFsQ29tcGFyaXNvblZhbHVlcwpwdWJsaWMgaW1wb3J0IEFnbGliLkNhdGVnb3J5VGhlb3J5LlNpdGVzLlNoZWFmQ29ob21vbG9neS5Tb3VyY2VTZWN0aW9uCgovLSEgIyBMaXRlcmFsIG9yaWdpbmFsIGludmVyc2Utc291cmNlIHRyYW5zcG9ydAoKRXF1YWxpdHkgb2YgdGhlIG9yaWdpbmFsIGluZGV4IHRyYW5zcG9ydHMgYSBzb3VyY2UtYXJyb3cgZmFtaWx5IGFuZCBhbiBvcmlnaW5hbApjb21wYXJpc29uIGlzb21vcnBoaXNtLiBUaGUgdGFyZ2V0IG1vcnBoaXNtIGlzIHJldGFpbmVkIGFzIGl0cyBsaXRlcmFsIGlucHV0CnZhbHVlLiBUaGUgbmF0aXZlIHRoZW9yZW0gaXMgdGhlIHNhbWUgZnVsbCBvcmRpbmFyeSBzb3VyY2UgZXF1YXRpb24gYXMgdGhlIFYyOAp0ZXN0OyBpdHMgcHJvb2YgZG9lcyBub3QgcmVjb25zdHJ1Y3Qgc291cmNlIGZ1bmN0b3JzIG9yIHNvdXJjZSBpc29tb3JwaGlzbXMgaW4KdGhlIGdlbmVyaWMgdHJhbnNwb3J0IHRlbGVzY29wZS4KLS8KCkBbZXhwb3NlXSBwdWJsaWMgbm9uY29tcHV0YWJsZSBzZWN0aW9uCgpvcGVuIENhdGVnb3J5VGhlb3J5IENhdGVnb3J5VGhlb3J5LkxpbWl0cwoKbmFtZXNwYWNlIENhdGVnb3J5VGhlb3J5LkZ1bmN0b3IKCnVuaXZlcnNlIHVJIHVDIHZDIHVEIHZECgovLS0gVHJhbnNwb3J0IGFuIG9yaWdpbmFsIHBvaW50d2lzZSBzb3VyY2UgZmFtaWx5LCByZXRhaW5pbmcgdGhlIG9yaWdpbmFsCmNvbXBhcmlzb24gaXNvbW9ycGhpc20gYW5kIHRoZSBsaXRlcmFsIHRhcmdldCBtb3JwaGlzbS4gLS8KdGhlb3JlbSBzb3VyY2VJbnZlcnNlX2NvbXBvc2l0ZV90cmFuc3BvcnRfb2ZfYXJyb3dzCiAgICB7SSA6IFR5cGUgdUl9IHtDIDogVHlwZSB1Q30gW0NhdGVnb3J5Lnt2Q30gQ10KICAgIHtEIDogVHlwZSB1RH0gW0NhdGVnb3J5Lnt2RH0gRF0KICAgIChLIDogSSDihpIgQyDipaQgRCkge1UgOiBDfSB7ViA6IER9CiAgICAocyA6IChpIDogSSkg4oaSIFYg4p+2IChLIGkpLm9iaiBVKQogICAge2kgaiA6IEl9IChoIDogaSA9IGopIHtRIDogQyDipaQgRH0gKGMgOiBLIGog4omFIFEpCiAgICAociA6IFYg4p+2IFEub2JqIFUpIChoYyA6IHMgaiDiiasgYy5ob20uYXBwIFUgPSByKSA6CiAgICBzIGkg4omrIChlcVRvSXNvIChjb25nckFyZyBLIGgpIOKJquKJqyBjKS5ob20uYXBwIFUgPSByIDo9IGJ5CiAgY2FzZXMgaAogIHNpbXBhIG9ubHkgW2VxVG9Jc29fcmVmbCwgSXNvLnJlZmxfdHJhbnNdIHVzaW5nIGhjCgplbmQgQ2F0ZWdvcnlUaGVvcnkuRnVuY3RvcgoKbmFtZXNwYWNlIEFsZ2VicmFpY0dlb21ldHJ5LlNjaGVtZS5FdGFsZUNvaG9tb2xvZ3kuUHJvcGVyCgp1bml2ZXJzZSB1CgphdHRyaWJ1dGUgW2xvY2FsIGluc3RhbmNlXSBoYXNTaGVhZmlmeUxhcmdlCgovLS0gVGhlIGxpdGVyYWwgb3JpZ2luYWwgb3JkaW5hcnkgc291cmNlIGVxdWF0aW9uIGZvbGxvd3MgZnJvbSB0aGUgb3JpZ2luYWwKY29tcG9zaXRpb24gZXF1YXRpb24gYW5kIGVxdWFsaXR5IHRyYW5zcG9ydCBvZiBpdHMgYWN0dWFsIHNvdXJjZS1hcnJvdyBmYW1pbHkuIC0vCnRoZW9yZW0gZGlhZ19vcmlnaW5hbF9zb3VyY2VTZWNvbmRfbGl0ZXJhbAogICAge1ggUyBYJyBTJyA6IFNjaGVtZS57dX19CiAgICAoZiA6IFgg4p+2IFMpIChmJyA6IFgnIOKftiBTJykgKGcgOiBTJyDin7YgUykgKGcnIDogWCcg4p+2IFgpCiAgICAoaCA6IGYnIOKJqyBnID0gZycg4omrIGYpIChBIDogQWRkQ29tbUdycENhdC57dSArIDF9KSA6CiAgICAoKGludmVyc2VJbWFnZUNvbnN0YW50SXNvIChmJyDiiasgZykpLmFwcCBBKS5pbnYg4omrCiAgICAgICAgKGVxVG9Jc28gKGNvbmdyQXJnIChmdW4gayA6IFgnIOKftiBTID0+IGludmVyc2VJbWFnZSBrKSBoKSDiiariiasKICAgICAgICAgIGludmVyc2VJbWFnZUNvbXAgZiBnJykuaG9tLmFwcAogICAgICAgICAgICAoKGNvbnN0YW50U2hlYWYgKFNjaGVtZS5zbWFsbEV0YWxlVG9wb2xvZ3kgUykgQWRkQ29tbUdycENhdC57dSArIDF9KS5vYmogQSkgPQogICAgICAoKGludmVyc2VJbWFnZUNvbnN0YW50SXNvIGcnKS5hcHAgQSkuaW52IOKJqwogICAgICAgIChpbnZlcnNlSW1hZ2UgZycpLm1hcCAoKGludmVyc2VJbWFnZUNvbnN0YW50SXNvIGYpLmFwcCBBKS5pbnYgOj0gYnkKICBoYXZlIGhTb3VyY2VDb21wIDo9IGludmVyc2VJbWFnZUNvbXBfY29uc3RhbnRfaW52IGYgZycgQQogIGV4YWN0IEZ1bmN0b3Iuc291cmNlSW52ZXJzZV9jb21wb3NpdGVfdHJhbnNwb3J0X29mX2Fycm93cwogICAgKGZ1biBrIDogWCcg4p+2IFMgPT4gaW52ZXJzZUltYWdlIGspCiAgICAoZnVuIGsgPT4gKChpbnZlcnNlSW1hZ2VDb25zdGFudElzbyBrKS5hcHAgQSkuaW52KSBoCiAgICAoaW52ZXJzZUltYWdlQ29tcCBmIGcnKQogICAgKCgoaW52ZXJzZUltYWdlQ29uc3RhbnRJc28gZycpLmFwcCBBKS5pbnYg4omrCiAgICAgIChpbnZlcnNlSW1hZ2UgZycpLm1hcCAoKGludmVyc2VJbWFnZUNvbnN0YW50SXNvIGYpLmFwcCBBKS5pbnYpCiAgICBoU291cmNlQ29tcAoKZW5kIEFsZ2VicmFpY0dlb21ldHJ5LlNjaGVtZS5FdGFsZUNvaG9tb2xvZ3kuUHJvcGVyCg==');assert hashlib.sha256(blob).hexdigest()=='86fe6ef137da28646e37604b649306d22e78d0cb540a45192bfd7345e6b7674d';src=run/\"LiteralOriginalSourceTransport.lean\";src.write_bytes(blob)\ndef setup(path,label):\n p=subprocess.run([os.environ[\"LAKE\"],\"--no-build\",\"setup-file\",str(path)],text=True,capture_output=True);(run/(label+\".stderr.log\")).write_text(p.stderr)\n if p.returncode:print(p.stdout+p.stderr,flush=True);sys.exit(p.returncode)\n x=json.loads(p.stdout);(run/(label+\".json\")).write_text(json.dumps(x,indent=2)+\"\\n\");return x\nactual=setup(owner,\"ACTUAL-NATIVE-SETUP\");external=setup(src,\"EXTERNAL-SCRATCH-SETUP\");new=dict(external)\nfor k in [\"name\",\"isModule\",\"options\",\"package\"]:new[k]=actual[k]\nassert new[\"name\"]=='Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.LocalFiniteComparison'and new[\"isModule\"]is True and new[\"options\"]=={'autoImplicit': False, 'warningAsError': True, 'weak.linter.mathlibStandardSet': True, 'weak.linter.style.longFile': 1500}\nassert set(new[\"importArts\"])==set(actual[\"importArts\"])\nsp=run/\"NORMAL-TRANSPORT-SETUP.json\";sp.write_text(json.dumps(new,indent=2)+\"\\n\");print(\"LITERAL_TRANSPORT_BINDING \"+json.dumps({\"source\":state[\"content_sha256\"],\"native_sha256\":'655b2ec9420861b503e7f1bb59d54ad4983c801f67161fc6bf6d603b0c9841d6',\"scratch_sha256\":'86fe6ef137da28646e37604b649306d22e78d0cb540a45192bfd7345e6b7674d',\"options\":new[\"options\"],\"name\":new[\"name\"],\"isModule\":new[\"isModule\"],\"setup_sha256\":hashlib.sha256(sp.read_bytes()).hexdigest(),\"meaning\":\"Normal proof of exact original ordinary sourceSecond with reduced pointwise-source-arrow transport helper; noHasExt/F/q, no fullLocalFinite/nativeCPP claim.\"}),flush=True)\ncmd=[os.environ[\"LEAN\"],str(src),\"--setup\",str(sp),\"--json\",\"-j4\",\"-M12800\",\"-o\",str(run/\"LiteralOriginalSourceTransport.olean\"),\"-i\",str(run/\"LiteralOriginalSourceTransport.ilean\")];start=time.monotonic();p=subprocess.run(cmd);print(\"LITERAL_TRANSPORT_RESULT \"+json.dumps({\"exit\":p.returncode,\"wall_seconds\":time.monotonic()-start}),flush=True);sys.exit(p.returncode)\n"
+  ],
+  "command_exit_code": 1,
+  "compiler_exit_codes": [
+    1
+  ],
+  "compiler_failed": 1,
+  "compiler_invocations": 1,
+  "compiler_observation": "wrapper-events-only",
+  "compiler_scope_lease_modes": {
+    "supervisor-only": 1
+  },
+  "compiler_scope_policy": "workspace descriptors or verified live supervisor; each compiler inherits its elastic claim",
+  "compiler_succeeded": 0,
+  "concurrency_basis": "compiler wrapper start/finish intervals, each holding one slot",
+  "diagnostics": {
+    "categories": {},
+    "first": [],
+    "observed_missing_count": 0,
+    "observed_missing_prefixes": {},
+    "observed_missing_prefixes_truncated": false,
+    "observed_missing_shortlist": []
+  },
+  "elapsed_seconds": 110.68797574937344,
+  "environment": {
+    "ELAN_HOME": "/root/autodl-tmp/lean-build/elan",
+    "LAKE_ARTIFACT_CACHE": "true",
+    "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+    "LAKE_OVERRIDE_LEAN": "1",
+    "LEAN_NUM_THREADS": "8",
+    "LEAN_SYSROOT": "/root/autodl-tmp/lean-build/logs/remote-e2d8b8ce14a3479eacc998b0f5835fe8/toolchain",
+    "R5_LEAN_REMOTE_PROFILE": "{\"jobs\": 8, \"lean\": \"/root/autodl-tmp/lean-build/logs/remote-e2d8b8ce14a3479eacc998b0f5835fe8/toolchain/bin/lean\", \"lean_memory_mib\": 12800, \"rss_limit_mib\": 65536, \"schema_version\": 1, \"threads\": 4}",
+    "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+  },
+  "exit_code": 1,
+  "expected_source": "a6900933b6f95bed43897ed4902dc03cefad54333bf4b53801386ef5f77d396d",
+  "failure_reason": null,
+  "finished_at": "2026-10-30T12:41:20.684057+00:00",
+  "forbid_compilation": false,
+  "forced_kill": false,
+  "git_head": null,
+  "group_closed": true,
+  "incomplete_compiler_events": 0,
+  "input_drift": [],
+  "input_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/NoetherianComparison.lean": "1fb7e6de2eae0048b2be4bbb8521f52d35e5eacf640d48418144f467c6c575d0",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/ProjectiveLineTests.lean": "837a76146e11b6373bcadef48cbe5832f03e243b468ccc8e58d393354d632195",
+    "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean": "b62f08cb91e253f3e3457699cabe925756eb4755039c610ea0f91e83920d3261",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection.lean": "8856b0f8b5ba12512ef628a1d6fe4cfa2b0d7fcd041563cf3989bc316b7a74db",
+    "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+    "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+  },
+  "lock_acquired_at": "2026-10-30T12:39:29.987589+00:00",
+  "locks": {
+    "cache_fetch_exclusive": null,
+    "legacy_shared_gate": "/root/autodl-tmp/lean-build/build.lock",
+    "workspace_exclusive": "/root/autodl-tmp/lean-build/locks/workspace-8b0598140b557e766d369dc5a5ec56620fe63f8cf353486a320251d2fb9f0a54.lock"
+  },
+  "lowest_disk_free_bytes": 32142888960,
+  "modules": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.NoetherianComparison",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ProjectiveLineTests",
+    "Aglib.CategoryTheory.Abelian.Ext.OriginalComparisonValues",
+    "Aglib.CategoryTheory.Sites.SheafCohomology.SourceSection"
+  ],
+  "operation_id": null,
+  "outcome": "execution_failure",
+  "peak_compiler_concurrency": 1,
+  "peak_rss_bytes": 4126380032,
+  "pgid": 296943,
+  "phase_executable_sha256": "0c05a22b0b180580a76437114a95cf138f67c8f46245acad26017c803b42b8c1",
+  "phase_label": "One-normal-literal-original-sourceSecond-proof",
+  "pins": {
+    "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+    "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+    "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+  },
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 8,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536,
+    "threads": 4
+  },
+  "resource_accounting": {
+    "global": "sampled cgroup memory/CPU, startup and growth credits; no peak-envelope reservation",
+    "isolation": "cooperative sampled admission; no per-run kernel memory isolation or OOM guarantee",
+    "run": "frontend/job/thread ceilings, sampled owned-tree RSS cutoff, own-tree pressure retreat"
+  },
+  "resources": {
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "cgroup": "/sys/fs/cgroup",
+    "cgroup_limits": [
+      {
+        "cpu.max": "3200000 100000",
+        "memory.max": "128849018880",
+        "path": "/sys/fs/cgroup"
+      }
+    ],
+    "effective_cpus": 32.0,
+    "memory_bytes": 128849018880
+  },
+  "run_dir": "/root/autodl-tmp/lean-build/logs/remote-e2d8b8ce14a3479eacc998b0f5835fe8",
+  "sampled_process_average_cpu_cores": 1.052869557068033,
+  "sampled_process_cpu_seconds": 116.54,
+  "schema_version": 1,
+  "setup_cleanup": {
+    "removed_setup_bytes": 0,
+    "removed_setup_files": 0
+  },
+  "source_content_sha256": "a6900933b6f95bed43897ed4902dc03cefad54333bf4b53801386ef5f77d396d",
+  "source_receipt_sha256": "686f517b6afca30ef882f6b71c399eb48040b1767a25dfc9034b76691a5847e2",
+  "started_at": "2026-10-30T12:39:29.540492+00:00",
+  "status": "failed",
+  "summary": {
+    "action": "phase",
+    "admission": {
+      "affinity_cpus": null,
+      "ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 65536,
+        "threads": 4
+      },
+      "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+      "final_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-b1fa15a22d7d4e3f94ece0a33e4fcf66": 2,
+          "/root/autodl-tmp/lean-build/logs/remote-c68725405af94990877ec9301f35c90d": 1,
+          "/root/autodl-tmp/lean-build/logs/remote-e112c341d9934afaa492b4736685a87c": 1
+        },
+        "cpu_cores": 5.232644450592196,
+        "cpu_usage_usec": 2120210310633,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 5368709120,
+        "memory_current_bytes": 46975062016,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 0.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 38062940160
+      },
+      "initial_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-b1fa15a22d7d4e3f94ece0a33e4fcf66": 3
+        },
+        "cpu_cores": 4.093363558363972,
+        "cpu_usage_usec": 2119603049497,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 4294967296,
+        "memory_current_bytes": 45997080576,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 1.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 37101416448
+      },
+      "max_frontends_if_alone": 8,
+      "mode": "elastic",
+      "request": null
+    },
+    "artifacts": {
+      "build.log": "/root/autodl-tmp/lean-build/logs/remote-e2d8b8ce14a3479eacc998b0f5835fe8/build.log",
+      "compiler-events.jsonl": "/root/autodl-tmp/lean-build/logs/remote-e2d8b8ce14a3479eacc998b0f5835fe8/compiler-events.jsonl",
+      "receipt.json": "/root/autodl-tmp/lean-build/logs/remote-e2d8b8ce14a3479eacc998b0f5835fe8/receipt.json"
+    },
+    "cgroup_memory_attribution": "whole observed cgroup; an OOM event alone does not identify its victim",
+    "cgroup_memory_events_delta": {
+      "high": 0,
+      "low": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "compiler_observation": "wrapper-events-only",
+    "compiler_scope_lease_modes": {
+      "supervisor-only": 1
+    },
+    "execution_seconds": 110.68797574937344,
+    "exit_code": 1,
+    "expected_source": "a6900933b6f95bed43897ed4902dc03cefad54333bf4b53801386ef5f77d396d",
+    "first_diagnostics": [],
+    "frontend_failed": 1,
+    "frontend_invocations": 1,
+    "frontend_observation": "wrapper starts only; arbitrary phase tools may bypass local compiler caps",
+    "frontend_peak": 1,
+    "frontend_succeeded": 0,
+    "group_closed": true,
+    "native_exit": 1,
+    "outcome": "execution_failure",
+    "peak_rss_bytes": 4126380032,
+    "plan": null,
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "reason": "",
+    "run": "remote-e2d8b8ce14a3479eacc998b0f5835fe8",
+    "sampled_process_average_cpu_cores": 1.052869557068033,
+    "source_basis": "a6900933b6f95bed43897ed4902dc03cefad54333bf4b53801386ef5f77d396d",
+    "status": "failed",
+    "unwrapped_frontend_count": "unknown",
+    "wall_seconds": 111.14359353482723
+  },
+  "task_id": "etale-recovery-lane-d-20261029",
+  "unfinished_compiler_records": [],
+  "waiting_for": null,
+  "wall_seconds": 111.14359353482723,
+  "worker_sha256": "7b1d09f535dc951f2f3ecae857f7b77b0ffc95f8f9e55352167a39b4387729a4",
+  "workspace": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean"
+}

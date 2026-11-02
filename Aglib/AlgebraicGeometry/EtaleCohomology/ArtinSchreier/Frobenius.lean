@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.Algebra.CharP.Frobenius
+public import Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier
 public import Aglib.AlgebraicGeometry.EtaleCohomology.StructureSheaf.Basic
 
 /-!
@@ -39,18 +39,10 @@ theorem primeCast_eq_zero_on_test (X : Scheme.{u}) (p : ℕ)
 
 /-- Frobenius on the actual additive etale structure sheaf. -/
 def structureFrobenius (X : Scheme.{u}) (p : ℕ) (hp : p.Prime)
-    (hX : (p : Γ(X, ⊤)) = 0) : additiveStructureSheaf X ⟶ additiveStructureSheaf X where
-  hom := {
-    app U := AddCommGrpCat.uliftFunctor.map (AddCommGrpCat.ofHom
-      (RingHom.frobeniusOfPrimeCastEqZero p hp
-        (primeCast_eq_zero_on_test X p hX U)).toAddMonoidHom)
-    naturality {U V} f := by
-      ext x
-      apply ULift.ext
-      let a : (structurePresheaf X).obj U := x.down
-      change ((structurePresheaf X).map f).hom a ^ p =
-        ((structurePresheaf X).map f).hom (a ^ p)
-      exact (map_pow ((structurePresheaf X).map f).hom a p).symm }
+    (hX : (p : Γ(X, ⊤)) = 0) : additiveStructureSheaf X ⟶ additiveStructureSheaf X :=
+  CategoryTheory.Sheaf.ArtinSchreier.frobenius (structurePresheaf X)
+    (Scheme.smallEtaleTopology X) (additiveStructurePresheaf_isSheaf X) p hp
+    (primeCast_eq_zero_on_test X p hX)
 
 /-- The original map `a ↦ a^p - a` on the actual additive structure sheaf. -/
 def artinSchreierMap (X : Scheme.{u}) (p : ℕ) (hp : p.Prime)

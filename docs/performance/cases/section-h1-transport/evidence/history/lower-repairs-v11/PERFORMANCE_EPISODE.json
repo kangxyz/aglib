@@ -1,0 +1,45 @@
+{
+  "question": "Second guided Section kernel repair after native-faithful exact proposition formation passes",
+  "old_native_failure": {
+    "run": "remote-28352af3def54c329a4e8df98996160f",
+    "source": "fa706f5af7815a71b77557a26516aed2ea4df5a88162c006ab22f2a103759389",
+    "native_source": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean",
+    "sha256": "54827938e612b1945ac212115ec394572be025da4688e9be4e5dd6ceb45437a7",
+    "native_module_seconds": 441.817,
+    "errors": [
+      "85:8(kernel)deterministic timeout",
+      "128:8(kernel)deterministic timeout"
+    ],
+    "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-28352af3def54c329a4e8df98996160f/build.log"
+  },
+  "formation_result": {
+    "run": "remote-d07189daa6e84086b16a6f9352b340f5",
+    "source": "fa706f5af7815a71b77557a26516aed2ea4df5a88162c006ab22f2a103759389",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-d07189daa6e84086b16a6f9352b340f5/receipt.json",
+    "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-d07189daa6e84086b16a6f9352b340f5/compiler-events.jsonl",
+    "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-d07189daa6e84086b16a6f9352b340f5/build.log",
+    "group_closed": true,
+    "exit_code": 0,
+    "frontend_count": 1,
+    "phase_elapsed_seconds": 41.248226284980774,
+    "probe_sha256": "c1b2263a6281eca0ae8d6b4de7349bf8874c27654e5c99a2d9546872429e3c76",
+    "native_setup_sha256": "283917335d2fd67c8450fe2d889d3a06e6c0482ec77bdfec4279dac414f2751f",
+    "boundary": "ExactP85/P128 formed only in (_h:P):True with twooriginaldata definitions; noPproof/nativeModuleclosure/speedup/exactkernelpair."
+  },
+  "method": "Retain complete actual maps E/P/Q in conclusion; only canonical defining map equations and actual coefficient-Iso value are supplied. Prove original source-unit equality transport before native projection. Original SourceSection885 fullconstruction/Extsourceunit/naturality proof reused unchanged; newtypedviews are normalization interfaces, not missingconstruction substitutes or assumed desiredlaws. Native private rflviews preserve exact old operations.",
+  "candidate_sources": [
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection/Transport.lean",
+      "before_sha256": "1af9eadc0e50ec6b1c9995c98d16096b2268d54245562293405938fdea3c66ba",
+      "sha256": "a72491881b24f9de8591bb0fceb3afaebbef44a8a783bf3094717611b9da1d57",
+      "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/lower-repairs-v11/source/Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection/Transport.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean",
+      "before_sha256": "54827938e612b1945ac212115ec394572be025da4688e9be4e5dd6ceb45437a7",
+      "sha256": "568deb6ff1dc5ce90ee361ed676db3ea44f706a3cde26d947ea330dbafa45643",
+      "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/lower-repairs-v11/source/Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean"
+    }
+  ],
+  "status": "Uncompiled candidate; no nativeP closure, uniqueconversionpair, per-kernel time or controlled speedup claimed. Default200000/nativepins/options/trust unchanged."
+}

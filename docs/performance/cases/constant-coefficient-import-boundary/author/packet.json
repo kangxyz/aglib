@@ -1,0 +1,228 @@
+{
+  "purpose": "Fixed evidence for literal coefficient-alias relocation and removal of incidental classification imports; structural dependency reduction only.",
+  "basis": {
+    "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+    "lean": "4.34.1",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "current_version": "v4",
+    "manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v4/manifest.json",
+    "manifest_sha256": "c75aba4d667a9879ce5389e79d98870d27c7db2de4ec67b80dc03a19a83c8dc2"
+  },
+  "old_source_and_failures": {
+    "run": "remote-a9f429bedd3d4a9291f100c210a71ffa",
+    "source_sha256": "8b43afd95d07964ede012580562b0c6bf195a3d3a859e7d26bb0bf87c2ef5d77",
+    "shared_exit_code": 1,
+    "group_closed": true,
+    "input_drift": [],
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 49152,
+      "threads": 4
+    },
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-a9f429bedd3d4a9291f100c210a71ffa/receipt.json",
+    "command_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-a9f429bedd3d4a9291f100c210a71ffa/receipt.json#/command",
+    "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-a9f429bedd3d4a9291f100c210a71ffa/build.log",
+    "source_vector": {
+      "Aglib/CategoryTheory/Sites/SheafCohomology/ConstantCyclic.lean": "5e2eea2eabe25df97313b6716c5d9d1107d3b2d509f68a7cf81df41447b43991",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicCoefficientSequence.lean": "3ce703b115d15e4773e66c806256f4452ff027c5e9b83a95a51a94dc6288f603",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicVanishing.lean": "7e42fb03c17f3053c8413eca340b24ad6f43b1e3ad6ca11629f348f3c19b1a68",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/ArtinSchreier.lean": "531a66840e8f7fa10bcf3e52ea97b63074781ee126344a29b436070d118f29c1",
+      "Aglib/CategoryTheory/Sites/Torsor/Class.lean": "53fe242aacb6cdcfe44c5b001f7b9821f4690a5e8371880907478d01f3b6d0a2"
+    },
+    "diagnoses": [
+      "Generic5e2: unused HasSheafify section binder at37; corrected independently in v2 and compiled as510e.",
+      "Class native errors at163/166; own concrete consumers unreached. The later v2 residual Class-routing diagnosis is separately reported below."
+    ]
+  },
+  "source_vectors": {
+    "pre_import_cut_v2_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v2/manifest.json",
+    "literal_relocation_v3_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v3/manifest.json",
+    "final_v4": {
+      "Aglib/CategoryTheory/Sites/SheafCohomology/ConstantCyclic.lean": "510e0282ff85b01ee8a48b2f36cf79fffbc8311ecaa10495543a32561736fcc6",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicCoefficientSequence.lean": "549761543a9ffff9a9de0d2633933404f87f8e09414b8e2a71a2d8e0913a5eb5",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicVanishing.lean": "7e42fb03c17f3053c8413eca340b24ad6f43b1e3ad6ca11629f348f3c19b1a68",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/ArtinSchreier.lean": "10f5dc4427575489f225c1f27a67b32abc697535b57c8541921485fce539aacf",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Coefficient.lean": "bae0006c159ac0d9fa7143f01f10f91c81a26369746d905dcc36806443e3eb32",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Basic.lean": "8303022b85d9823d0f9ef3da59146306242c3a92c0c0388b6110176edf4e3e38",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/ConstantRestriction.lean": "029676639cdf15bde8a099028154d2d9994007d3957ff04f1f3ffbc58a39f4cc"
+    },
+    "old_mixed_basic_sha256": "8a90739868dd0354446e88d9af35cfcdac9fc4302f239afa4875a53fff56eef2",
+    "old_mixed_basic_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v3/preimages/Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Basic.lean",
+    "literal_import_delta": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v3/delta-from-v2.patch",
+    "final_instance_binding_delta": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v4/delta-from-v3.patch"
+  },
+  "literal_correspondence": {
+    "alias_block": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/performance-correspondence-v4/literal-alias-block.txt",
+    "alias_block_sha256": "59fd8a88d854c1c4736a11083f50d764baa64f0ffbea556a1f0a817bd065a87d",
+    "same_fqn": [
+      "AlgebraicGeometry.Scheme.EtaleCohomology.ConstantFinite.value",
+      "AlgebraicGeometry.Scheme.EtaleCohomology.ConstantFinite.coefficient"
+    ],
+    "same_source_scope": "namespace and universe u w w'; variable (A : Type u) [AddCommGroup A] [Finite A]; local hasSheafifyLarge",
+    "preserved": "Literal alias headers/RHS; concrete functor+three instances including both ULifts; all old public theorem headers; ArtinSchreier geometric/Frobenius/prime-field prefix and real finite base proof. Basic loses only alias block and gains pure import; other Basic declarations exact.",
+    "v4_adapter_change": "Existing base Subsingleton/Finite proofs are bound at the definitionally identical displayed F.obj value. No new premise/model/carrier/map/import/flag."
+  },
+  "routing": {
+    "pre_v3_report": {
+      "provenance": "Compiler owner routing tool-output report over then-current N AFTER successor classification writes; NO standalone DAG artifact or full immutable source capture was saved. NOT B8b43 native graph evidence.",
+      "own_vector_reference": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v2/manifest.json",
+      "reported_aglib_module_counts": {
+        "Sequence": 129,
+        "Vanishing": 130,
+        "ArtinSchreier": 716
+      },
+      "reported_reaches_Class": true
+    },
+    "saved_v3_observation": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/header-routing-v3.json",
+    "saved_v3_scope": "Finite Aglib-only header calculation over N at v3 application; excludes Mathlib. Own v4 import headers unchanged. Total counts are observations, not a controlled old/new benchmark.",
+    "small_pure_cut_from_already_read_headers": {
+      "Sequence": [
+        "H1.ConstantFinite.Coefficient",
+        "CategoryTheory.Sites.SheafCohomology.ConstantCyclic"
+      ],
+      "Coefficient": [
+        "H1.Basic"
+      ],
+      "H1.Basic": [],
+      "ConstantCyclic": [
+        "Algebra.Category.Grp.ZModSequence",
+        "CategoryTheory.Sites.SheafCohomology.Vanishing.ExactSequence"
+      ],
+      "ZModSequence": [],
+      "Vanishing.ExactSequence": [],
+      "CyclicVanishing": [
+        "Sequence"
+      ]
+    },
+    "unchanged_provider_sha256": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/H1/Basic.lean": "a96427fb0f37e60d35ae4e3567db13b915dd83c8f27564c92a0707120cb05781",
+      "Aglib/Algebra/Category/Grp/ZModSequence.lean": "ba4808fbbac8811bb3764731318cee5d3f742986182c824b87a3d83c6131817b",
+      "Aglib/CategoryTheory/Sites/SheafCohomology/Vanishing/ExactSequence.lean": "a4996de9570c2433753ec674b74c5128198e9e911f63273c0a6eaea52f9890e3"
+    },
+    "structural_result": "Coefficient-only consumers no longer need ConstantRestriction/geometric ConstantFinite.Basic/classification. Genuine Basic retains geometry and its classification prerequisites."
+  },
+  "native_coverage": [
+    {
+      "run": "remote-1b73ac9d1f7845368dc41326884a1dc4",
+      "source_sha256": "052123e1b54f8aa4339b28e1294f545ca1e0b8802b1aa954fa0944386d3b9f82",
+      "shared_exit_code": 1,
+      "group_closed": true,
+      "input_drift": [],
+      "profile": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 2,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 32768,
+        "threads": 4
+      },
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-1b73ac9d1f7845368dc41326884a1dc4/receipt.json",
+      "command_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-1b73ac9d1f7845368dc41326884a1dc4/receipt.json#/command",
+      "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-1b73ac9d1f7845368dc41326884a1dc4/build.log",
+      "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-1b73ac9d1f7845368dc41326884a1dc4/compiler-events.jsonl",
+      "owned_module_outcomes": [
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/ConstantCyclic.lean",
+          "sha256": "510e0282ff85b01ee8a48b2f36cf79fffbc8311ecaa10495543a32561736fcc6",
+          "compiler_exit_code": 0
+        }
+      ]
+    },
+    {
+      "run": "remote-e4d513ac8ecd437b9d21e9f576ce0a2d",
+      "source_sha256": "90d732aee4ccef04b34feff281fa4554f83336379590ee621ba35d204f756dd8",
+      "shared_exit_code": 1,
+      "group_closed": true,
+      "input_drift": [],
+      "profile": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 4,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 49152,
+        "threads": 4
+      },
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-e4d513ac8ecd437b9d21e9f576ce0a2d/receipt.json",
+      "command_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-e4d513ac8ecd437b9d21e9f576ce0a2d/receipt.json#/command",
+      "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-e4d513ac8ecd437b9d21e9f576ce0a2d/build.log",
+      "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-e4d513ac8ecd437b9d21e9f576ce0a2d/compiler-events.jsonl",
+      "owned_module_outcomes": [
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Coefficient.lean",
+          "sha256": "bae0006c159ac0d9fa7143f01f10f91c81a26369746d905dcc36806443e3eb32",
+          "compiler_exit_code": 0
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/ConstantRestriction.lean",
+          "sha256": "029676639cdf15bde8a099028154d2d9994007d3957ff04f1f3ffbc58a39f4cc",
+          "compiler_exit_code": 0
+        }
+      ]
+    },
+    {
+      "run": "remote-18dee922b63b4c4a80c77aa13505e07d",
+      "source_sha256": "a253e6ed716136ec332947626d58cee94c46278bf53a7aaecdba9014b4938d09",
+      "shared_exit_code": 0,
+      "group_closed": true,
+      "input_drift": [],
+      "profile": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 2,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 32768,
+        "threads": 4
+      },
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-18dee922b63b4c4a80c77aa13505e07d/receipt.json",
+      "command_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-18dee922b63b4c4a80c77aa13505e07d/receipt.json#/command",
+      "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-18dee922b63b4c4a80c77aa13505e07d/build.log",
+      "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-18dee922b63b4c4a80c77aa13505e07d/compiler-events.jsonl",
+      "owned_module_outcomes": [
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicCoefficientSequence.lean",
+          "sha256": "549761543a9ffff9a9de0d2633933404f87f8e09414b8e2a71a2d8e0913a5eb5",
+          "compiler_exit_code": 0
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicVanishing.lean",
+          "sha256": "7e42fb03c17f3053c8413eca340b24ad6f43b1e3ad6ca11629f348f3c19b1a68",
+          "compiler_exit_code": 0
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/ArtinSchreier.lean",
+          "sha256": "10f5dc4427575489f225c1f27a67b32abc697535b57c8541921485fce539aacf",
+          "compiler_exit_code": 0
+        }
+      ]
+    }
+  ],
+  "remaining_scope": {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Basic.lean",
+    "sha256": "8303022b85d9823d0f9ef3da59146306242c3a92c0c0388b6110176edf4e3e38",
+    "status": "Conditionally deferred; genuine H1 classification prerequisite repair, no fresh Basic frontend claimed. Pure-ready production6 coverage is complete.",
+    "optional_consumers": "CharacteristicPrimary and its geometry compiled as unavoidable imports in final run; no optional source edits. Fields.RootsVanishing was not separately compiled."
+  },
+  "actionable_method": [
+    "Trace the actual import route of the blocked consumer to the exact declarations it uses.",
+    "For a mixed provider, relocate only literal coefficient aliases to the smallest existing native provider leaf; keep their FQN, parameters, RHS and value/maps.",
+    "Have the mixed geometric owner publicly import that leaf and retain every genuine geometry declaration.",
+    "Redirect coefficient-only imports to the pure leaf; retain explicit pullback/geometry imports only where actually used.",
+    "At native specialization, bind the already-given base property at the displayed functor image when class search will not unfold it. Do not add a new premise.",
+    "Compile failed/changed leaves and actual ready consumers incrementally, retaining matching passed artifacts; let genuine geometric prerequisites proceed independently."
+  ],
+  "limits": [
+    "No matched wall/RSS speedup claim or new benchmark/profile. Source snapshots, root cohorts, cache frontiers and resource profiles differ across recorded runs.",
+    "Header counts are Aglib import-closure observations, not frontend counts, whole-library cost or mathematical proof. Pre-v3 routing report is not attached to the old native source key.",
+    "Shared failed-run exits do not erase own successful modules or establish whole-run success. Each pass above is bound to its actual hash/source/run.",
+    "No standalone lint/tests/audit/replay, whole-library build, untouched downstream precompile, Git or N documentation writes were added.",
+    "Mathematical conditions remain exact additive F, native HasSheafify/HasExt worlds, positivity and real base-case H properties; no invertible Frobenius premise."
+  ],
+  "mathematical_review": {
+    "report": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/constant-cyclic-cohomology-core.json",
+    "status": "Retained ordinary mathematics accepted exact v3; v4 source delta is only explicit existing-base instance annotations, owner notified. Generic mathematics unchanged."
+  },
+  "method_owners": [
+    "infra/contracts/FORMALIZATION.md#reusable-performance-findings",
+    "N/docs/PERFORMANCE.md#repair-workflow",
+    "N/docs/PERFORMANCE.md#build-and-check-costs"
+  ]
+}

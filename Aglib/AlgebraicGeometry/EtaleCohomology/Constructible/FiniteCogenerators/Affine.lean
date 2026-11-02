@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Spectrum
+public import Aglib.CategoryTheory.Adjunction.MonicProducts
 
 /-! # Finite constant cogenerators on actual affine Noetherian schemes
 
@@ -81,35 +82,10 @@ def FiniteConstantProductEmbedding.ofIso {X Y : Scheme.{u}} (e : X ≅ Y)
   let B := fun i => ConstantFinite.coefficient (t.value i) (t.source i)
   let T := fun i => (directImage (t.morphism i)).obj (B i)
   let W := fun i => (directImage (t.morphism i ≫ e.inv)).obj (B i)
-  let q := fun i => (inverseImageAdjunction e.inv).homEquiv F (T i)
-    (t.map ≫ Pi.π T i)
-  let a (i : t.index) : F ⟶ W i :=
-    q i ≫ (directImageCompIso e.inv (t.morphism i)).hom.app (B i)
-  let α : F ⟶ ∏ᶜ W := Pi.lift (f := W) a
-  have hmono : Mono α := by
-    constructor
-    intro G x y hxy
-    apply (inverseImage e.inv).map_injective
-    apply (cancel_mono t.map).mp
-    apply Pi.hom_ext
-    intro i
-    have hi : x ≫ a i = y ≫ a i := by
-      let π := Pi.π W i
-      have hp : α ≫ π = a i := Pi.lift_comp_π (f := W) a i
-      have hproj : x ≫ (α ≫ π) = y ≫ (α ≫ π) :=
-        (Category.assoc x α π).symm.trans
-          ((congrArg (fun k => k ≫ π) hxy).trans (Category.assoc y α π))
-      exact (congrArg (fun k => x ≫ k) hp.symm).trans
-        (hproj.trans (congrArg (fun k => y ≫ k) hp))
-    have hq : x ≫ q i = y ≫ q i := by
-      apply (cancel_mono ((directImageCompIso e.inv (t.morphism i)).hom.app (B i))).mp
-      simpa only [a, Category.assoc] using hi
-    have hm : (inverseImage e.inv).map x ≫ (t.map ≫ Pi.π T i) =
-        (inverseImage e.inv).map y ≫ (t.map ≫ Pi.π T i) := by
-      apply ((inverseImageAdjunction e.inv).homEquiv G (T i)).injective
-      rw [Adjunction.homEquiv_naturality_left, Adjunction.homEquiv_naturality_left]
-      exact hq
-    simpa only [Category.assoc] using hm
+  let α : F ⟶ ∏ᶜ W := (inverseImageAdjunction e.inv).productTranspose (T := T) t.map
+    (fun i => (directImageCompIso e.inv (t.morphism i)).app (B i))
+  have hmono : Mono α := (inverseImageAdjunction e.inv).mono_productTranspose (T := T) t.map
+    (fun i => (directImageCompIso e.inv (t.morphism i)).app (B i))
   have (i : t.index) : IsFinite (t.morphism i ≫ e.inv) := inferInstance
   exact {
     index := t.index

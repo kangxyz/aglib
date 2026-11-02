@@ -1,0 +1,214 @@
+{
+  "question": "Do the previously accepted cyclic inductions retain their actual coefficients/maps/premises after the unused-premise omission and literal coefficient alias relocation/import cuts?",
+  "review_kind": "independent ordinary proof review with retained v1 proof coverage and affected v2/v3 correspondence review",
+  "reviewer_profile": "GPT-6.1 Sol/max",
+  "version": "v3",
+  "verdict": "accepted_mathematically",
+  "formal_established_status_verdict": false,
+  "mathematical_gaps": [],
+  "native_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "review_delivery_repository_head": "56a07882f536a20bfbbfeed42c9adb5fe74ef9e9",
+  "input_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v3/manifest.json",
+  "input_manifest_sha256": "0333a8553899e7d86723fe9d0e1316fcc05b4347242b998f90fd18501ce0c18f",
+  "fixed_afterimages_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v3",
+  "source_vector": {
+    "Aglib/CategoryTheory/Sites/SheafCohomology/ConstantCyclic.lean": "510e0282ff85b01ee8a48b2f36cf79fffbc8311ecaa10495543a32561736fcc6",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicCoefficientSequence.lean": "773da9688e8a8714b86d852536eb69c971a4186f1c040ee67ab3d8aef2897817",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicVanishing.lean": "7e42fb03c17f3053c8413eca340b24ad6f43b1e3ad6ca11629f348f3c19b1a68",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/ArtinSchreier.lean": "531a66840e8f7fa10bcf3e52ea97b63074781ee126344a29b436070d118f29c1",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Coefficient.lean": "bae0006c159ac0d9fa7143f01f10f91c81a26369746d905dcc36806443e3eb32",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Basic.lean": "8303022b85d9823d0f9ef3da59146306242c3a92c0c0388b6110176edf4e3e38",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/ConstantRestriction.lean": "029676639cdf15bde8a099028154d2d9994007d3957ff04f1f3ffbc58a39f4cc"
+  },
+  "beforeimage_vector": {
+    "Aglib/CategoryTheory/Sites/SheafCohomology/ConstantCyclic.lean": null,
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicCoefficientSequence.lean": "5bd994ff7ec4f07e125b4008c9bd49df15f1fcad9153b73225ea00352471080c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicVanishing.lean": "7b20cd117748e0ba32b9159179b7d6bd1df9409e7039edd80f15a136786578c0",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/ArtinSchreier.lean": "e21456749fa321677b7d7fa147acb9b4e0243c931cacd0785a2a01bc74fcd68e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Coefficient.lean": null,
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Basic.lean": "8a90739868dd0354446e88d9af35cfcdac9fc4302f239afa4875a53fff56eef2",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/ConstantRestriction.lean": "dbb74ba713bd392b6071bb3ede3b35c8237aa629b4f5b10a09034b8502fa3ce6"
+  },
+  "correspondence": {
+    "fixed_and_live_sources_match_manifest": true,
+    "beforeimages_match_manifest": true,
+    "concrete_coefficient_functor_and_three_instances_byte_equal": true,
+    "concrete_coefficient_block_sha256": "6243a2d3f17e11bf00c5eca98cb0f66f67e45463a402e5bda9ce04ece1a534fd",
+    "both_native_ulifts_preserved": true,
+    "ArtinSchreier_prefix_through_prime_case_finite_proof_unchanged_except_import": true,
+    "original_cohomology_carriers_and_maps_preserved": true,
+    "owned_mathematical_declarations_preserved": true,
+    "moved_alias_block_byte_equal": true,
+    "moved_alias_block_sha256": "59fd8a88d854c1c4736a11083f50d764baa64f0ffbea556a1f0a817bd065a87d",
+    "remaining_Basic_exact_after_alias_removal_and_public_import_addition": true,
+    "ConstantRestriction_import_substitution_only": true,
+    "Sequence_v1_to_v3_import_substitution_only": true,
+    "vanishing_and_ArtinSchreier_sources_unchanged_from_reviewed_v1": true
+  },
+  "outcomes": [
+    {
+      "target": "Sheaf.cyclicCoefficient_shortExact",
+      "outcome": "accepted",
+      "conclusion": "The actual native ZMod multiplication/reduction sequence remains short exact under the one exact additive F."
+    },
+    {
+      "target": "Sheaf.cyclicPrimePower_vanishing / Curves.cyclicPrimePower_vanishing",
+      "outcome": "accepted",
+      "conclusion": "For any positive p and every r, actual H(F(ZMod p)) vanishing implies actual H(F(ZMod(p^r))) vanishing, including r=0."
+    },
+    {
+      "target": "Sheaf.cyclic_vanishing_of_prime_divisors / Curves.cyclic_vanishing_of_prime_divisors",
+      "outcome": "accepted",
+      "conclusion": "For every positive n, vanishing of original H for every prime divisor coefficient implies vanishing for the original cyclic n coefficient."
+    },
+    {
+      "target": "Sheaf.cyclicPrimePower_cohomology_finite",
+      "outcome": "accepted",
+      "conclusion": "For any positive p and every r, actual finite H(F(ZMod p)) implies actual finite H(F(ZMod(p^r))), using native same-degree exactness."
+    },
+    {
+      "target": "cyclicPrimePower_cohomology_finite_of_proper and retained ArtinSchreier prefix",
+      "outcome": "accepted_for_extraction",
+      "conclusion": "The original proper-scheme endpoint still proves the actual prime-case finite base and applies the full generic induction with unchanged public conclusion."
+    }
+  ],
+  "premises": [
+    "Independent C:Type c, Category.{v} C, topology J, original HasExt.{e}, and HasSheafify J AddCommGrpCat.{a} for the cohomology theorems. The bare mapped-short-exact theorem now omits its unused HasSheafify premise.",
+    "One F:AddCommGrpCat.{0} ⥤ Sheaf J AddCommGrpCat.{a}, additive and preserving finite limits and finite colimits.",
+    "Positive p for power induction, positive n for general-order induction.",
+    "Actual base H vanishing, base H finiteness, or actual prime-divisor H vanishing as specified by each theorem.",
+    "For the concrete proper finite endpoint: the original field, separably closed, properness, prime p, characteristic p and HasExt hypotheses."
+  ],
+  "preserved_boundaries": [
+    "Generic site object/Hom/value/Ext universes c/v/a/e are independently declared.",
+    "Native Sheaf.H and H.map, mapped native ZMod arrows and actual ZMod1 zero object.",
+    "No new cohomology/Ext carrier, geometric hypothesis or desired induction law.",
+    "No Frobenius invertibility or perfectness premise."
+  ],
+  "inspected_Aglib_dependency_vector": {
+    "Aglib/Algebra/Category/Grp/ZModSequence.lean": "ba4808fbbac8811bb3764731318cee5d3f742986182c824b87a3d83c6131817b",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Vanishing/ExactSequence.lean": "a4996de9570c2433753ec674b74c5128198e9e911f63273c0a6eaea52f9890e3",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Basic.lean": "8303022b85d9823d0f9ef3da59146306242c3a92c0c0388b6110176edf4e3e38",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CharacteristicPrimary.lean": "23488319803b8fac8c43dfa4df57d44eb56da33f0748dfb8e754d7cc99b2ef08",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CharacteristicPrimaryGeometry.lean": "c3f7b8ea34c32f5c3234f1f8a1163d9ee6c3586b0386712b3723f467f03934b5",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/StructureFrobenius.lean": "a0d169554dbc2ea2251ca34cea13e9988b1d86c8e36f229382c9c395ed614dcb",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/StructureComparison.lean": "64d7dc9ca737ed47a5b85cb3f468a92b82a671e6ae1b8d8a86dac24e5f2f7995",
+    "Aglib/AlgebraicGeometry/Cohomology/Proper/Field.lean": "475457dd7985a1927857ba28aba482a908008270adde308fae2103be31fcdd98",
+    "Aglib/LinearAlgebra/FrobeniusFixed.lean": "18d1b67b1466d834c26bb399d78dfff67db6bffb209c8bc3667269669d121836",
+    "Aglib/LinearAlgebra/FrobeniusDifference.lean": "9a2a95f1962872befe7e7325144ca41d2349d387c7122a77ff93f23e72eedfae",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Coefficient.lean": "bae0006c159ac0d9fa7143f01f10f91c81a26369746d905dcc36806443e3eb32",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/Basic.lean": "a96427fb0f37e60d35ae4e3567db13b915dd83c8f27564c92a0707120cb05781"
+  },
+  "mathlib_revision": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "inspected_mathlib_dependency_vector": {
+    "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean": "569864bb121cea1fc23d941995a101cc50ecd232e3dde49e467b3a148e7e24ee",
+    "Mathlib/CategoryTheory/Sites/SheafCohomology/ExactSequences.lean": "98506e4a3c3090d66e3a3d14645657ff099d57e8c995390332b8a49a9d3c7677",
+    "Mathlib/Algebra/Homology/ShortComplex/ShortExact.lean": "ad9bdd7f644b1091728aace8f4bcbf26e495de1e7fa60194dd7424f9cb8b15b6",
+    "Mathlib/Algebra/Homology/ShortComplex/Ab.lean": "28af745533f50d8c55a081aa626eb390b4b040c2604c7d68637875f90e4c215d",
+    "Mathlib/Algebra/Category/Grp/Ulift.lean": "f1882e0ee48d036a237f1b6084cd9546fa0f51f98b9d66bc8823fee1eeab6ffa",
+    "Mathlib/Algebra/Category/Grp/Zero.lean": "cc36f4407477cfc0ca7a251a3bc9ed1d2f7197c82aee17c272953904c2d57bd3"
+  },
+  "coverage": "Retained complete v1 mathematical proof review plus actual v1→v2 omission, v2→v3 alias relocation/import deltas, current exact7 identities and necessary leaf context. Original induction and geometric bodies are unchanged and their valid review coverage is retained. No full new review or compilation is claimed.",
+  "execution_evidence": {
+    "prior_v1_boundary": {
+      "native_build_supplied_at_dispatch": {
+        "label": "B",
+        "run_prefix": "a9f429be",
+        "source_prefix": "8b43",
+        "state_at_dispatch": "active"
+      },
+      "successful_receipt_consumed": false,
+      "compilation_success_claimed": false,
+      "mathematical_verdict_requires_no_new_compilation_gate": true
+    },
+    "retained_generic_module": {
+      "module": "Aglib.CategoryTheory.Sites.SheafCohomology.ConstantCyclic",
+      "input_sha256": "510e0282ff85b01ee8a48b2f36cf79fffbc8311ecaa10495543a32561736fcc6",
+      "run": "remote-1b73ac9d1f7845368dc41326884a1dc4",
+      "source_content_sha256": "052123e1b54f8aa4339b28e1294f545ca1e0b8802b1aa954fa0944386d3b9f82",
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-1b73ac9d1f7845368dc41326884a1dc4/receipt.json",
+      "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-1b73ac9d1f7845368dc41326884a1dc4/compiler-events.jsonl",
+      "projection": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/native-generic-v2-pass.json",
+      "lean_version": "4.34.1",
+      "lean_commit": "5045d0056413266e57c625dcd7c365b10e377c52",
+      "wrapper_pid": 884350,
+      "compiler_pid": 884352,
+      "compiler_exit_code": 0,
+      "shared_run_exit_code": 1,
+      "group_closed": true,
+      "input_drift": [],
+      "boundary": "Only the unchanged generic module pass is retained. The shared run failed on other packets; no whole v3 or concrete-consumer success is inferred."
+    },
+    "fresh_execution": false,
+    "whole_v3_compilation_success_claimed": false,
+    "mathematical_verdict_requires_no_new_compilation_gate": true
+  },
+  "checks_run": [
+    "Actual proof and supplier reading",
+    "Fixed/live/beforeimage hash comparison",
+    "Patch comparison",
+    "Byte comparison of concrete coefficient definition/instances and retained ArtinSchreier prefix",
+    "Existing public declaration-header comparison",
+    "Affected v1/v2/v3 exact delta and literal alias relocation correspondence"
+  ],
+  "checks_not_run": [
+    "compilation",
+    "lint",
+    "tests",
+    "axiom audit",
+    "kernel replay"
+  ],
+  "evidence_limit": "Retained generic module frontend success is source-bound to 510e; no new or whole-v3 compiler evidence, timing gain, transitive-sorry or approved-axiom conclusion is claimed.",
+  "prior_review": "represented-resolution-transpose v2 remains separate and accepted; no old output relabeled",
+  "material_retractions": [
+    "No mathematical verdict retracted. Report source identity is updated from v1 four files to v3 exact7; the removed unused premise and intentional public import/reexport changes are recorded."
+  ],
+  "remaining_execution_boundary": "Any remaining concrete/relocated-module compilation belongs to the actual compiler/author. A later changed proof or dependency hunk requires affected-version reconciliation.",
+  "outside_scope": [
+    "Formal established-status decision",
+    "Independent writing acceptance",
+    "Broader geometric conclusions or re-review of their entire imported closure",
+    "Changed candidate/dependency versions"
+  ],
+  "write_scope": [
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/constant-cyclic-cohomology-core.md",
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/constant-cyclic-cohomology-core.json"
+  ],
+  "git_mutations": false,
+  "helpers_used": false,
+  "retained_prior_review": {
+    "version": "v1",
+    "verdict": "accepted_mathematically",
+    "question": "Does fixed constant-cyclic v1 extract the full native cyclic cohomology inductions while preserving exact concrete coefficients, maps, public types and the proved geometric finite base?",
+    "fixed_afterimages_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v1",
+    "input_manifest_sha256": "3653f2d8886c35fab3c3ff243b5e7ce69c9b7b47d405e40d270c84f194006135",
+    "source_vector": {
+      "Aglib/CategoryTheory/Sites/SheafCohomology/ConstantCyclic.lean": "5e2eea2eabe25df97313b6716c5d9d1107d3b2d509f68a7cf81df41447b43991",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicCoefficientSequence.lean": "3ce703b115d15e4773e66c806256f4452ff027c5e9b83a95a51a94dc6288f603",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicVanishing.lean": "7e42fb03c17f3053c8413eca340b24ad6f43b1e3ad6ca11629f348f3c19b1a68",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/ArtinSchreier.lean": "531a66840e8f7fa10bcf3e52ea97b63074781ee126344a29b436070d118f29c1"
+    },
+    "scope": "Full four-file mathematical derivations and required native suppliers reviewed on v1; only affected v2/v3 deltas and dependency/source correspondence inspected in this continuation."
+  },
+  "version_changes": [
+    {
+      "from": "v1",
+      "to": "v2",
+      "change": "Only omit [HasSheafify J AddCommGrpCat.{a}] in is added before cyclicCoefficient_shortExact. This removes a genuinely unused section premise from that theorem; its type apart from that premise and its proof body are unchanged."
+    },
+    {
+      "from": "v2",
+      "to": "v3",
+      "change": "The exact original value/coefficient alias block moves from ConstantFinite.Basic to Coefficient, under the same FQN, universe/section-variable order and local hasSheafifyLarge. Basic publicly imports the leaf; its remaining text is exact. ConstantRestriction imports Coefficient instead of Basic, and CyclicCoefficientSequence imports Coefficient instead of ConstantRestriction."
+    }
+  ],
+  "public_import_boundary": "Intentionally changed. Sequence no longer reexports ConstantRestriction via its former public import; ConstantRestriction no longer reexports the geometric ConstantFinite.Basic imports. Basic continues publicly reexporting the relocated aliases through Coefficient. Owned objects/maps/public statement bodies are preserved; the entire incidental public export set is not claimed unchanged.",
+  "header_routing": {
+    "evidence": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/header-routing-v3.json",
+    "basis": "Reported current literal Aglib header graph on v3; routing only.",
+    "conclusion": "Coefficient, Sequence, Vanishing, ConstantRestriction and ArtinSchreier do not reach Class or geometric ConstantFinite.Basic; Basic retains its genuine geometric imports.",
+    "timing_gain_claimed": false,
+    "compiler_evidence": false
+  }
+}

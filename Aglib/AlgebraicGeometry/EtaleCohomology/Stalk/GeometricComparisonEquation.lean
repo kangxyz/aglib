@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductBaseChangeMap
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChange
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChange.Higher
 public import Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.InverseImage
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductStalkRepresentatives
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricFibreTransfer
@@ -51,11 +51,239 @@ private theorem addHom_square_iff_prepost
 
 /-- Evaluate a whole equation of the actual raw group maps before any native
 cohomology data enters the composition-evaluation proof. -/
-private theorem rawGroupSquare_apply {A B C D : AddCommGrpCat.{e}}
-    (r : A ⟶ B) (v : B ⟶ D) (u : A ⟶ C) (s : C ⟶ D)
-    (h : r ≫ v = u ≫ s) (x : A) : v (r x) = s (u x) := by
+private theorem rawGroupSquare_apply {A B C D : Type e}
+    [AddCommGroup A] [AddCommGroup B] [AddCommGroup C] [AddCommGroup D]
+    (r : AddCommGrpCat.of A ⟶ AddCommGrpCat.of B)
+    (v : AddCommGrpCat.of B ⟶ AddCommGrpCat.of D)
+    (u : AddCommGrpCat.of A ⟶ AddCommGrpCat.of C)
+    (s : AddCommGrpCat.of C ⟶ AddCommGrpCat.of D)
+    (h : r ≫ v = u ≫ s) (x : A) : @Eq D (v (r x)) (s (u x)) := by
   have hs := ConcreteCategory.congr_hom (C := AddCommGrpCat.{e}) h x
   simpa only [CategoryTheory.comp_apply] using hs
+
+/-- One complete indexed-germ comparison, with its original maps and rectangle.
+The two neighborhood indices remain independent: the target law is required on
+all target neighborhoods, not only on those pulled back from the source. -/
+structure IndexedGermComparisonData
+    {I J : Type*} (P : I → Type*) (Q : J → Type*)
+    (V : I → Type e) (W : J → Type e)
+    (A B : Type*) (C D : Type e)
+    [∀ i, AddCommGroup (V i)] [∀ j, AddCommGroup (W j)]
+    [AddCommGroup C] [AddCommGroup D] where
+  /-- The source germ associated to an index, point and neighborhood element. -/
+  sourceGerm : ∀ i, P i → V i → A
+  /-- The target germ associated to an index, point and neighborhood element. -/
+  targetGerm : ∀ j, Q j → W j → B
+  /-- The map from source indices to target indices. -/
+  indexMap : I → J
+  /-- The map from source points to points at the corresponding target index. -/
+  pointMap : ∀ i, P i → Q (indexMap i)
+  /-- The map between the source and target germ sets. -/
+  unitMap : A → B
+  /-- The additive group map between the two direct targets. -/
+  directMap : AddCommGrpCat.of C ⟶ AddCommGrpCat.of D
+  /-- The additive map between neighborhood groups at corresponding indices. -/
+  neighborhoodMap : ∀ i, AddCommGrpCat.of (V i) ⟶ AddCommGrpCat.of (W (indexMap i))
+  /-- The source neighborhood map into the source direct target at each point. -/
+  sourceMap : ∀ i, P i → (AddCommGrpCat.of (V i) ⟶ AddCommGrpCat.of C)
+  /-- The target neighborhood map into the target direct target at each point. -/
+  targetMap : ∀ j, Q j → (AddCommGrpCat.of (W j) ⟶ AddCommGrpCat.of D)
+  representatives : ∀ z : A, ∃ i p y, sourceGerm i p y = z
+  rectangle : ∀ i p, neighborhoodMap i ≫ targetMap (indexMap i) (pointMap i p) =
+    sourceMap i p ≫ directMap
+
+namespace IndexedGermComparisonData
+
+variable {I J : Type*} {P : I → Type*} {Q : J → Type*}
+  {V : I → Type e} {W : J → Type e} {A B : Type*} {C D : Type e}
+  [∀ i, AddCommGroup (V i)] [∀ j, AddCommGroup (W j)]
+  [AddCommGroup C] [AddCommGroup D]
+  (data : IndexedGermComparisonData P Q V W A B C D)
+
+/-- Compatibility of the original unit with the complete germ construction. -/
+def UnitLaw : Prop := ∀ i p y,
+  data.unitMap (data.sourceGerm i p y) =
+    data.targetGerm (data.indexMap i) (data.pointMap i p) (data.neighborhoodMap i y)
+
+/-- The comparison map evaluates to the original source restriction. -/
+def SourceLaw (b : A → C) : Prop :=
+  ∀ i p y, b (data.sourceGerm i p y) = data.sourceMap i p y
+
+/-- The target comparison law retains every original target neighborhood. -/
+def TargetLaw (b' : B → D) : Prop :=
+  ∀ j p y, b' (data.targetGerm j p y) = data.targetMap j p y
+
+/-- The literal pointwise square of the maps in this same construction. -/
+def Square (b : A → C) (b' : B → D) : Prop :=
+  ∀ z, b' (data.unitMap z) = data.directMap (b z)
+
+/-- The complete determining germ construction carries its original square law. -/
+theorem square_of_laws (hunit : data.UnitLaw) (b : A → C) (b' : B → D)
+    (hsource : data.SourceLaw b) (htarget : data.TargetLaw b') : data.Square b b' := by
+  intro z
+  obtain ⟨i, p, y, rfl⟩ := data.representatives z
+  exact (congrArg b' (hunit i p y)).trans
+    ((htarget (data.indexMap i) (data.pointMap i p) (data.neighborhoodMap i y)).trans
+      ((rawGroupSquare_apply _ _ _ _ (data.rectangle i p) y).trans
+        (congrArg data.directMap (hsource i p y)).symm))
+
+end IndexedGermComparisonData
+
+namespace IndexedGermComparisonData
+
+variable {I J : Type*} {P : I → Type*} {Q : J → Type*}
+  {V : I → Type e} {W : J → Type e} {A B : Type*} {C D : Type e}
+  [∀ i, AddCommGroup (V i)] [∀ j, AddCommGroup (W j)]
+  [AddCommGroup C] [AddCommGroup D]
+  (γ : ∀ i, P i → V i → A) (γ' : ∀ j, Q j → W j → B)
+  (k : I → J) (kp : ∀ i, P i → Q (k i)) (unit : A → B)
+  (d : AddCommGrpCat.of C ⟶ AddCommGrpCat.of D)
+  (r : ∀ i, AddCommGrpCat.of (V i) ⟶ AddCommGrpCat.of (W (k i)))
+  (u : ∀ i, P i → (AddCommGrpCat.of (V i) ⟶ AddCommGrpCat.of C))
+  (v : ∀ j, Q j → (AddCommGrpCat.of (W j) ⟶ AddCommGrpCat.of D))
+  (hγ : ∀ z : A, ∃ i p y, γ i p y = z)
+  (hRect : ∀ i p, r i ≫ v (k i) (kp i p) = u i p ≫ d)
+
+/-- Assemble the same indexed comparison from its actual maps and rectangle,
+with all group objects and maps variable. -/
+def ofMaps : IndexedGermComparisonData P Q V W A B C D where
+  sourceGerm := γ
+  targetGerm := γ'
+  indexMap := k
+  pointMap := kp
+  unitMap := unit
+  directMap := d
+  neighborhoodMap := r
+  sourceMap := u
+  targetMap := v
+  representatives := hγ
+  rectangle := hRect
+
+include hγ hRect in
+/-- The complete original-map constructor exposes its literal comparison law
+before concrete cohomology objects or geometric maps are substituted. -/
+theorem ofMaps_square
+    (hunit : ∀ i p y, unit (γ i p y) = γ' (k i) (kp i p) (r i y))
+    (b : A → C) (b' : B → D)
+    (hb : ∀ i p y, b (γ i p y) = u i p y)
+    (hb' : ∀ j p y, b' (γ' j p y) = v j p y) :
+    ∀ z, b' (unit z) = d (b z) :=
+  (ofMaps γ γ' k kp unit d r u v hγ hRect).square_of_laws hunit b b' hb hb'
+
+end IndexedGermComparisonData
+
+/-- Construct the entire indexed comparison over variable relative schemes.
+The cohomology maps and their whole rectangle are formed together, before any
+concrete neighborhood fibre-product family is substituted. -/
+def indexedGermComparisonDataOfSchemeSquares
+    {X₀ X₁ : Scheme.{u}} {I J : Type*} (P : I → Type*) (Q : J → Type*)
+    (k : I → J) (kp : ∀ i, P i → Q (k i))
+    (B : I → Scheme.{u}) (B' : J → Scheme.{u})
+    (b : ∀ i, B i ⟶ X₀) (b' : ∀ j, B' j ⟶ X₁)
+    (A A' : Scheme.{u}) (a : A ⟶ X₀) (a' : A' ⟶ X₁)
+    [hB : ∀ i, HasExt.{e} (AbelianSheaf.{u, u + 1} (B i))]
+    [hB' : ∀ j, HasExt.{e} (AbelianSheaf.{u, u + 1} (B' j))]
+    [hA : HasExt.{e} (AbelianSheaf.{u, u + 1} A)]
+    [hA' : HasExt.{e} (AbelianSheaf.{u, u + 1} A')]
+    (g₀ : X₁ ⟶ X₀) (r : ∀ i, B' (k i) ⟶ B i)
+    (σ : A' ⟶ A)
+    (hR : ∀ i, b' (k i) ≫ g₀ = r i ≫ b i)
+    (hS : a' ≫ g₀ = σ ≫ a)
+    (v : ∀ i, P i → (A ⟶ B i)) (v' : ∀ j, Q j → (A' ⟶ B' j))
+    (hv : ∀ i p, v i p ≫ b i = a) (hv' : ∀ j p, v' j p ≫ b' j = a')
+    (hRect : ∀ i p, v' (k i) (kp i p) ≫ r i = σ ≫ v i p)
+    (F₀ : AbelianSheaf.{u, u + 1} X₀) (q₀ : ℕ) {Z Z' : Type*}
+    (γ : ∀ i, P i → Sheaf.H.{e} ((inverseImage (b i)).obj F₀) q₀ → Z)
+    (γ' : ∀ j, Q j → Sheaf.H.{e} ((inverseImage (b' j)).obj
+      ((inverseImage g₀).obj F₀)) q₀ → Z')
+    (unit : Z → Z') (hγ : ∀ z : Z, ∃ i p y, γ i p y = z) :
+    IndexedGermComparisonData P Q
+      (fun i => Sheaf.H.{e} ((inverseImage (b i)).obj F₀) q₀)
+      (fun j => Sheaf.H.{e} ((inverseImage (b' j)).obj ((inverseImage g₀).obj F₀)) q₀)
+      Z Z' (Sheaf.H.{e} ((inverseImage a).obj F₀) q₀)
+      (Sheaf.H.{e} ((inverseImage a').obj ((inverseImage g₀).obj F₀)) q₀) :=
+  IndexedGermComparisonData.ofMaps γ γ' k kp unit
+    (cohomologySquareTransfer a a' g₀ σ hS F₀ q₀)
+    (fun i => cohomologySquareTransfer (b i) (b' (k i)) g₀ (r i) (hR i) F₀ q₀)
+    (fun i p => cohomologyTriangleTransfer a (b i) (v i p) (hv i p) F₀ q₀)
+    (fun j p =>
+      cohomologyTriangleTransfer a' (b' j) (v' j p) (hv' j p) ((inverseImage g₀).obj F₀) q₀)
+    hγ (fun i p =>
+      @cohomologySquareTriangleEquation_of_rectangle.{u, e}
+        X₀ X₁ A (B i) A' (B' (k i)) hA (hB i) hA' (hB' (k i))
+        (b i) (b' (k i)) a a' (v i p) (v' (k i) (kp i p))
+        (r i) σ g₀ (hv i p) (hv' (k i) (kp i p))
+        (hR i) hS (hRect i p) F₀ q₀)
+
+/-- The original relative-scheme interface, specializing the same literal-scheme
+construction without making a second comparison model. -/
+def indexedGermComparisonDataOfRelativeSquares
+    {X₀ X₁ : Scheme.{u}} {I J : Type*} (P : I → Type*) (Q : J → Type*)
+    (k : I → J) (kp : ∀ i, P i → Q (k i))
+    (B : I → Over X₀) (B' : J → Over X₁) (A : Over X₀) (A' : Over X₁)
+    [hB : ∀ i, HasExt.{e} (AbelianSheaf.{u, u + 1} (B i).left)]
+    [hB' : ∀ j, HasExt.{e} (AbelianSheaf.{u, u + 1} (B' j).left)]
+    [hA : HasExt.{e} (AbelianSheaf.{u, u + 1} A.left)]
+    [hA' : HasExt.{e} (AbelianSheaf.{u, u + 1} A'.left)]
+    (g₀ : X₁ ⟶ X₀) (r : ∀ i, (B' (k i)).left ⟶ (B i).left)
+    (σ : A'.left ⟶ A.left)
+    (hR : ∀ i, (B' (k i)).hom ≫ g₀ = r i ≫ (B i).hom)
+    (hS : A'.hom ≫ g₀ = σ ≫ A.hom)
+    (v : ∀ i, P i → (A ⟶ B i)) (v' : ∀ j, Q j → (A' ⟶ B' j))
+    (hRect : ∀ i p, (v' (k i) (kp i p)).left ≫ r i = σ ≫ (v i p).left)
+    (F₀ : AbelianSheaf.{u, u + 1} X₀) (q₀ : ℕ) {Z Z' : Type*}
+    (γ : ∀ i, P i → Sheaf.H.{e} ((inverseImage (B i).hom).obj F₀) q₀ → Z)
+    (γ' : ∀ j, Q j → Sheaf.H.{e} ((inverseImage (B' j).hom).obj
+      ((inverseImage g₀).obj F₀)) q₀ → Z')
+    (unit : Z → Z') (hγ : ∀ z : Z, ∃ i p y, γ i p y = z) :
+    IndexedGermComparisonData P Q
+      (fun i => Sheaf.H.{e} ((inverseImage (B i).hom).obj F₀) q₀)
+      (fun j => Sheaf.H.{e} ((inverseImage (B' j).hom).obj ((inverseImage g₀).obj F₀)) q₀)
+      Z Z' (Sheaf.H.{e} ((inverseImage A.hom).obj F₀) q₀)
+      (Sheaf.H.{e} ((inverseImage A'.hom).obj ((inverseImage g₀).obj F₀)) q₀) :=
+  indexedGermComparisonDataOfSchemeSquares P Q k kp
+    (fun i => (B i).left) (fun j => (B' j).left)
+    (fun i => (B i).hom) (fun j => (B' j).hom) A.left A'.left A.hom A'.hom
+    (hB := hB) (hB' := hB') (hA := hA) (hA' := hA')
+    g₀ r σ hR hS (fun i p => (v i p).left) (fun j p => (v' j p).left)
+    (fun i p => Over.w (v i p)) (fun j p => Over.w (v' j p))
+    hRect F₀ q₀ γ γ' unit hγ
+
+/-- The complete constructed family gives the literal additive-map square
+before the concrete stalks and neighborhood schemes are substituted. -/
+theorem indexedGermComparisonDataOfRelativeSquares_addHomSquare
+    {X₀ X₁ : Scheme.{u}} {I J : Type*} (P : I → Type*) (Q : J → Type*)
+    (k : I → J) (kp : ∀ i, P i → Q (k i))
+    (B : I → Over X₀) (B' : J → Over X₁) (A : Over X₀) (A' : Over X₁)
+    [hB : ∀ i, HasExt.{e} (AbelianSheaf.{u, u + 1} (B i).left)]
+    [hB' : ∀ j, HasExt.{e} (AbelianSheaf.{u, u + 1} (B' j).left)]
+    [hA : HasExt.{e} (AbelianSheaf.{u, u + 1} A.left)]
+    [hA' : HasExt.{e} (AbelianSheaf.{u, u + 1} A'.left)]
+    (g₀ : X₁ ⟶ X₀) (r : ∀ i, (B' (k i)).left ⟶ (B i).left)
+    (σ : A'.left ⟶ A.left)
+    (hR : ∀ i, (B' (k i)).hom ≫ g₀ = r i ≫ (B i).hom)
+    (hS : A'.hom ≫ g₀ = σ ≫ A.hom)
+    (v : ∀ i, P i → (A ⟶ B i)) (v' : ∀ j, Q j → (A' ⟶ B' j))
+    (hRect : ∀ i p, (v' (k i) (kp i p)).left ≫ r i = σ ≫ (v i p).left)
+    (F₀ : AbelianSheaf.{u, u + 1} X₀) (q₀ : ℕ) {Z Z' : Type*}
+    [AddCommGroup Z] [AddCommGroup Z']
+    (γ : ∀ i, P i → Sheaf.H.{e} ((inverseImage (B i).hom).obj F₀) q₀ → Z)
+    (γ' : ∀ j, Q j → Sheaf.H.{e} ((inverseImage (B' j).hom).obj
+      ((inverseImage g₀).obj F₀)) q₀ → Z')
+    (unit : Z →+ Z') (hγ : ∀ z : Z, ∃ i p y, γ i p y = z)
+    (hunit : (indexedGermComparisonDataOfRelativeSquares P Q k kp B B' A A'
+      g₀ r σ hR hS v v' hRect F₀ q₀ γ γ' unit hγ).UnitLaw)
+    (b : Z →+ Sheaf.H.{e} ((inverseImage A.hom).obj F₀) q₀)
+    (b' : Z' →+ Sheaf.H.{e} ((inverseImage A'.hom).obj ((inverseImage g₀).obj F₀)) q₀)
+    (hsource : (indexedGermComparisonDataOfRelativeSquares P Q k kp B B' A A'
+      g₀ r σ hR hS v v' hRect F₀ q₀ γ γ' unit hγ).SourceLaw b)
+    (htarget : (indexedGermComparisonDataOfRelativeSquares P Q k kp B B' A A'
+      g₀ r σ hR hS v v' hRect F₀ q₀ γ γ' unit hγ).TargetLaw b') :
+    b'.comp unit = (cohomologySquareTransfer A.hom A'.hom g₀ σ hS F₀ q₀).hom.comp b := by
+  apply AddMonoidHom.ext
+  exact (indexedGermComparisonDataOfRelativeSquares P Q k kp B B' A A'
+      g₀ r σ hR hS v v' hRect F₀ q₀ γ γ' unit hγ).square_of_laws
+    hunit b b' hsource htarget
 
 private theorem relativeCohomologyTransfer_mk_value
     {X₀ A₀ B₀ : Scheme.{u}}
@@ -174,7 +402,7 @@ theorem geometricCohomologyComparisonEquationOfHom_iff_original
 
 omit hXExt hX'Ext hSourceSlice hTargetSlice in
 /-- The exact original raw-map rectangle, before any scalar evaluation. -/
-private theorem geometricCohomologyComparison_neighborhood_whole
+theorem geometricCohomologyComparison_neighborhood_whole
     (U : S.Etale) (p : (pointSmallEtale (ζ ≫ g)).fiber.obj U) :
     (cohomologyTransfer.{u, e} (fibreProductBaseChangeMap f f' g g' h U)
       ((inverseImageSquareIso (pullback.snd U.hom f)
@@ -197,7 +425,7 @@ private theorem geometricCohomologyComparison_neighborhood_whole
     (geometricFibrePointedMap Ω (ζ ≫ g) f { obj := U, val := p })
   let vRaw := relativeCohomologyTransfer.{u, e} ((inverseImage g').obj F) q
     (geometricFibrePointedMap Ω ζ f'
-      { obj := (siteBaseChange g).obj U
+      { obj := (siteBaseChange g).obj U,
         val := CoefficientStalkBaseChange.pulledBackPoint g ζ U p })
   let dRaw := geometricFibreCohomologyTransfer.{u, e} f f' g g' h ζ F q
   let uTriangle := @cohomologyTriangleTransfer.{u, e} X
@@ -210,10 +438,10 @@ private theorem geometricCohomologyComparison_neighborhood_whole
     hFiber' (hZV ((siteBaseChange g).obj U))
     (pullback.snd ζ f') (pullback.snd ((siteBaseChange g).obj U).hom f')
     (geometricFibrePointedMap Ω ζ f'
-      { obj := (siteBaseChange g).obj U
+      { obj := (siteBaseChange g).obj U,
         val := CoefficientStalkBaseChange.pulledBackPoint g ζ U p }).left
     (Over.w (geometricFibrePointedMap Ω ζ f'
-      { obj := (siteBaseChange g).obj U
+      { obj := (siteBaseChange g).obj U,
         val := CoefficientStalkBaseChange.pulledBackPoint g ζ U p }))
     ((inverseImage g').obj F) q
   let dSquare := @cohomologySquareTransfer.{u, e} X X'
@@ -248,12 +476,9 @@ private theorem geometricCohomologyComparison_neighborhood_whole
     (hP.trans (congrArg₂ (fun a b => a ≫ b) hu.symm hd.symm))
 
 set_option maxHeartbeats 500000 in
--- The native germ comparison exhausted the default kernel budget. Its existing
--- finite local allowance follows the pointwise proof; compatibility wrappers
--- below use the default.
-/-- The original germ formula and coefficient rectangle compare the actual
-stalk maps pointwise. The comparison functions need no additive structure, and
-no derived-category data is present in this native specialization. -/
+-- The original germ-extensionality application elaborates several independent coefficient worlds.
+/-- Original germ laws and the actual coefficient rectangle give the pointwise
+comparison through the original germ extensionality theorem. -/
 theorem geometricCohomologyComparison_pointwise_of_hom_neighborhoodGerms
     (β : (inverseImage g).obj ((higherDirectImage f q).obj F) ⟶
       (higherDirectImage f' q).obj ((inverseImage g').obj F))
@@ -295,123 +520,29 @@ theorem geometricCohomologyComparison_pointwise_of_hom_neighborhoodGerms
           ((StalkInverseImage.stalkUnitNatIso g ζ).hom.app
             ((higherDirectImage f q).obj F) z)) =
         geometricFibreCohomologyTransfer.{u, e} f f' g g' h ζ F q (b z) := by
-  intro z
-  obtain ⟨U, p, y, hy⟩ := @exists_fibreProductCohomologyGerm.{u, w, s, e}
-    X S f hXExt hSourceSlice hZU F q Ω hΩField hΩSep (ζ ≫ g) z
-  have hstart :
-      b'
-        (((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).map β
-          ((StalkInverseImage.stalkUnitNatIso g ζ).hom.app ((higherDirectImage f q).obj F)
-            (@fibreProductCohomologyGerm.{u, w, s, e} X S f U
-              hXExt (hSourceSlice U) (hZU U) F q Ω hΩField hΩSep (ζ ≫ g) p y))) =
-      b'
-        (@fibreProductCohomologyGerm.{u, w', s', e} X' S' f' ((siteBaseChange g).obj U)
-          hX'Ext (hTargetSlice ((siteBaseChange g).obj U)) (hZV ((siteBaseChange g).obj U))
-          ((inverseImage g').obj F) q Ω hΩField hΩSep ζ
-          (CoefficientStalkBaseChange.pulledBackPoint g ζ U p)
-          (cohomologyTransfer.{u, e} (fibreProductBaseChangeMap f f' g g' h U)
-            ((inverseImageSquareIso (pullback.snd U.hom f)
-              (pullback.snd ((siteBaseChange g).obj U).hom f')
-              g' (fibreProductBaseChangeMap f f' g g' h U)
-              (fibreProductBaseChangeMap_snd f f' g g' h U).symm).inv.app F) q y)) :=
-    congrArg
-      (fun t : ((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).obj
-          ((higherDirectImage f' q).obj ((inverseImage g').obj F)) => b' t)
-      (hN U p y)
-  have htarget :
-      b'
-        (@fibreProductCohomologyGerm.{u, w', s', e} X' S' f' ((siteBaseChange g).obj U)
-          hX'Ext (hTargetSlice ((siteBaseChange g).obj U)) (hZV ((siteBaseChange g).obj U))
-          ((inverseImage g').obj F) q Ω hΩField hΩSep ζ
-          (CoefficientStalkBaseChange.pulledBackPoint g ζ U p)
-          (cohomologyTransfer.{u, e} (fibreProductBaseChangeMap f f' g g' h U)
-            ((inverseImageSquareIso (pullback.snd U.hom f)
-              (pullback.snd ((siteBaseChange g).obj U).hom f')
-              g' (fibreProductBaseChangeMap f f' g g' h U)
-              (fibreProductBaseChangeMap_snd f f' g g' h U).symm).inv.app F) q y)) =
-      (relativeCohomologyTransfer.{u, e} ((inverseImage g').obj F) q
-        (geometricFibrePointedMap Ω ζ f'
-          { obj := (siteBaseChange g).obj U
-            val := CoefficientStalkBaseChange.pulledBackPoint g ζ U p })
-        (cohomologyTransfer.{u, e} (fibreProductBaseChangeMap f f' g g' h U)
-          ((inverseImageSquareIso (pullback.snd U.hom f)
-            (pullback.snd ((siteBaseChange g).obj U).hom f')
-            g' (fibreProductBaseChangeMap f f' g g' h U)
-            (fibreProductBaseChangeMap_snd f f' g g' h U).symm).inv.app F) q y)) :=
-    hb' ((siteBaseChange g).obj U)
-      (CoefficientStalkBaseChange.pulledBackPoint g ζ U p)
-      (cohomologyTransfer.{u, e} (fibreProductBaseChangeMap f f' g g' h U)
-        ((inverseImageSquareIso (pullback.snd U.hom f)
-          (pullback.snd ((siteBaseChange g).obj U).hom f')
-          g' (fibreProductBaseChangeMap f f' g g' h U)
-          (fibreProductBaseChangeMap_snd f f' g g' h U).symm).inv.app F) q y)
-  have hrectangle :
-      (relativeCohomologyTransfer.{u, e} ((inverseImage g').obj F) q
-        (geometricFibrePointedMap Ω ζ f'
-          { obj := (siteBaseChange g).obj U
-            val := CoefficientStalkBaseChange.pulledBackPoint g ζ U p })
-        (cohomologyTransfer.{u, e} (fibreProductBaseChangeMap f f' g g' h U)
-          ((inverseImageSquareIso (pullback.snd U.hom f)
-            (pullback.snd ((siteBaseChange g).obj U).hom f')
-            g' (fibreProductBaseChangeMap f f' g g' h U)
-            (fibreProductBaseChangeMap_snd f f' g g' h U).symm).inv.app F) q y)) =
-      geometricFibreCohomologyTransfer.{u, e} f f' g g' h ζ F q
-        (relativeCohomologyTransfer.{u, e} F q
-          (geometricFibrePointedMap Ω (ζ ≫ g) f { obj := U, val := p }) y) :=
-    rawGroupSquare_apply.{e}
-      (cohomologyTransfer.{u, e} (fibreProductBaseChangeMap f f' g g' h U)
-        ((inverseImageSquareIso (pullback.snd U.hom f)
-          (pullback.snd ((siteBaseChange g).obj U).hom f')
-          g' (fibreProductBaseChangeMap f f' g g' h U)
-          (fibreProductBaseChangeMap_snd f f' g g' h U).symm).inv.app F) q)
-      (relativeCohomologyTransfer.{u, e} ((inverseImage g').obj F) q
-        (geometricFibrePointedMap Ω ζ f'
-          { obj := (siteBaseChange g).obj U
-            val := CoefficientStalkBaseChange.pulledBackPoint g ζ U p }))
-      (relativeCohomologyTransfer.{u, e} F q
-        (geometricFibrePointedMap Ω (ζ ≫ g) f { obj := U, val := p }))
-      (geometricFibreCohomologyTransfer.{u, e} f f' g g' h ζ F q)
-      (geometricCohomologyComparison_neighborhood_whole.{u, e} f f' g g' h ζ
-        (hZU := hZU) (hZV := hZV) (hFiber := hFiber) (hFiber' := hFiber')
-        F q U p) y
-  have hfinish :
-      geometricFibreCohomologyTransfer.{u, e} f f' g g' h ζ F q
-        (relativeCohomologyTransfer.{u, e} F q
-          (geometricFibrePointedMap Ω (ζ ≫ g) f { obj := U, val := p }) y) =
-      geometricFibreCohomologyTransfer.{u, e} f f' g g' h ζ F q
-        (b
-          (@fibreProductCohomologyGerm.{u, w, s, e} X S f U
-            hXExt (hSourceSlice U) (hZU U) F q Ω hΩField hΩSep (ζ ≫ g) p y)) :=
-    congrArg
-      (fun t : Sheaf.H.{e} ((inverseImage (pullback.snd (ζ ≫ g) f)).obj F) q =>
-        geometricFibreCohomologyTransfer.{u, e} f f' g g' h ζ F q t)
-      (hb U p y).symm
-  have hsource :
-      b' (((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).map β
-          ((StalkInverseImage.stalkUnitNatIso g ζ).hom.app
-            ((higherDirectImage f q).obj F) z)) =
-      b' (((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).map β
-          ((StalkInverseImage.stalkUnitNatIso g ζ).hom.app
-            ((higherDirectImage f q).obj F)
-            (@fibreProductCohomologyGerm.{u, w, s, e} X S f U
-              hXExt (hSourceSlice U) (hZU U) F q Ω hΩField hΩSep (ζ ≫ g) p y))) :=
-    congrArg
-      (fun t : ((pointSmallEtale (ζ ≫ g)).sheafFiber
-          (A := AddCommGrpCat.{u + 1})).obj ((higherDirectImage f q).obj F) =>
-        b' (((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).map β
-          ((StalkInverseImage.stalkUnitNatIso g ζ).hom.app
-            ((higherDirectImage f q).obj F) t))) hy.symm
-  have hresult :
-      geometricFibreCohomologyTransfer.{u, e} f f' g g' h ζ F q
-        (b (@fibreProductCohomologyGerm.{u, w, s, e} X S f U
-          hXExt (hSourceSlice U) (hZU U) F q Ω hΩField hΩSep (ζ ≫ g) p y)) =
-      geometricFibreCohomologyTransfer.{u, e} f f' g g' h ζ F q (b z) :=
-    congrArg
-      (fun t : ((pointSmallEtale (ζ ≫ g)).sheafFiber
-          (A := AddCommGrpCat.{u + 1})).obj ((higherDirectImage f q).obj F) =>
-        geometricFibreCohomologyTransfer.{u, e} f f' g g' h ζ F q (b t)) hy
-  exact hsource.trans
-    (hstart.trans (htarget.trans (hrectangle.trans (hfinish.trans hresult))))
+  have hsquare := IndexedGermComparisonData.ofMaps_square
+    (fun U p y => @fibreProductCohomologyGerm.{u, w, s, e} X S f U
+      hXExt (hSourceSlice U) (hZU U) F q Ω hΩField hΩSep (ζ ≫ g) p y)
+    (fun V p y => @fibreProductCohomologyGerm.{u, w', s', e} X' S' f' V
+      hX'Ext (hTargetSlice V) (hZV V) ((inverseImage g').obj F) q Ω hΩField hΩSep ζ p y)
+    (siteBaseChange g).obj (CoefficientStalkBaseChange.pulledBackPoint g ζ)
+    (fun z => ((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).map β
+      ((StalkInverseImage.stalkUnitNatIso g ζ).hom.app ((higherDirectImage f q).obj F) z))
+    (geometricFibreCohomologyTransfer.{u, e} f f' g g' h ζ F q)
+    (fun U => cohomologyTransfer.{u, e} (fibreProductBaseChangeMap f f' g g' h U)
+      ((inverseImageSquareIso (pullback.snd U.hom f)
+        (pullback.snd ((siteBaseChange g).obj U).hom f') g'
+        (fibreProductBaseChangeMap f f' g g' h U)
+        (fibreProductBaseChangeMap_snd f f' g g' h U).symm).inv.app F) q)
+    (fun U p => relativeCohomologyTransfer.{u, e} F q
+      (geometricFibrePointedMap Ω (ζ ≫ g) f { obj := U, val := p }))
+    (fun V p => relativeCohomologyTransfer.{u, e} ((inverseImage g').obj F) q
+      (geometricFibrePointedMap Ω ζ f' { obj := V, val := p }))
+    (exists_fibreProductCohomologyGerm.{u, w, s, e} f F q (ζ ≫ g))
+    (fun U p => geometricCohomologyComparison_neighborhood_whole.{u, e} f f' g g' h ζ
+      (hZU := hZU) (hZV := hZV) (hFiber := hFiber) (hFiber' := hFiber') F q U p)
+    hN b b' hb hb'
+  exact hsquare
 
 /-- Original neighborhood representatives and the literal geometric rectangle
 compare any actual sheaf morphism satisfying the stated original germ formula.
@@ -481,7 +612,7 @@ def higherBaseChangeStalkMap :
     ((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).obj
       ((higherDirectImage f' q).obj ((inverseImage g').obj F)) :=
   higherDirectImageStalkMapOfHom.{u} f f' g g' ζ F q
-    ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
+    ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
       hDX hDS hDX' hDS' f f' g g' h q).app F)
 
 omit hXExt hX'Ext hSourceSlice hTargetSlice hZU hZV hFiber hFiber' in
@@ -492,7 +623,7 @@ theorem higherBaseChangeStalkMap_apply
     higherBaseChangeStalkMap.{u, dX, dS, dX', dS'} f f' g g' h ζ
       (hDX := hDX) (hDS := hDS) (hDX' := hDX') (hDS' := hDS') F q z =
       ((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).map
-        ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
+        ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
         hDX hDS hDX' hDS' f f' g g' h q).app F)
         ((StalkInverseImage.stalkUnitNatIso g ζ).hom.app
           ((higherDirectImage f q).obj F) z) := rfl
@@ -508,7 +639,7 @@ def geometricCohomologyComparisonEquation
         Sheaf.H.{e} ((inverseImage (pullback.snd ζ f')).obj ((inverseImage g').obj F)) q) : Prop :=
   geometricCohomologyComparisonEquationOfHom.{u, e} f f' g g' h ζ
     (hFiber := hFiber) (hFiber' := hFiber') F q
-    ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
+    ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
       hDX hDS hDX' hDS' f f' g g' h q).app F) b b'
 
 omit hXExt hX'Ext hSourceSlice hTargetSlice hZU hZV in
@@ -524,14 +655,14 @@ theorem geometricCohomologyComparisonEquation_iff_original
       (hFiber := hFiber) (hFiber' := hFiber')
       (hDX := hDX) (hDS := hDS) (hDX' := hDX') (hDS' := hDS') F q b b' ↔
       ∀ z, b' (((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).map
-          ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
+          ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
         hDX hDS hDX' hDS' f f' g g' h q).app F)
           ((StalkInverseImage.stalkUnitNatIso g ζ).hom.app
             ((higherDirectImage f q).obj F) z)) =
         geometricFibreCohomologyTransfer.{u, e} f f' g g' h ζ F q (b z) :=
   geometricCohomologyComparisonEquationOfHom_iff_original.{u, e} f f' g g' h ζ
     (hFiber := hFiber) (hFiber' := hFiber') F q
-    ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
+    ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
       hDX hDS hDX' hDS' f f' g g' h q).app F) b b'
 
 /-- Comparisons with the original pointed-germ formulas commute with the
@@ -539,8 +670,9 @@ original stalk unit and higher exchange over the same geometric point. -/
 theorem geometricCohomologyComparison_exchange_of_neighborhoodGerms
     (hN : ∀ (U : S.Etale) (p : (pointSmallEtale (ζ ≫ g)).fiber.obj U)
       (y : Sheaf.H.{e} ((inverseImage (pullback.snd U.hom f)).obj F) q),
-      (pointSmallEtale ζ).sheafFiber.map ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
-        hDX hDS hDX' hDS' f f' g g' h q).app F)
+      (pointSmallEtale ζ).sheafFiber.map
+        ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
+          hDX hDS hDX' hDS' f f' g g' h q).app F)
           ((StalkInverseImage.stalkUnitNatIso g ζ).hom.app ((higherDirectImage f q).obj F)
             (@fibreProductCohomologyGerm.{u, w, s, e} X S f U
               hXExt (hSourceSlice U) (hZU U) F q Ω hΩField hΩSep (ζ ≫ g) p y)) =
@@ -580,7 +712,7 @@ theorem geometricCohomologyComparison_exchange_of_neighborhoodGerms
     (hXExt := hXExt) (hX'Ext := hX'Ext)
     (hSourceSlice := hSourceSlice) (hTargetSlice := hTargetSlice)
     (hZU := hZU) (hZV := hZV) (hFiber := hFiber) (hFiber' := hFiber') F q
-    ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
+    ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
       hDX hDS hDX' hDS' f f' g g' h q).app F) hN b b' hb hb'
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Stalk

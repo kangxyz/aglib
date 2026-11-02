@@ -1,0 +1,56 @@
+{
+  "question": "Oneprescribed nativefaithful argument-boundary diagnosis of oldCone2df/current-at-timefactoryd9",
+  "run": "remote-2120b75d2709438381bb9f40dc8e18cc",
+  "SOURCE": "cc744c38b7d773d8edcb7d7f85f7c080191037cb8c3ec4291c27397e474019e9",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/W12-Cone-boundary-2120b75d/receipt.json",
+  "receipt_sha256": "322a8c36edaf753e63b2d52fbd4bd614b1301de53033088d0782152909718b15",
+  "group_closed": true,
+  "exit_code": 1,
+  "elapsed_seconds": 131.65229877829552,
+  "actual_probe_sha256": "3de4e6109f7d7056bccfcbff56c6cdb6660508c4aa162a7c6d5e3ae504d2cd10",
+  "original_setup_sha256": "b0bbcd8805e82dcac88cc674c61cad229093de41ddd409ca64948341b1dfa078",
+  "scratch_setup_sha256": "d6066e3c71f01a720a814ccd02d327cfcc65ecc139a29e6232d8fa6c38f21d72",
+  "equal_actual_setup_fields": {
+    "name": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestConeSections",
+    "isModule": true,
+    "options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "package": "Aglib"
+  },
+  "complete_Lean_errors": [
+    {
+      "data": "(kernel) deterministic timeout",
+      "pos": {
+        "column": 8,
+        "line": 102
+      },
+      "endPos": {
+        "column": 23,
+        "line": 102
+      },
+      "severity": "error",
+      "fileName": "/root/autodl-tmp/lean-build/logs/remote-2120b75d2709438381bb9f40dc8e18cc/ConeArgumentBoundary.lean"
+    },
+    {
+      "data": "(kernel) unknown constant 'AlgebraicGeometry.Scheme.EtaleCohomology.Continuity.w12DiagMapValue'",
+      "pos": {
+        "column": 4,
+        "line": 107
+      },
+      "endPos": {
+        "column": 16,
+        "line": 107
+      },
+      "severity": "error",
+      "fileName": "/root/autodl-tmp/lean-build/logs/remote-2120b75d2709438381bb9f40dc8e18cc/ConeArgumentBoundary.lean"
+    }
+  ],
+  "complete_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/W12-Cone-boundary-2120b75d/build.log",
+  "complete_log_sha256": "ee3d253c008ff4d7695c6220fe14b90e30d899c7e143e81f459e526e3a64674d",
+  "conclusion": "Firstgenuinekernelerror102:8w12DiagMapValue,107unknowncascade. Earliernamedformation/component/targetmap/squaredeclarations emittednoerrors. Thislocates oldnativecanonicaltargetmapvalue at actualpreparedbasis, doesnotproveuniqueexpensivereductionpair or production/nativeconsumerpass. No secondprobe/limitsraise.",
+  "selected_next_action": "Wholeindexed-to-chosen-coefficient constructor selected andpublished phase native-whole-indexed-v13; derive targetmapvalue from originalunit/mate/top-id beforeSchemespecialization, removesfailednativeMapValue argument."
+}

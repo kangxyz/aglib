@@ -14,6 +14,16 @@ finite extension induction under homology bounds. The terms of the
 chosen object need not be bounded or satisfy the property. Proper
 coherent images and flat-base-change comparisons share this lower tier.
 
+[InjectiveComparison](InjectiveComparison.lean) extends actual shift-compatible
+triangulated comparisons from injective singles to every single by finite
+homology-degree induction.
+[InjectiveComparisonExact](InjectiveComparisonExact.lean) performs the complete
+assembly after an exact coefficient functor: it derives that functor internally,
+proves the two native lower bounds, and transports the same comparison through
+the native exact-single isomorphism. Injectivity is required only in the genuine
+coefficient category. The coefficient-derived model stays inside the proof; the
+four value-category models and their universes remain independent.
+
 [Ext](Ext.lean) identifies each original Ext group with shifted Hom between
 native bounded-below singles, additively and with independent Ext and derived
 size universes. The forward lift uses the fully faithful inclusion and its
@@ -21,3 +31,16 @@ original shift comparison. It preserves Yoneda composition, degree-zero maps
 and the actual unsigned `singleTrianglePlus` connecting arrow. No
 injective or projective availability hypothesis is added. A protected signed
 `Ext.δ` must retain its original sign when used by a derived comparison.
+
+## Additional source entry points
+
+- [ExactDerivedContractionAdjunction](ExactDerivedContractionAdjunction.lean)
+- [ExactDerivedContractionIdentity](ExactDerivedContractionIdentity.lean)
+- [ExactDerivedContractionModels](ExactDerivedContractionModels.lean)
+- [ExactDerivedContractionNaturality](ExactDerivedContractionNaturality.lean)
+- [ExactDerivedContractionPresentation](ExactDerivedContractionPresentation.lean)
+- [ModelComparisonCoherence](ModelComparisonCoherence.lean)
+- [ShortExactMapNatural](ShortExactMapNatural.lean)
+- [ShortExactMapNaturality](ShortExactMapNaturality.lean)
+- [ShortExactMapSquare](ShortExactMapSquare.lean)
+- [ShortExactMap](ShortExactMap.lean)

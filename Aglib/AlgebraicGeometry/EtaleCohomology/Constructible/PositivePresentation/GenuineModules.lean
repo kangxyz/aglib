@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.FiniteEtalePartitions
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.ZModRetract
-public import Aglib.CategoryTheory.Sites.Torsion.ZMod.Full
+public import Aglib.CategoryTheory.Sites.Torsion.ZMod.BoundedDiagram
 public import Mathlib.CategoryTheory.Adjunction.Limits
 
 /-! # The original bounded presentation as genuine ZMod sheaves
@@ -56,66 +56,50 @@ abbrev scalarLiftUnderlyingIso :
 /-- The supplied genuine module structures land in the original bounded
 coefficient category by their literal identity-annihilation equation. -/
 def genuineCoefficientFunctor : ZModSheaf X n ⥤ BoundedPresentation.Coefficient X n :=
-  (TorsionZMod.killedSheaves X.smallEtaleTopology n).lift (zmodUnderlying X n)
-    (zmodUnderlying_nsmul_id X n)
+  TorsionZMod.BoundedDiagram.genuineCoefficientFunctor X.smallEtaleTopology n
 
 /-- The factorization through the original bounded coefficient inclusion
 retains the original underlying functor literally. -/
 def genuineCoefficientUnderlyingIso :
     genuineCoefficientFunctor X n ⋙ BoundedPresentation.inclusion X n ≅
       zmodUnderlying X n :=
-  (TorsionZMod.killedSheaves X.smallEtaleTopology n).liftCompιIso
-    (zmodUnderlying X n) (zmodUnderlying_nsmul_id X n)
+  TorsionZMod.BoundedDiagram.genuineCoefficientUnderlyingIso X.smallEtaleTopology n
 
 /-- The actual underlying-coefficient factor is an equivalence, including
 modulus zero. Essential surjectivity uses canonical scalar conversion. -/
 instance genuineCoefficientFunctor_isEquivalence :
-    (genuineCoefficientFunctor X n).IsEquivalence where
-  faithful := Functor.Faithful.of_comp_iso (genuineCoefficientUnderlyingIso X n)
-  full := Functor.Full.of_comp_faithful_iso (genuineCoefficientUnderlyingIso X n)
-  essSurj := {
-    mem_essImage F := ⟨(scalarLift X n).obj F, ⟨ObjectProperty.isoMk _
-      (TorsionZMod.sheafUnderlyingIso X.smallEtaleTopology n F.obj F.property)⟩⟩ }
+    (genuineCoefficientFunctor X n).IsEquivalence :=
+  TorsionZMod.BoundedDiagram.genuineCoefficientFunctor_isEquivalence X.smallEtaleTopology n
 
 /-- The canonical scalar conversion is itself an equivalence. Its original
 underlying comparison proves full faithfulness; the supplied genuine
 module objects are recovered by full scalar forgetting. -/
-instance scalarLift_isEquivalence : (scalarLift X n).IsEquivalence where
-  faithful := Functor.Faithful.of_comp_iso (scalarLiftUnderlyingIso X n)
-  full := Functor.Full.of_comp_faithful_iso (scalarLiftUnderlyingIso X n)
-  essSurj := {
-    mem_essImage M := ⟨(genuineCoefficientFunctor X n).obj M,
-      ⟨(zmodUnderlying X n).preimageIso
-        (TorsionZMod.sheafUnderlyingIso X.smallEtaleTopology n
-          ((zmodUnderlying X n).obj M) (zmodUnderlying_nsmul_id X n M))⟩⟩ }
+instance scalarLift_isEquivalence : (scalarLift X n).IsEquivalence :=
+  TorsionZMod.BoundedDiagram.scalarLift_isEquivalence X.smallEtaleTopology n
 
 /-- The actual equivalence uses canonical conversion as its forward functor. -/
 def genuineModuleEquivalence :
     BoundedPresentation.Coefficient X n ≌ ZModSheaf X n :=
-  (scalarLift X n).asEquivalence
+  TorsionZMod.BoundedDiagram.genuineModuleEquivalence X.smallEtaleTopology n
 
 /-- The original genuine-module underlying functor preserves all original
 colimits of the coefficient/index size, for every modulus. -/
 instance genuineUnderlying_preservesColimits :
-    PreservesColimitsOfSize.{u + 1, u + 1} (zmodUnderlying X n) := by
-  have : PreservesColimitsOfSize.{u + 1, u + 1}
-      (genuineCoefficientFunctor X n ⋙ BoundedPresentation.inclusion X n) := inferInstance
-  exact preservesColimits_of_natIso (genuineCoefficientUnderlyingIso X n)
+    PreservesColimitsOfSize.{u + 1, u + 1} (zmodUnderlying X n) :=
+  TorsionZMod.BoundedDiagram.genuineUnderlying_preservesColimits X.smallEtaleTopology n
 
 /-- Canonical conversion of the original underlying coefficient is
 isomorphic to the supplied genuine module sheaf, through the native
 underlying comparison. -/
 def canonicalModuleIso (M : ZModSheaf X n) :
     (scalarLift X n).obj ((genuineCoefficientFunctor X n).obj M) ≅ M :=
-  (zmodUnderlying X n).preimageIso
-    (TorsionZMod.sheafUnderlyingIso X.smallEtaleTopology n
-      ((zmodUnderlying X n).obj M) (zmodUnderlying_nsmul_id X n M))
+  TorsionZMod.BoundedDiagram.canonicalModuleIso X.smallEtaleTopology n M
 
 /-- The underlying isomorphism is exactly the native original scalar comparison. -/
 theorem canonicalModuleIso_underlying_hom (M : ZModSheaf X n) :
     (zmodUnderlying X n).map (canonicalModuleIso X n M).hom =
-      (scalarLiftUnderlyingIso X n).hom.app ((genuineCoefficientFunctor X n).obj M) := by
-  exact (zmodUnderlying X n).map_preimage _
+      (scalarLiftUnderlyingIso X n).hom.app ((genuineCoefficientFunctor X n).obj M) :=
+  TorsionZMod.BoundedDiagram.canonicalModuleIso_underlying_hom X.smallEtaleTopology n M
 
 section CoconeTransport
 
@@ -128,55 +112,35 @@ variable {I : Type v} [Category.{w} I] (M : ZModSheaf X n)
 scalar conversion, with no change of its index or arrows. -/
 def scalarLiftDiagramUnderlyingIso :
     (D ⋙ scalarLift X n) ⋙ zmodUnderlying X n ≅ D ⋙ BoundedPresentation.inclusion X n :=
-  NatIso.ofComponents (fun i => (scalarLiftUnderlyingIso X n).app (D.obj i))
-    (fun f => (scalarLiftUnderlyingIso X n).hom.naturality (D.map f))
+  TorsionZMod.BoundedDiagram.scalarLiftDiagramUnderlyingIso X.smallEtaleTopology n D
 
 /-- Lift the literal original cocone into its actual full coefficient category. -/
-def originalCoefficientCocone : Cocone D where
-  pt := (genuineCoefficientFunctor X n).obj M
-  ι := {
-    app i := ObjectProperty.homMk (ι.app i)
-    naturality := by
-      intro i j f
-      apply ObjectProperty.hom_ext
-      exact ι.naturality f }
+def originalCoefficientCocone : Cocone D :=
+  TorsionZMod.BoundedDiagram.originalCoefficientCocone X.smallEtaleTopology n M D ι
 
 /-- Reflection through the original full inclusion retains the supplied
 original colimit, without replacing its cocone maps. -/
 def originalCoefficientCoconeIsColimit
     (hι : IsColimit (Cocone.mk ((zmodUnderlying X n).obj M) ι)) :
-    IsColimit (originalCoefficientCocone X n M D ι) := by
-  apply isColimitOfReflects (BoundedPresentation.inclusion X n)
-  exact hι
+    IsColimit (originalCoefficientCocone X n M D ι) :=
+  TorsionZMod.BoundedDiagram.originalCoefficientCoconeIsColimit X.smallEtaleTopology n M D ι hι
 
 /-- Apply canonical scalar conversion to the original cocone and use its
 native comparison to make the point the original genuine module sheaf. -/
 def genuinePresentationCocone : Cocone (D ⋙ scalarLift X n) :=
-  ((scalarLift X n).mapCocone (originalCoefficientCocone X n M D ι)).extend
-    (canonicalModuleIso X n M).hom
+  TorsionZMod.BoundedDiagram.genuinePresentationCocone X.smallEtaleTopology n M D ι
 
 /-- The actual transported cocone with original genuine point is a colimit. -/
 def genuinePresentationCoconeIsColimit
     (hι : IsColimit (Cocone.mk ((zmodUnderlying X n).obj M) ι)) :
-    IsColimit (genuinePresentationCocone X n M D ι) := by
-  have hPres : PreservesColimitsOfShape I (scalarLift X n) :=
-    ((genuineModuleEquivalence X n).toAdjunction.leftAdjoint_preservesColimits :
-      PreservesColimitsOfSize.{w, v} (scalarLift X n)).preservesColimitsOfShape
-  have hD : PreservesColimit D (scalarLift X n) := hPres.preservesColimit
-  exact IsColimit.extendIso (canonicalModuleIso X n M).hom
-    (hD.preserves (originalCoefficientCoconeIsColimit X n M D ι hι)).some
+    IsColimit (genuinePresentationCocone X n M D ι) :=
+  TorsionZMod.BoundedDiagram.genuinePresentationCoconeIsColimit X.smallEtaleTopology n M D ι hι
 
 /-- Every original cocone map is recovered through the native scalar comparison. -/
 theorem genuinePresentationCocone_underlying_ι (i : I) :
     (zmodUnderlying X n).map ((genuinePresentationCocone X n M D ι).ι.app i) =
-      (scalarLiftUnderlyingIso X n).hom.app (D.obj i) ≫ ι.app i := by
-  let f : D.obj i ⟶ (genuineCoefficientFunctor X n).obj M :=
-    ObjectProperty.homMk (ι.app i)
-  change (zmodUnderlying X n).map
-      ((scalarLift X n).map f ≫
-        (canonicalModuleIso X n M).hom) = _
-  rw [Functor.map_comp, canonicalModuleIso_underlying_hom]
-  exact (scalarLiftUnderlyingIso X n).hom.naturality f
+      (scalarLiftUnderlyingIso X n).hom.app (D.obj i) ≫ ι.app i :=
+  TorsionZMod.BoundedDiagram.genuinePresentationCocone_underlying_ι X.smallEtaleTopology n M D ι i
 
 /-- The underlying transported cocone is actually isomorphic to the original
 cocone precomposed with its native diagram comparison. The point map is identity. -/
@@ -184,14 +148,7 @@ def genuinePresentationUnderlyingCoconeIso :
     (zmodUnderlying X n).mapCocone (genuinePresentationCocone X n M D ι) ≅
       (Cocone.precompose (scalarLiftDiagramUnderlyingIso X n D).hom).obj
         (Cocone.mk ((zmodUnderlying X n).obj M) ι) :=
-  Cocone.ext (Iso.refl _) (by
-    intro i
-    change (zmodUnderlying X n).map
-        ((genuinePresentationCocone X n M D ι).ι.app i) ≫
-          𝟙 ((zmodUnderlying X n).obj M) =
-      (scalarLiftUnderlyingIso X n).hom.app (D.obj i) ≫ ι.app i
-    exact (Category.comp_id _).trans
-      (genuinePresentationCocone_underlying_ι X n M D ι i))
+  TorsionZMod.BoundedDiagram.genuinePresentationUnderlyingCoconeIso X.smallEtaleTopology n M D ι
 
 end CoconeTransport
 

@@ -18,6 +18,7 @@ public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.FinitePre
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Isomorphism
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Unit
 public import Aglib.RingTheory.MvPolynomial.DegreeOne
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.Twisting.Picard
 
 /-!
 # Positive twists from actual embeddings of the projective line
@@ -185,22 +186,19 @@ section TwistClasses
 
 variable (R : Type u) [CommRing R] (I : Type u)
 
-/-- Actual integer twists, with their native tensor multiplication, define Picard classes. -/
-def twistClassHom : ℤ →+ PicardGroup (ProjectiveSpace R I) where
-  toFun d := classOf _ (twistingLineBundle R I d)
-  map_zero' := Quotient.sound ⟨twistingZeroIso R I ≪≫
-    (coproductUniqueIso
-      (fun _ : PUnit.{u + 1} => SheafOfModules.unit (ProjectiveSpace R I).ringCatSheaf)).symm⟩
-  map_add' a b := Quotient.sound ⟨(twistingTensorIso R I a b).symm⟩
+/-- The original Line name is the single native integer-twist Picard homomorphism. -/
+abbrev twistClassHom : ℤ →+ PicardGroup (ProjectiveSpace R I) :=
+  ProjectiveSpace.twistClassHom R I
 
-@[simp] theorem twistClassHom_apply (d : ℤ) :
-    twistClassHom R I d = classOf _ (twistingLineBundle R I d) := rfl
+/-- The old application statement retains its original public type. -/
+theorem twistClassHom_apply (d : ℤ) :
+    twistClassHom R I d = classOf _ (twistingLineBundle R I d) :=
+  ProjectiveSpace.twistClassHom_apply R I d
 
 /-- Integer twist classes are the actual integer multiples of the original O(1) class. -/
 theorem twistClassHom_eq_zsmul (d : ℤ) :
-    twistClassHom R I d = d • classOf _ (twistingLineBundle R I 1) := by
-  simpa only [zsmul_eq_mul, mul_one, Int.cast_id, twistClassHom_apply] using
-    map_zsmul (twistClassHom R I) d (1 : ℤ)
+    twistClassHom R I d = d • classOf _ (twistingLineBundle R I 1) :=
+  ProjectiveSpace.twistClassHom_eq_zsmul R I d
 
 end TwistClasses
 

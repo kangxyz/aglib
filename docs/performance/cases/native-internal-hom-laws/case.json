@@ -1,0 +1,208 @@
+{
+  "lane_head": "4447b30aa15a87a61987cc427aa36d1343e7c57e",
+  "lean": "4.34.1",
+  "mathlib_revision_from_frozen_handoff": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "profile": {
+    "jobs": 8,
+    "threads": 4,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 110592
+  },
+  "generic_source_coverage": {
+    "run": "remote-d2b6def7fb08412a88340bbe4401791f",
+    "source_content_sha256": "627edbb32d67833a15b370fd8b85c205d49f510f41ecdb10976d297ccc6230b2",
+    "status": "retained prior generic producer+mirror PASS from frozen handoff; not a native action pass"
+  },
+  "native_runs": [
+    {
+      "label": "original",
+      "run": "remote-59b417c59cac476bbc8b25c22d48b2c1",
+      "source_file": "sources/NativeOriginal.lean",
+      "source_content_sha256": "dd39b5be6e6e3442f7262cf36b9cb7c62e61db092469b7368f133dded08dd6a8",
+      "status": "failed",
+      "exit_code": 1,
+      "group_closed": true,
+      "input_drift": [],
+      "compiler_invocations": 1,
+      "compiler_succeeded": 0,
+      "compiler_failed": 1,
+      "original_evidence": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-module-duality-runs/remote-59b417c59cac476bbc8b25c22d48b2c1/recovery-lllygs7m"
+    },
+    {
+      "label": "implicit",
+      "run": "remote-c7681fc6b5dc4cb9a3b65bad2a5f8297",
+      "source_file": "sources/NativeImplicit.lean",
+      "source_content_sha256": "1e32d1faa3fabd69bc2dd9eedf7405f4bf20bd65229c917dba2aaf743c3aac72",
+      "status": "failed",
+      "exit_code": 1,
+      "group_closed": true,
+      "input_drift": [],
+      "compiler_invocations": 1,
+      "compiler_succeeded": 0,
+      "compiler_failed": 1,
+      "original_evidence": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-module-duality-runs/remote-c7681fc6b5dc4cb9a3b65bad2a5f8297"
+    },
+    {
+      "label": "conclusion",
+      "run": "remote-0bd41a823b964f62899343a7f4028d2d",
+      "source_file": "sources/NativeConclusion.lean",
+      "source_content_sha256": "fd4fe069208e761200607d28e612e01fc126204acb183c8be22054e2028ea12d",
+      "status": "failed",
+      "exit_code": 1,
+      "group_closed": true,
+      "input_drift": [],
+      "compiler_invocations": 1,
+      "compiler_succeeded": 0,
+      "compiler_failed": 1,
+      "original_evidence": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-module-duality-runs/remote-0bd41a823b964f62899343a7f4028d2d"
+    },
+    {
+      "label": "literal-markers",
+      "run": "remote-ae261e33e7c54c15b905a1e203d841f4",
+      "source_file": "sources/NativeLiteralWithMarkers.lean",
+      "source_content_sha256": "2666c543603de349fcff8dca5d27f8ec0dca0d00ee4e6c70b8267622033ad3f5",
+      "status": "failed",
+      "exit_code": 1,
+      "group_closed": true,
+      "input_drift": [],
+      "compiler_invocations": 1,
+      "compiler_succeeded": 0,
+      "compiler_failed": 1,
+      "original_evidence": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-module-duality-runs/remote-ae261e33e7c54c15b905a1e203d841f4"
+    },
+    {
+      "label": "passed",
+      "run": "remote-08c52b36f4cb442a91a7ac3cbfe24509",
+      "source_file": "sources/NativePassed.lean",
+      "source_content_sha256": "8f7b258c65217539e2d4a20974c9fdcdd263739db7135114ece9ec62aa9033d0",
+      "status": "succeeded",
+      "exit_code": 0,
+      "group_closed": true,
+      "input_drift": [],
+      "compiler_invocations": 2,
+      "compiler_succeeded": 2,
+      "compiler_failed": 0,
+      "original_evidence": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-module-duality-runs/remote-08c52b36f4cb442a91a7ac3cbfe24509"
+    }
+  ],
+  "suffix_native_runs": [
+    {
+      "label": "suffix-middle",
+      "run": "remote-2b94eca5f56745ab91263749dab59a5a",
+      "source_file": "sources/NativeSuffixResolvedDiagnostic.lean",
+      "sha256": "c8877ec35223a39fc2277f8a3675925234624a2717608138d67a8f124c68fc01",
+      "source_content_sha256": "ef0c96652d19097337d128e84c817e7163e0e0d9fa4b6b2117de8ec6904413ba",
+      "status": "failed",
+      "exit_code": 1,
+      "compiler_invocations": 2,
+      "compiler_succeeded": 1,
+      "compiler_failed": 1,
+      "group_closed": true,
+      "input_drift": [],
+      "original_evidence": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-module-duality-runs/remote-2b94eca5f56745ab91263749dab59a5a"
+    },
+    {
+      "label": "suffix-dsimp-failed",
+      "run": "remote-a7a8edf513a54b679e707d0e15611329",
+      "source_file": "sources/NativeSuffixDsimpFailed.lean",
+      "sha256": "1c7e409666b063b667fb4f061bac72385b9d8429ab86b1d4c8d782b5715f3b2c",
+      "source_content_sha256": "55275e151d26ff2224753767aed7a8dc30616c7b6532fdce08f977fef936bc7d",
+      "status": "failed",
+      "exit_code": 1,
+      "compiler_invocations": 1,
+      "compiler_succeeded": 0,
+      "compiler_failed": 1,
+      "group_closed": true,
+      "input_drift": [],
+      "original_evidence": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-module-duality-runs/remote-a7a8edf513a54b679e707d0e15611329"
+    },
+    {
+      "label": "suffix-passed",
+      "run": "remote-3843c422a73f43cd8593a6a2d032819d",
+      "source_file": "sources/NativeSuffixPassed.lean",
+      "sha256": "e8e1805b5aa5f9604838150d1bb7fb128aed1873edf9528dba7b6ea84f546e9d",
+      "source_content_sha256": "139f99a05abe77cd821d44e571a3270eeef67636e58338071009a0824b0dce77",
+      "status": "succeeded",
+      "exit_code": 0,
+      "compiler_invocations": 2,
+      "compiler_succeeded": 2,
+      "compiler_failed": 0,
+      "group_closed": true,
+      "input_drift": [],
+      "original_evidence": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-module-duality-runs/remote-3843c422a73f43cd8593a6a2d032819d"
+    }
+  ],
+  "external_diagnostic_logs": [
+    {
+      "run": "remote-899bc07c5e49414e8b72d38bf6c0f50a",
+      "path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-module-duality-runs/remote-899bc07c5e49414e8b72d38bf6c0f50a/build.log",
+      "bytes": 58918065,
+      "sha256": "6ef504329d17130f138655edf55caa7e85bd4e03545f5dc645209740800aa0c2"
+    },
+    {
+      "run": "remote-78ea9098b36e4ebe989206b6a37489ff",
+      "path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-module-duality-runs/remote-78ea9098b36e4ebe989206b6a37489ff/build.log",
+      "bytes": 2655,
+      "sha256": "e2db548d9ed0fa8e1669156715f73d0f4b600a9663058f1baeeeaf61c4a991dc"
+    },
+    {
+      "run": "remote-76c5840ce0de4fc6b442bf26890d2857",
+      "path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-module-duality-runs/remote-76c5840ce0de4fc6b442bf26890d2857/build.log",
+      "bytes": 375800,
+      "sha256": "104628f7401ad02c7e37b4ea8d6dc9d8fecd6a0e67c804aec0e514f8041ec2f8"
+    },
+    {
+      "run": "remote-96617b61f0d04148b31a6b24c324a53c",
+      "path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-module-duality-runs/remote-96617b61f0d04148b31a6b24c324a53c/build.log",
+      "bytes": 536,
+      "sha256": "d551d13efde223195d5af4ac49c86e630ac9aca40ec9dad16ed6ba77bca000e0"
+    },
+    {
+      "run": "remote-2aadbe67a8c844279f94061d1cced06a",
+      "path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-module-duality-runs/remote-2aadbe67a8c844279f94061d1cced06a/build.log",
+      "bytes": 5335,
+      "sha256": "74da2bacc6b5bc67ba514717feda04232d981695c7f00125b53057e80031cfe0"
+    },
+    {
+      "run": "remote-b2673c0ea1d54a668aafe8b9ef7cd87c",
+      "path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-module-duality-runs/remote-b2673c0ea1d54a668aafe8b9ef7cd87c/build.log",
+      "bytes": 5855,
+      "sha256": "e24f2f59633a1f2738f8384d4076f31b43ac54c2b8378ce211d1474ed9eaa506"
+    }
+  ],
+  "suffix_final_checks": {
+    "run": "remote-6c7c00163489400db6d6ec2bdd6715fc",
+    "source_content_sha256": "f0ce395ef2be2c286d0c1b67ceade73743dfac0f0a013ff92de8d47356064eba",
+    "exit_code": 0,
+    "group_closed": true,
+    "input_drift": [],
+    "input_sha256": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean": "e8e1805b5aa5f9604838150d1bb7fb128aed1873edf9528dba7b6ea84f546e9d",
+      "Aglib/CategoryTheory/Sites/SheafCohomology/InternalExtSource.lean": "73e24708d9a979a570137eac3ff477430d3330636c3c695fa1c21011e156dd34",
+      "AglibTest/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean": "32c66683a4bddacd837a7522568c63b18aaccb3d466ce1bb0d943f258a890a15",
+      "AglibTest/CategoryTheory/Sites/SheafCohomology/InternalExtSource.lean": "32c5a5a4b0bdd50bb92007597fc81f54db3c2a936b795f72eecb1e87b958e33b",
+      "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+      "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+      "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+    },
+    "style_modules": [
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean",
+      "AglibTest/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean",
+      "Aglib/CategoryTheory/Sites/SheafCohomology/InternalExtSource.lean",
+      "AglibTest/CategoryTheory/Sites/SheafCohomology/InternalExtSource.lean"
+    ],
+    "native15_terminal": "Aglib.AlgebraicGeometry.EtaleCohomology.Duality.InternalHomPairing",
+    "all_fifteen_predicates_passed": true,
+    "builtin": "exit0; no environment linters ran",
+    "auditor_sha256": "03ce70017a1ee8848c74541b00b29b40e471527ff7484e389b3623850dd08743",
+    "audited": 54231,
+    "axioms_used": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "violations": [],
+    "suppression_warning": "optional scripts/nolints-style.txt missing, treated as empty",
+    "original_evidence": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-module-duality-runs/remote-6c7c00163489400db6d6ec2bdd6715fc"
+  }
+}

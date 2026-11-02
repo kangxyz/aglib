@@ -1,0 +1,1473 @@
+{
+  "review_id": "DGF9",
+  "kind": "independent complex ordinary mathematical and source-applicability review",
+  "assigned_profile": "review_complex / Astra / max",
+  "reviewer": "/root/review_finite_stage_diagram_descent",
+  "author": "/root/archive_d_topos_foundation",
+  "date_utc": "2026-10-27T20:47:58.289474+00:00",
+  "question": "Exactly FIRST_COMPONENT.json.first_generic_apply_scope: nine integrated generic foundation files; not either staged native adapter, their 13-file frontier, or the full archive.",
+  "outcome": "PASS",
+  "formal_established_status": false,
+  "status_boundary": "This ordinary verdict supplies no established-status assignment, restoration, or material-retention decision.",
+  "results": [
+    {
+      "id": "DGF9#exact_homology",
+      "outcome": "PASS",
+      "conclusion": "For an additive functor preserving finite limits and finite colimits between abelian categories with their selected derived realizations, termwise mapping and its original derived localization commute naturally with each integer-degree homology functor. The isomorphism is the localization preimage of the original short-complex homology comparison and the original factorization isomorphisms.",
+      "declarations": [
+        "mapCochainComplexHomologyIso",
+        "mapDerivedCategoryHomologyIso"
+      ],
+      "source": "Aglib/Algebra/Homology/DerivedCategory/ExactFunctorHomology.lean",
+      "lines": "19-40"
+    },
+    {
+      "id": "DGF9#joint_conservativity",
+      "outcome": "PASS",
+      "conclusion": "An exact additive coefficient family that jointly detects isomorphisms of all arrows in the abelian source jointly detects isomorphisms of the same given arrow in its selected unbounded derived category. No equality reflection, family faithfulness, finite/nonempty index assumption, or new derived realization is used.",
+      "declarations": [
+        "isIso_of_mapDerivedCategory_family"
+      ],
+      "source": "Aglib/Algebra/Homology/DerivedCategory/JointConservativity.lean",
+      "lines": "25-48"
+    },
+    {
+      "id": "DGF9#exact_upper_amplitude",
+      "outcome": "PASS",
+      "conclusion": "The original derived localization of an additive finite-limit- and finite-colimit-preserving functor preserves every native upper cohomological bound, without a lower bound. Its strictly upper-bounded representative is a witness for the same derived object, not a second derived-category realization.",
+      "declarations": [
+        "mapDerivedCategory_isLE"
+      ],
+      "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/ExactAmplitude.lean",
+      "lines": "21-34"
+    },
+    {
+      "id": "DGF9#single_dimension_shift",
+      "outcome": "PASS",
+      "conclusion": "For an additive functor with Grothendieck abelian source, ordinary R^n on the heart is the homology of the same unbounded derived functor on the degree-zero single. From a short exact X1→X2→X3, vanishing R^n(X2) and R^(n+1)(X1) implies vanishing R^n(X3). If the functor preserves finite limits, vanishing R^1(X1) makes the original mapped short complex short exact.",
+      "declarations": [
+        "rightDerivedUnboundedSingleHomologyIso",
+        "isZero_rightDerived_X₃_of_shortExact",
+        "shortExact_map_of_isZero_rightDerived_one"
+      ],
+      "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/DimensionShift.lean",
+      "lines": "26-84"
+    },
+    {
+      "id": "DGF9#cycle_dimension_shift",
+      "outcome": "PASS",
+      "conclusion": "For an acyclic complex with all positive R^m of each term zero, the uniform bound R^(n+k+1)(M)=0 for every heart object implies R^(n+1)(Z^i)=0, by k actual cycle-sequence steps. With left exactness and a bound R^(N+1)=0 on every heart object, its original termwise image is acyclic.",
+      "declarations": [
+        "isZero_rightDerived_cycles_of_bound",
+        "acyclic_map_of_acyclic_terms_of_bound"
+      ],
+      "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Cycles.lean",
+      "lines": "25-59"
+    },
+    {
+      "id": "DGF9#finite_window",
+      "outcome": "PASS",
+      "conclusion": "The cycle induction needs exactness only for i−k<j≤i. Under left exactness and R^(N+1)=0 on every heart object, a termwise F-acyclic complex exact on the closed integer interval [q−N,q] has its original image exact at q. The argument includes N=0, uses the original toCycles and iCycles maps, and imposes no exactness at q+1 or global lower bound.",
+      "declarations": [
+        "isZero_rightDerived_cycles_of_window",
+        "exactAt_map_of_shortExact_cycleSequence",
+        "exactAt_map_of_acyclic_terms_of_window"
+      ],
+      "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Window.lean",
+      "lines": "25-98"
+    },
+    {
+      "id": "DGF9#unbounded_amplitude",
+      "outcome": "PASS",
+      "conclusion": "For additive left exact F from a Grothendieck abelian category, the all-object heart bound R^(N+1)F=0 implies H^q(RF X)=0 whenever H^j(X)=0 on [q−N,q]. Consequently RF preserves each lower bound m and sends D^{≤n} into D^{≤n+N}; the stated finite bound is retained for both conclusions. Computation uses the same selected regular-stage K-injective replacement and its original augmentation.",
+      "declarations": [
+        "isZero_homology_unboundedRightDerivedFunctor_of_window",
+        "unboundedRightDerivedFunctor_isGE_of_bound",
+        "unboundedRightDerivedFunctor_isLE_of_bound"
+      ],
+      "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Amplitude.lean",
+      "lines": "27-86"
+    },
+    {
+      "id": "DGF9#truncation_extension",
+      "outcome": "PASS",
+      "conclusion": "A triangulated functor of upper amplitude N carries the original projection K→τ≥mK to an H^q-isomorphism when m+N≤q. For two triangulated functors of upper amplitudes NF,NG, a natural transformation invertible on all bounded-below objects is invertible on every object: in degree q use m=q−max(NF,NG), the same original truncation projection, and its naturality square. No shift compatibility of the transformation or left-completeness assertion is needed.",
+      "declarations": [
+        "isIso_homology_map_truncGEπ_of_upper_amplitude",
+        "isIso_natTrans_of_upper_amplitude_of_boundedBelow"
+      ],
+      "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/TruncationComparison.lean",
+      "lines": "29-85"
+    },
+    {
+      "id": "DGF9#original_exchange",
+      "outcome": "PASS",
+      "conclusion": "For F:A→B and F′:A′→B′ additive left exact with Grothendieck abelian A,A′, exact additive G:B→B′ and G′:A→A′, and one selected derived realization per category, all-object heart bounds R^(d+1)F=0 and R^(d′+1)F′=0 plus bounded-below invertibility of the supplied β:RF⋙DG→DG′⋙RF′ imply IsIso of that literal β. No adjunction, mate-identification, geometric bound, or alternative endpoint isomorphism is assumed or manufactured here.",
+      "declarations": [
+        "isIso_unboundedRightDerivedExchange_of_bounds"
+      ],
+      "source": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Exchange.lean",
+      "lines": "33-70"
+    }
+  ],
+  "source_identity": {
+    "root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025",
+    "native_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib",
+    "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+    "mathlib_root": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib",
+    "mathlib_pin": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "lean": "4.34.1",
+    "packet": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-d-topos-foundation/FIRST_COMPONENT.json",
+        "sha256": "48fd6f50379886fbaafa1fae273af33cbcf6720efd7882e9b9894e8a03a69949"
+      },
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-d-topos-foundation/APPLY_RESULT.json",
+        "sha256": "c9d1c756cecf042643543f870b4ee9eeb702294e68dcfb8f6eee61598cf2281b"
+      },
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-d-topos-foundation/RECONCILIATION.txt",
+        "sha256": "d70921ef86586e6659bd6aba2cc26b9751d4cb11cdff4dfe0109fa76a01b5498"
+      },
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-d-topos-foundation/COMPILATION_RESULT.json",
+        "sha256": "8d1dca3d1aaf84584ef3bd13e569e1fe764b6e529c3c09936d1559742d3fbf55"
+      }
+    ],
+    "fixed_sources": [
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/ExactFunctorHomology.lean",
+        "candidate_sha256": "cabe4803228fafbed0aedc49376c990a1c08eb0e924ef93491d22fac35cae0b7",
+        "candidate_bytes": 2045,
+        "source": "archive_identical_copy",
+        "archive_sha256": "cabe4803228fafbed0aedc49376c990a1c08eb0e924ef93491d22fac35cae0b7",
+        "native_sha256": null,
+        "imports": [],
+        "proof_options": [],
+        "source_observation": "not compiled; no independent review; no receipt acceptance"
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/JointConservativity.lean",
+        "candidate_sha256": "6b64baece2e12fffa361be1a68d79ef6896e52aeeb9d9a3ebf9982e9f60ae7dc",
+        "candidate_bytes": 1830,
+        "source": "new_generic_argument",
+        "archive_sha256": null,
+        "native_sha256": null,
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/ExactFunctorHomology.lean"
+        ],
+        "proof_options": [],
+        "source_observation": "not compiled; no independent review; no receipt acceptance"
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Amplitude.lean",
+        "candidate_sha256": "9bd5b1616c6efc28f54a903b0245193e42b5865c2f42bb7a53390747bacbb00e",
+        "candidate_bytes": 4187,
+        "source": "archive_identical_copy",
+        "archive_sha256": "9bd5b1616c6efc28f54a903b0245193e42b5865c2f42bb7a53390747bacbb00e",
+        "native_sha256": null,
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Window.lean"
+        ],
+        "proof_options": [],
+        "source_observation": "not compiled; no independent review; no receipt acceptance"
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Cycles.lean",
+        "candidate_sha256": "a8c5b206b960db8a1810309d0cff3c225b522cde8dbce4856a633878447f9119",
+        "candidate_bytes": 2519,
+        "source": "archive_identical_copy",
+        "archive_sha256": "a8c5b206b960db8a1810309d0cff3c225b522cde8dbce4856a633878447f9119",
+        "native_sha256": null,
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/DimensionShift.lean",
+          "Aglib/Algebra/Homology/CochainComplex/Cycles.lean"
+        ],
+        "proof_options": [],
+        "source_observation": "not compiled; no independent review; no receipt acceptance"
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/DimensionShift.lean",
+        "candidate_sha256": "9fdd6c3b2a3981890f976b55183a8c87a4140a87ac7351b6293ae456f84704e0",
+        "candidate_bytes": 4360,
+        "source": "archive_identical_copy",
+        "archive_sha256": "9fdd6c3b2a3981890f976b55183a8c87a4140a87ac7351b6293ae456f84704e0",
+        "native_sha256": null,
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Comparison.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/SingleHomology.lean"
+        ],
+        "proof_options": [],
+        "source_observation": "not compiled; no independent review; no receipt acceptance"
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Exchange.lean",
+        "candidate_sha256": "9cc67c5274bccd2474a3ebd60b33f55a50c98108d415f5960a0d68f4f6958aef",
+        "candidate_bytes": 3281,
+        "source": "new_generic_argument",
+        "archive_sha256": null,
+        "native_sha256": null,
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Amplitude.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/TruncationComparison.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/ExactAmplitude.lean"
+        ],
+        "proof_options": [],
+        "source_observation": "not compiled; no independent review; no receipt acceptance"
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/TruncationComparison.lean",
+        "candidate_sha256": "7638d92d1a04e3b83b1ab7c67b5b27cb980870ddbc4851d98a21463e98c4701d",
+        "candidate_bytes": 4109,
+        "source": "archive_identical_copy",
+        "archive_sha256": "7638d92d1a04e3b83b1ab7c67b5b27cb980870ddbc4851d98a21463e98c4701d",
+        "native_sha256": null,
+        "imports": [],
+        "proof_options": [],
+        "source_observation": "not compiled; no independent review; no receipt acceptance"
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Window.lean",
+        "candidate_sha256": "2f43b424dcdb6758ed9eea6357a7015cb7cbdbe80257b57ab67413832aec6767",
+        "candidate_bytes": 4612,
+        "source": "archive_identical_copy",
+        "archive_sha256": "2f43b424dcdb6758ed9eea6357a7015cb7cbdbe80257b57ab67413832aec6767",
+        "native_sha256": null,
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Cycles.lean"
+        ],
+        "proof_options": [],
+        "source_observation": "not compiled; no independent review; no receipt acceptance"
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/ExactAmplitude.lean",
+        "candidate_sha256": "8f7865404254324357954a21666fe82c9dd43326ff264b728a355d5bfec2f0cd",
+        "candidate_bytes": 1363,
+        "source": "archive_identical_copy",
+        "archive_sha256": "8f7865404254324357954a21666fe82c9dd43326ff264b728a355d5bfec2f0cd",
+        "native_sha256": null,
+        "imports": [],
+        "proof_options": [],
+        "source_observation": "not compiled; no independent review; no receipt acceptance"
+      }
+    ],
+    "source_archive": {
+      "archive": "/Users/kang/Downloads/agent-c-independent-ext-quasifinite-source-20261027T101616Z.tar.gz",
+      "bytes": 17396282,
+      "file_bytes": 88102112,
+      "files": 16907,
+      "members": 24126,
+      "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+      "native_status_entries": 1031,
+      "sha256": "0a26b49033cb47986944110e352b6c12468d40c058310182d7c5a97aa9467738"
+    },
+    "seven_archived_members_byte_compared": true,
+    "two_new_assembly_paths": [
+      "Aglib/Algebra/Homology/DerivedCategory/JointConservativity.lean",
+      "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Exchange.lean"
+    ],
+    "live_candidate_and_compiler_source_all_match": true
+  },
+  "mathematical_conditions": [
+    "Every category is abelian with one selected HasDerivedCategory at its own explicit derived universe; category object/Hom worlds remain separate.",
+    "DimensionShift, Cycles, Window and Amplitude use a Grothendieck abelian source at an explicit size universe; the target need only be abelian with its selected derived category. Grothendieck supplies EnoughInjectives and the existing functorial termwise-injective K-injective replacement.",
+    "Positive derived-object vanishing is all-object vanishing in the heart, not torsion-only vanishing. The finite window uses all positive-degree acyclicity of the terms; injective terms supply it in Amplitude.",
+    "Left exactness is PreservesFiniteLimits and is used for R0≅F, preserved kernels and monomorphisms. Exact horizontal/family functors also preserve finite colimits and hence homology.",
+    "TruncationComparison assumes upper amplitude for both actual triangulated functors, not only bounded-below invertibility. Its amplitude integers may be arbitrary integers; Exchange supplies the nonnegative d,d′.",
+    "JointConservativity assumes the stated heart-arrow detector hF and image invertibility for the original derived arrow; it makes no claim that a geometric family has these properties.",
+    "Exchange retains four distinct categories, two independently sized Grothendieck sources, both independent all-object bounds and the actual supplied natural transformation. It does not prove that a particular geometric mate satisfies these inputs."
+  ],
+  "proof_checks": {
+    "dimension_indices": "The local step takes R^n(X2)=0 and R^(n+1)(X1)=0 to R^n(X3)=0. In the cycle induction the successor replaces (k,n,i) by (k−1,n+1,i−1); the top degree n+k+1 stays fixed. For the final window, R1(Z^(q−1)) requires exactness on [q−N,q−1], and short exactness of the cycle sequence at q−1 uses exactness at q. N=0 uses the direct all-object R1 bound.",
+    "literal_differentials": "Window compares L.sc′(q−1,q,q+1) with F(Z^q→K^q→K^(q+1)) using (F(toCycles(q−1,q)),id,id). The first component is epi, the last is mono, and toCycles≫iCycles=d is the original differential factorization. Preservation of the kernel, not extra exactness at q+1, supplies the target short-complex exactness.",
+    "same_replacement": "Amplitude takes K=Q.objPreimage X and I=kInjectiveReplacementFunctor(isSeparator_separator C)(K). The quasi-isomorphism η:K→I gives QI≅X; that same I computes RF(X) through unboundedRightDerivedFunctorReplacementIso K. Term injectivity and K-injectivity are supplied for this identical I; no separate bounded representative or replacement is added to the theorem statement.",
+    "original_units": "The unbounded replacement comparison satisfies original unit_K≫comparison=Q(Fη). The plus/unbounded single comparison is rightDerivedUnique for the original two localization units, as verified in PlusComparison and Comparison. Degree-zero epi transport uses its naturality on the original S.g and the original rightDerivedZeroIsoSelf.",
+    "truncation_map": "T is literally (DerivedCategory.TStructure.t.triangleLTGE m).obj K and its second map is (truncGEπ m).app K. Its first object is ≤m−1, so the image is ≤m−1+N. m+N≤q kills H^q and H^(q+1) of that first image; the original long exact sequence gives mono and epi of H^q(Fπ).",
+    "naturality_cancellation": "For m=q−max(NF,NG), H^q(η_K)=H^q(Fπ)≫H^q(η_τ≥mK)≫inv(H^q(Gπ)). This is exactly η.naturality π followed by cancellation of the established isomorphism H^q(Gπ). Homology in every degree detects the same derived arrow; no inverse-limit reconstruction is present.",
+    "exact_homology_and_detector": "ExactFunctorHomology lifts the composite of the original mapDerivedCategoryFactors, homologyFunctorFactors and short-complex mapHomologyIso through fully faithful precomposition by the localization Q. This is localization universality, not faithfulness of the coefficient functor. For a given derived arrow a, JointConservativity transports H^n(D(F_i)(a)) invertibility to F_i(H^n(a)), applies the heart detector, then DerivedCategory.isIso_iff.",
+    "minimal_models": "One selected HDC is reused in every occurrence of each category. Representative and smart truncation objects are internal witnesses/actual objects of the same category; no reference derived category or second realization enters the signatures. No replacement-existence data, injective-image preservation, AB4*, product exactness or left-completeness premise is introduced by the nine targets."
+  },
+  "dependencies": {
+    "native_import_cut_count": 100,
+    "complete_native_cut_and_candidate_manifest": [
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/ExactAmplitude.lean",
+        "basis": "candidate",
+        "sha256": "8f7865404254324357954a21666fe82c9dd43326ff264b728a355d5bfec2f0cd",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Window.lean",
+        "basis": "candidate",
+        "sha256": "2f43b424dcdb6758ed9eea6357a7015cb7cbdbe80257b57ab67413832aec6767",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Cycles.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Cycles.lean",
+        "basis": "candidate",
+        "sha256": "a8c5b206b960db8a1810309d0cff3c225b522cde8dbce4856a633878447f9119",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/DimensionShift.lean",
+          "Aglib/Algebra/Homology/CochainComplex/Cycles.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/CochainComplex/Cycles.lean",
+        "basis": "native",
+        "sha256": "3d7f6b279c914e97c3675516505f02c09d1b8c186dd544b68040c17ce8130464",
+        "imports": [
+          "Aglib/CategoryTheory/ExactCategory/Abelian.lean",
+          "Aglib/CategoryTheory/ExactCategory/KernelClosed.lean"
+        ]
+      },
+      {
+        "path": "Aglib/CategoryTheory/ExactCategory/KernelClosed.lean",
+        "basis": "native",
+        "sha256": "fc57edefd7f96546e7f756d90232efe0a6196762a748ffbeb3ce827dab748897",
+        "imports": [
+          "Aglib/CategoryTheory/ExactCategory/Basic.lean"
+        ]
+      },
+      {
+        "path": "Aglib/CategoryTheory/ExactCategory/Basic.lean",
+        "basis": "native",
+        "sha256": "23c6e78fc88b47b0a4c4c2f6d4ebd397cd05101d98c6083caf61cc6d613678b0",
+        "imports": []
+      },
+      {
+        "path": "Aglib/CategoryTheory/ExactCategory/Abelian.lean",
+        "basis": "native",
+        "sha256": "dbc5a9386cc67e4f6f9354f6ea3cd3d7dcc08bd901c9458557b301a3e440d8f8",
+        "imports": [
+          "Aglib/CategoryTheory/ExactCategory/Basic.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/DimensionShift.lean",
+        "basis": "candidate",
+        "sha256": "9fdd6c3b2a3981890f976b55183a8c87a4140a87ac7351b6293ae456f84704e0",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Comparison.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/SingleHomology.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/SingleHomology.lean",
+        "basis": "native",
+        "sha256": "f10ab33111b50b50ecfcd9b156161ddd9c7f97032652e093aa6001143e11d4ea",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/InjectiveResolution.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Homology.lean",
+          "Aglib/CategoryTheory/Abelian/RightDerived/Cochain.lean"
+        ]
+      },
+      {
+        "path": "Aglib/CategoryTheory/Abelian/RightDerived/Cochain.lean",
+        "basis": "native",
+        "sha256": "e8ee157b46440cedc35252be6ad6bf018e2d5188d7748922be395147ef72744e",
+        "imports": [
+          "Aglib/Algebra/Homology/Embedding/MapExtend.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/Embedding/MapExtend.lean",
+        "basis": "native",
+        "sha256": "cffa8ef913cc52d22db0c274dec44629545065bf76137167a2478ef832630877",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Homology.lean",
+        "basis": "native",
+        "sha256": "d7d0f1ac0d2c0995f4c011a6cad7a60a065fc0f065590110a09acd862c9b1ef3",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Composition.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Composition.lean",
+        "basis": "native",
+        "sha256": "69401b1d39a43ffdf92a62c5f9b364539851e48f0184dd7ca9af3cf65dd8258c",
+        "imports": [
+          "Aglib/Algebra/Homology/CochainComplexPlus/Functoriality.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/CochainComplexPlus/Functoriality.lean",
+        "basis": "native",
+        "sha256": "8ad37ae4d3fc2385e17eaaddb8b5ec0aa960c3e7fe3771f91fe995ff5b5df663",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/InjectiveResolution.lean",
+        "basis": "native",
+        "sha256": "689aa103b6716b5157047a5f1064da22bea3134137c4c75e2b669804a8b9e1ba",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Composition.lean",
+          "Aglib/Algebra/Homology/CochainComplexPlus/Single.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/CochainComplexPlus/Single.lean",
+        "basis": "native",
+        "sha256": "f738c0d0d5f37cb6ba181f97be2b40da188fb4dbf03b9cade8669b2b78c27181",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Comparison.lean",
+        "basis": "native",
+        "sha256": "a5c337037d6308da1bf2f7f7ee22f1cae0bc22b4945f47ae2670b2e6f15c3da6",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Grothendieck.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Adjunction.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/PlusComparison.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Triangulated.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Triangulated.lean",
+        "basis": "native",
+        "sha256": "2710715a73009ea508a32d24b14fbdda535e650b19b4d7f05de03b89c122a5b2",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Basic.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Basic.lean",
+        "basis": "native",
+        "sha256": "edef657e913f736af394a27849a7de884279ec242ea1c38e5835c8dae1b89139",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Derivability.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Derivability.lean",
+        "basis": "native",
+        "sha256": "46d8dee9f995cda26d043837ed1f7e8faf7021fad7dd272a9a29c522e580efa5",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Representatives.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Representatives.lean",
+        "basis": "native",
+        "sha256": "714a75aaebf642339720b23d0a1414fa6251d15ab7193571164f957f8a58e094",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/PlusComparison.lean",
+        "basis": "native",
+        "sha256": "f3e36d7c1a26a7262fb6e5e7537d4f28b281b88d14a36b53f127595ba42e8f62",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Basic.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Adjunction.lean",
+        "basis": "native",
+        "sha256": "0cba57382c31b5857e7049a84bbfa5cfea149c7ea8458d5a486c1d814df8bb30",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Basic.lean",
+          "Aglib/Algebra/Homology/HomologicalComplex/Adjunction.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/HomologicalComplex/Adjunction.lean",
+        "basis": "native",
+        "sha256": "447aaa4bf8a77298776cd627fdcaffc0bf69bc3cf4ac69e63436c49b42eacb8f",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Grothendieck.lean",
+        "basis": "native",
+        "sha256": "1256836657c337c463c777c3bb052e5601324ef467248f9e90da54a03a603693",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Basic.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/Replacement.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/Replacement.lean",
+        "basis": "native",
+        "sha256": "8aa0f73d673fe76db5a99e7204fbbdc221a9c1e6f088f76a9513a4d9a230941a",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/QuasiIso.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Detection/Basic.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Detection/Basic.lean",
+        "basis": "native",
+        "sha256": "8232a64c32950861a92d6fe14629761fbf2eec16345dba3ad3197d4f5fe8988a",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Detection/Stages.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Filtration/Colimit.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Filtration/Colimit.lean",
+        "basis": "native",
+        "sha256": "748a44dbe1e34da90abcdd29d379e4e166d845d3dd6baaa1968bbbf01b59bd87",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Filtration/Continuity.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Filtration/Continuity.lean",
+        "basis": "native",
+        "sha256": "53fc6a583080976ea99c729ffd8a820bd0cf1d8b7ee74a420ae55e43e9bffe8d",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Filtration/Exhaustion.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Filtration/Exhaustion.lean",
+        "basis": "native",
+        "sha256": "7eefa9be0dbc6c81683684b3eda9152424d03485f89e98eb17b778b664820ea2",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Filtration/Stages.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Filtration/Stages.lean",
+        "basis": "native",
+        "sha256": "62f7909a18bc927858880bdefaa7728a243e3612875c9f2c9db5de8da94aebcd",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Filtration/Growth.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Filtration/Union.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Filtration/Union.lean",
+        "basis": "native",
+        "sha256": "c573d6911709238a9b74c55d3715187764b8653199c76ebac10b87e675cd9209",
+        "imports": [
+          "Aglib/Algebra/Homology/AcyclicColimit.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/AcyclicColimit.lean",
+        "basis": "native",
+        "sha256": "5360644b2d175f5b074d16f1c631eca7783299308be5959ccfe73ca47cb17c2e",
+        "imports": [
+          "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/ShortComplexColimit.lean"
+        ]
+      },
+      {
+        "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/ShortComplexColimit.lean",
+        "basis": "native",
+        "sha256": "25a9034732f60dde83840f6b736b1a1f7fcbc99142a9ef21dcd636dbee5ac706",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Filtration/Growth.lean",
+        "basis": "native",
+        "sha256": "8444b3676d33cbc30761f4a6da5474be800ae97cc6573c722f651abf1587389f",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Filtration/SubobjectStep.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/ShiftFamily.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/ShiftFamily.lean",
+        "basis": "native",
+        "sha256": "83e36633dddfd9a1110de0d3ef94d071fd584d0927f92483d95ede74774fb87c",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/ChosenFamily.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/ChosenFamily.lean",
+        "basis": "native",
+        "sha256": "477bf1e11c3d26222ecb98b94f08ea811732a4fdedf90a11d7f32da32f990ae6",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/Family.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/Family.lean",
+        "basis": "native",
+        "sha256": "1e8df1c945e82ce926d29befa54aad898e4e99e1947cfc8178ab01aeeab9b7e5",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/Cochain.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/ComplexRepresentatives.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/ComplexRepresentatives.lean",
+        "basis": "native",
+        "sha256": "d0b6f83b625e27ac94d06edb98be31ae84aa84ba44981fd83183f47850576187",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/ObjectRepresentatives.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/ObjectRepresentatives.lean",
+        "basis": "native",
+        "sha256": "6252efc00be8cd0c364acf93108d46aa0720e7d47095d6b95669b1bf984a9aba",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/EpiLifting.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/EpiLifting.lean",
+        "basis": "native",
+        "sha256": "30a3daee67a1172814eb2f31149e35187f4cf0f769eea7b30329827199e5a95e",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/Cochain.lean",
+        "basis": "native",
+        "sha256": "8452a2519659ec9c654cc96b7eed0373539596356ada807aa0ead9cfab9ff41f",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/Countable.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/Countable.lean",
+        "basis": "native",
+        "sha256": "fdece422386a8517ab240ce9a360d6d08ffeb72d44cb9eb789559c821f25503f",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/AdjacentPair.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/AdjacentPair.lean",
+        "basis": "native",
+        "sha256": "1c85ca4b381f3d681d7c9c044383bcea654343e1e5b86d4c0c7fc06d37091aa6",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/CardinalLadder.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/CardinalLadder.lean",
+        "basis": "native",
+        "sha256": "57b236e544d1b87038f0b1e5ec22d39b002bc3d6528635fb8e865469058ea9ea",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/ExactStep.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/ExactStep.lean",
+        "basis": "native",
+        "sha256": "0611c29756319623737390f13c9e7c07745e95bf3fa3e74fefa06c6713dca6e3",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/SizeBound.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/SizeBound.lean",
+        "basis": "native",
+        "sha256": "f42dd709102a2491725bec724e65dc41da6d20b383482d7e3bbd04d3d6e10883",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/EpiLifting.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Filtration/SubobjectStep.lean",
+        "basis": "native",
+        "sha256": "8bd0962c29ff19959b87fe50565e494318db63eb23f1f36d9edd604ca9358161",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Filtration/Successor.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Filtration/Successor.lean",
+        "basis": "native",
+        "sha256": "f4e98f0f1a06ec0c47108f8ca11f94faa4e0d86cb064e41f473d587ff26ead71",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Filtration/Pullback.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/ChosenFamily.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Filtration/Pullback.lean",
+        "basis": "native",
+        "sha256": "5df300633073a029f633579d6eac4654b66511ec5e04cc635d16e0419f058849",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Detection/Stages.lean",
+        "basis": "native",
+        "sha256": "0f8204efa10ac027c78a81aa012da01f8e7eb192c6aea838a2cab87a6f37da54",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Filtration/Quotients.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Detection/Tests.lean",
+          "Aglib/Algebra/Homology/HomComplex/ShortExact.lean",
+          "Aglib/Algebra/Homology/HomComplex/WellFounded.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/HomComplex/WellFounded.lean",
+        "basis": "native",
+        "sha256": "de42895d2e772e9d23d5062cdb3684be7f991c3feafef53ec87c84600bd145c8",
+        "imports": [
+          "Aglib/Algebra/Homology/HomComplex/Continuity.lean",
+          "Aglib/Algebra/Homology/HomComplex/EvaluatedLimit.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InverseLimit/Acyclic.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InverseLimit/Acyclic.lean",
+        "basis": "native",
+        "sha256": "9d55e302df29f3e19633bddb8948ce24b484cd2a4c08a430770923870bbe995b",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InverseLimit/Exactness.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InverseLimit/Nested.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InverseLimit/Nested.lean",
+        "basis": "native",
+        "sha256": "ae214f1bef81d3c09f18dcb3c1b9c5290d145312d3ab9ebad0c74c75cd0b9f93",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InverseLimit/Predecessors.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InverseLimit/Predecessors.lean",
+        "basis": "native",
+        "sha256": "44d174387543c78060de35b3b1d480164b825c9902bfad5fa6efaa8029ae1059",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InverseLimit/Elements.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InverseLimit/Elements.lean",
+        "basis": "native",
+        "sha256": "75f66130c7bff206d64dade72dcab3a57267dac74c8842398b0a071fabd2f652",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InverseLimit/Exactness.lean",
+        "basis": "native",
+        "sha256": "1b38d70eeb75c9c2b278acc50ec1b671df8e35f702a0525c6cc842c3dda19ee3",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InverseLimit/Recursion.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InverseLimit/Recursion.lean",
+        "basis": "native",
+        "sha256": "55a55f0682db91483d55271e3ef97c79478c02e1147c5e642d55e5ff48d1f4a6",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InverseLimit/PrimitiveFamily.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InverseLimit/PrimitiveFamily.lean",
+        "basis": "native",
+        "sha256": "e89f3b1ae8952d343957d3fe09fb300ca063b314b8779047d099019e6bb7d3a3",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InverseLimit/CoherentChoice.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InverseLimit/Predecessors.lean",
+          "Aglib/Algebra/Homology/CompatiblePrimitive.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/CompatiblePrimitive.lean",
+        "basis": "native",
+        "sha256": "7446ca84baf9be7a80c72ff5188c01ce440c03a060c49707450eb57a99035031",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InverseLimit/CoherentChoice.lean",
+        "basis": "native",
+        "sha256": "c82870e80f57b79df7fd3117ef300fe98c67d2287b4080572b20e0e67cfca31d",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/HomComplex/EvaluatedLimit.lean",
+        "basis": "native",
+        "sha256": "52f0fc86c4a608bada900c340c90b0d04a348d530c3ace9d6e2387e7579a1963",
+        "imports": [
+          "Aglib/Algebra/Homology/HomComplex/Limit.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/HomComplex/Limit.lean",
+        "basis": "native",
+        "sha256": "c64f31b9117eee1dd16e7e406fe5812a6d5566fb3c9bb6645121af9b630133c1",
+        "imports": [
+          "Aglib/Algebra/Homology/HomComplex/Colimit.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/HomComplex/Colimit.lean",
+        "basis": "native",
+        "sha256": "5cc88487e79ed0931f3bcb3051981c556acf6de341f8ee944d7f23cffb426b90",
+        "imports": [
+          "Aglib/Algebra/Homology/HomComplex/Precomposition.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/HomComplex/Precomposition.lean",
+        "basis": "native",
+        "sha256": "6f023f3b9307ed57e87fa7ce95a3451285ccfec8d9c3bf6791320710b65d9420",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/HomComplex/Continuity.lean",
+        "basis": "native",
+        "sha256": "35a34fc0772a1f028a4771aa7bd8b2917820bee0452998ac0d3ad32280dd15e6",
+        "imports": [
+          "Aglib/Algebra/Homology/HomComplex/Limit.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/HomComplex/ShortExact.lean",
+        "basis": "native",
+        "sha256": "66ff9831006db484bc52536124ee4e88728820bb21b78d9b00d2853210513541",
+        "imports": [
+          "Aglib/Algebra/Homology/HomComplex/Precomposition.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Detection/Tests.lean",
+        "basis": "native",
+        "sha256": "c312e973a8a01cf005f46d5d518a87cf81fcac4faa3081bc365b699cc2dd95ae",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/SmallAcyclic/ShiftFamily.lean",
+          "Aglib/Algebra/Homology/HomComplex/ShiftDetection.lean",
+          "Aglib/Algebra/Homology/HomComplex/SourceIso.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/HomComplex/SourceIso.lean",
+        "basis": "native",
+        "sha256": "1891c40a92b544df2b6103c424e846a6bc6097662ff830bb7906bd7a2aba8c3e",
+        "imports": [
+          "Aglib/Algebra/Homology/HomComplex/Precomposition.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/HomComplex/ShiftDetection.lean",
+        "basis": "native",
+        "sha256": "7c7de21fbf667264e3ddf35daf6b75d7202be1a116ac5e25ad04be2402f53c90",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Filtration/Quotients.lean",
+        "basis": "native",
+        "sha256": "1dfe22a3e30993ffec0f3b3ed498d1017bce207f4e3ca34d96271419052ab778",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Filtration/Continuity.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/QuasiIso.lean",
+        "basis": "native",
+        "sha256": "6b8bba9bdd954016d9c1b289c84974af593ca545ce62ae57bac4a3fe40ae7be3",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/RegularStage.lean",
+          "Aglib/Algebra/Homology/QuasiIso/Transfinite.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/QuasiIso/Transfinite.lean",
+        "basis": "native",
+        "sha256": "ed20b17c790022c019e4036843776e7417ae6c4f2321040b1a0887891984142f",
+        "imports": [
+          "Aglib/Algebra/Homology/QuasiIso/Colimit.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/QuasiIso/Colimit.lean",
+        "basis": "native",
+        "sha256": "ddfbb508143b16f580ba59216a1cbab2ff93fa797a7facaa3105c7577b5d045c",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/RegularStage.lean",
+        "basis": "native",
+        "sha256": "ce58ba5fbb9081f230035f39a966073fe4e45e6955ae595fe109394e1ee244ff",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/Stages.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/Cardinal.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/InjectiveColimit.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/TestColimit.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/TestColimit.lean",
+        "basis": "native",
+        "sha256": "a07582a5c0ba65ac38a347b9180b213d4b41634976e6c465f9df12bee3478e7a",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/InjectiveColimit.lean",
+        "basis": "native",
+        "sha256": "78beb6ce20ca71599d31a8eefb129fb494e1138b256320557e0eb4761fb7500f",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/Cardinal.lean",
+        "basis": "native",
+        "sha256": "5af390628e7e583471f4c325bffdbcb266e87cdf4290b5ea9100ced57772bd81",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/Stages.lean",
+        "basis": "native",
+        "sha256": "fd98933b388d100c8e752b06dfcf03c0089b4fc2c8b440dd7fb35506b96459b4",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/Maps.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/Maps.lean",
+        "basis": "native",
+        "sha256": "fd632bbeb0a10c90c8ce43aef39ec3e092212a2e8fc08e5f7423dcd01d08e15e",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/Iteration.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/Iteration.lean",
+        "basis": "native",
+        "sha256": "3aec8772589e5ae38f746ba98c326b5fe18ba29b855f0defdabfc3c76d7f6534",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/Successor.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/Successor.lean",
+        "basis": "native",
+        "sha256": "2d34cfa6239ed6a7c8422264714987379f3e8f864027040986053069f114edb1",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InjectiveStep/QuasiIso.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/KillSmallMaps/Functor.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/KillSmallMaps/Functor.lean",
+        "basis": "native",
+        "sha256": "1c9755809179c210cfe08d8a88e5900dcf17ccb1da306c9db8a0af88a3b02f6e",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/KillSmallMaps/IndexFunctor.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/KillSmallMaps/IndexFunctor.lean",
+        "basis": "native",
+        "sha256": "537548328ff2dd6da62a6b2bd0f2123e66bc5175c07e9ceea212f2ba40e2ef8a",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/KillSmallMaps/AllMaps.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/KillSmallMaps/AllMaps.lean",
+        "basis": "native",
+        "sha256": "96d46b1f7594da92dafeb9409b1a0b1b302106a0187c9032236afd7cca55a397",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/KillSmallMaps/QuasiIso.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/KillSmallMaps/QuasiIso.lean",
+        "basis": "native",
+        "sha256": "37a2703ab40af64cdbb1facc11ce08fa3089d169afec204cbd76f77796e54f42",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/KillSmallMaps/Attachment.lean",
+          "Aglib/Algebra/Homology/AcyclicColimit.lean",
+          "Aglib/Algebra/Homology/MappingCone/Pushout.lean",
+          "Aglib/Algebra/Homology/MappingCone/Inclusion.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/MappingCone/Inclusion.lean",
+        "basis": "native",
+        "sha256": "d2640362d1b505b8ec7ba29a8a81e5aa77fc820fab56dbd493c26361081fddd7",
+        "imports": [
+          "Aglib/Algebra/Homology/MappingCone/WeakMap.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/MappingCone/WeakMap.lean",
+        "basis": "native",
+        "sha256": "336476d0843055ffb1fc1b62c31cc9c8747a2bb020892e768f572a412b254e12",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/MappingCone/Pushout.lean",
+        "basis": "native",
+        "sha256": "2bd09f02f6c9ceffd90dc867cf306c451a1d29842b7ea579683741a3309c15e6",
+        "imports": [
+          "Aglib/Algebra/Homology/MappingCone/Identity.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
+        "basis": "native",
+        "sha256": "a2192b00ca31eec8e8f41af068285dba289b55dbd2f24846a3d5a3fc1b7db8f1",
+        "imports": [
+          "Aglib/Algebra/Homology/MappingCone/Map.lean",
+          "Aglib/CategoryTheory/Limits/BiproductPushout.lean",
+          "Aglib/CategoryTheory/Limits/Shapes/CokernelPushout.lean"
+        ]
+      },
+      {
+        "path": "Aglib/CategoryTheory/Limits/Shapes/CokernelPushout.lean",
+        "basis": "native",
+        "sha256": "04123222933c882a91476937630462e93108683f936efcd8d9fedc54b2a08a59",
+        "imports": []
+      },
+      {
+        "path": "Aglib/CategoryTheory/Limits/BiproductPushout.lean",
+        "basis": "native",
+        "sha256": "afb920318d9586266d8b1bcb3b3883a3e8630982a56e73a864fd3063b003d05e",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/MappingCone/Map.lean",
+        "basis": "native",
+        "sha256": "71e64096a541729d208216d450c7675c4c6eb40ac5235c528254067b01f0e95a",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/KillSmallMaps/Attachment.lean",
+        "basis": "native",
+        "sha256": "3c22664f5fa1388fad7addaa7e534650cf8c20eefa3d2c177b8664b3763af8a1",
+        "imports": [
+          "Aglib/Algebra/Homology/MappingCone/Identity.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InjectiveStep/QuasiIso.lean",
+        "basis": "native",
+        "sha256": "62ac4d5d47ebfc72c38868b167b4e0f2203f17195218307ade864bde674ae0ff",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InjectiveStep/Naturality.lean",
+          "Aglib/Algebra/Homology/MappingCocone/ShortExact.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/MappingCocone/ShortExact.lean",
+        "basis": "native",
+        "sha256": "c51f9f87b5b37031b926bef423013f13cb1802a31c1d491d568633ca2e60290d",
+        "imports": [
+          "Aglib/Algebra/Homology/MappingCocone/Map.lean",
+          "Aglib/Algebra/Homology/MappingCone/Acyclicity.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/MappingCone/Acyclicity.lean",
+        "basis": "native",
+        "sha256": "261e3894d50dc90645e9e4c7a2fad7290680b9bf81039a329e2c17602417923f",
+        "imports": [
+          "Aglib/Algebra/Homology/MappingCone/QuasiIso.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/MappingCone/QuasiIso.lean",
+        "basis": "native",
+        "sha256": "b12414e5a3b54e85776c13c1444947eaaf07b7b6d62d2e3b420365f7aa0b9001",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/MappingCocone/Map.lean",
+        "basis": "native",
+        "sha256": "3b1066886452dfe89b4323d454c5b291ac980e09934155879b068f1006202445",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InjectiveStep/Naturality.lean",
+        "basis": "native",
+        "sha256": "3aae5a968e6906561ead1b519463c4835a9ea5c70091d78d21807e15fa002de1",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InjectiveStep/Quotient.lean",
+          "Aglib/Algebra/Homology/MappingCocone/Map.lean",
+          "Aglib/Algebra/Homology/MappingCone/ShortExact.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/MappingCone/ShortExact.lean",
+        "basis": "native",
+        "sha256": "31a320a49c36995e094ad29c1cbd7230913486d3b8191077c55e9745ccf9a40e",
+        "imports": [
+          "Aglib/Algebra/Homology/MappingCone/Map.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InjectiveStep/Quotient.lean",
+        "basis": "native",
+        "sha256": "331b28103749519257930f2fbb5f181e0601a63bf2425578b310e2774a44dadf",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InjectiveStep/Contractible.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InjectiveStep/Contractible.lean",
+        "basis": "native",
+        "sha256": "978e1bf5247a9e5c95729261f48d0708377eea7df44b6f7ea81c3bede63f53e9",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InjectiveStep/Objects.lean",
+          "Aglib/Algebra/Homology/MappingCone/Identity.lean",
+          "Aglib/Algebra/Homology/MappingCocone/Map.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/InjectiveStep/Objects.lean",
+        "basis": "native",
+        "sha256": "edd0e9cd34a29977955a348f0a0d55ecf1d5c5c1f02b7a14a2322be5fcc16ebd",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/TruncationComparison.lean",
+        "basis": "candidate",
+        "sha256": "7638d92d1a04e3b83b1ab7c67b5b27cb980870ddbc4851d98a21463e98c4701d",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Exchange.lean",
+        "basis": "candidate",
+        "sha256": "9cc67c5274bccd2474a3ebd60b33f55a50c98108d415f5960a0d68f4f6958aef",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Amplitude.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/TruncationComparison.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/ExactAmplitude.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Amplitude.lean",
+        "basis": "candidate",
+        "sha256": "9bd5b1616c6efc28f54a903b0245193e42b5865c2f42bb7a53390747bacbb00e",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Window.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/JointConservativity.lean",
+        "basis": "candidate",
+        "sha256": "6b64baece2e12fffa361be1a68d79ef6896e52aeeb9d9a3ebf9982e9f60ae7dc",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/ExactFunctorHomology.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/ExactFunctorHomology.lean",
+        "basis": "candidate",
+        "sha256": "cabe4803228fafbed0aedc49376c990a1c08eb0e924ef93491d22fac35cae0b7",
+        "imports": []
+      }
+    ],
+    "all_109_hashes_match_live_and_actual_compiled_SOURCE": true,
+    "inspected_load_bearing_native_suppliers": [
+      {
+        "path": "Aglib/Algebra/Homology/CochainComplex/Cycles.lean",
+        "basis": "native",
+        "sha256": "3d7f6b279c914e97c3675516505f02c09d1b8c186dd544b68040c17ce8130464",
+        "imports": [
+          "Aglib/CategoryTheory/ExactCategory/Abelian.lean",
+          "Aglib/CategoryTheory/ExactCategory/KernelClosed.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/SingleHomology.lean",
+        "basis": "native",
+        "sha256": "f10ab33111b50b50ecfcd9b156161ddd9c7f97032652e093aa6001143e11d4ea",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/InjectiveResolution.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Homology.lean",
+          "Aglib/CategoryTheory/Abelian/RightDerived/Cochain.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Comparison.lean",
+        "basis": "native",
+        "sha256": "a5c337037d6308da1bf2f7f7ee22f1cae0bc22b4945f47ae2670b2e6f15c3da6",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Grothendieck.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Adjunction.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/PlusComparison.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Triangulated.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Triangulated.lean",
+        "basis": "native",
+        "sha256": "2710715a73009ea508a32d24b14fbdda535e650b19b4d7f05de03b89c122a5b2",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Basic.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Basic.lean",
+        "basis": "native",
+        "sha256": "edef657e913f736af394a27849a7de884279ec242ea1c38e5835c8dae1b89139",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Derivability.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Derivability.lean",
+        "basis": "native",
+        "sha256": "46d8dee9f995cda26d043837ed1f7e8faf7021fad7dd272a9a29c522e580efa5",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Representatives.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Representatives.lean",
+        "basis": "native",
+        "sha256": "714a75aaebf642339720b23d0a1414fa6251d15ab7193571164f957f8a58e094",
+        "imports": []
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/PlusComparison.lean",
+        "basis": "native",
+        "sha256": "f3e36d7c1a26a7262fb6e5e7537d4f28b281b88d14a36b53f127595ba42e8f62",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Basic.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Grothendieck.lean",
+        "basis": "native",
+        "sha256": "1256836657c337c463c777c3bb052e5601324ef467248f9e90da54a03a603693",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Basic.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/Replacement.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/Replacement.lean",
+        "basis": "native",
+        "sha256": "8aa0f73d673fe76db5a99e7204fbbdc221a9c1e6f088f76a9513a4d9a230941a",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/QuasiIso.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Detection/Basic.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Detection/Basic.lean",
+        "basis": "native",
+        "sha256": "8232a64c32950861a92d6fe14629761fbf2eec16345dba3ad3197d4f5fe8988a",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Detection/Stages.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Filtration/Colimit.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/QuasiIso.lean",
+        "basis": "native",
+        "sha256": "6b8bba9bdd954016d9c1b289c84974af593ca545ce62ae57bac4a3fe40ae7be3",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/RegularStage.lean",
+          "Aglib/Algebra/Homology/QuasiIso/Transfinite.lean"
+        ]
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/RegularStage.lean",
+        "basis": "native",
+        "sha256": "ce58ba5fbb9081f230035f39a966073fe4e45e6955ae595fe109394e1ee244ff",
+        "imports": [
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/Stages.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/Cardinal.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/InjectiveColimit.lean",
+          "Aglib/Algebra/Homology/DerivedCategory/KInjective/Existence/Tower/TestColimit.lean"
+        ]
+      }
+    ],
+    "inspected_pinned_mathlib_suppliers": [
+      {
+        "path": "Mathlib/Algebra/Homology/DerivedCategory/ExactFunctor.lean",
+        "sha256": "d5becb8bccd5f9044ddb5bd2cc8243185a8a65308bf1fa013d71f91e552c9442"
+      },
+      {
+        "path": "Mathlib/Algebra/Homology/DerivedCategory/HomologySequence.lean",
+        "sha256": "d3d71b81fd38f12551030eea4307a270905ffb2396dd7695dc846502030df4ae"
+      },
+      {
+        "path": "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean",
+        "sha256": "494d8bd890229138fe481cb5833e9d33af381918d00ce8266779f47dcd8ddf3d"
+      },
+      {
+        "path": "Mathlib/Algebra/Homology/DerivedCategory/SingleTriangle.lean",
+        "sha256": "b4eb8007ff77a8f54d806199657fec1a1633bc89e047de190e21fb843d9bb4e0"
+      },
+      {
+        "path": "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLTGE.lean",
+        "sha256": "1278f9c5a600e5edb266dbe0e67de09b433aac5ee6704fdae064320796f9ff3c"
+      },
+      {
+        "path": "Mathlib/CategoryTheory/Abelian/RightDerived.lean",
+        "sha256": "c48a25257162053eb9d974e75a504f7502068b41d0d98c49c80e1dc4a5139b28"
+      },
+      {
+        "path": "Mathlib/Algebra/Homology/ShortComplex/PreservesHomology.lean",
+        "sha256": "b54a44aedaa1cceecc47193ce00e5874619e5045a437125d5a9ee478a5fd89de"
+      },
+      {
+        "path": "Mathlib/Algebra/Homology/Embedding/IsSupported.lean",
+        "sha256": "7472e4b04d4b7aa69d0aa56ed2293099c3d9705342f9b13699f78499c1a79fc4"
+      },
+      {
+        "path": "Mathlib/CategoryTheory/Localization/Predicate.lean",
+        "sha256": "7bd0243b6f6a3177f7eeda373f3cc7a6266ca15c260c801facc18606474b1357"
+      }
+    ],
+    "coverage_boundary": "Read all nine target derivations and their in-scope mathematical prose; inspected the named original comparison, replacement, cycle, localization, long-exact-sequence and truncation suppliers for actual applicability and map identity. Retained underlying foundations at their exact existing hashes; this is not a fresh independent end-to-end review of every one of the 100 native dependency proofs."
+  },
+  "compilation_evidence": {
+    "reused_only": true,
+    "run": "remote-c1ed9ead12694bc086ebc2ad247bcac1",
+    "source_content_sha256": "4395a978b043b5b28a18044fb11913490e421f90c41f18ef30d5656a83e92a8b",
+    "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/lane-b/d-foundation-generic9-c1ed9ead.json",
+    "source_archive_sha256": "ab39703755e986d81a9d7bc4ede42f914a1f15c8332b1480c91e8111def9f802",
+    "lane_result": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/lane-b/d-foundation-first-generic9-result.json",
+    "lane_result_sha256": "d442e73ecf3064272aeedf45affe9519b379494445e1a332efcba2c961df7594",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-c1ed9ead12694bc086ebc2ad247bcac1/receipt.json",
+    "receipt_sha256": "e0298c8d010c464038045a6a500d3e76d28d8d1733eaf3bfd262bb2a2129da28",
+    "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-c1ed9ead12694bc086ebc2ad247bcac1/compiler-events.jsonl",
+    "compiler_events_sha256": "b4bb82cf8d72a9996e835fa8e088e8f19edd6808d27e74d098b62513509f0eee",
+    "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-c1ed9ead12694bc086ebc2ad247bcac1/build.log",
+    "build_log_sha256": "19e48ecd6d8f60480b8c8cf88bca7f6f392bd5778d9782012b904fc9b3ce23ee",
+    "group_closed": true,
+    "exit_code": 0,
+    "input_drift": [],
+    "frontends": [
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/ExactFunctorHomology.lean",
+        "sha256": "cabe4803228fafbed0aedc49376c990a1c08eb0e924ef93491d22fac35cae0b7",
+        "wrapper_pid": 929288,
+        "exit_code": 0,
+        "started_at": "2026-10-27T20:27:31.877282+00:00",
+        "finished_at": "2026-10-27T20:27:33.969499+00:00",
+        "elapsed_seconds": 2.092234
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/ExactAmplitude.lean",
+        "sha256": "8f7865404254324357954a21666fe82c9dd43326ff264b728a355d5bfec2f0cd",
+        "wrapper_pid": 929293,
+        "exit_code": 0,
+        "started_at": "2026-10-27T20:27:32.132011+00:00",
+        "finished_at": "2026-10-27T20:27:34.119231+00:00",
+        "elapsed_seconds": 1.987216
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/TruncationComparison.lean",
+        "sha256": "7638d92d1a04e3b83b1ab7c67b5b27cb980870ddbc4851d98a21463e98c4701d",
+        "wrapper_pid": 929295,
+        "exit_code": 0,
+        "started_at": "2026-10-27T20:27:32.385657+00:00",
+        "finished_at": "2026-10-27T20:27:35.396266+00:00",
+        "elapsed_seconds": 3.010617
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/DimensionShift.lean",
+        "sha256": "9fdd6c3b2a3981890f976b55183a8c87a4140a87ac7351b6293ae456f84704e0",
+        "wrapper_pid": 929298,
+        "exit_code": 0,
+        "started_at": "2026-10-27T20:27:32.411241+00:00",
+        "finished_at": "2026-10-27T20:27:35.883687+00:00",
+        "elapsed_seconds": 3.472457
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/JointConservativity.lean",
+        "sha256": "6b64baece2e12fffa361be1a68d79ef6896e52aeeb9d9a3ebf9982e9f60ae7dc",
+        "wrapper_pid": 929331,
+        "exit_code": 0,
+        "started_at": "2026-10-27T20:27:34.322703+00:00",
+        "finished_at": "2026-10-27T20:27:36.243832+00:00",
+        "elapsed_seconds": 1.921132
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Cycles.lean",
+        "sha256": "a8c5b206b960db8a1810309d0cff3c225b522cde8dbce4856a633878447f9119",
+        "wrapper_pid": 929352,
+        "exit_code": 0,
+        "started_at": "2026-10-27T20:27:36.240148+00:00",
+        "finished_at": "2026-10-27T20:27:38.556233+00:00",
+        "elapsed_seconds": 2.316089
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Window.lean",
+        "sha256": "2f43b424dcdb6758ed9eea6357a7015cb7cbdbe80257b57ab67413832aec6767",
+        "wrapper_pid": 929366,
+        "exit_code": 0,
+        "started_at": "2026-10-27T20:27:38.904935+00:00",
+        "finished_at": "2026-10-27T20:27:41.646712+00:00",
+        "elapsed_seconds": 2.741784
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Amplitude.lean",
+        "sha256": "9bd5b1616c6efc28f54a903b0245193e42b5865c2f42bb7a53390747bacbb00e",
+        "wrapper_pid": 929423,
+        "exit_code": 0,
+        "started_at": "2026-10-27T20:27:42.007033+00:00",
+        "finished_at": "2026-10-27T20:27:44.412263+00:00",
+        "elapsed_seconds": 2.405227
+      },
+      {
+        "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Exchange.lean",
+        "sha256": "9cc67c5274bccd2474a3ebd60b33f55a50c98108d415f5960a0d68f4f6958aef",
+        "wrapper_pid": 929434,
+        "exit_code": 0,
+        "started_at": "2026-10-27T20:27:44.735559+00:00",
+        "finished_at": "2026-10-27T20:27:47.113839+00:00",
+        "elapsed_seconds": 2.378287
+      }
+    ],
+    "diagnostics": "No diagnostics in the supplied successful build log; supplied diagnostics summary empty.",
+    "actual_command": [
+      "python3",
+      "-m",
+      "r5tools",
+      "lean",
+      "remote",
+      "--config",
+      "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote.json",
+      "build",
+      "--jobs",
+      "8",
+      "Aglib.Algebra.Homology.DerivedCategory.ExactFunctorHomology",
+      "Aglib.Algebra.Homology.DerivedCategory.JointConservativity",
+      "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.Amplitude",
+      "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.Cycles",
+      "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.DimensionShift",
+      "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.Exchange",
+      "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.TruncationComparison",
+      "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.Window",
+      "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.ExactAmplitude"
+    ],
+    "boundary": "Nine fresh zero-exit frontends, matched by wrapper PID to exact paths and compiled SOURCE. No historical D receipt reused; original D identifiers remain unbound. Compilation supports encoding only, independently of this mathematical verdict."
+  },
+  "remaining_gaps": [],
+  "excluded_conclusions": [
+    "The two staged Scheme adapters EtaleCover and ProperBaseChange and their 13-file absent frontier.",
+    "Any native geometric upper bound, including 3*d−1, or its torsion hypotheses.",
+    "Any arbitrary-ring all-module bound or unbounded internal-torsion extension.",
+    "Any original geometric mate/plus-full identification not contained in these nine generic sources.",
+    "Full D/archive admission, C geometry, compactification/refinement/composition closure, or an established-status decision.",
+    "New axiom-audit, kernel replay, downstream-client, lint or test coverage. None was run for this review."
+  ],
+  "phase_reconciliation": "FIRST_COMPONENT acceptance/source_observation and APPLY_RESULT compile status describe the earlier source-only phase. The later COMPILATION_RESULT and actual c1ed9ead receipt provide the new nine-file compiler evidence; earlier unbound D receipts are not relabeled. Seven archive files are source-identical; JointConservativity and Exchange are new assembly proofs reviewed here. Archive instructions, documentation and scripts were treated as data.",
+  "write_scope": [
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/reviews/d-foundation-generic9.md",
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/reviews/d-foundation-generic9.json"
+  ],
+  "read_only_git_guards": [
+    {
+      "root": "/Users/kang/Documents/New project",
+      "head": "56a07882f536a20bfbbfeed42c9adb5fe74ef9e9",
+      "status_entries": 5,
+      "status_sha256": "5cc8e72540ee4d255dcc0f6475ddf89d1b20b1083fa33204f409ad6639908eed"
+    },
+    {
+      "root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib",
+      "head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+      "status_entries": 1070,
+      "status_sha256": "9bdf2b025d0d9ec9192d75e4ed82c8d0dda759971b13704e09b20d8de1a7b874"
+    },
+    {
+      "root": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib",
+      "head": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+      "status_entries": 0,
+      "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "operations": "Read-only source/hash/archive-member and existing evidence inspection; no source edit, Git mutation, build, helper, test, lint, audit or replay. Earlier review reports remain unchanged."
+}

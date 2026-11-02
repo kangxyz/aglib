@@ -1,0 +1,6 @@
+{
+  "exit": 0,
+  "finished_utc": "2026-10-30T09:32:26.595200+00:00",
+  "run": "remote-7f2c797b1c3a44099f3d32519a98cc95",
+  "meaning": "Direct pinned native worker phase, no high-level sync. Inspect canonical receipt/log before conclusions."
+}

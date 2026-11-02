@@ -1,0 +1,24 @@
+/root/autodl-tmp/lean-build/logs/remote-0375042ad9644733a884989709558779/field-data-arguments/source/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean:379:2: error: failed to evaluate expression, it contains metavariables
+  discard do
+    let target ← Lean.Elab.Tactic.getMainTarget
+    let __do_lift ←
+      do
+        let info ← Lean.MonadRef.mkInfoFromRefPos
+        let scp ← Lean.getCurrMacroScope
+        let quotCtx ← Lean.MonadQuotation.getContext
+        pure { raw := Lean.Syntax.ident info "hfinal".toRawSubstring' (Lean.addMacroScope quotCtx `hfinal scp) [] }
+    let term ← liftM (Lean.Elab.Term.elabTerm __do_lift.raw none)
+    let actual ← liftM (Lean.Meta.inferType term)
+    let count ← liftM (IO.mkRef 0)
+    let skipped ← liftM (IO.mkRef 0)
+    (fun visit => do
+          liftM (visit 80 "type" actual target)
+          let __do_lift ← ST.Ref.get count
+          let __do_lift_1 ← ST.Ref.get skipped
+          Lean.logInfo
+              (Lean.toMessageData "FIELD_DATA_END reported=" ++ Lean.toMessageData __do_lift ++
+                  Lean.toMessageData " proof-pairs-skipped=" ++
+                Lean.toMessageData __do_lift_1))
+        (?m.632 target () __do_lift () term () actual () count () skipped ())
+/root/autodl-tmp/lean-build/logs/remote-0375042ad9644733a884989709558779/field-data-arguments/source/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean:354:0: error(lean.unknownIdentifier): Unknown constant `_private.Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Field.0.GroupCohomology.Kummer.Field.comparison_torsor_representative.visit.match_6`
+/root/autodl-tmp/lean-build/logs/remote-0375042ad9644733a884989709558779/field-data-arguments/source/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean:453:8: error: (kernel) unknown constant 'GroupCohomology.Kummer.Field.comparison_torsor_representative'

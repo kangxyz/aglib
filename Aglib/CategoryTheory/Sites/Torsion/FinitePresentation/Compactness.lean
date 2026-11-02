@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.CategoryTheory.Sites.Torsion.FinitePresentation.Generators
+public import Aglib.CategoryTheory.Sites.Torsion.Colimit
 public import Mathlib.CategoryTheory.Presentable.Finite
 public import Mathlib.CategoryTheory.Presentable.Limits
 
@@ -57,6 +58,14 @@ theorem isFinitelyPresentable_freeZModRepresentable_of_evaluation (n : ℕ) (U :
     (colimit.cocone (parallelPair (n • 𝟙 P) 0)) (colimit.isColimit _)
     Cardinal.aleph0.{k} ((hasCardinalLT_aleph0_iff _).mpr inferInstance)
 
+/-- Supply the existing sheaf colimit dictionary at the exact finite shape
+used by the original presentation, avoiding unrelated universe-size search. -/
+local instance finitePresentationDiscreteColimits (r : ℕ) :
+    HasColimitsOfShape (Discrete (Fin r)) (Sheaf J AddCommGrpCat.{max v t}) := by
+  let : HasColimitsOfShape (Discrete (Fin r)) AddCommGrpCat.{max v t} :=
+    AddCommGrpCat.hasColimitsOfShape
+  exact CategoryTheory.Sheaf.instHasColimitsOfShape (J := J) (K := Discrete (Fin r))
+
 /-- The actual finite sum of free scalar-quotient generators on the specified objects. -/
 abbrev finiteFreeZMod (n : ℕ) {r : ℕ} (U : Fin r → C) :
     Sheaf J AddCommGrpCat.{max v t} :=
@@ -101,3 +110,36 @@ theorem isFinitelyPresentable_of_finiteZModPresentation (n : ℕ) {r0 r1 : ℕ}
     Cardinal.aleph0.{k} ((hasCardinalLT_aleph0_iff _).mpr inferInstance)
 
 end CategoryTheory.Sheaf.TorsionFinitePresentation
+
+namespace CategoryTheory.Sheaf
+
+universe k u v w
+
+attribute [local instance] Cardinal.fact_isRegular_aleph0
+
+variable {C : Type u} [Category.{v} C] {J : GrothendieckTopology C}
+  [HasSheafify J AddCommGrpCat.{w}]
+
+/-- Finite presentability factors the original identity through the actual
+factorial-annihilator cocone and produces a positive global annihilator. -/
+theorem exists_positive_annihilator_of_isFinitelyPresentable
+    (F : Sheaf J AddCommGrpCat.{w}) [IsFinitelyPresentable.{k} F]
+    (hF : IsTorsion F) : ∃ n : ℕ, 0 < n ∧ n • 𝟙 F = 0 := by
+  have : PreservesFilteredColimitsOfSize.{0, 0} (coyoneda.obj (op F)) :=
+    preservesFilteredColimitsOfSize_of_univLE.{k, k, 0, 0} _
+  have : IsFinitelyPresentable.{0} F :=
+    isFinitelyPresentable_iff_preservesFilteredColimitsOfSize.mpr inferInstance
+  obtain ⟨j, b, hb⟩ := IsFinitelyPresentable.exists_hom_of_isColimit
+    (factorialAnnihilatorCoconeIsColimit F hF) (𝟙 F)
+  let q : F ⟶ annihilator F (j + 1).factorial := b
+  have hq : q ≫ annihilatorι F (j + 1).factorial = 𝟙 F := hb
+  refine ⟨(j + 1).factorial, Nat.factorial_pos _, ?_⟩
+  calc
+    (j + 1).factorial • 𝟙 F =
+        (j + 1).factorial • (q ≫ annihilatorι F (j + 1).factorial) :=
+      congrArg (fun a => (j + 1).factorial • a) hq.symm
+    _ = q ≫ ((j + 1).factorial • annihilatorι F (j + 1).factorial) :=
+      (Preadditive.comp_nsmul _ _ _).symm
+    _ = 0 := by rw [nsmul_annihilatorι, comp_zero]
+
+end CategoryTheory.Sheaf

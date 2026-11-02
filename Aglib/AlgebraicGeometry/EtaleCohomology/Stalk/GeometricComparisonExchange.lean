@@ -31,19 +31,6 @@ attribute [local instance] hasSheafifyLarge
 
 open Continuity Finite.GeometricNeighborhood
 
-section AdditiveComparison
-
-universe vA vB
-
-/-- Evaluate the original whole additive-map equation while both groups and
-the original categorical target map are still variables. -/
-private theorem additiveComparison_apply {A : AddCommGrpCat.{vA}}
-    {B C : AddCommGrpCat.{vB}} (b : A →+ C) (g : B →+ A) (r : B ⟶ C)
-    (h : b.comp g = r.hom) (x : B) : b (g x) = r x :=
-  DFunLike.congr_fun h x
-
-end AdditiveComparison
-
 section NeighborhoodComparison
 
 variable (Ω : Type u) [Field Ω] [IsSepClosed Ω] {X S : Scheme.{u}}
@@ -72,17 +59,6 @@ local instance neighborhoodComparisonStageExt
       ((pointedNeighborhoodBaseChangedDiagram Ω η f).obj d).left) :=
   inferInstanceAs (HasExt.{e} (AbelianSheaf.{u, u + 1} (pullback d.obj.hom f)))
 
-/-- Retain the complete original additive-map equation before replacing a
-pointed object by its explicit neighborhood and marked point. -/
-private theorem chartGeometricComparison_pointedHom
-    (d : (pointSmallEtale η).fiber.Elements) :
-    (chartGeometricCohomologyComparison.{u, w, s, e} Ω η f R j hη F q).comp
-        (fibreProductCohomologyGerm.{u, w, s, e} f d.obj F q η d.val) =
-      (relativeCohomologyTransfer.{u, e} F q (geometricFibrePointedMap Ω η f d)).hom := by
-  ext y
-  exact chartGeometricCohomologyComparison_pointedGerm.{u, w, s, e}
-    Ω η f R j hη F q d y
-
 /-- Normalize the complete original germ property at one point before it is
 supplied to the comparison with independent source and target derived models. -/
 private theorem chartGeometricComparison_neighborhoodGerms :
@@ -93,12 +69,10 @@ private theorem chartGeometricComparison_neighborhoodGerms :
         relativeCohomologyTransfer.{u, e} F q
           (geometricFibrePointedMap Ω η f { obj := U, val := p }) y := by
   intro U p y
-  exact additiveComparison_apply
-    (chartGeometricCohomologyComparison.{u, w, s, e} Ω η f R j hη F q)
-    (fibreProductCohomologyGerm.{u, w, s, e} f U F q η p)
-    (relativeCohomologyTransfer.{u, e} F q
-      (geometricFibrePointedMap Ω η f { obj := U, val := p }))
-    (chartGeometricComparison_pointedHom Ω η f R j hη F q { obj := U, val := p }) y
+  have h := chartGeometricCohomologyComparison_pointedGerm.{u, w, s, e}
+    Ω η f R j hη F q { obj := U, val := p }
+  dsimp only at h
+  exact h y
 
 end NeighborhoodComparison
 
@@ -175,13 +149,13 @@ theorem geometricCohomologyComparison_exchange
     (z : ((pointSmallEtale (ζ ≫ g)).sheafFiber (A := AddCommGrpCat.{u + 1})).obj
       ((higherDirectImage f q).obj F)) :
     b' (((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).map
-        ((higherBaseChangeMap.{u, dX, dS, dX', dS'} f f' g g' h q).app F)
+        ((higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} f f' g g' h q).app F)
         ((StalkInverseImage.stalkUnitNatIso g ζ).hom.app
           ((higherDirectImage f q).obj F) z)) =
       geometricFibreCohomologyTransfer.{u, e} f f' g g' h ζ F q (b z) :=
   geometricCohomologyComparison_pointwise_of_hom_neighborhoodGerms.{u, w, w', s, s', e}
     f f' g g' h ζ F q
-    ((higherBaseChangeMap.{u, dX, dS, dX', dS'} f f' g g' h q).app F)
+    ((higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} f f' g g' h q).app F)
     (fun U p y => higherBaseChangeMap_fibreProductCohomologyGerm.{u, w, w', s, s', e,
       dX, dS, dX', dS', dZU, dU, dZV, dV} f f' g g' h U F q ζ p y)
     b b' hb hb' z
@@ -211,7 +185,7 @@ theorem chartGeometricCohomologyComparison_exchange
       hTargetLimitExt hTargetGeometricExt hTargetQc hTargetQs hTargetColimits
       ((inverseImage g').obj F) q)
         (((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).map
-          ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
+          ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
             hSourceDerived hSourceBaseDerived hTargetDerived hTargetBaseDerived
             f f' g g' h q).app F)
           ((StalkInverseImage.stalkUnitNatIso g ζ).hom.app

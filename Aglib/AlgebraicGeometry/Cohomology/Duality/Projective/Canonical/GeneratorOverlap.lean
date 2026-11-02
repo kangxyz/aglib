@@ -9,6 +9,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Af
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.GeneratorCancellation
 public import Aglib.Algebra.Homology.Koszul.Ext.GeneratorChange
 public import Aglib.AlgebraicGeometry.Modules.StructureSheaf.Sections
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.NativeFrameSection
 
 /-!
 # Canonical purity overlap for ordered regular generators
@@ -39,6 +40,16 @@ open scoped TensorProduct
 universe u w a b
 
 namespace AlgebraicGeometry.Scheme.Modules
+
+private theorem overlapFactorization_class {Z : Scheme.{u}} {M N P : Z.Modules}
+    (K : M ⟶ P) (F : M ⟶ N) (G : N ⟶ P) (hK : K = F ≫ G)
+    (U : Z.Opens) (x : M.val.obj (op U)) (y : N.val.obj (op U))
+    {V : Type*} (t : V → P.val.obj (op U)) (z z' : V)
+    (hF : F.val.app (op U) x = y) (hG : G.val.app (op U) y = t z)
+    (hz : z = z') : K.val.app (op U) x = t z' := by
+  subst K
+  change G.val.app (op U) (F.val.app (op U) x) = t z'
+  exact (congrArg (G.val.app (op U)) hF).trans (hG.trans (congrArg t hz))
 
 variable {A : CommRingCat.{u}}
 
@@ -147,14 +158,12 @@ private def commonExtSection
     (z : Ext.{w} (ModuleCat.of A (A ⧸ I)) (moduleSpecΓFunctor.obj L) c)
     (U : (Spec (CommRingCat.of (A ⧸ I))).Opens) :
     (regularListNativeTopHomologyAt (L := L) I c).val.obj (op U) :=
-  (commonModelIso (L := L) I c).inv.val.app (op U)
-    ((Complex.tildeGlobalSectionsHomologyIso (CommRingCat.of (A ⧸ I)) (.up ℤ)
-      (commonModel (L := L) I) (c : ℤ)).hom.val.app (op U)
-      (tilde.toOpen
-        ((((moduleSpecΓFunctor (R := CommRingCat.of (A ⧸ I))).mapHomologicalComplex
-          (.up ℤ)).obj (commonModel (L := L) I)).homology (c : ℤ)) U
-        ((affineClosedRightAdjointResolutionExtAddEquiv (commonQuotientMap I)
-          (injectiveResolution L) c).symm z)))
+  nativeFrameModelSection (CommRingCat.of (A ⧸ I))
+    (commonModelIso (L := L) I c)
+    (Complex.tildeGlobalSectionsHomologyIso (CommRingCat.of (A ⧸ I)) (.up ℤ)
+      (commonModel (L := L) I) (c : ℤ))
+    (affineClosedRightAdjointResolutionExtAddEquiv (commonQuotientMap I)
+      (injectiveResolution L) c) z U
 
 /-- Only equality transport is used to place the original native class on
 the common quotient and in the common degree. -/
@@ -182,11 +191,39 @@ private theorem regularListNativeTopClassAt_eq
     apply Iso.ext
     rw [derivedClosedImmersionRightAdjointRegularListModelHomologyIso_hom]
     rfl
-  change closedImmersionRegularListNativeTopClass s hs e r U = _
-  rw [closedImmersionRegularListNativeTopClass_eq]
-  dsimp only
-  rw [closedImmersionRightAdjointRegularListResolutionSectionsExtAddEquiv_eq_affine, hm]
-  rfl
+  exact nativeFrame_class_eq_section (regularListQuotientRing s)
+    ((((moduleSpecΓFunctor (R := regularListQuotientRing s)).mapHomologicalComplex
+      (.up ℤ)).obj (commonModel (L := L) (Ideal.ofList s))).homology (s.length : ℤ))
+    ((commonModel (L := L) (Ideal.ofList s)).homology (s.length : ℤ))
+    (regularListNativeTopHomologyAt (L := L) (Ideal.ofList s) s.length)
+    (derivedClosedImmersionRightAdjointRegularListModelHomologyIso
+      s (injectiveResolution L) (s.length : ℤ))
+    (commonModelIso (L := L) (Ideal.ofList s) s.length) hm
+    (Complex.tildeGlobalSectionsHomologyIso (regularListQuotientRing s) (.up ℤ)
+      (commonModel (L := L) (Ideal.ofList s)) (s.length : ℤ))
+    (closedImmersionRightAdjointRegularListResolutionTopSectionsLinearEquiv
+      s hs (injectiveResolution L) e)
+    (closedImmersionRightAdjointRegularListResolutionTopHomologyIso
+      s hs (injectiveResolution L) e).hom
+    (closedImmersionRightAdjointRegularListResolutionTopHomologyIso_hom
+      s hs (injectiveResolution L) e)
+    (derivedClosedImmersionRightAdjointRegularListTopHomologyIso
+      s hs (injectiveResolution L) e)
+    (derivedClosedImmersionRightAdjointRegularListTopHomologyIso_hom
+      s hs (injectiveResolution L) e)
+    (closedImmersionRightAdjointRegularListResolutionSectionsExtAddEquiv
+      s (injectiveResolution L) s.length)
+    (affineClosedRightAdjointResolutionExtAddEquiv (commonQuotientMap (Ideal.ofList s))
+      (injectiveResolution L) s.length)
+    (closedImmersionRightAdjointRegularListResolutionSectionsExtAddEquiv_eq_affine
+      s (injectiveResolution L) s.length)
+    ((ChainComplex.Koszul.topExtClass s hs (ModuleCat.of A A) r).comp
+      (Ext.mk₀ e.inv) (Nat.add_zero s.length))
+    (Ideal.Quotient.mk (Ideal.ofList s) r)
+    (closedImmersionRightAdjointRegularListResolutionTopSectionsLinearEquiv_class
+      s hs (injectiveResolution L) e r) U
+    (closedImmersionRegularListNativeTopClass s hs e r U)
+    (closedImmersionRegularListNativeTopClass_unitFrame s hs e r U)
 
 /-- The native model, affine counit and tilde section preserve the original
 matrix determinant law on the common quotient. -/
@@ -696,10 +733,25 @@ private theorem regularListConormalMapAt_class (s : List A)
         (regularListNormalDualSectionAt α I c s hs hI hc U)
         (commonCoefficientSection I e (Ideal.Quotient.mk I r) U) := by
   subst I c
-  dsimp only [regularListConormalMapAt, regularListNativeTopClassAt,
-    regularListNormalDualSectionAt]
-  rw [← coefficientSection_eq_common, closedImmersionRegularListNativeTopClass_eq]
-  exact derivedClosedImmersionRightAdjointRegularListConormalTopHomologyIso_class α s hs e r U
+  exact overlapFactorization_class
+    (derivedClosedImmersionRightAdjointRegularListConormalTopHomologyIso α s hs e).hom
+    (derivedClosedImmersionRightAdjointRegularListTopHomologyIso s hs
+      (injectiveResolution L) e).hom
+    (closedImmersionRegularListInverseNormalLineIso α s hs e).hom
+    (derivedClosedImmersionRightAdjointRegularListConormalTopHomologyIso_hom α s hs e)
+    U (closedImmersionRegularListNativeTopClass s hs e r U) _
+    (moduleTensorSection (Spec (regularListQuotientRing s))
+      (dualSheaf (Spec (regularListQuotientRing s))
+        (closedImmersionRegularListNormalLineBundle α s hs).val)
+      ((pullback (Spec.map (regularListQuotientMap s))).obj L) U
+      (closedImmersionRegularListNormalDualSection α s hs U))
+    (closedImmersionRegularListCoefficientSection s e
+      (Ideal.Quotient.mk (Ideal.ofList s) r) U)
+    (commonCoefficientSection (Ideal.ofList s) e (Ideal.Quotient.mk (Ideal.ofList s) r) U)
+    (closedImmersionRegularListNativeTopClass_unitFrame s hs e r U)
+    (closedImmersionRegularListInverseNormalLineIso_section α s hs e
+      (Ideal.Quotient.mk (Ideal.ofList s) r) U)
+    (coefficientSection_eq_common e s (Ideal.Quotient.mk (Ideal.ofList s) r) U)
 
 private theorem overlapTensor_balance {X : Scheme.{u}} (N P : X.Modules) (U : X.Opens)
     (a : Γ(X, U)) (v : N.val.obj (op U)) (z : P.val.obj (op U)) :

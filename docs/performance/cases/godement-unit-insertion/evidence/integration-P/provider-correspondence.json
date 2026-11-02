@@ -1,0 +1,23 @@
+{
+  "question": "Actual required provider source/pin correspondence for Qe9ad family CPP \u2192 P4d integration",
+  "root": "Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange",
+  "Aglib_closure_count": 60,
+  "changed_required_Aglib_providers": [],
+  "pins": {
+    "lean-toolchain": {
+      "Q": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+      "P": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+    },
+    "lakefile.toml": {
+      "Q": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+      "P": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852"
+    },
+    "lake-manifest.json": {
+      "Q": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+      "P": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2"
+    }
+  },
+  "family_cpp_basis": "Q7d/e9ad/dc117 originalroot0; no P CPP invocation claimed",
+  "P_head": "4d4b5bd851583c2f34284e019b07279abf71179d",
+  "boundary": "Read-only source correspondence; semantic applicability of nonidentical providers remains mainauthor/Root; native cache plan will identify actual missing outputs."
+}

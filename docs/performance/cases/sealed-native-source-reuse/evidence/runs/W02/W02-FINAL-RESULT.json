@@ -1,0 +1,68 @@
+{
+  "commands": [
+    {
+      "kind": "builtin",
+      "argv": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "lint",
+        "--builtin-only",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.FixedTargetHom"
+      ],
+      "exit": 0,
+      "seconds": 8.188198015093803
+    },
+    {
+      "kind": "textstyle",
+      "argv": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "exe",
+        "mathlib/lint-style",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.FixedTargetHom",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.FixedTargetData"
+      ],
+      "exit": 0,
+      "seconds": 2.59246963262558
+    },
+    {
+      "kind": "decllint",
+      "argv": [
+        "timeout",
+        "--kill-after=30s",
+        "20m",
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "exe",
+        "batteries/runLinter",
+        "--no-build",
+        "--trace",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.FixedTargetHom"
+      ],
+      "exit": 0,
+      "seconds": 13.752927914261818
+    },
+    {
+      "kind": "audit",
+      "argv": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "env",
+        "/root/autodl-tmp/lean-build/tools/axiom-audit-46024e005996/.lake/build/bin/axiom-audit",
+        "--root",
+        "Aglib",
+        "--modules",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.FixedTargetHom",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 12.329308614134789
+    }
+  ],
+  "source": "e0c4dc6f2c3a04adbe10bb066bd7716ab61608390cc6c6d19944718129912da4",
+  "source_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/PositivePresentation/NoetherianModels/FixedTargetData.lean": "f17662ccc77997b66df39377c287ee219f869a2c0d53f646b276ee7ecc6ba058",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/PositivePresentation/NoetherianModels/FixedTargetTriangle.lean": "67995a1396d934afdf2caf66f4acf43486eadf10226e6ab6c2ea0a808518032d"
+  },
+  "CPP": "actual6aaf/e0c 4freshPASS; currentP necessary408providerbytes unchanged after disjointoverlays",
+  "coverage": "Direct style inputs cover both changedfiles; selected DECLLINT/importedAgliborigins; unchanged upstreamaudit rootAglib+modules terminal includes both origins/transitiveaxioms. Builtin-only prevents hardcoded fullAglibdriver. No proofbuild/Test/client/replay."
+}

@@ -1,0 +1,82 @@
+✔ [5247/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GaloisAction (4.0s)
+✔ [5248/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.EtaleModuleTrace (5.2s)
+✔ [5249/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.SigmaSections (6.2s)
+✔ [5250/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.SheafCoherence (9.8s)
+✔ [5251/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GaloisInvariantSections (5.2s)
+✔ [5252/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GaloisTrivialSubobject (11s)
+✔ [5253/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.TriangleCoherence (18s)
+✔ [5254/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GaloisActionMaps (10s)
+✔ [5255/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.LocalPasting (26s)
+✔ [5256/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.CoefficientSquare (31s)
+✔ [5257/5291] Built Aglib.AlgebraicGeometry.Modules.Differentials.Diagonal.Affine (60s)
+✖ [5258/5291] Building Aglib.AlgebraicGeometry.Picard.AssociatedBundle (161s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-1504b831d3af49809a7f30c46e0c1bf8/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean -o /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.olean -i /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.c --setup /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.setup.json --json
+error: Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean:204:2: Unknown identifier `ChartComposition`
+
+Note: A private declaration `ChartComposition` (from the current module) exists but would need to be public to access here.
+error: Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean:258:10: Invalid field notation: Field projection operates on types of the form `C ...` where C is a constant. The expression
+  𝟙 (unop V)
+has type
+  CategoryStruct.toQuiver.1 (unop V) (unop V)
+which does not have the necessary form.
+error: Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean:220:0: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean:714:2: 'change' tactic failed, pattern
+  pullHom (rawChart P χ i) a.left V.hom V.hom ⋯ ⋯ ≫
+      transition V.hom V.hom
+        ↑(transportUnit P χ (op V) ((ConcreteCategory.hom (P.carrier.obj.map a.op)) i.snd)
+            ((ConcreteCategory.hom (P.carrier.obj.map b.op)) j.snd)) =
+    pullHom (rawChart P χ j) b.left V.hom V.hom ⋯ ⋯
+is not definitionally equal to target
+  Construction.ChartRelationOn P ((cocycle P χ).descendedObject etaleLineBundleDescent ⋯) (rawChart P χ)
+    (transportUnit P χ) i j a b
+error: Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean:738:2: Type mismatch
+  rawChart_relations P χ i j a b
+has type
+  Construction.ChartRelationOn P ((cocycle P χ).descendedObject etaleLineBundleDescent ⋯) (rawChart P χ)
+    (transportUnit P χ) i j a b
+but is expected to have type
+  pullHom (rawChart P χ i) a.left V.hom V.hom ⋯ ⋯ ≫
+      transition V.hom V.hom
+        ↑(transportUnit P χ (op V) ((ConcreteCategory.hom (P.carrier.obj.map a.op)) i.snd)
+            ((ConcreteCategory.hom (P.carrier.obj.map b.op)) j.snd)) =
+    pullHom (rawChart P χ j) b.left V.hom V.hom ⋯ ⋯
+error: Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean:751:8: (kernel) unknown constant 'AlgebraicGeometry.Scheme.Modules.Invertible.AssociatedBundle.Construction.sectionFamily_natural'
+✔ [5260/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Pullback (230s)
+✔ [5261/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ConstantRestriction (11s)
+✔ [5262/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CyclicCoefficientSequence (12s)
+✔ [5263/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CharacteristicPrimary (40s)
+✔ [5264/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.Cohomology (111s)
+✔ [5265/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CharacteristicPrimaryGeometry (49s)
+✔ [5266/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.PullbackComposition (174s)
+✔ [5267/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.CohomologySquare (25s)
+✔ [5268/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.CohomologyBaseChange (23s)
+✔ [5269/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackCohomologySystem (60s)
+✔ [5270/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareSections (3.6s)
+✔ [5271/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackEtaleEvaluation (6.8s)
+✔ [5272/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTransport (3.0s)
+✔ [5273/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartSourceGenerator (10s)
+✔ [5274/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.Cohomology (38s)
+✔ [5275/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.ArtinSchreier (160s)
+✔ [5276/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackEtaleNaturality (40s)
+✔ [5277/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.ConstantModules (10s)
+✔ [5278/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramPullbackSystem (75s)
+✔ [5279/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.ConstantPrimaryModules (37s)
+✔ [5280/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartHomSections (50s)
+✔ [5281/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.ConstantModuleSheaves (19s)
+✔ [5282/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.PGroupModuleSheaves (23s)
+✔ [5283/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartRestrictionNaturality (45s)
+✔ [5284/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductRestriction (105s)
+✔ [5285/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.ModuleCoefficients.FiniteDirectImage (303s)
+✔ [5286/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.ModuleCoefficients.FiniteEtaleDescent (11s)
+✔ [5287/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.GaloisModuleSheaves (19s)
+✔ [5288/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductOriginalDiagram (127s)
+✔ [5289/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductPresheaf (103s)
+✔ [5290/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ResizeCohomologyDiagram (10s)
+✔ [5291/5291] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ResizeCohomologyReindex (3.2s)
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.Picard.AssociatedBundle
+error: build failed

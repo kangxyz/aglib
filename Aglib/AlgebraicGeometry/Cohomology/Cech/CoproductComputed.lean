@@ -6,7 +6,9 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Cech.CoproductComplex
-public import Aglib.Algebra.DirectSumTransport
+public import Aglib.Algebra.Homology.ModuleCat.CoproductEquivalence
+public import Aglib.AlgebraicGeometry.Cohomology.Cech.Modules.FunctorComparison
+public import Aglib.AlgebraicGeometry.Cohomology.Modules.FunctorCoproduct
 
 /-!
 # The finite-affine computation of coproduct cohomology
@@ -45,6 +47,27 @@ theorem moduleCechIsAffineOpenIntersection (X : Scheme.{u}) {ι : Type u}
   rw [he]
   exact IsAffineOpen.iInf (fun k => hU (a k))
 
+open scoped Classical in
+/-- The finite-affine computation in the original module-valued cohomology functor.
+The complex comparisons are assembled before changing the carrier presentation. -/
+def moduleCohomologyFunctorCoproductLinearEquiv [DecidableEq δ] (q : ℕ) :
+    (⨁ i, (moduleCohomologyFunctorOfHom X α q).obj (M i)) ≃ₗ[R]
+      (moduleCohomologyFunctorOfHom X α q).obj (∐ M) :=
+  let N : X.Modules := ∐ M
+  letI : N.IsQuasicoherent := Scheme.Modules.QuasiCoherent.quasicoherent_coproduct.{u, v} M
+  let H := moduleCohomologyFunctorOfHom.{max u v} X α q
+  let e (N : X.Modules) [N.IsQuasicoherent] :
+      (moduleCechComplex X α N U).homology q ≃ₗ[R] H.obj N :=
+    moduleCechCohomologyFunctorEquiv X α U hcover
+      (moduleCechIsAffineOpenIntersection X U hU) N
+      (injectiveResolution (moduleAddSheaf X N)) q
+  let eN : (moduleCechComplex X α N U).homology q ≃ₗ[R] H.obj N := e N
+  ModuleCat.coproductEquivOfComplex.{u, v, 0, max u v + 1, max u v + 1}
+    (fun i => moduleCechComplex X α (M i) U) (moduleCechComplex X α N U)
+    (moduleCechCoproductIso.{u, v} X α U hU M) q
+    (V := fun i => H.obj (M i)) (W := H.obj N) (fun i => e (M i)) eN
+
+open scoped Classical in
 /-- Direct sums commute with original cohomology on a finite affine cover,
 with the original structural-ring module structures. -/
 def moduleCohomologyCoproductLinearEquiv [DecidableEq δ] (q : ℕ) :
@@ -53,18 +76,19 @@ def moduleCohomologyCoproductLinearEquiv [DecidableEq δ] (q : ℕ) :
     letI := moduleCohomologyModuleOfHom X α (∐ M) q
     (⨁ i, Sheaf.H.{max u v + 1} (moduleAddSheaf X (M i)) q) ≃ₗ[R]
       Sheaf.H.{max u v + 1} (moduleAddSheaf X (∐ M)) q := by
-  classical
   letI : ∀ i, Module R (Sheaf.H.{max u v + 1} (moduleAddSheaf X (M i)) q) :=
     fun i => moduleCohomologyModuleOfHom X α (M i) q
   letI := moduleCohomologyModuleOfHom X α (∐ M) q
   letI := Scheme.Modules.QuasiCoherent.quasicoherent_coproduct.{u, v} M
-  let e (N : X.Modules) [N.IsQuasicoherent] :=
-    moduleCechCohomologyLinearEquivAll X α U N hcover (moduleCechIsAffineOpenIntersection X U hU)
-      (injectiveResolution (moduleAddSheaf X N)) q
-  exact DirectSum.transportEquiv (fun i => e (M i))
-    (ModuleCat.coproductComplexHomologyLinearEquiv.{u, v, 0}
-      (fun i => moduleCechComplex X α (M i) U) q)
-    (homologyMapIso (moduleCechCoproductIso.{u, v} X α U hU M) q).toLinearEquiv
-    (e (∐ M))
+  exact
+    ModuleCat.coproductEquivOfComplex.{u, v, 0, _, _}
+      (fun i => moduleCechComplex X α (M i) U) (moduleCechComplex X α (∐ M) U)
+      (moduleCechCoproductIso.{u, v} X α U hU M) q
+      (fun i => moduleCechCohomologyLinearEquivAll X α U (M i) hcover
+        (moduleCechIsAffineOpenIntersection X U hU)
+        (injectiveResolution (moduleAddSheaf X (M i))) q)
+      (moduleCechCohomologyLinearEquivAll X α U (∐ M) hcover
+        (moduleCechIsAffineOpenIntersection X U hU)
+        (injectiveResolution (moduleAddSheaf X (∐ M))) q)
 
 end AlgebraicGeometry.Scheme.Cohomology

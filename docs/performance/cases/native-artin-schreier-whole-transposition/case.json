@@ -1,0 +1,241 @@
+{
+  "question": "Recorded failure, phase localization, whole-transposition repair and actual lower/wrapper build closure; no new mathematical verdict.",
+  "runs": [
+    {
+      "run_id": "remote-486cfa353ef442908f1b1c196ce5fed3",
+      "action": "build",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--rehash",
+        "build",
+        "Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Frobenius",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Constants"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 5.790351748466492,
+      "wrapper_frontends": 1,
+      "source_content_sha256": "613bfc35d8cbf63189466bc162d8470193c034f14ef3ccae7c62a593ba72d62b",
+      "admission_ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 110592,
+        "threads": 4
+      },
+      "receipt": "evidence/remote-486cfa353ef442908f1b1c196ce5fed3/receipt.json",
+      "log": "evidence/remote-486cfa353ef442908f1b1c196ce5fed3/build.log"
+    },
+    {
+      "run_id": "remote-46f990d7142a45009bf5d38b0a93e41e",
+      "action": "build",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--rehash",
+        "build",
+        "Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Frobenius",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Constants"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 6.132995754480362,
+      "wrapper_frontends": 1,
+      "source_content_sha256": "27999490cddd7bf62f6139aba738b72da4fd67f1209b4ed7de97c2d8bd4de9d7",
+      "admission_ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 110592,
+        "threads": 4
+      },
+      "receipt": "evidence/remote-46f990d7142a45009bf5d38b0a93e41e/receipt.json",
+      "log": "evidence/remote-46f990d7142a45009bf5d38b0a93e41e/build.log"
+    },
+    {
+      "run_id": "remote-dfdf9beaed40462ea787b2c0d19165f2",
+      "action": "build",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--rehash",
+        "build",
+        "Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Frobenius",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Constants"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 6.212053090333939,
+      "wrapper_frontends": 1,
+      "source_content_sha256": "8cb91adf97b5d4200c4b151e1a22a22f984fc764ed3ec605e92b2c566485f68a",
+      "admission_ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 110592,
+        "threads": 4
+      },
+      "receipt": "evidence/remote-dfdf9beaed40462ea787b2c0d19165f2/receipt.json",
+      "log": "evidence/remote-dfdf9beaed40462ea787b2c0d19165f2/build.log"
+    },
+    {
+      "run_id": "remote-8e5b2c8d38cd47ebb7f3db16ab7b7725",
+      "action": "build",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--rehash",
+        "build",
+        "Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Frobenius",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Constants",
+        "Aglib.CategoryTheory.Adjunction.InjectiveTests",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.InjectiveRetract",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.InjectiveExchange"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 6.187455877661705,
+      "wrapper_frontends": 2,
+      "source_content_sha256": "97aa3a95b086c9f6362ed9f10630bd17a5deb617773bce57afe6e84ab8601804",
+      "admission_ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 110592,
+        "threads": 4
+      },
+      "receipt": "evidence/remote-8e5b2c8d38cd47ebb7f3db16ab7b7725/receipt.json",
+      "log": "evidence/remote-8e5b2c8d38cd47ebb7f3db16ab7b7725/build.log"
+    },
+    {
+      "run_id": "remote-64d200f146334c3db7402e9da2137d2f",
+      "action": "build",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--rehash",
+        "build",
+        "Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Frobenius",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Constants",
+        "Aglib.CategoryTheory.Adjunction.InjectiveTests",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.InjectiveRetract",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.InjectiveExchange"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 25.99691954255104,
+      "wrapper_frontends": 5,
+      "source_content_sha256": "61d5247827b3848216e52210813b26632e41f98f5090cdd5716215e94610d77a",
+      "admission_ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 110592,
+        "threads": 4
+      },
+      "receipt": "evidence/remote-64d200f146334c3db7402e9da2137d2f/receipt.json",
+      "log": "evidence/remote-64d200f146334c3db7402e9da2137d2f/build.log"
+    },
+    {
+      "run_id": "remote-a5e3496e48ac4278a033d9abdb074871",
+      "action": "build",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--rehash",
+        "build",
+        "Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Frobenius",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Constants"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 26.024770215153694,
+      "wrapper_frontends": 1,
+      "source_content_sha256": "21cd739c6a51dc625d579785a01b5000d34085ca98d0b11e1d22fc749d08b88d",
+      "admission_ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 110592,
+        "threads": 4
+      },
+      "receipt": "evidence/remote-a5e3496e48ac4278a033d9abdb074871/receipt.json",
+      "log": "evidence/remote-a5e3496e48ac4278a033d9abdb074871/build.log"
+    },
+    {
+      "run_id": "remote-9b504c762eea4ff495ee47d36d1c6b5a",
+      "action": "phase",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "env",
+        "lean",
+        "-j4",
+        "-M12800",
+        ".lake/migration-probes/as-final-theorem.lean"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 24.9722910374403,
+      "wrapper_frontends": 0,
+      "source_content_sha256": "71bb7f2cc656c08d07959609271b2e3ba2337d8e2881447fafde5463a0a53d07",
+      "admission_ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 110592,
+        "threads": 4
+      },
+      "receipt": "evidence/remote-9b504c762eea4ff495ee47d36d1c6b5a/receipt.json",
+      "log": "evidence/remote-9b504c762eea4ff495ee47d36d1c6b5a/build.log"
+    },
+    {
+      "run_id": "remote-ca150085ba4940f4b318b1694924f5da",
+      "action": "build",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--rehash",
+        "build",
+        "Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 13.083733141422272,
+      "wrapper_frontends": 1,
+      "source_content_sha256": "c312213a7acceb4f949e7ce39b8eeae518187db331e8bebde45d739fb10da1e9",
+      "admission_ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 2,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 32768,
+        "threads": 4
+      },
+      "receipt": "evidence/remote-ca150085ba4940f4b318b1694924f5da/receipt.json",
+      "log": "evidence/remote-ca150085ba4940f4b318b1694924f5da/build.log"
+    },
+    {
+      "run_id": "remote-03a7acc97f2846b591fc7840baaee2b2",
+      "action": "build",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--rehash",
+        "build",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Frobenius",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Constants"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 11.12849646806717,
+      "wrapper_frontends": 2,
+      "source_content_sha256": "cf63e1b74c8930fcc40cb78f567634c9aab417b3079dcc482718aacd046bffc7",
+      "admission_ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 2,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 32768,
+        "threads": 4
+      },
+      "receipt": "evidence/remote-03a7acc97f2846b591fc7840baaee2b2/receipt.json",
+      "log": "evidence/remote-03a7acc97f2846b591fc7840baaee2b2/build.log"
+    }
+  ],
+  "limits": [
+    "Not matched speedup or per-file RSS.",
+    "Counters do not identify exact conversion pair or per-constant time.",
+    "No actual theorem Kernel pass in failed diagnostic.",
+    "No unchanged downstream closure, standalone lint/test/axiom audit, or universal budget claim.",
+    "Historical repair reports describe their then-uncompiled candidates; final success is bound only to ca150085/03a7acc9."
+  ]
+}

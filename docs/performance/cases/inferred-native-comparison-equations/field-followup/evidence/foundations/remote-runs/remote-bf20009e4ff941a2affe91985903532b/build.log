@@ -1,0 +1,37 @@
+✖ [3340/3340] Building Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Field (120s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-bf20009e4ff941a2affe91985903532b/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean -o /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.olean -i /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.c --setup /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean:377:2: Type mismatch: After simplification, term
+  Eq.trans hmap hclass
+ has type
+  @Eq (H1 (Field.absoluteGaloisGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n))
+    ((galoisRestriction K n).onH1
+      ((FundamentalGroupComparison.representedH1AddEquiv (geometricPoint K)
+          (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) hA hR (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)
+          (pointMark K n) ⋯ (finiteCoefficient K n))
+        (torsorExtClass P)))
+    ((classOf (Field.absoluteGaloisGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n))
+      ((galoisRestriction K n).onCocycles
+        (FundamentalGroupComparison.markedBasedCocycle (geometricPoint K)
+          (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)
+          (pointMark K n) ⋯ Y (Torsor.representedSchemeAction (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) P Y e)
+          t)))
+but is expected to have type
+  @Eq (H1 (Field.absoluteGaloisGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n))
+    ((galoisRestriction K n).onH1
+      ((FundamentalGroupComparison.representedH1AddEquiv (geometricPoint K)
+          (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) hA hR (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)
+          (pointMark K n) ⋯ (finiteCoefficient K n))
+        (torsorExtClass P)))
+    ((classOf (Field.absoluteGaloisGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n))
+      ((galoisRestriction K n).onCocycles
+        (FundamentalGroupComparison.markedBasedCocycle (geometricPoint K)
+          (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)
+          (pointMark K n) ⋯ Y (Torsor.representedSchemeAction (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) P Y e)
+          t)))
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  Limits.getLimitCone ↦ 2
+  inv ↦ 8
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Field
+error: build failed

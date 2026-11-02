@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.Algebra.Category.Grp.ProjectiveInt
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.LocalComponentCover
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.DisjointSections
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ComponentSections
@@ -103,19 +104,6 @@ theorem finiteGlobalSections_preservesFiniteColimits :
     Functor.preservesHomology_of_preservesEpis_and_kernels Γ
   exact Functor.preservesFiniteColimits_of_preservesHomology Γ
 
-private theorem integer_projective : Projective (AddCommGrpCat.of (ULift.{v + 1} ℤ)) := by
-  constructor
-  intro E X f e he
-  obtain ⟨x, hx⟩ := (AddCommGrpCat.epi_iff_surjective e).mp he (f (ULift.up 1))
-  let g := (AddCommGrpCat.uliftZMultiplesAddEquiv E).symm x
-  refine ⟨g, ?_⟩
-  apply (AddCommGrpCat.uliftZMultiplesAddEquiv X).injective
-  have hg : g (ULift.up 1) = x :=
-    (AddCommGrpCat.uliftZMultiplesAddEquiv E).apply_symm_apply x
-  change e (g (ULift.up 1)) = f (ULift.up 1)
-  rw [hg]
-  exact hx
-
 include R in
 /-- The original constant integer sheaf is projective on a finite scheme over
  a strictly local base, with no finiteness restriction on the coefficients. -/
@@ -124,7 +112,7 @@ theorem finite_constant_integer_projective :
       AddCommGrpCat.{v + 1}).obj (AddCommGrpCat.of (ULift.{v + 1} ℤ))) := by
   let := finiteGlobalSections_preservesEpimorphisms A R
   exact (constantSheafAdj (Spec (.of A)).smallEtaleTopology AddCommGrpCat.{v + 1}
-    (StrictlyLocal.terminalIsTerminal A)).map_projective _ integer_projective
+    (StrictlyLocal.terminalIsTerminal A)).map_projective _ AddCommGrpCat.projective_uliftZ
 
 include R in
 /-- Original positive-degree etale Sheaf.H vanishes on the entire finite

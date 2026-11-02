@@ -57,3 +57,19 @@ the packet's original action-classification construction with that native
 group isomorphism by equality of the original forward map. Arithmetic cyclic
 characters, incoming marked carriers and Tate comparison endpoints remain
 downstream; none is a premise or conclusion of these general suppliers.
+
+[QuasiFinite](QuasiFinite.lean) proves local quasi-finiteness of the original
+group map from its finite actual kernel for locally finite-type group schemes
+over any base, using geometric fibres and the marked-kernel torsor.
+[Finite](Finite.lean) gives finiteness over any base when the source is proper
+and the locally finite-type target is separated.
+
+[Monomorphism](Monomorphism.lean) identifies the original kernel of a monic
+group morphism with the base via its structure map and unit, hence it is finite.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [ClosedImmersion](ClosedImmersion.lean)
+- [ScalarExtension](ScalarExtension.lean)

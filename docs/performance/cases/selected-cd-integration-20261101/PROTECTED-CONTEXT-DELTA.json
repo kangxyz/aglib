@@ -1,0 +1,11 @@
+{
+  "public_context_nodes": 579,
+  "additional_companions": [
+    "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/DerivedModel.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Localization.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Localization/Principal.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Resolution.lean"
+  ],
+  "public_Exchange_context_intersection": [],
+  "boundary": "Membership in the already-built exact public import graph only; no new source fingerprint, proof or compilation."
+}

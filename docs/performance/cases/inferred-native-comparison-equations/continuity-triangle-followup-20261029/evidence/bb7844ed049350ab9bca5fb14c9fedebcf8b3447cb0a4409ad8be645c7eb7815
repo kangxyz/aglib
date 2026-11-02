@@ -1,0 +1,19 @@
+from pathlib import Path
+import base64,hashlib,json,os,subprocess,sys,zlib
+b=zlib.decompress(base64.b64decode('eJy9VUtu2zAQ3esUXFpoIaBbAy7qJkETpMnGKlAjKAJaHol0xY9JyogbBHC6yyl6gOx7oJykQ1Ju5NR2gxSoFzLNmXnz3vBRFmra1JAkupnUvCBcaGUcGVY1n2TDuoKJobz4AEqAM8vsyNEaDhRTQtWqWmYHSjouG+6W2SGnlaHikBso3ImgFeSGU1n5fKFfiD/C31+z99TCAUMsOFaGf8OetP4kuft30qN5Qw3GoCx5wUG64XSmuNyOfEAdVMoscwb4zEbcgc1GDGi5HfxEznAUfAHtaHwMjq4cSMuVTJJ3F3CllYUvpO0mlSxwVo2jkxqI9cWYpzRIstk7kVSA1bQA8qfcUcFAwB7VSSORlLFAmoQ6Z/ikcUAualXQmnBpHZUFkmLUBnG8XH6kpkKPON8cBHHtwXpdUlnHi0vbDlLoy1IZQT1zcv354fuK4OOWjP1q7Fd90hK8bm5uEoKfXombIevhx0+/WKWkx3BvvN4bx72FB+lHrE7qIsKOOwi3aURmgIEQf7i7JyUZEBZWi1h5htHhBGqUE6Qip9ekIa/Im5sAF1Guz/ekeQ6tDINpvemj/1tmoXOaZmoyI2eB4HnL7pI9qYh2PLEqEIzES6TMIM3wIDOqtYe4uw/1AaNT7afva8tQ+KSCGDJIdteEfmxXF5jn6lgJ0iuUrMzQVHhmjST2ydRXZPB2cwK2lZ2ihMwuhUgjl5T0A3huGjyhQfjO8N4Z9QyXrd8rf3Na/n+9pmNF3k3XMT1/zCW9eTev7Tbv5o2f7V+mMay7Yd0G5hiYrwMMA77rGpTH4Oo3VKdw1i0MnUNsTeh0z1XId9k60s0E1aTX3V8fpDcgi4xCazZ/NOJputPv3fKgQrcI6GTeQdhq/OdctQ2ygVq08x5OeNP36wyNwpFFqbOdUneLLaPSgML0BkB/65UCOX3RH8Uvl+f+9w=='));sha=hashlib.sha256(b).hexdigest();assert sha=='1126e06c76ee3df038d7bd044f9dca14daefe078973acf86a55093effd9a8164'
+cmd=[os.environ["LAKE"],"--no-build","setup-file",'Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean']
+print("NATIVE_LAKE_SETUP_COMMAND "+json.dumps(cmd),flush=True)
+r=subprocess.run(cmd,text=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+if r.stderr:print(r.stderr,flush=True)
+if r.returncode:print(json.dumps({"setup_exit":r.returncode,"prefix_executed":False,"no_rebuild_attempted":True}),flush=True);sys.exit(r.returncode)
+s=json.loads(r.stdout);o=s.get("options",{});sb=r.stdout.encode();hs=hashlib.sha256(sb).hexdigest()
+print("NATIVE_MODULE_SETUP "+json.dumps({"name":s.get("name"),"isModule":s.get("isModule"),"options":o,"sha256":hs,"complete_options_equal":o=={'autoImplicit': False, 'weak.linter.mathlibStandardSet': True, 'weak.linter.style.longFile': 1500, 'warningAsError': True}},sort_keys=True),flush=True)
+if s.get("name")!='Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DirectImageSquareTriangle' or s.get("isModule") is not True or o!={'autoImplicit': False, 'weak.linter.mathlibStandardSet': True, 'weak.linter.style.longFile': 1500, 'warningAsError': True}:sys.exit(3)
+run=Path(os.environ["LEAN"]).parents[2];sp=run/"NativeSquare.setup.json";sp.write_bytes(sb);p=run/"Square-v9-formation.lean";p.write_bytes(b)
+argv=[os.environ["LAKE"],"--no-build","env",os.environ["LEAN"],str(p),"--setup",str(sp)]
+print("SQUARE_V9_FORMATION_BEGIN sha256="+sha,flush=True);print("NATIVE_DIAGNOSTIC_ARGV "+json.dumps(argv),flush=True)
+r=subprocess.Popen(argv,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,bufsize=1)
+for line in r.stdout: print(line,end="",flush=True)
+r.wait()
+print("SQUARE_V9_FORMATION_END exit="+str(r.returncode),flush=True)
+print(json.dumps({"prefix_exit":r.returncode,"source_sha256":sha,"native_setup_sha256":hs,"boundary":"Formation-only: exact original propositions are assumptions and conclusion True; no original proof or production-module coverage, no automatic production continuation."}),flush=True);sys.exit(r.returncode)

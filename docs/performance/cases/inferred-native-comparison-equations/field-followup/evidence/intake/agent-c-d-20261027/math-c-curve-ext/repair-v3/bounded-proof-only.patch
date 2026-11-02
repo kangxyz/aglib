@@ -1,0 +1,29 @@
+--- v2/Aglib/Algebra/Homology/DerivedCategory/Ext/BoundedConstants.lean
++++ v3/Aglib/Algebra/Homology/DerivedCategory/Ext/BoundedConstants.lean
+@@ -36,7 +36,7 @@
+   have hadd (f g : Y ⟶ Y) : P.map (f + g) x = P.map f x + P.map g x :=
+     congrArg (fun t : P.obj Y ⟶ P.obj Y => t x) (P.map_add (f := f) (g := g))
+   have hzero : P.map (0 : Y ⟶ Y) x = 0 :=
+-    congrArg (fun t : P.obj Y ⟶ P.obj Y => t x) P.map_zero
++    congrArg (fun t : P.obj Y ⟶ P.obj Y => t x) (P.map_zero Y Y)
+   have heval (t : Finset ι) :
+       P.map (∑ i ∈ t, r i ≫ s i) x = ∑ i ∈ t, P.map (r i ≫ s i) x := by
+     induction t using Finset.induction_on with
+@@ -110,13 +110,14 @@
+       (fun m : Ext.{e} X Y q →+ Ext.{e'} A (F.obj Z) q => m x)
+       (F.extPrecompMap_postcomp a f q)).symm
+   change Function.Surjective (t Y)
++  have hB' (i : ι) : Function.Surjective (t (B i)) := hB i
+   intro x
+-  choose y hy using fun i => hB i (T.map (r i) x)
++  choose y hy using fun i => hB' i (T.map (r i) x)
+   refine ⟨∑ i, S.map (s i) (y i), ?_⟩
+   calc
+     t Y (∑ i, S.map (s i) (y i)) = ∑ i, T.map (s i) (t (B i) (y i)) := by
+-      rw [map_sum]
+-      exact Finset.sum_congr rfl (fun i _ => hn (s i) (y i))
++      exact (_root_.map_sum (t Y) (fun i => S.map (s i) (y i)) Finset.univ).trans
++        (Finset.sum_congr rfl (fun i _ => hn (s i) (y i)))
+     _ = ∑ i, T.map (s i) (T.map (r i) x) := by
+       exact Finset.sum_congr rfl (fun i _ => congrArg (T.map (s i)) (hy i))
+     _ = x := split_family_apply T B s r hs x

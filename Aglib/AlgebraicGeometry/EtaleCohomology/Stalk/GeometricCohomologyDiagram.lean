@@ -6,8 +6,10 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricPullbackCoefficient
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackCohomologyCocone
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductRestriction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomology
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.FixedSourceCohomology
 
 /-! # Actual geometric-system cohomology and original fibre-product restrictions -/
 
@@ -17,17 +19,6 @@ namespace AlgebraicGeometry.Scheme.EtaleCohomology.Stalk
 universe u e uI vI
 attribute [local instance] hasSheafifyLarge
 open Continuity Finite.GeometricNeighborhood
-
-/-- Normalize the original all-degree map before evaluating a concrete geometric system. -/
-theorem diagramCohomologyMap_pullbackCoefficientSystem
-    {I : Type uI} [Category.{vI} I] (Y : I ⥤ Scheme.{u}ᵒᵖ)
-    (b : Cone Y) (F : AbelianSheaf.{u, u + 1} b.pt.unop)
-    [∀ i, HasExt.{e} (AbelianSheaf.{u, u + 1} (Y.obj i).unop)]
-    (q : ℕ) {i j : I} (a : i ⟶ j) :
-    diagramCohomologyMap Y (pullbackCoefficientSystem Y b F) q a =
-      cohomologyTransfer (Y.map a).unop (pullbackCoefficientTransition Y b F a) q := by
-  exact congrArg (fun t => cohomologyTransfer (Y.map a).unop t q)
-    (diagramInverseTransition_pullbackCoefficientSystem Y b F a)
 
 /-- Evaluate a whole triangle comparison at the original fixed coefficient system. -/
 theorem pullbackCoefficientTransition_of_triangleIso_eq
@@ -39,7 +30,12 @@ theorem pullbackCoefficientTransition_of_triangleIso_eq
     (he : pullbackTriangleIso (b.π.app j).unop (b.π.app i).unop (Y.map a).unop
       (congrArg Quiver.Hom.unop (b.w a)) = e) :
     pullbackCoefficientTransition Y b F a = e.inv.app F :=
-  NatTrans.congr_app (congrArg Iso.inv he) F
+  by
+  rw [pullbackCoefficientTransition_eq_generic]
+  exact InjectiveSystem.System.fixedSourceTransition_of_triangleIso_eq
+    schemeAdjunctionData Y b F a e
+    ((schemeTriangleIso_eq_pullbackTriangleIso (b.π.app i) (b.π.app j)
+      (Y.map a) (b.w a)).trans he)
 
 /-- Transport an original cohomology map across literal arrow and coefficient equalities. -/
 theorem cohomologyTransfer_of_heq
@@ -51,7 +47,8 @@ theorem cohomologyTransfer_of_heq
     (φ : (inverseImage f).obj F ⟶ G) (ψ : (inverseImage g).obj F ⟶ G)
     (hφ : HEq φ ψ) (q : ℕ) :
     cohomologyTransfer f φ q =
-      AddCommGrpCat.ofHom ((Sheaf.H.map ψ q).comp (cohomologyPullback g F q)) := by
+      AddCommGrpCat.ofHom ((Sheaf.H.map ψ q).comp (cohomologyPullback g F q)) :=
+  by
   subst g
   cases hφ
   rfl

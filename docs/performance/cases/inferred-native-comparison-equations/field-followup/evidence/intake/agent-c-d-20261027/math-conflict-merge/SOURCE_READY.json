@@ -1,0 +1,169 @@
+{
+  "status": "SOURCE_PREPARED_NOT_APPLIED_NOT_COMPILED",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "archive_sha256": "0a26b49033cb47986944110e352b6c12468d40c058310182d7c5a97aa9467738",
+  "candidate_sources": [
+    {
+      "path": "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean",
+      "sha256": "07da86d8361ff33df9e6bd4f82249c17b06a6abd9d0d7eba34c05edb4eae7e57",
+      "lines": 83,
+      "changed_from_current": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SuppliedDirectImage.lean",
+      "sha256": "5210fe1c215ee66813c859c38cd07115f7549ffb6757024c8d3d8bf2c122fa85",
+      "lines": 109,
+      "changed_from_current": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Diagram.lean",
+      "sha256": "0bda98be195f04a520fa1bd9a57444dce7d4202ed17ae056dacd8558ee59481e",
+      "lines": 133,
+      "changed_from_current": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CompositionCoherence.lean",
+      "sha256": "5ead6d087ea70942197fb6832604ffc28fd9b8c2df2fec69578aef12cbc8ac33",
+      "lines": 238,
+      "changed_from_current": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "sha256": "7f7ddd67dbab5b61f062332dc01e99b4d6c4a9c8d6531a465ab08f554bddf9f4",
+      "lines": 87,
+      "changed_from_current": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/Isomorphism.lean",
+      "sha256": "559bc5606e2ce95b2e2147832f0ab15a79318b18a7270f6e4ac361fb38eccfd3",
+      "lines": 51,
+      "changed_from_current": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperComparison.lean",
+      "sha256": "f54d82539419847e22730133f71cf369ca3a9eeca99bb7dc1748ab80b6f9f29f",
+      "lines": 14,
+      "changed_from_current": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperIsomorphism.lean",
+      "sha256": "c7fc6386705365d09ecef1f9d77b7422e6be02a0acbf1605e4e9068b171b16c5",
+      "lines": 141,
+      "changed_from_current": false
+    }
+  ],
+  "adjacent_proposals": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/ComparisonAlgebra.lean",
+      "archive_sha256": "d4019d3463d474beab54a3388f9d4085a1833c97d8ebb430df09fb8310b86194",
+      "proposed_sha256": "71f46412064364330efd4c621f77d55a80a5c2be852e94d837b4468768a9ab16",
+      "native_present": false,
+      "native_sha256": null,
+      "status": "R-only source/API proposal; not compiled, not applied, no N ownership acquired."
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/DirectImageComparison.lean",
+      "archive_sha256": "0d733e0178604bb38423697bc31bc2adc085affc0bedd3703b5058be0f55375c",
+      "proposed_sha256": "20377f51631c880cd0754b041d3da4972e083e86f29396193659a5316127bd27",
+      "native_present": false,
+      "native_sha256": null,
+      "status": "R-only source/API proposal; not compiled, not applied, no N ownership acquired."
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/ModelComparison.lean",
+      "archive_sha256": "eaed989e2bbf9206b5a8212c41941eb96819d33cecca0757a6848a093c908f1c",
+      "proposed_sha256": "210a7a2b20ef6477b9215e2f9fcf82b0614fee39866ad530d31d7e07a1323de3",
+      "native_present": false,
+      "native_sha256": null,
+      "status": "R-only source/API proposal; not compiled, not applied, no N ownership acquired."
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/TargetModelComparison.lean",
+      "archive_sha256": "c41786b4af2fe297ba694c3d718a638763a539c97b106b4bf016aa357631f3e1",
+      "proposed_sha256": "0d63e6ede67b9667b11236511bf9a96e255c5df45fc4e9f8a301a270189a05b1",
+      "native_present": false,
+      "native_sha256": null,
+      "status": "R-only source/API proposal; not compiled, not applied, no N ownership acquired."
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoIdentity.lean",
+      "archive_sha256": "1d24dcb98586779331a98a10df403c330591a4e0204ef8a82dbdac223de77c10",
+      "proposed_sha256": "240ed745a104c5b149005181f0103df4fe63a855ad66a5c32f8dffff5a5e6dee",
+      "native_present": false,
+      "native_sha256": null,
+      "status": "R-only source/API proposal; not compiled, not applied, no N ownership acquired."
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TargetModelComparison.lean",
+      "archive_sha256": "43d024a1bb52b3ce4d09b289b3cab3d73c72a43789199750c3f65b1115fd165e",
+      "proposed_sha256": "86eb638df3ad0b9eaa264c2de1b6d48eea7a131e80853a79b392da20f40d4c8e",
+      "native_present": false,
+      "native_sha256": null,
+      "status": "R-only source/API proposal; not compiled, not applied, no N ownership acquired."
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeModelIdentity.lean",
+      "archive_sha256": "05191b46b06f1c44f16db82ca83c42750e023228b67f94a9289819122e6d1508",
+      "proposed_sha256": "96fd4d969e08d12889807bf9cb7159448764dc98aa5ae8fd2578701bfecb7d1b",
+      "native_present": false,
+      "native_sha256": null,
+      "status": "R-only source/API proposal; not compiled, not applied, no N ownership acquired."
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeTargetModels.lean",
+      "archive_sha256": "c8e27530eebd656a202b205212aab9167b989a004129317ec2e7f13dc08154c2",
+      "proposed_sha256": "cf4aabf2f3a6757e3c9597d30cdcbc1d6bb571dfcee5ee547c7aa3372af61b3c",
+      "native_present": false,
+      "native_sha256": null,
+      "status": "R-only source/API proposal; not compiled, not applied, no N ownership acquired."
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawDenseTransition.lean",
+      "archive_sha256": "1c5868e6c95a70fb0fcdc5953c7817e1109f32d8541ae0ee4d1b849f764fcc05",
+      "proposed_sha256": "b67b9766ff5dbbc321047f91dd2c96b86f9477ca8f9cd992edfe35491ad65874",
+      "native_present": false,
+      "native_sha256": null,
+      "status": "R-only source/API proposal; not compiled, not applied, no N ownership acquired."
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/ProperOpen/Comparison.lean",
+      "archive_sha256": "b4e6a775f10f656bd22cc9cc74c621b28c6941d12836873ce0f25be210bc44e9",
+      "proposed_sha256": "f5a0aac8a7be318cc6b09560a31edb7d639bc5f8cdab061046286d114e54e7fc",
+      "native_present": false,
+      "native_sha256": null,
+      "status": "R-only source/API proposal; not compiled, not applied, no N ownership acquired."
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChange.lean",
+      "archive_sha256": "a24122d4c2bf930483eb46c62ddf023085c16f4becaa38f8561a43c4bb55dbb7",
+      "proposed_sha256": "9a3d7f9ab10d91dad49bb89e0bd77436acd1b891c57cd5274b239fd2a7312ef6",
+      "native_present": false,
+      "native_sha256": null,
+      "status": "R-only source/API proposal; not compiled, not applied, no N ownership acquired."
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/FullSubcategory.lean",
+      "archive_sha256": "c2e6e617d60eb884bec9fce4f60efcc31e6fb4d0838e4803b76dbd444ef03653",
+      "proposed_sha256": "c57ad7ee73bef89de88e001912d18827f94d0a0f1821d839d8c3b9dc7dfbaa15",
+      "native_present": false,
+      "native_sha256": null,
+      "status": "R-only exact generic placement proposal; no native write or compile ownership acquired."
+    },
+    {
+      "path": "Aglib/CategoryTheory/ObjectProperty/LiftFunctorIso.lean",
+      "archive_sha256": null,
+      "proposed_sha256": "c2e6e617d60eb884bec9fce4f60efcc31e6fb4d0838e4803b76dbd444ef03653",
+      "native_present": false,
+      "native_sha256": null,
+      "status": "R-only exact generic placement proposal; no native write or compile ownership acquired."
+    }
+  ],
+  "summary": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-conflict-merge/RETURN.md",
+  "correspondence": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-conflict-merge/CORRESPONDENCE.json",
+  "required_import_dependencies": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-conflict-merge/REQUIRED_IMPORT_DEPENDENCIES.json",
+  "hash_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-conflict-merge/OUTPUTS.json",
+  "hash_manifest_sha256": "ab0b80e307de8bbbba4d244075a96936913079055b35aba4d170202d463a2e1b",
+  "inherited_option_context": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-conflict-merge/INHERITED_OPTION_CONTEXT.json",
+  "remaining_boundary": "Guarded integration is later and separate from protected current P6. Seven archive-only prerequisites and adjacent API/placement proposals need normal source adoption decisions and incremental coverage; no current D pass/established status is inferred. No mathematical equality gap was introduced into the eight candidates; ordinary elaboration remains untested.",
+  "final_native_guard": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-conflict-merge/FINAL_GUARD.json"
+}

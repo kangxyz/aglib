@@ -19,12 +19,6 @@ namespace AlgebraicGeometry.Scheme.EtaleCohomology.Continuity
 universe u uI vI
 attribute [local instance] hasSheafifyLarge
 
-/-- The native direct-image triangle, with its original equality transport. -/
-def directImageTriangleIso {X Y T : Scheme.{u}} (f : Y ⟶ X)
-    (p : T ⟶ X) (q : T ⟶ Y) (h : q ≫ f = p) :
-    directImage q ⋙ directImage f ≅ directImage p :=
-  directImageCompIso f q ≪≫ eqToIso (congrArg directImage h)
-
 /-- Transposing the original coefficient triangle gives its right-adjoint triangle. -/
 lemma triangleCoefficientMap_homEquiv {X Y T : Scheme.{u}} (f : Y ⟶ X)
     (p : T ⟶ X) (q : T ⟶ Y) (h : q ≫ f = p)
@@ -35,27 +29,14 @@ lemma triangleCoefficientMap_homEquiv {X Y T : Scheme.{u}} (f : Y ⟶ X)
       (inverseImageAdjunction f).homEquiv _ _ φ ≫
         (directImage f).map ((inverseImageAdjunction q).homEquiv _ _ ψ) ≫
           (directImageTriangleIso f p q h).hom.app K := by
-  subst p
-  have ht := homEquiv_precomp_conjugate
-    ((inverseImageAdjunction f).comp (inverseImageAdjunction q))
-    (inverseImageAdjunction (q ≫ f)) (inverseImageComp f q).hom
-    ((inverseImage q).map φ ≫ ψ)
-  rw [conjugateEquiv_inverseImageComp_hom] at ht
-  have hc : ((inverseImageAdjunction f).comp (inverseImageAdjunction q)).homEquiv _ _
-      ((inverseImage q).map φ ≫ ψ) =
-        (inverseImageAdjunction f).homEquiv _ _ φ ≫
-          (directImage f).map ((inverseImageAdjunction q).homEquiv _ _ ψ) := by
-    rw [Adjunction.comp_homEquiv]
-    change (inverseImageAdjunction f).homEquiv _ _
-      ((inverseImageAdjunction q).homEquiv _ _ ((inverseImage q).map φ ≫ ψ)) = _
-    rw [Adjunction.homEquiv_naturality_left, Adjunction.homEquiv_naturality_right]
-  have he := ht.trans (congrArg (fun k => k ≫ (directImageCompIso f q).hom.app K) hc)
-  simpa only [triangleCoefficientMap, pullbackTriangleIso, directImageTriangleIso,
-    Iso.trans_hom, NatTrans.comp_app, eqToIso.hom, eqToHom_app, eqToHom_refl,
-    Category.id_comp, Category.comp_id, Category.assoc] using he
+  simpa only [triangleCoefficientMap, Category.assoc] using
+    Adjunction.RepresentedCoherence.homEquiv_comp
+      (inverseImageAdjunction f) (inverseImageAdjunction q) (inverseImageAdjunction p)
+      (pullbackTriangleIso p f q h).hom (directImageTriangleIso f p q h).hom
+      (pullbackTriangleIso_mate f p q h) F G K φ ψ
 
 variable {I : Type uI} [Category.{vI} I] (X : I ⥤ Scheme.{u}ᵒᵖ) (c : Cocone X)
-  (F : DiagramCoefficientSystem X) [HasColimit (coneCoefficientFunctor X c F)]
+  (F : DiagramCoefficientSystem X) [hF : HasColimit (coneCoefficientFunctor X c F)]
 
 /-- The original triangle for a transition and two specified cone projections. -/
 def diagramDirectImageTriangle {i j : I} (a : i ⟶ j) :
@@ -65,24 +46,16 @@ def diagramDirectImageTriangle {i j : I} (a : i ⟶ j) :
 
 /-- Transpose the actual coefficient-colimit injection through the original adjunction. -/
 def diagramAdjointLeg (i : I) : F.obj i ⟶
-    (directImage (c.ι.app i).unop).obj (colimit (coneCoefficientFunctor X c F)) :=
-  (inverseImageAdjunction (c.ι.app i).unop).homEquiv _ _
-    (colimit.ι (coneCoefficientFunctor X c F) i)
+    (directImage (c.ι.app i).unop).obj (colimit (coneCoefficientFunctor X c F)) := by
+  letI : HasColimit ((diagramConeAdjunctionData X c).coefficientFunctor F) := hF
+  exact (diagramConeAdjunctionData X c).adjointLeg F i
 
 /-- The actual adjoint legs satisfy the original right-transition cocone equation. -/
 lemma diagramAdjointLeg_naturality {i j : I} (a : i ⟶ j) :
     diagramAdjointLeg X c F i = F.map a ≫
       (directImage (X.map a).unop).map (diagramAdjointLeg X c F j) ≫
         (diagramDirectImageTriangle X c a).hom.app (colimit (coneCoefficientFunctor X c F)) := by
-  have ht := triangleCoefficientMap_homEquiv (X.map a).unop
-    (c.ι.app i).unop (c.ι.app j).unop (coneSquare X c a)
-    (diagramInverseTransition X F a) (colimit.ι (coneCoefficientFunctor X c F) j)
-  have hw := congrArg ((inverseImageAdjunction (c.ι.app i).unop).homEquiv _ _)
-    (colimit.w (coneCoefficientFunctor X c F) a)
-  have hm : (inverseImageAdjunction (X.map a).unop).homEquiv _ _
-      (diagramInverseTransition X F a) = F.map a := Equiv.apply_symm_apply _ _
-  exact hw.symm.trans (ht.trans (congrArg
-    (fun k => k ≫ (directImage (X.map a).unop).map (diagramAdjointLeg X c F j) ≫
-      (diagramDirectImageTriangle X c a).hom.app (colimit (coneCoefficientFunctor X c F))) hm))
+  let : HasColimit ((diagramConeAdjunctionData X c).coefficientFunctor F) := hF
+  exact (diagramConeAdjunctionData X c).adjointLeg_naturality F a
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Continuity

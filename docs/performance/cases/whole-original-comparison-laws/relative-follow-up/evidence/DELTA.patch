@@ -1,0 +1,121 @@
+--- V16/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/InverseRectangle.lean
++++ V19/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/InverseRectangle.lean
+@@ -96,4 +96,45 @@
+   simpa only [triangleIso, eqToIso_refl, Iso.refl_trans] using
+     D.inverse_square_composite_coefficient hD f k f' k' g g' g'' ef ek e F
+ 
++
++universe u₀ v₀ u₁ v₁ u₂ v₂ u₃ v₃ u₄ v₄ u₅ v₅ uI
++
++/-- Invert the original whole triangle-square law using its actual square
++factorization. The same indexing family gives the literal objectwise transport;
++all cancellation and component evaluation precede native specialization. -/
++theorem inverse_triangle_coefficient_of_whole
++    {C₀ : Type u₀} [Category.{v₀} C₀] {C₁ : Type u₁} [Category.{v₁} C₁]
++    {C₂ : Type u₂} [Category.{v₂} C₂] {C₃ : Type u₃} [Category.{v₃} C₃]
++    {C₄ : Type u₄} [Category.{v₄} C₄] {C₅ : Type u₅} [Category.{v₅} C₅]
++    {L_g : C₀ ⥤ C₁} {L_v₀ : C₀ ⥤ C₂} {L_v₁ : C₁ ⥤ C₃} {L_h : C₂ ⥤ C₃}
++    {L : C₄ ⥤ C₅} {P₀ : C₀ ⥤ C₄} {P₁ : C₁ ⥤ C₄}
++    {Q₀ : C₂ ⥤ C₅} {Q₁ : C₃ ⥤ C₅}
++    (t_g : P₀ ≅ L_g ⋙ P₁) (t_h : Q₀ ≅ L_h ⋙ Q₁)
++    (s : L_g ⋙ L_v₁ ≅ L_v₀ ⋙ L_h)
++    (s₀ : L_v₀ ⋙ Q₀ ≅ P₀ ⋙ L) (s₁ : L_v₁ ⋙ Q₁ ≅ P₁ ⋙ L)
++    (h : Adjunction.CoefficientSquares.WholeTriangleSquareEquation t_g t_h s s₀ s₁)
++    {I : Type uI} (K : I → C₁ ⥤ C₅) {i j : I} (hij : i = j)
++    (θ : K i ≅ L_v₁ ⋙ Q₁) (κ : K j ≅ P₁ ⋙ L)
++    (hs₁ : s₁ = θ.symm ≪≫ eqToIso (congrArg K hij) ≪≫ κ) (F : C₀) :
++    θ.hom.app (L_g.obj F) ≫ Q₁.map (s.hom.app F) ≫ t_h.inv.app (L_v₀.obj F) =
++      eqToHom (congrArg (fun k => (K k).obj (L_g.obj F)) hij) ≫
++        κ.hom.app (L_g.obj F) ≫ L.map (t_g.inv.app F) ≫ s₀.inv.app F := by
++  have hv : t_h.hom.app (L_v₀.obj F) ≫ Q₁.map (s.inv.app F) ≫
++      s₁.hom.app (L_g.obj F) = s₀.hom.app F ≫ L.map (t_g.hom.app F) := by
++    have ht := congrArg (fun η => η.app F) h
++    simpa only [NatTrans.comp_app, Functor.whiskerLeft_app, Functor.whiskerRight_app,
++      Functor.associator_inv_app, Functor.associator_hom_app,
++      Category.id_comp, Category.comp_id] using ht
++  have hp : θ.hom.app (L_g.obj F) ≫ s₁.hom.app (L_g.obj F) =
++      eqToHom (congrArg (fun k => (K k).obj (L_g.obj F)) hij) ≫
++        κ.hom.app (L_g.obj F) := by
++    rw [hs₁]
++    simp only [Iso.trans_hom, Iso.symm_hom, NatTrans.comp_app, eqToIso.hom,
++      eqToHom_app, Iso.hom_inv_id_app_assoc]
++  exact five_iso_inverse_prefixed
++    (t_h.app (L_v₀.obj F)) (Q₁.mapIso (s.symm.app F)) (s₁.app (L_g.obj F))
++    (s₀.app F) (L.mapIso (t_g.app F)) hv (θ.hom.app (L_g.obj F))
++    (eqToHom (congrArg (fun k => (K k).obj (L_g.obj F)) hij))
++    (κ.hom.app (L_g.obj F)) hp
++
+ end CategoryTheory.InjectiveSystem.AdjunctionData
+--- V16/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/RelativeCohomologySquare.lean
++++ V19/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/RelativeCohomologySquare.lean
+@@ -31,6 +31,43 @@
+ 
+ open Continuity
+ 
++/-- The whole triangle-square law is on the five original native comparisons,
++before selecting a coefficient object. -/
++private theorem relativeCohomologySquare_whole
++    {X X' A B A' B' : Scheme.{u}}
++    (p : B ⟶ X) (p' : B' ⟶ X') (a : A ⟶ X) (a' : A' ⟶ X')
++    (v : A ⟶ B) (v' : A' ⟶ B') (r : B' ⟶ B) (σ : A' ⟶ A) (g : X' ⟶ X)
++    (hv : v ≫ p = a) (hv' : v' ≫ p' = a')
++    (hR : p' ≫ g = r ≫ p) (hS : a' ≫ g = σ ≫ a) (hRect : v' ≫ r = σ ≫ v) :
++    Adjunction.CoefficientSquares.WholeTriangleSquareEquation
++      (pullbackTriangleIso a p v hv) (pullbackTriangleIso a' p' v' hv')
++      (inverseImageSquareIso p p' g r hR).symm
++      (inverseImageSquareIso a a' g σ hS) (inverseImageSquareIso v v' r σ hRect) := by
++  refine schemeAdjunctionData.triangleSquare_whole_of_eq schemeAdjunctionData_coherent
++    p.op p'.op g.op r.op σ.op a.op v.op a'.op v'.op
++    (congrArg Quiver.Hom.op hR.symm) (congrArg Quiver.Hom.op hv)
++    (congrArg Quiver.Hom.op hv') (congrArg Quiver.Hom.op hS) (congrArg Quiver.Hom.op hRect)
++    (pullbackTriangleIso a p v hv) (pullbackTriangleIso a' p' v' hv')
++    (inverseImageSquareIso p p' g r hR).symm
++    (inverseImageSquareIso a a' g σ hS) (inverseImageSquareIso v v' r σ hRect)
++    ?_ ?_ ?_ ?_ ?_
++  · simpa only [Quiver.Hom.unop_op] using
++      (schemeTriangleIso_eq_pullbackTriangleIso p.op a.op v.op
++        (congrArg Quiver.Hom.op hv)).symm
++  · simpa only [Quiver.Hom.unop_op] using
++      (schemeTriangleIso_eq_pullbackTriangleIso p'.op a'.op v'.op
++        (congrArg Quiver.Hom.op hv')).symm
++  · have hs := schemeSquareIso_eq_inverseImageSquareIso g.op r.op p.op p'.op
++      (congrArg Quiver.Hom.op hR.symm)
++    simp only [Quiver.Hom.unop_op] at hs
++    exact (hs.trans (inverseImageSquareIso_transpose p p' g r hR)).symm
++  · simpa only [Quiver.Hom.unop_op] using
++      (schemeSquareIso_eq_inverseImageSquareIso a.op a'.op g.op σ.op
++        (congrArg Quiver.Hom.op hS)).symm
++  · simpa only [Quiver.Hom.unop_op] using
++      (schemeSquareIso_eq_inverseImageSquareIso v.op v'.op r.op σ.op
++        (congrArg Quiver.Hom.op hRect)).symm
++
+ /-- The literal square and triangle coefficient maps commute after the actual
+ rectangle arrow transport. No geometric base-change hypothesis is required. -/
+ theorem relativeCohomologySquare_coefficient
+@@ -47,17 +84,15 @@
+         hRect) ≫
+         (inverseImageComp v σ).hom.app ((inverseImage p).obj F) ≫
+         (inverseImage σ).map ((pullbackTriangleIso a p v hv).inv.app F) ≫
+-        (inverseImageSquareIso a a' g σ hS).inv.app F :=
+-  by
+-  have h := schemeAdjunctionData.inverse_square_triangle_coefficient schemeAdjunctionData_coherent
+-    p.op v.op p'.op v'.op a.op a'.op g.op r.op σ.op
+-    (congrArg Quiver.Hom.op hv) (congrArg Quiver.Hom.op hv')
+-    (congrArg Quiver.Hom.op hR) (congrArg Quiver.Hom.op hRect)
+-    (congrArg Quiver.Hom.op hS) F
+-  simp only [schemeLeftCompIso_eq_inverseImageComp, schemeSquareIso_eq_inverseImageSquareIso,
+-    schemeTriangleIso_eq_pullbackTriangleIso, schemeLeft_eq_inverseImage,
+-    Quiver.Hom.unop_op, unop_comp] at h ⊢
+-  exact h
++        (inverseImageSquareIso a a' g σ hS).inv.app F := by
++  exact InjectiveSystem.AdjunctionData.inverse_triangle_coefficient_of_whole
++    (pullbackTriangleIso a p v hv) (pullbackTriangleIso a' p' v' hv')
++    (inverseImageSquareIso p p' g r hR).symm
++    (inverseImageSquareIso a a' g σ hS) (inverseImageSquareIso v v' r σ hRect)
++    (relativeCohomologySquare_whole p p' a a' v v' r σ g hv hv' hR hS hRect)
++    (fun k : A' ⟶ B => inverseImage k) hRect
++    (inverseImageComp r v') (inverseImageComp v σ)
++    (inverseImageSquareIso_eq_comp v v' r σ hRect) F
+ 
+ private theorem transfer_square_of_coefficients {A B A' B' : Scheme.{u}}
+     [HasExt.{e} (AbelianSheaf.{u, u + 1} A)]

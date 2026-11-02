@@ -1,0 +1,101 @@
+private meta def kgExprHead (e : Lean.Expr) : String :=
+  if e.getAppFn.isFVar then s!"fvar:{e.getAppFn.fvarId!.name};arity:{e.getAppNumArgs}"
+  else s!"const:{e.getAppFn.constName?.getD .anonymous};arity:{e.getAppNumArgs}"
+private meta def kgTypeDifference (label : String) (left right : Lean.Expr) : Lean.MetaM Bool := do
+  Lean.logInfo m!"KG.TYPE.{label}.rawSame={left == right}"
+  let mut pending := [(label, left, right)]
+  let mut found : Option (String × Lean.Expr × Lean.Expr) := none
+  let mut count : Nat := 0
+  let mut proofValuesSkipped : Nat := 0
+  for _ in [:4096] do
+    if found.isSome then break
+    match pending with
+    | [] => break
+    | (path, a, b) :: rest =>
+      pending := rest
+      count := count + 1
+      unless a == b do
+        let mut proofPair := false
+        if !a.hasLooseBVars && !b.hasLooseBVars then
+          proofPair ← Lean.Meta.isProof a
+          if proofPair then proofPair ← Lean.Meta.isProof b
+        if proofPair then
+          let aType ← Lean.instantiateMVars (← Lean.Meta.inferType a)
+          let bType ← Lean.instantiateMVars (← Lean.Meta.inferType b)
+          proofValuesSkipped := proofValuesSkipped + 1
+          unless aType == bType do
+            pending := (path ++ ".PROPOSITION_TYPE", aType, bType) :: pending
+        else
+          match a, b with
+          | .mdata _ x, _ => pending := (path ++ ".metaL", x, b) :: pending
+          | _, .mdata _ y => pending := (path ++ ".metaR", a, y) :: pending
+          | .letE _ _ value body _, _ =>
+            pending := (path ++ ".letL", body.instantiate1 value, b) :: pending
+          | _, .letE _ _ value body _ =>
+            pending := (path ++ ".letR", a, body.instantiate1 value) :: pending
+          | .app af aa, .app bf ba =>
+            pending := (path ++ ".fn", af, bf) :: (path ++ ".arg", aa, ba) :: pending
+          | .lam _ aDomain ab _, .lam _ bDomain bb _ =>
+            pending := (path ++ ".domain", aDomain, bDomain) :: (path ++ ".body", ab, bb) :: pending
+          | .forallE _ aDomain ab _, .forallE _ bDomain bb _ =>
+            pending := (path ++ ".domain", aDomain, bDomain) :: (path ++ ".body", ab, bb) :: pending
+          | _, _ => found := some (path, a, b)
+  Lean.logInfo m!"KG.TYPE.{label}.nodes={count};proofValuesSkipped={proofValuesSkipped}"
+  if let some (path, a, b) := found then
+    Lean.logInfo m!"KG.TYPE.{label}.path={path.take 600}"
+    Lean.logInfo m!"KG.TYPE.{label}.leftHead={kgExprHead a}"
+    Lean.logInfo m!"KG.TYPE.{label}.rightHead={kgExprHead b}"
+    return false
+  else if !pending.isEmpty then
+    Lean.logInfo m!"KG.TYPE.{label}.uncheckedAfter4096={pending.length}"
+    return false
+  else
+    Lean.logInfo m!"KG.TYPE.{label}.shapeSameWithPropositionTypes=true"
+    return true
+private meta def kgApplicationInspect : Lean.Elab.Tactic.TacticM Lean.Expr :=
+  Lean.Elab.Tactic.withMainContext do
+    let mut hf : Option Lean.Expr := none
+    let mut pf : Option Lean.Expr := none
+    let mut gf : Option Lean.Expr := none
+    for d in ← Lean.getLCtx do
+      let n := d.userName.eraseMacroScopes.toString
+      if n == "H" then hf := some (Lean.mkFVar d.fvarId)
+      if n == "hpull" then pf := some (Lean.mkFVar d.fvarId)
+      if n == "hg'" then gf := some (Lean.mkFVar d.fvarId)
+    let some h := hf | throwError "APP missing H"
+    let some p := pf | throwError "APP missing hpull"
+    let some g := gf | throwError "APP missing hg'"
+    Lean.logInfo m!"APP.transparency={reprStr (← Lean.Meta.getTransparency)}"
+    let ht ← Lean.Meta.whnf (← Lean.instantiateMVars (← Lean.Meta.inferType h))
+    let .forallE _ hd hb _ := ht | throwError "APP H is not forall"
+    let pt ← Lean.instantiateMVars (← Lean.Meta.inferType p)
+    Lean.logInfo "APP_ORIGINAL_PULLBACK_CALC_FORMED"
+    discard <| kgTypeDifference "APP.premise" hd pt
+    for i in [:min hd.getAppArgs.size pt.getAppArgs.size] do
+      discard <| kgTypeDifference s!"APP.premise.arg.{i}" hd.getAppArgs[i]! pt.getAppArgs[i]!
+    let hpt ← Lean.Meta.whnf (hb.instantiate1 p)
+    let .forallE _ gd gb _ := hpt | throwError "APP H second binder is not forall"
+    let gt ← Lean.instantiateMVars (← Lean.Meta.inferType g)
+    discard <| kgTypeDifference "APP.genus" gd gt
+    let result := gb.instantiate1 g
+    let target ← Lean.instantiateMVars (← Lean.Elab.Tactic.getMainTarget)
+    discard <| kgTypeDifference "APP.result" result target
+    try
+      let ok ← Lean.withoutModifyingState (Lean.Meta.isDefEq hd pt)
+      Lean.logInfo m!"APP.premise.isDefEq.current={ok}"
+    catch _ => Lean.logInfo "APP.premise.isDefEq.exception=true"
+    try
+      let ok ← Lean.withoutModifyingState (Lean.Meta.isDefEq gd gt)
+      Lean.logInfo m!"APP.genus.isDefEq.current={ok}"
+    catch _ => Lean.logInfo "APP.genus.isDefEq.exception=true"
+    try
+      let ok ← Lean.withoutModifyingState (Lean.Meta.isDefEq result target)
+      Lean.logInfo m!"APP.result.isDefEq.current={ok}"
+    catch _ => Lean.logInfo "APP.result.isDefEq.exception=true"
+    let application := Lean.mkApp2 h p g
+    try
+      Lean.withoutModifyingState (Lean.Meta.check application .default)
+      Lean.logInfo "APP.application.Meta.check.default=PASS"
+    catch _ => Lean.logInfo "APP.application.Meta.check.exception=true"
+    Lean.logInfo "APP_ACTUAL_INSPECTION_COMPLETE;NO_KERNEL_OR_PRODUCER_PASS"
+    return application

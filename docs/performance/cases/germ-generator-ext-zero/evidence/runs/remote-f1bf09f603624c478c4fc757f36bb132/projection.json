@@ -1,0 +1,29 @@
+{
+  "run": "remote-f1bf09f603624c478c4fc757f36bb132",
+  "source": "eff0705357218b9bbd5067106a8fd24270abeafa23bfd0a90b824166b20932d6",
+  "group_closed": true,
+  "aggregate_exit": 1,
+  "sources": [
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/GeneratorZero.lean",
+      "sha256": "a1b0afb33a48438ccb8f96db750c17140ed9c0c98f4b9ce8a3a55c6734da6f8d",
+      "verdict": "fresh_pass",
+      "exit_code": 0,
+      "elapsed_seconds": 3.58171883225441
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean",
+      "sha256": "5764233c0b53f51feecf566ac72f4fd211773418f80137160d0c3a732c1d3944",
+      "verdict": "fresh_failure",
+      "exit_code": 1,
+      "elapsed_seconds": 93.64043787121773
+    }
+  ],
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-f1bf09f603624c478c4fc757f36bb132/receipt.json",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-f1bf09f603624c478c4fc757f36bb132/compiler-events.jsonl",
+  "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-f1bf09f603624c478c4fc757f36bb132/build.log",
+  "source_basis": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/germ-whole-values-v21/LIVE_READY.json",
+  "source_receipt_sha256": "aaa946bbf685e2d8b35d9ab74077e554a2841eb21cbda4e6879526149c892ac0",
+  "input_binding": "Native576 is direct receipt input row; GeneratorZeroa1b0 bound by exact guarded LIVE pair and coordinator actual source callback. Full archived source delivery can supplement without rerun.",
+  "boundary": "Generic completevalue law freshPASS; native576 failed missing identity-view Ext dictionary in new helper84/86,129sorry cascade. Mixed foreign failures separate. Currentnative17078 successor not compiled by this run; retired02923 zeroLean attempts separate."
+}

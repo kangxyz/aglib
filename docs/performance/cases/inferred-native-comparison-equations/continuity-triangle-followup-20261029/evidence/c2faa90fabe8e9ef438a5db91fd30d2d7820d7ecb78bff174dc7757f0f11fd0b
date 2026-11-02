@@ -1,0 +1,29 @@
+✔ [3363/3370] Built Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.ConeExtension (5.7s)
+✔ [3364/3370] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramLimitFunctor (139s)
+✔ [3365/3370] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramLimitSections (5.0s)
+✔ [3366/3370] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramConeSquares (5.7s)
+✔ [3367/3370] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramAdjointCocone (18s)
+✔ [3368/3370] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SquareCoefficientAdjoint (8.1s)
+✔ [3369/3370] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramDirectImageTriangleComp (14s)
+✖ [3370/3370] Building Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DirectImageSquareTriangle (5.4s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-88d1a641efd34eeabbd07613e356406c/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean -o /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.olean -i /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.c --setup /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean:39:72: Application type mismatch: The argument
+  hc
+has type
+  True
+but is expected to have type
+  eqToHom ⋯ = eqToHom ⋯
+in the application
+  make (eqToHom (congrArg directImage e)) (directImageTriangleIso f p q hf) (directImageTriangleIso g p q hg) hc
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean:65:74: Application type mismatch: The argument
+  hc₀'
+has type
+  True
+but is expected to have type
+  directImageCompIso f v₁ = directImageCompIso f v₁
+in the application
+  make (directImageSquareIso v₀ v₁ f h he) (directImageCompIso f v₁) (directImageCompIso v₀ h)
+    (eqToHom (congrArg directImage (Eq.symm he))) hs hc₀'
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DirectImageSquareTriangle
+error: build failed

@@ -1,0 +1,290 @@
+--- a/Aglib/CategoryTheory/Topos/SlicePresentation.lean
++++ b/Aglib/CategoryTheory/Topos/SlicePresentation.lean
+@@ -32,6 +32,68 @@
+ namespace CategoryTheory.Topos.SlicePresentation
+ 
+ universe u v w
++
++section ComparisonConstruction
++
++universe uA vA uB vB uD vD
++
++variable {A : Type uA} [Category.{vA} A]
++  {B : Type uB} [Category.{vB} B] {D : Type uD} [Category.{vD} D]
++
++/-- The original native comparison, with its whole construction shared before specialization. -/
++def Construction.compInverseComparison (e : B ≌ D) {S : A ⥤ B} {T : A ⥤ D}
++    (α : S ⋙ e.functor ≅ T) : T ⋙ e.inverse ≅ S :=
++  Iso.compInverseIso (H := e) α.symm
++
++/-- The original inverse map followed by the original unit inverse. -/
++theorem Construction.compInverseComparison_hom_app (e : B ≌ D)
++    {S : A ⥤ B} {T : A ⥤ D} (α : S ⋙ e.functor ≅ T) (X : A) :
++    (Construction.compInverseComparison e α).hom.app X =
++      e.inverse.map (α.inv.app X) ≫ e.unitIso.inv.app (S.obj X) := by
++  simp [Construction.compInverseComparison, Iso.compInverseIso]
++
++/-- The whole counit equation of this same native comparison. -/
++def Construction.CompInverseCounitEq (e : B ≌ D)
++    {S : A ⥤ B} {T : A ⥤ D} (α : S ⋙ e.functor ≅ T) (X : A) : Prop :=
++  e.functor.map ((Construction.compInverseComparison e α).hom.app X) ≫ α.hom.app X =
++    e.counitIso.hom.app (T.obj X)
++
++/-- Counit naturality proves the whole comparison law before any concrete fibre is selected. -/
++theorem Construction.compInverseComparison_counit (e : B ≌ D)
++    {S : A ⥤ B} {T : A ⥤ D} (α : S ⋙ e.functor ≅ T) (X : A) :
++    Construction.CompInverseCounitEq e α X := by
++  change e.functor.map ((Construction.compInverseComparison e α).hom.app X) ≫
++    α.hom.app X = e.counitIso.hom.app (T.obj X)
++  rw [Construction.compInverseComparison_hom_app, e.functor.map_comp,
++    ← e.counit_app_functor (S.obj X)]
++  have hn : e.functor.map (e.inverse.map (α.inv.app X)) ≫
++      e.counitIso.hom.app (e.functor.obj (S.obj X)) =
++    e.counitIso.hom.app (T.obj X) ≫ α.inv.app X :=
++    e.counitIso.hom.naturality (α.inv.app X)
++  calc
++    _ = (e.counitIso.hom.app (T.obj X) ≫ α.inv.app X) ≫ α.hom.app X :=
++      congrArg (fun k => k ≫ α.hom.app X) hn
++    _ = e.counitIso.hom.app (T.obj X) ≫ (α.inv.app X ≫ α.hom.app X) :=
++      Category.assoc _ _ _
++    _ = e.counitIso.hom.app (T.obj X) ≫ 𝟙 (T.obj X) :=
++      congrArg (fun k => e.counitIso.hom.app (T.obj X) ≫ k) (α.inv_hom_id_app X)
++    _ = _ := Category.comp_id _
++
++/-- Normalize the actual product-comonad structure map as a whole morphism. -/
++theorem Construction.star_obj_hom_fst [HasBinaryProducts B] (P H : B) :
++    ((Over.star P).obj H).hom = (prod.fst : P ⨯ H ⟶ P) := by
++  rw [Over.star_obj_hom]
++  exact prod.lift_fst _ _
++
++/-- Coefficient naturality keeps the actual product-over-P map and projection. -/
++theorem Construction.star_map_snd [HasBinaryProducts B] (P : B)
++    {H H' : B} (f : H ⟶ H') :
++    ((Over.star P).map f).left ≫ (prod.snd : P ⨯ H' ⟶ H') =
++      (prod.snd : P ⨯ H ⟶ H) ≫ f := by
++  rw [Over.star_map_left]
++  exact prod.map_snd _ _
++
++end ComparisonConstruction
+ 
+ section Aligned
+ 
+@@ -189,7 +251,10 @@
+   change f ≫ (𝟙 Y) = (𝟙 X) ≫
+     (ShrinkHoms.equivalence.{w} C).inverse.map
+       ((ShrinkHoms.equivalence.{w} C).functor.map f) at h
+-  simpa only [Category.comp_id, Category.id_comp] using h.symm
++  exact (@Category.id_comp C (inferInstance : Category.{v} C) X Y
++    ((ShrinkHoms.equivalence.{w} C).inverse.map
++      ((ShrinkHoms.equivalence.{w} C).functor.map f))).symm.trans
++        (h.symm.trans (@Category.comp_id C (inferInstance : Category.{v} C) X Y f))
+ 
+ /-- The other map cancellation uses the same adapter's original identity counit. -/
+ theorem Construction.selectedSize_counit_map {X Y : ShrinkHoms C} (f : X ⟶ Y) :
+@@ -198,7 +263,11 @@
+   have h := (ShrinkHoms.equivalence.{w} C).counitIso.hom.naturality f
+   change (ShrinkHoms.equivalence.{w} C).functor.map
+       ((ShrinkHoms.equivalence.{w} C).inverse.map f) ≫ (𝟙 Y) = (𝟙 X) ≫ f at h
+-  simpa only [Category.comp_id, Category.id_comp] using h
++  exact (@Category.comp_id (ShrinkHoms C) (inferInstance : Category.{w} (ShrinkHoms C)) X Y
++    ((ShrinkHoms.equivalence.{w} C).functor.map
++      ((ShrinkHoms.equivalence.{w} C).inverse.map f))).symm.trans
++        (h.trans (@Category.id_comp (ShrinkHoms C)
++          (inferInstance : Category.{w} (ShrinkHoms C)) X Y f))
+ 
+ /-- The same computed native element-size comparison used by the presentation. -/
+ public def Construction.selectedElementSizeEquivalence :
+@@ -239,7 +308,11 @@
+           change (projection P'.obj).map f ≫ (𝟙 _) =
+             (𝟙 _) ≫ eC.functor.map (eC.inverse.map ((projection P'.obj).map f))
+           rw [Construction.selectedSize_counit_map]
+-          simp only [Category.comp_id, Category.id_comp])
++          exact (@Category.comp_id (ShrinkHoms C)
++            (inferInstance : Category.{w} (ShrinkHoms C)) _ _ ((projection P'.obj).map f)).trans
++              (@Category.id_comp (ShrinkHoms C)
++                (inferInstance : Category.{w} (ShrinkHoms C)) _ _
++                  ((projection P'.obj).map f)).symm)
+       counitIso := NatIso.ofComponents
+         (fun a => (Functor.Elements.isoMk (Iso.refl _) (by simp)).op)
+         (by
+@@ -248,11 +321,16 @@
+           change eC.inverse.map (eC.functor.map ((projection P.obj).map f)) ≫ (𝟙 _) =
+             (𝟙 _) ≫ (projection P.obj).map f
+           rw [Construction.selectedSize_unit_map]
+-          simp only [Category.comp_id, Category.id_comp])
++          exact (@Category.comp_id C (inferInstance : Category.{v} C) _ _
++            ((projection P.obj).map f)).trans
++              (@Category.id_comp C (inferInstance : Category.{v} C) _ _
++                ((projection P.obj).map f)).symm)
+       functor_unitIso_comp := fun a => by
+         apply hom_ext P.obj
+-        change eC.inverse.map (𝟙 _) ≫ (𝟙 _) = 𝟙 _
+-        simp }
++        let X : ShrinkHoms C := (projection P'.obj).obj a
++        change eC.inverse.map (𝟙 X) ≫ (𝟙 (eC.inverse.obj X)) = 𝟙 (eC.inverse.obj X)
++        exact (@Category.comp_id C (inferInstance : Category.{v} C) _ _
++          (eC.inverse.map (𝟙 X))).trans (eC.inverse.map_id X) }
+   exact eD
+ 
+ public instance Construction.selectedElementSize_inverse_dense :
+@@ -308,9 +386,17 @@
+       {y : Y.left.obj.obj (op ((projection P.obj).obj a)) //
+         Y.hom.hom.app (op ((projection P.obj).obj a)) y = a.unop.val} where
+   toFun x := ⟨x.val, by
+-    simpa only [Equiv.apply_symm_apply] using x.prop.app⟩
++    let e := yonedaEquiv (F := (Construction.selectedSizedSheaf J P).obj)
++      (X := (ShrinkHoms.equivalence.{w} C).functor.obj ((projection P.obj).obj a))
++    have hx := x.prop.app
++    change Y.hom.hom.app (op ((projection P.obj).obj a)) x.val =
++      e (e.symm a.unop.val) at hx
++    exact hx.trans (e.apply_symm_apply a.unop.val)⟩
+   invFun y := ⟨y.val, ⟨by
+-    simpa only [Equiv.apply_symm_apply] using y.property⟩⟩
++    let e := yonedaEquiv (F := (Construction.selectedSizedSheaf J P).obj)
++      (X := (ShrinkHoms.equivalence.{w} C).functor.obj ((projection P.obj).obj a))
++    change Y.hom.hom.app (op ((projection P.obj).obj a)) y.val = e (e.symm a.unop.val)
++    exact y.property.trans (e.apply_symm_apply a.unop.val).symm⟩⟩
+   left_inv x := Subtype.ext rfl
+   right_inv y := Subtype.ext rfl
+ 
+@@ -576,7 +662,7 @@
+     ((elementFibreEquivalence J P).functor.obj ((Over.star P).obj H)).obj.obj (op a) ≃
+       H.obj.obj (op ((projection P.obj).obj a)) :=
+   (fibreObjEquiv J P ((Over.star P).obj H) a).trans (by
+-    simpa only [Over.star_obj_left, Over.star_obj_hom, prod.lift_fst] using
++    simpa only [Construction.star_obj_hom_fst] using
+       productFibreEquiv J P H ((projection P.obj).obj a) a.unop.val)
+ 
+ /-- The comparison uses the actual second product projection. -/
+@@ -623,9 +709,8 @@
+       erw [starFibreObjEquiv_apply, starFibreObjEquiv_apply,
+         fibreObjEquiv_map J P ((Over.star P).map f) a.unop x]
+       have h : ((Over.star P).map f).left ≫ (prod.snd : P ⨯ H' ⟶ H') =
+-          (prod.snd : P ⨯ H ⟶ H) ≫ f := by
+-        rw [Over.star_map_left]
+-        exact prod.map_snd _ _
++          (prod.snd : P ⨯ H ⟶ H) ≫ f :=
++        Construction.star_map_snd P f
+       exact congrArg (fun g => g.hom.app (op ((projection P.obj).obj a.unop))
+         (fibreObjEquiv J P ((Over.star P).obj H) a.unop x).val) h)
+ 
+@@ -638,37 +723,22 @@
+ presentation equivalence, using its original unit through compInverseIso. -/
+ def restrictionStarIso :
+     elementRestriction J P ⋙ (elementFibreEquivalence J P).inverse ≅ Over.star P :=
+-  Iso.compInverseIso (H := (elementFibreEquivalence J P)) (starFibreRestrictionIso J P).symm
++  Construction.compInverseComparison (elementFibreEquivalence J P) (starFibreRestrictionIso J P)
+ 
+ /-- The component is the inverse-image map followed by the original R unit inverse. -/
+ theorem restrictionStarIso_hom_app (H : Sheaf J (Type w)) :
+     (restrictionStarIso J P).hom.app H =
+       (elementFibreEquivalence J P).inverse.map ((starFibreRestrictionIso J P).inv.app H) ≫
+         (elementFibreEquivalence J P).unitIso.inv.app ((Over.star P).obj H) := by
+-  simp [restrictionStarIso, Iso.compInverseIso]
++  exact Construction.compInverseComparison_hom_app
++    (elementFibreEquivalence J P) (starFibreRestrictionIso J P) H
+ 
+ /-- Mapping the intrinsic comparison back through R gives the ORIGINAL counit. -/
+ theorem restrictionStarIso_map_counit (H : Sheaf J (Type w)) :
+-    (elementFibreEquivalence J P).functor.map ((restrictionStarIso J P).hom.app H) ≫
+-        (starFibreRestrictionIso J P).hom.app H =
+-      (elementFibreEquivalence J P).counitIso.hom.app ((elementRestriction J P).obj H) := by
+-  rw [restrictionStarIso_hom_app, Functor.map_comp,
+-    ← (elementFibreEquivalence J P).counit_app_functor ((Over.star P).obj H)]
+-  have hn := (elementFibreEquivalence J P).counitIso.hom.naturality
+-    ((starFibreRestrictionIso J P).inv.app H)
+-  change (elementFibreEquivalence J P).functor.map
+-      ((elementFibreEquivalence J P).inverse.map ((starFibreRestrictionIso J P).inv.app H)) ≫
+-      (elementFibreEquivalence J P).counitIso.hom.app
+-        ((elementFibreEquivalence J P).functor.obj ((Over.star P).obj H)) =
+-    (elementFibreEquivalence J P).counitIso.hom.app ((elementRestriction J P).obj H) ≫
+-      (starFibreRestrictionIso J P).inv.app H at hn
+-  calc
+-    _ = ((elementFibreEquivalence J P).counitIso.hom.app ((elementRestriction J P).obj H) ≫
+-        (starFibreRestrictionIso J P).inv.app H) ≫
+-          (starFibreRestrictionIso J P).hom.app H :=
+-      congrArg (fun k => k ≫ (starFibreRestrictionIso J P).hom.app H) hn
+-    _ = _ := by
+-      rw [Category.assoc, Iso.inv_hom_id_app, Category.comp_id]
++    Construction.CompInverseCounitEq
++      (elementFibreEquivalence J P) (starFibreRestrictionIso J P) H :=
++  Construction.compInverseComparison_counit
++    (elementFibreEquivalence J P) (starFibreRestrictionIso J P) H
+ 
+ /-- The intrinsic product comparison has the original labelled pair of values
+ under the named actual-product and sigma comparisons. -/
+@@ -690,9 +760,15 @@
+   rw [hs]
+   apply Prod.ext
+   · erw [productSectionsEquiv_fst J P H X]
+-    simpa only [Over.star_obj_hom, prod.lift_fst] using
+-      congrArg (fun f => f.hom.app (op X) y)
+-        (Over.w ((restrictionStarIso J P).hom.app H))
++    have hm : ((restrictionStarIso J P).hom.app H).left ≫ (prod.fst : P ⨯ H ⟶ P) =
++        G.hom :=
++      (congrArg (fun k => ((restrictionStarIso J P).hom.app H).left ≫ k)
++        (Construction.star_obj_hom_fst P H)).symm.trans
++          (Over.w ((restrictionStarIso J P).hom.app H))
++    have hv := congrArg (fun k : G.left ⟶ P => k.hom.app (op X) y) hm
++    change (prod.fst : P ⨯ H ⟶ P).hom.app (op X)
++      (((restrictionStarIso J P).hom.app H).left.hom.app (op X) y) = p at hv
++    exact hv
+   · erw [productSectionsEquiv_snd J P H X]
+     have hc := congrArg (fun f => f.hom.app (op a) z)
+       (restrictionStarIso_map_counit J P H)
+@@ -759,9 +835,12 @@
+     rw [hu] at h
+     exact h
+   rw [← hz, sigmaObjEquiv_of_fibre]
+-  exact congrArg (fun q : F.obj.obj (op a) => Sigma.mk p q) (by
++  have hv : ((elementFibreEquivalence J P).counitIso.app F).hom.hom.app (op a) z =
++      (sectionToGlobalPointEquiv J P F t).hom.app (op a) PUnit.unit := by
+     rw [sectionToGlobalPointEquiv_apply]
+-    rfl)
++    rfl
++  exact congrArg (fun q : F.obj.obj (op a) =>
++    (⟨p, q⟩ : Σ r : P.obj.obj (op X), F.obj.obj (op (mk P.obj X r)))) hv
+ 
+ /-- A global point gives p mapped to the original pair (p,s at X,p). -/
+ theorem globalPointSectionEquiv_sigma
+@@ -800,17 +879,30 @@
+   apply Sheaf.hom_ext
+   ext X p
+   apply (sigmaObjEquiv J P G X.unop).injective
+-  rw [globalPointSectionEquiv_sigma]
+-  have hs : (globalPointSectionEquiv J P F s).left.hom.app (op X.unop) p =
++  change sigmaObjEquiv J P G X.unop
++      ((globalPointSectionEquiv J P G (s ≫ f)).left.hom.app (op X.unop) p) =
++    sigmaObjEquiv J P G X.unop
++      (((elementFibreEquivalence J P).inverse.map f).left.hom.app (op X.unop)
++        ((globalPointSectionEquiv J P F s).left.hom.app (op X.unop) p))
++  have hs := globalPointSectionEquiv_sigma J P F s X.unop p
++  have hs' : (globalPointSectionEquiv J P F s).left.hom.app (op X.unop) p =
+       (sigmaObjEquiv J P F X.unop).symm
+-        ⟨p, s.hom.app (op (mk P.obj X.unop p)) PUnit.unit⟩ := by
+-    apply (sigmaObjEquiv J P F X.unop).injective
+-    rw [globalPointSectionEquiv_sigma, Equiv.apply_symm_apply]
+-  change _ = sigmaObjEquiv J P G X.unop
+-    (((elementFibreEquivalence J P).inverse.map f).left.hom.app (op X.unop)
+-      ((globalPointSectionEquiv J P F s).left.hom.app (op X.unop) p))
+-  rw [hs, sigmaObjEquiv_map]
+-  rfl
++        ⟨p, s.hom.app (op (mk P.obj X.unop p)) PUnit.unit⟩ :=
++    ((sigmaObjEquiv J P F X.unop).symm_apply_apply _).symm.trans
++      (congrArg (sigmaObjEquiv J P F X.unop).symm hs)
++  calc
++    _ = ⟨p, (s ≫ f).hom.app (op (mk P.obj X.unop p)) PUnit.unit⟩ :=
++      globalPointSectionEquiv_sigma J P G (s ≫ f) X.unop p
++    _ = ⟨p, f.hom.app (op (mk P.obj X.unop p))
++        (s.hom.app (op (mk P.obj X.unop p)) PUnit.unit)⟩ := rfl
++    _ = sigmaObjEquiv J P G X.unop
++        (((elementFibreEquivalence J P).inverse.map f).left.hom.app (op X.unop)
++          ((sigmaObjEquiv J P F X.unop).symm
++            ⟨p, s.hom.app (op (mk P.obj X.unop p)) PUnit.unit⟩)) :=
++      (sigmaObjEquiv_map J P f X.unop p
++        (s.hom.app (op (mk P.obj X.unop p)) PUnit.unit)).symm
++    _ = _ := congrArg (fun y => sigmaObjEquiv J P G X.unop
++      (((elementFibreEquivalence J P).inverse.map f).left.hom.app (op X.unop) y)) hs'.symm
+ 
+ end GlobalPoints
+ 

@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.LocallyConstant
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.GenericDetection.Represented
+public import Aglib.CategoryTheory.Adjunction.MonicProducts
 
 /-! # Dominant pullback detects finite locally constant coefficients
 
@@ -84,9 +85,7 @@ private theorem mono_unit_of_mono_target
     {C D : Type*} [Category* C] [Category* D] {L : C ⥤ D} {R : D ⥤ C}
     (adj : L ⊣ R) {F : C} {M : D} (a : F ⟶ R.obj M) [Mono a] :
     Mono (adj.unit.app F) := by
-  have h : adj.unit.app F ≫ R.map ((adj.homEquiv F M).symm a) = a :=
-    (adj.homEquiv F M).apply_symm_apply a
-  exact mono_of_mono_fac h
+  exact Adjunction.mono_unit_app_of_mono_rightTarget adj a
 
 /-- The literal dominant adjunction unit is monic for every finite locally
 constant abelian sheaf over an integral scheme. -/
@@ -111,17 +110,6 @@ theorem inverseImage_map_injective_of_finiteLocallyConstant_of_isDominant
     Function.Injective (fun a : G ⟶ F => (inverseImage f).map a) := by
   have : Mono ((inverseImageAdjunction f).unit.app F) :=
     mono_unit_of_finiteLocallyConstant_of_isDominant f F hF
-  intro a b hab
-  apply (cancel_mono ((inverseImageAdjunction f).unit.app F)).mp
-  calc
-    a ≫ (inverseImageAdjunction f).unit.app F =
-        (inverseImageAdjunction f).unit.app G ≫
-          (directImage f).map ((inverseImage f).map a) :=
-      (inverseImageAdjunction f).unit.naturality a
-    _ = (inverseImageAdjunction f).unit.app G ≫
-        (directImage f).map ((inverseImage f).map b) :=
-      congrArg (fun k => (inverseImageAdjunction f).unit.app G ≫ (directImage f).map k) hab
-    _ = b ≫ (inverseImageAdjunction f).unit.app F :=
-      ((inverseImageAdjunction f).unit.naturality b).symm
+  exact Adjunction.map_injective_of_mono_unit_app (inverseImageAdjunction f) F G
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Constructible.FiniteCogenerators

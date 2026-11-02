@@ -1,0 +1,81 @@
+{
+  "question": "Missing ordinary native final predicates on completed CI160 producing artifact",
+  "execution_workspace": "/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean",
+  "execution_source_sha256": "000f887386d2ef8138927f971d5e558c2177976f5a5731d588201e471ecd6739",
+  "subject_workspace": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean",
+  "subject_source_sha256": "bb2e2d802a93b4164169b0586ba5b04c8ebc0d0d62eee58a416064a7f4144539",
+  "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlyingCoherence.lean",
+  "subject_file_sha256": "160c719b1a952b1c7ce438f614096fc39713dce04c60cb3c37fce7a15d760447",
+  "subject_artifact_sha256": {
+    "olean": "57089b7f2459283f62f2159e92540ab28a9481b0b31b0bf08b142f9756f8fed7",
+    "ilean": "cfd57811b05a1e44c91d60050250519556fcdb4511d491d7d16a7e0630b01c08"
+  },
+  "producing_run": "remote-1c16d780b2a643809e27b31a3f982d47",
+  "commands": [
+    {
+      "kind": "builtin",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "lint",
+        "--builtin-only",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleUnderlyingCoherence"
+      ],
+      "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean",
+      "exit": 0,
+      "seconds": 9.591420888900757
+    },
+    {
+      "kind": "textstyle-CI160",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "env",
+        "python3",
+        "-c",
+        "import os,sys;os.environ['LEAN_SRC_PATH']=sys.argv[1]+os.pathsep+os.environ.get('LEAN_SRC_PATH','');os.execv(sys.argv[2],[sys.argv[2],sys.argv[3]])",
+        "/root/autodl-tmp/lean-build/logs/remote-5b62d505e91e4a1ba3e0ca6bb8156e67/source-selection-data",
+        "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/bin/lint-style",
+        "Aglib.CI160StyleSelection"
+      ],
+      "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean",
+      "exit": 0,
+      "seconds": 2.426407352089882
+    },
+    {
+      "kind": "declaration-full-native-predicate",
+      "command": [
+        "timeout",
+        "--kill-after=30s",
+        "20m",
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "exe",
+        "batteries/runLinter",
+        "--no-build",
+        "--trace",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleUnderlyingCoherence"
+      ],
+      "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean",
+      "exit": 0,
+      "seconds": 31.025723814964294
+    },
+    {
+      "kind": "upstream-audit-CI160",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "env",
+        "/root/autodl-tmp/lean-build/tools/axiom-audit-46024e005996/.lake/build/bin/axiom-audit",
+        "--root",
+        "Aglib",
+        "--modules",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleUnderlyingCoherence",
+        "--json"
+      ],
+      "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean",
+      "exit": 0,
+      "seconds": 9.916911989450455
+    }
+  ],
+  "retained": "Compatible public provider7 source/proof coverage; prior imported axiom closure retained. This run uses unchanged upstream predicate on changed CI origin only. Root current source-token receipt retained.",
+  "boundary": "C is execution-only managed admission/lock; all mathematical checks run with cwdD against subjectDbb2/CI160 already produced. Subject source/pins and CI artifacts guarded before/after; D source protected by owned healthy build. No source sync/export, production rebuild, source mutation, filtering, replay/client or fullD closure gate."
+}

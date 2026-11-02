@@ -1,0 +1,34 @@
+{
+  "question": "Selected851 coherent namespace/stockunion plus existinguncoveredaxiom712 only",
+  "source": "206fa267076e7cf29ccee5f027a2a96ca375ff1fbe69acd6be913989d42d2e69",
+  "selected_count": 851,
+  "uncovered_axiom_count": 712,
+  "retained_audit_count": 139,
+  "CPP_basis": "Original844source-boundcoverage+actuald4threecompanions/CI0+actualdf05wholeAffine5of5; nofreshwholelibraryclaim",
+  "commands": [
+    {
+      "kind": "import-only-environment",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "env",
+        "/root/autodl-tmp/lean-build/logs/remote-3926ccaef81c4a61aa020d6ad66eee18/toolchain/bin/lean",
+        "--root=/root/autodl-tmp/lean-build/logs/remote-3926ccaef81c4a61aa020d6ad66eee18/selected-import-environment",
+        "-DautoImplicit=false",
+        "-DwarningAsError=true",
+        "-Dweak.linter.mathlibStandardSet=true",
+        "-Dweak.linter.style.longFile=1500",
+        "-o",
+        "/root/autodl-tmp/lean-build/logs/remote-3926ccaef81c4a61aa020d6ad66eee18/selected-import-environment/Aglib/Selected851Lint.olean",
+        "-i",
+        "/root/autodl-tmp/lean-build/logs/remote-3926ccaef81c4a61aa020d6ad66eee18/selected-import-environment/Aglib/Selected851Lint.ilean",
+        "/root/autodl-tmp/lean-build/logs/remote-3926ccaef81c4a61aa020d6ad66eee18/selected-import-environment/Aglib/Selected851Lint.lean"
+      ],
+      "exit": 1,
+      "seconds": 3.4858120530843735,
+      "log": "/root/autodl-tmp/lean-build/logs/remote-3926ccaef81c4a61aa020d6ad66eee18/import-only-environment.log"
+    }
+  ],
+  "selected_vector_sha256": "ee715fe8c279cc614c431225b8564765efee4cc5a05a66914c03a22e1a019f59",
+  "boundary": "Existing unchanged stockgetChecks/no filters and approvedaxiompredicate only; header is declaration-free environment formation, no productionCPP/client/replay/kernelcheck/newprotocol/model/options change. Individual and priorCPP remains its actualbasis."
+}

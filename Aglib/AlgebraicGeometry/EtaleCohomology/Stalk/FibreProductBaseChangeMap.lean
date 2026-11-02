@@ -32,21 +32,8 @@ variable {X S X' S' : Scheme.{u}}
 /-- The original map between the two neighborhood fibre-product schemes. -/
 def fibreProductBaseChangeMap :
     pullback ((siteBaseChange g).obj U).hom f' ⟶ pullback U.hom f :=
-  pullback.lift
-    (pullback.fst ((siteBaseChange g).obj U).hom f' ≫ pullback.fst U.hom g)
-    (pullback.snd ((siteBaseChange g).obj U).hom f' ≫ g') (by
-      calc
-        (pullback.fst ((siteBaseChange g).obj U).hom f' ≫ pullback.fst U.hom g) ≫ U.hom =
-            pullback.fst ((siteBaseChange g).obj U).hom f' ≫
-              (((siteBaseChange g).obj U).hom ≫ g) := by
-          rw [Category.assoc, pullback.condition]
-          exact congrArg (fun k : pullback U.hom g ⟶ S' =>
-            pullback.fst ((siteBaseChange g).obj U).hom f' ≫ k ≫ g)
-            (siteBaseChange_obj_hom g U).symm
-        _ = (pullback.snd ((siteBaseChange g).obj U).hom f' ≫ f') ≫ g := by
-          rw [← Category.assoc, pullback.condition]
-        _ = (pullback.snd ((siteBaseChange g).obj U).hom f' ≫ g') ≫ f := by
-          rw [Category.assoc, h, Category.assoc])
+  pullback.map ((siteBaseChange g).obj U).hom f' U.hom f
+    (pullback.fst U.hom g) g' g (by exact pullback.condition.symm) h
 
 /-- The map retains the original projection to the source neighborhood. -/
 @[reassoc]

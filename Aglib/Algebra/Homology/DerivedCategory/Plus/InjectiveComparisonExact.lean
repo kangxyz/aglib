@@ -1,0 +1,100 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.Algebra.Homology.DerivedCategory.Plus.InjectiveComparison
+public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.SingleHomology
+public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.TStructure
+
+/-! # Injective tests after exact coefficient restriction
+
+An exact coefficient functor is derived internally, and the original comparison
+between two composites of right-derived functors is precomposed with it. The
+native lower bounds and exact-single comparison then extend tests on genuine
+coefficient injectives to every coefficient. The auxiliary coefficient-derived
+category is chosen only inside the proof; the four value-category derived
+models and all their size universes remain independent.
+-/
+
+@[expose] public noncomputable section
+
+set_option backward.defeqAttrib.useBackward true
+set_option backward.isDefEq.respectTransparency false
+
+open CategoryTheory CategoryTheory.Limits
+
+namespace DerivedCategory.Plus.InjectiveComparison
+
+universe uT vT uA vA dA uB vB dB uC vC dC uD vD dD
+
+variable {T : Type uT} [Category.{vT} T] [Abelian T] [EnoughInjectives T]
+  {A : Type uA} [Category.{vA} A] [Abelian A] [EnoughInjectives A]
+  [HasDerivedCategory.{dA} A]
+  {B : Type uB} [Category.{vB} B] [Abelian B] [EnoughInjectives B]
+  [HasDerivedCategory.{dB} B]
+  {C : Type uC} [Category.{vC} C] [Abelian C] [EnoughInjectives C]
+  [HasDerivedCategory.{dC} C]
+  {D : Type uD} [Category.{vD} D] [Abelian D] [HasDerivedCategory.{dD} D]
+
+/-- Genuine coefficient-injective tests imply invertibility on the original
+single of every coefficient's exact image. The original comparison is retained,
+and the exact-single transport is the one determined by the native derived unit.
+No preservation of injectives by the exact coefficient functor is assumed. -/
+theorem isIso_app_single_of_injective_after_exact
+    (U : T ⥤ A) [U.Additive]
+    [PreservesFiniteLimits U] [PreservesFiniteColimits U]
+    (F₁ : A ⥤ B) (F₂ : B ⥤ D) (G₁ : A ⥤ C) (G₂ : C ⥤ D)
+    [F₁.Additive] [F₂.Additive] [G₁.Additive] [G₂.Additive]
+    (β : F₁.rightDerivedFunctorPlus ⋙ F₂.rightDerivedFunctorPlus ⟶
+      G₁.rightDerivedFunctorPlus ⋙ G₂.rightDerivedFunctorPlus)
+    [NatTrans.CommShift β ℤ]
+    (hI : ∀ (I : T) [Injective I],
+      IsIso (β.app ((singleFunctor A 0).obj (U.obj I))))
+    (M : T) : IsIso (β.app ((singleFunctor A 0).obj (U.obj M))) := by
+  let : HasDerivedCategory.{max uT vT} T := HasDerivedCategory.standard T
+  let F := U.rightDerivedFunctorPlus ⋙
+    (F₁.rightDerivedFunctorPlus ⋙ F₂.rightDerivedFunctorPlus)
+  let G := U.rightDerivedFunctorPlus ⋙
+    (G₁.rightDerivedFunctorPlus ⋙ G₂.rightDerivedFunctorPlus)
+  let α : F ⟶ G := Functor.whiskerLeft U.rightDerivedFunctorPlus β
+  let e (N : T) :
+      U.rightDerivedFunctorPlus.obj ((singleFunctor T 0).obj N) ≅
+        (singleFunctor A 0).obj (U.obj N) :=
+    (U.rightDerivedFunctorPlusSingleIso 0).app N
+  have hF (N : T) : (F.obj ((singleFunctor T 0).obj N)).IsGE 0 := by
+    have := U.rightDerivedFunctorPlus_isGE ((singleFunctor T 0).obj N) 0
+    have := F₁.rightDerivedFunctorPlus_isGE
+      (U.rightDerivedFunctorPlus.obj ((singleFunctor T 0).obj N)) 0
+    exact F₂.rightDerivedFunctorPlus_isGE _ 0
+  have hG (N : T) : (G.obj ((singleFunctor T 0).obj N)).IsGE 0 := by
+    have := U.rightDerivedFunctorPlus_isGE ((singleFunctor T 0).obj N) 0
+    have := G₁.rightDerivedFunctorPlus_isGE
+      (U.rightDerivedFunctorPlus.obj ((singleFunctor T 0).obj N)) 0
+    exact G₂.rightDerivedFunctorPlus_isGE _ 0
+  have hJ (I : T) [Injective I] :
+      IsIso (α.app ((singleFunctor T 0).obj I)) := by
+    exact (NatTrans.isIso_app_iff_of_iso β (e I)).mpr (hI I)
+  have hM := isIso_app_single_of_injective F G α hF hG hJ M
+  exact (NatTrans.isIso_app_iff_of_iso β (e M)).mp hM
+
+/-- Keep the actual original coefficient-single functor as a shared data head.
+Its displayed equality specifies the original construction, rather than an
+independently supplied endpoint isomorphism or comparison-coherence premise. -/
+theorem isIso_app_of_injective_after_exact
+    (U : T ⥤ A) [U.Additive]
+    [PreservesFiniteLimits U] [PreservesFiniteColimits U]
+    (Z : T ⥤ DerivedCategory.Plus A) (hZ : Z = U ⋙ singleFunctor A 0)
+    (F₁ : A ⥤ B) (F₂ : B ⥤ D) (G₁ : A ⥤ C) (G₂ : C ⥤ D)
+    [F₁.Additive] [F₂.Additive] [G₁.Additive] [G₂.Additive]
+    (β : F₁.rightDerivedFunctorPlus ⋙ F₂.rightDerivedFunctorPlus ⟶
+      G₁.rightDerivedFunctorPlus ⋙ G₂.rightDerivedFunctorPlus)
+    [NatTrans.CommShift β ℤ]
+    (hI : ∀ (I : T) [Injective I], IsIso (β.app (Z.obj I)))
+    (M : T) : IsIso (β.app (Z.obj M)) := by
+  subst Z
+  exact isIso_app_single_of_injective_after_exact U F₁ F₂ G₁ G₂ β hI M
+
+end DerivedCategory.Plus.InjectiveComparison

@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.AlgebraicGeometry.Geometrically.Integral.Smooth
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Reduced
 public import Aglib.AlgebraicGeometry.Properties.IrreducibleComponents
 public import Aglib.RingTheory.LocalRing.PrincipalMaximalIdeal
@@ -129,14 +130,8 @@ a connected scheme smooth of relative dimension one over any field is integral. 
 lemma isIntegral_of_connected_of_smoothOfRelativeDimension_one
     (f : X ⟶ Spec (.of F)) [SmoothOfRelativeDimension 1 f] [ConnectedSpace X] :
     IsIntegral X := by
-  have : Smooth f := SmoothOfRelativeDimension.smooth 1 f
-  have : IsLocallyNoetherian X := LocallyOfFiniteType.isLocallyNoetherian f
-  have (x : X) : IsDomain (X.presheaf.stalk x) :=
-    isDomain_stalk_of_smoothOfRelativeDimension_one f x
-  have : IsReduced X := isReduced_of_smooth_over_field f
-  have : IrreducibleSpace X :=
-    irreducibleSpace_of_connected_of_isLocallyNoetherian_of_isDomain_stalk
-  exact isIntegral_of_irreducibleSpace_of_isReduced X
+  let : Smooth f := SmoothOfRelativeDimension.smooth 1 f
+  exact isIntegral_of_connected_of_smooth f
 
 /-- Auxiliary curve geometry for `K2-018#prop:k2018-arithmetic-characters`, pinned above:
 smooth relative dimension one and geometric connectedness imply geometric integrality.
@@ -145,12 +140,8 @@ consumer; properness is unnecessary for this bridge. -/
 lemma geometricallyIntegral_of_smoothOfRelativeDimension_one_of_geometricallyConnected
     (f : X ⟶ Spec (.of F)) [SmoothOfRelativeDimension 1 f] [GeometricallyConnected f] :
     GeometricallyIntegral f := by
-  constructor
-  intro K _ s Y fst snd h
-  have : SmoothOfRelativeDimension 1 snd :=
-    MorphismProperty.of_isPullback h (inferInstance : SmoothOfRelativeDimension 1 f)
-  have : ConnectedSpace Y := GeometricallyConnected.geometrically_connectedSpace s fst snd h
-  exact isIntegral_of_connected_of_smoothOfRelativeDimension_one snd
+  let : Smooth f := SmoothOfRelativeDimension.smooth 1 f
+  exact geometricallyIntegral_of_smooth_of_geometricallyConnected f
 
 end AlgebraicGeometry.Scheme
 

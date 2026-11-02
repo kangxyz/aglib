@@ -1,0 +1,42 @@
+{
+  "question": "Field proof phase maxRecDepth boundary",
+  "kind": "one faithful derived diagnostic; no production coverage",
+  "record": {
+    "exit_code": 1,
+    "elapsed_seconds": 81.30939729511738,
+    "source_basis": "dc51ca2e04d34883355f83d57eceb809797d99fd4aea956c44faf6347ac74edf",
+    "candidate_sha256": "41e7f7ef39278988d3bb80550e36867aae8c8cdd1b1292d97d4eaad8d1ed1a49",
+    "setup_sha256": "8a299ce50e7cedd053744bfc5690f13486d51b67f52764383242576b28e72aa4",
+    "command": [
+      "/root/autodl-tmp/lean-build/logs/remote-7a9225c6ee474daba8be0f626223a656/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/logs/remote-7a9225c6ee474daba8be0f626223a656/field-phases/source/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/logs/remote-7a9225c6ee474daba8be0f626223a656/field-phases/Field.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/logs/remote-7a9225c6ee474daba8be0f626223a656/field-phases/Field.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/logs/remote-7a9225c6ee474daba8be0f626223a656/field-phases/Field.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/logs/remote-7a9225c6ee474daba8be0f626223a656/field-phases/Field.c"
+    ],
+    "folder": "/root/autodl-tmp/lean-build/logs/remote-7a9225c6ee474daba8be0f626223a656/field-phases",
+    "managed_source_mutations": 0
+  },
+  "setup_options": {
+    "autoImplicit": false,
+    "warningAsError": true,
+    "weak.linter.mathlibStandardSet": true,
+    "weak.linter.style.longFile": 1500
+  },
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-7a9225c6ee474daba8be0f626223a656/receipt.json",
+  "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-7a9225c6ee474daba8be0f626223a656/build.log",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-7a9225c6ee474daba8be0f626223a656/compiler-events.jsonl",
+  "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-C-zero-v2-c5f4e3e9.json",
+  "source_archive_sha256": "3b01c8cb364ef72c8437649eeb8ceeb2bd998189b6cbd705982f1fba429c3000",
+  "group_closed": true,
+  "input_drift": [],
+  "first_error": "FieldComparisonPhases.lean:377:8 maximum recursion depth at exact hmap.trans hclass",
+  "old_basis_not_relabelled": "f99d984824d7d8076ab46ecb1a708647baa16731530f208dd4754a3c6b2f283b"
+}

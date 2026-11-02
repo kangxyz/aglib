@@ -1,0 +1,35 @@
+{
+  "question": "Existing approved-axiom predicate on repaired OpenTopClass.Source only; retained B713 coverage remains separate",
+  "source": "3ee4a8877220d9b4172550b7e7e30d8d2bc1fbb72780df70c2e8acc1cd1bea71",
+  "selected_vector_sha256": "c59247dbb39d75973e9c7475281b1454e3f395b5f5a1ab459ae322c5e43fc306",
+  "module_count": 1,
+  "command": [
+    "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "--no-build",
+    "env",
+    "/root/autodl-tmp/lean-build/tools/axiom-audit-46024e005996/.lake/build/bin/axiom-audit",
+    "--root",
+    "Aglib",
+    "--modules",
+    "Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenTopClass.Source",
+    "--json"
+  ],
+  "exit": 0,
+  "seconds": 10.144712433218956,
+  "log": "/root/autodl-tmp/lean-build/logs/remote-176041e09944416f9dce0950da684fa3/approved-axiomSource1.log",
+  "artifact_stat_before_after": {
+    "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenTopClass/Source.lean": {
+      "olean": [
+        2722391924,
+        176016,
+        1793534906661814562
+      ],
+      "ilean": [
+        2195977270,
+        139236,
+        1793534906901823313
+      ]
+    }
+  },
+  "coverage": "No CPP, stock/client/kernel replay, new checker, mathematical proof verdict or changed predicate."
+}

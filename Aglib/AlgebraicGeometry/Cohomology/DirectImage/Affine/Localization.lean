@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.Algebra.Category.ModuleCat.Localization.ScalarExtension
+public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Localization.ScalarMate
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Qcqs
 
 /-!
@@ -54,26 +54,9 @@ theorem moduleCohomologyRestrictionMap_isLocalizedModule_of_isPullback
     IsLocalizedModule T (moduleCohomologyRestrictionMap p σ α β hs φp n).hom := by
   let : Algebra R S := σ.toAlgebra
   let : IsLocalization T S := hloc
-  have hflat : σ.Flat := IsLocalization.flat S T
-  let α := f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom
-  let β := q.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of S)).inv.hom
-  let hs := moduleSectionsBaseChangeScalars p q f σ h.w
-  let N : Y.Modules := (Scheme.Modules.pullback p).obj M
-  let φp : M ⟶ (Scheme.Modules.pushforward p).obj N :=
-    (Scheme.Modules.pullbackPushforwardAdjunction p).unit.app M
-  let := moduleCohomologyModuleOfHom X α M n
-  let := moduleCohomologyModuleOfHom Y β N n
-  let : IsIso (moduleCohomologyTensorMap p σ α β hs φp n) :=
-    moduleCohomologyTensorMap_isIso_of_quasiSeparated_of_isPullback
-      p q f σ h hflat M n
-  let : IsIso
-      (((ModuleCat.extendRestrictScalarsAdj.{u + 1, u, u} σ).homEquiv
-        (ModuleCat.of R (Sheaf.H.{u + 1} (moduleAddSheaf X M) n))
-        (ModuleCat.of S (Sheaf.H.{u + 1} (moduleAddSheaf Y N) n))).symm
-          (moduleCohomologyRestrictionMap p σ α β hs φp n)) := by
-    change IsIso (moduleCohomologyTensorMap p σ α β hs φp n)
-    infer_instance
-  exact ModuleCat.isLocalizedModule_of_isIso_adjoint.{u, u, u + 1} T σ hloc
-    (moduleCohomologyRestrictionMap p σ α β hs φp n)
+  exact moduleCohomologyRestrictionMap_isLocalizedModule_of_isPullback_of_tensor_isIso
+    p q f T σ h hloc M n
+    (moduleCohomologyTensorMap_isIso_of_quasiSeparated_of_isPullback
+      p q f σ h (IsLocalization.flat S T) M n)
 
 end AlgebraicGeometry.Scheme.Cohomology

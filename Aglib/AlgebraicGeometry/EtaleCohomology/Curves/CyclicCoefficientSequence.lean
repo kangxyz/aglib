@@ -5,11 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.Algebra.Category.Grp.ZModSequence
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ConstantRestriction
-public import Aglib.CategoryTheory.Sites.SheafCohomology.Vanishing.ExactSequence
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Coefficient
+public import Aglib.CategoryTheory.Sites.SheafCohomology.ConstantCyclic
 public import Mathlib.Algebra.Category.Grp.Ulift
-public import Mathlib.Algebra.Category.Grp.Zero
 
 /-!
 # Prime-power constant coefficients via actual cyclic extensions
@@ -50,7 +48,7 @@ instance (X : Scheme.{u}) : PreservesFiniteColimits (cyclicCoefficientFunctor X)
 /-- The original finite-constant cyclic extension is genuinely short exact. -/
 theorem cyclicCoefficient_shortExact (X : Scheme.{u}) (m n : ℕ) (hn : 0 < n) :
     ((ZMod.mulSequence m n).map (cyclicCoefficientFunctor X)).ShortExact :=
-  (ZMod.mulSequence_shortExact m n hn).map_of_exact (cyclicCoefficientFunctor X)
+  Sheaf.cyclicCoefficient_shortExact (cyclicCoefficientFunctor X) m n hn
 
 variable (X : Scheme.{u}) [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
 
@@ -59,24 +57,10 @@ theorem cyclicPrimePower_vanishing (p : ℕ) (hp : 0 < p) (q : ℕ)
     [Subsingleton (Sheaf.H.{w} (ConstantFinite.coefficient (ULift.{u} (ZMod p)) X) q)]
     (r : ℕ) :
     Subsingleton (Sheaf.H.{w} (ConstantFinite.coefficient (ULift.{u} (ZMod (p ^ r))) X) q) := by
-  induction r with
-  | zero =>
-      change Subsingleton
-        (Sheaf.H.{w} (ConstantFinite.coefficient (ULift.{u} (ZMod 1)) X) q)
-      apply Sheaf.subsingleton_H_of_isZero
-      exact (cyclicCoefficientFunctor X).map_isZero
-        (AddCommGrpCat.isZero_of_subsingleton (AddCommGrpCat.of (ZMod 1)))
-  | succ r ih =>
-      let S := (ZMod.mulSequence (p ^ r) p).map (cyclicCoefficientFunctor X)
-      let : Subsingleton (Sheaf.H.{w} S.X₁ q) := ih
-      let : Subsingleton (Sheaf.H.{w} S.X₃ q) := inferInstanceAs
-        (Subsingleton (Sheaf.H.{w} (ConstantFinite.coefficient (ULift.{u} (ZMod p)) X) q))
-      have h := Sheaf.H.subsingleton_middle_of_shortExact
-        (cyclicCoefficient_shortExact X (p ^ r) p hp) q
-      change Subsingleton
-        (Sheaf.H.{w} (ConstantFinite.coefficient (ULift.{u} (ZMod (p ^ r * p))) X) q) at h
-      exact Eq.mpr (congrArg (fun n : ℕ => Subsingleton
-        (Sheaf.H.{w} (ConstantFinite.coefficient (ULift.{u} (ZMod n)) X) q))
-          (pow_succ p r)) h
+  let : Subsingleton (Sheaf.H.{w}
+      ((cyclicCoefficientFunctor X).obj (AddCommGrpCat.of (ZMod p))) q) :=
+    inferInstanceAs
+      (Subsingleton (Sheaf.H.{w} (ConstantFinite.coefficient (ULift.{u} (ZMod p)) X) q))
+  exact Sheaf.cyclicPrimePower_vanishing (cyclicCoefficientFunctor X) p hp q r
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Curves

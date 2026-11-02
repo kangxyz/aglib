@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Basic
 public import Mathlib.Data.ZMod.Basic
+public import Aglib.CategoryTheory.Sites.SheafCohomology.CyclicSection
 
 /-! # The original constant cyclic coefficient map attached to a torsion section
 
@@ -31,28 +32,29 @@ variable {X : Scheme.{u}} (F : AbelianSheaf.{u, u + 1} X) (n : ℕ)
 /-- The actual cyclic value homomorphism associated to a torsion section. -/
 def cyclicSectionValues : ConstantFinite.value (ULift.{u} (ZMod n)) ⟶
     (globalSections X).obj F :=
-  AddCommGrpCat.ofHom
-    ((ZMod.lift n ⟨zmultiplesHom _ r, by simpa only [zmultiplesHom_apply,
-      natCast_zsmul] using hr⟩).comp
-        (AddEquiv.ulift.toAddMonoidHom.comp AddEquiv.ulift.toAddMonoidHom))
+  AddCommGrpCat.cyclicSectionValues ((globalSections X).obj F) n r hr
+    (AddEquiv.ulift.toAddMonoidHom.comp AddEquiv.ulift.toAddMonoidHom)
 
 /-- The original constant cyclic coefficient map defined by its global section. -/
 def cyclicSectionMap : ConstantFinite.coefficient (ULift.{u} (ZMod n)) X ⟶ F :=
-  ((constantAdjunction X).homEquiv _ _).symm (cyclicSectionValues F n r hr)
+  (constantAdjunction X).cyclicSectionMap F n r hr
+    (V := ConstantFinite.value (ULift.{u} (ZMod n)))
+    (AddEquiv.ulift.toAddMonoidHom.comp AddEquiv.ulift.toAddMonoidHom)
 
 /-- Its native adjoint is exactly the specified value homomorphism. -/
 theorem cyclicSectionMap_adjoint :
     ((constantAdjunction X).homEquiv _ _) (cyclicSectionMap F n r hr) =
-      cyclicSectionValues F n r hr := Equiv.apply_symm_apply _ _
+      cyclicSectionValues F n r hr :=
+  ((constantAdjunction X).homEquiv
+    (ConstantFinite.value (ULift.{u} (ZMod n))) F).apply_symm_apply
+      (cyclicSectionValues F n r hr)
 
 /-- The positive cyclic generator goes to the original chosen section. -/
 theorem cyclicSectionValues_one :
     cyclicSectionValues F n r hr (ULift.up (ULift.up (1 : ZMod n))) = r := by
-  simp only [cyclicSectionValues]
-  change (ZMod.lift n ⟨zmultiplesHom _ r, by
-    simpa only [zmultiplesHom_apply, natCast_zsmul] using hr⟩) (1 : ZMod n) = r
-  simpa only [Int.cast_one, zmultiplesHom_apply, one_zsmul] using
-    (ZMod.lift_coe n
-      ⟨zmultiplesHom _ r, by simpa only [zmultiplesHom_apply, natCast_zsmul] using hr⟩ 1)
+  exact AddCommGrpCat.cyclicSectionValues_one ((globalSections X).obj F) n r hr
+    (V := ConstantFinite.value (ULift.{u} (ZMod n)))
+    (AddEquiv.ulift.toAddMonoidHom.comp AddEquiv.ulift.toAddMonoidHom)
+    (ULift.up (ULift.up (1 : ZMod n))) rfl
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

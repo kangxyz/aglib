@@ -32,14 +32,12 @@ private theorem isIso_of_additive_comparison {A B C : AddCommGrpCat.{v}}
     (htransfer : Function.Bijective transfer)
     (h : ∀ x, target ((unit ≫ exchange) x) = transfer (source x)) :
     IsIso exchange := by
-  have ht : Function.Bijective (unit ≫ exchange) := by
-    constructor
-    · intro x y hxy
-      exact hsource.injective (htransfer.injective
-        ((h x).symm.trans ((congrArg target hxy).trans (h y))))
-    · intro y
-      obtain ⟨x, hx⟩ := (htransfer.comp hsource).surjective (target y)
-      exact ⟨x, htarget.injective ((h x).trans hx)⟩
+  have heq : target ∘ (unit ≫ exchange) = transfer ∘ source := funext h
+  have hcomp : Function.Bijective (target ∘ (unit ≫ exchange)) := by
+    rw [heq]
+    exact htransfer.comp hsource
+  have ht : Function.Bijective (unit ≫ exchange) :=
+    (htarget.of_comp_iff' (unit ≫ exchange)).mp hcomp
   have hi : IsIso (unit ≫ exchange) :=
     (ConcreteCategory.isIso_iff_bijective (unit ≫ exchange)).mpr ht
   exact (isIso_comp_left_iff unit exchange).mp hi
@@ -119,7 +117,7 @@ theorem higherBaseChangeMap_geometricStalk_isIso_of_localTransfers
       (relativeCohomologyTransfer.{u, e} ((inverseImage g').obj F) q
         (chartGeometricPointMap Ω ζ f' R' j' hζ))) :
     IsIso (((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).map
-      ((higherBaseChangeMap.{u, dX, dS, dX', dS'} f f' g g' h q).app F)) := by
+      ((higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} f f' g g' h q).app F)) := by
   let L := (higherDirectImage f q).obj F
   let sourceStalk : AddCommGrpCat.{u + 1} :=
     ((pointSmallEtale (ζ ≫ g)).sheafFiber (A := AddCommGrpCat.{u + 1})).obj L
@@ -133,7 +131,7 @@ theorem higherBaseChangeMap_geometricStalk_isIso_of_localTransfers
     (StalkInverseImage.stalkUnitNatIso g ζ).hom.app L
   let β : pulledBackStalk ⟶ targetStalk :=
     ((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).map
-      ((higherBaseChangeMap.{u, dX, dS, dX', dS'} f f' g g' h q).app F)
+      ((higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} f f' g g' h q).app F)
   let source : sourceStalk →+
       Sheaf.H.{e} ((inverseImage (pullback.snd (ζ ≫ g) f)).obj F) q :=
     chartGeometricCohomologyComparison.{u, w, s, e} Ω (ζ ≫ g) f R j hη F q

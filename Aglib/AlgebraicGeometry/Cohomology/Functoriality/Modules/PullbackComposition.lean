@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Modules.Open
 public import Aglib.AlgebraicGeometry.Modules.IsomorphismFunctors
+public import Aglib.AlgebraicGeometry.Modules.Pullback.Unit
 
 /-!
 # Geometric module pullback on cohomology along composites and equal morphisms
@@ -53,14 +54,8 @@ theorem pullbackPushforwardAdjunction_unit_comp (p : Y ⟶ X) (q : Z ⟶ Y) (M :
           ((Scheme.Modules.pullback q).obj ((Scheme.Modules.pullback p).obj M)) =
       (Scheme.Modules.pullbackPushforwardAdjunction (q ≫ p)).unit.app M ≫
         (Scheme.Modules.pushforward (q ≫ p)).map
-          ((Scheme.Modules.pullbackComp q p).inv.app M) := by
-  have h := unit_conjugateEquiv ((Scheme.Modules.pullbackPushforwardAdjunction p).comp
-      (Scheme.Modules.pullbackPushforwardAdjunction q))
-    (Scheme.Modules.pullbackPushforwardAdjunction (q ≫ p))
-    (Scheme.Modules.pullbackComp q p).inv M
-  rw [Scheme.Modules.conjugateEquiv_pullbackComp_inv, Adjunction.comp_unit_app] at h
-  rw [← Category.assoc]
-  exact h
+          ((Scheme.Modules.pullbackComp q p).inv.app M) :=
+  Scheme.Modules.pullbackPushforwardAdjunction_unit_comp p q M
 
 /-- **Pullback along a composite**: `q^* (p^* x) = (pullbackComp q p).inv ((q ≫ p)^* x)` on the
 original module cohomology. -/

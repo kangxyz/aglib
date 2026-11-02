@@ -51,3 +51,11 @@ near every point of its domain, or on every affine open inside its domain. No hy
 the scheme is used. Consumers are
 [square-zero kernels on every open](../Modules/Invertible/SquareZero/KernelOpens.lean) and the
 Picard tangent space.
+
+## Integral affine opens
+
+`IrreducibleComponents/IntegralOpen` proves
+`Scheme.exists_integral_affine_open_of_noetherian_reduced`: every nonempty
+reduced Noetherian scheme has an actual nonempty integral affine open. The
+general irreducible-component proof is shared by finite-stratification and
+finite module-image induction, with the original open inclusion retained.

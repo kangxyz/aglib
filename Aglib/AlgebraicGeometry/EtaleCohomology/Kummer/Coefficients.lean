@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Group.MultiplicativeGroup
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedCoefficients
+public import Aglib.CategoryTheory.Sites.SheafKernelComponents
 public import Mathlib.Algebra.Group.Equiv.TypeTags
 public import Mathlib.CategoryTheory.Abelian.Basic
 public import Mathlib.CategoryTheory.Abelian.Exact
@@ -186,11 +187,8 @@ theorem inclusion_app_injective (X : Scheme.{u}) (n : ℕ) (U : X.Etaleᵒᵖ) :
   exact (inclusion_apply X n U a).symm.trans
     ((congrArg (fun z => (unitsSections X U z).toMul) h).trans (inclusion_apply X n U b))
 
-instance inclusion_mono (X : Scheme.{u}) (n : ℕ) : Mono (inclusion X n) where
-  right_cancellation g h e := by
-    ext U a
-    apply inclusion_app_injective X n U
-    exact ConcreteCategory.congr_hom (congrArg (fun φ => φ.hom.app U) e) a
+instance inclusion_mono (X : Scheme.{u}) (n : ℕ) : Mono (inclusion X n) :=
+  CategoryTheory.Sheaf.mono_of_component_injective (inclusion X n) (inclusion_app_injective X n)
 
 theorem inclusion_power (X : Scheme.{u}) (n : ℕ) : inclusion X n ≫ power X n = 0 := by
   ext U a
@@ -229,41 +227,31 @@ theorem inclusion_naturality (X : Scheme.{u}) (n : ℕ) {U V : X.Etaleᵒᵖ}
 theorem kernel_condition_section (X : Scheme.{u}) (n : ℕ) {P : AbelianSheaf.{u, u + 1} X}
     (φ : P ⟶ gm X) (h : φ ≫ power X n = 0) (U : X.Etaleᵒᵖ) (a : P.obj.obj U) :
     (power X n).hom.app U (φ.hom.app U a) = 0 :=
-  ConcreteCategory.congr_hom (congrArg (fun q => q.hom.app U) h) a
+  CategoryTheory.Sheaf.componentKernel_condition (power X n) φ h U a
 
 /-- The actual universal lift into the root subsheaf. -/
 def kernelLift (X : Scheme.{u}) (n : ℕ) {P : AbelianSheaf.{u, u + 1} X}
-    (φ : P ⟶ gm X) (h : φ ≫ power X n = 0) : P ⟶ mu X n where
-  hom := {
-    app U := AddCommGrpCat.ofHom {
-      toFun a := rootSection X n U (φ.hom.app U a) (kernel_condition_section X n φ h U a)
-      map_zero' := by
-        apply inclusion_app_injective X n U
-        rw [inclusion_rootSection, map_zero, map_zero]
-      map_add' a b := by
-        apply inclusion_app_injective X n U
-        rw [inclusion_rootSection, map_add, map_add, inclusion_rootSection, inclusion_rootSection] }
-    naturality {U V} f := by
-      apply AddCommGrpCat.hom_ext
-      apply AddMonoidHom.ext
-      intro a
-      apply inclusion_app_injective X n V
-      change (inclusion X n).hom.app V (rootSection X n V _
-        (kernel_condition_section X n φ h V (P.obj.map f a))) =
-        (inclusion X n).hom.app V ((mu X n).obj.map f (rootSection X n U _
-          (kernel_condition_section X n φ h U a)))
-      rw [inclusion_rootSection, inclusion_naturality, inclusion_rootSection]
-      exact ConcreteCategory.congr_hom (φ.hom.naturality f) a }
+    (φ : P ⟶ gm X) (h : φ ≫ power X n = 0) : P ⟶ mu X n :=
+  CategoryTheory.Sheaf.componentKernelLift (inclusion X n) (power X n)
+    (inclusion_app_injective X n) (rootSection X n) (inclusion_rootSection X n) φ h
+
+/-- The universal lift retains its original literal root-section value. -/
+@[simp] theorem kernelLift_apply (X : Scheme.{u}) (n : ℕ) {P : AbelianSheaf.{u, u + 1} X}
+    (φ : P ⟶ gm X) (h : φ ≫ power X n = 0) (U : X.Etaleᵒᵖ) (a : P.obj.obj U) :
+    (kernelLift X n φ h).hom.app U a =
+      rootSection X n U (φ.hom.app U a) (kernel_condition_section X n φ h U a) := rfl
 
 @[simp] theorem kernelLift_inclusion (X : Scheme.{u}) (n : ℕ) {P : AbelianSheaf.{u, u + 1} X}
-    (φ : P ⟶ gm X) (h : φ ≫ power X n = 0) : kernelLift X n φ h ≫ inclusion X n = φ := by
-  ext U a
-  exact inclusion_rootSection X n U _ (kernel_condition_section X n φ h U a)
+    (φ : P ⟶ gm X) (h : φ ≫ power X n = 0) : kernelLift X n φ h ≫ inclusion X n = φ :=
+  CategoryTheory.Sheaf.componentKernelLift_fac (inclusion X n) (power X n)
+    (inclusion_app_injective X n) (rootSection X n) (inclusion_rootSection X n) φ h
 
 /-- The represented root sheaf is the categorical kernel of the actual power map. -/
 def kernelIsLimit (X : Scheme.{u}) (n : ℕ) :
     IsLimit (KernelFork.ofι (inclusion X n) (inclusion_power X n)) :=
-  KernelFork.IsLimit.ofι' _ _ (fun φ h => ⟨kernelLift X n φ h, kernelLift_inclusion X n φ h⟩)
+  CategoryTheory.Sheaf.componentKernelIsLimit (inclusion X n) (power X n)
+    (inclusion_app_injective X n) (rootSection X n) (inclusion_rootSection X n)
+    (inclusion_power X n)
 
 /-- The retained generic etale local-root theorem, Stacks 03PL. This is Epi
 in the actual small-etale category of abelian sheaves, not in schemes. -/
@@ -284,13 +272,9 @@ theorem sequence_shortExact (h : EtalePowerSurjectivity.{u}) (X : Scheme.{u}) (n
   let : Mono (sequence X n).f := inclusion_mono X n
   exact ⟨sequence_exact X n⟩
 
-theorem mu_killedBy (X : Scheme.{u}) (n : ℕ) : KilledBy n (mu X n) := by
-  ext U a
-  apply inclusion_app_injective X n U
-  change (inclusion X n).hom.app U (n • a) = (inclusion X n).hom.app U 0
-  rw [map_nsmul, map_zero]
-  exact ConcreteCategory.congr_hom
-    (congrArg (fun q => q.hom.app U) (inclusion_power X n)) a
+theorem mu_killedBy (X : Scheme.{u}) (n : ℕ) : KilledBy n (mu X n) :=
+  CategoryTheory.Sheaf.componentKernel_nsmul_id_eq_zero n (inclusion X n)
+    (inclusion_app_injective X n) (power X n) (inclusion_power X n) (fun _ _ => rfl)
 
 theorem mu_one_isZero (X : Scheme.{u}) : IsZero (mu X 1) := by
   apply (IsZero.iff_id_eq_zero _).mpr

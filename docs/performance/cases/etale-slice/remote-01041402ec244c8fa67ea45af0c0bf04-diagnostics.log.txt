@@ -1,0 +1,303 @@
+✔ [3277/3281] Built Aglib.AlgebraicGeometry.Modules.Locality.Exactness (5.2s)
+✔ [3278/3281] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorPushout (9.6s)
+✔ [3279/3281] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.NativeAdjunctionUnderlying (29s)
+✖ [3280/3281] Building Aglib.CategoryTheory.Topos.SlicePresentation (153s)
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:192:2: Type mismatch: After simplification, term
+  Eq.symm h
+ has type
+  𝟙 X ≫ (ShrinkHoms.equivalence C).inverse.map ((ShrinkHoms.equivalence C).functor.map f) = f
+but is expected to have type
+  (ShrinkHoms.equivalence C).inverse.map ((ShrinkHoms.equivalence C).functor.map f) = f
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  equivShrink ↦ 7
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:201:2: Type mismatch: After simplification, term
+  h
+ has type
+  (ShrinkHoms.equivalence C).functor.map ((ShrinkHoms.equivalence C).inverse.map f) ≫ 𝟙 Y = f
+but is expected to have type
+  (ShrinkHoms.equivalence C).functor.map ((ShrinkHoms.equivalence C).inverse.map f) = f
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  equivShrink ↦ 23
+  Shrink ↦ 1
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:236:9: unsolved goals
+C : Type u
+inst✝¹ : Category.{v, u} C
+inst✝ : LocallySmall.{w, v, u} C
+J : GrothendieckTopology C
+P : Sheaf J (Type w)
+eC : C ≌ ShrinkHoms.{u} C := ShrinkHoms.equivalence C
+J' : GrothendieckTopology (ShrinkHoms.{u} C) := eC.inverse.inducedTopology J
+eS : Sheaf J (Type w) ≌ Sheaf J' (Type w) := Equivalence.sheafCongr J J' eC (Type w)
+P' : Sheaf J' (Type w) := eS.functor.obj P
+down : Site P'.obj ⥤ Site P.obj := (Functor.Elements.precomp eC.inverse.op P.obj).op
+up : Site P.obj ⥤ Site P'.obj :=
+  { obj := fun a => mk P'.obj (eC.functor.obj ((projection P.obj).obj a)) (unop a).val,
+    map := fun {a b} f => homMk P'.obj (eC.functor.map ((projection P.obj).map f)) ⋯, map_id := ⋯, map_comp := ⋯ }
+a b : Site P'.obj
+f : a ⟶ b
+⊢ (projection P'.obj).map f =
+    𝟙 (eC.functor.obj (eC.inverse.obj ((projection P'.obj).obj a))) ≫ (projection P'.obj).map f
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:245:9: unsolved goals
+C : Type u
+inst✝¹ : Category.{v, u} C
+inst✝ : LocallySmall.{w, v, u} C
+J : GrothendieckTopology C
+P : Sheaf J (Type w)
+eC : C ≌ ShrinkHoms.{u} C := ShrinkHoms.equivalence C
+J' : GrothendieckTopology (ShrinkHoms.{u} C) := eC.inverse.inducedTopology J
+eS : Sheaf J (Type w) ≌ Sheaf J' (Type w) := Equivalence.sheafCongr J J' eC (Type w)
+P' : Sheaf J' (Type w) := eS.functor.obj P
+down : Site P'.obj ⥤ Site P.obj := (Functor.Elements.precomp eC.inverse.op P.obj).op
+up : Site P.obj ⥤ Site P'.obj :=
+  { obj := fun a => mk P'.obj (eC.functor.obj ((projection P.obj).obj a)) (unop a).val,
+    map := fun {a b} f => homMk P'.obj (eC.functor.map ((projection P.obj).map f)) ⋯, map_id := ⋯, map_comp := ⋯ }
+a b : Site P.obj
+f : a ⟶ b
+⊢ (projection P.obj).map f ≫ 𝟙 (eC.inverse.obj (eC.functor.obj ((projection P.obj).obj b))) = (projection P.obj).map f
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:252:39: unsolved goals
+C : Type u
+inst✝¹ : Category.{v, u} C
+inst✝ : LocallySmall.{w, v, u} C
+J : GrothendieckTopology C
+P : Sheaf J (Type w)
+eC : C ≌ ShrinkHoms.{u} C := ShrinkHoms.equivalence C
+J' : GrothendieckTopology (ShrinkHoms.{u} C) := eC.inverse.inducedTopology J
+eS : Sheaf J (Type w) ≌ Sheaf J' (Type w) := Equivalence.sheafCongr J J' eC (Type w)
+P' : Sheaf J' (Type w) := eS.functor.obj P
+down : Site P'.obj ⥤ Site P.obj := (Functor.Elements.precomp eC.inverse.op P.obj).op
+up : Site P.obj ⥤ Site P'.obj :=
+  { obj := fun a => mk P'.obj (eC.functor.obj ((projection P.obj).obj a)) (unop a).val,
+    map := fun {a b} f => homMk P'.obj (eC.functor.map ((projection P.obj).map f)) ⋯, map_id := ⋯, map_comp := ⋯ }
+a : Site P'.obj
+⊢ eC.inverse.map
+      ((equivShrink ((unop (unop a).obj).fromShrinkHoms ⟶ (unop (unop a).obj).fromShrinkHoms))
+        (𝟙 (unop (unop a).obj).fromShrinkHoms)) =
+    𝟙 (eC.inverse.obj (unop (unop a).obj))
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:242:39: This simp argument is unused:
+  Category.id_comp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Category.comp_id]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:251:21: This simp argument is unused:
+  Category.comp_id
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Category.id_comp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:311:4: Type mismatch: After simplification, term
+  (Subtype.prop x).app
+ has type
+  (ConcreteCategory.hom
+        (((Construction.overForget (Construction.selectedSizeTopology J P) (Construction.selectedSizedSheaf J P)).obj
+                ((Over.postEquiv P (Construction.selectedSizeSheafEquivalence J P)).functor.obj Y)).hom.app
+          (op
+            (unop
+                ((Functor.Elements.costructuredArrowYonedaEquivalence
+                          (Construction.selectedSizedSheaf J P).obj).functor.op.obj
+                  ((Construction.selectedElementSizeEquivalence J P).inverse.op.obj (op a)))).left)))
+      ↑x =
+    yonedaEquiv
+      (unop
+          ((Functor.Elements.costructuredArrowYonedaEquivalence
+                    (Construction.selectedSizedSheaf J P).obj).functor.op.obj
+            ((Construction.selectedElementSizeEquivalence J P).inverse.op.obj (op a)))).hom
+but is expected to have type
+  (ConcreteCategory.hom (Y.hom.hom.app (op ((projection P.obj).obj a)))) (OverArrows.val x) = (unop a).val
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:313:4: Type mismatch: After simplification, term
+  y.property
+ has type
+  (ConcreteCategory.hom (Y.hom.hom.app (op ((projection P.obj).obj a)))) ↑y = (unop a).val
+but is expected to have type
+  (ConcreteCategory.hom
+        (((Construction.overForget (Construction.selectedSizeTopology J P) (Construction.selectedSizedSheaf J P)).obj
+                ((Over.postEquiv P (Construction.selectedSizeSheafEquivalence J P)).functor.obj Y)).hom.app
+          (op
+            (unop
+                ((Functor.Elements.costructuredArrowYonedaEquivalence
+                          (Construction.selectedSizedSheaf J P).obj).functor.op.obj
+                  ((Construction.selectedElementSizeEquivalence J P).inverse.op.obj (op a)))).left)))
+      ↑y =
+    yonedaEquiv
+      (unop
+          ((Functor.Elements.costructuredArrowYonedaEquivalence
+                    (Construction.selectedSizedSheaf J P).obj).functor.op.obj
+            ((Construction.selectedElementSizeEquivalence J P).inverse.op.obj (op a)))).hom
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:323:2: 'change' tactic failed, pattern
+  (ConcreteCategory.hom
+        (Y.left.obj.map
+          ((ShrinkHoms.equivalence C).inverse.map
+              ((ShrinkHoms.equivalence C).functor.map ((projection P.obj).map f))).op))
+      (OverArrows.val x) =
+    (ConcreteCategory.hom (Y.left.obj.map ((projection P.obj).map f).op)) (OverArrows.val x)
+is not definitionally equal to target
+  ↑((fibreObjEquiv J P Y a) ((ConcreteCategory.hom (((elementFibreEquivalence J P).functor.obj Y).obj.map f.op)) x)) =
+    (ConcreteCategory.hom (Y.left.obj.map ((projection P.obj).map f).op)) ↑((fibreObjEquiv J P Y b) x)
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:329:0: Not a definitional equality: the left-hand side
+  ↑((fibreObjEquiv J P Z a) ((ConcreteCategory.hom (((elementFibreEquivalence J P).functor.map f).hom.app (op a))) x))
+is not definitionally equal to the right-hand side
+  (ConcreteCategory.hom ((Over.Hom.left f).hom.app (op ((projection P.obj).obj a)))) ↑((fibreObjEquiv J P Y a) x)
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:334:86: Type mismatch
+  rfl
+has type
+  ?m.105 = ?m.105
+but is expected to have type
+  ↑((fibreObjEquiv J P Z a) ((ConcreteCategory.hom (((elementFibreEquivalence J P).functor.map f).hom.app (op a))) x)) =
+    (ConcreteCategory.hom ((Over.Hom.left f).hom.app (op ((projection P.obj).obj a)))) ↑((fibreObjEquiv J P Y a) x)
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:579:4: Type mismatch: After simplification, term
+  productFibreEquiv J P H ((projection P.obj).obj a) (unop a).val
+ has type
+  { z // (ConcreteCategory.hom (prod.fst.hom.app (op ((projection P.obj).obj a)))) z = (unop a).val } ≃
+    H.obj.obj (op ((projection P.obj).obj a))
+but is expected to have type
+  { y //
+      (ConcreteCategory.hom ((prod.lift prod.fst (𝟙 (P ⨯ H)) ≫ prod.fst).hom.app (op ((projection P.obj).obj a)))) y =
+        (unop a).val } ≃
+    H.obj.obj (op ((projection P.obj).obj a))
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  getLimitCone ↦ 167
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:588:2: 'change' tactic failed, pattern
+  ((productSectionsEquiv J P H ((projection P.obj).obj a)) ↑((fibreObjEquiv J P ((Over.star P).obj H) a) z)).2 = ?m.120
+is not definitionally equal to target
+  (starFibreObjEquiv J P H a) z =
+    (ConcreteCategory.hom (prod.snd.hom.app (op ((projection P.obj).obj a))))
+      ↑((fibreObjEquiv J P ((Over.star P).obj H) a) z)
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:627:12: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ((Over.star ?X).map ?f).left
+in the target expression
+  Over.Hom.left ((Over.star P).map f) ≫ prod.snd = prod.snd ≫ f
+
+C : Type u
+inst✝¹ : Category.{v, u} C
+inst✝ : LocallySmall.{w, v, u} C
+J : GrothendieckTopology C
+P H H' : Sheaf J (Type w)
+f : H ⟶ H'
+a : (Site P.obj)ᵒᵖ
+x : ((Over.star P ⋙ (elementFibreEquivalence J P).functor).obj H).obj.obj a
+⊢ Over.Hom.left ((Over.star P).map f) ≫ prod.snd = prod.snd ≫ f
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    prod.snd
+  has type
+    @Quiver.Hom (Sheaf J (Type w)) (ObjectProperty.FullSubcategory.category (Presheaf.IsSheaf J)).toQuiver (P ⨯ H') H'
+  but is expected to have type
+    @Quiver.Hom (Sheaf J (Type w)) (ObjectProperty.FullSubcategory.category (Presheaf.IsSheaf J)).toQuiver
+      ((Over.star P).obj H').left H'
+  in the application
+    Over.Hom.left ((Over.star P).map f) ≫ prod.snd
+  
+  Note: The following definitions were not unfolded because their definition is not exposed:
+    getLimitCone ↦ 8
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:671:46: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?f ≫ 𝟙 ?m.390
+in the target expression
+  (elementFibreEquivalence J P).counitIso.hom.app ((elementRestriction J P).obj H) ≫
+      𝟙 ((elementRestriction J P).obj H) =
+    (elementFibreEquivalence J P).counitIso.hom.app ((elementRestriction J P).obj H)
+
+C : Type u
+inst✝¹ : Category.{v, u} C
+inst✝ : LocallySmall.{w, v, u} C
+J : GrothendieckTopology C
+P H : Sheaf J (Type w)
+hn :
+  (elementFibreEquivalence J P).functor.map
+        ((elementFibreEquivalence J P).inverse.map ((starFibreRestrictionIso J P).inv.app H)) ≫
+      (elementFibreEquivalence J P).counitIso.hom.app
+        ((elementFibreEquivalence J P).functor.obj ((Over.star P).obj H)) =
+    (elementFibreEquivalence J P).counitIso.hom.app ((elementRestriction J P).obj H) ≫
+      (starFibreRestrictionIso J P).inv.app H
+⊢ (elementFibreEquivalence J P).counitIso.hom.app ((elementRestriction J P).obj H) ≫
+      𝟙 ((elementRestriction J P).obj H) =
+    (elementFibreEquivalence J P).counitIso.hom.app ((elementRestriction J P).obj H)
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:651:8: (kernel) deterministic timeout
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:693:4: Type mismatch: After simplification, term
+  congrArg (fun f => (ConcreteCategory.hom (f.hom.app (op X))) y) (Over.w ((restrictionStarIso J P).hom.app H))
+ has type
+  (ConcreteCategory.hom
+        ((Over.Hom.left ((restrictionStarIso J P).hom.app H) ≫ prod.lift prod.fst (𝟙 (P ⨯ H)) ≫ prod.fst).hom.app
+          (op X)))
+      y =
+    (ConcreteCategory.hom (((elementRestriction J P ⋙ (elementFibreEquivalence J P).inverse).obj H).hom.hom.app (op X)))
+      y
+but is expected to have type
+  (ConcreteCategory.hom (prod.fst.hom.app (op X)))
+      ((ConcreteCategory.hom ((Over.Hom.left ((restrictionStarIso J P).hom.app H)).hom.app (op X))) y) =
+    p
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  getLimitCone ↦ 166
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:675:8: (kernel) unknown constant 'CategoryTheory.Topos.SlicePresentation.restrictionStarIso_map_counit'
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:763:8: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (sectionToGlobalPointEquiv ?J ?P ?F) ?t
+in the target expression
+  ?m.268 = ?m.269
+
+C : Type u
+inst✝¹ : Category.{v, u} C
+inst✝ : LocallySmall.{w, v, u} C
+J : GrothendieckTopology C
+P : Sheaf J (Type w)
+F : Sheaf (topology P.obj J) (Type w)
+t : Over.mk (𝟙 P) ⟶ (elementFibreEquivalence J P).inverse.obj F
+X : C
+p : P.obj.obj (op X)
+a : Site P.obj := mk P.obj X p
+u : (fun X => X) (((elementFibreEquivalence J P).functor.obj (Over.mk (𝟙 P))).obj.obj (op a)) :=
+  (ConcreteCategory.hom ((terminalFibreIso J P).inv.hom.app (op a))) PUnit.unit
+hu : ↑((fibreObjEquiv J P (Over.mk (𝟙 P)) a) u) = p
+z : (fun X => X)
+  (((elementFibreEquivalence J P).functor.obj ((elementFibreEquivalence J P).inverse.obj F)).obj.obj (op a)) :=
+  (ConcreteCategory.hom (((elementFibreEquivalence J P).functor.map t).hom.app (op a))) u
+hz :
+  ↑((fibreObjEquiv J P ((elementFibreEquivalence J P).inverse.obj F) a) z) =
+    (ConcreteCategory.hom ((Over.Hom.left t).hom.app (op X))) p
+⊢ ?m.268 = ?m.269
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:762:57: Application type mismatch: The argument
+  q
+has type
+  F.obj.obj (op a)
+but is expected to have type
+  ?m.281 p
+in the application
+  ⟨p, q⟩
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:803:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (sigmaObjEquiv ?J ?P ?F ?X)
+    ((ConcreteCategory.hom ((Over.Hom.left ((globalPointSectionEquiv ?J ?P ?F) ?s)).hom.app (op ?X))) ?p)
+in the target expression
+  (sigmaObjEquiv J P G (unop X))
+      ((ConcreteCategory.hom ((Over.Hom.left ((globalPointSectionEquiv J P G) (s ≫ f))).hom.app X)).toFun p) =
+    (sigmaObjEquiv J P G (unop X))
+      ((ConcreteCategory.hom
+            ((Over.Hom.left ((globalPointSectionEquiv J P F) s ≫ (elementFibreEquivalence J P).inverse.map f)).hom.app
+              X)).toFun
+        p)
+
+C : Type u
+inst✝¹ : Category.{v, u} C
+inst✝ : LocallySmall.{w, v, u} C
+J : GrothendieckTopology C
+P : Sheaf J (Type w)
+F G : Sheaf (topology P.obj J) (Type w)
+f : F ⟶ G
+s : GlobalPoint F
+X : Cᵒᵖ
+p : (Over.mk (𝟙 P)).left.obj.obj X
+⊢ (sigmaObjEquiv J P G (unop X))
+      ((ConcreteCategory.hom ((Over.Hom.left ((globalPointSectionEquiv J P G) (s ≫ f))).hom.app X)).toFun p) =
+    (sigmaObjEquiv J P G (unop X))
+      ((ConcreteCategory.hom
+            ((Over.Hom.left ((globalPointSectionEquiv J P F) s ≫ (elementFibreEquivalence J P).inverse.map f)).hom.app
+              X)).toFun
+        p)
+Some required targets logged failures:
+- Aglib.CategoryTheory.Topos.SlicePresentation
+error: build failed

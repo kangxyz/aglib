@@ -1,0 +1,123 @@
+{
+  "product": "Complete bounded PERFORMANCE case input for principal-selected maintained performance writer; no new benchmark/build/replay requested.",
+  "suggested_title": "Consume the original inferred equation before specializing component cancellation",
+  "question_and_mathematics": {
+    "target": "properModuleDerivedBaseChange_isIso_of_torsion_homology for the original moduleDerivedBaseChangeMap component",
+    "conditions": [
+      "Arbitrary Ring Λ:Type(u+1)",
+      "Four independent actual ModuleSheaf derived worlds",
+      "Given bounded-below K with internally torsion homology in every degree",
+      "Original proper Cartesian square, no extra geometric bound/common annihilator",
+      "Four proof-only Ab derived worlds chosen standard locally once per genuine category"
+    ],
+    "actual_argument": "Original underlying torsion comparison, original Ab proper base change at same U(K), exact original six-transformation mate cube, actual comparison isomorphisms, conservative underlying functor. No equality-reflection/injective-preservation assumption or arbitrary same-endpoint Iso."
+  },
+  "original_failure_family": {
+    "sources": [
+      "93b45985055582861a0aaef7be56f7406fd80ee2d6c9c7e72c889d4b4a789a69",
+      "facac44d58e36efeecc50e1f18adc37a75ed900bd6e3703cb921f7c47c987d64",
+      "4eaeb3d9a30da1e3eab8783af8fd741e455c2b54a8e4aafcc4ada2d697c1e553"
+    ],
+    "locations": [
+      "public theorem47:8",
+      "public theorem69:8",
+      "private pointwise theorem66:16"
+    ],
+    "evidence": "ORIGINAL_FAILURES.json",
+    "failed_approaches": [
+      "Concretecomponent cancellation in public proof",
+      "Generic whole-cube cancellation followed by concrete specialization",
+      "Private pointwise proof with Ab data variable, then localstandard public specialization"
+    ]
+  },
+  "diagnosis_progression": [
+    "Faithful proposition formation and each actual prerequisite proof value pass. Concrete cube cancellation and mapped cancellation fail; independent reflection does not.",
+    "Actual comparison IsIso values pass; supplying all facts or passing whole Iso objects still fails.",
+    "Controlled partial specialization passes categories/functors/comparisons fixed but fails at actual exchange values. Fixing module μ only is clean; actual Ab μ′ triggers failure even when all functors are explicitly supplied.",
+    "Complete two-category morphism assembly passes including actual Ab component; manually restated original pointwise cube value fails. Producer whole cube proof value passes.",
+    "Raw producer type has12nativeconstant functor heads, contradicting initial eta/record-head hypothesis. Optional incomplete module builders must not be read as mismatches.",
+    "Raw actual-vs-expected type pair firstdiff is a WEqualsLocallyBijective proof inside SheafOfModules.instAbelian under DPlus. Early/late standard-W type controls alter rawHDCbinders; attribute alone and explicit2projectiontyping do not close the value.",
+    "The exact original application checked against its own inferred proposition passes after normal header/API/visibility repairs. This distinguishes the expensive manual restatement from a cheap original inferred application on that concrete context.",
+    "Full R4 then passes when unannotated hcube is consumed by complete two-category component cancellation, with Ab component/endpoints inferred from that actual equation and every original mathematical premise discharged."
+  ],
+  "supported_reusable_method": [
+    "At this observed boundary, retain the producer equation at its actual inferred type instead of manually rebuilding the concrete pointwise equation. Use the original β as the lemma conclusion.",
+    "Prove complete cancellation and reflection once over variable categories, objects, arrows and functor. Feed the original inferred equation into the application so its middle component and endpoints determine the interface; discharge real native facts at that inferred type.",
+    "Place the completed generic proof in the existing framework owner and leave the Scheme proof as the thin instance. Do not add an endpoint-isomorphism replacement, desired-law record or extra model to evade conversion.",
+    "Use faithful binder formation, source-bound value controls and rawtype metadata to locate application/statement conversion. Normal theorem header/visibility/style failures are distinct from kernel failures.",
+    "When source context contains differing actual instance dictionaries, preserve original model data; rawsyntactic mismatch alone is not proof of inequivalence or unique compiler cause."
+  ],
+  "accepted_source_version": {
+    "full_frozen_source_sha256": "5d7d253d40622574dd66111024c0a67c388c238cc25f33d8cecd4019a3592111",
+    "frozen_full_pass": "remote-2e13005a9ced49f9957f5f02c7754e8a",
+    "reported_candidate_wall_seconds": 6.536038860678673,
+    "actual_inferred_P_control": "remote-a40be80199a34571b99e8626138a1a2c",
+    "inferred_P_wall_seconds": 4.761083,
+    "native_adoption": "adoption/inferred-equation-r4/CORRESPONDENCE.json",
+    "framework_move": "framework-placement/component-equation/CORRESPONDENCE.json"
+  },
+  "current_implementation": {
+    "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+    "source_sha256": {
+      "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean": "f2b0fba00d9c04af59cebfd655491a9af2084e0c9baf437e25ec48883efb9933",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean": "7f7ddd67dbab5b61f062332dc01e99b4d6c4a9c8d6531a465ab08f554bddf9f4",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperIsomorphism.lean": "c7fc6386705365d09ecef1f9d77b7422e6be02a0acbf1605e4e9068b171b16c5",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/Isomorphism.lean": "559bc5606e2ce95b2e2147832f0ab15a79318b18a7270f6e4ac361fb38eccfd3",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Diagram.lean": "0bda98be195f04a520fa1bd9a57444dce7d4202ed17ae056dacd8558ee59481e",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Independence.lean": "c9798072b668f24f658a1b1974ee54ca9d30aaa68bf33164186c030d041932ff",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SuppliedDirectImage.lean": "36119d57775328c33b1d1065fe508f85c9d49b7399a5b6eee276b870ff4b63f4",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/UnderlyingBaseChange.lean": "6a84bc472cb2a3b2841d27fdb753e907371fe633c7d0364fd288518b7a31afbf"
+    },
+    "generic_owner": "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean",
+    "generic_theorem": "CategoryTheory.isIso_of_component_equation",
+    "scheme_owner": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+    "framework_proof_literal_match": true,
+    "original_unit_theorem_unchanged": true,
+    "UnderlyingBaseChange6a84_unchanged": true,
+    "currentN_validation": "ChangedG0f2b0 passed ordinary currentN274bb882/sourcec9814, onefrontend3.286s. ThinR47f7d and remainingP6 chain await actualH1dependency settlement; no currentR4pass claimed."
+  },
+  "runtime_and_reproduction": {
+    "lean": "4.34.1",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "normal_budget": 200000,
+    "frozen_provider_source_sha256": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "profile": "Frozencandidate jobs2/threads4/Leanheap12800MiB/RSS32768MiB; initial native profiles are separately retained, not conflated.",
+    "reproduce": "Use retained exact source/request/hash and observed command in RUN_INDEX via the admitted broker-controlled phase; production uses ordinary currentN incremental target/consumer graph. No direct bypass or new replay.",
+    "outputs": "Every invoked source, fullstdout/stderr, exactargv, delivery/result, native receipt and source archive remains at indexed locators. New script revisions not executed remain explicitly unexecuted in original packets."
+  },
+  "source_metadata_products": [
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/RETURN.json",
+      "sha256": "6fce3ee1bf33a0cc98bd7ce38250947ef93c356b4a9c98743106557e4a50a34a"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/RETURN.json",
+      "sha256": "00a74b0d75e32cfa36d60d811fb38cdd847ac170d88991dd45ac7f6f8560547e"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/local-w-alignment/RETURN.json",
+      "sha256": "41dd58a90f9fe085bfcff1b2a74da7b1015da1014531a5fe5ea36ebc4b5d9da5"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/mixed-w-alignment/RETURN.json",
+      "sha256": "dbd9c1cb1bae533503ee9a1ecccb61d74b1cc91c0df5bc347fa3cc74a8deaaed"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/r4-dictionary-source-alignment/RETURN.md",
+      "sha256": "c0f14e2c4b2ef232d25b91361c6c5786c2e2fa61db54c74cc55496c4c27da11d"
+    }
+  ],
+  "trust_and_scope_limits": [
+    "All diagnostics and final source retained standard budgets/options and existing native linter/trust controls; no sorry/axioms/native_decide/suppression/replay/client chain.",
+    "Conditional probes do not supply production hypotheses. Final5d fulltheorem discharges all original facts and has no extra assumedcube/IsIso law.",
+    "No unique kernel reduction-pair attribution, global performance claim or matched speedup ratio is supported. Diagnostic wall times and prior differing profiles are not a controlled benchmark.",
+    "Frozen success remains separate from currentN integration; independent affected mathematical review and existing taskfinal predicates are principal-owned.",
+    "No globalEtale/sixoperations/torsiontarget/composition/gamma/Nagata/established closure is asserted.",
+    "Approval rejections before process start consumed no compiler invocation and are not compile failures; fresh directhuman authorizations later allowed the same normal mechanism."
+  ],
+  "consumer": "Principal and its future support/performance writer; author retains code/proof/compiler repairs. Packet is technical source/evidence input, not a maintained documentation edit or mathematical status verdict.",
+  "timestamp_utc": "2026-10-27T18:01:58.837117+00:00",
+  "framework_current_native_evidence": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-module-proper-exchange-staging/expanded-p6/framework-placement/component-equation/NATIVE_PASS.json"
+}

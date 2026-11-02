@@ -30,3 +30,29 @@ it supplies no rank-to-cardinality theorem. [Birational](Birational.lean) constr
 `Scheme.finiteBirationalIso` with the supplied finite map as its hom, assuming
 both schemes integral, actual target `NormalStalks`, and invertibility over a
 specified nonempty open. It assumes neither source normality nor dimension.
+
+[ClosedPointFibres](ClosedPointFibres.lean), imported as `Aglib.AlgebraicGeometry.Morphisms.Finite.ClosedPointFibres`, proves `LocallyQuasiFinite.of_finite_preimage_singleton_of_isClosed_of_jacobsonSpace`: a morphism locally of finite type from a Jacobson scheme whose fibres through closed points are finite is locally quasi-finite, through the open quasi-finite locus of Mathlib's Zariski main theorem; `IsFinite.of_isProper_of_finite_preimage_singleton_of_isClosed_of_jacobsonSpace` gives finiteness for proper morphisms. Fibres over non-closed points are not assumed finite, and no Noetherian or quasi-compactness hypothesis is imposed; schemes locally of finite type over a field are Jacobson. The topological input `JacobsonSpace.finite_of_isClosed_of_finite_inter_closedPoints` (a closed subset of a Jacobson space with finitely many closed points is finite) is stated here for its present consumer, [Group/MultiplicationSurjective](../../Group/MultiplicationSurjective.lean).
+
+## Actual generic radicial and finite-etale factorization
+
+[GenericSubalgebraSquare](GenericSubalgebraSquare.lean) identifies the two
+original generic pullback squares for the canonical finite intermediate
+subalgebra. [GenericRadicialEtale](GenericRadicialEtale.lean) spreads its actual
+radicial and etale maps simultaneously over an affine generic neighborhood.
+Its finite radicial-spreading prerequisite is the focused
+`UniversallyInjective/GenericFinite` constructor.
+
+[GenericRadicialEtaleAffine](GenericRadicialEtaleAffine.lean) applies this to
+an actual finite map from a reduced affine scheme to an integral Noetherian
+affine scheme. It constructs actual finite-surjective-radicial `r` and
+finite-etale `g` with the literal equation `r ≫ g = pullback.snd f U.ι`.
+[GenericPreimageOpen](GenericPreimageOpen.lean) shrinks a finite injective
+dominant map so the entire source inverse image lies in a prescribed generic
+source open; this last statement does not require Noetherianity.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [Birational/NormalLocus](Birational/NormalLocus.lean)
+- [Codimension](Codimension.lean)

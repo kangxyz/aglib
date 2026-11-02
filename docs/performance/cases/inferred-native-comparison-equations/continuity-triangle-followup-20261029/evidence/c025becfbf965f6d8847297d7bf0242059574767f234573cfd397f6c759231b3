@@ -1,0 +1,37 @@
+✔ [3468/3479] Built Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.ConeExtension (4.8s)
+✔ [3469/3479] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramLimitFunctor (149s)
+✔ [3470/3479] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramConeNaturality (6.1s)
+✔ [3471/3479] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramLimitSections (6.7s)
+✔ [3472/3479] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramConeSquares (6.1s)
+✔ [3473/3479] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramShortExact (8.1s)
+✔ [3474/3479] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramAdjointCocone (21s)
+✔ [3475/3479] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SquareCoefficientAdjoint (8.2s)
+✖ [3476/3479] Building Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramDirectImageTriangleComp (16s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-556fecfbf1ef45c7931df903bbe2d1b9/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.lean:52:32: This simp argument is unused:
+  eqToHom_app
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [NatTrans.comp_app, Functor.whiskerLeft_app, Functor.whiskerRight_app, Functor.associator_hom_app,
+    eqToHom_refl, Category.id_comp, Category.comp_id, Category.assoc] at h ⊢
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.lean:53:22: This simp argument is unused:
+  Category.assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [NatTrans.comp_app, Functor.whiskerLeft_app, Functor.whiskerRight_app, Functor.associator_hom_app,
+    eqToHom_app, eqToHom_refl, Category.id_comp, Category.comp_id] at h ⊢
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.lean:98:32: This simp argument is unused:
+  Functor.whiskerLeft_app
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [NatTrans.comp_app, Functor.whiskerRight_app, Functor.associator_hom_app, Category.id_comp] at hv
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3479/3479] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackSectionsBase (235s)
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramDirectImageTriangleComp
+error: build failed

@@ -173,3 +173,9 @@ local. [LocalTargetResidue](LocalTargetResidue.lean) and
 local and prime-ideal residue maps. These interfaces preserve the chosen
 coefficient map in the [proper geometric-local lifting theorem](../../AlgebraicGeometry/Morphisms/FiniteEtale/ProperGeometricBaseChange.lean)
 and the [general proper henselian comparison](../../AlgebraicGeometry/Morphisms/FiniteEtale/ProperHenselian/README.md).
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [StrictHenselization/RegularParameter](StrictHenselization/RegularParameter.lean)

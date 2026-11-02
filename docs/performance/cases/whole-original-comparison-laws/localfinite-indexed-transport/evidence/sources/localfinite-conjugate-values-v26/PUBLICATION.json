@@ -1,0 +1,10 @@
+{
+  "time_utc": "2026-10-30T09:42:32.298565+00:00",
+  "head": "3ab570353d8ccfb0db62b01300f7be9a79ec44a8",
+  "source_sha256": {
+    "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean": "aa3d6ef9922cf4ed7e2ebff5852afb1380faf579e60ede4663587069630474e8",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean": "f656cc8ca88d909b0fc911fb8c77af8c7c87d9a09932a2b73d9fbdf1675af831"
+  },
+  "guards": "All52oldown before/fixed+newlowerabsence+4providers+HEAD matched; Rootexactnewpath grant andcoordinator exact2 lease OPEN",
+  "CPP": "pending newlower+native ordinaryLocalFiniteroot, no separate lower/diagnostic/review gate"
+}

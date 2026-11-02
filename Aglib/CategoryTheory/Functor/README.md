@@ -31,6 +31,13 @@ components and `Aut.autMulEquivOfIso`.
 comparisons and objectwise coordinate isomorphisms. Its shared compatibility
 predicate preserves the displayed composites and separate category universes.
 
+[CoefficientSquare](CoefficientSquare.lean) assembles an ordinary coefficient
+square on the values of one functor into abelian groups and one indexed
+object/value family. Equality transport is derived from that same family;
+the original elementary composition and coefficient-naturality equations
+then give the complete value square. The native small-etale H1 coefficient
+comparison supplies its original values to this construction.
+
 [ComparisonPasting](ComparisonPasting.lean) constructs one comparison from a
 section transformation and a coefficient transformation. Its whole composition
 and transport laws give a `CommSq` from the original whole unit and relative
@@ -46,3 +53,92 @@ constructor; the component views retain their original factors.
 composition comparisons on a complete cube before taking components. They
 are used by the scalar-forgetting derived mate cube; `CompositionSquare`
 retains the corresponding original two-dimensional equations.
+
+[NatTrans/UnitInsertion](NatTrans/UnitInsertion.lean) constructs the complete
+transformation inserting an original target unit into the same functor
+composite. Its whole-value and component equations retain the two original
+factors. The Godement pullback-pushforward unit is a current consumer.
+
+[ComparisonPasting/ExchangeInterchange](ComparisonPasting/ExchangeInterchange.lean)
+proves the complete noninvertible exchange rectangle from its original
+pastings, equality transports and comparison isomorphisms. Relative etale
+chart exchange uses this whole argument before evaluating components.
+[ComparisonPasting/LocalizationVertices](ComparisonPasting/LocalizationVertices.lean)
+constructs the whole natural isomorphism from two original localization
+factors and proves its unit and counit values. Bounded-below and unbounded
+localization specialize it separately, retaining their own categories and
+original connecting maps.
+
+## Additional source entry points
+
+- [CartesianImageNaturality](CartesianImageNaturality.lean)
+- [ChosenImageComparison](ChosenImageComparison.lean)
+- [ChosenLeftUnit](ChosenLeftUnit.lean)
+- [ChosenRightUnit](ChosenRightUnit.lean)
+- [CompositionAssociativityTransfer](CompositionAssociativityTransfer.lean)
+- [CompositionChoice](CompositionChoice.lean)
+- [CompositionExchangeIso](CompositionExchangeIso.lean)
+- [CompositionExchangeTransport](CompositionExchangeTransport.lean)
+- [CompositionFamilySquare](CompositionFamilySquare.lean)
+- [CompositionIdentityNormalization](CompositionIdentityNormalization.lean)
+- [CompositionIsoNaturality](CompositionIsoNaturality.lean)
+- [CompositionToTargetTransport](CompositionToTargetTransport.lean)
+- [FaithfulComposition](FaithfulComposition.lean)
+- [IdentitySourceExpansion](IdentitySourceExpansion.lean)
+- [IdentitySourceRestriction](IdentitySourceRestriction.lean)
+- [ImageCartesianCompositionIso](ImageCartesianCompositionIso.lean)
+- [ImageCartesianComposition](ImageCartesianComposition.lean)
+- [ImageComparisonRestrictionCongruence](ImageComparisonRestrictionCongruence.lean)
+- [ImageComparisonRestriction](ImageComparisonRestriction.lean)
+- [ImageCompositionAssembly](ImageCompositionAssembly.lean)
+- [ImageCompositionExchangeActual](ImageCompositionExchangeActual.lean)
+- [ImageCompositionExchangeFaces](ImageCompositionExchangeFaces.lean)
+- [ImageCompositionExchangeRestriction](ImageCompositionExchangeRestriction.lean)
+- [ImageCompositionExchange](ImageCompositionExchange.lean)
+- [ImageCompositionIsoFormula](ImageCompositionIsoFormula.lean)
+- [ImageCompositionMap](ImageCompositionMap.lean)
+- [ImageCompositionPrewhisker](ImageCompositionPrewhisker.lean)
+- [ImageCompositionRefinement](ImageCompositionRefinement.lean)
+- [ImageCompositionRestriction](ImageCompositionRestriction.lean)
+- [ImageCompositionTarget](ImageCompositionTarget.lean)
+- [ImageCompositionToTargetAmbient](ImageCompositionToTargetAmbient.lean)
+- [ImageCompositionToTargetComponents](ImageCompositionToTargetComponents.lean)
+- [ImageCompositionToTargetFaces](ImageCompositionToTargetFaces.lean)
+- [ImageCompositionToTargetRestriction](ImageCompositionToTargetRestriction.lean)
+- [ImageCompositionToTarget](ImageCompositionToTarget.lean)
+- [ImageCompositionTransport](ImageCompositionTransport.lean)
+- [ImageFirstRefinement](ImageFirstRefinement.lean)
+- [ImageFirstTargetRefinement](ImageFirstTargetRefinement.lean)
+- [ImageIdentityContraction](ImageIdentityContraction.lean)
+- [ImageInterchangeAssembly](ImageInterchangeAssembly.lean)
+- [ImageInterchangeAssociativity](ImageInterchangeAssociativity.lean)
+- [ImageInterchangeHorizontal](ImageInterchangeHorizontal.lean)
+- [ImageLeftRoute](ImageLeftRoute.lean)
+- [ImageLeftUnitAssembly](ImageLeftUnitAssembly.lean)
+- [ImageLeftUnitEquation](ImageLeftUnitEquation.lean)
+- [ImageRightOpenTransport](ImageRightOpenTransport.lean)
+- [ImageRightRealization](ImageRightRealization.lean)
+- [ImageRightRoute](ImageRightRoute.lean)
+- [ImageRightUnitComparison](ImageRightUnitComparison.lean)
+- [ImageRightUnitIdentity](ImageRightUnitIdentity.lean)
+- [ImageRightUnitMiddle](ImageRightUnitMiddle.lean)
+- [ImageRightUnitOpen](ImageRightUnitOpen.lean)
+- [ImageRightUnitRestriction](ImageRightUnitRestriction.lean)
+- [ImageRightUnitStructural](ImageRightUnitStructural.lean)
+- [ImageRightUnit](ImageRightUnit.lean)
+- [ImageSourceIdentity](ImageSourceIdentity.lean)
+- [ImageStructuralRectangle](ImageStructuralRectangle.lean)
+- [ImageTargetRefinement](ImageTargetRefinement.lean)
+- [ImageTripleCompositionPredicate](ImageTripleCompositionPredicate.lean)
+- [ImageTripleComposition](ImageTripleComposition.lean)
+- [ImageUnitCompositionFormula](ImageUnitCompositionFormula.lean)
+- [ImageUnitHorizontal](ImageUnitHorizontal.lean)
+- [ImageUnitRestriction](ImageUnitRestriction.lean)
+- [IsoSquarePostcompose](IsoSquarePostcompose.lean)
+- [OpenCompositionCoherence](OpenCompositionCoherence.lean)
+- [OpenCompositionPost](OpenCompositionPost.lean)
+- [RightUnitOfAssociativity](RightUnitOfAssociativity.lean)
+- [TargetExchangeNormalization](TargetExchangeNormalization.lean)
+- [TargetExchangePostcomp](TargetExchangePostcomp.lean)
+- [TargetIdentityExchange](TargetIdentityExchange.lean)
+- [TargetUnitSquare](TargetUnitSquare.lean)

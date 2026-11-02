@@ -1,0 +1,22 @@
+{
+  "SOURCE": "1f0ab1175ab2b027f33b80f395cf249591065e0f226734a911f018918fe89952",
+  "critical_source_count": 15,
+  "drift": [],
+  "sources": {
+    "Aglib/CategoryTheory/Sites/Representable/SectionComparison.lean": "17edca723c7c4e97d7bd493f97d7d96ed391b6fe5e13638c470f566c01db74f7",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection/Transport.lean": "a1fb5123c6bbf273d62feff730e3e788abbab1e3615b3bc1afe20ddaf8b5a938",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean": "7633e1a279c7b0b61ff16f2d8cc5a4fc967a55b0084a56b9307298cb87c0d295",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/FiniteLocallyConstant/TriangleCoherence.lean": "3f4c7dcf093fc0c03838fbe9aa5c24fdb42903ddbc1e1d2d6ee49c088fc2c226",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/BoundaryNaturality.lean": "f9aed268f662a5d2486ed59dabfc5c9da56258c9e4eefcd90dbe6faa9d68e214",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/KummerFamilyValues.lean": "451c01650bf736a429d57074a957b0becba274ad4e3279768256113c0d144152",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/CoefficientBaseChange.lean": "0d1e4eac2ef820a22dc490a1f60e74448370e56c348f719324e1c6f2bf182aa6",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/Basic.lean": "a96427fb0f37e60d35ae4e3567db13b915dd83c8f27564c92a0707120cb05781",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/Pullback.lean": "607722a4b520bb733a67018cc85ebac43081eb784194b79894093a418df422b5",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Pullback.lean": "61895cf04e779cd4b0d7b7ba685ab189577175a7f6391084d3c7808ff4f67500",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/BaseChangeMap.lean": "92334fb01cc9af91776313ff4d270c2e3aa2c69a616037ac3db2e9ffc708ef7a",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection.lean": "8856b0f8b5ba12512ef628a1d6fe4cfa2b0d7fcd041563cf3989bc316b7a74db",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackCoherence.lean": "600a3a8036f443038c4a5fc0b1c20d26b83ac3710572323f4f06dd1986082899",
+    "Aglib/CategoryTheory/Sites/Representable/SectionComparisonValues.lean": "4ba68c21bc0b2da297849ca121d5c0e122e60a2c2d6507a94b0b0c22ba0bf356",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean": "72f3cf29f5074edace4ad239c05f3571488c92e4c8db6d665f943decfc11ab3c"
+  }
+}

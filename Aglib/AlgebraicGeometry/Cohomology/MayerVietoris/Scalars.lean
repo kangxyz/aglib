@@ -59,7 +59,7 @@ def moduleHPrimeTopLinearEquivOfHom (n : ℕ) :
   intro a x
   exact sheafHPrimeTopAddEquiv_naturality X (moduleScalarOfGlobal X M (α a)) n x
 
-/-- The signed native Mayer–Vietoris connecting map, retaining the structural scalars. -/
+/-- The unsigned native Mayer–Vietoris connecting map, retaining the structural scalars. -/
 def moduleMayerVietorisDelta (U V : X.Opens) (n : ℕ) :
     (moduleHPrimePresheaf X α M n).obj (op (U ⊓ V)) ⟶
       (moduleHPrimePresheaf X α M (n + 1)).obj (op (U ⊔ V)) := by

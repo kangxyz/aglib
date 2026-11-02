@@ -1,0 +1,33 @@
+{
+  "actual_run": "remote-443ee638fb9841beb2914cfa749af04f",
+  "source_content_sha256": "c07d541986f51ebade660d0fd5e15ab0abc23e50378b02782fda861e002bde31",
+  "source_receipt_sha256": "7e8d26bb24af308b6be54c1af613a115a2de221f8547e5d673b25706cde3e5fd",
+  "capture_utc": "2026-10-29T00:31:36.035955+00:00",
+  "result": "closed exit0,2 actual frontends2passed,no diagnostics,no drift",
+  "artifacts": [
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-443ee638fb9841beb2914cfa749af04f/receipt.json",
+      "archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/A443ee638-SOURCEc07d/receipt.json",
+      "bytes": 12912,
+      "sha256": "cb925e5b3987d65c9468ae7aff8eb37e31ac765624505747a752bc8414986721"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-443ee638fb9841beb2914cfa749af04f/build.log",
+      "archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/A443ee638-SOURCEc07d/build.log",
+      "bytes": 248,
+      "sha256": "e03864cb3e1b19f25a96054ad4648c616bce9f30cee961ce35e17fb783b913d3"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-443ee638fb9841beb2914cfa749af04f/compiler-events.jsonl",
+      "archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/A443ee638-SOURCEc07d/compiler-events.jsonl",
+      "bytes": 4917,
+      "sha256": "4eb49359cdea80513717484d3e02cc41a6f3eeca2b6ecadfeea7840e9434d666"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/recovery-proper-injective-repair1-443ee638.json",
+      "archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/A443ee638-SOURCEc07d/recovery-proper-injective-repair1-443ee638.json",
+      "bytes": 1116251,
+      "sha256": "7e8d26bb24af308b6be54c1af613a115a2de221f8547e5d673b25706cde3e5fd"
+    }
+  ]
+}

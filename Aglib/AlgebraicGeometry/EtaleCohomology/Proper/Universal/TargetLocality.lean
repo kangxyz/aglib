@@ -87,7 +87,7 @@ private theorem originalExchange_inverseImage_chart_isIso
     (hChart : boundedBaseChange n (pullback.fst U.hom f))
     (F : AbelianSheaf.{u, u + 1} X) (hF : n • 𝟙 F = 0) (q : ℕ) :
     IsIso ((inverseImage ((siteBaseChange g).obj U).hom).map
-      ((higherBaseChangeMap.{u, dX, dS, dX', dS'} f f' g g' H.w.symm q).app F)) := by
+      ((higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} f f' g g' H.w.symm q).app F)) := by
   let V : S'.Etale := (siteBaseChange g).obj U
   let : HasDerivedCategory.{dU}
       (AbelianSheaf.{u, u + 1} ((𝟭 Scheme.{u}).obj U.left)) := hDU
@@ -115,24 +115,29 @@ private theorem originalExchange_inverseImage_chart_isIso
     relative_pullback_of_pasting f f' g g' U.hom V.hom fU fV piU piV b r H HU HV hb hr hR
   have hG : n • 𝟙 ((inverseImage piU).obj F) = 0 :=
     killed_functor_obj (inverseImage piU) n F hF
-  have : IsIso ((higherBaseChangeMap.{u, dZU, dU, dZV, dV}
+  have : IsIso ((higherBaseChangeMapFromDerived.{u, dZU, dU, dZV, dV}
     fU fV b r hR q).app ((inverseImage piU).obj F)) :=
     higherBaseChangeMap_isIso_of_boundedExchange.{u, dZU, dU, dZV, dV} fU fV b r hR n
       (hChart fV b r HR) ((inverseImage piU).obj F) hG q
   have : Etale U.hom := U.prop
   have : Etale V.hom := V.prop
-  have hβU : IsIso ((higherBaseChangeMap.{u, dX, dS, dZU, dU} f fU U.hom piU hU q).app F) := by
-    let : IsIso (higherBaseChangeMap.{u, dX, dS, dZU, dU} f fU U.hom piU hU q) :=
-      higherBaseChangeMap_etale_isIso.{u, dX, dS, dZU, dU} f U.hom q
-    exact isIso_component_of_whole (higherBaseChangeMap.{u, dX, dS, dZU, dU} f fU U.hom piU hU q) F
+  have hβU : IsIso
+      ((higherBaseChangeMapFromDerived.{u, dX, dS, dZU, dU} f fU U.hom piU hU q).app F) := by
+    let : IsIso (higherBaseChangeMapFromDerived.{u, dX, dS, dZU, dU} f fU U.hom piU hU q) :=
+      by simpa only [higherBaseChangeMapFromDerived_eq] using
+        (higherBaseChangeMap_etale_isIso.{u} f U.hom q)
+    exact isIso_component_of_whole
+      (higherBaseChangeMapFromDerived.{u, dX, dS, dZU, dU} f fU U.hom piU hU q) F
   have hβV : IsIso
-      ((higherBaseChangeMap.{u, dX', dS', dZV, dV}
+      ((higherBaseChangeMapFromDerived.{u, dX', dS', dZV, dV}
         f' fV V.hom piV hV q).app ((inverseImage g').obj F)) := by
-    let : IsIso (higherBaseChangeMap.{u, dX', dS', dZV, dV} f' fV V.hom piV hV q) :=
-      higherBaseChangeMap_etale_isIso.{u, dX', dS', dZV, dV} f' V.hom q
-    exact isIso_component_of_whole (higherBaseChangeMap.{u, dX', dS', dZV, dV} f' fV V.hom piV hV q)
+    let : IsIso (higherBaseChangeMapFromDerived.{u, dX', dS', dZV, dV} f' fV V.hom piV hV q) :=
+      by simpa only [higherBaseChangeMapFromDerived_eq] using
+        (higherBaseChangeMap_etale_isIso.{u} f' V.hom q)
+    exact isIso_component_of_whole
+      (higherBaseChangeMapFromDerived.{u, dX', dS', dZV, dV} f' fV V.hom piV hV q)
       ((inverseImage g').obj F)
-  exact higherBaseChangeMap_inverseImage_isIso_of_chartRelative.{u, dX, dS, dX', dS',
+  exact higherBaseChangeMapFromDerived_inverseImage_isIso_of_chartRelative.{u, dX, dS, dX', dS',
       dZU, dU, dZV, dV}
     f f' g g' H.w.symm fU fV U.hom V.hom piU piV b r hU hV hb hr hR q F
 
@@ -149,9 +154,9 @@ private theorem originalExchange_geometricStalk_isIso_of_chart
     {Ω : Type u} [Field Ω] [IsSepClosed Ω] (ζ : Spec (.of Ω) ⟶ S')
     (p : Over.mk (ζ ≫ g) ⟶ (Scheme.Etale.forget S).obj U) :
     IsIso (((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).map
-      ((higherBaseChangeMap.{u, dX, dS, dX', dS'} f f' g g' H.w.symm q).app F)) := by
+      ((higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} f f' g g' H.w.symm q).app F)) := by
   let V : S'.Etale := (siteBaseChange g).obj U
-  let β := (higherBaseChangeMap.{u, dX, dS, dX', dS'} f f' g g' H.w.symm q).app F
+  let β := (higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} f f' g g' H.w.symm q).app F
   have hβ : IsIso ((inverseImage V.hom).map β) :=
     originalExchange_inverseImage_chart_isIso.{u, dX, dS, dX', dS',
       u + 2, u + 2, u + 2, u + 2} n f f' g g' H U hChart F hF q
@@ -190,7 +195,7 @@ private theorem originalExchange_geometricStalk_isIso_of_etaleArrow
     {Ω : Type u} [Field Ω] [IsSepClosed Ω] (ζ : Spec (.of Ω) ⟶ S')
     (t : Spec (.of Ω) ⟶ T) (ht : t ≫ j = ζ ≫ g) :
     IsIso (((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).map
-      ((higherBaseChangeMap.{u, dX, dS, dX', dS'} f f' g g' H.w.symm q).app F)) := by
+      ((higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} f f' g g' H.w.symm q).app F)) := by
   let U : S.Etale := Scheme.Etale.mk j
   have hj : U.hom = j := rfl
   have hChartU : boundedBaseChange n (pullback.fst U.hom f) :=
@@ -214,7 +219,7 @@ private theorem originalExchange_isIso_of_proper_affineTargets
     (f : X ⟶ S) [IsProper f] (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
     (H : IsPullback g' f' f g)
     (F : AbelianSheaf.{u, u + 1} X) (hF : n • 𝟙 F = 0) (q : ℕ) :
-    IsIso ((higherBaseChangeMap.{u, dX, dS, dX', dS'} f f' g g' H.w.symm q).app F) := by
+    IsIso ((higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} f f' g g' H.w.symm q).app F) := by
   apply StalkUniverse.isIso_of_all_original_fibrewiseClosed_geometricStalks (𝟙 S')
   intro Ω _ _ ζ _
   obtain ⟨i, φ, hη⟩ := Finite.exists_affineOpenCover_point_factorization (ζ ≫ g)
@@ -240,7 +245,7 @@ private theorem originalExchange_isIso_of_proper_affineTargets_actual
     (F : AbelianSheaf.{u, u + 1} X) (hF : n • 𝟙 F = 0) (q : ℕ)
     {β : (inverseImage g).obj ((higherDirectImage f q).obj F) ⟶
       (higherDirectImage f' q).obj ((inverseImage g').obj F)}
-    (hβ : β = (higherBaseChangeMap.{u, dX, dS, dX', dS'} f f' g g' H.w.symm q).app F) :
+    (hβ : β = (higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} f f' g g' H.w.symm q).app F) :
     IsIso β := by
   subst β
   exact originalExchange_isIso_of_proper_affineTargets.{u, dX, dS, dX', dS'}
@@ -254,14 +259,16 @@ private theorem boundedExchange_of_proper_affineTargets
     (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X) (H : IsPullback g' f' f g) :
     boundedExchange n f f' g g' H.w.symm := by
   intro F hF q
+  let hDX := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X)
+  let hDS := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S)
+  let hDX' := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X')
+  let hDS' := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S')
   refine @originalExchange_isIso_of_proper_affineTargets_actual.{u, u + 2, u + 2, u + 2, u + 2}
-    X S X' S'
-    (HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X))
-    (HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S))
-    (HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X'))
-    (HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S'))
+    X S X' S' hDX hDS hDX' hDS'
     n hAffine f inferInstance f' g g' H F hF q _ ?_
-  rfl
+  exact (NatTrans.congr_app
+    (@higherBaseChangeMapFromDerived_eq.{u, u + 2, u + 2, u + 2, u + 2}
+      X S X' S' hDX hDS hDX' hDS' f f' g g' H.w.symm q) F).symm
 
 /-- Actual bounded proper exchange over every spectrum supplies the original
 bounded proper exchange over every scheme. No global finiteness assumption

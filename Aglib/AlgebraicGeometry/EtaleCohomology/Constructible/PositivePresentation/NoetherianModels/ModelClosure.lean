@@ -36,10 +36,9 @@ variable {I : Type u} [SmallCategory I]
 
 /-- Actual model isomorphisms compose with original coefficient isomorphisms. -/
 instance hasStageModel_closedIso :
-    (HasStageModel X c n).IsClosedUnderIsomorphisms where
-  of_iso e hA i₀ := by
-    obtain ⟨i, q, M, hM, ⟨eM⟩⟩ := hA i₀
-    exact ⟨i, q, M, hM, ⟨eM ≪≫ e⟩⟩
+    (HasStageModel X c n).IsClosedUnderIsomorphisms := by
+  unfold HasStageModel
+  infer_instance
 
 variable [IsFiltered I]
   [∀ {i j} (q : i ⟶ j), IsAffineHom (X.map q).unop] (hc : IsColimit c)
@@ -50,24 +49,28 @@ canonical stage model, above every specified original base stage. -/
 theorem hasStageModel_of_finiteColimit {J : Type (u + 1)} [SmallCategory J]
     [FinCategory J] {A : BoundedPresentation.Coefficient c.pt.unop n}
     (p : (HasStageModel X c n).ColimitOfShape J A) : HasStageModel X c n A := by
-  classical
-  intro i₀
-  obtain ⟨i, q, Lᵢ, hLᵢ, ⟨e⟩⟩ :=
-    exists_finiteDiagram_model X c n hc i₀ p.diag p.prop_diag_obj
   have hJ : HasCardinalLT (Arrow J) Cardinal.aleph0.{u + 1} := by
     rw [hasCardinalLT_aleph0_iff]
     infer_instance
-  let P := BoundedPresentation.finiteColimitStages (X.obj i).unop n
-  let : P.IsClosedUnderColimitsOfShape J :=
+  let (i : I) :
+      (BoundedPresentation.finiteColimitStages (X.obj i).unop n).IsClosedUnderColimitsOfShape J :=
     ObjectProperty.isClosedUnderColimitsOfShape_colimitsCardinalClosure
       (BoundedPresentation.generators (X.obj i).unop n) Cardinal.aleph0.{u + 1} J hJ
-  have hM : P (colimit Lᵢ) := P.prop_colimit Lᵢ hLᵢ
-  let E := boundedInverseImage (c.ι.app i).unop n
-  have := p.hasColimit
-  let eM : E.obj (colimit Lᵢ) ≅ A :=
-    preservesColimitIso E Lᵢ ≪≫ HasColimit.isoOfNatIso e ≪≫
-      colimit.isoColimitCocone ⟨_, p.isColimit⟩
-  exact ⟨i, q, colimit Lᵢ, hM, ⟨eM⟩⟩
+  exact (@FiniteDiagramDescent.hasStageModel_of_finiteColimit
+    I inferInstance
+    (fun i : I => BoundedPresentation.Coefficient (X.obj i).unop n)
+    (fun i => inferInstanceAs
+      (Category.{u + 1} (BoundedPresentation.Coefficient (X.obj i).unop n)))
+    (BoundedPresentation.Coefficient c.pt.unop n)
+    (inferInstanceAs (Category.{u + 1} (BoundedPresentation.Coefficient c.pt.unop n))))
+    (fun {_ _} q => boundedInverseImage (X.map q).unop n)
+    (fun i : I => boundedInverseImage (c.ι.app i).unop n)
+    (fun {_ _} q => boundedConeCompIso X c n q)
+    (fun i => BoundedPresentation.finiteColimitStages (X.obj i).unop n)
+    (fun {_ _} q A hA => finiteColimitStage_inverseImage (X.map q).unop n A hA)
+    (fun i A hA B γ => exists_boundedHom_above X c i hc n A hA B γ)
+    (fun i A hA B f g h => boundedHom_eventually_equal_above X c i hc n A hA B f g h)
+    p
 
 include hc in
 /-- Native canonical stages descend once their actual affine-etale free
@@ -80,20 +83,28 @@ theorem finiteColimitStage_hasStageModel
     (A : BoundedPresentation.Coefficient c.pt.unop n)
     (hA : BoundedPresentation.finiteColimitStages c.pt.unop n A) :
     HasStageModel X c n A := by
-  have hclosed : BoundedPresentation.finiteColimitStages c.pt.unop n ≤
-      HasStageModel X c n := by
-    change (BoundedPresentation.generators c.pt.unop n).colimitsCardinalClosure
-      Cardinal.aleph0.{u + 1} ≤ HasStageModel X c n
-    refine ObjectProperty.colimitsCardinalClosure_le
-      (BoundedPresentation.generators c.pt.unop n) Cardinal.aleph0.{u + 1}
-      (Q := HasStageModel X c n) ?_ ?_
-    · intro J _ hJ
-      have : Finite (Arrow J) := (hasCardinalLT_aleph0_iff _).mp hJ
-      let : FinCategory J := ((Arrow.finite_iff J).mp inferInstance).some
-      exact ⟨fun _ ⟨p⟩ => hasStageModel_of_finiteColimit X c n hc p⟩
-    · rintro _ ⟨U⟩
-      exact hgen U
-  exact hclosed A hA
+  apply (@FiniteDiagramDescent.finiteColimitClosure_le_hasStageModel
+    I inferInstance
+    (fun i : I => BoundedPresentation.Coefficient (X.obj i).unop n)
+    (fun i => inferInstanceAs
+      (Category.{u + 1} (BoundedPresentation.Coefficient (X.obj i).unop n)))
+    (BoundedPresentation.Coefficient c.pt.unop n)
+    (inferInstanceAs (Category.{u + 1} (BoundedPresentation.Coefficient c.pt.unop n))))
+    (fun {_ _} q => boundedInverseImage (X.map q).unop n)
+    (fun i : I => boundedInverseImage (c.ι.app i).unop n)
+    (fun {_ _} q => boundedConeCompIso X c n q)
+    (fun i => BoundedPresentation.finiteColimitStages (X.obj i).unop n)
+    (fun {_ _} q A hA => finiteColimitStage_inverseImage (X.map q).unop n A hA)
+    (fun i A hA B γ => exists_boundedHom_above X c i hc n A hA B γ)
+    (fun i A hA B f g h => boundedHom_eventually_equal_above X c i hc n A hA B f g h)
+    (fun J _ _ i =>
+      ObjectProperty.isClosedUnderColimitsOfShape_colimitsCardinalClosure
+        (BoundedPresentation.generators (X.obj i).unop n) Cardinal.aleph0.{u + 1} J (by
+          rw [hasCardinalLT_aleph0_iff]
+          infer_instance))
+    (BoundedPresentation.generators c.pt.unop n) (by
+      rintro _ ⟨U⟩
+      exact hgen U) A hA
 
 end NoetherianModels
 end AlgebraicGeometry.Scheme.EtaleCohomology.Constructible.PositivePresentation

@@ -1,0 +1,27 @@
+--- before/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean
++++ after/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean
+@@ -374,8 +374,10 @@
+         (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n)
+         (pointMark_equivariant K n) Y
+         (P.representedSchemeAction (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) Y e) t)
+-  simpa only [comparison, AddMonoidHom.comp_apply, AddEquiv.coe_toAddMonoidHom,
+-    fieldCocycle] using hmap.trans hclass
++  have hfinal := hmap.trans hclass
++  simp only [comparison, AddMonoidHom.comp_apply, AddEquiv.coe_toAddMonoidHom,
++    fieldCocycle] at hfinal ⊢
++  exact hfinal
+ 
+ 
+ 
+--- before/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceUniverses.lean
++++ after/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceUniverses.lean
+@@ -53,7 +53,8 @@
+     rw [← cohomologyPullback_eq_additiveToposMap]
+     exact hstandard
+   rw [cohomologyPullback_eq_additiveToposMap]
+-  exact Topos.AdditiveCoefficientAction.cohomologyMap_bijective_changeUniverse.{u + 1, u, u + 1, u, u + 1, u + 2, u + 2, eX, eY} s L 1 hs
++  exact Topos.AdditiveCoefficientAction.cohomologyMap_bijective_changeUniverse.{u + 1, u,
++    u + 1, u, u + 1, u + 2, u + 2, eX, eY} s L 1 hs
+ 
+ /-- The original scalar-linear pullback for any bounded literal constant
+ module is bijective, with independent ring and both Ext universes. -/

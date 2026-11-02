@@ -1,0 +1,10 @@
+{
+  "time_utc": "2026-10-30T11:20:02.358433+00:00",
+  "head": "3ab570353d8ccfb0db62b01300f7be9a79ec44a8",
+  "source_sha256": {
+    "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean": "b62f08cb91e253f3e3457699cabe925756eb4755039c610ea0f91e83920d3261",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean": "655b2ec9420861b503e7f1bb59d54ad4983c801f67161fc6bf6d603b0c9841d6"
+  },
+  "guards": "all53before/fixed+3providers+HEAD matched; exact2LOCALNpublease open; immutablepublic/Cprofilecases retained",
+  "CPP": "pending oneordinaryLocalFinite+changedValues import, no generic/profile/review/Rootgate oroldf656retry"
+}

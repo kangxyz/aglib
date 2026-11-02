@@ -1,0 +1,11 @@
+--- a/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean
++++ b/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean
+@@ -177,7 +177,7 @@
+ universe uC vC
+ 
+ /-- Keep a whole chart equation shared before specializing its category and maps. -/
+-private def ChartComposition {C : Type uC} [Category.{vC} C] {M N : C}
++def ChartComposition {C : Type uC} [Category.{vC} C] {M N : C}
+     (f : M ⟶ N) (t : N ⟶ N) (g : M ⟶ N) : Prop :=
+   f ≫ t = g
+ 

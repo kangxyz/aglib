@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.IntegralStrata
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.NormalGenericModel
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.Factorization
+public import Aglib.CategoryTheory.Adjunction.MonicProducts
 
 /-! # Actual finite constant cogenerators on an affine spectrum
 
@@ -87,44 +88,28 @@ theorem normalModelProduct_π (t : FiniteIntegralLocallyClosedCover F)
 original maps, so the original normal-model product is monic. -/
 theorem mono_normalModelProduct (t : FiniteIntegralLocallyClosedCover F)
     (m : ∀ i, NormalGenericModel R (t.inclusion i) F) :
-    Mono (normalModelProduct t m) where
-  right_cancellation {G} a b hab := by
+    Mono (normalModelProduct t m) := by
+  let N (i : t.index) := Spec (.of (m i).ringType)
+  let f (i : t.index) := Spec.algebraMap R (m i).ringType
+  let k (i : t.index) := (N i).fromSpecStalk (genericPoint (N i)) ≫ f i
+  let M (i : t.index) :=
+    ConstantFinite.coefficient (m i).value (Spec (N i).functionField)
+  let v (i : t.index) : normalModelTargets t m i ⟶ (directImage (k i)).obj (M i) :=
+    (directImage (f i)).map
+      (NormalConstants.constantGenericIso (N i) (ConstantFinite.value (m i).value)).hom ≫
+      (directImageCompIso (f i) ((N i).fromSpecStalk (genericPoint (N i)))).hom.app (M i)
+  have hL (G : AbelianSheaf.{u, u + 1} (Spec (.of R))) (a b : G ⟶ F)
+      (h : ∀ i, (inverseImage (k i)).map a = (inverseImage (k i)).map b) : a = b := by
     apply t.fieldPoint_inverseImages_map_injective
       (fun i => (Spec (.of (m i).ringType)).functionField) (fun i => (m i).point) G
     funext i
     change (inverseImage ((m i).point ≫ t.inclusion i)).map a =
       (inverseImage ((m i).point ≫ t.inclusion i)).map b
     rw [(m i).over]
-    apply (cancel_mono (m i).trivialization.hom).mp
-    apply ((inverseImageAdjunction
-      ((Spec (.of (m i).ringType)).fromSpecStalk
-        (genericPoint (Spec (.of (m i).ringType))) ≫
-          Spec.algebraMap R (m i).ringType)).homEquiv G _).injective
-    rw [Adjunction.homEquiv_naturality_left, Adjunction.homEquiv_naturality_left]
-    let π := Pi.π (normalModelTargets t m) i
-    have hp : normalModelProduct t m ≫ π = (m i).extensionMap :=
-      normalModelProduct_π t m i
-    have hcoord : a ≫ (m i).extensionMap = b ≫ (m i).extensionMap := by
-      have hproj : a ≫ (normalModelProduct t m ≫ π) = b ≫ (normalModelProduct t m ≫ π) :=
-        (Category.assoc a (normalModelProduct t m) π).symm.trans
-          ((congrArg (fun k => k ≫ π) hab).trans
-            (Category.assoc b (normalModelProduct t m) π))
-      exact (congrArg (fun k => a ≫ k) hp.symm).trans
-        (hproj.trans (congrArg (fun k => b ≫ k) hp))
-    let N := Spec (.of (m i).ringType)
-    let f := Spec.algebraMap R (m i).ringType
-    let v := (directImage f).map
-      (NormalConstants.constantGenericIso N (ConstantFinite.value (m i).value)).hom ≫
-      (directImageCompIso f (N.fromSpecStalk (genericPoint N))).hom.app
-        (ConstantFinite.coefficient (m i).value (Spec N.functionField))
-    have hfac : (m i).extensionMap ≫ v =
-        (inverseImageAdjunction (N.fromSpecStalk (genericPoint N) ≫ f)).homEquiv F _
-          (m i).trivialization.hom := (m i).extensionMap_comp
-    exact (congrArg (fun k => a ≫ k) hfac.symm).trans
-      ((Category.assoc a (m i).extensionMap v).symm.trans
-        ((congrArg (fun k => k ≫ v) hcoord).trans
-          ((Category.assoc b (m i).extensionMap v).trans
-            (congrArg (fun k => b ≫ k) hfac))))
+    exact h i
+  exact Adjunction.mono_lift_of_monic_adjunct_factors
+    (fun i => inverseImageAdjunction (k i)) F hL M (fun i => (m i).trivialization.hom)
+    (fun i => (m i).extensionMap) v (fun i => (m i).extensionMap_comp)
 
 /-- Factorization through original coordinate maps preserves monicity of the
 literal product map. All objects and product projections stay abstract here. -/
@@ -132,19 +117,7 @@ theorem mono_productLift_of_factors {C : Type*} [Category* C] {ι : Type*}
     {P : C} {A B : ι → C} [HasProduct A] [HasProduct B]
     (a : ∀ i, P ⟶ B i) (b : ∀ i, P ⟶ A i) (c : ∀ i, A i ⟶ B i)
     (h : ∀ i, b i ≫ c i = a i) [Mono (Pi.lift a)] : Mono (Pi.lift b) := by
-  have hprod : Pi.lift b ≫ CategoryTheory.Limits.Pi.map c = Pi.lift a := by
-    apply Pi.hom_ext
-    intro i
-    calc
-      (Pi.lift b ≫ CategoryTheory.Limits.Pi.map c) ≫ Pi.π B i =
-          Pi.lift b ≫ (CategoryTheory.Limits.Pi.map c ≫ Pi.π B i) := Category.assoc _ _ _
-      _ = Pi.lift b ≫ (Pi.π A i ≫ c i) :=
-        congrArg (fun k => Pi.lift b ≫ k) (Pi.map_π c i)
-      _ = (Pi.lift b ≫ Pi.π A i) ≫ c i := (Category.assoc _ _ _).symm
-      _ = b i ≫ c i := congrArg (fun k => k ≫ c i) (Pi.lift_comp_π b i)
-      _ = a i := h i
-      _ = Pi.lift a ≫ Pi.π B i := (Pi.lift_comp_π a i).symm
-  exact mono_of_mono_fac hprod
+  exact CategoryTheory.Limits.Pi.mono_lift_of_factors a b c h
 
 /-- The supplied actual normal models and ambient finite presentability give
 finite-stage constant cogenerators, preserving the original cocone arrows. -/

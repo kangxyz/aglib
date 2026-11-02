@@ -1,0 +1,47 @@
+{
+  "targets": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/FundamentalGroupComparison.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.FundamentalGroupComparison",
+      "sha256": "a89a996b4433d581df45b94429b225115260b9dcd85954dd85b416d21b18541f",
+      "owner": "root"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Derived/OriginalDivisibility.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Derived.OriginalDivisibility",
+      "sha256": "c133eaa9c1c8878a389fe09ffe7f93b74c4529f03bda8c7ec3f9325161597be5",
+      "owner": "constant_cyclic_cohomology_core"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/GenericArtinCohomology.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericArtinCohomology",
+      "sha256": "ec68fbb63589514295e988aa92bf9c9f6a22e1238dc3b5dbf7bfe63f01ec0419",
+      "owner": "constant_cyclic_cohomology_core"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/GenericDirectImageDivisibility.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericDirectImageDivisibility",
+      "sha256": "63781fc395d559d0f58f8fc2a4aa31dc6f855d5d113949b7320513acdb722c7b",
+      "owner": "constant_cyclic_cohomology_core"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/GenericSupportDivisibility.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericSupportDivisibility",
+      "sha256": "84df67914bf573dcdc93b0aa21e88937d1ab24e28b7afe38d56678b11ded4d74",
+      "owner": "constant_cyclic_cohomology_core"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/PrimeToCharacteristicVanishing.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PrimeToCharacteristicVanishing",
+      "sha256": "2531b3b94a67739a03e005bb7c54da03ff82643ec74a0dba7a2d885789a6a4bc",
+      "owner": "constant_cyclic_cohomology_core"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/DimensionShift.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.DimensionShift",
+      "sha256": "353491ebe614ab9b9c8e1ef917b3b13170d360aaa2418189c8d56bcd36d09f1b",
+      "owner": "classwise_ext_dimension_shift_core"
+    }
+  ],
+  "boundary": "only actualfailedRootproducer+unreachedreadyconsumers or changedsource; passed0a803/121/832/122/b901/Hom/nativeSum excluded; FiniteCohomologicalDimension notroot"
+}

@@ -121,3 +121,7 @@ the extraction basis. Application-specific `GeometryBackground` and
 markings, Tate parameter or application identity is introduced here.
 
 Focused interface guides: [Coefficient base change and residue fibres](BaseChange.md), [Split critical cubics](CriticalCubic/README.md), [Actual extension points under coefficient-fixing automorphisms](ExtensionPointAction.md), [The actual smooth charts of a Weierstrass cubic](SmoothLoci.md).
+
+`GroupCompatibility` retains its two public ideal constructors as thin delegates
+to the generic `Scheme.Hom` constructors in
+[ideal open restriction](../../IdealSheaf/BaseChange/OpenRestriction.lean).

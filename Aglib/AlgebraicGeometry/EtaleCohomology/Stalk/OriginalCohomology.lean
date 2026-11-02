@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ResolutionPresheaf
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic
 public import Aglib.Algebra.Homology.DerivedCategory.ExtRightDerived
+public import Aglib.Algebra.Homology.RightDerived.Represented
 
 /-!
 # Original represented cohomology of base-changed étale objects
@@ -54,9 +55,19 @@ def directImagePresheafRepresentedDerivedIso (q : ℕ) :
         (Scheme.smallEtaleTopology X) ((siteBaseChange f).obj U)))).rightDerived q ≅
       resolutionCohomologyPresheaf f q ⋙
         (CategoryTheory.evaluation _ AddCommGrpCat.{u + 1}).obj (op U) :=
-  Sheaf.ModuleCoefficients.rightDerivedNatIso (directImagePresheafRepresentedIso f U) q ≪≫
-    Sheaf.ModuleCoefficients.rightDerivedPostcompIso (directImagePresheaf f)
-      ((CategoryTheory.evaluation _ AddCommGrpCat.{u + 1}).obj (op U)) q
+  (Functor.representedRightDerivedPostcompIso
+    (Sheaf.Hypercohomology.freeAbelianSheaf.{u + 1}
+      (Scheme.smallEtaleTopology X) ((siteBaseChange f).obj U))
+    (directImagePresheaf f)
+    ((CategoryTheory.evaluation _ AddCommGrpCat.{u + 1}).obj (op U))
+    (directImagePresheafRepresentedIso f U) q).symm
+
+/-- The native represented constructor retains the entire original composition. -/
+theorem directImagePresheafRepresentedDerivedIso_eq (q : ℕ) :
+    directImagePresheafRepresentedDerivedIso f U q =
+      Sheaf.ModuleCoefficients.rightDerivedNatIso (directImagePresheafRepresentedIso f U) q ≪≫
+        Sheaf.ModuleCoefficients.rightDerivedPostcompIso (directImagePresheaf f)
+          ((CategoryTheory.evaluation _ AddCommGrpCat.{u + 1}).obj (op U)) q := rfl
 
 variable [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
 

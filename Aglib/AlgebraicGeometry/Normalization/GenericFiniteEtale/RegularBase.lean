@@ -132,29 +132,22 @@ private theorem integralClosure_etale_of_unramified_stalk_dimension_one
   let (i : ι) : Algebra.Etale R (integralClosure R (L i)) := hfactor i
   exact Algebra.Etale.of_equiv eB.symm
 
-/-- On the actual normalization, purity of its affine field factors removes
-the three former theorem-family inputs. The displayed local condition is on
-the original morphism after pullback to each actual target divisor stalk. -/
-theorem etale_of_regularStalks
+/-- Purity for the original generic normalization from formal unramifiedness
+of its actual source stalk maps in dimension one. The generic cover may be
+disconnected or empty; its actual finite separable field factors are internal. -/
+theorem etale_of_unramified_stalk_dimension_one
     (X : Scheme.{u}) [IsIntegral X] [IsLocallyNoetherian X]
     [∀ x : X, IsRegularLocalRing (X.presheaf.stalk x)]
     (C : Scheme.FiniteEtale (Spec X.functionField))
-    (hlocal : ∀ x : Scheme.CodimensionOnePoint X,
-      Etale (pullback.snd (C.obj.hom ≫ X.fromSpecStalk (genericPoint X)).fromNormalization
-        (X.fromSpecStalk x.1))) :
+    (hunram : ∀ z : (C.obj.hom ≫ X.fromSpecStalk (genericPoint X)).normalization,
+      ringKrullDim
+        ((C.obj.hom ≫ X.fromSpecStalk (genericPoint X)).normalization.presheaf.stalk z) = 1 →
+      RingHom.FormallyUnramified
+        (((C.obj.hom ≫ X.fromSpecStalk (genericPoint X)).fromNormalization).stalkMap z).hom) :
     Etale (C.obj.hom ≫ X.fromSpecStalk (genericPoint X)).fromNormalization := by
   let (x : X) : IsIntegrallyClosed (X.presheaf.stalk x) :=
     IsRegularLocalRing.isIntegrallyClosed_of_regularLocal (X.presheaf.stalk x)
   let f := (C.obj.hom ≫ X.fromSpecStalk (genericPoint X)).fromNormalization
-  have hunram (z : (C.obj.hom ≫ X.fromSpecStalk (genericPoint X)).normalization)
-      (hz : ringKrullDim
-        ((C.obj.hom ≫ X.fromSpecStalk (genericPoint X)).normalization.presheaf.stalk z) = 1) :
-      (f.stalkMap z).hom.FormallyUnramified := by
-    have hx : ringKrullDim (X.presheaf.stalk (f z)) = 1 :=
-      (stalk_ringKrullDim X C z).symm.trans hz
-    exact (RingHom.FormallyEtale.iff_formallyUnramified_and_formallySmooth _).mp
-      (Scheme.LocalRing.Etale.stalkMap_formallyEtale_of_etale_stalkBaseChange f z
-        (hlocal ⟨f z, hx⟩)) |>.1
   apply IsZariskiLocalAtTarget.of_iSup_eq_top
     (fun U : X.affineOpens => U.1) (iSup_affineOpens_eq_top X)
   intro U
@@ -202,5 +195,30 @@ theorem etale_of_regularStalks
     simpa only [Scheme.Hom.appLE_eq_app] using happ
   · let : IsEmpty U.1 := not_nonempty_iff.mp hne
     infer_instance
+
+/-- On the actual normalization, purity of its affine field factors removes
+the three former theorem-family inputs. The displayed local condition is on
+the original morphism after pullback to each actual target divisor stalk. -/
+theorem etale_of_regularStalks
+    (X : Scheme.{u}) [IsIntegral X] [IsLocallyNoetherian X]
+    [∀ x : X, IsRegularLocalRing (X.presheaf.stalk x)]
+    (C : Scheme.FiniteEtale (Spec X.functionField))
+    (hlocal : ∀ x : Scheme.CodimensionOnePoint X,
+      Etale (pullback.snd (C.obj.hom ≫ X.fromSpecStalk (genericPoint X)).fromNormalization
+        (X.fromSpecStalk x.1))) :
+    Etale (C.obj.hom ≫ X.fromSpecStalk (genericPoint X)).fromNormalization := by
+  let (x : X) : IsIntegrallyClosed (X.presheaf.stalk x) :=
+    IsRegularLocalRing.isIntegrallyClosed_of_regularLocal (X.presheaf.stalk x)
+  let f := (C.obj.hom ≫ X.fromSpecStalk (genericPoint X)).fromNormalization
+  have hunram (z : (C.obj.hom ≫ X.fromSpecStalk (genericPoint X)).normalization)
+      (hz : ringKrullDim
+        ((C.obj.hom ≫ X.fromSpecStalk (genericPoint X)).normalization.presheaf.stalk z) = 1) :
+      (f.stalkMap z).hom.FormallyUnramified := by
+    have hx : ringKrullDim (X.presheaf.stalk (f z)) = 1 :=
+      (stalk_ringKrullDim X C z).symm.trans hz
+    exact (RingHom.FormallyEtale.iff_formallyUnramified_and_formallySmooth _).mp
+      (Scheme.LocalRing.Etale.stalkMap_formallyEtale_of_etale_stalkBaseChange f z
+        (hlocal ⟨f z, hx⟩)) |>.1
+  exact etale_of_unramified_stalk_dimension_one X C hunram
 
 end AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization

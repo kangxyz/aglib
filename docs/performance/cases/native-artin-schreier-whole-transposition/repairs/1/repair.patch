@@ -1,0 +1,69 @@
+diff --git a/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean b/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean
+--- a/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean
++++ b/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean
+@@ -44,14 +44,24 @@
+     apply ULift.ext
+     exact map_add _ a.down b.down
+ 
++/-- The same native single-lift additive presheaf, with the lift world explicit. -/
++abbrev additivePresheaf.{w, r, v, u} {C : Type u} [Category.{v} C]
++    (R : Cᵒᵖ ⥤ CommRingCat.{r}) : Cᵒᵖ ⥤ AddCommGrpCat.{max r w} :=
++  R ⋙ forget₂ CommRingCat.{r} RingCat.{r} ⋙
++    forget₂ RingCat.{r} AddCommGrpCat.{r} ⋙ AddCommGrpCat.uliftFunctor.{w, r}
++
++/-- The same native sheaf pair, retaining the supplied original sheaf proof. -/
++abbrev additiveSheaf.{w, r, v, u} {C : Type u} [Category.{v} C]
++    (R : Cᵒᵖ ⥤ CommRingCat.{r}) (J : GrothendieckTopology C)
++    (hR : Presheaf.IsSheaf J (additivePresheaf.{w} R)) :
++    Sheaf J AddCommGrpCat.{max r w} :=
++  ⟨additivePresheaf.{w} R, hR⟩
++
+ variable {C : Type u} [Category.{v} C] (R : Cᵒᵖ ⥤ CommRingCat.{r})
+-
+-local notation "Radd" => (R ⋙ forget₂ CommRingCat.{r} RingCat.{r} ⋙
+-  forget₂ RingCat.{r} AddCommGrpCat.{r} ⋙ AddCommGrpCat.uliftFunctor.{w, r})
+ 
+ /-- The constant-presheaf map is the original residue scalar at each ring section. -/
+ def primeFieldPresheafMap (p : ℕ) (h : ∀ U : Cᵒᵖ, (p : R.obj U) = 0) :
+-    (Functor.const Cᵒᵖ).obj (primeFieldCoefficient.{max r w} p) ⟶ Radd where
++    (Functor.const Cᵒᵖ).obj (primeFieldCoefficient.{max r w} p) ⟶ (additivePresheaf.{w} R) where
+   app U := AddCommGrpCat.ofHom
+     (primeFieldSectionHom (T := R.obj U) p (h U))
+   naturality {U V} f := by
+@@ -63,13 +73,11 @@
+       ((R.map f).hom.comp (ZMod.castHom (ringChar.dvd (h U)) (R.obj U)))
+       (ZMod.castHom (ringChar.dvd (h V)) (R.obj V))) a.down).symm
+ 
+-variable (J : GrothendieckTopology C) (hR : Presheaf.IsSheaf J Radd)
+-
+-local notation "Aadd" => (⟨Radd, hR⟩ : Sheaf J AddCommGrpCat.{max r w})
++variable (J : GrothendieckTopology C) (hR : Presheaf.IsSheaf J (additivePresheaf.{w} R))
+ 
+ /-- Frobenius on the same original additive sheaf of ring sections. -/
+ def frobenius (p : ℕ) (hp : p.Prime) (h : ∀ U : Cᵒᵖ, (p : R.obj U) = 0) :
+-    Aadd ⟶ Aadd where
++    (additiveSheaf.{w} R J hR) ⟶ (additiveSheaf.{w} R J hR) where
+   hom := {
+     app U := AddCommGrpCat.uliftFunctor.map (AddCommGrpCat.ofHom
+       (RingHom.frobeniusOfPrimeCastEqZero p hp (h U)).toAddMonoidHom)
+@@ -82,7 +90,7 @@
+ 
+ /-- The original power-minus-identity map on this selected additive sheaf. -/
+ def artinSchreierMap (p : ℕ) (hp : p.Prime) (h : ∀ U : Cᵒᵖ, (p : R.obj U) = 0) :
+-    Aadd ⟶ Aadd :=
++    (additiveSheaf.{w} R J hR) ⟶ (additiveSheaf.{w} R J hR) :=
+   frobenius R J hR p hp h - 𝟙 _
+ 
+ /-- Its component retains the literal original ring value. -/
+@@ -95,9 +103,9 @@
+ /-- Transpose the original residue map through the native sheafification adjunction. -/
+ def primeFieldToAdditive (p : ℕ) (h : ∀ U : Cᵒᵖ, (p : R.obj U) = 0) :
+     (constantSheaf J AddCommGrpCat.{max r w}).obj (primeFieldCoefficient.{max r w} p) ⟶
+-      Aadd :=
++      (additiveSheaf.{w} R J hR) :=
+   ((sheafificationAdjunction J AddCommGrpCat.{max r w}).homEquiv
+-    ((Functor.const Cᵒᵖ).obj (primeFieldCoefficient.{max r w} p)) Aadd).symm
++    ((Functor.const Cᵒᵖ).obj (primeFieldCoefficient.{max r w} p)) (additiveSheaf.{w} R J hR)).symm
+       (primeFieldPresheafMap R p h)
+ 
+ /-- The whole original unit equation identifies the transposed residue map. -/

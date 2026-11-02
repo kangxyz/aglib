@@ -1,0 +1,20 @@
+{
+  "question": "Does exact current native coefficient-rectangle P36 form/check independently of failedproof?",
+  "native_head": "3ab570353d8ccfb0db62b01300f7be9a79ec44a8",
+  "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/relative-kernel-diagnostic-v1/RelativeFormation.lean",
+  "source_sha256": "9ac430a39fa7b918482c56c547be05fcf857fde157526df42196143129fcada7",
+  "actual_module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.RelativeCohomologySquare",
+  "native_source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/RelativeCohomologySquare.lean",
+  "native_source_sha256": "1d32a4d082077ae138d4a7f63a616ecdae398a2efcc35eb49d97d3ee09a03274",
+  "setup_requirement": "Actualnative lake --no-build setup-file for module, exactmoduleName/isModule/full4libraryoptions/nativefileoptions, then --setup for scratchLean atsame200000/profile/pins. Do not import failedRelative module or overwrite its productionolean, add suppression/budget/root expansion/replay.",
+  "input_failure": {
+    "run": "remote-73e08631689f43e2ab14fa0e1544ffee",
+    "source": "f204986329b4dccb6264cff6af24f682a6f6db14ce2f90b8a397ec36e10bf75f",
+    "errors": [
+      "36:8kernel deterministic timeout",
+      "90:8unknownconstantcascade"
+    ],
+    "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-73e08631689f43e2ab14fa0e1544ffee/build.log"
+  },
+  "boundary": "ExactP onlyin (_h:P):True; cleanexit answersformation-only, neverPproof/nativeModuleclosure oruniquekernelcause/speedup. No copiednewdata/model, actualimports/headerpreserved."
+}

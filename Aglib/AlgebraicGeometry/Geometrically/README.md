@@ -34,3 +34,9 @@ principal-maximal-ideal algebra reuses the existing native `IsLocalRing` provide
 extension: irreducibility of a field base change descends along a further field extension, and
 irreducibility after every algebraically closed extension field gives geometric irreducibility over
 an arbitrary field. No finiteness or separation premise is added.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [Integral/SmoothCurve](Integral/SmoothCurve.lean)

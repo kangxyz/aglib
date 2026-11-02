@@ -51,3 +51,9 @@ for every `p` (no flatness) and its naturality `pullback_map_twistedRestriction`
 identities `tensor_quotientModule_eq_shortComplex_map_X₃`, `twistedRestriction_eq_shortComplex_map_g`
 and `whiskerLeft_idealInclusion_eq_shortComplex_map_f` compare these with the twisted sequence
 `W.shortComplex.map (moduleTensorLeftFunctor X L)`.
+
+[OpenRestriction](OpenRestriction.lean) identifies the pullback of a factored
+morphism's ideal with the factor ideal via the original comparison. An empty
+source has unit ideal through the actual kernel inclusion; disjoint ranges give
+the corresponding restriction isomorphism. No closed-immersion hypothesis is
+needed.

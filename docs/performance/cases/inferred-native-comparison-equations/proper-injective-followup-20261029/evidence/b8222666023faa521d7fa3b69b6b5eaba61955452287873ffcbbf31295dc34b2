@@ -1,0 +1,19 @@
+{
+  "status": "supported bounded retention; no new mathematical obligation",
+  "target_lower": "bff0408c72a4155d49a803c31f04dd9db1568048bef526e45eb39331da620183",
+  "target_native": "b70a3c5d0988000990a1aa8b4a178089191e0ee2ee2f935753d2ec8fe3516e8b",
+  "coverage": "Only literal-single-view/native-call delta; unchanged full-assembly review retained",
+  "compiler_status": "Current repair compilation remains pending; original SOURCE926bd c9ee pass/7f83 timeout separately retained",
+  "reports": [
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/proper-injective-assembly-core.md",
+      "archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/source-review/proper-injective-assembly-core.md",
+      "sha256": "6e12ee70a8186ac7720e562273e3a34ace59b0e2216042589fbc14269ed9689b"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/proper-injective-assembly-core.json",
+      "archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/source-review/proper-injective-assembly-core.json",
+      "sha256": "a8babc8b194ad46ea845b8ba5c66fbbf7789c503ca90c0fe7db9c56e135d7d70"
+    }
+  ]
+}

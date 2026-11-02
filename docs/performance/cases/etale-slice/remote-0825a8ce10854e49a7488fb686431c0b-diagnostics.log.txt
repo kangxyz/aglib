@@ -1,0 +1,96 @@
+✔ [3146/3161] Built Aglib.CategoryTheory.Adjunction.Mates.Whole (4.9s)
+✔ [3147/3161] Built Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.Normalization (1.6s)
+✔ [3148/3161] Built Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.SquarePasting (1.8s)
+✔ [3149/3161] Built Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.VerticalNormalization (1.9s)
+✔ [3150/3161] Built Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.IdentityNormalization (2.1s)
+✔ [3151/3161] Built Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ActualPasting (2.2s)
+✔ [3152/3161] Built Aglib.CategoryTheory.Topos.GeometricMorphism (2.5s)
+✔ [3153/3161] Built Aglib.CategoryTheory.Adjunction.Mates.Coherence (3.8s)
+✔ [3154/3161] Built Aglib.CategoryTheory.Topos.SheafMorphism (2.6s)
+✔ [3155/3161] Built Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.WholeNormalization (1.7s)
+✔ [3156/3161] Built Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.CoherenceDiagram (1.9s)
+✔ [3157/3161] Built Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.CoherenceRawNormalization (1.0s)
+✔ [3158/3161] Built Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.CoherenceChain (2.3s)
+✖ [3159/3161] Building Aglib.CategoryTheory.Topos.SlicePresentation (14s)
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:85:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ((Over.star ?X✝).obj ?X).hom
+in the target expression
+  ((Over.star P).obj H).hom = prod.fst
+
+B : Type uB
+inst✝¹ : Category.{vB, uB} B
+inst✝ : HasBinaryProducts B
+P H : B
+⊢ ((Over.star P).obj H).hom = prod.fst
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    prod.fst
+  has type
+    @Quiver.Hom B inst✝¹.toQuiver (P ⨯ H) P
+  but is expected to have type
+    @Quiver.Hom B inst✝¹.toQuiver ((Over.star P).obj H).left P
+  in the application
+    ((Over.star P).obj H).hom = prod.fst
+  
+  Note: The following definitions were not unfolded because their definition is not exposed:
+    getLimitCone ↦ 8
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:93:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ((Over.star ?X).map ?f).left
+in the target expression
+  Over.Hom.left ((Over.star P).map f) ≫ prod.snd = prod.snd ≫ f
+
+B : Type uB
+inst✝¹ : Category.{vB, uB} B
+inst✝ : HasBinaryProducts B
+P H H' : B
+f : H ⟶ H'
+⊢ Over.Hom.left ((Over.star P).map f) ≫ prod.snd = prod.snd ≫ f
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    prod.snd
+  has type
+    @Quiver.Hom B inst✝¹.toQuiver (P ⨯ H') H'
+  but is expected to have type
+    @Quiver.Hom B inst✝¹.toQuiver ((Over.star P).obj H').left H'
+  in the application
+    Over.Hom.left ((Over.star P).map f) ≫ prod.snd
+  
+  Note: The following definitions were not unfolded because their definition is not exposed:
+    getLimitCone ↦ 8
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:408:84: unsolved goals
+C : Type u
+inst✝¹ : Category.{v, u} C
+inst✝ : LocallySmall.{w, v, u} C
+J : GrothendieckTopology C
+P : Sheaf J (Type w)
+Y : Over P
+a b : Site P.obj
+f : a ⟶ b
+x : ((elementFibreEquivalence J P).functor.obj Y).obj.obj (op b)
+⊢ (ConcreteCategory.hom (Y.left.obj.map ((projection P.obj).map f).op)) (OverArrows.val x) =
+    (ConcreteCategory.hom (Y.left.obj.map ((projection P.obj).map f).op)) (OverArrows.val x)
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:665:4: Type mismatch: After simplification, term
+  productFibreEquiv J P H ((projection P.obj).obj a) (unop a).val
+ has type
+  Equiv { z // (ConcreteCategory.hom (prod.fst.hom.app (op ((projection P.obj).obj a)))) z = (unop a).val }
+    (H.obj.obj (op ((projection P.obj).obj a)))
+but is expected to have type
+  Equiv { y // (ConcreteCategory.hom (prod.fst.hom.app (op ((projection P.obj).obj a)))) y = (unop a).val }
+    (H.obj.obj (op ((projection P.obj).obj a)))
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  getLimitCone ↦ 14
+error: Aglib/CategoryTheory/Topos/SlicePresentation.lean:674:2: 'change' tactic failed, pattern
+  ((productSectionsEquiv J P H ((projection P.obj).obj a)) ↑((fibreObjEquiv J P ((Over.star P).obj H) a) z)).2 = ?m.120
+is not definitionally equal to target
+  (starFibreObjEquiv J P H a) z =
+    (ConcreteCategory.hom (prod.snd.hom.app (op ((projection P.obj).obj a))))
+      ↑((fibreObjEquiv J P ((Over.star P).obj H) a) z)
+✔ [3161/3161] Built Aglib.AlgebraicGeometry.EtaleCohomology.BaseChangeMap (21s)
+Some required targets logged failures:
+- Aglib.CategoryTheory.Topos.SlicePresentation
+error: build failed

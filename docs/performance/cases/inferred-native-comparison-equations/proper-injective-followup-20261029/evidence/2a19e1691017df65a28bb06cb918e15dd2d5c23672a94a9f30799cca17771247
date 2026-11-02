@@ -1,0 +1,82 @@
+{
+  "question": "Complete existing AllModuleCoefficients injective-test assembly abstraction and thin original native instantiation",
+  "status": "assigned source2 plus bounded README implementation/review/compiler chain complete",
+  "conclusion": "Complete exact-coefficient derived precomposition, nonnegative bounds, native exact-single transport and injective testing are lower-owned. Native all-ZMod, killed-coefficient and higher-exchange theorems retain their actual maps, conditions and original statements.",
+  "aglib_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "owned_modules": [
+    {
+      "module": "Aglib.Algebra.Homology.DerivedCategory.Plus.InjectiveComparisonExact",
+      "relative_path": "Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparisonExact.lean",
+      "source_sha256": "bff0408c72a4155d49a803c31f04dd9db1568048bef526e45eb39331da620183",
+      "compiler_exit_code": 0,
+      "compiler_interval_seconds": 4.365815117955208
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.AllModuleCoefficients",
+      "relative_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean",
+      "source_sha256": "b70a3c5d0988000990a1aa8b4a178089191e0ee2ee2f935753d2ec8fe3516e8b",
+      "compiler_exit_code": 0,
+      "compiler_interval_seconds": 4.610050231218338
+    }
+  ],
+  "owning_readme": {
+    "path": "Aglib/Algebra/Homology/DerivedCategory/Plus/README.md",
+    "sha256": "3f27da8b89e260e7110ea48f69fc103b4c293d0ac4749821fb40552d3e956e68"
+  },
+  "unchanged_core": {
+    "path": "Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparison.lean",
+    "sha256": "7e54af9098fc49f2b09564e30facada627d7ab8b4a05c89d0c460e8c1cd7fc6f"
+  },
+  "production": {
+    "run": "remote-443ee638fb9841beb2914cfa749af04f",
+    "source_content_sha256": "c07d541986f51ebade660d0fd5e15ab0abc23e50378b02782fda861e002bde31",
+    "source_receipt_sha256": "7e8d26bb24af308b6be54c1af613a115a2de221f8547e5d673b25706cde3e5fd",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-443ee638fb9841beb2914cfa749af04f/receipt.json",
+    "receipt_sha256": "cb925e5b3987d65c9468ae7aff8eb37e31ac765624505747a752bc8414986721",
+    "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-443ee638fb9841beb2914cfa749af04f/build.log",
+    "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-443ee638fb9841beb2914cfa749af04f/compiler-events.jsonl",
+    "command": [
+      "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+      "--rehash",
+      "build",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.AllModuleCoefficients"
+    ],
+    "exit_code": 0,
+    "actual_frontends": 2,
+    "passed_frontends": 2,
+    "diagnostics": [],
+    "input_drift": [],
+    "group_closed": true,
+    "evidence_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/A443ee638-SOURCEc07d/MANIFEST.json"
+  },
+  "source_review": {
+    "status": "supported/no material objection; unchanged full assembly plus bounded live bff/b70 literal-single-view/native-call retention; no new obligation",
+    "reports": [
+      "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/proper-injective-assembly-core.md",
+      "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/proper-injective-assembly-core.json"
+    ],
+    "fixed_review_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/REVIEW.json"
+  },
+  "preserved": [
+    "Actual original beta=derivedBaseChangeMap f fprime g gprime h",
+    "Original unit-defined rightDerivedFunctorPlusSingleIso",
+    "Actual original zmodSingle head with literal construction equality proved by rfl",
+    "All original hI hypotheses and arbitrary modulus n (including0/1)",
+    "Independent dX/dS/dXprime/dSprime and all genuine category/value worlds",
+    "All3original theorem statements and killed/higher proof tail",
+    "Package options/pins/standard200000/trust; no added model equality or desired-coherence premise"
+  ],
+  "historical_evidence": {
+    "run": "remote-ea58796c97b44af5bb5072b84c7a0d3f",
+    "source": "926bd397ee6c4d7bb9ae084137ace7d9cd5d49033ae153de43b610340845ff4f",
+    "lower_c9ee": "actual pass retained only on c9ee old bytes",
+    "native_7f83": "actual kernel deterministic timeout; later unknown-constant cascade",
+    "archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/Aea58796-SOURCE926bd/MANIFEST.json",
+    "material_change": "Repair1 appends lower literal-single construction view and changes only native theorem call; old source/outcome not relabelled"
+  },
+  "remaining_owned_gap": null,
+  "broader_boundary": "Does not close all Proper/Etale/migration. Broker current maximal main continuation and principal native final validation are separate existing scope; no producer gate repeats, extra tests/replay/client/audit chain or blanket build added.",
+  "correspondence": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/CORRESPONDENCE.md",
+  "repair_argument": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/ARGUMENT.md",
+  "performance_followup": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/PERFORMANCE_FOLLOWUP.md"
+}

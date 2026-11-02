@@ -1,0 +1,14 @@
+{
+  "run": "remote-f6de6be5bc524cca8b1a9052066411ca",
+  "source": "a5e1d20d99830a0d4c1d3139e0a204de7e2b35f5491427e88d544647aa1b1f6f",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-f6de6be5bc524cca8b1a9052066411ca/receipt.json",
+  "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-f6de6be5bc524cca8b1a9052066411ca/build.log",
+  "exit_code": 1,
+  "group_closed": true,
+  "meaning": "Parser rejected three theorem declarations missing the required colon/result-type slot. Original identity prefix alone is not the assigned diagnostic outcome; none of the three cuts was checked. No kernel/proof/formation conclusion for the cuts.",
+  "errors": [
+    "line59 unexpected := expected :",
+    "line65 unexpected := expected :",
+    "line71 unexpected := expected :"
+  ]
+}

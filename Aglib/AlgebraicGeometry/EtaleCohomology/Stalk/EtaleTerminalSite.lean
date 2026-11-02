@@ -35,21 +35,14 @@ theorem siteEtaleDirectImageRestriction_terminal {X S : Scheme.{u}}
           (siteBaseChangeTerminalIso (pullback.fst U.hom f)).inv ≫
         (siteEtaleDirectImageRestrictionIso f U.hom).hom.app (etaleTerminal U.left) =
       (siteBaseChange f).map (Continuity.siteEtalePostcomposeTerminalIso U).inv := by
-  apply MorphismProperty.Over.Hom.ext
+  apply (Scheme.Etale.forget X).map_injective
+  apply Over.OverMorphism.ext
   change (𝟙 _ ≫ (siteBaseChangeTerminalIso (pullback.fst U.hom f)).inv.left ≫
       (pullbackRightPullbackFstIso U.hom f (𝟙 U.left)).hom) =
     pullback.lift (pullback.fst U.hom f ≫ 𝟙 U.left) (pullback.snd U.hom f) _
-  refine (Category.id_comp
-    ((siteBaseChangeTerminalIso (pullback.fst U.hom f)).inv.left ≫
-      (pullbackRightPullbackFstIso U.hom f (𝟙 U.left)).hom)).trans ?_
-  apply pullback.hom_ext
-  · simp only [Category.assoc, pullbackRightPullbackFstIso_hom_fst,
-      pullback.lift_fst]
-    exact Continuity.siteBaseChangeTerminalIso_inv_fst (pullback.fst U.hom f)
-  · simp only [Category.assoc, pullbackRightPullbackFstIso_hom_snd, pullback.lift_snd]
-    have hw := MorphismProperty.Over.w
-      (siteBaseChangeTerminalIso (pullback.fst U.hom f)).inv
-    exact (Category.assoc _ _ _).symm.trans
-      ((congrArg (fun k => k ≫ pullback.snd U.hom f) hw).trans (Category.id_comp _))
+  exact congrArg (fun a => a.left)
+    (Over.pullbackPostcomposeIso_terminal f (Over.mk U.hom)
+      ((Scheme.Etale.forget (pullback U.hom f)).map
+        (siteBaseChangeTerminalIso (pullback.fst U.hom f)).inv))
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

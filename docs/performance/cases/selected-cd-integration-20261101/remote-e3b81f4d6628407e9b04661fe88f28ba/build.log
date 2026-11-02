@@ -1,0 +1,7 @@
+✔ [5198/5203] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.OrdinaryBaseChange (4.7s)
+✔ [5199/5203] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericHigherImageOne (12s)
+✔ [5200/5203] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericDefectAcyclic (13s)
+✔ [5201/5203] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteCohomologicalDimension (15s)
+✔ [5202/5203] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.CoefficientLine (91s)
+✔ [5203/5203] Built Aglib.AlgebraicGeometry.Descent.FinitePresentation.Modules.Objects (266s)
+Build completed successfully (5203 jobs).

@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.RingTheory.Finite.LocalPoints.Kernel
 public import Mathlib.RingTheory.Ideal.GoingUp
 public import Mathlib.RingTheory.LocalRing.ResidueField.Basic
 public import Mathlib.RingTheory.Spectrum.Maximal.Basic
@@ -36,29 +37,20 @@ include ha
 omit [Module.Finite R A] in
 /-- The selected prime lies over the original closed point of the base. -/
 theorem geometricPointKernel_comap :
-    (RingHom.ker a).comap (algebraMap R A) = maximalIdeal R := by
-  rw [RingHom.comap_ker, ha,
-    RingHom.ker_comp_of_injective _ (algebraMap (ResidueField R) Ω).injective,
-    ker_residue]
+    (RingHom.ker a).comap (algebraMap R A) = maximalIdeal R :=
+  Algebra.FiniteLocalPoints.geometricPointKernel_comap R A Ω a ha
 
 /-- A point over the closed point of an integral algebra has maximal kernel. -/
-theorem geometricPointKernel_isMaximal : (RingHom.ker a).IsMaximal := by
-  let : (RingHom.ker a).IsPrime := RingHom.ker_isPrime a
-  apply Ideal.isMaximal_of_isIntegral_of_isMaximal_under (R := R)
-  change ((RingHom.ker a).comap (algebraMap R A)).IsMaximal
-  rw [geometricPointKernel_comap R A Ω a ha]
-  infer_instance
+theorem geometricPointKernel_isMaximal : (RingHom.ker a).IsMaximal :=
+  Algebra.FiniteLocalPoints.geometricPointKernel_isMaximal R A Ω a ha
 
 /-- The actual finite local component selected by the geometric point. -/
 def geometricPointComponent : MaximalSpectrum A :=
-  ⟨RingHom.ker a, geometricPointKernel_isMaximal R A Ω a ha⟩
+  Algebra.FiniteLocalPoints.geometricPointComponent R A Ω a ha
 
 /-- For a local finite algebra, lying over the closed base point already makes
 its geometric point a local homomorphism. -/
-theorem geometricPoint_isLocalHom [IsLocalRing A] : IsLocalHom a := by
-  apply ((local_hom_TFAE a).out 5 1).mp
-  rw [maximalIdeal_eq_bot]
-  change RingHom.ker a = maximalIdeal A
-  exact eq_maximalIdeal (geometricPointKernel_isMaximal R A Ω a ha)
+theorem geometricPoint_isLocalHom [IsLocalRing A] : IsLocalHom a :=
+  Algebra.FiniteLocalPoints.geometricPoint_isLocalHom R A Ω a ha
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

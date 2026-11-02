@@ -24,7 +24,7 @@ open GroupCohomology.Kummer.Coefficients
 
 namespace AlgebraicGeometry.Scheme.EtaleCohomology.Curves
 
-universe u w w' dS dX dA
+universe u w w'
 
 variable (X : Scheme.{u}) [IsNoetherian X]
 
@@ -40,9 +40,6 @@ instance genericArtinLocus_gmH1_subsingleton
 theorem genericDirectImage_nsmul_bijective
     [HasExt.{w} (AbelianSheaf.{u, u + 1} (genericArtinLocus X))]
     [HasExt.{w'} (AbelianSheaf.{u, u + 1} X)]
-    [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} (genericArtinLocus X))]
-    [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
-    [HasDerivedCategory.{dA} AddCommGrpCat.{u + 1}]
     (n q : ℕ) (hq : 1 ≤ q)
     (hh : ∀ k : ℕ, 1 ≤ k → IsIso
       (n • 𝟙 ((higherDirectImage (genericArtinMap X) k).obj (gm (genericArtinLocus X)))))

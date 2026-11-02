@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.InverseImage
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackUnitGeometry
+public import Aglib.CategoryTheory.Sites.Point.RelativeTest
 
 /-! # Original relative-terminal unit sections and their pointed germs
 
@@ -44,11 +45,8 @@ private theorem relativeTerminalTest_point {S T : Scheme.{u}}
     pullback.lift p.left η _ at he
   rw [he]
   have ht : t.left = η := (Category.comp_id t.left).symm.trans (Over.w t)
-  apply pullback.hom_ext
-  · simpa only [Category.assoc, pullback.lift_fst] using
-      (congrArg (fun k => k ≫ b) ht).trans hp.symm
-  · simp only [Category.assoc, pullback.lift_snd]
-    exact (Category.comp_id t.left).trans ht
+  exact GrothendieckTopology.Point.relativeTest_comp_lift U.hom g b h η p.left
+    (Over.w p) hp t.left ht
 
 /-- The original relative-terminal unit section represents the original
 stalk-unit image of the same pointed chart section. -/
@@ -63,10 +61,11 @@ theorem unitSectionMap_relativeTerminalTest_germ {S T : Scheme.{u}}
       Continuity.unitSectionMap g F (Continuity.relativeTerminalTest g U b h) ≫
         (pointSmallEtale η).toPresheafFiber (etaleTerminal T) t
           ((inverseImage g).obj F).obj := by
-  have ht := (pointSmallEtale η).toPresheafFiber_w
-    (Continuity.relativeTerminalTest g U b h) t ((inverseImage g).obj F).obj
-  rw [relativeTerminalTest_point g U b h η p hp t] at ht
-  rw [StalkInverseImage.germ_stalkUnitNatIso, Continuity.unitSectionMap,
-    Category.assoc, ht]
+  refine (StalkInverseImage.germ_stalkUnitNatIso g η F U p).trans ?_
+  exact (pointSmallEtale η).germ_after_test ((inverseImage g).obj F).obj
+    (((inverseImageAdjunction g).unit.app F).hom.app (op U))
+    (Continuity.relativeTerminalTest g U b h) t
+    (CoefficientStalkBaseChange.pulledBackPoint g η U p)
+    (relativeTerminalTest_point g U b h η p hp t)
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

@@ -121,3 +121,21 @@ The index, scheme and hom universes are `u`. Transition maps need not be flat,
 injective on rings or surjective on schemes. The theorem is an object-descent
 interface with the original projection; it is also used in the proper
 henselian construction.
+
+## Actual generic charts for finite radicial maps
+
+`Descent/FinitePureField` specializes the existing finite purely inseparable
+cover equivalence to the literal field-spectrum map. `Descent/GenericRadicialChart`
+constructs an actual descended finite-etale source chart over an affine generic
+target neighborhood of a finite dominant radicial map of integral affine
+schemes with Noetherian target. Its comparison uses the entire source inverse
+image. `Descent/GenericRadicialAffineChart` transports the same construction
+through the original affine spectrum isomorphisms and supplies its original
+map into the given source chart. No coefficient constructibility conclusion
+is an input to these geometric constructions.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [GaloisBaseChangeComponent](GaloisBaseChangeComponent.lean)

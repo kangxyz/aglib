@@ -1,0 +1,55 @@
+--- a/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean
++++ b/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean
+@@ -113,18 +113,6 @@
+     _ = b V (F.map f s) := hn f s
+     _ = r V (t V (F.map f s)) := (hb V _).symm
+ 
+-/-- Keep a whole chart equation shared before specializing its category and maps. -/
+-private def ChartComposition {C : Type uC} [Category.{vC} C] {M N : C}
+-    (f : M ⟶ N) (t : N ⟶ N) (g : M ⟶ N) : Prop :=
+-  f ≫ t = g
+-
+-/-- Cancel the actual identity transition before evaluating the native chart maps. -/
+-private theorem chartComposition_eq {C : Type uC} [Category.{vC} C] {M N : C}
+-    {f g : M ⟶ N} {t : N ⟶ N} (h : ChartComposition f t g) (ht : t = 𝟙 N) :
+-    f = g := by
+-  subst t
+-  exact (Category.comp_id f).symm.trans h
+-
+ /-- The original raw-Hom presheaf at its actual native line-bundle object. -/
+ abbrev rawPresheaf (X : Scheme.{u}) (M : lineBundles.obj (.mk (op X))) :
+     X.Etaleᵒᵖ ⥤ Type u :=
+@@ -185,6 +173,20 @@
+ end Cover
+ 
+ namespace Construction
++
++universe uC vC
++
++/-- Keep a whole chart equation shared before specializing its category and maps. -/
++private def ChartComposition {C : Type uC} [Category.{vC} C] {M N : C}
++    (f : M ⟶ N) (t : N ⟶ N) (g : M ⟶ N) : Prop :=
++  f ≫ t = g
++
++/-- Cancel the actual identity transition before evaluating the native chart maps. -/
++private theorem chartComposition_eq {C : Type uC} [Category.{vC} C] {M N : C}
++    {f g : M ⟶ N} {t : N ⟶ N} (h : ChartComposition f t g) (ht : t = 𝟙 N) :
++    f = g := by
++  subst t
++  exact (Category.comp_id f).symm.trans h
+ 
+ /-- Actual raw charts on the original section-indexed cover, with one native object. -/
+ abbrev RawChartFamily (M : lineBundles.obj (.mk (op X))) :=
+@@ -255,9 +257,9 @@
+       pullHom (F := lineBundles) (M₁ := M) (M₂ := unitObject X)
+           (f₁ := V.unop.hom) (f₂ := V.unop.hom)
+           (c ⟨V.unop, P.carrier.obj.map f s⟩)
+-          (𝟙 V.unop).left V.unop.hom V.unop.hom
+-          (MorphismProperty.Over.w (𝟙 V.unop))
+-          (MorphismProperty.Over.w (𝟙 V.unop)) =
++          (𝟙 V.unop : V.unop ⟶ V.unop).left V.unop.hom V.unop.hom
++          (MorphismProperty.Over.w (𝟙 V.unop : V.unop ⟶ V.unop))
++          (MorphismProperty.Over.w (𝟙 V.unop : V.unop ⟶ V.unop)) =
+         c ⟨V.unop, P.carrier.obj.map f s⟩ :=
+     pullHom_id (F := lineBundles) (M₁ := M) (M₂ := unitObject X)
+       (f₁ := V.unop.hom) (f₂ := V.unop.hom)

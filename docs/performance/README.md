@@ -35,6 +35,7 @@ original runs; current operating guides own present procedures.
 - [Nonflat base change: share the concrete coefficient constructor](nonflat-base-change-share-the-concrete-coefficient-constructor.md)
 - [Formal line-bundle algebraization: explicit transports](formal-line-bundle-algebraization-explicit-transports.md)
 - [Site cohomology: share the comparison definition, not only its proof](site-cohomology-share-the-comparison-definition-not-only-its-proof.md)
+- [Right-derived three-factor comparisons across native branches](right-derived-three-factor-comparisons.md)
 - [Étale derived comparisons: share the equation, then specialize](étale-derived-comparisons-share-the-equation-then-specialize.md)
 - [Why a short proof can be expensive](why-a-short-proof-can-be-expensive.md)
 - [Methods and evidence](methods-and-evidence.md)
@@ -108,8 +109,50 @@ original runs; current operating guides own present procedures.
 
 Additional complete cases:
 
+- [Theta: reuse the selected native group before forming equations](cases/theta-native-group-reuse/README.md)
+- [Open-curve duality: original rows, arrow transport and variable flip laws](cases/open-curve-duality-laws/README.md)
+- [Native internal-Hom laws: literal public equations after inferred producer laws](cases/native-internal-hom-laws/README.md)
 - [Surface-resolution constructor boundaries](surface-resolution-constructor-boundaries.md)
 - [Private PBC original-map and finite-model boundaries](pbc-original-map-and-finite-model-boundaries.md)
+- [Abstract foundation constructions: native parents, universes, counits and triangles](abstract-foundation-construction-boundaries.md)
 
 New cases belong in separate case files; update the same file for follow-ups.
 Retain existing cases when refining key guidance in the main file.
+
+## Additional validated cases
+
+- [Native loader fallback read failures: diagnosis and limits](loader-fallback-read-diagnosis.md)
+- [Godement: complete generic construction and original native views](cases/godement-unit-insertion/README.md)
+- [Section pullback: retain the ordinary H1 functor](cases/section-h1-transport/README.md)
+
+- [Native evaluation and exact category/zero dictionaries](native-evaluation-zero-dictionaries.md)
+- [Intrinsic slice comparison: shared native equation and typed product bridge](etale-slice-shared-comparison.md)
+- [Native line-bundle raw-chart equations](native-line-bundle-raw-chart-equations.md)
+
+- [Native Artin–Schreier: transpose the whole original composite](native-artin-schreier-whole-transposition.md)
+
+- [Constant coefficients: separate the primitive import boundary](constant-coefficient-import-boundary.md)
+
+- [Continuity: use the original value at its typed native endpoint](continuity-typed-original-endpoints.md)
+
+- [Prove whole laws on the actual original comparisons](whole-original-comparison-laws.md)
+
+- [Consume the original inferred equation before component cancellation](inferred-native-comparison-equations.md) — full frozen-source pass and ordinary generic-module pass; thin production integration was pending in the initial record. A [later integration milestone](inferred-native-comparison-equations.md#integration-milestone-2026-10-27-source-33013d99) records its pass on source `33013d99`; downstream P6 remains pending.
+
+- [Field follow-up: infer the composition, then normalize hypothesis and goal](inferred-native-comparison-equations.md#field-follow-up-infer-the-composed-equality-before-normalization) — two isolated passes and exact production Field pass; curve entries remain pending.
+
+- [Global follow-up: shared construction and normalized proof inputs](inferred-native-comparison-equations.md#global-follow-up-shared-construction-and-normalized-proof-inputs) — full Global module pass on its recorded source; Proper endpoint dependency closure remains blocked.
+
+- [Continuity triangle: preserve original proof inputs](inferred-native-comparison-equations.md#continuity-triangle-follow-up-preserve-original-proof-inputs) — reviewed eight-source construction and source-bound native module pass; the mixed build failed on a separate dependency.
+
+- [Proper injective follow-up: retain the original single head](inferred-native-comparison-equations.md#proper-injective-follow-up-retain-the-original-single-head) — reviewed source repair and two-module production pass; broader Proper remains open.
+
+- [Indexed cone: construct the whole original row at the literal native target](cases/indexed-cone-literal-target/README.md)
+
+## Diagnostic frontiers
+
+- [Čech intrinsic comparison: conversion frontier](cech-intrinsic-conversion-frontier.md) — one instrumented source-matching run; bounded dictionary and adapter pilots remain unmeasured.
+
+- [Reuse a guarded sealed native source for subsequent phases](cases/sealed-native-source-reuse/README.md)
+
+- [Original generator-to-Ext-zero value before specialization](cases/germ-generator-ext-zero/README.md)

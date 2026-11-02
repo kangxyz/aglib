@@ -1,0 +1,4 @@
+RAW_DIFF_ACTUAL_BEGIN
+RAW_NODE 0 const name=`CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard levels=[Lean.Level.succ (Lean.Level.param `u), Lean.Level.param `u]
+RAW_DIFF_ACTUAL_ROOT 0 nodes=1
+RAW_DIFF_ACTUAL_END

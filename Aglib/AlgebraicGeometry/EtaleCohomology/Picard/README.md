@@ -26,11 +26,21 @@ supply separate geometric surjectivity and vanishing consumers.
 [KummerQuotient](KummerQuotient.lean) uses native long-exact-sequence exactness to identify
 `ker(picardBoundary)` with the range of multiplication by `n`. It constructs
 `picardQuotientBoundary` on `QuotientAddGroup`, proves that map injective, and
-proves its arbitrary-geometric-pullback square with the quotient of the native
-Picard pullback. The quotient is of the original Picard group, not a second
-Picard carrier or a redefined H2. Surjectivity is deliberately not asserted.
+uses the shared `QuotientAddGroup.nsmulMap` for `picardQuotientPullback`.
+`picardQuotientPullback_id` and `_comp` retain its functor laws, and
+`picardQuotientBoundary_naturality` is the whole homomorphism square before
+its evaluated form. The shared
+[original-cohomology multiplication law](../../../CategoryTheory/Sites/SheafCohomology/Nsmul.lean)
+and [exactness-to-kernel argument](../../../GroupTheory/QuotientGroup/Nsmul.lean)
+retain the original Picard group, quotient and boundary. Surjectivity is not asserted here.
 
 [LocalRing](LocalRing.lean) transfers the existing triviality of ordinary Picard groups on
 local spectra through this same comparison. Thus original `H1(gm(Spec R))`
 is a subsingleton for any local commutative ring, in particular for a field.
 It introduces no replacement coefficient or cohomology group.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [DivisibilityReflection](DivisibilityReflection.lean)

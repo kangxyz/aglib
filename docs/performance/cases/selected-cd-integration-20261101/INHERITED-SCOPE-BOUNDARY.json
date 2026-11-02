@@ -1,0 +1,48 @@
+{
+  "question": "Whether the admitted1151 checking cut also closes every inherited original1397 C/D completed claim under latest-C supersession",
+  "conclusion": "Not established by the retained source/disposition/provenance joins. The admitted current release is source/CPP closed; whole inherited D-to-current mathematical/source correspondence remains open.",
+  "latest_C_supersession": "Do not reinstate the old447 C path list as an additional required implementation universe; latestC governs per Root/user steering. This concrete witness is D-only.",
+  "witness": {
+    "path": "Aglib/Algebra/Homology/DerivedCategory/ExactFunctorBounds.lean",
+    "original_sha256": "723aca434654473e972207d83c3ea4d5a854a2a16669bc1fe254d407ce21a8d6",
+    "original_scope": "completed_claim",
+    "D_claim_index": 1211,
+    "D_receipt": "build485",
+    "D_receipt_boundary": "UNBOUND D receipt namespace: bare build ID collides with C archive evidence filenames; no D-specific frozen source/graph linkage supplied",
+    "disposition_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/current-public-disposition-20261030/DISPOSITION-MAP.json#/rows/20",
+    "semantic_disposition": "unresolved_semantics",
+    "existing_owner_math_status": [],
+    "explicit_origin_migrations": [],
+    "application_source_references": [],
+    "latest_projection_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/delta/ORIGINAL-SAME-PATH-COVERAGE.json#/rows/17",
+    "latest_projection": {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/ExactFunctorBounds.lean",
+      "original_sha256": "723aca434654473e972207d83c3ea4d5a854a2a16669bc1fe254d407ce21a8d6",
+      "original_agents": [
+        "D"
+      ],
+      "latest_status": null,
+      "latest_sha256": null,
+      "same_path_present": false,
+      "exact_original_bytes": false,
+      "semantic_equivalence": "not assessed"
+    },
+    "later_D164_packet_name_checks": [
+      {
+        "packet": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/completed-d-cartesian-coherence-20261101/CLAIM-PROVENANCE.json",
+        "contains_exact_original_path": false
+      },
+      {
+        "packet": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/completed-d-cartesian-coherence-20261101/v5/CANDIDATE.json",
+        "contains_exact_original_path": false
+      },
+      {
+        "packet": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/completed-d-cartesian-coherence-20261101/PROVIDER-BINDINGS.json",
+        "contains_exact_original_path": false
+      }
+    ]
+  },
+  "not_inferred": "No claim that this theorem is false, absent semantically, or requires new theory. Original filename absence is not the proof gap. The unresolved item is original statement/premises/accepted source to actual current realization correspondence and usable evidence, not covered by a bare colliding D receipt.",
+  "material_scope_amendment": "Earlier no-identified-proof/CPP-gap conclusion remains valid for the admitted1151 checking cohort only. It is not a whole1397 completion assertion.",
+  "next_action": "Principal retains the broader scope: resolve this exact original D completed result against its actual current generic owner or deliberately retained original proof under the same hypotheses, add the explicit source/result correspondence and usable evidence, then extend/reconcile the inherited D claim disposition at that same semantic level. No new audit or implementation was authorized to this worker."
+}

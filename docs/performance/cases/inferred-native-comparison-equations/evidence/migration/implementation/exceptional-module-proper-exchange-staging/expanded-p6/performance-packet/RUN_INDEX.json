@@ -1,0 +1,2079 @@
+[
+  {
+    "phase": "r4-frozen-65bc",
+    "interpretation": "Runtime setup/cache snapshot only; no frontend/proof coverage.",
+    "recorded_kind": "immutable R4 diagnostic context, not current-N module coverage",
+    "candidate_sha256": null,
+    "native_run": "remote-8a3b40449e5644d3a6371adae3d116fa",
+    "exit_code": null,
+    "wall_seconds": null,
+    "compiler_starts": 0,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": null,
+    "exact_command": null,
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-frozen-65bc/delivery.json",
+        "sha256": "7b41aceebf769c1026b2cf9b8e422002511a373dbb265acf41386f101861ae2c",
+        "bytes": 3095
+      }
+    },
+    "source_files": [],
+    "exact_selected_diagnostics": []
+  },
+  {
+    "phase": "r4-formation-a834ca46",
+    "interpretation": "Copyright/module-docstring style-only failure; no theorem/kernel negative result.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "38af157eaa7f0c49b7e0ec91246a6cb93b16f3599aacb6c53db61b52639b8fcf",
+    "native_run": "remote-a834ca46585b485fb3509ebcc12fe1a6",
+    "exit_code": 1,
+    "wall_seconds": 8.437340676784515,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-a834ca46585b485fb3509ebcc12fe1a6/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/formation-79b0551e571140f78680cae442955c23/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/formation-79b0551e571140f78680cae442955c23/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/formation-79b0551e571140f78680cae442955c23/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/formation-79b0551e571140f78680cae442955c23/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-formation-a834ca46/delivery.json",
+        "sha256": "82071313198a9d987aa80ecbc66a0d937547f466d7d6e666fd2dc9203d540f5f",
+        "bytes": 3629
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-formation-a834ca46/result.json",
+        "sha256": "9464f01396f9c447be7bb711daaa0c69be6ab4306e506cdf1dd2d7bd7c59c82d",
+        "bytes": 2865
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-formation-a834ca46/request.json",
+        "sha256": "d3845dce021e12ff430f8cdb9d981f42ff2034d487f22beb52776833edf4f2a9",
+        "bytes": 2786
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-formation-a834ca46/candidate.patch",
+        "sha256": "9bf12c2107223a7e1441bdc76c717c8fb69f9f0f5247f59bfa6f8ecb0a1141b7",
+        "bytes": 8195
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-formation-a834ca46/stdout.log",
+        "sha256": "ee5cce688e5bedf33aa97b959be22aef9cfa27456b923fdc3f055fdb4d1d36ec",
+        "bytes": 2178
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-formation-a834ca46/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-formation-a834ca46/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "38af157eaa7f0c49b7e0ec91246a6cb93b16f3599aacb6c53db61b52639b8fcf"
+      }
+    ],
+    "exact_selected_diagnostics": [
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/formation-79b0551e571140f78680cae442955c23/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:9:0: error: The module doc-string for a file should be the first command after the imports.",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/formation-79b0551e571140f78680cae442955c23/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:1:0: error: * `/- Diagnostic source for the existing P6 R4 kernel boundary. -/`:",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/formation-79b0551e571140f78680cae442955c23/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:2:3: error: * ``:",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/formation-79b0551e571140f78680cae442955c23/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:2:3: error: * ``:",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/formation-79b0551e571140f78680cae442955c23/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:1:61: error: * `-/`:"
+    ]
+  },
+  {
+    "phase": "r4-formation-v2-9f305608",
+    "interpretation": "Faithful proposition-formation controls passed.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "7c8d38554370b06afb405e73562f868fea7546313ce2869c618290f4e43629e8",
+    "native_run": "remote-9f3056084e4a480db728841c83450b4c",
+    "exit_code": 0,
+    "wall_seconds": 8.906498163938522,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-9f3056084e4a480db728841c83450b4c/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/formation-v2-29124970ca704d0f85c95c7efde1f103/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/formation-v2-29124970ca704d0f85c95c7efde1f103/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/formation-v2-29124970ca704d0f85c95c7efde1f103/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/formation-v2-29124970ca704d0f85c95c7efde1f103/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-formation-v2-9f305608/delivery.json",
+        "sha256": "36ddff8e8ea60ecfa29583e1dcc5c24f474f6a326e549d5eaae1f71be5fa08ed",
+        "bytes": 3555
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-formation-v2-9f305608/result.json",
+        "sha256": "9cb7bf8cc99436a84636765bd2ea36e59aec1ed7b5e83e5f73df390c54417e00",
+        "bytes": 2883
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-formation-v2-9f305608/request.json",
+        "sha256": "9a1e1f788e6ac9a87c15706c6b164ace708b02f0099e0d055f503672357aff25",
+        "bytes": 2804
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-formation-v2-9f305608/candidate.patch",
+        "sha256": "b88c094266779998016b30a1bf4fded0428602a0d43b5457117d89475dc1864f",
+        "bytes": 8007
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-formation-v2-9f305608/stdout.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-formation-v2-9f305608/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-formation-v2-9f305608/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "7c8d38554370b06afb405e73562f868fea7546313ce2869c618290f4e43629e8"
+      }
+    ],
+    "exact_selected_diagnostics": []
+  },
+  {
+    "phase": "r4-prelude-f14ec80e",
+    "interpretation": "Actual original torsion-transfer, conservative dictionary, Ab proper-exchange and whole-cube proof values passed.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "3ef6d5997fcf5f55ea9ac850c0c052fc7be4371b36b70d3e457354b653a5ae07",
+    "native_run": "remote-f14ec80e51d0425e9d44cec36838d0a6",
+    "exit_code": 0,
+    "wall_seconds": 7.297950893640518,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-f14ec80e51d0425e9d44cec36838d0a6/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/prelude-f92d868157dd45a68286d998db484147/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/prelude-f92d868157dd45a68286d998db484147/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/prelude-f92d868157dd45a68286d998db484147/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/prelude-f92d868157dd45a68286d998db484147/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-prelude-f14ec80e/delivery.json",
+        "sha256": "29c45863fbd8b23f6a7463e6c55221b1de63e5a4a1d286bc9689649725caa067",
+        "bytes": 3520
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-prelude-f14ec80e/result.json",
+        "sha256": "d33451bc5b981b20c349288e37e3eacf38265882154008235dee86b5b565f7fa",
+        "bytes": 2853
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-prelude-f14ec80e/request.json",
+        "sha256": "5b6f58aab7dcc1bc0e1e73de7b302e51331caa87875a9b002a44d650c64415e7",
+        "bytes": 2774
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-prelude-f14ec80e/candidate.patch",
+        "sha256": "0bc1f73055379d238eb4fbeab8d38f4d3bde8306a065c32221740ae02894da60",
+        "bytes": 7653
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-prelude-f14ec80e/stdout.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-prelude-f14ec80e/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-prelude-f14ec80e/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "3ef6d5997fcf5f55ea9ac850c0c052fc7be4371b36b70d3e457354b653a5ae07"
+      }
+    ],
+    "exact_selected_diagnostics": []
+  },
+  {
+    "phase": "r4-assembly-83941a2d",
+    "interpretation": "Native full89 and mapped107 helper applications kernel-timeout; standalone reflection produced no error. Mixed diagnostic file exit1, not whole success.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "bf6a1d3c6937460bb07e07133fbc9ef457d03c2948e2c50e7f6cf4d16702099e",
+    "native_run": "remote-83941a2d23ab47f08854f3bb2e7d0524",
+    "exit_code": 1,
+    "wall_seconds": 194.4347138851881,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-83941a2d23ab47f08854f3bb2e7d0524/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/assembly-6628e3abc4ac469791d6f1a7b0701259/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/assembly-6628e3abc4ac469791d6f1a7b0701259/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/assembly-6628e3abc4ac469791d6f1a7b0701259/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/assembly-6628e3abc4ac469791d6f1a7b0701259/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-assembly-83941a2d/delivery.json",
+        "sha256": "5614a3034df147d1eed68e0710f020bf9e9c377f55f0ef40c5965beccf2f50b6",
+        "bytes": 3631
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-assembly-83941a2d/result.json",
+        "sha256": "5e7618c2bca774a86a32fe80e2fac16099c82a126691e9b6ac478ffd4cc299b8",
+        "bytes": 2859
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-assembly-83941a2d/request.json",
+        "sha256": "13a1b33a4855dd5ad9a4bf4b7ad6092fb0d444e1f2400101e66f68057b233dba",
+        "bytes": 2780
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-assembly-83941a2d/candidate.patch",
+        "sha256": "c6a53b96faaed11bff3c8990c3a0f89ac4ac46549555fd12416ff1a0cba64010",
+        "bytes": 8206
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-assembly-83941a2d/stdout.log",
+        "sha256": "d7c2e90b28fe1f96ce5e67e82587b34e8110ab63deaaf4ba6bfc94876d19090e",
+        "bytes": 555
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-assembly-83941a2d/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-assembly-83941a2d/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "bf6a1d3c6937460bb07e07133fbc9ef457d03c2948e2c50e7f6cf4d16702099e"
+      }
+    ],
+    "exact_selected_diagnostics": [
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/assembly-6628e3abc4ac469791d6f1a7b0701259/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:89:8: error: (kernel) deterministic timeout",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/assembly-6628e3abc4ac469791d6f1a7b0701259/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:107:8: error: (kernel) deterministic timeout"
+    ]
+  },
+  {
+    "phase": "r4-comparison-values-a2e92107",
+    "interpretation": "Both actual whole comparison-IsIso value proofs passed.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "7352de48c117562b0e5443f85fa5ba084ee7179c90302a9fc6efa0f0283ab882",
+    "native_run": "remote-a2e92107de6d419eb4629bdcbed5c2be",
+    "exit_code": 0,
+    "wall_seconds": 5.317183256149292,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-a2e92107de6d419eb4629bdcbed5c2be/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/comparison-values-88f4865cb9cb420c9a9d3041dd1b6a1c/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/comparison-values-88f4865cb9cb420c9a9d3041dd1b6a1c/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/comparison-values-88f4865cb9cb420c9a9d3041dd1b6a1c/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/comparison-values-88f4865cb9cb420c9a9d3041dd1b6a1c/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-comparison-values-a2e92107/delivery.json",
+        "sha256": "80bc87676965a4e550c931de402d8d322ed378b5700054d56e32b56e7759a644",
+        "bytes": 3590
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-comparison-values-a2e92107/result.json",
+        "sha256": "66a148b8f22c505ad727a3b7342b57415489904a7332dfe0e9f5af95422f249b",
+        "bytes": 2913
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-comparison-values-a2e92107/request.json",
+        "sha256": "3283782545ad890c0c661c37a720e8cf6314f496e15ebdf36e93482f056eb686",
+        "bytes": 2834
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-comparison-values-a2e92107/candidate.patch",
+        "sha256": "4d2e3b998f695acdb6043359faf0066820484112b1dea099e5f583923ec1329f",
+        "bytes": 5508
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-comparison-values-a2e92107/stdout.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-comparison-values-a2e92107/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-comparison-values-a2e92107/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "7352de48c117562b0e5443f85fa5ba084ee7179c90302a9fc6efa0f0283ab882"
+      }
+    ],
+    "exact_selected_diagnostics": []
+  },
+  {
+    "phase": "r4-comparison-assembly-e84007f0",
+    "interpretation": "All-facts-given88 and whole-Iso-input114 native calls kernel-timeout; privateModule message consequent to failed public declarations.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "ee08ba0717b92e86e455f54e2d1f014f055d2553dba9d23dd9b0f2cf4b4fb7a6",
+    "native_run": "remote-e84007f0742e43d783cee678e6f7b0e2",
+    "exit_code": 1,
+    "wall_seconds": 199.50957688689232,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-e84007f0742e43d783cee678e6f7b0e2/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/comparison-assembly-d8caca435bde46d19ab7c9f7820bc960/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/comparison-assembly-d8caca435bde46d19ab7c9f7820bc960/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/comparison-assembly-d8caca435bde46d19ab7c9f7820bc960/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/comparison-assembly-d8caca435bde46d19ab7c9f7820bc960/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-comparison-assembly-e84007f0/delivery.json",
+        "sha256": "85f9337f2f09fb1a4b9af5c7c258aa9676f72ee45381b9ab9486820737f0373e",
+        "bytes": 3605
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-comparison-assembly-e84007f0/result.json",
+        "sha256": "83f8bc4bd0b0806f79d05aa8068caf0cb276b3786e69d3adca64b18d506111bd",
+        "bytes": 2926
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-comparison-assembly-e84007f0/request.json",
+        "sha256": "4f1cac53756d260cacdaa8630d7153f99774c1efa0b5152dc6f091ec4af293a0",
+        "bytes": 2846
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-comparison-assembly-e84007f0/candidate.patch",
+        "sha256": "ce25f375df7b5fc57a63503e06393828439e1618239a8a37658f7decf58e2437",
+        "bytes": 7852
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-comparison-assembly-e84007f0/stdout.log",
+        "sha256": "c70e354e12ea2a3ac81c06e24fc15930de9beda3cee6037e2a0eaa4fc2be49d1",
+        "bytes": 1284
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-comparison-assembly-e84007f0/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-comparison-assembly-e84007f0/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "ee08ba0717b92e86e455f54e2d1f014f055d2553dba9d23dd9b0f2cf4b4fb7a6"
+      }
+    ],
+    "exact_selected_diagnostics": [
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/comparison-assembly-d8caca435bde46d19ab7c9f7820bc960/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:88:8: error: (kernel) deterministic timeout",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/comparison-assembly-d8caca435bde46d19ab7c9f7820bc960/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:114:8: error: (kernel) deterministic timeout",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/comparison-assembly-d8caca435bde46d19ab7c9f7820bc960/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:1:0: error: The current module only contains private declarations."
+    ]
+  },
+  {
+    "phase": "r4-original-arrow-assembly-97814861",
+    "interpretation": "Complete supplied-original-arrow generic proof native instance kernel-timeout78; no replacement arrow used.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "f780ac09c66cc77b98203eea01b5599f2253336f2418fc049921cb421908dde6",
+    "native_run": "remote-97814861a5804fc29db88ae4654ceef4",
+    "exit_code": 1,
+    "wall_seconds": 104.02204744517803,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-97814861a5804fc29db88ae4654ceef4/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/original-arrow-assembly-d9b71742f8fd4cadacfd9abba5408a4c/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/original-arrow-assembly-d9b71742f8fd4cadacfd9abba5408a4c/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/original-arrow-assembly-d9b71742f8fd4cadacfd9abba5408a4c/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/original-arrow-assembly-d9b71742f8fd4cadacfd9abba5408a4c/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-original-arrow-assembly-97814861/delivery.json",
+        "sha256": "7caded18a39785426f34906ff5c93a0ffc783b1a88e7b4a3fd8b19c3f7be13e1",
+        "bytes": 3633
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-original-arrow-assembly-97814861/result.json",
+        "sha256": "69e5297cf99776d1844b12c20cf7b525dc4a8bc15cf2c8011788c47ec9da884a",
+        "bytes": 2950
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-original-arrow-assembly-97814861/request.json",
+        "sha256": "fe6355c8d3402ea255b2b71345665d7fc482ee3585f7ddf390bf9f121a8afc16",
+        "bytes": 2870
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-original-arrow-assembly-97814861/candidate.patch",
+        "sha256": "4f09a04bb16c7239a4eb1ad64c466f30f79a57a19df886bb7128f028930d434d",
+        "bytes": 7700
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-original-arrow-assembly-97814861/stdout.log",
+        "sha256": "fee0cd192fe021730af7c7eafd22738a01c8b7eeaa2d58c780a8ddd1c8e8db95",
+        "bytes": 1003
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-original-arrow-assembly-97814861/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-original-arrow-assembly-97814861/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "f780ac09c66cc77b98203eea01b5599f2253336f2418fc049921cb421908dde6"
+      }
+    ],
+    "exact_selected_diagnostics": [
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/original-arrow-assembly-d9b71742f8fd4cadacfd9abba5408a4c/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:78:8: error: (kernel) deterministic timeout",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/original-arrow-assembly-d9b71742f8fd4cadacfd9abba5408a4c/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:1:0: error: The current module only contains private declarations."
+    ]
+  },
+  {
+    "phase": "r4-partial-specialization-b39263d8",
+    "interpretation": "Only exchangesFixedValue262 kernel-timeout; all formation controls and categories/functors/comparisons-fixed value controls produced no error.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "dcb65349b0fca016815657f12d6071e592dd965619732b980b29cc7cd60d7e8e",
+    "native_run": "remote-b39263d80c06438c87c17d01a0e92009",
+    "exit_code": 1,
+    "wall_seconds": 112.58312711119652,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-b39263d80c06438c87c17d01a0e92009/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/partial-specialization-b09016f5ead84cc1a624b2581803542a/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/partial-specialization-b09016f5ead84cc1a624b2581803542a/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/partial-specialization-b09016f5ead84cc1a624b2581803542a/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/partial-specialization-b09016f5ead84cc1a624b2581803542a/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-partial-specialization-b39263d8/delivery.json",
+        "sha256": "ed68621e0abd9a5d0dfd63a1b9c28b35cd1915b7d1a48e0a99f0ea4a9e81ab87",
+        "bytes": 3695
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-partial-specialization-b39263d8/result.json",
+        "sha256": "68f2d15d96451ea36d0cd8bc7583a10e15f20a127dbe3adeade9f9df529766f9",
+        "bytes": 2944
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-partial-specialization-b39263d8/request.json",
+        "sha256": "138a610eb209250112c5a111f14617ac7e6df80e7a280d6d61702c7f3ae5f18c",
+        "bytes": 2864
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-partial-specialization-b39263d8/candidate.patch",
+        "sha256": "620c3ac111ce401157fbf5c315b9ec148ff5710eb9246bd8c3670d66933d533a",
+        "bytes": 18568
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-partial-specialization-b39263d8/stdout.log",
+        "sha256": "d2983c112bcb0353cd5f1072e273750311aa2cf1f66103c98970a1b950e92997",
+        "bytes": 292
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-partial-specialization-b39263d8/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-partial-specialization-b39263d8/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "dcb65349b0fca016815657f12d6071e592dd965619732b980b29cc7cd60d7e8e"
+      }
+    ],
+    "exact_selected_diagnostics": [
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/partial-specialization-b09016f5ead84cc1a624b2581803542a/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:262:8: error: (kernel) deterministic timeout"
+    ]
+  },
+  {
+    "phase": "r4-exchange-binding-bf01afc7",
+    "interpretation": "Only Ab-exchange-fixed101, both-exchanges-explicit123 and all-native-functors-explicit146 kernel-timeout. Module-only fixed declaration78 produced no error.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "a889b1c89f264c1b15b63d445f5d88a61b50370855333d4b4aa68eadc9fabc37",
+    "native_run": "remote-bf01afc7e29e46caa3c3aa1ff3bafaf3",
+    "exit_code": 1,
+    "wall_seconds": 299.852896720171,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-bf01afc7e29e46caa3c3aa1ff3bafaf3/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/exchange-binding-094a8275bee5450c835adf3aced56b66/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/exchange-binding-094a8275bee5450c835adf3aced56b66/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/exchange-binding-094a8275bee5450c835adf3aced56b66/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/exchange-binding-094a8275bee5450c835adf3aced56b66/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-exchange-binding-bf01afc7/delivery.json",
+        "sha256": "7a520504823eb218c62be009f2524fd12ae0e1d46800345828faa2469fd84dc9",
+        "bytes": 3662
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-exchange-binding-bf01afc7/result.json",
+        "sha256": "b82b392799f6d44c72c69127684bbdc69e0b0187bd3de438c694a5e617c25229",
+        "bytes": 2906
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-exchange-binding-bf01afc7/request.json",
+        "sha256": "bd20b2cb828c86ac3039b4952da1f9a0dd4c7f2fa856162e1195b63d556ddd6d",
+        "bytes": 2828
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-exchange-binding-bf01afc7/candidate.patch",
+        "sha256": "35b9fb59cd62f5adfd51578163591c21bcc9a7e94ac0cda0dab368c4646dd160",
+        "bytes": 12215
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-exchange-binding-bf01afc7/stdout.log",
+        "sha256": "77b0dfe837ff8d64a97b35f2dc68ecc1d6d41b27ca0b41171b5a3f6503b87f20",
+        "bytes": 858
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-exchange-binding-bf01afc7/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-exchange-binding-bf01afc7/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "a889b1c89f264c1b15b63d445f5d88a61b50370855333d4b4aa68eadc9fabc37"
+      }
+    ],
+    "exact_selected_diagnostics": [
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/exchange-binding-094a8275bee5450c835adf3aced56b66/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:101:8: error: (kernel) deterministic timeout",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/exchange-binding-094a8275bee5450c835adf3aced56b66/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:123:8: error: (kernel) deterministic timeout",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/exchange-binding-094a8275bee5450c835adf3aced56b66/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:146:8: error: (kernel) deterministic timeout"
+    ]
+  },
+  {
+    "phase": "r4-pointwise-cube-d4fb44b7",
+    "interpretation": "Native equation formation produced no error; literal producer application checked against manual pointwise equation kernel-timeout58.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "b72088c989598e3e26f361def624f8dc2bd00e8d00b7e2386e6b9ef971f4c827",
+    "native_run": "remote-d4fb44b755034a79806de8e74c4de6d3",
+    "exit_code": 1,
+    "wall_seconds": 105.38715064525604,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-d4fb44b755034a79806de8e74c4de6d3/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/pointwise-cube-2457961855c44f41864d0701da9780e3/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/pointwise-cube-2457961855c44f41864d0701da9780e3/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/pointwise-cube-2457961855c44f41864d0701da9780e3/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/pointwise-cube-2457961855c44f41864d0701da9780e3/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-pointwise-cube-d4fb44b7/delivery.json",
+        "sha256": "900bc1feafe1781f889fa3ac06ff08d9e99f7ca130e9d72d1bcc7ff180c26d8f",
+        "bytes": 3570
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-pointwise-cube-d4fb44b7/result.json",
+        "sha256": "7a41a3642c34c755be4e546b77c74d08568a977ea91af0a02a383304af8cd330",
+        "bytes": 2896
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-pointwise-cube-d4fb44b7/request.json",
+        "sha256": "873e33431b71b5597cc45a75d011c6872cc6ee4fb7ed3ad30de2135d69b975f9",
+        "bytes": 2816
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-pointwise-cube-d4fb44b7/candidate.patch",
+        "sha256": "daf6f4c6c8e9e5e88cf50bc7d722c642870791cbba80340bfb5e598528b7a570",
+        "bytes": 6738
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-pointwise-cube-d4fb44b7/stdout.log",
+        "sha256": "b6abc3d168e4cfa08083d8d42f54f19838793e80670697d3f9f085c868fab9e5",
+        "bytes": 283
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-pointwise-cube-d4fb44b7/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-pointwise-cube-d4fb44b7/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "b72088c989598e3e26f361def624f8dc2bd00e8d00b7e2386e6b9ef971f4c827"
+      }
+    ],
+    "exact_selected_diagnostics": [
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/pointwise-cube-2457961855c44f41864d0701da9780e3/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:58:8: error: (kernel) deterministic timeout"
+    ]
+  },
+  {
+    "phase": "r4-component-assembly-ef1011f0",
+    "interpretation": "Complete two-category morphism proof passed for variable Ab component, actual Ab component with directly given IsIso, and same actual component with instance lookup. Conditional diagnostics, not R4.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "d5a1520bb311cd18a65d3ec21b3d9478e07cdfe8557d9935f4d45844630cb543",
+    "native_run": "remote-ef1011f01d8a4f25878b6e48479c994c",
+    "exit_code": 0,
+    "wall_seconds": 9.523936852812767,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-ef1011f01d8a4f25878b6e48479c994c/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/component-assembly-43712f31bf80479b926d428e42974e47/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/component-assembly-43712f31bf80479b926d428e42974e47/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/component-assembly-43712f31bf80479b926d428e42974e47/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/component-assembly-43712f31bf80479b926d428e42974e47/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-component-assembly-ef1011f0/delivery.json",
+        "sha256": "1404a5a3bd4a0b7d139119c6e8e64a343c15efe1d89a54c7bcd1912f32126157",
+        "bytes": 3597
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-component-assembly-ef1011f0/result.json",
+        "sha256": "56419732e903fb5fab04376a86349b99dee58991fe58923d6e924f648fff9b5c",
+        "bytes": 2919
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-component-assembly-ef1011f0/request.json",
+        "sha256": "e48c3b085300157265a7c15b551e7e01a6674364a6fb520f1006f3577c368c35",
+        "bytes": 2840
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-component-assembly-ef1011f0/candidate.patch",
+        "sha256": "5455db4a0fabc527313db831f712affd084567e3a2e3768c41496fc54476a0cc",
+        "bytes": 12621
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-component-assembly-ef1011f0/stdout.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-component-assembly-ef1011f0/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-component-assembly-ef1011f0/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "d5a1520bb311cd18a65d3ec21b3d9478e07cdfe8557d9935f4d45844630cb543"
+      }
+    ],
+    "exact_selected_diagnostics": []
+  },
+  {
+    "phase": "r4-producer-type-extraction-748c5ddf",
+    "interpretation": "Earlier tooling-only attempt; exact errors retained. No mathematical proof/cause verdict.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "ffdb886dca486c37e8fb0a93079cb90869b79055e958d8215bbbde75b7ea6226",
+    "native_run": "remote-748c5ddfcc5345eb8302594618389cad",
+    "exit_code": 1,
+    "wall_seconds": 4.696576222777367,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-748c5ddfcc5345eb8302594618389cad/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-producer-type-extraction-748c5ddf/delivery.json",
+        "sha256": "7250ebf9ae8670e8c94b2fcac9341ade7680e6c8bb92c7f83cdacb866ed9b771",
+        "bytes": 3663
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-producer-type-extraction-748c5ddf/result.json",
+        "sha256": "3d295437020eda5bfac146b2b54f919dd533746d496f901e96c0f20f8151fa1e",
+        "bytes": 2955
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-producer-type-extraction-748c5ddf/request.json",
+        "sha256": "03adcb7c77e1629ce3534873899569f0296591465e68ce766fe64a0a7bd00fee",
+        "bytes": 2876
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-producer-type-extraction-748c5ddf/candidate.patch",
+        "sha256": "d0ec23b6bb537528b3179f62d2598bf0fb3a0188a8591c8f2b90b671e4928aa5",
+        "bytes": 11340
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-producer-type-extraction-748c5ddf/stdout.log",
+        "sha256": "0a9179e7b9a6bf83cc7dd6c94624f9396aa1d8f87c8f38d6d62869fd40d59e65",
+        "bytes": 7302
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-producer-type-extraction-748c5ddf/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-producer-type-extraction-748c5ddf/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "ffdb886dca486c37e8fb0a93079cb90869b79055e958d8215bbbde75b7ea6226"
+      }
+    ],
+    "exact_selected_diagnostics": [
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:10:0: error: The module doc-string for a file should be the first command after the imports.",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:1:1: error: * `-/`:",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:27:33: error(lean.unknownIdentifier): Unknown identifier `getLocalDecl`",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:27:30: error(lean.invalidField): Invalid field notation: Type of",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:47:100: error: This line exceeds the 100 character limit, please shorten it!",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:90:100: error: This line exceeds the 100 character limit, please shorten it!",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:115:18: error(lean.synthInstanceFailed): failed to synthesize instance of type class",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:123:17: error(lean.synthInstanceFailed): failed to synthesize instance of type class",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:123:9: error(lean.synthInstanceFailed): failed to synthesize instance of type class",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:122:14: error(lean.synthInstanceFailed): failed to synthesize instance of type class",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:129:100: error: This line exceeds the 100 character limit, please shorten it!",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:133:0: error: cannot evaluate code because '_private.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.0.ProducerTypeExtraction.head' uses 'sorry' and/or contains errors",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-0659fee3c8da4c67a308eb94f4b63e19/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:1:0: error: The current module only contains private declarations."
+    ]
+  },
+  {
+    "phase": "r4-producer-type-extraction-d2c5e000",
+    "interpretation": "Type-only partial extraction; intended-expression builder left universe metavariables. Partial R1 rawhead observed; no full vector claim.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "b5130c879a24c6e6c9314ea1d94ded19e81173f7a9cf901179784272a2454ca5",
+    "native_run": "remote-d2c5e000de03471f92a0ffd039e0e43d",
+    "exit_code": 1,
+    "wall_seconds": 4.572664245963097,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-d2c5e000de03471f92a0ffd039e0e43d/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-v2-98365f8e88b341a1b6ab2bdd72060dd2/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-v2-98365f8e88b341a1b6ab2bdd72060dd2/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-v2-98365f8e88b341a1b6ab2bdd72060dd2/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-v2-98365f8e88b341a1b6ab2bdd72060dd2/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-producer-type-extraction-d2c5e000/delivery.json",
+        "sha256": "4c9b3e38610989caaa4108f41b7ef53a945a87c81f91dcebc27221aca8f3dea6",
+        "bytes": 3681
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-producer-type-extraction-d2c5e000/result.json",
+        "sha256": "5e7199be74163dc42e786a72a21613828675856deda51dc06933104d7224536e",
+        "bytes": 2973
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-producer-type-extraction-d2c5e000/request.json",
+        "sha256": "4c0267825cea21609f9d7b16a4c90c70e03c96a547b1bb2f0d7db1456c6eb246",
+        "bytes": 2894
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-producer-type-extraction-d2c5e000/candidate.patch",
+        "sha256": "da399b022dfb8880e85d1f9685cbe4545da07b319351391e2d1fc658b99e643a",
+        "bytes": 11118
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-producer-type-extraction-d2c5e000/stdout.log",
+        "sha256": "08713ae5cfb03434a02c5ccd1dc5a4b01c46e6cc300a59d6ddfe8ebe8f9be6de",
+        "bytes": 15881
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-producer-type-extraction-d2c5e000/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-producer-type-extraction-d2c5e000/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "b5130c879a24c6e6c9314ea1d94ded19e81173f7a9cf901179784272a2454ca5"
+      }
+    ],
+    "exact_selected_diagnostics": [
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-v2-98365f8e88b341a1b6ab2bdd72060dd2/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:150:0: error: AppBuilder for `mkAppM`, result contains metavariables"
+    ]
+  },
+  {
+    "phase": "r4-producer-type-extraction-02ab729d",
+    "interpretation": "Type-only complete12rawfunctorhead extraction passed: all native constant applications, no Functor record/eta. Eight optional module builder comparisons incomplete; their falseflags are not mismatches.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "96e8ac18a0c2b244f7e553a15f037de4e03a28f4fa452dd443d13c3db10fee59",
+    "native_run": "remote-02ab729d50fb4379ad8dbf878d5f39de",
+    "exit_code": 0,
+    "wall_seconds": 5.224176526069641,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-02ab729d50fb4379ad8dbf878d5f39de/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-v3-b75c35675459433f851ef4a3257ce788/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-v3-b75c35675459433f851ef4a3257ce788/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-v3-b75c35675459433f851ef4a3257ce788/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/producer-type-extraction-v3-b75c35675459433f851ef4a3257ce788/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-producer-type-extraction-02ab729d/delivery.json",
+        "sha256": "efabd383a4113f7e2709d446a5d19694f9f57aabc07dc172edf6821cabaf2932",
+        "bytes": 3681
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-producer-type-extraction-02ab729d/result.json",
+        "sha256": "648c65a00ca50bd8d8a4713b98a0ab1e6eaca964b05aa279aa2f0d4e13c1a1d8",
+        "bytes": 2973
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-producer-type-extraction-02ab729d/request.json",
+        "sha256": "3b06d8a994871357914835bc98a539894cc47ed5ddc114918890dc12c7d2b1de",
+        "bytes": 2894
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-producer-type-extraction-02ab729d/candidate.patch",
+        "sha256": "9b1f989281e34a0e59a36daf3dc2e0624bb253e872cb0d0d5df5f34aeb34d997",
+        "bytes": 12149
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-producer-type-extraction-02ab729d/stdout.log",
+        "sha256": "f0802eab100a6184740725120ed3e7b85b7687270b3ab29b70488affad58e975",
+        "bytes": 33297
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-producer-type-extraction-02ab729d/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-producer-type-extraction-02ab729d/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "96e8ac18a0c2b244f7e553a15f037de4e03a28f4fa452dd443d13c3db10fee59"
+      }
+    ],
+    "exact_selected_diagnostics": []
+  },
+  {
+    "phase": "r4-pointwise-type-pair-d72be55f",
+    "interpretation": "Type-only aligned actual proof-application type versus expected formation binder type. First rawdiff standard versus generic W proof in instAbelian argument5; rawsyntax only, no cause/defeq verdict.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "b49ec836c5de403db90751ac5ffc883d94e857312442136895c1260fbb10227f",
+    "native_run": "remote-d72be55f9df342ea8cb505bb2a6da32e",
+    "exit_code": 0,
+    "wall_seconds": 8.711132287979126,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-d72be55f9df342ea8cb505bb2a6da32e/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/pointwise-type-pair-v2-23ed9e2e278c44549a274076c3b6e1c4/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/pointwise-type-pair-v2-23ed9e2e278c44549a274076c3b6e1c4/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/pointwise-type-pair-v2-23ed9e2e278c44549a274076c3b6e1c4/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/pointwise-type-pair-v2-23ed9e2e278c44549a274076c3b6e1c4/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-pointwise-type-pair-d72be55f/delivery.json",
+        "sha256": "ef22898a7bb86448248c4d1d3d8a8f90dbfa7e787f527bd7addc249acf1103fc",
+        "bytes": 3646
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-pointwise-type-pair-d72be55f/result.json",
+        "sha256": "2ccb5dc1cf32163c76c9cc48db59760b96f58dc3786cc7dc4a60163405c60277",
+        "bytes": 2943
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-pointwise-type-pair-d72be55f/request.json",
+        "sha256": "aa16e2fd5218d955f6a3cb0f63b946afeb142aac83479235e8358724fae2a826",
+        "bytes": 2864
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-pointwise-type-pair-d72be55f/candidate.patch",
+        "sha256": "df7591993152e61155833e63557f6bae5bc6e636e82166caa0db820621155032",
+        "bytes": 14457
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-pointwise-type-pair-d72be55f/stdout.log",
+        "sha256": "4de9de7405d7b1386872b1e450cc88954974b4b53ed1fa88414c9003c875f6f7",
+        "bytes": 185578
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-pointwise-type-pair-d72be55f/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-pointwise-type-pair-d72be55f/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "b49ec836c5de403db90751ac5ffc883d94e857312442136895c1260fbb10227f"
+      }
+    ],
+    "exact_selected_diagnostics": []
+  },
+  {
+    "phase": "r4-local-w-control-879d4f9f",
+    "interpretation": "Only added early localstandardW attribute. Formation noerror; pointwise value kernel-timeout59. No fix.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "40dc37e017e75d865319f968cbb1fe98d44f73f193201655bc0aa78fc46bd471",
+    "native_run": "remote-879d4f9f09b142cfb295d958b8fbf0df",
+    "exit_code": 1,
+    "wall_seconds": 102.51839728653431,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-879d4f9f09b142cfb295d958b8fbf0df/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/local-w-control-ff41f0775a6d4106b75a7ac678732d02/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/local-w-control-ff41f0775a6d4106b75a7ac678732d02/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/local-w-control-ff41f0775a6d4106b75a7ac678732d02/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/local-w-control-ff41f0775a6d4106b75a7ac678732d02/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-local-w-control-879d4f9f/delivery.json",
+        "sha256": "39812cde7dd00ceb4313c5cf303f03503fa49bd611c4ba953c936ce77c4eb784",
+        "bytes": 3571
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-local-w-control-879d4f9f/result.json",
+        "sha256": "e80b4fdfb75a80ac0af6f72904a1f328058edc1d0fe3f628262f460b5aeb7959",
+        "bytes": 2902
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-local-w-control-879d4f9f/request.json",
+        "sha256": "8dac1c4b07931498684eb8b0ce471ec9ff34942eed285bb15908e687cac3e6a4",
+        "bytes": 2822
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-local-w-control-879d4f9f/candidate.patch",
+        "sha256": "b6c6ed02cc8b0cf9c6835c62c23c9c12f3dab161fff78984829b00821c766d6c",
+        "bytes": 6975
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-local-w-control-879d4f9f/stdout.log",
+        "sha256": "b22205e226c15ed80ae7dbf557102c5c93f7d39763a88edadab6a467587f4086",
+        "bytes": 284
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-local-w-control-879d4f9f/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-local-w-control-879d4f9f/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "40dc37e017e75d865319f968cbb1fe98d44f73f193201655bc0aa78fc46bd471"
+      }
+    ],
+    "exact_selected_diagnostics": [
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/local-w-control-ff41f0775a6d4106b75a7ac678732d02/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:59:8: error: (kernel) deterministic timeout"
+    ]
+  },
+  {
+    "phase": "r4-local-w-type-alignment-bb747cc0",
+    "interpretation": "TYPEONLY earlyW capture: expectedmoduleHDC usesstandardW while producerbinder usesgenericW; strictalignment stops at6. Retains exact raw data, no forced substitution.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "284bb62ccef2c9827efd5f00f5bd4577485c0b1bcf261866692eb3fcf7b08e44",
+    "native_run": "remote-bb747cc06f5c42afa4d707846fdaf411",
+    "exit_code": 1,
+    "wall_seconds": 6.526022374629974,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-bb747cc06f5c42afa4d707846fdaf411/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/local-w-type-alignment-12473cd01ba04b6d832fdbb5b6906b3f/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/local-w-type-alignment-12473cd01ba04b6d832fdbb5b6906b3f/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/local-w-type-alignment-12473cd01ba04b6d832fdbb5b6906b3f/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/local-w-type-alignment-12473cd01ba04b6d832fdbb5b6906b3f/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-local-w-type-alignment-bb747cc0/delivery.json",
+        "sha256": "1a430070c6d35b9e7d110e39fa7d45e8cb2f8fe796b1fb34da7bdd461d533c96",
+        "bytes": 3649
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-local-w-type-alignment-bb747cc0/result.json",
+        "sha256": "1f51f62544fa96a32c7bbbf2bade23b264cf5484a147c0acfb7256aaba1fb616",
+        "bytes": 2943
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-local-w-type-alignment-bb747cc0/request.json",
+        "sha256": "5365b0fa2002d3bfa2554584f0a9da2c92727847c1fad12096c7b33f1d6519bc",
+        "bytes": 2864
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-local-w-type-alignment-bb747cc0/candidate.patch",
+        "sha256": "69f0a175cdd3fc94fc6fbc45751ae5999f0ab0de9cef42f0f1598230a1f87e14",
+        "bytes": 16862
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-local-w-type-alignment-bb747cc0/stdout.log",
+        "sha256": "6934425648a8ca45a55fd9655ad75c09004470c115ebb326ce070e2b1b16cdef",
+        "bytes": 327546
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-local-w-type-alignment-bb747cc0/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-local-w-type-alignment-bb747cc0/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "284bb62ccef2c9827efd5f00f5bd4577485c0b1bcf261866692eb3fcf7b08e44"
+      }
+    ],
+    "exact_selected_diagnostics": [
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/local-w-type-alignment-12473cd01ba04b6d832fdbb5b6906b3f/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:279:0: error: No raw-type-matching original local instance for inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.3515732006._hygCtx._hyg.10"
+    ]
+  },
+  {
+    "phase": "r4-mixed-w-type-alignment-bc992746",
+    "interpretation": "TYPEONLY lateW capture: same18closed blocks as earlyW; expectedmoduleHDC stillstandard versus producer generic; strictalignmentgap6. No aligned outputpair claim.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "58f875a10a161fc3d238eeded449788f38d87de128669a6b5a576a2d3c1b5e59",
+    "native_run": "remote-bc992746709a4eb0bd17651c0567b544",
+    "exit_code": 1,
+    "wall_seconds": 7.050886899232864,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-bc992746709a4eb0bd17651c0567b544/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/mixed-w-type-alignment-61d76381679f4e3f8675d9e613de895e/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/mixed-w-type-alignment-61d76381679f4e3f8675d9e613de895e/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/mixed-w-type-alignment-61d76381679f4e3f8675d9e613de895e/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/mixed-w-type-alignment-61d76381679f4e3f8675d9e613de895e/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-mixed-w-type-alignment-bc992746/delivery.json",
+        "sha256": "a35ca3d39c34fcb8c52d40b03f5e37baeb6dc63ec694925ab50f6be6c20f9a1b",
+        "bytes": 3649
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-mixed-w-type-alignment-bc992746/result.json",
+        "sha256": "4f202162b3f665cdb28f03abf8c6cd25108a9305e1089de32e6a5786e09ff4b1",
+        "bytes": 2943
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-mixed-w-type-alignment-bc992746/request.json",
+        "sha256": "b0381c6f19b7d24df3e34b35a7e406ead17a3f5f7fab9a4f159ad40cec79cd00",
+        "bytes": 2864
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-mixed-w-type-alignment-bc992746/candidate.patch",
+        "sha256": "6c9cfe712c33a7676f945c3d8c36c52653c5874cf5abeb583788fe8ab2f534c8",
+        "bytes": 16948
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-mixed-w-type-alignment-bc992746/stdout.log",
+        "sha256": "6e7a6910fe75d3e00309338beb73f96efa7fbaaec1439f510231bfaf3c27a27a",
+        "bytes": 327546
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-mixed-w-type-alignment-bc992746/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-mixed-w-type-alignment-bc992746/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "58f875a10a161fc3d238eeded449788f38d87de128669a6b5a576a2d3c1b5e59"
+      }
+    ],
+    "exact_selected_diagnostics": [
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/mixed-w-type-alignment-61d76381679f4e3f8675d9e613de895e/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:284:0: error: No raw-type-matching original local instance for inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.3515732006._hygCtx._hyg.10"
+    ]
+  },
+  {
+    "phase": "r4-source-typed-projections-2f6d8818",
+    "interpretation": "Pre-kernel namespace error: root Functor.map chosen; no value outcome.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "3c14014649010a1ec81aa8629646d13ecfaf21df738f358874e46d59782256ff",
+    "native_run": "remote-2f6d8818b35342e591cb341d79f9c6be",
+    "exit_code": 1,
+    "wall_seconds": 5.440414756536484,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-2f6d8818b35342e591cb341d79f9c6be/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/source-typed-projections-b642f24354c247e8abb6aa6bbb67dd01/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/source-typed-projections-b642f24354c247e8abb6aa6bbb67dd01/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/source-typed-projections-b642f24354c247e8abb6aa6bbb67dd01/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/source-typed-projections-b642f24354c247e8abb6aa6bbb67dd01/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-source-typed-projections-2f6d8818/delivery.json",
+        "sha256": "8fe75bdb2ce06902a810d46a886812fb2a3f7861b40a607be80f71e971ad2c48",
+        "bytes": 3633
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-source-typed-projections-2f6d8818/result.json",
+        "sha256": "ef679788c99f9c02f08191e179218e9a86218bdef1e1e2eff756214c6f963970",
+        "bytes": 2955
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-source-typed-projections-2f6d8818/request.json",
+        "sha256": "efa8a19d7afa6897057a10f1880e93316d6d32e39c74da1726e5ef944cfdfceb",
+        "bytes": 2876
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-source-typed-projections-2f6d8818/candidate.patch",
+        "sha256": "1330717d6b8a3a9119dcc00d456e1a436e5514b53ecb338524b1102f7bbe5fb1",
+        "bytes": 7623
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-source-typed-projections-2f6d8818/stdout.log",
+        "sha256": "f2ea1f09c516cbea38030a3ec106d0cd3de1f6bd1f1a090881c9a2ff2fad621a",
+        "bytes": 1624
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-source-typed-projections-2f6d8818/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-source-typed-projections-2f6d8818/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "3c14014649010a1ec81aa8629646d13ecfaf21df738f358874e46d59782256ff"
+      }
+    ],
+    "exact_selected_diagnostics": [
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/source-typed-projections-b642f24354c247e8abb6aa6bbb67dd01/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:60:8: error: Application type mismatch: The argument",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/source-typed-projections-b642f24354c247e8abb6aa6bbb67dd01/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:61:60: error: type class instance expected",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/source-typed-projections-b642f24354c247e8abb6aa6bbb67dd01/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:79:8: error: Application type mismatch: The argument",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/source-typed-projections-b642f24354c247e8abb6aa6bbb67dd01/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:80:60: error: type class instance expected"
+    ]
+  },
+  {
+    "phase": "r4-source-typed-projections-v2-b4ec942e",
+    "interpretation": "Qualified CategoryTheory.Functor.obj/map, explicitunderlying2 projectioncategoryargs; namespaceerrors gone but kernel68 persisted.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "0bba14ac335afaa97c5d9927f832f902686e70a745da82eec9e62800ed20d997",
+    "native_run": "remote-b4ec942ed3424967810d3513e452e369",
+    "exit_code": 1,
+    "wall_seconds": 93.04727748036385,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-b4ec942ed3424967810d3513e452e369/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/source-typed-projections-v2-cb936dc90dc44f0dbd543be9f876edc8/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/source-typed-projections-v2-cb936dc90dc44f0dbd543be9f876edc8/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/source-typed-projections-v2-cb936dc90dc44f0dbd543be9f876edc8/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/source-typed-projections-v2-cb936dc90dc44f0dbd543be9f876edc8/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-source-typed-projections-v2-b4ec942e/delivery.json",
+        "sha256": "02014b77055becc3f50da5a08c0d35b24456c94b8d197e53e4fa876220b0aef4",
+        "bytes": 3654
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-source-typed-projections-v2-b4ec942e/result.json",
+        "sha256": "21c9e56da7e65bf1ef42f62135b03a3c63037ccccb390f4503aff8c1cfc9bdca",
+        "bytes": 2973
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-source-typed-projections-v2-b4ec942e/request.json",
+        "sha256": "c2bcfc8de87020e9af0b90ffd9602c61e218ec74b153fe10248cf360c1e1393c",
+        "bytes": 2894
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-source-typed-projections-v2-b4ec942e/candidate.patch",
+        "sha256": "403fd2c92c13c4b51c40456606eb93b1f35b41c60922091f39314a5447c6a685",
+        "bytes": 7683
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-source-typed-projections-v2-b4ec942e/stdout.log",
+        "sha256": "4824fc84731b92c1d5f22594bf5aeef3a39ff0f1bed1e19a25298338fee1d4b3",
+        "bytes": 296
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-source-typed-projections-v2-b4ec942e/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-source-typed-projections-v2-b4ec942e/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "0bba14ac335afaa97c5d9927f832f902686e70a745da82eec9e62800ed20d997"
+      }
+    ],
+    "exact_selected_diagnostics": [
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/source-typed-projections-v2-cb936dc90dc44f0dbd543be9f876edc8/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:68:8: error: (kernel) deterministic timeout"
+    ]
+  },
+  {
+    "phase": "r4-inferred-return-control-f1a685ed",
+    "interpretation": "Actual application as inferred-return def: defProp lint only. No wholepass or kernelnegative inferred.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "bac918c8d2d53db2b73f6ff1108ffc09d0ca3fcf62cac647cc6f0e876ebee073",
+    "native_run": "remote-f1a685ed8620414e8eab9ad6e66c6b76",
+    "exit_code": 1,
+    "wall_seconds": 4.334401071071625,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-f1a685ed8620414e8eab9ad6e66c6b76/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-3b9a6e9951724798a11ce06d4742aa12/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-3b9a6e9951724798a11ce06d4742aa12/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-3b9a6e9951724798a11ce06d4742aa12/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-3b9a6e9951724798a11ce06d4742aa12/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-f1a685ed/delivery.json",
+        "sha256": "26d4a1fe70d199282e2047d75b8a02f2b8ef4bf96a83fa25c8ec791c4460e0ab",
+        "bytes": 3626
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-f1a685ed/result.json",
+        "sha256": "f8ee1c9be7e13357c43c51b77642f8e6772fdcb694d126f837b7e76a2f607ec6",
+        "bytes": 2949
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-f1a685ed/request.json",
+        "sha256": "da4f33d7ecd9afc8658b6472419c14f36f3c1a0d062ae21c91e11c04d10a2169",
+        "bytes": 2870
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-f1a685ed/candidate.patch",
+        "sha256": "3e1955fbd80c5f2b052fa05156a768e273d01c196526487383881a5f4cbfa343",
+        "bytes": 5558
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-f1a685ed/stdout.log",
+        "sha256": "437823e9de56193ad6c66c0512e3c4efbec272fbc5a3eb5629dd659cb7816fb2",
+        "bytes": 415
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-f1a685ed/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-f1a685ed/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "bac918c8d2d53db2b73f6ff1108ffc09d0ca3fcf62cac647cc6f0e876ebee073"
+      }
+    ],
+    "exact_selected_diagnostics": [
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-3b9a6e9951724798a11ce06d4742aa12/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:48:0: error: Definition `inferredPointwise` is a proposition; use `theorem` instead of `def`"
+    ]
+  },
+  {
+    "phase": "r4-inferred-return-control-v2-333470a6",
+    "interpretation": "Theorem : _ unsupported beforeproof; inferDefTypeFailed, later local-name/non-Prop cascades. No kernelvalue result.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "58c6c2fc11068e072c3c40ecf3a36afef492fe44e09e6b70baef928926efdf52",
+    "native_run": "remote-333470a69a104437b3178a32bfc7c146",
+    "exit_code": 1,
+    "wall_seconds": 4.286446586251259,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-333470a69a104437b3178a32bfc7c146/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v2-dafa8fa813c5466686cb43dbee22fa2a/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v2-dafa8fa813c5466686cb43dbee22fa2a/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v2-dafa8fa813c5466686cb43dbee22fa2a/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v2-dafa8fa813c5466686cb43dbee22fa2a/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-v2-333470a6/delivery.json",
+        "sha256": "16c0f900a9449b1c7ecf4792079bc0069677f63f0fb2dbbe5a1fd01111fc7d0d",
+        "bytes": 3647
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-v2-333470a6/result.json",
+        "sha256": "92f4e82923bc3502edf654eb7259f934476c63f5644728504fec3d2943e42812",
+        "bytes": 2967
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-v2-333470a6/request.json",
+        "sha256": "2ba5d5f029818feefda66949d3df98943c18c1fedb34a4af1ccb387163ff4df0",
+        "bytes": 2888
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-v2-333470a6/candidate.patch",
+        "sha256": "c35ff47d1442e3de6c955e84ee424ff94237d68d6ce499ebdc1767aa2442fccc",
+        "bytes": 5552
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-v2-333470a6/stdout.log",
+        "sha256": "b4e0948e4c0b090c6a305d94601ab8f3043f1d6ed8c555c67387cdeead6ff213",
+        "bytes": 2799
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-v2-333470a6/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-v2-333470a6/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "58c6c2fc11068e072c3c40ecf3a36afef492fe44e09e6b70baef928926efdf52"
+      }
+    ],
+    "exact_selected_diagnostics": [
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v2-dafa8fa813c5466686cb43dbee22fa2a/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:49:73: error(lean.inferDefTypeFailed): Failed to infer type of theorem `inferredPointwise`",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v2-dafa8fa813c5466686cb43dbee22fa2a/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:50:42: error(lean.unknownIdentifier): Unknown identifier `f`",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v2-dafa8fa813c5466686cb43dbee22fa2a/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:50:44: error(lean.unknownIdentifier): Unknown identifier `f'`",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v2-dafa8fa813c5466686cb43dbee22fa2a/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:50:47: error(lean.unknownIdentifier): Unknown identifier `g`",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v2-dafa8fa813c5466686cb43dbee22fa2a/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:50:49: error(lean.unknownIdentifier): Unknown identifier `g'`",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v2-dafa8fa813c5466686cb43dbee22fa2a/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:50:52: error(lean.unknownIdentifier): Unknown constant `sq.w.symm`",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v2-dafa8fa813c5466686cb43dbee22fa2a/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:49:0: error: type of theorem `AlgebraicGeometry.Scheme.EtaleCohomology.Proper.R4PointwiseCube.inferredPointwise` is not a proposition"
+    ]
+  },
+  {
+    "phase": "r4-inferred-return-control-v3-218babd6",
+    "interpretation": "ActualP helper private in public theorem header: visibility error, cascades. No kernelvalue result.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "d4068930575a0994689a1a77ee371c4463e247081957f70981f083f7288cb333",
+    "native_run": "remote-218babd607a1430e81e0c0a1f30eee9d",
+    "exit_code": 1,
+    "wall_seconds": 4.499938920140266,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-218babd607a1430e81e0c0a1f30eee9d/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v3-e5cf0ffa7f67429c9016451c7504d75e/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v3-e5cf0ffa7f67429c9016451c7504d75e/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v3-e5cf0ffa7f67429c9016451c7504d75e/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v3-e5cf0ffa7f67429c9016451c7504d75e/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-v3-218babd6/delivery.json",
+        "sha256": "b28217c6e2e1f12f3ad5e97d8abe81c0ffdfe891467173642acabd5d491ca314",
+        "bytes": 3647
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-v3-218babd6/result.json",
+        "sha256": "ce44c16143b823fa42b0d994fbcf100c99bdf8893da75ba7a8e283e14c6fe6df",
+        "bytes": 2967
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-v3-218babd6/request.json",
+        "sha256": "bfee91921b2d008ca2ee4ab83b56cd510ce855341179e939884c7e0c9ee77ccf",
+        "bytes": 2888
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-v3-218babd6/candidate.patch",
+        "sha256": "7e3464a637b6dd2d67003bc380ba84a6e84f33f0ede5acc2dc6bc703604ed70c",
+        "bytes": 5692
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-v3-218babd6/stdout.log",
+        "sha256": "1f28237173db52b0127d2f39aacfc471293df0160a5911d9003bdfb63df42ee2",
+        "bytes": 2731
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-v3-218babd6/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-v3-218babd6/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "d4068930575a0994689a1a77ee371c4463e247081957f70981f083f7288cb333"
+      }
+    ],
+    "exact_selected_diagnostics": [
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v3-e5cf0ffa7f67429c9016451c7504d75e/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:52:4: error(lean.unknownIdentifier): Unknown identifier `proofConclusion`",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v3-e5cf0ffa7f67429c9016451c7504d75e/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:53:42: error(lean.unknownIdentifier): Unknown identifier `f`",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v3-e5cf0ffa7f67429c9016451c7504d75e/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:53:44: error(lean.unknownIdentifier): Unknown identifier `f'`",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v3-e5cf0ffa7f67429c9016451c7504d75e/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:53:47: error(lean.unknownIdentifier): Unknown identifier `g`",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v3-e5cf0ffa7f67429c9016451c7504d75e/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:53:49: error(lean.unknownIdentifier): Unknown identifier `g'`",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v3-e5cf0ffa7f67429c9016451c7504d75e/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:53:52: error(lean.unknownIdentifier): Unknown constant `sq.w.symm`",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v3-e5cf0ffa7f67429c9016451c7504d75e/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:1:0: error: The current module only contains private declarations."
+    ]
+  },
+  {
+    "phase": "r4-inferred-return-control-v4-a40be801",
+    "interpretation": "ActualP helper public; same real producer application checks against its own proposition. Whole diagnostic PASS4.761s; no manualequation/R4closure.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "1dd654bdd4071a0f080e29d86e137328f93a99cbfa53a9911ec8f9c62889c3c1",
+    "native_run": "remote-a40be80199a34571b99e8626138a1a2c",
+    "exit_code": 0,
+    "wall_seconds": 4.761083260178566,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-a40be80199a34571b99e8626138a1a2c/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v4-2b7c568286364a9ba13bec2c9ec06a46/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v4-2b7c568286364a9ba13bec2c9ec06a46/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v4-2b7c568286364a9ba13bec2c9ec06a46/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v4-2b7c568286364a9ba13bec2c9ec06a46/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-v4-a40be801/delivery.json",
+        "sha256": "20d87bfe6d0f016256d10d58a8ed77e649bd06ac47c075e33f13ddd1840f8351",
+        "bytes": 3647
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-v4-a40be801/result.json",
+        "sha256": "65e8eee3fad0f7d0d1c4addb5b6c81ab1b994bf21e72d90bb699491ca3da10e8",
+        "bytes": 2967
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-v4-a40be801/request.json",
+        "sha256": "4b9ee27d995d52701cdbadf5d84dc76eb482b2922b08cd071fe578a68ae7174f",
+        "bytes": 2888
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-v4-a40be801/candidate.patch",
+        "sha256": "fb472d906e2047c4103a077cb5de6b502fa3d1e92a97ce4364f8c841e0672a3e",
+        "bytes": 5751
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-v4-a40be801/stdout.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-v4-a40be801/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-inferred-return-control-v4-a40be801/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "1dd654bdd4071a0f080e29d86e137328f93a99cbfa53a9911ec8f9c62889c3c1"
+      }
+    ],
+    "exact_selected_diagnostics": []
+  },
+  {
+    "phase": "r4-full-inferred-equation-v1-2e13005a",
+    "interpretation": "Full original R4 source5d7d passes6.536s: inferred hcube consumed directly by complete component cancellation, every native fact proved. Frozenbasis success; later currentN integration separate.",
+    "recorded_kind": "author-selected R4 candidate diagnostic only; no current-N module coverage",
+    "candidate_sha256": "5d7d253d40622574dd66111024c0a67c388c238cc25f33d8cecd4019a3592111",
+    "native_run": "remote-2e13005a9ced49f9957f5f02c7754e8a",
+    "exit_code": 0,
+    "wall_seconds": 6.536038860678673,
+    "compiler_starts": 1,
+    "source_basis": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+    "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+    "provider_artifacts_sha256": "b8a81d3f1d55c994c43b511c84dec652f6367b2ff9a0ad34d1f9a153192e3bf6",
+    "default_budgets": true,
+    "setup_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 2,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768
+    },
+    "exact_command": [
+      "/root/autodl-tmp/lean-build/logs/remote-2e13005a9ced49f9957f5f02c7754e8a/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/full-inferred-equation-r4-v1-597239e60ff14bd1ab638dc3dfa2a2f0/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/ProperBaseChange.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/full-inferred-equation-r4-v1-597239e60ff14bd1ab638dc3dfa2a2f0/outputs/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/full-inferred-equation-r4-v1-597239e60ff14bd1ab638dc3dfa2a2f0/outputs/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/full-inferred-equation-r4-v1-597239e60ff14bd1ab638dc3dfa2a2f0/outputs/ProperBaseChange.c"
+    ],
+    "full_files": {
+      "delivery.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-full-inferred-equation-v1-2e13005a/delivery.json",
+        "sha256": "21dd33fbe2f0aada45137eb571a74e2f12ac270b3b3d595deecd71b63f16a7c7",
+        "bytes": 3658
+      },
+      "result.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-full-inferred-equation-v1-2e13005a/result.json",
+        "sha256": "b923fd1ebcc3d1ab8863f856cabe11e51cd0fe1d3233833e5ffabec39b42f102",
+        "bytes": 2979
+      },
+      "request.json": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-full-inferred-equation-v1-2e13005a/request.json",
+        "sha256": "1cd1b48253131c78caa991a13001842418a3b9ca1e106ae8d9dc52bea4bdf438",
+        "bytes": 2900
+      },
+      "candidate.patch": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-full-inferred-equation-v1-2e13005a/candidate.patch",
+        "sha256": "85f775b72cd5191a591d96d3e51fdbb144226f5dc98b0b05b835be747306c501",
+        "bytes": 4582
+      },
+      "stdout.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-full-inferred-equation-v1-2e13005a/stdout.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr.log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-full-inferred-equation-v1-2e13005a/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "source_files": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-full-inferred-equation-v1-2e13005a/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "sha256": "5d7d253d40622574dd66111024c0a67c388c238cc25f33d8cecd4019a3592111"
+      }
+    ],
+    "exact_selected_diagnostics": []
+  }
+]

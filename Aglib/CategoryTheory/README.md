@@ -21,6 +21,24 @@ universal natural comparison; it asserts no comparison-isomorphism theorem.
 provides endpoint equality transport, while cancellation and reassociation use
 the existing Mathlib API.
 
+[Filtered/AdjointStageHom](Filtered/AdjointStageHom.lean) supplies
+`AdjointStageHom.homCoconeIsColimitOfFiniteColimitClosure`: the fixed-cocone Hom
+universal property extends from a supplied object property to its finite-colimit
+closure under the displayed filteredness and generator hypotheses.
+
+[Filtered/SystemConstructions](Filtered/SystemConstructions.lean) constructs
+restrictions, square pullbacks and fixed-source systems from one coherent
+adjunction datum. [CoefficientSections](Filtered/CoefficientSections.lean)
+evaluates its existing coefficient diagram.
+[SectionDiagrams](Filtered/SectionDiagrams.lean) and
+[IndexedConeSections](Filtered/IndexedConeSections.lean) construct the indexed
+section row and its cone comparison from the original units, compositions and
+triangle maps. Index, base, coefficient and section universes remain independent.
+
+[Group resize naturality](../Algebra/Category/Grp/Resize/Naturality.lean)
+evaluates the supplied common-ULift comparison square and recovers the same
+unlifted map naturality without changing either group or its maps.
+
 Focused interface guides: [Effective epimorphisms over a base](EffectiveEpi/README.md).
 
 [ObjectProperty/Yoneda](ObjectProperty/Yoneda.lean) tests morphisms on the objects of a property
@@ -58,3 +76,8 @@ and `Q` of `D` with `L` sending `P` into `Q`, and `F` on `Q` represented by `Y`,
 `R.obj Y.obj` when that object satisfies `P`, through `(T ⟶ R Y) ≃ (L T ⟶ Y)`; the adjunction need
 not restrict to the full subcategories. Consumer:
 [Picard/BaseChangeRepresentableBy](../AlgebraicGeometry/Picard/BaseChangeRepresentableBy.lean).
+
+## Additional source entry points
+
+- [Filtered/InvertibleDiagramTargetEquation](Filtered/InvertibleDiagramTargetEquation.lean)
+- [Filtered/InvertibleDiagramToTarget](Filtered/InvertibleDiagramToTarget.lean)

@@ -243,3 +243,60 @@ theorem sliceRestriction_comp {W V U : C} (f : W ⟶ V) (g : V ⟶ U)
   simp
 
 end CategoryTheory.Sheaf.SliceCohomology
+
+namespace CategoryTheory.Sheaf.SliceCohomology
+
+section SourceExtTransfer
+
+universe uA vA uB vB uD vD eA eB eD
+
+variable {A : Type uA} [Category.{vA} A] {B : Type uB} [Category.{vB} B]
+  {D : Type uD} [Category.{vD} D] [Abelian A] [Abelian B] [Abelian D]
+  [HasExt.{eA} A] [HasExt.{eB} B] [HasExt.{eD} D]
+  (R : A ⥤ B) (S : A ⥤ D) (T : B ⥤ D)
+  [R.Additive] [S.Additive] [T.Additive]
+  [PreservesFiniteLimits R] [PreservesFiniteColimits R]
+  [PreservesFiniteLimits S] [PreservesFiniteColimits S]
+  [PreservesFiniteLimits T] [PreservesFiniteColimits T]
+  {L : D ⥤ B} [L.Additive] [PreservesFiniteLimits L] [PreservesFiniteColimits L]
+
+/-- The complete original adjunction-source comparison carries an exact-functor
+source square to the corresponding Ext square, with the actual coefficient iso. -/
+theorem sourceExtComparison_compatibility (adj : L ⊣ T)
+    {X Y F : A} {Z : B} {W : D} (e : L.obj W ≅ Z) (τ : R ⋙ T ≅ S)
+    (a : Z ⟶ R.obj X) (b : W ⟶ S.obj Y) (g : Y ⟶ X)
+    (hsource : (adj.unit.app W ≫ T.map e.hom) ≫ T.map a ≫ τ.hom.app X =
+      b ≫ S.map g) {n : ℕ} (x : Ext.{eA} X F n) :
+    (adj.sourceExtComparison e (R.obj F) n
+      ((Ext.mk₀ a).comp (x.mapExactFunctor R) (Nat.zero_add n))).comp
+        (Ext.mk₀ (τ.hom.app F)) (Nat.add_zero n) =
+      (Ext.mk₀ b).comp
+        (((Ext.mk₀ g).comp x (Nat.zero_add n)).mapExactFunctor S) (Nat.zero_add n) := by
+  rw [Adjunction.sourceExtComparison_apply]
+  exact extRestrictionCompatibility R S T τ.hom
+    (adj.unit.app W ≫ T.map e.hom) a b g hsource x
+
+omit [HasExt.{eD} D] in
+/-- A zero under the original source precomposition transfers through the full
+actual adjunction/source comparison. Only its intermediate Ext size is selected
+internally; the source and target Ext worlds stay independent. -/
+theorem extPrecomp_eq_zero_of_precomp_eq_zero (adj : L ⊣ T)
+    {X Y F : A} {Z : B} {W : D} (e : L.obj W ≅ Z) (τ : R ⋙ T ≅ S)
+    (a : Z ⟶ R.obj X) (b : W ⟶ S.obj Y) (g : Y ⟶ X)
+    (hsource : (adj.unit.app W ≫ T.map e.hom) ≫ T.map a ≫ τ.hom.app X =
+      b ≫ S.map g) {n : ℕ} (x : Ext.{eA} X F n)
+    (hx : (Ext.mk₀ g).comp x (Nat.zero_add n) = 0) :
+    (Ext.mk₀ a).comp (x.mapExactFunctor R) (Nat.zero_add n) = 0 := by
+  let : HasExt.{max uD vD} D := HasExt.standard D
+  let c := (adj.sourceExtComparison e (R.obj F) n).trans
+    (((extFunctorObj W n).mapIso (τ.app F)).addCommGroupIsoToAddEquiv)
+  apply c.injective
+  rw [map_zero]
+  have h := sourceExtComparison_compatibility R S T adj e τ a b g hsource x
+  exact h.trans (by
+    rw [hx, Ext.mapExactFunctor_zero, Ext.comp_zero]
+    rfl)
+
+end SourceExtTransfer
+
+end CategoryTheory.Sheaf.SliceCohomology

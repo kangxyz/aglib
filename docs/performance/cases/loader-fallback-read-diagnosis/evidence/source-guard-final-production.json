@@ -1,0 +1,26 @@
+{
+  "command": [
+    "/Users/kang/Applications/SageMath-10-8.app/Contents/Frameworks/Sage.framework/Versions/10.8/local/bin/python3",
+    "scripts/lean_tools/__main__.py",
+    "source",
+    "--root",
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-etale-abstract-20261029"
+  ],
+  "exit_code": 0,
+  "stdout": "Checked 7344 Lean sources using the shared source-policy engine.\n",
+  "stderr": "",
+  "head": "05b8c4704abf0759cfdac5f5ddabe440dc73874b",
+  "owned_changed_files": {
+    ".github/LEAN_CI.md": "5fb8a1e60852efe32f120fcae6975f4c85a4f8eab0b98700d2a27f495857766a",
+    ".github/workflows/lean-ci.yml": "4d8602c642f0f3b417f99de551ce2958c931bfaafa2c9c69fca5e624cf9f6b4c",
+    "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean": "48cabc494c9aba779b667c5b6fc4d4b235fae3af40c5479ddf25a5be273867f3",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleEtaleExchangeMate.lean": "782e8e6459b968ae358bf5090bd1da61afbc0db8bbf3a7c2dad1da435bfe1910",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/FieldNaturality.lean": "b1530c4c0628611a3f376dbb7827e8e1cfd96eb81c734d65a56d20f3ed8afe04",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/Horizontal.lean": "f29e58bdda2f7b50aba496411aa8d428ac3b5275d4a2cdd147b93386174415c6",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/README.md": "dc073c9fac354bc831a409489583237f88d0b1aaa8f3c7871c6132c8b5c019a7",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/Reduction.lean": "81d0c9730ea30d45633784a33c20cfb921d5fa3248c46bd13f56497d47da3846",
+    "Aglib/AlgebraicGeometry/Group/IsogenyPairing.lean": "9f46324789a5a0e8b270915ad2f5803dca20f44357bb816ac0b2089e8089e714",
+    "Aglib/AlgebraicGeometry/Picard/KummerH1.lean": "020b7322e21b56dd11d8bc391a785af274f56cc0f250d204afa9dd7c5bbd272a",
+    "scripts/tests/test_lean_ci_workflow.py": "3141887d2e6374a75a525735b1adca5a383b0407d314d1597b53279eb63301b0"
+  }
+}

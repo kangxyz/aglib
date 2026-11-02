@@ -1,0 +1,17 @@
+{
+  "question": "ActualCI38a unusedArguments cascade normalstockcontext only",
+  "source": "5f20c26dfae437146cfe28ecbe86e39cff71a0079a5072b55d5a77ecd135d7c2",
+  "target_sha256": "38a44417d19bb8edc88e665e2adece80a22bee78942263059eec7e8d6aa0a4eb",
+  "command": [
+    "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "--no-build",
+    "env",
+    "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/bin/runLinter",
+    "--no-build",
+    "--trace",
+    "Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.GenericPullback"
+  ],
+  "exit_code": 0,
+  "seconds": 14.258052319288254,
+  "boundary": "ExistingfullstockgetChecksunchangedonONEactualCIimportcontext; includesneededunusedArguments, no filtered/newchecker, CPP/style/audit/test/replay/client or wholeCIrepeat."
+}

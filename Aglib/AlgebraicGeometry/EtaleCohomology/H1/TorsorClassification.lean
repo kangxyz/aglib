@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.CategoryTheory.Sites.Torsor.Classification
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ExtensionFiberTransport
 public import Aglib.CategoryTheory.Abelian.Ext1.Representability
 public import Aglib.CategoryTheory.Abelian.Ext1.Equality
@@ -44,13 +45,9 @@ variable {X : Scheme.{u}} {L : AbelianSheaf.{u, u + 1} X}
 
 /-- The existing actual canonical torsor extension with definitionally fixed
 coefficient and constant-integer endpoints. -/
-def torsorExtensionRepresentative (P : Torsor L) :
-    _root_.CategoryTheory.Abelian.Ext1.Extension (constantIntegerSheaf X) L where
-  middle := (torsorExtension P).X₂
-  i := (torsorExtension P).f
-  p := (torsorExtension P).g
-  zero := (torsorExtension P).zero
-  shortExact := torsorExtension_shortExact P
+abbrev torsorExtensionRepresentative (P : Torsor L) :
+    _root_.CategoryTheory.Abelian.Ext1.Extension (constantIntegerSheaf X) L :=
+  CategoryTheory.Sheaf.torsorExtensionRepresentative P
 
 /-- The torsor isomorphism class of the actual fibre over integer one in a
 short-exact extension with fixed endpoints. -/
@@ -60,44 +57,58 @@ def extensionFiberClass
   Quotient.mk (_root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.isomorphicSetoid L)
     (extensionFiberTorsor E.toShortComplex (constantIntegerOne X) E.shortExact)
 
+/-- The original terminal-one fibre class equals the intrinsic class on the same carrier. -/
+theorem extensionFiberClass_eq_generic
+    (E : CategoryTheory.Abelian.Ext1.Extension (constantIntegerSheaf X) L) :
+    extensionFiberClass E = CategoryTheory.Sheaf.extensionFiberClass E := by
+  exact congrArg
+    (fun z : Topos.GlobalPoint (underlyingSetSheaf (constantIntegerSheaf X)) =>
+      _root_.Quotient.mk (Torsor.isomorphicSetoid L)
+        (CategoryTheory.Sheaf.extensionFiberTorsor E.toShortComplex z E.shortExact))
+    (constantIntegerOne_asGlobalPoint (X := X))
+
 /-- Identity-endpoint extension isomorphisms give the same actual fibre class. -/
 theorem extensionFiberClass_eq_of_iso
     {E E' : _root_.CategoryTheory.Abelian.Ext1.Extension (constantIntegerSheaf X) L}
     (e : _root_.CategoryTheory.Abelian.Ext1.Extension.Iso E E') :
-    extensionFiberClass E = extensionFiberClass E' :=
-  Quotient.sound ⟨extensionFiberIso e (constantIntegerOne X)⟩
+    extensionFiberClass E = extensionFiberClass E' := by
+  simpa only [extensionFiberClass_eq_generic] using
+    CategoryTheory.Sheaf.extensionFiberClass_eq_of_iso e
 
 /-- The actual fibre of the existing canonical extension recovers the original
 torsor isomorphism class. -/
 theorem extensionFiberClass_torsorExtension (P : Torsor L) :
     extensionFiberClass (torsorExtensionRepresentative P) =
       Quotient.mk (_root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.isomorphicSetoid L) P :=
-  Quotient.sound ⟨(torsorCanonicalExtensionIso P).symm⟩
+  (extensionFiberClass_eq_generic (torsorExtensionRepresentative P)).trans
+    (CategoryTheory.Sheaf.extensionFiberClass_torsorExtension P)
 
 section ExtClass
 variable [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
 
 /-- The fixed-endpoint packaging retains the already constructed torsor class. -/
 theorem torsorExtensionRepresentative_extClass (P : Torsor L) :
-    (torsorExtensionRepresentative P).extClass = torsorExtClass P := rfl
+    (torsorExtensionRepresentative P).extClass = torsorExtClass P :=
+  CategoryTheory.Sheaf.torsorExtensionRepresentative_extClass P
 
 /-- The class of any actual extension fibre maps to exactly that extension's
 existing Ext class; no class-bijectivity premise is used. -/
 theorem torsorClassToH1_extensionFiberClass
     (E : _root_.CategoryTheory.Abelian.Ext1.Extension (constantIntegerSheaf X) L) :
-    torsorClassToH1 L (extensionFiberClass E) = E.extClass :=
-  torsorExtClass_extensionFiber E.i E.p E.zero E.shortExact
+    torsorClassToH1 L (extensionFiberClass E) = E.extClass := by
+  simpa only [extensionFiberClass_eq_generic] using
+    CategoryTheory.Sheaf.torsorClassToH1_extensionFiberClass E
 
 /-- An actual short-exact extension representing the prescribed H1 class,
 chosen from the generic proved Ext1 representability theorem. -/
-def h1ExtensionRepresentative (xi : H1Etale X L) :
+abbrev h1ExtensionRepresentative (xi : H1Etale X L) :
     _root_.CategoryTheory.Abelian.Ext1.Extension (constantIntegerSheaf X) L :=
-  Classical.choose (_root_.CategoryTheory.Abelian.Ext1.exists_extension xi)
+  CategoryTheory.Sheaf.h1ExtensionRepresentative xi
 
 /-- The chosen actual extension has exactly the input class. -/
 theorem h1ExtensionRepresentative_extClass (xi : H1Etale X L) :
     (h1ExtensionRepresentative xi).extClass = xi :=
-  Classical.choose_spec (_root_.CategoryTheory.Abelian.Ext1.exists_extension xi)
+  CategoryTheory.Sheaf.h1ExtensionRepresentative_extClass xi
 
 /-- The inverse classifier takes the actual one-fibre of an actual
 short-exact representative of the H1 class. -/
@@ -105,39 +116,38 @@ def h1ToTorsorClass (L : AbelianSheaf.{u, u + 1} X) :
     H1Etale X L → TorsorClass L :=
   fun xi => extensionFiberClass (h1ExtensionRepresentative xi)
 
+/-- The original terminal-fibre inverse is the single intrinsic representative inverse. -/
+theorem h1ToTorsorClass_eq_generic (xi : H1Etale X L) :
+    h1ToTorsorClass L xi = CategoryTheory.Sheaf.h1ToTorsorClass L xi :=
+  extensionFiberClass_eq_generic (h1ExtensionRepresentative xi)
+
 /-- The fibre of every representative of an H1 class gives the same inverse
 class. This proves independence from the selected extension representative. -/
 theorem h1ToTorsorClass_eq_extensionFiberClass
     (E : _root_.CategoryTheory.Abelian.Ext1.Extension (constantIntegerSheaf X) L) :
-    h1ToTorsorClass L E.extClass = extensionFiberClass E := by
-  obtain ⟨e⟩ := _root_.CategoryTheory.Abelian.Ext1.extClass_eq_iso
-    (h1ExtensionRepresentative E.extClass) E
-    (h1ExtensionRepresentative_extClass E.extClass)
-  exact extensionFiberClass_eq_of_iso e
+    h1ToTorsorClass L E.extClass = extensionFiberClass E :=
+  (h1ToTorsorClass_eq_generic E.extClass).trans
+    ((CategoryTheory.Sheaf.h1ToTorsorClass_eq_extensionFiberClass E).trans
+      (extensionFiberClass_eq_generic E).symm)
 
 /-- Mapping the chosen actual one-fibre back to H1 recovers the input class. -/
 theorem torsorClassToH1_h1ToTorsorClass (xi : H1Etale X L) :
-    torsorClassToH1 L (h1ToTorsorClass L xi) = xi := by
-  exact (torsorClassToH1_extensionFiberClass (h1ExtensionRepresentative xi)).trans
-    (h1ExtensionRepresentative_extClass xi)
+    torsorClassToH1 L (h1ToTorsorClass L xi) = xi :=
+  (congrArg (torsorClassToH1 L) (h1ToTorsorClass_eq_generic xi)).trans
+    (CategoryTheory.Sheaf.torsorClassToH1_h1ToTorsorClass xi)
 
 /-- The inverse class of the canonical torsor extension is the original
 torsor isomorphism class, by identity-endpoint extension comparison. -/
 theorem h1ToTorsorClass_torsorClassToH1 (a : TorsorClass L) :
-    h1ToTorsorClass L (torsorClassToH1 L a) = a := by
-  induction a using Quotient.inductionOn with
-  | h P =>
-    change h1ToTorsorClass L (torsorExtensionRepresentative P).extClass =
-      Quotient.mk (_root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.isomorphicSetoid L) P
-    exact (h1ToTorsorClass_eq_extensionFiberClass (torsorExtensionRepresentative P)).trans
-      (extensionFiberClass_torsorExtension P)
+    h1ToTorsorClass L (torsorClassToH1 L a) = a :=
+  (h1ToTorsorClass_eq_generic (torsorClassToH1 L a)).trans
+    (CategoryTheory.Sheaf.h1ToTorsorClass_torsorClassToH1 a)
 
 /-- The existing canonical torsor-class-to-H1 map is bijective for every
 abelian coefficient sheaf and every displayed Ext universe. -/
 theorem torsorClassToH1_bijective (L : AbelianSheaf.{u, u + 1} X) :
     Function.Bijective (torsorClassToH1 L) :=
-  ⟨Function.LeftInverse.injective h1ToTorsorClass_torsorClassToH1,
-    Function.RightInverse.surjective torsorClassToH1_h1ToTorsorClass⟩
+  CategoryTheory.Sheaf.torsorClassToH1_bijective L
 
 /-- Proof of the retained `Stacks03AJ` interface in
 `R5Lab/Cohomology/EtaleH1/TorsorClass.lean:158-162` at repository revision

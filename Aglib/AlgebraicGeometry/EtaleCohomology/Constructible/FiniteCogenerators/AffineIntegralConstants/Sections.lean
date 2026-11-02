@@ -40,36 +40,15 @@ attribute [local instance] hasSheafifyLarge
 /-- Original additive sections of a commutative group scheme on arbitrary
 scheme-valued tests over its fixed base. -/
 def sectionFunctor {U : Scheme.{u}} (H : Grp (Over U)) [IsCommMonObj H.X] :
-    (Over U)ᵒᵖ ⥤ AddCommGrpCat.{u + 1} where
-  obj T := AddCommGrpCat.of (RepresentedSections H T.unop)
-  map f := AddCommGrpCat.ofHom (representedSectionsPullback H f.unop)
-  map_id T := by
-    apply AddCommGrpCat.hom_ext
-    apply AddMonoidHom.ext
-    intro a
-    apply ULift.ext
-    change Additive.ofMul (𝟙 T.unop ≫ a.down.toMul) = a.down
-    simp
-  map_comp f g := by
-    apply AddCommGrpCat.hom_ext
-    apply AddMonoidHom.ext
-    intro a
-    apply ULift.ext
-    change Additive.ofMul ((g.unop ≫ f.unop) ≫ a.down.toMul) =
-      Additive.ofMul (g.unop ≫ (f.unop ≫ a.down.toMul))
-    rw [Category.assoc]
+    (Over U)ᵒᵖ ⥤ AddCommGrpCat.{u + 1} :=
+  CommutativeGroupSections.functor.{u + 1} H
 
 /-- Forgetting addition leaves the original Yoneda sections, with only the
 necessary value-universe lift. -/
 def sectionFunctorForgetIso {U : Scheme.{u}} (H : Grp (Over U)) [IsCommMonObj H.X] :
     sectionFunctor H ⋙ CategoryTheory.forget AddCommGrpCat.{u + 1} ≅
       yoneda.obj H.X ⋙ uliftFunctor.{u + 1} :=
-  NatIso.ofComponents (fun T => Equiv.toIso {
-    toFun := fun a => ULift.up a.down.toMul
-    invFun := fun a => ULift.up (Additive.ofMul a.down)
-    left_inv := fun _ => rfl
-    right_inv := fun _ => rfl })
-    (fun f => by ext a; rfl)
+  CommutativeGroupSections.forgetIso.{u + 1} H
 
 /-- Fixed represented additive sections retain the native finite-presentation
 colimit universal property, including their original additive maps. -/

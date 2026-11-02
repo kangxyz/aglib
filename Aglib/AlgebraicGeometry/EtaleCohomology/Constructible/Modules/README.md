@@ -7,6 +7,12 @@ commutative and unital; its universe is independent of the scheme universe.
 
 ## Focused imports and public interfaces
 
+[CohomologyVanishing](CohomologyVanishing.lean) reduces vanishing for an
+original finite locally constant module sheaf with positive annihilator to
+prime-constant vanishing on the actual finite étale tests. Its general
+finite-ring form retains the displayed full additive-forgetting hypothesis,
+and the source cohomology universe remains independent.
+
 - `ZMod` is an independent adapter for the original finite-abelian predicate.
   `isFiniteLocallyConstant_zmodSheaf_iff` and
   `isConstructible_zmodSheaf_iff` use the original
@@ -157,3 +163,39 @@ fields, for arbitrary commutative coefficient rings and independent Ext
 universes. `Finiteness/DimensionZeroModules` combines that result with original
 positive-degree vanishing for all-degree finite generation in dimension zero.
 No general finite-fp image-constructibility or D localization premise is used.
+
+[FiniteEtaleTrivialization](FiniteEtaleTrivialization.lean) constructs a
+connected Galois finite étale trivialization on a connected scheme for a
+finite-type locally constant module over a finite commutative ring when
+additive forgetting is full. Native positive `ZMod n` and its lift discharge
+that fullness; the constant module is the actual global-sections module on
+the chosen cover and is not assumed free.
+
+## Finite images over locally Noetherian targets
+
+`FiniteImageLocallyNoetherian` proves constructibility of the original module
+direct image under every finite morphism with locally Noetherian target. The
+commutative coefficient ring has an independent universe and need not be
+Noetherian; local finite presentation of the original finite map is not an
+extra premise. `FiniteImageNoetherian` supplies the quasi-compact target step.
+The affine-local conclusion uses the original finite-base-change map.
+
+`FiniteImageNoetherianInduction` applies the geometric reduced closed-support
+partition constructor and `FiniteImagePartitions` to the actual restrictions.
+`FiniteImageClosedDescent` retains the original invertible unit for a surjective
+closed immersion, and `FiniteImageSourceReduction` identifies the entire
+original direct image after actual source reduction. These require no
+finite-presentation or bounded-nilpotence premise.
+
+The radicial leaves use actual descended finite-etale charts, original module
+unit/counit comparisons and the same finite module values. `FiniteImageAffine`
+then uses the actual generic radicial/finite-etale factorization of the reduced
+source map. This does not supply finite-image constructibility over an
+arbitrary target or a proper/smooth higher-image theorem.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [FieldRecognition](FieldRecognition.lean)
+- [StrictLocalFiniteSections](StrictLocalFiniteSections.lean)

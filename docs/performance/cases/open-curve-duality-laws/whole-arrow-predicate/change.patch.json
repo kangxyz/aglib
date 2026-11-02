@@ -1,0 +1,6 @@
+{
+  "original_relative_path": "whole-arrow-predicate/change.patch",
+  "original_sha256": "0232606dfe3c5ce080888b2906ab45f0b326005f756e9ffad374863e98540b24",
+  "encoding": "utf-8",
+  "text": "--- failed.lean\n+++ successful.lean\n@@ -91,7 +91,15 @@\n   have hOpen := (moduleDualityMap_lowerShriek_isPerfPair_iff\n     X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp)\n     j D hfin hclosed hRange n hn hunit hinv (moduleUnit U Λ) 1 (by decide)).mp hFirst\n-  simpa only [Category.comp_id] using hOpen\n+  let P (f : U ⟶ X.left) : Prop :=\n+    ∀ [IsOpenImmersion f] (hR : Set.range f = Dᶜ),\n+      (moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed f hR n hn hunit hinv\n+        (moduleUnit U (ULift.{u + 1} (ZMod n))) 1 (by decide)).IsPerfPair\n+  have hP : P (j ≫ 𝟙 X.left) := by\n+    intro hf hR\n+    exact hOpen\n+  have hPj : P j := (congrArg P (Category.comp_id j)).mp hP\n+  exact hPj hD\n \n /-- The same original open-unit pairing is perfect in every complementary\n curve degree, without a nonempty-boundary or prime-level restriction. -/\n"
+}

@@ -1,0 +1,112 @@
+{
+  "question": "Complete signature extraction supplement to frozen reviewed API-CHANGES-v3; source V3 unchanged",
+  "basis": {
+    "publication_source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+    "publication_head": "c4880830a7ebfea496a348d361cd50b109ea536d",
+    "diagnostic_run": "remote-f8616b9382a24138a45871f1e1d4a645",
+    "diagnostic_source": "fe6f4c4e602703c8acf76b97679a7f870dbca4e2ba8a70bf4fa8ff67ff56adf7",
+    "diagnostic_question": "Actual unfilteredstock failure projection for source/repair assignment; diagnostic evidence only"
+  },
+  "source_manifest": "af3498a3b5a2d6769ad3ecbc1b9d89f44a29df69ee4d6a07c7447c6576330459",
+  "correction": "The original finite-Galois signature fields stop at the first let assignment inside the conclusion. They are excerpts. This supplement includes the complete original and current conclusion up to the theorem proof separator; frozen reviewed packet remains unchanged. Independent review explicitly covered full actual source.",
+  "rows": [
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/BoundedCoefficientClass.lean",
+      "declaration": "exists_finiteLocallyConstant_coefficient_class",
+      "old_complete_signature": "theorem exists_finiteLocallyConstant_coefficient_class\n    (K : Type u) [Field K]\n    (F : AbelianSheaf.{u, u + 1} (Spec (.of K)))\n    (n : ℕ) (hn : 0 < n) (hF : n • 𝟙 F = 0)\n    {Y : Scheme.{u}} (p : Y ⟶ Spec (.of K))\n    [CompactSpace Y] [QuasiSeparatedSpace Y]\n    [HasExt.{e} (AbelianSheaf.{u, u + 1} Y)]\n    [HasColimitsOfSize.{u + 1, u + 1} AddCommGrpCat.{e}] [UnivLE.{u + 1, e}]\n    (q : ℕ) (c : Sheaf.H.{e} ((inverseImage p).obj F) q) :\n    ∃ (E : AbelianSheaf.{u, u + 1} (Spec (.of K))) (a : E ⟶ F),\n      n • 𝟙 E = 0 ∧ IsFiniteLocallyConstant E ∧\n      ∃ d : Sheaf.H.{e} ((inverseImage p).obj E) q,\n        Sheaf.H.map ((inverseImage p).map a) q d = c",
+      "new_complete_signature": "theorem exists_finiteLocallyConstant_coefficient_class\n    (K : Type u) [Field K]\n    (F : AbelianSheaf.{u, u + 1} (Spec (.of K)))\n    (n : ℕ) (hn : 0 < n) (hF : n • 𝟙 F = 0)\n    {Y : Scheme.{u}} (p : Y ⟶ Spec (.of K))\n    [CompactSpace Y] [QuasiSeparatedSpace Y]\n    [HasExt.{e} (AbelianSheaf.{u, u + 1} Y)]\n    [UnivLE.{u + 1, e}]\n    (q : ℕ) (c : Sheaf.H.{e} ((inverseImage p).obj F) q) :\n    ∃ (E : AbelianSheaf.{u, u + 1} (Spec (.of K))) (a : E ⟶ F),\n      n • 𝟙 E = 0 ∧ IsFiniteLocallyConstant E ∧\n      ∃ d : Sheaf.H.{e} ((inverseImage p).obj E) q,\n        Sheaf.H.map ((inverseImage p).map a) q d = c",
+      "source_sha256": "d0c778e892aef2d31b08f993dfc76b4c7e7e41fcfbb969974e87241d261fb35a"
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/BoundedClassFiniteConstant.lean",
+      "declaration": "exists_finiteGalois_constant_class",
+      "old_complete_signature": "theorem exists_finiteGalois_constant_class\n    (K : Type u) [Field K]\n    (F : AbelianSheaf.{u, u + 1} (Spec (.of K)))\n    (n : ℕ) (hn : 0 < n) (hF : n • 𝟙 F = 0)\n    {Y : Scheme.{u}} (p : Y ⟶ Spec (.of K))\n    [CompactSpace Y] [QuasiSeparatedSpace Y]\n    [hExtY : HasExt.{e} (AbelianSheaf.{u, u + 1} Y)]\n    [hExtL : ∀ L : FiniteGaloisIntermediateField K (SeparableClosure K),\n      HasExt.{eL} (AbelianSheaf.{u, u + 1} (pullback p (Spec.algebraMap K L)))]\n    [HasColimitsOfSize.{u + 1, u + 1} AddCommGrpCat.{e}] [UnivLE.{u + 1, e}]\n    (q : ℕ) (c : Sheaf.H.{e} ((inverseImage p).obj F) q) :\n    ∃ (E : AbelianSheaf.{u, u + 1} (Spec (.of K))) (a : E ⟶ F),\n      n • 𝟙 E = 0 ∧ IsFiniteLocallyConstant E ∧\n      ∃ (L : FiniteGaloisIntermediateField K (SeparableClosure K))\n        (B : Type u) (_ : AddCommGroup B) (_ : Finite B),\n        (∀ b : B, n • b = 0) ∧\n        ∃ t : (inverseImage (Spec.algebraMap K L)).obj E ≅\n            ConstantFinite.coefficient B (Spec (.of L)),\n          let f := pullback.fst p (Spec.algebraMap K L)\n          let r := pullback.snd p (Spec.algebraMap K L)\n          let s := constantTrivializationAlongSquare p f r (Spec.algebraMap K L)\n            pullback.condition E (ConstantFinite.value B) t\n          ∃ d : Sheaf.H.{eL}\n              (ConstantFinite.coefficient B (pullback p (Spec.algebraMap K L))) q,\n            Sheaf.H.map (s.inv ≫ (inverseImage f).map ((inverseImage p).map a)) q d =\n              cohomologyPullback.{u, e, eL} f ((inverseImage p).obj F) q c",
+      "new_complete_signature": "theorem exists_finiteGalois_constant_class\n    (K : Type u) [Field K]\n    (F : AbelianSheaf.{u, u + 1} (Spec (.of K)))\n    (n : ℕ) (hn : 0 < n) (hF : n • 𝟙 F = 0)\n    {Y : Scheme.{u}} (p : Y ⟶ Spec (.of K))\n    [CompactSpace Y] [QuasiSeparatedSpace Y]\n    [hExtY : HasExt.{e} (AbelianSheaf.{u, u + 1} Y)]\n    [hExtL : ∀ L : FiniteGaloisIntermediateField K (SeparableClosure K),\n      HasExt.{eL} (AbelianSheaf.{u, u + 1} (pullback p (Spec.algebraMap K L)))]\n    [UnivLE.{u + 1, e}]\n    (q : ℕ) (c : Sheaf.H.{e} ((inverseImage p).obj F) q) :\n    ∃ (E : AbelianSheaf.{u, u + 1} (Spec (.of K))) (a : E ⟶ F),\n      n • 𝟙 E = 0 ∧ IsFiniteLocallyConstant E ∧\n      ∃ (L : FiniteGaloisIntermediateField K (SeparableClosure K))\n        (B : Type u) (_ : AddCommGroup B) (_ : Finite B),\n        (∀ b : B, n • b = 0) ∧\n        ∃ t : (inverseImage (Spec.algebraMap K L)).obj E ≅\n            ConstantFinite.coefficient B (Spec (.of L)),\n          let f := pullback.fst p (Spec.algebraMap K L)\n          let r := pullback.snd p (Spec.algebraMap K L)\n          let s := constantTrivializationAlongSquare p f r (Spec.algebraMap K L)\n            pullback.condition E (ConstantFinite.value B) t\n          ∃ d : Sheaf.H.{eL}\n              (ConstantFinite.coefficient B (pullback p (Spec.algebraMap K L))) q,\n            Sheaf.H.map (s.inv ≫ (inverseImage f).map ((inverseImage p).map a)) q d =\n              cohomologyPullback.{u, e, eL} f ((inverseImage p).obj F) q c",
+      "source_sha256": "043a8ecc661231373d5d87f9cd9c0154491229bee19166c5e410718e43969409"
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/FiniteSurjectiveDescent.lean",
+      "declaration": "higherDirectImage_isConstructible_succ_of_finiteSurjective",
+      "old_complete_signature": "theorem higherDirectImage_isConstructible_succ_of_finiteSurjective\n    {Y X S : Scheme.{u}} [IsNoetherian X] [IsNoetherian S]\n    (f : X ⟶ S) (p : Y ⟶ X) [IsFinite p] [Surjective p]\n    (F : AbelianSheaf.{u, u + 1} X) (n : ℕ)\n    (hQ : Constructible.IsConstructible ((higherDirectImage f n).obj\n      (cokernel ((inverseImageAdjunction p).unit.app F))))\n    (hcover : Constructible.IsConstructible ((higherDirectImage (p ≫ f) (n + 1)).obj\n      ((inverseImage p).obj F))) :\n    Constructible.IsConstructible ((higherDirectImage f (n + 1)).obj F)",
+      "new_complete_signature": "theorem higherDirectImage_isConstructible_succ_of_finiteSurjective\n    {Y X S : Scheme.{u}} [IsNoetherian S]\n    (f : X ⟶ S) (p : Y ⟶ X) [IsFinite p] [Surjective p]\n    (F : AbelianSheaf.{u, u + 1} X) (n : ℕ)\n    (hQ : Constructible.IsConstructible ((higherDirectImage f n).obj\n      (cokernel ((inverseImageAdjunction p).unit.app F))))\n    (hcover : Constructible.IsConstructible ((higherDirectImage (p ≫ f) (n + 1)).obj\n      ((inverseImage p).obj F))) :\n    Constructible.IsConstructible ((higherDirectImage f (n + 1)).obj F)",
+      "source_sha256": "ffec37dca3ca7f65b1c2b15a55925edb7111f73bcfb8666b338f45a864fdf8e7"
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/H0/ConstantUnitOfStructureIso.lean",
+      "declaration": "affineEtaleTest_pullbackHom_bijective_of_structureIso",
+      "old_complete_signature": "theorem affineEtaleTest_pullbackHom_bijective_of_structureIso\n    (U : Y.Etale) [IsAffine U.left] (Z : Over Y) [IsAffine Z.left] :\n    Function.Bijective (fun b : (Scheme.Etale.forget Y).obj U ⟶ Z =>\n      (Over.pullback q).map b)",
+      "new_complete_signature": "theorem affineEtaleTest_pullbackHom_bijective_of_structureIso\n    (U : Y.Etale) (Z : Over Y) [IsAffine Z.left] :\n    Function.Bijective (fun b : (Scheme.Etale.forget Y).obj U ⟶ Z =>\n      (Over.pullback q).map b)",
+      "source_sha256": "16514eb4710cee7e4dccec6308daaed18574db81942ac562cdee930bca1def66"
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/H0/ConstantUnitOfStructureIso.lean",
+      "declaration": "representedCoefficientUnit_bijective_affine_of_structureIso",
+      "old_complete_signature": "theorem representedCoefficientUnit_bijective_affine_of_structureIso\n    (H : Grp (Over Y)) [IsCommMonObj H.X] [IsFinite H.X.hom]\n    (U : Y.Etale) [IsAffine U.left] :\n    Function.Bijective\n      ((SchemeTorsorBaseChange.representedCoefficientUnit q H).hom.app (op U))",
+      "new_complete_signature": "theorem representedCoefficientUnit_bijective_affine_of_structureIso\n    (H : Grp (Over Y)) [IsCommMonObj H.X] [IsFinite H.X.hom]\n    (U : Y.Etale) :\n    Function.Bijective\n      ((SchemeTorsorBaseChange.representedCoefficientUnit q H).hom.app (op U))",
+      "source_sha256": "16514eb4710cee7e4dccec6308daaed18574db81942ac562cdee930bca1def66"
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/Descent/FiniteFieldPointedGalois.lean",
+      "declaration": "galois_furtherStage",
+      "old_complete_signature": "private theorem galois_furtherStage {U V W : Scheme.{u}}\n    [ConnectedSpace U] [ConnectedSpace V] [ConnectedSpace W]\n    (g : V ⟶ U) (v : W ⟶ V) [Surjective v]\n    (Z : FiniteEtale U) [IsGalois Z]\n    [ConnectedSpace ((baseChange (v ≫ g)).obj Z).obj.left] :\n    IsGalois ((baseChange g).obj Z) ∧\n      Nat.card (Aut ((baseChange g).obj Z)) = Nat.card (Aut Z)",
+      "new_complete_signature": "private theorem galois_furtherStage {U V W : Scheme.{u}}\n    [ConnectedSpace U] [ConnectedSpace V]\n    (g : V ⟶ U) (v : W ⟶ V) [Surjective v]\n    (Z : FiniteEtale U) [IsGalois Z]\n    [ConnectedSpace ((baseChange (v ≫ g)).obj Z).obj.left] :\n    IsGalois ((baseChange g).obj Z) ∧\n      Nat.card (Aut ((baseChange g).obj Z)) = Nat.card (Aut Z)",
+      "source_sha256": "148a728727516d43bc156004c0a683824ee97b625d6f8656edf79246b9bb5cd5"
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/Descent/FiniteFieldPointedGalois.lean",
+      "declaration": "exists_pointed_further_galois_stage",
+      "old_complete_signature": "theorem exists_pointed_further_galois_stage\n    [GeometricallyConnected p] [ConnectedSpace U] [ConnectedSpace W]\n    (Z : FiniteEtale U) [IsGalois Z]\n    [ConnectedSpace ((baseChange v₀).obj Z).obj.left]\n    (x : Spec (.of k) ⟶ U) (hx : x ≫ p = 𝟙 _)\n    (z : Spec (.of Ω) ⟶ Z.obj.left)\n    (hz : z ≫ Z.obj.hom = Spec.algebraMap k Ω ≫ x) :\n    ∃ (t : Finset Ω),\n      let F := pointField k Ω t\n      let g := pullback.fst p (Spec.algebraMap k F)\n      let ZF := (baseChange g).obj Z\n      ∃ (xF : Spec (.of F) ⟶ pointBase k Ω p t) (zF : Spec (.of F) ⟶ ZF.obj.left),\n        xF ≫ pullback.snd p (Spec.algebraMap k F) = 𝟙 _ ∧\n        xF ≫ g = Spec.algebraMap k F ≫ x ∧\n        zF ≫ ZF.obj.hom = xF ∧\n        Spec.algebraMap F Ω ≫ (zF ≫ pullback.fst Z.obj.hom g) = z ∧\n        IsGalois ZF ∧ Nat.card (Aut ZF) = Nat.card (Aut Z)",
+      "new_complete_signature": "theorem exists_pointed_further_galois_stage\n    [GeometricallyConnected p] [ConnectedSpace U]\n    (Z : FiniteEtale U) [IsGalois Z]\n    [ConnectedSpace ((baseChange v₀).obj Z).obj.left]\n    (x : Spec (.of k) ⟶ U) (hx : x ≫ p = 𝟙 _)\n    (z : Spec (.of Ω) ⟶ Z.obj.left)\n    (hz : z ≫ Z.obj.hom = Spec.algebraMap k Ω ≫ x) :\n    ∃ (t : Finset Ω),\n      let F := pointField k Ω t\n      let g := pullback.fst p (Spec.algebraMap k F)\n      let ZF := (baseChange g).obj Z\n      ∃ (xF : Spec (.of F) ⟶ pointBase k Ω p t) (zF : Spec (.of F) ⟶ ZF.obj.left),\n        xF ≫ pullback.snd p (Spec.algebraMap k F) = 𝟙 _ ∧\n        xF ≫ g = Spec.algebraMap k F ≫ x ∧\n        zF ≫ ZF.obj.hom = xF ∧\n        Spec.algebraMap F Ω ≫ (zF ≫ pullback.fst Z.obj.hom g) = z ∧\n        IsGalois ZF ∧ Nat.card (Aut ZF) = Nat.card (Aut Z)",
+      "source_sha256": "148a728727516d43bc156004c0a683824ee97b625d6f8656edf79246b9bb5cd5"
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ConstructibleGenericOpen.lean",
+      "declaration": "constructibleFiniteImageOnPrincipalOpen_of_splitThickening",
+      "old_complete_signature": "theorem constructibleFiniteImageOnPrincipalOpen_of_splitThickening\n    (R : Type u) [CommRing R] [IsDomain R]\n    (K : Type u) [Field K] [Algebra R K] [IsFractionRing R K]\n    (Ω : Type u) [Field Ω] [Algebra K Ω]\n    (A : Type u) [CommRing A] [Algebra R A] [Module.Finite R A]\n    (hsplit : Algebra.FiniteAlgebra.finiteSplitThickeningOnPrincipalOpen R K Ω A) :\n    constructibleFiniteImageOnPrincipalOpen R A",
+      "new_complete_signature": "theorem constructibleFiniteImageOnPrincipalOpen_of_splitThickening\n    (R : Type u) [CommRing R]\n    (K : Type u) [Field K] [Algebra R K]\n    (Ω : Type u) [Field Ω] [Algebra K Ω]\n    (A : Type u) [CommRing A] [Algebra R A] [Module.Finite R A]\n    (hsplit : Algebra.FiniteAlgebra.finiteSplitThickeningOnPrincipalOpen R K Ω A) :\n    constructibleFiniteImageOnPrincipalOpen R A",
+      "source_sha256": "417e934396c8b125d75d87b671ea164ec813f88b55f38cfd126c89a256766179"
+    },
+    {
+      "source": "Aglib/AlgebraicGeometry/Morphisms/Smooth/GenericSectionComponentSpreading.lean",
+      "declaration": "exists_clopen_stage_containing_family",
+      "old_complete_signature": "theorem exists_clopen_stage_containing_family\n    {I : Type u} [Category.{u} I] [IsCofiltered I]\n    (D E : I ⥤ Scheme.{u}) (cD : Cone D) (cE : Cone E)\n    (hD : IsLimit cD) (hE : IsLimit cE)\n    [∀ {i j} (a : i ⟶ j), IsAffineHom (D.map a)]\n    [∀ {i j} (a : i ⟶ j), IsAffineHom (E.map a)]\n    [∀ i, CompactSpace (D.obj i)] [∀ i, QuasiSeparatedSpace (D.obj i)]\n    [∀ i, CompactSpace (E.obj i)] [∀ i, QuasiSeparatedSpace (E.obj i)]\n    (a : ∀ i, D.obj i ⟶ E.obj i)\n    (ha : ∀ {i j} (r : i ⟶ j), D.map r ≫ a j = a i ≫ E.map r)\n    (aLimit : cD.pt ⟶ cE.pt)\n    (hcone : ∀ i, cD.π.app i ≫ a i = aLimit ≫ cE.π.app i)\n    (U : cE.pt.Opens) (hU : IsClosed (U : Set cE.pt))\n    (hsection : aLimit ⁻¹ᵁ U = ⊤) :\n    ∃ (i : I) (V : (E.obj i).Opens), IsClosed (V : Set (E.obj i)) ∧\n      cE.π.app i ⁻¹ᵁ V = U ∧ a i ⁻¹ᵁ V = ⊤",
+      "new_complete_signature": "theorem exists_clopen_stage_containing_family\n    {I : Type u} [Category.{u} I] [IsCofiltered I]\n    (D E : I ⥤ Scheme.{u}) (cD : Cone D) (cE : Cone E)\n    (hD : IsLimit cD) (hE : IsLimit cE)\n    [∀ {i j} (a : i ⟶ j), IsAffineHom (D.map a)]\n    [∀ {i j} (a : i ⟶ j), IsAffineHom (E.map a)]\n    [∀ i, CompactSpace (D.obj i)]\n    [∀ i, CompactSpace (E.obj i)] [∀ i, QuasiSeparatedSpace (E.obj i)]\n    (a : ∀ i, D.obj i ⟶ E.obj i)\n    (ha : ∀ {i j} (r : i ⟶ j), D.map r ≫ a j = a i ≫ E.map r)\n    (aLimit : cD.pt ⟶ cE.pt)\n    (hcone : ∀ i, cD.π.app i ≫ a i = aLimit ≫ cE.π.app i)\n    (U : cE.pt.Opens) (hU : IsClosed (U : Set cE.pt))\n    (hsection : aLimit ⁻¹ᵁ U = ⊤) :\n    ∃ (i : I) (V : (E.obj i).Opens), IsClosed (V : Set (E.obj i)) ∧\n      cE.π.app i ⁻¹ᵁ V = U ∧ a i ⁻¹ᵁ V = ⊤",
+      "source_sha256": "a9f1d51c6ce588d811f45291cd281262d7a87ea05b7f5e56bef7b5c9ff6bb7c4"
+    },
+    {
+      "source": "Aglib/FieldTheory/KummerSubextension.lean",
+      "declaration": "finrank_adjoin_pow",
+      "old_complete_signature": "private theorem finrank_adjoin_pow [FiniteDimensional K F] {N e : ℕ}\n    (hN : 0 < N) (he : 0 < e) (heN : e ∣ N) {a : K} {θ : F}\n    (hθ : θ ^ N = algebraMap K F a) (hgen : K⟮θ⟯ = ⊤)\n    (hdegree : finrank K F = N) : finrank K K⟮θ ^ (N / e)⟯ = e",
+      "new_complete_signature": "private theorem finrank_adjoin_pow {N e : ℕ}\n    (hN : 0 < N) (he : 0 < e) (heN : e ∣ N) {a : K} {θ : F}\n    (hθ : θ ^ N = algebraMap K F a) (hgen : K⟮θ⟯ = ⊤)\n    (hdegree : finrank K F = N) : finrank K K⟮θ ^ (N / e)⟯ = e",
+      "source_sha256": "6d352c905dda568d828f2b5d2dd9f58b57dfa415f83d21c250322e2d509a4443"
+    },
+    {
+      "source": "Aglib/RingTheory/Artinian/NoetherianGenericSplitThickening.lean",
+      "declaration": "finiteSplitThickeningOnPrincipalOpen",
+      "old_complete_signature": "def finiteSplitThickeningOnPrincipalOpen\n    (R : Type u) [CommRing R] [IsDomain R]\n    (K : Type v) [Field K] [Algebra R K] [IsFractionRing R K]\n    (Ω : Type w) [Field Ω] [Algebra K Ω]\n    (A : Type x) [CommRing A] [Algebra R A] : Prop",
+      "new_complete_signature": "def finiteSplitThickeningOnPrincipalOpen\n    (R : Type u) [CommRing R]\n    (K : Type v) [Field K] [Algebra R K]\n    (Ω : Type w) [Field Ω] [Algebra K Ω]\n    (A : Type x) [CommRing A] [Algebra R A] : Prop",
+      "source_sha256": "118442247e957fb2ff8866b8d13df5b160090f86f812b509c0491d041d815f65"
+    },
+    {
+      "source": "Aglib/RingTheory/Etale/StandardEtaleDomainEmbedding.lean",
+      "declaration": "factor_lift_injective",
+      "old_complete_signature": "theorem factor_lift_injective [IsDomain R] [UniqueFactorizationMonoid R[X]]\n    (P : StandardEtalePresentation R S) (p q : R[X])\n    (hirr : Irreducible p) (hf : P.f = p * q) (hp : aeval P.x p = 0) :\n    Function.Injective (AdjoinRoot.liftAlgHom p (Algebra.ofId R S) P.x hp)",
+      "new_complete_signature": "theorem factor_lift_injective [UniqueFactorizationMonoid R[X]]\n    (P : StandardEtalePresentation R S) (p q : R[X])\n    (hirr : Irreducible p) (hf : P.f = p * q) (hp : aeval P.x p = 0) :\n    Function.Injective (AdjoinRoot.liftAlgHom p (Algebra.ofId R S) P.x hp)",
+      "source_sha256": "ab1828c94ee0c9f781e9dbbe4d13e69ca545663e776c6dd7c801667c242d1150"
+    },
+    {
+      "source": "Aglib/RingTheory/Etale/StandardEtaleDomainEmbedding.lean",
+      "declaration": "lTensor_factor_lift_injective",
+      "old_complete_signature": "theorem lTensor_factor_lift_injective [IsDomain R] [UniqueFactorizationMonoid R[X]]\n    {K L : Type*} [CommRing K] [Algebra K R] [Algebra K S] [IsScalarTower K R S]\n    [AddCommGroup L] [Module K L] [Module.Flat K L]\n    (P : StandardEtalePresentation R S) (p q : R[X])\n    (hirr : Irreducible p) (hf : P.f = p * q) (hp : aeval P.x p = 0) :\n    Function.Injective (LinearMap.lTensor L\n      ((AdjoinRoot.liftAlgHom p (Algebra.ofId R S) P.x hp).restrictScalars K).toLinearMap)",
+      "new_complete_signature": "theorem lTensor_factor_lift_injective [UniqueFactorizationMonoid R[X]]\n    {K L : Type*} [CommRing K] [Algebra K R] [Algebra K S] [IsScalarTower K R S]\n    [AddCommGroup L] [Module K L] [Module.Flat K L]\n    (P : StandardEtalePresentation R S) (p q : R[X])\n    (hirr : Irreducible p) (hf : P.f = p * q) (hp : aeval P.x p = 0) :\n    Function.Injective (LinearMap.lTensor L\n      ((AdjoinRoot.liftAlgHom p (Algebra.ofId R S) P.x hp).restrictScalars K).toLinearMap)",
+      "source_sha256": "ab1828c94ee0c9f781e9dbbe4d13e69ca545663e776c6dd7c801667c242d1150"
+    },
+    {
+      "source": "Aglib/RingTheory/Henselian/PrimitiveRoots.lean",
+      "declaration": "primitiveRoots_fraction_nonempty",
+      "old_complete_signature": "theorem primitiveRoots_fraction_nonempty [IsDomain R] [IsSepClosed (ResidueField R)]\n    (K : Type*) [Field K] [Algebra R K] [IsFractionRing R K]\n    (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : R)) :\n    (primitiveRoots n K).Nonempty",
+      "new_complete_signature": "theorem primitiveRoots_fraction_nonempty [IsSepClosed (ResidueField R)]\n    (K : Type*) [Field K] [Algebra R K] [IsFractionRing R K]\n    (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : R)) :\n    (primitiveRoots n K).Nonempty",
+      "source_sha256": "78db9e3dc805f329779b742c2a9e169cc9b8358168b5d8a436af986221963e0a"
+    }
+  ]
+}

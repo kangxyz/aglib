@@ -1,0 +1,123 @@
+{
+  "question": "Ordinary independent review of completed D Cartesian exceptional base-change identity and iteration integration; not established-status review.",
+  "verdict": "PASS_ORDINARY_MATHEMATICAL_SOURCE_REVIEW",
+  "candidate_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/completed-d-cartesian-coherence-20261101/v3/CANDIDATE.json",
+  "candidate_manifest_sha256": "393e3703df3b640f9dc1c4c4463c64258796e5f4cf83c79df784b28bf1b529cd",
+  "source_vector_sha256": "70c281c973466fbd53d564ce85b9b294a332caad28f1aad92c43ed04230b1bbf",
+  "source_count": 164,
+  "provider_vector_sha256": "e66cdfdefc2f0cc133ca9f387a75a0f7d20671ab4dda95764ea5053b9820dbdb",
+  "candidate_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/completed-d-cartesian-coherence-20261101/v3/candidate",
+  "original_candidate_manifest_sha256": "3344e91aaf6cdf36eaec4f01ddd42cfd1eb867a9236b384efaa62a18109ef11d",
+  "original_source_vector_sha256": "a7d679f9bc6a88baf157018646a013c9a1c1db67537752823b5c226c238ea7e4",
+  "archive_tar_sha256": "0a26b49033cb47986944110e352b6c12468d40c058310182d7c5a97aa9467738",
+  "conditions": [
+    "Use the original schemes, structure maps and actual IsPullback witnesses. Each displayed structure map has QuasiCompact and Nonempty DenseCompactification as in the fixed endpoint telescope; no added qcqs assumption on either new base.",
+    "Keep all independently supplied HasDerivedCategory instances and their object/Hom worlds. Iteration retains the supplied compactification C and its additional actual iterated raw-middle realization.",
+    "D+ uses arbitrary Ring Λ and the native full subcategory of objects with intrinsically torsion cohomology, without a global ring annihilator.",
+    "Unbounded uses all derived objects only with N : Nat, 0 < N and N • (1 : Λ) = 0.",
+    "Retain the accepted public/P180 provider mathematics at the fixed direct-provider vector. The f11 InverseImageTorsion proof repair preserves the statement and original maps, but successful current CPP is not supplied."
+  ],
+  "results": [
+    {
+      "id": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CartesianBaseChangeIdentity#moduleExceptionalDirectImagePlusCartesianBaseChangeIsoOfNonempty_identity",
+      "source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIdentity.lean",
+      "declaration": "moduleExceptionalDirectImagePlusCartesianBaseChangeIsoOfNonempty_identity",
+      "conclusion": "For an identity-base Cartesian square, the original D+ exchange equals the original identity functor normalizer, then the canonical comparison for its actual source isomorphism e, then forward transport along e.hom = a.",
+      "outcome": "PASS_ORDINARY_MATHEMATICAL_SOURCE_REVIEW",
+      "conditions": "common geometry and independent native models; arbitrary Ring Λ; intrinsic torsion-cohomology D+ input",
+      "endpoint_declaration_sha256": "415c42bea7cc6aaedd15408fe3f55f19c41e698496ac8237a3ff137a4790e5af"
+    },
+    {
+      "id": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CartesianBaseChangeIteration#moduleExceptionalDirectImagePlusCartesianBaseChangeIsoOfNonempty_iteration",
+      "source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIteration.lean",
+      "declaration": "moduleExceptionalDirectImagePlusCartesianBaseChangeIsoOfNonempty_iteration",
+      "conclusion": "For two consecutive Cartesian squares and every intrinsic torsion-cohomology object K in D+, the original exchanges satisfy ActualHorizontalMateEquation with the original base and torsion-source inverse-image compositors and the exchange of the actual pasted square.",
+      "outcome": "PASS_ORDINARY_MATHEMATICAL_SOURCE_REVIEW",
+      "conditions": "common geometry and independent native models; arbitrary Ring Λ; intrinsic torsion-cohomology D+ input",
+      "endpoint_declaration_sha256": "be7f80a7d2349f59c19b86d61c4dc4b0b902bc2da25dacf94b7ed51da37a4e56"
+    },
+    {
+      "id": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CartesianBaseChangeIdentity#moduleExceptionalDirectImageUnboundedCartesianBaseChangeIsoOfNonempty_identity",
+      "source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianBaseChangeIdentity.lean",
+      "declaration": "moduleExceptionalDirectImageUnboundedCartesianBaseChangeIsoOfNonempty_identity",
+      "conclusion": "For an identity-base Cartesian square and a coefficient ring globally annihilated by a positive natural number N, the original unbounded exchange satisfies CartesianSourceIdentityEquation with the original identity normalizer, canonical actual-source comparison and forward equality transport.",
+      "outcome": "PASS_ORDINARY_MATHEMATICAL_SOURCE_REVIEW",
+      "conditions": "common geometry and independent native models; N : Nat, 0 < N, N • (1 : Λ) = 0; all unbounded objects",
+      "endpoint_declaration_sha256": "4eeab062ca1441abc318d76263898800062f132072d3b3e308877358ddb83b6b"
+    },
+    {
+      "id": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CartesianBaseChangeIteration#moduleExceptionalDirectImageUnboundedCartesianBaseChangeIsoOfNonempty_iteration",
+      "source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CartesianBaseChangeIteration.lean",
+      "declaration": "moduleExceptionalDirectImageUnboundedCartesianBaseChangeIsoOfNonempty_iteration",
+      "conclusion": "For two consecutive Cartesian squares over a coefficient ring globally annihilated by a positive natural number N, every unbounded derived object K satisfies ActualHorizontalMateEquation for the original exchanges and original base/source inverse-image compositors.",
+      "outcome": "PASS_ORDINARY_MATHEMATICAL_SOURCE_REVIEW",
+      "conditions": "common geometry and independent native models; N : Nat, 0 < N, N • (1 : Λ) = 0; all unbounded objects",
+      "endpoint_declaration_sha256": "d2b8299147e66086ce3299dab8ad01c81e25d376e0d016c9952513c90c5aabce"
+    },
+    {
+      "id": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CartesianBaseChangeIdentityTorsion#moduleExceptionalDirectImagePlusTorsionCartesianBaseChangeIsoOfNonempty_identity",
+      "source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIdentityTorsion.lean",
+      "declaration": "moduleExceptionalDirectImagePlusTorsionCartesianBaseChangeIsoOfNonempty_identity",
+      "conclusion": "The same identity-base equality holds for the native D+ torsion-output lift, with its original torsion identity normalizer, source comparison and forward equality transport.",
+      "outcome": "PASS_ORDINARY_MATHEMATICAL_SOURCE_REVIEW",
+      "conditions": "common geometry and independent native models; arbitrary Ring Λ; intrinsic torsion-cohomology D+ input",
+      "endpoint_declaration_sha256": "fb287a3123f3ccad702d7e52554c745b5734f6c3d04f2e2a9243b7223856ea9e"
+    },
+    {
+      "id": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CartesianBaseChangeIterationTorsion#moduleExceptionalDirectImagePlusTorsionCartesianBaseChangeIsoOfNonempty_iteration",
+      "source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CartesianBaseChangeIterationTorsion.lean",
+      "declaration": "moduleExceptionalDirectImagePlusTorsionCartesianBaseChangeIsoOfNonempty_iteration",
+      "conclusion": "The same consecutive-square ActualHorizontalMateEquation holds for the native D+ torsion-output lifts, with the original torsion base/source inverse-image compositors.",
+      "outcome": "PASS_ORDINARY_MATHEMATICAL_SOURCE_REVIEW",
+      "conditions": "common geometry and independent native models; arbitrary Ring Λ; intrinsic torsion-cohomology D+ input",
+      "endpoint_declaration_sha256": "6bfe1a8a2f8c059a08d242b906c3d31bfc84cfd200c9297223ac0608face663d"
+    }
+  ],
+  "repair_findings": [
+    {
+      "id": "G1",
+      "status": "CLOSED_IN_V3",
+      "v1_failure": "Compactification/BaseChangeIterationCompatibility.lean:82 referenced absent moduleDerivedBaseChangeMap_hComp_equation.",
+      "repair": "Restored the exact completed archive Derived/BaseChangePastingEquation.lean and directly imported it at the consumer.",
+      "mathematical_effect": "No changed premise or map; the restored proof applies the actual mate law and proved native inverse-image square pasting."
+    },
+    {
+      "id": "G2",
+      "status": "CLOSED_IN_V3",
+      "v1_failure": "Unbounded/NormalizedBaseChangeIterationComparison.lean:142,178,192 referenced isPullback_iterationPulledNormalization outside its actual import closure.",
+      "repair": "Moved the identical coefficient-free theorem into Compactification/Refinements/NormalizationIteration.lean, preserving its namespace and scheme telescope, and removed the old duplicate.",
+      "mathematical_effect": "Both native branches now reach the actual geometric proof; no D+ proof import or new coherence premise was added."
+    }
+  ],
+  "reviewer_authorship": "Independent throughout; reported missing suppliers, did not author or edit candidate proofs. Author restored/relocated existing derivations.",
+  "coverage": [
+    "All 27 new categorical NatTrans owners: identity, original exchange pasting, restrictions, normalization, source composition/interchange, model transport and source polygons.",
+    "New exact-derived comparison/pasting and native D+ mate/open-comparison/refinement-cube constructions, with the actual installed adjunctions and original comparisons.",
+    "All coefficient-free raw/normalized/source pullback constructions used in the assembly, including actual ambient and source associators and closed-normalization triangles.",
+    "Bounded-below compactification/source-model constructions, chosen-model transport, actual Cartesian endpoints and faithful torsion-output lifts.",
+    "Unbounded counterparts inspected against the complete corresponding arguments, checking native substitutions, the differing proof bodies and all positive-annihilator uses. Accepted unbounded mate/pasting suppliers checked for applicability.",
+    "Current CartesianSourceExchange, native TwoSquare/mate, Topos.GeometricMorphism and open-normalization interfaces checked for original-map identity and actual applicability.",
+    "All four changed/addition paths in v3 reconciled to v1; other source hashes and the direct-provider vector unchanged."
+  ],
+  "evidence": {
+    "fresh": "Read-only source identity checks, direct proof inspection, six endpoint theorem-body comparisons against archive, and targeted repaired-supplier import-path inspection.",
+    "reused": "Packet SOURCE-CHECK and declaration-reachability reports are source-only evidence. Accepted public/P180 provider mathematics retained under the assignment.",
+    "not_claimed": [
+      "Lean compilation",
+      "lint",
+      "tests",
+      "transitive axiom audit",
+      "kernel replay",
+      "separate client checks",
+      "established status"
+    ],
+    "cpp_limit": "The assignment reports f11 provider Root run 187b with one Mono frontend failure. No successful CPP on the reviewed whole candidate was supplied or inferred.",
+    "archive_limit": "Original D bare receipt IDs remain UNBOUND/colliding provenance; no current coverage is inferred from them. Original40 unfinished claims are outside scope."
+  },
+  "remaining_gap": "No unresolved mathematical premise or known source-supplier gap in the reviewed v3 assembly under the declared accepted-provider basis. Normal incremental CPP and any resulting author repairs remain; changes require affected source reconciliation.",
+  "write_scope": [
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/d-cartesian-coherence-20261101.md",
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/d-cartesian-coherence-20261101.json"
+  ],
+  "reproduction_note": "Use the manifest source_sha256/provider_sha256 maps for read-only identity comparison and the reported source locators for inspection. No new execution/certification stage is requested."
+}

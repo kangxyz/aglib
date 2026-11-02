@@ -8,7 +8,7 @@ module
 public import Mathlib.LinearAlgebra.TensorProduct.Map
 
 /-!
-# Tensor-map injectivity through an equivalence square
+# Tensor maps and additive extensionality
 
 ## Extraction basis
 
@@ -62,3 +62,18 @@ theorem lTensor_injective_of_equiv_square
 
 end LinearMap
 end
+
+
+namespace TensorProduct
+
+/-- Additive maps on the original tensor product are determined on pure tensors.
+The additive target needs no scalar action. -/
+theorem addHom_ext {R : Type u} {M : Type v} {N : Type w} {Z : Type t} [CommRing R]
+    [AddCommGroup M] [AddCommGroup N] [AddCommGroup Z] [Module R M] [Module R N]
+    (f g : M ⊗[R] N →+ Z) (h : ∀ m n, f (m ⊗ₜ[R] n) = g (m ⊗ₜ[R] n)) : f = g := by
+  ext s
+  induction s using TensorProduct.inductionOn with
+  | tmul m n => exact h m n
+  | add s t hs ht => simp only [map_add, hs, ht]
+
+end TensorProduct

@@ -1,0 +1,647 @@
+{
+  "basis": "Static read-only Aglib import-header projection, not a compiler/setup check. B must reconcile actual source-bound A coverage and preserve any active healthy job.",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "A_frontier_input": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/lane-a/higher-basechange-native3-coherent20-input.json",
+  "A_frontier_source": "b605f444ffa44e004cc9ef4da3cbf9bc265e60cd7d1ab79bb0654d121498caf3",
+  "A_frontier_run": "remote-647d45f7b99546e0a50cc017a82115c3",
+  "A_pending_paths": [
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Bounded.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/AffineReduction.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/RelativeExchangeIso.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/TargetLocality.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeNeighborhoodGerms.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeSectionComparison.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricStalkExchange.lean"
+  ],
+  "targets": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/Torsion.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.Torsion",
+      "sha256": "06b53a1094934ee8d3cc4199b8ee2e49b1653e1cddb14e345f7832f48c8edd7d",
+      "changed": true,
+      "header_Aglib_nodes": 3567,
+      "missing_source": [],
+      "pending_A_paths": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Bounded.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/AffineReduction.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/RelativeExchangeIso.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/TargetLocality.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeNeighborhoodGerms.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeSectionComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricStalkExchange.lean"
+      ],
+      "owned_dependencies": [
+        "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Serre.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/DirectImage.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/FullSubcategory.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Diagram.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CompositionCoherence.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/HigherTorsion.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/TorsionPreservation.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/Isomorphism.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperIsomorphism.lean",
+        "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean",
+        "Aglib/CategoryTheory/ObjectProperty/LiftFunctorIso.lean",
+        "Aglib/CategoryTheory/Sites/Torsion/AdditiveFunctor.lean"
+      ],
+      "classification": "hold_A_source_matching_coverage"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/DirectImage.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.DirectImage",
+      "sha256": "6b691bae2eba0d1e4169af949db7695b01f45426486e702897d4197e695156d2",
+      "changed": true,
+      "header_Aglib_nodes": 3560,
+      "missing_source": [],
+      "pending_A_paths": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Bounded.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/AffineReduction.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/RelativeExchangeIso.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/TargetLocality.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeNeighborhoodGerms.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeSectionComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricStalkExchange.lean"
+      ],
+      "owned_dependencies": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Diagram.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CompositionCoherence.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/Isomorphism.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperIsomorphism.lean",
+        "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean"
+      ],
+      "classification": "hold_A_source_matching_coverage"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/FullSubcategory.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.FullSubcategory",
+      "sha256": "c57ad7ee73bef89de88e001912d18827f94d0a0f1821d839d8c3b9dc7dfbaa15",
+      "changed": true,
+      "header_Aglib_nodes": 2,
+      "missing_source": [],
+      "pending_A_paths": [],
+      "owned_dependencies": [
+        "Aglib/CategoryTheory/ObjectProperty/LiftFunctorIso.lean"
+      ],
+      "classification": "ready_current_header_graph"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/TorsionPreservation.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.TorsionPreservation",
+      "sha256": "c4d8883adeb3db3f7fbbc1744dc8c5e44a41799d728a05a5fe52d83e92d61db5",
+      "changed": true,
+      "header_Aglib_nodes": 483,
+      "missing_source": [],
+      "pending_A_paths": [],
+      "owned_dependencies": [
+        "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Serre.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/HigherTorsion.lean",
+        "Aglib/CategoryTheory/Sites/Torsion/AdditiveFunctor.lean"
+      ],
+      "classification": "ready_current_header_graph"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Serre.lean",
+      "module": "Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Serre",
+      "sha256": "88825d639c02f8f07c6269fcb50df2674f73f886b5ef6914b5870efb5c6a98b0",
+      "changed": true,
+      "header_Aglib_nodes": 14,
+      "missing_source": [],
+      "pending_A_paths": [],
+      "owned_dependencies": [],
+      "classification": "ready_current_header_graph"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/HigherTorsion.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.HigherTorsion",
+      "sha256": "0de6f5b8299ba4bb9c70a69bc59391b3d73fb3e7b773de419ab4735f525679ae",
+      "changed": true,
+      "header_Aglib_nodes": 390,
+      "missing_source": [],
+      "pending_A_paths": [],
+      "owned_dependencies": [
+        "Aglib/CategoryTheory/Sites/Torsion/AdditiveFunctor.lean"
+      ],
+      "classification": "ready_current_header_graph"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Sites/Torsion/AdditiveFunctor.lean",
+      "module": "Aglib.CategoryTheory.Sites.Torsion.AdditiveFunctor",
+      "sha256": "765293a2bbe0efd24ff7675dd9829bfb6f4a42f417d40ebbb7e8858b4c9f7608",
+      "changed": true,
+      "header_Aglib_nodes": 8,
+      "missing_source": [],
+      "pending_A_paths": [],
+      "owned_dependencies": [],
+      "classification": "ready_current_header_graph"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/ComparisonAlgebra.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.ComparisonAlgebra",
+      "sha256": "71f46412064364330efd4c621f77d55a80a5c2be852e94d837b4468768a9ab16",
+      "changed": true,
+      "header_Aglib_nodes": 2,
+      "missing_source": [],
+      "pending_A_paths": [],
+      "owned_dependencies": [],
+      "classification": "ready_current_header_graph"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/DirectImageComparison.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.DirectImageComparison",
+      "sha256": "20377f51631c880cd0754b041d3da4972e083e86f29396193659a5316127bd27",
+      "changed": true,
+      "header_Aglib_nodes": 97,
+      "missing_source": [],
+      "pending_A_paths": [],
+      "owned_dependencies": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CompositionCoherence.lean"
+      ],
+      "classification": "ready_current_header_graph"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/ModelComparison.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.ModelComparison",
+      "sha256": "210a7a2b20ef6477b9215e2f9fcf82b0614fee39866ad530d31d7e07a1323de3",
+      "changed": true,
+      "header_Aglib_nodes": 3340,
+      "missing_source": [
+        "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/MiddleModelComparison.lean"
+      ],
+      "pending_A_paths": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Bounded.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/AffineReduction.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/RelativeExchangeIso.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/TargetLocality.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeNeighborhoodGerms.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeSectionComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricStalkExchange.lean"
+      ],
+      "owned_dependencies": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Diagram.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CompositionCoherence.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/Isomorphism.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperIsomorphism.lean",
+        "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean"
+      ],
+      "classification": "hold_missing_source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/TargetModelComparison.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.TargetModelComparison",
+      "sha256": "0d63e6ede67b9667b11236511bf9a96e255c5df45fc4e9f8a301a270189a05b1",
+      "changed": true,
+      "header_Aglib_nodes": 3340,
+      "missing_source": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/DirectImageTargetModels.lean"
+      ],
+      "pending_A_paths": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Bounded.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/AffineReduction.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/RelativeExchangeIso.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/TargetLocality.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeNeighborhoodGerms.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeSectionComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricStalkExchange.lean"
+      ],
+      "owned_dependencies": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Diagram.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CompositionCoherence.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/Isomorphism.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperIsomorphism.lean",
+        "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean"
+      ],
+      "classification": "hold_missing_source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoIdentity.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.SourceIsoIdentity",
+      "sha256": "240ed745a104c5b149005181f0103df4fe63a855ad66a5c32f8dffff5a5e6dee",
+      "changed": true,
+      "header_Aglib_nodes": 4,
+      "missing_source": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoRefinement.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/FamilyModelDiagram.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoIdentity.lean"
+      ],
+      "pending_A_paths": [],
+      "owned_dependencies": [],
+      "classification": "hold_missing_source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TargetModelComparison.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.TargetModelComparison",
+      "sha256": "86eb638df3ad0b9eaa264c2de1b6d48eea7a131e80853a79b392da20f40d4c8e",
+      "changed": true,
+      "header_Aglib_nodes": 3571,
+      "missing_source": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/TargetModelDiagram.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ModelComparisonTorsion.lean"
+      ],
+      "pending_A_paths": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Bounded.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/AffineReduction.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/RelativeExchangeIso.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/TargetLocality.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeNeighborhoodGerms.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeSectionComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricStalkExchange.lean"
+      ],
+      "owned_dependencies": [
+        "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Serre.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/DirectImage.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/FullSubcategory.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SuppliedDirectImage.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/Torsion.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Diagram.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CompositionCoherence.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/HigherTorsion.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/TorsionPreservation.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/Isomorphism.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperIsomorphism.lean",
+        "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean",
+        "Aglib/CategoryTheory/ObjectProperty/LiftFunctorIso.lean",
+        "Aglib/CategoryTheory/Sites/Torsion/AdditiveFunctor.lean"
+      ],
+      "classification": "hold_missing_source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeModelIdentity.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.BaseChangeModelIdentity",
+      "sha256": "96fd4d969e08d12889807bf9cb7159448764dc98aa5ae8fd2578701bfecb7d1b",
+      "changed": true,
+      "header_Aglib_nodes": 3578,
+      "missing_source": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeCoherence.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedTargetModels.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/TargetModelDiagram.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageModelIdentity.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ModelComparisonTorsion.lean",
+        "Aglib/CategoryTheory/Functor/TargetIdentityExchange.lean"
+      ],
+      "pending_A_paths": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Bounded.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/AffineReduction.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/RelativeExchangeIso.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/TargetLocality.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeNeighborhoodGerms.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeSectionComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricStalkExchange.lean"
+      ],
+      "owned_dependencies": [
+        "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Serre.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeTargetModels.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/DirectImage.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/FullSubcategory.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SuppliedDirectImage.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TargetModelComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/Torsion.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Diagram.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CompositionCoherence.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/HigherTorsion.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/TorsionPreservation.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/Isomorphism.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperIsomorphism.lean",
+        "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean",
+        "Aglib/CategoryTheory/ObjectProperty/LiftFunctorIso.lean",
+        "Aglib/CategoryTheory/Sites/Torsion/AdditiveFunctor.lean"
+      ],
+      "classification": "hold_missing_source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeTargetModels.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.BaseChangeTargetModels",
+      "sha256": "cf4aabf2f3a6757e3c9597d30cdcbc1d6bb571dfcee5ee547c7aa3372af61b3c",
+      "changed": true,
+      "header_Aglib_nodes": 3574,
+      "missing_source": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/NormalizedTargetModels.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/TargetModelDiagram.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ModelComparisonTorsion.lean"
+      ],
+      "pending_A_paths": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Bounded.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/AffineReduction.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/RelativeExchangeIso.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/TargetLocality.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeNeighborhoodGerms.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeSectionComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricStalkExchange.lean"
+      ],
+      "owned_dependencies": [
+        "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Serre.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/DirectImage.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/FullSubcategory.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SuppliedDirectImage.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TargetModelComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/Torsion.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Diagram.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CompositionCoherence.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/HigherTorsion.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/TorsionPreservation.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/Isomorphism.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperIsomorphism.lean",
+        "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean",
+        "Aglib/CategoryTheory/ObjectProperty/LiftFunctorIso.lean",
+        "Aglib/CategoryTheory/Sites/Torsion/AdditiveFunctor.lean"
+      ],
+      "classification": "hold_missing_source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawDenseTransition.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawDenseTransition",
+      "sha256": "b67b9766ff5dbbc321047f91dd2c96b86f9477ca8f9cd992edfe35491ad65874",
+      "changed": true,
+      "header_Aglib_nodes": 3,
+      "missing_source": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/ModelComparisonCoherence.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawComparisonCoherence.lean"
+      ],
+      "pending_A_paths": [],
+      "owned_dependencies": [],
+      "classification": "hold_missing_source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/ProperOpen/Comparison.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.ProperOpen.Comparison",
+      "sha256": "f5a0aac8a7be318cc6b09560a31edb7d639bc5f8cdab061046286d114e54e7fc",
+      "changed": true,
+      "header_Aglib_nodes": 3302,
+      "missing_source": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CartesianExchangeComparison.lean",
+        "Aglib/CategoryTheory/Adjunction/UnitRestriction.lean"
+      ],
+      "pending_A_paths": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Bounded.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/AffineReduction.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/RelativeExchangeIso.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/TargetLocality.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeNeighborhoodGerms.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeSectionComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricStalkExchange.lean"
+      ],
+      "owned_dependencies": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean"
+      ],
+      "classification": "hold_missing_source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChange.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.RawBaseChange",
+      "sha256": "9a3d7f9ab10d91dad49bb89e0bd77436acd1b891c57cd5274b239fd2a7312ef6",
+      "changed": true,
+      "header_Aglib_nodes": 3288,
+      "missing_source": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsion.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/OpenBaseChange.lean",
+        "Aglib/CategoryTheory/NatTrans/CompositeExchange.lean"
+      ],
+      "pending_A_paths": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Bounded.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/AffineReduction.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/RelativeExchangeIso.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/TargetLocality.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeNeighborhoodGerms.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeSectionComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricStalkExchange.lean"
+      ],
+      "owned_dependencies": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean"
+      ],
+      "classification": "hold_missing_source"
+    },
+    {
+      "path": "Aglib/CategoryTheory/ObjectProperty/LiftFunctorIso.lean",
+      "module": "Aglib.CategoryTheory.ObjectProperty.LiftFunctorIso",
+      "sha256": "c2e6e617d60eb884bec9fce4f60efcc31e6fb4d0838e4803b76dbd444ef03653",
+      "changed": true,
+      "header_Aglib_nodes": 1,
+      "missing_source": [],
+      "pending_A_paths": [],
+      "owned_dependencies": [],
+      "classification": "ready_current_header_graph"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean",
+      "module": "Aglib.CategoryTheory.Adjunction.Mates.UnitIsomorphism",
+      "sha256": "07da86d8361ff33df9e6bd4f82249c17b06a6abd9d0d7eba34c05edb4eae7e57",
+      "changed": true,
+      "header_Aglib_nodes": 1,
+      "missing_source": [],
+      "pending_A_paths": [],
+      "owned_dependencies": [],
+      "classification": "ready_current_header_graph"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SuppliedDirectImage.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.SuppliedDirectImage",
+      "sha256": "5210fe1c215ee66813c859c38cd07115f7549ffb6757024c8d3d8bf2c122fa85",
+      "changed": true,
+      "header_Aglib_nodes": 3568,
+      "missing_source": [],
+      "pending_A_paths": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Bounded.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/AffineReduction.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/RelativeExchangeIso.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/TargetLocality.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeNeighborhoodGerms.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeSectionComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricStalkExchange.lean"
+      ],
+      "owned_dependencies": [
+        "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Serre.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/DirectImage.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/FullSubcategory.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/Torsion.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Diagram.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CompositionCoherence.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/HigherTorsion.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/TorsionPreservation.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/Isomorphism.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperIsomorphism.lean",
+        "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean",
+        "Aglib/CategoryTheory/ObjectProperty/LiftFunctorIso.lean",
+        "Aglib/CategoryTheory/Sites/Torsion/AdditiveFunctor.lean"
+      ],
+      "classification": "hold_A_source_matching_coverage"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Diagram.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.Diagram",
+      "sha256": "0bda98be195f04a520fa1bd9a57444dce7d4202ed17ae056dacd8558ee59481e",
+      "changed": false,
+      "header_Aglib_nodes": 3338,
+      "missing_source": [],
+      "pending_A_paths": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Bounded.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/AffineReduction.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/RelativeExchangeIso.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/TargetLocality.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeNeighborhoodGerms.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeSectionComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricStalkExchange.lean"
+      ],
+      "owned_dependencies": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CompositionCoherence.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/Isomorphism.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperIsomorphism.lean",
+        "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean"
+      ],
+      "classification": "hold_A_source_matching_coverage"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CompositionCoherence.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.CompositionCoherence",
+      "sha256": "5ead6d087ea70942197fb6832604ffc28fd9b8c2df2fec69578aef12cbc8ac33",
+      "changed": false,
+      "header_Aglib_nodes": 96,
+      "missing_source": [],
+      "pending_A_paths": [],
+      "owned_dependencies": [],
+      "classification": "ready_current_header_graph"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange",
+      "sha256": "7f7ddd67dbab5b61f062332dc01e99b4d6c4a9c8d6531a465ab08f554bddf9f4",
+      "changed": false,
+      "header_Aglib_nodes": 3273,
+      "missing_source": [],
+      "pending_A_paths": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Bounded.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/AffineReduction.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/RelativeExchangeIso.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/TargetLocality.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeNeighborhoodGerms.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeSectionComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricStalkExchange.lean"
+      ],
+      "owned_dependencies": [
+        "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean"
+      ],
+      "classification": "hold_A_source_matching_coverage"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/Isomorphism.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Refinement.Isomorphism",
+      "sha256": "559bc5606e2ce95b2e2147832f0ab15a79318b18a7270f6e4ac361fb38eccfd3",
+      "changed": false,
+      "header_Aglib_nodes": 3313,
+      "missing_source": [],
+      "pending_A_paths": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Bounded.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/AffineReduction.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/RelativeExchangeIso.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/TargetLocality.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeNeighborhoodGerms.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeSectionComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricStalkExchange.lean"
+      ],
+      "owned_dependencies": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperIsomorphism.lean",
+        "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean"
+      ],
+      "classification": "hold_A_source_matching_coverage"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperComparison.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Refinement.ProperComparison",
+      "sha256": "f54d82539419847e22730133f71cf369ca3a9eeca99bb7dc1748ab80b6f9f29f",
+      "changed": false,
+      "header_Aglib_nodes": 85,
+      "missing_source": [],
+      "pending_A_paths": [],
+      "owned_dependencies": [],
+      "classification": "ready_current_header_graph"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperIsomorphism.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Refinement.ProperIsomorphism",
+      "sha256": "c7fc6386705365d09ecef1f9d77b7422e6be02a0acbf1605e4e9068b171b16c5",
+      "changed": false,
+      "header_Aglib_nodes": 3312,
+      "missing_source": [],
+      "pending_A_paths": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Bounded.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/AffineReduction.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/RelativeExchangeIso.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/TargetLocality.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeNeighborhoodGerms.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeSectionComparison.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricStalkExchange.lean"
+      ],
+      "owned_dependencies": [
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperComparison.lean",
+        "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean"
+      ],
+      "classification": "hold_A_source_matching_coverage"
+    }
+  ],
+  "minimal_current_unblocked_roots": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/FullSubcategory.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.FullSubcategory",
+      "sha256": "c57ad7ee73bef89de88e001912d18827f94d0a0f1821d839d8c3b9dc7dfbaa15"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/TorsionPreservation.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.TorsionPreservation",
+      "sha256": "c4d8883adeb3db3f7fbbc1744dc8c5e44a41799d728a05a5fe52d83e92d61db5"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/ComparisonAlgebra.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.ComparisonAlgebra",
+      "sha256": "71f46412064364330efd4c621f77d55a80a5c2be852e94d837b4468768a9ab16"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/DirectImageComparison.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.DirectImageComparison",
+      "sha256": "20377f51631c880cd0754b041d3da4972e083e86f29396193659a5316127bd27"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean",
+      "module": "Aglib.CategoryTheory.Adjunction.Mates.UnitIsomorphism",
+      "sha256": "07da86d8361ff33df9e6bd4f82249c17b06a6abd9d0d7eba34c05edb4eae7e57"
+    }
+  ],
+  "timestamp_utc": "2026-10-27T21:28:40.832350+00:00"
+}

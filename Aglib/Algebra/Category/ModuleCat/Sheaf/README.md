@@ -2,6 +2,44 @@
 
 The objects are actual module sheaves over a ring sheaf on a site, before scheme specialization. Tensor statements retain commutative coefficient rings where required. [Tensor/Basic](Tensor/README.md) owns the single sheafified tensor bifunctor and unit/braiding maps.
 
+[ConstantRing/Basic](ConstantRing/Basic.lean), [Equivalence](ConstantRing/Equivalence.lean)
+and [Pullback](ConstantRing/Pullback.lean) construct actual module sheaves over
+an arbitrary constant ring and compare them with module-valued sheaves. Native
+ring and module sheafification, image adjunctions, and their original units
+and counits are retained. Ring and module-carrier universes remain independent.
+The étale coefficient, open-restriction and constructibility families specialize
+these constructions; commutativity is not required for this bridge.
+
+[ConstantRing/UnitUnderlying](ConstantRing/UnitUnderlying.lean) gives the
+lifted unit, its section map, local injectivity and surjectivity, and the
+underlying constant-abelian-sheaf isomorphism on an arbitrary site under the
+displayed sheafification and local-bijectivity hypotheses.
+[ConstantRing/ZMod](ConstantRing/ZMod.lean) supplies full lifted-ZMod scalar
+forgetting and native constant-ring sheaf forgetting, and identity annihilation
+for every modulus. The scheme adapters use these constructors and maps.
+
+[ConstantRing/RingPullback](ConstantRing/RingPullback.lean) compares the actual
+native RingCat-valued inverse image of a constant ring with the target
+constant ring. It uses continuity, weak ring sheafification, native
+right-adjoint existence, and a specified source terminal object whose image
+is terminal. Its adjoint transpose is the original `constantRingMap`; the
+native unit, counit and original sheafification-unit equations are retained.
+
+[InternalHom/PresheafSource](InternalHom/PresheafSource.lean) constructs the
+sheaf of componentwise ring-linear maps from an arbitrary module presheaf to a
+module sheaf. [Basic](InternalHom/Basic.lean) specializes its source and identifies
+sections with actual module morphisms on the slice site. For site-object,
+site-morphism and module universes `uC`, `vC`, `uM`, its output lies in
+`max uC vC uM`; the ring universe remains independent. The
+[scheme Hom family](../../../../AlgebraicGeometry/Modules/InternalHom/README.md)
+uses these same constructors with the native Opens category.
+
+[Pullback/AdjunctionSquare](Pullback/AdjunctionSquare.lean) constructs a
+left-adjoint comparison from a specified square of right adjoints. Its partial
+mate and original unit and counit equations are explicit. Scheme open
+restriction uses this construction with its original geometric square.
+Invertibility of the partial mate is a separate conclusion.
+
 [Linear](Linear.lean) sends sections of a commutative ring sheaf on a
 specified initial presheaf object to the native category center.
 `scalarEndomorphismOfInitial` is actual module-linear multiplication by
@@ -51,3 +89,23 @@ variable-ring evaluation functor, with independent ring, coefficient, site
 and morphism universes. It unfolds the existing forget/evaluation composite;
 there is no second section functor. The scheme-complex basis criterion
 consumes it and retains the explicit installed scheme module structures.
+
+[LowerShriekTransport](LowerShriekTransport.lean) constructs the original
+three-factor left functor through two actual coefficient equivalences,
+its adjunction, finite-limit transfer and unit. The native module lower
+shriek specializes this construction.
+[ValuedComparison](ValuedComparison.lean) constructs the inverse-valued
+comparison and original exchanged isomorphism, proving their whole unit,
+preimage and direct-image comparison laws before taking components. The
+coefficient categories and their genuinely distinct worlds are retained.
+
+The internal-Hom source functor and source-complex construction give original
+short exactness in the source into an actual injective target and its
+resolution terms. Their availability does not itself prove source-coefficient
+or source-connecting compatibility of the Ext/cohomology comparison.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [InternalHom/BidualNaturality](InternalHom/BidualNaturality.lean)

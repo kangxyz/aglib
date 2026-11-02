@@ -1,0 +1,68 @@
+{
+  "command": [
+    "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "env",
+    "/root/autodl-tmp/lean-build/tools/axiom-audit-46024e005996/.lake/build/bin/axiom-audit",
+    "--root",
+    "Aglib"
+  ],
+  "exit": 2,
+  "limits": {
+    "max_map_count": 65530,
+    "RLIMIT_NOFILE": [
+      1024,
+      1048576
+    ],
+    "RLIMIT_AS": [
+      -1,
+      -1
+    ]
+  },
+  "observation_seconds": 6.497251480817795,
+  "observation_budget_seconds": 120,
+  "process_peaks": [
+    {
+      "pid": 90041,
+      "name": "lake",
+      "max_maps": 5899,
+      "max_fds": 15,
+      "max_rss_kib": 827968,
+      "samples": 38
+    },
+    {
+      "pid": 90048,
+      "name": "python3",
+      "max_maps": 59,
+      "max_fds": 4,
+      "max_rss_kib": 6580,
+      "samples": 2
+    },
+    {
+      "pid": 90054,
+      "name": "git",
+      "max_maps": 115,
+      "max_fds": 6,
+      "max_rss_kib": 6528,
+      "samples": 1
+    },
+    {
+      "pid": 90098,
+      "name": "axiom-audit",
+      "max_maps": 65492,
+      "max_fds": 12,
+      "max_rss_kib": 2538288,
+      "samples": 26
+    }
+  ],
+  "near_cap_samples": [
+    {
+      "pid": 90098,
+      "maps": 65492,
+      "fds": 11,
+      "rss_kib": 2538288,
+      "seconds": 5.881154999136925
+    }
+  ],
+  "stdout": "/root/autodl-tmp/lean-build/logs/remote-088f37db5b0d45b0b3c0a75087bd9e90/audit-loader.stdout.log",
+  "boundary": "Readonly sampled process counts; no syscall errno captured because strace unavailable. Same audit predicate/argv, no cache/resource/source changes."
+}

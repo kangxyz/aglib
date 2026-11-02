@@ -1,0 +1,105 @@
+{
+  "Q_head": "7d071440653407d30fd41d8dbbafce1673a3039b",
+  "captured_SOURCE": "e9ad8c9d8096784793242fecf0712f2d18fdef19c8cde5eece836e90a55f46ff",
+  "source_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/continuation-A-Q7d-e9ad-faithful-factorized-f5e90209.json",
+  "source_manifest_sha256": "2e1c6c972e3cbeda9c478f7b59748d366bd7af1419b9889a3d65cb8a14d5cd63",
+  "files": [
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+      "sha256": "d0594d133f27d56747f5a0daeaab4cd296e533e6137dd2df8ce9f069f69f5871",
+      "snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/final-delivery/source/after/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Basic.lean",
+      "sha256": "a3c32be2f1ef4768b058dc006c5c79446b643a6d298f2967a99858839142ead0",
+      "snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/final-delivery/source/after/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Basic.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Geometry.lean",
+      "sha256": "8b2bb306df1a7fc007f2c37e7eb52146e7d3858c7d314b63122cef0708a48537",
+      "snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/final-delivery/source/after/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Geometry.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Bridge.lean",
+      "sha256": "ed96fbf7d031ec78c541d5eabdb225e8b98efeb884df7a1ba147597abcc0fd47",
+      "snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/final-delivery/source/after/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Bridge.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanData.lean",
+      "sha256": "3241adae150f33d252df65728316fa92ed5613387ef79caa63844188f17821df",
+      "snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/final-delivery/source/after/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanData.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/FirstSquare.lean",
+      "sha256": "f5b264357254605e1124c194f7b2c31e3d9af87779502a7fdecbb76263f6bb94",
+      "snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/final-delivery/source/after/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/FirstSquare.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SecondSquare.lean",
+      "sha256": "0017416d20d1bf61a6d3f3d152e7f184a0a497134dbae605ead5241b8ee1ee1d",
+      "snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/final-delivery/source/after/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SecondSquare.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanComponent.lean",
+      "sha256": "c4da49721d261a5623feac69ec09e6e5a705705fec2d608eaf002a8ee2e7090f",
+      "snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/final-delivery/source/after/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanComponent.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanFactorized.lean",
+      "sha256": "05927d624a8ec60b52a25efefcdd2ca52eb0b4b334e8769f319102f0d88c6254",
+      "snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/final-delivery/source/after/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanFactorized.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Span.lean",
+      "sha256": "b1cd0df977d580645d71aaa6a884a2b3e79e16de66ad8863fd312b7441e57f20",
+      "snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/final-delivery/source/after/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Span.lean"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Functor/NatTrans/UnitInsertionSpan.lean",
+      "sha256": "84bdff5cea154b04a0f2df6429e2ba6505034a7831c0620521da33dd30c62342",
+      "snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/final-delivery/source/after/Aglib/CategoryTheory/Functor/NatTrans/UnitInsertionSpan.lean"
+    }
+  ],
+  "dag": {
+    "Basic": [
+      "original providers"
+    ],
+    "Geometry": [
+      "original ordinary functoriality/complex providers"
+    ],
+    "Bridge": [
+      "Basic",
+      "Geometry"
+    ],
+    "SpanData": [
+      "Bridge"
+    ],
+    "FirstSquare": [
+      "Geometry",
+      "original TotalComplex.QuasiIso",
+      "UnitInsertionSpan"
+    ],
+    "SecondSquare": [
+      "SpanData",
+      "UnitInsertionSpan"
+    ],
+    "SpanComponent": [
+      "FirstSquare",
+      "SecondSquare"
+    ],
+    "SpanFactorized": [
+      "SpanComponent"
+    ],
+    "Span": [
+      "SpanFactorized",
+      "SpanComponent"
+    ],
+    "compatibility_facade": [
+      "FirstSquare",
+      "SecondSquare",
+      "Span"
+    ]
+  },
+  "conditions": "SOURCE-CORRESPONDENCE.json",
+  "scope": "Exact11 Lean files only. Root aggregate/docs/policy changes, newer P/remote work and N are outside this publication vector."
+}

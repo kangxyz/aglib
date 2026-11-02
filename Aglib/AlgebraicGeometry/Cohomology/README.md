@@ -16,6 +16,7 @@ keeps the two site owners separate.
 | [Affine](Affine/README.md) | Quasicoherent affine acyclicity, affine direct-image acyclicity and actual H1 comparison |
 | [Cech](Cech/README.md) | Principal-cover exactness and scalar/natural comparison with original `Sheaf.H` |
 | [MayerVietoris](MayerVietoris/README.md) | Genuine two-open sequences, two-affine higher vanishing and H1 restriction cokernel |
+| [StructureSheaf/Kunneth](StructureSheaf/Kunneth.lean) | Original structure-sheaf external cup Künneth map is bijective in every degree for qcqs factors over any field |
 | [Exact](Exact/README.md) and [Finiteness](Finiteness/README.md) | Actual linear connecting maps, exactness, conditional finiteness transfer and low-degree Euler consequences |
 | [Support](Support/README.md) and [Vanishing](Vanishing/README.md) | Skyscraper/finite-closed-support calculations and Noetherian topological-dimension vanishing |
 | [BaseChange](BaseChange/README.md) | Original tensor mates and all-degree qcqs flat base change for arbitrary quasicoherent module coefficients |
@@ -28,6 +29,15 @@ keeps the two site owners separate.
 | [Duality](Duality/README.md) and [projective duality](Duality/Projective/README.md) | Original residue/derived traces, relative projective coherent duality over Noetherian separated bases and the chosen smooth-embedding canonical comparison |
 
 Proved interfaces include positive affine quasicoherent vanishing over every commutative affine ring, skyscraper positive vanishing at any point and Noetherian vanishing above a topological dimension bound. Affine module base change allows arbitrary geometric base change. The original flat base-change map is invertible for qcqs morphisms and quasicoherent coefficients; its [D+ version](BaseChange/Derived/README.md) holds over arbitrary bases for bounded-below objects with quasicoherent original homology. Proper coherent finiteness holds over Noetherian affine bases, and actual coherent higher direct images descend to every locally Noetherian target. The retained field-valued finiteness families have proved suppliers.
+
+For schemes `X` and `Y` over any field, with both structure maps quasi-compact
+and quasi-separated, the original [structure-sheaf Künneth map](StructureSheaf/Kunneth.lean)
+is bijective in every natural degree. Its summands use the original projection
+pullbacks and cup product; empty factors and characteristic two are included.
+The adjacent [point](StructureSheaf/ExternalProduct/Point.lean) and
+[coherence](StructureSheaf/ExternalProduct/Coherence.lean) laws retain their
+displayed hypotheses. Graded algebra isomorphism and the coherent H¹ bound
+remain open.
 
 [Projective duality](Duality/Projective/README.md) proves complementary-degree coherent Serre duality over fields and all-degree derived duality for coherent sources over Noetherian affine bases with every base module. The [relative family](Duality/Projective/Relative/README.md) constructs the original differential trace over separated bases and proves coherent duality over Noetherian separated bases for arbitrary quasicoherent base coefficients, with a supplied projective-space square. Transfer through a chosen closed embedding retains the actual right-adjoint coefficient; its smooth unit-coefficient specialization uses the [proved canonical comparison](Duality/Projective/Canonical.lean) and one original trace. General proper duality, embedding independence and coefficient-complex/internal-RHom extensions remain separate. The full arbitrary-base `LocalFreeCohomologyBaseChange` family, general nonflat higher-image sheaf comparison and direct images of arbitrary perfect coefficients also remain open interfaces.
 
@@ -100,3 +110,8 @@ the dual-ideal section on the actual full closed-point blowup of a regular
 integral locally Noetherian scheme at a two-dimensional stalk. The residue
 field is unrestricted. This is the normalized `O(E)` comparison used by
 later differential and trace consumers.
+
+[Proper/RankOneOpen](Proper/RankOneOpen.lean) constructs the rank-one
+fibre-cohomology open for a proper affine-locally coherent relatively flat
+family over a locally Noetherian base, with its stated amplitude and
+quasicoherence hypotheses.

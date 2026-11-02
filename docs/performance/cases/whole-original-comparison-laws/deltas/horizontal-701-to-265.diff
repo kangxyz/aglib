@@ -1,0 +1,69 @@
+--- sources/failed/DiagramSquareCoefficients.lean
++++ sources/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean
+@@ -98,6 +98,31 @@
+   (e₁ : f₁ ≫ g₁ = h₁ ≫ f₀) (e₂ : f₂ ≫ g₂ = h₂ ≫ f₁)
+   (e : f₂ ≫ (g₂ ≫ g₁) = (h₂ ≫ h₁) ≫ f₀)
+ 
++private lemma schemeSquareIso_hComp_whole :
++    WholeHorizontalSquareEquation (inverseImageSquareIso f₀ f₁ g₁ h₁ e₁).hom
++      (inverseImageSquareIso f₁ f₂ g₂ h₂ e₂).hom
++      (inverseImageSquareIso f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e).hom
++      (inverseImageComp g₁ g₂).hom (inverseImageComp h₁ h₂).hom := by
++  apply schemeAdjunctionData.squareIso_hComp_whole_of_eq schemeAdjunctionData_coherent
++    f₀.op f₁.op f₂.op g₁.op g₂.op h₁.op h₂.op
++    (congrArg Quiver.Hom.op e₁) (congrArg Quiver.Hom.op e₂) (congrArg Quiver.Hom.op e)
++    (inverseImageComp g₁ g₂) (inverseImageComp h₁ h₂)
++    (inverseImageSquareIso f₀ f₁ g₁ h₁ e₁) (inverseImageSquareIso f₁ f₂ g₂ h₂ e₂)
++    (inverseImageSquareIso f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e)
++  · simpa only [Quiver.Hom.unop_op] using
++      (schemeLeftCompIso_eq_inverseImageComp g₁.op g₂.op).symm
++  · simpa only [Quiver.Hom.unop_op] using
++      (schemeLeftCompIso_eq_inverseImageComp h₁.op h₂.op).symm
++  · simpa only [Quiver.Hom.unop_op] using
++      (schemeSquareIso_eq_inverseImageSquareIso f₀.op f₁.op g₁.op h₁.op
++        (congrArg Quiver.Hom.op e₁)).symm
++  · simpa only [Quiver.Hom.unop_op] using
++      (schemeSquareIso_eq_inverseImageSquareIso f₁.op f₂.op g₂.op h₂.op
++        (congrArg Quiver.Hom.op e₂)).symm
++  · simpa only [unop_comp, Quiver.Hom.unop_op] using
++      (schemeSquareIso_eq_inverseImageSquareIso f₀.op f₂.op (g₁.op ≫ g₂.op) (h₁.op ≫ h₂.op)
++        (congrArg Quiver.Hom.op e)).symm
++
+ /-- Inverse form of the already proved original square-pasting equation. -/
+ lemma inverseImageSquareIso_inv_hComp (F : AbelianSheaf.{u, u + 1} S₀) :
+     (inverseImageComp h₁ h₂).hom.app ((inverseImage f₀).obj F) ≫
+@@ -105,11 +130,11 @@
+         (inverseImageSquareIso f₁ f₂ g₂ h₂ e₂).inv.app ((inverseImage g₁).obj F) =
+       (inverseImageSquareIso f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e).inv.app F ≫
+         (inverseImage f₂).map ((inverseImageComp g₁ g₂).hom.app F) := by
+-  simpa only [schemeLeftCompIso_eq_inverseImageComp, schemeSquareIso_eq_inverseImageSquareIso,
+-    schemeLeft_eq_inverseImage, unop_comp, Quiver.Hom.unop_op] using
+-    schemeAdjunctionData.squareIso_inv_hComp schemeAdjunctionData_coherent
+-      f₀.op f₁.op f₂.op g₁.op g₂.op h₁.op h₂.op
+-      (congrArg Quiver.Hom.op e₁) (congrArg Quiver.Hom.op e₂) (congrArg Quiver.Hom.op e) F
++  exact Adjunction.CoefficientSquares.inverse_hComp
++    (inverseImageComp g₁ g₂) (inverseImageComp h₁ h₂)
++    (inverseImageSquareIso f₀ f₁ g₁ h₁ e₁) (inverseImageSquareIso f₁ f₂ g₂ h₂ e₂)
++    (inverseImageSquareIso f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e)
++    (schemeSquareIso_hComp_whole f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e) F
+ 
+ /-- Two native coefficient-square maps compose with the original inverse-image comparisons. -/
+ lemma squareCoefficientMap_hComp
+@@ -121,12 +146,11 @@
+         squareCoefficientMap f₁ f₂ g₂ h₂ e₂ ψ =
+       squareCoefficientMap f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e
+         ((inverseImageComp g₁ g₂).hom.app F ≫ (inverseImage g₂).map φ ≫ ψ) := by
+-  simpa only [schemeLeftCompIso_eq_inverseImageComp,
+-    schemeSquareCoefficientMap_eq_squareCoefficientMap, schemeLeft_eq_inverseImage,
+-    unop_comp, Quiver.Hom.unop_op] using
+-    schemeAdjunctionData.squareCoefficientMap_hComp schemeAdjunctionData_coherent
+-      f₀.op f₁.op f₂.op g₁.op g₂.op h₁.op h₂.op
+-      (congrArg Quiver.Hom.op e₁) (congrArg Quiver.Hom.op e₂) (congrArg Quiver.Hom.op e) φ ψ
++  exact Adjunction.CoefficientSquares.coefficient_hComp
++    (inverseImageComp g₁ g₂) (inverseImageComp h₁ h₂)
++    (inverseImageSquareIso f₀ f₁ g₁ h₁ e₁) (inverseImageSquareIso f₁ f₂ g₂ h₂ e₂)
++    (inverseImageSquareIso f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e)
++    (schemeSquareIso_hComp_whole f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e) φ ψ
+ 
+ end Horizontal
+ end AlgebraicGeometry.Scheme.EtaleCohomology.Continuity

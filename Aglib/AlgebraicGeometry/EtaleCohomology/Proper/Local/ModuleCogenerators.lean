@@ -6,9 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.ZModRetract
-public import Aglib.CategoryTheory.Sites.Torsion.Annihilator.Basic
-public import Aglib.CategoryTheory.Sites.Torsion.ZMod.Full
-public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Kernels
+public import Aglib.CategoryTheory.Sites.Torsion.Annihilator.ZMod
 
 /-! # Genuine module cogenerators from original abelian embeddings
 
@@ -33,32 +31,15 @@ section TypedKernels
 variable {C D : Type*} [Category* C] [Category* D]
   [Preadditive C] [Preadditive D] [HasKernels C] [HasKernels D]
 
-/-- An additive left exact functor transports the actual scalar kernel
-through its original preserved-kernel comparison and scalar normalization. -/
+/-- The original scalar-kernel comparison, supplied by the generic kernel API. -/
 def nsmulKernelIso (F : C ⥤ D) [F.Additive] [PreservesFiniteLimits F]
     (A : C) (n : ℕ) : F.obj (kernel (n • 𝟙 A)) ≅ kernel (n • 𝟙 (F.obj A)) :=
-  PreservesKernel.iso F (n • 𝟙 A) ≪≫ kernelIsoOfEq (by simp)
+  Preadditive.nsmulKernelIso F A n
 
-private theorem nsmulKernelIso_inv_ι
-    (F : C ⥤ D) [F.Additive] [PreservesFiniteLimits F] (A : C) (n : ℕ) :
-    (nsmulKernelIso F A n).inv ≫ F.map (kernel.ι (n • 𝟙 A)) =
-      kernel.ι (n • 𝟙 (F.obj A)) := by
-  simp only [nsmulKernelIso, Iso.trans_inv, Category.assoc,
-    PreservesKernel.iso_inv_ι, kernelIsoOfEq_inv_comp_ι]
-
-/-- An arrow from an actually n-killed object factors through the original
-scalar kernel of its target by the native kernel universal property. -/
+/-- The original factorization through the actual scalar kernel of the target. -/
 def killedKernelLift {A B : C} (n : ℕ) (hA : n • 𝟙 A = 0) (a : A ⟶ B) :
     A ⟶ kernel (n • 𝟙 B) :=
-  kernel.lift (n • 𝟙 B) a (by
-    calc
-      a ≫ (n • 𝟙 B) = n • a := by simp
-      _ = (n • 𝟙 A) ≫ a := by simp
-      _ = 0 := by rw [hA, zero_comp])
-
-private theorem killedKernelLift_ι {A B : C} (n : ℕ) (hA : n • 𝟙 A = 0) (a : A ⟶ B) :
-    killedKernelLift n hA a ≫ kernel.ι (n • 𝟙 B) = a :=
-  kernel.lift_ι _ _ _
+  Preadditive.killedKernelLift n hA a
 
 end TypedKernels
 
@@ -78,26 +59,20 @@ variable (X : Scheme.{u}) (n : ℕ)
 /-- The genuine module structure on the actual native annihilator of the
 original target coefficient. The modulus may be zero or one. -/
 def zmodAnnihilator (G : AbelianSheaf.{u, u + 1} X) : Reduction.ZModSheaf X n :=
-  TorsionZMod.sheaf X.smallEtaleTopology n (Sheaf.annihilator G n)
-    (Sheaf.nsmul_id_annihilator G n)
+  TorsionZMod.annihilator X.smallEtaleTopology n G
 
 /-- The original underlying coefficient of the constructed module target is
 the actual native annihilator, through the original scalar-conversion iso. -/
 def zmodAnnihilatorUnderlyingIso (G : AbelianSheaf.{u, u + 1} X) :
     (Reduction.zmodUnderlying X n).obj (zmodAnnihilator X n G) ≅
       Sheaf.annihilator G n :=
-  TorsionZMod.sheafUnderlyingIso X.smallEtaleTopology n (Sheaf.annihilator G n)
-    (Sheaf.nsmul_id_annihilator G n)
+  TorsionZMod.annihilatorUnderlyingIso X.smallEtaleTopology n G
 
 /-- Lift an original underlying abelian arrow to the genuine module
 annihilator target, preserving the original source module and its scalar action. -/
 def zmodAnnihilatorLift (M : Reduction.ZModSheaf X n) (G : AbelianSheaf.{u, u + 1} X)
-    (a : (Reduction.zmodUnderlying X n).obj M ⟶ G) : M ⟶ zmodAnnihilator X n G := by
-  let : (Reduction.zmodUnderlying X n).Full :=
-    TorsionZMod.sheafUnderlying_full.{u + 1, u, u + 1} X.smallEtaleTopology n
-  exact (Reduction.zmodUnderlying X n).preimage
-    (killedKernelLift n (Reduction.zmodUnderlying_nsmul_id X n M) a ≫
-      (zmodAnnihilatorUnderlyingIso X n G).inv)
+    (a : (Reduction.zmodUnderlying X n).obj M ⟶ G) : M ⟶ zmodAnnihilator X n G :=
+  TorsionZMod.annihilatorLift X.smallEtaleTopology n M G a
 
 /-- The genuine module lift recovers the literal original abelian arrow after
 the original scalar comparison and annihilator inclusion. -/
@@ -106,21 +81,16 @@ theorem zmodAnnihilatorLift_underlying
     (M : Reduction.ZModSheaf X n) (G : AbelianSheaf.{u, u + 1} X)
     (a : (Reduction.zmodUnderlying X n).obj M ⟶ G) :
     (Reduction.zmodUnderlying X n).map (zmodAnnihilatorLift X n M G a) ≫
-        (zmodAnnihilatorUnderlyingIso X n G).hom ≫ Sheaf.annihilatorι G n = a := by
-  let : (Reduction.zmodUnderlying X n).Full :=
-    TorsionZMod.sheafUnderlying_full.{u + 1, u, u + 1} X.smallEtaleTopology n
-  dsimp only [zmodAnnihilatorLift]
-  rw [Functor.map_preimage]
-  simp only [Category.assoc, Iso.inv_hom_id_assoc, killedKernelLift_ι]
+        (zmodAnnihilatorUnderlyingIso X n G).hom ≫ Sheaf.annihilatorι G n = a :=
+  TorsionZMod.annihilatorLift_underlying X.smallEtaleTopology n M G a
 
 /-- An actual original abelian monomorphism gives an actual genuine module
 monomorphism, without changing the source module or its original arrow. -/
 theorem mono_zmodAnnihilatorLift
     (M : Reduction.ZModSheaf X n) (G : AbelianSheaf.{u, u + 1} X)
     (a : (Reduction.zmodUnderlying X n).obj M ⟶ G) [Mono a] :
-    Mono (zmodAnnihilatorLift X n M G a) := by
-  apply (Reduction.zmodUnderlying X n).mono_of_mono_map
-  exact mono_of_mono_fac (zmodAnnihilatorLift_underlying X n M G a)
+    Mono (zmodAnnihilatorLift X n M G a) :=
+  TorsionZMod.mono_annihilatorLift X.smallEtaleTopology n M G a
 
 variable {X}
 
@@ -156,7 +126,7 @@ theorem constantDirectImageAnnihilatorIso_hom_ι {Y : Scheme.{u}} (f : Y ⟶ X)
   let : PreservesFiniteLimits
       (constantSheaf Y.smallEtaleTopology AddCommGrpCat.{u + 1} ⋙ directImage f) :=
     Limits.comp_preservesFiniteLimits _ _
-  exact nsmulKernelIso_inv_ι
+  exact Preadditive.nsmulKernelIso_inv_ι
     (constantSheaf Y.smallEtaleTopology AddCommGrpCat.{u + 1} ⋙ directImage f) A n
 
 /-- The actual kernel value remains finite whenever the original constant

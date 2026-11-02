@@ -20,6 +20,8 @@ public import Aglib.LinearAlgebra.ExteriorPower.TopDegree
 public import Aglib.LinearAlgebra.ExteriorPower.Wedge
 public import Aglib.LinearAlgebra.FreeModule.StableRankOne
 public import Aglib.LinearAlgebra.FreeModule.ZModTorsion
+public import Aglib.LinearAlgebra.FrobeniusBaseChange
+public import Aglib.LinearAlgebra.FrobeniusBaseChange.Tower
 public import Aglib.LinearAlgebra.FrobeniusDifference
 public import Aglib.LinearAlgebra.FrobeniusFixed
 public import Aglib.LinearAlgebra.KernelFiltration
@@ -38,6 +40,8 @@ public import Aglib.LinearAlgebra.Matrix.ScalarRestriction
 public import Aglib.LinearAlgebra.Matrix.SelectedMinorRows
 public import Aglib.LinearAlgebra.Matrix.SquareZeroLift
 public import Aglib.LinearAlgebra.Multilinear.Span
+public import Aglib.LinearAlgebra.SemilinearConjugate
+public import Aglib.LinearAlgebra.TensorProduct.Basis
 public import Aglib.LinearAlgebra.TensorProduct.DualEvaluation
 public import Aglib.LinearAlgebra.TensorProduct.DualEvaluationFiniteLength
 public import Aglib.LinearAlgebra.TensorProduct.DualInjectivity

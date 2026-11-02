@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Modules.PullbackComposition
+public import Aglib.AlgebraicGeometry.Modules.Pullback.Unit
 
 /-!
 # The actual pullback unit on a commutative triangle
@@ -48,7 +48,7 @@ theorem pullbackUnit_triangle (F : X.Modules) (p : Y ⟶ X) (v : Z ⟶ Y)
   have hl : (pullbackCongr (rfl : v ≫ p = v ≫ p)).hom.app F = 𝟙 _ := rfl
   rw [hl, Category.comp_id, hp, Category.comp_id]
   let e := (pullbackComp v p).app F
-  have hu := Scheme.Cohomology.pullbackPushforwardAdjunction_unit_comp p v F
+  have hu := Scheme.Modules.pullbackPushforwardAdjunction_unit_comp p v F
   have hv := congrArg (fun k => k ≫ (pushforward (v ≫ p)).map e.hom) hu
   have he : (pullbackComp v p).inv.app F ≫ e.hom = 𝟙 _ :=
     (pullbackComp v p).inv_hom_id_app F

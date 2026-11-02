@@ -101,11 +101,11 @@ instance moduleValuedLowerShriek_faithful_of_open : (moduleValuedLowerShriek j �
   (moduleValuedLowerShriekFullyFaithful j Λ).faithful
 
 instance moduleLowerShriek_full_of_open : (moduleLowerShriek j Λ).Full := by
-  unfold moduleLowerShriek
+  unfold moduleLowerShriek Equivalence.coefficientLeftFunctor
   infer_instance
 
 instance moduleLowerShriek_faithful_of_open : (moduleLowerShriek j Λ).Faithful := by
-  unfold moduleLowerShriek
+  unfold moduleLowerShriek Equivalence.coefficientLeftFunctor
   infer_instance
 
 /-- The genuine native lower-shriek unit is invertible. -/

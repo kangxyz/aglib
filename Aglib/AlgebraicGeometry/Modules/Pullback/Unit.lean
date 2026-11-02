@@ -35,7 +35,70 @@ open AlgebraicGeometry.Scheme.Modules
 namespace AlgebraicGeometry.Scheme.Modules
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
-variable {X Y Z : Scheme.{u}} (f : X ⟶ Y) (g : Y ⟶ Z)
+variable {X Y Z : Scheme.{u}}
+
+/-- The original arbitrary-coefficient unit respects the native pullback composition. -/
+theorem pullbackPushforwardAdjunction_unit_comp (p : Y ⟶ X) (q : Z ⟶ Y)
+    (M : X.Modules) :
+    (Scheme.Modules.pullbackPushforwardAdjunction p).unit.app M ≫
+        (Scheme.Modules.pushforward p).map
+          ((Scheme.Modules.pullbackPushforwardAdjunction q).unit.app
+            ((Scheme.Modules.pullback p).obj M)) ≫
+        (Scheme.Modules.pushforwardComp q p).hom.app
+          ((Scheme.Modules.pullback q).obj ((Scheme.Modules.pullback p).obj M)) =
+      (Scheme.Modules.pullbackPushforwardAdjunction (q ≫ p)).unit.app M ≫
+        (Scheme.Modules.pushforward (q ≫ p)).map
+          ((Scheme.Modules.pullbackComp q p).inv.app M) := by
+  have h := unit_conjugateEquiv ((Scheme.Modules.pullbackPushforwardAdjunction p).comp
+      (Scheme.Modules.pullbackPushforwardAdjunction q))
+    (Scheme.Modules.pullbackPushforwardAdjunction (q ≫ p))
+    (Scheme.Modules.pullbackComp q p).inv M
+  rw [Scheme.Modules.conjugateEquiv_pullbackComp_inv, Adjunction.comp_unit_app] at h
+  rw [← Category.assoc]
+  exact h
+
+/-- The inverse composition comparison retains the original pullback unit. -/
+theorem pullbackComp_inv_unit (f : X ⟶ Y) (g : Y ⟶ Z) (M : Z.Modules) :
+    (Scheme.Modules.pullbackPushforwardAdjunction (f ≫ g)).unit.app M ≫
+      (Scheme.Modules.pushforward (f ≫ g)).map
+        ((Scheme.Modules.pullbackComp f g).inv.app M) =
+    (Scheme.Modules.pullbackPushforwardAdjunction g).unit.app M ≫
+      (Scheme.Modules.pushforward g).map
+        ((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app
+          ((Scheme.Modules.pullback g).obj M)) ≫
+      (Scheme.Modules.pushforwardComp f g).hom.app
+        ((Scheme.Modules.pullback f).obj ((Scheme.Modules.pullback g).obj M)) :=
+  (pullbackPushforwardAdjunction_unit_comp g f M).symm
+
+/-- Evaluation of the composition law on the same original section. -/
+theorem pullbackComp_inv_unit_apply (f : X ⟶ Y) (g : Y ⟶ Z) (M : Z.Modules)
+    (U : Z.Opens) (m : Γ(M, U)) :
+    ((Scheme.Modules.pullbackComp f g).inv.app M).val.app (op ((f ≫ g) ⁻¹ᵁ U))
+      (((Scheme.Modules.pullbackPushforwardAdjunction (f ≫ g)).unit.app M).val.app (op U) m) =
+    ((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app
+      ((Scheme.Modules.pullback g).obj M)).val.app (op (g ⁻¹ᵁ U))
+      (((Scheme.Modules.pullbackPushforwardAdjunction g).unit.app M).val.app (op U) m) :=
+  congrArg (fun q => q.val.app (op U) m) (pullbackComp_inv_unit f g M)
+
+/-- The composition comparison retains original global-section units. -/
+theorem pullbackComp_inv_unit_top (f : X ⟶ Y) (g : Y ⟶ Z) (M : Z.Modules)
+    (m : Γ(M, ⊤)) :
+    ((Scheme.Modules.pullbackComp f g).inv.app M).val.app (op ⊤)
+      (((Scheme.Modules.pullbackPushforwardAdjunction (f ≫ g)).unit.app M).val.app (op ⊤) m) =
+    ((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app
+      ((Scheme.Modules.pullback g).obj M)).val.app (op ⊤)
+      (((Scheme.Modules.pullbackPushforwardAdjunction g).unit.app M).val.app (op ⊤) m) :=
+  pullbackComp_inv_unit_apply f g M ⊤ m
+
+/-- Equality of scheme morphisms retains the original global-section unit. -/
+theorem pullbackCongr_unit_top {f g : X ⟶ Y} (h : f = g) (M : Y.Modules) (m : Γ(M, ⊤)) :
+    ((Scheme.Modules.pullbackCongr h).hom.app M).val.app (op ⊤)
+      (((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app M).val.app (op ⊤) m) =
+    ((Scheme.Modules.pullbackPushforwardAdjunction g).unit.app M).val.app (op ⊤) m := by
+  subst g
+  rfl
+
+variable (f : X ⟶ Y) (g : Y ⟶ Z)
 /-- The original structure-module unit respects composition of scheme maps. -/
 theorem unitToPushforwardObjUnit_comp :
     SheafOfModules.unitToPushforwardObjUnit g.toRingCatSheafHom ≫
@@ -82,6 +145,18 @@ theorem pullbackUnitIso_comp :
       Adjunction.homEquiv_naturality_right, pullbackUnitIso_homEquiv]
     exact unitToPushforwardObjUnit_comp f g
   rw [← h, Iso.hom_inv_id_app_assoc]
+/-- The original unit coherence, in the direction used when evaluating sections. -/
+theorem pullbackUnitIso_inv_comp {U V W : Scheme.{u}} (f : U ⟶ V) (g : V ⟶ W) :
+    (pullbackUnitIso (f ≫ g)).inv ≫
+        (pullbackComp f g).inv.app (SheafOfModules.unit W.ringCatSheaf) =
+      (pullbackUnitIso f).inv ≫ (pullback f).map (pullbackUnitIso g).inv := by
+  have h : (pullbackComp f g).app (SheafOfModules.unit W.ringCatSheaf) ≪≫
+      pullbackUnitIso (f ≫ g) =
+      (pullback f).mapIso (pullbackUnitIso g) ≪≫ pullbackUnitIso f := by
+    apply Iso.ext
+    exact pullbackUnitIso_comp f g
+  exact congrArg Iso.inv h
+
 /-- The original identity pullback comparison agrees with the canonical unit comparison. -/
 theorem pullbackUnitIso_id (A : Scheme.{u}) :
     (AlgebraicGeometry.Scheme.Modules.pullbackId A).hom.app

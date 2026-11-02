@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "env",
+    "/root/autodl-tmp/lean-build/tools/axiom-audit-46024e005996/.lake/build/bin/axiom-audit",
+    "--root",
+    "Aglib",
+    "--modules",
+    "Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange",
+    "--json"
+  ],
+  "exit": 0,
+  "seconds": 7.4370734095573425,
+  "source": "7c1346d0ef690c4995b2882ad26a789127870d2b60ce72c1905f0d1311d6519d",
+  "binary_sha256": "03ce70017a1ee8848c74541b00b29b40e471527ff7484e389b3623850dd08743",
+  "pin": "46024e005996495c65ef609368e11ab39c4222e3",
+  "coverage": "Unchanged upstream inAuditedLib(Aglib,moduleOrigin) over only completedfamilyterminal import environment; includes genericUnitInsertionSpan and allnativefamilyorigins. Defaultallowlist unchanged; nofullAglibimport, replay/client/Test or proof rebuild."
+}

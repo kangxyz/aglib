@@ -1,0 +1,24 @@
+{
+  "contract": "Independent ordinary fixed mathematical/source-map review, no compiler gate or established-status assignment",
+  "candidate": "candidate-v12/READY.json",
+  "ready_sha256": "5dcbd9ec63c76f7b21de27392820de7a3569b416a506bc55a3fc264c53b28a74",
+  "sources": {
+    "Over.RelativeTests": "2adb2219073861c292c73cdf35dbd1d9ed1222a53800a7f4bfa7829bed7fa112",
+    "Global.Restriction": "e5b5b93a8a16797f20f0fc23f8fe62763ed8a576c07762cc973d0d351bf1025f",
+    "AffineIntegralConstants.RepresentedSections": "7484cb3bf6255715b2422e21faf0880eec3ea38f543ca5981a7e1434bdbcb6aa",
+    "Functor.CopyObjRestriction": "e4ed9e665ee9e72fa5e349edbfeabf410c4b2f47f60261e10b0f84dc121429bc"
+  },
+  "retained_history": "Fixed-v6 ordinary review accepted original actual delta/kappa hom+Iso argument on its older sources. Preserve that result/history without relabeling; v11 placement/interface changes and v12 smaller proof route need actual affected review.",
+  "before_after": "Initial before/ + immutable candidate-v10, candidate-v11 and candidate-v12 afterimages; fixed native public61 headers remain identical, including55 legacy headers.",
+  "correspondence": "CORRESPONDENCE-v11.md and CORRESPONDENCE-v12.md",
+  "affected_obligations": [
+    "Complete five raw category helper bodies and original g-unit/naturality/HomEquiv proof are below Scheme, no desired-square assumption or reference category",
+    "One operational represented functor retains original literal obj/map data; laws follow the same complete ActualDiagramLift; no duplicate coefficient realization",
+    "Private group G/extra H_Y,H_P route is retired without changing any public obligation; generic mapped comparison from R4 remains mathematically attributed and distinct from failed native G probes",
+    "Complete direct coefficient sheaf chase uses actual original R/N/C, coefficient f/q normalizations, actual q_g normalization/naturality, t inverse, inverse suffix and original map-comp producer; no extra representation or reflection",
+    "Native source/canonical tail consumes actual inferred producer equations before evaluation, keeps exact selected test/counit/coeff/unit maps, and concludes literal delta=kappa through SAME supplied inverseImageAdjunction g HomEquiv then Iso.ext"
+  ],
+  "compiler_boundary": "V12 normal production A1332 launched on changed lower/Global plus actual pending callers, no result yet. Byte-identical NativeRep7484 PASS15s and CopyObje4ed retained. Old lower19f3 and Globalabc4 outcomes remain source-bound. Raw formation successes omitted package options; DIAGNOSTIC-OPTIONS-CORRECTION.json qualifies them. Correctly configured frozen G probe failed; no G pass or native-option formation replay inference.",
+  "coauthor_scope": "R4 contributed the retained generic mapped comparison lemma and bounded negative G/native diagnostics. It is not independent review of this source; the direct coefficient route and final producer consumption are primary-author work.",
+  "actions": "Read-only review; no source/helper/runtime/Git writes or added build/test/replay/client stage. Update only the already owning report pair if principal assigns."
+}

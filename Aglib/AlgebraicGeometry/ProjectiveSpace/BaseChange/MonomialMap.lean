@@ -9,6 +9,7 @@ public import Aglib.AlgebraicGeometry.ProjectiveSpace.HomogeneousEvaluation
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.HomogeneousSections
 public import Aglib.AlgebraicGeometry.Modules.Pullback.FreeMap
 public import Aglib.AlgebraicGeometry.Modules.Pullback.UnitSections
+public import Aglib.AlgebraicGeometry.Modules.Pullback.UnitSectionMaps
 public import Aglib.RingTheory.MvPolynomial.GradedMapBasis
 
 /-!

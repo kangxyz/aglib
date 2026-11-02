@@ -1,0 +1,8 @@
+{
+  "question": "Repair actual A53ff/source72442 frontend longLine at Coefficients180 only",
+  "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Coefficients.lean",
+  "before_sha256": "3326d5d8944e111507afb5817b1c04d4a9c72150527470519593ee4317b24d18",
+  "after_sha256": "2a6da24f76e4f3ef0feb3425a918caa92399e4ceb8259c888d70208dfff741a0",
+  "change": "Wrap canonicalModelCoefficientSectionsAdditive header after colon; identical name/type/RHS/locality/priority/options; all other bytes unchanged",
+  "author_cpp": "None; compatible actual LocalPuritybc2 pass and healthy shared graph retained"
+}

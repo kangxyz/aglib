@@ -9,13 +9,23 @@ Scheme geometry belongs to the corresponding scheme family.
 | --- | --- |
 | [Cech](Cech/README.md) | Native `CategoryTheory.Cech` complexes, split-cover exactness under the terminal-section and product hypotheses, coefficient and intersection comparisons, and short exact sequences from supplied sectionwise exactness. [Topological comparisons and cocycles](../../../Topology/Sheaves/Cech/README.md) have their own owner. |
 | [Large](Large/README.md) | Large-valued represented-object cohomology and injective suppliers; consumed by the actual small-etale slice entry. [Finite coproducts](Large/FiniteCoproduct.lean) give all-degree represented-cohomology decomposition from bijectivity of the actual section restriction map for every coefficient sheaf. |
-| [Slice](Slice/README.md) | Exact slice adjunction, free-representable Ext comparison, original maps and `H'`; the concrete small-etale consumer is `Slice/Etale`. |
-| [ModuleCoefficients](ModuleCoefficients/README.md) | Original module/abelian comparisons, actual injective acyclicity, evaluation and slice maps; the small-etale consumer is `ModuleCoefficients.Etale`. |
+| [Slice](Slice/README.md) | Exact slice adjunction, free-representable Ext comparison, original maps and `H'`; the concrete small-etale consumer is [Cohomology/SliceComparison](../../../AlgebraicGeometry/EtaleCohomology/Cohomology/SliceComparison.lean). |
+| [ModuleCoefficients](ModuleCoefficients/README.md) | Original module/abelian comparisons, actual injective acyclicity, evaluation and slice maps; concrete small-etale consumers belong to [EtaleCohomology/Coefficients](../../../AlgebraicGeometry/EtaleCohomology/Coefficients/Cohomology.lean). |
 | [Hypercohomology](../Hypercohomology/README.md) | Free-representable sources and degree-zero ordinary-cohomology comparisons. |
 | [Coefficient continuity](Continuity/FiniteCoefficientContinuity.lean) | Canonical filtered-colimit comparison in original `Sheaf.H`; finite generating hypercovers supply invertibility in all degrees. The scheme consumer is [fixed qcqs continuity](../../../AlgebraicGeometry/EtaleCohomology/Continuity/README.md). |
 | [Basis acyclicity](BasisAcyclicity/Basic.lean) | Čech acyclicity on a cofinal cover basis gives positive represented-object Ext vanishing on basis objects, and original `Sheaf.H` vanishing when a terminal object lies in the basis. The quasicoherent étale family uses these generic suppliers. |
 | [Exact-sequence vanishing](Vanishing/ExactSequence.lean) | Original connecting homomorphisms transport supplied vanishing and surjectivity through actual short exact coefficient sequences. |
 | [Split complexes](Splitting.lean) | On any site, a split short complex `0 → A → B → C → 0` of abelian sheaves gives `Sheaf.H.splittingAddEquiv : H^n(B) ≃+ H^n(A) × H^n(C)` and `Sheaf.H.kerAddEquivOfSplitting : ker H^n(g) ≃+ H^n(A)`, with injective first map; sheafification and the Ext universe remain explicit. The consumer is the split square-zero unit sequence [Ring/Sheaf/SquareZeroSplitting](../../../Algebra/Category/Ring/Sheaf/SquareZeroSplitting.lean). |
+| [Original sections](OriginalSections.lean) | Shared original-section construction and its [pullback](OriginalSections/Pullback.lean), [derived](OriginalSections/DerivedPullback.lean), [Ext](OriginalSections/ExtPullback.lean), terminal and coherence companions; native pullback adapters import this layer. |
+| [Source sections](SourceSection.lean) | Original source-section interface and [transport](SourceSection/Transport.lean), used by the native section-pullback comparisons. |
+| [Fixed-source diagrams](Continuity/InjectiveDiagram/FixedSourceCohomology.lean) | Fixed-source cohomology and the [inverse rectangle](Continuity/InjectiveDiagram/InverseRectangle.lean) on the supplied original diagram. |
+
+[Global/Comparison](Global/Comparison.lean) defines intrinsic additive global
+sections represented by the original constant-integer sheaf and compares their
+native right derivatives with original Ext. It selects no terminal object.
+[Terminal/Comparison](Terminal/Comparison.lean) is the optional comparison with
+actual evaluation at a supplied terminal object, retaining the native size lift
+and original section maps.
 
 ## Filtered coefficients and compatible systems
 
@@ -43,11 +53,37 @@ enough injectives and the required products. The product envelopes and
 embeddings retain the original right-adjoint identity and composition
 comparisons; [system coherence](Continuity/InjectiveDiagram/SystemCoherence.lean)
 uses their coherence laws.
+[RepresentedDiagram](Continuity/RepresentedDiagram.lean) constructs actual
+represented Ext diagrams from these coherent adjunction systems, a cartesian
+source system and an arbitrary coefficient system. Transitions use the native
+Ext transfer and the original source and coefficient arrows; identity,
+composition and coefficient naturality are proved from the system data.
+The additive, exactness, source-cartesianness and independent Ext-universe
+hypotheses remain explicit. The actual small-etale cohomology diagram
+specializes this constructor.
+[RepresentedDiagram/ExactSequences](Continuity/RepresentedDiagram/ExactSequences.lean)
+constructs `Functor.extPrecompMapConnectingComplexHom`, the morphism of native
+represented Ext connecting fragments induced by the given exact functor, source
+map and short-complex morphism.
 [SchemeSystemColimits](Continuity/SchemeSystemColimits.lean) proves the
 identity-arrow diagonal final. For a filtered index, supplied tail colimits
 and an outer colimit compute the actual arrow and diagonal colimits, retaining
 the original comparison legs. This categorical result leaves the geometric
 tail-colimit premise to its scheme consumer.
+
+[SectionArrows](Continuity/InjectiveDiagram/SectionArrows.lean) derives the
+whole square, system-square, Arrow-functor and cone naturality laws from the
+given section functors and their original pullback identity and composition
+laws. [Cone](Continuity/InjectiveDiagram/Cone.lean) also constructs the actual
+coefficient natural transformation, colimit map and injection equations.
+The small-etale consumers supply their original adjunction and section maps.
+
+[CohomologyCocone](Continuity/InjectiveDiagram/CohomologyCocone.lean) constructs
+the actual represented-Ext cocone and its colimit-desc comparison from the
+single cartesian source system, coefficient functor and original transfer
+triangles. Its local endpoint and stage/apex Ext hypotheses retain their stated
+universes. The raw exact-functor argument is shared through
+[Ext/SourceTransfer](../../Abelian/Ext/SourceTransfer.lean).
 
 ## Coverwise acyclicity
 
@@ -62,3 +98,34 @@ Ext size. Geometric producers of the Čech hypothesis remain separate inputs.
 subsheaf and supplies section surjectivity when terminal covers split. Its
 small-etale consumer is
 [EtaleCohomology/StrictlyLocal](../../../AlgebraicGeometry/EtaleCohomology/StrictlyLocal/README.md).
+
+[Nsmul](Nsmul.lean) identifies the whole original cohomology map of
+`n • 𝟙 F` with native multiplication by `n`, and gives its evaluation formula.
+Site, coefficient and Ext universes remain independent.
+
+[Represented trace](RepresentedTransfer/Trace.lean) constructs the original
+three-factor trace on pullback product tests, with site/coefficient naturality
+and the original unit/rank equation from the represented augmentation relation.
+[Module](RepresentedTransfer/Module.lean) lifts the same trace over an arbitrary
+commutative scalar ring using coefficient naturality and the existing underlying
+comparison. [Adjunction](RepresentedTransfer/Adjunction.lean) returns it to the
+original inverse image through uniqueness of the actual adjunction. The native
+small-etale adapters supply their original maps and continuity, without adding a
+free-sheaf, module-sheaf or cohomology realization.
+
+[InternalExtComparison](InternalExtComparison.lean) specializes the original
+left-exact comparison to module-sheaf internal Hom using proved injective-image
+acyclicity. Its ordinary-cohomology inverse, degree-zero and target naturality
+laws retain actual target acyclicity and independent Ext universes.
+
+[RepresentedTransfer/LocalFormula](RepresentedTransfer/LocalFormula.lean)
+identifies the original coefficient-natural restriction trace on a splitting
+chart with the sum along its actual graph maps.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [DiagramTransfer](DiagramTransfer.lean)
+- [ModuleCompositeCoefficient](ModuleCompositeCoefficient.lean)
+- [ModuleCompositeNaturality](ModuleCompositeNaturality.lean)

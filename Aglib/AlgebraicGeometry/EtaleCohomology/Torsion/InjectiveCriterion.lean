@@ -7,7 +7,7 @@ module
 
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.CompositeComparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Pullback
-public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.Etale
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Coefficients.Cohomology
 
 /-!
 # Injective coefficient tests for original cohomological pullback

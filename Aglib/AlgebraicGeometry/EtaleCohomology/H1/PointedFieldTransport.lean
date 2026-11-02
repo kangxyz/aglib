@@ -151,9 +151,8 @@ theorem transport_point (Y : Scheme.FiniteEtale X) (τ : TorsorAction A (toUnit 
     (t u : Fiber (FieldGalois.geometricPoint F ≫ o) Y) :
     coefficientPointEquiv i o A (transport (FieldGalois.geometricPoint F ≫ o) A Y τ t u) =
     transport (extensionPoint i ≫ o) A Y τ (pointEquiv i o Y t) (pointEquiv i o Y u) := by
-  apply transport_unique (extensionPoint i ≫ o) A Y τ
-  rw [coefficientPointEquiv_apply, pointEquiv_apply, pointEquiv_apply, ← τ.naturality,
-    transport_act]
+  rw [coefficientPointEquiv_apply, pointEquiv_apply, pointEquiv_apply]
+  exact τ.positiveTransport_naturality (pointArrow i o) t u
 
 variable [PreconnectedSpace X] [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
 
@@ -187,12 +186,22 @@ theorem representedH1_point (a : H1Etale.{u, u + 1, w} X (representedSheaf A)) :
   obtain ⟨p, rfl⟩ := (hA.bijective (representedSheaf A)).surjective a
   refine Quotient.inductionOn p ?_
   intro P
-  let Y := P.finiteEtaleRepresentative hR hcoeff.locally_constant
-  let e := P.finiteEtaleRepresentativeIso hR hcoeff.locally_constant
-  let τ := P.representedSchemeAction A Y e
-  let : Surjective Y.obj.hom := P.represented_surjective A Y e
+  let Y :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.finiteEtaleRepresentative
+      (P := P) hR hcoeff.locally_constant
+  let e :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.finiteEtaleRepresentativeIso
+      (P := P) hR hcoeff.locally_constant
+  let τ :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.representedSchemeAction
+      (H := A) (P := P) (Y := Y) (e := e)
+  let : Surjective Y.obj.hom :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.represented_surjective
+      (H := A) (P := P) (Y := Y) (e := e)
   have he : torsorExtClass (torsorOfSchemeAction A Y τ) = torsorExtClass P :=
-    torsorExtClass_iso (P.representedSchemeActionIso A Y e)
+    torsorExtClass_iso
+      (_root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.representedSchemeActionIso
+        (H := A) (P := P) (Y := Y) (e := e))
   let : Nonempty (Fiber (FieldGalois.geometricPoint F ≫ o) Y) :=
     SchemeTorsorClassification.nonempty_fiber_of_surjective (FieldGalois.geometricPoint F ≫ o) Y
   let t : Fiber (FieldGalois.geometricPoint F ≫ o) Y := Classical.choice inferInstance

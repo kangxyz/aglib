@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleAdjunction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.EtaleBaseChange
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ValuedComparison
 
 /-!
 # Arbitrary base change of genuine constant-ring module extension by zero
@@ -35,10 +36,8 @@ variable {X S T : Scheme.{u}} (f : X ⟶ S) (g : T ⟶ S) [Etale g]
 def moduleInverseImageValuedIso {A B : Scheme.{u}} (a : A ⟶ B) :
     moduleInverseImage a Λ ⋙ (moduleSheafEquivalence A Λ).inverse ≅
       (moduleSheafEquivalence B Λ).inverse ⋙ moduleValuedInverseImage a Λ :=
-  Functor.isoWhiskerRight (moduleInverseImageTransportIso a Λ) _ ≪≫
-    Functor.associator _ _ _ ≪≫
-    Functor.isoWhiskerLeft _ (moduleSheafEquivalence A Λ).unitIso.symm ≪≫
-    Functor.rightUnitor _
+  ValuedComparison.inverseValuedIso (moduleSheafEquivalence B Λ)
+    (moduleSheafEquivalence A Λ) (moduleInverseImageTransportIso a Λ)
 
 /-- The left exchange composite after the actual inverse coefficient equivalence. -/
 def moduleEtaleBaseChangeLeftIso :
@@ -46,11 +45,7 @@ def moduleEtaleBaseChangeLeftIso :
         (moduleSheafEquivalence T Λ).inverse ≅
       (moduleSheafEquivalence X Λ).inverse ⋙
         moduleValuedDirectImage f Λ ⋙ moduleValuedInverseImage g Λ :=
-  Functor.associator _ _ _ ≪≫
-    Functor.isoWhiskerLeft _ (moduleInverseImageValuedIso Λ g) ≪≫
-    (Functor.associator _ _ _).symm ≪≫
-    Functor.isoWhiskerRight (moduleDirectImageComparison f Λ) _ ≪≫
-    Functor.associator _ _ _
+  scalarMateSourceIso (moduleDirectImageComparison f Λ) (moduleInverseImageValuedIso Λ g)
 
 /-- The right exchange composite after the actual inverse coefficient equivalence. -/
 def moduleEtaleBaseChangeRightIso :
@@ -59,11 +54,8 @@ def moduleEtaleBaseChangeRightIso :
       (moduleSheafEquivalence X Λ).inverse ⋙
         moduleValuedInverseImage (pullback.snd g f) Λ ⋙
           moduleValuedDirectImage (pullback.fst g f) Λ :=
-  Functor.associator _ _ _ ≪≫
-    Functor.isoWhiskerLeft _ (moduleDirectImageComparison (pullback.fst g f) Λ) ≪≫
-    (Functor.associator _ _ _).symm ≪≫
-    Functor.isoWhiskerRight (moduleInverseImageValuedIso Λ (pullback.snd g f)) _ ≪≫
-    Functor.associator _ _ _
+  scalarMateTargetIso (moduleDirectImageComparison (pullback.fst g f) Λ)
+    (moduleInverseImageValuedIso Λ (pullback.snd g f))
 
 /-- The actual native right-adjoint exchange, before removing the faithful module equivalence. -/
 def moduleEtaleBaseChangeValuedIso :
@@ -71,17 +63,17 @@ def moduleEtaleBaseChangeValuedIso :
         (moduleSheafEquivalence T Λ).inverse ≅
       (moduleInverseImage (pullback.snd g f) Λ ⋙ moduleDirectImage (pullback.fst g f) Λ) ⋙
         (moduleSheafEquivalence T Λ).inverse :=
-  moduleEtaleBaseChangeLeftIso f g Λ ≪≫
-    Functor.isoWhiskerLeft _ (moduleValuedEtaleBaseChangeIso f g Λ) ≪≫
-    (moduleEtaleBaseChangeRightIso f g Λ).symm
+  ValuedComparison.exchangeComparisonIso (moduleSheafEquivalence T Λ).inverse
+    (moduleEtaleBaseChangeLeftIso f g Λ) (moduleEtaleBaseChangeRightIso f g Λ)
+    (moduleValuedEtaleBaseChangeIso f g Λ)
 
 /-- Native module inverse image commutes with direct image along an actual étale base change. -/
 def moduleEtaleBaseChangeIso :
     moduleDirectImage f Λ ⋙ moduleInverseImage g Λ ≅
       moduleInverseImage (pullback.snd g f) Λ ⋙ moduleDirectImage (pullback.fst g f) Λ :=
-  ((Functor.whiskeringRight (ModuleSheaf X Λ) (ModuleSheaf T Λ)
-    (ModuleValuedSheaf T Λ)).obj (moduleSheafEquivalence T Λ).inverse).preimageIso
-      (moduleEtaleBaseChangeValuedIso f g Λ)
+  ValuedComparison.exchangeIso (moduleSheafEquivalence T Λ).inverse
+    (moduleEtaleBaseChangeLeftIso f g Λ) (moduleEtaleBaseChangeRightIso f g Λ)
+    (moduleValuedEtaleBaseChangeIso f g Λ)
 
 end Exchange
 

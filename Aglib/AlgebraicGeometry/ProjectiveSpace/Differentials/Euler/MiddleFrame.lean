@@ -30,47 +30,37 @@ attribute [local instance] MvPolynomial.gradedAlgebra
 namespace AlgebraicGeometry.ProjectiveSpace
 variable (R : Type u) [CommRing R] (ι : Type u)
 
-/-- The original inverse twist frame on the actual restricted coordinate scheme. -/
-def eulerInverseTwistOnPolynomialChartIso (i : ι) :
-    (twistingSheaf R ι (-1)).restrict (eulerPolynomialChart R ι i) ≅
-      SheafOfModules.unit
-        (Spec (CommRingCat.of (MvPolynomial {j : ι // j ≠ i} R))).ringCatSheaf := by
-  let X := Spec (CommRingCat.of (MvPolynomial {j : ι // j ≠ i} R))
-  let g := eulerPolynomialChart R ι i
-  let L := (twistingSheaf R ι (-1)).restrict g
-  let e (V : X.Opens) :
-      Γ(L, V) ≃ₗ[Γ(X, V)] Γ(X, V) := {
-    toFun s := (g.appIso V).hom
-      (twistingSectionsEquiv R ι (-1) i (eulerPolynomialChart_image_le R ι i V) s)
-    invFun r := (twistingSectionsEquiv R ι (-1) i
-      (eulerPolynomialChart_image_le R ι i V)).symm ((g.appIso V).inv r)
+/-- A native open-restriction frame from compatible original section coordinates. -/
+def restrictionFrameIso {X Y : Scheme.{u}} (g : X ⟶ Y) [IsOpenImmersion g]
+    (M : Y.Modules)
+    (a : ∀ V : X.Opens, Γ(M, g ''ᵁ V) ≃ₗ[Γ(Y, g ''ᵁ V)] Γ(Y, g ''ᵁ V))
+    (ha : ∀ {V W : X.Opens} (h : V ≤ W) (s : Γ(M, g ''ᵁ W)),
+      a V (M.val.map (homOfLE (g.image_mono h)).op s) =
+        sectionRestrict Y (g.image_mono h) (a W s)) :
+    M.restrict g ≅ SheafOfModules.unit X.ringCatSheaf := by
+  let L := M.restrict g
+  let e (V : X.Opens) : Γ(L, V) ≃ₗ[Γ(X, V)] Γ(X, V) := {
+    toFun s := (g.appIso V).hom (a V s)
+    invFun r := (a V).symm ((g.appIso V).inv r)
     left_inv s :=
-      (congrArg (twistingSectionsEquiv R ι (-1) i
-        (eulerPolynomialChart_image_le R ι i V)).symm
-        (Iso.hom_inv_id_apply (g.appIso V)
-          (twistingSectionsEquiv R ι (-1) i (eulerPolynomialChart_image_le R ι i V) s))).trans
-        ((twistingSectionsEquiv R ι (-1) i
-          (eulerPolynomialChart_image_le R ι i V)).symm_apply_apply s)
+      (congrArg (a V).symm (Iso.hom_inv_id_apply (g.appIso V) (a V s))).trans
+        ((a V).symm_apply_apply s)
     right_inv r :=
-      (congrArg (g.appIso V).hom
-        ((twistingSectionsEquiv R ι (-1) i (eulerPolynomialChart_image_le R ι i V)).apply_symm_apply
-          ((g.appIso V).inv r))).trans (Iso.inv_hom_id_apply (g.appIso V) r)
+      (congrArg (g.appIso V).hom ((a V).apply_symm_apply ((g.appIso V).inv r))).trans
+        (Iso.inv_hom_id_apply (g.appIso V) r)
     map_add' s t :=
-      (congrArg (g.appIso V).hom
-        ((twistingSectionsEquiv R ι (-1) i
-          (eulerPolynomialChart_image_le R ι i V)).map_add s t)).trans
+      (congrArg (g.appIso V).hom ((a V).map_add s t)).trans
         ((g.appIso V).hom.hom.map_add _ _)
     map_smul' r s := by
-      let s' : Γ(twistingSheaf R ι (-1), g ''ᵁ V) := s
-      let f := twistingSectionsEquiv R ι (-1) i (eulerPolynomialChart_image_le R ι i V)
-      change (g.appIso V).hom (f (((g.appIso V).inv r) • s')) =
-        r * (g.appIso V).hom (f s')
-      have hf := f.map_smul ((g.appIso V).inv r) s'
-      change f (((g.appIso V).inv r) • s') =
-        ((g.appIso V).inv r) * f s' at hf
+      let s' : Γ(M, g ''ᵁ V) := s
+      change (g.appIso V).hom (a V (((g.appIso V).inv r) • s')) =
+        r * (g.appIso V).hom (a V s')
+      have hf := (a V).map_smul ((g.appIso V).inv r) s'
+      change a V (((g.appIso V).inv r) • s') =
+        ((g.appIso V).inv r) * a V s' at hf
       exact (congrArg (g.appIso V).hom hf).trans
         (((g.appIso V).hom.hom.map_mul _ _).trans
-          (congrArg (fun z => z * (g.appIso V).hom (f s'))
+          (congrArg (fun z => z * (g.appIso V).hom (a V s'))
             (Iso.inv_hom_id_apply (g.appIso V) r))) }
   refine (SheafOfModules.fullyFaithfulForget X.ringCatSheaf).preimageIso
     (_root_.PresheafOfModules.isoMk (fun V => (e V.unop).toModuleIso) ?_)
@@ -78,10 +68,18 @@ def eulerInverseTwistOnPolynomialChartIso (i : ι) :
   apply ModuleCat.hom_ext
   apply LinearMap.ext
   intro s
-  exact (congrArg (g.appIso W.unop).hom
-    (twistingSectionsEquiv_restrict R ι (-1) i
-      (g.image_mono k.unop.le) (eulerPolynomialChart_image_le R ι i V.unop) s)).trans
+  exact (congrArg (g.appIso W.unop).hom (ha k.unop.le s)).trans
     (ConcreteCategory.congr_hom (g.appIso_hom_naturality k) _)
+
+/-- The original inverse twist frame on the actual restricted coordinate scheme. -/
+def eulerInverseTwistOnPolynomialChartIso (i : ι) :
+    (twistingSheaf R ι (-1)).restrict (eulerPolynomialChart R ι i) ≅
+      SheafOfModules.unit
+        (Spec (CommRingCat.of (MvPolynomial {j : ι // j ≠ i} R))).ringCatSheaf :=
+  restrictionFrameIso (eulerPolynomialChart R ι i) (twistingSheaf R ι (-1))
+    (fun V => twistingSectionsEquiv R ι (-1) i (eulerPolynomialChart_image_le R ι i V))
+    (fun h s => twistingSectionsEquiv_restrict R ι (-1) i
+      ((eulerPolynomialChart R ι i).image_mono h) (eulerPolynomialChart_image_le R ι i _) s)
 
 /-- The original restricted inverse twist frame retains the original chart coefficient. -/
 theorem eulerInverseTwistOnPolynomialChartIso_hom_app (i : ι)
@@ -92,21 +90,50 @@ theorem eulerInverseTwistOnPolynomialChartIso_hom_app (i : ι)
         (twistingSectionsEquiv R ι (-1) i (eulerPolynomialChart_image_le R ι i V) s) := by
   rfl
 
+/-- The native tensor restriction frame, before any geometric coordinates are supplied. -/
+def restrictionTensorFrameIso {X Y : Scheme.{u}} (g : X ⟶ Y) [IsOpenImmersion g]
+    (L M : Y.Modules) (e : L.restrict g ≅ SheafOfModules.unit X.ringCatSheaf) :
+    ((moduleTensorLeftFunctor Y L).obj M).restrict g ≅ M.restrict g :=
+  (tensorRestrictionIso g L M).symm ≪≫
+    ((SheafOfModulesOfCommRing.tensorFunctor X.sheaf).mapIso e).app (M.restrict g) ≪≫
+      (SheafOfModulesOfCommRing.tensorLeftUnitIso X.sheaf).app (M.restrict g)
+
 /-- The actual Euler middle sheaf is locally the original coefficient sheaf in the inverse
 coordinate frame, using the native tensor restriction and original left unitor. -/
 def eulerMiddleOnPolynomialChartIso (i : ι) :
     (eulerMiddle R ι).restrict (eulerPolynomialChart R ι i) ≅
       (eulerCoefficientSheaf R ι).restrict (eulerPolynomialChart R ι i) :=
-  (tensorRestrictionIso (eulerPolynomialChart R ι i) (twistingSheaf R ι (-1))
-    (eulerCoefficientSheaf R ι)).symm ≪≫
-    ((SheafOfModulesOfCommRing.tensorFunctor
-      (Spec (CommRingCat.of (MvPolynomial {j : ι // j ≠ i} R))).sheaf).mapIso
-      (eulerInverseTwistOnPolynomialChartIso R ι i)).app
-        ((eulerCoefficientSheaf R ι).restrict (eulerPolynomialChart R ι i)) ≪≫
-    (SheafOfModulesOfCommRing.tensorLeftUnitIso
-      (Spec (CommRingCat.of (MvPolynomial {j : ι // j ≠ i} R))).sheaf).app
-      ((eulerCoefficientSheaf R ι).restrict (eulerPolynomialChart R ι i))
+  restrictionTensorFrameIso (eulerPolynomialChart R ι i) (twistingSheaf R ι (-1))
+    (eulerCoefficientSheaf R ι) (eulerInverseTwistOnPolynomialChartIso R ι i)
 
+/-- The complete native restriction and tensor-to-unit map on an original pure tensor. -/
+private theorem restrictionTensorToUnit_section {X Y : Scheme.{u}}
+    (g : X ⟶ Y) [IsOpenImmersion g] (L M : Y.Modules)
+    (f : L.restrict g ⟶ SheafOfModules.unit X.ringCatSheaf) (V : X.Opens)
+    (l : Γ(L.restrict g, V)) (m : Γ(M.restrict g, V)) :
+    ((tensorRestrictionIso g L M).inv ≫ (tensorToUnit f).app (M.restrict g)).app V
+      (moduleTensorSection Y L M (g ''ᵁ V) l m) = (show Γ(X, V) from f.app V l) • m := by
+  let t := moduleTensorSection X (L.restrict g) (M.restrict g) V l m
+  let e := tensorRestrictionIso g L M
+  have ht : e.hom.app V t = moduleTensorSection Y L M (g ''ᵁ V) l m :=
+    tensorRestrictionIso_section g L M V l m
+  have hi : e.inv.app V (moduleTensorSection Y L M (g ''ᵁ V) l m) = t :=
+    (congrArg (e.inv.app V) ht.symm).trans
+      (congrArg (fun k => k.app V t) e.hom_inv_id)
+  change ((tensorToUnit f).app (M.restrict g)).app V
+    (e.inv.app V (moduleTensorSection Y L M (g ''ᵁ V) l m)) = _
+  exact (congrArg (((tensorToUnit f).app (M.restrict g)).app V) hi).trans
+    (tensorToUnit_section f (M.restrict g) V l m)
+
+/-- The complete frame evaluation keeps the original tensor generator. -/
+private theorem restrictionTensorFrameIso_section {X Y : Scheme.{u}}
+    (g : X ⟶ Y) [IsOpenImmersion g] (L M : Y.Modules)
+    (e : L.restrict g ≅ SheafOfModules.unit X.ringCatSheaf) (V : X.Opens)
+    (l : Γ(L.restrict g, V)) (m : Γ(M.restrict g, V)) :
+    (restrictionTensorFrameIso g L M e).hom.app V
+      (moduleTensorSection Y L M (g ''ᵁ V) l m) =
+        (show Γ(X, V) from e.hom.app V l) • m :=
+  restrictionTensorToUnit_section g L M e.hom V l m
 
 /-- The original inverse-coordinate tensor frame sends each original middle generator to the
 same pulled-back coefficient generator. -/
@@ -122,27 +149,15 @@ theorem eulerMiddleOnPolynomialChartIso_hom_generator (i j : ι)
   let l : Γ(L.restrict g, V) :=
     twistingGenerator R ι (-1) i (eulerPolynomialChart_image_le R ι i V)
   let m : Γ(M.restrict g, V) := (eulerCoefficientSection R ι j).val (op (g ''ᵁ V))
-  let t := moduleTensorSection X (L.restrict g) (M.restrict g) V l m
-  let e := tensorRestrictionIso g L M
   let f := (eulerInverseTwistOnPolynomialChartIso R ι i).hom
-  have ht : e.hom.app V t =
-      eulerMiddleGenerator R ι i j (eulerPolynomialChart_image_le R ι i V) :=
-    tensorRestrictionIso_section g L M V l m
-  have hi : e.inv.app V
-      (eulerMiddleGenerator R ι i j (eulerPolynomialChart_image_le R ι i V)) = t :=
-    (congrArg (e.inv.app V) ht.symm).trans
-      (congrArg (fun k => k.app V t) e.hom_inv_id)
   have hf : f.app V l = (1 : Γ(X, V)) :=
     (eulerInverseTwistOnPolynomialChartIso_hom_app R ι i V l).trans
       ((congrArg (g.appIso V).hom
         (twistingSectionsEquiv_generator R ι (-1) i
           (eulerPolynomialChart_image_le R ι i V))).trans (g.appIso V).hom.hom.map_one)
-  have hunit : ((tensorToUnit f).app (M.restrict g)).app V t = m :=
-    (tensorToUnit_section f (M.restrict g) V l m).trans
-      ((congrArg (fun r : Γ(X, V) => r • m) hf).trans (one_smul _ _))
-  change ((tensorToUnit f).app (M.restrict g)).app V
-    (e.inv.app V (eulerMiddleGenerator R ι i j (eulerPolynomialChart_image_le R ι i V))) = m
-  exact (congrArg (((tensorToUnit f).app (M.restrict g)).app V) hi).trans hunit
+  exact (restrictionTensorFrameIso_section g L M
+    (eulerInverseTwistOnPolynomialChartIso R ι i) V l m).trans
+    ((congrArg (fun r : Γ(X, V) => r • m) hf).trans (one_smul _ _))
 
 /-- The actual original Euler middle sheaf has its original coordinate free frame. -/
 def eulerMiddlePolynomialFreeIso (i : ι) :

@@ -1,0 +1,31 @@
+{
+  "diagnostic": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/span/normalization-v1/diagnostic/SpanFactorizedNormalizedSeam.lean",
+  "sha256": "0bc5a1fc70f3c0c8adf01f89de4f26107232580157964d4a3658e53afa34af9a",
+  "actual_basis": {
+    "failed_source_sha256": "a7a6c669435401df73953223f26cffc3ca3bc1352e7ef94d873853499b8dfe5e",
+    "run": "remote-af1771079adf4946a23184d3063684fa",
+    "source": "195516dc2e10c3011bdcaec7475f590bcb744c151738bb188ce44c665c55bb48",
+    "errors": "finalexact72WHNF200k; declaration32kernelmemory; no pass"
+  },
+  "scope": "One same normalized factorized statement/body through inferredhw; stop before failedexact. No component/facade or producers rebuilt.",
+  "instrumentation": "Reuse workingv3 meta/context utility; consume top metadata before reading all Eq parts (oldfallback was mainlycarrier/lhs). Sameboundeddepth5/max10differences perpart. Add read-only Core remainingHB counters at formedgoal/goalnorm/corenorm/unitnorm/actualinputs.",
+  "api_source": "Pinned local Lean4.34.1 src/lean/Lean/Util/Heartbeats.lean confirms getRemainingHeartbeats/getMaxHeartbeats CoreM; internal counters dividedby1000. No #count_heartbeats macro, no async/resource/option changes.",
+  "expected": "Information then deliberateSPAN_SEAM_DIAGNOSTIC_COMPLETE; intentionalexit1 not proofacceptance. This is changed-source diagnosis, not a style-only or oldcontrol rerun.",
+  "production": "QFactorizeda7/Span1b/common84 unchanged; allsix compatiblepasses retained.",
+  "style_long_lines": [],
+  "actual_outcome": {
+    "run": "remote-528ba7f34024464bac1cb06f06ffd199",
+    "source": "195516dc2e10c3011bdcaec7475f590bcb744c151738bb188ce44c665c55bb48",
+    "status": "Validselecteddiagnostic; intentionalstop then recoveryKernelmemory; no proofpass",
+    "phase_seconds_operator_report": 553.124,
+    "remaining_heartbeats_max200000": [
+      122872,
+      103683,
+      103451,
+      103384,
+      28336
+    ],
+    "raw_parts": "Carrier/lhs/rhs rawfalse. Bounded paths include preservesZeroMorphisms_of_additive versus originaldefinition._proof_1 arguments and Functor.obj versuslocaltarget. No mathematicalmodel or definitional-equality obstruction inferred.",
+    "raw_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/factorized-normalized-seam-528ba7f3.raw.log"
+  }
+}

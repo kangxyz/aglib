@@ -1,0 +1,1653 @@
+{
+  "phase": "c56-applied-v1-four-roots",
+  "source_author": "/root/prepare_intrinsic_torsor_h1",
+  "run": "remote-f8e3e2fd927449d0909820b73e064039",
+  "source": "52bbaced3e2af5032fa8da954da4b127df99799780a8dc2d23fbb14bd3ebc077",
+  "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/lane-b/c56-v1-f8e3e2fd.json",
+  "source_archive_sha256": "9f7d7b53579a86fc13aef02a406f8043da3f3e9c648bfa40a3049744c26186a2",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-f8e3e2fd927449d0909820b73e064039/receipt.json",
+  "receipt_sha256": "6b989cf2e2778cf3bac9dda71aecc66455883432c2ea24bb25350b4463127812",
+  "compiler_events_sha256": "b49cf191b148e1705ad17db1e48891d0ac36c8155afd54c860eaa8db169200f0",
+  "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-f8e3e2fd927449d0909820b73e064039/build.log",
+  "command": [
+    "python3",
+    "-m",
+    "r5tools",
+    "lean",
+    "remote",
+    "--config",
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote.json",
+    "build",
+    "--jobs",
+    "8",
+    "Aglib.Algebra.Homology.DerivedCategory.Ext.ChangeUniverseExact",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.CurveFieldInvarianceUniverses",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.CurveFieldInvarianceConstantModules",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.CurveFieldInvarianceSeparablyClosed"
+  ],
+  "exit_code": 143,
+  "outcome": "cancelled after four actual source failures for changed-input transition",
+  "group_closed": true,
+  "coverage": [
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/Ext/ChangeUniverse.lean",
+      "sha256": "6b7bcf591514fce033e95828e9afcf58cbfd10e6d5f553f186ec9554e4e39a04",
+      "exit_code": 0,
+      "started": "2026-10-27T21:26:31.264269+00:00",
+      "finished": "2026-10-27T21:26:33.645344+00:00"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/Ext/ChangeUniverseExact.lean",
+      "sha256": "f6a085886b0b4d63876c13b07dcbe1a288630dc537fadfb1b7a77d6ad896955c",
+      "exit_code": 0,
+      "started": "2026-10-27T21:26:34.014675+00:00",
+      "finished": "2026-10-27T21:26:37.223741+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Cech/Finite/Derived.lean",
+      "sha256": "d66d6532956ada4d5f27fe4593c86f3159586aa3d664dc41271261c1affba42f",
+      "exit_code": 0,
+      "started": "2026-10-27T21:26:32.594693+00:00",
+      "finished": "2026-10-27T21:26:47.149477+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenCounit/Homology.lean",
+      "sha256": "ca37824bcc40339bd2c54575437977a83dc6d071456297b53c9089e96e5cff0f",
+      "exit_code": 0,
+      "started": "2026-10-27T21:26:47.514041+00:00",
+      "finished": "2026-10-27T21:26:51.372789+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenCounit/Transport.lean",
+      "sha256": "52f68963e06865e6a24314f361c56679a72e3f1fc313026d60a55c8a0e71c725",
+      "exit_code": 0,
+      "started": "2026-10-27T21:26:51.723371+00:00",
+      "finished": "2026-10-27T21:26:55.489270+00:00"
+    },
+    {
+      "path": "Aglib/Algebra/Category/ModuleCat/ChangeOfRings/Coinduction/Ext.lean",
+      "sha256": "75a03463f31d419065122089e751dc549b495ec4959487da5622d7f3746a69f0",
+      "exit_code": 0,
+      "started": "2026-10-27T21:26:32.239243+00:00",
+      "finished": "2026-10-27T21:27:04.729543+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Model/OpenComposition/Homology.lean",
+      "sha256": "da2af065364b0fea163a6491005e341b5031656ec0fed40ebb12d8414e6691e9",
+      "exit_code": 0,
+      "started": "2026-10-27T21:26:32.502354+00:00",
+      "finished": "2026-10-27T21:27:06.092662+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/ResolutionSections/Derived.lean",
+      "sha256": "df40431b9c9dd5cc0ced0a101812fca5310003d5754a7c8140aaf92cf0ff121e",
+      "exit_code": 0,
+      "started": "2026-10-27T21:26:32.640600+00:00",
+      "finished": "2026-10-27T21:27:06.368751+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/Prefactor.lean",
+      "sha256": "b7bf0c128a7eda75f55d89b87c0950cd068ec9d4d052833626c619a7e1a686ae",
+      "exit_code": 0,
+      "started": "2026-10-27T21:27:06.786148+00:00",
+      "finished": "2026-10-27T21:27:10.196928+00:00"
+    },
+    {
+      "path": "Aglib/Algebra/Category/ModuleCat/ChangeOfRings/Coinduction/Quotient.lean",
+      "sha256": "70904dc3e85f93592cae499d15573bb40e3dcd02fdcff6c59c7c6a4fec69776e",
+      "exit_code": 0,
+      "started": "2026-10-27T21:27:06.495084+00:00",
+      "finished": "2026-10-27T21:27:11.859610+00:00"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/ShortComplex/Adjunction/Cycles.lean",
+      "sha256": "6ab87a3d989da77504614edfd1b0bd92d743be7ca472ac97ac1a939a7e19c6f3",
+      "exit_code": 0,
+      "started": "2026-10-27T21:27:10.547165+00:00",
+      "finished": "2026-10-27T21:27:13.876214+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/Prefactor/Congruence.lean",
+      "sha256": "9b3145b40e69c23f95f7e48f3643c5550cfa983308c13aaa17d56c6ac7c420b7",
+      "exit_code": 0,
+      "started": "2026-10-27T21:27:12.316851+00:00",
+      "finished": "2026-10-27T21:27:19.869162+00:00"
+    },
+    {
+      "path": "Aglib/Algebra/Category/ModuleCat/ChangeOfRings/Coinduction/Principal.lean",
+      "sha256": "e4862d324668e1a5161885368f38cef23ba7a69011986eb5f4024745633b46dc",
+      "exit_code": 0,
+      "started": "2026-10-27T21:27:14.308368+00:00",
+      "finished": "2026-10-27T21:27:21.706182+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Cech/TensorCoefficients.lean",
+      "sha256": "7cbf2b5e893cf8fd0d7204ed20283af882dbc311f86bcfda4b0b8fd5e508cec4",
+      "exit_code": 0,
+      "started": "2026-10-27T21:26:32.710688+00:00",
+      "finished": "2026-10-27T21:27:25.178578+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Trace.lean",
+      "sha256": "26a7ca4a3749b6f107cd9e92d33908b6e3e2d9e15d00549e70da17e5acf7059b",
+      "exit_code": 0,
+      "started": "2026-10-27T21:26:32.683649+00:00",
+      "finished": "2026-10-27T21:27:26.625366+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/GlobalSectionsComposition.lean",
+      "sha256": "693e53cb3c1a472c89e058e14195426ee682e2cab3450db586316739c6f10823",
+      "exit_code": 0,
+      "started": "2026-10-27T21:27:20.374599+00:00",
+      "finished": "2026-10-27T21:27:30.035611+00:00"
+    },
+    {
+      "path": "Aglib/Algebra/Category/ModuleCat/ChangeOfRings/Coinduction/RegularList.lean",
+      "sha256": "d7e01fce83e0f461453f67e3461609ce07f376c8bb1c31c173fc4c4e7915803b",
+      "exit_code": 0,
+      "started": "2026-10-27T21:27:22.132381+00:00",
+      "finished": "2026-10-27T21:27:32.651575+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Modules/Ext/Restriction.lean",
+      "sha256": "e49906b234ce4ead251b7bdc873931fadbc89f4591355627c66ff49570651384",
+      "exit_code": 0,
+      "started": "2026-10-27T21:27:05.279896+00:00",
+      "finished": "2026-10-27T21:27:34.382902+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Comparison/CompositionShift.lean",
+      "sha256": "22438719b8b30ec5dce48e729fbca237339a456f329d0a3c6c66696cf4bbb831",
+      "exit_code": 0,
+      "started": "2026-10-27T21:27:34.858287+00:00",
+      "finished": "2026-10-27T21:27:40.843460+00:00"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/Koszul/Ext/Quotient.lean",
+      "sha256": "25a2205d668e7c8418ae47c72188956fbfb2fe3d398fa3124e64ab2968715588",
+      "exit_code": 0,
+      "started": "2026-10-27T21:27:41.287204+00:00",
+      "finished": "2026-10-27T21:27:44.442911+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/ClosedImmersion/RightAdjoint/RegularList.lean",
+      "sha256": "cbbbf3a27cae36c4b45953cc6dbdf390a15bc4ca90d8722e63d7dc7a661fe65c",
+      "exit_code": 0,
+      "started": "2026-10-27T21:27:44.937024+00:00",
+      "finished": "2026-10-27T21:27:51.802804+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Projective/TwistCohomology/Flat.lean",
+      "sha256": "a91f5326c8d5aff9c0f2f1cce5be85c097a936b751103f4327740812d865f6bb",
+      "exit_code": 0,
+      "started": "2026-10-27T21:26:32.643408+00:00",
+      "finished": "2026-10-27T21:28:02.352296+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Projective/RightExact.lean",
+      "sha256": "ef8211b197a8291d424528651fb3e174f65edb7d73203604c19df295ec41277a",
+      "exit_code": 0,
+      "started": "2026-10-27T21:27:25.665658+00:00",
+      "finished": "2026-10-27T21:28:06.364799+00:00"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/Koszul/Ext/Coefficients.lean",
+      "sha256": "83fe79562bf679c076e20e6e8800ef13aa00fcb5451c34c5b17d6c3d2930c7a6",
+      "exit_code": 0,
+      "started": "2026-10-27T21:28:02.786027+00:00",
+      "finished": "2026-10-27T21:28:07.022095+00:00"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/Koszul/Ext/Localization.lean",
+      "sha256": "c76b8a8caac994412f20c819907f914648b96e5cbb8b78965f68e7d55716d98f",
+      "exit_code": 0,
+      "started": "2026-10-27T21:28:07.456877+00:00",
+      "finished": "2026-10-27T21:28:11.403137+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Modules/Ext/Pullback.lean",
+      "sha256": "c982f9352a2dedaf984b8a8405c6944bad436028dc936b4acb68992620b19d50",
+      "exit_code": 0,
+      "started": "2026-10-27T21:27:52.260175+00:00",
+      "finished": "2026-10-27T21:28:13.296823+00:00"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/Simplex/Relative/Weights/NonnegativeZero.lean",
+      "sha256": "99847ba1c3d059ba4e45d91078bd74e4b98d6598d98e21d2f35ad9d93a1c74f6",
+      "exit_code": 0,
+      "started": "2026-10-27T21:28:13.700554+00:00",
+      "finished": "2026-10-27T21:28:17.804226+00:00"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/Koszul/Ext/BaseChange.lean",
+      "sha256": "26eef823a5e97ca3745a66a58121dabeea155f2ac56c6feaef86be390f10b86d",
+      "exit_code": 0,
+      "started": "2026-10-27T21:28:11.952458+00:00",
+      "finished": "2026-10-27T21:28:18.206805+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/ResolutionSections/Pullback.lean",
+      "sha256": "47d5b80bb48e26ba82dfaa6b115e7084868766924040bd074497e26029cc1d4f",
+      "exit_code": 0,
+      "started": "2026-10-27T21:28:18.264735+00:00",
+      "finished": "2026-10-27T21:28:30.666503+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Derived/Trace.lean",
+      "sha256": "5d46bee935ee8b8e912132041a47d587ac133beae8bc36f6cbb924993f0013dd",
+      "exit_code": 0,
+      "started": "2026-10-27T21:27:30.529653+00:00",
+      "finished": "2026-10-27T21:28:41.437314+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/Naturality.lean",
+      "sha256": "d7b67e56a7f9801128a53a9e219c50e277cf3597f8c8581ed15314ac7c33e370",
+      "exit_code": 0,
+      "started": "2026-10-27T21:26:56.128399+00:00",
+      "finished": "2026-10-27T21:28:46.954104+00:00"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/Koszul/Ext/ScalarExtensionClass.lean",
+      "sha256": "391fb9edb235b5c07cfcf10a83fc25d30b6550b516b6cea6fa1f2eb5afbd40d3",
+      "exit_code": 0,
+      "started": "2026-10-27T21:28:31.121535+00:00",
+      "finished": "2026-10-27T21:28:53.470759+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Restriction/Composition.lean",
+      "sha256": "9d3ca13fc084e4affaf3b729c44433773063903371f27ec52a53ddb6baf45cf3",
+      "exit_code": 0,
+      "started": "2026-10-27T21:26:37.665958+00:00",
+      "finished": "2026-10-27T21:29:02.300274+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Projective/Multiplication.lean",
+      "sha256": "6833dadc34867d78fba9763fdfceabc6476a1a0519ac4a65a488c5e1f915d0c5",
+      "exit_code": 0,
+      "started": "2026-10-27T21:28:41.916669+00:00",
+      "finished": "2026-10-27T21:29:06.315226+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Projective/GlobalSections.lean",
+      "sha256": "064a1f0edb97cd0c3b666d63f014a80e8984245b63a4152c316bbd026a3881fc",
+      "exit_code": 0,
+      "started": "2026-10-27T21:28:06.747452+00:00",
+      "finished": "2026-10-27T21:29:08.008748+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Projective/GlobalSections/Homogeneous.lean",
+      "sha256": "f3e7b260e6d30eda5d62bff659e3456060555ac3e31ff635b211ac399c225919",
+      "exit_code": 0,
+      "started": "2026-10-27T21:29:08.495410+00:00",
+      "finished": "2026-10-27T21:29:12.327618+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Pairing.lean",
+      "sha256": "773fc83de386640ce72068886c7e2fe697e0d524d557e51f129aba5b1717beda",
+      "exit_code": 0,
+      "started": "2026-10-27T21:27:27.094853+00:00",
+      "finished": "2026-10-27T21:29:19.674112+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/NegativeTwists.lean",
+      "sha256": "a3ccfab059a10882b45225fc9d325454a0ff9d8efd21ff06877cdf0dad767687",
+      "exit_code": 0,
+      "started": "2026-10-27T21:29:02.883441+00:00",
+      "finished": "2026-10-27T21:29:31.484228+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Modules/Ext/Exact.lean",
+      "sha256": "64bbfb2c2af91752909df151c8df07d33368687df81cec129e2443ffffb4f924",
+      "exit_code": 0,
+      "started": "2026-10-27T21:29:31.975810+00:00",
+      "finished": "2026-10-27T21:29:42.626555+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Projective/GlobalSections/Polynomial.lean",
+      "sha256": "6cbb281a027daf2c46c46ec824b9b67f63038af53159d6934ab5c9237e5ec969",
+      "exit_code": 0,
+      "started": "2026-10-27T21:29:12.815519+00:00",
+      "finished": "2026-10-27T21:29:49.176529+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Boundary.lean",
+      "sha256": "58112b9ff5af3a134194b52c1602dc47dd8312ab4326494e8e320fa10ea2032a",
+      "exit_code": 0,
+      "started": "2026-10-27T21:29:43.103559+00:00",
+      "finished": "2026-10-27T21:29:49.719537+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/HigherStep.lean",
+      "sha256": "d449cd6e31375466a4236fea28d6d95c24f7d03297e1560137f622250415c427",
+      "exit_code": 0,
+      "started": "2026-10-27T21:29:50.189552+00:00",
+      "finished": "2026-10-27T21:30:00.016460+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/ClosedImmersion/RightAdjoint/RegularList/Sheaf/Localization.lean",
+      "sha256": "2bc07296fea163012836bf32dcb5d1b25cff9b2747e5f02f46617a8d705a0b0f",
+      "exit_code": 0,
+      "started": "2026-10-27T21:28:18.908959+00:00",
+      "finished": "2026-10-27T21:30:06.665099+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenCounit/Sections.lean",
+      "sha256": "25784c3bf6c7d6692f20833b23c093427eeed58ddd988717b169546bfcac3504",
+      "exit_code": 0,
+      "started": "2026-10-27T21:30:07.164880+00:00",
+      "finished": "2026-10-27T21:30:16.590968+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/TwistExt.lean",
+      "sha256": "bce815e465fc8aaef1970dabbb8687696cad487a000f54e5140fa61bfae8d759",
+      "exit_code": 0,
+      "started": "2026-10-27T21:29:49.651141+00:00",
+      "finished": "2026-10-27T21:30:24.620209+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Genus.lean",
+      "sha256": "789d082b644ea54f615976ef0102ed4cb9def44ada4f9a5c7fecf4480e2ec2f0",
+      "exit_code": 0,
+      "started": "2026-10-27T21:30:00.613701+00:00",
+      "finished": "2026-10-27T21:30:25.332315+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/TopMapLift.lean",
+      "sha256": "ee22765ab6a90bf4a04b2500f0392a4a7a9d06e78ce64d2b5ef6c31137f687d2",
+      "exit_code": 0,
+      "started": "2026-10-27T21:29:20.154595+00:00",
+      "finished": "2026-10-27T21:30:29.147058+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/DifferentialTrace.lean",
+      "sha256": "22d3a79fba656a8d9e69bace940a63d476b9abf95ba897c2bd20ff750a8508a3",
+      "exit_code": 0,
+      "started": "2026-10-27T21:27:33.259000+00:00",
+      "finished": "2026-10-27T21:30:29.442760+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Effacement.lean",
+      "sha256": "8c09b814db067d6e9169b18abd67130a4d7dc8a489fd9ce8c60103163b61b979",
+      "exit_code": 0,
+      "started": "2026-10-27T21:30:25.800505+00:00",
+      "finished": "2026-10-27T21:30:29.918874+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/RiemannHurwitz.lean",
+      "sha256": "081860c1c14e014c153f848fde10fbf0635b4257d58de7463e253fa4f759d003",
+      "exit_code": 0,
+      "started": "2026-10-27T21:30:30.489503+00:00",
+      "finished": "2026-10-27T21:30:35.126084+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Presentation.lean",
+      "sha256": "5b20b8f91e529e15d80ed65c386c8e77d3c93699185e76e4390af8af035eb1c1",
+      "exit_code": 0,
+      "started": "2026-10-27T21:30:29.536469+00:00",
+      "finished": "2026-10-27T21:30:39.784587+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Modules/StalkScalars.lean",
+      "sha256": "63a4ddecf168ffa0399b5bbf2da8baa7684f9270209ad9dcb813b6aaee5179e8",
+      "exit_code": 0,
+      "started": "2026-10-27T21:30:40.323858+00:00",
+      "finished": "2026-10-27T21:30:45.605418+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/RiemannRoch.lean",
+      "sha256": "fa52d3e1c29737ba7b3cf5f92784b9abbf25cbb322141dcb4569052eff208813",
+      "exit_code": 0,
+      "started": "2026-10-27T21:30:46.223413+00:00",
+      "finished": "2026-10-27T21:31:00.022741+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Projective/Naturality.lean",
+      "sha256": "53c9d62688db38d117e7e103f8e16e1f2ae5ab52d1b5bf3e91a691f8d37e3496",
+      "exit_code": 0,
+      "started": "2026-10-27T21:29:06.797925+00:00",
+      "finished": "2026-10-27T21:31:03.520580+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/Stalk/FieldScalars.lean",
+      "sha256": "88fbe84117a0e48d1e015505602a6f0b190c050453804963122b59ec0059ed26",
+      "exit_code": 0,
+      "started": "2026-10-27T21:31:00.659807+00:00",
+      "finished": "2026-10-27T21:31:04.596400+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Picard/Degree/CommonFractionalIdeal.lean",
+      "sha256": "8ed66e567a87e2ae92e63375f06dac67febc431dadc3c4e1a84c1fa36e9ae279",
+      "exit_code": 0,
+      "started": "2026-10-27T21:31:05.085816+00:00",
+      "finished": "2026-10-27T21:31:08.577710+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/SourceIsomorphism.lean",
+      "sha256": "03f87a6bdb904d84f68676f18dbf056b772ec2cfb9d208d6a973abc4009278b6",
+      "exit_code": 0,
+      "started": "2026-10-27T21:30:17.089675+00:00",
+      "finished": "2026-10-27T21:31:13.374465+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Proper/PrincipalChain.lean",
+      "sha256": "3e537f48a37028e1da5cd337f10f653977714892b970e574d1c87233f337791e",
+      "exit_code": 0,
+      "started": "2026-10-27T21:31:09.131204+00:00",
+      "finished": "2026-10-27T21:31:16.448569+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Projective/Naturality/Degrees.lean",
+      "sha256": "28932d47f837c0a8140a88c00510bf87046d16a0b05f18130ca52c6ba7d148ec",
+      "exit_code": 0,
+      "started": "2026-10-27T21:31:04.010039+00:00",
+      "finished": "2026-10-27T21:31:20.657457+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Projectivity/Integral.lean",
+      "sha256": "117f3a6f379c8ffab0cd286b4960f6778c756ec665a76c7c2ea2e3a96191879e",
+      "exit_code": 0,
+      "started": "2026-10-27T21:31:16.965722+00:00",
+      "finished": "2026-10-27T21:31:21.741410+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Modules/Ext/Invertible.lean",
+      "sha256": "b8d3dfa17c25eff262dfa9a210bc8d3d36f725dabd1ca7413ae264a2edb99b28",
+      "exit_code": 0,
+      "started": "2026-10-27T21:31:13.839192+00:00",
+      "finished": "2026-10-27T21:31:27.887613+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/IdealSheaf/Modules/Stalk.lean",
+      "sha256": "2d93b48521890a4cf6cc24a869a5a737378aec4eecbfddbba67297348edd0f2c",
+      "exit_code": 0,
+      "started": "2026-10-27T21:31:22.356451+00:00",
+      "finished": "2026-10-27T21:31:28.485648+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/Pushforward/SectionStalk.lean",
+      "sha256": "0651b53ec701adcd1350b646a8d1d5c0d5f08f5c50da142de60b9cd47f2d8830",
+      "exit_code": 0,
+      "started": "2026-10-27T21:31:28.913874+00:00",
+      "finished": "2026-10-27T21:31:32.738109+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/IdealSheaf/Invertible/StalkKernel.lean",
+      "sha256": "439b2ee617410caf3694f26a4cc3aa3970a8559cc0b3941087fc39d9b4b373f4",
+      "exit_code": 0,
+      "started": "2026-10-27T21:31:28.343118+00:00",
+      "finished": "2026-10-27T21:31:34.237374+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/Pullback/SectionStalk.lean",
+      "sha256": "4d3550ef07f015584bf4d58bd16e94ac8fde1d0619a74684d4ca585daf8bdf88",
+      "exit_code": 0,
+      "started": "2026-10-27T21:31:34.666093+00:00",
+      "finished": "2026-10-27T21:31:37.850340+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/Stalk/LocalSpectrum.lean",
+      "sha256": "76c1080041e5cecf4de263fbf7e4f09b7daa2986a343b6c737040b6d7b0bbb6e",
+      "exit_code": 0,
+      "started": "2026-10-27T21:31:33.153127+00:00",
+      "finished": "2026-10-27T21:31:38.975668+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/Pullback/TensorAdjunction.lean",
+      "sha256": "91c08742f3d3451b66dc7c57b2b87c0a3a20e7fbc1f5d31ff1a096fa91fff25d",
+      "exit_code": 0,
+      "started": "2026-10-27T21:31:38.330745+00:00",
+      "finished": "2026-10-27T21:31:41.934122+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/TwistMaps.lean",
+      "sha256": "f0c72b423554b6258596b8d2a807678dba60fd3811b74b15ce34bb427ccc2d65",
+      "exit_code": 0,
+      "started": "2026-10-27T21:31:21.124470+00:00",
+      "finished": "2026-10-27T21:31:42.722185+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/Pullback/LocalSpectrum.lean",
+      "sha256": "62340310c9f196428cd04e239ebdcac4ee81a9960629703164e23a4af111fd9c",
+      "exit_code": 0,
+      "started": "2026-10-27T21:31:39.404498+00:00",
+      "finished": "2026-10-27T21:31:50.768747+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Picard/KummerExactness.lean",
+      "sha256": "1cb8e8ca01f7f76577d34e3dbe9ac505a338d94171aa0610bb52f5d992b77767",
+      "exit_code": 0,
+      "started": "2026-10-27T21:31:43.164643+00:00",
+      "finished": "2026-10-27T21:31:52.795689+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/Invertible/Power/Coherence.lean",
+      "sha256": "5c59c81198d65b6ea0da6c86cef61751a694f9cab9a5783dad1f75ad8ee8eabf",
+      "exit_code": 0,
+      "started": "2026-10-27T21:31:51.231858+00:00",
+      "finished": "2026-10-27T21:31:56.217852+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/PolynomialTrace.lean",
+      "sha256": "c79d9eecf5daeff341ef02544cf2d6be8bf6381aa89e132ece0c432cc49b693a",
+      "exit_code": 0,
+      "started": "2026-10-27T21:31:53.266680+00:00",
+      "finished": "2026-10-27T21:31:58.986894+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Picard/GenericTrivialization.lean",
+      "sha256": "99695a3cc15db1e0a36d7dfb716e5ccbae212963c6725d31d2a61e13128e64d3",
+      "exit_code": 0,
+      "started": "2026-10-27T21:31:42.381438+00:00",
+      "finished": "2026-10-27T21:31:59.434070+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Picard/TrivializedPower.lean",
+      "sha256": "f292acef7d5d82c29fa3f1b4abba5a01c422a7cf46c1cab30d2377e54736c41e",
+      "exit_code": 0,
+      "started": "2026-10-27T21:31:59.432981+00:00",
+      "finished": "2026-10-27T21:32:03.160288+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/IdealSheaf/Cartier/RegularQuotient.lean",
+      "sha256": "4b81541d20f0c4fe94bbd04a09cec57103cedc08137d7c36ca1a09d4cafc2009",
+      "exit_code": 0,
+      "started": "2026-10-27T21:31:56.669798+00:00",
+      "finished": "2026-10-27T21:32:03.908724+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Exact/Euler.lean",
+      "sha256": "be4d4c7b408f296f98637e7560d372cc4dfa2eb699937c0c0ebf0007694b2f71",
+      "exit_code": 0,
+      "started": "2026-10-27T21:30:35.602624+00:00",
+      "finished": "2026-10-27T21:32:10.894193+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/MonomialTrace.lean",
+      "sha256": "8f49452d464b56216a27a423dece244f24b57016c6d8ef3dc7fcffecc264d3c0",
+      "exit_code": 0,
+      "started": "2026-10-27T21:31:59.829723+00:00",
+      "finished": "2026-10-27T21:32:16.458260+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Picard/GenericPower/Zero.lean",
+      "sha256": "1318b90097d56822201449b66290e64aabdd475d811e26a08facbfd396373d36",
+      "exit_code": 0,
+      "started": "2026-10-27T21:32:03.630111+00:00",
+      "finished": "2026-10-27T21:32:40.075350+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Picard/Degree/CommonQuotientDegree.lean",
+      "sha256": "502473e11b67e16d77a0aa1ac75f3ae5370c1628885aa226b2c70c7ef003f53e",
+      "exit_code": 0,
+      "started": "2026-10-27T21:32:11.413818+00:00",
+      "finished": "2026-10-27T21:33:07.480886+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/ClosedImmersion/RightAdjoint/RegularList/Sheaf/Counit.lean",
+      "sha256": "21c1b546181abef75d9b1f4321eced7cb0be614bc43d43915d5eb4b712f4d43f",
+      "exit_code": 0,
+      "started": "2026-10-27T21:30:25.219381+00:00",
+      "finished": "2026-10-27T21:33:13.406346+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Picard/KummerPairClasses.lean",
+      "sha256": "c5cdeb698dce3cd2e43823aee89c99cb5421421933a8e18d5b8372b9da9a3eea",
+      "exit_code": 0,
+      "started": "2026-10-27T21:32:04.360255+00:00",
+      "finished": "2026-10-27T21:33:17.059750+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Picard/Degree/ProperCurveProductFormula.lean",
+      "sha256": "2de50fc63caea5e3c5f9fbe6b419e8f3a27532c2ad6412a1d8bfc20272c1d391",
+      "exit_code": 0,
+      "started": "2026-10-27T21:33:13.906883+00:00",
+      "finished": "2026-10-27T21:33:19.475517+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/TwistDuality.lean",
+      "sha256": "58937808505c48a072b2623e2fb3fa5f96ea30f1c7e5d8c741cdfbf4f9e65c87",
+      "exit_code": 0,
+      "started": "2026-10-27T21:32:40.531103+00:00",
+      "finished": "2026-10-27T21:33:21.047224+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Picard/GenericPower/Successor.lean",
+      "sha256": "9a0f23027c752eac84edb32bae21e2d47cadee4320b4f53fd8c32d5742d4925f",
+      "exit_code": 0,
+      "started": "2026-10-27T21:33:07.948926+00:00",
+      "finished": "2026-10-27T21:33:43.790120+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Picard/PowerRoot.lean",
+      "sha256": "7f91f529df8230001172f1056084d89cd093d1f4fe3e790b12da6b44b10241ad",
+      "exit_code": 0,
+      "started": "2026-10-27T21:33:20.056303+00:00",
+      "finished": "2026-10-27T21:33:44.330023+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/RiemannRoch/LineBundle.lean",
+      "sha256": "6a082a747a0f1f305886434ce9b30630afbe1bbab4dfee2edd167bc7b2a3bab9",
+      "exit_code": 0,
+      "started": "2026-10-27T21:32:16.972958+00:00",
+      "finished": "2026-10-27T21:33:45.529042+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Morphisms/OpenImmersion/ClosedPoints.lean",
+      "sha256": "6314ffe05a3024c6233ec61fd8c6ed739887c467cf61785832318ce2e783bdf5",
+      "exit_code": 0,
+      "started": "2026-10-27T21:33:46.073823+00:00",
+      "finished": "2026-10-27T21:33:49.408965+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Divisors/OpenRestriction.lean",
+      "sha256": "115ed4131bf6a27067a38471805ca1131f1e05cea264723216a3bdf75e9479a7",
+      "exit_code": 0,
+      "started": "2026-10-27T21:33:49.841719+00:00",
+      "finished": "2026-10-27T21:33:54.151097+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Picard/GenericPower.lean",
+      "sha256": "2cbb32db059b8749d1af98ab757e18934aa6b2895128b9132f853d6a2107f141",
+      "exit_code": 0,
+      "started": "2026-10-27T21:33:44.240969+00:00",
+      "finished": "2026-10-27T21:34:27.966808+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Picard/OpenRestriction.lean",
+      "sha256": "65a4856d508e372f9191e7a8ae044b180a21ed6038a71f8c6ada2d6a21880a6f",
+      "exit_code": 0,
+      "started": "2026-10-27T21:33:54.623484+00:00",
+      "finished": "2026-10-27T21:34:28.409302+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Picard/OpenKernel.lean",
+      "sha256": "be399d8e45a4fc3728d87a6c3f2d6335d9bf7e13e08bf9dbf3780573f8846922",
+      "exit_code": 0,
+      "started": "2026-10-27T21:34:28.825493+00:00",
+      "finished": "2026-10-27T21:34:32.318372+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/RootStalk.lean",
+      "sha256": "3a18c1a82f54657c1f030d276c6439d14c0479a843efc8e07720b0235da63a64",
+      "exit_code": 0,
+      "started": "2026-10-27T21:34:28.453687+00:00",
+      "finished": "2026-10-27T21:34:34.363406+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/Restriction.lean",
+      "sha256": "36d6a160d0f19c54f73616c6742ec16e84896195523c7a8ffe98032730d20e14",
+      "exit_code": 0,
+      "started": "2026-10-27T21:28:53.957404+00:00",
+      "finished": "2026-10-27T21:34:41.181127+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Picard/KummerOpenRestriction.lean",
+      "sha256": "04667a5f0592f5f9df4ce8f0898533f2e14e1cf1a237c203f615ffde18f88fc6",
+      "exit_code": 0,
+      "started": "2026-10-27T21:34:32.768636+00:00",
+      "finished": "2026-10-27T21:34:41.445859+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Group/BaseChange/PointTransport.lean",
+      "sha256": "7d6b675eca1935a0f1334a3acb346aab165b93e3df4d01ba16c4516f1ffe3fac",
+      "exit_code": 0,
+      "started": "2026-10-27T21:34:41.657923+00:00",
+      "finished": "2026-10-27T21:34:51.621235+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/RootNaturality.lean",
+      "sha256": "7c86d5bc85c7d8403d7fb38629e49d5eaee15b0b62d5e7605fe5b1de34ab2a77",
+      "exit_code": 0,
+      "started": "2026-10-27T21:34:52.095824+00:00",
+      "finished": "2026-10-27T21:35:04.662571+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Coproduct.lean",
+      "sha256": "3c130e8dfe834315a8e56c1ddfbe7bc43218cd690712a229941f640afd9ce99f",
+      "exit_code": 0,
+      "started": "2026-10-27T21:33:21.619134+00:00",
+      "finished": "2026-10-27T21:35:05.977165+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Picard/PowerDescent.lean",
+      "sha256": "167ef3bacff9cad20c908f6e9b4bfe54a9b95b0534260c362df88194b053bb57",
+      "exit_code": 0,
+      "started": "2026-10-27T21:33:44.813943+00:00",
+      "finished": "2026-10-27T21:35:49.907675+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/GeometricCoefficients.lean",
+      "sha256": "761c4ceec898e5ef97e883170264bd5dc197b0b0429a58f9279e6372e5466e30",
+      "exit_code": 0,
+      "started": "2026-10-27T21:35:05.240599+00:00",
+      "finished": "2026-10-27T21:36:01.374696+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean",
+      "sha256": "3ebdc7167de651a5c5307bbdacd33f09369005f1ff8fc06b0dde1d397ddb0111",
+      "exit_code": 1,
+      "started": "2026-10-27T21:34:34.829251+00:00",
+      "finished": "2026-10-27T21:36:12.176170+00:00"
+    },
+    {
+      "path": "Aglib/RingTheory/KrullDimension/JacobsonPrincipalOpen.lean",
+      "sha256": "14eff4deee39a722d952368a7926470e1ef7ccfc04a45062070b32f1a61814f2",
+      "exit_code": 0,
+      "started": "2026-10-27T21:36:12.574904+00:00",
+      "finished": "2026-10-27T21:36:15.415002+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Top.lean",
+      "sha256": "ef53288cae1149d188e7dd545dad3fe9a10525e3b0dad27ffbea59105719d9fd",
+      "exit_code": 0,
+      "started": "2026-10-27T21:35:06.439866+00:00",
+      "finished": "2026-10-27T21:36:16.307475+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Dimension/DenseOpenCurve.lean",
+      "sha256": "307aac1be15f4d9d60877cf0122a73eb1d4cd994d7b3dd4d26b5bab75935cb24",
+      "exit_code": 0,
+      "started": "2026-10-27T21:36:15.837971+00:00",
+      "finished": "2026-10-27T21:36:19.436504+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/ClosedImmersion/RightAdjoint/RegularList/Sheaf.lean",
+      "sha256": "20c6e5a9ddf7daa3f38ac9476e43b9bb42ccbff875ee7a00c45c60b766828550",
+      "exit_code": 0,
+      "started": "2026-10-27T21:33:17.554683+00:00",
+      "finished": "2026-10-27T21:36:23.002073+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Properties/IrreducibleComponents/FiniteCover.lean",
+      "sha256": "23a213b2adb2208bcf973c1c1434209b82777e7c680149e6191e6f44c69fdfe0",
+      "exit_code": 0,
+      "started": "2026-10-27T21:36:19.858664+00:00",
+      "finished": "2026-10-27T21:36:24.372894+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Dimension/DenseOpenCurveComponents.lean",
+      "sha256": "80aa2418d579968501b410718fe45299b9a148836b28983c501c2cae1ffda6e9",
+      "exit_code": 0,
+      "started": "2026-10-27T21:36:24.802921+00:00",
+      "finished": "2026-10-27T21:36:28.054727+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Compactification/CurveDimension.lean",
+      "sha256": "90c2af8565bf334796b6151e9cf9574fa8f52fb0068d12017c2bb7738fc55b6a",
+      "exit_code": 0,
+      "started": "2026-10-27T21:36:28.482463+00:00",
+      "finished": "2026-10-27T21:36:31.647627+00:00"
+    },
+    {
+      "path": "Aglib/RingTheory/Nagata/FiniteEtale.lean",
+      "sha256": "1b38371ae50b4c72003ab5a8f0350858b2f8a10d2c6ff3dc96a3c085a34cc05c",
+      "exit_code": 0,
+      "started": "2026-10-27T21:36:32.368151+00:00",
+      "finished": "2026-10-27T21:36:36.028406+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Normalization/FiniteFromDenseSource.lean",
+      "sha256": "25d699941eac043e2bb1aa3e6d7e9207d02626b9834f8a89c89dfe1365498e3a",
+      "exit_code": 0,
+      "started": "2026-10-27T21:36:36.478706+00:00",
+      "finished": "2026-10-27T21:36:41.823846+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/Injectivity.lean",
+      "sha256": "1660ff5500c051e6e2fa80e6a8d929b888444cc975be6c6e9963edc1446373a5",
+      "exit_code": 0,
+      "started": "2026-10-27T21:36:04.775515+00:00",
+      "finished": "2026-10-27T21:36:43.198178+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Nagata.lean",
+      "sha256": "4b7ab5c35e6f6a16c10ef6f467f1dbd17413731d1d9cb9c53116b954bd9664bb",
+      "exit_code": 0,
+      "started": "2026-10-27T21:36:42.277191+00:00",
+      "finished": "2026-10-27T21:36:47.202905+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Trace/Sections.lean",
+      "sha256": "98651e8b1842017b690c28902399c68369e6c94ca53f654d53b55705e8dae64c",
+      "exit_code": 0,
+      "started": "2026-10-27T21:34:41.916206+00:00",
+      "finished": "2026-10-27T21:36:52.523744+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Normalization/OpenFiniteRestriction.lean",
+      "sha256": "f206eaf94fade1d47f29bd7860c2570f02c2efc47c15d819d766f899a93f082a",
+      "exit_code": 0,
+      "started": "2026-10-27T21:36:47.757381+00:00",
+      "finished": "2026-10-27T21:36:52.884561+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Normalization/NormalSource.lean",
+      "sha256": "f1c8d65c0bfca1439b8aeaf5639072b03824af77535a0c7fdda75d7f76c3684f",
+      "exit_code": 0,
+      "started": "2026-10-27T21:36:52.957967+00:00",
+      "finished": "2026-10-27T21:36:56.394041+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Dimension/Finite.lean",
+      "sha256": "332ff996145ed60a1fa8625bd05d21a62ef5a8be0cc69e0aad633a8117cf5f58",
+      "exit_code": 0,
+      "started": "2026-10-27T21:36:56.812960+00:00",
+      "finished": "2026-10-27T21:36:59.361514+00:00"
+    },
+    {
+      "path": "Aglib/RingTheory/Nagata/FieldCurve.lean",
+      "sha256": "bbf1726c9175fc76e36036982d11aa1f9ed852539e9bfd0a4e1546272a40e730",
+      "exit_code": 0,
+      "started": "2026-10-27T21:36:59.883747+00:00",
+      "finished": "2026-10-27T21:37:03.296351+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Trace/Descent.lean",
+      "sha256": "38846fcbccf5e498866dc5b7463fabfda074ca2ccf4baa5ee83d6e0097a408b0",
+      "exit_code": 0,
+      "started": "2026-10-27T21:36:53.366598+00:00",
+      "finished": "2026-10-27T21:37:03.635737+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Normalization/EtaleCurve.lean",
+      "sha256": "b188370b1c5462bcfd20e86e85983d6e1a752635d89a78ec988859f9a95f9cbf",
+      "exit_code": 0,
+      "started": "2026-10-27T21:37:03.855003+00:00",
+      "finished": "2026-10-27T21:37:07.638745+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/NormalClosedStalks.lean",
+      "sha256": "4a1abcb154af145ac439b6fe934e9d454db86a2d352f302c44dc54be0af242c2",
+      "exit_code": 0,
+      "started": "2026-10-27T21:37:04.101436+00:00",
+      "finished": "2026-10-27T21:37:07.664418+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/CurveConstructibleGeometry.lean",
+      "sha256": "8167d9bde74555ef3e0fef4caa5c7c30fa24cf03618118d04e085a5e191e4e80",
+      "exit_code": 0,
+      "started": "2026-10-27T21:37:08.102584+00:00",
+      "finished": "2026-10-27T21:37:11.503466+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/CurveCompletion.lean",
+      "sha256": "03ea07edff7d4e550112466274fb4297c1ab08b81ad6c9028f27e218060b10ff",
+      "exit_code": 0,
+      "started": "2026-10-27T21:37:08.091392+00:00",
+      "finished": "2026-10-27T21:37:11.644472+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/CurveConstructibleRegular.lean",
+      "sha256": "b472aaf1a8505ce6740c8f0a803e1ad46a4eadc233cf39e11f03f74df540f35f",
+      "exit_code": 0,
+      "started": "2026-10-27T21:37:11.968111+00:00",
+      "finished": "2026-10-27T21:37:15.600731+00:00"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/Ext/BoundedConstants.lean",
+      "sha256": "d600d0dc83c5969421f9c15bddd67c8fbaf5b3693a98bd7ef1892b516ab45a53",
+      "exit_code": 1,
+      "started": "2026-10-27T21:37:16.021670+00:00",
+      "finished": "2026-10-27T21:37:19.296760+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/CurveConstructibleCompletion.lean",
+      "sha256": "18cea98999e633da40d8acbed90285cfa398041e1fb47d8650c79907754040e9",
+      "exit_code": 0,
+      "started": "2026-10-27T21:37:19.745651+00:00",
+      "finished": "2026-10-27T21:37:23.388197+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/CurveConstructibleCompletionOne.lean",
+      "sha256": "583330239a8e97bc687d6186d14833af9f0836cc0ae653c9dcd075670ee49b53",
+      "exit_code": 0,
+      "started": "2026-10-27T21:37:23.850727+00:00",
+      "finished": "2026-10-27T21:37:27.494560+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/Roots/Injectivity.lean",
+      "sha256": "15dfc8ded4aa49db3990f1162cfe70b62975dd4b7cf56ae6e8cbf095a3909025",
+      "exit_code": 0,
+      "started": "2026-10-27T21:36:43.748691+00:00",
+      "finished": "2026-10-27T21:37:28.249883+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/AffineCompletion.lean",
+      "sha256": "0107837d81a4e7b911753a8f35abe5846287922b6ca21b9394f8e82011dece9f",
+      "exit_code": 0,
+      "started": "2026-10-27T21:37:27.989932+00:00",
+      "finished": "2026-10-27T21:37:32.048947+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Derived/Coefficients.lean",
+      "sha256": "4bfa1791df12587e9317561f4617df27cb72bc7ad4a5771796972b37fc5787a3",
+      "exit_code": 0,
+      "started": "2026-10-27T21:28:47.448163+00:00",
+      "finished": "2026-10-27T21:37:47.289048+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/PurelyInseparable/FiniteConstants/Continuity.lean",
+      "sha256": "9e64d80023d108c41f090c0b00d8b2e106e80291cb26efd1a7f618e092b29b7e",
+      "exit_code": 0,
+      "started": "2026-10-27T21:37:12.176474+00:00",
+      "finished": "2026-10-27T21:37:59.932595+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Higher.lean",
+      "sha256": "7e1d783bb11327bfd9c44e377ff61b88fc522380e8ee671f3b6cf587b3b3a75c",
+      "exit_code": 0,
+      "started": "2026-10-27T21:36:16.790741+00:00",
+      "finished": "2026-10-27T21:38:05.460854+00:00"
+    },
+    {
+      "path": "Aglib/Algebra/Category/ModuleCat/UnderlyingLinearMap.lean",
+      "sha256": "45a5d8427dd4de317674f769f66a94584767a288aa7cdc066e638f0667ede82b",
+      "exit_code": 0,
+      "started": "2026-10-27T21:38:05.799967+00:00",
+      "finished": "2026-10-27T21:38:08.093141+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/ClosedImmersion/RightAdjoint/RegularList/Conormal.lean",
+      "sha256": "5a4b68522f1bcd5f295800f9586c9ea016389830901e3a39d8883c74900d5db1",
+      "exit_code": 0,
+      "started": "2026-10-27T21:36:23.486595+00:00",
+      "finished": "2026-10-27T21:38:19.040580+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/ConstantCoefficients.lean",
+      "sha256": "06ac792243caa7a12e50d777c7935b6a15c3a4d51a90f518aca0649033119d05",
+      "exit_code": 0,
+      "started": "2026-10-27T21:38:00.414612+00:00",
+      "finished": "2026-10-27T21:38:20.814344+00:00"
+    },
+    {
+      "path": "Aglib/Algebra/Category/ModuleCat/Sheaf/ConstantImagesLinear.lean",
+      "sha256": "4ad020d9858f8b8a1957eeeb0936ebd8fc26639fd8d4b16c661a06bef852c24a",
+      "exit_code": 0,
+      "started": "2026-10-27T21:38:19.407734+00:00",
+      "finished": "2026-10-27T21:38:22.270658+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceProper.lean",
+      "sha256": "2c86d687d4cb3b95f13c6c80dd2362918fbe3193b703000d87853045d202543e",
+      "exit_code": 0,
+      "started": "2026-10-27T21:37:28.948774+00:00",
+      "finished": "2026-10-27T21:38:22.648559+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/Modules/ImagesLinear.lean",
+      "sha256": "0f58007953f3e5f64dfe85b2f01b6e2a629b6a7495ab5ae55a8b2cba6d1f2fff",
+      "exit_code": 0,
+      "started": "2026-10-27T21:38:22.725597+00:00",
+      "finished": "2026-10-27T21:38:26.110552+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Proper/StructureSheaf/Sections.lean",
+      "sha256": "0baee77d2c32a256c0098b65822f6dc346c220c2b7d7312903c728890e471d59",
+      "exit_code": 0,
+      "started": "2026-10-27T21:37:47.737446+00:00",
+      "finished": "2026-10-27T21:38:35.500356+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/DifferentialTrace/Restriction.lean",
+      "sha256": "190ccfac9d5b703b16e3848cb77d7556a81801b2bd93faae7f689b7bb9e1eb20",
+      "exit_code": 0,
+      "started": "2026-10-27T21:30:29.952663+00:00",
+      "finished": "2026-10-27T21:39:00.760187+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Picard/KummerH1.lean",
+      "sha256": "c5de9e4bff3e337a19bebab048442ebba7f57110d451482ea6898046f0866b3c",
+      "exit_code": 0,
+      "started": "2026-10-27T21:35:50.388524+00:00",
+      "finished": "2026-10-27T21:39:08.015393+00:00"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Topos/AdditiveCoefficientAction/Cohomology.lean",
+      "sha256": "0f0fbcfc6762a52d3fa849a9a1bbbafed65fc6da09356127792fadb40d6dcdd2",
+      "exit_code": 0,
+      "started": "2026-10-27T21:38:08.592105+00:00",
+      "finished": "2026-10-27T21:39:11.082641+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/FormalFunctions/ThickeningSections.lean",
+      "sha256": "24532afac732fa44e67c1621bc5e79604023ab1460bf75b8b5396384afec839c",
+      "exit_code": 0,
+      "started": "2026-10-27T21:37:32.559826+00:00",
+      "finished": "2026-10-27T21:39:33.854154+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/FormalFunctions/ThickeningSectionsReduction.lean",
+      "sha256": "d7e46bd17435cb6b2b0ee1a167bbfd2611ecd30f04ff285dee957bfda8649622",
+      "exit_code": 0,
+      "started": "2026-10-27T21:39:34.360001+00:00",
+      "finished": "2026-10-27T21:39:45.598809+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceGeneric.lean",
+      "sha256": "571bdc2596eaf72a4a185f9860915ef402d275ff3a3ab67027a5a2c4d6c98233",
+      "exit_code": 1,
+      "started": "2026-10-27T21:39:08.485274+00:00",
+      "finished": "2026-10-27T21:40:32.020517+00:00"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/ModuleCoefficients/Pullback.lean",
+      "sha256": "c141573e56e1a3add67de490d92b402660ceb9becdf119f1961950bb0342ba54",
+      "exit_code": 1,
+      "started": "2026-10-27T21:39:11.453722+00:00",
+      "finished": "2026-10-27T21:40:38.571574+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalPurity.lean",
+      "sha256": "46fdfab0e338c5de3110992b0520bc5f2409f7cde764bbaf11f64d22203e14fb",
+      "exit_code": 0,
+      "started": "2026-10-27T21:38:21.321349+00:00",
+      "finished": "2026-10-27T21:41:55.294731+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel.lean",
+      "sha256": "ed423fbbe158f31b7dcfccd7e24ad4f09f0ebeaa816a5850dfcd302947dc7c01",
+      "exit_code": 0,
+      "started": "2026-10-27T21:41:55.813263+00:00",
+      "finished": "2026-10-27T21:42:01.503685+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/AffineDeterminant.lean",
+      "sha256": "253a35423d28fbd7fa8fd35d7ec4db21a58a527cbcc7be413b0f694c2c8eb722",
+      "exit_code": 0,
+      "started": "2026-10-27T21:41:55.798916+00:00",
+      "finished": "2026-10-27T21:42:01.548357+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Principal.lean",
+      "sha256": "906845758b9216c3ceb3c87b460cc1fc798f584809aefded3ab1f68eabcb95a5",
+      "exit_code": 0,
+      "started": "2026-10-27T21:41:56.025922+00:00",
+      "finished": "2026-10-27T21:42:01.879748+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Refinements/OpenCoefficient/Units.lean",
+      "sha256": "e6485dde0e9378075599147184b68b71c2dbd1b3bba41dff11832819ddbcc6e1",
+      "exit_code": 0,
+      "started": "2026-10-27T21:42:02.249462+00:00",
+      "finished": "2026-10-27T21:42:09.331571+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Refinements/NormalBase.lean",
+      "sha256": "a09de54b35cedd5b16e2c8770862d2bb283f89dc09f12aef6cffc2d4473e9717",
+      "exit_code": 0,
+      "started": "2026-10-27T21:41:55.941554+00:00",
+      "finished": "2026-10-27T21:42:19.357215+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Charts.lean",
+      "sha256": "f9d2cecf00878efc2249232d2d0f13bb5d332e30a4a9efd04255476aa6578ff5",
+      "exit_code": 0,
+      "started": "2026-10-27T21:42:09.853009+00:00",
+      "finished": "2026-10-27T21:42:22.357675+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Principal/Source.lean",
+      "sha256": "a4b65a45fc1a035f529f121cb94e16e6654e7b99fbb0d244253bf253cb79da97",
+      "exit_code": 0,
+      "started": "2026-10-27T21:42:19.859223+00:00",
+      "finished": "2026-10-27T21:42:25.201835+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Refinements/BaseCoefficient.lean",
+      "sha256": "a311669b3f4a8eee5e8b671ba9259113c021f0fbb55828bb3021c4ce753f0ac6",
+      "exit_code": 0,
+      "started": "2026-10-27T21:42:02.351076+00:00",
+      "finished": "2026-10-27T21:42:34.738914+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Refinements/AmbientNormal.lean",
+      "sha256": "8ba6c60ba64d2aa02073aa9224490ca7759e36260bf6c7ee585c5e38ae3583bd",
+      "exit_code": 0,
+      "started": "2026-10-27T21:42:35.258887+00:00",
+      "finished": "2026-10-27T21:42:46.091019+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Purity.lean",
+      "sha256": "f50647f9176aa8b7ab48af8dc0b12ed22c34e338710f1196a3069ed13d4da8f0",
+      "exit_code": 0,
+      "started": "2026-10-27T21:42:46.584515+00:00",
+      "finished": "2026-10-27T21:42:51.921994+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Refinements/BaseDeterminant.lean",
+      "sha256": "02386a670c812ce90e273ac046a01e3446788440cfe7f32f082d104a7efd188e",
+      "exit_code": 0,
+      "started": "2026-10-27T21:42:25.703951+00:00",
+      "finished": "2026-10-27T21:42:57.085587+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/Frames.lean",
+      "sha256": "aa0e2e97914a8f0c45a15e4bcf38396c233b3aaac5b32608ed125030af354b6a",
+      "exit_code": 0,
+      "started": "2026-10-27T21:42:52.426018+00:00",
+      "finished": "2026-10-27T21:42:57.383943+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Refinements/NormalFrame.lean",
+      "sha256": "b54e063a38a9ce9cf4c1b5aad890f9ac82bf5a36860755d296351647b35ec115",
+      "exit_code": 0,
+      "started": "2026-10-27T21:42:57.888797+00:00",
+      "finished": "2026-10-27T21:43:09.995388+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Proper/FibreFormalFunctions.lean",
+      "sha256": "176b687d2be732fd2d97c02a484f0e5609e21f6955f228cd03043285323a9953",
+      "exit_code": 0,
+      "started": "2026-10-27T21:39:46.111943+00:00",
+      "finished": "2026-10-27T21:43:14.341502+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Principal/Class.lean",
+      "sha256": "eb41328c92aae3cd4b75e9ec763bc9b741d4104463050edd4012c679313aef90",
+      "exit_code": 0,
+      "started": "2026-10-27T21:42:57.574820+00:00",
+      "finished": "2026-10-27T21:43:18.002959+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Morphisms/Proper/ConnectedFibres.lean",
+      "sha256": "83e44c099325fd78dd51d07202e2580c01bc35f66d4d3cd51661dbce9d528f44",
+      "exit_code": 0,
+      "started": "2026-10-27T21:43:14.864898+00:00",
+      "finished": "2026-10-27T21:43:33.785916+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Refinements/OpenCoefficient.lean",
+      "sha256": "d5cbfe02915d825e68fa42dbf5bda7a0d8b567bd2125ef49f278d168566bece5",
+      "exit_code": 0,
+      "started": "2026-10-27T21:42:22.885012+00:00",
+      "finished": "2026-10-27T21:43:37.999089+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Refinements/AmbientConormal/Maps.lean",
+      "sha256": "8e400d10e92d777d7242660a0807650fd22fea8987c9b3a0a5d2fb7f790ecbeb",
+      "exit_code": 0,
+      "started": "2026-10-27T21:43:38.516234+00:00",
+      "finished": "2026-10-27T21:43:55.606349+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Refinements/AmbientConormal/Positive.lean",
+      "sha256": "da36e6d4cc270b9ee981057ea20169528c84dbfe90a36eecaf4fc09677f3d437",
+      "exit_code": 0,
+      "started": "2026-10-27T21:43:56.105786+00:00",
+      "finished": "2026-10-27T21:44:03.548429+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Class.lean",
+      "sha256": "6aa7c9985b98bcbdbd7170d2bd2d71a43d8e7058cd8a98dc7914b438fe626cf1",
+      "exit_code": 0,
+      "started": "2026-10-27T21:42:02.234886+00:00",
+      "finished": "2026-10-27T21:44:08.893241+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Refinements/AmbientConormal/Arrows.lean",
+      "sha256": "22ecefabb69396849225977e11810957d0dc6355bb617651c5aa64a919265e99",
+      "exit_code": 0,
+      "started": "2026-10-27T21:44:04.023593+00:00",
+      "finished": "2026-10-27T21:44:11.005700+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Class/Open.lean",
+      "sha256": "d56a0e4f1cdf3d6e186f1ae0369a39249bf16ab7468cb1ad6fd638c581b8dc79",
+      "exit_code": 0,
+      "started": "2026-10-27T21:44:09.425547+00:00",
+      "finished": "2026-10-27T21:44:15.889258+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Coefficients.lean",
+      "sha256": "08c49a243b64bc20b4c2a1339c9959cd429b3270ac4646119d4192dfe4c20593",
+      "exit_code": 0,
+      "started": "2026-10-27T21:42:02.448419+00:00",
+      "finished": "2026-10-27T21:44:19.620677+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Class/Congruence.lean",
+      "sha256": "bf9953e2fb268f7a50585f8ce6d0ac8424f64071178352c5e7fd6d4dd84224bb",
+      "exit_code": 0,
+      "started": "2026-10-27T21:44:16.394075+00:00",
+      "finished": "2026-10-27T21:44:20.817479+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Refinements/AmbientConormal/Complex.lean",
+      "sha256": "ffb85c518bfa4b873b1d32e6e23934ba4698cd7ad8e26e960b5ad75f46118927",
+      "exit_code": 0,
+      "started": "2026-10-27T21:44:11.523341+00:00",
+      "finished": "2026-10-27T21:44:21.574367+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Class/Composition.lean",
+      "sha256": "8523dc5c9c7531d13662e659e2757f016ffb53d6da2a25f66c64070b8d10e204",
+      "exit_code": 0,
+      "started": "2026-10-27T21:44:20.120545+00:00",
+      "finished": "2026-10-27T21:44:25.690257+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts.lean",
+      "sha256": "a738d556551f5083b11f82f2ab9ad3a86d975ab23b2bb9077a22931ad128658a",
+      "exit_code": 0,
+      "started": "2026-10-27T21:43:10.503994+00:00",
+      "finished": "2026-10-27T21:44:34.660423+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/SourceIdeal.lean",
+      "sha256": "42a558955d791952357c370ef5b838d6deed24466b5a40f1c67edf87e9469fc1",
+      "exit_code": 0,
+      "started": "2026-10-27T21:44:35.160933+00:00",
+      "finished": "2026-10-27T21:44:39.105683+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Principal/HomologyClass.lean",
+      "sha256": "db631e5d023c864d1af80fcbccfb4dd18776537e841b32f2b16754df67889998",
+      "exit_code": 0,
+      "started": "2026-10-27T21:43:18.521837+00:00",
+      "finished": "2026-10-27T21:44:40.701260+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Insertion.lean",
+      "sha256": "5f3b0debbd7f5e7a033fc16ea8c6ddd74c1cbf13abc1eb44bf613b7b4205759b",
+      "exit_code": 0,
+      "started": "2026-10-27T21:44:09.413153+00:00",
+      "finished": "2026-10-27T21:44:48.569966+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Insertion/OpenComparison.lean",
+      "sha256": "fb7e51c493ef165cc3da7840af6d4fac9acf9fdaf582ecd4438e291beed7ee8b",
+      "exit_code": 0,
+      "started": "2026-10-27T21:44:49.173541+00:00",
+      "finished": "2026-10-27T21:44:55.599862+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Principal/Derived.lean",
+      "sha256": "ab561fe9c2b61ec78869d47473952fe2cb4f5a0cedd0b54e802a9ef059740810",
+      "exit_code": 0,
+      "started": "2026-10-27T21:44:41.215378+00:00",
+      "finished": "2026-10-27T21:45:49.703089+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Principal/NormalizedClass.lean",
+      "sha256": "4cd32e3d80b3e7bf19a57f3f6198e06f7445c42fb64addab1222eb9edc9f1178",
+      "exit_code": 0,
+      "started": "2026-10-27T21:44:41.209368+00:00",
+      "finished": "2026-10-27T21:45:59.044035+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Principal/AmbientIsomorphism.lean",
+      "sha256": "aa39dec2c3b5ebba086bdf0660515ae9e3aec63b80447355e26f99a26aff40a8",
+      "exit_code": 0,
+      "started": "2026-10-27T21:45:50.198214+00:00",
+      "finished": "2026-10-27T21:45:59.338774+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/CoefficientLine.lean",
+      "sha256": "4145c7f65d97037608ced0688b333bbe8b3ce86c8e51516559dd960006ebb26c",
+      "exit_code": 0,
+      "started": "2026-10-27T21:44:21.302196+00:00",
+      "finished": "2026-10-27T21:46:09.687106+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Principal/AmbientIsomorphism/Model.lean",
+      "sha256": "455628f001e33bc7c0b3a924b49ef67af9ba75bfa737e1de46c3dbb6d213d2af",
+      "exit_code": 0,
+      "started": "2026-10-27T21:45:59.808927+00:00",
+      "finished": "2026-10-27T21:46:19.678823+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Principal/AmbientIsomorphism/Classes.lean",
+      "sha256": "a8656a3f59a6a730b74e653ecc81d16a961629fb408ddf8324f2ad9236aa02f1",
+      "exit_code": 0,
+      "started": "2026-10-27T21:46:20.289137+00:00",
+      "finished": "2026-10-27T21:46:40.344738+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/GeneratorOverlap.lean",
+      "sha256": "badb2eca08580b85881b4bfe9842d020695c478c231493c25dbab1f021c34ad8",
+      "exit_code": 0,
+      "started": "2026-10-27T21:42:02.487330+00:00",
+      "finished": "2026-10-27T21:47:10.945066+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/GeneratorOverlap.lean",
+      "sha256": "7d84c3094a3a654021732079a2ad0e8e3519f7f4a185c1b7ce985140ca985efe",
+      "exit_code": 0,
+      "started": "2026-10-27T21:47:11.587835+00:00",
+      "finished": "2026-10-27T21:47:28.386049+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Refinements/BaseDeterminant/Coefficient.lean",
+      "sha256": "bb1069d64fb14fd9f809a53a966dfda2b2f23255cc7c7f152ceca3161693e093",
+      "exit_code": 0,
+      "started": "2026-10-27T21:47:11.466339+00:00",
+      "finished": "2026-10-27T21:47:30.923074+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Refinements/DeterminantSquare.lean",
+      "sha256": "dc014f81e9283563c550db313158e9c4f3a927087a050d381de008a86505dfd8",
+      "exit_code": 0,
+      "started": "2026-10-27T21:47:11.691469+00:00",
+      "finished": "2026-10-27T21:48:09.687960+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/CoefficientOpen.lean",
+      "sha256": "c876aa15e1b93bd5fafdd9d46cbbd32a9f4bdc95d6ac38f6c47424379e891d51",
+      "exit_code": 0,
+      "started": "2026-10-27T21:46:40.841667+00:00",
+      "finished": "2026-10-27T21:48:19.123329+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Refinements/BaseModel.lean",
+      "sha256": "8c9590ffd646b66c1aa681e701b9f4e9289766bde701a83193fb5276853d45ba",
+      "exit_code": 0,
+      "started": "2026-10-27T21:47:11.612631+00:00",
+      "finished": "2026-10-27T21:48:20.977248+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Refinements/DeterminantSquare/Literal.lean",
+      "sha256": "9870360a1ba12c881dd5692056a1009d4babeb35ea9719e3e0bcf4058d8b90de",
+      "exit_code": 0,
+      "started": "2026-10-27T21:48:10.206492+00:00",
+      "finished": "2026-10-27T21:48:24.460285+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Refinements/DeterminantSquare/Literal/OpenSquare.lean",
+      "sha256": "397000e794aa8aa49ac466e26966bfa0e37388c512eae4a999bc903be7f85140",
+      "exit_code": 0,
+      "started": "2026-10-27T21:48:24.951324+00:00",
+      "finished": "2026-10-27T21:48:31.308200+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/AffineTrace.lean",
+      "sha256": "f8f7946d0e415ad5a247b2fc5029bb27e67bb9948952f6b96d9bd449d4c1b136",
+      "exit_code": 0,
+      "started": "2026-10-27T21:39:01.236959+00:00",
+      "finished": "2026-10-27T21:48:33.961359+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/CoefficientTransport.lean",
+      "sha256": "f363a26d73767b4b78ffd6380160649d0ccc2c40da6b291af596e8821dca4450",
+      "exit_code": 0,
+      "started": "2026-10-27T21:48:21.585430+00:00",
+      "finished": "2026-10-27T21:48:36.111611+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/AtIdeal.lean",
+      "sha256": "e18460b4c118838012564604053daf11764e24dd56d61f59298afc0a1452579c",
+      "exit_code": 0,
+      "started": "2026-10-27T21:47:28.903942+00:00",
+      "finished": "2026-10-27T21:48:36.914702+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Trace/CoefficientMap.lean",
+      "sha256": "7e8bf401d6b45d7c12d43040e6ef0d79667cac91dca58d69ea3a19056cf752f6",
+      "exit_code": 0,
+      "started": "2026-10-27T21:48:34.907079+00:00",
+      "finished": "2026-10-27T21:48:38.565749+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Comparison/Scalar.lean",
+      "sha256": "e28c083d3c1c04183503df7fe25ce5be32d4c09bf996452bca7115a0132fcccb",
+      "exit_code": 0,
+      "started": "2026-10-27T21:48:34.918791+00:00",
+      "finished": "2026-10-27T21:48:40.545755+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/SerreTransport.lean",
+      "sha256": "802c9867978756063e860024d512d8ced32888734ffd355111b7b04f5ef1923c",
+      "exit_code": 0,
+      "started": "2026-10-27T21:48:36.620259+00:00",
+      "finished": "2026-10-27T21:48:42.425851+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Refinements/AmbientConormal/Determinant.lean",
+      "sha256": "b73be0546a00767a9c11b7f4c0e28f1e4a6265b65589c7e98562f9c2230c8ae7",
+      "exit_code": 0,
+      "started": "2026-10-27T21:48:31.832199+00:00",
+      "finished": "2026-10-27T21:48:53.496020+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/AtIdeal/Restriction.lean",
+      "sha256": "edbe612f204cfd2cfafbff671346773d20eb90a5208a575e41812a244527e72e",
+      "exit_code": 0,
+      "started": "2026-10-27T21:48:39.088981+00:00",
+      "finished": "2026-10-27T21:49:06.972363+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/OpenPushforward.lean",
+      "sha256": "d2092a2195ee79a629548ec2e0957ea397e0cd4ca0fc0250c1f4bce4b18466d6",
+      "exit_code": 0,
+      "started": "2026-10-27T21:48:34.843308+00:00",
+      "finished": "2026-10-27T21:49:38.753241+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Trace/Residue.lean",
+      "sha256": "b31f72422f13dee6d56b1cbb9fa1e5dbf469cc21818e9452af60f3bbed01d8e9",
+      "exit_code": 0,
+      "started": "2026-10-27T21:48:34.828605+00:00",
+      "finished": "2026-10-27T21:49:40.611884+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/Refinements/AmbientConormal/Coefficient.lean",
+      "sha256": "72fcbdfe3bd6282476215bda289f8ff2a857f23bd08a8467cb0edca521cbbfff",
+      "exit_code": 0,
+      "started": "2026-10-27T21:48:54.005217+00:00",
+      "finished": "2026-10-27T21:49:43.356587+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/BaseComparison.lean",
+      "sha256": "6595b3de784e7850324ee7e0ac5998ffaf4d1f2928c1df08d4bd5ed6e45244e8",
+      "exit_code": 0,
+      "started": "2026-10-27T21:49:43.848214+00:00",
+      "finished": "2026-10-27T21:50:14.112185+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/AtIdeal/Data.lean",
+      "sha256": "07889a23e04f11cc8ff59b42406ae7b4cf5b0a96149f0337b194b42901d8e63c",
+      "exit_code": 0,
+      "started": "2026-10-27T21:48:41.263623+00:00",
+      "finished": "2026-10-27T21:51:03.686528+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/AtIdeal/Reflexive.lean",
+      "sha256": "1ce7c4bbd50772a83061991b78e4da77ec25abf3ddc9b5ab55fad7fb7e2e7ef4",
+      "exit_code": 0,
+      "started": "2026-10-27T21:51:04.177880+00:00",
+      "finished": "2026-10-27T21:51:11.024210+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/ModelCore.lean",
+      "sha256": "f0e89df0e85aedd17e0461db5789faf22ca361f60270be5e02d61f332f9d073a",
+      "exit_code": 0,
+      "started": "2026-10-27T21:51:11.548093+00:00",
+      "finished": "2026-10-27T21:51:17.044214+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenCounit.lean",
+      "sha256": "ed7f41da164c82710a4bf7786d5967b8dc1e49a7511e9f192163c9e3942ee504",
+      "exit_code": 0,
+      "started": "2026-10-27T21:46:20.300849+00:00",
+      "finished": "2026-10-27T21:51:36.075125+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/AmbientModel.lean",
+      "sha256": "2bb32d69d35fcdfe2b859e7529e7b048bd0fbe279bc56d8023399383bf0d414d",
+      "exit_code": 0,
+      "started": "2026-10-27T21:51:36.721783+00:00",
+      "finished": "2026-10-27T21:51:45.785105+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Trace/Restriction.lean",
+      "sha256": "c3a73770c5f472dbe7fa0afd6e60336861daabc7b642fd38e4dd8dad02e25f9a",
+      "exit_code": 0,
+      "started": "2026-10-27T21:48:37.448876+00:00",
+      "finished": "2026-10-27T21:52:22.370337+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/TopRestriction.lean",
+      "sha256": "1f08b3832c6141b7ea5c2c79dfc4b9a0cee06b82c3cd2943272c848f0722c78f",
+      "exit_code": 0,
+      "started": "2026-10-27T21:52:22.935356+00:00",
+      "finished": "2026-10-27T21:52:29.572979+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Trace/AffineModel/Identity.lean",
+      "sha256": "f8bc273ff5f190e416972a88fed12c992f07f0933fc6cadb02f357e2f352a95f",
+      "exit_code": 0,
+      "started": "2026-10-27T21:52:22.913726+00:00",
+      "finished": "2026-10-27T21:52:54.436584+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/BaseDifferentials.lean",
+      "sha256": "f365d64b8b1401a29056a583c35b87f7bdeb841fc8aa2e38b1f183b7b883f911",
+      "exit_code": 0,
+      "started": "2026-10-27T21:52:30.225820+00:00",
+      "finished": "2026-10-27T21:53:05.091737+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Class/Degree.lean",
+      "sha256": "42eba0f53c2058ef926e52ac3443226f37db37df403882bf7add92b0639a3c84",
+      "exit_code": 0,
+      "started": "2026-10-27T21:51:36.692950+00:00",
+      "finished": "2026-10-27T21:53:59.929422+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Trace/Pullback.lean",
+      "sha256": "a8317a7067f19d1c48cad76f90a32c234d77e018c20979f424fc209d994f1536",
+      "exit_code": 0,
+      "started": "2026-10-27T21:52:54.974554+00:00",
+      "finished": "2026-10-27T21:54:17.255302+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/AmbientGeometry.lean",
+      "sha256": "e5cf33d942d0486b07c9620e49854bc221eb321ac4c8d5bc3d510cd4bdc76267",
+      "exit_code": 0,
+      "started": "2026-10-27T21:52:30.331095+00:00",
+      "finished": "2026-10-27T21:54:30.432125+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/SameData.lean",
+      "sha256": "2dbd28fa7518f2f56704ee32a374adfa051c3ba8b89b68cfca7d6cf5a2620021",
+      "exit_code": 0,
+      "started": "2026-10-27T21:52:30.202973+00:00",
+      "finished": "2026-10-27T21:54:40.931293+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Trace/AffineModel.lean",
+      "sha256": "afeceb121e93dfe1b03259e05a98cb1b6ef7d23a713f77cf488fd359dc6ec375",
+      "exit_code": 0,
+      "started": "2026-10-27T21:52:54.962746+00:00",
+      "finished": "2026-10-27T21:54:47.985193+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Insertion/Degree.lean",
+      "sha256": "8c9ecb78fbfe605e4631b8269d5c799441b0e38cddf6c881c83057029a1497ec",
+      "exit_code": 0,
+      "started": "2026-10-27T21:54:00.468057+00:00",
+      "finished": "2026-10-27T21:55:07.035389+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/Base.lean",
+      "sha256": "60974defa07caf255296f6ae550b6186c6350517ac1a6ffd294b8f40151916a4",
+      "exit_code": 0,
+      "started": "2026-10-27T21:53:05.605221+00:00",
+      "finished": "2026-10-27T21:55:30.155799+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Insertion/OpenNormal.lean",
+      "sha256": "606d8931c52d0d548c3f212061758d053ee48b15904c5af8ea690895c12cceaa",
+      "exit_code": 0,
+      "started": "2026-10-27T21:55:07.566169+00:00",
+      "finished": "2026-10-27T21:55:31.284822+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/GeneratorOverlap/NormalDegree.lean",
+      "sha256": "6eddaea2f69e18a929317b8549f62ddbe3db642374a819ec55aabf634ee85e4b",
+      "exit_code": 0,
+      "started": "2026-10-27T21:55:07.662397+00:00",
+      "finished": "2026-10-27T21:55:58.269610+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Trace/Local.lean",
+      "sha256": "02a5d6d3a700ca80889bacca4662c9843c523e69f2c9930c5547531050cd701b",
+      "exit_code": 0,
+      "started": "2026-10-27T21:54:17.774101+00:00",
+      "finished": "2026-10-27T21:56:27.344064+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenTopClass/Source.lean",
+      "sha256": "95b2d936fe19722ef595a49d59710205ae66327a1c481b3d4b8e8e30de64e2e6",
+      "exit_code": 0,
+      "started": "2026-10-27T21:51:36.801382+00:00",
+      "finished": "2026-10-27T22:00:24.796427+00:00"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenTopClass.lean",
+      "sha256": "cb99a803ffe67e394c8a81048d230001db459d14f98d50da3326daa90a85e1a5",
+      "exit_code": 0,
+      "started": "2026-10-27T22:00:25.253413+00:00",
+      "finished": "2026-10-27T22:09:49.167176+00:00"
+    }
+  ],
+  "fresh_frontends_started": 225,
+  "fresh_passes": 219,
+  "source_failed_frontends": 4,
+  "interrupted_attempts": [
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Trace/Core.lean",
+      "sha256": "69630ea174686f1c79f3e3acf90349bf97318eba27195bddcd536d07faf4b6f2",
+      "compiler_pid": 937324,
+      "started": "2026-10-27T21:56:27.746502+00:00",
+      "elapsed_seconds_at_signal": 877.13,
+      "status": "unfinished when native worker received SIGTERM; no per-frontend completion observed"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Class/OpenTop.lean",
+      "sha256": "51dd54ca865a2460588d3b8ae7e4ee39c884f693057495e0b52cc7d3876678dc",
+      "compiler_pid": 937597,
+      "started": "2026-10-27T22:09:49.642775+00:00",
+      "elapsed_seconds_at_signal": 75.234,
+      "status": "unfinished when native worker received SIGTERM; no per-frontend completion observed"
+    }
+  ],
+  "own56_fresh_passes": 36,
+  "own56_failed_paths": [
+    "Aglib/Algebra/Homology/DerivedCategory/Ext/BoundedConstants.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceGeneric.lean",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/ModuleCoefficients/Pullback.lean"
+  ],
+  "own56_no_observed_frontend": [
+    "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvariancePairs.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/BoundedConstants.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceUniverses.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceBoundary.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/ModuleCoefficients/Pullback.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceProperPairs.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceDescent.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceConstantModules.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceFiniteConstants.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceAlgebraicallyClosed.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceGenericNaturality.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/BoundedConstantReduction.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceSeparablyClosed.lean",
+    "Aglib/AlgebraicGeometry/Curves/PointDivisor/FieldBaseChangeOrders.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceSquare.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceResidues.lean",
+    "Aglib/AlgebraicGeometry/Curves/PointDivisor/FieldBaseChange.lean"
+  ],
+  "explicit_root_passes": [
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/Ext/ChangeUniverseExact.lean",
+      "sha256": "f6a085886b0b4d63876c13b07dcbe1a288630dc537fadfb1b7a77d6ad896955c",
+      "exit_code": 0,
+      "started": "2026-10-27T21:26:34.014675+00:00",
+      "finished": "2026-10-27T21:26:37.223741+00:00"
+    }
+  ],
+  "transition_record": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/lane-b/c56-v1-controlled-transition.json",
+  "peak_frontends": 8,
+  "peak_rss_bytes": 38840193024,
+  "boundary": "Actual old-v1 source52bb only. Completed matching native caches retained; two unfinished attempts not rebuilt for evidence. Four repaired modules/newer provider vectors belong to future invocation. No native pass for unreached curve roots, no old D receipt upgrade, no standalonechecks or trust changes."
+}

@@ -1,0 +1,10 @@
+/root/autodl-tmp/lean-build/logs/remote-fbea9c3b7225477ea87b77d4e731a9c3/field-data-arguments/source/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean:405:18: error: unexpected token 'at'; expected '=>'
+/root/autodl-tmp/lean-build/logs/remote-fbea9c3b7225477ea87b77d4e731a9c3/field-data-arguments/source/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean:405:12: error: Not enough patterns in match alternative: Expected 2, but found 1:
+  .lam .(_)
+/root/autodl-tmp/lean-build/logs/remote-fbea9c3b7225477ea87b77d4e731a9c3/field-data-arguments/source/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean:405:12: error: Type mismatch
+  Lean.Expr.lam ?m.365
+has type
+  Lean.Expr → Lean.Expr → Lean.BinderInfo → Lean.Expr
+but is expected to have type
+  Lean.Expr
+/root/autodl-tmp/lean-build/logs/remote-fbea9c3b7225477ea87b77d4e731a9c3/field-data-arguments/source/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean:453:8: error: (kernel) unknown constant 'GroupCohomology.Kummer.Field.comparison_torsor_representative'

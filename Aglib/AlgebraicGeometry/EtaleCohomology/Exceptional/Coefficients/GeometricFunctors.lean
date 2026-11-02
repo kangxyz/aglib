@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ConstantRing
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Images
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.PullbackComposition
 public import Mathlib.Algebra.Category.ModuleCat.Sheaf.PullbackContinuous
 
@@ -36,39 +37,55 @@ variable {X S : Scheme.{u}} (f : S ⟶ X) (Λ : Type (u + 1)) [Ring Λ]
 def constantRingMap : constantRing X Λ ⟶
     ((siteBaseChange f).sheafPushforwardContinuous RingCat.{u + 1}
       (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S)).obj (constantRing S Λ) :=
-  ⟨CategoryTheory.sheafifyLift (Scheme.smallEtaleTopology X)
-    (Functor.whiskerLeft (siteBaseChange f).op (constantRingUnit S Λ))
-    (((siteBaseChange f).sheafPushforwardContinuous RingCat.{u + 1}
-      (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S)).obj
-        (constantRing S Λ)).property⟩
+  ModuleCat.Sheaf.ConstantRing.constantRingMap (siteBaseChange f)
+    (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S) Λ
 
 /-- The ring map extends exactly the original constant-ring unit. -/
 @[reassoc]
 theorem constantRingUnit_comp_constantRingMap :
     constantRingUnit X Λ ≫ (constantRingMap f Λ).hom =
       Functor.whiskerLeft (siteBaseChange f).op (constantRingUnit S Λ) :=
-  CategoryTheory.toSheafify_sheafifyLift _ _ _
+  ModuleCat.Sheaf.ConstantRing.constantRingUnit_comp_constantRingMap (siteBaseChange f)
+    (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S) Λ
 
 /-- Sectionwise normalization of the original constant-ring map. -/
 @[reassoc]
 theorem constantRingUnit_comp_constantRingMap_app (U : X.Etaleᵒᵖ) :
     (constantRingUnit X Λ).app U ≫ (constantRingMap f Λ).hom.app U =
       (constantRingUnit S Λ).app ((siteBaseChange f).op.obj U) :=
-  congrArg (fun α => α.app U) (constantRingUnit_comp_constantRingMap f Λ)
+  ModuleCat.Sheaf.ConstantRing.constantRingUnit_comp_constantRingMap_app (siteBaseChange f)
+    (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S) Λ U
 
 /-- The genuine native direct image over the original constant-ring map. -/
 def moduleDirectImage : ModuleSheaf S Λ ⥤ ModuleSheaf X Λ :=
-  SheafOfModules.pushforward (constantRingMap f Λ)
+  ModuleCat.Sheaf.ConstantRing.moduleDirectImage.{
+    u + 1, u, u + 1, u, u + 1, u + 1} (siteBaseChange f)
+    (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S) Λ
 
 /-- The genuine direct image retains the original abelian direct image. -/
 def moduleDirectImageUnderlyingIso :
     moduleDirectImage f Λ ⋙ SheafOfModules.toSheaf (constantRing X Λ) ≅
       SheafOfModules.toSheaf (constantRing S Λ) ⋙ directImage f :=
-  Iso.refl _
+  ModuleCat.Sheaf.ConstantRing.moduleDirectImageUnderlyingIso.{
+    u + 1, u, u + 1, u, u + 1, u + 1} (siteBaseChange f)
+    (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S) Λ
 
 /-- Direct image on module-valued sheaves on the same actual sites. -/
 def moduleValuedDirectImage : ModuleValuedSheaf S Λ ⥤ ModuleValuedSheaf X Λ :=
-  (siteBaseChange f).sheafPushforwardContinuous (ModuleCat.{u + 1} Λ)
-    (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S)
+  ModuleCat.Sheaf.ConstantRing.moduleValuedDirectImage.{
+    u + 1, u, u + 1, u, u + 1, u + 1} (siteBaseChange f)
+    (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S) Λ
+
+/-- The shared ring morphism has the original sheafification-lift value. -/
+theorem constantRingMap_eq_original : constantRingMap f Λ =
+    ⟨CategoryTheory.sheafifyLift (Scheme.smallEtaleTopology X)
+      (Functor.whiskerLeft (siteBaseChange f).op (constantRingUnit S Λ))
+      (((siteBaseChange f).sheafPushforwardContinuous RingCat.{u + 1}
+        (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S)).obj
+          (constantRing S Λ)).property⟩ := rfl
+
+/-- The thin direct-image realization is the original native ringed pushforward. -/
+theorem moduleDirectImage_eq_original :
+    moduleDirectImage f Λ = SheafOfModules.pushforward (constantRingMap f Λ) := rfl
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients

@@ -9,6 +9,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.H0.ProperHenselian.Section
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Basic
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Pullback
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.ProperHenselian.General
+public import Mathlib.CategoryTheory.MorphismProperty.Basic
 
 /-! # Finite constant H0 over a proper henselian local base -/
 
@@ -35,22 +36,11 @@ theorem globalSectionsPullback_bijective_of_representation
     [(Scheme.FiniteEtale.baseChange f).Faithful]
     (L : AbelianSheaf.{u, u + 1} X) (D : CoefficientRepresentation L) :
     Function.Bijective (globalSectionsPullback f L) := by
-  have hD := represented_globalSectionsPullback_bijective f D.group
-  have : Mono (globalSectionsPullback f (representedSheaf D.group)) :=
-    (AddCommGrpCat.mono_iff_injective _).mpr hD.injective
-  have : Epi (globalSectionsPullback f (representedSheaf D.group)) :=
-    (AddCommGrpCat.epi_iff_surjective _).mpr hD.surjective
-  have h : IsIso (globalSectionsPullback f (representedSheaf D.group)) :=
-    isIso_of_mono_of_epi _
-  have heq : globalSectionsPullback f L =
-      (globalSections X).map D.iso.inv ≫
-        globalSectionsPullback f (representedSheaf D.group) ≫
-          (globalSections S).map ((inverseImage f).map D.iso.hom) := by
-    rw [← globalSectionsPullback_naturality, ← Category.assoc, ← Functor.map_comp,
-      D.iso.inv_hom_id, CategoryTheory.Functor.map_id, Category.id_comp]
-  have : IsIso (globalSectionsPullback f L) := by
-    rw [heq]
-    infer_instance
+  have hD : IsIso (globalSectionsPullback f (representedSheaf D.group)) :=
+    (ConcreteCategory.isIso_iff_bijective _).mpr
+      (represented_globalSectionsPullback_bijective f D.group)
+  have : IsIso (globalSectionsPullback f L) :=
+    (NatTrans.isIso_app_iff_of_iso (globalSectionsPullbackNatTrans f) D.iso).mp hD
   exact (asIso (globalSectionsPullback f L)).addCommGroupIsoToAddEquiv.bijective
 
 /-- Full faithfulness of finite-cover restriction gives actual section
@@ -71,17 +61,17 @@ global-section pullback is bijective. -/
 theorem h0Pullback_bijective_of_sections (L : AbelianSheaf.{u, u + 1} X)
     (h : Function.Bijective (globalSectionsPullback f L)) :
     Function.Bijective (h0Pullback f L) := by
-  constructor
-  · intro a b hab
-    apply (Sheaf.H.equiv₀ L (etaleTerminalIsTerminal X)).injective
-    apply h.injective
-    rw [← h0Pullback_equiv₀, ← h0Pullback_equiv₀, hab]
-  · intro b
-    obtain ⟨a, ha⟩ := h.surjective
-      (Sheaf.H.equiv₀ ((inverseImage f).obj L) (etaleTerminalIsTerminal S) b)
-    refine ⟨(Sheaf.H.equiv₀ L (etaleTerminalIsTerminal X)).symm a, ?_⟩
-    apply (Sheaf.H.equiv₀ ((inverseImage f).obj L) (etaleTerminalIsTerminal S)).injective
-    rw [h0Pullback_equiv₀, AddEquiv.apply_symm_apply, ha]
+  let eX : Sheaf.H.{w} L 0 ≃+ (globalSections X).obj L :=
+    Sheaf.H.equiv₀ L (etaleTerminalIsTerminal X)
+  let eS : Sheaf.H.{w'} ((inverseImage f).obj L) 0 ≃+
+      (globalSections S).obj ((inverseImage f).obj L) :=
+    Sheaf.H.equiv₀ ((inverseImage f).obj L) (etaleTerminalIsTerminal S)
+  have hs : eS ∘ h0Pullback f L = globalSectionsPullback f L ∘ eX :=
+    funext (h0Pullback_equiv₀ f L)
+  have hcomp : Function.Bijective (eS ∘ h0Pullback f L) := by
+    rw [hs]
+    exact h.comp eX.bijective
+  exact hcomp.of_comp_left eS.injective
 
 end ProperHenselianH0
 
@@ -160,14 +150,9 @@ theorem properHenselian_pullbackH0_bijective :
   have h := ProperHenselianH0.h0Pullback_bijective_of_sections f (coefficient A X)
     (properHenselian_originalSections_bijective p A)
   have he : Function.Bijective
-      (Sheaf.H.map ((inverseImageConstantIso f).app (value A)).hom 0) := by
-    refine ⟨?_, ?_⟩
-    · intro a b hab
-      have h' := congrArg (Sheaf.H.map ((inverseImageConstantIso f).app (value A)).inv 0) hab
-      simpa only [← Sheaf.H.map_comp_apply, Iso.hom_inv_id, Sheaf.H.map_id_apply] using h'
-    · intro a
-      refine ⟨Sheaf.H.map ((inverseImageConstantIso f).app (value A)).inv 0 a, ?_⟩
-      rw [← Sheaf.H.map_comp_apply, Iso.inv_hom_id, Sheaf.H.map_id_apply]
+      (Sheaf.H.map ((inverseImageConstantIso f).app (value A)).hom 0) :=
+    ((Sheaf.functorH (pullback p (LocalRing.residueSpecMap R)).smallEtaleTopology 0).mapIso
+      ((inverseImageConstantIso f).app (value A))).addCommGroupIsoToAddEquiv.bijective
   exact he.comp h
 
 end ConstantFinite

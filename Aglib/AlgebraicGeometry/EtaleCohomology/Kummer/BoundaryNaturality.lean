@@ -56,11 +56,8 @@ theorem adjoint_square {C D : Type*} [Category C] [Category D]
     {F : C ⥤ D} {G : D ⥤ C} (adj : F ⊣ G)
     {A B : C} {A' B' : D} (a : A ⟶ B) (b : A' ⟶ B')
     (p : A ⟶ G.obj A') (q : B ⟶ G.obj B') (h : a ≫ q = p ≫ G.map b) :
-    F.map a ≫ (adj.homEquiv _ _).symm q = (adj.homEquiv _ _).symm p ≫ b := by
-  apply (adj.homEquiv _ _).injective
-  rw [Adjunction.homEquiv_naturality_left, Adjunction.homEquiv_naturality_right,
-    Equiv.apply_symm_apply, Equiv.apply_symm_apply]
-  exact h
+    F.map a ≫ (adj.homEquiv _ _).symm q = (adj.homEquiv _ _).symm p ≫ b :=
+  adj.homEquiv_naturality_right_square a q p b h
 
 /-- An additive functor transports multiplication-by-n squares. -/
 theorem nsmul_identity_square {C D : Type*} [Category C] [Category D]

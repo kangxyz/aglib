@@ -30,12 +30,11 @@ variable {C : Type u} [Category.{v} C] [Abelian C] [EnoughInjectives C]
   [HasExt.{w} C] {B : Type r} [Ring B]
 
 /-- Original module-valued comparison through an actual represented natural isomorphism. -/
-def representedDerivedModuleAddEquiv (P : C) (F : C ⥤ ModuleCat.{v} B) (n : ℕ)
+abbrev representedDerivedModuleAddEquiv (P : C) (F : C ⥤ ModuleCat.{v} B) (n : ℕ)
     (β : F ⋙ forget₂ (ModuleCat.{v} B) AddCommGrpCat ≅
       (preadditiveCoyoneda.obj (op P)).rightDerived n) (M : C) :
     F.obj M ≃+ Ext.{w} P M n :=
-  (β.app M).addCommGroupIsoToAddEquiv.trans
-    (extRightDerivedRepresentedAddEquiv P M n).symm
+  CategoryTheory.Abelian.representedDerivedModuleAddEquiv P F n β M
 
 end Represented
 

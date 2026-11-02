@@ -1,0 +1,46 @@
+{
+  "a793042570574539939bf0b361da00ec": [
+    "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "--rehash",
+    "build",
+    "AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.CoefficientDevissage",
+    "AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.OpenPerfectness"
+  ],
+  "ebb23c8b6957423a9a9e6a8844779a8e": [
+    "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "--rehash",
+    "build",
+    "AglibTest.AlgebraicGeometry.EtaleCohomology.Curves.FiniteCoefficientsVanishing",
+    "AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.CoefficientDevissage",
+    "AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.LocallyConstantPerfectness",
+    "AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.OpenPerfectness",
+    "AglibTest.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.CohomologyVanishing",
+    "AglibTest.AlgebraicGeometry.EtaleCohomology.Curves.FiniteCoefficientsVanishing.Open"
+  ],
+  "e3283f606825494fad815d8f808bbb30": [
+    "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "--rehash",
+    "build",
+    "AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.OpenPerfectness"
+  ],
+  "cd7cbe45f7284238933a62cd0dad4096": [
+    "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "--rehash",
+    "build",
+    "AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.OpenPerfectness"
+  ],
+  "13b12b8bf7124ff5b0e734b9ab27adb2": [
+    "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "--rehash",
+    "build",
+    "AglibTest.Algebra.Group.Hom.FiniteExact",
+    "AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.ProperCompactFiniteness",
+    "AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.OpenPerfectness"
+  ],
+  "9adf48702ac944f99d053588bcc595b1": [
+    "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "--rehash",
+    "build",
+    "AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.OpenPerfectness"
+  ]
+}

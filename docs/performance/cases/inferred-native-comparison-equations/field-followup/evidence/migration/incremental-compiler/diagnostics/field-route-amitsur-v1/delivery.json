@@ -1,0 +1,60 @@
+{
+  "kind": "two independent accepted scopes on coherent actual source; no shared-status transfer",
+  "run": "remote-f01e3da536c54edeaa49d22df0285795",
+  "source": "7e2e7a9a4e0f6eeac13512dec2e4152afa8c7c396da3942fd1023e1e02d31fc2",
+  "group_closed": true,
+  "input_drift": [],
+  "field_diagnostic": {
+    "exit_code": 1,
+    "elapsed_seconds": 112.33065447211266,
+    "source_basis": "7e2e7a9a4e0f6eeac13512dec2e4152afa8c7c396da3942fd1023e1e02d31fc2",
+    "candidate_sha256": "6d80c9d07f79b2702dcc4172ce262849010901422be238c3a84ac85007c04cd5",
+    "setup_sha256": "8a299ce50e7cedd053744bfc5690f13486d51b67f52764383242576b28e72aa4",
+    "command": [
+      "/root/autodl-tmp/lean-build/logs/remote-f01e3da536c54edeaa49d22df0285795/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/logs/remote-f01e3da536c54edeaa49d22df0285795/field-equation-route/source/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/logs/remote-f01e3da536c54edeaa49d22df0285795/field-equation-route/Field.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/logs/remote-f01e3da536c54edeaa49d22df0285795/field-equation-route/Field.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/logs/remote-f01e3da536c54edeaa49d22df0285795/field-equation-route/Field.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/logs/remote-f01e3da536c54edeaa49d22df0285795/field-equation-route/Field.c"
+    ],
+    "folder": "/root/autodl-tmp/lean-build/logs/remote-f01e3da536c54edeaa49d22df0285795/field-equation-route",
+    "managed_source_mutations": 0
+  },
+  "field_failure": "sole387:4 default maxRecDepth in original function factorization rfl; no production/adoption claim",
+  "field_stdout": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/field-route-amitsur-v1/field-stdout.log",
+  "amitsur_native": {
+    "exit_code": 1,
+    "command": [
+      "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+      "--rehash",
+      "build",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurProducts",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurSections"
+    ],
+    "source_basis": "7e2e7a9a4e0f6eeac13512dec2e4152afa8c7c396da3942fd1023e1e02d31fc2",
+    "roots": [
+      "Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurProducts",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurSections"
+    ],
+    "kind": "ordinary production changed Amitsur roots"
+  },
+  "amitsur_own_passes": [
+    "TensorMap67a2:3.0s",
+    "Conerve6fc8:6.4s",
+    "Sections19d5:34s"
+  ],
+  "amitsur_failure": "Productsd470:65 letI style",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-f01e3da536c54edeaa49d22df0285795/receipt.json",
+  "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-f01e3da536c54edeaa49d22df0285795/build.log",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-f01e3da536c54edeaa49d22df0285795/compiler-events.jsonl",
+  "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-C-Amitsur-Field-route-f01e3da5.json",
+  "source_archive_sha256": "5bcbf6aaa9afdeac0a16b344dc46470a42abe9b22b7f50aa6c5b08e5eee2f9ba",
+  "retired_diagnostic": "No further DATA walker: 0422 root ?m.281 was unknownhfinal lookup error, not type/cause evidence; author withdrew next input."
+}

@@ -1,0 +1,113 @@
+✔ [3369/3508] Built Aglib.Algebra.Category.Grp.Resize.Diagram (2.5s)
+✔ [3521/3539] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramLimitCoefficients (56s)
+✔ [3522/3539] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramLimitFunctor (18s)
+✔ [3523/3539] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductRestriction (110s)
+✔ [3524/3539] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramConeNaturality (22s)
+✔ [3525/3539] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramLimitSections (3.0s)
+✔ [3526/3539] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyCocone (98s)
+✔ [3527/3539] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramShortExact (5.0s)
+✔ [3528/3539] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductOriginalDiagram (128s)
+✔ [3529/3539] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyNaturality (25s)
+✔ [3530/3539] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCokernelTransitions (6.2s)
+✔ [3531/3539] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductPresheaf (105s)
+✖ [3532/3539] Building Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyConnecting (34s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-960222c105fb4095b940a5117ede023c/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.lean -o /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.olean -i /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.c --setup /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.lean:51:2: failed to synthesize
+  ∀ (X_1 Y : AbelianSheaf (Opposite.unop (((Functor.const I).obj c.pt).obj i))) (a b : ℤ),
+    Localization.HasSmallLocalizedHom
+      (HomologicalComplex.quasiIso (AbelianSheaf (Opposite.unop (((Functor.const I).obj c.pt).obj i)))
+        (ComplexShape.up ℤ))
+      ((shiftFunctor
+            (HomologicalComplex (AbelianSheaf (Opposite.unop (((Functor.const I).obj c.pt).obj i))) (ComplexShape.up ℤ))
+            a).obj
+        ((CochainComplex.singleFunctor (AbelianSheaf (Opposite.unop (((Functor.const I).obj c.pt).obj i))) 0).obj X_1))
+      ((shiftFunctor
+            (HomologicalComplex (AbelianSheaf (Opposite.unop (((Functor.const I).obj c.pt).obj i))) (ComplexShape.up ℤ))
+            b).obj
+        ((CochainComplex.singleFunctor (AbelianSheaf (Opposite.unop (((Functor.const I).obj c.pt).obj i))) 0).obj Y))
+(deterministic) timeout at `typeclass`, maximum number of heartbeats (20000) has been reached
+
+Note: Use `set_option synthInstance.maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.lean:73:14: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+✔ [3534/3539] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ResizeCohomologyDiagram (10s)
+✔ [3535/3539] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.CohomologyDiagramUlift (10s)
+✔ [3536/3539] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.CohomologyDiagramReindex (2.9s)
+✔ [3537/3539] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.CohomologyUliftComponents (13s)
+✖ [3538/3539] Building Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackLimitCoefficient (379s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-960222c105fb4095b940a5117ede023c/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackLimitCoefficient.lean -o /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackLimitCoefficient.olean -i /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackLimitCoefficient.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackLimitCoefficient.c --setup /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackLimitCoefficient.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackLimitCoefficient.lean:33:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackLimitCoefficient.lean:108:70: unsolved goals
+I : Type uI
+inst✝ : Category.{vI, uI} I
+Y : I ⥤ Schemeᵒᵖ
+b : Cone Y
+c : Cocone Y
+l : b.pt ⟶ c.pt
+hl : ∀ (i : I), b.π.app i ≫ c.ι.app i = l
+F : AbelianSheaf (unop b.pt)
+C : I ⥤ AbelianSheaf (unop c.pt) := coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)
+hobj : ∀ (i : I),
+  C.obj i = (schemeAdjunctionData.left (c.ι.app i)).obj ((schemeAdjunctionData.left (b.π.app i)).obj F) :=
+  fun x => rfl
+i j : I
+a : i ⟶ j
+⊢ (pullbackTriangleIso (c.ι.app i).unop (Y.map a).unop (c.ι.app j).unop ⋯).hom.app
+        ((inverseImage (b.π.app i).unop).obj F) ≫
+      (inverseImage (c.ι.app j).unop).map
+        ((pullbackTriangleIso (b.π.app j).unop (b.π.app i).unop (Y.map a).unop ⋯).inv.app F) =
+    (pullbackTriangleIso (c.ι.app i).unop (Y.map a).unop (c.ι.app j).unop ⋯).hom.app
+        ((inverseImage (b.π.app i).unop).obj F) ≫
+      (inverseImage (c.ι.app j).unop).map
+        ((pullbackTriangleIso (b.π.app j).unop (b.π.app i).unop (Y.map a).unop ⋯).inv.app F)
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackLimitCoefficient.lean:156:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  colimit.ι ?m.151 ?i ≫ (constantDiagramColimitIso ?e).hom
+in the target expression
+  colimit.ι (coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)) i ≫
+      (pullbackLimitCoefficientIso Y b c l hl F).hom =
+    (pullbackTriangleIso l.unop (b.π.app i).unop (c.ι.app i).unop ⋯).inv.app F
+
+I : Type uI
+inst✝² : Category.{vI, uI} I
+Y : I ⥤ Schemeᵒᵖ
+b : Cone Y
+c : Cocone Y
+l : b.pt ⟶ c.pt
+hl : ∀ (i : I), b.π.app i ≫ c.ι.app i = l
+F : AbelianSheaf (unop b.pt)
+inst✝¹ : CategoryTheory.IsConnected I
+inst✝ : HasColimit (coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F))
+i : I
+⊢ colimit.ι (coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)) i ≫
+      (pullbackLimitCoefficientIso Y b c l hl F).hom =
+    (pullbackTriangleIso l.unop (b.π.app i).unop (c.ι.app i).unop ⋯).inv.app F
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    (pullbackTriangleIso l.unop (b.π.app i).unop (c.ι.app i).unop ⋯).inv.app F
+  has type
+    @Quiver.Hom (AbelianSheaf (unop c.pt))
+      (ObjectProperty.FullSubcategory.category (Presheaf.IsSheaf (unop c.pt).smallEtaleTopology)).toQuiver
+      ((inverseImage (b.π.app i).unop ⋙ inverseImage (c.ι.app i).unop).obj F) ((inverseImage l.unop).obj F)
+  but is expected to have type
+    @Quiver.Hom (AbelianSheaf (unop c.pt))
+      (ObjectProperty.FullSubcategory.category (Presheaf.IsSheaf (unop c.pt).smallEtaleTopology)).toQuiver
+      ((coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)).obj i) ((inverseImage l.unop).obj F)
+  in the application
+    colimit.ι (coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)) i ≫
+        (pullbackLimitCoefficientIso Y b c l hl F).hom =
+      (pullbackTriangleIso l.unop (b.π.app i).unop (c.ι.app i).unop ⋯).inv.app F
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyConnecting
+- Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackLimitCoefficient
+error: build failed

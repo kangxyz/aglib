@@ -1,0 +1,34 @@
+{
+  "question": "Independent B cache/source/artifact materialization and existing approved-axiom713 coverage for selected C/D publication",
+  "source": "aa725721a00e10156d2ff7c201b87aad1832d9683c54070fc13090006d7ff5df",
+  "vector_sha256": "03854cb7522e95f0b78f873c08700edff837717279de7a96e9f061d27d08680a",
+  "axiom": {
+    "run": "remote-0ed9f3b20b6c4a5caba41a355b894133",
+    "exit": 0,
+    "modules": 713,
+    "seconds": 29.06621055305004,
+    "compiler_frontends": 0,
+    "full_raw_evidence": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/parallel-bc-cache-checks/native-b-runs/remote-0ed9f3b20b6c4a5caba41a355b894133"
+  },
+  "cache_only_stage": {
+    "run": "remote-2c50803db8fd48319f711a1a1a03ac7c",
+    "restored_artifact_records": 9051,
+    "compiler_frontends": 0,
+    "outcome": "partial readiness,8actualfrontiergaps"
+  },
+  "necessary_provider_CPP": {
+    "run": "remote-590270beb4ca4d07bf6ae08b87fd2ca8",
+    "frontends": 6,
+    "passed": 6,
+    "peak": 6
+  },
+  "remaining_artifact_closure_CPP": {
+    "run": "remote-34f184b003a64866822449792d929cc7",
+    "frontends": 12,
+    "passed": 12,
+    "peak": 5,
+    "scope": "713requestedcache-firsttargets; onlyactual12missingcurrent-inputnodescompiled, not713coldbuild"
+  },
+  "transport_attempt_retraction": "851389 command did not execute remotely (argument limit); compact0ed9 is the only actual approved-axiom execution",
+  "boundaries": "No stock lint, client/kernel replay, new checker/model/proof verdict, A/C/D/Git/Main mutation. Audit source713 includes Ambient41b. C ownership transferred before any C operation."
+}

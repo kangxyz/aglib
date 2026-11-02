@@ -1,0 +1,97 @@
+--- failed-f507/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean
++++ native-v2/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean
+@@ -5,7 +5,7 @@
+ -/
+ module
+ 
+-public import Aglib.CategoryTheory.Sites.Representable.SectionComparison
++public import Aglib.CategoryTheory.Sites.Representable.SectionComparisonValues
+ public import Aglib.AlgebraicGeometry.EtaleCohomology.BaseChangeMap
+ public import Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.TriangleCoherence
+ public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.SectionPullback
+@@ -42,15 +42,13 @@
+   have hu := congrArg (fun e => e.hom.app (mu X n)) (inverseImageComp_id_comp (𝟙 X))
+   simp only [Iso.trans_hom, NatTrans.comp_app, Functor.isoWhiskerRight_hom,
+     Functor.whiskerRight_app, Functor.leftUnitor_hom_app, eqToIso.hom, eqToHom_app] at hu
+-  have hunit : (inverseImageComp (𝟙 X) (𝟙 X)).hom.app (mu X n) ≫
+-      (inverseImage (𝟙 X)).map ((inverseImageId X).hom.app (mu X n)) = j := by
+-    change (inverseImageComp (𝟙 X) (𝟙 X)).hom.app (mu X n) ≫
+-      (inverseImage (𝟙 X)).map ((inverseImageId X).hom.app (mu X n)) ≫
+-        𝟙 ((inverseImage (𝟙 X)).obj (mu X n)) = j at hu
+-    simpa only [Category.comp_id] using hu
+-  exact Functor.coefficientIso_identity (inverseImage (𝟙 X)) (inverseImageId X)
++  change (inverseImageComp (𝟙 X) (𝟙 X)).hom.app (mu X n) ≫
++    (inverseImage (𝟙 X)).map ((inverseImageId X).hom.app (mu X n)) ≫
++      𝟙 ((inverseImage (𝟙 X)).obj (mu X n)) = j at hu
++  exact Functor.coefficientIso_identity_of_unit_composite
++    (inverseImage (𝟙 X)) (inverseImageId X)
+     (inverseImageComp (𝟙 X) (𝟙 X)) (mu X n) j (rootsPullbackIso (𝟙 X) n hn hinv)
+-    (hc.trans hg.symm) hunit
++    (hc.trans hg.symm) hu
+ 
+ /-- The original composite roots map is the actual section identity comparison. -/
+ theorem rootsComposite_identity {X Y : Scheme.{u}} (r : Y ⟶ X) (a : X ⟶ Y)
+@@ -58,9 +56,15 @@
+     (rootsPullbackIso (a ≫ r) n hn hinv).hom =
+       ((eqToIso (congrArg (fun f : X ⟶ X => inverseImage f) ha) ≪≫ inverseImageId X).hom.app
+         (mu X n)) := by
+-  have h := TriangleCoherence.rootsPullbackIso_congr ha n hn hinv
+-  rw [rootsPullbackIso_identity] at h
+-  simpa only [Iso.trans_hom, NatTrans.comp_app, eqToIso.hom, eqToHom_app] using h.symm
++  have hg := TriangleCoherence.rootsPullbackIso_congr ha n hn hinv
++  have hi := rootsPullbackIso_identity X n hn hinv
++  have ht := Functor.comparison_transport_hom_app
++    (fun f : X ⟶ X => inverseImage f) ha (inverseImageId X) (mu X n)
++  have hfinal := hg.symm.trans
++    ((congrArg (fun q =>
++      eqToHom (congrArg (fun f : X ⟶ X => (inverseImage f).obj (mu X n)) ha) ≫ q) hi).trans
++        ht.symm)
++  exact hfinal
+ 
+ /-- The literal roots coefficient maps contract along the actual section. -/
+ theorem roots_section_coefficients {X Y : Scheme.{u}} (r : Y ⟶ X) (a : X ⟶ Y)
+@@ -90,17 +94,35 @@
+       Kummer.rootsCohomologyPullback a n hn (levelInvertible r n hinv) 1 x := by
+   let c := inverseImageComp r a
+   let i := eqToIso (congrArg (fun f : X ⟶ X => inverseImage f) ha) ≪≫ inverseImageId X
+-  let Z := AddCommGrpCat.of (ULift.{u + 1} ℤ)
+-  have hx := Functor.extSectionPullback_coefficientIso
+-    (inverseImage r) (inverseImage a) (inverseImage (a ≫ r)) c i
+-    ((inverseImageConstantIso a).inv.app Z)
++  let T := h1Functor.{u, u + 1, w} (X := X)
++  have hi : (Functor.sourceSectionIso c i).hom.app (mu X n) =
++      (sectionCoefficientIso r a ha (mu X n)).hom :=
++    congrArg Iso.hom (sectionCoefficientNatIso_app r a ha (mu X n))
++  have hE : (fun b => sectionPullback r a ha (mu X n) b) =
++      fun b => T.map (sectionCoefficientIso r a ha (mu X n)).hom
++        (h1Pullback a ((inverseImage r).obj (mu X n)) b) := rfl
++  have hR : (fun b => Kummer.rootsCohomologyPullback a n hn (levelInvertible r n hinv) 1 b) =
++      fun b => T.map (rootsPullbackIso a n hn (levelInvertible r n hinv)).hom
++        (h1Pullback a (mu Y n) b) := by
++    funext b
++    change coefficientMap (rootsPullbackIso a n hn (levelInvertible r n hinv)).hom
++      (cohomologyPullback a (mu Y n) 1 b) = _
++    rw [cohomologyPullback_one]
++    rfl
++  have hp (b : H1Etale.{u, u + 1, w'} Y (mu Y n)) :=
++    h1Pullback_coefficientMap.{u, w', w} a (rootsPullbackIso r n hn hinv).inv b
++  have hfinal := Functor.sectionCoefficient_map_values c i
+     (rootsPullbackIso r n hn hinv) (rootsPullbackIso a n hn (levelInvertible r n hinv))
+     (rootsPullbackIso (a ≫ r) n hn hinv)
+     (TriangleCoherence.rootsPullbackIso_comp_intrinsic r a n hn hinv)
+-    (rootsComposite_identity r a ha n hn hinv) 1 x
+-  have hi : (Functor.sourceSectionIso c i).hom.app (mu X n) =
+-      (sectionCoefficientIso r a ha (mu X n)).hom :=
+-    congrArg Iso.hom (sectionCoefficientNatIso_app r a ha (mu X n))
+-  simpa only [Functor.extSectionPullback, Functor.extCoefficientTransfer_apply, hi] using hx
++    (rootsComposite_identity r a ha n hn hinv)
++    (sectionCoefficientIso r a ha (mu X n)).hom hi.symm T
++    (fun b => sectionPullback r a ha (mu X n) b)
++    (fun b => h1Pullback a ((inverseImage r).obj (mu X n)) b)
++    (fun b => h1Pullback a (mu Y n) b)
++    (fun b => coefficientMap (rootsPullbackIso r n hn hinv).inv b)
++    (fun b => Kummer.rootsCohomologyPullback a n hn (levelInvertible r n hinv) 1 b)
++    hE hR hp
++  exact congrFun hfinal x
+ 
+ end AlgebraicGeometry.Scheme.EtaleCohomology.Kummer.SectionPullback

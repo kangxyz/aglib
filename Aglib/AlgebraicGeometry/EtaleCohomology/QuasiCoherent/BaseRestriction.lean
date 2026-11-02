@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.SectionsNaturality
+public import Aglib.CategoryTheory.Pseudofunctor.PresheafHomSource
 
 /-! # Native restriction of quasi-coherent section coefficients -/
 
@@ -27,14 +28,7 @@ def presheafHomSourceIso {C : Type u} [Category.{v} C]
     (P : LocallyDiscrete Cᵒᵖ ⥤ᵖ Cat.{w, z}) {X : C}
     {M M' : P.obj (.mk (op X))} (e : M ≅ M') (N : P.obj (.mk (op X))) :
     P.presheafHom M N ≅ P.presheafHom M' N :=
-  NatIso.ofComponents (fun T =>
-    (Iso.homCongr ((P.map T.unop.hom.op.toLoc).toFunctor.mapIso e) (Iso.refl _)).toIso)
-    (by
-      intro T U f
-      ext h
-      dsimp [Pseudofunctor.presheafHom, Pseudofunctor.LocallyDiscreteOpToCat.pullHom]
-      simp only [Category.comp_id, Functor.map_comp, Category.assoc]
-      rw [P.mapComp'_hom_naturality_assoc])
+  CategoryTheory.Pseudofunctor.presheafHomSourceIso P e N
 
 /-- Restriction of the native Hom coefficient, including the actual pulled-back unit. -/
 def homBaseRestrictionIso {X Y : Scheme.{u}} (f : Y ⟶ X)

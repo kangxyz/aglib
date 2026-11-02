@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Adic.CoverSystemModules
-public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.Algebraization.Operations
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.Algebraization.NativeOperations
 
 /-!
 # Native algebra structure on the actual coherent cover system

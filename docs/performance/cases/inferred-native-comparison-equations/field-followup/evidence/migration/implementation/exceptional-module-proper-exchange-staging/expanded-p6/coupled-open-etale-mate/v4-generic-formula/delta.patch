@@ -1,0 +1,38 @@
+--- before/Aglib/Algebra/Category/ModuleCat/Sheaf/ConstantRing/Coherence.lean
++++ after/Aglib/Algebra/Category/ModuleCat/Sheaf/ConstantRing/Coherence.lean
+@@ -65,6 +65,15 @@
+     (Functor.associator _ _ _).symm ≪≫
+     Functor.isoWhiskerRight (moduleDirectImageComparison G K L Λ) _ ≪≫
+     Functor.associator _ _ _
++
++/-- The original whole right-comparison has its two original component factors. -/
++theorem moduleDirectImageCompRightIso_hom_app (M : ModuleSheaf.{u₃, v₃, r, w} L Λ) :
++    (moduleDirectImageCompRightIso F G J K L Λ).hom.app M =
++      (moduleDirectImageComparison F J K Λ).hom.app
++          ((moduleDirectImage G K L Λ).obj M) ≫
++        (moduleValuedDirectImage F J K Λ).map
++          ((moduleDirectImageComparison G K L Λ).hom.app M) := by
++  simp [moduleDirectImageCompRightIso]
+ 
+ /-- Genuine ringed direct-image composition constructed from the actual site comparison. -/
+ def moduleDirectImageCompIso (e : F ⋙ G ≅ H) :
+--- before/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleEtaleExchangeMate.lean
++++ after/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleEtaleExchangeMate.lean
+@@ -55,14 +55,9 @@
+   intro N
+   have h := moduleDirectImageSquareIso_hom_valued Λ f (pullback.fst g f) g
+     (pullback.snd g f) pullback.condition N
+-  simp only [moduleDirectImageCompRightIso,
+-    ModuleCat.Sheaf.ConstantRing.moduleDirectImageCompRightIso,
+-    Iso.trans_hom, Iso.symm_hom,
+-    Functor.isoWhiskerLeft_hom, Functor.isoWhiskerRight_hom] at h
+-  dsimp only [Functor.category, NatTrans.vcomp, Functor.whiskerLeft,
+-    Functor.whiskerRight, Functor.associator, NatIso.ofComponents, Iso.refl] at h
+-  repeat' erw [NatTrans.comp_app] at h
+-  simpa only [Functor.comp_obj, Category.id_comp, Category.comp_id, Category.assoc] using h
++  simpa only [moduleDirectImageCompRightIso,
++    ModuleCat.Sheaf.ConstantRing.moduleDirectImageCompRightIso_hom_app,
++    Category.assoc] using h
+ 
+ /-- The genuine chart isomorphism is precisely the exchange of the original native adjunctions. -/
+ theorem moduleEtaleBaseChangeIso_hom :

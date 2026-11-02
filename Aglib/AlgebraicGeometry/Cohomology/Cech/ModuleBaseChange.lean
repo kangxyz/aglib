@@ -147,7 +147,8 @@ theorem moduleAdditiveCechGeometricMap_f_π
           (PreservesProduct.iso (Opens.map p.base) (fun k => U (a k))).inv.op := by
   unfold additiveCechGeometricMap moduleCoefficientPullback
   rw [Equiv.apply_symm_apply]
-  dsimp [additiveCechFunctor, modulePushforwardAddSheafIso, additiveCechPushforwardIso,
+  dsimp [additiveCechFunctor, TopCat.Sheaf.Cech.additiveCechFunctor,
+    modulePushforwardAddSheafIso, additiveCechPushforwardIso,
     cechComplexFunctor, FormalCoproduct.cochainComplexFunctor,
     FormalCoproduct.cosimplicialObjectFunctor, FormalCoproduct.evalOp,
     AlgebraicTopology.AlternatingCofaceMapComplex.map, cechCosimplicialChangeIso]

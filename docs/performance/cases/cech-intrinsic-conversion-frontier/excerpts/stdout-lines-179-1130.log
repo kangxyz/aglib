@@ -1,0 +1,952 @@
+              [Meta.isDefEq] [1.429870] ✅️ (A.H' n
+                              ⊤).str.toAddCommMonoid.toAddCommSemigroup.toAddCommMagma.toAdd =?= (A.H' n
+                              ⊤).str.toAddCommMonoid.toAddCommSemigroup.toAddCommMagma.toAdd
+                [Meta.isDefEq] [1.429735] ✅️ (A.H' n
+                                ⊤).str.toAddCommMonoid.toAddCommSemigroup.toAddCommMagma.1 =?= (A.H' n
+                                ⊤).str.toAddCommMonoid.toAddCommSemigroup.toAddCommMagma.1
+                  [Meta.isDefEq] [1.429167] ✅️ (A.H' n
+                                ⊤).str.toAddCommMonoid.toAddCommSemigroup.toAdd =?= (A.H' n
+                                ⊤).str.toAddCommMonoid.toAddCommSemigroup.toAdd
+                    [Meta.isDefEq] [1.429055] ✅️ (A.H' n
+                                    ⊤).str.toAddCommMonoid.toAddCommSemigroup.toAddSemigroup.1 =?= (A.H' n
+                                    ⊤).str.toAddCommMonoid.toAddCommSemigroup.toAddSemigroup.1
+                      [Meta.isDefEq] [1.428163] ✅️ (A.H' n
+                                  ⊤).str.toAddCommMonoid.toAdd =?= (A.H' n ⊤).str.toAddCommMonoid.toAdd
+                        [Meta.isDefEq] [1.428051] ✅️ (A.H' n
+                                      ⊤).str.toAddCommMonoid.toAddMonoid.2 =?= (A.H' n
+                                      ⊤).str.toAddCommMonoid.toAddMonoid.2
+                          [Meta.isDefEq] [1.417817] ✅️ (Function.Injective.addSemigroup ⇑Abelian.Ext.homEquiv ⋯
+                                  ⋯).toAdd =?= (Function.Injective.addSemigroup ⇑Abelian.Ext.homEquiv ⋯ ⋯).toAdd
+                            [Meta.isDefEq] [1.417709] ✅️ (Function.Injective.addSemigroup ⇑Abelian.Ext.homEquiv ⋯
+                                    ⋯).1 =?= (Function.Injective.addSemigroup ⇑Abelian.Ext.homEquiv ⋯ ⋯).1
+                              [Meta.isDefEq] [1.417138] ✅️ Abelian.Ext.homEquiv.add =?= Abelian.Ext.homEquiv.add
+                                [Meta.isDefEq] [1.416990] ✅️ {
+                                      add := fun x y =>
+                                        Abelian.Ext.homEquiv.invFun
+                                          (Abelian.Ext.homEquiv.toFun x +
+                                            Abelian.Ext.homEquiv.toFun
+                                              y) } =?= {
+                                      add := fun x y =>
+                                        Abelian.Ext.homEquiv.invFun
+                                          (Abelian.Ext.homEquiv.toFun x + Abelian.Ext.homEquiv.toFun y) }
+                                  [Meta.isDefEq] [1.415327] ✅️ fun x y =>
+                                        Abelian.Ext.homEquiv.invFun
+                                          (Abelian.Ext.homEquiv.toFun x +
+                                            Abelian.Ext.homEquiv.toFun
+                                              y) =?= fun x y =>
+                                        Abelian.Ext.homEquiv.invFun
+                                          (Abelian.Ext.homEquiv.toFun x + Abelian.Ext.homEquiv.toFun y)
+                                    [Meta.isDefEq] [1.414866] ✅️ Abelian.Ext.homEquiv.invFun
+                                          (Abelian.Ext.homEquiv.toFun x +
+                                            Abelian.Ext.homEquiv.toFun
+                                              y) =?= Abelian.Ext.homEquiv.invFun
+                                          (Abelian.Ext.homEquiv.toFun x + Abelian.Ext.homEquiv.toFun y)
+                                      [Meta.isDefEq] [1.414731] ✅️ Abelian.Ext.homEquiv.2
+                                            (Abelian.Ext.homEquiv.toFun x +
+                                              Abelian.Ext.homEquiv.toFun
+                                                y) =?= Abelian.Ext.homEquiv.2
+                                            (Abelian.Ext.homEquiv.toFun x + Abelian.Ext.homEquiv.toFun y)
+                                        [Meta.isDefEq] [1.413263] ✅️ (⇑(Localization.SmallHom.equiv
+                                                      (HomologicalComplex.quasiIso
+                                                        (Sheaf (Opens.grothendieckTopology ↥X) AddCommGrpCat)
+                                                        (ComplexShape.up ℤ))
+                                                      DerivedCategory.Q).symm ∘
+                                                ⇑((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                        ((CochainComplex.singleFunctor
+                                                              (Sheaf (Opens.grothendieckTopology ↥X) AddCommGrpCat)
+                                                              0).obj
+                                                          A)).homToEquiv.symm)
+                                              (Abelian.Ext.homEquiv.toFun x +
+                                                Abelian.Ext.homEquiv.toFun
+                                                  y) =?= (⇑(Localization.SmallHom.equiv
+                                                      (HomologicalComplex.quasiIso
+                                                        (Sheaf (Opens.grothendieckTopology ↑X.toTopCat) AddCommGrpCat)
+                                                        (ComplexShape.up ℤ))
+                                                      DerivedCategory.Q).symm ∘
+                                                ⇑((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                        ((CochainComplex.singleFunctor
+                                                              (Sheaf (Opens.grothendieckTopology ↑X.toTopCat)
+                                                                AddCommGrpCat)
+                                                              0).obj
+                                                          A)).homToEquiv.symm)
+                                              (Abelian.Ext.homEquiv.toFun x + Abelian.Ext.homEquiv.toFun y)
+                                          [Meta.isDefEq] [1.413146] ✅️ (Localization.SmallHom.equiv
+                                                    (HomologicalComplex.quasiIso
+                                                      (Sheaf (Opens.grothendieckTopology ↥X) AddCommGrpCat)
+                                                      (ComplexShape.up ℤ))
+                                                    DerivedCategory.Q).symm
+                                                (((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                        ((CochainComplex.singleFunctor
+                                                              (Sheaf (Opens.grothendieckTopology ↥X) AddCommGrpCat)
+                                                              0).obj
+                                                          A)).homToEquiv.symm
+                                                  (Abelian.Ext.homEquiv.toFun x +
+                                                    Abelian.Ext.homEquiv.toFun
+                                                      y)) =?= (Localization.SmallHom.equiv
+                                                    (HomologicalComplex.quasiIso
+                                                      (Sheaf (Opens.grothendieckTopology ↑X.toTopCat) AddCommGrpCat)
+                                                      (ComplexShape.up ℤ))
+                                                    DerivedCategory.Q).symm
+                                                (((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                        ((CochainComplex.singleFunctor
+                                                              (Sheaf (Opens.grothendieckTopology ↑X.toTopCat)
+                                                                AddCommGrpCat)
+                                                              0).obj
+                                                          A)).homToEquiv.symm
+                                                  (Abelian.Ext.homEquiv.toFun x + Abelian.Ext.homEquiv.toFun y))
+                                            [Meta.isDefEq] [1.412983] ✅️ EquivLike.toFunLike.1
+                                                  (Localization.SmallHom.equiv
+                                                      (HomologicalComplex.quasiIso
+                                                        (Sheaf (Opens.grothendieckTopology ↥X) AddCommGrpCat)
+                                                        (ComplexShape.up ℤ))
+                                                      DerivedCategory.Q).symm
+                                                  (((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                          ((CochainComplex.singleFunctor
+                                                                (Sheaf (Opens.grothendieckTopology ↥X) AddCommGrpCat)
+                                                                0).obj
+                                                            A)).homToEquiv.symm
+                                                    (Abelian.Ext.homEquiv.toFun x +
+                                                      Abelian.Ext.homEquiv.toFun
+                                                        y)) =?= EquivLike.toFunLike.1
+                                                  (Localization.SmallHom.equiv
+                                                      (HomologicalComplex.quasiIso
+                                                        (Sheaf (Opens.grothendieckTopology ↑X.toTopCat) AddCommGrpCat)
+                                                        (ComplexShape.up ℤ))
+                                                      DerivedCategory.Q).symm
+                                                  (((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                          ((CochainComplex.singleFunctor
+                                                                (Sheaf (Opens.grothendieckTopology ↑X.toTopCat)
+                                                                  AddCommGrpCat)
+                                                                0).obj
+                                                            A)).homToEquiv.symm
+                                                    (Abelian.Ext.homEquiv.toFun x + Abelian.Ext.homEquiv.toFun y))
+                                              [Meta.isDefEq] [1.412329] ✅️ EquivLike.coe
+                                                    (Localization.SmallHom.equiv
+                                                        (HomologicalComplex.quasiIso
+                                                          (Sheaf (Opens.grothendieckTopology ↥X) AddCommGrpCat)
+                                                          (ComplexShape.up ℤ))
+                                                        DerivedCategory.Q).symm
+                                                    (((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                            ((CochainComplex.singleFunctor
+                                                                  (Sheaf (Opens.grothendieckTopology ↥X) AddCommGrpCat)
+                                                                  0).obj
+                                                              A)).homToEquiv.symm
+                                                      (Abelian.Ext.homEquiv.toFun x +
+                                                        Abelian.Ext.homEquiv.toFun
+                                                          y)) =?= EquivLike.coe
+                                                    (Localization.SmallHom.equiv
+                                                        (HomologicalComplex.quasiIso
+                                                          (Sheaf (Opens.grothendieckTopology ↑X.toTopCat) AddCommGrpCat)
+                                                          (ComplexShape.up ℤ))
+                                                        DerivedCategory.Q).symm
+                                                    (((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                            ((CochainComplex.singleFunctor
+                                                                  (Sheaf (Opens.grothendieckTopology ↑X.toTopCat)
+                                                                    AddCommGrpCat)
+                                                                  0).obj
+                                                              A)).homToEquiv.symm
+                                                      (Abelian.Ext.homEquiv.toFun x + Abelian.Ext.homEquiv.toFun y))
+                                                [Meta.isDefEq] [1.412211] ✅️ Equiv.instEquivLike.1
+                                                      (Localization.SmallHom.equiv
+                                                          (HomologicalComplex.quasiIso
+                                                            (Sheaf (Opens.grothendieckTopology ↥X) AddCommGrpCat)
+                                                            (ComplexShape.up ℤ))
+                                                          DerivedCategory.Q).symm
+                                                      (((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                              ((CochainComplex.singleFunctor
+                                                                    (Sheaf (Opens.grothendieckTopology ↥X)
+                                                                      AddCommGrpCat)
+                                                                    0).obj
+                                                                A)).homToEquiv.symm
+                                                        (Abelian.Ext.homEquiv.toFun x +
+                                                          Abelian.Ext.homEquiv.toFun
+                                                            y)) =?= Equiv.instEquivLike.1
+                                                      (Localization.SmallHom.equiv
+                                                          (HomologicalComplex.quasiIso
+                                                            (Sheaf (Opens.grothendieckTopology ↑X.toTopCat)
+                                                              AddCommGrpCat)
+                                                            (ComplexShape.up ℤ))
+                                                          DerivedCategory.Q).symm
+                                                      (((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                              ((CochainComplex.singleFunctor
+                                                                    (Sheaf (Opens.grothendieckTopology ↑X.toTopCat)
+                                                                      AddCommGrpCat)
+                                                                    0).obj
+                                                                A)).homToEquiv.symm
+                                                        (Abelian.Ext.homEquiv.toFun x + Abelian.Ext.homEquiv.toFun y))
+                                                  [Meta.isDefEq] [1.411590] ✅️ (Localization.SmallHom.equiv
+                                                              (HomologicalComplex.quasiIso
+                                                                (Sheaf (Opens.grothendieckTopology ↥X) AddCommGrpCat)
+                                                                (ComplexShape.up ℤ))
+                                                              DerivedCategory.Q).symm.toFun
+                                                        (((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                                ((CochainComplex.singleFunctor
+                                                                      (Sheaf (Opens.grothendieckTopology ↥X)
+                                                                        AddCommGrpCat)
+                                                                      0).obj
+                                                                  A)).homToEquiv.symm
+                                                          (Abelian.Ext.homEquiv.toFun x +
+                                                            Abelian.Ext.homEquiv.toFun
+                                                              y)) =?= (Localization.SmallHom.equiv
+                                                              (HomologicalComplex.quasiIso
+                                                                (Sheaf (Opens.grothendieckTopology ↑X.toTopCat)
+                                                                  AddCommGrpCat)
+                                                                (ComplexShape.up ℤ))
+                                                              DerivedCategory.Q).symm.toFun
+                                                        (((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                                ((CochainComplex.singleFunctor
+                                                                      (Sheaf (Opens.grothendieckTopology ↑X.toTopCat)
+                                                                        AddCommGrpCat)
+                                                                      0).obj
+                                                                  A)).homToEquiv.symm
+                                                          (Abelian.Ext.homEquiv.toFun x + Abelian.Ext.homEquiv.toFun y))
+                                                    [Meta.isDefEq] [1.411477] ✅️ (Localization.SmallHom.equiv
+                                                                (HomologicalComplex.quasiIso
+                                                                  (Sheaf (Opens.grothendieckTopology ↥X) AddCommGrpCat)
+                                                                  (ComplexShape.up ℤ))
+                                                                DerivedCategory.Q).symm.1
+                                                          (((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                                  ((CochainComplex.singleFunctor
+                                                                        (Sheaf (Opens.grothendieckTopology ↥X)
+                                                                          AddCommGrpCat)
+                                                                        0).obj
+                                                                    A)).homToEquiv.symm
+                                                            (Abelian.Ext.homEquiv.toFun x +
+                                                              Abelian.Ext.homEquiv.toFun
+                                                                y)) =?= (Localization.SmallHom.equiv
+                                                                (HomologicalComplex.quasiIso
+                                                                  (Sheaf (Opens.grothendieckTopology ↑X.toTopCat)
+                                                                    AddCommGrpCat)
+                                                                  (ComplexShape.up ℤ))
+                                                                DerivedCategory.Q).symm.1
+                                                          (((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                                  ((CochainComplex.singleFunctor
+                                                                        (Sheaf (Opens.grothendieckTopology ↑X.toTopCat)
+                                                                          AddCommGrpCat)
+                                                                        0).obj
+                                                                    A)).homToEquiv.symm
+                                                            (Abelian.Ext.homEquiv.toFun x +
+                                                              Abelian.Ext.homEquiv.toFun y))
+                                                      [Meta.isDefEq] [1.410803] ✅️ (Localization.SmallHom.equiv
+                                                                (HomologicalComplex.quasiIso
+                                                                  (Sheaf (Opens.grothendieckTopology ↥X) AddCommGrpCat)
+                                                                  (ComplexShape.up ℤ))
+                                                                DerivedCategory.Q).invFun
+                                                            (((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                                    ((CochainComplex.singleFunctor
+                                                                          (Sheaf (Opens.grothendieckTopology ↥X)
+                                                                            AddCommGrpCat)
+                                                                          0).obj
+                                                                      A)).homToEquiv.symm
+                                                              (Abelian.Ext.homEquiv.toFun x +
+                                                                Abelian.Ext.homEquiv.toFun
+                                                                  y)) =?= (Localization.SmallHom.equiv
+                                                                (HomologicalComplex.quasiIso
+                                                                  (Sheaf (Opens.grothendieckTopology ↑X.toTopCat)
+                                                                    AddCommGrpCat)
+                                                                  (ComplexShape.up ℤ))
+                                                                DerivedCategory.Q).invFun
+                                                            (((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                                    ((CochainComplex.singleFunctor
+                                                                          (Sheaf
+                                                                            (Opens.grothendieckTopology ↑X.toTopCat)
+                                                                            AddCommGrpCat)
+                                                                          0).obj
+                                                                      A)).homToEquiv.symm
+                                                              (Abelian.Ext.homEquiv.toFun x +
+                                                                Abelian.Ext.homEquiv.toFun y))
+                                                        [Meta.isDefEq] [1.410703] ✅️ (Localization.SmallHom.equiv
+                                                                  (HomologicalComplex.quasiIso
+                                                                    (Sheaf (Opens.grothendieckTopology ↥X)
+                                                                      AddCommGrpCat)
+                                                                    (ComplexShape.up ℤ))
+                                                                  DerivedCategory.Q).2
+                                                              (((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                                      ((CochainComplex.singleFunctor
+                                                                            (Sheaf (Opens.grothendieckTopology ↥X)
+                                                                              AddCommGrpCat)
+                                                                            0).obj
+                                                                        A)).homToEquiv.symm
+                                                                (Abelian.Ext.homEquiv.toFun x +
+                                                                  Abelian.Ext.homEquiv.toFun
+                                                                    y)) =?= (Localization.SmallHom.equiv
+                                                                  (HomologicalComplex.quasiIso
+                                                                    (Sheaf (Opens.grothendieckTopology ↑X.toTopCat)
+                                                                      AddCommGrpCat)
+                                                                    (ComplexShape.up ℤ))
+                                                                  DerivedCategory.Q).2
+                                                              (((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                                      ((CochainComplex.singleFunctor
+                                                                            (Sheaf
+                                                                              (Opens.grothendieckTopology ↑X.toTopCat)
+                                                                              AddCommGrpCat)
+                                                                            0).obj
+                                                                        A)).homToEquiv.symm
+                                                                (Abelian.Ext.homEquiv.toFun x +
+                                                                  Abelian.Ext.homEquiv.toFun y))
+                                                          [Meta.isDefEq] [1.409668] ✅️ (⇑(equivShrink
+                                                                          ((HomologicalComplex.quasiIso
+                                                                                    (Sheaf
+                                                                                      (Opens.grothendieckTopology ↥X)
+                                                                                      AddCommGrpCat)
+                                                                                    (ComplexShape.up ℤ)).Q.obj
+                                                                              ((CochainComplex.singleFunctor
+                                                                                    (Sheaf
+                                                                                      (Opens.grothendieckTopology ↥X)
+                                                                                      AddCommGrpCat)
+                                                                                    0).obj
+                                                                                (unop
+                                                                                  ((yoneda ⋙
+                                                                                          (Functor.whiskeringRight
+                                                                                                  (TopologicalSpace.Opens
+                                                                                                      ↥X)ᵒᵖ
+                                                                                                  (Type u)
+                                                                                                  AddCommGrpCat).obj
+                                                                                              AddCommGrpCat.free ⋙
+                                                                                            presheafToSheaf
+                                                                                              (Opens.grothendieckTopology
+                                                                                                ↥X)
+                                                                                              AddCommGrpCat).op.obj
+                                                                                    (op ⊤)))) ⟶
+                                                                            (HomologicalComplex.quasiIso
+                                                                                    (Sheaf
+                                                                                      (Opens.grothendieckTopology ↥X)
+                                                                                      AddCommGrpCat)
+                                                                                    (ComplexShape.up ℤ)).Q.obj
+                                                                              ((shiftFunctor
+                                                                                    (HomologicalComplex
+                                                                                      (Sheaf
+                                                                                        (Opens.grothendieckTopology ↥X)
+                                                                                        AddCommGrpCat)
+                                                                                      (ComplexShape.up ℤ))
+                                                                                    ↑n).obj
+                                                                                ((CochainComplex.singleFunctor
+                                                                                      (Sheaf
+                                                                                        (Opens.grothendieckTopology ↥X)
+                                                                                        AddCommGrpCat)
+                                                                                      0).obj
+                                                                                  A)))).symm.symm ∘
+                                                                  ⇑(Localization.homEquiv
+                                                                        (HomologicalComplex.quasiIso
+                                                                          (Sheaf (Opens.grothendieckTopology ↥X)
+                                                                            AddCommGrpCat)
+                                                                          (ComplexShape.up ℤ))
+                                                                        (HomologicalComplex.quasiIso
+                                                                            (Sheaf (Opens.grothendieckTopology ↥X)
+                                                                              AddCommGrpCat)
+                                                                            (ComplexShape.up ℤ)).Q
+                                                                        DerivedCategory.Q).symm)
+                                                                (((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                                        ((CochainComplex.singleFunctor
+                                                                              (Sheaf (Opens.grothendieckTopology ↥X)
+                                                                                AddCommGrpCat)
+                                                                              0).obj
+                                                                          A)).homToEquiv.symm
+                                                                  (Abelian.Ext.homEquiv.toFun x +
+                                                                    Abelian.Ext.homEquiv.toFun
+                                                                      y)) =?= (⇑(equivShrink
+                                                                          ((HomologicalComplex.quasiIso
+                                                                                    (Sheaf
+                                                                                      (Opens.grothendieckTopology
+                                                                                        ↑X.toTopCat)
+                                                                                      AddCommGrpCat)
+                                                                                    (ComplexShape.up ℤ)).Q.obj
+                                                                              ((CochainComplex.singleFunctor
+                                                                                    (Sheaf
+                                                                                      (Opens.grothendieckTopology
+                                                                                        ↑X.toTopCat)
+                                                                                      AddCommGrpCat)
+                                                                                    0).obj
+                                                                                (unop
+                                                                                  ((yoneda ⋙
+                                                                                          (Functor.whiskeringRight
+                                                                                                  (TopologicalSpace.Opens
+                                                                                                      ↑X.toTopCat)ᵒᵖ
+                                                                                                  (Type u)
+                                                                                                  AddCommGrpCat).obj
+                                                                                              AddCommGrpCat.free ⋙
+                                                                                            presheafToSheaf
+                                                                                              (Opens.grothendieckTopology
+                                                                                                ↑X.toTopCat)
+                                                                                              AddCommGrpCat).op.obj
+                                                                                    (op ⊤)))) ⟶
+                                                                            (HomologicalComplex.quasiIso
+                                                                                    (Sheaf
+                                                                                      (Opens.grothendieckTopology
+                                                                                        ↑X.toTopCat)
+                                                                                      AddCommGrpCat)
+                                                                                    (ComplexShape.up ℤ)).Q.obj
+                                                                              ((shiftFunctor
+                                                                                    (HomologicalComplex
+                                                                                      (Sheaf
+                                                                                        (Opens.grothendieckTopology
+                                                                                          ↑X.toTopCat)
+                                                                                        AddCommGrpCat)
+                                                                                      (ComplexShape.up ℤ))
+                                                                                    ↑n).obj
+                                                                                ((CochainComplex.singleFunctor
+                                                                                      (Sheaf
+                                                                                        (Opens.grothendieckTopology
+                                                                                          ↑X.toTopCat)
+                                                                                        AddCommGrpCat)
+                                                                                      0).obj
+                                                                                  A)))).symm.symm ∘
+                                                                  ⇑(Localization.homEquiv
+                                                                        (HomologicalComplex.quasiIso
+                                                                          (Sheaf
+                                                                            (Opens.grothendieckTopology ↑X.toTopCat)
+                                                                            AddCommGrpCat)
+                                                                          (ComplexShape.up ℤ))
+                                                                        (HomologicalComplex.quasiIso
+                                                                            (Sheaf
+                                                                              (Opens.grothendieckTopology ↑X.toTopCat)
+                                                                              AddCommGrpCat)
+                                                                            (ComplexShape.up ℤ)).Q
+                                                                        DerivedCategory.Q).symm)
+                                                                (((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                                        ((CochainComplex.singleFunctor
+                                                                              (Sheaf
+                                                                                (Opens.grothendieckTopology ↑X.toTopCat)
+                                                                                AddCommGrpCat)
+                                                                              0).obj
+                                                                          A)).homToEquiv.symm
+                                                                  (Abelian.Ext.homEquiv.toFun x +
+                                                                    Abelian.Ext.homEquiv.toFun y))
+                                                            [Meta.isDefEq] [1.409561] ✅️ (equivShrink
+                                                                        ((HomologicalComplex.quasiIso
+                                                                                  (Sheaf (Opens.grothendieckTopology ↥X)
+                                                                                    AddCommGrpCat)
+                                                                                  (ComplexShape.up ℤ)).Q.obj
+                                                                            ((CochainComplex.singleFunctor
+                                                                                  (Sheaf (Opens.grothendieckTopology ↥X)
+                                                                                    AddCommGrpCat)
+                                                                                  0).obj
+                                                                              (unop
+                                                                                ((yoneda ⋙
+                                                                                        (Functor.whiskeringRight
+                                                                                                (TopologicalSpace.Opens
+                                                                                                    ↥X)ᵒᵖ
+                                                                                                (Type u)
+                                                                                                AddCommGrpCat).obj
+                                                                                            AddCommGrpCat.free ⋙
+                                                                                          presheafToSheaf
+                                                                                            (Opens.grothendieckTopology
+                                                                                              ↥X)
+                                                                                            AddCommGrpCat).op.obj
+                                                                                  (op ⊤)))) ⟶
+                                                                          (HomologicalComplex.quasiIso
+                                                                                  (Sheaf (Opens.grothendieckTopology ↥X)
+                                                                                    AddCommGrpCat)
+                                                                                  (ComplexShape.up ℤ)).Q.obj
+                                                                            ((shiftFunctor
+                                                                                  (HomologicalComplex
+                                                                                    (Sheaf
+                                                                                      (Opens.grothendieckTopology ↥X)
+                                                                                      AddCommGrpCat)
+                                                                                    (ComplexShape.up ℤ))
+                                                                                  ↑n).obj
+                                                                              ((CochainComplex.singleFunctor
+                                                                                    (Sheaf
+                                                                                      (Opens.grothendieckTopology ↥X)
+                                                                                      AddCommGrpCat)
+                                                                                    0).obj
+                                                                                A)))).symm.symm
+                                                                  ((Localization.homEquiv
+                                                                        (HomologicalComplex.quasiIso
+                                                                          (Sheaf (Opens.grothendieckTopology ↥X)
+                                                                            AddCommGrpCat)
+                                                                          (ComplexShape.up ℤ))
+                                                                        (HomologicalComplex.quasiIso
+                                                                            (Sheaf (Opens.grothendieckTopology ↥X)
+                                                                              AddCommGrpCat)
+                                                                            (ComplexShape.up ℤ)).Q
+                                                                        DerivedCategory.Q).symm
+                                                                    (((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                                            ((CochainComplex.singleFunctor
+                                                                                  (Sheaf (Opens.grothendieckTopology ↥X)
+                                                                                    AddCommGrpCat)
+                                                                                  0).obj
+                                                                              A)).homToEquiv.symm
+                                                                      (Abelian.Ext.homEquiv.toFun x +
+                                                                        Abelian.Ext.homEquiv.toFun
+                                                                          y))) =?= (equivShrink
+                                                                        ((HomologicalComplex.quasiIso
+                                                                                  (Sheaf
+                                                                                    (Opens.grothendieckTopology
+                                                                                      ↑X.toTopCat)
+                                                                                    AddCommGrpCat)
+                                                                                  (ComplexShape.up ℤ)).Q.obj
+                                                                            ((CochainComplex.singleFunctor
+                                                                                  (Sheaf
+                                                                                    (Opens.grothendieckTopology
+                                                                                      ↑X.toTopCat)
+                                                                                    AddCommGrpCat)
+                                                                                  0).obj
+                                                                              (unop
+                                                                                ((yoneda ⋙
+                                                                                        (Functor.whiskeringRight
+                                                                                                (TopologicalSpace.Opens
+                                                                                                    ↑X.toTopCat)ᵒᵖ
+                                                                                                (Type u)
+                                                                                                AddCommGrpCat).obj
+                                                                                            AddCommGrpCat.free ⋙
+                                                                                          presheafToSheaf
+                                                                                            (Opens.grothendieckTopology
+                                                                                              ↑X.toTopCat)
+                                                                                            AddCommGrpCat).op.obj
+                                                                                  (op ⊤)))) ⟶
+                                                                          (HomologicalComplex.quasiIso
+                                                                                  (Sheaf
+                                                                                    (Opens.grothendieckTopology
+                                                                                      ↑X.toTopCat)
+                                                                                    AddCommGrpCat)
+                                                                                  (ComplexShape.up ℤ)).Q.obj
+                                                                            ((shiftFunctor
+                                                                                  (HomologicalComplex
+                                                                                    (Sheaf
+                                                                                      (Opens.grothendieckTopology
+                                                                                        ↑X.toTopCat)
+                                                                                      AddCommGrpCat)
+                                                                                    (ComplexShape.up ℤ))
+                                                                                  ↑n).obj
+                                                                              ((CochainComplex.singleFunctor
+                                                                                    (Sheaf
+                                                                                      (Opens.grothendieckTopology
+                                                                                        ↑X.toTopCat)
+                                                                                      AddCommGrpCat)
+                                                                                    0).obj
+                                                                                A)))).symm.symm
+                                                                  ((Localization.homEquiv
+                                                                        (HomologicalComplex.quasiIso
+                                                                          (Sheaf
+                                                                            (Opens.grothendieckTopology ↑X.toTopCat)
+                                                                            AddCommGrpCat)
+                                                                          (ComplexShape.up ℤ))
+                                                                        (HomologicalComplex.quasiIso
+                                                                            (Sheaf
+                                                                              (Opens.grothendieckTopology ↑X.toTopCat)
+                                                                              AddCommGrpCat)
+                                                                            (ComplexShape.up ℤ)).Q
+                                                                        DerivedCategory.Q).symm
+                                                                    (((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                                            ((CochainComplex.singleFunctor
+                                                                                  (Sheaf
+                                                                                    (Opens.grothendieckTopology
+                                                                                      ↑X.toTopCat)
+                                                                                    AddCommGrpCat)
+                                                                                  0).obj
+                                                                              A)).homToEquiv.symm
+                                                                      (Abelian.Ext.homEquiv.toFun x +
+                                                                        Abelian.Ext.homEquiv.toFun y)))
+                                                              [Meta.isDefEq] [1.409441] ✅️ EquivLike.toFunLike.1
+                                                                    (equivShrink
+                                                                          ((HomologicalComplex.quasiIso
+                                                                                    (Sheaf
+                                                                                      (Opens.grothendieckTopology ↥X)
+                                                                                      AddCommGrpCat)
+                                                                                    (ComplexShape.up ℤ)).Q.obj
+                                                                              ((CochainComplex.singleFunctor
+                                                                                    (Sheaf
+                                                                                      (Opens.grothendieckTopology ↥X)
+                                                                                      AddCommGrpCat)
+                                                                                    0).obj
+                                                                                (unop
+                                                                                  ((yoneda ⋙
+                                                                                          (Functor.whiskeringRight
+                                                                                                  (TopologicalSpace.Opens
+                                                                                                      ↥X)ᵒᵖ
+                                                                                                  (Type u)
+                                                                                                  AddCommGrpCat).obj
+                                                                                              AddCommGrpCat.free ⋙
+                                                                                            presheafToSheaf
+                                                                                              (Opens.grothendieckTopology
+                                                                                                ↥X)
+                                                                                              AddCommGrpCat).op.obj
+                                                                                    (op ⊤)))) ⟶
+                                                                            (HomologicalComplex.quasiIso
+                                                                                    (Sheaf
+                                                                                      (Opens.grothendieckTopology ↥X)
+                                                                                      AddCommGrpCat)
+                                                                                    (ComplexShape.up ℤ)).Q.obj
+                                                                              ((shiftFunctor
+                                                                                    (HomologicalComplex
+                                                                                      (Sheaf
+                                                                                        (Opens.grothendieckTopology ↥X)
+                                                                                        AddCommGrpCat)
+                                                                                      (ComplexShape.up ℤ))
+                                                                                    ↑n).obj
+                                                                                ((CochainComplex.singleFunctor
+                                                                                      (Sheaf
+                                                                                        (Opens.grothendieckTopology ↥X)
+                                                                                        AddCommGrpCat)
+                                                                                      0).obj
+                                                                                  A)))).symm.symm
+                                                                    ((Localization.homEquiv
+                                                                          (HomologicalComplex.quasiIso
+                                                                            (Sheaf (Opens.grothendieckTopology ↥X)
+                                                                              AddCommGrpCat)
+                                                                            (ComplexShape.up ℤ))
+                                                                          (HomologicalComplex.quasiIso
+                                                                              (Sheaf (Opens.grothendieckTopology ↥X)
+                                                                                AddCommGrpCat)
+                                                                              (ComplexShape.up ℤ)).Q
+                                                                          DerivedCategory.Q).symm
+                                                                      (((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                                              ((CochainComplex.singleFunctor
+                                                                                    (Sheaf
+                                                                                      (Opens.grothendieckTopology ↥X)
+                                                                                      AddCommGrpCat)
+                                                                                    0).obj
+                                                                                A)).homToEquiv.symm
+                                                                        (Abelian.Ext.homEquiv.toFun x +
+                                                                          Abelian.Ext.homEquiv.toFun
+                                                                            y))) =?= EquivLike.toFunLike.1
+                                                                    (equivShrink
+                                                                          ((HomologicalComplex.quasiIso
+                                                                                    (Sheaf
+                                                                                      (Opens.grothendieckTopology
+                                                                                        ↑X.toTopCat)
+                                                                                      AddCommGrpCat)
+                                                                                    (ComplexShape.up ℤ)).Q.obj
+                                                                              ((CochainComplex.singleFunctor
+                                                                                    (Sheaf
+                                                                                      (Opens.grothendieckTopology
+                                                                                        ↑X.toTopCat)
+                                                                                      AddCommGrpCat)
+                                                                                    0).obj
+                                                                                (unop
+                                                                                  ((yoneda ⋙
+                                                                                          (Functor.whiskeringRight
+                                                                                                  (TopologicalSpace.Opens
+                                                                                                      ↑X.toTopCat)ᵒᵖ
+                                                                                                  (Type u)
+                                                                                                  AddCommGrpCat).obj
+                                                                                              AddCommGrpCat.free ⋙
+                                                                                            presheafToSheaf
+                                                                                              (Opens.grothendieckTopology
+                                                                                                ↑X.toTopCat)
+                                                                                              AddCommGrpCat).op.obj
+                                                                                    (op ⊤)))) ⟶
+                                                                            (HomologicalComplex.quasiIso
+                                                                                    (Sheaf
+                                                                                      (Opens.grothendieckTopology
+                                                                                        ↑X.toTopCat)
+                                                                                      AddCommGrpCat)
+                                                                                    (ComplexShape.up ℤ)).Q.obj
+                                                                              ((shiftFunctor
+                                                                                    (HomologicalComplex
+                                                                                      (Sheaf
+                                                                                        (Opens.grothendieckTopology
+                                                                                          ↑X.toTopCat)
+                                                                                        AddCommGrpCat)
+                                                                                      (ComplexShape.up ℤ))
+                                                                                    ↑n).obj
+                                                                                ((CochainComplex.singleFunctor
+                                                                                      (Sheaf
+                                                                                        (Opens.grothendieckTopology
+                                                                                          ↑X.toTopCat)
+                                                                                        AddCommGrpCat)
+                                                                                      0).obj
+                                                                                  A)))).symm.symm
+                                                                    ((Localization.homEquiv
+                                                                          (HomologicalComplex.quasiIso
+                                                                            (Sheaf
+                                                                              (Opens.grothendieckTopology ↑X.toTopCat)
+                                                                              AddCommGrpCat)
+                                                                            (ComplexShape.up ℤ))
+                                                                          (HomologicalComplex.quasiIso
+                                                                              (Sheaf
+                                                                                (Opens.grothendieckTopology ↑X.toTopCat)
+                                                                                AddCommGrpCat)
+                                                                              (ComplexShape.up ℤ)).Q
+                                                                          DerivedCategory.Q).symm
+                                                                      (((Functor.commShiftIso DerivedCategory.Q ↑n).app
+                                                                              ((CochainComplex.singleFunctor
+                                                                                    (Sheaf
+                                                                                      (Opens.grothendieckTopology
+                                                                                        ↑X.toTopCat)
+                                                                                      AddCommGrpCat)
+                                                                                    0).obj
+                                                                                A)).homToEquiv.symm
+                                                                        (Abelian.Ext.homEquiv.toFun x +
+                                                                          Abelian.Ext.homEquiv.toFun y)))
+                                                                [Meta.isDefEq] [1.408869] ✅️ EquivLike.coe
+                                                                      (equivShrink
+                                                                            ((HomologicalComplex.quasiIso
+                                                                                      (Sheaf
+                                                                                        (Opens.grothendieckTopology ↥X)
+                                                                                        AddCommGrpCat)
+                                                                                      (ComplexShape.up ℤ)).Q.obj
+                                                                                ((CochainComplex.singleFunctor
+                                                                                      (Sheaf
+                                                                                        (Opens.grothendieckTopology ↥X)
+                                                                                        AddCommGrpCat)
+                                                                                      0).obj
+                                                                                  (unop
+                                                                                    ((yoneda ⋙
+                                                                                            (Functor.whiskeringRight
+                                                                                                    (TopologicalSpace.Opens
+                                                                                                        ↥X)ᵒᵖ
+                                                                                                    (Type u)
+                                                                                                    AddCommGrpCat).obj
+                                                                                                AddCommGrpCat.free ⋙
+                                                                                              presheafToSheaf
+                                                                                                (Opens.grothendieckTopology
+                                                                                                  ↥X)
+                                                                                                AddCommGrpCat).op.obj
+                                                                                      (op ⊤)))) ⟶
+                                                                              (HomologicalComplex.quasiIso
+                                                                                      (Sheaf
+                                                                                        (Opens.grothendieckTopology ↥X)
+                                                                                        AddCommGrpCat)
+                                                                                      (ComplexShape.up ℤ)).Q.obj
+                                                                                ((shiftFunctor
+                                                                                      (HomologicalComplex
+                                                                                        (Sheaf
+                                                                                          (Opens.grothendieckTopology
+                                                                                            ↥X)
+                                                                                          AddCommGrpCat)
+                                                                                        (ComplexShape.up ℤ))
+                                                                                      ↑n).obj
+                                                                                  ((CochainComplex.singleFunctor
+                                                                                        (Sheaf
+                                                                                          (Opens.grothendieckTopology
+                                                                                            ↥X)
+                                                                                          AddCommGrpCat)
+                                                                                        0).obj
+                                                                                    A)))).symm.symm
+                                                                      ((Localization.homEquiv
+                                                                            (HomologicalComplex.quasiIso
+                                                                              (Sheaf (Opens.grothendieckTopology ↥X)
+                                                                                AddCommGrpCat)
+                                                                              (ComplexShape.up ℤ))
+                                                                            (HomologicalComplex.quasiIso
+                                                                                (Sheaf (Opens.grothendieckTopology ↥X)
+                                                                                  AddCommGrpCat)
+                                                                                (ComplexShape.up ℤ)).Q
+                                                                            DerivedCategory.Q).symm
+                                                                        (((Functor.commShiftIso DerivedCategory.Q
+                                                                                    ↑n).app
+                                                                                ((CochainComplex.singleFunctor
+                                                                                      (Sheaf
+                                                                                        (Opens.grothendieckTopology ↥X)
+                                                                                        AddCommGrpCat)
+                                                                                      0).obj
+                                                                                  A)).homToEquiv.symm
+                                                                          (Abelian.Ext.homEquiv.toFun x +
+                                                                            Abelian.Ext.homEquiv.toFun
+                                                                              y))) =?= EquivLike.coe
+                                                                      (equivShrink
+                                                                            ((HomologicalComplex.quasiIso
+                                                                                      (Sheaf
+                                                                                        (Opens.grothendieckTopology
+                                                                                          ↑X.toTopCat)
+                                                                                        AddCommGrpCat)
+                                                                                      (ComplexShape.up ℤ)).Q.obj
+                                                                                ((CochainComplex.singleFunctor
+                                                                                      (Sheaf
+                                                                                        (Opens.grothendieckTopology
+                                                                                          ↑X.toTopCat)
+                                                                                        AddCommGrpCat)
+                                                                                      0).obj
+                                                                                  (unop
+                                                                                    ((yoneda ⋙
+                                                                                            (Functor.whiskeringRight
+                                                                                                    (TopologicalSpace.Opens
+                                                                                                        ↑X.toTopCat)ᵒᵖ
+                                                                                                    (Type u)
+                                                                                                    AddCommGrpCat).obj
+                                                                                                AddCommGrpCat.free ⋙
+                                                                                              presheafToSheaf
+                                                                                                (Opens.grothendieckTopology
+                                                                                                  ↑X.toTopCat)
+                                                                                                AddCommGrpCat).op.obj
+                                                                                      (op ⊤)))) ⟶
+                                                                              (HomologicalComplex.quasiIso
+                                                                                      (Sheaf
+                                                                                        (Opens.grothendieckTopology
+                                                                                          ↑X.toTopCat)
+                                                                                        AddCommGrpCat)
+                                                                                      (ComplexShape.up ℤ)).Q.obj
+                                                                                ((shiftFunctor
+                                                                                      (HomologicalComplex
+                                                                                        (Sheaf
+                                                                                          (Opens.grothendieckTopology
+                                                                                            ↑X.toTopCat)
+                                                                                          AddCommGrpCat)
+                                                                                        (ComplexShape.up ℤ))
+                                                                                      ↑n).obj
+                                                                                  ((CochainComplex.singleFunctor
+                                                                                        (Sheaf
+                                                                                          (Opens.grothendieckTopology
+                                                                                            ↑X.toTopCat)
+                                                                                          AddCommGrpCat)
+                                                                                        0).obj
+                                                                                    A)))).symm.symm
+                                                                      ((Localization.homEquiv
+                                                                            (HomologicalComplex.quasiIso
+                                                                              (Sheaf
+                                                                                (Opens.grothendieckTopology ↑X.toTopCat)
+                                                                                AddCommGrpCat)
+                                                                              (ComplexShape.up ℤ))
+                                                                            (HomologicalComplex.quasiIso
+                                                                                (Sheaf
+                                                                                  (Opens.grothendieckTopology
+                                                                                    ↑X.toTopCat)
+                                                                                  AddCommGrpCat)
+                                                                                (ComplexShape.up ℤ)).Q
+                                                                            DerivedCategory.Q).symm
+                                                                        (((Functor.commShiftIso DerivedCategory.Q
+                                                                                    ↑n).app
+                                                                                ((CochainComplex.singleFunctor
+                                                                                      (Sheaf
+                                                                                        (Opens.grothendieckTopology
+                                                                                          ↑X.toTopCat)
+                                                                                        AddCommGrpCat)
+                                                                                      0).obj
+                                                                                  A)).homToEquiv.symm
+                                                                          (Abelian.Ext.homEquiv.toFun x +
+                                                                            Abelian.Ext.homEquiv.toFun y)))
+                                                                  [Meta.isDefEq] [1.408770] ✅️ Equiv.instEquivLike.1
+                                                                        (equivShrink
+                                                                              ((HomologicalComplex.quasiIso
+                                                                                        (Sheaf
+                                                                                          (Opens.grothendieckTopology
+                                                                                            ↥X)
+                                                                                          AddCommGrpCat)
+                                                                                        (ComplexShape.up ℤ)).Q.obj
+                                                                                  ((CochainComplex.singleFunctor
+                                                                                        (Sheaf
+                                                                                          (Opens.grothendieckTopology
+                                                                                            ↥X)
+                                                                                          AddCommGrpCat)
+                                                                                        0).obj
+                                                                                    (unop
+                                                                                      ((yoneda ⋙
+                                                                                              (Functor.whiskeringRight
+                                                                                                      (TopologicalSpace.Opens
+                                                                                                          ↥X)ᵒᵖ
+                                                                                                      (Type u)
+                                                                                                      AddCommGrpCat).obj
+                                                                                                  AddCommGrpCat.free ⋙
+                                                                                                presheafToSheaf
+                                                                                                  (Opens.grothendieckTopology
+                                                                                                    ↥X)
+                                                                                                  AddCommGrpCat).op.obj
+                                                                                        (op ⊤)))) ⟶
+                                                                                (HomologicalComplex.quasiIso
+                                                                                        (Sheaf
+                                                                                          (Opens.grothendieckTopology
+                                                                                            ↥X)
+                                                                                          AddCommGrpCat)
+                                                                                        (ComplexShape.up ℤ)).Q.obj
+                                                                                  ((shiftFunctor
+                                                                                        (HomologicalComplex
+                                                                                          (Sheaf
+                                                                                            (Opens.grothendieckTopology
+                                                                                              ↥X)
+                                                                                            AddCommGrpCat)
+                                                                                          (ComplexShape.up ℤ))
+                                                                                        ↑n).obj
+                                                                                    ((CochainComplex.singleFunctor
+                                                                                          (Sheaf
+                                                                                            (Opens.grothendieckTopology
+                                                                                              ↥X)
+                                                                                            AddCommGrpCat)
+                                                                                          0).obj
+                                                                                      A)))).symm.symm
+                                                                        ((Localization.homEquiv
+                                                                              (HomologicalComplex.quasiIso
+                                                                                (Sheaf (Opens.grothendieckTopology ↥X)
+                                                                                  AddCommGrpCat)
+                                                                                (ComplexShape.up ℤ))
+                                                                              (HomologicalComplex.quasiIso
+                                                                                  (Sheaf (Opens.grothendieckTopology ↥X)
+                                                                                    AddCommGrpCat)
+                                                                                  (ComplexShape.up ℤ)).Q
+                                                                              DerivedCategory.Q).symm
+                                                                          (((Functor.commShiftIso DerivedCategory.Q
+                                                                                      ↑n).app
+                                                                                  ((CochainComplex.singleFunctor
+                                                                                        (Sheaf
+                                                                                          (Opens.grothendieckTopology
+                                                                                            ↥X)
+                                                                                          AddCommGrpCat)
+                                                                                        0).obj
+                                                                                    A)).homToEquiv.symm
+                                                                            (Abelian.Ext.homEquiv.toFun x +
+                                                                              Abelian.Ext.homEquiv.toFun
+                                                                                y))) =?= Equiv.instEquivLike.1
+                                                                        (equivShrink
+                                                                              ((HomologicalComplex.quasiIso
+                                                                                        (Sheaf
+                                                                                          (Opens.grothendieckTopology
+                                                                                            ↑X.toTopCat)
+                                                                                          AddCommGrpCat)
+                                                                                        (ComplexShape.up ℤ)).Q.obj
+                                                                                  ((CochainComplex.singleFunctor
+                                                                                        (Sheaf
+                                                                                          (Opens.grothendieckTopology
+                                                                                            ↑X.toTopCat)
+                                                                                          AddCommGrpCat)
+                                                                                        0).obj
+                                                                                    (unop
+                                                                                      ((yoneda ⋙
+                                                                                              (Functor.whiskeringRight
+                                                                                                      (TopologicalSpace.Opens
+                                                                                                          ↑X.toTopCat)ᵒᵖ
+                                                                                                      (Type u)
+                                                                                                      AddCommGrpCat).obj
+                                                                                                  AddCommGrpCat.free ⋙
+                                                                                                presheafToSheaf
+                                                                                                  (Opens.grothendieckTopology
+                                                                                                    ↑X.toTopCat)
+                                                                                                  AddCommGrpCat).op.obj
+                                                                                        (op ⊤)))) ⟶
+                                                                                (HomologicalComplex.quasiIso
+                                                                                        (Sheaf
+                                                                                          (Opens.grothendieckTopology
+                                                                                            ↑X.toTopCat)
+                                                                                          AddCommGrpCat)
+                                                                                        (ComplexShape.up ℤ)).Q.obj
+                                                                                  ((shiftFunctor
+                                                                                        (HomologicalComplex
+                                                                                          (Sheaf
+                                                                                            (Opens.grothendieckTopology
+                                                                                              ↑X.toTopCat)
+                                                                                            AddCommGrpCat)
+                                                                                          (ComplexShape.up ℤ))
+                                                                                        ↑n).obj
+                                                                                    ((CochainComplex.singleFunctor
+                                                                                          (Sheaf
+                                                                                            (Opens.grothendieckTopology
+                                                                                              ↑X.toTopCat)
+                                                                                            AddCommGrpCat)
+                                                                                          0).obj
+                                                                                      A)))).symm.symm
+                                                                        ((Localization.homEquiv
+                                                                              (HomologicalComplex.quasiIso
+                                                                                (Sheaf
+                                                                                  (Opens.grothendieckTopology
+                                                                                    ↑X.toTopCat)
+                                                                                  AddCommGrpCat)
+                                                                                (ComplexShape.up ℤ))
+                                                                              (HomologicalComplex.quasiIso
+                                                                                  (Sheaf
+                                                                                    (Opens.grothendieckTopology
+                                                                                      ↑X.toTopCat)
+                                                                                    AddCommGrpCat)
+                                                                                  (ComplexShape.up ℤ)).Q
+                                                                              DerivedCategory.Q).symm
+                                                                          (((Functor.commShiftIso DerivedCategory.Q
+                                                                                      ↑n).app
+                                                                                  ((CochainComplex.singleFunctor
+                                                                                        (Sheaf
+                                                                                          (Opens.grothendieckTopology
+                                                                                            ↑X.toTopCat)
+                                                                                          AddCommGrpCat)
+                                                                                        0).obj
+                                                                                    A)).homToEquiv.symm
+                                                                            (Abelian.Ext.homEquiv.toFun x +
+                                                                              Abelian.Ext.homEquiv.toFun y)))
+                                                                    [Meta.isDefEq] [1.408230] ✅️ (equivShrink

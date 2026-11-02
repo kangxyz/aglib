@@ -28,8 +28,10 @@ private theorem map_natTrans {C D : Type*} [Category* C] [Category* D]
     {F G : C} (g : F ⟶ G) (q : ℕ) (x : H (R.obj F) q) :
     H.map (τ.app G) q (H.map (R.map g) q x) =
       H.map (T.map g) q (H.map (τ.app F) q x) := by
-  have h := congrArg (fun k => H.map k q x) (τ.naturality g)
-  simpa only [H.map_comp_apply] using h
+  have h := congrArg
+    (fun k : R.obj F ⟶ T.obj G => H.map k q x) (τ.naturality g)
+  simp only [H.map_comp_apply] at h
+  exact h
 
 end CategoryTheory.Sheaf
 

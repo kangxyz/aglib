@@ -1,0 +1,25 @@
+{
+  "head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "own57_preimages_match": true,
+  "old_readonly_basis_drift": [
+    {
+      "group": "current_provider_guards",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/PullbackEquivalence.lean",
+      "before_sha256": "05fcaacc9a8675d0f0d90ecd4b52e6bfe616999827220f7d16a68223514669e1",
+      "current_sha256": "59e91385dd9b2861d6cd9a3095bddf5cfb0684ca3cb38fd8025ded94e5362bbc"
+    },
+    {
+      "group": "current_provider_guards",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/CoefficientTransport.lean",
+      "before_sha256": "b32a5fc8db4ba347bdb7f4ffb079a6157ff08492383800cf4954b083f457d616",
+      "current_sha256": "17e17b4f487e72ecbad00a07c619f8f50b8333a217d91e409e782a9ad2d225b7"
+    },
+    {
+      "group": "protected_current_guards",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Derived/Composition.lean",
+      "before_sha256": "421608b14c2f6049abeca8106f6f387e41e41e7c03b751494c92610bd8ae67d3",
+      "current_sha256": "bd72734318a9cf1d2d34c85615983c5d920d06830b87c002c2d71b94e149fc06"
+    }
+  ],
+  "scope": "Only guarded current Field616b minimal proof adoption plus already staged whitespace-only unobserved CurveFieldInvarianceUniverses line wrap; no other source write."
+}

@@ -23,7 +23,7 @@ morphism (`MonObj.isMonHom_ofMono`). In a cartesian monoidal category, if `G` is
 axiom of `H` is that of `G` after cancelling `j`. It imports only Mathlib. Consumer:
 [Group/IdentityComponent/Basic](../../AlgebraicGeometry/Group/IdentityComponent/Basic.lean).
 `CategoryTheory.monObjOfJointDetection`
-([JointDetection](../../AlgebraicGeometry/GrothendieckExistence/Algebraization/JointDetection.lean))
+([JointDetection](../../AlgebraicGeometry/Cohomology/GrothendieckExistence/Algebraization/JointDetection.lean))
 treats jointly detecting families; `MonObj.ofMono` is its one-element case.
 
 [AdjunctionHomMulEquiv](AdjunctionHomMulEquiv.lean), imported as
@@ -41,3 +41,7 @@ the group structure on morphisms into `G`; `shearIso_hom_fst` identifies its fir
 the division map `fst G G / snd G G`, and `shearIso_hom_snd` keeps the second (the diagram of Stacks
 047K). It imports only Mathlib. Consumer:
 [Group/IdentityComponent/QuasiCompact](../../AlgebraicGeometry/Group/IdentityComponent/QuasiCompact.lean).
+
+[TranslationFamily](Grp/TranslationFamily.lean) constructs the actual family
+of translations for a group object, with its inverse, base-change, identity,
+composition and naturality laws.

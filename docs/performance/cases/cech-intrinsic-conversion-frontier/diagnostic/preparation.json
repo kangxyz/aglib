@@ -1,0 +1,40 @@
+{
+  "kind": "reconstructed native setup, not original fa261 bytes",
+  "scratch": "/root/autodl-tmp/lean-build/scratch/etale-cech-profile-once/dc21875dc6ae4ab5bf3bcfeb753ae46d",
+  "production_source_receipt_sha256": "1e3ac8e6bfcec92ed3b83cefb62245f8d5f5edcdf4ab3a1b9b110930d311c247",
+  "source_sha256": "a9ff484188f60dc58dfe142249bc28ed0cf9fbde1280020dba63d2c5b9a76e8a",
+  "module": "Aglib.AlgebraicGeometry.Cohomology.Cech.Comparison",
+  "setup_command": [
+    "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "--no-build",
+    "setup-file",
+    "/root/autodl-tmp/lean-build/scratch/etale-cech-profile-once/dc21875dc6ae4ab5bf3bcfeb753ae46d/package/Aglib/AlgebraicGeometry/Cohomology/Cech/Comparison.lean"
+  ],
+  "setup_exit_code": 0,
+  "preparation_compiler_starts": 0,
+  "profile_invocations": 1,
+  "setup_sha256": "1f0adc79ba795e65b54db2f53e679690f57b51a999495f3ededacfb42099a159",
+  "setup_options": {
+    "autoImplicit": false,
+    "warningAsError": true,
+    "weak.linter.mathlibStandardSet": true,
+    "weak.linter.style.longFile": 1500
+  },
+  "command": [
+    "/root/autodl-tmp/lean-build/logs/remote-6536a79189ea41d098aedfdb4272f3a9/toolchain/bin/lean",
+    "-M12800",
+    "-j4",
+    "/root/autodl-tmp/lean-build/scratch/etale-cech-profile-once/dc21875dc6ae4ab5bf3bcfeb753ae46d/package/Aglib/AlgebraicGeometry/Cohomology/Cech/Comparison.lean",
+    "--setup",
+    "/root/autodl-tmp/lean-build/scratch/etale-cech-profile-once/dc21875dc6ae4ab5bf3bcfeb753ae46d/Comparison.setup.json",
+    "-Dtrace.profiler=true",
+    "-Dtrace.profiler.threshold=100",
+    "-o",
+    "/root/autodl-tmp/lean-build/scratch/etale-cech-profile-once/dc21875dc6ae4ab5bf3bcfeb753ae46d/outputs/Comparison.olean",
+    "-i",
+    "/root/autodl-tmp/lean-build/scratch/etale-cech-profile-once/dc21875dc6ae4ab5bf3bcfeb753ae46d/outputs/Comparison.ilean",
+    "-c",
+    "/root/autodl-tmp/lean-build/scratch/etale-cech-profile-once/dc21875dc6ae4ab5bf3bcfeb753ae46d/outputs/Comparison.c"
+  ],
+  "original_setup_byte_identity": "unavailable; not claimed"
+}

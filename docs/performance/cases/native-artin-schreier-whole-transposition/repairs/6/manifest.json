@@ -1,0 +1,46 @@
+{
+  "question": "One evidence-based whole-transposition repair at the actual final concrete exact/naturality specialization frontier; prepared in R before released native application.",
+  "native_git_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "path": "Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean",
+  "input_sha256": "4f74591813eb9b2c76d4f7c468e6a96ff21732caeb62f9dbb2b351b5a09527ac",
+  "candidate_output_sha256": "87ff6356a978b2998455b6ea671dbfdf3cb09f65a7785282ebe8b7aba4e4b9ec",
+  "delta_sha256": "7b75dcc1bd77937babe94f0866db55a4aae7a89e5b85ac8c8a3be450e7ce859b",
+  "diagnostic_basis": {
+    "run_dir": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-9b504c762eea4ff495ee47d36d1c6b5a",
+    "build_log_sha256": "ead3603024d8ec884f8fc00d43236ea94837305133d9bf278a8923ca026846e1",
+    "receipt_sha256": "ccb1427e72ebf286acc47ea3470ccb8fd862a61e2594634b1dd842c95a57063e",
+    "source_content_sha256": "71bb7f2cc656c08d07959609271b2e3ba2337d8e2881447fafde5463a0a53d07",
+    "probe_sha256": "fe49f7228fcd8631581a7515fabddb030bd651eabc919dd5cad044dd0ce09f4c",
+    "source_basis": "4f74591813eb9b2c76d4f7c468e6a96ff21732caeb62f9dbb2b351b5a09527ac"
+  },
+  "actual_frontier": {
+    "formation": "Exact theorem-binder formation header/value and named Kernel check succeeded.",
+    "markers": "All actual proof markers reached through before-final-transport.",
+    "failure": "Final exact tactic elaboration/specialization or expected-type conversion: 19.6s exact, cumulative tactic19.7s, whnf200000; actual theorem value trace failed and there was no named Kernel check for it.",
+    "not_culprits_on_this_evidence": "Formation, hz, native left-additive dictionary and native whole-zero law were elaborated before the failure.",
+    "counters": "presheafToSheaf/leftAdjoint/Classical.choose each403629; indefiniteDescription551734. Counts are not per-constant timing or exact compared-pair attribution.",
+    "missing_exact_pair": "The compared expression heads and implicit data inside the final exact remain unprinted; the proposed repair removes that entire concrete specialization boundary without claiming an exact pair."
+  },
+  "repair": "Private helper over variable preadditive categories and the same adjunction proves the COMPLETE equation k\u226bg=0, using actual supplied arrows k/i/g, original whole transposition equation and original proved presheaf composite. Native naturality X/Y/Y\u2032 is pinned before specialization. Caller supplies typed original P0/A0/i0/k0/g0 and existing whole unit law hk0; no concrete final naturality/congrArg/trans chain or rebuilt E.symm map remains.",
+  "hypothesis_boundary": "Helper right-functor additivity is supplied by the existing native sheaf inclusion; left additivity is proved from the same adjunction. Public theorem retains existing HasWeakSheafify and all original hypotheses/worlds. hk0 is proved by existing toSheafify_primeFieldToAdditive, hz by unchanged ring calculation; no desired-law premise is added.",
+  "native_APIs": [
+    {
+      "path": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+      "sha256": "8d886b21dc4ab48379e9c98653967307f7f57a97cc61f9db0dfd50d4d53353e8",
+      "declarations": [
+        "homEquiv_naturality_right"
+      ]
+    },
+    {
+      "path": "Mathlib/CategoryTheory/Adjunction/Additive.lean",
+      "sha256": "a37b194f64c6bf5a2583f0a509710e7e8ed0cbe7ec27cf7ef95c2138ace620b7",
+      "declarations": [
+        "left_adjoint_additive",
+        "homAddEquiv_zero"
+      ]
+    }
+  ],
+  "preservation": "Original selected native left/right functors, presheaf/sheaf pair, maps, p=0 hypothesis, ring/lift/site worlds, native unit and ring hz calculation. Fixed wrappers5be6/d2a7 and prior packets held. No model/record/flags/budget/world collapse.",
+  "compile_scope": "Only the same three completed AS changed modules plus necessary dependencies after guarded application. No extra probe, no untouched consumer, no independent13 wait.",
+  "evidence_status": "Candidate uncompiled; actual pass or performance effect is unknown. Diagnostic localization is stronger than declaration-line attribution but not a matched speedup claim."
+}

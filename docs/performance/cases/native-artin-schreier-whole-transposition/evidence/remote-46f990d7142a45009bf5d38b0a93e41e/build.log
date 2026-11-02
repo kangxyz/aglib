@@ -1,0 +1,45 @@
+✖ [3156/3158] Building Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier (3.4s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-46f990d7142a45009bf5d38b0a93e41e/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean -o /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.olean -i /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.c --setup /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.setup.json --json
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:48:25: a universe level named `w` has already been declared
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:54:22: a universe level named `w` has already been declared
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:64:67: Unknown identifier `additivePresheaf`
+
+Note: It is not possible to treat `additivePresheaf` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:63:4: (kernel) declaration has metavariables 'CategoryTheory.Sheaf.ArtinSchreier.primeFieldPresheafMap'
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:76:64: Unknown identifier `additivePresheaf`
+
+Note: It is not possible to treat `additivePresheaf` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:80:5: Unknown identifier `additiveSheaf`
+
+Note: It is not possible to treat `additiveSheaf` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:80:34: Unknown identifier `additiveSheaf`
+
+Note: It is not possible to treat `additiveSheaf` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:93:5: Unknown identifier `additiveSheaf`
+
+Note: It is not possible to treat `additiveSheaf` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:93:34: Unknown identifier `additiveSheaf`
+
+Note: It is not possible to treat `additiveSheaf` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:94:12: Application type mismatch: The argument
+  R
+has type
+  Cᵒᵖ ⥤ CommRingCat
+but is expected to have type
+  Type ?u.40
+in the application
+  @frobenius R
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:99:6: Unknown identifier `artinSchreierMap`
+
+Note: It is not possible to treat `artinSchreierMap` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:106:7: Unknown identifier `additiveSheaf`
+
+Note: It is not possible to treat `additiveSheaf` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:108:67: Unknown identifier `additiveSheaf`
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:112:8: declaration uses `sorry`
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:121:38: Unknown identifier `artinSchreierMap`
+
+Note: It is not possible to treat `artinSchreierMap` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+Some required targets logged failures:
+- Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier
+error: build failed

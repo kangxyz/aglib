@@ -1,0 +1,43 @@
+✔ [3553/3586] Built Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.Cone (4.6s)
+✔ [3554/3586] Built Aglib.CategoryTheory.Sites.Torsor.Transport (4.2s)
+✔ [3555/3586] Built Aglib.CategoryTheory.Sites.Torsor.KernelFiber (6.2s)
+✔ [3556/3586] Built Aglib.AlgebraicGeometry.EtaleCohomology.H0.ProperHenselian.Sections (6.3s)
+✔ [3557/3586] Built Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.ConeRightTail (3.3s)
+✖ [3558/3586] Building Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.ConeConstancy (3.6s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-f62382ef588a4cf688c44bedd08c4b8b/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.setup.json --json
+error: Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean:65:43: unsolved goals
+case refl
+J : Type uJ
+inst✝¹ : Category.{vJ, uJ} J
+A : J → Type uA
+inst✝ : (j : J) → Category.{vA, uA} (A j)
+D : AdjunctionData A
+x y t : J
+f : x ⟶ y
+p : x ⟶ t
+q : y ⟶ t
+hf hg : f ≫ q = p
+⊢ (D.right q).whiskerLeft (𝟙 (D.right f)) ≫ (D.triangleRightIso p f q hg).hom = (D.triangleRightIso p f q hf).hom
+error: Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean:67:27: This simp argument is unused:
+  Functor.whiskerLeft_id
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [eqToHom_refl, Category.id_comp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean:67:51: This simp argument is unused:
+  Category.id_comp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [eqToHom_refl, Functor.whiskerLeft_id]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3580/3586] Built Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.Cokernel (4.5s)
+✔ [3582/3586] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.PowerFiber (4.6s)
+✔ [3583/3586] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.ActionDescent (6.3s)
+✔ [3584/3586] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootNaturality (19s)
+✔ [3585/3586] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Field (127s)
+✔ [3586/3586] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.FieldNaturality (96s)
+Some required targets logged failures:
+- Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.ConeConstancy
+error: build failed

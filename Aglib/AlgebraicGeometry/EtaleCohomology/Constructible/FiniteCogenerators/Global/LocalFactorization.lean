@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Strata
 public import Mathlib.CategoryTheory.Abelian.Basic
+public import Aglib.CategoryTheory.Abelian.JointlyFaithfulFactor
 
 /-! # Original local lifts through one fixed global mono
 
@@ -36,13 +37,7 @@ theorem exists_factor_of_jointlyFaithful
     (hlocal : ∀ j, ∃ β : (L j).obj F ⟶ (L j).obj A,
       β ≫ (L j).map τ = (L j).map α) :
     ∃ β : F ⟶ A, β ≫ τ = α := by
-  have hz : α ≫ cokernel.π τ = 0 := by
-    apply hL.map_injective
-    intro j
-    obtain ⟨β, hβ⟩ := hlocal j
-    rw [(L j).map_comp, (L j).map_zero, ← hβ, Category.assoc,
-      ← (L j).map_comp, cokernel.condition, (L j).map_zero, comp_zero]
-  exact ⟨Abelian.monoLift τ α hz, Abelian.monoLift_comp τ α hz⟩
+  exact CategoryTheory.Abelian.exists_factor_of_jointlyFaithful L hL τ α hlocal
 
 attribute [local instance] hasSheafifyLarge
 

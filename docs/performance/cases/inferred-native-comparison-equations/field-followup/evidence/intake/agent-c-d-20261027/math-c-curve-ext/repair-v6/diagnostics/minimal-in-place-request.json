@@ -1,0 +1,11 @@
+{
+  "question": "Check the smallest existing-core proof of the literal old public Field theorem: infer hfinal := hmap.trans hclass without any expected type; simplify the same original definitions in hfinal and the goal separately; exact hfinal. This applies the observed in-place normalization lead directly, without a new generic helper, shared constructor, function-factorization obligation or model.",
+  "native_file": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean",
+  "native_sha256": "616b87a1041f6eed9b19b5d5ecd0bc50c3df4acf636496f42b7c4800883c35ce",
+  "diagnostic": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/repair-v6/diagnostics/FieldInPlaceMinimal.lean",
+  "diagnostic_sha256": "1de5eb6705762fed19b3c648cb5b962117e1a0f3a79011b432fe7fa0df138257",
+  "parent_direction": "Root explicitly selects this distinct smallest candidate on B now, with C holding unstarted5bb unless needed; preserve any already healthy process and never duplicate either candidate.",
+  "change": "Only replace final simpa-using block in native616b with unannotated hfinal, simp only [comparison, AddMonoidHom.comp_apply, AddEquiv.coe_toAddMonoidHom, fieldCocycle] at hfinal and goal, exact hfinal. All old public declarations/definitions/maps/units/actions/generators/HasExt worlds and source options unchanged.",
+  "runtime": "One sole B faithful candidate frontend using authoritative actual native Lake setup/default budgets/recursion/options and valid current import/cache basis; preserve actual fullsource identity, no extra-D, no other explicit roots or unchanged616 retry.",
+  "evidence_boundary": "e85d helper route had only observational-unused-tactic error but remains exit1; it does not certify this pointwise candidate. Published1e15 maxRecDepth failure and prior stronger factorization failures remain their actual sources. No generic926601 adoption or new equality premise is permitted by this request."
+}

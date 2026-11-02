@@ -1,0 +1,25 @@
+NATIVE_LAKE_SETUP_COMMAND ["/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake", "--no-build", "setup-file", "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean"]
+NATIVE_MODULE_SETUP {"complete_options_equal": true, "isModule": true, "name": "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction", "options": {"autoImplicit": false, "warningAsError": true, "weak.linter.mathlibStandardSet": true, "weak.linter.style.longFile": 1500}, "sha256": "1e533fac3f194e7dd48e9645ffcbdbe5e8caf1ecb060524ca2ff7bc28d79ea59"}
+V32_NATIVE_OPERATIONAL_SECTION_EQUATION_BEGIN sha256=e9eed14736800b3c4ad655affa2d7bc8d16cd7adeb50ba74c1631da0dd821209
+NATIVE_DIAGNOSTIC_ARGV ["/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake", "--no-build", "env", "/root/autodl-tmp/lean-build/logs/remote-bb87efc976514e17a282d5a4cf83894a/toolchain/bin/lean", "/root/autodl-tmp/lean-build/logs/remote-bb87efc976514e17a282d5a4cf83894a/OperationalSectionEquation-v32.lean", "--setup", "/root/autodl-tmp/lean-build/logs/remote-bb87efc976514e17a282d5a4cf83894a/NativeGlobal.setup.json"]
+V32_SHARED_SECTION_BODY
+/root/autodl-tmp/lean-build/logs/remote-bb87efc976514e17a282d5a4cf83894a/OperationalSectionEquation-v32.lean:826:2: error: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+V32_VARIABLE_BODY
+V32_WHOLE_COMPARISON_READY
+V32_FACTORY_BOUND
+V32_MAPS_BOUND
+V32_VALUES_BOUND
+V32_RELATIVE_CONSTRUCTOR_BOUND
+/root/autodl-tmp/lean-build/logs/remote-bb87efc976514e17a282d5a4cf83894a/OperationalSectionEquation-v32.lean:861:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+V32_FINITE_ALIAS_BODY
+/root/autodl-tmp/lean-build/logs/remote-bb87efc976514e17a282d5a4cf83894a/OperationalSectionEquation-v32.lean:923:16: error: (kernel) unknown constant '_private.Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction.0.AlgebraicGeometry.Scheme.EtaleCohomology.Constructible.FiniteCogenerators.Global.representedRestrictionIso_hom_app'
+V32_NATIVE_OPERATIONAL_SECTION_EQUATION_END exit=1
+{"prefix_exit": 1, "source_sha256": "e9eed14736800b3c4ad655affa2d7bc8d16cd7adeb50ba74c1631da0dd821209", "native_setup_sha256": "1e533fac3f194e7dd48e9645ffcbdbe5e8caf1ecb060524ca2ff7bc28d79ea59", "boundary": "author complete operational represented H/K/c family with finite aliases; no fullGlobalfollowup until authorrelease"}

@@ -1,0 +1,1878 @@
+{
+  "review_kind": "independent ordinary complex continuation of existing W10 whole-source review; no new helper/acceptance cycle",
+  "reviewer": "/root/review_cohomology_cocone",
+  "author": "/root/cohomology_cocone_author",
+  "verdict": "REMAINING_WHOLE_ARGUMENTS_THROUGH_V19_SUPPORTED_SELECTED_SECTION_PAIR_PASS_BROADER_CPP_PARTIAL",
+  "formal_status_action": "none",
+  "root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025",
+  "entry_head": "3467423400c765167730d4372704650a52ab3a95",
+  "native_head": "3ab570353d8ccfb0db62b01300f7be9a79ec44a8",
+  "question": "remaining complete W10 coefficient rectangle, represented source/postcomposition, actual slice integer source, zero/field values, fibre unit, fixed geometric system, exact-image/finite reflection and six-edge locality seam; bounded earlier-source repair compatibility",
+  "input_basis": {
+    "index": "migration/implementation/whole-w10-remaining/coherent-whole-v1/INDEX.json",
+    "index_sha256": "748a0707ebed1c38dceaff0475822cd369a8f3a5213e213aa040ec2b4951d0a2",
+    "indexed_source_count": 51,
+    "original_native_count": 31,
+    "all_indexed_source_afterimages_and_31_original_beforeimages_guarded": true,
+    "original_native_basis": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramEtaleSections.lean": "a3f4bd03aa84214a376ed2ef479f49da9eb4a5b5d4a6037eb3bf1892811892ea",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/SplitCoefficients.lean": "d3a888d3773afad909290d1bd0ea370a2201c88fcc386f54cf3e3d6bf08a0096",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Derived/BaseChange/Higher.lean": "3a764c5ff6887615b38dfcfbc8715c56012ba98050e5877035410892bd3e3e80",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/GaloisCech.lean": "ce7bdb42194a07314e87c38230aaa42c9c7b35e1a9ffdcf6ad2d3bb907836967",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/GaloisPrimitives.lean": "cc9eb934493e91a5d8d876f78d951ffc2b5de5751ddf9e37b774fffef1a75ad7",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean": "dbc846f2c76b4f75fcb7b6fedff0f5524aae928b5bbad521062b188e545f9d7a",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/NativeLineComparison.lean": "978dfb257512d49a702a190396d5a24c5994955dbb5f23f283376374031695f9",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ExactImageComparison/Cohomology.lean": "43347869da4bee22ed1d9438d37a3af2f8c3862c0684095d9bf0a770d48cf1a3",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ExactImageComparison/SquareTransport.lean": "6dbef639714de406e2ec2177e184a38a00afa236bb8ec453e1d43eff0f89d07c",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/H1/DegreeZeroPullback.lean": "47c7551c9b8da8d4b0dc2519a944dfc26c70e52bd66598507ca124f874382c02",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/H1/OverField.lean": "922a461b49b1f2780c7274a522217a0c024f67ae6ac5cb575ed1f42e760a28d1",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackCoherence.lean": "f1f98e231c70d3d785dea3f8ff5b9232620ae363dc98f43848adc95e86a6014c",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackComposition.lean": "4d9aa5c71baed05fef5f284e3dc92da87e53c922a722d2f22b23d4e6f514a049",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean": "3ae829ca6742419fbd3be89fa188a16f5a0c39db40ef814ae8e436e7ff48ed3a",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/BoundaryNaturality.lean": "045e47aa49bac756ad337004c591ca597a328f1ba2694ad26e1e3c2c4e67ce58",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/CohomologyConsequences.lean": "21eecca376f8423e49b7610f9a3cc4a09c657f29191c45be1df358b92f3a6885",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Divisibility.lean": "b4e601b34a2577325c59daee75ebe931e159995cc122329dda99f7cdf27f3da4",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/HenselianConstant.lean": "ea5d737a0786af5457e17e78a40ca541e02fd835d4fbeefdfcc6129052ed5d5a",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Pullback.lean": "c32102e720e2d96ee67ecad6e2926274d9745e9c4b0956122b4ff7d296c30317",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/PullbackComposition.lean": "3aa5661287e51f1d02566a10fbf761950ae97c81570447e87aa6e6fe512c27b0",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/SlicePullback.lean": "c0cef203b2b99b60b4426e8c10480f467a654d935f4a7295e2bb586293c979cd",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/SlicePullback/AugmentationSections.lean": "5fc12b795130e545668dbdbb2b26de7e2f261f790481e3f5a8e2fe7aba0ea24a",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/SlicePullback/SourceSquare.lean": "d9c224eeb9841198a977c7e25cbdb0210a85e8edee867b7fab8361c61861fdde",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean": "2ca8a5e3f305fd5a5f7778614f70027f389d1f7d3f419215c979fb4e32b8a62d",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricCohomologyDiagram.lean": "cd37c38dc1c715fc76010e5d296cf6e4e962f9e5645b8843ba2f8f8d46f8ee36",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricFibreTransfer.lean": "b8e3d62c0300732c973e85798ee96fcc4973d10e5ac60a1ef20c7e3565b62796",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/OriginalCohomologyZero.lean": "8233c5227dae4be6c477d88324b60144f2ceb3d7b1f693d88fe1af3dfe855d93",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/OriginalRestriction.lean": "735ebf2a5bad1b161c3c43369a6835c7edf428f045f630e346b66865dcb13cd1",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackLimitLegZero.lean": "0dbf8be2b8688fbb6a770bfb88db42c5f07058a51740d9c09c3d43d87239cfe1",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/RelativeCohomologySquare.lean": "d0d695830fbe8167900f219daf5bad342c963412bac295f7c2207b1d02dd85b5",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackCohomologySystem.lean": "24c97f8783107d99be4629923c8df08fb6f1ab7f30fe9c3c316841c2cf12b5b3"
+    },
+    "before_root": "migration/implementation/whole-w10-remaining/before",
+    "uncovered_complete_cuts": [
+      {
+        "version": "coefficient-rectangle-v1",
+        "ready": "migration/implementation/whole-w10-remaining/coefficient-rectangle-v1/READY.json",
+        "ready_sha256": "66f22fc86d1f401c38f6fc749185fddcb60b4a9f1b0a703b99e3718cd019ddbd",
+        "source_count": 4,
+        "source_paths": [
+          "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/InverseRectangle.lean",
+          "Aglib/CategoryTheory/Abelian/Ext/TransferConsequences.lean",
+          "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/RelativeCohomologySquare.lean",
+          "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricFibreTransfer.lean"
+        ]
+      },
+      {
+        "version": "represented-source-values-v1",
+        "ready": "migration/implementation/whole-w10-remaining/represented-source-values-v1/READY.json",
+        "ready_sha256": "2fab910b4a63c6cac15f4f757e9b7ee95a3308846c25cc34d4f6d8ad0c11a3ba",
+        "source_count": 3,
+        "source_paths": [
+          "Aglib/Algebra/Homology/RightDerived/Postcomp/RepresentedSections.lean",
+          "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/OriginalCohomologyZero.lean",
+          "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/OriginalRestriction.lean"
+        ]
+      },
+      {
+        "version": "slice-integer-source-v1",
+        "ready": "migration/implementation/whole-w10-remaining/slice-integer-source-v1/READY.json",
+        "ready_sha256": "d52676070bcbd4163159cd3fefe130b0b1362d0a1a44a14a0dffe1382db7e4f6",
+        "source_count": 4,
+        "source_paths": [
+          "Aglib/CategoryTheory/Sites/SheafCohomology/Slice/OriginalPullback.lean",
+          "Aglib/AlgebraicGeometry/EtaleCohomology/SlicePullback.lean",
+          "Aglib/AlgebraicGeometry/EtaleCohomology/SlicePullback/SourceSquare.lean",
+          "Aglib/AlgebraicGeometry/EtaleCohomology/SlicePullback/AugmentationSections.lean"
+        ]
+      },
+      {
+        "version": "zero-transfer-and-field-values-v1",
+        "ready": "migration/implementation/whole-w10-remaining/zero-transfer-and-field-values-v1/READY.json",
+        "ready_sha256": "77a0e5a8a64cb5fa2161c72f55e25ad37a71e22f7384e9c80f853ed761430e98",
+        "source_count": 3,
+        "source_paths": [
+          "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/Zero.lean",
+          "Aglib/AlgebraicGeometry/EtaleCohomology/H1/OverField.lean",
+          "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackLimitLegZero.lean"
+        ]
+      },
+      {
+        "version": "fibre-zero-unit-v1",
+        "ready": "migration/implementation/whole-w10-remaining/fibre-zero-unit-v1/READY.json",
+        "ready_sha256": "06c37fb530906d7192edb4db202e0adfcee0178273c8848197ab774625ae6308",
+        "source_count": 3,
+        "source_paths": [
+          "Aglib/Algebra/Homology/RightDerived/Postcomp/UnitAssembly.lean",
+          "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/GeneratorZero.lean",
+          "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean"
+        ]
+      },
+      {
+        "version": "geometric-system-values-v1",
+        "ready": "migration/implementation/whole-w10-remaining/geometric-system-values-v1/READY.json",
+        "ready_sha256": "e60c6b1fb0788bf151ec97b1923710ce62cc075b40c4e42b96d0bd73c9c74ef9",
+        "source_count": 2,
+        "source_paths": [
+          "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/FixedSourceCohomology.lean",
+          "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricCohomologyDiagram.lean"
+        ]
+      },
+      {
+        "version": "exact-image-and-factor-v1",
+        "ready": "migration/implementation/whole-w10-remaining/exact-image-and-factor-v1/READY.json",
+        "ready_sha256": "7ba18356642c5a421f500db261b0d2149222b1b303e9cd4556c4679adc318cfa",
+        "source_count": 4,
+        "source_paths": [
+          "Aglib/CategoryTheory/Abelian/Ext/OriginalComparison.lean",
+          "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ExactImageComparison/Cohomology.lean",
+          "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean",
+          "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/NativeLineComparison.lean"
+        ]
+      },
+      {
+        "version": "section-evaluation-seam-v1",
+        "ready": "migration/implementation/whole-w10-remaining/section-evaluation-seam-v1/READY.json",
+        "ready_sha256": "11cc995c7a04953f7bd4239aa57919ee3b9cf8ea2d23e5e8bf22f254be3a735e",
+        "source_count": 2,
+        "source_paths": [
+          "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/SourceCoherence.lean",
+          "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramEtaleSections.lean"
+        ]
+      }
+    ],
+    "fixed_index_source_identity": "Each exact fixed path/hash/afterimage is in the immutable INDEX named above; all51 were guarded. Current vector is below, with all six replacements recorded separately."
+  },
+  "current_reviewed_source_vector": {
+    "count": 52,
+    "difference_from_INDEX": "accumulated named continuations; V17/V18 modifyGeo/Germ proof views only; V19 changesLowerInverseRectangle/nativeRelative only, retaining other50paths and original31native scope",
+    "source_sha256": {
+      "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/OrdinaryNatTrans.lean": "e45aa89c7e534cbdb955dd157fd63a10f04d82f687c0b1c75850a6db250dcc84",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Derived/BaseChange/Higher.lean": "9c578fb01ba45b2e8e2d787535afd5442059d5fd85e47f13e6b2f9a62ccb5a9f",
+      "Aglib/Algebra/Category/Grp/ExactSequenceConsequences.lean": "3228602f2974a3133e36a4dd3accfde4866e404933bbe60fff0d99f6baa6c0d4",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/SplitCoefficients.lean": "842c83a9744e71acb3cf348f1e0b947eac691e2d62ba4fde40e74b4f0ebf199f",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/GaloisCech.lean": "9637a74165b32891dc7bda94b44253f4ff4a13ef42434c1f81ec3a5b8bc48f2e",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/GaloisPrimitives.lean": "147139fe56d2a2c832e925d911abfec58c6dd5d825739e3574deb5b345f11ebe",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ExactImageComparison/Cohomology.lean": "c5733c8131bd9a5e1d6f7ab1de54b979230d667982d4d1c526adc1629be65942",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ExactImageComparison/SquareTransport.lean": "057c9205973e14951997e48f1b5c4111716f251c6041870d7a0a007f84a8d731",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/BoundaryNaturality.lean": "f9aed268f662a5d2486ed59dabfc5c9da56258c9e4eefcd90dbe6faa9d68e214",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/CohomologyConsequences.lean": "3753763d100d783e831d7ce633ae16594de4c2a8ca62082785fa5bf786d676aa",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Divisibility.lean": "8fdc57ad662e74c663ed1b2fe725fa1265ae1ceb41c94114b1d71957a9d79e82",
+      "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections.lean": "2fc7056d079045e89eef675df8aaf77154b5dd3ac3de8278340c3d4bea3626c0",
+      "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/Pullback.lean": "1930c0e10ace29d9c60a9bb1bd0d7da6ddcef144c1b28a97cca4aa1026ec48a5",
+      "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/DerivedPullback.lean": "0454513316150fd87ffde2fa757e67314a0fb9ce4a627e7245faf9d8d7adf372",
+      "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/ExtPullback.lean": "d1ea19c6d66dddd59e5ae4ae622813bff7006207bb848af534490d65e6d487c1",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Pullback.lean": "61895cf04e779cd4b0d7b7ba685ab189577175a7f6391084d3c7808ff4f67500",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/PullbackComposition.lean": "99bc01d24b4eb5651b372e0fb83995606c4ecb364fcd3529db6277d2ae8c97da",
+      "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection.lean": "8856b0f8b5ba12512ef628a1d6fe4cfa2b0d7fcd041563cf3989bc316b7a74db",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean": "7633e1a279c7b0b61ff16f2d8cc5a4fc967a55b0084a56b9307298cb87c0d295",
+      "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/Terminal.lean": "aa1604a3fd54c9cf83d6ad731f9782792766a2f6abdcf07868b0fdb9f0b3dd25",
+      "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/SourceCoherence.lean": "4434783c882e9eac535bbc9a25b83efd801fd44bfa958bc28e3f119191ecaf4c",
+      "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/ConstantCoherence.lean": "3c0ad44bddd46ab4cb08b57909f1cbf88951224241ee1c923371225a860de61f",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackCoherence.lean": "600a3a8036f443038c4a5fc0b1c20d26b83ac3710572323f4f06dd1986082899",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackComposition.lean": "90f83c812551762229d078f12246e7d2efa853ebcb78563e991ff18559a9edab",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackCohomologySystem.lean": "8ec1bbf610e14b6633a45d6d72675b85b15bb2c037c19bc07cb5fb3cea9d5285",
+      "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/Zero.lean": "2fc644327ac97d5d220138e61eaffb4966079b8b7788606779b53071eb66d73b",
+      "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/ConstantComposition.lean": "b641f2e997f98e42637d8da7dde06b1aa4dfa0c8c402bfed9647b90d4eff40bf",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/H1/DegreeZeroPullback.lean": "0d5764bf53c45691aeafe658dd3eb9a00d495c565c81a0926f3ac54cef00fcc9",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/HenselianConstant.lean": "54395220331a4eac30740d1f1cec063b20a31b756bcc82c891a3b041606c0f01",
+      "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/InverseRectangle.lean": "20269ada008afa55594a013ffbb89663a89edeaf778f405ce948843895bfdd48",
+      "Aglib/CategoryTheory/Abelian/Ext/TransferConsequences.lean": "bfe6fbf09d7275e90ad0f250eabcd437466842a7f4108add585967476f5344d1",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/RelativeCohomologySquare.lean": "e44959c6c7941a1e64cb440000dd09a0838b11e3ccd013784f09ef981459dd9d",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricFibreTransfer.lean": "ba4641fe317d1c47a0f8ba67b71ceedad4b5502abef2cb29374474fe1b3d526b",
+      "Aglib/Algebra/Homology/RightDerived/Postcomp/RepresentedSections.lean": "9f9cf33d3e7c378e7fe0f0ab64358ad40b98a579746747debff532717424299d",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/OriginalCohomologyZero.lean": "8f707952c7b753c2fa15bec2f9fc230887a0bf328c0b51ec1788e23a1698d44e",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/OriginalRestriction.lean": "13ad86350bafc8c58d62008c7f9ae01edc64a2d2cbfc2c0f50e9dde42d0adb2d",
+      "Aglib/CategoryTheory/Sites/SheafCohomology/Slice/OriginalPullback.lean": "cbe94306f31845d4b0af2b66b2c1cf413553ed34ca5bd87aeba7abaa0d63e60f",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/SlicePullback.lean": "f43c4e78ac4e06e4fb1dfa93345896e23c06805f86f0328fb240da03c1f1fd0b",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/SlicePullback/SourceSquare.lean": "d70b5015a942ba3cccce72e48cb928b83f6358f18c76e8e724afa4c863ec27b5",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/SlicePullback/AugmentationSections.lean": "7571fb8ff9cc0ccfb24afe56cc98861fbd241a6b26ada20a4beb5e7803d634eb",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/H1/OverField.lean": "a74097c1d73b3ea4a6e9c4927c9cdd554d3196dc021f4f536f661e20cd374069",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackLimitLegZero.lean": "7144fb97405d815bad06a07321fb91b67fd8cbe1bd0a147d437cd020d1882a6f",
+      "Aglib/Algebra/Homology/RightDerived/Postcomp/UnitAssembly.lean": "dd8eae75b2ea1b1690bca4958e9db00765d439858be7844bc126a59989c7505a",
+      "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/GeneratorZero.lean": "543f76d76d955aaec556fcfad5139ca068fd464c5b3aaea5860b29fbb185017d",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean": "bb4293939dbddb023bff5e67709ffe7423978153f6e50f674aac70e0a873ea0a",
+      "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/FixedSourceCohomology.lean": "0b76869bc83c0f64ac29a4c46e2d915e56f8298a0b874ad5ab9ff4851f22b9d8",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricCohomologyDiagram.lean": "3d6c2a26806d41bd28f11537d0f98ffb038a5463f29331a90b97b5c3db103a71",
+      "Aglib/CategoryTheory/Abelian/Ext/OriginalComparison.lean": "b4326fdbaf28b225738ddb9f5dedc254db39b3f641c440cab60b98c6f05a311e",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean": "d9a0b6666c15206d8e8ecc31a9719f17bd71f953bcc9c15e33b2d097b792a524",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/NativeLineComparison.lean": "8716160edf6a1e4a1f287cbdd21070b82c71dd74b3b55a88298eaee8562d50a1",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramEtaleSections.lean": "9611c269490f4c6d67986dab2524f1f703658c1c6a003fd87e1e30127a298894",
+      "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection/Transport.lean": "a1fb5123c6bbf273d62feff730e3e788abbab1e3615b3bc1afe20ddaf8b5a938"
+    },
+    "previous_v4_report_cut_sha256": "8606cbcd9082cb76b01cf1e0ae977c2b3b000e60796fee7bf9fb522bcd6d941f",
+    "previous_v5_report_cut_sha256": "72fa8386d8b66d1f088d96984c8b49c75c5b7668c9b9f9431b59cd4b202d12b9",
+    "previous_v6_report_cut_sha256": "14c5f9819d85ea8dc859e070c9b1dec2c27b57f1e756ca118909bb05890e22e7",
+    "previous_v8_report_cut_sha256": "0f93d90994424afdf7cf810168a2a06b3829667b7ee72c2a956fe71d2ae94d59",
+    "native_scope_count": 31,
+    "historical_prior_live_vector_guards_matched": true,
+    "all_immutable_candidate_hashes_matched": true,
+    "previous_v9_report_cut_sha256": "4520fab6227a60b5ae7e8fcbda8e227a3a76fdb70f3ebd14cb81c78f7edc3485",
+    "publication_at_v9_retention": "R-only v9 candidate; all four live before-images and newleaf absence matched; publication/CPP not inferred",
+    "publication_at_review_cut": "LIVE52 throughV17/V18/V19, Section selectedpair unchanged and passed; fixedsource/currentlive/prior3report guards matched",
+    "all_live_candidate_hashes_matched": true,
+    "previous_v11_report_cut_sha256": "fa8cf380b406cf08e5d86f91613ab96bd91d2f37ffe3b5424a411df9e97193b7",
+    "previous_selected_route_report_cut_sha256": "84fb31fbffc1423b4bde2ec1a534d16101bfe3f44c808ebfdc995bd4ed1263f0",
+    "previous_v16_report_cut_sha256": "a554d1a775bf20b7783ba23d9e3c258ab1f829597b82518ea63f2bd2f1e6c737"
+  },
+  "reuse": {
+    "prior_scopes": [
+      {
+        "path": "migration/reviews/whole-w10-ordinary-nattrans.json",
+        "sha256": "5bbe200b0d3251658894e9221c184eb88cc40011eb8f8c0929ac686f77d7ee2a",
+        "scope": "ONT2 e45/native9c; explicit actual-unit premise; invalidneverpublishedv1 retainedhistorically",
+        "file_remains_unchanged": true
+      },
+      {
+        "path": "migration/reviews/whole-w10-gamma-api.json",
+        "sha256": "becad8c56db5c9064abf0a95a9dee94e7af744751d86401b21e9ac836eadaf46",
+        "scope": "Frozen Gamma6(original57da/native52c9/b0ea)+APIv2(native8+Grp3228). Historicalgeneratingversions stayfixed.",
+        "file_remains_unchanged": true
+      },
+      {
+        "path": "migration/reviews/whole-w10-section-zero.json",
+        "sha256": "42a7da647d140930e2c5ae5805234b61e4e4e3ff86ce420e00c44241a06529f4",
+        "scope": "Fixedsource-section-zero INDEX14 plus compatibleencoding2fc/885. LaterZero3c insertion, Rectangle4, Rep3, Slice4 remain outside this report.",
+        "file_remains_unchanged": true
+      }
+    ],
+    "limits": "reuse only actual derivations/maps/premises on matching source and explicitly inspected bounded successors; old compiler results not relabeled; historical invalid/pending cuts and retractions retained"
+  },
+  "whole_argument_review": [
+    {
+      "family": "coefficient_rectangle",
+      "result": "conditional mathematics/source supported",
+      "sources": [
+        "InverseRectangle20269",
+        "TransferConsequencesbfe6",
+        "RelativeCohomologySquaree449",
+        "GeometricFibreTransferba46"
+      ],
+      "derivation": "same coherent forward whole square-pasting gives inverse prefixed rectangle including actual equality transport; same selected exact composite and two ordinary source factorizations give raw independent-four-category Ext square; actual equivalence/source/coefficient arrows give transfer bijectivity; native geometry supplies only genuine fibre IsIso; boundedV16native normalization now pastes actual whole63b composition/transport with same ordinary rectangle, preserving raw source proof chain and all native inputs; currentV19 constructs whole native five-Iso triangle/square law beforeF through original coherent supplier, then generic six-world inverse evaluator preserves SAME indexed objectwise equality transport. V16complete63btransfer proof retained after coefficient theorem",
+      "no_desired_premise": "no final coefficient/cohomology rectangle input to its whole constructor; private generic raw square accepts ordinary coefficient equation which native proves before Ext",
+      "native_data": "original square/triangle/fibre transfer and rectangle predicates/maps retained; four actual endpoint HasExt only"
+    },
+    {
+      "family": "represented_postcomposition_source_values",
+      "result": "conditional mathematics/source supported",
+      "sources": [
+        "RepresentedSections9f9c",
+        "OriginalCohomologyZero8f70",
+        "OriginalRestriction13ad (wraps only)"
+      ],
+      "derivation": "reuse existing representedRightDerivedPostcompIso; existing zero-unit and exact postcomposition naturality prove whole unit/source square from actual ordinary representation; supplied I.extRightDerivedAddEquiv then same component gives literal mk0 and source values; raw variable-group evaluation only evaluates that completed equality",
+      "native_data": "same directImagePresheaf/evaluation/free-source and actual canonical resolution, original Ext restriction; no E/hE or reference representation"
+    },
+    {
+      "family": "slice_integer_source",
+      "result": "conditional mathematics/source supported; exact generic unused-context successor pending CPP",
+      "sources": [
+        "OriginalPullbackcbe943",
+        "SlicePullbackf43c",
+        "SourceSquared70b (existing native universe/continuity specialization)",
+        "AugmentationSections7571"
+      ],
+      "derivation": "actual site adjunction plus actual inverse-image adjunction construct original left-uniqueness comparison; same slice equivalence and original constant unit give integer source/evaluation; identity generator, terminal restriction and original integer/free-terminal augmentation prove whole source square; existing exact adjunction/source compatibility yields actual Ext comparison/injectivity/zero consequences",
+      "native_data": "sliceRestriction, inverseImageSlice, inverse comparison, integer source and augmentation operational definitions byte-identical; three independent base/chart/slice Ext worlds and original topology/compose conditions"
+    },
+    {
+      "family": "zero_transfer_and_field_values",
+      "result": "conditional mathematics/source supported",
+      "sources": [
+        "Zero2fc644",
+        "OverFielda740",
+        "PullbackLimitLegZero7144"
+      ],
+      "derivation": "actual Ext-zero coefficient postcomposition plus original zero pullback gives complete transfer section value; original over-field NatIso naturality feeds raw transfer theorem at same integer source; native degree-zero theorem uses same actual section map",
+      "native_data": "original rational-origin pullback/kernel/pointed map, structural over-field maps and unit/scalar/field/standard Ext hypotheses unchanged"
+    },
+    {
+      "family": "fibre_unit_and_generator",
+      "result": "conditional mathematics/source supported; current Unit provider actual pass, dependent native closure pending",
+      "sources": [
+        "UnitAssemblydd8e (actual freshPASS)",
+        "GeneratorZero543f",
+        "FibreProductGermZerobb429"
+      ],
+      "derivation": "actual unit Iso and Hom-injectivity derive original counit; actual original postcomposition Iso and existing zero-unit laws give whole derived transpose-unit identity; original identity-generator value and genuine ordinary representations derive all Hom and Ext-zero source values; same actual chart source/point germ naturality yields original fibre germ formula; V16 maps actual chart equality then composes same generator equality at inferred types, no new source/value assumption; V18 uses actual original source-generator equation directly and exact independent w/e instantiation, retaining inferred map/evaluation trans proof",
+      "native_data": "original sheafification, resolution, chart/fibre/point maps and base/chart/slice independent Ext worlds retained; no faithful/injective-preservation premise on forgetting/left functor; no desired germ/cohomology equation input"
+    },
+    {
+      "family": "fixed_geometric_system_values",
+      "result": "conditional mathematics/source supported; current FixedSource provider actual pass, dependent native closure pending",
+      "sources": [
+        "FixedSourceCohomology0b76",
+        "GeometricCohomologyDiagram3d6c"
+      ],
+      "derivation": "reuse original fixedSource and represented cohomology constructors; actual triangle inverse fixes transition; endpoint equality/HEq eliminations transport same map; original reindex/fixedSource_leftMap laws give whole cohomology transition; native actual triangle/source data identify original fibre-product restriction; V17 endpoint equality/HEq transport directly eliminates the supplied equalities and uses original map definition",
+      "native_data": "one actual schemeAdjunctionData/schemeIntegerSystem/fixedSource; local endpoint Ext for raw transfer, only actual stage-family Ext for diagram; no all-scheme or new apex HasExt"
+    },
+    {
+      "family": "exact_image_finite_reflection_native_line",
+      "result": "conditional mathematics/source supported; current OriginalComparisonb432 actual pass, dependent native closure pending",
+      "sources": [
+        "OriginalComparisonb432",
+        "ExactImageCohomology2e79",
+        "LocalFiniteComparisond9a0",
+        "NativeLineComparison8716"
+      ],
+      "derivation": "construct original exact-adjunction/source Ext equivalence and actual counit/unit/naturality; actual factor comparisons construct canonical mate and ordinary counit square; raw four-category Ext theorem gives whole square; actual mate IsIso and base bijectivity reflect through same constructed comparisons; original exact-source composition/equivalence factor yields native line transport",
+      "native_data": "no E/Eprime or final cohomology square premise; native finite/cartesian/Henselian/noetherian/sepclosed/P1/positive-killing-integer/scalar/standard-Ext conditions and original projection maps retained"
+    },
+    {
+      "family": "R_ISO_seam_locality_only",
+      "result": "supported within exact assigned locality scope",
+      "sources": [
+        "SourceCoherence443478",
+        "DiagramEtaleSections9611"
+      ],
+      "derivation": "one existing six-edge arbitrary-category proof moved to existing NaturalityTransport namespace; old native public name forwards with same telescope; actual native caller still proves original four input equations and evaluation map unchanged",
+      "scope_limit": "no framework, new point/source construction or expanded ordinary unit theory; every other native source body unchanged"
+    },
+    {
+      "family": "bounded_original_section_whole_value_bridge",
+      "result": "PASS mathematical/source and actual compiler closure on selectedpair",
+      "sources": [
+        "SourceSection.Transporta1fb",
+        "nativeSection7633"
+      ],
+      "derivation": "same wholeIso component law retained; generic ordinary functor evaluator maps original Comp/eqtransport/Id factor and cancels actual mappedIso; coefficient evaluator pastes original ordinary square with actual h1 coefficient law. Native supplies existing proved original h1comp/id/equality/coefficient facts and rfl original function views, with upstream raw SourceTransfer sourcecomp/unit proofs checked",
+      "scope_limit": "current selectedpair complete under old native premises; parent885fullsource construction retained; no whole52CPP or newmodel/reference category"
+    }
+  ],
+  "native_source_correspondence": {
+    "basis": "all31 original before hashes plus exact current native source diffs; prior covered native scopes retained only on exact compatibility",
+    "new_native_public_header_limit": "no original public header removed or changed on the remaining inspected native paths; relocated precompIsoAddEquiv retains same global namespace via public import",
+    "operational_data": "all remaining original native operational data definitions byte-identical except exact-image comparison now calls same actual generic adjunction/precomp constructor; same underlying maps verified by apply/unit/naturality laws",
+    "proofs_and_geometry": "original point/fibre/terminal/cartesian/field/finite/P1/source/Ext/scalar/sign conditions preserved; geometry producers not re-audited wholesale"
+  },
+  "relocations": [
+    {
+      "block": "precompIsoAddEquiv/apply/symm_apply",
+      "from": "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ExactImageComparison/Cohomology.lean",
+      "to": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparison.lean",
+      "exact_namespace_universe_doc_type_body_block_byte_identical": true,
+      "block_sha256": "d9c26998b73a250ae6d4aa47d1305891be15337c1733ad6c585a566cc88e80ef",
+      "boundary": "before new general section variables; exact v/w order/named binders retained; single implementation, native public import reexports names"
+    },
+    {
+      "block": "sectionSquareEvaluation_of_unit six-edge proof",
+      "to": "existing OriginalSections/SourceCoherence.lean NaturalityTransport namespace",
+      "legacy_forwarder": "native squareSectionEvaluation_of_unit in DiagramEtaleSections9611",
+      "boundary": "exact old category/twoIso/arrows/four input equations; only existing proof locality cleanup, no framework"
+    }
+  ],
+  "bounded_encoding_history": {
+    "accepted_prior_compatible": [
+      "OriginalSections57da-to2fc705 same desc augmentation proof",
+      "SourceSection085-to8856 same typed coefficient identity cancellation"
+    ],
+    "later_prior_scope_compatibility": [
+      "ordinary Pullbacke583-to1930 actual Functor.comp_map view",
+      "ConstantComposition22a1-tob641 same actual Functor.comp_map view",
+      "Terminal6d34-to7d49 same actual projections/coefficient B; then v4",
+      "Derived77dd-toe85 missing actual ExactFunctor import, adj-dependent dictionary moved inside constructor/proof, unused-context omissions and parser layout; then v4",
+      "Zero0534-to3c631 adds exactly two original zero consequences, then2fc644 comment-only fix"
+    ],
+    "new_argument_encoding": [
+      "InverseRectangle854b-to4bcf adds exact Iso.app_hom projection",
+      "RepresentedSections6d4e-to9f9c uses actual existing source-naturality import, removes redundant rfl, evaluates same whole group unit/source equations at raw variable group carriers before derived substitution"
+    ],
+    "v4_packet": "migration/implementation/whole-w10-remaining/lower-repairs-v4/READY.json",
+    "v4_packet_sha256": "9da41ffdef80a8ccba1eb448a69f838e0313fb26868d6908f7df43d696ffaf1a",
+    "v4_delta": "migration/implementation/whole-w10-remaining/lower-repairs-v4/DELTA.patch",
+    "v4_delta_sha256": "a5445edc6ec81c4292e8880558f68de45d2f24d4b66438e53c5eddebca8ae3d3",
+    "v4_sources": [
+      {
+        "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/Terminal.lean",
+        "before_sha256": "7d4902e1864c28d073c9c895c65a8b169050b50e31efa6cda80c97eb9722641f",
+        "sha256": "4ffa146d9ef6d677c65c6e9b7852414a2d17bc4d48e8423761792ef2d8ca0f0d",
+        "source_path": "migration/implementation/whole-w10-remaining/lower-repairs-v4/source/Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/Terminal.lean"
+      },
+      {
+        "path": "Aglib/Algebra/Homology/RightDerived/Postcomp/UnitAssembly.lean",
+        "before_sha256": "331551eb2ed1aa3a576b9b1cc70634a905ad098b441f4419a830949e23590930",
+        "sha256": "dd8eae75b2ea1b1690bca4958e9db00765d439858be7844bc126a59989c7505a",
+        "source_path": "migration/implementation/whole-w10-remaining/lower-repairs-v4/source/Aglib/Algebra/Homology/RightDerived/Postcomp/UnitAssembly.lean"
+      },
+      {
+        "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/DerivedPullback.lean",
+        "before_sha256": "e85d77b64be82b1da7118cee38a712268fdc4c3d876aec25b449d3a144f1bb74",
+        "sha256": "1bd216a893a823bfe381273adf4817d2f57e06272c1b3134e77d7c58cb914af0",
+        "source_path": "migration/implementation/whole-w10-remaining/lower-repairs-v4/source/Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/DerivedPullback.lean"
+      },
+      {
+        "path": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparison.lean",
+        "before_sha256": "74fa3efd9b6b0d0306c8332f1a9427e71a7d9497eceeeb789c7c9e470f851c9c",
+        "sha256": "98b25a743d9f670f9d53d31478a08e46d39ae97e7f1407008844d862cac4d617",
+        "source_path": "migration/implementation/whole-w10-remaining/lower-repairs-v4/source/Aglib/CategoryTheory/Abelian/Ext/OriginalComparison.lean"
+      },
+      {
+        "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/FixedSourceCohomology.lean",
+        "before_sha256": "ba8ae8b1d26fec7e8fd68279ea346d02aded86671fec5e033441c0020325482b",
+        "sha256": "0b76869bc83c0f64ac29a4c46e2d915e56f8298a0b874ad5ab9ff4851f22b9d8",
+        "source_path": "migration/implementation/whole-w10-remaining/lower-repairs-v4/source/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/FixedSourceCohomology.lean"
+      },
+      {
+        "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/ConstantCoherence.lean",
+        "before_sha256": "eae0cfc9907eb2805aa26f7886f809c10fb7f4268bed9974339451bc0052bd90",
+        "sha256": "3c0ad44bddd46ab4cb08b57909f1cbf88951224241ee1c923371225a860de61f",
+        "source_path": "migration/implementation/whole-w10-remaining/lower-repairs-v4/source/Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/ConstantCoherence.lean"
+      }
+    ],
+    "v4_scope": "same terminal/pushforward/constant-unit projections; actual counit component/triangle; proof-local injectivity dictionary and same homology identity; literal Ext Iso endpoint types/counit naturality/whole coefficient square; literal fixed-source identity; explicit original associator normalization",
+    "native_maps_conditions_options": "no changed original native data/maps/headers/premises/worlds/scalars/signs; no budget/trust/option suppression; generic omissions remove unused contexts, no stronger premise",
+    "performance_boundary": "actual represented fullmodule9f9c pass under default200000 retained; raw-group evaluation source method inspected, no causal speedup or benchmark asserted",
+    "reviewer_source_authorship": "none",
+    "v5": {
+      "packet": "migration/implementation/whole-w10-remaining/lower-repairs-v5/READY.json",
+      "packet_sha256": "9c2463f883e72e89cf5ec239a710431035721ff02b58a3ed86003f540d5deb81",
+      "live_packet_sha256": "804b806332c0b5f662609383bb2b41489db894352e34819a34d2af7f716ed942",
+      "delta": "migration/implementation/whole-w10-remaining/lower-repairs-v5/DELTA.patch",
+      "delta_sha256": "4eb1b3729210cafd8dd236daa9cf412a6960f31c6e58c05cd8bdd28e7b2f53e5",
+      "sources": [
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/Terminal.lean",
+          "before_sha256": "4ffa146d9ef6d677c65c6e9b7852414a2d17bc4d48e8423761792ef2d8ca0f0d",
+          "sha256": "a1ade3e2e14e2dc675bf69666c70874bf1aab1cd5a452bc3d8cd24948058ef8f"
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/DerivedPullback.lean",
+          "before_sha256": "1bd216a893a823bfe381273adf4817d2f57e06272c1b3134e77d7c58cb914af0",
+          "sha256": "0454513316150fd87ffde2fa757e67314a0fb9ce4a627e7245faf9d8d7adf372"
+        },
+        {
+          "path": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparison.lean",
+          "before_sha256": "98b25a743d9f670f9d53d31478a08e46d39ae97e7f1407008844d862cac4d617",
+          "sha256": "b4326fdbaf28b225738ddb9f5dedc254db39b3f641c440cab60b98c6f05a311e"
+        }
+      ],
+      "source_judgment": "compatible bounded encoding/prose continuation; no original definition/header/map/premise/model/world/source/unit/generator/scalar/sign/option change",
+      "Terminal": "same lift/whiskering/evaluation projections normalized before existing raw terminal equation; no-progress dsimp removed",
+      "DerivedPullback": "explicit typed Category.comp_id on same actual homology map, prefixed by same original resolution comparison and followed by existing hs",
+      "OriginalComparison": "only docstring line wrap; proof tokens unchanged",
+      "source_guards": "all3 immutable bytes and current51 live vector matched; earlier3 frozen reports unchanged",
+      "CPP_at_v5_retention": "no source-bound successor outcome consumed; pending",
+      "later_actual_CPP": "D325: Derived045451/OriginalComparisonb432 pass; Terminala1ade failed; exact v6 supersedes Terminal and ExtPullback, outcomes version-bound"
+    },
+    "v6": {
+      "packet": "migration/implementation/whole-w10-remaining/lower-repairs-v6/READY.json",
+      "packet_sha256": "1a8eb07d8bc764380fdbe16bb3560e6f6ba8a7c548cbe4702fcbb18c4104670e",
+      "live_packet_sha256": "c52c0b781157d32f60216d1d116419a1083f2cc5fb6f77091bac8abd7cfe8699",
+      "delta": "migration/implementation/whole-w10-remaining/lower-repairs-v6/DELTA.patch",
+      "delta_sha256": "44e5d6a7ade997365ab6f367e59044fb77026af0505db8c6a5af26f00d19b6b3",
+      "sources": [
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/Terminal.lean",
+          "before_sha256": "a1ade3e2e14e2dc675bf69666c70874bf1aab1cd5a452bc3d8cd24948058ef8f",
+          "sha256": "a07db168035ae269bacf838456624361fb8229e2b45cdabf002d3d0936b9a337"
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/ExtPullback.lean",
+          "before_sha256": "b9704bb71eeb786a3ade19cc056b7b3a1d723ca500eca18728ee936aa2670fc6",
+          "sha256": "6bba10adae5ce15c909c899a217782a57d217cb72ffa42f7e40f4c13c6846232"
+        }
+      ],
+      "Terminal": "only inducedFunctor and identity-NatTrans app projections of same actual sheaf/evaluation construction",
+      "ExtPullback": "proofs unchanged; supplied-resolution extMk omits unused global EnoughInjectives C/D and constant K/Kprime Additive, full supplied-lift comparison omits unused G.Additive; two line wraps; actual supplied resolutions/exactness/source premises retained",
+      "source_judgment": "compatible bounded source continuation; generic unused-instance omissions add no premise and change no original native header/map/data/world/model/source/unit/generator/scalar/sign/option",
+      "source_guards": "all2 immutable bytes, current51 live vector and earlier3report identities matched",
+      "CPP_at_v6_retention": "pending, no source-bound current outcome consumed",
+      "later_actual_CPP": "D6fe4 actual Terminala07db projection and Ext6bba line-length failures; v7 successors passed Dc006"
+    },
+    "v7": {
+      "packet": "migration/implementation/whole-w10-remaining/lower-repairs-v7/READY.json",
+      "packet_sha256": "b17e029e4615f4a5b1681ad2b6196ab6036267540059677a36e5765063c76189",
+      "live_packet_sha256": "12403c61620d9f0e46ee2cda2be3ca4a75ba2d26ad0c3ce215aab380cacd869a",
+      "delta_sha256": "da666d23c51710073defa0946954e175efa5bef49cf51c03cfc064f5c8a6f697",
+      "sources": [
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/Terminal.lean",
+          "before_sha256": "a07db168035ae269bacf838456624361fb8229e2b45cdabf002d3d0936b9a337",
+          "sha256": "aa1604a3fd54c9cf83d6ad731f9782792766a2f6abdcf07868b0fdb9f0b3dd25"
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/ExtPullback.lean",
+          "before_sha256": "6bba10adae5ce15c909c899a217782a57d217cb72ffa42f7e40f4c13c6846232",
+          "sha256": "d1ea19c6d66dddd59e5ae4ae622813bff7006207bb848af534490d65e6d487c1"
+        }
+      ],
+      "source_guards": "exact immutable source and current51 live/prior3frozen reports matched",
+      "source_judgment": "compatible bounded encoding/whitespace delta; same original constructions/data/native headers/maps/conditions/worlds",
+      "Terminal": "only normalizes actual Quiver.Hom.unop_op and Iso.symm_inv in existing raw whole equation",
+      "ExtPullback": "two line wraps only; proof terms unchanged",
+      "CPP": "actual Dc006 matching Terminalaa1604/Extd1ea19 passes; priorv6 failures preserved"
+    },
+    "v8": {
+      "packet": "migration/implementation/whole-w10-remaining/lower-repairs-v8/READY.json",
+      "packet_sha256": "29f6b7c274c1dbd72f03be0121f9556c93631c9bf70b4a4de4d59bb6327ce13f",
+      "live_packet_sha256": "82481e3e26896284a34780a862ae444eaeb1966a12e72143d3f5a1c8149f01af",
+      "delta_sha256": "280968c7da55ece20169994f5567b5c1f4c3c382f9b09bf89ab0481fb5d32fd0",
+      "sources": [
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Slice/OriginalPullback.lean",
+          "before_sha256": "a70d8b93359e155e30a265c27e027199e469dac94651bb0d590f06f1b94a99ec",
+          "sha256": "6a753cd8a71d8864176ef0adca97990723505598d0587c64f5c0694aa52ef4c2"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackComposition.lean",
+          "before_sha256": "323ab0ddf1ac47ba35583fccfc2012f16ebfae8de1218af1a404ade51ff7a259",
+          "sha256": "90f83c812551762229d078f12246e7d2efa853ebcb78563e991ff18559a9edab"
+        }
+      ],
+      "source_guards": "exact immutable source and current51 live/prior3frozen reports matched",
+      "source_judgment": "compatible bounded encoding/whitespace delta; same original constructions/data/native headers/maps/conditions/worlds",
+      "OriginalPullback": "actual site-adjunction unit component after ordinary identity normalization plus literal hproj transports existing whole unit_leftAdjointUniq; typed F.map_id before same integer-Hom source value; no new premise/conclusion square",
+      "native_H1Composition": "two line wraps only, statements and proof applications identical",
+      "CPP_at_initial_retention": "current two sources pending",
+      "later_observed_CPP": "c5a partial: nativeH1Composition90f8 observed pass, genericSlice6a753 observed failure; no final receipt/aggregate inferred"
+    },
+    "v9": {
+      "packet": "migration/implementation/whole-w10-remaining/lower-repairs-v9/READY.json",
+      "packet_sha256": "bcc02b54e5b2cad215fec88be6f18bc8233a60788cdebc4c9748449716ff7cc3",
+      "delta_sha256": "04a7e9a7467aeae7009a40c7d077facd92b4e5192fe6e21802c3ac0509c935dc",
+      "sources": [
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection/Transport.lean",
+          "before_sha256": null,
+          "sha256": "1af9eadc0e50ec6b1c9995c98d16096b2268d54245562293405938fdea3c66ba"
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Slice/OriginalPullback.lean",
+          "before_sha256": "6a753cd8a71d8864176ef0adca97990723505598d0587c64f5c0694aa52ef4c2",
+          "sha256": "3ac02d7e98742f552ff1cc3805dc301c78383a01c7c19753bac035659747c2e0"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean",
+          "before_sha256": "a433e8aacacd222ad988c9c60e0779c593172f4eadfce2be8fa3fa384586d747",
+          "sha256": "54827938e612b1945ac212115ec394572be025da4688e9be4e5dd6ceb45437a7"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/DegreeZeroPullback.lean",
+          "before_sha256": "2dfe0b01f30f7eebf48d710ecbdaa08cbd148a916411e97ce53b795dc886cbdc",
+          "sha256": "0d5764bf53c45691aeafe658dd3eb9a00d495c565c81a0926f3ac54cef00fcc9"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/OriginalRestriction.lean",
+          "before_sha256": "6ac14d022756888f30be1af8e55e1f44ce2c8df0b06043cc721cdae82416efb4",
+          "sha256": "13ad86350bafc8c58d62008c7f9ae01edc64a2d2cbfc2c0f50e9dde42d0adb2d"
+        }
+      ],
+      "SourceSection_Transport": "whole original Iso component through SAME functor family K and indexing equality, cases h/rfl before native concrete projection; no desired retraction/cohomology/unit/source-square premise or reference family",
+      "native_Section": "instantiate same original inverseImage/Comp/equality/Id; complete sectionCoefficientIso, sectionCoefficientNatIso and sectionPullback declaration blocks byte-identical; raw extCoefficientTransfer and extPrecompMap goals preserve actual original heads before exact inferred equation; no opaque Shrink/equivShrink unfolding",
+      "Slice": "literal original Z-to-freeAb type supplied to existing constantIntegerFreeTerminalIso; genuine site/Hom/free-size universes inferred instead of positional free-size universe slot",
+      "DegreeZero_and_OriginalRestriction": "whitespace line wrapping only",
+      "source_judgment": "supported bounded whole-value bridge and exact encoding deltas; original native headers/data/maps/premises/models/worlds/geometry/signs/scalars preserved",
+      "SourceSection8856": "stable exact passed provider unchanged",
+      "native_data_blocks_byteidentical": [
+        "sectionCoefficientIso",
+        "sectionCoefficientNatIso",
+        "sectionPullback"
+      ],
+      "publication_at_guard": "R-only; all candidate hashes and exact four live before-images/newleaf absence guarded",
+      "performance_episode": {
+        "path": "migration/implementation/whole-w10-remaining/lower-repairs-v9/PERFORMANCE_EPISODE.json",
+        "sha256": "a256270b75c995451e3eeb95c00c7b355731b082aa64933416e8e4f893e240f3",
+        "actual_old_source": "Sectiona433 line52 kernel deterministic timeout, logged254s; line110/138 H1-versus-rawExt expected-type mismatches",
+        "mechanism": "compare SAME whole Iso over variable functor family/index equality before concrete projection; preserve raw actual transfer heads",
+        "boundary": "not run on v9; no isolated conversion pair, unique cause, matched speedup, budget/option/trust increase or certification claim"
+      },
+      "later_publication": {
+        "live_packet_sha256": "95f4c82cdbb1352f73aaba45892f282da029c4703bbafa6566de10e511e0992a",
+        "same_source_bytes": true
+      },
+      "CPP_at_initial_retention": "uncompiled v9 candidates; prior outcomes bound separately",
+      "later_actual_CPP": "V9 D28352: Transport1af/DegreeZero0d/Restriction13ad pass, Slice3ac/Pullback4225/Section548 failed; exact old inputs retained"
+    },
+    "v10": {
+      "packet": "migration/implementation/whole-w10-remaining/lower-repairs-v10/READY.json",
+      "packet_sha256": "ea8480b1a5b2b68279b6ed57ff8adda4648917f8bd2e4365d7888333581d9a53",
+      "live_packet_sha256": "5696233859ab48ee379bb31a4620e4d45448c7036fe6c7a18c3b6988df0f0c4b",
+      "delta_sha256": "ecef4d5767d6e9b7838da116ed512b9c28dcedbc1092726f0d598764272f7f85",
+      "sources": [
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Slice/OriginalPullback.lean",
+          "before_sha256": "3ac02d7e98742f552ff1cc3805dc301c78383a01c7c19753bac035659747c2e0",
+          "sha256": "cbe94306f31845d4b0af2b66b2c1cf413553ed34ca5bd87aeba7abaa0d63e60f"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Pullback.lean",
+          "before_sha256": "422538553e1e4e9f09a7eae2613e19510272a85c6ab5cb30f0d12269511ba9ec",
+          "sha256": "61895cf04e779cd4b0d7b7ba685ab189577175a7f6391084d3c7808ff4f67500"
+        }
+      ],
+      "source_judgment": "compatible bounded continuation; no original native map/header/model/world/geometry/scalar/sign/generator premise changes",
+      "publication": "LIVE, exact current52 guard matched; no current compiler result consumed",
+      "Slice": "drops four compiler-reported unused generic WEqualsLocallyBijective/HasSheafCompose J/over contexts; actual hc/source square/proof terms unchanged, no native conditions changed",
+      "Pullback": "two line wraps only",
+      "CPP": "not inferred from prior old3ac/4225 failures"
+    },
+    "v11": {
+      "packet": "migration/implementation/whole-w10-remaining/lower-repairs-v11/READY.json",
+      "packet_sha256": "d451cf8c868231935011b087a45291f14810f8f02555a4c497119b66634ec8d7",
+      "live_packet_sha256": "a9b497465f760f3e3f8907f2f46e97a200103438f5c701a151b28b5f51bd7bce",
+      "delta_sha256": "24b54e559aba4ac1019fe418fbd68f60074972818e86745928dfcf9397c59943",
+      "sources": [
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection/Transport.lean",
+          "before_sha256": "1af9eadc0e50ec6b1c9995c98d16096b2268d54245562293405938fdea3c66ba",
+          "sha256": "a72491881b24f9de8591bb0fceb3afaebbef44a8a783bf3094717611b9da1d57"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean",
+          "before_sha256": "54827938e612b1945ac212115ec394572be025da4688e9be4e5dd6ceb45437a7",
+          "sha256": "568deb6ff1dc5ce90ee361ed676db3ea44f706a3cde26d947ea330dbafa45643"
+        }
+      ],
+      "source_judgment": "compatible bounded continuation; no original native map/header/model/world/geometry/scalar/sign/generator premise changes",
+      "publication": "LIVE, exact current52 guard matched; no current compiler result consumed",
+      "source_unit": "same actual functor family/equality, original identity constant comparison, inverse/hom identity proves unit equation before native projection",
+      "given_map_views": "E/P/Q are actual additive maps determined by hE/hP/hQ to original intrinsic Ext operations; hphi identifies canonical sourceSectionIso actual component; rewrite defining equations then unchanged885 complete construction proves retraction/naturality",
+      "native": "three private rfl map-definition equations; actual original maps retained in public conclusions; original hcomp/identity source supplied, all3data blocks and6current public theoremheaders unchanged",
+      "not_a_conclusion_premise": "no retraction/naturality/final cohomology square required as input; no arbitrary comparison equivalence/reference family; normalization views retain original operational heads",
+      "stable_provider": "SourceSection885 unchanged and previously actually passed",
+      "performance_episode": {
+        "path": "migration/implementation/whole-w10-remaining/lower-repairs-v11/PERFORMANCE_EPISODE.json",
+        "sha256": "c0e3bda8baffaaf0015edf46cefc6c7318f9811d16c4292038a56c169a34838a",
+        "actual_old_kernel_failure": "Section548 line85/128 deterministic timeout, module441.817175s D28352/SOURCEfa706",
+        "method": "retain actual complete maps through defining equations; source-unit transport before native projection; same unchanged885 full construction",
+        "boundary": "currentV11 uncompiled; no unique conversion pair/cause or matched speedup; default200000/native options/pins/trust retained"
+      },
+      "CPP_at_initial_retention": "ONE actual Section-root producer dispatching per owner; no outcome consumed; alternative2dee/7633R-onlyUNEXECUTED and excluded",
+      "later_actual_CPP": "a724 generic PASS07fade resource-interrupted run; separate ordinary365 native568 sole real kernel108 failure; currentselected2dee-toa1fb/7633 replaces this route",
+      "alternative_scope_at_v11_cut": "atV11 alternative was R-only/unexecuted; selected explicitly inV14 later"
+    },
+    "ancestor-repairs-v13": {
+      "packet": "migration/implementation/whole-w10-remaining/ancestor-repairs-v13/READY.json",
+      "packet_sha256": "08467dab4589294a4b9b993ee43360df0823c6efe62a72da8d6dc4bad52bd42a",
+      "live_packet_sha256": "78df9ab9ecba6f8d8c2eb79cd85535727427510f6966bf36cc45c22f288286ab",
+      "delta_sha256": "82cb2a73b5b4276a76f9e545755842d05d84fbc60085e6cbca09e50c791032fe",
+      "sources": [
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SlicePullback/SourceSquare.lean",
+          "before_sha256": "4079edd607b50a1f9047ff3abfa63e058bd8a24fe3ed8babba4f273144022359",
+          "sha256": "d70b5015a942ba3cccce72e48cb928b83f6358f18c76e8e724afa4c863ec27b5"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/PullbackComposition.lean",
+          "before_sha256": "6e8c5b6fd18518531931b35c46aaf953187319817aaabe43e0f579607d2d7b98",
+          "sha256": "99bc01d24b4eb5651b372e0fb83995606c4ecb364fcd3529db6277d2ae8c97da"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ExactImageComparison/Cohomology.lean",
+          "before_sha256": "2e79adb1796e1ba458454a9d740c8ec9b3a25342b1d82a0bba20947a75a008ab",
+          "sha256": "c5733c8131bd9a5e1d6f7ab1de54b979230d667982d4d1c526adc1629be65942"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/SplitCoefficients.lean",
+          "before_sha256": "3eb18369155b158504c043dbc6b0704bbc791ab3b4c16825170aa680d1c9ed53",
+          "sha256": "842c83a9744e71acb3cf348f1e0b947eac691e2d62ba4fde40e74b4f0ebf199f"
+        }
+      ],
+      "source_guards": "all immutable afterimages/current52live/prior3report identities match",
+      "source_judgment": "compatible exact native existing site/Hom/free-value universe specialization; same chart continuity uses existing named Etale provider, proof-local let; other3files wraps/empty-line only",
+      "V12": "two prepared identical ancestor sources never separately published/run; coalesced explicitly inV13 four-file packet",
+      "conditions": "no native hypothesis/map/data/header/world/Ext equality change; current chart already Etale",
+      "CPP": "independent B79f graph per owner, no final outcome consumed here"
+    },
+    "section-h1-route-v14": {
+      "packet": "migration/implementation/whole-w10-remaining/section-h1-route-v14/READY.json",
+      "packet_sha256": "9d85cb4a94b341d68c8f0794c631bd49ec8bbd6dcf039f0fe14ffd435ca71285",
+      "live_packet_sha256": "e92a14aba709ca9b6a889e2289a66a592f3d6703b8580ff2cf497a91de51ed1e",
+      "delta_sha256": "bdaab98beb2fe05fbe330c2ec942e6a7c047356c12c5541a61c8ca75f94b9062",
+      "sources": [
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean",
+          "before_sha256": "568deb6ff1dc5ce90ee361ed676db3ea44f706a3cde26d947ea330dbafa45643",
+          "sha256": "7633e1a279c7b0b61ff16f2d8cc5a4fc967a55b0084a56b9307298cb87c0d295"
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection/Transport.lean",
+          "before_sha256": "a72491881b24f9de8591bb0fceb3afaebbef44a8a783bf3094717611b9da1d57",
+          "sha256": "2dee3b021c79520b0d20be7f742c630916d0f3d6c690ee64c3449a4a80a593f6"
+        }
+      ],
+      "source_guards": "all immutable afterimages/current52live/prior3report identities match",
+      "source_judgment": "supported actual ordinary-H1 proof-route delta from V11, not transferred kernel verdict",
+      "selected_current_lower_successor": "v15a1fb; V14lower2dee failed9050, native7633 unreached there",
+      "premise_chain": [
+        "actual existing h1Functor B with coefficientMap action",
+        "literal sectionCoefficientIso hom factor Comp.inv/eqtransport/Id",
+        "actual h1Pullback_comp at p,o with separate w/wprime and basew reused for same genuine category",
+        "actual equality transport of scheme section equation",
+        "actual h1Pullback_id",
+        "ordinary whole coefficient NatIso naturality",
+        "actual h1Pullback_coefficientMap"
+      ],
+      "upstream_source_obligation": "h1 comp/id are already proved raw SourceTransfer consequences of original constant source comp/unit; coefficient pullback law is original exact-functor Ext composition; equality transport by actual equality elimination. No section retraction/naturality conclusion is a new premise",
+      "generic_derivation": "map literal inverse/transport factor with same functor, cancel T.mapIso(c), substitute actual transported values; coefficient evaluator maps ordinary square then same original pullback coefficient equation",
+      "model_world_boundary": "one actual h1Functor/actual cohomology, pure functor category helper only; independent eC/eV/eW input/output worlds preserve native w/wprime; no reference Gamma/category/source or new carrier",
+      "native_data_headers": "all3data declaration blocks and6currentpublic theoremheaders unchanged versus568; rfl actual function views preserve complete native conclusion maps",
+      "removed_V11_views": "only intermediate newTransport views with no remaining N consumers after bounded reference check; sound olda724pass and native568failure retained historically",
+      "CPP": "V14lower2dee actualFAIL9050; current native7633 then freshPASS0882 with correctedlowera1fb"
+    },
+    "section-h1-route-v15": {
+      "packet": "migration/implementation/whole-w10-remaining/section-h1-route-v15/READY.json",
+      "packet_sha256": "cc54657b6ee8c10dc71a1717b87fe3987f8ed99ca5f1657643524d126854004e",
+      "live_packet_sha256": "05eba7dfd4d35159374762d84d72a91618188907fee36bf705b979a0a491802d",
+      "delta_sha256": "ad172a59f6a5515ca8558e83472667c4a7c041236f2edb14c61535cfcd719db6",
+      "sources": [
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection/Transport.lean",
+          "before_sha256": "2dee3b021c79520b0d20be7f742c630916d0f3d6c690ee64c3449a4a80a593f6",
+          "sha256": "a1fb5123c6bbf273d62feff730e3e788abbab1e3615b3bc1afe20ddaf8b5a938"
+        }
+      ],
+      "source_guards": "all immutable afterimages/current52live/prior3report identities match",
+      "source_judgment": "same ordinary coefficient function application exposed before existing hp rewrite; no statement/proof-premise/model/world/data/native change",
+      "native7633": "byte-identical toV14, unreached onV14lower failure; actualPASS with corrected currentlower here",
+      "CPP": "actual full selectedpairPASS0882 closed0/twofront/no drift"
+    },
+    "relative_germ_v16": {
+      "packet": "migration/implementation/whole-w10-remaining/relative-germ-repairs-v16/READY.json",
+      "packet_sha256": "e0563e6ab3117003b928073039af37164d353aaa8b750537af9904cbf617f9fb",
+      "live_packet_sha256": "cd895fa613310b903cd8088077b1022a64e4a47ed76a1e77100c31ad0d89b095",
+      "delta_sha256": "521624874408af173bb772bf479c24787a59c8f6fc6f7c3dd21d7e2f49945376",
+      "sources": [
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/RelativeCohomologySquare.lean",
+          "before_sha256": "771313931644a3dacc548a0aa6de95e9fe9d59f0474ce2dbb094afa0b3c00f84",
+          "sha256": "1d32a4d082077ae138d4a7f63a616ecdae398a2efcc35eb49d97d3ee09a03274"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean",
+          "before_sha256": "0d21bfa7dc572899c782946b234dded91c2c14f2f939f72c31a74aae4b11551a",
+          "sha256": "2aa34718ad6023b4ca06f7cb6f3b0b2d185e5d66bc0c2e911590dcab9d2e17df"
+        }
+      ],
+      "Relative_coefficient": "original schemeLeft_eq_inverseImage normalized in actual inferred whole coefficient equation and goal",
+      "Relative_transfer": "compose existing complete63b cohomologyTransfer_comp for both paths, same ordinaryhCoeff, then actual cohomologyTransfer_transport with checked orientation before element evaluation; complete63b composition itself uses raw SourceTransfer and original inverse constant-source coherence",
+      "Germ": "infer complete existing generator/source/map value equations, map actual chart equation by original zero/evaluation function, compose .trans at actual types instead of large-goal rewrite",
+      "mathematical_source_verdict": "supported same whole construction/data/map/source/generator/conditions/worlds; no desired final rectangle/germ premise or reference model, no limit increase",
+      "scope": "native same-e4endpoint interface unchanged; original general4category Extworld provider retained; allpublicheaders, actual base/chart/slice Ext/point/field/geometry/scalar/sign premises unchanged",
+      "providers": "63b/885/a33/d26b/Generator543f/Unitdd8e unchanged; selectedSectiona1fb/7633 remains actually passed",
+      "CPP": "current2pending, actualold7713/0d21 B79 failures preserved"
+    },
+    "geometric-map-transport-v17": {
+      "packet": "migration/implementation/whole-w10-remaining/geometric-map-transport-v17/READY.json",
+      "packet_sha256": "f91fb52730b015a1543279f04428523fd62fc634ef926f372c4a82f22eb3afab",
+      "live_packet_sha256": "9f013ca8cbcd820ad3d4744685480685a485c84cb97bff434e16c5f652101a75",
+      "delta_sha256": "71826cb1c4d7e090539601533dfdd61882ff1daa12e12e977319da910a8ecb6a",
+      "sources": [
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricCohomologyDiagram.lean",
+          "before_sha256": "cd99f4dab63cea1250eab0ecf767e84fec0a19c37782b0a36862f50221a25405",
+          "sha256": "3d6c2a26806d41bd28f11537d0f98ffb038a5463f29331a90b97b5c3db103a71"
+        }
+      ],
+      "source_guards": "all immutable afterimages/current52live/prior3report identities match",
+      "CPP": "no current source-bound result consumed; ordinary owner graph independent of review",
+      "derivation": "eliminate supplied actual arrow equality and coefficient HEq, then original native transfer definition reflexive; same original equality-transport argument as genericSystem.extTransfer_of_heq",
+      "source_judgment": "supported same maps/data/all11headers and endpoint HasExt/world scope; no reference System or new comparison",
+      "old_failure": {
+        "run": "remote-c3685c1c4a0145edaa978f957969edc2",
+        "source": "83cb2e8464e8bde4e29ec4e1163970ff18121c79cb82f8203a251e76c03a4a0d",
+        "full_owned_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/N-partial-c3685c1c/final/Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricCohomologyDiagram.log",
+        "log_sha256": "f4fccaa0ccfbbd86774b06f84916deb2f46fa6ea5218eca241ebaef41e76e635"
+      }
+    },
+    "germ-generator-view-v18": {
+      "packet": "migration/implementation/whole-w10-remaining/germ-generator-view-v18/READY.json",
+      "packet_sha256": "f1276e8e85d451be024b8fd867811c903b9c0c371a208a79bf531865e2ae85f1",
+      "live_packet_sha256": "56a5a71b87dfaa3e52d0ed1fe168cc95aa4e536caf45cb24680cb4a2aad394ce",
+      "delta_sha256": "1e1ca69290e68df1bb06080fcadc0278e239164077c84b67901f507f580a5f09",
+      "sources": [
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean",
+          "before_sha256": "2aa34718ad6023b4ca06f7cb6f3b0b2d185e5d66bc0c2e911590dcab9d2e17df",
+          "sha256": "bb4293939dbddb023bff5e67709ffe7423978153f6e50f674aac70e0a873ea0a"
+        }
+      ],
+      "source_guards": "all immutable afterimages/current52live/prior3report identities match",
+      "CPP": "no current source-bound result consumed; ordinary owner graph independent of review",
+      "derivation": "use actual original chartComparisonSource_generator directly at actual map heads; explicit genuine C/D/Ext w/e instantiation of existing generic generator theorem, retaining inferred chart/evaluation trans chain",
+      "source_judgment": "supported; public7headers/data/source/generator/scalar/sign/point/geometry conditions unchanged, no recursion increase or Ext/value collapse",
+      "old_failure": {
+        "run": "remote-73e08631689f43e2ab14fa0e1544ffee",
+        "source": "f204986329b4dccb6264cff6af24f682a6f6db14ce2f90b8a397ec36e10bf75f",
+        "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-73e08631689f43e2ab14fa0e1544ffee/build.log",
+        "actual_site": "133 change at hb converting completechartHomSectionsEquiv; NOT latergenericgeneratorcall."
+      }
+    },
+    "relative-whole-values-v19": {
+      "packet": "migration/implementation/whole-w10-remaining/relative-whole-values-v19/READY.json",
+      "packet_sha256": "382f0ccc90b1e578b22d64ceaa90607c902339ca0cdec1ca3eb2a86f6e70d862",
+      "live_packet_sha256": "d5c67f6645856cffc1c07215a370a7987ce97210c1d545667ccf3eb05d71be1f",
+      "delta_sha256": "45c8bc496384d9fcd777155177ae56494f58d080fa472da0a2ddbcb2f2a43a26",
+      "sources": [
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/InverseRectangle.lean",
+          "before_sha256": "4bcff42ba740375ed8923f035b8e5257c119a21303f7a163810e11faaa240fa2",
+          "sha256": "20269ada008afa55594a013ffbb89663a89edeaf778f405ce948843895bfdd48"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/RelativeCohomologySquare.lean",
+          "before_sha256": "1d32a4d082077ae138d4a7f63a616ecdae398a2efcc35eb49d97d3ee09a03274",
+          "sha256": "e44959c6c7941a1e64cb440000dd09a0838b11e3ccd013784f09ef981459dd9d"
+        }
+      ],
+      "source_guards": "all immutable afterimages/current52live/prior3report identities match",
+      "CPP": "no current source-bound result consumed; ordinary owner graph independent of review",
+      "derivation": "native whole triangle-square law constructed beforeF on five original actual comparisons via existing d833 triangleSquare_whole_of_eq; original scheme triangle/square/transpose identities prove each binding. Generic inverse evaluator projects this proved whole law, factors actual square through SAME K(k)=inverseImage(k)/hRect with original composition isos, then oldfive_iso_inverse_prefixed gives literal inverse coefficient transport",
+      "worlds": "six independent category/Hom worlds, onlyCategory/functors/originalIsos; no Abelian/Ext/derived/point/geometry model in evaluator",
+      "why_not_desired_premise": "generic ordinary whole law premise is actually derived natively from original coherent adjunction data beforeF; no final inverse coefficient or cohomology rectangle assumed",
+      "source_judgment": "supported whole construction/source correspondence; all priorlower declarations byte-identical, original native imports/3headers/later2bodies unchanged, passedSection untouched",
+      "publication_history": "R-only first read, same exact bytes LIVE at final guard",
+      "old_failure": {
+        "run": "remote-73e08631689f43e2ab14fa0e1544ffee",
+        "source": "f204986329b4dccb6264cff6af24f682a6f6db14ce2f90b8a397ec36e10bf75f",
+        "primary_diagnostic": "first public coefficient theorem line36 kernel deterministic timeout",
+        "later_line90": "unknown constant cascade, not an independent theorem verdict",
+        "formation_only_probe": "9ac430a39fa7b918482c56c547be05fcf857fde157526df42196143129fcada7; owned by broker, result not consumed or assumed here"
+      },
+      "old4bcf_pass_limit": "unchanged prior declaration prefix only; new20269wholemodule uncompiled"
+    }
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "kind": "source-only generic encoding obligation, not compiler-negative claim",
+      "source": "ConstantCoherenceeae0 originalSource_comp:56-60",
+      "issue": "projected pinned associativity equation contains associator identity component that change cannot generally erase definitionally in arbitrary category",
+      "mathematical_status": "intended equation follows from same associativity and category-unit axioms",
+      "resolution": "author-owned3c0ad44b explicitly normalizes projected original hom/app/associator identity before same change",
+      "resolution_source_supported": true,
+      "resolution_CPP": "actual matching freshPASS3c0a on remote-c0064843/SOURCEae6cf433,3.383726s; old eae0 still not assigned a compiler-negative or pass",
+      "prior_report_effect": "frozen section-zero conditional result retains mathematical claim and historical pending boundary; affected fixed proof encoding is qualified here, not retrospectively marked compiled"
+    },
+    {
+      "id": "F2",
+      "kind": "provider identity compatibility qualification",
+      "old_pin": "SystemConstructions88b83b9224e2a3cc62022bb083e1a047b835e108edc8862733693b199ced1efe",
+      "current": "SystemConstructions3f112ea118a7287708a574576b7adbaffd1deaf0bc1045727b302a79d33747a5",
+      "resolution": "exact immutable lineage/diff and needed fixedSource/transition/leftMap proofs inspected; definitions/interfaces unchanged, proofs use same coherent triangle and reindex equations",
+      "coverage": "current provider separately passed D234/SOURCE27b12; dependent W10 modules not covered by that fact"
+    }
+  ],
+  "worlds_conditions_models": {
+    "model_minimum": "one actual original integer/free source, units/counits, generator, augmentation, coefficient/pullback/source maps at each endpoint; no reference Gamma/site/System/point/Ext/cohomology realization",
+    "ordinary": "pure category/unit/source/zero arguments no derived/injective model; independent object/Hom worlds except genuine literal represented-Hom value category",
+    "represented": "source EnoughInjectives and one actual supplied resolution; exact postcomposition and original additive representation; Ext world independent of Hom value world",
+    "derived": "three genuine independent derived realizations retained for Gamma; unchanged ONT2/higher mate has four genuine independent selected worlds and explicit actual-unit premise",
+    "Ext": "four genuinely independent endpoint category/Hom/Ext worlds in raw squares/exact-image comparison; native existing same-e headers not strengthened; base/chart/slice independent Ext worlds retained",
+    "families": "raw fixed-source transfer needs endpoint HasExt only; represented diagram only actual stage family; no global all-scheme/apex HasExt",
+    "geometry": "actual original finite/cartesian/point/field/sepclosed/size/Henselian/noetherian/P1/killing integer/scalar/sign and standard-model assumptions retained",
+    "no_desired_conclusion_input": "whole comparisons constructed from actual source/ordinary representation/mate/unit equations before components; no final cohomology/germ/roots square or arbitrary comparison E/hE premise"
+  },
+  "needed_dependency_coverage": [
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean",
+      "sha256": "d83329fbb8acfc60ce876d0a81edf793090d5fe9c0082b0c0d137c177ec55d50",
+      "bounded_role": "same d833 whole coherent vertical square/pasting and original triangle coefficient law; previously reviewed exact dependency scope reused",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/CategoryTheory/Abelian/Ext/CoefficientSquare.lean",
+      "sha256": "d26b367a96e97cf834cd085da1105f77b9ddee33c0ad4bcf98e5a1992d5fecf9",
+      "bounded_role": "same d26b actual four-category coefficient square; complete proof and hypotheses read",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/CategoryTheory/Abelian/Ext/SourceTransfer.lean",
+      "sha256": "a33c4e34d9c08e4185562fdb4496a6180edb4deba5aef64614740b041868fe44",
+      "bounded_role": "same a33 complete original exact source transfer, identity/composition/naturality; prior scope retained",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/Ext/Equivalence.lean",
+      "sha256": "a0dfc67b207ae06066276746e2ad8f06defebb3912ee28d5f4f6a6870da965df",
+      "bounded_role": "actual equivalence source-map bijectivity and its source EnoughInjectives boundary",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/CategoryTheory/Adjunction/Mates/Whole.lean",
+      "sha256": "0e08de18803abf6008e23bd2593d39759fbce78add02965b06bbddef61dad6e4",
+      "bounded_role": "actual whole mate construction and original counit equation",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/Algebra/Homology/RightDerived/Represented.lean",
+      "sha256": "e52b483e53b78682493ba107180300d511558c713726a8e7274aa0946f0eb920",
+      "bounded_role": "existing original representedRightDerivedPostcompIso and actual Ext constructor",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/ModuleCoefficients/DerivedGammaZero.lean",
+      "sha256": "f558a119131fd8d75fc05dc8b7901d89e48eb2eb96a027fca593acf660f3b205",
+      "bounded_role": "actual zero unit/natural-transformation/exact-postcomposition equations",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/ModuleCoefficients/DerivedPostcompResolution.lean",
+      "sha256": "8d167984ed66b62c8c67a9667af1a3f956a334de02af0071e30cfd66b1395c17",
+      "bounded_role": "actual derived postcomposition transpose and original unit formula",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/ExtSourceNaturality.lean",
+      "sha256": "2fb50e334650f40e8330cc230ab747102bc6069dbddf27663c256fe8492d3ee3",
+      "bounded_role": "original supplied-resolution Ext source naturality",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/ExactPostcomposition.lean",
+      "sha256": "89f3d8d515af7a6aa80b7a75de8f5dca26b0189a7fedfbc345f0e2c2daca6f7d",
+      "bounded_role": "actual whole exact-postcomposition naturality",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Slice/Naturality.lean",
+      "sha256": "cea9685ed2d33ed0349bf9ffcc18d1469f1171c978621421ff6e0ee581d723fc",
+      "bounded_role": "original free-source naturality and exact adjunction source compatibility/zero implication",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/OriginalCohomology.lean",
+      "sha256": "571c34201bf647b527376a834b642a12a22b94fc3dbbdb0b26ee14eed3fa04d3",
+      "bounded_role": "unchanged actual native represented source/derived presheaf/Ext constructor values",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartSourceMap.lean",
+      "sha256": "9d9f6b0697a71bfc1185727abafcf4a94f2f4ac31c26ebfa5304c86f70bd6022",
+      "bounded_role": "original actual chart source and original cohomology-chart map formula",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartSourceGenerator.lean",
+      "sha256": "4d58bb1c32c2b28020d4609952f73bb845dcbde215b3ed3b2438f1cc92297048",
+      "bounded_role": "original chart source evaluation and identity-generator equation, not a final cohomology square premise",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartHomSections.lean",
+      "sha256": "6ad82c0465d98b18214774b42c1c0bc0c3a21630b00f49d683719ccb0415195d",
+      "bounded_role": "original Hom/global sections/chart representations and supplied original source-generator law",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/CategoryTheory/Filtered/SystemConstructions.lean",
+      "sha256": "3f112ea118a7287708a574576b7adbaffd1deaf0bc1045727b302a79d33747a5",
+      "bounded_role": "same original fixedSource/transition/leftMap definitions; exact88b-to3f112 needed proof lineage inspected",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackCoefficientSystem.lean",
+      "sha256": "ac153d11cc24494f921f92b523aacfadbc208fd244bb20d2e8274444eac2d214",
+      "bounded_role": "same original scheme data/fixed source realization and transition comparison",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/CohomologyTransfers.lean",
+      "sha256": "63b59b52fb753aad1c07f8ba701cc1ff9f9f96ba09edabbbcd3eb3310fc172da",
+      "bounded_role": "same63b raw ext transfer/native cohomology bridge",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CohomologyCocone.lean",
+      "sha256": "a4e447ca918773a897213ca7fcf74b5045c99cdc9abf0a1439dcd01c3355bd97",
+      "bounded_role": "samea4 represented/reindex transfer constructor/value law; prior exact coho5 scope reused only",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection.lean",
+      "sha256": "8856b0f8b5ba12512ef628a1d6fe4cfa2b0d7fcd041563cf3989bc316b7a74db",
+      "bounded_role": "unchanged8856 complete original source retraction and coefficient-naturality construction previously independently reviewed; new views only rewrite actual defining map equations then invoke these proved laws",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/Basic.lean",
+      "sha256": "a96427fb0f37e60d35ae4e3567db13b915dd83c8f27564c92a0707120cb05781",
+      "bounded_role": "actual existing h1Functor and coefficientMap values with original HasExt world",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/Pullback.lean",
+      "sha256": "607722a4b520bb733a67018cc85ebac43081eb784194b79894093a418df422b5",
+      "bounded_role": "actual original h1Pullback_coefficientMap exact-functor Ext proof",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackCoherence.lean",
+      "sha256": "600a3a8036f443038c4a5fc0b1c20d26b83ac3710572323f4f06dd1986082899",
+      "bounded_role": "actual H1identity via raw SourceTransfer and original constant source unit",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackComposition.lean",
+      "sha256": "90f83c812551762229d078f12246e7d2efa853ebcb78563e991ff18559a9edab",
+      "bounded_role": "actual H1composition via raw SourceTransfer and original inverse constant source composition",
+      "new_whole_file_reaudit_claim": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/EtaleRestriction.lean",
+      "sha256": "b710bcc0ef49b124ebde87c646b8b96a0a9e6a85c47c45b97175a42994bc4fc9",
+      "bounded_role": "existing actual siteEtalePostcompose_continuous witness with original Etale chart premise",
+      "new_whole_file_reaudit_claim": false
+    }
+  ],
+  "SystemConstructions_lineage": {
+    "old_source": "migration/implementation/whole-w12-remaining/phases/repair-a370a-v3/Aglib/CategoryTheory/Filtered/SystemConstructions.lean",
+    "old_sha256": "88b83b9224e2a3cc62022bb083e1a047b835e108edc8862733693b199ced1efe",
+    "current_source": "migration/implementation/whole-w12-remaining/phases/repair-ba87f-v5/Aglib/CategoryTheory/Filtered/SystemConstructions.lean",
+    "current_sha256": "3f112ea118a7287708a574576b7adbaffd1deaf0bc1045727b302a79d33747a5",
+    "actual_supplier_result": "migration/implementation/whole-w12-remaining/CPP-FACTS.json#/actual_current234_final",
+    "supplier_run": "remote-ea1414b1c16e458a8f1ea5159722ff4a",
+    "supplier_source": "27b12b50b13811db36f4d7e083f480b0d6589aa93b899ab555b4638353e7a9dd",
+    "supplier_outcome": "fresh_pass exit0; mixed aggregate exit1 belongs to other own W10 failures",
+    "limit": "bounded needed producer compatibility only; no W12 whole-wave verdict or dependent W10 pass inferred"
+  },
+  "compiler_evidence": [
+    {
+      "run": "remote-370a402128fb4221bb92302b8e2a00ca",
+      "source": "49223b12f551e47b3d744b2af46a208fb2ea2c6beebde5868ea605dd070361ea",
+      "group_still_running": true,
+      "complete_diagnostics": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/authorized-continuation-20261029/current213-live-W10-diagnostics.log",
+      "packet": "migration/incremental-compiler/recovery-20261029/authorized-continuation-20261029/current213-live-W10-result.json",
+      "packet_sha256": "b23b9fe424fd72743ed86842c29dfeb74f17c191cfb8958baf92aedbb58875fb",
+      "actual_source_observations": [
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections.lean",
+          "sha256": "2fc7056d079045e89eef675df8aaf77154b5dd3ac3de8278340c3d4bea3626c0",
+          "status": "observed_success"
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/Pullback.lean",
+          "sha256": "e583a7b39d68e2664d6b06e0c59b82b9be2cb42fff64df0508a40b1ca0e934d1",
+          "status": "observed_failure"
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection.lean",
+          "sha256": "8856b0f8b5ba12512ef628a1d6fe4cfa2b0d7fcd041563cf3989bc316b7a74db",
+          "status": "observed_success"
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/ConstantComposition.lean",
+          "sha256": "22a18e10a606df31009f1fd3aef81d8ea64504955e33c8b1bcedbf058cb646ad",
+          "status": "observed_failure"
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/InverseRectangle.lean",
+          "sha256": "854b8ff05a73fea9a021e5521dba1e1f82254b3e61ce332de71ee295b08f6d3c",
+          "status": "observed_failure"
+        },
+        {
+          "path": "Aglib/CategoryTheory/Abelian/Ext/TransferConsequences.lean",
+          "sha256": "bfe6fbf09d7275e90ad0f250eabcd437466842a7f4108add585967476f5344d1",
+          "status": "observed_success"
+        },
+        {
+          "path": "Aglib/Algebra/Homology/RightDerived/Postcomp/RepresentedSections.lean",
+          "sha256": "6d4e2b0bea039af8e5a6f8411e73d7729281cb9723e6023c90c19a37baa3085d",
+          "status": "observed_failure"
+        }
+      ]
+    },
+    {
+      "run": "remote-e6e1b08f0f934369a4757fc140a07517",
+      "source": "a8d78e0feb696d00e504830ce69d5e10b7bff34c61a19bc318fb62e588c0548f",
+      "group_closed": true,
+      "aggregate_exit": 1,
+      "counts": {
+        "no_fresh_verdict": 36,
+        "fresh_failure": 4,
+        "fresh_pass": 5
+      },
+      "source_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/continuation-B-current227-e6e1b08f.json",
+      "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-e6e1b08f0f934369a4757fc140a07517/build.log",
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-e6e1b08f0f934369a4757fc140a07517/receipt.json",
+      "complete_diagnostics": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/authorized-continuation-20261029/current227-final-W10-diagnostics.log",
+      "packet": "migration/incremental-compiler/recovery-20261029/authorized-continuation-20261029/current227-final-W10-result.json",
+      "packet_sha256": "d581f7f7bebbd9df5e65eacbd5aa8470bb2834c836dce219c73fefc2c771f409",
+      "actual_source_observations": [
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/Terminal.lean",
+          "sha256": "6d34ef64abec3f757c4a852bce04f2f46cc0784ef02955883d23fe6def5a0a23",
+          "status": "fresh_failure",
+          "exit_code": 1
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/SourceCoherence.lean",
+          "sha256": "7b1f71803af5e6dbee7e8cc968c5d209128a14b29c8080b8410d89a58168321f",
+          "status": "fresh_pass",
+          "exit_code": 0
+        },
+        {
+          "path": "Aglib/Algebra/Homology/RightDerived/Postcomp/UnitAssembly.lean",
+          "sha256": "0912a38e752d48c87e9c783488088849e37a1df4a490bdb32b370e04cb98582e",
+          "status": "fresh_failure",
+          "exit_code": 1
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/Pullback.lean",
+          "sha256": "1930c0e10ace29d9c60a9bb1bd0d7da6ddcef144c1b28a97cca4aa1026ec48a5",
+          "status": "fresh_pass",
+          "exit_code": 0
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/ConstantComposition.lean",
+          "sha256": "b641f2e997f98e42637d8da7dde06b1aa4dfa0c8c402bfed9647b90d4eff40bf",
+          "status": "fresh_pass",
+          "exit_code": 0
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/InverseRectangle.lean",
+          "sha256": "4bcff42ba740375ed8923f035b8e5257c119a21303f7a163810e11faaa240fa2",
+          "status": "fresh_pass",
+          "exit_code": 0
+        },
+        {
+          "path": "Aglib/Algebra/Homology/RightDerived/Postcomp/RepresentedSections.lean",
+          "sha256": "9f9cf33d3e7c378e7fe0f0ab64358ad40b98a579746747debff532717424299d",
+          "status": "fresh_pass",
+          "exit_code": 0
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/DerivedPullback.lean",
+          "sha256": "77dd3a90bf110ddda45b409095c6323910f7860d3528342ad847992db779e4af",
+          "status": "fresh_failure",
+          "exit_code": 1
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/Zero.lean",
+          "sha256": "3c631d1ff9a9310e9f50c58f16d79ae49d18803047c996e6662597cadf47b49c",
+          "status": "fresh_failure",
+          "exit_code": 1
+        }
+      ]
+    },
+    {
+      "run": "remote-a87f1465a68140dd88650ecf4022b850",
+      "source": "e650a62b17b193e9edfdbaf33c797403cb5cd0f437a31caf9bbfe92e42c4706d",
+      "group_closed": true,
+      "aggregate_exit": 1,
+      "counts": {
+        "no_fresh_verdict": 42,
+        "fresh_pass": 2,
+        "fresh_failure": 3
+      },
+      "actual_input_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/authorized-continuation-20261029/current-finished-wave4-input.json",
+      "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-a87f1465a68140dd88650ecf4022b850/build.log",
+      "canonical_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-a87f1465a68140dd88650ecf4022b850/compiler-events.jsonl",
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-a87f1465a68140dd88650ecf4022b850/receipt.json",
+      "complete_diagnostics": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/authorized-continuation-20261029/current231-final-W10-diagnostics.log",
+      "packet": "migration/incremental-compiler/recovery-20261029/authorized-continuation-20261029/current231-final-W10-result.json",
+      "packet_sha256": "2f9533460448d9f577b384c041aa15437d16fa0336680b643f67f122032243b5",
+      "actual_source_observations": [
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/GeneratorZero.lean",
+          "sha256": "543f76d76d955aaec556fcfad5139ca068fd464c5b3aaea5860b29fbb185017d",
+          "status": "fresh_pass",
+          "compiler_exit_code": 0
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/Terminal.lean",
+          "sha256": "7d4902e1864c28d073c9c895c65a8b169050b50e31efa6cda80c97eb9722641f",
+          "status": "fresh_failure",
+          "compiler_exit_code": 1
+        },
+        {
+          "path": "Aglib/Algebra/Homology/RightDerived/Postcomp/UnitAssembly.lean",
+          "sha256": "331551eb2ed1aa3a576b9b1cc70634a905ad098b441f4419a830949e23590930",
+          "status": "fresh_failure",
+          "compiler_exit_code": 1
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/DerivedPullback.lean",
+          "sha256": "e85d77b64be82b1da7118cee38a712268fdc4c3d876aec25b449d3a144f1bb74",
+          "status": "fresh_failure",
+          "compiler_exit_code": 1
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/Zero.lean",
+          "sha256": "2fc644327ac97d5d220138e61eaffb4966079b8b7788606779b53071eb66d73b",
+          "status": "fresh_pass",
+          "compiler_exit_code": 0
+        }
+      ]
+    },
+    {
+      "run": "remote-ea1414b1c16e458a8f1ea5159722ff4a",
+      "source": "27b12b50b13811db36f4d7e083f480b0d6589aa93b899ab555b4638353e7a9dd",
+      "group_closed": true,
+      "aggregate_exit": 1,
+      "counts": {
+        "no_fresh_verdict": 48,
+        "fresh_failure": 2,
+        "fresh_pass": 1
+      },
+      "actual_input_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/authorized-continuation-20261029/current-finished-wave5-input.json",
+      "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-ea1414b1c16e458a8f1ea5159722ff4a/build.log",
+      "canonical_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-ea1414b1c16e458a8f1ea5159722ff4a/compiler-events.jsonl",
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-ea1414b1c16e458a8f1ea5159722ff4a/receipt.json",
+      "complete_diagnostics": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/authorized-continuation-20261029/current234-final-W10-diagnostics.log",
+      "packet": "migration/incremental-compiler/recovery-20261029/authorized-continuation-20261029/current234-final-W10-result.json",
+      "packet_sha256": "75449159b6525e396f099292e2208da7a3266934d1806a0ec60110ca392d53d3",
+      "actual_source_observations": [
+        {
+          "path": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparison.lean",
+          "sha256": "74fa3efd9b6b0d0306c8332f1a9427e71a7d9497eceeeb789c7c9e470f851c9c",
+          "status": "fresh_failure",
+          "compiler_exit_code": 1
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/FixedSourceCohomology.lean",
+          "sha256": "ba8ae8b1d26fec7e8fd68279ea346d02aded86671fec5e033441c0020325482b",
+          "status": "fresh_failure",
+          "compiler_exit_code": 1
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/SourceCoherence.lean",
+          "sha256": "4434783c882e9eac535bbc9a25b83efd801fd44bfa958bc28e3f119191ecaf4c",
+          "status": "fresh_pass",
+          "compiler_exit_code": 0
+        }
+      ]
+    },
+    {
+      "packet": "migration/implementation/whole-w10-remaining/CPP-478dab03.json",
+      "packet_sha256": "4a5d4aa74c69412cb2e025ba896306e9570aaaa26b76520a91bb547b376c9068",
+      "run": "remote-478dab03ba5f466399fb7885a730fa90",
+      "source": "2ed07cf23e420a67dc74f776a69e2d497542682a86000f0c1dd8eeaebd62470d",
+      "group_closed": true,
+      "aggregate_exit": 1,
+      "aggregate_frontends": 11,
+      "no_input_drift": true,
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-478dab03ba5f466399fb7885a730fa90/receipt.json",
+      "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-478dab03ba5f466399fb7885a730fa90/build.log",
+      "canonical_log_sha256": "294210f3cc3fa32c6d06c70b4dc21e2ccb05c25c5150cb49a766ad3aeaadf20c",
+      "source_receipt_sha256": "7953b0a1f9a411b030620cf933617b9e980d7f8d5670730dbf9e7d4bb9447fe8",
+      "actual_source_observations": [
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/DerivedPullback.lean",
+          "sha256": "1bd216a893a823bfe381273adf4817d2f57e06272c1b3134e77d7c58cb914af0",
+          "verdict": "fresh_failure",
+          "exit_code": 1,
+          "elapsed_seconds": 6.267412006855011
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/Terminal.lean",
+          "sha256": "4ffa146d9ef6d677c65c6e9b7852414a2d17bc4d48e8423761792ef2d8ca0f0d",
+          "verdict": "fresh_failure",
+          "exit_code": 1,
+          "elapsed_seconds": 4.592412114143372
+        },
+        {
+          "path": "Aglib/Algebra/Homology/RightDerived/Postcomp/UnitAssembly.lean",
+          "sha256": "dd8eae75b2ea1b1690bca4958e9db00765d439858be7844bc126a59989c7505a",
+          "verdict": "fresh_pass",
+          "exit_code": 0,
+          "elapsed_seconds": 3.7508156448602676
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/FixedSourceCohomology.lean",
+          "sha256": "0b76869bc83c0f64ac29a4c46e2d915e56f8298a0b874ad5ab9ff4851f22b9d8",
+          "verdict": "fresh_pass",
+          "exit_code": 0,
+          "elapsed_seconds": 2.9571119099855423
+        },
+        {
+          "path": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparison.lean",
+          "sha256": "98b25a743d9f670f9d53d31478a08e46d39ae97e7f1407008844d862cac4d617",
+          "verdict": "fresh_failure",
+          "exit_code": 1,
+          "elapsed_seconds": 3.7531716972589493
+        }
+      ],
+      "boundary": "exact captured v4 source; two owned passes retained, three owned failures remain historical; v5 inputs not relabeled; foreign failures do not extend assigned source verdict"
+    },
+    {
+      "packet": "migration/implementation/whole-w10-remaining/CPP-325b70f9.json",
+      "packet_sha256": "b6eb42a76b894cb8cb47b5f60e7eafb7dd7cd0234f0a20ea41e36fe8d068fef5",
+      "run": "remote-325b70f997df41628dd17826543f730a",
+      "source": "79b41de167d2aebdb707cbde9b72b20dd877db06edaaaf356722055d768c33b6",
+      "group_closed": true,
+      "aggregate_exit": 1,
+      "aggregate_frontends": 10,
+      "no_input_drift": true,
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-325b70f997df41628dd17826543f730a/receipt.json",
+      "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-325b70f997df41628dd17826543f730a/build.log",
+      "canonical_log_sha256": "4134514f7abce127a42619d9f7733ec5b0222aa3e110473eb552b2e3849b9682",
+      "source_receipt_sha256": "92b2e66d661b5507165ebe7e74bc213938cb852783518e9a5cf4c67dce3b3580",
+      "actual_source_observations": [
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/DerivedPullback.lean",
+          "sha256": "0454513316150fd87ffde2fa757e67314a0fb9ce4a627e7245faf9d8d7adf372",
+          "verdict": "fresh_pass",
+          "exit_code": 0,
+          "elapsed_seconds": 8.669944614171982
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/ExtPullback.lean",
+          "sha256": "b9704bb71eeb786a3ade19cc056b7b3a1d723ca500eca18728ee936aa2670fc6",
+          "verdict": "fresh_failure",
+          "exit_code": 1,
+          "elapsed_seconds": 5.872994244098663
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/Terminal.lean",
+          "sha256": "a1ade3e2e14e2dc675bf69666c70874bf1aab1cd5a452bc3d8cd24948058ef8f",
+          "verdict": "fresh_failure",
+          "exit_code": 1,
+          "elapsed_seconds": 5.056879505515099
+        },
+        {
+          "path": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparison.lean",
+          "sha256": "b4326fdbaf28b225738ddb9f5dedc254db39b3f641c440cab60b98c6f05a311e",
+          "verdict": "fresh_pass",
+          "exit_code": 0,
+          "elapsed_seconds": 4.484616369009018
+        }
+      ],
+      "boundary": "captured v5 input; Derived045451 and OriginalComparisonb432 actual freshPASS retained, Terminala1ade and ExtPullbackb970 actual failures preserved; currentv6 not relabeled"
+    },
+    {
+      "packet": "migration/implementation/whole-w10-remaining/CPP-6fe4aaa3.json",
+      "packet_sha256": "618bd9e61696cfe48ee1205818824e24f65b5d5e2b2f56a4e60418ebd1f20e64",
+      "run": "remote-6fe4aaa3d11e451b901b1630a475c421",
+      "source": "6b2238b5c71b4f7d2d19f5b40ba76fb6eb607ba7160407a264480b66c195aadc",
+      "group_closed": true,
+      "aggregate_exit": 1,
+      "aggregate_frontends": 3,
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-6fe4aaa3d11e451b901b1630a475c421/receipt.json",
+      "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-6fe4aaa3d11e451b901b1630a475c421/build.log",
+      "canonical_log_sha256": "70e746f9bed5127799706f49f7d5f37d9a4071365c1549bb9918ad777455ea46",
+      "source_receipt_sha256": "2f379de4920655bbff0ea7e864625312e721a068043102d2be83405975e5cdbf",
+      "no_input_drift": true,
+      "actual_source_observations": [
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/Terminal.lean",
+          "sha256": "a07db168035ae269bacf838456624361fb8229e2b45cdabf002d3d0936b9a337",
+          "verdict": "fresh_failure"
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/ExtPullback.lean",
+          "sha256": "6bba10adae5ce15c909c899a217782a57d217cb72ffa42f7e40f4c13c6846232",
+          "verdict": "fresh_failure"
+        }
+      ],
+      "boundary": "V6 Terminal remaining raw op/unop+symm/inv normalization failure; Exttwo line wraps only. All own matching17passes reused, no newownpass or newmodel."
+    },
+    {
+      "packet": "migration/implementation/whole-w10-remaining/CPP-c0064843.json",
+      "packet_sha256": "8b46761f0adff124d7817b74af5e56239e11659ad50825ab100ce4770f41a395",
+      "run": "remote-c0064843eee240a79f8dc63998e056e9",
+      "source": "ae6cf433b02f8ca1a0ad3f6493dded524cda3102c438fb1b284cb59dc5523a59",
+      "group_closed": true,
+      "aggregate_exit": 1,
+      "aggregate_frontends": 6,
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-c0064843eee240a79f8dc63998e056e9/receipt.json",
+      "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-c0064843eee240a79f8dc63998e056e9/build.log",
+      "canonical_log_sha256": "18bc5684ca79c16efc111810339c18906d2af962b172854611ff74229aa11c70",
+      "source_receipt_sha256": "0489ef06c81bd8ff481487b34482f0bc18753d7fb34080e08ac103205db09c3d",
+      "no_input_drift": true,
+      "actual_source_observations": [
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/ExtPullback.lean",
+          "sha256": "d1ea19c6d66dddd59e5ae4ae622813bff7006207bb848af534490d65e6d487c1",
+          "verdict": "fresh_pass",
+          "exit_code": 0,
+          "elapsed_seconds": 6.4213769137859344
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/Terminal.lean",
+          "sha256": "aa1604a3fd54c9cf83d6ad731f9782792766a2f6abdcf07868b0fdb9f0b3dd25",
+          "verdict": "fresh_pass",
+          "exit_code": 0,
+          "elapsed_seconds": 5.20497353374958
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/ConstantCoherence.lean",
+          "sha256": "3c0ad44bddd46ab4cb08b57909f1cbf88951224241ee1c923371225a860de61f",
+          "verdict": "fresh_pass",
+          "exit_code": 0,
+          "elapsed_seconds": 3.3837263882160187
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackCoherence.lean",
+          "sha256": "600a3a8036f443038c4a5fc0b1c20d26b83ac3710572323f4f06dd1986082899",
+          "verdict": "fresh_pass",
+          "exit_code": 0,
+          "elapsed_seconds": 8.131869077682495
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackComposition.lean",
+          "sha256": "323ab0ddf1ac47ba35583fccfc2012f16ebfae8de1218af1a404ade51ff7a259",
+          "verdict": "fresh_failure",
+          "exit_code": 1,
+          "elapsed_seconds": 12.634209856390953
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Slice/OriginalPullback.lean",
+          "sha256": "a70d8b93359e155e30a265c27e027199e469dac94651bb0d590f06f1b94a99ec",
+          "verdict": "fresh_failure",
+          "exit_code": 1,
+          "elapsed_seconds": 14.563070371747017
+        }
+      ],
+      "boundary": "FreshTerminalaa/Extd1ea/Constant3c0a/nativeH1Coherence600aPASS survive mixed aggregate failure. Only actual new2cuts need successor, no old failed bytes relabeled."
+    },
+    {
+      "packet": "migration/implementation/whole-w10-remaining/CPP-c5a65e5a-observed.json",
+      "packet_sha256": "e7f7957cd59d858ee82b64685aad335a43d52cc8c4d3d9f3594b2935c4964700",
+      "run": "remote-c5a65e5a950841bf84f4630ab251aa3d",
+      "source": "7059a705817cec7e67e4f6586b99fe339d685a0292f3ea70469f86db85451d94",
+      "group_closed": null,
+      "actual_source_observations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackComposition.lean",
+          "sha256": "90f83c812551762229d078f12246e7d2efa853ebcb78563e991ff18559a9edab",
+          "status": "observed_pass",
+          "module_duration_as_logged": "14s",
+          "verdict_basis": "Native Lake Built line, corresponding sourcebound owner callback; final exact wrapper receipt/events forthcoming."
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Derived/BaseChange/Higher.lean",
+          "sha256": "9c578fb01ba45b2e8e2d787535afd5442059d5fd85e47f13e6b2f9a62ccb5a9f",
+          "status": "observed_pass",
+          "module_duration_as_logged": "17s",
+          "verdict_basis": "Native Lake Built line, corresponding sourcebound owner callback; final exact wrapper receipt/events forthcoming."
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/OriginalCohomologyZero.lean",
+          "sha256": "8f707952c7b753c2fa15bec2f9fc230887a0bf328c0b51ec1788e23a1698d44e",
+          "status": "observed_pass",
+          "module_duration_as_logged": "74s",
+          "verdict_basis": "Native Lake Built line, corresponding sourcebound owner callback; final exact wrapper receipt/events forthcoming."
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Slice/OriginalPullback.lean",
+          "sha256": "6a753cd8a71d8864176ef0adca97990723505598d0587c64f5c0694aa52ef4c2",
+          "status": "observed_failure"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean",
+          "sha256": "a433e8aacacd222ad988c9c60e0779c593172f4eadfce2be8fa3fa384586d747",
+          "status": "observed_failure"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/DegreeZeroPullback.lean",
+          "sha256": "2dfe0b01f30f7eebf48d710ecbdaa08cbd148a916411e97ce53b795dc886cbdc",
+          "status": "observed_failure"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/OriginalRestriction.lean",
+          "sha256": "6ac14d022756888f30be1af8e55e1f44ce2c8df0b06043cc721cdae82416efb4",
+          "status": "observed_failure"
+        }
+      ],
+      "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-c5a65e5a950841bf84f4630ab251aa3d/build.log",
+      "log_snapshot_sha256": "790a4a3c9f3542bab807a23ef0fb4c71f432f4652e23aceca33cf6b7d20389cc",
+      "boundary": "Owned module outcomes observed on actual7059 source; healthy graph was preserved, no aggregate status inferred from this partial callback. Need final wrapper receipt/events delivery, not another execution. NewV9 pending.",
+      "coverage_type": "partial source-bound Lake Built/diagnostic observation plus author callback; final wrapper receipt/events not consumed"
+    },
+    {
+      "packet": "migration/implementation/whole-w10-remaining/CPP-c5a65e5a-final.json",
+      "packet_sha256": "98dc3433bd4ce064c75e1b8193715e466f22e94e3fda3478031400588e7fca75",
+      "run": "remote-c5a65e5a950841bf84f4630ab251aa3d",
+      "source": "7059a705817cec7e67e4f6586b99fe339d685a0292f3ea70469f86db85451d94",
+      "group_closed": true,
+      "aggregate_exit": 1,
+      "aggregate_frontends": 88,
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-c5a65e5a950841bf84f4630ab251aa3d/receipt.json",
+      "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-c5a65e5a950841bf84f4630ab251aa3d/build.log",
+      "canonical_log_sha256": "790a4a3c9f3542bab807a23ef0fb4c71f432f4652e23aceca33cf6b7d20389cc",
+      "source_receipt_sha256": "bc394da4efcbf16927d877914638ed52c93c7eb7f15c45b1b2589c7067817387",
+      "no_input_drift": true,
+      "actual_source_observations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Derived/BaseChange/Higher.lean",
+          "sha256": "9c578fb01ba45b2e8e2d787535afd5442059d5fd85e47f13e6b2f9a62ccb5a9f",
+          "verdict": "fresh_pass",
+          "exit_code": 0,
+          "elapsed_seconds": 16.899510458111763
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean",
+          "sha256": "a433e8aacacd222ad988c9c60e0779c593172f4eadfce2be8fa3fa384586d747",
+          "verdict": "fresh_failure",
+          "exit_code": 1,
+          "elapsed_seconds": 254.4296418428421
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackComposition.lean",
+          "sha256": "90f83c812551762229d078f12246e7d2efa853ebcb78563e991ff18559a9edab",
+          "verdict": "fresh_pass",
+          "exit_code": 0,
+          "elapsed_seconds": 14.180765062570572
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/DegreeZeroPullback.lean",
+          "sha256": "2dfe0b01f30f7eebf48d710ecbdaa08cbd148a916411e97ce53b795dc886cbdc",
+          "verdict": "fresh_failure",
+          "exit_code": 1,
+          "elapsed_seconds": 59.72479738295078
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/OriginalCohomologyZero.lean",
+          "sha256": "8f707952c7b753c2fa15bec2f9fc230887a0bf328c0b51ec1788e23a1698d44e",
+          "verdict": "fresh_pass",
+          "exit_code": 0,
+          "elapsed_seconds": 73.96541008353233
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/OriginalRestriction.lean",
+          "sha256": "6ac14d022756888f30be1af8e55e1f44ce2c8df0b06043cc721cdae82416efb4",
+          "verdict": "fresh_failure",
+          "exit_code": 1,
+          "elapsed_seconds": 136.93216548860073
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Slice/OriginalPullback.lean",
+          "sha256": "6a753cd8a71d8864176ef0adca97990723505598d0587c64f5c0694aa52ef4c2",
+          "verdict": "fresh_failure",
+          "exit_code": 1,
+          "elapsed_seconds": 15.89245529472828
+        }
+      ],
+      "boundary": "Final actual currentV8 producing51basis only. Successful modules survive aggregate failure. V9new5 not covered.",
+      "recovery": "same actual invocation, no rerun; previous partial observation retained separately"
+    },
+    {
+      "packet": "migration/implementation/whole-w10-remaining/CPP-28352af3-final.json",
+      "packet_sha256": "eff7b50733a200f131fc586bf89f7814793a990a578e95c1a04db3a690f20b66",
+      "run": "remote-28352af3def54c329a4e8df98996160f",
+      "source": "fa706f5af7815a71b77557a26516aed2ea4df5a88162c006ab22f2a103759389",
+      "group_closed": true,
+      "aggregate_exit": 1,
+      "aggregate_frontends": 29,
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-28352af3def54c329a4e8df98996160f/receipt.json",
+      "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-28352af3def54c329a4e8df98996160f/build.log",
+      "canonical_log_sha256": "c78cec02513220cfb7c9c500f7638310b40ea2eefd95e23fe59578e0c8912ec5",
+      "source_receipt_sha256": "0c0ecab50e40fd2a11e2f8b7d2a20c863f02aa790a00fccfc124dd58cac9d6b5",
+      "no_input_drift": true,
+      "actual_source_observations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Pullback.lean",
+          "sha256": "422538553e1e4e9f09a7eae2613e19510272a85c6ab5cb30f0d12269511ba9ec",
+          "verdict": "fresh_failure",
+          "exit_code": 1,
+          "elapsed_seconds": 235.7074319422245
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean",
+          "sha256": "54827938e612b1945ac212115ec394572be025da4688e9be4e5dd6ceb45437a7",
+          "verdict": "fresh_failure",
+          "exit_code": 1,
+          "elapsed_seconds": 441.8171747773886
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/DegreeZeroPullback.lean",
+          "sha256": "0d5764bf53c45691aeafe658dd3eb9a00d495c565c81a0926f3ac54cef00fcc9",
+          "verdict": "fresh_pass",
+          "exit_code": 0,
+          "elapsed_seconds": 60.46683806180954
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/OriginalRestriction.lean",
+          "sha256": "13ad86350bafc8c58d62008c7f9ae01edc64a2d2cbfc2c0f50e9dde42d0adb2d",
+          "verdict": "fresh_pass",
+          "exit_code": 0,
+          "elapsed_seconds": 143.08196088671684
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Slice/OriginalPullback.lean",
+          "sha256": "3ac02d7e98742f552ff1cc3805dc301c78383a01c7c19753bac035659747c2e0",
+          "verdict": "fresh_failure",
+          "exit_code": 1,
+          "elapsed_seconds": 16.874765306711197
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection/Transport.lean",
+          "sha256": "1af9eadc0e50ec6b1c9995c98d16096b2268d54245562293405938fdea3c66ba",
+          "verdict": "fresh_pass",
+          "exit_code": 0,
+          "elapsed_seconds": 2.837998643517494
+        }
+      ],
+      "boundary": "ExactV9producing52source only. SourceTransport1af/Degree0d/Restriction13ad freshPASS; Slice3ac/Pullback4225/Section548 actualFAIL. NativeSection85/128kernels nowknown; V10two newencodings notcovered.",
+      "recovery": "same actual invocation, no rerun; previous partial observation retained separately"
+    },
+    {
+      "packet": "migration/implementation/whole-w10-remaining/CPP-07fadeac-final.json",
+      "packet_sha256": "04e3003cbd94a800214d72fad3c6d6b27ec962407a6abeee33031bde8fcaec2b",
+      "run": "remote-07fadeace97844c980fab82dad1dd8fe",
+      "source": "a3228f271f023fd6f2b076d844a6addc8f9d2f73dfc133efa592dbb70573dd8b",
+      "group_closed": true,
+      "aggregate_exit": 143,
+      "aggregate_frontends": 2,
+      "actual_source_observations": [
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection/Transport.lean",
+          "sha256": "a72491881b24f9de8591bb0fceb3afaebbef44a8a783bf3094717611b9da1d57",
+          "verdict": "fresh_pass",
+          "exit_code": 0,
+          "elapsed_seconds": 2.9625032991170883
+        }
+      ],
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-07fadeace97844c980fab82dad1dd8fe/receipt.json",
+      "boundary": "Only actualcapturedsource; freshpasses retained despiteaggregatefailure. Exit143 is resourceinterruption, not code/kernel failure; alternativeunexecuted."
+    },
+    {
+      "run": "remote-36528327c7334c1b8f0582710386bf3e",
+      "source": "a3228f271f023fd6f2b076d844a6addc8f9d2f73dfc133efa592dbb70573dd8b",
+      "source_receipt_sha256": "24b0e4267da504bf67c973b7abb4e1c9757974924f9ae08ba1f4eb712d4e5650",
+      "group_closed": true,
+      "exit_code": 1,
+      "fresh_frontends": 1,
+      "no_input_drift": true,
+      "cgroup_oom_events": 0,
+      "phase_seconds": 297.06162199378014,
+      "wall_seconds": 297.44839580357075,
+      "native_source_sha256": "568deb6ff1dc5ce90ee361ed676db3ea44f706a3cde26d947ea330dbafa45643",
+      "sole_error": "108:8 kernel deterministic timeout at original sectionPullback_inflation",
+      "canonical_log": "foundations/lane-d/remote-runs/remote-36528327c7334c1b8f0582710386bf3e/build.log",
+      "canonical_log_sha256": "3bad4f7411524e0141b34b6248912d6378df29ff84fc75e8b54ce44672171dbe",
+      "boundary": "real ordinary proof failure, distinct from earlier143 resource event; not a7633 verdict"
+    },
+    {
+      "run": "remote-9050f0cfd5f4475d9b8919c873e07a40",
+      "source": "7a9ebb144c952f86eb3406b38266c6718c85835c5b5927c788b5b3ec863170b3",
+      "source_receipt_sha256": "8d7c312bdda9f27abbf164ebd0c3e98a1ecb24033a43e69b8f7f07a238a15f50",
+      "group_closed": true,
+      "exit_code": 1,
+      "fresh_frontends": 1,
+      "no_input_drift": true,
+      "source_sha256": "2dee3b021c79520b0d20be7f742c630916d0f3d6c690ee64c3449a4a80a593f6",
+      "error": "70 rewrite hp under unreduced ordinary lambdas",
+      "native7633": "unreached, not failed",
+      "canonical_log": "foundations/lane-d/remote-runs/remote-9050f0cfd5f4475d9b8919c873e07a40/build.log",
+      "canonical_log_sha256": "779c299d59c1dc4705f4c35e7916e299536a2366bfd5cfc9d74a4477da98fcca"
+    },
+    {
+      "run": "remote-0882edf6151a45638017b3eb30b55c9b",
+      "source": "b9f7528b14265354da1e6e4aee832a5e4fb2c5c3db888d7807551c7c49e26c70",
+      "source_receipt_sha256": "5abd16e79880eff594a3c76bb5ea9919e96829e1f0535e8591c84c6fe8074f4f",
+      "group_closed": true,
+      "exit_code": 0,
+      "fresh_frontends": 2,
+      "failed_frontends": 0,
+      "no_input_drift": true,
+      "receipt": "foundations/lane-d/remote-runs/remote-0882edf6151a45638017b3eb30b55c9b/receipt.json",
+      "events": "foundations/lane-d/remote-runs/remote-0882edf6151a45638017b3eb30b55c9b/compiler-events.jsonl",
+      "canonical_log": "foundations/lane-d/remote-runs/remote-0882edf6151a45638017b3eb30b55c9b/build.log",
+      "canonical_log_sha256": "5a18e97b7f5cdbc4ed083d8ca19a23001d31e97e5c28cf818549817475171714",
+      "source_archive": "migration/source-manifests/continuation-D-N-b9f7-section-0882edf6.json",
+      "source_archive_sha256": "5abd16e79880eff594a3c76bb5ea9919e96829e1f0535e8591c84c6fe8074f4f",
+      "actual_passes": [
+        {
+          "sha256": "a1fb5123c6bbf273d62feff730e3e788abbab1e3615b3bc1afe20ddaf8b5a938",
+          "wrapper_pid": 140182,
+          "elapsed_seconds": 2.755458,
+          "exit_code": 0
+        },
+        {
+          "sha256": "7633e1a279c7b0b61ff16f2d8cc5a4fc967a55b0084a56b9307298cb87c0d295",
+          "wrapper_pid": 140207,
+          "elapsed_seconds": 50.201721,
+          "exit_code": 0
+        }
+      ],
+      "boundary": "exact current selected pair; standard pins/options/default200000, no oldKernel or whole52 result transferred; no controlled speedup or established status inferred",
+      "selected_pair_and_unchanged_SourceSection_filemap_matched": true
+    },
+    {
+      "run": "remote-79f8282a62cb44aea2a061e580f2f8d4",
+      "source": "8c8a6e2d0bb3efefeb4effa9c0d1228451e5a26317f576ab118820e38933bbd5",
+      "source_receipt_sha256": "c4aec8ad4193d5fc902d9da75dc0bf0d2ceafa2aff74f6cfcc2d4a01fc8fe3bb",
+      "group_closed": true,
+      "aggregate_exit": 1,
+      "aggregate_frontends": 130,
+      "aggregate_passes": 118,
+      "aggregate_failures": 12,
+      "no_input_drift": true,
+      "receipt": "foundations/lane-b/remote-runs/remote-79f8282a62cb44aea2a061e580f2f8d4/receipt.json",
+      "actual_own_negative_contexts": [
+        {
+          "path": "migration/ci-repair-20261030/runtime/N-partial-79f8282a/third-cut/Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.RelativeCohomologySquare.log",
+          "sha256": "fe7bb637e3bd9f2eca2f7aadffa6c9eeafe5b63c5a7310f280068c912dec228d"
+        },
+        {
+          "path": "migration/ci-repair-20261030/runtime/N-partial-79f8282a/third-cut/Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductGermZero.log",
+          "sha256": "7c004605e5a3145beafaee895c56008b80eb5b34d0e4a8f1febe3f64c4174927"
+        }
+      ],
+      "actual_source_observations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/RelativeCohomologySquare.lean",
+          "sha256": "771313931644a3dacc548a0aa6de95e9fe9d59f0474ce2dbb094afa0b3c00f84",
+          "outcome": "failure",
+          "diagnostics": "57 schemeLeft/inverseImage typed view,60private rawExtkernel,109cascade"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean",
+          "sha256": "0d21bfa7dc572899c782946b234dded91c2c14f2f939f72c31a74aae4b11551a",
+          "outcome": "failure",
+          "diagnostics": "133 maxRecDepth on rewriting actual chart map application"
+        }
+      ],
+      "boundary": "old-source negative coverage only consumed for these2; aggregate118/12 does not assign uninspected module matches or currentV16 outcome"
+    },
+    {
+      "run": "remote-73e08631689f43e2ab14fa0e1544ffee",
+      "source": "f204986329b4dccb6264cff6af24f682a6f6db14ce2f90b8a397ec36e10bf75f",
+      "source_receipt_sha256": "72272ff8e9df98934b0fb12a51b9fa28b7d37c8a54545602a8c3e295bea93827",
+      "group_closed": true,
+      "exit_code": 1,
+      "fresh_frontends": 2,
+      "failed_frontends": 2,
+      "no_input_drift": true,
+      "receipt": "foundations/lane-d/remote-runs/remote-73e08631689f43e2ab14fa0e1544ffee/receipt.json",
+      "canonical_log": "foundations/lane-d/remote-runs/remote-73e08631689f43e2ab14fa0e1544ffee/build.log",
+      "canonical_log_sha256": "6e5ebf2d2f8226778f8ef53dc6194d4b76d73285e15a163f05cfd00b5bfd3acf",
+      "old_source_outcomes": [
+        {
+          "sha256": "1d32a4d082077ae138d4a7f63a616ecdae398a2efcc35eb49d97d3ee09a03274",
+          "outcome": "FAIL",
+          "diagnostic": "coefficient public36kernel; later90cascade, not independent law failure"
+        },
+        {
+          "sha256": "2aa34718ad6023b4ca06f7cb6f3b0b2d185e5d66bc0c2e911590dcab9d2e17df",
+          "outcome": "FAIL",
+          "diagnostic": "133maxRecDepth at actual generator value change"
+        }
+      ],
+      "boundary": "exact oldV16 inputs only; newV18/V19 not assigned their failures or passes"
+    },
+    {
+      "run": "remote-c3685c1c4a0145edaa978f957969edc2",
+      "source": "83cb2e8464e8bde4e29ec4e1163970ff18121c79cb82f8203a251e76c03a4a0d",
+      "source_sha256": "cd99f4dab63cea1250eab0ecf767e84fec0a19c37782b0a36862f50221a25405",
+      "own_log": "migration/ci-repair-20261030/runtime/N-partial-c3685c1c/final/Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricCohomologyDiagram.log",
+      "own_log_sha256": "f4fccaa0ccfbbd86774b06f84916deb2f46fa6ea5218eca241ebaef41e76e635",
+      "old_outcome": "observedFAIL98native f.op.unop rewrite",
+      "boundary": "own diagnostic only; no unrelated aggregate/pass coverage inferred"
+    }
+  ],
+  "compiler_boundary": {
+    "historical_failures": "retained at exact57da/085/e583/22a1/854b/6d4e/6d34/0912/77dd/3c631/7d49/3315/e85d/74fa/ba8a producing versions; repaired source not relabeled; D478 actual4ffa/1bd2/98b2 failures retained,98b2 only docstring line-length; D325 Terminala1ade actual projection failure and ExtPullbackb970 unused-section-instance/two-longline failure retained; D6fe4 Terminala07db and Ext6bba actual failures; Dc006 oldSlicea70d unit/projection/identity normalization failure and nativeH1Comp323a two-line-length failure; c5a observed genericSlice6a753 positional universe failure, Sectiona433 kernel254s/component and rawExt type failures, nativeDegreeZero2dfe/OriginalRestriction6ac14 line-length failures; no final aggregate status inferred from partial packet; D28352 Section548 kernel85/128 and oldSlice3ac unused-context/nativePullback4225 two-longline failures; source versions not relabeled; real ordinary365 native568 kernel108 retained separately from07resource143;9050 lower2dee failure native7633unreached retained before0882correctedpairPASS; old B79Relative7713 type/kernel/cascade and Germ0d21 maxRecDepth133 failures retained separately from V16; oldV16Relative1d32realKernel36/latercascade andGerm2aa133generator-view recursion; oldGeoDiagramcd99rewrite98; formationP36True separate",
+    "source_only_finding": "eae0 associator issue had no claimed prior compiler failure",
+    "no_fresh_verdict": "neither pass nor asserted failure; current native31/wholeW10 closure not inferred from source availability or generic successes",
+    "diagnostics_read": [
+      {
+        "path": "migration/incremental-compiler/recovery-20261029/authorized-continuation-20261029/current231-live-W10-diagnostics.log",
+        "sha256": "93aa517df35afa498b4ee62e85a53766c6456f0f153b19e1003e7403fbe34044",
+        "scope": "complete supplied W10 own diagnostic contexts; canonical traces omitted only from displayed projection"
+      },
+      {
+        "path": "migration/incremental-compiler/recovery-20261029/authorized-continuation-20261029/current234-final-W10-diagnostics.log",
+        "sha256": "bca17d8a7bf3dc6e9e9cdeaa68d6e8c420d0ff6776dc714e2a2adf11d6eeeba3",
+        "scope": "complete supplied W10 own diagnostic contexts; canonical traces omitted only from displayed projection"
+      }
+    ],
+    "reviewer_execution": "source/evidence reads, read-only Git and identity comparisons only; no Lean/remote/build/test/lint/client/replay/audit/new certification",
+    "new_gate": false,
+    "current_source_coverage": "selectedSectiona1fb/7633actualfullPASS0882 retained; currentV17Geo3d6/V18Germbb/V19lower20269-nativee449 and dependent coverage source-specific pending here, no whole52closure"
+  },
+  "pins": {
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "default_maxHeartbeats": 200000,
+    "changes": "none introduced by this review"
+  },
+  "remaining_gap": {
+    "mathematical_original_map_source_models_conditions": "none found on remaining complete arguments and named compatible successor source basis",
+    "proof_critical_implementation": "matching ordinary compiler outcomes for changedV17/V18/V19 and remainingdependent native chain still incomplete; selectedSectionpair stays closed. No currentcandidate proof inferred from formationTrue or unchangedlowerprefix pass",
+    "excluded": "established status, whole Etale or W12 result, new writing/test/client/replay acceptance cycle, benchmark/causal performance claim",
+    "selected_Section_pair": "none remaining: actual original map/math/source conditions and exact current two-source compiler coverage complete"
+  },
+  "write_scope": [
+    "migration/reviews/whole-w10-final-continuation.md",
+    "migration/reviews/whole-w10-final-continuation.json"
+  ],
+  "formation_diagnostic_boundary": {
+    "result": "migration/implementation/whole-w10-remaining/section-kernel-diagnostic-v1/RESULT.json",
+    "result_sha256": "5861ff47f447154a5b99625255e5e9a8a94b9fb7f61e5a4278e0feb28e4331b1",
+    "run": "remote-d07189daa6e84086b16a6f9352b340f5",
+    "source": "fa706f5af7815a71b77557a26516aed2ea4df5a88162c006ab22f2a103759389",
+    "group_closed": true,
+    "exit_code": 0,
+    "fresh_frontends": 1,
+    "probe_sha256": "c1b2263a6281eca0ae8d6b4de7349bf8874c27654e5c99a2d9546872429e3c76",
+    "native_setup_sha256": "283917335d2fd67c8450fe2d889d3a06e6c0482ec77bdfec4279dac414f2751f",
+    "question": "formation of exact P85/P128 as (_h:P):True with actual native setup/options only",
+    "not_proved": [
+      "original P85/P128",
+      "native Section module",
+      "retraction/naturality law",
+      "unique kernel conversion pair",
+      "matched speedup"
+    ],
+    "mathematical_verdict_basis": "independent actual source construction and defining-map derivation, not this formation success"
+  },
+  "selected_Section_pair_current_closure": {
+    "run": "remote-0882edf6151a45638017b3eb30b55c9b",
+    "source": "b9f7528b14265354da1e6e4aee832a5e4fb2c5c3db888d7807551c7c49e26c70",
+    "source_receipt_sha256": "5abd16e79880eff594a3c76bb5ea9919e96829e1f0535e8591c84c6fe8074f4f",
+    "group_closed": true,
+    "exit_code": 0,
+    "fresh_frontends": 2,
+    "failed_frontends": 0,
+    "no_input_drift": true,
+    "receipt": "foundations/lane-d/remote-runs/remote-0882edf6151a45638017b3eb30b55c9b/receipt.json",
+    "events": "foundations/lane-d/remote-runs/remote-0882edf6151a45638017b3eb30b55c9b/compiler-events.jsonl",
+    "canonical_log": "foundations/lane-d/remote-runs/remote-0882edf6151a45638017b3eb30b55c9b/build.log",
+    "canonical_log_sha256": "5a18e97b7f5cdbc4ed083d8ca19a23001d31e97e5c28cf818549817475171714",
+    "source_archive": "migration/source-manifests/continuation-D-N-b9f7-section-0882edf6.json",
+    "source_archive_sha256": "5abd16e79880eff594a3c76bb5ea9919e96829e1f0535e8591c84c6fe8074f4f",
+    "actual_passes": [
+      {
+        "sha256": "a1fb5123c6bbf273d62feff730e3e788abbab1e3615b3bc1afe20ddaf8b5a938",
+        "wrapper_pid": 140182,
+        "elapsed_seconds": 2.755458,
+        "exit_code": 0
+      },
+      {
+        "sha256": "7633e1a279c7b0b61ff16f2d8cc5a4fc967a55b0084a56b9307298cb87c0d295",
+        "wrapper_pid": 140207,
+        "elapsed_seconds": 50.201721,
+        "exit_code": 0
+      }
+    ],
+    "boundary": "exact current selected pair; standard pins/options/default200000, no oldKernel or whole52 result transferred; no controlled speedup or established status inferred",
+    "selected_pair_and_unchanged_SourceSection_filemap_matched": true
+  },
+  "ancestor_v13_diagnostic_history": {
+    "earlier_5d210_run": {
+      "run": "remote-5d210be65fe14220b30616842af5eb35",
+      "source": "8a103bab710e197d116b909c1298b80249b526691875b103c0c47a17e33a2c9f",
+      "owned_full_logs": [
+        "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/N-coalesced-5d210be6/SourceSquare.log",
+        "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/N-coalesced-5d210be6/PullbackComposition.log"
+      ]
+    },
+    "earlier_dc113_run": {
+      "run": "remote-dc113ef1599e45dcbb12c4d48739ddcf",
+      "source": "a3228f271f023fd6f2b076d844a6addc8f9d2f73dfc133efa592dbb70573dd8b",
+      "owned_full_logs": [
+        "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/N-independent-dc113ef1/Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.Cohomology.log",
+        "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/N-independent-dc113ef1/Aglib.AlgebraicGeometry.EtaleCohomology.Curves.SplitCoefficients.log"
+      ]
+    },
+    "V13outcome": "pending/not consumed here; independent current ancestor graph released without this review gate",
+    "V12": "prepared only, coalesced inV13"
+  },
+  "guard_history_correction": {
+    "event": "a draft mutation initially did not propagate Python source-guard failure because a later Git command ended shell successfully",
+    "actual_input_change": "Transport advanced from selectedV14 2dee to namedV15a1fb",
+    "correction": "fixedV14afterimages retained as history; exact namedV15delta independently read; current52 guard rerun in a single process with nonzero propagation before final delivery; no implementation/previousreport mutation or old result relabel"
+  },
+  "relative_formation_diagnostic_boundary": {
+    "result": "migration/implementation/whole-w10-remaining/relative-kernel-diagnostic-v1/RESULT.json",
+    "result_sha256": "80eee4eafc8bb3876a5b4324fe87581dfad823588a7aeef0879a102b2ff3b535",
+    "run": "remote-f261f4e505e3477fa29f78df2a07cd6b",
+    "source": "f204986329b4dccb6264cff6af24f682a6f6db14ce2f90b8a397ec36e10bf75f",
+    "probe_sha256": "9ac430a39fa7b918482c56c547be05fcf857fde157526df42196143129fcada7",
+    "recorded_operator_callback": "CLOSED0/onefrontend/9.634sphase underactualnativeModuleName/isModule/full4opts",
+    "exact_question": "P36 only formed as (_h:P):True",
+    "canonical_receipt_locally_available_at_read": false,
+    "boundary": "result artifact/operator callback only; noPproof/nativeclosure/exactkernelpair/speedup or compilerpass for currentcandidate; independent mathematical source judgment above"
+  }
+}

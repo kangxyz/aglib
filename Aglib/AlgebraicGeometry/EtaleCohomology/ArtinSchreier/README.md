@@ -41,3 +41,9 @@ consumer graph, generated entries, text style, all 15 declaration linters, and
 the 653-declaration axiom audit with only the three standard foundations.
 This result does not prove affine-etale acyclicity, the curve calculation,
 proper base change, or unbounded six operations.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [HigherDirectImageKernel](HigherDirectImageKernel.lean)

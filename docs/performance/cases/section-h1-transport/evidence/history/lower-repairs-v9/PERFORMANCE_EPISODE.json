@@ -1,0 +1,38 @@
+{
+  "question": "Actual SectionPullback52 nativekernel bottleneck on original comparison component, not proof/replay certification",
+  "failure": {
+    "run": "remote-c5a65e5a950841bf84f4630ab251aa3d",
+    "source": "7059a705817cec7e67e4f6586b99fe339d685a0292f3ea70469f86db85451d94",
+    "native_path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean",
+    "sha256": "a433e8aacacd222ad988c9c60e0779c593172f4eadfce2be8fa3fa384586d747",
+    "reported_module_seconds": 254,
+    "diagnostics": [
+      "52:8 kernel deterministic timeout",
+      "110/138 expectedH1 vsrawExt inferred equation mismatch",
+      "118unknownconstant cascade after52"
+    ],
+    "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-c5a65e5a950841bf84f4630ab251aa3d/build.log",
+    "log_sha256": "790a4a3c9f3542bab807a23ef0fb4c71f432f4652e23aceca33cf6b7d20389cc"
+  },
+  "governing_methods_read": [
+    "docs/PERFORMANCE.md#shared-constructions-and-equations",
+    "docs/PERFORMANCE.md#conversion-boundaries",
+    "docs/performance/site-cohomology-share-the-comparison-definition-not-only-its-proof.md"
+  ],
+  "candidate": {
+    "new_bridge": {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection/Transport.lean",
+      "before_sha256": null,
+      "sha256": "1af9eadc0e50ec6b1c9995c98d16096b2268d54245562293405938fdea3c66ba",
+      "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/lower-repairs-v9/source/Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection/Transport.lean"
+    },
+    "native_section": {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean",
+      "before_sha256": "a433e8aacacd222ad988c9c60e0779c593172f4eadfce2be8fa3fa384586d747",
+      "sha256": "54827938e612b1945ac212115ec394572be025da4688e9be4e5dd6ceb45437a7",
+      "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/lower-repairs-v9/source/Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean"
+    },
+    "mechanism": "Compare whole Iso values over variable functors/index equality before projection; keep original complete extCoefficientTransfer head in inferred proof and actual native goal. Actual maps/data unchanged."
+  },
+  "evidence_boundary": "Not run yet; kernel failing conversion pair not isolated, no unique cause or matched speedup claim. Standard200000/nativepins/options/trust unchanged. If this guided repair still fails at componentlaw, use native-faithful typed-proposition formation probe with actualmodule setup before another concrete simplification. No opaqueShrink or model replacement."
+}

@@ -24,3 +24,8 @@ present consumers are the fibre Hilbert polynomial leaves
 `Cohomology/Projective/HilbertPolynomial/FlatFamily` and
 `Cohomology/Projective/HilbertPolynomial/Finiteness`, and the large-twist fibre
 statements `Cohomology/Projective/FiberBaseChange`.
+
+[KrullDimension/Surjective](KrullDimension/Surjective.lean) bounds the
+Krull dimension of the target of a closed continuous surjection between
+sober spaces by that of the source, without Noetherian or finite-dimensional
+hypotheses.

@@ -69,6 +69,43 @@ every positive `n`, including noninvertible levels, with the native genus-one
 premise supplied by the genus theorem. The geometric reduced point-count and
 étaleness conclusions above retain their invertible-level premise.
 
+[Multiplication by `n` with finite `k`-point fibres](MultiplicationSurjective.lean):
+for a group scheme `G` over an algebraically closed field `k`, proper over `k`,
+and `n` such that `{p | p ^ n = y}` is finite for every `k`-point `y`, the
+literal `[n] = (𝟙 G) ^ n` is finite
+(`multiplication_isFinite_of_finite_setOf_pow_eq_of_isAlgClosed`); if `G` is
+moreover connected, `[n]` is surjective
+(`multiplication_surjective_of_finite_setOf_pow_eq_of_isAlgClosed`) and `G(k)` is
+`n`-divisible (`exists_pow_eq_of_finite_setOf_pow_eq_of_isAlgClosed`). For an
+abelian variety these are Stacks 03RP (3), (4) and the finiteness in the proof
+of 0BFG; here the finiteness of the `k`-point fibres is the hypothesis, and no
+smoothness, commutativity, ample line bundle or dimension bound is used.
+`multiplication_left_apply_point`, `multiplication_left_apply_unitPoint` and
+`multiplication_isProper` hold over any field. Consumer: the Jacobian
+([Curves/Jacobian/Multiplication](../Curves/Jacobian/Multiplication.lean)).
+
 [IdentityComponent](IdentityComponent/README.md): the identity component of a group scheme locally
 of finite type over a field: open, closed, geometrically connected, a group scheme, compatible with
 field extension, geometrically irreducible, quasi-compact and of finite type.
+
+[IsogenyPairing](IsogenyPairing.lean) obtains frame-evaluation characters from the
+same positive transporter and framed character in
+[generic sheaf-torsor transport](../../CategoryTheory/Sites/Torsor/Transport.lean).
+The original coefficient-unit fixedness supplies the character hypothesis;
+`scalar_eq_framedScalar` and `character_eq_framedCharacter` identify the actual
+units-valued maps. Frame and equivariant-isomorphism independence retain the
+original deck action and positive sign.
+
+[Dimension](Dimension.lean) supplies smooth-group dimension comparisons at the
+original identity. [Commutative](IdentityComponent/Commutative.lean) transfers
+commutativity through the actual identity-component inclusion.
+[MultiplicationSmoothEtale](MultiplicationSmoothEtale.lean) proves original
+multiplication étale for a smooth commutative field group when `n` is a unit.
+[FiniteFlat](Multiplication/FiniteFlat.lean) and [FiniteKernel](Multiplication/FiniteKernel.lean)
+retain the general finite-surjective homomorphism flatness and finite-kernel
+interfaces; positive-level projective conclusions belong to
+[AbelianScheme/OverField](../AbelianScheme/README.md).
+
+[Translation/Incidence](Translation/Incidence.lean) constructs the original
+translation incidence pullback over any base. Its closed-point comparison
+retains reduced source and Jacobson ambient hypotheses.

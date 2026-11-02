@@ -1,0 +1,27 @@
+{
+  "run": "remote-2f7f18787712437fb879d329b7835330",
+  "source": "0f46750592aec8cc2718833f0dfe763e6cad34db10a11d5fe86d483a03d278f6",
+  "group_closed": true,
+  "aggregate_exit": 1,
+  "sources": [
+    {
+      "path": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean",
+      "sha256": "aa3d6ef9922cf4ed7e2ebff5852afb1380faf579e60ede4663587069630474e8",
+      "verdict": "fresh_pass",
+      "exit_code": 0,
+      "elapsed_seconds": 3.3264523297548294
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean",
+      "sha256": "f656cc8ca88d909b0fc911fb8c77af8c7c87d9a09932a2b73d9fbdf1675af831",
+      "verdict": "fresh_failure",
+      "exit_code": 1,
+      "elapsed_seconds": 126.9684910774231
+    }
+  ],
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-2f7f18787712437fb879d329b7835330/receipt.json",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-2f7f18787712437fb879d329b7835330/compiler-events.jsonl",
+  "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-d/remote-runs/remote-2f7f18787712437fb879d329b7835330/build.log",
+  "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/continuation-D-N-0f467-V26-2f7f1878.json",
+  "boundary": "Genericaa3dPASS; nativef656firstKernel45/102cascade. Notmathematicalcounterexample, no currentproofboundarydiagnosisfromfailednormalrun; oneCprofile45eexaminesexactcontextseparately, notordinaryCPP."
+}

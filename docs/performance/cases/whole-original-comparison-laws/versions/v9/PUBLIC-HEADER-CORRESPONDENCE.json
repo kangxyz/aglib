@@ -1,0 +1,107 @@
+{
+  "version": "v9",
+  "source_basis": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/basis.json",
+  "status": "Mechanical exact statement-header correspondence; not a Lean compilation or proof verdict",
+  "declarations": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean",
+      "name": "triangleCoefficientMap_square",
+      "header_verbatim": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean",
+      "name": "squareCoefficientMap",
+      "header_verbatim": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean",
+      "name": "inverseImageSquareIso_inv_hComp",
+      "header_verbatim": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean",
+      "name": "squareCoefficientMap_hComp",
+      "header_verbatim": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.lean",
+      "name": "inverseImageSquareIso_base_id",
+      "header_verbatim": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.lean",
+      "name": "squareCoefficientMap_base_id",
+      "header_verbatim": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.lean",
+      "name": "squareSectionsMap_base_id",
+      "header_verbatim": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.lean",
+      "name": "squareCoefficientMap_id",
+      "header_verbatim": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.lean",
+      "name": "squareSectionsMap",
+      "header_verbatim": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.lean",
+      "name": "squareSectionsMap_id",
+      "header_verbatim": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.lean",
+      "name": "squareSectionsMap_hComp",
+      "header_verbatim": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.lean",
+      "name": "squareSectionsMap_transport",
+      "header_verbatim": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTopIdentity.lean",
+      "name": "inverseImageSquareIso_top_id",
+      "header_verbatim": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTopIdentity.lean",
+      "name": "squareCoefficientMap_top_id",
+      "header_verbatim": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTopIdentity.lean",
+      "name": "squareSectionsMap_top_id",
+      "header_verbatim": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTransport.lean",
+      "name": "squareCoefficientMap_transport",
+      "header_verbatim": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean",
+      "name": "directImageSquareIso_transpose",
+      "header_verbatim": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean",
+      "name": "conjugate_inverseImageSquareIso_inv",
+      "header_verbatim": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean",
+      "name": "squareCoefficientMap_homEquiv",
+      "header_verbatim": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/TriangleSquareAdjoint.lean",
+      "name": "triangleSquareCoefficientMap_homEquiv",
+      "header_verbatim": true
+    }
+  ]
+}

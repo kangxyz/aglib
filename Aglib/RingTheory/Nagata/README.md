@@ -52,3 +52,9 @@ assumption on the target.
 These interfaces serve the actual normal-graph and blowup-stalk constructions.
 Their coefficient dimension and algebraicity conditions remain explicit;
 they do not assert unrestricted finite-type stability in all dimensions.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [FiniteTypeFieldLocalModel](FiniteTypeFieldLocalModel.lean)

@@ -22,10 +22,9 @@ variable (R Ω : Type u) [CommRing R] [Field Ω] [Algebra R Ω] [IsSepClosed Ω]
 
 /-- Original structural maps of every pointed neighborhood. -/
 def pointedNeighborhoodStructure :
-    pointedNeighborhoodDiagram Ω η ⟶ (Functor.const _).obj S where
-  app d := d.obj.hom
-  naturality {_ _} a :=
-    (MorphismProperty.Over.w a.hom).trans (Category.comp_id _).symm
+    pointedNeighborhoodDiagram Ω η ⟶ (Functor.const _).obj S :=
+  ((Over.forgetCocone S).whisker
+    (Functor.Elements.π (pointSmallEtale η).fiber ⋙ Etale.forget S)).ι
 
 /-- The original single fibre product at every marked étale neighborhood. -/
 def pointedNeighborhoodBaseChangedDiagram :

@@ -14,6 +14,11 @@ ordinary comparison and both installed composite-derived units. The
 independent arbitrary-universe consumer checks those exact arrows and uses
 only the standard three axioms.
 
+The comparison is an instance of the shared
+`rightDerivedFunctorPlusThreeFactorIso`; its `_eq_original` theorem retains
+the original homology-preservation and injective-preservation factors, and
+the generic composite-unit law supplies the existing component equation.
+
 This locality interface is an input to the affine coinduction/Koszul
 calculation of purity. It does not yet identify the derived object with a
 shifted canonical line or assume QC preservation by the ordinary adjoint.

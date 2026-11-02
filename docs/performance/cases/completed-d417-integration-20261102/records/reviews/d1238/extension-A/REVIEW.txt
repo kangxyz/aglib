@@ -1,0 +1,108 @@
+Family A Cartesian compact-support extension: ordinary review continuation
+
+Verdict: ordinary PASS on EXTENSION-READY-2.json. No target-specific mathematical gap remains relative to the named accepted current suppliers. The prior D1238 ten-source ordinary PASS is retained unchanged; all 38 native source identities recorded by that earlier review were reconciled with the present candidate. This continuation covers the seven new sources as one coherent family, including their mathematical prose and the bounded source-correspondence argument. It does not assign established status or compiler acceptance.
+
+Source identity and changes
+
+MAIN is integration-30b6 at b0f8ca3f44be620dde8b40f65e1eec0143e45db4. SOURCE-BASIS.json records full SHA-256 identities for the seven sources, eleven accepted current anchors, additional inspected normalization spans, the original archive sources, input packets and retained prior review. snapshot/ contains fixed copies. The effective target is EXTENSION-READY-2.json, not the superseded READY-1 snapshot.
+
+The original bounded endpoint is archive CartesianGeometricFiber.lean SHA-256 f7a6676e51a956790817f343ee4e263cd668fbcd0b57509678eb474133f4d96f, original D849. Its new source b115cdf1868bbb124b3d8562ebe7a029442511ddb9c0613f5b93510da6eee509 uses the existing whole given-Cartesian exchange before ordinary specialization, adds its bounded whole-complex fibre comparison and coefficient naturality, and omits four redundant wrappers. The actual original target statement, conditions and canonical map are preserved as explained below.
+
+The original unbounded endpoint, D1398, remains byte-identical at f2a060b2e269412cb66a4ac3ff93ef253548d371b1e17c02ddbbac4c72c9e052. Its current suppliers are reconciled separately from that byte identity.
+
+READY-1 Single.lean c67ade7471fce970e7cfa0a8949e23574385ddc09cb2dc7a04674c0b3afee54a is superseded by READY-2 Single.lean 940176805f715f46d0f18da52e4b64571a3446440fe48369d790c1cd500ef54b. The same zero morphism and the same proof that its underlying map is mono are now passed explicitly to Sheaf.IsTorsion.of_mono. This changes elaboration input only, with no mathematical premise or operational-map change. The source also removes archive-local elaboration options. Other READY-1 source bytes are unchanged.
+
+Conditions and separate coefficient regimes
+
+Both endpoints retain qcqs S, a quasi-compact separated locally-finite-type f:X -> S, a separably closed Omega:Type u, the actual s:Spec(Omega) -> S and Lambda:Type(u+1) with CommRing Lambda. Y is the given scheme, a:Y -> Spec(Omega) and b:Y -> X are the given maps, and a retains its original separated/local-finite-type/quasi-compact instances. The bounded input h:IsPullback a b s f and the unbounded input sq:IsPullback b a f s specify the same respective Cartesian geometry. Neither Y nor b is silently replaced by the literal library pullback or its projection. All q are arbitrary integers.
+
+D+ uses the native bounded-below full subcategory with internally locally torsion cohomology over this arbitrary commutative ring. Ordinary inputs are internally torsion module sheaves. There is no common annihilator, finite underlying-value, constructibility, Noetherianity or residue-characteristic-invertibility premise.
+
+The unbounded endpoint retains a positive N with N * 1_Lambda = 0. It applies to the full unbounded native derived category, with ordinary sheaves specialized through degree-zero singleFunctor. The positive-annihilator premise is not imported into D+; intrinsic torsion alone is not substituted for that unbounded premise.
+
+Derived models for X, S, literal fibre, Spec(Omega), ModuleCat Lambda and the given Y remain independently sized, as do the original source/literal/presentation/raw compactification families. No new realization or identification of worlds is introduced.
+
+Result-specific outcomes
+
+Here Rf!, RΓ_c and b* are the actual native source functors, H^q is native homology and (-)_s is the existing actual moduleGeometricStalk.
+
+1. D849#moduleExceptionalCartesianGeometricFiberIso — PASS. Naturally in every bounded-below internally torsion-cohomology K,
+       (H^q(Rf! K))_s ~= H^q(RΓ_c(a)(b* K)),
+   with b* = moduleDerivedInverseImageTorsion b Lambda and RΓ_c(a) the chosen bounded-below exceptional image followed by actual bounded-below derived module sections.
+
+2. D849#moduleHigherExceptionalCartesianFiberIso — PASS. For every internally torsion ordinary coefficient F over fixed Lambda,
+       (R^q f! F)_s ~= H_c^q(Y, b* F),
+   where the right coefficient is the ordinary moduleInverseImage b Lambda applied to F, in the native torsion full subcategory. This preserves the original D849 target, including its actual canonical forward map.
+
+3. D849#moduleHigherExceptionalCartesianFiberIso_naturality — PASS. The preceding isomorphism commutes with the actual functor maps of every morphism between internally torsion coefficient sheaves over fixed Lambda.
+
+4. D1398#moduleExceptionalUnboundedCartesianGeometricFiberIso — PASS. Under the positive ring-annihilator premise, naturally for every full unbounded K,
+       (H^q(Rf! K))_s ~= H^q(RΓ_c(a)(b* K)),
+   using moduleUnboundedDerivedInverseImage Lambda b and actual unbounded RΓ_c on the specified Y.
+
+5. D1398#moduleExceptionalUnboundedSingleCartesianGeometricFiberIso — PASS. Its degree-zero ordinary specialization has right coefficient (moduleInverseImage b Lambda F)[0] in the full unbounded derived category, retaining the specified b.
+
+6. D1398#moduleExceptionalUnboundedSingleCartesianGeometricFiberIso_naturality — PASS. The unbounded ordinary comparison commutes with actual maps of every fixed-Lambda sheaf-module morphism.
+
+Construction and supplier applicability
+
+The seven new target files were read in full. Single.lean proves torsion of a single directly: in its degree use the original native single/homology isomorphism; elsewhere the homology object is zero. Its underlying zero map into the given torsion module is mono, so the existing torsion-subobject theorem applies. READY-2 supplies that identical mono proof explicitly. This requires no common exponent.
+
+SinglePullback.lean restricts the existing ordinary native inverse image by moduleInverseImage_preservesTorsion. It lifts the existing rightDerivedFunctorPlusSingleIso with ObjectProperty.isoMk, which preserves the underlying arrows. The generic comparison is the inverse of the actual exact derived unit followed by localization of the original singleMapHomologicalComplex map. Its unit equation was inspected.
+
+HigherDirectImage.lean uses the original degree-zero torsion single, actual torsion-valued exceptional image, native inclusion and homology. The torsion conclusion is the corresponding degree of the output object's established internal-torsion property. The target torsion restriction forgets to the same ambient exceptional functor with unchanged maps; it does not substitute a different higher-image construction.
+
+BoundedBelow.lean defines RΓ_c as actual moduleExceptionalDirectImagePlus followed by moduleDerivedGlobalSections, which is the already reviewed rightDerivedFunctorPlus of actual moduleGlobalSections. It is not the exceptional image alone. Its comparison is the original compactification comparison whiskered by derived sections. Higher-image and compact-support values use only the chosen compactification's derived model; full families occur on all-model comparisons and original Cartesian endpoints.
+
+DerivedGeometricStalk.lean uses the already reviewed moduleGeometricStalkSectionsIso, exact native inverse-image homology comparison and exact field-derived-section homology comparison. Its source is the same actual module stalk as the prior ten-source chain. No scalar-forgetting surrogate or new point model appears.
+
+For bounded Cartesian transport, current Exceptional/BoundedBelow/CartesianBaseChange applies to (f,a,s,b,h.flip). Its native nonempty compactification premises follow from the original Nagata conditions; its given-source and raw/literal model requirements are supplied by the original named families. The supplied chosen values coincide with the existing Nagata values. The use of h.flip then .flip yields the original universal source isomorphism, by proof irrelevance or equivalently uniqueness from the two projection equations. The generic current cartesianSourceExchange is definitionally the literal exchange, followed by canonical exceptional source transport, the associator and the inverse derived inverse-image compositor. The hom-app and model-comparison equations were inspected. These are actual canonical maps, not an arbitrary isomorphism with the desired endpoints.
+
+The bounded whole-complex fibre law is that exchange whiskered by actual RΓ and H^q, preceded by the proved stalk/sections bridge. Ordinary specialization then applies the actual torsion-single/pullback comparison for the given b. The naturality theorem is exactly naturality of this constructed natural isomorphism.
+
+The unchanged unbounded Cartesian endpoint uses the analogous accepted current Cartesian exchange, which contains original literal exchange, canonical source transport and the inverse native derived compositor. Its hom-app formula and selected-model requirements were inspected. The same prior unbounded stalk/sections bridge and actual RΓ_c are then used; its ordinary specialization is the previously reviewed pinned mapDerivedCategorySingleFunctor for b*. The actual source does not assume a new six-operation existence theorem or a conclusion-shaped fibre interface.
+
+Independent check of bounded archive-map correspondence
+
+The archived D849 route first forms the literal ordinary fibre comparison, then compact-support source transport along e=h.isoPullback, then the inverse ordinary coefficient compositor and the projection equality e.hom ; pullback.snd = b. The new route applies that source transport before the single specialization.
+
+Write V for literal derived inverse image, E for derived inverse image by e.hom, W for derived inverse image by b, beta for literal exceptional exchange, psi for canonical exceptional source transport and c:W ~= V;E for the original derived coefficient compositor including the projection equality. Inspection of current CartesianSourceExchange gives the exact component
+       beta_K ; psi_(V K) ; a!.map(c_K^{-1}).
+Thus it is already the archive's literal/source transport at the derived level. The remaining question is compatibility of the exact-single comparisons with this compositor and source isomorphism.
+
+That compatibility follows from the actual generic unit identities, not endpoint uniqueness alone. For exact additive F and G let eta_F be the installed derived unit, sigma_F the source's exact-single comparison, d_F the original single-complex map and C=S(M) the actual single complex. The inspected source equations are
+       eta_F(C) ; sigma_F(M) = Q(d_F(M)),
+       eta_(F;G)(C) ; comp_(F,G)(QC)
+         = eta_G(F^c C) ; RG(eta_F(C)).
+Precompose comp_(F,G)(QC) ; RG(sigma_F(M)) ; sigma_G(FM) with eta_(F;G)(C). The second equation and then the first reduce the result to
+       eta_G(F^c C) ; RG(Q d_F) ; sigma_G(FM).
+Naturality of eta_G moves Q d_F to the left; applying the first equation for G gives Q(G^c d_F ; d_G). Pinned Mathlib singleMapHomologicalComplex_comp_hom_app identifies this composite with Q d_(F;G), including its native termwise-composition factor. Cancelling the invertible exact eta_(F;G)(C) proves that the two successive sigmas after the derived compositor equal sigma_(F;G).
+
+Similarly the inspected rightDerivedFunctorPlusIso_hom_app unit square, together with pinned natTransMapHomologicalComplex_app_single_obj, proves compatibility with the original ordinary inverse-image functor isomorphism. Apply these facts to moduleDerivedInverseImageCompIso, whose definition is the derived original moduleInverseImageCompIso followed by the generic composition comparison, and then to the projection-arrow equality. Its torsion lift retains the same underlying component, as recorded by moduleDerivedInverseImageTorsionCompIso_hom_app.
+
+Finally naturality of psi moves the literal sigma past canonical source transport. After these substitutions the new whole-exchange-then-single composite is exactly the archive's literal-single, source-transport-single and inverse ordinary-coefficient-compositor composite. Whiskering by actual RΓ and H^q preserves this equality. Iso inverses are determined by their forward maps. No formal Lean equality against absent wrapper definitions is asserted; this is the independent mathematical/source-correspondence verdict on the actual definitions and unit equations.
+
+The four omitted allowed archive files GeometricFiber, SingleGeometricFiber, SourceIso and CoefficientPullbackComposition would only name those already present composites. Their original contents were inspected to check this correspondence. No mathematical supplier or original endpoint obligation is lost by omitting these duplicate wrappers.
+
+Evidence boundary and remaining limits
+
+The actual two-root native import-edge closure has no original held-40 path and no missing native import. This is source-exclusion evidence only; no all1397 audit or mathematical review of every reachable declaration was performed. Existing accepted generic existence and canonical-exchange results remain background for the assignment; this verdict checks their actual applicability and connecting maps.
+
+No new target-specific mathematical premise remains. No source repair was contributed by the reviewer. The READY-2 dictionary repair and the smaller value telescopes preserve the reviewed argument and original endpoint conditions. Original bare D receipts build246/build531 are not used as current compiler evidence. Compiler execution and any subsequent diagnostics remain with the shared broker and author. No build, test, lint, axiom audit, replay, client check or Git mutation was performed by this reviewer. Any native compiler result must be reconciled to its actual captured source version; READY-1 output is not relabelled as READY-2 acceptance.
+
+This report supplies an ordinary mathematical verdict only. Subsequent proof-critical changes require affected continuation; unchanged prior coverage remains reusable. Formal established-status review and independent writing acceptance remain separate requirements if such a status decision is later requested.
+
+Source reproduction (no compilation)
+
+Run from this report directory:
+
+python3 - <<'CHECK'
+from pathlib import Path
+import json,hashlib
+b=json.loads(Path('SOURCE-BASIS.json').read_text())
+for k in ('source','accepted_current_anchors','additional_inspected_dependency_spans'):
+    for p,h in b[k].items():
+        assert hashlib.sha256((Path('snapshot/main')/p).read_bytes()).hexdigest()==h,p
+        assert hashlib.sha256((Path(b['source_root'])/p).read_bytes()).hexdigest()==h,p
+print('Fixed review copies and current candidate match.')
+CHECK

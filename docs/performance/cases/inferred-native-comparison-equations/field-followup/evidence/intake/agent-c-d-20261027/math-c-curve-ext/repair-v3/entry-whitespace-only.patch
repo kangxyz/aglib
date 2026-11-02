@@ -1,0 +1,12 @@
+--- v2/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceUniverses.lean
++++ v3-entry/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceUniverses.lean
+@@ -53,7 +53,8 @@
+     rw [← cohomologyPullback_eq_additiveToposMap]
+     exact hstandard
+   rw [cohomologyPullback_eq_additiveToposMap]
+-  exact Topos.AdditiveCoefficientAction.cohomologyMap_bijective_changeUniverse.{u + 1, u, u + 1, u, u + 1, u + 2, u + 2, eX, eY} s L 1 hs
++  exact Topos.AdditiveCoefficientAction.cohomologyMap_bijective_changeUniverse.{u + 1, u,
++    u + 1, u, u + 1, u + 2, u + 2, eX, eY} s L 1 hs
+ 
+ /-- The original scalar-linear pullback for any bounded literal constant
+ module is bijective, with independent ring and both Ext universes. -/

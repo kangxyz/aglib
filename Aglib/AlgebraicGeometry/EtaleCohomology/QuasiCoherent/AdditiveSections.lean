@@ -60,44 +60,12 @@ theorem sectionsPresheaf_map_zero {T U : Over X} (f : U ⟶ T) :
       (0 : Γ((pullback U.hom).obj F, ⊤)) := by
   simp only [sectionsPresheaf_map_eq, map_zero]
 
-/-- Lift additive restrictions transported from a Type-valued presheaf.
-Functoriality is proved before any concrete geometric carrier is substituted. -/
-def liftAdditiveTransport {C : Type*} [Category* C] (P : Cᵒᵖ ⥤ Type u)
-    (A : C → AddCommGrpCat.{u}) (e : ∀ T, P.obj (op T) ≃ A T)
-    (r : ∀ {T U}, (U ⟶ T) → (A T →+ A U))
-    (hr : ∀ {T U} (f : U ⟶ T) (s : A T), r f s = e U (P.map f.op ((e T).symm s))) :
-    Cᵒᵖ ⥤ AddCommGrpCat.{u + 1} where
-  obj T := AddCommGrpCat.of (ULift.{u + 1} (A T.unop))
-  map f := AddCommGrpCat.ofHom {
-    toFun s := ⟨r f.unop s.down⟩
-    map_zero' := ULift.ext _ _ (map_zero (r f.unop))
-    map_add' s t := ULift.ext _ _ (map_add (r f.unop) s.down t.down) }
-  map_id T := by
-    ext s
-    change r (𝟙 T.unop) s.down = s.down
-    rw [hr, op_id, CategoryTheory.Functor.map_id]
-    exact (e T.unop).apply_symm_apply s.down
-  map_comp f g := by
-    ext s
-    change r (g.unop ≫ f.unop) s.down = r g.unop (r f.unop s.down)
-    rw [hr, hr, hr, Equiv.symm_apply_apply, op_comp, CategoryTheory.Functor.map_comp]
-    rfl
+/-- Lift the supplied additive restrictions through the faithful forgetful functor. -/
+abbrev liftAdditiveTransport := @CategoryTheory.PresheafTransport.liftAdditiveTransport
 
 /-- Forgetting the additive transport retains the original lifted Type presheaf. -/
-def liftAdditiveTransportForgetIso {C : Type*} [Category* C] (P : Cᵒᵖ ⥤ Type u)
-    (A : C → AddCommGrpCat.{u}) (e : ∀ T, P.obj (op T) ≃ A T)
-    (r : ∀ {T U}, (U ⟶ T) → (A T →+ A U))
-    (hr : ∀ {T U} (f : U ⟶ T) (s : A T), r f s = e U (P.map f.op ((e T).symm s))) :
-    liftAdditiveTransport P A e r hr ⋙ CategoryTheory.forget AddCommGrpCat.{u + 1} ≅
-      P ⋙ uliftFunctor.{u + 1} :=
-  NatIso.ofComponents (fun T =>
-    (Equiv.ulift.trans ((e T.unop).symm.trans Equiv.ulift.symm)).toIso) (by
-      intro T U f
-      ext s
-      apply ULift.ext
-      change (e U.unop).symm (r f.unop s.down) = P.map f ((e T.unop).symm s.down)
-      rw [hr, Equiv.symm_apply_apply]
-      rfl)
+abbrev liftAdditiveTransportForgetIso :=
+  @CategoryTheory.PresheafTransport.liftAdditiveTransportForgetIso
 
 /-- Additive transport preserves descent of the original Type presheaf. -/
 theorem liftAdditiveTransport_isSheaf {C : Type (u + 1)} [Category.{u} C]
@@ -105,12 +73,8 @@ theorem liftAdditiveTransport_isSheaf {C : Type (u + 1)} [Category.{u} C]
     (A : C → AddCommGrpCat.{u}) (e : ∀ T, P.obj (op T) ≃ A T)
     (r : ∀ {T U}, (U ⟶ T) → (A T →+ A U))
     (hr : ∀ {T U} (f : U ⟶ T) (s : A T), r f s = e U (P.map f.op ((e T).symm s)))
-    (hP : Presheaf.IsSheaf J P) : Presheaf.IsSheaf J (liftAdditiveTransport P A e r hr) := by
-  rw [Presheaf.isSheaf_iff_isSheaf_forget _ _
-    (CategoryTheory.forget AddCommGrpCat.{u + 1})]
-  apply (Presheaf.isSheaf_of_iso_iff (liftAdditiveTransportForgetIso P A e r hr)).2
-  apply (isSheaf_iff_isSheaf_of_type _ _).2
-  exact Presieve.isSheaf_comp_uliftFunctor J ((isSheaf_iff_isSheaf_of_type _ _).1 hP)
+    (hP : Presheaf.IsSheaf J P) : Presheaf.IsSheaf J (liftAdditiveTransport P A e r hr) :=
+  CategoryTheory.PresheafTransport.liftAdditiveTransport_isSheaf J P A e r hr hP
 
 /-- The Type restriction retains the original Hom-transport formula. -/
 theorem sectionsPresheaf_map_transport {T U : Over X} (f : U ⟶ T)
@@ -148,7 +112,11 @@ theorem etaleAdditivePresheaf_isSheaf :
     Presheaf.IsSheaf (Scheme.smallEtaleTopology X) (etaleAdditivePresheaf X F) := by
   apply (Scheme.Etale.forget X).op_comp_isSheaf_of_isSheaf
     (Scheme.smallEtaleTopology X) (Scheme.etaleTopology.over X)
-  exact liftAdditiveTransport_isSheaf _ (homPresheaf X F) _ _ _ _
+  exact CategoryTheory.PresheafTransport.liftAdditiveTransport_isSheaf
+    (Scheme.etaleTopology.over X) (homPresheaf X F)
+    (fun T => AddCommGrpCat.of Γ((pullback T.hom).obj F, ⊤))
+    (sectionsEquiv X F) (fun f => sectionsAddHom X F f)
+    (fun f s => sectionsAddHom_apply X F f s)
     (homPresheaf_isSheaf_etale X F)
 
 /-- The genuine additive étale coefficient of a native quasi-coherent module. -/

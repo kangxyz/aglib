@@ -1,0 +1,12 @@
+✔ [3642/3652] Built Aglib.CategoryTheory.NatTrans.TargetComparisonEquation (1.0s)
+✔ [3643/3652] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.ToTargetAlgebra (2.5s)
+✔ [3644/3652] Built Aglib.CategoryTheory.Adjunction.TripleIdentity (2.6s)
+✔ [3645/3652] Built Aglib.CategoryTheory.Adjunction.RefinementOuterComparison (2.7s)
+✔ [3646/3652] Built Aglib.CategoryTheory.Adjunction.TripleLocalization (2.0s)
+✔ [3647/3652] Built Aglib.CategoryTheory.Adjunction.TripleMateCompatibility (3.2s)
+✔ [3648/3652] Built Aglib.CategoryTheory.Adjunction.TripleMateStructural (1.7s)
+✔ [3649/3652] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.ProperOpen.ToDirectImageSquare (8.2s)
+✔ [3650/3652] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.ProperOpen.ToDirectImageCompatibility (8.4s)
+✔ [3651/3652] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.ProperOpen.ToDirectImageIdentity (5.4s)
+✔ [3652/3652] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.ProperOpen.ToDirectImage (6.7s)
+Build completed successfully (3652 jobs).

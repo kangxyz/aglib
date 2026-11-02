@@ -1,0 +1,37 @@
+{
+  "status": "READY R-only complete v3 packet; N3 held at13881/6f865/747 until principal coordinated release/application.",
+  "before_sha256": "13881b0920b7cb26d8bea35d492bbb5864d8eaf35fb5f65ea41f712f5f2c7464",
+  "after_sha256": "2083f9a19bbc86763080cb3539166752b739ba54b4e10f087080b9d83b8e18fb",
+  "after_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/associated-bundle-core-staging/compiler-repair-v3/after/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean",
+  "PowerDescent_unchanged_sha256": "6f8658b9c48f8448a89b98b0234603c4afbdc8f9aa6055cc7ac8b39df2fbb11e",
+  "delta_sha256": "a59637a82f8a49baeeb08d61e0826fed046d7f68973b81ff7ca2eaabddb01a0f",
+  "diagnostic_basis": {
+    "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-fc80f761ab4e42ea92f581b5209103f0/build.log",
+    "sha256": "352941f3ba44ef436d5adbdd6dbc46ec5a8f07d51d3fec1d427f47df3fe458e2",
+    "actual_errors": "rawChart_natural623 whnf200000, then toFrame_natural643 missing-constant cascade; no OOM; other v2 errors gone per actual run."
+  },
+  "mathematics": "No new hypothesis or existence theorem. Derive raw-section naturality from the actual proved whole overlap relation and the actual self-unit rule, over a variable native line-bundle object M and its original raw-chart family. Instantiate once at the already selected D.",
+  "constructor_correspondence": "rawChart remains chartMap i followed by unitIso.inv, now through RawChartFamily. Its original expanded pointwise rawChart_relation is retained as a view of ChartRelations. frameRawHom_native is a typed alias of the SAME existing FrameTorsor.frameRawHom at toLineBundle M; of_toLineBundle normalization occurs over variable M, not after choosing D. No second frame/sheaf/model/cover is constructed.",
+  "unchanged": "Original P, chi, positive units/cover/descent/recovery/power independence, Ext/D absence, package flags/budgets. PowerDescent6f and Projective747 held.",
+  "boundary_attribution": "The D versus ofLineBundle(toLineBundle D) conversion cause is source-based inference consistent with declaration-phase feedback, not a measured whole-source timing attribution.",
+  "compiler_run": false,
+  "native_mutations": false,
+  "initial_d616_e553_and_v2_history_preserved": true,
+  "after_lines": 1120,
+  "fixed_at_utc": "2026-10-26T20:13:31.820747+00:00",
+  "typed_obligation_closed_by_source": "Formal raw-section naturality is derived over variable native M, raw-chart family c, transition family u, actual ChartRelations and u(s,s)=1. The concrete relation proof and naturality specialization share RawChartFamily/ChartRelations/sectionFamily heads. The original expanded rawChart_relation is a component view; no desired naturality is assumed.",
+  "native_view": "frameRawHom_native is exactly FrameTorsor.frameRawHom h X (toLineBundle X M), typed at native M before supplying D. Its generic injectivity/naturality delegate to the original native lemmas. toFrame_raw_native reuses the original toFrame_raw value proof.",
+  "static_checks": {
+    "all_initial_public_names_preserved": true,
+    "one_lineBundle_constructor": true,
+    "one_rawChart_constructor": true,
+    "original_pointwise_rawChart_relation_preserved": true,
+    "same_imports": true,
+    "max_source_line_length": 100,
+    "manual_placeholder": false,
+    "new_budget_flag_suppression": false,
+    "native_writes": false,
+    "compiler_run": false
+  },
+  "math_gap": "No new mathematical premise/existence gap. Native elaboration remains root-owned and pending; fc80 is a failure basis, not acceptance. PowerDescent was unreached and is unchanged."
+}

@@ -1,0 +1,77 @@
+{
+  "status": "actual_normal_proof_failed",
+  "run": "remote-e2d8b8ce14a3479eacc998b0f5835fe8",
+  "source_content_sha256": "a6900933b6f95bed43897ed4902dc03cefad54333bf4b53801386ef5f77d396d",
+  "scratch_sha256": "86fe6ef137da28646e37604b649306d22e78d0cb540a45192bfd7345e6b7674d",
+  "native_sha256": "655b2ec9420861b503e7f1bb59d54ad4983c801f67161fc6bf6d603b0c9841d6",
+  "normal_native_context": {
+    "module_name": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.LocalFiniteComparison",
+    "isModule": true,
+    "options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "profile": {
+      "jobs": 8,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536
+    }
+  },
+  "diagnostics": [
+    {
+      "line": 54,
+      "column": 8,
+      "message": "(kernel) deterministic timeout",
+      "declaration": "Proper.diag_original_sourceSecond_literal"
+    }
+  ],
+  "lean_seconds": 99.7971239387989,
+  "phase_seconds": 111.14359353482723,
+  "group_closed": true,
+  "normal_scratch_frontends": 1,
+  "exit_code": 1,
+  "peak_rss_bytes": 4126380032,
+  "meaning": "The exact original ordinary sourceSecond proof still fails when specialized through the smaller pointwise source-arrow transport bridge. This reproduces a boundary without HasExt/F/q or the final comparison factory. It does not identify the conversion pair or a unique data/model cause.",
+  "material_change_from_fe592": "Transport helper inputs are reduced to original K,U,V,s,h,c,literal r,hc. The full native ordinary statement is unchanged except its declaration name.",
+  "native_source_mutation": false,
+  "production_outputs": false,
+  "evidence": {
+    "receipt.json": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-literal-transport-normal-v1/raw-e2d8b8ce/receipt.json",
+      "sha256": "646fee9a465537b149389c0a27ca06b1abbded7d20f862fbb1d1a8140033487a"
+    },
+    "build.log": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-literal-transport-normal-v1/raw-e2d8b8ce/build.log",
+      "sha256": "e18d8a8da60e63c82899646d8d1c4cd7d3962f5bb3fc45d47810927545c13990"
+    },
+    "compiler-events.jsonl": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-literal-transport-normal-v1/raw-e2d8b8ce/compiler-events.jsonl",
+      "sha256": "11be6a6916027e2ffd767525603c0d00f1ac9a60df3f437ce9c0844be3353a2a"
+    },
+    "ACTUAL-NATIVE-SETUP.json": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-literal-transport-normal-v1/raw-e2d8b8ce/ACTUAL-NATIVE-SETUP.json",
+      "sha256": "310a06fa4f84c472053068289edca6332bd0faebb8dee597839ff23b51081955"
+    },
+    "EXTERNAL-SCRATCH-SETUP.json": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-literal-transport-normal-v1/raw-e2d8b8ce/EXTERNAL-SCRATCH-SETUP.json",
+      "sha256": "2aba4493c28e2c8bb659c3dabff03b284774bd94eafb403c6eb2a3543ff3a72c"
+    },
+    "NORMAL-TRANSPORT-SETUP.json": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-literal-transport-normal-v1/raw-e2d8b8ce/NORMAL-TRANSPORT-SETUP.json",
+      "sha256": "6ea22ec56f4883aac380e45b8f3246d2d775a4d35132eb056a7a072f9121b6da"
+    },
+    "LiteralOriginalSourceTransport.lean": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-literal-transport-normal-v1/raw-e2d8b8ce/LiteralOriginalSourceTransport.lean",
+      "sha256": "86fe6ef137da28646e37604b649306d22e78d0cb540a45192bfd7345e6b7674d"
+    }
+  },
+  "next": "Continue only the actual ordinary source-transport construction/typed conversion boundary. Do not repeat unchanged native655 or infer a specific data-constructor cause.",
+  "setup_binding": {
+    "sha256": "6ea22ec56f4883aac380e45b8f3246d2d775a4d35132eb056a7a072f9121b6da",
+    "import_arts_count": 7149,
+    "native_fields_asserted": true
+  }
+}

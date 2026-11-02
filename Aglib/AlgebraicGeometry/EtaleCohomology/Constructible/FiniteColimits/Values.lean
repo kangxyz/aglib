@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Basic
-public import Mathlib.Algebra.Category.Grp.Colimits
+public import Aglib.Algebra.Category.Grp.FiniteColimits
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Zero
 
 /-! # Finite values of actual constant-diagram colimits
@@ -33,26 +33,14 @@ attribute [local instance] hasSheafifyLarge
 object family is finite. No bound on the number of diagram arrows is needed. -/
 theorem finite_of_isColimit {J : Type v} [Category.{w} J] [Finite J]
     (D : J ⥤ AddCommGrpCat.{u}) [∀ j, Finite (D.obj j)]
-    {c : Cocone D} (hc : IsColimit c) : Finite c.pt := by
-  classical
-  let := Fintype.ofFinite J
-  have : Finite (DFinsupp (fun j => D.obj j)) :=
-    Finite.of_equiv (∀ j, D.obj j) DFinsupp.equivFunOnFintype.symm
-  have : Finite (AddCommGrpCat.Colimits.Quot D) :=
-    Finite.of_surjective (QuotientAddGroup.mk' (AddCommGrpCat.Colimits.Relations D))
-      (QuotientAddGroup.mk'_surjective _)
-  have : Small.{u} (AddCommGrpCat.Colimits.Quot D) := inferInstance
-  have : Finite (Shrink.{u} (AddCommGrpCat.Colimits.Quot D)) :=
-    Finite.of_equiv _ (equivShrink _)
-  let e := hc.coconePointUniqueUpToIso (AddCommGrpCat.Colimits.colimitCoconeIsColimit D)
-  exact Finite.of_equiv (Shrink.{u} (AddCommGrpCat.Colimits.Quot D))
-    (Iso.addCommGroupIsoToAddEquiv e.symm).toEquiv
+    {c : Cocone D} (hc : IsColimit c) : Finite c.pt :=
+  AddCommGrpCat.finite_of_isColimit D hc
 
 /-- The chosen colimit has the same finite original additive value. -/
 theorem finite_colimit {J : Type v} [Category.{w} J] [Finite J]
     (D : J ⥤ AddCommGrpCat.{u}) [∀ j, Finite (D.obj j)] :
     Finite (Limits.colimit D : AddCommGrpCat.{u}) :=
-  finite_of_isColimit D (colimit.isColimit D)
+  AddCommGrpCat.finite_colimit D
 
 /-- An actual constant-value diagram with finitely many finite values has
 finite locally constant original colimits on every scheme. -/

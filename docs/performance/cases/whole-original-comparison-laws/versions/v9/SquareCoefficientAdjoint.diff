@@ -1,0 +1,71 @@
+--- v8/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean
++++ v9/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean
+@@ -21,6 +21,10 @@
+ lemma schemeAdjunction_eq_inverseImageAdjunction {X Y : Scheme.{u}ᵒᵖ} (f : X ⟶ Y) :
+     schemeAdjunctionData.adj f = inverseImageAdjunction f.unop := rfl
+ 
++/-- The selected right functor is literally the original native direct image. -/
++lemma schemeRight_eq_directImage {X Y : Scheme.{u}ᵒᵖ} (f : X ⟶ Y) :
++    schemeAdjunctionData.right f = directImage f.unop := rfl
++
+ /-- The selected right composition comparison is the original direct-image comparison. -/
+ lemma schemeRightCompIso_eq_directImageCompIso {X Y Z : Scheme.{u}ᵒᵖ}
+     (f : X ⟶ Y) (g : Y ⟶ Z) :
+@@ -40,16 +44,32 @@
+     (e : g ≫ f₁ = f₀ ≫ h) :
+     schemeAdjunctionData.squareRightIso f₀ f₁ g h e =
+       directImageSquareIso f₀.unop f₁.unop g.unop h.unop (congrArg Quiver.Hom.unop e) := by
+-  apply Iso.ext
+-  simp only [InjectiveSystem.AdjunctionData.squareRightIso, directImageSquareIso,
+-    schemeRightCompIso_eq_directImageCompIso, Iso.symm_symm_eq,
+-    Iso.trans_hom, Iso.symm_hom, eqToIso.hom, schemeRight_eqToHom]
++  have ha : (schemeAdjunctionData.compIso f₀ h).symm =
++      directImageCompIso f₀.unop h.unop := by
++    simpa only [Iso.symm_symm_eq] using
++      congrArg Iso.symm (schemeRightCompIso_eq_directImageCompIso f₀ h)
++  have hm : eqToIso (congrArg schemeAdjunctionData.right e.symm) =
++      eqToIso (congrArg (fun k : X₁.unop ⟶ S₀.unop => directImage k)
++        (congrArg Quiver.Hom.unop e).symm) := by
++    apply Iso.ext
++    exact schemeRight_eqToHom e.symm
++  exact congrArg₂
++    (fun (a : directImage h.unop ⋙ directImage f₀.unop ≅
++        directImage (h.unop ≫ f₀.unop))
++      (b : directImage (h.unop ≫ f₀.unop) ≅
++        directImage f₁.unop ⋙ directImage g.unop) => a ≪≫ b)
++    ha (congrArg₂
++      (fun (b : directImage (h.unop ≫ f₀.unop) ≅ directImage (f₁.unop ≫ g.unop))
++        (c : directImage (f₁.unop ≫ g.unop) ≅
++          directImage f₁.unop ⋙ directImage g.unop) => b ≪≫ c)
++      hm (schemeRightCompIso_eq_directImageCompIso g f₁))
+ 
+ lemma directImageSquareIso_transpose {X S X' S' : Scheme.{u}}
+     (f : X ⟶ S) (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
+     (e : f' ≫ g = g' ≫ f) :
+     directImageSquareIso g g' f f' e.symm = (directImageSquareIso f f' g g' e).symm := by
+-  simpa only [schemeSquareRightIso_eq_directImageSquareIso] using
++  simpa only [schemeSquareRightIso_eq_directImageSquareIso, schemeRight_eq_directImage,
++    Quiver.Hom.unop_op] using
+     schemeAdjunctionData.squareRightIso_transpose f.op f'.op g.op g'.op
+       (congrArg Quiver.Hom.op e)
+ 
+@@ -61,7 +81,8 @@
+         (inverseImageSquareIso f f' g g' e).inv =
+       (directImageSquareIso f f' g g' e).inv := by
+   simpa only [schemeAdjunction_eq_inverseImageAdjunction, schemeSquareIso_eq_inverseImageSquareIso,
+-    schemeSquareRightIso_eq_directImageSquareIso] using
++    schemeSquareRightIso_eq_directImageSquareIso, schemeRight_eq_directImage,
++    Quiver.Hom.unop_op] using
+     schemeAdjunctionData.conjugate_squareIso_inv f.op f'.op g.op g'.op
+       (congrArg Quiver.Hom.op e)
+ 
+@@ -76,7 +97,8 @@
+       (inverseImageAdjunction f).homEquiv _ _ φ ≫
+         (directImage f).map ((inverseImageAdjunction v₁).homEquiv _ _ ψ) ≫
+           (directImageSquareIso v₀ v₁ f h he).inv.app K := by
+-  simpa only [Adjunction.CoefficientSquares.coefficientMap, squareCoefficientMap, Category.assoc] using
++  simpa only [Adjunction.CoefficientSquares.coefficientMap, squareCoefficientMap,
++    Category.assoc] using
+     Adjunction.CoefficientSquares.homEquiv (inverseImageAdjunction f)
+       (inverseImageAdjunction v₀) (inverseImageAdjunction v₁) (inverseImageAdjunction h)
+       (inverseImageSquareIso v₀ v₁ f h he) (directImageSquareIso v₀ v₁ f h he)

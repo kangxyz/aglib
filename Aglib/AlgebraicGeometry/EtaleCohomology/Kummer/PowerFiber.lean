@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootCover
-public import Mathlib.CategoryTheory.Sites.Subsheaf
+public import Aglib.CategoryTheory.Sites.Torsor.KernelFiber
 
 /-!
 Native migration from `R5Lab.Aglib.AlgebraicGeometry.Cohomology.EtaleH1.Kummer.PowerFiber` at R5
@@ -58,89 +58,35 @@ variable {X : Scheme.{u}} (n : ℕ) (P : Torsor (gm X))
 variable (φ : P.carrier ⟶ underlyingSetSheaf (gm X))
 
 /-- The value of the given torsor-to-multiplicative-sheaf map on a section. -/
-def value (U : X.Etaleᵒᵖ) (s : P.carrier.obj.obj U) : (gm X).obj.obj U := φ.hom.app U s
+def value (U : X.Etaleᵒᵖ) (s : P.carrier.obj.obj U) : (gm X).obj.obj U :=
+  CategoryTheory.Sheaf.kernelFiberValue P φ U s
 
 theorem value_naturality {U V : X.Etaleᵒᵖ} (f : U ⟶ V) (s : P.carrier.obj.obj U) :
     value P φ V (P.carrier.obj.map f s) = (gm X).obj.map f (value P φ U s) :=
-  ConcreteCategory.congr_hom (φ.hom.naturality f) s
+  CategoryTheory.Sheaf.kernelFiber_value_naturality P φ f s
 
 /-- The subfunctor of torsor sections mapped to zero in the additive multiplicative sheaf. -/
-def powerFiberSubfunctor : Subfunctor P.carrier.obj where
-  obj U := {s | value P φ U s = 0}
-  map {U V} f s hs := by
-    change value P φ V (P.carrier.obj.map f s) = 0
-    rw [value_naturality, hs, map_zero]
+def powerFiberSubfunctor : Subfunctor P.carrier.obj :=
+  CategoryTheory.Sheaf.kernelFiberSubfunctor P φ
 
 theorem powerFiber_isSheaf :
-    Presheaf.IsSheaf (Scheme.smallEtaleTopology X) (powerFiberSubfunctor P φ).toFunctor := by
-  rw [isSheaf_iff_isSheaf_of_type]
-  apply (Subfunctor.isSheaf_iff (J := Scheme.smallEtaleTopology X) (powerFiberSubfunctor P φ)
-    ((isSheaf_iff_isSheaf_of_type _ _).mp P.carrier.property)).2
-  intro U s hs
-  apply (((isSheaf_iff_isSheaf_of_type _ _).mp
-    (underlyingSetSheaf (gm X)).property).isSeparated _ hs).ext
-  intro V f hf
-  change (gm X).obj.map f.op (value P φ U s) = (gm X).obj.map f.op 0
-  rw [map_zero, ← value_naturality]
-  exact hf
+    Presheaf.IsSheaf (Scheme.smallEtaleTopology X) (powerFiberSubfunctor P φ).toFunctor :=
+  CategoryTheory.Sheaf.kernelFiber_isSheaf P φ
 
 /-- The subsheaf forming the zero fibre of the given map to the multiplicative sheaf. -/
 def powerFiberSheaf : SetSheaf X :=
-  ⟨(powerFiberSubfunctor P φ).toFunctor, powerFiber_isSheaf P φ⟩
+  CategoryTheory.Sheaf.kernelFiberSheaf P φ
 
 variable (hφ : ∀ U a s, value P φ U (P.action U a s) =
   (power X n).hom.app U a + value P φ U s)
 
 /-- A genuine power-equivariant Gm-torsor map has an actual μ_n fibre torsor. -/
-def powerFiberTorsor (hn : 0 < n) (hinv : IsUnit (n : Γ(X, ⊤))) : Torsor (mu X n) where
-  carrier := powerFiberSheaf P φ
-  action U a s := ⟨P.action U ((inclusion X n).hom.app U a) s.val, by
-    change value P φ U (P.action U ((inclusion X n).hom.app U a) s.val) = 0
-    rw [hφ, s.property]
-    have hz : (power X n).hom.app U ((inclusion X n).hom.app U a) = 0 :=
-      congrArg (fun q => q.hom.app U a) (inclusion_power X n)
-    rw [hz, add_zero]⟩
-  zero_action U s := by apply Subtype.ext; change P.action U _ s.val = s.val; rw [map_zero,
-      P.zero_action]
-  add_action U a b s := by
-    apply Subtype.ext
-    change P.action U _ s.val = P.action U _ (P.action U _ s.val)
-    rw [map_add, P.add_action]
-  naturality {U V} f a s := by
-    apply Subtype.ext
-    change P.carrier.obj.map f (P.action U ((inclusion X n).hom.app U a) s.val) =
-      P.action V ((inclusion X n).hom.app V ((mu X n).obj.map f a)) (P.carrier.obj.map f s.val)
-    rw [P.naturality, inclusion_naturality]
-  unique_transport U s t := by
-    obtain ⟨a, ha, hu⟩ := P.unique_transport U s.val t.val
-    have hp : (power X n).hom.app U a = 0 := by
-      have ht := congrArg (value P φ U) ha
-      rw [hφ, s.property, t.property, add_zero] at ht
-      exact ht
-    refine ⟨rootSection X n U a hp, ?_, ?_⟩
-    · apply Subtype.ext
-      change P.action U ((inclusion X n).hom.app U (rootSection X n U a hp)) s.val = t.val
-      rw [inclusion_rootSection, ha]
-    · intro b hb
-      apply inclusion_app_injective X n U
-      rw [inclusion_rootSection]
-      exact hu _ (congrArg Subtype.val hb)
-  locally_nonempty U := by
-    let : Epi (power X n) := GroupCohomology.Kummer.RootCover.power_epi X n
-        hn hinv
-    let : Sheaf.IsLocallySurjective (power X n) :=
-      (Sheaf.isLocallySurjective_iff_epi' AddCommGrpCat.{u + 1} (power X n)).mpr inferInstance
-    apply (Scheme.smallEtaleTopology X).transitive (P.locally_nonempty U)
-    intro V f hf
-    obtain ⟨s⟩ := hf
-    refine (Scheme.smallEtaleTopology X).superset_covering ?_
-      (Presheaf.imageSieve_mem (Scheme.smallEtaleTopology X) (power X n).hom
-        (-value P φ (op V) s))
-    rintro W g ⟨a, ha⟩
-    refine ⟨⟨P.action (op W) a (P.carrier.obj.map g.op s), ?_⟩⟩
-    change value P φ (op W) (P.action (op W) a (P.carrier.obj.map g.op s)) = 0
-    rw [hφ, ha, map_neg]
-    rw [value_naturality, neg_add_cancel]
+def powerFiberTorsor (hn : 0 < n) (hinv : IsUnit (n : Γ(X, ⊤))) : Torsor (mu X n) := by
+  let : Epi (power X n) := GroupCohomology.Kummer.RootCover.power_epi X n hn hinv
+  let : Sheaf.IsLocallySurjective (power X n) :=
+    (Sheaf.isLocallySurjective_iff_epi' AddCommGrpCat.{u + 1} (power X n)).mpr inferInstance
+  exact CategoryTheory.Sheaf.kernelFiberTorsor P φ (inclusion X n) (power X n)
+    (inclusion_power X n) (kernelIsLimit X n) hφ
 
 
 end GroupCohomology.Kummer.PowerFiber

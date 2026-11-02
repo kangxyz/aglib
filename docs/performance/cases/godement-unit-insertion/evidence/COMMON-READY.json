@@ -1,0 +1,37 @@
+{
+  "input_head": "7d071440653407d30fd41d8dbbafce1673a3039b",
+  "changed_assignment": "Fine native DAG split; Q commonfactory ownership transferred from main author. Frozen285/543e/155/c926 sources remain separate historical evidence.",
+  "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-etale-abstract-20261029/Aglib/CategoryTheory/Functor/NatTrans/UnitInsertionSpan.lean",
+  "sha256": "84bdff5cea154b04a0f2df6429e2ba6505034a7831c0620521da33dd30c62342",
+  "base_sha256": "15599d581a7fa963bba1277ff7648a135204437a04f5ca5add9fd5d64f9bed14",
+  "new_api": [
+    "unitInsertion_first_square_point",
+    "unitInsertion_first_square_point_map",
+    "unitInsertion_span_point",
+    "unitInsertion_span_point_map",
+    "unitInsertion_map_span_eq"
+  ],
+  "status": "Fresh default-native common84bd PASS retained within closed mixed graph",
+  "write_scope": "Only Q UnitInsertionSpan.lean and assigned split/span scratch were written; foreign docs/aggregate/native files preserved.",
+  "compiler_evidence": {
+    "run": "remote-f0e024e250804c8d979a57763b374078",
+    "source": "4c06e06973aab5d5814d8883e0bf0ccf02da9c6d798656debb20b98c3de008f2",
+    "wrapper_pid": 112764,
+    "compiler_pid": 112770,
+    "start": "2026-10-29T21:43:25.476618",
+    "finish": "2026-10-29T21:43:28.087812",
+    "exit_code": 0,
+    "reported_frontend_seconds": 2.0,
+    "wrapper_wall_seconds": 2.611194,
+    "basis": "Actual operator compiler events; full graph still running; no transferred nativeSpan coverage"
+  },
+  "graph_outcome": {
+    "run": "remote-f0e024e250804c8d979a57763b374078",
+    "source": "4c06e06973aab5d5814d8883e0bf0ccf02da9c6d798656debb20b98c3de008f2",
+    "exit_code": 1,
+    "fresh_passes": 6,
+    "fresh_failures": 2,
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-f0e024e250804c8d979a57763b374078/receipt.json",
+    "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-f0e024e250804c8d979a57763b374078/build.log"
+  }
+}

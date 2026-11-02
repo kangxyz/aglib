@@ -108,5 +108,81 @@ lemma System.leftMap_comp (F : System D) {i j k : I} (a : i ⟶ j) (b : j ⟶ k)
       Adjunction.homEquiv_naturality_right, System.homEquiv_leftMap]
   rw [ht, ← F.map_comp, Category.assoc, Iso.hom_inv_id_app, Category.comp_id]
 
+/-- Construct the original system from left transitions with their actual comparison laws. -/
+def System.ofLeft (obj : ∀ i, A i)
+    (map : ∀ {i j : I} (a : i ⟶ j), (D.left a).obj (obj i) ⟶ obj j)
+    (map_id : ∀ i, map (𝟙 i) = (D.leftIdIso i).hom.app (obj i))
+    (map_comp : ∀ {i j k : I} (a : i ⟶ j) (b : j ⟶ k),
+      map (a ≫ b) = (D.leftCompIso a b).hom.app (obj i) ≫
+        (D.left b).map (map a) ≫ map b) : System D where
+  obj := obj
+  map a := (D.adj a).homEquiv _ _ (map a)
+  map_id i := by
+    rw [map_id]
+    have ht := homEquiv_precomp_conjugate Adjunction.id (D.adj (𝟙 i))
+      (D.leftIdIso i).hom (𝟙 (obj i))
+    have hm : conjugateEquiv Adjunction.id (D.adj (𝟙 i)) (D.leftIdIso i).hom =
+        (D.idIso i).inv := Adjunction.conjugateEquiv_leftAdjointIdIso_hom _ _
+    rw [hm] at ht
+    have hid : Adjunction.id.homEquiv (obj i) (obj i) (𝟙 (obj i)) = 𝟙 (obj i) :=
+      (Adjunction.homEquiv_id Adjunction.id (obj i)).trans rfl
+    have ht' := ht.trans (congrArg
+      (fun k => k ≫ (D.idIso i).inv.app (obj i)) hid)
+    have hleft := congrArg ((D.adj (𝟙 i)).homEquiv (obj i) (obj i))
+      (Category.comp_id ((D.leftIdIso i).hom.app (obj i)))
+    have hvalue := hleft.symm.trans (ht'.trans (Category.id_comp _))
+    exact (congrArg (fun k => k ≫ (D.idIso i).hom.app (obj i)) hvalue).trans
+      ((D.idIso i).inv_hom_id_app (obj i))
+  map_comp a b := by
+    rw [map_comp, homEquiv_precomp_conjugate ((D.adj a).comp (D.adj b))
+      (D.adj (a ≫ b)) (D.leftCompIso a b).hom]
+    have hm : conjugateEquiv ((D.adj a).comp (D.adj b)) (D.adj (a ≫ b))
+        (D.leftCompIso a b).hom = (D.compIso a b).inv :=
+      Adjunction.conjugateEquiv_leftAdjointCompIso_inv _ _ _ _
+    rw [hm, Category.assoc, Iso.inv_hom_id_app, Category.comp_id,
+      Adjunction.comp_homEquiv]
+    change (D.adj a).homEquiv _ _ ((D.adj b).homEquiv _ _
+      ((D.left b).map (map a) ≫ map b)) = _
+    rw [Adjunction.homEquiv_naturality_left, Adjunction.homEquiv_naturality_right]
+
+/-- The constructor retains the supplied original left-transition map. -/
+@[simp]
+lemma System.ofLeft_leftMap (obj : ∀ i, A i)
+    (map : ∀ {i j : I} (a : i ⟶ j), (D.left a).obj (obj i) ⟶ obj j)
+    (map_id : ∀ i, map (𝟙 i) = (D.leftIdIso i).hom.app (obj i))
+    (map_comp : ∀ {i j k : I} (a : i ⟶ j) (b : j ⟶ k),
+      map (a ≫ b) = (D.leftCompIso a b).hom.app (obj i) ≫
+        (D.left b).map (map a) ≫ map b)
+    {i j : I} (a : i ⟶ j) :
+    (System.ofLeft D obj map map_id map_comp).leftMap D a = map a := by
+  change ((D.adj a).homEquiv (obj i) (obj j)).symm
+    (((D.adj a).homEquiv (obj i) (obj j)) (map a)) = map a
+  exact Equiv.symm_apply_apply _ _
+
+/-- Compatibility name for the canonical constructor from left transitions. -/
+abbrev System.ofLeftMaps (P : ∀ i, A i)
+    (φ : ∀ {i j}, (a : i ⟶ j) → (D.left a).obj (P i) ⟶ P j)
+    (hId : ∀ i, φ (𝟙 i) = (D.leftIdIso i).hom.app (P i))
+    (hComp : ∀ {i j k} (a : i ⟶ j) (b : j ⟶ k),
+      φ (a ≫ b) = (D.leftCompIso a b).hom.app (P i) ≫
+        (D.left b).map (φ a) ≫ φ b) : System D :=
+  System.ofLeft D P φ hId hComp
+
+/-- Compatibility adapter for comparison isomorphisms equal to the actual mates. -/
+abbrev System.ofLeftMapsWithComparisons
+    (eId : ∀ i, D.left (𝟙 i) ≅ 𝟭 (A i))
+    (eComp : ∀ {i j k} (a : i ⟶ j) (b : j ⟶ k),
+      D.left (a ≫ b) ≅ D.left a ⋙ D.left b)
+    (heId : ∀ i, D.leftIdIso i = eId i)
+    (heComp : ∀ {i j k} (a : i ⟶ j) (b : j ⟶ k), D.leftCompIso a b = eComp a b)
+    (P : ∀ i, A i) (φ : ∀ {i j}, (a : i ⟶ j) → (D.left a).obj (P i) ⟶ P j)
+    (hId : ∀ i, φ (𝟙 i) = (eId i).hom.app (P i))
+    (hComp : ∀ {i j k} (a : i ⟶ j) (b : j ⟶ k),
+      φ (a ≫ b) = (eComp a b).hom.app (P i) ≫ (D.left b).map (φ a) ≫ φ b) :
+    System D :=
+  System.ofLeft D P φ
+    (fun i => by rw [heId]; exact hId i)
+    (fun a b => by rw [heComp]; exact hComp a b)
+
 end InjectiveSystem
 end CategoryTheory

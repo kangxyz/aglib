@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Charts
+public import Aglib.AlgebraicGeometry.Morphisms.Smooth.RegularBase
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Properties
 public import Aglib.AlgebraicGeometry.Stalk.EtalePolynomial
 
@@ -29,18 +30,7 @@ interface, without perfectness, characteristic or relative-dimension premises. -
 theorem smoothFieldRegularity : SmoothFieldRegularity.{u} := by
   intro K _ X f hf x
   let : Smooth f := hf
-  obtain ⟨V, hV, hx, n, g, hg⟩ := exists_etale_polynomial_chart_of_smooth K X f x
-  let q := hV.isoSpec.hom ⟨x, hx⟩
-  have hxq : hV.fromSpec q = x := by
-    change (hV.isoSpec.hom ≫ hV.fromSpec) ⟨x, hx⟩ = x
-    rw [hV.isoSpec_hom_fromSpec]
-    rfl
-  let : IsRegularLocalRing ((Spec Γ(X, V)).presheaf.stalk q) :=
-    etale_polynomial_stalk_isRegularLocalRing K n g hg q
-  let e := (asIso (hV.fromSpec.stalkMap q)).commRingCatIsoToRingEquiv
-  have hr : IsRegularLocalRing (X.presheaf.stalk (hV.fromSpec q)) :=
-    IsRegularLocalRing.of_ringEquiv e.symm
-  exact hxq ▸ hr
+  exact regularStalks_of_smooth f (regularStalks_spec K) x
 
 /-- Every actual stalk of a smooth scheme of relative dimension n over any
 field has dimension at most n. Generic points are included. -/

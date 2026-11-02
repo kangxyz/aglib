@@ -29,27 +29,31 @@ variable {X : Scheme.{u}} (Y : Scheme.FiniteEtale X)
   {V : X.Etale} {A : FintypeCat.{u}}
   (e : (trivialCoverFunctor V.left).obj A ≅ (baseChange V.hom).obj Y)
 
-/-- Literal restriction along a component, natural in the original coefficient. -/
+/-- The actual component inclusion, independent of the coefficient category. -/
+def componentTestInclusionNatTrans (a : A) :
+    siteEtalePostcompose (splitComponent Y e a) ⟶
+      siteEtalePostcompose V.hom ⋙ siteBaseChange Y.obj.hom where
+  app U := componentTestInclusion Y e U a
+  naturality _ _ g := componentTestInclusion_naturality Y e g a
+
+/-- Literal component restriction induced by the coefficient-free site map. -/
 def splitProjection (a : A) :
     directImage Y.obj.hom ⋙ etaleRestriction V.hom ⟶
-      etaleRestriction (splitComponent Y e a) where
-  app F := ⟨{
-    app U := F.obj.map (componentTestInclusion Y e U.unop a).op
-    naturality U W g := by
-      change F.obj.map ((siteBaseChange Y.obj.hom).map
-          ((siteEtalePostcompose V.hom).map g.unop)).op ≫
-          F.obj.map (componentTestInclusion Y e W.unop a).op =
-        F.obj.map (componentTestInclusion Y e U.unop a).op ≫
-          F.obj.map ((siteEtalePostcompose (splitComponent Y e a)).map g.unop).op
-      exact (F.obj.map_comp _ _).symm.trans
-        ((congrArg (fun f => F.obj.map f.op)
-          (componentTestInclusion_naturality Y e g.unop a).symm).trans
-          (F.obj.map_comp _ _)) }⟩
-  naturality F G h := by
-    apply Sheaf.hom_ext
-    apply NatTrans.ext
-    funext U
-    exact (h.hom.naturality (componentTestInclusion Y e U.unop a).op).symm
+      etaleRestriction (splitComponent Y e a) := by
+  letI := Functor.isContinuous_comp
+    (siteEtalePostcompose (X := X) (S := V.left) V.hom)
+    (siteBaseChange (X := X) (S := Y.obj.left) Y.obj.hom)
+    V.left.smallEtaleTopology X.smallEtaleTopology
+    Y.obj.left.smallEtaleTopology
+  exact Functor.sheafPushforwardContinuousNatTrans (componentTestInclusionNatTrans Y e a)
+    AddCommGrpCat.{u + 1} V.left.smallEtaleTopology Y.obj.left.smallEtaleTopology
+
+/-- The generic continuous-site construction retains the original section map. -/
+@[simp]
+theorem splitProjection_app (a : A) (F : AbelianSheaf.{u, u + 1} Y.obj.left)
+    (U : V.left.Etale) :
+    ((splitProjection Y e a).app F).hom.app (op U) =
+      F.obj.map (componentTestInclusion Y e U a).op := rfl
 
 /-- The original local direct image, with the original component restriction maps. -/
 def splitFan : Fan (fun a : A => etaleRestriction (splitComponent Y e a)) :=

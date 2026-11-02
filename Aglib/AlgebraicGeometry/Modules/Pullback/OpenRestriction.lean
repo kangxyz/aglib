@@ -7,6 +7,7 @@ module
 
 public import Mathlib.AlgebraicGeometry.Modules.Sheaf
 public import Aglib.Algebra.Category.ModuleCat.Presheaf.SheafificationRestriction
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.Pullback.AdjunctionSquare
 public import Mathlib.AlgebraicGeometry.Pullbacks
 public import Mathlib.Algebra.Category.ModuleCat.Presheaf.Sheafification
 public import Mathlib.Algebra.Category.ModuleCat.Sheaf.Localization
@@ -109,7 +110,7 @@ open. -/
 def restrictedLeftAdjunction :
     Scheme.Modules.pullback f ⋙ Scheme.Modules.restrictFunctor (f ⁻¹ᵁ U).ι ⊣
       Scheme.Modules.pushforward (f ⁻¹ᵁ U).ι ⋙ Scheme.Modules.pushforward f :=
-  (Scheme.Modules.pullbackPushforwardAdjunction f).comp
+  Adjunction.squareLeftAdjunction (Scheme.Modules.pullbackPushforwardAdjunction f)
     (Scheme.Modules.restrictAdjunction (f ⁻¹ᵁ U).ι)
 
 /-- Target-open restriction followed by restricted pullback, with the same composite right
@@ -117,16 +118,18 @@ adjoint. -/
 def restrictedRightAdjunction :
     Scheme.Modules.restrictFunctor U.ι ⋙ Scheme.Modules.pullback (f ∣_ U) ⊣
       Scheme.Modules.pushforward (f ⁻¹ᵁ U).ι ⋙ Scheme.Modules.pushforward f :=
-  ((Scheme.Modules.restrictAdjunction U.ι).comp
-    (Scheme.Modules.pullbackPushforwardAdjunction (f ∣_ U))).ofNatIsoRight
-      (pushforwardSquare f U).symm
+  Adjunction.squareRightAdjunction (Scheme.Modules.pullbackPushforwardAdjunction (f ∣_ U))
+    (Scheme.Modules.restrictAdjunction U.ι) (pushforwardSquare f U)
 
 /-- The canonical local pullback square, obtained from the actual pushforward
 square by adjunction. -/
 def localPullbackIso :
     Scheme.Modules.pullback f ⋙ Scheme.Modules.restrictFunctor (f ⁻¹ᵁ U).ι ≅
       Scheme.Modules.restrictFunctor U.ι ⋙ Scheme.Modules.pullback (f ∣_ U) :=
-  (restrictedLeftAdjunction f U).leftAdjointUniq (restrictedRightAdjunction f U)
+  Adjunction.squareLeftIso (Scheme.Modules.pullbackPushforwardAdjunction f)
+    (Scheme.Modules.pullbackPushforwardAdjunction (f ∣_ U))
+    (Scheme.Modules.restrictAdjunction U.ι)
+    (Scheme.Modules.restrictAdjunction (f ⁻¹ᵁ U).ι) (pushforwardSquare f U)
 
 /-- The actual restriction/direct-image base-change map, using the open-restriction unit. -/
 def restrictedPushforwardMap (N : X.Modules) :
@@ -192,10 +195,11 @@ def restrictedPushforwardIso (N : X.Modules) :
 theorem localPullbackIso_hom_adjoint (M : Y.Modules) (N : (f ⁻¹ᵁ U).toScheme.Modules)
     (h : (Scheme.Modules.pullback (f ∣_ U)).obj ((Scheme.Modules.restrictFunctor U.ι).obj M) ⟶ N) :
     (restrictedLeftAdjunction f U).homEquiv M N ((localPullbackIso f U).hom.app M ≫ h) =
-      (restrictedRightAdjunction f U).homEquiv M N h := by
-  rw [Adjunction.homEquiv_unit, Adjunction.homEquiv_unit, Functor.map_comp, ← Category.assoc]
-  unfold localPullbackIso
-  rw [Adjunction.unit_leftAdjointUniq_hom_app]
+      (restrictedRightAdjunction f U).homEquiv M N h :=
+  Adjunction.squareLeftIso_hom_adjoint (Scheme.Modules.pullbackPushforwardAdjunction f)
+    (Scheme.Modules.pullbackPushforwardAdjunction (f ∣_ U))
+    (Scheme.Modules.restrictAdjunction U.ι)
+    (Scheme.Modules.restrictAdjunction (f ⁻¹ᵁ U).ι) (pushforwardSquare f U) M N h
 
 /-- Restricting an actual adjoint agrees with adjoining the actual restricted map. -/
 theorem restrictedAdjoint_eq {M : Y.Modules} {N : X.Modules}
@@ -204,30 +208,11 @@ theorem restrictedAdjoint_eq {M : Y.Modules} {N : X.Modules}
         (((Scheme.Modules.pullbackPushforwardAdjunction f).homEquiv M N).symm φ) =
       (localPullbackIso f U).hom.app M ≫
         ((Scheme.Modules.pullbackPushforwardAdjunction (f ∣_ U)).homEquiv _ _).symm
-          ((Scheme.Modules.restrictFunctor U.ι).map φ ≫ restrictedPushforwardMap f U N) := by
-  apply ((restrictedLeftAdjunction f U).homEquiv _ _).injective
-  rw [localPullbackIso_hom_adjoint]
-  simp only [restrictedLeftAdjunction, restrictedRightAdjunction,
-    Adjunction.homEquiv_ofNatIsoRight_apply, Adjunction.comp_homEquiv]
-  let ψ := ((Scheme.Modules.pullbackPushforwardAdjunction f).homEquiv M N).symm φ
-  change (Scheme.Modules.pullbackPushforwardAdjunction f).homEquiv _ _
-      ((Scheme.Modules.restrictAdjunction (f ⁻¹ᵁ U).ι).homEquiv _ _
-        ((Scheme.Modules.restrictFunctor (f ⁻¹ᵁ U).ι).map ψ)) =
-    (Scheme.Modules.restrictAdjunction U.ι).homEquiv _ _
-      ((Scheme.Modules.pullbackPushforwardAdjunction (f ∣_ U)).homEquiv _ _
-        (((Scheme.Modules.pullbackPushforwardAdjunction (f ∣_ U)).homEquiv _ _).symm
-          ((Scheme.Modules.restrictFunctor U.ι).map φ ≫ restrictedPushforwardMap f U N))) ≫
-      (pushforwardSquare f U).inv.app _
-  rw [Equiv.apply_symm_apply,
-    Adjunction.homEquiv_unit (Scheme.Modules.restrictAdjunction (f ⁻¹ᵁ U).ι)]
-  rw [Adjunction.unit_naturality, Adjunction.homEquiv_naturality_right,
-    Equiv.apply_symm_apply, Adjunction.homEquiv_naturality_left]
-  unfold restrictedPushforwardMap
-  rw [Equiv.apply_symm_apply]
-  simp only [Category.assoc, Iso.hom_inv_id_app]
-  exact congrArg (fun h => φ ≫ h) (Category.comp_id
-    ((Scheme.Modules.pushforward f).map
-      ((Scheme.Modules.restrictAdjunction (f ⁻¹ᵁ U).ι).unit.app N))).symm
+          ((Scheme.Modules.restrictFunctor U.ι).map φ ≫ restrictedPushforwardMap f U N) :=
+  Adjunction.squareAdjoint_eq (Scheme.Modules.pullbackPushforwardAdjunction f)
+    (Scheme.Modules.pullbackPushforwardAdjunction (f ∣_ U))
+    (Scheme.Modules.restrictAdjunction U.ι)
+    (Scheme.Modules.restrictAdjunction (f ⁻¹ᵁ U).ι) (pushforwardSquare f U) φ
 /-- Isomorphisms of module sheaves can be checked on an open neighborhood of every point. -/
 theorem isIso_of_local_restrict {M N : SheafOfModules.{u} X.ringCatSheaf} (φ : M ⟶ N)
     (h : ∀ x : X, ∃ V : X.Opens, x ∈ V ∧
@@ -288,20 +273,11 @@ theorem restrictedUnit (M : Y.Modules) :
       (Scheme.Modules.pushforward (f ∣_ U)).map ((localPullbackIso f U).inv.app M) =
     (Scheme.Modules.restrictFunctor U.ι).map
         ((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app M) ≫
-      restrictedPushforwardMap f U ((Scheme.Modules.pullback f).obj M) := by
-  let A := Scheme.Modules.pullbackPushforwardAdjunction f
-  let B := Scheme.Modules.pullbackPushforwardAdjunction (f ∣_ U)
-  let φ := (Scheme.Modules.restrictFunctor U.ι).map (A.unit.app M) ≫
-    restrictedPushforwardMap f U ((Scheme.Modules.pullback f).obj M)
-  have h := restrictedAdjoint_eq f U (A.unit.app M)
-  have hi : (A.homEquiv _ _).symm (A.unit.app M) = 𝟙 _ := A.homEquiv_symm_unit M
-  rw [hi, CategoryTheory.Functor.map_id] at h
-  have he : (B.homEquiv _ _).symm φ = (localPullbackIso f U).inv.app M := by
-    apply (cancel_epi ((localPullbackIso f U).hom.app M)).mp
-    exact h.symm.trans (Iso.hom_inv_id_app (localPullbackIso f U) M).symm
-  have hh := congrArg (B.homEquiv _ _) he
-  rw [Equiv.apply_symm_apply, Adjunction.homEquiv_unit] at hh
-  exact hh.symm
+      restrictedPushforwardMap f U ((Scheme.Modules.pullback f).obj M) :=
+  Adjunction.squareUnit (Scheme.Modules.pullbackPushforwardAdjunction f)
+    (Scheme.Modules.pullbackPushforwardAdjunction (f ∣_ U))
+    (Scheme.Modules.restrictAdjunction U.ι)
+    (Scheme.Modules.restrictAdjunction (f ⁻¹ᵁ U).ι) (pushforwardSquare f U) M
 
 theorem restrictedPushforwardMap_apply (M : X.Modules) (W : U.toScheme.Opensᵒᵖ)
     (m : ((Scheme.Modules.restrictFunctor U.ι).obj

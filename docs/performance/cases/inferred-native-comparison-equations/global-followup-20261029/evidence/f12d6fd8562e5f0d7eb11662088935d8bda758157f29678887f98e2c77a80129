@@ -1,0 +1,50 @@
+NATIVE_LAKE_SETUP_COMMAND ["/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake", "--no-build", "setup-file", "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean"]
+NATIVE_MODULE_SETUP {"complete_options_equal": true, "isModule": true, "name": "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction", "options": {"autoImplicit": false, "warningAsError": true, "weak.linter.mathlibStandardSet": true, "weak.linter.style.longFile": 1500}, "sha256": "1e533fac3f194e7dd48e9645ffcbdbe5e8caf1ecb060524ca2ff7bc28d79ea59"}
+V35_NATIVE_NORMALIZED_CONSTRUCTOR_VALUES_BEGIN sha256=cb75ca1f8f77c5313d49bd943532d02354cae6796ed570240c57f24676c23181
+NATIVE_DIAGNOSTIC_ARGV ["/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake", "--no-build", "env", "/root/autodl-tmp/lean-build/logs/remote-6372fd3f60684751a24e328d9bde32cc/toolchain/bin/lean", "/root/autodl-tmp/lean-build/logs/remote-6372fd3f60684751a24e328d9bde32cc/NormalizedConstructorValues-v35.lean", "--setup", "/root/autodl-tmp/lean-build/logs/remote-6372fd3f60684751a24e328d9bde32cc/NativeGlobal.setup.json"]
+V35_LITERAL_BODY
+V35_ORIGINAL_VALUE_PRODUCERS_READY
+V35_FACTORY_BOUND
+V35_OBJECT_AND_CONSTRUCTOR_VIEWS_NORMALIZED
+V35_MAPS_BOUND
+V35_SOURCE_VALUE_BOUND
+V35_MIDDLE_VALUE_BOUND
+V35_TARGET_VALUE_BOUND
+V35_ORIGINAL_MAP_CONSTRUCTOR_BOUND
+V35_COMPLETE_GENERIC_RESULT
+/root/autodl-tmp/lean-build/logs/remote-6372fd3f60684751a24e328d9bde32cc/NormalizedConstructorValues-v35.lean:883:2: error: Unused tactic linter: `trace "V35_LITERAL_BODY"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-6372fd3f60684751a24e328d9bde32cc/NormalizedConstructorValues-v35.lean:913:2: error: Unused tactic linter: `trace "V35_ORIGINAL_VALUE_PRODUCERS_READY"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-6372fd3f60684751a24e328d9bde32cc/NormalizedConstructorValues-v35.lean:930:2: error: Unused tactic linter: `trace "V35_FACTORY_BOUND"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-6372fd3f60684751a24e328d9bde32cc/NormalizedConstructorValues-v35.lean:937:2: error: Unused tactic linter: `trace "V35_OBJECT_AND_CONSTRUCTOR_VIEWS_NORMALIZED"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-6372fd3f60684751a24e328d9bde32cc/NormalizedConstructorValues-v35.lean:940:2: error: Unused tactic linter: `trace "V35_MAPS_BOUND"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-6372fd3f60684751a24e328d9bde32cc/NormalizedConstructorValues-v35.lean:942:2: error: Unused tactic linter: `trace "V35_SOURCE_VALUE_BOUND"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-6372fd3f60684751a24e328d9bde32cc/NormalizedConstructorValues-v35.lean:944:2: error: Unused tactic linter: `trace "V35_MIDDLE_VALUE_BOUND"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-6372fd3f60684751a24e328d9bde32cc/NormalizedConstructorValues-v35.lean:946:2: error: Unused tactic linter: `trace "V35_TARGET_VALUE_BOUND"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-6372fd3f60684751a24e328d9bde32cc/NormalizedConstructorValues-v35.lean:948:2: error: Unused tactic linter: `trace "V35_ORIGINAL_MAP_CONSTRUCTOR_BOUND"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-6372fd3f60684751a24e328d9bde32cc/NormalizedConstructorValues-v35.lean:950:2: error: Unused tactic linter: `trace "V35_COMPLETE_GENERIC_RESULT"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+V35_FINITE_ALIAS_BODY
+/root/autodl-tmp/lean-build/logs/remote-6372fd3f60684751a24e328d9bde32cc/NormalizedConstructorValues-v35.lean:967:2: error: Unused tactic linter: `trace "V35_FINITE_ALIAS_BODY"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+V35_NATIVE_NORMALIZED_CONSTRUCTOR_VALUES_END exit=1
+{"prefix_exit": 1, "source_sha256": "cb75ca1f8f77c5313d49bd943532d02354cae6796ed570240c57f24676c23181", "native_setup_sha256": "1e533fac3f194e7dd48e9645ffcbdbe5e8caf1ecb060524ca2ff7bc28d79ea59", "boundary": "V35 proof prefix only; ordinary fullGlobal and exact eligible Proper endpoints follow only on actual pass and matching source guards."}

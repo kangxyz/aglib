@@ -1,0 +1,1046 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LocallyConstantPerfectness
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.CoefficientDevissage
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.FiniteTracePairing.Open
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteCoefficientsVanishing.Open
+public import Aglib.Algebra.Group.Hom.FiniteExact
+
+/-!
+# Original trace duality on finite-complement opens of proper curves
+
+The actual localization sequence on the original proper curve transfers both
+unit adjoints from its original unit and finite point boundary. The whole
+lower-shriek comparison then returns the same pairing on the given open.
+The sequence argument uses the original unsigned extension class and neither
+local constancy of extension by zero nor finite-group reflexivity.
+-/
+
+@[expose] public noncomputable section
+
+open CategoryTheory CategoryTheory.Limits CategoryTheory.Abelian AlgebraicGeometry
+
+universe u wU wX wA
+
+namespace AlgebraicGeometry.Scheme.EtaleCohomology
+
+open Coefficients Scheme.OverField
+open GroupCohomology.Kummer.CoefficientBaseChange
+
+attribute [local instance] hasSheafifyLarge hasSheafifyModules
+  CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard moduleSheafExtZModModule
+  moduleSheaf_hasFiniteBiproducts
+
+section UnitOpen
+
+variable {k : Type u} [Field k] [IsAlgClosed k] (X : FScheme k) (hX : Curve.Properties X)
+  (D : Set X.left) (hfin : D.Finite) (hclosed : ∀ x ∈ D, IsClosed ({x} : Set X.left))
+  {U : Scheme.{u}} (j : U ⟶ X.left) [IsOpenImmersion j] (hD : Set.range j = Dᶜ)
+  (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : k)) (hinv : IsUnit (n : Γ(X.left, ⊤)))
+  [HasExt.{wU} (ModuleSheaf U (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wX} (ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wA} (AbelianSheaf.{u, u + 1} X.left)]
+
+/-- The original unit on the given open has both degree-one duality adjoints.
+The actual proper localization sequence and its finite point boundary suffice,
+including empty boundary, composite levels and level one. -/
+theorem moduleDualityMap_unit_open_one_isPerfPair :
+    (moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD n hn hunit hinv
+      (moduleUnit U (ULift.{u + 1} (ZMod n))) 1 (by decide)).IsPerfPair := by
+  let Λ := ULift.{u + 1} (ZMod n)
+  let A := moduleUnit X.left Λ
+  let iz := Curves.FiniteClosedSupport.inclusion X.left D
+  let : IsClosedImmersion iz :=
+    Curves.FiniteClosedSupport.inclusion_isClosedImmersion X.left D hfin hclosed
+  have hcomp : Set.range j = (Set.range iz)ᶜ := by
+    rw [Curves.FiniteClosedSupport.range_inclusion]
+    exact hD
+  let S := moduleLocalizationShortComplex j Λ iz hcomp A
+  have hS : S.ShortExact := moduleLocalization_shortExact j Λ iz hcomp A
+  have hB (r : ℕ) (hr : r ≤ 2) :
+      (moduleDualityMap.{u, wX, wX, wA} X hX ∅ Set.finite_empty (by simp)
+        (𝟙 X.left) (by simp) n hn hunit hinv S.X₂ r hr).IsPerfPair := by
+    exact moduleDualityMap_unit_proper_isPerfPair.{u, wX, wA, wX}
+      X hX n hn hunit hinv r hr
+  let eC : S.X₃ ≅ moduleFinitePointSource X.left D n :=
+    (moduleDirectImage iz Λ).mapIso (moduleUnitInverseImageIso iz n)
+  have hC (r : ℕ) (hr : r ≤ 2) :
+      (moduleDualityMap.{u, wX, wX, wA} X hX ∅ Set.finite_empty (by simp)
+        (𝟙 X.left) (by simp) n hn hunit hinv S.X₃ r hr).IsPerfPair :=
+    (moduleDualityMap_isPerfPair_iff_of_iso.{u, wX, wX, wA}
+      X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp)
+      n hn hunit hinv eC r hr).mpr
+      (moduleDualityMap_finitePoint_isPerfPair.{u, wX, wX, wA}
+        X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp)
+        n hn hunit hinv D hfin hclosed r hr)
+  have hA := moduleDualityMap_one_isPerfPair_of_shortExact.{u, wX, wX, wA}
+    X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp)
+    n hn hunit hinv hS (hB 0 (by decide)) (hB 1 (by decide))
+      (hC 0 (by decide)) (hC 1 (by decide))
+  let eA : S.X₁ ≅ (moduleLowerShriek j Λ).obj (moduleUnit U Λ) :=
+    (moduleLowerShriek j Λ).mapIso (moduleUnitInverseImageIso j n)
+  have hFirst : (moduleDualityMap.{u, wX, wX, wA}
+      X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp) n hn hunit hinv
+      ((moduleLowerShriek j Λ).obj (moduleUnit U Λ)) 1 (by decide)).IsPerfPair :=
+    (moduleDualityMap_isPerfPair_iff_of_iso.{u, wX, wX, wA}
+      X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp)
+      n hn hunit hinv eA 1 (by decide)).mp hA
+  have hRange : Set.range (j ≫ 𝟙 X.left) = Dᶜ := by
+    simpa only [Category.comp_id] using hD
+  have hOpen := (moduleDualityMap_lowerShriek_isPerfPair_iff
+    X hX ∅ Set.finite_empty (by simp) (𝟙 X.left) (by simp)
+    j D hfin hclosed hRange n hn hunit hinv (moduleUnit U Λ) 1 (by decide)).mp hFirst
+  let P (f : U ⟶ X.left) : Prop :=
+    ∀ [IsOpenImmersion f] (hR : Set.range f = Dᶜ),
+      (moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed f hR n hn hunit hinv
+        (moduleUnit U (ULift.{u + 1} (ZMod n))) 1 (by decide)).IsPerfPair
+  have hP : P (j ≫ 𝟙 X.left) := by
+    intro hf hR
+    exact hOpen
+  have hPj : P j := (congrArg P (Category.comp_id j)).mp hP
+  exact hPj hD
+
+/-- The same original open-unit pairing is perfect in every complementary
+curve degree, without a nonempty-boundary or prime-level restriction. -/
+theorem moduleDualityMap_unit_open_isPerfPair (r : ℕ) (hr : r ≤ 2) :
+    (moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD n hn hunit hinv
+      (moduleUnit U (ULift.{u + 1} (ZMod n))) r hr).IsPerfPair := by
+  interval_cases r
+  · exact moduleDualityMap_unit_zero_isPerfPair.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv
+  · exact moduleDualityMap_unit_open_one_isPerfPair.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv
+  · exact moduleDualityMap_unit_two_isPerfPair.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv
+
+end UnitOpen
+
+
+section OpenSourceHigh
+
+variable {k : Type u} [Field k] [IsAlgClosed k] (X : FScheme k) (hX : Curve.Properties X)
+  (D : Set X.left) (hfin : D.Finite) (hclosed : ∀ x ∈ D, IsClosed ({x} : Set X.left))
+  {U : Scheme.{u}} (j : U ⟶ X.left) [IsOpenImmersion j] (hD : Set.range j = Dᶜ)
+  (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : k))
+  [HasExt.{wU} (ModuleSheaf U (ULift.{u + 1} (ZMod n)))]
+
+include hX D hfin hclosed hD hn hunit in
+set_option backward.isDefEq.respectTransparency false in
+/-- Original higher source Ext vanishes on every finite local system of the
+given open. The actual native internal Hom and ordinary finite-type-curve
+vanishing are used; extension by zero is not treated as locally constant. -/
+theorem moduleSourceExt_open_high_subsingleton_of_finiteLocallyConstant
+    (F : ModuleSheaf U (ULift.{u + 1} (ZMod n)))
+    (hF : Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence U (ULift.{u + 1} (ZMod n))).inverse.obj F))
+    (q : ℕ) (hq : 2 < q) :
+    Subsingleton (Ext.{wU} F (moduleRootsOfUnity U n) q) := by
+  let : NeZero n := ⟨Nat.ne_of_gt hn⟩
+  let : IsNoetherian X.left := Curve.curveProperties_isNoetherian hX
+  let : IsLocallyNoetherian U := isLocallyNoetherian_of_isOpenImmersion j
+  let : TopologicalSpace.NoetherianSpace U :=
+    j.isOpenEmbedding.isEmbedding.isInducing.noetherianSpace
+  let : CompactSpace U := TopologicalSpace.NoetherianSpace.compactSpace U
+  let : IsNoetherian U := ⟨⟩
+  let : ConnectedSpace U := connectedSpace_of_curve_finite_complement X hX D hfin hclosed j hD
+  let : LocallyOfFiniteType X.hom := Curve.curveProperties_locallyOfFiniteType hX
+  have hdim : topologicalKrullDim U ≤ 1 :=
+    Curves.dimension_le_one_of_etale j hX.topologicalKrullDim_eq_one.le
+  let : HasExt.{u + 2} (AbelianSheaf.{u, u + 1} U) := hasExtStandard U
+  let Λ := ULift.{u + 1} (ZMod n)
+  let : (forget₂ (ModuleCat.{u + 1} Λ) AddCommGrpCat.{u + 1}).Full :=
+    ModuleCat.uLiftZMod_forget₂_full n
+  let E := moduleSheafEquivalence U Λ
+  have hRoots : Constructible.Modules.IsFiniteTypeLocallyConstant
+      (E.inverse.obj (moduleRootsOfUnity U n)) :=
+    (Constructible.Modules.isFiniteTypeLocallyConstant_iff_of_iso
+      (E.inverse.mapIso (moduleUnitRootsIso k n hn hunit (j ≫ X.hom)))).mp
+        (moduleUnit_isFiniteTypeLocallyConstant U Λ)
+  let H := SheafOfModules.InternalHom.sheaf
+    (ModuleCat.Sheaf.ConstantRing.commutativeSheaf U.smallEtaleTopology Λ)
+      F (moduleRootsOfUnity U n)
+  have hH : Constructible.Modules.IsFiniteTypeLocallyConstant (E.inverse.obj H) :=
+    Constructible.Modules.isFiniteTypeLocallyConstant_nativeInternalHom
+      Λ F (moduleRootsOfUnity U n) hF hRoots
+  let : Subsingleton (Ext.{wU} (moduleUnit U Λ) H q) :=
+    Curves.moduleUnitExt_high_subsingleton_of_finiteType_curve
+      U (j ≫ X.hom) hdim n hn hunit q hq H hH
+  let Q := SheafOfModules.toSheaf (constantRing U Λ)
+  let E₀ : Ext.{wU} (moduleUnit U Λ) H q ≃+ Sheaf.H.{u + 2} (Q.obj H) q :=
+    etaleModuleExtCohomologyAddEquivLargeScalars U (constantRing U Λ) H q
+  let : Subsingleton (Sheaf.H.{u + 2} (Q.obj H) q) := E₀.symm.injective.subsingleton
+  let E₁ : Ext.{wU} F (moduleRootsOfUnity U n) q ≃+ Sheaf.H.{u + 2} (Q.obj H) q :=
+    locallyConstantExtCohomologyAddEquiv.{u, wU, u + 2} k n hn hunit (j ≫ X.hom) F hF q
+  exact E₁.injective.subsingleton
+
+end OpenSourceHigh
+
+
+universe a b wV wY wAY
+
+private theorem openAddEquiv_toZModLinearEquiv_apply
+    (n : ℕ) {A : Type a} {B : Type b} [AddCommGroup A] [AddCommGroup B]
+    [Module (ZMod n) A] [Module (ZMod n) B] (e : A ≃+ B) (x : A) :
+    AddEquiv.toZModLinearEquiv n e x = e x := rfl
+
+section FiniteOpenCover
+
+variable {k : Type u} [Field k] [IsAlgClosed k] (X : FScheme k) (hX : Curve.Properties X)
+  (D : Set X.left) (hfin : D.Finite) (hclosed : ∀ x ∈ D, IsClosed ({x} : Set X.left))
+  {U : Scheme.{u}} (j : U ⟶ X.left) [IsOpenImmersion j] (hD : Set.range j = Dᶜ)
+  (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : k)) (hinv : IsUnit (n : Γ(X.left, ⊤)))
+  [HasExt.{wU} (ModuleSheaf U (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wX} (ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wA} (AbelianSheaf.{u, u + 1} X.left)]
+
+private theorem open_finiteLowerShriek_isPerfPair
+    (Y : FScheme k) (hY : Curve.Properties Y) (f : Y ⟶ X)
+    [IsFinite f.left] [IsDominant f.left]
+    (E : Set Y.left) (hEfin : E.Finite) (hEclosed : ∀ y ∈ E, IsClosed ({y} : Set Y.left))
+    {V : Scheme.{u}} (i : V ⟶ Y.left) [IsOpenImmersion i] (hE : Set.range i = Eᶜ)
+    (g : V ⟶ U) [Etale g] (hsq : IsPullback i g f.left j)
+    (d : ℕ) (hd : ∀ x : U, g.finrank x = d)
+    [HasExt.{wV} (ModuleSheaf V (ULift.{u + 1} (ZMod n)))]
+    [HasExt.{wY} (ModuleSheaf Y.left (ULift.{u + 1} (ZMod n)))]
+    [HasExt.{wAY} (AbelianSheaf.{u, u + 1} Y.left)]
+    (P : ModuleSheaf V (ULift.{u + 1} (ZMod n))) (r : ℕ) (hr : r ≤ 2)
+    (hP : (moduleDualityMap.{u, wV, wY, wAY} Y hY E hEfin hEclosed i hE
+      n hn hunit (levelInvertible f.left n hinv) P r hr).IsPerfPair) :
+    (moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD n hn hunit hinv
+      ((moduleLowerShriek g (ULift.{u + 1} (ZMod n))).obj P) r hr).IsPerfPair := by
+  let : Nonempty U := nonempty_of_curve_finite_complement X hX D hfin hclosed j hD
+  let : Nonempty V := nonempty_of_curve_finite_complement Y hY E hEfin hEclosed i hE
+  let : IsFinite g := MorphismProperty.of_isPullback hsq (inferInstance : IsFinite f.left)
+  let L := AddEquiv.toZModLinearEquiv n
+    (moduleFiniteOpenLowerShriekCompactExtAddEquiv.{u, wX, wY}
+      f.left g j i hsq n d hd P r)
+  let R := AddEquiv.toZModLinearEquiv n
+    (moduleFiniteLowerShriekRootsExtAddEquiv.{u, wU, wV}
+      g n hn (levelInvertible j n hinv) P (2 - r))
+  let B := moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD n hn hunit hinv
+    ((moduleLowerShriek g (ULift.{u + 1} (ZMod n))).obj P) r hr
+  let C := moduleDualityMap.{u, wV, wY, wAY} Y hY E hEfin hEclosed i hE
+    n hn hunit (levelInvertible f.left n hinv) P r hr
+  have hs : C.compl₁₂ L R = B := by
+    ext c e
+    simp only [LinearMap.compl₁₂_apply, L, R, LinearEquiv.coe_coe,
+      openAddEquiv_toZModLinearEquiv_apply]
+    exact (moduleTracePairingLinearMap_finiteOpenLowerShriek.{u, wX, wY, wA, wAY, wU, wV}
+      X Y hX hY f D hfin hclosed E hEfin hEclosed j hD i hE g hsq
+      n d hd hn hunit hinv P r (2 - r) (by lia) c e).symm
+  let : C.IsPerfPair := hP
+  change B.IsPerfPair
+  rw [← hs]
+  exact LinearMap.IsPerfPair.compl₁₂ C L R
+
+end FiniteOpenCover
+
+
+section OpenUnitCoverApplication
+
+variable {k : Type u} [Field k] [IsAlgClosed k] (X : FScheme k) (hX : Curve.Properties X)
+  (D : Set X.left) (hfin : D.Finite) (hclosed : ∀ x ∈ D, IsClosed ({x} : Set X.left))
+  {U : Scheme.{u}} (j : U ⟶ X.left) [IsOpenImmersion j] (hD : Set.range j = Dᶜ)
+  (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : k)) (hinv : IsUnit (n : Γ(X.left, ⊤)))
+  [HasExt.{wU} (ModuleSheaf U (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wX} (ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wA} (AbelianSheaf.{u, u + 1} X.left)]
+
+private theorem open_unit_biproduct_isPerfPair (m r : ℕ) (hr : r ≤ 2) :
+    (moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD n hn hunit hinv
+      (⨁ fun _ : Fin m => moduleUnit U (ULift.{u + 1} (ZMod n))) r hr).IsPerfPair := by
+  unfold moduleDualityMap moduleTracePairingLinearMap
+  exact Functor.isPerfPair_extPairingLinearMap_compr₂_biproduct.{
+      u + 2, u + 1, u + 2, u + 1, wU, wX, 0}
+    (moduleLowerShriek j (ULift.{u + 1} (ZMod n)))
+    (moduleUnit X.left (ULift.{u + 1} (ZMod n))) n
+    (biproduct.isBilimit (fun _ : Fin m => moduleUnit U (ULift.{u + 1} (ZMod n))))
+    (moduleRootsOfUnity U n) r (2 - r) 2 (by lia)
+    (moduleCompactSupportTraceLinearMap X hX D hfin hclosed j hD n hn hunit hinv)
+    (fun _ => moduleDualityMap_unit_open_isPerfPair.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv r hr)
+
+private theorem open_unit_power_lowerShriek_isPerfPair
+    (Y : Scheme.FiniteEtale U) [ConnectedSpace Y.obj.left] [Surjective Y.obj.hom]
+    (m r : ℕ) (hr : r ≤ 2) :
+    (moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD n hn hunit hinv
+      ((moduleLowerShriek Y.obj.hom (ULift.{u + 1} (ZMod n))).obj
+        (⨁ fun _ : Fin m => moduleUnit Y.obj.left (ULift.{u + 1} (ZMod n)))) r hr).IsPerfPair := by
+  let : Nonempty U := nonempty_of_curve_finite_complement X hX D hfin hclosed j hD
+  let : ConnectedSpace U := connectedSpace_of_curve_finite_complement X hX D hfin hclosed j hD
+  let iz := Curves.FiniteClosedSupport.inclusion X.left D
+  let : IsClosedImmersion iz :=
+    Curves.FiniteClosedSupport.inclusion_isClosedImmersion X.left D hfin hclosed
+  have hDc : IsClosed D := by
+    rw [← Curves.FiniteClosedSupport.range_inclusion X.left D]
+    exact iz.isClosedEmbedding.isClosed_range
+  obtain ⟨Z, fbar, i, hZ, hfbar, hdom, hi, hsq, hEfin, hEc, hE⟩ :=
+    Curve.exists_finiteEtaleCompletion_with_boundary X hX j Y D hfin hDc hD
+  let : IsFinite fbar.left := hfbar
+  let : IsDominant fbar.left := hdom
+  let : IsOpenImmersion i := hi
+  let : LocallyOfFiniteType Z.hom := Curve.curveProperties_locallyOfFiniteType hZ
+  let : JacobsonSpace Z.left := LocallyOfFiniteType.jacobsonSpace Z.hom
+  let E := fbar.left ⁻¹' D
+  have hEclosed : ∀ z ∈ E, IsClosed ({z} : Set Z.left) := by
+    let : Finite E := hEfin.to_subtype
+    let : JacobsonSpace E := JacobsonSpace.of_isClosedEmbedding hEc.isClosedEmbedding_subtypeVal
+    intro z hz
+    have h := hEc.isClosedMap_subtype_val
+      ({⟨z, hz⟩} : Set E) (isClosed_singleton : IsClosed ({⟨z, hz⟩} : Set E))
+    simpa only [Set.image_singleton] using h
+  let x : U := Classical.ofNonempty
+  let d := Y.obj.hom.finrank x
+  have hd : ∀ z : U, Y.obj.hom.finrank z = d := fun z =>
+    Y.obj.hom.isLocallyConstant_finrank.apply_eq_of_preconnectedSpace z x
+  let : HasExt.{u + 2} (ModuleSheaf Y.obj.left (ULift.{u + 1} (ZMod n))) :=
+    SheafOfModules.hasExt (constantRing Y.obj.left (ULift.{u + 1} (ZMod n)))
+  let : HasExt.{u + 2} (ModuleSheaf Z.left (ULift.{u + 1} (ZMod n))) :=
+    SheafOfModules.hasExt (constantRing Z.left (ULift.{u + 1} (ZMod n)))
+  let : HasExt.{u + 2} (AbelianSheaf.{u, u + 1} Z.left) := hasExtStandard Z.left
+  exact open_finiteLowerShriek_isPerfPair.{u, wU, wX, wA, u + 2, u + 2, u + 2}
+    X hX D hfin hclosed j hD n hn hunit hinv
+    Z hZ fbar E hEfin hEclosed i hE Y.obj.hom hsq d hd
+    (⨁ fun _ : Fin m => moduleUnit Y.obj.left (ULift.{u + 1} (ZMod n))) r hr
+    (open_unit_biproduct_isPerfPair.{u, u + 2, u + 2, u + 2}
+      Z hZ E hEfin hEclosed i hE n hn hunit (levelInvertible fbar.left n hinv) m r hr)
+
+private theorem open_unit_power_directImage_isPerfPair
+    (Y : Scheme.FiniteEtale U) [ConnectedSpace Y.obj.left] [Surjective Y.obj.hom]
+    (m r : ℕ) (hr : r ≤ 2) :
+    (moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD n hn hunit hinv
+      ((moduleDirectImage Y.obj.hom (ULift.{u + 1} (ZMod n))).obj
+        (⨁ fun _ : Fin m => moduleUnit Y.obj.left (ULift.{u + 1} (ZMod n)))) r hr).IsPerfPair := by
+  let : ConnectedSpace U := connectedSpace_of_curve_finite_complement X hX D hfin hclosed j hD
+  let x : U := Classical.ofNonempty
+  let d := Y.obj.hom.finrank x
+  have hd : ∀ z : U, Y.obj.hom.finrank z = d := fun z =>
+    Y.obj.hom.isLocallyConstant_finrank.apply_eq_of_preconnectedSpace z x
+  let P := ⨁ fun _ : Fin m => moduleUnit Y.obj.left (ULift.{u + 1} (ZMod n))
+  have hP := open_unit_power_lowerShriek_isPerfPair.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv Y m r hr
+  exact (moduleDualityMap_isPerfPair_iff_of_iso.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv
+    ((moduleFiniteEtaleLowerShriekDirectImageIso Y.obj.hom n d hd).app P) r hr).mp hP
+
+end OpenUnitCoverApplication
+
+
+private theorem open_lowerShriek_isFiniteTypeLocallyConstant
+    (U : Scheme.{u}) (n : ℕ) {V : Scheme.{u}} (f : V ⟶ U) [Etale f] [IsFinite f]
+    (d : ℕ) (hd : ∀ x : U, f.finrank x = d)
+    (P : ModuleSheaf V (ULift.{u + 1} (ZMod n)))
+    (hP : Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence V (ULift.{u + 1} (ZMod n))).inverse.obj P)) :
+    Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence U (ULift.{u + 1} (ZMod n))).inverse.obj
+        ((moduleLowerShriek f (ULift.{u + 1} (ZMod n))).obj P)) := by
+  let Λ := ULift.{u + 1} (ZMod n)
+  let E := (moduleSheafEquivalence U Λ).inverse
+  let e := E.mapIso ((moduleFiniteEtaleLowerShriekDirectImageIso f n d hd).app P)
+  exact (Constructible.Modules.isFiniteTypeLocallyConstant_iff_of_iso e).mpr
+    (moduleDirectImage_isFiniteTypeLocallyConstant Λ f P hP)
+
+section OpenAdjoints
+
+variable {k : Type u} [Field k] [IsAlgClosed k] (X : FScheme k) (hX : Curve.Properties X)
+  (D : Set X.left) (hfin : D.Finite) (hclosed : ∀ x ∈ D, IsClosed ({x} : Set X.left))
+  {U : Scheme.{u}} (j : U ⟶ X.left) [IsOpenImmersion j] (hD : Set.range j = Dᶜ)
+  (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : k)) (hinv : IsUnit (n : Γ(X.left, ⊤)))
+  [HasExt.{wU} (ModuleSheaf U (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wX} (ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wA} (AbelianSheaf.{u, u + 1} X.left)]
+
+private theorem open_zero_transpose_bijective_of_two_isPerfPair
+    (F : ModuleSheaf U (ULift.{u + 1} (ZMod n)))
+    (hF : (moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD
+      n hn hunit hinv F 2 (by decide)).IsPerfPair) :
+    Function.Bijective (moduleDualityTransposeMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv F 0 (by decide)) := by
+  change Function.Bijective (moduleDualityMap.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv F 2 (by decide)).flip
+  exact hF.bijective_right
+
+private theorem open_two_transpose_bijective_of_zero_isPerfPair
+    (F : ModuleSheaf U (ULift.{u + 1} (ZMod n)))
+    (hF : (moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD
+      n hn hunit hinv F 0 (by decide)).IsPerfPair) :
+    Function.Bijective (moduleDualityTransposeMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv F 2 (by decide)) := by
+  change Function.Bijective (moduleDualityMap.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv F 0 (by decide)).flip
+  exact hF.bijective_right
+
+private theorem open_one_transpose_bijective_of_one_isPerfPair
+    (F : ModuleSheaf U (ULift.{u + 1} (ZMod n)))
+    (hF : (moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD
+      n hn hunit hinv F 1 (by decide)).IsPerfPair) :
+    Function.Bijective (moduleDualityTransposeMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv F 1 (by decide)) := by
+  change Function.Bijective (moduleDualityMap.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv F 1 (by decide)).flip
+  exact hF.bijective_right
+
+private theorem open_dualityTranspose_zero_injective
+    (F : ModuleSheaf U (ULift.{u + 1} (ZMod n)))
+    (hF : Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence U (ULift.{u + 1} (ZMod n))).inverse.obj F)) :
+    Function.Injective (moduleDualityTransposeMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD
+      n hn hunit hinv F 0 (by decide)) := by
+  let : ConnectedSpace U := connectedSpace_of_curve_finite_complement X hX D hfin hclosed j hD
+  obtain ⟨Y, _, hconn, hsurj, m, a, ha⟩ :=
+    exists_galois_unit_biproduct_lowerShriek_epi n hn F hF
+  let : ConnectedSpace Y.obj.left := hconn
+  let : Surjective Y.obj.hom := hsurj
+  let S := ShortComplex.kernelSequence a
+  have hS : S.ShortExact := { exact := ShortComplex.kernelSequence_exact a, epi_g := ha }
+  have hB : (moduleDualityMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv
+      ((moduleLowerShriek Y.obj.hom (ULift.{u + 1} (ZMod n))).obj
+        (⨁ fun _ : Fin m => moduleUnit Y.obj.left (ULift.{u + 1} (ZMod n))))
+      2 (by decide)).IsPerfPair :=
+    open_unit_power_lowerShriek_isPerfPair.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv Y m 2 (by decide)
+  apply moduleDualityTransposeMap_zero_injective_of_shortExact.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv hS
+  dsimp only [S, ShortComplex.kernelSequence]
+  exact (open_zero_transpose_bijective_of_two_isPerfPair.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv _ hB).injective
+
+/-- Original source-degree-zero duality is bijective on every finite local system
+of the given open, using its actual free epimorphism and compact C3 vanishing. -/
+theorem moduleDualityTransposeMap_open_zero_bijective
+    (F : ModuleSheaf U (ULift.{u + 1} (ZMod n)))
+    (hF : Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence U (ULift.{u + 1} (ZMod n))).inverse.obj F)) :
+    Function.Bijective (moduleDualityTransposeMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD
+      n hn hunit hinv F 0 (by decide)) := by
+  let : NeZero n := ⟨Nat.ne_of_gt hn⟩
+  let : ConnectedSpace U := connectedSpace_of_curve_finite_complement X hX D hfin hclosed j hD
+  refine ⟨open_dualityTranspose_zero_injective.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv F hF, ?_⟩
+  obtain ⟨Y, _, hconn, hsurj, m, a, ha⟩ :=
+    exists_galois_unit_biproduct_lowerShriek_epi n hn F hF
+  let : ConnectedSpace Y.obj.left := hconn
+  let : Surjective Y.obj.hom := hsurj
+  let Λ := ULift.{u + 1} (ZMod n)
+  let P : ModuleSheaf Y.obj.left Λ := ⨁ fun _ : Fin m => moduleUnit Y.obj.left Λ
+  let x : U := Classical.ofNonempty
+  let d := Y.obj.hom.finrank x
+  have hd : ∀ z : U, Y.obj.hom.finrank z = d := fun z =>
+    Y.obj.hom.isLocallyConstant_finrank.apply_eq_of_preconnectedSpace z x
+  have hBLC := open_lowerShriek_isFiniteTypeLocallyConstant U n Y.obj.hom d hd P
+    (moduleUnitBiproduct_isFiniteTypeLocallyConstant Y.obj.left Λ m)
+  have hKLC := moduleKernel_isFiniteTypeLocallyConstant U Λ a hBLC hF
+  let S := ShortComplex.kernelSequence a
+  have hS : S.ShortExact := { exact := ShortComplex.kernelSequence_exact a, epi_g := ha }
+  let : Subsingleton (Ext.{wX} (moduleUnit X.left (ULift.{u + 1} (ZMod n)))
+      ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).obj S.X₁) 3) := by
+    change Subsingleton (Ext.{wX} (moduleUnit X.left Λ)
+      ((moduleLowerShriek j Λ).obj (kernel a)) 3)
+    exact moduleCompactExt_high_subsingleton_of_finiteLocallyConstant.{u, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit (kernel a) hKLC 3 (by decide)
+  have hB : (moduleDualityMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv
+      ((moduleLowerShriek Y.obj.hom (ULift.{u + 1} (ZMod n))).obj
+        (⨁ fun _ : Fin m => moduleUnit Y.obj.left (ULift.{u + 1} (ZMod n))))
+      2 (by decide)).IsPerfPair :=
+    open_unit_power_lowerShriek_isPerfPair.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv Y m 2 (by decide)
+  have hK : Function.Injective (moduleDualityTransposeMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD
+      n hn hunit hinv (kernel a) 0 (by decide)) :=
+    open_dualityTranspose_zero_injective.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv (kernel a) hKLC
+  apply moduleDualityTransposeMap_zero_surjective_of_shortExact.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv hS
+  · dsimp only [S, ShortComplex.kernelSequence]
+    exact (open_zero_transpose_bijective_of_two_isPerfPair.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv _ hB).surjective
+  · dsimp only [S, ShortComplex.kernelSequence]
+    exact hK
+
+private theorem open_dualityTranspose_two_surjective
+    (F : ModuleSheaf U (ULift.{u + 1} (ZMod n)))
+    (hF : Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence U (ULift.{u + 1} (ZMod n))).inverse.obj F)) :
+    Function.Surjective (moduleDualityTransposeMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD
+      n hn hunit hinv F 2 le_rfl) := by
+  let : ConnectedSpace U := connectedSpace_of_curve_finite_complement X hX D hfin hclosed j hD
+  obtain ⟨Y, _, hc, hs, m, a, ha⟩ := exists_galois_unit_biproduct_directImage_mono n hn F hF
+  let : ConnectedSpace Y.obj.left := hc
+  let : Surjective Y.obj.hom := hs
+  let S := ShortComplex.cokernelSequence a
+  have hS : S.ShortExact := { exact := ShortComplex.cokernelSequence_exact a, mono_f := ha }
+  have hB : (moduleDualityMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv S.X₂ 0 (by decide)).IsPerfPair :=
+    open_unit_power_directImage_isPerfPair.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv Y m 0 (by decide)
+  apply moduleDualityTransposeMap_two_surjective_of_shortExact.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv hS
+  exact (open_two_transpose_bijective_of_zero_isPerfPair.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv S.X₂ hB).surjective
+
+/-- The original source-degree-two adjoint is bijective by uniform cofree
+surjectivity followed by actual E3 vanishing of its original cokernel. -/
+theorem moduleDualityTransposeMap_open_two_bijective
+    (F : ModuleSheaf U (ULift.{u + 1} (ZMod n)))
+    (hF : Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence U (ULift.{u + 1} (ZMod n))).inverse.obj F)) :
+    Function.Bijective (moduleDualityTransposeMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD
+      n hn hunit hinv F 2 le_rfl) := by
+  let : NeZero n := ⟨Nat.ne_of_gt hn⟩
+  let : ConnectedSpace U := connectedSpace_of_curve_finite_complement X hX D hfin hclosed j hD
+  refine ⟨?_, open_dualityTranspose_two_surjective.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv F hF⟩
+  obtain ⟨Y, _, hc, hs, m, a, ha⟩ := exists_galois_unit_biproduct_directImage_mono n hn F hF
+  let : ConnectedSpace Y.obj.left := hc
+  let : Surjective Y.obj.hom := hs
+  let Λ := ULift.{u + 1} (ZMod n)
+  let B := (moduleDirectImage Y.obj.hom Λ).obj
+    (⨁ fun _ : Fin m => moduleUnit Y.obj.left Λ)
+  have hBLC := moduleDirectImage_isFiniteTypeLocallyConstant Λ Y.obj.hom
+    (⨁ fun _ : Fin m => moduleUnit Y.obj.left Λ)
+    (moduleUnitBiproduct_isFiniteTypeLocallyConstant Y.obj.left Λ m)
+  have hKLC := moduleCokernel_isFiniteTypeLocallyConstant Λ a hF hBLC
+  let S := ShortComplex.cokernelSequence a
+  have hS : S.ShortExact := { exact := ShortComplex.cokernelSequence_exact a, mono_f := ha }
+  let : Subsingleton (Ext.{wU} S.X₃ (moduleRootsOfUnity U n) 3) := by
+    change Subsingleton (Ext.{wU} (cokernel a) (moduleRootsOfUnity U n) 3)
+    exact moduleSourceExt_open_high_subsingleton_of_finiteLocallyConstant.{u, wU}
+      X hX D hfin hclosed j hD n hn hunit (cokernel a) hKLC 3 (by decide)
+  have hB : (moduleDualityMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv B 0 (by decide)).IsPerfPair :=
+    open_unit_power_directImage_isPerfPair.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv Y m 0 (by decide)
+  have hK : Function.Surjective (moduleDualityTransposeMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD
+      n hn hunit hinv S.X₃ 2 le_rfl) :=
+    open_dualityTranspose_two_surjective.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv S.X₃ hKLC
+  apply moduleDualityTransposeMap_two_injective_of_shortExact.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv hS
+  · dsimp only [S, ShortComplex.cokernelSequence]
+    exact (open_two_transpose_bijective_of_zero_isPerfPair.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv B hB).injective
+  · exact hK
+
+private theorem open_dualityTranspose_one_surjective
+    (F : ModuleSheaf U (ULift.{u + 1} (ZMod n)))
+    (hF : Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence U (ULift.{u + 1} (ZMod n))).inverse.obj F)) :
+    Function.Surjective (moduleDualityTransposeMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD
+      n hn hunit hinv F 1 (by decide)) := by
+  let : NeZero n := ⟨Nat.ne_of_gt hn⟩
+  let : ConnectedSpace U := connectedSpace_of_curve_finite_complement X hX D hfin hclosed j hD
+  obtain ⟨Y, _, hc, hs, m, a, ha⟩ := exists_galois_unit_biproduct_directImage_mono n hn F hF
+  let : ConnectedSpace Y.obj.left := hc
+  let : Surjective Y.obj.hom := hs
+  let Λ := ULift.{u + 1} (ZMod n)
+  let B := (moduleDirectImage Y.obj.hom (ULift.{u + 1} (ZMod n))).obj
+    (⨁ fun _ : Fin m => moduleUnit Y.obj.left (ULift.{u + 1} (ZMod n)))
+  have hBLC := moduleDirectImage_isFiniteTypeLocallyConstant Λ Y.obj.hom
+    (⨁ fun _ : Fin m => moduleUnit Y.obj.left Λ)
+    (moduleUnitBiproduct_isFiniteTypeLocallyConstant Y.obj.left Λ m)
+  have hKLC := moduleCokernel_isFiniteTypeLocallyConstant Λ a hF hBLC
+  have hB : (moduleDualityMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv B 1 (by decide)).IsPerfPair :=
+    open_unit_power_directImage_isPerfPair.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv Y m 1 (by decide)
+  have hB₁ : Function.Bijective (moduleDualityTransposeMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD
+      n hn hunit hinv B 1 (by decide)) :=
+    open_one_transpose_bijective_of_one_isPerfPair.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv B hB
+  have hB₂ : Function.Bijective (moduleDualityTransposeMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD
+      n hn hunit hinv B 2 le_rfl) :=
+    moduleDualityTransposeMap_open_two_bijective.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv B hBLC
+  have hK₂ : Function.Bijective (moduleDualityTransposeMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD
+      n hn hunit hinv (cokernel a) 2 le_rfl) :=
+    moduleDualityTransposeMap_open_two_bijective.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv (cokernel a) hKLC
+  let S := ShortComplex.cokernelSequence a
+  have hS : S.ShortExact := { exact := ShortComplex.cokernelSequence_exact a, mono_f := ha }
+  apply moduleDualityTransposeMap_one_surjective_of_shortExact.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv hS
+  · dsimp only [S, ShortComplex.cokernelSequence]
+    exact hB₁.surjective
+  · dsimp only [S, ShortComplex.cokernelSequence]
+    exact hK₂.surjective
+  · dsimp only [S, ShortComplex.cokernelSequence]
+    exact hB₂.injective
+
+/-- The original middle adjoint is bijective by the actual unsigned exact
+row, with surjectivity proved uniformly before injectivity. -/
+theorem moduleDualityTransposeMap_open_one_bijective
+    (F : ModuleSheaf U (ULift.{u + 1} (ZMod n)))
+    (hF : Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence U (ULift.{u + 1} (ZMod n))).inverse.obj F)) :
+    Function.Bijective (moduleDualityTransposeMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD
+      n hn hunit hinv F 1 (by decide)) := by
+  let : NeZero n := ⟨Nat.ne_of_gt hn⟩
+  let : ConnectedSpace U := connectedSpace_of_curve_finite_complement X hX D hfin hclosed j hD
+  refine ⟨?_, open_dualityTranspose_one_surjective.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv F hF⟩
+  obtain ⟨Y, _, hc, hs, m, a, ha⟩ := exists_galois_unit_biproduct_directImage_mono n hn F hF
+  let : ConnectedSpace Y.obj.left := hc
+  let : Surjective Y.obj.hom := hs
+  let Λ := ULift.{u + 1} (ZMod n)
+  let B := (moduleDirectImage Y.obj.hom (ULift.{u + 1} (ZMod n))).obj
+    (⨁ fun _ : Fin m => moduleUnit Y.obj.left (ULift.{u + 1} (ZMod n)))
+  have hBLC := moduleDirectImage_isFiniteTypeLocallyConstant Λ Y.obj.hom
+    (⨁ fun _ : Fin m => moduleUnit Y.obj.left Λ)
+    (moduleUnitBiproduct_isFiniteTypeLocallyConstant Y.obj.left Λ m)
+  have hKLC := moduleCokernel_isFiniteTypeLocallyConstant Λ a hF hBLC
+  have hB : (moduleDualityMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv B 1 (by decide)).IsPerfPair :=
+    open_unit_power_directImage_isPerfPair.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv Y m 1 (by decide)
+  have hB₁ : Function.Bijective (moduleDualityTransposeMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD
+      n hn hunit hinv B 1 (by decide)) :=
+    open_one_transpose_bijective_of_one_isPerfPair.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv B hB
+  have hK₁ : Function.Surjective (moduleDualityTransposeMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD
+      n hn hunit hinv (cokernel a) 1 (by decide)) :=
+    open_dualityTranspose_one_surjective.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv (cokernel a) hKLC
+  have hK₂ : Function.Bijective (moduleDualityTransposeMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD
+      n hn hunit hinv (cokernel a) 2 le_rfl) :=
+    moduleDualityTransposeMap_open_two_bijective.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv (cokernel a) hKLC
+  let S := ShortComplex.cokernelSequence a
+  have hS : S.ShortExact := { exact := ShortComplex.cokernelSequence_exact a, mono_f := ha }
+  apply moduleDualityTransposeMap_one_injective_of_shortExact.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv hS
+  · dsimp only [S, ShortComplex.cokernelSequence]
+    exact hB₁.injective
+  · dsimp only [S, ShortComplex.cokernelSequence]
+    exact hK₁
+  · dsimp only [S, ShortComplex.cokernelSequence]
+    exact hK₂.injective
+
+end OpenAdjoints
+
+
+private theorem finite_point_source_zero_finite
+    (X : Scheme.{u}) (T : Set X) (hfin : T.Finite)
+    (hclosed : ∀ x ∈ T, IsClosed ({x} : Set X)) (n : ℕ) (hn : 0 < n)
+    [HasExt.{wX} (ModuleSheaf X (ULift.{u + 1} (ZMod n)))] :
+    Finite (Ext.{wX} (moduleUnit X (ULift.{u + 1} (ZMod n)))
+      (moduleFinitePointSource X T n) 0) := by
+  let : NeZero n := ⟨Nat.ne_of_gt hn⟩
+  let : Finite T := hfin.to_subtype
+  let : Fintype T := Fintype.ofFinite T
+  let Λ := ULift.{u + 1} (ZMod n)
+  let A := moduleUnit X Λ
+  let M := fun x : T => (moduleDirectImage (X.fromSpecResidueField x.val) Λ).obj
+    (moduleUnit (Spec (X.residueField x.val)) Λ)
+  let (x : T) : IsClosedImmersion (X.fromSpecResidueField x.val) :=
+    isClosed_singleton_iff_isClosedImmersion.mp (hclosed x.val x.property)
+  let (x : T) : Finite (Ext.{wX} A (M x) 0) := by
+    let i := X.fromSpecResidueField x.val
+    exact Finite.of_surjective
+      (fun a : ZMod n => a • Ext.mk₀ (modulePointUnitMap i n))
+      (modulePointUnitMap_scalar_bijective i n).surjective
+  let E₁ : Ext.{wX} A (moduleFinitePointSource X T n) 0 ≃+
+      Ext.{wX} A (⨁ M) 0 :=
+    ((extFunctorObj A 0).mapIso (moduleFinitePointSourceIso X T n hclosed))
+      |>.addCommGroupIsoToAddEquiv
+  let E₂ : Ext.{wX} A (⨁ M) 0 ≃+ ∀ x : T, Ext.{wX} A (M x) 0 :=
+    Ext.addEquivBiproduct A (biproduct.isBilimit M) 0
+  exact Finite.of_injective (E₁.trans E₂) (E₁.trans E₂).injective
+
+section OpenUnitFiniteness
+
+variable {k : Type u} [Field k] [IsAlgClosed k] (X : FScheme k) (hX : Curve.Properties X)
+  (D : Set X.left) (hfin : D.Finite) (hclosed : ∀ x ∈ D, IsClosed ({x} : Set X.left))
+  {U : Scheme.{u}} (j : U ⟶ X.left) [IsOpenImmersion j] (hD : Set.range j = Dᶜ)
+  (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : k))
+  [HasExt.{wX} (ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wA} (AbelianSheaf.{u, u + 1} X.left)]
+
+include hX hn hunit in
+private theorem proper_unit_raw_finite (q : ℕ) :
+    Finite (Ext.{wX} (moduleUnit X.left (ULift.{u + 1} (ZMod n)))
+      (moduleUnit X.left (ULift.{u + 1} (ZMod n))) q) := by
+  let Λ := ULift.{u + 1} (ZMod n)
+  let A := moduleUnit X.left Λ
+  let : Finite (Ext.{wX} A ((moduleLowerShriek (𝟙 X.left) Λ).obj A) q) :=
+    moduleUnitCompactIdExt_finite_of_finiteLocallyConstant X hX n hn hunit A
+      (moduleUnit_isFiniteTypeLocallyConstant X.left Λ) q
+  let E : Ext.{wX} A ((moduleLowerShriek (𝟙 X.left) Λ).obj A) q ≃+ Ext.{wX} A A q :=
+    ((extFunctorObj A q).mapIso ((moduleLowerShriekIdIso Λ X.left).app A)).addCommGroupIsoToAddEquiv
+  exact Finite.of_injective E.symm E.symm.injective
+
+include hX D hfin hclosed hD hn hunit in
+private theorem open_unit_compact_finite_low (q : ℕ) (hq : q ≤ 2) :
+    Finite (Ext.{wX} (moduleUnit X.left (ULift.{u + 1} (ZMod n)))
+      ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).obj
+        (moduleUnit U (ULift.{u + 1} (ZMod n)))) q) := by
+  let : NeZero n := ⟨Nat.ne_of_gt hn⟩
+  let Λ := ULift.{u + 1} (ZMod n)
+  let A := moduleUnit X.left Λ
+  let iz := Curves.FiniteClosedSupport.inclusion X.left D
+  let : IsClosedImmersion iz :=
+    Curves.FiniteClosedSupport.inclusion_isClosedImmersion X.left D hfin hclosed
+  have hcomp : Set.range j = (Set.range iz)ᶜ := by
+    rw [Curves.FiniteClosedSupport.range_inclusion]
+    exact hD
+  let S := moduleLocalizationShortComplex j Λ iz hcomp A
+  have hS : S.ShortExact := moduleLocalization_shortExact j Λ iz hcomp A
+  let (r : ℕ) : Finite (Ext.{wX} A S.X₂ r) :=
+    proper_unit_raw_finite X hX n hn hunit r
+  let eC : S.X₃ ≅ moduleFinitePointSource X.left D n :=
+    (moduleDirectImage iz Λ).mapIso (moduleUnitInverseImageIso iz n)
+  let E₃ (r : ℕ) : Ext.{wX} A S.X₃ r ≃+
+      Ext.{wX} A (moduleFinitePointSource X.left D n) r :=
+    ((extFunctorObj A r).mapIso eC).addCommGroupIsoToAddEquiv
+  let : Finite (Ext.{wX} A S.X₃ 0) := by
+    let : Finite (Ext.{wX} A (moduleFinitePointSource X.left D n) 0) :=
+      finite_point_source_zero_finite X.left D hfin hclosed n hn
+    exact Finite.of_injective (E₃ 0) (E₃ 0).injective
+  have hPointPos (r : ℕ) (hr : 0 < r) : Subsingleton (Ext.{wX} A S.X₃ r) := by
+    let : Subsingleton (Ext.{wX} A
+        ((moduleLowerShriek (𝟙 X.left) Λ).obj (moduleFinitePointSource X.left D n)) r) :=
+      moduleCompactFinitePointUnitExt_pos_subsingleton X hX (𝟙 X.left) n
+        D hfin hclosed r hr
+    let E : Ext.{wX} A
+        ((moduleLowerShriek (𝟙 X.left) Λ).obj (moduleFinitePointSource X.left D n)) r ≃+
+        Ext.{wX} A (moduleFinitePointSource X.left D n) r :=
+      ((extFunctorObj A r).mapIso
+        ((moduleLowerShriekIdIso Λ X.left).app (moduleFinitePointSource X.left D n)))
+          |>.addCommGroupIsoToAddEquiv
+    let : Subsingleton (Ext.{wX} A (moduleFinitePointSource X.left D n) r) :=
+      E.symm.injective.subsingleton
+    exact (E₃ r).injective.subsingleton
+  let eA : S.X₁ ≅ (moduleLowerShriek j Λ).obj (moduleUnit U Λ) :=
+    (moduleLowerShriek j Λ).mapIso (moduleUnitInverseImageIso j n)
+  let E₁ : Ext.{wX} A S.X₁ q ≃+
+      Ext.{wX} A ((moduleLowerShriek j Λ).obj (moduleUnit U Λ)) q :=
+    ((extFunctorObj A q).mapIso eA).addCommGroupIsoToAddEquiv
+  suffices Finite (Ext.{wX} A S.X₁ q) from Finite.of_injective E₁.symm E₁.symm.injective
+  interval_cases q
+  · let : Mono S.f := hS.mono_f
+    exact Finite.of_injective _ (Ext.postcomp_mk₀_injective_of_mono A S.f)
+  · let f : Ext.{wX} A S.X₃ 0 →+ Ext.{wX} A S.X₁ 1 :=
+      hS.extClass.postcomp A (show 0 + 1 = 1 from rfl)
+    let g : Ext.{wX} A S.X₁ 1 →+ Ext.{wX} A S.X₂ 1 :=
+      (Ext.mk₀ S.f).postcomp A (add_zero 1)
+    have hfg : Function.Exact f g := by
+      have h := Ext.covariant_sequence_exact₁' A hS 0 1 rfl
+      rw [ShortComplex.ab_exact_iff_function_exact] at h
+      exact h
+    exact AddMonoidHom.finite_of_exact f g hfg
+  · let : Subsingleton (Ext.{wX} A S.X₃ 1) := hPointPos 1 (by decide)
+    let g := (Ext.mk₀ S.f).postcomp A (add_zero 2)
+    have hg : Function.Injective g := by
+      apply (injective_iff_map_eq_zero _).mpr
+      intro c hc
+      obtain ⟨b, hb⟩ := Ext.covariant_sequence_exact₁ A hS c hc (n₀ := 1) rfl
+      exact hb.symm.trans (by rw [Subsingleton.elim b 0, Ext.zero_comp])
+    exact Finite.of_injective g hg
+
+end OpenUnitFiniteness
+
+
+section OpenCoverFiniteness
+
+variable {k : Type u} [Field k] [IsAlgClosed k] (X : FScheme k) (hX : Curve.Properties X)
+  (D : Set X.left) (hfin : D.Finite) (hclosed : ∀ x ∈ D, IsClosed ({x} : Set X.left))
+  {U : Scheme.{u}} (j : U ⟶ X.left) [IsOpenImmersion j] (hD : Set.range j = Dᶜ)
+  (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : k))
+  [HasExt.{wX} (ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))]
+
+include hX D hfin hclosed hD hn hunit
+
+private theorem open_lowerShriek_unit_power_compact_finite
+    (Y : Scheme.FiniteEtale U) [ConnectedSpace Y.obj.left] [Surjective Y.obj.hom]
+    (m q : ℕ) (hq : q ≤ 2) :
+    Finite (Ext.{wX} (moduleUnit X.left (ULift.{u + 1} (ZMod n)))
+      ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).obj
+        ((moduleLowerShriek Y.obj.hom (ULift.{u + 1} (ZMod n))).obj
+          (⨁ fun _ : Fin m => moduleUnit Y.obj.left (ULift.{u + 1} (ZMod n))))) q) := by
+  let : Nonempty U := nonempty_of_curve_finite_complement X hX D hfin hclosed j hD
+  let : ConnectedSpace U := connectedSpace_of_curve_finite_complement X hX D hfin hclosed j hD
+  let iz := Curves.FiniteClosedSupport.inclusion X.left D
+  let : IsClosedImmersion iz :=
+    Curves.FiniteClosedSupport.inclusion_isClosedImmersion X.left D hfin hclosed
+  have hDc : IsClosed D := by
+    rw [← Curves.FiniteClosedSupport.range_inclusion X.left D]
+    exact iz.isClosedEmbedding.isClosed_range
+  obtain ⟨Z, fbar, i, hZ, hfbar, _, hi, hsq, hEfin, hEc, hE⟩ :=
+    Curve.exists_finiteEtaleCompletion_with_boundary X hX j Y D hfin hDc hD
+  let : IsFinite fbar.left := hfbar
+  let : IsOpenImmersion i := hi
+  let : LocallyOfFiniteType Z.hom := Curve.curveProperties_locallyOfFiniteType hZ
+  let : JacobsonSpace Z.left := LocallyOfFiniteType.jacobsonSpace Z.hom
+  let E := fbar.left ⁻¹' D
+  have hEclosed : ∀ z ∈ E, IsClosed ({z} : Set Z.left) := by
+    let : Finite E := hEfin.to_subtype
+    let : JacobsonSpace E := JacobsonSpace.of_isClosedEmbedding hEc.isClosedEmbedding_subtypeVal
+    intro z hz
+    have h := hEc.isClosedMap_subtype_val
+      ({⟨z, hz⟩} : Set E) (isClosed_singleton : IsClosed ({⟨z, hz⟩} : Set E))
+    simpa only [Set.image_singleton] using h
+  let x : U := Classical.ofNonempty
+  let d := Y.obj.hom.finrank x
+  have hd : ∀ z : U, Y.obj.hom.finrank z = d := fun z =>
+    Y.obj.hom.isLocallyConstant_finrank.apply_eq_of_preconnectedSpace z x
+  let Λ := ULift.{u + 1} (ZMod n)
+  let P := fun _ : Fin m => moduleUnit Y.obj.left Λ
+  let : HasExt.{u + 2} (ModuleSheaf Z.left Λ) := SheafOfModules.hasExt (constantRing Z.left Λ)
+  let : HasExt.{u + 2} (AbelianSheaf.{u, u + 1} Z.left) := hasExtStandard Z.left
+  let A := moduleUnit Z.left Λ
+  let L := moduleLowerShriek i Λ
+  let (k : Fin m) : Finite (Ext.{u + 2} A ((L.obj ∘ P) k) q) :=
+    open_unit_compact_finite_low Z hZ E hEfin hEclosed i hE n hn hunit q hq
+  let EB : Ext.{u + 2} A (L.obj (⨁ P)) q ≃+ ∀ k : Fin m, Ext.{u + 2} A ((L.obj ∘ P) k) q :=
+    Ext.addEquivBiproduct A (Functor.mapFiniteBiconeIsBilimit L (biproduct.isBilimit P)) q
+  let : Finite (Ext.{u + 2} A (L.obj (⨁ P)) q) := Finite.of_injective EB EB.injective
+  let EX := moduleFiniteOpenLowerShriekCompactExtAddEquiv.{u, wX, u + 2}
+    fbar.left Y.obj.hom j i hsq n d hd (⨁ P) q
+  exact Finite.of_injective EX EX.injective
+
+private theorem open_directImage_unit_power_compact_finite
+    (Y : Scheme.FiniteEtale U) [ConnectedSpace Y.obj.left] [Surjective Y.obj.hom]
+    (m q : ℕ) (hq : q ≤ 2) :
+    Finite (Ext.{wX} (moduleUnit X.left (ULift.{u + 1} (ZMod n)))
+      ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).obj
+        ((moduleDirectImage Y.obj.hom (ULift.{u + 1} (ZMod n))).obj
+          (⨁ fun _ : Fin m => moduleUnit Y.obj.left (ULift.{u + 1} (ZMod n))))) q) := by
+  let : ConnectedSpace U := connectedSpace_of_curve_finite_complement X hX D hfin hclosed j hD
+  let Λ := ULift.{u + 1} (ZMod n)
+  let A := moduleUnit X.left Λ
+  let L := moduleLowerShriek j Λ
+  let P := ⨁ fun _ : Fin m => moduleUnit Y.obj.left Λ
+  let x : U := Classical.ofNonempty
+  let d := Y.obj.hom.finrank x
+  have hd : ∀ z : U, Y.obj.hom.finrank z = d := fun z =>
+    Y.obj.hom.isLocallyConstant_finrank.apply_eq_of_preconnectedSpace z x
+  let : Finite (Ext.{wX} A (L.obj ((moduleLowerShriek Y.obj.hom Λ).obj P)) q) :=
+    open_lowerShriek_unit_power_compact_finite X hX D hfin hclosed j hD n hn hunit Y m q hq
+  let E : Ext.{wX} A (L.obj ((moduleDirectImage Y.obj.hom Λ).obj P)) q ≃+
+      Ext.{wX} A (L.obj ((moduleLowerShriek Y.obj.hom Λ).obj P)) q :=
+    ((extFunctorObj A q).mapIso
+      (L.mapIso ((moduleFiniteEtaleLowerShriekDirectImageIso Y.obj.hom n d hd).app P).symm))
+        |>.addCommGroupIsoToAddEquiv
+  exact Finite.of_injective E E.injective
+
+end OpenCoverFiniteness
+
+
+section OpenCompactFiniteness
+
+variable {k : Type u} [Field k] [IsAlgClosed k] (X : FScheme k) (hX : Curve.Properties X)
+  (D : Set X.left) (hfin : D.Finite) (hclosed : ∀ x ∈ D, IsClosed ({x} : Set X.left))
+  {U : Scheme.{u}} (j : U ⟶ X.left) [IsOpenImmersion j] (hD : Set.range j = Dᶜ)
+  (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : k))
+  [HasExt.{wX} (ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wA} (AbelianSheaf.{u, u + 1} X.left)]
+
+include hX D hfin hclosed hD hn hunit
+
+omit [HasExt.{wA} (AbelianSheaf.{u, u + 1} X.left)] in
+private theorem open_compact_zero_finite
+    (F : ModuleSheaf U (ULift.{u + 1} (ZMod n)))
+    (hF : Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence U (ULift.{u + 1} (ZMod n))).inverse.obj F)) :
+    Finite (Ext.{wX} (moduleUnit X.left (ULift.{u + 1} (ZMod n)))
+      ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).obj F) 0) := by
+  let : ConnectedSpace U := connectedSpace_of_curve_finite_complement X hX D hfin hclosed j hD
+  obtain ⟨Y, _, hc, hs, m, a, ha⟩ := exists_galois_unit_biproduct_directImage_mono n hn F hF
+  let : ConnectedSpace Y.obj.left := hc
+  let : Surjective Y.obj.hom := hs
+  let : Mono a := ha
+  let Λ := ULift.{u + 1} (ZMod n)
+  let A := moduleUnit X.left Λ
+  let L := moduleLowerShriek j Λ
+  let : Finite (Ext.{wX} A (L.obj ((moduleDirectImage Y.obj.hom Λ).obj
+      (⨁ fun _ : Fin m => moduleUnit Y.obj.left Λ))) 0) :=
+    open_directImage_unit_power_compact_finite X hX D hfin hclosed j hD n hn hunit Y m 0 (by decide)
+  have hi := Ext.postcomp_mk₀_injective_of_mono A (L.map a)
+  exact Finite.of_injective _ hi
+
+private theorem open_compact_two_finite
+    (F : ModuleSheaf U (ULift.{u + 1} (ZMod n)))
+    (hF : Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence U (ULift.{u + 1} (ZMod n))).inverse.obj F)) :
+    Finite (Ext.{wX} (moduleUnit X.left (ULift.{u + 1} (ZMod n)))
+      ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).obj F) 2) := by
+  let : NeZero n := ⟨Nat.ne_of_gt hn⟩
+  let : ConnectedSpace U := connectedSpace_of_curve_finite_complement X hX D hfin hclosed j hD
+  obtain ⟨Y, _, hc, hs, m, a, ha⟩ := exists_galois_unit_biproduct_lowerShriek_epi n hn F hF
+  let : ConnectedSpace Y.obj.left := hc
+  let : Surjective Y.obj.hom := hs
+  let Λ := ULift.{u + 1} (ZMod n)
+  let A := moduleUnit X.left Λ
+  let L := moduleLowerShriek j Λ
+  let P := ⨁ fun _ : Fin m => moduleUnit Y.obj.left Λ
+  let x : U := Classical.ofNonempty
+  let d := Y.obj.hom.finrank x
+  have hd : ∀ z : U, Y.obj.hom.finrank z = d := fun z =>
+    Y.obj.hom.isLocallyConstant_finrank.apply_eq_of_preconnectedSpace z x
+  have hBLC := (Constructible.Modules.isFiniteTypeLocallyConstant_iff_of_iso
+    ((moduleSheafEquivalence U Λ).inverse.mapIso
+      ((moduleFiniteEtaleLowerShriekDirectImageIso Y.obj.hom n d hd).app P))).mpr
+    (moduleDirectImage_isFiniteTypeLocallyConstant Λ Y.obj.hom P
+      (moduleUnitBiproduct_isFiniteTypeLocallyConstant Y.obj.left Λ m))
+  have hKLC := moduleKernel_isFiniteTypeLocallyConstant U Λ a hBLC hF
+  let S := ShortComplex.kernelSequence a
+  have hS : S.ShortExact := { exact := ShortComplex.kernelSequence_exact a, epi_g := ha }
+  let : Subsingleton (Ext.{wX} A
+      (S.map (moduleLowerShriek j Λ)).X₁ 3) := by
+    change Subsingleton (Ext.{wX} A (L.obj S.X₁) 3)
+    exact moduleCompactExt_high_subsingleton_of_finiteLocallyConstant.{u, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit S.X₁ hKLC 3 (by decide)
+  let : Finite (Ext.{wX} A (L.obj S.X₂) 2) :=
+    open_lowerShriek_unit_power_compact_finite X hX D hfin hclosed j hD n hn hunit Y m 2 (by decide)
+  have hs : Function.Surjective ((Ext.mk₀ (L.map S.g)).postcomp A (add_zero 2)) := by
+    intro z
+    obtain ⟨b, hb⟩ := Ext.covariant_sequence_exact₃ A
+      (shortExact_moduleLowerShriek j Λ hS) z
+      (show 2 + 1 = 3 from rfl) (Subsingleton.elim _ _)
+    exact ⟨b, hb⟩
+  exact Finite.of_surjective _ hs
+
+/-- Every original compact unit-Ext group of a finite local system on the
+given open is finite, by actual unit powers, cofree/epi maps and compact C3. -/
+theorem moduleCompactExt_finite_of_finiteLocallyConstant
+    (F : ModuleSheaf U (ULift.{u + 1} (ZMod n)))
+    (hF : Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence U (ULift.{u + 1} (ZMod n))).inverse.obj F)) (q : ℕ) :
+    Finite (Ext.{wX} (moduleUnit X.left (ULift.{u + 1} (ZMod n)))
+      ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).obj F) q) := by
+  let : NeZero n := ⟨Nat.ne_of_gt hn⟩
+  by_cases hq : q ≤ 2
+  · interval_cases q
+    · exact open_compact_zero_finite X hX D hfin hclosed j hD n hn hunit F hF
+    · let : ConnectedSpace U := connectedSpace_of_curve_finite_complement X hX D hfin hclosed j hD
+      obtain ⟨Y, _, hc, hs, m, a, ha⟩ := exists_galois_unit_biproduct_lowerShriek_epi n hn F hF
+      let : ConnectedSpace Y.obj.left := hc
+      let : Surjective Y.obj.hom := hs
+      let Λ := ULift.{u + 1} (ZMod n)
+      let A := moduleUnit X.left Λ
+      let L := moduleLowerShriek j Λ
+      let P := ⨁ fun _ : Fin m => moduleUnit Y.obj.left Λ
+      let x : U := Classical.ofNonempty
+      let d := Y.obj.hom.finrank x
+      have hd : ∀ z : U, Y.obj.hom.finrank z = d := fun z =>
+        Y.obj.hom.isLocallyConstant_finrank.apply_eq_of_preconnectedSpace z x
+      have hBLC := (Constructible.Modules.isFiniteTypeLocallyConstant_iff_of_iso
+        ((moduleSheafEquivalence U Λ).inverse.mapIso
+          ((moduleFiniteEtaleLowerShriekDirectImageIso Y.obj.hom n d hd).app P))).mpr
+        (moduleDirectImage_isFiniteTypeLocallyConstant Λ Y.obj.hom P
+          (moduleUnitBiproduct_isFiniteTypeLocallyConstant Y.obj.left Λ m))
+      have hKLC := moduleKernel_isFiniteTypeLocallyConstant U Λ a hBLC hF
+      let S := ShortComplex.kernelSequence a
+      have hS : S.ShortExact := { exact := ShortComplex.kernelSequence_exact a, epi_g := ha }
+      let : Finite (Ext.{wX} A (L.obj S.X₂) 1) :=
+        open_lowerShriek_unit_power_compact_finite
+          X hX D hfin hclosed j hD n hn hunit Y m 1 (by decide)
+      let : Finite (Ext.{wX} A (L.obj S.X₁) 2) :=
+        open_compact_two_finite X hX D hfin hclosed j hD n hn hunit S.X₁ hKLC
+      let f : Ext.{wX} A (L.obj S.X₂) 1 →+ Ext.{wX} A (L.obj S.X₃) 1 :=
+        (Ext.mk₀ (L.map S.g)).postcomp A (add_zero 1)
+      let g : Ext.{wX} A (L.obj S.X₃) 1 →+ Ext.{wX} A (L.obj S.X₁) 2 :=
+        (shortExact_moduleLowerShriek j Λ hS).extClass.postcomp A
+          (show 1 + 1 = 2 from rfl)
+      have hfg : Function.Exact f g := by
+        have h := Ext.covariant_sequence_exact₃' A
+          (shortExact_moduleLowerShriek j Λ hS) 1 2 rfl
+        rw [ShortComplex.ab_exact_iff_function_exact] at h
+        exact h
+      exact AddMonoidHom.finite_of_exact f g hfg
+    · exact open_compact_two_finite X hX D hfin hclosed j hD n hn hunit F hF
+  · let : Subsingleton (Ext.{wX} (moduleUnit X.left (ULift.{u + 1} (ZMod n)))
+        ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).obj F) q) :=
+      moduleCompactExt_high_subsingleton_of_finiteLocallyConstant.{u, wX, wA}
+        X hX D hfin hclosed j hD n hn hunit F hF q (by omega)
+    infer_instance
+
+end OpenCompactFiniteness
+
+
+section OpenFinalPerfectness
+
+variable {k : Type u} [Field k] [IsAlgClosed k] (X : FScheme k) (hX : Curve.Properties X)
+  (D : Set X.left) (hfin : D.Finite) (hclosed : ∀ x ∈ D, IsClosed ({x} : Set X.left))
+  {U : Scheme.{u}} (j : U ⟶ X.left) [IsOpenImmersion j] (hD : Set.range j = Dᶜ)
+  (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : k)) (hinv : IsUnit (n : Γ(X.left, ⊤)))
+  [HasExt.{wU} (ModuleSheaf U (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wX} (ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wA} (AbelianSheaf.{u, u + 1} X.left)]
+
+private theorem open_dualityTranspose_zero_eq_flip
+    (F : ModuleSheaf U (ULift.{u + 1} (ZMod n))) :
+    moduleDualityTransposeMap.{u, wU, wX, wA} X hX D hfin hclosed j hD
+      n hn hunit hinv F 0 (by decide) =
+    (moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD
+      n hn hunit hinv F 2 (by decide)).flip := rfl
+
+private theorem open_dualityTranspose_one_eq_flip
+    (F : ModuleSheaf U (ULift.{u + 1} (ZMod n))) :
+    moduleDualityTransposeMap.{u, wU, wX, wA} X hX D hfin hclosed j hD
+      n hn hunit hinv F 1 (by decide) =
+    (moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD
+      n hn hunit hinv F 1 (by decide)).flip := rfl
+
+private theorem open_dualityTranspose_two_eq_flip
+    (F : ModuleSheaf U (ULift.{u + 1} (ZMod n))) :
+    moduleDualityTransposeMap.{u, wU, wX, wA} X hX D hfin hclosed j hD
+      n hn hunit hinv F 2 (by decide) =
+    (moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD
+      n hn hunit hinv F 0 (by decide)).flip := rfl
+
+/-- Both adjoints of the original trace pairing are bijective for every finite
+local system on the given finite-complement open. Positive composite levels,
+level one and empty boundary are included, with independent original Ext worlds. -/
+theorem moduleDualityMap_isPerfPair_of_finiteLocallyConstant
+    (F : ModuleSheaf U (ULift.{u + 1} (ZMod n)))
+    (hF : Constructible.Modules.IsFiniteTypeLocallyConstant
+      ((moduleSheafEquivalence U (ULift.{u + 1} (ZMod n))).inverse.obj F))
+    (r : ℕ) (hr : r ≤ 2) :
+    (moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD
+      n hn hunit hinv F r hr).IsPerfPair := by
+  let : NeZero n := ⟨Nat.ne_of_gt hn⟩
+  let (q : ℕ) : Finite (Ext.{wX} (moduleUnit X.left (ULift.{u + 1} (ZMod n)))
+      ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).obj F) q) :=
+    moduleCompactExt_finite_of_finiteLocallyConstant X hX D hfin hclosed j hD
+      n hn hunit F hF q
+  interval_cases r
+  · have h := moduleDualityTransposeMap_open_two_bijective.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv F hF
+    rw [open_dualityTranspose_two_eq_flip.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv F] at h
+    exact (ZMod.isPerfPair_iff_flip_bijective n _).mpr h
+  · have h := moduleDualityTransposeMap_open_one_bijective.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv F hF
+    rw [open_dualityTranspose_one_eq_flip.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv F] at h
+    exact (ZMod.isPerfPair_iff_flip_bijective n _).mpr h
+  · have h := moduleDualityTransposeMap_open_zero_bijective.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv F hF
+    rw [open_dualityTranspose_zero_eq_flip.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv F] at h
+    exact (ZMod.isPerfPair_iff_flip_bijective n _).mpr h
+
+end OpenFinalPerfectness
+
+end AlgebraicGeometry.Scheme.EtaleCohomology

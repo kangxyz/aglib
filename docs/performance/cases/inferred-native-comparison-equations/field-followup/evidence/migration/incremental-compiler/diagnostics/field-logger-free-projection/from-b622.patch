@@ -1,0 +1,13 @@
+--- author-b622
++++ logger-free-projection
+@@ -392,8 +392,8 @@
+     (congrArg (fun g => ((galoisRestriction K n).onH1 : _ → _) ∘ g) hcoe)
+   refine evaluate_original_comparison (e := eH) h (comparison K n hA hR)
+     ((galoisRestriction K n).onH1) _ ?_ ?_
+-  · trace_state
+-    simpa only [comparison, eH] using hfactor
++  · simp only [comparison, eH] at hfactor ⊢
++    exact hfactor
+   · exact hclass
+ 
+ 

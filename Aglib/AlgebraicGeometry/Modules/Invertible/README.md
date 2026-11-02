@@ -2,6 +2,10 @@
 
 The owner is `AlgebraicGeometry.Scheme.Modules.Invertible`. [Basic](Basic.lean) defines `IsLocallyRankOne`, actual `LineBundle` objects and their `LineBundleClass` quotient by sheaf isomorphism on every scheme. Local bases are genuine singleton-indexed generators; no field, smoothness, properness or dimension hypothesis is needed.
 
+[IsomorphismSheaf/Inverse](IsomorphismSheaf/Inverse.lean) constructs the
+original isomorphism-sheaf inversion and composition laws. Inversion sends
+scalar postcomposition to inverse scalar action, with its native naturality.
+
 `tensorSheaf` is sheafification of the sectionwise module tensor. [Tensor](Tensor.lean) gives tensor line bundles, actual unit/braiding and local trivialization. [TensorAssociator](TensorAssociator.lean) gives the actual associator and class associativity. Generic [InternalHom](../InternalHom.lean) and lower restriction/sheafification comparisons precede the rank-one tier.
 
 [Dual](Dual.lean) constructs the actual dual and evaluation isomorphism. `PicardGroup X` is the ordinary additive group on the same line-bundle classes: tensor product is addition, the trivial line bundle is zero, and duality is negation. The laws use the actual unit/braiding/associator/evaluation maps.
@@ -154,3 +158,18 @@ local line comparison. [Bidual/Map](Bidual/Map.md) proves naturality of
 original evaluation and extends a supplied map into an actual line to the
 bidual. The one-pole differential consumer supplies that map and its
 rank-one target; canonical-module or trace compatibility is not assumed.
+
+[Ample](Ample/Basic.lean), [Tensor](Ample/Tensor.lean) and [Proper](Ample/Proper.lean)
+retain actual line bundles and their stated base, separation and properness
+hypotheses. [Nonvanishing/Tensor](Nonvanishing/Tensor.lean) supplies the
+original unit/frame and tensor-section comparison used by the ample-kernel proof.
+
+[Power](Ample/Power.lean) provides the positive-power ampleness converse for
+the original line bundle; [Nonzero](Nonvanishing/Nonzero.lean) supplies the
+original nonzero-section interface used by the ample criterion.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [Bidual/Affine](Bidual/Affine.lean)

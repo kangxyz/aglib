@@ -43,7 +43,7 @@ def fibreProductBaseChangeSectionNatTrans (q : ℕ) :
           (op ((siteBaseChange g).obj U)) :=
   Continuity.unitSectionComparison g U (higherDirectImage f q)
     (inverseImage g' ⋙ higherDirectImage f' q)
-    (@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
+    (@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
       hDX hDS hDX' hDS' f f' g g' h q)
 
 /-- The whole family has exactly the original raw unit and exchange components. -/
@@ -51,12 +51,12 @@ theorem fibreProductBaseChangeSectionNatTrans_app
     (q : ℕ) (F : AbelianSheaf.{u, u + 1} X) :
     (fibreProductBaseChangeSectionNatTrans f f' g g' h U q).app F =
       ((inverseImageAdjunction g).unit.app ((higherDirectImage f q).obj F)).hom.app (op U) ≫
-        ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
+        ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
           hDX hDS hDX' hDS' f f' g g' h q).app F).hom.app
           (op ((siteBaseChange g).obj U)) :=
   Continuity.unitSectionComparison_app g U (higherDirectImage f q)
     (inverseImage g' ⋙ higherDirectImage f' q)
-    (@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
+    (@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
       hDX hDS hDX' hDS' f f' g g' h q) F
 
 section ChartSquare
@@ -86,15 +86,15 @@ local notation "P" => higherDirectImage f q
 local notation "P'" => higherDirectImage f' q
 local notation "PU" => higherDirectImage fU q
 local notation "PV" => higherDirectImage fV q
-local notation "β" => (@higherBaseChangeMap X S X' S'
+local notation "β" => (@higherBaseChangeMapFromDerived X S X' S'
   hDX hDS hDX' hDS' f f' g g' h q)
-local notation "βU" => (@higherBaseChangeMap
+local notation "βU" => (@higherBaseChangeMapFromDerived
   X S (pullback U.hom f) U.left hDX hDS hDZU hDU
   f fU U.hom piU pullback.condition q)
-local notation "βV" => (@higherBaseChangeMap
+local notation "βV" => (@higherBaseChangeMapFromDerived
   X' S' (pullback (V).hom f') (V).left hDX' hDS' hDZV hDV
   f' fV (V).hom piV pullback.condition q)
-local notation "βR" => (@higherBaseChangeMap
+local notation "βR" => (@higherBaseChangeMapFromDerived
   (pullback U.hom f) U.left (pullback (V).hom f') (V).left hDZU hDU hDZV hDV
   fU fV b r hR q)
 local notation "δS" => (inverseImageSquareIso U.hom (V).hom g b pullback.condition.symm).inv
@@ -121,7 +121,8 @@ theorem higherBaseChangeMap_sectionChart_commSq :
     (TwoSquare.mk (inverseImage U.hom) (inverseImage g) (inverseImage b)
       (inverseImage (V).hom) δS)
     (TwoSquare.mk (inverseImage piU) (inverseImage g') (inverseImage r) (inverseImage piV) δX)
-    (@higherBaseChangeMap_chartRelative_square_whole.{u, dX, dS, dX', dS', dZU, dU, dZV, dV}
+    (@higherBaseChangeMapFromDerived_chartRelative_square_whole.{u,
+      dX, dS, dX', dS', dZU, dU, dZV, dV}
       X S X' S' (pullback U.hom f) U.left (pullback (V).hom f') (V).left
       hDX hDS hDX' hDS' hDZU hDU hDZV hDV f f' g g' h fU fV U.hom (V).hom
       piU piV b r pullback.condition pullback.condition pullback.condition.symm hr hR q)
@@ -147,7 +148,8 @@ theorem higherBaseChangeMap_sectionChart_square_app (F : AbelianSheaf.{u, u + 1}
       (inverseImage (V).hom) δS)
     (TwoSquare.mk (inverseImage piU) (inverseImage g') (inverseImage r) (inverseImage piV) δX)
     (Continuity.unitSectionNatTrans_baseChangeChart_pasting g U)
-    (@higherBaseChangeMap_chartRelative_square_whole.{u, dX, dS, dX', dS', dZU, dU, dZV, dV}
+    (@higherBaseChangeMapFromDerived_chartRelative_square_whole.{u,
+      dX, dS, dX', dS', dZU, dU, dZV, dV}
       X S X' S' (pullback U.hom f) U.left (pullback (V).hom f') (V).left
       hDX hDS hDX' hDS' hDZU hDU hDZV hDV f f' g g' h fU fV U.hom (V).hom
       piU piV b r pullback.condition pullback.condition pullback.condition.symm hr hR q) F

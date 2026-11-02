@@ -1,5 +1,9 @@
 # Picard scheme development plan
 
+The [Jacobian and curve-duality programme](JACOBIAN_PLAN.md) develops the curve
+applications through complete general constructions and thin native instances,
+retaining this plan's representability boundary.
+
 This plan targets the relative Picard functor, the descent theory it needs,
 representability of the fppf Picard functor by a scheme, and its basic
 properties. It follows Grothendieck's theorem in Kleiman's exposition: projective
@@ -933,6 +937,15 @@ descent of F6 are also on Aglib `main` (9819d40, d4202b1, 8fc143f).
     every separated representing `P` locally of finite type, `Pic⁰_{X/k}` is the image of `X^g` and
     the degree-zero stratum, is proper, and its rational points are the degree-zero classes as a
     group. Review `review-a` (2026-10-30): no mathematical gap; its repairs are applied.
+  - Multiplication by `n` on the Jacobian (2026-10-30, `Curves/Jacobian/Multiplication`, with the
+    general leaves `Group/MultiplicationSurjective`, `Morphisms/Finite/ClosedPointFibres` and
+    `Dimension/QuasiFiniteSurjective`; Stacks, Tags 03RP (3)–(4) and 0BFG, used in the proof of
+    Tag 03RQ): over an algebraically closed field, for every separated representing `P` locally of
+    finite type and `n` invertible in `k`, `[n]` on `Pic⁰_{X/k}` is finite and surjective and
+    `Pic⁰(X) = ker deg` is `n`-divisible. The finiteness of `Pic(X)[n]` (`finite_picard_torsion`,
+    from étale cohomology) replaces the ample line bundle of Tag 0BFG, and the finite local
+    dimension at the unit replaces the dimension of the image; smoothness and `dim = g` are not
+    used. Review `review-a4` (2026-10-30): no mathematical gap; its repairs are applied.
 - **Next.**
   - Paused after target 6 (2026-10-25). M6 exit criterion, the R5Lab retargeting ("Consumers and
     migration"): weaken `DegreeZeroPicardRepresentability` to locally Noetherian test schemes and

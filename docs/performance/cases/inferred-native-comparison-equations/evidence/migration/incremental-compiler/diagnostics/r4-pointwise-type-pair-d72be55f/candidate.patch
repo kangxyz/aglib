@@ -1,0 +1,298 @@
+--- frozen4ea/ProperBaseChange.lean
++++ candidate/ProperBaseChange.lean
+@@ -11,45 +11,21 @@
+ public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Conservative
+ 
+ /-!
+-# Proper base change for the original bounded-below module exchange
+-
+-The original abelian proper exchange on internally torsion homology, the exact
+-torsion comparison for scalar forgetting, and the original mate-cube equation
+-imply invertibility of the same module-derived exchange component. The four
+-module-derived categories remain independently supplied. Each auxiliary abelian
+-derived category is selected once inside the proof by its standard realization.
+-The coefficient ring is arbitrary, and no common annihilator is required.
++# Raw pointwise type pair
++
++The expected formation binder is copied from PointwiseCube b720, replacing only
++sq.w.symm by h. The diagnostic inspects producer type inference, not its proof.
++Raw syntax is retained before optional syntactic comparison. No definitional
++equality test, native functor/exchange unfolding, or semantic option change.
+ -/
+ 
+-@[expose] public noncomputable section
++@[expose] public section
+ 
+ open CategoryTheory CategoryTheory.Limits
+ 
+-namespace AlgebraicGeometry.Scheme.EtaleCohomology.Proper
++namespace AlgebraicGeometry.Scheme.EtaleCohomology.PointwiseTypePair
+ 
+ open Coefficients
+-
+-private theorem isIso_app_of_mateCube
+-    {A B C D A' B' C' D' : Type*}
+-    [Category* A] [Category* B] [Category* C] [Category* D]
+-    [Category* A'] [Category* B'] [Category* C'] [Category* D']
+-    {R₁ : B ⥤ A} {R₂ : D ⥤ C} {R₁' : B' ⥤ A'} {R₂' : D' ⥤ C'}
+-    {G : A ⥤ C} {H : B ⥤ D} {G' : A' ⥤ C'} {H' : B' ⥤ D'}
+-    {QA : A ⥤ A'} {QB : B ⥤ B'} {QC : C ⥤ C'} {QD : D ⥤ D'}
+-    {b₁ : R₁ ⋙ QA ⟶ QB ⋙ R₁'} {b₂ : R₂ ⋙ QC ⟶ QD ⋙ R₂'}
+-    {μ : R₁ ⋙ G ⟶ H ⋙ R₂} {μ' : R₁' ⋙ G' ⟶ H' ⋙ R₂'}
+-    {γ : QA ⋙ G' ⟶ G ⋙ QC} {δ : QB ⋙ H' ⟶ H ⋙ QD}
+-    (h : HorizontalMateCubeEquation b₁ b₂ μ μ' γ δ) (K : B)
+-    [IsIso b₁] [IsIso b₂] [IsIso γ] [IsIso δ]
+-    [IsIso (μ'.app (QB.obj K))] [QC.ReflectsIsomorphisms] : IsIso (μ.app K) := by
+-  have ht : IsIso (γ.app (R₁.obj K) ≫ QC.map (μ.app K) ≫ b₂.app (H.obj K)) := by
+-    rw [← h K]
+-    infer_instance
+-  have hr : IsIso (QC.map (μ.app K) ≫ b₂.app (H.obj K)) :=
+-    (isIso_comp_left_iff (γ.app (R₁.obj K)) _).mp ht
+-  have : IsIso (QC.map (μ.app K)) :=
+-    (isIso_comp_right_iff _ (b₂.app (H.obj K))).mp hr
+-  exact isIso_of_reflects_iso (μ.app K) QC
+ 
+ universe u wMX wMS wMX' wMS' wAX wAS wAX' wAS'
+ 
+@@ -60,39 +36,205 @@
+   [HasDerivedCategory.{wMS} (ModuleSheaf S Λ)]
+   [HasDerivedCategory.{wMX'} (ModuleSheaf X' Λ)]
+   [HasDerivedCategory.{wMS'} (ModuleSheaf S' Λ)]
+-  (f : X ⟶ S) [IsProper f] (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
+-  (sq : IsPullback g' f' f g)
+-
+-private theorem moduleExchange_isIso_of_torsion_homology
+-    [HasDerivedCategory.{wAX} (AbelianSheaf.{u, u + 1} X)]
+-    [HasDerivedCategory.{wAS} (AbelianSheaf.{u, u + 1} S)]
+-    [HasDerivedCategory.{wAX'} (AbelianSheaf.{u, u + 1} X')]
+-    [HasDerivedCategory.{wAS'} (AbelianSheaf.{u, u + 1} S')]
+-    (K : DerivedCategory.Plus (ModuleSheaf X Λ))
+-    (hK : moduleTorsionCohomologyPlus X Λ K) :
+-    IsIso ((moduleDerivedBaseChangeMap Λ f f' g g' sq.w.symm).app K) := by
+-  let : (moduleDerivedUnderlying Λ S').ReflectsIsomorphisms :=
+-    Functor.rightDerivedFunctorPlus_reflectsIsomorphisms
+-      (SheafOfModules.toSheaf (constantRing S' Λ))
+-  let : IsIso ((derivedBaseChangeMap f f' g g' sq.w.symm).app
+-      ((moduleDerivedUnderlying Λ X).obj K)) :=
+-    properDerivedBaseChange_isIso_of_torsion_homology f f' g g' sq
+-      ((moduleDerivedUnderlying Λ X).obj K)
+-      ((moduleTorsionCohomologyPlus_iff_underlying X Λ K).mp hK)
+-  exact isIso_app_of_mateCube
+-    (moduleDerivedBaseChangeMap_underlying Λ f f' g g' sq.w.symm) K
+-
+-/-- Proper base change makes the original module-derived exchange component
+-invertible on the actual bounded-below torsion-cohomology range. The proof-only
+-abelian derived realizations impose no additional choice on the statement. -/
+-theorem properModuleDerivedBaseChange_isIso_of_torsion_homology
+-    (K : DerivedCategory.Plus (ModuleSheaf X Λ))
+-    (hK : moduleTorsionCohomologyPlus X Λ K) :
+-    IsIso ((moduleDerivedBaseChangeMap Λ f f' g g' sq.w.symm).app K) := by
+-  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X)
+-  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S)
+-  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X')
+-  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S')
+-  exact moduleExchange_isIso_of_torsion_homology Λ f f' g g' sq K hK
+-
+-end AlgebraicGeometry.Scheme.EtaleCohomology.Proper
++  [HasDerivedCategory.{wAX} (AbelianSheaf.{u, u + 1} X)]
++  [HasDerivedCategory.{wAS} (AbelianSheaf.{u, u + 1} S)]
++  [HasDerivedCategory.{wAX'} (AbelianSheaf.{u, u + 1} X')]
++  [HasDerivedCategory.{wAS'} (AbelianSheaf.{u, u + 1} S')]
++  (f : X ⟶ S) (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
++  (h : f' ≫ g = g' ≫ f)
++
++/-- Formation of the expected literal proposition; no pointwise proof is asserted. -/
++theorem expectedFormation (K : DerivedCategory.Plus (ModuleSheaf X Λ))
++    (_h :
++    (derivedInverseImage g).map ((moduleDerivedDirectImageUnderlyingIso Λ f).hom.app K) ≫
++      ((derivedBaseChangeMap f f' g g' h).app
++        ((moduleDerivedUnderlying Λ X).obj K)) ≫
++      (derivedDirectImage f').map ((moduleDerivedInverseImageUnderlyingIso Λ g').inv.app K) =
++    (moduleDerivedInverseImageUnderlyingIso Λ g).inv.app
++        ((moduleDerivedDirectImage Λ f).obj K) ≫
++      (moduleDerivedUnderlying Λ S').map
++        ((moduleDerivedBaseChangeMap Λ f f' g g' h).app K) ≫
++      (moduleDerivedDirectImageUnderlyingIso Λ f').hom.app
++        ((moduleDerivedInverseImage Λ g').obj K)) : True := True.intro
++
++end AlgebraicGeometry.Scheme.EtaleCohomology.PointwiseTypePair
++
++open Lean Meta
++
++namespace PointwiseTypePairDiagnostic
++
++def emit (s : String) : MetaM Unit := do IO.println s
++
++def kind : Expr → String
++  | .bvar _ => "bvar" | .fvar _ => "fvar" | .mvar _ => "mvar"
++  | .sort _ => "sort" | .const _ _ => "const" | .app _ _ => "app"
++  | .lam _ _ _ _ => "lambda" | .forallE _ _ _ _ => "forall"
++  | .letE _ _ _ _ _ => "let" | .lit _ => "literal"
++  | .mdata _ _ => "metadata" | .proj _ _ _ => "projection"
++
++partial def head (e : Expr) : MetaM String := do
++  match e with
++  | .app f _ => head f
++  | .const n us => pure s!"const {n} universes={reprStr us}"
++  | .fvar _ => pure s!"fvar {(← getFVarLocalDecl e).userName}"
++  | .bvar i => pure s!"bvar {i}"
++  | .mvar id => pure s!"mvar {id.name}"
++  | .sort u => pure s!"sort {reprStr u}"
++  | .proj n i b => pure s!"projection {n}.{i} base=({← head b})"
++  | .lam n _ b _ => pure s!"lambda {n} body=({← head b})"
++  | .forallE n _ b _ => pure s!"forall {n} body=({← head b})"
++  | .letE n _ _ b _ => pure s!"let {n} body=({← head b})"
++  | .mdata _ b => pure s!"metadata ({← head b})"
++  | .lit l => pure s!"literal {reprStr l}"
++
++partial def bounded (e : Expr) (depth : Nat) : MetaM String := do
++  if depth == 0 then return ← head e
++  if e.isApp then
++    let args := e.getAppArgs
++    let mut entries : Array String := #[]
++    for i in [:min args.size 8] do
++      entries := entries.push s!"{i}:({← bounded args[i]! (depth - 1)})"
++    return s!"({← head e}) argc={args.size} [{String.intercalate "; " entries.toList}]"
++  else return ← head e
++
++structure DumpState where
++  cache : Std.HashMap ExprStructEq Nat := {}
++  rows : Array String := #[]
++
++partial def intern (e : Expr) : StateT DumpState MetaM Nat := do
++  if let some i := (← get).cache[ExprStructEq.mk e]? then return i
++  let payload ← match e with
++    | .app f a => pure s!"app fn={← intern f} arg={← intern a}"
++    | .lam n t b bi =>
++      pure s!"lambda name={reprStr n} info={reprStr bi} type={← intern t} body={← intern b}"
++    | .forallE n t b bi =>
++      pure s!"forall name={reprStr n} info={reprStr bi} type={← intern t} body={← intern b}"
++    | .letE n t v b nondep =>
++      pure s!"let name={reprStr n} nondep={nondep} type={← intern t} \
++        value={← intern v} body={← intern b}"
++    | .mdata md b => pure s!"metadata data={reprStr md} body={← intern b}"
++    | .proj n i b => pure s!"projection name={reprStr n} index={i} body={← intern b}"
++    | .fvar id =>
++      let d ← getFVarLocalDecl e
++      pure s!"fvar id={reprStr id.name} name={reprStr d.userName}"
++    | .mvar id => pure s!"mvar id={reprStr id.name}"
++    | .bvar i => pure s!"bvar index={i}"
++    | .const n us => pure s!"const name={reprStr n} levels={reprStr us}"
++    | .sort l => pure s!"sort level={reprStr l}"
++    | .lit l => pure s!"literal value={reprStr l}"
++  let i := (← get).rows.size
++  modify fun s => {
++    cache := s.cache.insert (ExprStructEq.mk e) i
++    rows := s.rows.push s!"RAW_NODE {i} {payload}"
++  }
++  return i
++
++def dump (label : String) (e : Expr) : MetaM Unit := do
++  let (root, state) ← (intern e).run {}
++  emit s!"RAW_{label}_BEGIN"
++  for row in state.rows do emit row
++  emit s!"RAW_{label}_ROOT {root} nodes={state.rows.size}"
++  emit s!"RAW_{label}_END"
++
++def findLocal (locals : Array (Name × Expr)) (n : Name) (bi : BinderInfo)
++    (t : Expr) : MetaM Expr := do
++  if bi == .instImplicit then
++    for (_, x) in locals do
++      if (← getFVarLocalDecl x).type == t then return x
++    throwError "No raw-type-matching original local instance for {n}"
++  for (name, x) in locals do
++    if name == n then return x
++  throwError "No original producer local named {n}"
++
++partial def alignExpected (locals : Array (Name × Expr)) (t : Expr) : MetaM Expr := do
++  match t with
++  | .forallE n d b bi =>
++    if n == `_h then return d
++    let x ← findLocal locals n bi d
++    emit s!"EXPECTED_BINDER {n} mapsTo=({← head x}) typeHead=({← head d})"
++    alignExpected locals (b.instantiate1 x)
++  | _ =>
++    dump "EXPECTED_UNALIGNED_TYPE" t
++    throwError "Expected formation declaration has no final _h binder"
++
++structure Difference where
++  path : String
++  reason : String
++  actual : Expr
++  expected : Expr
++
++partial def firstDifference (a b : Expr) (path : String) (fuel : Nat) : Option Difference :=
++  if a.equal b then none else
++  if fuel == 0 then some ⟨path, "bounded-depth", a, b⟩ else
++  match a, b with
++  | .app _ _, .app _ _ => Id.run do
++    if let some d := firstDifference a.getAppFn b.getAppFn (path ++ ".head") (fuel - 1) then
++      return some d
++    let aa := a.getAppArgs
++    let bb := b.getAppArgs
++    for i in [:min aa.size bb.size] do
++      if let some d := firstDifference aa[i]! bb[i]! s!"{path}.arg[{i}]" (fuel - 1) then
++        return some d
++    return some ⟨path, s!"application-arity actual={aa.size} expected={bb.size}", a, b⟩
++  | .lam na ta ba bia, .lam nb tb bb bib
++  | .forallE na ta ba bia, .forallE nb tb bb bib =>
++    if na != nb || bia != bib then some ⟨path, "binder-name-or-info", a, b⟩
++    else (firstDifference ta tb (path ++ ".domain") (fuel - 1)).orElse fun _ =>
++      firstDifference ba bb (path ++ ".body") (fuel - 1)
++  | .proj na ia ea, .proj nb ib eb =>
++    if na != nb || ia != ib then some ⟨path, "projection-name-or-index", a, b⟩
++    else firstDifference ea eb (path ++ ".projectionBody") (fuel - 1)
++  | .mdata ma ea, .mdata mb eb =>
++    if ma != mb then some ⟨path, "metadata-payload", a, b⟩
++    else firstDifference ea eb (path ++ ".metadataBody") (fuel - 1)
++  | .letE na ta va ba nda, .letE nb tb vb bb ndb =>
++    if na != nb || nda != ndb then some ⟨path, "let-name-or-nondep", a, b⟩
++    else (firstDifference ta tb (path ++ ".letType") (fuel - 1)).orElse fun _ =>
++      (firstDifference va vb (path ++ ".letValue") (fuel - 1)).orElse fun _ =>
++        firstDifference ba bb (path ++ ".letBody") (fuel - 1)
++  | _, _ => some ⟨path, "raw-constructor-or-payload", a, b⟩
++
++def reportPair (locals : Array (Name × Expr)) (cube : Expr) : MetaM Unit := do
++  unless locals.size == 19 do throwError "Expected nineteen producer locals"
++  unless cube.getAppFn.isConstOf `CategoryTheory.HorizontalMateCubeEquation do
++    throwError "Unexpected producer conclusion head"
++  let kType := cube.getAppArgs[1]!
++  withLocalDecl `K .default kType fun k => do
++    let ci ← getConstInfo
++      `AlgebraicGeometry.Scheme.EtaleCohomology.moduleDerivedBaseChangeMap_underlying
++    let term := mkApp (mkAppN (mkConst ci.name (ci.levelParams.map Level.param))
++      (locals.map Prod.snd)) k
++    emit s!"ACTUAL_INFER_START producerArgs={locals.size} KType=({← head kType})"
++    let actual ← inferType term
++    dump "ACTUAL" actual
++    emit s!"ACTUAL_RETAINED kind={kind actual} head=({← head actual})"
++    let expectedCi ← getConstInfo
++      `AlgebraicGeometry.Scheme.EtaleCohomology.PointwiseTypePair.expectedFormation
++    let expected ← alignExpected (locals.push (`K, k)) expectedCi.type
++    dump "EXPECTED" expected
++    emit s!"PAIR_RETAINED actualHasMVars={actual.hasMVar} expectedHasMVars={expected.hasMVar}"
++    emit s!"RAW_EQUALITY alpha={actual == expected} structural={actual.equal expected}"
++    if let some diff := firstDifference actual expected "root" 32 then
++      emit s!"FIRST_DIFF path={diff.path} reason={diff.reason}"
++      emit s!"DIFF_ACTUAL kind={kind diff.actual} {← bounded diff.actual 2}"
++      emit s!"DIFF_EXPECTED kind={kind diff.expected} {← bounded diff.expected 2}"
++      dump "DIFF_ACTUAL" diff.actual
++      dump "DIFF_EXPECTED" diff.expected
++    emit "COMPLETE raw pointwise type pair; no Meta defeq or theorem value inspected"
++
++partial def peel (e : Expr) (locals : Array (Name × Expr)) : MetaM Unit := do
++  match e with
++  | .forallE n t b bi =>
++    emit s!"ORIGINAL_BINDER {locals.size} {n} {reprStr bi} head=({← head t})"
++    withLocalDecl n bi t fun x => do
++      emit s!"ORIGINAL_LOCAL index={locals.size} id={reprStr x.fvarId!.name} name={n}"
++      peel (b.instantiate1 x) (locals.push (n, x))
++  | _ => reportPair locals e
++
++run_meta do
++  let ci ← getConstInfo
++    `AlgebraicGeometry.Scheme.EtaleCohomology.moduleDerivedBaseChangeMap_underlying
++  emit s!"PRODUCER_LEVELS {reprStr ci.levelParams}"
++  peel ci.type #[]
++
++end PointwiseTypePairDiagnostic

@@ -1,0 +1,7 @@
+{
+  "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestConeSections.lean",
+  "before_sha256": "04900e2bd39b91403a943d38a823b3e70e4d6c00047d4f1d2701218985a1a8f6",
+  "candidate_sha256": "26fc6aa1cfc76dd5825f137c3d466a68b6724bb13e70a9a8b5b42730d7cbdea4",
+  "fixed_proposed_ready_sha256": "3f0b0651f6d7baaedb3f05012395d981955d0a278ac8befd33aaa0bf952fe3dd",
+  "authorized_by": "Root directNEW_TASK on20261030, exactnecessaryW12scopeextension"
+}

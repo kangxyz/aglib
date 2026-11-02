@@ -1,0 +1,13 @@
+{
+  "run": "remote-7f2c797b1c3a44099f3d32519a98cc95",
+  "local_session": 84647,
+  "status": "direct_raw_native_phase_started; actualclosure/importcheck/Leanoutcome pending",
+  "expected_SOURCE": "755f892ddd60ca1b1a8910026d88645ce854cb096d8b0161a5d4752d9c7bf599",
+  "native_owner": "9f80c35b47e879a9a26fd0b60182abfa9af221473456a8d8b809a28e3138065a",
+  "diagnostic_source": "5af9fb6ca18e6bfcc0364f2d0d6e853c4ce76905d3549d6b5fc23e982ae2fdcb",
+  "runtime_owner": "/root/cohomology_cocone_author",
+  "no_collision": "DirectSSHpreflight old5d845runDir absent, no Dworkspace worker/compiler processes; workerSHA7b1d matches; source755 downloaded/no sync",
+  "compatibility_gate": "Actual native --no-build setup importArts checked BEFORE scratchLean; if changedRootSection providers are dependencies, failprecompile withinputfact, notPverdict. Native/directedAglibproviders/pins match old748.",
+  "argv": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-formation-execution/RAW-P34-755f-argv.json",
+  "purpose": "ONE same-originalP34 correctednormalKernelformation, notPproof/nativeCPP/replay/client/no productionoutput"
+}

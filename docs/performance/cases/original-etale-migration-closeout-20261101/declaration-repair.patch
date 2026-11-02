@@ -1,0 +1,44 @@
+--- a/Aglib/AlgebraicGeometry/EtaleCohomology/H1/CoefficientRepresentation.lean
++++ b/Aglib/AlgebraicGeometry/EtaleCohomology/H1/CoefficientRepresentation.lean
+@@ -236,10 +236,11 @@
+     (Y := _root_.AlgebraicGeometry.Scheme.FiniteEtale.mk H.X.hom)
+     (Z := _root_.AlgebraicGeometry.Scheme.FiniteEtale.mk K.X.hom) q.hom.hom
+ 
+-/-- Full faithfulness on actual finite commutative étale group schemes. -/
++/-- Recover group maps from a finite commutative étale source into a represented
++commutative target. -/
+ def representedSheafHomEquiv (H K : Grp (Over X))
+     [IsCommMonObj H.X] [IsCommMonObj K.X]
+-    [IsFinite H.X.hom] [Etale H.X.hom] [IsFinite K.X.hom] [Etale K.X.hom] :
++    [IsFinite H.X.hom] [Etale H.X.hom] :
+     (H ⟶ K) ≃ (representedSheaf H ⟶ representedSheaf K) := by
+   let T := Scheme.Etale.forget X
+   let HC := _root_.AlgebraicGeometry.Scheme.FiniteEtale.mk H.X.hom
+@@ -253,6 +254,7 @@
+     (Scheme.smallEtaleTopology X) H K ((toEtale X).obj HC) (Iso.refl _)
+     (etaleTerminal X) U₂ κ₀ κ₂ (representedSheaf H).property (representedSheaf K).property
+ 
++omit [IsFinite K.X.hom] [Etale K.X.hom] in
+ /-- The whole lower Hom equivalence retains the original postcomposition map. -/
+ @[simp] theorem representedSheafHomEquiv_apply (q : H ⟶ K) :
+     representedSheafHomEquiv H K q = representedSheafMap q := rfl
+--- a/Aglib/CategoryTheory/Sites/Torsors/AffineDisplacement.lean
++++ b/Aglib/CategoryTheory/Sites/Torsors/AffineDisplacement.lean
+@@ -43,7 +43,7 @@
+ @[simp] theorem coordinates_symm_apply (t : P) (a : A) :
+     (coordinates h t).symm a = a +ᵥ t := rfl
+ 
+-@[simp] theorem coordinates_self (t : P) : coordinates h t t = 0 := difference_self h t
++theorem coordinates_self (t : P) : coordinates h t t = 0 := difference_self h t
+ 
+ /-- Actual translation adds its coefficient in the original coordinates. -/
+ theorem coordinates_vadd (t x : P) (a : A) :
+@@ -187,7 +187,7 @@
+   (coordinates h t).trans (coordinates k u).symm
+ 
+ omit [TopologicalSpace A] [IsTopologicalAddGroup A] in
+-@[simp] theorem basedEquiv_coordinate (t : P) (u : Q) (x : P) :
++theorem basedEquiv_coordinate (t : P) (u : Q) (x : P) :
+     coordinates k u (basedEquiv h k t u x) = coordinates h t x :=
+   (coordinates k u).apply_symm_apply _
+ 

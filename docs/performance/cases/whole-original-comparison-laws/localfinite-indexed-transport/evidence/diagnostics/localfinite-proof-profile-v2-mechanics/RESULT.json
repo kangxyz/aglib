@@ -1,0 +1,28 @@
+{
+  "run": "remote-d5e3b3b4f2ac40b587d51510e0f14d90",
+  "source": "a5e1d20d99830a0d4c1d3139e0a204de7e2b35f5491427e88d544647aa1b1f6f",
+  "group_closed": true,
+  "exit": 1,
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-proof-profile-v2-mechanics/raw-d5e3b3b4/receipt.json",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-proof-profile-v2-mechanics/raw-d5e3b3b4/compiler-events.jsonl",
+  "full_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-proof-profile-v2-mechanics/raw-d5e3b3b4/build.log",
+  "full_log_sha256": "9a829549abad242e398b39085e6beb5ab750e62e916a0e3bbf0057402041056c",
+  "full_log_bytes": 90790252,
+  "actual_named_kernel": {
+    "original_wholeFamily": {
+      "verdict": "pass",
+      "seconds": 15.477305
+    },
+    "standalone_sourceSecond_ht": {
+      "verdict": "kernel_timeout",
+      "seconds": 131.121053
+    },
+    "original_full_proof": {
+      "verdict": "kernel_timeout",
+      "seconds": 146.337639
+    }
+  },
+  "limited_observations": "Othercomponentelabcompleted/noerror; no separateunderthresholdKerneltimingclaimed. Expected-vs-inferredsummaryrawexpectedmdatawrapper preventsactualargumentpairidentification; syntacticfalse notmismatchproof. FinalprivateModulelintcascadebecauseonlypublicprooffailed.",
+  "scope": "Diagnosticmodeonly, notproductionCPP/Pproof/speedup/uniquecause. Actionableboundedtransport-compositionpilot justifiedby standalonehtfailure.",
+  "no_source_or_budget_change": true
+}

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductPresheaf
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductRestriction
 
 /-! # Original unresized fibre-product cohomology diagrams -/
 

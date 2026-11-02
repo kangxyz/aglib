@@ -1,0 +1,17 @@
+{
+  "operation": "pending-D-consolidated-header-family-retry",
+  "lane": "D",
+  "source_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoBeforeExchange.lean": "7f04922e41a56cdb73d2033c8b0ad2dc3336f532e3af0e84ed7959ed3c4e6e07",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/SourceIsoMapPasting.lean": "941fb4d199f2792865ed0f0ccc849213fe152bf7647d38d2a0042b96b9b1fbb3"
+  },
+  "roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.SourceIsoBeforeExchange",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.SourceIsoMapPasting",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CartesianBaseChangeIdentity",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.CartesianBaseChangeIteration"
+  ],
+  "source_author_packet": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/completed-d-cartesian-coherence-20261101/header-repair-v7/REPAIR.json",
+  "prior_actual": "D66d129PASS+10e29sixPASS; coreEquation0fb/publicExchangea5/StalkExchange+boundedbelowgreen",
+  "boundary": "Authorinspectedexact164headerfamilyONCE, only2additionalidenticalduplicatelinesremoved; all5currentfixes/proofbodies/importSET/models/premises/optionssame. Onlynew2leaves+2unboundedconsumers; no previous3leaf/core/boundedrepeat/newcheck/probe/Git."
+}

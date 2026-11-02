@@ -37,6 +37,14 @@ Keep matching caches and compatible successes. Missing artifacts or receipts do
 not request whole-library rebuilding. Diagnose cache/source/pin mismatches before
 building the genuinely required missing closure.
 
+Keep stable constructors and independent expensive native proofs in separate
+focused modules. Compile ready dependency branches concurrently and retain
+matching producer artifacts when a consumer changes. When feedback on a slow
+declaration is insufficient, isolate its statement formation, proof elaboration
+and kernel checking using [targeted diagnosis](PERFORMANCE.md#diagnosis-and-evidence).
+The next repair and compile should address that specific boundary while
+preserving compatible successes and the original mathematical data.
+
 ## Local verification and CI
 
 The local entry uses the same native mechanisms as the public workflow:

@@ -1,0 +1,11 @@
+{
+  "question": "Use the ALREADY published native comparisonEquiv_apply equation at its inferred actual arguments, avoiding reconstruction of comparison as a composition of bundled additive homs. The same inferred native representative law, restriction congrArg and classOf law then compute comparisonEquiv through its original Equiv.trans and original restriction-equivalence forward map. Check the literal old native theorem at unchanged original maps, carriers, actions and universes; this is not an arbitrary endpoint Iso.",
+  "native_file": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean",
+  "native_sha256": "616b87a1041f6eed9b19b5d5ecd0bc50c3df4acf636496f42b7c4800883c35ce",
+  "diagnostic": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/repair-v5/diagnostics/FieldPublishedComparison.lean",
+  "diagnostic_sha256": "1e15238a82628a3b8ff6ab3de1ca66c2a15c8d96a08e3e2108dfbf051a94c25a",
+  "parent_direction": "Root instructed trying the already public rfl native comparisonEquiv_apply producer before rebuilding heavy expected terms; a shared original constructor is only a later possibility if needed.",
+  "change": "Only final proof block changed relative to actual616b. No private generic helper, no generic library source mutation, no changed public statement/definition or original Kummer map. Exact native hvalue is inferred; all equations are supplied from existing proved declarations. No options, resources, recursion/budgets, premises, models, or reference transports.",
+  "runtime": "One faithful isolated candidate frontend with actual native setup and current valid import/cache basis. This is distinct from C queued data observation e85d/f6f638, so coordinate sole ownership of this proof candidate; no duplicate 900de/b622/616 production. Preserve full actual source/run/output identity.",
+  "adoption_boundary": "Only actual closure of the literal old theorem under its unchanged hypotheses; generic SquareTransport926601 remains unchanged unless still mathematically needed. No C56/root/global closure inferred from a scoped diagnostic."
+}

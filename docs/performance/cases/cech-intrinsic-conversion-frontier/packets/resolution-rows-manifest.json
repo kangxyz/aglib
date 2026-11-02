@@ -1,0 +1,20 @@
+{
+  "basis_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "phase": "topological-resolution-rows",
+  "files": [
+    {
+      "path": "Aglib/Topology/Sheaves/Cech/Resolution.lean",
+      "sha256": "d48f780b8afcd70989aa1d2c5cc24a8ac237c4b0374c543c4d403f6a061cff67"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Affine/SheafCohomology.lean",
+      "sha256": "32af5984bf3082f4533f155aef53f714c1a9f4038a7dd3b0074c1f8697cc2925"
+    }
+  ],
+  "targets": [
+    "Aglib.Topology.Sheaves.Cech.Resolution",
+    "Aglib.AlgebraicGeometry.Cohomology.Affine.SheafCohomology"
+  ],
+  "depends_on": "section-cycles-manifest.json revision 4",
+  "revision": 3
+}

@@ -25,7 +25,7 @@ open GroupCohomology.Kummer.Coefficients
 
 namespace AlgebraicGeometry.Scheme.EtaleCohomology.Curves
 
-universe u w w' dS dX dA
+universe u w w'
 
 private theorem nsmul_bijective_of_addEquiv {A B : Type*}
     [AddCommGroup A] [AddCommGroup B] (e : A ≃+ B) (n : ℕ)
@@ -40,9 +40,6 @@ private theorem nsmul_bijective_of_addEquiv {A B : Type*}
 variable (X : Scheme.{u}) [IsNoetherian X]
   [HasExt.{w} (AbelianSheaf.{u, u + 1} (genericArtinLocus X))]
   [HasExt.{w'} (AbelianSheaf.{u, u + 1} X)]
-  [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} (genericArtinLocus X))]
-  [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
-  [HasDerivedCategory.{dA} AddCommGrpCat.{u + 1}]
   (n : ℕ)
   (hk : ∀ k : ℕ, 1 ≤ k → Subsingleton (Sheaf.H.{w'} (kernel (genericArtinUnit X)) k))
   (hc : ∀ k : ℕ, 1 ≤ k → Subsingleton (Sheaf.H.{w'} (cokernel (genericArtinUnit X)) k))

@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.Basic
-public import Mathlib.CategoryTheory.Sites.LocallyBijective
+public import Aglib.CategoryTheory.Sites.LocallyBijective
 public import Mathlib.AlgebraicGeometry.ResidueField
 
 /-! # Sheafification detects original maps on affine etale tests
@@ -31,39 +31,34 @@ namespace AlgebraicGeometry.Scheme.Etale
 variable (X : Scheme.{u})
   {P Q : X.Etaleᵒᵖ ⥤ AddCommGrpCat.{u + 1}} (a : P ⟶ Q)
 
+/-- The arrows from affine etale tests generate a covering sieve. -/
+private theorem affineTestSieve_mem (U : X.Etale) :
+    Sieve.generate (fun {V : X.Etale} (_ : V ⟶ U) => IsAffine V.left) ∈
+      X.smallEtaleTopology U := by
+  change _ ∈ X.smallGrothendieckTopology (@Etale : MorphismProperty Scheme.{u}) U
+  rw [Scheme.smallGrothendieckTopology_eq_toGrothendieck_smallPretopology _ le_rfl,
+    Scheme.mem_toGrothendieck_smallPretopology]
+  intro z
+  obtain ⟨R, f, hf, t, ht⟩ := Scheme.exists_Spec_apply_eq z
+  let : IsOpenImmersion f := hf
+  let V : X.Etale := Etale.mk (f ≫ U.hom)
+  let g : V ⟶ U := MorphismProperty.Over.homMk f rfl
+  refine ⟨V, g, t, ?_, inferInstanceAs (Etale f), ht⟩
+  exact Sieve.le_generate _ V g (inferInstanceAs (IsAffine (Spec R)))
+
 /-- Injectivity on affine tests implies local injectivity on the original site. -/
 theorem locallyInjective_of_affine
     (h : ∀ U : X.Etale, IsAffine U.left → Function.Injective (a.app (op U))) :
-    Presheaf.IsLocallyInjective X.smallEtaleTopology a where
-  equalizerSieve_mem {U} x y hxy := by
-    change _ ∈ X.smallGrothendieckTopology (@Etale : MorphismProperty Scheme.{u}) U.unop
-    rw [Scheme.smallGrothendieckTopology_eq_toGrothendieck_smallPretopology _ le_rfl,
-      Scheme.mem_toGrothendieck_smallPretopology]
-    intro z
-    obtain ⟨R, f, hf, t, ht⟩ := Scheme.exists_Spec_apply_eq z
-    let : IsOpenImmersion f := hf
-    let V : X.Etale := Etale.mk (f ≫ U.unop.hom)
-    let g : V ⟶ U.unop := MorphismProperty.Over.homMk f rfl
-    refine ⟨V, g, t, ?_, inferInstanceAs (Etale f), ht⟩
-    change P.map g.op x = P.map g.op y
-    apply h V (inferInstanceAs (IsAffine (Spec R)))
-    rw [NatTrans.naturality_apply, NatTrans.naturality_apply, hxy]
+    Presheaf.IsLocallyInjective X.smallEtaleTopology a :=
+  Presheaf.isLocallyInjective_of_injective_on_cover X.smallEtaleTopology a
+    (fun U => IsAffine U.left) (affineTestSieve_mem X) h
 
 /-- Surjectivity on affine tests implies local surjectivity on the original site. -/
 theorem locallySurjective_of_affine
     (h : ∀ U : X.Etale, IsAffine U.left → Function.Surjective (a.app (op U))) :
-    Presheaf.IsLocallySurjective X.smallEtaleTopology a where
-  imageSieve_mem {U} x := by
-    change _ ∈ X.smallGrothendieckTopology (@Etale : MorphismProperty Scheme.{u}) U
-    rw [Scheme.smallGrothendieckTopology_eq_toGrothendieck_smallPretopology _ le_rfl,
-      Scheme.mem_toGrothendieck_smallPretopology]
-    intro z
-    obtain ⟨R, f, hf, t, ht⟩ := Scheme.exists_Spec_apply_eq z
-    let : IsOpenImmersion f := hf
-    let V : X.Etale := Etale.mk (f ≫ U.hom)
-    let g : V ⟶ U := MorphismProperty.Over.homMk f rfl
-    refine ⟨V, g, t, ?_, inferInstanceAs (Etale f), ht⟩
-    exact h V (inferInstanceAs (IsAffine (Spec R))) (Q.map g.op x)
+    Presheaf.IsLocallySurjective X.smallEtaleTopology a :=
+  Presheaf.isLocallySurjective_of_surjective_on_cover X.smallEtaleTopology a
+    (fun U => IsAffine U.left) (affineTestSieve_mem X) h
 
 attribute [local instance] EtaleCohomology.hasSheafifyLarge
 

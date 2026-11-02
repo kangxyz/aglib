@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Sites.EtaleSigmaSections
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.EtaleSliceCohomology
-public import Aglib.CategoryTheory.Sites.SheafCohomology.Large.FiniteCoproduct
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Large.FiniteCoproductComparison
 
 /-!
 # Original root-cohomology on a finite scheme coproduct
@@ -27,6 +27,26 @@ namespace AlgebraicGeometry.Scheme.EtaleCohomology.Kummer
 
 universe u w w'
 
+/-- Assemble the complete represented-cohomology decomposition before supplying
+any concrete coproduct scheme. Source and component Ext worlds remain independent. -/
+def rootsFiniteChartEquiv {X : Scheme.{u}}
+    [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
+    {ι : Type u} [Fintype ι] (V : X.Etale) (U : ι → X.Etale)
+    [HasExt.{w} (AbelianSheaf.{u, u + 1} V.left)]
+    [∀ i, HasExt.{w'} (AbelianSheaf.{u, u + 1} (U i).left)]
+    (a : ∀ i, U i ⟶ V)
+    (hs : ∀ F : AbelianSheaf.{u, u + 1} X, Function.Bijective
+      (fun x : F.obj.obj (Opposite.op V) => fun i => F.obj.map (a i).op x))
+    (n q : ℕ) :
+    Sheaf.H.{w} (mu V.left n) q ≃+ ∀ i, Sheaf.H.{w'} (mu (U i).left n) q := by
+  let : ∀ W : X.Etale,
+      HasExt.{u + 2} (Sheaf (X.smallEtaleTopology.over W) AddCommGrpCat.{u + 1}) :=
+    fun W => HasExt.standard _
+  exact Sheaf.LargeCohomology.representedFiniteComparison.{u + 1, u, u + 1, w, u, w, w'}
+    X.smallEtaleTopology V a hs (mu X n) q
+    (rootsRepresentedCohomologyEquiv.{u, w, u + 2, w} V n q)
+    (fun i => rootsRepresentedCohomologyEquiv.{u, w, u + 2, w'} (U i) n q)
+
 variable {ι : Type u} [Finite ι] (Y : ι → Scheme.{u})
   [HasExt.{w} (AbelianSheaf.{u, u + 1} (∐ Y))]
   [∀ i, HasExt.{w'} (AbelianSheaf.{u, u + 1} (Y i))]
@@ -36,20 +56,14 @@ def rootsFiniteCoproductEquiv (n q : ℕ) :
     Sheaf.H.{w} (mu (∐ Y) n) q ≃+ ∀ i, Sheaf.H.{w'} (mu (Y i) n) q := by
   let : Fintype ι := Fintype.ofFinite ι
   let T : (∐ Y).Etale := Scheme.Etale.mk (𝟙 (∐ Y))
-  let : ∀ U : (∐ Y).Etale,
-      HasExt.{u + 2} (Sheaf ((∐ Y).smallEtaleTopology.over U) AddCommGrpCat.{u + 1}) :=
-    fun U => HasExt.standard _
   let : HasExt.{w} (AbelianSheaf.{u, u + 1} T.left) :=
     inferInstanceAs (HasExt.{w} (AbelianSheaf.{u, u + 1} (∐ Y)))
   let : ∀ i, HasExt.{w'} (AbelianSheaf.{u, u + 1} (Scheme.Etale.sigmaChart Y i).left) :=
     fun i => inferInstanceAs (HasExt.{w'} (AbelianSheaf.{u, u + 1} (Y i)))
-  let e₀ := (rootsRepresentedCohomologyEquiv.{u, w, u + 2, w} T n q).symm
-  let e₁ := Sheaf.LargeCohomology.finiteCoproductAddEquiv.{u + 1, u, u + 1, w, u}
-    (∐ Y).smallEtaleTopology T (Scheme.Etale.sigmaChartInclusion Y)
-    (Scheme.Etale.sigmaSections_bijective.{u, u + 1} Y) (mu (∐ Y) n) q
-  let e₂ := AddEquiv.piCongrRight fun i =>
-    rootsRepresentedCohomologyEquiv.{u, w, u + 2, w'} (Scheme.Etale.sigmaChart Y i) n q
-  exact e₀.trans (e₁.trans e₂)
+  let result := rootsFiniteChartEquiv.{u, w, w'} T (Scheme.Etale.sigmaChart Y)
+    (Scheme.Etale.sigmaChartInclusion Y) (Scheme.Etale.sigmaSections_bijective.{u, u + 1} Y)
+    n q
+  exact result
 
 /-- Componentwise original root-cohomology vanishing implies vanishing on the actual coproduct. -/
 theorem roots_subsingleton_of_finite_components (n q : ℕ)

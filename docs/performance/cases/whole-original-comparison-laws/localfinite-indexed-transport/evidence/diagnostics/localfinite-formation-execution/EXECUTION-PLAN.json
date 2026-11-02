@@ -1,0 +1,31 @@
+{
+  "run": "remote-7f2c797b1c3a44099f3d32519a98cc95",
+  "run_dir": "/root/autodl-tmp/lean-build/logs/remote-7f2c797b1c3a44099f3d32519a98cc95",
+  "expected_SOURCE": "755f892ddd60ca1b1a8910026d88645ce854cb096d8b0161a5d4752d9c7bf599",
+  "raw_argv": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-formation-execution/RAW-P34-755f-argv.json",
+  "raw_argv_sha256": "b87e251441dff6c07c04ba2ac00ee187171d440c1293cd797f4cddb760e9df21",
+  "source_sha256": "5af9fb6ca18e6bfcc0364f2d0d6e853c4ce76905d3549d6b5fc23e982ae2fdcb",
+  "actual_changed_files": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean",
+      "old_sha256": "e03cfe26fda95e308601af1d0e94e8492397640275a860d215af4e5d2e3d68e1",
+      "new_sha256": "72f3cf29f5074edace4ad239c05f3571488c92e4c8db6d665f943decfc11ab3c",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.SectionPullback"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Sites/Representable/SectionComparisonValues.lean",
+      "old_sha256": "8107dc2a090ac63aecad698a2c6724f63d352cfba01cfd5ad588b2108cee7f14",
+      "new_sha256": "4ba68c21bc0b2da297849ca121d5c0e122e60a2c2d6507a94b0b0c22ba0bf356",
+      "module": "Aglib.CategoryTheory.Sites.Representable.SectionComparisonValues"
+    }
+  ],
+  "direct_provider_compatibility": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/NoetherianComparison.lean": "1fb7e6de2eae0048b2be4bbb8521f52d35e5eacf640d48418144f467c6c575d0",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/ProjectiveLineTests.lean": "837a76146e11b6373bcadef48cbe5832f03e243b468ccc8e58d393354d632195",
+    "Aglib/CategoryTheory/Abelian/Ext/OriginalComparison.lean": "b4326fdbaf28b225738ddb9f5dedc254db39b3f641c440cab60b98c6f05a311e",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection.lean": "8856b0f8b5ba12512ef628a1d6fe4cfa2b0d7fcd041563cf3989bc316b7a74db"
+  },
+  "canonical_preflight": "Direct read-only SSH: old5d845runDir absent, no Dworkspace worker/compiler process; pinnedworkerSHA7b1d matches. ActualSOURCE755 downloaded, native9f80 unchanged. No highlevelphase or source sync.",
+  "compatibility_before_frontend": "Actual native --no-build setup imports checked inside raw source-guarded phase. If either changed RootSection module is in importArts, abort BEFORE scratchLean; source rebinding message emitted only after success.",
+  "purpose": "Exactly one corrected SAME P34 normal-kernel formation, not proofP or nativeclosure. Public diagnostic alpha-identical type, all4nativeopts/default200k/profile unchanged."
+}

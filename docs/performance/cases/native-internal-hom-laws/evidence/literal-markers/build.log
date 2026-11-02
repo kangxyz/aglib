@@ -1,0 +1,89 @@
+✖ [4238/4239] Building Aglib.AlgebraicGeometry.EtaleCohomology.Duality.InternalHomPairing (233s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-ae261e33e7c54c15b905a1e203d841f4/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean -o /root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.olean -i /root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.c --setup /root/autodl-tmp/lean-build/workspaces/managed-bc18299345d6-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.setup.json --json
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:303:2: W4.target.value.start
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:307:2: W4.target.value.before-family
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:320:2: W4.target.value.family-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:325:2: W4.target.value.before-original
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:327:2: W4.target.coefficient-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:329:2: W4.target.first-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:331:2: W4.target.second-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:334:2: W4.target.output-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:336:2: W4.target.actions-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:338:2: W4.target.values-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:340:2: W4.target.value.original-ready
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:303:2: Unused tactic linter: `trace "W4.target.value.start"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:307:2: Unused tactic linter: `trace "W4.target.value.before-family"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:320:2: Unused tactic linter: `trace "W4.target.value.family-ready"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:325:2: Unused tactic linter: `trace "W4.target.value.before-original"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:327:2: Unused tactic linter: `trace "W4.target.coefficient-ready"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:329:2: Unused tactic linter: `trace "W4.target.first-ready"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:331:2: Unused tactic linter: `trace "W4.target.second-ready"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:334:2: Unused tactic linter: `trace "W4.target.output-ready"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:336:2: Unused tactic linter: `trace "W4.target.actions-ready"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:338:2: Unused tactic linter: `trace "W4.target.values-ready"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:340:2: Unused tactic linter: `trace "W4.target.value.original-ready"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:357:2: W4.source.value.start
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:360:2: W4.source.value.before-family
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:366:2: W4.source.value.family-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:371:2: W4.source.value.before-original
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:373:2: W4.source.first-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:375:2: W4.source.second-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:378:2: W4.source.input-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:380:2: W4.source.actions-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:382:2: W4.source.values-ready
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:384:2: W4.source.value.original-ready
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:357:2: Unused tactic linter: `trace "W4.source.value.start"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:360:2: Unused tactic linter: `trace "W4.source.value.before-family"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:366:2: Unused tactic linter: `trace "W4.source.value.family-ready"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:371:2: Unused tactic linter: `trace "W4.source.value.before-original"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:373:2: Unused tactic linter: `trace "W4.source.first-ready"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:375:2: Unused tactic linter: `trace "W4.source.second-ready"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:378:2: Unused tactic linter: `trace "W4.source.input-ready"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:380:2: Unused tactic linter: `trace "W4.source.actions-ready"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:382:2: Unused tactic linter: `trace "W4.source.values-ready"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/InternalHomPairing.lean:384:2: Unused tactic linter: `trace "W4.source.value.original-ready"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Duality.InternalHomPairing
+error: build failed

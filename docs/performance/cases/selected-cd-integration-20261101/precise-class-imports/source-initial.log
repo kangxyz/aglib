@@ -1,0 +1,3 @@
+Implementation imports broad facade in Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Class/Open.lean: Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Class
+Implementation imports broad facade in Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/Insertion.lean: Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Class
+Implementation imports broad facade in Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenTopClass.lean: Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Class

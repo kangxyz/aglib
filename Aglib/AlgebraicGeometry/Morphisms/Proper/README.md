@@ -146,3 +146,9 @@ the scheme, with no finiteness, Noetherianity, flatness, or nonemptiness
 hypothesis. The [complete-local finite-etale application](../FiniteEtale/ProperCompleteLocal.md)
 uses this to make the good affine neighborhoods of its closed-fibre points
 a cover of the original proper scheme.
+
+[QuasiAffine](QuasiAffine.lean) gives original-map finiteness for a proper quasi-affine scheme over a Noetherian affine base.
+
+[ProductRigidity](ProductRigidity.lean) supplies whole product rigidity with
+its integral-product hypothesis; it does not assert rigidity over arbitrary
+connected nonreduced parameters.

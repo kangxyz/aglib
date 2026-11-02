@@ -1,0 +1,61 @@
+{
+  "basis": "current applied v3 exact7 manifest; header import routing only, not proof or compilation evidence",
+  "roots": [
+    {
+      "root": "Aglib.CategoryTheory.Sites.SheafCohomology.ConstantCyclic",
+      "aglib_header_module_count": 3,
+      "reaches_Class": false,
+      "reaches_geometric_ConstantFinite_Basic": false,
+      "reaches_ConstantRestriction": false,
+      "missing_headers": []
+    },
+    {
+      "root": "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CyclicCoefficientSequence",
+      "aglib_header_module_count": 6,
+      "reaches_Class": false,
+      "reaches_geometric_ConstantFinite_Basic": false,
+      "reaches_ConstantRestriction": false,
+      "missing_headers": []
+    },
+    {
+      "root": "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CyclicVanishing",
+      "aglib_header_module_count": 7,
+      "reaches_Class": false,
+      "reaches_geometric_ConstantFinite_Basic": false,
+      "reaches_ConstantRestriction": false,
+      "missing_headers": []
+    },
+    {
+      "root": "Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.ArtinSchreier",
+      "aglib_header_module_count": 624,
+      "reaches_Class": false,
+      "reaches_geometric_ConstantFinite_Basic": false,
+      "reaches_ConstantRestriction": false,
+      "missing_headers": []
+    },
+    {
+      "root": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Coefficient",
+      "aglib_header_module_count": 2,
+      "reaches_Class": false,
+      "reaches_geometric_ConstantFinite_Basic": false,
+      "reaches_ConstantRestriction": false,
+      "missing_headers": []
+    },
+    {
+      "root": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Basic",
+      "aglib_header_module_count": 104,
+      "reaches_Class": true,
+      "reaches_geometric_ConstantFinite_Basic": true,
+      "reaches_ConstantRestriction": false,
+      "missing_headers": []
+    },
+    {
+      "root": "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ConstantRestriction",
+      "aglib_header_module_count": 36,
+      "reaches_Class": false,
+      "reaches_geometric_ConstantFinite_Basic": false,
+      "reaches_ConstantRestriction": true,
+      "missing_headers": []
+    }
+  ]
+}

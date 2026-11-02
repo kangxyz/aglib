@@ -243,8 +243,22 @@ variable (mark : (Over.mk s ⟶ A.X) ≃* Multiplicative M)
 
 /-- Coordinates at actual fibre points produce the unique translation-equivariant
 fibre equivalence carrying the selected point to the selected point. -/
-def basedFiberEquiv (t : Fiber s Y) (u : Fiber s Z) : Fiber s Y ≃ Fiber s Z :=
-  (fibreBasis s A Y τ mark t).trans (fibreBasis s A Z σ mark u).symm
+def basedFiberEquiv (t : Fiber s Y) (u : Fiber s Z) : Fiber s Y ≃ Fiber s Z := by
+  let := τ.pointTranslation (Over.mk s) mark
+  let := σ.pointTranslation (Over.mk s) mark
+  exact GroupCohomology.ContinuousH1.AffineTorsors.basedEquiv
+    (τ.pointTranslation_unique (Over.mk s) mark) (σ.pointTranslation_unique (Over.mk s) mark) t u
+
+omit [GaloisCategory (Scheme.FiniteEtale X)]
+  [PreGaloisCategory.FiberFunctor (fiberToFinite s)] [IsFinite A.X.hom] [Etale A.X.hom] in
+/-- The shared affine constructor is the original pair of actual fibre-coordinate maps. -/
+theorem basedFiberEquiv_eq_original (t : Fiber s Y) (u : Fiber s Z) :
+    basedFiberEquiv s A τ σ mark t u =
+      (fibreBasis s A Y τ mark t).trans (fibreBasis s A Z σ mark u).symm := by
+  let := τ.pointTranslation (Over.mk s) mark
+  let := σ.pointTranslation (Over.mk s) mark
+  simp only [basedFiberEquiv, GroupCohomology.ContinuousH1.AffineTorsors.basedEquiv,
+    fibreCoordinates_eq]
 
 set_option linter.unusedSectionVars false in
 -- Preserve the original auto-included hypotheses and binder order.
@@ -253,15 +267,29 @@ set_option linter.unusedSectionVars false in
 @[simp, nolint simpNF unusedArguments]
 theorem basedFiberEquiv_coordinate (t : Fiber s Y) (u : Fiber s Z) (x : Fiber s Y) :
     fibreBasis s A Z σ mark u (basedFiberEquiv s A τ σ mark t u x) =
-      fibreBasis s A Y τ mark t x := (fibreBasis s A Z σ mark u).apply_symm_apply _
+      fibreBasis s A Y τ mark t x := by
+  let := τ.pointTranslation (Over.mk s) mark
+  let := σ.pointTranslation (Over.mk s) mark
+  simpa only [basedFiberEquiv, fibreCoordinates_eq] using
+    GroupCohomology.ContinuousH1.AffineTorsors.basedEquiv_coordinate
+      (τ.pointTranslation_unique (Over.mk s) mark)
+      (σ.pointTranslation_unique (Over.mk s) mark) t u x
 
+omit [GaloisCategory (Scheme.FiniteEtale X)]
+  [PreGaloisCategory.FiberFunctor (fiberToFinite s)] [IsFinite A.X.hom] [Etale A.X.hom] in
 theorem basedFiberEquiv_translation (t : Fiber s Y) (u : Fiber s Z)
     (a : Over.mk s ⟶ A.X) (x : Fiber s Y) :
     basedFiberEquiv s A τ σ mark t u (τ.act a x) =
       σ.act a (basedFiberEquiv s A τ σ mark t u x) := by
-  apply (fibreBasis s A Z σ mark u).injective
-  rw [basedFiberEquiv_coordinate, fibreBasis_action, fibreBasis_action,
-    basedFiberEquiv_coordinate]
+  let := τ.pointTranslation (Over.mk s) mark
+  let := σ.pointTranslation (Over.mk s) mark
+  have h := GroupCohomology.ContinuousH1.AffineTorsors.basedEquiv_vadd
+    (τ.pointTranslation_unique (Over.mk s) mark)
+    (σ.pointTranslation_unique (Over.mk s) mark) t u (mark a).toAdd x
+  change basedFiberEquiv s A τ σ mark t u
+    (τ.act (mark.symm (mark a)) x) =
+      σ.act (mark.symm (mark a)) (basedFiberEquiv s A τ σ mark t u x) at h
+  simpa only [mark.symm_apply_apply] using h
 
 variable [TopologicalSpace M] [DiscreteTopology M]
 variable [DistribMulAction (FiberAutGroup s) M] [ContinuousSMul (FiberAutGroup s) M]
@@ -277,20 +305,38 @@ plus the prescribed linear coefficient action. -/
 theorem fibreBasis_monodromy (t x : Fiber s Y) (γ : FiberAutGroup s) :
     fibreBasis s A Y τ mark t (γ.hom.app Y x) =
       (basedCocycle s A Y τ mark hmark t).val γ + γ • fibreBasis s A Y τ mark t x := by
-  have h := rho_affine s A Y τ mark t (MonoidHom.id _) hmark γ 0
-    (fibreBasis s A Y τ mark t x)
-  change _ = rho s A Y τ mark t γ 0 + _
-  simpa only [zero_add, rho_fibre, MonoidHom.id_apply] using h
+  let := τ.pointTranslation (Over.mk s) mark
+  have h := GroupCohomology.ContinuousH1.AffineTorsors.coordinates_monodromy
+    (τ.pointTranslation_unique (Over.mk s) mark) (naturalFiberPermutation s Y)
+    (fibreTranslation_compatible s A Y τ mark hmark) t x γ
+  change GroupCohomology.ContinuousH1.AffineTorsors.coordinates
+    (τ.pointTranslation_unique (Over.mk s) mark) t (γ.hom.app Y x) =
+      GroupCohomology.ContinuousH1.AffineTorsors.coordinates
+        (τ.pointTranslation_unique (Over.mk s) mark) t (γ.hom.app Y t) + γ •
+          GroupCohomology.ContinuousH1.AffineTorsors.coordinates
+            (τ.pointTranslation_unique (Over.mk s) mark) t x at h
+  rw [basedCocycle_apply]
+  simpa only [fibreCoordinates_eq] using h
 
+omit [GaloisCategory (Scheme.FiniteEtale X)]
+  [PreGaloisCategory.FiberFunctor (fiberToFinite s)] [ContinuousSMul (FiberAutGroup s) M] in
 /-- Equal actual based cocycles make the coordinate equivalence monodromy-equivariant. -/
 theorem basedFiberEquiv_monodromy (t : Fiber s Y) (u : Fiber s Z)
     (hc : basedCocycle s A Y τ mark hmark t = basedCocycle s A Z σ mark hmark u)
     (γ : FiberAutGroup s) (x : Fiber s Y) :
     basedFiberEquiv s A τ σ mark t u (γ.hom.app Y x) =
       γ.hom.app Z (basedFiberEquiv s A τ σ mark t u x) := by
-  apply (fibreBasis s A Z σ mark u).injective
-  rw [basedFiberEquiv_coordinate, fibreBasis_monodromy s A τ mark hmark,
-    fibreBasis_monodromy s A σ mark hmark, basedFiberEquiv_coordinate, hc]
+  let := τ.pointTranslation (Over.mk s) mark
+  let := σ.pointTranslation (Over.mk s) mark
+  change basedFiberEquiv s A τ σ mark t u (naturalFiberPermutation s Y γ x) =
+    naturalFiberPermutation s Z γ (basedFiberEquiv s A τ σ mark t u x)
+  exact GroupCohomology.ContinuousH1.AffineTorsors.basedEquiv_monodromy
+    (τ.pointTranslation_unique (Over.mk s) mark) (naturalFiberPermutation s Y)
+    (fibreTranslation_compatible s A Y τ mark hmark)
+    (fibreDisplacement_continuous s A Y τ mark)
+    (σ.pointTranslation_unique (Over.mk s) mark) (naturalFiberPermutation s Z)
+    (fibreTranslation_compatible s A Z σ mark hmark)
+    (fibreDisplacement_continuous s A Z σ mark) t u hc γ x
 
 /-- Equality in the one common continuous H¹ yields an actual equivariant
 scheme isomorphism, after correcting the selected point by the principal change. -/

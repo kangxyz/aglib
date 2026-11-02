@@ -1,0 +1,44 @@
+Independent ordinary review: D47 B/C extension — PASS
+
+All 295 new source derivations and their nontrivial mathematical prose pass on the fixed V5 basis, at the original conditional hypotheses. No remaining new mathematical obligation was found. This is not an established-status decision or an integrated CPP claim.
+
+Fixed source basis:
+/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-composition/extension/EXTENSION-SOURCE-V5.json
+SHA256 b0933bf3fdd8c85f282b7a73b4cc79a51382afa248ad8ed85c45da91552b2b0b
+MAIN: /Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/release-integrator-20261030/integration-30b6
+Owner-recorded HEAD: b0f8ca3f44be620dde8b40f65e1eec0143e45db4
+
+V5 has the same 295 source bytes as V4 and exactly 173 actual direct Aglib suppliers. The final identity check at 2026-11-01T15:34:17.073456+00:00 found no drift in either group. All 295 archive hashes and all 14 original terminal endpoint identities matched. The 14 terminal roots plus the explicitly assigned unbounded associativity and left-unit roots reach all 295 files and cut exactly at the 173 recorded suppliers. The companion JSON gives the exact source maps and 30 result-specific ID#label conclusions, outcomes, conditions and line locators.
+
+The original hypotheses are retained. Bounded-below exceptional results use arbitrary Ring coefficients and intrinsic torsion cohomology, without a common annihilator. Full-unbounded isomorphism results retain a positive natural N with N • (1 : Λ) = 0. Raw identities and restriction exchange retain their weaker displayed hypotheses. Chosen composition laws retain the original quasi-compact, separated, locally finite type and qcqs requirements; supplied-tower variants retain actual supplied compactifiability. Left-unit theorems retain qcqs X,Y, right-unit theorems qcqs Y, and unbounded associativity qcqs Y,Z,W. Horizontal base change adds no qcqs or smoothness condition on the new base. All original endpoint, literal, raw, middle and family realizations remain independent.
+
+The proof review checked the actual maps, not just their endpoints or invertibility:
+
+• The forward compositor remains the original proper/open adjoint transpose of inverse restriction exchange and the original lower-shriek counit, followed by the original open and direct-image compositors. Invertibility is established separately on the stated torsion or annihilator range.
+
+• Both unit laws retain the original identity contraction and original open counits. The installed adjunction normalization correctly identifies that contraction as the inverse unit of the transported lower-shriek/direct-image adjunction, equivalently the counit of the reversed identity equivalence. The actual raw unit faces, refinements and chosen comparison squares are supplied.
+
+• Family comparison uses the actual mixed transition along identity refinements. The six-family compositor square and seven-family unbounded associativity do not identify independent model dictionaries. Genuine triple geometry, actual first/intermediate refinements, raw mate interchange, four single-model comparison squares and the original total scheme-arrow congruence connect the two composition routes.
+
+• Horizontal exceptional base change is the actual compositor/exchange equation. Normalized towers have Cartesian open faces and commuting proper faces; schematic-image refinement is not incorrectly asserted to preserve a Cartesian proper face. Original mixed-mate, open-composition and proper-composition faces feed the whole-map equation, followed by actual raw/dense/source transport and chosen model squares. This is distinct from vertical iteration of base change.
+
+• Native canonicalEquivalence is the actual Localization.uniq at the two native Q functors. Its quotient, unit and composition coherence are retained. The target-only right-derived comparator satisfies the original transported universal-unit equation; rightDerivedTarget_ext supplies the required uniqueness against the archived unit-normalized comparator.
+
+• Independent identity-base normalizers are built from original source transport and native target comparison before proving their equality with base change. Literal specialization uses the actual universal pullback source isomorphism, original source unitor and reflexive-family comparison. No desired-coherence hypothesis or chosen-model equality is added.
+
+The original endpoint correspondences were checked against the archived statements. Native constructor applications replace obsolete aliases with the same selected family entries. The five retired wrappers are absent from both the new source set and its actual cut; unused RightDerivedFunctorPlus/ModelComparisonUnit remains absent. The four omitted corollary variants remain covered by the separate, already completed D47 stronger-theorem correspondence review. No file-count criterion substitutes for a mathematical comparison.
+
+All source-interface and prose findings are resolved in the integrated basis. V3 corrects the bounded right-unit projection and unbounded pointwise constructor order, retains the mixed-identity component proof, and corrects ProperOpenComparison's full-unbounded source description. V4 corrects two independent-base identity consumers to pass the original selected source/raw dictionaries and fixes the three inaccurate torsion descriptions in CompositionBCRefinementRaw. The actual native constructor signatures were checked in ExceptionalBaseChange.lean:51,70,93. None of these changes alters the original maps, independent worlds or mathematical range.
+
+V5 corrects the manifest's supplier count from 172 to 173. The explicit import added in V3 reaches:
+Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangePastingEquation.lean
+SHA256 3b14cd90ec2432799b489c4ff48c8651c6f41a6407b007a245fa1b2ec2e22aeb.
+Its full 63-line source and application at Compactification/CompositionBaseChangeExchange.lean:114 were inspected. The theorem at line 33 is exactly the whole commuting-square mate law for six independent D+ models and arbitrary Ring; it assumes no properness, qc or torsion. Root independently confirmed identical admitted1151, MAIN and publication bytes. This is an identity-bookkeeping correction, not new mathematics or a reason for a new compiler invocation.
+
+The 173 suppliers are reused at Root-confirmed accepted current1151/new143 conditions, including the actual D164 and D934 interfaces. They are not accepted merely because a hash is listed. Exact projection finds zero new D/E own115 suppliers in this cut, and no identified transitive new D/E dependency. Root corrected its earlier precautionary joint-supplier description accordingly. The separate D/E ordinary review is downstream: all 57 of its shared B/C producers lie inside these reviewed 295. V3 changes that shared cut only by the separately reviewed ProperOpenComparison prose repair; V4/V5 add no further shared-cut source change. The companion JSON binds the exact D/E review and reconciliation hashes without adopting its scope as a new B/C premise.
+
+The original D934 READY3 122-source mathematical acceptance and separately reported CPP remain intact; the corrected prior D47 13/4 correspondence verdicts remain separate. This report reassigns neither.
+
+CPP/import/lint/approved-axiom completion remains with the author and broker on their actual bound source/runtime basis. Historical bare D build IDs are not adopted. This reviewer ran no builds, tests, replay, separate client check, axiom audit or Git operation and made no production source edits. Future compiler repairs require affected source-identity reconciliation; changed bytes or publication-only API changes are not silently covered. No replacement proof was authored by this reviewer.
+
+Result-specific verdicts and exact identity basis: ordinary-review-v5.json.

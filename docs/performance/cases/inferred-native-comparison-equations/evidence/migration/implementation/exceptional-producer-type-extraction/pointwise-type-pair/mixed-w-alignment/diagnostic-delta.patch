@@ -1,0 +1,30 @@
+--- early-W-284b
++++ late-W-mixed
+@@ -30,7 +30,6 @@
+ universe u wMX wMS wMX' wMS' wAX wAS wAX' wAS'
+ 
+ attribute [local instance] hasSheafifyLarge
+-attribute [local instance] CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard
+ 
+ variable (Λ : Type (u + 1)) [Ring Λ] {X S X' S' : Scheme.{u}}
+   [HasDerivedCategory.{wMX} (ModuleSheaf X Λ)]
+@@ -43,6 +42,8 @@
+   [HasDerivedCategory.{wAS'} (AbelianSheaf.{u, u + 1} S')]
+   (f : X ⟶ S) (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
+   (h : f' ≫ g = g' ≫ f)
++
++attribute [local instance] CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard
+ 
+ /-- Formation of the expected literal proposition; no pointwise proof is asserted. -/
+ theorem expectedFormation (K : DerivedCategory.Plus (ModuleSheaf X Λ))
+@@ -191,6 +192,10 @@
+       dump s!"PRODUCER_MATCHED_BINDER_{index}" producerType
+       reportWHeads s!"EXPECTED_PRE_REBIND_{index}" d
+       reportWHeads s!"PRODUCER_MATCHED_BINDER_{index}" producerType
++    unless d == producerType do
++      dump s!"EXPECTED_BINDER_GAP_{index}" d
++      dump s!"PRODUCER_BINDER_GAP_{index}" producerType
++      throwError "Aligned local {n} has a raw type mismatch; no substitution performed"
+     alignExpected locals (b.instantiate1 x) (index + 1)
+   | _ =>
+     dump "EXPECTED_UNALIGNED_TYPE" t

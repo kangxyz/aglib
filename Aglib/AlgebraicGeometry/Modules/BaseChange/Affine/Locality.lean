@@ -75,7 +75,8 @@ theorem nativeRestrictionSquareIso_eq (f : X ⟶ Y) (U : Y.Opens) :
     ((Scheme.Modules.restrictAdjunction U.ι).comp
       (Scheme.Modules.pullbackPushforwardAdjunction (f ∣_ U)))).injective
   simp only [Scheme.Modules.Pullback.OpenRestriction.localPullbackIso, Iso.symm_hom,
-    Scheme.Modules.Pullback.OpenRestriction.restrictedRightAdjunction]
+    Adjunction.squareLeftIso, Adjunction.squareLeftAdjunction, Adjunction.squareRightAdjunction,
+    Scheme.Modules.Pullback.OpenRestriction.restrictedLeftAdjunction]
   rw [conjugateEquiv_leftAdjointUniq_ofNatIsoRight_inv]
   change conjugateEquiv ((Scheme.Modules.pullbackPushforwardAdjunction f).comp
     (Scheme.Modules.restrictAdjunction (f ⁻¹ᵁ U).ι))
@@ -185,7 +186,7 @@ theorem conjugateEquiv_nativeRestrictionSquareIso (f : X ⟶ Y) (U : Y.Opens) :
         (Scheme.Modules.Pullback.OpenRestriction.pushforwardSquare f U).hom := by
   rw [nativeRestrictionSquareIso_eq]
   simp only [Scheme.Modules.Pullback.OpenRestriction.localPullbackIso, Iso.symm_hom,
-    Scheme.Modules.Pullback.OpenRestriction.restrictedRightAdjunction]
+    Adjunction.squareLeftIso, Adjunction.squareLeftAdjunction, Adjunction.squareRightAdjunction]
   exact conjugateEquiv_leftAdjointUniq_ofNatIsoRight_inv _ _ _
 
 theorem testOpenPastedSquare_eq (a : P ⟶ X) (b : P ⟶ T) (f : X ⟶ Y) (g : T ⟶ Y)

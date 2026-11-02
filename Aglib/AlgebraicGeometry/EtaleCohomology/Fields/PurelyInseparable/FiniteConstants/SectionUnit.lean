@@ -116,15 +116,11 @@ theorem finitePure_representedAdjunctionUnit_isIso :
       (directImage f).map e.hom =
         SchemeTorsorBaseChange.representedCoefficientUnit f G :=
     SchemeTorsorBaseChange.representedSheafBaseChangeIso_unit f G
-  have heq : (inverseImageAdjunction f).unit.app (representedSheaf G) =
-      SchemeTorsorBaseChange.representedCoefficientUnit f G ≫ (directImage f).map e.inv := by
-    rw [← hu, Category.assoc, ← CategoryTheory.Functor.map_comp, e.hom_inv_id,
-      CategoryTheory.Functor.map_id]
-    exact (@CategoryTheory.Category.comp_id (AbelianSheaf.{u, u + 1} X) _
-      (representedSheaf G) ((directImage f).obj ((inverseImage f).obj (representedSheaf G)))
-      ((inverseImageAdjunction f).unit.app (representedSheaf G))).symm
-  rw [heq]
-  infer_instance
+  have : IsIso ((inverseImageAdjunction f).unit.app (representedSheaf G) ≫
+      (directImage f).map e.hom) := by
+    rw [hu]
+    infer_instance
+  exact IsIso.of_isIso_comp_right _ ((directImage f).map e.hom)
 
 omit G in
 /-- The original unit on the literal native finite constant abelian sheaf is an
@@ -138,16 +134,6 @@ theorem finitePure_adjunctionUnit_isIso
   let e : representedSheaf D.group ≅ coefficient A X := D.iso
   let unitNat := (inverseImageAdjunction f).unit
   let := finitePure_representedAdjunctionUnit_isIso k K p D.group
-  have hn := unitNat.naturality e.hom
-  change e.hom ≫ unitNat.app (coefficient A X) =
-    unitNat.app (representedSheaf D.group) ≫
-      (directImage f).map ((inverseImage f).map e.hom) at hn
-  have heq : unitNat.app (coefficient A X) = e.inv ≫
-      unitNat.app (representedSheaf D.group) ≫
-      (directImage f).map ((inverseImage f).map e.hom) := by
-    rw [← hn]
-    simp only [← Category.assoc, Iso.inv_hom_id, Category.id_comp]
-  rw [heq]
-  infer_instance
+  exact (NatTrans.isIso_app_iff_of_iso unitNat e).mp inferInstance
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.ConstantFinite

@@ -54,8 +54,7 @@ theorem relativeMapFromAffineOver_pullback_chart (U : X.AffineZariskiSite) :
     (relativeAffineChartObjectIso f U).hom ≫
         (Over.pullback U.2.fromSpec).map (relativeMapFromAffineOver f hb φ hφ) =
       relativeChartMapOver f hb φ hφ U ≫ (relativeGluingChartObjectIso hb U).hom := by
-  let d := relativeGluingData hb
-  let g := d.toBase
+  let g := (relativeGluingData hb).toBase
   let j := U.2.fromSpec
   let h := relativeMapFromAffine f hb φ
   let a : Spec Γ(Y, f ⁻¹ᵁ U.1) ⟶ pullback f j :=
@@ -65,42 +64,29 @@ theorem relativeMapFromAffineOver_pullback_chart (U : X.AffineZariskiSite) :
   let k : pullback f j ⟶ pullback g j :=
     ((Over.pullback j).map (relativeMapFromAffineOver f hb φ hφ)).left
   let r := Spec.map (φ.app (op U))
-  let s := Spec.map (f.app U.1)
-  let t := Spec.map (b.app (op U))
-  let v := (U.2.preimage f).fromSpec
-  let w : Spec (G.obj (op U)) ⟶ d.glued := d.cover.f U
-  have ha₁ : a ≫ pullback.fst f j = v :=
+  have ha₁ : a ≫ pullback.fst f j = (U.2.preimage f).fromSpec :=
     (relativeAffineChart_isPullback f U).isoPullback_hom_fst
-  have ha₂ : a ≫ pullback.snd f j = s :=
+  have ha₂ : a ≫ pullback.snd f j = Spec.map (f.app U.1) :=
     (relativeAffineChart_isPullback f U).isoPullback_hom_snd
-  have hc₁ : c ≫ pullback.fst g j = w :=
+  have hc₁ : c ≫ pullback.fst g j = (relativeGluingData hb).cover.f U :=
     (relativeGluing_affineChart_isPullback hb U).isoPullback_hom_fst
-  have hc₂ : c ≫ pullback.snd g j = t :=
+  have hc₂ : c ≫ pullback.snd g j = Spec.map (b.app (op U)) :=
     (relativeGluing_affineChart_isPullback hb U).isoPullback_hom_snd
   have hk₁ : k ≫ pullback.fst g j = pullback.fst f j ≫ h :=
     pullback.lift_fst _ _ _
   have hk₂ : k ≫ pullback.snd g j = pullback.snd f j :=
     pullback.lift_snd _ _ _
-  have hv : v ≫ h = r ≫ w := relativeMapFromAffine_chart f hb φ U
-  have hr : r ≫ t = s := Over.w (relativeChartMapOver f hb φ hφ U)
   apply Over.OverMorphism.ext
   change a ≫ k = r ≫ c
   apply pullback.hom_ext
-  · have hleft : (a ≫ k) ≫ pullback.fst g j = r ≫ w :=
-      (Category.assoc a k (pullback.fst g j)).trans
-        ((congrArg (fun q => a ≫ q) hk₁).trans
-          ((Category.assoc a (pullback.fst f j) h).symm.trans
-            ((congrArg (fun q => q ≫ h) ha₁).trans hv)))
-    have hright : (r ≫ c) ≫ pullback.fst g j = r ≫ w :=
-      (Category.assoc r c (pullback.fst g j)).trans
-        (congrArg (fun q => r ≫ q) hc₁)
-    exact hleft.trans hright.symm
-  · have hleft : (a ≫ k) ≫ pullback.snd g j = s :=
-      (Category.assoc a k (pullback.snd g j)).trans
-        ((congrArg (fun q => a ≫ q) hk₂).trans ha₂)
-    have hright : (r ≫ c) ≫ pullback.snd g j = s :=
-      (Category.assoc r c (pullback.snd g j)).trans
-        ((congrArg (fun q => r ≫ q) hc₂).trans hr)
-    exact hleft.trans hright.symm
+  · change (a ≫ k) ≫ pullback.fst g j = (r ≫ c) ≫ pullback.fst g j
+    rw [Category.assoc a k (pullback.fst g j), hk₁,
+      ← Category.assoc a (pullback.fst f j) h, ha₁,
+      Category.assoc r c (pullback.fst g j), hc₁]
+    exact relativeMapFromAffine_chart f hb φ U
+  · change (a ≫ k) ≫ pullback.snd g j = (r ≫ c) ≫ pullback.snd g j
+    rw [Category.assoc a k (pullback.snd g j), hk₂,
+      Category.assoc r c (pullback.snd g j), hc₂]
+    exact ha₂.trans (Over.w (relativeChartMapOver f hb φ hφ U)).symm
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Constructible.FiniteCogenerators.Global

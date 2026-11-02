@@ -1,0 +1,488 @@
+{
+  "question": "Only the 13 current mathematical correspondences and four D934 corollary bindings of the fixed D47 terminal decision.",
+  "reviewer": "/root/review_d_composition",
+  "date": "2026-11-01",
+  "outcome": "All17 mathematical/source correspondences PASS on the corrected binder; no new mathematical obligation.",
+  "ordinary_not_established": true,
+  "fixed_basis": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/remaining/D47-DECISION-OWNERSHIP-BASIS.json",
+  "fixed_basis_sha256": "d7f8587ffb8d9dd7479151209d211f96fd5b6a0d96cc6209a5930e5ed7c2be07",
+  "original_decision_sha256": "d5f81cfc2b94d04096657dbcceb722178e24aea310c9a8f9f60e15ab883b0832",
+  "corrected_binder": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/remaining/D47-TERMINAL-DECISION.json",
+  "corrected_binder_sha256": "e0f32730ce6ff9567039d1dd8d987f2b72ff26cdcf119ed6057a69a4a91f5433",
+  "tracked_repairs": [
+    {
+      "revision": "D47-description-1-route16-world-count",
+      "recorded_utc": "2026-11-01T14:32:31.439484+00:00",
+      "previous_packet_sha256": "d5f81cfc2b94d04096657dbcceb722178e24aea310c9a8f9f60e15ab883b0832",
+      "reviewer": "/root/review_d_composition",
+      "changed_locator": "#/decisions/16/current_stronger_provider_correspondence/conditions",
+      "correction": "nine -> ten independently chosen worlds: X,W,A0,A1,A2,B0,B1,Y,Z,C",
+      "basis": "Root assigned this exact binder-description repair after independent ordinary review of the actual original and READY-3 stronger-provider types.",
+      "unchanged": "Actual variables, theorem conditions, maps, source implementation, routing classification and exact author path grants296/11/115. No additional source investigation, source edit, build, review gate or ownership-file change."
+    },
+    {
+      "revision": "D47-description-2-route44-local-hypotheses",
+      "recorded_utc": "2026-11-01T14:33:54.571424+00:00",
+      "previous_packet_sha256": "2d5681dd9a10f43a73c2fca3d64913e6cc2c781c3535a1a067ad764ad6fed3a3",
+      "reviewer": "/root/review_d_composition",
+      "changed_locator": "#/decisions/44/correspondence/conditions",
+      "correction": "Separate the common henselian-local setup (surjectivity AND degree-zero injectivity) from the extra separably-closed residue-field hypothesis (surjectivity only). Withdraw the earlier wording suggesting HenselianLocalRing was needed only for surjectivity.",
+      "basis": "Retained independent ordinary reviewer compared archived/current FiniteProducts StrictlyLocalProducts and StrictlyLocalSmallProducts. Root extended exact pure-description repair authority; no new source/mathematical premise is being supplied.",
+      "unchanged": "All actual archived/current theorem hypotheses, conclusions, original maps, source implementations, classifications and exact author grants296/11/115; no new source read/audit/build, ownership-file edit or proof-status assignment."
+    },
+    {
+      "revision": "D47-description-3-route21-producer-locator",
+      "recorded_utc": "2026-11-01T14:34:20.935364+00:00",
+      "previous_packet_sha256": "17f092752a88cf2ed40c898068f1ed33f9e514716fb2a042d599ba65f7c45707",
+      "reviewer": "/root/review_d_composition",
+      "changed_locator": "#/decisions/21/correspondence/providers/3",
+      "correction": "The complete producer compositeExchange_pasting_of_equations belongs to Aglib/CategoryTheory/NatTrans/SourceExchange/Pasting.lean:195. CompositeExchangePasting.lean:40 owns compositeExchange_pasting_app, a supporting lemma, rather than this complete producer.",
+      "basis": "Retained independent ordinary reviewer verified the current native import and exact definition owner. Pure locator correction within the same fixed17-row correspondence review.",
+      "unchanged": "Actual proof producer, hypotheses, maps, source code, route classifications, and exact author grants296/11/115. No new source read/audit/build/ownership edit or review cycle."
+    }
+  ],
+  "only_tracked_binder_changes": true,
+  "archive_source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/snapshot/agent-c-independent-ext-quasifinite-source-20261027T101616Z/aglib",
+  "current_main": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/release-integrator-20261030/integration-30b6",
+  "recorded_main_head": "b0f8ca3f44be620dde8b40f65e1eec0143e45db4",
+  "retained_D934": {
+    "manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/d-composition/source-manifest-3.json",
+    "sha256": "81de7249b3b31aa08ff5b20fd062a6c0fb5e66fbf8aba1673114335a2858b8a6",
+    "verdict": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/latest-cd-20261101/resume-20261101/reviews/d934/ORDINARY-REVIEW-READY3.txt"
+  },
+  "results": [
+    {
+      "route_index": 3,
+      "classification": "current_mathematical_correspondence_closed",
+      "outcome": "ordinary PASS on mathematical/source correspondence",
+      "result_ids": [
+        "D1090#finite_projectiveLine_topologicalKrullDim_le_one",
+        "D1090#residueFiber_topologicalKrullDim_le_one"
+      ],
+      "conclusion": "Both finite-cover and literal residue-fibre topological Krull dimensions are at most one under the original field/local-ring and finiteness hypotheses.",
+      "conditions": "Field K and finite Y→P1(K) for the first theorem; CommRing local R and finite Y→P1(R) for literal residue fibre. No nonempty/reduced/Noetherian premise.",
+      "evidence": "Current ResidueFiberDimension:36,47 has identical assertions/proofs; only explicit imports/parentheses changed.",
+      "provider_locators": [
+        "Curves/ResidueFiberDimension.lean:36 finite_projectiveLine_topologicalKrullDim_le_one",
+        "Curves/ResidueFiberDimension.lean:47 residueFiber_topologicalKrullDim_le_one"
+      ],
+      "archive_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/ResidueFiberDimension.lean",
+      "archive_sha256": "8a47bd4c44e30537214ab050b031a0a25e00f76b662bd8c52764826dd549daef",
+      "original_claim_hash_matches_actual": true,
+      "boundary": "Accepted current-provider hypotheses retained; no newly compiled convenience alias claimed."
+    },
+    {
+      "route_index": 16,
+      "classification": "covered_by_active_author_chain_conditional_corollary",
+      "outcome": "ordinary PASS on mathematical/source correspondence",
+      "result_ids": [
+        "D908#moduleTripleCartesianComposition_torsionInput"
+      ],
+      "conclusion": "The original four-map triple composition equation restricts to intrinsic torsion input with the same final proper-arrow transport and ten independent derived worlds.",
+      "conditions": "The actual supplied triple and original qc assumptions, arbitrary Ring, ten independently chosen endpoint/intermediate worlds X, W, A0, A1, A2, B0, B1, Y, Z, C; restriction to native torsion input only.",
+      "evidence": "Prewhisker READY-3 TripleCartesianComposition:51 by the native torsion inclusion. Its component at K.obj is exactly the archived equation.",
+      "provider_locators": [
+        "Active D934 Exceptional/BoundedBelow/TripleCartesianComposition.lean:51 moduleTripleCartesianComposition",
+        "Whisker a natural-transformation equality by current native torsion inclusion"
+      ],
+      "archive_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleCartesianTorsion.lean",
+      "archive_sha256": "bf8cca9d626e75676035cce80e867f675513816921a1194cb5d21aad49ccc9f1",
+      "original_claim_hash_matches_actual": true,
+      "boundary": "The stronger load-bearing statement is inside the current122-source chain; this corollary closes after that actual source/math/CPP chain is accepted. The old named terminal wrapper is NOT in the122 write scope, and no alias or extra author write is requested. No active success or established status inferred."
+    },
+    {
+      "route_index": 18,
+      "classification": "covered_by_active_author_chain_conditional_corollary",
+      "outcome": "ordinary PASS on mathematical/source correspondence",
+      "result_ids": [
+        "D770#tripleLeftTargetSquare",
+        "D770#tripleLeftProperSquare",
+        "D770#moduleTripleLeftInterchangeRectangle"
+      ],
+      "conclusion": "The original raw-to-canonical left triple-mate rectangle holds with the actual leftIntermediateIso and all seven independent model choices.",
+      "conditions": "Original supplied triple, qc h, Ring, independent hZ/hA/hA'/hB/hB'/hT/hT'; same raw/canonical mates and actual proper-side identity arrows.",
+      "evidence": "Specialize READY-3 ProperOpen/RefinementRectangle:54 with TripleCompositionComparisonSquares:20 and the actual leftIntermediateIso. Auxiliary target/proper squares use identities.",
+      "provider_locators": [
+        "Active D934 Exceptional/ProperOpen/RefinementRectangle.lean:54 moduleProperOpenMate_refinement_rectangle",
+        "Active D934 Compactification/Refinements/TripleCompositionComparisonSquares.lean and TripleCompositionSquares.lean"
+      ],
+      "archive_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleLeftRectangle.lean",
+      "archive_sha256": "ffb6899d97a4db1029bf7f51cdce1f3fc0ef8773d16092162cc599cfa04028a5",
+      "original_claim_hash_matches_actual": true,
+      "boundary": "The stronger load-bearing statement is inside the current122-source chain; this corollary closes after that actual source/math/CPP chain is accepted. The old named terminal wrapper is NOT in the122 write scope, and no alias or extra author write is requested. No active success or established status inferred."
+    },
+    {
+      "route_index": 19,
+      "classification": "covered_by_active_author_chain_conditional_corollary",
+      "outcome": "ordinary PASS on mathematical/source correspondence",
+      "result_ids": [
+        "D783#tripleRightTargetSquare",
+        "D783#tripleRightProperSquare",
+        "D783#moduleTripleRightInterchangeRectangle"
+      ],
+      "conclusion": "The original raw-to-canonical right triple-mate rectangle holds with the actual firstIso and all seven independent model choices.",
+      "conditions": "Original supplied triple, qc g and h as stated, arbitrary Ring, all seven intermediate worlds independently sized; actual firstIso proper-side comparison retained.",
+      "evidence": "Specialize the same seven-world rectangle with TripleCompositionComparisonSquares:33, firstIso and the composed open. The target square uses tail.first_j_middleOpen.",
+      "provider_locators": [
+        "Active D934 Exceptional/ProperOpen/RefinementRectangle.lean:54 moduleProperOpenMate_refinement_rectangle",
+        "Active D934 Compactification/Refinements/TripleCompositionComparisonSquares.lean and TripleCompositionSquares.lean"
+      ],
+      "archive_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleRightRectangle.lean",
+      "archive_sha256": "9c3692409d8d84c8c1c44872a8d391691e3889ead637075af100ef6db3a7c838",
+      "original_claim_hash_matches_actual": true,
+      "boundary": "The stronger load-bearing statement is inside the current122-source chain; this corollary closes after that actual source/math/CPP chain is accepted. The old named terminal wrapper is NOT in the122 write scope, and no alias or extra author write is requested. No active success or established status inferred."
+    },
+    {
+      "route_index": 21,
+      "classification": "current_mathematical_correspondence_closed",
+      "outcome": "ordinary PASS on mathematical/source correspondence",
+      "result_ids": [
+        "D962#moduleRawSquareMap_pasting"
+      ],
+      "conclusion": "The original raw Cartesian exchange maps paste with the original inverse-image compositors on all nine independent derived worlds.",
+      "conditions": "Three actual compactifications, two pairs of specified Cartesian open/proper squares, arbitrary Ring, torsion D+ input; all nine module-derived worlds independent. No properness/invertibility premise is added to the pasting equality.",
+      "evidence": "RawSquare:31 is exactly compositeExchange. BaseChangeIterationCompatibility:58 and InverseImageTorsionForgetCoherence:27 supply both premises of SourceExchange/Pasting:195.",
+      "provider_locators": [
+        "Exceptional/Compactification/RawSquare.lean:31 moduleRawSquareMap",
+        "Exceptional/Compactification/BaseChangeIterationCompatibility.lean:58 moduleCompactifiedBaseChangeMap_pasting",
+        "Exceptional/Derived/InverseImageTorsionForgetCoherence.lean:27 moduleDerivedInverseImageTorsionForgetIso_pasting",
+        "CategoryTheory/NatTrans/SourceExchange/Pasting.lean:195 compositeExchange_pasting_of_equations"
+      ],
+      "archive_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSquarePasting.lean",
+      "archive_sha256": "683514114a310a865d629014d047424fbc3cd218dcd1a5e6e156aa94b557e117",
+      "original_claim_hash_matches_actual": true,
+      "boundary": "Accepted current-provider hypotheses retained; no newly compiled convenience alias claimed."
+    },
+    {
+      "route_index": 22,
+      "classification": "current_mathematical_correspondence_closed",
+      "outcome": "ordinary PASS on mathematical/source correspondence",
+      "result_ids": [
+        "D602#compatibility_import"
+      ],
+      "conclusion": "The archived compatibility import adds no declaration; its imported original source-isomorphism exchange remains supplied by SourceIsoExchange.",
+      "conditions": "Retain the imported source-isomorphism/pullback hypotheses and model worlds. No new wrapper file is needed without an actual import consumer.",
+      "evidence": "Archive:8-14 is solely an import and prose. Current SourceIsoExchange:40,57 keeps the original map and normalized exchange law.",
+      "provider_locators": [
+        "Exceptional/Compactification/SourceIsoExchange.lean:40 moduleCompactifiedSourceIso",
+        "Exceptional/Compactification/SourceIsoExchange.lean:57 moduleCompactifiedBaseChangeMap_sourceIso_identity"
+      ],
+      "archive_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoBaseChangeCompatibility.lean",
+      "archive_sha256": "ea673983cd38c4b72246baddac2a61aeec7bd3fbe0d420686caff6f31170a76d",
+      "original_claim_hash_matches_actual": true,
+      "boundary": "Accepted current-provider hypotheses retained; no newly compiled convenience alias claimed."
+    },
+    {
+      "route_index": 23,
+      "classification": "current_mathematical_correspondence_closed",
+      "outcome": "ordinary PASS on mathematical/source correspondence",
+      "result_ids": [
+        "D531#moduleDerivedInverseImageSquareIso_congr_left"
+      ],
+      "conclusion": "Equality of the left structural arrows gives exactly the displayed equality transport of the original derived inverse-image square.",
+      "conditions": "Ring, four independent module-derived worlds, actual structural arrows f0=f1 and same commutative square proofs. No IsIso or geometry premise.",
+      "evidence": "Current Derived/BaseChange:45 uses the same compositors and eqToIso. Eliminate hf; proof irrelevance and identity transports give the archived equality.",
+      "provider_locators": [
+        "Exceptional/Derived/BaseChange.lean moduleDerivedInverseImageSquareIso",
+        "Pinned Lean equality elimination and CategoryTheory eqToHom_refl/Functor.whiskerRight_id"
+      ],
+      "archive_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChangeCongruence.lean",
+      "archive_sha256": "9758bf9772b82786e6156f09a8d5540d1e423b8ef2b3df7400ceb5d344a94798",
+      "original_claim_hash_matches_actual": true,
+      "boundary": "Accepted current-provider hypotheses retained; no newly compiled convenience alias claimed."
+    },
+    {
+      "route_index": 26,
+      "classification": "covered_by_active_author_chain_conditional_corollary",
+      "outcome": "ordinary PASS on mathematical/source correspondence",
+      "result_ids": [
+        "D555#moduleProperOpenComparison_hComp"
+      ],
+      "conditions": "Original two open Cartesian squares and pasted square, arbitrary Ring, native torsion K and six independent derived worlds. Current stronger mate theorem requires only Etale opens; no properness needed for equality.",
+      "provider_locators": [
+        "Active D934 Exceptional/ProperOpen/HorizontalCoherence.lean:106 moduleProperOpenMate_hComp",
+        "Active D934 Exceptional/ProperOpen/TorsionCoherence.lean:43 moduleProperOpenComparison_eq_mate_app"
+      ],
+      "archive_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/ProperOpen/TorsionHorizontalCoherence.lean",
+      "archive_sha256": "c7069bd4538a7bb6c6ea8b67e1b86935ad52d507e87ef206f882dc1752334d9a",
+      "original_claim_hash_matches_actual": true,
+      "boundary": "The stronger load-bearing statement is inside the current122-source chain; this corollary closes after that actual source/math/CPP chain is accepted. The old named terminal wrapper is NOT in the122 write scope, and no alias or extra author write is requested. No active success or established status inferred."
+    },
+    {
+      "route_index": 27,
+      "classification": "current_mathematical_correspondence_closed",
+      "outcome": "ordinary PASS on mathematical/source correspondence",
+      "result_ids": [
+        "D515#isIso_map_unit_of_iso_mate",
+        "D515#refinementPullback_torsion",
+        "D515#refinementUnit_open_isIso",
+        "D515#refinementUnit_closed_isIso",
+        "D515#moduleDerivedProperRefinementComparison_isIso_of_closedComplement",
+        "D515#moduleDerivedProperRefinementComparison_isIso"
+      ],
+      "conclusion": "The actual proper common-open refinement comparison is invertible on intrinsic torsion D+, with or without a supplied complementary closed immersion; the original supporting torsion/unit statements remain valid.",
+      "conditions": "Actual proper refinement h, the specified open Cartesian square, arbitrary Ring, internal torsion cohomology; optional actual complementary closed immersion, with independent source/intermediate/closed worlds. No global annihilator.",
+      "evidence": "Current ProperIsomorphism:47,58,77,109,128 preserves actual units/comparisons. Mates/UnitIsomorphism:29 is the same generic lemma; omitted auxiliary models are proof-only.",
+      "provider_locators": [
+        "Exceptional/Refinement/ProperIsomorphism.lean:109 moduleDerivedProperRefinementComparison_isIso_of_closedComplement",
+        "Exceptional/Refinement/ProperIsomorphism.lean:128 moduleDerivedProperRefinementComparison_isIso",
+        "CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean:29 isIso_map_unit_of_iso_mate"
+      ],
+      "archive_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperIsomorphism.lean",
+      "archive_sha256": "0c77f8e5b3c992263a229c6f3abd5f57ca136ed0ffc9b03376ab01e8a2f38a2b",
+      "original_claim_hash_matches_actual": true,
+      "boundary": "Accepted current-provider hypotheses retained; no newly compiled convenience alias claimed."
+    },
+    {
+      "route_index": 33,
+      "classification": "current_mathematical_correspondence_closed",
+      "outcome": "ordinary PASS on mathematical/source correspondence",
+      "result_ids": [
+        "D1219#exists_moduleUnboundedCompactificationFunctor_amplitude",
+        "D1219#exists_moduleExceptionalDirectImageUnbounded_amplitude_of_model",
+        "D1219#exists_moduleExceptionalDirectImageUnbounded_amplitude"
+      ],
+      "conclusion": "Every supplied unbounded compactification value, and hence the chosen exceptional functor, has a finite bound d preserving every lower bound m and sending every upper bound n to n+d. The upper conclusion requires no lower bound.",
+      "conditions": "Original compact target, qc f, Ring Λ and positive N killing1; no lower bound needed for upper-amplitude conclusion; endpoint and intermediate worlds remain independent. Chosen endpoint retains original qcqs/separated/lft conditions.",
+      "evidence": "ExactFunctorHomology:29, pinned isGE_iff and map_isZero prove lower exactness; ExactAmplitude:27 proves upper exactness. ProperFiniteDimension:52 plus CohomologicalBound:63 provides the all-module bound, Computation/Amplitude:68,79 gives proper amplitude, and CompactificationDiagram:45/DirectImage:60 composes/transports it.",
+      "provider_locators": [
+        "ExactFunctorHomology.lean:29 mapDerivedCategoryHomologyIso and pinned DerivedCategory.isGE_iff",
+        "UnboundedRightDerived/ExactAmplitude.lean:27 mapDerivedCategory_isLE",
+        "Vanishing/ProperFiniteDimension.lean:52 exists_universal_higherDirectImage_torsion_bound",
+        "Exceptional/Unbounded/CohomologicalBound.lean moduleRightDerived_bound_of_torsion_bound",
+        "UnboundedRightDerived/Computation/Amplitude.lean:68 unboundedRightDerivedFunctor_isGE_of_bound; :79 isLE_of_bound",
+        "Exceptional/Unbounded/CompactificationDiagram.lean:45 moduleUnboundedCompactificationFunctor",
+        "Exceptional/Unbounded/DirectImage.lean:60 moduleExceptionalDirectImageUnboundedIso"
+      ],
+      "archive_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ExceptionalAmplitude.lean",
+      "archive_sha256": "cca82808d8f48dc9ea22474120cda5c4660bf232e54f505dc1885406654d4c7f",
+      "original_claim_hash_matches_actual": true,
+      "boundary": "Mathematical/source correspondence closed, no extra unused ExactFunctorBounds alias or exported native amplitude wrapper claimed. Active D1220 already owns ProperAmplitude supplier; no scope extension is implied."
+    },
+    {
+      "route_index": 35,
+      "classification": "current_mathematical_correspondence_closed",
+      "outcome": "ordinary PASS on mathematical/source correspondence",
+      "result_ids": [
+        "D1152#properModuleUnboundedDerivedBaseChange_isIso_of_compactSpace"
+      ],
+      "conclusion": "The original unbounded proper exchange at sq.w.symm is invertible under the original properness and positive ring-annihilator hypotheses; the old compact-base restriction is allowed.",
+      "conditions": "Ring Λ, positive N killing1, proper f, specified IsPullback; original four module worlds independent. Current theorem needs neither old CompactSpace S nor four auxiliary abelian-model arguments.",
+      "evidence": "Current ProperBaseChangeTheorem:42 has the identical moduleUnboundedDerivedBaseChangeMap under weaker base hypotheses. The old abelian-model inputs do not occur in that map.",
+      "provider_locators": [
+        "Exceptional/Unbounded/ProperBaseChangeTheorem.lean:39 Proper.properModuleUnboundedDerivedBaseChange_isIso"
+      ],
+      "archive_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/GeometricProperBaseChange.lean",
+      "archive_sha256": "27e44f3262ab145d4e03cb0e046d93540d0f7f2101d40506848e33fc5b98b96a",
+      "original_claim_hash_matches_actual": true,
+      "boundary": "Accepted current-provider hypotheses retained; no newly compiled convenience alias claimed."
+    },
+    {
+      "route_index": 39,
+      "classification": "current_mathematical_correspondence_closed",
+      "outcome": "ordinary PASS on mathematical/source correspondence",
+      "result_ids": [
+        "D1130#finite_projectiveLine_fieldExtension_constantRestriction_injective",
+        "D1130#finite_projectiveLine_fieldExtension_constantRestriction_surjective",
+        "D1130#finite_projectiveLine_fieldExtension_constantRestriction_bijective"
+      ],
+      "conclusion": "The original literal field-extension constantRestriction is injective for separably closed k and surjective/bijective when K is also separably closed, for finite covers of P1, finite constants and every natural degree, at the same Ext sizes u+2.",
+      "conditions": "k,K fields, k separably closed, Algebra k K, finite Y→P1(k), finite additive A:Type u, every q:Nat. Injectivity needs no IsSepClosed K; surjective/bijective retain it. Same literal pullback.fst and constantRestriction with Ext(u+2) on both sides.",
+      "evidence": "Current FieldComparison:46,88,146 retains exact endpoints. FiniteTypeCohomology:159 applies to the proper structural map, and actual finite-pure residue specialization detects the original relation. Surjectivity proof unchanged.",
+      "provider_locators": [
+        "Fields/SeparableExtension/FiniteConstants/FieldComparison.lean:46 injective, :88 surjective, :146 bijective",
+        "Fields/SeparableExtension/FiniteConstants/FiniteTypeCohomology.lean exists_cohomologyEquality_over_finiteTypeSubalgebra",
+        "Current original Etale/LFC closed source acceptances and retained exact-source native coverage"
+      ],
+      "archive_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/FieldComparison.lean",
+      "archive_sha256": "3237122b17f84728a73ff8f36cb54e5d7ed57c2d22713414079393ee96b29d72",
+      "original_claim_hash_matches_actual": false,
+      "boundary": "The old claim/archive hash mismatch is not turned into a pass. Actual current statement/proof correspondence and its accepted current evidence govern; no old D bare receipt is adopted."
+    },
+    {
+      "route_index": 40,
+      "classification": "current_mathematical_correspondence_closed",
+      "outcome": "ordinary PASS on mathematical/source correspondence",
+      "result_ids": [
+        "D1128#cohomologyPullback_source_bijective_of_finiteDirectImage",
+        "D1128#finite_projectiveLine_residuePullback_bijective_of_killed_of_isNoetherian",
+        "D1128#finite_projectiveLine_constantRestriction_bijective_of_isNoetherian"
+      ],
+      "conclusion": "Bijectivity of the original base cohomologyPullback on the finite direct-image coefficient implies bijectivity of the original source pullback, with all four Ext worlds independent; the original killed-coefficient and finite-constant Noetherian local specializations remain valid.",
+      "conditions": "Four independent Ext worlds for arbitrary finite-source pullback transfer. Specialization: Noetherian henselian local R with separably closed residue, finite Y→P1(R), a nonzero annihilator n and all degrees; finite constant specialization as originally stated. No field-extension theorem added as an input.",
+      "evidence": "Current LocalFiniteComparison:45 identifies the whole family with exact extPrecompMap and the original constant-unit. OriginalComparisonValues:140 consumes the same native mate and source-unit laws; finite base change supplies the selected invertible component.",
+      "provider_locators": [
+        "Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean:45 cohomologyPullback_source_bijective_of_finiteDirectImage",
+        "Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean:97 killed_of_isNoetherian; :127 constantRestriction_bijective_of_isNoetherian",
+        "CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean originalExtSourceComparison_bijective_of_transport_values",
+        "Current original Etale/LFC source acceptance"
+      ],
+      "archive_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean",
+      "archive_sha256": "dbc846f2c76b4f75fcb7b6fedff0f5524aae928b5bbad521062b188e545f9d7a",
+      "original_claim_hash_matches_actual": true,
+      "boundary": "Accepted current-provider hypotheses retained; no newly compiled convenience alias claimed."
+    },
+    {
+      "route_index": 41,
+      "classification": "current_mathematical_correspondence_closed",
+      "outcome": "ordinary PASS on mathematical/source correspondence",
+      "result_ids": [
+        "D1058#moduleLocalizationPullback_complement"
+      ],
+      "conclusion": "The actual two pullback squares carry the given complementary range equality to the literal pulled-back maps.",
+      "conditions": "Only two actual IsPullback squares and the original complementary range equality. No open/closed, finiteness, Ring or derived model is needed.",
+      "evidence": "Apply current pullback_range_snd to both actual squares and Set.preimage_compl. No geometry or model premise is added.",
+      "provider_locators": [
+        "AlgebraicGeometry/Limits/Range.lean Scheme.Pullback.Fibre.pullback_range_snd",
+        "Set.preimage_compl"
+      ],
+      "archive_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Localization/GeometricPullbackComplement.lean",
+      "archive_sha256": "e26ae86f20e5e8b3a0761f150a179e663e4460cd78ad9214acfd5a8ddcdc0227",
+      "original_claim_hash_matches_actual": true,
+      "boundary": "Accepted current-provider hypotheses retained; no newly compiled convenience alias claimed."
+    },
+    {
+      "route_index": 44,
+      "classification": "current_mathematical_correspondence_closed",
+      "outcome": "ordinary PASS on mathematical/source correspondence",
+      "result_ids": [
+        "D1123#functorFiniteProductEquiv",
+        "D1123#functorFiniteProductEquiv_apply",
+        "D1123#cohomologyFunctor_additive",
+        "D1123#cohomologyFiniteProductEquiv",
+        "D1123#inverseImageCohomologyFiniteProductEquiv",
+        "D1123#cohomologyFiniteProductEquiv_apply",
+        "D1123#inverseImageCohomologyFiniteProductEquiv_apply",
+        "D1123#cohomologyPullback_surjective_finProduct",
+        "D1123#cohomologyPullback_injective_finProduct",
+        "D1123#cohomologyPullback_surjective_finiteProduct",
+        "D1123#cohomologyPullback_injective_finiteProduct",
+        "D1123#constantDirectImageProductAnnihilatorIsoFiniteIndex",
+        "D1123#finiteConstantDirectImageProduct_residuePullback_surjective",
+        "D1123#finiteConstantDirectImageProduct_residuePullback_injective_zero",
+        "D1123#finiteConstantDirectImageProductAnnihilator_residuePullback_surjective",
+        "D1123#finiteConstantDirectImageProductAnnihilator_residuePullback_injective_zero",
+        "D1123#finiteConstantDirectImageProductZModAnnihilator_residuePullback_surjective",
+        "D1123#finiteConstantDirectImageProductZModAnnihilator_residuePullback_injective_zero",
+        "D1123#finiteConstantProduct_residuePullback_surjective",
+        "D1123#finiteConstantProduct_residuePullback_injective_zero",
+        "D1123#finiteConstantProductAnnihilator_residuePullback_surjective",
+        "D1123#finiteConstantProductAnnihilator_residuePullback_injective_zero",
+        "D1123#finiteConstantProductZModAnnihilator_residuePullback_surjective",
+        "D1123#finiteConstantProductZModAnnihilator_residuePullback_injective_zero"
+      ],
+      "conclusion": "All original finite-product coordinate constructions/projection laws, cohomologyPullback injectivity/surjectivity tests, finite-index constant direct images, all annihilator moduli and genuine ZMod-underlying targets retain their exact conclusions and original local hypotheses.",
+      "conditions": "Original independent Ext worlds; finite index in scheme universe; arbitrary finite coefficient values in u+1 (small values by original ULift). The local projective-line tests retain [HenselianLocalRing R] for BOTH surjectivity and degree-zero injectivity; only the surjectivity cases additionally assume [IsSepClosed (IsLocalRing.ResidueField R)]. All n including0/1, genuine ZMod target underlying objects unchanged.",
+      "evidence": "Current FiniteProducts:66,78,98,113 uses the bicone of the literal product cone and the same extPrecompMap. Its comparator:132 equals the whole original reindex map by:157 and ProductReindex:121. The local theorem tail is byte-identical; omitted coordinate helpers are the same native product-comparison expressions.",
+      "provider_locators": [
+        "Proper/Local/FiniteProducts.lean:66 cohomologyPullback_surjective_finProduct; :78 injective_finProduct; :98/:113 finiteProduct",
+        "Algebra/Homology/DerivedCategory/Ext/BiproductComparison.lean extPrecompMap_surjective_biproduct_on_image and injective counterpart",
+        "Proper/Local/FiniteProducts.lean:132 constantDirectImageProductAnnihilatorIsoFiniteIndex; :155 constantDirectImageProductAnnihilatorIsoFiniteIndex_eq_originalReindex",
+        "CategoryTheory/Preadditive/Annihilator/ProductReindex.lean nsmulKernelProductFunctorIso_eq_reindex"
+      ],
+      "archive_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/FiniteProducts.lean",
+      "archive_sha256": "21cdf573d1860a25a3598715925d2c55d152619604be4ac889047865b9b36a48",
+      "original_claim_hash_matches_actual": true,
+      "boundary": "Accepted current-provider hypotheses retained; no newly compiled convenience alias claimed."
+    },
+    {
+      "route_index": 45,
+      "classification": "current_mathematical_correspondence_closed",
+      "outcome": "ordinary PASS on mathematical/source correspondence",
+      "result_ids": [
+        "D939#Adjunction.equivalenceLeftComparisonIso",
+        "D939#Adjunction.equivalenceLeftComparisonIso_hom_app",
+        "D939#Adjunction.equivalenceLeftComparisonIso_unit"
+      ],
+      "conclusion": "The original explicit natural comparison across category equivalences has the specified adjunctionComparisonIso components and satisfies the original unit square.",
+      "conditions": "Actual category equivalences e,s, given adjunctions a,b and right-adjoint natural iso q. Original equivalence unit/counit invertibility is automatic. No sheaf/model structure.",
+      "evidence": "The archived explicit associator/unit/counit composite uses current Mates:41. Components expand to Mates:45; its unit equation is Mates:52. Equivalence unit/counit invertibility is automatic.",
+      "provider_locators": [
+        "CategoryTheory/Adjunction/Mates.lean:41 leftAdjointComparison",
+        "CategoryTheory/Adjunction/Mates.lean:45 adjunctionComparisonIso",
+        "CategoryTheory/Adjunction/Mates.lean:52 adjunctionComparisonIso_unit"
+      ],
+      "archive_path": "Aglib/CategoryTheory/Adjunction/EquivalenceCoefficientSquare.lean",
+      "archive_sha256": "7648d7c72f76d057004375149f1fa8aeae19b926ccb73678bb331423646d314d",
+      "original_claim_hash_matches_actual": true,
+      "boundary": "Accepted current-provider hypotheses retained; no newly compiled convenience alias claimed."
+    },
+    {
+      "route_index": 46,
+      "classification": "current_mathematical_correspondence_closed",
+      "outcome": "ordinary PASS on mathematical/source correspondence",
+      "result_ids": [
+        "D880#imageTripleComposition_realization"
+      ],
+      "conclusion": "Under the original whole triple-equation hypothesis and both original route-realization equalities, the supplied transformations are equal; no unconditional associativity is inferred.",
+      "conditions": "All original category/functor worlds independent; keep original h:ImageTripleCompositionEquation and exact hL/hR. This does not supply h or establish unconditional triple associativity.",
+      "evidence": "READY-3 ImageTripleCompositionPredicate:31 is the same route equality; the entire proof is hL.trans(h.trans hR.symm).",
+      "provider_locators": [
+        "CategoryTheory/Functor/ImageTripleCompositionPredicate.lean ImageTripleCompositionEquation (active D934 source)",
+        "Equality transitivity, symmetry, and congruence"
+      ],
+      "archive_path": "Aglib/CategoryTheory/Functor/ImageTripleCompositionRealization.lean",
+      "archive_sha256": "6dd06b959521b5a71c4424106a8d5751712de6bf12e10f5d01336f874eeb534a",
+      "original_claim_hash_matches_actual": true,
+      "boundary": "The predicate source is part of active D934; this pure conditional theorem needs no new alias/author scope. No active producer acceptance or unrelated native theorem is promoted."
+    }
+  ],
+  "supporting_ExactFunctorBounds": {
+    "id": "D1211#mapDerivedCategory_isGE",
+    "outcome": "PASS within route33",
+    "original_sha256": "723aca434654473e972207d83c3ea4d5a854a2a16669bc1fe254d407ce21a8d6",
+    "conclusion": "The same exact localized functor preserves every lower cohomological bound with independent derived worlds, by its homology isomorphism and preservation of zero objects.",
+    "conditions": "Abelian categories, independent HasDerivedCategory instances, additive functor preserving finite limits/colimits. No enough-injectives, Grothendieck, boundedness or geometric assumption.",
+    "Mathlib_pin": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "Mathlib_source_root": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib",
+    "Mathlib_sha256": {
+      "Algebra/Homology/DerivedCategory/TStructure.lean": "494d8bd890229138fe481cb5833e9d33af381918d00ce8266779f47dcd8ddf3d",
+      "Algebra/Homology/DerivedCategory/ExactFunctor.lean": "d5becb8bccd5f9044ddb5bd2cc8243185a8a65308bf1fa013d71f91e552c9442",
+      "CategoryTheory/Limits/Preserves/Shapes/Zero.lean": "3de349826f590efa593f1584d498c5dac36d61e508f6a4364d949a3af52c776c"
+    }
+  },
+  "current_source_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/ResidueFiberDimension.lean": "0fd3d5cd61d87017126236677b4e4fb4c37ac7fa3b029dfbea2f45e3809a26d0",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperIsomorphism.lean": "c7fc6386705365d09ecef1f9d77b7422e6be02a0acbf1605e4e9068b171b16c5",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/FieldComparison.lean": "0590ef027c2282a7ce62adc55ea7ff151d2c62dfc06a0db29bd5c4a51daadca7",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean": "0997517ed89eba60a57505a6665d1fc722afec046cf6afaa726ff8e4462d6988",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/FiniteProducts.lean": "9def109ae7a356b63396c0e1f9212913abd110f0ac4d55443805416f62c99190",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/BaseChangeIterationCompatibility.lean": "4c77469120b8cb65f2f8f77fd09d0ff48a01476c4d44090242feee459133de3d",
+    "Aglib/CategoryTheory/NatTrans/CompositeExchangePasting.lean": "da42afa1de95e2eb57bd80f706386931a6370e9f62dfc60d340d417779c9bf3c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/SourceIsoExchange.lean": "0af703eb27d068e0f05cef48c149ad84c2d7501955818855c93306ed1935d5ed",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/InverseImageTorsionForgetCoherence.lean": "a9e1ad3a173e4d488bfb29086527e8c33c1eeed3dd9e9655069b018668a9bf9a",
+    "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/ExactAmplitude.lean": "8f7865404254324357954a21666fe82c9dd43326ff264b728a355d5bfec2f0cd",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawSquare.lean": "99d2801d5d27ec22ece83d75ee94cbc3fe77df7b935344e8f4304d61ef8dafdd",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChange.lean": "d4e4c03140f6d517bb7d3df038a919516044b56d2038f39b394906a6403dfcd2",
+    "Aglib/Algebra/Homology/DerivedCategory/ExactFunctorHomology.lean": "cabe4803228fafbed0aedc49376c990a1c08eb0e924ef93491d22fac35cae0b7",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CohomologicalBound.lean": "b72b6fd8627cbc0c7543e0cbd4e86db4178902a59734f67bda348b6cfddd25c7",
+    "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Amplitude.lean": "9bd5b1616c6efc28f54a903b0245193e42b5865c2f42bb7a53390747bacbb00e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Vanishing/ProperFiniteDimension.lean": "a409533d898bdacc0db89b48db3186b194975a3563f764cdbe7a8b62e2d70f8a",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CompactificationDiagram.lean": "d314a35d8921a62307a7d4aca4c2a05a6e89eb775b847f3278b36e0aadd14196",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/DirectImage.lean": "55e39c4806b4ec8e34408bed7cfeed11d5a9a8b41ee39b174df6ab8e15905348",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperBaseChangeTheorem.lean": "359e9d0a29f5e5ee64c84d723cd8ba19f3a039e70f949a3e814de57a94cdec94",
+    "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean": "e1d0a92737405aec68ed643078b79eaf9bcbbab736d82ea9aa429caed14a133d",
+    "Aglib/Algebra/Homology/DerivedCategory/Ext/BiproductComparison.lean": "8851e330dd2ae53f1b26f3876078379849302c51a5f3e9d12eb3a6697229fb77",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/FiniteTypeCohomology.lean": "c8c5546b0678174069410be465f53c5bb86ef2a6adafa17340e2f32123226cba",
+    "Aglib/CategoryTheory/Preadditive/Annihilator/ProductReindex.lean": "fa0b2ddb233bcc2c01cb0a7320e475adf49ca5ac9aa2af1ad62e2bdc893a27cb",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/UnboundedOpen.lean": "3755541cc34d979b48b005a25864580eec9f2adba6b1ad6abd1c7c369f81d2f9",
+    "Aglib/CategoryTheory/Adjunction/Mates.lean": "0fee0f17837c36d278638319bbe68cc6e9d4449a75cd1de5adb780f5d1e67f4e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperAmplitude.lean": "b79ae1983a0fc1037ea236a08953e81f409c7068c9fe79e495ee17671807cabd",
+    "Aglib/CategoryTheory/NatTrans/SourceExchange/Pasting.lean": "26b039f9a294dee238a786078f9aced5f5b4a25296dd59468bc1e159d41a81e8",
+    "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean": "07da86d8361ff33df9e6bd4f82249c17b06a6abd9d0d7eba34c05edb4eae7e57",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleCartesianComposition.lean": "4d564a9137907a94c981dfb6f2f5c459ac78af85e80770ed68f6a005d3fe1963",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TripleCartesianMaps.lean": "34ad2671501e7bcd806025a911255dbbf4321a723da59f322c5f678ab1e8f7e8",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/ProperOpen/RefinementRectangle.lean": "685368c22281436c2496c6fe3b08e517f5d4c79fb6e2bd50e0531382b9a816f3",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/TripleCompositionComparisonSquares.lean": "4b6ecc273ca1b0d37684ca889073b6aceb247e0218e5934e14f1939b1ec0e07e",
+    "Aglib/AlgebraicGeometry/Compactification/Refinements/TripleCompositionSquares.lean": "4d117ae873c40796992765fb8918ed5fee67db12e05e9da6d33a9a9d6f9db2be",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/ProperOpen/HorizontalCoherence.lean": "af5e66a059ad5a2d708ec1c2917cfb7c2bc29e2fc5048908ea469375c1e04760",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/ProperOpen/TorsionCoherence.lean": "71e38d132c9bafff5ad9ab6709e08f3a0c1b3a98a30901fd38cbb74982a9bced",
+    "Aglib/CategoryTheory/Functor/ImageTripleCompositionPredicate.lean": "1c047ec34335b97f535de77f657390fda7975d4f6e6dacf484b7aaa7b0e424a7",
+    "Aglib/CategoryTheory/Functor/ImageCartesianComposition.lean": "56d10bedb9c6209450ac7a70e19a7b4d3aaccf0796ffe8f895087d5fed2595b9",
+    "Aglib/CategoryTheory/Adjunction/NaturalPastedRectangle.lean": "47a9ce480d896849dab5a8196bf8c82dd344f411ad07e3b7a38714b255767de1",
+    "Aglib/AlgebraicGeometry/Limits/Range.lean": "007d960c9740344cbd39ae11435f32dd8ce3c07ceb1e6b844784b6d2323fd2e7"
+  },
+  "final_identity_check": "All17 archive hashes and all39 captured current source hashes matched. No source drift.",
+  "remaining_boundary": "No new mathematical/source-premise gap. Bare old D receipts remain unbound as CPP; D1130 additionally has a claim/archive hash mismatch, which is not admitted. D934 corollaries retain its actual source/math/CPP boundary. No builds/tests/replay/Git/source edits, existing1151 recertification, established status or adjacent B/C review performed. No old convenience wrapper is claimed to exist or compile. No incorporated load-bearing repair supplied by this reviewer."
+}
+

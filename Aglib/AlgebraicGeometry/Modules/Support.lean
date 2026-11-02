@@ -6,6 +6,7 @@ Authors: kangxyz
 
 module
 
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.Stalk
 public import Aglib.AlgebraicGeometry.Modules.Exact
 public import Mathlib.Topology.Sheaves.Abelian
 /-!
@@ -30,22 +31,12 @@ namespace AlgebraicGeometry.Scheme.Modules
 
 /-- The underlying abelian-group stalk functor on actual `𝒪_X`-modules. -/
 abbrev stalkFunctor (X : Scheme.{u}) (x : X) : X.Modules ⥤ AddCommGrpCat.{u} :=
-  Scheme.Modules.toPresheaf X ⋙ TopCat.Presheaf.stalkFunctor AddCommGrpCat.{u} x
+  SheafOfModulesOfCommRing.stalkFunctor X.sheaf x
 
 /-- A module sheaf is zero exactly when all its stalks are zero. -/
 theorem isZero_iff_stalks {X : Scheme.{u}} (M : X.Modules) :
-    IsZero M ↔ ∀ x : X, IsZero ((stalkFunctor X x).obj M) := by
-  have h : IsZero M ↔ IsZero ((SheafOfModules.toSheaf X.ringCatSheaf).obj M) := by
-    let F := SheafOfModules.toSheaf X.ringCatSheaf
-    constructor
-    · exact F.map_isZero
-    · intro hM
-      apply (IsZero.iff_id_eq_zero _).2
-      apply F.map_injective
-      rw [F.map_id, F.map_zero]
-      exact (IsZero.iff_id_eq_zero _).1 hM
-  exact h.trans (TopCat.Sheaf.isZero_iff_stalkFunctor_obj_isZero
-    ((SheafOfModules.toSheaf X.ringCatSheaf).obj M))
+    IsZero M ↔ ∀ x : X, IsZero ((stalkFunctor X x).obj M) :=
+  SheafOfModulesOfCommRing.isZero_iff_stalks (R := X.sheaf) M
 
 /-- The ordinary stalk support of an `𝒪_X`-module, without any finiteness
 assumption or implicit assertion that this set is closed. -/

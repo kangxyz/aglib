@@ -1,0 +1,28 @@
+NATIVE_LAKE_SETUP_COMMAND ["/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake", "--no-build", "setup-file", "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean"]
+NATIVE_MODULE_SETUP {"complete_options_equal": true, "isModule": true, "name": "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction", "options": {"autoImplicit": false, "warningAsError": true, "weak.linter.mathlibStandardSet": true, "weak.linter.style.longFile": 1500}, "sha256": "1e533fac3f194e7dd48e9645ffcbdbe5e8caf1ecb060524ca2ff7bc28d79ea59"}
+V34_NATIVE_NORMALIZED_OPERATIONAL_OBJECTS_BEGIN sha256=c85359795a3003586069cec9b771279dab797deabe13219a80a5faa28ae45605
+NATIVE_DIAGNOSTIC_ARGV ["/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake", "--no-build", "env", "/root/autodl-tmp/lean-build/logs/remote-b5c265fe45be48848e0cf921f5d7ed9c/toolchain/bin/lean", "/root/autodl-tmp/lean-build/logs/remote-b5c265fe45be48848e0cf921f5d7ed9c/NormalizedOperationalObjects-v34.lean", "--setup", "/root/autodl-tmp/lean-build/logs/remote-b5c265fe45be48848e0cf921f5d7ed9c/NativeGlobal.setup.json"]
+V34_RAW_SECTION_BODY remainingHB=176193
+V34_RAW_SECTION_VALUE_READY remainingHB=108439
+/root/autodl-tmp/lean-build/logs/remote-b5c265fe45be48848e0cf921f5d7ed9c/NormalizedOperationalObjects-v34.lean:836:2: error: Unused tactic linter: `run_tac
+  Lean.logInfo m!"V34_RAW_SECTION_BODY remainingHB={(← Lean.getRemainingHeartbeats) / 1000}"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-b5c265fe45be48848e0cf921f5d7ed9c/NormalizedOperationalObjects-v34.lean:868:2: error: Unused tactic linter: `run_tac
+  Lean.logInfo m!"V34_RAW_SECTION_VALUE_READY remainingHB={(← Lean.getRemainingHeartbeats) / 1000}"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+V34_LITERAL_BODY remainingHB=84117
+V34_VALUE_PRODUCERS_READY remainingHB=76457
+V34_FACTORY_BOUND remainingHB=75195
+V34_OBJECT_VIEWS_NORMALIZED remainingHB=74013
+V34_MAPS_BOUND remainingHB=67784
+/root/autodl-tmp/lean-build/logs/remote-b5c265fe45be48848e0cf921f5d7ed9c/NormalizedOperationalObjects-v34.lean:871:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+V34_FINITE_ALIAS_BODY remainingHB=84170
+/root/autodl-tmp/lean-build/logs/remote-b5c265fe45be48848e0cf921f5d7ed9c/NormalizedOperationalObjects-v34.lean:950:16: error: (kernel) unknown constant '_private.Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction.0.AlgebraicGeometry.Scheme.EtaleCohomology.Constructible.FiniteCogenerators.Global.representedRestrictionIso_hom_app'
+V34_NATIVE_NORMALIZED_OPERATIONAL_OBJECTS_END exit=1
+{"prefix_exit": 1, "source_sha256": "c85359795a3003586069cec9b771279dab797deabe13219a80a5faa28ae45605", "native_setup_sha256": "1e533fac3f194e7dd48e9645ffcbdbe5e8caf1ecb060524ca2ff7bc28d79ea59", "boundary": "V34 proof prefix only; ordinary fullGlobal and exact eligible Proper endpoints follow only on actual pass and matching source guards."}

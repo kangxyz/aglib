@@ -1,0 +1,16 @@
+{
+  "status": "PASS: faithful logger-free whole-original-equation candidate only",
+  "candidate": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/repair-v6/diagnostics/FieldLoggerFree.lean",
+  "candidate_sha256": "5bbebaa438fc86e11cd9e6bc87eb16af223710c941a257ffc0bde44e099284f9",
+  "run": "remote-dd2ccbe6f9dc4ee784aaafdc85ae74cb",
+  "source": "1fc29d52148d1cd89f2c66eb71592090b2ff9f9fa90721abe931f372d79bdc3d",
+  "exit_code": 0,
+  "frontends": 1,
+  "reported_elapsed_seconds": 130.414,
+  "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-dd2ccbe6f9dc4ee784aaafdc85ae74cb/build.log",
+  "log_sha256": "797155082b08004ea9e6054ebee1cd8e2bdffa54a655e9a73f2669b566c0b389",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-dd2ccbe6f9dc4ee784aaafdc85ae74cb/receipt.json",
+  "receipt_sha256": "97323339f70d5a99431cbd3bdd02d4dfc785dfdfdcbca941c53defdccbc4f643",
+  "meaning": "The literal old native Field representative theorem and whole original factorization/class endpoints compile under exact native setup/defaults with no Meta/data helper/logger and no new source option. In-place simp at the inferred whole hfactor equation and goal followed by exact succeeds on this actual basis. No unique cause is inferred from the earlier raw universe-order or proof-witness diagnostics.",
+  "limits": "N Field616b and SquareTransport926601 remain unchanged, so this is not production/root/C56 coverage. The separate smallest pointwise1de5 candidate is running on B. Preserve failed probes, e85 logger-only exit1 and published1e15 recursion failure on their actual sources; no relabeling."
+}

@@ -1,0 +1,641 @@
+{
+  "review_kind": "independent_complex_ordinary",
+  "reviewer": "/root/review_roots_section_whole",
+  "source_author": "/root/roots_section_whole_alternative",
+  "question": "Reconcile the whole actual functor-equality transport lemma and its exact native roots binding, preserving the reviewed whole-sigma coefficient/H1 route and all original conclusions.",
+  "verdict": "PASS_MATHEMATICAL_AND_SOURCE_CORRESPONDENCE_CPP_PENDING",
+  "established_status_authorized": false,
+  "writing_acceptance": false,
+  "source_identity": {
+    "root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025",
+    "entry_head": "3467423400c765167730d4372704650a52ab3a95",
+    "N_head": "3ab570353d8ccfb0db62b01300f7be9a79ec44a8",
+    "candidate_packet": "migration/implementation/whole-w13-remaining/roots-section-whole-alternative-20261030/v6",
+    "lower_before": "2eda2207c7a5a3a8dced1158ff6a36767636cbb195bbba61c8e896d3f865b6fe",
+    "lower_reviewed": "fa8bc2fbd17d52c123cb471e716b468a9ada941320b9fc099ec62132b909746e",
+    "native_before": "b73fc2502fcec17922245aa5445c81552166355cf94be78da6bc28fece7d0340",
+    "native_reviewed": "c703ba7109a3019809c0cf06502cecf41e9d6179e94c6a5c365f0d7227828ddf",
+    "unchanged_family": "451c01650bf736a429d57074a957b0becba274ad4e3279768256113c0d144152",
+    "all_eleven_input_provider_hashes_match": true,
+    "additional_definition_sources": {
+      "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection.lean": "8856b0f8b5ba12512ef628a1d6fe4cfa2b0d7fcd041563cf3989bc316b7a74db",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackCoherence.lean": "600a3a8036f443038c4a5fc0b1c20d26b83ac3710572323f4f06dd1986082899"
+    },
+    "all_prior_lower_declarations_retained_exactly": true
+  },
+  "results": [
+    {
+      "id": "W13#comparison_transport_hom_app_of_whole",
+      "outcome": "PASS",
+      "conclusion": "For h : F = G, e : G iso Id, actual t : F iso Id with ht : t = eqToIso h trans e, any object equality hA : F.obj A = G.obj A and actual arrows satisfying (eqToIso hA).hom composed with q = k and q = e.hom.app A imply k = t.hom.app A.",
+      "conditions": "Exactly the displayed constructor and original objectwise/identity equations. Substitute t and eliminate h; hA is then a proof of reflexive object equality, so Lean proof irrelevance makes the transport identity. No separate compatibility between hA and congrArg(obj)h is required.",
+      "native_binding": "F = inverseImage (a composed with r), G = inverseImage (id X), h = congrArg inverseImage ha, e = inverseImageId X, t = the exact original public RHS whole iso, ht = rfl, A = mu X n; hg and hi are the original roots congruence and identity."
+    },
+    {
+      "id": "W13#comparison_transport_iso_hom_app_of_original",
+      "outcome": "PASS_UNCHANGED_NO_LONGER_NATIVE_DEPENDENCY",
+      "conclusion": "The actual k equals the component of the equality-transported e, given the literal original (eqToIso objectEquality).hom composed with q = k and q = e.hom.app A.",
+      "conditions": "Exact displayed K,h,e,A,k,q; eqToIso.hom normalization occurs in the generic category before the existing transport theorem is applied. Native premises are original rootsPullbackIso_congr and rootsPullbackIso_identity."
+    },
+    {
+      "id": "W13#sectionCoefficient_of_original_comparison",
+      "outcome": "PASS",
+      "conclusion": "H.map q.hom composed with r.hom equals (sigma.app A).hom.",
+      "conditions": "The displayed original composition and identity equations, and sigma = sourceSectionIso c i. Substituting sigma reduces the conclusion to the retained cancellation theorem via Iso.app_hom."
+    },
+    {
+      "id": "W13#sectionCoefficient_map_values_of_original_comparison",
+      "outcome": "PASS",
+      "conclusion": "E composed with Q = R for the actual supplied functions at the component of the original whole comparison sigma.",
+      "conditions": "Original composition/identity equations, sigma = sourceSectionIso c i, phi = (sigma.app A).hom, actual hE/hR construction equations, and pointwise ordinary pullback naturality. Substitution and Iso.app_hom reduce to sectionCoefficient_map_values."
+    },
+    {
+      "id": "W13#comparison_transport_hom_app_of_original",
+      "outcome": "PASS_UNCHANGED_RETAINED_ADAPTER_DEPENDENCY",
+      "conclusion": "The actual k equals the component of the equality-transported e, given the literal objectwise congruence eqToHom(h) composed with q = k and original identity q = e.hom.app A.",
+      "conditions": "Exact displayed arbitrary K,h,e,A,k,q. Native hcongr and hid are respectively rootsPullbackIso_congr ha n hn hinv and the retained rootsPullbackIso_identity."
+    },
+    {
+      "id": "W13#sectionCoefficient_map_values",
+      "outcome": "PASS_UNCHANGED_DEPENDENCY_OF_NEW_VALUE_ADAPTER",
+      "conclusion": "The actual functions satisfy E composed with Q = R before concrete class evaluation.",
+      "conditions": "Displayed original coefficient composition/identity, section-arrow correspondence, hE/hR construction equations and pointwise pullback naturality hP. Arbitrary source types V and W and an independently sized target functor T."
+    },
+    {
+      "id": "W13#coefficientFamily_transport_hom",
+      "outcome": "PASS_UNCHANGED_NO_LONGER_NATIVE_DEPENDENCY",
+      "conclusion": "Given h : i = j and (q j).hom = e.hom.app A for the actual dependent coefficient family, (q i).hom = (eqToIso (congrArg K h) trans e).hom.app A.",
+      "conditions": "The displayed arbitrary family, equality and independently established unit component; native binding is the original roots family."
+    },
+    {
+      "id": "W13#sectionCoefficient_transfer_original",
+      "outcome": "PASS_UNCHANGED_NO_LONGER_NATIVE_DEPENDENCY",
+      "conclusion": "E.comp Q = R for the actual supplied additive maps, derived before roots, schemes or Ext specialization.",
+      "conditions": "Original composition/identity equations, original section-arrow construction, ordinary pullback naturality, and hE/hQ/hR construction equations. Independent source/target group universes."
+    },
+    {
+      "id": "W13#sectionPullback_of_original_coefficients",
+      "outcome": "PASS_RETAINED_WHOLE_SIGMA_ROUTE_WHITESPACE_ONLY_DELTA",
+      "conclusion": "For arbitrary original A, B and q,s,k with the original composition and unit equations, sectionPullback applied after coefficientMap q.inv equals Sheaf.H.map s.hom after cohomologyPullback in degree one.",
+      "conditions": "Unchanged header. Native sigma is exactly sectionCoefficientNatIso r a ha, with hSigma : sigma = sourceSectionIso c i proved by rfl before object evaluation. hPhi retains (sigma.app A).hom; all original hE/hR/hp functions and separate Ext worlds are unchanged. The new generic value adapter discharges only the presentation conversion."
+    },
+    {
+      "id": "W13#rootsPullbackIso_identity",
+      "outcome": "PASS_UNCHANGED_DERIVATION",
+      "conclusion": "The original identity roots comparison equals inverseImageId X at mu X n.",
+      "conditions": "Original positive and globally invertible level; intrinsic composition and canonical unit coherence."
+    },
+    {
+      "id": "W13#rootsComposite_identity",
+      "outcome": "PASS",
+      "conclusion": "The original composite roots comparison equals the ha-transported inverse-image identity component at mu X n.",
+      "conditions": "Original ha, positive/invertible level, literal rootsPullbackIso_congr and retained rootsPullbackIso_identity. hF is congrArg inverseImage ha; t is the exact original public whole comparison; ht is rfl before mu. The implicit object equality is supplied by the existing congruence. No indexed family or new coherence premise is used."
+    },
+    {
+      "id": "W13#roots_section_coefficients",
+      "outcome": "PASS_UNCHANGED_BODY_V6_DEPENDENCY_RECONCILED",
+      "conclusion": "The original roots coefficient maps along r then a contract to the original sectionCoefficientIso component.",
+      "conditions": "Original section equality and positive/invertible level. The new body uses the existing whole sigma = sectionCoefficientNatIso with rfl constructor identity, intrinsic roots composition, reviewed composite identity, and original sectionCoefficientNatIso_app. No public premise is added."
+    },
+    {
+      "id": "W13#sectionPullback_roots",
+      "outcome": "PASS",
+      "conclusion": "sectionPullback r a ha (mu X n) (coefficientMap (rootsPullbackIso r n hn hinv).inv x) = Kummer.rootsCohomologyPullback a n hn (levelInvertible r n hinv) 1 x.",
+      "conditions": "Original schemes and section equality, 0 < n including n = 1, global level invertibility on X, independent HasExt w on X and HasExt w_prime on Y."
+    }
+  ],
+  "source_correspondence": {
+    "four_public_native_headers_textually_unchanged": true,
+    "family451_unchanged": true,
+    "family_legacy_field_separably_closed_point_galois_fiber_conditions_preserved": true,
+    "original_models_maps_inverse_directions_and_markings_preserved": true,
+    "new_desired_square_unit_or_h1_equality_premise": false,
+    "new_ext_world_identification": false,
+    "hP_provider": "Pointwise h1Pullback_coefficientMap.{u,w_prime,w} a q.inv for every actual input b",
+    "hphi_provider": "Original sectionCoefficientNatIso_app after congrArg Iso.hom and symmetry, retaining the literal (sigma.app A).hom",
+    "hE_provider": "Underlying-function equality by the original sectionPullback and coefficientIso definitions",
+    "hQ_provider": "Q is the actual coefficientMap q.inv function; no separate hQ premise in the active map_values theorem",
+    "hR_provider": "Function extensionality, original coefficientMap/h1Functor definitions, and cohomologyPullback_one before roots substitution",
+    "private_helper_header_textually_unchanged": true,
+    "final_thin_roots_declaration_textually_unchanged": true,
+    "hcongr_provider": "Literal TriangleCoherence.rootsPullbackIso_congr ha n hn hinv, carrying its original object equality as hA",
+    "hid_for_transport_provider": "Retained rootsPullbackIso_identity X n hn hinv",
+    "identity_declaration_textually_unchanged": true,
+    "hsigma_provider": "rfl from the unchanged definition of sectionCoefficientNatIso r a ha as sourceSectionIso c i; no coefficient object or Ext source occurs in this constructor equality",
+    "sigma_is_existing_original_comparison_not_new_choice": true,
+    "coefficient_contraction_declaration_textually_unchanged_from_v5": true,
+    "private_helper_whitespace_only_change_from_v5": true,
+    "whole_t_provider": "Exact original eqToIso (congrArg inverseImage ha) trans inverseImageId X; ht=rfl before mu evaluation",
+    "object_equality_alignment": "After elimination of the functor equality, any hA proof is reflexive by Lean proof irrelevance; no extra model or coherence premise."
+  },
+  "evidence": {
+    "current_v6_cpp": "PENDING_AT_DELIVERY",
+    "v5_cpp": {
+      "run": "remote-d29208dffb0d4994966a6f688275a601",
+      "SOURCE": "a5e1d20d99830a0d4c1d3139e0a204de7e2b35f5491427e88d544647aa1b1f6f",
+      "aggregate_exit": 1,
+      "lower2eda": {
+        "exit": 0,
+        "frontend_seconds": 2.6182376593351364
+      },
+      "nativeb73": {
+        "exit": 1,
+        "kernel_failures": [
+          "54 rootsComposite_identity"
+        ],
+        "style_errors": [
+          "118 line exceeds100characters"
+        ],
+        "later_errors": "unknown rootsComposite_identity cascades"
+      },
+      "private_helper_observation": "No helper kernel timeout or unknown-constant error was reported; native module still failed. This is not an exported theorem/module pass or a matched speedup.",
+      "family451": "unreached",
+      "receipt": "migration/implementation/whole-w13-remaining/CPP-ROOTS-SECTION-WHOLE-V5.json"
+    },
+    "last_v5_inference_cut_diagnostic": {
+      "run": "remote-d645301c3ea44c46a7d3a16d8e95b66c",
+      "SOURCE": "1647aa8d1d19a3ad8c40017f9968a40edd1ca191f79b22efcb206f6bcecbbfee",
+      "source_sha256": "b3959ba0a92305851ac721563946122f07e0b5bf1fbcaf068b172376dbc48ab1",
+      "exit": 1,
+      "outcomes": [
+        "rootsCongr_value_cut: enabled defProp rejection",
+        "rootsIdentity_value_cut: enabled defProp rejection",
+        "rootsComposite_inferred_cut: kernel deterministic timeout at74"
+      ],
+      "clean_pass": false,
+      "limits": "No original theorem closure, public-header-only cause or exact kernel conversion pair follows; linters remained enabled.",
+      "receipt": "migration/implementation/whole-w13-remaining/performance/roots-section-native/diagnosis-v5-cuts/DIAGNOSIS-RESULT-v3.json"
+    },
+    "earlier_history": "V4/v3 CPP, instrumented profile and formation-only checks remain in prior_v5_review and its nested history on their exact sources.",
+    "evidence_reconciliation": "V5 CPP-pending is replaced by actual lower-pass/native-root-kernel-and-style-fail. Helper error absence is only partial reported progress. Inference diagnostics have no clean pass. None of these outputs is v6 coverage.",
+    "reviewer_execution": "Read-only source/hash/text inspection only; no Lean, CPP, test, lint, probe, network, replay or client execution.",
+    "speedup_or_unique_compiler_cause_claim": false
+  },
+  "mathematical_proof_obligations": [],
+  "remaining_gap": "Actual ordinary v6 CPP must close for lowerfa8bc2fb, nativec703ba71 and existing Family451; source owner continues it independently. No v6 compiler/performance pass is claimed.",
+  "not_reopened": [
+    "FGf4e",
+    "Marked290",
+    "RootStalk6af",
+    "positive public results"
+  ],
+  "writes": [
+    "migration/reviews/whole-w13-roots-section-continuation-20261030.md",
+    "migration/reviews/whole-w13-roots-section-continuation-20261030.json"
+  ],
+  "N_P_source_or_git_mutations": false,
+  "revision": "v6",
+  "material_route_change": "Native composite identity now uses the actual functor equality and original whole t, with ht=rfl before coefficient evaluation, rather than an indexed-family transport lemma. The separate hA is exactly the producer object equality and needs no extra coherence by Lean proof irrelevance. The whole-sigma coefficient body is unchanged; the H1 helper changes only by line wrapping.",
+  "material_mathematical_retraction": null,
+  "prior_v5_review": {
+    "review_kind": "independent_complex_ordinary",
+    "reviewer": "/root/review_roots_section_whole",
+    "source_author": "/root/roots_section_whole_alternative",
+    "question": "Reconcile three generic adapters and the changed native transport, coefficient-contraction and arbitrary-coefficient value applications, preserving literal original comparison heads and all public conclusions.",
+    "verdict": "PASS_MATHEMATICAL_AND_SOURCE_CORRESPONDENCE_CPP_PENDING",
+    "established_status_authorized": false,
+    "writing_acceptance": false,
+    "source_identity": {
+      "root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025",
+      "entry_head": "3467423400c765167730d4372704650a52ab3a95",
+      "N_head": "3ab570353d8ccfb0db62b01300f7be9a79ec44a8",
+      "candidate_packet": "migration/implementation/whole-w13-remaining/roots-section-whole-alternative-20261030/v5",
+      "lower_before": "4ba68c21bc0b2da297849ca121d5c0e122e60a2c2d6507a94b0b0c22ba0bf356",
+      "lower_reviewed": "2eda2207c7a5a3a8dced1158ff6a36767636cbb195bbba61c8e896d3f865b6fe",
+      "native_before": "72f3cf29f5074edace4ad239c05f3571488c92e4c8db6d665f943decfc11ab3c",
+      "native_reviewed": "b73fc2502fcec17922245aa5445c81552166355cf94be78da6bc28fece7d0340",
+      "unchanged_family": "451c01650bf736a429d57074a957b0becba274ad4e3279768256113c0d144152",
+      "all_eleven_input_provider_hashes_match": true,
+      "additional_definition_sources": {
+        "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection.lean": "8856b0f8b5ba12512ef628a1d6fe4cfa2b0d7fcd041563cf3989bc316b7a74db",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackCoherence.lean": "600a3a8036f443038c4a5fc0b1c20d26b83ac3710572323f4f06dd1986082899"
+      },
+      "all_prior_lower_declarations_retained_exactly": true
+    },
+    "results": [
+      {
+        "id": "W13#comparison_transport_iso_hom_app_of_original",
+        "outcome": "PASS",
+        "conclusion": "The actual k equals the component of the equality-transported e, given the literal original (eqToIso objectEquality).hom composed with q = k and q = e.hom.app A.",
+        "conditions": "Exact displayed K,h,e,A,k,q; eqToIso.hom normalization occurs in the generic category before the existing transport theorem is applied. Native premises are original rootsPullbackIso_congr and rootsPullbackIso_identity."
+      },
+      {
+        "id": "W13#sectionCoefficient_of_original_comparison",
+        "outcome": "PASS",
+        "conclusion": "H.map q.hom composed with r.hom equals (sigma.app A).hom.",
+        "conditions": "The displayed original composition and identity equations, and sigma = sourceSectionIso c i. Substituting sigma reduces the conclusion to the retained cancellation theorem via Iso.app_hom."
+      },
+      {
+        "id": "W13#sectionCoefficient_map_values_of_original_comparison",
+        "outcome": "PASS",
+        "conclusion": "E composed with Q = R for the actual supplied functions at the component of the original whole comparison sigma.",
+        "conditions": "Original composition/identity equations, sigma = sourceSectionIso c i, phi = (sigma.app A).hom, actual hE/hR construction equations, and pointwise ordinary pullback naturality. Substitution and Iso.app_hom reduce to sectionCoefficient_map_values."
+      },
+      {
+        "id": "W13#comparison_transport_hom_app_of_original",
+        "outcome": "PASS_UNCHANGED_DEPENDENCY_OF_NEW_TRANSPORT_ADAPTER",
+        "conclusion": "The actual k equals the component of the equality-transported e, given the literal objectwise congruence eqToHom(h) composed with q = k and original identity q = e.hom.app A.",
+        "conditions": "Exact displayed arbitrary K,h,e,A,k,q. Native hcongr and hid are respectively rootsPullbackIso_congr ha n hn hinv and the retained rootsPullbackIso_identity."
+      },
+      {
+        "id": "W13#sectionCoefficient_map_values",
+        "outcome": "PASS_UNCHANGED_DEPENDENCY_OF_NEW_VALUE_ADAPTER",
+        "conclusion": "The actual functions satisfy E composed with Q = R before concrete class evaluation.",
+        "conditions": "Displayed original coefficient composition/identity, section-arrow correspondence, hE/hR construction equations and pointwise pullback naturality hP. Arbitrary source types V and W and an independently sized target functor T."
+      },
+      {
+        "id": "W13#coefficientFamily_transport_hom",
+        "outcome": "PASS_UNCHANGED_NO_LONGER_NATIVE_DEPENDENCY",
+        "conclusion": "Given h : i = j and (q j).hom = e.hom.app A for the actual dependent coefficient family, (q i).hom = (eqToIso (congrArg K h) trans e).hom.app A.",
+        "conditions": "The displayed arbitrary family, equality and independently established unit component; native binding is the original roots family."
+      },
+      {
+        "id": "W13#sectionCoefficient_transfer_original",
+        "outcome": "PASS_UNCHANGED_NO_LONGER_NATIVE_DEPENDENCY",
+        "conclusion": "E.comp Q = R for the actual supplied additive maps, derived before roots, schemes or Ext specialization.",
+        "conditions": "Original composition/identity equations, original section-arrow construction, ordinary pullback naturality, and hE/hQ/hR construction equations. Independent source/target group universes."
+      },
+      {
+        "id": "W13#sectionPullback_of_original_coefficients",
+        "outcome": "PASS",
+        "conclusion": "For arbitrary original A, B and q,s,k with the original composition and unit equations, sectionPullback applied after coefficientMap q.inv equals Sheaf.H.map s.hom after cohomologyPullback in degree one.",
+        "conditions": "Unchanged header. Native sigma is exactly sectionCoefficientNatIso r a ha, with hSigma : sigma = sourceSectionIso c i proved by rfl before object evaluation. hPhi retains (sigma.app A).hom; all original hE/hR/hp functions and separate Ext worlds are unchanged. The new generic value adapter discharges only the presentation conversion."
+      },
+      {
+        "id": "W13#rootsPullbackIso_identity",
+        "outcome": "PASS_UNCHANGED_DERIVATION",
+        "conclusion": "The original identity roots comparison equals inverseImageId X at mu X n.",
+        "conditions": "Original positive and globally invertible level; intrinsic composition and canonical unit coherence."
+      },
+      {
+        "id": "W13#rootsComposite_identity",
+        "outcome": "PASS",
+        "conclusion": "The original composite roots comparison equals the ha-transported inverse-image identity component at mu X n.",
+        "conditions": "Original ha, positive/invertible level, literal rootsPullbackIso_congr and retained rootsPullbackIso_identity supplied to comparison_transport_iso_hom_app_of_original."
+      },
+      {
+        "id": "W13#roots_section_coefficients",
+        "outcome": "PASS_CHANGED_BODY_AND_DEPENDENCY_RECONCILED",
+        "conclusion": "The original roots coefficient maps along r then a contract to the original sectionCoefficientIso component.",
+        "conditions": "Original section equality and positive/invertible level. The new body uses the existing whole sigma = sectionCoefficientNatIso with rfl constructor identity, intrinsic roots composition, reviewed composite identity, and original sectionCoefficientNatIso_app. No public premise is added."
+      },
+      {
+        "id": "W13#sectionPullback_roots",
+        "outcome": "PASS",
+        "conclusion": "sectionPullback r a ha (mu X n) (coefficientMap (rootsPullbackIso r n hn hinv).inv x) = Kummer.rootsCohomologyPullback a n hn (levelInvertible r n hinv) 1 x.",
+        "conditions": "Original schemes and section equality, 0 < n including n = 1, global level invertibility on X, independent HasExt w on X and HasExt w_prime on Y."
+      }
+    ],
+    "source_correspondence": {
+      "four_public_native_headers_textually_unchanged": true,
+      "family451_unchanged": true,
+      "family_legacy_field_separably_closed_point_galois_fiber_conditions_preserved": true,
+      "original_models_maps_inverse_directions_and_markings_preserved": true,
+      "new_desired_square_unit_or_h1_equality_premise": false,
+      "new_ext_world_identification": false,
+      "hP_provider": "Pointwise h1Pullback_coefficientMap.{u,w_prime,w} a q.inv for every actual input b",
+      "hphi_provider": "Original sectionCoefficientNatIso_app after congrArg Iso.hom and symmetry, retaining the literal (sigma.app A).hom",
+      "hE_provider": "Underlying-function equality by the original sectionPullback and coefficientIso definitions",
+      "hQ_provider": "Q is the actual coefficientMap q.inv function; no separate hQ premise in the active map_values theorem",
+      "hR_provider": "Function extensionality, original coefficientMap/h1Functor definitions, and cohomologyPullback_one before roots substitution",
+      "private_helper_header_textually_unchanged": true,
+      "final_thin_roots_declaration_textually_unchanged": true,
+      "hcongr_provider": "Literal TriangleCoherence.rootsPullbackIso_congr ha n hn hinv, with eqToIso(...).hom exactly preserved at the native call",
+      "hid_for_transport_provider": "Retained rootsPullbackIso_identity X n hn hinv",
+      "identity_declaration_textually_unchanged": true,
+      "coefficient_contraction_header_unchanged_body_changed_and_reviewed": true,
+      "hsigma_provider": "rfl from the unchanged definition of sectionCoefficientNatIso r a ha as sourceSectionIso c i; no coefficient object or Ext source occurs in this constructor equality",
+      "sigma_is_existing_original_comparison_not_new_choice": true
+    },
+    "evidence": {
+      "current_v5_cpp": "PENDING_AT_DELIVERY",
+      "v4_cpp": {
+        "run": "remote-05824407503d4f9ab9400a0ea4be9b2f",
+        "SOURCE": "755f892ddd60ca1b1a8910026d88645ce854cb096d8b0161a5d4752d9c7bf599",
+        "aggregate_exit": 1,
+        "lower4ba": {
+          "exit": 0,
+          "frontend_seconds": 3.360807627439499
+        },
+        "native72": {
+          "exit": 1,
+          "kernel_failures": [
+            "54 rootsComposite_identity",
+            "85 private sectionPullback_of_original_coefficients"
+          ],
+          "later_errors": "cascades"
+        },
+        "family451": "unreached",
+        "receipt": "migration/implementation/whole-w13-remaining/CPP-ROOTS-SECTION-WHOLE-V4.json"
+      },
+      "v4_instrumented_proof_profile": {
+        "run": "remote-522b2137e14347c5926fc4dcb5b0d775",
+        "SOURCE": "1f0ab1175ab2b027f33b80f395cf249591065e0f226734a911f018918fe89952",
+        "exit": 1,
+        "instrumented_source_sha256": "a01a7a59f728fe397e298d04076dcd474661e1eb04c2d167035286684e323d70",
+        "native_setup_sha256": "9137bfeafe632490c8fbc3fe53bcb975beee01430a81ecab39f7b7594ca00d0a",
+        "reported_boundaries": [
+          "Literal objectwise eqToIso.hom versus generic eqToHom",
+          "Original sectionCoefficientNatIso component versus reconstructed sourceSectionIso component"
+        ],
+        "reported_kernel_timeouts": [
+          "rootsComposite_identity",
+          "private sectionPullback_of_original_coefficients"
+        ],
+        "proof_or_speedup_coverage": false,
+        "exact_kernel_reduction_pair_or_unique_cause_established": false,
+        "receipt": "migration/implementation/whole-w13-remaining/performance/roots-section-native/diagnosis-v4-proof/DIAGNOSIS-RESULT.json",
+        "reviewer_scope": "Read bounded result summary; no profile execution or independent runtime diagnosis"
+      },
+      "earlier_v3_and_formation_evidence": "Retained in prior_v4_review.evidence on their distinct original sources; the formation-only checks prove none of the input propositions.",
+      "evidence_reconciliation": "V4 CPP-pending is replaced by its actual lower-pass/native-fail result. The instrumented profile is separate from production and formation. No prior output is relabeled as v5 coverage.",
+      "reviewer_execution": "Read-only source/hash/text inspection only; no Lean, CPP, test, lint, probe, network, replay or client execution.",
+      "speedup_or_unique_compiler_cause_claim": false
+    },
+    "mathematical_proof_obligations": [],
+    "remaining_gap": "Actual ordinary v5 CPP must close for lower2eda2207, nativeb73fc250 and existing Family451; source owner continues it independently. No v5 compiler/performance pass is claimed.",
+    "not_reopened": [
+      "FGf4e",
+      "Marked290",
+      "RootStalk6af",
+      "positive public results"
+    ],
+    "writes": [
+      "migration/reviews/whole-w13-roots-section-continuation-20261030.md",
+      "migration/reviews/whole-w13-roots-section-continuation-20261030.json"
+    ],
+    "N_P_source_or_git_mutations": false,
+    "revision": "v5",
+    "material_route_change": "The generic transport adapter accepts the literal producer eqToIso.hom form. Both coefficient and value adapters take the existing whole sigma with its definitional constructor identity, normalizing component presentation only in variable categories. The native coefficient-contraction body is changed and reviewed. Native H1 still uses whole equality of the actual functions; retained additive-hom and family-transport lemmas are not native dependencies.",
+    "material_mathematical_retraction": null,
+    "prior_v4_review": {
+      "review_kind": "independent_complex_ordinary",
+      "reviewer": "/root/review_roots_section_whole",
+      "source_author": "/root/roots_section_whole_alternative",
+      "question": "Reconcile the fixed v4 original-congruence/identity transport and arbitrary-coefficient function-value assembly against v3, preserving the exact original public conclusions and independent Ext worlds.",
+      "verdict": "PASS_MATHEMATICAL_AND_SOURCE_CORRESPONDENCE_CPP_PENDING",
+      "established_status_authorized": false,
+      "writing_acceptance": false,
+      "source_identity": {
+        "root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025",
+        "entry_head": "3467423400c765167730d4372704650a52ab3a95",
+        "N_head": "3ab570353d8ccfb0db62b01300f7be9a79ec44a8",
+        "candidate_packet": "migration/implementation/whole-w13-remaining/roots-section-whole-alternative-20261030/v4",
+        "lower_before": "8107dc2a090ac63aecad698a2c6724f63d352cfba01cfd5ad588b2108cee7f14",
+        "lower_reviewed": "4ba68c21bc0b2da297849ca121d5c0e122e60a2c2d6507a94b0b0c22ba0bf356",
+        "native_before": "e03cfe26fda95e308601af1d0e94e8492397640275a860d215af4e5d2e3d68e1",
+        "native_reviewed": "72f3cf29f5074edace4ad239c05f3571488c92e4c8db6d665f943decfc11ab3c",
+        "unchanged_family": "451c01650bf736a429d57074a957b0becba274ad4e3279768256113c0d144152",
+        "all_eleven_input_provider_hashes_match": true,
+        "additional_definition_sources": {
+          "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection.lean": "8856b0f8b5ba12512ef628a1d6fe4cfa2b0d7fcd041563cf3989bc316b7a74db",
+          "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackCoherence.lean": "600a3a8036f443038c4a5fc0b1c20d26b83ac3710572323f4f06dd1986082899"
+        },
+        "all_prior_lower_declarations_retained_exactly": true
+      },
+      "results": [
+        {
+          "id": "W13#comparison_transport_hom_app_of_original",
+          "outcome": "PASS",
+          "conclusion": "The actual k equals the component of the equality-transported e, given the literal objectwise congruence eqToHom(h) composed with q = k and original identity q = e.hom.app A.",
+          "conditions": "Exact displayed arbitrary K,h,e,A,k,q. Native hcongr and hid are respectively rootsPullbackIso_congr ha n hn hinv and the retained rootsPullbackIso_identity."
+        },
+        {
+          "id": "W13#sectionCoefficient_map_values",
+          "outcome": "PASS_CURRENT_NATIVE_DEPENDENCY",
+          "conclusion": "The actual functions satisfy E composed with Q = R before concrete class evaluation.",
+          "conditions": "Displayed original coefficient composition/identity, section-arrow correspondence, hE/hR construction equations and pointwise pullback naturality hP. Arbitrary source types V and W and an independently sized target functor T."
+        },
+        {
+          "id": "W13#coefficientFamily_transport_hom",
+          "outcome": "PASS_UNCHANGED_NO_LONGER_NATIVE_DEPENDENCY",
+          "conclusion": "Given h : i = j and (q j).hom = e.hom.app A for the actual dependent coefficient family, (q i).hom = (eqToIso (congrArg K h) trans e).hom.app A.",
+          "conditions": "The displayed arbitrary family, equality and independently established unit component; native binding is the original roots family."
+        },
+        {
+          "id": "W13#sectionCoefficient_transfer_original",
+          "outcome": "PASS_UNCHANGED_NO_LONGER_NATIVE_DEPENDENCY",
+          "conclusion": "E.comp Q = R for the actual supplied additive maps, derived before roots, schemes or Ext specialization.",
+          "conditions": "Original composition/identity equations, original section-arrow construction, ordinary pullback naturality, and hE/hQ/hR construction equations. Independent source/target group universes."
+        },
+        {
+          "id": "W13#sectionPullback_of_original_coefficients",
+          "outcome": "PASS",
+          "conclusion": "For arbitrary original A, B and q,s,k with the original composition and unit equations, sectionPullback applied after coefficientMap q.inv equals Sheaf.H.map s.hom after cohomologyPullback in degree one.",
+          "conditions": "Unchanged header: original scheme section, actual q/s/k composition and unit equations, separate HasExt w on X and HasExt w_prime on Y. The body uses sectionCoefficient_map_values with the actual target H1 functor; hE/hR/hp are discharged from original definitions, cohomologyPullback_one and h1Pullback_coefficientMap before roots specialization."
+        },
+        {
+          "id": "W13#rootsPullbackIso_identity",
+          "outcome": "PASS_UNCHANGED_DERIVATION",
+          "conclusion": "The original identity roots comparison equals inverseImageId X at mu X n.",
+          "conditions": "Original positive and globally invertible level; intrinsic composition and canonical unit coherence."
+        },
+        {
+          "id": "W13#rootsComposite_identity",
+          "outcome": "PASS",
+          "conclusion": "The original composite roots comparison equals the ha-transported inverse-image identity component at mu X n.",
+          "conditions": "Original ha, positive/invertible level, the literal rootsPullbackIso_congr equation and the retained rootsPullbackIso_identity, combined by comparison_transport_hom_app_of_original."
+        },
+        {
+          "id": "W13#roots_section_coefficients",
+          "outcome": "PASS_UNCHANGED_BODY_RECONCILED_DEPENDENCY",
+          "conclusion": "The original roots coefficient maps along r then a contract to the original sectionCoefficientIso component.",
+          "conditions": "Original section equality and positive/invertible level; actual intrinsic composition and reviewed composite identity."
+        },
+        {
+          "id": "W13#sectionPullback_roots",
+          "outcome": "PASS",
+          "conclusion": "sectionPullback r a ha (mu X n) (coefficientMap (rootsPullbackIso r n hn hinv).inv x) = Kummer.rootsCohomologyPullback a n hn (levelInvertible r n hinv) 1 x.",
+          "conditions": "Original schemes and section equality, 0 < n including n = 1, global level invertibility on X, independent HasExt w on X and HasExt w_prime on Y."
+        }
+      ],
+      "source_correspondence": {
+        "four_public_native_headers_textually_unchanged": true,
+        "identity_and_coefficient_declarations_textually_unchanged": true,
+        "family451_unchanged": true,
+        "family_legacy_field_separably_closed_point_galois_fiber_conditions_preserved": true,
+        "original_models_maps_inverse_directions_and_markings_preserved": true,
+        "new_desired_square_unit_or_h1_equality_premise": false,
+        "new_ext_world_identification": false,
+        "hP_provider": "Pointwise h1Pullback_coefficientMap.{u,w_prime,w} a q.inv for every actual input b",
+        "hphi_provider": "Unchanged sectionCoefficientNatIso_app, symmetry after congrArg Iso.hom",
+        "hE_provider": "Underlying-function equality by the original sectionPullback and coefficientIso definitions",
+        "hQ_provider": "Q is the actual coefficientMap q.inv function; no separate hQ premise in the active map_values theorem",
+        "hR_provider": "Function extensionality, original coefficientMap/h1Functor definitions, and cohomologyPullback_one before roots substitution",
+        "private_helper_header_textually_unchanged": true,
+        "final_thin_roots_declaration_textually_unchanged": true,
+        "hcongr_provider": "TriangleCoherence.rootsPullbackIso_congr ha n hn hinv, literal equation with inferred original arrows",
+        "hid_for_transport_provider": "Retained rootsPullbackIso_identity X n hn hinv"
+      },
+      "evidence": {
+        "current_v4_cpp": "PENDING_SOURCE_SYNCHRONIZATION_AT_DELIVERY",
+        "v3_cpp": {
+          "run": "remote-ce6640a43a86458e8992b92316a374c3",
+          "SOURCE": "4d26d30123ef4411969b82423c919500d51d34be6ad26687e159bfce181317ef",
+          "aggregate_exit": 1,
+          "lower8107": {
+            "exit": 0,
+            "frontend_seconds": 3.2204579561948776
+          },
+          "nativee03": {
+            "exit": 1,
+            "kernel_failures": [
+              "54 rootsComposite_identity",
+              "85 private sectionPullback_of_original_coefficients"
+            ],
+            "later_errors": "cascades"
+          },
+          "family451": "unreached",
+          "receipt": "migration/implementation/whole-w13-remaining/CPP-ROOTS-SECTION-WHOLE-V3.json"
+        },
+        "later_v3_formation_diagnostic": {
+          "run": "remote-eba1201c30df4f8990cf355760c20c2a",
+          "SOURCE": "748bf623a7e70359ed2eeb1891b22a310ebe4f8e30a123bc3098b92cb621407d",
+          "exit": 0,
+          "diagnostic_source_sha256": "b9a6aac2e8befd8d83b22d31ba2014a6691351f320ab89300eba4e4e87a9c884",
+          "native_setup_sha256": "9137bfeafe632490c8fbc3fe53bcb975beee01430a81ecab39f7b7594ca00d0a",
+          "coverage": [
+            "rootsComposite_identity proposition formation",
+            "sectionPullback_of_original_coefficients proposition formation",
+            "sectionPullback_roots proposition formation"
+          ],
+          "form": "Each exact P was an argument in (_h : P) : True",
+          "original_propositions_proved": false,
+          "production_proof_coverage": false,
+          "receipt": "migration/implementation/whole-w13-remaining/performance/roots-section-native/diagnosis-v3/DIAGNOSIS-RESULT.json",
+          "distinct_from_old_never_dispatched_probe": true
+        },
+        "evidence_reconciliation": "The v3 CPP-pending status is replaced by its actual failed-native result. A distinct later formation-only run succeeded, without proving P. Neither run is v4 production coverage; differing whole SOURCE identities remain distinct.",
+        "reviewer_execution": "Read-only source/hash/text inspection only; no Lean, CPP, test, lint, probe, network, replay or client execution.",
+        "speedup_or_unique_compiler_cause_claim": false
+      },
+      "mathematical_proof_obligations": [],
+      "remaining_gap": "Actual ordinary v4 CPP must close for lower4ba68c21, native72f3cf29 and existing Family451; source owner is continuing it independently. No v4 compiler/performance pass is claimed.",
+      "not_reopened": [
+        "FGf4e",
+        "Marked290",
+        "RootStalk6af",
+        "positive public results"
+      ],
+      "writes": [
+        "migration/reviews/whole-w13-roots-section-continuation-20261030.md",
+        "migration/reviews/whole-w13-roots-section-continuation-20261030.json"
+      ],
+      "N_P_source_or_git_mutations": false,
+      "revision": "v4",
+      "prior_v3_review": {
+        "review_kind": "independent_complex_ordinary",
+        "reviewer": "/root/review_roots_section_whole",
+        "source_author": "/root/roots_section_whole_alternative",
+        "question": "Full original additive-map comparison and equality-family transport before roots specialization, with actual native premise applicability and independent Ext universes.",
+        "verdict": "PASS_MATHEMATICAL_AND_SOURCE_CORRESPONDENCE_CPP_PENDING",
+        "established_status_authorized": false,
+        "writing_acceptance": false,
+        "source_identity": {
+          "root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025",
+          "entry_head": "3467423400c765167730d4372704650a52ab3a95",
+          "N_head": "3ab570353d8ccfb0db62b01300f7be9a79ec44a8",
+          "candidate_packet": "migration/implementation/whole-w13-remaining/roots-section-whole-alternative-20261030",
+          "lower_before": "13306394b8af27df9d7bb7b1f7b8ec210094c87f577706465ededc02fa33c792",
+          "lower_reviewed": "8107dc2a090ac63aecad698a2c6724f63d352cfba01cfd5ad588b2108cee7f14",
+          "native_before": "bd1296653631711748c76009f8a8dca41e18d26905c00287aa2dde685b70f4b5",
+          "native_reviewed": "e03cfe26fda95e308601af1d0e94e8492397640275a860d215af4e5d2e3d68e1",
+          "unchanged_family": "451c01650bf736a429d57074a957b0becba274ad4e3279768256113c0d144152",
+          "all_eleven_input_provider_hashes_match": true,
+          "additional_definition_sources": {
+            "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection.lean": "8856b0f8b5ba12512ef628a1d6fe4cfa2b0d7fcd041563cf3989bc316b7a74db",
+            "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackCoherence.lean": "600a3a8036f443038c4a5fc0b1c20d26b83ac3710572323f4f06dd1986082899"
+          }
+        },
+        "results": [
+          {
+            "id": "W13#coefficientFamily_transport_hom",
+            "outcome": "PASS",
+            "conclusion": "Given h : i = j and (q j).hom = e.hom.app A for the actual dependent coefficient family, (q i).hom = (eqToIso (congrArg K h) trans e).hom.app A.",
+            "conditions": "The displayed arbitrary family, equality and independently established unit component; native binding is the original roots family."
+          },
+          {
+            "id": "W13#sectionCoefficient_transfer_original",
+            "outcome": "PASS",
+            "conclusion": "E.comp Q = R for the actual supplied additive maps, derived before roots, schemes or Ext specialization.",
+            "conditions": "Original composition/identity equations, original section-arrow construction, ordinary pullback naturality, and hE/hQ/hR construction equations. Independent source/target group universes."
+          },
+          {
+            "id": "W13#sectionPullback_of_original_coefficients",
+            "outcome": "PASS",
+            "conclusion": "For arbitrary original A, B and q,s,k with the original composition and unit equations, sectionPullback applied after coefficientMap q.inv equals Sheaf.H.map s.hom after cohomologyPullback in degree one.",
+            "conditions": "Original scheme section and separate HasExt w on X and HasExt w_prime on Y. All extra generic premises are discharged from definitions and existing naturality."
+          },
+          {
+            "id": "W13#rootsPullbackIso_identity",
+            "outcome": "PASS_UNCHANGED_DERIVATION",
+            "conclusion": "The original identity roots comparison equals inverseImageId X at mu X n.",
+            "conditions": "Original positive and globally invertible level; intrinsic composition and canonical unit coherence."
+          },
+          {
+            "id": "W13#rootsComposite_identity",
+            "outcome": "PASS",
+            "conclusion": "The original composite roots comparison equals the ha-transported inverse-image identity component at mu X n.",
+            "conditions": "Original ha : a composed with r = id, positive/invertible level, and the reviewed original identity comparison."
+          },
+          {
+            "id": "W13#roots_section_coefficients",
+            "outcome": "PASS_UNCHANGED_BODY_RECONCILED_DEPENDENCY",
+            "conclusion": "The original roots coefficient maps along r then a contract to the original sectionCoefficientIso component.",
+            "conditions": "Original section equality and positive/invertible level; actual intrinsic composition and reviewed composite identity."
+          },
+          {
+            "id": "W13#sectionPullback_roots",
+            "outcome": "PASS",
+            "conclusion": "sectionPullback r a ha (mu X n) (coefficientMap (rootsPullbackIso r n hn hinv).inv x) = Kummer.rootsCohomologyPullback a n hn (levelInvertible r n hinv) 1 x.",
+            "conditions": "Original schemes and section equality, 0 < n including n = 1, global level invertibility on X, independent HasExt w on X and HasExt w_prime on Y."
+          }
+        ],
+        "source_correspondence": {
+          "four_public_native_headers_textually_unchanged": true,
+          "identity_and_coefficient_declarations_textually_unchanged": true,
+          "family451_unchanged": true,
+          "family_legacy_field_separably_closed_point_galois_fiber_conditions_preserved": true,
+          "original_models_maps_inverse_directions_and_markings_preserved": true,
+          "new_desired_square_unit_or_h1_equality_premise": false,
+          "new_ext_world_identification": false,
+          "hP_provider": "h1Pullback_coefficientMap.{u,w_prime,w}, promoted by additive-map extensionality",
+          "hphi_provider": "sectionCoefficientNatIso_app, symmetry after congrArg Iso.hom",
+          "hE_provider": "Original sectionPullback and coefficientIso definitions",
+          "hQ_provider": "Original coefficientMap and h1Functor definitions",
+          "hR_provider": "cohomologyPullback_one and original coefficientMap/h1Functor definitions"
+        },
+        "evidence": {
+          "current_cpp": "PENDING",
+          "historical_run": "remote-0970ceac18f94b9f863d265f50534576",
+          "historical_SOURCE": "4bcd30209c17d0127ed70a957d83907cfe6734368b26c6f3c3ece93074d80d01",
+          "historical_lower133": "passed in 3.047509 seconds",
+          "historical_native_bd129665": "kernel failures at declarations 54 and 88",
+          "historical_family451": "unreached",
+          "formation_diagnostic": "NEVER_PREPARED_OR_DISPATCHED; no outcome or pending process",
+          "reconciliation": "READY v3 and the assignment supersede staging RESULT.md possible-future diagnostic wording.",
+          "reviewer_execution": "Read-only source/hash/text inspection only; no Lean, test, lint, probe, network, replay or client execution.",
+          "speedup_formation_or_unique_compiler_cause_claim": false
+        },
+        "mathematical_proof_obligations": [],
+        "remaining_gap": "Actual ordinary CPP must close for the changed lower provider, native helper/public theorems and existing Family451 consumer; no current compiler or performance success is claimed.",
+        "not_reopened": [
+          "FGf4e",
+          "Marked290",
+          "RootStalk6af",
+          "positive public results"
+        ],
+        "writes": [
+          "migration/reviews/whole-w13-roots-section-continuation-20261030.md",
+          "migration/reviews/whole-w13-roots-section-continuation-20261030.json"
+        ],
+        "N_P_source_or_git_mutations": false
+      },
+      "prior_v3_review_is_historical": true,
+      "material_route_change": "The v4 native helper proves whole equality of the actual underlying functions using sectionCoefficient_map_values, then evaluates it while coefficients are still arbitrary. The v3 additive-hom equality theorem and dependent-family transport remain byte-identical but are no longer native dependencies. No public conclusion is weakened.",
+      "material_mathematical_retraction": null
+    },
+    "prior_v4_review_is_historical": true
+  },
+  "prior_v5_review_is_historical": true
+}

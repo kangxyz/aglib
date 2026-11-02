@@ -4,6 +4,20 @@
 
 Each hom-component equation uses the installed right-derived unit, rather than an arbitrary choice of comparison. [Identity](Identity.lean) constructs `rightDerivedFunctorPlusIdIso` and `rightDerivedFunctorPlusIdIso_unit` from the original identity comparison.
 
+[Comparison/ThreeFactor](Comparison/ThreeFactor.lean) constructs
+`rightDerivedFunctorPlusThreeFactorIso F G H I e` from the inverse canonical
+composition comparison for `F ⋙ G`, the derived image of the original
+`e : F ⋙ G ≅ H ⋙ I`, and the canonical comparison for `H ⋙ I`.
+Its whole `_unit` equation retains `rightDerivedFunctorPlusCompUnit` on both
+sides; `_unit_app` gives its components. The four category, Hom and chosen
+derived-model universes remain independent. Invertibility of the installed
+composition maps is supplied by proved homology preservation, injective
+preservation, acyclic images, or native composite derivability. The branch
+agreement theorems identify the original isomorphisms by their units.
+Actual clients are etale scalar forgetting, the Zariski finite-locally-free
+projection formula, and closed-right-adjoint open locality. Their named
+`_eq_original` laws retain the original three factors.
+
 Consumers are [one-sided derived contraction](../Plus/README.md), actual scheme pushforward composition, Godement calculation and derived projection formula. Neither composition branch may be used without its corresponding preservation hypothesis.
 
 [Homology](Homology.lean), imported as `Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Homology`, constructs `CategoryTheory.Functor.mapCochainComplexPlusHomologyIso` for an additive functor preserving homology. With `EnoughInjectives` in the source and derived categories for both abelian categories, `rightDerivedFunctorPlusHomologyIso` compares the actual right-derived functor followed by homology with homology followed by the original functor. `rightDerivedFunctorPlusHomologyIso_unit` preserves the installed unit and the original complex homology maps. `DerivedCategory.Plus.homologyFunctorFactors` supplies the comparison through the actual bounded-below localization. This result does not assert such a calculation for an arbitrary additive functor.
@@ -97,6 +111,12 @@ exchange-map invertibility, proper base change, or unbounded derived scope. The 
 the principal-owned selected integration checks passed. See the
 migration note for the exact claim boundary.
 
+
+[BaseChange/OrdinaryNatTrans](BaseChange/OrdinaryNatTrans.lean) is the shared
+ordinary natural-transformation interface consumed by the native higher
+base-change adapter. Its actual-unit premise and other hypotheses remain
+explicit in the public declarations.
+
 ## Scalar-forgetting exchange cubes
 
 `BaseChange/ExactIsoCube`, `ExactMateCube`, `MateCubeComponent` and
@@ -105,3 +125,30 @@ whole cube before deriving. `Conservative` proves reflection of isomorphisms
 for the actual exact derived functor. Their geometric consumer is the
 original genuine-module scalar-forgetting exchange square and finite base
 change in `EtaleCohomology/Exceptional/Derived`, with independent models.
+
+[BaseChange/ExactUnitIsomorphism](BaseChange/ExactUnitIsomorphism.lean)
+proves invertibility of an original derived exchange from its actual unit
+equation and the stated exactness/acyclicity data.
+[BaseChange/UnderlyingMate](BaseChange/UnderlyingMate.lean) assembles the
+original inverse exact square, rotates the canonical three-factor unit
+using only exact horizontal units, and identifies the specified direct
+comparison as the derived mate. Four genuinely different categories retain
+independent derived realizations. The native module/abelian forgetting
+consumer uses its existing relative-acyclicity proof, without requiring
+forgetting to preserve injectives.
+
+## Additional source entry points
+
+- [Adjunction/TransportLeft](Adjunction/TransportLeft.lean)
+- [Adjunction/TripleComparison](Adjunction/TripleComparison.lean)
+- [Adjunction/TripleNatTransComparison](Adjunction/TripleNatTransComparison.lean)
+- [BaseChange/TargetMateModels](BaseChange/TargetMateModels.lean)
+- [BaseChange/TargetModels](BaseChange/TargetModels.lean)
+- [ChangeTargetCoherence](ChangeTargetCoherence.lean)
+- [ChangeTargetComposition](ChangeTargetComposition.lean)
+- [ChangeTargetExact](ChangeTargetExact.lean)
+- [ChangeTargetNatTrans](ChangeTargetNatTrans.lean)
+- [ChangeTargetTransport](ChangeTargetTransport.lean)
+- [ChangeTargetUnit](ChangeTargetUnit.lean)
+- [IdentityModelComparison](IdentityModelComparison.lean)
+- [IdentityTargetComposition](IdentityTargetComposition.lean)

@@ -38,10 +38,10 @@ attribute [local instance] hasSheafifyLarge
 def nativeStalkIso :
     (pointSmallEtale (η ≫ f)).sheafFiber (A := AddCommGrpCat.{u + 1}) ≅
       inverseImage f ⋙ (pointSmallEtale η).sheafFiber :=
-  (conjugateIsoEquiv
-    ((inverseImageAdjunction f).comp (pointSmallEtale η).skyscraperSheafAdjunction)
-    (pointSmallEtale (η ≫ f)).skyscraperSheafAdjunction).symm
-      (skyscraperSheafIso f η)
+  GrothendieckTopology.Point.InverseImageComparison.fiberIso
+    (pointSmallEtale (η ≫ f)) (pointSmallEtale η) (siteBaseChange f)
+    (pointEquiv f η) (fun a p => pointEquiv_naturality f η a p)
+    (inverseImage f) (inverseImageAdjunction f)
 
 /-- A coordinate of the native skyscraper adjunction unit is the original germ. -/
 @[reassoc (attr := simp)]
@@ -61,54 +61,11 @@ theorem germ_nativeStalkIso (L : AbelianSheaf.{u, u + 1} X) (U : X.Etale)
         (nativeStalkIso f η).hom.app L =
       ((inverseImageAdjunction f).unit.app L).hom.app (op U) ≫
         (pointSmallEtale η).toPresheafFiber ((siteBaseChange f).obj U)
-          (pulledBackPoint f η U p) ((inverseImage f).obj L).obj := by
-  have hu := unit_conjugateEquiv_symm
-    ((inverseImageAdjunction f).comp (pointSmallEtale η).skyscraperSheafAdjunction)
-    (pointSmallEtale (η ≫ f)).skyscraperSheafAdjunction
-    (skyscraperSheafIso f η).hom L
-  have he :
-      (pointSmallEtale (η ≫ f)).skyscraperSheafAdjunction.homEquiv _ _
-          ((nativeStalkIso f η).hom.app L) =
-        ((inverseImageAdjunction f).comp
-          (pointSmallEtale η).skyscraperSheafAdjunction).unit.app L ≫
-          (skyscraperSheafIso f η).hom.app _ := by
-    rw [Adjunction.homEquiv_unit]
-    exact hu.symm
-  have h := congrArg
-    (fun q : L ⟶ (pointSmallEtale (η ≫ f)).skyscraperSheaf
-        ((pointSmallEtale η).sheafFiber.obj ((inverseImage f).obj L)) =>
-      q.hom.app (op U) ≫
-        Pi.π (fun _ : (pointSmallEtale (η ≫ f)).fiber.obj U =>
-          (pointSmallEtale η).sheafFiber.obj ((inverseImage f).obj L)) p) he
-  erw [GrothendieckTopology.Point.skyscraperSheafAdjunction_homEquiv_apply_hom,
-    GrothendieckTopology.Point.skyscraperPresheafHomEquiv_app_π,
-    Adjunction.comp_unit_app] at h
-  simp only [Category.assoc] at h
-  change (pointSmallEtale (η ≫ f)).toPresheafFiber U p L.obj ≫
-      (nativeStalkIso f η).hom.app L =
-    ((inverseImageAdjunction f).unit.app L).hom.app (op U) ≫
-      ((((pointSmallEtale η).skyscraperSheafAdjunction.unit.app
-        ((inverseImage f).obj L)).hom.app (op ((siteBaseChange f).obj U))) ≫
-        (((skyscraperSheafIso f η).hom.app _).hom.app (op U) ≫
-          Pi.π (fun _ : (pointSmallEtale (η ≫ f)).fiber.obj U =>
-            (pointSmallEtale η).sheafFiber.obj ((inverseImage f).obj L)) p)) at h
-  exact h.trans (projection_composite
-    (((inverseImageAdjunction f).unit.app L).hom.app (op U))
-    (((pointSmallEtale η).skyscraperSheafAdjunction.unit.app
-      ((inverseImage f).obj L)).hom.app (op ((siteBaseChange f).obj U)))
-    (((skyscraperSheafIso f η).hom.app
-      ((pointSmallEtale η).sheafFiber.obj ((inverseImage f).obj L))).hom.app (op U))
-    (Pi.π (fun _ : (pointSmallEtale (η ≫ f)).fiber.obj U =>
-      (pointSmallEtale η).sheafFiber.obj ((inverseImage f).obj L)) p)
-    (Pi.π (fun _ : (pointSmallEtale η).fiber.obj ((siteBaseChange f).obj U) =>
-      (pointSmallEtale η).sheafFiber.obj ((inverseImage f).obj L))
-        (pulledBackPoint f η U p))
-    ((pointSmallEtale η).toPresheafFiber ((siteBaseChange f).obj U)
-      (pulledBackPoint f η U p) ((inverseImage f).obj L).obj)
-    (skyscraperSheafIso_hom_π f η
-      ((pointSmallEtale η).sheafFiber.obj ((inverseImage f).obj L)) U p)
-    (pointSkyscraperUnit_π (pointSmallEtale η) ((inverseImage f).obj L)
-      ((siteBaseChange f).obj U) (pulledBackPoint f η U p)))
+          (pulledBackPoint f η U p) ((inverseImage f).obj L).obj :=
+  GrothendieckTopology.Point.InverseImageComparison.germ_fiberIso
+    (pointSmallEtale (η ≫ f)) (pointSmallEtale η) (siteBaseChange f)
+    (pointEquiv f η) (fun a p => pointEquiv_naturality f η a p)
+    (inverseImage f) (inverseImageAdjunction f) L U p
 
 /-- The native point-colimit comparison has exactly the existing canonical stalk-unit map. -/
 theorem nativeStalkIso_hom (L : AbelianSheaf.{u, u + 1} X) :
@@ -123,17 +80,17 @@ instance stalkUnit_isIso (L : AbelianSheaf.{u, u + 1} X) :
   rw [← nativeStalkIso_hom f η L]
   infer_instance
 
-/-- The all-coefficient natural stalk isomorphism with the literal original map as its hom. -/
+/-- The all-coefficient comparison reuses this same proved mate and its original-unit hom. -/
 def stalkUnitNatIso :
     (pointSmallEtale (η ≫ f)).sheafFiber (A := AddCommGrpCat.{u + 1}) ≅
       inverseImage f ⋙ (pointSmallEtale η).sheafFiber :=
-  NatIso.ofComponents (fun L => asIso (stalkUnit f η L))
-    (fun q => stalkUnit_naturality f η _ q)
+  nativeStalkIso f η
 
-/-- The component map is definitionally the original canonical map on stalks. -/
+/-- The component is the original canonical map by its proved germ-unit identification. -/
 @[simp]
 theorem stalkUnitNatIso_hom (L : AbelianSheaf.{u, u + 1} X) :
-    (stalkUnitNatIso f η).hom.app L = stalkUnit f η L := rfl
+    (stalkUnitNatIso f η).hom.app L = stalkUnit f η L :=
+  nativeStalkIso_hom f η L
 
 /-- The all-coefficient isomorphism retains the original section, pulled-back point and unit. -/
 @[reassoc]
@@ -144,13 +101,6 @@ theorem germ_stalkUnitNatIso (L : AbelianSheaf.{u, u + 1} X) (U : X.Etale)
       ((inverseImageAdjunction f).unit.app L).hom.app (op U) ≫
         (pointSmallEtale η).toPresheafFiber ((siteBaseChange f).obj U)
           (pulledBackPoint f η U p) ((inverseImage f).obj L).obj :=
-  germ_stalkUnit f η L U p
-
-/-- For finite represented coefficients this is the already constructed original isomorphism. -/
-theorem stalkUnitNatIso_app_eq (L : AbelianSheaf.{u, u + 1} X)
-    (R : CoefficientRepresentation L) :
-    (stalkUnitNatIso f η).app L = CoefficientStalkBaseChange.stalkUnitIso f η L R := by
-  apply Iso.ext
-  exact (CoefficientStalkBaseChange.stalkUnitIso_hom f η L R).symm
+  germ_nativeStalkIso f η L U p
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.StalkInverseImage

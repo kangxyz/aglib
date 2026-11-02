@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.TensorExact
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.Monoidal.Objects
 public import Aglib.AlgebraicGeometry.Modules.Pullback.Free
 
 /-!
@@ -121,15 +122,12 @@ variable (X : Scheme.{u})
 /-- The existing site tensor object specialized to scheme module sheaves. -/
 def tensorSheaf (M N : SheafOfModules.{u} X.ringCatSheaf) :
     SheafOfModules.{u} X.ringCatSheaf :=
-  (SheafOfModulesOfCommRing.tensorLeftFunctor X.sheaf M).obj N
+  SheafOfModulesOfCommRing.tensorProduct X.sheaf M N
 
 /-- The existing sheafified tensor map in both module arguments. -/
 def tensorSheafMap {M M' N N' : SheafOfModules.{u} X.ringCatSheaf}
     (f : M ⟶ M') (g : N ⟶ N') : tensorSheaf X M N ⟶ tensorSheaf X M' N' :=
-  (SheafOfModulesOfCommRing.associatedSheaf X.sheaf).map
-    (CategoryTheory.MonoidalCategory.tensorHom
-      ((SheafOfModulesOfCommRing.toPresheaf X.sheaf).map f)
-      ((SheafOfModulesOfCommRing.toPresheaf X.sheaf).map g))
+  SheafOfModulesOfCommRing.tensorMap X.sheaf f g
 
 /-- Tensoring two actual module-sheaf isomorphisms. -/
 def tensorSheafIso {M M' N N' : SheafOfModules.{u} X.ringCatSheaf}
@@ -144,7 +142,7 @@ def tensorSheafIso {M M' N N' : SheafOfModules.{u} X.ringCatSheaf}
 /-- The sheafification counit on the underlying presheaf of a module sheaf. -/
 def sheafifyForgetIso (M : SheafOfModules.{u} X.ringCatSheaf) :
     (_root_.PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).obj M.val ≅ M :=
-  asIso ((_root_.PresheafOfModules.sheafificationAdjunction (𝟙 X.ringCatSheaf.obj)).counit.app M)
+  SheafOfModulesOfCommRing.sheafifyForgetIso X.sheaf M
 
 /-- The canonical site left unitor, specialized to the scheme module category. -/
 def tensorSheafLeftUnit (M : SheafOfModules.{u} X.ringCatSheaf) :
@@ -160,7 +158,24 @@ def tensorSheafBraiding (M N : SheafOfModules.{u} X.ringCatSheaf) :
 def tensorSheafUnit (M N : SheafOfModules.{u} X.ringCatSheaf) :
     PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := X.presheaf) M.val N.val ⟶
       (tensorSheaf X M N).val :=
-  (_root_.PresheafOfModules.sheafificationAdjunction (𝟙 X.ringCatSheaf.obj)).unit.app _
+  SheafOfModulesOfCommRing.tensorUnitMap X.sheaf M N
+
+/-- The original Scheme tensor is the actual generic sheafified tensor. -/
+theorem tensorSheaf_eq_generic (M N : SheafOfModules.{u} X.ringCatSheaf) :
+    tensorSheaf X M N = SheafOfModulesOfCommRing.tensorProduct X.sheaf M N := rfl
+
+/-- The original Scheme tensor map is the actual generic two-variable map. -/
+theorem tensorSheafMap_eq_generic {M M' N N' : SheafOfModules.{u} X.ringCatSheaf}
+    (f : M ⟶ M') (g : N ⟶ N') :
+    tensorSheafMap X f g = SheafOfModulesOfCommRing.tensorMap X.sheaf f g := rfl
+
+/-- The original Scheme counit comparison is the actual generic counit isomorphism. -/
+theorem sheafifyForgetIso_eq_generic (M : SheafOfModules.{u} X.ringCatSheaf) :
+    sheafifyForgetIso X M = SheafOfModulesOfCommRing.sheafifyForgetIso X.sheaf M := rfl
+
+/-- The original Scheme tensor unit map is the actual generic unit component. -/
+theorem tensorSheafUnit_eq_generic (M N : SheafOfModules.{u} X.ringCatSheaf) :
+    tensorSheafUnit X M N = SheafOfModulesOfCommRing.tensorUnitMap X.sheaf M N := rfl
 
 variable {M M' M'' N N' N'' : SheafOfModules.{u} X.ringCatSheaf}
 

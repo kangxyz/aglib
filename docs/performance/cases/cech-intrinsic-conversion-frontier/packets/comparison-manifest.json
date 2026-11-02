@@ -1,0 +1,29 @@
+{
+  "basis_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "phase": "original-cech-comparison-canonical-consumers",
+  "revision": 5,
+  "files": [
+    {
+      "path": "Aglib/Topology/Sheaves/Cech/Comparison.lean",
+      "sha256": "84541fafe679d700362efcb7c93d41bf07c4ec912f82cc981ac0b290947b3a4e"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Cech/Comparison.lean",
+      "sha256": "a9ff484188f60dc58dfe142249bc28ed0cf9fbde1280020dba63d2c5b9a76e8a"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Cech/Modules.lean",
+      "sha256": "e3776bb971ea3943fcc010812ed309358d46d7149a2e70b401d903ee1d192f3c"
+    }
+  ],
+  "targets": [
+    "Aglib.Topology.Sheaves.Cech.Comparison",
+    "Aglib.AlgebraicGeometry.Cohomology.Cech.Comparison",
+    "Aglib.AlgebraicGeometry.Cohomology.Cech.Modules"
+  ],
+  "depends_on": [
+    "augmentation-manifest.json revision 2",
+    "section-cycles-manifest.json revision 4",
+    "resolution-rows-manifest.json revision 3"
+  ]
+}

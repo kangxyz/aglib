@@ -74,7 +74,7 @@ theorem gmH2_eq_zero_of_algebraic_ratFunc
         PUnit.{u + 2} g J)).comp γ (Nat.zero_add 2)) hL'
   have hβ : β = 0 :=
     Sheaf.BasisAcyclicity.ext_two_eq_zero_of_augmentation_primitives π
-      (galoisCech_ext_one_eq_zero.{u, w, u + 2, u + 2} E L)
+      (galoisCech_ext_one_eq_zero.{u, w} E L)
       (galoisCech_exists_primitive E L K) β hπ
   have h := congrArg (fun γ => (Ext.mk₀ e.hom).comp γ (Nat.zero_add 2)) hβ
   simpa only [β, Ext.mk₀_comp_mk₀_assoc, Iso.hom_inv_id,

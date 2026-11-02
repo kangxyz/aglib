@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.GeometricNeighborhoodFunctor
-public import Aglib.AlgebraicGeometry.Limits.FixedBaseChange
+public import Aglib.AlgebraicGeometry.Spec.GeometricNeighborhoodBaseChange
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SchemeLimitSections
 
 /-! # Actual base-changed geometric-neighborhood limits and represented sections -/
@@ -21,32 +21,7 @@ universe u
 
 variable (R Ω : Type u) [CommRing R] [Field Ω] [Algebra R Ω]
 
-/-- The literal structural maps of the geometric neighborhood diagram. -/
-def structureMap : diagram R Ω ⟶ (Functor.const _).obj (Spec (.of R)) where
-  app i := Spec.algebraMap R i.unop.algebra
-  naturality {i j} f := by
-    change (etaleMap R Ω f.unop).left ≫ (etaleObject R Ω j.unop).hom =
-      (etaleObject R Ω i.unop).hom ≫ 𝟙 _
-    exact (etaleMap R Ω f.unop).w.trans (Category.comp_id _).symm
-
 variable {X : Scheme.{u}} (f : X ⟶ Spec (.of R))
-
-/-- The native pullback system, as actual objects over the fixed source. -/
-def baseChangedDiagram : (GeometricEtaleNeighborhood R Ω)ᵒᵖ ⥤ Over X :=
-  Over.lift (diagram R Ω) (structureMap R Ω) ⋙ Over.pullback f
-
-/-- The native pullback cone; its point is the actual strict-local base change. -/
-def baseChangedCone : Cone (baseChangedDiagram R Ω f) :=
-  (Over.pullback f).mapCone
-    (Over.liftCone (diagram R Ω) (structureMap R Ω) (specCone R Ω)
-      (Spec.algebraMap R (GeometricEtaleColimit R Ω))
-      (fun i => π_structure R Ω i.unop))
-
-/-- The underlying actual scheme cone is a limit, without a continuity premise. -/
-def baseChangedConeIsLimit : IsLimit ((Over.forget X).mapCone (baseChangedCone R Ω f)) :=
-  Scheme.FixedBaseChange.isLimitCone (diagram R Ω) (structureMap R Ω) f
-    (specCone R Ω) (Spec.algebraMap R (GeometricEtaleColimit R Ω))
-    (fun i => π_structure R Ω i.unop) (specConeIsLimit R Ω)
 
 /-- Finite-presentation represented sections descend along the actual
 base-changed neighborhood cone, with no finite-presentation hypothesis on f. -/

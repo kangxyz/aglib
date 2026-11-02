@@ -1,0 +1,121 @@
+✔ [4783/4847] Built Aglib.AlgebraicGeometry.EtaleCohomology.EtaleInverseImageInjectives (4.1s)
+✔ [4785/4847] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleRefinementExchangeCoherence (4.7s)
+✔ [4786/4851] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.SingleHigher (4.6s)
+✔ [4787/4851] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.ExchangeShift (4.9s)
+✔ [4788/4854] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SectionComparison (5.9s)
+✔ [4789/4854] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartResolutionSections (7.1s)
+✔ [4790/4858] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeSections (4.3s)
+✔ [4793/4858] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleTerminalSite (5.7s)
+✔ [4795/4861] Built Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.Etale (9.7s)
+✔ [4797/4861] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleTerminalSections (5.3s)
+✔ [4801/4900] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeChartCoefficient (10s)
+✔ [4837/5014] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartEvaluationGerm (4.7s)
+✔ [4952/5082] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GlobalSectionsNaturality (13s)
+✔ [7490/7682] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestArrowSections (4.6s)
+✔ [7537/7682] Built Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChangeResolution (27s)
+✔ [7541/7682] Built Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChangeResolutionSections (5.6s)
+✖ [7542/7774] Building Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartExchangeMaps (29s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-1b04914055734e2eb37c0fbdb6e47df8/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartExchangeMaps.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartExchangeMaps.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartExchangeMaps.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartExchangeMaps.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartExchangeMaps.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartExchangeMaps.lean:59:10: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+✔ [7617/7939] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeSectionComparison (38s)
+✔ [8158/8313] Built Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChangeCycleSections (14s)
+✖ [8159/8313] Building Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestRelativeCone (38s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-1b04914055734e2eb37c0fbdb6e47df8/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestRelativeCone.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestRelativeCone.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestRelativeCone.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestRelativeCone.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestRelativeCone.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestRelativeCone.lean:113:43: Unknown identifier `diagramTestConeSectionLegs`
+
+Note: A private declaration `diagramTestConeSectionLegs` (from the current module) exists but would need to be public to access here.
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestRelativeCone.lean:114:9: Unknown identifier `diagramTestConeSectionTriangle`
+
+Note: A private declaration `diagramTestConeSectionTriangle` (from the current module) exists but would need to be public to access here.
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestRelativeCone.lean:108:0: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestRelativeCone.lean:130:2: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestRelativeCone.lean:126:6: (kernel) unknown constant 'AlgebraicGeometry.Scheme.EtaleCohomology.Continuity.diagramTestConeArrowSectionsMap_eq_generic'
+✔ [8163/8313] Built Aglib.AlgebraicGeometry.Group.IsogenyPairing (24s)
+✖ [8164/8313] Building Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductGermZero (76s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-1b04914055734e2eb37c0fbdb6e47df8/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean:137:34: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+✖ [8173/8313] Building Aglib.AlgebraicGeometry.EtaleCohomology.H1.FundamentalGroupComparison (100s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-1b04914055734e2eb37c0fbdb6e47df8/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/H1/FundamentalGroupComparison.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/H1/FundamentalGroupComparison.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/H1/FundamentalGroupComparison.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/H1/FundamentalGroupComparison.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/H1/FundamentalGroupComparison.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/H1/FundamentalGroupComparison.lean:224:5: failed to synthesize instance of type class
+  PreconnectedSpace ↥X
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: Aglib/AlgebraicGeometry/EtaleCohomology/H1/FundamentalGroupComparison.lean:330:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/H1/FundamentalGroupComparison.lean:331:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/H1/FundamentalGroupComparison.lean:338:2: Type mismatch: After simplification, term
+  hh
+ has type
+  @Eq (H1 (FiberAutGroup s) M) ((representedH1AddEquivCore s H hR M mark hmark) (torsorExtClass P))
+    ((coefficientH1Equiv (pointModuleEquiv s H M mark) ⋯) (representedTorsorClass s H (pointModuleMark s H) ⋯ hR ⋯ P))
+but is expected to have type
+  @Eq (H1 (FiberAutGroup s) M) ((representedH1AddEquiv s H hA hR M mark hmark hcoeff) (torsorExtClass P))
+    ((coefficientH1Equiv (pointModuleEquiv s H M mark) ⋯) (representedTorsorClass s H (pointModuleMark s H) ⋯ hR ⋯ P))
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  getLimitCone ↦ 666
+error: Aglib/AlgebraicGeometry/EtaleCohomology/H1/FundamentalGroupComparison.lean:389:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/H1/FundamentalGroupComparison.lean:390:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/H1/FundamentalGroupComparison.lean:384:0: automatically included section variable(s) unused in theorem `AlgebraicGeometry.Scheme.EtaleCohomology.FundamentalGroupComparison.representedH1AddEquiv_torsor_representative`:
+  [Finite M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Finite M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8278/8313] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricCohomologyDiagram (116s)
+✔ [8279/8313] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestRightTailComparison (120s)
+✔ [8296/8313] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartCohomologyDiagram (36s)
+✔ [8305/8313] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartOriginalDiagram (40s)
+✔ [8306/8313] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartCohomologyCocone (58s)
+✔ [8307/8313] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartCohomologyGerms (41s)
+✔ [8310/8313] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PointedCohomologyLeg (196s)
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartExchangeMaps
+- Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestRelativeCone
+- Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductGermZero
+- Aglib.AlgebraicGeometry.EtaleCohomology.H1.FundamentalGroupComparison
+error: build failed

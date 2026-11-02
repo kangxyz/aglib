@@ -8,6 +8,7 @@ module
 public import
   Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.RegularList.Conormal
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Contraction
+public import Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.RegularList.Sheaf.Class
 
 /-!
 # The actual local purity map contracted by the normal determinant
@@ -39,13 +40,6 @@ namespace AlgebraicGeometry.Scheme.Modules
 variable {R A : CommRingCat.{u}} (α : R ⟶ A) (s : List A)
   (hs : RingTheory.Sequence.IsWeaklyRegular A s)
 
-/-- The literal quotient ring of the original ordered regular list. -/
-abbrev regularListQuotientRing : CommRingCat.{u} := .of (A ⧸ Ideal.ofList s)
-
-/-- The literal quotient map, retained in the installed spectral closed immersion. -/
-abbrev regularListQuotientMap : A ⟶ regularListQuotientRing s :=
-  CommRingCat.ofHom (Ideal.Quotient.mk (Ideal.ofList s))
-
 variable {L : (Spec A).Modules} [L.IsQuasicoherent]
   (e : moduleSpecΓFunctor.obj L ≅ ModuleCat.of A A)
   [HasExt.{w} (ModuleCat.{u} A)]
@@ -58,28 +52,18 @@ abbrev closedImmersionRegularListDerivedValue :
   (closedImmersionRightAdjoint (Spec.map (regularListQuotientMap s))).rightDerivedFunctorPlus.obj
     ((DerivedCategory.Plus.singleFunctor (Spec A).Modules 0).obj L)
 
-local instance : (moduleSpecΓFunctor (R := (regularListQuotientRing s))).Additive :=
+local instance canonicalLocalPuritySectionsAdditive :
+    (moduleSpecΓFunctor (R := (regularListQuotientRing s))).Additive :=
   moduleSpecΓFunctor_additive _
 
 /-- The original native homology section represented by the ordered top Koszul class. -/
 @[no_expose] def closedImmersionRegularListNativeTopClass (r : A)
     (U : (Spec (regularListQuotientRing s)).Opens) :
     ((DerivedCategory.Plus.homologyFunctor (Spec (regularListQuotientRing s)).Modules
-      (s.length : ℤ)).obj (closedImmersionRegularListDerivedValue (L := L) s)).val.obj (op U) := by
-  let J := injectiveResolution L
-  let := closedImmersionRightAdjointRegularListResolutionTildeCounit_quasiIso s hs J e
-  let C := closedImmersionRightAdjointRegularListResolutionComplex s J
-  let G := ((moduleSpecΓFunctor (R := regularListQuotientRing s)).mapHomologicalComplex
-    (.up ℤ)).obj C
-  let ξ := (closedImmersionRightAdjointRegularListResolutionSectionsExtAddEquiv s J
-    s.length).symm
-    ((ChainComplex.Koszul.topExtClass s hs (ModuleCat.of A A) r).comp
-      (Ext.mk₀ e.inv) (Nat.add_zero s.length))
-  exact (derivedClosedImmersionRightAdjointRegularListModelHomologyIso s J
+      (s.length : ℤ)).obj (closedImmersionRegularListDerivedValue (L := L) s)).val.obj (op U) :=
+  (derivedClosedImmersionRightAdjointRegularListModelHomologyIso s (injectiveResolution L)
     (s.length : ℤ)).inv.val.app (op U)
-    ((Complex.tildeGlobalSectionsHomologyIso (regularListQuotientRing s) (.up ℤ) C
-      (s.length : ℤ)).hom.val.app (op U)
-      (tilde.toOpen (G.homology (s.length : ℤ)) U ξ))
+      (regularListModelTopClass s hs (injectiveResolution L) e r U)
 
 /-- The native class retains its literal original model, affine counit and tilde section. -/
 theorem closedImmersionRegularListNativeTopClass_eq (r : A)
@@ -110,6 +94,28 @@ private theorem localIsoSections_injective {Z : Scheme.{u}} {M N : Z.Modules}
   have hy := congrArg (fun f => f.val.app (op U) y) E.hom_inv_id
   exact hx.symm.trans ((congrArg (E.inv.val.app (op U)) h).trans hy)
 
+/-- Evaluate the complete original factorization with an explicitly supplied
+representative equation, before specializing any native derived coefficient. -/
+private theorem localFactorization_value {Z : Scheme.{u}} {M N P : Z.Modules}
+    (F : M ⟶ N) (G : N ⟶ P) (K : M ⟶ P) (hK : K = F ≫ G)
+    (U : Z.Opens) (x x₀ : M.val.obj (op U)) (y : N.val.obj (op U))
+    (hx : x = x₀) (hF : F.val.app (op U) x₀ = y) :
+    K.val.app (op U) x = G.val.app (op U) y := by
+  subst K
+  change G.val.app (op U) (F.val.app (op U) x) = G.val.app (op U) y
+  exact congrArg (G.val.app (op U)) ((congrArg (F.val.app (op U)) hx).trans hF)
+
+/-- Evaluate the complete original model-to-native frame, cancelling only
+its original model isomorphism before specializing the derived objects. -/
+private theorem localModelFrame_value {Z : Scheme.{u}} {M N P : Z.Modules}
+    (E : M ≅ N) (F : N ⟶ P) (K : M ⟶ P) (hK : K = E.hom ≫ F)
+    (U : Z.Opens) (z : N.val.obj (op U)) (y : P.val.obj (op U))
+    (hF : F.val.app (op U) z = y) :
+    K.val.app (op U) (E.inv.val.app (op U) z) = y := by
+  have h := congrArg (fun f => f.val.app (op U) z) E.inv_hom_id
+  exact (localFactorization_value E.hom F K hK U
+    (E.inv.val.app (op U) z) (E.inv.val.app (op U) z) z rfl h).trans hF
+
 /-- The original native top class has its original quotient value in the native unit frame. -/
 theorem closedImmersionRegularListNativeTopClass_unitFrame (r : A)
     (U : (Spec (regularListQuotientRing s)).Opens) :
@@ -118,21 +124,17 @@ theorem closedImmersionRegularListNativeTopClass_unitFrame (r : A)
       (closedImmersionRegularListNativeTopClass s hs e r U) =
         tilde.toOpen (ModuleCat.of (regularListQuotientRing s) (regularListQuotientRing s)) U
           (Ideal.Quotient.mk (Ideal.ofList s) r) := by
-  let en := closedImmersionRegularListInverseNormalLineIso (𝟙 A) s hs e
-  let ξ := closedImmersionRegularListNativeTopClass s hs e r U
-  let eH := derivedClosedImmersionRightAdjointRegularListTopHomologyIso s hs
-    (injectiveResolution L) e
-  apply localIsoSections_injective en U
-  have hm := congrArg (fun f => f.val.app (op U) ξ)
-    (derivedClosedImmersionRightAdjointRegularListConormalTopHomologyIso_hom (𝟙 A) s hs e)
-  change (derivedClosedImmersionRightAdjointRegularListConormalTopHomologyIso
-    (𝟙 A) s hs e).hom.val.app (op U) ξ =
-      en.hom.val.app (op U) (eH.hom.val.app (op U) ξ) at hm
-  exact hm.symm.trans
-    ((derivedClosedImmersionRightAdjointRegularListConormalTopHomologyIso_class
-      (𝟙 A) s hs e r U).trans
-        (closedImmersionRegularListInverseNormalLineIso_section
-          (𝟙 A) s hs e (Ideal.Quotient.mk (Ideal.ofList s) r) U).symm)
+  exact localModelFrame_value
+    (derivedClosedImmersionRightAdjointRegularListModelHomologyIso s (injectiveResolution L)
+      (s.length : ℤ))
+    (closedImmersionRightAdjointRegularListResolutionTopHomologyIso s hs
+      (injectiveResolution L) e).hom
+    (derivedClosedImmersionRightAdjointRegularListTopHomologyIso s hs
+      (injectiveResolution L) e).hom
+    (derivedClosedImmersionRightAdjointRegularListTopHomologyIso_hom s hs
+      (injectiveResolution L) e) U
+    (regularListModelTopClass s hs (injectiveResolution L) e r U) _
+    (regularListModelTopClass_unitFrame s hs (injectiveResolution L) e r U)
 
 /-- In particular the original class of one is the section-one generator of the native frame. -/
 theorem closedImmersionRegularListNativeTopClass_one
@@ -225,12 +227,27 @@ theorem derivedClosedImmersionRegularListCanonicalTopHomologyIso_class
         ((pullback (Spec.map (regularListQuotientMap s))).obj L) U
         (closedImmersionRegularListNormalDualSection α s hs U)
         (closedImmersionRegularListCoefficientSection s e (Ideal.Quotient.mk _ r) U)) := by
-  exact congrArg
-    ((normalDeterminantContractionIso
+  have hconormal := (localFactorization_value
+    (derivedClosedImmersionRightAdjointRegularListTopHomologyIso s hs
+      (injectiveResolution L) e).hom
+    (closedImmersionRegularListInverseNormalLineIso α s hs e).hom
+    (derivedClosedImmersionRightAdjointRegularListConormalTopHomologyIso α s hs e).hom
+    (derivedClosedImmersionRightAdjointRegularListConormalTopHomologyIso_hom α s hs e)
+    U (closedImmersionRegularListNativeTopClass s hs e r U)
+    (closedImmersionRegularListNativeTopClass s hs e r U) _ rfl
+    (closedImmersionRegularListNativeTopClass_unitFrame s hs e r U)).trans
+      (closedImmersionRegularListInverseNormalLineIso_section α s hs e
+        (Ideal.Quotient.mk (Ideal.ofList s) r) U)
+  exact localFactorization_value
+    (derivedClosedImmersionRightAdjointRegularListConormalTopHomologyIso α s hs e).hom
+    (normalDeterminantContractionIso
       (closedImmersionRegularListNormalLineBundle α s hs)
       (closedImmersionRegularListNormalFrameIso α s hs)
-      (closedImmersionRegularListNormalDualFrameIso α s hs) Δ).hom.val.app (op U))
-    (derivedClosedImmersionRightAdjointRegularListConormalTopHomologyIso_class α s hs e r U)
+      (closedImmersionRegularListNormalDualFrameIso α s hs) Δ).hom
+    (derivedClosedImmersionRegularListCanonicalTopHomologyIso α s hs e Δ).hom
+    (derivedClosedImmersionRegularListCanonicalTopHomologyIso_hom α s hs e Δ)
+    U (closedImmersionRegularListNativeTopClass s hs e r U)
+    (closedImmersionRegularListNativeTopClass s hs e r U) _ rfl hconormal
 
 /-- On the same normal-first determinant section the class formula evaluates to the
 original tangent section, with native dual evaluation equal to one. -/

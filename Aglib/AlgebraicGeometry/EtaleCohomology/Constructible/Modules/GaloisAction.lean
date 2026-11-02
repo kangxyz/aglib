@@ -9,6 +9,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.Conn
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.EtaleRestriction
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisInstances
 public import Mathlib.RepresentationTheory.Rep.Basic
+public import Aglib.CategoryTheory.Sites.PresheafAutomorphismAction
 
 /-! # Actual deck action on an original torsion module value
 
@@ -39,16 +40,9 @@ abbrev finiteEtaleSections (F : ModuleSheaf R X) (Y : Scheme.FiniteEtale X) :
 
 /-- Contravariant restriction along inverse deck maps is an actual R-linear left action. -/
 def finiteEtaleSectionsRepresentation (F : ModuleSheaf R X) (Y : Scheme.FiniteEtale X) :
-    Representation R (Aut Y) (finiteEtaleSections F Y) where
-  toFun σ := (F.obj.map ((Scheme.FiniteEtale.toEtale X).map σ.inv).op).hom
-  map_one' := by
-    change (F.obj.map ((Scheme.FiniteEtale.toEtale X).map (𝟙 Y)).op).hom = _
-    rw [CategoryTheory.Functor.map_id, op_id, CategoryTheory.Functor.map_id]
-    rfl
-  map_mul' σ τ := by
-    change (F.obj.map ((Scheme.FiniteEtale.toEtale X).map (σ.inv ≫ τ.inv)).op).hom = _
-    rw [Functor.map_comp, op_comp, Functor.map_comp]
-    rfl
+    Representation R (Aut Y) (finiteEtaleSections F Y) :=
+  Presheaf.restrictionRepresentation F.obj
+    (Functor.mapAut Y (Scheme.FiniteEtale.toEtale X))
 
 /-- The action is literally the original sheaf restriction, with inverse orientation. -/
 @[simp]
@@ -83,8 +77,9 @@ def trivializedDeckRepresentation (F : ModuleSheaf R X) (Y : Scheme.FiniteEtale 
     (e : (moduleInverseImage R Y.obj.hom).obj F ≅
       (constantSheaf Y.obj.left.smallEtaleTopology (ModuleCat.{u + 1} R)).obj M) :
     Representation R (Aut Y) M :=
-  ((trivializedFiniteEtaleSectionsIso F Y M hM e).toLinearEquiv.symm.conjRingEquiv.toMonoidHom).comp
-    (finiteEtaleSectionsRepresentation F Y)
+  Presheaf.transportedRestrictionRepresentation F.obj
+    (Functor.mapAut Y (Scheme.FiniteEtale.toEtale X))
+    (trivializedFiniteEtaleSectionsIso F Y M hM e)
 
 /-- Transport intertwines the literal M-action with the actual original restriction map. -/
 theorem trivializedDeckRepresentation_restriction (F : ModuleSheaf R X)
@@ -98,9 +93,9 @@ theorem trivializedDeckRepresentation_restriction (F : ModuleSheaf R X)
         (trivializedDeckRepresentation F Y M hM e σ m) =
       F.obj.map ((Scheme.FiniteEtale.toEtale X).map σ.inv).op
         ((trivializedFiniteEtaleSectionsIso F Y M hM e).hom m) := by
-  let i := (trivializedFiniteEtaleSectionsIso F Y M hM e).toLinearEquiv
-  change i (i.symm ((finiteEtaleSectionsRepresentation F Y σ) (i m))) = _
-  exact i.apply_symm_apply _
+  exact Presheaf.transportedRestrictionRepresentation_restriction F.obj
+    (Functor.mapAut Y (Scheme.FiniteEtale.toEtale X))
+    (trivializedFiniteEtaleSectionsIso F Y M hM e) σ m
 
 /-- A nonzero annihilating natural number gives torsion, not a finite underlying group. -/
 theorem moduleIsAddTorsion_of_nsmul_eq_zero (M : ModuleCat.{u + 1} R)

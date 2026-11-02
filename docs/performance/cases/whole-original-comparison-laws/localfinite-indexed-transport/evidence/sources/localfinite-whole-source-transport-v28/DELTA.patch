@@ -1,0 +1,56 @@
+--- before/Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean
++++ after/Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean
+@@ -19,6 +19,31 @@
+ @[expose] public noncomputable section
+ 
+ open CategoryTheory.Limits CategoryTheory.Abelian
++
++namespace CategoryTheory.Functor
++
++universe uI uC vC uE vE uD vD uV vV
++
++/-- Transport the complete original inverse-source composition before any
++concrete indexing arrow or coefficient model is substituted. The input is the
++original composition law at the equal target index. -/
++theorem sourceInverse_composite_transport
++    {I : Type uI} {C : Type uC} [Category.{vC} C]
++    {E : Type uE} [Category.{vE} E] {D : Type uD} [Category.{vD} D]
++    {V : Type uV} [Category.{vV} V]
++    (K : I → C ⥤ D) {T : V ⥤ C} {R : V ⥤ E} {S : V ⥤ D}
++    (q : ∀ i, T ⋙ K i ≅ S) {i j : I} (h : i = j)
++    {F : C ⥤ E} {G : E ⥤ D} (e : T ⋙ F ≅ R) (e' : R ⋙ G ≅ S)
++    (c : K j ≅ F ⋙ G) (A : V)
++    (hc : (q j).inv.app A ≫ c.hom.app (T.obj A) =
++      e'.inv.app A ≫ G.map (e.inv.app A)) :
++    ((q i).app A).inv ≫
++        (eqToIso (congrArg K h) ≪≫ c).hom.app (T.obj A) =
++      (e'.app A).inv ≫ G.map (e.app A).inv := by
++  cases h
++  simpa only [eqToIso_refl, Iso.refl_trans, Iso.app_inv] using hc
++
++end CategoryTheory.Functor
+ 
+ namespace CategoryTheory.Adjunction
+ 
+--- before/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean
++++ after/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean
+@@ -71,14 +71,11 @@
+       ((inverseImageConstantIso f').app A).inv ≫
+         (inverseImage f').map ((inverseImageConstantIso g).app A).inv := by
+     simpa only [Iso.app_inv] using inverseImageComp_constant_inv g f' A
+-  have ht : ((inverseImageConstantIso (f' ≫ g)).app A).inv ≫ d.hom.app U =
+-      ((inverseImageConstantIso g').app A).inv ≫
+-        (inverseImage g').map ((inverseImageConstantIso f).app A).inv := by
+-    have he := Functor.sourceInverse_eq_transport
+-      (fun k : X' ⟶ S => inverseImage k) (fun k => inverseImageConstantIso k) h.w.symm A
+-    simp only [Iso.app_inv, d, Iso.trans_hom, NatTrans.comp_app, eqToIso.hom, eqToHom_app]
+-    rw [← Category.assoc, he]
+-    exact inverseImageComp_constant_inv f g' A
++  have hSourceComp := inverseImageComp_constant_inv f g' A
++  have ht := Functor.sourceInverse_composite_transport
++    (fun k : X' ⟶ S => inverseImage k) (fun k => inverseImageConstantIso k) h.w.symm
++    (inverseImageConstantIso f) (inverseImageConstantIso g') (inverseImageComp f g')
++    A hSourceComp
+   let : IsIso ((baseChangeMap f f' g g' h.w.symm).app F) :=
+     Finite.finiteBaseChange_app_isIso f f' g g' h F
+   exact Adjunction.originalExtSourceComparison_bijective_of_mate_values.{

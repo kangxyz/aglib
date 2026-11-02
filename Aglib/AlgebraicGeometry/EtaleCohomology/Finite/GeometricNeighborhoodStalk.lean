@@ -35,11 +35,23 @@ def sectionDiagram (P : (Spec (.of R)).Etaleᵒᵖ ⥤ AddCommGrpCat.{u + 1}) :
   toStalkIndex R Ω ⋙
     (Functor.Elements.π (pointSmallEtale (Spec.algebraMap R Ω)).fiber).op ⋙ P
 
-/-- The native comparison is induced by the original colimit maps on germs. -/
+/-- One whole comparison is the native final-functor colimit isomorphism. -/
+def stalkComparison :
+    ((Functor.whiskeringLeft _ _ AddCommGrpCat.{u + 1}).obj
+        (Functor.Elements.π (pointSmallEtale (Spec.algebraMap R Ω)).fiber).op) ⋙
+        (Functor.whiskeringLeft _ _ AddCommGrpCat.{u + 1}).obj (toStalkIndex R Ω) ⋙ colim ≅
+      (pointSmallEtale (Spec.algebraMap R Ω)).presheafFiber :=
+  Functor.isoWhiskerLeft _ (Functor.Final.colimIso (toStalkIndex R Ω))
+
+/-- The native comparison is the component of that same whole final comparison. -/
 def stalkIso (P : (Spec (.of R)).Etaleᵒᵖ ⥤ AddCommGrpCat.{u + 1}) :
     colimit (sectionDiagram R Ω P) ≅
       (pointSmallEtale (Spec.algebraMap R Ω)).presheafFiber.obj P :=
-  Functor.Final.colimitIso (toStalkIndex R Ω) _
+  (stalkComparison R Ω).app P
+
+/-- Its component is exactly the original native final-functor colimit isomorphism. -/
+theorem stalkIso_eq_original (P : (Spec (.of R)).Etaleᵒᵖ ⥤ AddCommGrpCat.{u + 1}) :
+    stalkIso R Ω P = Functor.Final.colimitIso (toStalkIndex R Ω) _ := rfl
 
 /-- A section at a presentation stage maps to its literal original geometric germ. -/
 @[reassoc (attr := simp)]

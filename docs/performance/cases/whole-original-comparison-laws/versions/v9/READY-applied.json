@@ -1,0 +1,156 @@
+{
+  "question": "Follow-on ordinary coherent coefficient-square systems and original adjunct maps",
+  "version": "v9",
+  "status": "APPLIED READY coherent v9; new whole-original triangle/unit proof assembly and native specialization repairs",
+  "files": [
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean",
+      "module": "Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.CoefficientSquares",
+      "sha256": "c4192e757a270f45c2fa220d6576036f56a55f30bf0a08dfa9f3bb1c05fd8cad",
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean",
+      "guard_preimage_sha256": "b3b18252d35086df5d0b097fc950f7939d75411d67e07b951133c06397e19717"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramPullbackTriangle",
+      "sha256": "c606965663f63dbafd529166563abf3710113cc0883716fb801852115b2c0e82",
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean",
+      "guard_preimage_sha256": "5e4519902eae4c87b7c72223a6146c870b844d47d4ef0eb3eb482e7afa487bc4"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareCoefficients",
+      "sha256": "265ebda49e0ed61776fd0c3f5ba6fcfb367302dd2c9acbe77d01c38d8eae5b49",
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean",
+      "guard_preimage_sha256": "265ebda49e0ed61776fd0c3f5ba6fcfb367302dd2c9acbe77d01c38d8eae5b49"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareIdentity",
+      "sha256": "36f8ce5f70ba3f0d7cf7361a6bbf8bf04f143e6f62292b14502e0d5cfbe388d2",
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.lean",
+      "guard_preimage_sha256": "3757eb5f001c54e6b8a5b095d811a51f202f90e20a50c0d5dbd3ed1bf4d06e04"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareSections",
+      "sha256": "09ce2f1d93a260f030647e59515d174293942c402247ef93016436b7a2c35ee4",
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.lean",
+      "guard_preimage_sha256": "09ce2f1d93a260f030647e59515d174293942c402247ef93016436b7a2c35ee4"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTopIdentity.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTopIdentity",
+      "sha256": "51c04405f5ebd3cb071f919d72b5feaf6bef86c07f65f9a3b626a41372f9a5cc",
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTopIdentity.lean",
+      "guard_preimage_sha256": "345865d32bb49240cb9fa965659ccd4076687f9fc1fc50a32393e1d92f181b8c"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTransport.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTransport",
+      "sha256": "ffb0329d8c2d36a5692670e820252b521b02e422724ff86ced9ffd653361ba85",
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTransport.lean",
+      "guard_preimage_sha256": "190008932124f088c02344750ea140d3189a6c08b71d8af4907ffbf1e99d032d"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SquareCoefficientAdjoint",
+      "sha256": "670830740a293b4d0a6cd505887ba03319c3e326b656bb956b9b43ccb1472f84",
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean",
+      "guard_preimage_sha256": "d6467e04e8a457433d362eca946be680ca86cad738f043cadfc788b34a309f3c"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/TriangleSquareAdjoint.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.TriangleSquareAdjoint",
+      "sha256": "72c7d2c0be3496069b9c4a35bea1b4c14abaffad35e580d54110e96bfba3a13c",
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/TriangleSquareAdjoint.lean",
+      "guard_preimage_sha256": "72c7d2c0be3496069b9c4a35bea1b4c14abaffad35e580d54110e96bfba3a13c"
+    }
+  ],
+  "native_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib",
+  "native_HEAD_expected": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "basis": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/basis.json",
+  "audit_findings": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/audit-selected.json",
+  "public_header_correspondence": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/PUBLIC-HEADER-CORRESPONDENCE.json",
+  "all20_original_public_headers_verbatim": true,
+  "actual_failure_basis": {
+    "job": "ac3fc2af6a114bbda6fef1ea760b2383",
+    "source": "fab4502b6e105f1b65e14458f0da76dea52eba92f5dddd180d6e416c661ea917",
+    "full_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-ac3fc2af6a114bbda6fef1ea760b2383/build.log",
+    "status": "CLOSED mixedexit1/no drift; Sections09ce PASS3.7; Transport/Identity/Adjoint type-normalization; PullbackTriangle5e45 kernel timeout19:6 wholefrontend167s; TopIdentity/TriangleSquareAdjoint unreached"
+  },
+  "changed_modules": [
+    "Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.CoefficientSquares",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramPullbackTriangle",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareIdentity",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTopIdentity",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTransport",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SquareCoefficientAdjoint"
+  ],
+  "next_explicit_roots": [
+    "Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.CoefficientSquares",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramPullbackTriangle",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareIdentity",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTopIdentity",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTransport",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SquareCoefficientAdjoint",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.TriangleSquareAdjoint"
+  ],
+  "repair_correspondence": {
+    "triangle_kernel_boundary": "Derive the whole equation at original supplied triangle/square comparisons under the same D.Coherent and their whole original identities, before F or any coefficient morphism. An independent six-category actual-value theorem evaluates exactly those comparisons and map. Native original public statement receives exact actual-value instance; no post-evaluation canonical square conversion.",
+    "ordinary_unit_assembly": "Generic actual base/top component evaluation of the coherence-derived whole native unit equation; native wrappers supply original unit/square/triangle and proved original whole equation. No target-law premise or capability on native/D statements.",
+    "native_specializations": "Public unop_id/unop_op; whole original D.right projection; typed natural-iso factor congruence for original direct-image comparison, matching existing left-comparison method.",
+    "whole_constructor_value": "Same shared coefficientMap abbrev and native original-map rfl law unchanged; literal arrows/transport/section maps unchanged.",
+    "conditions": "Same actual one D.Coherent/AdjunctionData, no new System/functor/model, no Ext/exactness/cartesian/geometry/injective premise; raw evaluated lemmas retain independent category/Hom worlds."
+  },
+  "read_only_exact_bytes": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean",
+      "sha256": "265ebda49e0ed61776fd0c3f5ba6fcfb367302dd2c9acbe77d01c38d8eae5b49"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.lean",
+      "sha256": "09ce2f1d93a260f030647e59515d174293942c402247ef93016436b7a2c35ee4"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/TriangleSquareAdjoint.lean",
+      "sha256": "72c7d2c0be3496069b9c4a35bea1b4c14abaffad35e580d54110e96bfba3a13c"
+    }
+  ],
+  "earlier_read_only_passed_sources_preserved": [
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean",
+      "sha256": "482a2e552bbc1cb016cd9c0817a1934e0751b9b713606ac737f5ed205368bba6"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitCoefficients.lean",
+      "sha256": "a82b41d96b938e27219687366e94a26157a314dcf4f28d1690714ea31e525d03"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackLimitCoefficient.lean",
+      "sha256": "fdbfd36520e1ef8044121fd1cd90e36955de50fc5f68b099130cb19258263b2f"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cone.lean",
+      "sha256": "dd35d1ef3e6e16aea1e4c9c5e1f93cf5f7573feb63e0f099be692b36416cfd5c"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitFunctor.lean",
+      "sha256": "78eeba5e0a80fadfb5e725328443480dea131a47751945ab3d84856b0219b412"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramAdjointCocone.lean",
+      "sha256": "f35ce7d0b499bc65ac31b728d659ccac80b4990c4fe4d64845edb3ddb8491f9e"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramAdjointFamilies.lean",
+      "sha256": "6e6bdedc9bcabbabab6594ad1f410a7cede52958d6d073d8ab8a0f5e1db63abb"
+    }
+  ],
+  "execution": "Broker only changed/failed/unreached explicit roots plus needed imports; defaultsettings; no native execution by author, no flags/replay/standalone tests/downstream root; old actual passes stay source-bound, no unchanged failedsource retry.",
+  "review_boundary": "Independent square report covers exactv2; v3-v8 repairs retain their actual source/deltas. This new complete-actual-triangle and raw-unit proof delta is sent as a fixed continuation, no relabeling old verdict.",
+  "utc": "2026-10-27T11:53:23.202502+00:00",
+  "application_boundary": "Broker capture-safe HOLD message: all native groups CLOSED, no mutable snapshot; six-source guarded application; no Git/native execution by author",
+  "native_HEAD_at_application": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "applied_utc": "2026-10-27T11:54:27.076999+00:00"
+}

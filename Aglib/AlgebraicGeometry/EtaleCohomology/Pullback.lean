@@ -12,6 +12,8 @@ public import Aglib.Algebra.Homology.DerivedCategory.ExtRightDerived
 public import Aglib.AlgebraicGeometry.EtaleCohomology.DirectImage
 public import Aglib.CategoryTheory.Abelian.Injective.ExactFunctor
 
+public import Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.ExtPullback
+
 /-!
 # Pullback on original étale cohomology in every degree
 
@@ -72,12 +74,10 @@ theorem cohomologyPullback_coefficientMap (f : S ⟶ X)
     {L M : AbelianSheaf.{u, u + 1} X} (q : L ⟶ M) (n : ℕ)
     (a : Sheaf.H.{w} L n) :
     cohomologyPullback f M n (Sheaf.H.map q n a) =
-      Sheaf.H.map ((inverseImage f).map q) n (cohomologyPullback f L n a) := by
-  change (inverseImage f).extPrecompMap _ M n
-      (a.comp (Abelian.Ext.mk₀ q) (add_zero n)) =
-    ((inverseImage f).extPrecompMap _ L n a).comp
-      (Abelian.Ext.mk₀ ((inverseImage f).map q)) (add_zero n)
-  rw [Functor.extPrecompMap_comp, Abelian.Ext.mapExactFunctor_mk₀]
+      Sheaf.H.map ((inverseImage f).map q) n (cohomologyPullback f L n a) :=
+  (congrArg (fun k => k a)
+    ((inverseImage f).extPrecompMap_postcomp
+      ((inverseImageConstantIso f).inv.app (AddCommGrpCat.of (ULift.{u + 1} ℤ))) q n)).symm
 
 /-- Degree-zero pullback is pullback of ordinary terminal-object sections under
 exactly the existing sheaf-cohomology equivalence. -/
@@ -103,13 +103,12 @@ theorem connecting_cohomologyPullback (f : S ⟶ X)
     (i j : ℕ) (h : i + 1 = j) (a : Sheaf.H.{w} T.X₃ i) :
     cohomologyPullback f T.X₁ j (Sheaf.H.δ hT i j h a) =
       Sheaf.H.δ (hT.map_of_exact (inverseImage f)) i j h
-        (cohomologyPullback f T.X₃ i a) := by
-  change (Abelian.Ext.mk₀ _).comp
-      ((a.comp hT.extClass h).mapExactFunctor (inverseImage f)) (zero_add j) =
-    ((Abelian.Ext.mk₀ _).comp (a.mapExactFunctor (inverseImage f)) (zero_add i)).comp
-      (hT.map_of_exact (inverseImage f)).extClass h
-  rw [Abelian.Ext.mapExactFunctor_comp, Abelian.Ext.mapExactFunctor_extClass]
-  exact (Abelian.Ext.comp_assoc _ _ _ (zero_add i) h (by omega)).symm
+        (cohomologyPullback f T.X₃ i a) :=
+  by
+  subst j
+  exact (congrArg (fun k => k a)
+    ((inverseImage f).extPrecompMap_connecting
+      ((inverseImageConstantIso f).inv.app (AddCommGrpCat.of (ULift.{u + 1} ℤ))) T hT i)).symm
 
 section Derived
 
@@ -154,20 +153,7 @@ def constantIntegerHomGlobalSectionsIso (X : Scheme.{u}) :
     preadditiveCoyoneda.obj (Opposite.op
       ((constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj
         (AddCommGrpCat.of (ULift.{u + 1} ℤ)))) ≅ globalSections X :=
-  NatIso.ofComponents
-    (fun L => (((constantAdjunction X).homAddEquiv
-      (AddCommGrpCat.of (ULift.{u + 1} ℤ)) L).trans
-        (AddCommGrpCat.uliftZMultiplesAddEquiv ((globalSections X).obj L))).toAddCommGrpIso)
-    (by
-      intro L M q
-      ext a
-      change AddCommGrpCat.uliftZMultiplesAddEquiv ((globalSections X).obj M)
-          ((constantAdjunction X).homEquiv _ M (a ≫ q)) =
-        (globalSections X).map q
-          (AddCommGrpCat.uliftZMultiplesAddEquiv ((globalSections X).obj L)
-            ((constantAdjunction X).homEquiv _ L a))
-      rw [Adjunction.homEquiv_naturality_right]
-      rfl)
+  Adjunction.integerHomSectionsIso (constantAdjunction X)
 
 /-- Deriving the original Hom-to-sections comparison retains the actual maps
 of the native natural-degree right-derived functors. -/
@@ -175,13 +161,8 @@ def constantIntegerHomRightDerivedGlobalSectionsIso (X : Scheme.{u}) (n : ℕ) :
     (preadditiveCoyoneda.obj (Opposite.op
       ((constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj
         (AddCommGrpCat.of (ULift.{u + 1} ℤ))))).rightDerived n ≅
-      (globalSections X).rightDerived n where
-  hom := (constantIntegerHomGlobalSectionsIso X).hom.rightDerived n
-  inv := (constantIntegerHomGlobalSectionsIso X).inv.rightDerived n
-  hom_inv_id := by
-    rw [← NatTrans.rightDerived_comp, Iso.hom_inv_id, NatTrans.rightDerived_id]
-  inv_hom_id := by
-    rw [← NatTrans.rightDerived_comp, Iso.inv_hom_id, NatTrans.rightDerived_id]
+      (globalSections X).rightDerived n :=
+  Adjunction.integerHomRightDerivedSectionsIso (constantAdjunction X) n
 
 /-- A supplied original injective resolution compares original sheaf cohomology
 with the actual right-derived global-sections functor. The Ext universe need
@@ -189,10 +170,7 @@ not equal the value universe of global sections. -/
 def cohomologyRightDerivedAddEquivOfResolution
     {L : AbelianSheaf.{u, u + 1} X} (I : InjectiveResolution L) (n : ℕ) :
     Sheaf.H.{w} L n ≃+ ((globalSections X).rightDerived n).obj L :=
-  (I.extRightDerivedAddEquiv
-    ((constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj
-      (AddCommGrpCat.of (ULift.{u + 1} ℤ))) n).trans
-    ((constantIntegerHomRightDerivedGlobalSectionsIso X n).app L).addCommGroupIsoToAddEquiv
+  Adjunction.originalSectionsExtEquivOfResolution (constantAdjunction X) I n
 
 /-- The forward map is the original Ext comparison followed by the actual
 component of the derived Hom-to-sections isomorphism. -/
@@ -213,39 +191,29 @@ theorem cohomologyRightDerivedAddEquivOfResolution_naturality
     (φ : InjectiveResolution.Hom I J q) (n : ℕ) (a : Sheaf.H.{w} L n) :
     cohomologyRightDerivedAddEquivOfResolution J n (Sheaf.H.map q n a) =
       ((globalSections X).rightDerived n).map q
-        (cohomologyRightDerivedAddEquivOfResolution I n a) := by
-  exact InjectiveResolution.extRightDerivedAddEquiv_trans_naturality
-    ((constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj
-      (AddCommGrpCat.of (ULift.{u + 1} ℤ))) n
-    (constantIntegerHomRightDerivedGlobalSectionsIso X n) φ a
+        (cohomologyRightDerivedAddEquivOfResolution I n a) :=
+  Adjunction.originalSectionsExtEquivOfResolution_naturality
+    (constantAdjunction X) φ n a
 
 /-- Original sheaf cohomology computes the original right-derived global
 sections, using the canonical native injective resolution. -/
 def cohomologyRightDerivedAddEquiv (L : AbelianSheaf.{u, u + 1} X) (n : ℕ) :
     Sheaf.H.{w} L n ≃+ ((globalSections X).rightDerived n).obj L :=
-  cohomologyRightDerivedAddEquivOfResolution (injectiveResolution L) n
+  Adjunction.originalSectionsExtEquiv (constantAdjunction X) L n
 
 /-- The comparison is independent of the supplied resolution, while keeping
 its original Ext and right-derived forward maps. -/
 theorem cohomologyRightDerivedAddEquiv_eq_ofResolution
     {L : AbelianSheaf.{u, u + 1} X} (I : InjectiveResolution L) (n : ℕ) :
-    cohomologyRightDerivedAddEquiv L n = cohomologyRightDerivedAddEquivOfResolution I n := by
-  exact InjectiveResolution.extRightDerivedAddEquiv_trans_eq
-    ((constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj
-      (AddCommGrpCat.of (ULift.{u + 1} ℤ))) n
-    (constantIntegerHomRightDerivedGlobalSectionsIso X n) (injectiveResolution L) I
+    cohomologyRightDerivedAddEquiv L n = cohomologyRightDerivedAddEquivOfResolution I n :=
+  Adjunction.originalSectionsExtEquiv_eq_ofResolution (constantAdjunction X) I n
 
 /-- Coefficient naturality of the actual global-sections derived comparison. -/
 theorem cohomologyRightDerivedAddEquiv_naturality
     {L M : AbelianSheaf.{u, u + 1} X} (q : L ⟶ M) (n : ℕ) (a : Sheaf.H.{w} L n) :
     cohomologyRightDerivedAddEquiv M n (Sheaf.H.map q n a) =
-      ((globalSections X).rightDerived n).map q (cohomologyRightDerivedAddEquiv L n a) := by
-  let φ : InjectiveResolution.Hom (injectiveResolution L) (injectiveResolution M) q :=
-    ⟨InjectiveResolution.desc q _ _, by
-      simpa only [CochainComplex.single₀_map_f_zero] using
-        InjectiveResolution.desc_commutes_zero q (injectiveResolution M)
-          (injectiveResolution L)⟩
-  exact cohomologyRightDerivedAddEquivOfResolution_naturality φ n a
+      ((globalSections X).rightDerived n).map q (cohomologyRightDerivedAddEquiv L n a) :=
+  Adjunction.originalSectionsExtEquiv_naturality (constantAdjunction X) q n a
 
 end GlobalSections
 
@@ -270,26 +238,15 @@ variable {X S : Scheme.{u}}
 theorem globalSectionsPullback_naturality (f : S ⟶ X)
     {L M : AbelianSheaf.{u, u + 1} X} (q : L ⟶ M) :
     (globalSections X).map q ≫ globalSectionsPullback f M =
-      globalSectionsPullback f L ≫ (globalSections S).map ((inverseImage f).map q) := by
-  have hη := (inverseImageAdjunction f).unit.naturality q
-  change q ≫ (inverseImageAdjunction f).unit.app M =
-    (inverseImageAdjunction f).unit.app L ≫
-      (directImage f).map ((inverseImage f).map q) at hη
-  have he := (directImageGlobalSectionsIso f).hom.naturality ((inverseImage f).map q)
-  change (globalSections X).map ((directImage f).map ((inverseImage f).map q)) ≫
-      (directImageGlobalSectionsIso f).hom.app ((inverseImage f).obj M) =
-    (directImageGlobalSectionsIso f).hom.app ((inverseImage f).obj L) ≫
-      (globalSections S).map ((inverseImage f).map q) at he
-  dsimp only [globalSectionsPullback]
-  rw [← CategoryTheory.Functor.map_comp_assoc, hη, CategoryTheory.Functor.map_comp]
-  simp only [Category.assoc]
-  rw [he]
+      globalSectionsPullback f L ≫ (globalSections S).map ((inverseImage f).map q) :=
+  (Adjunction.unitSectionsNatTrans (inverseImageAdjunction f) (globalSections X)
+    (directImageGlobalSectionsIso f)).naturality q
 
 /-- Natural-transformation packaging of the existing section pullback. -/
 def globalSectionsPullbackNatTrans (f : S ⟶ X) :
-    globalSections X ⟶ inverseImage f ⋙ globalSections S where
-  app := globalSectionsPullback f
-  naturality _ _ q := globalSectionsPullback_naturality f q
+    globalSections X ⟶ inverseImage f ⋙ globalSections S :=
+  Adjunction.unitSectionsNatTrans (inverseImageAdjunction f) (globalSections X)
+    (directImageGlobalSectionsIso f)
 
 /-- The original Hom-to-sections comparison identifies the original constant
 transport with ordinary pullback of sections. -/
@@ -300,17 +257,11 @@ theorem constantIntegerHomGlobalSectionsIso_pullback (f : S ⟶ X)
     (constantIntegerHomGlobalSectionsIso S).hom.app ((inverseImage f).obj L)
         (((inverseImageConstantIso f).app (AddCommGrpCat.of (ULift.{u + 1} ℤ))).inv ≫
           (inverseImage f).map a) =
-      globalSectionsPullback f L ((constantIntegerHomGlobalSectionsIso X).hom.app L a) := by
-  change AddCommGrpCat.uliftZMultiplesAddEquiv
-      ((globalSections S).obj ((inverseImage f).obj L))
-      ((constantAdjunction S).homEquiv _ ((inverseImage f).obj L)
-        (((inverseImageConstantIso f).app (AddCommGrpCat.of (ULift.{u + 1} ℤ))).inv ≫
-          (inverseImage f).map a)) =
-    globalSectionsPullback f L
-      (AddCommGrpCat.uliftZMultiplesAddEquiv ((globalSections X).obj L)
-        ((constantAdjunction X).homEquiv _ L a))
-  rw [constantTransport_homEquiv]
-  rfl
+      globalSectionsPullback f L ((constantIntegerHomGlobalSectionsIso X).hom.app L a) :=
+  Adjunction.integerHomSectionsIso_pullback
+    (constantAdjunction X) (inverseImageAdjunction f) (constantAdjunction S)
+    (directImageGlobalSectionsIso f) (inverseImageConstantIso f)
+    (inverseImageConstantCanonicalIso_eq f).symm a
 
 /-- The actual section-complex map from a supplied exact-functor resolution
 lift, without claiming that inverse image preserves injectives. -/
@@ -321,10 +272,8 @@ def globalSectionsResolutionPullback (f : S ⟶ X)
       J.cocomplex) :
     ((globalSections X).mapHomologicalComplex (.up ℤ)).obj I.cochainComplex ⟶
       ((globalSections S).mapHomologicalComplex (.up ℤ)).obj J.cochainComplex :=
-  (NatTrans.mapHomologicalComplex (globalSectionsPullbackNatTrans f) (.up ℤ)).app
-      I.cochainComplex ≫
-    ((globalSections S).mapHomologicalComplex (.up ℤ)).map
-      (InjectiveResolution.ExactFunctor.extendedLift (inverseImage f) I J φ)
+  Adjunction.resolutionSectionsPullback (inverseImageAdjunction f) (globalSections X)
+    (directImageGlobalSectionsIso f) I J φ
 
 /-- Higher pullback computed by the actual section-complex map and the native
 resolution comparisons, independently of Ext. -/
@@ -335,9 +284,8 @@ def rightDerivedGlobalSectionsPullbackOfLift (f : S ⟶ X)
       J.cocomplex) (n : ℕ) :
     ((globalSections X).rightDerived n).obj L ⟶
       ((globalSections S).rightDerived n).obj ((inverseImage f).obj L) :=
-  (I.isoRightDerivedObjCochain (globalSections X) n).hom ≫
-    homologyMap (globalSectionsResolutionPullback f I J φ) (n : ℤ) ≫
-    (J.isoRightDerivedObjCochain (globalSections S) n).inv
+  Adjunction.rightDerivedSectionsPullbackOfLift (inverseImageAdjunction f) (globalSections X)
+    (directImageGlobalSectionsIso f) I J φ n
 
 section Ext
 
@@ -365,12 +313,9 @@ theorem cohomologyPullback_extMk_ofLift (f : S ⟶ X)
             congrArg
               (fun z => ((inverseImageConstantIso f).app
                 (AddCommGrpCat.of (ULift.{u + 1} ℤ))).inv ≫ z)
-              (InjectiveResolution.ExactFunctor.mappedCycle_comp_d φ n a ha)) := by
-  have h := InjectiveResolution.ExactFunctor.mk₀_comp_extMk_mapExactFunctor_comp_mk₀
-    (inverseImage f) I J (𝟙 _) φ (by simpa only [Category.id_comp] using hφ) a ha
-    (((inverseImageConstantIso f).app (AddCommGrpCat.of (ULift.{u + 1} ℤ))).inv)
-  rw [cohomologyPullback_apply]
-  simpa only [Abelian.Ext.comp_mk₀_id] using h
+              (InjectiveResolution.ExactFunctor.mappedCycle_comp_d φ n a ha)) :=
+  Adjunction.integerSourcePullback_extMk (F := inverseImage f)
+    (inverseImageConstantIso f) I J φ hφ n a ha
 
 end Ext
 

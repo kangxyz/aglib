@@ -4,4 +4,10 @@
 
 `derivedProjectionFormulaIso_unit` identifies the forward comparison with the original installed derived unit and canonical module projection-formula map. [TensorPushforward](TensorPushforward.lean) supplies the actual right-derived composition calculation and unit-isomorphism results for finite locally free tensor, retaining the stated injective/acyclic computation premises.
 
+The comparison uses the shared `rightDerivedFunctorPlusThreeFactorIso` and
+its whole composite-unit law. `derivedProjectionFormulaIso_eq_original`
+identifies its value with the original three factors, including the selected
+`tensorPushforwardDerivedCompIso` obtained from native composite derivability.
+The input complex remains an arbitrary bounded-below module complex.
+
 Lower [module projection formula](../../Modules/ProjectionFormula/README.md) and [finite-locally-free tensor exactness](../../Modules/LocallyFree/Tensor/README.md) feed this comparison. Godement projection-formula maps additionally retain termwise flasqueness of the bounded-below complex. The arbitrary-coefficient closed-immersion module result is not silently promoted to this derived interface.

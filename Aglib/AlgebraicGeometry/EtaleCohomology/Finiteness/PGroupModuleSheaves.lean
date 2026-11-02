@@ -8,7 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GaloisActionMaps
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.ConstantModuleSheaves
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.FiniteExact
-public import Aglib.RepresentationTheory.FiniteModulePGroup
+public import Aglib.CategoryTheory.Sites.FiniteGroupAction.ModulePropertyDevissage
 
 /-! # Proper cohomology of modules trivialized by a p-group cover
 
@@ -42,36 +42,95 @@ variable {R : Type r} [CommRing R] {X : Scheme.{u}} [ConnectedSpace X]
   (Y : Scheme.FiniteEtale X) [PreGaloisCategory.IsGalois Y] [Surjective Y.obj.hom]
   [ConnectedSpace Y.obj.left] [CompactSpace Y.obj.left] [QuasiSeparatedSpace Y.obj.left]
 
+local instance pGroupModuleHasFiniteLimits : HasFiniteLimits (ModuleCat.{u + 1} R) where
+  out _ _ _ := ModuleCat.hasLimitsOfShape.{0, 0, u + 1, r}
+
+/-- The original Galois cover, image adjunction and constant-unit section data. -/
+def pGroupModuleCoverData :
+    CategoryTheory.FiniteGroupAction.ModuleCoverData X.smallEtaleTopology R (Aut Y)
+      (ModuleSheaf R Y.obj.left) where
+  terminal := etaleTerminal X
+  cover := (Scheme.FiniteEtale.toEtale X).obj Y
+  overlap := (Scheme.FiniteEtale.toEtale X).obj
+    (Scheme.FiniteEtale.ProperResidue.productCover Y Y)
+  isTerminal := etaleTerminalIsTerminal X
+  action := Functor.mapAut Y (Scheme.FiniteEtale.toEtale X)
+  arrow := finiteEtaleTerminalMap Y
+  arrow_covering := finiteEtaleTerminalMap_covering Y
+  first := (Scheme.FiniteEtale.toEtale X).map
+    (Scheme.FiniteEtale.ProperResidue.productFirst Y Y)
+  second := (Scheme.FiniteEtale.toEtale X).map
+    (Scheme.FiniteEtale.ProperResidue.productSecond Y Y)
+  isPullback := finiteEtaleOverlap_isPullback Y
+  graph := fun σ => (Scheme.FiniteEtale.toEtale X).map
+    (Scheme.FiniteEtale.galoisOverlapGraph Y σ)
+  graph_covering := galoisOverlapGraph_covering Y
+  graph_first := by
+    intro σ
+    rw [← Functor.map_comp, Scheme.FiniteEtale.galoisOverlapGraph_fst,
+      CategoryTheory.Functor.map_id]
+  graph_second := by
+    intro σ
+    rw [← Functor.map_comp, Scheme.FiniteEtale.galoisOverlapGraph_snd]
+    rfl
+  image := moduleInverseImage R Y.obj.hom
+  directImage := moduleDirectImage R Y.obj.hom
+  «constant» := constantSheaf Y.obj.left.smallEtaleTopology (ModuleCat.{u + 1} R)
+  sections := moduleGlobalSections R Y.obj.left
+  imageAdjunction := moduleImageAdjunction R Y.obj.hom
+  constantAdjunction := moduleConstantAdjunction R Y.obj.left
+  rightSectionsIso := moduleDirectImageGlobalSectionsIso R Y.obj.hom
+  constantIso := moduleInverseImageConstantIso R Y.obj.hom
+  constantIso_eq := (moduleInverseImageConstantCanonicalIso_eq R Y.obj.hom).symm
+  sectionComparison := fun F => finiteEtalePullbackSectionsIso F Y
+  sectionComparison_naturality := fun f => finiteEtalePullbackSectionsIso_naturality Y f
+  sectionIso := fun F M hM t => trivializedFiniteEtaleSectionsIso F Y M hM t
+  sectionIso_hom := fun F M hM t => trivializedFiniteEtaleSectionsIso_hom F Y M hM t
+  restriction := fun F => finiteEtalePullbackSectionsIso_restriction F Y
+
+local instance pGroupModuleCoverData_image_preservesZeroMorphisms :
+    (pGroupModuleCoverData (R := R) Y).image.PreservesZeroMorphisms :=
+  inferInstanceAs ((moduleInverseImage R Y.obj.hom).PreservesZeroMorphisms)
+
+local instance pGroupModuleCoverData_constant_preservesZeroMorphisms :
+    (pGroupModuleCoverData (R := R) Y).constant.PreservesZeroMorphisms :=
+  inferInstanceAs ((constantSheaf Y.obj.left.smallEtaleTopology
+    (ModuleCat.{u + 1} R)).PreservesZeroMorphisms)
+
+/-- This operational record constructs exactly the original descended map. -/
+theorem pGroupModuleCoverData_subobjectMap (F : ModuleSheaf R X)
+    (M : ModuleCat.{u + 1} R) (hM : IsAddTorsion M)
+    (t : (moduleInverseImage R Y.obj.hom).obj F ≅
+      (constantSheaf Y.obj.left.smallEtaleTopology (ModuleCat.{u + 1} R)).obj M)
+    {N : ModuleCat.{u + 1} R} (i : N ⟶ M)
+    (hi : ∀ (σ : Aut Y) (x : N), trivializedDeckRepresentation F Y M hM t σ (i x) = i x) :
+    (pGroupModuleCoverData (R := R) Y).subobjectMap F M hM t i hi =
+      galoisTrivialSubobjectMap F Y M hM t i hi := rfl
+
+/-- The quotient comparison is the original image/cokernel/constant comparison. -/
+theorem pGroupModuleCoverData_subobjectCokernelIso (F : ModuleSheaf R X)
+    (M : ModuleCat.{u + 1} R) (hM : IsAddTorsion M)
+    (t : (moduleInverseImage R Y.obj.hom).obj F ≅
+      (constantSheaf Y.obj.left.smallEtaleTopology (ModuleCat.{u + 1} R)).obj M)
+    {N : ModuleCat.{u + 1} R} (i : N ⟶ M)
+    (hi : ∀ (σ : Aut Y) (x : N), trivializedDeckRepresentation F Y M hM t σ (i x) = i x) :
+    (pGroupModuleCoverData (R := R) Y).subobjectCokernelIso F M hM t i hi =
+      galoisTrivialSubobjectCokernelIso F Y M hM t i hi := rfl
+
 /-- A trivial actual deck action descends the original chosen constant module.
-This is the identity-map case of invariant-section descent, not arbitrary object descent. -/
+This is the identity-map case of invariant-section descent. -/
 def galoisTrivialActionIso (F : ModuleSheaf R X) (M : ModuleCat.{u + 1} R)
     (hM : IsAddTorsion M)
     (e : (moduleInverseImage R Y.obj.hom).obj F ≅
       (constantSheaf Y.obj.left.smallEtaleTopology (ModuleCat.{u + 1} R)).obj M)
     (htriv : ∀ (σ : Aut Y) (m : M), trivializedDeckRepresentation F Y M hM e σ m = m) :
     (constantSheaf X.smallEtaleTopology (ModuleCat.{u + 1} R)).obj M ≅ F := by
-  let d := galoisTrivialSubobjectMap F Y M hM e (𝟙 M) htriv
-  have hd : (moduleInverseImage R Y.obj.hom).map d ≫ e.hom =
-      (moduleInverseImageConstantIso R Y.obj.hom).hom.app M := by
-    let C := constantSheaf Y.obj.left.smallEtaleTopology (ModuleCat.{u + 1} R)
-    let a := (moduleInverseImageConstantIso R Y.obj.hom).hom.app M
-    have hc : C.map (𝟙 M) = 𝟙 (C.obj M) := CategoryTheory.Functor.map_id C M
-    exact (galoisTrivialSubobjectMap_pullback F Y M hM e (𝟙 M) htriv).trans
-      ((congrArg (fun b : C.obj M ⟶ C.obj M => a ≫ b) hc).trans (Category.comp_id a))
-  have : IsIso ((moduleInverseImage R Y.obj.hom).map d ≫ e.hom) := by
-    rw [hd]
-    infer_instance
-  have hmap : IsIso ((moduleInverseImage R Y.obj.hom).map d) :=
-    IsIso.of_isIso_comp_right _ e.hom
-  have : IsIso d := isIso_of_module_etale_inverseImages R
-    (fun _ : Unit => (Scheme.FiniteEtale.toEtale X).obj Y)
-    (fun x => by obtain ⟨y, hy⟩ := Y.obj.hom.surjective x; exact ⟨(), y, hy⟩)
-    d (fun _ => hmap)
-  exact asIso d
+  let d := pGroupModuleCoverData (R := R) Y
+  let : d.image.Faithful :=
+    inferInstanceAs ((moduleInverseImage R Y.obj.hom).Faithful)
+  exact d.trivialActionIso F M hM e htriv
 
-/-- An isomorphism-invariant property of actual sheaves that contains the finite
-prime-killed constants and is closed under short exact extensions holds for
-actual finite prime-killed modules trivialized by the given p-group cover. -/
+/-- The complete actual-sheaf induction on the original Galois cover. -/
 theorem property_of_pGroup_trivialization (p : ℕ) [Fact p.Prime]
     (hY : IsPGroup p (Aut Y)) (P : ModuleSheaf R X → Prop)
     (hconstant : ∀ (M : ModuleCat.{u + 1} R), ∀ [Module.Finite R M],
@@ -84,85 +143,21 @@ theorem property_of_pGroup_trivialization (p : ℕ) [Fact p.Prime]
     (hM : ∀ m : M, p • m = 0)
     (e : (moduleInverseImage R Y.obj.hom).obj F ≅
       (constantSheaf Y.obj.left.smallEtaleTopology (ModuleCat.{u + 1} R)).obj M) : P F := by
-  let U := forget₂ (Rep.{u + 1} R (Aut Y)) (ModuleCat.{u + 1} R)
-  let C := constantSheaf Y.obj.left.smallEtaleTopology (ModuleCat.{u + 1} R)
-  let Q : Rep.{u + 1} R (Aut Y) → Prop := fun A =>
-    ∀ (_ : Module.Finite R A) (hp : ∀ a : A, p • a = 0)
-      (E : ModuleSheaf R X)
-      (t : (moduleInverseImage R Y.obj.hom).obj E ≅ C.obj (U.obj A)),
-      trivializedDeckRepresentation E Y (U.obj A)
-        (moduleIsAddTorsion_of_nsmul_eq_zero (U.obj A) p (Nat.Prime.pos (Fact.out)) hp) t =
-          A.ρ → P E
-  have hQ : ∀ (A : Rep.{u + 1} R (Aut Y)), ∀ [Module.Finite R A],
-      (∀ a : A, p • a = 0) → Q A := by
-    intro A _ hp
-    apply Rep.induction_finite_of_prime_nsmul_trivial_subobject p hY Q ?_ ?_ A hp
-    · intro B _ _ hB hfinite hpB E t hρ
-      let := hfinite
-      let := hB
-      let ht := moduleIsAddTorsion_of_nsmul_eq_zero (U.obj B) p
-        (Nat.Prime.pos (Fact.out)) hpB
-      have htriv (σ : Aut Y) (b : U.obj B) :
-          trivializedDeckRepresentation E Y (U.obj B) ht t σ b = b := by
-        rw [hρ]
-        exact Representation.isTrivial_apply B.ρ σ b
-      exact hiso (galoisTrivialActionIso Y E (U.obj B) ht t htriv)
-        (hconstant (U.obj B) hpB)
-    · intro S hS hfinite₁ hp₁ htriv₁ hquot hfinite₂ hp₂ E t hρ
-      let := hfinite₁
-      let := hfinite₂
-      let := htriv₁
-      let T := S.map U
-      have hT : T.ShortExact := hS.map_of_exact U
-      have : Mono S.f := hS.mono_f
-      have : Epi S.g := hS.epi_g
-      have : Epi T.g := hT.epi_g
-      let ht := moduleIsAddTorsion_of_nsmul_eq_zero (U.obj S.X₂) p
-        (Nat.Prime.pos (Fact.out)) hp₂
-      have hfix (σ : Aut Y) (b : U.obj S.X₁) :
-          trivializedDeckRepresentation E Y (U.obj S.X₂) ht t σ (T.f b) = T.f b := by
-        rw [hρ]
-        exact (Rep.hom_comm_apply S.f σ b).symm.trans
-          (congrArg S.f (Representation.isTrivial_apply S.X₁.ρ σ b))
-      let d := galoisTrivialSubobjectMap E Y (U.obj S.X₂) ht t T.f hfix
-      let E' := cokernel d
-      have hd : (ShortComplex.cokernelSequence d).ShortExact :=
-        galoisTrivialSubobjectMap_shortExact E Y (U.obj S.X₂) ht t T.f hfix
-          ((Rep.mono_iff_injective S.f).mp inferInstance)
-      have hsurj : Function.Surjective S.g :=
-        (Rep.epi_iff_surjective S.g).mp inferInstance
-      have hfinite₃ : Module.Finite R S.X₃ :=
-        Module.Finite.of_surjective S.g.hom.toLinearMap hsurj
-      have hp₃ (b : S.X₃) : p • b = 0 := by
-        obtain ⟨a, rfl⟩ := hsurj b
-        rw [← map_nsmul, hp₂, map_zero]
-      have : Mono (cokernel.desc T.f T.g T.zero) := hT.exact.mono_cokernelDesc
-      have : IsIso (cokernel.desc T.f T.g T.zero) := isIso_of_mono_of_epi _
-      let c : cokernel T.f ≅ U.obj S.X₃ := asIso (cokernel.desc T.f T.g T.zero)
-      let t' : (moduleInverseImage R Y.obj.hom).obj E' ≅ C.obj (U.obj S.X₃) :=
-        galoisTrivialSubobjectCokernelIso E Y (U.obj S.X₂) ht t T.f hfix ≪≫ C.mapIso c
-      have hprojection : (moduleInverseImage R Y.obj.hom).map (cokernel.π d) ≫ t'.hom =
-          t.hom ≫ C.map T.g := by
-        change (moduleInverseImage R Y.obj.hom).map (cokernel.π d) ≫
-          ((galoisTrivialSubobjectCokernelIso E Y (U.obj S.X₂) ht t T.f hfix).hom ≫
-            C.map c.hom) = _
-        rw [← Category.assoc, galoisTrivialSubobjectCokernelIso_projection,
-          Category.assoc, ← C.map_comp]
-        change t.hom ≫ C.map (cokernel.π T.f ≫ cokernel.desc T.f T.g T.zero) = _
-        rw [cokernel.π_desc]
-      let ht₃ := moduleIsAddTorsion_of_nsmul_eq_zero (U.obj S.X₃) p
-        (Nat.Prime.pos (Fact.out)) hp₃
-      have hρ₃ : trivializedDeckRepresentation E' Y (U.obj S.X₃) ht₃ t' = S.X₃.ρ := by
-        ext σ b
-        obtain ⟨a, rfl⟩ := hsurj b
-        have hn := trivializedDeckRepresentation_naturality Y (U.obj S.X₂) (U.obj S.X₃)
-          ht ht₃ t t' (cokernel.π d) T.g hprojection σ a
-        rw [hρ] at hn
-        exact hn.symm.trans (Rep.hom_comm_apply S.g σ a)
-      exact hstep (ShortComplex.cokernelSequence d) hd (hconstant (U.obj S.X₁) hp₁)
-        (hquot hfinite₃ hp₃ E' t' hρ₃)
-  exact hQ (killedTrivializedDeckRep F Y M p (Nat.Prime.pos (Fact.out)) hM e) hM
-    inferInstance hM F e rfl
+  let d := pGroupModuleCoverData (R := R) Y
+  let K := constantSheaf Y.obj.left.smallEtaleTopology (ModuleCat.{u + 1} R)
+  let : PreservesFiniteLimits K := by
+    dsimp [K, constantSheaf]
+    infer_instance
+  let : d.image.Faithful :=
+    inferInstanceAs ((moduleInverseImage R Y.obj.hom).Faithful)
+  let : d.constant.PreservesMonomorphisms := by
+    change K.PreservesMonomorphisms
+    infer_instance
+  let : d.image.PreservesZeroMorphisms :=
+    inferInstanceAs ((moduleInverseImage R Y.obj.hom).PreservesZeroMorphisms)
+  let : d.constant.PreservesZeroMorphisms :=
+    inferInstanceAs (K.PreservesZeroMorphisms)
+  exact d.property_of_pGroup_trivialization p hY P hconstant hiso hstep F M hM e
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Constructible.Modules
 

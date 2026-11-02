@@ -1,0 +1,10 @@
+{
+  "question": "Same actual hfinal inferred proposition vs normalized original target; skip equal/proof pairs; at most20 data differences/depth80; retain failing exact",
+  "origin_candidate": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/field-data-arguments-v3/FieldComparisonDataArguments.lean",
+  "origin_sha256": "597e966b854fd813a5f03f8ceb30c489577423008b9d0c960c16c3f12ccee59d",
+  "candidate": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/field-data-arguments-v4/FieldComparisonDataArguments.lean",
+  "candidate_sha256": "0422ecf0045f1b17e53f73ef78367023794c3de21dbe137581b4b4787f224ab1",
+  "change": "Move identical structurally Nat-recursive diagnostic walker from run_tac local let to top-level private helper; explicit count/skipped refs; avoid unevaluated generated local matcher",
+  "native_sha256": "616b87a1041f6eed9b19b5d5ecd0bc50c3df4acf636496f42b7c4800883c35ce",
+  "authority": "Root mechanical Meta repair grant; author informed; no native/author source mutation"
+}

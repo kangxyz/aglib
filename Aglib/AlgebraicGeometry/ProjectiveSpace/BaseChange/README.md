@@ -80,3 +80,9 @@ The lower algebraic owner is
 Relative projective projections use this scheme comparison to apply the
 proved coherent cohomology theorem after restricting the base to an affine
 open. The twisting pullback `Twisting` is not a premise of the Cartesian theorem.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [MonomialMap](MonomialMap.lean)

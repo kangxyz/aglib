@@ -9,7 +9,8 @@ module
 /- Current interface basis: 46f53465aaf3b0167049e9c8e9e2294111bb4281.
 Original construction and mathematical provenance are retained below. -/
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.Pullback
-public import Mathlib.CategoryTheory.Adjunction.CompositionIso
+public import Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.ConstantCoherence
+public import Aglib.CategoryTheory.Abelian.Ext.SourceTransfer
 
 /-! Canonical identity and composition transports for actual inverse image.
 
@@ -44,13 +45,12 @@ def siteBaseChangeComp {X S T : Scheme.{u}} (f : S ⟶ X) (g : T ⟶ S) :
   MorphismProperty.Over.pullbackComp g f
 
 /-- The chosen inverse image of the identity is canonically the identity. -/
-def inverseImageId (X : Scheme.{u}) : inverseImage (𝟙 X) ≅ 𝟭 (AbelianSheaf.{u, u + 1} X) := by
-  let := hasSheafifyLarge X
-  let adj := (siteBaseChange (𝟙 X)).sheafAdjunctionContinuous AddCommGrpCat.{u + 1}
-    (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology X)
-  let e := Functor.sheafPushforwardContinuousId' (siteBaseChangeId X)
-    AddCommGrpCat.{u + 1} (Scheme.smallEtaleTopology X)
-  exact (adj.ofNatIsoRight e).leftAdjointUniq Adjunction.id
+def inverseImageId (X : Scheme.{u}) : inverseImage (𝟙 X) ≅ 𝟭 (AbelianSheaf.{u, u + 1} X) :=
+  Sheaf.OriginalSections.sheafLeftIdentityIso (Scheme.smallEtaleTopology X)
+    AddCommGrpCat.{u + 1} (siteBaseChange (𝟙 X)) (siteBaseChangeId X)
+    (inverseImage (𝟙 X))
+    ((siteBaseChange (𝟙 X)).sheafAdjunctionContinuous AddCommGrpCat.{u + 1}
+      (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology X))
 
 /-- The chosen inverse images compose in the contravariant scheme direction. -/
 def inverseImageComp {X S T : Scheme.{u}} (f : S ⟶ X) (g : T ⟶ S) :
@@ -78,40 +78,15 @@ local instance : HasSheafify (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}
 theorem inverseImageId_constant (A : AddCommGrpCat.{u + 1}) :
     (inverseImageId X).hom.app
       ((constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj A) =
-    (inverseImageConstantIso (𝟙 X)).hom.app A := by
-  let hT : IsTerminal (Scheme.Etale.mk (𝟙 X)) := MorphismProperty.Over.mkIdTerminal (@Etale :
-    MorphismProperty Scheme.{u}) X
-  let cAdj := constantSheafAdj (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1} hT
-  let adj := (siteBaseChange (𝟙 X)).sheafAdjunctionContinuous AddCommGrpCat.{u + 1}
-    (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology X)
-  let e := Functor.sheafPushforwardContinuousId' (siteBaseChangeId X)
-    AddCommGrpCat.{u + 1} (Scheme.smallEtaleTopology X)
-  apply ((cAdj.comp adj).homEquiv _ _).injective
-  refine Eq.trans ?_ (Adjunction.homEquiv_leftAdjointUniq_hom_app
-    (cAdj.comp adj)
-    (constantSheafAdj (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}
-      (hT.isTerminalObj (siteBaseChange (𝟙 X)))) A).symm
-  change cAdj.homEquiv _ _ (adj.homEquiv _ _
-    ((inverseImageId X).hom.app
-      ((constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj A))) = _
-  have h := Adjunction.homEquiv_leftAdjointUniq_hom_app
-    (adj.ofNatIsoRight e) (Adjunction.id (C := AbelianSheaf.{u, u + 1} X))
-      ((constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj A)
-  simp only [Adjunction.homEquiv_ofNatIsoRight_apply] at h
-  have h' : adj.homEquiv _ _ ((inverseImageId X).hom.app
-      ((constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj A)) =
-      e.inv.app _ := by
-    apply (cancel_mono (e.hom.app _)).mp
-    exact h.trans (e.inv_hom_id_app _).symm
-  rw [h']
-  change (toSheafify (Scheme.smallEtaleTopology X) ((Functor.const X.Etaleᵒᵖ).obj A)).app
-      (Opposite.op (Scheme.Etale.mk (𝟙 X))) ≫
-    (sheafify (Scheme.smallEtaleTopology X) ((Functor.const X.Etaleᵒᵖ).obj A)).map
-      ((siteBaseChangeId X).hom.app (Scheme.Etale.mk (𝟙 X))).op =
-    (toSheafify (Scheme.smallEtaleTopology X) ((Functor.const X.Etaleᵒᵖ).obj A)).app
-      (Opposite.op ((siteBaseChange (𝟙 X)).obj (Scheme.Etale.mk (𝟙 X))))
-  exact ((toSheafify (Scheme.smallEtaleTopology X) ((Functor.const X.Etaleᵒᵖ).obj A)).naturality
-      ((siteBaseChangeId X).hom.app (Scheme.Etale.mk (𝟙 X))).op).symm.trans (Category.id_comp _)
+    (inverseImageConstantIso (𝟙 X)).hom.app A :=
+  Sheaf.OriginalSections.sheafLeftIdentityIso_constant
+    (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}
+    (siteBaseChange (𝟙 X)) (siteBaseChangeId X) (inverseImage (𝟙 X))
+    ((siteBaseChange (𝟙 X)).sheafAdjunctionContinuous AddCommGrpCat.{u + 1}
+      (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology X))
+    (MorphismProperty.Over.mkIdTerminal (@Etale : MorphismProperty Scheme.{u}) X)
+    ((MorphismProperty.Over.mkIdTerminal (@Etale : MorphismProperty Scheme.{u}) X).isTerminalObj
+      (siteBaseChange (𝟙 X))) A
 
 universe w
 variable [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
@@ -119,15 +94,17 @@ variable [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
 /-- Pullback along the identity is the identity on actual H¹ after the
 canonical coefficient identification. -/
 theorem h1Pullback_id (L : AbelianSheaf.{u, u + 1} X) (a : H1Etale X L) :
-    coefficientMap ((inverseImageId X).hom.app L) (h1Pullback (𝟙 X) L a) = a := by
-  change ((Abelian.Ext.mk₀ _).comp
-      (a.mapExactFunctor (inverseImage (𝟙 X))) (zero_add 1)).comp
-        (Abelian.Ext.mk₀ ((inverseImageId X).hom.app L)) (add_zero 1) = a
-  rw [Abelian.Ext.comp_assoc_of_third_deg_zero,
-    Abelian.Ext.mapExactFunctor_comp_mk₀_natTransApp,
-    Abelian.Ext.id_mapExactFunctor]
-  rw [Abelian.Ext.mk₀_comp_mk₀_assoc, inverseImageId_constant]
-  simp
+    coefficientMap ((inverseImageId X).hom.app L) (h1Pullback (𝟙 X) L a) = a :=
+  by
+  let A := AddCommGrpCat.of (ULift.{u + 1} ℤ)
+  have hs : (inverseImageConstantIso (𝟙 X)).inv.app A ≫
+      (inverseImageId X).hom.app
+        ((constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj A) = 𝟙 _ := by
+    rw [inverseImageId_constant]
+    exact (inverseImageConstantIso (𝟙 X)).inv_hom_id_app A
+  exact congrArg (fun k => k a)
+    (Functor.extCoefficientTransfer_id (inverseImage (𝟙 X)) (inverseImageId X)
+      ((inverseImageConstantIso (𝟙 X)).inv.app A) hs L 1)
 
 end ConstantTransport
 end AlgebraicGeometry.Scheme.EtaleCohomology

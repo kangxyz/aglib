@@ -73,10 +73,11 @@ theorem boundedExchange_of_baseChangedProjectiveLine
     R Ω (ζ ≫ g) f j hη' E n hn F hF q
   have hκ' := Stalk.chartGeometricPointMap_projectiveLine_transfer_bijective
     R' Ω ζ f' j' hζ' E' n hn ((inverseImage g').obj F) hG q
-  exact Stalk.higherBaseChangeMap_geometricStalk_isIso_of_localTransfers
-    (f := f) (f' := f') (g := g) (g' := g') (h := H.w.symm) (ζ := ζ)
-    (F := F) (q := q) (R := R) (R' := R') (j := j) (j' := j')
-    (hη := hη') (hζ := hζ') H hκ hκ'
+  simpa only [higherBaseChangeMapFromDerived_eq] using
+    (Stalk.higherBaseChangeMap_geometricStalk_isIso_of_localTransfers
+      (f := f) (f' := f') (g := g) (g' := g') (h := H.w.symm) (ζ := ζ)
+      (F := F) (q := q) (R := R) (R' := R') (j := j) (j' := j')
+      (hη := hη') (hζ := hζ') H hκ hκ')
 
 /-- Native P1 over every commutative ring has the original universal bounded
 base-change property, including all coefficients on each pulled-back source. -/

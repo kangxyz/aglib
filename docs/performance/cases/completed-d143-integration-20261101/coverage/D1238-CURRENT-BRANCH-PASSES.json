@@ -1,0 +1,134 @@
+{
+  "question": "Current-source D1238 affected branch native frontend passes within still-running mixedDgraph",
+  "run": "remote-7fe2aeb108204fc2b16808602177c50a",
+  "source": "4a2f836b64a3faf6fe446a0ccadf70f13101aab8a9982e9a387bacf47e2718a5",
+  "native_run_status_at_projection": "running",
+  "source_owner": "/root/d_compact_support_integration",
+  "source_pinned_by_existing_workspace_lock": true,
+  "source_branch_passes": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/DirectImage.lean": {
+      "started_event": {
+        "event": "started",
+        "time": "2026-11-01T14:15:37.055915+00:00",
+        "monotonic": 75792118.96317731,
+        "wrapper_pid": 515793,
+        "pgid": 515610,
+        "compiler_pid": 515803,
+        "slot": 6,
+        "args": [
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/DirectImage.lean",
+          "-o",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/DirectImage.olean",
+          "-i",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/DirectImage.ilean",
+          "-c",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/DirectImage.c",
+          "--setup",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/DirectImage.setup.json",
+          "--json",
+          "-j4",
+          "-M12800"
+        ],
+        "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean",
+        "admission": {
+          "mode": "elastic"
+        },
+        "scope_lease_mode": "inherited"
+      },
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-11-01T14:16:49.094903+00:00",
+        "monotonic": 75792191.00217026,
+        "wrapper_pid": 515793,
+        "pgid": 515610,
+        "compiler_pid": 515803,
+        "slot": 6,
+        "exit_code": 0
+      },
+      "source_sha256": "6a3c5bbd9ff669003bf986b7194471e6e8e83e906019695fa784cc562952308a"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/GeometricFiber.lean": {
+      "started_event": {
+        "event": "started",
+        "time": "2026-11-01T14:16:49.866580+00:00",
+        "monotonic": 75792191.77383716,
+        "wrapper_pid": 516346,
+        "pgid": 515610,
+        "compiler_pid": 516348,
+        "slot": 1,
+        "args": [
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/GeometricFiber.lean",
+          "-o",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/GeometricFiber.olean",
+          "-i",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/GeometricFiber.ilean",
+          "-c",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/GeometricFiber.c",
+          "--setup",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/GeometricFiber.setup.json",
+          "--json",
+          "-j4",
+          "-M12800"
+        ],
+        "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean",
+        "admission": {
+          "mode": "elastic"
+        },
+        "scope_lease_mode": "inherited"
+      },
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-11-01T14:17:01.136222+00:00",
+        "monotonic": 75792203.04348658,
+        "wrapper_pid": 516346,
+        "pgid": 515610,
+        "compiler_pid": 516348,
+        "slot": 1,
+        "exit_code": 0
+      },
+      "source_sha256": "263e0f6945b43a0bb8a0ca2061de4ac3014f2b5bf8e9014ffaceb8f18c499ddb"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/SingleGeometricFiber.lean": {
+      "started_event": {
+        "event": "started",
+        "time": "2026-11-01T14:17:01.888514+00:00",
+        "monotonic": 75792203.7957713,
+        "wrapper_pid": 516410,
+        "pgid": 515610,
+        "compiler_pid": 516420,
+        "slot": 1,
+        "args": [
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/SingleGeometricFiber.lean",
+          "-o",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/SingleGeometricFiber.olean",
+          "-i",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/SingleGeometricFiber.ilean",
+          "-c",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/SingleGeometricFiber.c",
+          "--setup",
+          "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/Unbounded/SingleGeometricFiber.setup.json",
+          "--json",
+          "-j4",
+          "-M12800"
+        ],
+        "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean",
+        "admission": {
+          "mode": "elastic"
+        },
+        "scope_lease_mode": "inherited"
+      },
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-11-01T14:17:17.791245+00:00",
+        "monotonic": 75792219.6985091,
+        "wrapper_pid": 516410,
+        "pgid": 515610,
+        "compiler_pid": 516420,
+        "slot": 1,
+        "exit_code": 0
+      },
+      "source_sha256": "3cee415f5f588475c2a5e1e9b0f0aa47a759fd1a5204732dae2644ac8a89cdac"
+    }
+  },
+  "boundary": "Partial actual branch CPP only; no terminal whole-batch/native-lint/audit claim; earlier seven matching source passes retained separately."
+}

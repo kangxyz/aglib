@@ -5,9 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.CoefficientStalkBaseChange
-public import Mathlib.CategoryTheory.Sites.Point.Skyscraper
-public import Mathlib.CategoryTheory.Adjunction.Mates
+public import Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.InverseImage.Unit
+public import Aglib.CategoryTheory.Sites.Point.InverseImageComparison
 
 /-! # Geometric-point pullback and skyscraper sheaves
 
@@ -36,7 +35,7 @@ open CoefficientStalkBaseChange
 def pointEquiv (U : X.Etale) :
     (pointSmallEtale (η ≫ f)).fiber.obj U ≃
       (pointSmallEtale η).fiber.obj ((siteBaseChange f).obj U) :=
-  SchemeTorsorBaseChange.pullbackSectionEquiv f (Over.mk η)
+  (Over.mapPullbackAdj f).homEquiv (Over.mk η)
     ((Scheme.Etale.forget X).obj U)
 
 /-- Its forward map is the original geometric pulled-back point. -/
@@ -55,19 +54,8 @@ theorem pointEquiv_naturality {U V : X.Etale} (g : U ⟶ V)
 /-- The native product isomorphism retains literal constant product families on both sides. -/
 def pointProductIso (U : X.Etale) (M : AddCommGrpCat.{u + 1}) :
     (∏ᶜ fun _ : (pointSmallEtale η).fiber.obj ((siteBaseChange f).obj U) => M) ≅
-      (∏ᶜ fun _ : (pointSmallEtale (η ≫ f)).fiber.obj U => M) where
-  hom := Pi.lift (fun p => Pi.π _ (pointEquiv f η U p))
-  inv := Pi.lift (fun q => Pi.π _ ((pointEquiv f η U).symm q))
-  hom_inv_id := by
-    apply Pi.hom_ext
-    intro p
-    simp only [Category.assoc, Pi.lift_comp_π,
-      Equiv.apply_symm_apply, Category.id_comp]
-  inv_hom_id := by
-    apply Pi.hom_ext
-    intro p
-    simp only [Category.assoc, Pi.lift_comp_π,
-      Equiv.symm_apply_apply, Category.id_comp]
+      (∏ᶜ fun _ : (pointSmallEtale (η ≫ f)).fiber.obj U => M) :=
+  GrothendieckTopology.Point.InverseImageComparison.constantProductIso (pointEquiv f η U) M
 
 /-- The product comparison reads precisely the coordinate of the original point bijection. -/
 @[reassoc (attr := simp)]
@@ -76,29 +64,15 @@ theorem pointProductIso_hom_π (U : X.Etale) (M : AddCommGrpCat.{u + 1})
     (pointProductIso f η U M).hom ≫ Pi.π _ p =
       Pi.π (fun _ : (pointSmallEtale η).fiber.obj ((siteBaseChange f).obj U) => M)
         (pointEquiv f η U p) :=
-  Pi.lift_comp_π _ p
+  GrothendieckTopology.Point.InverseImageComparison.constantProductIso_hom_π (pointEquiv f η U) M p
 
 /-- Pullback reindexes the native skyscraper presheaf by the actual Hom-point bijection. -/
 def skyscraperPresheafIso (M : AddCommGrpCat.{u + 1}) :
     (siteBaseChange f).op ⋙ (pointSmallEtale η).skyscraperPresheaf M ≅
       (pointSmallEtale (η ≫ f)).skyscraperPresheaf M :=
-  NatIso.ofComponents
-    (fun U => pointProductIso f η U.unop M)
-    (by
-      intro U V g
-      apply Pi.hom_ext
-      intro p
-      change Pi.map' _ (fun _ => 𝟙 M) ≫
-          ((pointProductIso f η V.unop M).hom ≫ Pi.π _ p) =
-        (pointProductIso f η U.unop M).hom ≫
-          (Pi.map' _ (fun _ => 𝟙 M) ≫ Pi.π _ p)
-      erw [pointProductIso_hom_π f η V.unop M p]
-      simp only [Pi.map'_comp_π, Category.comp_id]
-      erw [pointProductIso_hom_π f η U.unop M
-        ((pointSmallEtale (η ≫ f)).fiber.map g.unop p)]
-      simp only [Functor.op_map, Quiver.Hom.unop_op]
-      erw [pointEquiv_naturality f η g.unop p]
-      all_goals rfl)
+  GrothendieckTopology.Point.InverseImageComparison.presheafIso
+    (pointSmallEtale (η ≫ f)) (pointSmallEtale η) (siteBaseChange f)
+    (pointEquiv f η) (fun a p => pointEquiv_naturality f η a p) M
 
 /-- Reindexing reads the coordinate indexed by the original pulled-back point. -/
 @[reassoc]
@@ -114,23 +88,9 @@ def skyscraperSheafIso :
     (pointSmallEtale η).skyscraperSheafFunctor (A := AddCommGrpCat.{u + 1}) ⋙
         directImage f ≅
       (pointSmallEtale (η ≫ f)).skyscraperSheafFunctor :=
-  NatIso.ofComponents
-    (fun M => ObjectProperty.isoMk _ (skyscraperPresheafIso f η M))
-    (by
-      intro M N q
-      apply Sheaf.hom_ext
-      apply NatTrans.ext
-      funext U
-      apply Pi.hom_ext
-      intro p
-      change Limits.Pi.map (fun _ => q) ≫
-          ((skyscraperPresheafIso f η N).hom.app U ≫ Pi.π _ p) =
-        (skyscraperPresheafIso f η M).hom.app U ≫
-          (Limits.Pi.map (fun _ => q) ≫ Pi.π _ p)
-      erw [skyscraperPresheafIso_hom_π f η N U.unop p]
-      erw [Limits.Pi.map_π, Limits.Pi.map_π,
-        skyscraperPresheafIso_hom_π_assoc f η M U.unop p q]
-      rfl)
+  GrothendieckTopology.Point.InverseImageComparison.sheafIso
+    (pointSmallEtale (η ≫ f)) (pointSmallEtale η) (siteBaseChange f)
+    (pointEquiv f η) (fun a p => pointEquiv_naturality f η a p)
 
 /-- The right-adjoint comparison retains the original pulled-back coordinate. -/
 @[reassoc]

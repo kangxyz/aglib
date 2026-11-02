@@ -39,20 +39,7 @@ variable {X T : Scheme.{u}} (g : T ⟶ X)
 relative test schemes, retaining their additive structure and universe lift. -/
 def sectionFunctorBaseChangeIso (H : Grp (Over X)) [IsCommMonObj H.X] :
     (Over.map g).op ⋙ sectionFunctor H ≅ sectionFunctor (baseChangedGroup g H) :=
-  NatIso.ofComponents (fun U => AddEquiv.toAddCommGrpIso
-    ((AddEquiv.ulift.trans (pullbackSectionMulEquiv g U.unop H).toAdditive).trans
-      AddEquiv.ulift.symm)) (by
-    intro U V a
-    apply AddCommGrpCat.hom_ext
-    apply AddMonoidHom.ext
-    intro s
-    apply ULift.ext
-    change Additive.ofMul
-        ((pullbackSectionEquiv g V.unop H.X)
-          ((Over.map g).map a.unop ≫ s.down.toMul)) =
-      Additive.ofMul (a.unop ≫ (pullbackSectionEquiv g U.unop H.X) s.down.toMul)
-    exact congrArg Additive.ofMul
-      ((Over.mapPullbackAdj g).homEquiv_naturality_left a.unop s.down.toMul))
+  CommutativeGroupSections.adjunctionIso.{u + 1} (Over.mapPullbackAdj g) H
 
 /-- An actual finite commutative étale coefficient isomorphism recovers an
 actual group-scheme isomorphism by the proved small-site Yoneda equivalence. -/
@@ -73,48 +60,19 @@ def representedGroupIsoOfSheafIso
     rw [representedSheafMap_comp, representedSheafMap_preimage,
       representedSheafMap_preimage, representedSheafMap_id, e.inv_hom_id]
 
-private theorem isoPostcompose_hom_inv
-    {C : Type*} [Category* C] {A D U : C} (e : A ≅ D) (s : U ⟶ A) :
-    (s ≫ e.hom) ≫ e.inv = s :=
-  ((Category.assoc s e.hom e.inv).trans
-    (congrArg (fun k => s ≫ k) e.hom_inv_id)).trans (Category.comp_id s)
-
 /-- Actual postcomposition gives the additive equivalence on one typed
 scheme-valued section group, before any functor-object coercions are involved. -/
 def sectionGroupPostcomposeEquiv
     {H K : Grp (Over T)} [IsCommMonObj H.X] [IsCommMonObj K.X] (e : H ≅ K) :
-    ∀ U : Over T, RepresentedSections H U ≃+ RepresentedSections K U := by
-  let e₀ := (Grp.forget (Over T)).mapIso e
-  intro U
-  exact {
-    toEquiv := {
-      toFun := fun s => ULift.up (Additive.ofMul (s.down.toMul ≫ e₀.hom))
-      invFun := fun s => ULift.up (Additive.ofMul (s.down.toMul ≫ e₀.inv))
-      left_inv := fun s => by
-        apply ULift.ext
-        exact congrArg Additive.ofMul (isoPostcompose_hom_inv e₀ s.down.toMul)
-      right_inv := fun s => by
-        apply ULift.ext
-        exact congrArg Additive.ofMul (isoPostcompose_hom_inv e₀.symm s.down.toMul) }
-    map_add' := fun s t => by
-      apply ULift.ext
-      exact congrArg Additive.ofMul
-        (MonObj.mul_comp s.down.toMul t.down.toMul e.hom.hom.hom) }
+    ∀ U : Over T, RepresentedSections H U ≃+ RepresentedSections K U :=
+  CommutativeGroupSections.postcomposeEquiv.{u + 1} e
 
 /-- Postcomposition with an actual group-scheme isomorphism is natural on
 all original scheme-valued section objects, including nonétale tests. -/
 def sectionFunctorGroupIso
     {H K : Grp (Over T)} [IsCommMonObj H.X] [IsCommMonObj K.X] (e : H ≅ K) :
     sectionFunctor H ≅ sectionFunctor K :=
-  NatIso.ofComponents
-    (fun U => AddEquiv.toAddCommGrpIso (sectionGroupPostcomposeEquiv e U.unop)) (by
-    intro U V a
-    apply AddCommGrpCat.hom_ext
-    apply AddMonoidHom.ext
-    intro s
-    apply ULift.ext
-    exact congrArg Additive.ofMul
-      (Category.assoc a.unop s.down.toMul e.hom.hom.hom))
+  CommutativeGroupSections.mapIso.{u + 1} e
 
 /-- The fixed actual finite constant group at the new base is the original
 pullback group, transported through the original constant coefficient maps. -/
@@ -127,15 +85,290 @@ def constantGroupBaseChangeIso (B : Type u) [AddCommGroup B] [Finite B] :
         (inverseImageConstantIso g).app (ConstantFinite.value B) ≪≫
           (ConstantFinite.representation B T).iso.symm)
 
+/- The coefficient comparisons retain the native pullback square and its original values. -/
+
+private theorem constantGroupBaseChangeIso_normalization
+    {V W : Scheme.{u}} (f : W ⟶ V) (B : Type u) [AddCommGroup B] [Finite B] :
+    (representedSheafBaseChangeIso f (ConstantFinite.representation B V).group).hom ≫
+        representedSheafMap (constantGroupBaseChangeIso f B).hom ≫
+          (ConstantFinite.representation B W).iso.hom =
+      (inverseImage f).map (ConstantFinite.representation B V).iso.hom ≫
+        (inverseImageConstantIso f).hom.app (ConstantFinite.value B) := by
+  dsimp only [constantGroupBaseChangeIso, representedGroupIsoOfSheafIso]
+  rw [representedSheafMap_preimage]
+  simp only [Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom, Category.assoc,
+    Iso.hom_inv_id_assoc, Iso.inv_hom_id, Category.comp_id, Iso.app_hom]
+
+private def representedGroupCompIso {V W Z : Scheme.{u}} (f : W ⟶ V) (k : Z ⟶ W)
+    (H : Grp (Over V)) :
+    baseChangedGroup k (baseChangedGroup f H) ≅ baseChangedGroup (k ≫ f) H :=
+  ((Functor.mapGrpCompIso (F := Over.pullback f) (G := Over.pullback k)).symm ≪≫
+    (Functor.mapGrpNatIso (Over.pullbackComp k f)).symm).app H
+
+private theorem representedGroupCompIso_hom {V W Z : Scheme.{u}}
+    (f : W ⟶ V) (k : Z ⟶ W) (H : Grp (Over V)) :
+    (representedGroupCompIso f k H).hom.hom.hom =
+      (Over.pullbackComp k f).inv.app H.X := by
+  change (𝟙 _) ≫ (Over.pullbackComp k f).inv.app H.X = _
+  exact Category.id_comp _
+
+private theorem representedGroupCompIso_inv {V W Z : Scheme.{u}}
+    (f : W ⟶ V) (k : Z ⟶ W) (H : Grp (Over V)) :
+    (representedGroupCompIso f k H).inv.hom.hom =
+      (Over.pullbackComp k f).hom.app H.X := by
+  change (Over.pullbackComp k f).hom.app H.X ≫ (𝟙 _) = _
+  exact Category.comp_id _
+
+private def representedGroupEqIso {V W : Scheme.{u}} {f k : W ⟶ V} (h : f = k)
+    (H : Grp (Over V)) : baseChangedGroup f H ≅ baseChangedGroup k H :=
+  (Functor.mapGrpNatIso (eqToIso (congrArg (fun a => Over.pullback a) h))).app H
+
+private theorem representedGroupEqIso_hom {V W : Scheme.{u}}
+    {f k : W ⟶ V} (h : f = k) (H : Grp (Over V)) :
+    (representedGroupEqIso h H).hom.hom.hom =
+      (eqToIso (congrArg (fun a => Over.pullback a) h)).hom.app H.X := by
+  subst k
+  rfl
+
+private theorem representedBaseChange_eqTransport {V W : Scheme.{u}}
+    {f k : W ⟶ V} (h : f = k) (H : Grp (Over V))
+    [IsCommMonObj H.X] [Etale H.X.hom] :
+    (eqToIso (congrArg (fun a => inverseImage a) h)).hom.app (representedSheaf H) ≫
+        (representedSheafBaseChangeIso k H).hom =
+      (representedSheafBaseChangeIso f H).hom ≫
+        representedSheafMap (representedGroupEqIso h H).hom := by
+  subst k
+  change (𝟙 _) ≫ (representedSheafBaseChangeIso f H).hom =
+    (representedSheafBaseChangeIso f H).hom ≫
+      representedSheafMap (𝟙 (baseChangedGroup f H))
+  rw [representedSheafMap_id, Category.id_comp, Category.comp_id]
+
+private def representedGroupSquareIso {V W V' W' : Scheme.{u}}
+    (f : V ⟶ W) (f' : V' ⟶ W') (g : W' ⟶ W) (g' : V' ⟶ V)
+    (h : f' ≫ g = g' ≫ f) (H : Grp (Over W)) :
+    baseChangedGroup f' (baseChangedGroup g H) ≅
+      baseChangedGroup g' (baseChangedGroup f H) :=
+  representedGroupCompIso g f' H ≪≫ representedGroupEqIso h H ≪≫
+    (representedGroupCompIso f g' H).symm
+
+private theorem representedGroupSquareIso_hom {V W V' W' : Scheme.{u}}
+    (f : V ⟶ W) (f' : V' ⟶ W') (g : W' ⟶ W) (g' : V' ⟶ V)
+    (h : f' ≫ g = g' ≫ f) (H : Grp (Over W)) :
+    (representedGroupSquareIso f f' g g' h H).hom.hom.hom =
+      (Over.pullbackSquareIso f f' g g' h).hom.app H.X := by
+  change (representedGroupCompIso g f' H).hom.hom.hom ≫
+      (representedGroupEqIso h H).hom.hom.hom ≫
+      (representedGroupCompIso f g' H).inv.hom.hom = _
+  rw [representedGroupCompIso_hom, representedGroupEqIso_hom,
+    representedGroupCompIso_inv]
+  rfl
+
+private theorem representedBaseChange_square {V W V' W' : Scheme.{u}}
+    (f : V ⟶ W) (f' : V' ⟶ W') (g : W' ⟶ W) (g' : V' ⟶ V)
+    (h : f' ≫ g = g' ≫ f) (H : Grp (Over W))
+    [IsCommMonObj H.X] [Etale H.X.hom] :
+    (inverseImageSquareIso f f' g g' h).hom.app (representedSheaf H) ≫
+        (inverseImage g').map (representedSheafBaseChangeIso f H).hom ≫
+        (representedSheafBaseChangeIso g' (baseChangedGroup f H)).hom =
+      (inverseImage f').map (representedSheafBaseChangeIso g H).hom ≫
+        (representedSheafBaseChangeIso f' (baseChangedGroup g H)).hom ≫
+        representedSheafMap (representedGroupSquareIso f f' g g' h H).hom := by
+  have hc₁ := RepresentedBaseChange.iso_comp_of_hom g f' H
+    (representedGroupCompIso g f' H).hom (representedGroupCompIso_hom g f' H)
+  have hc₂ := RepresentedBaseChange.iso_comp_of_hom f g' H
+    (representedGroupCompIso f g' H).hom (representedGroupCompIso_hom f g' H)
+  have he := representedBaseChange_eqTransport h H
+  have hs := Over.RelativeTests.Comparison.square_app (inverseImageSquareIso f f' g g' h)
+    (inverseImageComp g f')
+    (eqToIso (congrArg (fun a => inverseImage a) h)) (inverseImageComp f g') rfl
+    (representedSheaf H)
+  have hi : representedSheafMap (representedGroupCompIso f g' H).hom ≫
+      representedSheafMap (representedGroupCompIso f g' H).inv = 𝟙 _ := by
+    rw [← representedSheafMap_comp, Iso.hom_inv_id, representedSheafMap_id]
+  have hvalue : representedSheafMap (representedGroupSquareIso f f' g g' h H).hom =
+      representedSheafMap (representedGroupCompIso g f' H).hom ≫
+        representedSheafMap (representedGroupEqIso h H).hom ≫
+        representedSheafMap (representedGroupCompIso f g' H).inv := by
+    simp only [representedGroupSquareIso, Iso.trans_hom, Iso.symm_hom,
+      representedSheafMap_comp]
+  have hc := Over.RelativeTests.Comparison.post_cancel
+    ((inverseImageComp g f').hom.app (representedSheaf H))
+    ((inverseImageComp g f').inv.app (representedSheaf H))
+    ((inverseImageSquareIso f f' g g' h).hom.app (representedSheaf H))
+    ((eqToIso (congrArg (fun a => inverseImage a) h)).hom.app (representedSheaf H))
+    ((inverseImageComp f g').hom.app (representedSheaf H))
+    ((inverseImage f').map (representedSheafBaseChangeIso g H).hom ≫
+      (representedSheafBaseChangeIso f' (baseChangedGroup g H)).hom)
+    ((inverseImage g').map (representedSheafBaseChangeIso f H).hom ≫
+      (representedSheafBaseChangeIso g' (baseChangedGroup f H)).hom)
+    (representedSheafMap (representedGroupCompIso g f' H).hom)
+    (representedSheafMap (representedGroupEqIso h H).hom)
+    (representedSheafMap (representedGroupCompIso f g' H).hom)
+    (representedSheafMap (representedGroupCompIso f g' H).inv)
+    (representedSheafBaseChangeIso (f' ≫ g) H).hom
+    (representedSheafBaseChangeIso (g' ≫ f) H).hom
+    ((inverseImageComp g f').inv_hom_id_app (representedSheaf H)) hs
+    (by simpa only [Category.assoc] using hc₁)
+    (by simpa only [Category.assoc] using hc₂) hi he
+  simpa only [hvalue, Category.assoc] using hc
+
+private theorem constantComparison_eqTransport {V W : Scheme.{u}}
+    {f k : W ⟶ V} (h : f = k) (A : AddCommGrpCat.{u + 1}) :
+    (eqToIso (congrArg (fun a => inverseImage a) h)).hom.app
+        ((constantSheaf (Scheme.smallEtaleTopology V) AddCommGrpCat.{u + 1}).obj A) ≫
+        (inverseImageConstantIso k).hom.app A = (inverseImageConstantIso f).hom.app A := by
+  subst k
+  exact Category.id_comp _
+
+private theorem constantComparison_square {V W V' W' : Scheme.{u}}
+    (f : V ⟶ W) (f' : V' ⟶ W') (g : W' ⟶ W) (g' : V' ⟶ V)
+    (h : f' ≫ g = g' ≫ f) (A : AddCommGrpCat.{u + 1}) :
+    (inverseImageSquareIso f f' g g' h).hom.app
+        ((constantSheaf (Scheme.smallEtaleTopology W) AddCommGrpCat.{u + 1}).obj A) ≫
+        (inverseImage g').map ((inverseImageConstantIso f).hom.app A) ≫
+        (inverseImageConstantIso g').hom.app A =
+      (inverseImage f').map ((inverseImageConstantIso g).hom.app A) ≫
+        (inverseImageConstantIso f').hom.app A := by
+  have hs := Over.RelativeTests.Comparison.square_app (inverseImageSquareIso f f' g g' h)
+    (inverseImageComp g f')
+    (eqToIso (congrArg (fun a => inverseImage a) h)) (inverseImageComp f g') rfl
+    ((constantSheaf (Scheme.smallEtaleTopology W) AddCommGrpCat.{u + 1}).obj A)
+  exact Over.RelativeTests.Comparison.cancel
+    ((inverseImageComp g f').hom.app _)
+    ((inverseImageComp g f').inv.app _)
+    ((inverseImageSquareIso f f' g g' h).hom.app _)
+    ((eqToIso (congrArg (fun a => inverseImage a) h)).hom.app _)
+    ((inverseImageComp f g').hom.app _)
+    ((inverseImageComp g f').inv_hom_id_app _) hs
+    ((inverseImage g').map ((inverseImageConstantIso f).hom.app A) ≫
+      (inverseImageConstantIso g').hom.app A)
+    ((inverseImage f').map ((inverseImageConstantIso g).hom.app A) ≫
+      (inverseImageConstantIso f').hom.app A)
+    ((inverseImageConstantIso (f' ≫ g)).hom.app A)
+    ((inverseImageConstantIso (g' ≫ f)).hom.app A)
+    (inverseImageComp_constant g f' A) (inverseImageComp_constant f g' A)
+    (constantComparison_eqTransport h A)
+
+private theorem representedCoefficient_square
+    {V W V' W' : Scheme.{u}}
+    (f : V ⟶ W) (f' : V' ⟶ W') (g : W' ⟶ W) (g' : V' ⟶ V)
+    (h : f' ≫ g = g' ≫ f)
+    (H : Grp (Over W)) (K : Grp (Over W'))
+    [IsCommMonObj H.X] [Etale H.X.hom] [IsCommMonObj K.X] [Etale K.X.hom]
+    (A : AddCommGrpCat.{u + 1})
+    (ρX : representedSheaf H ≅
+      (constantSheaf W.smallEtaleTopology AddCommGrpCat.{u + 1}).obj A)
+    (ρT : representedSheaf K ≅
+      (constantSheaf W'.smallEtaleTopology AddCommGrpCat.{u + 1}).obj A)
+    (a : baseChangedGroup g H ≅ K)
+    (ha : (representedSheafBaseChangeIso g H).hom ≫ representedSheafMap a.hom ≫ ρT.hom =
+      (inverseImage g).map ρX.hom ≫ (inverseImageConstantIso g).hom.app A) :
+    let e₀ := Over.RelativeTests.Comparison.coefficientIso (inverseImage f)
+      (representedSheafBaseChangeIso f H) ρX ((inverseImageConstantIso f).app A)
+    let e₁ := Over.RelativeTests.Comparison.coefficientIso (inverseImage f')
+      (representedSheafBaseChangeIso f' K) ρT ((inverseImageConstantIso f').app A)
+    (inverseImage g').map e₀.hom ≫ (inverseImageConstantIso g').hom.app A ≫ e₁.inv =
+      (representedSheafBaseChangeIso g' (baseChangedGroup f H)).hom ≫
+        representedSheafMap
+          ((representedGroupSquareIso f f' g g' h H).inv ≫
+            (Over.pullback f').mapGrp.map a.hom) := by
+  intro e₀ e₁
+  have hR := representedBaseChange_square f f' g g' h H
+  have hN := (inverseImageSquareIso f f' g g' h).hom.naturality ρX.hom
+  simp only [Functor.comp_map] at hN
+  have hC := constantComparison_square f f' g g' h A
+  have hNorm := Over.RelativeTests.Comparison.coefficientIso_normalization
+    (inverseImage f) (representedSheafBaseChangeIso f H) ρX
+    ((inverseImageConstantIso f).app A)
+  simp only [Iso.app_hom] at hNorm
+  have h0 := Over.RelativeTests.Comparison.map_pair (inverseImage g')
+    (representedSheafBaseChangeIso f H).hom e₀.hom
+    ((inverseImage f).map ρX.hom) ((inverseImageConstantIso f).hom.app A) hNorm
+  have hg := Over.RelativeTests.Comparison.map_three_two (inverseImage f')
+    (representedSheafBaseChangeIso g H).hom (representedSheafMap a.hom) ρT.hom
+    ((inverseImage g).map ρX.hom) ((inverseImageConstantIso g).hom.app A) ha
+  have hq := Over.RelativeTests.Comparison.coefficientIso_normalization
+    (inverseImage f') (representedSheafBaseChangeIso f' K) ρT
+    ((inverseImageConstantIso f').app A)
+  simp only [Iso.app_hom] at hq
+  have hn := representedSheafBaseChangeIso_naturality f' a.hom
+  have hi : representedSheafMap (representedGroupSquareIso f f' g g' h H).hom ≫
+      representedSheafMap (representedGroupSquareIso f f' g g' h H).inv = 𝟙 _ := by
+    rw [← representedSheafMap_comp, Iso.hom_inv_id, representedSheafMap_id]
+  have hδ := Over.RelativeTests.Comparison.suffix_cancel
+    ((inverseImage g').map e₀.hom) ((inverseImageConstantIso g').hom.app A)
+    e₁.inv e₁.hom e₁.inv_hom_id
+  have hwhole := representedSheafMap_comp
+    (representedGroupSquareIso f f' g g' h H).inv ((Over.pullback f').mapGrp.map a.hom)
+  have hfinal := Over.RelativeTests.Comparison.coefficient_square
+    ((inverseImageSquareIso f f' g g' h).hom.app (representedSheaf H))
+    ((inverseImage g').map (representedSheafBaseChangeIso f H).hom) e₁.hom
+    hR hN hC h0 hg hq hn hi hδ hwhole
+    (inferInstance) (inferInstance) (inferInstance)
+  exact hfinal
+
+private theorem constantCoefficient_square {V W V' W' : Scheme.{u}}
+    (f : V ⟶ W) (f' : V' ⟶ W') (g : W' ⟶ W) (g' : V' ⟶ V)
+    (h : f' ≫ g = g' ≫ f) (B : Type u) [AddCommGroup B] [Finite B] :
+    let e₀ := constantRepresentedCoefficientIso B f
+    let e₁ := constantRepresentedCoefficientIso B f'
+    (inverseImage g').map e₀.hom ≫
+        (inverseImageConstantIso g').hom.app (ConstantFinite.value B) ≫ e₁.inv =
+      (representedSheafBaseChangeIso g'
+        (baseChangedGroup f (ConstantFinite.representation B W).group)).hom ≫
+        representedSheafMap
+          ((representedGroupSquareIso f f' g g' h (ConstantFinite.representation B W).group).inv ≫
+            (Over.pullback f').mapGrp.map (constantGroupBaseChangeIso g B).hom) := by
+  have hfinal := representedCoefficient_square f f' g g' h
+    (ConstantFinite.representation B W).group (ConstantFinite.representation B W').group
+    (ConstantFinite.value B) (ConstantFinite.representation B W).iso
+    (ConstantFinite.representation B W').iso (constantGroupBaseChangeIso g B)
+    (constantGroupBaseChangeIso_normalization g B)
+  simp only [constantRepresentedCoefficientIso] at hfinal ⊢
+  exact hfinal
+
+/-- The original CopyObj coordinates for one given represented group. -/
+def representedCoordinateFunctor {S : Scheme.{u}}
+    (H : Grp (Over S)) [IsCommMonObj H.X] :
+    (Over S)ᵒᵖ ⥤ (S.Etaleᵒᵖ ⥤ AddCommGrpCat.{u + 1}) :=
+  (representedDirectImageFunctor H ⋙
+    sheafToPresheaf S.smallEtaleTopology AddCommGrpCat.{u + 1}).copyObj
+    (fun Y => MorphismProperty.Over.RelativeTests.coordinates etaleMorphismProperty
+      (sectionFunctor H) Y.unop)
+    (fun Y => representedDirectImageCoordinatesIso H Y.unop)
+
+private theorem representedCoordinateFunctor_obj {S : Scheme.{u}}
+    (H : Grp (Over S)) [IsCommMonObj H.X] (Y : (Over S)ᵒᵖ) :
+    (representedCoordinateFunctor H).obj Y =
+      MorphismProperty.Over.RelativeTests.coordinates etaleMorphismProperty
+        (sectionFunctor H) Y.unop := rfl
+
+/-- The original CopyObj comparison, shared for the entire represented family. -/
+def representedCoordinateFunctorIso {S : Scheme.{u}}
+    (H : Grp (Over S)) [IsCommMonObj H.X] :
+    representedDirectImageFunctor H ⋙
+        sheafToPresheaf S.smallEtaleTopology AddCommGrpCat.{u + 1} ≅
+      representedCoordinateFunctor H :=
+  (representedDirectImageFunctor H ⋙
+    sheafToPresheaf S.smallEtaleTopology AddCommGrpCat.{u + 1}).isoCopyObj _ _
+
+private theorem representedCoordinateFunctor_map {S : Scheme.{u}}
+    (H : Grp (Over S)) [IsCommMonObj H.X] {Y Z : (Over S)ᵒᵖ} (a : Y ⟶ Z) :
+    (representedCoordinateFunctor H).map a =
+      MorphismProperty.Over.RelativeTests.coordinateMap etaleMorphismProperty
+        (sectionFunctor H) a.unop := by
+  exact Functor.homCongr_symm_cancel
+    (representedDirectImageCoordinatesIso H Y.unop)
+    (representedDirectImageCoordinatesIso H Z.unop)
+    (MorphismProperty.Over.RelativeTests.coordinateMap etaleMorphismProperty
+      (sectionFunctor H) a.unop)
+
 /-- The coordinate functor has exactly the accepted direct-image maps:
 copyObj transports only along the specified original coordinate isomorphisms. -/
 def constantCoordinateFunctor {S : Scheme.{u}}
     (B : Type u) [AddCommGroup B] [Finite B] :
     (Over S)ᵒᵖ ⥤ (S.Etaleᵒᵖ ⥤ AddCommGrpCat.{u + 1}) :=
-  (constantRepresentedDirectImageFunctor (X := S) B ⋙
-    sheafToPresheaf S.smallEtaleTopology AddCommGrpCat.{u + 1}).copyObj
-    (fun Y => constantDirectImageCoordinates B Y.unop)
-    (fun Y => constantDirectImageCoordinatesIso B Y.unop)
+  representedCoordinateFunctor (ConstantFinite.representation B S).group
 
 /-- The original coordinate comparisons are a natural isomorphism for the
 entire relative-object functor, with its actual represented maps. -/
@@ -144,8 +377,7 @@ def constantCoordinateFunctorIso {S : Scheme.{u}}
     constantRepresentedDirectImageFunctor (X := S) B ⋙
         sheafToPresheaf S.smallEtaleTopology AddCommGrpCat.{u + 1} ≅
       constantCoordinateFunctor B :=
-  (constantRepresentedDirectImageFunctor (X := S) B ⋙
-    sheafToPresheaf S.smallEtaleTopology AddCommGrpCat.{u + 1}).isoCopyObj _ _
+  representedCoordinateFunctorIso (ConstantFinite.representation B S).group
 
 /-- The coordinate functor comparison retains its specified original component. -/
 theorem constantCoordinateFunctorIso_hom_app {S : Scheme.{u}}
@@ -164,17 +396,9 @@ theorem constantCoordinateFunctor_map {S : Scheme.{u}}
     (B : Type u) [AddCommGroup B] [Finite B] {Y Z : (Over S)ᵒᵖ} (a : Y ⟶ Z) :
     (constantCoordinateFunctor B).map a =
       constantDirectImageCoordinateMap B a.unop := by
-  change (constantDirectImageCoordinatesIso B Y.unop).inv ≫
-      (constantRepresentedDirectImageMap B a.unop).hom ≫
-      (constantDirectImageCoordinatesIso B Z.unop).hom = _
-  rw [constantRepresentedDirectImageMap_coordinates, Iso.inv_hom_id_assoc]
-
-private theorem isoChainCancelRight
-    {C : Type*} [Category* C] {A D E Q : C}
-    (a : A ≅ D) (b : D ≅ E) (c : Q ≅ E) :
-    (a ≪≫ b ≪≫ c.symm).hom ≫ c.hom = a.hom ≫ b.hom := by
-  simp only [Iso.trans_hom, Iso.symm_hom, Category.assoc,
-    Iso.inv_hom_id, Category.comp_id]
+  exact Functor.homCongr_symm_cancel
+    (constantDirectImageCoordinatesIso B Y.unop) (constantDirectImageCoordinatesIso B Z.unop)
+    (constantDirectImageCoordinateMap B a.unop)
 
 section CopyObjRestriction
 
@@ -187,20 +411,21 @@ variable {I J C D : Type*} [Category* I] [Category* J] [Category* C] [Category* 
 comparisons. No objectwise re-elaboration of the actual carriers is needed. -/
 def copyObjRestrictionIso
     (h : P.copyObj p ep ⋙ K ≅ R ⋙ Q.copyObj q eqv) : P ⋙ K ≅ R ⋙ Q :=
-  Functor.isoWhiskerRight (P.isoCopyObj p ep) K ≪≫ h ≪≫
-    Functor.isoWhiskerLeft R (Q.isoCopyObj q eqv).symm
+  Functor.copyObjRestrictionIso P Q K R p ep q eqv h
 
 private theorem copyObjRestrictionIso_normalization
     (h : P.copyObj p ep ⋙ K ≅ R ⋙ Q.copyObj q eqv) :
     (copyObjRestrictionIso P Q K R p ep q eqv h).hom ≫
         (Functor.isoWhiskerLeft R (Q.isoCopyObj q eqv)).hom =
       (Functor.isoWhiskerRight (P.isoCopyObj p ep) K).hom ≫ h.hom := by
-  exact isoChainCancelRight (Functor.isoWhiskerRight (P.isoCopyObj p ep) K) h
-    (Functor.isoWhiskerLeft R (Q.isoCopyObj q eqv))
+  exact Functor.copyObjRestrictionIso_normalization P Q K R p ep q eqv h
 
 end CopyObjRestriction
 
 variable [Etale g]
+
+private theorem etaleRestriction_obj_obj (M : AbelianSheaf.{u, u + 1} X) :
+    ((etaleRestriction g).obj M).obj = (siteEtalePostcompose g).op ⋙ M.obj := rfl
 
 /-- On an étale chart the original scheme-section adjunction is an actual
 isomorphism from literal sheaf restriction to the represented pullback. -/
@@ -264,29 +489,23 @@ theorem representedEtaleRestrictionIso_original
 pasting, in the order used by the literal Over pullback functor. -/
 def restrictionTestSchemeIso (Y : Over X) (U : T.Etale) :
     pullback U.hom (pullback.snd Y.hom g) ≅ pullback (U.hom ≫ g) Y.hom :=
-  pullbackSymmetry U.hom (pullback.snd Y.hom g) ≪≫
-    pullbackLeftPullbackSndIso Y.hom g U.hom ≪≫
-      pullbackSymmetry Y.hom (U.hom ≫ g)
+  Over.RelativeTests.restrictionSchemeIso g Y ((Scheme.Etale.forget T).obj U)
 
 omit [Etale g] in
 /-- The comparison retains the original étale-test projection. -/
 @[reassoc]
 theorem restrictionTestSchemeIso_fst (Y : Over X) (U : T.Etale) :
     (restrictionTestSchemeIso g Y U).hom ≫ pullback.fst (U.hom ≫ g) Y.hom =
-      pullback.fst U.hom (pullback.snd Y.hom g) := by
-  simp only [restrictionTestSchemeIso, Iso.trans_hom, Category.assoc,
-    pullbackSymmetry_hom_comp_fst, pullbackSymmetry_hom_comp_snd,
-    pullbackLeftPullbackSndIso_hom_snd]
+      pullback.fst U.hom (pullback.snd Y.hom g) :=
+  Over.RelativeTests.restrictionSchemeIso_fst g Y ((Scheme.Etale.forget T).obj U)
 
 omit [Etale g] in
 /-- The second projection is the original projection to the relative scheme. -/
 @[reassoc]
 theorem restrictionTestSchemeIso_snd (Y : Over X) (U : T.Etale) :
     (restrictionTestSchemeIso g Y U).hom ≫ pullback.snd (U.hom ≫ g) Y.hom =
-      pullback.snd U.hom (pullback.snd Y.hom g) ≫ pullback.fst Y.hom g := by
-  simp only [restrictionTestSchemeIso, Iso.trans_hom, Category.assoc,
-    pullbackSymmetry_hom_comp_snd,
-    pullbackSymmetry_hom_comp_fst_assoc, pullbackLeftPullbackSndIso_hom_fst]
+      pullback.snd U.hom (pullback.snd Y.hom g) ≫ pullback.fst Y.hom g :=
+  Over.RelativeTests.restrictionSchemeIso_snd g Y ((Scheme.Etale.forget T).obj U)
 
 /-- The native test comparison is an actual isomorphism over the original
 base; no identification of endpoints is substituted for its original maps. -/
@@ -294,75 +513,14 @@ def restrictionTestOverIso (Y : Over X) (U : T.Etale) :
     (Over.map g).obj
         ((directImageTests ((Over.pullback g).obj Y)).obj U) ≅
       (directImageTests Y).obj ((siteEtalePostcompose g).obj U) :=
-  Over.isoMk (restrictionTestSchemeIso g Y U) (by
-    change (restrictionTestSchemeIso g Y U).hom ≫
-        (pullback.snd (U.hom ≫ g) Y.hom ≫ Y.hom) =
-      (pullback.snd U.hom (pullback.snd Y.hom g) ≫ pullback.snd Y.hom g) ≫ g
-    rw [← Category.assoc, restrictionTestSchemeIso_snd]
-    rw [Category.assoc, pullback.condition, ← Category.assoc])
-
-private theorem postcomposedTestMap_fst (Y : Over X) {U V : T.Etale} (b : U ⟶ V) :
-    ((siteBaseChange Y.hom).map ((siteEtalePostcompose g).map b)).left ≫
-        pullback.fst (V.hom ≫ g) Y.hom =
-      pullback.fst (U.hom ≫ g) Y.hom ≫ b.left :=
-  siteBaseChange_map_fst Y.hom ((siteEtalePostcompose g).map b)
-
-private theorem postcomposedTestMap_snd (Y : Over X) {U V : T.Etale} (b : U ⟶ V) :
-    ((siteBaseChange Y.hom).map ((siteEtalePostcompose g).map b)).left ≫
-        pullback.snd (V.hom ≫ g) Y.hom =
-      pullback.snd (U.hom ≫ g) Y.hom :=
-  siteBaseChange_map_snd Y.hom ((siteEtalePostcompose g).map b)
+  Over.RelativeTests.restrictionOverIso g Y ((Scheme.Etale.forget T).obj U)
 
 /-- Naturality in the original small-etale test schemes. -/
 def restrictionTestsIso (Y : Over X) :
     directImageTests ((Over.pullback g).obj Y) ⋙ Over.map g ≅
       siteEtalePostcompose g ⋙ directImageTests Y :=
-  NatIso.ofComponents (restrictionTestOverIso g Y) (by
-    intro U V b
-    apply Over.OverMorphism.ext
-    change ((siteBaseChange (pullback.snd Y.hom g)).map b).left ≫
-        (restrictionTestSchemeIso g Y V).hom =
-      (restrictionTestSchemeIso g Y U).hom ≫
-        ((siteBaseChange Y.hom).map ((siteEtalePostcompose g).map b)).left
-    apply pullback.hom_ext
-    · simp only [Category.assoc, restrictionTestSchemeIso_fst, siteBaseChange_map_fst]
-      rw [postcomposedTestMap_fst g Y b, ← Category.assoc,
-        restrictionTestSchemeIso_fst g Y U]
-    · simp only [Category.assoc, restrictionTestSchemeIso_snd,
-        siteBaseChange_map_snd_assoc]
-      rw [postcomposedTestMap_snd g Y b, restrictionTestSchemeIso_snd g Y U])
-
-omit [Etale g] in
-private theorem relativePullbackMap_fst {Y Z : Over X} (a : Y ⟶ Z) :
-    ((Over.pullback g).map a).left ≫ pullback.fst Z.hom g =
-      pullback.fst Y.hom g ≫ a.left :=
-  pullback.lift_fst _ _ _
-
-private theorem relativeSourceTestMap_fst {Y Z : Over X} (a : Y ⟶ Z) (U : T.Etale) :
-    (baseChangedTestMap ((Scheme.Etale.forget X).obj
-      ((siteEtalePostcompose g).obj U)) a).left ≫ pullback.fst (U.hom ≫ g) Z.hom =
-      pullback.fst (U.hom ≫ g) Y.hom :=
-  baseChangedTestMap_fst _ a
-
-private theorem relativeSourceTestMap_snd {Y Z : Over X} (a : Y ⟶ Z) (U : T.Etale) :
-    (baseChangedTestMap ((Scheme.Etale.forget X).obj
-      ((siteEtalePostcompose g).obj U)) a).left ≫ pullback.snd (U.hom ≫ g) Z.hom =
-      pullback.snd (U.hom ≫ g) Y.hom ≫ a.left :=
-  baseChangedTestMap_snd _ a
-
-omit [Etale g] in
-private theorem relativeTargetTestMap_fst {Y Z : Over X} (a : Y ⟶ Z) (U : T.Etale) :
-    (baseChangedTestMap ((Scheme.Etale.forget T).obj U) ((Over.pullback g).map a)).left ≫
-        pullback.fst U.hom (pullback.snd Z.hom g) =
-      pullback.fst U.hom (pullback.snd Y.hom g) :=
-  baseChangedTestMap_fst _ ((Over.pullback g).map a)
-
-omit [Etale g] in
-private theorem relativeTargetTestMap_snd {Y Z : Over X} (a : Y ⟶ Z) (U : T.Etale) :
-    (baseChangedTestMap ((Scheme.Etale.forget T).obj U) ((Over.pullback g).map a)).left ≫
-        pullback.snd U.hom (pullback.snd Z.hom g) =
-      pullback.snd U.hom (pullback.snd Y.hom g) ≫ ((Over.pullback g).map a).left :=
-  baseChangedTestMap_snd _ ((Over.pullback g).map a)
+  MorphismProperty.Over.RelativeTests.restrictionIso etaleMorphismProperty g
+    (show Etale g from inferInstance) Y
 
 /-- The same comparison is natural in EVERY original relative-object map,
 using the accepted original test-map lifts on both sides. -/
@@ -371,21 +529,75 @@ theorem restrictionTestsIso_relative {Y Z : Over X} (a : Y ⟶ Z) (U : T.Etale) 
         ((directImageTestsMap ((Over.pullback g).map a)).app U) ≫
       (restrictionTestsIso g Z).hom.app U =
     (restrictionTestsIso g Y).hom.app U ≫
-      (directImageTestsMap a).app ((siteEtalePostcompose g).obj U) := by
-  apply Over.OverMorphism.ext
-  change (baseChangedTestMap ((Scheme.Etale.forget T).obj U)
-        ((Over.pullback g).map a)).left ≫ (restrictionTestSchemeIso g Z U).hom =
-    (restrictionTestSchemeIso g Y U).hom ≫
-      (baseChangedTestMap ((Scheme.Etale.forget X).obj
-        ((siteEtalePostcompose g).obj U)) a).left
-  apply pullback.hom_ext
-  · simp only [Category.assoc, restrictionTestSchemeIso_fst]
-    rw [relativeTargetTestMap_fst g a U, relativeSourceTestMap_fst g a U,
-      restrictionTestSchemeIso_fst g Y U]
-  · simp only [Category.assoc, restrictionTestSchemeIso_snd]
-    rw [relativeSourceTestMap_snd g a U, ← Category.assoc,
-      relativeTargetTestMap_snd g a U, Category.assoc, relativePullbackMap_fst g a,
-      restrictionTestSchemeIso_snd_assoc]
+      (directImageTestsMap a).app ((siteEtalePostcompose g).obj U) :=
+  MorphismProperty.Over.RelativeTests.restrictionIso_relative etaleMorphismProperty g
+    (show Etale g from inferInstance) a U
+
+/-- The original test-pullback and group comparison on given represented coordinates. -/
+def representedCoordinateRestrictionIso
+    (H : Grp (Over X)) [IsCommMonObj H.X]
+    (K : Grp (Over T)) [IsCommMonObj K.X] (c : baseChangedGroup g H ≅ K) (Y : Over X) :
+    (siteEtalePostcompose g).op ⋙
+        MorphismProperty.Over.RelativeTests.coordinates etaleMorphismProperty
+          (sectionFunctor H) Y ≅
+      MorphismProperty.Over.RelativeTests.coordinates etaleMorphismProperty
+        (sectionFunctor K) ((Over.pullback g).obj Y) :=
+  MorphismProperty.Over.RelativeTests.coordinateRestrictionIso etaleMorphismProperty g
+    (show Etale g from inferInstance) (sectionFunctor H) (sectionFunctor K)
+    (sectionFunctorBaseChangeIso g H ≪≫ sectionFunctorGroupIso c) Y
+
+/-- The original coordinate restriction on the complete represented family. -/
+def representedCoordinateRestrictionFunctorIso
+    (H : Grp (Over X)) [IsCommMonObj H.X]
+    (K : Grp (Over T)) [IsCommMonObj K.X] (c : baseChangedGroup g H ≅ K) :
+    representedCoordinateFunctor H ⋙
+        (Functor.whiskeringLeft T.Etaleᵒᵖ X.Etaleᵒᵖ AddCommGrpCat.{u + 1}).obj
+          (siteEtalePostcompose g).op ≅
+      (Over.pullback g).op ⋙ representedCoordinateFunctor K :=
+  NatIso.ofComponents (fun Y => representedCoordinateRestrictionIso g H K c Y.unop) (by
+    intro Y Z a
+    change Functor.whiskerLeft (siteEtalePostcompose g).op
+          ((representedCoordinateFunctor H).map a) ≫
+        (representedCoordinateRestrictionIso g H K c Z.unop).hom =
+      (representedCoordinateRestrictionIso g H K c Y.unop).hom ≫
+        (representedCoordinateFunctor K).map (((Over.pullback g).map a.unop).op)
+    rw [representedCoordinateFunctor_map, representedCoordinateFunctor_map]
+    exact MorphismProperty.Over.RelativeTests.coordinateRestrictionIso_relative
+      etaleMorphismProperty g (show Etale g from inferInstance)
+      (sectionFunctor H) (sectionFunctor K)
+      (sectionFunctorBaseChangeIso g H ≪≫ sectionFunctorGroupIso c) a.unop)
+
+/-- The source comparison is the original CopyObj comparison after restriction. -/
+def representedRestrictionSourceIso (H : Grp (Over X)) [IsCommMonObj H.X] :
+    (representedDirectImageFunctor H ⋙ etaleRestriction g) ⋙
+        sheafToPresheaf T.smallEtaleTopology AddCommGrpCat.{u + 1} ≅
+      representedCoordinateFunctor H ⋙
+        (Functor.whiskeringLeft T.Etaleᵒᵖ X.Etaleᵒᵖ AddCommGrpCat.{u + 1}).obj
+          (siteEtalePostcompose g).op :=
+  Functor.isoWhiskerRight (representedCoordinateFunctorIso H)
+    ((Functor.whiskeringLeft T.Etaleᵒᵖ X.Etaleᵒᵖ AddCommGrpCat.{u + 1}).obj
+      (siteEtalePostcompose g).op)
+
+/-- The target comparison is the same CopyObj comparison at the literal pullback. -/
+def representedRestrictionTargetIso (K : Grp (Over T)) [IsCommMonObj K.X] :
+    ((Over.pullback g).op ⋙ representedDirectImageFunctor K) ⋙
+        sheafToPresheaf T.smallEtaleTopology AddCommGrpCat.{u + 1} ≅
+      (Over.pullback g).op ⋙ representedCoordinateFunctor K :=
+  Functor.isoWhiskerLeft (Over.pullback g).op (representedCoordinateFunctorIso K)
+
+/-- The original fully faithful lift for the given represented groups and comparison. -/
+def representedRestrictionIso
+    (H : Grp (Over X)) [IsCommMonObj H.X]
+    (K : Grp (Over T)) [IsCommMonObj K.X] (c : baseChangedGroup g H ≅ K) :
+    representedDirectImageFunctor H ⋙ etaleRestriction g ≅
+      (Over.pullback g).op ⋙ representedDirectImageFunctor K :=
+  Functor.liftRestrictionIso
+    (sheafToPresheaf T.smallEtaleTopology AddCommGrpCat.{u + 1})
+    (Functor.FullyFaithful.ofFullyFaithful
+      (sheafToPresheaf T.smallEtaleTopology AddCommGrpCat.{u + 1}))
+    (representedRestrictionSourceIso g H)
+    (representedCoordinateRestrictionFunctorIso g H K c)
+    (representedRestrictionTargetIso g K)
 
 variable (B : Type u) [AddCommGroup B] [Finite B]
 
@@ -393,23 +605,10 @@ variable (B : Type u) [AddCommGroup B] [Finite B]
 isomorphism, original Over adjunction, and fixed actual coefficient group map. -/
 def coordinateRestrictionIso (Y : Over X) :
     (siteEtalePostcompose g).op ⋙ constantDirectImageCoordinates B Y ≅
-      constantDirectImageCoordinates B ((Over.pullback g).obj Y) := by
-  let H := (ConstantFinite.representation B X).group
-  let DX := directImageTests Y
-  let D := directImageTests ((Over.pullback g).obj Y)
-  let e := restrictionTestsIso g Y
-  let e₀ : (siteEtalePostcompose g ⋙ DX).op ⋙ sectionFunctor H ≅
-      (D ⋙ Over.map g).op ⋙ sectionFunctor H :=
-    Functor.isoWhiskerRight (NatIso.op e) (sectionFunctor H)
-  change (siteEtalePostcompose g).op ⋙ (DX.op ⋙ sectionFunctor H) ≅
-    D.op ⋙ sectionFunctor (ConstantFinite.representation B T).group
-  exact (Functor.associator (siteEtalePostcompose g).op DX.op (sectionFunctor H)).symm ≪≫
-    Functor.isoWhiskerRight (Functor.opComp (siteEtalePostcompose g) DX).symm
-      (sectionFunctor H) ≪≫ e₀ ≪≫
-    Functor.isoWhiskerRight (Functor.opComp D (Over.map g)) (sectionFunctor H) ≪≫
-    Functor.associator D.op (Over.map g).op (sectionFunctor H) ≪≫
-    Functor.isoWhiskerLeft D.op (sectionFunctorBaseChangeIso g H) ≪≫
-    Functor.isoWhiskerLeft D.op (sectionFunctorGroupIso (constantGroupBaseChangeIso g B))
+      constantDirectImageCoordinates B ((Over.pullback g).obj Y) :=
+  representedCoordinateRestrictionIso g
+    (ConstantFinite.representation B X).group (ConstantFinite.representation B T).group
+    (constantGroupBaseChangeIso g B) Y
 
 /-- Every section is transported by the original test morphism and the
 actual Over-adjunction section map, followed by the fixed group comparison. -/
@@ -430,31 +629,13 @@ theorem coordinateRestrictionIso_relative {Y Z : Over X} (a : Y ⟶ Z) :
         (constantDirectImageCoordinateMap B a) ≫
       (coordinateRestrictionIso g B Y).hom =
     (coordinateRestrictionIso g B Z).hom ≫
-      constantDirectImageCoordinateMap B ((Over.pullback g).map a) := by
-  apply NatTrans.ext
-  funext U
-  apply AddCommGrpCat.hom_ext
-  apply AddMonoidHom.ext
-  intro s
-  apply ULift.ext
-  let H := (ConstantFinite.representation B X).group
-  let DY := (directImageTests ((Over.pullback g).obj Y)).obj U.unop
-  let DZ := (directImageTests ((Over.pullback g).obj Z)).obj U.unop
-  let t : DY ⟶ DZ := (directImageTestsMap ((Over.pullback g).map a)).app U.unop
-  let q := (constantGroupBaseChangeIso g B).hom.hom.hom
-  change Additive.ofMul
-      ((pullbackSectionEquiv g DY H.X)
-        ((restrictionTestsIso g Y).hom.app U.unop ≫
-          ((directImageTestsMap a).app ((siteEtalePostcompose g).obj U.unop) ≫
-            s.down.toMul)) ≫ q) =
-    Additive.ofMul (t ≫
-      ((pullbackSectionEquiv g DZ H.X)
-        ((restrictionTestsIso g Z).hom.app U.unop ≫ s.down.toMul) ≫ q))
-  rw [← Category.assoc t]
-  apply congrArg (fun k => Additive.ofMul (k ≫ q))
-  rw [← Category.assoc, ← restrictionTestsIso_relative, Category.assoc]
-  exact (Over.mapPullbackAdj g).homEquiv_naturality_left t
-    ((restrictionTestsIso g Z).hom.app U.unop ≫ s.down.toMul)
+      constantDirectImageCoordinateMap B ((Over.pullback g).map a) :=
+  MorphismProperty.Over.RelativeTests.coordinateRestrictionIso_relative etaleMorphismProperty g
+    (show Etale g from inferInstance)
+    (sectionFunctor (ConstantFinite.representation B X).group)
+    (sectionFunctor (ConstantFinite.representation B T).group)
+    (sectionFunctorBaseChangeIso g (ConstantFinite.representation B X).group ≪≫
+      sectionFunctorGroupIso (constantGroupBaseChangeIso g B)) a
 
 /-- Whole relative-object coordinate restriction, with the actual frozen
 maps on both coordinate functors. -/
@@ -463,16 +644,9 @@ def constantCoordinateRestrictionIso :
         (Functor.whiskeringLeft T.Etaleᵒᵖ X.Etaleᵒᵖ AddCommGrpCat.{u + 1}).obj
           (siteEtalePostcompose g).op ≅
       (Over.pullback g).op ⋙ constantCoordinateFunctor (S := T) B :=
-  NatIso.ofComponents (fun Y => coordinateRestrictionIso g B Y.unop) (by
-    intro Y Z a
-    change Functor.whiskerLeft (siteEtalePostcompose g).op
-          ((constantCoordinateFunctor (S := X) B).map a) ≫
-        (coordinateRestrictionIso g B Z.unop).hom =
-      (coordinateRestrictionIso g B Y.unop).hom ≫
-        (constantCoordinateFunctor (S := T) B).map
-          (((Over.pullback g).map a.unop).op)
-    rw [constantCoordinateFunctor_map, constantCoordinateFunctor_map]
-    exact coordinateRestrictionIso_relative g B a.unop)
+  representedCoordinateRestrictionFunctorIso g
+    (ConstantFinite.representation B X).group (ConstantFinite.representation B T).group
+    (constantGroupBaseChangeIso g B)
 
 /-- The whole coordinate comparison keeps its specified original component. -/
 theorem constantCoordinateRestrictionIso_hom_app (Y : Over X) :
@@ -487,9 +661,7 @@ def representedRestrictionSourceCoordinatesIso :
       constantCoordinateFunctor (S := X) B ⋙
         (Functor.whiskeringLeft T.Etaleᵒᵖ X.Etaleᵒᵖ AddCommGrpCat.{u + 1}).obj
           (siteEtalePostcompose g).op :=
-  Functor.isoWhiskerRight (constantCoordinateFunctorIso (S := X) B)
-    ((Functor.whiskeringLeft T.Etaleᵒᵖ X.Etaleᵒᵖ AddCommGrpCat.{u + 1}).obj
-      (siteEtalePostcompose g).op)
+  representedRestrictionSourceIso g (ConstantFinite.representation B X).group
 
 /-- The target coordinate comparison retains the original coordinate iso
 on every literal Over pullback, before any component carriers are expanded. -/
@@ -497,7 +669,12 @@ def representedRestrictionTargetCoordinatesIso :
     ((Over.pullback g).op ⋙ constantRepresentedDirectImageFunctor (X := T) B) ⋙
         sheafToPresheaf T.smallEtaleTopology AddCommGrpCat.{u + 1} ≅
       (Over.pullback g).op ⋙ constantCoordinateFunctor (S := T) B :=
-  Functor.isoWhiskerLeft (Over.pullback g).op (constantCoordinateFunctorIso (S := T) B)
+  representedRestrictionTargetIso g (ConstantFinite.representation B T).group
+
+omit [Etale g] in
+private theorem representedRestrictionTargetCoordinatesIso_hom_app (Y : Over X) :
+    (representedRestrictionTargetCoordinatesIso g B).hom.app (op Y) =
+      (constantDirectImageCoordinatesIso B ((Over.pullback g).obj Y)).hom := rfl
 
 /-- The whole comparison before forgetting sheaf conditions, retaining the
 specified original coordinate isomorphisms at both ends. -/
@@ -525,9 +702,9 @@ coordinate comparison, including its entire relative-object naturality. -/
 def representedDirectImageRestrictionIso :
     constantRepresentedDirectImageFunctor (X := X) B ⋙ etaleRestriction g ≅
       (Over.pullback g).op ⋙ constantRepresentedDirectImageFunctor (X := T) B :=
-  ((Functor.FullyFaithful.ofFullyFaithful
-      (sheafToPresheaf T.smallEtaleTopology AddCommGrpCat.{u + 1})).whiskeringRight
-        (Over X)ᵒᵖ).preimageIso (representedDirectImageRestrictionPresheafIso g B)
+  representedRestrictionIso g
+    (ConstantFinite.representation B X).group (ConstantFinite.representation B T).group
+    (constantGroupBaseChangeIso g B)
 
 /-- The whole sheaf comparison obeys the original coordinate equation.
 The source and target comparisons are the specified original isoCopyObj maps. -/
@@ -536,29 +713,14 @@ theorem representedDirectImageRestrictionIso_coordinates_whole :
         (sheafToPresheaf T.smallEtaleTopology AddCommGrpCat.{u + 1}) ≫
       (representedRestrictionTargetCoordinatesIso g B).hom =
     (representedRestrictionSourceCoordinatesIso g B).hom ≫
-      (constantCoordinateRestrictionIso g B).hom := by
-  let FF := (Functor.FullyFaithful.ofFullyFaithful
-    (sheafToPresheaf T.smallEtaleTopology AddCommGrpCat.{u + 1})).whiskeringRight
-      (Over X)ᵒᵖ
-  have hRaw := FF.map_preimage (representedDirectImageRestrictionPresheafIso g B).hom
-  change Functor.whiskerRight (representedDirectImageRestrictionIso g B).hom
-      (sheafToPresheaf T.smallEtaleTopology AddCommGrpCat.{u + 1}) =
-    (representedDirectImageRestrictionPresheafIso g B).hom at hRaw
-  rw [hRaw]
-  have hCoordinates := copyObjRestrictionIso_normalization
-    (constantRepresentedDirectImageFunctor (X := X) B ⋙
-      sheafToPresheaf X.smallEtaleTopology AddCommGrpCat.{u + 1})
-    (constantRepresentedDirectImageFunctor (X := T) B ⋙
-      sheafToPresheaf T.smallEtaleTopology AddCommGrpCat.{u + 1})
-    ((Functor.whiskeringLeft T.Etaleᵒᵖ X.Etaleᵒᵖ AddCommGrpCat.{u + 1}).obj
-      (siteEtalePostcompose g).op)
-    (Over.pullback g).op
-    (fun V => constantDirectImageCoordinates B V.unop)
-    (fun V => constantDirectImageCoordinatesIso B V.unop)
-    (fun Z => constantDirectImageCoordinates B Z.unop)
-    (fun Z => constantDirectImageCoordinatesIso B Z.unop)
+      (constantCoordinateRestrictionIso g B).hom :=
+  Functor.liftRestrictionIso_normalization
+    (sheafToPresheaf T.smallEtaleTopology AddCommGrpCat.{u + 1})
+    (Functor.FullyFaithful.ofFullyFaithful
+      (sheafToPresheaf T.smallEtaleTopology AddCommGrpCat.{u + 1}))
+    (representedRestrictionSourceCoordinatesIso g B)
     (constantCoordinateRestrictionIso g B)
-  exact hCoordinates
+    (representedRestrictionTargetCoordinatesIso g B)
 
 /-- Projecting the whole original coordinate equation gives the actual
 component equation without reconstructing its scheme-valued section carriers. -/
@@ -629,5 +791,250 @@ theorem constantPushforwardRestrictionIso_naturality
       (constantPushforwardRestrictionIso g B).hom.app (op Z) ≫
         (constantPushforwardFunctor B).map (((Over.pullback g).map a).op) :=
   (constantPushforwardRestrictionIso g B).hom.naturality a.op
+
+
+private theorem representedGroupEqIso_inv {V W : Scheme.{u}}
+    {f k : W ⟶ V} (h : f = k) (H : Grp (Over V)) :
+    (representedGroupEqIso h H).inv.hom.hom =
+      (eqToIso (congrArg (fun a => Over.pullback a) h)).inv.app H.X := by
+  subst k
+  rfl
+
+private theorem representedGroupSquareIso_inv {V W V' W' : Scheme.{u}}
+    (f : V ⟶ W) (f' : V' ⟶ W') (g : W' ⟶ W) (g' : V' ⟶ V)
+    (h : f' ≫ g = g' ≫ f) (H : Grp (Over W)) :
+    (representedGroupSquareIso f f' g g' h H).inv.hom.hom =
+      (Over.pullbackSquareIso f f' g g' h).inv.app H.X := by
+  change (representedGroupCompIso f g' H).hom.hom.hom ≫
+      (representedGroupEqIso h H).inv.hom.hom ≫
+      (representedGroupCompIso g f' H).inv.hom.hom = _
+  rw [representedGroupCompIso_hom, representedGroupEqIso_inv,
+    representedGroupCompIso_inv]
+  rfl
+
+private theorem representedSectionRestriction_coordinates (Y : Over X)
+    (H : Grp (Over X)) [IsCommMonObj H.X]
+    (K : Grp (Over T)) [IsCommMonObj K.X] (c : baseChangedGroup g H ≅ K) :
+    ((Functor.whiskeringLeft T.Etaleᵒᵖ X.Etaleᵒᵖ AddCommGrpCat.{u + 1}).obj
+        (siteEtalePostcompose g).op).map
+        (representedDirectImageCoordinatesIso H Y).hom ≫
+      (MorphismProperty.Over.RelativeTests.coordinateRestrictionIso etaleMorphismProperty g
+        (show Etale g from inferInstance) (sectionFunctor H) (sectionFunctor K)
+        (sectionFunctorBaseChangeIso g H ≪≫ sectionFunctorGroupIso c) Y).hom =
+    ((etaleDirectImageRestrictionIso Y.hom g).hom.app
+        (representedSheaf (baseChangedGroup Y.hom H))).hom ≫
+      ((directImage (pullback.fst g Y.hom)).map
+        ((representedEtaleRestrictionIso (pullback.snd g Y.hom)
+          (baseChangedGroup Y.hom H)).hom ≫
+          representedSheafMap
+            ((representedGroupSquareIso Y.hom (pullback.fst g Y.hom) g
+                (pullback.snd g Y.hom) pullback.condition H).inv ≫
+              (Over.pullback (pullback.fst g Y.hom)).mapGrp.map c.hom))).hom ≫
+      (representedDirectImageCoordinatesIso K (Over.mk (pullback.fst g Y.hom))).hom ≫
+      MorphismProperty.Over.RelativeTests.coordinateMap etaleMorphismProperty
+        (sectionFunctor K) (pullbackSymmetryOverIso g Y).inv := by
+  apply NatTrans.ext
+  funext U
+  apply AddCommGrpCat.hom_ext
+  apply AddMonoidHom.ext
+  intro s
+  apply ULift.ext
+  let U₀ := (Scheme.Etale.forget T).obj U.unop
+  let q := pullback.fst g Y.hom
+  let p := pullback.snd g Y.hom
+  let D := (Over.pullback q).obj U₀
+  let a : (Over.pullback Y.hom).obj ((Over.map g).obj U₀) ⟶
+      (Over.pullback Y.hom).obj H.X := s.down.toMul
+  let e := (Over.pullbackPostcomposeIso Y.hom g).hom.app U₀
+  let j := Over.RelativeTests.mapApp U₀ (Over.RelativeTests.symmetryOverIso g Y).inv
+  let r := (restrictionTestsIso g Y).hom.app U.unop
+  let t := representedGroupSquareIso Y.hom q g p pullback.condition H
+  let m := (Over.mapPullbackAdj p).homEquiv D ((Over.pullback Y.hom).obj H.X) (e ≫ a)
+  have hOver := Over.RelativeTests.pasting_homEquiv g Y H.X U₀ a
+  rw [← representedGroupSquareIso_inv Y.hom q g p pullback.condition H] at hOver
+  have hPost := congrArg (fun k => k ≫ c.hom.hom.hom) hOver
+  simp only [Category.assoc] at hPost
+  have hNat := congrArg (fun k => j ≫ k)
+    ((Over.mapPullbackAdj q).homEquiv_naturality_right_symm
+      (m ≫ t.inv.hom.hom) c.hom.hom.hom).symm
+  have hvalue := congrArg Additive.ofMul (Eq.trans hPost hNat)
+  change Additive.ofMul
+      ((Over.mapPullbackAdj g).homEquiv _ H.X
+        (r ≫ ((Over.mapPullbackAdj Y.hom).homEquiv _ H.X).symm a) ≫ c.hom.hom.hom) =
+    Additive.ofMul
+      (j ≫ (((Over.mapPullbackAdj q).homEquiv D K.X).symm
+        ((m ≫ t.inv.hom.hom) ≫ (Over.pullback q).map c.hom.hom.hom)))
+  exact hvalue
+
+private theorem representedRestrictionIso_hom_app (Y : Over X)
+    (H : Grp (Over X)) [IsCommMonObj H.X]
+    (K : Grp (Over T)) [IsCommMonObj K.X] (c : baseChangedGroup g H ≅ K) :
+    (representedRestrictionIso g H K c).hom.app (op Y) =
+      (etaleDirectImageRestrictionIso Y.hom g).hom.app
+          (representedSheaf (baseChangedGroup Y.hom H)) ≫
+        (directImage (pullback.fst g Y.hom)).map
+          ((representedEtaleRestrictionIso (pullback.snd g Y.hom)
+            (baseChangedGroup Y.hom H)).hom ≫
+            representedSheafMap
+              ((representedGroupSquareIso Y.hom (pullback.fst g Y.hom) g
+                  (pullback.snd g Y.hom) pullback.condition H).inv ≫
+                (Over.pullback (pullback.fst g Y.hom)).mapGrp.map c.hom)) ≫
+        representedDirectImageMap K (pullbackSymmetryOverIso g Y).inv := by
+  let F := sheafToPresheaf T.smallEtaleTopology AddCommGrpCat.{u + 1}
+  let W := (Functor.whiskeringLeft T.Etaleᵒᵖ X.Etaleᵒᵖ AddCommGrpCat.{u + 1}).obj
+    (siteEtalePostcompose g).op
+  let q := pullback.fst g Y.hom
+  let source := W.mapIso (representedDirectImageCoordinatesIso H Y)
+  let target := representedDirectImageCoordinatesIso K ((Over.pullback g).obj Y)
+  let e := representedDirectImageCoordinatesIso K (Over.mk q)
+  let middle := (representedCoordinateRestrictionIso g H K c Y).hom
+  let relative := MorphismProperty.Over.RelativeTests.coordinateMap etaleMorphismProperty
+    (sectionFunctor K) (pullbackSymmetryOverIso g Y).inv
+  let u := (etaleDirectImageRestrictionIso Y.hom g).hom.app
+    (representedSheaf (baseChangedGroup Y.hom H))
+  let v := (directImage q).map
+    ((representedEtaleRestrictionIso (pullback.snd g Y.hom) (baseChangedGroup Y.hom H)).hom ≫
+      representedSheafMap
+        ((representedGroupSquareIso Y.hom q g (pullback.snd g Y.hom) pullback.condition H).inv ≫
+          (Over.pullback q).mapGrp.map c.hom))
+  have hComparison := representedSectionRestriction_coordinates g Y H K c
+  have hs := Functor.isoCopyObj_whiskerRight_hom_app
+    (representedDirectImageFunctor H ⋙
+      sheafToPresheaf X.smallEtaleTopology AddCommGrpCat.{u + 1})
+    (fun Z => MorphismProperty.Over.RelativeTests.coordinates etaleMorphismProperty
+      (sectionFunctor H) Z.unop)
+    (fun Z => representedDirectImageCoordinatesIso H Z.unop) W (op Y)
+  have ht := Functor.isoCopyObj_whiskerLeft_hom_app
+    (representedDirectImageFunctor K ⋙ F)
+    (fun Z => MorphismProperty.Over.RelativeTests.coordinates etaleMorphismProperty
+      (sectionFunctor K) Z.unop)
+    (fun Z => representedDirectImageCoordinatesIso K Z.unop) (Over.pullback g).op (op Y)
+  have assemble := Functor.liftRestrictionIso_app_eq_of_coordinates
+    (I := (Over X)ᵒᵖ) (C := AbelianSheaf.{u, u + 1} T)
+    (D := T.Etaleᵒᵖ ⥤ AddCommGrpCat.{u + 1})
+    (U := representedDirectImageFunctor H ⋙ etaleRestriction g)
+    (V := (Over.pullback g).op ⋙ representedDirectImageFunctor K)
+    (A := representedCoordinateFunctor H ⋙ W)
+    (B := (Over.pullback g).op ⋙ representedCoordinateFunctor K)
+    (M := (directImage q).obj
+      ((etaleRestriction (pullback.snd g Y.hom)).obj
+        (representedSheaf (baseChangedGroup Y.hom H))))
+    (N := representedDirectImage K (Over.mk q))
+    (E := MorphismProperty.Over.RelativeTests.coordinates etaleMorphismProperty
+      (sectionFunctor K) (Over.mk q))
+    F (Functor.FullyFaithful.ofFullyFaithful F)
+    (representedRestrictionSourceIso g H) (representedCoordinateRestrictionFunctorIso g H K c)
+    (representedRestrictionTargetIso g K) (op Y)
+  dsimp only [Functor.comp_obj, Functor.op_obj, unop_op, representedDirectImageFunctor_obj,
+    representedCoordinateFunctor_obj, representedDirectImage, F, sheafToPresheaf,
+    ObjectProperty.ι_obj, ObjectProperty.ι_map, etaleRestriction_obj_obj,
+    representedRestrictionSourceIso, representedRestrictionTargetIso,
+    representedCoordinateFunctorIso, representedCoordinateRestrictionFunctorIso]
+    at assemble hs ht hComparison
+  have assemble := assemble source target e middle relative u v
+    (representedDirectImageMap K (pullbackSymmetryOverIso g Y).inv)
+  have assemble := assemble hs (by rfl) ht
+  have h := assemble (by rfl) hComparison
+  exact h
+
+private theorem representedRestriction_literal (Y : Over X) :
+    (representedDirectImageRestrictionIso g B).hom.app (op Y) =
+      (etaleDirectImageRestrictionIso Y.hom g).hom.app
+          (representedSheaf (baseChangedGroup Y.hom (ConstantFinite.representation B X).group)) ≫
+        (directImage (pullback.fst g Y.hom)).map
+          ((representedEtaleRestrictionIso (pullback.snd g Y.hom)
+            (baseChangedGroup Y.hom (ConstantFinite.representation B X).group)).hom ≫
+            representedSheafMap
+              ((representedGroupSquareIso Y.hom (pullback.fst g Y.hom) g
+                  (pullback.snd g Y.hom) pullback.condition
+                  (ConstantFinite.representation B X).group).inv ≫
+                (Over.pullback (pullback.fst g Y.hom)).mapGrp.map
+                  (constantGroupBaseChangeIso g B).hom)) ≫
+        constantRepresentedDirectImageMap B (pullbackSymmetryOverIso g Y).inv := by
+  exact representedRestrictionIso_hom_app g Y
+    (ConstantFinite.representation B X).group (ConstantFinite.representation B T).group
+    (constantGroupBaseChangeIso g B)
+
+private theorem etaleBaseChangeIso_hom_value
+    {V W Z : Scheme.{u}} (f : V ⟶ W) (g : Z ⟶ W) [Etale g]
+    (F : AbelianSheaf.{u, u + 1} V) :
+    (etaleBaseChangeIso f g).hom.app F =
+      (inverseImageEtaleIso g).hom.app ((directImage f).obj F) ≫
+        (etaleDirectImageRestrictionIso f g).hom.app F ≫
+        (directImage (pullback.fst g f)).map
+          ((inverseImageEtaleIso (pullback.snd g f)).inv.app F) := rfl
+
+private theorem representedRestriction_canonical (Y : Over X) :
+    (inverseImageEtaleIso g).hom.app (constantRepresentedDirectImage B Y) ≫
+        (representedDirectImageRestrictionIso g B).hom.app (op Y) =
+      (etaleBaseChangeIso Y.hom g).hom.app
+          (representedSheaf (baseChangedGroup Y.hom (ConstantFinite.representation B X).group)) ≫
+        (directImage (pullback.fst g Y.hom)).map
+          ((representedSheafBaseChangeIso (pullback.snd g Y.hom)
+              (baseChangedGroup Y.hom (ConstantFinite.representation B X).group)).hom ≫
+            representedSheafMap
+              ((representedGroupSquareIso Y.hom (pullback.fst g Y.hom) g
+                  (pullback.snd g Y.hom) pullback.condition
+                  (ConstantFinite.representation B X).group).inv ≫
+                (Over.pullback (pullback.fst g Y.hom)).mapGrp.map
+                  (constantGroupBaseChangeIso g B).hom)) ≫
+        constantRepresentedDirectImageMap B (pullbackSymmetryOverIso g Y).inv := by
+  rw [representedRestriction_literal, etaleBaseChangeIso_hom_value]
+  have hOriginal := representedEtaleRestrictionIso_original (pullback.snd g Y.hom)
+    (baseChangedGroup Y.hom (ConstantFinite.representation B X).group)
+  have hMapped := Over.RelativeTests.Comparison.map_relation_assoc
+    (directImage (pullback.fst g Y.hom)) hOriginal
+  simp only [Functor.map_comp, Category.assoc]
+  rw [hMapped]
+
+/-- The original coordinate comparison is the actual canonical exchange
+component, proved through their same original g-adjunction unit. -/
+theorem constantPushforwardRestrictionIso_hom_eq_etaleBaseChangeComponent (Y : Over X) :
+    (constantPushforwardRestrictionIso g B).hom.app (op Y) =
+      (constantPushforwardEtaleBaseChangeComponent g B Y).hom := by
+  let q := pullback.fst g Y.hom
+  let p := pullback.snd g Y.hom
+  let Q : Over T := Over.mk q
+  let R := (Over.pullback g).obj Y
+  let E := constantRepresentedDirectImageIso B Y
+  let E' := constantRepresentedDirectImageIso B R
+  let δ := (constantPushforwardRestrictionIso g B).hom.app (op Y)
+  have hδ : δ = (inverseImage g).map E.inv ≫
+      (inverseImageEtaleIso g).hom.app (constantRepresentedDirectImage B Y) ≫
+      (representedDirectImageRestrictionIso g B).hom.app (op Y) ≫ E'.hom := rfl
+  have hLeft : (inverseImage g).map E.hom ≫ δ ≫ E'.inv =
+      (inverseImageEtaleIso g).hom.app (constantRepresentedDirectImage B Y) ≫
+        (representedDirectImageRestrictionIso g B).hom.app (op Y) := by
+    exact Over.RelativeTests.Comparison.transport_cancel
+      ((inverseImage g).map E.hom) ((inverseImage g).map E.inv)
+      ((inverseImageEtaleIso g).hom.app (constantRepresentedDirectImage B Y))
+      ((representedDirectImageRestrictionIso g B).hom.app (op Y)) E'.hom E'.inv δ
+      ((inverseImage g).mapIso E).hom_inv_id E'.hom_inv_id hδ
+  have hn := (etaleBaseChangeIso Y.hom g).hom.naturality
+    (constantRepresentedCoefficientIso B Y.hom).hom
+  simp only [Functor.comp_map] at hn
+  rw [← constantRepresentedDirectImageIso_hom B Y] at hn
+  have hs := constantPushforwardFunctor_map B (pullbackSymmetryOverIso g Y).inv.op
+  rw [constantRepresentedDirectImageIso_inv B Q] at hs
+  have hκ := constantPushforwardEtaleBaseChangeComponent_hom g B Y
+  rw [← etaleBaseChangeIso_hom] at hκ
+  have hCoefficient := constantCoefficient_square Y.hom q g p pullback.condition B
+  have hCanonical := representedRestriction_canonical g B Y
+  have hRight := Over.RelativeTests.Comparison.canonical_transport
+    (directImage q) E' ((inverseImage g).map E.hom)
+    hn hCoefficient hs hκ hCanonical
+  have hMaps := hLeft.trans hRight.symm
+  exact Over.RelativeTests.Comparison.eq_of_original_unit_transport
+    (inverseImageAdjunction g) E E' hMaps
+
+
+/-- Both original constructions retain the same isomorphism after their
+actual homs are identified by the original adjunction. -/
+theorem constantPushforwardRestrictionIso_eq_etaleBaseChangeComponent (Y : Over X) :
+    (constantPushforwardRestrictionIso g B).app (op Y) =
+      constantPushforwardEtaleBaseChangeComponent g B Y := by
+  apply Iso.ext
+  exact constantPushforwardRestrictionIso_hom_eq_etaleBaseChangeComponent g B Y
+
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Constructible.FiniteCogenerators.Global

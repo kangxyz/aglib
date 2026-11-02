@@ -1,0 +1,21 @@
+✔ [3902/3917] Built Aglib.CategoryTheory.Sites.Torsors.AffineDisplacement (4.4s)
+✖ [3903/3917] Building Aglib.AlgebraicGeometry.EtaleCohomology.H1.CoefficientRepresentation (11s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-5e3dfb9f74c94b6b8ad30f96957c3c43/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/H1/CoefficientRepresentation.lean -o /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/H1/CoefficientRepresentation.olean -i /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/H1/CoefficientRepresentation.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/H1/CoefficientRepresentation.c --setup /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/H1/CoefficientRepresentation.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/H1/CoefficientRepresentation.lean:258:8: automatically included section variable(s) unused in theorem `AlgebraicGeometry.Scheme.EtaleCohomology.representedSheafHomEquiv_apply`:
+  [IsFinite K.X.hom]
+  [Etale K.X.hom]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [IsFinite K.X.hom] [Etale K.X.hom] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [3904/3917] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.ContinuousTorsors (8.2s)
+✔ [3905/3917] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.SchemeTorsorClassification (8.7s)
+✔ [3906/3917] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.SchemeTorsorBaseChange (12s)
+✔ [3907/3917] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedComparisonNaturality (6.6s)
+✔ [3908/3917] Built Aglib.AlgebraicGeometry.EtaleCohomology.H0.ProperHenselian.Sections (4.3s)
+✔ [3909/3917] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.MarkedCoefficients (11s)
+✔ [3910/3917] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.ActionDescent (7.7s)
+✔ [3911/3917] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorComparisonAdditivity (33s)
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.H1.CoefficientRepresentation
+error: build failed

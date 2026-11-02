@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.Basic
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.Core
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.ClosedImmersion
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.Basic
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Regularity.Monotone

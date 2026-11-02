@@ -1,0 +1,38 @@
+{
+  "candidate": "candidate-v15/READY.json",
+  "ready_sha256": "00b04a7cd04b3a5859f88cc8d0b14e2735c5c3607d1154f1cc2726910cef83ae",
+  "sources": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean": "fd4f72cb62ca92ac24d9dd3ca06ca9bc8870d353d01ea95165406aede35b0b5c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean": "9643a326a653f1e1b2069b21b1f160c6c65a64dfe3640128abf5c90fbe291c03",
+    "Aglib/CategoryTheory/Functor/CopyObjRestriction.lean": "e4ed9e665ee9e72fa5e349edbfeabf410c4b2f47f60261e10b0f84dc121429bc",
+    "Aglib/CategoryTheory/Over/RelativeTests.lean": "e9bbe415ab9581f48a2b067df1f3fd88da53cb56ea211edf3181a348c7a11559"
+  },
+  "production_matching_passes": {
+    "Aglib.CategoryTheory.Functor.CopyObjRestriction": {
+      "sha256": "e4ed9e665ee9e72fa5e349edbfeabf410c4b2f47f60261e10b0f84dc121429bc",
+      "run": "remote-fdd36d606fc74661bdfc5161dd67c175",
+      "frontend_seconds": 2.0
+    },
+    "Aglib.CategoryTheory.Over.RelativeTests": {
+      "sha256": "e9bbe415ab9581f48a2b067df1f3fd88da53cb56ea211edf3181a348c7a11559",
+      "run": "remote-1007ae3acbaa43d4a2639057c65bb261",
+      "frontend_seconds": 6.2
+    },
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.RepresentedSections": {
+      "sha256": "9643a326a653f1e1b2069b21b1f160c6c65a64dfe3640128abf5c90fbe291c03",
+      "run": "remote-1007ae3acbaa43d4a2639057c65bb261",
+      "frontend_seconds": 11.0
+    }
+  },
+  "scoped_coefficient_proof": {
+    "run": "remote-fc369129443445dab84125cbafd4a0aa",
+    "source_sha256": "3b6af5e07fc0c2f8b4a3ff0d2c4446b414506b2eb0963d5817604158eafb0b62",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-fc369129443445dab84125cbafd4a0aa/receipt.json",
+    "receipt_sha256": "5ae4f7d463761bf51e94d0bb1a5562c00dc07d3b29b7ab383097170542184c04",
+    "input_sha256": "5fd1317a6547049d97983861ebef7c50766a3c3d10542329710217a3ca8cc501",
+    "result": "ACTUAL correct-native phase exit0/no diagnostics: coefficient proposition formation, complete variable-input scheme comparison proof and actual constant specialization",
+    "options": "Official Global module.setup; package native autoImplicit=false,warningAsError=true,weak linters verified by runtime; default budget200000; full option/config record in receipt",
+    "boundary": "Scoped prefix only, not fullGlobal/canonical tail or caller proof."
+  },
+  "remaining": "Normal fullGlobalfd4f72cb/canonical tail + actual caller graph, then fixed affected review/version reconciliation. No extra replay/test/client stage."
+}

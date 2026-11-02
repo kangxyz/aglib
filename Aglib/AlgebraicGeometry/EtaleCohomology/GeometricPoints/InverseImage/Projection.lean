@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Mathlib.CategoryTheory.Sites.Point.Skyscraper
+public import Aglib.CategoryTheory.Topos.Point
 
 /-! # Typed evaluation of a native skyscraper unit -/
 
@@ -31,18 +31,8 @@ variable {C : Type u} [Category.{v} C] {J : GrothendieckTopology C}
 theorem pointSkyscraperUnit_π (L : Sheaf J A) (U : C) (p : Φ.fiber.obj U) :
     (Φ.skyscraperSheafAdjunction.unit.app L).hom.app (op U) ≫
         Pi.π (fun _ : Φ.fiber.obj U => Φ.sheafFiber.obj L) p =
-      Φ.toPresheafFiber U p L.obj := by
-  have hu : (Φ.skyscraperSheafAdjunction.unit.app L).hom =
-      Φ.skyscraperPresheafHomEquiv (𝟙 (Φ.sheafFiber.obj L)) := by
-    exact (congrArg
-      (fun q : L ⟶ Φ.skyscraperSheaf (Φ.sheafFiber.obj L) => q.hom)
-      (Φ.skyscraperSheafAdjunction.homEquiv_id L).symm).trans
-        (Φ.skyscraperSheafAdjunction_homEquiv_apply_hom (𝟙 (Φ.sheafFiber.obj L)))
-  have h := congrArg
-    (fun q : L.obj ⟶ Φ.skyscraperPresheaf (Φ.sheafFiber.obj L) =>
-      q.app (op U) ≫ Pi.π (fun _ : Φ.fiber.obj U => Φ.sheafFiber.obj L) p) hu
-  exact h.trans ((Φ.skyscraperPresheafHomEquiv_app_π (𝟙 _) U p).trans
-    (Category.comp_id _))
+      Φ.toPresheafFiber U p L.obj :=
+  CategoryTheory.GrothendieckTopology.Point.skyscraperSheafAdjunction_unit_π Φ L U p
 
 end Point
 

@@ -1,0 +1,23 @@
+{
+  "question": "Separate kernel checking of actual original congruence/identity inputs, then the full transport application at its inferred return type, from conversion to the fixed public header.",
+  "actual_failed_CPP": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/CPP-ROOTS-SECTION-WHOLE-V5.json",
+  "native_sha256": "b73fc2502fcec17922245aa5445c81552166355cf94be78da6bc28fece7d0340",
+  "lower_sha256": "2eda2207c7a5a3a8dced1158ff6a36767636cbb195bbba61c8e896d3f865b6fe",
+  "probe": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/performance/roots-section-native/diagnosis-v5-cuts/ProofCuts-v2.lean",
+    "sha256": "79ee64100d2797265707da2792d9d6b684d0913e52a24751d998eb716cfe0e71"
+  },
+  "command": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/performance/roots-section-native/diagnosis-v5-cuts/COMMAND-v2.json",
+  "roots": [
+    "Aglib.CategoryTheory.Sites.Representable.SectionComparisonValues",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.BaseChangeMap",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.TriangleCoherence",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.H1.SectionPullback",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.BoundaryNaturality"
+  ],
+  "controls": "Exact native setup/module name/isModule/imports/4options, default200k/profile8/4/M12800/RSS65536. Passing identity prefix copied unchanged only because failed native has no importable output. New inferred declarations public; independent H1 helper excluded. No production outputs, new premise, model, API or budget change.",
+  "status": "Corrected diagnostic prepared, not dispatched.",
+  "boundary": "Each result belongs to its inferred diagnostic statement. No success is silently promoted to the original public theorem or owning-family closure.",
+  "mechanical_repair": "Required theorem return-type slot added as : _. It is resolved from the actual supplied producer/proof application; no manually reconstructed target proposition is imposed.",
+  "previous_attempt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/performance/roots-section-native/diagnosis-v5-cuts/DIAGNOSIS-RESULT-v1-syntax.json"
+}

@@ -1,0 +1,144 @@
+✔ [5701/5932] Built Aglib.CategoryTheory.Filtered.InvertibleDiagramToTarget (2.2s)
+✔ [8034/8061] Built Aglib.CategoryTheory.Filtered.InvertibleDiagramTargetEquation (2.1s)
+✔ [8036/8067] Built Aglib.Algebra.Homology.DerivedCategory.Plus.ModelComparisonCoherence (3.6s)
+✔ [8037/8067] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.ToTargetWhole (2.1s)
+✔ [8042/8070] Built Aglib.CategoryTheory.NatTrans.CompositeExchangeToTarget (2.5s)
+✔ [8043/8070] Built Aglib.AlgebraicGeometry.Compactification.Refinements.CompositionUnits (4.3s)
+✔ [8045/8070] Built Aglib.CategoryTheory.Adjunction.TripleBaseChange (2.6s)
+✔ [8046/8070] Built Aglib.CategoryTheory.NatTrans.ExchangeToTarget (2.2s)
+✖ [8048/8071] Building Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.ChangeTargetUnit (3.8s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-e2c0026add754409981a4e7d9c96e965/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/ChangeTargetUnit.lean -o /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/ChangeTargetUnit.olean -i /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/ChangeTargetUnit.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/ChangeTargetUnit.c --setup /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/ChangeTargetUnit.setup.json --json
+error: Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/ChangeTargetUnit.lean:79:2: Type mismatch: After simplification, term
+  h
+ has type
+  @Eq
+    (((F.mapCochainComplexPlus ⋙ Q) ⋙ (canonicalEquivalence hB₀ hB₁).functor).obj K ⟶
+      (Q ⋙ F.rightDerivedFunctorPlus).obj K)
+    ((canonicalEquivalence hB₀ hB₁).functor.map (F.rightDerivedFunctorPlusUnit.app K) ≫
+      ((F.rightDerivedFunctorPlus ⋙ (canonicalEquivalence hB₀ hB₁).functor).rightDerivedNatTrans
+            F.rightDerivedFunctorPlus
+            (whiskerRight F.rightDerivedFunctorPlusUnit (canonicalEquivalence hB₀ hB₁).functor ≫
+              (Q.associator F.rightDerivedFunctorPlus (canonicalEquivalence hB₀ hB₁).functor).hom)
+            F.rightDerivedFunctorPlusUnit (CochainComplex.Plus.quasiIso A)
+            ((F.mapCochainComplexPlus.associator Q (canonicalEquivalence hB₀ hB₁).functor).hom ≫
+              F.mapCochainComplexPlus.whiskerLeft (quotientCompCanonicalEquivalenceIso hB₀ hB₁).hom)).app
+        (Q.obj K))
+    ((quotientCompCanonicalEquivalenceIso hB₀ hB₁).hom.app (F.mapCochainComplexPlus.obj K) ≫
+      F.rightDerivedFunctorPlusUnit.app K)
+but is expected to have type
+  @Eq
+    ((canonicalEquivalence hB₀ hB₁).functor.obj ((F.mapCochainComplexPlus ⋙ Q).obj K) ⟶
+      F.rightDerivedFunctorPlus.obj (Q.obj K))
+    ((canonicalEquivalence hB₀ hB₁).functor.map (F.rightDerivedFunctorPlusUnit.app K) ≫
+      ((F.rightDerivedFunctorPlus ⋙ (canonicalEquivalence hB₀ hB₁).functor).rightDerivedNatIso F.rightDerivedFunctorPlus
+              (whiskerRight F.rightDerivedFunctorPlusUnit (canonicalEquivalence hB₀ hB₁).functor ≫
+                (Q.associator F.rightDerivedFunctorPlus (canonicalEquivalence hB₀ hB₁).functor).hom)
+              F.rightDerivedFunctorPlusUnit (CochainComplex.Plus.quasiIso A)
+              (F.mapCochainComplexPlus.associator Q (canonicalEquivalence hB₀ hB₁).functor ≪≫
+                F.mapCochainComplexPlus.isoWhiskerLeft (quotientCompCanonicalEquivalenceIso hB₀ hB₁))).hom.app
+        (Q.obj K))
+    ((quotientCompCanonicalEquivalenceIso hB₀ hB₁).hom.app (F.mapCochainComplexPlus.obj K) ≫
+      F.rightDerivedFunctorPlusUnit.app K)
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  rightDerivedFunctorPlus ↦ 8
+✔ [8049/8100] Built Aglib.AlgebraicGeometry.Compactification.Refinements.CompositionUnitRefinements (4.9s)
+✔ [8081/8102] Built Aglib.CategoryTheory.NatTrans.CompositeExchangeToTargetRestriction (2.7s)
+✖ [8082/8104] Building Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ModelComparisonTorsion (7.1s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-e2c0026add754409981a4e7d9c96e965/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ModelComparisonTorsion.lean -o /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ModelComparisonTorsion.olean -i /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ModelComparisonTorsion.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ModelComparisonTorsion.c --setup /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ModelComparisonTorsion.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ModelComparisonTorsion.lean:21:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+✔ [8083/8106] Built Aglib.CategoryTheory.Adjunction.TripleComposition (2.5s)
+✔ [8084/8107] Built Aglib.CategoryTheory.Adjunction.TripleTransport (2.4s)
+✔ [8085/8107] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.ProperOpen.ToDirectImageRefinementNaturality (10s)
+✔ [8086/8107] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.OpenToDirectImageBaseChange (8.6s)
+✔ [8087/8107] Built Aglib.CategoryTheory.Functor.ImageCompositionToTarget (2.0s)
+✔ [8088/8112] Built Aglib.CategoryTheory.NatTrans.StructuralTriangleComponents (2.2s)
+✔ [8089/8112] Built Aglib.CategoryTheory.Adjunction.TripleCompositionTransport (2.2s)
+✔ [8091/8112] Built Aglib.AlgebraicGeometry.Compactification.Refinements.CompositionUnitTotals (11s)
+✔ [8092/8112] Built Aglib.CategoryTheory.Functor.CompositionToTargetTransport (2.5s)
+✔ [8093/8115] Built Aglib.CategoryTheory.Functor.ImageCompositionToTargetComponents (2.2s)
+✔ [8095/8117] Built Aglib.CategoryTheory.Adjunction.TripleCompositionInverse (2.2s)
+✔ [8096/8117] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.DirectImageStructuralSquare (6.7s)
+✔ [8099/8117] Built Aglib.CategoryTheory.Functor.ImageCompositionToTargetRestriction (2.8s)
+✔ [8100/8117] Built Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Adjunction.TripleNatTransComparison (3.5s)
+✖ [8101/8117] Building Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionModelComparison (20s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-e2c0026add754409981a4e7d9c96e965/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionModelComparison.lean -o /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionModelComparison.olean -i /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionModelComparison.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionModelComparison.c --setup /root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionModelComparison.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/CompositionModelComparison.lean:92:2: Type mismatch: After simplification, term
+  hk
+ has type
+  @Eq
+    ((moduleDerivedDirectImage Λ C.targetCompactification.p).obj
+        ((moduleDerivedLowerShriek C.targetCompactification.j Λ).obj
+          ((moduleDerivedDirectImage Λ C.first.p).obj ((moduleDerivedLowerShriek C.first.j Λ).obj K.obj))) ⟶
+      (((moduleTorsionCohomologyPlus X Λ).ι ⋙ moduleDerivedLowerShriek C.sourceCompactification.j Λ) ⋙
+            moduleDerivedDirectImage Λ C.composite.p).obj
+        K)
+    ((moduleDerivedDirectImage Λ C.targetCompactification.p).map
+        ((moduleDerivedLowerShriek C.targetCompactification.j Λ).map
+          ((CategoryTheory.imageComparison (moduleDerivedRefinementComparison (𝟙 C.first) Λ)
+                (moduleDerivedRefinementDirectImageIso Λ (𝟙 C.first))).app
+            K.obj)) ≫
+      ((((moduleTorsionCohomologyPlus X Λ).ι ⋙ moduleDerivedLowerShriek C.first.j Λ) ⋙
+                  moduleDerivedDirectImage Λ C.first.p).whiskerLeft
+              (CategoryTheory.imageComparison (moduleDerivedRefinementComparison (𝟙 C.targetCompactification) Λ)
+                (moduleDerivedRefinementDirectImageIso Λ (𝟙 C.targetCompactification))) ≫
+            (moduleCompactifiedCompositionAmbientIso f g Λ C).hom).app
+        K)
+    (((moduleCompactifiedCompositionAmbientIso f g Λ C).hom ≫
+          (moduleTorsionCohomologyPlus X Λ).ι.whiskerLeft
+            (CategoryTheory.imageComparison (moduleDerivedRefinementComparison (𝟙 C.composite) Λ)
+              (moduleDerivedRefinementDirectImageIso Λ (𝟙 C.composite)))).app
+      K)
+but is expected to have type
+  @Eq
+    ((moduleDerivedDirectImage Λ C.targetCompactification.p).obj
+        ((moduleDerivedLowerShriek C.targetCompactification.j Λ).obj
+          ((moduleDerivedDirectImage Λ C.first.p).obj ((moduleDerivedLowerShriek C.first.j Λ).obj K.obj))) ⟶
+      (moduleDerivedDirectImage Λ C.composite.p).obj ((moduleDerivedLowerShriek C.composite.j Λ).obj K.obj))
+    ((moduleDerivedDirectImage Λ C.targetCompactification.p).map
+        ((moduleDerivedLowerShriek C.targetCompactification.j Λ).map
+          ((asIso
+                  ((moduleTorsionCohomologyPlus X Λ).ι.whiskerLeft
+                    (CategoryTheory.imageComparison (moduleDerivedRefinementComparison (𝟙 C.first) Λ)
+                      (moduleDerivedRefinementDirectImageIso Λ (𝟙 C.first))))).hom.app
+            K)) ≫
+      (asIso
+                ((moduleTorsionCohomologyPlus Y Λ).ι.whiskerLeft
+                  (CategoryTheory.imageComparison (moduleDerivedRefinementComparison (𝟙 C.targetCompactification) Λ)
+                    (moduleDerivedRefinementDirectImageIso Λ (𝟙 C.targetCompactification))))).hom.app
+          { obj := (moduleDerivedDirectImage Λ C.first.p).obj ((moduleDerivedLowerShriek C.first.j Λ).obj K.obj),
+            property := ⋯ } ≫
+        (moduleCompactifiedCompositionAmbientIso f g Λ C).hom.app K)
+    ((moduleCompactifiedCompositionAmbientIso f g Λ C).hom.app K ≫
+      (asIso
+              ((moduleTorsionCohomologyPlus X Λ).ι.whiskerLeft
+                (CategoryTheory.imageComparison (moduleDerivedRefinementComparison (𝟙 C.composite) Λ)
+                  (moduleDerivedRefinementDirectImageIso Λ (𝟙 C.composite))))).hom.app
+        K)
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  Functor.rightDerivedFunctorPlusUnit ↦ 28
+  Limits.getLimitCone ↦ 988
+  Functor.rightDerivedFunctorPlus ↦ 914
+✔ [8102/8117] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.OpenToDirectImageComposition (7.2s)
+✔ [8103/8117] Built Aglib.AlgebraicGeometry.Compactification.Refinements.CompositionRightUnitRefinements (7.8s)
+✔ [8104/8117] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.ToDirectImageBaseChange (10s)
+✔ [8105/8117] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.OpenToDirectImageOverComposition (7.2s)
+✔ [8106/8117] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.OpenTripleComparison (15s)
+✔ [8108/8117] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.ToDirectImage (53s)
+✔ [8109/8117] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.ToDirectImageNaturality (12s)
+✔ [8110/8117] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.ToDirectImageOfNonempty (8.3s)
+✔ [8111/8117] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.RawToDirectImage (9.7s)
+✔ [8112/8117] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.RawToDirectImageBaseChange (12s)
+✔ [8113/8117] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.NormalizedToDirectImageBaseChange (19s)
+✔ [8114/8117] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.ToDirectImageBaseChange (10s)
+✔ [8115/8117] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.CompactifiedToDirectImageComposition (67s)
+✔ [8116/8117] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.ToDirectImageCompositionModel (16s)
+✔ [8117/8117] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.ToDirectImageComposition (10s)
+Some required targets logged failures:
+- Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.ChangeTargetUnit
+- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ModelComparisonTorsion
+- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.CompositionModelComparison
+error: build failed

@@ -8,6 +8,9 @@ module
 
 /- Current interface basis: 46f53465aaf3b0167049e9c8e9e2294111bb4281.
 Original construction and mathematical provenance are retained below. -/
+public import Aglib.CategoryTheory.Sites.Torsor.InverseImage
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.EtaleRestriction
+public import Aglib.CategoryTheory.Sites.Torsor.Pushout
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ExtensionFiberClass
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorSum
 
@@ -36,38 +39,21 @@ variable {X : Scheme.{u}} {L : AbelianSheaf.{u, u + 1} X} {P Q : Torsor L}
 
 /-- A same-coefficient equivariant torsor morphism is injective on every section set. -/
 theorem Torsor.Hom.injective (r : Torsor.Hom (𝟙 L) P Q) (U : X.Etaleᵒᵖ) :
-    Function.Injective (r.map.hom.app U) := by
-  intro s t h
-  obtain ⟨a, ha, _⟩ := P.unique_transport U s t
-  have he : Q.action U a (r.map.hom.app U s) = r.map.hom.app U t := by
-    exact (r.equivariant U a s).symm.trans (congrArg (r.map.hom.app U) ha)
-  have hz : a = 0 := (Q.unique_transport U (r.map.hom.app U s)
-    (r.map.hom.app U s)).unique (he.trans h.symm) (Q.zero_action U _)
-  simpa only [hz, P.zero_action] using ha
+    Function.Injective (r.map.hom.app U) :=
+  CategoryTheory.Sheaf.Torsor.Hom.injective r U
 
 /-- Local nonemptiness of the source proves local surjectivity. -/
 instance Torsor.Hom.locallySurjective (r : Torsor.Hom (𝟙 L) P Q) :
-    Sheaf.IsLocallySurjective r.map where
-  imageSieve_mem {U} t := by
-    refine (Scheme.smallEtaleTopology X).superset_covering ?_ (P.locally_nonempty U)
-    rintro V f ⟨p⟩
-    obtain ⟨a, ha, _⟩ := Q.unique_transport (op V) (r.map.hom.app (op V) p)
-      (Q.carrier.obj.map f.op t)
-    refine ⟨P.action (op V) a p, ?_⟩
-    exact (r.equivariant (op V) a p).trans ha
+    Sheaf.IsLocallySurjective r.map :=
+  CategoryTheory.Sheaf.Torsor.Hom.locallySurjective r
 
 /-- The actual underlying sheaf map of a same-coefficient torsor map is invertible. -/
-instance Torsor.Hom.map_isIso (r : Torsor.Hom (𝟙 L) P Q) : IsIso r.map := by
-  let : Presheaf.IsLocallyInjective (Scheme.smallEtaleTopology X) r.map.hom :=
-    Presheaf.isLocallyInjective_of_injective _ _ (r.injective)
-  let : Mono r.map := Sheaf.mono_of_isLocallyInjective r.map
-  let : Epi r.map := inferInstance
-  exact isIso_of_mono_of_epi r.map
+instance Torsor.Hom.map_isIso (r : Torsor.Hom (𝟙 L) P Q) : IsIso r.map :=
+  CategoryTheory.Sheaf.Torsor.Hom.map_isIso r
 
 /-- Genuine torsor maps are actual equivariant isomorphisms, without 03AJ. -/
-noncomputable def Torsor.Hom.toIso (r : Torsor.Hom (𝟙 L) P Q) : Torsor.Iso P Q where
-  carrierIso := asIso r.map
-  equivariant := r.equivariant
+abbrev Torsor.Hom.toIso (r : Torsor.Hom (𝟙 L) P Q) : Torsor.Iso P Q :=
+  CategoryTheory.Sheaf.Torsor.Hom.toIso r
 
 /-- The original torsor maps canonically to the one-fibre of its constructed extension. -/
 noncomputable def torsorCanonicalExtensionMap (P : Torsor L) :
@@ -77,8 +63,6 @@ noncomputable def torsorCanonicalExtensionMap (P : Torsor L) :
   have h : torsorPushout P (𝟙 L) =
       extensionFiberTorsor (torsorExtension P) (constantIntegerOne X)
         (torsorExtension_shortExact P) := by
-    unfold torsorPushout torsorCoefficientExtension
-    simp only [torsorAugmentationComplex]
     rfl
   exact h ▸ torsorPushoutMap P (𝟙 L)
 
@@ -98,10 +82,158 @@ abbrev inverseImageIntegerIso : (inverseImage f).obj (constantIntegerSheaf X) �
     constantIntegerSheaf S :=
   (inverseImageConstantIso f).app (AddCommGrpCat.of (ULift.{u + 1} ℤ))
 
+
+local instance nativeAbelianPullback_preservesFiniteLimits :
+    PreservesFiniteLimits ((siteBaseChange f).sheafPullback AddCommGrpCat.{u + 1}
+      X.smallEtaleTopology S.smallEtaleTopology) :=
+  inverseImage_preservesFiniteLimits f
+
+/-- The additive fragment of the actual etale geometric morphism and coefficient adjunction. -/
+abbrev etaleAdditiveCoefficientAction :
+    Topos.AdditiveCoefficientAction.{u + 1, u, u + 1, u, u + 1}
+      (Scheme.etaleToposMorphism f)
+      (Topos.AdditiveCoefficientAction.coefficientAdjunctionOfSiteFunctor.{u + 1, u,
+        u + 1, u, u + 1}
+        (siteBaseChange f) X.smallEtaleTopology S.smallEtaleTopology) :=
+  Topos.AdditiveCoefficientAction.ofSiteFunctor.{u + 1, u, u + 1, u, u + 1}
+    (siteBaseChange f) X.smallEtaleTopology S.smallEtaleTopology
+
+/-- The native mate is the original whole underlying inverse-image comparison. -/
+theorem etaleAdditiveCoefficientAction_leftComparison :
+    (etaleAdditiveCoefficientAction f).leftComparison = (inverseImageUnderlyingSetIso f).inv := by
+  apply NatTrans.ext
+  funext A
+  apply ((setInverseImageAdjunction f).homEquiv _ _).injective
+  change (setInverseImageAdjunction f).unit.app (underlyingSetSheaf A) ≫
+      (setDirectImage f).map ((etaleAdditiveCoefficientAction f).leftComparison.app A) =
+    (setInverseImageAdjunction f).unit.app (underlyingSetSheaf A) ≫
+      (setDirectImage f).map ((inverseImageUnderlyingSetIso f).inv.app A)
+  have h := Topos.AdditiveCoefficientAction.leftComparison_unit
+    (etaleAdditiveCoefficientAction f) A
+  change (underlyingSetFunctor X).map ((inverseImageAdjunction f).unit.app A) ≫ 𝟙 _ =
+    (setInverseImageAdjunction f).unit.app (underlyingSetSheaf A) ≫
+      (setDirectImage f).map ((etaleAdditiveCoefficientAction f).leftComparison.app A) at h
+  rw [Category.comp_id] at h
+  rw [← h, ← inverseImageUnderlyingSetIso_unit]
+  rw [Category.assoc, ← Functor.map_comp, (inverseImageUnderlyingSetIso f).hom_inv_id_app]
+  exact (Category.comp_id _).symm
+
+/-- Invertibility comes from the original native Kan and sheafification comparison. -/
+instance etaleAdditiveCoefficientAction_leftComparison_isIso :
+    IsIso (etaleAdditiveCoefficientAction f).leftComparison := by
+  rw [etaleAdditiveCoefficientAction_leftComparison]
+  infer_instance
+
+/-- The constant-integer inverse-image comparison carries the adjunction image
+of the literal integer one to literal integer one. -/
+theorem inverseImageIntegerIso_unit_one :
+    (inverseImageIntegerIso f).hom.hom.app
+        (op ((siteBaseChange f).obj (etaleTerminal X)))
+      (((inverseImageAdjunction f).unit.app (constantIntegerSheaf X)).hom.app
+        (op (etaleTerminal X)) (constantIntegerOne X)) =
+    restrictSection (constantIntegerSheaf S) (constantIntegerOne S)
+      (op ((siteBaseChange f).obj (etaleTerminal X))) := by
+  let hT := etaleTerminalIsTerminal X
+  let cAdj := constantSheafAdj (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1} hT
+  let sAdj := constantSheafAdj (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1}
+    (hT.isTerminalObj (siteBaseChange f))
+  have h := Adjunction.homEquiv_leftAdjointUniq_hom_app
+    (cAdj.comp (inverseImageAdjunction f)) sAdj
+    (AddCommGrpCat.of (ULift.{u + 1} ℤ))
+  have he := ConcreteCategory.congr_hom h (ULift.up (1 : ℤ))
+  change (inverseImageIntegerIso f).hom.hom.app _
+    (((inverseImageAdjunction f).unit.app (constantIntegerSheaf X)).hom.app _
+      (constantIntegerOne X)) = _ at he
+  rw [restrict_constantIntegerOne]
+  exact he
+
+/-- Naturality extends the literal integer-one unit computation to each test object. -/
+theorem inverseImageIntegerIso_unit_restrict_one (U : X.Etaleᵒᵖ) :
+    (inverseImageIntegerIso f).hom.hom.app ((siteBaseChange f).op.obj U)
+      (((inverseImageAdjunction f).unit.app (constantIntegerSheaf X)).hom.app U
+        (restrictSection (constantIntegerSheaf X) (constantIntegerOne X) U)) =
+    restrictSection (constantIntegerSheaf S) (constantIntegerOne S)
+      ((siteBaseChange f).op.obj U) := by
+  let r := (inverseImageAdjunction f).unit.app (constantIntegerSheaf X) ≫
+    (directImage f).map (inverseImageIntegerIso f).hom
+  have h := ConcreteCategory.congr_hom
+    (r.hom.naturality ((etaleTerminalIsTerminal X).from U.unop).op)
+    (constantIntegerOne X)
+  change r.hom.app U (restrictSection (constantIntegerSheaf X) (constantIntegerOne X) U) =
+    (constantIntegerSheaf S).obj.map
+      ((siteBaseChange f).map ((etaleTerminalIsTerminal X).from U.unop)).op
+      (r.hom.app (op (etaleTerminal X)) (constantIntegerOne X)) at h
+  change r.hom.app U _ = _
+  rw [h]
+  change (constantIntegerSheaf S).obj.map _
+    ((inverseImageIntegerIso f).hom.hom.app _
+      (((inverseImageAdjunction f).unit.app _).hom.app _ (constantIntegerOne X))) = _
+  exact (congrArg ((constantIntegerSheaf S).obj.map
+    ((siteBaseChange f).map ((etaleTerminalIsTerminal X).from U.unop)).op)
+    (inverseImageIntegerIso_unit_one f)).trans (restrictSection_naturality (constantIntegerSheaf
+      S) (constantIntegerOne S) _)
+
+
+/-- Intrinsic integer transport is the original terminal-site constant-integer Iso. -/
+theorem etaleAdditiveCoefficientAction_integerIso :
+    (etaleAdditiveCoefficientAction f).integerIso = inverseImageIntegerIso f := by
+  apply Iso.ext
+  apply ((inverseImageAdjunction f).homEquiv _ _).injective
+  apply (CategoryTheory.Sheaf.constantIntegerHomGlobalPointEquiv _).injective
+  ext U x
+  change (PUnit : Type (u + 1)) at x
+  cases x
+  change (etaleAdditiveCoefficientAction f).integerAdjunctionMap.hom.app U
+      ((CategoryTheory.Sheaf.constantIntegerOne X.smallEtaleTopology).hom.app U PUnit.unit) =
+    (inverseImageIntegerIso f).hom.hom.app ((siteBaseChange f).op.obj U)
+      (((inverseImageAdjunction f).unit.app (constantIntegerSheaf X)).hom.app U
+        ((CategoryTheory.Sheaf.constantIntegerOne X.smallEtaleTopology).hom.app U PUnit.unit))
+  rw [← constantIntegerOne_asGlobalPoint (X := X)]
+  have h : (etaleAdditiveCoefficientAction f).integerAdjunctionMap.hom.app U
+      (show (constantIntegerSheaf X).obj.obj U from
+        (CategoryTheory.Sheaf.constantIntegerOne X.smallEtaleTopology).hom.app U PUnit.unit) =
+    (show (constantIntegerSheaf S).obj.obj ((siteBaseChange f).op.obj U) from
+      (CategoryTheory.Sheaf.constantIntegerOne S.smallEtaleTopology).hom.app
+        ((siteBaseChange f).op.obj U) PUnit.unit) :=
+    Topos.AdditiveCoefficientAction.ofSiteFunctor_integerAdjunctionMap_one.{u + 1, u,
+      u + 1, u, u + 1} (siteBaseChange f) X.smallEtaleTopology S.smallEtaleTopology U
+  rw [← constantIntegerOne_asGlobalPoint (X := X),
+    ← constantIntegerOne_asGlobalPoint (X := S)] at h
+  exact h.trans (inverseImageIntegerIso_unit_restrict_one f U).symm
+
 /-- Projection of the actual inverse-image extension onto constant integers. -/
 def torsorInverseImageProjection :
     (inverseImage f).obj (torsorExtension P).X₂ ⟶ constantIntegerSheaf S :=
   (inverseImage f).map (torsorExtension P).g ≫ (inverseImageIntegerIso f).hom
+
+/-- The same right-endpoint transport gives equality of the entire projection map. -/
+theorem torsorInverseImageProjection_eq_generic :
+    torsorInverseImageProjection f P =
+      CategoryTheory.Sheaf.torsorInverseImageProjection (etaleAdditiveCoefficientAction f) P := by
+  let p : (torsorExtension P).X₂ ⟶ constantIntegerSheaf X := (torsorExtension P).g
+  change (inverseImage f).map p ≫ (inverseImageIntegerIso f).hom =
+    (inverseImage f).map p ≫ (etaleAdditiveCoefficientAction f).integerIso.hom
+  exact congrArg
+    (fun e : (inverseImage f).obj (constantIntegerSheaf X) ≅ constantIntegerSheaf S =>
+      (inverseImage f).map p ≫ e.hom) (etaleAdditiveCoefficientAction_integerIso f).symm
+
+private theorem shortComplex_mk_eq_of_projection_eq
+    {A B C : AbelianSheaf.{u, u + 1} S} (i : A ⟶ B) {p p' : B ⟶ C}
+    (hp : p = p') (h : i ≫ p = 0) (h' : i ≫ p' = 0) :
+    ShortComplex.mk i p h = ShortComplex.mk i p' h' := by
+  cases hp
+  rfl
+
+private theorem fibre_mk_eq_of_projection_and_point_eq
+    {A B C : AbelianSheaf.{u, u + 1} S} (i : A ⟶ B) {p p' : B ⟶ C}
+    (hp : p = p') {h : i ≫ p = 0} {h' : i ≫ p' = 0}
+    (e : (ShortComplex.mk i p h).ShortExact) (e' : (ShortComplex.mk i p' h').ShortExact)
+    {z z' : Topos.GlobalPoint (underlyingSetSheaf C)} (hz : z = z') :
+    CategoryTheory.Sheaf.extensionFiberTorsor (ShortComplex.mk i p h) z e =
+      CategoryTheory.Sheaf.extensionFiberTorsor (ShortComplex.mk i p' h') z' e' := by
+  cases hp
+  cases hz
+  rfl
 
 /-- Exact inverse image preserves the augmentation relation. -/
 theorem torsorInverseImage_zero :
@@ -114,6 +246,16 @@ def torsorInverseImageExtension : ShortComplex (AbelianSheaf.{u, u + 1} S) :=
   ShortComplex.mk ((inverseImage f).map (torsorExtension P).f)
     (torsorInverseImageProjection f P) (torsorInverseImage_zero f P)
 
+/-- The literal native complex is the generic complex on the same actual functors. -/
+theorem torsorInverseImageExtension_eq_generic :
+    torsorInverseImageExtension f P =
+      CategoryTheory.Sheaf.torsorInverseImageExtension (etaleAdditiveCoefficientAction f) P := by
+  exact shortComplex_mk_eq_of_projection_eq
+    ((inverseImage f).map (torsorExtension P).f)
+    (torsorInverseImageProjection_eq_generic f P)
+    (torsorInverseImage_zero f P)
+    (CategoryTheory.Sheaf.torsorInverseImage_zero (etaleAdditiveCoefficientAction f) P)
+
 /-- The canonical transport is an isomorphism of actual short complexes. -/
 def torsorInverseImageExtensionIso :
     (torsorExtension P).map (inverseImage f) ≅ torsorInverseImageExtension f P :=
@@ -122,43 +264,76 @@ def torsorInverseImageExtensionIso :
     (by simp [torsorInverseImageExtension, torsorInverseImageProjection])
 
 /-- Short exactness is preserved, without any exactness premise for the scheme map. -/
-theorem torsorInverseImageExtension_shortExact : (torsorInverseImageExtension f P).ShortExact :=
-  ShortComplex.shortExact_of_iso (torsorInverseImageExtensionIso f P)
-    ((torsorExtension_shortExact P).map_of_exact (inverseImage f))
+theorem torsorInverseImageExtension_shortExact : (torsorInverseImageExtension f P).ShortExact := by
+  rw [torsorInverseImageExtension_eq_generic]
+  exact CategoryTheory.Sheaf.torsorInverseImageExtension_shortExact
+    (etaleAdditiveCoefficientAction f) P
 
 /-- A genuine torsor formed from the actual inverse-image extension. -/
 def torsorInverseImageFiber : Torsor ((inverseImage f).obj L) :=
   extensionFiberTorsor (torsorInverseImageExtension f P) (constantIntegerOne S)
     (torsorInverseImageExtension_shortExact f P)
 
+/-- The original terminal-one fibre is the same intrinsic one-fibre torsor. -/
+theorem torsorInverseImageFiber_eq_generic :
+    torsorInverseImageFiber f P =
+      CategoryTheory.Sheaf.torsorInverseImageFiber (etaleAdditiveCoefficientAction f) P := by
+  exact fibre_mk_eq_of_projection_and_point_eq
+    ((inverseImage f).map (torsorExtension P).f)
+    (torsorInverseImageProjection_eq_generic f P)
+    (torsorInverseImageExtension_shortExact f P)
+    (CategoryTheory.Sheaf.torsorInverseImageExtension_shortExact
+      (etaleAdditiveCoefficientAction f) P)
+    (constantIntegerOne_asGlobalPoint (X := S))
+
+universe e
+private theorem extClass_mk_eq_of_projection_eq
+    [HasExt.{e} (AbelianSheaf.{u, u + 1} S)]
+    {A B C : AbelianSheaf.{u, u + 1} S} (i : A ⟶ B) {p p' : B ⟶ C}
+    (hp : p = p') {h : i ≫ p = 0} {h' : i ≫ p' = 0}
+    (e : (ShortComplex.mk i p h).ShortExact) (e' : (ShortComplex.mk i p' h').ShortExact) :
+    e.extClass = e'.extClass := by
+  cases hp
+  rfl
+
 section ExtClass
 universe w w'
 variable [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
 variable [HasExt.{w'} (AbelianSheaf.{u, u + 1} S)]
+
+/-- The generic H1 map is the original map, including its inverse integer transport. -/
+theorem h1Pullback_eq_generic :
+    h1Pullback f L =
+      CategoryTheory.Sheaf.torsorH1InverseImageMap (etaleAdditiveCoefficientAction f) L := by
+  unfold h1Pullback CategoryTheory.Sheaf.torsorH1InverseImageMap
+  rw [etaleAdditiveCoefficientAction_integerIso]
+  rfl
 
 /-- The canonical Ext class of the inverse-image extension uses the inverse
 constant transport in the contravariant first Ext variable. -/
 theorem torsorInverseImageExtension_extClass :
     (torsorInverseImageExtension_shortExact f P).extClass =
       h1Pullback f L (torsorExtClass P) := by
-  have hn := ShortComplex.ShortExact.extClass_naturality
-    (torsorInverseImageExtension_shortExact f P)
-    ((torsorExtension_shortExact P).map_of_exact (inverseImage f))
-    (torsorInverseImageExtensionIso f P).inv
-  change (torsorInverseImageExtension_shortExact f P).extClass.comp
-      (Abelian.Ext.mk₀ (𝟙 _)) (add_zero 1) =
-    (Abelian.Ext.mk₀ (inverseImageIntegerIso f).inv).comp
-      ((torsorExtension_shortExact P).map_of_exact (inverseImage f)).extClass (zero_add 1) at hn
-  rw [Abelian.Ext.comp_mk₀_id, ← Abelian.Ext.mapExactFunctor_extClass] at hn
-  exact hn
+  have he : (torsorInverseImageExtension_shortExact f P).extClass =
+      (CategoryTheory.Sheaf.torsorInverseImageExtension_shortExact
+        (etaleAdditiveCoefficientAction f) P).extClass :=
+    extClass_mk_eq_of_projection_eq ((inverseImage f).map (torsorExtension P).f)
+      (torsorInverseImageProjection_eq_generic f P)
+      (torsorInverseImageExtension_shortExact f P)
+      (CategoryTheory.Sheaf.torsorInverseImageExtension_shortExact
+        (etaleAdditiveCoefficientAction f) P)
+  exact he.trans ((CategoryTheory.Sheaf.torsorInverseImageExtension_extClass
+    (etaleAdditiveCoefficientAction f) P).trans
+      (congrArg (fun m : H1Etale X L →+ H1Etale S ((inverseImage f).obj L) =>
+        m (torsorExtClass P)) (h1Pullback_eq_generic f (L := L)).symm))
 
 /-- Canonical class compatibility for the genuinely constructed inverse-image
 extension fibre. Identification with the set-sheaf inverse image is separate. -/
 theorem torsorExtClass_inverseImageFiber :
     torsorExtClass (torsorInverseImageFiber f P) = h1Pullback f L (torsorExtClass P) := by
-  rw [torsorInverseImageFiber]
-  exact (torsorExtClass_extensionFiber _ _ _ (torsorInverseImageExtension_shortExact f P)).trans
-    (torsorInverseImageExtension_extClass f P)
+  rw [torsorInverseImageFiber_eq_generic, h1Pullback_eq_generic]
+  exact CategoryTheory.Sheaf.torsorExtClass_inverseImageFiber
+    (etaleAdditiveCoefficientAction f) P
 
 end ExtClass
 end AlgebraicGeometry.Scheme.EtaleCohomology

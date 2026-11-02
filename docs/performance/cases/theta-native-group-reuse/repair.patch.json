@@ -1,0 +1,6 @@
+{
+  "original_path": "/private/tmp/r5-investigations/jacobian/theta-sol/phase3-early-native-B/EARLY_B_GROUP.patch",
+  "encoding": "utf-8",
+  "original_sha256": "d43390c33d60082be85f89aae9a9fa6c9f3c136d2e434378762db2681fab73dc",
+  "text": "--- FieldComparison.1a08\n+++ FieldComparison.dc7b\n@@ -1431,6 +1431,7 @@\n   let P' := LocallyNoetherianOver.baseChange b P\n   let R' := baseChangeRepresentableBy X.hom b P R\n   let B := picardIdentityComponent X'.hom P' R'\n+  let : GrpObj B := grpObjPicardIdentityComponent X'.hom P' R'\n   let e : A \u2245 B := jacobianScalarExtensionIso P R K\n   let RQB := picardSourceRepresentableBy e Q' RQA\n   let := picardCommGrpObj X'.hom P' R'\n"
+}

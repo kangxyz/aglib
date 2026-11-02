@@ -1,0 +1,6 @@
+{
+  "status": "R-only next candidate if logger-free test warrants; unexecuted/unapplied",
+  "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/repair-v6/diagnostics/FieldInPlaceMinimal.lean",
+  "sha256": "1de5eb6705762fed19b3c648cb5b962117e1a0f3a79011b432fe7fa0df138257",
+  "change": "Only infer the existing hmap.trans hclass without expected type, normalize original definitions in hfinal and goal separately, exact hfinal. No new helper, shared constructor, generic file, hypothesis/model/limit or public map change."
+}

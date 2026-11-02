@@ -1,0 +1,339 @@
+{
+  "basis_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "baseline": "sources/initial.lean",
+  "baseline_sha256": "6b222b8bb76624073d7c98672f9a0931eddc78e51a013c0c93ae7dbbbbe7882c",
+  "sequence": [
+    {
+      "repair": 1,
+      "before_sha256": "6b222b8bb76624073d7c98672f9a0931eddc78e51a013c0c93ae7dbbbbe7882c",
+      "after_sha256": "8cf60bf91f85537d6a661320945057202a9b919ddf82a54b34046671cdbbdde0",
+      "patch": "repairs/1/repair.patch",
+      "patch_sha256": "4c41a4641d5164c53b35615c7090fab28c5b85525ad4127719cf396c57108814"
+    },
+    {
+      "repair": 2,
+      "before_sha256": "8cf60bf91f85537d6a661320945057202a9b919ddf82a54b34046671cdbbdde0",
+      "after_sha256": "f71d888bea46a41274070350390522357f5e2658c04715d8353b875b392a8483",
+      "patch": "repairs/2/repair.patch",
+      "patch_sha256": "667b66957b26018d6016fdefa2ebe920e33aa27d6a4277fa08a67337a69785d7"
+    },
+    {
+      "repair": 3,
+      "before_sha256": "f71d888bea46a41274070350390522357f5e2658c04715d8353b875b392a8483",
+      "after_sha256": "b6757edf7df596d1f764bcea24a75e231f14096833ea19413f618168022d8036",
+      "patch": "repairs/3/repair.patch",
+      "patch_sha256": "b2b5ac32620c8e1be95044dc349b914da1eb72e521c21c0330d18c376a67f4b5"
+    },
+    {
+      "repair": 4,
+      "before_sha256": "b6757edf7df596d1f764bcea24a75e231f14096833ea19413f618168022d8036",
+      "after_sha256": "4d4bf8cfc7046ee352aae7cf123774b473fc4fd473cf8bf50b2431dc779bb51a",
+      "patch": "repairs/4/repair.patch",
+      "patch_sha256": "6ba2aa63d55f8ecf05b16bbb06f9d4ebfcf505f38078f7b822cb5f2dc608e1c4"
+    },
+    {
+      "repair": 5,
+      "before_sha256": "4d4bf8cfc7046ee352aae7cf123774b473fc4fd473cf8bf50b2431dc779bb51a",
+      "after_sha256": "4f74591813eb9b2c76d4f7c468e6a96ff21732caeb62f9dbb2b351b5a09527ac",
+      "patch": "repairs/5/repair.patch",
+      "patch_sha256": "1661dd55479fde4e17948799a0d81edad9a72f8b24cd3bf565b6d969c8d02379"
+    },
+    {
+      "repair": 6,
+      "before_sha256": "4f74591813eb9b2c76d4f7c468e6a96ff21732caeb62f9dbb2b351b5a09527ac",
+      "after_sha256": "87ff6356a978b2998455b6ea671dbfdf3cb09f65a7785282ebe8b7aba4e4b9ec",
+      "patch": "repairs/6/repair.patch",
+      "patch_sha256": "7b75dcc1bd77937babe94f0866db55a4aae7a89e5b85ac8c8a3be450e7ce859b"
+    }
+  ],
+  "probe_sha256": "fe49f7228fcd8631581a7515fabddb030bd651eabc919dd5cad044dd0ce09f4c",
+  "probe_basis_sha256": "4f74591813eb9b2c76d4f7c468e6a96ff21732caeb62f9dbb2b351b5a09527ac",
+  "archives": [
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-as-coefficients-486cfa35.json",
+      "sha256": "6a63a8755272f829697d261edf6d8e33d2a76ad4a82e5d40be52ec159cd9ec28",
+      "content_sha256": "613bfc35d8cbf63189466bc162d8470193c034f14ef3ccae7c62a593ba72d62b",
+      "git_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-as-alias-46f990d7.json",
+      "sha256": "c8a56570cd2e7eac78de4ea96090a56edfb3d0c8cc1050fae08295cb9324714a",
+      "content_sha256": "27999490cddd7bf62f6139aba738b72da4fd67f1209b4ed7de97c2d8bd4de9d7",
+      "git_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-as-unit-dfdf9bea.json",
+      "sha256": "35b298dc6bb1cc95fc4189d325816fd5ced39f593bd37fc85503fff781e86594",
+      "content_sha256": "8cb91adf97b5d4200c4b151e1a22a22f984fc764ed3ec605e92b2c566485f68a",
+      "git_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-as-proper-8e5b2c8d.json",
+      "sha256": "e1b5c1524014c791fdd0a6f8c7067f7245b32aaed873c4b328784451fbfee05e",
+      "content_sha256": "97aa3a95b086c9f6362ed9f10630bd17a5deb617773bce57afe6e84ab8601804",
+      "git_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-as-proper-64d200f1.json",
+      "sha256": "4048e0539f402d671b31321b4de8fb8ba62a1729ca9fd0a119186c48e5323c55",
+      "content_sha256": "61d5247827b3848216e52210813b26632e41f98f5090cdd5716215e94610d77a",
+      "git_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-as-budget-a5e3496e.json",
+      "sha256": "3d1f7a339ab8cedd20afe7c924f5d272250a752d79b801d67f6c933843bc3631",
+      "content_sha256": "21cd739c6a51dc625d579785a01b5000d34085ca98d0b11e1d22fc749d08b88d",
+      "git_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/as-prefix-diagnostic-9b504c76.json",
+      "sha256": "f98cbc4ef6411daa5f74ce4dcc3d3ad1bfbafb10637257708f17bd0284bbd909",
+      "content_sha256": "71bb7f2cc656c08d07959609271b2e3ba2337d8e2881447fafde5463a0a53d07",
+      "git_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-as-lower-pass-ca150085.json",
+      "sha256": "125d4b4d897134f9af7ca08e2824e573c2d3c0910b48749c44d6a107a90c096e",
+      "content_sha256": "c312213a7acceb4f949e7ce39b8eeae518187db331e8bebde45d739fb10da1e9",
+      "git_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-as-wrappers-pass-03a7acc9.json",
+      "sha256": "885a7b8db32f0084547af09ea4dae478d3575ee51b7634570d2ff15a3c32a1f9",
+      "content_sha256": "cf63e1b74c8930fcc40cb78f567634c9aab417b3079dcc482718aacd046bffc7",
+      "git_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f"
+    }
+  ],
+  "retained_files": {
+    "sources/initial.lean": {
+      "sha256": "6b222b8bb76624073d7c98672f9a0931eddc78e51a013c0c93ae7dbbbbe7882c",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-1/input/ArtinSchreier.lean"
+    },
+    "repairs/1/repair.patch": {
+      "sha256": "4c41a4641d5164c53b35615c7090fab28c5b85525ad4127719cf396c57108814",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-1/repair.patch"
+    },
+    "repairs/1/report.md": {
+      "sha256": "4cf5a53b89b6421bf51c00978ad47d4105ba494bc4e917e2531fbc83edb7b990",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-1/report.md"
+    },
+    "repairs/1/manifest.json": {
+      "sha256": "dc588c40282932159b44612b7f93ad91380417d5e953bce1c0da65e3f360f34e",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-1/manifest.json"
+    },
+    "repairs/2/repair.patch": {
+      "sha256": "667b66957b26018d6016fdefa2ebe920e33aa27d6a4277fa08a67337a69785d7",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-2/repair.patch"
+    },
+    "repairs/2/report.md": {
+      "sha256": "debae7cf03f6062248d249b93bed7101e79358858420af023b1a896d4736e763",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-2/report.md"
+    },
+    "repairs/2/manifest.json": {
+      "sha256": "9ac4a30d8000443a6dca0289663039c10b71028bc5cf4465c014293e1652b185",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-2/manifest.json"
+    },
+    "repairs/3/repair.patch": {
+      "sha256": "b2b5ac32620c8e1be95044dc349b914da1eb72e521c21c0330d18c376a67f4b5",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-3/repair.patch"
+    },
+    "repairs/3/report.md": {
+      "sha256": "7b7a4245c27c7cc43945fe203373092e1324655eb13bf54352d310f39b8e082d",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-3/report.md"
+    },
+    "repairs/3/manifest.json": {
+      "sha256": "82b862abe0df57f2af1026fd9604dad3131fd9f371642390a48f5c1bedccb5fa",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-3/manifest.json"
+    },
+    "repairs/4/repair.patch": {
+      "sha256": "6ba2aa63d55f8ecf05b16bbb06f9d4ebfcf505f38078f7b822cb5f2dc608e1c4",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-4/repair.patch"
+    },
+    "repairs/4/report.md": {
+      "sha256": "5b364525e530d1d7b06c42296a4461a47b8c27a1577c9233573c0613d4c972cd",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-4/report.md"
+    },
+    "repairs/4/manifest.json": {
+      "sha256": "b14e3c1346249fd483d5e2ffc1f95abd946d49abe50fe7bb49ec8930bd62a5a2",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-4/manifest.json"
+    },
+    "repairs/5/repair.patch": {
+      "sha256": "1661dd55479fde4e17948799a0d81edad9a72f8b24cd3bf565b6d969c8d02379",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-5/repair.patch"
+    },
+    "repairs/5/report.md": {
+      "sha256": "6b56c41846db38a9e8069c204cedec544c2f4da2187d384f1eddd56e0b9884c7",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-5/report.md"
+    },
+    "repairs/5/manifest.json": {
+      "sha256": "406713e2d8c72a5e4542ef25676663e0f515005c00e681651c486a449d3f925c",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-5/manifest.json"
+    },
+    "repairs/6/repair.patch": {
+      "sha256": "7b75dcc1bd77937babe94f0866db55a4aae7a89e5b85ac8c8a3be450e7ce859b",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-6/repair.patch"
+    },
+    "repairs/6/report.md": {
+      "sha256": "ef73a60085dcf293124a8b00368b65d4c7d5e61a36a4f32d8a0606a8c42d00ae",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-6/report.md"
+    },
+    "repairs/6/manifest.json": {
+      "sha256": "5b8f7a5b6c060b93a598c268b75b5c5bdf89eef6ad0043993968b8360e291bf0",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-6/manifest.json"
+    },
+    "probe/ASFinalTheoremProbe.lean": {
+      "sha256": "fe49f7228fcd8631581a7515fabddb030bd651eabc919dd5cad044dd0ce09f4c",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/diagnostic-1/ASFinalTheoremProbe.lean"
+    },
+    "probe/instrumentation.patch": {
+      "sha256": "555070ab76111a26ebd287b7c1dc272a3e65550d05e6838a55ad2629e140fddd",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/diagnostic-1/instrumentation.patch"
+    },
+    "probe/README.md": {
+      "sha256": "91ad31725b6a91cb92e45e49883781be17807e610552c1644a02b0dac601bfb0",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/diagnostic-1/README.md"
+    },
+    "probe/request.json": {
+      "sha256": "ef4bdabd8d99544a307956387b431c8e4f5f8b2fc3e51c1b2227db100b481812",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/diagnostic-1/request.json"
+    },
+    "repairs/6/application.json": {
+      "sha256": "82ab4d840d1ffdfa15d000b933a12892dd50d39865be34cecd1f6c2d27c1258f",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-6/application.json"
+    },
+    "sources/Frobenius.lean": {
+      "sha256": "5be6b57f14457bda311e65781e412dd7414d43ac6c435217c4d480340a45c922",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Frobenius.lean"
+    },
+    "sources/Constants.lean": {
+      "sha256": "d2a7c7461e034f05b03adb49fa49b6fc6fab4eb440a45ded2cd2d0ec59ee8fca",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Constants.lean"
+    },
+    "evidence/remote-486cfa353ef442908f1b1c196ce5fed3/receipt.json": {
+      "sha256": "87d908a05f96592e452269c69e081555b1ee40c0f44e6cc7d91f911857bce3e0",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-486cfa353ef442908f1b1c196ce5fed3/receipt.json"
+    },
+    "evidence/remote-486cfa353ef442908f1b1c196ce5fed3/build.log": {
+      "sha256": "301422ac00424e841c99149a2cffb53da8ca3a0a0644b6edf464d266c6b72f6c",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-486cfa353ef442908f1b1c196ce5fed3/build.log"
+    },
+    "evidence/remote-486cfa353ef442908f1b1c196ce5fed3/compiler-events.jsonl": {
+      "sha256": "da58d14b84950ef076eef07ec39c8bac9363f651ac3d23f6868ed20727bdcdd4",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-486cfa353ef442908f1b1c196ce5fed3/compiler-events.jsonl"
+    },
+    "evidence/remote-46f990d7142a45009bf5d38b0a93e41e/receipt.json": {
+      "sha256": "f764545dd242faa7519c283f9839b60bb080283a4da9d9881ca5d68503756eae",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-46f990d7142a45009bf5d38b0a93e41e/receipt.json"
+    },
+    "evidence/remote-46f990d7142a45009bf5d38b0a93e41e/build.log": {
+      "sha256": "7f91e40347b796b727b45f662ef5e557f729c93b273032e9eb0290cf696c95d1",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-46f990d7142a45009bf5d38b0a93e41e/build.log"
+    },
+    "evidence/remote-46f990d7142a45009bf5d38b0a93e41e/compiler-events.jsonl": {
+      "sha256": "72ea4a4a23ed6ac20a8634dbd59399b0c29f635db4aaf134283b4174d00923ed",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-46f990d7142a45009bf5d38b0a93e41e/compiler-events.jsonl"
+    },
+    "evidence/remote-dfdf9beaed40462ea787b2c0d19165f2/receipt.json": {
+      "sha256": "258d45b5e6e54ac53489236f3d44ce8d3365a7c0d58a3bd53b6e149b1827771f",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-dfdf9beaed40462ea787b2c0d19165f2/receipt.json"
+    },
+    "evidence/remote-dfdf9beaed40462ea787b2c0d19165f2/build.log": {
+      "sha256": "e741fe834387900a15b6220d3608496634ad269ecf0d1c866509d7eb47ada7bf",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-dfdf9beaed40462ea787b2c0d19165f2/build.log"
+    },
+    "evidence/remote-dfdf9beaed40462ea787b2c0d19165f2/compiler-events.jsonl": {
+      "sha256": "a66bb6c122ab08850fd4d3a3ac8f24b56fc1af76060f546858ff1a0a3c3b3d0a",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-dfdf9beaed40462ea787b2c0d19165f2/compiler-events.jsonl"
+    },
+    "evidence/remote-8e5b2c8d38cd47ebb7f3db16ab7b7725/receipt.json": {
+      "sha256": "544e42438896704470eb44a7f8bd1634ad63a3e881d5ff34c661f9cc4340cc95",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-8e5b2c8d38cd47ebb7f3db16ab7b7725/receipt.json"
+    },
+    "evidence/remote-8e5b2c8d38cd47ebb7f3db16ab7b7725/build.log": {
+      "sha256": "32f21b79aca3c80d1df436d62018747fc188f1733e1797b28c30663acefe5d2e",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-8e5b2c8d38cd47ebb7f3db16ab7b7725/build.log"
+    },
+    "evidence/remote-8e5b2c8d38cd47ebb7f3db16ab7b7725/compiler-events.jsonl": {
+      "sha256": "cb0dedad54f93afb1725912beef69b3907a8ce24d048540178cd841ffdbb0a21",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-8e5b2c8d38cd47ebb7f3db16ab7b7725/compiler-events.jsonl"
+    },
+    "evidence/remote-64d200f146334c3db7402e9da2137d2f/receipt.json": {
+      "sha256": "c4486ea04a8bb94c99f3e023213cf905fe40ee128a805b34e18c58a34d0b95f7",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-64d200f146334c3db7402e9da2137d2f/receipt.json"
+    },
+    "evidence/remote-64d200f146334c3db7402e9da2137d2f/build.log": {
+      "sha256": "1bf19761e00b8ec9f1ec853d639dc94864e02ebe00de137a121e3cfa5ee955b2",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-64d200f146334c3db7402e9da2137d2f/build.log"
+    },
+    "evidence/remote-64d200f146334c3db7402e9da2137d2f/compiler-events.jsonl": {
+      "sha256": "10423a15c181e805d102e0ab13e9ae618a457b0ddc24f678f786e8b1c4dd8cef",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-64d200f146334c3db7402e9da2137d2f/compiler-events.jsonl"
+    },
+    "evidence/remote-a5e3496e48ac4278a033d9abdb074871/receipt.json": {
+      "sha256": "a16c5c66ac0d2dadd1451dbf740afc4f4e956ad2cfb35c19b1a1b28124f81292",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-a5e3496e48ac4278a033d9abdb074871/receipt.json"
+    },
+    "evidence/remote-a5e3496e48ac4278a033d9abdb074871/build.log": {
+      "sha256": "919235d027276ca614b627a31392eb92a80fa1abcfc38ab271b5597f3ff73dea",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-a5e3496e48ac4278a033d9abdb074871/build.log"
+    },
+    "evidence/remote-a5e3496e48ac4278a033d9abdb074871/compiler-events.jsonl": {
+      "sha256": "fc9206e8dd6f486e5f72d44a130bb40a0f774d759ac74c0065b618bd311ab21d",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-a5e3496e48ac4278a033d9abdb074871/compiler-events.jsonl"
+    },
+    "evidence/remote-9b504c762eea4ff495ee47d36d1c6b5a/receipt.json": {
+      "sha256": "ccb1427e72ebf286acc47ea3470ccb8fd862a61e2594634b1dd842c95a57063e",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-9b504c762eea4ff495ee47d36d1c6b5a/receipt.json"
+    },
+    "evidence/remote-9b504c762eea4ff495ee47d36d1c6b5a/build.log": {
+      "sha256": "ead3603024d8ec884f8fc00d43236ea94837305133d9bf278a8923ca026846e1",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-9b504c762eea4ff495ee47d36d1c6b5a/build.log"
+    },
+    "evidence/remote-9b504c762eea4ff495ee47d36d1c6b5a/compiler-events.jsonl": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-9b504c762eea4ff495ee47d36d1c6b5a/compiler-events.jsonl"
+    },
+    "evidence/remote-ca150085ba4940f4b318b1694924f5da/receipt.json": {
+      "sha256": "496de7bdf3d951ea672d84cdcf9c71e22a763af8bef4296af3c9338a1776ef68",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-ca150085ba4940f4b318b1694924f5da/receipt.json"
+    },
+    "evidence/remote-ca150085ba4940f4b318b1694924f5da/build.log": {
+      "sha256": "5f74a8536f00969b7794cee35199b428be395e98bd60a9bc93f1ceea27dbf647",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-ca150085ba4940f4b318b1694924f5da/build.log"
+    },
+    "evidence/remote-ca150085ba4940f4b318b1694924f5da/compiler-events.jsonl": {
+      "sha256": "2f3db17c4e4c9730b72575c5d980758678aa38217bd2bc0d5ecd2b2c242ba14b",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-ca150085ba4940f4b318b1694924f5da/compiler-events.jsonl"
+    },
+    "evidence/remote-03a7acc97f2846b591fc7840baaee2b2/receipt.json": {
+      "sha256": "b5913e7b93511b551d63dc77c34733f4bc4d62ca2cd108dc89a3e0ae58d6d5c6",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-03a7acc97f2846b591fc7840baaee2b2/receipt.json"
+    },
+    "evidence/remote-03a7acc97f2846b591fc7840baaee2b2/build.log": {
+      "sha256": "c9a8215b3a7152e709860bd410937323272695f6af5fbf533152d71863b80900",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-03a7acc97f2846b591fc7840baaee2b2/build.log"
+    },
+    "evidence/remote-03a7acc97f2846b591fc7840baaee2b2/compiler-events.jsonl": {
+      "sha256": "1f1c0d0c4ee0b8d100f1c2d67773465476c21598ea325b32cfa9d0db44d38802",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-03a7acc97f2846b591fc7840baaee2b2/compiler-events.jsonl"
+    },
+    "author/explanation.md": {
+      "sha256": "cccb22fbaae76ca84559700359abe3d2d82ed4e2724a2c24ea63ef82a99a9a5b",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/performance-closure/explanation.md"
+    },
+    "author/method-snippet.md": {
+      "sha256": "9417b027e27363059caa1b0043156ca500880534815a4efa591f5ad6bd21301a",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/performance-closure/method-snippet.md"
+    },
+    "author/evidence.json": {
+      "sha256": "3af80c9be39b691d3e6497d896fabb22448e44838051c1eee14bdb01bddb6b2f",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/performance-closure/evidence.json"
+    }
+  },
+  "author_basis": {
+    "explanation": "author/explanation.md",
+    "evidence": "author/evidence.json",
+    "full_source_index": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/performance-closure/core-six.md",
+    "source_strategy": "One initial baseline and six validated consecutive deltas reconstruct every lower snapshot; probe and wrappers are retained literally. No redundant full-source copies."
+  }
+}

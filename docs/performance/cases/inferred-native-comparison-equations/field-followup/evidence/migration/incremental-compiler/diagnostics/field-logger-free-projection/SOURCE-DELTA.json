@@ -1,0 +1,12 @@
+{
+  "status": "source-only, UNEXECUTED, not proof/adoption",
+  "origin": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/repair-v4/diagnostics/FieldWholeComparisonV3.lean",
+  "origin_sha256": "b62265bf0b51a6c824cec55f45858d73038e26ffa66a36d857b6e5617237be5f",
+  "candidate": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/field-logger-free-projection/FieldWholeComparison.lean",
+  "candidate_sha256": "5bbebaa438fc86e11cd9e6bc87eb16af223710c941a257ffc0bde44e099284f9",
+  "observed_source": "e85d1bfa643182b01b2a0796b9f3e2f5aaf4ea101827476485349712cda92c75",
+  "observed_run": "remote-c20c41042ab64721bf2d51ea8b1cf776",
+  "observed_result": "candidateexit1 only unused-run_tac linter; original exacthfactor retained, no factorization type/recursion errors",
+  "isolated_change": "Normalize existing hypothesis hfactor and existing target separately, then exacthfactor; remove trace_state/simpa-using. No Meta helper or run_tac in projected candidate. Pure original equality supplier/class branch unchanged.",
+  "meta_boundary": "Logger had no explicit goal/mvar assignment or transparency/option changes; incidental Meta inference/cache effects are not excluded by failed strict run. This projected input isolates them."
+}

@@ -1,0 +1,20 @@
+{
+  "run": "remote-09c0867a0fcd4936a355d1b9de92f278",
+  "source": "caa4893eb6151ce3340bb83983e7cba977252574d645672e486216238fb9bc81",
+  "group_closed": true,
+  "aggregate_exit": 1,
+  "sources": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean",
+      "sha256": "17078ec2704b5f552f994c85bdc5c62f90b5e3faf7849ddedec4f4d158538933",
+      "verdict": "fresh_failure",
+      "exit_code": 1,
+      "elapsed_seconds": 84.17132127285004
+    }
+  ],
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-09c0867a0fcd4936a355d1b9de92f278/receipt.json",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-09c0867a0fcd4936a355d1b9de92f278/compiler-events.jsonl",
+  "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-09c0867a0fcd4936a355d1b9de92f278/build.log",
+  "source_basis": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/germ-identity-view-v22/LIVE_READY.json",
+  "boundary": "Only121:8 unusedsectionvars in NEWprivatehelper. EarlierHDCsynthesis gone; no new native proof/type/kernel diagnostic reported. Current53f3 successor pending; no pass inferred."
+}

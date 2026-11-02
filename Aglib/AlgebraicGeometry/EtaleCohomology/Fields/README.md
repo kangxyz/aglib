@@ -10,12 +10,21 @@ sieves over an arbitrary field by finite Galois field covers.
 [CoverEffacement](CoverEffacement.lean) kills each individual positive
 original cohomology class by such a cover, with the normalized
 constant-integer/free-terminal source map.
+[PullbackEffacement](PullbackEffacement.lean) applies the general
+[original source-square zero theorem](../SlicePullback/SourceSquare.lean)
+to obtain vanishing under the original geometric pullback of that same class.
 
 [OverlapH1](OverlapH1.lean) and [ArtinianOverlap](ArtinianOverlap.lean)
 identify original represented Ext1 with original chart cohomology and use
 native semilocal Picard triviality. [GaloisCechCover](GaloisCechCover.lean)
 and [GaloisOverlapH1](GaloisOverlapH1.lean) retain the actual covering family,
 Artinian overlap and first free-resolution term.
+The complete comparison is supplied by
+[the represented Gm interface](../Kummer/EtaleSliceMultiplicative.lean);
+only the ambient Ext universe is public in these vanishing results. Slice and
+chart Ext sizes are chosen internally. The actual free tuple comparison uses
+[the general unique-family constructor](../../../CategoryTheory/Sites/SheafCohomology/ModuleCoefficients/UniqueFamily.lean).
+
 [AmitsurComplex](AmitsurComplex.lean), [GaloisCech](GaloisCech.lean) and
 [GaloisPrimitives](GaloisPrimitives.lean) transport actual multiplicative
 Amitsur primitives through the original differentials and sheafification
@@ -67,3 +76,41 @@ original finite-etale base-change functor for arbitrary, including infinite,
 purely inseparable extensions. Its original root-cohomology pullback
 is bijective in every degree for positive invertible order, with independent
 source and target Ext universes.
+
+[Finite direct-image local products](FiniteDirectImageExact/LocalProduct.lean)
+package the original splitting-chart component inclusions as one coefficient-free
+site natural transformation. Continuous pushforward gives the original
+restriction maps on sections; the existing fan and section bijection retain the
+local product comparison for arbitrary original abelian coefficients.
+
+[Finite-etale transfers](FiniteEtaleTransfer/Trace.lean) supply the original splitting charts, matching equations and actual finite-flat rank to the generic finite-sum construction. The normalized source remains the original constant integer sheaf; the finite separable field specialization uses the actual field degree.
+
+[Local finite comparison](SeparableExtension/FiniteConstants/LocalFiniteComparison.lean)
+transfers bijectivity of original cohomology pullback across the actual finite
+direct-image square, retaining four independent Ext worlds. Its projective-line
+corollaries keep the Noetherian strictly henselian local base, the original
+killed coefficient or finite constant coefficient, and every cohomological
+degree.
+
+[HenselianFieldComparison](SeparableExtension/FiniteConstants/HenselianFieldComparison.lean) applies the general pullback comparison maps to the original coefficient changes. For schemes finite over the original projective line, the finite constant-coefficient restriction theorem retains a Noetherian henselian coefficient algebra whose actual residue field is separably closed and finite purely inseparable over the ground field.
+
+[Native line comparison](SeparableExtension/FiniteConstants/NativeLineComparison.lean)
+retains the original cohomology pullback along the actual map `P1_K → P1_k`.
+The canonical line base-change isomorphism and original inverse-image
+composition identify it with the categorical field comparison. Both fields are
+separably closed; the original coefficient is killed by a nonzero integer, and
+the conclusion holds in every degree.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [BoundedClassFiniteConstant](BoundedClassFiniteConstant.lean)
+- [FiniteSeparableZero](FiniteSeparableZero.lean)
+- [SeparableExtension/FiniteConstants/ConstantMaps](SeparableExtension/FiniteConstants/ConstantMaps.lean)
+- [SeparableExtension/FiniteConstants/FiniteTypeCohomology](SeparableExtension/FiniteConstants/FiniteTypeCohomology.lean)
+- [SeparableExtension/FiniteConstants/StageCohomology](SeparableExtension/FiniteConstants/StageCohomology.lean)
+- [TwoFieldEffacement/Boundary](TwoFieldEffacement/Boundary.lean)
+- [TwoFieldEffacement/CommonFieldCompositeZero](TwoFieldEffacement/CommonFieldCompositeZero.lean)
+- [TwoFieldEffacement/FiniteSource](TwoFieldEffacement/FiniteSource.lean)
+- [TwoFieldEffacement/ScalarSquare](TwoFieldEffacement/ScalarSquare.lean)

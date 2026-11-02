@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.Compactification.Refinements.OpenSquare
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleCartesianBaseChange
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.Open
+public import Aglib.CategoryTheory.Functor.ComparisonPasting
 
 /-!
 # The original derived-unit comparison for a compactification refinement
@@ -29,6 +30,45 @@ open Coefficients
 
 universe u w w₁ w₂
 
+section ProperRefinement
+
+variable {X Y₁ Y₂ : Scheme.{u}} (j₁ : X ⟶ Y₁) (j₂ : X ⟶ Y₂)
+  [IsOpenImmersion j₁] [IsOpenImmersion j₂] (h : Y₁ ⟶ Y₂)
+  (sq : IsPullback j₁ (𝟙 X) h j₂)
+  (Λ : Type (u + 1)) [Ring Λ]
+  [HasDerivedCategory.{w} (ModuleSheaf X Λ)]
+  [HasDerivedCategory.{w₁} (ModuleSheaf Y₁ Λ)]
+  [HasDerivedCategory.{w₂} (ModuleSheaf Y₂ Λ)]
+
+/-- The actual bounded-below pullback comparison above the original common open. -/
+def moduleDerivedProperRefinementPullbackIso :
+    moduleDerivedLowerShriek j₂ Λ ⋙ moduleDerivedInverseImage Λ h ≅
+      moduleDerivedLowerShriek j₁ Λ :=
+  (Functor.rightDerivedFunctorPlusCompIsoOfPreservesHomology
+    (moduleLowerShriek j₂ Λ) (moduleInverseImage h Λ)).symm ≪≫
+    Functor.rightDerivedFunctorPlusIso
+      (moduleLowerShriek j₂ Λ ⋙ moduleInverseImage h Λ)
+      (moduleLowerShriekCartesianIdentityIso j₁ j₂ h
+        sq.flip Λ)
+
+/-- The original derived unit induces the genuine compactification-refinement map. -/
+def moduleDerivedProperRefinementComparison :
+    moduleDerivedLowerShriek j₂ Λ ⟶
+      moduleDerivedLowerShriek j₁ Λ ⋙ moduleDerivedDirectImage Λ h :=
+  (Functor.rightUnitor (moduleDerivedLowerShriek j₂ Λ)).inv ≫
+    Functor.comparisonPasting (moduleDerivedAdjunction Λ h).unit
+      (moduleDerivedProperRefinementPullbackIso j₁ j₂ h sq Λ).hom
+
+/-- Every component retains the original derived adjunction unit, not a chosen isomorphism. -/
+theorem moduleDerivedProperRefinementComparison_app (K : DerivedCategory.Plus (ModuleSheaf X Λ)) :
+    (moduleDerivedProperRefinementComparison j₁ j₂ h sq Λ).app K =
+      (moduleDerivedAdjunction Λ h).unit.app ((moduleDerivedLowerShriek j₂ Λ).obj K) ≫
+        (moduleDerivedDirectImage Λ h).map
+          ((moduleDerivedProperRefinementPullbackIso j₁ j₂ h sq Λ).hom.app K) := by
+  simp [moduleDerivedProperRefinementComparison]
+
+end ProperRefinement
+
 variable {X S : Scheme.{u}} {f : X ⟶ S} [QuasiCompact f]
   {C D : Hom.DenseCompactification f} (a : C ⟶ D)
   (Λ : Type (u + 1)) [Ring Λ]
@@ -40,24 +80,15 @@ variable {X S : Scheme.{u}} {f : X ⟶ S} [QuasiCompact f]
 def moduleDerivedRefinementPullbackIso :
     moduleDerivedLowerShriek D.j Λ ⋙ moduleDerivedInverseImage Λ a.hom ≅
       moduleDerivedLowerShriek C.j Λ :=
-  (Functor.rightDerivedFunctorPlusCompIsoOfPreservesHomology
-    (moduleLowerShriek D.j Λ) (moduleInverseImage a.hom Λ)).symm ≪≫
-    Functor.rightDerivedFunctorPlusIso
-      (moduleLowerShriek D.j Λ ⋙ moduleInverseImage a.hom Λ)
-      (moduleLowerShriekCartesianIdentityIso C.j D.j a.hom
-        (Hom.DenseCompactification.isPullback_open a).flip Λ)
+  moduleDerivedProperRefinementPullbackIso C.j D.j a.hom
+    (Hom.DenseCompactification.isPullback_open a) Λ
 
 /-- The original derived unit induces the genuine compactification-refinement map. -/
 def moduleDerivedRefinementComparison :
     moduleDerivedLowerShriek D.j Λ ⟶
       moduleDerivedLowerShriek C.j Λ ⋙ moduleDerivedDirectImage Λ a.hom :=
-  (Functor.rightUnitor (moduleDerivedLowerShriek D.j Λ)).inv ≫
-    Functor.whiskerLeft (moduleDerivedLowerShriek D.j Λ)
-      (moduleDerivedAdjunction Λ a.hom).unit ≫
-    (Functor.associator (moduleDerivedLowerShriek D.j Λ)
-      (moduleDerivedInverseImage Λ a.hom) (moduleDerivedDirectImage Λ a.hom)).inv ≫
-    Functor.whiskerRight (moduleDerivedRefinementPullbackIso a Λ).hom
-      (moduleDerivedDirectImage Λ a.hom)
+  moduleDerivedProperRefinementComparison C.j D.j a.hom
+    (Hom.DenseCompactification.isPullback_open a) Λ
 
 /-- Every component retains the original derived adjunction unit, not a chosen isomorphism. -/
 theorem moduleDerivedRefinementComparison_app (K : DerivedCategory.Plus (ModuleSheaf X Λ)) :
@@ -65,6 +96,13 @@ theorem moduleDerivedRefinementComparison_app (K : DerivedCategory.Plus (ModuleS
       (moduleDerivedAdjunction Λ a.hom).unit.app ((moduleDerivedLowerShriek D.j Λ).obj K) ≫
         (moduleDerivedDirectImage Λ a.hom).map
           ((moduleDerivedRefinementPullbackIso a Λ).hom.app K) := by
-  simp [moduleDerivedRefinementComparison]
+  exact moduleDerivedProperRefinementComparison_app C.j D.j a.hom
+    (Hom.DenseCompactification.isPullback_open a) Λ K
+
+/-- The general original-unit comparison has the literal original dense specialization. -/
+theorem moduleDerivedProperRefinementComparison_dense :
+    moduleDerivedProperRefinementComparison C.j D.j a.hom
+      (Hom.DenseCompactification.isPullback_open a) Λ =
+      moduleDerivedRefinementComparison a Λ := rfl
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

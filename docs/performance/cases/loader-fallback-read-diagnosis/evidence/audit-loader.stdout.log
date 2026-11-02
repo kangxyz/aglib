@@ -1,0 +1,35 @@
+LEAN_LOADER_SYSCALL pid=98359 op=read_short fd=4 requested=255 result=38 errno=0 buffer_null=0
+LEAN_LOADER_SYSCALL pid=98359 op=mmap fd=11 requested=6264 result=-1 errno=12 buffer_null=0
+LEAN_LOADER_SYSCALL pid=98359 op=mmap fd=11 requested=558216 result=-1 errno=12 buffer_null=0
+LEAN_LOADER_SYSCALL pid=98359 op=mmap fd=11 requested=176 result=-1 errno=12 buffer_null=0
+LEAN_LOADER_SYSCALL pid=98359 op=mmap fd=11 requested=1856 result=-1 errno=12 buffer_null=0
+LEAN_LOADER_SYSCALL pid=98359 op=read fd=11 requested=717416 result=-1 errno=14 buffer_null=1
+axiom-audit: failed to load the environment or audit: failed to read file '/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/RingTheory/Flat/KernelCriterion.olean.private'
+
+axiom-audit — fail if any declaration in your library depends on an axiom outside the allowlist.
+
+USAGE:
+  axiom-audit [options]
+
+By default it audits the library found in the current lakefile, allowing propext,
+Classical.choice, Quot.sound. Run from the project root after `lake build`
+(e.g. `lake env axiom-audit`).
+
+OPTIONS:
+  --root <Namespace>     audit declarations defined in modules under this root. If omitted, the
+                         first `lean_lib` in the lakefile is used.
+  --allow a,b,c          comma-separated allowlist of axioms
+                         (default: propext,Classical.choice,Quot.sound)
+  --modules a,b,c        import exactly these modules to build the environment
+                         (instead of importing the root module)
+  --modules-from <dir>   import every .lean module found under <dir> — for a root that does not
+                         transitively import the whole library (e.g. an intentionally empty root)
+  --json                 print a machine-readable JSON report instead of human-readable text
+  -h, --help             show this help
+
+Exits 0 if clean, 1 on a violation (or nothing audited), 2 on a usage/IO error.
+LEAN_LOADER_SYSCALL pid=98359 op=count_mmap_ENOMEM fd=-1 requested=487 result=0 errno=0 buffer_null=0
+LEAN_LOADER_SYSCALL pid=98359 op=count_mmap_EEXIST fd=-1 requested=8 result=0 errno=0 buffer_null=0
+LEAN_LOADER_SYSCALL pid=98359 op=count_mmap_other fd=-1 requested=0 result=0 errno=0 buffer_null=0
+LEAN_LOADER_SYSCALL pid=98359 op=count_read_failure fd=-1 requested=1 result=0 errno=0 buffer_null=0
+LEAN_LOADER_SYSCALL pid=98359 op=count_read_short fd=-1 requested=1 result=0 errno=0 buffer_null=0

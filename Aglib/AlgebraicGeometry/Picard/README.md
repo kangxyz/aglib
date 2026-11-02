@@ -252,6 +252,23 @@ remains an input to the prescribed-origin genus-one construction.
 [PowerRoot](PowerRoot.lean), [PowerDescent](PowerDescent.lean) and
 [FrameTorsor](FrameTorsor.lean) describe actual root, descent and frame objects.
 
+[FrameInverse](FrameInverse.lean) identifies the original frame with its inverse
+coframe and relates the positive coframe class to the negative native Picard
+class. Its normalized power inversion holds for every natural level; the
+existing root-torsor section/action laws retain positive level and global-unit
+hypotheses. The native construction does not assert the source Čech or Weil
+sign comparison.
+
+[AssociatedBundle](AssociatedBundle.lean) uses
+`AssociatedBundle.Construction.frameRawHomNative` for the original raw-frame map
+at the native line-bundle object; its identity-character compatibility API
+delegates to the same character construction.
+
+Its positive transport is the original section-equivalence inverse, identified by
+`transport_eq_positiveTransport` with the generic sheaf-torsor transporter.
+Action, composition and restriction laws use that same construction; character
+and identity-character unit transitions retain the original frame carrier.
+
 [Tangent/Thickening](Tangent/Thickening.lean), [Tangent/Generator](Tangent/Generator.lean) and
 [Tangent/DualNumbers](Tangent/DualNumbers.lean) give the algebraic core of the tangent space
 of the Picard functor (Kleiman, arXiv:math/0504020v1, proof of Thm 5.11, p. 43). For morphisms
@@ -320,7 +337,10 @@ for `a • t = F(µ_a) t` (`tangentKernelEquiv_scale`, `tangentKernelModule`,
 `tangentKernelLinearEquiv`). `finrank_tangentKernel` gives
 `finrank_L ker(F(L[ε]) → F(L)) = finrank_k (𝔪/𝔪²)` for every field `L` over `k`, finite since `P` is
 locally Noetherian (`finite_tangentKernel`); `finrank_squareZeroKernel` is the `L ⊕ M` form. The
-focused test is `AglibTest.AlgebraicGeometry.Picard.Tangent.Points`.
+focused test is `AglibTest.AlgebraicGeometry.Picard.Tangent.Points`. The
+structural scalar triangle and local stalk factorization/injectivity are
+imported from [Stalk/SpecLocalRing](../Stalk/SpecLocalRing.lean), also used by the
+general infinitesimal smoothness criterion.
 
 [Tangent/Comparison](Tangent/Comparison.lean) gives the vertical maps of Kleiman's Square (5.11.4)
 (arXiv:math/0504020v1, proof of Thm 5.11, pp. 43–44) for the fppf Picard sheaf. Let `k` be a field,
@@ -688,9 +708,10 @@ arXiv:math/0504020v1, Prop. 5.19, p. 47.
   proof lifts line bundles across `familySpecOverMap` on the two affine chart preimages of `P^1`
   (`exists_lineBundle_lift_twoAffine_of_square_zero`). No cohomology vanishing and no Artinian
   condition is used.
-- `OverField.Curve.Projectivity.exists_isAffineHom_to_projectiveP1` gives an affine map to
-  `P^1_k` for a proper integral curve over a field, from
-  `exists_finite_dominant_map_to_nativeP1`.
+- The lower [Projectivity/AffineMap](../Curves/Projectivity/AffineMap.lean) leaf supplies
+  `OverField.Curve.Projectivity.exists_isAffineHom_to_projectiveP1` for a proper integral
+  dimension-one scheme over a field, through the original finite native-line map and
+  projective-line comparison.
 - `smooth_picardScheme_of_curve h hdim`: let `k` be a field and `X ⊆ P^N_k` closed, flat with
   geometrically integral fibres, integral and of dimension one. Then `picardScheme h` and
   `picardIdentityComponent p (picardScheme h) (picardSchemeRepresentableBy h)` (`Pic⁰_{X/k}`)
@@ -834,3 +855,42 @@ Open: representability by `∅` on the `r = 0` piece, gluing over the clopen `h^
 module form `O(D) ≅ L_T ⊗ p_T^*N` of the divisor class (the class form is `AbelClass`), which F17
 does not need.
 The focused test is `AglibTest.AlgebraicGeometry.Picard.LinearSystem` (with axiom guards).
+
+[QuasiProjectiveLevel](Scheme/QuasiProjectiveLevel.lean) places the specified
+Picard fibre-condition opens in quasi-projective levels under the displayed
+Noetherian, flat and geometrically integral projective-family hypotheses.
+[IdentityComponentQuasiProjective](Scheme/IdentityComponentQuasiProjective.lean)
+applies this to the same Picard identity component over any field;
+[IdentityComponentBaseChangeMap](Scheme/IdentityComponentBaseChangeMap.lean)
+retains its original base-change structure-map triangle.
+[Normalized](LineBundleFamily/Normalized.lean), [Rigidified](LineBundleFamily/Rigidified.lean)
+and [Classifying](LineBundleFamily/Classifying.lean) use native line bundles
+and the original family; classifying maps retain locally Noetherian tests.
+[Translation](LineBundleFamily/Translation.lean), [Fppf](LineBundleFamily/Fppf.lean)
+and [TranslationBaseChange](LineBundleFamily/TranslationBaseChange.lean)
+provide the original translated family and its comparisons.
+
+[IdentityComponentProjectiveSource](Scheme/IdentityComponentProjectiveSource.lean)
+gives the original Picard identity component's quasi-projective input from an
+H-projective, flat, geometrically integral field source and the supplied locally
+finite-type representative; no group or source rational point is required.
+[TranslationIso](LineBundleFamily/TranslationIso.lean) retains the actual
+parameterized translation isomorphisms and pullback coherence.
+
+[Presheaf/Pullback](Presheaf/Pullback.lean) and [Scheme/Pullback](Scheme/Pullback.lean)
+construct contravariant pullback for the original supplied Picard
+representatives and their identity components, with identity, composition and
+base-change laws; the source morphism need not be flat. Classification remains
+on locally Noetherian tests. The universal-pair comparison additionally uses
+a locally Noetherian base, the stated proper, flat, geometrically integral
+source geometry and an actual compatible choice of origins. Its all-test laws
+follow by pullback, not an extension of representability.
+
+[UniversalTranslation](LineBundleFamily/UniversalTranslation.lean) retains
+the original translation difference, base evaluation and normalization for
+family classes on arbitrary test schemes, including nonreduced ones.
+
+[LineBundleFamily/SourcePullback](LineBundleFamily/SourcePullback.lean)
+retains the original source-family map, translation and parameter naturality
+for arbitrary source morphisms, without a flatness premise. Its inversion and
+difference formulas retain the original coefficient and parameter order.

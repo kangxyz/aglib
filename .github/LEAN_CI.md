@@ -110,6 +110,29 @@ Each job restores `.lake` and the native cache directory together once. Build
 and Test run on separate runners and each saves its completed compilation,
 including partial progress on failure. Test's Actions restore warms dependency
 and checker/auditor outputs; it does not substitute for the current Build artifact.
+Before either job first invokes Lake, it removes only read-only, runner-owned
+regular `*.ltar.hash` sidecars under the root package's `.lake/build/ir`.
+Lake 4.34.1 writes these derived hash files directly. Runs 40818968404,
+40846135998 and 40880003859 repeatedly failed while writing the inherited
+`ToUnit.ltar.hash`; their logs establish failed writes and cache reuse, but
+do not record the original sidecar's mode, owner or origin.
+The cleanup requires runner-owned writable real build directories, skips
+symlinks, and unlinks metadata without changing immutable artifact permissions
+or shared cache inodes. The existing rehashed build regenerates those hashes;
+writable sidecars, compiled outputs and cache mappings are preserved.
+The same guarded cleanup runs again after cache preparation, immediately before
+Build and Test's production-output verification. Startup cleanup alone does not
+cover metadata introduced by later cache acquisition. In pinned Lake 4.34.1,
+`Module.recBuildLean` can reuse compiled outputs, then `trackOutputsIfEnabled`
+packs a missing `.ltar` for `-o` and `Cache.saveArtifact` rewrites its `.hash`
+without first removing an existing sidecar. The job can therefore say
+`Replaying` while performing a new failing archive/hash write; that heading does
+not prove that the error was stored in an old log. A tiny isolated native Lake
+regression reproduces this exact sequence and verifies repair without changing
+the compiled output or native mappings. The AssociatedBundle report from run
+41013572331 establishes the failing path and replay/packing sequence; its live
+file mode, owner and original restoration point are unavailable. No saved error
+logs are stripped and no failed native invocation is treated as successful.
 The required current-run artifact overwrites production cache mappings. The
 no-build check tests availability and applicability of those production outputs
 against native inputs, without requiring checker outputs from Build. It does not
@@ -142,7 +165,20 @@ preserving its working directory, environment and selected toolchain. The
 historical aggregate allowance is 13824 MiB, reduced only when physical RAM
 minus a 2048 MiB runner/system reserve is smaller. Swap is disabled for that
 scope, and the Actions runner stays outside its combined memory limit. The
-maintained libraries all use weak `-M12800 -j4` frontend arguments: a
+scope gets a unique explicit name recorded under this run, attempt and job in
+`RUNNER_TEMP`. Before either cache save, an always-run step outside those scopes
+synchronously stops only the recorded units. Systemd scopes remain live while
+any member process remains, so this also settles Lake/Lean descendants left when
+Actions cancels the outer command. Cache saving and partial-output staging are
+blocked if scope quiescence fails; normal compiler failure still saves completed
+outputs after quiescence. No unrelated job or global process list is targeted.
+This addresses the observed run 41004511190 cancellation race: cache tar reported
+`outputs/Aglib: file changed as we read it` before post-job orphan cleanup killed
+the old timeout, Lake and Lean. Systemd owns the scope stop semantics; the
+regression exercises recorded-scope selection and a live synthetic cache writer.
+See [scope lifecycle](https://www.freedesktop.org/software/systemd/man/latest/systemd.scope.html)
+and [synchronous stop](https://www.freedesktop.org/software/systemd/man/latest/systemctl.html).
+The maintained libraries all use weak `-M12800 -j4` frontend arguments: a
 12800 MiB managed-allocation limit and four threads for their own modules.
 Existing pinned dependencies and the separate auditor retain their own compiler
 arguments; the aggregate scope also bounds those processes. These resource-only

@@ -1,0 +1,30 @@
+diff --git a/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean b/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean
+--- a/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean
++++ b/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean
+@@ -45,17 +45,17 @@
+     exact map_add _ a.down b.down
+ 
+ /-- The same native single-lift additive presheaf, with the lift world explicit. -/
+-abbrev additivePresheaf.{w, r, v, u} {C : Type u} [Category.{v} C]
+-    (R : Cᵒᵖ ⥤ CommRingCat.{r}) : Cᵒᵖ ⥤ AddCommGrpCat.{max r w} :=
+-  R ⋙ forget₂ CommRingCat.{r} RingCat.{r} ⋙
+-    forget₂ RingCat.{r} AddCommGrpCat.{r} ⋙ AddCommGrpCat.uliftFunctor.{w, r}
++abbrev additivePresheaf.{w', r', v', u'} {C : Type u'} [Category.{v'} C]
++    (R : Cᵒᵖ ⥤ CommRingCat.{r'}) : Cᵒᵖ ⥤ AddCommGrpCat.{max r' w'} :=
++  R ⋙ forget₂ CommRingCat.{r'} RingCat.{r'} ⋙
++    forget₂ RingCat.{r'} AddCommGrpCat.{r'} ⋙ AddCommGrpCat.uliftFunctor.{w', r'}
+ 
+ /-- The same native sheaf pair, retaining the supplied original sheaf proof. -/
+-abbrev additiveSheaf.{w, r, v, u} {C : Type u} [Category.{v} C]
+-    (R : Cᵒᵖ ⥤ CommRingCat.{r}) (J : GrothendieckTopology C)
+-    (hR : Presheaf.IsSheaf J (additivePresheaf.{w} R)) :
+-    Sheaf J AddCommGrpCat.{max r w} :=
+-  ⟨additivePresheaf.{w} R, hR⟩
++abbrev additiveSheaf.{w', r', v', u'} {C : Type u'} [Category.{v'} C]
++    (R : Cᵒᵖ ⥤ CommRingCat.{r'}) (J : GrothendieckTopology C)
++    (hR : Presheaf.IsSheaf J (additivePresheaf.{w'} R)) :
++    Sheaf J AddCommGrpCat.{max r' w'} :=
++  ⟨additivePresheaf.{w'} R, hR⟩
+ 
+ variable {C : Type u} [Category.{v} C] (R : Cᵒᵖ ⥤ CommRingCat.{r})
+ 

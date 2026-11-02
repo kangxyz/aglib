@@ -1,0 +1,23 @@
+{
+  "head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "source_vector": {
+    "Aglib/CategoryTheory/Functor/CopyObjRestriction.lean": "e6cd595f727539698609abb2ede1d9691a3b494337164a57da4048a673be04a6",
+    "Aglib/CategoryTheory/Over/RelativeTests.lean": "5ab29b5478f311465cafa54ae92c84a1f1d83cf57007ae011ed8613a6527ba35",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean": "76aac49b4af2dc1e2c07615e3b94f023d5275901f6ebae346ce02797a0b7bd0c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean": "e537aa98d10c228eff992b111596458733e3694d2c61c3576bb990aea3341a6f"
+  },
+  "header_comparison": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean": {
+      "original_public_headers_preserved": 24,
+      "header_text_and_relative_order_unchanged": true,
+      "new_total_public_headers": 28
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean": {
+      "original_public_headers_preserved": 38,
+      "header_text_and_relative_order_unchanged": true,
+      "new_total_public_headers": 45
+    }
+  },
+  "conditional_new_leaf_used": false,
+  "other_sources_preserved": true
+}

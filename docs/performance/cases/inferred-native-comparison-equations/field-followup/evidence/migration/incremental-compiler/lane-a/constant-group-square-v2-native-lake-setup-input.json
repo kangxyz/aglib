@@ -1,0 +1,88 @@
+{
+  "phase": "new-fullG-v2-native-official-Lake-setup",
+  "question": "Does the full original G proof pass with only the mapped-arrow equality inferred by the generic cancellation helper, followed by one original native HomEquiv injection?",
+  "metadata": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/constant-square-r4/v2-native/PROBE_READY.json",
+  "metadata_sha256": "af7a113eb04240b14349b2462c7052c585e15889893392bfd6c27d5f40159040",
+  "probe_source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/constant-square-r4/v2-native/ConstantGroupSquareProbe.lean",
+  "probe_sha256": "379cef2fbea1cd4ab2eeaaf7c4635772491ac1e8539313a13e81cac1371547d3",
+  "declared_native_basis": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean",
+    "sha256": "5634b442fefe42102ba7f079c0f2d896ae65324d1ea820d8fc6a52269aa4f14b"
+  },
+  "native_setup_relative": ".lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.setup.json",
+  "native_setup_module": "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction",
+  "native_setup_policy": "official lake --no-build setup-file actualGlobal source (dependencies/metadata only); full module/options map equality, generated native setup bytes used unchanged; no raw fallback/productionGlobal build",
+  "module_scope": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.SheafColimit",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleDirectImageMate"
+  ],
+  "import_scanner": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/scripts/lean_tools/source.py",
+    "sha256": "6fc597d308e3b511c814ecad4af0cf4ef0af9625d6f697d044df450b3bebc2cd"
+  },
+  "payload": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/lane-a/constant-group-square-v2-native-lake-setup-payload.py",
+  "payload_sha256": "36bfc0888bcda9bc23f48a93c483a87393015b7c8806fdb9555b975e240b3196",
+  "previous_actual_source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/lane-a/full-G-native-setup-boundary-4eb0a9de.json",
+  "unexecuted_predecessor": {
+    "source_sha256": "0de81a2bab212bd5d21bc85ce060b2f47d89674707dbe6a7b4e7cff88648c7b1",
+    "ready_sha256": "5e8738ada6a37262be8fe04430a17aaeec62f81d0e21201f320ecb556f322d30",
+    "status": "No capture/job occurred; superseded by known-prefix-lint repair before first native-setup probe."
+  },
+  "prior_raw_result": "b257/6ade kernel390 and unused96warning remain raw-only; not replayed or relabeled",
+  "profile": {
+    "jobs": 8,
+    "threads": 4,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536
+  },
+  "boundary": "Exact5634 prefix and original G header; helper modified only by the stated reduction of data. No canonical-coordinate tails or other formation conclusions.",
+  "execution": "new proof candidate only, existing native module.setup with no-build imports and managed LEAN; no production Global build/N writes/options-budget change",
+  "native_source_relative": "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean",
+  "expected_native_options": {
+    "autoImplicit": false,
+    "weak.linter.mathlibStandardSet": true,
+    "weak.linter.style.longFile": 1500,
+    "warningAsError": true
+  },
+  "native_option_verification_basis": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/C-Field-native-options-verification.json",
+  "native_option_verification_sha256": "3560df5fbaca8358f0b567c35d91fb2c8aceba2559963a1f48683c88ed7efb01",
+  "operational_predecessor": {
+    "run": "remote-4eb0a9de87584ebb88f295d3e9d6849b",
+    "exit": 3,
+    "proof_executed": false,
+    "reason": "ephemeral cached IR setup missing, documented cleanup; candidate remains unexecuted"
+  },
+  "session_id": 2041,
+  "run": "remote-44df9832b3c14b5386a43cec62c0c886",
+  "source": "7400b3388ebb6d282fdd90389735f217e3c2cd85f16b174902f17b64c1a14fce",
+  "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/lane-a/new-G-native-setup-44df9832.json",
+  "phase_state": "closed native-configured proofdiagnostic1:sole kernel389; no G proof pass or production Global verdict",
+  "observed_native_setup": {
+    "complete_options_equal": true,
+    "expected_library_options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "isModule": true,
+    "name": "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction",
+    "options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "sha256": "f2b7741e936ee90bee75fd62988ca89d6e3139ccd4e8ce2a5860e675ce1591d3"
+  },
+  "proof_probe_executed": true,
+  "native_library_options_forwarded": true,
+  "old_ir_bytewise_comparison": "not available; no claim; official native setup/effective options recorded",
+  "updated_utc": "2026-10-28T11:29:20.977852+00:00",
+  "native_exit": 1,
+  "probe_exit": 1,
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-44df9832b3c14b5386a43cec62c0c886/receipt.json",
+  "observed_diagnostics": [
+    "ConstantGroupSquareProbe.lean389:16 kernel deterministic timeout"
+  ]
+}

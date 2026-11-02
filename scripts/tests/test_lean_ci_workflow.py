@@ -11,6 +11,7 @@ import subprocess
 import sys
 import tarfile
 import tempfile
+import time
 import tomllib
 import unittest
 
@@ -176,8 +177,9 @@ class WorkflowGates(unittest.TestCase):
     def test_failure_and_cancellation_keep_cache_cleanup_enabled(self):
         for job, name in (('build', 'Save compilation independently of Test and lint'),
                           ('test_lint', 'Save completed Test compilation')):
-            self.assertTrue(condition(step(job, name)['if'], {}, success=False))
-            self.assertTrue(condition(step(job, name)['if'], {}, success=False, cancelled=True))
+            values = {'steps.quiesce.outcome': 'success'}
+            self.assertTrue(condition(step(job, name)['if'], values, success=False))
+            self.assertTrue(condition(step(job, name)['if'], values, success=False, cancelled=True))
 
     def test_each_job_restores_native_and_lake_cache_once_together(self):
         for name in ('build', 'test_lint'):
@@ -232,6 +234,180 @@ class WorkflowGates(unittest.TestCase):
                       step('test_lint', 'Lint')['run'])
         self.assertEqual(step('test_lint', 'Test')['run'], 'lake test')
         self.assertIn('--root "$root"', step('test_lint', 'Audit production axioms')['run'])
+
+
+class RestoredArchiveHashMetadata(unittest.TestCase):
+    name = 'Remove read-only restored archive hash sidecars'
+
+    def cleanup(self, root):
+        return subprocess.run(['bash', '-e', '-o', 'pipefail', '-c',
+                               step('build', self.name)['run']], cwd=root,
+                              capture_output=True, text=True)
+
+    def test_both_jobs_clean_restored_metadata_before_first_lake_invocation(self):
+        for job in ('build', 'test_lint'):
+            actions = JOBS[job]['steps']
+            cleanup = step(job, self.name)
+            restore = next(item for item in actions
+                           if item.get('uses', '').startswith('actions/cache/restore@'))
+            self.assertEqual(cleanup['run'], step('build', self.name)['run'])
+            self.assertEqual(cleanup['working-directory'], '${{ inputs.package-directory }}')
+            self.assertLess(actions.index(restore), actions.index(cleanup))
+            self.assertLess(actions.index(cleanup), actions.index(step(job, 'Configure Lean')))
+        self.assertIn('lake build --rehash', step('build', 'Build')['run'])
+
+    def test_tar_restored_readonly_sidecar_is_regenerated_without_mutating_artifacts(self):
+        with tempfile.TemporaryDirectory(prefix='restored-archive-hash-') as directory:
+            root = Path(directory)
+            source = root / 'source'
+            ir = source / '.lake/build/ir/Aglib/Path with spaces'
+            ir.mkdir(parents=True)
+            cached = source / 'native-cache/artifacts/immutable'
+            cached.parent.mkdir(parents=True)
+            cached.write_text('0123456789abcdef')
+            readonly = ir / 'ToUnit.ltar.hash'
+            os.link(cached, readonly)
+            cached.chmod(0o444)
+            for name, content, mode in (('Writable.ltar.hash', 'keep writable hash', 0o644),
+                                         ('ToUnit.ltar', 'immutable archive', 0o444),
+                                         ('ToUnit.olean.hash', 'other hash metadata', 0o444)):
+                path = ir / name
+                path.write_text(content)
+                path.chmod(mode)
+            archive = root / 'cache.tar'
+            with tarfile.open(archive, 'w') as stream:
+                stream.add(source / '.lake', arcname='.lake')
+                stream.add(source / 'native-cache', arcname='native-cache')
+            restored = root / 'restored'
+            restored.mkdir()
+            subprocess.run(['tar', '-xf', str(archive), '-C', str(restored)], check=True)
+            ir = restored / ir.relative_to(source)
+            cached = restored / cached.relative_to(source)
+            readonly = ir / readonly.name
+            self.assertEqual(readonly.stat().st_ino, cached.stat().st_ino)
+            self.assertEqual(readonly.stat().st_mode & 0o777, 0o444)
+            external = root / 'external'
+            external.mkdir()
+            target = external / 'Outside.ltar.hash'
+            target.write_text('external metadata')
+            target.chmod(0o444)
+            (ir / 'Linked.ltar.hash').symlink_to(target)
+            (ir / 'linked-directory').symlink_to(external, target_is_directory=True)
+            result = self.cleanup(restored)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn('Removed 1 read-only', result.stdout)
+            self.assertFalse(readonly.exists())
+            readonly.write_text('fedcba9876543210')  # Native rehash can recreate the sidecar.
+            self.assertTrue(readonly.stat().st_mode & 0o200)
+            self.assertEqual(cached.read_text(), '0123456789abcdef')
+            self.assertEqual(cached.stat().st_mode & 0o777, 0o444)
+            self.assertEqual((ir / 'ToUnit.ltar').read_text(), 'immutable archive')
+            self.assertEqual((ir / 'ToUnit.ltar').stat().st_mode & 0o777, 0o444)
+            self.assertEqual((ir / 'Writable.ltar.hash').read_text(), 'keep writable hash')
+            self.assertEqual((ir / 'ToUnit.olean.hash').read_text(), 'other hash metadata')
+            self.assertTrue((ir / 'Linked.ltar.hash').is_symlink())
+            self.assertEqual(target.read_text(), 'external metadata')
+            self.assertEqual(target.stat().st_mode & 0o777, 0o444)
+
+    def test_missing_build_tree_is_a_noop(self):
+        with tempfile.TemporaryDirectory(prefix='missing-archive-hash-') as root:
+            self.assertEqual(self.cleanup(root).returncode, 0)
+            self.assertEqual(list(Path(root).iterdir()), [])
+
+    def test_late_restoration_is_cleaned_after_all_cache_preparation(self):
+        for job, consumer in (('build', 'Build'),
+                              ('test_lint', 'Verify Build outputs without compilation')):
+            actions = JOBS[job]['steps']
+            cleanup = step(job, 'Refresh archive hash metadata after cache preparation')
+            self.assertEqual(cleanup['run'], step(job, self.name)['run'])
+            self.assertEqual(cleanup['working-directory'], '${{ inputs.package-directory }}')
+            self.assertEqual(actions[actions.index(cleanup) + 1]['name'], consumer)
+            preparation = ('Restore published native dependency caches' if job == 'build'
+                           else "Restore this run's native Build outputs")
+            self.assertLess(actions.index(step(job, preparation)), actions.index(cleanup))
+        with tempfile.TemporaryDirectory(prefix='late-archive-hash-') as directory:
+            self.assertEqual(self.cleanup(directory).returncode, 0)
+            ir = Path(directory) / '.lake/build/ir/Aglib'
+            ir.mkdir(parents=True)
+            late = ir / 'AssociatedBundle.ltar.hash'
+            late.write_text('0123456789abcdef')
+            late.chmod(0o444)
+            self.assertEqual(self.cleanup(directory).returncode, 0)
+            self.assertFalse(late.exists())
+
+    def test_pinned_lake_replay_packs_missing_archive_and_repairs_only_hash_metadata(self):
+        # A software fixture only: no Aglib, Mathlib, dependency or project proofs.
+        toolchain = (ROOT / 'lean-toolchain').read_text().strip()
+        toolchain_name = toolchain.replace('/', '--').replace(':', '---')
+        lake = Path(os.environ.get('ELAN_HOME', Path.home() / '.elan')) / 'toolchains' / toolchain_name / 'bin/lake'
+        if not lake.is_file():
+            self.skipTest('pinned native Lake is not installed; do not download a toolchain')
+        with tempfile.TemporaryDirectory(prefix='native-replay-hash-') as directory:
+            root = Path(directory)
+            (root / 'lean-toolchain').write_text(toolchain + '\n')
+            (root / 'lakefile.toml').write_text(
+                'name = "fixture"\nenableArtifactCache = true\nrestoreAllArtifacts = true\n'
+                '[[lean_lib]]\nname = "Fixture"\n')
+            (root / 'Fixture.lean').write_text('def fixtureValue : Nat := 1\n')
+            cache = root / 'native-cache'
+            env = {**os.environ, 'LAKE_ARTIFACT_CACHE': 'true', 'LAKE_CACHE_DIR': str(cache)}
+            command = [str(lake), 'build', '--rehash', 'Fixture', '-o', 'outputs.jsonl']
+            def build():
+                return subprocess.run(command, cwd=root, env=env, capture_output=True,
+                                      text=True, timeout=30)
+            first = build()
+            self.assertEqual(first.returncode, 0, first.stdout + first.stderr)
+            olean = root / '.lake/build/lib/lean/Fixture.olean'
+            original = (olean.read_bytes(), olean.stat().st_ino, olean.stat().st_mtime_ns)
+            mappings = {p.relative_to(cache): p.read_bytes()
+                        for p in (cache / 'outputs').rglob('*') if p.is_file()}
+            self.assertEqual(self.cleanup(root).returncode, 0)
+            archive = root / '.lake/build/ir/Fixture.ltar'
+            sidecar = archive.with_suffix('.ltar.hash')
+            archive.unlink()
+            sidecar.chmod(0o444)  # Simulates read-only metadata restored after startup.
+            failed = build()
+            self.assertNotEqual(failed.returncode, 0)
+            failure_log = failed.stdout + failed.stderr
+            self.assertIn('Replaying Fixture', failure_log)
+            self.assertIn('leantar -s', failure_log)
+            self.assertIn('failed to cache artifact: permission denied', failure_log)
+            self.assertIn('Fixture.ltar.hash', failure_log)
+            self.assertEqual(self.cleanup(root).returncode, 0)
+            repaired = build()
+            self.assertEqual(repaired.returncode, 0, repaired.stdout + repaired.stderr)
+            self.assertEqual((olean.read_bytes(), olean.stat().st_ino, olean.stat().st_mtime_ns), original)
+            self.assertEqual({p.relative_to(cache): p.read_bytes()
+                              for p in (cache / 'outputs').rglob('*') if p.is_file()}, mappings)
+            self.assertNotIn('Built Fixture', repaired.stdout + repaired.stderr)
+
+    def test_symlink_ancestors_and_nonwritable_directories_fail_before_unlink(self):
+        for ancestor in ('.lake', '.lake/build', '.lake/build/ir'):
+            with self.subTest(ancestor=ancestor), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                external = root / 'external'
+                external.mkdir()
+                path = root / ancestor
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.symlink_to(external, target_is_directory=True)
+                result = self.cleanup(root)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn('Unsafe restored build directory', result.stderr)
+                self.assertEqual(list(external.iterdir()), [])
+        with tempfile.TemporaryDirectory() as directory:
+            ir = Path(directory) / '.lake/build/ir/Aglib'
+            ir.mkdir(parents=True)
+            sidecar = ir / 'ToUnit.ltar.hash'
+            sidecar.write_text('0123456789abcdef')
+            sidecar.chmod(0o444)
+            ir.chmod(0o555)
+            try:
+                result = self.cleanup(directory)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn('Unsafe restored build directory', result.stderr)
+                self.assertTrue(sidecar.exists())
+            finally:
+                ir.chmod(0o755)
 
 
 class BuildJobBudget(unittest.TestCase):
@@ -328,7 +504,7 @@ timeout() {
     def test_partial_cache_save_precedes_staging_and_new_attempt_can_restore_it(self):
         actions = JOBS['build']['steps']
         save = step('build', 'Save compilation independently of Test and lint')
-        self.assertTrue(condition(save['if'], {}, success=False))
+        self.assertTrue(condition(save['if'], {'steps.quiesce.outcome': 'success'}, success=False))
         self.assertEqual(save['with']['path'].splitlines(),
                          ['${{ inputs.package-directory }}/.lake', '${{ runner.temp }}/lake-native-cache'])
         self.assertLess(actions.index(step('build', 'Build')), actions.index(save))
@@ -498,7 +674,9 @@ os.execv(args[index],args[index:])
                     result = subprocess.run(runner_arguments(shell.format(script)), cwd=root,
                         env={**os.environ, 'PATH': str(binary) + ':' + os.environ['PATH'],
                              'FIXTURE_PAGES': str(memory * 256), 'STATUS': str(status),
-                             'TRACE': str(root / 'trace'), 'VISIBLE_INPUT': 'retained'},
+                             'TRACE': str(root / 'trace'), 'VISIBLE_INPUT': 'retained',
+                             'RUNNER_TEMP': str(root), 'GITHUB_RUN_ID': '123',
+                             'GITHUB_RUN_ATTEMPT': '2', 'GITHUB_JOB': 'build'},
                         text=True, capture_output=True)
                     self.assertEqual(result.returncode, status, result.stderr)
                     args = json.loads((root / 'trace').read_text())
@@ -507,6 +685,10 @@ os.execv(args[index],args[index:])
                     self.assertIn('--gid=' + str(os.getgid()), args)
                     self.assertIn(f'--property=MemoryMax={expected}M', args)
                     self.assertIn('--property=MemorySwapMax=0', args)
+                    unit = 'lean-ci-123-2-build-' + hashlib.sha256(str(script).encode()).hexdigest()[:20] + '.scope'
+                    self.assertIn('--unit=' + unit, args)
+                    marker = root / 'lean-ci-scopes/123-2-build' / unit
+                    self.assertEqual(marker.read_text().strip(), unit)
 
     def test_each_library_keeps_native_weak_resource_arguments(self):
         for name, threads in (('aglib', 4), ('quillen-k-theory', 4), ('motivic', 4)):
@@ -515,6 +697,127 @@ os.execv(args[index],args[index:])
                 continue
             config = tomllib.loads((root / 'lakefile.toml').read_text())
             self.assertEqual(config['weakLeanArgs'], ['-M12800', f'-j{threads}'])
+
+
+class NativeScopeQuiescence(unittest.TestCase):
+    name = "Quiesce this job's native scopes before cache saving"
+
+    def test_cancellation_quiesces_before_save_and_failed_quiescence_blocks_cache_readers(self):
+        for job, save in (('build', 'Save compilation independently of Test and lint'),
+                          ('test_lint', 'Save completed Test compilation')):
+            actions = JOBS[job]['steps']
+            cleanup = step(job, self.name)
+            self.assertEqual(cleanup['shell'], 'bash')  # Outside the scopes it stops.
+            self.assertFalse(cleanup.get('continue-on-error', False))
+            self.assertTrue(condition(cleanup['if'], {}, success=False, cancelled=True))
+            self.assertLess(actions.index(cleanup), actions.index(step(job, save)))
+            for outcome in ('success', 'failure', 'skipped', 'cancelled'):
+                values = {'steps.quiesce.outcome': outcome, 'steps.build.outcome': 'failure'}
+                self.assertEqual(condition(step(job, save)['if'], values,
+                                           success=False, cancelled=True), outcome == 'success')
+                if job == 'build':
+                    self.assertEqual(condition(step(job, 'Stage completed native outputs')['if'],
+                                               values, success=False), outcome == 'success')
+
+    def run_cleanup(self, root, *, failed=False, collected_during_stop=False):
+        binary = root / 'bin'; binary.mkdir(exist_ok=True)
+        (binary / 'sudo').write_text('#!/bin/sh\nexec "$@"\n')
+        (binary / 'systemctl').write_text(f'#!{sys.executable}\n' + r'''
+import json,os,signal,sys,time
+from pathlib import Path
+root=Path(os.environ['FIXTURE_ROOT']); args=sys.argv[1:]
+with (root/'calls').open('a') as stream: stream.write(json.dumps(args)+'\n')
+if os.environ.get('FIXTURE_FAIL') == '1': sys.exit(7)
+units=json.loads((root/'units.json').read_text()); unit=args[-1]; data=units.get(unit)
+if (root/'collected').exists(): data=None
+if args[0]=='show':
+    if '--property=LoadState' in args: print('loaded' if data else 'not-found')
+    else: print('inactive' if not data or Path(data['stopped']).exists() else 'active')
+elif args[0]=='stop':
+    if os.environ.get('FIXTURE_COLLECTED') == '1':
+        (root/'collected').touch(); sys.exit(5)
+    assert data, 'must not stop an unknown or unrecorded unit'
+    os.kill(data['pid'],signal.SIGTERM)
+    until=time.monotonic()+2
+    while not Path(data['stopped']).exists():
+        if time.monotonic()>until: sys.exit(8)
+        time.sleep(.01)
+else: sys.exit(9)
+''')
+        for file in binary.iterdir(): file.chmod(0o755)
+        return subprocess.run(['bash', '-eo', 'pipefail', '-c', step('build', self.name)['run']],
+                              env={**os.environ, 'PATH': str(binary) + ':' + os.environ['PATH'],
+                                   'RUNNER_TEMP': str(root), 'GITHUB_RUN_ID': '123',
+                                   'GITHUB_RUN_ATTEMPT': '2', 'GITHUB_JOB': 'build',
+                                   'FIXTURE_ROOT': str(root), 'FIXTURE_FAIL': '1' if failed else '0',
+                                   'FIXTURE_COLLECTED': '1' if collected_during_stop else '0'},
+                              text=True, capture_output=True, timeout=5)
+
+    def test_live_owned_cache_writer_stops_and_other_job_keeps_running(self):
+        with tempfile.TemporaryDirectory(prefix='ci-scope-writer-') as directory:
+            root = Path(directory)
+            writer = ('import signal,sys,time\nfrom pathlib import Path\n'
+                      'output,stopped=map(Path,sys.argv[1:])\n'
+                      'def finish(*_):\n stopped.write_text("stopped"); sys.exit(0)\n'
+                      'signal.signal(signal.SIGTERM,finish)\n'
+                      'while True:\n output.write_text(str(time.monotonic())); time.sleep(.01)\n')
+            owned = subprocess.Popen([sys.executable, '-c', writer, str(root/'owned-output'), str(root/'owned-stopped')])
+            foreign = subprocess.Popen([sys.executable, '-c', writer, str(root/'foreign-output'), str(root/'foreign-stopped')])
+            try:
+                until = time.monotonic() + 2
+                while not all((root/name).exists() for name in ('owned-output', 'foreign-output')):
+                    self.assertLess(time.monotonic(), until)
+                    time.sleep(.01)
+                unit = 'lean-ci-123-2-build-owned.scope'
+                markers = root / 'lean-ci-scopes/123-2-build'; markers.mkdir(parents=True)
+                (markers / unit).write_text(unit + '\n')
+                gone = 'lean-ci-123-2-build-already-collected.scope'
+                (markers / gone).write_text(gone + '\n')
+                other = root / 'lean-ci-scopes/999-1-test'; other.mkdir()
+                foreign_unit = 'lean-ci-999-1-test-foreign.scope'
+                (other/foreign_unit).write_text(foreign_unit+'\n')
+                (root/'units.json').write_text(json.dumps({
+                    unit: {'pid': owned.pid, 'stopped': str(root/'owned-stopped')},
+                    foreign_unit: {'pid': foreign.pid, 'stopped': str(root/'foreign-stopped')}}))
+                result = self.run_cleanup(root)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertEqual(owned.wait(timeout=2), 0)
+                completed = (root/'owned-output').read_bytes()
+                time.sleep(.05)
+                self.assertEqual((root/'owned-output').read_bytes(), completed)
+                self.assertIsNone(foreign.poll())
+                self.assertFalse((root/'foreign-stopped').exists())
+                calls = [json.loads(line) for line in (root/'calls').read_text().splitlines()]
+                self.assertEqual([c[-1] for c in calls if c[0]=='stop'], [unit])
+                self.assertNotIn(foreign_unit, [c[-1] for c in calls])
+            finally:
+                for process in (owned, foreign):
+                    if process.poll() is None: process.terminate()
+                    process.wait(timeout=2)
+
+    def test_unexpected_marker_and_systemctl_failure_are_not_masked(self):
+        for invalid, failed in ((True, False), (False, True)):
+            with self.subTest(invalid=invalid), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                markers = root/'lean-ci-scopes/123-2-build'; markers.mkdir(parents=True)
+                unit = 'foreign.scope' if invalid else 'lean-ci-123-2-build-owned.scope'
+                (markers/unit).write_text(unit+'\n')
+                (root/'units.json').write_text('{}')
+                result = self.run_cleanup(root, failed=failed)
+                self.assertNotEqual(result.returncode, 0)
+                calls = (root/'calls').read_text() if (root/'calls').exists() else ''
+                self.assertNotIn('"stop"', calls)
+
+    def test_scope_collected_between_query_and_stop_is_already_quiescent(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            markers = root/'lean-ci-scopes/123-2-build'; markers.mkdir(parents=True)
+            unit = 'lean-ci-123-2-build-finished.scope'
+            (markers/unit).write_text(unit+'\n')
+            (root/'units.json').write_text(json.dumps({unit: {'stopped': str(root/'finished')}}))
+            result = self.run_cleanup(root, collected_during_stop=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertTrue((root/'collected').exists())
 
 
 class CheckerBoundaryAndLintTimeout(unittest.TestCase):

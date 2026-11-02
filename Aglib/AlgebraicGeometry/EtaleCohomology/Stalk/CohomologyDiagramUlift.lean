@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ResizeCohomologyDiagram
+public import Aglib.Algebra.Category.Grp.Resize.Diagram
 public import Mathlib.Algebra.Category.Grp.Ulift
 
 /-! # Original cohomology diagrams in a common universe -/
@@ -21,19 +22,7 @@ def additiveDiagramResizeUliftIso
     [∀ i, Small.{r} (F.obj i)] :
     F ⋙ AddCommGrpCat.uliftFunctor.{r, e} ≅
       resizeAdditiveDiagram.{r} F ⋙ AddCommGrpCat.uliftFunctor.{e, r} :=
-  NatIso.ofComponents (fun i =>
-    (((AddEquiv.ulift : ULift.{r} (F.obj i) ≃+ F.obj i).trans
-      (Shrink.addEquiv : Shrink.{r} (F.obj i) ≃+ F.obj i).symm).trans
-      (AddEquiv.ulift : ULift.{e} (Shrink.{r} (F.obj i)) ≃+
-        Shrink.{r} (F.obj i)).symm).toAddCommGrpIso) (by
-    intro i j a
-    apply ConcreteCategory.ext_apply
-    intro x
-    apply ULift.ext
-    change Shrink.addEquiv.symm (F.map a x.down) =
-      Shrink.addEquiv.symm (F.map a
-        (Shrink.addEquiv (Shrink.addEquiv.symm x.down)))
-    rw [AddEquiv.apply_symm_apply])
+  CategoryTheory.additiveDiagramResizeUliftIso F
 
 /-- Transport an unresized comparison through reindexing in a common universe. -/
 def additiveReindexUliftIso
@@ -44,8 +33,7 @@ def additiveReindexUliftIso
       H ⋙ AddCommGrpCat.uliftFunctor.{e, r}) :
     F ⋙ AddCommGrpCat.uliftFunctor.{r, e} ≅
       (K ⋙ H) ⋙ AddCommGrpCat.uliftFunctor.{e, r} :=
-  Functor.isoWhiskerRight α _ ≪≫ Functor.associator K G _ ≪≫
-    Functor.isoWhiskerLeft K β ≪≫ (Functor.associator K H _).symm
+  CategoryTheory.additiveReindexUliftIso K F G H α β
 
 section NativeCohomology
 universe u w s t
