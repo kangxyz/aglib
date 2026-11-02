@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.AlgebraicGeometry.Curves.PointDivisor.Basic
 public import Aglib.AlgebraicGeometry.Curves.RiemannHurwitz.CanonicalDegree
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.Invertible
 public import Aglib.AlgebraicGeometry.Modules.Coherent.FinitePresentation
@@ -69,20 +70,6 @@ private theorem closedDVR (X : FScheme k) (hX : Properties X) [IsIntegral X.left
     simpa only [Category.id_comp] using hX.smooth
   let := h
   exact Scheme.smoothChart_closedPoint_dvr (𝟙 X.left) X.hom x.val x.property
-
-/-- The actual kernel ideal of the original rational point, with its proved
-Cartier rank-one property. -/
-def idealLineBundle (X : FScheme k) (hX : Properties X)
-    (p : Spec (.of k) ⟶ X.left) (hp : p ≫ X.hom = 𝟙 _) : LineBundle X.left := by
-  let := hX.smooth
-  let := hX.proper
-  exact ⟨Scheme.Hom.idealModule p,
-    Scheme.Hom.sectionIdeal_isLocallyRankOne Scheme.Hom.smoothRelativeDivisorIdeal X.hom p hp⟩
-
-/-- The original positive point module O(p), namely the actual dual ideal. -/
-def positiveLineBundle (X : FScheme k) (hX : Properties X)
-    (p : Spec (.of k) ⟶ X.left) (hp : p ≫ X.hom = 𝟙 _) : LineBundle X.left :=
-  dualLineBundle X.left (idealLineBundle X hX p hp)
 
 /-- The native tensor-power model of O(np), including its canonical zero power. -/
 def poleLineBundle (X : FScheme k) (hX : Properties X)

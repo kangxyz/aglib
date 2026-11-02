@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Cohomology.MayerVietoris.Geometric
 public import Aglib.Topology.Sheaves.FreeAbelianPullback.Composition
+public import Aglib.Topology.Sheaves.Cohomology.OpenTransfer.CompositionSquare
 
 /-! # Composition of the original geometric open-cohomology maps
 
@@ -49,56 +50,40 @@ theorem zariskiCohomologyOpenMap_app_apply
         (x.mapExactFunctor (zariskiPullback p)) (Nat.zero_add n)).comp
           (Ext.mk₀ a) (Nat.add_zero n) := rfl
 
-/-- Successive original geometric maps on an open are the original composite map,
-with the actual inverse-image composite coefficient. -/
-theorem zariskiCohomologyOpenMap_comp_app
+/-- The complete native composition triangle, with its original three maps
+and canonical composite coefficient, viewed as a square with an identity edge. -/
+abbrev zariskiCohomologyCompositionSquare
     (A : Sheaf (Opens.grothendieckTopology X) AddCommGrpCat.{u})
     (B : Sheaf (Opens.grothendieckTopology Y) AddCommGrpCat.{u})
     (C : Sheaf (Opens.grothendieckTopology Z) AddCommGrpCat.{u})
     (a : (zariskiPullback p).obj A ⟶ B)
-    (b : (zariskiPullback q).obj B ⟶ C) (n : ℕ) (U : X.Opensᵒᵖ) :
-    (zariskiCohomologyOpenMap p A B a n).app U ≫
-        (zariskiCohomologyOpenMap q B C b n).app ((Opens.map p.base).op.obj U) =
-      (zariskiCohomologyOpenMap (q ≫ p) A C
-        ((zariskiPullbackCompIso p q).inv.app A ≫ (zariskiPullback q).map a ≫ b) n).app U := by
-  ext x
-  change Ext.{u + 1} ((additiveOpenFreeFunctor X).obj U.unop) A n at x
-  change (zariskiCohomologyOpenMap q B C b n).app ((Opens.map p.base).op.obj U)
-      ((zariskiCohomologyOpenMap p A B a n).app U x) = _
-  erw [zariskiCohomologyOpenMap_app_apply, zariskiCohomologyOpenMap_app_apply,
-    zariskiCohomologyOpenMap_app_apply]
-  change (_ : Ext.{u + 1}
-    ((additiveOpenFreeFunctor Z).obj (q ⁻¹ᵁ (p ⁻¹ᵁ U.unop))) C n) = _
-  rw [Ext.mapExactFunctor_comp, Ext.mapExactFunctor_comp,
-    Ext.mapExactFunctor_mk₀, Ext.mapExactFunctor_mk₀]
-  rw [← Ext.comp_assoc_of_third_deg_zero, ← Ext.comp_assoc_of_second_deg_zero,
-    Ext.mk₀_comp_mk₀]
-  have h := TopCat.Sheaf.openFreeAbelianPullbackIso_comp_inv p.base q.base U.unop
-  change (additiveOpenPullbackIso q).inv.app (p ⁻¹ᵁ U.unop) ≫
-      (zariskiPullback q).map ((additiveOpenPullbackIso p).inv.app U.unop) =
-    (additiveOpenPullbackIso (q ≫ p)).inv.app U.unop ≫
-      (zariskiPullbackCompIso p q).inv.app ((additiveOpenFreeFunctor X).obj U.unop) at h
-  erw [h, ← Ext.mk₀_comp_mk₀, ← Ext.comp_mapExactFunctor]
-  erw [Ext.comp_assoc_of_second_deg_zero
-    (Ext.mk₀ ((additiveOpenPullbackIso (q ≫ p)).inv.app U.unop))
-    (Ext.mk₀ ((zariskiPullbackCompIso p q).inv.app ((additiveOpenFreeFunctor X).obj U.unop)))
-    (x.mapExactFunctor (zariskiPullback p ⋙ zariskiPullback q)) (Nat.zero_add n)]
-  erw [← Ext.mapExactFunctor_comp_mk₀_natTransApp x (zariskiPullbackCompIso p q).inv]
-  simp only [Ext.comp_assoc_of_third_deg_zero, Ext.mk₀_comp_mk₀, Category.assoc]
+    (b : (zariskiPullback q).obj B ⟶ C) (n : ℕ) :=
+  TopCat.Sheaf.openCohomologyCompositionSquare.{u, u + 1} p.base q.base a b n
 
-/-- The original geometric open-cohomology transformation respects composition. -/
+/-- The original geometric open-cohomology transformation respects composition.
+The displayed projections are the same original three native maps. -/
 theorem zariskiCohomologyOpenMap_comp
     (A : Sheaf (Opens.grothendieckTopology X) AddCommGrpCat.{u})
     (B : Sheaf (Opens.grothendieckTopology Y) AddCommGrpCat.{u})
     (C : Sheaf (Opens.grothendieckTopology Z) AddCommGrpCat.{u})
     (a : (zariskiPullback p).obj A ⟶ B)
     (b : (zariskiPullback q).obj B ⟶ C) (n : ℕ) :
-    zariskiCohomologyOpenMap p A B a n ≫
-        Functor.whiskerLeft (Opens.map p.base).op (zariskiCohomologyOpenMap q B C b n) =
-      zariskiCohomologyOpenMap (q ≫ p) A C
-        ((zariskiPullbackCompIso p q).inv.app A ≫ (zariskiPullback q).map a ≫ b) n := by
-  apply NatTrans.ext
-  funext U
-  exact zariskiCohomologyOpenMap_comp_app p q A B C a b n U
+    (zariskiCohomologyCompositionSquare p q A B C a b n).f₁₂ ≫
+        (zariskiCohomologyCompositionSquare p q A B C a b n).f₂₄ =
+      (zariskiCohomologyCompositionSquare p q A B C a b n).f₁₃ :=
+  TopCat.Sheaf.openCohomologyCompositionSquare_comp.{u, u + 1} p.base q.base a b n
+
+/-- Successive original geometric maps on an open are the original composite map,
+with its actual inverse-image composite coefficient. -/
+theorem zariskiCohomologyOpenMap_comp_app
+    (A : Sheaf (Opens.grothendieckTopology X) AddCommGrpCat.{u})
+    (B : Sheaf (Opens.grothendieckTopology Y) AddCommGrpCat.{u})
+    (C : Sheaf (Opens.grothendieckTopology Z) AddCommGrpCat.{u})
+    (a : (zariskiPullback p).obj A ⟶ B)
+    (b : (zariskiPullback q).obj B ⟶ C) (n : ℕ) (U : X.Opensᵒᵖ) :
+    (zariskiCohomologyCompositionSquare p q A B C a b n).f₁₂.app U ≫
+        (zariskiCohomologyCompositionSquare p q A B C a b n).f₂₄.app U =
+      (zariskiCohomologyCompositionSquare p q A B C a b n).f₁₃.app U :=
+  TopCat.Sheaf.openCohomologyCompositionSquare_comp_app.{u, u + 1} p.base q.base a b n U
 
 end AlgebraicGeometry.Scheme.Cohomology

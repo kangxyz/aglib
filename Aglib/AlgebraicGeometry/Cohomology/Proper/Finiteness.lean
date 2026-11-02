@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.Chow
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.SupportInduction
-public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology
+public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.SeparatedCohomology
 public import Mathlib.Topology.NoetherianSpace
 
 /-!
@@ -158,7 +158,7 @@ theorem moduleCohomology_finite_of_proper
   let : Module.Finite R
       (moduleSpecΓFunctor.obj (((pushforward f).rightDerived q).obj M)) :=
     ((affineLocallyFiniteType_spec_iff (.of R) _).mp hN).2
-  exact Module.Finite.equiv (moduleHigherDirectImageAffineSectionsLinearEquiv f M
+  exact Module.Finite.equiv (moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated f M
     (injectiveResolution M) q)
 
 end AlgebraicGeometry.Scheme.Cohomology

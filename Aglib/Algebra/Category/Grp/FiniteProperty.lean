@@ -13,7 +13,7 @@ public import Mathlib.CategoryTheory.ObjectProperty.FiniteProducts
 public import Mathlib.GroupTheory.FiniteAbelian.Basic
 public import Mathlib.GroupTheory.SpecificGroups.Cyclic
 
-/-! # Extension-stable properties of original finite abelian groups
+/-! # Finite-product-stable properties of original finite abelian groups
 
 The native finite cyclic decomposition and its actual projections bound every
 factor by the given annihilator. Only finite underlying abelian groups occur.
@@ -28,22 +28,18 @@ universe u
 
 namespace AddCommGrpCat
 
-variable (P : ObjectProperty AddCommGrpCat.{u})
-  [P.ContainsZero] [P.IsClosedUnderIsomorphisms] [P.IsClosedUnderExtensions]
+section FiniteProducts
 
-/-- A native finite cyclic decomposition transports an extension-stable
+variable (P : ObjectProperty AddCommGrpCat.{u})
+  [P.IsClosedUnderIsomorphisms] [P.IsClosedUnderFiniteProducts]
+
+/-- A native finite cyclic decomposition transports a finite-product-stable
 property back to the original group through the actual finite product. -/
-theorem prop_of_zmod_directSum_equiv {A : Type u} [AddCommGroup A]
+theorem prop_of_zmod_directSum_equiv_of_finiteProducts {A : Type u} [AddCommGroup A]
     {ι : Type} [Finite ι] (m : ι → ℕ) (e : A ≃+ ⨁ i, ZMod (m i))
     (h : ∀ i, P (of (ULift.{u} (ZMod (m i))))) : P (of A) := by
   classical
   let : Fintype ι := Fintype.ofFinite ι
-  let : P.IsClosedUnderBinaryProducts :=
-    ObjectProperty.IsClosedUnderLimitsOfShape.mk' (by
-      rintro _ ⟨F, hF⟩
-      exact P.prop_of_iso (HasLimit.isoOfNatIso (diagramIsoPair F)).symm
-        (P.prop_of_iso (biprod.isoProd _ _) (P.prop_biprod (hF _) (hF _))))
-  let : P.IsClosedUnderFiniteProducts := ObjectProperty.IsClosedUnderFiniteProducts.mk'
   let B : ι → AddCommGrpCat.{u} := fun i => of (ULift.{u} (ZMod (m i)))
   have hB : P (⨁ B) := P.prop_of_isLimit_fan (biproduct.isLimit B) h
   have hPi : P (of (∀ i, B i)) := P.prop_of_iso (biproductIsoPi B) hB
@@ -53,15 +49,15 @@ theorem prop_of_zmod_directSum_equiv {A : Type u} [AddCommGroup A]
   exact P.prop_of_iso ePi.toAddCommGrpIso.symm hPi
 
 /-- Positive cyclic divisors of the original annihilator suffice for any
-zero-, isomorphism- and extension-stable property of finite abelian groups. -/
-theorem prop_of_finite_of_cyclic_divisors (N : ℕ)
+isomorphism- and finite-product-stable property of finite abelian groups. -/
+theorem prop_of_finite_of_cyclic_divisors_of_finiteProducts (N : ℕ)
     (h : ∀ m : ℕ, 0 < m → m ∣ N → P (of (ULift.{u} (ZMod m))))
     (A : Type u) [AddCommGroup A] [Finite A] (hN : ∀ a : A, N • a = 0) :
     P (of A) := by
   classical
   obtain ⟨ι, hι, p, hp, r, ⟨e⟩⟩ := AddCommGroup.equiv_directSum_zmod_of_finite A
   let := hι
-  apply prop_of_zmod_directSum_equiv P (fun i => p i ^ r i) e
+  apply prop_of_zmod_directSum_equiv_of_finiteProducts P (fun i => p i ^ r i) e
   intro i
   have hs : Function.Surjective
       ((DFinsupp.evalAddMonoidHom i).comp e.toAddMonoidHom) := by
@@ -76,5 +72,36 @@ theorem prop_of_finite_of_cyclic_divisors (N : ℕ)
     rw [← ZMod.exponent (p i ^ r i)]
     exact (AddMonoidHom.exponent_dvd hs).trans he
   exact h (p i ^ r i) (pow_pos (hp i).pos _) hd
+
+
+end FiniteProducts
+
+variable (P : ObjectProperty AddCommGrpCat.{u})
+  [P.ContainsZero] [P.IsClosedUnderIsomorphisms] [P.IsClosedUnderExtensions]
+
+private theorem finiteProducts_of_extensions : P.IsClosedUnderFiniteProducts := by
+  let : P.IsClosedUnderBinaryProducts :=
+    ObjectProperty.IsClosedUnderLimitsOfShape.mk' (by
+      rintro _ ⟨F, hF⟩
+      exact P.prop_of_iso (HasLimit.isoOfNatIso (diagramIsoPair F)).symm
+        (P.prop_of_iso (biprod.isoProd _ _) (P.prop_biprod (hF _) (hF _))))
+  exact ObjectProperty.IsClosedUnderFiniteProducts.mk'
+
+/-- Backwards-compatible extension-stable interface, using the same actual
+finite cyclic decomposition and finite-product construction. -/
+theorem prop_of_zmod_directSum_equiv
+    {A : Type u} [AddCommGroup A] {ι : Type} [Finite ι]
+    (m : ι → ℕ) (e : A ≃+ ⨁ i, ZMod (m i))
+    (h : ∀ i, P (of (ULift.{u} (ZMod (m i))))) : P (of A) := by
+  let : P.IsClosedUnderFiniteProducts := finiteProducts_of_extensions P
+  exact prop_of_zmod_directSum_equiv_of_finiteProducts P m e h
+
+/-- Backwards-compatible extension-stable annihilator interface. -/
+theorem prop_of_finite_of_cyclic_divisors
+    (N : ℕ) (h : ∀ m : ℕ, 0 < m → m ∣ N → P (of (ULift.{u} (ZMod m))))
+    (A : Type u) [AddCommGroup A] [Finite A] (hN : ∀ a : A, N • a = 0) :
+    P (of A) := by
+  let : P.IsClosedUnderFiniteProducts := finiteProducts_of_extensions P
+  exact prop_of_finite_of_cyclic_divisors_of_finiteProducts P N h A hN
 
 end AddCommGrpCat

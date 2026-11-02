@@ -22,12 +22,14 @@ public import Mathlib.RingTheory.Flat.FaithfullyFlat.Basic
 public import Mathlib.RingTheory.LocalProperties.Submodule
 public import Mathlib.RingTheory.Localization.BaseChange
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Modules.Isomorphism
+public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Modules.Isomorphism.Concentration
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Proper.Grauert
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.FinitePresentation
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.Cartesian
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.Charts
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.ChartCover
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.Composition
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.OrdinaryAffine.Charts
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.OpenImmersion.Pullback
 public import Aglib.AlgebraicGeometry.Modules.Locality.Exactness
 public import Aglib.AlgebraicGeometry.Modules.Flat.Relative.Coproduct
@@ -396,26 +398,7 @@ theorem FibreCohomologyConcentrated.pullback
       (Scheme.Modules.pullbackCongr (pullbackLeftPullbackSndIso_hom_fst f g t)).app M ≪≫
         ((Scheme.Modules.pullbackComp a c).app M).symm
   have hw : e.hom ≫ b = d := pullbackLeftPullbackSndIso_hom_snd f g t
-  let α := b.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of K)).inv.hom
-  let β := d.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of K)).inv.hom
-  have hα : e.hom.appTop.hom.comp α = β.comp (RingHom.id K) := by
-    dsimp only [α, β]
-    rw [← hw, Scheme.Hom.comp_appTop]
-    rfl
-  let (q : ℕ) : Module K (Sheaf.H.{u + 1} (moduleAddSheaf _ P) q) :=
-    moduleCohomologyModuleOfHom _ α P q
-  let (q : ℕ) : Module K (Sheaf.H.{u + 1} (moduleAddSheaf _ N) q) :=
-    moduleCohomologyModuleOfHom _ β N q
-  let E (q : ℕ) := moduleCohomologyRestrictionIsoOfPullbackIso e.hom
-    (RingHom.id K) α β hα P C q ≪≫
-      ModuleCat.restrictScalarsId'App (RingHom.id K) rfl _
-  have hr := (hM K (t ≫ g)).1
-  refine ⟨?_, ?_⟩
-  · exact (E 0).toLinearEquiv.finrank_eq.symm.trans hr
-  · intro q hq
-    let : Subsingleton (Sheaf.H.{u + 1} (moduleAddSheaf _ P) q) :=
-      (hM K (t ≫ g)).2 q hq
-    exact (E q).symm.toLinearEquiv.injective.subsingleton
+  exact moduleCohomology_concentration_of_isIso e.hom b d hw P C r (hM K (t ≫ g))
 
 end AlgebraicGeometry.Scheme.Cohomology
 
@@ -514,70 +497,18 @@ theorem moduleBaseChangeMap_isIso_of_affine_cohomology_zero
       IsIso (moduleCohomologyBaseChangeMap (Limits.pullback.snd f C.source) C.scalar.hom
         ((pullback (Limits.pullback.fst f C.source)).obj M) 0)) :
     IsIso (moduleBaseChangeMap f g M) := by
-  rw [moduleBaseChangeMap_eq_cartesianBaseChangeMap]
+  apply moduleBaseChangeMap_isIso_of_affine_chart_mates f g M
+  intro C
   let a := Limits.pullback.fst f g
   let b := Limits.pullback.snd f g
   let h := IsPullback.of_hasPullback f g
-  let : QuasiCompact b := MorphismProperty.of_isPullback h inferInstance
-  let : QuasiSeparated b := MorphismProperty.of_isPullback h inferInstance
-  change IsIso ((cartesianBaseChangeMap a b f g h).app M)
-  apply isIso_of_restrict_openCover
-    (fun C : Nonflat.AffineBaseChangeChart g => Spec C.targetRing)
-    (fun C => C.target) (Nonflat.affineBaseChangeCharts_cover g)
-  intro C
-  let j := C.source
-  let v := C.target
-  let s := Spec.map C.scalar
-  let aU := Limits.pullback.fst f j
-  let bU := Limits.pullback.snd f j
-  let hU := IsPullback.of_hasPullback f j
-  let c := Limits.pullback.fst b v
-  let d := Limits.pullback.snd b v
-  let hV := IsPullback.of_hasPullback b v
-  let e := Nonflat.chartUpper a b f g h j v C.scalar C.comm
-  have he : e ≫ aU = c ≫ a := Nonflat.chartUpper_fst a b f g h j v C.scalar C.comm
-  have hlocal : IsPullback e d bU s :=
-    Nonflat.chartUpper_isPullback a b f g h j v C.scalar C.comm
-  let Hlocal := hlocal.paste_horiz hU
-  let H := hV.paste_horiz h
-  let N := (pullback aU).obj M
-  let : N.IsQuasicoherent := quasicoherent_pullback aU M
-  let : IsIso ((cartesianBaseChangeMap aU bU f j hU).app M) :=
-    isIso_cartesianBaseChangeMap_of_isOpenImmersion aU bU f j hU M
-  let : IsIso ((cartesianBaseChangeMap e d bU s hlocal).app N) :=
-    cartesianBaseChangeMap_isIso_of_scalar_cohomology_zero e d bU C.scalar.hom hlocal N (hβ C)
-  have hcomp := cartesianBaseChangeMap_comp aU bU f j hU e d s hlocal Hlocal M
-  have houter : IsIso ((cartesianBaseChangeMap (e ≫ aU) d f (s ≫ j) Hlocal).app M) := by
-    have : IsIso ((pullbackComp s j).hom.app ((pushforward f).obj M) ≫
-        (cartesianBaseChangeMap (e ≫ aU) d f (s ≫ j) Hlocal).app M) := by
-      rw [hcomp]
-      infer_instance
-    exact IsIso.of_isIso_comp_left ((pullbackComp s j).hom.app ((pushforward f).obj M)) _
-  have htransport (a₁ a₂ : Limits.pullback b v ⟶ X) (g₁ g₂ : Spec C.targetRing ⟶ S)
-      (ha : a₁ = a₂) (hg : g₁ = g₂)
-      (H₁ : IsPullback a₁ d f g₁) (H₂ : IsPullback a₂ d f g₂) :
-      IsIso ((cartesianBaseChangeMap a₁ d f g₁ H₁).app M) ↔
-        IsIso ((cartesianBaseChangeMap a₂ d f g₂ H₂).app M) := by
-    subst a₂
-    subst g₂
-    rfl
-  have houter' : IsIso ((cartesianBaseChangeMap (c ≫ a) d f (v ≫ g) H).app M) :=
-    (htransport (e ≫ aU) (c ≫ a) (s ≫ j) (v ≫ g) he C.comm Hlocal H).mp houter
-  let : IsIso ((cartesianBaseChangeMap c d b v hV).app ((pullback a).obj M)) :=
-    isIso_cartesianBaseChangeMap_of_isOpenImmersion c d b v hV ((pullback a).obj M)
-  have hcomp' := cartesianBaseChangeMap_comp a b f g h c d v hV H M
-  have : IsIso ((pullback v).map ((cartesianBaseChangeMap a b f g h).app M) ≫
-      (cartesianBaseChangeMap c d b v hV).app ((pullback a).obj M) ≫
-      (pushforward d).map ((pullbackComp c a).hom.app M)) := by
-    rw [← hcomp']
-    infer_instance
-  have : IsIso ((pullback v).map ((cartesianBaseChangeMap a b f g h).app M) ≫
-      (cartesianBaseChangeMap c d b v hV).app ((pullback a).obj M)) :=
-    IsIso.of_isIso_comp_right _ ((pushforward d).map ((pullbackComp c a).hom.app M))
-  have hp : IsIso ((pullback v).map ((cartesianBaseChangeMap a b f g h).app M)) :=
-    IsIso.of_isIso_comp_right _ ((cartesianBaseChangeMap c d b v hV).app ((pullback a).obj M))
-  exact (NatIso.isIso_map_iff (restrictFunctorIsoPullback v)
-    ((cartesianBaseChangeMap a b f g h).app M)).mpr hp
+  let e := Nonflat.chartUpper a b f g h C.source C.target C.scalar C.comm
+  let d := Limits.pullback.snd b C.target
+  let bU := Limits.pullback.snd f C.source
+  let N := (pullback (Limits.pullback.fst f C.source)).obj M
+  let : N.IsQuasicoherent := quasicoherent_pullback _ M
+  exact cartesianBaseChangeMap_isIso_of_scalar_cohomology_zero e d bU C.scalar.hom
+    (Nonflat.chartUpper_isPullback a b f g h C.source C.target C.scalar C.comm) N (hβ C)
 
 /-- Proper geometric concentration over a locally Noetherian original base
 makes the original ordinary base-change mate invertible for every new scheme. -/

@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.FunctionField.GenericFiber
+public import Mathlib.AlgebraicGeometry.Morphisms.Finite
 
 /-! # Finite maps on the actual function fields
 

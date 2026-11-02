@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.FiberBaseChange
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Projection.Coherence
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Closed

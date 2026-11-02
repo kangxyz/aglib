@@ -1,0 +1,8 @@
+name: Save one complete native cache with a file cap
+description: Public pinned Actions cache SDK; Linux file-size limit on its sole compressed archive
+outputs:
+  cache-id:
+    description: Positive finalized cache service ID
+runs:
+  using: node24
+  main: index.mjs

@@ -99,7 +99,7 @@ across manifest changes. Legacy exact-manifest and OS/architecture prefixes
 also recover existing cache generations during the key-format migration.
 Restored files are candidates: the ordinary `lake build --rehash` evaluates
 current sources, imports, options and compiler identity before reusing outputs.
-Each run still saves an immutable cache generation. Test restores this run's
+Ordinary runs retain their normal immutable cache saves. Test restores this run's
 Build outputs and retains its existing checks. If the optional Actions restore
 misses or fails, Test restores Build's same-run native `artifacts/` and
 `outputs/` snapshot, then obtains pinned Mathlib artifacts before overlaying the
@@ -111,15 +111,22 @@ verification. The Mathlib command is shared with Build through a YAML alias.
 Quillen and Motivic pin this workflow independently of their mathematical
 dependencies.
 
-Before compilation, Build also imports published native caches for resolved
-`kangxyz/*` Git dependencies, including inherited ones. It prefers exact producer
-releases, then compatible recent seeds. Scoped assets carry producer identity
-and compiler metadata, and mappings are registered under the dependency's own
-Lake package name. Existing native release archives remain usable as legacy
-seeds. Producer SHA and configured pin stay distinct. The
-[workflow guide](../.github/LEAN_CI.md) owns the transport details. Partial progress
-is saved through Actions caches; public releases still require successful Build
-and Test. The cache transport adds no mathematical acceptance stage.
+Build and Test also import published native caches for their own root package
+and resolved `kangxyz/*` Git dependencies, including inherited dependencies.
+The existing release protocol prefers the requested producer, then compatible
+recent seeds. Root mappings use root `unstage`; dependency mappings retain their
+named package selectors. Actual producer and consumer revisions stay distinct;
+current Lake inputs decide reuse.
+
+Manual Aglib runs can select `native-root-producer`, `native-root-asset` and
+`native-root-sha256` with `native-cache-only=true`. This requires a warm native
+seed and matching root/test outputs; a miss fails without compilation. Configured
+checks stay unchanged. Strict mode suppresses Build's duplicate cache save and
+saves one complete Test cache only after all checks pass, under a 10 GB compressed
+file cap. Ordinary runs retain their incremental behavior. The
+[workflow guide](../.github/LEAN_CI.md#native-root-seeds-and-cache-only-runs)
+owns transport and save details. Cache transport adds no mathematical acceptance
+stage and does not itself prove runtime compatibility or delivery.
 
 The [legacy composite action](../.github/actions/lake-cache/action.yml) and its
 adjacent adapter below remain available for explicitly selected compatibility

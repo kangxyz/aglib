@@ -4,6 +4,16 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+    inputs:
+      native-root-producer:
+        type: string
+      native-root-asset:
+        type: string
+      native-root-sha256:
+        type: string
+      native-cache-only:
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -23,3 +33,7 @@ jobs:
     with:
       package-directory: .
       build-targets: Aglib
+      native-root-producer: ${{ inputs.native-root-producer || '' }}
+      native-root-asset: ${{ inputs.native-root-asset || '' }}
+      native-root-sha256: ${{ inputs.native-root-sha256 || '' }}
+      native-cache-only: ${{ inputs.native-cache-only || false }}

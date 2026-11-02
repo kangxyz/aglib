@@ -77,3 +77,4 @@ and Stalk/FlatDVRComponentKernel.lean. The flatness/nonzerodivisor proofs were
 supplied by the surface author in ScalarFlat.lean; checked there by
 scalar-check-04.json, then renamed to this native lower owner. Native package
 compilation is tracked separately. -/
+

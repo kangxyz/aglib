@@ -72,7 +72,7 @@ def runner_arguments(command):
 
 def condition(expression, values, *, success=True, cancelled=False):
     """Evaluate this workflow's conditions, including implicit success()."""
-    values = {'inputs.first-ci-cache': '', **values}
+    values = {'inputs.first-ci-cache': '', 'inputs.native-cache-only': False, **values}
     text = expression.removeprefix('${{').removesuffix('}}').strip()
     explicit_status = re.search(r'\b(always|cancelled|success|failure)\(', text)
     if not explicit_status and not success:
@@ -233,7 +233,8 @@ class WorkflowGates(unittest.TestCase):
                 self.assertEqual(selected, expected)
         for key in ('lean-Windows-X64-compiler-pins-old', 'lean-Linux-ARM64-compiler-pins-old'):
             self.assertFalse(any(key.startswith(prefix) for prefix in prefixes))
-        self.assertIn('lake build --rehash "${targets[@]}"', step('build', 'Build')['run'])
+        self.assertIn('lake build "${native_flags[@]}" --rehash "${targets[@]}"',
+                      step('build', 'Build')['run'])
 
     def test_native_checks_and_full_text_style_are_preserved(self):
         self.assertIn('mathlib/mk_all --lib "$root" --check',
@@ -242,8 +243,29 @@ class WorkflowGates(unittest.TestCase):
                       step('test_lint', 'Mathlib text style')['run'])
         self.assertIn('lake --no-build lint "${roots[@]}" -- --trace',
                       step('test_lint', 'Lint')['run'])
-        self.assertEqual(step('test_lint', 'Test')['run'], 'lake test')
+        for strict, expected in (('false', 'test'), ('true', '--no-build test')):
+            result = subprocess.run(['bash', '-e', '-c',
+                'lake() { printf "%s\\n" "$*"; }\n' + step('test_lint', 'Test')['run']],
+                env={**os.environ, 'NATIVE_CACHE_ONLY': strict}, text=True, capture_output=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout.strip(), expected)
         self.assertIn('--root "$root"', step('test_lint', 'Audit production axioms')['run'])
+
+    def test_strict_save_requires_all_checks_and_room_before_public_sdk(self):
+        room = step('test_lint', 'Admit one persistent updated main cache save')
+        good = {'inputs.native-cache-only': True, 'steps.quiesce.outcome': 'success',
+                **{f'steps.{name}.outcome': 'success' for name in
+                   ('compiled','tools','imports','style','test','lint','axioms')}}
+        self.assertTrue(condition(room['if'], good))
+        for field in (key for key in good if key.endswith('.outcome')):
+            for value in ('failure','skipped','cancelled'):
+                with self.subTest(field=field, value=value):
+                    self.assertFalse(condition(room['if'], {**good, field:value}))
+        strict = step('test_lint', 'Save one complete cache with enforced compressed-file cap')
+        self.assertFalse(condition(strict['if'], {'inputs.native-cache-only':True,
+            'steps.native-save-sdk-install.outcome':'skipped'}))
+        self.assertTrue(condition(strict['if'], {'inputs.native-cache-only':True,
+            'steps.native-save-sdk-install.outcome':'success'}))
 
 
 class RestoredArchiveHashMetadata(unittest.TestCase):
@@ -264,7 +286,7 @@ class RestoredArchiveHashMetadata(unittest.TestCase):
             self.assertEqual(cleanup['working-directory'], '${{ inputs.package-directory }}')
             self.assertLess(actions.index(restore), actions.index(cleanup))
             self.assertLess(actions.index(cleanup), actions.index(step(job, 'Configure Lean')))
-        self.assertIn('lake build --rehash', step('build', 'Build')['run'])
+        self.assertIn('lake build "${native_flags[@]}" --rehash', step('build', 'Build')['run'])
 
     def test_tar_restored_readonly_sidecar_is_regenerated_without_mutating_artifacts(self):
         with tempfile.TemporaryDirectory(prefix='restored-archive-hash-') as directory:
@@ -331,8 +353,15 @@ class RestoredArchiveHashMetadata(unittest.TestCase):
             cleanup = step(job, 'Refresh archive hash metadata after cache preparation')
             self.assertEqual(cleanup['run'], step(job, self.name)['run'])
             self.assertEqual(cleanup['working-directory'], '${{ inputs.package-directory }}')
-            self.assertEqual(actions[actions.index(cleanup) + 1]['name'], consumer)
-            preparation = ('Restore published native dependency caches' if job == 'build'
+            following = actions[actions.index(cleanup) + 1]
+            if job == 'build':
+                self.assertEqual(following['name'], 'Require delivered production and Test native outputs without compilation')
+                self.assertEqual(following['if'], '${{ inputs.native-cache-only }}')
+                self.assertIn('lake build --no-build --rehash', following['run'])
+                self.assertEqual(actions[actions.index(cleanup) + 2]['name'], consumer)
+            else:
+                self.assertEqual(following['name'], consumer)
+            preparation = ('Restore published native root and dependency caches' if job == 'build'
                            else "Restore this run's native Build outputs")
             self.assertLess(actions.index(step(job, preparation)), actions.index(cleanup))
         with tempfile.TemporaryDirectory(prefix='late-archive-hash-') as directory:
@@ -443,7 +472,7 @@ class BuildJobBudget(unittest.TestCase):
             'lake:build --rehash Aglib Quillen -o ./outputs.jsonl'])
         self.assertTrue(partial)
 
-    def run_build(self, *, deadline=20800, now=1000, compiler_status=0, timeout_status=0):
+    def run_build(self, *, deadline=20800, now=1000, compiler_status=0, timeout_status=0, strict=False):
         mock = r'''
 date() { printf '%s\n' "$FIXTURE_NOW"; }
 lake() {
@@ -469,9 +498,16 @@ timeout() {
                 cwd=root, env={**os.environ, 'BUILD_TARGETS': 'Aglib Quillen',
                                'BUILD_DEADLINE': str(deadline), 'FIXTURE_NOW': str(now),
                                'RUNNER_TEMP': '.', 'TRACE': str(trace), 'PARTIAL': str(root / 'completed'),
+                               'NATIVE_CACHE_ONLY': 'true' if strict else 'false',
                                'COMPILER_STATUS': str(compiler_status), 'TIMEOUT_STATUS': str(timeout_status)},
                 capture_output=True, text=True)
             return result, trace.read_text().splitlines() if trace.exists() else [], (root / 'completed').exists()
+
+    def test_strict_build_forbids_compilation_without_changing_roots_or_output_export(self):
+        result, calls, partial = self.run_build(strict=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(calls[-1], 'lake:build --no-build --rehash Aglib Quillen -o ./outputs.jsonl')
+        self.assertTrue(partial)
 
     def test_expired_budget_never_invokes_lake_or_timeout(self):
         for now in (20800, 20801):
@@ -845,6 +881,10 @@ class CheckerBoundaryAndLintTimeout(unittest.TestCase):
         self.assertNotIn('if', build)
         for item in JOBS['build']['steps']:
             command = item.get('run', '')
+            if item.get('name') == 'Require delivered production and Test native outputs without compilation':
+                self.assertEqual(item['if'], '${{ inputs.native-cache-only }}')
+                self.assertIn('lake build --no-build --rehash', command)
+                continue  # Strict availability probe; no checker compilation/check is added to Build.
             for forbidden in ('axiom-audit', 'batteries/runLinter', 'mathlib/lint-style',
                               'mathlib/mk_all', 'CHECK_TARGETS', 'steps.tools',
                               'steps.imports', 'steps.style'):
@@ -953,6 +993,8 @@ timeout() {
                     ] * attempts)
 
     def test_lint_helper_preserves_roots_panic_mode_and_status(self):
+        self.assertEqual(step('test_lint', 'Lint')['env'],
+                         {'CI_LINT_NO_BUILD':'${{ inputs.native-cache-only }}'})
         mock = r'''
 timeout() { shift 2; "$@"; }
 lake() { echo 'unexpected native fallback' >&2; return 99; }
@@ -1021,6 +1063,7 @@ class PublishedDependencyTransport(unittest.TestCase):
         return release
 
     def run_restore(self, *, offline=False):
+        (self.root / 'lakefile.toml').write_text('name = "FixtureRoot"\n')
         (self.root / 'lake-manifest.json').write_text(json.dumps({'packages': self.dependencies}))
         exact = next((r for r in self.releases if r['tag_name'] == 'lean-native-' + self.pin), None)
         (self.root / 'exact.json').write_text(json.dumps(exact))
@@ -1031,6 +1074,10 @@ gh() {
   printf 'gh:%s\n' "$*" >> "$TRACE"
   test "$OFFLINE" = 0 || return 1
   if test "$1" = api; then
+    if [[ "$2" == repos/fixture/root/* ]]; then
+      if [[ "$2" == */tags/* ]]; then printf 'null\n'; else printf '[]\n'; fi
+      return 0
+    fi
     if [[ "$2" == */tags/* ]]; then cat "$FIXTURE/exact.json";
     else cat "$FIXTURE/recent.json"; fi
   else
@@ -1041,9 +1088,12 @@ lake() { printf 'lake:%s\n' "$4" >> "$TRACE"; }
 """
         result = subprocess.run(
             ['bash', '-e', '-o', 'pipefail', '-c', mock + step(
-                'build', 'Restore published native dependency caches')['run']],
+                'build', 'Restore published native root and dependency caches')['run']],
             cwd=self.root, env={**os.environ, 'RUNNER_TEMP': str(self.root), 'RUNNER_OS': 'Linux',
                                'RUNNER_ARCH': 'X64', 'TRACE': str(self.root / 'trace'),
+                               'GITHUB_REPOSITORY': 'fixture/root', 'GITHUB_SHA': 'f' * 40,
+                               'NATIVE_CACHE_ONLY': 'false', 'ROOT_NATIVE_PRODUCER': '',
+                               'ROOT_NATIVE_ASSET': '', 'ROOT_NATIVE_SHA256': '',
                                'FIXTURE': str(self.root), 'OFFLINE': str(int(offline))},
             capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
@@ -1095,7 +1145,9 @@ lake() { printf 'lake:%s\n' "$4" >> "$TRACE"; }
         self.dependencies = [dict(self.dependencies[0], url='https://github.com/other/aglib.git'),
                              dict(self.dependencies[0], type='path')]
         _, trace = self.run_restore()
-        self.assertEqual(trace, [])
+        self.assertEqual(trace, [
+            'gh:api repos/fixture/root/releases/tags/lean-native-' + 'f' * 40,
+            'gh:api repos/fixture/root/releases?per_page=20'])
 
 
 class RootSelectionAndPublication(unittest.TestCase):

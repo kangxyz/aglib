@@ -15,7 +15,7 @@ public import Aglib.AlgebraicGeometry.Picard.Tangent.Points
 /-!
 # Lifting of points of a scheme representing the relative Picard functor
 
-Let `K` be a field, `q : Y ⟶ Spec K` a morphism and `P` a locally Noetherian `K`-scheme
+Let `K` be a commutative ring, `q : Y ⟶ Spec K` a morphism and `P` a locally Noetherian `K`-scheme
 representing the relative Picard functor `T ↦ Pic(Y_T) / Pic(T)` (`relativePicardFunctor q`,
 Kleiman, *The Picard scheme*, arXiv:math/0504020v1, Def. 2.2, p. 17) on locally Noetherian test
 schemes. If `Y` has an affine morphism to the projective line over some ring, then points of `P`
@@ -118,13 +118,13 @@ theorem familySpecOverMap_ker_sq (g : A' →ₐ[k] A) (hg : Function.Surjective 
 end FamilyMap
 
 /-- **Points of a scheme representing the relative Picard functor lift along Noetherian
-square-zero thickenings.** Let `K` be a field, `q : Y ⟶ Spec K`, and let `P` represent
+square-zero thickenings.** Let `K` be a commutative ring, `q : Y ⟶ Spec K`, and let `P` represent
 `T ↦ Pic(Y_T) / Pic(T)` on locally Noetherian test schemes over `Spec K`. If `Y` has an affine
 morphism `ρ` to the projective line over a ring `R₀`, then for every surjection `g : A' → A` of
 `K`-algebras with `A'` Noetherian and square-zero kernel, every `A`-point of `P` over `K` lifts
 to an `A'`-point. -/
 theorem liftsAlongNoetherianSquareZero_of_relativeRepresentableBy_of_isAffineHom_projectiveP1
-    {K : Type u} [Field K] {Y : Scheme.{u}} (q : Y ⟶ Spec (.of K))
+    {K : Type u} [CommRing K] {Y : Scheme.{u}} (q : Y ⟶ Spec (.of K))
     {P : LocallyNoetherianOver (Spec (.of K))}
     (R : ((locallyNoetherianOverInclusion (Spec (.of K))).op ⋙ relativePicardFunctor q ⋙
       CategoryTheory.forget AddCommGrpCat.{u + 1}).RepresentableBy P)
@@ -163,7 +163,7 @@ theorem liftsAlongNoetherianSquareZero_of_relativeRepresentableBy_of_isAffineHom
     exact Quotient.sound ⟨eM⟩
   have hf' : t ≫ f' = fa := by
     apply R.homEquiv.injective
-    rw [homEquiv_comp_apply R t f', hf'R, ← hc]
+    rw [R.homEquiv_comp t f', hf'R, ← hc]
     exact congrArg (QuotientAddGroup.mk (s := baseImage q (op (specOver K A)))) hcl
   exact ⟨f'.hom.left, Over.w f'.hom, congrArg (fun f => f.hom.left) hf'⟩
 

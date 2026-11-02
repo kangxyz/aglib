@@ -7,8 +7,8 @@ module
 
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.Affine
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Vanishing
-public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.QuasiCoherent
-public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology
+public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Restriction
+public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.SeparatedCohomology
 public import Aglib.AlgebraicGeometry.Modules.Support
 
 /-!
@@ -87,9 +87,10 @@ theorem projectiveProjection_higherDirectImage_isZero
     projectiveAffinePullbackCohomology_subsingleton_of_gt R ι
       (u ≫ a) v (j ≫ f) (H.paste_horiz h) n e N q hq
   let : Subsingleton (moduleSpecΓFunctor.obj G) :=
-    (moduleHigherDirectImageAffineSectionsLinearEquiv v N
+    (moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated v N
       (injectiveResolution N) q).injective.subsingleton
-  let : G.IsQuasicoherent := moduleHigherDirectImage_isQuasicoherent v N q
+  let : G.IsQuasicoherent :=
+    moduleHigherDirectImageAffine_isQuasicoherent_of_isSeparated v N q
   have hG : IsZero G :=
     ((tilde.functor A).map_isZero (ModuleCat.isZero_of_subsingleton
       (moduleSpecΓFunctor.obj G))).of_iso (asIso G.fromTildeΓ).symm

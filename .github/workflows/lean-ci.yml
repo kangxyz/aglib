@@ -16,6 +16,18 @@ on:
       first-ci-cache:
         type: string
         default: ''
+      native-root-producer:
+        type: string
+        default: ''
+      native-root-asset:
+        type: string
+        default: ''
+      native-root-sha256:
+        type: string
+        default: ''
+      native-cache-only:
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -25,6 +37,10 @@ env:
   LAKE_NO_CACHE: 'true'
   LAKE_ARTIFACT_CACHE: 'true'
   BUILD_TARGETS: ${{ inputs.build-targets }}
+  ROOT_NATIVE_PRODUCER: ${{ inputs.native-root-producer }}
+  ROOT_NATIVE_ASSET: ${{ inputs.native-root-asset }}
+  ROOT_NATIVE_SHA256: ${{ inputs.native-root-sha256 }}
+  NATIVE_CACHE_ONLY: ${{ inputs.native-cache-only }}
 
 # Keep compiler failures inside the scope so the runner can save partial caches.
 defaults:
@@ -76,7 +92,7 @@ jobs:
             ${{ inputs.package-directory }}/.lake
             ${{ runner.temp }}/lake-native-cache
           key: ${{ inputs.first-ci-cache != '' && steps.first-ci.outputs.seed-key || format('lean-{0}-{1}-{2}-{3}-{4}-{5}-{6}', runner.os, runner.arch, hashFiles(format('{0}/lean-toolchain', inputs.package-directory)), hashFiles(format('{0}/lake-manifest.json', inputs.package-directory)), github.sha, github.run_id, github.run_attempt) }}
-          fail-on-cache-miss: ${{ inputs.first-ci-cache != '' }}
+          fail-on-cache-miss: ${{ inputs.first-ci-cache != '' || inputs.native-cache-only }}
           # Prefer current pins, then the same Lean; retain existing cache generations as seeds.
           restore-keys: |
             ${{ inputs.first-ci-cache == '' && format('lean-{0}-{1}-{2}-{3}-', runner.os, runner.arch, hashFiles(format('{0}/lean-toolchain', inputs.package-directory)), hashFiles(format('{0}/lake-manifest.json', inputs.package-directory))) || '' }}
@@ -161,16 +177,21 @@ jobs:
         working-directory: ${{ inputs.package-directory }}
         run: bash .github/cache-promotion/ready.sh
       - name: Get Mathlib cache
+        if: ${{ !inputs.native-cache-only }}
         working-directory: ${{ inputs.package-directory }}
         run: &mathlib-cache-get lake exe cache get
-      - name: Restore published native dependency caches
+      - name: Restore published native root and dependency caches
         working-directory: ${{ inputs.package-directory }}
         env:
           GH_TOKEN: ${{ github.token }}
-        run: |
+        run: &restore-published-native-seeds |
+          if test "$NATIVE_CACHE_ONLY" = true; then
+            [[ "$ROOT_NATIVE_PRODUCER" =~ ^[0-9a-f]{40}$ && "$ROOT_NATIVE_SHA256" =~ ^[0-9a-f]{64}$ ]]
+            [[ "$ROOT_NATIVE_ASSET" =~ ^lake-native-cache-Linux-X64-[0-9a-f]{16}-[A-Za-z0-9_.+-]+[.]tar$ ]]
+          fi
           compiler=$(lean --version)
           domain="$RUNNER_OS-$RUNNER_ARCH-$(sha256sum lean-toolchain | cut -c 1-16)"
-          while IFS=$'\t' read -r package repository pin; do
+          while IFS=$'\t' read -r package repository pin scope; do
             exact=$(gh api "repos/$repository/releases/tags/lean-native-$pin" 2>/dev/null) || exact=null
             recent=$(gh api "repos/$repository/releases?per_page=20" 2>/dev/null) || recent='[]'
             candidates=$(printf '%s' "$recent" | jq -r --argjson exact "$exact" --arg domain "$domain" '
@@ -181,12 +202,27 @@ jobs:
               | select((.name | startswith("lake-native-cache-" + $domain + "-"))
                   or (.name | test("^lake-native-cache-[0-9]+-[0-9]+[.]tar$")))
               | [$tag, .name]][:5][] | @tsv') || candidates=''
+            if test "$scope" = root && test -n "$ROOT_NATIVE_ASSET"; then
+              candidates=$(printf '%s' "$exact" | jq -r --arg asset "$ROOT_NATIVE_ASSET" --arg pin "$pin" '
+                select(.draft == false and .target_commitish == $pin) | .tag_name as $tag
+                | .assets[] | select(.name == $asset) | [$tag,.name] | @tsv')
+            fi
             imported=false
             while IFS=$'\t' read -r tag asset; do
               test -n "$tag" || continue
               temporary=$(mktemp -d "$RUNNER_TEMP/native-seed.XXXXXX")
+              if test "$scope" = root && test "$NATIVE_CACHE_ONLY" = true; then
+                bytes=$(printf '%s' "$exact" | jq -er --arg asset "$asset" '.assets[] | select(.name == $asset) | .size')
+                python3 .github/cache-promotion/native-root-room.py download "$bytes"
+              fi
               if gh release download "$tag" --repo "$repository" --pattern "$asset" --dir "$temporary"; then
                 archive="$temporary/$asset"
+                if test "$scope" = root && test -n "$ROOT_NATIVE_SHA256"; then
+                  test "$(sha256sum "$archive" | cut -d' ' -f1)" = "$ROOT_NATIVE_SHA256"
+                fi
+                if test "$scope" = root && test "$NATIVE_CACHE_ONLY" = true; then
+                  python3 .github/cache-promotion/native-root-room.py extract "$archive"
+                fi
                 # Native staging contains flat regular files, never links or nested paths.
                 if tar -tvf "$archive" | awk 'substr($1,1,1)!="-" && !(substr($1,1,1)=="d" && $NF=="./") {exit 1}' &&
                     tar -tf "$archive" | awk '!/^(\.\/)?$|^(\.\/)?(outputs[.]jsonl|producer[.]json|[0-9a-f]{16}([.][A-Za-z0-9_.+-]+)?)$/ {bad=1} END {exit bad}'; then
@@ -204,7 +240,19 @@ jobs:
                       echo "$package: legacy native seed; current Lake inputs decide applicability."
                       compatible=true
                     fi
-                    if "$compatible" && lake cache unstage "$temporary/staged" "$package"; then
+                    if "$compatible" && test "$scope" = root; then
+                      if test "$NATIVE_CACHE_ONLY" = true; then
+                        jq -e --arg toolchain "$(cat lean-toolchain)" --arg manifest "$(sha256sum lake-manifest.json | cut -d' ' -f1)" \
+                          '.toolchain == $toolchain and .manifest_sha256 == $manifest' "$temporary/staged/producer.json"
+                        python3 .github/cache-promotion/native-root-room.py unstage "$temporary/staged/producer.json"
+                      fi
+                      if lake --no-build cache unstage "$temporary/staged" --force-overwrite; then
+                        echo "$package: imported root producer ${tag#lean-native-}; consumer $GITHUB_SHA."
+                        imported=true
+                      elif test "$NATIVE_CACHE_ONLY" = true; then
+                        exit 1
+                      fi
+                    elif "$compatible" && lake cache unstage "$temporary/staged" "$package"; then
                       echo "$package: imported $repository producer ${tag#lean-native-} for pin $pin."
                       imported=true
                     fi
@@ -214,15 +262,28 @@ jobs:
               rm -rf "$temporary"
               "$imported" && break
             done <<< "$candidates"
+            if ! "$imported" && test "$scope" = root && test "$NATIVE_CACHE_ONLY" = true; then
+              echo '::error::Required native root/test seed unavailable; no cold compilation.'
+              exit 1
+            fi
             "$imported" || echo "$package: no compatible published cache; ordinary incremental build."
-          done < <(jq -r '.packages[] | select(.type == "git")
+          done < <(
+            package=$(python3 -c 'import tomllib; print(tomllib.load(open("lakefile.toml","rb"))["name"])')
+            printf '%s\t%s\t%s\troot\n' "$package" "$GITHUB_REPOSITORY" "${ROOT_NATIVE_PRODUCER:-$GITHUB_SHA}"
+            jq -r '.packages[] | select(.type == "git")
             | select(.url | test("^https://github[.]com/kangxyz/[^/]+/?$"))
             | select(.rev | test("^[0-9a-f]{40}$"))
-            | [.name, (.url | sub("^https://github[.]com/"; "") | sub("[.]git/?$"; "") | rtrimstr("/")), .rev]
+            | [.name, (.url | sub("^https://github[.]com/"; "") | sub("[.]git/?$"; "") | rtrimstr("/")), .rev, "dependency"]
             | @tsv' lake-manifest.json)
       - name: Refresh archive hash metadata after cache preparation
         working-directory: ${{ inputs.package-directory }}
         run: *restore-writable-archive-hashes
+      - name: Require delivered production and Test native outputs without compilation
+        if: ${{ inputs.native-cache-only }}
+        working-directory: ${{ inputs.package-directory }}
+        run: |
+          read -r -a roots <<< "$BUILD_TARGETS"
+          LAKE_RESTORE_ARTIFACTS=true lake build --no-build --rehash "${roots[@]}" AglibTest mathlib/cache batteries/runLinter mathlib/lint-style mathlib/mk_all
       - name: Build
         id: build
         continue-on-error: true
@@ -238,7 +299,9 @@ jobs:
             echo '::warning::The Build job has used its 330-minute compiler budget. Cache saving will still be attempted; rerun this branch to resume from saved partial outputs.'
             exit 124
           fi
-          if timeout --signal=INT --kill-after=60s "${remaining}s" lake build --rehash "${targets[@]}" -o "$RUNNER_TEMP/outputs.jsonl"; then
+          native_flags=()
+          if test "$NATIVE_CACHE_ONLY" = true; then native_flags=(--no-build); fi
+          if timeout --signal=INT --kill-after=60s "${remaining}s" lake build "${native_flags[@]}" --rehash "${targets[@]}" -o "$RUNNER_TEMP/outputs.jsonl"; then
             exit 0
           else
             status=$?
@@ -286,7 +349,7 @@ jobs:
             fi
           done
       - name: Save compilation independently of Test and lint
-        if: ${{ inputs.first-ci-cache == '' && always() && steps.quiesce.outcome == 'success' }}
+        if: ${{ !inputs.native-cache-only && inputs.first-ci-cache == '' && always() && steps.quiesce.outcome == 'success' }}
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         with:
           path: |
@@ -298,7 +361,7 @@ jobs:
         if: ${{ always() && steps.quiesce.outcome == 'success' && (steps.build.outcome == 'success' || steps.build.outcome == 'failure') }}
         working-directory: ${{ inputs.package-directory }}
         env:
-          FIRST_CI_CACHE: ${{ inputs.first-ci-cache }}
+          FIRST_CI_CACHE: ${{ inputs.first-ci-cache || (inputs.native-cache-only && 'native-root') || '' }}
         run: |
           if test -s "$RUNNER_TEMP/outputs.jsonl"; then
             if test -n "$FIRST_CI_CACHE"; then python3 .github/cache-promotion/ci-resources.py stage-copy; fi
@@ -323,7 +386,7 @@ jobs:
       - name: Stage native dependencies for Test
         if: ${{ steps.build.outcome == 'success' }}
         env:
-          FIRST_CI_CACHE: ${{ inputs.first-ci-cache }}
+          FIRST_CI_CACHE: ${{ inputs.first-ci-cache || (inputs.native-cache-only && 'native-root') || '' }}
         run: |
           if test -n "$FIRST_CI_CACHE"; then
             python3 .github/cache-promotion/ci-resources.py dependencies
@@ -371,7 +434,7 @@ jobs:
           FIRST_CI_CACHE: ${{ inputs.first-ci-cache }}
         run: python3 .github/cache-promotion/promotion.py first-ci
       - name: Warm dependency and native compilation outputs
-        continue-on-error: ${{ inputs.first-ci-cache == '' }}
+        continue-on-error: ${{ inputs.first-ci-cache == '' && !inputs.native-cache-only }}
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         id: restore-cache
         with:
@@ -379,10 +442,11 @@ jobs:
             ${{ inputs.package-directory }}/.lake
             ${{ runner.temp }}/lake-native-cache
           key: ${{ inputs.first-ci-cache != '' && needs.build.outputs.cache-key || format('{0}-tests-{1}', needs.build.outputs.cache-key, github.run_attempt) }}
-          fail-on-cache-miss: ${{ inputs.first-ci-cache != '' }}
+          fail-on-cache-miss: ${{ inputs.first-ci-cache != '' || inputs.native-cache-only }}
           restore-keys: |
             ${{ inputs.first-ci-cache == '' && format('{0}-tests-', needs.build.outputs.cache-key) || '' }}
             ${{ inputs.first-ci-cache == '' && format('{0}', needs.build.outputs.cache-key) || '' }}
+            ${{ inputs.native-cache-only && format('lean-{0}-{1}-{2}-{3}-', runner.os, runner.arch, hashFiles(format('{0}/lean-toolchain', inputs.package-directory)), hashFiles(format('{0}/lake-manifest.json', inputs.package-directory))) || '' }}
       - name: Require exact full main seed for first Test
         if: ${{ inputs.first-ci-cache != '' }}
         env:
@@ -420,6 +484,15 @@ jobs:
           done
           echo '::error::Lean toolchain acquisition failed after 3 attempts.'
           exit 1
+      - name: Import the same native root and Test seed on this separate runner
+        working-directory: ${{ inputs.package-directory }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: *restore-published-native-seeds
+      - name: Materialize imported tests before mandatory production map overlay
+        if: ${{ inputs.native-cache-only }}
+        working-directory: ${{ inputs.package-directory }}
+        run: LAKE_RESTORE_ARTIFACTS=true lake build --no-build --rehash AglibTest
       - name: First-main native no-build readiness before recovery or checker preparation
         if: ${{ inputs.first-ci-cache != '' }}
         working-directory: ${{ inputs.package-directory }}
@@ -442,7 +515,7 @@ jobs:
         working-directory: ${{ inputs.package-directory }}
         run: *mathlib-cache-get
       - name: Admit current-run mandatory stage download and unstage resources
-        if: ${{ inputs.first-ci-cache != '' }}
+        if: ${{ inputs.first-ci-cache != '' || inputs.native-cache-only }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: python3 .github/cache-promotion/ci-resources.py test-download
@@ -455,7 +528,7 @@ jobs:
         id: current-cache
         working-directory: ${{ inputs.package-directory }}
         env:
-          FIRST_CI_CACHE: ${{ inputs.first-ci-cache }}
+          FIRST_CI_CACHE: ${{ inputs.first-ci-cache || (inputs.native-cache-only && 'native-root') || '' }}
         run: |
           if test -n "$FIRST_CI_CACHE"; then python3 .github/cache-promotion/ci-resources.py test-extract; fi
           trap 'rm -f "$LAKE_CACHE_DIR/lake-native-cache.tar"' EXIT
@@ -483,7 +556,9 @@ jobs:
           CHECK_TARGETS: ${{ inputs.check-targets }}
         run: |
           read -r -a targets <<< "$CHECK_TARGETS"
-          lake build batteries/runLinter mathlib/lint-style mathlib/mk_all "${targets[@]}"
+          native_flags=()
+          if test "$NATIVE_CACHE_ONLY" = true; then native_flags=(--no-build); fi
+          lake build "${native_flags[@]}" batteries/runLinter mathlib/lint-style mathlib/mk_all "${targets[@]}"
       - name: Check generated library entries
         id: imports
         if: ${{ !cancelled() && steps.tools.outcome == 'success' }}
@@ -517,13 +592,16 @@ jobs:
         if: ${{ needs.build.result == 'success' && steps.compiled.outcome == 'success' && steps.tools.outcome == 'success' }}
         continue-on-error: true
         working-directory: ${{ inputs.package-directory }}
-        run: lake test
+        run: |
+          if test "$NATIVE_CACHE_ONLY" = true; then lake --no-build test; else lake test; fi
       - name: Lint
         id: lint
         timeout-minutes: 45
         if: ${{ !cancelled() && needs.build.result == 'success' && steps.lean-setup.outcome == 'success' && steps.compiled.outcome == 'success' && steps.tools.outcome == 'success' }}
         continue-on-error: true
         working-directory: ${{ inputs.package-directory }}
+        env:
+          CI_LINT_NO_BUILD: ${{ inputs.native-cache-only }}
         run: |
           read -r -a roots <<< "$BUILD_TARGETS"
           if test "${#roots[@]}" -eq 0; then
@@ -559,11 +637,16 @@ jobs:
           # Reuse the pinned source and incremental outputs across Test runs.
           tool="$LAKE_CACHE_DIR/axiom-audit"
           if ! test -d "$tool/.git"; then
+            test "$NATIVE_CACHE_ONLY" != true || { echo 'Required cached auditor missing'; exit 1; }
             git clone --depth 1 --branch v0.1.2 https://github.com/leanprover-community/axiom-audit.git "$tool"
           fi
           test "$(git -C "$tool" rev-parse HEAD)" = 46024e005996495c65ef609368e11ab39c4222e3
           cp lean-toolchain "$tool/lean-toolchain"
-          (cd "$tool" && lake build)
+          if test "$NATIVE_CACHE_ONLY" = true; then
+            (cd "$tool" && lake build --no-build --rehash)
+          else
+            (cd "$tool" && lake build)
+          fi
           test -x "$tool/.lake/build/bin/axiom-audit"
           result=0
           for root in "${roots[@]}"; do
@@ -576,14 +659,48 @@ jobs:
         timeout-minutes: 3
         shell: bash
         run: *quiesce-native-scopes
+      - name: Admit one persistent updated main cache save
+        id: native-save-room
+        if: ${{ inputs.native-cache-only && steps.quiesce.outcome == 'success' && (steps.compiled.outcome == 'success' && steps.tools.outcome == 'success' && steps.imports.outcome == 'success' && steps.style.outcome == 'success' && steps.test.outcome == 'success' && steps.lint.outcome == 'success' && steps.axioms.outcome == 'success') }}
+        run: python3 .github/cache-promotion/native-root-room.py save
       - name: Save completed Test compilation
-        if: ${{ inputs.first-ci-cache == '' && always() && steps.quiesce.outcome == 'success' }}
+        if: ${{ !inputs.native-cache-only && inputs.first-ci-cache == '' && always() && steps.quiesce.outcome == 'success' }}
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         with:
           path: |
             ${{ inputs.package-directory }}/.lake
             ${{ runner.temp }}/lake-native-cache
           key: ${{ needs.build.outputs.cache-key }}-tests-${{ github.run_attempt }}
+      - name: Obtain the pinned official SDK for one strict save
+        if: ${{ inputs.native-cache-only && steps.native-save-room.outcome == 'success' }}
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: actions/cache
+          ref: 55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+          path: .native-save-sdk
+          persist-credentials: false
+      - name: Install locked SDK without package scripts
+        id: native-save-sdk-install
+        if: ${{ inputs.native-cache-only && steps.native-save-room.outcome == 'success' }}
+        working-directory: .native-save-sdk
+        run: npm ci --ignore-scripts --omit=dev --cache "$RUNNER_TEMP/native-save-npm-cache"
+      - name: Save one complete cache with enforced compressed-file cap
+        id: native-strict-save
+        if: ${{ inputs.native-cache-only && steps.native-save-sdk-install.outcome == 'success' }}
+        uses: ./.github/cache-promotion/capped-save
+        env:
+          SDK_DIRECTORY: ${{ github.workspace }}/.native-save-sdk
+          CACHE_SAVE_KEY: ${{ needs.build.outputs.cache-key }}-tests-${{ github.run_attempt }}
+      - name: Confirm the new persistent main Test cache entry
+        if: ${{ inputs.native-cache-only && steps.native-strict-save.outcome == 'success' && success() }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SAVED_KEY: ${{ needs.build.outputs.cache-key }}-tests-${{ github.run_attempt }}
+          SAVED_ID: ${{ steps.native-strict-save.outputs.cache-id }}
+        run: |
+          gh api --method GET "repos/$GITHUB_REPOSITORY/actions/caches" -f ref=refs/heads/main -f key="$SAVED_KEY" > "$RUNNER_TEMP/final-native-cache.json"
+          jq -e --arg key "$SAVED_KEY" --argjson id "$SAVED_ID" '[.actions_caches[] | select(.id == $id and .key == $key and .ref == "refs/heads/main" and .version == "60729729c15d65dc4080956c73ec44cfde33f5da3080769b8a3a093d958db6de" and .size_in_bytes > 0 and .size_in_bytes <= 10000000000)] | length == 1' "$RUNNER_TEMP/final-native-cache.json"
+          cat "$RUNNER_TEMP/final-native-cache.json" >> "$GITHUB_STEP_SUMMARY"
       - name: Report Test, lint and axiom results
         if: ${{ always() }}
         env:
@@ -611,11 +728,11 @@ jobs:
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-        if: ${{ inputs.first-ci-cache != '' }}
+        if: ${{ inputs.first-ci-cache != '' || inputs.native-cache-only }}
         with:
           persist-credentials: false
       - name: Admit mandatory Publish stage download
-        if: ${{ inputs.first-ci-cache != '' }}
+        if: ${{ inputs.first-ci-cache != '' || inputs.native-cache-only }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: python3 .github/cache-promotion/ci-resources.py publish-download
@@ -627,7 +744,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           REPOSITORY: ${{ github.repository }}
           REVISION: ${{ github.sha }}
-          FIRST_CI_CACHE: ${{ inputs.first-ci-cache }}
+          FIRST_CI_CACHE: ${{ inputs.first-ci-cache || (inputs.native-cache-only && 'native-root') || '' }}
         run: |
           domain=$(tar -xOf lake-native-cache.tar ./producer.json | jq -er \
             --arg repository "$REPOSITORY" --arg revision "$REVISION" \

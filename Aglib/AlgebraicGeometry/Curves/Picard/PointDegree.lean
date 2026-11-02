@@ -6,7 +6,8 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Curves.Abel.Degree
-public import Aglib.AlgebraicGeometry.Curves.PointDivisor.Sections
+public import Aglib.AlgebraicGeometry.Curves.PointDivisor.Basic
+public import Aglib.AlgebraicGeometry.Curves.Picard.Degree.ProperCurveProductFormula
 public import Mathlib.AlgebraicGeometry.AlgClosed.Basic
 public import Mathlib.Data.ZMod.Basic
 public import Mathlib.Topology.Separation.Basic

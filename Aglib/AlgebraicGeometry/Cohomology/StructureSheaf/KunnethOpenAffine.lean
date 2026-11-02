@@ -111,6 +111,9 @@ theorem moduleOpenUnitNormalize_geometric (A : Scheme.{u}) (D : A.Opens) (n : �
         (Scheme.Modules.pushforward D.ι).map ε) = structurePullbackMap D.ι := by
     rw [hφ, moduleCoefficientPullback_postcomp]
     exact modulePullbackAdditiveComparison_unit D.ι
+  dsimp only [moduleOpenRestrictionCoefficientSquare,
+    TopCat.Sheaf.openCohomologyRestrictionCoefficientSquare,
+    Functor.extDiagramOpenRestrictionCoefficientSquare, openRestrictionCoefficientSquare] at hPost
   rw [hCoef] at hPost
   change Sheaf.H.map ((SheafOfModules.toSheaf D.toScheme.ringCatSheaf).map ε) n
     (sheafHPrimeOpenRestrictionAddEquiv A D (moduleAddSheaf A M) n x) = _
@@ -159,6 +162,8 @@ private theorem moduleOpenExtCohomologyMap_pullback_unit {A B : Scheme.{u}}
       structurePullbackMap p := by
     rw [moduleCoefficientPullback_postcomp]
     exact modulePullbackAdditiveComparison_unit p
+  dsimp only [modulePostcompositionCohomologySquare, zariskiCohomologyCoefficientSquare,
+    TopCat.Sheaf.openCohomologyCoefficientSquare, Functor.extDiagramCoefficientSquare] at hCoef
   rw [hUnit] at hCoef
   have hValue := ConcreteCategory.congr_hom (NatTrans.congr_app hCoef (op D))
     (moduleOpenExtCohomologyMap A D M n x)

@@ -66,3 +66,13 @@ theorem isFinite_sigmaDesc {ι : Type v} [Finite ι] {S : Scheme.{u}}
   exact MorphismProperty.comp_mem (@IsFinite : MorphismProperty Scheme.{u}) _ _ hE hg
 
 end AlgebraicGeometry
+
+namespace AlgebraicGeometry.Scheme.Hom
+
+/-- Compatibility with the original same-universe finite coproduct interface. -/
+theorem isFinite_sigmaDesc {I : Type u} [Finite I]
+    (C : I → Scheme.{u}) (X : Scheme.{u}) (ν : ∀ i, C i ⟶ X)
+    [∀ i, IsFinite (ν i)] : IsFinite (Sigma.desc ν) :=
+  AlgebraicGeometry.isFinite_sigmaDesc C ν
+
+end AlgebraicGeometry.Scheme.Hom

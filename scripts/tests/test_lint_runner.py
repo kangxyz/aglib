@@ -11,6 +11,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import tempfile
+import tomllib
 import unittest
 from unittest.mock import patch
 
@@ -64,6 +65,72 @@ class PreflightTests(unittest.TestCase):
             record = json.loads(result.stdout)
             self.assertEqual(record["threads"], "1")
             self.assertEqual(record["args"], ["--no-build", "lint", "Fixture", "--", "--trace"])
+
+
+class PrivatePreparationTests(unittest.TestCase):
+    """The strict preparation switch is tested with no native compiler."""
+
+    def run_adapter(self, *, strict=False, missing=False, builtin_status=0):
+        with tempfile.TemporaryDirectory(prefix='lint-private-preparation-') as temp:
+            root = Path(temp)
+            helper = root / 'helper'
+            helper.mkdir()
+            shutil.copyfile(HELPER / 'run.sh', helper / 'run.sh')
+            (helper / 'BatchedLint.lean').write_text('-- shell fixture only\n')
+            provider = root / 'resolved provider'
+            provider.mkdir()
+            (helper / 'preflight.py').write_text(
+                'import sys\nprint(' + repr(str(provider)) +
+                ' if sys.argv[1] == "--batteries-dir" else "fixture-driver-args")\n')
+            binary = root / 'bin'
+            binary.mkdir()
+            lake = binary / 'lake'
+            lake.write_text('''#!/usr/bin/env python3
+import json,os,sys
+from pathlib import Path
+a=sys.argv[1:]
+with open(os.environ['TRACE'],'a') as f:f.write(json.dumps(a)+'\\n')
+if a==['env','lean','--version']:print('Lean (version 4.34.1, fixture)')
+elif a and a[0]=='--dir':
+    if '--no-build' in a and os.environ['MISSING_RUNNER']=='1':sys.exit(23)
+    p=Path(a[1])/'.lake/build/bin';p.mkdir(parents=True,exist_ok=True)
+    (p/'batchedLint').write_text('fixture executable')
+elif '--builtin-only' in a:sys.exit(int(os.environ['BUILTIN_STATUS']))
+''')
+            lake.chmod(0o755)
+            trace = root / 'trace'
+            env = dict(os.environ, PATH=str(binary)+os.pathsep+os.environ['PATH'],
+                       TRACE=str(trace), MISSING_RUNNER=str(int(missing)),
+                       BUILTIN_STATUS=str(builtin_status), CI_LINT_NO_BUILD=strict and 'true' or 'false')
+            result = subprocess.run(['bash', str(helper / 'run.sh'), 'Fixture', 'Other'],
+                                    cwd=root, env=env, text=True, capture_output=True)
+            calls = [json.loads(line) for line in trace.read_text().splitlines()]
+            config = tomllib.loads((root / '.lake/lint-runner/lakefile.toml').read_text())
+            return result, calls, config, str(provider)
+
+    def test_default_private_build_and_provider_resolution_are_unchanged(self):
+        result, calls, config, provider = self.run_adapter(missing=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        private = next(a for a in calls if a[:1] == ['--dir'])
+        self.assertEqual(private[2:], ['--file','lakefile.toml','--update','--keep-toolchain','build','batchedLint'])
+        self.assertEqual(config['require'][0]['path'], provider)
+        self.assertEqual(config['lean_exe'][0]['root'], 'BatchedLint')
+
+    def test_strict_private_build_only_adds_no_build_and_keeps_both_predicates(self):
+        result, calls, config, provider = self.run_adapter(strict=True, builtin_status=1)
+        self.assertEqual(result.returncode, 1, result.stderr)
+        private = next(a for a in calls if a[:1] == ['--dir'])
+        self.assertEqual(private[2:], ['--file','lakefile.toml','--update','--keep-toolchain','--no-build','build','batchedLint'])
+        self.assertEqual(config['require'][0]['path'], provider)
+        self.assertIn(['--no-build','--builtin-only','lint','Fixture','Other'], calls)
+        self.assertTrue(any(a[:1] == ['env'] and a[-1] == 'fixture-driver-args' for a in calls))
+
+    def test_strict_missing_private_output_fails_before_checks_without_fallback(self):
+        result, calls, _, _ = self.run_adapter(strict=True, missing=True)
+        self.assertEqual(result.returncode, 23, result.stderr)
+        self.assertEqual(len([a for a in calls if a[:1] == ['--dir']]), 1)
+        self.assertFalse(any('--builtin-only' in a or a == ['--no-build','lint','Fixture','Other','--','--trace'] for a in calls))
+        self.assertFalse(any(a[:1] == ['env'] and a[-1] == 'fixture-driver-args' for a in calls))
 
 
 @unittest.skipUnless(os.environ.get("AGLIB_LINT_BATTERIES"), "set AGLIB_LINT_BATTERIES")

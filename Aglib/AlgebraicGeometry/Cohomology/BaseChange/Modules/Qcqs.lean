@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Qcqs.Open
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Qcqs.OpenNative
 
 /-! # Canonical flat base change on quasi-compact quasi-separated schemes
 

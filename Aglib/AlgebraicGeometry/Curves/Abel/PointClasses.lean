@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Curves.PointDivisor.PoleFunctions
+public import Aglib.AlgebraicGeometry.Curves.PointDivisor.Basic
 public import Aglib.AlgebraicGeometry.EffectiveCartierDivisor.Relative.GraphLineBundle
 public import Aglib.AlgebraicGeometry.IdealSheaf.Modules
 
@@ -44,24 +44,7 @@ theorem positiveLineBundle_class_eq_pointDivisor
   let := isIntegral_of_properties X hX
   let := curveProperties_isNoetherian hX
   let (x : ClosedPoint X.left) := isDiscreteValuationRing_stalk X hX x
-  let I := idealLineBundle X hX p hp
-  let φ : (show X.left.Modules from I.val) ⟶
-      (show X.left.Modules from SheafOfModules.unit X.left.ringCatSheaf) :=
-    Hom.idealInclusion p
-  let : Mono φ := Hom.idealInclusionMono p
-  let c := RationalTrivialization.localChart X.left I.val I.property (genericPoint X.left)
-  let : Nonempty c.1 := ⟨⟨genericPoint X.left, c.2.property⟩⟩
-  let D := RationalTrivialization.divisor X.left I.val c.1 c.2.val I.property
-  have hclass : classOf X.left I = DivisorClass.divisorToPicard X.left hdim D :=
-    (class_eq_iff X.left I (DivisorClass.divisorLineBundle X.left hdim D)).mpr
-      ⟨DivisorInverse.toDivisorIso X.left I.val I.property c.1 c.2.val hdim⟩
-  have hmap : DivisorClass.divisorToPicard X.left hdim (idealDivisor X hX p hp) =
-      -classOf X.left I := by
-    change DivisorClass.divisorToPicard X.left hdim
-      (MapDivisors.mapDivisor X.left I φ c.1 c.2.val) = _
-    rw [MapDivisors.mapDivisor, map_sub, DivisorClass.divisorToPicard_principal, zero_sub]
-    exact congrArg Neg.neg hclass.symm
-  rw [idealDivisor_eq_pointDivisor] at hmap
-  exact (classOf_dual X.left I).trans hmap.symm
+  exact idealDual_class_eq_point X.left (rationalPoint X p hp)
+    (idealLineBundle X hX p hp).property hdim
 
 end AlgebraicGeometry.Scheme.OverField.Curve.PointDivisor

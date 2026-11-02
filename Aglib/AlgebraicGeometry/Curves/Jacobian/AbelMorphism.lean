@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Curves.Abel.BoundedFamily.Parameters
+public import Aglib.AlgebraicGeometry.Curves.Abel.BoundedFamily.RepresentedMorphism
 public import Aglib.AlgebraicGeometry.Group.IdentityComponent.Basic
 public import Aglib.AlgebraicGeometry.Picard.GroupLaw
 
@@ -104,16 +105,13 @@ variable {k : Type u} [Field k] (X : FScheme k) [SmoothOfRelativeDimension 1 X.h
 
 /-- **The parameter scheme `X^n` as a locally Noetherian scheme over `k`**: it is proper over the
 Noetherian `Spec k`, hence Noetherian (`parameter_isNoetherian`). -/
-def locallyNoetherianParameter (n : ℕ) : LocallyNoetherianOver (Spec (.of k)) :=
-  ⟨parameter X.hom n, by
-    have := parameter_isNoetherian X.hom n
-    infer_instance⟩
+abbrev locallyNoetherianParameter (n : ℕ) : LocallyNoetherianOver (Spec (.of k)) :=
+  locallyNoetherianParameterOver X.hom n
 
 /-- The section of `Pic_{X/k,(fppf)}` over `X^n` given by the class of the graph-sum line bundle
 of `(p_i) ↦ Σ (p_i - o)`. -/
-def abelSection (n : ℕ) : (fppfPicardSheaf X.hom).obj.obj (op (parameter X.hom n)) :=
-  (quotientProjection X.hom ≫ toFppfPicardSheaf X.hom).app (op (parameter X.hom n))
-    (classOf _ (lineBundle X.hom o ho n))
+abbrev abelSection (n : ℕ) : (fppfPicardSheaf X.hom).obj.obj (op (parameter X.hom n)) :=
+  abelSectionOver X.hom o ho n
 
 variable {X} (P : LocallyNoetherianOver (Spec (.of k)))
   (R : ((locallyNoetherianOverInclusion (Spec (.of k))).op ⋙ (fppfPicardSheaf X.hom).obj ⋙
@@ -122,13 +120,13 @@ variable {X} (P : LocallyNoetherianOver (Spec (.of k)))
 /-- **The Abel morphism** `a_n : X^n ⟶ P`, `(p_i) ↦ Σ (p_i - o)`: the morphism of locally
 Noetherian `k`-schemes attached by the representation `R` to the class of the graph-sum line
 bundle on `X ×_k X^n`. -/
-def abelMorphism (n : ℕ) : locallyNoetherianParameter X n ⟶ P :=
-  R.homEquiv.symm (abelSection X o ho n)
+abbrev abelMorphism (n : ℕ) : locallyNoetherianParameter X n ⟶ P :=
+  abelMorphismOver X.hom o ho P R n
 
 /-- The Abel morphism corresponds under `R` to the class of the graph-sum line bundle. -/
 theorem homEquiv_abelMorphism (n : ℕ) :
     R.homEquiv (abelMorphism o ho P R n) = abelSection X o ho n :=
-  R.homEquiv.apply_symm_apply _
+  homEquiv_abelMorphismOver X.hom o ho P R n
 
 /-- **The Abel morphism on `T`-points**: for a morphism `a : T ⟶ X^n` of locally Noetherian
 `k`-schemes, `a ≫ a_n` corresponds under `R` to the class of the pullback of the graph-sum line
@@ -137,10 +135,8 @@ theorem homEquiv_comp_abelMorphism {n : ℕ} {T : LocallyNoetherianOver (Spec (.
     (a : T ⟶ locallyNoetherianParameter X n) :
     R.homEquiv (a ≫ abelMorphism o ho P R n) =
       (quotientProjection X.hom ≫ toFppfPicardSheaf X.hom).app (op T.obj)
-        (pullbackClass ((familyScheme X.hom).map a.hom) (classOf _ (lineBundle X.hom o ho n))) := by
-  rw [R.homEquiv_comp, homEquiv_abelMorphism]
-  exact (NatTrans.naturality_apply (quotientProjection X.hom ≫ toFppfPicardSheaf X.hom)
-    a.hom.op (classOf _ (lineBundle X.hom o ho n))).symm
+        (pullbackClass ((familyScheme X.hom).map a.hom) (classOf _ (lineBundle X.hom o ho n))) :=
+  homEquiv_comp_abelMorphismOver X.hom o ho P R a
 
 /-- **The Abel morphism at a tuple of sections**: for sections `s_i : T ⟶ X` over `t : T ⟶ k`,
 the point `(s_i)` of `X^n` goes to the class of `Σ (s_i - o_T)`. -/

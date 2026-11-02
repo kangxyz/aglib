@@ -55,6 +55,28 @@ not arbitrary representation-object descent. The proper finite-cohomology
 extension uses a Noetherian coefficient ring and an actual p-group Galois
 trivialization with a finite p-killed literal module.
 
+## Proper relative-curve R1 and pointed degree two
+
+For a proper morphism to a Noetherian base whose actual geometric fibres all
+have topological Krull dimension at most one,
+[MixedCharacteristicCurveR1](MixedCharacteristicCurveR1.lean) proves
+constructibility of the original R1 image of every constant cyclic prime-power
+coefficient, including mixed characteristic.
+[RelativeCurveFiniteConstantR1](RelativeCurveFiniteConstantR1.lean) extends this
+to every finite abelian constant coefficient, without an invertibility or
+annihilator premise, and retains the positive invertible-annihilator API.
+[RelativeCurveConstructibleR1](RelativeCurveConstructibleR1.lean) proves
+constructibility of the original R1 image of every constructible abelian sheaf.
+These R1 statements impose no smoothness, flatness, reducedness, section, or
+common-modulus assumption and supply no all-degree conclusion.
+
+[PointedCurveDegreeTwo](PointedCurveDegreeTwo.lean) is a separate result for a
+smooth proper geometrically connected relative curve with an actual section.
+For positive n with the given n-unit on both source and base, its original
+positive-section cyclic map to R2 of the roots-of-unity sheaf is an isomorphism,
+and that root higher image is constructible. It retains the original independent
+Ext universe and positive trace normalization. There is no Noetherian premise.
+
 ## Boundaries
 
 These cuts do not assert full proper finiteness for arbitrary constructible

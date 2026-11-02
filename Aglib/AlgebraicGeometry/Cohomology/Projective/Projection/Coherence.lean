@@ -7,8 +7,8 @@ module
 
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.Affine
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.ClosedImmersion
-public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.QuasiCoherent
-public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology
+public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Restriction
+public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.SeparatedCohomology
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Restriction
 
 /-!
@@ -73,9 +73,10 @@ theorem projectiveProjection_higherDirectImage_coherent
   have hΓ : Module.Finite A
       (moduleSpecΓFunctor.obj (((Scheme.Modules.pushforward v).rightDerived q).obj N)) :=
     Module.Finite.equiv
-      (moduleHigherDirectImageAffineSectionsLinearEquiv v N (injectiveResolution N) q).symm
+      (moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated v N
+        (injectiveResolution N) q).symm
   have hQC : (((Scheme.Modules.pushforward v).rightDerived q).obj N).IsQuasicoherent :=
-    moduleHigherDirectImage_isQuasicoherent v N q
+    moduleHigherDirectImageAffine_isQuasicoherent_of_isSeparated v N q
   exact (affineFiniteSheaf A).prop_of_iso
     ((Scheme.Modules.higherDirectImageOpenRestrictionIso u v p j H q).app M).symm ⟨hQC, hΓ⟩
 

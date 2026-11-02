@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ProjectiveLineTests
 public import Aglib.AlgebraicGeometry.EtaleCohomology.PullbackCoefficientIso
-public import Mathlib.Algebra.Group.Shrink
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Value
 
 /-! # Original cohomology pullback under coefficient isomorphisms
 
@@ -37,14 +37,8 @@ namespace Proper
 private theorem exists_small_finiteConstantValueIso
     (A : AddCommGrpCat.{u + 1}) [Finite A] :
     ∃ (B : Type u) (_ : AddCommGroup B) (_ : Finite B),
-      Nonempty (ConstantFinite.value B ≅ A) := by
-  let := Fintype.ofFinite A
-  have : Small.{u} A := Small.mk'
-    ((Fintype.equivFin A).trans (Equiv.ulift.{u}).symm)
-  let B := Shrink.{u} A
-  have : Finite B := Finite.of_equiv A (equivShrink A)
-  exact ⟨B, inferInstance, inferInstance,
-    ⟨AddEquiv.toAddCommGrpIso (AddEquiv.ulift.trans (Shrink.addEquiv (α := A)))⟩⟩
+      Nonempty (ConstantFinite.value B ≅ A) :=
+  ConstantFinite.exists_small_finiteValueIso A
 
 section StrictlyLocal
 

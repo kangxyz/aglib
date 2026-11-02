@@ -11,7 +11,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeChartCoeff
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeSectionComparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductBaseChangeMap
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeChartSections
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeGlobalSections
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeCoefficientGlobalSections
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GlobalSectionsNaturality
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramEtaleSections
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.CohomologyTransfers
@@ -184,28 +184,8 @@ private theorem higherBaseChangeMap_coefficientSections_hom
       (cohomologyToHigherSections fT G q).comp
         ((Sheaf.H.map φ q).comp (cohomologyPullback.{u, w, w'} r F q)) := by
   rw [higherBaseChangeMapFromDerived_eq]
-  let Γ : AbelianSheaf.{u, u + 1} T ⥤ AddCommGrpCat.{u + 1} := globalSections T
-  let β : (inverseImage b).obj ((higherDirectImage f q).obj F) ⟶
-      (higherDirectImage fT q).obj ((inverseImage r).obj F) :=
-    (higherBaseChangeMap f fT b r h q).app F
-  have hs : (Γ.map β).hom.comp
-      ((globalSectionsPullback b ((higherDirectImage f q).obj F)).hom.comp
-        (cohomologyToHigherSections f F q)) =
-      (cohomologyToHigherSections fT ((inverseImage r).obj F) q).comp
-        (cohomologyPullback.{u, w, w'} r F q) :=
-    addHom_eq_of_apply _ _
-      (@higherBaseChangeMap_cohomologyToHigherSections.{u, w, w'}
-        X S Y T hDomainExt hCodomainExt f fT b r h F q)
-  have ht : (Γ.map ((higherDirectImage fT q).map φ)).hom.comp
-      (cohomologyToHigherSections fT ((inverseImage r).obj F) q) =
-      (cohomologyToHigherSections fT G q).comp (Sheaf.H.map φ q) :=
-    addHom_eq_of_apply _ _ (cohomologyToHigherSections_naturality fT φ q)
-  exact mapped_coefficient_hom Γ β ((higherDirectImage fT q).map φ)
-    ((globalSectionsPullback b ((higherDirectImage f q).obj F)).hom.comp
-      (cohomologyToHigherSections f F q))
-    (cohomologyToHigherSections fT ((inverseImage r).obj F) q)
-    (cohomologyToHigherSections fT G q) (cohomologyPullback.{u, w, w'} r F q)
-    (Sheaf.H.map φ q) hs ht
+  exact higherBaseChangeMap_coefficientGlobalSections_hom.{u, w, w'}
+    f fT b r h F G φ q
 
 /-- Use the actual original coefficient-transfer value before native chart specialization. -/
 private theorem higherBaseChangeMap_coefficientTransferSections_hom

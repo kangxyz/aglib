@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Qcqs
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.FieldExtension.Comparison
 public import Mathlib.RingTheory.Flat.FaithfullyFlat.Basic
 public import Mathlib.LinearAlgebra.Dimension.Constructions
 
@@ -48,16 +49,9 @@ def moduleCohomologyFieldBaseChangeEquiv
     letI := moduleCohomologyModuleOfHom _ β N n
     K ⊗[k] Sheaf.H.{u + 1} (moduleAddSheaf X M) n ≃ₗ[K]
       Sheaf.H.{u + 1} (moduleAddSheaf _ N) n := by
-  letI : Algebra k K := σ.toAlgebra
-  letI := moduleCohomologyModuleOfHom X
-    (f.appTop.hom.comp (Scheme.ΓSpecIso (.of k)).inv.hom) M n
-  letI := moduleCohomologyModuleOfHom _
-    ((pullback.snd f (Spec.map (CommRingCat.ofHom σ))).appTop.hom.comp
-      (Scheme.ΓSpecIso (.of K)).inv.hom)
-    ((Scheme.Modules.pullback (pullback.fst f (Spec.map (CommRingCat.ofHom σ)))).obj M) n
   letI := moduleCohomologyBaseChangeMap_isIso_of_quasiSeparated f σ
     (RingHom.Flat.of_isField (Field.toIsField k) σ) M n
-  exact (asIso (moduleCohomologyBaseChangeMap f σ M n)).toLinearEquiv
+  exact moduleCohomologyFieldBaseChangeEquivOfIsIso f σ M n
 
 /-- The field-extension equivalence sends a unit pure tensor to the original
 geometric coefficient pullback on cohomology. -/
@@ -81,22 +75,9 @@ theorem subsingleton_moduleCohomology_iff_fieldBaseChange
       Subsingleton (Sheaf.H.{u + 1}
         (moduleAddSheaf _ ((Scheme.Modules.pullback
           (pullback.fst f (Spec.map (CommRingCat.ofHom σ)))).obj M)) n) := by
-  let : Algebra k K := σ.toAlgebra
-  let := moduleCohomologyModuleOfHom X
-    (f.appTop.hom.comp (Scheme.ΓSpecIso (.of k)).inv.hom) M n
-  let e := moduleCohomologyFieldBaseChangeEquiv f σ M n
-  constructor
-  · intro h
-    let := h
-    refine ⟨fun x y => ?_⟩
-    obtain ⟨a, rfl⟩ := e.surjective x
-    obtain ⟨b, rfl⟩ := e.surjective y
-    exact congrArg e (Subsingleton.elim a b)
-  · intro h
-    let := h
-    have hT : Subsingleton (K ⊗[k] Sheaf.H.{u + 1} (moduleAddSheaf X M) n) :=
-      ⟨fun a b => e.injective (Subsingleton.elim _ _)⟩
-    exact (Module.FaithfullyFlat.subsingleton_tensorProduct_iff_right k K).mp hT
+  let := moduleCohomologyBaseChangeMap_isIso_of_quasiSeparated f σ
+    (RingHom.Flat.of_isField (Field.toIsField k) σ) M n
+  exact subsingleton_moduleCohomology_iff_fieldBaseChange_of_isIso f σ M n
 
 /-- The dimensions over the original and extended structural fields agree,
 through the same canonical cohomology comparison. -/
@@ -112,14 +93,9 @@ theorem moduleCohomology_finrank_fieldBaseChange
       (q.appTop.hom.comp (Scheme.ΓSpecIso (.of K)).inv.hom) N n
     Module.finrank K (Sheaf.H.{u + 1} (moduleAddSheaf _ N) n) =
       Module.finrank k (Sheaf.H.{u + 1} (moduleAddSheaf X M) n) := by
-  let : Algebra k K := σ.toAlgebra
-  let := moduleCohomologyModuleOfHom X
-    (f.appTop.hom.comp (Scheme.ΓSpecIso (.of k)).inv.hom) M n
-  let := moduleCohomologyModuleOfHom _
-    ((pullback.snd f (Spec.map (CommRingCat.ofHom σ))).appTop.hom.comp
-      (Scheme.ΓSpecIso (.of K)).inv.hom)
-    ((Scheme.Modules.pullback (pullback.fst f (Spec.map (CommRingCat.ofHom σ)))).obj M) n
-  let e := moduleCohomologyFieldBaseChangeEquiv f σ M n
-  exact e.finrank_eq.symm.trans Module.finrank_baseChange
+  let := moduleCohomologyBaseChangeMap_isIso_of_quasiSeparated f σ
+    (RingHom.Flat.of_isField (Field.toIsField k) σ) M n
+  exact moduleCohomology_finrank_fieldBaseChange_of_isIso f σ M n
+
 
 end AlgebraicGeometry.Scheme.Cohomology

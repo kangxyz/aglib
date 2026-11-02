@@ -7,7 +7,6 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootStalk
 public import Aglib.GroupCohomology.Kummer.Basic
-public import Aglib.GroupCohomology.H1.Continuous.GroupEquivalence
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteTrivialization
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FundamentalGroupComparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootCover
@@ -54,12 +53,10 @@ transport is q/p, and actual Galois point precomposition evaluates to sigma(a).
 Consequently its comparison cocycle is literally the existing sigma(a)/a
 Kummer cocycle, proving comparison_rootClass, not assuming it.
 
-The higher weight-two map composes this actual H1 comparison with the existing
-RootCup coefficient map. The existing primitive-root tensor equivalence gives
-its additive equivalence, and the root torsor computes RootCup.cupKummer.
-Neither a Milnor-symbol definition nor a Bockstein normalization assertion is
-used to define any comparison. Curve-pair descent, geometric restriction and
-the final Bockstein square remain separate applications.
+This module supplies the H1 comparison, including its inverse restriction formula
+on the original cocycle quotient. Curve-pair descent, geometric restriction,
+weight-two RootCup comparisons and Bockstein normalization remain separate
+applications of this interface.
 -/
 
 noncomputable section
@@ -260,12 +257,33 @@ def fundamentalRestriction : PullbackMap (A := Field.absoluteGaloisGroup.RootsOf
 equivalence. -/
 def galoisRestrictionEquiv : H1 (FieldFundamentalGroup K)
     (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) ≃+
-    H1 (Field.absoluteGaloisGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) :=
-  _root_.GroupCohomology.ContinuousH1.GroupEquivalence.ofInversePullbackMaps
-    (fieldGroupHom K) (absoluteGroupHom K)
-    (fun γ => (fundamentalGroupContinuousEquiv K).apply_symm_apply γ)
-    (fun σ => (fundamentalGroupContinuousEquiv K).symm_apply_apply σ)
-    (galoisRestriction K n) (fundamentalRestriction K n) (fun _ => rfl) (fun _ => rfl)
+    H1 (Field.absoluteGaloisGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) where
+  toFun := (galoisRestriction K n).onH1
+  invFun := (fundamentalRestriction K n).onH1
+  left_inv x := by
+    obtain ⟨c, rfl⟩ := classOf_surjective (FieldFundamentalGroup K)
+        (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) x
+    change classOf _ _ ((fundamentalRestriction K n).onCocycles ((galoisRestriction K
+        n).onCocycles c)) = classOf _ _ c
+    congr 1
+    apply _root_.GroupCohomology.ContinuousH1.Cocycle.ext
+    intro γ
+    change c.val ((fundamentalGroupContinuousEquiv K) ((fundamentalGroupContinuousEquiv K).symm
+        γ)) = c.val γ
+    rw [ContinuousMulEquiv.apply_symm_apply]
+  right_inv x := by
+    obtain ⟨c, rfl⟩ := classOf_surjective (Field.absoluteGaloisGroup K)
+        (Field.absoluteGaloisGroup.RootsOfUnity.Mu
+        K n) x
+    change classOf _ _ ((galoisRestriction K n).onCocycles ((fundamentalRestriction K
+        n).onCocycles c)) = classOf _ _ c
+    congr 1
+    apply _root_.GroupCohomology.ContinuousH1.Cocycle.ext
+    intro σ
+    change c.val ((fundamentalGroupContinuousEquiv K).symm ((fundamentalGroupContinuousEquiv K)
+        σ)) = c.val σ
+    rw [ContinuousMulEquiv.symm_apply_apply]
+  map_add' := map_add _
 
 variable [HasExt.{w} (AbelianSheaf.{u, u + 1} (Spec (.of K)))]
 
@@ -358,7 +376,6 @@ theorem comparison_torsor_representative
   simp only [comparison, AddMonoidHom.comp_apply, AddEquiv.coe_toAddMonoidHom,
     fieldCocycle] at hfinal ⊢
   exact hfinal
-
 
 
 

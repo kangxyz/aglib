@@ -30,6 +30,7 @@ public import Aglib.Algebra.Category.Grp.ProjectiveInt
 public import Aglib.Algebra.Category.Grp.Resize
 public import Aglib.Algebra.Category.Grp.Resize.Diagram
 public import Aglib.Algebra.Category.Grp.Resize.Naturality
+public import Aglib.Algebra.Category.Grp.ResizeHom
 public import Aglib.Algebra.Category.Grp.ZModEndomorphisms
 public import Aglib.Algebra.Category.Grp.ZModQuotient
 public import Aglib.Algebra.Category.Grp.ZModSequence
@@ -649,6 +650,7 @@ public import Aglib.Algebra.Homology.HomologicalComplex.Adjunction
 public import Aglib.Algebra.Homology.HomologicalComplex.Adjunction.CounitNaturality
 public import Aglib.Algebra.Homology.HomologicalComplex.Adjunction.Homology
 public import Aglib.Algebra.Homology.HomologicalComplex.Adjunction.ResolutionCounit
+public import Aglib.Algebra.Homology.HomologicalComplex.Adjunction.ResolutionCounit.Values
 public import Aglib.Algebra.Homology.HomologicalComplex.Mates
 public import Aglib.Algebra.Homology.HomologicalComplex.TwoStageCounit
 public import Aglib.Algebra.Homology.HomologicalComplex.TwoStageTransport
@@ -748,6 +750,7 @@ public import Aglib.Algebra.Homology.ShortComplex.Adjunction.CounitNaturality
 public import Aglib.Algebra.Homology.ShortComplex.Adjunction.Cycles
 public import Aglib.Algebra.Homology.ShortComplex.Adjunction.ExactLeftCycles
 public import Aglib.Algebra.Homology.ShortComplex.Adjunction.Exactness
+public import Aglib.Algebra.Homology.ShortComplex.Adjunction.FollowedUnit
 public import Aglib.Algebra.Homology.ShortComplex.Adjunction.Reflection
 public import Aglib.Algebra.Homology.ShortComplex.Adjunction.SectionsRestriction
 public import Aglib.Algebra.Homology.ShortComplex.AlgebraTests

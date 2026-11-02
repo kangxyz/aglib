@@ -12,8 +12,19 @@ public import Aglib.CategoryTheory.Abelian.CoproductKernels
 public import Aglib.CategoryTheory.Abelian.Ext.ClasswiseDimensionShift
 public import Aglib.CategoryTheory.Abelian.Ext.CoefficientSquare
 public import Aglib.CategoryTheory.Abelian.Ext.DiagramMap
+public import Aglib.CategoryTheory.Abelian.Ext.DiagramMap.CoefficientSquare
+public import Aglib.CategoryTheory.Abelian.Ext.DiagramMap.Coefficients
+public import Aglib.CategoryTheory.Abelian.Ext.DiagramMap.Composition
+public import Aglib.CategoryTheory.Abelian.Ext.DiagramMap.CompositionSquare
+public import Aglib.CategoryTheory.Abelian.Ext.DiagramMap.RestrictionCoefficientSquare
 public import Aglib.CategoryTheory.Abelian.Ext.DiagramMap.RestrictionSquare
 public import Aglib.CategoryTheory.Abelian.Ext.DiagramMap.Scalars
+public import Aglib.CategoryTheory.Abelian.Ext.DiagramMap.Scalars.NormalizedRestrictionMap
+public import Aglib.CategoryTheory.Abelian.Ext.DiagramMap.Scalars.NormalizedRestrictionMap.Values
+public import Aglib.CategoryTheory.Abelian.Ext.DiagramMap.Scalars.NormalizedRestrictionSquare
+public import Aglib.CategoryTheory.Abelian.Ext.DiagramMap.Scalars.RestrictionSquare
+public import Aglib.CategoryTheory.Abelian.Ext.DiagramMap.Scalars.TopComparison
+public import Aglib.CategoryTheory.Abelian.Ext.DiagramMap.Scalars.Transfer
 public import Aglib.CategoryTheory.Abelian.Ext.OriginalComparison
 public import Aglib.CategoryTheory.Abelian.Ext.OriginalComparisonValues
 public import Aglib.CategoryTheory.Abelian.Ext.SourceTransfer
@@ -436,6 +447,7 @@ public import Aglib.CategoryTheory.Sites.Point.Over
 public import Aglib.CategoryTheory.Sites.Point.RelativeTest
 public import Aglib.CategoryTheory.Sites.Point.RepresentedAdditive
 public import Aglib.CategoryTheory.Sites.Point.SectionValues
+public import Aglib.CategoryTheory.Sites.Point.SectionValues.OriginalMap
 public import Aglib.CategoryTheory.Sites.Point.SectionValuesTransport
 public import Aglib.CategoryTheory.Sites.PresheafAutomorphismAction
 public import Aglib.CategoryTheory.Sites.PresheafRepresentedDescent

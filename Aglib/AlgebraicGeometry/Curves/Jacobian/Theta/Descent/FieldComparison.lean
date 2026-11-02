@@ -179,7 +179,8 @@ private theorem homEquiv_comp_positiveCurveMorphism
           (parameterPoint_over X.hom T.obj.hom _ _) :=
       (RelativePicard.Classes.familyMap_eq_familyScheme_map X.hom a.hom).symm
     rw [hm]
-    simpa only [Fin.sum_univ_one, familyScheme_obj, locallyNoetherianParameter] using
+    simpa only [Fin.sum_univ_one, familyScheme_obj, locallyNoetherianParameter,
+      locallyNoetherianParameterOver] using
       positiveFamilyLineBundle_class_at_tuple X.hom T.obj.hom
         (fun _ : Fin 1 => s.left) (fun _ => s.w)
   exact (congrArg R.homEquiv he).trans

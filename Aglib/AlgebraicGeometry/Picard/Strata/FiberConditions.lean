@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.Family
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.Family.Core
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.Monotone
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.Twist
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Dual

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Cohomology.FormalFunctions.ReesCohomologyAffine
+public import Aglib.AlgebraicGeometry.Cohomology.FormalFunctions.AffineCoproductComparison
 public import Aglib.AlgebraicGeometry.Cohomology.Cech.Coproduct
 public import Aglib.AlgebraicGeometry.Cohomology.FormalFunctions.ReesCohomologyAction
 public import Aglib.AlgebraicGeometry.Cohomology.FormalFunctions.ReesCohomologyScalars
@@ -68,9 +68,8 @@ def reesCohomologyEquiv (q : ℕ) :
     Modules.isQuasicoherent_affineUnitImage (polynomialProjection I f) (pulledCoefficient I f F)
   letI := moduleCohomologyModuleOfHom X α (∐ reesPowerFamily I f F) q
   letI := moduleCohomologyModuleOfHom X α (reesPushforwardCoefficient I f F) q
-  exact (moduleCohomologyCoproductEquiv.{u, 0} X α (reesPowerFamily I f F) q).trans
-    ((moduleSectionsCohomologyEquiv X α (reesPowerSectionsIso I f F) q).trans
-      (moduleCohomologyAffinePushforwardEquiv (projection I f) (coefficient I f F) α q))
+  exact moduleCohomologyAffineCoproductEquiv (projection I f) (coefficient I f F)
+    α (reesPowerFamily I f F) (reesPowerSectionsIso I f F) q
 
 /-- On each homogeneous summand the canonical comparison retains the original
 coefficient inclusion, section isomorphism, and geometric cohomology map. -/
@@ -81,10 +80,13 @@ theorem reesCohomologyEquiv_lof (q n : ℕ)
     moduleCohomologyMapAlong (projection I f) (𝟙 (reesPushforwardCoefficient I f F)) q
       (Sheaf.H.map (moduleSectionsAddSheafMap X α (reesPowerSectionsIso I f F).hom) q
         (moduleCohomologyMapOfHom X α (Sigma.ι (reesPowerFamily I f F) n) q x)) := by
-  change moduleCohomologyMapAlong _ _ q
-    (Sheaf.H.map _ q (moduleCohomologyCoproductMap.{u, 0} X α (reesPowerFamily I f F) q
-      (DirectSum.lof A ℕ (fun k => ↥(idealPowerCohomology X α F I q k)) n x))) = _
-  rw [moduleCohomologyCoproductMap_lof.{u, 0}]
+  let : ∀ n, (reesPowerFamily I f F n).IsQuasicoherent := fun n =>
+    Modules.idealMultiple_isQuasicoherent X α F (I ^ n)
+  let : (coefficient I f F).IsQuasicoherent :=
+    Modules.isQuasicoherent_affineUnitImage (polynomialProjection I f) (pulledCoefficient I f F)
+  exact moduleCohomologyAffineCoproductEquiv_lof (projection I f) (coefficient I f F)
+    α (reesPowerFamily I f F) (reesPowerSectionsIso I f F) q n x
+
 
 omit [CompactSpace X] [X.IsSeparated] [F.IsQuasicoherent] in
 /-- The actual structural Rees action on the geometric coefficient is compatible

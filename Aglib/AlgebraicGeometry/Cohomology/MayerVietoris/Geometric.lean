@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.Topology.Sheaves.Cohomology.OpenTransfer
 public import Aglib.Topology.Sheaves.FreeAbelianPullback
 public import Aglib.AlgebraicGeometry.Cohomology.Cech.Comparison
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Modules
@@ -93,35 +94,13 @@ def mayerVietorisPullbackShortComplexIso (U V : X.Opens) :
         (homOfLE (show V ≤ U ⊔ V from le_sup_right))).symm
 
 /-- The original geometric map on the native open-Ext cohomology presheaves. -/
-def zariskiCohomologyOpenMap
+abbrev zariskiCohomologyOpenMap
     (A : Sheaf (Opens.grothendieckTopology X) AddCommGrpCat.{u})
     (B : Sheaf (Opens.grothendieckTopology Y) AddCommGrpCat.{u})
     (a : (zariskiPullback p).obj A ⟶ B) (n : ℕ) :
     Sheaf.cohomologyPresheaf.{u + 1} A n ⟶
-      (Opens.map p.base).op ⋙ Sheaf.cohomologyPresheaf.{u + 1} B n where
-  app U := AddCommGrpCat.ofHom
-    (((Ext.mk₀ a).postcomp ((additiveOpenFreeFunctor Y).obj (p ⁻¹ᵁ U.unop))
-      (Nat.add_zero n)).comp
-      (((Ext.mk₀ ((additiveOpenPullbackIso p).inv.app U.unop)).precomp
-        ((zariskiPullback p).obj A) (Nat.zero_add n)).comp
-        ((zariskiPullback p).mapExtAddHom ((additiveOpenFreeFunctor X).obj U.unop) A n)))
-  naturality U V i := by
-    ext x
-    change Ext.{u + 1} ((additiveOpenFreeFunctor X).obj U.unop) A n at x
-    change ((Ext.mk₀ ((additiveOpenPullbackIso p).inv.app V.unop)).comp
-        (((Ext.mk₀ ((additiveOpenFreeFunctor X).map i.unop)).comp x
-          (Nat.zero_add n)).mapExactFunctor (zariskiPullback p))
-        (Nat.zero_add n)).comp (Ext.mk₀ a) (Nat.add_zero n) =
-      (Ext.mk₀ ((additiveOpenFreeFunctor Y).map ((Opens.map p.base).map i.unop))).comp
-        (((Ext.mk₀ ((additiveOpenPullbackIso p).inv.app U.unop)).comp
-          (x.mapExactFunctor (zariskiPullback p)) (Nat.zero_add n)).comp
-          (Ext.mk₀ a) (Nat.add_zero n)) (Nat.zero_add n)
-    simp only [Ext.mapExactFunctor_comp, Ext.mapExactFunctor_mk₀,
-      ← Ext.comp_assoc_of_third_deg_zero, ← Ext.comp_assoc_of_second_deg_zero,
-      Ext.mk₀_comp_mk₀]
-    have hn := ((additiveOpenPullbackIso p).inv.naturality i.unop).symm
-    exact congrArg (fun k => ((Ext.mk₀ k).comp (x.mapExactFunctor (zariskiPullback p))
-      (Nat.zero_add n)).comp (Ext.mk₀ a) (Nat.add_zero n)) hn
+      (Opens.map p.base).op ⋙ Sheaf.cohomologyPresheaf.{u + 1} B n :=
+  TopCat.Sheaf.openCohomologyMap p.base a n
 
 /-- The actual extension class of the inverse-image Mayer–Vietoris sequence is the
 image of the original extension class under the original open-free comparisons. -/
@@ -149,19 +128,12 @@ theorem mayerVietoris_delta_geometric (U V : X.Opens)
         (mayerVietorisPullbackSquare p U V).δ B n (n + 1) rfl := by
   ext x
   change Ext.{u + 1} ((additiveOpenFreeFunctor X).obj (U ⊓ V)) A n at x
-  let c := (Opens.mayerVietorisSquare U V).shortComplex_shortExact.extClass
-  let d := (mayerVietorisPullbackSquare p U V).shortComplex_shortExact.extClass
-  change ((Ext.mk₀ ((additiveOpenPullbackIso p).inv.app (U ⊔ V))).comp
-      ((c.comp x (show 1 + n = n + 1 by omega)).mapExactFunctor (zariskiPullback p))
-      (Nat.zero_add (n + 1))).comp (Ext.mk₀ a) (Nat.add_zero (n + 1)) =
-    d.comp (((Ext.mk₀ ((additiveOpenPullbackIso p).inv.app (U ⊓ V))).comp
-      (x.mapExactFunctor (zariskiPullback p)) (Nat.zero_add n)).comp
-      (Ext.mk₀ a) (Nat.add_zero n)) (show 1 + n = n + 1 by omega)
-  rw [Ext.mapExactFunctor_comp]
-  rw [← Ext.comp_assoc _ _ _ (Nat.zero_add 1) (show 1 + n = n + 1 by omega)
-    (show 0 + 1 + n = n + 1 by omega)]
-  rw [mayerVietorisPullback_extClass_inv]
-  rw [Ext.comp_assoc_of_second_deg_zero, Ext.comp_assoc_of_third_deg_zero]
+  exact (zariskiPullback p).extCoefficientTransfer_extension
+    ((additiveOpenPullbackIso p).inv.app (U ⊔ V))
+    ((additiveOpenPullbackIso p).inv.app (U ⊓ V)) a
+    (Opens.mayerVietorisSquare U V).shortComplex_shortExact.extClass
+    (mayerVietorisPullbackSquare p U V).shortComplex_shortExact.extClass
+    (mayerVietorisPullback_extClass_inv p U V) n x
 
 /-- Coefficient maps commute with the native Mayer–Vietoris connecting homomorphism. -/
 theorem mayerVietoris_delta_coefficient (U V : X.Opens)

@@ -7,6 +7,8 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackCohomologyNormalization
 public import Aglib.CategoryTheory.Limits.CoconeValues
+public import Mathlib.Algebra.Category.Grp.FilteredColimits
+public import Mathlib.CategoryTheory.Limits.ConcreteCategory.Filtered
 
 /-! # The original fixed-coefficient limit cocone
 
@@ -116,44 +118,30 @@ theorem exists_pullback_eq_zero_of_colimit (q : ℕ)
     ∃ i, cohomologyPullback (X := b.pt.unop) (S := (Y.obj i).unop)
       (b.π.app i).unop F q δ = 0 := by
   let D := diagramCohomologyFunctor Y (pullbackCoefficientSystem Y b F) q
-  let C := pullbackLimitCohomologyCocone Y b c l hl F q
-  let B : Cone D := {
-    pt := AddCommGrpCat.of (Sheaf.H.{e} F q)
-    π := {
-      app i := AddCommGrpCat.ofHom
-        (cohomologyPullback (X := b.pt.unop) (S := (Y.obj i).unop)
-          (b.π.app i).unop F q)
-      naturality i j a := by
-        let baseExtI : HasExt.{e} (AbelianSheaf.{u, u + 1}
-            (((Functor.const I).obj b.pt).obj i).unop) :=
-          inferInstanceAs (HasExt.{e} (AbelianSheaf.{u, u + 1} b.pt.unop))
-        let baseExtJ : HasExt.{e} (AbelianSheaf.{u, u + 1}
-            (((Functor.const I).obj b.pt).obj j).unop) :=
-          inferInstanceAs (HasExt.{e} (AbelianSheaf.{u, u + 1} b.pt.unop))
-        apply ConcreteCategory.hom_ext
-        intro x
-        change cohomologyPullback (b.π.app j).unop F q x =
-          D.map a (cohomologyPullback (b.π.app i).unop F q x)
-        symm
-        change diagramCohomologyMap Y (pullbackCoefficientSystem Y b F) q a
-          (cohomologyPullback (b.π.app i).unop F q x) = _
-        rw [diagramCohomologyMap_pullbackCoefficientSystem]
-        exact cohomologyTransfer_pullbackTriangle
-          (b.π.app j).unop (b.π.app i).unop (Y.map a).unop
-          (congrArg Quiver.Hom.unop (b.w a)) F q x } }
-  let t : B.pt ⟶ C.pt := AddCommGrpCat.ofHom (cohomologyPullback l.unop F q)
-  apply CoconeValues.exists_zero_of_cone D hc B t ?_ δ hδ
-  intro i
+  let i : I := Classical.choice (IsFiltered.nonempty : Nonempty I)
   let baseExtI : HasExt.{e} (AbelianSheaf.{u, u + 1}
       (((Functor.const I).obj b.pt).obj i).unop) :=
     inferInstanceAs (HasExt.{e} (AbelianSheaf.{u, u + 1} b.pt.unop))
-  apply ConcreteCategory.hom_ext
-  intro x
-  change (pullbackLimitCohomologyCocone Y b c l hl F q).ι.app i
-      (cohomologyPullback (b.π.app i).unop F q x) = cohomologyPullback l.unop F q x
-  rw [pullbackLimitCohomologyCocone_leg]
-  exact cohomologyTransfer_pullbackTriangle l.unop (b.π.app i).unop
-    (c.ι.app i).unop (congrArg Quiver.Hom.unop (hl i)) F q x
+  let z : D.obj i := cohomologyPullback (b.π.app i).unop F q δ
+  have hz : (pullbackLimitCohomologyCocone Y b c l hl F q).ι.app i z = 0 := by
+    change (pullbackLimitCohomologyCocone Y b c l hl F q).ι.app i
+      (cohomologyPullback (b.π.app i).unop F q δ) = 0
+    rw [pullbackLimitCohomologyCocone_leg]
+    exact (cohomologyTransfer_pullbackTriangle l.unop (b.π.app i).unop
+      (c.ι.app i).unop (congrArg Quiver.Hom.unop (hl i)) F q δ).trans hδ
+  obtain ⟨j, a, ha⟩ := CoconeValues.exists_map_eq_zero D hc z hz
+  let baseExtJ : HasExt.{e} (AbelianSheaf.{u, u + 1}
+      (((Functor.const I).obj b.pt).obj j).unop) :=
+    inferInstanceAs (HasExt.{e} (AbelianSheaf.{u, u + 1} b.pt.unop))
+  refine ⟨j, ?_⟩
+  have htransfer : (D.map a).hom z = cohomologyPullback (b.π.app j).unop F q δ := by
+    change diagramCohomologyMap Y (pullbackCoefficientSystem Y b F) q a
+      (cohomologyPullback (b.π.app i).unop F q δ) = _
+    rw [diagramCohomologyMap_pullbackCoefficientSystem]
+    exact cohomologyTransfer_pullbackTriangle
+      (b.π.app j).unop (b.π.app i).unop (Y.map a).unop
+      (congrArg Quiver.Hom.unop (b.w a)) F q δ
+  exact htransfer.symm.trans ha
 
 end FixedSystem
 

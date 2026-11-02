@@ -30,28 +30,99 @@ universe u
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry TopologicalSpace Opposite
 
+namespace CategoryTheory.Functor
+
+open CategoryTheory.Abelian
+
+universe i j k l u₀ v₀ u₁ v₁ w
+
+variable {C : Type u₀} [Category.{v₀} C] [Abelian C] [HasExt.{w} C]
+  {D : Type u₁} [Category.{v₁} D] [Abelian D] [HasExt.{w} D]
+  {I : Type i} [Category.{j} I] {J : Type k} [Category.{l} J]
+
+/-- Eliminate the original identity coefficient edge at the complete Ext-square
+factory, before native module coefficients enter its four-map construction. -/
+private theorem extDiagramCoefficientSquare_identity
+    (L : C ⥤ D) [L.Additive] [PreservesFiniteLimits L] [PreservesFiniteColimits L]
+    (F : I ⥤ C) (G : J ⥤ D) (H : I ⥤ J) (e : F ⋙ L ≅ H ⋙ G)
+    {A : C} {B B' : D} (a : L.obj A ⟶ B) (a' : L.obj A ⟶ B')
+    (g : B ⟶ B') (h : L.map (𝟙 A) ≫ a' = a ≫ g) (n : ℕ) :
+    (L.extDiagramCoefficientSquare F G H e a a' (𝟙 A) g h n).f₂₄ =
+      (L.extDiagramCoefficientSquare F G H e a a' (𝟙 A) g h n).f₁₃ ≫
+        (L.extDiagramCoefficientSquare F G H e a a' (𝟙 A) g h n).f₃₄ := by
+  have hs := (L.extDiagramCoefficientSquare F G H e a a' (𝟙 A) g h n).fac
+  simpa only [extDiagramCoefficientSquare, Functor.map_id, Category.id_comp] using hs
+
+end CategoryTheory.Functor
+
+namespace TopCat.Sheaf
+
+open CategoryTheory.Abelian
+
+universe w
+
+variable {X Y : TopCat.{u}}
+  [HasExt.{w} (CategoryTheory.Sheaf (Opens.grothendieckTopology X) AddCommGrpCat.{u})]
+  [HasExt.{w} (CategoryTheory.Sheaf (Opens.grothendieckTopology Y) AddCommGrpCat.{u})]
+
+attribute [local instance] reflectsLimits_of_reflectsIsomorphisms
+
+local instance (p : Y ⟶ X) : (openCohomologyInverseImage p).IsLeftAdjoint :=
+  (pullbackPushforwardAdjunction AddCommGrpCat.{u} p).isLeftAdjoint
+
+local instance (p : Y ⟶ X) : RepresentablyFlat (Opens.map p) :=
+  flat_of_preservesFiniteLimits _
+
+local instance (p : Y ⟶ X) : PreservesFiniteLimits (openCohomologyInverseImage p) := by
+  change PreservesFiniteLimits ((Opens.map p).sheafPullback AddCommGrpCat.{u} _ _)
+  apply Functor.sheafPullbackConstruction.preservesFiniteLimits
+
+local instance (p : Y ⟶ X) : (openCohomologyInverseImage p).Additive :=
+  Functor.additive_of_preserves_binary_products _
+
+private theorem openCohomologyCoefficientSquare_identity (p : Y ⟶ X)
+    {A : CategoryTheory.Sheaf (Opens.grothendieckTopology X) AddCommGrpCat.{u}}
+    {B B' : CategoryTheory.Sheaf (Opens.grothendieckTopology Y) AddCommGrpCat.{u}}
+    (a : (openCohomologyInverseImage p).obj A ⟶ B)
+    (a' : (openCohomologyInverseImage p).obj A ⟶ B') (g : B ⟶ B')
+    (h : (openCohomologyInverseImage p).map (𝟙 A) ≫ a' = a ≫ g) (n : ℕ) :
+    (openCohomologyCoefficientSquare p a a' (𝟙 A) g h n).f₂₄ =
+      (openCohomologyCoefficientSquare p a a' (𝟙 A) g h n).f₁₃ ≫
+        (openCohomologyCoefficientSquare p a a' (𝟙 A) g h n).f₃₄ :=
+  (openCohomologyInverseImage p).extDiagramCoefficientSquare_identity
+    (openFreeAbelianFunctor X) (openFreeAbelianFunctor Y) (Opens.map p)
+    (openFreeAbelianPullbackIso p) a a' g h n
+
+end TopCat.Sheaf
+
 namespace AlgebraicGeometry.Scheme.Cohomology
 
 variable {X Y Z : Scheme.{u}}
 
-/-- Postcomposing an original module coefficient arrow gives the original coefficient map
-on the unchanged native open-cohomology presheaf. -/
-theorem zariskiCohomologyOpenMap_module_postcomp (p : Y ⟶ X)
+/-- The same complete original coefficient square for a module postcomposition. -/
+abbrev modulePostcompositionCohomologySquare (p : Y ⟶ X)
     {M : X.Modules} {N P : Y.Modules}
-    (φ : M ⟶ (Scheme.Modules.pushforward p).obj N) (ψ : N ⟶ P) (n : ℕ) :
-    zariskiCohomologyOpenMap p (moduleAddSheaf X M) (moduleAddSheaf Y P)
-        (moduleCoefficientPullback p (φ ≫ (Scheme.Modules.pushforward p).map ψ)) n =
-      zariskiCohomologyOpenMap p (moduleAddSheaf X M) (moduleAddSheaf Y N)
-          (moduleCoefficientPullback p φ) n ≫
-        Functor.whiskerLeft (Opens.map p.base).op
-          ((Sheaf.cohomologyPresheafFunctor.{u + 1} (Opens.grothendieckTopology Y) n).map
-            ((SheafOfModules.toSheaf Y.ringCatSheaf).map ψ)) := by
-  have H := zariskiCohomologyOpenMap_coefficients p (moduleCoefficientPullback p φ)
+    (φ : M ⟶ (Scheme.Modules.pushforward p).obj N) (ψ : N ⟶ P) (n : ℕ) :=
+  zariskiCohomologyCoefficientSquare p (moduleCoefficientPullback p φ)
     (moduleCoefficientPullback p (φ ≫ (Scheme.Modules.pushforward p).map ψ))
     (𝟙 (moduleAddSheaf X M)) ((SheafOfModules.toSheaf Y.ringCatSheaf).map ψ)
     (by erw [CategoryTheory.Functor.map_id, Category.id_comp]
         exact moduleCoefficientPullback_postcomp p φ ψ) n
-  simpa only [CategoryTheory.Functor.map_id, Category.id_comp] using H
+
+/-- Postcomposition respects the original open-cohomology maps. The projections
+are the original two transfers and coefficient map from the same square. -/
+theorem zariskiCohomologyOpenMap_module_postcomp (p : Y ⟶ X)
+    {M : X.Modules} {N P : Y.Modules}
+    (φ : M ⟶ (Scheme.Modules.pushforward p).obj N) (ψ : N ⟶ P) (n : ℕ) :
+    (modulePostcompositionCohomologySquare p φ ψ n).f₂₄ =
+      (modulePostcompositionCohomologySquare p φ ψ n).f₁₃ ≫
+        (modulePostcompositionCohomologySquare p φ ψ n).f₃₄ :=
+  TopCat.Sheaf.openCohomologyCoefficientSquare_identity p.base
+    (moduleCoefficientPullback p φ)
+    (moduleCoefficientPullback p (φ ≫ (Scheme.Modules.pushforward p).map ψ))
+    ((SheafOfModules.toSheaf Y.ringCatSheaf).map ψ)
+    (by erw [CategoryTheory.Functor.map_id, Category.id_comp]
+        exact moduleCoefficientPullback_postcomp p φ ψ) n
 
 /-- Successive original module coefficient maps compose with the actual native
 module direct-image composition comparison. -/
@@ -70,6 +141,14 @@ theorem zariskiCohomologyOpenMap_module_comp_app (p : Y ⟶ X) (q : Z ⟶ Y)
   have H := zariskiCohomologyOpenMap_comp_app p q (moduleAddSheaf X M)
     (moduleAddSheaf Y N) (moduleAddSheaf Z P)
     (moduleCoefficientPullback p φ) (moduleCoefficientPullback q ψ) n U
+  change (zariskiCohomologyOpenMap p (moduleAddSheaf X M) (moduleAddSheaf Y N)
+      (moduleCoefficientPullback p φ) n).app U ≫
+      (zariskiCohomologyOpenMap q (moduleAddSheaf Y N) (moduleAddSheaf Z P)
+        (moduleCoefficientPullback q ψ) n).app ((Opens.map p.base).op.obj U) =
+    (zariskiCohomologyOpenMap (q ≫ p) (moduleAddSheaf X M) (moduleAddSheaf Z P)
+      ((TopCat.Sheaf.abelianPullbackCompIso p.base q.base).inv.app (moduleAddSheaf X M) ≫
+        (zariskiPullback q).map (moduleCoefficientPullback p φ) ≫
+          moduleCoefficientPullback q ψ) n).app U at H
   erw [moduleCoefficientPullback_comp p q φ ψ] at H
   exact H
 

@@ -12,6 +12,7 @@ public import Aglib.Topology.Clopen.DenseRange
 public import Aglib.Topology.Connected.FiniteClosedCover
 public import Aglib.Topology.Connected.JacobsonValues
 public import Aglib.Topology.Connected.LocallyConnected
+public import Aglib.Topology.Constructible.GenericAvoidance
 public import Aglib.Topology.Constructible.Noetherian
 public import Aglib.Topology.GenericOrClosedDimension
 public import Aglib.Topology.Irreducible.ClosedCover
@@ -31,6 +32,12 @@ public import Aglib.Topology.Sheaves.Cech.Comparison
 public import Aglib.Topology.Sheaves.Cech.Resolution
 public import Aglib.Topology.Sheaves.Cech.Restriction
 public import Aglib.Topology.Sheaves.ClosedSupport
+public import Aglib.Topology.Sheaves.Cohomology.OpenTransfer
+public import Aglib.Topology.Sheaves.Cohomology.OpenTransfer.CoefficientSquare
+public import Aglib.Topology.Sheaves.Cohomology.OpenTransfer.CompositionSquare
+public import Aglib.Topology.Sheaves.Cohomology.OpenTransfer.NormalizedScalarRestrictionSquare
+public import Aglib.Topology.Sheaves.Cohomology.OpenTransfer.RestrictionCoefficientSquare
+public import Aglib.Topology.Sheaves.Cohomology.OpenTransfer.RestrictionSquare
 public import Aglib.Topology.Sheaves.Cohomology.Restriction
 public import Aglib.Topology.Sheaves.Cohomology.Restriction.Geometric
 public import Aglib.Topology.Sheaves.Cohomology.SectionCycles

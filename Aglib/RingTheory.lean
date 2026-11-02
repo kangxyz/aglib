@@ -780,6 +780,7 @@ public import Aglib.RingTheory.Localization.Away.SaturatedChart
 public import Aglib.RingTheory.Localization.Away.SaturatedChartLift
 public import Aglib.RingTheory.Localization.Away.Torsion
 public import Aglib.RingTheory.Localization.EndomorphismPi
+public import Aglib.RingTheory.Localization.FiniteFieldCapture
 public import Aglib.RingTheory.Localization.FiniteIntegralCapture
 public import Aglib.RingTheory.Localization.FiniteIntegralCaptureAway
 public import Aglib.RingTheory.Localization.FiniteIntegralCaptureBase
@@ -1102,6 +1103,7 @@ public import Aglib.RingTheory.TensorProduct.PushoutModuleEquiv
 public import Aglib.RingTheory.TrivSqZeroExt
 public import Aglib.RingTheory.Units.PositiveNat
 public import Aglib.RingTheory.Unramified.Equalizer
+public import Aglib.RingTheory.Unramified.FiniteFibres
 public import Aglib.RingTheory.Unramified.GaloisPoint
 public import Aglib.RingTheory.Unramified.GenericFinite
 public import Aglib.RingTheory.Unramified.PointFactorization

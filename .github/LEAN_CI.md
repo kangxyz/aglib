@@ -11,8 +11,11 @@ Build and supply `Checks` separately as a Test helper.
 downloads from Reservoir/GitHub. This is separate from
 `LAKE_ARTIFACT_CACHE=true`, which keeps native project artifacts available.
 
+The job descriptions below cover ordinary incremental mode;
+[cache-only differences](#native-root-seeds-and-cache-only-runs) are specified below.
+
 - `build` restores caches, configures the pinned toolchain, obtains the Mathlib
-  cache, imports published native caches for resolved `kangxyz/*` Git dependencies,
+  cache, imports published root and resolved `kangxyz/*` Git dependency caches,
   and incrementally builds only the production targets. It saves completed
   compilation, stages the production build's native mappings and outputs, and
   uploads that mathematical artifact for Test. It also snapshots the native
@@ -33,7 +36,8 @@ downloads from Reservoir/GitHub. This is separate from
   the same branch restores compatible saved outputs and continues incrementally;
   no automatic rerun is scheduled. Network failures or runner teardown can still
   prevent cache delivery.
-- `test_lint` requires successful Build. It downloads this run's mandatory
+- `test_lint` requires successful Build. Its separate runner also imports the
+  published root/dependency seeds. It downloads this run's mandatory
   `cache-staging` artifact, overlays its native mappings/artifacts with
   `lake cache unstage --force-overwrite`, and verifies only the production targets
   with `LAKE_RESTORE_ARTIFACTS=true lake build --no-build --rehash`. A missing
@@ -147,23 +151,75 @@ removed after restoration so subsequent cache saves do not duplicate them. The d
 snapshot transfers the existing native content store without a custom map
 format; zstd compression is streamed to avoid an uncompressed tar copy. It is
 not downloaded when Test's Actions restore succeeds with a matching key.
-Build discovers accepted `kangxyz/*` Git dependencies from the resolved manifest,
-including inherited dependencies: native `-o` exports only the producer's root
-package, so each upstream needs its own mappings. The existing native release
-transport now serves both CI and explicit local downloads. Fetch the exact
-`lean-native-<pin>` release first; otherwise try at most five matching assets from
-20 recent releases. New asset names include OS, architecture and toolchain;
+Both jobs use the same release-import loop for their root package and accepted
+`kangxyz/*` Git dependencies from the resolved manifest, including inherited
+dependencies. Native `-o` exports only the producer's root package, so each
+upstream needs its own mappings. The existing native release transport serves
+both CI and explicit local downloads. For the root, the requested producer
+defaults to the current consumer SHA; dependencies retain their configured pins.
+Fetch the exact `lean-native-<producer>` release first; otherwise try at most five
+matching assets from 20 recent releases. New asset names include OS, architecture and toolchain;
 `producer.json` binds repository, actual producer SHA, package and full compiler.
-The release tag must target that producer SHA. Downloads register mappings with
-`lake cache unstage <staging-directory> <manifest-package-name>`, retaining quoted
-hyphenated selectors. Logs report producer SHA and consumer pin separately.
+The release tag must target that producer SHA. Root downloads register mappings
+with `lake --no-build cache unstage <staging-directory> --force-overwrite`, without
+a dependency selector. Dependencies retain
+`lake cache unstage <staging-directory> <manifest-package-name>`, including quoted
+hyphenated selectors. Logs report actual producer and consumer/pin separately.
 Existing `lake-native-cache-<run>-<attempt>.tar` assets remain optional legacy
 seeds; current Lake input hashes decide their applicability. Downloads use the
 normal repository token's public-read access, without a cross-repository secret.
 Unavailable or incompatible seeds leave the ordinary incremental build in place.
 Archives are unpacked only as flat regular native files, and temporary downloads
 are removed before saving the Actions cache. This is cache acquisition, not an
-additional mathematical check. Build/Test/publication conditions are unchanged.
+additional mathematical check. Configured check predicates and release-publication
+conditions are unchanged.
+
+## Native root seeds and cache-only runs
+
+The manual `ci.yml` entry accepts `native-root-producer`, `native-root-asset`,
+`native-root-sha256` and `native-cache-only`. Defaults preserve normal incremental
+builds and normal cache saves. An explicit root asset selects that exact producer
+release asset; its optional SHA-256 is checked before extraction. The existing
+flat native tar format and `producer.json` metadata are retained. Producer SHA
+identifies the actual staging checkout, not a relabelled consumer or prior native
+invocation; Lake's current source/import/options/compiler inputs decide reuse.
+
+For an Aglib main-branch run with `native-cache-only=true`, producer, asset and
+SHA-256 are required. Both jobs require a warm Actions-cache match and import the
+same root/test asset. The metadata must match the full compiler; `toolchain` and
+`manifest_sha256` bind the selected pins. Measured `root_build_bytes` and
+`root_build_entries` admit conventional output restoration in addition to the
+flat native files. Download/import and later staging gates
+check live disk, inode and RAM availability. A missing or incompatible seed fails
+without the ordinary Mathlib-download or compiler fallback.
+
+Strict Build verifies production, AglibTest and required checker-tool availability
+with native `--no-build --rehash`, then exports production outputs without
+compilation. Strict Test materializes imported AglibTest outputs before applying
+the mandatory current-run Build production overlay. It retains production-output
+verification and every configured generated-entry, style, Test, declaration-lint
+and production-axiom predicate, with the same production roots and accepted axioms.
+Checker, test and auditor preparation also forbid compilation in this mode. This
+changes artifact availability/failure behavior, not mathematical check coverage.
+
+Strict mode suppresses Build's duplicate full Actions-cache save. After every
+required Test outcome and quiescence succeed, it can save one complete `.lake`
+and native-cache generation. The local Node24 action uses the public pinned
+`@actions/cache` 6.1.0 `saveCache` API under
+`prlimit --fsize=10000000000:10000000000`; its tar/zstd descendants inherit the
+hard 10,000,000,000-byte file limit. On Linux the official SDK creates one compressed
+archive, without a separate disk tar. Admission reserves the cap plus runner
+margin and SDK installation allowance. Overflow, a nonpositive cache ID or an
+absent matching main cache entry is failure. The saved ID, key, version and actual
+size are checked through the normal read-only cache API. Other cache generations
+remain subject to the repository's configured quota and ordinary eviction policy.
+
+No mode fabricates GitHub check success from native receipts. A published seed,
+successful native readiness, completed configured checks and persistent cache
+delivery are distinct observations. Source changes, service failures or insufficient
+resources can still prevent delivery. Ordinary runs retain their previous save
+behavior; release publication still requires the existing successful-check and
+default-branch-push conditions.
 
 Run steps use a native systemd scope, dropping back to the runner UID/GID and
 preserving its working directory, environment and selected toolchain. The
@@ -241,7 +297,12 @@ compilation and the existing Actions cache reuse the executable; declaration
 checks themselves always run. The private tool build explicitly selects its
 generated TOML and refreshes only that tool's dependency resolution while keeping
 the package toolchain. Restored tool configuration or path entries cannot select
-a different executable or provider. As in
+a different executable or provider. The workflow passes `CI_LINT_NO_BUILD=true`
+for strict native cache-only runs; private-tool preparation then adds native
+`--no-build` while retaining the generated config, dependency update and toolchain
+selection. Missing tool/provider outputs fail instead of compiling. The default
+preparation and unsupported full-command fallback retain their existing behavior.
+As in
 [Batteries PR #2028](https://github.com/leanprover-community/batteries/pull/2028),
 the imported environment is marked persistent only when there is exactly one
 resolved declaration-driver root; multiple roots keep ordinary release behavior.

@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.FieldComparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.FiniteProducts
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Value
 
 /-! # Original finite-image and annihilator tests over a field extension -/
 
@@ -100,14 +101,8 @@ theorem projectiveLine_fieldExtension_finiteConstantDirectImage_bijective
 
 private theorem exists_small_finiteValueIso (A : AddCommGrpCat.{u + 1}) [Finite A] :
     ∃ (B : Type u) (_ : AddCommGroup B) (_ : Finite B),
-      Nonempty (ConstantFinite.value B ≅ A) := by
-  let := Fintype.ofFinite A
-  have : Small.{u} A := Small.mk'
-    ((Fintype.equivFin A).trans (Equiv.ulift.{u}).symm)
-  let B := Shrink.{u} A
-  have : Finite B := Finite.of_equiv A (equivShrink A)
-  exact ⟨B, inferInstance, inferInstance,
-    ⟨AddEquiv.toAddCommGrpIso (AddEquiv.ulift.trans (Shrink.addEquiv (α := A)))⟩⟩
+      Nonempty (ConstantFinite.value B ≅ A) :=
+  ConstantFinite.exists_small_finiteValueIso A
 
 /-- Finite values in the native sheaf-value universe are transported through
 their actual additive equivalence to a small finite value. -/

@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.FiniteModel.Derived
-public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.DerivedModel
+public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.SeparatedDerivedModel
 public import Aglib.AlgebraicGeometry.Modules.Perfect.Affine
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Finiteness
 
@@ -146,14 +146,15 @@ def derivedPushforwardObjectIso (e : ι ≃ Fin (n + 1)) (I : InjectiveResolutio
     DerivedCategory.Plus.Q.obj D.sheafModelPlus ≅
       (Scheme.Modules.pushforward f).rightDerivedFunctorPlus.obj
         ((DerivedCategory.Plus.singleFunctor X.Modules 0).obj M) :=
-  moduleSpecDerivedPushforwardModelIso f I D.toPlus
+  moduleSpecDerivedPushforwardModelIso_of_isSeparated f I D.toPlus
     (D.derivedGlobalSectionsIso hU hcover e I)
 
+omit [QuasiSeparated f] in
 /-- The direct-image object comparison is the sole native exact-tilde transport of the
 same original global-sections comparison. -/
 theorem derivedPushforwardObjectIso_eq (e : ι ≃ Fin (n + 1)) (I : InjectiveResolution M) :
     D.derivedPushforwardObjectIso hU hcover e I =
-      moduleSpecDerivedPushforwardModelIso f I D.toPlus
+      moduleSpecDerivedPushforwardModelIso_of_isSeparated f I D.toPlus
         (D.derivedGlobalSectionsIso hU hcover e I) := rfl
 
 /-- The literal scalar extension of the same source model represents installed direct image
@@ -172,7 +173,7 @@ def baseChangeDerivedPushforwardObjectIso (e : ι ≃ Fin (n + 1))
   let p := pullback.fst f (Spec.map (CommRingCat.ofHom σ))
   let N := (Scheme.Modules.pullback p).obj M
   let : N.IsQuasicoherent := Scheme.Modules.quasicoherent_pullback p M
-  exact moduleSpecDerivedPushforwardModelIso
+  exact moduleSpecDerivedPushforwardModelIso_of_isSeparated
     (pullback.snd f (Spec.map (CommRingCat.ofHom σ))) I (D.baseChangePlus σ)
     (D.baseChangeDerivedGlobalSectionsIso hU hcover σ e hflat I)
 

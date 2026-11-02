@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Products.Finite
+public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.SeparatedCohomology
 
 /-!
 # Finite original cohomology over a finite projective product
@@ -113,7 +114,15 @@ theorem moduleCohomology_finite_of_finiteToProjectiveProduct
         ((Scheme.Modules.pushforward f).rightDerivedFunctorPlus.obj
           ((DerivedCategory.Plus.singleFunctor Z.Modules 0).obj M)))) :=
     ((affineLocallyFiniteType_spec_iff (.of R) _).mp hc).2
-  exact Module.Finite.equiv
-    (moduleDerivedPushforwardSingleAffineSectionsLinearEquiv f M (injectiveResolution M) j)
+  let E : moduleSpecΓFunctor.obj
+      ((DerivedCategory.Plus.homologyFunctor (Spec (.of R)).Modules (j : ℤ)).obj
+        ((Scheme.Modules.pushforward f).rightDerivedFunctorPlus.obj
+          ((DerivedCategory.Plus.singleFunctor Z.Modules 0).obj M))) ≃ₗ[R]
+      moduleSpecΓFunctor.obj (((Scheme.Modules.pushforward f).rightDerived j).obj M) :=
+    (moduleSpecΓFunctor.mapIso
+      (((Scheme.Modules.pushforward f).rightDerivedSingleHomologyIso j).app M).symm).toLinearEquiv
+  exact Module.Finite.equiv (E.trans
+    (moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated f M
+      (injectiveResolution M) j))
 
 end AlgebraicGeometry.Scheme.Cohomology

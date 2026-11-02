@@ -40,7 +40,11 @@ for name, content in (("lakefile.toml", config),
 PY
 # Select our generated config and re-resolve only this private tool's known path
 # dependency. Restored manifests/configs must not redirect the compiled target.
-lake --dir "$build" --file lakefile.toml --update --keep-toolchain build batchedLint
+if test "${CI_LINT_NO_BUILD:-false}" = true; then
+  lake --dir "$build" --file lakefile.toml --update --keep-toolchain --no-build build batchedLint
+else
+  lake --dir "$build" --file lakefile.toml --update --keep-toolchain build batchedLint
+fi
 driver_args="$(python3 "$helper_dir/preflight.py" --driver-args)"
 builtin_status=0
 builtin_start=$SECONDS
