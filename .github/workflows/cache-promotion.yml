@@ -27,7 +27,7 @@ concurrency:
   cancel-in-progress: false
 env:
   CONTROL: ${{ github.workspace }}/.promotion-control
-  RAW_ARCHIVE: ${{ runner.temp }}/full-cache-raw/cache.tzst
+  RAW_ARCHIVE: /home/runner/work/_temp/full-cache-raw/cache.tzst
   OFFICIAL_CLIENT_ROOT: ${{ github.workspace }}/.official-cache-client/node_modules/@actions/cache
 defaults:
   run:
