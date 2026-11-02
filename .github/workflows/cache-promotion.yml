@@ -1,0 +1,268 @@
+# PROPOSAL ONLY. User HOLD forbids installing or running this without approval.
+name: Full cache promotion (opaque transport)
+on:
+  workflow_dispatch:
+    inputs:
+      phase:
+        type: choice
+        options: [export, seed, ready]
+        required: true
+      export-run:
+        description: Successful feature export and independent internal transport-verification run
+        type: string
+      metadata-id:
+        description: Small producer-info artifact ID from that export
+        type: string
+      info-sha:
+        description: Reviewed producer-info.json SHA-256 from export summary
+        type: string
+      seed-key:
+        description: Exact confirmed main-scoped key (ready phase only)
+        type: string
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: full-cache-promotion
+  cancel-in-progress: false
+env:
+  CONTROL: ${{ github.workspace }}/.promotion-control
+  RAW_ARCHIVE: ${{ runner.temp }}/full-cache-raw/cache.tzst
+  OFFICIAL_CLIENT_ROOT: ${{ github.workspace }}/.official-cache-client/node_modules/@actions/cache
+defaults:
+  run:
+    shell: bash
+jobs:
+  export:
+    name: Export full raw cache
+    if: ${{ inputs.phase == 'export' && github.repository == 'kangxyz/aglib' && github.ref == 'refs/heads/etale-abstract' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    outputs:
+      metadata-id: ${{ steps.meta.outputs.artifact-id }}
+      raw-id: ${{ steps.raw.outputs.artifact-id }}
+      info-sha: ${{ steps.info.outputs.info-sha }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: 88bab48f8801b48464fe6cce9881c21713001009
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.sha }}
+          path: .promotion-control
+          persist-credentials: false
+      - name: Resource admission before SDK installation and raw download
+        run: python3 "$CONTROL/.github/cache-promotion/promotion.py" capacity install
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: actions/cache
+          ref: 55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+          path: .official-cache-client
+          persist-credentials: false
+      - name: Install exact official-client dependency closure; no package scripts
+        working-directory: .official-cache-client
+        run: npm ci --ignore-scripts --omit=dev --cache "$RUNNER_TEMP/promotion-npm-cache"
+      - name: Recheck live space and prepare single raw-file destination
+        run: |
+          python3 "$CONTROL/.github/cache-promotion/promotion.py" capacity copy
+          mkdir "$RUNNER_TEMP/full-cache-raw"
+      - name: Feature-scoped exact-key download through pinned official client
+        uses: ./.promotion-control/.github/cache-promotion
+        env:
+          RAW_PHASE: export
+      - name: Stream headers and digest without extraction
+        run: timeout --signal=TERM --kill-after=10s 45m python3 "$CONTROL/.github/cache-promotion/scan-raw.py" "$RAW_ARCHIVE" "$RUNNER_TEMP/resource.json"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        id: raw
+        with:
+          name: full-raw-88bab48-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/full-cache-raw/cache.tzst
+          compression-level: 0
+          retention-days: 7
+          if-no-files-found: error
+      - name: Bind producer source/pins, cache bytes and actual exporter separately
+        id: info
+        env:
+          RAW_ARTIFACT_ID: ${{ steps.raw.outputs.artifact-id }}
+          RAW_ARTIFACT_DIGEST: ${{ steps.raw.outputs.artifact-digest }}
+        run: python3 "$CONTROL/.github/cache-promotion/promotion.py" produce "$RUNNER_TEMP/producer-meta" "$RUNNER_TEMP/resource.json"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        id: meta
+        with:
+          name: full-meta-88bab48-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/producer-meta/
+          compression-level: 0
+          retention-days: 7
+          if-no-files-found: error
+      - name: Report review identifiers
+        env:
+          INFO_SHA: ${{ steps.info.outputs.info-sha }}
+          META_ID: ${{ steps.meta.outputs.artifact-id }}
+          RAW_ID: ${{ steps.raw.outputs.artifact-id }}
+        run: printf 'Export run=%s attempt=%s\nMetadata artifact=%s\nRaw artifact=%s\nProducer-info SHA-256=%s\n' "$GITHUB_RUN_ID" "$GITHUB_RUN_ATTEMPT" "$META_ID" "$RAW_ID" "$INFO_SHA" >> "$GITHUB_STEP_SUMMARY"
+
+  verify-transport:
+    name: Verify internal full transport
+    needs: export
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.sha }}
+          path: .promotion-control
+          persist-credentials: false
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
+        with:
+          artifact-ids: ${{ needs.export.outputs.metadata-id }}
+          merge-multiple: true
+          path: ${{ runner.temp }}/producer-meta
+      - name: Verify small provenance and admit space before large internal transport download
+        env:
+          INFO_SHA: ${{ needs.export.outputs.info-sha }}
+        run: |
+          python3 "$CONTROL/.github/cache-promotion/promotion.py" info "$RUNNER_TEMP/producer-meta" "$INFO_SHA"
+          python3 "$CONTROL/.github/cache-promotion/promotion.py" capacity copy
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
+        with:
+          artifact-ids: ${{ needs.export.outputs.raw-id }}
+          merge-multiple: true
+          path: ${{ runner.temp }}/full-cache-raw
+      - name: Independently verify downloaded full bytes, digest and complete header stream
+        env:
+          INFO_SHA: ${{ needs.export.outputs.info-sha }}
+        run: |
+          timeout --signal=TERM --kill-after=10s 45m python3 "$CONTROL/.github/cache-promotion/scan-raw.py" "$RAW_ARCHIVE" "$RUNNER_TEMP/roundtrip-resource.json"
+          python3 "$CONTROL/.github/cache-promotion/promotion.py" raw "$RUNNER_TEMP/producer-meta" "$INFO_SHA" "$RAW_ARCHIVE" "$RUNNER_TEMP/roundtrip-resource.json"
+
+  import:
+    name: Main raw seed or cache-only readiness
+    if: ${{ (inputs.phase == 'seed' || inputs.phase == 'ready') && github.repository == 'kangxyz/aglib' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: 88bab48f8801b48464fe6cce9881c21713001009
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.sha }}
+          path: .promotion-control
+          persist-credentials: false
+      - name: Validate review inputs before using artifact selectors
+        env:
+          EXPORT_RUN: ${{ inputs.export-run }}
+          META_ID: ${{ inputs.metadata-id }}
+          INFO_SHA: ${{ inputs.info-sha }}
+          SEED_KEY: ${{ inputs.seed-key }}
+          PHASE: ${{ inputs.phase }}
+        run: |
+          [[ "$EXPORT_RUN" =~ ^[0-9]+$ && "$META_ID" =~ ^[0-9]+$ && "$INFO_SHA" =~ ^[0-9a-f]{64}$ ]]
+          if test "$PHASE" = ready; then [[ "$SEED_KEY" =~ ^lean-Linux-X64-[0-9a-f-]+-tests-1-main-raw-[0-9]+-[0-9]+$ ]]; fi
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
+        with:
+          artifact-ids: ${{ inputs.metadata-id }}
+          run-id: ${{ inputs.export-run }}
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          merge-multiple: true
+          path: ${{ runner.temp }}/producer-meta
+      - name: Bind successful trusted export, separate internal transport roundtrip and policy
+        id: trust
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPORT_RUN: ${{ inputs.export-run }}
+          META_ID: ${{ inputs.metadata-id }}
+          INFO_SHA: ${{ inputs.info-sha }}
+          PHASE: ${{ inputs.phase }}
+          SEED_KEY: ${{ inputs.seed-key }}
+        run: |
+          test "$(python3 -c 'import json,os; print(json.load(open(os.environ["RUNNER_TEMP"]+"/producer-meta/producer-info.json"))["export_run"])')" = "$EXPORT_RUN"
+          python3 "$CONTROL/.github/cache-promotion/promotion.py" trusted "$RUNNER_TEMP/producer-meta" "$INFO_SHA" "$META_ID"
+          python3 "$CONTROL/.github/cache-promotion/promotion.py" quota "$PHASE" "$SEED_KEY"
+          python3 "$CONTROL/.github/cache-promotion/promotion.py" capacity install
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        if: ${{ inputs.phase == 'seed' }}
+        with:
+          repository: actions/cache
+          ref: 55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+          path: .official-cache-client
+          persist-credentials: false
+      - name: Install locked official client
+        if: ${{ inputs.phase == 'seed' }}
+        working-directory: .official-cache-client
+        run: npm ci --ignore-scripts --omit=dev --cache "$RUNNER_TEMP/promotion-npm-cache"
+      - name: Admit space before sole transport archive download
+        if: ${{ inputs.phase == 'seed' }}
+        run: python3 "$CONTROL/.github/cache-promotion/promotion.py" capacity copy
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
+        if: ${{ inputs.phase == 'seed' }}
+        with:
+          artifact-ids: ${{ steps.trust.outputs.raw-id }}
+          run-id: ${{ inputs.export-run }}
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          merge-multiple: true
+          path: ${{ runner.temp }}/full-cache-raw
+      - name: Verify complete imported raw bytes and resource scan
+        if: ${{ inputs.phase == 'seed' }}
+        env:
+          INFO_SHA: ${{ inputs.info-sha }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          timeout --signal=TERM --kill-after=10s 45m python3 "$CONTROL/.github/cache-promotion/scan-raw.py" "$RAW_ARCHIVE" "$RUNNER_TEMP/seed-resource.json"
+          python3 "$CONTROL/.github/cache-promotion/promotion.py" raw "$RUNNER_TEMP/producer-meta" "$INFO_SHA" "$RAW_ARCHIVE" "$RUNNER_TEMP/seed-resource.json"
+          python3 "$CONTROL/.github/cache-promotion/promotion.py" quota seed
+      - name: Main-context opaque reservation, upload and finalize
+        id: seed
+        if: ${{ inputs.phase == 'seed' }}
+        uses: ./.promotion-control/.github/cache-promotion
+        env:
+          RAW_PHASE: seed
+          EXPECTED_ARCHIVE_SHA256: ${{ steps.trust.outputs.raw-sha }}
+          TRANSPORT_VERIFIED: ${{ steps.trust.outcome == 'success' }}
+      - name: Confirm main cache identity/size; lookup alone is not byte verification
+        if: ${{ inputs.phase == 'seed' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SEED_KEY: ${{ steps.seed.outputs.seed-key }}
+          SEED_ID: ${{ steps.seed.outputs.seed-id }}
+        run: |
+          gh api --method GET "repos/$GITHUB_REPOSITORY/actions/caches" -f ref=refs/heads/main -f key="$SEED_KEY" > "$RUNNER_TEMP/main-cache.json"
+          jq -e --arg key "$SEED_KEY" --argjson id "$SEED_ID" '[.actions_caches[] | select(.id == $id and .ref == "refs/heads/main" and .key == $key and .size_in_bytes == 6624993888 and .version == "60729729c15d65dc4080956c73ec44cfde33f5da3080769b8a3a093d958db6de")] | length == 1' "$RUNNER_TEMP/main-cache.json"
+          cat "$RUNNER_TEMP/main-cache.json" >> "$GITHUB_STEP_SUMMARY"
+          printf '\nMain seed key: %s\n' "$SEED_KEY" >> "$GITHUB_STEP_SUMMARY"
+          python3 "$CONTROL/.github/cache-promotion/promotion.py" quota ready "$SEED_KEY"
+      - name: Extract/CI resource gate before any full cache restoration
+        if: ${{ inputs.phase == 'ready' }}
+        run: python3 "$CONTROL/.github/cache-promotion/promotion.py" capacity extract "$RUNNER_TEMP/producer-meta"
+      - name: Configure producer's pinned toolchain without building project
+        if: ${{ inputs.phase == 'ready' }}
+        run: |
+          curl --fail --silent --show-error --location --retry 2 --connect-timeout 20 --max-time 120 https://elan.lean-lang.org/elan-init.sh --output "$RUNNER_TEMP/elan-init.sh"
+          sh "$RUNNER_TEMP/elan-init.sh" -y --default-toolchain none
+          export PATH="$HOME/.elan/bin:$PATH"
+          elan which lake
+          lean --version
+          lake --version
+          python3 "$CONTROL/.github/cache-promotion/promotion.py" capacity extract "$RUNNER_TEMP/producer-meta"
+      - uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        id: restored
+        if: ${{ inputs.phase == 'ready' }}
+        with:
+          path: |
+            ./.lake
+            ${{ runner.temp }}/lake-native-cache
+          key: ${{ inputs.seed-key }}
+          fail-on-cache-miss: true
+      - name: Require exact main cache, then native no-build readiness
+        if: ${{ inputs.phase == 'ready' }}
+        env:
+          HIT: ${{ steps.restored.outputs.cache-hit }}
+          MATCHED: ${{ steps.restored.outputs.cache-matched-key }}
+          EXPECTED: ${{ inputs.seed-key }}
+        run: |
+          test "$HIT" = true && test "$MATCHED" = "$EXPECTED"
+          timeout --signal=TERM --kill-after=10s 45m bash "$CONTROL/.github/cache-promotion/ready.sh"
