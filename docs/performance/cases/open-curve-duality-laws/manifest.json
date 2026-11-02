@@ -1,0 +1,569 @@
+{
+  "scope": "Three source-bound formalization observations; complete relevant module inputs and unmodified native output bytes. Not a controlled benchmark or unique-cause attribution. Matching full inherited source basis and original dependency pins remain prerequisites for reproducing an original invocation. No caches, binaries, kernel replay or new proof runs are included.",
+  "cases": [
+    {
+      "key": "native-compact-rows",
+      "failed": "a793042570574539939bf0b361da00ec",
+      "successful": "ebb23c8b6957423a9a9e6a8844779a8e",
+      "failed_source": "/private/tmp/r5-investigations/jacobian/curve-perfectness-sol/CoefficientDevissageOpenCandidate.lean",
+      "success_source": "/Users/kang/Documents/New project/tmp/work/jacobian/lane-refactor/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/CoefficientDevissage.lean",
+      "failed_sha": "21f41d0314847b13e7b433dcd8a31067411540c8818a5a22c64e87ac2b8dbcb3",
+      "success_sha": "6ad1451a4eed29eeede84e93be54b7c905862ce118038d913c02a4c0bb20a137",
+      "mirror": "/Users/kang/Documents/New project/tmp/work/jacobian/lane-refactor/AglibTest/AlgebraicGeometry/EtaleCohomology/Duality/CoefficientDevissage.lean",
+      "snapshots": [
+        "OPEN_UNIT_FIRST_SNAPSHOT.json",
+        "OPEN_PHI_VALUE_REPAIR_SNAPSHOT.json"
+      ],
+      "success_scope": "The Devissage producer and its mirror succeeded. The whole invocation CLOSED1 only in the then-pending OpenPerfectness unit application; it is not a whole-run PASS."
+    },
+    {
+      "key": "whole-arrow-predicate",
+      "failed": "e3283f606825494fad815d8f808bbb30",
+      "successful": "cd7cbe45f7284238933a62cd0dad4096",
+      "failed_source": "/private/tmp/r5-investigations/jacobian/curve-perfectness-sol/OpenUnitShrinkingFailed08557acd.lean",
+      "success_source": "/private/tmp/r5-investigations/jacobian/curve-perfectness-sol/OpenUnitPassed.lean",
+      "failed_sha": "08557acd8712f735101ee02e3cc86621e8d114bf60093441848096d49a57766c",
+      "success_sha": "497e775ade02fdcddd017a2d470038a02a8d0a02c4ae2feeedcec8dfb5984da2",
+      "mirror": "/private/tmp/r5-investigations/jacobian/curve-perfectness-sol/OpenUnitPassedTest.lean",
+      "snapshots": [
+        "OPEN_UNIT_SHRINKING_REPAIR.json",
+        "OPEN_UNIT_OPAQUE_PREDICATE_REPAIR.json"
+      ],
+      "success_scope": "The unit-only OpenPerfectness producer and its mirror succeeded, CLOSED0/2of2. This does not by itself claim all finite-local-system duality."
+    },
+    {
+      "key": "variable-original-flip",
+      "failed": "13b12b8bf7124ff5b0e734b9ab27adb2",
+      "successful": "9adf48702ac944f99d053588bcc595b1",
+      "failed_source": "/private/tmp/r5-investigations/jacobian/curve-perfectness-sol/OpenPerfectnessFullCandidate.lean",
+      "success_source": "/Users/kang/Documents/New project/tmp/work/jacobian/lane-refactor/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean",
+      "failed_sha": "935d27f4531d5c81567d39c196ae4c56caeeaed3465ec541b110dc7a2807d5ad",
+      "success_sha": "58bb36a7cbbc0a1507aa0d5fee5e1da6ff5e702e5b3ed254a1af4edbce7a39f3",
+      "mirror": "/Users/kang/Documents/New project/tmp/work/jacobian/lane-refactor/AglibTest/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean",
+      "snapshots": [
+        "FULL_OPEN_FIRST_SNAPSHOT.json",
+        "FULL_OPEN_FLIP_REPAIR_SNAPSHOT.json"
+      ],
+      "success_scope": "The complete full-open producer and mirror succeeded, CLOSED0/2of2. The earlier failed run also had a finite-index instance error, repaired in the same candidate wave. No isolated speedup or unique-cause claim follows."
+    }
+  ],
+  "files": [
+    {
+      "case": "native-compact-rows",
+      "role": "failed-source",
+      "path": "native-compact-rows/failed.lean.txt",
+      "sha256": "21f41d0314847b13e7b433dcd8a31067411540c8818a5a22c64e87ac2b8dbcb3",
+      "original_locator": "/private/tmp/r5-investigations/jacobian/curve-perfectness-sol/CoefficientDevissageOpenCandidate.lean"
+    },
+    {
+      "case": "native-compact-rows",
+      "role": "successful-source",
+      "path": "native-compact-rows/successful.lean.txt",
+      "sha256": "6ad1451a4eed29eeede84e93be54b7c905862ce118038d913c02a4c0bb20a137",
+      "original_locator": "/Users/kang/Documents/New project/tmp/work/jacobian/lane-refactor/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/CoefficientDevissage.lean"
+    },
+    {
+      "case": "native-compact-rows",
+      "role": "mirror-source",
+      "path": "native-compact-rows/mirror.lean.txt",
+      "sha256": "c6fea77f57247c047f35bc16199812bb6c976da74fa4f86067f55c92a4684fe7",
+      "original_locator": "/Users/kang/Documents/New project/tmp/work/jacobian/lane-refactor/AglibTest/AlgebraicGeometry/EtaleCohomology/Duality/CoefficientDevissage.lean"
+    },
+    {
+      "case": "native-compact-rows",
+      "role": "failed-build.log",
+      "path": "runs/remote-a793042570574539939bf0b361da00ec/build.log",
+      "sha256": "c34d8b04de3f58435dad6189cacaaf5176d3f608db83fd4c6a7b49ad597c1873",
+      "original_locator": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-torsion-rank-runs/remote-a793042570574539939bf0b361da00ec/build.log"
+    },
+    {
+      "case": "native-compact-rows",
+      "role": "failed-receipt.json",
+      "path": "runs/remote-a793042570574539939bf0b361da00ec/receipt.json",
+      "sha256": "12474544caefa9bad2fcbc7b382dc8187b42949c4bb84fe827bea993c13a6451",
+      "original_locator": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-torsion-rank-runs/remote-a793042570574539939bf0b361da00ec/receipt.json"
+    },
+    {
+      "case": "native-compact-rows",
+      "role": "failed-compiler-events.jsonl",
+      "path": "runs/remote-a793042570574539939bf0b361da00ec/compiler-events.jsonl",
+      "sha256": "ec41673f521c6ee3e0a4471e6f73a8dffde117be5116bdedb6b18d39911948fe",
+      "original_locator": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-torsion-rank-runs/remote-a793042570574539939bf0b361da00ec/compiler-events.jsonl"
+    },
+    {
+      "case": "native-compact-rows",
+      "role": "successful-build.log",
+      "path": "runs/remote-ebb23c8b6957423a9a9e6a8844779a8e/build.log",
+      "sha256": "d9fbd5f8c5105b6eafdacbcaecc8d857086d7e69d20328fa04d6468365159bda",
+      "original_locator": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-torsion-rank-runs/remote-ebb23c8b6957423a9a9e6a8844779a8e/build.log"
+    },
+    {
+      "case": "native-compact-rows",
+      "role": "successful-receipt.json",
+      "path": "runs/remote-ebb23c8b6957423a9a9e6a8844779a8e/receipt.json",
+      "sha256": "8581cbed927444d60cf2e08ffd5d9ce463a3c7764b95557f5b9d85939edfc235",
+      "original_locator": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-torsion-rank-runs/remote-ebb23c8b6957423a9a9e6a8844779a8e/receipt.json"
+    },
+    {
+      "case": "native-compact-rows",
+      "role": "successful-compiler-events.jsonl",
+      "path": "runs/remote-ebb23c8b6957423a9a9e6a8844779a8e/compiler-events.jsonl",
+      "sha256": "e8b985000a3c7cfff7d6253081c69ed733537e78f3434c2c693c8d46340aeb78",
+      "original_locator": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-torsion-rank-runs/remote-ebb23c8b6957423a9a9e6a8844779a8e/compiler-events.jsonl"
+    },
+    {
+      "case": "whole-arrow-predicate",
+      "role": "failed-source",
+      "path": "whole-arrow-predicate/failed.lean.txt",
+      "sha256": "08557acd8712f735101ee02e3cc86621e8d114bf60093441848096d49a57766c",
+      "original_locator": "/private/tmp/r5-investigations/jacobian/curve-perfectness-sol/OpenUnitShrinkingFailed08557acd.lean"
+    },
+    {
+      "case": "whole-arrow-predicate",
+      "role": "successful-source",
+      "path": "whole-arrow-predicate/successful.lean.txt",
+      "sha256": "497e775ade02fdcddd017a2d470038a02a8d0a02c4ae2feeedcec8dfb5984da2",
+      "original_locator": "/private/tmp/r5-investigations/jacobian/curve-perfectness-sol/OpenUnitPassed.lean"
+    },
+    {
+      "case": "whole-arrow-predicate",
+      "role": "mirror-source",
+      "path": "whole-arrow-predicate/mirror.lean.txt",
+      "sha256": "1a1a18c91b32e625a2ad654da1cc4881815d4fba638822d6d6ea93a86ef8b5d7",
+      "original_locator": "/private/tmp/r5-investigations/jacobian/curve-perfectness-sol/OpenUnitPassedTest.lean"
+    },
+    {
+      "case": "whole-arrow-predicate",
+      "role": "failed-build.log",
+      "path": "runs/remote-e3283f606825494fad815d8f808bbb30/build.log",
+      "sha256": "cc0556ff1381c7fc2b41c4dd62f9e5aa93c776908a7b09eaed064e4e7549a105",
+      "original_locator": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-torsion-rank-runs/remote-e3283f606825494fad815d8f808bbb30/build.log"
+    },
+    {
+      "case": "whole-arrow-predicate",
+      "role": "failed-receipt.json",
+      "path": "runs/remote-e3283f606825494fad815d8f808bbb30/receipt.json",
+      "sha256": "12ad439843d07053ec3dde36f9072cc96f19871cfe917b68fd8eaa3fe3507690",
+      "original_locator": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-torsion-rank-runs/remote-e3283f606825494fad815d8f808bbb30/receipt.json"
+    },
+    {
+      "case": "whole-arrow-predicate",
+      "role": "failed-compiler-events.jsonl",
+      "path": "runs/remote-e3283f606825494fad815d8f808bbb30/compiler-events.jsonl",
+      "sha256": "f0533071a2026ecd180ea36acacd41ac07c878b026de49392fa31380448502e3",
+      "original_locator": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-torsion-rank-runs/remote-e3283f606825494fad815d8f808bbb30/compiler-events.jsonl"
+    },
+    {
+      "case": "whole-arrow-predicate",
+      "role": "successful-build.log",
+      "path": "runs/remote-cd7cbe45f7284238933a62cd0dad4096/build.log",
+      "sha256": "a14c1ef2b3226f1254c3ed6a0d47aa49a978f9e814b8d20aea488274aa47588f",
+      "original_locator": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-torsion-rank-runs/remote-cd7cbe45f7284238933a62cd0dad4096/build.log"
+    },
+    {
+      "case": "whole-arrow-predicate",
+      "role": "successful-receipt.json",
+      "path": "runs/remote-cd7cbe45f7284238933a62cd0dad4096/receipt.json",
+      "sha256": "17542ddb6b61dd77f0d3d2c1b42186ad90d2dbc64f772b766d9db24f3e109e8c",
+      "original_locator": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-torsion-rank-runs/remote-cd7cbe45f7284238933a62cd0dad4096/receipt.json"
+    },
+    {
+      "case": "whole-arrow-predicate",
+      "role": "successful-compiler-events.jsonl",
+      "path": "runs/remote-cd7cbe45f7284238933a62cd0dad4096/compiler-events.jsonl",
+      "sha256": "843a73219f84963d59575a9b276cd32e92041ee4cc21cd58bd53d8e284090664",
+      "original_locator": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-torsion-rank-runs/remote-cd7cbe45f7284238933a62cd0dad4096/compiler-events.jsonl"
+    },
+    {
+      "case": "variable-original-flip",
+      "role": "failed-source",
+      "path": "variable-original-flip/failed.lean.txt",
+      "sha256": "935d27f4531d5c81567d39c196ae4c56caeeaed3465ec541b110dc7a2807d5ad",
+      "original_locator": "/private/tmp/r5-investigations/jacobian/curve-perfectness-sol/OpenPerfectnessFullCandidate.lean"
+    },
+    {
+      "case": "variable-original-flip",
+      "role": "successful-source",
+      "path": "variable-original-flip/successful.lean.txt",
+      "sha256": "58bb36a7cbbc0a1507aa0d5fee5e1da6ff5e702e5b3ed254a1af4edbce7a39f3",
+      "original_locator": "/Users/kang/Documents/New project/tmp/work/jacobian/lane-refactor/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean"
+    },
+    {
+      "case": "variable-original-flip",
+      "role": "mirror-source",
+      "path": "variable-original-flip/mirror.lean.txt",
+      "sha256": "744aab79d09f8e447705abd0c21311b152ddcdf549114ef37384f8140d17b6de",
+      "original_locator": "/Users/kang/Documents/New project/tmp/work/jacobian/lane-refactor/AglibTest/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean"
+    },
+    {
+      "case": "variable-original-flip",
+      "role": "failed-build.log",
+      "path": "runs/remote-13b12b8bf7124ff5b0e734b9ab27adb2/build.log",
+      "sha256": "a964d5a1900cef3d0a6fe607ba0ca47330d57f3003ef32eb6d0366698db66e5f",
+      "original_locator": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-torsion-rank-runs/remote-13b12b8bf7124ff5b0e734b9ab27adb2/build.log"
+    },
+    {
+      "case": "variable-original-flip",
+      "role": "failed-receipt.json",
+      "path": "runs/remote-13b12b8bf7124ff5b0e734b9ab27adb2/receipt.json",
+      "sha256": "ab472be81f4b3cfd17d44c3460bcdb343ce9decc72b28bd80d7eccb2fb0487b9",
+      "original_locator": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-torsion-rank-runs/remote-13b12b8bf7124ff5b0e734b9ab27adb2/receipt.json"
+    },
+    {
+      "case": "variable-original-flip",
+      "role": "failed-compiler-events.jsonl",
+      "path": "runs/remote-13b12b8bf7124ff5b0e734b9ab27adb2/compiler-events.jsonl",
+      "sha256": "02281a268fcac6c004874604fa828dedbd48773c7755674be3a75749e50d96c0",
+      "original_locator": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-torsion-rank-runs/remote-13b12b8bf7124ff5b0e734b9ab27adb2/compiler-events.jsonl"
+    },
+    {
+      "case": "variable-original-flip",
+      "role": "successful-build.log",
+      "path": "runs/remote-9adf48702ac944f99d053588bcc595b1/build.log",
+      "sha256": "bd32686c4881900e73e08dfe20d9d1622b0fc62bf62a113e3342563ee907d89a",
+      "original_locator": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-torsion-rank-runs/remote-9adf48702ac944f99d053588bcc595b1/build.log"
+    },
+    {
+      "case": "variable-original-flip",
+      "role": "successful-receipt.json",
+      "path": "runs/remote-9adf48702ac944f99d053588bcc595b1/receipt.json",
+      "sha256": "bea0b529e67b90efc9e3e7a4b63b1181553976e5fe2aa0d3daf39e17a5afdf84",
+      "original_locator": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-torsion-rank-runs/remote-9adf48702ac944f99d053588bcc595b1/receipt.json"
+    },
+    {
+      "case": "variable-original-flip",
+      "role": "successful-compiler-events.jsonl",
+      "path": "runs/remote-9adf48702ac944f99d053588bcc595b1/compiler-events.jsonl",
+      "sha256": "aa1c0c5a3bfca3ad0622511f03a5768520b69d615f2feab667a8a81c7e5c0511",
+      "original_locator": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-torsion-rank-runs/remote-9adf48702ac944f99d053588bcc595b1/compiler-events.jsonl"
+    }
+  ],
+  "runs": {
+    "a793042570574539939bf0b361da00ec": {
+      "expected_source": "91c1e853ad4a00d9f0b248a5a92c6a40e499f6d928f0b1d5c72930dda84f9e39",
+      "status": "failed",
+      "group_closed": true,
+      "exit_code": 1,
+      "modules": [
+        "AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.CoefficientDevissage",
+        "AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.OpenPerfectness"
+      ],
+      "profile": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 110592,
+        "threads": 4
+      },
+      "pins": {
+        "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+        "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+        "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+        "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+        "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+        "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+      },
+      "input_drift": [],
+      "compiler_invocations": 2,
+      "compiler_succeeded": 1,
+      "compiler_failed": 1,
+      "elapsed_seconds": 166.31533081829548,
+      "wall_seconds": 166.7329719811678,
+      "diagnostics": {
+        "categories": {
+          "heartbeat_budget": 2,
+          "other_error": 1,
+          "source_name": 1
+        },
+        "first": [
+          "error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/CoefficientDevissage.lean:551:8: (kernel) unknown constant 'AlgebraicGeometry.Scheme.EtaleCohomology.moduleDualityMap_one_bijective_of_shortExact'",
+          "error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/CoefficientDevissage.lean:510:10: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached",
+          "error: build failed"
+        ],
+        "observed_missing_count": 0,
+        "observed_missing_prefixes": {},
+        "observed_missing_prefixes_truncated": false,
+        "observed_missing_shortlist": []
+      },
+      "input_sha256": {
+        "AglibTest/AlgebraicGeometry/EtaleCohomology/Duality/CoefficientDevissage.lean": "c6fea77f57247c047f35bc16199812bb6c976da74fa4f86067f55c92a4684fe7",
+        "AglibTest/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean": "1a1a18c91b32e625a2ad654da1cc4881815d4fba638822d6d6ea93a86ef8b5d7",
+        "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+        "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+        "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+      },
+      "source_receipt_sha256": "2706624a22cdcb76902fac6303919208aae6a740a82d94c241f8b8199e3c3802",
+      "worker_sha256": "7b1d09f535dc951f2f3ecae857f7b77b0ffc95f8f9e55352167a39b4387729a4"
+    },
+    "ebb23c8b6957423a9a9e6a8844779a8e": {
+      "expected_source": "997f430178eacbbfa2b702ba62f07d16ee9091ff24226a2314f6a7532d49fc4c",
+      "status": "failed",
+      "group_closed": true,
+      "exit_code": 1,
+      "modules": [
+        "AglibTest.AlgebraicGeometry.EtaleCohomology.Curves.FiniteCoefficientsVanishing",
+        "AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.CoefficientDevissage",
+        "AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.LocallyConstantPerfectness",
+        "AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.OpenPerfectness",
+        "AglibTest.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.CohomologyVanishing",
+        "AglibTest.AlgebraicGeometry.EtaleCohomology.Curves.FiniteCoefficientsVanishing.Open"
+      ],
+      "profile": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 110592,
+        "threads": 4
+      },
+      "pins": {
+        "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+        "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+        "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+        "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+        "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+        "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+      },
+      "input_drift": [],
+      "compiler_invocations": 9,
+      "compiler_succeeded": 8,
+      "compiler_failed": 1,
+      "elapsed_seconds": 362.1597855836153,
+      "wall_seconds": 362.5794278383255,
+      "diagnostics": {
+        "categories": {
+          "other_error": 1,
+          "source_elaboration": 2
+        },
+        "first": [
+          "error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean:91:17: failed to synthesize",
+          "error: build failed"
+        ],
+        "observed_missing_count": 0,
+        "observed_missing_prefixes": {},
+        "observed_missing_prefixes_truncated": false,
+        "observed_missing_shortlist": []
+      },
+      "input_sha256": {
+        "AglibTest/AlgebraicGeometry/EtaleCohomology/Constructible/Modules/CohomologyVanishing.lean": "2646fa9880ed6723ee1078d35c8f841b772bd8c1aec13d825ccd6fda46de8595",
+        "AglibTest/AlgebraicGeometry/EtaleCohomology/Curves/FiniteCoefficientsVanishing.lean": "42f02832f9a8c61d5d29d7b6dc4f5e06c92f265b0bc7270c4847391804b1db96",
+        "AglibTest/AlgebraicGeometry/EtaleCohomology/Curves/FiniteCoefficientsVanishing/Open.lean": "a80d7b419f5c44e213ddf8622613a152861fbd31075986da40ae5e000c28e5fc",
+        "AglibTest/AlgebraicGeometry/EtaleCohomology/Duality/CoefficientDevissage.lean": "c6fea77f57247c047f35bc16199812bb6c976da74fa4f86067f55c92a4684fe7",
+        "AglibTest/AlgebraicGeometry/EtaleCohomology/Duality/LocallyConstantPerfectness.lean": "5dc9404a5b78b509be3e97643d2efc95e3dc9800a4edff92a9ef9e1faba4905c",
+        "AglibTest/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean": "1a1a18c91b32e625a2ad654da1cc4881815d4fba638822d6d6ea93a86ef8b5d7",
+        "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+        "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+        "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+      },
+      "source_receipt_sha256": "5e2bcae827640a9dc441aa364771b92e79626a2513c76accd2e0a99b7a0bfd0e",
+      "worker_sha256": "7b1d09f535dc951f2f3ecae857f7b77b0ffc95f8f9e55352167a39b4387729a4"
+    },
+    "e3283f606825494fad815d8f808bbb30": {
+      "expected_source": "4e54b0f2bdb358c383e3c98fa7394b636250130b464e89fde3a78881eebc8578",
+      "status": "failed",
+      "group_closed": true,
+      "exit_code": 1,
+      "modules": [
+        "AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.OpenPerfectness"
+      ],
+      "profile": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 110592,
+        "threads": 4
+      },
+      "pins": {
+        "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+        "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+        "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+        "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+        "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+        "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+      },
+      "input_drift": [],
+      "compiler_invocations": 1,
+      "compiler_succeeded": 0,
+      "compiler_failed": 1,
+      "elapsed_seconds": 24.75112174451351,
+      "wall_seconds": 25.16533637046814,
+      "diagnostics": {
+        "categories": {
+          "other_error": 1,
+          "source_elaboration": 1
+        },
+        "first": [
+          "error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean:94:2: Type mismatch: After simplification, term",
+          "error: build failed"
+        ],
+        "observed_missing_count": 0,
+        "observed_missing_prefixes": {},
+        "observed_missing_prefixes_truncated": false,
+        "observed_missing_shortlist": []
+      },
+      "input_sha256": {
+        "AglibTest/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean": "1a1a18c91b32e625a2ad654da1cc4881815d4fba638822d6d6ea93a86ef8b5d7",
+        "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+        "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+        "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+      },
+      "source_receipt_sha256": "23ce050196354a820fbb0f4a36f409d18dbbf88bce7f79982e4e834b3130d4ee",
+      "worker_sha256": "7b1d09f535dc951f2f3ecae857f7b77b0ffc95f8f9e55352167a39b4387729a4"
+    },
+    "cd7cbe45f7284238933a62cd0dad4096": {
+      "expected_source": "d244612dd4de9fc067403a1868d75c6c0c2c6c4d7421419b8b188eb65f0d63c4",
+      "status": "succeeded",
+      "group_closed": true,
+      "exit_code": 0,
+      "modules": [
+        "AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.OpenPerfectness"
+      ],
+      "profile": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 110592,
+        "threads": 4
+      },
+      "pins": {
+        "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+        "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+        "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+        "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+        "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+        "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+      },
+      "input_drift": [],
+      "compiler_invocations": 2,
+      "compiler_succeeded": 2,
+      "compiler_failed": 0,
+      "elapsed_seconds": 34.52386476099491,
+      "wall_seconds": 34.94826762378216,
+      "diagnostics": {
+        "categories": {},
+        "first": [],
+        "observed_missing_count": 0,
+        "observed_missing_prefixes": {},
+        "observed_missing_prefixes_truncated": false,
+        "observed_missing_shortlist": []
+      },
+      "input_sha256": {
+        "AglibTest/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean": "1a1a18c91b32e625a2ad654da1cc4881815d4fba638822d6d6ea93a86ef8b5d7",
+        "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+        "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+        "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+      },
+      "source_receipt_sha256": "146e8861dba480abe20a45fce1b3fdf27c46b572b0797e82b42981f0ff8172a9",
+      "worker_sha256": "7b1d09f535dc951f2f3ecae857f7b77b0ffc95f8f9e55352167a39b4387729a4"
+    },
+    "13b12b8bf7124ff5b0e734b9ab27adb2": {
+      "expected_source": "10c626ca98e691584affe45f1804e9a21e06a99d00f012cbc3b70d1846be745a",
+      "status": "failed",
+      "group_closed": true,
+      "exit_code": 1,
+      "modules": [
+        "AglibTest.Algebra.Group.Hom.FiniteExact",
+        "AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.ProperCompactFiniteness",
+        "AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.OpenPerfectness"
+      ],
+      "profile": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 110592,
+        "threads": 4
+      },
+      "pins": {
+        "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+        "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+        "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+        "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+        "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+        "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+      },
+      "input_drift": [],
+      "compiler_invocations": 6,
+      "compiler_succeeded": 5,
+      "compiler_failed": 1,
+      "elapsed_seconds": 338.7255716621876,
+      "wall_seconds": 339.1479817032814,
+      "diagnostics": {
+        "categories": {
+          "heartbeat_budget": 2,
+          "other_error": 1,
+          "source_elaboration": 1
+        },
+        "first": [
+          "error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean:1013:4: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached",
+          "error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean:666:4: failed to synthesize instance of type class",
+          "error: build failed"
+        ],
+        "observed_missing_count": 0,
+        "observed_missing_prefixes": {},
+        "observed_missing_prefixes_truncated": false,
+        "observed_missing_shortlist": []
+      },
+      "input_sha256": {
+        "AglibTest/Algebra/Group/Hom/FiniteExact.lean": "1d5dece1061d418aa2f8e82e398f17d69dc8dc61cfdedde59063dbf25b89196e",
+        "AglibTest/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean": "744aab79d09f8e447705abd0c21311b152ddcdf549114ef37384f8140d17b6de",
+        "AglibTest/AlgebraicGeometry/EtaleCohomology/Duality/ProperCompactFiniteness.lean": "9c993934be70acffad2d58403d3513179c48b1c21b7f8a5ac5f9795292a6dbb7",
+        "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+        "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+        "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+      },
+      "source_receipt_sha256": "ea8c4aa6243ad80e613299a2b9fb6772842edbba5d88a107fe22668732b6c8dd",
+      "worker_sha256": "7b1d09f535dc951f2f3ecae857f7b77b0ffc95f8f9e55352167a39b4387729a4"
+    },
+    "9adf48702ac944f99d053588bcc595b1": {
+      "expected_source": "c0e2bc13872db02e08b04216bf08b7569b496301e7c15469bbfb0ae6844a1db2",
+      "status": "succeeded",
+      "group_closed": true,
+      "exit_code": 0,
+      "modules": [
+        "AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.OpenPerfectness"
+      ],
+      "profile": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 110592,
+        "threads": 4
+      },
+      "pins": {
+        "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+        "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+        "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+        "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+        "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+        "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+      },
+      "input_drift": [],
+      "compiler_invocations": 2,
+      "compiler_succeeded": 2,
+      "compiler_failed": 0,
+      "elapsed_seconds": 143.35251906514168,
+      "wall_seconds": 143.77097477018833,
+      "diagnostics": {
+        "categories": {},
+        "first": [],
+        "observed_missing_count": 0,
+        "observed_missing_prefixes": {},
+        "observed_missing_prefixes_truncated": false,
+        "observed_missing_shortlist": []
+      },
+      "input_sha256": {
+        "AglibTest/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean": "744aab79d09f8e447705abd0c21311b152ddcdf549114ef37384f8140d17b6de",
+        "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+        "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+        "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+      },
+      "source_receipt_sha256": "a1b1fbae77ff7b412d4ac7923ecd48077640012f52a59c1be3a89eabbccb9e54",
+      "worker_sha256": "7b1d09f535dc951f2f3ecae857f7b77b0ffc95f8f9e55352167a39b4387729a4"
+    }
+  }
+}

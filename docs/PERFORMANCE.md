@@ -374,6 +374,14 @@ A scalar `IsIso` producer, even with the complete actual map as an argument,
 can leave the concrete native-property specialization expensive.
 [Bounded target-locality case](performance/pbc-original-map-and-finite-model-boundaries.md#return-the-whole-standard-bounded-target-test).
 
+For an opaque comparison indexed by a native arrow, transport the whole
+quantified pairing property along the original arrow equality before
+evaluating that comparison. Prove transpose/flip laws over the same variable
+operators before applying them to the concrete pairing. The open-curve cases
+also retain the failed aggregate five-lemma applications and the successful
+separate native chases; they establish no matched speedup or exclusive cause.
+[Open-curve duality cases](performance/cases/open-curve-duality-laws/README.md).
+
 **Name repeated equation proofs before elaborating statement and body.** Use
 the same named degree/transport lemma with atomic arguments inside
 `eqToHom`, `pullbackCongr` and `mapComp'`. Proof irrelevance still requires

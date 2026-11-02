@@ -38,8 +38,8 @@ smooth proper geometrically connected curve over an algebraically closed field,
 positive invertible `n` and finite closed complement. It compares the original
 module/abelian and proper traces and gives the smaller-open square. The
 normalization is Aglib's Kummer boundary; SGA torsor, connecting and cup/Yoneda
-sign comparisons remain open. General open perfectness, general purity and
-local cohomology remain open. It serves Poincaré duality for curves (Milne LEC Thm 14.7, p. 93, and Thm 14.20, p. 101).
+sign comparisons remain open. General constructible perfectness, general purity
+and local cohomology remain open. It serves Poincaré duality for curves (Milne LEC Thm 14.7, p. 93, and Thm 14.20, p. 101).
 
 [TracePairing](TracePairing.lean) composes the original linear Yoneda pairing
 with normalized module trace. Its `moduleDualityMap` and
@@ -57,7 +57,7 @@ field; the open immersion has finite closed complement, possibly empty; `n` is
 positive and invertible, including composite levels and one, with the displayed
 global-section level conditions and independent Ext universes. The public
 statement chooses no basis or root. Proper finite-locally-constant perfectness
-in complementary degrees is supplied below. General open perfectness, general purity, and SGA torsor,
+in complementary degrees is supplied below. General constructible perfectness, general purity, and SGA torsor,
 connecting, cup/Yoneda and Weil sign comparisons remain open.
 
 [PointPurity](PointPurity.lean) proves the original supported module Ext
@@ -142,4 +142,10 @@ coefficient and every `r ≤ 2`, it proves both original pairing adjoints
 bijective. The curve is smooth and geometrically connected over an
 algebraically closed field; the positive level is invertible in the field and
 globally. Composite levels and level one are included, with independent Ext
-universes. General open perfectness remains open.
+universes. [OpenPerfectness](OpenPerfectness.lean) proves both original
+adjoints bijective for every finite locally constant coefficient and every
+`r ≤ 2` on the given open complement of a finite set of closed points,
+including empty complement. It retains the same proper smooth geometrically
+connected curve over algebraically closed constants, positive field/global
+invertibility and independent Ext worlds. General constructible perfectness
+remains open.

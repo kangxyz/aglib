@@ -259,6 +259,7 @@ public import Aglib.Algebra.Graded.DirectSum
 public import Aglib.Algebra.Group.Action.CyclicCoefficients
 public import Aglib.Algebra.Group.Action.TorsorAugmentation
 public import Aglib.Algebra.Group.Equiv.ComparisonComposite
+public import Aglib.Algebra.Group.Hom.FiniteExact
 public import Aglib.Algebra.Group.NormalizedQuotient
 public import Aglib.Algebra.Group.Subgroup.Ker
 public import Aglib.Algebra.Group.Subgroup.KerEquiv
@@ -3001,6 +3002,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LocallyConstantPer
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekCohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekComposition
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekDirectImage
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.OpenPerfectness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PairingRestriction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PairingTranspose
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PointPurity

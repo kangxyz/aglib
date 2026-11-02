@@ -62,3 +62,28 @@ example {S : ShortComplex (ModuleSheaf U (ULift.{u + 1} (ZMod n)))} (hS : S.Shor
 [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms AlgebraicGeometry.Scheme.EtaleCohomology.moduleDualityTransposeMap_one_injective_of_shortExact
+
+
+example {S : ShortComplex (ModuleSheaf U (ULift.{u + 1} (ZMod n)))} (hS : S.ShortExact)
+    (hB₀ : (moduleDualityMap X hX D hfin hclosed j hD n hn hunit hinv
+      S.X₂ 0 (by decide)).IsPerfPair)
+    (hB₁ : (moduleDualityMap X hX D hfin hclosed j hD n hn hunit hinv
+      S.X₂ 1 (by decide)).IsPerfPair)
+    (hC₀ : (moduleDualityMap X hX D hfin hclosed j hD n hn hunit hinv
+      S.X₃ 0 (by decide)).IsPerfPair)
+    (hC₁ : (moduleDualityMap X hX D hfin hclosed j hD n hn hunit hinv
+      S.X₃ 1 (by decide)).IsPerfPair) :
+    (moduleDualityMap X hX D hfin hclosed j hD n hn hunit hinv
+      S.X₁ 1 (by decide)).IsPerfPair :=
+  moduleDualityMap_one_isPerfPair_of_shortExact
+    X hX D hfin hclosed j hD n hn hunit hinv hS hB₀ hB₁ hC₀ hC₁
+
+/-- info: 'AlgebraicGeometry.Scheme.EtaleCohomology.moduleDualityMap_one_bijective_of_shortExact' depends on axioms:
+[propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms AlgebraicGeometry.Scheme.EtaleCohomology.moduleDualityMap_one_bijective_of_shortExact
+
+/-- info: 'AlgebraicGeometry.Scheme.EtaleCohomology.moduleDualityMap_one_isPerfPair_of_shortExact' depends on axioms:
+[propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms AlgebraicGeometry.Scheme.EtaleCohomology.moduleDualityMap_one_isPerfPair_of_shortExact

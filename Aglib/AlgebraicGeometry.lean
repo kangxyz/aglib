@@ -2149,6 +2149,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LocallyConstantPer
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekCohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekComposition
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekDirectImage
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.OpenPerfectness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PairingRestriction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PairingTranspose
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PointPurity

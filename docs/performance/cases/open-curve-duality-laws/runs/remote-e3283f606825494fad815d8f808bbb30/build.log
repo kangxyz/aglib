@@ -1,0 +1,31 @@
+✖ [8475/8476] Building Aglib.AlgebraicGeometry.EtaleCohomology.Duality.OpenPerfectness (19s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-e3283f606825494fad815d8f808bbb30/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean -o /root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.olean -i /root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.c --setup /root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean:94:2: Type mismatch: After simplification, term
+  hOpen
+ has type
+  @LinearMap.IsPerfPair (ZMod n)
+    (Abelian.Ext (moduleUnit (Over.left X) (ULift.{u + 1, 0} (ZMod n)))
+      ((moduleLowerShriek (j ≫ 𝟙 (Over.left X)) (ULift.{u + 1, 0} (ZMod n))).obj (moduleUnit U Λ)) 1)
+    (Abelian.Ext (moduleUnit U Λ) (moduleRootsOfUnity U n) (2 - 1)) Ext.instAddCommGroup.toAddCommMonoid
+    Ext.instAddCommGroup.toAddCommMonoid CommRing.toCommSemiring
+    (moduleSheafExtZModModule n (moduleUnit (Over.left X) (ULift.{u + 1, 0} (ZMod n)))
+      ((moduleLowerShriek (j ≫ 𝟙 (Over.left X)) (ULift.{u + 1, 0} (ZMod n))).obj (moduleUnit U Λ)) 1)
+    (moduleSheafExtZModModule n (moduleUnit U Λ) (moduleRootsOfUnity U n) (2 - 1))
+    (moduleDualityMap X hX D hfin hclosed (j ≫ 𝟙 (Over.left X)) hRange n hn hunit hinv (moduleUnit U Λ) 1 ⋯)
+but is expected to have type
+  @LinearMap.IsPerfPair (ZMod n)
+    (Abelian.Ext (moduleUnit (Over.left X) (ULift.{u + 1, 0} (ZMod n)))
+      ((moduleLowerShriek j (ULift.{u + 1, 0} (ZMod n))).obj (moduleUnit U (ULift.{u + 1, 0} (ZMod n)))) 1)
+    (Abelian.Ext (moduleUnit U (ULift.{u + 1, 0} (ZMod n))) (moduleRootsOfUnity U n) (2 - 1))
+    Ext.instAddCommGroup.toAddCommMonoid Ext.instAddCommGroup.toAddCommMonoid CommRing.toCommSemiring
+    (moduleSheafExtZModModule n (moduleUnit (Over.left X) (ULift.{u + 1, 0} (ZMod n)))
+      ((moduleLowerShriek j (ULift.{u + 1, 0} (ZMod n))).obj (moduleUnit U (ULift.{u + 1, 0} (ZMod n)))) 1)
+    (moduleSheafExtZModModule n (moduleUnit U (ULift.{u + 1, 0} (ZMod n))) (moduleRootsOfUnity U n) (2 - 1))
+    (moduleDualityMap X hX D hfin hclosed j hD n hn hunit hinv (moduleUnit U (ULift.{u + 1, 0} (ZMod n))) 1
+      moduleDualityMap_unit_open_one_isPerfPair._proof_1)
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  equivShrink ↦ 324
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Duality.OpenPerfectness
+error: build failed

@@ -1,0 +1,14 @@
+{
+  "/Users/kang/Documents/New project/tmp/work/jacobian/lane-refactor/Aglib/Algebra/Group/Hom/FiniteExact.lean": {
+    "sha256": "00b2fca34e6a895c01ed78b9953eceb1ba7f33623b644ae1cdc274e73059de0d",
+    "lines": 44
+  },
+  "/Users/kang/Documents/New project/tmp/work/jacobian/lane-refactor/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean": {
+    "sha256": "935d27f4531d5c81567d39c196ae4c56caeeaed3465ec541b110dc7a2807d5ad",
+    "lines": 1024
+  },
+  "/Users/kang/Documents/New project/tmp/work/jacobian/lane-refactor/AglibTest/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean": {
+    "sha256": "744aab79d09f8e447705abd0c21311b152ddcdf549114ef37384f8140d17b6de",
+    "lines": 116
+  }
+}

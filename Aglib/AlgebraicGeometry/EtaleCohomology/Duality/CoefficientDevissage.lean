@@ -354,4 +354,295 @@ theorem moduleDualityTransposeMap_one_injective_of_shortExact
 
 end MiddleTransposeExactness
 
+
+private theorem originalExt_postcomp_any_apply
+    {C : Type uC} [Category.{vC} C] [Abelian C] [HasExt.{wC} C]
+    {A B N : C} {p q r : ℕ} (d : Ext.{wC} A B p) (h : q + p = r)
+    (e : Ext.{wC} N A q) : d.postcomp N h e = e.comp d h := rfl
+
+section MiddleCompactExactness
+
+variable {k : Type u} [Field k] [IsAlgClosed k] (X : FScheme k) (hX : Curve.Properties X)
+  (D : Set X.left) (hfin : D.Finite) (hclosed : ∀ x ∈ D, IsClosed ({x} : Set X.left))
+  {U : Scheme.{u}} (j : U ⟶ X.left) [IsOpenImmersion j] (hD : Set.range j = Dᶜ)
+  (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : k)) (hinv : IsUnit (n : Γ(X.left, ⊤)))
+  [HasExt.{wU} (ModuleSheaf U (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wX} (ModuleSheaf X.left (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wA} (AbelianSheaf.{u, u + 1} X.left)]
+
+/-- Evaluate the original whole coefficient law before a presentation map
+or a concrete localization sequence is substituted. -/
+private theorem moduleDualityMap_naturality_apply
+    {F G : ModuleSheaf U (ULift.{u + 1} (ZMod n))} (f : F ⟶ G)
+    (r : ℕ) (hr : r ≤ 2)
+    (c : Ext.{wX} (moduleUnit X.left (ULift.{u + 1} (ZMod n)))
+      ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).obj F) r) :
+    moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD n hn hunit hinv G r hr
+      (c.comp (Ext.mk₀ ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).map f))
+        (add_zero r)) =
+    (AddMonoidHom.toZModLinearMap n
+      ((Ext.mk₀ f).precomp (moduleRootsOfUnity U n) (zero_add (2 - r)))).dualMap
+        (moduleDualityMap.{u, wU, wX, wA}
+          X hX D hfin hclosed j hD n hn hunit hinv F r hr c) := by
+  have h := LinearMap.congr_fun (moduleDualityMap_naturality.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv f r hr) c
+  simpa only [LinearMap.comp_apply, originalAddMonoidHom_toZModLinearMap_apply,
+    originalExt_postcomp_any_apply] using h
+
+/-- The compact value law uses the original unsigned extension class.
+Its two native coefficient parents are fixed before localization is supplied. -/
+private theorem moduleDualityMap_zero_one_boundary_apply
+    {S : ShortComplex (ModuleSheaf U (ULift.{u + 1} (ZMod n)))} (hS : S.ShortExact)
+    (c : Ext.{wX} (moduleUnit X.left (ULift.{u + 1} (ZMod n)))
+      ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).obj S.X₃) 0) :
+    moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD n hn hunit hinv
+      S.X₁ 1 (by decide)
+      (c.comp (shortExact_moduleLowerShriek j (ULift.{u + 1} (ZMod n)) hS).extClass
+        (show 0 + 1 = 1 from rfl)) =
+    (AddMonoidHom.toZModLinearMap n
+      (hS.extClass.precomp (moduleRootsOfUnity U n) (show 1 + 1 = 2 from rfl))).dualMap
+        (moduleDualityMap.{u, wU, wX, wA}
+          X hX D hfin hclosed j hD n hn hunit hinv S.X₃ 0 (by decide) c) := by
+  have h := LinearMap.congr_fun (moduleDualityMap_zero_one_extClass.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv hS) c
+  dsimp only [ShortComplex.map] at h ⊢
+  simpa only [LinearMap.comp_apply, originalAddMonoidHom_toZModLinearMap_apply,
+    originalExt_postcomp_any_apply] using h
+
+private theorem compact_one_surjective_of_shortExact
+    {S : ShortComplex (ModuleSheaf U (ULift.{u + 1} (ZMod n)))} (hS : S.ShortExact)
+    (hB₁ : Function.Surjective (moduleDualityMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv S.X₂ 1 (by decide)))
+    (hC₀ : Function.Surjective (moduleDualityMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv S.X₃ 0 (by decide)))
+    (hC₁ : Function.Injective (moduleDualityMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv S.X₃ 1 (by decide))) :
+    Function.Surjective (moduleDualityMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv S.X₁ 1 (by decide)) := by
+  let : NeZero n := ⟨Nat.ne_of_gt hn⟩
+  let hL := shortExact_moduleLowerShriek j (ULift.{u + 1} (ZMod n)) hS
+  let cf := AddMonoidHom.toZModLinearMap n
+    ((Ext.mk₀ ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).map S.f)).postcomp
+      (moduleUnit X.left (ULift.{u + 1} (ZMod n))) (add_zero 1))
+  let cg := AddMonoidHom.toZModLinearMap n
+    ((Ext.mk₀ ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).map S.g)).postcomp
+      (moduleUnit X.left (ULift.{u + 1} (ZMod n))) (add_zero 1))
+  let dc :
+      Ext.{wX} (moduleUnit X.left (ULift.{u + 1} (ZMod n)))
+          ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).obj S.X₃) 0 →ₗ[ZMod n]
+        Ext.{wX} (moduleUnit X.left (ULift.{u + 1} (ZMod n)))
+          ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).obj S.X₁) 1 :=
+    AddMonoidHom.toZModLinearMap n
+      (hL.extClass.postcomp (moduleUnit X.left (ULift.{u + 1} (ZMod n)))
+      (show 0 + 1 = 1 from rfl))
+  let ef := AddMonoidHom.toZModLinearMap n
+    ((Ext.mk₀ S.f).precomp (moduleRootsOfUnity U n) (zero_add 1))
+  let eg := AddMonoidHom.toZModLinearMap n
+    ((Ext.mk₀ S.g).precomp (moduleRootsOfUnity U n) (zero_add 1))
+  let de := AddMonoidHom.toZModLinearMap n
+    (hS.extClass.precomp (moduleRootsOfUnity U n) (show 1 + 1 = 2 from rfl))
+  have hfg : Function.Exact cf cg := by
+    have h := Ext.covariant_sequence_exact₂'
+      (moduleUnit X.left (ULift.{u + 1} (ZMod n))) hL 1
+    rw [ShortComplex.ab_exact_iff_function_exact] at h
+    exact h
+  have hef : Function.Exact ef de := by
+    have h := Ext.contravariant_sequence_exact₁' hS (moduleRootsOfUnity U n) 1 2 rfl
+    rw [ShortComplex.ab_exact_iff_function_exact] at h
+    exact h
+  have heg : Function.Exact eg ef := by
+    have h := Ext.contravariant_sequence_exact₂' hS (moduleRootsOfUnity U n) 1
+    rw [ShortComplex.ab_exact_iff_function_exact] at h
+    exact h
+  intro l
+  obtain ⟨b, hb⟩ := hB₁ (ef.dualMap l)
+  have hgb : cg b = 0 := by
+    apply hC₁
+    rw [map_zero]
+    have h := moduleDualityMap_naturality_apply.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv S.g 1 (by decide) b
+    have hd : eg.dualMap (ef.dualMap l) = 0 :=
+      (ZMod.dualMap_exact n eg ef heg _).mpr ⟨l, rfl⟩
+    have hFinal := h.trans ((congrArg eg.dualMap hb).trans hd)
+    exact hFinal
+  obtain ⟨a, ha⟩ := (hfg b).mp hgb
+  let v := moduleDualityMap.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv S.X₁ 1 (by decide) a
+  have hfv : ef.dualMap (l - v) = 0 := by
+    have h := moduleDualityMap_naturality_apply.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv S.f 1 (by decide) a
+    have hInput := congrArg (moduleDualityMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv S.X₂ 1 (by decide)) ha
+    have hEq := h.symm.trans (hInput.trans hb)
+    rw [map_sub]
+    exact sub_eq_zero.mpr hEq.symm
+  obtain ⟨lC, hlC⟩ := (ZMod.dualMap_exact n ef de hef _).mp hfv
+  obtain ⟨c, hc⟩ := hC₀ lC
+  refine ⟨dc c + a, ?_⟩
+  have h := moduleDualityMap_zero_one_boundary_apply.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv hS c
+  have hc' := h.trans ((congrArg de.dualMap hc).trans hlC)
+  have hdc : dc c = c.comp hL.extClass (show 0 + 1 = 1 from rfl) := rfl
+  have hcValue := (congrArg (moduleDualityMap.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv S.X₁ 1 (by decide)) hdc).trans hc'
+  rw [map_add, hcValue]
+  change (l - v) + v = l
+  abel
+
+private theorem compact_one_injective_of_shortExact
+    {S : ShortComplex (ModuleSheaf U (ULift.{u + 1} (ZMod n)))} (hS : S.ShortExact)
+    (hB₀ : Function.Surjective (moduleDualityMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv S.X₂ 0 (by decide)))
+    (hB₁ : Function.Injective (moduleDualityMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv S.X₂ 1 (by decide)))
+    (hC₀ : Function.Injective (moduleDualityMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv S.X₃ 0 (by decide))) :
+    Function.Injective (moduleDualityMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv S.X₁ 1 (by decide)) := by
+  let : NeZero n := ⟨Nat.ne_of_gt hn⟩
+  let hL := shortExact_moduleLowerShriek j (ULift.{u + 1} (ZMod n)) hS
+  let cf := AddMonoidHom.toZModLinearMap n
+    ((Ext.mk₀ ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).map S.f)).postcomp
+      (moduleUnit X.left (ULift.{u + 1} (ZMod n))) (add_zero 1))
+  let cg := AddMonoidHom.toZModLinearMap n
+    ((Ext.mk₀ ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).map S.g)).postcomp
+      (moduleUnit X.left (ULift.{u + 1} (ZMod n))) (add_zero 0))
+  let dc :
+      Ext.{wX} (moduleUnit X.left (ULift.{u + 1} (ZMod n)))
+          ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).obj S.X₃) 0 →ₗ[ZMod n]
+        Ext.{wX} (moduleUnit X.left (ULift.{u + 1} (ZMod n)))
+          ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).obj S.X₁) 1 :=
+    AddMonoidHom.toZModLinearMap n
+      (hL.extClass.postcomp (moduleUnit X.left (ULift.{u + 1} (ZMod n)))
+      (show 0 + 1 = 1 from rfl))
+  let ef := AddMonoidHom.toZModLinearMap n
+    ((Ext.mk₀ S.f).precomp (moduleRootsOfUnity U n) (zero_add 1))
+  let eg := AddMonoidHom.toZModLinearMap n
+    ((Ext.mk₀ S.g).precomp (moduleRootsOfUnity U n) (zero_add 2))
+  let de := AddMonoidHom.toZModLinearMap n
+    (hS.extClass.precomp (moduleRootsOfUnity U n) (show 1 + 1 = 2 from rfl))
+  have hdf : Function.Exact dc cf := by
+    have h := Ext.covariant_sequence_exact₁'
+      (moduleUnit X.left (ULift.{u + 1} (ZMod n))) hL 0 1 rfl
+    rw [ShortComplex.ab_exact_iff_function_exact] at h
+    exact h
+  have hgd : Function.Exact cg dc := by
+    have h := Ext.covariant_sequence_exact₃'
+      (moduleUnit X.left (ULift.{u + 1} (ZMod n))) hL 0 1 rfl
+    rw [ShortComplex.ab_exact_iff_function_exact] at h
+    exact h
+  have he : Function.Exact de eg := by
+    have h := Ext.contravariant_sequence_exact₃' hS (moduleRootsOfUnity U n) 1 2 rfl
+    rw [ShortComplex.ab_exact_iff_function_exact] at h
+    exact h
+  apply (injective_iff_map_eq_zero _).mpr
+  intro a ha
+  have hfa : cf a = 0 := by
+    apply hB₁
+    rw [map_zero]
+    have h := moduleDualityMap_naturality_apply.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv S.f 1 (by decide) a
+    have hInput := congrArg ef.dualMap ha
+    have hFinal := h.trans (hInput.trans (map_zero ef.dualMap))
+    exact hFinal
+  obtain ⟨c, hc⟩ := (hdf a).mp hfa
+  let v := moduleDualityMap.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv S.X₃ 0 (by decide) c
+  have hdv : de.dualMap v = 0 := by
+    have h := moduleDualityMap_zero_one_boundary_apply.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv hS c
+    have hInput := congrArg (moduleDualityMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv S.X₁ 1 (by decide)) hc
+    have hFinal := h.symm.trans (hInput.trans ha)
+    exact hFinal
+  obtain ⟨lB, hlB⟩ := (ZMod.dualMap_exact n de eg he _).mp hdv
+  obtain ⟨b, hb⟩ := hB₀ lB
+  have hcb : cg b = c := by
+    apply hC₀
+    have h := moduleDualityMap_naturality_apply.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv S.g 0 (by decide) b
+    have hFinal := h.trans ((congrArg eg.dualMap hb).trans hlB)
+    exact hFinal
+  have hz : dc (cg b) = 0 := (hgd _).mpr ⟨b, rfl⟩
+  exact hc.symm.trans ((congrArg dc hcb).symm.trans hz)
+
+/-- The original compact degree-one adjoint is bijective when the four
+outer adjoints of its actual five-term rows are perfect. No finite-group,
+reflexivity, local-constancy, or higher-vanishing premise is required. -/
+theorem moduleDualityMap_one_bijective_of_shortExact
+    {S : ShortComplex (ModuleSheaf U (ULift.{u + 1} (ZMod n)))} (hS : S.ShortExact)
+    (hB₀ : (moduleDualityMap X hX D hfin hclosed j hD n hn hunit hinv
+      S.X₂ 0 (by decide)).IsPerfPair)
+    (hB₁ : (moduleDualityMap X hX D hfin hclosed j hD n hn hunit hinv
+      S.X₂ 1 (by decide)).IsPerfPair)
+    (hC₀ : (moduleDualityMap X hX D hfin hclosed j hD n hn hunit hinv
+      S.X₃ 0 (by decide)).IsPerfPair)
+    (hC₁ : (moduleDualityMap X hX D hfin hclosed j hD n hn hunit hinv
+      S.X₃ 1 (by decide)).IsPerfPair) :
+    Function.Bijective (moduleDualityMap X hX D hfin hclosed j hD n hn hunit hinv
+      S.X₁ 1 (by decide)) := by
+  exact ⟨compact_one_injective_of_shortExact.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv hS
+      hB₀.bijective_left.surjective hB₁.bijective_left.injective hC₀.bijective_left.injective,
+    compact_one_surjective_of_shortExact.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv hS
+      hB₁.bijective_left.surjective hC₀.bijective_left.surjective hC₁.bijective_left.injective⟩
+
+private theorem moduleDualityTransposeMap_one_eq_flip
+    (F : ModuleSheaf U (ULift.{u + 1} (ZMod n))) :
+    moduleDualityTransposeMap.{u, wU, wX, wA} X hX D hfin hclosed j hD
+      n hn hunit hinv F 1 (by decide) =
+    (moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD
+      n hn hunit hinv F 1 (by decide)).flip := rfl
+
+private theorem moduleDualityTransposeMap_two_eq_flip_zero
+    (F : ModuleSheaf U (ULift.{u + 1} (ZMod n))) :
+    moduleDualityTransposeMap.{u, wU, wX, wA} X hX D hfin hclosed j hD
+      n hn hunit hinv F 2 le_rfl =
+    (moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD
+      n hn hunit hinv F 0 (by decide)).flip := rfl
+
+/-- Both original degree-one adjoints transfer through an actual coefficient
+sequence. The compact five lemma and the original unsigned source row give
+both bijections directly, without a finiteness or reflexivity detour. -/
+theorem moduleDualityMap_one_isPerfPair_of_shortExact
+    {S : ShortComplex (ModuleSheaf U (ULift.{u + 1} (ZMod n)))} (hS : S.ShortExact)
+    (hB₀ : (moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD
+      n hn hunit hinv S.X₂ 0 (by decide)).IsPerfPair)
+    (hB₁ : (moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD
+      n hn hunit hinv S.X₂ 1 (by decide)).IsPerfPair)
+    (hC₀ : (moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD
+      n hn hunit hinv S.X₃ 0 (by decide)).IsPerfPair)
+    (hC₁ : (moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD
+      n hn hunit hinv S.X₃ 1 (by decide)).IsPerfPair) :
+    (moduleDualityMap.{u, wU, wX, wA} X hX D hfin hclosed j hD
+      n hn hunit hinv S.X₁ 1 (by decide)).IsPerfPair := by
+  have hBψ₁ : Function.Bijective (moduleDualityTransposeMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv S.X₂ 1 (by decide)) := by
+    rw [moduleDualityTransposeMap_one_eq_flip]
+    exact hB₁.bijective_right
+  have hCψ₁ : Function.Bijective (moduleDualityTransposeMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv S.X₃ 1 (by decide)) := by
+    rw [moduleDualityTransposeMap_one_eq_flip]
+    exact hC₁.bijective_right
+  have hBψ₂ : Function.Bijective (moduleDualityTransposeMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv S.X₂ 2 le_rfl) := by
+    rw [moduleDualityTransposeMap_two_eq_flip_zero]
+    exact hB₀.bijective_right
+  have hCψ₂ : Function.Bijective (moduleDualityTransposeMap.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv S.X₃ 2 le_rfl) := by
+    rw [moduleDualityTransposeMap_two_eq_flip_zero]
+    exact hC₀.bijective_right
+  refine ⟨moduleDualityMap_one_bijective_of_shortExact.{u, wU, wX, wA}
+    X hX D hfin hclosed j hD n hn hunit hinv hS hB₀ hB₁ hC₀ hC₁, ?_⟩
+  rw [← moduleDualityTransposeMap_one_eq_flip]
+  exact ⟨moduleDualityTransposeMap_one_injective_of_shortExact.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv hS
+      hBψ₁.injective hCψ₁.surjective hCψ₂.injective,
+    moduleDualityTransposeMap_one_surjective_of_shortExact.{u, wU, wX, wA}
+      X hX D hfin hclosed j hD n hn hunit hinv hS
+      hBψ₁.surjective hCψ₂.surjective hBψ₂.injective⟩
+
+end MiddleCompactExactness
+
 end AlgebraicGeometry.Scheme.EtaleCohomology

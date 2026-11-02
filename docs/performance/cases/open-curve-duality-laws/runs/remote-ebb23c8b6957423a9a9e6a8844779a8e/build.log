@@ -1,0 +1,71 @@
+✔ [8472/8481] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteCoefficientsVanishing (33s)
+✔ [8473/8481] Built AglibTest.AlgebraicGeometry.EtaleCohomology.Curves.FiniteCoefficientsVanishing (7.9s)
+✔ [8474/8481] Built Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantOnePerfectness (48s)
+✔ [8475/8481] Built Aglib.AlgebraicGeometry.EtaleCohomology.Duality.CoefficientDevissage (89s)
+✔ [8476/8481] Built AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.CoefficientDevissage (10s)
+✔ [8477/8481] Built Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ProperCompactFiniteness (23s)
+✔ [8478/8481] Built Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LocallyConstantPerfectness (211s)
+✔ [8479/8481] Built AglibTest.AlgebraicGeometry.EtaleCohomology.Duality.LocallyConstantPerfectness (18s)
+✖ [8480/8481] Building Aglib.AlgebraicGeometry.EtaleCohomology.Duality.OpenPerfectness (40s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-ebb23c8b6957423a9a9e6a8844779a8e/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean -o /root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.olean -i /root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.c --setup /root/autodl-tmp/lean-build/workspaces/managed-da502fca88bf-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean:91:17: failed to synthesize
+  ∀ (X Y : ModuleSheaf U (ULift.{u + 1, 0} (ZMod n))) (a b : ℤ),
+    Localization.HasSmallLocalizedHom
+      (HomologicalComplex.quasiIso (ModuleSheaf U (ULift.{u + 1, 0} (ZMod n))) (ComplexShape.up ℤ))
+      ((shiftFunctor (HomologicalComplex (ModuleSheaf U (ULift.{u + 1, 0} (ZMod n))) (ComplexShape.up ℤ)) a).obj
+        ((CochainComplex.singleFunctor (ModuleSheaf U (ULift.{u + 1, 0} (ZMod n))) 0).obj X))
+      ((shiftFunctor (HomologicalComplex (ModuleSheaf U (ULift.{u + 1, 0} (ZMod n))) (ComplexShape.up ℤ)) b).obj
+        ((CochainComplex.singleFunctor (ModuleSheaf U (ULift.{u + 1, 0} (ZMod n))) 0).obj Y))
+(deterministic) timeout at `typeclass`, maximum number of heartbeats (20000) has been reached
+
+Note: Use `set_option synthInstance.maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean:50:75: unsolved goals
+k : Type u
+inst✝⁵ : Field k
+inst✝⁴ : IsAlgClosed k
+X : FScheme k
+hX : Curve.Properties X
+D : Set ↥(Over.left X)
+hfin : D.Finite
+hclosed : ∀ x ∈ D, IsClosed {x}
+U : Scheme
+j : U ⟶ Over.left X
+inst✝³ : IsOpenImmersion j
+hD : Set.range ⇑j = Dᶜ
+n : ℕ
+hn : 0 < n
+hunit : IsUnit ↑n
+hinv : IsUnit ↑n
+inst✝² : HasExt (ModuleSheaf U (ULift.{u + 1, 0} (ZMod n)))
+inst✝¹ : HasExt (ModuleSheaf (Over.left X) (ULift.{u + 1, 0} (ZMod n)))
+inst✝ : HasExt (AbelianSheaf (Over.left X))
+Λ : Type (u + 1) := ULift.{u + 1, 0} (ZMod n)
+A : ModuleSheaf (Over.left X) Λ := moduleUnit (Over.left X) Λ
+iz : Curves.FiniteClosedSupport.pointScheme (Over.left X) D ⟶ Over.left X :=
+  Curves.FiniteClosedSupport.inclusion (Over.left X) D
+this : IsClosedImmersion iz := Curves.FiniteClosedSupport.inclusion_isClosedImmersion (Over.left X) D hfin hclosed
+hcomp : Set.range ⇑j = (Set.range ⇑iz)ᶜ
+S : ShortComplex (ModuleSheaf (Over.left X) Λ) := moduleLocalizationShortComplex j Λ iz hcomp A
+hS : S.ShortExact
+hB : ∀ (r : ℕ) (hr : r ≤ 2), (moduleDualityMap X hX ∅ ⋯ ⋯ (𝟙 (Over.left X)) ⋯ n hn hunit hinv S.X₂ r hr).IsPerfPair
+eC : S.X₃ ≅ moduleFinitePointSource (Over.left X) D n :=
+  (moduleDirectImage iz Λ).mapIso (moduleUnitInverseImageIso iz n)
+hC : ∀ (r : ℕ) (hr : r ≤ 2), (moduleDualityMap X hX ∅ ⋯ ⋯ (𝟙 (Over.left X)) ⋯ n hn hunit hinv S.X₃ r hr).IsPerfPair
+hA :
+  (moduleDualityMap X hX ∅ ⋯ ⋯ (𝟙 (Over.left X)) ⋯ n hn hunit hinv S.X₁ 1
+      moduleDualityMap_zero_one_extClass._proof_1).IsPerfPair
+eA : S.X₁ ≅ (moduleLowerShriek j Λ).obj (moduleUnit U Λ) :=
+  (moduleLowerShriek j Λ).mapIso (moduleUnitInverseImageIso j n)
+hFirst :
+  (moduleDualityMap X hX ∅ ⋯ ⋯ (𝟙 (Over.left X)) ⋯ n hn hunit hinv ((moduleLowerShriek j Λ).obj (moduleUnit U Λ)) 1
+      ⋯).IsPerfPair
+hRange : Set.range ⇑(j ≫ 𝟙 (Over.left X)) = Dᶜ
+⊢ (moduleDualityMap X hX D hfin hclosed j hD n hn hunit hinv (moduleUnit U (ULift.{u + 1, 0} (ZMod n))) 1
+      moduleDualityMap_unit_open_one_isPerfPair._proof_1).IsPerfPair
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Duality.OpenPerfectness
+error: build failed

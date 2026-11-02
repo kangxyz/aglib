@@ -1,0 +1,18 @@
+{
+  "/Users/kang/Documents/New project/tmp/work/jacobian/lane-refactor/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/CoefficientDevissage.lean": {
+    "sha256": "21f41d0314847b13e7b433dcd8a31067411540c8818a5a22c64e87ac2b8dbcb3",
+    "lines": 591
+  },
+  "/Users/kang/Documents/New project/tmp/work/jacobian/lane-refactor/AglibTest/AlgebraicGeometry/EtaleCohomology/Duality/CoefficientDevissage.lean": {
+    "sha256": "c6fea77f57247c047f35bc16199812bb6c976da74fa4f86067f55c92a4684fe7",
+    "lines": 89
+  },
+  "/Users/kang/Documents/New project/tmp/work/jacobian/lane-refactor/Aglib/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean": {
+    "sha256": "2abe2d9cb9b5fd6d03b6fffa5197bd8873444789e343eb5f1986dd3742c01c5e",
+    "lines": 111
+  },
+  "/Users/kang/Documents/New project/tmp/work/jacobian/lane-refactor/AglibTest/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean": {
+    "sha256": "1a1a18c91b32e625a2ad654da1cc4881815d4fba638822d6d6ea93a86ef8b5d7",
+    "lines": 43
+  }
+}

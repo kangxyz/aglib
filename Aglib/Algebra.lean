@@ -265,6 +265,7 @@ public import Aglib.Algebra.Graded.DirectSum
 public import Aglib.Algebra.Group.Action.CyclicCoefficients
 public import Aglib.Algebra.Group.Action.TorsorAugmentation
 public import Aglib.Algebra.Group.Equiv.ComparisonComposite
+public import Aglib.Algebra.Group.Hom.FiniteExact
 public import Aglib.Algebra.Group.NormalizedQuotient
 public import Aglib.Algebra.Group.Subgroup.Ker
 public import Aglib.Algebra.Group.Subgroup.KerEquiv

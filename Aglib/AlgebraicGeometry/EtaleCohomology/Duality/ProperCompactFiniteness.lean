@@ -9,6 +9,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantOnePerfect
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.FiniteTracePairing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteEtalePresentation
 public import Mathlib.RingTheory.Finiteness.Finsupp
+public import Aglib.Algebra.Group.Hom.FiniteExact
 public import Mathlib.Tactic.IntervalCases
 
 /-!
@@ -36,30 +37,13 @@ attribute [local instance] hasSheafifyLarge hasSheafifyModules moduleSheafExtZMo
   CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard
   Abelian.hasFiniteBiproducts
 
-private theorem finite_middle_of_exact_zmod (n : ℕ) [NeZero n]
+private theorem finite_middle_of_exact_zmod (n : ℕ)
     {A : Type a} {B : Type b} {C : Type c}
     [AddCommGroup A] [AddCommGroup B] [AddCommGroup C]
     [Module (ZMod n) A] [Module (ZMod n) B] [Module (ZMod n) C]
     [Finite A] [Finite C] (f : A →ₗ[ZMod n] B) (g : B →ₗ[ZMod n] C)
     (hfg : Function.Exact f g) : Finite B := by
-  let : Module.Finite (ZMod n) A := Module.Finite.of_finite
-  let : Finite (LinearMap.range g) := inferInstance
-  let : Module.Finite (ZMod n) (LinearMap.range g) := Module.Finite.of_finite
-  have h' : Function.Exact f g.rangeRestrict := by
-    intro x
-    constructor
-    · intro hx
-      have hzero : g x = 0 := congrArg Subtype.val hx
-      exact (hfg x).mp hzero
-    · intro hx
-      apply Subtype.ext
-      exact (hfg x).mpr hx
-  have hg : Function.Surjective g.rangeRestrict := by
-    intro z
-    obtain ⟨x, hx⟩ := z.property
-    exact ⟨x, Subtype.ext hx⟩
-  let : Module.Finite (ZMod n) B := Module.Finite.of_exact h' hg
-  exact Module.finite_of_finite (ZMod n)
+  exact AddMonoidHom.finite_of_exact f.toAddMonoidHom g.toAddMonoidHom hfg
 
 variable {k : Type u} [Field k] [IsAlgClosed k] (X : FScheme k) (hX : Curve.Properties X)
   (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : k))
