@@ -72,3 +72,13 @@ These are C5 recognition criteria. They do not establish the C4 contraction
 construction, its target-stalk regularity, the identification of its
 inverse-image point ideal, or the construction of a global contraction from
 local models. Those remain the original consumers' obligations.
+
+The private regular-centre helper retains its original telescope but now
+calls `RegularPoint.regularLocalRing_pointBlowup_over_regularPoint` in the
+native `Blowup/RegularPoint/Scheme` owner. Its actual local-spectrum and
+stalk-isomorphism body occurs there once, also used by that owner's existing
+whole-scheme regularity theorem. No contraction hypothesis or conclusion is
+changed. Exact wrapper source `3a4810de` passed its normal native check
+(5.1 seconds) in graph 190 after the changed lower Scheme owner passed
+(2.5 seconds). Full graph exit 0, no guard, matching posthashes in snapshot
+174. Prior receipts describe their earlier source bytes.

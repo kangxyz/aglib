@@ -117,3 +117,17 @@ specializes it to a module presentation through the same inverse-unit predicate.
 [ChartPullbackPresentationCompatibility](ChartPullbackPresentationCompatibility.lean)
 derives the scalar presentation square from the source-unit, restricted-target-unit
 and coefficient-restriction equations, retaining the supplied chart constructors.
+
+The original affine
+[section map](SectionsMap.lean), [stalk comparison](Stalk.lean) and
+[presentation-unit extensionality](PresentationUnits.lean) retain native
+tilde units and coefficient germs. Section-map reconstruction uses
+quasicoherence of both coefficients; presentation-unit extensionality
+allows an arbitrary target.
+[TildePullback](TildePullback.lean), [TildePullbackRaw](TildePullbackRaw.lean)
+and [PushforwardComposition](PushforwardComposition.lean) give whole
+composition laws for the original scalar and geometric functors, including
+the specified equality transports.
+[GenericEmbedding](GenericEmbedding.lean) uses one supplied original
+generic-stalk frame; injectivity keeps its quasicoherence and torsion-free
+hypotheses. No new fraction field or stalk model is selected.

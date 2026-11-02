@@ -173,3 +173,15 @@ original nonzero-section interface used by the ample criterion.
 Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
 
 - [Bidual/Affine](Bidual/Affine.lean)
+
+The [bidual family](Bidual/README.md) retains evaluation, map naturality
+and actual affine-open restriction; its coherent adapter uses local
+Noetherianity and affine-local finite type.
+[Generic uniqueness](GenericUniqueness/README.md) determines and glues maps
+into a line using nonempty opens of an integral scheme.
+[Stalk](Stalk.lean) characterizes local rank one of a finitely presented
+module by linear frames of all original stalks.
+[FiniteScheme](FiniteScheme.lean) gives existence of a trivialization on a
+semilocal affine scheme and on a scheme finite over a field, including its
+full nonreduced structure, together with the original section-rank
+consequences.

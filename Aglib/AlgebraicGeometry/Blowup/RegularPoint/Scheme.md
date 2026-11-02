@@ -1,5 +1,7 @@
 # Actual point blowups on regular schemes
 
+Source: [Scheme.lean](Scheme.lean).
+
 `AlgebraicGeometry.Scheme.Blowup.RegularPoint.regularStalks_pointBlowup`
 proves regularity of every actual stalk of
 `(blowupDatum (X.fromSpecResidueField x).ker).Y`. Its hypotheses are a
@@ -48,3 +50,13 @@ squares and stalk transports used in the extension are proved in Lean.
 No excellence, Henselian, completeness, trait, coefficient-field or global
 dimension premise is imposed. This leaf adds no projective-line or
 normal-bundle construction.
+
+`regularLocalRing_pointBlowup_over_regularPoint` isolates the weaker original
+centre statement: only `X.stalk x` must be regular local of dimension two.
+For an actual blowup point `z` with its original image equal to `x`, its
+original stalk is regular. No global regularity or normality of `X` is needed.
+The existing local-spectrum/stalk-comparison proof has one implementation
+here; the whole-regular-scheme centre branch and the old contraction helper
+are thin callers. Actual objects, dimensions and point equality are unchanged.
+
+Direct consumers: [AlgebraicGeometry/Blowup/Arc/Iteration](../Arc/Iteration.md), [AlgebraicGeometry/Blowup/PointLocalization](../PointLocalization.md), [AlgebraicGeometry/Blowup/RegularPoint/Normal/Scheme](Normal/Scheme.md).

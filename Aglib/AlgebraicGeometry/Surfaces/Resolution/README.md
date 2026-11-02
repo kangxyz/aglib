@@ -119,35 +119,103 @@ completions at every actual normalization point. The localized structural
 section bijections are derived from the original normal-birational map.
 These are necessary conditions for resolution, not an existence theorem.
 
-## Open resolution construction
+## Normalized chains, domination and completion
 
-The full singular-surface resolution criterion RES and its quasi-excellent
-corollary RES-QE remain open. The normal-graph, vanishing and necessity
-results above do not supply the converse construction.
+[NormalizedPointBlowupChain](NormalizedPointBlowupChain.md) records a finite
+sequence of literal ordinary blowups at closed nongeneric points, each
+followed by normalization in its original function field. It is indexed by
+the composite arrow. Its native laws derive integrality, normality,
+dominance and the original function-field isomorphism without a Nagata or
+Noetherian premise. Properness additionally requires finite normalization.
 
-The remaining argument includes global canonical-module and integral-trace
-comparisons, full coefficient-valued curve Serre duality, canonical
-restriction, rational/Gorenstein reduction, geometric production of the
-genuine child tangent-cone hypotheses, persistent marking and full RDP
-termination, complete-local degree induction, and descent and globalization
-of the prescribed normalized chain. The completed interfaces below supply
-parts of this argument under their stated hypotheses; they do not supply
-the converse resolution construction.
+[Normalized-point domination](../Birational/NormalizedPointDomination/AffineBase.md)
+constructs such a chain dominating any supplied integral proper birational
+model over a commutative normal Nagata domain of dimension at most two.
+Its terminal is normal; it need not be regular.
+
+[CompletionDescent](CompletionDescent.md) takes a commutative Noetherian
+local domain `A` of dimension two whose literal completion `H` is a normal
+domain. A supplied normalized-point chain over `Spec H` descends to one over
+`Spec A` of exactly the same length, with proper dominant original map,
+integral terminal and invertible original function-field map.
+The explicit terminal isomorphism to the completion pullback retains both
+projections. Supplied regularity of the upper terminal descends as well.
+The upper chain is an input; it is not constructed by descent.
+
+[Rationality under completion](../RationalSingularities/Completion.md)
+combines domination and arbitrary-terminal chain descent with the original
+flat cohomology comparison and proper-birational H1 injection.
+It proves `NormalModificationH1Vanishing A → NormalModificationH1Vanishing H`
+under the same dimension and normal-domain completion assumptions, without
+Nagata on `A` or algebraization of an arbitrary model over `H`.
+
+## Conditional resolution from initial full cones
+
+[FiniteResolution](RationalDoublePoint/FiniteResolution.md) starts with a
+commutative Noetherian Nagata local domain `R` of dimension two satisfying
+`NormalModificationH1Vanishing R`, and an integral normal model
+`f : X ⟶ Spec R` which is proper and dominant with invertible original
+function-field map. Its intermediate theorem serializes empty levels of
+the original singular prefixes into an ordinary finite point-blowup chain.
+It proves normality of all chain stages, regularity of the terminal and an
+isomorphism over every original open whose stalks are regular.
+
+The geometric endpoint takes two additional inputs. At each original
+singular stalk, `hcones` supplies a generating triple `(t,g₀,g₁)` and a
+nonzero homogeneous quadratic `q` over its original residue field with
+`RingHom.ker (CaseOne.canonicalConeMap t g) = Ideal.span {q}`.
+A commutative local domain `A` is complete for its maximal ideal and has
+dimension two, with an actual local injective `a : A →+* R` and finite
+original residue-field map. This earlier `A` has no additional Noetherian
+hypothesis; neither `R` nor later stalks are assumed complete.
+
+[OriginalPathCones](RationalDoublePoint/OriginalPathCones.md) constructs the
+later full cones from the supplied initial cone.
+[OriginalMixedPath](RationalDoublePoint/OriginalMixedPath.md) constructs a
+marked tail, distinguishing the ratio parameter in second entry from the
+previous exceptional denominator. The
+[original marked-path theorem](../../Blowup/Arc/MarkedPath.md) then gives
+a regular point using the earlier complete base and the original composed
+local and residue maps.
+[FinitePrefixGeometry](RationalDoublePoint/FinitePrefixGeometry.md) proves
+finite branching before choosing any infinite continuation;
+[FiniteHeight](RationalDoublePoint/FiniteHeight.md) applies native König
+to obtain an empty level.
+[PointHeight](RationalDoublePoint/PointHeight.md) and
+[HeightMultiset](RationalDoublePoint/HeightMultiset.md) give the strict
+decrease used in finite serialization.
+
+[NormalizedResolution](RationalDoublePoint/NormalizedResolution.md) converts
+that ordinary chain to a literal normalized-point chain using its proved
+normal stages and an explicit terminal isomorphism. It retains the proper
+dominant birational original map, integral regular terminal and isomorphism
+over every original regular open. It uses the same `hcones` and earlier
+complete-base map.
 
 The [monic-quadratic kernel theorem](../../../RingTheory/GradedAlgebra/MonicQuadratic.md)
-assumes both an actual relation and the genuine Hilbert function
-`finrank k (H n) = 2*n+1` in every nonnegative degree. Deriving those
-inputs from the rational/Gorenstein geometry remains open; changing
-cotangent coordinates only preserves a presentation already supplied.
+requires an actual relation and `finrank k (H n) = 2*n+1` in every degree.
+The [first-power exceptional theorem](RationalDoublePoint/ExceptionalHilbert/FirstPower.md)
+derives this Hilbert function on a normal Nagata rational local surface
+from cotangent rank three. Singular child three-generation supplies that
+rank in the path construction. Initial-cone recognition from arbitrary
+rational or rational-Gorenstein input remains separate.
 
-[MarkedPath](../../Blowup/Arc/MarkedPath.md) constructs a formal arc on a
-given marked ordinary point-blowup path and obtains regularity at an
-original selected point under its actual completion or complete-base
-hypotheses. The marking and the original finite-prefix residue-finiteness
-conditions remain inputs. Its local termination conclusion does not
-construct the required marking or an arbitrary global resolving chain.
+## Remaining input boundary
+
+The full singular-surface resolution criterion RES and its quasi-excellent
+corollary RES-QE remain open. The conditional endpoint above does not derive
+`hcones` from arbitrary rational or rational-Gorenstein data.
+The selected completion-descent theorem does not supply complete-local
+resolving-chain existence. [Supported surface-chain spreading](../../Descent/LocalModification/SurfaceChain.md)
+already extends a supplied proper normalized chain at a closed nongeneric
+point of an integral normal Noetherian surface of dimension at most two.
+It preserves the length, original stalk Cartesian square and complement;
+regularity follows from a supplied regular local terminal and regular
+unchanged complement. Complete-local existence and the remaining global
+criterion assembly must still be supplied before these interfaces prove RES.
 
 ## Additional prerequisites and their consumers
+
 
 [Finite domination](../Birational/FiniteDomination.md) constructs the actual
 normal finite diagram used by the
@@ -165,25 +233,19 @@ compatible actual closed embedding, a complete normal local surface target
 and a supplied normal proper birational model of dimension at most two.
 [Unit-coefficient curve Serre](../../Cohomology/Duality/Projective/Relative/CohenMacaulayCurve/Serre.md)
 retains the closed-stalk regular-primary parameter condition and `1 ≤ n`.
-The intrinsic-line coefficient concentration and generic affine coefficient
-model do not themselves supply full coefficient-valued Serre duality.
+[Coefficient-valued Serre](../../Cohomology/Duality/Projective/Relative/CohenMacaulayCurve/Coefficients/Serre.md)
+keeps an actual finite one-dimensional coefficient module, the curve's
+regular-primary/CM hypotheses and coherent-source conditions. Its maps,
+trace and naturality are normalized against the original structural maps;
+the coefficient line is not silently identified with the ground field.
+The [Cartier restriction](../../Cohomology/Duality/Projective/Relative/NormalSurface/CartierRestriction.md)
+and finite canonical comparison interfaces retain their actual embedding,
+regularity and scalar-map conditions.
 
 [Ordinary rational blowups](../RationalSingularities/README.md#ordinary-rational-blowups-and-the-full-exceptional-fibre)
 and [conditional quadratic charts](../../../RingTheory/Blowup/README.md#conditional-quadratic-charts-and-differential-images)
 provide original-map, ideal-power and local marked-successor primitives.
 Their rationality, full-kernel, Hilbert-function and marking premises remain
-explicit. A supplied normalized chain, its cohomological consequences and
-its pointwise comparisons are distinct from existence and termination of a
-resolving chain. RES and RES-QE remain open.
-
-[NormalizedPointBlowupChain](NormalizedPointBlowupChain.md) records a supplied
-finite sequence of literal ordinary blowups at closed nongeneric points,
-each followed by normalization in its original function field. Its index
-is the actual composite arrow. Integrality, normality, dominance and the
-original function-field isomorphism are derived without Noetherian or Nagata
-hypotheses. Finiteness of normalization, hence chain properness, needs its
-own hypotheses and is not automatic. The
-[completion point comparison](../../Descent/CompletionPointBlowup.md) supplies
-the one-step consumer interface under its actual domain-completion and
-normal-upper-model assumptions. The full finite-chain descent capstone and
-existence of a resolving chain remain open; this chain type supplies neither.
+explicit. The conditional initial-cone endpoint above constructs a resolving chain
+under its stated inputs. These prerequisites alone do not supply those
+inputs or the full RES and RES-QE construction.

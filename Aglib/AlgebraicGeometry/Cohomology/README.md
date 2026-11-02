@@ -115,3 +115,14 @@ later differential and trace consumers.
 fibre-cohomology open for a proper affine-locally coherent relatively flat
 family over a locally Noetherian base, with its stated amplitude and
 quasicoherence hypotheses.
+
+The [proper cohomology guide](Proper/README.md) retains finite-length,
+uniform-bound, canonical-coefficient vanishing and trace-image annihilator
+interfaces on their actual models. The
+[derived structure guide](Proper/DerivedStructure/README.md) separates
+supported local H1 input, R1 vanishing and invertibility of the original
+derived unit. The [regular-point exceptional family](Blowup/RegularPoint/README.md)
+uses the original positive exceptional section. These interfaces keep
+their normality, dimension, finite-base and embedding hypotheses; they
+do not assert all-model structure-H1 vanishing or the full resolution
+criterion.

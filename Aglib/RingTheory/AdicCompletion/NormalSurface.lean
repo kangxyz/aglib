@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.RingTheory.IntegralClosure.LocalDomain
 public import Aglib.RingTheory.AdicCompletion.SurfaceFormalFiber
 public import Aglib.RingTheory.AdicCompletion.AssociatedPrimeCriterion
 public import Aglib.RingTheory.Nagata.Completion
@@ -19,11 +20,14 @@ public import Mathlib.RingTheory.Regular.Flat
 /-!
 # Normal completions of actual surface charts
 
-The original local surface is normal and Nagata and is supplied with an
-injective local map from a complete local surface with finite residue
-extension. Quotient completions, the zero-dimensional formal-fibre theorem,
-and the regular parameter pair give normality of the same actual completion.
-No G-ring, excellence, or normal-ascent conclusion is an input.
+The general completion argument takes a normal local surface, regular actual
+localizations over the generic point, and reduced original prime-base
+quotients. Its punctured-spectrum proof and flat regular-parameter-pair proof
+each have one implementation. The complete-base wrappers supply those inputs
+from the original Nagata and finite-residue-extension hypotheses, preserving
+their existing interfaces. The generic fibre is only forced to have dimension
+zero in that particular complete-base supplier. Domainhood uses the original
+total-quotient-ring argument extracted to `IntegralClosure/LocalDomain`.
 -/
 
 @[expose] public noncomputable section
@@ -208,93 +212,32 @@ theorem isReduced_formalFiber_of_nagata_surface
   let e := Ideal.Fiber.algEquivAux₁ (S := C) p
   exact isReduced_of_injective e e.injective
 
-private theorem idempotent_eq_zero_or_one_of_local
-    (C : Type u) [CommRing C] [IsLocalRing C] (e : C) (he : e * e = e) :
-    e = 0 ∨ e = 1 := by
-  rcases isUnit_or_isUnit_one_sub_self e with h | h
-  · exact Or.inr (h.mul_left_cancel (by simpa only [mul_one] using he))
-  · apply Or.inl
-    apply h.mul_left_cancel
-    simp only [sub_mul, one_mul, he, sub_self, mul_zero]
+section NormalCompletion
 
-private theorem idempotent_isIntegral
-    (C F : Type u) [CommRing C] [CommRing F] [Algebra C F]
-    (e : F) (he : e * e = e) : IsIntegral C e := by
-  refine ⟨Polynomial.X ^ 2 - Polynomial.X,
-    Polynomial.monic_X_pow_sub (Polynomial.degree_X_le.trans_lt (by norm_num)), ?_⟩
-  simp only [Polynomial.eval₂_sub, Polynomial.eval₂_mul, Polynomial.eval₂_X,
-    pow_two, he, sub_self]
+variable (B : Type u) [CommRing B] [IsDomain B] [IsLocalRing B]
+  [IsNoetherianRing B] [IsIntegrallyClosed B]
 
-private theorem isDomain_of_artinian_total_fraction_ring
-    (C F : Type u) [CommRing C] [IsLocalRing C] [IsIntegrallyClosed C]
-    [CommRing F] [Algebra C F] [IsFractionRing C F]
-    [IsReduced F] [IsArtinianRing F] : IsDomain C := by
-  classical
-  let : Nontrivial F := ⟨⟨0, 1, fun h => zero_ne_one
-    ((IsFractionRing.injective C F) (by simpa only [_root_.map_zero, map_one] using h))⟩⟩
-  let E := IsArtinianRing.equivPi F
-  have hsub : Subsingleton (MaximalSpectrum F) := by
-    constructor
-    intro i j
-    by_contra hij
-    let v : ∀ k : MaximalSpectrum F, F ⧸ k.asIdeal := fun k => if k = i then 1 else 0
-    let e : F := E.symm v
-    have he : e * e = e := by
-      apply E.injective
-      change E (E.symm v * E.symm v) = E (E.symm v)
-      rw [map_mul, E.apply_symm_apply]
-      funext k
-      by_cases hk : k = i <;> simp [v, hk]
-    obtain ⟨c, hc⟩ := (isIntegrallyClosed_iff F).mp
-      (inferInstance : IsIntegrallyClosed C) (idempotent_isIntegral C F e he)
-    have hcIdem : c * c = c := by
-      apply IsFractionRing.injective C F
-      rw [map_mul, hc, he]
-    rcases idempotent_eq_zero_or_one_of_local C c hcIdem with hc0 | hc1
-    · have he0 : e = 0 := by rw [← hc, hc0, _root_.map_zero]
-      have hv0 := congrFun (congrArg E he0) i
-      simp [e, v] at hv0
-    · have he1 : e = 1 := by rw [← hc, hc1, map_one]
-      have hv1 := congrFun (congrArg E he1) j
-      have hji : j ≠ i := Ne.symm hij
-      simp [e, v, hji] at hv1
-  let i : MaximalSpectrum F := Classical.choice inferInstance
-  let : Unique (MaximalSpectrum F) := ⟨⟨i⟩, fun j => hsub.elim j i⟩
-  let e : F ≃+* F ⧸ i.asIdeal := E.toRingEquiv.trans (RingEquiv.piUnique _)
-  let : Field (F ⧸ i.asIdeal) := Ideal.Quotient.field _
-  let : IsDomain F := Function.Injective.isDomain e e.injective
-  exact Function.Injective.isDomain (algebraMap C F) (IsFractionRing.injective C F)
-
-section Surface
-
-variable (A B : Type u) [CommRing A] [IsDomain A] [IsLocalRing A]
-  [IsAdicComplete (maximalIdeal A) A]
-  [CommRing B] [IsDomain B] [IsLocalRing B] [IsNoetherianRing B]
-  [IsIntegrallyClosed B] [Algebra A B] [IsLocalHom (algebraMap A B)]
-  [Module.Finite (ResidueField A) (ResidueField B)]
-
-/-- The original completion is regular at every nonclosed point. -/
-theorem isRegularLocalRing_atPrime_of_complete_normal_surface
-    (hinj : Function.Injective (algebraMap A B))
-    (hA : ringKrullDim A = 2) (hB : ringKrullDim B = 2)
-    (hN : IsNagataRing.{u, 0} B)
+/-- A normal local surface completion is regular off its closed point if
+its generic localizations are regular and its original prime-base quotients
+are reduced. The generic fibre need not be zero-dimensional. -/
+theorem isRegularLocalRing_atPrime_of_normal_surface_completion
+    (hB : ringKrullDim B = 2)
+    (hgeneric : ∀ (P : Ideal (AdicCompletion (maximalIdeal B) B)) [P.IsPrime],
+      P.comap (algebraMap B (AdicCompletion (maximalIdeal B) B)) = ⊥ →
+      IsRegularLocalRing (Localization.AtPrime P))
+    (hquotient : ∀ (p : Ideal B) [p.IsPrime],
+      IsReduced (AdicCompletion (maximalIdeal B) B ⧸
+        p.map (algebraMap B (AdicCompletion (maximalIdeal B) B))))
     (P : Ideal (AdicCompletion (maximalIdeal B) B)) [P.IsPrime]
     (hPm : P ≠ maximalIdeal (AdicCompletion (maximalIdeal B) B)) :
     IsRegularLocalRing (Localization.AtPrime P) := by
   let C := AdicCompletion (maximalIdeal B) B
   let p := P.comap (algebraMap B C)
   let : IsNoetherianRing C := AdicCompletion.isNoetherianRing B (maximalIdeal B)
-  let : IsReduced C := hN.isReduced_completion_of_dimLE_two hB.le
   have hdC : ringKrullDim C = 2 :=
     (AdicCompletion.ringKrullDim_maximalIdeal_eq B).trans hB
   by_cases hp0 : p = ⊥
-  · have hheight := height_eq_zero_of_comap_eq_bot_of_complete_surface A B hinj hA hB P hp0
-    let Cp := Localization.AtPrime P
-    let : Ring.KrullDimLE 0 Cp := Ring.KrullDimLE.of_isLocalization P
-      (Ideal.height_eq_zero_iff.mp hheight) Cp
-    let : IsReduced Cp := isReduced_localizationPreserves P.primeCompl Cp inferInstance
-    let : Field Cp := Ring.KrullDimLE.isField_of_isReduced.toField
-    infer_instance
+  · exact hgeneric P hp0
   have hPbound : P.height ≤ 1 := by
     obtain ⟨n, hn, he⟩ := exists_ringKrullDim_localization_lt 2 hdC
       (⟨P, inferInstance⟩ : PrimeSpectrum C) hPm
@@ -326,7 +269,7 @@ theorem isRegularLocalRing_atPrime_of_complete_normal_surface
   let : IsDiscreteValuationRing Bp :=
     IsDiscreteValuationRing.of_isIntegrallyClosed_of_dimLE_one Bp hdimBp hnf
   let I := p.map (algebraMap B C)
-  let : IsReduced (C ⧸ I) := isReduced_primeQuotient_of_nagata_surface B hN hB.le p
+  let : IsReduced (C ⧸ I) := hquotient p
   obtain ⟨b, hb, hb0⟩ := p.ne_bot_iff.mp hp0
   have hreg : IsSMulRegular B b := IsSMulRegular.of_right_eq_zero_of_smul
     fun x hx => (mul_eq_zero.mp (show b * x = 0 from hx)).resolve_left hb0
@@ -344,13 +287,14 @@ theorem isRegularLocalRing_atPrime_of_complete_normal_surface
     simpa only [Ideal.annihilator_quotient] using hmin
   exact IsRegularLocalRing.atPrime_of_flat_of_dvr_of_reduced_quotient B C p P rfl hass
 
-/-- The actual completion is integrally closed in its actual total quotient
-ring. Domainhood is established separately, rather than inferred from the
-meaning of `IsIntegrallyClosed`. -/
-theorem isIntegrallyClosed_of_complete_normal_surface
-    (hinj : Function.Injective (algebraMap A B))
-    (hA : ringKrullDim A = 2) (hB : ringKrullDim B = 2)
-    (hN : IsNagataRing.{u, 0} B) :
+/-- The actual completion of a normal local surface is integrally closed
+if its punctured spectrum is regular. The regular parameter pair is transported
+along the original flat completion map. -/
+theorem isIntegrallyClosed_completion_of_regular_nonmaximal
+    (hB : ringKrullDim B = 2)
+    (hregular : ∀ (P : Ideal (AdicCompletion (maximalIdeal B) B)) [P.IsPrime],
+      P ≠ maximalIdeal (AdicCompletion (maximalIdeal B) B) →
+      IsRegularLocalRing (Localization.AtPrime P)) :
     IsIntegrallyClosed (AdicCompletion (maximalIdeal B) B) := by
   let C := AdicCompletion (maximalIdeal B) B
   let : IsNoetherianRing C := AdicCompletion.isNoetherianRing B (maximalIdeal B)
@@ -388,7 +332,52 @@ theorem isIntegrallyClosed_of_complete_normal_surface
   · exact map_maximalIdeal_le (algebraMap B C) (Ideal.mem_map_of_mem _ hxm)
   · exact map_maximalIdeal_le (algebraMap B C) (Ideal.mem_map_of_mem _ hym)
   · intro P hP hPm
-    exact isRegularLocalRing_atPrime_of_complete_normal_surface A B hinj hA hB hN P hPm
+    exact hregular P hPm
+
+end NormalCompletion
+
+section Surface
+
+variable (A B : Type u) [CommRing A] [IsDomain A] [IsLocalRing A]
+  [IsAdicComplete (maximalIdeal A) A]
+  [CommRing B] [IsDomain B] [IsLocalRing B] [IsNoetherianRing B]
+  [IsIntegrallyClosed B] [Algebra A B] [IsLocalHom (algebraMap A B)]
+  [Module.Finite (ResidueField A) (ResidueField B)]
+
+/-- The original completion is regular at every nonclosed point. -/
+theorem isRegularLocalRing_atPrime_of_complete_normal_surface
+    (hinj : Function.Injective (algebraMap A B))
+    (hA : ringKrullDim A = 2) (hB : ringKrullDim B = 2)
+    (hN : IsNagataRing.{u, 0} B)
+    (P : Ideal (AdicCompletion (maximalIdeal B) B)) [P.IsPrime]
+    (hPm : P ≠ maximalIdeal (AdicCompletion (maximalIdeal B) B)) :
+    IsRegularLocalRing (Localization.AtPrime P) := by
+  apply isRegularLocalRing_atPrime_of_normal_surface_completion B hB ?_ ?_ P hPm
+  · intro Q hQ hQ0
+    let C := AdicCompletion (maximalIdeal B) B
+    let : IsNoetherianRing C := AdicCompletion.isNoetherianRing B (maximalIdeal B)
+    let : IsReduced C := hN.isReduced_completion_of_dimLE_two hB.le
+    have hheight := height_eq_zero_of_comap_eq_bot_of_complete_surface A B hinj hA hB Q hQ0
+    let Cq := Localization.AtPrime Q
+    let : Ring.KrullDimLE 0 Cq := Ring.KrullDimLE.of_isLocalization Q
+      (Ideal.height_eq_zero_iff.mp hheight) Cq
+    let : IsReduced Cq := isReduced_localizationPreserves Q.primeCompl Cq inferInstance
+    let : Field Cq := Ring.KrullDimLE.isField_of_isReduced.toField
+    infer_instance
+  · intro p hp
+    exact isReduced_primeQuotient_of_nagata_surface B hN hB.le p
+
+/-- The actual completion is integrally closed in its actual total quotient
+ring. Domainhood is established separately, rather than inferred from the
+meaning of `IsIntegrallyClosed`. -/
+theorem isIntegrallyClosed_of_complete_normal_surface
+    (hinj : Function.Injective (algebraMap A B))
+    (hA : ringKrullDim A = 2) (hB : ringKrullDim B = 2)
+    (hN : IsNagataRing.{u, 0} B) :
+    IsIntegrallyClosed (AdicCompletion (maximalIdeal B) B) := by
+  apply isIntegrallyClosed_completion_of_regular_nonmaximal B hB
+  intro P hP hPm
+  exact isRegularLocalRing_atPrime_of_complete_normal_surface A B hinj hA hB hN P hPm
 
 /-- Both normal-domain properties hold on the same actual completion.
 The domain proof uses the zero-dimensional generic fibre as an Artinian total
@@ -433,7 +422,7 @@ theorem normalDomain_of_complete_normal_surface
   let : IsFractionRing C F := IsLocalization.of_le (S := F) M (nonZeroDivisors C) hM
     (fun c hc => IsArtinianRing.isUnit_of_mem_nonZeroDivisors
       (IsLocalization.nonZeroDivisors_le_comap M F hc))
-  exact ⟨isDomain_of_artinian_total_fraction_ring C F, inferInstance⟩
+  exact ⟨IsIntegrallyClosed.isDomain_of_artinian_total_fraction_ring C F, inferInstance⟩
 
 end Surface
 

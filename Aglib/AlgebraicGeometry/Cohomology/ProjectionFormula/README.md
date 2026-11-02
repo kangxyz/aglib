@@ -11,3 +11,11 @@ identifies its value with the original three factors, including the selected
 The input complex remains an arbitrary bounded-below module complex.
 
 Lower [module projection formula](../../Modules/ProjectionFormula/README.md) and [finite-locally-free tensor exactness](../../Modules/LocallyFree/Tensor/README.md) feed this comparison. Godement projection-formula maps additionally retain termwise flasqueness of the bounded-below complex. The arbitrary-coefficient closed-immersion module result is not silently promoted to this derived interface.
+
+[StructureUnit](StructureUnit.lean) gives the original projection-formula
+square for coefficient single units and arbitrary sections. Its derived
+square requires a finite locally free target coefficient, while the
+ordinary structural-unit and unitor calculations do not.
+Invertibility of the original structural derived unit then gives
+invertibility of that coefficient unit through the same projection
+comparison.

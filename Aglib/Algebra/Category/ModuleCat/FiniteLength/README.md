@@ -12,3 +12,10 @@ second retains the source's common ring/module universe. A denominator-unit
 condition is not inferred from finite length. The native
 [finite-length support](../../../../RingTheory/FiniteLength/README.md) interface
 remains the lower module-theoretic owner.
+
+[LocalRestriction](LocalRestriction.lean) preserves finite length of the
+literal restricted module along a finite local map of commutative local
+rings. It uses the finite residue degree without Noetherianity,
+injectivity or surjectivity. The module universe remains independent of
+both ring universes. Proper-model cohomology uses this finite-local version
+as well as the surjective-map interface.

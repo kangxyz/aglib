@@ -34,3 +34,9 @@ The remaining geometric consumer must identify the original tautological
 quotient of this row with the polynomial Proj chart map. This leaf does
 not assert that equality, global closedness, or projectivity of a
 point-blowup chain.
+
+`originalIdealIso_inv_inclusion` retains the original ideal inclusion under
+the inverse of that SAME comparison: it is native tilde of the original
+ideal subtype. This law introduces no new ideal model or hypotheses.
+
+Direct consumers: [AlgebraicGeometry/Blowup/ProjectivePresentation/Restriction](Restriction.md), [AlgebraicGeometry/Blowup/ProjectivePresentation/RowCoordinates](RowCoordinates.md), [AlgebraicGeometry/Cohomology/Duality/Projective/Relative/NormalSurface/LocalIdeal](../../Cohomology/Duality/Projective/Relative/NormalSurface/LocalIdeal.md).

@@ -59,3 +59,11 @@ comparison maps.
 Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
 
 - [SemilinearConjugate](SemilinearConjugate.lean)
+
+[ScaledImageLift](LinearMap/ScaledImageLift.lean) constructs a linear map
+from actual scaled-image and kernel containments, retaining its evaluation,
+composition and generic-square equations.
+[LocalizedModule/Kernel](LocalizedModule/Kernel.lean) detects kernels
+through original localization at non-zero-divisors, with torsion-freeness
+only for the target statements that use it. These module constructions
+have no scheme, differential or surface premise.

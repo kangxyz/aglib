@@ -1,0 +1,207 @@
+✔ [4015/4211] Built Aglib.AlgebraicGeometry.Surfaces.Resolution.PointBlowupChain.ClosedPrefix (1.8s)
+✖ [5585/5589] Building Aglib.AlgebraicGeometry.Surfaces.Resolution.RationalDoublePoint.OriginalCaseOneStep (6.3s)
+trace: .> LEAN_PATH=/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/Cli/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/batteries/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/Qq/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/aesop/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/proofwidgets/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/importGraph/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/plausible/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/mathlib/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/build/lib/lean /tmp/lean-ci-capped-toolchain-eqn7my5d/bin/lean -M12800 -j4 /workspace/scratch/375151ffceb3/surface-resolution-updated/Aglib/AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/OriginalCaseOneStep.lean -o /workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/OriginalCaseOneStep.olean -i /workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/OriginalCaseOneStep.ilean -c /workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/build/ir/Aglib/AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/OriginalCaseOneStep.c --setup /workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/build/ir/Aglib/AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/OriginalCaseOneStep.setup.json --json
+error: Aglib/AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/OriginalCaseOneStep.lean:49:8: 'change' tactic failed, pattern
+  (MvPolynomial.map ρ) 0 = 0
+is not definitionally equal to target
+  ((MvPolynomial.map ρ).comp (MvPolynomial.eval₂Hom MvPolynomial.C ![0, MvPolynomial.X 0, MvPolynomial.X 1]))
+      (MvPolynomial.X ((fun i => i) ⟨0, ⋯⟩)) =
+    ((MvPolynomial.eval₂Hom MvPolynomial.C ![0, MvPolynomial.X 0, MvPolynomial.X 1]).comp (MvPolynomial.map ρ))
+      (MvPolynomial.X ((fun i => i) ⟨0, ⋯⟩))
+error: Aglib/AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/OriginalCaseOneStep.lean:51:8: 'change' tactic failed, pattern
+  (MvPolynomial.map ρ) (MvPolynomial.X 0) = MvPolynomial.X 0
+is not definitionally equal to target
+  ((MvPolynomial.map ρ).comp (MvPolynomial.eval₂Hom MvPolynomial.C ![0, MvPolynomial.X 0, MvPolynomial.X 1]))
+      (MvPolynomial.X ((fun i => i) ⟨1, ⋯⟩)) =
+    ((MvPolynomial.eval₂Hom MvPolynomial.C ![0, MvPolynomial.X 0, MvPolynomial.X 1]).comp (MvPolynomial.map ρ))
+      (MvPolynomial.X ((fun i => i) ⟨1, ⋯⟩))
+error: Aglib/AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/OriginalCaseOneStep.lean:53:8: 'change' tactic failed, pattern
+  (MvPolynomial.map ρ) (MvPolynomial.X 1) = MvPolynomial.X 1
+is not definitionally equal to target
+  ((MvPolynomial.map ρ).comp (MvPolynomial.eval₂Hom MvPolynomial.C ![0, MvPolynomial.X 0, MvPolynomial.X 1]))
+      (MvPolynomial.X ((fun i => i) ⟨2, ⋯⟩)) =
+    ((MvPolynomial.eval₂Hom MvPolynomial.C ![0, MvPolynomial.X 0, MvPolynomial.X 1]).comp (MvPolynomial.map ρ))
+      (MvPolynomial.X ((fun i => i) ⟨2, ⋯⟩))
+error: Aglib/AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/OriginalCaseOneStep.lean:166:4: failed to synthesize instance of type class
+  IsLocalRing ↑((MaximalIdealBlowup.source (↑(X.presheaf.stalk x)) hdA).presheaf.stalk yD)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: Aglib/AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/OriginalCaseOneStep.lean:188:32: Application type mismatch: The argument
+  CaseOne.orderedGenerators p0 g0 i
+has type
+  ↥(maximalIdeal ↑((MaximalIdealBlowup.source (↑(X.presheaf.stalk x)) hdA).presheaf.stalk yD))
+but is expected to have type
+  S
+in the application
+  e.symm.toRingHom (CaseOne.orderedGenerators p0 g0 i)
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  Limits.getColimitCocone ↦ 4
+error: Aglib/AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/OriginalCaseOneStep.lean:194:8: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  Ideal.map ?f (Ideal.span ?s)
+in the target expression
+  Ideal.map e.symm.toRingHom (Ideal.span (Set.range fun i => ↑(CaseOne.orderedGenerators p0 g0 i))) =
+    Ideal.map e.symm.toRingHom
+      (maximalIdeal ↑((MaximalIdealBlowup.source (↑(X.presheaf.stalk x)) hdA).presheaf.stalk yD))
+
+X : Scheme
+x : ↥X
+hx : IsClosed {x}
+inst✝² : IsDomain ↑(X.presheaf.stalk x)
+inst✝¹ : IsNoetherianRing ↑(X.presheaf.stalk x)
+inst✝ : IsIntegrallyClosed ↑(X.presheaf.stalk x)
+hdA : ringKrullDim ↑(X.presheaf.stalk x) = 2
+hA : IsNagataRing ↑(X.presheaf.stalk x)
+hRat : NormalModificationH1Vanishing ↑(X.presheaf.stalk x)
+B : BlowupDatum (Hom.ker (X.fromSpecResidueField x))
+y : ↥B.Y
+hy : IsClosed {y}
+hbase : B.map y = x
+hsing : ¬IsRegularLocalRing ↑(B.Y.presheaf.stalk y)
+t : ↥(maximalIdeal ↑(X.presheaf.stalk x))
+g : Fin 2 → ↥(maximalIdeal ↑(X.presheaf.stalk x))
+hgen : Ideal.span (Set.range fun i => ↑(CaseOne.orderedGenerators t g i)) = maximalIdeal ↑(X.presheaf.stalk x)
+q : MvPolynomial (Fin 3) (ResidueField ↑(X.presheaf.stalk x))
+hq0 : q ≠ 0
+hq : q.IsHomogeneous 2
+hker : RingHom.ker (CaseOne.canonicalConeMap t g) = Ideal.span {q}
+hr0 : (MvPolynomial.eval₂Hom MvPolynomial.C ![0, MvPolynomial.X 0, MvPolynomial.X 1]) q ≠ 0
+hrns :
+  ¬∃ c,
+      c ≠ 0 ∧
+        ∃ L,
+          L.IsHomogeneous 1 ∧
+            L ≠ 0 ∧
+              (MvPolynomial.eval₂Hom MvPolynomial.C ![0, MvPolynomial.X 0, MvPolynomial.X 1]) q =
+                MvPolynomial.C c * L ^ 2
+A : Type u := ↑(X.presheaf.stalk x)
+C : Type u := ↑(B.Y.presheaf.stalk y)
+f : A →+* C := CommRingCat.Hom.hom (Arc.pointLocalRingMap B.map y x hbase)
+this✝² : IsLocalHom f := Arc.pointLocalRingMap_isLocal B.map y x hbase
+D : BlowupDatum (affineCenter A (maximalIdeal A)) := Arc.pointBlowup A
+left✝⁶ :
+  ⋯.isoPullback.hom ≫ Limits.pullback.fst B.map (X.fromSpecStalk x) =
+    BaseChange.map (X.fromSpecStalk x) ⋯ B (Arc.pointBlowup ↑(X.presheaf.stalk x))
+left✝⁵ : ⋯.isoPullback.hom ≫ Limits.pullback.snd B.map (X.fromSpecStalk x) = (Arc.pointBlowup ↑(X.presheaf.stalk x)).map
+yD : ↥(Arc.pointBlowup ↑(X.presheaf.stalk x)).Y
+left✝⁴ : IsClosed {yD}
+hDbase : (Arc.pointBlowup ↑(X.presheaf.stalk x)).map yD = closedPoint ↑(X.presheaf.stalk x)
+w✝¹ : (BaseChange.map (X.fromSpecStalk x) ⋯ B (Arc.pointBlowup ↑(X.presheaf.stalk x))) yD = y
+ε : B.Y.presheaf.stalk y ≅ (Arc.pointBlowup ↑(X.presheaf.stalk x)).Y.presheaf.stalk yD
+left✝³ :
+  ε.hom =
+    Arc.pointLocalRingMap (BaseChange.map (X.fromSpecStalk x) ⋯ B (Arc.pointBlowup ↑(X.presheaf.stalk x))) yD y w✝¹
+hε :
+  (CommRingCat.Hom.hom ε.hom).comp (CommRingCat.Hom.hom (Arc.pointLocalRingMap B.map y x hbase)) =
+    Hom.stalkScalar (Arc.pointBlowup ↑(X.presheaf.stalk x)).map yD
+S : Type u := ↑(D.Y.presheaf.stalk yD)
+this✝¹ : IsLocalRing S := exists_fixed_parameter_successor._proof_1_1 x yD
+this✝ : IsLocalRing ↑((MaximalIdealBlowup.source (↑(X.presheaf.stalk x)) hdA).presheaf.stalk yD) := sorry
+c : A →+* S := Hom.stalkScalar D.map yD
+this : IsLocalHom c := Hom.stalkScalar_isLocalHom_of_closedPoint D.map yD hDbase
+e : C ≃+* S := ε.commRingCatIsoToRingEquiv
+he : e.toRingHom.comp f = c
+hs : ¬IsRegularLocalRing S
+w✝ : (MaximalIdealBlowup.map (↑(X.presheaf.stalk x)) hdA) yD = closedPoint ↑(X.presheaf.stalk x)
+p0 : ↥(maximalIdeal ↑((MaximalIdealBlowup.source (↑(X.presheaf.stalk x)) hdA).presheaf.stalk yD))
+g0 : Fin 2 → ↥(maximalIdeal ↑((MaximalIdealBlowup.source (↑(X.presheaf.stalk x)) hdA).presheaf.stalk yD))
+q0 : MvPolynomial (Fin 3) (ResidueField ↑((MaximalIdealBlowup.source (↑(X.presheaf.stalk x)) hdA).presheaf.stalk yD))
+hp0 : ↑p0 = (Hom.stalkScalar (MaximalIdealBlowup.map (↑(X.presheaf.stalk x)) hdA) yD) ↑t
+hgen0 :
+  Ideal.span (Set.range fun i => ↑(CaseOne.orderedGenerators p0 g0 i)) =
+    maximalIdeal ↑((MaximalIdealBlowup.source (↑(X.presheaf.stalk x)) hdA).presheaf.stalk yD)
+hmin0 : ↑p0 ∉ maximalIdeal ↑((MaximalIdealBlowup.source (↑(X.presheaf.stalk x)) hdA).presheaf.stalk yD) ^ 2
+hcenter0 :
+  Ideal.map (Hom.stalkScalar (MaximalIdealBlowup.map (↑(X.presheaf.stalk x)) hdA) yD)
+      (maximalIdeal ↑(X.presheaf.stalk x)) =
+    Ideal.span {↑p0}
+hres0 : Function.Bijective ⇑(ResidueField.map (Hom.stalkScalar (MaximalIdealBlowup.map (↑(X.presheaf.stalk x)) hdA) yD))
+hq00 : q0 ≠ 0
+hq0hom : q0.IsHomogeneous 2
+hker0 : RingHom.ker (CaseOne.canonicalConeMap p0 g0) = Ideal.span {q0}
+hnonreturn0 : ¬∃ L, L.IsHomogeneous 1 ∧ L ≠ 0 ∧ RingHom.ker (CaseOne.canonicalConeMap p0 g0) = Ideal.span {L ^ 2}
+hr00 : (MvPolynomial.eval₂Hom MvPolynomial.C ![0, MvPolynomial.X 0, MvPolynomial.X 1]) q0 ≠ 0
+hrns0 :
+  ¬∃ c,
+      c ≠ 0 ∧
+        ∃ L,
+          L.IsHomogeneous 1 ∧
+            L ≠ 0 ∧
+              (MvPolynomial.eval₂Hom MvPolynomial.C ![0, MvPolynomial.X 0, MvPolynomial.X 1]) q0 =
+                MvPolynomial.C c * L ^ 2
+left✝² : MvPolynomial.FirstCoordinate.dehom q0 ≠ 0
+left✝¹ : (MvPolynomial.FirstCoordinate.dehom q0).totalDegree ≤ 2
+left✝ :
+  ¬∃ c, c ≠ 0 ∧ ∃ l, MvPolynomial.totalDegree l ≤ 1 ∧ MvPolynomial.FirstCoordinate.dehom q0 = MvPolynomial.C c * l ^ 2
+right✝ :
+  Nonempty
+    (CaseOne.Presentation (↑((MaximalIdealBlowup.source (↑(X.presheaf.stalk x)) hdA).presheaf.stalk yD)) p0 g0
+      (MvPolynomial.FirstCoordinate.dehom q0))
+p : ↥(maximalIdeal C) := maximalIdealEquivMap e.symm p0
+g' : Fin 2 → ↥(maximalIdeal C) := fun i => maximalIdealEquivMap e.symm (g0 i)
+σ : ResidueField S ≃+* ResidueField C := ResidueField.mapEquiv e.symm
+q' : MvPolynomial (Fin 3) (ResidueField C) := (MvPolynomial.mapEquiv (Fin 3) σ) q0
+hordered : (fun i => maximalIdealEquivMap e.symm (CaseOne.orderedGenerators p0 g0 i)) = CaseOne.orderedGenerators p g'
+hvalues : (fun i => ↑(CaseOne.orderedGenerators p g' i)) = fun i => e.symm.toRingHom sorry
+h :
+  Ideal.map e.symm.toRingHom (Ideal.span (Set.range fun i => ↑(CaseOne.orderedGenerators p0 g0 i))) =
+    Ideal.map e.symm.toRingHom
+      (maximalIdeal ↑((MaximalIdealBlowup.source (↑(X.presheaf.stalk x)) hdA).presheaf.stalk yD))
+⊢ Ideal.span (Set.range fun i => ↑(CaseOne.orderedGenerators p g' i)) = maximalIdeal C
+error: Aglib/AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/OriginalCaseOneStep.lean:200:48: failed to synthesize instance of type class
+  IsLocalRing S
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: Aglib/AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/OriginalCaseOneStep.lean:200:14: failed to synthesize instance of type class
+  IsLocalRing S
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: Aglib/AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/OriginalCaseOneStep.lean:207:14: Type mismatch
+  p0
+has type
+  ↥(maximalIdeal ↑((MaximalIdealBlowup.source (↑(X.presheaf.stalk x)) hdA).presheaf.stalk yD))
+but is expected to have type
+  S
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  Limits.getColimitCocone ↦ 4
+error: Aglib/AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/OriginalCaseOneStep.lean:208:16: Type mismatch
+  p0
+has type
+  ↥(maximalIdeal ↑((MaximalIdealBlowup.source (↑(X.presheaf.stalk x)) hdA).presheaf.stalk yD))
+but is expected to have type
+  S
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  Limits.getColimitCocone ↦ 4
+error: Aglib/AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/OriginalCaseOneStep.lean:209:56: Type mismatch
+  p0
+has type
+  ↥(maximalIdeal ↑((MaximalIdealBlowup.source (↑(X.presheaf.stalk x)) hdA).presheaf.stalk yD))
+but is expected to have type
+  S
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  Limits.getColimitCocone ↦ 4
+✔ [5598/5618] Built Aglib.AlgebraicGeometry.Surfaces.Resolution.NormalizedPointBlowupChain.FiniteBaseEmbedding (1.9s)
+✔ [5617/5622] Built Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.RawFormsOpenEvaluation (1.0s)
+✔ [5620/5622] Built Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.RawFormsOpenIsoEvaluation (1.8s)
+✔ [5621/5737] Built Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.PairIdealSourceEvaluation (5.7s)
+✖ [5734/5739] Building Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.PairIdealRawUnitSquare (19s)
+trace: .> LEAN_PATH=/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/Cli/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/batteries/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/Qq/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/aesop/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/proofwidgets/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/importGraph/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/plausible/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/mathlib/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/build/lib/lean /tmp/lean-ci-capped-toolchain-eqn7my5d/bin/lean -M12800 -j4 /workspace/scratch/375151ffceb3/surface-resolution-updated/Aglib/AlgebraicGeometry/Surfaces/RationalSingularities/IntegralTrace/PairIdealRawUnitSquare.lean -o /workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Surfaces/RationalSingularities/IntegralTrace/PairIdealRawUnitSquare.olean -i /workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Surfaces/RationalSingularities/IntegralTrace/PairIdealRawUnitSquare.ilean -c /workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/build/ir/Aglib/AlgebraicGeometry/Surfaces/RationalSingularities/IntegralTrace/PairIdealRawUnitSquare.c --setup /workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/build/ir/Aglib/AlgebraicGeometry/Surfaces/RationalSingularities/IntegralTrace/PairIdealRawUnitSquare.setup.json --json
+error: Aglib/AlgebraicGeometry/Surfaces/RationalSingularities/IntegralTrace/PairIdealRawUnitSquare.lean:59:0: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: Aglib/AlgebraicGeometry/Surfaces/RationalSingularities/IntegralTrace/PairIdealRawUnitSquare.lean:1:0: The current module only contains private declarations.
+
+Consider adding `public section` at the beginning of the module, or selectively marking declarations as `public`. Mark a `def` with `@[expose]` if downstream code needs it to be definitionally equal to its body (e.g. for `unfold`). Alternatively, add `@[expose] public section` to mark every definition as exposed.
+
+Note: This linter can be disabled with `set_option linter.privateModule false`
+✔ [5736/5740] Built Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.PairIdealRawFamily (3.4s)
+✔ [5739/5744] Built Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.RawFormsOpenLocus (1.7s)
+✔ [5743/5751] Built Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.IdealRawUnitLocus (1.9s)
+✔ [5754/5773] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenCounit.Transport (2.0s)
+✔ [5771/5773] Built Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenCounit (113s)
+Resource guard: owned process group exceeded RSS cutoff

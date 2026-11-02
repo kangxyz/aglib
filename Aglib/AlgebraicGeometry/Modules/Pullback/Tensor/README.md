@@ -27,3 +27,13 @@ that declaration's legacy `ModuleTensorPullback` premise.
 (`Invertible.tensorRightFullyFaithful`); for a perfect pairing `ε : N ⊗ L ≅ 𝒪` with `L` a line
 bundle, `j ↦ pullbackPairingOf p ε j` is a bijection `Hom(M, p^* N) ≃ Hom(M ⊗ p^* L, 𝒪)`
 (`pullbackPairingOfEquiv`).
+
+[DualMapToPullback](DualMapToPullback.lean) takes a supplied map
+`f*I → J` from the pullback of a line to an arbitrary coefficient and
+constructs `J^∨ → f*(I^∨)` through the original pairing equivalence.
+Its pairing and transpose equations retain the actual coefficients.
+[RightInsertion](RightInsertion.lean) and
+[TransposeEvaluation](TransposeEvaluation.lean) preserve the same tensor
+unit, section and dual-evaluation arrows.
+The [section family](Section/README.md) gives their naturality and
+composed line-tensor specializations for arbitrary scheme morphisms.

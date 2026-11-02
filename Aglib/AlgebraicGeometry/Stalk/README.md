@@ -84,3 +84,16 @@ Each source states the exact hypotheses, maps, and realization bounds of its int
 - [DVRVerticalCodimension](DVRVerticalCodimension.lean)
 - [EtaleLocalBase](EtaleLocalBase.lean)
 - [SmoothDVRParameter](SmoothDVRParameter.lean)
+
+[LocalBaseResidue](LocalBaseResidue.lean) retains the original closed-base
+stalk and residue triangles for a morphism to a local spectrum.
+[ModelLocalization](ModelLocalization.lean) preserves the literal integral
+model and dominant projection under target-stalk localization.
+[Restriction](Restriction.lean) identifies the original stalk map on an
+actual isomorphism open; [FlatBaseChange/ClosedFiber](FlatBaseChange/ClosedFiber.lean)
+retains closed singular fibres under a flat preimmersion.
+[CompleteSurface](CompleteSurface.lean) proves normal-domain completion of
+an original closed stalk over a complete local domain of dimension two
+from its proper dominant map, Nagata normal dimension-two stalk and
+original local/residue maps. The earlier base need not be Noetherian,
+normal or birationally identified with that stalk.

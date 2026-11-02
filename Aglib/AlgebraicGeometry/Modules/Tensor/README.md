@@ -37,3 +37,11 @@ isomorphism with that same forward map; its pure-section formula is unchanged.
 The proof consumes the canonical [quasicoherent tilde tensor comparison](../QuasiCoherent/Tensor.lean)
 and the original affine chart/restriction maps. It adds no flatness, finiteness,
 separatedness, or Noetherian premise and has no cohomology dependency.
+
+[Section](Section.lean) defines tensor insertion from an arbitrary
+section `O_X → N` and retains its component and associator equations.
+[AffineSections](AffineSections.lean) proves invertibility of the original
+sectionwise tensor map on every affine open for quasicoherent coefficients.
+Its forward map is literally `moduleTensorSectionLinear`.
+Neither coefficient must be flat or finite; the scheme need not be
+separated or Noetherian.

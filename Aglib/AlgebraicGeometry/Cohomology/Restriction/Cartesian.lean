@@ -74,16 +74,16 @@ private theorem moduleHPrimeOpenMap_comp_congr
 private theorem paste_native_naturality
     {C D E : Type*} [Category* C] [Category* D] [Category* E]
     (F : D ⥤ E) (J : D ⥤ C) (Q : E ⥤ C) (δ : J ⟶ F ⋙ Q)
-    {A B : C} {s t : D} {v : E} (f : A ⟶ B) (g : B ⟶ Q.obj v)
-    (j : A ⟶ J.obj s) (k : s ⟶ t) (e : v ⟶ F.obj s) (a : v ⟶ F.obj t)
-    (he : e ≫ F.map k = a) (h : (f ≫ g) ≫ Q.map e = j ≫ δ.app s) :
-    f ≫ g ≫ Q.map a = j ≫ J.map k ≫ δ.app t := by
+    {A : C} {s : D} {v : E} {fg : A ⟶ Q.obj v}
+    {j : A ⟶ J.obj s} {e : v ⟶ F.obj s}
+    (h : fg ≫ Q.map e = j ≫ δ.app s)
+    {t : D} (k : s ⟶ t) (a : v ⟶ F.obj t) (he : e ≫ F.map k = a) :
+    fg ≫ Q.map a = j ≫ J.map k ≫ δ.app t := by
   calc
-    _ = (f ≫ g) ≫ Q.map a := (Category.assoc f g (Q.map a)).symm
-    _ = ((f ≫ g) ≫ Q.map e) ≫ Q.map (F.map k) :=
-      (congrArg (fun z => (f ≫ g) ≫ Q.map z) he.symm).trans
-        ((congrArg (fun z => (f ≫ g) ≫ z) (Q.map_comp e (F.map k))).trans
-          (Category.assoc (f ≫ g) (Q.map e) (Q.map (F.map k))).symm)
+    _ = (fg ≫ Q.map e) ≫ Q.map (F.map k) :=
+      (congrArg (fun z => fg ≫ Q.map z) he.symm).trans
+        ((congrArg (fun z => fg ≫ z) (Q.map_comp e (F.map k))).trans
+          (Category.assoc fg (Q.map e) (Q.map (F.map k))).symm)
     _ = (j ≫ δ.app s) ≫ Q.map (F.map k) := congrArg (fun z => z ≫ Q.map (F.map k)) h
     _ = _ := (Category.assoc j (δ.app s) (Q.map (F.map k))).trans
       (congrArg (fun z => j ≫ z) (δ.naturality k).symm)
@@ -113,19 +113,8 @@ private theorem moduleHPrimeOpenMap_comp_congr_top
         (eqToHom hj.symm).op ≫
       (zariskiCohomologyOpenMap b (moduleAddSheaf T L) (moduleAddSheaf W P)
         (moduleCoefficientPullback b (M := L) (N := P) φb) n).app (op ⊤) := by
-  let A := Sheaf.cohomologyPresheaf.{u + 1} (moduleAddSheaf X M) n
-  let B := Sheaf.cohomologyPresheaf.{u + 1} (moduleAddSheaf Y N) n
   let Q := Sheaf.cohomologyPresheaf.{u + 1} (moduleAddSheaf W P) n
   let J := Sheaf.cohomologyPresheaf.{u + 1} (moduleAddSheaf T L) n
-  let gp : A ⟶ (Opens.map p.base).op ⋙ B :=
-    zariskiCohomologyOpenMap p (moduleAddSheaf X M) (moduleAddSheaf Y N)
-      (moduleCoefficientPullback p (M := M) (N := N) φp) n
-  let ga : B ⟶ (Opens.map a.base).op ⋙ Q :=
-    zariskiCohomologyOpenMap a (moduleAddSheaf Y N) (moduleAddSheaf W P)
-      (moduleCoefficientPullback a (M := N) (N := P) φa) n
-  let gj : A ⟶ (Opens.map j.base).op ⋙ J :=
-    zariskiCohomologyOpenMap j (moduleAddSheaf X M) (moduleAddSheaf T L)
-      (moduleCoefficientPullback j (M := M) (N := L) φj) n
   let gb : J ⟶ (Opens.map b.base).op ⋙ Q :=
     zariskiCohomologyOpenMap b (moduleAddSheaf T L) (moduleAddSheaf W P)
       (moduleCoefficientPullback b (M := L) (N := P) φb) n
@@ -133,12 +122,11 @@ private theorem moduleHPrimeOpenMap_comp_congr_top
   let kJ : (⊤ : T.Opens) ⟶ j ⁻¹ᵁ U := eqToHom hj.symm
   let t : op ((a ≫ p) ⁻¹ᵁ U) ⟶ op ((b ≫ j) ⁻¹ᵁ U) :=
     (eqToHom (congrArg (fun f : W ⟶ X => f ⁻¹ᵁ U) w).symm).op
-  have hc : (gp.app (op U) ≫ ga.app (op (p ⁻¹ᵁ U))) ≫ Q.map t =
-      gj.app (op U) ≫ gb.app (op (j ⁻¹ᵁ U)) :=
-    moduleHPrimeOpenMap_comp_congr a b p j w φp φa φj φb hφ n (op U)
+  have hc := moduleHPrimeOpenMap_comp_congr a b p j w φp φa φj φb hφ n (op U)
   have hk : t ≫ (Opens.map b.base).op.map kJ.op = kA.op := Subsingleton.elim _ _
-  exact paste_native_naturality (Opens.map b.base).op J Q gb
-    (gp.app (op U)) (ga.app (op (p ⁻¹ᵁ U))) (gj.app (op U)) kJ.op t kA.op hk hc
+  refine (Category.assoc _ _ _).symm.trans ?_
+  refine paste_native_naturality (Opens.map b.base).op J Q gb ?_ kJ.op kA.op hk
+  exact hc
 
 /-- The two original unit paths through an open cartesian square agree on actual native
 open cohomology, retaining the actual pullback/restriction mate and open transports. -/

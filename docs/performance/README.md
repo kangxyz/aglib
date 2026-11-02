@@ -156,3 +156,9 @@ Retain existing cases when refining key guidance in the main file.
 - [Reuse a guarded sealed native source for subsequent phases](cases/sealed-native-source-reuse/README.md)
 
 - [Original generator-to-Ext-zero value before specialization](cases/germ-generator-ext-zero/README.md)
+
+- [Original stalk comparisons: instance lets and proof-irrelevant conversion](original-stalk-comparison-instance-lets-and-proof-irrelevance.md)
+
+- [Deterministic cardinality and transport of the same basis](cases/deterministic-cardinality-basis-transport/README.md)
+
+- [Original Γ-map values and direct arbitrary-triangle composition](cases/whole-original-comparison-laws/affine-gamma-direct-triangle/README.md) — one extracted native map law, goal-directed application and source-bound lower/consumer passes; prior failures retained.

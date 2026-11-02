@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Model.Naturality
+public import Aglib.AlgebraicGeometry.Modules.Complex.TildeNaturality
 
 /-!
 # Coefficient transport on the original regular-list model
@@ -144,26 +145,7 @@ private theorem canonicalTildeHomologyIso_naturality
         (homologyMap (((moduleSpecΓFunctor (R := B)).mapHomologicalComplex (.up ℤ)).map ψ) n) ≫
         (Complex.tildeGlobalSectionsHomologyIso B (.up ℤ) K' n).hom =
       (Complex.tildeGlobalSectionsHomologyIso B (.up ℤ) K n).hom ≫ homologyMap ψ n := by
-  let G := moduleSpecΓFunctor (R := B)
-  let T := tilde.functor B
-  let C := (G.mapHomologicalComplex (.up ℤ)).obj K
-  let D := (G.mapHomologicalComplex (.up ℤ)).obj K'
-  let u := (G.mapHomologicalComplex (.up ℤ)).map ψ
-  let v := (T.mapHomologicalComplex (.up ℤ)).map u
-  have ht := ShortComplex.mapHomologyIso_inv_naturality
-    ((shortComplexFunctor (ModuleCat.{u} B) (.up ℤ) n).map u) T
-  change T.map (homologyMap u n) ≫ ((D.sc n).mapHomologyIso T).inv =
-    ((C.sc n).mapHomologyIso T).inv ≫ homologyMap v n at ht
-  have hc := congrArg ((homologyFunctor (Spec B).Modules (.up ℤ) n).map)
-    (Complex.tildeGlobalSectionsCounit_naturality B (.up ℤ) ψ)
-  simp only [Functor.map_comp] at hc
-  change homologyMap v n ≫ homologyMap (Complex.tildeGlobalSectionsCounit B (.up ℤ) K') n =
-    homologyMap (Complex.tildeGlobalSectionsCounit B (.up ℤ) K) n ≫ homologyMap ψ n at hc
-  change T.map (homologyMap u n) ≫ ((D.sc n).mapHomologyIso T).inv ≫
-      homologyMap (Complex.tildeGlobalSectionsCounit B (.up ℤ) K') n =
-    ((C.sc n).mapHomologyIso T).inv ≫
-      homologyMap (Complex.tildeGlobalSectionsCounit B (.up ℤ) K) n ≫ homologyMap ψ n
-  rw [← Category.assoc, ht, Category.assoc, hc]
+  exact Complex.tildeGlobalSectionsHomologyIso_naturality B (.up ℤ) ψ n
 
 end TildeNaturality
 

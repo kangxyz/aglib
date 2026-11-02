@@ -51,3 +51,9 @@ is the interface used to construct
 Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
 
 - [ClosedFiberSpecialization](ClosedFiberSpecialization.lean)
+
+[ResidueField](ResidueField.lean) proves finiteness of the original
+residue-field map at a globally closed source point of a locally finite-type
+morphism. Properness, target closedness, Noetherianity and a dimension
+bound are unnecessary. The original field map is retained in prefix
+residue and surviving-curve scalar towers.

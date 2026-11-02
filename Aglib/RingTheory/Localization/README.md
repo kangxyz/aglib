@@ -52,3 +52,12 @@ into a finite free module. For a finite algebra of domains it gives rank
 equal to the original generic field degree, without normality or
 separability. The completed-branch degree comparison completes this whole
 algebra injection before selecting a branch.
+
+[HomFinitePresentation](HomFinitePresentation.lean) localizes the
+existing `IsLocalizedModule.mapExtendScalars` with its original module
+actions, maps and additive-monoid parents. Only the source is required
+finitely presented; Noetherianity and a finite target are unnecessary.
+[TotalFractionRing](TotalFractionRing.lean) proves that a genuine total
+quotient ring of a reduced Noetherian ring is Artinian. It imposes no
+domain or source-dimension hypothesis and makes no zero-dimensionality
+claim about unrelated generic formal fibres.

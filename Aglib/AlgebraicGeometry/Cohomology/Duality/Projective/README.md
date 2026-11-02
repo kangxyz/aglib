@@ -162,3 +162,16 @@ Each source states the exact hypotheses, maps, and realization bounds of its int
 - [Canonical/LocalModel/OpenCounit](Canonical/LocalModel/OpenCounit.lean)
 - [Canonical/LocalPurity](Canonical/LocalPurity.lean)
 - [Canonical/ModelCharts/AtIdeal/Data](Canonical/ModelCharts/AtIdeal/Data.lean)
+
+The canonical local-model
+[coefficient transport](Canonical/LocalModel/Coefficients.lean) and
+[model naturality](Canonical/Model/Naturality.lean) use actual
+injective-resolution lifts and the original ordered top class.
+[OpenCounit/Transport](Canonical/LocalModel/OpenCounit/Transport.lean)
+transports a genuine cochain square through the native homology
+comparisons for additive homology-preserving functors; the coefficient
+arrows need not be invertible.
+[DifferentialTrace/Restriction](DifferentialTrace/Restriction.lean)
+retains the actual Kähler pullback, exterior coefficient and original
+geometric cohomology map under an open map on spectra, over arbitrary
+commutative rings and including dimension zero.

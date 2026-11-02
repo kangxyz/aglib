@@ -33,3 +33,10 @@ cohomology map is constructed. The extended leaf passed
 `1792129617355406000-21005`; its raw arbitrary-ring consumer, old-map
 identity and four axiom checks passed `1792129787016977000-23764`
 with only the three standard axioms.
+
+[Coefficients](Coefficients.lean) retains arbitrary base-module
+coefficients over an arbitrary commutative ring, using the focused
+[twist model](../../../Projective/TwistCohomology/Coefficients/Model.lean).
+Its original Ext/cohomology equivalences and coefficient naturality keep
+the same scalar action; section-normalization consumers import the separate
+section comparison explicitly.

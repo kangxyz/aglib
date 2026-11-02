@@ -237,6 +237,7 @@ public import Aglib.CategoryTheory.Functor.NatTrans.UnitInsertionSpan
 public import Aglib.CategoryTheory.Functor.NaturalityTransport
 public import Aglib.CategoryTheory.Functor.OpenCompositionCoherence
 public import Aglib.CategoryTheory.Functor.OpenCompositionPost
+public import Aglib.CategoryTheory.Functor.OriginalComparisonIdentities
 public import Aglib.CategoryTheory.Functor.RepresentativeSections
 public import Aglib.CategoryTheory.Functor.RightUnitOfAssociativity
 public import Aglib.CategoryTheory.Functor.Sections.Initial

@@ -37,3 +37,10 @@ adjunction interfaces.
 of Ext from the original `QuotSMulTop` quotient. The commutative ring and
 modules need no finiteness or projectivity. The canonical-stalk consumer must
 supply that quotient vanishing from its geometry.
+
+[TopDegree](TopDegree.lean) lowers `pdim M ≤ n+1` to `pdim M ≤ n`
+when the original `Ext^(n+1)(M,N)` vanishes, over a commutative Noetherian
+local ring with finite `M,N` and nonzero `N`.
+Its self-Ext consequence makes a finite module of finite projective dimension
+projective when every positive self-Ext group vanishes.
+The Ext universe remains independent of the module-carrier universe.

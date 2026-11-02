@@ -94,3 +94,9 @@ composite equal to scalar multiplication to original cohomology, and bounds
 its length by scalar torsion plus the target length. Lengths are in `ℕ∞`;
 no splitting or finite-length hypothesis is added. The trace-coordinate
 consumer supplies the actual arrows and structural scalar square.
+
+[Scalars/Field](Scalars/Field.lean) identifies the original cohomology
+module for `constants X` with `moduleCohomology k X M q` on a field scheme.
+The underlying map is the identity on the same `Sheaf.H` group; only the
+proven module-structure equality is transported. Every module sheaf and
+natural degree is allowed, without finiteness or projectivity.

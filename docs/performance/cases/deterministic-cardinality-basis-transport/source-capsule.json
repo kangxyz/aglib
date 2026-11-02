@@ -1,0 +1,11 @@
+{
+  "README.md": "0c8eddd6d2be88bca84b574e4799bdcf6d2848d05195fef41ee7c5948e13df4d",
+  "accepted.json": "8991fc9977077bc305782c16712b325205239460a8f2ad775f02ebeb95191914",
+  "repair.diff": "b00aad69cb0bacac186a4e72b9a8dabf408217bb7b4803e650f38c65502aab8e",
+  "before.lean.txt": "5551dfc25b0e426d4dc7e192ace41ecff6724f87f17a53a5149c59a6a2bc647c",
+  "after.lean.txt": "bf47720765e0032e15320b6c75e1000a1778175c4c2a50e7184fadd9a8729848",
+  "evidence/recovery100-selected-results.json": "37c84943e95afabc84bd6fa06afcb78768480cdd5ef91d379475036814c714cf",
+  "evidence/recovery100.log": "029eee24eb32e766524ff559140f936cc78f7c9dfe18795655c1007e2d0ee513",
+  "evidence/graph-build.json": "ad0c93d8b2ecbee8b3d549714a12a43d1adcebd0e5240bba0f90b17f1bdce4f5",
+  "evidence/recovery100-source-hashes.json": "d1b47350c2839d8ed23fffaa27e5e439fa8d2632c013cbc307dbe30e8fb709d5"
+}

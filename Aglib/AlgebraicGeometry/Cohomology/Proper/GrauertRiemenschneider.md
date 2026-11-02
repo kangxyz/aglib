@@ -57,3 +57,18 @@ normalization is not used; that remains separate B7 work.
 This theorem concerns the supplied closed embedding. It asserts neither
 embedding independence nor construction of an embedding for an arbitrary
 proper surface model.
+
+The original finite-local scalar restriction proof is now owned by
+`ModuleCat.finiteLength_restrictScalars_of_finite_local` in
+`FiniteLength/LocalRestriction`. The original derived structural H1 finite-length
+proof is owned by
+`moduleDerivedStructure_homologyOne_finiteLength_of_proper_birational_surface`
+in `Proper/DerivedStructure/FiniteLength`. The private GR names remain thin
+wrappers with unchanged types; the public GR theorem and all original maps
+are unchanged. Neither lower theorem assumes the GR conclusion.
+
+The actual embedding dominance and generic field-finiteness arguments now
+reuse the single original-map implementations in
+`ProjectiveSpace/GenericStalk/FiniteFactorization`. The private GR names remain
+thin wrappers, and `FunctionField/Finite` owns the underlying finite dominant
+function-field theorem. No field-finiteness hypothesis is added to public GR.

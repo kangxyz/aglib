@@ -14,3 +14,13 @@ field is not a finite union of proper subspaces. The general hyperplane of Mumfo
 (`Cohomology/Projective/Regularity/Mumford/InfiniteField`) consumes it.
 
 [Localization](Localization.lean), imported as `Aglib.RingTheory.Regular.Localization`, supplies `IsNoetherianRing.exists_away_isSMulRegular_of_atPrime`: over a Noetherian ring, an element regular in the local ring at a prime is regular after inverting one element outside the prime. The kernel of multiplication is a finite module (`LocalizedModule.exists_subsingleton_away`). The pointwise fiber criterion for relative effective Cartier divisors consumes it.
+
+[PairPermutation](PairPermutation.lean) swaps a regular pair on a
+module when both scalars are already regular, and over a domain derives
+the reversed pair from one regular order and a proper pair ideal.
+No local or Noetherian hypothesis is added.
+[SequenceLocalization](SequenceLocalization.lean) clears the actual
+prefix-colon denominators of a localized weakly regular list, preserving
+its length and generated ideal. The relevant colons must be finitely
+generated where the theorem uses that input; the localization rings and
+maps remain the original ones.

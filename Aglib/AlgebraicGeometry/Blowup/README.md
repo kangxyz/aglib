@@ -146,3 +146,14 @@ projections, ideal inclusions and evaluation. No global Noetherianity,
 integrality or regularity of `X` is required. These comparisons enter
 [regular-surface factorization](../Surfaces/Birational/Factorization.md);
 numerical self-intersection and contraction have separate interfaces.
+
+The [finite-prefix family](ClosedPointPrefix/README.md) supplies original
+composite maps, rerooting, least empty levels and their flat-preimmersion
+comparisons. Geometric consumers supply finite branching and termination.
+[Projective presentations](ProjectivePresentation/README.md) embed the same
+blowup source and compute its full tensor-ideal coefficients.
+The [regular-pair](Differentials/RegularPair/README.md) and
+[two-generator ideal](Differentials/PairIdeal/README.md) differential
+families construct one-pole maps into the pulled line tensored with the
+dual actual centre ideal. Their regular-pair, domain, scalar-tower and
+Noetherian hypotheses remain in their respective interfaces.

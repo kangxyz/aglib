@@ -48,3 +48,27 @@ positive twist is the original ideal line `L = i*(m O_X)`, and its powers
 are restrictions of the original ideal powers. These interfaces serve the
 curve and tangent-cone consumers; they do not prove Gorenstein reduction,
 full RDP termination or existence of a resolving chain.
+
+## Rationality at the original stalks and completion
+
+[MaximalModel](MaximalModel.md) combines a genuine supplied uniform H1
+bound with the original maximal-model R1 theorem and actual local
+replacement. It gives universal modification-H1 vanishing at closed
+nongeneric stalks of the chosen normal model. It constructs neither the
+uniform bound nor a projective maximizing model.
+
+[Ring equivalence](RingEquiv.md) retains the actual ring map and original
+cohomology comparison. [Completion](Completion.md) proves
+`normalModificationH1Vanishing_completion` for a Noetherian local domain
+of dimension two whose literal maximal-adic completion is a normal domain.
+Nagata on the original ring is unnecessary for this theorem: the proof
+constructs a normalized point chain dominating each supplied completed
+model, descends that chain and uses the original flat structure-cohomology
+map and birational H1 injection.
+
+[PointNormality](Blowup/PointNormality.md) transfers ordinary rational
+blowup normality to the actual point blowup through its local-spectrum
+comparison. The [conditional resolving-chain interface](../Resolution/RationalDoublePoint/NormalizedResolution.md)
+additionally requires genuine initial quadratic cones and its displayed
+complete-base data. These results do not supply an unconditional
+rational/Gorenstein modification or the full resolution criterion.

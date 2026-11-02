@@ -35,3 +35,14 @@ Each source states the exact hypotheses, maps, and realization bounds of its int
 - [RootTransversePoint](RootTransversePoint.lean)
 - [SmoothCompletionClosedFiberGeneric](SmoothCompletionClosedFiberGeneric.lean)
 - [SmoothSectionPurity](SmoothSectionPurity.lean)
+
+[CompletionLocalRing/Normal](CompletionLocalRing/Normal.lean) derives
+normal-domain literal completion from a supplied proper regular model
+over a Noetherian local ring and bijectivity of the actual structural
+section map.
+[RegularModel](CompletionLocalRing/RegularModel.lean) applies it to an
+integral regular proper birational model over a Noetherian normal local
+domain and proves integrality and regularity of its literal completion
+pullback. The regular model is an input.
+[LocalizationNonempty](LocalizationNonempty.lean) constructs a point of
+`Spec R[1/x]` from a domain, a nonzero `x` and its specified fraction field.

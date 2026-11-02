@@ -80,7 +80,8 @@ public def restrictionPurityInput
     (singleReindexIso W c q r h ≪≫
       (shiftFunctor (DerivedCategory C) (q : ℤ)).mapIso E.symm)
 
-private theorem restrictionPurityInput_apply
+/-- The purity input retains the original Ext arrow and target reconstruction. -/
+theorem restrictionPurityInput_apply
     {C : Type*} [Category* C] [Abelian C] [HasDerivedCategory C] [HasExt C]
     (F W : C) (K : DerivedCategory C) (c : ℤ)
     (E : K ≅ (DerivedCategory.singleFunctor C c).obj W)
@@ -140,7 +141,8 @@ public def restrictionPuritySerreMap
     (singleReindexIso N n q ((r : ℤ) - d) (by omega)).symm).toAddMonoidHom).comp
       (Φ.comp (restrictionPurityInput F W K ((n : ℤ) - d) E q r h).toAddMonoidHom)
 
-private theorem restrictionPuritySerreMap_apply
+/-- The purity Serre map evaluates through its original reindexing factors. -/
+theorem restrictionPuritySerreMap_apply
     {A B : Type*} [Category* A] [Abelian A] [HasDerivedCategory A] [HasExt A]
     [Category* B] [Abelian B] [HasDerivedCategory B]
     (F W : A) (K : DerivedCategory A) (D : DerivedCategory B) (N : B)
@@ -375,7 +377,8 @@ public def restrictionHomTransportEquiv
         ((restrictionShiftedHomEquiv V (F.obj K) (F.obj L) s).trans
           (restrictionHomIsoEquiv e.symm ((shiftFunctor D' s).mapIso d)))))
 
-private theorem restrictionHomTransportEquiv_apply
+/-- The Hom transport uses the displayed original functors and comparison arrows. -/
+theorem restrictionHomTransportEquiv_apply
     {C D C' D' : Type*} [Category* C] [Category* D] [Category* C'] [Category* D']
     [Preadditive C] [Preadditive D] [Preadditive C'] [Preadditive D']
     [HasShift C ℤ] [HasShift D ℤ] [HasShift C' ℤ] [HasShift D' ℤ]
@@ -780,7 +783,8 @@ public def restrictionModuleSerreMap (F : Z.Modules) [F.IsQuasicoherent] (r : �
     ((restrictionAffineHomEquiv (j ≫ toSpec A ι) F N ((r : ℤ) - d)).toAddMonoidHom.comp
       (restrictionSerreMap A ι j n en N W d c hc E F r))
 
-private theorem restrictionModuleSerreMap_apply (F : Z.Modules) [F.IsQuasicoherent]
+/-- The module Serre comparison retains its original affine and coefficient factors. -/
+theorem restrictionModuleSerreMap_apply (F : Z.Modules) [F.IsQuasicoherent]
     (r : ℕ) (x : Ext.{u + 1} F W r) :
     letI : Finite ι := Finite.of_equiv _ en.symm
     restrictionModuleSerreMap A ι j n en N V eV W d c hc E F r x =

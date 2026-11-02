@@ -45,3 +45,11 @@ subfield avoiding that element and containing the image. The extension has
 degree `p`, with the original element as monogenic root and the basis of its
 powers. Infinite ambient p-rank is allowed. The coefficient-expansion and
 pure degree-p differential-trace consumers retain this original inclusion.
+
+[NoIntermediate](NoIntermediate.lean) starts with an algebraic extension
+whose native intermediate fields are all bottom or top.
+It proves that the extension is separable or is purely inseparable of
+prime degree equal to its positive characteristic.
+No Galois or normality hypothesis is imposed, and source and target field
+universes remain independent. Complete-local degree induction uses this
+field-theoretic alternative separately from resolution existence.

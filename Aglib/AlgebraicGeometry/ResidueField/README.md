@@ -19,3 +19,10 @@ The direct consumers are curve degree and principal-colength calculations.
 The formulas apply to actual schemes over a field without a curve, properness
 or smoothness assumption. Exact incoming source hashes are recorded against
 R5 `f8a3314ddecffcada2ec721d26d56a937bed9690`.
+
+[PointSections](PointSections.lean) gives the original stalk-spectrum
+and residue-spectrum section formulas on any neighborhood of a point.
+The preimage is the whole respective point spectrum, and the section map
+is the original germ, residue quotient and native `ΓSpec` comparison.
+The ordinary pushforward-to-fibre section construction uses these exact
+formulas, without replacing the stalk or residue field.

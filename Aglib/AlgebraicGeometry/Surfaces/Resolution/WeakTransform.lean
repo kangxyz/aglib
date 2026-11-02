@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.IdealSheaf.Colon
+public import Aglib.AlgebraicGeometry.Blowup.AffineCenter.Stalk
 public import Aglib.AlgebraicGeometry.IdealSheaf.Invertible.Affine
 public import Aglib.AlgebraicGeometry.Blowup.RegularPoint.Scheme
 public import Aglib.AlgebraicGeometry.Blowup.Properness
@@ -122,10 +123,8 @@ variable {A : Type u} [CommRing A]
 
 /-- The spectral ideal correspondence returns the original ring ideal. -/
 theorem spectrumIdeal_affineCenter (J : Ideal A) :
-    spectrumIdeal (affineCenter A J) = J := by
-  rw [spectrumIdeal, affineCenter, IdealSheafData.specMap_kernel_top, Ideal.mk_ker]
-  exact Ideal.map_comap_of_surjective _
-    (ConcreteCategory.bijective_of_isIso (Scheme.ΓSpecIso (.of A)).hom).surjective _
+    spectrumIdeal (affineCenter A J) = J :=
+  spectrumIdeal_affineCenter_eq J
 
 /-- The spectral ideal correspondence preserves powers. -/
 theorem spectrumIdeal_pow (J : (Spec (.of A)).IdealSheafData) (r : ℕ) :
@@ -174,34 +173,8 @@ omit [IsLocallyNoetherian X] in
 /-- Extension to the original local spectrum recovers the actual stalk ideal,
 through the canonical global-sections isomorphism of that spectrum. -/
 theorem spectrumIdeal_comap_fromSpecStalk (J : X.IdealSheafData) (x : X) :
-    spectrumIdeal (J.comap (X.fromSpecStalk x)) = J.stalkIdeal x := by
-  obtain ⟨_, ⟨U, hU, rfl⟩, hxU, -⟩ :=
-    X.isBasis_affineOpens.exists_subset_of_mem_open (Set.mem_univ x) isOpen_univ
-  have hpre : (⊤ : (Spec (X.presheaf.stalk x)).Opens) ≤ (X.fromSpecStalk x) ⁻¹ᵁ U := by
-    intro z _
-    exact (Scheme.range_fromSpecStalk.le ⟨z, rfl⟩).mem_open U.isOpen hxU
-  have happ : (X.fromSpecStalk x).appLE U ⊤ hpre ≫
-      (Scheme.ΓSpecIso (X.presheaf.stalk x)).hom = X.presheaf.germ U x hxU := by
-    rw [Scheme.Hom.appLE, Scheme.fromSpecStalk_app hxU]
-    have hcomp : (homOfLE (show (X.fromSpecStalk x) ⁻¹ᵁ U ≤ ⊤ from le_top)).op ≫
-        (homOfLE hpre).op = 𝟙 (op (⊤ : (Spec (X.presheaf.stalk x)).Opens)) :=
-      Subsingleton.elim _ _
-    simp only [Category.assoc, ← Functor.map_comp, hcomp]
-    rw [CategoryTheory.Functor.map_id, Category.id_comp, Iso.inv_hom_id, Category.comp_id]
-  calc
-    spectrumIdeal (J.comap (X.fromSpecStalk x)) =
-        ((J.comap (X.fromSpecStalk x)).ideal ⟨⊤, isAffineOpen_top _⟩).map
-          (Scheme.ΓSpecIso (X.presheaf.stalk x)).hom.hom := rfl
-    _ = ((J.ideal ⟨U, hU⟩).map ((X.fromSpecStalk x).appLE U ⊤ hpre).hom).map
-          (Scheme.ΓSpecIso (X.presheaf.stalk x)).hom.hom :=
-      congrArg (fun K ↦ K.map (Scheme.ΓSpecIso (X.presheaf.stalk x)).hom.hom)
-        (J.ideal_comap_eq_map_appLE (X.fromSpecStalk x)
-          ⟨U, hU⟩ ⟨⊤, isAffineOpen_top _⟩ hpre)
-    _ = (J.ideal ⟨U, hU⟩).map (((X.fromSpecStalk x).appLE U ⊤ hpre) ≫
-          (Scheme.ΓSpecIso (X.presheaf.stalk x)).hom).hom := Ideal.map_map _ _
-    _ = (J.ideal ⟨U, hU⟩).map (X.presheaf.germ U x hxU).hom :=
-      congrArg (fun φ : Γ(X, U) ⟶ X.presheaf.stalk x ↦ (J.ideal ⟨U, hU⟩).map φ.hom) happ
-    _ = J.stalkIdeal x := (J.stalkIdeal_eq_map ⟨U, hU⟩ x hxU).symm
+    spectrumIdeal (J.comap (X.fromSpecStalk x)) = J.stalkIdeal x :=
+  spectrumIdeal_comap_fromSpecStalk_eq J x
 
 omit [IsLocallyNoetherian X] in
 /-- The actual closed-point centre has the original maximal ideal as its

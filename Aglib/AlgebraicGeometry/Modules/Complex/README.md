@@ -91,3 +91,10 @@ tilde units and native homology isomorphisms in affine section coordinates.
 They hold in every complex shape and independent index universe, without a
 hypothesis that global sections preserve homology. The proved direct-image
 counit supplier and canonical derived base-change normalization are consumers.
+
+[TildeNaturality](TildeNaturality.lean) gives naturality of the original
+affine counit homology comparison for an arbitrary complex shape and
+complex morphism. Both actual counits are required to be quasi-isomorphisms.
+The commutative ring is arbitrary and the index universe is independent;
+no quasicoherence, boundedness or Noetherianity is added.
+Closed-adjoint resolution comparisons use this same homology map.

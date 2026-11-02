@@ -24,3 +24,10 @@ The monoidal twisting functor `Discrete ℤ ⥤ P.Modules` on projective space i
 - The identifications `tensorSheafIso = ⊗ᵢ` and `moduleTensorSymmetry = β_`. Neither is stated yet; the second holds by `rfl`.
 - Rerouting `moduleTensor_nested_hom_ext_of_line` through the general `moduleTensor_nested_hom_ext`.
 - Statements for an arbitrary scheme module of the unit-morphism identification of global sections now stated for twists (`twistingGlobalSectionsUnitHomEquiv`, `twistingSectionUnitHom`, `twistingSectionUnitHom_app_one` in [ProjectiveSpace/Tensor/Monoidal](../../../ProjectiveSpace/Tensor/Monoidal/README.md)).
+
+[SectionFrame](SectionFrame.lean) computes tensor insertion in a supplied
+unit frame and scalar coordinate.
+[UnitScalar](UnitScalar.lean) retains the original tensor-unit scalar
+section law and affine multiplication specialization.
+These are maps of arbitrary module sheaves and actual frames, without a
+Cartier or blowup premise.

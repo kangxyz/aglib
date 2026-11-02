@@ -40,3 +40,15 @@ packet, revision 2, SHA-256
 dimension theorem. [MarkedPath](../../AlgebraicGeometry/Blowup/Arc/MarkedPath.md)
 uses this normal-domain completion conclusion under its actual original
 scalar-map hypotheses. No general resolution theorem is concluded here.
+
+## General completion interfaces
+
+`isRegularLocalRing_atPrime_of_normal_surface_completion` retains the original
+punctured-spectrum proof with two explicit inputs: regularity at actual primes
+over the generic point and reducedness of each original prime-base quotient.
+`isIntegrallyClosed_completion_of_regular_nonmaximal` retains the original
+flat regular-parameter-pair proof with a regular punctured-spectrum input.
+The complete-base theorems now supply these hypotheses as wrappers, with no
+changes to their statements. Neither general interface assumes dimension zero
+of the generic fibre. The original idempotent/domainhood proof is now owned
+by [LocalDomain](../IntegralClosure/LocalDomain.md), without duplication.

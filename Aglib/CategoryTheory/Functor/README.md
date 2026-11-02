@@ -142,3 +142,10 @@ original connecting maps.
 - [TargetExchangePostcomp](TargetExchangePostcomp.lean)
 - [TargetIdentityExchange](TargetIdentityExchange.lean)
 - [TargetUnitSquare](TargetUnitSquare.lean)
+
+[OriginalComparisonIdentities](OriginalComparisonIdentities.lean) gives
+whole reflexivity, composition and identity-normalization equations for
+the original functors and comparison isomorphisms in variable categories.
+Its double-contravariant identity laws use the same supplied functor twice.
+These categorical equations precede their module-bidual and geometric
+specializations and add no mathematical object or replacement comparison.

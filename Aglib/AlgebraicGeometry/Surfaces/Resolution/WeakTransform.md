@@ -13,3 +13,10 @@ For an actual closed point x, `pointCentre_stalkIdeal` identifies the original p
 An actual Artinian quotient subscheme gives finite support consisting of closed points. Local Artinianness gives Artinian original stalk quotients; with a locally Noetherian ambient scheme these have finite length. These are consequences of the original ideal sheaf and its quotient subscheme, not additional transform data.
 
 [Finite point-blowup principalization](Principalization.md) now constructs a finite chain of the actual point blowups for a nonzero ideal with Artinian quotient on a locally Noetherian regular integral scheme of dimension at most two, and proves the original pulled-back ideal Cartier. It uses finite support, strict local colength decrease and well-founded multiset recursion; no decrease of the unweighted sum is asserted. Nonzero ideals at stalks of dimension at most one are already Cartier. Arbitrary divisorial-part removal and the rational-map/common-domination bridges remain beyond this result. No normal-bundle formula, excellence, perfectness or algebraically closed residue field is assumed.
+
+The general spectral and original local-spectrum ideal comparisons now
+have their single proof owner in
+[`Blowup.AffineCenter.Stalk`](../../Blowup/AffineCenter/Stalk.md).
+The original public `spectrumIdeal_affineCenter` and
+`spectrumIdeal_comap_fromSpecStalk` interfaces are retained here as thin
+same-statement wrappers; none of this file's geometric claims change.

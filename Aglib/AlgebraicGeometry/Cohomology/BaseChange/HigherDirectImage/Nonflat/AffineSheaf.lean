@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.PullbackSections
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.TildePullbackRaw
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineFunctor
 
 /-!
@@ -40,6 +41,41 @@ def affineMapOfTilde (σ : R ⟶ S)
     (pullback (Spec.map σ)).obj E ⟶ F :=
   affineFunctorMap (tilde.functor R) (tilde.functor S)
     (ModuleCat.extendScalars σ.hom) (pullback (Spec.map σ)) (tildePullbackIso σ).hom e d t
+
+/-- The native presented-sheaf map is the original generic transported-map constructor. -/
+theorem affineMapOfTilde_eq (σ : R ⟶ S)
+    {P : ModuleCat R} {Q : ModuleCat S} {E : (Spec R).Modules} {F : (Spec S).Modules}
+    (e : (tilde.functor R).obj P ≅ E) (d : (tilde.functor S).obj Q ⟶ F)
+    (t : (ModuleCat.extendScalars σ.hom).obj P ⟶ Q) :
+    affineMapOfTilde σ e d t =
+      affineFunctorMap (tilde.functor R) (tilde.functor S)
+        (ModuleCat.extendScalars σ.hom) (pullback (Spec.map σ))
+        (tildePullbackIso σ).hom e d t := by
+  rfl
+
+/-- The original raw scalar map gives the same native presented-sheaf constructor. -/
+theorem affineMapOfTilde_ringHom_eq (f : R →+* S)
+    {P : ModuleCat R} {Q : ModuleCat S} {E : (Spec R).Modules} {F : (Spec S).Modules}
+    (e : (tilde.functor R).obj P ≅ E) (d : (tilde.functor S).obj Q ⟶ F)
+    (t : (ModuleCat.extendScalars f).obj P ⟶ Q) :
+    affineMapOfTilde (R := R) (S := S) (CommRingCat.ofHom f) e d t =
+      affineFunctorMap (tilde.functor R) (tilde.functor S)
+        (ModuleCat.extendScalars f) (pullback (Spec.map (CommRingCat.ofHom f : R ⟶ S)))
+        (tildePullbackIso (CommRingCat.ofHom f : R ⟶ S)).hom e d t := by
+  simpa only [CommRingCat.hom_ofHom] using
+    (affineMapOfTilde_eq (R := R) (S := S) (CommRingCat.ofHom f) e d t)
+
+/-- The original native constructor uses the same raw tilde hom data. -/
+theorem affineMapOfTilde_ringHom_eq_raw (f : R →+* S)
+    {P : ModuleCat R} {Q : ModuleCat S} {E : (Spec R).Modules} {F : (Spec S).Modules}
+    (e : (tilde.functor R).obj P ≅ E) (d : (tilde.functor S).obj Q ⟶ F)
+    (t : (ModuleCat.extendScalars f).obj P ⟶ Q) :
+    affineMapOfTilde (R := R) (S := S) (CommRingCat.ofHom f) e d t =
+      affineFunctorMap (tilde.functor R) (tilde.functor S)
+        (ModuleCat.extendScalars f) (pullback (Spec.map (CommRingCat.ofHom f : R ⟶ S)))
+        (tildePullbackHom_ringHom (R := R) (S := S) f) e d t := by
+  simpa only [tildePullbackHom_ringHom_eq] using
+    (affineMapOfTilde_ringHom_eq (R := R) (S := S) f e d t)
 
 /-- Explicitly typed associated-sheaf comparisons retain coefficient naturality. -/
 theorem affineMapOfTilde_naturality (σ : R ⟶ S)

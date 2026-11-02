@@ -38,7 +38,7 @@ actual unit-sheaf maps. -/
 theorem affineTupleSection_eq_chartFamily (s : I → S) :
     affineTupleSection s = AffineChart.family s := by
   funext i
-  exact Blowup.IdealFrames.affineMultiplication_eq_unitMul S (Option.elim i 1 s)
+  exact AlgebraicGeometry.Scheme.Modules.affineMultiplication_eq_unitMul S (Option.elim i 1 s)
 
 variable (A : Type u) [CommRing A] [IsNoetherianRing A] [Finite I]
 variable {R : Type u} [CommRing R]

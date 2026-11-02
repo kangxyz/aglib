@@ -33,26 +33,6 @@ namespace AlgebraicGeometry.Scheme.Modules
 section CounitPasting
 variable {R S : CommRingCat.{u}} (ψ : R ⟶ S) [IsOpenImmersion (Spec.map ψ)]
 
-private theorem tildeHomologyCounit_naturality
-    (C : CochainComplex (ModuleCat.{u} S) ℤ) (K : CochainComplex (Spec S).Modules ℤ)
-    (q : C ⟶ ((moduleSpecΓFunctor (R := S)).mapHomologicalComplex (.up ℤ)).obj K) (n : ℤ) :
-    (tilde.functor S).map (homologyMap q n) ≫ canonicalTildeHomologyCounitMap K n =
-      ((C.sc n).mapHomologyIso (tilde.functor S)).inv ≫
-        homologyMap (((tilde.functor S).mapHomologicalComplex (.up ℤ)).map q ≫
-          Complex.tildeGlobalSectionsCounit S (.up ℤ) K) n := by
-  have hn := ShortComplex.mapHomologyIso_inv_naturality
-    ((HomologicalComplex.shortComplexFunctor (ModuleCat.{u} S) (.up ℤ) n).map q)
-    (tilde.functor S)
-  change (tilde.functor S).map (homologyMap q n) ≫
-      (((((moduleSpecΓFunctor (R := S)).mapHomologicalComplex (.up ℤ)).obj K).sc n).mapHomologyIso
-        (tilde.functor S)).inv =
-    ((C.sc n).mapHomologyIso (tilde.functor S)).inv ≫
-      homologyMap (((tilde.functor S).mapHomologicalComplex (.up ℤ)).map q) n at hn
-  have hwhole := congrArg
-    (fun z => z ≫ homologyMap (Complex.tildeGlobalSectionsCounit S (.up ℤ) K) n) hn
-  simpa only [canonicalTildeHomologyCounitMap, HomologicalComplex.homologyCounitMap,
-    homologyMap_comp, Category.assoc] using hwhole
-
 private theorem openComplexHomologyCounit
     (K : CochainComplex (Spec R).Modules ℤ) (K' : CochainComplex (Spec S).Modules ℤ)
     (q : ((moduleSpecΓFunctor (R := R)).mapHomologicalComplex (.up ℤ)).obj K ⟶
@@ -95,59 +75,18 @@ private theorem openComplexHomologyCounit
         U.map (K.X i).fromTildeΓ ≫ Φ.f i
     rw [hq]
     exact affineOpenRestrictionSectionsMap_counit ψ _ _ _
-  have hdH : T.map (homologyMap d n) ≫ canonicalTildeHomologyCounitMap K' n =
-      ((((F.mapHomologicalComplex (.up ℤ)).obj C).sc n).mapHomologyIso T).inv ≫
-        homologyMap B₀.hom n ≫ homologyMap ((U.mapHomologicalComplex (.up ℤ)).map κ) n ≫
-        homologyMap Φ n := by
-    rw [tildeHomologyCounit_naturality, hd]
-    simp only [F, T, homologyMap_comp]
-  let E : (((U.mapHomologicalComplex (.up ℤ)).obj
-      ((T₀.mapHomologicalComplex (.up ℤ)).obj C)).homology n) ≅
-      U.obj (T₀.obj (C.homology n)) :=
-    ((((T₀.mapHomologicalComplex (.up ℤ)).obj C).sc n).mapHomologyIso U) ≪≫
-      U.mapIso ((C.sc n).mapHomologyIso T₀)
-  let a : T.obj (F.obj (C.homology n)) ⟶
-      ((T.mapHomologicalComplex (.up ℤ)).obj
-        ((F.mapHomologicalComplex (.up ℤ)).obj C)).homology n :=
-    T.map ((C.sc n).mapHomologyIso F).inv ≫
-      ((((F.mapHomologicalComplex (.up ℤ)).obj C).sc n).mapHomologyIso T).inv
   have hD := CategoryTheory.Adjunction.mapHomologicalComplex_homology_homEquiv_symm
     (ModuleCat.extendRestrictScalarsAdj ψ.hom) (.up ℤ) q n
   change ((C.sc n).mapHomologyIso F).inv ≫ homologyMap d n =
     ((ModuleCat.extendRestrictScalarsAdj ψ.hom).homEquiv _ _).symm m at hD
-  have hB := HomologicalComplex.homologyMap_twoStage_exactIso F T T₀ U
-    (canonicalOpenTildeIso ψ) (.up ℤ) C n
-  have hB' : (a ≫ homologyMap B₀.hom n) ≫ E.hom =
-      (canonicalOpenTildeIso ψ).hom.app (C.homology n) := by
-    simpa only [a, E, B₀, canonicalOpenTildeComplexIso, Iso.trans_hom,
-      Functor.mapIso_hom, Category.assoc] using hB
-  have hb : a ≫ homologyMap B₀.hom n =
-      (canonicalOpenTildeIso ψ).hom.app (C.homology n) ≫ E.inv := by
-    have hc := congrArg (fun z => z ≫ E.inv) hB'
-    simpa only [Category.assoc, Iso.hom_inv_id, Category.comp_id] using hc
-  have hκ := ShortComplex.mapHomologyIso_inv_naturality
-    ((HomologicalComplex.shortComplexFunctor (Spec R).Modules (.up ℤ) n).map κ) U
-  change U.map (homologyMap κ n) ≫ ((K.sc n).mapHomologyIso U).inv =
-    ((((T₀.mapHomologicalComplex (.up ℤ)).obj C).sc n).mapHomologyIso U).inv ≫
-      homologyMap ((U.mapHomologicalComplex (.up ℤ)).map κ) n at hκ
-  have hc : E.inv ≫ homologyMap ((U.mapHomologicalComplex (.up ℤ)).map κ) n =
-      U.map (canonicalTildeHomologyCounitMap K n) ≫ ((K.sc n).mapHomologyIso U).inv := by
-    simp only [E, Iso.trans_inv, Functor.mapIso_inv, Category.assoc]
-    rw [← hκ, ← CategoryTheory.Functor.map_comp_assoc]
-    rfl
-  calc
-    _ = a ≫ homologyMap B₀.hom n ≫
-        homologyMap ((U.mapHomologicalComplex (.up ℤ)).map κ) n ≫ homologyMap Φ n := by
-      rw [← hD, CategoryTheory.Functor.map_comp, Category.assoc, hdH]
-      simp only [a, T, F, B₀, U, κ, C, Category.assoc]
-    _ = (canonicalOpenTildeIso ψ).hom.app (C.homology n) ≫ E.inv ≫
-        homologyMap ((U.mapHomologicalComplex (.up ℤ)).map κ) n ≫ homologyMap Φ n := by
-      simpa only [Category.assoc] using congrArg
-        (fun z => z ≫ homologyMap ((U.mapHomologicalComplex (.up ℤ)).map κ) n ≫
-          homologyMap Φ n) hb
-    _ = _ := by
-      simpa only [Category.assoc] using congrArg
-        (fun z => (canonicalOpenTildeIso ψ).hom.app (C.homology n) ≫ z ≫ homologyMap Φ n) hc
+  have hs := HomologicalComplex.homologyMap_twoStage_square F T T₀ U
+    (canonicalOpenTildeIso ψ) (.up ℤ) C C' K K' d κ
+    (Complex.tildeGlobalSectionsCounit S (.up ℤ) K') Φ hd n
+  have hh := congrArg
+    (fun z => T.map z ≫ canonicalTildeHomologyCounitMap K' n) hD
+  apply hh.symm.trans
+  simpa only [canonicalTildeHomologyCounitMap, HomologicalComplex.homologyCounitMap,
+    F, T, T₀, U, κ, C, C', Category.assoc] using hs
 
 private theorem openComplexHomologyCounit_section
     (K : CochainComplex (Spec R).Modules ℤ) (K' : CochainComplex (Spec S).Modules ℤ)
@@ -274,7 +213,7 @@ theorem canonicalSourceSheafHomologyMap_counit_section (n : ℤ)
         (op V)
         (tilde.toOpen ((closedImmersionSourceResolutionComplex J τ).homology n) V
           (closedImmersionSourceHomologyMap σ τ e h J n x)) := by
-  have hh := openComplexHomologyCounit_section e.toCommRingCatIso.inv
+  have hh := openComplexHomologyCounit_section (R := B) (S := C) e.toCommRingCatIso.inv
     (canonicalSourceSheafComplex σ J) (canonicalSourceSheafComplex τ J)
     (closedImmersionSourceResolutionMap σ τ e h J)
     (canonicalSourceModelOpenIso σ τ e h J).hom

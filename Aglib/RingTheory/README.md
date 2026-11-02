@@ -123,3 +123,22 @@ intermediate subalgebra; its finiteness over the original base retains the
 Noetherian-base and finite-ambient-module hypotheses. `Localization/FiniteSubalgebra`
 factors a finitely generated fraction-field subalgebra through an actual
 nonzero principal localization, preserving the original inclusion.
+
+The [Gorenstein family](Gorenstein/README.md) identifies native finite
+self-injective dimension with a frame of the original concentrated
+coinduced canonical homology under its explicit regular-ambient and
+normal-quotient hypotheses.
+[Exterior Kähler maps](Kaehler/Exterior/README.md) and the
+[pure prime-degree differential trace](Kaehler/PureDegreePTrace/README.md)
+retain the original scalar towers, exterior modules and coextension
+action. [Expanded coefficient series](MvPowerSeries/FiniteCoefficientExpansion/README.md)
+keep the original complete regular ring and fraction field.
+
+[FractionalIdeal/FiniteEmbeddedModule](FractionalIdeal/FiniteEmbeddedModule.lean)
+identifies a finite module injectively embedded in its specified fraction
+localization with the numerator of that same fractional image.
+Nontriviality is needed only for a nonzero numerator.
+[MvPowerSeries/CompleteLocalEvaluation](MvPowerSeries/CompleteLocalEvaluation.lean)
+retains the original constants and maximal-ideal parameters in native
+evaluation. The two-variable dimension argument gives an equivalence
+under its residue-surjectivity, generation and dimension hypotheses.

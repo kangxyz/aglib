@@ -123,21 +123,21 @@ theorem pullbackUnitHom_mul {S T : Type u} [CommRing S] [CommRing T]
     (φ : S →+* T) {M : (Spec (.of S)).Modules} (s : S)
     (e₀ e₁ : (show (Spec (.of S)).Modules from
       SheafOfModules.unit (Spec (.of S)).ringCatSheaf) ⟶ M)
-    (he : e₁ = affineMultiplication S s ≫ e₀) :
+    (he : e₁ = Scheme.Modules.affineMultiplication S s ≫ e₀) :
     (pullbackUnitIso (Spec.map (CommRingCat.ofHom φ))).inv ≫
         (Scheme.Modules.pullback (Spec.map (CommRingCat.ofHom φ))).map e₁ =
-      affineMultiplication T (φ s) ≫
+      Scheme.Modules.affineMultiplication T (φ s) ≫
         (pullbackUnitIso (Spec.map (CommRingCat.ofHom φ))).inv ≫
           (Scheme.Modules.pullback (Spec.map (CommRingCat.ofHom φ))).map e₀ := by
   rw [he, CategoryTheory.Functor.map_comp]
   have h :
       (pullbackUnitIso (Spec.map (CommRingCat.ofHom φ))).inv ≫
         (Scheme.Modules.pullback (Spec.map (CommRingCat.ofHom φ))).map
-          (affineMultiplication S s) =
-      affineMultiplication T (φ s) ≫
+          (Scheme.Modules.affineMultiplication S s) =
+      Scheme.Modules.affineMultiplication T (φ s) ≫
         (pullbackUnitIso (Spec.map (CommRingCat.ofHom φ))).inv := by
     apply (cancel_mono (pullbackUnitIso (Spec.map (CommRingCat.ofHom φ))).hom).mp
-    rw [Category.assoc, affineMultiplication_pullback, Iso.inv_hom_id_assoc,
+    rw [Category.assoc, Scheme.Modules.affineMultiplication_pullback, Iso.inv_hom_id_assoc,
       Category.assoc, Iso.inv_hom_id, Category.comp_id]
   exact (Category.assoc _ _ _).symm.trans
     ((congrArg (fun q => q ≫

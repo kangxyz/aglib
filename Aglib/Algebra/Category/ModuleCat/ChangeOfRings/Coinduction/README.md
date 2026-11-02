@@ -112,3 +112,13 @@ No reducedness, separability, Gorenstein or nonzero-trace condition is
 used. A geometric hyperplane-section application must separately identify
 its dualizing sections and boundary with this module and counit, then
 supply the pointwise Nakayama argument.
+
+[SourceAction](SourceAction.lean), [Finite](Finite.lean) and
+[ConcentratedExt](ConcentratedExt.lean) retain the original higher-coinduction
+homology and ambient Ext carrier. The explicit source-algebra action is
+Yoneda precomposition by restricted multiplication, compatible with ambient
+scalars without surjectivity of the ring map. For a Noetherian commutative
+base and finite coefficient and restricted regular modules, this homology
+is finite over the source algebra. Ambient Ext concentration gives derived
+bounds and the shifted Ext comparison for arbitrary source modules.
+Both Ext sizes and both selected derived-category sizes remain independent.

@@ -36,9 +36,9 @@ homomorphism applied to the original scalar. -/
 theorem pullbackUnitEnd_affine {A B : Type u} [CommRing A] [CommRing B]
     (φ : A →+* B) (a : A) :
     pullbackUnitEnd (Spec.map (CommRingCat.ofHom φ))
-        (Blowup.IdealFrames.affineMultiplication A a) =
-      Blowup.IdealFrames.affineMultiplication B (φ a) := by
-  rw [pullbackUnitEnd, Blowup.IdealFrames.affineMultiplication_pullback,
+        (AlgebraicGeometry.Scheme.Modules.affineMultiplication A a) =
+      AlgebraicGeometry.Scheme.Modules.affineMultiplication B (φ a) := by
+  rw [pullbackUnitEnd, AlgebraicGeometry.Scheme.Modules.affineMultiplication_pullback,
     Iso.inv_hom_id_assoc]
 
 end AlgebraicGeometry.Scheme.Modules

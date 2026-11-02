@@ -64,3 +64,26 @@ with compatible fraction fields. Normality gives base-valued traces;
 separability gives the nonzero discriminant and injective trace coordinates.
 The adjugate identities retain that basis and scalar. The finite-diagram
 cohomology consumer supplies the geometric maps and length comparison.
+
+[IntegralBirational](IntegralBirational.lean) makes an integral map from
+a normal domain to a domain bijective when their original compatible maps
+give a common fraction field, including the degree-one specialization.
+[LocalDomain](LocalDomain.lean) derives domainhood from reducedness,
+Noetherianity, integral closedness and locality through the genuine
+Artinian total quotient ring.
+
+[PureDegreePGenerator](PureDegreePGenerator.lean) constructs an integral
+scaled generator of the original purely inseparable prime-degree field
+extension and its actual power-relation field presentation.
+[PureDegreePAtPrime](PureDegreePAtPrime.lean) retains the literal integral
+closure, unique prime and original height-one localization maps; its DVR
+presentation uses the stated normal Noetherian and finite-normalization
+hypotheses. The whole normalization is not assumed monogenic.
+
+[CompleteIntermediateField](CompleteIntermediateField.lean) retains
+`integralClosure R L` inside the original fraction-field extension of a
+finite faithful domain algebra. Its map into the original normal algebra
+is the native integral-closure lift. The local, finite and completeness
+conclusions retain their stated Noetherian and complete-local inputs and
+use the same finite local coefficient map; no replacement intermediate
+field or coefficient action is chosen.

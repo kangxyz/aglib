@@ -109,3 +109,13 @@ Each source states the exact hypotheses, maps, and realization bounds of its int
 - [RestrictionData/OriginalMates](RestrictionData/OriginalMates.lean)
 - [Square/IsIso](Square/IsIso.lean)
 - [TopComparison](TopComparison.lean)
+
+[Composition](Composition.lean) identifies scalar extension along a specified
+composite with the two original scalar extensions, including equality
+transport and unit tensors. [MateComposition](MateComposition.lean) gives
+its whole-morphism adjunction equation. [Pushout](Pushout.lean) and
+[Quotient](Quotient.lean) give forward and inverse composition squares for
+the original pushout and quotient comparisons. These use arbitrary
+commutative rings and the displayed algebra towers or pushouts, without
+flatness or Noetherianity. Finite-presentation descent and affine
+closed-adjoint comparisons consume these same units and source maps.

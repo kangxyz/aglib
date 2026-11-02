@@ -61,3 +61,10 @@ The external `OpenRestrictionTopGeometricConsumer.lean` passed with receipt
 `1792104521632656000-65865`, retaining arbitrary universe `u`, all degrees
 and the original actions. The normalization uses only `propext`,
 `Classical.choice` and `Quot.sound`.
+
+[Cartesian](Cartesian.lean) identifies the original geometric cohomology
+map with its actual pullback/restriction mate for arbitrary scheme maps
+and module coefficients. [Coefficients](Coefficients.lean) retains the
+restriction unit and postcomposition by an arbitrary local coefficient
+map under the same additive open-cohomology equivalence.
+No replacement cohomology group or extra quasicoherence premise is used.

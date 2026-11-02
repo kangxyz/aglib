@@ -135,3 +135,9 @@ Each source states the exact hypotheses, maps, and realization bounds of its int
 - [Localization/PrincipalGeometry](Localization/PrincipalGeometry.lean)
 - [Localization/Separated](Localization/Separated.lean)
 - [ResolutionLocality](ResolutionLocality.lean)
+
+[Cohomology/CounitNaturality](Cohomology/CounitNaturality.lean) retains
+coefficient naturality in the actual affine higher-image and cohomology
+comparisons. The given counit quasi-isomorphism and original resolution
+lift determine the map; its scalar action and degree-zero section
+normalization are unchanged.

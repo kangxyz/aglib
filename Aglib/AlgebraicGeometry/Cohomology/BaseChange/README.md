@@ -99,3 +99,10 @@ higher-direct-image base-change assertion.
 Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
 
 - [HigherDirectImage/Nonflat/AffineTensorCriterion](HigherDirectImage/Nonflat/AffineTensorCriterion.lean)
+
+The [affine presentation family](HigherDirectImage/Nonflat/README.md)
+retains whole-functor composition and geometric unit evaluation for the
+original tilde/scalar-extension maps. Its target presentation may be an
+arbitrary morphism and its target sheaf need not be quasicoherent.
+These algebraic map equations do not impose flatness or replace the
+separate higher-image base-change hypotheses.

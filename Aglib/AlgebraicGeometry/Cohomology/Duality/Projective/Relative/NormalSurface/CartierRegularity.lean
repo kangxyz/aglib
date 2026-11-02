@@ -222,7 +222,9 @@ private theorem cartierTensorSection_kernel_smul {D X : Scheme.{u}} (i : D ⟶ X
       (cartierCoefficientCancellationIso i hI M).hom.val.app (op U) t) hz).trans
         ((cartierCoefficientCancellationIso i hI M).hom.val.app (op U)).hom.map_zero)
 
-private theorem cartierTensorSection_mono_of_stalk_regular
+/-- Stalkwise scalar regularity of the actual coefficient makes its original
+Cartier tensor section monic. The coefficient need not be a canonical module. -/
+public theorem AlgebraicGeometry.Scheme.Modules.cartierTensorSection_mono_of_stalk_regular
     {D X : Scheme.{u}} [IsIntegral X] (i : D ⟶ X)
     (hI : IsLocallyRankOne X (idealModule i)) (M : X.Modules)
     (hM : ∀ (x : X) (a : X.presheaf.stalk x), a ≠ 0 →
@@ -404,7 +406,7 @@ theorem normalSurfaceCanonical_cartierSection_mono {D : Scheme.{u}}
     (i : D ⟶ X)
     (hI : IsLocallyRankOne X (idealModule i)) :
     Mono ((cartierTensorSection i).app (normalSurfaceCanonicalModule R ι j n)) :=
-  cartierTensorSection_mono_of_stalk_regular i hI (normalSurfaceCanonicalModule R ι j n)
+  Modules.cartierTensorSection_mono_of_stalk_regular i hI (normalSurfaceCanonicalModule R ι j n)
     (normalSurfaceCanonical_stalk_regular R ι j hX hXdim n e hfin)
 
 end AlgebraicGeometry.Scheme.Cohomology

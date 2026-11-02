@@ -46,3 +46,12 @@ the chosen-embedding concentration source packet, SHA-256
 `e9dd8fb58ebc9cc80e327b39767491af71e5e7292902c3e1f0c388874fcd521f`.
 The lower [finite-source calculation](../FiniteSource.md) supplies its
 original tilde and section-homology comparisons.
+
+The generic tilde/stalk and affine coefficient-germ constructions now live
+once in `Modules/QuasiCoherent/Affine/Stalk`. This owner preserves the original
+public names, signatures and downstream maps as thin wrappers. The lower
+provider requires no finite-source, cohomological or surface hypothesis.
+
+The actual changed consumer `6257280e` passed native recovery graph83
+(12 seconds), after the lower extraction `422535e4` passed (3.6 seconds).
+No unrelated higher canonical or geometric consumer is thereby claimed.

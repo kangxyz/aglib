@@ -134,7 +134,9 @@ private theorem originalChart_dimension [IsDomain A] [IsIntegral W]
 
 end OriginalCharts
 
-private theorem actualModel_dimension_of_nagata
+/-- The original proper birational model over a Nagata base of dimension at most two
+has dimension at most two; completeness of the base is not required. -/
+theorem actualModel_dimension_of_nagata
     {A : CommRingCat.{u}} [IsDomain A] {X : Scheme.{u}} [IsIntegral X]
     (f : X ⟶ Spec A) [IsProper f] [IsDominant f]
     (hA : IsNagataRing.{u, 0} A) (hd : ringKrullDim A ≤ 2)
@@ -233,7 +235,9 @@ theorem original_R1_coherent_finite_closed_support
   · exact fun x hx ↦ hclosed x hx
   · exact higherDirectImage_one_support_subset_compl g M U
 
-private theorem module_isZero_of_finite_closed_support_of_sections_subsingleton
+/-- A module sheaf supported on finitely many closed points vanishes if its
+original scalar-valued global-sections module is a subsingleton. -/
+theorem module_isZero_of_finite_closed_support_of_sections_subsingleton
     {A : Type u} [CommRing A] (X : Scheme.{u}) (α : A →+* Γ(X, ⊤))
     (M : X.Modules) (C : Set X) (hC : C.Finite)
     (hclosed : ∀ x ∈ C, IsClosed ({x} : Set X))

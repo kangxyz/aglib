@@ -44,3 +44,13 @@ of a finitely presented module, preserving its original generic map.
 agreement on original evaluations determines that generic bidual map.
 The sheaf and one-pole differential consumers retain these evaluation laws;
 raw-module reflexivity and torsion-freeness are not extra assumptions.
+
+[DoubleDualFraction/Uniqueness](DoubleDualFraction/Uniqueness.lean)
+shows that every bidual element has a regular multiple equal to an
+original evaluation, for the specified non-zero-divisor localization
+of a finitely presented module with reflexive generic fibre.
+Maps from this bidual into any torsion-free target are determined by
+their values on that original evaluation. The raw module need not be
+reflexive or torsion-free, and evaluation is not asserted epic.
+One-pole sheaf-map comparisons use this uniqueness through their actual
+affine section coordinates.

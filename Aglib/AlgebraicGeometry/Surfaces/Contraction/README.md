@@ -134,3 +134,13 @@ The proper-base endpoint uses the supplied proper map throughout. A bare
 surface without that map is outside its stated scope. The remaining
 resolution applications require their own normalization, cohomology and
 finite-modification arguments.
+
+[PointBlowup](PointBlowup.lean) recognizes the original Cartier lift as
+an isomorphism over a regular local ring of dimension two when the
+proper modification has integral source, is unchanged off the centre,
+and its literal closed fibre is integral of dimension one.
+The Cartier condition concerns the actual inverse-image maximal ideal.
+The conclusion retains the existing blowup lift and its structural
+triangle, without a source-normality, excellence or coefficient-field
+premise. This recognition theorem complements the constructed proper
+contraction above; it does not create that contraction by itself.

@@ -86,3 +86,9 @@ to the original forward comparison. Its original Ext degree-zero and target
 naturality laws retain their stated hypotheses; ordinary-cohomology versions
 require the displayed target acyclicity. Source connecting compatibility is
 a separate obligation.
+
+[ChangeUniverse](ChangeUniverse.lean) makes the native `Ext.chgUniv` an
+`R`-linear equivalence in an `R`-linear abelian category, retaining its
+underlying map. The scalar ring, category object and morphism universes,
+and both Ext sizes are independent. Higher-coinduction finiteness uses it
+to transfer finite generation to the selected Ext carrier.

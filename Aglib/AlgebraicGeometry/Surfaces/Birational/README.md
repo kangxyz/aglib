@@ -32,7 +32,9 @@ ambient scheme whose stalks are regular local of dimension at most two.
 `IsIso f.c`, provided `g` is pointwise constant on its fibres. This theorem
 works for arbitrary schemes, with no separation condition on `Z`; it creates
 no contraction morphism. The point-blowup factorization below uses this
-descent theorem; contraction and minimal-model existence remain separate. General
+descent theorem. [Proper contraction](../Contraction/README.md) separately
+constructs a contraction from specified exceptional Cartier-line data;
+minimal-model existence remains a different question. General
 [Milnor patching](../../../RingTheory/Etale/MilnorPatching/README.md), including
 fibre-product flatness with surjective boundary map, flat component maps and
 the original compatible tensor equivalences, is proved independently of these
@@ -43,8 +45,12 @@ gives an actual isomorphism neighborhood whenever such a proper birational
 morphism has a finite point fibre, without a dimension or Noetherian bound.
 The [regular-point blowup computation](../../Blowup/RegularPoint.md) separately
 identifies its actual inverse-image centre with the original residue-field
-projective line. These are inputs to factorization below; contraction requires
-further results.
+projective line. These are inputs to factorization below. The
+[proper contraction theorem](../Contraction/Proper.md) treats an integral
+regular Noetherian surface proper over a Noetherian base and a specified
+closed `P¹_k` over a field `k`, with singleton base image, locally rank-one
+kernel ideal and
+conormal `O(1)`; it constructs the actual contraction and blowup comparison.
 
 ## Common domination and trait models
 
@@ -144,3 +150,37 @@ squares and generic maps retained. Its coefficient row and projective
 factorization are constructed, not assumed. The finite separable H1 bound
 consumes this diagram; separability is needed there for the discriminant,
 not for this domination construction.
+
+## Constructed normalized-point domination
+
+[NormalizedPointDomination.exists_domination](NormalizedPointDomination.lean)
+starts with an integral normal Noetherian `P` of dimension at most two,
+Nagata nonempty affine charts, and a proper dominant
+`q : Q ⟶ P` with integral `Q` and invertible original function-field map.
+It constructs `beta : T ⟶ P`, `a : T ⟶ Q` and a finite literal
+`NormalizedPointBlowupChain beta` satisfying `a ≫ q = beta`.
+The terminal is integral, normal, Noetherian and of dimension at most two;
+both maps are proper, dominant and birational through their original field
+maps. The input `Q` need not be normal, and terminal regularity is not
+asserted.
+
+The construction first takes finite generic normalization of `Q`.
+[NormalCommonModel](NormalizedPointDomination/NormalCommonModel.md)
+constructs the schematic common-open graph component and its finite
+normalization. Proper images give the curve embedding.
+[SelectedElimination](NormalizedPointDomination/SelectedElimination.md)
+eliminates a selected curve using the retained fraction and strict finite
+DVR-order decrease.
+[CardinalityInduction](NormalizedPointDomination/CardinalityInduction.md)
+then decreases the finite contracted-curve count and composes the actual
+chains.
+
+[AffineBase](NormalizedPointDomination/AffineBase.md) specializes to a
+commutative integrally closed Nagata domain `A` with `ringKrullDim A ≤ 2`.
+[Ideal](NormalizedPointDomination/Ideal.md) makes the actual image of a
+nonzero ideal locally rank one on such a chain, without asserting a regular
+terminal. Present endpoint consumers are
+[rational domination of a supplied regular model](../Resolution/RationalDomination.md)
+and [rationality under normal-domain completion](../RationalSingularities/Completion.md).
+The latter descends the constructed chain; it does not assume that the
+arbitrary completed model algebraizes.

@@ -81,3 +81,18 @@ coefficient map. For locally finite-type morphisms it proves finite type
 of that sheaf, preserving the localized universal differential. The
 surface determinant consumer must still derive its generic rank and
 line property; no smoothness or perfectness premise is substituted.
+
+[Coefficient](Coefficient.lean) and
+[ExteriorCoefficient](ExteriorCoefficient.lean) construct the original
+differential and exterior coefficient maps for arbitrary composable scheme
+morphisms. Their whole composition, congruence and open-square laws retain
+the original units, structure maps and equality transports.
+[ExteriorAffine](ExteriorAffine.lean) computes the same raw forms on an
+actual affine chart, and [AffineArrow](AffineArrow.lean) preserves the
+original differential-value formula.
+[FormsFiniteType](FormsFiniteType.lean) uses local finite type for raw
+exterior forms and additionally local Noetherianity for their bidual.
+The [bidual-line family](BidualLine/README.md) retains the stronger regular
+surface and supplied top-basis hypotheses.
+[AffineLineKernel](AffineLineKernel.lean) keeps its specified common
+fraction field and original line coefficient in the kernel comparison.

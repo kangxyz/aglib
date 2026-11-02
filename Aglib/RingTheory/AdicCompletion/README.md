@@ -215,3 +215,13 @@ on the relevant completions are retained for fraction-field degree bounds;
 regularity supplies the base completion's domain property where stated.
 These are inputs to complete-local degree induction, not that induction
 or a resolution theorem.
+
+[FiniteLocalComplete](FiniteLocalComplete.lean) proves completeness of a
+finite local algebra for its own maximal ideal over a complete Noetherian
+local ring, without domain or dimension hypotheses.
+[NormalSurface](NormalSurface.lean) treats an actual injective local map
+`A → B` between dimension-two local domains, with `A` complete, finite
+original residue extension and `B` Noetherian, normal and Nagata.
+It proves domainhood and integral closedness of the literal completion
+of `B`. It does not assume `B` finite over `A` or later stalks complete,
+and the earlier `A` need not be Noetherian or normal.

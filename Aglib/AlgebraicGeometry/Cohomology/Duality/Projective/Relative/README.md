@@ -152,3 +152,15 @@ and native affine sections, retaining integer degree `r-d`, coefficient
 comparisons and source Ext-composition laws. Bijectivity keeps the Noetherian
 base and affine-locally-finite-type source hypotheses. These are suppliers
 to full canonical restriction and its counit comparison, which remain open.
+
+The [coefficient-curve guide](CohenMacaulayCurve/README.md) records the
+actual coefficient Serre pairing, Cartier-section purity, positive-twist
+vanishing and full-curve Hilbert numerics. Its coefficient line is not
+identified with the ground field.
+The [normal-surface guide](NormalSurface/README.md) retains original
+canonical stalks, one chosen generic frame, the numerator ideal and
+Cartier restriction.
+Its [trace guide](NormalSurface/Trace/README.md) distinguishes constructed
+ordinary trace and local evaluation from the supplied structure-unit and
+exceptional-generation hypotheses. All-model structure-H1 vanishing and
+the global trace argument remain separate.

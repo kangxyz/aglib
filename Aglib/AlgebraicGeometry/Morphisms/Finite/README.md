@@ -56,3 +56,15 @@ Each source states the exact hypotheses, maps, and realization bounds of its int
 
 - [Birational/NormalLocus](Birational/NormalLocus.lean)
 - [Codimension](Codimension.lean)
+
+[CompletedLocalModel](CompletedLocalModel.lean) uses the whole finite
+inverse-image affine algebra localized at the original target point,
+before selecting a maximal branch. Its comparison identifies that branch
+localization with the actual source stalk.
+[CompletedLocalDegree](CompletedLocalDegree.lean) retains the completed
+original stalk map and its equations in every finite quotient.
+A Noetherian target stalk gives finiteness and locality of the completed
+map; regularity gives injectivity. Domainhood of the actual source-stalk
+completion is additionally required for its fraction field and degree
+bound by the original function-field degree. No uncompleted selected
+source stalk is assumed finite over the target stalk.

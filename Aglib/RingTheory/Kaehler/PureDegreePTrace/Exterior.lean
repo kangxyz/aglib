@@ -5,10 +5,12 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.RingTheory.Kaehler.PureDegreePTrace.Presentation
 public import Aglib.LinearAlgebra.ExteriorPower.ScalarExtension
-public import Mathlib.LinearAlgebra.Alternating.Uncurry.Fin
+public import Aglib.RingTheory.Kaehler.Exterior.Map
+public import Aglib.RingTheory.Kaehler.PureDegreePTrace.Presentation
 public import Mathlib.Data.Finset.Piecewise
+public import Mathlib.LinearAlgebra.Alternating.Uncurry.Fin
+
 
 /-!
 # The actual degree-p trace on exterior differential forms
@@ -21,6 +23,9 @@ and scalar and localization comparisons retain these same maps.
 @[expose] public noncomputable section
 
 open Polynomial TensorProduct
+
+
+open KaehlerDifferential
 
 namespace AlternatingMap
 
@@ -478,82 +483,11 @@ namespace KaehlerDifferential
 variable (Λ R S : Type*) [CommRing Λ] [CommRing R] [CommRing S]
   [Algebra Λ R] [Algebra R S] [Algebra Λ S] [IsScalarTower Λ R S]
 
-/-- The actual Kähler map on native exterior powers, with its original source scalars. -/
-def mapExterior (n : ℕ) :
-    (⋀[R]^n (KaehlerDifferential Λ R)) →ₗ[R] (⋀[S]^n (KaehlerDifferential Λ S)) :=
-  exteriorPower.mapAlgebra (S := S) n (map Λ Λ R S)
-
-/-- The actual pulled-up exterior forms, retaining the original tensor product and scalar action. -/
-def mapExteriorBaseChange (n : ℕ) :
-    S ⊗[R] (⋀[R]^n (KaehlerDifferential Λ R)) →ₗ[S]
-      (⋀[S]^n (KaehlerDifferential Λ S)) :=
-  (mapExterior Λ R S n).liftBaseChange S
-
-@[simp]
-theorem mapExteriorBaseChange_tmul (n : ℕ) (s : S)
-    (v : ⋀[R]^n (KaehlerDifferential Λ R)) :
-    mapExteriorBaseChange Λ R S n (s ⊗ₜ[R] v) = s • mapExterior Λ R S n v :=
-  LinearMap.liftBaseChange_tmul _ _ _ _
-
-@[simp]
-theorem mapExterior_ιMulti (n : ℕ) (v : Fin n → KaehlerDifferential Λ R) :
-    mapExterior Λ R S n (exteriorPower.ιMulti R n v) =
-      exteriorPower.ιMulti S n (fun i => map Λ Λ R S (v i)) :=
-  exteriorPower.mapAlgebra_ιMulti n (map Λ Λ R S) v
-
-theorem mapExterior_snoc (n : ℕ) (v : Fin n → KaehlerDifferential Λ R)
-    (ω : KaehlerDifferential Λ R) :
-    mapExterior Λ R S (n + 1) (exteriorPower.ιMulti R (n + 1) (Fin.snoc v ω)) =
-      exteriorPower.ιMulti S (n + 1)
-        (Fin.snoc (fun i => map Λ Λ R S (v i)) (map Λ Λ R S ω)) := by
-  rw [mapExterior_ιMulti]
-  congr 1
-  funext i
-  refine Fin.lastCases ?_ (fun j => ?_) i
-  · rw [Fin.snoc_last, Fin.snoc_last]
-  · rw [Fin.snoc_castSucc, Fin.snoc_castSucc]
-
-/-- Exterior differentials use the actual module localization, proved through tensor base change. -/
-theorem mapExterior_isLocalizedModule (U : Submonoid R) [IsLocalization U S] (n : ℕ) :
-    IsLocalizedModule U (mapExterior Λ R S n) := by
-  let : IsLocalizedModule U (map Λ Λ R S) :=
-    KaehlerDifferential.isLocalizedModule_map (R := Λ) (S := R) (T := S) U
-  exact exteriorPower.isLocalizedModule_mapAlgebra U n (map Λ Λ R S)
 
 variable {Λ R S}
 variable {T : Type*} [CommRing T] [Algebra S T] [Algebra R T] [Algebra Λ T]
   [IsScalarTower R S T] [IsScalarTower Λ S T] [IsScalarTower Λ R T]
 
-private theorem exterior_map_tower_apply (η : KaehlerDifferential Λ R) :
-    map Λ Λ S T (map Λ Λ R S η) = map Λ Λ R T η := by
-  have he : ((map Λ Λ S T).restrictScalars R).comp (map Λ Λ R S) = map Λ Λ R T := by
-    apply Derivation.liftKaehlerDifferential_unique
-    apply Derivation.ext
-    intro r
-    change map Λ Λ S T (map Λ Λ R S (D Λ R r)) = map Λ Λ R T (D Λ R r)
-    simp only [map_D, ← IsScalarTower.algebraMap_apply R S T]
-  exact LinearMap.congr_fun he η
-
-theorem mapExterior_base_tower (n : ℕ) (v : Fin n → KaehlerDifferential Λ R) :
-    mapExterior Λ S T n
-      (exteriorPower.ιMulti S n (fun i => map Λ Λ R S (v i))) =
-        exteriorPower.ιMulti T n (fun i => map Λ Λ R T (v i)) := by
-  rw [mapExterior_ιMulti]
-  congr 1
-  funext i
-  exact exterior_map_tower_apply (v i)
-
-theorem mapExterior_snoc_tower (n : ℕ) (v : Fin n → KaehlerDifferential Λ R)
-    (ω : KaehlerDifferential Λ S) :
-    mapExterior Λ S T (n + 1)
-      (exteriorPower.ιMulti S (n + 1) (Fin.snoc (fun i => map Λ Λ R S (v i)) ω)) =
-        exteriorPower.ιMulti T (n + 1)
-          (Fin.snoc (fun i => map Λ Λ R T (v i)) (map Λ Λ S T ω)) := by
-  rw [mapExterior_snoc]
-  congr 1
-  congr 1
-  funext i
-  exact exterior_map_tower_apply (v i)
 
 section PureDegreeP
 

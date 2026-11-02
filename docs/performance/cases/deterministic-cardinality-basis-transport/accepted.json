@@ -1,0 +1,25 @@
+{
+  "as_of_utc": "2026-10-31T07:51:10Z",
+  "target": "Aglib/RingTheory/Kaehler/PureDegreePTrace/CompleteRegularEntrance.lean",
+  "sha256": "bf47720765e0032e15320b6c75e1000a1778175c4c2a50e7184fadd9a8729848",
+  "own_result": "PASS",
+  "own_seconds": 15,
+  "native_graph": 100,
+  "snapshot": 113,
+  "normal_limits": {
+    "lean_mb": 7000,
+    "aggregate_mib": 7168,
+    "threads": 1
+  },
+  "graph_exit_code": 1,
+  "graph_unrelated_failures": true,
+  "graph_guard_failure": null,
+  "graph_duration_seconds": 29.87078929600102,
+  "graph_peak_rss_bytes": 3060977664,
+  "owned_group_gone": true,
+  "coverage": "original ring-only theorem own native pass; no whole-graph, axiom-audit, downstream geometric trace or resolution completion claim",
+  "production_docs": "paired validation prose updated after root THAW07:54:47, accepted Lean unchanged",
+  "paired_doc_sha256": "41b25323666cf5af3f25a0118d32eb1a92b007f4b87b8c62c57d193f452b13eb",
+  "paired_doc_before_sha256": "29586b8fdf1706dfec0954756a7363a7233f014997f802e08dba2a01a5cb1093",
+  "fullsource": 1553
+}

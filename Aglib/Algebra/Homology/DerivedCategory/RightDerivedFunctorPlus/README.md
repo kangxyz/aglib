@@ -152,3 +152,10 @@ forgetting to preserve injectives.
 - [ChangeTargetUnit](ChangeTargetUnit.lean)
 - [IdentityModelComparison](IdentityModelComparison.lean)
 - [IdentityTargetComposition](IdentityTargetComposition.lean)
+
+[BaseChange/ZeroComparison](BaseChange/ZeroComparison.lean) supplies the
+native `rightDerivedSingleUnit` and degree-zero normalization, together
+with zeroth exchange transport. Its whole-comparison equations retain
+the installed units, specified mate transport and all category and
+derived-model universes. Geometric base change and single-unit composition
+use these exact comparisons.

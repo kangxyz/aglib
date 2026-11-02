@@ -50,3 +50,10 @@ modules, and does not identify the tensor source with its image.
 The transition estimates follow the graded-module argument of
 [Stacks Project, Tag 02OA](https://stacks.math.columbia.edu/tag/02OA), retaining
 both action compatibilities in the formal interface.
+
+[Equiv](Equiv.lean) promotes the original coefficientwise Rees map for
+a ring equivalence to an equivalence with the Rees algebra of the actual
+mapped ideal. Polynomial coefficients and their ideal-power membership
+remain literal. Source and target universes are independent; no local,
+Noetherian, field or finite-generation condition is added.
+Associated-graded kernel transport uses this same equivalence.

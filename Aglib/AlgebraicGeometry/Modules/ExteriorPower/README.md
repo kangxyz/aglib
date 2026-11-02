@@ -31,3 +31,13 @@ positive-rank premise. In particular, rank zero is included.
 nor a new line-bundle property. Smooth canonical lines and the determinant
 identifications in duality are subsequent consumers; this family does not
 by itself identify a dualizing sheaf with a top differential exterior power.
+
+[Affine](Affine.lean) and [AffineMaps](AffineMaps.lean) identify the
+original exterior power of `tilde M` with `tilde(∧ⁿM)` and preserve
+wedges and coefficient naturality over arbitrary commutative rings.
+[Pushforward](Pushforward.lean) takes any original arrow `M → g_*N`
+to its exterior coefficient map. Its
+[composition](Pushforward/Composition.lean),
+[open adjoint](Pushforward/OpenAdjoint.lean) and
+[identity](PushforwardIdentity.lean) equations use those same maps.
+Flatness and local freeness are unnecessary for these coefficient laws.

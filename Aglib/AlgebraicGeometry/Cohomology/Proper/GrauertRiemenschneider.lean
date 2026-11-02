@@ -12,14 +12,15 @@ public import Aglib.AlgebraicGeometry.Cohomology.Proper.FiniteLength
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.ResidueVanishing
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.BirationalSurface
 public import Aglib.AlgebraicGeometry.Properties.Normal.Affine
-public import Aglib.AlgebraicGeometry.FunctionField.GenericFiber
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.GenericStalk.FiniteFactorization
 public import Aglib.AlgebraicGeometry.FunctionField.AffineCharts
 public import Aglib.Algebra.Homology.ModuleCat.HomComplex.TwoLayer
 public import Aglib.Algebra.Homology.ModuleCat.HomComplex.TwoLayer.Cohomology
 public import Aglib.Algebra.Homology.ModuleCat.HomComplex.Residue
 public import Aglib.Algebra.Homology.ModuleCat.HomComplex.Postnikov
 public import Aglib.RingTheory.Nagata.CompleteLocalSurface
-public import Mathlib.RingTheory.LocalRing.Length
+public import Aglib.Algebra.Category.ModuleCat.FiniteLength.LocalRestriction
+public import Aglib.AlgebraicGeometry.Cohomology.Proper.DerivedStructure.FiniteLength
 
 /-!
 # Chosen-embedding Grauert--Riemenschneider vanishing for complete local surfaces
@@ -52,47 +53,7 @@ private theorem grFiniteLength_restrictScalars
     (sigma : R →+* A) [IsLocalHom sigma] (hfinite : sigma.Finite)
     (M : ModuleCat.{w} A) (hM : IsFiniteLength A M) :
     IsFiniteLength R ((ModuleCat.restrictScalars sigma).obj M) := by
-  let : Algebra R A := sigma.toAlgebra
-  let : Module.Finite R A := hfinite
-  let : IsLocalHom (algebraMap R A) := inferInstanceAs (IsLocalHom sigma)
-  let : Module R M := Module.compHom M sigma
-  let : IsScalarTower R A M :=
-    ⟨fun r a x => by
-      change (r • a) • x = sigma r • (a • x)
-      rw [Algebra.smul_def]
-      exact mul_smul _ _ _⟩
-  change IsFiniteLength R M
-  apply Module.length_ne_top_iff.mp
-  rw [IsLocalRing.length_restrictScalars R A M]
-  obtain ⟨l, hl⟩ := ENat.ne_top_iff_exists.mp (Module.length_ne_top_iff.mpr hM)
-  rw [← hl, Module.length_eq_finrank, ← ENat.natCast_mul]
-  exact ENat.natCast_ne_top _
-
-/-- The actual generic-fibre isomorphism proves finiteness of the actual field map. -/
-private theorem grFunctionFieldMap_finite
-    {X Y : Scheme.{u}} [IsIntegral X] [IsIntegral Y]
-    (f : X ⟶ Y) [IsFinite f] [IsDominant f] :
-    (Scheme.functionFieldMap f).Finite := by
-  let q := pullback.snd f (Y.fromSpecStalk (genericPoint Y))
-  let : IsIso (Scheme.genericFibreMap f) := Scheme.genericFibreMap_isIso f
-  have hfinite : IsFinite (Scheme.genericFibreMap f ≫ q) := inferInstance
-  have hcomp : Scheme.genericFibreMap f ≫ q =
-      Spec.map (CommRingCat.ofHom (Scheme.functionFieldMap f)) := by
-    dsimp only [q, Scheme.genericFibreMap]
-    exact pullback.lift_snd _ _ _
-  rw [hcomp] at hfinite
-  exact (IsFinite.SpecMap_iff _).mp hfinite
-
-/-- Injectivity is sufficient for the actual affine map to be dominant. -/
-private theorem grSpecMap_dominant
-    {R A : Type u} [CommRing R] [CommRing A]
-    (sigma : R →+* A) (hinj : Function.Injective sigma) :
-    IsDominant (Spec.map (CommRingCat.ofHom sigma)) := by
-  constructor
-  change DenseRange (PrimeSpectrum.comap sigma)
-  rw [PrimeSpectrum.denseRange_comap_iff_ker_le_nilRadical,
-    (RingHom.injective_iff_ker_eq_bot sigma).mp hinj]
-  exact bot_le
+  exact ModuleCat.finiteLength_restrictScalars_of_finite_local sigma hfinite M hM
 
 /-- The actual structural factorization supplies the required dominance instance. -/
 private theorem grEmbeddingMap_dominant
@@ -104,9 +65,7 @@ private theorem grEmbeddingMap_dominant
     (hg : i ≫ ProjectiveSpace.toSpec R iota =
       f ≫ Spec.map (CommRingCat.ofHom sigma)) :
     IsDominant (i ≫ ProjectiveSpace.toSpec R iota) := by
-  let := grSpecMap_dominant sigma hinj
-  rw [hg]
-  infer_instance
+  exact ProjectiveSpace.isDominant_of_injective_base_triangle sigma hinj iota f i hg
 
 /-- Finiteness for the original genericImageBaseMap, without a field-finiteness premise. -/
 private theorem grGenericImageBaseMap_finite
@@ -120,28 +79,8 @@ private theorem grGenericImageBaseMap_finite
       f ≫ Spec.map (CommRingCat.ofHom sigma)) :
     letI := grEmbeddingMap_dominant sigma hinj iota f i hg
     (ProjectiveSpace.genericImageBaseMap R iota i).Finite := by
-  let := grEmbeddingMap_dominant sigma hinj iota f i hg
-  let s := Spec.map (CommRingCat.ofHom sigma)
-  let : IsDominant s := grSpecMap_dominant sigma hinj
-  let : IsFinite s := (IsFinite.SpecMap_iff _).mpr hfinite
-  let : IsIso (CommRingCat.ofHom (Scheme.functionFieldMap f)) := hff
-  have hs : (Scheme.functionFieldMap s).Finite := grFunctionFieldMap_finite s
-  have hf : (Scheme.functionFieldMap f).Finite :=
-    RingHom.Finite.of_surjective _
-      (ConcreteCategory.bijective_of_isIso
-        (CommRingCat.ofHom (Scheme.functionFieldMap f))).2
-  have hcongr {a b : X ⟶ Spec (CommRingCat.of R)}
-      [IsDominant a] [IsDominant b] (hab : a = b) :
-      Scheme.functionFieldMap a = Scheme.functionFieldMap b := by
-    subst b
-    rfl
-  have hmap : ProjectiveSpace.genericImageBaseMap R iota i =
-      (Scheme.functionFieldMap f).comp (Scheme.functionFieldMap s) := by
-    change Scheme.functionFieldMap (i ≫ ProjectiveSpace.toSpec R iota) = _
-    exact (hcongr hg).trans (Scheme.functionFieldMap_comp f s)
-  rw [hmap]
-  exact hf.comp hs
-
+  exact ProjectiveSpace.genericImageBaseMap_finite_of_finite_base_triangle
+    sigma hfinite hinj iota f hff i hg
 
 private theorem grSpec_normalStalks (A : Type u) [CommRing A] [IsDomain A]
     [IsIntegrallyClosed A] : NormalStalks (Spec (CommRingCat.of A)) := by
@@ -167,20 +106,8 @@ private theorem grStructure_homologyOne_finiteLength
     IsFiniteLength A
       ((DerivedCategory.Plus.homologyFunctor (ModuleCat.{u} A) 1).obj
         (moduleDerivedStructure X (normalSurfaceTraceScalar f))) := by
-  let O : X.Modules := SheafOfModules.unit X.ringCatSheaf
-  let α := normalSurfaceTraceScalar f
-  have hiso : IsIso (f ∣_ localPuncturedSpectrum A) :=
-    f.isIso_restrict_of_stalk_dimension_le_one hff (grSpec_normalStalks A)
-      (localPuncturedSpectrum A) (by
-        intro p hp
-        exact ringKrullDim_stalk_le_one_of_ne_closedPoint A hA.le p
-          ((mem_localPuncturedSpectrum A p).mp hp))
-  let := moduleCohomologyModuleOfHom X α O 1
-  have hlen : IsFiniteLength A (Sheaf.H.{u + 1} (moduleAddSheaf X O) 1) :=
-    moduleCohomology_isFiniteLength_of_proper_of_isIso_puncturedSpectrum
-      A f hiso O (affineLocallyFiniteType_unit X) 1 (by decide)
-  exact (moduleDerivedGlobalSectionsSingleCohomologyLinearEquiv X α IX 1).symm.isFiniteLength
-    hlen
+  exact moduleDerivedStructure_homologyOne_finiteLength_of_proper_birational_surface
+    f hff hA IX
 
 /-- Supplied computational resolutions retain the original geometric and algebraic comparisons. -/
 private theorem grCanonicalCohomology_withResolutions

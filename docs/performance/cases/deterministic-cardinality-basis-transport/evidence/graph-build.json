@@ -1,0 +1,40 @@
+{
+  "state": "completed",
+  "command": [
+    "lake",
+    "--rehash",
+    "build",
+    "+Aglib.AlgebraicGeometry.Surfaces.Resolution.RationalDoublePoint.HeightMultiset",
+    "+Aglib.RingTheory.Kaehler.PureDegreePTrace.CompleteRegularEntrance",
+    "+Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.PairIdealRawSource",
+    "+Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.PairIdealRawFamily",
+    "+Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.PairIdealRawUnitSquare",
+    "-o",
+    "/workspace/scratch/375151ffceb3/surface-resolution-recovery/native/recovery100-outputs.jsonl"
+  ],
+  "cwd": "/workspace/scratch/375151ffceb3/surface-resolution-updated",
+  "pid": 11,
+  "pgid": 11,
+  "exit_code": 1,
+  "guard_failure": null,
+  "peak_rss_bytes": 3060977664,
+  "duration_seconds": 29.87078929600102,
+  "limits": {
+    "lean_memory_mb": 7000,
+    "rss_limit_mb": 7168,
+    "sample_seconds": 0.1,
+    "physical_memory_bytes": 10451427328,
+    "lean_threads": 1,
+    "max_active_lean": 1,
+    "native_build_threads": 1
+  },
+  "owned_group_gone": true,
+  "last_members": [
+    {
+      "pid": 11,
+      "rss_bytes": 0,
+      "executable": "lake",
+      "command_path": "lake"
+    }
+  ]
+}

@@ -67,3 +67,16 @@ and their conditions; general singular-surface resolution remains open.
 Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
 
 - [Sites/EtaleAffineBasis/RepresentativeSections](Sites/EtaleAffineBasis/RepresentativeSections.lean)
+
+[Generic normalization](Normalization/FunctionField.md) retains the actual
+generic inclusion, original normalization arrow and affine fraction-ring
+comparison. [Finite-field chart sections](Normalization/FiniteFunctionField/ChartSections.md)
+and their [equality transport](Normalization/FiniteFunctionField/ChartSectionsTransport.md)
+identify literal normalization section rings with their integral closures.
+[Flat-preimmersion base change](Normalization/FunctionField/FlatPreimmersion.md)
+retains the original field map and both normalization projections.
+[QuasiExcellent](Normalization/QuasiExcellent.md) proves finite generic
+normalization under dimension at most two and quasi-excellence of every
+nonempty affine section ring, and normal-domain completion at actual
+dimension-two normalization points. These are prerequisites, not a
+resolution existence theorem.
