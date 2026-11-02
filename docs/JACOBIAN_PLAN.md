@@ -166,8 +166,11 @@ The normalization above is Aglib's. Its
 The [original Picard/H¹ equivalence](../Aglib/AlgebraicGeometry/Picard/FrameTensor.lean)
 sends the class of `L` literally to this native frame torsor’s Ext class
 (`picardH1Equiv_classOf`); the Kummer Picard boundary composes that same map
-with the original connecting homomorphism. Comparison with the source’s
-positive-frame class and its Čech, connecting and cup conventions remains open.
+with the original connecting homomorphism. The native
+[frame-inversion family](../Aglib/AlgebraicGeometry/Picard/FrameInverse.lean)
+identifies the positive coframe class with the negative native Picard class,
+and retains the original normalized power and action laws. Comparison with
+the source’s Čech, connecting and cup conventions remains open.
 Source locators are [Milne LEC](REFERENCES.md#milne2013lecturesetalecohomology),
 v2.21, 14.2 (p. 90), 14.5 (p. 92) and 14.12 (p. 97);
 [Stacks](REFERENCES.md#stacksproject), 03RN, 03RQ and 03RR;

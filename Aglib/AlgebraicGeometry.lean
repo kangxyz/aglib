@@ -4240,6 +4240,7 @@ public import Aglib.AlgebraicGeometry.Modules.Invertible.Gluing.Sections
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Gluing.Sheaf
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Gluing.Tensor
 public import Aglib.AlgebraicGeometry.Modules.Invertible.IsomorphismSheaf
+public import Aglib.AlgebraicGeometry.Modules.Invertible.IsomorphismSheaf.Inverse
 public import Aglib.AlgebraicGeometry.Modules.Invertible.LocalRing
 public import Aglib.AlgebraicGeometry.Modules.Invertible.LocalRingMaps
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Locality
@@ -5069,6 +5070,7 @@ public import Aglib.AlgebraicGeometry.Picard.FiberCondition.Surjective
 public import Aglib.AlgebraicGeometry.Picard.FiberCondition.Translation
 public import Aglib.AlgebraicGeometry.Picard.Fppf
 public import Aglib.AlgebraicGeometry.Picard.FppfSections
+public import Aglib.AlgebraicGeometry.Picard.FrameInverse
 public import Aglib.AlgebraicGeometry.Picard.FrameTensor
 public import Aglib.AlgebraicGeometry.Picard.FrameTorsor
 public import Aglib.AlgebraicGeometry.Picard.GroupLaw

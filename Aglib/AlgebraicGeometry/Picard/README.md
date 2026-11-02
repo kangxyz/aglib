@@ -251,6 +251,14 @@ The [curve representability interface](../Curves/RelativePicard/Representability
 remains an input to the prescribed-origin genus-one construction.
 [PowerRoot](PowerRoot.lean), [PowerDescent](PowerDescent.lean) and
 [FrameTorsor](FrameTorsor.lean) describe actual root, descent and frame objects.
+
+[FrameInverse](FrameInverse.lean) identifies the original frame with its inverse
+coframe and relates the positive coframe class to the negative native Picard
+class. Its normalized power inversion holds for every natural level; the
+existing root-torsor section/action laws retain positive level and global-unit
+hypotheses. The native construction does not assert the source Čech or Weil
+sign comparison.
+
 [AssociatedBundle](AssociatedBundle.lean) uses
 `AssociatedBundle.Construction.frameRawHomNative` for the original raw-frame map
 at the native line-bundle object; its identity-character compatibility API
