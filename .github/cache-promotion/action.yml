@@ -1,0 +1,5 @@
+name: Pinned official-client opaque cache transfer
+description: Proposal only; exact archive bytes, normal feature/main runtime cache scope
+runs:
+  using: node24
+  main: raw-transfer.mjs
