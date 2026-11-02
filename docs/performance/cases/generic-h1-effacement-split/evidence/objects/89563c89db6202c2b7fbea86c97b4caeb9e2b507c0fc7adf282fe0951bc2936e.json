@@ -1,0 +1,16 @@
+{
+  "question": "Actual production affected-leaf CPP of author READY changed candidates; no closed-leaf reruns",
+  "source_hashes": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement.lean": "72835d90598631923a192ed7799577dbf492b73b9cb7e51cfaf422b1dc27c2f3"
+  },
+  "related_ready_hashes": {
+    "Aglib/AlgebraicGeometry/ProjectiveSpace/Differentials/Euler/Overlap.lean": "c91b76c433b74d5f2e94fcd8ba7bd19e7287bc6d5bb8ed9004cc69ed51020835",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Localization/SmoothModuleInjectiveClassDetection.lean": "3084757b358143302f74e81a8202015037a144cec03640253725de801bfa0e7b",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement.lean": "72835d90598631923a192ed7799577dbf492b73b9cb7e51cfaf422b1dc27c2f3"
+  },
+  "pub_head": "4fb6e26584c90df682a804bbc5a1f4d65e4cf332",
+  "target_status": " M Aglib/AlgebraicGeometry/ProjectiveSpace/Differentials/Euler/Overlap.lean\n?? Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement.lean\n?? Aglib/AlgebraicGeometry/EtaleCohomology/Localization/SmoothModuleInjectiveClassDetection.lean\n",
+  "root_head": "9cebda0b83f50954a8269a364a662218d300a8c8",
+  "root_status": " M lean/R5Lab/Aglib/AlgebraicGeometry/EtaleCohomology/AGENT_A_CONTINUITY_FINITE_PBC.md\n M lean/R5Lab/Aglib/AlgebraicGeometry/EtaleCohomology/AGENT_B_CURVES_LOCAL_COMPARISON.md\n?? lean/R5Lab/Aglib/AlgebraicGeometry/EtaleCohomology/AGENT_C_FINITENESS_VANISHING_SMOOTH.md\n?? lean/R5Lab/Aglib/AlgebraicGeometry/EtaleCohomology/AGENT_D_EXCEPTIONAL_DIRECT_IMAGE.md\n?? remote-latest-snapshot.jsonl\n",
+  "guard": "Prior native phase closed; actual owner/idle passed; unchanged native predicates/resources/pins"
+}

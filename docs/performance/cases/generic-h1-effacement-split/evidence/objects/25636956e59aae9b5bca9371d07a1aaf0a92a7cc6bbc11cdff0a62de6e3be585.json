@@ -1,0 +1,22 @@
+{
+  "question": "Actual native CPP for this complete Generic producer and affected Family/facade on retained current dependencies, source correspondence, and actual per-file times. If cost remains, continue from its concrete measured boundary; do not treat helper pass as optimization closure.",
+  "source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+  "head": "4fb6e26584c90df682a804bbc5a1f4d65e4cf332",
+  "files": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Separable.lean": "6e3140f9db1b17e162ca365e817bf1ba65b2feb2e38014a39e5712713726f70c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Affine.lean": "4d01074eb6cc917979d56b7e27c87034c8729881d886f0053257520d98f61967",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean": "0f90347a4708386f2f70bfd27e5edcff0680f92266c47c29ef9ef9ce02358990",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Family.lean": "3032e8f9d164b664bfbdc237fff3613f681f27190174fe72165b932b527d4d9d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement.lean": "97596b2c42aca3d256103db8cec9ca93b35c41075a15877bda83d488b379af9c",
+    "Aglib/AlgebraicGeometry/Modules/InternalHom/Gluing.lean": "d9ef1a8d62ca38f01257a47e5f733857acd128a8f72d4d552b1cee81e4856692",
+    "Aglib/AlgebraicGeometry/Modules/InternalHom/FreeFrameCompatibility.lean": "7fd804d2c139eb404504e50836f9044c18672560587a425b4e4808ec98a2a9ec",
+    "Aglib/AlgebraicGeometry/Descent/FinitePresentation/Modules/Maps.lean": "fb258172a89f3d59c2244300a4c76c6be2a682eedb47eeb3d8a1c8b27d534361"
+  },
+  "targets": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Family",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement"
+  ],
+  "retained_dependency_basis": "eaa9767a/A36CPP0; changeGenericonly; preserve4148sacceptedv3receipt",
+  "bound": "OrdinaryunprofilednativeaffectedGeneric/Family/facadeCPP; existing8/j4/M12800/RSS65536; no old69mreplay/optionschange/fullAglib/Git"
+}

@@ -1,0 +1,22 @@
+{
+  "status": "OPTIONAL_SHORT_HELPER_CPP_READY; NOT_ADOPTED",
+  "question": "Check one complete affine/presentation law over arbitrary original T,Y,h,f,M\u2080 before their generic-square specialization, as proposed by the independent bounded mathematical preparation. This is a short fixed helper investigation, not another full d9 Generic build.",
+  "actual_source_root": "/private/tmp/r5-investigations/etale-c-20261102/h1-resume/affine-presentation-helper/basis",
+  "actual_source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+  "actual_source_sha256": "e2e2bb33724309403535eb471e0395719a36490093ea1dd7920a6799566cbf00",
+  "actual_source_snapshot_note": "Only a source-path fixture for the retained A38 Generic identity; dependencies/setup must come from the named frozen native f03 workspace, not this fixture or live P.",
+  "scratch_root": "/private/tmp/r5-investigations/etale-c-20261102/h1-resume/affine-presentation-helper",
+  "scratch_source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+  "scratch_source_sha256": "b8773ce0f3d59744b6d461909ec29e5da09c8d8bc307bace9484230e8cea8511",
+  "qualified_root": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic",
+  "required_dependency_basis": "Retained prepared A38 native f03f687d5c43ba630abe5767dbeebfc41655a6fcf8ebbcc460563af9885ad105 current-d9 imports/setup, with Generic sourcee2e2 in that frozen workspace. Live P has c8f0 omit; do not pretend this is a main-fa8 or live-P closure.",
+  "setup": "Keep exact A38 full imports/module/isModule/library options and namespace/universe/local instances. Omit Generic section/three definitions/old producer/public theorem; prove only this one complete law. The law is public in the isolated probe to avoid an unused-private diagnostic; eventual visibility/adoption remains an author decision.",
+  "source_mathematics": "Same actual affine supplier, same F/E/field actions/tower/jE/a/Z/z/point/order and original bundled maps. Generalize only original h,f,M\u2080 and their source schemes; specialize h to existing eStage.inv, f to actual two projections and M\u2080 to inverseImage e M. The hd world is explicitly the already selected standardu+2; source eX remains independent. No isomorphism premise on h, new predicate/record/model or new original theorem premise.",
+  "proof": "Infer original affine whole result on constantRestriction C h d, retain all witnesses/instances, apply existing complete coefficient-stage zero theorem at explicitly existing u/eX, then perform only original associativity transport. No native square/inverseImage-e expressions occur in the generic declaration.",
+  "diagnostic_wall_bound_seconds": 180,
+  "execution": "Only if a matching prepared idle lane is available without delaying actual main-fa8 candidate closure; no dependencies rebuild, source upload of another basis, production mutation or full old Generic replay. Return unavailable inputs rather than silently changing context.",
+  "acceptance": "Report exact statement/source/setup, CPP exit/errors and elapsed/frontend time. A short success guides possible adoption but does not close its actual Generic callback, main-fa8 performance or source correspondence after specialization. A bound/failure does not invalidate the already existing mathematical statement.",
+  "evidence_boundary": "Optional unadopted generic-law proof on retained f03 only; no cause/speedup/established-status claim. Current candidate remains c8f0 with unchanged four companions in isolated main-fa8 preparation.",
+  "runtime_owner": "/root/resume_native",
+  "repair_owner": "/root/resume_h1"
+}

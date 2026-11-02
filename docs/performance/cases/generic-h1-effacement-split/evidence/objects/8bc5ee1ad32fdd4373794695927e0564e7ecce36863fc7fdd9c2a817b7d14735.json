@@ -1,0 +1,38 @@
+{
+  "status": "READY_GENERIC_COMPLETE_CONSUMER_V3",
+  "question": "Resume current-dependency H1 closure and repair measured Generic frontend bottleneck using the existing complete coefficient-presentation consumer.",
+  "assignment_basis": "Root released HOLD for ordinary proof/CPP work, selected currentmain7545 integration context, and retained P/HEAD4fb only as mathematical input. Earlier v2-1 native outcomes remain sourcefe25/Gluing266 evidence.",
+  "source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+  "source_role": "retained mathematical input, not publication target",
+  "source_head": "4fb6e26584c90df682a804bbc5a1f4d65e4cf332",
+  "source_hashes": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Separable.lean": "6e3140f9db1b17e162ca365e817bf1ba65b2feb2e38014a39e5712713726f70c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Affine.lean": "4d01074eb6cc917979d56b7e27c87034c8729881d886f0053257520d98f61967",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean": "fe5248fafa44fd2df5d1e5650045aa7192ef302350cf44546626abc43f44548f",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Family.lean": "3032e8f9d164b664bfbdc237fff3613f681f27190174fe72165b932b527d4d9d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement.lean": "97596b2c42aca3d256103db8cec9ca93b35c41075a15877bda83d488b379af9c"
+  },
+  "qualified_roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Family",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement"
+  ],
+  "closure": "Actual changed Generic and affected Family/facade; unchanged Separable/Affine source with current dependency reconciliation. Recover matching caches before compiling only actual changed/missing closure. No unchanged old Generic baseline replay.",
+  "current_dependency_context": "Principal supplies current P Gluingd9ef + FreeFrame7fd as CPP0; native owner binds exact hashes/manifests in current source capture. Earlier H1 sourcefe25 used Gluing266 and is not current-context closure.",
+  "new_supplier": {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericCoefficientPresentationConsumer.lean",
+    "sha256": "fcb01e5adb18825ab64e9cbe2a97ade8df6525e45c8accca62f0c0a579d51b74",
+    "declaration": "generic_finiteGalois_coefficient_presentation_induction",
+    "applicability": "Existing complete-consumer theorem with arbitrary target P and callback L,C,AddCommGroup,Finite,hCn,d,beta,hd; explicitly omits domain/fraction-ring assumptions, and retains independent eX/eG/eL. Called at u,eX,u+2,u+2 as in existing accepted higher-class consumer."
+  },
+  "change": "Keep old public coefficient-presentation import; add Consumer public import. Replace only initial existential unpack by complete induction-consumer application and the same eight callback inputs. All subsequent proof lines, predicates, definitions, public types, maps and field/cover operations remain byte-identical.",
+  "mathematical_plan": "Consume the originally produced finite-Galois coefficient stage directly in the existing complete H1 construction, avoiding construction/elimination of an intermediate native existential. Reuse the same stage iso, affine separable producer, literal composite-zero transport and final witnesses. No new original premise, model, certificate, world identification, axiom or sorry.",
+  "source_correspondence": "Current Generic equals accepted d654 source after exactly the above import and initial-body replacements. Other four owned files equal accepted-v2-1 snapshots byte-for-byte. Seven original public names/types are unchanged.",
+  "evidence_boundary": "Candidate not yet compiled in this phase. Generic1668.070s old observation identifies a module bottleneck, not an exact compiler cause. New dependency/cache conditions prevent an unmatched speedup claim. Accepted v2-1 ordinary review applies to its frozen files; this proof-body delta is reported separately.",
+  "fallback": "If actual feedback does not guide further repair or Generic remains materially heavy, prepare a faithful scoped declaration/phase diagnostic on the actual new source/setup rather than repeat the old full baseline.",
+  "runtime_owner": "/root/resume_native",
+  "repair_owner": "/root/resume_h1",
+  "integration_owner": "/root",
+  "limits": "Pins Lean4.34.1/mathlibd13; standard8/j4/M12800/RSS65536/default heartbeat; no new options/budgets, no Git/aggregateentries/docs/other source writes, no client or kernel replay or extra acceptance chain.",
+  "acceptance": "Current-context incremental native CPP closure of this H1 candidate and actual affected consumers, source correspondence, exact per-module timing/context and any remaining performance gap."
+}

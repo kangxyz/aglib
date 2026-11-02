@@ -1,0 +1,3 @@
+{"content_sha256": "06452d038b30582aaf63504b2d4543f166af0c432bf42618c591e9821d5f502c", "changed_files": 18, "removed_files": 0, "source_files": 10381, "git_head": "4fb6e26584c90df682a804bbc5a1f4d65e4cf332"}
+Remote evidence: /root/autodl-tmp/lean-build/logs/remote-81c2347dca3c4516aebeae25136a0913
+{"status": "transport_unconfirmed", "native_outcome": "unknown", "run": "remote-81c2347dca3c4516aebeae25136a0913", "remote_evidence": "/root/autodl-tmp/lean-build/logs/remote-81c2347dca3c4516aebeae25136a0913", "next_action": "result --wait remote-81c2347dca3c4516aebeae25136a0913"}

@@ -1,0 +1,76 @@
+{
+  "declared": {
+    "acceptance_predicates": [
+      "Preserve actual native command predicates and source identity; inspect native exit, logs and receipt before dependent use."
+    ],
+    "bounds": [
+      "Only assigned selected affected scope; jobs8 threads4 memory12800 RSS65536; no full library, client, kernel replay or Git."
+    ],
+    "inputs": [
+      "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4-production-A-37/IDENTITY.json"
+    ],
+    "sources": [],
+    "timeout_seconds": null
+  },
+  "format_version": 1,
+  "observed": {
+    "argv": [
+      "/Users/kang/Applications/SageMath-10-8.app/Contents/Frameworks/Sage.framework/Versions/10.8/local/bin/python3",
+      "-u",
+      "-c",
+      "import json,os,sys;a=json.load(open(sys.argv[1]));os.execvp(a[0],a)",
+      "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4-production-A-37/command.json"
+    ],
+    "cwd": "/Users/kang/Documents/New project",
+    "duration_seconds": 307.005901,
+    "ended_at": "2026-11-02T17:27:38.492693+00:00",
+    "environment": {
+      "selected": {
+        "PYTHONPATH": "infra/src",
+        "PYTHONUNBUFFERED": null
+      },
+      "unselected_inherited": "unknown"
+    },
+    "executable": {
+      "identity_is_frozen": false,
+      "requested": "/Users/kang/Applications/SageMath-10-8.app/Contents/Frameworks/Sage.framework/Versions/10.8/local/bin/python3",
+      "resolution": "prelaunch PATH search",
+      "resolved_path": "/Users/kang/Applications/SageMath-10-8.app/Contents/Frameworks/Sage.framework/Versions/10.8/local/bin/python3.13",
+      "sampled_at": "2026-11-02T17:22:31.345199+00:00",
+      "sha256": "29dd8d928c45a399fbe4d3d64485de91c7303886fea596ac611c97fd324a3bc9",
+      "sha256_limit_bytes": 16777216,
+      "stat": {
+        "device": 16777233,
+        "inode": 193597631,
+        "mtime_ns": 1767715231000000000,
+        "size": 4642576
+      }
+    },
+    "process": {
+      "os_start": null,
+      "pgid": 80135,
+      "pid": 80135,
+      "spawned_at": "2026-11-02T17:22:31.487735+00:00"
+    },
+    "repository": {
+      "dirty": true,
+      "revision": "9cebda0b83f50954a8269a364a662218d300a8c8"
+    },
+    "source_is_frozen": false,
+    "source_sampled_at": "2026-11-02T17:22:31.387075+00:00",
+    "started_at": "2026-11-02T17:22:31.485827+00:00",
+    "stderr": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4-production-A-37/stderr.log",
+    "stderr_bytes": 76,
+    "stdout": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4-production-A-37/stdout.log",
+    "stdout_bytes": 4656,
+    "topology": "POSIX child and descendants remaining in its owned process group"
+  },
+  "owned_group_gone": true,
+  "state": "completed",
+  "termination": {
+    "exit_code": 1,
+    "interruption_signal": null,
+    "kind": "exit",
+    "signal": null
+  }
+}

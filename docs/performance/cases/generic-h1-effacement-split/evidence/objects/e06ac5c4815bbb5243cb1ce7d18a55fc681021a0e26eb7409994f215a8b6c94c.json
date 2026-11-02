@@ -1,0 +1,156 @@
+{
+  "status": "SPLIT_AND_COMPLETE_SEPARABLE_REFINEMENT_CPP0_ON_NATIVE_FE25",
+  "question": "User requested rewrite/splitting of the 34-minute H1 module. Deliver mathematical dependency modules and a complete variable-field refinement, preserving the original public theorem range.",
+  "source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+  "source_head": "4fb6e26584c90df682a804bbc5a1f4d65e4cf332",
+  "owned_source_status": "?? Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement.lean\n?? Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/",
+  "source_hashes": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Separable.lean": "6e3140f9db1b17e162ca365e817bf1ba65b2feb2e38014a39e5712713726f70c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Affine.lean": "4d01074eb6cc917979d56b7e27c87034c8729881d886f0053257520d98f61967",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean": "d6544ab39db6f46886bc63c197091d600fb202b7b7556a915fb9e9c3e6cbfbca",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Family.lean": "3032e8f9d164b664bfbdc237fff3613f681f27190174fe72165b932b527d4d9d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement.lean": "97596b2c42aca3d256103db8cec9ca93b35c41075a15877bda83d488b379af9c"
+  },
+  "preserved_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/accepted-v2-1",
+  "change": "Old entry is an import facade. Affine, Generic and Family own the original mathematical stages. Separable consumes the entire original finite-stage existential over variable fields, uses exactly E=finiteField C \u03a9 t and the existing ring-refinement supplier, and returns the complete field/ambient/pointed-cover/zero result before native specialization.",
+  "preserved": "Original seven public names/types; coefficient/torsion/unit/smooth/connected hypotheses; original source/cover/point/Galois/order and maps; original finite and separable fields; independent eX and u+2 worlds. Generic and Family source blocks remain identical to the first split. No new original-theorem premise/model/certificate/axiom/sorry/option/budget.",
+  "native_current": {
+    "run": "remote-0ef29d761a6442079b48eab4633ee64f",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-separable-refactor-production-A-33/remote-runs/remote-0ef29d761a6442079b48eab4633ee64f/receipt.json",
+    "events": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-separable-refactor-production-A-33/remote-runs/remote-0ef29d761a6442079b48eab4633ee64f/compiler-events.jsonl",
+    "build_log": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-separable-refactor-production-A-33/remote-runs/remote-0ef29d761a6442079b48eab4633ee64f/build.log",
+    "source": "fe25a9f74ecc5fd66e4b420eae251b8e245bbe091a1ce5f2597881b2afc608b2",
+    "status": "succeeded",
+    "exit_code": 0,
+    "group_closed": true,
+    "compiler_invocations": 5,
+    "compiler_succeeded": 5,
+    "compiler_failed": 0,
+    "command_seconds": 2315.6498280614614,
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "command": [
+      "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+      "--rehash",
+      "build",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Separable",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Affine",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Family",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement"
+    ],
+    "diagnostics": {
+      "categories": {},
+      "first": [],
+      "observed_missing_count": 0,
+      "observed_missing_prefixes": {},
+      "observed_missing_prefixes_truncated": false,
+      "observed_missing_shortlist": []
+    },
+    "input_drift": [],
+    "target_frontends": [
+      {
+        "source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Separable.lean",
+        "frontend_wall_seconds": 126.23131787776947,
+        "exit_code": 0
+      },
+      {
+        "source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Affine.lean",
+        "frontend_wall_seconds": 503.0706156641245,
+        "exit_code": 0
+      },
+      {
+        "source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+        "frontend_wall_seconds": 1668.0695521235466,
+        "exit_code": 0
+      },
+      {
+        "source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Family.lean",
+        "frontend_wall_seconds": 7.858958140015602,
+        "exit_code": 0
+      },
+      {
+        "source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement.lean",
+        "frontend_wall_seconds": 3.3689661771059036,
+        "exit_code": 0
+      }
+    ]
+  },
+  "native_first_split": {
+    "run": "remote-c58f23c55b7d485787cd7f022b46305a",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-refactor-production-C-02/remote-runs/remote-c58f23c55b7d485787cd7f022b46305a/receipt.json",
+    "events": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-refactor-production-C-02/remote-runs/remote-c58f23c55b7d485787cd7f022b46305a/compiler-events.jsonl",
+    "build_log": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-refactor-production-C-02/remote-runs/remote-c58f23c55b7d485787cd7f022b46305a/build.log",
+    "source": "e208bff2dd1c8c5f560c861be08e5b5eecd34e12d1257679a16e75a563bf222a",
+    "status": "succeeded",
+    "exit_code": 0,
+    "group_closed": true,
+    "compiler_invocations": 257,
+    "compiler_succeeded": 257,
+    "compiler_failed": 0,
+    "command_seconds": 5188.921026393771,
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "command": [
+      "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+      "--rehash",
+      "build",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Affine",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Family",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement"
+    ],
+    "diagnostics": {
+      "categories": {},
+      "first": [],
+      "observed_missing_count": 0,
+      "observed_missing_prefixes": {},
+      "observed_missing_prefixes_truncated": false,
+      "observed_missing_shortlist": []
+    },
+    "input_drift": [],
+    "target_frontends": [
+      {
+        "source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Affine.lean",
+        "frontend_wall_seconds": 1843.724046856165,
+        "exit_code": 0
+      },
+      {
+        "source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+        "frontend_wall_seconds": 1712.0341216772795,
+        "exit_code": 0
+      },
+      {
+        "source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Family.lean",
+        "frontend_wall_seconds": 8.539215713739395,
+        "exit_code": 0
+      },
+      {
+        "source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement.lean",
+        "frontend_wall_seconds": 3.179256811738014,
+        "exit_code": 0
+      }
+    ]
+  },
+  "old_monolithic_baseline": {
+    "source_sha256": "72835d90598631923a192ed7799577dbf492b73b9cb7e51cfaf422b1dc27c2f3",
+    "frontend_wall_seconds": 2036.9092904776335,
+    "evidence": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/baseline/H1-SUCCESS.json"
+  },
+  "timing_boundary": "Actual wrapper start-to-finish module wall times. First split has253 affected import rebuilds (257 total frontends), current rewritten graph has5 fresh target frontends only. These are different source/cache/workspace conditions, not a matched benchmark. In particular current whole command2315.650s does not show a whole-build speedup over old monolithic2036.909s frontend.",
+  "dependency_boundary": "Both first-split and rewritten native runs used the earlier Gluing266 dependency, not the later live Gluingd9ef. Coverage is bound to native sourcee208/fe25 and retained unchanged suppliers; principal owns reconciliation to the newer dependency. No final publication gates executed under HOLD.",
+  "remaining_gap": "Package split and complete Separable/Affine rewrite have full native CPP on fe25. Generic remains the measured bottleneck at1668.069552s (~27.8min). Its proof rewrite was excluded by the latest Separable-phase scope and is awaiting principal continuation.",
+  "proposed_next_action": "Use the existing generic_finiteGalois_coefficient_presentation_induction complete-consumer interface in Generic.lean, retaining arbitrary CommRing B, independent Ext worlds, the old public import/API and the unchanged remaining proof. Exact cause is not established by module timing; a targeted declaration/phase diagnostic remains another useful route.",
+  "git_mutations": "none",
+  "scope_limits": "No root/facade enrollment edits outside the original entry, README, final checks, client diagnostics, kernel replay or established-status assignment."
+}

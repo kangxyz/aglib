@@ -1,0 +1,379 @@
+{
+  "action": "phase",
+  "actor_executable": "/root/miniconda3/bin/python3.12",
+  "admission": {
+    "ceilings": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+    "final_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-aa74903ca2674564a55489dcfe4bb88b": 6,
+        "/root/autodl-tmp/lean-build/logs/remote-e2b8f2cfc2804c30a718558b66f6d4b1": 1
+      },
+      "cpu_cores": 12.065608652635692,
+      "cpu_usage_usec": 2853721834150,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 8589934592,
+      "memory_current_bytes": 73185411072,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 0.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 1,
+      "working_set_bytes": 54262362112
+    },
+    "initial_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-aa74903ca2674564a55489dcfe4bb88b": 8,
+        "/root/autodl-tmp/lean-build/logs/remote-e2b8f2cfc2804c30a718558b66f6d4b1": 1
+      },
+      "cpu_cores": 11.060557755658397,
+      "cpu_usage_usec": 2852751164341,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 11005853696,
+      "memory_current_bytes": 73463156736,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 1.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 54603333632
+    },
+    "max_frontends_if_alone": 8,
+    "mode": "elastic"
+  },
+  "allow_library_roots": false,
+  "cache_provenance": {
+    "configuration_sha256": {
+      "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+      "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852"
+    },
+    "environment": {
+      "LAKE_ARTIFACT_CACHE": "true",
+      "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+      "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+    },
+    "lookup": "native Lake traces/artifact cache; no per-dependency prior-hit claim"
+  },
+  "cancelled_signal": 2,
+  "cgroup_average_cpu_cores": 12.589387326373746,
+  "cgroup_cpu_after": {
+    "nr_periods": 10846739,
+    "nr_throttled": 32119,
+    "system_usec": 228687032441,
+    "throttled_usec": 378038456,
+    "usage_usec": 2853721836125,
+    "user_usec": 2625034803684
+  },
+  "cgroup_cpu_attribution": "whole observed cgroup; may include unrelated activity",
+  "cgroup_cpu_before": {
+    "nr_periods": 10845968,
+    "nr_throttled": 32119,
+    "system_usec": 228604001654,
+    "throttled_usec": 378038456,
+    "usage_usec": 2852751205373,
+    "user_usec": 2624147203719
+  },
+  "cgroup_cpu_seconds_delta": 970.630752,
+  "cgroup_memory_events_after": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_before": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_delta": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "command": [
+    "/root/miniconda3/bin/python3.12",
+    "-c",
+    "from pathlib import Path\nimport os,json,subprocess,hashlib,time,sys\nD={'run': 'remote-7b5a87504cb74da4b458178c0e698cb7', 'source': 'f03f687d5c43ba630abe5767dbeebfc41655a6fcf8ebbcc460563af9885ad105', 'specs': [{'status': 'DIAGNOSTIC_READY_FLUSHED_PREFIX_AND_PRODUCER_PHASES', 'question': 'Observe actual A38/e2e2 prefix and producer progress using immediately stdout-flushed constant strings, separating the three definitions, header/body entry and original body phases without buffered-log inference.', 'run_condition': 'Native owner confirms buffered9d packet was never launched. Prepare exact A38 context, then recheck A38 immediately before the one authorized300s diagnostic. If A38 has closed, use its actual feedback first and skip an unneeded diagnostic. No simultaneous duplicate phase run.', 'actual_source_root': '/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101', 'actual_source_path': 'Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean', 'actual_source_sha256': 'e2e2bb33724309403535eb471e0395719a36490093ea1dd7920a6799566cbf00', 'scratch_root': '/private/tmp/r5-investigations/etale-c-20261102/h1-resume/generic-prefix-producer-flushed-v4b', 'scratch_source_path': 'Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean', 'scratch_source_sha256': 'd8dfb418fa8bd9c0143d1ed31585edb9f076bf45369f28dfa19f783c2487f1ef', 'qualified_root': 'Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic', 'required_dependency_basis': 'Exact frozen A38 current source (native source prefix f03, full identity supplied by runtime owner), Generic e2e2 and unchanged d9/7fd/Mapsfb dependencies. No main-fa8 substitution in this running investigation.', 'setup': 'Same native module/isModule/import/options/types and original mathematical proof operations. Four run_cmd IO blocks at prefix/header boundaries and eight run_tac IO blocks at original body checkpoints each call IO.getStdout, putStrLn of one constant string, then flush. No logInfo/trace buffering, nested profiler, expression rendering, new mathematical hypotheses/models, sorry, or native limit changes.', 'diagnostic_wall_bound_seconds': 300, 'wall_bound_reason': 'Principal-approved300s stopping bound for this larger prefix+producer diagnostic; native proof/resource limits remain unchanged.', 'acceptance': 'Report actual actor/source/setup, reached flushed marker sequence and diagnostics. Markers are source-command/tactic progress, not kernel closure. Treat run_cmd/run_tac IO elaboration errors and unused-tactic lint as instrumentation findings, not original H1 failure. If no marker appears, first inspect instrumentation/startup; absent body0 is useful only after actual prefix and before-header marks.', 'evidence_boundary': 'Scratch observation repair only. Productione2e2 remains frozen; all original mathematical statements/arguments/objects/maps/worlds unchanged. No CPP/performance/adoption conclusion follows from a marked diagnostic. Buffered9d and failure-onlyb6a packets remain unrun and superseded.', 'runtime_owner': '/root/resume_native', 'repair_owner': '/root/resume_h1', 'supersedes': {'packet': '/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/PROBE-generic-prefix-and-producer-phases-v4b.json', 'probe_sha256': '9d1b64ebf86faef54ff9857cd92009e893c751031f5477d87707b6ab69e54f37', 'native_status': 'Never launched, as confirmed by runtime owner', 'change': 'Replace only buffered diagnostic logging with direct stdout writes and explicit flush. No old output is relabelled as flushed progress.'}, 'prefix_markers': ['H1PREFIX 1 AFTER_FIRST_ISO_COMMAND', 'H1PREFIX 2 AFTER_STAGE_PREDICATE_COMMAND', 'H1PREFIX 3 AFTER_PUBLIC_PREDICATE_COMMAND', 'H1STAGE HEADER BEFORE_PRODUCER_DECLARATION'], 'body_markers': 'Existing H1STAGE0\u20137 at body entry, coefficient stage, affine witnesses, field instances, pointed cover, original maps, class-zero transport and refined final target.', 'observation_mechanism': 'Raw marker lines are intentionally mixed with normal --json compiler messages in formation.log. Parse H1PREFIX/H1STAGE lines as literal strings; retain JSON diagnostics separately. Each completed IO block flushes its own constant line. No expression or goal prettyprinter is invoked.', 'probe_source': '/-\\nCopyright (c) 2026 Aglib contributors. All rights reserved.\\nReleased under Apache 2.0 license as described in the file LICENSE.\\nAuthors: kangxyz\\n-/\\nmodule\\n\\npublic import\\n  Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Affine\\npublic import\\n  Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericCoefficientPresentation\\npublic import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericCoefficientPresentationConsumer\\npublic import\\n  Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.CoefficientCompositeZero\\n\\n/-! # Original generic pointed H1 effacement\\n\\nThe actual generic square identifies the produced finite coefficient stage.\\nAffine separable effacement and the original coefficient transport then kill\\nthe original class, retaining its independent Ext world.\\n-/\\n\\n@[expose] public noncomputable section\\nopen CategoryTheory CategoryTheory.Limits CategoryTheory.PreGaloisCategory Opposite\\nnamespace AlgebraicGeometry.Scheme.EtaleCohomology.TwoFieldEffacement\\nuniverse u eX\\nattribute [local instance] hasSheafifyLarge HasExt.standard\\nopen FiniteEtale\\n\\nsection Generic\\nvariable (B k K : Type u) [CommRing B] [Field k] [Field K]\\n  [Algebra B K] [Algebra k K]\\n  {Y U : Scheme.{u}} (e : Y \u27f6 Spec (.of B)) [QuasiCompact e] [QuasiSeparated e]\\n  (p : U \u27f6 Spec (.of k))\\n\\n/-- The unique canonical comparison for the actual generic square and the\\nactual finite coefficient stage. No second coefficient sheaf is selected. -/\\ndef genericCoefficientStageIso\\n    (a\u03b7 : pullback e (Spec.algebraMap B K) \u27f6 U)\\n    (H\u03b7 : IsPullback a\u03b7 (pullback.snd e (Spec.algebraMap B K))\\n      p (Spec.algebraMap k K))\\n    (L : Type u) [Field L] [Algebra K L] [Algebra k L] [IsScalarTower k K L] :\\n    pullback (pullback.snd e (Spec.algebraMap B K)) (Spec.algebraMap K L) \u2245\\n      pullback p (Spec.algebraMap k L) := by\\n  have ht : Spec.algebraMap K L \u226b Spec.algebraMap k K = Spec.algebraMap k L := by\\n    rw [\u2190 Spec.map_comp]\\n    exact congrArg Spec.map (CommRingCat.hom_ext\\n      (IsScalarTower.algebraMap_eq k K L).symm)\\n  have H := (IsPullback.of_hasPullback\\n    (pullback.snd e (Spec.algebraMap B K)) (Spec.algebraMap K L)).paste_horiz H\u03b7\\n  rw [ht] at H\\n  exact H.isoPullback\\n\\nrun_cmd do\\n  let out \u2190 IO.getStdout\\n  out.putStrLn \"H1PREFIX 1 AFTER_FIRST_ISO_COMMAND\"\\n  out.flush\\n\\n/-- The complete original pointed-cover conclusion over one specified coefficient\\nfield, before specializing that field to the produced finite Galois carrier.\\nThe coefficient, maps and scalar actions are the original selected ones. -/\\ndef GenericPointedH1StageEffacement\\n    [GeometricallyConnected p]\\n    [HasExt.{eX} (AbelianSheaf.{u, u + 1} Y)]\\n    (x : Spec (.of k) \u27f6 U) (hx : x \u226b p = \ud835\udfd9 _)\\n    (a\u03b7 : pullback e (Spec.algebraMap B K) \u27f6 U)\\n    (H\u03b7 : IsPullback a\u03b7 (pullback.snd e (Spec.algebraMap B K)) p (Spec.algebraMap k K))\\n    (M : AbelianSheaf.{u, u + 1} (Spec (.of B))) (n : \u2115)\\n    (c : Sheaf.H.{eX} ((inverseImage e).obj M) 1)\\n    (L : Type u) [Field L] [Algebra K L] [Algebra k L] [IsScalarTower k K L]\\n    (C : Type u) [AddCommGroup C] [Finite C] : Prop :=\\n    \u2203 (F : IntermediateField k (AlgebraicClosure k))\\n      (E : Type u) (_ : Field E) (_ : Algebra L E),\\n      letI : Algebra k E := ((algebraMap L E).comp (algebraMap k L)).toAlgebra\\n      letI : IsScalarTower k L E := IsScalarTower.of_algebraMap_eq\\' rfl\\n      letI : ConnectedSpace\\n          (pullback p (Spec.algebraMap k (separableClosure k F)) : Scheme.{u}) :=\\n        GeometricallyConnected.connectedSpace_of_subsingleton\\n          (pullback.snd p (Spec.algebraMap k (separableClosure k F)))\\n      Module.Finite k F \u2227 Module.Finite L E \u2227\\n      \u2203 (jE : E \u2192\u2090[L] AlgebraicClosure L) (a : F \u2192\u2090[k] E),\\n        jE.toRingHom.comp a.toRingHom =\\n          ((Geometrically.commonClosureEmbedding k L).comp F.val).toRingHom \u2227\\n        \u2203 Z : FiniteEtale (pullback p (Spec.algebraMap k (separableClosure k F))),\\n          IsGalois Z \u2227 Nat.card (Aut Z) \u2223 n ^ Group.rank (Multiplicative C) \u2227\\n          \u2203 z : Spec (.of (separableClosure k F)) \u27f6 Z.obj.left,\\n            z \u226b Z.obj.hom = separableSourcePoint k F p x hx \u2227\\n            cohomologyPullback.{u, eX, u + 2}\\n              ((((FiniteEtale.baseChange (pullback.fst\\n                (pullback.snd p (Spec.algebraMap k (separableClosure k F)))\\n                (Spec.map (CommRingCat.ofHom\\n                  (separableSourceMap k F L E a).toRingHom)))).obj Z).obj.hom \u226b\\n                  separableFieldClassMap k L p F E a \u226b\\n                    (genericCoefficientStageIso B k K e p a\u03b7 H\u03b7 L).inv) \u226b\\n                      (pullback.fst (pullback.snd e (Spec.algebraMap B K))\\n                        (Spec.algebraMap K L) \u226b pullback.fst e (Spec.algebraMap B K)))\\n              ((inverseImage e).obj M) 1 c = 0\\n\\nrun_cmd do\\n  let out \u2190 IO.getStdout\\n  out.putStrLn \"H1PREFIX 2 AFTER_STAGE_PREDICATE_COMMAND\"\\n  out.flush\\n\\n/-- The single original generic H1 conclusion, shared by the actual family instance.\\nIt asserts the produced cover and literal original class zero; it is not an input certificate. -/\\ndef GenericPointedH1Effacement\\n    [GeometricallyConnected p]\\n    [HasExt.{eX} (AbelianSheaf.{u, u + 1} Y)]\\n    (x : Spec (.of k) \u27f6 U) (hx : x \u226b p = \ud835\udfd9 _)\\n    (a\u03b7 : pullback e (Spec.algebraMap B K) \u27f6 U)\\n    (H\u03b7 : IsPullback a\u03b7 (pullback.snd e (Spec.algebraMap B K)) p (Spec.algebraMap k K))\\n    (M : AbelianSheaf.{u, u + 1} (Spec (.of B))) (n : \u2115)\\n    (c : Sheaf.H.{eX} ((inverseImage e).obj M) 1) : Prop :=\\n    \u2203 (L : FiniteGaloisIntermediateField K (SeparableClosure K))\\n      (C : Type u) (_ : AddCommGroup C) (_ : Finite C),\\n      letI : Algebra k L := ((algebraMap K L).comp (algebraMap k K)).toAlgebra\\n      letI : IsScalarTower k K L := IsScalarTower.of_algebraMap_eq\\' rfl\\n      (\u2200 z : C, n \u2022 z = 0) \u2227\\n      GenericPointedH1StageEffacement B k K e p x hx a\u03b7 H\u03b7 M n c L C\\n\\nrun_cmd do\\n  let out \u2190 IO.getStdout\\n  out.putStrLn \"H1PREFIX 3 AFTER_PUBLIC_PREDICATE_COMMAND\"\\n  out.flush\\n\\nrun_cmd do\\n  let out \u2190 IO.getStdout\\n  out.putStrLn \"H1STAGE HEADER BEFORE_PRODUCER_DECLARATION\"\\n  out.flush\\n\\n/-- Complete the original affine-cover and coefficient-class transport over one\\nspecified coefficient field before its finite Galois carrier is specialized. -/\\nprivate theorem exists_generic_pointed_H1_stage_effacement\\n    [IsAffine U] [SmoothOfRelativeDimension 1 p] [GeometricallyConnected p]\\n    [HasExt.{eX} (AbelianSheaf.{u, u + 1} Y)]\\n    (x : Spec (.of k) \u27f6 U) (hx : x \u226b p = \ud835\udfd9 _)\\n    (a\u03b7 : pullback e (Spec.algebraMap B K) \u27f6 U)\\n    (H\u03b7 : IsPullback a\u03b7 (pullback.snd e (Spec.algebraMap B K))\\n      p (Spec.algebraMap k K))\\n    (M : AbelianSheaf.{u, u + 1} (Spec (.of B)))\\n    (n : \u2115) (hn : 0 < n) (hunit : IsUnit (n : k))\\n    (c : Sheaf.H.{eX} ((inverseImage e).obj M) 1)\\n    (L : Type u) [Field L] [Algebra K L] [Algebra k L] [IsScalarTower k K L]\\n    (C : Type u) [AddCommGroup C] [Finite C] (hCn : \u2200 z : C, n \u2022 z = 0)\\n    (d : Sheaf.H.{u + 2} (ConstantFinite.coefficient C\\n      (pullback (pullback.snd e (Spec.algebraMap B K)) (Spec.algebraMap K L))) 1)\\n    (\u03b2 : ConstantFinite.coefficient C\\n        (pullback (pullback.snd e (Spec.algebraMap B K)) (Spec.algebraMap K L)) \u27f6\\n      (inverseImage (pullback.fst (pullback.snd e (Spec.algebraMap B K))\\n        (Spec.algebraMap K L) \u226b pullback.fst e (Spec.algebraMap B K))).obj\\n          ((inverseImage e).obj M))\\n    (hd : Sheaf.H.map \u03b2 1 d = cohomologyPullback.{u, eX, u + 2}\\n      (pullback.fst (pullback.snd e (Spec.algebraMap B K)) (Spec.algebraMap K L) \u226b\\n        pullback.fst e (Spec.algebraMap B K)) ((inverseImage e).obj M) 1 c) :\\n    GenericPointedH1StageEffacement B k K e p x hx a\u03b7 H\u03b7 M n c L C := by\\n  run_tac do\\n    let out \u2190 IO.getStdout\\n    out.putStrLn \"H1STAGE 0 ENTER_PRODUCER_BODY\"\\n    out.flush\\n  let eStage := genericCoefficientStageIso B k K e p a\u03b7 H\u03b7 L\\n  let dStage := Curves.constantRestriction C eStage.inv 1 d\\n  run_tac do\\n    let out \u2190 IO.getStdout\\n    out.putStrLn \"H1STAGE 1 COEFFICIENT_STAGE_READY\"\\n    out.flush\\n  obtain \u27e8F, E, hEF, hEA, hseparable\u27e9 :=\\n    exists_affine_separable_pointed_H1_effacement k L p x hx C n hn hCn hunit dStage\\n  run_tac do\\n    let out \u2190 IO.getStdout\\n    out.putStrLn \"H1STAGE 2 AFFINE_WITNESSES_OBTAINED\"\\n    out.flush\\n  let : Field E := hEF\\n  let : Algebra L E := hEA\\n  let : Algebra k E := ((algebraMap L E).comp (algebraMap k L)).toAlgebra\\n  let : IsScalarTower k L E := IsScalarTower.of_algebraMap_eq\\' rfl\\n  run_tac do\\n    let out \u2190 IO.getStdout\\n    out.putStrLn \"H1STAGE 3 FIELD_INSTANCES_READY\"\\n    out.flush\\n  obtain \u27e8hF, hE, jE, a, ha, Z, hZ, hcard, z, hz, hzero\u27e9 := hseparable\\n  run_tac do\\n    let out \u2190 IO.getStdout\\n    out.putStrLn \"H1STAGE 4 POINTED_COVER_OBTAINED\"\\n    out.flush\\n  let g\u2080 := pullback.fst (pullback.snd p (Spec.algebraMap k (separableClosure k F)))\\n    (Spec.map (CommRingCat.ofHom (separableSourceMap k F L E a).toRingHom))\\n  let r := ((FiniteEtale.baseChange g\u2080).obj Z).obj.hom \u226b\\n    separableFieldClassMap k L p F E a\\n  let f := pullback.fst (pullback.snd e (Spec.algebraMap B K)) (Spec.algebraMap K L) \u226b\\n    pullback.fst e (Spec.algebraMap B K)\\n  run_tac do\\n    let out \u2190 IO.getStdout\\n    out.putStrLn \"H1STAGE 5 ORIGINAL_MAPS_READY\"\\n    out.flush\\n  have hclass := cohomologyPullback_zero_of_constant_coefficient_stage\\n    r eStage.inv f ((inverseImage e).obj M) C 1 c d \u03b2 hd hzero\\n  run_tac do\\n    let out \u2190 IO.getStdout\\n    out.putStrLn \"H1STAGE 6 CLASS_ZERO_TRANSPORTED\"\\n    out.flush\\n  refine \u27e8F, E, hEF, hEA, hF, hE, jE, a, ha,\\n    Z, hZ, hcard, z, hz, ?_\u27e9\\n  run_tac do\\n    let out \u2190 IO.getStdout\\n    out.putStrLn \"H1STAGE 7 FINAL_TARGET_REFINED\"\\n    out.flush\\n  exact Eq.mp (congrArg\\n    (fun m => cohomologyPullback.{u, eX, u + 2} m ((inverseImage e).obj M) 1 c = 0)\\n    (congrArg (fun m => m \u226b f)\\n      (Category.assoc ((FiniteEtale.baseChange g\u2080).obj Z).obj.hom\\n        (separableFieldClassMap k L p F E a) eStage.inv))) hclass\\n\\nend Generic\\n\\nend AlgebraicGeometry.Scheme.EtaleCohomology.TwoFieldEffacement\\n'}]}\nw=Path.cwd();out=Path('/root/autodl-tmp/lean-build/logs')/D['run'];manifest=w.parent/'SOURCE.json'\ndef guard():\n a=json.loads(manifest.read_text());assert a['content_sha256']==D['source']\n for s in D['specs']:assert hashlib.sha256((w/s['actual_source_path']).read_bytes()).hexdigest()==s['actual_source_sha256']\nguard();results=[]\nfor i,s in enumerate(D['specs']):\n d=out/('probe-'+str(i));d.mkdir();scratch=d/s['scratch_source_path'];scratch.parent.mkdir(parents=True);scratch.write_text(s['probe_source']);assert hashlib.sha256(scratch.read_bytes()).hexdigest()==s['scratch_source_sha256']\n t=time.monotonic();r=subprocess.run([os.environ['LAKE'],'--no-build','setup-file',s['actual_source_path']],capture_output=True,text=True);(d/'setup-stderr.log').write_text(r.stderr)\n row={'question':s['question'],'actual_source':s['actual_source_path'],'actual_sha':s['actual_source_sha256'],'probe_sha':s['scratch_source_sha256'],'setup_exit':r.returncode,'completion_claim':'Real-body H1 v4b flushed prefix and actual producer phases only; no whole module CPP or speedup'}\n if r.returncode:\n  (d/'setup-stdout.log').write_text(r.stdout);row['outcome']='native_import_readiness_unavailable';row['elapsed_s']=time.monotonic()-t;results.append(row);continue\n a=json.loads(r.stdout);(d/'setup.json').write_text(r.stdout);summary={k:v for k,v in a.items() if k not in ['importArts','imports']};summary['imports']=a.get('imports');(d/'setup-summary.json').write_text(json.dumps(summary,indent=2))\n row['setup_identity']={k:a.get(k) for k in ['name','moduleName','isModule','options']};assert a.get('isModule')is True;assert a.get('name',a.get('moduleName'))==s['qualified_root']\n cmd=['timeout','--signal=TERM','--kill-after=5s','300s',os.environ['LAKE'],'--no-build','env',os.environ['LEAN'],str(scratch),'--setup',str(d/'setup.json'),'--json','-o',str(d/'probe.olean'),'-i',str(d/'probe.ilean')]\n # No diagnostic options: exact original native compiler options retained.\n with (d/'formation.log').open('w')as stream:q=subprocess.run(cmd,stdout=stream,stderr=subprocess.STDOUT)\n row.update(formation_exit=q.returncode,outcome='diagnostic_returned_zero'if q.returncode==0 else('diagnostic_process_bound'if q.returncode in[124,137]else'diagnostic_returned_nonzero'),elapsed_s=time.monotonic()-t,command=cmd);results.append(row);print(json.dumps(row),flush=True)\nguard();(out/'PROBE-RESULT.json').write_text(json.dumps({'source':D['source'],'results':results,'scope':'Real-body H1 v4b flushed prefix and actual producer phases only; no whole module CPP or speedup'},indent=2));sys.exit(0 if all(r.get('formation_exit')==0 for r in results)else 1)\n"
+  ],
+  "command_exit_code": -15,
+  "compiler_exit_codes": [],
+  "compiler_failed": 0,
+  "compiler_invocations": 1,
+  "compiler_observation": "wrapper-events-only",
+  "compiler_scope_lease_modes": {
+    "supervisor-only": 1
+  },
+  "compiler_scope_policy": "workspace descriptors or verified live supervisor; each compiler inherits its elastic claim",
+  "compiler_succeeded": 0,
+  "concurrency_basis": "compiler wrapper start/finish intervals, each holding one slot",
+  "diagnostics": {
+    "categories": {},
+    "first": [],
+    "observed_missing_count": 0,
+    "observed_missing_prefixes": {},
+    "observed_missing_prefixes_truncated": false,
+    "observed_missing_shortlist": []
+  },
+  "elapsed_seconds": 77.09912538528442,
+  "environment": {
+    "ELAN_HOME": "/root/autodl-tmp/lean-build/elan",
+    "LAKE_ARTIFACT_CACHE": "true",
+    "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+    "LAKE_OVERRIDE_LEAN": "1",
+    "LEAN_NUM_THREADS": "8",
+    "LEAN_SYSROOT": "/root/autodl-tmp/lean-build/logs/remote-7b5a87504cb74da4b458178c0e698cb7/toolchain",
+    "R5_LEAN_REMOTE_PROFILE": "{\"jobs\": 8, \"lean\": \"/root/autodl-tmp/lean-build/logs/remote-7b5a87504cb74da4b458178c0e698cb7/toolchain/bin/lean\", \"lean_memory_mib\": 12800, \"rss_limit_mib\": 65536, \"schema_version\": 1, \"threads\": 4}",
+    "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+  },
+  "exit_code": 130,
+  "expected_source": "f03f687d5c43ba630abe5767dbeebfc41655a6fcf8ebbcc460563af9885ad105",
+  "failure_reason": "signal 2",
+  "finished_at": "2026-11-02T19:06:51.855115+00:00",
+  "forbid_compilation": false,
+  "forced_kill": false,
+  "git_head": null,
+  "group_closed": true,
+  "incomplete_compiler_events": 0,
+  "input_drift": [],
+  "input_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean": "e2e2bb33724309403535eb471e0395719a36490093ea1dd7920a6799566cbf00",
+    "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+    "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+  },
+  "lock_acquired_at": "2026-11-02T19:05:34.727026+00:00",
+  "locks": {
+    "cache_fetch_exclusive": null,
+    "legacy_shared_gate": "/root/autodl-tmp/lean-build/build.lock",
+    "workspace_exclusive": "/root/autodl-tmp/lean-build/locks/workspace-ce91a56e484ad0ab54ce68b3f66b62cc4d5006dcd9cfedd597af50e6dfc285a2.lock"
+  },
+  "lowest_disk_free_bytes": 18076712960,
+  "modules": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic"
+  ],
+  "operation_id": null,
+  "outcome": "cancelled",
+  "peak_compiler_concurrency": 1,
+  "peak_rss_bytes": 3313868800,
+  "pgid": 769129,
+  "phase_executable_sha256": "0c05a22b0b180580a76437114a95cf138f67c8f46245acad26017c803b42b8c1",
+  "phase_label": "h1-v4b-flushed-producer-phases",
+  "pins": {
+    "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+    "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+    "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+  },
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 8,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536,
+    "threads": 4
+  },
+  "resource_accounting": {
+    "global": "sampled cgroup memory/CPU, startup and growth credits; no peak-envelope reservation",
+    "isolation": "cooperative sampled admission; no per-run kernel memory isolation or OOM guarantee",
+    "run": "frontend/job/thread ceilings, sampled owned-tree RSS cutoff, own-tree pressure retreat"
+  },
+  "resources": {
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "cgroup": "/sys/fs/cgroup",
+    "cgroup_limits": [
+      {
+        "cpu.max": "3200000 100000",
+        "memory.max": "128849018880",
+        "path": "/sys/fs/cgroup"
+      }
+    ],
+    "effective_cpus": 32.0,
+    "memory_bytes": 128849018880
+  },
+  "run_dir": "/root/autodl-tmp/lean-build/logs/remote-7b5a87504cb74da4b458178c0e698cb7",
+  "sampled_process_average_cpu_cores": 1.036068821803345,
+  "sampled_process_cpu_seconds": 79.88,
+  "schema_version": 1,
+  "setup_cleanup": {
+    "removed_setup_bytes": 0,
+    "removed_setup_files": 0
+  },
+  "source_content_sha256": "f03f687d5c43ba630abe5767dbeebfc41655a6fcf8ebbcc460563af9885ad105",
+  "source_receipt_sha256": "29da3a19df7cae5bb710c0d0a2836c8cfd2478e45b3e6b94213adc0a6c6513bc",
+  "started_at": "2026-11-02T19:05:34.255398+00:00",
+  "status": "failed",
+  "summary": {
+    "action": "phase",
+    "admission": {
+      "affinity_cpus": null,
+      "ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 65536,
+        "threads": 4
+      },
+      "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+      "final_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-aa74903ca2674564a55489dcfe4bb88b": 6,
+          "/root/autodl-tmp/lean-build/logs/remote-e2b8f2cfc2804c30a718558b66f6d4b1": 1
+        },
+        "cpu_cores": 12.065608652635692,
+        "cpu_usage_usec": 2853721834150,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 8589934592,
+        "memory_current_bytes": 73185411072,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 0.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 1,
+        "working_set_bytes": 54262362112
+      },
+      "initial_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-aa74903ca2674564a55489dcfe4bb88b": 8,
+          "/root/autodl-tmp/lean-build/logs/remote-e2b8f2cfc2804c30a718558b66f6d4b1": 1
+        },
+        "cpu_cores": 11.060557755658397,
+        "cpu_usage_usec": 2852751164341,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 11005853696,
+        "memory_current_bytes": 73463156736,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 1.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 54603333632
+      },
+      "max_frontends_if_alone": 8,
+      "mode": "elastic",
+      "request": null
+    },
+    "artifacts": {
+      "build.log": "/root/autodl-tmp/lean-build/logs/remote-7b5a87504cb74da4b458178c0e698cb7/build.log",
+      "compiler-events.jsonl": "/root/autodl-tmp/lean-build/logs/remote-7b5a87504cb74da4b458178c0e698cb7/compiler-events.jsonl",
+      "receipt.json": "/root/autodl-tmp/lean-build/logs/remote-7b5a87504cb74da4b458178c0e698cb7/receipt.json"
+    },
+    "cgroup_memory_attribution": "whole observed cgroup; an OOM event alone does not identify its victim",
+    "cgroup_memory_events_delta": {
+      "high": 0,
+      "low": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "compiler_observation": "wrapper-events-only",
+    "compiler_scope_lease_modes": {
+      "supervisor-only": 1
+    },
+    "execution_seconds": 77.09912538528442,
+    "exit_code": 130,
+    "expected_source": "f03f687d5c43ba630abe5767dbeebfc41655a6fcf8ebbcc460563af9885ad105",
+    "first_diagnostics": [],
+    "frontend_failed": 0,
+    "frontend_invocations": 1,
+    "frontend_observation": "wrapper starts only; arbitrary phase tools may bypass local compiler caps",
+    "frontend_peak": 1,
+    "frontend_succeeded": 0,
+    "group_closed": true,
+    "native_exit": -15,
+    "outcome": "cancelled",
+    "peak_rss_bytes": 3313868800,
+    "plan": null,
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "reason": "signal 2",
+    "run": "remote-7b5a87504cb74da4b458178c0e698cb7",
+    "sampled_process_average_cpu_cores": 1.036068821803345,
+    "source_basis": "f03f687d5c43ba630abe5767dbeebfc41655a6fcf8ebbcc460563af9885ad105",
+    "status": "failed",
+    "unwrapped_frontend_count": "unknown",
+    "wall_seconds": 77.59974817931652
+  },
+  "task_id": "etale-incremental-fastblocks-20261027",
+  "unfinished_compiler_records": [
+    769372
+  ],
+  "waiting_for": null,
+  "wall_seconds": 77.59974817931652,
+  "worker_sha256": "7b1d09f535dc951f2f3ecae857f7b77b0ffc95f8f9e55352167a39b4387729a4",
+  "workspace": "/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean"
+}

@@ -1,0 +1,93 @@
+{
+  "status": "H1_V3_CURRENT_CONTEXT_CPP0; PERFORMANCE_UNRESOLVED",
+  "question": "Close H1 v3 on current Gluingd9ef/FreeFrame7fd and repaired consumer context, retaining exact original theorem range and measuring the actual Generic candidate.",
+  "source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+  "source_role": "retained mathematical input; principal owns publication/integration target",
+  "source_head": "4fb6e26584c90df682a804bbc5a1f4d65e4cf332",
+  "source_status": "?? Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement.lean\n?? Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/",
+  "source_hashes": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Separable.lean": "6e3140f9db1b17e162ca365e817bf1ba65b2feb2e38014a39e5712713726f70c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Affine.lean": "4d01074eb6cc917979d56b7e27c87034c8729881d886f0053257520d98f61967",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean": "fe5248fafa44fd2df5d1e5650045aa7192ef302350cf44546626abc43f44548f",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Family.lean": "3032e8f9d164b664bfbdc237fff3613f681f27190174fe72165b932b527d4d9d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement.lean": "97596b2c42aca3d256103db8cec9ca93b35c41075a15877bda83d488b379af9c"
+  },
+  "immutable_source_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/accepted-v3-eaa",
+  "native_run": "remote-28c83f5ba42b426f80325ec49692ff2f",
+  "native_source": "eaa9767a3219bd682b5fc93ee9a5f26be5e486579c645ec599f9b200062a2e9b",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-maps-repair-v3-production-A-36/remote-runs/remote-28c83f5ba42b426f80325ec49692ff2f/receipt.json",
+  "build_log": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-maps-repair-v3-production-A-36/remote-runs/remote-28c83f5ba42b426f80325ec49692ff2f/build.log",
+  "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-maps-repair-v3-production-A-36/remote-runs/remote-28c83f5ba42b426f80325ec49692ff2f/compiler-events.jsonl",
+  "native_result": {
+    "status": "succeeded",
+    "exit_code": 0,
+    "group_closed": true,
+    "compiler_invocations": 41,
+    "compiler_succeeded": 41,
+    "compiler_failed": 0,
+    "elapsed_seconds": 7864.705402716994,
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "command": [
+      "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+      "--rehash",
+      "build",
+      "Aglib.AlgebraicGeometry.Descent.FinitePresentation.Modules.Maps",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Family",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement"
+    ],
+    "diagnostics": {
+      "categories": {},
+      "first": [],
+      "observed_missing_count": 0,
+      "observed_missing_prefixes": {},
+      "observed_missing_prefixes_truncated": false,
+      "observed_missing_shortlist": []
+    },
+    "input_drift": []
+  },
+  "selected_frontends": [
+    {
+      "source_path": "Aglib/AlgebraicGeometry/Descent/FinitePresentation/Modules/Maps.lean",
+      "exit_code": 0,
+      "frontend_wall_seconds": 381.607115149498
+    },
+    {
+      "source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Affine.lean",
+      "exit_code": 0,
+      "frontend_wall_seconds": 1300.4518586844206
+    },
+    {
+      "source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+      "exit_code": 0,
+      "frontend_wall_seconds": 4148.145421728492
+    },
+    {
+      "source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Family.lean",
+      "exit_code": 0,
+      "frontend_wall_seconds": 12.961362645030022
+    },
+    {
+      "source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement.lean",
+      "exit_code": 0,
+      "frontend_wall_seconds": 4.807559013366699
+    }
+  ],
+  "source_correspondence": "Genericfe5248fa is exactly the accepted v3 induction-consumer source; other four source hashes are unchanged accepted v2-1. Seven original names/types, actual fields/maps/cover/order/point/coefficient class and independent Ext worlds remain. No new assumptions/models/certificates/axioms/sorry/options/budgets.",
+  "ordinary_source_review": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/reviews/h1-generic-v3/review-01.txt",
+    "identity": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/reviews/h1-generic-v3/identity-01.json",
+    "verdict": "ACCEPT exact fe5248fa/Consumerfcb01e5a source and matching companions, separate from CPP/performance/status."
+  },
+  "dependency_reconciliation": "A34/A35 upstream blockers were repaired coherently; A36 ran on frozen eaa/current Gluingd9ef/FreeFrame7fd with Diagramf313, Zariski8a31 and Mapsfb258172. Earlier77/138 successes were retained, and only required changed/missing closure advanced. This is the first actual v3 H1 execution; no olderGluing266 pilot was used.",
+  "performance_boundary": "Generic fresh frontend4148.145s (~69.14min); this does not close the user optimization objective. Earlier v2Generic1668s/Affine503s used olderGluing266, whereas currentAffine is1300.452s; no matched speedup or unique cause claim. Full command contains needed dependency work and is not a pure Generic benchmark.",
+  "diagnostic_frontier": "Same-eaa first-definition-only prefix291e CPP0/4.943s; original two-definition7db and equivalent literal-map0f557 prefixes each hit180s with no errors. This identifies an actual second-definition prefix cost, not its exclusive share of the full69-minute module or an exact kernel reduction pair. Literal presentation was not adopted.",
+  "remaining_gap": "Performance repair remains at the actual GenericPointedH1Effacement construction boundary. Current CPP/source review can be consumed independently by the principal from immutable accepted-v3-eaa; no new production source change has been made.",
+  "no_actions": "No Git/push/aggregate entries/docs/other source mutation, whole-library build, client/kernel replay or established-status assignment."
+}

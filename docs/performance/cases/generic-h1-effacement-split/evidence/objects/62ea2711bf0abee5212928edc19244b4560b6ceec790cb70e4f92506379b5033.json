@@ -1,0 +1,67 @@
+{
+  "status": "COMPLETED_SCOPED_H1_REPAIR",
+  "question": "Complete faithful original GenericH1ClassEffacement proof and actual full-leaf CPP under unchanged mathematical hypotheses, selected objects, universes and native resource profile.",
+  "source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+  "source_head": "4fb6e26584c90df682a804bbc5a1f4d65e4cf332",
+  "source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement.lean",
+  "source_sha256": "72835d90598631923a192ed7799577dbf492b73b9cb7e51cfaf422b1dc27c2f3",
+  "previous_source_sha256": "0e07337a6798f04206251f4c052d04516b39c0ab697a970d347b940c0c1ad664",
+  "change": "Only the original separable-cover supplier application is split into inferred field/ambient, pointed-cover, coefficient-class, and zero argument groups before unpacking. All theorem statements, hypotheses, original cover/maps/point/order, finite and separable fields, coefficients and independent eX/u+2 worlds are unchanged.",
+  "mathematical_contribution": "The original internal affine finite pointed H1 producer is consumed through its same separable refinement; the full actual generic coefficient-stage theorem and original-family instance compile with that proof repair. No added zero/presentation/cover certificate, alternative model, axiom, sorry, option or budget.",
+  "actual_coverage": [
+    "exists_affine_separable_pointed_H1_effacement",
+    "genericCoefficientStageIso",
+    "GenericPointedH1Effacement",
+    "exists_generic_pointed_H1_effacement",
+    "familyGenericMap",
+    "familyGenericSquare",
+    "exists_family_generic_pointed_H1_effacement"
+  ],
+  "native_result": {
+    "status": "succeeded",
+    "exit_code": 0,
+    "group_closed": true,
+    "source_content_sha256": "06452d038b30582aaf63504b2d4543f166af0c432bf42618c591e9821d5f502c",
+    "compiler_invocations": 1,
+    "compiler_succeeded": 1,
+    "compiler_failed": 0,
+    "elapsed_seconds": 2043.5241803079844,
+    "peak_rss_bytes": 7588421632,
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "command": [
+      "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+      "--rehash",
+      "build",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement"
+    ],
+    "diagnostics": {
+      "categories": {},
+      "first": [],
+      "observed_missing_count": 0,
+      "observed_missing_prefixes": {},
+      "observed_missing_prefixes_truncated": false,
+      "observed_missing_shortlist": []
+    },
+    "input_drift": []
+  },
+  "native_run": "remote-81c2347dca3c4516aebeae25136a0913",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-supplier-split-production-C-01/remote-runs/remote-81c2347dca3c4516aebeae25136a0913/receipt.json",
+  "build_log": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-supplier-split-production-C-01/remote-runs/remote-81c2347dca3c4516aebeae25136a0913/build.log",
+  "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-supplier-split-production-C-01/remote-runs/remote-81c2347dca3c4516aebeae25136a0913/compiler-events.jsonl",
+  "recovery_exception": "Original local agent ended255/transport_unknown; authoritative native succeeded result was recovered by the runtime owner without replay. The stale local transport state is not the compiler outcome.",
+  "retained_coverage": "Compatible unchanged provider CPP reused by native incremental build. RootsHigherSection8822, SectionValues/OriginalMap726 and GenericHigherClassEffacement468 remained read-only and unchanged by this assignment.",
+  "unused_candidate": "Prepared literal pullback.snd supplier candidate was not adopted or compiled. Production original maps and predicates remain byte-unchanged outside proof-body split.",
+  "evidence_boundary": "Fresh full H1 leaf CPP exit0, including enabled native compiler diagnostics. Not a whole-cohort or whole-library result, standalone final checks, extra axiom audit, client/kernel replay, speedup measurement, unique cause attribution, or established-status assignment.",
+  "remaining_gap": "No remaining source/CPP gap within assigned H1 repair. Principal owns integration, existing whole-task final predicates and broader theorem/status decisions; no new acceptance cycle is created by this return.",
+  "write_scope_used": [
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement.lean",
+    "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-resume"
+  ],
+  "git_mutations": "none"
+}

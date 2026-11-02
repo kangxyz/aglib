@@ -1,0 +1,9 @@
+{
+  "run": "remote-7b5a87504cb74da4b458178c0e698cb7",
+  "source": "f03f687d5c43ba630abe5767dbeebfc41655a6fcf8ebbcc460563af9885ad105",
+  "question": "Observe actual A38/e2e2 prefix and producer progress using immediately stdout-flushed constant strings, separating the three definitions, header/body entry and original body phases without buffered-log inference.",
+  "actual_sha256": "e2e2bb33724309403535eb471e0395719a36490093ea1dd7920a6799566cbf00",
+  "probe_sha256": "d8dfb418fa8bd9c0143d1ed31585edb9f076bf45369f28dfa19f783c2487f1ef",
+  "condition": "Admit only after C f03 sync and exact A38 active-source/PID/starttime/event recheck; otherwise skip. Supersedes neverrun9d/b6a.",
+  "bound": "300s process only; no heartbeat/memory/thread/pin/options increase, no profiler/Expr printing; raw flushed markers mean progress, not kernel acceptance/public CPP"
+}

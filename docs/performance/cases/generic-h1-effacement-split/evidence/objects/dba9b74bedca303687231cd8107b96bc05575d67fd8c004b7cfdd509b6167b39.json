@@ -1,0 +1,14 @@
+{
+  "dynlibs": [],
+  "isModule": true,
+  "name": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic",
+  "options": {
+    "autoImplicit": false,
+    "warningAsError": true,
+    "weak.linter.mathlibStandardSet": true,
+    "weak.linter.style.longFile": 1500
+  },
+  "package": "Aglib",
+  "plugins": [],
+  "imports": null
+}

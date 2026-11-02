@@ -1,0 +1,1 @@
+{"run": "remote-7b5a87504cb74da4b458178c0e698cb7", "reason": "A38 closed before conditional admission; shell failed to stop after guard exception. Stop only unintended scratch diagnostic; no production source or foreign actor touched.", "matched_workers": [769099]}

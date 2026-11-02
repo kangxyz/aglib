@@ -1,0 +1,46 @@
+{
+  "question": "Actual main-fa8 current2f H1 c8 scoped-omit complete five-module producer/consumer closure, source-only review/source policy already passed",
+  "manifest": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/MANIFEST.json",
+  "manifest_sha256": "2d7cdc3b64ae047cd3cb6d04d152fa7cf6b4632d7f8c6791919a9279556da861",
+  "head": "2f17670f9ade927deeb6ea21d1c50c67a9e7842d",
+  "generic_sha256": "c8f0d5b3ec3cda5ef26532d524dcd73471f67d0b07df85abdd31400d0cd558f5",
+  "provider_rows": [
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/InternalHom/Gluing.lean",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/Aglib/AlgebraicGeometry/Modules/InternalHom/Gluing.lean",
+      "sha256": "fa8b31b319e1a0b52172273164691bfc35b27c3956ca639b3e38ec68a4e1da12",
+      "selection": "principal-selected current-CI main provider",
+      "p_sha256": "d9ef1a8d62ca38f01257a47e5f733857acd128a8f72d4d552b1cee81e4856692"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/InternalHom/FreeFrameCompatibility.lean",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/Aglib/AlgebraicGeometry/Modules/InternalHom/FreeFrameCompatibility.lean",
+      "sha256": "7fd804d2c139eb404504e50836f9044c18672560587a425b4e4808ec98a2a9ec",
+      "selection": "principal-selected current-CI main provider",
+      "p_sha256": "7fd804d2c139eb404504e50836f9044c18672560587a425b4e4808ec98a2a9ec"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/InternalHom/DiagramFactorizationGluing.lean",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/Aglib/AlgebraicGeometry/Modules/InternalHom/DiagramFactorizationGluing.lean",
+      "sha256": "c8c63209c8d30ee3c0ae431a6e6c8386f1605dd91e14834c39cdd9f4454dde1e",
+      "selection": "principal-selected current-CI main provider",
+      "p_sha256": "f3133f133bd7c103000e92ecf50f33df69c42e43f750be475258d557e05c7045"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Descent/Modules/Zariski.lean",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/Aglib/AlgebraicGeometry/Descent/Modules/Zariski.lean",
+      "sha256": "f78afa35c9433b91c4bbaad904d1394dd54b4ab163f4a2a24be28407bfaf3656",
+      "selection": "principal-selected current-CI main provider",
+      "p_sha256": "8a31ec50479cf60564d016a130645b124db9e97dff544e5f49935e37bde98d15"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Descent/FinitePresentation/Modules/Maps.lean",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/Aglib/AlgebraicGeometry/Descent/FinitePresentation/Modules/Maps.lean",
+      "sha256": "fd8c5bf71026426823508b9234ec2bc5c0b553e52aa97b6108a513a8037cf2ce",
+      "selection": "principal-selected current-CI main provider",
+      "p_sha256": "fb258172a89f3d59c2244300a4c76c6be2a682eedb47eeb3d8a1c8b27d534361"
+    }
+  ],
+  "target": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement",
+  "boundary": "NEW main-fa8 mathematical context; no relabelled d9 A36/A38 CPP or timings. Reuse matching main inputs, fill only actual affected/missing closure. No standalone lint/test/umbrella/client/replay."
+}

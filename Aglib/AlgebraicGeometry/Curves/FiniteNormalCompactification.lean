@@ -14,7 +14,7 @@ public import Aglib.AlgebraicGeometry.Stalk.ClosedPointDimension
 public import Aglib.AlgebraicGeometry.Stalk.CodimensionOne
 public import Aglib.AlgebraicGeometry.Dimension.Finite
 public import Aglib.AlgebraicGeometry.Geometrically.Connected.FieldExtension
-public import Aglib.RingTheory.Nagata.FiniteTypeField
+public import Aglib.AlgebraicGeometry.Normalization.FiniteTypeField
 
 /-! # Compactifying the whole smooth affine curve
 
@@ -32,25 +32,6 @@ universe u
 
 namespace AlgebraicGeometry.Scheme
 
-private theorem affineChart_nagata_of_finiteType_field
-    (k : Type u) [Field k] {X : Scheme.{u}}
-    (f : X ⟶ Spec (.of k)) [LocallyOfFiniteType f]
-    (W : X.affineOpens) : IsNagataRing.{u, 0} Γ(X, W.1) := by
-  let : IsLocallyNoetherian X := LocallyOfFiniteType.isLocallyNoetherian f
-  let : IsNoetherianRing Γ(X, W.1) := IsLocallyNoetherian.component_noetherian W
-  let φ : k →+* Γ(X, W.1) :=
-    ((ΓSpecIso (.of k)).inv ≫ f.appLE ⊤ W.1 (by simp)).hom
-  let : Algebra k Γ(X, W.1) := φ.toAlgebra
-  have hf : (f.appLE ⊤ W.1 (by simp)).hom.FiniteType :=
-    f.finiteType_appLE (isAffineOpen_top _) W.2 _
-  have hφ : φ.FiniteType := hf.comp
-    (RingHom.FiniteType.of_surjective _
-      (ΓSpecIso (.of k)).symm.commRingCatIsoToRingEquiv.surjective)
-  let : Algebra.FiniteType k Γ(X, W.1) := hφ
-  refine ⟨inferInstance, ?_⟩
-  intro P hP
-  let : P.IsPrime := hP
-  exact IsJapaneseRing.of_finiteType_field k (Γ(X, W.1) ⧸ P)
 
 open OverField in
 /-- Every nonempty geometrically connected smooth affine curve over an

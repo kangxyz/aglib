@@ -1,0 +1,132 @@
+{
+  "question": "Independent ordinary affected H1 v4c review: transparent Stage predicate, complete private producer and public callback",
+  "source_root": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib",
+  "head": "2f17670f9ade927deeb6ea21d1c50c67a9e7842d",
+  "manifest": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/MANIFEST.json",
+    "sha256": "2d7cdc3b64ae047cd3cb6d04d152fa7cf6b4632d7f8c6791919a9279556da861"
+  },
+  "targets": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean": "c8f0d5b3ec3cda5ef26532d524dcd73471f67d0b07df85abdd31400d0cd558f5",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Separable.lean": "6e3140f9db1b17e162ca365e817bf1ba65b2feb2e38014a39e5712713726f70c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Affine.lean": "4d01074eb6cc917979d56b7e27c87034c8729881d886f0053257520d98f61967",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Family.lean": "3032e8f9d164b664bfbdc237fff3613f681f27190174fe72165b932b527d4d9d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement.lean": "97596b2c42aca3d256103db8cec9ca93b35c41075a15877bda83d488b379af9c"
+  },
+  "retained_review": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/reviews/h1-generic-v3/review-01.txt",
+  "input_context": "actual main-fa8 selected basis and exact refresh-2f afterimages; not experimental d9+3 consumers",
+  "evidence_boundary": "source/math only; no CPP, timing/performance, adoption or established status verdict",
+  "write_scope": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/reviews/h1-generic-v4c",
+  "stable_direct_suppliers": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericCoefficientPresentationConsumer.lean",
+      "sha256": "fcb01e5adb18825ab64e9cbe2a97ade8df6525e45c8accca62f0c0a579d51b74",
+      "declaration": "generic_finiteGalois_coefficient_presentation_induction",
+      "applicability": "Existing complete-consumer theorem with arbitrary target P and callback L,C,AddCommGroup,Finite,hCn,d,beta,hd; explicitly omits domain/fraction-ring assumptions, and retains independent eX/eG/eL. Called at u,eX,u+2,u+2 as in existing accepted higher-class consumer."
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericCoefficientPresentation.lean",
+      "sha256": "d2ae7f75d0850a1d20c25f9422847497e142659a350f50712d0f43241aa23141"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/BoundedClassFiniteConstant.lean",
+      "sha256": "043a8ecc661231373d5d87f9cd9c0154491229bee19166c5e410718e43969409",
+      "basis": "retained c4-maps/manifest-03 source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/PullbackComposition.lean",
+      "sha256": "99bc01d24b4eb5651b372e0fb83995606c4ecb364fcd3529db6277d2ae8c97da",
+      "basis": "retained c4-maps/manifest-03 source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/BaseChangeMap.lean",
+      "sha256": "92334fb01cc9af91776313ff4d270c2e3aa2c69a616037ac3db2e9ffc708ef7a",
+      "basis": "retained c4-maps/manifest-03 source"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/CoefficientCompositeZero.lean",
+      "sha256": "8229ecd6f3773fcf980596d4094cf3dacddce030ce9a92568d19830e627f7bcc",
+      "basis": "retained c4-maps/manifest-03 source"
+    }
+  ],
+  "actual_selected_main_providers": [
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/InternalHom/Gluing.lean",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/Aglib/AlgebraicGeometry/Modules/InternalHom/Gluing.lean",
+      "sha256": "fa8b31b319e1a0b52172273164691bfc35b27c3956ca639b3e38ec68a4e1da12",
+      "selection": "principal-selected current-CI main provider",
+      "p_sha256": "d9ef1a8d62ca38f01257a47e5f733857acd128a8f72d4d552b1cee81e4856692"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/InternalHom/FreeFrameCompatibility.lean",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/Aglib/AlgebraicGeometry/Modules/InternalHom/FreeFrameCompatibility.lean",
+      "sha256": "7fd804d2c139eb404504e50836f9044c18672560587a425b4e4808ec98a2a9ec",
+      "selection": "principal-selected current-CI main provider",
+      "p_sha256": "7fd804d2c139eb404504e50836f9044c18672560587a425b4e4808ec98a2a9ec"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/InternalHom/DiagramFactorizationGluing.lean",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/Aglib/AlgebraicGeometry/Modules/InternalHom/DiagramFactorizationGluing.lean",
+      "sha256": "c8c63209c8d30ee3c0ae431a6e6c8386f1605dd91e14834c39cdd9f4454dde1e",
+      "selection": "principal-selected current-CI main provider",
+      "p_sha256": "f3133f133bd7c103000e92ecf50f33df69c42e43f750be475258d557e05c7045"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Descent/Modules/Zariski.lean",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/Aglib/AlgebraicGeometry/Descent/Modules/Zariski.lean",
+      "sha256": "f78afa35c9433b91c4bbaad904d1394dd54b4ab163f4a2a24be28407bfaf3656",
+      "selection": "principal-selected current-CI main provider",
+      "p_sha256": "8a31ec50479cf60564d016a130645b124db9e97dff544e5f49935e37bde98d15"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Descent/FinitePresentation/Modules/Maps.lean",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/Aglib/AlgebraicGeometry/Descent/FinitePresentation/Modules/Maps.lean",
+      "sha256": "fd8c5bf71026426823508b9234ec2bc5c0b553e52aa97b6108a513a8037cf2ce",
+      "selection": "principal-selected current-CI main provider",
+      "p_sha256": "fb258172a89f3d59c2244300a4c76c6be2a682eedb47eeb3d8a1c8b27d534361"
+    }
+  ],
+  "manifest_correspondence": {
+    "source_afterimages": 24,
+    "entry_afterimages": 2,
+    "selected_main_providers": 5,
+    "all_match_actual_candidate": true,
+    "excluded_experiments": [
+      "Euler/Overlap and experimental Gluingd9/266",
+      "Mayer optimization and all unrelated P changes",
+      "Compensating P consumer patches",
+      "Oldv3fe52 Generic source and old compiler outcomes as evidence for this phase"
+    ]
+  },
+  "correspondence": {
+    "original_seven_public_names_and_types_retained": true,
+    "four_companion_files_byte_identical_to_accepted_v2_1": true,
+    "stage_predicate_body": "Exact old full F/E/embedding/cover/point/order/original-zero tail after whitespace normalization; transparent def, no new premise",
+    "private_producer_body": "Byte-identical to old v3 proof from let eStage onward after removing only outer L/C/hC/hfin/hCn tuple prefix",
+    "arbitrary_L": "Uses only Field L, Algebra K L, Algebra k L and IsScalarTower k K L; no finiteness/Galois property of L needed for private stage construction",
+    "omit": "Only QuasiCompact e and QuasiSeparated e omitted for private stage theorem; public qcqs context and coefficient-presentation call unchanged",
+    "worlds": "Source eX independent of u+2 stage cohomology; same field/algebra and AddCommGroup dictionaries at callback instantiation",
+    "public_predicate_expansion": "Outer finite-Galois L/C/annihilator witness prefix unchanged; transparent Stage expands to identical original conclusion",
+    "arbitrary_CommRing_B": "Unchanged; existing Consumer fcb01e5a omits IsDomain/IsFractionRing as previously reviewed"
+  },
+  "retained_review_identities": [
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/reviews/h1-generic-v3/review-01.txt",
+      "sha256": "f3ea662b2cac7d5b528542d1aa63e7d3a3e887b59769e542312d3f88b02856db"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/reviews/h1-generic-v3/identity-01.json",
+      "sha256": "8abcd8a4bbe92e35a9f9b45eb00832d36234606c0f803c6924c51823e29ce2e9"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/reviews/h1-refactor/review-01.txt",
+      "sha256": "df84b663fb54233ab1f087bad2c01b3dca90dd24be1353369ad8ef355098506c"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/reviews/h1-refactor/identity-01.json",
+      "sha256": "10f049772b967c6c53e09283d520dfe7ee78d268919f6bd3cad747063a237743"
+    }
+  ],
+  "final_guard_utc": "2026-11-02T19:49:05.360176+00:00",
+  "final_drift": []
+}

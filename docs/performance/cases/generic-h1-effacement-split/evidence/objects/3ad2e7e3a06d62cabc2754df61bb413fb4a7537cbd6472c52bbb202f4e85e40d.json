@@ -1,0 +1,31 @@
+{
+  "status": "DIAGNOSTIC_READY_GENERIC_STAGE_ISO_V3",
+  "question": "Check exact native prefix through genericCoefficientStageIso ONLY, retaining all original imports/setup/variables; omit GenericPointedH1Effacement and the H1 theorem. Is the earlier two-definition timeout already present in this smaller prefix?",
+  "actual_source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+  "actual_source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+  "actual_source_sha256": "fe5248fafa44fd2df5d1e5650045aa7192ef302350cf44546626abc43f44548f",
+  "scratch_root": "/private/tmp/r5-investigations/etale-c-20261102/h1-resume/generic-stage-iso-v3",
+  "scratch_source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+  "scratch_source_sha256": "291e4e9eb905fab9851bd7f24eee60a7ecc6419497175827f5d83b9c5c3c12d4",
+  "qualified_root": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic",
+  "required_dependency_basis": "Exact frozen eaa9767a3219bd682b5fc93ee9a5f26be5e486579c645ec599f9b200062a2e9b; original A36 runremote-28c83f5ba42b426f80325ec49692ff2f and prepared idle C snapshot used by prefix7db8.",
+  "setup": "Same native module/isModule/import/options setup on exacteaa. First original definition is byte-identical; only later definition/theorem omitted and original section/namespace closed. No instrumentation/options/new declarations.",
+  "diagnostic_basis": "Current production Genericfe52 frontend remains active >2768s without reported error after38 current-context supplier successes; current Affine4d01 passed1300.4518586844206s. Production remains healthy and operator-owned.",
+  "execution": "Run first,180s bound, using existing matching C imports without dependency builds. If CPP0, return directly; the imports-only diagnostic is unnecessary. If this also times out without error, run the separately prepared imports-only prefix to distinguish startup/import loading.",
+  "evidence_boundary": "Bounded native-prefix diagnosis only, not the omitted H1 theorem, full Generic CPP, matched speedup, or exact reduction-pair attribution. A36 production remains untouched and its actual result must be retained.",
+  "acceptance": "Report actual frozen context, exit/diagnostics and elapsed/frontend time for the one-definition prefix. A cheap successful result together with the earlier two-definition timeout localizes the next investigation to GenericPointedH1Effacement; it does not attribute theorem-body cost. If timed out, use the conditional imports-only input.",
+  "limits": "Standard8/j4/M12800/RSS65536, Lean4.34.1/mathlibd13 and native library options unchanged; no kernel replay/client checks/options/budget change.",
+  "runtime_owner": "/root/resume_native",
+  "repair_owner": "/root/resume_h1",
+  "previous_diagnostic": {
+    "run": "remote-9c09a4013efb471cb847fd1147c1bb27",
+    "probe_sha256": "7db8ca42cb5db09c63eeab589de1000f62212da427bb912506145c50b9424a44",
+    "setup_exit": 0,
+    "compiler_invocations": 1,
+    "formation_exit": 124,
+    "elapsed_s": 185.46264931559563,
+    "raw_log_bytes": 0,
+    "boundary": "Original two-definition prefix hit180s; no error and no completed CPP. Actual compiler start was recorded. Cost remains between imports/first definition/second definition."
+  },
+  "conditional_next": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/PROBE-generic-imports-v3.json"
+}

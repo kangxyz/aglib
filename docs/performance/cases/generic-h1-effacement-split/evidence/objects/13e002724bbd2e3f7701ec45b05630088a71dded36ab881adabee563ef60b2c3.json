@@ -1,0 +1,13 @@
+{
+  "host": "lean-build-cqa1",
+  "base": "/root/autodl-tmp/lean-build",
+  "source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+  "local_logs": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4-production-A-37/remote-runs",
+  "jobs": 8,
+  "threads": 4,
+  "lean_memory_mib": 12800,
+  "rss_limit_mib": 65536,
+  "workspace_owner": "etale-mainline-universal-20261024",
+  "task_id": "etale-mainline-universal-20261024",
+  "workspace": "/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean"
+}

@@ -1,0 +1,521 @@
+{
+  "phase": "Actual2f main-fa8 H1 scoped-omit candidate; supersedes old main7545 Genericfe52 proposal only",
+  "base": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib",
+  "base_head": "2f17670f9ade927deeb6ea21d1c50c67a9e7842d",
+  "root": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement",
+  "closure_count": 3497,
+  "changed_count": 24,
+  "missing": [],
+  "blocked": [],
+  "additional_outside_owned_scope": [],
+  "generic_sha256": "c8f0d5b3ec3cda5ef26532d524dcd73471f67d0b07df85abdd31400d0cd558f5",
+  "source_rows": [
+    {
+      "module": "Aglib.AlgebraicGeometry.Curves.FiniteNormalCompactification",
+      "path": "Aglib/AlgebraicGeometry/Curves/FiniteNormalCompactification.lean",
+      "before_sha256": "ca9f63cc82309149b9011b12adb80a51f12650800cbc284acd88dec47194aadf",
+      "after_sha256": "c67f4b6e116c8bd9842a9d491288af5f78daa87f74cce8d09f9ca2b41db427b2",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/Curves/FiniteNormalCompactification.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.Curves.Basic",
+        "Aglib.AlgebraicGeometry.Curves.AffineFiniteProjection",
+        "Aglib.AlgebraicGeometry.Normalization.FiniteFunctionField.OpenRecovery",
+        "Aglib.AlgebraicGeometry.Curves.Nodal.LineGeometry",
+        "Aglib.AlgebraicGeometry.Curves.Regular",
+        "Aglib.AlgebraicGeometry.Stalk.ClosedPointDimension",
+        "Aglib.AlgebraicGeometry.Stalk.CodimensionOne",
+        "Aglib.AlgebraicGeometry.Dimension.Finite",
+        "Aglib.AlgebraicGeometry.Geometrically.Connected.FieldExtension",
+        "Aglib.AlgebraicGeometry.Normalization.FiniteTypeField"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/Curves/FiniteNormalCompactification.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ConstantOpenFieldExtension",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/ConstantOpenFieldExtension.lean",
+      "before_sha256": null,
+      "after_sha256": "1e7db982c368da61a7f40a31d18b8dd96941c5c1034a10b125ecb728f9ecd07b",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/ConstantOpenFieldExtension.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.KummerOpenFieldExtension",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteConstantAnnihilator",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant.Naturality",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Basic",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.PullbackEquivalence",
+        "Mathlib.Algebra.Divisibility.Units"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/ConstantOpenFieldExtension.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FieldExtension",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/FieldExtension.lean",
+      "before_sha256": null,
+      "after_sha256": "4e24bbeee89356aa3250a2504b6d9ff88b83ae233946aa5b019b9a95358b4366",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/FieldExtension.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.Curves.Projectivity.FiniteMap",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.FieldComparison"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/FieldExtension.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FieldExtensionRoots",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/FieldExtensionRoots.lean",
+      "before_sha256": null,
+      "after_sha256": "c4776169c8921e528bef0ed992a5db6e582fe0e28da05876599f70b83c644708",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/FieldExtensionRoots.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FieldExtension",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant.Naturality",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.PullbackEquivalence",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Picard.DivisibilityReflection"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/FieldExtensionRoots.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.KummerAffineFieldExtension",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/KummerAffineFieldExtension.lean",
+      "before_sha256": null,
+      "after_sha256": "c4a598674d6fbaa679fd8ef48948596a095a05fb8fb93052cb5eac22f2bd3bd7",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/KummerAffineFieldExtension.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.KummerBoundaryObstruction",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.KummerResidueExtension",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.KummerResidueNaturality",
+        "Aglib.AlgebraicGeometry.Limits.Range"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/KummerAffineFieldExtension.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.KummerBoundaryObstruction",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/KummerBoundaryObstruction.lean",
+      "before_sha256": null,
+      "after_sha256": "7e5aa68fde2412e51bae7c89a0d6dd4b1074d54c74b234ac8afeb14d1793a3bc",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/KummerBoundaryObstruction.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.Curves.Divisors.FieldExtensionBoundary",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FieldExtensionRoots"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/KummerBoundaryObstruction.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.KummerOpenFieldExtension",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/KummerOpenFieldExtension.lean",
+      "before_sha256": null,
+      "after_sha256": "705554579a414c3cccad2ef0016da9bae71a57e5e446ca52b300bdf1cc58436c",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/KummerOpenFieldExtension.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.KummerAffineFieldExtension",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.H1.GeometricallyConnected",
+        "Aglib.AlgebraicGeometry.Stalk.OpenSmoothCurveDVR",
+        "Aglib.AlgebraicGeometry.Morphisms.Smooth.Normality"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/KummerOpenFieldExtension.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PointedGaloisEffacement",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/PointedGaloisEffacement.lean",
+      "before_sha256": null,
+      "after_sha256": "2481f3e2c9f1d8b0ca9c121383c004a26aacd3a72e7f0f354f88a1a55f36d282",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/PointedGaloisEffacement.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ConstantOpenFieldExtension",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.PointedEffacement",
+        "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisBaseChange"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/PointedGaloisEffacement.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.AffineClosureH1",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineClosureH1.lean",
+      "before_sha256": null,
+      "after_sha256": "cdb04b069037ef3cadaa7ca92a3f3c9639753189d7318de3b0c2e4b5abe47b93",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineClosureH1.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.Curves.FiniteNormalCompactification",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.CompatibleClosure",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PointedGaloisEffacement"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineClosureH1.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.AffineFiniteH1",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineFiniteH1.lean",
+      "before_sha256": null,
+      "after_sha256": "18214de0eb4f481a092788b409bac83772f2582626bb3fac0d4ad1c7decde89a",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineFiniteH1.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.AffineFiniteSourceH1",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.FiniteSourceCommonField"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineFiniteH1.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.AffineFiniteSourceH1",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineFiniteSourceH1.lean",
+      "before_sha256": null,
+      "after_sha256": "762717c25c214c09313416c62a3c3202bac5feb285ddc9e73a999fbf35f2ec2e",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineFiniteSourceH1.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.AffineClosureH1",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.FiniteSource"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineFiniteSourceH1.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.CoefficientCompositeZero",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/CoefficientCompositeZero.lean",
+      "before_sha256": null,
+      "after_sha256": "8229ecd6f3773fcf980596d4094cf3dacddce030ce9a92568d19830e627f7bcc",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/CoefficientCompositeZero.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.BoundedClassFiniteConstant",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.FiniteSource",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.PullbackComposition"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/CoefficientCompositeZero.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.CommonFieldRingSeparableCover",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/CommonFieldRingSeparableCover.lean",
+      "before_sha256": null,
+      "after_sha256": "0314820a8b3841e74c94620bdb4d5ba468614e1d1e5e70ac50aba565b5603975",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/CommonFieldRingSeparableCover.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.CommonFieldSeparableCover"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/CommonFieldRingSeparableCover.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.CommonFieldSeparableCover",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/CommonFieldSeparableCover.lean",
+      "before_sha256": null,
+      "after_sha256": "8b1154bb40755470dede8047a502269d79c369daee0e67e9c71ae2c2c9ed48ef",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/CommonFieldSeparableCover.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.CommonFieldCompositeZero",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.SeparableRefinement"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/CommonFieldSeparableCover.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.FiniteSourceCommonField",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/FiniteSourceCommonField.lean",
+      "before_sha256": null,
+      "after_sha256": "82e7569fa7e1cd8a0adcde1f11df8062d4ac4e33b88ade2b3e90f404eff11421",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/FiniteSourceCommonField.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.FiniteSource",
+        "Aglib.AlgebraicGeometry.Geometrically.Connected.CommonOverfield",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.CommonFieldCompositeZero"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/FiniteSourceCommonField.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericCoefficientPresentation",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericCoefficientPresentation.lean",
+      "before_sha256": null,
+      "after_sha256": "d2ae7f75d0850a1d20c25f9422847497e142659a350f50712d0f43241aa23141",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericCoefficientPresentation.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.BoundedClassFiniteConstant",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.PullbackComposition",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.BaseChangeMap"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericCoefficientPresentation.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericCoefficientPresentationConsumer",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericCoefficientPresentationConsumer.lean",
+      "before_sha256": null,
+      "after_sha256": "fcb01e5adb18825ab64e9cbe2a97ade8df6525e45c8accca62f0c0a579d51b74",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericCoefficientPresentationConsumer.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.BoundedClassFiniteConstant",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.PullbackComposition",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.BaseChangeMap"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericCoefficientPresentationConsumer.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement.lean",
+      "before_sha256": null,
+      "after_sha256": "97596b2c42aca3d256103db8cec9ca93b35c41075a15877bda83d488b379af9c",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Affine",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Family"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Affine",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Affine.lean",
+      "before_sha256": null,
+      "after_sha256": "4d01074eb6cc917979d56b7e27c87034c8729881d886f0053257520d98f61967",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Affine.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.AffineFiniteH1",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Separable"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Affine.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Family",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Family.lean",
+      "before_sha256": null,
+      "after_sha256": "3032e8f9d164b664bfbdc237fff3613f681f27190174fe72165b932b527d4d9d",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Family.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Family.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+      "before_sha256": null,
+      "after_sha256": "c8f0d5b3ec3cda5ef26532d524dcd73471f67d0b07df85abdd31400d0cd558f5",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/candidate-v4c-omit/Generic.lean",
+      "selection": "author-scoped-omit-frozen-Generic",
+      "imports": [
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Affine",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericCoefficientPresentation",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericCoefficientPresentationConsumer",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.CoefficientCompositeZero"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Separable",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Separable.lean",
+      "before_sha256": null,
+      "after_sha256": "6e3140f9db1b17e162ca365e817bf1ba65b2feb2e38014a39e5712713726f70c",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Separable.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.CommonFieldRingSeparableCover"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Separable.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.SeparableRefinement",
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/SeparableRefinement.lean",
+      "before_sha256": null,
+      "after_sha256": "ff633a5434029d9d916052c40b00bece6727c9748c2b21eb5e7f43294da7b424",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/SeparableRefinement.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.GlobalFinitePureDescent",
+        "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.PurelyInseparablePoints",
+        "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisBaseChange",
+        "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.BaseChange.Isomorphism",
+        "Aglib.CategoryTheory.Galois.FiberCompatibleReflection",
+        "Aglib.CategoryTheory.Galois.Iso",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FinitePureZeroDetection",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.BoundedClassFiniteConstant",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.PullbackComposition",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.FiniteSource",
+        "Mathlib.FieldTheory.PurelyInseparable.Basic",
+        "Mathlib.CategoryTheory.Limits.Shapes.Pullback.Pasting"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/SeparableRefinement.lean"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.Picard.PowerDescent",
+      "path": "Aglib/AlgebraicGeometry/Picard/PowerDescent.lean",
+      "before_sha256": "b3f222a521a966a242934ecd625809680dada4f40c8b3c7f85c38acf4026ef77",
+      "after_sha256": "d8014a4c00dca877b80f075fb4975d2b11599bd508c9bc06fe899003d61d7288",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/afterimages/Aglib/AlgebraicGeometry/Picard/PowerDescent.lean",
+      "selection": "retained-immutable-prior-source",
+      "imports": [
+        "Aglib.AlgebraicGeometry.Picard.AssociatedBundle",
+        "Aglib.AlgebraicGeometry.Picard.TrivializedPowerTorsor",
+        "Aglib.AlgebraicGeometry.Modules.Invertible.Basic",
+        "Aglib.AlgebraicGeometry.Modules.InternalHom",
+        "Aglib.AlgebraicGeometry.Modules.Invertible.Dual",
+        "Aglib.AlgebraicGeometry.Modules.Invertible.Tensor",
+        "Aglib.AlgebraicGeometry.Modules.Invertible.TensorAssociator",
+        "Aglib.AlgebraicGeometry.Modules.Pullback.OpenRestriction",
+        "Aglib.AlgebraicGeometry.Modules.Invertible.Pullback"
+      ],
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry/Picard/PowerDescent.lean"
+    }
+  ],
+  "entry_rows": [
+    {
+      "path": "Aglib.lean",
+      "before_sha256": "b878c37d48f5caa48a9a35e2329e4308ae015bef564bc054c5340a51a42058e1",
+      "after_sha256": "51da82ccb4bf650acbc4801f934c8acda993b4eacf914a8589abf8eb995518c8",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/Aglib.lean",
+      "added_imports": [
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ConstantOpenFieldExtension",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FieldExtension",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FieldExtensionRoots",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.KummerAffineFieldExtension",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.KummerBoundaryObstruction",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.KummerOpenFieldExtension",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PointedGaloisEffacement",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.AffineClosureH1",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.AffineFiniteH1",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.AffineFiniteSourceH1",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.CoefficientCompositeZero",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.CommonFieldRingSeparableCover",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.CommonFieldSeparableCover",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.FiniteSourceCommonField",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericCoefficientPresentation",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericCoefficientPresentationConsumer",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Affine",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Family",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Separable",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.SeparableRefinement"
+      ],
+      "removed_imports": [],
+      "nonimport_bytes_preserved": true,
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry.lean",
+      "before_sha256": "55ce119340e389e6cee1dfa87305d32fa0365a95f09f3cf7f3d7dad2e8ee9c45",
+      "after_sha256": "a69e55974bcf9f79b46fd14f316569282db12005005fd796927208c930267713",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/Aglib/AlgebraicGeometry.lean",
+      "added_imports": [
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ConstantOpenFieldExtension",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FieldExtension",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FieldExtensionRoots",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.KummerAffineFieldExtension",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.KummerBoundaryObstruction",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.KummerOpenFieldExtension",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PointedGaloisEffacement",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.AffineClosureH1",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.AffineFiniteH1",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.AffineFiniteSourceH1",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.CoefficientCompositeZero",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.CommonFieldRingSeparableCover",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.CommonFieldSeparableCover",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.FiniteSourceCommonField",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericCoefficientPresentation",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericCoefficientPresentationConsumer",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Affine",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Family",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Separable",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.SeparableRefinement"
+      ],
+      "removed_imports": [],
+      "nonimport_bytes_preserved": true,
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/afterimages/Aglib/AlgebraicGeometry.lean"
+    }
+  ],
+  "provider_rows": [
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/InternalHom/Gluing.lean",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/Aglib/AlgebraicGeometry/Modules/InternalHom/Gluing.lean",
+      "sha256": "fa8b31b319e1a0b52172273164691bfc35b27c3956ca639b3e38ec68a4e1da12",
+      "selection": "principal-selected current-CI main provider",
+      "p_sha256": "d9ef1a8d62ca38f01257a47e5f733857acd128a8f72d4d552b1cee81e4856692"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/InternalHom/FreeFrameCompatibility.lean",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/Aglib/AlgebraicGeometry/Modules/InternalHom/FreeFrameCompatibility.lean",
+      "sha256": "7fd804d2c139eb404504e50836f9044c18672560587a425b4e4808ec98a2a9ec",
+      "selection": "principal-selected current-CI main provider",
+      "p_sha256": "7fd804d2c139eb404504e50836f9044c18672560587a425b4e4808ec98a2a9ec"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/InternalHom/DiagramFactorizationGluing.lean",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/Aglib/AlgebraicGeometry/Modules/InternalHom/DiagramFactorizationGluing.lean",
+      "sha256": "c8c63209c8d30ee3c0ae431a6e6c8386f1605dd91e14834c39cdd9f4454dde1e",
+      "selection": "principal-selected current-CI main provider",
+      "p_sha256": "f3133f133bd7c103000e92ecf50f33df69c42e43f750be475258d557e05c7045"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Descent/Modules/Zariski.lean",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/Aglib/AlgebraicGeometry/Descent/Modules/Zariski.lean",
+      "sha256": "f78afa35c9433b91c4bbaad904d1394dd54b4ab163f4a2a24be28407bfaf3656",
+      "selection": "principal-selected current-CI main provider",
+      "p_sha256": "8a31ec50479cf60564d016a130645b124db9e97dff544e5f49935e37bde98d15"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Descent/FinitePresentation/Modules/Maps.lean",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/Aglib/AlgebraicGeometry/Descent/FinitePresentation/Modules/Maps.lean",
+      "sha256": "fd8c5bf71026426823508b9234ec2bc5c0b553e52aa97b6108a513a8037cf2ce",
+      "selection": "principal-selected current-CI main provider",
+      "p_sha256": "fb258172a89f3d59c2244300a4c76c6be2a682eedb47eeb3d8a1c8b27d534361"
+    }
+  ],
+  "author_ready": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/READY-generic-complete-stage-v4c-omit.json",
+    "sha256": "5104ffb53adc075ad09085edbb2bac808ba2086d981de5ab49e2070f96f9ee41"
+  },
+  "generic_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/candidate-v4c-omit/Generic.lean",
+  "root_modules": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Separable",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Affine",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Family",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement"
+  ],
+  "maximal_roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement"
+  ],
+  "exclusions": [
+    "Euler/Overlap and experimental Gluingd9/266",
+    "Mayer optimization and all unrelated P changes",
+    "Compensating P consumer patches",
+    "Oldv3fe52 Generic source and old compiler outcomes as evidence for this phase"
+  ],
+  "coverage": "Mechanical source/import/enrollment preparation only. No native, compilation, lint, audit, kernel, client, Git, remote, proof or applicability verdict.",
+  "conditions": "Exact frozen author H1 API/hypotheses retained; scoped-omit statement correspondence belongs to author/reviewer, not this mechanical worker.",
+  "source_check": {
+    "command": [
+      "python3",
+      "-m",
+      "lean_tools",
+      "source",
+      "--root",
+      "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib"
+    ],
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/scripts"
+    },
+    "exit_code": 0,
+    "output": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/source-check.txt",
+    "output_sha256": "dabed4bf64c3d3bf1032ee66b87910758c57083cd855e83d09c59e4429f160b2",
+    "scope": "Existing source/token/layout/pin/generated-topic guards only; no native generator/CPP/lint/audit/client/kernel invocation."
+  },
+  "materialized": true,
+  "post_source_check_identity_guard": {
+    "head": "2f17670f9ade927deeb6ea21d1c50c67a9e7842d",
+    "source_count": 24,
+    "entry_count": 2,
+    "provider_count": 5,
+    "errors": []
+  }
+}

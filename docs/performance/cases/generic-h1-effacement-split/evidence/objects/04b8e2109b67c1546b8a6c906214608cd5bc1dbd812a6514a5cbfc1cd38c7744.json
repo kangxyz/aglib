@@ -1,0 +1,117 @@
+{
+  "status": "MAIN_FA8_H1_V4C_CPP0; PERFORMANCE_OPTIMIZATION_OPEN",
+  "question": "Actual main-provider applicability and compilation of the complete H1 stage-factorization candidate after scoped private-producer omit.",
+  "main_candidate_root": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib",
+  "main_head": "2f17670f9ade927deeb6ea21d1c50c67a9e7842d",
+  "main_manifest": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/MANIFEST.json",
+  "main_manifest_sha256": "2d7cdc3b64ae047cd3cb6d04d152fa7cf6b4632d7f8c6791919a9279556da861",
+  "source_hashes": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Separable.lean": "6e3140f9db1b17e162ca365e817bf1ba65b2feb2e38014a39e5712713726f70c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Affine.lean": "4d01074eb6cc917979d56b7e27c87034c8729881d886f0053257520d98f61967",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean": "c8f0d5b3ec3cda5ef26532d524dcd73471f67d0b07df85abdd31400d0cd558f5",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Family.lean": "3032e8f9d164b664bfbdc237fff3613f681f27190174fe72165b932b527d4d9d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement.lean": "97596b2c42aca3d256103db8cec9ca93b35c41075a15877bda83d488b379af9c"
+  },
+  "frozen_author_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/candidate-v4c-omit",
+  "provider_basis": [
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/InternalHom/Gluing.lean",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/Aglib/AlgebraicGeometry/Modules/InternalHom/Gluing.lean",
+      "sha256": "fa8b31b319e1a0b52172273164691bfc35b27c3956ca639b3e38ec68a4e1da12",
+      "selection": "principal-selected current-CI main provider",
+      "p_sha256": "d9ef1a8d62ca38f01257a47e5f733857acd128a8f72d4d552b1cee81e4856692"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/InternalHom/FreeFrameCompatibility.lean",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/Aglib/AlgebraicGeometry/Modules/InternalHom/FreeFrameCompatibility.lean",
+      "sha256": "7fd804d2c139eb404504e50836f9044c18672560587a425b4e4808ec98a2a9ec",
+      "selection": "principal-selected current-CI main provider",
+      "p_sha256": "7fd804d2c139eb404504e50836f9044c18672560587a425b4e4808ec98a2a9ec"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/InternalHom/DiagramFactorizationGluing.lean",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/Aglib/AlgebraicGeometry/Modules/InternalHom/DiagramFactorizationGluing.lean",
+      "sha256": "c8c63209c8d30ee3c0ae431a6e6c8386f1605dd91e14834c39cdd9f4454dde1e",
+      "selection": "principal-selected current-CI main provider",
+      "p_sha256": "f3133f133bd7c103000e92ecf50f33df69c42e43f750be475258d557e05c7045"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Descent/Modules/Zariski.lean",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/Aglib/AlgebraicGeometry/Descent/Modules/Zariski.lean",
+      "sha256": "f78afa35c9433b91c4bbaad904d1394dd54b4ab163f4a2a24be28407bfaf3656",
+      "selection": "principal-selected current-CI main provider",
+      "p_sha256": "8a31ec50479cf60564d016a130645b124db9e97dff544e5f49935e37bde98d15"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Descent/FinitePresentation/Modules/Maps.lean",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib/Aglib/AlgebraicGeometry/Descent/FinitePresentation/Modules/Maps.lean",
+      "sha256": "fd8c5bf71026426823508b9234ec2bc5c0b553e52aa97b6108a513a8037cf2ce",
+      "selection": "principal-selected current-CI main provider",
+      "p_sha256": "fb258172a89f3d59c2244300a4c76c6be2a682eedb47eeb3d8a1c8b27d534361"
+    }
+  ],
+  "native_run": "remote-9c808ef76e55453aad075d273c7ff7da",
+  "native_source": "97bdbf917dfc765f0821e4e78d6ea4a1cb823fcf0fd5dc2acf126adecdf999a8",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-main-fa8-v4c-production-A-39/remote-runs/remote-9c808ef76e55453aad075d273c7ff7da/receipt.json",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-main-fa8-v4c-production-A-39/remote-runs/remote-9c808ef76e55453aad075d273c7ff7da/compiler-events.jsonl",
+  "build_log": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-main-fa8-v4c-production-A-39/remote-runs/remote-9c808ef76e55453aad075d273c7ff7da/build.log",
+  "native_result": {
+    "status": "succeeded",
+    "exit_code": 0,
+    "group_closed": true,
+    "compiler_invocations": 4,
+    "compiler_succeeded": 4,
+    "compiler_failed": 0,
+    "elapsed_seconds": 2997.1505120396614,
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "command": [
+      "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+      "--rehash",
+      "build",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement"
+    ],
+    "diagnostics": {
+      "categories": {},
+      "first": [],
+      "observed_missing_count": 0,
+      "observed_missing_prefixes": {},
+      "observed_missing_prefixes_truncated": false,
+      "observed_missing_shortlist": []
+    },
+    "input_drift": []
+  },
+  "fresh_H1_frontends": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Affine.lean",
+      "exit_code": 0,
+      "frontend_seconds": 1396.1738292723894
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+      "exit_code": 0,
+      "frontend_seconds": 1572.5862046778202
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Family.lean",
+      "exit_code": 0,
+      "frontend_seconds": 14.140981912612915
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement.lean",
+      "exit_code": 0,
+      "frontend_seconds": 5.315757974982262
+    }
+  ],
+  "retained_Separable": "6e3140f9 matching cache reused, not freshly compiled or timed in A39.",
+  "mathematical_range": "Original seven public declarations retain their hypotheses, actual field/maps/pointed Galois cover/order and original class zero, with independent eX and u+2. One complete stage predicate transparently factors the old tail; one complete stage producer constructs the same witnesses before finite-Galois specialization. Scoped omit removes only unused private QC/QS instances, not public assumptions.",
+  "context_boundary": "This is actual2f+selected24-source/main-fa8 CPP closure. It neither requires experimentald9 nor its three compensating legacy consumer patches solely to adopt H1. A36/A38d9 evidence and timings remain their own input bases; no matched d9 speedup or compiler-cause claim.",
+  "performance_boundary": "Genericc8f0 fresh1572.586s (~26.2min), Affine4d010 fresh1396.174s (~23.3min), Family/facade small. Thus compiler correctness/main applicability are closed for this candidate, but the user-requested measured optimization remains open. Smaller files alone are not the completion claim.",
+  "next_work": "Retain this exact successful package/compatible caches. Use already prepared bounded Affine statement/body diagnostics on exact97bd and optional short arbitrary-map law check; no unchanged23/26min baseline replay and no source adoption without actual evidence. Principal owns ordinary source review/integration/publication decisions.",
+  "author_mutations": "No production or main candidate change during this success capture; no Git/push/docs/aggregate changes by author."
+}

@@ -1,0 +1,16 @@
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean:111:0: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean:166:8: (kernel) unknown constant '_private.Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic.0.AlgebraicGeometry.Scheme.EtaleCohomology.TwoFieldEffacement.exists_generic_pointed_H1_stage_effacement'
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic
+error: build failed
+
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean:166:8: (kernel) unknown constant '_private.Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic.0.AlgebraicGeometry.Scheme.EtaleCohomology.TwoFieldEffacement.exists_generic_pointed_H1_stage_effacement'
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic
+error: build failed
+
+error: build failed

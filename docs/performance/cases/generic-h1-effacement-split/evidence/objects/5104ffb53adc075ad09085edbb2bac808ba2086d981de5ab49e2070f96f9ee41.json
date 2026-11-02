@@ -1,0 +1,47 @@
+{
+  "status": "READY_SCOPED_OMIT_V4C_FOR_MAIN_FA8_RECONCILIATION",
+  "question": "Repair the sole actual A38 unused-section-variable error and validate the complete H1 candidate on the selected real main-fa8 publication basis; retain the unresolved performance boundary honestly.",
+  "author_source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+  "author_source_role": "retained mathematical input, not publication checkout",
+  "author_source_head": "4fb6e26584c90df682a804bbc5a1f4d65e4cf332",
+  "guard_status": "?? Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+  "source_hashes": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Separable.lean": "6e3140f9db1b17e162ca365e817bf1ba65b2feb2e38014a39e5712713726f70c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Affine.lean": "4d01074eb6cc917979d56b7e27c87034c8729881d886f0053257520d98f61967",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean": "c8f0d5b3ec3cda5ef26532d524dcd73471f67d0b07df85abdd31400d0cd558f5",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Family.lean": "3032e8f9d164b664bfbdc237fff3613f681f27190174fe72165b932b527d4d9d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement.lean": "97596b2c42aca3d256103db8cec9ca93b35c41075a15877bda83d488b379af9c"
+  },
+  "frozen_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/candidate-v4c-omit",
+  "frozen_generic_file": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/candidate-v4c-omit/Generic.lean",
+  "frozen_generic_sha256": "c8f0d5b3ec3cda5ef26532d524dcd73471f67d0b07df85abdd31400d0cd558f5",
+  "change_from_v4b": "Add exactly `omit [QuasiCompact e] [QuasiSeparated e] in` before the PRIVATE complete stage theorem. These automatically included instances are unused by its displayed argument/proof. Original public qcqs hypotheses remain and are consumed by coefficient presentation. No public statement/predicate/world/map/proof operation, import, filename, option, linter setting or budget changes.",
+  "source_correspondence": "Deleting the single scoped omit line recovers exact e2e2 v4b bytes. Other four files remain Separable6e314/Affine4d010/Family3032/facade9759; no other source file was edited in this repair. Public seven declarations retain their original mathematical types; the complete stage predicate remains a transparent factor of the old tail.",
+  "main_preparation": {
+    "owner": "/root/prepare_ready_publication",
+    "clone": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib",
+    "supplied_head_prefix": "2f17670",
+    "fixed_scope": "Immutable prior23 source afterimages plus this frozen Generic image, within previous24-source+2-entry proposal. No dependency/import/filename change from that proposal; author confirms four companion hashes unchanged. No P aggregates/Euler/Mayer or experimentald9/three compensating legacy consumers solely for H1."
+  },
+  "publication_basis": "Actual main/CI retains original Gluingfa8 and the selected main provider family. Principal/preparer bind exact main afterimages; native final applicability/CPP/timing must use that basis. A38d9 evidence is not relabelled main-fa8. Do not replay25-minute d9 Generic solely to fix the omit.",
+  "qualified_roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Family",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement"
+  ],
+  "actual_A38": {
+    "source": "f03f687d5c43ba630abe5767dbeebfc41655a6fcf8ebbcc460563af9885ad105",
+    "run": "remote-216cb29ef1a645f18f77b512dfb3e08d",
+    "Generic_sha256": "e2e2bb33724309403535eb471e0395719a36490093ea1dd7920a6799566cbf00",
+    "frontend_seconds": 1502.903605,
+    "native_exit": 1,
+    "sole_error": "Unused automatically included private-producer [QuasiCompact e]/[QuasiSeparated e] at113:8. No whnf/kernel unknown-constant error reported. Family/facade unexecuted; no CPP0."
+  },
+  "diagnostic_boundary": "A38 closed before the intended active diagnostic. Native owner reported an unintended C08 launch after its failed active-admission guard, then stopped only that scratch run130/groupclosed/raw0. It supplies no marker/progress/cause evidence. Buffered9d/b6a were never run. No universe pin or model-factorization is adopted from absent markers.",
+  "optional_route": "The read-only mathematical helper supplies an uncompiled whole affine/presentation law over arbitrary original T,Y,h,f,M0. It is not adopted here and supplies no performance/cause evidence; only a useful phase observation or short scoped helper CPP should guide any further optimization.",
+  "limits": "Lean4.34.1/mathlibd13, standard8/j4/M12800/RSS65536/default heartbeats; retain caches/compatible coverage; no source outside assigned H1 paths, Git, docs, client/kernel replay, budget or linter suppression.",
+  "acceptance": "Actual repaired final candidate CPP and source/application correspondence on main-fa8, with relevant per-module times and remaining cost. No current CPP/performance closure is claimed from the linter-only A38 failure.",
+  "runtime_owner": "/root/resume_native",
+  "repair_owner": "/root/resume_h1",
+  "integration_owner": "/root"
+}

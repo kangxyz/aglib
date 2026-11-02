@@ -1,0 +1,23 @@
+{
+  "actual_source_root": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib",
+  "actual_source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Affine.lean",
+  "actual_source_sha256": "4d01074eb6cc917979d56b7e27c87034c8729881d886f0053257520d98f61967",
+  "actual_source_head": "2f17670f9ade927deeb6ea21d1c50c67a9e7842d",
+  "qualified_root": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Affine",
+  "required_dependency_basis": "EXACT actual main-fa8 A39 source97bdbf917dfc765f0821e4e78d6ea4a1cb823fcf0fd5dc2acf126adecdf999a8/runremote-9c808ef76e55453aad075d273c7ff7da. Do not use P/d9 or A36/A38 as the diagnostic basis.",
+  "marker_control": "Proven native run-owned append/flush control: child-only R5_H1_MARKER_FILE points to a fresh absolute file under that diagnostic run; native guards absent/outside-source, initializes as needed, and preserves exact bytes. Source uses IO.FS.withFile .append, constant putStr plus flush; never stdout/Expr/goal rendering/String+.",
+  "native_options": "Actual Affine module/isModule/import setup; original library options and standard8/j4/M12800/RSS65536/200000 heartbeats unchanged. No profiler/suppressions/sorry. No source/cache promotion from diagnostics.",
+  "baseline": "Same actual Affine4d010 main-fa8 freshCPP0/1396.173829s, cached matching Separable not rerun. Retain that artifact and all compatible import coverage; no unchanged23min full replay.",
+  "run_priority": "Do not delay/modify healthy A39 Genericc8/Family/facade. Admit only on an idle matching prepared lane or valid isolated read-only import arrangement owned by native; recover matching caches, never rebuild dependencies solely for probes.",
+  "runtime_owner": "/root/resume_native",
+  "repair_owner": "/root/resume_h1",
+  "scratch_root": "/private/tmp/r5-investigations/etale-c-20261102/h1-resume/affine-main-fa8-statement",
+  "scratch_source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Affine.lean",
+  "scratch_source_sha256": "a00df3671f773cecf9322549a4eecec1f4dc199173edbb8678891d735ce87bf7",
+  "status": "DIAGNOSTIC_READY_AFFINE_STATEMENT_ON_MAIN_FA8",
+  "question": "Can the exact original Affine target proposition be formed as a theorem binder under its original hypotheses, without constructing the affine/separable result?",
+  "diagnostic_wall_bound_seconds": 180,
+  "setup": "Preserve original imports/section variables and theorem arguments. Rename only the diagnostic theorem; put the entire original conclusion in `_statement : P`, prove True. Add only constant run-owned file marks before header/body/after command. This is binder formation, not def : Prop value construction.",
+  "acceptance": "Return statement/body-entry file marks, exact exit/diagnostics and frontend time. Unused automatic section-variable warnings are diagnostic-only and must not be confused with whnf. No proof of original effacement or whole Affine CPP is claimed.",
+  "follow_on": "If statement formation is quick or reaches normal end with only harmless unused-section lint, body-phase packet localizes the remaining actual construction. If bounded without useful marks or type errors, report first; do not attribute body cost."
+}

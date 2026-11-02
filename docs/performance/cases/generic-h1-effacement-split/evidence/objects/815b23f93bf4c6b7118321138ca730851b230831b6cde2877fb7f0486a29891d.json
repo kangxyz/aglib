@@ -1,0 +1,33 @@
+{
+  "status": "DIAGNOSTIC_READY_ACTIVE_A38_PREFIX_AND_PRODUCER_PHASES",
+  "question": "Locate the insufficient-feedback A38/e2e2 compilation boundary across all three definitions, producer header/body entry, and the actual producer body phases without heavy profiler or expression printing.",
+  "run_condition": "Principal explicitly authorized this scoped diagnostic while A38 remains healthy but active without sufficient feedback. At admission confirm actual A38 has not closed. If it closes first, return its actual feedback and skip an unneeded probe rather than automatically execute this packet.",
+  "actual_source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+  "actual_source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+  "actual_source_sha256": "e2e2bb33724309403535eb471e0395719a36490093ea1dd7920a6799566cbf00",
+  "scratch_root": "/private/tmp/r5-investigations/etale-c-20261102/h1-resume/generic-prefix-producer-phases-v4b",
+  "scratch_source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+  "scratch_source_sha256": "9d1b64ebf86faef54ff9857cd92009e893c751031f5477d87707b6ab69e54f37",
+  "qualified_root": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic",
+  "required_dependency_basis": "Exact frozen A38 actual retry source with Generic e2e2 and unchanged current d9/7fd/Mapsfb closure; runtime owner binds full source identity when this conditional question is activated.",
+  "setup": "Exact frozen A38 native module/isModule/import/options/context. Add only four top-level constant-string run_cmd Lean.logInfo marks and the existing eight constant-string body trace tactics; omit downstream public theorem. No nested profiler, raw expression prettyprinting, sorry change, linter suppression, heartbeat/memory/thread/pin change.",
+  "diagnostic_wall_bound_seconds": 300,
+  "wall_bound_reason": "Principal-approved300s stopping bound for this larger prefix+producer diagnostic; native proof/resource limits remain unchanged.",
+  "acceptance": "Return actual source/setup/actor identity, reached prefix/body constant-string marks in order, and errors. Marks are command/tactic progress, not independent kernel closure. Classify diagnostic unused-tactic or run_cmd instrumentation errors separately. Absent body0 only informs header/body analysis after the three prefix marks and before-header mark are actually observed.",
+  "evidence_boundary": "Scratch phase diagnostic on e2e2 only; no production adoption/CPP/performance closure from it. Preserve healthy A38 and prior A36/eaa CPP success. Do not execute old superseded failure-only probe as an extra job.",
+  "runtime_owner": "/root/resume_native",
+  "repair_owner": "/root/resume_h1",
+  "supersedes": {
+    "packet": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/PROBE-generic-producer-phases-v4b.json",
+    "probe_sha256": "b6a0bee0d3ff16f64c41ce1c8753818318c915e7b183e0b11de5c1e38c5f8726",
+    "old_condition": "Failure-only conditional, never executed while A38 healthy",
+    "change": "Now authorized for active insufficient-feedback A38; add definition-command coverage so absent body0 cannot be attributed to the header if a preceding definition is not reached."
+  },
+  "prefix_markers": [
+    "H1PREFIX 1 AFTER_FIRST_ISO_COMMAND",
+    "H1PREFIX 2 AFTER_STAGE_PREDICATE_COMMAND",
+    "H1PREFIX 3 AFTER_PUBLIC_PREDICATE_COMMAND",
+    "H1STAGE HEADER BEFORE_PRODUCER_DECLARATION"
+  ],
+  "body_markers": "Existing H1STAGE0\u20137 at body entry, coefficient stage, affine witnesses, field instances, pointed cover, original maps, class-zero transport and refined final target."
+}

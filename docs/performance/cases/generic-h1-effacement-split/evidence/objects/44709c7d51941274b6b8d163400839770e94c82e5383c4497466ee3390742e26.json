@@ -1,0 +1,20 @@
+{
+  "status": "DIAGNOSTIC_READY_GENERIC_PREFIX_V3",
+  "question": "Measure/check the exact native Generic prefix containing genericCoefficientStageIso and GenericPointedH1Effacement, with the final H1 theorem omitted, to narrow the current long frontend boundary.",
+  "actual_source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+  "actual_source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+  "actual_source_sha256": "fe5248fafa44fd2df5d1e5650045aa7192ef302350cf44546626abc43f44548f",
+  "scratch_root": "/private/tmp/r5-investigations/etale-c-20261102/h1-resume/generic-prefix-v3",
+  "scratch_source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+  "scratch_source_sha256": "7db8ca42cb5db09c63eeab589de1000f62212da427bb912506145c50b9424a44",
+  "qualified_root": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic",
+  "required_dependency_basis": "Exact active A36 native runremote-28c83f5ba42b426f80325ec49692ff2f/sourceeaa9767a, current Gluingd9ef/Free7fd and repaired consumers; native owner binds its complete source hash/setup/imports. Do not substitute older fe25/Gluing266 or a later mutable P dependency snapshot.",
+  "setup": "Use actual module-name/isModule/import/options setup from the frozen A36 Generic invocation, or faithful no-build setup-file for that same snapshot. All source imports, namespaces, attributes, section variables and both complete definitions are byte-identical. Only omit final theorem/doc and close existing section/namespace. No trace tactics, extra declarations, compiler options or budgets.",
+  "diagnostic_basis": "Current production Genericfe52 frontend remains active >2768s without reported error after38 current-context supplier successes; current Affine4d01 passed1300.4518586844206s. Production remains healthy and operator-owned.",
+  "execution": "Independent bounded prefix diagnostic using matching prepared imports/caches. Do not cancel, duplicate or replay the full active production Generic module. No dependency rebuilding solely for this probe.",
+  "evidence_boundary": "This is an original-definition-prefix diagnostic, not a binder-style proposition-formation test, a proof of the omitted H1 theorem, a complete Generic CPP pass, a matched speedup measurement or exact compiler-cause attribution.",
+  "acceptance": "Report actual frozen context, prefix exit/diagnostics and elapsed/frontend time. A short prefix result supports focusing on the omitted theorem; a long prefix points to its two actual definitions for finer diagnosis. Keep production result separate.",
+  "limits": "Standard8/j4/M12800/RSS65536, Lean4.34.1/mathlibd13 and native library options unchanged; no kernel replay/client checks/options/budget change.",
+  "runtime_owner": "/root/resume_native",
+  "repair_owner": "/root/resume_h1"
+}

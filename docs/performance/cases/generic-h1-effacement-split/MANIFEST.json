@@ -1,0 +1,1104 @@
+{
+  "status": "Maintained execution record; performance optimization remains open",
+  "case": "generic-h1-effacement-split",
+  "current_head": "2f17670f9ade927deeb6ea21d1c50c67a9e7842d",
+  "current_source": "97bdbf917dfc765f0821e4e78d6ea4a1cb823fcf0fd5dc2acf126adecdf999a8",
+  "source_evidence": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/MAIN-FA8-SUCCESS-v4c-A39.json",
+  "live_source_exclusion": "Identical current source snapshots are not copied; their exact hashes and live source root are recorded in the main-fa8 success record.",
+  "records": [
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-supplier-split-production-C-01/stderr.log",
+      "sha256": "dd86666ac371584834275fb414b98fd2a15e29e7d409ad921d701bb6af4f921c",
+      "copy": "evidence/objects/dd86666ac371584834275fb414b98fd2a15e29e7d409ad921d701bb6af4f921c.log",
+      "bytes": 76
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-supplier-split-production-C-01/config.json",
+      "sha256": "f359880fc60dfdff9fa03d5b35bf0991fe8356e6c8ee1f511739a945bbba66d5",
+      "copy": "evidence/objects/f359880fc60dfdff9fa03d5b35bf0991fe8356e6c8ee1f511739a945bbba66d5.json",
+      "bytes": 620
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-supplier-split-production-C-01/stdout.log",
+      "sha256": "6f70362162b29035578e03fb2af2f719057b630f8e28fd0c39269c09cb28b9f1",
+      "copy": "evidence/objects/6f70362162b29035578e03fb2af2f719057b630f8e28fd0c39269c09cb28b9f1.log",
+      "bytes": 579
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-supplier-split-production-C-01/IDENTITY.json",
+      "sha256": "89563c89db6202c2b7fbea86c97b4caeb9e2b507c0fc7adf282fe0951bc2936e",
+      "copy": "evidence/objects/89563c89db6202c2b7fbea86c97b4caeb9e2b507c0fc7adf282fe0951bc2936e.json",
+      "bytes": 1771
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-supplier-split-production-C-01/command.json",
+      "sha256": "81743771a96ce6fbc4315398a0df600401aa7609bffc47e94802fd4218e2ef9b",
+      "copy": "evidence/objects/81743771a96ce6fbc4315398a0df600401aa7609bffc47e94802fd4218e2ef9b.json",
+      "bytes": 387
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-supplier-split-production-C-01/agent-run.json",
+      "sha256": "62508e8d93e45bc8e6f0cb4c8413e7ab5dabfcf1bbb0a672e635d02dcfaca2f4",
+      "copy": "evidence/objects/62508e8d93e45bc8e6f0cb4c8413e7ab5dabfcf1bbb0a672e635d02dcfaca2f4.json",
+      "bytes": 2960
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-supplier-split-production-C-01/remote-runs/remote-81c2347dca3c4516aebeae25136a0913/compiler-events.jsonl",
+      "sha256": "7da8effe154e159abeadbb9a7162a4391c3bed154ff756464297db001a7c3d78",
+      "copy": "evidence/objects/7da8effe154e159abeadbb9a7162a4391c3bed154ff756464297db001a7c3d78.jsonl",
+      "bytes": 2638
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-supplier-split-production-C-01/remote-runs/remote-81c2347dca3c4516aebeae25136a0913/receipt.json",
+      "sha256": "ac258aacd756c1015d242a62fcdbb006413c60df84df3fa5d26aa168f96fbe9b",
+      "copy": "evidence/objects/ac258aacd756c1015d242a62fcdbb006413c60df84df3fa5d26aa168f96fbe9b.json",
+      "bytes": 13122
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-supplier-split-production-C-01/remote-runs/remote-81c2347dca3c4516aebeae25136a0913/build.log",
+      "sha256": "a2be04762d36fcacb4385cc500663e487218661e3e950d871d78c05a6fe99f39",
+      "copy": "evidence/objects/a2be04762d36fcacb4385cc500663e487218661e3e950d871d78c05a6fe99f39.log",
+      "bytes": 163
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-maps-repair-v3-production-A-36/stderr.log",
+      "sha256": "dd86666ac371584834275fb414b98fd2a15e29e7d409ad921d701bb6af4f921c",
+      "copy": "evidence/objects/dd86666ac371584834275fb414b98fd2a15e29e7d409ad921d701bb6af4f921c.log",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-maps-repair-v3-production-A-36/config.json",
+      "sha256": "e632224119a9dfe7147fa11367c45e53bda899a88a459366ed2a0a0ec9e56712",
+      "copy": "evidence/objects/e632224119a9dfe7147fa11367c45e53bda899a88a459366ed2a0a0ec9e56712.json",
+      "bytes": 612
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-maps-repair-v3-production-A-36/stdout.log",
+      "sha256": "616b2b6c31f440a53aa57013cdff01df760a117e16159f02ae18b8d1bcec28c7",
+      "copy": "evidence/objects/616b2b6c31f440a53aa57013cdff01df760a117e16159f02ae18b8d1bcec28c7.log",
+      "bytes": 4242
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-maps-repair-v3-production-A-36/IDENTITY.json",
+      "sha256": "76da1ecab986fe05d65529e77ad869418da9315cf758c2078866000ef8c07dfe",
+      "copy": "evidence/objects/76da1ecab986fe05d65529e77ad869418da9315cf758c2078866000ef8c07dfe.json",
+      "bytes": 3075
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-maps-repair-v3-production-A-36/command.json",
+      "sha256": "32a7d0e22c7c92df196db79a71f8f01515cf636862636a2f8c1cdcfbfb4c0806",
+      "copy": "evidence/objects/32a7d0e22c7c92df196db79a71f8f01515cf636862636a2f8c1cdcfbfb4c0806.json",
+      "bytes": 657
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-maps-repair-v3-production-A-36/agent-run.json",
+      "sha256": "3b0f3f8af5e7303f6db08ef04f2ec8c104c5a6f236c72cb850e1453734db0ea0",
+      "copy": "evidence/objects/3b0f3f8af5e7303f6db08ef04f2ec8c104c5a6f236c72cb850e1453734db0ea0.json",
+      "bytes": 2959
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-maps-repair-v3-production-A-36/remote-runs/remote-28c83f5ba42b426f80325ec49692ff2f/compiler-events.jsonl",
+      "sha256": "14c8d6939cdf79dd0e18db9f8637bde69ebefeab466adb2bc65fd76f00f87a02",
+      "copy": "evidence/objects/14c8d6939cdf79dd0e18db9f8637bde69ebefeab466adb2bc65fd76f00f87a02.jsonl",
+      "bytes": 102427
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-maps-repair-v3-production-A-36/remote-runs/remote-28c83f5ba42b426f80325ec49692ff2f/receipt.json",
+      "sha256": "fd6586bd208415ff5f088f04bb64365a27225fc51e81bc3b237dcfc73b713ff7",
+      "copy": "evidence/objects/fd6586bd208415ff5f088f04bb64365a27225fc51e81bc3b237dcfc73b713ff7.json",
+      "bytes": 14829
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-maps-repair-v3-production-A-36/remote-runs/remote-28c83f5ba42b426f80325ec49692ff2f/build.log",
+      "sha256": "f06fca5bf1fe69432b6f3e20710dd10686ce8d8806549c5e4f1ee836f1b50d6f",
+      "copy": "evidence/objects/f06fca5bf1fe69432b6f3e20710dd10686ce8d8806549c5e4f1ee836f1b50d6f.log",
+      "bytes": 4379
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4-production-A-37/stderr.log",
+      "sha256": "dd86666ac371584834275fb414b98fd2a15e29e7d409ad921d701bb6af4f921c",
+      "copy": "evidence/objects/dd86666ac371584834275fb414b98fd2a15e29e7d409ad921d701bb6af4f921c.log",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4-production-A-37/config.json",
+      "sha256": "13e002724bbd2e3f7701ec45b05630088a71dded36ab881adabee563ef60b2c3",
+      "copy": "evidence/objects/13e002724bbd2e3f7701ec45b05630088a71dded36ab881adabee563ef60b2c3.json",
+      "bytes": 639
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4-production-A-37/stdout.log",
+      "sha256": "4b02fe12696576312a53f5aead2ec59c44a93029c950e0b08861b4bb44f8cf0a",
+      "copy": "evidence/objects/4b02fe12696576312a53f5aead2ec59c44a93029c950e0b08861b4bb44f8cf0a.log",
+      "bytes": 4656
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4-production-A-37/IDENTITY.json",
+      "sha256": "25636956e59aae9b5bca9371d07a1aaf0a92a7cc6bbc11cdff0a62de6e3be585",
+      "copy": "evidence/objects/25636956e59aae9b5bca9371d07a1aaf0a92a7cc6bbc11cdff0a62de6e3be585.json",
+      "bytes": 2384
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4-production-A-37/command.json",
+      "sha256": "11184d36886934581c0b150fb384225080dde9be30376957315cf0f130547e36",
+      "copy": "evidence/objects/11184d36886934581c0b150fb384225080dde9be30376957315cf0f130547e36.json",
+      "bytes": 593
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4-production-A-37/CPP-ERRORS.txt",
+      "sha256": "f311ce47c48da7d751fe635f88b52a87efe0f87cde2399f240ce4d405bb869eb",
+      "copy": "evidence/objects/f311ce47c48da7d751fe635f88b52a87efe0f87cde2399f240ce4d405bb869eb.txt",
+      "bytes": 1436
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4-production-A-37/agent-run.json",
+      "sha256": "4fe4ad2164dbf67fb76a4482427a8754bff0a143fd4514b6ed0637f4744e2ddd",
+      "copy": "evidence/objects/4fe4ad2164dbf67fb76a4482427a8754bff0a143fd4514b6ed0637f4744e2ddd.json",
+      "bytes": 2971
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4-production-A-37/remote-runs/remote-4ac66defdc7f4f1fadded1ca055a5677/compiler-events.jsonl",
+      "sha256": "0d56dbdba461209d3b027541514ea10a0162fbd63ef9e39c946839d0c6c4ae99",
+      "copy": "evidence/objects/0d56dbdba461209d3b027541514ea10a0162fbd63ef9e39c946839d0c6c4ae99.jsonl",
+      "bytes": 2718
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4-production-A-37/remote-runs/remote-4ac66defdc7f4f1fadded1ca055a5677/receipt.json",
+      "sha256": "7166dd3af80d85eabdd2264fe1486fd01ad4378997b8c0c645256a71855a9503",
+      "copy": "evidence/objects/7166dd3af80d85eabdd2264fe1486fd01ad4378997b8c0c645256a71855a9503.json",
+      "bytes": 15166
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4-production-A-37/remote-runs/remote-4ac66defdc7f4f1fadded1ca055a5677/build.log",
+      "sha256": "c2802856e83787b39c5b47df2e2236aa1ead4d4d37b2e902f1a99164d2885912",
+      "copy": "evidence/objects/c2802856e83787b39c5b47df2e2236aa1ead4d4d37b2e902f1a99164d2885912.log",
+      "bytes": 3370
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4b-production-A-38/stderr.log",
+      "sha256": "dd86666ac371584834275fb414b98fd2a15e29e7d409ad921d701bb6af4f921c",
+      "copy": "evidence/objects/dd86666ac371584834275fb414b98fd2a15e29e7d409ad921d701bb6af4f921c.log",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4b-production-A-38/config.json",
+      "sha256": "f497cb4c03a7b1c83a89a96715ebae3a6ef714816d9a2b573d790819ca071c03",
+      "copy": "evidence/objects/f497cb4c03a7b1c83a89a96715ebae3a6ef714816d9a2b573d790819ca071c03.json",
+      "bytes": 640
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4b-production-A-38/stdout.log",
+      "sha256": "c3c34e3a571a026906123e08ed8bc6119d4623faf51842546262db46d119aa86",
+      "copy": "evidence/objects/c3c34e3a571a026906123e08ed8bc6119d4623faf51842546262db46d119aa86.log",
+      "bytes": 4432
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4b-production-A-38/IDENTITY.json",
+      "sha256": "bcd3cf846e191a27bfb6d11f4afe103f0e43987c471ff35798d155419f10d3cf",
+      "copy": "evidence/objects/bcd3cf846e191a27bfb6d11f4afe103f0e43987c471ff35798d155419f10d3cf.json",
+      "bytes": 37481
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4b-production-A-38/command.json",
+      "sha256": "3b6de4a9d9fc46c5b58cd2c7c2daed74236563d8352d40f2cec7ffab93998eae",
+      "copy": "evidence/objects/3b6de4a9d9fc46c5b58cd2c7c2daed74236563d8352d40f2cec7ffab93998eae.json",
+      "bytes": 594
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4b-production-A-38/CPP-ERRORS.txt",
+      "sha256": "d7b42b21ca5339c239c631ac0dca21873616355fcd0c0fddb7156d42f56a8257",
+      "copy": "evidence/objects/d7b42b21ca5339c239c631ac0dca21873616355fcd0c0fddb7156d42f56a8257.txt",
+      "bytes": 873
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4b-production-A-38/agent-run.json",
+      "sha256": "d0e13f442bd6cc7de8902976b96bfe73909acf317f082e157135088c66b3afed",
+      "copy": "evidence/objects/d0e13f442bd6cc7de8902976b96bfe73909acf317f082e157135088c66b3afed.json",
+      "bytes": 2974
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4b-production-A-38/remote-runs/remote-216cb29ef1a645f18f77b512dfb3e08d/compiler-events.jsonl",
+      "sha256": "5df9854b98ec80b026b91975bc8688259245acfad5d07d55a0af4fbf40fbbdc1",
+      "copy": "evidence/objects/5df9854b98ec80b026b91975bc8688259245acfad5d07d55a0af4fbf40fbbdc1.jsonl",
+      "bytes": 2717
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4b-production-A-38/remote-runs/remote-216cb29ef1a645f18f77b512dfb3e08d/receipt.json",
+      "sha256": "9be499bd72688c4a3eaa6ac2e7dd924b61b78d5cad1bdc453ac455700a999f70",
+      "copy": "evidence/objects/9be499bd72688c4a3eaa6ac2e7dd924b61b78d5cad1bdc453ac455700a999f70.json",
+      "bytes": 14636
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-complete-stage-v4b-production-A-38/remote-runs/remote-216cb29ef1a645f18f77b512dfb3e08d/build.log",
+      "sha256": "5b49dd59af811c71f0fc77dc0f13a20c7f46b09b573bc027f23b20c5abf9c337",
+      "copy": "evidence/objects/5b49dd59af811c71f0fc77dc0f13a20c7f46b09b573bc027f23b20c5abf9c337.log",
+      "bytes": 3328
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-main-fa8-v4c-production-A-39/stderr.log",
+      "sha256": "dd86666ac371584834275fb414b98fd2a15e29e7d409ad921d701bb6af4f921c",
+      "copy": "evidence/objects/dd86666ac371584834275fb414b98fd2a15e29e7d409ad921d701bb6af4f921c.log",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-main-fa8-v4c-production-A-39/config.json",
+      "sha256": "ac70806d1e286e74ec2889af39da8433b34dd8dc6a0385e86e937a2b954690a4",
+      "copy": "evidence/objects/ac70806d1e286e74ec2889af39da8433b34dd8dc6a0385e86e937a2b954690a4.json",
+      "bytes": 617
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-main-fa8-v4c-production-A-39/stdout.log",
+      "sha256": "c500ca12bac732161730fec221a5dce5ba075543245a0d1732523b066cf4b7dd",
+      "copy": "evidence/objects/c500ca12bac732161730fec221a5dce5ba075543245a0d1732523b066cf4b7dd.log",
+      "bytes": 4081
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-main-fa8-v4c-production-A-39/IDENTITY.json",
+      "sha256": "174ba51bd6da81c1cb244baf8c061a612a63aa290ab6340c5deb7d432805e1db",
+      "copy": "evidence/objects/174ba51bd6da81c1cb244baf8c061a612a63aa290ab6340c5deb7d432805e1db.json",
+      "bytes": 3411
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-main-fa8-v4c-production-A-39/command.json",
+      "sha256": "9910c7eebd20a3943996d1cb003df0dc886c2c1700a5550f897ef92e9928db23",
+      "copy": "evidence/objects/9910c7eebd20a3943996d1cb003df0dc886c2c1700a5550f897ef92e9928db23.json",
+      "bytes": 385
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-main-fa8-v4c-production-A-39/agent-run.json",
+      "sha256": "3b9d333fe88509f8eeb7e484b0e3713e84aa54881ef2ad6646c9a33ad6263451",
+      "copy": "evidence/objects/3b9d333fe88509f8eeb7e484b0e3713e84aa54881ef2ad6646c9a33ad6263451.json",
+      "bytes": 2952
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-main-fa8-v4c-production-A-39/remote-runs/remote-9c808ef76e55453aad075d273c7ff7da/compiler-events.jsonl",
+      "sha256": "907c0f162dfc98ae992ac6c9f188cafdc89e1fe8993d6fd0f743e68d838cbf73",
+      "copy": "evidence/objects/907c0f162dfc98ae992ac6c9f188cafdc89e1fe8993d6fd0f743e68d838cbf73.jsonl",
+      "bytes": 10769
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-main-fa8-v4c-production-A-39/remote-runs/remote-9c808ef76e55453aad075d273c7ff7da/receipt.json",
+      "sha256": "ab129796235bf9d4a105987527cdb57eb6920e0c112150eb207432eb75627b96",
+      "copy": "evidence/objects/ab129796235bf9d4a105987527cdb57eb6920e0c112150eb207432eb75627b96.json",
+      "bytes": 13147
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-main-fa8-v4c-production-A-39/remote-runs/remote-9c808ef76e55453aad075d273c7ff7da/build.log",
+      "sha256": "319163feabd45cd86e1904cd9ee15c60296b7fdaedddedea0c896d0bd25907d5",
+      "copy": "evidence/objects/319163feabd45cd86e1904cd9ee15c60296b7fdaedddedea0c896d0bd25907d5.log",
+      "bytes": 545
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-literal-predicate-v3-C-05/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy": "evidence/objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log",
+      "bytes": 0
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-literal-predicate-v3-C-05/native-command.json",
+      "sha256": "2caf35e5ef0e6a0d982ec54e70ebea4f04d1faa640dac41c70f78e4b35d2b4be",
+      "copy": "evidence/objects/2caf35e5ef0e6a0d982ec54e70ebea4f04d1faa640dac41c70f78e4b35d2b4be.json",
+      "bytes": 13006
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-literal-predicate-v3-C-05/config.json",
+      "sha256": "010c24722075c1243977dfe228f399f6ce0cfba1201a753a995e3d33a1516e8f",
+      "copy": "evidence/objects/010c24722075c1243977dfe228f399f6ce0cfba1201a753a995e3d33a1516e8f.json",
+      "bytes": 647
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-literal-predicate-v3-C-05/worker-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy": "evidence/objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-literal-predicate-v3-C-05/stdout.log",
+      "sha256": "00fd5c1de421eb2623c0147d19dacefbfa79f14435b0a4fe77145c72c8304c06",
+      "copy": "evidence/objects/00fd5c1de421eb2623c0147d19dacefbfa79f14435b0a4fe77145c72c8304c06.log",
+      "bytes": 4575
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-literal-predicate-v3-C-05/IDENTITY.json",
+      "sha256": "ab660c64176dd77f930eb3753aabc05ab691b161027a16fa602a0006d0ceff41",
+      "copy": "evidence/objects/ab660c64176dd77f930eb3753aabc05ab691b161027a16fa602a0006d0ceff41.json",
+      "bytes": 730
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-literal-predicate-v3-C-05/command.json",
+      "sha256": "fd3e0e7517d9c0b249a3fea526c508f86784847f357d28e9701020ec79096684",
+      "copy": "evidence/objects/fd3e0e7517d9c0b249a3fea526c508f86784847f357d28e9701020ec79096684.json",
+      "bytes": 154
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-literal-predicate-v3-C-05/agent-run.json",
+      "sha256": "538be2a14360098cdee960e842517f8f1462bb7b80b312fd5de9d9f6976282c5",
+      "copy": "evidence/objects/538be2a14360098cdee960e842517f8f1462bb7b80b312fd5de9d9f6976282c5.json",
+      "bytes": 2970
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-literal-predicate-v3-C-05/worker-stdout.log",
+      "sha256": "3d687e9435dae24f7b382e08c732852fa63c854312d3fe2dd7481838e0876a83",
+      "copy": "evidence/objects/3d687e9435dae24f7b382e08c732852fa63c854312d3fe2dd7481838e0876a83.log",
+      "bytes": 3479
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-literal-predicate-v3-C-05/remote-runs/remote-40a4821de0ac4f058c0a01bdd6834131/PROBE-RESULT.json",
+      "sha256": "2a2d8bf30adb5d85e9e0532fc7d9ed616876a46ac5b2619544dfdffdf43da0ae",
+      "copy": "evidence/objects/2a2d8bf30adb5d85e9e0532fc7d9ed616876a46ac5b2619544dfdffdf43da0ae.json",
+      "bytes": 2324
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-literal-predicate-v3-C-05/remote-runs/remote-40a4821de0ac4f058c0a01bdd6834131/formation.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy": "evidence/objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-literal-predicate-v3-C-05/remote-runs/remote-40a4821de0ac4f058c0a01bdd6834131/setup-summary.json",
+      "sha256": "dba9b74bedca303687231cd8107b96bc05575d67fd8c004b7cfdd509b6167b39",
+      "copy": "evidence/objects/dba9b74bedca303687231cd8107b96bc05575d67fd8c004b7cfdd509b6167b39.json",
+      "bytes": 367
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-literal-predicate-v3-C-05/remote-runs/remote-40a4821de0ac4f058c0a01bdd6834131/compiler-events.jsonl",
+      "sha256": "78d0b1876c6ba04b4936634058a487c0bbbc104761bc2756616d08026d6d8cda",
+      "copy": "evidence/objects/78d0b1876c6ba04b4936634058a487c0bbbc104761bc2756616d08026d6d8cda.jsonl",
+      "bytes": 1489
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-literal-predicate-v3-C-05/remote-runs/remote-40a4821de0ac4f058c0a01bdd6834131/receipt.json",
+      "sha256": "33092ed85686683732d1e5fba210aa4bb2dc05d594730fbfb1bad7cf7b3ae830",
+      "copy": "evidence/objects/33092ed85686683732d1e5fba210aa4bb2dc05d594730fbfb1bad7cf7b3ae830.json",
+      "bytes": 25970
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-literal-predicate-v3-C-05/remote-runs/remote-40a4821de0ac4f058c0a01bdd6834131/build.log",
+      "sha256": "24e51260812118962ab14c6af4efad7172dbe35915ca52cd08dcadefb82c6821",
+      "copy": "evidence/objects/24e51260812118962ab14c6af4efad7172dbe35915ca52cd08dcadefb82c6821.log",
+      "bytes": 1812
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-predicate-profiler-v3-C-06/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy": "evidence/objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-predicate-profiler-v3-C-06/native-command.json",
+      "sha256": "ccdcc94beb8b459f9abd6921fe9c6547a007dd7ca2d57e864d8370293cd6235e",
+      "copy": "evidence/objects/ccdcc94beb8b459f9abd6921fe9c6547a007dd7ca2d57e864d8370293cd6235e.json",
+      "bytes": 12217
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-predicate-profiler-v3-C-06/config.json",
+      "sha256": "d3f70339c3b9ce620ce57d9a594fa0fc3cc6287fac4ca00b539a3d399f8f0405",
+      "copy": "evidence/objects/d3f70339c3b9ce620ce57d9a594fa0fc3cc6287fac4ca00b539a3d399f8f0405.json",
+      "bytes": 648
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-predicate-profiler-v3-C-06/worker-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy": "evidence/objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-predicate-profiler-v3-C-06/stdout.log",
+      "sha256": "edaa913594bcaa310fd0c2e10937107ca65b574d3d4ff841a38f27f46792d773",
+      "copy": "evidence/objects/edaa913594bcaa310fd0c2e10937107ca65b574d3d4ff841a38f27f46792d773.log",
+      "bytes": 4223
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-predicate-profiler-v3-C-06/IDENTITY.json",
+      "sha256": "8bd5b63fb2b992d902852c3907a8cd0d1bb5b5b3bf946534f0c47d3574cd09e6",
+      "copy": "evidence/objects/8bd5b63fb2b992d902852c3907a8cd0d1bb5b5b3bf946534f0c47d3574cd09e6.json",
+      "bytes": 696
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-predicate-profiler-v3-C-06/command.json",
+      "sha256": "6993e62bc5a3869b5a3e486d2a6274254037f20fec91bd2e2c0ac449853bd1a3",
+      "copy": "evidence/objects/6993e62bc5a3869b5a3e486d2a6274254037f20fec91bd2e2c0ac449853bd1a3.json",
+      "bytes": 155
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-predicate-profiler-v3-C-06/agent-run.json",
+      "sha256": "efd178a3841621d3705b5181c4e2cffd95fdff04844a8169346acc31512e1df6",
+      "copy": "evidence/objects/efd178a3841621d3705b5181c4e2cffd95fdff04844a8169346acc31512e1df6.json",
+      "bytes": 2974
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-predicate-profiler-v3-C-06/worker-stdout.log",
+      "sha256": "40d62e20a24e8ec3e1bc85ee25aad7b00054e1504e3c6df8c07a1ab45900cecc",
+      "copy": "evidence/objects/40d62e20a24e8ec3e1bc85ee25aad7b00054e1504e3c6df8c07a1ab45900cecc.log",
+      "bytes": 3124
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-predicate-profiler-v3-C-06/remote-runs/remote-cb14d9983e47497fb6f39198919543f3/PROBE-RESULT.json",
+      "sha256": "2254622070f3787879119328f53b5fe2853080f5529fd132ac6649c10ab54737",
+      "copy": "evidence/objects/2254622070f3787879119328f53b5fe2853080f5529fd132ac6649c10ab54737.json",
+      "bytes": 2383
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-predicate-profiler-v3-C-06/remote-runs/remote-cb14d9983e47497fb6f39198919543f3/formation.log",
+      "sha256": "286b8a199deb73977e2f2d2222e975c6d9025e6b6f791ce92a9ce3fd74c27a5c",
+      "copy": "evidence/objects/286b8a199deb73977e2f2d2222e975c6d9025e6b6f791ce92a9ce3fd74c27a5c.log",
+      "bytes": 8192
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-predicate-profiler-v3-C-06/remote-runs/remote-cb14d9983e47497fb6f39198919543f3/setup-summary.json",
+      "sha256": "dba9b74bedca303687231cd8107b96bc05575d67fd8c004b7cfdd509b6167b39",
+      "copy": "evidence/objects/dba9b74bedca303687231cd8107b96bc05575d67fd8c004b7cfdd509b6167b39.json",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-predicate-profiler-v3-C-06/remote-runs/remote-cb14d9983e47497fb6f39198919543f3/compiler-events.jsonl",
+      "sha256": "03064bbe61afba1bda0ef8a1e9b3b1a3ce2dbd3f3846979568d1679a1d863ad5",
+      "copy": "evidence/objects/03064bbe61afba1bda0ef8a1e9b3b1a3ce2dbd3f3846979568d1679a1d863ad5.jsonl",
+      "bytes": 1603
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-predicate-profiler-v3-C-06/remote-runs/remote-cb14d9983e47497fb6f39198919543f3/receipt.json",
+      "sha256": "811fb95d79e02e8eb0786fa3d2b5e3aea813832dce77c4a94dcee12bc8c86b45",
+      "copy": "evidence/objects/811fb95d79e02e8eb0786fa3d2b5e3aea813832dce77c4a94dcee12bc8c86b45.json",
+      "bytes": 24379
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-predicate-profiler-v3-C-06/remote-runs/remote-cb14d9983e47497fb6f39198919543f3/build.log",
+      "sha256": "d5e4b426dfc6008c2c5a28e6fe8a4cf078908d3e41008dd6f1d961277c239452",
+      "copy": "evidence/objects/d5e4b426dfc6008c2c5a28e6fe8a4cf078908d3e41008dd6f1d961277c239452.log",
+      "bytes": 1853
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-prefix-v3-C-03/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy": "evidence/objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-prefix-v3-C-03/native-command.json",
+      "sha256": "b3b26d86f3553a3dc3794da958e1eb387e2a8cb052a8f00cef2a6a6102f8ad38",
+      "copy": "evidence/objects/b3b26d86f3553a3dc3794da958e1eb387e2a8cb052a8f00cef2a6a6102f8ad38.json",
+      "bytes": 11981
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-prefix-v3-C-03/config.json",
+      "sha256": "c40ed83da3ab348a7d4baef8590277ac15a15bbc05d23569f7332526e836f326",
+      "copy": "evidence/objects/c40ed83da3ab348a7d4baef8590277ac15a15bbc05d23569f7332526e836f326.json",
+      "bytes": 636
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-prefix-v3-C-03/worker-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy": "evidence/objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-prefix-v3-C-03/stdout.log",
+      "sha256": "bbdf28f71c2d97f7bc765601f7dc44e47d12fbae7aec6f48a1f54f35c1cf84af",
+      "copy": "evidence/objects/bbdf28f71c2d97f7bc765601f7dc44e47d12fbae7aec6f48a1f54f35c1cf84af.log",
+      "bytes": 4662
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-prefix-v3-C-03/IDENTITY.json",
+      "sha256": "7f6c9fb5431e8bfe4d9877731dfbafc57e01ad2e537aa94b3d8a69558451855f",
+      "copy": "evidence/objects/7f6c9fb5431e8bfe4d9877731dfbafc57e01ad2e537aa94b3d8a69558451855f.json",
+      "bytes": 918
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-prefix-v3-C-03/command.json",
+      "sha256": "bcdc68fa3771444a65d1f59ef42a4dae4eaf98aa4fd54da2a74ca96e72e920c9",
+      "copy": "evidence/objects/bcdc68fa3771444a65d1f59ef42a4dae4eaf98aa4fd54da2a74ca96e72e920c9.json",
+      "bytes": 143
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-prefix-v3-C-03/agent-run.json",
+      "sha256": "210a4b21ee9c5cf65ffc034d1f6b548b3cc801dc4dfcc13f39032762e58403e2",
+      "copy": "evidence/objects/210a4b21ee9c5cf65ffc034d1f6b548b3cc801dc4dfcc13f39032762e58403e2.json",
+      "bytes": 2926
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-prefix-v3-C-03/worker-stdout.log",
+      "sha256": "49d66ed05482c7c4b49b8224da68a032b5ffdecafb17102fb3bbcaf5bde19bba",
+      "copy": "evidence/objects/49d66ed05482c7c4b49b8224da68a032b5ffdecafb17102fb3bbcaf5bde19bba.log",
+      "bytes": 3599
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-prefix-v3-C-03/remote-runs/remote-9c09a4013efb471cb847fd1147c1bb27/PROBE-RESULT.json",
+      "sha256": "5e4793b802130e9d6eaac0aa9002327fb30d3d4a12d8cb5fc9ce3e2ee6083991",
+      "copy": "evidence/objects/5e4793b802130e9d6eaac0aa9002327fb30d3d4a12d8cb5fc9ce3e2ee6083991.json",
+      "bytes": 2309
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-prefix-v3-C-03/remote-runs/remote-9c09a4013efb471cb847fd1147c1bb27/formation.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy": "evidence/objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-prefix-v3-C-03/remote-runs/remote-9c09a4013efb471cb847fd1147c1bb27/setup-summary.json",
+      "sha256": "dba9b74bedca303687231cd8107b96bc05575d67fd8c004b7cfdd509b6167b39",
+      "copy": "evidence/objects/dba9b74bedca303687231cd8107b96bc05575d67fd8c004b7cfdd509b6167b39.json",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-prefix-v3-C-03/remote-runs/remote-9c09a4013efb471cb847fd1147c1bb27/compiler-events.jsonl",
+      "sha256": "93dbf848f5b4bf5d7bb3952f311773ee8676ffb6b0a8352c1c0585f99f7e6996",
+      "copy": "evidence/objects/93dbf848f5b4bf5d7bb3952f311773ee8676ffb6b0a8352c1c0585f99f7e6996.jsonl",
+      "bytes": 1488
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-prefix-v3-C-03/remote-runs/remote-9c09a4013efb471cb847fd1147c1bb27/receipt.json",
+      "sha256": "f37c368b244176c60c4c76ed9392de0f43edf6c93d306652c397b6d0683d29f7",
+      "copy": "evidence/objects/f37c368b244176c60c4c76ed9392de0f43edf6c93d306652c397b6d0683d29f7.json",
+      "bytes": 25200
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-prefix-v3-C-03/remote-runs/remote-9c09a4013efb471cb847fd1147c1bb27/build.log",
+      "sha256": "31e686bf45635e008d2e4d38396e42d9cd4f67e02449bebb5fe470e10f4d3407",
+      "copy": "evidence/objects/31e686bf45635e008d2e4d38396e42d9cd4f67e02449bebb5fe470e10f4d3407.log",
+      "bytes": 1803
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-iso-v3-C-04/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy": "evidence/objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-iso-v3-C-04/native-command.json",
+      "sha256": "5ec6cf6a48a419e7a9b51d3798d33420b23e9b88f1e150f540bf8bd0dfcffe8a",
+      "copy": "evidence/objects/5ec6cf6a48a419e7a9b51d3798d33420b23e9b88f1e150f540bf8bd0dfcffe8a.json",
+      "bytes": 9688
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-iso-v3-C-04/config.json",
+      "sha256": "e0b7c2f65ea31b55ee86a8be71e9dc740d209e58d3ebb92baca2e0f16ab8ceda",
+      "copy": "evidence/objects/e0b7c2f65ea31b55ee86a8be71e9dc740d209e58d3ebb92baca2e0f16ab8ceda.json",
+      "bytes": 639
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-iso-v3-C-04/worker-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy": "evidence/objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-iso-v3-C-04/stdout.log",
+      "sha256": "63eabb9a8ac3fd0fae851b6adf15ba2fe29efd98be721344a1e2528d38e62119",
+      "copy": "evidence/objects/63eabb9a8ac3fd0fae851b6adf15ba2fe29efd98be721344a1e2528d38e62119.log",
+      "bytes": 4479
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-iso-v3-C-04/IDENTITY.json",
+      "sha256": "3f185f3f6abc4ead19dc7cbeafe6bd691a98c23e41ed18aa8b8eb038f507386a",
+      "copy": "evidence/objects/3f185f3f6abc4ead19dc7cbeafe6bd691a98c23e41ed18aa8b8eb038f507386a.json",
+      "bytes": 726
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-iso-v3-C-04/command.json",
+      "sha256": "5f90be11b3415083d13510e07da58ed502819379b9233df11fa9e26ada02277f",
+      "copy": "evidence/objects/5f90be11b3415083d13510e07da58ed502819379b9233df11fa9e26ada02277f.json",
+      "bytes": 146
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-iso-v3-C-04/agent-run.json",
+      "sha256": "a366ff17cc79014d59096b458f68c43397377e39eb6da8650af3f592f1d2ce6c",
+      "copy": "evidence/objects/a366ff17cc79014d59096b458f68c43397377e39eb6da8650af3f592f1d2ce6c.json",
+      "bytes": 2937
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-iso-v3-C-04/worker-stdout.log",
+      "sha256": "2a7a9ae4c6add56b74b68b5b26fe6fb6bfa8aa6d90e557216ee7079dff9939ce",
+      "copy": "evidence/objects/2a7a9ae4c6add56b74b68b5b26fe6fb6bfa8aa6d90e557216ee7079dff9939ce.log",
+      "bytes": 3407
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-iso-v3-C-04/remote-runs/remote-8cb254d2cb0a4dd99c7af01623fa5e22/PROBE-RESULT.json",
+      "sha256": "41a3be27a776a02e97dafb9a46366382f54948e2c5b3e4eddf69206594252b95",
+      "copy": "evidence/objects/41a3be27a776a02e97dafb9a46366382f54948e2c5b3e4eddf69206594252b95.json",
+      "bytes": 2373
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-iso-v3-C-04/remote-runs/remote-8cb254d2cb0a4dd99c7af01623fa5e22/formation.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy": "evidence/objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-iso-v3-C-04/remote-runs/remote-8cb254d2cb0a4dd99c7af01623fa5e22/setup-summary.json",
+      "sha256": "dba9b74bedca303687231cd8107b96bc05575d67fd8c004b7cfdd509b6167b39",
+      "copy": "evidence/objects/dba9b74bedca303687231cd8107b96bc05575d67fd8c004b7cfdd509b6167b39.json",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-iso-v3-C-04/remote-runs/remote-8cb254d2cb0a4dd99c7af01623fa5e22/compiler-events.jsonl",
+      "sha256": "113ba28d6e5bcd21bfa8e65b86f94a706e40c27af727dcb6df38f1cd381b82ef",
+      "copy": "evidence/objects/113ba28d6e5bcd21bfa8e65b86f94a706e40c27af727dcb6df38f1cd381b82ef.jsonl",
+      "bytes": 1662
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-iso-v3-C-04/remote-runs/remote-8cb254d2cb0a4dd99c7af01623fa5e22/receipt.json",
+      "sha256": "fed819ad7d47fdf9b792ffa3a4425337ff143b3762c388ba85448cffb3fcc618",
+      "copy": "evidence/objects/fed819ad7d47fdf9b792ffa3a4425337ff143b3762c388ba85448cffb3fcc618.json",
+      "bytes": 22483
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-iso-v3-C-04/remote-runs/remote-8cb254d2cb0a4dd99c7af01623fa5e22/build.log",
+      "sha256": "a01e11afe6554de72bb7bbf855aa5d6a77ee8e2f60ba3eef72e329a1b1e2061b",
+      "copy": "evidence/objects/a01e11afe6554de72bb7bbf855aa5d6a77ee8e2f60ba3eef72e329a1b1e2061b.log",
+      "bytes": 1858
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-predicate-v4-C-07/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy": "evidence/objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-predicate-v4-C-07/native-command.json",
+      "sha256": "67ee2c3994a728107a7f8209e3b5f1ff08b0ba171338d9831b5cd5e6daa5ace3",
+      "copy": "evidence/objects/67ee2c3994a728107a7f8209e3b5f1ff08b0ba171338d9831b5cd5e6daa5ace3.json",
+      "bytes": 13877
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-predicate-v4-C-07/config.json",
+      "sha256": "7f42e617eff946397784d380dedda1a581b87712c25deccb362b52c67f916252",
+      "copy": "evidence/objects/7f42e617eff946397784d380dedda1a581b87712c25deccb362b52c67f916252.json",
+      "bytes": 645
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-predicate-v4-C-07/worker-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy": "evidence/objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-predicate-v4-C-07/stdout.log",
+      "sha256": "d51496653d00ad52e924c4d3c75526c865bbb2689a3bb7f2891c26dd9e960f07",
+      "copy": "evidence/objects/d51496653d00ad52e924c4d3c75526c865bbb2689a3bb7f2891c26dd9e960f07.log",
+      "bytes": 4337
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-predicate-v4-C-07/IDENTITY.json",
+      "sha256": "e4e567b70d12f224bfd7edfd499bbba781eb53f1826dcf34f7657dd13a983e70",
+      "copy": "evidence/objects/e4e567b70d12f224bfd7edfd499bbba781eb53f1826dcf34f7657dd13a983e70.json",
+      "bytes": 664
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-predicate-v4-C-07/command.json",
+      "sha256": "aad84624f8548784bfba19a97831fc89a4a4d2aa3dcaff784908be2beb49fc77",
+      "copy": "evidence/objects/aad84624f8548784bfba19a97831fc89a4a4d2aa3dcaff784908be2beb49fc77.json",
+      "bytes": 152
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-predicate-v4-C-07/agent-run.json",
+      "sha256": "b222d22a0f06fdaea547f2ff2d3d39133096f4f0fa687bec09410a75825db26f",
+      "copy": "evidence/objects/b222d22a0f06fdaea547f2ff2d3d39133096f4f0fa687bec09410a75825db26f.json",
+      "bytes": 2962
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-predicate-v4-C-07/worker-stdout.log",
+      "sha256": "7835d7f41fb3da26dc511884cc78d1730a7eca38308eb9e0986eb0d3c39179e9",
+      "copy": "evidence/objects/7835d7f41fb3da26dc511884cc78d1730a7eca38308eb9e0986eb0d3c39179e9.log",
+      "bytes": 3247
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-predicate-v4-C-07/remote-runs/remote-ac081ee3fc3342ffbff67a5859893f44/PROBE-RESULT.json",
+      "sha256": "7c639a34879c53c7b410addebd92536217d2d971cbb508979c4710954080e1ea",
+      "copy": "evidence/objects/7c639a34879c53c7b410addebd92536217d2d971cbb508979c4710954080e1ea.json",
+      "bytes": 2351
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-predicate-v4-C-07/remote-runs/remote-ac081ee3fc3342ffbff67a5859893f44/formation.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy": "evidence/objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-predicate-v4-C-07/remote-runs/remote-ac081ee3fc3342ffbff67a5859893f44/setup-summary.json",
+      "sha256": "dba9b74bedca303687231cd8107b96bc05575d67fd8c004b7cfdd509b6167b39",
+      "copy": "evidence/objects/dba9b74bedca303687231cd8107b96bc05575d67fd8c004b7cfdd509b6167b39.json",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-predicate-v4-C-07/remote-runs/remote-ac081ee3fc3342ffbff67a5859893f44/compiler-events.jsonl",
+      "sha256": "a5d49b9c6cce4e8b5faef7fb2dbc1e18a88aed5f295441e8ec004ef1a04de394",
+      "copy": "evidence/objects/a5d49b9c6cce4e8b5faef7fb2dbc1e18a88aed5f295441e8ec004ef1a04de394.jsonl",
+      "bytes": 1662
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-predicate-v4-C-07/remote-runs/remote-ac081ee3fc3342ffbff67a5859893f44/receipt.json",
+      "sha256": "f425501b67f4db695e67eb02e0f67b1df946af76b3c9a03d614ebe3fc6527e3c",
+      "copy": "evidence/objects/f425501b67f4db695e67eb02e0f67b1df946af76b3c9a03d614ebe3fc6527e3c.json",
+      "bytes": 26318
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-generic-stage-predicate-v4-C-07/remote-runs/remote-ac081ee3fc3342ffbff67a5859893f44/build.log",
+      "sha256": "67aff2cc695b0ddf00bc12d9fcb9040b9c9d9b82923a86b9b99f584bf61f6426",
+      "copy": "evidence/objects/67aff2cc695b0ddf00bc12d9fcb9040b9c9d9b82923a86b9b99f584bf61f6426.log",
+      "bytes": 1836
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-v4b-flushed-producer-phases-C-08/stderr.log",
+      "sha256": "eb5f1fa5033bd79fe07416a9416ebeaeaf16a006d3124f7a7ba889556570d076",
+      "copy": "evidence/objects/eb5f1fa5033bd79fe07416a9416ebeaeaf16a006d3124f7a7ba889556570d076.log",
+      "bytes": 142
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-v4b-flushed-producer-phases-C-08/native-command.json",
+      "sha256": "95296601f3203eadb95e42c5b51dca51b4287c565faa774a53232ff6dfb501ac",
+      "copy": "evidence/objects/95296601f3203eadb95e42c5b51dca51b4287c565faa774a53232ff6dfb501ac.json",
+      "bytes": 18776
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-v4b-flushed-producer-phases-C-08/config.json",
+      "sha256": "e449ce8d93f165c840dc19826e2f4e01df59258305a2b6721c0a1f5b424c8dd8",
+      "copy": "evidence/objects/e449ce8d93f165c840dc19826e2f4e01df59258305a2b6721c0a1f5b424c8dd8.json",
+      "bytes": 646
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-v4b-flushed-producer-phases-C-08/worker-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy": "evidence/objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-v4b-flushed-producer-phases-C-08/stdout.log",
+      "sha256": "562e83bd99af5483d01c6f1c37b4f794bc3cae97ff578c6623eb70815f71a750",
+      "copy": "evidence/objects/562e83bd99af5483d01c6f1c37b4f794bc3cae97ff578c6623eb70815f71a750.log",
+      "bytes": 4347
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-v4b-flushed-producer-phases-C-08/IDENTITY.json",
+      "sha256": "9537b4035d4b88000aa66e37c2a17405b636c87cf3fd2f9a13e30acc221e2d81",
+      "copy": "evidence/objects/9537b4035d4b88000aa66e37c2a17405b636c87cf3fd2f9a13e30acc221e2d81.json",
+      "bytes": 860
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-v4b-flushed-producer-phases-C-08/command.json",
+      "sha256": "971944a333d99cc3e8eb691a2cd3471ea1678d48895d693a77f85ddf0ceb1786",
+      "copy": "evidence/objects/971944a333d99cc3e8eb691a2cd3471ea1678d48895d693a77f85ddf0ceb1786.json",
+      "bytes": 153
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-v4b-flushed-producer-phases-C-08/agent-run.json",
+      "sha256": "8b0537c17b1e9b76d50bc83429e9d85fab5944ecf3fa52044e23a3d13610a8d7",
+      "copy": "evidence/objects/8b0537c17b1e9b76d50bc83429e9d85fab5944ecf3fa52044e23a3d13610a8d7.json",
+      "bytes": 2969
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-v4b-flushed-producer-phases-C-08/ADMISSION-GUARD-STOP.json",
+      "sha256": "f8ca6ec2c2b5d18d1e27e4a76538fbbd1bfa9429971f63fa6f70650f8396e448",
+      "copy": "evidence/objects/f8ca6ec2c2b5d18d1e27e4a76538fbbd1bfa9429971f63fa6f70650f8396e448.json",
+      "bytes": 266
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-v4b-flushed-producer-phases-C-08/worker-stdout.log",
+      "sha256": "65b7eb2c9fc614bf768ba9a96d85e6e64b9dc431adca41e9440c8329e297f183",
+      "copy": "evidence/objects/65b7eb2c9fc614bf768ba9a96d85e6e64b9dc431adca41e9440c8329e297f183.log",
+      "bytes": 3243
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-v4b-flushed-producer-phases-C-08/remote-runs/remote-7b5a87504cb74da4b458178c0e698cb7/formation.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy": "evidence/objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-v4b-flushed-producer-phases-C-08/remote-runs/remote-7b5a87504cb74da4b458178c0e698cb7/setup-summary.json",
+      "sha256": "dba9b74bedca303687231cd8107b96bc05575d67fd8c004b7cfdd509b6167b39",
+      "copy": "evidence/objects/dba9b74bedca303687231cd8107b96bc05575d67fd8c004b7cfdd509b6167b39.json",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-v4b-flushed-producer-phases-C-08/remote-runs/remote-7b5a87504cb74da4b458178c0e698cb7/compiler-events.jsonl",
+      "sha256": "4ab3f8946e1b07bcc66ac8c905ee5df930846ed48e2fce84b3e816ed53577f28",
+      "copy": "evidence/objects/4ab3f8946e1b07bcc66ac8c905ee5df930846ed48e2fce84b3e816ed53577f28.jsonl",
+      "bytes": 1489
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-v4b-flushed-producer-phases-C-08/remote-runs/remote-7b5a87504cb74da4b458178c0e698cb7/receipt.json",
+      "sha256": "3400a0d98d3ded6b65b2604402289aa50aaab697f836922349b03ac59ab8e834",
+      "copy": "evidence/objects/3400a0d98d3ded6b65b2604402289aa50aaab697f836922349b03ac59ab8e834.json",
+      "bytes": 31235
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/h1-v4b-flushed-producer-phases-C-08/remote-runs/remote-7b5a87504cb74da4b458178c0e698cb7/build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy": "evidence/objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log",
+      "disposition": "exact duplicate"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/PROBE-generic-prefix-v3.json",
+      "sha256": "44709c7d51941274b6b8d163400839770e94c82e5383c4497466ee3390742e26",
+      "copy": "evidence/objects/44709c7d51941274b6b8d163400839770e94c82e5383c4497466ee3390742e26.json",
+      "bytes": 3023
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/PROBE-affine-presentation-helper.json",
+      "sha256": "c092b3d47beb3957347061a251435f0b133832a830fbe51db458123dfdcd53ea",
+      "copy": "evidence/objects/c092b3d47beb3957347061a251435f0b133832a830fbe51db458123dfdcd53ea.json",
+      "bytes": 3754
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/PROBE-generic-prefix-and-producer-phases-v4b.json",
+      "sha256": "815b23f93bf4c6b7118321138ca730851b230831b6cde2877fb7f0486a29891d",
+      "copy": "evidence/objects/815b23f93bf4c6b7118321138ca730851b230831b6cde2877fb7f0486a29891d.json",
+      "bytes": 3853
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/PROBE-generic-predicate-profiler-v3.json",
+      "sha256": "794b64f23125108a143052161e71006cad4d462348b45c52a4239933dbf8f386",
+      "copy": "evidence/objects/794b64f23125108a143052161e71006cad4d462348b45c52a4239933dbf8f386.json",
+      "bytes": 3249
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/PROBE-generic-literal-predicate-v3.json",
+      "sha256": "e00de3ea8480beec6144a57fd43611fba1eadc8c01de25554cad2c777059c776",
+      "copy": "evidence/objects/e00de3ea8480beec6144a57fd43611fba1eadc8c01de25554cad2c777059c776.json",
+      "bytes": 4188
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/PROBE-affine-main-fa8-body-phases.json",
+      "sha256": "8033d98fb4606508e931e47a5cde7b0975b60ce053aaf7b03fd0394745dcac0e",
+      "copy": "evidence/objects/8033d98fb4606508e931e47a5cde7b0975b60ce053aaf7b03fd0394745dcac0e.json",
+      "bytes": 3280
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/PROBE-generic-stage-iso-v3.json",
+      "sha256": "3ad2e7e3a06d62cabc2754df61bb413fb4a7537cbd6472c52bbb202f4e85e40d",
+      "copy": "evidence/objects/3ad2e7e3a06d62cabc2754df61bb413fb4a7537cbd6472c52bbb202f4e85e40d.json",
+      "bytes": 3610
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/PROBE-generic-imports-v3.json",
+      "sha256": "d38c72b94253e02409a25abb4b815f89c11f01c498ce06dc91052fd3d0967b8b",
+      "copy": "evidence/objects/d38c72b94253e02409a25abb4b815f89c11f01c498ce06dc91052fd3d0967b8b.json",
+      "bytes": 3409
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/PROBE-generic-prefix-and-producer-flushed-v4b.json",
+      "sha256": "82b46446f7f1286af8612779a43284ebbc150191a332be283c7b8b4f15de7798",
+      "copy": "evidence/objects/82b46446f7f1286af8612779a43284ebbc150191a332be283c7b8b4f15de7798.json",
+      "bytes": 4822
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/PROBE-generic-producer-phases-v4b.json",
+      "sha256": "3baa6afd09d941e7c43438e0c2df53712c6455cf92378d295c6a2891b26eaaca",
+      "copy": "evidence/objects/3baa6afd09d941e7c43438e0c2df53712c6455cf92378d295c6a2891b26eaaca.json",
+      "bytes": 2778
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/PROBE-generic-stage-predicate-v4.json",
+      "sha256": "1a891e3bc4a16913acf6795bf9537a065122b06e8eb6a8f7951d6b51f3a7dc47",
+      "copy": "evidence/objects/1a891e3bc4a16913acf6795bf9537a065122b06e8eb6a8f7951d6b51f3a7dc47.json",
+      "bytes": 4022
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/PROBE-affine-main-fa8-statement.json",
+      "sha256": "a8c8f91ac8fee24fc5631816d273df00537116a024ec5cac775a45e9e2a99ee9",
+      "copy": "evidence/objects/a8c8f91ac8fee24fc5631816d273df00537116a024ec5cac775a45e9e2a99ee9.json",
+      "bytes": 3338
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/READY-generic-consumer-v3.json",
+      "sha256": "8bc5ee1ad32fdd4373794695927e0564e7ecce36863fc7fdd9c2a817b7d14735",
+      "copy": "evidence/objects/8bc5ee1ad32fdd4373794695927e0564e7ecce36863fc7fdd9c2a817b7d14735.json",
+      "bytes": 5163
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/READY-generic-complete-stage-v4c-omit.json",
+      "sha256": "5104ffb53adc075ad09085edbb2bac808ba2086d981de5ab49e2070f96f9ee41",
+      "copy": "evidence/objects/5104ffb53adc075ad09085edbb2bac808ba2086d981de5ab49e2070f96f9ee41.json",
+      "bytes": 5719
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/READY-generic-complete-stage-v4.json",
+      "sha256": "a7bc9fcc603aa41cf09552cebbe6db74d00accddd838c390967549faca3320a5",
+      "copy": "evidence/objects/a7bc9fcc603aa41cf09552cebbe6db74d00accddd838c390967549faca3320a5.json",
+      "bytes": 5706
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/READY-generic-complete-stage-v4b.json",
+      "sha256": "aac11110490f75c6864e7e31f81effc401e211e506e4682d025f601aef49c6ac",
+      "copy": "evidence/objects/aac11110490f75c6864e7e31f81effc401e211e506e4682d025f601aef49c6ac.json",
+      "bytes": 6958
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/MAIN-FA8-SUCCESS-v4c-A39.json",
+      "sha256": "04b8e2109b67c1546b8a6c906214608cd5bc1dbd812a6514a5cbfc1cd38c7744",
+      "copy": "evidence/objects/04b8e2109b67c1546b8a6c906214608cd5bc1dbd812a6514a5cbfc1cd38c7744.json",
+      "bytes": 8330
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/CURRENT-CONTEXT-SUCCESS-v3-A36.json",
+      "sha256": "0551900b6c136194ab6bf453243669cf92b069b43b5b1b5b53d9dca8cea3fb65",
+      "copy": "evidence/objects/0551900b6c136194ab6bf453243669cf92b069b43b5b1b5b53d9dca8cea3fb65.json",
+      "bytes": 7008
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/SPLIT-REFINEMENT-SUCCESS.json",
+      "sha256": "e06ac5c4815bbb5243cb1ce7d18a55fc681021a0e26eb7409994f215a8b6c94c",
+      "copy": "evidence/objects/e06ac5c4815bbb5243cb1ce7d18a55fc681021a0e26eb7409994f215a8b6c94c.json",
+      "bytes": 10432
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/baseline/H1-SUCCESS.json",
+      "sha256": "62ea2711bf0abee5212928edc19244b4560b6ceec790cb70e4f92506379b5033",
+      "copy": "evidence/objects/62ea2711bf0abee5212928edc19244b4560b6ceec790cb70e4f92506379b5033.json",
+      "bytes": 4946
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/baseline/GenericH1ClassEffacement.lean",
+      "sha256": "72835d90598631923a192ed7799577dbf492b73b9cb7e51cfaf422b1dc27c2f3",
+      "copy": "evidence/objects/72835d90598631923a192ed7799577dbf492b73b9cb7e51cfaf422b1dc27c2f3.lean",
+      "bytes": 15737
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/accepted-v3-eaa/Family.lean",
+      "sha256": "3032e8f9d164b664bfbdc237fff3613f681f27190174fe72165b932b527d4d9d",
+      "disposition": "identical current live source; no snapshot copy"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/accepted-v3-eaa/GenericH1ClassEffacement.lean",
+      "sha256": "97596b2c42aca3d256103db8cec9ca93b35c41075a15877bda83d488b379af9c",
+      "disposition": "identical current live source; no snapshot copy"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/accepted-v3-eaa/Generic.lean",
+      "sha256": "fe5248fafa44fd2df5d1e5650045aa7192ef302350cf44546626abc43f44548f",
+      "copy": "evidence/objects/fe5248fafa44fd2df5d1e5650045aa7192ef302350cf44546626abc43f44548f.lean",
+      "bytes": 7654
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/accepted-v3-eaa/Separable.lean",
+      "sha256": "6e3140f9db1b17e162ca365e817bf1ba65b2feb2e38014a39e5712713726f70c",
+      "disposition": "identical current live source; no snapshot copy"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/accepted-v3-eaa/Affine.lean",
+      "sha256": "4d01074eb6cc917979d56b7e27c87034c8729881d886f0053257520d98f61967",
+      "disposition": "identical current live source; no snapshot copy"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/failed-v4-A37/Generic.lean",
+      "sha256": "0f90347a4708386f2f70bfd27e5edcff0680f92266c47c29ef9ef9ce02358990",
+      "copy": "evidence/objects/0f90347a4708386f2f70bfd27e5edcff0680f92266c47c29ef9ef9ce02358990.lean",
+      "bytes": 10232
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/h1-refactor/failed-v4b-A38/Generic.lean",
+      "sha256": "e2e2bb33724309403535eb471e0395719a36490093ea1dd7920a6799566cbf00",
+      "copy": "evidence/objects/e2e2bb33724309403535eb471e0395719a36490093ea1dd7920a6799566cbf00.lean",
+      "bytes": 10191
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/reviews/h1-generic-v4c/review-01.txt",
+      "sha256": "0825aba2638bbef51d7c87dcd25c1e93397a1221d5e5fb9419ed4a9c0396a882",
+      "copy": "evidence/objects/0825aba2638bbef51d7c87dcd25c1e93397a1221d5e5fb9419ed4a9c0396a882.txt",
+      "bytes": 8566
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/reviews/h1-generic-v4c/identity-01.json",
+      "sha256": "b2aaf4a95d85ee9e275219a607afb3b43069cc8f3245105fed05cfec6114168f",
+      "copy": "evidence/objects/b2aaf4a95d85ee9e275219a607afb3b43069cc8f3245105fed05cfec6114168f.json",
+      "bytes": 8958
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/refresh-2f/MANIFEST.json",
+      "sha256": "2d7cdc3b64ae047cd3cb6d04d152fa7cf6b4632d7f8c6791919a9279556da861",
+      "copy": "evidence/objects/2d7cdc3b64ae047cd3cb6d04d152fa7cf6b4632d7f8c6791919a9279556da861.json",
+      "bytes": 38840
+    },
+    {
+      "source": "/private/tmp/r5-investigations/etale-c-20261102/h1-resume/generic-prefix-v3/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+      "sha256": "7db8ca42cb5db09c63eeab589de1000f62212da427bb912506145c50b9424a44",
+      "copy": "evidence/objects/7db8ca42cb5db09c63eeab589de1000f62212da427bb912506145c50b9424a44.lean",
+      "diagnostic_packet": "PROBE-generic-prefix-v3.json",
+      "disposition": "diagnostic source; status governed by its packet and actual run"
+    },
+    {
+      "source": "/private/tmp/r5-investigations/etale-c-20261102/h1-resume/affine-presentation-helper/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+      "sha256": "b8773ce0f3d59744b6d461909ec29e5da09c8d8bc307bace9484230e8cea8511",
+      "copy": "evidence/objects/b8773ce0f3d59744b6d461909ec29e5da09c8d8bc307bace9484230e8cea8511.lean",
+      "diagnostic_packet": "PROBE-affine-presentation-helper.json",
+      "disposition": "diagnostic source; status governed by its packet and actual run"
+    },
+    {
+      "source": "/private/tmp/r5-investigations/etale-c-20261102/h1-resume/generic-prefix-producer-phases-v4b/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+      "sha256": "9d1b64ebf86faef54ff9857cd92009e893c751031f5477d87707b6ab69e54f37",
+      "copy": "evidence/objects/9d1b64ebf86faef54ff9857cd92009e893c751031f5477d87707b6ab69e54f37.lean",
+      "diagnostic_packet": "PROBE-generic-prefix-and-producer-phases-v4b.json",
+      "disposition": "diagnostic source; status governed by its packet and actual run"
+    },
+    {
+      "source": "/private/tmp/r5-investigations/etale-c-20261102/h1-resume/generic-prefix-v3/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+      "sha256": "7db8ca42cb5db09c63eeab589de1000f62212da427bb912506145c50b9424a44",
+      "copy": "evidence/objects/7db8ca42cb5db09c63eeab589de1000f62212da427bb912506145c50b9424a44.lean",
+      "diagnostic_packet": "PROBE-generic-predicate-profiler-v3.json",
+      "disposition": "diagnostic source; status governed by its packet and actual run"
+    },
+    {
+      "source": "/private/tmp/r5-investigations/etale-c-20261102/h1-resume/generic-literal-predicate-v3/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+      "sha256": "0f5578cf8cd9d1cd7e3b7c8c2d9ddac5b2bbb78b2ace51317508f7c13f3bb4d2",
+      "copy": "evidence/objects/0f5578cf8cd9d1cd7e3b7c8c2d9ddac5b2bbb78b2ace51317508f7c13f3bb4d2.lean",
+      "diagnostic_packet": "PROBE-generic-literal-predicate-v3.json",
+      "disposition": "diagnostic source; status governed by its packet and actual run"
+    },
+    {
+      "source": "/private/tmp/r5-investigations/etale-c-20261102/h1-resume/affine-main-fa8-body-phases/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Affine.lean",
+      "sha256": "39489f84f4952fc05d69567edda89f058c9bf096dffa98b3a34da37a0decbd04",
+      "copy": "evidence/objects/39489f84f4952fc05d69567edda89f058c9bf096dffa98b3a34da37a0decbd04.lean",
+      "diagnostic_packet": "PROBE-affine-main-fa8-body-phases.json",
+      "disposition": "diagnostic source; status governed by its packet and actual run"
+    },
+    {
+      "source": "/private/tmp/r5-investigations/etale-c-20261102/h1-resume/generic-stage-iso-v3/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+      "sha256": "291e4e9eb905fab9851bd7f24eee60a7ecc6419497175827f5d83b9c5c3c12d4",
+      "copy": "evidence/objects/291e4e9eb905fab9851bd7f24eee60a7ecc6419497175827f5d83b9c5c3c12d4.lean",
+      "diagnostic_packet": "PROBE-generic-stage-iso-v3.json",
+      "disposition": "diagnostic source; status governed by its packet and actual run"
+    },
+    {
+      "source": "/private/tmp/r5-investigations/etale-c-20261102/h1-resume/generic-imports-v3/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+      "sha256": "d252109b0530653d067dcdfa17a3aa334e27d56de42cc419d8009fd96a6ab3b2",
+      "copy": "evidence/objects/d252109b0530653d067dcdfa17a3aa334e27d56de42cc419d8009fd96a6ab3b2.lean",
+      "diagnostic_packet": "PROBE-generic-imports-v3.json",
+      "disposition": "diagnostic source; status governed by its packet and actual run"
+    },
+    {
+      "source": "/private/tmp/r5-investigations/etale-c-20261102/h1-resume/generic-prefix-producer-flushed-v4b/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+      "sha256": "d8dfb418fa8bd9c0143d1ed31585edb9f076bf45369f28dfa19f783c2487f1ef",
+      "copy": "evidence/objects/d8dfb418fa8bd9c0143d1ed31585edb9f076bf45369f28dfa19f783c2487f1ef.lean",
+      "diagnostic_packet": "PROBE-generic-prefix-and-producer-flushed-v4b.json",
+      "disposition": "diagnostic source; status governed by its packet and actual run"
+    },
+    {
+      "source": "/private/tmp/r5-investigations/etale-c-20261102/h1-resume/generic-producer-phases-v4b/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+      "sha256": "b6a0bee0d3ff16f64c41ce1c8753818318c915e7b183e0b11de5c1e38c5f8726",
+      "copy": "evidence/objects/b6a0bee0d3ff16f64c41ce1c8753818318c915e7b183e0b11de5c1e38c5f8726.lean",
+      "diagnostic_packet": "PROBE-generic-producer-phases-v4b.json",
+      "disposition": "diagnostic source; status governed by its packet and actual run"
+    },
+    {
+      "source": "/private/tmp/r5-investigations/etale-c-20261102/h1-resume/generic-stage-predicate-v4/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+      "sha256": "d5e236e47ecd9011896149fe85d7be8d10d256f920a5bbd8c46b0568f7835324",
+      "copy": "evidence/objects/d5e236e47ecd9011896149fe85d7be8d10d256f920a5bbd8c46b0568f7835324.lean",
+      "diagnostic_packet": "PROBE-generic-stage-predicate-v4.json",
+      "disposition": "diagnostic source; status governed by its packet and actual run"
+    },
+    {
+      "source": "/private/tmp/r5-investigations/etale-c-20261102/h1-resume/affine-main-fa8-statement/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Affine.lean",
+      "sha256": "a00df3671f773cecf9322549a4eecec1f4dc199173edbb8678891d735ce87bf7",
+      "copy": "evidence/objects/a00df3671f773cecf9322549a4eecec1f4dc199173edbb8678891d735ce87bf7.lean",
+      "diagnostic_packet": "PROBE-affine-main-fa8-statement.json",
+      "disposition": "diagnostic source; status governed by its packet and actual run"
+    }
+  ],
+  "limitations": [
+    "A39 Separable reused cache; no fresh timing",
+    "performance optimization remains open; no matched benchmark",
+    "diagnostic status and completeness governed by each original receipt or record",
+    "current integration and final gates remain principal-owned"
+  ]
+}

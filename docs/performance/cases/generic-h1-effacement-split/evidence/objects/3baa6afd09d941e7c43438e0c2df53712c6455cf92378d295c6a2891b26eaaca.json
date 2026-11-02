@@ -1,0 +1,20 @@
+{
+  "status": "CONDITIONAL_DIAGNOSTIC_READY; DO_NOT_RUN_AFTER_SUCCESS",
+  "question": "If actual v4b stage producer still times out, locate the actual header/body/application/zero-transport boundary using trace-only markers in the unchanged producer proof.",
+  "run_condition": "Run only after A38/e2e2 actual producer whnf recurs or concrete equivalent feedback requires these phases. If A38 passes, do not execute this diagnostic.",
+  "actual_source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+  "actual_source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+  "actual_source_sha256": "e2e2bb33724309403535eb471e0395719a36490093ea1dd7920a6799566cbf00",
+  "scratch_root": "/private/tmp/r5-investigations/etale-c-20261102/h1-resume/generic-producer-phases-v4b",
+  "scratch_source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean",
+  "scratch_source_sha256": "b6a0bee0d3ff16f64c41ce1c8753818318c915e7b183e0b11de5c1e38c5f8726",
+  "qualified_root": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic",
+  "required_dependency_basis": "Exact frozen A38 actual retry source with Generic e2e2 and unchanged current d9/7fd/Mapsfb closure; runtime owner binds full source identity when this conditional question is activated.",
+  "setup": "Original native module/isModule/import/options and all three definitions retained. Add only eight trace tactics inside the actual private producer. Omit later public theorem to avoid downstream unknown-constant cascade. No changed producer arguments, extra haves, profiler flags, options, suppressions or native resource caps.",
+  "diagnostic_wall_bound_seconds": 300,
+  "wall_bound_reason": "This larger producer-phase diagnostic includes the already observed175.756-second definition prefix and failed producer seen around207 seconds.300 is a stopping bound for this new scope, not a heartbeat/memory/thread/compiler allowance change.",
+  "acceptance": "Return reached markers0\u20137 and actual diagnostics. Absent0 versus reached later markers guides header/body selection; marker arrival is not kernel completion. Unused-tactic trace lint findings are diagnostic-only and must be separated from whnf/name errors. No production CPP claim from this file.",
+  "evidence_boundary": "Conditional actual-producer phase probe, not a successful helper/theorem or performance result. Preserve acceptedfe52/eaa and both failed/changed v4 inputs; do not relabel old runtime output. No old69-minute baseline replay.",
+  "runtime_owner": "/root/resume_native",
+  "repair_owner": "/root/resume_h1"
+}

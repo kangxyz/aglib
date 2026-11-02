@@ -1,0 +1,138 @@
+Independent ordinary affected mathematical review — H1 v4c on main-fa8
+
+Verdict: ACCEPT fixed Generic c8f0d5b3 and its unchanged companions on the exact
+main-2f/selected-fa8 input described below. No new mathematical obligation was
+found in the Stage predicate, complete private producer or public callback.
+This is source/math review, not CPP, performance, source-adoption or established-
+status acceptance. The optional h/f alternative was not inspected or used.
+
+Result-specific conclusions
+
+GenericH1ClassEffacement#GenericPointedH1StageEffacement — ACCEPT definition
+correspondence. For one specified field L with the given K/L and k/L actions
+and scalar tower, this transparent definition is the L,C instance of the FULL
+original conclusion: finite source F/k, E finite over L, its embedding into
+AlgebraicClosure L, the same source map and ambient embedding triangle, a
+Galois cover over separableClosure k F, the original n^rank(Multiplicative C)
+order bound, the prescribed source point, and the literal original c-pullback
+zero along the complete displayed composite. No field, embedding, cover, point,
+order or zero clause is removed. E itself is not asserted separable over L;
+the effective separable coefficient stage remains separableClosure L E.
+
+GenericH1ClassEffacement#exists_generic_pointed_H1_stage_effacement
+(private) — ACCEPT its displayed conditional construction over ARBITRARY L.
+Under the original affine smooth relative-dimension-one geometrically connected
+source, its rational point, n>0 invertible in k, finite additive C killed by n,
+and the supplied original finite-constant d, coefficient arrow beta and equation
+hd on the actual L-stage, it proves that same full Stage assertion. It does not
+assume Stage, a cover, or a class-zero certificate. It constructs the affine
+cover/zero through the unchanged supplier and transports it to the original c.
+
+GenericH1ClassEffacement#GenericPointedH1Effacement — ACCEPT preservation of
+the original public assertion. Its old finite-Galois L, C, group/finite structures,
+canonical k/L tower and annihilator prefix remain unchanged. Unfolding the new
+Stage definition restores the entire old F/E/embedding/cover/point/order/zero
+tail exactly, modulo indentation. This is a transparent factoring of the same
+proposition, not a weakened or opaque replacement.
+
+NEWC4#generic-h1 / GenericH1ClassEffacement#exists_generic_pointed_H1_effacement
+— ACCEPT on current c8f0d5b3. The original generic H1 class is killed by the
+internally produced finite-Galois coefficient presentation, pointed separable
+source cover and displayed separable coefficient-stage composite, retaining
+its complete witnesses, point/order data and literal original pullback map.
+Conditions are unchanged: arbitrary CommRing B with its map to field K; k->K;
+qcqs e:Y->Spec B; the actual generic Cartesian square with affine smooth
+relative-dimension-one geometrically connected U/k and rational point; M from
+Spec B killed by n>0 invertible in k; and the original class in HasExt world eX.
+The field-stage worlds remain standard u+2, independent of eX.
+
+The unchanged original affine endpoint, genericCoefficientStageIso, familyGenericMap,
+familyGenericSquare and family endpoint retain their prior scoped conclusions
+and conditions. All seven original public names/types are preserved. No claim
+of a nongeneric neighborhood, arbitrary unpresented private class, whole C3/C4
+closure or removal of the public qcqs hypotheses is made.
+
+Affected proof/source correspondence
+
+The new Stage body matches the old literal existential tail after whitespace
+normalization. Its definition exposes the same F in AlgebraicClosure k and the
+same E,L actions. It is a normal transparent def, not an axiom, record premise,
+new chosen model or a quotient of the required data.
+
+The private producer body is the old v3 body from let eStage onward, byte-for-
+byte after removing ONLY the outer L/C/hC/hfin/hCn witness prefix from its final
+tuple. The new generalization from the already chosen finite-Galois carrier to
+arbitrary field L is justified by the actual suppliers:
+
+- genericCoefficientStageIso only requires the displayed field actions/tower
+  and original Cartesian square; no finite or Galois property of L is used.
+- exists_affine_separable_pointed_H1_effacement applies to arbitrary k->L.
+  It receives the SAME dStage, C, hCn, n, hunit and point. Its F,E,jE,a,Z,z and
+  exact order/point/zero assertions are retained together.
+- cohomologyPullback_zero_of_constant_coefficient_stage is the same map-level
+  transport on arbitrary scheme maps. It receives the SAME beta, hd, original
+  c, coefficient M, stage inverse and returned zero. The final associativity
+  equality is unchanged and acts on the full original pullback-zero proposition.
+
+Consequently L/K finiteness and the finite-Galois carrier representation are
+unneeded in this private construction; they remain present where the public
+coefficient-presentation consumer actually produces L. The private proof chooses
+no new closure or field copy. At public instantiation, AlgebraicClosure L and
+both separable subfields are the same selected objects as before. Field E's
+k-action is still the original composite through L. The group C uses the same
+hC supplied by the callback, hence also the same rank/order expression.
+
+The scoped `omit [QuasiCompact e] [QuasiSeparated e] in` applies only to the
+private stage theorem. Neither its stage isomorphism, affine producer on U,
+nor the map-level zero transport uses qcqs e once d,beta,hd are supplied.
+The section's original public qcqs context remains, and the PUBLIC proof still
+calls the same coefficient-presentation Consumer, which requires qcqs e to
+produce those data. No public geometric premise is silently removed.
+
+The public callback continues to receive the same eight arguments at universes
+u,eX,u+2,u+2, installs the same C structures and canonical k/L scalar tower,
+then invokes the private producer with exactly those arguments. Packaging
+L,C,hC,hfin,hCn,hstage gives the old complete public assertion. Arbitrary
+CommRing B is preserved: the unchanged Consumer fcb01e5a retains its explicit
+omission of domain/fraction-field assumptions. No global instance, new source
+hypothesis, Ext-world identification, scalar action or coefficient map enters.
+
+Exact input identity and retained boundary
+
+Candidate:
+/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/main-h1-followup/aglib
+HEAD: 2f17670f9ade927deeb6ea21d1c50c67a9e7842d.
+Frozen refresh-2f MANIFEST SHA256:
+2d7cdc3b64ae047cd3cb6d04d152fa7cf6b4632d7f8c6791919a9279556da861.
+All actual 24 source afterimages, two entry afterimages and five selected main
+provider files match it. This is the main-fa8 basis, not P's experimental d9
+Gluing plus three compensating consumer patches.
+
+Path prefix: Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/
+GenericH1ClassEffacement/Generic.lean
+  c8f0d5b3ec3cda5ef26532d524dcd73471f67d0b07df85abdd31400d0cd558f5
+GenericH1ClassEffacement/Separable.lean
+  6e3140f9db1b17e162ca365e817bf1ba65b2feb2e38014a39e5712713726f70c
+GenericH1ClassEffacement/Affine.lean
+  4d01074eb6cc917979d56b7e27c87034c8729881d886f0053257520d98f61967
+GenericH1ClassEffacement/Family.lean
+  3032e8f9d164b664bfbdc237fff3613f681f27190174fe72165b932b527d4d9d
+GenericH1ClassEffacement.lean
+  97596b2c42aca3d256103db8cec9ca93b35c41075a15877bda83d488b379af9c
+
+identity-01.json records immutable source captures, exact input/retained-review
+identities, selected main providers, direct supplier correspondence and final
+guards. Consumer fcb01e5a, existential provider d2ae7f75, BoundedClass043a8ecc,
+PullbackComposition99bc01d2, BaseChangeMap92334fb0 and CompositeZero8229ecd6 match
+the accepted v3 interfaces. The four companion sources are unchanged. Accepted
+underlying mathematics is retained at those conditions; current-main provider
+identity is recorded without reopening its unaffected proof closure.
+
+Final guards found no target, manifest, afterimage or selected-provider drift.
+The mathematical basis is updated from v3/fe5248 on retained P to this exact
+c8f0/main-2f-fa8 candidate; no earlier mathematical conclusion is retracted.
+No source replacement, compiler/native job, checker, Git mutation or helper was
+performed. Only this assigned review directory was written. A38's earlier
+lint-failed e2e2/d9 run is not CPP0 and is not relabelled as this candidate's
+evidence. Current CPP and timings remain with their owner. Remaining new
+mathematical obligation within this bounded delta: none.

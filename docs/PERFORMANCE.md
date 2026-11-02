@@ -516,6 +516,11 @@ mathematical conditions govern that choice.
 - Keep compatible native artifacts and successful check categories. A cache
   candidate is not current lint/axiom evidence; a successful unchanged frontend
   in a failed graph retains only its actual scope.
+- After splitting a slow proof, measure the expensive children and their real
+  consumers. The [generic H1 split](performance/cases/generic-h1-effacement-split/README.md)
+  compiled with Affine and Generic still taking about 23 and 26 minutes. Different
+  source and provider contexts do not establish a matched total-time improvement;
+  distinguish fresh frontends from reused artifacts.
 - Use focused dependency owners for independent interfaces. Batch necessary
   edits to widely imported providers, and preserve unaffected consumers.
 - Separate primitive coefficient aliases from classification-heavy providers.

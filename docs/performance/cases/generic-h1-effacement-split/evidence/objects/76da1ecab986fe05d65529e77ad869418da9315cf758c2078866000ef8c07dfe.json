@@ -1,0 +1,28 @@
+{
+  "question": "One incremental needed Mapsrepair+frozenH1v3 graph; reuseA35two-consumerCPP0+138successes",
+  "source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-section-comparison-20261101",
+  "source_head": "4fb6e26584c90df682a804bbc5a1f4d65e4cf332",
+  "source_hashes": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Separable.lean": "6e3140f9db1b17e162ca365e817bf1ba65b2feb2e38014a39e5712713726f70c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Affine.lean": "4d01074eb6cc917979d56b7e27c87034c8729881d886f0053257520d98f61967",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Generic.lean": "fe5248fafa44fd2df5d1e5650045aa7192ef302350cf44546626abc43f44548f",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement/Family.lean": "3032e8f9d164b664bfbdc237fff3613f681f27190174fe72165b932b527d4d9d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/GenericH1ClassEffacement.lean": "97596b2c42aca3d256103db8cec9ca93b35c41075a15877bda83d488b379af9c",
+    "Aglib/AlgebraicGeometry/Modules/InternalHom/Gluing.lean": "d9ef1a8d62ca38f01257a47e5f733857acd128a8f72d4d552b1cee81e4856692",
+    "Aglib/AlgebraicGeometry/Modules/InternalHom/FreeFrameCompatibility.lean": "7fd804d2c139eb404504e50836f9044c18672560587a425b4e4808ec98a2a9ec",
+    "Aglib/AlgebraicGeometry/Modules/InternalHom/DiagramFactorizationGluing.lean": "f3133f133bd7c103000e92ecf50f33df69c42e43f750be475258d557e05c7045",
+    "Aglib/AlgebraicGeometry/Descent/Modules/Zariski.lean": "8a31ec50479cf60564d016a130645b124db9e97dff544e5f49935e37bde98d15",
+    "Aglib/AlgebraicGeometry/Descent/FinitePresentation/Modules/Maps.lean": "fb258172a89f3d59c2244300a4c76c6be2a682eedb47eeb3d8a1c8b27d534361"
+  },
+  "modules": [
+    "Aglib.AlgebraicGeometry.Descent.FinitePresentation.Modules.Maps",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Generic",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement.Family",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1ClassEffacement"
+  ],
+  "root_head": "9cebda0b83f50954a8269a364a662218d300a8c8",
+  "root_status": " M lean/R5Lab/Aglib/AlgebraicGeometry/EtaleCohomology/AGENT_A_CONTINUITY_FINITE_PBC.md\n M lean/R5Lab/Aglib/AlgebraicGeometry/EtaleCohomology/AGENT_B_CURVES_LOCAL_COMPARISON.md\n?? lean/R5Lab/Aglib/AlgebraicGeometry/EtaleCohomology/AGENT_C_FINITENESS_VANISHING_SMOOTH.md\n?? lean/R5Lab/Aglib/AlgebraicGeometry/EtaleCohomology/AGENT_D_EXCEPTIONAL_DIRECT_IMAGE.md\n?? remote-latest-snapshot.jsonl\n",
+  "guard": "Actualreadyhashes/HEAD/owner/idle/native-stylepassed; no Dmutation",
+  "ownership": "Maps repair_gluing_consumers_main; H1 resume_h1; lowerd9/Free7fdreadonly",
+  "material_change": "Mapsfb25replaces soleA35failedbaseline; H1fe52wasnotexecuted. No source replay onold266."
+}
