@@ -18,7 +18,11 @@ jobs:
   lean:
     permissions:
       contents: write
+      actions: read
     uses: ./.github/workflows/lean-ci.yml
     with:
       package-directory: .
       build-targets: Aglib
+      # Temporary first-main guard: fill from verified export/seed; remove only
+      # after the authorized first main run. Empty default preserves ordinary CI.
+      first-ci-cache: '{"export_run":41433516563,"metadata_id":13135772594,"info_sha":"0319a093b2793258a558181401635de04f67aa1ce1602944dfa158eb9ea4f04c","seed_key":"lean-Linux-X64-d791b020c21edcc7e9e22797f1d59fde59e8af8f675af62dc2f1fd7521bfef93-89d6106bc6c779e9737fee10c1c69f89008822de7c0ccaf47ee2412f3aae0bb2-88bab48f8801b48464fe6cce9881c21713001009-41401104003-1-tests-1-main-raw-41435812661-1"}'

@@ -13,9 +13,13 @@ on:
       check-targets:
         type: string
         default: ''
+      first-ci-cache:
+        type: string
+        default: ''
 
 permissions:
   contents: read
+  actions: read
 
 env:
   LAKE_NO_CACHE: 'true'
@@ -57,19 +61,35 @@ jobs:
         with:
           persist-credentials: false
       - run: echo "LAKE_CACHE_DIR=$RUNNER_TEMP/lake-native-cache" >> "$GITHUB_ENV"
+      - name: First promoted-main cache/resource/source gate
+        id: first-ci
+        if: ${{ inputs.first-ci-cache != '' }}
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FIRST_CI_CACHE: ${{ inputs.first-ci-cache }}
+        run: python3 .github/cache-promotion/promotion.py first-ci
       - uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         id: restore
         with:
           path: |
             ${{ inputs.package-directory }}/.lake
             ${{ runner.temp }}/lake-native-cache
-          key: lean-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles(format('{0}/lean-toolchain', inputs.package-directory)) }}-${{ hashFiles(format('{0}/lake-manifest.json', inputs.package-directory)) }}-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          key: ${{ inputs.first-ci-cache != '' && steps.first-ci.outputs.seed-key || format('lean-{0}-{1}-{2}-{3}-{4}-{5}-{6}', runner.os, runner.arch, hashFiles(format('{0}/lean-toolchain', inputs.package-directory)), hashFiles(format('{0}/lake-manifest.json', inputs.package-directory)), github.sha, github.run_id, github.run_attempt) }}
+          fail-on-cache-miss: ${{ inputs.first-ci-cache != '' }}
           # Prefer current pins, then the same Lean; retain existing cache generations as seeds.
           restore-keys: |
-            lean-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles(format('{0}/lean-toolchain', inputs.package-directory)) }}-${{ hashFiles(format('{0}/lake-manifest.json', inputs.package-directory)) }}-
-            lean-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles(format('{0}/lean-toolchain', inputs.package-directory)) }}-
-            lean-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles(format('{0}/lean-toolchain', inputs.package-directory), format('{0}/lake-manifest.json', inputs.package-directory)) }}-
-            lean-${{ runner.os }}-${{ runner.arch }}-
+            ${{ inputs.first-ci-cache == '' && format('lean-{0}-{1}-{2}-{3}-', runner.os, runner.arch, hashFiles(format('{0}/lean-toolchain', inputs.package-directory)), hashFiles(format('{0}/lake-manifest.json', inputs.package-directory))) || '' }}
+            ${{ inputs.first-ci-cache == '' && format('lean-{0}-{1}-{2}-', runner.os, runner.arch, hashFiles(format('{0}/lean-toolchain', inputs.package-directory))) || '' }}
+            ${{ inputs.first-ci-cache == '' && format('lean-{0}-{1}-{2}-', runner.os, runner.arch, hashFiles(format('{0}/lean-toolchain', inputs.package-directory), format('{0}/lake-manifest.json', inputs.package-directory))) || '' }}
+            ${{ inputs.first-ci-cache == '' && format('lean-{0}-{1}-', runner.os, runner.arch) || '' }}
+      - name: Require exact full main seed for first Build
+        if: ${{ inputs.first-ci-cache != '' }}
+        env:
+          HIT: ${{ steps.restore.outputs.cache-hit }}
+          MATCHED: ${{ steps.restore.outputs.cache-matched-key }}
+          EXPECTED: ${{ steps.first-ci.outputs.seed-key }}
+        run: test "$HIT" = true && test "$MATCHED" = "$EXPECTED"
       - name: Remove read-only restored archive hash sidecars
         working-directory: ${{ inputs.package-directory }}
         run: &restore-writable-archive-hashes |
@@ -136,6 +156,10 @@ jobs:
           done
           echo '::error::Lean toolchain acquisition failed after 3 attempts.'
           exit 1
+      - name: First-main native no-build readiness before cache tools or production build
+        if: ${{ inputs.first-ci-cache != '' }}
+        working-directory: ${{ inputs.package-directory }}
+        run: bash .github/cache-promotion/ready.sh
       - name: Get Mathlib cache
         working-directory: ${{ inputs.package-directory }}
         run: &mathlib-cache-get lake exe cache get
@@ -262,7 +286,7 @@ jobs:
             fi
           done
       - name: Save compilation independently of Test and lint
-        if: ${{ always() && steps.quiesce.outcome == 'success' }}
+        if: ${{ inputs.first-ci-cache == '' && always() && steps.quiesce.outcome == 'success' }}
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         with:
           path: |
@@ -273,8 +297,11 @@ jobs:
         id: stage
         if: ${{ always() && steps.quiesce.outcome == 'success' && (steps.build.outcome == 'success' || steps.build.outcome == 'failure') }}
         working-directory: ${{ inputs.package-directory }}
+        env:
+          FIRST_CI_CACHE: ${{ inputs.first-ci-cache }}
         run: |
           if test -s "$RUNNER_TEMP/outputs.jsonl"; then
+            if test -n "$FIRST_CI_CACHE"; then python3 .github/cache-promotion/ci-resources.py stage-copy; fi
             lake cache stage "$RUNNER_TEMP/outputs.jsonl" "$RUNNER_TEMP/cache-staging"
             domain="$RUNNER_OS-$RUNNER_ARCH-$(sha256sum lean-toolchain | cut -c 1-16)"
             package=$(python3 -c 'import tomllib; print(tomllib.load(open("lakefile.toml", "rb"))["name"])')
@@ -282,6 +309,7 @@ jobs:
               --arg package "$package" --arg domain "$domain" --arg compiler "$(lean --version)" \
               '{repository: $repository, revision: $revision, package: $package, domain: $domain, compiler: $compiler}' \
               > "$RUNNER_TEMP/cache-staging/producer.json"
+            if test -n "$FIRST_CI_CACHE"; then python3 .github/cache-promotion/ci-resources.py stage-tar; fi
             tar -cf "$RUNNER_TEMP/lake-native-cache.tar" -C "$RUNNER_TEMP/cache-staging" .
             echo 'staged=true' >> "$GITHUB_OUTPUT"
           fi
@@ -294,9 +322,19 @@ jobs:
           compression-level: 0
       - name: Stage native dependencies for Test
         if: ${{ steps.build.outcome == 'success' }}
+        env:
+          FIRST_CI_CACHE: ${{ inputs.first-ci-cache }}
         run: |
-          tar -cf - -C "$LAKE_CACHE_DIR" artifacts outputs | \
-            zstd -T0 -1 -o "$RUNNER_TEMP/build-dependencies.tar.zst"
+          if test -n "$FIRST_CI_CACHE"; then
+            python3 .github/cache-promotion/ci-resources.py dependencies
+            blocks=$(jq -er .file_blocks "$RUNNER_TEMP/first-ci-dependency-bound.json")
+            (ulimit -f "$blocks"
+             tar -cf - -C "$LAKE_CACHE_DIR" artifacts outputs | \
+               zstd -T2 -1 -o "$RUNNER_TEMP/build-dependencies.tar.zst")
+          else
+            tar -cf - -C "$LAKE_CACHE_DIR" artifacts outputs | \
+              zstd -T0 -1 -o "$RUNNER_TEMP/build-dependencies.tar.zst"
+          fi
       - name: Upload native dependencies for Test
         if: ${{ steps.build.outcome == 'success' }}
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
@@ -324,18 +362,34 @@ jobs:
         with:
           persist-credentials: false
       - run: echo "LAKE_CACHE_DIR=$RUNNER_TEMP/lake-native-cache" >> "$GITHUB_ENV"
+      - name: First promoted-main cache/resource/source gate
+        id: first-ci
+        if: ${{ inputs.first-ci-cache != '' }}
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FIRST_CI_CACHE: ${{ inputs.first-ci-cache }}
+        run: python3 .github/cache-promotion/promotion.py first-ci
       - name: Warm dependency and native compilation outputs
-        continue-on-error: true
+        continue-on-error: ${{ inputs.first-ci-cache == '' }}
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         id: restore-cache
         with:
           path: |
             ${{ inputs.package-directory }}/.lake
             ${{ runner.temp }}/lake-native-cache
-          key: ${{ needs.build.outputs.cache-key }}-tests-${{ github.run_attempt }}
+          key: ${{ inputs.first-ci-cache != '' && needs.build.outputs.cache-key || format('{0}-tests-{1}', needs.build.outputs.cache-key, github.run_attempt) }}
+          fail-on-cache-miss: ${{ inputs.first-ci-cache != '' }}
           restore-keys: |
-            ${{ needs.build.outputs.cache-key }}-tests-
-            ${{ needs.build.outputs.cache-key }}
+            ${{ inputs.first-ci-cache == '' && format('{0}-tests-', needs.build.outputs.cache-key) || '' }}
+            ${{ inputs.first-ci-cache == '' && format('{0}', needs.build.outputs.cache-key) || '' }}
+      - name: Require exact full main seed for first Test
+        if: ${{ inputs.first-ci-cache != '' }}
+        env:
+          HIT: ${{ steps.restore-cache.outputs.cache-hit }}
+          MATCHED: ${{ steps.restore-cache.outputs.cache-matched-key }}
+          EXPECTED: ${{ steps.first-ci.outputs.seed-key }}
+        run: test "$HIT" = true && test "$MATCHED" = "$EXPECTED"
       - name: Remove read-only restored archive hash sidecars
         working-directory: ${{ inputs.package-directory }}
         run: *restore-writable-archive-hashes
@@ -366,6 +420,10 @@ jobs:
           done
           echo '::error::Lean toolchain acquisition failed after 3 attempts.'
           exit 1
+      - name: First-main native no-build readiness before recovery or checker preparation
+        if: ${{ inputs.first-ci-cache != '' }}
+        working-directory: ${{ inputs.package-directory }}
+        run: bash .github/cache-promotion/ready.sh
       - name: Download this run's dependencies on cache miss
         if: &dependency-recovery ${{ steps.restore-cache.outcome != 'success' || steps.restore-cache.outputs.cache-matched-key == '' }}
         uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
@@ -383,6 +441,11 @@ jobs:
         if: *dependency-recovery
         working-directory: ${{ inputs.package-directory }}
         run: *mathlib-cache-get
+      - name: Admit current-run mandatory stage download and unstage resources
+        if: ${{ inputs.first-ci-cache != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 .github/cache-promotion/ci-resources.py test-download
       - name: Download this run's Build outputs
         uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
         with:
@@ -391,7 +454,10 @@ jobs:
       - name: Restore this run's native Build outputs
         id: current-cache
         working-directory: ${{ inputs.package-directory }}
+        env:
+          FIRST_CI_CACHE: ${{ inputs.first-ci-cache }}
         run: |
+          if test -n "$FIRST_CI_CACHE"; then python3 .github/cache-promotion/ci-resources.py test-extract; fi
           trap 'rm -f "$LAKE_CACHE_DIR/lake-native-cache.tar"' EXIT
           mkdir -p "$RUNNER_TEMP/cache-staging"
           tar -xf "$LAKE_CACHE_DIR/lake-native-cache.tar" -C "$RUNNER_TEMP/cache-staging"
@@ -507,7 +573,7 @@ jobs:
         shell: bash
         run: *quiesce-native-scopes
       - name: Save completed Test compilation
-        if: ${{ always() && steps.quiesce.outcome == 'success' }}
+        if: ${{ inputs.first-ci-cache == '' && always() && steps.quiesce.outcome == 'success' }}
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         with:
           path: |
@@ -535,10 +601,20 @@ jobs:
     runs-on: ubuntu-24.04
     permissions:
       contents: write
+      actions: read
     concurrency:
       group: lean-cache-${{ github.repository }}-${{ github.sha }}
       cancel-in-progress: false
     steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        if: ${{ inputs.first-ci-cache != '' }}
+        with:
+          persist-credentials: false
+      - name: Admit mandatory Publish stage download
+        if: ${{ inputs.first-ci-cache != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 .github/cache-promotion/ci-resources.py publish-download
       - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
         with:
           name: cache-staging
@@ -547,6 +623,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           REPOSITORY: ${{ github.repository }}
           REVISION: ${{ github.sha }}
+          FIRST_CI_CACHE: ${{ inputs.first-ci-cache }}
         run: |
           domain=$(tar -xOf lake-native-cache.tar ./producer.json | jq -er \
             --arg repository "$REPOSITORY" --arg revision "$REVISION" \
@@ -554,6 +631,9 @@ jobs:
           ASSET="lake-native-cache-$domain-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT.tar"
           tag="lean-native-$REVISION"
           mv lake-native-cache.tar "$ASSET"
+          if test -n "$FIRST_CI_CACHE"; then
+            python3 .github/cache-promotion/ci-resources.py publish-upload "$ASSET"
+          fi
           if existing=$(gh release view "$tag" --repo "$REPOSITORY" --json assets --jq '.assets[].name'); then
             if ! printf '%s\n' "$existing" | grep -Fxq "$ASSET"; then
               gh release upload "$tag" "$ASSET" --repo "$REPOSITORY"
