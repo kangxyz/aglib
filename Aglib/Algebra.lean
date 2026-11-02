@@ -257,6 +257,9 @@ public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroUnits
 public import Aglib.Algebra.Category.Ring.Sheaf.Units
 public import Aglib.Algebra.Central.Matrix
 public import Aglib.Algebra.CharP.Frobenius
+public import Aglib.Algebra.Coalgebra.Graded.DegreeOne
+public import Aglib.Algebra.Coalgebra.Graded.Dimension
+public import Aglib.Algebra.Coalgebra.Graded.Primitive
 public import Aglib.Algebra.DirectSumTransport
 public import Aglib.Algebra.Graded.DirectSum
 public import Aglib.Algebra.Group.Action.CyclicCoefficients
@@ -681,6 +684,7 @@ public import Aglib.Algebra.Homology.Koszul.Single.Tensor.Elements
 public import Aglib.Algebra.Homology.Koszul.Single.Tensor.Functor
 public import Aglib.Algebra.Homology.Koszul.Single.Tensor.Quotient
 public import Aglib.Algebra.Homology.Koszul.Top
+public import Aglib.Algebra.Homology.Kunneth.Field
 public import Aglib.Algebra.Homology.Kunneth.MayerVietoris
 public import Aglib.Algebra.Homology.MappingCocone.Map
 public import Aglib.Algebra.Homology.MappingCocone.ShortExact

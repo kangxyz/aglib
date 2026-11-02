@@ -8,6 +8,11 @@ Latest local Quillen additions include [CochainComplexPlus](CochainComplexPlus/R
 
 The [cochain-complex guide](CochainComplex/README.md) records the kernel, splitting and single-shift conditions. The [mapping-cone guide](MappingCone/README.md) adds the generic additive identity-cone functor and its pushout and short-exactness comparisons. [QuasiIso](QuasiIso.lean), imported as `Aglib.Algebra.Homology.QuasiIso`, proves `CochainComplex.quasiIso_of_two_acyclic`: any actual map between two acyclic integer cochain complexes in an abelian category is a quasi-isomorphism. Both acyclicity proofs are explicit inputs.
 
+[Field Künneth](Kunneth/Field.lean) proves the original tensor-of-cycles
+homology map is bijective in every natural degree for first-quadrant complexes
+over any field, including characteristic two. Its public equivalence has that
+canonical map as forward map and introduces no chosen splitting.
+
 [RightDerived/Represented](RightDerived/Represented.lean) compares original
 Ext with the native natural-degree right derivatives of the additive
 represented functor, retaining coefficient naturality and the original

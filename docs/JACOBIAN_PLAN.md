@@ -367,9 +367,10 @@ remain open.
 For that route, retain the original proper finiteness, dimension vanishing and
 `H⁰ = k` suppliers. The remaining geometric work is the original graded
 algebra isomorphism, coproduct, counit and degree-one laws, followed by the
-actual coherent-H¹ inequality. The generic graded-algebra dimension source has
-been reviewed separately and awaits publication. A new field-extension
-comparison is not required for this H¹ application. The stronger graded-
+actual coherent-H¹ inequality. The [generic graded dimension bound](../Aglib/Algebra/Coalgebra/Graded/Primitive.lean)
+is supplied under its actual grading, counit, coproduct, finiteness and
+vanishing hypotheses, with no assumed primitive-element input. A new
+field-extension comparison is not required for this H¹ application. The stronger graded-
 bialgebra splitting asserted in draft (6.12) is not adopted.
 
 Reuse [fppf line-bundle descent](../Aglib/AlgebraicGeometry/Descent/Modules/Fppf/LineBundleStack.lean),
@@ -480,8 +481,9 @@ tables, arithmetic applications and ℓ-adic limits are later scopes.
 Use the [owning bibliography](REFERENCES.md#curves-jacobians-and-étale-duality)
 and the exact versions and locators above. Source inspection and accurate
 metadata do not prove imported mathematics. In particular, preserve the
-nonreduced seesaw, leading-term degree, graded-algebra Borel–Hopf,
-identity-component character descent, Cartier theta and sign obligations.
+nonreduced seesaw, leading-term degree, application of the native graded
+dimension bound, identity-component character descent, Cartier theta and sign
+obligations.
 The preliminary draft's bibliography remains **citation needed**. Inaccessible
 Mumford and Howe attributions remain unchecked and are not adopted as proof
 suppliers. No new argument or source repair is supplied by this plan.
