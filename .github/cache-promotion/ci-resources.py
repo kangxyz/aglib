@@ -111,8 +111,8 @@ def test_extract():
     with tarfile.open(archive, mode='r:') as tar:
         for m in tar:
             name = m.name.removeprefix('./').rstrip('/')
-            fail(m.isdir() and name == '' or m.isreg() and '/' not in name and name not in ('', '.', '..'),
-                 'Unsupported non-flat native stage member')
+            fail(m.isdir() and m.name in ('.', './') or m.isreg() and '/' not in name and name not in ('', '.', '..'),
+                 f'Unsupported non-flat native stage member: {m.name!r} (type {m.type!r})')
             fail(name not in seen, 'Duplicate native stage member/mapping')
             seen.add(name)
             count += 1
