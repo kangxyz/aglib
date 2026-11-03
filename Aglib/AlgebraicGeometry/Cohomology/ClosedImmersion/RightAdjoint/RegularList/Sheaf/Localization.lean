@@ -82,16 +82,25 @@ private theorem quotientAwayMap_kernel :
     (RingHom.ker (Ideal.Quotient.mk I)).map (algebraMap R (Localization.Away t)) at h
   simpa only [Ideal.mk_ker] using h
 
-private def quotientAwayRingEquiv :
+/-- The original quotient-localization ring equivalence used by the source comparison. -/
+@[expose] public def quotientAwayRingEquiv :
     (Localization.Away t ⧸ I.map (algebraMap R (Localization.Away t))) ≃+*
       Localization.Away (Ideal.Quotient.mk I t) :=
-  (Ideal.quotEquivOfEq (quotientAwayMap_kernel I t).symm).trans
-    ((quotientAwayMap I t).quotientKerEquivOfSurjective (quotientAwayMap_surjective I t))
+  (Ideal.quotEquivOfEq (J := RingHom.ker
+      (IsLocalization.Away.map (Localization.Away t)
+        (Localization.Away (Ideal.Quotient.mk I t)) (Ideal.Quotient.mk I) t))
+      (by exact (quotientAwayMap_kernel I t).symm)).trans
+    (RingHom.quotientKerEquivOfSurjective
+      (f := IsLocalization.Away.map (Localization.Away t)
+        (Localization.Away (Ideal.Quotient.mk I t)) (Ideal.Quotient.mk I) t)
+      (by exact quotientAwayMap_surjective I t))
 
-private theorem quotientAwayRingEquiv_mk (a : Localization.Away t) :
+/-- The original ring equivalence sends a quotient representative to its actual localization. -/
+public theorem quotientAwayRingEquiv_mk (a : Localization.Away t) :
     quotientAwayRingEquiv I t
       (Ideal.Quotient.mk (I.map (algebraMap R (Localization.Away t))) a) =
-        quotientAwayMap I t a := by
+        IsLocalization.Away.map (Localization.Away t)
+          (Localization.Away (Ideal.Quotient.mk I t)) (Ideal.Quotient.mk I) t a := by
   exact RingHom.quotientKerEquivOfSurjective_apply_mk (quotientAwayMap_surjective I t) a
 
 private def quotientAwayModuleIso :

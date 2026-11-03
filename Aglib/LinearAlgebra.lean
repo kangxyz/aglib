@@ -19,6 +19,7 @@ public import Aglib.LinearAlgebra.ExteriorPower.Semilinear
 public import Aglib.LinearAlgebra.ExteriorPower.TopDegree
 public import Aglib.LinearAlgebra.ExteriorPower.Wedge
 public import Aglib.LinearAlgebra.FreeModule.StableRankOne
+public import Aglib.LinearAlgebra.FreeModule.TorsionQuotient
 public import Aglib.LinearAlgebra.FreeModule.ZModTorsion
 public import Aglib.LinearAlgebra.FrobeniusBaseChange
 public import Aglib.LinearAlgebra.FrobeniusBaseChange.Tower
@@ -28,6 +29,8 @@ public import Aglib.LinearAlgebra.KernelFiltration
 public import Aglib.LinearAlgebra.KernelFiltrationMap
 public import Aglib.LinearAlgebra.KernelIdealBound
 public import Aglib.LinearAlgebra.LinearIndependent.FiniteBasisChange
+public import Aglib.LinearAlgebra.LinearMap.ScaledImageLift
+public import Aglib.LinearAlgebra.LocalizedModule.Kernel
 public import Aglib.LinearAlgebra.Matrix.ChangeOfGenerators
 public import Aglib.LinearAlgebra.Matrix.GenericCoordinateProjection
 public import Aglib.LinearAlgebra.Matrix.GenericProjection

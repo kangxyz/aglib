@@ -158,7 +158,7 @@ theorem moduleCohomology_finite_of_proper
   let : Module.Finite R
       (moduleSpecΓFunctor.obj (((pushforward f).rightDerived q).obj M)) :=
     ((affineLocallyFiniteType_spec_iff (.of R) _).mp hN).2
-  exact Module.Finite.equiv (moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated f M
+  exact Module.Finite.equiv (moduleHigherDirectImageAffineSectionsLinearEquivOfIsSeparated f M
     (injectiveResolution M) q)
 
 end AlgebraicGeometry.Scheme.Cohomology

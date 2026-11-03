@@ -40,11 +40,16 @@ def rootMap (φ : B →ₐ[R] C) (N : ℕ) (f : R) :
       AdjoinRoot.root (rootPolynomial N (algebraMap R C f)) := by
   simp only [rootMap, AdjoinRoot.coe_mapAlgHom, AdjoinRoot.map_root]
 
-@[simp] theorem rootMap_algebraMap (φ : B →ₐ[R] C) (N : ℕ) (f : R) (b : B) :
+@[simp] theorem rootMap_of (φ : B →ₐ[R] C) (N : ℕ) (f : R) (b : B) :
+    rootMap φ N f (AdjoinRoot.of (rootPolynomial N (algebraMap R B f)) b) =
+      AdjoinRoot.of (rootPolynomial N (algebraMap R C f)) (φ b) := by
+  simp only [rootMap, AdjoinRoot.coe_mapAlgHom, AdjoinRoot.map_of]
+  rfl
+
+theorem rootMap_algebraMap (φ : B →ₐ[R] C) (N : ℕ) (f : R) (b : B) :
     rootMap φ N f (algebraMap B (RootAlgebra N (algebraMap R B f)) b) =
       algebraMap C (RootAlgebra N (algebraMap R C f)) (φ b) := by
-  simp only [rootMap, AdjoinRoot.coe_mapAlgHom, AdjoinRoot.algebraMap_eq, AdjoinRoot.map_of]
-  rfl
+  simpa only [AdjoinRoot.algebraMap_eq] using rootMap_of φ N f b
 
 /-- The entire coefficient triangle, before evaluation on elements. -/
 theorem rootMap_comp_algebraMap (φ : B →ₐ[R] C) (N : ℕ) (f : R) :

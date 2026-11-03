@@ -105,6 +105,39 @@ def originalIdealIso :
       (tilde.functor (CommRingCat.of R)).mapIso
         (LinearEquiv.ofEq _ _ (Ideal.mk_ker (I := I))).toModuleIso
 
+/-- The inverse comparison retains the original ideal inclusion, not only its image. -/
+@[reassoc]
+theorem originalIdealIso_inv_inclusion :
+    (originalIdealIso I).inv ≫ idealInclusion (affineCenter R I).subschemeι =
+      tilde.map (ModuleCat.ofHom I.subtype) := by
+  let q := Spec.map (CommRingCat.ofHom (Ideal.Quotient.mk I))
+  let : IsClosedImmersion q :=
+    IsClosedImmersion.spec_of_surjective _ Ideal.Quotient.mk_surjective
+  let e := (LinearEquiv.ofEq _ _ (Ideal.mk_ker (I := I))).toModuleIso
+  have he : e.inv ≫ ModuleCat.ofHom (RingHom.ker (Ideal.Quotient.mk I)).subtype =
+      ModuleCat.ofHom I.subtype := by
+    rfl
+  have hleft : (originalIdealIso I).inv ≫ idealInclusion (affineCenter R I).subschemeι =
+      (tilde.functor (CommRingCat.of R)).map e.inv ≫
+        (affineIdealIso (CommRingCat.ofHom (Ideal.Quotient.mk I))).hom ≫
+          (IdealFrames.imageIdealIso q).hom ≫ idealInclusion q.imageι := by
+    simp only [originalIdealIso, Iso.trans_inv, Iso.symm_inv, Functor.mapIso_inv,
+      Category.assoc]
+    rfl
+  have himage := IdealFrames.imageIdealIso_hom_inclusion q
+  have haffine := affineIdealIso_hom_inclusion (CommRingCat.ofHom (Ideal.Quotient.mk I))
+  have hmap : (tilde.functor (CommRingCat.of R)).map e.inv ≫
+      (tilde.functor (CommRingCat.of R)).map
+        (ModuleCat.ofHom (RingHom.ker (Ideal.Quotient.mk I)).subtype) =
+      tilde.map (ModuleCat.ofHom I.subtype) :=
+    ((tilde.functor (CommRingCat.of R)).map_comp _ _).symm.trans
+      (congrArg (tilde.functor (CommRingCat.of R)).map he)
+  exact hleft.trans ((congrArg (fun k =>
+    (tilde.functor (CommRingCat.of R)).map e.inv ≫
+      (affineIdealIso (CommRingCat.ofHom (Ideal.Quotient.mk I))).hom ≫ k) himage).trans
+    ((congrArg (fun k => (tilde.functor (CommRingCat.of R)).map e.inv ≫ k) haffine).trans
+      hmap))
+
 /-- The original section of an ideal element retains that same element under the comparison. -/
 theorem idealSection_originalIdealIso (b : I) :
     AffineCoordinates.idealSection R I b ≫ (originalIdealIso I).hom =

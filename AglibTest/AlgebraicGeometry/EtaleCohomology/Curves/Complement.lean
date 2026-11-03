@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.Complement
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.UnitsQuotient
 
 /-!
 # The cohomology of `μ_n` on an open subscheme of a curve

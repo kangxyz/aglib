@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Pushforward
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Support
-public import Aglib.AlgebraicGeometry.Modules.Pullback.FlatMorphism
+public import Aglib.AlgebraicGeometry.Modules.Pullback.FlatStalk
 public import Mathlib.RingTheory.Flat.FaithfullyFlat.Algebra
 public import Aglib.AlgebraicGeometry.Modules.Support
 public import Aglib.AlgebraicGeometry.Modules.Exact
@@ -61,9 +61,8 @@ universe u
 /-- The module stalk and its underlying additive stalk detect the same zero
 objects, independently of finiteness. -/
 lemma moduleStalk_zero_iff {X : Scheme.{u}} (M : X.Modules) (x : X) :
-    IsZero ((moduleStalk X x).obj M) ↔ IsZero ((stalkFunctor X x).obj M) := by
-  rw [ModuleCat.isZero_iff_subsingleton, AddCommGrpCat.isZero_iff_subsingleton]
-  rfl
+    IsZero ((moduleStalk X x).obj M) ↔ IsZero ((stalkFunctor X x).obj M) :=
+  AlgebraicGeometry.Scheme.Modules.moduleStalk_zero_iff M x
 
 /-- Pullback is zero if every point of the source avoids the original support.
 This follows from the actual module-stalk extension-of-scalars comparison. -/
@@ -135,22 +134,8 @@ theorem coherentPushforward_stalkPullback_isZero {Z X : Scheme.{u}}
 at the image of a source point, by faithful flatness of a flat local stalk map. -/
 theorem stalk_isZero_of_flat_pullback {Z X : Scheme.{u}} (f : Z ⟶ X) [Flat f]
     (M : X.Modules) (hM : IsZero ((Scheme.Modules.pullback f).obj M)) (z : Z) :
-    IsZero ((stalkFunctor X (f z)).obj M) := by
-  let φ : X.presheaf.stalk (f z) →+* Z.presheaf.stalk z := (f.stalkMap z).hom
-  have hφ : φ.FaithfullyFlat := by
-    change (f.stalkMap z).hom.FaithfullyFlat
-    algebraize [(f.stalkMap z).hom]
-    exact @Module.FaithfullyFlat.of_flat_of_isLocalHom _ _ _ _ _ _ _
-      (Flat.stalkMap f z) (f.toLRSHom.prop z)
-  have := ModuleCat.reflectsIsomorphisms_extendScalars_of_faithfullyFlat hφ
-  let N := (moduleStalk X (f z)).obj M
-  have hz := (moduleStalk Z z).map_isZero hM
-  have ht : IsZero ((ModuleCat.extendScalars φ).obj N) :=
-    hz.of_iso ((pullbackModuleStalkIso f z).app M).symm
-  have : IsIso ((ModuleCat.extendScalars φ).map (0 : N ⟶ N)) := ht.isIso ht _
-  have : IsIso (0 : N ⟶ N) := isIso_of_reflects_iso _ (ModuleCat.extendScalars φ)
-  exact (moduleStalk_zero_iff M (f z)).mp
-    ((isIsoZero_iff_source_target_isZero N N).mp inferInstance).1
+    IsZero ((stalkFunctor X (f z)).obj M) :=
+  AlgebraicGeometry.Scheme.Modules.stalk_isZero_of_flat_pullback f M hM z
 
 /-- The literal finite pushforward transported to the same upper SmallModel
 that defines the actual support filtration. -/

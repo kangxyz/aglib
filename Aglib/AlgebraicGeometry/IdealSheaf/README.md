@@ -172,3 +172,13 @@ image in `T` (`Scheme.IdealSheafData.range_map_subschemeι_comp`) and the same p
 isomorphisms (`map_subschemeι_comp_iff`), through `mapSubschemeIso`
 ([Monomorphism](Monomorphism.lean)). No hypothesis on `j`, `q` or the schemes. Consumer:
 [HilbertScheme/Coproduct/Functor](../HilbertScheme/Coproduct/Functor.lean).
+
+[ResiduePoint](ResiduePoint.lean) identifies the full kernel ideal of the
+original residue-point morphism on every affine neighborhood and its
+principal-open restrictions. It proves ideal equality rather than only
+support or radical equality.
+[RegularPoint](RegularPoint.lean) uses a Noetherian affine section ring
+and an original regular stalk of dimension two to construct a principal
+neighborhood with two sections generating that same proper point ideal,
+regular in the displayed order. The native point-blowup comparisons and
+one-pole constructions use these original sections.

@@ -1,0 +1,14 @@
+{
+  "id": "batch-07",
+  "assigned_modules": 163,
+  "exit_code": 0,
+  "seconds": 11.660038694739342,
+  "log": "/root/autodl-tmp/lean-build/logs/remote-1bdbf01bf1dc4331b4a2858cc6f75bb0/batch-07-lint.log",
+  "result": "/root/autodl-tmp/lean-build/logs/remote-1bdbf01bf1dc4331b4a2858cc6f75bb0/batch-07-lint.json",
+  "checkedModules": 163,
+  "checkedDeclarations": 2192,
+  "declarationFindings": 0,
+  "environmentFindings": 0,
+  "textFindings": 0,
+  "deferredFailed": false
+}

@@ -1,0 +1,53 @@
+{
+  "state": "completed",
+  "command": [
+    "lake",
+    "--rehash",
+    "build",
+    "+Aglib.AlgebraicGeometry.Surfaces.Resolution.PointBlowupChain.ClosedPrefix",
+    "+Aglib.AlgebraicGeometry.Surfaces.Resolution.RationalDoublePoint.OriginalCaseOneStep",
+    "+Aglib.AlgebraicGeometry.Surfaces.Resolution.NormalizedPointBlowupChain.FiniteBaseEmbedding",
+    "+Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.RawFormsOpenEvaluation",
+    "+Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.RawFormsOpenIsoEvaluation",
+    "+Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.PairIdealSourceEvaluation",
+    "+Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.PairIdealRawUnitSquare",
+    "+Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.PairIdealRawGluing",
+    "+Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.PairIdealGlobalOnePole",
+    "+Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenCounit.Transport",
+    "+Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenCounit",
+    "+Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.FlatBaseChange.SourcePresentation",
+    "-o",
+    "/workspace/scratch/375151ffceb3/surface-resolution-recovery/native/recovery65-outputs.jsonl"
+  ],
+  "cwd": "/workspace/scratch/375151ffceb3/surface-resolution-updated",
+  "pid": 11,
+  "pgid": 11,
+  "exit_code": -15,
+  "guard_failure": "owned process group exceeded RSS cutoff",
+  "peak_rss_bytes": 7517859840,
+  "duration_seconds": 291.0646856039966,
+  "limits": {
+    "lean_memory_mb": 7000,
+    "rss_limit_mb": 7168,
+    "sample_seconds": 0.1,
+    "physical_memory_bytes": 10451427328,
+    "lean_threads": 1,
+    "max_active_lean": 1,
+    "native_build_threads": 1
+  },
+  "owned_group_gone": true,
+  "last_members": [
+    {
+      "pid": 11,
+      "rss_bytes": 198225920,
+      "executable": "lake",
+      "command_path": "lake"
+    },
+    {
+      "pid": 1778,
+      "rss_bytes": 7319633920,
+      "executable": "lean",
+      "command_path": "lean"
+    }
+  ]
+}

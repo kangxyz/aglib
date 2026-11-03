@@ -478,3 +478,15 @@ original projective-map and section nonvanishing input for the ample criterion.
 Picard homomorphism to arbitrary commutative rings and coordinate types.
 The former projective-line names remain aliases in
 [PositiveTwist](Line/PositiveTwist.lean).
+
+[GeneralHyperplane/ThroughRationalPoint](GeneralHyperplane/ThroughRationalPoint.lean)
+uses the original chart ratios and incidence equation to choose a linear
+form through a specified rational point while avoiding finitely many
+associated primes. The simultaneous regular-section theorem retains an
+infinite field, finite coordinates, finite chart modules and the actual
+associated-prime exclusion; it allows nonreduced schemes.
+[GenericStalk/StructureTriangle](GenericStalk/StructureTriangle.lean) and
+[GenericStalk/FiniteFactorization](GenericStalk/FiniteFactorization.lean)
+retain generic-image map composition through the original structural
+triangle. A finite injective base map and original birational field map
+supply generic finiteness in the finite-base application.

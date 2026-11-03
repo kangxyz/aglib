@@ -27,3 +27,12 @@ cause.
 The [roots-section follow-up](cases/whole-original-comparison-laws/roots-section-follow-up/README.md) retains the actual whole transport and section isomorphism before coefficient evaluation. Its formation-only probe, failed variants and profile remain distinct from the final three fresh source-bound passes.
 
 The [LocalFinite indexed-transport follow-up](cases/whole-original-comparison-laws/localfinite-indexed-transport/README.md) derives and consumes the original transport inside its general factory; standalone generic and concrete scratch outcomes remain distinct from the final two-module pass.
+
+The [chart-source witness follow-up](cases/whole-original-comparison-laws/chart-source-witness-follow-up/README.md) retains the original proved geometric witnesses in both constructors and their actual evaluation law after a bounded native comparison isolated six proof-term presentation differences. Diagnostic structural comparison is distinguished from the final three-module native pass; no failure of proof irrelevance or unique kernel-cost cause is claimed.
+
+The [Cartesian goal-directed follow-up](cases/whole-original-comparison-laws/cartesian-goal-directed-follow-up/README.md) distinguishes a concrete helper-input failure from target formation, then retains the original goal before supplying the same composition-congruence proof. The final exact source passes without changing any map or budget; bounded metadata does not establish a unique conversion cause.
+
+The [cochain-to-homology follow-up](cases/whole-original-comparison-laws/cochain-homology-square-follow-up/README.md)
+moves the complete two-stage homology derivation before concrete specialization,
+using the genuine original cochain square and native functor comparisons. Its
+source-bound generic/caller passes remain separate from the later graph guard.

@@ -1,5 +1,7 @@
 # J-2 for semilocal Nagata rings of dimension at most two
 
+Source: [J2Criterion.lean](J2Criterion.lean).
+
 `IsJ0Ring.of_injective_finiteType` proves [Stacks Lemma 15.48.4,
 tag 07PA](https://stacks.math.columbia.edu/tag/07PA), for the original injective
 finite-type algebra map between domains. The source is Noetherian and the
@@ -33,10 +35,14 @@ proves openness from a relative basic-open neighbourhood in the closure of
 each point of the set. The proof uses induction on closed subsets to obtain
 constructibility, then generalization stability. Its regular-locus
 specialization is the topological step of Stacks 07P8. The algebraic spreading
-needed to discharge its premise is proved in the same file: a finite colon
-ideal supplies each multiplication kernel, and a finite ideal comparison
-spreads generation of the prime ideal. Both conditions are imposed after one
-common localization. Iterating regular principal-quotient lifting then proves
+needed to discharge its premise is owned by the shared lower
+[regular-sequence localization](../Regular/SequenceLocalization.md) and
+[regular-local parameter localization](../RegularLocalRing/RegularSequenceLocalization.md)
+leaves. A finite colon ideal supplies each multiplication kernel, and the
+existing finite ideal comparison spreads generation of the original prime.
+The private interfaces here are thin consumers of those same constructions;
+the generic denominator backend is not duplicated. Both conditions are imposed
+after one common localization. Iterating regular principal-quotient lifting then proves
 `PrimeSpectrum.isOpen_regularLocus_of_isJ0Ring_quotients`, the corrected Stacks
 07P9 criterion.
 
@@ -72,3 +78,5 @@ full `IsJ2Ring.{u, 0} R`, with all finite-type test algebras in `Type u`.
 No perfectness premise on an original coefficient field, generic-algebraicity
 restriction on the test algebras, or assertion about arbitrary Nagata rings
 is introduced.
+
+Direct consumers: [AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/RegularLocus](../../AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/RegularLocus.md).

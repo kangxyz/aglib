@@ -14,3 +14,9 @@ the local finite-type or finite-presentation hypotheses needed there.
 regularity-descent family and retains its parametric stalk and étale-cover
 consumers. Their stated local Noetherian hypotheses remain explicit;
 `RegularStalks` alone does not supply them.
+
+[Affine](Affine.lean) transports finiteness of the nonregular prime locus
+of an actual affine section ring to finiteness of the original nonregular
+scheme stalks in that open. It uses the native spectrum and open-stalk
+isomorphisms; normality, dimension and Noetherianity belong to the separate
+ring-locus supplier, not to this transport.

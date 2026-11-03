@@ -13,3 +13,10 @@ on every open. The same leaf supplies zero and addition laws for the
 existing `unitMul`. No quasicoherence or affineness is required.
 
 Canonical pulled-back-unit comparison and `structureModuleBaseChangeMap` live in [BaseChange](../BaseChange/README.md). Structural scalar actions on actual cohomology are defined in [Cohomology/Modules](../../Cohomology/Modules/README.md). The construction needs no smoothness, properness, curve or finite-degree premise.
+
+[AffineMultiplication](AffineMultiplication.lean) retains multiplication
+by an original affine scalar, its composition and geometric pullback.
+[GenericPoint](GenericPoint.lean) proves that an epimorphism from the
+actual structure module on an integral scheme is invertible if its
+target's original generic stalk is nonzero. The target module is arbitrary;
+no quasicoherence or finite-presentation hypothesis is added.

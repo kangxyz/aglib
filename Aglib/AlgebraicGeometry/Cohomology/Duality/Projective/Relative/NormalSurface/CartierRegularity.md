@@ -53,3 +53,13 @@ surface-to-curve canonical comparison, its finite-coinduction Hom bridge,
 and the final counit/trace identity are separate consumers. This module
 does not assert canonical triviality, generation, a slope-two Hilbert
 function, or an RDP conclusion.
+
+
+The existing generic `AlgebraicGeometry.Scheme.Modules.cartierTensorSection_mono_of_stalk_regular`
+is now public in the native module-sheaf namespace.
+Its proof and helpers are unchanged: for an integral scheme, the actual Cartier
+ideal and an arbitrary actual module with regular action of every nonzero stalk
+scalar, it proves monicity of the original Cartier tensor section. This allows
+native localization of original canonical coefficients without assuming a new
+canonical model or a desired monicity conclusion. The exposure is pending native
+checking; earlier source receipts are preserved separately.

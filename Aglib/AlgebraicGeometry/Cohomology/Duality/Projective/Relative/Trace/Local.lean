@@ -22,6 +22,7 @@ open AlgebraicGeometry.Scheme.Modules
 universe u
 attribute [local instance] AlgebraicGeometry.Scheme.Modules.standardHasDerivedCategory
 namespace AlgebraicGeometry.Scheme.Cohomology.RelativeProjectiveTrace
+/-- The affine trace sections equation using the canonical counit quasi-isomorphism. -/
 def affineTraceSectionsEquation
     {R : Type u} [CommRing R] {X : Scheme.{u}}
     (p : X ⟶ Spec (.of R)) [QuasiCompact p] [QuasiSeparated p]
@@ -30,8 +31,9 @@ def affineTraceSectionsEquation
     (τ : Sheaf.H.{u + 1} (moduleAddSheaf X M) n → moduleSpecΓFunctor.obj N) : Prop := by
   letI := moduleResolutionPushforwardTildeCounit_quasiIso p (M)
     (injectiveResolution _)
-  exact affineTraceSectionsEquation_of_counit_quasiIso p M N n t τ
+  exact affineTraceSectionsEquationOfCounitQuasiIso p M N n t τ
 
+/-- The model trace sections equation using the canonical counit quasi-isomorphism. -/
 def traceModelSectionsEquation
     {A : Type u} [CommRing A] {P : Scheme.{u}}
     (r : P ⟶ Spec (.of A)) [QuasiCompact r] [QuasiSeparated r]
@@ -43,7 +45,7 @@ def traceModelSectionsEquation
     (z : F.obj N ⟶ N) : Prop := by
   letI := moduleResolutionPushforwardTildeCounit_quasiIso r (U.obj N)
     (injectiveResolution _)
-  exact traceModelSectionsEquation_of_counit_quasiIso r F U n μ N τ z
+  exact traceModelSectionsEquationOfCounitQuasiIso r F U n μ N τ z
 
 theorem traceModelSections_of_standard
     {A : Type u} [CommRing A] {P : Scheme.{u}}
@@ -61,6 +63,7 @@ theorem traceModelSections_of_standard
     (injectiveResolution _)
   exact traceModelSections_of_standard_of_counit_quasiIso r F U n μ N T τ hT
 
+/-- The local trace sections equation using the canonical counit quasi-isomorphism. -/
 def traceLocalSectionsEquation
     {A : Type u} [CommRing A] {P : Scheme.{u}}
     (r : P ⟶ Spec (.of A)) [QuasiCompact r] [QuasiSeparated r]
@@ -76,7 +79,7 @@ def traceLocalSectionsEquation
     (z : J.obj (F1.obj (F0.obj N)) ⟶ J.obj N) : Prop := by
   letI := moduleResolutionPushforwardTildeCounit_quasiIso r (U.obj (J.obj N))
     (injectiveResolution _)
-  exact traceLocalSectionsEquation_of_counit_quasiIso r F0 F1 J L V U η n μ N τ z
+  exact traceLocalSectionsEquationOfCounitQuasiIso r F0 F1 J L V U η n μ N τ z
 
 theorem traceLocalSections_of_model
     {A : Type u} [CommRing A] {P : Scheme.{u}}

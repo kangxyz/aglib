@@ -40,7 +40,8 @@ local notation "γ" =>
   (Localization.mapToFractionRing F q.asIdeal.primeCompl L
     q.asIdeal.primeCompl_le_nonZeroDivisors).toRingHom.toAlgebra
 
-local instance : Algebra L F := localizedFractionAlgebra A F q
+/-- The canonical local algebra action on the original fraction field. -/
+local instance localizedFractionFieldAlgebra : Algebra L F := localizedFractionAlgebra A F q
 
 local instance : IsScalarTower A L F :=
   IsScalarTower.of_algebraMap_eq'
@@ -51,7 +52,9 @@ local instance : IsFractionRing L F :=
   IsFractionRing.isFractionRing_of_isDomain_of_isLocalization
     q.asIdeal.primeCompl L F
 
-local instance : Algebra L (Spec (CommRingCat.of L)).functionField :=
+/-- The native local algebra action on the function field of the local spectrum. -/
+local instance localizedNativeFunctionFieldAlgebra :
+    Algebra L (Spec (CommRingCat.of L)).functionField :=
   AlgebraicGeometry.instAlgebraCarrierFunctionFieldSpec (CommRingCat.of L)
 
 local instance : IsFractionRing L (Spec (CommRingCat.of L)).functionField :=

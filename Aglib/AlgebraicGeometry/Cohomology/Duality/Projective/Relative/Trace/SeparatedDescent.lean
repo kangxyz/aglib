@@ -57,11 +57,11 @@ theorem affineTraceRestriction_of_sections_of_isSeparated
         ((Modules.restrictFunctor (Spec.map (CommRingCat.ofHom σ))).obj N))
     (htR : ∀ x,
       moduleSpecΓFunctor.map tR x =
-        τR (moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated
+        τR (moduleHigherDirectImageAffineSectionsLinearEquivOfIsSeparated
           p M (injectiveResolution M) n x))
     (htA : ∀ y,
       moduleSpecΓFunctor.map tA y =
-        τA (moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated
+        τA (moduleHigherDirectImageAffineSectionsLinearEquivOfIsSeparated
           q M' (injectiveResolution M') n y))
     (hopen : ∀ c,
       τA (moduleCohomologyMapAlong i β n c) =

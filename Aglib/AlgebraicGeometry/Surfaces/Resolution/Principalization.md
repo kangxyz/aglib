@@ -15,3 +15,17 @@ The weak ideal and exact Cartier-power factorization come from `Resolution.WeakT
 Well-founded induction constructs the terminal chain. An empty nonfree-stalk set gives local rank one of the original embedded ideal module. At each inductive step, `cartierPullback_of_pointWeakTransform` uses the existing canonical Cartier avoidance map and the original source isomorphism to preserve the actual exceptional ideal under the later dominant integral point-chain map. The exact product and power equations recover the original total inverse-image ideal; abstract pullback of an invertible module alone is not used.
 
 The generic actual-stalk/finite-length-to-Artinian quotient bridges now belong to `IdealSheaf.Artinian`, under its native `Scheme.IdealSheafData` namespace. This source does not principalize an arbitrary ideal with divisorial support, construct rational-coordinate base ideals, or assert common regular domination. Those consumers require their original divisorial/base-ideal and generic-map bridges.
+
+The original `stalkIdeal_affineCenter` API is retained as a same-statement
+wrapper of the general proof in
+[`Blowup.AffineCenter.Stalk`](../../Blowup/AffineCenter/Stalk.md).
+This lower comparison has no regular-source principalization hypotheses;
+the principalization theorem above keeps all its genuine hypotheses.
+
+The public `pointBlowup_stalkMap_isIso_of_ne` retains its original statement
+and actual point-complement argument. Its final native restriction/stalk-arrow
+calculation now delegates to the weaker `Scheme.Hom.isIso_stalkMap_of_isIso_morphismRestrict`
+in `Stalk/Restriction`, where that calculation has one generic implementation.
+Exact changed source `72ba3202` passed its normal native check (15 seconds)
+in graph 196 after the lower passed (1.5 seconds). Full graph exit 0/no guard,
+matching posthashes in snapshot 177. Older receipts describe older bytes.

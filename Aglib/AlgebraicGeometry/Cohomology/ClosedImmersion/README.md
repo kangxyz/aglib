@@ -39,3 +39,13 @@ The coefficient is quasicoherent and its canonical Cartier tensor section
 is monic; it need not be locally free. The principal charts and concentration
 are constructed, rather than supplied. These interfaces serve the later
 canonical restriction comparison, which is not asserted here.
+
+The [finite-source comparisons](RightAdjoint/FiniteSource/README.md)
+retain the actual quotient source, coefficient germs and native ambient
+Ext in closed-adjoint homology. Their open and resolution-lift naturality
+equations use the original coefficient maps.
+[Affine flat-base-change charts](RightAdjoint/FlatBaseChange/README.md)
+retain full mapped ideals and both Cartesian projections, including
+same-ambient chart uniqueness and literal quotient refinements.
+The quotient Ext comparisons retain their Noetherian, quasicoherent and
+selected-Ext hypotheses where required.

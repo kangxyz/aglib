@@ -1,0 +1,217 @@
+{
+  "scope": "Hashes of retained actual recovery evidence, not new validation; named missing entries are not fabricated.",
+  "files": [
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-063.log",
+      "sha256": "d654a1a2aeceea2d72fc7204c49b77db3008f9a8871f8d1b3db2964e5c84d91c"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-063/graph-build.json",
+      "sha256": "9c07c5a742aa07abf1fd674ea00ed66cc0766eaa27e3b20c26a5193926688038"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-063/owned-argv.jsonl",
+      "sha256": "971c1f9f543d184e7d79b9f09e95401567dcf1a1301916e854c8dc95a5355ee6"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-068.log",
+      "sha256": "d654a1a2aeceea2d72fc7204c49b77db3008f9a8871f8d1b3db2964e5c84d91c"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-068/graph-build.json",
+      "sha256": "786dcf40fb8bf3165628e72c0f4c56cf2ad0bbbb8dd18550a8d9b00f7ab713c4"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-068/owned-argv.jsonl",
+      "sha256": "f8a20739a6820d6e9151c342a5901920d97894d4441cb8ad54778c7c458fbf01"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-072.log",
+      "sha256": "d654a1a2aeceea2d72fc7204c49b77db3008f9a8871f8d1b3db2964e5c84d91c"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-072/graph-build.json",
+      "sha256": "93e905e05d90cdf1cfd5a6164b4bd9eb7c4f16917b5627841cc98ae7c40bae93"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-072/owned-argv.jsonl",
+      "sha256": "058ab5116ed48abd45638ef8839b8afae0c2b80bcfb6c71d5e2f06bf431fddb2"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-076.log",
+      "sha256": "00a51792789961fb473384622290efe4b198dfaf387fffb4cbeaf3db727e9689"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-076/graph-build.json",
+      "sha256": "6f77a0c3af20b9699c94842bb06fed817b1d032b21c2b261fc717fe60afae2ee"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-076/owned-argv.jsonl",
+      "sha256": "e01e87e5d455dfe1c740e3d015dc0bfa462d2e6b1b849c465470be27c26c91e8"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-077.log",
+      "sha256": "d654a1a2aeceea2d72fc7204c49b77db3008f9a8871f8d1b3db2964e5c84d91c"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-077/graph-build.json",
+      "sha256": "d31d7dc64815690b059f2f35737d6c66c4a0b4210166aed0a46409e43c7d9c1a"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-077/owned-argv.jsonl",
+      "sha256": "8bb763e0f22c8f38d8d05584e39aaf4d314b93bb58bb2072119044d7bc55b917"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-080.log",
+      "sha256": "41a3d2277745e31395357fc53f239ddbcdd51ce5ce56b2240679c6275706d7fe"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-080/graph-build.json",
+      "sha256": "fd97607a42b0c1840e5357ec44121f0f5723d9ff69b1226b8e95ae281e22337c"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-080/owned-argv.jsonl",
+      "sha256": "841aab904bd45bf118ee82d0ea3aa770a815607b98d6a09259f00323bb334918"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-086.log",
+      "sha256": "7074d9b926854de382151ed24a1af249eb56f3d9fd0d7247da3d21d43461b14e"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-086/graph-build.json",
+      "sha256": "ddae5c47a8e9987796006a8702cd0406adc3e83364555dddc4e6da777c4ac6aa"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-086/owned-argv.jsonl",
+      "sha256": "41287824d77944517be90fb6ac1ff6e6bb5bc77d294db20b927d6774c6ae8e64"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-087.log",
+      "sha256": "abd1bf021b0f8dccaa218b0b01e74713516964ca00b5bdf50564b5f4b39ad8a4"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-087/graph-build.json",
+      "sha256": "cfed5e1c015902b0589da6857d62e28ce741089d4263775ac44a1031980b1497"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-087/owned-argv.jsonl",
+      "sha256": "e66540b56bfb16c9832e26d2dee19fdbfaf899535fd611a36b485fe956e4abb0"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-088.log",
+      "sha256": "ed2fc2e01a6eab452919de6adeab8a9595e2aa5cd2e631f371eb3792f10a1c17"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-088/graph-build.json",
+      "sha256": "e71e7536336338422f10acce4c116b701c07026106c6379f5733aa26785471d5"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-088/owned-argv.jsonl",
+      "sha256": "3ab032a3bd6440b59b20d588890c237253db3365122a410cfb28236f704e0312"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-089.log",
+      "sha256": "ddb879f438f4e4273b72edb021bad5fda96f30859d326582822bec64583f66d9"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-089/graph-build.json",
+      "sha256": "e57660b5211237dd1c09b6cb9b26feafb09a01f98e3750deee777598cbd88090"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-089/owned-argv.jsonl",
+      "sha256": "c240d14328609aea4f54d70dbc03f960e910933111049634c10a0adedb523cdf"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-092.log",
+      "sha256": "3b0bd6a66a46beb16af4e4d226f2948b10e651ac0a8af7d536ca39e9686e3cbc"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-092/graph-build.json",
+      "sha256": "c655be8cbf7aef5143fb95ac7322ffec61bec89fc229d88cb2bac58d1d6a752d"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-092/owned-argv.jsonl",
+      "sha256": "6d7dc86b28176c3ad4b976150710e12ea7991b6923d77b3ab23266e1003262bc"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-093.log",
+      "sha256": "3925a703b76e78da7267c23039a33cccea5295e9fed7a358efa369cbc0f7da43"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-093/graph-build.json",
+      "sha256": "046ec50aac2b5b3b5966e7d6076c24244be241abdac959fe32be439985b4ca1e"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-own-093/owned-argv.jsonl",
+      "sha256": "d628262d30561ce16135886e5ce5cef8a6dad263566826789e591db6b780dc92"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-p03-locator-008.log",
+      "sha256": "b945469b06fbfabad50c56d4a28117f59bd4b20de79f29fe1b3372aca6728078"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-p03-locator-009.log",
+      "sha256": "f2b61bcf4d225922ef7c2ffbd9f820f852e1c62c6e0359aa3a1044974e505fee"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-p03-locator-010.log",
+      "sha256": "f2b61bcf4d225922ef7c2ffbd9f820f852e1c62c6e0359aa3a1044974e505fee"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-p03-locator-011.log",
+      "sha256": "985e3d4272e7fde17967729280a3e7d614d4654417e47d49f5dbdf2dfe41bdff"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-p03-formation-001.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-p03-diagnostic-007.log",
+      "sha256": "d324b2d59eea912ff13319015cbb2e0bffc563a78a9ad6555c4c5890897a2595"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-p03-diagnostic-008.log",
+      "sha256": "59b32ad95e3cc90bf458cef3fd92ed8503bbb4fb0a2e9f547dff766a11041fd5"
+    },
+    {
+      "path_in_recovery": "surface-resolution-recovery/native/reupload-p03-diagnostic-009.log",
+      "sha256": "eb83d465af524c23bceca642cacd7df842de95b5ca6346e71209e02e3f56ab1c"
+    },
+    {
+      "path_in_recovery": "surface-resolution-cloud-recovery-20261031/reconstruction-p03/raw-app-second-premise-types.txt",
+      "sha256": "e36e059ba794cf9086379f7bd794c0220044a6e7c0bba4f01e54ecd3c85fcd18"
+    },
+    {
+      "path_in_recovery": "surface-resolution-cloud-recovery-20261031/reconstruction-p03/direct-triangle-producer-stages.txt",
+      "sha256": "66d95dabf818398982dd6c910272037e292268b6e156384f2582c3880a6c0b97"
+    },
+    {
+      "path_in_recovery": "surface-resolution-cloud-recovery-20261031/reconstruction-p03/direct-triangle-section-stages.txt",
+      "sha256": "4a4337206d2af63a6e8d26441010f6dc21400332cd6034e54588276dc38b0e7f"
+    },
+    {
+      "path_in_recovery": "surface-resolution-cloud-recovery-20261031/reconstruction-p03/TildePullback.direct-original-triangle.diff",
+      "sha256": "c508a9c597181e95dc0693c329eb36cd326824be84397243efb862851715b142"
+    },
+    {
+      "path_in_recovery": "surface-resolution-cloud-recovery-20261031/reconstruction-p03/TildePullback.gamma-map-bridge.lean.diff",
+      "sha256": "4b5a8d89d0bc5fb66eb93cdf19be034e9a7eb5878e21cf29ef5e9cadea0fda2a"
+    },
+    {
+      "path_in_recovery": "surface-resolution-cloud-recovery-20261031/reconstruction-p03/TildePullback.gamma-map-local-erw.diff",
+      "sha256": "9aad8f560873e49768961a58d4a98d2f11242a5705103398f10eadf02b16818a"
+    },
+    {
+      "path_in_recovery": "surface-resolution-cloud-recovery-20261031/reconstruction-p03/TildePullback.gamma-map-goal-directed-apply.diff",
+      "sha256": "0842e0c1dd0cde7a3c8911f13d1e3a77649253a4e2e451f405bb7b04306d6f20"
+    },
+    {
+      "path_in_recovery": "surface-resolution-cloud-recovery-20261031/reconstruction-p03/GAMMA-MAP-BRIDGE-PACKET.json",
+      "sha256": "b253373563f27b99b6b299ca69e23989bad1f063c259f244eb0b8d50cdc75ada"
+    },
+    {
+      "path_in_recovery": "surface-resolution-cloud-recovery-20261031/reconstruction-p03/PROMOTION-GAMMA-GOAL-DIRECTED.json",
+      "sha256": "812702752809d3791e2b8279446d7f72bf4a9fbb24a9739b76b6d9a9888ee264"
+    }
+  ]
+}

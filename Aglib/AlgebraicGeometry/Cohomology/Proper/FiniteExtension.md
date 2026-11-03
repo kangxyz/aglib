@@ -48,3 +48,7 @@ The implementation uses
 `Cohomology/Proper/ScalarTorsion`, and the original proper-birational H1
 injection. No theorem assumes its desired dominating model or cohomology
 factorization as an input.
+
+The original generic field-finiteness proof now reuses
+`Scheme.functionFieldMap_finite` in `FunctionField/Finite`; the private consumer
+name remains a thin wrapper. The bound theorem and its original maps are unchanged.

@@ -10,6 +10,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.De
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.OpenImmersion.CartesianSections
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Stalk
 public import Mathlib.Algebra.Category.Ring.FilteredColimits
+public import Aglib.AlgebraicGeometry.Modules.Pullback.LocalSpectrum.Germs
 
 /-!
 # Proper fibre idempotents in the image of the original ordinary stalk
@@ -93,40 +94,6 @@ open CategoryTheory CategoryTheory.Limits TopologicalSpace Opposite IsLocalRing
 open AlgebraicGeometry.Scheme.Modules AlgebraicGeometry.Scheme.Modules.QuasiCoherent
 universe u
 
-universe v w
-
-private theorem scalarExtensionIso_mpr_unit
-    {R S : Type u} [CommRing R] [CommRing S]
-    {C : Type v} [Category.{w} C]
-    (F : C ⥤ ModuleCat.{u} S) (G : C ⥤ ModuleCat.{u} R)
-    (σ τ : R →+* S) (hστ : σ = τ) (E : F ≅ G ⋙ ModuleCat.extendScalars σ)
-    (hTypes : (F ≅ G ⋙ ModuleCat.extendScalars τ) =
-      (F ≅ G ⋙ ModuleCat.extendScalars σ))
-    (M : C) (m : F.obj M) (n : G.obj M)
-    (hE : E.hom.app M m = (ModuleCat.extendRestrictScalarsAdj σ).unit.app (G.obj M) n) :
-    (Eq.mpr hTypes E).hom.app M m =
-      (ModuleCat.extendRestrictScalarsAdj τ).unit.app (G.obj M) n := by
-  subst τ
-  have hh : hTypes = rfl := Subsingleton.elim _ _
-  rw [hh]
-  exact hE
-
-private theorem scalarExtensionIso_mp_unit
-    {R S : Type u} [CommRing R] [CommRing S]
-    {C : Type v} [Category.{w} C]
-    (F : C ⥤ ModuleCat.{u} S) (G : C ⥤ ModuleCat.{u} R)
-    (σ τ : R →+* S) (hστ : σ = τ) (E : F ≅ G ⋙ ModuleCat.extendScalars σ)
-    (hTypes : (F ≅ G ⋙ ModuleCat.extendScalars σ) =
-      (F ≅ G ⋙ ModuleCat.extendScalars τ))
-    (M : C) (m : F.obj M) (n : G.obj M)
-    (hE : E.hom.app M m = (ModuleCat.extendRestrictScalarsAdj σ).unit.app (G.obj M) n) :
-    (Eq.mp hTypes E).hom.app M m =
-      (ModuleCat.extendRestrictScalarsAdj τ).unit.app (G.obj M) n := by
-  subst τ
-  have hh : hTypes = rfl := Subsingleton.elim _ _
-  rw [hh]
-  exact hE
-
 /-- The original pullback-stalk unit formula survives actual point equality transport. -/
 theorem pullbackModuleStalkAtEqIso_unit_germ
     {X Y : Scheme.{u}} (p : X ⟶ Y) (x : X) (y : Y) (hpx : p x = y)
@@ -137,28 +104,8 @@ theorem pullbackModuleStalkAtEqIso_unit_germ
         (((Scheme.Modules.pullbackPushforwardAdjunction p).unit.app M).app U m)) =
       (ModuleCat.extendRestrictScalarsAdj
         (((Y.presheaf.stalkCongr (.of_eq hpx)).inv ≫ p.stalkMap x).hom)).unit.app
-          ((moduleStalk Y y).obj M) (M.presheaf.germ U y hy m) := by
-  subst y
-  let F := Scheme.Modules.pullback p ⋙ moduleStalk X x
-  let G := moduleStalk Y (p x)
-  let σ := (p.stalkMap x).hom
-  let τ := ((Y.presheaf.stalkCongr (.of_eq (rfl : p x = p x))).inv ≫ p.stalkMap x).hom
-  have hστ : σ = τ := by
-    dsimp only [σ, τ]
-    congr 1
-    simp only [TopCat.Presheaf.stalkCongr, TopCat.Presheaf.stalkSpecializes_refl,
-      Category.id_comp]
-  let hTypes := congrArg (fun ρ => F ≅ G ⋙ ModuleCat.extendScalars ρ) hστ.symm
-  have hE : (pullbackModuleStalkIso p x).hom.app M
-      (((Scheme.Modules.pullback p).obj M).presheaf.germ (p ⁻¹ᵁ U) x hy
-        (((Scheme.Modules.pullbackPushforwardAdjunction p).unit.app M).app U m)) =
-      (ModuleCat.extendRestrictScalarsAdj σ).unit.app (G.obj M)
-        (M.presheaf.germ U (p x) hy m) := by
-    simpa only [ModuleCat.extendRestrictScalarsAdj_unit_app_apply] using
-      pullbackModuleStalkIso_unit_germ p x M U hy m
-  dsimp only [pullbackModuleStalkAtEqIso]
-  exact scalarExtensionIso_mpr_unit F G σ τ hστ (pullbackModuleStalkIso p x)
-    hTypes M _ _ hE
+          ((moduleStalk Y y).obj M) (M.presheaf.germ U y hy m) :=
+  Scheme.Modules.pullbackModuleStalkAtEqIso_unit_germ p x y hpx M U hy m
 
 /-- At the original local-spectrum closed point, the same unit gives the normalized scalar unit. -/
 theorem fromSpecStalkPullbackStalkIso_unit_germ
@@ -174,21 +121,8 @@ theorem fromSpecStalkPullbackStalkIso_unit_germ
           (Y.fromSpecStalk y)).unit.app M).app U m)) =
       (ModuleCat.extendRestrictScalarsAdj
         (stalkClosedPointIso (Y.presheaf.stalk y)).inv.hom).unit.app
-          ((moduleStalk Y y).obj M) (M.presheaf.germ U y hy m) := by
-  let j := Y.fromSpecStalk y
-  let x := closedPoint (Y.presheaf.stalk y)
-  let hx := Scheme.fromSpecStalk_closedPoint (x := y)
-  let F := Scheme.Modules.pullback j ⋙ moduleStalk (Spec (Y.presheaf.stalk y)) x
-  let G := moduleStalk Y y
-  let σ := ((Y.presheaf.stalkCongr (.of_eq hx)).inv ≫ j.stalkMap x).hom
-  let τ := (stalkClosedPointIso (Y.presheaf.stalk y)).inv.hom
-  have hστ : σ = τ := congrArg CommRingCat.Hom.hom
-    (fromSpecStalk_normalized_stalkMap Y y)
-  let hTypes := congrArg (fun ρ => F ≅ G ⋙ ModuleCat.extendScalars ρ) hστ
-  have hE := pullbackModuleStalkAtEqIso_unit_germ j x y hx M U hy m
-  dsimp only [fromSpecStalkPullbackStalkIso]
-  exact scalarExtensionIso_mp_unit F G σ τ hστ
-    (pullbackModuleStalkAtEqIso j x y hx) hTypes M _ _ hE
+          ((moduleStalk Y y).obj M) (M.presheaf.germ U y hy m) :=
+  Scheme.Modules.fromSpecStalkPullbackStalkIso_unit_germ Y y M U hy m
 
 /-- The original local-section isomorphism cancels to the original scalar-extension unit. -/
 theorem stalkFromSpecStalkSectionsIso_cancel
@@ -200,11 +134,8 @@ theorem stalkFromSpecStalkSectionsIso_cancel
         ((fromSpecStalkPullbackStalkIso Y y).hom.app M) =
       (ModuleCat.extendRestrictScalarsAdj
         (stalkClosedPointIso (Y.presheaf.stalk y)).inv.hom).unit.app
-          ((moduleStalk Y y).obj M) := by
-  rw [stalkFromSpecStalkSectionsIso_hom]
-  simp only [Category.assoc, Iso.inv_hom_id_assoc, ← Functor.map_comp,
-    Iso.app_inv, Iso.inv_hom_id_app]
-  erw [CategoryTheory.Functor.map_id, Category.comp_id]
+          ((moduleStalk Y y).obj M) :=
+  Scheme.Modules.stalkFromSpecStalkSectionsIso_cancel Y y M
 
 /-- The native stalk/local-sections comparison sends each actual germ to its actual
 pulled-back neighborhood section restricted to the whole local spectrum. -/
@@ -215,25 +146,8 @@ theorem stalkFromSpecStalkSectionsIso_germ
       ((Scheme.Modules.pullback (Y.fromSpecStalk y)).obj M).presheaf.map
         (homOfLE (ProperFibreIdempotents.stalkRestriction_le y U hy)).op
         (((Scheme.Modules.pullbackPushforwardAdjunction
-          (Y.fromSpecStalk y)).unit.app M).app U m) := by
-  let P := (Scheme.Modules.pullback (Y.fromSpecStalk y)).obj M
-  let c :=
-    (localSpectrumSectionsStalkIso (Y.presheaf.stalk y) P).hom ≫
-      (ModuleCat.restrictScalars (stalkClosedPointIso (Y.presheaf.stalk y)).inv.hom).map
-        ((fromSpecStalkPullbackStalkIso Y y).hom.app M)
-  apply (ConcreteCategory.bijective_of_isIso c).1
-  have hleft := ConcreteCategory.congr_hom (stalkFromSpecStalkSectionsIso_cancel Y y M)
-    (M.presheaf.germ U y hy m)
-  change c ((stalkFromSpecStalkSectionsIso Y y M).hom (M.presheaf.germ U y hy m)) = _ at hleft
-  rw [hleft]
-  symm
-  change (fromSpecStalkPullbackStalkIso Y y).hom.app M
-    (P.presheaf.germ ⊤ (closedPoint (Y.presheaf.stalk y)) trivial
-      (P.presheaf.map (homOfLE (ProperFibreIdempotents.stalkRestriction_le y U hy)).op
-        (((Scheme.Modules.pullbackPushforwardAdjunction
-          (Y.fromSpecStalk y)).unit.app M).app U m))) = _
-  rw [P.presheaf.germ_res_apply]
-  exact fromSpecStalkPullbackStalkIso_unit_germ Y y M U hy m
+          (Y.fromSpecStalk y)).unit.app M).app U m) :=
+  Scheme.Modules.stalkFromSpecStalkSectionsIso_germ Y y M U hy m
 
 /-- The actual ordinary mate is invertible under flat base change of a qcqs morphism. -/
 theorem cartesianBaseChangeMap_isIso_of_flat

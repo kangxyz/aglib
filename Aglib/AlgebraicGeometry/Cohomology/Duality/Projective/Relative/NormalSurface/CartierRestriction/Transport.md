@@ -5,6 +5,12 @@ through a specified canonical reconstruction and the original affine derived
 sections. Its intended consumer is the surface-to-curve canonical restriction.
 This transport module does not complete that comparison.
 
+The public evaluation lemmas `restrictionPurityInput_apply`,
+`restrictionPuritySerreMap_apply`, `restrictionHomTransportEquiv_apply` and
+`restrictionModuleSerreMap_apply` expose these same original factors. They
+allow the coefficient-curve consumer to compare its actual Serre and trace
+maps without rebuilding or unfolding the entire transport equivalence.
+
 `restrictionModuleSerreMap` starts with native Ext into the supplied canonical
 module and uses the original relative Serre map, its actual own-object
 reconstruction, and the installed single-functor shift comparisons. The affine

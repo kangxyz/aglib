@@ -51,3 +51,18 @@ maps of integral schemes, through the original generic-fibre isomorphism.
 passes universal injectivity to that same function-field map and proves it
 purely inseparable. No normality, perfection, characteristic or Noetherian
 hypothesis is added.
+
+[Scalars](Scalars.lean), [AffineScalars](AffineScalars.lean) and
+[BirationalCharts](BirationalCharts.lean) retain generic coefficients
+through the original dominant birational field map and actual nonempty
+affine charts. The specified fraction field and its scalar tower are
+compared through the inverse of that same field map.
+[LocalSpectrum](LocalSpectrum.lean) and its
+[Cartesian comparison](LocalSpectrum/BaseChange.lean) retain the original
+stalk-spectrum field map and projection square.
+[FlatPreimmersion](FlatPreimmersion.lean) identifies the original generic
+map for a flat preimmersion; [Restriction](Restriction.lean) obtains a
+field-map isomorphism from an actual nonempty isomorphism open.
+[StalkInjection](StalkInjection.lean) proves injectivity of every original
+stalk map for a dominant map of integral schemes, without properness,
+normality, finite type or a dimension bound.

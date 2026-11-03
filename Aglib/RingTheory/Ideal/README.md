@@ -38,3 +38,11 @@ ideals `I` and `𝔪` of a Noetherian ring there is `m ≥ 1` with `I ⊓ 𝔪 *
 Equivalently, for `J = I + 𝔪 ^ m` the map `I / 𝔪 I → J / 𝔪 J` is injective. It follows from
 Mathlib's Artin–Rees lemma `Ideal.exists_pow_inf_eq_pow_smul`; no local or field hypothesis is
 used. The consumer is the [Artinian-test criterion](../Smooth/ArtinianLifting.lean).
+
+[ScalarExtensionKernel](ScalarExtensionKernel.lean) computes the kernel
+of the original extended-ideal inclusion `T ⊗[S] I → T`.
+If one original ideal element has regular image in `T`, this kernel is
+exactly the native torsion submodule. The proof retains its actual tensor
+identity and scalar action. No domain, flatness, Noetherianity or
+finite-generation hypothesis is needed. Geometric consumers prove the
+original pullback-stalk square before applying it.

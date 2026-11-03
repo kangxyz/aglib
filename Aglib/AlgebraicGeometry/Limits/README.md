@@ -55,3 +55,9 @@ swapped (`pullbackSigmaι_eq_sigmaι_iso`).
 [FiniteProducts/Smooth](FiniteProducts/Smooth.lean) adds relative dimensions
 for the original smooth binary and finite products, including the empty
 product over the base.
+
+[IntegralOpenOverlap](IntegralOpenOverlap.lean) proves that the native
+pullback of two nonempty open immersions into an integral scheme is
+nonempty and integral. The overlap is the original scheme pullback;
+no affine, Noetherian or separatedness hypothesis is imposed.
+Line-map gluing uses this same overlap.

@@ -6,16 +6,18 @@ Authors: kangxyz
 module
 
 public import Aglib.Algebra.Homology.DerivedCategory.KInjective.Adjunction.Exact
+public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.StructureQuotient
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.HomSection
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Affine
 public import Aglib.AlgebraicGeometry.Modules.Invertible.TensorFaithful
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Tensor.Exact
-public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.StructureQuotient
 public import Aglib.AlgebraicGeometry.Modules.ProjectionFormula.ClosedImmersion
 public import Aglib.AlgebraicGeometry.Modules.Tensor.Monoidal.Symmetric
+public import Aglib.AlgebraicGeometry.Modules.Tensor.Section
 public import Mathlib.Algebra.Homology.DerivedCategory.Ext.ExactSequences
 public import Mathlib.Algebra.Homology.DerivedCategory.Ext.Map
 public import Mathlib.Algebra.Homology.DerivedCategory.FullyFaithful
+
 
 /-!
 # The original Cartier section and positive extension adapters
@@ -46,6 +48,9 @@ private theorem sectionExtension_hom_eq_zero
   have h := τ.naturality f
   change f ≫ τ.app (K.obj M) = τ.app T ≫ K.map f at h
   exact h.trans (by rw [hT, zero_comp, zero_comp])
+
+
+open AlgebraicGeometry.Scheme.Modules
 
 namespace CategoryTheory
 
@@ -198,18 +203,6 @@ end SectionMate
 end Adjunction
 end CategoryTheory
 
-private theorem sectionTensorWhisker
-    {C : Type*} [Category* C] [MonoidalCategory C]
-    {L : C} (s : 𝟙_ C ⟶ L) (M N : C) :
-    ((λ_ (M ⊗ N)).inv ≫ s ▷ (M ⊗ N)) ≫ (α_ L M N).inv =
-      ((λ_ M).inv ≫ s ▷ M) ▷ N := by
-  calc
-    _ = (λ_ (M ⊗ N)).inv ≫ (α_ (𝟙_ C) M N).inv ≫ s ▷ M ▷ N := by
-      rw [Category.assoc, associator_inv_naturality_left]
-    _ = (λ_ M).inv ▷ N ≫ s ▷ M ▷ N := by
-      rw [leftUnitor_tensor_inv]
-      simp only [Category.assoc, Iso.hom_inv_id_assoc]
-    _ = _ := (comp_whiskerRight _ _ _).symm
 
 private theorem sectionTensorTwistMono
     {C : Type*} [Category* C] [MonoidalCategory C] [BraidedCategory C]
@@ -297,24 +290,6 @@ universe u
 open AlgebraicGeometry CategoryTheory.MonoidalCategory CategoryTheory.BraidedCategory
 open AlgebraicGeometry.Scheme.Hom AlgebraicGeometry.Scheme.Modules.Invertible
 
-/-- The original tensor-unit inverse followed by the supplied section coefficient map. -/
-public def positiveCartierTensorSection (X : Scheme.{u}) (L : X.Modules)
-    (s : SheafOfModules.unit X.ringCatSheaf ⟶ L) :
-    𝟭 X.Modules ⟶ moduleTensorLeftFunctor X L :=
-  (SheafOfModulesOfCommRing.tensorLeftUnitIso X.sheaf).inv ≫ moduleTensorCoefficientMap X s
-
-/-- Every component retains the original tensor-unit inverse and original coefficient map. -/
-public theorem positiveCartierTensorSection_app (X : Scheme.{u}) (L M : X.Modules)
-    (s : SheafOfModules.unit X.ringCatSheaf ⟶ L) :
-    (positiveCartierTensorSection X L s).app M =
-      (tensorSheafLeftUnit X M).inv ≫ (moduleTensorCoefficientMap X s).app M := rfl
-
-/-- The actual associator compares insertion of the section before a tensor product. -/
-public theorem positiveCartierTensorSection_tensor (X : Scheme.{u}) (L M N : X.Modules)
-    (s : SheafOfModules.unit X.ringCatSheaf ⟶ L) :
-    (positiveCartierTensorSection X L s).app (M ⊗ N) ≫ (α_ L M N).inv =
-      (positiveCartierTensorSection X L s).app M ▷ N :=
-  sectionTensorWhisker (C := X.Modules) s M N
 
 /-- Tensoring by an actual line bundle preserves regularity of the original section. -/
 public theorem positiveCartierTensorSection_twist_mono (X : Scheme.{u})

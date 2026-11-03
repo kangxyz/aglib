@@ -6,6 +6,8 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Model.Restriction
+public import
+  Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.FiniteSource.ResolutionNaturality
 
 /-!
 # The native common-model homology comparison on actual resolution lifts
@@ -45,31 +47,6 @@ theorem closedImmersionModelHomologyIso_naturality (c : ℤ) :
           ((closedImmersionRightAdjoint i).rightDerivedFunctorPlus.map
             ((DerivedCategory.Plus.singleFunctor P.Modules 0).map f)) ≫
         (closedImmersionModelHomologyIso i J c).hom := by
-  let F := closedImmersionRightAdjoint i
-  let H := DerivedCategory.Plus.homologyFunctor X.Modules c
-  let p := DerivedCategory.Plus.Q.map (F.mapCochainComplexPlus.map φ.mapPlus)
-  let u := H.map (F.rightDerivedFunctorPlus.map
-    ((DerivedCategory.Plus.singleFunctor P.Modules 0).map f))
-  let eI := H.mapIso (I.rightDerivedFunctorPlusIso F)
-  let eJ := H.mapIso (J.rightDerivedFunctorPlusIso F)
-  let PI := (DerivedCategory.Plus.homologyFunctorFactors (A := X.Modules) c).app
-    (F.mapCochainComplexPlus.obj I.cochainComplexPlus)
-  let PJ := (DerivedCategory.Plus.homologyFunctorFactors (A := X.Modules) c).app
-    (F.mapCochainComplexPlus.obj J.cochainComplexPlus)
-  have hR := congrArg H.map (I.rightDerivedFunctorPlusIso_naturality F φ)
-  simp only [Functor.map_comp] at hR
-  change H.map p ≫ eJ.hom = eI.hom ≫ u at hR
-  have hP := (DerivedCategory.Plus.homologyFunctorFactors
-    (A := X.Modules) c).hom.naturality (F.mapCochainComplexPlus.map φ.mapPlus)
-  change H.map p ≫ PJ.hom = PI.hom ≫
-    HomologicalComplex.homologyMap ((F.mapHomologicalComplex (.up ℤ)).map φ.hom') c at hP
-  have hIJ : eI.inv ≫ H.map p = u ≫ eJ.inv := by
-    apply (cancel_mono eJ.hom).mp
-    rw [Category.assoc, hR, Iso.inv_hom_id_assoc, Category.assoc, Iso.inv_hom_id,
-      Category.comp_id]
-  change eI.inv ≫ PI.hom ≫
-      HomologicalComplex.homologyMap ((F.mapHomologicalComplex (.up ℤ)).map φ.hom') c =
-    u ≫ eJ.inv ≫ PJ.hom
-  rw [← hP, ← Category.assoc, hIJ, Category.assoc]
+  exact derivedClosedImmersionRightAdjointModelHomologyIso_naturality i φ c
 
 end AlgebraicGeometry.Scheme.Modules

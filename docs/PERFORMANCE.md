@@ -44,7 +44,15 @@ Use these decisions within ordinary proof iteration:
 Current commands and final-check scope belong to
 [development](DEVELOPMENT.md#local-verification-and-ci),
 [caching](CACHING.md#shared-ci-protocol) and [the toolkit](../scripts/README.md).
-Historical command sequences in records describe their original runs.
+Historical command sequences in records describe their original runs. Historical source names, hashes and passes do not establish
+acceptance or performance of subsequently refactored sources.
+
+When a concrete homology/counit proof expands an entire two-stage diagram, derive
+its complete native homology equation from the genuine cochain square in variable
+categories first. Preserve the actual functor comparison and counit maps; do not
+assume their desired homology compatibility. The [cochain-to-homology follow-up](performance/cases/whole-original-comparison-laws/cochain-homology-square-follow-up/README.md)
+records the exact extraction and selected passes, separate from a lower-budget
+kernel locator and a later unrelated graph guard.
 
 ## Conversion boundaries
 
@@ -75,12 +83,32 @@ presheaf only through generic equivalences such as `AddEquiv.addSubgroupCongr`; 
 subtypes of `Pic_{X/k,(fppf)}` exhausted kernel memory.
 [Over-category comparison case](performance/over-category-comparisons-type-identity-isomorphisms-at-the-actual-object.md).
 
+When a native comparison mixes `A : CommRingCat` with the carrier-rebundled
+`Spec (.of (A : Type u))`, eliminate the bundle constructor once and keep the
+literal ring carrier throughout the original proof. Instantiate the original
+comparison against the goal before supplying its identity premise, rather than
+rebuilding a large concrete conclusion. Retain existing opaque constructions
+and expose their proved component equations across file boundaries.
+[Relative trace carrier-pinning case](performance/values-at-concrete-fibre-products-over-spec-commringcatof-a.md#pin-the-affine-ring-carrier-before-checking-the-original-local-trace-square).
+
 For continuity coefficient and cohomology legs, type the original component
 inverse or input at the literal diagram object, then compose its whole value
 law or apply native `H.map_comp_apply` directly. Reuse one typed alias for the
 original inverse constant-source arrow across assemblers; supply the given
 `HasExt` at its projected apex type. Retain the original maps and premises.
 [Continuity typed original endpoints](performance/continuity-typed-original-endpoints.md).
+
+When an actual affine section goal retains `moduleSpecΓFunctor.map`, expose its
+proved native top-section function law before using section-component rewrites.
+Move an existing general pointwise implementation to its low owner rather than
+copy it. If rewriting the whole-function lambda fails, apply its equality with
+`congrFun` and let the original goal infer the unchanged value through `Eq.trans`.
+Where the original native producer supports the given equality proof directly,
+prove its complete law there instead of repeatedly converting specialized
+canonical component equations. The [original Γ-map/triangle follow-up](performance/cases/whole-original-comparison-laws/affine-gamma-direct-triangle/README.md)
+retains the unsuccessful carrier/proof-choice, presentation-change and rewrite
+attempts, exact stages and three actual owner passes; no unique cause or
+controlled speedup is established.
 
 **Prove the whole relevant equation before evaluating components.** Compose,
 transport or cancel the original transformations/isomorphisms over variables,
@@ -108,6 +136,10 @@ source-bound module pass; it establishes no unique cause or controlled speedup.
 For dependent roots transport, retain the actual whole transport and its original constructor identity before coefficient evaluation; likewise retain the original whole section isomorphism before evaluating its component, and infer the literal endpoints. [Roots section transport follow-up](performance/cases/whole-original-comparison-laws/roots-section-follow-up/README.md) separates formation-only and profiled diagnostics from the final source-bound three-module pass; it establishes no unique kernel cause or controlled speedup.
 
 If a generic transport theorem passes but materializing its concrete equality still fails, derive and consume the original indexed transport inside the general comparison-values construction before specialization. Supply the original composition law at its inferred head and return the literal original-map conclusion; retain the indexed family, equality transport and independent worlds. [LocalFinite indexed transport](performance/cases/whole-original-comparison-laws/localfinite-indexed-transport/README.md) records the failed standalone and reduced-telescope attempts and the final source-bound pass without a unique-cause or controlled-speedup claim.
+
+When bounded native comparison finds only constructor-local proof-witness differences, share the genuine original witness suppliers in both original constructors and the consumer. Do not depend on generated auxiliary proof names or add those properties as new premises. The [chart-source witness follow-up](performance/cases/whole-original-comparison-laws/chart-source-witness-follow-up/README.md) separates proof-aware structural evidence from actual native acceptance.
+
+If an actual generic comparison application fails at an inferred proof argument, test whether the unchanged caller goal can determine the interface first, then supply the original proof. The [Cartesian goal-directed follow-up](performance/cases/whole-original-comparison-laws/cartesian-goal-directed-follow-up/README.md) separates that input seam from target formation and records the exact three-line repair, without a unique-cause claim.
 
 [Whole module exchange](performance/whole-module-exchange-comparisons-before-evaluating-components.md),
 [site-cohomology factories](performance/site-cohomology-share-the-comparison-definition-not-only-its-proof.md).
@@ -208,6 +240,16 @@ structural maps, use their proved comparison arrows and triangles instead of
 forcing a carrier rebase.
 [Explicit transports](performance/formal-line-bundle-algebraization-explicit-transports.md),
 [tuple cochains](performance/original-tuple-cochains-normalize-typed-carriers-before-transport.md).
+
+**Prefer deterministic cardinality witnesses over dependent elimination.** If an
+original finite basis has positive cardinality r and the consumer uses Fin(n+1),
+try n := r - 1 with its arithmetic equality, then reindex the SAME basis by
+native finCongr. Preserve the vectors and all coefficient maps. In the
+[complete-regular trace entrance](performance/cases/deterministic-cardinality-basis-transport/README.md),
+canonical reindexing alone still timed out while an existential successor was
+eliminated; the deterministic witness passed. This is source-bound evidence,
+not a unique-cause claim or a measured speedup. Diagnose the actual visited
+command before applying this repair to a different dependent context.
 
 **Isolate witness selection when typed endpoints are insufficient.** For finite
 product equivalences, prove preimage selection and inversion over plain
@@ -531,6 +573,13 @@ mathematical conditions govern that choice.
   distinguish fresh frontends from reused artifacts.
 - Use focused dependency owners for independent interfaces. Batch necessary
   edits to widely imported providers, and preserve unaffected consumers.
+- When introducing split providers, compare their declarations with the existing
+  parent. Keep one canonical implementation of each constructor and law; let
+  the parent reexport the providers and retain its independent original laws.
+  An aggregate import can report a generated `_proof_n` name when an entire
+  family is duplicated. Preserve the original models, maps and premises and
+  continue the normal production-root build with compatible artifacts.
+  [Canonical split providers](performance/cases/canonical-split-providers/README.md).
 - Separate primitive coefficient aliases from classification-heavy providers.
   Preserve literal names, types, RHS and native lifts, reexport the leaf from
   the geometric owner, and redirect only coefficient consumers. Bind existing
@@ -552,6 +601,16 @@ mathematical conditions govern that choice.
   from a missing artifact; reserve slots for the terminal failure. The recorded
   diagnosis establishes neither a successful repair nor a unique map-limit cause.
   [Loader fallback diagnosis](performance/loader-fallback-read-diagnosis.md).
+- If a whole-root checker reaches the host mapping limit, retain the compiler,
+  pins and native predicates and partition actual producer modules into disjoint
+  coarse assignments. Import one private environment per batch, cover private
+  and generated declarations by actual origin, retain source options and
+  suppressions, and preserve separate import-only entry coverage. Reuse successful
+  batches only when their actual import inputs are unchanged. The
+  [coarse batching case](performance/cases/coarse-source-preserving-validation/README.md)
+  records the complete assignment plan, native check boundaries and successful
+  lint/audit union. This does not establish a pass of the original single
+  environment or a controlled speedup.
 - Build a large native coherence family from complete variable-input
   constructions, then specialize only the original-data view needed by each
   square. Keep stable producers and independent proofs in cached focused
@@ -645,6 +704,17 @@ pilot with an existing witness. Retain source/setup provenance, structured
 frames and exact excerpts; keep an oversized authoritative raw trace at its
 hash-bound durable locator. Do not allocate unprofiled wall time from overlapping
 instrumented intervals. [Čech diagnostic frontier](performance/cech-intrinsic-conversion-frontier.md).
+
+When a precisely restricted `dsimp only` leaves local definitions inside
+coercion or scalar-action dictionaries, inspect its instance-argument behavior
+before unfolding the underlying geometric maps. A guarded actual-type comparison
+may justify `dsimp +instances only` with the same own-definition/local-let list.
+Check the Eq head and arity before indexing, and retain pending branches when a
+comparison is capped. A proof-aware comparison with no remaining differences is
+not kernel acceptance. The [original stalk comparison case](performance/original-stalk-comparison-instance-lets-and-proof-irrelevance.md)
+records a narrowly accepted use of an already constructed local proof term when
+ordinary final `exact` conversion still failed; the full original theorem was
+then checked by the normal production kernel, without a replay or changed limits.
 
 ### Search upstream references
 

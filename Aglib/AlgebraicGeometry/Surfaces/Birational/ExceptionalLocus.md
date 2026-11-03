@@ -1,5 +1,16 @@
 # Actual contracted curves and their finite count
 
+The public dimension_closure_point_eq_one identifies the closure of a
+nonclosed, nongeneric point on an integral scheme of dimension at most two
+as one-dimensional. Normal-point domination uses this same geometric lemma
+to identify actual proper images of curves; its proof and hypotheses are
+unchanged.
+
+The public genericPoint_mem_targetIsomorphismLocus and
+contractedCurve_avoids_targetLocus retain their original maps and proofs.
+They allow different-source domination arguments to exclude the original
+generic point from a contracted curve without duplicating the locus proof.
+
 The maintained set contractedCurves f consists of actual native
 IrreducibleCloseds X with carrier dimension exactly one and subsingleton
 original image f''C. contractedCurveCount f is Nat.card of that literal

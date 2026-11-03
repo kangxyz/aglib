@@ -35,3 +35,13 @@ quotient. It preserves the existing homogeneous carriers and grading.
 Spanning by the chosen ideal generators or their cotangent classes yields
 surjectivity. This feeds the full quadratic-kernel presentation; it does
 not supply a Hilbert function from surface geometry.
+
+[Cotangent/Equiv](Cotangent/Equiv.lean) transports the original associated
+graded and entire cotangent-polynomial kernel through an actual ring
+equivalence, preserving quotient coefficients and degree-one symbols.
+Source, target and generator-index universes are independent.
+[Cotangent/Basis](Cotangent/Basis.lean) compares two genuinely generating
+families in one local ring when their cardinality equals its actual
+cotangent finrank. Its polynomial equivalence transports the full kernel,
+including a supplied linear-square kernel, rather than just a chosen
+quadratic relation.

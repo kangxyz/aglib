@@ -39,7 +39,7 @@ instance stage_integral (s : Finset (AlgebraicClosure K)) :
   (Subalgebra.isIntegral_iff _).mpr fun x _ => Algebra.IsIntegral.isIntegral x
 
 /-- Algebraicity makes each original finite-generated stage a finite field. -/
-instance stage_field (s : Finset (AlgebraicClosure K)) : Field (stage K s) :=
+instance stageField (s : Finset (AlgebraicClosure K)) : Field (stage K s) :=
   (isField_of_isIntegral_of_isField' (R := K) (S := stage K s)
     (Field.toIsField K)).toField
 

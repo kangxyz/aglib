@@ -64,7 +64,7 @@ variable (P : CochainComplex.Plus (ModuleCat.{u} R))
 the proved original counit theorem
 turns any actual native derived global-sections model into an actual native direct-image model.
 No exactness of global sections or injectivity of pushed terms is assumed. -/
-def moduleSpecDerivedPushforwardModelIso_of_isSeparated [QuasiCompact f] [IsSeparated f]
+def moduleSpecDerivedPushforwardModelIsoOfIsSeparated [QuasiCompact f] [IsSeparated f]
     [M.IsQuasicoherent] :
     DerivedCategory.Plus.Q.obj ((tilde.functor R).mapCochainComplexPlus.obj P) ≅
       (Scheme.Modules.pushforward f).rightDerivedFunctorPlus.obj

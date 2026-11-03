@@ -1,0 +1,309 @@
+{
+  "failure_build_resource": {
+    "state": "completed",
+    "command": [
+      "lake",
+      "--rehash",
+      "build",
+      "Aglib",
+      "-o",
+      "/root/autodl-tmp/lean-build/checkpoints/aglib-surface-resolution-main-20261102/native-final/run-31f6aa05b34e427eb5cb8b367746429e/native-outputs.jsonl"
+    ],
+    "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean",
+    "pid": 756167,
+    "pgid": 756167,
+    "exit_code": 1,
+    "guard_failure": null,
+    "peak_rss_bytes": 37248606208,
+    "duration_seconds": 10666.898869305849,
+    "limits": {
+      "lean_memory_mb": 12800,
+      "rss_limit_mb": 110592,
+      "sample_seconds": 0.1,
+      "physical_memory_bytes": 540646817792,
+      "lean_threads": 4,
+      "lake_jobs": 8,
+      "native_build_threads": 4,
+      "max_active_lean": 8,
+      "remote_profile": {
+        "jobs": 8,
+        "lean": "/root/autodl-tmp/lean-build/logs/remote-aa74903ca2674564a55489dcfe4bb88b/toolchain/bin/lean",
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 110592,
+        "schema_version": 1,
+        "threads": 4
+      },
+      "tooling_sha256": {
+        "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/scripts/lean_tools/resources.py": "169381119ff1b7e7fb5dc18ed88ac8a1ad47ee11c589f467766fb1a2616a4338",
+        "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/scripts/lean_tools/build.py": "506460b757537a2449d6df6e52e1d3fd0870f6de1731ca3171795ce1ab8bb307",
+        "/root/autodl-tmp/lean-build/logs/remote-aa74903ca2674564a55489dcfe4bb88b/toolchain/bin/lean": "3ae9c7bd954d1756a838e5e536bc1b47361533406fb3a359227158dc9e8ad65f"
+      }
+    },
+    "owned_group_gone": true,
+    "last_members": [
+      {
+        "pid": 756167,
+        "rss_bytes": 0,
+        "executable": "lake <defunct>",
+        "command_path": "lake <defunct>"
+      }
+    ]
+  },
+  "repair_build_resource": {
+    "state": "completed",
+    "command": [
+      "lake",
+      "--rehash",
+      "build",
+      "Aglib",
+      "-o",
+      "/root/autodl-tmp/lean-build/checkpoints/aglib-surface-resolution-main-20261102/native-final/run-dc4413c7148f42b7a2dfd1f313a707aa/native-outputs.jsonl"
+    ],
+    "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean",
+    "pid": 911175,
+    "pgid": 911175,
+    "exit_code": 0,
+    "guard_failure": null,
+    "peak_rss_bytes": 10637934592,
+    "duration_seconds": 353.2942500412464,
+    "limits": {
+      "lean_memory_mb": 12800,
+      "rss_limit_mb": 110592,
+      "sample_seconds": 0.1,
+      "physical_memory_bytes": 540646817792,
+      "lean_threads": 4,
+      "lake_jobs": 8,
+      "native_build_threads": 4,
+      "max_active_lean": 8,
+      "remote_profile": {
+        "jobs": 8,
+        "lean": "/root/autodl-tmp/lean-build/logs/remote-39e41e3a53cc45d1bf38471187e3baa3/toolchain/bin/lean",
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 110592,
+        "schema_version": 1,
+        "threads": 4
+      },
+      "tooling_sha256": {
+        "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/scripts/lean_tools/resources.py": "169381119ff1b7e7fb5dc18ed88ac8a1ad47ee11c589f467766fb1a2616a4338",
+        "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/scripts/lean_tools/build.py": "506460b757537a2449d6df6e52e1d3fd0870f6de1731ca3171795ce1ab8bb307",
+        "/root/autodl-tmp/lean-build/logs/remote-39e41e3a53cc45d1bf38471187e3baa3/toolchain/bin/lean": "ab30e8093b2c3e82b49a5ca826183514a8f9e788db99d8e97071a12e7028fda8"
+      }
+    },
+    "owned_group_gone": true,
+    "last_members": [
+      {
+        "pid": 911175,
+        "rss_bytes": 0,
+        "executable": "lake <defunct>",
+        "command_path": "lake <defunct>"
+      }
+    ]
+  },
+  "failure_source": "5217fd59cd9cf6f0082eb1f21f3992b9a9341bec17a630ada461ffc375f220d3",
+  "repair_source": "b4c9712b2f89b5cd52590dee356d8e2af5e649336e5f9db6f717d3666d9496d5",
+  "failure_diagnostics": null,
+  "failed_frontend": [
+    {
+      "start": {
+        "event": "started",
+        "time": "2026-11-02T21:49:57.057897+00:00",
+        "monotonic": 75905778.96516152,
+        "wrapper_pid": 908063,
+        "pgid": 756167,
+        "compiler_pid": 908068,
+        "slot": 0,
+        "args": [
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/Aglib/AlgebraicGeometry.lean",
+          "-o",
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry.olean",
+          "-i",
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry.ilean",
+          "-c",
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry.c",
+          "--setup",
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry.setup.json",
+          "--json",
+          "-j4",
+          "-M12800"
+        ],
+        "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean",
+        "admission": {
+          "mode": "elastic"
+        },
+        "scope_lease_mode": "supervisor-only"
+      },
+      "finish": {
+        "event": "finished",
+        "time": "2026-11-02T21:49:59.996728+00:00",
+        "monotonic": 75905781.90399274,
+        "wrapper_pid": 908063,
+        "pgid": 756167,
+        "compiler_pid": 908068,
+        "slot": 0,
+        "exit_code": 1
+      }
+    }
+  ],
+  "repair_frontends": [
+    {
+      "start": {
+        "event": "started",
+        "time": "2026-11-02T22:07:02.342741+00:00",
+        "monotonic": 75906804.25000449,
+        "wrapper_pid": 911291,
+        "pgid": 911175,
+        "compiler_pid": 911295,
+        "slot": 0,
+        "args": [
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/Projective/TwistCohomology/Coefficients.lean",
+          "-o",
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/Projective/TwistCohomology/Coefficients.olean",
+          "-i",
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/Projective/TwistCohomology/Coefficients.ilean",
+          "-c",
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/Projective/TwistCohomology/Coefficients.c",
+          "--setup",
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/Projective/TwistCohomology/Coefficients.setup.json",
+          "--json",
+          "-j4",
+          "-M12800"
+        ],
+        "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean",
+        "admission": {
+          "mode": "elastic"
+        },
+        "scope_lease_mode": "supervisor-only"
+      },
+      "finish": {
+        "event": "finished",
+        "time": "2026-11-02T22:12:01.481806+00:00",
+        "monotonic": 75907103.38907549,
+        "wrapper_pid": 911291,
+        "pgid": 911175,
+        "compiler_pid": 911295,
+        "slot": 0,
+        "exit_code": 0
+      }
+    },
+    {
+      "start": {
+        "event": "started",
+        "time": "2026-11-02T22:07:05.067616+00:00",
+        "monotonic": 75906806.97487433,
+        "wrapper_pid": 911324,
+        "pgid": 911175,
+        "compiler_pid": 911328,
+        "slot": 1,
+        "args": [
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Surfaces/RationalSingularities/MaximalModel.lean",
+          "-o",
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Surfaces/RationalSingularities/MaximalModel.olean",
+          "-i",
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Surfaces/RationalSingularities/MaximalModel.ilean",
+          "-c",
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Surfaces/RationalSingularities/MaximalModel.c",
+          "--setup",
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Surfaces/RationalSingularities/MaximalModel.setup.json",
+          "--json",
+          "-j4",
+          "-M12800"
+        ],
+        "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean",
+        "admission": {
+          "mode": "elastic"
+        },
+        "scope_lease_mode": "supervisor-only"
+      },
+      "finish": {
+        "event": "finished",
+        "time": "2026-11-02T22:07:13.309137+00:00",
+        "monotonic": 75906815.21640043,
+        "wrapper_pid": 911324,
+        "pgid": 911175,
+        "compiler_pid": 911328,
+        "slot": 1,
+        "exit_code": 0
+      }
+    },
+    {
+      "start": {
+        "event": "started",
+        "time": "2026-11-02T22:12:05.251879+00:00",
+        "monotonic": 75907107.15914218,
+        "wrapper_pid": 914572,
+        "pgid": 911175,
+        "compiler_pid": 914576,
+        "slot": 0,
+        "args": [
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/Aglib/AlgebraicGeometry.lean",
+          "-o",
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry.olean",
+          "-i",
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry.ilean",
+          "-c",
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry.c",
+          "--setup",
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry.setup.json",
+          "--json",
+          "-j4",
+          "-M12800"
+        ],
+        "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean",
+        "admission": {
+          "mode": "elastic"
+        },
+        "scope_lease_mode": "supervisor-only"
+      },
+      "finish": {
+        "event": "finished",
+        "time": "2026-11-02T22:12:12.611734+00:00",
+        "monotonic": 75907114.51900257,
+        "wrapper_pid": 914572,
+        "pgid": 911175,
+        "compiler_pid": 914576,
+        "slot": 0,
+        "exit_code": 0
+      }
+    },
+    {
+      "start": {
+        "event": "started",
+        "time": "2026-11-02T22:12:28.182368+00:00",
+        "monotonic": 75907130.0896314,
+        "wrapper_pid": 914801,
+        "pgid": 911175,
+        "compiler_pid": 914806,
+        "slot": 0,
+        "args": [
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/Aglib.lean",
+          "-o",
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/.lake/build/lib/lean/Aglib.olean",
+          "-i",
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/.lake/build/lib/lean/Aglib.ilean",
+          "-c",
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/.lake/build/ir/Aglib.c",
+          "--setup",
+          "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/.lake/build/ir/Aglib.setup.json",
+          "--json",
+          "-j4",
+          "-M12800"
+        ],
+        "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean",
+        "admission": {
+          "mode": "elastic"
+        },
+        "scope_lease_mode": "supervisor-only"
+      },
+      "finish": {
+        "event": "finished",
+        "time": "2026-11-02T22:12:36.334902+00:00",
+        "monotonic": 75907138.24216987,
+        "wrapper_pid": 914801,
+        "pgid": 911175,
+        "compiler_pid": 914806,
+        "slot": 0,
+        "exit_code": 0
+      }
+    }
+  ]
+}

@@ -31,3 +31,10 @@ has one positive power annihilating both the actual kernel and cokernel.
 The theorem uses `IsNoetherian X`; there is no flatness or dimension bound.
 The [proper-modification comparison](../../../Cohomology/GrothendieckExistence/ProperAlgebraicComparison.lean)
 uses this uniform bound on its original algebraic adjoint.
+
+[FinitePushforward](FinitePushforward.lean) retains geometric support
+under the original finite-morphism pushforward and proves vanishing after
+stalk pullback when the actual support has no specialization to that point.
+The finite-type/coherent interfaces retain their locally Noetherian guards.
+The underlying module-sheaf lemmas also detect vanishing by actual flat
+pullback and preserve the native stalk actions and small-model comparison.

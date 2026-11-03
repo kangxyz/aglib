@@ -154,10 +154,10 @@ set_option Elab.async false
 
 /-- The equation identifying the map on affine sections induced by `t` with `τ` under the affine
 higher direct image comparison. -/
-def affineTraceSectionsEquation_of_counit_quasiIso
+def affineTraceSectionsEquationOfCounitQuasiIso
     {R : Type u} [CommRing R] {X : Scheme.{u}}
     (p : X ⟶ Spec (.of R))
-    (M : X.Modules) [M.IsQuasicoherent]
+    (M : X.Modules)
     [hI : QuasiIso (Scheme.Modules.Complex.tildeGlobalSectionsCounit
       (.of R) (.up ℤ)
       (((Scheme.Modules.pushforward p).mapHomologicalComplex (.up ℤ)).obj
@@ -293,13 +293,13 @@ theorem relativeHigherTraceSquare_nat
   relativeHigherTraceSquare_generic p i q j H n N tR tA ht
 
 /-- Model sections retain the original higher model map and the original trace. -/
-def traceModelSectionsEquation_of_counit_quasiIso
+def traceModelSectionsEquationOfCounitQuasiIso
     {A : Type u} [CommRing A] {P : Scheme.{u}}
     (r : P ⟶ Spec (.of A))
     (F : (Spec (.of A)).Modules ⥤ (Spec (.of A)).Modules)
     (U : (Spec (.of A)).Modules ⥤ P.Modules) (n : ℕ)
     (μ : F ≅ U ⋙ (Scheme.Modules.pushforward r).rightDerived n)
-    (N : (Spec (.of A)).Modules) [(U.obj N).IsQuasicoherent]
+    (N : (Spec (.of A)).Modules)
     [hI : QuasiIso (Scheme.Modules.Complex.tildeGlobalSectionsCounit
       (.of A) (.up ℤ)
       (((Scheme.Modules.pushforward r).mapHomologicalComplex (.up ℤ)).obj
@@ -315,15 +315,15 @@ theorem traceModelSections_of_standard_of_counit_quasiIso
     (F : (Spec (.of A)).Modules ⥤ (Spec (.of A)).Modules)
     (U : (Spec (.of A)).Modules ⥤ P.Modules) (n : ℕ)
     (μ : F ≅ U ⋙ (Scheme.Modules.pushforward r).rightDerived n)
-    (N : (Spec (.of A)).Modules) [(U.obj N).IsQuasicoherent]
+    (N : (Spec (.of A)).Modules)
     [hI : QuasiIso (Scheme.Modules.Complex.tildeGlobalSectionsCounit
       (.of A) (.up ℤ)
       (((Scheme.Modules.pushforward r).mapHomologicalComplex (.up ℤ)).obj
         (injectiveResolution (U.obj N)).cochainComplex))]
     (T : ((Scheme.Modules.pushforward r).rightDerived n).obj (U.obj N) ≅ N)
     (τ : Sheaf.H.{u + 1} (moduleAddSheaf P (U.obj N)) n → moduleSpecΓFunctor.obj N)
-    (hT : affineTraceSectionsEquation_of_counit_quasiIso r (U.obj N) N n T.hom τ) :
-    traceModelSectionsEquation_of_counit_quasiIso r F U n μ N τ
+    (hT : affineTraceSectionsEquationOfCounitQuasiIso r (U.obj N) N n T.hom τ) :
+    traceModelSectionsEquationOfCounitQuasiIso r F U n μ N τ
       (compositeTraceIso F U ((Scheme.Modules.pushforward r).rightDerived n) μ N T).hom := by
   have h := compositeNatIso_hom_of_components F U
     ((Scheme.Modules.pushforward r).rightDerived n) μ N T
@@ -361,7 +361,7 @@ theorem affineHigherCompositeFactory_hom
       η.hom.app N ≫ θ.hom.app (J.obj N) := rfl
 
 /-- The section formula for a local restriction followed by the original affine trace. -/
-def traceLocalSectionsEquation_of_counit_quasiIso
+def traceLocalSectionsEquationOfCounitQuasiIso
     {A : Type u} [CommRing A] {P : Scheme.{u}}
     (r : P ⟶ Spec (.of A))
     {C E F : Type*} [Category* C] [Category* E] [Category* F]
@@ -370,7 +370,7 @@ def traceLocalSectionsEquation_of_counit_quasiIso
     (U : (Spec (.of A)).Modules ⥤ P.Modules)
     (η : (F0 ⋙ F1) ⋙ J ≅ J ⋙ (L ⋙ V)) (n : ℕ)
     (μ : L ⋙ V ≅ U ⋙ (Scheme.Modules.pushforward r).rightDerived n)
-    (N : C) [((U.obj (J.obj N))).IsQuasicoherent]
+    (N : C)
     [hI : QuasiIso (Scheme.Modules.Complex.tildeGlobalSectionsCounit
       (.of A) (.up ℤ)
       (((Scheme.Modules.pushforward r).mapHomologicalComplex (.up ℤ)).obj
@@ -394,7 +394,7 @@ theorem traceLocalSections_of_model_of_counit_quasiIso
     (U : (Spec (.of A)).Modules ⥤ P.Modules)
     (η : (F0 ⋙ F1) ⋙ J ≅ J ⋙ (L ⋙ V)) (n : ℕ)
     (μ : L ⋙ V ≅ U ⋙ (Scheme.Modules.pushforward r).rightDerived n)
-    (N : C) [((U.obj (J.obj N))).IsQuasicoherent]
+    (N : C)
     [hI : QuasiIso (Scheme.Modules.Complex.tildeGlobalSectionsCounit
       (.of A) (.up ℤ)
       (((Scheme.Modules.pushforward r).mapHomologicalComplex (.up ℤ)).obj
@@ -402,8 +402,8 @@ theorem traceLocalSections_of_model_of_counit_quasiIso
     (t : V.obj (L.obj (J.obj N)) ⟶ J.obj N)
     (τ : Sheaf.H.{u + 1} (moduleAddSheaf P (U.obj (J.obj N))) n →
       moduleSpecΓFunctor.obj (J.obj N))
-    (hT : traceModelSectionsEquation_of_counit_quasiIso r (L ⋙ V) U n μ (J.obj N) τ t) :
-    traceLocalSectionsEquation_of_counit_quasiIso r F0 F1 J L V U η n μ N τ
+    (hT : traceModelSectionsEquationOfCounitQuasiIso r (L ⋙ V) U n μ (J.obj N) τ t) :
+    traceLocalSectionsEquationOfCounitQuasiIso r F0 F1 J L V U η n μ N τ
       (traceLocalHomFactory F0 F1 J L V η N t) := by
   intro x
   dsimp only [traceLocalHomFactory]

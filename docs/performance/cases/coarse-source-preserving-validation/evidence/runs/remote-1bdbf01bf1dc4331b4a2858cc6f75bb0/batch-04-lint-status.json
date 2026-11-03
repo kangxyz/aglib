@@ -1,0 +1,14 @@
+{
+  "id": "batch-04",
+  "assigned_modules": 589,
+  "exit_code": 0,
+  "seconds": 55.528831630945206,
+  "log": "/root/autodl-tmp/lean-build/logs/remote-1bdbf01bf1dc4331b4a2858cc6f75bb0/batch-04-lint.log",
+  "result": "/root/autodl-tmp/lean-build/logs/remote-1bdbf01bf1dc4331b4a2858cc6f75bb0/batch-04-lint.json",
+  "checkedModules": 589,
+  "checkedDeclarations": 4667,
+  "declarationFindings": 0,
+  "environmentFindings": 0,
+  "textFindings": 0,
+  "deferredFailed": false
+}

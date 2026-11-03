@@ -16,7 +16,7 @@ public import Mathlib.RingTheory.Smooth.Field
 public import Mathlib.RingTheory.Smooth.Flat
 public import Mathlib.RingTheory.Unramified.LocalStructure
 public import Aglib.RingTheory.RegularLocalRing.QuotientLift
-public import Aglib.RingTheory.RegularLocalRing.RegularSequence
+public import Aglib.RingTheory.RegularLocalRing.RegularSequenceLocalization
 public import Mathlib.Data.List.OfFn
 public import Mathlib.RingTheory.Localization.Integer
 public import Mathlib.RingTheory.Ideal.GoingUp
@@ -264,32 +264,8 @@ private theorem exists_notMem_mul_mem_of_map_le
     (p : Ideal R) [p.IsPrime] (I J : Ideal R)
     (h : I.map (algebraMap R (Localization.AtPrime p)) ≤
       J.map (algebraMap R (Localization.AtPrime p))) :
-    ∃ a ∉ p, ∀ x ∈ I, a * x ∈ J := by
-  classical
-  obtain ⟨s, hs⟩ := I.fg_of_isNoetherianRing
-  have hx (x : s) : ∃ a : p.primeCompl, (a : R) * (x : R) ∈ J := by
-    have hxI : (x : R) ∈ I := by
-      rw [← hs]
-      exact Submodule.subset_span x.property
-    have hxmap := h (Ideal.mem_map_of_mem (algebraMap R (Localization.AtPrime p)) hxI)
-    obtain ⟨a, ha, hax⟩ :=
-      (IsLocalization.algebraMap_mem_map_algebraMap_iff p.primeCompl
-        (Localization.AtPrime p) J (x : R)).mp hxmap
-    exact ⟨⟨a, ha⟩, hax⟩
-  choose a ha using hx
-  let b : p.primeCompl := ∏ x : s, a x
-  refine ⟨b, b.property, ?_⟩
-  have hI : I ≤ Submodule.comap (LinearMap.mulLeft R (b : R)) J := by
-    rw [← hs]
-    apply Submodule.span_le.mpr
-    intro x hx
-    change (b : R) * x ∈ J
-    have hd : a ⟨x, hx⟩ ∣ b :=
-      Finset.dvd_prod_of_mem a (Finset.mem_univ (⟨x, hx⟩ : s))
-    obtain ⟨c, hc⟩ := hd
-    rw [show (b : R) = (a ⟨x, hx⟩ : R) * c from congrArg Subtype.val hc]
-    simpa only [mul_assoc, mul_comm, mul_left_comm] using J.mul_mem_left (c : R) (ha ⟨x, hx⟩)
-  exact fun x hx => hI hx
+    ∃ a ∉ p, ∀ x ∈ I, a * x ∈ J :=
+  Ideal.exists_mul_mem_of_map_le_atPrime p I J I.fg_of_isNoetherianRing h
 
 private theorem exists_map_le_atPrime_of_map_le
     {R : Type u} [CommRing R] [IsNoetherianRing R]
@@ -308,69 +284,6 @@ private theorem exists_map_le_atPrime_of_map_le
   exact (Ideal.unit_mul_mem_iff_mem _
     (IsLocalization.map_units (Localization.AtPrime q) (⟨a, haq⟩ : q.primeCompl))).mp hmem
 
-private theorem exists_regular_quotient_atPrime_of_regular_quotient_atPrime
-    {R : Type u} [CommRing R] [IsNoetherianRing R]
-    (p : Ideal R) [p.IsPrime] (I : Ideal R) (a : R)
-    (ha : IsSMulRegular
-      (Localization.AtPrime p ⧸ I.map (algebraMap R (Localization.AtPrime p)))
-      (algebraMap R (Localization.AtPrime p) a)) :
-    ∃ g ∉ p, ∀ (q : Ideal R) [q.IsPrime], g ∉ q →
-      IsSMulRegular (Localization.AtPrime q ⧸ I.map (algebraMap R (Localization.AtPrime q)))
-        (algebraMap R (Localization.AtPrime q) a) := by
-  let J : Ideal R := Submodule.comap (LinearMap.mulLeft R a) I
-  have hJI : J.map (algebraMap R (Localization.AtPrime p)) ≤
-      I.map (algebraMap R (Localization.AtPrime p)) := by
-    apply Ideal.map_le_iff_le_comap.mpr
-    intro x hx
-    have hax : a * x ∈ I := hx
-    have hmem := Ideal.mem_map_of_mem (algebraMap R (Localization.AtPrime p)) hax
-    rw [map_mul] at hmem
-    exact mem_of_isSMulRegular_quotient_of_smul_mem ha hmem
-  obtain ⟨g, hg, hmul⟩ := exists_notMem_mul_mem_of_map_le p J I hJI
-  refine ⟨g, hg, fun q _ hgq => ?_⟩
-  apply (isSMulRegular_quotient_iff_mem_of_smul_mem _ _).mpr
-  intro z hz
-  obtain ⟨x, s, rfl⟩ := IsLocalization.exists_mk'_eq q.primeCompl z
-  change algebraMap R (Localization.AtPrime q) a * IsLocalization.mk' _ x s ∈ _ at hz
-  rw [IsLocalization.mul_mk'_eq_mk'_of_mul] at hz
-  obtain ⟨t, ht, htx⟩ :=
-    (IsLocalization.mk'_mem_map_algebraMap_iff q.primeCompl
-      (Localization.AtPrime q) I (a * x) s).mp hz
-  have htJ : t * x ∈ J := by
-    change a * (t * x) ∈ I
-    simpa only [mul_left_comm] using htx
-  apply (IsLocalization.mk'_mem_map_algebraMap_iff q.primeCompl
-    (Localization.AtPrime q) I x s).mpr
-  exact ⟨g * t, q.primeCompl.mul_mem hgq ht, by simpa only [mul_assoc] using hmul _ htJ⟩
-
-private theorem ofList_map_mul_unit {R : Type u} [CommRing R]
-    (a : R) (ha : IsUnit a) (rs : List R) :
-    Ideal.ofList (rs.map (a * ·)) = Ideal.ofList rs := by
-  induction rs with
-  | nil => simp
-  | cons x xs ih =>
-    simp only [List.map_cons, Ideal.ofList_cons, ih, Ideal.span_singleton_mul_left_unit ha]
-
-private theorem isSMulRegular_quotient_congr {R : Type u} [CommRing R]
-    {I J : Ideal R} (h : I = J) (a : R) :
-    IsSMulRegular (R ⧸ I) a ↔ IsSMulRegular (R ⧸ J) a :=
-  (Ideal.quotientEquivAlgOfEq R h).toLinearEquiv.isSMulRegular_congr a
-
-private theorem weaklyRegular_map_mul_unit {R : Type u} [CommRing R]
-    (a : R) (ha : IsUnit a) (rs : List R) (h : IsWeaklyRegular R rs) :
-    IsWeaklyRegular R (rs.map (a * ·)) := by
-  refine ⟨fun i hi => ?_⟩
-  have hi' : i < rs.length := by simpa only [List.length_map] using hi
-  have hreg := (IsSMulRegular.mul_iff).mpr
-    ⟨ha.isSMulRegular _, h.regular_mod_prev i hi'⟩
-  rw [Ideal.smul_eq_mul, Ideal.mul_top] at hreg ⊢
-  have htake : (rs.map (a * ·)).take i = (rs.take i).map (a * ·) :=
-    (List.map_take (f := (a * ·)) (l := rs) (i := i)).symm
-  have heq : Ideal.ofList ((rs.map (a * ·)).take i) = Ideal.ofList (rs.take i) :=
-    (congrArg Ideal.ofList htake).trans (ofList_map_mul_unit a ha (rs.take i))
-  have hnew := (isSMulRegular_quotient_congr heq (a * rs[i])).mpr hreg
-  simpa only [List.getElem_map] using hnew
-
 private theorem exists_regular_generators_atPrime
     {R : Type u} [CommRing R] (p : Ideal R) [p.IsPrime]
     [IsRegularLocalRing (Localization.AtPrime p)] :
@@ -378,30 +291,10 @@ private theorem exists_regular_generators_atPrime
       IsWeaklyRegular (Localization.AtPrime p) (rs.map (algebraMap R (Localization.AtPrime p))) ∧
       (Ideal.ofList rs).map (algebraMap R (Localization.AtPrime p)) =
         p.map (algebraMap R (Localization.AtPrime p)) := by
-  classical
-  let S := Localization.AtPrime p
-  let d := (IsLocalRing.maximalIdeal S).spanFinrank
-  obtain ⟨rs, _, hreg, hgen⟩ := IsRegularLocalRing.exists_regular_sequence_maximalIdeal S d
+  let d := (IsLocalRing.maximalIdeal (Localization.AtPrime p)).spanFinrank
+  obtain ⟨rs, _, hreg, hgen⟩ := IsRegularLocalRing.exists_regular_generators_atPrime p d
     IsRegularLocalRing.spanFinrank_maximalIdeal.symm
-  obtain ⟨s, hs⟩ := IsLocalization.exist_integer_multiples_of_finite p.primeCompl
-    (fun i : Fin rs.length => rs[i])
-  choose t ht using hs
-  let ts := List.ofFn t
-  have hts : ts.map (algebraMap R S) = rs.map (algebraMap R S s * ·) := by
-    calc
-      ts.map (algebraMap R S) = List.ofFn (fun i => algebraMap R S (t i)) := by
-        simp only [ts, List.map_ofFn, Function.comp_def]
-      _ = List.ofFn (fun i : Fin rs.length => algebraMap R S s * rs[i]) := by
-        apply congrArg List.ofFn
-        funext i
-        simpa only [Algebra.smul_def] using ht i
-      _ = rs.map (algebraMap R S s * ·) := List.ofFn_getElem_eq_map _ _
-  have hsunit : IsUnit (algebraMap R S s) := IsLocalization.map_units S s
-  refine ⟨ts, ?_, ?_⟩
-  · rw [hts]
-    exact weaklyRegular_map_mul_unit _ hsunit _ hreg.toIsWeaklyRegular
-  · rw [Ideal.map_ofList, hts, ofList_map_mul_unit _ hsunit,
-      hgen, Localization.AtPrime.map_eq_maximalIdeal]
+  exact ⟨rs, hreg, hgen⟩
 
 private theorem exists_weaklyRegular_atPrime_of_weaklyRegular_atPrime
     {R : Type u} [CommRing R] [IsNoetherianRing R]
@@ -410,54 +303,8 @@ private theorem exists_weaklyRegular_atPrime_of_weaklyRegular_atPrime
       (rs.map (algebraMap R (Localization.AtPrime p)))) :
     ∃ a ∉ p, ∀ (q : Ideal R) [q.IsPrime], a ∉ q →
       IsWeaklyRegular (Localization.AtPrime q)
-        (rs.map (algebraMap R (Localization.AtPrime q))) := by
-  classical
-  have hi (i : Fin rs.length) : IsSMulRegular
-      (Localization.AtPrime p ⧸ (Ideal.ofList (rs.take i)).map
-        (algebraMap R (Localization.AtPrime p)))
-      (algebraMap R (Localization.AtPrime p) rs[i]) := by
-    have hlen : (i : ℕ) < (rs.map (algebraMap R (Localization.AtPrime p))).length := by
-      rw [List.length_map]
-      exact i.isLt
-    have hreg := h.regular_mod_prev i hlen
-    rw [Ideal.smul_eq_mul, Ideal.mul_top] at hreg
-    have htake := (List.map_take (f := algebraMap R (Localization.AtPrime p))
-      (l := rs) (i := (i : ℕ))).symm
-    have heq := (congrArg Ideal.ofList htake).trans
-      (Ideal.map_ofList (algebraMap R (Localization.AtPrime p)) (rs.take (i : ℕ))).symm
-    have hnew := (isSMulRegular_quotient_congr heq
-      (rs.map (algebraMap R (Localization.AtPrime p)))[(i : ℕ)]).mp hreg
-    simpa only [List.getElem_map, Fin.getElem_fin] using hnew
-  have hex (i : Fin rs.length) :=
-    exists_regular_quotient_atPrime_of_regular_quotient_atPrime p
-      (Ideal.ofList (rs.take i)) rs[i] (hi i)
-  choose a ha hreg using hex
-  let b : p.primeCompl := ∏ i : Fin rs.length, (⟨a i, ha i⟩ : p.primeCompl)
-  refine ⟨b, b.property, fun q _ hbq => ?_⟩
-  refine ⟨fun i hi => ?_⟩
-  have hi' : i < rs.length := by simpa only [List.length_map] using hi
-  let j : Fin rs.length := ⟨i, hi'⟩
-  have haj : a j ∉ q := by
-    intro hmem
-    have hd : (⟨a j, ha j⟩ : p.primeCompl) ∣ b :=
-      Finset.dvd_prod_of_mem _ (Finset.mem_univ j)
-    obtain ⟨c, hc⟩ := hd
-    apply hbq
-    rw [show (b : R) = a j * c from congrArg Subtype.val hc]
-    exact q.mul_mem_right _ hmem
-  rw [Ideal.smul_eq_mul, Ideal.mul_top]
-  have htake := (List.map_take (f := algebraMap R (Localization.AtPrime q))
-    (l := rs) (i := i)).symm
-  have heq := (congrArg Ideal.ofList htake).trans
-    (Ideal.map_ofList (algebraMap R (Localization.AtPrime q)) (rs.take i)).symm
-  have hcur : IsSMulRegular
-      (Localization.AtPrime q ⧸ (Ideal.ofList (rs.take i)).map
-        (algebraMap R (Localization.AtPrime q)))
-      (algebraMap R (Localization.AtPrime q) rs[i]) := by
-    simpa only [j, Fin.getElem_fin] using hreg j q haj
-  have hnew := (isSMulRegular_quotient_congr heq
-    (algebraMap R (Localization.AtPrime q) rs[i])).mpr hcur
-  simpa only [List.getElem_map] using hnew
+        (rs.map (algebraMap R (Localization.AtPrime q))) :=
+  RingTheory.Sequence.exists_weaklyRegular_atPrime_of_weaklyRegular_atPrime p rs h
 
 private theorem regularLocal_of_weaklyRegular_quotient
     (R : Type u) [CommRing R] [IsLocalRing R] [IsNoetherianRing R]
@@ -534,7 +381,7 @@ theorem exists_generic_basicOpen_regularLocus
   let : IsRegularLocalRing (Localization.AtPrime p.asIdeal) := hp
   obtain ⟨rs, hseq, hgen⟩ := exists_regular_generators_atPrime p.asIdeal
   obtain ⟨a, hap, ha⟩ :=
-    exists_weaklyRegular_atPrime_of_weaklyRegular_atPrime p.asIdeal rs hseq
+    _root_.exists_weaklyRegular_atPrime_of_weaklyRegular_atPrime p.asIdeal rs hseq
   obtain ⟨c, hcp, hc⟩ := exists_map_le_atPrime_of_map_le p.asIdeal p.asIdeal
     (Ideal.ofList rs) hgen.ge
   have hIp : Ideal.ofList rs ≤ p.asIdeal := by

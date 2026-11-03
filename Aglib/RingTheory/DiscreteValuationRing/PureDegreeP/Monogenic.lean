@@ -7,7 +7,7 @@ module
 
 public import Aglib.RingTheory.DiscreteValuationRing.PureDegreeP.FiniteDegree
 public import Aglib.RingTheory.IntegralClosure.PurelyInseparable
-public import Mathlib.RingTheory.IsAdjoinRoot
+public import Aglib.RingTheory.AdjoinRoot.PowerRelation
 public import Mathlib.RingTheory.Nakayama
 public import Mathlib.Algebra.Polynomial.Lifts
 public import Mathlib.Algebra.Algebra.Subalgebra.IsSimpleOrder
@@ -87,41 +87,6 @@ theorem exists_polynomial_remainder_of_residue_surjective
 
 end ResidueExpansion
 
-section Presentation
-
-variable {A B : Type*} [CommRing A] [IsDomain A] [IsIntegrallyClosed A]
-  [CommRing B] [IsDomain B] [Algebra A B]
-  [Module.Finite A B] [Module.IsTorsionFree A B]
-
-private theorem exists_presentation_of_adjoin
-    {p : ℕ} (hp : p ≠ 0) (hdegree : Module.finrank A B = p)
-    (z : B) (a : A) (hpow : algebraMap A B a = z ^ p)
-    (hgen : Algebra.adjoin A {z} = ⊤) :
-    ∃ h : IsAdjoinRootMonic B ((X : A[X]) ^ p - C a),
-      h.root = z ∧ h.map = aeval z := by
-  have hz : IsIntegral A z := Algebra.IsIntegral.isIntegral z
-  let h₀ := IsAdjoinRootMonic.mkOfAdjoinEqTop hz hgen
-  have hdegree' : (minpoly A z).natDegree = p := h₀.finrank.symm.trans hdegree
-  have hzero : aeval z ((X : A[X]) ^ p - C a) = 0 := by
-    rw [map_sub, map_pow, aeval_X, aeval_C, ← hpow, sub_self]
-  have hdiv : minpoly A z ∣ (X : A[X]) ^ p - C a :=
-    (minpoly.isIntegrallyClosed_dvd_iff hz _).mp hzero
-  have heq : (X : A[X]) ^ p - C a = minpoly A z :=
-    Polynomial.eq_of_monic_of_dvd_of_natDegree_le (minpoly.monic hz)
-      (Polynomial.monic_X_pow_sub_C a hp) hdiv
-      (by simpa only [Polynomial.natDegree_sub_C, Polynomial.natDegree_X_pow, hdegree']
-        using (le_refl p))
-  let h : IsAdjoinRootMonic B ((X : A[X]) ^ p - C a) :=
-    { map := aeval z
-      map_surjective := h₀.map_surjective
-      ker_map := by rw [heq]; exact h₀.ker_map
-      monic := Polynomial.monic_X_pow_sub_C a hp }
-  refine ⟨h, ?_, rfl⟩
-  change aeval z X = z
-  exact aeval_X z
-
-end Presentation
-
 section DVRBranches
 
 variable (A B K L : Type*) [CommRing A] [IsDomain A] [IsDiscreteValuationRing A]
@@ -162,8 +127,10 @@ theorem exists_presentation_of_residue_finrank_one
     exact ⟨q, c, by rw [ha]; exact hbc⟩
   have hrank : Module.finrank A B = p :=
     (IsFractionRing.finrank_eq A K B L).symm.trans hdegree
-  obtain ⟨h, hroot, hmap⟩ := exists_presentation_of_adjoin hp.ne_zero hrank τ a ha hgen
-  exact ⟨a, h, ha, hroot, hmap⟩
+  let h := IsAdjoinRootMonic.ofPowerRelation hp.ne_zero hrank τ a ha hgen
+  exact ⟨a, h, ha,
+    IsAdjoinRootMonic.ofPowerRelation_root hp.ne_zero hrank τ a ha hgen,
+    IsAdjoinRootMonic.ofPowerRelation_map hp.ne_zero hrank τ a ha hgen⟩
 
 /-- In ramification index one, a residue class outside the original base
 field generates by prime degree. Its original lift then generates B by Nakayama. -/
@@ -217,8 +184,10 @@ theorem exists_presentation_of_residue_not_mem_range
   obtain ⟨a, ha⟩ := exists_algebraMap_eq_pow_of_finite_pure_degree A B K L p hdegree z
   have hrank : Module.finrank A B = p :=
     (IsFractionRing.finrank_eq A K B L).symm.trans hdegree
-  obtain ⟨h, hroot, hmap⟩ := exists_presentation_of_adjoin hp.ne_zero hrank z a ha hgen
-  exact ⟨a, h, ha, hroot, hmap⟩
+  let h := IsAdjoinRootMonic.ofPowerRelation hp.ne_zero hrank z a ha hgen
+  exact ⟨a, h, ha,
+    IsAdjoinRootMonic.ofPowerRelation_root hp.ne_zero hrank z a ha hgen,
+    IsAdjoinRootMonic.ofPowerRelation_map hp.ne_zero hrank z a ha hgen⟩
 
 /-- The residue pth-power equation is induced from the original normal ring,
 not from a separability assertion about the residue fields. -/

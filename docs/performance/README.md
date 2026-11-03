@@ -122,6 +122,7 @@ Retain existing cases when refining key guidance in the main file.
 ## Additional validated cases
 
 - [Native loader fallback read failures: diagnosis and limits](loader-fallback-read-diagnosis.md)
+- [Coarse source-preserving validation under a mapping limit](cases/coarse-source-preserving-validation/README.md)
 - [Godement: complete generic construction and original native views](cases/godement-unit-insertion/README.md)
 - [Section pullback: retain the ordinary H1 functor](cases/section-h1-transport/README.md)
 
@@ -156,3 +157,9 @@ Retain existing cases when refining key guidance in the main file.
 - [Reuse a guarded sealed native source for subsequent phases](cases/sealed-native-source-reuse/README.md)
 
 - [Original generator-to-Ext-zero value before specialization](cases/germ-generator-ext-zero/README.md)
+
+- [Original stalk comparisons: instance lets and proof-irrelevant conversion](original-stalk-comparison-instance-lets-and-proof-irrelevance.md)
+
+- [Deterministic cardinality and transport of the same basis](cases/deterministic-cardinality-basis-transport/README.md)
+
+- [Original Γ-map values and direct arbitrary-triangle composition](cases/whole-original-comparison-laws/affine-gamma-direct-triangle/README.md) — one extracted native map law, goal-directed application and source-bound lower/consumer passes; prior failures retained.

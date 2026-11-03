@@ -49,3 +49,15 @@ through the adjunction unit (`pullbackUnitIso_inv_one`,
 `unitHomGlobalSectionsEquiv_pullbackUnitIso_inv_comp`). The second is a public restatement of the
 private `unitHomGlobalSectionsEquiv_pullback` of
 [ResolutionSections/Pullback](../../Cohomology/DirectImage/ResolutionSections/Pullback.lean).
+
+The [local-spectrum family](LocalSpectrum/README.md) retains original
+germs, coefficient naturality and a supplied generic frame.
+[UnitValues](UnitValues.lean) and
+[CoefficientCompositionUnit](CoefficientCompositionUnit.lean) evaluate the
+original pullback-unit laws on actual global sections along a specified
+scheme triangle. [CompositeAdjoint](CompositeAdjoint.lean) retains the
+same whole adjoint equation.
+[StalkEpi](StalkEpi.lean) preserves epimorphy from the original target stalk
+after pullback; [FlatStalk](FlatStalk.lean) detects vanishing at the image
+from actual flat pullback. These statements use their original stalk
+actions, without a replacement local model.

@@ -218,3 +218,5 @@ Each source states the exact hypotheses, maps, and realization bounds of its int
 - [Divisors/FieldExtensionBoundary](Divisors/FieldExtensionBoundary.lean)
 - [FiniteEtaleCompactification](FiniteEtaleCompactification.lean)
 - [FiniteNormalCompactification](FiniteNormalCompactification.lean)
+
+[Normalization/FiniteFieldModel](Normalization/FiniteFieldModel.lean) equips each original finite-generated subalgebra stage of the algebraic closure with its field structure through `FiniteField.stageField`; the stage and its coefficient inclusion are unchanged.

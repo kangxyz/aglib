@@ -36,3 +36,11 @@ birational normal factor. It is not a premise of that final necessity
 implication. The present module supplies the local completion argument;
 the finite singular set and the global necessity assembly belong to that
 consumer.
+
+`integral_normal_completionBaseChange_of_proper_regular_structuralSections`
+exports integrality and normal stalks of the SAME literal completed pullback
+under the existing proper, regular and original structural-section-bijection
+hypotheses. The original section equivalence gives connectedness before any
+domain property of the completion is assumed. The normal-completion theorem
+delegates to this single implementation and retains its exact original
+statement; no completed-source integrality premise or alternate model is added.

@@ -37,3 +37,5 @@ and [SmoothLocalWholePurity](SmoothLocalWholePurity.lean) are entry points for
 the corresponding written local and whole constructions. Each statement retains
 its own geometric, point and spreading hypotheses; consult the individual
 sources for the exact maps and conclusions.
+
+The localization transport lemmas in [SmoothBaseLocalizationPurity](SmoothBaseLocalizationPurity.lean), [SmoothCodimensionOnePurity](SmoothCodimensionOnePurity.lean), [SmoothLocalWholePurity](SmoothLocalWholePurity.lean) and [SmoothLowHeightBaseFiber](SmoothLowHeightBaseFiber.lean) require a normal Noetherian domain base, which need not be local. Their original smooth, geometrically connected morphism, section, base open, tame Galois cover and lifted normalization section remain inputs. The dimension-transport lemmas also retain their stated local induction premise. Locality is supplied by the actual prime localization; the final local whole-purity theorem keeps its local-base hypothesis.

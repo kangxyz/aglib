@@ -1,0 +1,63 @@
+{
+  "old_source_digest": "176410f68cfa3594d81434b1e85921d98ee5ed53b65bc8a9fbeaa1f055f85a5d",
+  "changed_modules": [
+    "Aglib.AlgebraicGeometry.Normalization.FiniteFunctionField.ChartSectionsTransport",
+    "Aglib.AlgebraicGeometry.Surfaces.Birational.NormalizedBlowupCover.ChartSections"
+  ],
+  "batches": [
+    {
+      "id": "batch-01",
+      "changed_inputs": [],
+      "needs_recheck": false
+    },
+    {
+      "id": "batch-02",
+      "changed_inputs": [],
+      "needs_recheck": false
+    },
+    {
+      "id": "batch-03",
+      "changed_inputs": [],
+      "needs_recheck": false
+    },
+    {
+      "id": "batch-04",
+      "changed_inputs": [],
+      "needs_recheck": false
+    },
+    {
+      "id": "batch-05",
+      "changed_inputs": [
+        "Aglib.AlgebraicGeometry.Normalization.FiniteFunctionField.ChartSectionsTransport",
+        "Aglib.AlgebraicGeometry.Surfaces.Birational.NormalizedBlowupCover.ChartSections"
+      ],
+      "needs_recheck": true
+    },
+    {
+      "id": "batch-06",
+      "changed_inputs": [],
+      "needs_recheck": false
+    },
+    {
+      "id": "batch-07",
+      "changed_inputs": [],
+      "needs_recheck": false
+    }
+  ],
+  "policy": "Reuse successful checks on unchanged native input closures; rerun failed or affected batches only.",
+  "source_digest": "f83e4561558ff9a7aa384c05978446c03bee6655e816001ad1e0718b2548fdba",
+  "native_input_delta": [
+    {
+      "path": "Aglib/AlgebraicGeometry/Normalization/FiniteFunctionField/ChartSectionsTransport.lean",
+      "before": "9ae6617d64aaf19c6d9f02ea36cdb9eea380555fbf7820cfc24bd42af23ba2a4",
+      "after": "0b4e2399d108ec6815ad6079957ed9661080f777442ddaf665d67e2dbf352341"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Surfaces/Birational/NormalizedBlowupCover/ChartSections.lean",
+      "before": "bccd488801e2a6e86af5dc7230c663d91795d84e18e911f56db5076e68f05d1a",
+      "after": "dd670d197b47ea317a8bf527c96fcf026db068322634b4dfb7289061851b7479"
+    }
+  ],
+  "native_input_files": 10487,
+  "all_other_native_inputs_unchanged": true
+}

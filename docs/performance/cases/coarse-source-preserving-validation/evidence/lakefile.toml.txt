@@ -1,0 +1,15 @@
+name = "CoarseBatchLintTool"
+enableArtifactCache = false
+
+[[require]]
+name = "mathlib"
+path = "/root/autodl-tmp/lean-build/workspaces/managed-e191161afd1b-315a5e4a9466/lean/.lake/packages/mathlib"
+
+[[lean_exe]]
+name = "coarseBatchLint"
+root = "CoarseBatchLintMain"
+supportInterpreter = true
+moreLinkArgs = ["-lLake"]
+
+[[lean_lib]]
+name = "CoarseBatchLint"

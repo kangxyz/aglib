@@ -49,9 +49,10 @@ def SmoothLocalWholePurityAtDimension (d : ℕ) : Prop :=
               Etale (genericMap j Y.obj.hom).fromNormalization
 
 /-- The exact smaller-dimensional whole-normalization statement gives
-etaleness at every original source point above the specified base prime. -/
+etaleness at every original source point above the specified base prime.
+The original base need not be local. -/
 theorem etaleAt_of_baseLocalization_whole_dimension
-    (A : Type u) [CommRing A] [IsDomain A] [IsLocalRing A]
+    (A : Type u) [CommRing A] [IsDomain A]
     [IsNoetherianRing A] [IsIntegrallyClosed A]
     {X U : Scheme.{u}} [IsIntegral X] [IsIntegral U]
     (p : X ⟶ Spec (.of A)) [Smooth p] [GeometricallyConnected p]

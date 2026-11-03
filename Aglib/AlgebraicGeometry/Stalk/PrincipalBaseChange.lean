@@ -27,7 +27,7 @@ open CategoryTheory Limits AlgebraicGeometry TopologicalSpace
 universe u
 namespace AlgebraicGeometry.Scheme.Hom
 
-private lemma fromSpecStalk_comp_structure
+lemma fromSpecStalk_comp_structure
     {R : Type u} [CommRing R] {X : Scheme.{u}}
     (π : X ⟶ Spec (.of R)) (x : X) :
     X.fromSpecStalk x ≫ π = Spec.map (CommRingCat.ofHom (π.stalkScalar x)) := by

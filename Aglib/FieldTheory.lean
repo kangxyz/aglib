@@ -69,6 +69,7 @@ public import Aglib.FieldTheory.PGroupNormalSubfieldEmbedding
 public import Aglib.FieldTheory.PrimeNormalScalarDichotomy
 public import Aglib.FieldTheory.PurelyInseparable.FiniteConstantRoots
 public import Aglib.FieldTheory.PurelyInseparable.FixedField
+public import Aglib.FieldTheory.PurelyInseparable.NoIntermediate
 public import Aglib.FieldTheory.PurelyInseparable.NonPowerComplement
 public import Aglib.FieldTheory.PurelyInseparable.RationalEvaluation
 public import Aglib.FieldTheory.PurelyInseparable.RationalFunction

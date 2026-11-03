@@ -1,0 +1,43 @@
+{
+  "path": "Aglib/AlgebraicGeometry/Cohomology/Projective/TwistCohomology/Coefficients.lean",
+  "old_sha256": "ddcb0ee6e9d580dfc0b4f03e795e8aafc1eb9191a3f1608a5c5c6dd015729fc5",
+  "new_sha256": "8e8b9c4e7852b3a8149f72b83f76c260951520ec71b6b11e5b02ac8e8c8ad8c0",
+  "native_constructors_preserved_verbatim_modulo_whitespace": [
+    "twistingCoefficientSource",
+    "twistingCoefficientTarget",
+    "twistingFiniteCechComplex",
+    "twistingSheafTensorCoefficients",
+    "twistingDerivedGlobalSectionsTensorCoefficients",
+    "twistingFiniteCechTensorCoefficientsIso",
+    "twistingFiniteCechTensorBottomMap",
+    "twistingDerivedGlobalSectionsTensorCoefficientsIso",
+    "twistingTensorHomologyZeroIso",
+    "twistingTensorCohomologyZeroLinearEquiv",
+    "twistingSheafTensorSelfIso",
+    "twistingFiniteCechHomologyZeroSectionsIso",
+    "twistingFiniteCechTensorHomologyZeroSectionsIso",
+    "twistingTensorTildeSectionsIso"
+  ],
+  "original_naturality_declarations_retained_verbatim": [
+    "twistingFiniteCechTensorCoefficientsIso_naturality",
+    "twistingFiniteCechTensorBottomMap_naturality",
+    "twistingDerivedGlobalSectionsTensorCoefficientsIso_naturality"
+  ],
+  "original_naturality_blocks_sha256": [
+    "d26ebc0ea051ac98b3f57ae1b62a8392d5801693734563cf21bc323e45062086",
+    "467b6189965fd29594f3786abf16fb6ac50b2ada5c744bc352b61f821df9d467",
+    "d7b7b9ba6b92b8e541e9b7567f28c11bea4cbd1437d32ffee72af83d02c6b658"
+  ],
+  "removed_duplicate_named_declarations": 39,
+  "remaining_parent_dependents": [
+    "Aglib.AlgebraicGeometry",
+    "Aglib"
+  ],
+  "baseline_main": "58f0a8a22159d4bd7e9bdd03035494b394d95baf",
+  "lean_toolchain": "leanprover/lean4:v4.34.1",
+  "mathlib_revision": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "split_provider_sha256": {
+    "Aglib/AlgebraicGeometry/Cohomology/Projective/TwistCohomology/Coefficients/Model.lean": "6eb3ea7bf4d0f2a753e90ffb18350c25978b0e4a8dd5fcc4a69ea6fa67b83192",
+    "Aglib/AlgebraicGeometry/Cohomology/Projective/TwistCohomology/Coefficients/Sections.lean": "e982bbfcb88aead9a0709092c4dc08622ab5fa67303744a98a023ac794794bad"
+  }
+}

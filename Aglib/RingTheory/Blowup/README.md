@@ -57,3 +57,17 @@ the specified coefficient tower. [Exterior](RegularPair/Exterior.md) proves
 the exceptional-scalar image bound on the original exterior map. Their
 consumer is the raw one-pole differential comparison; determinant defects,
 canonical identification and proper-trace compatibility remain separate.
+
+[CaseOne/Successor](CaseOne/Successor.lean) constructs the original
+centred chart relation from a genuine Case-I presentation and singular
+plane point. [DoubleLine/Coordinates](DoubleLine/Coordinates.lean)
+normalizes a supplied full linear-square kernel using actual residue lifts.
+[Marked/Equiv](DoubleLine/Marked/Equiv.lean) transports full cubic, marker
+and triple-entry data through the original local-ring and residue-field
+equivalences.
+[QuadraticPresentation/Cases](QuadraticPresentation/Cases.lean) compares
+homogeneous and dehomogenized square alternatives over any field.
+These interfaces retain their full-kernel and presentation hypotheses.
+[RegularPair/RawExterior](RegularPair/RawExterior.lean) separately gives
+the exceptional-coordinate image bound on raw forms for a displayed
+regular pair, without rational-singularity input.

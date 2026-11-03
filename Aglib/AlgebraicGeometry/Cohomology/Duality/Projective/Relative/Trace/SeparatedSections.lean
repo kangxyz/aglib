@@ -30,7 +30,7 @@ theorem affineHigherOpenSections_unit_of_isSeparated
       (((Scheme.Modules.pushforward p).rightDerived n).obj M)) :
     let : QuasiCompact q := MorphismProperty.of_isPullback H inferInstance
     let : IsSeparated q := MorphismProperty.of_isPullback H inferInstance
-    moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated (R := A) q
+    moduleHigherDirectImageAffineSectionsLinearEquivOfIsSeparated (R := A) q
         ((Modules.restrictFunctor i).obj M) J n
         (ModuleCat.Hom.hom ((moduleSpecΓFunctor (R := .of A)).map
           (X := (Modules.restrictFunctor (Spec.map (CommRingCat.ofHom σ))).obj
@@ -42,7 +42,7 @@ theorem affineHigherOpenSections_unit_of_isSeparated
           (affineUnitSections (Spec.map (CommRingCat.ofHom σ))
             (((Scheme.Modules.pushforward p).rightDerived n).obj M) x)) =
       moduleCohomologyMapAlong i ((restrictAdjunction i).unit.app M) n
-        (moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated (R := R) p M I n x) := by
+        (moduleHigherDirectImageAffineSectionsLinearEquivOfIsSeparated (R := R) p M I n x) := by
   let : QuasiCompact q := MorphismProperty.of_isPullback H inferInstance
   let : IsSeparated q := MorphismProperty.of_isPullback H inferInstance
   let := moduleResolutionPushforwardTildeCounit_quasiIso_of_isSeparated p M I

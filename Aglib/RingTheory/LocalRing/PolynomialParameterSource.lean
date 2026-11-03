@@ -28,9 +28,11 @@ universe u
 
 /-- An actual regular local parameter source, before completion. -/
 structure PolynomialParameterSource (A : Type u) [CommRing A] [IsLocalRing A] (d : ℕ) where
+  /-- The chosen regular local source ring. -/
   ring : CommRingCat.{u}
   regular : IsRegularLocalRing ring
   dimension : ringKrullDim ring = (d : ℕ)
+  /-- The parameter map from the source ring to the original local ring. -/
   map : ring →+* A
   radical :
     let _ : IsRegularLocalRing ring := regular
@@ -131,7 +133,7 @@ theorem point_kernel {D K : Type*} [CommRing D] [CommRing K]
 
 /-- The original evaluation map, localized at its literal residue-point kernel,
 gives a regular local source of dimension `r + d` for the supplied parameters. -/
-def of_parameters
+def ofParameters
     {D A : Type u} [CommRing D] [IsRegularRing D] [CommRing A] [IsLocalRing A]
     (f : D →+* A) (hres : Function.Surjective ((residue A).comp f))
     (r d : ℕ) (hheight : (RingHom.ker ((residue A).comp f)).height = (r : ℕ∞))

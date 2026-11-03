@@ -7,7 +7,7 @@ module
 
 public import Aglib.Topology.Sheaves.Cohomology.OpenTransfer.NormalizedScalarRestrictionSquare
 public import Aglib.CategoryTheory.Abelian.Ext.DiagramMap.Scalars.TopComparison
-public import Aglib.AlgebraicGeometry.Cohomology.Restriction.Cartesian
+public import Aglib.AlgebraicGeometry.Cohomology.Restriction.CartesianSquare
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Map.Open
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Sections.OpenRestriction
 
@@ -69,7 +69,7 @@ theorem moduleCoefficientScalarAction_compatible
 /-- Construct the complete original module-coefficient square before inserting
 actual pullback modules and the cartesian coefficient mate. All coefficient
 scalar compatibilities and the original geometric family are produced here. -/
-def moduleHPrimeScalarOpenMap_comp_congr_top_square
+def moduleHPrimeScalarOpenMapCompCongrTopSquare
     {X Y W T : Scheme.{u}} (a : W ⟶ Y) (b : W ⟶ T) (p : Y ⟶ X) (j : T ⟶ X)
     (w : a ≫ p = b ≫ j) {M : X.Modules} {N : Y.Modules} {L : T.Modules} {P : W.Modules}
     (φp : M ⟶ (Scheme.Modules.pushforward p).obj N)
@@ -125,7 +125,7 @@ def moduleOpenPullbackExtTensorSquare
     (Scheme.Modules.pushforward a).map ε
   let φj := (Scheme.Modules.restrictAdjunction j).unit.app M
   let φb := (Scheme.Modules.pullbackPushforwardAdjunction b).unit.app (M.restrict j)
-  exact moduleHPrimeScalarOpenMap_comp_congr_top_square a b p j h.w φp φa φj φb
+  exact moduleHPrimeScalarOpenMapCompCongrTopSquare a b p j h.w φp φa φj φb
     (Scheme.Modules.cartesianPullbackBaseChangeMate_inv_unit_comp a b p j h M)
     σ α β hσ U V.ι_preimage_self U.ι_preimage_self n
 
@@ -186,11 +186,11 @@ theorem moduleHPrimeScalarOpenMap_comp_congr_top_square_bottom
     (α : R →+* Γ(X, ⊤)) (β : S →+* Γ(Y, ⊤))
     (hσ : p.appTop.hom.comp α = β.comp σ)
     (U : X.Opens) (ha : a ⁻¹ᵁ (p ⁻¹ᵁ U) = ⊤) (hj : j ⁻¹ᵁ U = ⊤) (n : ℕ) :
-    (moduleHPrimeScalarOpenMap_comp_congr_top_square a b p j w φp φa φj φb hφ
+    (moduleHPrimeScalarOpenMapCompCongrTopSquare a b p j w φp φa φj φb hφ
       σ α β hσ U ha hj n).f₃₄ =
       moduleCohomologyTensorMap b σ (j.appTop.hom.comp α) (a.appTop.hom.comp β)
         (moduleSectionsOpenSquare_scalars a b p j α β σ hσ w) φb n := by
-  simp only [moduleHPrimeScalarOpenMap_comp_congr_top_square,
+  simp only [moduleHPrimeScalarOpenMapCompCongrTopSquare,
     TopCat.Sheaf.openCohomologyNormalizedScalarRestrictionSquare,
     CategoryTheory.Functor.extScalarNormalizedRestrictionSquare_bottom]
   apply ModuleCat.ExtendScalars.hom_ext

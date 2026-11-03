@@ -1,0 +1,13 @@
+--- a/Aglib/RingTheory/Kaehler/PureDegreePTrace/CompleteRegularEntrance.lean
++++ b/Aglib/RingTheory/Kaehler/PureDegreePTrace/CompleteRegularEntrance.lean
+@@ -108,8 +108,8 @@
+     MvPowerSeries.FiniteCoefficientExpansion.exists_finite_basis_of_coordinates
+       (k := ResidueField R) (R := R) (K := K) p e a hroot
+   obtain ⟨E, r, hr, hfinite, bR, hda, hK, hdaK⟩ := hcoeff
+-  obtain ⟨n, hn⟩ : ∃ n : ℕ, r = n + 1 :=
+-    Nat.exists_eq_succ_of_ne_zero (Nat.ne_of_gt hr)
++  let n := r - 1
++  have hn : r = n + 1 := (Nat.sub_add_cancel (Nat.succ_le_of_lt hr)).symm
+   refine ⟨x, e, hspan, hC, hX, hres, b, m, a, z, hb, hscale, hz, ha, hroot,
+     h, hhroot, hhmap, E, n, ?_⟩
+   let Λ := MvPowerSeries (Fin 2) E

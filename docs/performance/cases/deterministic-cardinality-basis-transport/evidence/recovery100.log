@@ -1,0 +1,67 @@
+✖ [5196/5235] Building Aglib.AlgebraicGeometry.Surfaces.Resolution.RationalDoublePoint.HeightMultiset (2.3s)
+trace: .> LEAN_PATH=/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/Cli/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/batteries/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/Qq/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/aesop/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/proofwidgets/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/importGraph/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/plausible/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/mathlib/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/build/lib/lean /tmp/lean-ci-capped-toolchain-6d2inccg/bin/lean -M12800 -j4 /workspace/scratch/375151ffceb3/surface-resolution-updated/Aglib/AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/HeightMultiset.lean -o /workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/HeightMultiset.olean -i /workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/HeightMultiset.ilean -c /workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/build/ir/Aglib/AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/HeightMultiset.c --setup /workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/build/ir/Aglib/AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/HeightMultiset.setup.json --json
+error: Aglib/AlgebraicGeometry/Surfaces/Resolution/RationalDoublePoint/HeightMultiset.lean:132:4: Type mismatch: After simplification, term
+  he
+ has type
+  height ⋯ = height ⋯
+but is expected to have type
+  height ⋯ = if hz : ¬IsRegularLocalRing ↑(X.presheaf.stalk (B.map y)) then height ⋯ else 0
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  Nat.find ↦ 5
+✔ [5279/5320] Built Aglib.RingTheory.Kaehler.PureDegreePTrace.CompleteRegularEntrance (15s)
+✖ [5320/5391] Building Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.PairIdealRawSource (9.1s)
+trace: .> LEAN_PATH=/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/Cli/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/batteries/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/Qq/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/aesop/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/proofwidgets/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/importGraph/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/plausible/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/packages/mathlib/.lake/build/lib/lean:/workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/build/lib/lean /tmp/lean-ci-capped-toolchain-6d2inccg/bin/lean -M12800 -j4 /workspace/scratch/375151ffceb3/surface-resolution-updated/Aglib/AlgebraicGeometry/Surfaces/RationalSingularities/IntegralTrace/PairIdealRawSource.lean -o /workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Surfaces/RationalSingularities/IntegralTrace/PairIdealRawSource.olean -i /workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Surfaces/RationalSingularities/IntegralTrace/PairIdealRawSource.ilean -c /workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/build/ir/Aglib/AlgebraicGeometry/Surfaces/RationalSingularities/IntegralTrace/PairIdealRawSource.c --setup /workspace/scratch/375151ffceb3/surface-resolution-updated/.lake/build/ir/Aglib/AlgebraicGeometry/Surfaces/RationalSingularities/IntegralTrace/PairIdealRawSource.setup.json --json
+error: Aglib/AlgebraicGeometry/Surfaces/RationalSingularities/IntegralTrace/PairIdealRawSource.lean:94:2: Type mismatch: After simplification, term
+  Eq.trans h (Eq.symm ha)
+ has type
+  @Eq
+    ((pullback (chartMap B (firstGenerator I x y hI))).obj
+        ((pullback (blowdown I)).obj
+          ((SheafOfModulesOfCommRing.exteriorPowerFunctor (Spec ↧R).sheaf n).obj
+            (relativeDifferentialSheaf (Spec.map α)))) ⟶
+      (SheafOfModulesOfCommRing.exteriorPowerFunctor (Spec ↧↥S).sheaf n).obj
+        (relativeDifferentialSheaf (Spec.map (CommRingCat.ofHom (algebraMap R ↥S)) ≫ Spec.map α)))
+    ((pullback (chartMap B (firstGenerator I x y hI))).map (rawFormsPullback (Spec.map α) (blowdown I) n) ≫
+      (restrictFunctorIsoPullback (chartMap B (firstGenerator I x y hI))).inv.app
+          ((SheafOfModulesOfCommRing.exteriorPowerFunctor (canonicalBlowup I).sheaf n).obj
+            (relativeDifferentialSheaf (blowdown I ≫ Spec.map α))) ≫
+        (rawFormsOpenIso (blowdown I ≫ Spec.map α) (chartMap B (firstGenerator I x y hI)) n).hom ≫
+          (SheafOfModulesOfCommRing.exteriorPowerFunctor (Spec ↧↥S).sheaf n).map
+            (relativeDifferentialCongrIso (chartMap B (firstGenerator I x y hI) ≫ blowdown I ≫ Spec.map α) ⋯).hom)
+    (((pullbackComp (chartMap B (firstGenerator I x y hI)) (blowdown I)).hom.app
+          ((SheafOfModulesOfCommRing.exteriorPowerFunctor (Spec ↧R).sheaf n).obj
+            (relativeDifferentialSheaf (Spec.map α))) ≫
+        (pullbackCongr ⋯).hom.app
+          ((SheafOfModulesOfCommRing.exteriorPowerFunctor (Spec ↧R).sheaf n).obj
+            (relativeDifferentialSheaf (Spec.map α)))) ≫
+      rawFormsPullback (Spec.map α) (Spec.map (CommRingCat.ofHom (algebraMap R ↥S))) n)
+but is expected to have type
+  @Eq
+    ((pullback (chartMap B (firstGenerator I x y hI))).obj
+        ((pullback (blowdown I)).obj
+          ((SheafOfModulesOfCommRing.exteriorPowerFunctor (Spec ↧R).sheaf n).obj
+            (relativeDifferentialSheaf (Spec.map α)))) ⟶
+      (SheafOfModulesOfCommRing.exteriorPowerFunctor (Spec ↧↥S).sheaf n).obj
+        (relativeDifferentialSheaf (Spec.map (CommRingCat.ofHom (algebraMap R ↥S)) ≫ Spec.map α)))
+    ((pullback (chartMap B (firstGenerator I x y hI))).map (rawFormsPullback (Spec.map α) (blowdown I) n) ≫
+      (restrictFunctorIsoPullback (chartMap B (firstGenerator I x y hI))).inv.app
+          ((SheafOfModulesOfCommRing.exteriorPowerFunctor (canonicalBlowup I).sheaf n).obj
+            (relativeDifferentialSheaf (blowdown I ≫ Spec.map α))) ≫
+        (rawFormsOpenIso (blowdown I ≫ Spec.map α) (chartMap B (firstGenerator I x y hI)) n ≪≫
+            (SheafOfModulesOfCommRing.exteriorPowerFunctor (Spec ↧↥S).sheaf n).mapIso
+              (relativeDifferentialCongrIso (chartMap B (firstGenerator I x y hI) ≫ blowdown I ≫ Spec.map α) ⋯)).hom)
+    (((pullbackComp (chartMap B (firstGenerator I x y hI)) (blowdown I)).hom ≫ (pullbackCongr ⋯).hom).app
+        ((SheafOfModulesOfCommRing.exteriorPowerFunctor (Spec ↧R).sheaf n).obj
+          (relativeDifferentialSheaf (Spec.map α))) ≫
+      rawFormsPullback (Spec.map α) (Spec.map (CommRingCat.ofHom (algebraMap R ↥S))) n)
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  moduleExteriorPowerRestrictionIso._private_1 ↦ 8
+  OreLocalization.instAdd ↦ 186
+  CliffordAlgebra.ringCon ↦ 4
+  Limits.getColimitCocone ↦ 19263
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.Surfaces.Resolution.RationalDoublePoint.HeightMultiset
+- Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.PairIdealRawSource
+error: build failed

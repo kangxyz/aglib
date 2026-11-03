@@ -1,0 +1,135 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.RingTheory.RegularLocalRing.FormalCoordinatesTwo
+public import Aglib.RingTheory.RegularLocalRing.Normal
+public import Aglib.RingTheory.IntegralClosure.PureDegreePGenerator
+public import Aglib.RingTheory.IntegralClosure.PurelyInseparable.CompleteLocalSurface
+public import Aglib.RingTheory.MvPowerSeries.FiniteCoefficientExpansion.Coordinates
+public import Aglib.RingTheory.Kaehler.PureDegreePTrace.Cokernel
+public import Mathlib.RingTheory.FiniteType
+
+/-!
+# The original complete regular surface entrance to integral differential trace
+
+Actual formal coordinates, an original scaled integral generator, and one
+finite expanded coefficient-series basis supply the original trace cokernel.
+The normalization is finite by the complete normal-surface theorem, not by a
+monogenicity assumption. The original ring, fields, maps and degree are fixed.
+-/
+
+@[expose] public noncomputable section
+
+open Polynomial IsLocalRing
+open scoped nonZeroDivisors
+
+attribute [local instance 2000] Algebra.toSMul
+
+namespace KaehlerDifferential
+
+universe u v w
+
+/-- An original complete regular characteristic-p surface supplies one actual
+finite-type coefficient base, integral differential basis and nonzero relation
+differential for its original prime-degree integral trace transpose. -/
+theorem exists_integralTraceEntrance_of_complete_regular_dim_two
+    (R : Type u) [CommRing R] [IsRegularLocalRing R]
+    [IsAdicComplete (maximalIdeal R) R]
+    (K : Type v) [Field K] [Algebra R K] [IsFractionRing R K]
+    (L : Type w) [Field L] [Algebra K L] [Algebra R L]
+    [IsScalarTower R K L] [IsPurelyInseparable K L]
+    (p : ℕ) [Fact p.Prime] [CharP R p]
+    (hdim : ringKrullDim R = 2) (hdegree : Module.finrank K L = p) :
+    letI : IsDomain R := IsRegularLocalRing.isDomain_of_regularLocal R;
+    letI : IsIntegrallyClosed R :=
+      IsRegularLocalRing.isIntegrallyClosed_of_regularLocal R;
+    letI : Ring.KrullDimLE 2 R := Ring.krullDimLE_iff.mpr hdim.le;
+    letI : CharP K p := IsFractionRing.charP_of_isFractionRing R p;
+    letI : FiniteDimensional K L := FiniteDimensional.of_finrank_pos
+      (by rw [hdegree]; exact (Fact.out : p.Prime).pos);
+    letI : Module.Finite R (integralClosure R L) :=
+      integralClosure.finite_of_complete_local_normal_dimLE_two_of_isPurelyInseparable R K L;
+    ∃ (x : Fin 2 → R) (e : MvPowerSeries (Fin 2) (ResidueField R) ≃+* R),
+      Ideal.span (Set.range x) = maximalIdeal R ∧
+      (∀ c, e (MvPowerSeries.C c) = coefficientSectionOfCharP R p c) ∧
+      (∀ i, e (MvPowerSeries.X i) = x i) ∧
+      (∀ f, residue R (e f) = MvPowerSeries.constantCoeff f) ∧
+      ∃ (b : L) (m : R⁰) (a : R) (z : integralClosure R L),
+        b ∉ Set.range (algebraMap K L) ∧
+        (z : L) = m • b ∧
+        (z : L) ∉ Set.range (algebraMap K L) ∧
+        algebraMap R L a = (z : L) ^ p ∧
+        (¬ ∃ c : K, c ^ p = algebraMap R K a) ∧
+        ∃ h : IsAdjoinRootMonic L ((X : K[X]) ^ p - C (algebraMap R K a)),
+          h.root = (z : L) ∧ h.map = aeval (z : L) ∧
+          ∃ (E : Subfield (ResidueField R)) (n : ℕ),
+            let Λ := MvPowerSeries (Fin 2) E;
+            let phi : Λ →+* R := e.toRingHom.comp
+              (MvPowerSeries.FiniteCoefficientExpansion.scalarMap
+                (k₀ := E) (k := ResidueField R) p (Fact.out : p.Prime).ne_zero);
+            letI : Algebra Λ R := phi.toAlgebra;
+            letI : Algebra Λ K := ((algebraMap R K).comp phi).toAlgebra;
+            letI : Algebra Λ L := ((algebraMap R L).comp phi).toAlgebra;
+            letI : IsScalarTower Λ R K := IsScalarTower.of_algebraMap_eq fun _ => rfl;
+            letI : IsScalarTower Λ R L := IsScalarTower.of_algebraMap_eq fun _ => rfl;
+            letI : IsScalarTower Λ K L := IsScalarTower.of_algebraMap_eq
+              fun t => IsScalarTower.algebraMap_apply R K L (phi t);
+            Module.Finite Λ R ∧ phi.FiniteType ∧
+            ∃ bR : Module.Basis (Fin (n + 1)) R (KaehlerDifferential Λ R),
+              D Λ R a ≠ 0 ∧
+              Module.finrank K (KaehlerDifferential Λ K) = n + 1 ∧
+              D Λ K (algebraMap R K a) ≠ 0 ∧
+              (letI := finite_exterior_of_basis bR (n + 1);
+                LinearMap.HasNonzeroCokernelAnnihilator (R := R)
+                  (Source := ⋀[integralClosure R L]^(n + 1)
+                    (KaehlerDifferential Λ (integralClosure R L)))
+                  (Target := integralClosure R L →ₗ[R]
+                    Module.Dual R (Module.Dual R (⋀[R]^(n + 1) (KaehlerDifferential Λ R))))
+                  (integralClosureTraceTranspose Λ R K L n hdegree h)) := by
+  let : IsDomain R := IsRegularLocalRing.isDomain_of_regularLocal R
+  let : IsIntegrallyClosed R := IsRegularLocalRing.isIntegrallyClosed_of_regularLocal R
+  let : Ring.KrullDimLE 2 R := Ring.krullDimLE_iff.mpr hdim.le
+  let : CharP K p := IsFractionRing.charP_of_isFractionRing R p
+  let : FiniteDimensional K L := FiniteDimensional.of_finrank_pos
+    (by rw [hdegree]; exact (Fact.out : p.Prime).pos)
+  let : Module.Finite R (integralClosure R L) :=
+    integralClosure.finite_of_complete_local_normal_dimLE_two_of_isPurelyInseparable R K L
+  let : CharP (ResidueField R) p :=
+    (coefficientSectionOfCharP R p).charP (coefficientSectionOfCharP R p).injective p
+  obtain ⟨x, e, hspan, hC, hX, hres⟩ :=
+    IsRegularLocalRing.exists_formalCoordinatesTwo_of_charP R p hdim
+  obtain ⟨b, m, a, z, hb, hscale, hz, ha, hroot, h, hhroot, hhmap⟩ :=
+    integralClosure.exists_integral_presentation_of_pure_degree R K L p hdegree
+  have hcoeff :=
+    MvPowerSeries.FiniteCoefficientExpansion.exists_finite_basis_of_coordinates
+      (k := ResidueField R) (R := R) (K := K) p e a hroot
+  obtain ⟨E, r, hr, hfinite, bR, hda, hK, hdaK⟩ := hcoeff
+  let n := r - 1
+  have hn : r = n + 1 := (Nat.sub_add_cancel (Nat.succ_le_of_lt hr)).symm
+  refine ⟨x, e, hspan, hC, hX, hres, b, m, a, z, hb, hscale, hz, ha, hroot,
+    h, hhroot, hhmap, E, n, ?_⟩
+  let Λ := MvPowerSeries (Fin 2) E
+  let phi : Λ →+* R := e.toRingHom.comp
+    (MvPowerSeries.FiniteCoefficientExpansion.scalarMap
+      (k₀ := E) (k := ResidueField R) p (Fact.out : p.Prime).ne_zero)
+  let : Algebra Λ R := phi.toAlgebra
+  let : Algebra Λ K := ((algebraMap R K).comp phi).toAlgebra
+  let : Algebra Λ L := ((algebraMap R L).comp phi).toAlgebra
+  let : IsScalarTower Λ R K := IsScalarTower.of_algebraMap_eq fun _ => rfl
+  let : IsScalarTower Λ R L := IsScalarTower.of_algebraMap_eq fun _ => rfl
+  let : IsScalarTower Λ K L := IsScalarTower.of_algebraMap_eq
+    fun t => IsScalarTower.algebraMap_apply R K L (phi t)
+  let : Module.Finite Λ R := hfinite
+  have hft : phi.FiniteType :=
+    RingHom.finiteType_algebraMap.mpr (inferInstance : Algebra.FiniteType Λ R)
+  let bR' : Module.Basis (Fin (n + 1)) R (KaehlerDifferential Λ R) :=
+    bR.reindex (finCongr hn)
+  refine ⟨hfinite, hft, bR', hda, hK.trans hn, hdaK, ?_⟩
+  exact exists_nonzero_annihilator_integralClosureTraceTranspose_coker_of_basis
+    Λ R K L n hdegree a h bR' hda
+
+end KaehlerDifferential

@@ -167,3 +167,12 @@ consume these original restriction, gluing, and equality interfaces.
 Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
 
 - [FreeFrameCompatibility](FreeFrameCompatibility.lean)
+
+[AffineSections](AffineSections.lean) constructs the counit-based affine
+Hom equivalence for a quasicoherent source and arbitrary target.
+[AffinePullback](AffinePullback.lean) retains its actual counit and
+pullback-adjoint formulas. Neither target quasicoherence nor a Noetherian
+base is added to those Hom formulas.
+[AffineOpenDualLocalization](AffineOpenDualLocalization.lean) gives the
+original affine-open dual and bidual restriction coordinates, retaining
+the finite-presentation and localization hypotheses of those comparisons.

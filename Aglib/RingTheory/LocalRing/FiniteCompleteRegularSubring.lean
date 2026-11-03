@@ -63,7 +63,7 @@ private theorem polynomialSource_of_section
     exact hrad
   simpa only [Nat.zero_add] using
     (show Nonempty (PolynomialParameterSource A (0 + d)) from
-      ⟨PolynomialParameterSource.of_parameters s hres 0 d hh x hx hp⟩)
+      ⟨PolynomialParameterSource.ofParameters s hres 0 d hh x hx hp⟩)
 
 private theorem polynomialSource_of_mixedCharacteristic
     (A : Type u) [CommRing A] [IsDomain A] [IsLocalRing A] [IsNoetherianRing A]
@@ -103,7 +103,7 @@ private theorem polynomialSource_of_mixedCharacteristic
       exact hparam
     simpa only [Nat.add_comm 1 d] using
       (show Nonempty (PolynomialParameterSource A (1 + d)) from
-        ⟨PolynomialParameterSource.of_parameters f hres 1 d hh x hx hp'⟩)
+        ⟨PolynomialParameterSource.ofParameters f hres 1 d hh x hx hp'⟩)
 
 private theorem nonempty_polynomialSource
     (A : Type u) [CommRing A] [IsDomain A] [IsLocalRing A] [IsNoetherianRing A]

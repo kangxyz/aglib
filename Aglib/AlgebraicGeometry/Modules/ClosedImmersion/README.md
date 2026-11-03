@@ -151,3 +151,10 @@ closed immersion supplies the comparison; the changing map need not be flat.
 Its `_unit` equation retains the actual pullback/pushforward quotient unit.
 The [coherent adic-system family](../Coherent/AdicSystem/README.md) uses these
 interfaces for independent quotients and formal pullback.
+
+[Nakayama](Nakayama.lean) detects epimorphy of an original module-sheaf
+map from its pullback to a closed immersion and its off-image stalk maps.
+Only target stalks on the closed image must be finite; the source is
+arbitrary. The off-image version may use literal stalk surjectivity.
+No quasicoherence, Noetherianity or flatness hypothesis is added.
+Exceptional canonical-evaluation arguments use this original-map criterion.

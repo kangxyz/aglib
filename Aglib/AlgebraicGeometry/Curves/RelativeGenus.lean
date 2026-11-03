@@ -140,7 +140,6 @@ def genusNeighbourhood (x : S) : S.Opens :=
     (isLocallyConstant_relativeGenus p).isOpen_fiber _⟩
 
 omit [GeometricallyConnected p] in
-@[simp]
 theorem mem_genusNeighbourhood (x : S) : x ∈ genusNeighbourhood p x := rfl
 
 /-- On this explicit neighbourhood every field-valued fibre has the same genus.

@@ -16,3 +16,10 @@ isomorphisms (`epi_counit_of_iso`). No hypothesis on `f`.
 [Pullback](Pullback.lean) gives the original open-free generator pullback
 natural isomorphism for every scheme morphism, retaining its universal-section
 and adjunction equations. The object isomorphism needs no flatness premise.
+
+[Restriction](Restriction.lean) transports section surjectivity through
+the original geometric adjunction unit. For an arbitrary map of module
+sheaves, section surjectivity and section lifting for that unit imply
+section surjectivity after pullback; the corresponding generation criterion
+uses the original all-sections evaluation. No flatness of the morphism
+or replacement pullback map is assumed.

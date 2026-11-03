@@ -1,0 +1,9 @@
+import CoarseBatchLint
+
+/-!
+The actual native lint executable entry. A legacy root initializes both runtime and
+meta dependencies before invoking the modern module's lint implementation.
+-/
+
+unsafe def main (args : List String) : IO Unit :=
+  CoarseBatchLint.run args

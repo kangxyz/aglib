@@ -1,24 +1,28 @@
-# Original evaluation fixes the generic bidual map
+# Original evaluation determines bidual maps into torsion-free targets
+
+Source: [Uniqueness.lean](Uniqueness.lean).
 
 Let `f : M -> V` be the specified localization at the nonzero divisors
-of `R`, with `M` finitely presented and the generic module `V` reflexive
-over the specified fraction field `K`. The existing
-`doubleDualToFraction f` embeds the actual double dual of `M` into `V`
-and sends the original evaluation of `m` to `f(m)`.
+of `R`, with `M` finitely presented and `V` reflexive over the original
+fraction field `K`. The original `doubleDualToFraction f` is injective
+and sends original evaluation to `f`.
 
-Every bidual element `z` has a denominator multiple equal to an
-original evaluation. Indeed, represent its generic image by `f(m)/s`.
-Injectivity of the original embedding gives `s*z = eval(m)`.
-Multiplication by `s` is invertible on the original localization
-module. Thus two linear maps from the bidual to `V` that agree on
-all original evaluations agree everywhere.
+`exists_nonZeroDivisor_smul_eq_eval` proves once that every actual bidual
+element has a nonzero-divisor multiple equal to an original evaluation.
+It uses localization surjectivity and the original generic embedding.
+`doubleDual_linearMap_ext_on_eval_of_torsionFree` then proves equality of
+maps into any torsion-free target by cancelling that regular scalar.
+This is a uniqueness theorem, not an assertion that raw evaluation is epi.
+No reflexivity or torsion-freeness of the raw module is assumed.
 
-In particular, the equation `g(eval(m)) = f(m)` determines `g` uniquely
-as `doubleDualToFraction f`. The coefficient field parameter and the
-localization map remain the original ones. The raw module is not
-assumed reflexive or torsion-free.
+The existing generic-fibre theorem retains its original statement and
+maps. It is a wrapper: original localization units give torsion-freeness
+of `V`, then the general target theorem applies. The existing uniqueness
+of `doubleDualToFraction` remains unchanged.
 
-The current geometric consumer uses this uniqueness to compare
-affine generic bidual maps on overlaps while preserving their original
-evaluation equations. The lemma does not assume a global sheaf map,
-a canonical-module comparison, or trace compatibility.
+The geometric consumer uses the original affine bidual section/evaluation
+comparison and invertible target-line sections to prove compatibility
+of the same global one-pole map with its original local maps. No desired
+compatibility, canonical trace comparison or sheaf map is assumed.
+
+Direct consumers: [RingTheory/Kaehler/PureDegreePTrace/Localization](../../Kaehler/PureDegreePTrace/Localization.md).

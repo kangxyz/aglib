@@ -75,3 +75,12 @@ purely inseparable degree-p DVR extension, preserving its actual root and
 algebra map. These feed the monogenic differential trace; extra uniformizer
 or non-pth-power coefficient classifications are not asserted unless
 separately exposed by the theorem.
+
+[PureDegreeP/Monogenic](PureDegreeP/Monogenic.lean) constructs a monic
+power-relation presentation of the original finite torsion-free extension
+of DVRs, with its specified fraction fields and purely inseparable
+fraction extension of prime degree `p` in characteristic `p`.
+No monogenicity, ramification equality or defectless premise is supplied.
+The root and forward map are the original element and its evaluation map;
+the generic power-relation constructor is shared with
+[AdjoinRoot](../AdjoinRoot/PowerRelation.lean).

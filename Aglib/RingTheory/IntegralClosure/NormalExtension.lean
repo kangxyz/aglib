@@ -41,10 +41,11 @@ universe u v w
 
 /-- Finite normalization in all finite purely inseparable fraction-field extensions
 implies finite normalization in the original finite extension. The extension
-universe is retained through the actual normal hull and fixed field. -/
+universe is retained through the actual normal hull and fixed field.
+The Noetherian domain base need not be integrally closed. -/
 theorem finite_of_finite_pure_extensions
     (R : Type u) (K : Type v) (L : Type w)
-    [CommRing R] [IsDomain R] [IsNoetherianRing R] [IsIntegrallyClosed R]
+    [CommRing R] [IsDomain R] [IsNoetherianRing R]
     [Field K] [Algebra R K] [IsFractionRing R K]
     [Field L] [Algebra K L] [Algebra R L] [IsScalarTower R K L]
     [FiniteDimensional K L]

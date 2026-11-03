@@ -1,0 +1,21 @@
+{
+  "base": "ecca5070e0df98c4260a35b92f5bea0ca49801e8",
+  "lean": "4.34.1",
+  "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "sha256": {
+    "sources/OpenCounit.before.lean": "ed7f41da164c82710a4bf7786d5967b8dc1e49a7511e9f192163c9e3942ee504",
+    "sources/Transport.before.lean": "52f68963e06865e6a24314f361c56679a72e3f1fc313026d60a55c8a0e71c725",
+    "sources/OpenCounit.after.lean": "3cd223bba0a5289eeeafb5628c6208b95e0e2389975c6761a6cdfe49878cb417",
+    "sources/Transport.after.lean": "9f5432be9fbb41b12118581f8970f74d5ef326ecd5b0ec8fede2ea8932a49a0d",
+    "deltas/consumer.diff": "a875a922288863308b6fe95c33874a7c8a9f15d4751b07aa82e189593913bfd0",
+    "deltas/generic-square.diff": "0b7ca7f4edb15db83de1b303c05d6e85ee67bb522565fb5b998c15c7308f04b3",
+    "evidence/lower6000.log": "64578998ddbf3c179afd57a2a63932dd2d6092a1ab842fc55a20fac8e12a272e",
+    "evidence/lower6000.json": "471e4d145bbe1e03e843486e60acc7dd7279abd2f640dd3d5e7b216db70662e0",
+    "evidence/lower6000-owned-argv.jsonl": "fa7ae7ea72daf3b7570a4bb350959e58f0ce7e3f4a991133eb1b0f91268d72dc",
+    "evidence/lower6000.source-sha256": "9c9e711ff25d24066ecc1c59e5d0c7153012c599f11e282e2a12ce65e661bbdd",
+    "evidence/graph65.log": "d0787225580202d3f798e96eb76aadeb7636abdad68c7960c03310647d831e9a",
+    "evidence/graph65.json": "8c3fbf73f5f2ae8c74b5fcfc83ee1b27e1487a856e57ac2781dedd6e0e731908",
+    "evidence/graph65-source-hashes.json": "fb5abe12a1db388cbf87aaf7f4bb88853604ed58727a0690433cee6d1ce8f51b",
+    "evidence/graph65-owned-argv.jsonl": "04aa657fd84d5efaf075e33feaad25382ab8206e237a9196e70f3ff94fa7c8dc"
+  }
+}

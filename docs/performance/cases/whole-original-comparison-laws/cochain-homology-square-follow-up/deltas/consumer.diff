@@ -1,0 +1,84 @@
+--- surface-resolution-updated/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenCounit.lean
++++ surface-resolution-updated/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenCounit.lean
+@@ -272,68 +272,30 @@
+   let T₀ := tilde.functor B
+   let U := restrictFunctor (Spec.map ψ)
+   let C := closedImmersionSourceResolutionComplex J σ
++  let C' := closedImmersionSourceResolutionComplex
++    (affineOpenRestrictedInjectiveResolution φ J) τ
+   let K := canonicalAmbientSourceSheafComplex σ J
+   let K' := canonicalAmbientTargetSheafComplex φ τ J
+   let D := canonicalAmbientScalarResolutionMap φ σ τ ψ h J
+-  let κ := Complex.tildeGlobalSectionsCounit B (.up ℤ) K
+-  let Φ := canonicalAmbientModelOpenIso φ σ τ ψ h J
+-  let B₀ := canonicalOpenTildeComplexIso ψ C
+   let : PreservesFiniteLimits F :=
+     ModuleCat.extendScalars_preservesFiniteLimits_of_flat ψ.hom
+       (AlgebraicGeometry.Flat.SpecMap_iff.mp inferInstance)
+-  let e :
+-      (((U.mapHomologicalComplex (.up ℤ)).obj
+-        ((T₀.mapHomologicalComplex (.up ℤ)).obj C)).homology n) ≅
+-      U.obj (T₀.obj (C.homology n)) :=
+-    ((((T₀.mapHomologicalComplex (.up ℤ)).obj C).sc n).mapHomologyIso U) ≪≫
+-      U.mapIso ((C.sc n).mapHomologyIso T₀)
+-  let a : T.obj (F.obj (C.homology n)) ⟶
+-      ((T.mapHomologicalComplex (.up ℤ)).obj
+-        ((F.mapHomologicalComplex (.up ℤ)).obj C)).homology n :=
+-    T.map ((C.sc n).mapHomologyIso F).inv ≫
+-      ((((F.mapHomologicalComplex (.up ℤ)).obj C).sc n).mapHomologyIso T).inv
+   have hD := CategoryTheory.Adjunction.mapHomologicalComplex_homology_homEquiv_symm
+     (ModuleCat.extendRestrictScalarsAdj ψ.hom) (.up ℤ)
+     (canonicalAmbientResolutionMap φ σ τ ψ h J) n
+   change ((C.sc n).mapHomologyIso F).inv ≫ homologyMap D n =
+     canonicalAmbientHomologyScalarMap φ σ τ ψ h J n at hD
+-  have hB := HomologicalComplex.homologyMap_twoStage_exactIso F T T₀ U
+-    (canonicalOpenTildeIso ψ) (.up ℤ) C n
+-  have hB' : (a ≫ homologyMap B₀.hom n) ≫ e.hom =
+-      (canonicalOpenTildeIso ψ).hom.app (C.homology n) := by
+-    simpa only [a, e, B₀, canonicalOpenTildeComplexIso, Iso.trans_hom,
+-      Functor.mapIso_hom, Category.assoc] using hB
+-  have hb : a ≫ homologyMap B₀.hom n =
+-      (canonicalOpenTildeIso ψ).hom.app (C.homology n) ≫ e.inv := by
+-    have hc := congrArg (fun z => z ≫ e.inv) hB'
+-    simpa only [Category.assoc, Iso.hom_inv_id, Category.comp_id] using hc
+-  have hκ := ShortComplex.mapHomologyIso_inv_naturality
+-    ((HomologicalComplex.shortComplexFunctor (Spec B).Modules (.up ℤ) n).map κ) U
+-  change U.map (homologyMap κ n) ≫ ((K.sc n).mapHomologyIso U).inv =
+-    ((((T₀.mapHomologicalComplex (.up ℤ)).obj C).sc n).mapHomologyIso U).inv ≫
+-      homologyMap ((U.mapHomologicalComplex (.up ℤ)).map κ) n at hκ
+-  have hc : e.inv ≫ homologyMap ((U.mapHomologicalComplex (.up ℤ)).map κ) n =
+-      U.map (canonicalTildeHomologyCounitMap K n) ≫ ((K.sc n).mapHomologyIso U).inv := by
+-    simp only [e, Iso.trans_inv, Functor.mapIso_inv, Category.assoc]
+-    rw [← hκ, ← CategoryTheory.Functor.map_comp_assoc]
+-    rfl
+-  calc
+-    _ = a ≫ homologyMap B₀.hom n ≫
+-        homologyMap ((U.mapHomologicalComplex (.up ℤ)).map κ) n ≫
+-        homologyMap Φ.hom n := by
+-      rw [← hD, CategoryTheory.Functor.map_comp, Category.assoc,
+-        canonicalAmbientScalarResolutionMap_homology_counit]
+-      simp only [a, T, F, B₀, U, κ, Φ, K, C, Category.assoc]
+-    _ = (canonicalOpenTildeIso ψ).hom.app (C.homology n) ≫ e.inv ≫
+-        homologyMap ((U.mapHomologicalComplex (.up ℤ)).map κ) n ≫
+-        homologyMap Φ.hom n := by
+-      simpa only [Category.assoc] using congrArg
+-        (fun z => z ≫ homologyMap ((U.mapHomologicalComplex (.up ℤ)).map κ) n ≫
+-          homologyMap Φ.hom n) hb
+-    _ = _ := by
+-      simpa only [canonicalAmbientSheafHomologyMap, Φ, K, U, Category.assoc] using
+-        congrArg (fun z => (canonicalOpenTildeIso ψ).hom.app (C.homology n) ≫ z ≫
+-          homologyMap Φ.hom n) hc
++  have hs := HomologicalComplex.homologyMap_twoStage_square F T T₀ U
++    (canonicalOpenTildeIso ψ) (.up ℤ) C C' K K' D
++    (Complex.tildeGlobalSectionsCounit B (.up ℤ) K)
++    (Complex.tildeGlobalSectionsCounit B' (.up ℤ) K')
++    (canonicalAmbientModelOpenIso φ σ τ ψ h J).hom
++    (canonicalAmbientScalarResolutionMap_counit φ σ τ ψ h J) n
++  have hd := congrArg
++    (fun z => T.map z ≫ canonicalTildeHomologyCounitMap K' n) hD
++  apply hd.symm.trans
++  simpa only [canonicalTildeHomologyCounitMap, canonicalAmbientSheafHomologyMap,
++    F, T, T₀, U, C, C', K, K', D, Category.assoc] using hs
+ 
+ /-- Every original module-homology class has the same image under the
+ actual sheaf-model open map. The formula retains the original affine

@@ -73,7 +73,7 @@ theorem projectiveProjection_higherDirectImage_coherent
   have hΓ : Module.Finite A
       (moduleSpecΓFunctor.obj (((Scheme.Modules.pushforward v).rightDerived q).obj N)) :=
     Module.Finite.equiv
-      (moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated v N
+      (moduleHigherDirectImageAffineSectionsLinearEquivOfIsSeparated v N
         (injectiveResolution N) q).symm
   have hQC : (((Scheme.Modules.pushforward v).rightDerived q).obj N).IsQuasicoherent :=
     moduleHigherDirectImageAffine_isQuasicoherent_of_isSeparated v N q

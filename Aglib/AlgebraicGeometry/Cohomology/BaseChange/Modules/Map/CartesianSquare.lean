@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Square
-public import Aglib.AlgebraicGeometry.Cohomology.Restriction.Cartesian
+public import Aglib.AlgebraicGeometry.Cohomology.Restriction.CartesianSquare
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Map.Open
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Sections.OpenRestriction
 
@@ -104,7 +104,7 @@ def moduleOpenPullbackTensorSquare
   let leftMap : A ⟶ C.obj (op (j ⁻¹ᵁ U)) := gj
   let rightMap : B ⟶ D.obj (op (b ⁻¹ᵁ ⊤)) := right
   let s := moduleOpenPullbackRestrictionSquare p M U n
-  have hraw := moduleHPrimeOpenMap_pullback_restrict p M U n
+  have hraw := s.fac
   refine build A (C.obj (op (j ⁻¹ᵁ U))) B (D.obj (op (b ⁻¹ᵁ ⊤)))
     gp leftMap rightMap bottom s.f₁₂ s.f₁₃ s.f₂₄ s.f₃₄ hraw ?_ ?_ ?_ ?_
   · intro x

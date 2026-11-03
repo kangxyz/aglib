@@ -17,3 +17,10 @@ Focused interface guides: [Unique lifts from the actual saturated chart](Saturat
 `p`-power torsion. It constructs and characterizes the quotient lift to a target
 where the image of `p` is regular, and proves that the image of `p` in this actual
 quotient is regular. `NeronModification.Basic` consumes this generic supplier.
+
+[SaturatedChart/FractionRing](SaturatedChart/FractionRing.lean) embeds
+the original saturated chart of an ideal in a domain into its supplied
+fraction field, for a nonzero chart denominator. Its injectivity,
+scalar-tower and fraction-ring equations retain that map.
+Ring and field universes are independent; no alternative chart algebra
+is introduced.

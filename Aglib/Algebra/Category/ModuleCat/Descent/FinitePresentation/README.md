@@ -19,3 +19,9 @@ universe; each theorem retains its explicit universe bounds.
 The [scheme module-Hom descent family](../../../../../AlgebraicGeometry/Descent/FinitePresentation/Modules/README.md)
 transports these actual matrix constructions through native affine sections
 and pullbacks, then glues the original local arrows.
+
+The scalar-triangle comparison used by [Maps](Maps.lean) is owned by
+[ChangeOfRings/Composition](../../ChangeOfRings/Composition.lean).
+The matrix-cokernel descent maps retain the original quotient projections,
+scalar-extension units and cocone comparison; general scalar composition
+has no matrix-descent premise.

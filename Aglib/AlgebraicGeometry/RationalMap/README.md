@@ -84,3 +84,9 @@ original indexed coordinates. The
 combines these extensions for finite projective products and an actual
 proper integral target. Resolution of an initially singular source remains
 separate.
+
+The [principal-open extension interfaces](ProjectiveExtension/README.md)
+retain the actual coordinate-ideal blowup and prove agreement with the
+original localized scalar coordinates. Over a Noetherian affine ring,
+the finite-tuple extension is proper and unchanged on the prescribed
+principal open. Reducible and nonreduced coefficient rings are allowed.

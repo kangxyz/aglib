@@ -60,3 +60,12 @@ by a specified nonzero nonunit, over a normal Noetherian local domain of
 dimension two. No completeness, Nagata property or coefficient field is
 assumed. Its stable parameter-pair and bounded minimal-prime arguments feed
 the uniform scalar-torsion cohomology bound.
+
+[ParameterEquiv](ParameterEquiv.lean) transports actual parameter
+minimality, the full principal exceptional-centre ideal and bijectivity
+of the original residue map through a supplied local-ring equivalence
+and commuting homomorphism square. Three ring universes remain independent.
+No coefficient-field section, marker predicate or Noetherianity is added.
+Original-stalk entry and continuation use these exact scalar equations.
+
+[PolynomialParameterSource](PolynomialParameterSource.lean) exposes `PolynomialParameterSource.ofParameters`, using the original polynomial evaluation map localized at its residue-point kernel. Its stated regular coefficient-ring, residue-surjectivity, kernel-height and parameter-radical hypotheses produce the same regular local source and original map consumed by [FiniteCompleteRegularSubring](FiniteCompleteRegularSubring.lean).

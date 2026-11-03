@@ -521,21 +521,29 @@ structure GenericFiniteCoverData
     (R K : Type u) [CommRing R] [Field K] [Algebra R K]
     (s : Finset (AlgebraicClosure K)) [Algebra R (FiniteField.stage K s)]
     {X : Scheme.{u}} (p : X ⟶ Spec (.of R)) where
+  /-- The index type of the field-cover components. -/
   I : Type u
   finiteI : Finite I
+  /-- The field-cover component schemes. -/
   C : I → Scheme.{u}
+  /-- The structural map of each component over the finite field stage. -/
   q : ∀ i, C i ⟶ Spec (.of (FiniteField.stage K s))
   proper_q : ∀ i, IsProper (q i)
+  /-- The component maps to the original field-stage pullback. -/
   ν : ∀ i, C i ⟶ pullback p (fieldMap R (FiniteField.stage K s))
   hν : ∀ i, ν i ≫ pullback.snd p (fieldMap R (FiniteField.stage K s)) = q i
   finite_ν : ∀ i, IsFinite (ν i)
   finite_field_cover : IsFinite (Sigma.desc ν)
   surjective_field_cover : Surjective (Sigma.desc ν)
+  /-- The chosen sections of the field-cover components. -/
   σ : ∀ i, Spec (.of (FiniteField.stage K s)) ⟶ C i
   hσ : ∀ i, σ i ≫ q i = 𝟙 _
+  /-- The indices whose structural maps are isomorphisms. -/
   P : Set I
   point : ∀ i : P, IsIso (q i)
+  /-- The projective dimension assigned to each remaining component. -/
   n : {i : I // i ∉ P} → ℕ
+  /-- The projective-space maps of the remaining field components. -/
   e : ∀ i : {i : I // i ∉ P}, C i ⟶
     ProjectiveSpace (FiniteField.stage K s) (ULift.{u} (Fin (n i + 1)))
   closed_e : ∀ i, IsClosedImmersion (e i)
@@ -543,9 +551,11 @@ structure GenericFiniteCoverData
     (ULift.{u} (Fin (n i + 1))) = q i
   smooth_q : ∀ i : {i : I // i ∉ P}, SmoothOfRelativeDimension 1 (q i)
   integral_q : ∀ i : {i : I // i ∉ P}, GeometricallyIntegral (q i)
+  /-- The element defining the first principal localization. -/
   r : R
   r_ne_zero : r ≠ 0
   hrL : algebraMap R (FiniteField.stage K s) r ≠ 0
+  /-- The finite subalgebra used to construct the spread base. -/
   B : Subalgebra R (FiniteField.stage K s)
   finite_B : Module.Finite R B
   χ_injective : Function.Injective (finiteSubalgebraAwayMap B r hrL)
@@ -553,6 +563,7 @@ structure GenericFiniteCoverData
     letI : Algebra (Localization.Away (algebraMap R B r)) (FiniteField.stage K s) :=
       (finiteSubalgebraAwayMap B r hrL).toRingHom.toAlgebra
     IsFractionRing (Localization.Away (algebraMap R B r)) (FiniteField.stage K s)
+  /-- The element defining the principal open on the localized base. -/
   d : Localization.Away r
   d_ne_zero : d ≠ 0
   baseAffine : IsAffine (genericCoverBase B r d)
@@ -563,6 +574,7 @@ structure GenericFiniteCoverData
   surjective_base : Surjective (pullback.snd
     (genericCoverBaseMap B r)
     (Scheme.Opens.ι (X := Spec (.of (Localization.Away r))) (PrimeSpectrum.basicOpen d)))
+  /-- The map from the field stage to the spread base. -/
   κT : Spec (.of (FiniteField.stage K s)) ⟶ genericCoverBase B r d
   κT_fst : κT ≫ pullback.fst
     (genericCoverBaseMap B r)
@@ -574,13 +586,16 @@ structure GenericFiniteCoverData
     (genericCoverBaseMap B r)
     (Scheme.Opens.ι (X := Spec (.of (Localization.Away r)))
       (PrimeSpectrum.basicOpen d))).appTop.hom.Finite
+  /-- The model of the original field-stage pullback over the spread base. -/
   N : letI := baseAffine
     Model (κT ≫ (genericCoverBase B r d).isoSpec.hom)
       (pullback.snd p (fieldMap R (FiniteField.stage K s)))
+  /-- The models of the field-cover components over the spread base. -/
   M : letI := baseAffine
     ∀ i, Model (κT ≫ (genericCoverBase B r d).isoSpec.hom) (q i)
   proper_N : IsProper N.f
   proper_M : ∀ i, IsProper (M i).f
+  /-- The map from the model of the pullback to the original scheme. -/
   ρ : N.X ⟶ X
   ρ_square : letI := baseAffine
     IsPullback ρ N.f p
@@ -590,10 +605,12 @@ structure GenericFiniteCoverData
           Spec.map (CommRingCat.ofHom
             (algebraMap R (Localization.Away (algebraMap R B r)))))
   ρ_comparison : N.p ≫ ρ = pullback.fst p (fieldMap R (FiniteField.stage K s))
+  /-- The model maps extending the field-cover component maps. -/
   arrows : ∀ i, Model.Map (M i) N (Over.homMk (ν i) (hν i))
   finite_arrows : ∀ i, IsFinite (arrows i).hom.left
   finite_cover : IsFinite (Sigma.desc fun i => (arrows i).hom.left)
   surjective_cover : Surjective (Sigma.desc fun i => (arrows i).hom.left)
+  /-- The sections of the component models over the affine spread base. -/
   sections : ∀ i, Spec Γ(genericCoverBase B r d, ⊤) ⟶ (M i).X
   sections_w : ∀ i, sections i ≫ (M i).f = 𝟙 _
   sections_comparison : letI := baseAffine
@@ -601,9 +618,11 @@ structure GenericFiniteCoverData
   point_M : ∀ i : P, IsIso (M i).f
   smooth_M : ∀ i : {i : I // i ∉ P}, SmoothOfRelativeDimension 1 (M i).f
   integral_M : ∀ i : {i : I // i ∉ P}, GeometricallyIntegral (M i).f
+  /-- The map from global sections of the spread base to the field stage. -/
   χS : Γ(genericCoverBase B r d, ⊤) ⟶ CommRingCat.of (FiniteField.stage K s)
   χS_spec : letI := baseAffine
     Spec.map χS = κT ≫ (genericCoverBase B r d).isoSpec.hom
+  /-- The projective-space maps of the remaining component models. -/
   eS : ∀ i : {i : I // i ∉ P}, (M i).X ⟶
     ProjectiveSpace Γ(genericCoverBase B r d, ⊤) (ULift.{u} (Fin (n i + 1)))
   closed_eS : ∀ i, IsClosedImmersion (eS i)

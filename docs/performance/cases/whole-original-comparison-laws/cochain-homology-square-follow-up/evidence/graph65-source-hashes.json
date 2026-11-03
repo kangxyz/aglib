@@ -1,0 +1,14 @@
+{
+  "Aglib.AlgebraicGeometry.Surfaces.Resolution.PointBlowupChain.ClosedPrefix": "c51b29ce764325d9b5be608377e9a5c0e920a81dd3e4b8cce4b6ad5a85d6d8dd",
+  "Aglib.AlgebraicGeometry.Surfaces.Resolution.RationalDoublePoint.OriginalCaseOneStep": "971ec470f89817d7ee4590e59c5e9e5c68098638ae7246d7ed074a0b5c7e17df",
+  "Aglib.AlgebraicGeometry.Surfaces.Resolution.NormalizedPointBlowupChain.FiniteBaseEmbedding": "e3e0afc77ac05b4aaad24d3356b0c5ecb267fcd250328eca8f91d54599b69b5d",
+  "Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.RawFormsOpenEvaluation": "8490ad675b142597dab2339391479d503b68d80c39cce6abcd619e05c1155745",
+  "Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.RawFormsOpenIsoEvaluation": "6b5bdaeb2d444d206281ed0ca5c51f047941f755bb81fa83a38ab4b0eed867e4",
+  "Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.PairIdealSourceEvaluation": "46d52dc27a8b9953c236afd1f7186d378df3b6ec222b7442fb0cae7a592dea93",
+  "Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.PairIdealRawUnitSquare": "7a11a649f1262fa9a3f221ceebec66a45871b6257fa5e94b024c78b9eac4f84a",
+  "Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.PairIdealRawGluing": "7d03182edf0065f000101733113814c67f30a72ac6451a9e3b64dc2b4a804ce2",
+  "Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.IntegralTrace.PairIdealGlobalOnePole": "5fcbf3504de0905d2c1af0d9f27ed2d12497ed51534c7ec3c99b0f1b7e6b597b",
+  "Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenCounit.Transport": "9f5432be9fbb41b12118581f8970f74d5ef326ecd5b0ec8fede2ea8932a49a0d",
+  "Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenCounit": "3cd223bba0a5289eeeafb5628c6208b95e0e2389975c6761a6cdfe49878cb417",
+  "Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.FlatBaseChange.SourcePresentation": "cce37d70060d5dfbc38e31b045c08eb60e39033676175f25a0b18f0acba9e953"
+}

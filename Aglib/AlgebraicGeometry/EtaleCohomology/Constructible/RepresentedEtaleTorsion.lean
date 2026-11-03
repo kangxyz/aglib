@@ -79,10 +79,11 @@ def generatorMap {U : S.Etale} (a : U ⟶ E) :
     ⟨F.obj.map a.op (universalSection E F e), killed_section F n hkill U _⟩
 
 @[simp] theorem generatorMap_section {U : S.Etale} (a : U ⟶ E) :
-    (freeZModSectionsEquiv.{u + 1} S.smallEtaleTopology n U F
-      (generatorMap E F e n hkill a)).val =
-        F.obj.map a.op (universalSection E F e) :=
-  congrArg Subtype.val
+    Sheaf.Hypercohomology.sectionsEquiv.{u + 1} S.smallEtaleTopology U F
+        (freeZModRepresentableπ.{u + 1} S.smallEtaleTopology n U ≫
+          generatorMap E F e n hkill a) =
+      F.obj.map a.op (universalSection E F e) := by
+  exact congrArg Subtype.val
     ((freeZModSectionsEquiv.{u + 1} S.smallEtaleTopology n U F).apply_symm_apply _)
 
 local instance : HasFiniteBiproducts (AbelianSheaf.{u, u + 1} S) :=
@@ -114,7 +115,8 @@ theorem coverGeneratorMap_epi
     simpa [coverGeneratorMap, ← Category.assoc] using h
   have hsec := congrArg
     (fun q => (freeZModSectionsEquiv.{u + 1} S.smallEtaleTopology n (U i) G q).val) hmap
-  simp only [freeZModSectionsEquiv_naturality, generatorMap_section] at hsec
+  simp only [freeZModSectionsEquiv_naturality] at hsec
+  simp only [freeZModSectionsEquiv_val, coequalizer_as_cokernel, generatorMap_section] at hsec
   have hlocal : G.obj.map (a i).op (b.hom.app (op E) (universalSection E F e)) =
       G.obj.map (a i).op (c.hom.app (op E) (universalSection E F e)) := by
     have hb : b.hom.app (op (U i))

@@ -93,3 +93,9 @@ Stacks, Tag 07ZA (5), on affine opens through `affineOpenSections_epi_surjective
 
 - Stacks, Tags 0C3E (finite type of the Fitting ideals of a finitely presented module) and 0CYX
   (the closed subscheme cut out by `Fitt_0` and the support).
+
+[Stalk](Stalk.lean) identifies the actual stalk ideal of the Fitting ideal
+sheaf of a finitely presented module with the algebraic Fitting ideal of
+its original module stalk. The local ring and its scalar action are
+unchanged. Stalk-frame criteria for line bundles use this equality,
+without adding Noetherianity to the scheme.

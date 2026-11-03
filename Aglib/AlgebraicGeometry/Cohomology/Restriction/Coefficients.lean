@@ -7,7 +7,6 @@ module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Restriction.Geometric
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Modules.Open
-public import Aglib.Topology.Sheaves.Cohomology.OpenTransfer.RestrictionCoefficientSquare
 
 /-! # Original coefficient formulas for open restriction cohomology
 
@@ -26,7 +25,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 set_option backward.defeqAttrib.useBackward true
 
-universe u w
+universe u v
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry TopologicalSpace Opposite
 
@@ -48,34 +47,55 @@ theorem moduleHPrimeOpenRestrictionAddEquiv_geometric (X : Scheme.{u}) (U : X.Op
   erw [← moduleCoefficientPullback_restrictUnit X U M] at H
   exact H
 
-/-- The complete actual module open-restriction coefficient square. Its edges
-are the original open comparison, coefficient map, geometric postcomposition
-and whole-space comparison, with their original law constructed together. -/
-def moduleOpenRestrictionCoefficientSquare (X : Scheme.{u}) (U : X.Opens)
-    (M : X.Modules) {N : U.toScheme.Modules} (ε : M.restrict U.ι ⟶ N)
-    (n : ℕ) : Square AddCommGrpCat.{u + 1} := by
-  let a := U.ι
-  let η := (Scheme.Modules.restrictAdjunction a).unit.app M
-  exact TopCat.Sheaf.openCohomologyRestrictionCoefficientSquare.{u, u + 1} a.base
-    (moduleCoefficientPullback a η)
-    (moduleCoefficientPullback a (η ≫ (Scheme.Modules.pushforward a).map ε))
-    ((SheafOfModules.toSheaf U.toScheme.ringCatSheaf).map ε)
-    (moduleCoefficientPullback_postcomp a η ε) n U U.ι_preimage_self
-    (AddCommGrpCat.ofHom
-      (sheafHPrimeOpenRestrictionAddEquiv X U (moduleAddSheaf X M) n).toAddMonoidHom)
-    (moduleHPrimeOpenRestrictionAddEquiv_geometric X U M n)
+private theorem postcomp_restriction_values
+    {C D : Type*} [Category* C] [Category* D]
+    (F : C ⥤ D) {P : C ⥤ AddCommGrpCat.{v}} {A B : D ⥤ AddCommGrpCat.{v}}
+    {θ : A ⟶ B} {g₀ : P ⟶ F ⋙ A} {g₁ : P ⟶ F ⋙ B}
+    (hg : g₁ = g₀ ≫ Functor.whiskerLeft F θ)
+    {U : C} {V : D} (k : F.obj U ⟶ V)
+    {H₀ H₁ : Type*} (topA : A.obj V → H₀) (topB : B.obj V → H₁)
+    (f : H₀ → H₁) (htop : ∀ z, topB (θ.app V z) = f (topA z))
+    (e : P.obj U → H₀) (x : P.obj U)
+    (hx : e x = topA (A.map k (g₀.app U x))) :
+    f (e x) = topB (B.map k (g₁.app U x)) := by
+  have hgx : g₁.app U x = θ.app (F.obj U) (g₀.app U x) :=
+    ConcreteCategory.congr_hom (NatTrans.congr_app hg U) x
+  have hn := ConcreteCategory.congr_hom (θ.naturality k) (g₀.app U x)
+  calc
+    _ = f (topA (A.map k (g₀.app U x))) := congrArg f hx
+    _ = topB (θ.app V (A.map k (g₀.app U x))) := (htop _).symm
+    _ = topB (B.map k (θ.app (F.obj U) (g₀.app U x))) := congrArg topB hn
+    _ = _ := congrArg (fun z => topB (B.map k z)) hgx.symm
 
-
-/-- An actual local coefficient arrow acts on the original open comparison by
-the original geometric map of the postcomposed restriction unit. The four
-transparent edges are those of the same complete native square. -/
+/-- An actual coefficient arrow out of the local restriction acts on the original
+open comparison by the original geometric map of the postcomposed restriction unit. -/
 theorem moduleHPrimeOpenRestrictionAddEquiv_postcomp (X : Scheme.{u}) (U : X.Opens)
     (M : X.Modules) {N : U.toScheme.Modules} (ε : M.restrict U.ι ⟶ N)
     (n : ℕ) (x : Sheaf.H'.{u + 1} (moduleAddSheaf X M) n U) :
-    (moduleOpenRestrictionCoefficientSquare X U M ε n).f₂₄
-        ((moduleOpenRestrictionCoefficientSquare X U M ε n).f₁₂ x) =
-      (moduleOpenRestrictionCoefficientSquare X U M ε n).f₃₄
-        ((moduleOpenRestrictionCoefficientSquare X U M ε n).f₁₃ x) :=
-  ConcreteCategory.congr_hom (moduleOpenRestrictionCoefficientSquare X U M ε n).fac x
+    Sheaf.H.map ((SheafOfModules.toSheaf U.toScheme.ringCatSheaf).map ε) n
+        (sheafHPrimeOpenRestrictionAddEquiv X U (moduleAddSheaf X M) n x) =
+      sheafHPrimeTopAddEquiv U.toScheme (moduleAddSheaf U.toScheme N) n
+        ((Sheaf.cohomologyPresheaf.{u + 1} (moduleAddSheaf U.toScheme N) n).map
+          (eqToHom U.ι_preimage_self.symm).op
+            ((zariskiCohomologyOpenMap U.ι (moduleAddSheaf X M)
+              (moduleAddSheaf U.toScheme N)
+              (moduleCoefficientPullback U.ι (M := M) (N := N)
+                ((Scheme.Modules.restrictAdjunction U.ι).unit.app M ≫
+                  (Scheme.Modules.pushforward U.ι).map ε)) n).app (op U) x)) := by
+  let a := U.ι
+  let K : U.toScheme.Modules := M.restrict a
+  let F : moduleAddSheaf U.toScheme K ⟶ moduleAddSheaf U.toScheme N :=
+    (SheafOfModules.toSheaf U.toScheme.ringCatSheaf).map ε
+  let η : M ⟶ (Scheme.Modules.pushforward a).obj K :=
+    (Scheme.Modules.restrictAdjunction a).unit.app M
+  let k : (⊤ : U.toScheme.Opens) ⟶ a ⁻¹ᵁ U := eqToHom U.ι_preimage_self.symm
+  let topA := sheafHPrimeTopAddEquiv U.toScheme (moduleAddSheaf U.toScheme K) n
+  let topB := sheafHPrimeTopAddEquiv U.toScheme (moduleAddSheaf U.toScheme N) n
+  have hpost := zariskiCohomologyOpenMap_module_postcomp a η ε n
+  have hfinal := postcomp_restriction_values (Opens.map a.base).op hpost k.op topA topB
+    (Sheaf.H.map F n) (sheafHPrimeTopAddEquiv_naturality U.toScheme F n)
+    (sheafHPrimeOpenRestrictionAddEquiv X U (moduleAddSheaf X M) n) x
+    (moduleHPrimeOpenRestrictionAddEquiv_geometric X U M n x)
+  exact hfinal
 
 end AlgebraicGeometry.Scheme.Cohomology

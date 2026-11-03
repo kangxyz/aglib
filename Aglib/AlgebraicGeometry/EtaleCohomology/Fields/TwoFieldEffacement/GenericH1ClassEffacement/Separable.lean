@@ -36,7 +36,7 @@ conclusion before inserting the native common and algebraic-closure fields. -/
 theorem exists_finiteStage_separable_pointed_effacement
     (hambient : (algebraMap C Ω).comp aC.toRingHom = iF)
     (x : Spec (.of k) ⟶ U) (hx : x ≫ p = 𝟙 _)
-    {V : Scheme.{u}} [CompactSpace V] [QuasiSeparatedSpace V] [ConnectedSpace V]
+    {V : Scheme.{u}} [ConnectedSpace V]
     (aV : V ⟶ U) (qV : V ⟶ Spec (.of F))
     (H : IsPullback aV qV p (Spec.algebraMap k F))
     (Y : FiniteEtale V) [IsGalois Y]

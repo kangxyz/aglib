@@ -29,13 +29,25 @@ factorization. `Scheme.genericNormalization_fieldMap_isIso` cancels the
 injective function-field map of `γ.toNormalization` to prove birationality
 of the original `ν`.
 
-`Scheme.genericNormalization_isFinite` assumes precisely that every
+`Scheme.genericSection_isFractionRing` exposes the original affine
+fraction-ring comparison. `Scheme.genericNormalization_finite_app_of_finite`
+uses finiteness of that literal integral closure, without a Nagata premise.
+`Scheme.genericNormalization_isFinite_of_finite_app` then checks the original
+section maps on nonempty affine charts, treating empty charts once. These
+interfaces support the [quasi-excellent N-1 consumer](QuasiExcellent.md).
+
+The retained wrapper `Scheme.genericNormalization_isFinite` assumes that every
 nonempty affine section ring `Γ(W,U)` is Nagata at auxiliary test universe
 zero. The Nagata normalization theorem makes its literal integral closure
 finite. `fromNormalization_app` and `normalizationObjIso` transfer that
 finiteness to the actual section map of `ν`. The empty affine open is
 handled through its zero-ring section map. No replacement normalization
 object or existence of a finite model is assumed.
+
+`Scheme.genericNormalization_finite_app` exposes the same finite section-map
+proof on one actual nonempty affine chart. Normal-point domination uses it
+on adapted charts before applying locality of finiteness, without duplicating
+the original fraction-ring or normalization comparison.
 
 The [complementary-graph construction](../Surfaces/Resolution/ExtensionGraph/Construction.md)
 takes `W` to be the actual schematic image of its original punctured

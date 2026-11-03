@@ -21,3 +21,11 @@ quasicoherence or cartesian-square hypothesis.
 detects epimorphisms on the restrictions or pullbacks along a jointly surjective family of open
 immersions (`epi_of_restrict_openCover`, `epi_of_pullback_openCover`), the counterpart of
 [Monomorphisms](Monomorphisms.lean).
+
+[AffineChartRestrictionMap](AffineChartRestrictionMap.lean) and
+[AffineChartPullback](AffineChartPullback.lean) retain the original
+restriction-unit linear map and its geometric pullback coefficient.
+[PointLocalization](PointLocalization.lean) detects epimorphy on the
+original model from its actual stalk-spectrum pullback and the inverse
+image of the complement of a closed point. This is a criterion for
+arbitrary module maps; properness and Noetherianity are unnecessary.

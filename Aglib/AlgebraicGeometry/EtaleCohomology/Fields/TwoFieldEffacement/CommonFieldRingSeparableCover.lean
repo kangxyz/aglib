@@ -46,7 +46,7 @@ include hi₁ hi₂ in
 /-- Promote the actual ring map before instantiating finite-stage field carriers. -/
 theorem exists_commonScalar_ring_separable_cover_and_zero
     (x : Spec (.of k) ⟶ U) (hx : x ≫ p = 𝟙 _)
-    {V : Scheme.{u}} [CompactSpace V] [QuasiSeparatedSpace V] [ConnectedSpace V]
+    {V : Scheme.{u}} [ConnectedSpace V]
     (aV : V ⟶ U) (qV : V ⟶ Spec (.of F))
     (H : IsPullback aV qV p (Spec.algebraMap k F))
     (Y : FiniteEtale V) [IsGalois Y]

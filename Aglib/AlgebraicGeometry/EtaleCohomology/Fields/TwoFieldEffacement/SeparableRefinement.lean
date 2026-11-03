@@ -201,8 +201,7 @@ section Cover
 equivalence. The only point descent is across the given finite-pure fields. -/
 private theorem exists_pointed_galois_cover_of_baseChange_equivalence
     (k F : Type u) [Field k] [Field F] [Algebra k F] [IsPurelyInseparable k F]
-    {X X' : Scheme.{u}} [CompactSpace X] [QuasiSeparatedSpace X] [ConnectedSpace X]
-    [CompactSpace X'] [QuasiSeparatedSpace X'] [ConnectedSpace X']
+    {X X' : Scheme.{u}} [ConnectedSpace X] [ConnectedSpace X']
     (b : X' ⟶ X) [Surjective b] [(FiniteEtale.baseChange b).IsEquivalence]
     (x : Spec (.of k) ⟶ X) (Y : FiniteEtale X') [IsGalois Y]
     (z : Spec (.of F) ⟶ Y.obj.left)
@@ -261,6 +260,7 @@ variable (k F : Type u) [Field k] [Field F] [Algebra k F]
 local instance : ConnectedSpace (pullback p (Spec.algebraMap k F) : Scheme.{u}) :=
   GeometricallyConnected.connectedSpace_of_subsingleton (pullback.snd p (Spec.algebraMap k F))
 
+omit [CompactSpace X] in
 /-- The original finite-pure field pullback is a thin instance of the complete
 actual-cover descent. Its original reconstruction and point are unchanged. -/
 theorem exists_pointed_galois_cover_of_finitePure
@@ -397,6 +397,7 @@ local notation "a₀" => Spec.map (CommRingCat.ofHom
 local instance : ConnectedSpace (pullback p b : Scheme.{u}) :=
   GeometricallyConnected.connectedSpace_of_subsingleton (pullback.snd p b)
 
+omit [CompactSpace X] in
 /-- Simultaneous cover, mark, common-embedding and original class-zero descent
 to the actual separable source and coefficient subfields. The common square is
 constructed by `separableCommonProjection`, not assumed as a missing input.
@@ -429,6 +430,7 @@ theorem exists_separable_pointed_cover_and_composite_zero
     (separableCommonProjection k F L E a p)
     (separableCommonProjection_fst k F L E a p) A q c hc
 
+omit [CompactSpace X] in
 /-- Consume exactly the coefficient-image equation supplied by the original
 finite-Galois constant-class producer. Both the Galois-stage map f and the
 subsequent separable common-field map remain in the final literal composite. -/
@@ -612,6 +614,7 @@ theorem exists_cartesian_source_separable_cover_and_zero
   exact constantRestriction_zero_of_finitePure_cover_square E₀ E v Z Y e
     (pullback.snd p₀ a₀) (pullback.fst p₀ a₀) h (g ≫ (ι).hom ≫ i.inv) hg A q c hc
 
+omit [CompactSpace U] in
 /-- The original U_F cover is descended directly. No second cover Y' or
 base-change associator is introduced to transport its original zero. -/
 theorem exists_original_source_separable_cover_and_zero

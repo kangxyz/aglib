@@ -1,0 +1,3 @@
+# Actual same-ambient quotient chart uniqueness
+
+For two original quotient charts over the same Spec R→Y, native IsPullback.isoIsPullback supplies both source isomorphism maps. Spec.preimage and Spec.map_injective turn their original second-projection equations into equations of the ORIGINAL quotient ring maps. Testing zero on each quotient shows both ideal inclusions by Ideal.Quotient.eq_zero_iff_mem. Thus the ideals themselves agree, including nonreduced structure; no radical or support comparison appears. If i is mono, its cancellation identifies the original source maps, so proof irrelevance identifies the chart structures. No input equivalence/ideal equality is required. This is structural uniqueness only, not a derived comparison producer.

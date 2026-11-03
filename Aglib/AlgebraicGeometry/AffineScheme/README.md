@@ -41,3 +41,10 @@ base-changed affine charts and proves their factorization equation.
 
 [OpenChartIntersection](OpenChartIntersection.lean) identifies the actual affine chart of an affine open
 intersection with the original cartesian square of coordinate restrictions.
+
+[OpenChartFactor](OpenChartFactor.lean) defines the original affine ring map
+for an open chart `a : Spec R ⟶ X` and a map `c : Spec T ⟶ X` whose
+range lies in that chart. It is `Spec.preimage` of the native open-immersion
+lift and satisfies `Spec.map factor ≫ a = c`. It is unique; if `c` is
+also an open immersion, its Spec map is one too. No separation, finiteness
+or cohomology premise is used.

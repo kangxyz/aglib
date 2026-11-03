@@ -65,3 +65,17 @@ localizations and the regular-local domain theorem imply reducedness. The
 uses this implication on its actual finite fibre tensors. The result imposes
 no dimension, characteristic or field hypothesis beyond the regular-ring
 structure.
+
+[FormalCoordinatesTwo](FormalCoordinatesTwo.lean) constructs actual
+two-variable power-series coordinates on the original complete regular
+local ring of dimension two in prime characteristic. Constants,
+parameters and residue equations are retained, without perfectness or
+finite absolute `p`-rank.
+[RegularSequenceLocalization](RegularSequenceLocalization.lean) lifts
+regular parameters at an original prime and, over a Noetherian source,
+finds one principal neighborhood with the same length, weak regularity
+and exact extended prime ideal.
+[ThreeGenerators](ThreeGenerators.lean) derives cotangent rank three from
+nonregularity, dimension two and an actual three-generator bound over
+a Noetherian local ring. No domain, rationality or tangent-kernel
+hypothesis is added to that rank theorem.

@@ -22,7 +22,9 @@ open AlgebraicGeometry.Scheme.Modules
 universe u
 attribute [local instance] AlgebraicGeometry.Scheme.Modules.standardHasDerivedCategory
 namespace AlgebraicGeometry.Scheme.Cohomology.RelativeProjectiveTrace
-def affineTraceSectionsEquation_of_isSeparated
+/-- The original affine section equation, using the counit comparison supplied by
+quasi-compact separated geometry and the given quasicoherent coefficient. -/
+def affineTraceSectionsEquationOfIsSeparated
     {R : Type u} [CommRing R] {X : Scheme.{u}}
     (p : X ⟶ Spec (.of R)) [QuasiCompact p] [IsSeparated p]
     (M : X.Modules) [M.IsQuasicoherent] (N : (Spec (.of R)).Modules) (n : ℕ)
@@ -30,9 +32,11 @@ def affineTraceSectionsEquation_of_isSeparated
     (τ : Sheaf.H.{u + 1} (moduleAddSheaf X M) n → moduleSpecΓFunctor.obj N) : Prop := by
   letI := moduleResolutionPushforwardTildeCounit_quasiIso_of_isSeparated p (M)
     (injectiveResolution _)
-  exact affineTraceSectionsEquation_of_counit_quasiIso p M N n t τ
+  exact affineTraceSectionsEquationOfCounitQuasiIso p M N n t τ
 
-def traceModelSectionsEquation_of_isSeparated
+/-- The original model-section equation, with the separated affine counit witness
+for the same coefficient object. -/
+def traceModelSectionsEquationOfIsSeparated
     {A : Type u} [CommRing A] {P : Scheme.{u}}
     (r : P ⟶ Spec (.of A)) [QuasiCompact r] [IsSeparated r]
     (F : (Spec (.of A)).Modules ⥤ (Spec (.of A)).Modules)
@@ -43,7 +47,7 @@ def traceModelSectionsEquation_of_isSeparated
     (z : F.obj N ⟶ N) : Prop := by
   letI := moduleResolutionPushforwardTildeCounit_quasiIso_of_isSeparated r (U.obj N)
     (injectiveResolution _)
-  exact traceModelSectionsEquation_of_counit_quasiIso r F U n μ N τ z
+  exact traceModelSectionsEquationOfCounitQuasiIso r F U n μ N τ z
 
 theorem traceModelSections_of_standard_of_isSeparated
     {A : Type u} [CommRing A] {P : Scheme.{u}}
@@ -54,14 +58,16 @@ theorem traceModelSections_of_standard_of_isSeparated
     (N : (Spec (.of A)).Modules) [(U.obj N).IsQuasicoherent]
     (T : ((Scheme.Modules.pushforward r).rightDerived n).obj (U.obj N) ≅ N)
     (τ : Sheaf.H.{u + 1} (moduleAddSheaf P (U.obj N)) n → moduleSpecΓFunctor.obj N)
-    (hT : affineTraceSectionsEquation_of_isSeparated r (U.obj N) N n T.hom τ) :
-    traceModelSectionsEquation_of_isSeparated r F U n μ N τ
+    (hT : affineTraceSectionsEquationOfIsSeparated r (U.obj N) N n T.hom τ) :
+    traceModelSectionsEquationOfIsSeparated r F U n μ N τ
       (compositeTraceIso F U ((Scheme.Modules.pushforward r).rightDerived n) μ N T).hom := by
   let := moduleResolutionPushforwardTildeCounit_quasiIso_of_isSeparated r (U.obj N)
     (injectiveResolution _)
   exact traceModelSections_of_standard_of_counit_quasiIso r F U n μ N T τ hT
 
-def traceLocalSectionsEquation_of_isSeparated
+/-- The original local-section equation, using the separated affine counit witness
+for the coefficient obtained by the given functors. -/
+def traceLocalSectionsEquationOfIsSeparated
     {A : Type u} [CommRing A] {P : Scheme.{u}}
     (r : P ⟶ Spec (.of A)) [QuasiCompact r] [IsSeparated r]
     {C E F : Type*} [Category* C] [Category* E] [Category* F]
@@ -76,7 +82,7 @@ def traceLocalSectionsEquation_of_isSeparated
     (z : J.obj (F1.obj (F0.obj N)) ⟶ J.obj N) : Prop := by
   letI := moduleResolutionPushforwardTildeCounit_quasiIso_of_isSeparated r (U.obj (J.obj N))
     (injectiveResolution _)
-  exact traceLocalSectionsEquation_of_counit_quasiIso r F0 F1 J L V U η n μ N τ z
+  exact traceLocalSectionsEquationOfCounitQuasiIso r F0 F1 J L V U η n μ N τ z
 
 theorem traceLocalSections_of_model_of_isSeparated
     {A : Type u} [CommRing A] {P : Scheme.{u}}
@@ -91,8 +97,8 @@ theorem traceLocalSections_of_model_of_isSeparated
     (t : V.obj (L.obj (J.obj N)) ⟶ J.obj N)
     (τ : Sheaf.H.{u + 1} (moduleAddSheaf P (U.obj (J.obj N))) n →
       moduleSpecΓFunctor.obj (J.obj N))
-    (hT : traceModelSectionsEquation_of_isSeparated r (L ⋙ V) U n μ (J.obj N) τ t) :
-    traceLocalSectionsEquation_of_isSeparated r F0 F1 J L V U η n μ N τ
+    (hT : traceModelSectionsEquationOfIsSeparated r (L ⋙ V) U n μ (J.obj N) τ t) :
+    traceLocalSectionsEquationOfIsSeparated r F0 F1 J L V U η n μ N τ
       (traceLocalHomFactory F0 F1 J L V η N t) := by
   let := moduleResolutionPushforwardTildeCounit_quasiIso_of_isSeparated r (U.obj (J.obj N))
     (injectiveResolution _)

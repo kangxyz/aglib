@@ -116,11 +116,45 @@ The [rational-blowup guide](RationalSingularities/README.md#ordinary-rational-bl
 retains the full exceptional fibre, positive ideal twists and original
 power-section products under Nagata and universal H1-vanishing hypotheses.
 
-Supplied normalized chains, local point comparisons and the available
-cohomological reductions do not construct a resolving chain. The conditional
-Case-I/II chart and marking primitives in the
-[blowup algebra](../../RingTheory/Blowup/README.md#conditional-quadratic-charts-and-differential-images)
-do not complete RDP termination. Full coefficient-valued curve Serre duality,
-global integral trace, canonical restriction and the general singular-surface
-resolution theorem remain separate obligations. Arbitrary completion or
-Cohen-stalk comparison is not inferred from these interfaces.
+## Normalized domination and prescribed local chains
+
+[Normalized-point domination](Birational/NormalizedPointDomination.md)
+constructs a finite normalized closed-point blowup chain dominating an
+actual proper birational model over an integral normal Noetherian Nagata
+surface. The target need not be regular. Its terminal is normal; regularity
+is a separate conclusion when available.
+
+[Completion descent](Resolution/CompletionDescent.md) descends an entire
+supplied chain from the literal normal domain completion of a Noetherian
+local surface, retaining its length and both terminal projection equations.
+[Supported spreading](../Descent/LocalModification/SurfaceChain.md) extends
+a supplied proper local chain at a closed nongeneric point of a normal
+Noetherian surface, with the same length and the original stalk square,
+and leaves its complement unchanged. Neither theorem constructs its
+supplied local resolving chain.
+
+[Rationality under completion](RationalSingularities/Completion.md) transfers
+the universal original structure-H1 predicate to the literal normal domain
+completion. It uses actual chain domination, prescribed descent and the
+original flat cohomology comparison; arbitrary completed models are not
+assumed to algebraize.
+
+## Conditional resolving chains and remaining inputs
+
+The [initial-cone endpoint](Resolution/RationalDoublePoint/NormalizedResolution.md)
+constructs a regular terminal normalized-point chain with the original
+regular-open isomorphisms. It retains universal rationality, genuine full
+initial quadratic cones and an earlier complete-base map with finite
+residue map. Later cones, marked tails and finite-chain termination are
+constructed under those inputs. Deriving the initial cones from arbitrary
+rational or rational-Gorenstein data remains separate.
+
+The [cohomology family](../Cohomology/README.md) also contains coefficient-valued
+curve Serre, correctly scoped Cartier restriction and finite canonical
+comparisons. Generic differential, exterior, tensor, line and localization
+constructions belong to their lower mathematical owners; the
+[regular-pair one-pole family](../Blowup/Differentials/RegularPair/README.md)
+and its point canonical comparisons consume those same constructors.
+The global integral trace comparison, uniform all-model H1 bound and
+unconditional rational/Gorenstein and RES/RES-QE constructions remain open.
+A finite-Cohen-base wrapper is not applied to an arbitrary later stalk.

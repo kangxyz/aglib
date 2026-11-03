@@ -43,3 +43,10 @@ image of a proper map by that of its source.
 [FiniteFibreImage](FiniteFibreImage.lean) gives equality with the relative
 dimension for a nonempty smooth field scheme when the proper map has a finite
 actual point fibre; no separability premise is needed.
+
+[Finite](Finite.lean) bounds the dimension of the source of a finite
+morphism by that of its target, and bounds each actual source stalk.
+Neither scheme must be nonempty, reduced, Noetherian or finite-dimensional,
+and surjectivity is unnecessary. The proof uses the original affine
+section maps and prime incomparability; surface consumers reuse this
+general bound.

@@ -29,3 +29,11 @@ arrows. No lower bound or injective/projective availability is required.
 The homology of the original lower-truncation projection is also proved
 invertible in each retained degree. Relative Serre degree-zero comparison
 uses this lower interface.
+
+[InjectiveDimension](InjectiveDimension.lean) gives
+`Hom_D(X,N[0][t]) = 0` when original cohomology of `X` lies in `[a,b]`,
+native injective dimension of `N` is at most `d`, and `d < t+a`.
+The upper bound makes the layer reduction finite. It requires the selected
+native derived category without an additional representative complex or
+enough-injectives premise; object, morphism, Ext and derived-category
+universes remain independent.

@@ -29,9 +29,10 @@ namespace AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.OpenRecovery
 universe u
 
 /-- Every original normalization point over a fibre with base height at most
-one is etale. No coheight bound is imposed on its target point. -/
+one is etale. No coheight bound is imposed on its target point, and the original
+base need not be local. -/
 theorem etaleAt_of_smooth_baseOpen_baseHeight_le_one
-    (A : Type u) [CommRing A] [IsDomain A] [IsLocalRing A]
+    (A : Type u) [CommRing A] [IsDomain A]
     [IsNoetherianRing A] [IsIntegrallyClosed A]
     {X U : Scheme.{u}} [IsIntegral X] [IsIntegral U]
     (p : X ⟶ Spec (.of A)) [Smooth p] [GeometricallyConnected p]

@@ -36,3 +36,20 @@ specialization. The lower
 [birational functions theorem](../../Morphisms/Proper/BirationalFunctions.md)
 requires no Noetherianity, while its geometric-connectedness specialization
 retains local Noetherianity of the target.
+
+
+## Lower ownership of the original point-section maps
+
+The four generic stalk/residue restriction and appLE laws are now proved once
+in [PointSections](../../ResidueField/PointSections.md). Their original public
+names and headers in this namespace remain thin facades. The actual ordinary
+pushforward-stalk, fibre restriction, constants, and later fibre-section
+proofs here are unchanged; no properness or Noetherianity premise is added.
+The file-private appLE helpers remain with their later genuine consumers.
+The complete changed native owner passed as exact source `2ac8edc0` in
+own190: 6.9 s leaf, 10.6764 s total, 2568 jobs, exit 0 with no aggregate
+guard and the owned process group gone. Its precise lower PointSections
+eadd and the separate exact point-ideal adapter ResiduePoint 910a passed
+in own187 and own189. This is the actual full original consumer check,
+not a check of only the four thin facades. No affine regular-pair
+neighbourhood, blowup specialization, or global one-pole result is inferred.

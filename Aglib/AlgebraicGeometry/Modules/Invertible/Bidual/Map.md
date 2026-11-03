@@ -27,3 +27,10 @@ This family then extends that constructed map to the actual source
 double dual. It supplies the normalization equation, without assuming
 the geometric map or identifying either coefficient with a canonical
 module.
+
+`extendToBidualLine_eq` exposes the literal original constructor equation:
+the extension equals `doubleDualMap h` followed by the inverse of the original
+line bidual isomorphism. It is proved once by `rfl` at the same native objects;
+no quasicoherence, Noetherian hypothesis or replacement map is added. This
+new constructor API passed the exact normal native own082 check in 8.4
+seconds. Actual extension consumers retain their separate native gates.

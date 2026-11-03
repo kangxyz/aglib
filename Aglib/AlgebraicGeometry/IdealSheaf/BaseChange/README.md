@@ -57,3 +57,11 @@ morphism's ideal with the factor ideal via the original comparison. An empty
 source has unit ideal through the actual kernel inclusion; disjoint ranges give
 the corresponding restriction isomorphism. No closed-immersion hypothesis is
 needed.
+
+[StalkKernel](StalkKernel.lean) identifies the actual pulled ideal stalk
+with `O_Y,y ⊗[O_X,f(y)] I_f(y)` using the original stalk map.
+It proves the square with `pullbackIdealToUnit` and the original extended
+ideal inclusion. If one element of that stalk ideal has regular image,
+the kernel of this arrow, and of its actual image epimorphism, is precisely
+the torsion submodule. No replacement ideal or extra comparison square is
+supplied.

@@ -46,7 +46,7 @@ variable {R : Type u} [CommRing R] {X : Scheme.{u}}
 
 /-- Actual affine sections of the original higher direct image are unchanged original
 cohomology, with its actual structural ring action and original resolution classes. -/
-def moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated
+def moduleHigherDirectImageAffineSectionsLinearEquivOfIsSeparated
     (I : InjectiveResolution M) (n : ℕ) :
     let α := f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom
     letI := moduleCohomologyModuleOfHom X α M n

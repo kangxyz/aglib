@@ -146,7 +146,7 @@ def derivedPushforwardObjectIso (e : ι ≃ Fin (n + 1)) (I : InjectiveResolutio
     DerivedCategory.Plus.Q.obj D.sheafModelPlus ≅
       (Scheme.Modules.pushforward f).rightDerivedFunctorPlus.obj
         ((DerivedCategory.Plus.singleFunctor X.Modules 0).obj M) :=
-  moduleSpecDerivedPushforwardModelIso_of_isSeparated f I D.toPlus
+  moduleSpecDerivedPushforwardModelIsoOfIsSeparated f I D.toPlus
     (D.derivedGlobalSectionsIso hU hcover e I)
 
 omit [QuasiSeparated f] in
@@ -154,7 +154,7 @@ omit [QuasiSeparated f] in
 same original global-sections comparison. -/
 theorem derivedPushforwardObjectIso_eq (e : ι ≃ Fin (n + 1)) (I : InjectiveResolution M) :
     D.derivedPushforwardObjectIso hU hcover e I =
-      moduleSpecDerivedPushforwardModelIso_of_isSeparated f I D.toPlus
+      moduleSpecDerivedPushforwardModelIsoOfIsSeparated f I D.toPlus
         (D.derivedGlobalSectionsIso hU hcover e I) := rfl
 
 /-- The literal scalar extension of the same source model represents installed direct image
@@ -173,7 +173,7 @@ def baseChangeDerivedPushforwardObjectIso (e : ι ≃ Fin (n + 1))
   let p := pullback.fst f (Spec.map (CommRingCat.ofHom σ))
   let N := (Scheme.Modules.pullback p).obj M
   let : N.IsQuasicoherent := Scheme.Modules.quasicoherent_pullback p M
-  exact moduleSpecDerivedPushforwardModelIso_of_isSeparated
+  exact moduleSpecDerivedPushforwardModelIsoOfIsSeparated
     (pullback.snd f (Spec.map (CommRingCat.ofHom σ))) I (D.baseChangePlus σ)
     (D.baseChangeDerivedGlobalSectionsIso hU hcover σ e hflat I)
 

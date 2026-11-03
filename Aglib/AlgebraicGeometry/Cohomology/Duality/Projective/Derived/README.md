@@ -184,3 +184,10 @@ complexes, embedding independence and general proper duality remain separate.
 Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
 
 - [Coefficients](Coefficients.lean)
+
+[CoefficientsTopHom](CoefficientsTopHom.lean) exposes degree-zero
+bijectivity of the original coefficient Serre map using the actual
+[coefficient twist-section isomorphism](../../../Projective/TwistCohomology/Coefficients/Sections.lean).
+It retains the existing coefficient interface and its hypotheses; the
+section map is a load-bearing dependency of the normalization and
+coefficient-naturality equations.

@@ -37,14 +37,14 @@ theorem moduleHigherDirectImageAffineSectionsLinearEquiv_openRestriction_of_isSe
       (((Scheme.Modules.pushforward f).rightDerived n).obj M)) :
     letI : QuasiCompact b := MorphismProperty.of_isPullback h inferInstance
     letI : IsSeparated b := MorphismProperty.of_isPullback h inferInstance
-    moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated b
+    moduleHigherDirectImageAffineSectionsLinearEquivOfIsSeparated b
         ((Scheme.Modules.restrictFunctor a).obj M) J n
         ((moduleSpecΓFunctor (R := S)).map
           ((Scheme.Modules.higherDirectImageOpenRestrictionIso a b f (Spec.map φ) h n).hom.app M)
           ((((Scheme.Modules.restrictAdjunction (Spec.map φ)).unit.app
             (((Scheme.Modules.pushforward f).rightDerived n).obj M)).app ⊤) x)) =
       moduleCohomologyMapAlong a ((Scheme.Modules.restrictAdjunction a).unit.app M) n
-        (moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated f M I n x) := by
+        (moduleHigherDirectImageAffineSectionsLinearEquivOfIsSeparated f M I n x) := by
   let : QuasiCompact b := MorphismProperty.of_isPullback h inferInstance
   let : IsSeparated b := MorphismProperty.of_isPullback h inferInstance
   let := moduleResolutionPushforwardTildeCounit_quasiIso_of_isSeparated f M I

@@ -38,3 +38,10 @@ The consumer still owns proofs that its actual closed-pullback map is epi,
 that its target stalks have the indicated finite actions, and that the
 original map is epi off the image. These are explicit inputs, not generation
 or desired-epimorphism oracles hidden inside another model.
+
+The original module-level supplier
+`epi_of_extendScalars_of_ker_le_jacobson` is public for closed-point
+generation consumers. It requires a surjective original ring map whose
+kernel lies in the Jacobson radical and a finite target module, not a
+finite source. The existing quotient/adjunction/Nakayama proof is shared,
+rather than reconstructed by each geometric consumer.

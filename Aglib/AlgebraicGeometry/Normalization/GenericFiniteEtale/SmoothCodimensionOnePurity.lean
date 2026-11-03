@@ -11,7 +11,7 @@ public import Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.BaseLocal
 public import Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.FlatPreimmersionEtale
 public import Aglib.AlgebraicGeometry.Morphisms.Restrict.BaseOpen
 
-/-! # Original codimension-one purity over a normal local base
+/-! # Original codimension-one purity over a normal base
 
 Flatness bounds the original base prime's height by one. Its native localization
 is a field or DVR, where the unchanged cover is etale by the original tame
@@ -27,9 +27,10 @@ namespace AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.OpenRecovery
 universe u
 
 /-- The original normalization is etale at every point above a codimension-one
-point of the original smooth target, without a dimension bound on the base. -/
+point of the original smooth target, without a dimension bound on the base.
+The original base need not be local. -/
 theorem etaleAt_of_smooth_baseOpen_codimensionOne
-    (A : Type u) [CommRing A] [IsDomain A] [IsLocalRing A]
+    (A : Type u) [CommRing A] [IsDomain A]
     [IsNoetherianRing A] [IsIntegrallyClosed A]
     {X U : Scheme.{u}} [IsIntegral X] [IsIntegral U]
     (p : X ⟶ Spec (.of A)) [Smooth p] [GeometricallyConnected p]

@@ -1,0 +1,35 @@
+{
+  "state": "completed",
+  "command": [
+    "lake",
+    "env",
+    "/tmp/lean-ci-capped-toolchain-xtwtfo27/bin/lean",
+    "Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenCounit.lean",
+    "--setup",
+    ".lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/LocalModel/OpenCounit.setup.json"
+  ],
+  "cwd": "/workspace/scratch/375151ffceb3/surface-resolution-updated",
+  "pid": 11,
+  "pgid": 11,
+  "exit_code": 1,
+  "guard_failure": null,
+  "peak_rss_bytes": 7007059968,
+  "duration_seconds": 152.21389544900012,
+  "limits": {
+    "lean_memory_mb": 6000,
+    "rss_limit_mb": 7168,
+    "sample_seconds": 0.1,
+    "physical_memory_bytes": 10451427328,
+    "lean_threads": 1,
+    "max_active_lean": 1
+  },
+  "owned_group_gone": true,
+  "last_members": [
+    {
+      "pid": 11,
+      "rss_bytes": 0,
+      "executable": "lake",
+      "command_path": "lake"
+    }
+  ]
+}

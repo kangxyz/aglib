@@ -141,3 +141,14 @@ plane-point ideal with residue degree greater than one is a nonzero scalar
 times the square of an affine linear polynomial. The residue quotient and
 constant action are the original ones. No division by two is used. This
 supplies the nonsquare Case-I residue-degree argument over arbitrary fields.
+
+[DegreeOne/Equiv](DegreeOne/Equiv.lean) extends an actual degree-one
+linear equivalence to a polynomial algebra equivalence and preserves
+every original homogeneous degree. It works over a commutative semiring
+with independent coefficient and variable universes, without finite
+variables or a field hypothesis.
+[QuadraticDoublePoint](QuadraticDoublePoint.lean) gives the exact centred
+quadratic in the original evaluation-kernel square, retaining its
+quadratic coefficients in every characteristic. Its homogeneous
+principal-ideal comparison uses a supplied full kernel; it does not
+manufacture that kernel or a Hilbert function.

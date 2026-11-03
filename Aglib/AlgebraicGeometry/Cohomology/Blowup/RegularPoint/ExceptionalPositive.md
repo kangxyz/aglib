@@ -56,3 +56,34 @@ The current consumer is the corrected one-pole comparison
 formula. No other exceptional twists, canonical-module identification,
 Grauert--Riemenschneider vanishing, or pure-degree-p cohomology bound is
 asserted by this family.
+
+## The same rho with a finite locally free parent coefficient
+
+`exceptionalPositiveTensorRho` uses the original parent coefficient `E`, its
+actual pullback, and the same positive exceptional module and section. Its
+map is exactly the forward source tensor single unit, inverse original
+projection formula, the derived target tensor applied to the original rho,
+the inverse target tensor single unit, and the original target right unitor.
+Only the target tensor single unit needs an invertibility witness; there is
+no inverse to the source tensor single unit.
+
+`exceptionalPositiveTensorRho_unit` proves the complete original adjunction
+and positive-section insertion equation. It specializes the general section
+factorization from `ProjectionFormula/StructureUnit` and the original
+rho/delta inverse law. It assumes no desired coefficient square and repeats
+no exceptional-cohomology argument. The intended coefficient is the actual
+model differential line; an actual global one-pole map can then feed this
+rho into the existing proper Serre transpose. That map, its fixed-base
+normalization, and the finite-cover trace assembly are separate obligations.
+The original scheme module pullback is qualified, and the unit proof retains
+explicit endpoints for the same unitors, projection-formula component and
+delta/rho maps. Its cancellation uses the original category and functor laws.
+
+The whole owner at source SHA-256
+`8cec70f553b7994e0eb7275a653ddc6c11c3a6a161e442ec259aa0d7c216aa42`
+passed native `own168`: 64 seconds for the leaf, 73.290 seconds for the graph,
+exit 0, with no aggregate guard and the owned process group gone. This accepts
+the original coefficient-tensored rho construction and its complete unit law.
+It does not establish the global one-pole map, fixed-base canonical
+normalization, S1/F1 finite-cover trace assembly, a uniform trace-image scalar,
+or the final H1 theorem; those remain separate obligations.

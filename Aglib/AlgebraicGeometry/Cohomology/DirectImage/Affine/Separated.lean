@@ -40,7 +40,7 @@ variable {R : Type u} [CommRing R] {X : Scheme.{u}}
 
 /-- The actual higher direct image is tilde of homology of the original affine sections
 of the actual pushed-forward injective resolution. -/
-def moduleHigherDirectImageAffineIso_of_isSeparated (I : InjectiveResolution M) (n : ℕ) :
+def moduleHigherDirectImageAffineIsoOfIsSeparated (I : InjectiveResolution M) (n : ℕ) :
     ((Scheme.Modules.pushforward f).rightDerived n).obj M ≅
       tilde (((moduleSpecΓFunctor.mapHomologicalComplex (.up ℤ)).obj
         (((Scheme.Modules.pushforward f).mapHomologicalComplex (.up ℤ)).obj
@@ -57,7 +57,7 @@ theorem moduleHigherDirectImageAffineIso_of_isSeparated_hom_comp
     letI : QuasiIso (Scheme.Modules.Complex.tildeGlobalSectionsCounit
       (CommRingCat.of R) (.up ℤ) K) :=
       moduleResolutionPushforwardTildeCounit_quasiIso_of_isSeparated f M I
-    (moduleHigherDirectImageAffineIso_of_isSeparated f M I n).hom ≫
+    (moduleHigherDirectImageAffineIsoOfIsSeparated f M I n).hom ≫
         (Scheme.Modules.Complex.tildeGlobalSectionsHomologyIso
           (CommRingCat.of R) (.up ℤ) K (n : ℤ)).hom =
       (I.isoRightDerivedObjCochain (Scheme.Modules.pushforward f) n).hom :=
@@ -70,7 +70,7 @@ generation hypothesis. -/
 theorem moduleHigherDirectImageAffine_isQuasicoherent_of_isSeparated (n : ℕ) :
     (((Scheme.Modules.pushforward f).rightDerived n).obj M).IsQuasicoherent :=
   (SheafOfModules.isQuasicoherent (Spec (CommRingCat.of R)).ringCatSheaf).prop_of_iso
-    (moduleHigherDirectImageAffineIso_of_isSeparated f M (injectiveResolution M) n).symm
+    (moduleHigherDirectImageAffineIsoOfIsSeparated f M (injectiveResolution M) n).symm
     inferInstance
 
 

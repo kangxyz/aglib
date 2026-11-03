@@ -87,7 +87,7 @@ theorem projectiveProjection_higherDirectImage_isZero
     projectiveAffinePullbackCohomology_subsingleton_of_gt R ι
       (u ≫ a) v (j ≫ f) (H.paste_horiz h) n e N q hq
   let : Subsingleton (moduleSpecΓFunctor.obj G) :=
-    (moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated v N
+    (moduleHigherDirectImageAffineSectionsLinearEquivOfIsSeparated v N
       (injectiveResolution N) q).injective.subsingleton
   let : G.IsQuasicoherent :=
     moduleHigherDirectImageAffine_isQuasicoherent_of_isSeparated v N q

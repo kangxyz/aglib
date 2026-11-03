@@ -69,3 +69,10 @@ map to a normal Noetherian local surface domain.
 dual H1 and image membership under that unit to deduce scalar annihilation
 of the original H1. These retain the native coinduced action and unsigned
 boundary; the geometric section-trace comparison is a separate consumer.
+
+The [Hom-complex homothety family](HomComplex/README.md) retains the actual
+coinduced coefficient, native scalar endomorphism map and concentrated
+homology. Its projective-dimension bound uses a finite map from a regular
+local base, ambient Ext concentration and a native injective-dimension
+bound on the target ring. The canonical-module application supplies those
+inputs.

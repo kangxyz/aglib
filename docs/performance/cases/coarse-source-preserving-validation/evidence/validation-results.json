@@ -1,0 +1,152 @@
+{
+  "status": "passed",
+  "native_source_digest": "f83e4561558ff9a7aa384c05978446c03bee6655e816001ad1e0718b2548fdba",
+  "source_head_with_owned_repairs": "7c6687fa667f298ef00c75c8b69cd5c6b3ea47d0",
+  "plan_sha256": "6f850f21fd7180a7ece28fc5d1e2651606f76cabfb573e2fbbef87e0af00f66a",
+  "assigned_modules": 9357,
+  "checked_declarations": 130278,
+  "generated_import_only_entries": 15,
+  "enabled_declaration_rules": [
+    "checkType",
+    "defsWithUnderscore",
+    "deprecatedNoSince",
+    "docBlame",
+    "impossibleInstance",
+    "nonClassInstance",
+    "simpComm",
+    "simpNF",
+    "structureInType",
+    "subsetDotNotationLinter",
+    "synTaut",
+    "tacticAlt",
+    "tacticDocs",
+    "unusedArguments",
+    "unusedHavesSuffices"
+  ],
+  "enabled_environment_rules": [],
+  "lint_frontend_binary_sha256": "5780ba3ac09621d48b0717eef95fe2324091e19463307e53dd22082c8a7a5d61",
+  "auditor_binary_sha256": "03ce70017a1ee8848c74541b00b29b40e471527ff7484e389b3623850dd08743",
+  "approved_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "batches": [
+    {
+      "id": "batch-01",
+      "assigned_modules": 2396,
+      "checked_declarations": 28294,
+      "findings": 0,
+      "audit_ok": true,
+      "audit_declarations_including_imports": 61044,
+      "run": "remote-1bdbf01bf1dc4331b4a2858cc6f75bb0",
+      "source_digest": "176410f68cfa3594d81434b1e85921d98ee5ed53b65bc8a9fbeaa1f055f85a5d",
+      "reused_on_unchanged_input_closure": true,
+      "lint_report_sha256": "6e4f9b47c26b42a1399ff48d56a2a6eb8efcb9ef41203a8422ca5a9e9f9c83a3",
+      "audit_report_sha256": "2bb6b8123a82ff0337eb19d97841a4ca7ba0e28f216e4a05a91f0dcd18a3d03d"
+    },
+    {
+      "id": "batch-02",
+      "assigned_modules": 1088,
+      "checked_declarations": 8604,
+      "findings": 0,
+      "audit_ok": true,
+      "audit_declarations_including_imports": 50244,
+      "run": "remote-1bdbf01bf1dc4331b4a2858cc6f75bb0",
+      "source_digest": "176410f68cfa3594d81434b1e85921d98ee5ed53b65bc8a9fbeaa1f055f85a5d",
+      "reused_on_unchanged_input_closure": true,
+      "lint_report_sha256": "4e1da603aef0a731cf21517afbbc09a02aadca606b3c96b422d0bdfcbaf36894",
+      "audit_report_sha256": "6a603533736f350a41c3b929d91099d7839160ff1f17043194766a8ec0975cb3"
+    },
+    {
+      "id": "batch-03",
+      "assigned_modules": 236,
+      "checked_declarations": 1820,
+      "findings": 0,
+      "audit_ok": true,
+      "audit_declarations_including_imports": 50386,
+      "run": "remote-1bdbf01bf1dc4331b4a2858cc6f75bb0",
+      "source_digest": "176410f68cfa3594d81434b1e85921d98ee5ed53b65bc8a9fbeaa1f055f85a5d",
+      "reused_on_unchanged_input_closure": true,
+      "lint_report_sha256": "397550cf9e803ccd858e5ad3af3f71f5a025fc2f0cd6edc01f10844a932e9080",
+      "audit_report_sha256": "94d0071805ed08e4cb66d5214ac1ec904839c6329436325b4d3cb537a140ecb1"
+    },
+    {
+      "id": "batch-04",
+      "assigned_modules": 589,
+      "checked_declarations": 4667,
+      "findings": 0,
+      "audit_ok": true,
+      "audit_declarations_including_imports": 51484,
+      "run": "remote-1bdbf01bf1dc4331b4a2858cc6f75bb0",
+      "source_digest": "176410f68cfa3594d81434b1e85921d98ee5ed53b65bc8a9fbeaa1f055f85a5d",
+      "reused_on_unchanged_input_closure": true,
+      "lint_report_sha256": "ac30c7564c3168352e6c4db8d2cf02e7b335a67f31e2e2f6320473c674912110",
+      "audit_report_sha256": "5c8c96f185257204af6897b374dc18b9c59493c8f9e1affd1a82182cf579e92d"
+    },
+    {
+      "id": "batch-05",
+      "assigned_modules": 1414,
+      "checked_declarations": 33012,
+      "findings": 0,
+      "audit_ok": true,
+      "audit_declarations_including_imports": 81263,
+      "run": "remote-6946cf49733c4e27ab68ce7be33b7e91",
+      "source_digest": "f83e4561558ff9a7aa384c05978446c03bee6655e816001ad1e0718b2548fdba",
+      "reused_on_unchanged_input_closure": false,
+      "lint_report_sha256": "2962675d8b36d157be7dc5774147b9653cf70a0841434bd64cf53aab1bb460be",
+      "audit_report_sha256": "cbe9936d5997ecf2da9fbaddc576ab8018941d4731ce77c6a4e381dd4811dbb7"
+    },
+    {
+      "id": "batch-06",
+      "assigned_modules": 3471,
+      "checked_declarations": 51689,
+      "findings": 0,
+      "audit_ok": true,
+      "audit_declarations_including_imports": 65752,
+      "run": "remote-1bdbf01bf1dc4331b4a2858cc6f75bb0",
+      "source_digest": "176410f68cfa3594d81434b1e85921d98ee5ed53b65bc8a9fbeaa1f055f85a5d",
+      "reused_on_unchanged_input_closure": true,
+      "lint_report_sha256": "4ce5ff3ecb12c78e0b0dac29b5027abc4951798c5040277cc9388e909fe4eca9",
+      "audit_report_sha256": "e4ccf7c02f47e05a348bcc75382ed19c3ed49aa641aba9262d037ca2da3a2113"
+    },
+    {
+      "id": "batch-07",
+      "assigned_modules": 163,
+      "checked_declarations": 2192,
+      "findings": 0,
+      "audit_ok": true,
+      "audit_declarations_including_imports": 2192,
+      "run": "remote-1bdbf01bf1dc4331b4a2858cc6f75bb0",
+      "source_digest": "176410f68cfa3594d81434b1e85921d98ee5ed53b65bc8a9fbeaa1f055f85a5d",
+      "reused_on_unchanged_input_closure": true,
+      "lint_report_sha256": "eba28dbe4184bca78484b3d745cb8e23f5b0a02c5d8cbadc21cb86a6abca0d9d",
+      "audit_report_sha256": "1971c6a127d381095e928a5fefb7138499f71c5f560941f3cc7e8ed76e6070fe"
+    }
+  ],
+  "production_style_tests": {
+    "source_digest": "f83e4561558ff9a7aa384c05978446c03bee6655e816001ad1e0718b2548fdba",
+    "checks": [
+      {
+        "label": "production",
+        "exit_code": 0,
+        "seconds": 260.4503581672907,
+        "log": "/root/autodl-tmp/lean-build/logs/remote-f3f83ac4dcd84c599bffd2647fb5e434/production.log"
+      },
+      {
+        "label": "native-style",
+        "exit_code": 0,
+        "seconds": 8.709192141890526,
+        "log": "/root/autodl-tmp/lean-build/logs/remote-f3f83ac4dcd84c599bffd2647fb5e434/native-style.log"
+      },
+      {
+        "label": "native-tests",
+        "exit_code": 0,
+        "seconds": 5.994291618466377,
+        "log": "/root/autodl-tmp/lean-build/logs/remote-f3f83ac4dcd84c599bffd2647fb5e434/native-tests.log"
+      }
+    ],
+    "status": "passed"
+  },
+  "coverage": "Producer-module coverage across coarse private environments, with six successful unchanged input closures retained; not a pass of the original single whole-root command."
+}

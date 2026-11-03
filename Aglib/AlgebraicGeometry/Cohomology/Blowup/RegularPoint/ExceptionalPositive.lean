@@ -15,6 +15,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.QuasiCoherent
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.PushforwardComposition
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Modules.Isomorphism
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.DerivedStructure.Basic
+public import Aglib.AlgebraicGeometry.Cohomology.ProjectionFormula.StructureUnit
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.SingleUnit.ShortExact
 
 /-!
@@ -394,5 +395,107 @@ theorem exceptionalPositiveRho_delta (X : Scheme.{u}) [IsLocallyNoetherian X] [I
     exceptionalPositiveRho X hX x hx hd ≫ exceptionalPositiveDelta X x = 𝟙 _ := by
   let := exceptionalPositiveDelta_isIso X hX x hx hd
   exact IsIso.inv_hom_id (exceptionalPositiveDelta X x)
+
+/-- The same original rho with a finite locally free parent coefficient,
+through the native projection formula and original tensor single units. -/
+def exceptionalPositiveTensorRho (X : Scheme.{u}) [IsLocallyNoetherian X] [IsIntegral X]
+    (hX : RegularStalks X) (x : X) (hx : IsClosed ({x} : Set X))
+    (hd : ringKrullDim (X.presheaf.stalk x) = 2)
+    (E : X.Modules) [IsFiniteLocallyFree X E] :
+    (derivedPushforwardPlus (pointBlowdown X x)).obj
+        ((DerivedCategory.Plus.singleFunctor (pointBlowup X x).Modules 0).obj
+          ((moduleTensorLeftFunctor (pointBlowup X x)
+            ((Scheme.Modules.pullback (pointBlowdown X x)).obj E)).obj
+              (exceptionalPositiveModule X x))) ⟶
+      (DerivedCategory.Plus.singleFunctor X.Modules 0).obj E := by
+  let Y := pointBlowup X x
+  let b := pointBlowdown X x
+  let Q := exceptionalPositiveModule X x
+  let P := (Scheme.Modules.pullback b).obj E
+  let T := moduleTensorLeftFunctor X E
+  let S := moduleTensorLeftFunctor Y P
+  let H := pushforward b
+  let SX := DerivedCategory.Plus.singleFunctor X.Modules 0
+  let SY := DerivedCategory.Plus.singleFunctor Y.Modules 0
+  let A := T.rightDerivedSingleUnit (exceptionalPositiveStructureModule X)
+  let B := S.rightDerivedSingleUnit Q
+  let e := (derivedProjectionFormulaIso b E).app (SY.obj Q)
+  let R := (SheafOfModulesOfCommRing.tensorRightUnitIso X.sheaf).app E
+  let : IsIso T.rightDerivedFunctorPlusUnit := isIso_moduleTensorLeft_derivedUnit E
+  let : IsIso A := T.isIso_rightDerivedSingleUnit_of_isIso_unit _
+  exact H.rightDerivedFunctorPlus.map B ≫ e.inv ≫
+    T.rightDerivedFunctorPlus.map (exceptionalPositiveRho X hX x hx hd) ≫ inv A ≫ SX.map R.hom
+
+/-- The actual tensor-rho retains the original adjunction and positive-section
+unit equation, without an inverse to the source tensor single unit. -/
+@[reassoc]
+theorem exceptionalPositiveTensorRho_unit (X : Scheme.{u})
+    [IsLocallyNoetherian X] [IsIntegral X]
+    (hX : RegularStalks X) (x : X) (hx : IsClosed ({x} : Set X))
+    (hd : ringKrullDim (X.presheaf.stalk x) = 2)
+    (E : X.Modules) [IsFiniteLocallyFree X E] :
+    let Y := pointBlowup X x
+    let b := pointBlowdown X x
+    let P := (Scheme.Modules.pullback b).obj E
+    let Q := exceptionalPositiveModule X x
+    let RY : (moduleTensorLeftFunctor Y P).obj (exceptionalPositiveStructureModule Y) ≅ P :=
+      (SheafOfModulesOfCommRing.tensorRightUnitIso Y.sheaf).app P
+    let d : E ⟶ (pushforward b).obj ((moduleTensorLeftFunctor Y P).obj Q) :=
+      (pullbackPushforwardAdjunction b).unit.app E ≫
+      (pushforward b).map
+        (RY.inv ≫ tensorSheafMap Y (𝟙 P) (exceptionalPositiveSection X x))
+    (DerivedCategory.Plus.singleFunctor X.Modules 0).map d ≫
+        (pushforward b).rightDerivedSingleUnit ((moduleTensorLeftFunctor Y P).obj Q) ≫
+        exceptionalPositiveTensorRho X hX x hx hd E = 𝟙 _ := by
+  let Y := pointBlowup X x
+  let b := pointBlowdown X x
+  let Q := exceptionalPositiveModule X x
+  let P := (Scheme.Modules.pullback b).obj E
+  let T := moduleTensorLeftFunctor X E
+  let S := moduleTensorLeftFunctor Y P
+  let H := pushforward b
+  let SX := DerivedCategory.Plus.singleFunctor X.Modules 0
+  let SY := DerivedCategory.Plus.singleFunctor Y.Modules 0
+  let A := T.rightDerivedSingleUnit (exceptionalPositiveStructureModule X)
+  let B := S.rightDerivedSingleUnit Q
+  let e : T.rightDerivedFunctorPlus.obj (H.rightDerivedFunctorPlus.obj (SY.obj Q)) ≅
+      H.rightDerivedFunctorPlus.obj (S.rightDerivedFunctorPlus.obj (SY.obj Q)) :=
+    (derivedProjectionFormulaIso b E).app (SY.obj Q)
+  let R : T.obj (exceptionalPositiveStructureModule X) ≅ E :=
+    (SheafOfModulesOfCommRing.tensorRightUnitIso X.sheaf).app E
+  let RY : S.obj (exceptionalPositiveStructureModule Y) ≅ P :=
+    (SheafOfModulesOfCommRing.tensorRightUnitIso Y.sheaf).app P
+  let d : E ⟶ H.obj (S.obj Q) := (pullbackPushforwardAdjunction b).unit.app E ≫
+    H.map (RY.inv ≫ tensorSheafMap Y (𝟙 P) (exceptionalPositiveSection X x))
+  let δ : SX.obj (exceptionalPositiveStructureModule X) ⟶
+      H.rightDerivedFunctorPlus.obj (SY.obj Q) := exceptionalPositiveDelta X x
+  let ρ : H.rightDerivedFunctorPlus.obj (SY.obj Q) ⟶
+      SX.obj (exceptionalPositiveStructureModule X) := exceptionalPositiveRho X hX x hx hd
+  let : IsIso T.rightDerivedFunctorPlusUnit := isIso_moduleTensorLeft_derivedUnit E
+  let : IsIso A := T.isIso_rightDerivedSingleUnit_of_isIso_unit _
+  have hδρ : δ ≫ ρ = 𝟙 _ :=
+    (Category.assoc (moduleDerivedPushforwardUnit X (pointBlowdown X x))
+      ((derivedPushforwardPlus (pointBlowdown X x)).map
+        ((DerivedCategory.Plus.singleFunctor (pointBlowup X x).Modules 0).map
+          (exceptionalPositiveSection X x)))
+      (exceptionalPositiveRho X hX x hx hd)).trans
+        (exceptionalPositiveRho_unit X hX x hx hd)
+  have hNorm : A ≫ T.rightDerivedFunctorPlus.map δ ≫ e.hom =
+      SX.map R.hom ≫ SX.map d ≫ H.rightDerivedSingleUnit (S.obj Q) ≫
+        H.rightDerivedFunctorPlus.map B :=
+    derivedProjectionFormulaIso_sectionUnit b E Q (exceptionalPositiveSection X x)
+  change SX.map d ≫ H.rightDerivedSingleUnit (S.obj Q) ≫
+    (H.rightDerivedFunctorPlus.map B ≫ e.inv ≫ T.rightDerivedFunctorPlus.map ρ ≫
+      inv A ≫ SX.map R.hom) = 𝟙 _
+  calc
+    _ = SX.map R.inv ≫ (A ≫ T.rightDerivedFunctorPlus.map δ ≫ e.hom) ≫
+        e.inv ≫ T.rightDerivedFunctorPlus.map ρ ≫ inv A ≫ SX.map R.hom := by
+      rw [hNorm]
+      simp only [Category.assoc, R.map_inv_hom_id_assoc SX]
+    _ = _ := by
+      simp only [Category.assoc, Iso.hom_inv_id_assoc]
+      rw [← T.rightDerivedFunctorPlus.map_comp_assoc, hδρ,
+        T.rightDerivedFunctorPlus.map_id, Category.id_comp, IsIso.hom_inv_id_assoc,
+        ← SX.map_comp, Iso.inv_hom_id, SX.map_id]
 
 end AlgebraicGeometry.Scheme.Cohomology

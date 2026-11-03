@@ -25,3 +25,17 @@ replacement is required. Full Cech terms may have infinite bases; this does
 not assert finite-projective terms of the bounded model or K-flatness of
 the unbounded full Cech complex. The bounded flat model is the input for
 arbitrary-module tensor comparisons in relative projective Serre duality.
+
+[Coefficients/Model](Coefficients/Model.lean) tensors the original bounded
+flat twist model with an arbitrary base module. In the sharp range
+`-(n : ℤ) ≤ d` it gives the installed derived comparison and higher
+cohomology vanishing, without coefficient flatness or Noetherianity.
+[Coefficients/Sections](Coefficients/Sections.lean) retains the actual
+unit, augmentation and `moduleTensorTildeSectionsMap` normalization.
+Finite coordinates, the dimension equivalence and common geometric
+universe remain the original ones, including dimension zero.
+
+[The coefficient entry](Coefficients.md) reexports those same two providers
+and retains the original naturality of the finite tensor comparison, bottom
+inclusion and installed derived comparison in the coefficient module. These
+maps have one canonical implementation; the entry does not redeclare them.

@@ -35,7 +35,9 @@ universe u
 
 namespace AlgebraicGeometry.Scheme.Modules
 
-private theorem epi_of_extendScalars_of_ker_le_jacobson
+/-- Surjective scalar extension with kernel in the Jacobson radical detects
+epimorphy of the original module map when only its target is finite. -/
+theorem epi_of_extendScalars_of_ker_le_jacobson
     {R S : Type u} [CommRing R] [CommRing S] (r : R →+* S)
     (hr : Function.Surjective r) (hJ : RingHom.ker r ≤ (⊥ : Ideal R).jacobson)
     {M N : ModuleCat.{u} R} (p : M ⟶ N) [Module.Finite R N]

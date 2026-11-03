@@ -109,7 +109,7 @@ theorem affineHigherOpenSections_unit_of_counit_quasiIso
     (σ : R →+* A)
     [IsOpenImmersion i] [IsOpenImmersion (Spec.map (CommRingCat.ofHom σ))]
     (H : IsPullback i q p (Spec.map (CommRingCat.ofHom σ)))
-    (M : X.Modules) [M.IsQuasicoherent] (I : InjectiveResolution M)
+    (M : X.Modules) (I : InjectiveResolution M)
     (J : InjectiveResolution ((Modules.restrictFunctor i).obj M))
     [hI : QuasiIso (Scheme.Modules.Complex.tildeGlobalSectionsCounit
       (.of R) (.up ℤ)

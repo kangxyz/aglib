@@ -41,3 +41,10 @@ finite lower normalization and the original normalized-blowup comparison;
 neither is assumed. The supplied-chain consumer retains normal completion.
 No Nagata premise is added to this step, and no resolving upper chain or
 global descent capstone is constructed here.
+
+[LocalModification](LocalModification/README.md) globalizes a supplied
+proper normalized-point chain over an actual stalk of an integral normal
+Noetherian surface. It retains its length, literal stalk Cartesian square
+and unchanged complement. The projective consumer retains the original
+embedding and dimension data. Existence of the local resolving chain
+remains an input to this spreading construction.

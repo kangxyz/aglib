@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpen
-public import Aglib.AlgebraicGeometry.Cohomology.Restriction.Coefficients
+public import Aglib.AlgebraicGeometry.Cohomology.Restriction.CoefficientSquare
 public import Aglib.AlgebraicGeometry.Modules.Restriction.Unit
 
 /-!
@@ -101,7 +101,7 @@ theorem moduleOpenUnitNormalize_geometric (A : Scheme.{u}) (D : A.Opens) (n : �
             (structurePullbackMap D.ι) n).app (op D) x)) := by
   let M : A.Modules := SheafOfModules.unit A.ringCatSheaf
   let ε := (restrictUnitIso D.ι).hom
-  have hPost := moduleHPrimeOpenRestrictionAddEquiv_postcomp A D M ε n x
+  have hPost := moduleOpenRestrictionCoefficientSquare_apply A D M ε n x
   have hR := restrictUnitIso_hom_adjoint D.ι
   have hP := pullbackUnitIso_homEquiv D.ι
   rw [Adjunction.homEquiv_unit] at hR hP

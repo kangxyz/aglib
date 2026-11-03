@@ -1,0 +1,14 @@
+{
+  "id": "batch-03",
+  "assigned_modules": 236,
+  "exit_code": 0,
+  "seconds": 43.94238343834877,
+  "log": "/root/autodl-tmp/lean-build/logs/remote-1bdbf01bf1dc4331b4a2858cc6f75bb0/batch-03-lint.log",
+  "result": "/root/autodl-tmp/lean-build/logs/remote-1bdbf01bf1dc4331b4a2858cc6f75bb0/batch-03-lint.json",
+  "checkedModules": 236,
+  "checkedDeclarations": 1820,
+  "declarationFindings": 0,
+  "environmentFindings": 0,
+  "textFindings": 0,
+  "deferredFailed": false
+}

@@ -26,9 +26,10 @@ namespace AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.OpenRecovery
 universe u
 
 /-- The exact lower-dimensional induction statement gives etaleness at the
-original selected section point over the specified original base prime. -/
+original selected section point over the specified original base prime.
+The original base need not be local. -/
 theorem etaleAt_section_of_baseLocalization_dimension
-    (A : Type u) [CommRing A] [IsDomain A] [IsLocalRing A]
+    (A : Type u) [CommRing A] [IsDomain A]
     [IsNoetherianRing A] [IsIntegrallyClosed A]
     {X U : Scheme.{u}} [IsIntegral X] [IsIntegral U]
     (p : X ⟶ Spec (.of A)) [Smooth p] [GeometricallyConnected p]

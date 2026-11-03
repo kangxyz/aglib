@@ -122,7 +122,7 @@ theorem moduleCohomology_finite_of_finiteToProjectiveProduct
     (moduleSpecΓFunctor.mapIso
       (((Scheme.Modules.pushforward f).rightDerivedSingleHomologyIso j).app M).symm).toLinearEquiv
   exact Module.Finite.equiv (E.trans
-    (moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated f M
+    (moduleHigherDirectImageAffineSectionsLinearEquivOfIsSeparated f M
       (injectiveResolution M) j))
 
 end AlgebraicGeometry.Scheme.Cohomology

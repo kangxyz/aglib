@@ -15,7 +15,8 @@ public import Aglib.RingTheory.Nagata.CompleteLocal
 The complete reduced normalization theorem supplies finiteness over the
 original completion, without a dimension bound. Its native faithfully flat
 map descends finiteness to the original normalization in the supplied total
-quotient ring. The previous dimension-two interface is a thin specialization.
+quotient ring. The previous dimension-two theorem name is retained without
+that bound.
 -/
 
 @[expose] public noncomputable section
@@ -42,13 +43,10 @@ theorem finite_of_isReduced_completion
     finite_of_complete_local_reduced S (FractionRing S)
   exact finite_of_faithfullyFlat R S K (FractionRing S)
 
-/-- A Noetherian local ring of dimension at most two with reduced actual
-maximal-adic completion has finite literal normalization in its supplied
-total quotient ring. In particular an analytically unramified domain
-in this dimension range is N-1. -/
+/-- The earlier dimension-two interface follows from the general theorem,
+with no dimension bound required. -/
 theorem finite_of_isReduced_completion_of_dimLE_two
     (R : Type u) [CommRing R] [IsLocalRing R] [IsNoetherianRing R]
-    [Ring.KrullDimLE 2 R]
     (hred : IsReduced (AdicCompletion (maximalIdeal R) R))
     (K : Type w) [CommRing K] [Algebra R K] [IsFractionRing R K] :
     Module.Finite R (integralClosure R K) := by

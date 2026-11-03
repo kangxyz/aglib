@@ -36,8 +36,9 @@ of B. Prime residue degree supplies a residue class outside the image of
 coefficients through A → κ(A). This gives `B=A[z]+πB` for an actual source
 uniformizer π, and Nakayama again proves A[z]=B.
 
-For either root, use the native minimal-polynomial presentation of the given
-B. Its power-basis rank shows `natDegree(minpoly A z)=p`. The original equation
+For either root, use the shared lower `IsAdjoinRootMonic.ofPowerRelation`
+construction, which starts from the native minimal-polynomial presentation of B.
+Its power-basis rank shows `natDegree(minpoly A z)=p`. The original equation
 `z^p=a` makes this minimal polynomial divide `X^p-C a`; monicity and equal
 degree identify them. The resulting map is literally `aeval z`. Consequently
 `h.powerBasis` and `h.basis` are the original power bases, with generator z,
@@ -55,3 +56,11 @@ case and a unit with non-pth-power residue in the second. Those extra
 coefficient-classification corollaries are not yet separately exposed in the
 Lean module. They are not premises of its presentation or of the existing
 ring differential trace consumer.
+
+The former private power-relation constructor has been extracted once under
+`AdjoinRoot/PowerRelation`; both DVR branches and the field trace entrance use
+that same body and its root/map laws. No public DVR theorem telescope changed.
+The extracted constructor and this exact thin caller passed their native
+own-node checks in graph66 on 2026-10-31 (caller fa412ffe, 4.8 s), under normal
+caps. The containing graph later hit an unrelated aggregate RSS guard; no
+whole-graph completion is claimed.

@@ -80,7 +80,7 @@ theorem exists_generic_finiteGalois_coefficient_presentation
     [HasExt.{eG} (AbelianSheaf.{u, u + 1} (pullback e γ))]
     [∀ K : FiniteGaloisIntermediateField L (SeparableClosure L),
       HasExt.{eL} (AbelianSheaf.{u, u + 1} (pullback e₀ (Spec.algebraMap L K)))]
-    [HasColimitsOfSize.{u + 1, u + 1} AddCommGrpCat.{eG}] [UnivLE.{u + 1, eG}]
+    [UnivLE.{u + 1, eG}]
     (F : AbelianSheaf.{u, u + 1} (Spec (.of B)))
     (n : ℕ) (hn : 0 < n) (hF : n • 𝟙 F = 0)
     (q : ℕ) (c : Sheaf.H.{eX} ((inverseImage e).obj F) q) :

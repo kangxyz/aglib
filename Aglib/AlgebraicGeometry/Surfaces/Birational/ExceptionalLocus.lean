@@ -54,7 +54,9 @@ private theorem dimension_ne_one_of_subsingleton {A : Type u} [TopologicalSpace 
   rw [h] at hle
   exact (by decide : ¬ (1 : WithBot ℕ∞) ≤ 0) hle
 
-private theorem genericPoint_mem_targetIsomorphismLocus
+/-- A proper birational map to a normal integral scheme is an isomorphism
+over an open containing the actual target generic point. -/
+theorem genericPoint_mem_targetIsomorphismLocus
     {X Y : Scheme.{u}} [IsIntegral X] [IsIntegral Y] [IsLocallyNoetherian Y]
     (f : X ⟶ Y) [IsProper f] [IsDominant f]
     (hff : IsIso (CommRingCat.ofHom (functionFieldMap f))) (hY : NormalStalks Y) :
@@ -66,7 +68,9 @@ private theorem genericPoint_mem_targetIsomorphismLocus
       (genericPoint Y) (by rw [hzero]; exact zero_le_one)
   exact f.le_targetIsomorphismLocus U hU hηU
 
-private theorem contractedCurve_avoids_targetLocus
+/-- An actual contracted curve lies outside the inverse image of the
+target isomorphism locus of its original morphism. -/
+theorem contractedCurve_avoids_targetLocus
     {X Y : Scheme.{u}} (f : X ⟶ Y) (C : IrreducibleCloseds X)
     (hC : C ∈ contractedCurves f) :
     (C : Set X) ⊆ f ⁻¹' (f.targetIsomorphismLocus : Set Y)ᶜ := by
@@ -161,7 +165,9 @@ theorem contractedCurveCount_lt_comp_of_curve {X Y Z : Scheme.{u}} (f : X ⟶ Y)
     exact hnot (he.symm ▸ hC)
   simpa only [contractedCurveCount, Nat.card_coe_set_eq] using Set.ncard_lt_ncard hs hfin
 
-private theorem dimension_closure_point_eq_one
+/-- On an integral scheme of dimension at most two, the closure of a nonclosed,
+nongeneric point is a curve. This also identifies proper images in domination. -/
+theorem dimension_closure_point_eq_one
     {X : Scheme.{u}} [IsIntegral X] (hdX : topologicalKrullDim X ≤ 2)
     (x : X) (hx : ¬ IsClosed ({x} : Set X)) (hne : x ≠ genericPoint X) :
     topologicalKrullDim (closure ({x} : Set X)) = 1 := by

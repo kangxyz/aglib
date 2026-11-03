@@ -41,7 +41,7 @@ variable {R : Type u} [CommRing R] {X : Scheme.{u}}
 attribute [local instance] affineCoefficientDerived
 
 /-- Derived-single sections through the same original counit constructor. -/
-def moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_of_isSeparated
+def moduleDerivedPushforwardSingleAffineSectionsLinearEquivOfIsSeparated
     (M : X.Modules) [M.IsQuasicoherent]
     (I : InjectiveResolution M) (n : ℕ) :
     let α := f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom
@@ -58,8 +58,8 @@ def moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_of_isSeparated
 @[reassoc]
 theorem moduleHigherDirectImageAffineIso_hom_naturality_of_isSeparated (n : ℕ) :
     ((Scheme.Modules.pushforward f).rightDerived n).map v ≫
-        (moduleHigherDirectImageAffineIso_of_isSeparated f N J n).hom =
-      (moduleHigherDirectImageAffineIso_of_isSeparated f M I n).hom ≫
+        (moduleHigherDirectImageAffineIsoOfIsSeparated f N J n).hom =
+      (moduleHigherDirectImageAffineIsoOfIsSeparated f M I n).hom ≫
         (tilde.functor (CommRingCat.of R)).map
           (homologyMap ((moduleSpecΓFunctor.mapHomologicalComplex (.up ℤ)).map
             (((Scheme.Modules.pushforward f).mapHomologicalComplex (.up ℤ)).map φ.hom'))
@@ -71,11 +71,11 @@ theorem moduleHigherDirectImageAffineIso_hom_naturality_of_isSeparated (n : ℕ)
 /-- Naturality of the original comparison, using its original counit witness. -/
 theorem moduleHigherDirectImageAffineSectionsLinearEquiv_naturality_of_isSeparated (n : ℕ)
     (x : moduleSpecΓFunctor.obj (((Scheme.Modules.pushforward f).rightDerived n).obj M)) :
-    moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated f N J n
+    moduleHigherDirectImageAffineSectionsLinearEquivOfIsSeparated f N J n
         (moduleSpecΓFunctor.map (((Scheme.Modules.pushforward f).rightDerived n).map v) x) =
       moduleCohomologyMapOfHom X
         (f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom) v n
-        (moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated f M I n x) :=
+        (moduleHigherDirectImageAffineSectionsLinearEquivOfIsSeparated f M I n x) :=
   moduleHigherDirectImageAffineSectionsLinearEquiv_naturality_of_counit_quasiIso f I J
     (moduleResolutionPushforwardTildeCounit_quasiIso_of_isSeparated f M I)
     (moduleResolutionPushforwardTildeCounit_quasiIso_of_isSeparated f N J) n x
@@ -86,14 +86,14 @@ theorem moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_naturality_of_is
       ((DerivedCategory.Plus.homologyFunctor (Spec (CommRingCat.of R)).Modules (n : ℤ)).obj
         ((Scheme.Modules.pushforward f).rightDerivedFunctorPlus.obj
           ((DerivedCategory.Plus.singleFunctor X.Modules 0).obj M)))) :
-    moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_of_isSeparated f N J n
+    moduleDerivedPushforwardSingleAffineSectionsLinearEquivOfIsSeparated f N J n
         (moduleSpecΓFunctor.map
           ((DerivedCategory.Plus.homologyFunctor (Spec (CommRingCat.of R)).Modules (n : ℤ)).map
             ((Scheme.Modules.pushforward f).rightDerivedFunctorPlus.map
               ((DerivedCategory.Plus.singleFunctor X.Modules 0).map v))) x) =
       moduleCohomologyMapOfHom X
         (f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom) v n
-        (moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_of_isSeparated f M I n x) :=
+        (moduleDerivedPushforwardSingleAffineSectionsLinearEquivOfIsSeparated f M I n x) :=
   moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_naturality_of_counit_quasiIso f I J
     (moduleResolutionPushforwardTildeCounit_quasiIso_of_isSeparated f M I)
     (moduleResolutionPushforwardTildeCounit_quasiIso_of_isSeparated f N J) n x

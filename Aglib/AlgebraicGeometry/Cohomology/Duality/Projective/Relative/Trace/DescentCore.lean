@@ -49,7 +49,7 @@ variable {R A : Type u} [CommRing R] [CommRing A]
 trace imply the full native sheaf trace square. No particular coefficient
 functor or projective model occurs in the proof. -/
 theorem affineTraceRestriction_of_sections_of_counit_quasiIso
-    (M : X.Modules) [M.IsQuasicoherent] (M' : W.Modules) [M'.IsQuasicoherent]
+    (M : X.Modules) (M' : W.Modules)
     [hI : QuasiIso (Scheme.Modules.Complex.tildeGlobalSectionsCounit
       (.of R) (.up ℤ)
       (((Scheme.Modules.pushforward p).mapHomologicalComplex (.up ℤ)).obj
