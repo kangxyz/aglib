@@ -79,7 +79,9 @@ jobs:
           if test \"$ci_available_mb\" -le 0; then
           echo '::error::Physical RAM must exceed the 2048 MiB runner reserve.' >&2; exit 2; fi;
           ci_memory_mb=$CI_NATIVE_MEMORY_MIB;
-          if test \"${#ci_memory_mb}\" -gt \"${#ci_available_mb}\" ||
+          ci_memory_digits=$(printf '%s' \"$ci_memory_mb\" | wc -c);
+          ci_available_digits=$(printf '%s' \"$ci_available_mb\" | wc -c);
+          if test \"$ci_memory_digits\" -gt \"$ci_available_digits\" ||
           test \"$ci_memory_mb\" -gt \"$ci_available_mb\"; then ci_memory_mb=$ci_available_mb; fi;
           printf \"Native resources: group=%s MiB, Lake threads=%s, lint workers=%s, CPUs=%s\n\" \"$ci_memory_mb\" \"$CI_LAKE_THREADS\" \"$CI_LINT_WORKERS\" \"$(nproc)\";
           scope_dir=\"$RUNNER_TEMP/lean-ci-scopes/$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB\";

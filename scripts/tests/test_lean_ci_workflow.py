@@ -829,7 +829,9 @@ os.execv(args[index],args[index:])
                             'EXPECTED_LINT_WORKERS': environment.get('CI_LINT_WORKERS', ''),
                             'RUNNER_TEMP': str(self.root), 'GITHUB_RUN_ID': '123',
                             'GITHUB_RUN_ATTEMPT': '2', 'GITHUB_JOB': job})
-        result = subprocess.run(runner_arguments(shell.replace('{0}', str(self.script))),
+        # The runner applies .NET composite formatting before argument parsing.
+        # Python's formatter also rejects unescaped Bash parameter braces here.
+        result = subprocess.run(runner_arguments(shell.format(self.script)),
                                 cwd=self.root, env=environment, text=True, capture_output=True, timeout=5)
         return result, json.loads(trace.read_text()) if trace.exists() else None
 
