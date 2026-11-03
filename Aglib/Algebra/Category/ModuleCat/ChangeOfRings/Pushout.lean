@@ -61,8 +61,9 @@ theorem scalarExtensionPushoutIso_comp :
     letI : Algebra.IsPushout R T A C :=
       (Algebra.IsPushout.comp_iff R S A (S' := B) (T := T) (T' := C)).mpr inferInstance
     (scalarExtensionPushoutIso R T A C).hom =
-      (extendScalarsCompOfEq (algebraMap R S) (algebraMap S T) (algebraMap R T)
-        (IsScalarTower.algebraMap_eq R S T).symm).hom.app (ModuleCat.of R A) ≫
+      (eqToIso (congrArg (fun q : R →+* T => extendScalars q)
+        (IsScalarTower.algebraMap_eq R S T)) ≪≫
+        extendScalarsComp (algebraMap R S) (algebraMap S T)).hom.app (ModuleCat.of R A) ≫
       (extendScalars (algebraMap S T)).map (scalarExtensionPushoutIso R S A B).hom ≫
       (scalarExtensionPushoutIso S T B C).hom := by
   let : Algebra.IsPushout R T A C :=
@@ -74,7 +75,7 @@ theorem scalarExtensionPushoutIso_comp :
   have hRS := scalarExtensionPushoutIso_one_tmul R S A B a
   have hST := scalarExtensionPushoutIso_one_tmul S T B C (algebraMap A B a)
   have hRT := scalarExtensionPushoutIso_one_tmul R T A C a
-  have hc := extendScalarsCompOfEq_hom_app_one_tmul
+  have hc := extendScalarsComp_congr_hom_app_one_tmul
     (algebraMap R S) (algebraMap S T) (algebraMap R T)
     (IsScalarTower.algebraMap_eq R S T).symm (ModuleCat.of R A) a
   have hm := ExtendScalars.map_tmul (algebraMap S T) qRS.hom (1 : T)
@@ -95,8 +96,9 @@ theorem scalarExtensionPushoutIso_inv_comp :
     letI : Algebra.IsPushout R T A C :=
       (Algebra.IsPushout.comp_iff R S A (S' := B) (T := T) (T' := C)).mpr inferInstance
     (scalarExtensionPushoutIso R T A C).inv ≫
-      (extendScalarsCompOfEq (algebraMap R S) (algebraMap S T) (algebraMap R T)
-        (IsScalarTower.algebraMap_eq R S T).symm).hom.app (ModuleCat.of R A) =
+      (eqToIso (congrArg (fun q : R →+* T => extendScalars q)
+        (IsScalarTower.algebraMap_eq R S T)) ≪≫
+        extendScalarsComp (algebraMap R S) (algebraMap S T)).hom.app (ModuleCat.of R A) =
       (scalarExtensionPushoutIso S T B C).inv ≫
         (extendScalars (algebraMap S T)).map (scalarExtensionPushoutIso R S A B).inv := by
   let : Algebra.IsPushout R T A C :=
@@ -109,8 +111,9 @@ theorem scalarExtensionPushoutIso_inv_comp :
     (show (extendScalars (algebraMap R T)).obj (ModuleCat.of R A) ⟶
       (extendScalars (algebraMap S T)).obj
         ((extendScalars (algebraMap R S)).obj (ModuleCat.of R A)) from
-      (extendScalarsCompOfEq (algebraMap R S) (algebraMap S T) (algebraMap R T)
-        (IsScalarTower.algebraMap_eq R S T).symm).hom.app (ModuleCat.of R A))).symm
+      (eqToIso (congrArg (fun q : R →+* T => extendScalars q)
+        (IsScalarTower.algebraMap_eq R S T)) ≪≫
+        extendScalarsComp (algebraMap R S) (algebraMap S T)).hom.app (ModuleCat.of R A))).symm
 
 end Composition
 

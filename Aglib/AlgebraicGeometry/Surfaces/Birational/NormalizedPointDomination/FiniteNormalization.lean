@@ -9,6 +9,7 @@ public import Aglib.AlgebraicGeometry.Surfaces.Birational.NormalizedPointDominat
 public import Aglib.AlgebraicGeometry.Normalization.FunctionField
 public import Mathlib.AlgebraicGeometry.Noetherian
 public import Mathlib.AlgebraicGeometry.Morphisms.Proper
+public import Aglib.AlgebraicGeometry.Normalization.FunctionField.Finiteness
 
 /-!
 # Finite normalization of actual birational surface models

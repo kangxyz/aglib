@@ -520,7 +520,7 @@ theorem normalizedIdealSection_inclusion (hd : ringKrullDim A = 2)
     (a : IsLocalRing.maximalIdeal A) :
     normalizedIdealSection A hd a ≫ idealInclusion (normalizedExceptionalIdeal A hd).subschemeι =
       pullbackUnitEnd (nu A hd)
-        (pullbackUnitEnd (map A hd) (Scheme.Modules.affineMultiplication A (a : A))) := by
+        (pullbackUnitEnd (map A hd) (IdealFrames.affineMultiplication A (a : A))) := by
   let t := AffineCoordinates.tautologicalSection (datum A)
     (AffineCoordinates.idealSection A (IsLocalRing.maximalIdeal A) a)
   have hp := original_pullback_paste (Modules.pullback (nu A hd)) (pullbackUnitIso (nu A hd))
@@ -528,7 +528,7 @@ theorem normalizedIdealSection_inclusion (hd : ringKrullDim A = 2)
     (idealInclusion (normalizedExceptionalIdeal A hd).subschemeι)
     (normalizedIdealPullbackIso_inclusion A hd)
   have ht : t ≫ idealInclusion (exceptionalIdeal A hd).subschemeι =
-      pullbackUnitEnd (map A hd) (Scheme.Modules.affineMultiplication A (a : A)) :=
+      pullbackUnitEnd (map A hd) (IdealFrames.affineMultiplication A (a : A)) :=
     (AffineCoordinates.tautologicalSection_inclusion (datum A)
       (AffineCoordinates.idealSection A (IsLocalRing.maximalIdeal A) a)).trans
         (congrArg (pullbackUnitEnd (map A hd))
@@ -542,9 +542,9 @@ theorem normalizedIdealSection_scalar (hd : ringKrullDim A = 2)
       unitMul (normalization A hd) (coefficients A hd (a : A)) := by
   exact (normalizedIdealSection_inclusion A hd a).trans
     ((pullbackUnitEnd_comp (nu A hd) (map A hd)
-      (Scheme.Modules.affineMultiplication A (a : A))).symm.trans
+      (IdealFrames.affineMultiplication A (a : A))).symm.trans
       ((congrArg (pullbackUnitEnd (nu A hd ≫ map A hd))
-        (Scheme.Modules.affineMultiplication_eq_unitMul A (a : A))).trans
+        (IdealFrames.affineMultiplication_eq_unitMul A (a : A))).trans
         (original_pullback_unitMul (nu A hd ≫ map A hd) ((Scheme.ΓSpecIso (.of A)).inv (a : A)))))
 
 /-- The actual ideal of original scalars whose structural sections vanish on the full

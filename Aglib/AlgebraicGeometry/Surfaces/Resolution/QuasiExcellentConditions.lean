@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.Dimension.Finite
 public import Aglib.AlgebraicGeometry.Normalization.QuasiExcellent
 public import Aglib.AlgebraicGeometry.Surfaces.Resolution.RationalDoublePoint.ClosedSingularPoints
+public import Aglib.AlgebraicGeometry.Dimension.Finite.Stalk
 
 /-! # Quasi-excellent normalization conditions for surface resolution
 

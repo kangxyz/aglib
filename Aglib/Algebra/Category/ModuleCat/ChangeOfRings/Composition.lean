@@ -29,26 +29,20 @@ namespace ModuleCat
 
 variable {R S T : Type u} [CommRing R] [CommRing S] [CommRing T]
 
-/-- Native scalar-extension composition for a specified actual scalar
-triangle, using equality only to identify its composite ring map. -/
-def extendScalarsCompOfEq (φ : R →+* S) (ψ : S →+* T) (ρ : R →+* T)
-    (hρ : ψ.comp φ = ρ) : extendScalars ρ ≅ extendScalars φ ⋙ extendScalars ψ :=
-  eqToIso (congrArg (fun q : R →+* T ↦ extendScalars q) hρ.symm) ≪≫
-    extendScalarsComp φ ψ
-
-/-- At a reflexive scalar triangle, the original component is native scalar composition. -/
+/-- At a reflexive triangle, the actual equality transport is the native comparison. -/
 theorem extendScalarsCompOfEq_refl_hom_app (f : R →+* S) (g : S →+* T)
     (N : ModuleCat.{u} R) :
-    (extendScalarsCompOfEq f g (g.comp f) rfl).hom.app N =
+    ((eqToIso (congrArg (fun q : R →+* T => extendScalars q)
+        (rfl : g.comp f = g.comp f)) ≪≫ extendScalarsComp f g).hom.app N) =
       (extendScalarsComp f g).hom.app N := by
-  simp only [extendScalarsCompOfEq, eqToIso_refl, Iso.trans_hom,
-    Iso.refl_hom, Category.id_comp]
+  simp only [eqToIso_refl, Iso.trans_hom, Iso.refl_hom, Category.id_comp]
 
-/-- The original unit tensor is retained by the actual scalar triangle. -/
-theorem extendScalarsCompOfEq_hom_app_one_tmul
+/-- The native scalar comparison along the actual triangle preserves the unit tensor. -/
+theorem extendScalarsComp_congr_hom_app_one_tmul
     (φ : R →+* S) (ψ : S →+* T) (ρ : R →+* T)
     (hρ : ψ.comp φ = ρ) (M : ModuleCat.{u} R) (x : M) :
-    (extendScalarsCompOfEq φ ψ ρ hρ).hom.app M ((1 : T) ⊗ₜ[R,ρ] x) =
+    ((eqToIso (congrArg (fun q : R →+* T => extendScalars q) hρ.symm) ≪≫
+        extendScalarsComp φ ψ).hom.app M) ((1 : T) ⊗ₜ[R,ρ] x) =
       (1 : T) ⊗ₜ[S,ψ] ((1 : S) ⊗ₜ[R,φ] x) := by
   subst ρ
   exact extendScalarsComp_hom_app_one_tmul φ ψ M x

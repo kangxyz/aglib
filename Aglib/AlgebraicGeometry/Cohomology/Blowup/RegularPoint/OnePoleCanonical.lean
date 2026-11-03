@@ -14,6 +14,7 @@ public import Aglib.AlgebraicGeometry.Modules.ExteriorPower.Affine
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Bidual.Affine
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Locality
 public import Aglib.AlgebraicGeometry.Stalk.GenericPoint
+public import Aglib.AlgebraicGeometry.Stalk.GenericPoint.Dimension
 
 
 /-!

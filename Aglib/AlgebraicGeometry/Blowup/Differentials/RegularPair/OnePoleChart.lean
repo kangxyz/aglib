@@ -64,7 +64,7 @@ native dual evaluation, not by choosing a rational trivialization. -/
 def saturatedPairExceptionalPositiveFrame :
     SheafOfModules.unit (Spec (.of S)).ringCatSheaf ≅
       (saturatedPairExceptionalPositiveLine R x y).val :=
-  dualPullbackFrame c (centreIdealLine I) (chartFrame B a)
+  Scheme.Modules.Invertible.dualPullbackFrame c (centreIdealLine I) (chartFrame B a)
 
 /-- The actual local one-pole target keeps both original factors. -/
 def saturatedPairOnePoleLine : Invertible.LineBundle (Spec (.of S)) :=

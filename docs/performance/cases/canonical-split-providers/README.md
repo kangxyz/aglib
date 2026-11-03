@@ -57,3 +57,9 @@ shared providers and retain only its independent original laws, preserving
 the supplied models and actual maps. Continue the ordinary production-root
 build with compatible artifacts; that root exercises coexistence of the
 providers without adding a separate client or replay procedure.
+
+## Placement follow-up, 2026-11-03
+
+The earlier repair and its evidence above describe that historical source. A later invalidation review restored the original `Coefficients` parent byte-for-byte to pre-integration main `1b737dca122694a54850316097a7ee87ddcbaead`. The new Model and Sections modules are thin imports of that parent. The parent retains the 39 original named declarations and three naturality laws, with one canonical implementation. This reverses the earlier import direction and avoids changing the stable parent solely to introduce duplicate split providers.
+
+The candidate remains uncommitted; the earlier warm production retry does not establish its current build, lint, axiom audit, or shared-main invalidation cost. See the [placement follow-up](../../placement-edits-in-widely-imported-modules.md#surface-resolution-invalidation-follow-up-2026-11-03) for the compared graphs and pending checks.

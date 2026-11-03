@@ -7,6 +7,7 @@ module
 
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Quotient
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenTopClass.Source
+public import Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.RegularList.Sheaf.Localization.Quotient
 
 /-!
 # The original localized quotient source presentation

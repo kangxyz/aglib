@@ -107,28 +107,6 @@ theorem stalkBlowupProjection_isIso_stalkMap (X : Scheme.{u}) (x : X)
   let : Flat (X.fromSpecStalk x) := Scheme.fromSpecStalk_flat X x
   exact Scheme.Hom.isIso_stalkMap_of_flat_of_surjectiveOnStalks _ p
 
-/-- Regularity over the actual closed centre only needs regularity of its
-original local ring of dimension two, not regularity of the whole scheme. -/
-theorem regularLocalRing_pointBlowup_over_regularPoint
-    (Y : Scheme.{u}) (y : Y) (hy : IsClosed ({y} : Set Y))
-    [IsRegularLocalRing (Y.presheaf.stalk y)]
-    (hd : ringKrullDim (Y.presheaf.stalk y) = 2)
-    (z : (blowupDatum (Y.fromSpecResidueField y).ker).Y)
-    (hz : (blowupDatum (Y.fromSpecResidueField y).ker).map z = y) :
-    IsRegularLocalRing ((blowupDatum (Y.fromSpecResidueField y).ker).Y.presheaf.stalk z) := by
-  let B := blowupDatum (Y.fromSpecResidueField y).ker
-  have hlocal : RegularStalks (pullback B.map (Y.fromSpecStalk y)) :=
-    (regularStalks (Y.presheaf.stalk y) hd).of_isOpenImmersion (stalkBlowupIso Y y hy).inv
-  have hlift : z ∈ Set.range (pullback.fst B.map (Y.fromSpecStalk y)) := by
-    rw [Scheme.Pullback.range_fst]
-    exact ⟨closedPoint (Y.presheaf.stalk y), Scheme.fromSpecStalk_closedPoint.trans hz.symm⟩
-  obtain ⟨w, rfl⟩ := hlift
-  let : IsRegularLocalRing ((pullback B.map (Y.fromSpecStalk y)).presheaf.stalk w) := hlocal w
-  let : IsIso ((pullback.fst B.map (Y.fromSpecStalk y)).stalkMap w) :=
-    stalkBlowupProjection_isIso_stalkMap Y y w
-  exact IsRegularLocalRing.of_ringEquiv
-    (asIso ((pullback.fst B.map (Y.fromSpecStalk y)).stalkMap w)).commRingCatIsoToRingEquiv.symm
-
 /-- Blowing up an original closed point with two-dimensional regular local ring
 preserves regularity of all actual stalks of the original regular scheme. -/
 theorem regularStalks_pointBlowup (X : Scheme.{u})
@@ -140,9 +118,22 @@ theorem regularStalks_pointBlowup (X : Scheme.{u})
   let : IsRegularLocalRing R := hX x
   let : IsClosedImmersion (X.fromSpecResidueField x) :=
     isClosed_singleton_iff_isClosedImmersion.mp hx
+  have hlocal : Scheme.RegularStalks (pullback B.map (X.fromSpecStalk x)) :=
+    (regularStalks R hd).of_isOpenImmersion (stalkBlowupIso X x hx).inv
   intro z
   by_cases hz : B.map z = x
-  · exact regularLocalRing_pointBlowup_over_regularPoint X x hx hd z hz
+  · have hbase : B.map z ∈ Set.range (X.fromSpecStalk x) := by
+      rw [hz]
+      exact ⟨closedPoint R, Scheme.fromSpecStalk_closedPoint⟩
+    have hlift : z ∈ Set.range (pullback.fst B.map (X.fromSpecStalk x)) := by
+      rw [Scheme.Pullback.range_fst]
+      exact hbase
+    obtain ⟨p, rfl⟩ := hlift
+    let : IsRegularLocalRing ((pullback B.map (X.fromSpecStalk x)).presheaf.stalk p) := hlocal p
+    let : IsIso ((pullback.fst B.map (X.fromSpecStalk x)).stalkMap p) :=
+      stalkBlowupProjection_isIso_stalkMap X x p
+    exact IsRegularLocalRing.of_ringEquiv
+      (asIso ((pullback.fst B.map (X.fromSpecStalk x)).stalkMap p)).commRingCatIsoToRingEquiv.symm
   · have haway : B.map z ∉ Set.range (X.fromSpecResidueField x) := by
       rw [Scheme.range_fromSpecResidueField]
       exact hz

@@ -50,7 +50,7 @@ theorem dualPullbackFrame_transpose_coordinate {X Y : Scheme.{u}}
     (e : SheafOfModules.unit X.ringCatSheaf ≅ (pullback f).obj L.val)
     (φ : L.val ⟶ SheafOfModules.unit Y.ringCatSheaf) :
     ((pullbackUnitIso f).inv ≫ (pullback f).map (InternalHom.transpose Y φ)) ≫
-        (dualPullbackFrame f L e).inv =
+        (Scheme.Modules.Invertible.dualPullbackFrame f L e).inv =
       e.hom ≫ (pullback f).map φ ≫ (pullbackUnitIso f).hom := by
   let s := (pullbackUnitIso f).inv ≫ (pullback f).map (InternalHom.transpose Y φ)
   let D := (pullback f).obj (dualLineBundle Y L).val

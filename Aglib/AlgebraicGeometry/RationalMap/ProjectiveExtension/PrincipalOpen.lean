@@ -73,10 +73,10 @@ coordinate under the actual localization ring map. -/
 theorem principalCoordinateLift_scalar (i : Option I) :
     affineRestrictedScalar A (principalHomogeneousCoordinates f n a)
       (principalCoordinateLift A f n a) i =
-    AlgebraicGeometry.Scheme.Modules.affineMultiplication (Localization.Away f)
+    Blowup.IdealFrames.affineMultiplication (Localization.Away f)
       (algebraMap A (Localization.Away f) (principalHomogeneousCoordinates f n a i)) := by
   exact (congrArg (fun q : Spec (.of (Localization.Away f)) ⟶ Spec (.of A) ↦
-    pullbackUnitEnd q (AlgebraicGeometry.Scheme.Modules.affineMultiplication A
+    pullbackUnitEnd q (Blowup.IdealFrames.affineMultiplication A
       (principalHomogeneousCoordinates f n a i)))
     (principalCoordinateLift_map A f n a)).trans
       (pullbackUnitEnd_affine (algebraMap A (Localization.Away f)) _)
@@ -85,7 +85,7 @@ variable {S : Type u} [CommRing S]
 
 /-- The original affine tuple, with its distinguished coordinate exactly one. -/
 def affineTupleSection (s : I → S) (i : Option I) :=
-  AlgebraicGeometry.Scheme.Modules.affineMultiplication S (Option.elim i 1 s)
+  Blowup.IdealFrames.affineMultiplication S (Option.elim i 1 s)
 
 instance affineTupleSection_epi (s : I → S) :
     Epi (Sigma.desc (affineTupleSection s)) := by
@@ -93,7 +93,7 @@ instance affineTupleSection_epi (s : I → S) :
       Sigma.desc (affineTupleSection s) = 𝟙 _ := by
     rw [Sigma.ι_comp_desc]
     simp only [affineTupleSection, Option.elim_none,
-      AlgebraicGeometry.Scheme.Modules.affineMultiplication_eq_unitMul, map_one, unitMul_one]
+      Blowup.IdealFrames.affineMultiplication_eq_unitMul, map_one, unitMul_one]
   exact epi_of_epi_fac h
 
 variable {R : Type u} [CommRing R] (p : Spec (.of A) ⟶ Spec (.of R))
@@ -137,9 +137,9 @@ theorem principalCoordinateBlowupMap_agrees (s : I → Localization.Away f)
   change affineTupleSection s i ≫ unitMul _
     ((Scheme.ΓSpecIso (.of (Localization.Away f))).inv (↑d)) =
       affineRestrictedScalar A v j i
-  rw [← AlgebraicGeometry.Scheme.Modules.affineMultiplication_eq_unitMul,
+  rw [← Blowup.IdealFrames.affineMultiplication_eq_unitMul,
     principalCoordinateLift_scalar]
-  rw [affineTupleSection, AlgebraicGeometry.Scheme.Modules.affineMultiplication_comp, h i]
+  rw [affineTupleSection, Blowup.IdealFrames.affineMultiplication_comp, h i]
   congr 1
   rw [show (↑d : Localization.Away f) = algebraMap A (Localization.Away f) f ^ n from
     IsUnit.unit_spec _]

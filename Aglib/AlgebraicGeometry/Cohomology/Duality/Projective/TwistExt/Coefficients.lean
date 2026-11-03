@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Cohomology.Projective.TwistCohomology.Coefficients.Model
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.TwistCohomology.Coefficients
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.TwistExt.Linear
 
 /-!

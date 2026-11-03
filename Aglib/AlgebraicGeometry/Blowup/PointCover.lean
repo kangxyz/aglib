@@ -11,6 +11,7 @@ public import Aglib.AlgebraicGeometry.Blowup.Integral
 public import Aglib.AlgebraicGeometry.Limits.Range
 public import Aglib.AlgebraicGeometry.Stalk.GenericPoint
 public import Mathlib.AlgebraicGeometry.Cover.Open
+public import Aglib.AlgebraicGeometry.Stalk.GenericPoint.Dimension
 
 /-!
 # A closed-point blowup cover on the original canonical affine model

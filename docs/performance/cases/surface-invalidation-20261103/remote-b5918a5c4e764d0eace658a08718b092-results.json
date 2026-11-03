@@ -1,0 +1,46 @@
+{
+  "source_digest": "aebfc416d1eead38f6cf8f313c735cae4ce0d4a5610b72e8ab7ebd377e55c92e",
+  "status": "passed",
+  "checks": [
+    {
+      "label": "generated-entry",
+      "exit_code": 0,
+      "seconds": 1.6677050739526749,
+      "log": "/root/autodl-tmp/lean-build/logs/remote-b5918a5c4e764d0eace658a08718b092/generated-entry.log"
+    },
+    {
+      "label": "text-style",
+      "exit_code": 0,
+      "seconds": 8.356508255004883,
+      "log": "/root/autodl-tmp/lean-build/logs/remote-b5918a5c4e764d0eace658a08718b092/text-style.log"
+    },
+    {
+      "label": "in-package-tests",
+      "exit_code": 0,
+      "seconds": 3.5460048764944077,
+      "log": "/root/autodl-tmp/lean-build/logs/remote-b5918a5c4e764d0eace658a08718b092/in-package-tests.log"
+    },
+    {
+      "label": "batch-lint",
+      "exit_code": 0,
+      "seconds": 39.31249515712261,
+      "log": "/root/autodl-tmp/lean-build/logs/remote-b5918a5c4e764d0eace658a08718b092/batch-lint.log"
+    },
+    {
+      "label": "axioms",
+      "exit_code": 0,
+      "seconds": 22.12732034921646,
+      "log": "/root/autodl-tmp/lean-build/logs/remote-b5918a5c4e764d0eace658a08718b092/axioms.log"
+    }
+  ],
+  "test_modules": [
+    "AglibTest.AlgebraicGeometry.Modules.QuasiCoherent.Affine.TildePullback",
+    "AglibTest.ProperBirationalDVR",
+    "AglibTest.AffineBlowupUniversalProperty",
+    "AglibTest.BlowupFlatBaseChange",
+    "AglibTest.DenseOpenNormalization",
+    "AglibTest.CoefficientUnit"
+  ],
+  "producer_batch_modules": 478,
+  "batch_sha256": "3fcd9f62daad85bcae8af7cfaf6e43aec43a270ad4326472498f608b84a8c369"
+}

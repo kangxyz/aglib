@@ -56,9 +56,9 @@ private theorem pullbackSection_precomp_unit {X Y : Scheme.{u}} (f : X ⟶ Y)
 private theorem pullbackUnitEnd_affineMultiplication {S T : Type u}
     [CommRing S] [CommRing T] (φ : S →+* T) (s : S) :
     pullbackUnitEnd (Spec.map (CommRingCat.ofHom φ))
-        (Scheme.Modules.affineMultiplication S s) =
-      Scheme.Modules.affineMultiplication T (φ s) := by
-  rw [pullbackUnitEnd, Scheme.Modules.affineMultiplication_pullback, Iso.inv_hom_id_assoc]
+        (IdealFrames.affineMultiplication S s) =
+      IdealFrames.affineMultiplication T (φ s) := by
+  rw [pullbackUnitEnd, IdealFrames.affineMultiplication_pullback, Iso.inv_hom_id_assoc]
 
 section Tautological
 
@@ -116,7 +116,7 @@ def idealSection (b : I) :
 @[reassoc]
 theorem idealSection_inclusion (b : I) :
     idealSection A I b ≫ idealInclusion (affineCenter A I).subschemeι =
-      Scheme.Modules.affineMultiplication A (b : A) := by
+      IdealFrames.affineMultiplication A (b : A) := by
   let q := Spec.map (CommRingCat.ofHom (Ideal.Quotient.mk I))
   let : IsClosedImmersion q :=
     IsClosedImmersion.spec_of_surjective _ Ideal.Quotient.mk_surjective
@@ -164,11 +164,11 @@ theorem chartSection_inclusion (a b : I) :
     chartSection B a b ≫ (Modules.pullback (IdealFrames.chartMap B a)).map
         (idealInclusion (IdealFrames.centreι B)) ≫
         (pullbackUnitIso (IdealFrames.chartMap B a)).hom =
-      Scheme.Modules.affineMultiplication (affineBlowupAlgebra A I a)
+      IdealFrames.affineMultiplication (affineBlowupAlgebra A I a)
         (algebraMap A (affineBlowupAlgebra A I a) (b : A)) := by
   have hs : tautologicalSection B (idealSection A I b) ≫
       idealInclusion (IdealFrames.centreι B) =
-        pullbackUnitEnd B.map (Scheme.Modules.affineMultiplication A (b : A)) :=
+        pullbackUnitEnd B.map (IdealFrames.affineMultiplication A (b : A)) :=
     (tautologicalSection_inclusion B (idealSection A I b)).trans
       (congrArg (pullbackUnitEnd B.map) (idealSection_inclusion A I b))
   have hc : IdealFrames.chartMap B a ≫ B.map = affineChartMap A I a :=
@@ -188,7 +188,7 @@ theorem ratio_mul_denominator (a b : I) :
 The only cancelled ideal inclusion is pulled through the original open immersion. -/
 theorem chartSection_eq_ratio (a b : I) :
     chartSection B a b =
-      Scheme.Modules.affineMultiplication (affineBlowupAlgebra A I a) (ratio A I a b) ≫
+      IdealFrames.affineMultiplication (affineBlowupAlgebra A I a) (ratio A I a b) ≫
         (IdealFrames.chartFrame B a).hom := by
   let : IsOpenImmersion (IdealFrames.chartMap B a) := (affineAtlas B).openImmersion a
   let : Mono ((Modules.pullback (IdealFrames.chartMap B a)).map
@@ -199,12 +199,12 @@ theorem chartSection_eq_ratio (a b : I) :
   apply (cancel_mono (pullbackUnitIso (IdealFrames.chartMap B a)).hom).mp
   simp only [Category.assoc]
   rw [chartSection_inclusion, IdealFrames.chartFrame_inclusion]
-  change Scheme.Modules.affineMultiplication (affineBlowupAlgebra A I a)
+  change IdealFrames.affineMultiplication (affineBlowupAlgebra A I a)
       (algebraMap A (affineBlowupAlgebra A I a) (b : A)) =
-    Scheme.Modules.affineMultiplication (affineBlowupAlgebra A I a) (ratio A I a b) ≫
-      Scheme.Modules.affineMultiplication (affineBlowupAlgebra A I a)
+    IdealFrames.affineMultiplication (affineBlowupAlgebra A I a) (ratio A I a b) ≫
+      IdealFrames.affineMultiplication (affineBlowupAlgebra A I a)
         (algebraMap A (affineBlowupAlgebra A I a) (a : A))
-  rw [Scheme.Modules.affineMultiplication_comp, ratio_mul_denominator]
+  rw [IdealFrames.affineMultiplication_comp, ratio_mul_denominator]
 
 /-- The same original quotient section pulled through an arbitrary further affine map. -/
 def chartSectionAfterMap (a b : I) (T : Type u) [CommRing T]
@@ -221,7 +221,7 @@ No ideal inclusion after this scalar change is cancelled. -/
 theorem chartSectionAfterMap_eq_ratio (a b : I) (T : Type u) [CommRing T]
     (φ : affineBlowupAlgebra A I a →+* T) :
     chartSectionAfterMap B a b T φ =
-      Scheme.Modules.affineMultiplication T (φ (ratio A I a b)) ≫
+      IdealFrames.affineMultiplication T (φ (ratio A I a b)) ≫
         (IdealFrames.chartFrameAfterMap B a T φ).hom := by
   rw [chartSectionAfterMap, chartSection_eq_ratio, pullbackSection_precomp_unit,
     pullbackUnitEnd_affineMultiplication]

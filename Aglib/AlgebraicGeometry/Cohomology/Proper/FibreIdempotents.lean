@@ -7,7 +7,6 @@ module
 
 public import Mathlib.AlgebraicGeometry.Fiber
 public import Mathlib.Topology.Sheaves.Stalks
-public import Aglib.AlgebraicGeometry.ResidueField.PointSections
 
 /-!
 # The ordinary pushforward-stalk map to actual fibre sections
@@ -105,25 +104,43 @@ private theorem appLE_congr_hom {A B : Scheme.{u}} (g h : A ⟶ B) (heq : g = h)
 /-- Every neighborhood of a point pulls back to the whole spectrum of its actual stalk. -/
 theorem stalkRestriction_le (U : Y.Opens) (hy : y ∈ U) :
     ⊤ ≤ (Y.fromSpecStalk y) ⁻¹ᵁ U :=
-  AlgebraicGeometry.Scheme.stalkRestriction_le y U hy
+  (Scheme.preimage_eq_top_of_closedPoint_mem (Y.fromSpecStalk y)
+    (by simpa only [Scheme.fromSpecStalk_closedPoint] using hy)).ge
 
 /-- The original stalk-point section map is the actual germ followed by the Spec comparison. -/
 theorem stalkPoint_appLE (U : Y.Opens) (hy : y ∈ U) :
     (Y.fromSpecStalk y).appLE U ⊤ (stalkRestriction_le y U hy) =
-      Y.presheaf.germ U y hy ≫ (Scheme.ΓSpecIso (Y.presheaf.stalk y)).inv :=
-  AlgebraicGeometry.Scheme.stalkPoint_appLE y U hy
+      Y.presheaf.germ U y hy ≫ (Scheme.ΓSpecIso (Y.presheaf.stalk y)).inv := by
+  rw [Scheme.Hom.appLE, Scheme.fromSpecStalk_app hy, Category.assoc, Category.assoc,
+    ← Functor.map_comp]
+  have hmap : ((homOfLE le_top).op ≫ (homOfLE (stalkRestriction_le y U hy)).op :
+      (op ⊤ : (Spec (Y.presheaf.stalk y)).Opensᵒᵖ) ⟶ op ⊤) = 𝟙 _ :=
+    Subsingleton.elim _ _
+  rw [hmap, CategoryTheory.Functor.map_id, Category.comp_id]
 
 /-- Every neighborhood pulls back to the whole spectrum of the actual residue field. -/
 theorem residueRestriction_le (U : Y.Opens) (hy : y ∈ U) :
-    ⊤ ≤ (Y.fromSpecResidueField y) ⁻¹ᵁ U :=
-  AlgebraicGeometry.Scheme.residueRestriction_le y U hy
+    ⊤ ≤ (Y.fromSpecResidueField y) ⁻¹ᵁ U := by
+  intro z _
+  change Y.fromSpecResidueField y z ∈ U
+  rw [Scheme.fromSpecResidueField_apply]
+  exact hy
 
 /-- Actual residue-point restriction is the germ, residue map and original Spec comparison. -/
 theorem residuePoint_appLE (U : Y.Opens) (hy : y ∈ U) :
     (Y.fromSpecResidueField y).appLE U ⊤ (residueRestriction_le y U hy) =
       Y.presheaf.germ U y hy ≫ Y.residue y ≫
-        (Scheme.ΓSpecIso (Y.residueField y)).inv :=
-  AlgebraicGeometry.Scheme.residuePoint_appLE y U hy
+        (Scheme.ΓSpecIso (Y.residueField y)).inv := by
+  have hcomp : (Y.fromSpecResidueField y).appLE U ⊤ (residueRestriction_le y U hy) =
+      (Y.fromSpecStalk y).appLE U ⊤ (stalkRestriction_le y U hy) ≫
+        (Spec.map (Y.residue y)).appTop := by
+    change (Spec.map (Y.residue y) ≫ Y.fromSpecStalk y).appLE U ⊤ _ = _
+    exact (Scheme.Hom.appLE_comp_appLE (Spec.map (Y.residue y)) (Y.fromSpecStalk y)
+      U ⊤ ⊤ (stalkRestriction_le y U hy) (by simp)).symm.trans
+        (congrArg (fun k => (Y.fromSpecStalk y).appLE U ⊤
+          (stalkRestriction_le y U hy) ≫ k)
+            (appLE_top (Spec.map (Y.residue y)) (by simp)))
+  rw [hcomp, stalkPoint_appLE, Category.assoc, ← Scheme.ΓSpecIso_inv_naturality]
 
 /-- The literal residue-field constants on the actual fibre. -/
 def fibreConstants : Y.residueField y ⟶ Γ(f.fiber y, ⊤) :=

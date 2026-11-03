@@ -47,11 +47,11 @@ private theorem retained_line_frame_coefficient {X Y : Scheme.{u}}
       SheafOfModules.unit X.ringCatSheaf)
     (hr : e.hom ≫ (pullback f).map φ ≫ (pullbackUnitIso f).hom = r) :
     ((pullbackUnitIso f).inv ≫ (pullback f).map s) ≫
-      (dualPullbackFrame f L e).inv = r := by
+      (Scheme.Modules.Invertible.dualPullbackFrame f L e).inv = r := by
   have he := dualPullbackFrame_transpose_coordinate f L e φ
   have ht := congrArg (fun v =>
     ((pullbackUnitIso f).inv ≫ (pullback f).map v) ≫
-      (dualPullbackFrame f L e).inv) hs
+      (Scheme.Modules.Invertible.dualPullbackFrame f L e).inv) hs
   exact ht.trans (he.trans hr)
 
 private theorem coordinate_transport {C : Type*} [Category C] {A B D : C}
@@ -69,12 +69,13 @@ local notation "c" => chartMap B a
 
 private theorem exceptionalPositiveFrame_inv_eq :
     (saturatedPairExceptionalPositiveFrame R x y).inv =
-      (dualPullbackFrame c (centreIdealLine I) (chartFrame B a)).inv := rfl
+      (Scheme.Modules.Invertible.dualPullbackFrame c (centreIdealLine I)
+        (chartFrame B a)).inv := rfl
 
 private theorem exceptionalScalar_eq :
     tilde.map (ModuleCat.ofHom (LinearMap.mulLeft (Blowup.affineBlowupAlgebra R I a)
       (algebraMap R (Blowup.affineBlowupAlgebra R I a) a))) =
-    affineMultiplication S (algebraMap R S x) := rfl
+    Scheme.Modules.affineMultiplication S (algebraMap R S x) := rfl
 
 /-- The original exceptional positive section has the original denominator
 as its coordinate in the actual dual chart ideal frame. -/
@@ -85,7 +86,7 @@ theorem saturatedPair_exceptionalPositiveSection_coordinate :
       cartierDualIdealSection (centreι B)
     ((pullbackUnitIso f).inv ≫ (pullback f).map s) ≫
       (saturatedPairExceptionalPositiveFrame R x y).inv =
-    affineMultiplication S (algebraMap R S x) := by
+    Scheme.Modules.affineMultiplication S (algebraMap R S x) := by
   intro f s
   let e : SheafOfModules.unit (Spec (.of S)).ringCatSheaf ≅
       (pullback f).obj (centreIdealLine I).val := chartFrame B a
@@ -103,7 +104,7 @@ theorem saturatedPair_exceptionalPositiveSection_frame :
         (dualLineBundle (canonicalBlowup I) (centreIdealLine I)).val :=
       cartierDualIdealSection (centreι B)
     (pullbackUnitIso f).inv ≫ (pullback f).map s =
-      affineMultiplication S (algebraMap R S x) ≫
+      Scheme.Modules.affineMultiplication S (algebraMap R S x) ≫
         (saturatedPairExceptionalPositiveFrame R x y).hom := by
   intro f s
   let t := (pullbackUnitIso f).inv ≫

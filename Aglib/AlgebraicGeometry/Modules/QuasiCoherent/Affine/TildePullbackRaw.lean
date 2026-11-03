@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.TildePullback
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.TildePullback.Composition
 
 /-! # Original tilde pullback homs at their raw scalar actions
 

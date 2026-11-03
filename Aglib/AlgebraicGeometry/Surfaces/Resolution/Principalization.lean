@@ -7,7 +7,6 @@ module
 
 public import Aglib.AlgebraicGeometry.Surfaces.Resolution.WeakTransform
 public import Aglib.AlgebraicGeometry.Blowup.Integral
-public import Aglib.AlgebraicGeometry.Stalk.Restriction
 public import Aglib.AlgebraicGeometry.Blowup.AffineCenter.Support
 public import Aglib.AlgebraicGeometry.IdealSheaf.Artinian
 public import Aglib.RingTheory.RegularLocalRing.HeightOnePrincipal
@@ -120,8 +119,22 @@ theorem localColength_comap_of_isIso_stalkMap {X Y : Scheme.{u}}
 along the canonical ring-to-stalk homomorphism. -/
 theorem stalkIdeal_affineCenter {A : Type u} [CommRing A]
     (J : Ideal A) (x : Spec (.of A)) :
-    (affineCenter A J).stalkIdeal x = J.map (StructureSheaf.toStalk A x).hom :=
-  affineCenter_stalkIdeal J x
+    (affineCenter A J).stalkIdeal x = J.map (StructureSheaf.toStalk A x).hom := by
+  calc
+    _ = spectrumIdeal (A := (Spec (.of A)).presheaf.stalk x)
+        ((affineCenter A J).comap ((Spec (.of A)).fromSpecStalk x)) :=
+      (spectrumIdeal_comap_fromSpecStalk (affineCenter A J) x).symm
+    _ = spectrumIdeal (A := (Spec (.of A)).presheaf.stalk x)
+        ((affineCenter A J).comap (Spec.map (StructureSheaf.toStalk A x))) :=
+      congrArg (fun f : Spec ((Spec (.of A)).presheaf.stalk x) ⟶ Spec (.of A) ↦
+        spectrumIdeal (A := (Spec (.of A)).presheaf.stalk x) ((affineCenter A J).comap f))
+        (AlgebraicGeometry.Spec.fromSpecStalk_eq' (.of A) x)
+    _ = spectrumIdeal (A := (Spec (.of A)).presheaf.stalk x)
+        (affineCenter ((Spec (.of A)).presheaf.stalk x)
+          (J.map (StructureSheaf.toStalk A x).hom)) :=
+      congrArg (spectrumIdeal (A := (Spec (.of A)).presheaf.stalk x))
+        (BaseChange.affineCenter_comap (StructureSheaf.toStalk A x).hom J)
+    _ = _ := spectrumIdeal_affineCenter _
 
 /-- Colength on the actual spectrum is the original ring-localization
 colength through the canonical localization equivalence. -/
@@ -602,7 +615,10 @@ theorem pointBlowup_stalkMap_isIso_of_ne {X : Scheme.{u}}
     rw [Scheme.Hom.support_ker, Scheme.range_fromSpecResidueField, hx.closure_eq]
     exact Set.disjoint_left.mpr fun z hz hz' ↦ hz hz'
   let : IsIso (B.map ∣_ U) := B.restrict_isIso_of_disjoint U hU
-  exact Scheme.Hom.isIso_stalkMap_of_isIso_morphismRestrict B.map U y hy
+  let p : (B.map ⁻¹ᵁ U).toScheme := ⟨y, hy⟩
+  let e := Scheme.Hom.stalkMapIsoOfIsPullbackOfFlatOfPreimmersion
+    (isPullback_morphismRestrict B.map U).flip p y rfl
+  exact ((MorphismProperty.isomorphisms CommRingCat).arrow_mk_iso_iff e).mpr inferInstance
 
 /-- The actual point blowdown is injective on the original centre complement. -/
 theorem pointBlowup_injOn_complement {X : Scheme.{u}}

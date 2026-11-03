@@ -57,11 +57,11 @@ theorem affineBlowupSection_inclusion (i : I) :
         (Blowup.blowupDatum (Blowup.affineCenter A (affineCoordinateIdeal A v))).map).subschemeι =
     pullbackUnitEnd (Blowup.blowupDatum
       (Blowup.affineCenter A (affineCoordinateIdeal A v))).map
-      (AlgebraicGeometry.Scheme.Modules.affineMultiplication A (v i)) := by
+      (Blowup.IdealFrames.affineMultiplication A (v i)) := by
   have hi : affineCoordinate A v i ≫
       Hom.idealInclusion (Blowup.affineCenter A (affineCoordinateIdeal A v)).subschemeι =
-      AlgebraicGeometry.Scheme.Modules.affineMultiplication A (v i) := by
-    rw [affineCoordinate_inclusion, AlgebraicGeometry.Scheme.Modules.affineMultiplication]
+      Blowup.IdealFrames.affineMultiplication A (v i) := by
+    rw [affineCoordinate_inclusion, Blowup.IdealFrames.affineMultiplication]
     congr 1
     apply ModuleCat.hom_ext
     apply LinearMap.ext
@@ -100,7 +100,7 @@ variable (hK : ((Blowup.affineCenter A (affineCoordinateIdeal A v)).comap
 def affineRestrictedScalar (i : I) :=
   pullbackUnitEnd (j ≫
     (Blowup.blowupDatum (Blowup.affineCenter A (affineCoordinateIdeal A v))).map)
-    (AlgebraicGeometry.Scheme.Modules.affineMultiplication A (v i))
+    (Blowup.IdealFrames.affineMultiplication A (v i))
 
 omit [Finite I] in
 /-- Exact section equality in the canonical target frame. -/

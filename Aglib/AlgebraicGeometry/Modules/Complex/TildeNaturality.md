@@ -14,4 +14,6 @@ original homology objects and counit maps are unchanged. The closed-adjoint
 resolution-independence consumer uses this law with its proved counit
 quasi-isomorphisms.
 
-Direct consumers: [AlgebraicGeometry/Cohomology/ClosedImmersion/RightAdjoint/FiniteSource/ResolutionNaturality](../../Cohomology/ClosedImmersion/RightAdjoint/FiniteSource/ResolutionNaturality.md), [AlgebraicGeometry/Cohomology/ClosedImmersion/RightAdjoint/RegularList/Sheaf](../../Cohomology/ClosedImmersion/RightAdjoint/RegularList/Sheaf.md), [AlgebraicGeometry/Cohomology/DirectImage/Affine/Cohomology/CounitNaturality](../../Cohomology/DirectImage/Affine/Cohomology/CounitNaturality.lean).
+Direct consumer:
+[closed-adjoint resolution naturality](../../Cohomology/ClosedImmersion/RightAdjoint/FiniteSource/ResolutionNaturality.md).
+Existing stable sheaf and affine-counit providers retain their original proofs.

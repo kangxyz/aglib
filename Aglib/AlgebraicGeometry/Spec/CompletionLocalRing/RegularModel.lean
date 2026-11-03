@@ -12,6 +12,7 @@ public import Aglib.AlgebraicGeometry.Properties.Normal.Affine
 public import Aglib.AlgebraicGeometry.FunctionField.Restriction
 public import Aglib.AlgebraicGeometry.RationalMap.QuasiDomination.ProtectedOverlap
 public import Mathlib.RingTheory.Flat.FaithfullyFlat.Algebra
+public import Aglib.AlgebraicGeometry.Spec.CompletionLocalRing.Normal.ProperBaseChange
 
 /-!
 # The literal completed pullback of a supplied regular birational model

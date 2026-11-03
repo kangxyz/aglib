@@ -558,14 +558,18 @@ mathematical conditions govern that choice.
 - Keep compatible native artifacts and successful check categories. A cache
   candidate is not current lint/axiom evidence; a successful unchanged frontend
   in a failed graph retains only its actual scope.
-- Use focused dependency owners for independent interfaces. Batch necessary
-  edits to widely imported providers, and preserve unaffected consumers.
+- Before appending or moving helpers, compare the reverse import DAG against
+  pre-integration main. Prefer focused new leaves imported by their actual
+  consumers and keep stable original producers when possible; batch necessary
+  edits to widely imported providers. A warm-tail compile does not measure
+  shared-main invalidation. [Placement follow-up](performance/placement-edits-in-widely-imported-modules.md#surface-resolution-invalidation-follow-up-2026-11-03).
 - When introducing split providers, compare their declarations with the existing
-  parent. Keep one canonical implementation of each constructor and law; let
-  the parent reexport the providers and retain its independent original laws.
+  parent. Keep one canonical implementation of each constructor and law; choose
+  the stable original producer when it already provides them, and use thin
+  importing leaves where needed.
   An aggregate import can report a generated `_proof_n` name when an entire
   family is duplicated. Preserve the original models, maps and premises and
-  continue the normal production-root build with compatible artifacts.
+  continue the necessary incremental target graph with compatible artifacts.
   [Canonical split providers](performance/cases/canonical-split-providers/README.md).
 - Separate primitive coefficient aliases from classification-heavy providers.
   Preserve literal names, types, RHS and native lifts, reexport the leaf from

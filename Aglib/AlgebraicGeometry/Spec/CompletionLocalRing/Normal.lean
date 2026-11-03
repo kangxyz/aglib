@@ -277,13 +277,13 @@ theorem completionStructuralSectionsEquiv_apply
         ((Scheme.ΓSpecIso (.of (AdicCompletion (IsLocalRing.maximalIdeal B) B))).inv s) := rfl
 
 include p hZ hβ in
-/-- The literal completed pullback of a proper regular model with bijective
-original structural sections is integral and normal. Its original section
-comparison gives connectedness before any domain property of the completion
-is assumed. -/
-theorem integral_normal_completionBaseChange_of_proper_regular_structuralSections :
-    IsIntegral (pullback p (completionSpecMap B)) ∧
-      NormalStalks (pullback p (completionSpecMap B)) := by
+/-- A proper regular model whose literal structural section map is
+bijective forces its base's actual maximal completion to be a normal domain.
+Connectedness and integrality of the completed source are proved before any
+domain property of the completed ring is used. -/
+theorem completion_normal_of_proper_regular_structuralSections :
+    IsDomain (AdicCompletion (IsLocalRing.maximalIdeal B) B) ∧
+      IsIntegrallyClosed (AdicCompletion (IsLocalRing.maximalIdeal B) B) := by
   let S := AdicCompletion (IsLocalRing.maximalIdeal B) B
   let W : Scheme.{u} := pullback p (completionSpecMap B)
   let q : W ⟶ Spec (.of S) := pullback.snd p (completionSpecMap B)
@@ -307,22 +307,6 @@ theorem integral_normal_completionBaseChange_of_proper_regular_structuralSection
   let : ConnectedSpace W := connectedSpace_of_globalSections_idempotents W
     (fun a ha => localRing_idempotent_eq_zero_or_one a ha)
   let : IsIntegral W := isIntegral_of_connected_normalStalks_actual W hWnormal
-  exact ⟨inferInstance, hWnormal⟩
-
-include p hZ hβ in
-/-- A proper regular model whose literal structural section map is
-bijective forces its base's actual maximal completion to be a normal domain.
-Connectedness and integrality of the completed source are proved before any
-domain property of the completed ring is used. -/
-theorem completion_normal_of_proper_regular_structuralSections :
-    IsDomain (AdicCompletion (IsLocalRing.maximalIdeal B) B) ∧
-      IsIntegrallyClosed (AdicCompletion (IsLocalRing.maximalIdeal B) B) := by
-  let S := AdicCompletion (IsLocalRing.maximalIdeal B) B
-  let W : Scheme.{u} := pullback p (completionSpecMap B)
-  let e : S ≃+* Γ(W, ⊤) := completionStructuralSectionsEquiv B p hβ
-  obtain ⟨hW, hWnormal⟩ :=
-    integral_normal_completionBaseChange_of_proper_regular_structuralSections B p hZ hβ
-  let : IsIntegral W := hW
   let : IsIntegrallyClosed Γ(W, ⊤) :=
     NormalStalks.isIntegrallyClosed_globalSections W hWnormal
   exact ⟨e.toMulEquiv.isDomain _, IsIntegrallyClosed.of_equiv e.symm⟩

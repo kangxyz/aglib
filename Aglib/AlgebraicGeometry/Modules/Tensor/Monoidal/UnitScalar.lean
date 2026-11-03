@@ -53,16 +53,16 @@ its original scalar on the native affine section module. -/
 theorem affine_tensor_unit_scalar {R : CommRingCat.{u}} (M : (Spec R).Modules)
     (r : R) (m : moduleSpecΓFunctor.obj M) :
     moduleSpecΓFunctor.map ((tensorSheafLeftUnit (Spec R) M).inv ≫
-      (moduleTensorCoefficientMap (Spec R) (affineMultiplication R r)).app M ≫
+      (moduleTensorCoefficientMap (Spec R) (Scheme.Modules.affineMultiplication R r)).app M ≫
       (tensorSheafLeftUnit (Spec R) M).hom) m = r • m := by
-  have hr : (affineMultiplication R r).val.app (op ⊤) (1 : Γ(Spec R, ⊤)) =
+  have hr : (Scheme.Modules.affineMultiplication R r).val.app (op ⊤) (1 : Γ(Spec R, ⊤)) =
       (Scheme.ΓSpecIso R).inv r := by
-    rw [affineMultiplication_eq_unitMul]
+    rw [Scheme.Modules.affineMultiplication_eq_unitMul]
     change 1 * (Spec R).presheaf.map (𝟙 (op (⊤ : (Spec R).Opens)))
       ((Scheme.ΓSpecIso R).inv r) = _
     rw [CategoryTheory.Functor.map_id]
     exact one_mul _
-  exact (tensor_unit_scalar_section M (affineMultiplication R r) ⊤ m).trans
+  exact (tensor_unit_scalar_section M (Scheme.Modules.affineMultiplication R r) ⊤ m).trans
     (congrArg (fun a : Γ(Spec R, ⊤) => a • (show Γ(M, ⊤) from m)) hr)
 
 end AlgebraicGeometry.Scheme.Modules

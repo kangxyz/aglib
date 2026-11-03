@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.FiniteSource
-public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Stalk
+public import Aglib.AlgebraicGeometry.Modules.Stalk.Basic
 public import Aglib.RingTheory.RegularLocalRing.NormalQuotientExt
 public import Mathlib.RingTheory.Localization.BaseChange
 
@@ -61,34 +61,58 @@ public def tildeIsoToModuleStalk {R : CommRingCat.{u}} (M : ModuleCat.{u} R)
     {N : (Spec R).Modules} (e : tilde M ≅ N) (x : PrimeSpectrum R) :
     M ⟶ (ModuleCat.restrictScalars (StructureSheaf.toStalk R x).hom).obj
       ((moduleStalk (Spec R) x).obj N) :=
-  Scheme.Modules.tildeIsoToModuleStalk M e x
+  tilde.toStalk M x ≫
+    (ModuleCat.restrictScalars (StructureSheaf.toStalk R x).hom).map
+      ((moduleStalk (Spec R) x).map e.hom)
 
 public theorem tildeIsoToModuleStalk_isLocalized {R : CommRingCat.{u}}
     (M : ModuleCat.{u} R) {N : (Spec R).Modules} (e : tilde M ≅ N)
     (x : PrimeSpectrum R) :
     IsLocalizedModule x.asIdeal.primeCompl (tildeIsoToModuleStalk M e x).hom :=
-  Scheme.Modules.tildeIsoToModuleStalk_isLocalized M e x
+  IsLocalizedModule.of_linearEquiv x.asIdeal.primeCompl (tilde.toStalk M x).hom
+    (((ModuleCat.restrictScalars (StructureSheaf.toStalk R x).hom).mapIso
+      ((moduleStalk (Spec R) x).mapIso e)).toLinearEquiv)
 
 /-- Ambient coefficient sections map to their actual stalk by the
-original affine germ. -/
+tilde counit and the original germ. -/
 public def affineCoefficientToModuleStalk {R : CommRingCat.{u}} (N : (Spec R).Modules)
     (x : PrimeSpectrum R) :
     (moduleSpecΓFunctor (R := R)).obj N ⟶
       (ModuleCat.restrictScalars (StructureSheaf.toStalk R x).hom).obj
         ((moduleStalk (Spec R) x).obj N) :=
-  Scheme.Modules.affineSectionsToStalk N x
+  tilde.toStalk ((moduleSpecΓFunctor (R := R)).obj N) x ≫
+    (ModuleCat.restrictScalars (StructureSheaf.toStalk R x).hom).map
+      ((moduleStalk (Spec R) x).map (fromTildeΓ (R := R) N))
 
 public theorem affineCoefficientToModuleStalk_isLocalized {R : CommRingCat.{u}}
     (N : (Spec R).Modules) [N.IsQuasicoherent] (x : PrimeSpectrum R) :
-    IsLocalizedModule x.asIdeal.primeCompl (affineCoefficientToModuleStalk N x).hom :=
-  Scheme.Modules.affineSectionsToStalk_isLocalized N x
+    IsLocalizedModule x.asIdeal.primeCompl (affineCoefficientToModuleStalk N x).hom := by
+  let e : tilde ((moduleSpecΓFunctor (R := R)).obj N) ≅ N :=
+    @asIso _ _ _ _ (fromTildeΓ (R := R) N)
+      (isIso_fromTildeΓ_of_isQuasicoherent (R := R) N)
+  exact tildeIsoToModuleStalk_isLocalized (R := R) _ e x
 
 @[simp]
 public theorem affineCoefficientToModuleStalk_apply {R : CommRingCat.{u}}
     (N : (Spec R).Modules) (x : PrimeSpectrum R)
     (s : (moduleSpecΓFunctor (R := R)).obj N) :
-    affineCoefficientToModuleStalk N x s = N.presheaf.germ ⊤ x trivial s :=
-  Scheme.Modules.affineSectionsToStalk_apply N x s
+    affineCoefficientToModuleStalk N x s = N.presheaf.germ ⊤ x trivial s := by
+  change (TopCat.Presheaf.stalkFunctor AddCommGrpCat.{u}
+    (X := (Spec R : TopCat.{u})) x).map
+    (fromTildeΓ (R := R) N).mapPresheaf
+    ((tilde ((moduleSpecΓFunctor (R := R)).obj N)).presheaf.germ ⊤ x trivial
+      (tilde.toOpen (R := R) ((moduleSpecΓFunctor (R := R)).obj N) ⊤ s)) = _
+  erw [TopCat.Presheaf.stalkFunctor_map_germ_apply]
+  congr 1
+  let G := (modulesSpecToSheaf (R := R)).obj N
+  have hi : (homOfLE (show (⊤ : (Spec R).Opens) ≤ ⊤ from le_rfl)).op =
+      𝟙 (Opposite.op (⊤ : (Spec R).Opens)) := Subsingleton.elim _ _
+  have h₀ := (toOpen_fromTildeΓ_app (R := R) N ⊤).trans
+    ((congrArg G.obj.map hi).trans (G.obj.map_id _))
+  have h := ConcreteCategory.congr_hom h₀ s
+  change ((fromTildeΓ (R := R) N).mapPresheaf.app (Opposite.op ⊤))
+    (tilde.toOpen (R := R) ((moduleSpecΓFunctor (R := R)).obj N) ⊤ s) = s at h
+  exact h
 
 /-- The unique target-ring linear isomorphism between two actual
 localizations of the same source module, with their original maps. -/

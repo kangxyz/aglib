@@ -6,7 +6,6 @@ Authors: kangxyz
 module
 
 public import Aglib.Algebra.Category.ModuleCat.Descent.FinitePresentation.Models
-public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Composition
 public import Mathlib.Algebra.Module.Projective
 
 /-!
@@ -645,6 +644,22 @@ theorem matrixCokernelCoconeIso_one_tmul_mkQ
   congr 1
   funext j
   exact (DFunLike.congr_fun hρ (x j)).symm
+
+/-- Native scalar-extension composition for a specified actual scalar
+triangle, using equality only to identify its composite ring map. -/
+def extendScalarsCompOfEq (φ : R →+* S) (ψ : S →+* T) (ρ : R →+* T)
+    (hρ : ψ.comp φ = ρ) : extendScalars ρ ≅ extendScalars φ ⋙ extendScalars ψ :=
+  eqToIso (congrArg (fun q : R →+* T ↦ extendScalars q) hρ.symm) ≪≫
+    extendScalarsComp φ ψ
+
+/-- The original unit tensor is retained by the actual scalar triangle. -/
+theorem extendScalarsCompOfEq_hom_app_one_tmul
+    (φ : R →+* S) (ψ : S →+* T) (ρ : R →+* T)
+    (hρ : ψ.comp φ = ρ) (M : ModuleCat.{u} R) (x : M) :
+    (extendScalarsCompOfEq φ ψ ρ hρ).hom.app M ((1 : T) ⊗ₜ[R,ρ] x) =
+      (1 : T) ⊗ₜ[S,ψ] ((1 : S) ⊗ₜ[R,φ] x) := by
+  subst ρ
+  exact extendScalarsComp_hom_app_one_tmul φ ψ M x
 
 /-- The matrix-cokernel comparison is the native scalar-extension
 composition comparison followed by the original stage cokernel comparison. -/

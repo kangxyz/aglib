@@ -7,7 +7,6 @@ module
 
 public import
   Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.RegularList.Sheaf.Counit
-public import Aglib.AlgebraicGeometry.Modules.Complex.TildeNaturality
 
 /-!
 # Installed affine sheaf purity for a regular quotient
@@ -62,12 +61,10 @@ variable {S : CommRingCat.{u}}
 private abbrev closedΓResolutionIso (q : R ⟶ S) [IsClosedImmersion (Spec.map q)]
     {L : (Spec R).Modules} [L.IsQuasicoherent] (J : InjectiveResolution L) :=
   affineClosedRightAdjointResolutionSectionsIso q J
-/-- The original affine resolution-section comparison with native ambient Ext. -/
-public abbrev closedΓResolutionExtAddEquiv [HasExt.{w} (ModuleCat.{u} R)]
+private abbrev closedΓResolutionExtAddEquiv [HasExt.{w} (ModuleCat.{u} R)]
     (q : R ⟶ S) [IsClosedImmersion (Spec.map q)] {L : (Spec R).Modules} [L.IsQuasicoherent]
     (J : InjectiveResolution L) (n : ℕ) := affineClosedRightAdjointResolutionExtAddEquiv q J n
-/-- The original section complex of the closed right adjoint applied to the supplied resolution. -/
-public abbrev closedΓResolutionComplex (q : R ⟶ S) [IsClosedImmersion (Spec.map q)]
+private abbrev closedΓResolutionComplex (q : R ⟶ S) [IsClosedImmersion (Spec.map q)]
     {L : (Spec R).Modules} (J : InjectiveResolution L) :=
   ((moduleSpecΓFunctor (R := S)).mapHomologicalComplex (.up ℤ)).obj
     (((closedImmersionRightAdjoint (Spec.map q)).mapHomologicalComplex (.up ℤ)).obj
@@ -217,8 +214,7 @@ private def sectionsResolutionHom :
     simp only [Functor.map_comp, CochainComplex.single₀_map_f_zero] at h
     exact h
 
-/-- The original closed-adjoint section-complex map induced by a coefficient resolution map. -/
-@[expose] public def closedΓResolutionMap :
+private def closedΓResolutionMap :
     closedΓResolutionComplex q I ⟶ closedΓResolutionComplex q J :=
   ((moduleSpecΓFunctor (R := S)).mapHomologicalComplex (.up ℤ)).map
     (((closedImmersionRightAdjoint (Spec.map q)).mapHomologicalComplex (.up ℤ)).map φ.hom')
@@ -264,8 +260,7 @@ private theorem closedΓResolutionIso_naturality :
 
 variable [HasExt.{w} (ModuleCat.{u} R)]
 
-/-- Naturality of the same affine Ext comparison under the original coefficient resolution map. -/
-public theorem closedΓResolutionExtAddEquiv_naturality (n : ℕ)
+private theorem closedΓResolutionExtAddEquiv_naturality (n : ℕ)
     (x : (closedΓResolutionComplex q I).homology (n : ℤ)) :
     closedΓResolutionExtAddEquiv q J n
         (homologyMap (closedΓResolutionMap q φ) (n : ℤ) x) =
@@ -311,7 +306,27 @@ private theorem actualTildeHomologyIso_naturality
         (homologyMap (((moduleSpecΓFunctor (R := B)).mapHomologicalComplex (.up ℤ)).map ψ) n) ≫
         (Complex.tildeGlobalSectionsHomologyIso B (.up ℤ) K' n).hom =
       (Complex.tildeGlobalSectionsHomologyIso B (.up ℤ) K n).hom ≫ homologyMap ψ n := by
-  exact Complex.tildeGlobalSectionsHomologyIso_naturality B (.up ℤ) ψ n
+  let G := moduleSpecΓFunctor (R := B)
+  let T := tilde.functor B
+  let C := (G.mapHomologicalComplex (.up ℤ)).obj K
+  let D := (G.mapHomologicalComplex (.up ℤ)).obj K'
+  let u := (G.mapHomologicalComplex (.up ℤ)).map ψ
+  let v := (T.mapHomologicalComplex (.up ℤ)).map u
+  have ht := ShortComplex.mapHomologyIso_inv_naturality
+    ((shortComplexFunctor (ModuleCat.{u} B) (.up ℤ) n).map u) T
+  change T.map (homologyMap u n) ≫ ((D.sc n).mapHomologyIso T).inv =
+    ((C.sc n).mapHomologyIso T).inv ≫ homologyMap v n at ht
+  have hc := congrArg
+    ((homologyFunctor (Spec B).Modules (.up ℤ) n).map)
+    (Complex.tildeGlobalSectionsCounit_naturality B (.up ℤ) ψ)
+  simp only [Functor.map_comp] at hc
+  change homologyMap v n ≫ homologyMap (Complex.tildeGlobalSectionsCounit B (.up ℤ) K') n =
+    homologyMap (Complex.tildeGlobalSectionsCounit B (.up ℤ) K) n ≫ homologyMap ψ n at hc
+  change T.map (homologyMap u n) ≫ ((D.sc n).mapHomologyIso T).inv ≫
+      homologyMap (Complex.tildeGlobalSectionsCounit B (.up ℤ) K') n =
+    ((C.sc n).mapHomologyIso T).inv ≫
+      homologyMap (Complex.tildeGlobalSectionsCounit B (.up ℤ) K) n ≫ homologyMap ψ n
+  rw [← Category.assoc, ht, Category.assoc, hc]
 
 end ActualCounitNaturality
 end AlgebraicGeometry.Scheme.Modules

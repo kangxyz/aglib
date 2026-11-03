@@ -203,7 +203,7 @@ private theorem chartFrame_original_section (b : I) :
     pullbackSection (Spec.algebraMap S T)
         (pullbackSection (Spec.algebraMap R S) (AffineCoordinates.idealSection R I b)) ≫
       chartQuotient B t htp ≫ (chartFrame B a φ t hth).hom =
-        Scheme.Modules.affineMultiplication T (φ (ratio R I a b)) := by
+        IdealFrames.affineMultiplication T (φ (ratio R I a b)) := by
   rw [← Category.assoc, chartQuotient_section,
     TautologicalPullbackSections.pulledTautologicalQuotient_section]
   simp only [chartFrame, Iso.trans_hom, Iso.symm_hom, Iso.app_hom]
@@ -299,7 +299,7 @@ private theorem tilde_scalar_sandwich (r : T) :
     (tildeSelf (R := CommRingCat.of T)).inv ≫
       (tilde.functor (CommRingCat.of T)).map
         (ModuleCat.ofHom (LinearMap.mulLeft T r)) ≫
-      (tildeSelf (R := CommRingCat.of T)).hom = Scheme.Modules.affineMultiplication T r := by
+      (tildeSelf (R := CommRingCat.of T)).hom = IdealFrames.affineMultiplication T r := by
   change (𝟙 _) ≫ (tilde.functor (CommRingCat.of T)).map
     (ModuleCat.ofHom (LinearMap.mulLeft T r)) ≫ 𝟙 _ = _
   simp only [Category.id_comp, Category.comp_id]
@@ -312,7 +312,7 @@ private theorem tilde_span_comp {U : Type u} [AddCommGroup U] [Module T U]
         (ModuleCat.ofHom (LinearMap.toSpanSingleton T U v))) ≫
       ((tilde.functor (CommRingCat.of T)).map K ≫
         (tildeSelf (R := CommRingCat.of T)).hom) =
-      Scheme.Modules.affineMultiplication T (K.hom v) := by
+      IdealFrames.affineMultiplication T (K.hom v) := by
   rw [Category.assoc, ← Functor.map_comp_assoc, module_span_comp]
   exact tilde_scalar_sandwich (K.hom v)
 
@@ -332,13 +332,13 @@ private theorem transported_section_coefficient {X Y : Scheme.{u}} (g : Y ⟶ X)
 private def RowSectionCoefficientEq (v : S ⊗[R] I) (r : T) : Prop :=
   pullbackSection (Spec.algebraMap S T) (tensorSection v) ≫
     chartQuotient B t htp ≫ (chartFrame B a φ t hth).hom =
-      Scheme.Modules.affineMultiplication T r
+      IdealFrames.affineMultiplication T r
 
 private def OriginalRowSectionCoefficientEq (v : S ⊗[R] I) (r : T) : Prop :=
   pullbackSection t
       (pullbackSection (pullback.snd B.map (Spec.algebraMap R S)) (tensorSection v) ≫
         pulledTautologicalQuotient B (Spec.algebraMap R S)) ≫
-    (chartFrame B a φ t hth).hom = Scheme.Modules.affineMultiplication T r
+    (chartFrame B a φ t hth).hom = IdealFrames.affineMultiplication T r
 
 private theorem rowSectionCoefficientEq_original (v : S ⊗[R] I) (r : T)
     (h : RowSectionCoefficientEq B a φ t htp hth v r) :
@@ -354,7 +354,7 @@ private theorem rowCoefficient_section (v : S ⊗[R] I) :
   change
     pullbackSection (Spec.algebraMap S T) (tensorSection v) ≫
       chartQuotient B t htp ≫ (chartFrame B a φ t hth).hom =
-        Scheme.Modules.affineMultiplication T
+        IdealFrames.affineMultiplication T
           (rowCoefficient B a φ t htp hth ((1 : T) ⊗ₜ[S] v))
   let s : SheafOfModules.unit (Spec (.of S)).ringCatSheaf ⟶
       tilde (ModuleCat.of S (S ⊗[R] I)) :=
@@ -383,7 +383,7 @@ private theorem rowCoefficient_section_of_value (v : S ⊗[R] I) (r : T)
     (rowCoefficient_section B a φ t htp hth v)
 
 private theorem affineMultiplication_injective :
-    Function.Injective (Scheme.Modules.affineMultiplication T) := by
+    Function.Injective (IdealFrames.affineMultiplication T) := by
   intro x y hxy
   have hm : ModuleCat.ofHom (LinearMap.mulLeft T x) =
       ModuleCat.ofHom (LinearMap.mulLeft T y) :=
@@ -511,7 +511,7 @@ private theorem framedFamily_coefficient_of_tensor
     (hc : OriginalRowSectionCoefficientEq B a φ t hth
       (AffineRow.generators I S D eD π i) r) :
     pullbackSection t (pulledFramedFamily B D eD π i) ≫ (chartFrame B a φ t hth).hom =
-      Scheme.Modules.affineMultiplication T r := by
+      IdealFrames.affineMultiplication T r := by
   rw [pulledFramedFamily, framedFamily_eq_tensorSection]
   exact hc
 
@@ -535,7 +535,7 @@ theorem framedFamily_coefficient_of_scalarExtension
     (hχ : ∀ (s : S) (b : I), χ (s ⊗ₜ[R] b) = algebraMap S T s * φ (ratio R I a b))
     (i : ι) :
     pullbackSection t (pulledFramedFamily B D eD π i) ≫ (chartFrame B a φ t hth).hom =
-      Scheme.Modules.affineMultiplication T (χ (AffineRow.generators I S D eD π i)) := by
+      IdealFrames.affineMultiplication T (χ (AffineRow.generators I S D eD π i)) := by
   have hv (v : S ⊗[R] I) :
       rowCoefficient B a φ t htp hth ((1 : T) ⊗ₜ[S] v) = χ v := by
     induction v using TensorProduct.inductionOn with

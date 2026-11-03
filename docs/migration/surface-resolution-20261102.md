@@ -58,21 +58,24 @@ conjugate-adjunction proof and an empty compatibility import are removed.
 No definitions-only layer represents an unsupplied geometric theorem.
 
 Existing correct public names, proof bodies and compatible compilation
-units are retained. The two affine section-map formulas stay in the existing
-section-functor property provider; adding another module during validation
-would invalidate an already compiled long dependency chain. Topic
-enrollment is limited to affected families.
+units are retained. The original affine `Sections.lean` and `TildePullback.lean`
+providers are restored byte-for-byte to the pre-integration baseline. The two
+section-map formulas live in [Sections/Map.lean](../../Aglib/AlgebraicGeometry/Modules/QuasiCoherent/Affine/Sections/Map.lean),
+and the added composition API lives in [TildePullback/Composition.lean](../../Aglib/AlgebraicGeometry/Modules/QuasiCoherent/Affine/TildePullback/Composition.lean).
+Only their actual consumers need the focused leaves.
 
 ## Validation boundary
 
-The native source-policy check, complete production-library build,
-generated-entry check, text style and in-package tests have passed on the
-reorganized source. The coefficient entry reuses the canonical Model and
-Sections providers and retains its three original naturality proofs;
-[the import-repair case](../performance/cases/canonical-split-providers/README.md)
-records the source correspondence and successful production build.
+The earlier integrated source had successful native source-policy, production
+build, generated-entry, style and in-package test coverage. That evidence is
+historical and does not establish those checks for the current candidate. The
+canonical coefficient parent has since been restored to its original source;
+Model and Sections are thin imports of it. The parent retains the 39 original
+named declarations and three naturality laws without duplicate implementations.
+[The import-repair case](../performance/cases/canonical-split-providers/README.md)
+records the earlier repair and the subsequent placement correction.
 
-Production declaration lint and the pinned axiom audit now have successful
+On the earlier integrated source, production declaration lint and the pinned axiom audit had successful
 coverage across seven coarse batches: 9357 implementation modules and 130278
 declarations, with no remaining findings or unapproved axioms. The 15 generated
 import-only entries retain native source, entry-generation and style coverage.
@@ -83,8 +86,35 @@ records exact inputs, checker predicates, runs and coverage.
 
 The original single-environment checks encountered the host mapping limit and
 did not pass. Coarse producer coverage resolves this integration's remaining
-checks while preserving the original toolchain and dependency pins. The final
+checks while preserving the original toolchain and dependency pins. The earlier final
 incremental production build, text style and in-package tests also passed.
 The source naming, docstring and unused-premise repairs stay within the migrated
 cohort and its direct consumers. Kernel replay, separate mathematical clients
 and CI workflow edits are outside this integration.
+
+## Invalidation repair
+
+The repair is based on published tip `5901a32b` and compares mathematical inputs
+with pre-integration main `1b737dca`. Stable original providers are restored;
+additional APIs use focused leaves and precise consumer imports. The original
+coefficient parent is the single canonical implementation; its new import paths
+reexport it. Unused exposure-only copies of the original trace and resolution
+helpers are omitted, while their original proofs and baseline public APIs remain.
+
+The affected reverse import closure is 518 modules: 73 existing and 445 added,
+compared with the earlier 3160, including 2729 existing. These are graph counts;
+restoring an already published version also requires matching original caches.
+
+Source policy, native entry generation, text style, 61 changed-implementation
+terminal builds, seven additional affected library-consumer builds and six
+relevant in-package test modules passed. Two coarse lint batches jointly checked
+all 511 affected implementation modules and 7800 declarations with no findings.
+Both pinned axiom audits passed using only the three approved foundations.
+The final 61-root build required zero frontend invocations after compatible
+successes were retained. This is scoped incremental validation; no full Aglib
+rebuild, kernel replay or separate client check is claimed.
+
+The [placement follow-up](../performance/placement-edits-in-widely-imported-modules.md#surface-resolution-invalidation-follow-up-2026-11-03)
+records original-source preservation, graph scope, failed approaches, actual
+validation and native cache boundaries. The original mathematical exclusions and
+genuine initial RDP hypotheses above remain in force.

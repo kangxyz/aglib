@@ -1,0 +1,259 @@
+#!/usr/bin/env python3
+"""Cached production Lean import impact; no builds or repository mutations.
+
+Commit caches contain native-parser imports and Git blob identities. Candidate
+updates parse only changed/untracked production paths relative to published tip.
+An impact is a graph upper bound, not a measurement of compiler work or time.
+"""
+import argparse
+from collections import defaultdict, deque
+import hashlib
+import importlib.util
+import json
+from pathlib import Path
+import subprocess
+import sys
+import time
+
+BASELINE = '1b737dca122694a54850316097a7ee87ddcbaead'
+PUBLISHED = '5901a32bb9a4c91482ef2cf29de4a3ab61f954b8'
+SCOPE = 'Aglib.lean plus Aglib/**/*.lean; no docs or tests'
+SCHEMA = 1
+
+
+def git(repo, *args, data=None):
+    return subprocess.run(['git', '-C', str(repo), *args], input=data,
+                          stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                          check=True).stdout
+
+
+def production(path):
+    return path == 'Aglib.lean' or path.startswith('Aglib/') and path.endswith('.lean')
+
+
+def module(path):
+    return path[:-5].replace('/', '.')
+
+
+def sha256(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def write_json(path, result, immutable=False):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open('x' if immutable else 'w') as stream:
+        json.dump(result, stream, indent=2, sort_keys=True)
+        stream.write('\n')
+
+
+def commit_graph(repo, commit, cache_dir, parser_id, parser, reuse=None):
+    path = cache_dir / f'graph-{commit}-{parser_id[:16]}.json'
+    identity = dict(schema=SCHEMA, commit=commit, parser_sha256=parser_id, scope=SCOPE)
+    if path.exists():
+        cache = json.loads(path.read_text())
+        if cache['identity'] != identity:
+            raise RuntimeError(f'Cache identity mismatch: {path}')
+        return cache['modules'], path, 0
+    entries = {}
+    for line in git(repo, 'ls-tree', '-rz', '--full-tree', commit).split(b'\0'):
+        if not line:
+            continue
+        metadata, raw_path = line.split(b'\t', 1)
+        source_path = raw_path.decode()
+        if production(source_path):
+            _, kind, blob = metadata.decode().split()
+            if kind != 'blob':
+                raise RuntimeError(f'Non-blob production source: {source_path}')
+            entries[module(source_path)] = dict(path=source_path, blob=blob)
+    missing = []
+    for name, entry in entries.items():
+        previous = (reuse or {}).get(name)
+        if previous and previous['blob'] == entry['blob']:
+            entry['imports'] = previous['imports']
+        else:
+            missing.append(entry)
+    # One batch process avoids one Git process per source; unchanged tip blobs
+    # reuse the baseline's parsed imports without loading their source bytes.
+    data = git(repo, 'cat-file', '--batch', data=''.join(
+        entry['blob'] + '\n' for entry in missing).encode()) if missing else b''
+    position = 0
+    for entry in missing:
+        end = data.index(b'\n', position)
+        oid, kind, length = data[position:end].decode().split()
+        if oid != entry['blob'] or kind != 'blob':
+            raise RuntimeError('Unexpected cat-file response')
+        position = end + 1
+        length = int(length)
+        entry['imports'] = parser.lean_imports(data[position:position + length].decode())
+        position += length + 1
+    if position != len(data):
+        raise RuntimeError('Unconsumed cat-file bytes')
+    write_json(path, dict(identity=identity, modules=entries), immutable=True)
+    return entries, path, len(missing)
+
+
+def changed_paths(repo, published):
+    paths = git(repo, 'diff', '--no-renames', '--name-only', '-z', published,
+                '--', 'Aglib.lean', 'Aglib').split(b'\0')
+    paths += git(repo, 'ls-files', '--others', '--exclude-standard', '-z',
+                 '--', 'Aglib.lean', 'Aglib').split(b'\0')
+    return sorted({path.decode() for path in paths if path and production(path.decode())})
+
+
+def signature(path):
+    try:
+        stat = path.stat()
+        return stat.st_dev, stat.st_ino, stat.st_size, stat.st_mtime_ns, stat.st_ctime_ns
+    except FileNotFoundError:
+        return None
+
+
+def candidate_graph(repo, published, tip, parser):
+    paths = changed_paths(repo, published)
+    graph = dict(tip)
+    signatures = {}
+    object_format = git(repo, 'rev-parse', '--show-object-format').decode().strip()
+    for path in paths:
+        source = repo / path
+        signatures[path] = signature(source)
+        if signatures[path] is None:
+            graph.pop(module(path), None)
+            continue
+        data = source.read_bytes()
+        digest = hashlib.new(object_format, b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+        graph[module(path)] = dict(path=path, blob=digest,
+                                   imports=parser.lean_imports(data.decode()))
+    # Reject an observed concurrent change instead of silently presenting the
+    # previous source bytes as the current candidate. The hash manifest remains
+    # the exact analyzed basis; this is not a filesystem transaction.
+    if changed_paths(repo, published) != paths or any(
+            signature(repo / path) != before for path, before in signatures.items()):
+        raise RuntimeError('Production sources changed during analysis; rerun on a stable candidate')
+    return graph, paths
+
+
+def reverse_graph(graph):
+    reverse = defaultdict(set)
+    for name, entry in graph.items():
+        for dependency in entry['imports']:
+            if dependency in graph:
+                reverse[dependency].add(name)
+    return reverse
+
+
+def closure(reverse, seeds):
+    found = set(seeds)
+    queue = deque(found)
+    while queue:
+        for name in reverse.get(queue.popleft(), ()):
+            if name not in found:
+                found.add(name)
+                queue.append(name)
+    return found
+
+
+def impact(before, after, reverse, top):
+    added = set(after) - set(before)
+    removed = set(before) - set(after)
+    modified = {name for name in before.keys() & after.keys()
+                if before[name]['blob'] != after[name]['blob']}
+    affected = closure(reverse, added | modified)
+    ranking = []
+    for name in modified:
+        downstream = closure(reverse, {name})
+        ranking.append(dict(module=name, affected=len(downstream),
+                            existing_affected=len(downstream & before.keys()),
+                            added_affected=len(downstream & added),
+                            direct_importers=len(reverse.get(name, ()))))
+    ranking.sort(key=lambda row: (-row['affected'], row['module']))
+    # A removed module is not a candidate DAG seed. Report its remaining direct
+    # candidate importers separately, avoiding an implicit omission of deletions.
+    dangling = {name: sorted(source for source, entry in after.items()
+                             if name in entry['imports']) for name in sorted(removed)}
+    return dict(counts=dict(modules_before=len(before), modules_candidate=len(after),
+                            modified_existing=len(modified), added=len(added), deleted=len(removed),
+                            affected=len(affected), existing_affected=len(affected & before.keys()),
+                            added_affected=len(affected & added)),
+                modified_existing=sorted(modified), added=sorted(added), deleted=sorted(removed),
+                affected=sorted(affected), high_fanout_existing_changes=ranking[:top],
+                deleted_module_remaining_direct_importers=dangling)
+
+
+def graph_digest(graph):
+    return sha256(json.dumps({name: entry['blob'] for name, entry in sorted(graph.items())},
+                             sort_keys=True, separators=(',', ':')).encode())
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('--repo', type=Path, default=Path(__file__).resolve().parent.parent / 'aglib')
+    ap.add_argument('--baseline', default=BASELINE)
+    ap.add_argument('--published', default=PUBLISHED)
+    ap.add_argument('--cache-dir', type=Path, default=Path(__file__).resolve().parent)
+    ap.add_argument('--output', type=Path, default=Path(__file__).resolve().parent / 'impact-current.json')
+    ap.add_argument('--top', type=int, default=20)
+    ap.add_argument('--json', action='store_true', help='Print full JSON instead of concise counts')
+    args = ap.parse_args()
+    started = time.monotonic()
+    repo = args.repo.resolve()
+    baseline = git(repo, 'rev-parse', args.baseline + '^{commit}').decode().strip()
+    published = git(repo, 'rev-parse', args.published + '^{commit}').decode().strip()
+    parser_path = repo / 'scripts/lean_tools/source.py'
+    parser_bytes = parser_path.read_bytes()
+    parser_id = sha256(parser_bytes)
+    spec = importlib.util.spec_from_file_location('dag_native_source', parser_path)
+    parser = importlib.util.module_from_spec(spec)
+    # Execute exactly the bytes fingerprinted above (avoid an import/read race).
+    exec(compile(parser_bytes, str(parser_path), 'exec'), parser.__dict__)
+    base, base_cache, base_reads = commit_graph(repo, baseline, args.cache_dir, parser_id, parser)
+    tip, tip_cache, tip_reads = commit_graph(repo, published, args.cache_dir, parser_id, parser, base)
+    candidate, paths = candidate_graph(repo, published, tip, parser)
+    reverse = reverse_graph(candidate)
+    compared_base = impact(base, candidate, reverse, args.top)
+    compared_tip = impact(tip, candidate, reverse, args.top)
+    # Published validation is independent of current candidate edits and reuses
+    # immutable graphs. It does not trigger any source reread.
+    published_impact = impact(base, tip, reverse_graph(tip), args.top)
+    expected = dict(modules_candidate=9372, modified_existing=70, added=431,
+                    affected=3160, existing_affected=2729)
+    observed = published_impact['counts']
+    matches = all(observed[key] == value for key, value in expected.items())
+    result = dict(schema=SCHEMA,
+        identity=dict(repo=str(repo), baseline=baseline, published=published,
+                      observed_head=git(repo, 'rev-parse', 'HEAD').decode().strip(),
+                      parser_path=str(parser_path), parser_sha256=parser_id, scope=SCOPE,
+                      script_sha256=sha256(Path(__file__).read_bytes()),
+                      candidate_blob_manifest_sha256=graph_digest(candidate)),
+        evidence_boundary=('Source-byte changes; reverse transitive import closure includes seeds, '
+            'restricted to production modules in candidate DAG. External imports are not traversed. '
+            'This is graph coverage, not actual compiler/cache work, timing, or mathematical validation. '
+            'Deleted modules are reported separately and do not seed the requested candidate closure.'),
+        caches=dict(baseline=str(base_cache), published=str(tip_cache),
+                    source_blobs_parsed_this_run=base_reads + tip_reads,
+                    candidate_paths_read_or_deleted=paths),
+        candidate_blob_manifest={name: entry['blob'] for name, entry in sorted(candidate.items())},
+        baseline_to_candidate=compared_base, published_to_candidate=compared_tip,
+        baseline_to_published=published_impact,
+        published_report_check=dict(expected=expected, observed=observed, matches=matches),
+        candidate_cycles=parser.import_cycles({name: set(entry['imports']) & candidate.keys()
+                                               for name, entry in candidate.items()}),
+        elapsed_seconds=round(time.monotonic() - started, 3))
+    write_json(args.output, result)
+    if args.json:
+        print(json.dumps(result, indent=2, sort_keys=True))
+    else:
+        print(f'Production modules: {len(candidate)}; cycles: {len(result["candidate_cycles"])}')
+        for label, section in [('baseline -> candidate', compared_base), ('published -> candidate', compared_tip),
+                               ('baseline -> published', published_impact)]:
+            c = section['counts']
+            print(f'{label}: {c["modified_existing"]} modified existing + {c["added"]} added, '
+                  f'{c["deleted"]} deleted; affected {c["affected"]} '
+                  f'({c["existing_affected"]} existing + {c["added_affected"]} added)')
+        print(f'Published report match: {matches}; commit blobs parsed: {base_reads + tip_reads}; '
+              f'candidate paths refreshed: {len(paths)}; elapsed {result["elapsed_seconds"]}s')
+        print(f'Result: {args.output.resolve()}')
+    return 0 if matches and not result['candidate_cycles'] else 1
+
+
+if __name__ == '__main__':
+    sys.exit(main())

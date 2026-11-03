@@ -476,7 +476,7 @@ theorem originalFrameTransition_affineValue {S : Type u} [CommRing S]
     (e₀ : SheafOfModules.unit P₀.ringCatSheaf ≅ (Scheme.Modules.pullback j₀).obj M)
     (e₁ : SheafOfModules.unit P₁.ringCatSheaf ≅ (Scheme.Modules.pullback j₁).obj M) (r : S)
     (hs : (frameAlong p₁ j₁ M e₁).hom ≫ (pullbackCongr h.symm).hom.app M =
-      Scheme.Modules.affineMultiplication S r ≫ (frameAlong p₀ j₀ M e₀).hom)
+      Blowup.IdealFrames.affineMultiplication S r ≫ (frameAlong p₀ j₀ M e₀).hom)
     (V : X.Opens) (hV : V = (p₀ ≫ j₀) ''ᵁ ⊤)
     (h₀ : V ≤ j₀.opensRange) (h₁ : V ≤ j₁.opensRange)
     (hv : (⊤ : (Spec (.of S)).Opens) ≤ (p₀ ≫ j₀) ⁻¹ᵁ V) :
@@ -486,9 +486,9 @@ theorem originalFrameTransition_affineValue {S : Type u} [CommRing S]
           (op (Over.mk (homOfLE h₁))) (1 : Γ(X, V)))) =
       (Scheme.ΓSpecIso (.of S)).inv.hom r := by
   have H := originalFrameTransition_value p₀ p₁ j₀ j₁ h M e₀ e₁
-    (Scheme.Modules.affineMultiplication S r) hs V hV h₀ h₁ hv
+    (Blowup.IdealFrames.affineMultiplication S r) hs V hV h₀ h₁ hv
   refine H.trans ?_
-  rw [Scheme.Modules.affineMultiplication_eq_unitMul, unitMul_app]
+  rw [Blowup.IdealFrames.affineMultiplication_eq_unitMul, unitMul_app]
   simp
 
 private theorem chartSectionEquiv_apply_native {X : Scheme.{u}} (M : X.Modules)
@@ -542,7 +542,7 @@ theorem originalFrameTransition_affineCoefficient {S : Type u} [CommRing S]
     (e₀ : SheafOfModules.unit P₀.ringCatSheaf ≅ (Scheme.Modules.pullback j₀).obj M)
     (e₁ : SheafOfModules.unit P₁.ringCatSheaf ≅ (Scheme.Modules.pullback j₁).obj M) (r : S)
     (hs : (frameAlong p₁ j₁ M e₁).hom ≫ (pullbackCongr h.symm).hom.app M =
-      Scheme.Modules.affineMultiplication S r ≫ (frameAlong p₀ j₀ M e₀).hom)
+      Blowup.IdealFrames.affineMultiplication S r ≫ (frameAlong p₀ j₀ M e₀).hom)
     (V : X.Opens) (hV : V = (p₀ ≫ j₀) ''ᵁ ⊤)
     (h₀ : V ≤ j₀.opensRange) (h₁ : V ≤ j₁.opensRange)
     (hv : (⊤ : (Spec (.of S)).Opens) ≤ (p₀ ≫ j₀) ⁻¹ᵁ V) :
@@ -565,7 +565,7 @@ theorem originalFrameTransition_affineFrameCoefficient {S : Type u} [CommRing S]
     (e₀ : SheafOfModules.unit P₀.ringCatSheaf ≅ (Scheme.Modules.pullback j₀).obj M)
     (e₁ : SheafOfModules.unit P₁.ringCatSheaf ≅ (Scheme.Modules.pullback j₁).obj M) (r : S)
     (hs : (frameAlong p₁ j₁ M e₁).hom ≫ (pullbackCongr h.symm).hom.app M =
-      Scheme.Modules.affineMultiplication S r ≫ (frameAlong p₀ j₀ M e₀).hom)
+      Blowup.IdealFrames.affineMultiplication S r ≫ (frameAlong p₀ j₀ M e₀).hom)
     (V : X.Opens) (hV : V = (p₀ ≫ j₀) ''ᵁ ⊤)
     (h₀ : V ≤ j₀.opensRange) (h₁ : V ≤ j₁.opensRange)
     (hv : (⊤ : (Spec (.of S)).Opens) ≤ (p₀ ≫ j₀) ⁻¹ᵁ V) :
@@ -586,7 +586,7 @@ theorem originalFrameTransition_affineCoordinate {S : Type u} [CommRing S]
     (e₀ : SheafOfModules.unit P₀.ringCatSheaf ≅ (Scheme.Modules.pullback j₀).obj M)
     (e₁ : SheafOfModules.unit P₁.ringCatSheaf ≅ (Scheme.Modules.pullback j₁).obj M) (r : S)
     (hs : (frameAlong p₁ j₁ M e₁).hom ≫ (pullbackCongr h.symm).hom.app M =
-      Scheme.Modules.affineMultiplication S r ≫ (frameAlong p₀ j₀ M e₀).hom)
+      Blowup.IdealFrames.affineMultiplication S r ≫ (frameAlong p₀ j₀ M e₀).hom)
     (V : X.Opens) (hV : V = (p₀ ≫ j₀) ''ᵁ ⊤)
     (h₀ : V ≤ j₀.opensRange) (h₁ : V ≤ j₁.opensRange)
     (hv : (⊤ : (Spec (.of S)).Opens) ≤ (p₀ ≫ j₀) ⁻¹ᵁ V) :
@@ -736,7 +736,7 @@ private theorem originalFrameTransition_presentedCoordinate {S : Type u} [CommRi
     (c : (Scheme.Modules.pullback (p₁ ≫ j₁)).obj ((Scheme.Modules.pullback i).obj L.val) ⟶
       (Scheme.Modules.pullback (p₀ ≫ j₀)).obj ((Scheme.Modules.pullback i).obj L.val))
     (hs : (frameAlong p₁ j₁ ((Scheme.Modules.pullback i).obj L.val) e₁).hom ≫ c =
-      Scheme.Modules.affineMultiplication S r ≫
+      Blowup.IdealFrames.affineMultiplication S r ≫
         (frameAlong p₀ j₀ ((Scheme.Modules.pullback i).obj L.val) e₀).hom)
     (hc : c = (pullbackCongr h.symm).hom.app ((Scheme.Modules.pullback i).obj L.val))
     (V : X.Opens) (hV : V = (p₀ ≫ j₀) ''ᵁ ⊤)
@@ -753,7 +753,7 @@ private theorem originalFrameTransition_presentedCoordinate {S : Type u} [CommRi
   subst c
   exact originalFrameTransition_affineCoordinate p₀ p₁ j₀ j₁ h _ _ _ r
     (frameAlong_moduleIso_transition p₀ p₁ j₀ j₁ h (pullbackSectionModuleIso i L).symm
-      e₀ e₁ (Scheme.Modules.affineMultiplication S r) hs) V hV h₀ h₁ hv
+      e₀ e₁ (Blowup.IdealFrames.affineMultiplication S r) hs) V hV h₀ h₁ hv
 
 private theorem ringIso_eq_inv {R S : CommRingCat.{u}} (e : R ≅ S) (x : R) (y : S)
     (h : e.hom.hom x = y) : x = e.inv.hom y :=
@@ -900,7 +900,7 @@ theorem conormalOverlapOpen_eq_image :
 
 -- Keep only the large frame and scalar wrappers opaque to automatic conversion in these
 -- concrete comparisons. Their proved equations and targeted unfolding retain the actual maps.
-attribute [local irreducible] frameAlong conormalChartFrame Scheme.Modules.affineMultiplication
+attribute [local irreducible] frameAlong conormalChartFrame Blowup.IdealFrames.affineMultiplication
 
 -- Respect the local opaque wrappers when the original equation determines the symbolic data.
 set_option backward.isDefEq.respectTransparency true in

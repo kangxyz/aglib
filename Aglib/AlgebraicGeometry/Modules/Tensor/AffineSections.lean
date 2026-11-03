@@ -8,7 +8,6 @@ module
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Tensor
 public import Aglib.AlgebraicGeometry.Modules.Tensor.Stalk.Bilinear
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Chart
-public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Sections
 
 /-! # The original tensor section map on affine opens
 
@@ -81,6 +80,11 @@ private theorem moduleTensorSpecGlobalSectionsIso_hom_tmul (E F : (Spec R).Modul
   simp only [ModuleCat.id_apply] at hF
   rw [hE, hF]
   rfl
+
+
+private theorem moduleSpecΓFunctor_map_apply {M N : (Spec R).Modules}
+    (f : M ⟶ N) (m : Γ(M, ⊤)) :
+    ((moduleSpecΓFunctor (R := R)).map f) m = f.val.app (op ⊤) m := rfl
 
 private theorem affineChartΓIso_hom_apply {X : Scheme.{u}}
     (U : X.Opens) (hU : IsAffineOpen U) (M : X.Modules)

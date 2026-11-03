@@ -534,6 +534,7 @@ public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Bas
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.VerticalReflection
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.WholeNormalization
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ZeroComparison
+public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ZeroComparison.UnitIsIso
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ZeroNormalization
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.ChangeTargetCoherence
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.ChangeTargetComposition
@@ -660,6 +661,7 @@ public import Aglib.Algebra.Homology.HomologicalComplex.Adjunction.Homology
 public import Aglib.Algebra.Homology.HomologicalComplex.Adjunction.ResolutionCounit
 public import Aglib.Algebra.Homology.HomologicalComplex.Mates
 public import Aglib.Algebra.Homology.HomologicalComplex.TwoStageCounit
+public import Aglib.Algebra.Homology.HomologicalComplex.TwoStageSquare
 public import Aglib.Algebra.Homology.HomologicalComplex.TwoStageTransport
 public import Aglib.Algebra.Homology.HomotopyCategory.Adjunction
 public import Aglib.Algebra.Homology.HomotopyCategory.Coproducts
@@ -1076,6 +1078,7 @@ public import Aglib.AlgebraicGeometry.Blowup.RegularPoint.Normal.Sections
 public import Aglib.AlgebraicGeometry.Blowup.RegularPoint.Normal.TwistedLine
 public import Aglib.AlgebraicGeometry.Blowup.RegularPoint.Regularity
 public import Aglib.AlgebraicGeometry.Blowup.RegularPoint.Scheme
+public import Aglib.AlgebraicGeometry.Blowup.RegularPoint.Scheme.LocalRegularity
 public import Aglib.AlgebraicGeometry.Blowup.SchematicDensity
 public import Aglib.AlgebraicGeometry.Blowup.TopologicalDensity
 public import Aglib.AlgebraicGeometry.Blowup.UnitLocus
@@ -1119,12 +1122,14 @@ public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.No
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineComposition
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineCongruence
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineFunctor
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineFunctor.Composition
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineNaturality
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineNormalization
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineRefinement
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineRestriction
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineScalarCriterion
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineSheaf
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineSheaf.Constructor
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineSheafComposition
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineSheafUnit
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineTensorCriterion
@@ -1272,6 +1277,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.Re
 public import Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.RegularList.Sheaf.Class
 public import Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.RegularList.Sheaf.Counit
 public import Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.RegularList.Sheaf.Localization
+public import Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.RegularList.Sheaf.Localization.Quotient
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.CounitDegreeZero
@@ -1565,7 +1571,6 @@ public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Ope
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Smooth
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Smooth.Trace
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace
-public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.AffineLocal
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.AffineModel
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.AffineModel.Identity
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.CoefficientMap
@@ -2614,6 +2619,7 @@ public import Aglib.AlgebraicGeometry.Dimension.CodimensionTwoClosed
 public import Aglib.AlgebraicGeometry.Dimension.DenseOpenComplement
 public import Aglib.AlgebraicGeometry.Dimension.FieldExtension
 public import Aglib.AlgebraicGeometry.Dimension.Finite
+public import Aglib.AlgebraicGeometry.Dimension.Finite.Stalk
 public import Aglib.AlgebraicGeometry.Dimension.FiniteFibreImage
 public import Aglib.AlgebraicGeometry.Dimension.FiniteTypeFibres
 public import Aglib.AlgebraicGeometry.Dimension.FlatDVR
@@ -5209,6 +5215,7 @@ public import Aglib.AlgebraicGeometry.Modules.InternalHom.AffineOpenDualLocaliza
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.AffinePullback
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.AffineRestriction
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.AffineSections
+public import Aglib.AlgebraicGeometry.Modules.InternalHom.AffineSections.Inverse
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.Bidual
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.BidualAffine
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.BidualLocallyFree
@@ -5253,6 +5260,7 @@ public import Aglib.AlgebraicGeometry.Modules.Invertible.Bidual.AffineNaturality
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Bidual.CoherentOpenRestriction
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Bidual.Identity.Core
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Bidual.Map
+public import Aglib.AlgebraicGeometry.Modules.Invertible.Bidual.Map.Equation
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Bidual.Naturality
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Bidual.OpenNaturality
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Bidual.OpenRestriction
@@ -5560,11 +5568,13 @@ public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.RestrictionUn
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.ScalarAdjunction
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.ScalarAdjunction.Counit
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Sections
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Sections.Map
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.SectionsMap
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Stalk
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Support
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.TildeExact
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.TildePullback
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.TildePullback.Composition
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.TildePullbackRaw
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.AffinePushforward
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Coproduct
@@ -6100,6 +6110,7 @@ public import Aglib.AlgebraicGeometry.Normalization.FiniteFunctionField.ChartSec
 public import Aglib.AlgebraicGeometry.Normalization.FiniteFunctionField.ChartSectionsTransport
 public import Aglib.AlgebraicGeometry.Normalization.FiniteFunctionField.OpenRecovery
 public import Aglib.AlgebraicGeometry.Normalization.FunctionField
+public import Aglib.AlgebraicGeometry.Normalization.FunctionField.Finiteness
 public import Aglib.AlgebraicGeometry.Normalization.FunctionField.FlatPreimmersion
 public import Aglib.AlgebraicGeometry.Normalization.GaloisFibers
 public import Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.BaseLocalization
@@ -6667,6 +6678,7 @@ public import Aglib.AlgebraicGeometry.Spec.AffineFiniteSectionAlgebra
 public import Aglib.AlgebraicGeometry.Spec.AffineSectionAlgebra
 public import Aglib.AlgebraicGeometry.Spec.CompletionLocalRing
 public import Aglib.AlgebraicGeometry.Spec.CompletionLocalRing.Normal
+public import Aglib.AlgebraicGeometry.Spec.CompletionLocalRing.Normal.ProperBaseChange
 public import Aglib.AlgebraicGeometry.Spec.CompletionLocalRing.RegularModel
 public import Aglib.AlgebraicGeometry.Spec.CompletionResidueFiber
 public import Aglib.AlgebraicGeometry.Spec.CompletionSpecialization
@@ -6784,6 +6796,7 @@ public import Aglib.AlgebraicGeometry.Stalk.GenericFiber
 public import Aglib.AlgebraicGeometry.Stalk.GenericFiber.DVROpen
 public import Aglib.AlgebraicGeometry.Stalk.GenericFiber.Horizontal
 public import Aglib.AlgebraicGeometry.Stalk.GenericPoint
+public import Aglib.AlgebraicGeometry.Stalk.GenericPoint.Dimension
 public import Aglib.AlgebraicGeometry.Stalk.GenericSection
 public import Aglib.AlgebraicGeometry.Stalk.HorizontalGenerization
 public import Aglib.AlgebraicGeometry.Stalk.IntegralBaseChange
@@ -9178,6 +9191,7 @@ public import Aglib.RingTheory.Reflexive.BidualPuncturedFree
 public import Aglib.RingTheory.Reflexive.DoubleDual
 public import Aglib.RingTheory.Reflexive.DoubleDualFraction
 public import Aglib.RingTheory.Reflexive.DoubleDualFraction.Uniqueness
+public import Aglib.RingTheory.Reflexive.DoubleDualFraction.Uniqueness.ScalarCancellation
 public import Aglib.RingTheory.Reflexive.Dual
 public import Aglib.RingTheory.Reflexive.DualPi
 public import Aglib.RingTheory.Reflexive.EndomorphismLocalization

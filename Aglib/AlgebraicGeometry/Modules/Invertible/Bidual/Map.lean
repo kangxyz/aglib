@@ -59,11 +59,6 @@ def extendToBidualLine (L : LineBundle X) (h : M ⟶ L.val) :
     dualSheaf X (dualSheaf X M) ⟶ L.val :=
   doubleDualMap X h ≫ (bidualIso X L).inv
 
-/-- The original extension is its original double-dual map followed by line biduality. -/
-theorem extendToBidualLine_eq (L : LineBundle X) (h : M ⟶ L.val) :
-    extendToBidualLine X L h = doubleDualMap X h ≫ (bidualIso X L).inv := by
-  rfl
-
 /-- The extension agrees with the given raw map through original evaluation. -/
 theorem extendToBidualLine_evaluation (L : LineBundle X) (h : M ⟶ L.val) :
     bidualMap X M ≫ extendToBidualLine X L h = h := by

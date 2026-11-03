@@ -694,7 +694,6 @@ public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Ope
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Smooth
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Smooth.Trace
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace
-public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.AffineLocal
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.AffineModel
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.AffineModel.Identity
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.CoefficientMap

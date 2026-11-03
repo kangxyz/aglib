@@ -29,6 +29,7 @@ factorization. `Scheme.genericNormalization_fieldMap_isIso` cancels the
 injective function-field map of `γ.toNormalization` to prove birationality
 of the original `ν`.
 
+The additional interfaces live in [FunctionField/Finiteness.lean](FunctionField/Finiteness.lean).
 `Scheme.genericSection_isFractionRing` exposes the original affine
 fraction-ring comparison. `Scheme.genericNormalization_finite_app_of_finite`
 uses finiteness of that literal integral closure, without a Nagata premise.

@@ -6,7 +6,6 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Dimension.OpenCover
-public import Aglib.AlgebraicGeometry.Stalk.Dimension
 public import Mathlib.AlgebraicGeometry.Morphisms.Finite
 public import Mathlib.RingTheory.Ideal.GoingUp
 public import Mathlib.RingTheory.KrullDimension.Basic
@@ -72,21 +71,5 @@ theorem Hom.topologicalKrullDim_le_of_isFinite
     isAffine_of_isAffineHom (pullback.snd f (Z.affineCover.f i))
   exact (affine_finite_dimension_le (pullback.snd f (Z.affineCover.f i))).trans
     (Z.affineCover.f i).isOpenEmbedding.isInducing.topologicalKrullDim_le
-
-/-- Every original source stalk of a finite morphism has dimension at most
-the topological dimension of its target. -/
-theorem Hom.stalk_dimension_le_of_finite
-    {N Y : Scheme.{u}} (ν : N ⟶ Y) [IsFinite ν] (n : N) :
-    ringKrullDim (N.presheaf.stalk n) ≤ topologicalKrullDim Y := by
-  have hn : ringKrullDim (N.presheaf.stalk n) ≤ topologicalKrullDim N := by
-    rw [topologicalKrullDim_eq_iSup_stalk]
-    exact le_iSup (fun x : N => ringKrullDim (N.presheaf.stalk x)) n
-  exact hn.trans ν.topologicalKrullDim_le_of_isFinite
-
-/-- Compatibility name for the original finite-morphism dimension bound. -/
-theorem Hom.topologicalKrullDim_le_of_finite
-    {N Y : Scheme.{u}} (ν : N ⟶ Y) [IsFinite ν] :
-    topologicalKrullDim N ≤ topologicalKrullDim Y :=
-  ν.topologicalKrullDim_le_of_isFinite
 
 end AlgebraicGeometry.Scheme

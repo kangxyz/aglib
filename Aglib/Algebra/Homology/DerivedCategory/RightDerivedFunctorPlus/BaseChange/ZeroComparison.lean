@@ -39,19 +39,6 @@ def rightDerivedSingleUnit (M : A) :
       ObjectProperty.homMk ((singleMapHomologicalComplex F (.up ℤ) 0).inv.app M)) ≫
       F.rightDerivedFunctorPlusUnit.app ((CochainComplex.singleFunctorPlus A 0).obj M)
 
-/-- Invertibility of the original unit at the single complex suffices for
-invertibility of the same normalized single unit. -/
-theorem isIso_rightDerivedSingleUnit_of_isIso_unit (M : A)
-    [IsIso (F.rightDerivedFunctorPlusUnit.app
-      ((CochainComplex.singleFunctorPlus A 0).obj M))] :
-    IsIso (F.rightDerivedSingleUnit M) := by
-  let e : (CochainComplex.singleFunctorPlus B 0).obj (F.obj M) ≅
-      F.mapCochainComplexPlus.obj ((CochainComplex.singleFunctorPlus A 0).obj M) :=
-    ObjectProperty.isoMk _ ((singleMapHomologicalComplex F (.up ℤ) 0).app M).symm
-  change IsIso (DerivedCategory.Plus.Q.map e.hom ≫
-    F.rightDerivedFunctorPlusUnit.app ((CochainComplex.singleFunctorPlus A 0).obj M))
-  infer_instance
-
 private theorem single_homology_comparison (M : B) :
     (DerivedCategory.singleFunctorCompHomologyFunctorIso B 0).hom.app M =
       (DerivedCategory.Plus.homologyFunctorFactors (A := B) 0).hom.app
