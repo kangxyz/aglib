@@ -1,0 +1,111 @@
+name: CI checkpoint tests
+on:
+  pull_request:
+    paths:
+      - .github/ci-cache/**
+      - .github/workflows/lean-ci.yml
+      - .github/workflows/cache-checkpoints.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: checkpoint-tests-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  producer:
+    name: Native producer (${{ matrix.case }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        case: [cold, timeout]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Install exact Lean 4.34.1 without compilation caches
+        shell: bash
+        run: |
+          curl --fail --silent --show-error --location --retry 2 --max-time 120 https://elan.lean-lang.org/elan-init.sh -o "$RUNNER_TEMP/elan-init.sh"
+          bash "$RUNNER_TEMP/elan-init.sh" -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+      - name: Check checkpoint integrity regressions
+        run: PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s .github/ci-cache -p 'test_*.py' -v
+      - name: Produce actual native checkpoints
+        shell: bash
+        env:
+          CASE: ${{ matrix.case }}
+        run: |
+          phase=produce
+          if test "$CASE" = timeout; then phase=timeout-produce; fi
+          timeout --kill-after=15s 8m python3 .github/ci-cache/tests/native_checkpoint.py "$phase" --work "$RUNNER_TEMP/probe" --transfer "$RUNNER_TEMP/transfer"
+      - name: Exercise corrupt native archive recovery
+        if: ${{ matrix.case == 'cold' }}
+        run: |
+          python3 .github/ci-cache/tests/stage_repair.py --work "$RUNNER_TEMP/stage-hash" --corruption hash-text
+          python3 .github/ci-cache/tests/stage_repair.py --work "$RUNNER_TEMP/stage-truncated" --corruption truncated
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: native-checkpoint-${{ matrix.case }}
+          path: ${{ runner.temp }}/transfer
+          compression-level: 0
+          retention-days: 7
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: ${{ always() }}
+        with:
+          name: native-producer-evidence-${{ matrix.case }}
+          path: |
+            ${{ runner.temp }}/probe/*.json
+            ${{ runner.temp }}/probe/*.jsonl
+            ${{ runner.temp }}/probe/*.log
+            ${{ runner.temp }}/stage-*/*.json
+            ${{ runner.temp }}/stage-*/*.log
+          compression-level: 0
+          retention-days: 7
+  consumer:
+    name: Fresh Linux consumer (${{ matrix.case }})
+    needs: producer
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        case: [cold, timeout]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Install exact Lean without any Actions cache restore
+        shell: bash
+        run: |
+          curl --fail --silent --show-error --location --retry 2 --max-time 120 https://elan.lean-lang.org/elan-init.sh -o "$RUNNER_TEMP/elan-init.sh"
+          bash "$RUNNER_TEMP/elan-init.sh" -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
+        with:
+          name: native-checkpoint-${{ matrix.case }}
+          path: ${{ runner.temp }}/transfer
+      - name: Restore across fresh VMs and check actual incremental behavior
+        shell: bash
+        env:
+          CASE: ${{ matrix.case }}
+        run: |
+          phase=consume
+          if test "$CASE" = timeout; then phase=timeout-resume; fi
+          timeout --kill-after=15s 8m python3 .github/ci-cache/tests/native_checkpoint.py "$phase" --work "$RUNNER_TEMP/probe" --transfer "$RUNNER_TEMP/transfer"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: ${{ always() }}
+        with:
+          name: native-consumer-evidence-${{ matrix.case }}
+          path: |
+            ${{ runner.temp }}/probe/*.json
+            ${{ runner.temp }}/probe/*.jsonl
+            ${{ runner.temp }}/probe/*.log
+          compression-level: 0
+          retention-days: 7

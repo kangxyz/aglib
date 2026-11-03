@@ -1,0 +1,155 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.AlgebraicGeometry.Cohomology.Group.Coalgebra
+public import Aglib.Algebra.Coalgebra.Graded.Primitive
+public import Aglib.AlgebraicGeometry.Cohomology.Proper.Field
+public import Aglib.AlgebraicGeometry.Cohomology.Group.Vanishing
+public import Aglib.Algebra.Graded.ExternalProduct.SourceIdentity
+
+/-!
+# The original coherent H1 dimension bound over every field
+
+The actual multiplication pullback and original global Kunneth map supply
+the native coalgebra laws. The accepted pure graded bound applies to these
+operations, original proper finiteness and actual dimension vanishing.
+-/
+
+@[expose] public noncomputable section
+
+set_option backward.defeqAttrib.useBackward true
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+
+open CategoryTheory MonoidalCategory CartesianMonoidalCategory AlgebraicGeometry
+open AlgebraicGeometry.Scheme.OverField AlgebraicGeometry.Scheme.Cohomology
+open scoped CategoryTheory.MonObj TensorProduct DirectSum
+
+universe u v
+
+namespace AlgebraicGeometry.Scheme.Group
+
+attribute [local instance] Over.cartesianMonoidalCategory
+
+private theorem finrank_degreeOne_le_of_source
+    {k : Type u} [Field k] {A : Type v} [Ring A] [Algebra k A] [Nontrivial A]
+    {grade : ℕ → Submodule k A} [GradedAlgebra grade] [Coalgebra k A]
+    [Module.Finite k (grade 1)]
+    {t : A ⊗[k] A ≃ₗ[k] GradedTensorProduct k grade grade}
+    (ht : t = GradedTensorProduct.of k grade grade)
+    (hε : ∀ a, GradedAlgebra.proj grade 0 a = Coalgebra.counit (R := k) a • (1 : A))
+    (hOne : Coalgebra.comul (R := k) (1 : A) = (1 : A) ⊗ₜ[k] (1 : A))
+    (hMul : ∀ a b : A,
+      t (Coalgebra.comul (a * b)) =
+        t (Coalgebra.comul a) * t (Coalgebra.comul b))
+    (hDegree : ∀ x : grade 1,
+      TensorProduct.map (GradedAlgebra.proj grade 0) (GradedAlgebra.proj grade 1)
+          (Coalgebra.comul (x : A)) +
+        TensorProduct.map (GradedAlgebra.proj grade 1) (GradedAlgebra.proj grade 0)
+          (Coalgebra.comul (x : A)) = Coalgebra.comul (x : A))
+    (g : ℕ) (hVanish : ∀ n, g < n → grade n = ⊥) :
+    Module.finrank k (grade 1) ≤ g := by
+  apply GradedAlgebra.finrank_degreeOne_le_of_comul_grading grade hε hOne ?_ hDegree g hVanish
+  intro a b
+  rw [← ht]
+  exact hMul a b
+
+private theorem finrank_directSum_degreeOne_le
+    {k : Type u} [Field k] {M : ℕ → Type v}
+    [∀ i, AddCommGroup (M i)] [∀ i, Module k (M i)]
+    [ringM : DirectSum.GRing M] [algebraM : DirectSum.GAlgebra k M]
+    [gradingM : GradedAlgebra (DirectSum.summandSubmodule (R := k) M)]
+    [coalgebraM : Coalgebra k (DirectSum ℕ M)]
+    [Nontrivial (DirectSum ℕ M)] [Module.Finite k (M 1)]
+    {t : (DirectSum ℕ M ⊗[k] DirectSum ℕ M) →
+      GradedTensorProduct k (DirectSum.summandSubmodule (R := k) M)
+        (DirectSum.summandSubmodule (R := k) M)}
+    (hMul : ∀ a b : DirectSum ℕ M,
+      t (Coalgebra.comul (a * b)) =
+        t (Coalgebra.comul a) * t (Coalgebra.comul b))
+    (ht : ∀ z, t z =
+      DirectSum.externalProductSourceEquiv (R := k) (M := M) (N := M)
+        (gradeM := gradingM) (gradeN := gradingM) z)
+    (hCounit : ∀ a : DirectSum ℕ M,
+      GradedAlgebra.proj (DirectSum.summandSubmodule (R := k) M) 0 a =
+        Coalgebra.counit (R := k) a • (1 : DirectSum ℕ M))
+    (hOne : Coalgebra.comul (R := k) (1 : DirectSum ℕ M) =
+      (1 : DirectSum ℕ M) ⊗ₜ[k] (1 : DirectSum ℕ M))
+    (hDegree : ∀ x : DirectSum.summandSubmodule (R := k) M 1,
+      TensorProduct.map
+          (GradedAlgebra.proj (DirectSum.summandSubmodule (R := k) M) 0)
+          (GradedAlgebra.proj (DirectSum.summandSubmodule (R := k) M) 1)
+          (Coalgebra.comul (x : DirectSum ℕ M)) +
+        TensorProduct.map
+          (GradedAlgebra.proj (DirectSum.summandSubmodule (R := k) M) 1)
+          (GradedAlgebra.proj (DirectSum.summandSubmodule (R := k) M) 0)
+          (Coalgebra.comul (x : DirectSum ℕ M)) =
+        Coalgebra.comul (x : DirectSum ℕ M))
+    (g : ℕ)
+    (hVanish : ∀ n, g < n → DirectSum.summandSubmodule (R := k) M n = ⊥) :
+    Module.finrank k (M 1) ≤ g := by
+  let selected := DirectSum.externalProductSourceEquiv
+    (R := k) (M := M) (N := M) (gradeM := gradingM) (gradeN := gradingM)
+  have hMulSelected (a b : DirectSum ℕ M) :
+      selected (Coalgebra.comul (a * b)) =
+        selected (Coalgebra.comul a) * selected (Coalgebra.comul b) :=
+    (ht (Coalgebra.comul (a * b))).symm.trans
+      ((hMul a b).trans
+        (congrArg₂ (· * ·) (ht (Coalgebra.comul a)) (ht (Coalgebra.comul b))))
+  let : Module.Finite k (DirectSum.summandSubmodule (R := k) M 1) :=
+    Module.Finite.equiv (DirectSum.summandLinearEquiv (R := k) M 1)
+  have hSource := DirectSum.externalProductSourceEquiv_eq_of
+    (R := k) (M := M) (N := M) (gradeM := gradingM) (gradeN := gradingM)
+  have hBound := finrank_degreeOne_le_of_source
+    (A := DirectSum ℕ M) (grade := DirectSum.summandSubmodule (R := k) M)
+    hSource hCounit hOne hMulSelected hDegree g hVanish
+  exact (DirectSum.summandLinearEquiv (R := k) M 1).finrank_eq.trans_le hBound
+
+variable {k : Type u} [Field k] (G : FScheme k) [GrpObj G]
+  [IsProper G.hom] [GeometricallyIntegral G.hom] [Smooth G.hom]
+
+set_option maxHeartbeats 400000 in
+-- Specializing the original direct-sum graded bound to coherent cohomology
+-- exceeds the standard budget; keep this finite allowance local.
+/-- Proper smooth geometrically integral groups satisfy the original coherent H1 bound.
+No commutativity, perfectness, characteristic or extra theorem-family premise is required. -/
+theorem finrank_structureH1_le_finrank_identityCotangent :
+    Module.finrank k (structureCohomology k G 1) ≤
+      Module.finrank k (Cotangent.Space η[G]) := by
+  let : Module.Finite k (structureCohomology k G 1) :=
+    properStructureCohomologyFinite k G 1 inferInstance
+  let g := Module.finrank k (Cotangent.Space η[G])
+  have hvanish : ∀ n, g < n → structureCohomologyGrade G n = ⊥ := by
+    intro n hn
+    let : Subsingleton (structureCohomology k G n) :=
+      structureCohomology_subsingleton_of_finrank_identityCotangent_lt G n hn
+    apply (Submodule.eq_bot_iff _).mpr
+    intro a ha
+    change ∃ x, structureCohomologyInclusion G n x = a at ha
+    obtain ⟨x, hx⟩ := ha
+    have hzero := congrArg (structureCohomologyInclusion G n) (Subsingleton.elim x 0)
+    exact hx.symm.trans (hzero.trans (map_zero _))
+  have hCounit (a : structureCohomologyAlgebra G) :
+      GradedAlgebra.proj (structureCohomologyGrade G) 0 a =
+        Coalgebra.counit (R := k) a • (1 : structureCohomologyAlgebra G) := by
+    rw [structureCohomologyCoalgebra_counit]
+    exact structureCohomology_proj_zero G a
+  have hOne := structureCohomologyComul_one G
+  have hMul := structureCohomologyComul_mul G
+  dsimp only [structureCohomologyAlgebra] at hMul
+  have hDegree := structureCohomologyComul_degreeOne G
+  let sourceFun := fun z => structureExternalTensorSourceEquiv G G z
+  exact finrank_directSum_degreeOne_le
+    (M := structureCohomology k G)
+    (ringM := structureCohomologyGRing G)
+    (algebraM := structureCohomologyGAlgebra G)
+    (gradingM := structureCohomologyGradedAlgebra G)
+    (coalgebraM := structureCohomologyCoalgebra G)
+    (t := sourceFun)
+    hMul (fun _ => rfl) hCounit hOne hDegree g hvanish
+
+end AlgebraicGeometry.Scheme.Group

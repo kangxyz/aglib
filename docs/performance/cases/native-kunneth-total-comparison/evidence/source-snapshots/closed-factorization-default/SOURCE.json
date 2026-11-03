@@ -1,0 +1,8 @@
+{
+  "head": "7545acd876b4ebf73f067d532ffa75263c01e26c",
+  "comparison_sha256": "cdd81704ef4b05ecd47ef48d2db6aea055d87cfd8c84b6e719fabd7cd2e74dd7",
+  "run_id": "remote-8f6e70453674423fb354c9a8f22a24c0",
+  "source_digest": "88c993074c490b7e4cddae05132cee741c0430913de48ae87daf0dd372688e79",
+  "status": "FAILED: whnf200k native declaration112:0, corollary kernel129; no Values/mirror; no OOM",
+  "change": "Closed hSigned+hL first; infer original L/E/kappa and return literal original L, all default200; no model change"
+}

@@ -207,8 +207,19 @@ supplied locally Noetherian Picard representatives with their displayed
 local-finite-type and separatedness hypotheses. In positive genus, after
 an algebraically closed field extension, the scalar-extended principal
 morphism comes from an ample line bundle on the scalar-extended original
-Jacobian. The coherent-H¹ bound and a theta line bundle over the ground
-field remain separate obligations.
+Jacobian.
+
+[CanonicalPrincipal](Jacobian/Theta/CanonicalPrincipal.lean) applies the
+general coherent-cohomology group bound to the same original Jacobian.
+It supplies `jacobianStructureH1Le` and removes the separate H¹ input from
+the canonical Abel dual map, its isomorphism, and the negative-inverse
+principal group and scheme isomorphisms. These results hold in every genus
+over any field, retaining the same supplied Picard representatives and their
+locally Noetherian, local-finite-type and separatedness conditions. A supplied
+origin gives the original Abel-pullback formula for the same map. In positive
+genus its scalar extension to an algebraically closed field is induced by an
+ample line bundle on the original scalar-extended Jacobian. A theta line
+bundle over the ground field remains a separate descent question.
 
 ## Additional source entry points
 

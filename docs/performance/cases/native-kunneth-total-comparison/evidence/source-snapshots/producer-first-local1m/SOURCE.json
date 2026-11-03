@@ -1,0 +1,9 @@
+{
+  "head": "7545acd876b4ebf73f067d532ffa75263c01e26c",
+  "comparison_sha256": "07a874ea4d69e3b5b7de795f300cee8687ef97f60016ce892ea77463e6977133",
+  "status": "FAILED: kernel memory budget, plus second local-cap explanation linter; no Values/mirror coverage",
+  "previous_candidate_sha256": "576fb3f48858f6395271d6581a7f4ed4e29b21f77c9115fa37213059f63ae0ed",
+  "difference": "Adjacent comments and declaration-local 1000000 caps on two native comparison declarations only; all generic helpers remain default 200000",
+  "run_id": "remote-a8112534c0c342439c3f4e3309e460cb",
+  "source_digest": "c1f0de7126125adaa6e5bfaeda499003a141e5c20816eb98ec2f94d9bd67698c"
+}

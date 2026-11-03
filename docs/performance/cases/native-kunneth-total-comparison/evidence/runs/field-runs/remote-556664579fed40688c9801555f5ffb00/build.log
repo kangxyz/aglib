@@ -1,0 +1,24 @@
+✔ [3471/3472] Built Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethLinear.Values (230s)
+✖ [3472/3472] Building AglibTest.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethComparison (370s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-556664579fed40688c9801555f5ffb00/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean -o /root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/lib/lean/AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.olean -i /root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/lib/lean/AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/ir/AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.c --setup /root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/ir/AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.setup.json --json
+error: AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean:28:9: Function expected at
+  structureCohomology
+but this term has type
+  ?m.3
+
+Note: Expected a function because this term is being applied to the argument
+  k
+
+Hint: The identifier `structureCohomology` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+error: AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean:28:41: Function expected at
+  structureCohomology
+but this term has type
+  ?m.3
+
+Note: Expected a function because this term is being applied to the argument
+  k
+
+Hint: The identifier `structureCohomology` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+Some required targets logged failures:
+- AglibTest.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethComparison
+error: build failed

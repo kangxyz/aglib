@@ -15,10 +15,13 @@ downloads from Reservoir/GitHub. This is separate from
   cache, imports published native caches for resolved `kangxyz/*` Git dependencies,
   and incrementally builds only the production targets. It saves completed
   compilation, stages the production build's native mappings and outputs, and
-  uploads that mathematical artifact for Test. It also snapshots the native
-  `artifacts/` and `outputs/` directories as a compressed, same-run dependency
-  fallback, separate from the public root-only artifact. No package checkouts or
-  working build directories enter that fallback. It does not prepare checker tools
+  uploads that mathematical artifact for Test. Callers containing
+  both `.github/ci-cache/checkpoint.py` and `.github/ci-cache/stage.py` use the
+  layered transport described below when the support preflight succeeds:
+  completed root and dependency working outputs are saved separately, and a
+  complete same-run dependency closure accompanies the root artifact.
+  Other callers retain the legacy compressed native-store dependency fallback.
+  Build does not prepare checker tools
   or an auditor, run generated-entry or text-style checks, or build `check-targets`.
   Its final report requires the production build to succeed; checker failures
   belong to Test and do not change Build's result. Production Build is not retried.
@@ -29,8 +32,11 @@ downloads from Reservoir/GitHub. This is separate from
   skips Lake; timeout exit 124 or forced-kill exit 137 fails Build, so Test and
   Publish cache do not run. The job limit is 360 minutes, reserving about thirty
   minutes for the existing cache save and partial-output staging. Cache saving
-  still runs after compiler failure or cutoff, before staging. A later run on
-  the same branch restores compatible saved outputs and continues incrementally;
+  still runs after compiler failure or cutoff. On the layered path, bounded
+  native staging repairs derived archives before root checkpoint packing. Both completed
+  root outputs and completed dependency outputs have independent always-run
+  checkpoints on the layered path. A later run on the same branch restores
+  compatible saved outputs and continues incrementally;
   no automatic rerun is scheduled. Network failures or runner teardown can still
   prevent cache delivery.
 - `test_lint` requires successful Build. It downloads this run's mandatory
@@ -40,11 +46,14 @@ downloads from Reservoir/GitHub. This is separate from
   artifact or incomplete native output fails the job before checker preparation.
   This follows Mathlib's
   [same-run staging transfer and completeness check](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/.github/workflows/build_template.yml#L444-L479).
-  An optional Actions cache miss or restoration failure first downloads and
-  restores Build's mandatory same-run dependency snapshot, including dependency
-  outputs Build compiled that have no public release. It also obtains pinned
-  Mathlib artifacts through Build's existing cache command. Recovery runs before
-  the mandatory current-run root overlay. Successful output verification,
+  Layered Test always downloads Build's complete same-run dependency snapshot,
+  including unpublished outputs restored by Build even when no new dependency
+  file compiled. It fetches pinned dependency source checkouts with `lake env true`
+  without compiling the Mathlib cache executable, applies optional root/tool
+  checkpoints, then overlays the mandatory current dependency closure and current
+  root artifact in that order. Legacy callers recover the native-store snapshot
+  only after an optional Actions cache miss or restoration failure. All recovery
+  precedes the mandatory current-run root overlay. Successful output verification,
   rather than a warm-cache outcome, enables
   the later checks.
   Test then incrementally builds the Batteries declaration-linter, Mathlib
@@ -71,7 +80,10 @@ downloads from Reservoir/GitHub. This is separate from
   The existing axiom step prepares the
   [pinned auditor used by lean-action](https://github.com/leanprover-community/axiom-audit/tree/46024e005996495c65ef609368e11ab39c4222e3)
   under `$LAKE_CACHE_DIR/axiom-audit`, checks its exact source revision and uses
-  the package's unchanged toolchain. A cold cache clones/builds it there; a warm
+  the package's unchanged toolchain. When a scoped tool cache restores build
+  outputs without source, CI clones the pinned checkout into an empty temporary
+  directory, verifies its revision, then overlays source and `.git` while
+  preserving the restored `.lake` outputs. A cold cache builds it there; a warm
   cache reuses the checkout and incremental outputs. Build never prepares the
   auditor, and its checkout is excluded from the dependency snapshot.
   The auditor reads built production roots and their imported
@@ -112,10 +124,65 @@ without changed-file filtering or automatic fixes. Test libraries use `TestName.
 globs and `lake test`; they are not default production targets and have no
 required generated `TestName.lean`. All callers use the same native mechanisms.
 
-Each job restores `.lake` and the native cache directory together once. Build
-and Test run on separate runners and each saves its completed compilation,
-including partial progress on failure. Test's Actions restore warms dependency
-and checker/auditor outputs; it does not substitute for the current Build artifact.
+Build and Test run on separate runners. The layered helper keeps three scoped
+compilation caches, without saving dependency checkouts, the entire `.lake`
+directory or the global native content store:
+
+- Dependencies contain complete resolved dependency working build directories
+  and Lake configuration outputs. Compatible immutable generations use the
+  compiler, OS, architecture, manifest and configuration context plus a content
+  generation. Build saves a generation only when content changed or the optional
+  dependency cache was missing. Completed partial dependency work is saved after
+  failed or interrupted Build as well as successful Build, once the production
+  Build step actually starts. Earlier setup/acquisition failures do not replace
+  a downloaded checkpoint with config-only state.
+- Root checkpoints contain the root package's complete working build/configuration,
+  including in-package test compilation. Branch/run/attempt keys let later runs
+  resume partial progress; Test saves its additions under a distinct job suffix.
+  Root and tool restores prefer the current branch, then a context-compatible
+  seed within GitHub's existing cache visibility, including the default branch.
+  Test saves root/tool progress only after successful production readiness;
+  earlier source acquisition, overlay or readiness failures preserve prior caches.
+  These checkpoints never authorize Test or publication.
+- Tool checkpoints contain the private packaged lint runner, the pinned auditor,
+  and dependency build/configuration additions or changes relative to the
+  mandatory current Build dependency manifest. Each generation records that full
+  difference, including already restored checker outputs. It retains actual
+  native objects, libraries, executable and module facets through scoped working
+  outputs rather than assuming module archives contain native executables.
+  Unchanged tool content with a matched optional cache is not uploaded again.
+  It saves compilation only; full lint and the existing check set still execute.
+
+Scoped checkpoints omit only generated `*.setup.json` files under each actual
+`.lake/build/ir` directory. Pinned Lake regenerates this compiler scaffolding
+before compilation; native cold recovery and interrupted-build resume tests cover
+its omission. Other JSON, traces, hashes and compiled native outputs remain.
+
+All optional restores precede the mandatory current dependency and root overlays.
+The current root `-o`/stage artifact and exact `--no-build --rehash` success remain
+Test's authority. The dependency handoff reuses the complete compressed scoped
+checkpoint; it is never reduced to newly compiled files. A current dependency
+manifest also supplies the comparison basis for Test's tool checkpoint.
+Archives use streaming zstd compression, and unchanged dependency generations
+reuse compatible restored transport where supported by the helper. Network
+failure or runner teardown can still prevent delivery; packing begins only after
+this job's recorded compiler scopes have stopped.
+
+The helper's conservative `supported` preflight selects layered caching only when
+both helper files are present and the Lean 4.34.1 resolved layout is supported. Package overrides, external path dependencies and
+unsupported layouts retain the legacy path. Build rechecks support immediately
+after a broad migration restore so restored overrides fail before compilation.
+Both jobs then run `supported --materialized` after dependency acquisition and
+before checkpoint overlays. This checks the actual resolved dependency configuration
+files and generated-directory layouts, including pinned known executable configs.
+The first layered cache miss may read an existing broad cache as a migration
+seed. Layered runs never save that broad format or delete old remote entries.
+Callers without the helper and runs supplying `first-ci-cache` retain the legacy
+restore/save and promotion gates; those jobs restore `.lake` and the native cache
+directory together. Test's optional caches never substitute for the current
+Build artifact. Compiler/platform/configuration contexts isolate incompatible
+checkpoints, with tool source and auditor pin included in tool context.
+
 Before either job first invokes Lake, it removes only read-only, runner-owned
 regular `*.ltar.hash` sidecars under the root package's `.lake/build/ir`.
 Lake 4.34.1 writes these derived hash files directly. Runs 40818968404,
@@ -144,10 +211,20 @@ no-build check tests availability and applicability of those production outputs
 against native inputs, without requiring checker outputs from Build. It does not
 certify cryptographic provenance or integrity of cache bytes. As in Mathlib, this
 transport relies on trusted cache producers. Downloaded transport archives are
-removed after restoration so subsequent cache saves do not duplicate them. The dependency
-snapshot transfers the existing native content store without a custom map
-format; zstd compression is streamed to avoid an uncompressed tar copy. It is
-not downloaded when Test's Actions restore succeeds with a matching key.
+removed after restoration so subsequent cache saves do not duplicate them.
+The legacy dependency snapshot transfers the existing native content store,
+using streamed zstd compression, and is skipped on a matching Test cache hit.
+The layered dependency snapshot is mandatory regardless of optional cache hits.
+Layered native staging validates every module LTAR by forced unpack into scratch.
+If a cached derived archive is malformed, the helper selectively removes that
+archive and its derived cache copy, then uses native `--no-build --rehash` export
+to repack completed compilation. It revalidates the entire stage before transport
+packaging; the repair has a five-minute budget and does not rebuild proofs.
+A second recorded-scope stop precedes checkpoint packing, including after failed
+staging. Failed validation still permits completed root/dependency checkpoints
+once both scope stops succeed, while the failed job prevents Test/publication.
+Optional published dependency seeds receive pure archive verification before
+layered import; invalid candidates are skipped without changing remote releases.
 Build discovers accepted `kangxyz/*` Git dependencies from the resolved manifest,
 including inherited dependencies: native `-o` exports only the producer's root
 package, so each upstream needs its own mappings. The existing native release

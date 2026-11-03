@@ -1,0 +1,26 @@
+{
+  "head": "7545acd876b4ebf73f067d532ffa75263c01e26c",
+  "files": {
+    "KunnethComparison.lean": {
+      "source": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean",
+      "sha256": "201d0796b1cccd70381de0c946531b88868345e4dccb4eb96f03a1ec335c2933"
+    },
+    "Values.lean": {
+      "source": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethLinear/Values.lean",
+      "sha256": "5aaf47bb1ef438219542a774d04c8f9402f6fb4d96059bf74b7df906c1de7732"
+    },
+    "TensorComparison.lean": {
+      "source": "Aglib/Algebra/Graded/TensorProduct/Comparison.lean",
+      "sha256": "b42f9ee99a9507d53ada02b5b2ac9df1d87785d3f4e0f95e02a8f4c577077e15"
+    },
+    "KunnethComparisonTest.lean": {
+      "source": "AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean",
+      "sha256": "6dfc535564b4d24c21c0318e2688d8c7e1cb6afe48994cdb7de5b776a6bb52a6"
+    }
+  },
+  "run_id": "remote-a124566222bb4df8b698deea53a8c72f",
+  "source_digest": "de223c6b4a2462c0113e93274b8b09a3f1527e4e4e6bb909aea89b76fae24b63",
+  "comparison": "ACTUAL PRODUCTION MODULE PASS1023s; one documented signed local1m, C corollary/defaults200; M49152",
+  "values": "FAILED default200 kernel at59:8; mirror unreached",
+  "scope": "not H1 closure or native consumer acceptance"
+}

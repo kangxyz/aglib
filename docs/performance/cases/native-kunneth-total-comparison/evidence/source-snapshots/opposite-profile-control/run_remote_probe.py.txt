@@ -1,0 +1,6 @@
+from pathlib import Path
+import os,subprocess,sys
+script=Path('/private/tmp/r5-investigations/affine-kunneth/h1_sol_fallback/backward_options_probe/remote_probe.py').read_text()
+env=os.environ.copy();env['PYTHONPATH']='infra/src'
+cmd=[sys.executable,'-m','r5tools','lean','remote','--config','tmp/inputs/lean-remote/aglib-jacobian-multiplication-degree.json','phase','--label','h1-comparison-only-backward-options','Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethComparison','--command','/root/miniconda3/bin/python3.12','-c',script]
+raise SystemExit(subprocess.call(cmd,env=env))

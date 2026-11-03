@@ -1,0 +1,8 @@
+{
+  "head": "7545acd876b4ebf73f067d532ffa75263c01e26c",
+  "comparison_sha256": "576fb3f48858f6395271d6581a7f4ed4e29b21f77c9115fa37213059f63ae0ed",
+  "run_id": "remote-d8c5459bf1e14674a7ce711998190f7e",
+  "source_digest": "f1e31fa40d09e9eda61691b6feb67056cef3b6325b8b763242a6622d076815b9",
+  "outcome": "failed native Comparison; Values and mirror not reached",
+  "write_scope": "evidence copies only; production sources read-only"
+}

@@ -10,6 +10,19 @@ vanishing hypotheses. It derives the needed degree-one primitivity from those
 original maps; finite degree one and nontriviality remain explicit. No
 Borel–Hopf splitting theorem is assumed.
 
+[Tensor comparison](Coalgebra/Comparison.lean) constructs one coalgebra from
+the displayed whole associativity and counit diagrams of a supplied tensor
+comparison. [Graded tensor products](Graded/TensorProduct.lean) distribute
+the original tensor of direct sums over exact degree fibres; their
+[comparison](Graded/TensorProduct/Comparison.lean) and
+[coherence](Graded/TensorProduct/Coherence.lean) laws keep the supplied maps,
+degree transports and independent module universes. The
+[graded external product](Graded/ExternalProduct.lean) uses the given graded
+families and original Koszul-signed tensor. Its
+[source identity](Graded/ExternalProduct/SourceIdentity.lean) identifies the
+same selected source with Mathlib's graded-tensor identification. The current
+consumer is original structure-sheaf cohomology and its group coproduct.
+
 The consumers are actual quasicoherent/coherent sheaf functors and the scheme-cohomology comparison chain. Module paths use `Aglib.Algebra`; declaration owners include `ModuleCat`, `CochainComplex`, `HomologicalComplex₂` and `ComplexShape`.
 
 [Polynomial/Laurent coefficient diagrams](Polynomial/Laurent/README.md) provide the actual scalar maps used by relative affine-space and coefficient base change. Generic [site module tensors](Category/ModuleCat/Sheaf/Tensor/README.md) lie below scheme-specialized tensor and projection-formula constructions.

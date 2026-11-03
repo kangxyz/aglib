@@ -173,6 +173,29 @@ The later [source-bound integration milestone](performance/inferred-native-compa
 records the thin consumer passing on source `33013d99`; later changed imports
 and downstream endpoints retain their own coverage limits.
 
+For a total graded comparison, retain both the original homogeneous producer
+and the chosen operator's whole factorization at their inferred types. Let
+those closed equations fix the actual maps and parents; perform generation and
+composition over variable families, and return the literal supplied operator.
+When an inferred native proof alias is the useful interface, preserve standalone
+term-`let` inference and expose its generic law from the correct lower owner.
+The [original total Kunneth case](performance/cases/native-kunneth-total-comparison/README.md)
+records producer/value/mirror passes with the same original objects and one
+chosen inverse, plus the failed interfaces and measured allocation. It does
+not close the remaining native coalgebra or H1 consumers.
+
+**Measure the remaining native input conversion before changing its construction.**
+Separate formation of a partially applied generic theorem from conversion of
+its next original proof argument. A source-correct conversion can exceed a
+small finite budget: in the H1 specialization the source function and partial
+application formed, while the closed signed multiplication proof consumed
+559300 heartbeats in isolation. A declaration-local one-million allowance then
+compiled the complete unchanged proof; the earlier 400000 allowance had failed.
+Retain only a positive finite local cap with its explanation. This observation
+does not identify a unique reduction cause, establish a speedup, or justify a
+package-wide raise. The [native coherent-H1 case](performance/cases/native-coherent-h1-specialization/README.md)
+retains the exact failed source, diagnostic limitation and successful module.
+
 **Infer a composed equality before normalizing it against a concrete goal.**
 When `simpa ... using` hits recursion limits or a type mismatch, compose the
 already proved equations without an expected target (`have hfinal := hmap.trans
@@ -625,6 +648,11 @@ mathematical conditions govern that choice.
   and runner reserve. Inspect a resource failure before changing mathematical
   proofs in response to secondary type errors. A serialized tail cannot use all
   compiler slots, and historical calibrations do not prescribe a universal profile.
+  Verify actual frontend arguments and worker limits: a capped wrapper can
+  override the nominal Lake trace, and a cache-plan tool envelope differs from
+  the compilation allocation. The [total Kunneth resource observations](performance/cases/native-kunneth-total-comparison/README.md#effective-limits-and-evidence)
+  separate a frontend memory failure, a later kernel timeout and the eventual
+  producer passes; they establish no universal profile or controlled speedup.
 - Resolve actual cache/input-observer failures before continuing checks. Current
   content rechecking handles ctime-only link activity; an old reflink workaround
   is not routine preparation.

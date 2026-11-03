@@ -1,0 +1,67 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.Algebra.Graded.TensorProduct.Comparison
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethLinear.Basic
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.ExternalProduct.Graded
+
+/-!
+# Whole comparison of the original signed and linear Kunneth maps
+
+The original graded external product and the degreewise Kunneth map agree on
+whole homogeneous tensor maps. The generic total-degree comparison composes
+those laws before any native cohomology value is evaluated.
+-/
+
+@[expose] public noncomputable section
+
+open scoped TensorProduct DirectSum
+
+universe u
+
+open CategoryTheory MonoidalCategory CartesianMonoidalCategory AlgebraicGeometry
+open AlgebraicGeometry.Scheme.OverField
+
+namespace AlgebraicGeometry.Scheme.Cohomology
+
+attribute [local instance] Over.cartesianMonoidalCategory
+
+variable {k : Type u} [Field k] (X Y : FScheme k)
+
+/-- The original degree map after its original fiber inclusion is the original tensor map. -/
+theorem structureKunnethMap_component (p q : ℕ) :
+    structureKunnethMap X Y (p + q) ∘ₗ
+        DirectSum.lof k (HomologicalComplex₂.TotalDegree (p + q))
+          (fun s => structureCohomology k X s.val.1 ⊗[k]
+            structureCohomology k Y s.val.2) ⟨(p, q), rfl⟩ =
+      structureExternalTensor X Y (p := p) (q := q) rfl := by
+  apply LinearMap.ext
+  intro z
+  exact structureKunnethMap_lof X Y (p + q) ⟨(p, q), rfl⟩ z
+
+set_option maxHeartbeats 400000 in
+-- The inferred native comparison exceeds 200000 heartbeats at the original κ
+-- component law. Keep the extra budget local to this specialization.
+/-- Whole equality from the original signed value and original degreewise kappa. -/
+abbrev structureExternalLinearMap_signed :=
+  let hSigned := fun (p q : ℕ) =>
+    structureExternalAlgebraMap_tensor X Y (p := p) (q := q) rfl
+  let hOriginal := structureExternalLinearMap_factorization X Y
+  DirectSum.tensorPiLinearMap_eq hSigned hOriginal rfl
+    (structureKunnethMap_component X Y)
+
+variable [QuasiCompact X.hom] [QuasiSeparated X.hom]
+  [QuasiCompact Y.hom] [QuasiSeparated Y.hom]
+
+/-- The one chosen inverse of the original degreewise kappa has the signed map
+as its complete forward linear operator. -/
+abbrev structureExternalAlgebraMap_linear :=
+  let hSigned := structureExternalLinearMap_signed X Y
+  let hChosen := structureExternalLinearEquiv_toLinearMap X Y
+  hSigned.trans hChosen.symm
+
+end AlgebraicGeometry.Scheme.Cohomology

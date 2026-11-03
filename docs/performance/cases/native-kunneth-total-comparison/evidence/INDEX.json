@@ -1,0 +1,809 @@
+{
+  "accepted_fact_boundary": "The supplied evidence records Cmp201 and Valuesd32 producer compilation passes plus the assigned mirror-only pass (493s, with Cmp201/Valuesd32 reused). H1 remains open. This collection makes no H1, speedup, or resource-cause claim.",
+  "basis": {
+    "field_run_root": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs",
+    "head": "7545acd876b4ebf73f067d532ffa75263c01e26c",
+    "source_snapshot_root": "/private/tmp/r5-investigations/jacobian/root-comparison-evidence",
+    "target_checkout": "/Users/kang/Documents/New project/tmp/work/jacobian/main-h1"
+  },
+  "current_protected_mirror_source": {
+    "bytes": 1536,
+    "copied_path": "source-snapshots/current-protected-mirror/KunnethComparison.lean.txt",
+    "original_path": "/Users/kang/Documents/New project/tmp/work/jacobian/main-h1/AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean",
+    "sha256": "889fe7f386e8645df5690d4d49dc5d3fa0d3cb8a1ebb1abdf5ffeeedd9f64cb4",
+    "variant": "current protected mirror source"
+  },
+  "field_runs": [
+    {
+      "excluded_existing_files": [
+        {
+          "path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-f728a306c7814034a4b863dc8b8df4c6/compiler-events.jsonl",
+          "reason": "excluded compiler event dump or nonrequested run artifact"
+        }
+      ],
+      "files": [
+        {
+          "bytes": 42018,
+          "copied_path": "runs/field-runs/remote-f728a306c7814034a4b863dc8b8df4c6/receipt.json",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-f728a306c7814034a4b863dc8b8df4c6/receipt.json"
+        },
+        {
+          "bytes": 90923,
+          "copied_path": "runs/field-runs/remote-f728a306c7814034a4b863dc8b8df4c6/build.log",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-f728a306c7814034a4b863dc8b8df4c6/build.log"
+        }
+      ],
+      "missing": [],
+      "original_directory": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-f728a306c7814034a4b863dc8b8df4c6",
+      "outcome_label": "bounded-hF-intentional-stop-not-proof",
+      "run_id": "remote-f728a306c7814034a4b863dc8b8df4c6"
+    },
+    {
+      "excluded_existing_files": [
+        {
+          "path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-d8c5459bf1e14674a7ce711998190f7e/compiler-events.jsonl",
+          "reason": "excluded compiler event dump or nonrequested run artifact"
+        }
+      ],
+      "files": [
+        {
+          "bytes": 13739,
+          "copied_path": "runs/field-runs/remote-d8c5459bf1e14674a7ce711998190f7e/receipt.json",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-d8c5459bf1e14674a7ce711998190f7e/receipt.json"
+        },
+        {
+          "bytes": 3535,
+          "copied_path": "runs/field-runs/remote-d8c5459bf1e14674a7ce711998190f7e/build.log",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-d8c5459bf1e14674a7ce711998190f7e/build.log"
+        }
+      ],
+      "missing": [],
+      "original_directory": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-d8c5459bf1e14674a7ce711998190f7e",
+      "outcome_label": "d8c-producer-first-default576-fail",
+      "run_id": "remote-d8c5459bf1e14674a7ce711998190f7e"
+    },
+    {
+      "excluded_existing_files": [
+        {
+          "path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-a8112534c0c342439c3f4e3309e460cb/compiler-events.jsonl",
+          "reason": "excluded compiler event dump or nonrequested run artifact"
+        }
+      ],
+      "files": [
+        {
+          "bytes": 14105,
+          "copied_path": "runs/field-runs/remote-a8112534c0c342439c3f4e3309e460cb/receipt.json",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-a8112534c0c342439c3f4e3309e460cb/receipt.json"
+        },
+        {
+          "bytes": 2871,
+          "copied_path": "runs/field-runs/remote-a8112534c0c342439c3f4e3309e460cb/build.log",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-a8112534c0c342439c3f4e3309e460cb/build.log"
+        }
+      ],
+      "missing": [],
+      "original_directory": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-a8112534c0c342439c3f4e3309e460cb",
+      "outcome_label": "producer-first-local1m-fail-memory",
+      "run_id": "remote-a8112534c0c342439c3f4e3309e460cb"
+    },
+    {
+      "excluded_existing_files": [
+        {
+          "path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-8f6e70453674423fb354c9a8f22a24c0/compiler-events.jsonl",
+          "reason": "excluded compiler event dump or nonrequested run artifact"
+        }
+      ],
+      "files": [
+        {
+          "bytes": 13563,
+          "copied_path": "runs/field-runs/remote-8f6e70453674423fb354c9a8f22a24c0/receipt.json",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-8f6e70453674423fb354c9a8f22a24c0/receipt.json"
+        },
+        {
+          "bytes": 3417,
+          "copied_path": "runs/field-runs/remote-8f6e70453674423fb354c9a8f22a24c0/build.log",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-8f6e70453674423fb354c9a8f22a24c0/build.log"
+        }
+      ],
+      "missing": [],
+      "original_directory": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-8f6e70453674423fb354c9a8f22a24c0",
+      "outcome_label": "closed-factorization-default-fail",
+      "run_id": "remote-8f6e70453674423fb354c9a8f22a24c0"
+    },
+    {
+      "excluded_existing_files": [
+        {
+          "path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-ebbf57b368ee453cadaf5f217064f073/compiler-events.jsonl",
+          "reason": "excluded compiler event dump or nonrequested run artifact"
+        }
+      ],
+      "files": [
+        {
+          "bytes": 13646,
+          "copied_path": "runs/field-runs/remote-ebbf57b368ee453cadaf5f217064f073/receipt.json",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-ebbf57b368ee453cadaf5f217064f073/receipt.json"
+        },
+        {
+          "bytes": 8082,
+          "copied_path": "runs/field-runs/remote-ebbf57b368ee453cadaf5f217064f073/build.log",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-ebbf57b368ee453cadaf5f217064f073/build.log"
+        }
+      ],
+      "missing": [],
+      "original_directory": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-ebbf57b368ee453cadaf5f217064f073",
+      "outcome_label": "inferred-alias-default-fail-private-visibility",
+      "run_id": "remote-ebbf57b368ee453cadaf5f217064f073"
+    },
+    {
+      "excluded_existing_files": [
+        {
+          "path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-f111f938ceaf48f0832fa73f952cb7c2/compiler-events.jsonl",
+          "reason": "excluded compiler event dump or nonrequested run artifact"
+        }
+      ],
+      "files": [
+        {
+          "bytes": 13885,
+          "copied_path": "runs/field-runs/remote-f111f938ceaf48f0832fa73f952cb7c2/receipt.json",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-f111f938ceaf48f0832fa73f952cb7c2/receipt.json"
+        },
+        {
+          "bytes": 7827,
+          "copied_path": "runs/field-runs/remote-f111f938ceaf48f0832fa73f952cb7c2/build.log",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-f111f938ceaf48f0832fa73f952cb7c2/build.log"
+        }
+      ],
+      "lowb42_source_sha256": "b42f9ee99a9507d53ada02b5b2ac9df1d87785d3f4e0f95e02a8f4c577077e15",
+      "lowb42_source_snapshot": "source-snapshots/public-inferred-local400/TensorComparison.lean.txt",
+      "missing": [],
+      "native328_source_manifest": "source-snapshots/native328-frozen/MANIFEST.json",
+      "native328_source_manifest_original": "/private/tmp/r5-investigations/affine-kunneth/canonical_source_rewrite/performance-visibility-and-kappa/MANIFEST.json",
+      "native328_source_sha256": "328a8d8fe55b483c73821fd67006d224f05f1e1b4d0f3da61815eb6663cbb4d1",
+      "native328_source_snapshot": "source-snapshots/native328-frozen/native-default200.lean.txt",
+      "native328_standalone_source": "MISSING",
+      "original_directory": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-f111f938ceaf48f0832fa73f952cb7c2",
+      "outcome_label": "lowb42-pass-4-1s-native328-default-fail200-not-values",
+      "run_id": "remote-f111f938ceaf48f0832fa73f952cb7c2"
+    },
+    {
+      "excluded_existing_files": [
+        {
+          "path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-affb5b67806f4fe4b3d1bae8109d0746/compiler-events.jsonl",
+          "reason": "excluded compiler event dump or nonrequested run artifact"
+        }
+      ],
+      "files": [
+        {
+          "bytes": 13617,
+          "copied_path": "runs/field-runs/remote-affb5b67806f4fe4b3d1bae8109d0746/receipt.json",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-affb5b67806f4fe4b3d1bae8109d0746/receipt.json"
+        },
+        {
+          "bytes": 2550,
+          "copied_path": "runs/field-runs/remote-affb5b67806f4fe4b3d1bae8109d0746/build.log",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-affb5b67806f4fe4b3d1bae8109d0746/build.log"
+        }
+      ],
+      "missing": [],
+      "original_directory": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-affb5b67806f4fe4b3d1bae8109d0746",
+      "outcome_label": "b1-local400-memory12800-fail-kernel-memory",
+      "run_id": "remote-affb5b67806f4fe4b3d1bae8109d0746"
+    },
+    {
+      "excluded_existing_files": [
+        {
+          "path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-ddfc3cad18fc48e192d7d2e44c94d07a/compiler-events.jsonl",
+          "reason": "excluded compiler event dump or nonrequested run artifact"
+        }
+      ],
+      "files": [
+        {
+          "bytes": 20077,
+          "copied_path": "runs/field-runs/remote-ddfc3cad18fc48e192d7d2e44c94d07a/receipt.json",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-ddfc3cad18fc48e192d7d2e44c94d07a/receipt.json"
+        },
+        {
+          "bytes": 284293,
+          "copied_path": "runs/field-runs/remote-ddfc3cad18fc48e192d7d2e44c94d07a/build.log",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-ddfc3cad18fc48e192d7d2e44c94d07a/build.log"
+        }
+      ],
+      "missing": [],
+      "original_directory": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-ddfc3cad18fc48e192d7d2e44c94d07a",
+      "outcome_label": "new-profile-parent-cache-ready-only-no-frontend",
+      "run_id": "remote-ddfc3cad18fc48e192d7d2e44c94d07a"
+    },
+    {
+      "excluded_existing_files": [
+        {
+          "path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-a86b26989b3044d0b7eb7125a3b9964f/compiler-events.jsonl",
+          "reason": "excluded compiler event dump or nonrequested run artifact"
+        }
+      ],
+      "files": [
+        {
+          "bytes": 13738,
+          "copied_path": "runs/field-runs/remote-a86b26989b3044d0b7eb7125a3b9964f/receipt.json",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-a86b26989b3044d0b7eb7125a3b9964f/receipt.json"
+        },
+        {
+          "bytes": 2718,
+          "copied_path": "runs/field-runs/remote-a86b26989b3044d0b7eb7125a3b9964f/build.log",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-a86b26989b3044d0b7eb7125a3b9964f/build.log"
+        }
+      ],
+      "frontend_event_excerpt": {
+        "copied_path": "runs/frontend-event-excerpts/remote-a86b26989b3044d0b7eb7125a3b9964f.jsonl",
+        "events": [
+          {
+            "args": [
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean",
+              "-o",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.olean",
+              "-i",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.ilean",
+              "-c",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.c",
+              "--setup",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.setup.json",
+              "--json",
+              "-j4",
+              "-M49152"
+            ],
+            "event": "started",
+            "exit_code": null,
+            "module": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean",
+            "module_source": "started.args[0]"
+          },
+          {
+            "args": null,
+            "event": "finished",
+            "exit_code": 1,
+            "module": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean",
+            "module_source": "paired preceding started event"
+          }
+        ],
+        "excerpt_sha256": "bc1a390fa86f561051f486a153460a3e682f8de94acb8063e2f5e8e5b3ca23b8",
+        "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-a86b26989b3044d0b7eb7125a3b9964f/compiler-events.jsonl",
+        "original_sha256": "86d98205ba905c7e277360b2776a06b0ef63703ebfefccc5dabdd72b0ab02e53",
+        "record_selection": "Exact original JSONL lines whose event is started or finished; waiting records excluded.",
+        "source_line_numbers": [
+          2,
+          3
+        ]
+      },
+      "missing": [],
+      "original_directory": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-a86b26989b3044d0b7eb7125a3b9964f",
+      "outcome_label": "same-b1-memory49152-fail-kernel-timeout-peak19-61GB-no-OOM",
+      "run_id": "remote-a86b26989b3044d0b7eb7125a3b9964f"
+    },
+    {
+      "Values5aaf_source_sha256": "5aaf47bb1ef438219542a774d04c8f9402f6fb4d96059bf74b7df906c1de7732",
+      "Values5aaf_source_snapshot": "source-snapshots/passed-comparison201-values200/Values.lean.txt",
+      "excluded_existing_files": [
+        {
+          "path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-a124566222bb4df8b698deea53a8c72f/compiler-events.jsonl",
+          "reason": "excluded compiler event dump or nonrequested run artifact"
+        }
+      ],
+      "files": [
+        {
+          "bytes": 13530,
+          "copied_path": "runs/field-runs/remote-a124566222bb4df8b698deea53a8c72f/receipt.json",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-a124566222bb4df8b698deea53a8c72f/receipt.json"
+        },
+        {
+          "bytes": 3195,
+          "copied_path": "runs/field-runs/remote-a124566222bb4df8b698deea53a8c72f/build.log",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-a124566222bb4df8b698deea53a8c72f/build.log"
+        }
+      ],
+      "frontend_event_excerpt": {
+        "copied_path": "runs/frontend-event-excerpts/remote-a124566222bb4df8b698deea53a8c72f.jsonl",
+        "events": [
+          {
+            "args": [
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean",
+              "-o",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.olean",
+              "-i",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.ilean",
+              "-c",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.c",
+              "--setup",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.setup.json",
+              "--json",
+              "-j4",
+              "-M49152"
+            ],
+            "event": "started",
+            "exit_code": null,
+            "module": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean",
+            "module_source": "started.args[0]"
+          },
+          {
+            "args": null,
+            "event": "finished",
+            "exit_code": 0,
+            "module": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean",
+            "module_source": "paired preceding started event"
+          },
+          {
+            "args": [
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethLinear/Values.lean",
+              "-o",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethLinear/Values.olean",
+              "-i",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethLinear/Values.ilean",
+              "-c",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethLinear/Values.c",
+              "--setup",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethLinear/Values.setup.json",
+              "--json",
+              "-j4",
+              "-M49152"
+            ],
+            "event": "started",
+            "exit_code": null,
+            "module": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethLinear/Values.lean",
+            "module_source": "started.args[0]"
+          },
+          {
+            "args": null,
+            "event": "finished",
+            "exit_code": 1,
+            "module": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethLinear/Values.lean",
+            "module_source": "paired preceding started event"
+          }
+        ],
+        "excerpt_sha256": "6682893092b72d5b3bf040bdf3a3c2863b4b04635b644dab5408c8a888e2c07b",
+        "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-a124566222bb4df8b698deea53a8c72f/compiler-events.jsonl",
+        "original_sha256": "b8f601d1589c91c1db9d8296b1d73ae009d03edef792f59de4b0138fe6f7e80c",
+        "record_selection": "Exact original JSONL lines whose event is started or finished; waiting records excluded.",
+        "source_line_numbers": [
+          2,
+          3,
+          5,
+          6
+        ]
+      },
+      "missing": [],
+      "original_directory": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-a124566222bb4df8b698deea53a8c72f",
+      "outcome_label": "nativeCmp201-pass1023s-values5aaf-fail200kernel290s-mirror-unreached",
+      "run_id": "remote-a124566222bb4df8b698deea53a8c72f"
+    },
+    {
+      "Valuesd32_source_sha256": "d32ecf244c201d8a59d85e35b8bd021c17a290b0518b78783c76747f8fa3acae",
+      "Valuesd32_source_snapshot": "passed-values-d32/Values.lean.txt",
+      "excluded_existing_files": [
+        {
+          "path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-556664579fed40688c9801555f5ffb00/compiler-events.jsonl",
+          "reason": "excluded compiler event dump or nonrequested run artifact"
+        }
+      ],
+      "files": [
+        {
+          "bytes": 12965,
+          "copied_path": "runs/field-runs/remote-556664579fed40688c9801555f5ffb00/receipt.json",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-556664579fed40688c9801555f5ffb00/receipt.json"
+        },
+        {
+          "bytes": 3744,
+          "copied_path": "runs/field-runs/remote-556664579fed40688c9801555f5ffb00/build.log",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-556664579fed40688c9801555f5ffb00/build.log"
+        }
+      ],
+      "frontend_event_excerpt": {
+        "copied_path": "runs/frontend-event-excerpts/remote-556664579fed40688c9801555f5ffb00.jsonl",
+        "events": [
+          {
+            "args": [
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethLinear/Values.lean",
+              "-o",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethLinear/Values.olean",
+              "-i",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethLinear/Values.ilean",
+              "-c",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethLinear/Values.c",
+              "--setup",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethLinear/Values.setup.json",
+              "--json",
+              "-j4",
+              "-M49152"
+            ],
+            "event": "started",
+            "exit_code": null,
+            "module": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethLinear/Values.lean",
+            "module_source": "started.args[0]"
+          },
+          {
+            "args": null,
+            "event": "finished",
+            "exit_code": 0,
+            "module": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethLinear/Values.lean",
+            "module_source": "paired preceding started event"
+          },
+          {
+            "args": [
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean",
+              "-o",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/lib/lean/AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.olean",
+              "-i",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/lib/lean/AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.ilean",
+              "-c",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/ir/AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.c",
+              "--setup",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/ir/AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.setup.json",
+              "--json",
+              "-j4",
+              "-M49152"
+            ],
+            "event": "started",
+            "exit_code": null,
+            "module": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean",
+            "module_source": "started.args[0]"
+          },
+          {
+            "args": null,
+            "event": "finished",
+            "exit_code": 1,
+            "module": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean",
+            "module_source": "paired preceding started event"
+          }
+        ],
+        "excerpt_sha256": "83092b61aef64c31b1e30adcd3544ea3a03beef5d0fdb8ac41e9b976e113ccf8",
+        "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-556664579fed40688c9801555f5ffb00/compiler-events.jsonl",
+        "original_sha256": "347f9a48ee9530da030c1dc14154419b117658d35438ffd6018e4505a8ffa9c1",
+        "record_selection": "Exact original JSONL lines whose event is started or finished; waiting records excluded.",
+        "source_line_numbers": [
+          2,
+          3,
+          5,
+          6
+        ]
+      },
+      "mirror6df_source_sha256": "6dfc535564b4d24c21c0318e2688d8c7e1cb6afe48994cdb7de5b776a6bb52a6",
+      "mirror6df_source_snapshot": "source-snapshots/inferred-proof-alias-default/KunnethComparisonTest.lean.txt",
+      "missing": [],
+      "original_directory": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-556664579fed40688c9801555f5ffb00",
+      "outcome_label": "Valuesd32-local1m-pass230s-Cmp201-reused-mirror6df-fail-unknown-parent-namespace",
+      "run_id": "remote-556664579fed40688c9801555f5ffb00"
+    },
+    {
+      "excluded_existing_files": [
+        {
+          "path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-b459753d5e1d414a816eea2337e05a1b/compiler-events.jsonl",
+          "reason": "full event dump excluded; exact selected start/finish lines retained separately"
+        }
+      ],
+      "files": [
+        {
+          "bytes": 13590,
+          "copied_path": "runs/field-runs/remote-b459753d5e1d414a816eea2337e05a1b/receipt.json",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-b459753d5e1d414a816eea2337e05a1b/receipt.json"
+        },
+        {
+          "bytes": 143,
+          "copied_path": "runs/field-runs/remote-b459753d5e1d414a816eea2337e05a1b/build.log",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-b459753d5e1d414a816eea2337e05a1b/build.log"
+        }
+      ],
+      "frontend_event_excerpt": {
+        "copied_path": "runs/frontend-event-excerpts/remote-b459753d5e1d414a816eea2337e05a1b.jsonl",
+        "events": [
+          {
+            "args": [
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean",
+              "-o",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/lib/lean/AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.olean",
+              "-i",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/lib/lean/AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.ilean",
+              "-c",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/ir/AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.c",
+              "--setup",
+              "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/ir/AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.setup.json",
+              "--json",
+              "-j4",
+              "-M49152"
+            ],
+            "event": "started",
+            "exit_code": null,
+            "module": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean",
+            "module_source": "started.args[0]"
+          },
+          {
+            "args": null,
+            "event": "finished",
+            "exit_code": 0,
+            "module": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean",
+            "module_source": "paired preceding started event"
+          }
+        ],
+        "excerpt_sha256": "abbd235fbe55e5beef68c66fc851f6d9917c6473975f981fcd348cceaeb5c5b9",
+        "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-b459753d5e1d414a816eea2337e05a1b/compiler-events.jsonl",
+        "original_sha256": "0979730074bf3696f47709aa57d7e479d4f85a9b596b88d5c09dfb5d24e9c550",
+        "record_selection": "Exact original JSONL lines whose event is started or finished; waiting records excluded.",
+        "source_line_numbers": [
+          2,
+          3
+        ]
+      },
+      "mirror_source_sha256": "889fe7f386e8645df5690d4d49dc5d3fa0d3cb8a1ebb1abdf5ffeeedd9f64cb4",
+      "mirror_source_snapshot": "source-snapshots/current-protected-mirror/KunnethComparison.lean.txt",
+      "missing": [],
+      "original_directory": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-b459753d5e1d414a816eea2337e05a1b",
+      "outcome_label": "mirror-only-pass-493s-Cmp201-and-Valuesd32-reused",
+      "run_id": "remote-b459753d5e1d414a816eea2337e05a1b"
+    }
+  ],
+  "missing_material": [
+    {
+      "handling": "No such separate files were present in the selected run directories; copied receipts/build logs and indexed event excerpts are retained.",
+      "item": "Separate request/setup/resource metadata files for the selected field-run directories.",
+      "searched_roots": [
+        "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-f728a306c7814034a4b863dc8b8df4c6",
+        "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-d8c5459bf1e14674a7ce711998190f7e",
+        "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-a8112534c0c342439c3f4e3309e460cb",
+        "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-8f6e70453674423fb354c9a8f22a24c0",
+        "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-ebbf57b368ee453cadaf5f217064f073",
+        "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-f111f938ceaf48f0832fa73f952cb7c2",
+        "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-affb5b67806f4fe4b3d1bae8109d0746",
+        "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-ddfc3cad18fc48e192d7d2e44c94d07a",
+        "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-a86b26989b3044d0b7eb7125a3b9964f",
+        "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-a124566222bb4df8b698deea53a8c72f",
+        "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-556664579fed40688c9801555f5ffb00",
+        "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-b459753d5e1d414a816eea2337e05a1b"
+      ]
+    }
+  ],
+  "native328_search_scope": {
+    "result": "Exact frozen native-default200.lean source found and SHA-256 matched 328a8d8fe55b483c73821fd67006d224f05f1e1b4d0f3da61815eb6663cbb4d1. No reconstruction required. No broader search performed.",
+    "searched_roots": [
+      "/private/tmp/r5-investigations/affine-kunneth/canonical_source_rewrite/",
+      "/private/tmp/r5-investigations/authorized_compile_support/",
+      "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-f111f938ceaf48f0832fa73f952cb7c2/"
+    ]
+  },
+  "opposite_profile_control": {
+    "run": {
+      "excluded_existing_files": [
+        {
+          "path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-multiplication-degree-runs/remote-60991fdf0477466f83b9cabee32a2f1b/compiler-events.jsonl",
+          "reason": "excluded compiler event dump or nonrequested run artifact"
+        }
+      ],
+      "files": [
+        {
+          "bytes": 22314,
+          "copied_path": "runs/multiplication-degree-control/remote-60991fdf0477466f83b9cabee32a2f1b/receipt.json",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-multiplication-degree-runs/remote-60991fdf0477466f83b9cabee32a2f1b/receipt.json"
+        },
+        {
+          "bytes": 2183,
+          "copied_path": "runs/multiplication-degree-control/remote-60991fdf0477466f83b9cabee32a2f1b/build.log",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-multiplication-degree-runs/remote-60991fdf0477466f83b9cabee32a2f1b/build.log"
+        }
+      ],
+      "missing": [],
+      "original_directory": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-multiplication-degree-runs/remote-60991fdf0477466f83b9cabee32a2f1b",
+      "outcome_label": "opposite-profile-frozen576-ONLY3backward-options-default200-fail-diagnostic-only",
+      "run_id": "remote-60991fdf0477466f83b9cabee32a2f1b"
+    },
+    "source_directory": "/private/tmp/r5-investigations/affine-kunneth/h1_sol_fallback/backward_options_probe",
+    "source_files": [
+      {
+        "bytes": 5671,
+        "copied_path": "source-snapshots/opposite-profile-control/KunnethComparison.lean.txt",
+        "original_path": "/private/tmp/r5-investigations/affine-kunneth/h1_sol_fallback/backward_options_probe/KunnethComparison.lean"
+      },
+      {
+        "bytes": 704,
+        "copied_path": "source-snapshots/opposite-profile-control/METADATA.json",
+        "original_path": "/private/tmp/r5-investigations/affine-kunneth/h1_sol_fallback/backward_options_probe/METADATA.json"
+      },
+      {
+        "bytes": 328,
+        "copied_path": "source-snapshots/opposite-profile-control/ONLY_OPTIONS.diff",
+        "original_path": "/private/tmp/r5-investigations/affine-kunneth/h1_sol_fallback/backward_options_probe/ONLY_OPTIONS.diff"
+      },
+      {
+        "bytes": 8218,
+        "copied_path": "source-snapshots/opposite-profile-control/remote_probe.py.txt",
+        "original_path": "/private/tmp/r5-investigations/affine-kunneth/h1_sol_fallback/backward_options_probe/remote_probe.py"
+      },
+      {
+        "bytes": 591,
+        "copied_path": "source-snapshots/opposite-profile-control/run_remote_probe.py.txt",
+        "original_path": "/private/tmp/r5-investigations/affine-kunneth/h1_sol_fallback/backward_options_probe/run_remote_probe.py"
+      }
+    ]
+  },
+  "pins": [
+    {
+      "bytes": 25,
+      "copied_path": "pins/lean-toolchain",
+      "original_path": "/Users/kang/Documents/New project/tmp/work/jacobian/main-h1/lean-toolchain",
+      "sha256": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+    },
+    {
+      "bytes": 3539,
+      "copied_path": "pins/lake-manifest.json",
+      "original_path": "/Users/kang/Documents/New project/tmp/work/jacobian/main-h1/lake-manifest.json",
+      "sha256": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2"
+    }
+  ],
+  "scope": "Byte-exact copies of available source snapshots, receipts, and build logs; no execution or proof/status judgment.",
+  "source_buckets": [
+    {
+      "bucket": "d8c-producer-first-default",
+      "files": [
+        {
+          "bytes": 5508,
+          "copied_path": "source-snapshots/d8c-producer-first-default/KunnethComparison.lean.txt",
+          "original_path": "/private/tmp/r5-investigations/jacobian/root-comparison-evidence/d8c-producer-first-default/KunnethComparison.lean"
+        },
+        {
+          "bytes": 433,
+          "copied_path": "source-snapshots/d8c-producer-first-default/SOURCE.json",
+          "original_path": "/private/tmp/r5-investigations/jacobian/root-comparison-evidence/d8c-producer-first-default/SOURCE.json"
+        }
+      ],
+      "missing": []
+    },
+    {
+      "bucket": "producer-first-local1m",
+      "files": [
+        {
+          "bytes": 5903,
+          "copied_path": "source-snapshots/producer-first-local1m/KunnethComparison.lean.txt",
+          "original_path": "/private/tmp/r5-investigations/jacobian/root-comparison-evidence/producer-first-local1m/KunnethComparison.lean"
+        },
+        {
+          "bytes": 660,
+          "copied_path": "source-snapshots/producer-first-local1m/SOURCE.json",
+          "original_path": "/private/tmp/r5-investigations/jacobian/root-comparison-evidence/producer-first-local1m/SOURCE.json"
+        }
+      ],
+      "missing": []
+    },
+    {
+      "bucket": "closed-factorization-default",
+      "files": [
+        {
+          "bytes": 5741,
+          "copied_path": "source-snapshots/closed-factorization-default/KunnethComparison.lean.txt",
+          "original_path": "/private/tmp/r5-investigations/jacobian/root-comparison-evidence/closed-factorization-default/KunnethComparison.lean"
+        },
+        {
+          "bytes": 521,
+          "copied_path": "source-snapshots/closed-factorization-default/SOURCE.json",
+          "original_path": "/private/tmp/r5-investigations/jacobian/root-comparison-evidence/closed-factorization-default/SOURCE.json"
+        }
+      ],
+      "missing": []
+    },
+    {
+      "bucket": "inferred-proof-alias-default",
+      "files": [
+        {
+          "bytes": 5403,
+          "copied_path": "source-snapshots/inferred-proof-alias-default/KunnethComparison.lean.txt",
+          "original_path": "/private/tmp/r5-investigations/jacobian/root-comparison-evidence/inferred-proof-alias-default/KunnethComparison.lean"
+        },
+        {
+          "bytes": 1506,
+          "copied_path": "source-snapshots/inferred-proof-alias-default/KunnethComparisonTest.lean.txt",
+          "original_path": "/private/tmp/r5-investigations/jacobian/root-comparison-evidence/inferred-proof-alias-default/KunnethComparisonTest.lean"
+        },
+        {
+          "bytes": 646,
+          "copied_path": "source-snapshots/inferred-proof-alias-default/SOURCE.json",
+          "original_path": "/private/tmp/r5-investigations/jacobian/root-comparison-evidence/inferred-proof-alias-default/SOURCE.json"
+        }
+      ],
+      "missing": []
+    },
+    {
+      "bucket": "public-inferred-local400",
+      "files": [
+        {
+          "bytes": 2615,
+          "copied_path": "source-snapshots/public-inferred-local400/KunnethComparison.lean.txt",
+          "original_path": "/private/tmp/r5-investigations/jacobian/root-comparison-evidence/public-inferred-local400/KunnethComparison.lean"
+        },
+        {
+          "bytes": 1506,
+          "copied_path": "source-snapshots/public-inferred-local400/KunnethComparisonTest.lean.txt",
+          "original_path": "/private/tmp/r5-investigations/jacobian/root-comparison-evidence/public-inferred-local400/KunnethComparisonTest.lean"
+        },
+        {
+          "bytes": 3662,
+          "copied_path": "source-snapshots/public-inferred-local400/TensorComparison.lean.txt",
+          "original_path": "/private/tmp/r5-investigations/jacobian/root-comparison-evidence/public-inferred-local400/TensorComparison.lean"
+        },
+        {
+          "bytes": 1040,
+          "copied_path": "source-snapshots/public-inferred-local400/SOURCE.json",
+          "original_path": "/private/tmp/r5-investigations/jacobian/root-comparison-evidence/public-inferred-local400/SOURCE.json"
+        }
+      ],
+      "missing": []
+    },
+    {
+      "bucket": "passed-comparison201-values200",
+      "files": [
+        {
+          "bytes": 2620,
+          "copied_path": "source-snapshots/passed-comparison201-values200/KunnethComparison.lean.txt",
+          "original_path": "/private/tmp/r5-investigations/jacobian/root-comparison-evidence/passed-comparison201-values200/KunnethComparison.lean"
+        },
+        {
+          "bytes": 1506,
+          "copied_path": "source-snapshots/passed-comparison201-values200/KunnethComparisonTest.lean.txt",
+          "original_path": "/private/tmp/r5-investigations/jacobian/root-comparison-evidence/passed-comparison201-values200/KunnethComparisonTest.lean"
+        },
+        {
+          "bytes": 3662,
+          "copied_path": "source-snapshots/passed-comparison201-values200/TensorComparison.lean.txt",
+          "original_path": "/private/tmp/r5-investigations/jacobian/root-comparison-evidence/passed-comparison201-values200/TensorComparison.lean"
+        },
+        {
+          "bytes": 2793,
+          "copied_path": "source-snapshots/passed-comparison201-values200/Values.lean.txt",
+          "original_path": "/private/tmp/r5-investigations/jacobian/root-comparison-evidence/passed-comparison201-values200/Values.lean"
+        },
+        {
+          "bytes": 1291,
+          "copied_path": "source-snapshots/passed-comparison201-values200/SOURCE.json",
+          "original_path": "/private/tmp/r5-investigations/jacobian/root-comparison-evidence/passed-comparison201-values200/SOURCE.json"
+        }
+      ],
+      "missing": []
+    },
+    {
+      "bucket": "kernel-memory-pilot",
+      "files": [
+        {
+          "bytes": 1226,
+          "copied_path": "source-snapshots/kernel-memory-pilot/RESOURCE_CHANGE.json",
+          "original_path": "/private/tmp/r5-investigations/jacobian/root-comparison-evidence/kernel-memory-pilot/RESOURCE_CHANGE.json"
+        }
+      ],
+      "missing": []
+    },
+    {
+      "assigned_identity": "Current protected production Values snapshot assigned as the actual source for the Valuesd32 producer pass; SHA guard matched.",
+      "bucket": "passed-values-d32",
+      "files": [
+        {
+          "bytes": 2982,
+          "copied_path": "passed-values-d32/Values.lean.txt",
+          "original_path": "/Users/kang/Documents/New project/tmp/work/jacobian/main-h1/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethLinear/Values.lean",
+          "sha256": "d32ecf244c201d8a59d85e35b8bd021c17a290b0518b78783c76747f8fa3acae"
+        }
+      ],
+      "missing": []
+    },
+    {
+      "bucket": "native328-frozen-default200",
+      "files": [
+        {
+          "bytes": 2431,
+          "copied_path": "source-snapshots/native328-frozen/native-default200.lean.txt",
+          "original_path": "/private/tmp/r5-investigations/affine-kunneth/canonical_source_rewrite/performance-visibility-and-kappa/native-default200.lean",
+          "sha256": "328a8d8fe55b483c73821fd67006d224f05f1e1b4d0f3da61815eb6663cbb4d1"
+        },
+        {
+          "bytes": 2593,
+          "copied_path": "source-snapshots/native328-frozen/MANIFEST.json",
+          "original_path": "/private/tmp/r5-investigations/affine-kunneth/canonical_source_rewrite/performance-visibility-and-kappa/MANIFEST.json",
+          "sha256": "472915f7e3e22760dad95b1f36e87c5f07b2175d419d8cbe2c8a9c755c016796"
+        }
+      ],
+      "identity_note": "Frozen source copy selected by the supplied task after its full SHA-256 matched the recorded native-default200 entry in the copied manifest; exact bytes copied, not reconstructed.",
+      "missing": []
+    }
+  ],
+  "source_record_note": "Raw SOURCE.json records are preserved byte-exact, including any ACTIVE state captured before completion. Per-run receipts and outcome labels record the later supplied outcomes.",
+  "title": "Native Kunneth total comparison evidence collection"
+}

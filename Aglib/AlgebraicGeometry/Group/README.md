@@ -1,5 +1,11 @@
 # Actual group-scheme pullback
 
+[StructureMaps](StructureMaps.lean) proves flatness of multiplication for a
+flat group object over an arbitrary base, using the original product
+projection and group translation isomorphism. This lower result supplies
+the multiplication pullback in the original coherent-cohomology coproduct;
+it does not require a field or smoothness.
+
 [ScalarExtension](ScalarExtension.lean), imported as `Aglib.AlgebraicGeometry.Group.ScalarExtension`, owns `AlgebraicGeometry.Scheme.Group.BaseChange`. `GroupSchemeBaseChange f` packages an actual functor on group objects with an explicit underlying comparison to scheme pullback.
 
 The canonical `groupSchemeBaseChange f` is `Over.pullback f` lifted by `mapGrp`. `groupSchemeBaseChangeId` and `groupSchemeBaseChangeComp` give natural identity/composition isomorphisms for that canonical constructor. `pullbackFiberMulEquiv` compares actual multiplicative point fibres, including projection and naturality formulas. These are natural comparisons of chosen pullbacks, not strict equality of choices or coherence asserted for every arbitrarily supplied functor.

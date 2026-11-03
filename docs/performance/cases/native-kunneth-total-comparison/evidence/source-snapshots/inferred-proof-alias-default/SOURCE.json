@@ -1,0 +1,9 @@
+{
+  "head": "7545acd876b4ebf73f067d532ffa75263c01e26c",
+  "comparison_sha256": "3b38cc23bb5b5004fd10757c36592b31f38ad3b0872be46c60870e2f184cce31",
+  "mirror_sha256": "6dfc535564b4d24c21c0318e2688d8c7e1cb6afe48994cdb7de5b776a6bb52a6",
+  "run_id": "remote-ebbf57b368ee453cadaf5f217064f073",
+  "source_digest": "fadb97f68025300583bd41ad161041f4716c7e154e6543ec392439bfbd8a9a84",
+  "status": "ACTIVE; no acceptance yet",
+  "change": "Native public proof aliases retain term-let inference of the two original closed proofs; no manually rebuilt Eq header. Generic result is literal original L, default200, original homogeneous-values test retained."
+}

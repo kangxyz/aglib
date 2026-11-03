@@ -1,0 +1,23 @@
+{
+  "head": "7545acd876b4ebf73f067d532ffa75263c01e26c",
+  "files": {
+    "KunnethComparison.lean": {
+      "source": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean",
+      "sha256": "b1f8438bee1729756ecff2da8da3157166d367a3a4b1c6138767e687e01d1d16"
+    },
+    "TensorComparison.lean": {
+      "source": "Aglib/Algebra/Graded/TensorProduct/Comparison.lean",
+      "sha256": "b42f9ee99a9507d53ada02b5b2ac9df1d87785d3f4e0f95e02a8f4c577077e15"
+    },
+    "KunnethComparisonTest.lean": {
+      "source": "AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean",
+      "sha256": "6dfc535564b4d24c21c0318e2688d8c7e1cb6afe48994cdb7de5b776a6bb52a6"
+    }
+  },
+  "source_digest": "13cd177e30fa0c0853371a4d6f09c79b6694697c56e9966d534199429be18a8c",
+  "outcomes": {
+    "memory12800": "kernel memory failure; no Values/mirror",
+    "memory49152": "kernel deterministic timeout; peak19.61GB, no memory-limit/cgroup OOM; no Values/mirror"
+  },
+  "adoption": "No proof PASS; local400 source not adopted"
+}

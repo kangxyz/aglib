@@ -1,0 +1,378 @@
+{
+  "action": "phase",
+  "actor_executable": "/root/miniconda3/bin/python3.12",
+  "admission": {
+    "ceilings": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 1,
+      "lean_memory_mib": 49152,
+      "rss_limit_mib": 110592,
+      "threads": 4
+    },
+    "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+    "final_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-42d08535b47946fdbd2c041758d4ab69": 1,
+        "/root/autodl-tmp/lean-build/logs/remote-51ff334d31394499936b7c346ff080b0": 1
+      },
+      "cpu_cores": 5.541149380712603,
+      "cpu_usage_usec": 2984210454949,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 3221225472,
+      "memory_current_bytes": 53259169792,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 0.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 38988169216
+    },
+    "initial_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-42d08535b47946fdbd2c041758d4ab69": 1,
+        "/root/autodl-tmp/lean-build/logs/remote-51ff334d31394499936b7c346ff080b0": 1
+      },
+      "cpu_cores": 2.177266730799956,
+      "cpu_usage_usec": 2983358440968,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 3489660928,
+      "memory_current_bytes": 53089923072,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 1.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 38820761600
+    },
+    "max_frontends_if_alone": 1,
+    "mode": "elastic"
+  },
+  "allow_library_roots": false,
+  "cache_provenance": {
+    "configuration_sha256": {
+      "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+      "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852"
+    },
+    "environment": {
+      "LAKE_ARTIFACT_CACHE": "true",
+      "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+      "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+    },
+    "lookup": "native Lake traces/artifact cache; no per-dependency prior-hit claim"
+  },
+  "cgroup_average_cpu_cores": 3.402367047795783,
+  "cgroup_cpu_after": {
+    "nr_periods": 11069663,
+    "nr_throttled": 32119,
+    "system_usec": 238696089268,
+    "throttled_usec": 378038456,
+    "usage_usec": 2984210455135,
+    "user_usec": 2745514365867
+  },
+  "cgroup_cpu_attribution": "whole observed cgroup; may include unrelated activity",
+  "cgroup_cpu_before": {
+    "nr_periods": 11067159,
+    "nr_throttled": 32119,
+    "system_usec": 238655253089,
+    "throttled_usec": 378038456,
+    "usage_usec": 2983358453185,
+    "user_usec": 2744703200095
+  },
+  "cgroup_cpu_seconds_delta": 852.00195,
+  "cgroup_memory_events_after": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_before": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_delta": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "command": [
+    "/root/miniconda3/bin/python3.12",
+    "-c",
+    "from pathlib import Path\nimport hashlib,json,subprocess,tempfile,os,sys\nchecks={'Aglib/AlgebraicGeometry/Cohomology/Group/Coalgebra.lean': '661e1d2715adeec9bf5a63e0e9af857483d972b86864b2a38421bc59e66d3f13', 'Aglib/AlgebraicGeometry/Cohomology/Group/H1.lean': '036ab22b37ef44b790d3e17625fd45cf2b4d8bf1b54cf837bedd1de9a0086b04'}\nmodule='Aglib.AlgebraicGeometry.Cohomology.Group.H1'\nprobe='/-\\nCopyright (c) 2026 Aglib contributors. All rights reserved.\\nReleased under Apache 2.0 license as described in the file LICENSE.\\nAuthors: kangxyz\\n-/\\nmodule\\n\\npublic import Aglib.AlgebraicGeometry.Cohomology.Group.Coalgebra\\npublic import Aglib.Algebra.Coalgebra.Graded.Primitive\\npublic import Aglib.AlgebraicGeometry.Cohomology.Proper.Field\\npublic import Aglib.AlgebraicGeometry.Cohomology.Group.Vanishing\\npublic import Aglib.Algebra.Graded.ExternalProduct.SourceIdentity\\nimport Lean.Util.Heartbeats\\n\\n/-!\\n# The original coherent H1 dimension bound over every field\\n\\nThe actual multiplication pullback and original global Kunneth map supply\\nthe native coalgebra laws. The accepted pure graded bound applies to these\\noperations, original proper finiteness and actual dimension vanishing.\\n-/\\n\\n@[expose] public noncomputable section\\n\\nset_option backward.defeqAttrib.useBackward true\\nset_option backward.isDefEq.respectTransparency false\\nset_option backward.isDefEq.respectTransparency.types false\\n\\nopen CategoryTheory MonoidalCategory CartesianMonoidalCategory AlgebraicGeometry\\nopen AlgebraicGeometry.Scheme.OverField AlgebraicGeometry.Scheme.Cohomology\\nopen scoped CategoryTheory.MonObj TensorProduct DirectSum\\n\\nuniverse u v\\n\\nnamespace AlgebraicGeometry.Scheme.Group\\n\\nattribute [local instance] Over.cartesianMonoidalCategory\\n\\nprivate theorem finrank_degreeOne_le_of_source\\n    {k : Type u} [Field k] {A : Type v} [Ring A] [Algebra k A] [Nontrivial A]\\n    {grade : \u2115 \u2192 Submodule k A} [GradedAlgebra grade] [Coalgebra k A]\\n    [Module.Finite k (grade 1)]\\n    {t : A \u2297[k] A \u2243\u2097[k] GradedTensorProduct k grade grade}\\n    (ht : t = GradedTensorProduct.of k grade grade)\\n    (h\u03b5 : \u2200 a, GradedAlgebra.proj grade 0 a = Coalgebra.counit (R := k) a \u2022 (1 : A))\\n    (hOne : Coalgebra.comul (R := k) (1 : A) = (1 : A) \u2297\u209c[k] (1 : A))\\n    (hMul : \u2200 a b : A,\\n      t (Coalgebra.comul (a * b)) =\\n        t (Coalgebra.comul a) * t (Coalgebra.comul b))\\n    (hDegree : \u2200 x : grade 1,\\n      TensorProduct.map (GradedAlgebra.proj grade 0) (GradedAlgebra.proj grade 1)\\n          (Coalgebra.comul (x : A)) +\\n        TensorProduct.map (GradedAlgebra.proj grade 1) (GradedAlgebra.proj grade 0)\\n          (Coalgebra.comul (x : A)) = Coalgebra.comul (x : A))\\n    (g : \u2115) (hVanish : \u2200 n, g < n \u2192 grade n = \u22a5) :\\n    Module.finrank k (grade 1) \u2264 g := by\\n  apply GradedAlgebra.finrank_degreeOne_le_of_comul_grading grade h\u03b5 hOne ?_ hDegree g hVanish\\n  intro a b\\n  rw [\u2190 ht]\\n  exact hMul a b\\n\\nprivate theorem finrank_directSum_degreeOne_le\\n    {k : Type u} [Field k] {M : \u2115 \u2192 Type v}\\n    [\u2200 i, AddCommGroup (M i)] [\u2200 i, Module k (M i)]\\n    [ringM : DirectSum.GRing M] [algebraM : DirectSum.GAlgebra k M]\\n    [gradingM : GradedAlgebra (DirectSum.summandSubmodule (R := k) M)]\\n    [coalgebraM : Coalgebra k (DirectSum \u2115 M)]\\n    [Nontrivial (DirectSum \u2115 M)] [Module.Finite k (M 1)]\\n    {t : (DirectSum \u2115 M \u2297[k] DirectSum \u2115 M) \u2192\\n      GradedTensorProduct k (DirectSum.summandSubmodule (R := k) M)\\n        (DirectSum.summandSubmodule (R := k) M)}\\n    (hMul : \u2200 a b : DirectSum \u2115 M,\\n      t (Coalgebra.comul (a * b)) =\\n        t (Coalgebra.comul a) * t (Coalgebra.comul b))\\n    (ht : \u2200 z, t z =\\n      DirectSum.externalProductSourceEquiv (R := k) (M := M) (N := M)\\n        (gradeM := gradingM) (gradeN := gradingM) z)\\n    (hCounit : \u2200 a : DirectSum \u2115 M,\\n      GradedAlgebra.proj (DirectSum.summandSubmodule (R := k) M) 0 a =\\n        Coalgebra.counit (R := k) a \u2022 (1 : DirectSum \u2115 M))\\n    (hOne : Coalgebra.comul (R := k) (1 : DirectSum \u2115 M) =\\n      (1 : DirectSum \u2115 M) \u2297\u209c[k] (1 : DirectSum \u2115 M))\\n    (hDegree : \u2200 x : DirectSum.summandSubmodule (R := k) M 1,\\n      TensorProduct.map\\n          (GradedAlgebra.proj (DirectSum.summandSubmodule (R := k) M) 0)\\n          (GradedAlgebra.proj (DirectSum.summandSubmodule (R := k) M) 1)\\n          (Coalgebra.comul (x : DirectSum \u2115 M)) +\\n        TensorProduct.map\\n          (GradedAlgebra.proj (DirectSum.summandSubmodule (R := k) M) 1)\\n          (GradedAlgebra.proj (DirectSum.summandSubmodule (R := k) M) 0)\\n          (Coalgebra.comul (x : DirectSum \u2115 M)) =\\n        Coalgebra.comul (x : DirectSum \u2115 M))\\n    (g : \u2115)\\n    (hVanish : \u2200 n, g < n \u2192 DirectSum.summandSubmodule (R := k) M n = \u22a5) :\\n    Module.finrank k (M 1) \u2264 g := by\\n  let selected := DirectSum.externalProductSourceEquiv\\n    (R := k) (M := M) (N := M) (gradeM := gradingM) (gradeN := gradingM)\\n  have hMulSelected (a b : DirectSum \u2115 M) :\\n      selected (Coalgebra.comul (a * b)) =\\n        selected (Coalgebra.comul a) * selected (Coalgebra.comul b) :=\\n    (ht (Coalgebra.comul (a * b))).symm.trans\\n      ((hMul a b).trans\\n        (congrArg\u2082 (\u00b7 * \u00b7) (ht (Coalgebra.comul a)) (ht (Coalgebra.comul b))))\\n  let : Module.Finite k (DirectSum.summandSubmodule (R := k) M 1) :=\\n    Module.Finite.equiv (DirectSum.summandLinearEquiv (R := k) M 1)\\n  have hSource := DirectSum.externalProductSourceEquiv_eq_of\\n    (R := k) (M := M) (N := M) (gradeM := gradingM) (gradeN := gradingM)\\n  have hBound := finrank_degreeOne_le_of_source\\n    (A := DirectSum \u2115 M) (grade := DirectSum.summandSubmodule (R := k) M)\\n    hSource hCounit hOne hMulSelected hDegree g hVanish\\n  exact (DirectSum.summandLinearEquiv (R := k) M 1).finrank_eq.trans_le hBound\\n\\nvariable {k : Type u} [Field k] (G : FScheme k) [GrpObj G]\\n  [IsProper G.hom] [GeometricallyIntegral G.hom] [Smooth G.hom]\\n\\nset_option maxHeartbeats 1000000 in\\n-- Specializing the original direct-sum graded bound to coherent cohomology\\n-- exceeds the standard budget; keep this finite allowance local.\\n/-- Proper smooth geometrically integral groups satisfy the original coherent H1 bound.\\nNo commutativity, perfectness, characteristic or extra theorem-family premise is required. -/\\ntheorem finrank_structureH1_le_finrank_identityCotangent :\\n    Module.finrank k (structureCohomology k G 1) \u2264\\n      Module.finrank k (Cotangent.Space \u03b7[G]) := by\\n  let : Module.Finite k (structureCohomology k G 1) :=\\n    properStructureCohomologyFinite k G 1 inferInstance\\n  let g := Module.finrank k (Cotangent.Space \u03b7[G])\\n  have hvanish : \u2200 n, g < n \u2192 structureCohomologyGrade G n = \u22a5 := by\\n    intro n hn\\n    let : Subsingleton (structureCohomology k G n) :=\\n      structureCohomology_subsingleton_of_finrank_identityCotangent_lt G n hn\\n    apply (Submodule.eq_bot_iff _).mpr\\n    intro a ha\\n    change \u2203 x, structureCohomologyInclusion G n x = a at ha\\n    obtain \u27e8x, hx\u27e9 := ha\\n    have hzero := congrArg (structureCohomologyInclusion G n) (Subsingleton.elim x 0)\\n    exact hx.symm.trans (hzero.trans (map_zero _))\\n  have hCounit (a : structureCohomologyAlgebra G) :\\n      GradedAlgebra.proj (structureCohomologyGrade G) 0 a =\\n        Coalgebra.counit (R := k) a \u2022 (1 : structureCohomologyAlgebra G) := by\\n    rw [structureCohomologyCoalgebra_counit]\\n    exact structureCohomology_proj_zero G a\\n  have hOne := structureCohomologyComul_one G\\n  have hMul := structureCohomologyComul_mul G\\n  dsimp only [structureCohomologyAlgebra] at hMul\\n  have hDegree := structureCohomologyComul_degreeOne G\\n  let sourceFun := fun z => structureExternalTensorSourceEquiv G G z\\n  have hPartial := finrank_directSum_degreeOne_le\\n    (M := structureCohomology k G)\\n    (ringM := structureCohomologyGRing G)\\n    (algebraM := structureCohomologyGAlgebra G)\\n    (gradingM := structureCohomologyGradedAlgebra G)\\n    (coalgebraM := structureCohomologyCoalgebra G)\\n    (t := sourceFun)\\n  run_tac Lean.logInfo m!\"H1.MUL1M.BEFORE={(\u2190 Lean.getRemainingHeartbeats) / 1000}\"\\n  have hPartial2 := hPartial hMul\\n  run_tac Lean.logInfo m!\"H1.MUL1M.AFTER={(\u2190 Lean.getRemainingHeartbeats) / 1000}\"\\n  exact hPartial2 (fun _ => rfl) hCounit hOne hDegree g hvanish\\n\\nend AlgebraicGeometry.Scheme.Group\\n'\nprobe_sha='dfef97b7c92fb2414b7343af0e3ef0e1f288f1cd9604972e2200389fd70d63bf'\nfor name,expected in checks.items():\n actual=hashlib.sha256(Path(name).read_bytes()).hexdigest()\n assert actual==expected,(name,actual,expected)\nassert hashlib.sha256(probe.encode()).hexdigest()==probe_sha\nparents=['lake','--no-build','--rehash','build',\n 'Aglib.AlgebraicGeometry.Cohomology.Group.Coalgebra',\n 'Aglib.AlgebraicGeometry.Cohomology.Group.Vanishing',\n 'Aglib.Algebra.Coalgebra.Graded.Primitive']\nprint(json.dumps({'required_cached_parents':parents,'probe_sha256':probe_sha,'production_coverage':False}),flush=True)\nr=subprocess.run(parents)\nif r.returncode:sys.exit(r.returncode)\nwith tempfile.TemporaryDirectory(prefix='h1-final-phase-') as d:\n q=subprocess.run(['lake','--no-build','--rehash','--json','query',module+':setup'],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)\n if q.returncode:\n  print(q.stderr,q.stdout,flush=True)\n  sys.exit(q.returncode)\n setup=Path(d)/'H1.setup.json'\n setup.write_text(json.dumps(json.loads(q.stdout)))\n source=Path(d)/'H1.lean'\n source.write_text(probe)\n argv=['lake','env',os.environ['LEAN'],str(source),'--setup',str(setup),'--json','-DmaxErrors=1','-j4','-M49152']\n print(json.dumps({'scoped_argv':argv,'setup_sha256':hashlib.sha256(setup.read_bytes()).hexdigest(),'probe_sha256':probe_sha,'production_coverage':False}),flush=True)\n raise SystemExit(subprocess.run(argv).returncode)\n"
+  ],
+  "command_exit_code": 1,
+  "compiler_exit_codes": [
+    1
+  ],
+  "compiler_failed": 1,
+  "compiler_invocations": 1,
+  "compiler_observation": "wrapper-events-only",
+  "compiler_scope_lease_modes": {
+    "supervisor-only": 1
+  },
+  "compiler_scope_policy": "workspace descriptors or verified live supervisor; each compiler inherits its elastic claim",
+  "compiler_succeeded": 0,
+  "concurrency_basis": "compiler wrapper start/finish intervals, each holding one slot",
+  "diagnostics": {
+    "categories": {},
+    "first": [],
+    "observed_missing_count": 0,
+    "observed_missing_prefixes": {},
+    "observed_missing_prefixes_truncated": false,
+    "observed_missing_shortlist": []
+  },
+  "elapsed_seconds": 250.4144726395607,
+  "environment": {
+    "ELAN_HOME": "/root/autodl-tmp/lean-build/elan",
+    "LAKE_ARTIFACT_CACHE": "true",
+    "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+    "LAKE_OVERRIDE_LEAN": "1",
+    "LEAN_NUM_THREADS": "1",
+    "LEAN_SYSROOT": "/root/autodl-tmp/lean-build/logs/remote-5b5fc8bb764f45edb0b9e05470e4b65e/toolchain",
+    "R5_LEAN_REMOTE_PROFILE": "{\"jobs\": 1, \"lean\": \"/root/autodl-tmp/lean-build/logs/remote-5b5fc8bb764f45edb0b9e05470e4b65e/toolchain/bin/lean\", \"lean_memory_mib\": 49152, \"rss_limit_mib\": 110592, \"schema_version\": 1, \"threads\": 4}",
+    "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+  },
+  "exit_code": 1,
+  "expected_source": "25df09e545c752645ea8ab9b859a990f933db68bc8409f457cec024161c895d2",
+  "failure_reason": null,
+  "finished_at": "2026-11-03T01:19:23.145008+00:00",
+  "forbid_compilation": false,
+  "forced_kill": false,
+  "git_head": null,
+  "group_closed": true,
+  "incomplete_compiler_events": 0,
+  "input_drift": [],
+  "input_sha256": {
+    "Aglib/AlgebraicGeometry/Cohomology/Group/H1.lean": "036ab22b37ef44b790d3e17625fd45cf2b4d8bf1b54cf837bedd1de9a0086b04",
+    "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+    "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+  },
+  "lock_acquired_at": "2026-11-03T01:15:12.721901+00:00",
+  "locks": {
+    "cache_fetch_exclusive": null,
+    "legacy_shared_gate": "/root/autodl-tmp/lean-build/build.lock",
+    "workspace_exclusive": "/root/autodl-tmp/lean-build/locks/workspace-125ded4872e60e1894bbd83663d19e25d157fed883fc7f0bdcd7cbb174fd208d.lock"
+  },
+  "lowest_disk_free_bytes": 33389735936,
+  "modules": [
+    "Aglib.AlgebraicGeometry.Cohomology.Group.H1"
+  ],
+  "operation_id": "da1163049acc49608d644680e9e0ccd1",
+  "outcome": "execution_failure",
+  "peak_compiler_concurrency": 1,
+  "peak_rss_bytes": 8553205760,
+  "pgid": 965059,
+  "phase_executable_sha256": "0c05a22b0b180580a76437114a95cf138f67c8f46245acad26017c803b42b8c1",
+  "phase_label": "h1-mul-1m-cost-only",
+  "pins": {
+    "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+    "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+    "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+  },
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 1,
+    "lean_memory_mib": 49152,
+    "rss_limit_mib": 110592,
+    "threads": 4
+  },
+  "resource_accounting": {
+    "global": "sampled cgroup memory/CPU, startup and growth credits; no peak-envelope reservation",
+    "isolation": "cooperative sampled admission; no per-run kernel memory isolation or OOM guarantee",
+    "run": "frontend/job/thread ceilings, sampled owned-tree RSS cutoff, own-tree pressure retreat"
+  },
+  "resources": {
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "cgroup": "/sys/fs/cgroup",
+    "cgroup_limits": [
+      {
+        "cpu.max": "3200000 100000",
+        "memory.max": "128849018880",
+        "path": "/sys/fs/cgroup"
+      }
+    ],
+    "effective_cpus": 32.0,
+    "memory_bytes": 128849018880
+  },
+  "run_dir": "/root/autodl-tmp/lean-build/logs/remote-5b5fc8bb764f45edb0b9e05470e4b65e",
+  "sampled_process_average_cpu_cores": 1.0010603514950251,
+  "sampled_process_cpu_seconds": 250.68,
+  "schema_version": 1,
+  "setup_cleanup": {
+    "removed_setup_bytes": 0,
+    "removed_setup_files": 0
+  },
+  "source_content_sha256": "25df09e545c752645ea8ab9b859a990f933db68bc8409f457cec024161c895d2",
+  "source_receipt_sha256": "07041c0b2fbc2b3477bfc75ad5c3b92e8fd05b699d669d1416282051df2a33b7",
+  "started_at": "2026-11-03T01:15:12.267690+00:00",
+  "status": "failed",
+  "summary": {
+    "action": "phase",
+    "admission": {
+      "affinity_cpus": null,
+      "ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 1,
+        "lean_memory_mib": 49152,
+        "rss_limit_mib": 110592,
+        "threads": 4
+      },
+      "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+      "final_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-42d08535b47946fdbd2c041758d4ab69": 1,
+          "/root/autodl-tmp/lean-build/logs/remote-51ff334d31394499936b7c346ff080b0": 1
+        },
+        "cpu_cores": 5.541149380712603,
+        "cpu_usage_usec": 2984210454949,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 3221225472,
+        "memory_current_bytes": 53259169792,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 0.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 38988169216
+      },
+      "initial_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-42d08535b47946fdbd2c041758d4ab69": 1,
+          "/root/autodl-tmp/lean-build/logs/remote-51ff334d31394499936b7c346ff080b0": 1
+        },
+        "cpu_cores": 2.177266730799956,
+        "cpu_usage_usec": 2983358440968,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 3489660928,
+        "memory_current_bytes": 53089923072,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 1.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 38820761600
+      },
+      "max_frontends_if_alone": 1,
+      "mode": "elastic",
+      "request": null
+    },
+    "artifacts": {
+      "build.log": "/root/autodl-tmp/lean-build/logs/remote-5b5fc8bb764f45edb0b9e05470e4b65e/build.log",
+      "compiler-events.jsonl": "/root/autodl-tmp/lean-build/logs/remote-5b5fc8bb764f45edb0b9e05470e4b65e/compiler-events.jsonl",
+      "receipt.json": "/root/autodl-tmp/lean-build/logs/remote-5b5fc8bb764f45edb0b9e05470e4b65e/receipt.json"
+    },
+    "cgroup_memory_attribution": "whole observed cgroup; an OOM event alone does not identify its victim",
+    "cgroup_memory_events_delta": {
+      "high": 0,
+      "low": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "compiler_observation": "wrapper-events-only",
+    "compiler_scope_lease_modes": {
+      "supervisor-only": 1
+    },
+    "execution_seconds": 250.4144726395607,
+    "exit_code": 1,
+    "expected_source": "25df09e545c752645ea8ab9b859a990f933db68bc8409f457cec024161c895d2",
+    "first_diagnostics": [],
+    "frontend_failed": 1,
+    "frontend_invocations": 1,
+    "frontend_observation": "wrapper starts only; arbitrary phase tools may bypass local compiler caps",
+    "frontend_peak": 1,
+    "frontend_succeeded": 0,
+    "group_closed": true,
+    "native_exit": 1,
+    "outcome": "execution_failure",
+    "peak_rss_bytes": 8553205760,
+    "plan": null,
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 1,
+      "lean_memory_mib": 49152,
+      "rss_limit_mib": 110592,
+      "threads": 4
+    },
+    "reason": "",
+    "run": "remote-5b5fc8bb764f45edb0b9e05470e4b65e",
+    "sampled_process_average_cpu_cores": 1.0010603514950251,
+    "source_basis": "25df09e545c752645ea8ab9b859a990f933db68bc8409f457cec024161c895d2",
+    "status": "failed",
+    "unwrapped_frontend_count": "unknown",
+    "wall_seconds": 250.87734891474247
+  },
+  "task_id": "jacobian-multiplication-degree-20261030",
+  "unfinished_compiler_records": [],
+  "waiting_for": null,
+  "wall_seconds": 250.87734891474247,
+  "worker_sha256": "7b1d09f535dc951f2f3ecae857f7b77b0ffc95f8f9e55352167a39b4387729a4",
+  "workspace": "/root/autodl-tmp/lean-build/workspaces/managed-740a809c6061-315a5e4a9466/lean"
+}
