@@ -1,25 +1,69 @@
-name: GitHub CI
+name: CI cache Linux validation
 
 on:
   push:
-  pull_request:
+    branches: [codex/ci-cache-inventory-20261103]
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  # Preserve the existing queue identity when changing the display name.
-  group: Aglib CI-${{ github.ref }}
+  group: cache-inventory-${{ github.ref }}
   cancel-in-progress: false
-  queue: max
 
 jobs:
-  lean:
-    permissions:
-      contents: write
-      actions: read
-    uses: ./.github/workflows/lean-ci.yml
-    with:
-      package-directory: .
-      build-targets: Aglib
+  inventory:
+    name: Inventory the last successful Linux cache
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: 1b737dca122694a54850316097a7ee87ddcbaead
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.sha }}
+          path: .ci-control
+          persist-credentials: false
+      - name: Record Linux capacity and begin disk sampling
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/cache-inventory"
+          df -B1 "$GITHUB_WORKSPACE" > "$RUNNER_TEMP/cache-inventory/df-before.txt"
+          df -i "$GITHUB_WORKSPACE" > "$RUNNER_TEMP/cache-inventory/inodes-before.txt"
+          uname -a > "$RUNNER_TEMP/cache-inventory/platform.txt"
+          nohup python3 .ci-control/.github/ci-cache/inventory.py --sample \
+            --root "$GITHUB_WORKSPACE" --output "$RUNNER_TEMP/cache-inventory/disk.jsonl" \
+            > "$RUNNER_TEMP/cache-inventory/sampler.log" 2>&1 < /dev/null &
+          echo "$!" > "$RUNNER_TEMP/cache-inventory/sampler.pid"
+      - name: Restore exact successful cache without running Lean or writing caches
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: |
+            .lake
+            ${{ runner.temp }}/lake-native-cache
+          key: lean-Linux-X64-d791b020c21edcc7e9e22797f1d59fde59e8af8f675af62dc2f1fd7521bfef93-89d6106bc6c779e9737fee10c1c69f89008822de7c0ccaf47ee2412f3aae0bb2-1b737dca122694a54850316097a7ee87ddcbaead-41570180466-1-tests-1
+          fail-on-cache-miss: true
+      - name: Inventory logical bytes, allocated blocks and shared inodes
+        run: |
+          python3 .ci-control/.github/ci-cache/inventory.py \
+            --root "$GITHUB_WORKSPACE" --native-cache "$RUNNER_TEMP/lake-native-cache" \
+            --output "$RUNNER_TEMP/cache-inventory/inventory.json"
+      - name: Finish disk sampling
+        if: ${{ always() }}
+        shell: bash
+        run: |
+          if test -s "$RUNNER_TEMP/cache-inventory/sampler.pid"; then
+            kill "$(cat "$RUNNER_TEMP/cache-inventory/sampler.pid")" || true
+          fi
+          df -B1 "$GITHUB_WORKSPACE" > "$RUNNER_TEMP/cache-inventory/df-after.txt"
+          df -i "$GITHUB_WORKSPACE" > "$RUNNER_TEMP/cache-inventory/inodes-after.txt"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: ${{ always() }}
+        with:
+          name: linux-cache-inventory
+          path: ${{ runner.temp }}/cache-inventory
+          compression-level: 0
+          retention-days: 7
