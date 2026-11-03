@@ -5,15 +5,11 @@ on:
   pull_request:
   workflow_dispatch:
     inputs:
-      native-root-producer:
-        type: string
-      native-root-asset:
-        type: string
-      native-root-sha256:
-        type: string
-      native-cache-only:
-        type: boolean
-        default: false
+      runner-profile:
+        description: Runner profile for this manual CI trial
+        type: choice
+        options: [hosted, ec2]
+        default: hosted
 
 permissions:
   contents: read
@@ -33,7 +29,9 @@ jobs:
     with:
       package-directory: .
       build-targets: Aglib
-      native-root-producer: ${{ inputs.native-root-producer || '' }}
-      native-root-asset: ${{ inputs.native-root-asset || '' }}
-      native-root-sha256: ${{ inputs.native-root-sha256 || '' }}
-      native-cache-only: ${{ inputs.native-cache-only || false }}
+      # The repo-only autoscaler requires this complete label set.
+      runner-labels: ${{ github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2' && github.ref == 'refs/heads/main' && '["self-hosted","linux","x64","aglib-ec2-pilot"]' || '["ubuntu-24.04"]' }}
+      native-memory-mib: ${{ github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2' && github.ref == 'refs/heads/main' && 57344 || 13824 }}
+      lake-threads: ${{ github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2' && github.ref == 'refs/heads/main' && 4 || 1 }}
+      lint-workers: ${{ github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2' && github.ref == 'refs/heads/main' && 4 || 2 }}
+      job-timeout-minutes: ${{ github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2' && github.ref == 'refs/heads/main' && 150 || 360 }}

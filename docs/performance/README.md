@@ -40,6 +40,8 @@ original runs; current operating guides own present procedures.
 - [Why a short proof can be expensive](why-a-short-proof-can-be-expensive.md)
 - [Methods and evidence](methods-and-evidence.md)
 - [A focused diagnostic procedure](a-focused-diagnostic-procedure.md)
+- [The original total Kunneth comparison and measured native allocation](cases/native-kunneth-total-comparison/README.md)
+- [The original coherent H1 specialization and a measured local allowance](cases/native-coherent-h1-specialization/README.md)
 - [Failed cache probes and progress](failed-cache-probes-and-progress.md)
 - [Late lint repairs and dependency invalidation](late-lint-repairs-and-dependency-invalidation.md)
 - [Placement edits in widely imported modules](placement-edits-in-widely-imported-modules.md)

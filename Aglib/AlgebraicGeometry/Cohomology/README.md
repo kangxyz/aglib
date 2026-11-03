@@ -34,10 +34,28 @@ For schemes `X` and `Y` over any field, with both structure maps quasi-compact
 and quasi-separated, the original [structure-sheaf Künneth map](StructureSheaf/Kunneth.lean)
 is bijective in every natural degree. Its summands use the original projection
 pullbacks and cup product; empty factors and characteristic two are included.
-The adjacent [point](StructureSheaf/ExternalProduct/Point.lean) and
-[coherence](StructureSheaf/ExternalProduct/Coherence.lean) laws retain their
-displayed hypotheses. Graded algebra isomorphism and the coherent H¹ bound
-remain open.
+The [total comparison](StructureSheaf/KunnethComparison.lean) identifies the
+original total linear map with the original signed algebra map after the
+selected source identification. This forward equality holds without qcqs
+hypotheses; qcqs of both factors supplies the inverse of that same map through
+the original degreewise Künneth equivalences. The
+[linear value and coherence laws](StructureSheaf/KunnethLinear.lean) retain
+the original homogeneous cup values, product projections and degree transports.
+The [point laws](StructureSheaf/KunnethLinear/Point.lean) use unrestricted
+linear pullbacks, including the identity section.
+
+For a proper geometrically integral group over any field,
+[the original coproduct](Group/Coalgebra/Basic.lean) is the multiplication
+pullback followed by that same selected tensor-comparison inverse. Its
+[unit, signed multiplication and degree-one laws](Group/Coalgebra.lean) use
+the original grading and augmentation. For a smooth such group,
+[vanishing](Group/Vanishing.lean) holds above the dimension of the cotangent
+space at the identity. These constructions require neither commutativity
+nor a perfect field. The [coherent H¹ bound](Group/H1.lean) applies the general
+graded-coalgebra bound to these same operations and original cohomology. For
+every proper, smooth, geometrically integral group over any field it proves
+`finrank k (structureCohomology k G 1) ≤ finrank k (Cotangent.Space η[G])`.
+No additional H¹ inequality or primitive-element assertion is supplied.
 
 [Projective duality](Duality/Projective/README.md) proves complementary-degree coherent Serre duality over fields and all-degree derived duality for coherent sources over Noetherian affine bases with every base module. The [relative family](Duality/Projective/Relative/README.md) constructs the original differential trace over separated bases and proves coherent duality over Noetherian separated bases for arbitrary quasicoherent base coefficients, with a supplied projective-space square. Transfer through a chosen closed embedding retains the actual right-adjoint coefficient; its smooth unit-coefficient specialization uses the [proved canonical comparison](Duality/Projective/Canonical.lean) and one original trace. General proper duality, embedding independence and coefficient-complex/internal-RHom extensions remain separate. The full arbitrary-base `LocalFreeCohomologyBaseChange` family, general nonflat higher-image sheaf comparison and direct images of arbitrary perfect coefficients also remain open interfaces.
 

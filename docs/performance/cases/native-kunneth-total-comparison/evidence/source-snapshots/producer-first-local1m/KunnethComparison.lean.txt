@@ -1,0 +1,137 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethLinear.Basic
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.ExternalProduct.Graded
+
+/-!
+# Whole comparison of the original signed and linear Kunneth maps
+
+The original graded external product and the degreewise Kunneth map agree on
+whole homogeneous tensor maps. The generic total-degree comparison composes
+those laws before any native cohomology value is evaluated.
+-/
+
+@[expose] public noncomputable section
+
+open scoped TensorProduct DirectSum
+
+universe u m n p v
+
+namespace DirectSum
+
+variable {R : Type u} [CommSemiring R]
+  (M : ℕ → Type m) (N : ℕ → Type n)
+  [∀ i, AddCommMonoid (M i)] [∀ i, Module R (M i)]
+  [∀ j, AddCommMonoid (N j)] [∀ j, Module R (N j)]
+
+private theorem tensorPiLinearMap_eq_of_values
+    (P : ℕ → Type p) [∀ i, AddCommMonoid (P i)] [∀ i, Module R (P i)]
+    (E : ((⨁ i, M i) ⊗[R] ⨁ j, N j) ≃ₗ[R]
+      ⨁ t, ⨁ s : HomologicalComplex₂.TotalDegree t,
+        M s.val.1 ⊗[R] N s.val.2)
+    (hE : E = tensorFiberEquiv (R := R) M N
+      (ComplexShape.π (ComplexShape.up ℕ) (ComplexShape.up ℕ) (ComplexShape.up ℕ)))
+    (F : ((⨁ i, M i) ⊗[R] ⨁ j, N j) →ₗ[R] ⨁ i, P i)
+    (G : ∀ t, (⨁ s : HomologicalComplex₂.TotalDegree t,
+      M s.val.1 ⊗[R] N s.val.2) →ₗ[R] P t)
+    (h : ∀ i j (x : M i) (y : N j),
+      F (lof R ℕ M i x ⊗ₜ[R] lof R ℕ N j y) =
+        lof R ℕ P (i + j)
+          (G (i + j) (lof R (HomologicalComplex₂.TotalDegree (i + j))
+            (fun s => M s.val.1 ⊗[R] N s.val.2)
+            ⟨(i, j), rfl⟩ (x ⊗ₜ[R] y)))) :
+    F = mapAfterEquiv E G := by
+  subst E
+  exact tensorTotalLinearMap_eq (R := R) M N P F G h
+
+variable {M N}
+
+/-- The original signed equation fixes the actual families and maps first.
+The chosen source and original degree maps then give the total comparison. -/
+private theorem tensorPiLinearMap_eq
+    {P : ℕ → Type p} [∀ i, AddCommMonoid (P i)] [∀ i, Module R (P i)]
+    {S : Type v} [AddCommMonoid S] [Module R S]
+    {Φ : S →ₗ[R] ⨁ i, P i}
+    {s : ((⨁ i, M i) ⊗[R] ⨁ j, N j) →ₗ[R] S}
+    {T : ∀ i j, M i ⊗[R] N j →ₗ[R] P (i + j)}
+    (hF : ∀ i j,
+      Φ ∘ₗ s ∘ₗ TensorProduct.map (lof R ℕ M i) (lof R ℕ N j) =
+        lof R ℕ P (i + j) ∘ₗ T i j)
+    (E : ((⨁ i, M i) ⊗[R] ⨁ j, N j) ≃ₗ[R]
+      ⨁ t, ⨁ s : HomologicalComplex₂.TotalDegree t,
+        M s.val.1 ⊗[R] N s.val.2)
+    (hE : E = tensorFiberEquiv (R := R) M N
+      (ComplexShape.π (ComplexShape.up ℕ) (ComplexShape.up ℕ) (ComplexShape.up ℕ)))
+    (G : ∀ t, (⨁ s : HomologicalComplex₂.TotalDegree t,
+      M s.val.1 ⊗[R] N s.val.2) →ₗ[R] P t)
+    (hG : ∀ i j,
+      G (i + j) ∘ₗ
+          lof R (HomologicalComplex₂.TotalDegree (i + j))
+            (fun s => M s.val.1 ⊗[R] N s.val.2) ⟨(i, j), rfl⟩ = T i j) :
+    Φ ∘ₗ s = mapAfterEquiv E G := by
+  apply tensorPiLinearMap_eq_of_values M N P E hE (Φ ∘ₗ s) G
+  intro i j x y
+  have hValue := LinearMap.congr_fun (hF i j) (x ⊗ₜ[R] y)
+  have hOriginal := LinearMap.congr_fun (hG i j) (x ⊗ₜ[R] y)
+  simp only [LinearMap.comp_apply, TensorProduct.map_tmul] at hValue hOriginal
+  exact hValue.trans (congrArg (lof R ℕ P (i + j)) hOriginal.symm)
+
+end DirectSum
+
+open CategoryTheory MonoidalCategory CartesianMonoidalCategory AlgebraicGeometry
+open AlgebraicGeometry.Scheme.OverField
+
+namespace AlgebraicGeometry.Scheme.Cohomology
+
+attribute [local instance] Over.cartesianMonoidalCategory
+
+variable {k : Type u} [Field k] (X Y : FScheme k)
+
+/-- The original degree map after its original fiber inclusion is the original tensor map. -/
+private theorem structureKunnethMap_component (p q : ℕ) :
+    structureKunnethMap X Y (p + q) ∘ₗ
+        DirectSum.lof k (HomologicalComplex₂.TotalDegree (p + q))
+          (fun s => structureCohomology k X s.val.1 ⊗[k]
+            structureCohomology k Y s.val.2) ⟨(p, q), rfl⟩ =
+      structureExternalTensor X Y (p := p) (q := q) rfl := by
+  apply LinearMap.ext
+  intro z
+  exact structureKunnethMap_lof X Y (p + q) ⟨(p, q), rfl⟩ z
+
+-- The native producer-first comparison exceeds 200000 heartbeats while matching
+-- the original degree-map family. Measure its cost with a finite local allowance.
+set_option maxHeartbeats 1000000 in
+/-- Whole equality from the original signed value and original degreewise kappa. -/
+theorem structureExternalLinearMap_signed :
+    (structureExternalAlgebraMap X Y).toLinearMap ∘ₗ
+        (structureExternalTensorSourceEquiv X Y).toLinearMap =
+      structureExternalLinearMap X Y := by
+  have hSigned := fun (p q : ℕ) =>
+    structureExternalAlgebraMap_tensor X Y (p := p) (q := q) rfl
+  have hWhole := DirectSum.tensorPiLinearMap_eq hSigned
+    (structureTensorTotalSourceEquiv X Y) rfl
+    (structureKunnethMap X Y)
+    (structureKunnethMap_component X Y)
+  exact hWhole
+
+variable [QuasiCompact X.hom] [QuasiSeparated X.hom]
+  [QuasiCompact Y.hom] [QuasiSeparated Y.hom]
+
+-- Measure this native corollary under the same finite local allowance so that its
+-- checking does not obscure the outcome of the preceding whole comparison.
+set_option maxHeartbeats 1000000 in
+/-- The one chosen inverse of the original degreewise kappa has the signed map
+as its complete forward linear operator. -/
+theorem structureExternalAlgebraMap_linear :
+    (structureExternalAlgebraMap X Y).toLinearMap ∘ₗ
+        (structureExternalTensorSourceEquiv X Y).toLinearMap =
+      (structureExternalLinearEquiv X Y).toLinearMap := by
+  exact (structureExternalLinearMap_signed X Y).trans
+    (structureExternalLinearEquiv_toLinearMap X Y).symm
+
+end AlgebraicGeometry.Scheme.Cohomology

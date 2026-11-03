@@ -1,0 +1,14 @@
+[
+  [
+    "defsWithUnderscore",
+    "AlgebraicGeometry.Scheme.Cohomology.structureExternalAlgebraMap_tensor"
+  ],
+  [
+    "defsWithUnderscore",
+    "AlgebraicGeometry.Scheme.Cohomology.structureExternalLinearMap_signed"
+  ],
+  [
+    "defsWithUnderscore",
+    "AlgebraicGeometry.Scheme.Cohomology.structureExternalAlgebraMap_linear"
+  ]
+]

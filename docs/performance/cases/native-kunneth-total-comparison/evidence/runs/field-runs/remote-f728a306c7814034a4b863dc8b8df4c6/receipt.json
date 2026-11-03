@@ -1,0 +1,383 @@
+{
+  "action": "phase",
+  "actor_executable": "/root/miniconda3/bin/python3.12",
+  "admission": {
+    "ceilings": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 110592,
+      "threads": 4
+    },
+    "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+    "final_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-b0d6ed598cf34b559dd6458b6a10ca80": 1,
+        "/root/autodl-tmp/lean-build/logs/remote-b92fa85fa04548629ab3f38797b33755": 3,
+        "/root/autodl-tmp/lean-build/logs/remote-e0c8307e34384514adc46fce9eb2c00f": 8
+      },
+      "cpu_cores": 13.093871532770823,
+      "cpu_usage_usec": 2725192863196,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 13958643712,
+      "memory_current_bytes": 82778288128,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 0.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 64029454336
+    },
+    "initial_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-0787dab85ac34e8b8ff03ad812ca8106": 1,
+        "/root/autodl-tmp/lean-build/logs/remote-b92fa85fa04548629ab3f38797b33755": 3,
+        "/root/autodl-tmp/lean-build/logs/remote-e0c8307e34384514adc46fce9eb2c00f": 8
+      },
+      "cpu_cores": 12.258545652727921,
+      "cpu_usage_usec": 2718844720949,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 14495514624,
+      "memory_current_bytes": 75116916736,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 1.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 56748621824
+    },
+    "max_frontends_if_alone": 8,
+    "mode": "elastic"
+  },
+  "allow_library_roots": false,
+  "cache_provenance": {
+    "configuration_sha256": {
+      "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+      "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852"
+    },
+    "environment": {
+      "LAKE_ARTIFACT_CACHE": "true",
+      "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+      "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+    },
+    "lookup": "native Lake traces/artifact cache; no per-dependency prior-hit claim"
+  },
+  "cgroup_average_cpu_cores": 16.425970611022045,
+  "cgroup_cpu_after": {
+    "nr_periods": 10659032,
+    "nr_throttled": 32119,
+    "system_usec": 218386886760,
+    "throttled_usec": 378038456,
+    "usage_usec": 2725192865698,
+    "user_usec": 2506805978938
+  },
+  "cgroup_cpu_attribution": "whole observed cgroup; may include unrelated activity",
+  "cgroup_cpu_before": {
+    "nr_periods": 10655168,
+    "nr_throttled": 32119,
+    "system_usec": 218093782592,
+    "throttled_usec": 378038456,
+    "usage_usec": 2718844757978,
+    "user_usec": 2500750975385
+  },
+  "cgroup_cpu_seconds_delta": 6348.10772,
+  "cgroup_memory_events_after": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_before": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_delta": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "command": [
+    "/root/miniconda3/bin/python3.12",
+    "-c",
+    "from pathlib import Path\nimport hashlib,json,subprocess,tempfile,os,sys\nrelative='Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean'\nhead=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip() if Path('.git').exists() else None\nassert hashlib.sha256(Path(relative).read_bytes()).hexdigest()=='8211150c946a63f2a59621f27310ed5d13fa1658c3930625d57fa1261d82b47e'\nassert hashlib.sha256(Path('Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethLinear/Basic.lean').read_bytes()).hexdigest()=='c07fb383c57b5e100f1ae1a27debe0609439490392a00131b04b8b5d0493fedc'\nassert hashlib.sha256(Path('Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/ExternalProduct/Graded.lean').read_bytes()).hexdigest()=='68f0e969e732e0801dc7258a6574057a76af0f70c15f404c200fb8b6f0514b30'\nparents=['Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethLinear.Basic','Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.ExternalProduct.Graded']\nprint(json.dumps({'matching_parent_guard':parents,'guard_compilation_forbidden':True,'mathematical_head':'7545acd876b4ebf73f067d532ffa75263c01e26c','remote_git_head_if_present':head}),flush=True)\nr=subprocess.run(['lake','--no-build','--rehash','build',*parents])\nif r.returncode:sys.exit(r.returncode)\nbody='/-\\nCopyright (c) 2026 Aglib contributors. All rights reserved.\\nReleased under Apache 2.0 license as described in the file LICENSE.\\nAuthors: kangxyz\\n-/\\nmodule\\n\\npublic import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethLinear.Basic\\npublic import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.ExternalProduct.Graded\\nimport Lean\\nimport Lean.Util.Heartbeats\\n\\n/-!\\n# Whole comparison of the original signed and linear Kunneth maps\\n\\nThe original graded external product and the degreewise Kunneth map agree on\\nwhole homogeneous tensor maps. The generic total-degree comparison composes\\nthose laws before any native cohomology value is evaluated.\\n-/\\n\\n@[expose] public noncomputable section\\n\\nopen scoped TensorProduct DirectSum\\n\\nuniverse u m n p v\\n\\nprivate meta def h1ProbeParts (e : Lean.Expr) : Lean.Expr \u00d7 Array Lean.Expr := Id.run do\\n  let mut cursor := e\\n  let mut args := #[]\\n  for _ in [:64] do\\n    match cursor with\\n    | .app f a => args := #[a] ++ args; cursor := f\\n    | .mdata _ b => cursor := b\\n    | _ => break\\n  return (cursor, args)\\n\\nprivate meta def h1ProbeHead (e : Lean.Expr) : Lean.MetaM String := do\\n  let (h, a) := h1ProbeParts e\\n  let n \u2190 match h with\\n    | .const n _ => pure s!\"const:{n}\"\\n    | .fvar id => pure s!\"local:{(\u2190 id.getDecl).userName.eraseMacroScopes}\"\\n    | .bvar i => pure s!\"bound:{i}\"\\n    | .mvar id => do\\n      let d \u2190 id.getDecl\\n      pure s!\"mvar:{id.name};name={d.userName};typeHead={d.type.getAppFn.constName?}\"\\n    | .lam n _ b _ => pure s!\"lambda:{n};body={b.getAppFn.constName?}\"\\n    | .forallE n _ _ _ => pure s!\"forall:{n}\"\\n    | .proj n i _ => pure s!\"projection:{n}.{i}\"\\n    | .sort _ => pure \"Sort\"\\n    | .letE n _ _ _ _ => pure s!\"let:{n}\"\\n    | _ => pure \"other\"\\n  return s!\"{n};args={a.size}\"\\n\\nprivate meta def h1ProbeSpine (label : String) (e : Lean.Expr) : Lean.MetaM Unit := do\\n  let (_, args) := h1ProbeParts e\\n  Lean.logInfo m!\"HF_PROBE.{label}.HEAD {\u2190 h1ProbeHead e}\"\\n  for i in [:min 24 args.size] do\\n    let a := args[i]!\\n    if (\u2190 Lean.Meta.isProofQuick a) == .true then\\n      Lean.logInfo m!\"HF_PROBE.{label}.ARG{i} PROOF_VALUE_SKIPPED \\\\\\n        type={\u2190 h1ProbeHead (\u2190 Lean.Meta.inferType a)}\"\\n    else\\n      Lean.logInfo m!\"HF_PROBE.{label}.ARG{i} {\u2190 h1ProbeHead a}\"\\n\\nprivate meta def h1ProbeDiff (state : IO.Ref (Nat \u00d7 Nat \u00d7 Nat)) :\\n    Nat \u2192 String \u2192 Lean.Expr \u2192 Lean.Expr \u2192 Lean.MetaM Unit\\n  | 0, _, _, _ => pure ()\\n  | fuel + 1, path, x, y => do\\n    let (visited, differences, proofChecks) \u2190 state.get\\n    if visited \u2265 500 || differences \u2265 12 || x == y then return\\n    state.set (visited + 1, differences, proofChecks)\\n    if !x.hasLooseBVars && !y.hasLooseBVars then\\n      let qx \u2190 Lean.Meta.isProofQuick x\\n      let qy \u2190 Lean.Meta.isProofQuick y\\n      let mut px := qx == .true\\n      let mut py := qy == .true\\n      if qx == .undef || qy == .undef then\\n        if proofChecks \u2265 32 then\\n          Lean.logInfo m!\"HF_PROBE.UNKNOWN_PROOF_STATUS_SKIPPED {path}\"\\n          return\\n        state.modify fun (a,b,c) => (a,b,c+1)\\n        px \u2190 Lean.Meta.isProof x\\n        py \u2190 Lean.Meta.isProof y\\n      if px || py then\\n        let tx \u2190 Lean.Meta.inferType x\\n        let ty \u2190 Lean.Meta.inferType y\\n        Lean.logInfo m!\"HF_PROBE.PROOF_VALUES_SKIPPED {path};bothProof={px && py};\\\\\\n          sameType={tx == ty};types={\u2190 h1ProbeHead tx} / {\u2190 h1ProbeHead ty}\"\\n        if px && py then h1ProbeDiff state fuel (path ++ \".proofType\") tx ty\\n        return\\n    match x, y with\\n    | .app xf xa, .app yf ya =>\\n      h1ProbeDiff state fuel (path ++ \".fn\") xf yf\\n      h1ProbeDiff state fuel (path ++ \".arg\") xa ya\\n    | .mdata _ xb, _ => h1ProbeDiff state fuel path xb y\\n    | _, .mdata _ yb => h1ProbeDiff state fuel path x yb\\n    | .lam xn xt xb _, .lam _ yt yb _ =>\\n      h1ProbeDiff state fuel (path ++ \".lambdaType\") xt yt\\n      if xt == yt then\\n        Lean.Meta.withLocalDeclD xn xt fun v =>\\n          h1ProbeDiff state fuel (path ++ \".lambdaBody\") (xb.instantiate1 v) (yb.instantiate1 v)\\n    | .forallE xn xt xb _, .forallE _ yt yb _ =>\\n      h1ProbeDiff state fuel (path ++ \".binderType\") xt yt\\n      if xt == yt then\\n        Lean.Meta.withLocalDeclD xn xt fun v =>\\n          h1ProbeDiff state fuel (path ++ \".binderBody\") (xb.instantiate1 v) (yb.instantiate1 v)\\n    | .proj xn xi xb, .proj yn yi yb =>\\n      if xn == yn && xi == yi then h1ProbeDiff state fuel (path ++ \".projection\") xb yb\\n      else\\n        state.modify fun (a,b,c) => (a,b+1,c)\\n        Lean.logInfo m!\"HF_PROBE.DIFF {path}; {\u2190 h1ProbeHead x} / {\u2190 h1ProbeHead y}\"\\n    | _, _ =>\\n      state.modify fun (a,b,c) => (a,b+1,c)\\n      Lean.logInfo m!\"HF_PROBE.DIFF {path}; {\u2190 h1ProbeHead x} / {\u2190 h1ProbeHead y}\"\\n\\nprivate meta def h1RunDiff (label : String) (x y : Lean.Expr) : Lean.MetaM Unit := do\\n  let state \u2190 IO.mkRef (0, 0, 0)\\n  h1ProbeDiff state 48 label x y\\n  let (n,d,p) \u2190 state.get\\n  Lean.logInfo m!\"HF_PROBE.DIFF_END {label};visited={n};differences={d};\\\\\\n    proofChecks={p};limits=500/12/32/depth48\"\\n\\nprivate meta def h1ProbeMVars (label : String) (e : Lean.Expr) : Lean.MetaM Unit := do\\n  let mut stack : Array (Nat \u00d7 Lean.Expr) := #[(0, e)]\\n  let mut seen : Array Lean.MVarId := #[]\\n  let mut visited := 0\\n  let mut proofValues := 0\\n  while !stack.isEmpty && visited < 1200 && seen.size < 16 do\\n    let (depth, value) := stack.back!\\n    stack := stack.pop\\n    visited := visited + 1\\n    if depth > 48 then continue\\n    if let .mvar id := value then\\n      unless seen.contains id do\\n        seen := seen.push id\\n        let d \u2190 id.getDecl\\n        Lean.logInfo m!\"HF_PROBE.MVAR {label};id={id.name};name={d.userName};\\\\\\n          assigned={\u2190 id.isAssigned};type={\u2190 h1ProbeHead d.type}\"\\n      continue\\n    if !value.hasLooseBVars && (\u2190 Lean.Meta.isProofQuick value) == .true then\\n      proofValues := proofValues + 1\\n      stack := stack.push (depth + 1, \u2190 Lean.Meta.inferType value)\\n      continue\\n    match value with\\n    | .app f a =>\\n      stack := stack.push (depth + 1, a)\\n      stack := stack.push (depth + 1, f)\\n    | .lam _ t b _ | .forallE _ t b _ =>\\n      stack := stack.push (depth + 1, t)\\n      stack := stack.push (depth + 1, b)\\n    | .letE _ t v b _ =>\\n      stack := stack.push (depth + 1, t)\\n      stack := stack.push (depth + 1, v)\\n      stack := stack.push (depth + 1, b)\\n    | .mdata _ b | .proj _ _ b => stack := stack.push (depth + 1, b)\\n    | _ => pure ()\\n  Lean.logInfo m!\"HF_PROBE.MVAR_END {label};nodes={visited};mvars={seen.size};\\\\\\n    proofValuesSkipped={proofValues};pending={stack.size};limits=1200/16/depth48\"\\n\\nprivate meta def h1ProbeInnerComp (label : String) (e : Lean.Expr) : Lean.MetaM Unit := do\\n  let (_, args) := h1ProbeParts e\\n  for i in [:min 24 args.size] do\\n    if args[i]!.getAppFn.constName? == some ``LinearMap.comp then\\n      h1ProbeSpine (label ++ s!\".argument{i}\") args[i]!\\n\\nprivate meta def h1ProbeEquations : Nat \u2192 Lean.Expr \u2192 Lean.Expr \u2192 Lean.MetaM Unit\\n  | 0, _, _ => Lean.logInfo \"HF_PROBE.BINDER_LIMIT\"\\n  | fuel + 1, expected, actual => do\\n    match expected, actual with\\n    | .forallE n et eb _, .forallE _ actualTy ab _ =>\\n      Lean.logInfo m!\"HF_PROBE.BINDER {n};sameRawType={et == actualTy};\\\\\\n        types={\u2190 h1ProbeHead et} / {\u2190 h1ProbeHead actualTy}\"\\n      if et == actualTy then\\n        Lean.Meta.withLocalDeclD n et fun x =>\\n          h1ProbeEquations fuel (eb.instantiate1 x) (ab.instantiate1 x)\\n      else\\n        h1RunDiff \"BINDER_TYPES\" et actualTy\\n    | _, _ =>\\n      let (eh, ea) := h1ProbeParts expected\\n      let (ah, aa) := h1ProbeParts actual\\n      Lean.logInfo m!\"HF_PROBE.EQUATION_HEADS {\u2190 h1ProbeHead expected} / \\\\\\n        {\u2190 h1ProbeHead actual}\"\\n      if eh.constName? == some ``Eq && ah.constName? == some ``Eq &&\\n          ea.size == 3 && aa.size == 3 then\\n        h1ProbeSpine \"EXPECTED_CARRIER\" ea[0]!\\n        h1ProbeSpine \"ACTUAL_CARRIER\" aa[0]!\\n        h1ProbeSpine \"EXPECTED_LEFT\" ea[1]!\\n        h1ProbeSpine \"ACTUAL_LEFT\" aa[1]!\\n        h1ProbeInnerComp \"EXPECTED_INNER_COMP\" ea[1]!\\n        h1ProbeInnerComp \"ACTUAL_INNER_COMP\" aa[1]!\\n        h1ProbeSpine \"EXPECTED_RIGHT\" ea[2]!\\n        h1ProbeSpine \"ACTUAL_RIGHT\" aa[2]!\\n        if (\u2190 Lean.getRemainingHeartbeats) < 20000000 then\\n          Lean.logInfo \"HF_PROBE.LOW_BUDGET_STOP_BEFORE_DIFF\"\\n          return\\n        h1RunDiff \"CARRIER\" ea[0]! aa[0]!\\n        h1RunDiff \"LEFT\" ea[1]! aa[1]!\\n        h1RunDiff \"RIGHT\" ea[2]! aa[2]!\\n      else\\n        Lean.logInfo \"HF_PROBE.NOT_TWO_LITERAL_EQUATIONS\"\\n\\nelab \"h1_probe_hF% \" producer:term : term <= expectedType => do\\n  Lean.logInfo m!\"HF_PROBE.ENTRY remaining={(\u2190 Lean.getRemainingHeartbeats) / 1000};\\\\\\n    max={(\u2190 Lean.getMaxHeartbeats) / 1000}\"\\n  let expected \u2190 Lean.instantiateMVars expectedType\\n  Lean.logInfo m!\"HF_PROBE.EXPECTED_FLAGS expr={expected.hasExprMVar};\\\\\\n    level={expected.hasLevelMVar}\"\\n  h1ProbeMVars \"EXPECTED_BEFORE_PRODUCER\" expected\\n  let value \u2190 Lean.Elab.Term.elabTerm producer none\\n  let value \u2190 Lean.instantiateMVars value\\n  let actual \u2190 Lean.Meta.inferType value\\n  Lean.logInfo m!\"HF_PROBE.PRODUCER_ELABORATED remaining=\\\\\\n    {(\u2190 Lean.getRemainingHeartbeats) / 1000};actualHasMVar={actual.hasMVar}\"\\n  Lean.logInfo m!\"HF_PROBE.ACTUAL_FLAGS expr={actual.hasExprMVar};\\\\\\n    level={actual.hasLevelMVar}\"\\n  h1ProbeMVars \"ACTUAL_PRODUCER_TYPE\" actual\\n  let expectedAfter \u2190 Lean.instantiateMVars expectedType\\n  h1ProbeMVars \"EXPECTED_AFTER_STANDALONE_PRODUCER\" expectedAfter\\n  h1ProbeEquations 4 expectedAfter actual\\n  Lean.logInfo m!\"HF_PROBE.DONE remaining={(\u2190 Lean.getRemainingHeartbeats) / 1000}\"\\n  throwError \"HF_PROBE_INTENTIONAL_STOP\"\\n\\nnamespace DirectSum\\n\\nvariable {R : Type u} [CommSemiring R]\\n  (M : \u2115 \u2192 Type m) (N : \u2115 \u2192 Type n)\\n  [\u2200 i, AddCommMonoid (M i)] [\u2200 i, Module R (M i)]\\n  [\u2200 j, AddCommMonoid (N j)] [\u2200 j, Module R (N j)]\\n\\nprivate theorem tensorPiLinearMap_eq_of_values\\n    (P : \u2115 \u2192 Type p) [\u2200 i, AddCommMonoid (P i)] [\u2200 i, Module R (P i)]\\n    (E : ((\u2a01 i, M i) \u2297[R] \u2a01 j, N j) \u2243\u2097[R]\\n      \u2a01 t, \u2a01 s : HomologicalComplex\u2082.TotalDegree t,\\n        M s.val.1 \u2297[R] N s.val.2)\\n    (hE : E = tensorFiberEquiv (R := R) M N\\n      (ComplexShape.\u03c0 (ComplexShape.up \u2115) (ComplexShape.up \u2115) (ComplexShape.up \u2115)))\\n    (F : ((\u2a01 i, M i) \u2297[R] \u2a01 j, N j) \u2192\u2097[R] \u2a01 i, P i)\\n    (G : \u2200 t, (\u2a01 s : HomologicalComplex\u2082.TotalDegree t,\\n      M s.val.1 \u2297[R] N s.val.2) \u2192\u2097[R] P t)\\n    (h : \u2200 i j (x : M i) (y : N j),\\n      F (lof R \u2115 M i x \u2297\u209c[R] lof R \u2115 N j y) =\\n        lof R \u2115 P (i + j)\\n          (G (i + j) (lof R (HomologicalComplex\u2082.TotalDegree (i + j))\\n            (fun s => M s.val.1 \u2297[R] N s.val.2)\\n            \u27e8(i, j), rfl\u27e9 (x \u2297\u209c[R] y)))) :\\n    F = mapAfterEquiv E G := by\\n  subst E\\n  exact tensorTotalLinearMap_eq (R := R) M N P F G h\\n\\nvariable {M N}\\n\\n/-- The original component equations fix their actual intermediate maps.\\nTheir composition and evaluation take place over the variable modules. -/\\nprivate theorem tensorPiLinearMap_eq\\n    (E : ((\u2a01 i, M i) \u2297[R] \u2a01 j, N j) \u2243\u2097[R]\\n      \u2a01 t, \u2a01 s : HomologicalComplex\u2082.TotalDegree t,\\n        M s.val.1 \u2297[R] N s.val.2)\\n    (hE : E = tensorFiberEquiv (R := R) M N\\n      (ComplexShape.\u03c0 (ComplexShape.up \u2115) (ComplexShape.up \u2115) (ComplexShape.up \u2115)))\\n    {P : \u2115 \u2192 Type p} [\u2200 i, AddCommMonoid (P i)] [\u2200 i, Module R (P i)]\\n    (G : \u2200 t, (\u2a01 s : HomologicalComplex\u2082.TotalDegree t,\\n      M s.val.1 \u2297[R] N s.val.2) \u2192\u2097[R] P t)\\n    {S : Type v} [AddCommMonoid S] [Module R S]\\n    {\u03a6 : S \u2192\u2097[R] \u2a01 i, P i}\\n    {s : ((\u2a01 i, M i) \u2297[R] \u2a01 j, N j) \u2192\u2097[R] S}\\n    {T : \u2200 i j, M i \u2297[R] N j \u2192\u2097[R] P (i + j)}\\n    (hF : \u2200 i j,\\n      \u03a6 \u2218\u2097 s \u2218\u2097 TensorProduct.map (lof R \u2115 M i) (lof R \u2115 N j) =\\n        lof R \u2115 P (i + j) \u2218\u2097 T i j)\\n    (hG : \u2200 i j,\\n      G (i + j) \u2218\u2097\\n          lof R (HomologicalComplex\u2082.TotalDegree (i + j))\\n            (fun s => M s.val.1 \u2297[R] N s.val.2) \u27e8(i, j), rfl\u27e9 = T i j) :\\n    \u03a6 \u2218\u2097 s = mapAfterEquiv E G := by\\n  apply tensorPiLinearMap_eq_of_values M N P E hE (\u03a6 \u2218\u2097 s) G\\n  intro i j x y\\n  have hValue := LinearMap.congr_fun (hF i j) (x \u2297\u209c[R] y)\\n  have hOriginal := LinearMap.congr_fun (hG i j) (x \u2297\u209c[R] y)\\n  simp only [LinearMap.comp_apply, TensorProduct.map_tmul] at hValue hOriginal\\n  exact hValue.trans (congrArg (lof R \u2115 P (i + j)) hOriginal.symm)\\n\\nend DirectSum\\n\\nopen CategoryTheory MonoidalCategory CartesianMonoidalCategory AlgebraicGeometry\\nopen AlgebraicGeometry.Scheme.OverField\\n\\nnamespace AlgebraicGeometry.Scheme.Cohomology\\n\\nattribute [local instance] Over.cartesianMonoidalCategory\\n\\nvariable {k : Type u} [Field k] (X Y : FScheme k)\\n\\n/-- The original degree map after its original fiber inclusion is the original tensor map. -/\\nprivate theorem structureKunnethMap_component (p q : \u2115) :\\n    structureKunnethMap X Y (p + q) \u2218\u2097\\n        DirectSum.lof k (HomologicalComplex\u2082.TotalDegree (p + q))\\n          (fun s => structureCohomology k X s.val.1 \u2297[k]\\n            structureCohomology k Y s.val.2) \u27e8(p, q), rfl\u27e9 =\\n      structureExternalTensor X Y (p := p) (q := q) rfl := by\\n  apply LinearMap.ext\\n  intro z\\n  exact structureKunnethMap_lof X Y (p + q) \u27e8(p, q), rfl\u27e9 z\\n\\n/-- Whole equality from the original signed value and original degreewise kappa. -/\\ntheorem structureExternalLinearMap_signed :\\n    (structureExternalAlgebraMap X Y).toLinearMap \u2218\u2097\\n        (structureExternalTensorSourceEquiv X Y).toLinearMap =\\n      structureExternalLinearMap X Y := by\\n  run_tac Lean.logInfo m!\"HF_PROBE.BEFORE_APPLICATION \\\\\\n    remaining={(\u2190 Lean.getRemainingHeartbeats) / 1000}\"\\n  have hWhole := DirectSum.tensorPiLinearMap_eq (R := k)\\n    (structureTensorTotalSourceEquiv X Y) rfl\\n    (structureKunnethMap X Y)\\n    (h1_probe_hF% (fun (p q : \u2115) =>\\n      structureExternalAlgebraMap_tensor X Y (p := p) (q := q) rfl))\\n    (structureKunnethMap_component X Y)\\n  exact hWhole\\n\\nend AlgebraicGeometry.Scheme.Cohomology\\n'\nbootstrap='/-\\nCopyright (c) 2026 Aglib contributors. All rights reserved.\\nReleased under Apache 2.0 license as described in the file LICENSE.\\nAuthors: kangxyz\\n-/\\nmodule\\n\\npublic import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethLinear.Basic\\npublic import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.ExternalProduct.Graded\\nimport Lean\\nimport Lean.Util.Heartbeats\\n\\n/-!\\n# Whole comparison of the original signed and linear Kunneth maps\\n\\nThe original graded external product and the degreewise Kunneth map agree on\\nwhole homogeneous tensor maps. The generic total-degree comparison composes\\nthose laws before any native cohomology value is evaluated.\\n-/\\n\\n@[expose] public noncomputable section\\n\\nopen scoped TensorProduct DirectSum\\n\\nuniverse u m n p v\\n\\nprivate meta def h1ProbeParts (e : Lean.Expr) : Lean.Expr \u00d7 Array Lean.Expr := Id.run do\\n  let mut cursor := e\\n  let mut args := #[]\\n  for _ in [:64] do\\n    match cursor with\\n    | .app f a => args := #[a] ++ args; cursor := f\\n    | .mdata _ b => cursor := b\\n    | _ => break\\n  return (cursor, args)\\n\\nprivate meta def h1ProbeHead (e : Lean.Expr) : Lean.MetaM String := do\\n  let (h, a) := h1ProbeParts e\\n  let n \u2190 match h with\\n    | .const n _ => pure s!\"const:{n}\"\\n    | .fvar id => pure s!\"local:{(\u2190 id.getDecl).userName.eraseMacroScopes}\"\\n    | .bvar i => pure s!\"bound:{i}\"\\n    | .mvar id => do\\n      let d \u2190 id.getDecl\\n      pure s!\"mvar:{id.name};name={d.userName};typeHead={d.type.getAppFn.constName?}\"\\n    | .lam n _ b _ => pure s!\"lambda:{n};body={b.getAppFn.constName?}\"\\n    | .forallE n _ _ _ => pure s!\"forall:{n}\"\\n    | .proj n i _ => pure s!\"projection:{n}.{i}\"\\n    | .sort _ => pure \"Sort\"\\n    | .letE n _ _ _ _ => pure s!\"let:{n}\"\\n    | _ => pure \"other\"\\n  return s!\"{n};args={a.size}\"\\n\\nprivate meta def h1ProbeSpine (label : String) (e : Lean.Expr) : Lean.MetaM Unit := do\\n  let (_, args) := h1ProbeParts e\\n  Lean.logInfo m!\"HF_PROBE.{label}.HEAD {\u2190 h1ProbeHead e}\"\\n  for i in [:min 24 args.size] do\\n    let a := args[i]!\\n    if (\u2190 Lean.Meta.isProofQuick a) == .true then\\n      Lean.logInfo m!\"HF_PROBE.{label}.ARG{i} PROOF_VALUE_SKIPPED \\\\\\n        type={\u2190 h1ProbeHead (\u2190 Lean.Meta.inferType a)}\"\\n    else\\n      Lean.logInfo m!\"HF_PROBE.{label}.ARG{i} {\u2190 h1ProbeHead a}\"\\n\\nprivate meta def h1ProbeDiff (state : IO.Ref (Nat \u00d7 Nat \u00d7 Nat)) :\\n    Nat \u2192 String \u2192 Lean.Expr \u2192 Lean.Expr \u2192 Lean.MetaM Unit\\n  | 0, _, _, _ => pure ()\\n  | fuel + 1, path, x, y => do\\n    let (visited, differences, proofChecks) \u2190 state.get\\n    if visited \u2265 500 || differences \u2265 12 || x == y then return\\n    state.set (visited + 1, differences, proofChecks)\\n    if !x.hasLooseBVars && !y.hasLooseBVars then\\n      let qx \u2190 Lean.Meta.isProofQuick x\\n      let qy \u2190 Lean.Meta.isProofQuick y\\n      let mut px := qx == .true\\n      let mut py := qy == .true\\n      if qx == .undef || qy == .undef then\\n        if proofChecks \u2265 32 then\\n          Lean.logInfo m!\"HF_PROBE.UNKNOWN_PROOF_STATUS_SKIPPED {path}\"\\n          return\\n        state.modify fun (a,b,c) => (a,b,c+1)\\n        px \u2190 Lean.Meta.isProof x\\n        py \u2190 Lean.Meta.isProof y\\n      if px || py then\\n        let tx \u2190 Lean.Meta.inferType x\\n        let ty \u2190 Lean.Meta.inferType y\\n        Lean.logInfo m!\"HF_PROBE.PROOF_VALUES_SKIPPED {path};bothProof={px && py};\\\\\\n          sameType={tx == ty};types={\u2190 h1ProbeHead tx} / {\u2190 h1ProbeHead ty}\"\\n        if px && py then h1ProbeDiff state fuel (path ++ \".proofType\") tx ty\\n        return\\n    match x, y with\\n    | .app xf xa, .app yf ya =>\\n      h1ProbeDiff state fuel (path ++ \".fn\") xf yf\\n      h1ProbeDiff state fuel (path ++ \".arg\") xa ya\\n    | .mdata _ xb, _ => h1ProbeDiff state fuel path xb y\\n    | _, .mdata _ yb => h1ProbeDiff state fuel path x yb\\n    | .lam xn xt xb _, .lam _ yt yb _ =>\\n      h1ProbeDiff state fuel (path ++ \".lambdaType\") xt yt\\n      if xt == yt then\\n        Lean.Meta.withLocalDeclD xn xt fun v =>\\n          h1ProbeDiff state fuel (path ++ \".lambdaBody\") (xb.instantiate1 v) (yb.instantiate1 v)\\n    | .forallE xn xt xb _, .forallE _ yt yb _ =>\\n      h1ProbeDiff state fuel (path ++ \".binderType\") xt yt\\n      if xt == yt then\\n        Lean.Meta.withLocalDeclD xn xt fun v =>\\n          h1ProbeDiff state fuel (path ++ \".binderBody\") (xb.instantiate1 v) (yb.instantiate1 v)\\n    | .proj xn xi xb, .proj yn yi yb =>\\n      if xn == yn && xi == yi then h1ProbeDiff state fuel (path ++ \".projection\") xb yb\\n      else\\n        state.modify fun (a,b,c) => (a,b+1,c)\\n        Lean.logInfo m!\"HF_PROBE.DIFF {path}; {\u2190 h1ProbeHead x} / {\u2190 h1ProbeHead y}\"\\n    | _, _ =>\\n      state.modify fun (a,b,c) => (a,b+1,c)\\n      Lean.logInfo m!\"HF_PROBE.DIFF {path}; {\u2190 h1ProbeHead x} / {\u2190 h1ProbeHead y}\"\\n\\nprivate meta def h1RunDiff (label : String) (x y : Lean.Expr) : Lean.MetaM Unit := do\\n  let state \u2190 IO.mkRef (0, 0, 0)\\n  h1ProbeDiff state 48 label x y\\n  let (n,d,p) \u2190 state.get\\n  Lean.logInfo m!\"HF_PROBE.DIFF_END {label};visited={n};differences={d};\\\\\\n    proofChecks={p};limits=500/12/32/depth48\"\\n\\nprivate meta def h1ProbeMVars (label : String) (e : Lean.Expr) : Lean.MetaM Unit := do\\n  let mut stack : Array (Nat \u00d7 Lean.Expr) := #[(0, e)]\\n  let mut seen : Array Lean.MVarId := #[]\\n  let mut visited := 0\\n  let mut proofValues := 0\\n  while !stack.isEmpty && visited < 1200 && seen.size < 16 do\\n    let (depth, value) := stack.back!\\n    stack := stack.pop\\n    visited := visited + 1\\n    if depth > 48 then continue\\n    if let .mvar id := value then\\n      unless seen.contains id do\\n        seen := seen.push id\\n        let d \u2190 id.getDecl\\n        Lean.logInfo m!\"HF_PROBE.MVAR {label};id={id.name};name={d.userName};\\\\\\n          assigned={\u2190 id.isAssigned};type={\u2190 h1ProbeHead d.type}\"\\n      continue\\n    if !value.hasLooseBVars && (\u2190 Lean.Meta.isProofQuick value) == .true then\\n      proofValues := proofValues + 1\\n      stack := stack.push (depth + 1, \u2190 Lean.Meta.inferType value)\\n      continue\\n    match value with\\n    | .app f a =>\\n      stack := stack.push (depth + 1, a)\\n      stack := stack.push (depth + 1, f)\\n    | .lam _ t b _ | .forallE _ t b _ =>\\n      stack := stack.push (depth + 1, t)\\n      stack := stack.push (depth + 1, b)\\n    | .letE _ t v b _ =>\\n      stack := stack.push (depth + 1, t)\\n      stack := stack.push (depth + 1, v)\\n      stack := stack.push (depth + 1, b)\\n    | .mdata _ b | .proj _ _ b => stack := stack.push (depth + 1, b)\\n    | _ => pure ()\\n  Lean.logInfo m!\"HF_PROBE.MVAR_END {label};nodes={visited};mvars={seen.size};\\\\\\n    proofValuesSkipped={proofValues};pending={stack.size};limits=1200/16/depth48\"\\n\\nprivate meta def h1ProbeInnerComp (label : String) (e : Lean.Expr) : Lean.MetaM Unit := do\\n  let (_, args) := h1ProbeParts e\\n  for i in [:min 24 args.size] do\\n    if args[i]!.getAppFn.constName? == some ``LinearMap.comp then\\n      h1ProbeSpine (label ++ s!\".argument{i}\") args[i]!\\n\\nprivate meta def h1ProbeEquations : Nat \u2192 Lean.Expr \u2192 Lean.Expr \u2192 Lean.MetaM Unit\\n  | 0, _, _ => Lean.logInfo \"HF_PROBE.BINDER_LIMIT\"\\n  | fuel + 1, expected, actual => do\\n    match expected, actual with\\n    | .forallE n et eb _, .forallE _ actualTy ab _ =>\\n      Lean.logInfo m!\"HF_PROBE.BINDER {n};sameRawType={et == actualTy};\\\\\\n        types={\u2190 h1ProbeHead et} / {\u2190 h1ProbeHead actualTy}\"\\n      if et == actualTy then\\n        Lean.Meta.withLocalDeclD n et fun x =>\\n          h1ProbeEquations fuel (eb.instantiate1 x) (ab.instantiate1 x)\\n      else\\n        h1RunDiff \"BINDER_TYPES\" et actualTy\\n    | _, _ =>\\n      let (eh, ea) := h1ProbeParts expected\\n      let (ah, aa) := h1ProbeParts actual\\n      Lean.logInfo m!\"HF_PROBE.EQUATION_HEADS {\u2190 h1ProbeHead expected} / \\\\\\n        {\u2190 h1ProbeHead actual}\"\\n      if eh.constName? == some ``Eq && ah.constName? == some ``Eq &&\\n          ea.size == 3 && aa.size == 3 then\\n        h1ProbeSpine \"EXPECTED_CARRIER\" ea[0]!\\n        h1ProbeSpine \"ACTUAL_CARRIER\" aa[0]!\\n        h1ProbeSpine \"EXPECTED_LEFT\" ea[1]!\\n        h1ProbeSpine \"ACTUAL_LEFT\" aa[1]!\\n        h1ProbeInnerComp \"EXPECTED_INNER_COMP\" ea[1]!\\n        h1ProbeInnerComp \"ACTUAL_INNER_COMP\" aa[1]!\\n        h1ProbeSpine \"EXPECTED_RIGHT\" ea[2]!\\n        h1ProbeSpine \"ACTUAL_RIGHT\" aa[2]!\\n        if (\u2190 Lean.getRemainingHeartbeats) < 20000000 then\\n          Lean.logInfo \"HF_PROBE.LOW_BUDGET_STOP_BEFORE_DIFF\"\\n          return\\n        h1RunDiff \"CARRIER\" ea[0]! aa[0]!\\n        h1RunDiff \"LEFT\" ea[1]! aa[1]!\\n        h1RunDiff \"RIGHT\" ea[2]! aa[2]!\\n      else\\n        Lean.logInfo \"HF_PROBE.NOT_TWO_LITERAL_EQUATIONS\"\\n\\nelab \"h1_probe_hF% \" producer:term : term <= expectedType => do\\n  Lean.logInfo m!\"HF_PROBE.ENTRY remaining={(\u2190 Lean.getRemainingHeartbeats) / 1000};\\\\\\n    max={(\u2190 Lean.getMaxHeartbeats) / 1000}\"\\n  let expected \u2190 Lean.instantiateMVars expectedType\\n  Lean.logInfo m!\"HF_PROBE.EXPECTED_FLAGS expr={expected.hasExprMVar};\\\\\\n    level={expected.hasLevelMVar}\"\\n  h1ProbeMVars \"EXPECTED_BEFORE_PRODUCER\" expected\\n  let value \u2190 Lean.Elab.Term.elabTerm producer none\\n  let value \u2190 Lean.instantiateMVars value\\n  let actual \u2190 Lean.Meta.inferType value\\n  Lean.logInfo m!\"HF_PROBE.PRODUCER_ELABORATED remaining=\\\\\\n    {(\u2190 Lean.getRemainingHeartbeats) / 1000};actualHasMVar={actual.hasMVar}\"\\n  Lean.logInfo m!\"HF_PROBE.ACTUAL_FLAGS expr={actual.hasExprMVar};\\\\\\n    level={actual.hasLevelMVar}\"\\n  h1ProbeMVars \"ACTUAL_PRODUCER_TYPE\" actual\\n  let expectedAfter \u2190 Lean.instantiateMVars expectedType\\n  h1ProbeMVars \"EXPECTED_AFTER_STANDALONE_PRODUCER\" expectedAfter\\n  h1ProbeEquations 4 expectedAfter actual\\n  Lean.logInfo m!\"HF_PROBE.DONE remaining={(\u2190 Lean.getRemainingHeartbeats) / 1000}\"\\n  throwError \"HF_PROBE_INTENTIONAL_STOP\"\\n\\n\\n/-- Bootstrap only the diagnostic helpers before any native comparison body. -/\\ntheorem h1MainHFProbeBootstrap : True := True.intro\\n'\nwith tempfile.TemporaryDirectory(prefix='h1-main-hf-probe-') as d:\n q=subprocess.run(['lake','--no-build','--rehash','--json','query',relative[:-5].replace('/','.')+':setup'],capture_output=True,text=True)\n if q.returncode:print(q.stdout,q.stderr,flush=True);sys.exit(q.returncode)\n setup=Path(d)/'KunnethComparison.setup.json';setup.write_text(json.dumps(json.loads(q.stdout)))\n for stage,name,content in [('helpers-only','MainHFProbeBootstrap.lean',bootstrap),('actual-hF-input','MainComparisonHFProbe.lean',body)]:\n  p=Path(d)/name;p.write_text(content)\n  argv=['lake','env',os.environ['LEAN'],str(p),'--setup',str(setup),'--json','-DmaxErrors=1','-j4','-M12800']\n  print(json.dumps({'stage':stage,'scoped_argv':argv,'body_sha256':hashlib.sha256(content.encode()).hexdigest(),'native_setup_preserved':True,'diagnostic_question':'remaining expected hF metavariables and original G producer type before matching','mvar_inventory_bounds':{'nodes':1200,'mvars':16,'depth':48},'first_diff_bounds':{'nodes':500,'depth':48,'differences':12,'proof_fallbacks':32},'no_normalization_or_raw_pretty':True,'production_coverage':False,'intentional_stop':'HF_PROBE_INTENTIONAL_STOP' if stage=='actual-hF-input' else None}),flush=True)\n  r=subprocess.run(argv)\n  print(json.dumps({'stage_closed':stage,'native_exit_code':r.returncode}),flush=True)\n  if r.returncode:sys.exit(r.returncode)\n"
+  ],
+  "command_exit_code": 1,
+  "compiler_exit_codes": [
+    0,
+    1
+  ],
+  "compiler_failed": 1,
+  "compiler_invocations": 2,
+  "compiler_observation": "wrapper-events-only",
+  "compiler_scope_lease_modes": {
+    "supervisor-only": 2
+  },
+  "compiler_scope_policy": "workspace descriptors or verified live supervisor; each compiler inherits its elastic claim",
+  "compiler_succeeded": 1,
+  "concurrency_basis": "compiler wrapper start/finish intervals, each holding one slot",
+  "diagnostics": {
+    "categories": {},
+    "first": [],
+    "observed_missing_count": 0,
+    "observed_missing_prefixes": {},
+    "observed_missing_prefixes_truncated": false,
+    "observed_missing_shortlist": []
+  },
+  "elapsed_seconds": 386.46773882210255,
+  "environment": {
+    "ELAN_HOME": "/root/autodl-tmp/lean-build/elan",
+    "LAKE_ARTIFACT_CACHE": "true",
+    "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+    "LAKE_OVERRIDE_LEAN": "1",
+    "LEAN_NUM_THREADS": "8",
+    "LEAN_SYSROOT": "/root/autodl-tmp/lean-build/logs/remote-f728a306c7814034a4b863dc8b8df4c6/toolchain",
+    "R5_LEAN_REMOTE_PROFILE": "{\"jobs\": 8, \"lean\": \"/root/autodl-tmp/lean-build/logs/remote-f728a306c7814034a4b863dc8b8df4c6/toolchain/bin/lean\", \"lean_memory_mib\": 12800, \"rss_limit_mib\": 110592, \"schema_version\": 1, \"threads\": 4}",
+    "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+  },
+  "exit_code": 1,
+  "expected_source": "e76dd89018848d73e0f3234bdadec16851ed9db30af0e33f5df53ef3684f4517",
+  "failure_reason": null,
+  "finished_at": "2026-11-02T13:54:01.180471+00:00",
+  "forbid_compilation": false,
+  "forced_kill": false,
+  "git_head": null,
+  "group_closed": true,
+  "incomplete_compiler_events": 0,
+  "input_drift": [],
+  "input_sha256": {
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean": "8211150c946a63f2a59621f27310ed5d13fa1658c3930625d57fa1261d82b47e",
+    "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+    "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+  },
+  "lock_acquired_at": "2026-11-02T13:47:34.702971+00:00",
+  "locks": {
+    "cache_fetch_exclusive": null,
+    "legacy_shared_gate": "/root/autodl-tmp/lean-build/build.lock",
+    "workspace_exclusive": "/root/autodl-tmp/lean-build/locks/workspace-20f09446ada883b4d223b672f2487f732be5fb97ceb69e40f51c27a1cdd07377.lock"
+  },
+  "lowest_disk_free_bytes": 21214576640,
+  "modules": [
+    "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethComparison"
+  ],
+  "operation_id": "795ad96c0d484af08345bf24ca186573",
+  "outcome": "execution_failure",
+  "peak_compiler_concurrency": 1,
+  "peak_rss_bytes": 10836815872,
+  "pgid": 676389,
+  "phase_executable_sha256": "0c05a22b0b180580a76437114a95cf138f67c8f46245acad26017c803b42b8c1",
+  "phase_label": "h1-main-hf-input-bounded",
+  "pins": {
+    "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+    "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+    "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+  },
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 8,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 110592,
+    "threads": 4
+  },
+  "resource_accounting": {
+    "global": "sampled cgroup memory/CPU, startup and growth credits; no peak-envelope reservation",
+    "isolation": "cooperative sampled admission; no per-run kernel memory isolation or OOM guarantee",
+    "run": "frontend/job/thread ceilings, sampled owned-tree RSS cutoff, own-tree pressure retreat"
+  },
+  "resources": {
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "cgroup": "/sys/fs/cgroup",
+    "cgroup_limits": [
+      {
+        "cpu.max": "3200000 100000",
+        "memory.max": "128849018880",
+        "path": "/sys/fs/cgroup"
+      }
+    ],
+    "effective_cpus": 32.0,
+    "memory_bytes": 128849018880
+  },
+  "run_dir": "/root/autodl-tmp/lean-build/logs/remote-f728a306c7814034a4b863dc8b8df4c6",
+  "sampled_process_average_cpu_cores": 1.1674971923275976,
+  "sampled_process_cpu_seconds": 451.2,
+  "schema_version": 1,
+  "setup_cleanup": {
+    "removed_setup_bytes": 0,
+    "removed_setup_files": 0
+  },
+  "source_content_sha256": "e76dd89018848d73e0f3234bdadec16851ed9db30af0e33f5df53ef3684f4517",
+  "source_receipt_sha256": "0962d34288d0dc123d7a21ac8cd4013e1ba8e5867b832250ac83a60d13246567",
+  "started_at": "2026-11-02T13:47:34.198795+00:00",
+  "status": "failed",
+  "summary": {
+    "action": "phase",
+    "admission": {
+      "affinity_cpus": null,
+      "ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 110592,
+        "threads": 4
+      },
+      "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+      "final_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-b0d6ed598cf34b559dd6458b6a10ca80": 1,
+          "/root/autodl-tmp/lean-build/logs/remote-b92fa85fa04548629ab3f38797b33755": 3,
+          "/root/autodl-tmp/lean-build/logs/remote-e0c8307e34384514adc46fce9eb2c00f": 8
+        },
+        "cpu_cores": 13.093871532770823,
+        "cpu_usage_usec": 2725192863196,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 13958643712,
+        "memory_current_bytes": 82778288128,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 0.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 64029454336
+      },
+      "initial_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-0787dab85ac34e8b8ff03ad812ca8106": 1,
+          "/root/autodl-tmp/lean-build/logs/remote-b92fa85fa04548629ab3f38797b33755": 3,
+          "/root/autodl-tmp/lean-build/logs/remote-e0c8307e34384514adc46fce9eb2c00f": 8
+        },
+        "cpu_cores": 12.258545652727921,
+        "cpu_usage_usec": 2718844720949,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 14495514624,
+        "memory_current_bytes": 75116916736,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 1.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 56748621824
+      },
+      "max_frontends_if_alone": 8,
+      "mode": "elastic",
+      "request": null
+    },
+    "artifacts": {
+      "build.log": "/root/autodl-tmp/lean-build/logs/remote-f728a306c7814034a4b863dc8b8df4c6/build.log",
+      "compiler-events.jsonl": "/root/autodl-tmp/lean-build/logs/remote-f728a306c7814034a4b863dc8b8df4c6/compiler-events.jsonl",
+      "receipt.json": "/root/autodl-tmp/lean-build/logs/remote-f728a306c7814034a4b863dc8b8df4c6/receipt.json"
+    },
+    "cgroup_memory_attribution": "whole observed cgroup; an OOM event alone does not identify its victim",
+    "cgroup_memory_events_delta": {
+      "high": 0,
+      "low": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "compiler_observation": "wrapper-events-only",
+    "compiler_scope_lease_modes": {
+      "supervisor-only": 2
+    },
+    "execution_seconds": 386.46773882210255,
+    "exit_code": 1,
+    "expected_source": "e76dd89018848d73e0f3234bdadec16851ed9db30af0e33f5df53ef3684f4517",
+    "first_diagnostics": [],
+    "frontend_failed": 1,
+    "frontend_invocations": 2,
+    "frontend_observation": "wrapper starts only; arbitrary phase tools may bypass local compiler caps",
+    "frontend_peak": 1,
+    "frontend_succeeded": 1,
+    "group_closed": true,
+    "native_exit": 1,
+    "outcome": "execution_failure",
+    "peak_rss_bytes": 10836815872,
+    "plan": null,
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 110592,
+      "threads": 4
+    },
+    "reason": "",
+    "run": "remote-f728a306c7814034a4b863dc8b8df4c6",
+    "sampled_process_average_cpu_cores": 1.1674971923275976,
+    "source_basis": "e76dd89018848d73e0f3234bdadec16851ed9db30af0e33f5df53ef3684f4517",
+    "status": "failed",
+    "unwrapped_frontend_count": "unknown",
+    "wall_seconds": 386.9817088544369
+  },
+  "task_id": "jacobian-kunneth-field-20261030",
+  "unfinished_compiler_records": [],
+  "waiting_for": null,
+  "wall_seconds": 386.9817088544369,
+  "worker_sha256": "7b1d09f535dc951f2f3ecae857f7b77b0ffc95f8f9e55352167a39b4387729a4",
+  "workspace": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean"
+}

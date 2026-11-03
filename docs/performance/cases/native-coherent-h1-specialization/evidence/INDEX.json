@@ -1,0 +1,211 @@
+{
+  "checkout": {
+    "head": "58f0a8a22159d4bd7e9bdd03035494b394d95baf",
+    "path": "/Users/kang/Documents/New project/tmp/work/jacobian/main-h1"
+  },
+  "mathematical_boundary": "Records below are execution observations only; this index makes no mathematical conclusion or acceptance claim.",
+  "runs": [
+    {
+      "assigned_label": "full400-failure",
+      "files": [
+        {
+          "bytes": 15359,
+          "copied_path": "runs/remote-ec77f579a84d435ba48c3f4ff0e170e7/receipt.json",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-multiplication-degree-runs/remote-ec77f579a84d435ba48c3f4ff0e170e7/receipt.json",
+          "sha256": "9b000962f868e7c80f24e16511a01af46392816014b91fd8d0dc33f6b8e1b36c"
+        },
+        {
+          "bytes": 4287,
+          "copied_path": "runs/remote-ec77f579a84d435ba48c3f4ff0e170e7/build.log",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-multiplication-degree-runs/remote-ec77f579a84d435ba48c3f4ff0e170e7/build.log",
+          "sha256": "566bcf603c4390b3ad0695043414c7776f5e3457e359a67a9097b8690a85b3ee"
+        },
+        {
+          "bytes": 2174,
+          "copied_path": "runs/remote-ec77f579a84d435ba48c3f4ff0e170e7/compiler-events.jsonl",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-multiplication-degree-runs/remote-ec77f579a84d435ba48c3f4ff0e170e7/compiler-events.jsonl",
+          "sha256": "1389e9649d96862593ae7b2d7d3e83f74d50980aba26f2322964150f498f0a38"
+        }
+      ],
+      "frontend_events": [
+        {
+          "args": [
+            "/root/autodl-tmp/lean-build/workspaces/managed-740a809c6061-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/Group/H1.lean",
+            "-o",
+            "/root/autodl-tmp/lean-build/workspaces/managed-740a809c6061-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/Group/H1.olean",
+            "-i",
+            "/root/autodl-tmp/lean-build/workspaces/managed-740a809c6061-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/Group/H1.ilean",
+            "-c",
+            "/root/autodl-tmp/lean-build/workspaces/managed-740a809c6061-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/Group/H1.c",
+            "--setup",
+            "/root/autodl-tmp/lean-build/workspaces/managed-740a809c6061-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/Group/H1.setup.json",
+            "--json",
+            "-j4",
+            "-M49152"
+          ],
+          "event": "started",
+          "exit_code": null,
+          "module": "/root/autodl-tmp/lean-build/workspaces/managed-740a809c6061-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/Group/H1.lean",
+          "setup_path": "/root/autodl-tmp/lean-build/workspaces/managed-740a809c6061-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/Group/H1.setup.json"
+        },
+        {
+          "args": null,
+          "event": "finished",
+          "exit_code": 1,
+          "module": null,
+          "setup_path": null
+        }
+      ],
+      "h1_input_sha256": "036ab22b37ef44b790d3e17625fd45cf2b4d8bf1b54cf837bedd1de9a0086b04",
+      "original_directory": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-multiplication-degree-runs/remote-ec77f579a84d435ba48c3f4ff0e170e7",
+      "receipt_sha256": "9b000962f868e7c80f24e16511a01af46392816014b91fd8d0dc33f6b8e1b36c",
+      "recorded_exit_code": 1,
+      "recorded_outcome": "heartbeat_budget",
+      "recorded_status": "failed",
+      "run_id": "remote-ec77f579a84d435ba48c3f4ff0e170e7",
+      "source_content_sha256": "25df09e545c752645ea8ab9b859a990f933db68bc8409f457cec024161c895d2"
+    },
+    {
+      "assigned_label": "isolated1m-diagnostic-only-not-full-H1-pass",
+      "diagnostic_detail": "Same source_content_sha256 as the 400k attempt; isolated diagnostic log records BEFORE_HMUL=945541 and AFTER=386241 (cost 559300), then logging-linter failure. This is not a full H1 pass.",
+      "files": [
+        {
+          "bytes": 23259,
+          "copied_path": "runs/remote-5b5fc8bb764f45edb0b9e05470e4b65e/receipt.json",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-multiplication-degree-runs/remote-5b5fc8bb764f45edb0b9e05470e4b65e/receipt.json",
+          "sha256": "67f88ba20bf648f206e3f0de3ae8858d77d468cf340072d676fa003e6f7e4a53"
+        },
+        {
+          "bytes": 2054,
+          "copied_path": "runs/remote-5b5fc8bb764f45edb0b9e05470e4b65e/build.log",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-multiplication-degree-runs/remote-5b5fc8bb764f45edb0b9e05470e4b65e/build.log",
+          "sha256": "1634736d932ecfe2a6e9e79b3a362dbceb91e4375aed8ce3bd1e2cdf1c38ab23"
+        },
+        {
+          "bytes": 899,
+          "copied_path": "runs/remote-5b5fc8bb764f45edb0b9e05470e4b65e/compiler-events.jsonl",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-multiplication-degree-runs/remote-5b5fc8bb764f45edb0b9e05470e4b65e/compiler-events.jsonl",
+          "sha256": "da218311296069bc6181ec0871339eb3aa706ffdd68402c442f9851af90ce085"
+        }
+      ],
+      "frontend_events": [
+        {
+          "args": [
+            "/tmp/h1-final-phase-xhy6ulih/H1.lean",
+            "--setup",
+            "/tmp/h1-final-phase-xhy6ulih/H1.setup.json",
+            "--json",
+            "-DmaxErrors=1",
+            "-j4",
+            "-M49152"
+          ],
+          "event": "started",
+          "exit_code": null,
+          "module": "/tmp/h1-final-phase-xhy6ulih/H1.lean",
+          "setup_path": "/tmp/h1-final-phase-xhy6ulih/H1.setup.json"
+        },
+        {
+          "args": null,
+          "event": "finished",
+          "exit_code": 1,
+          "module": null,
+          "setup_path": null
+        }
+      ],
+      "h1_input_sha256": "036ab22b37ef44b790d3e17625fd45cf2b4d8bf1b54cf837bedd1de9a0086b04",
+      "original_directory": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-multiplication-degree-runs/remote-5b5fc8bb764f45edb0b9e05470e4b65e",
+      "receipt_sha256": "67f88ba20bf648f206e3f0de3ae8858d77d468cf340072d676fa003e6f7e4a53",
+      "recorded_exit_code": 1,
+      "recorded_outcome": "execution_failure",
+      "recorded_status": "failed",
+      "run_id": "remote-5b5fc8bb764f45edb0b9e05470e4b65e",
+      "source_content_sha256": "25df09e545c752645ea8ab9b859a990f933db68bc8409f457cec024161c895d2"
+    },
+    {
+      "assigned_label": "full-current-native-pass",
+      "assigned_receipt_sha256": "9efb2fd7bd3371989a6b6ba94e944b24e0ce7f622b1808cedfe4805d63d9a73d",
+      "compiler_event_identity": "One fresh H1 frontend; event file retains started/finished records. Receipt records closed group, no input drift, and exit 0.",
+      "files": [
+        {
+          "bytes": 14736,
+          "copied_path": "runs/remote-4d4518db3ddd4c598a14a4d01bba9e85/receipt.json",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-multiplication-degree-runs/remote-4d4518db3ddd4c598a14a4d01bba9e85/receipt.json",
+          "sha256": "9efb2fd7bd3371989a6b6ba94e944b24e0ce7f622b1808cedfe4805d63d9a73d"
+        },
+        {
+          "bytes": 1320,
+          "copied_path": "runs/remote-4d4518db3ddd4c598a14a4d01bba9e85/build.log",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-multiplication-degree-runs/remote-4d4518db3ddd4c598a14a4d01bba9e85/build.log",
+          "sha256": "b122b829b12c49b1005d869dee70e887eb9421b06260ddf0b3fb21e84892dab6"
+        },
+        {
+          "bytes": 2174,
+          "copied_path": "runs/remote-4d4518db3ddd4c598a14a4d01bba9e85/compiler-events.jsonl",
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-multiplication-degree-runs/remote-4d4518db3ddd4c598a14a4d01bba9e85/compiler-events.jsonl",
+          "sha256": "68f79e21bd4246484bb737054470b27de04b048ffdccbb6a69aca1d9f4236789"
+        }
+      ],
+      "frontend_events": [
+        {
+          "args": [
+            "/root/autodl-tmp/lean-build/workspaces/managed-740a809c6061-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/Group/H1.lean",
+            "-o",
+            "/root/autodl-tmp/lean-build/workspaces/managed-740a809c6061-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/Group/H1.olean",
+            "-i",
+            "/root/autodl-tmp/lean-build/workspaces/managed-740a809c6061-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/Group/H1.ilean",
+            "-c",
+            "/root/autodl-tmp/lean-build/workspaces/managed-740a809c6061-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/Group/H1.c",
+            "--setup",
+            "/root/autodl-tmp/lean-build/workspaces/managed-740a809c6061-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/Group/H1.setup.json",
+            "--json",
+            "-j4",
+            "-M49152"
+          ],
+          "event": "started",
+          "exit_code": null,
+          "module": "/root/autodl-tmp/lean-build/workspaces/managed-740a809c6061-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/Group/H1.lean",
+          "setup_path": "/root/autodl-tmp/lean-build/workspaces/managed-740a809c6061-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/Group/H1.setup.json"
+        },
+        {
+          "args": null,
+          "event": "finished",
+          "exit_code": 0,
+          "module": null,
+          "setup_path": null
+        }
+      ],
+      "h1_input_sha256": "c8eb3b35cf3e44b2320c94963377084d71c85e44c101aeca305256152fe7c6ef",
+      "original_directory": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-multiplication-degree-runs/remote-4d4518db3ddd4c598a14a4d01bba9e85",
+      "receipt_sha256": "9efb2fd7bd3371989a6b6ba94e944b24e0ce7f622b1808cedfe4805d63d9a73d",
+      "recorded_exit_code": 0,
+      "recorded_outcome": "owned_phase_completed",
+      "recorded_status": "succeeded",
+      "run_id": "remote-4d4518db3ddd4c598a14a4d01bba9e85",
+      "source_content_sha256": "9f50aee1d9e978fec856aa552bd8401f5946e8be1f01949e21f9677b6c85e33e"
+    }
+  ],
+  "scope": "Byte-exact retention of the assigned H1 source variants, existing receipts, short build logs, and compact compiler-event files. No compilation or mathematical acceptance was performed.",
+  "setup_and_request_boundary": "Raw receipts preserve the recorded commands and input hashes. Compiler-event files preserve the actual native --setup paths and argv listed below. Separate setup JSON contents/hashes and separate request files were not present in these selected run directories; none are reconstructed.",
+  "source_relation_note": "Assignment identifies the current-vs-old H1 source change as the 400k-to-1m cap plus adjacent explanatory lines; both exact source snapshots are retained.",
+  "source_snapshots": [
+    {
+      "assigned_role": "current protected H1 source",
+      "original_path": "/Users/kang/Documents/New project/tmp/work/jacobian/main-h1/Aglib/AlgebraicGeometry/Cohomology/Group/H1.lean",
+      "path": "sources/current/H1.lean.txt",
+      "sha256": "c8eb3b35cf3e44b2320c94963377084d71c85e44c101aeca305256152fe7c6ef"
+    },
+    {
+      "assigned_role": "older proposed wrapper source",
+      "original_path": "/private/tmp/r5-investigations/jacobian/canonical_source_rewrite/h1_adapter_applicability/H1-bare-function-wrapper-proposed.lean",
+      "path": "sources/old-400k-wrapper/H1-bare-function-wrapper-proposed.lean.txt",
+      "sha256": "036ab22b37ef44b790d3e17625fd45cf2b4d8bf1b54cf837bedd1de9a0086b04"
+    },
+    {
+      "assigned_role": "isolated one-million diagnostic probe source",
+      "original_path": "/private/tmp/r5-investigations/affine-kunneth/h1_sol_fallback/h1_mul_1m_probe/H1.lean",
+      "path": "sources/isolated-1m-diagnostic/H1.lean.txt",
+      "sha256": "dfef97b7c92fb2414b7343af0e3ef0e1f288f1cd9604972e2200389fd70d63bf"
+    }
+  ],
+  "title": "Coherent H1 specialization: bounded source and run evidence"
+}

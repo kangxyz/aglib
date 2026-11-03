@@ -1,0 +1,382 @@
+{
+  "action": "phase",
+  "actor_executable": "/root/miniconda3/bin/python3.12",
+  "admission": {
+    "ceilings": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 110592,
+      "threads": 4
+    },
+    "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+    "final_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-28c83f5ba42b426f80325ec49692ff2f": 1,
+        "/root/autodl-tmp/lean-build/logs/remote-a8112534c0c342439c3f4e3309e460cb": 1,
+        "/root/autodl-tmp/lean-build/logs/remote-e0c8307e34384514adc46fce9eb2c00f": 2
+      },
+      "cpu_cores": 5.081324472057824,
+      "cpu_usage_usec": 2763931239788,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 5368709120,
+      "memory_current_bytes": 74327285760,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 0.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 52266348544
+    },
+    "initial_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-28c83f5ba42b426f80325ec49692ff2f": 1,
+        "/root/autodl-tmp/lean-build/logs/remote-a8112534c0c342439c3f4e3309e460cb": 1,
+        "/root/autodl-tmp/lean-build/logs/remote-e0c8307e34384514adc46fce9eb2c00f": 8
+      },
+      "cpu_cores": 13.144466548945287,
+      "cpu_usage_usec": 2760303759133,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 12348030976,
+      "memory_current_bytes": 86095970304,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 1.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 64223653888
+    },
+    "max_frontends_if_alone": 8,
+    "mode": "elastic"
+  },
+  "allow_library_roots": false,
+  "cache_provenance": {
+    "configuration_sha256": {
+      "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+      "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852"
+    },
+    "environment": {
+      "LAKE_ARTIFACT_CACHE": "true",
+      "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+      "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+    },
+    "lookup": "native Lake traces/artifact cache; no per-dependency prior-hit claim"
+  },
+  "cgroup_average_cpu_cores": 9.344754487716008,
+  "cgroup_cpu_after": {
+    "nr_periods": 10692333,
+    "nr_throttled": 32119,
+    "system_usec": 220306028433,
+    "throttled_usec": 378038456,
+    "usage_usec": 2763931240766,
+    "user_usec": 2543625212333
+  },
+  "cgroup_cpu_attribution": "whole observed cgroup; may include unrelated activity",
+  "cgroup_cpu_before": {
+    "nr_periods": 10688451,
+    "nr_throttled": 32119,
+    "system_usec": 220110400578,
+    "throttled_usec": 378038456,
+    "usage_usec": 2760303796070,
+    "user_usec": 2540193395492
+  },
+  "cgroup_cpu_seconds_delta": 3627.444696,
+  "cgroup_memory_events_after": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_before": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_delta": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "command": [
+    "/root/miniconda3/bin/python3.12",
+    "-c",
+    "from pathlib import Path\nimport hashlib,json,subprocess,tempfile,os,sys\nprobe='/-\\nCopyright (c) 2026 Aglib contributors. All rights reserved.\\nReleased under Apache 2.0 license as described in the file LICENSE.\\nAuthors: kangxyz\\n-/\\nmodule\\n\\npublic import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethLinear.Basic\\npublic import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.ExternalProduct.Graded\\n\\n/-!\\n# Whole comparison of the original signed and linear Kunneth maps\\n\\nThe original graded external product and the degreewise Kunneth map agree on\\nwhole homogeneous tensor maps. The generic total-degree comparison composes\\nthose laws before any native cohomology value is evaluated.\\n-/\\n\\n@[expose] public noncomputable section\\n\\nset_option backward.defeqAttrib.useBackward true\\nset_option backward.isDefEq.respectTransparency false\\nset_option backward.isDefEq.respectTransparency.types false\\nopen scoped TensorProduct DirectSum\\n\\nuniverse u m n p v\\n\\nnamespace DirectSum\\n\\nvariable {R : Type u} [CommSemiring R]\\n  (M : \u2115 \u2192 Type m) (N : \u2115 \u2192 Type n)\\n  [\u2200 i, AddCommMonoid (M i)] [\u2200 i, Module R (M i)]\\n  [\u2200 j, AddCommMonoid (N j)] [\u2200 j, Module R (N j)]\\n\\nprivate theorem tensorPiLinearMap_eq_of_values\\n    (P : \u2115 \u2192 Type p) [\u2200 i, AddCommMonoid (P i)] [\u2200 i, Module R (P i)]\\n    (E : ((\u2a01 i, M i) \u2297[R] \u2a01 j, N j) \u2243\u2097[R]\\n      \u2a01 t, \u2a01 s : HomologicalComplex\u2082.TotalDegree t,\\n        M s.val.1 \u2297[R] N s.val.2)\\n    (hE : E = tensorFiberEquiv (R := R) M N\\n      (ComplexShape.\u03c0 (ComplexShape.up \u2115) (ComplexShape.up \u2115) (ComplexShape.up \u2115)))\\n    (F : ((\u2a01 i, M i) \u2297[R] \u2a01 j, N j) \u2192\u2097[R] \u2a01 i, P i)\\n    (G : \u2200 t, (\u2a01 s : HomologicalComplex\u2082.TotalDegree t,\\n      M s.val.1 \u2297[R] N s.val.2) \u2192\u2097[R] P t)\\n    (h : \u2200 i j (x : M i) (y : N j),\\n      F (lof R \u2115 M i x \u2297\u209c[R] lof R \u2115 N j y) =\\n        lof R \u2115 P (i + j)\\n          (G (i + j) (lof R (HomologicalComplex\u2082.TotalDegree (i + j))\\n            (fun s => M s.val.1 \u2297[R] N s.val.2)\\n            \u27e8(i, j), rfl\u27e9 (x \u2297\u209c[R] y)))) :\\n    F = mapAfterEquiv E G := by\\n  subst E\\n  exact tensorTotalLinearMap_eq (R := R) M N P F G h\\n\\nvariable {M N}\\n\\n/-- The original signed equation fixes the actual families and maps first.\\nThe chosen source and original degree maps then give the total comparison. -/\\nprivate theorem tensorPiLinearMap_eq\\n    {P : \u2115 \u2192 Type p} [\u2200 i, AddCommMonoid (P i)] [\u2200 i, Module R (P i)]\\n    {S : Type v} [AddCommMonoid S] [Module R S]\\n    {\u03a6 : S \u2192\u2097[R] \u2a01 i, P i}\\n    {s : ((\u2a01 i, M i) \u2297[R] \u2a01 j, N j) \u2192\u2097[R] S}\\n    {T : \u2200 i j, M i \u2297[R] N j \u2192\u2097[R] P (i + j)}\\n    (hF : \u2200 i j,\\n      \u03a6 \u2218\u2097 s \u2218\u2097 TensorProduct.map (lof R \u2115 M i) (lof R \u2115 N j) =\\n        lof R \u2115 P (i + j) \u2218\u2097 T i j)\\n    (E : ((\u2a01 i, M i) \u2297[R] \u2a01 j, N j) \u2243\u2097[R]\\n      \u2a01 t, \u2a01 s : HomologicalComplex\u2082.TotalDegree t,\\n        M s.val.1 \u2297[R] N s.val.2)\\n    (hE : E = tensorFiberEquiv (R := R) M N\\n      (ComplexShape.\u03c0 (ComplexShape.up \u2115) (ComplexShape.up \u2115) (ComplexShape.up \u2115)))\\n    (G : \u2200 t, (\u2a01 s : HomologicalComplex\u2082.TotalDegree t,\\n      M s.val.1 \u2297[R] N s.val.2) \u2192\u2097[R] P t)\\n    (hG : \u2200 i j,\\n      G (i + j) \u2218\u2097\\n          lof R (HomologicalComplex\u2082.TotalDegree (i + j))\\n            (fun s => M s.val.1 \u2297[R] N s.val.2) \u27e8(i, j), rfl\u27e9 = T i j) :\\n    \u03a6 \u2218\u2097 s = mapAfterEquiv E G := by\\n  apply tensorPiLinearMap_eq_of_values M N P E hE (\u03a6 \u2218\u2097 s) G\\n  intro i j x y\\n  have hValue := LinearMap.congr_fun (hF i j) (x \u2297\u209c[R] y)\\n  have hOriginal := LinearMap.congr_fun (hG i j) (x \u2297\u209c[R] y)\\n  simp only [LinearMap.comp_apply, TensorProduct.map_tmul] at hValue hOriginal\\n  exact hValue.trans (congrArg (lof R \u2115 P (i + j)) hOriginal.symm)\\n\\nend DirectSum\\n\\nopen CategoryTheory MonoidalCategory CartesianMonoidalCategory AlgebraicGeometry\\nopen AlgebraicGeometry.Scheme.OverField\\n\\nnamespace AlgebraicGeometry.Scheme.Cohomology\\n\\nattribute [local instance] Over.cartesianMonoidalCategory\\n\\nvariable {k : Type u} [Field k] (X Y : FScheme k)\\n\\n/-- The original degree map after its original fiber inclusion is the original tensor map. -/\\nprivate theorem structureKunnethMap_component (p q : \u2115) :\\n    structureKunnethMap X Y (p + q) \u2218\u2097\\n        DirectSum.lof k (HomologicalComplex\u2082.TotalDegree (p + q))\\n          (fun s => structureCohomology k X s.val.1 \u2297[k]\\n            structureCohomology k Y s.val.2) \u27e8(p, q), rfl\u27e9 =\\n      structureExternalTensor X Y (p := p) (q := q) rfl := by\\n  apply LinearMap.ext\\n  intro z\\n  exact structureKunnethMap_lof X Y (p + q) \u27e8(p, q), rfl\u27e9 z\\n\\n/-- Whole equality from the original signed value and original degreewise kappa. -/\\ntheorem structureExternalLinearMap_signed :\\n    (structureExternalAlgebraMap X Y).toLinearMap \u2218\u2097\\n        (structureExternalTensorSourceEquiv X Y).toLinearMap =\\n      structureExternalLinearMap X Y := by\\n  have hSigned := fun (p q : \u2115) =>\\n    structureExternalAlgebraMap_tensor X Y (p := p) (q := q) rfl\\n  have hWhole := DirectSum.tensorPiLinearMap_eq hSigned\\n    (structureTensorTotalSourceEquiv X Y) rfl\\n    (structureKunnethMap X Y)\\n    (structureKunnethMap_component X Y)\\n  exact hWhole\\n\\nvariable [QuasiCompact X.hom] [QuasiSeparated X.hom]\\n  [QuasiCompact Y.hom] [QuasiSeparated Y.hom]\\n\\n/-- The one chosen inverse of the original degreewise kappa has the signed map\\nas its complete forward linear operator. -/\\ntheorem structureExternalAlgebraMap_linear :\\n    (structureExternalAlgebraMap X Y).toLinearMap \u2218\u2097\\n        (structureExternalTensorSourceEquiv X Y).toLinearMap =\\n      (structureExternalLinearEquiv X Y).toLinearMap := by\\n  exact (structureExternalLinearMap_signed X Y).trans\\n    (structureExternalLinearEquiv_toLinearMap X Y).symm\\n\\nend AlgebraicGeometry.Scheme.Cohomology\\n'\nexpected_probe='bad16f02653b2492f45322d656f83ed2d3871c4184a6abc8117bf2bc03c3f2ca'\nassert hashlib.sha256(probe.encode()).hexdigest()==expected_probe\nsources={\n 'Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethLinear/Basic.lean':'c07fb383c57b5e100f1ae1a27debe0609439490392a00131b04b8b5d0493fedc',\n 'Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/ExternalProduct/Graded.lean':'68f0e969e732e0801dc7258a6574057a76af0f70c15f404c200fb8b6f0514b30',\n 'Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/ExternalProduct/Graded/Basic.lean':'49627959bcad4b89ad7968756943c59eee35fd90b939651069935cf6e3fc22a1'\n}\nfor path,expected in sources.items():\n actual=hashlib.sha256(Path(path).read_bytes()).hexdigest()\n assert actual==expected,(path,actual,expected)\nrelative='Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean'\ndef imports(s):\n return [line for line in s.splitlines() if line.startswith('public import ') or line.startswith('import ')]\nassert imports(Path(relative).read_text())==imports(probe),'production/probe import mismatch'\nparent=['lake','--no-build','--rehash','build','Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethLinear.Basic','Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.ExternalProduct.Graded']\nprint(json.dumps({'cached_parent_guard':parent,'source_hashes':sources,'probe_sha256':expected_probe,'changed_options_only':3,'production_coverage':False}),flush=True)\nr=subprocess.run(parent)\nif r.returncode:sys.exit(r.returncode)\nwith tempfile.TemporaryDirectory(prefix='h1-backward-options-') as d:\n q=subprocess.run(['lake','--no-build','--rehash','--json','query','Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethComparison:setup'],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)\n if q.returncode:\n  print(q.stderr,q.stdout,flush=True)\n  sys.exit(q.returncode)\n setup=Path(d)/'Comparison.setup.json'\n setup.write_text(json.dumps(json.loads(q.stdout)))\n source=Path(d)/'KunnethComparison.lean'\n source.write_text(probe)\n argv=['lake','env',os.environ['LEAN'],str(source),'--setup',str(setup),'--json','-DmaxErrors=1','-j4','-M12800']\n print(json.dumps({'scoped_argv':argv,'probe_sha256':expected_probe,'setup_sha256':hashlib.sha256(setup.read_bytes()).hexdigest(),'production_coverage':False}),flush=True)\n raise SystemExit(subprocess.run(argv).returncode)\n"
+  ],
+  "command_exit_code": 1,
+  "compiler_exit_codes": [
+    1
+  ],
+  "compiler_failed": 1,
+  "compiler_invocations": 1,
+  "compiler_observation": "wrapper-events-only",
+  "compiler_scope_lease_modes": {
+    "supervisor-only": 1
+  },
+  "compiler_scope_policy": "workspace descriptors or verified live supervisor; each compiler inherits its elastic claim",
+  "compiler_succeeded": 0,
+  "concurrency_basis": "compiler wrapper start/finish intervals, each holding one slot",
+  "diagnostics": {
+    "categories": {},
+    "first": [],
+    "observed_missing_count": 0,
+    "observed_missing_prefixes": {},
+    "observed_missing_prefixes_truncated": false,
+    "observed_missing_shortlist": []
+  },
+  "elapsed_seconds": 388.1797751635313,
+  "environment": {
+    "ELAN_HOME": "/root/autodl-tmp/lean-build/elan",
+    "LAKE_ARTIFACT_CACHE": "true",
+    "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+    "LAKE_OVERRIDE_LEAN": "1",
+    "LEAN_NUM_THREADS": "8",
+    "LEAN_SYSROOT": "/root/autodl-tmp/lean-build/logs/remote-60991fdf0477466f83b9cabee32a2f1b/toolchain",
+    "R5_LEAN_REMOTE_PROFILE": "{\"jobs\": 8, \"lean\": \"/root/autodl-tmp/lean-build/logs/remote-60991fdf0477466f83b9cabee32a2f1b/toolchain/bin/lean\", \"lean_memory_mib\": 12800, \"rss_limit_mib\": 110592, \"schema_version\": 1, \"threads\": 4}",
+    "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+  },
+  "exit_code": 1,
+  "expected_source": "c1f0de7126125adaa6e5bfaeda499003a141e5c20816eb98ec2f94d9bd67698c",
+  "failure_reason": null,
+  "finished_at": "2026-11-02T14:49:31.228041+00:00",
+  "forbid_compilation": false,
+  "forced_kill": false,
+  "git_head": null,
+  "group_closed": true,
+  "incomplete_compiler_events": 0,
+  "input_drift": [],
+  "input_sha256": {
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean": "07a874ea4d69e3b5b7de795f300cee8687ef97f60016ce892ea77463e6977133",
+    "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+    "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+  },
+  "lock_acquired_at": "2026-11-02T14:43:03.041000+00:00",
+  "locks": {
+    "cache_fetch_exclusive": null,
+    "legacy_shared_gate": "/root/autodl-tmp/lean-build/build.lock",
+    "workspace_exclusive": "/root/autodl-tmp/lean-build/locks/workspace-125ded4872e60e1894bbd83663d19e25d157fed883fc7f0bdcd7cbb174fd208d.lock"
+  },
+  "lowest_disk_free_bytes": 16804249600,
+  "modules": [
+    "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethComparison"
+  ],
+  "operation_id": "246f9d930ece478ba071e9d0877276c6",
+  "outcome": "execution_failure",
+  "peak_compiler_concurrency": 1,
+  "peak_rss_bytes": 11145400320,
+  "pgid": 687111,
+  "phase_executable_sha256": "0c05a22b0b180580a76437114a95cf138f67c8f46245acad26017c803b42b8c1",
+  "phase_label": "h1-comparison-only-backward-options",
+  "pins": {
+    "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+    "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+    "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+  },
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 8,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 110592,
+    "threads": 4
+  },
+  "resource_accounting": {
+    "global": "sampled cgroup memory/CPU, startup and growth credits; no peak-envelope reservation",
+    "isolation": "cooperative sampled admission; no per-run kernel memory isolation or OOM guarantee",
+    "run": "frontend/job/thread ceilings, sampled owned-tree RSS cutoff, own-tree pressure retreat"
+  },
+  "resources": {
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "cgroup": "/sys/fs/cgroup",
+    "cgroup_limits": [
+      {
+        "cpu.max": "3200000 100000",
+        "memory.max": "128849018880",
+        "path": "/sys/fs/cgroup"
+      }
+    ],
+    "effective_cpus": 32.0,
+    "memory_bytes": 128849018880
+  },
+  "run_dir": "/root/autodl-tmp/lean-build/logs/remote-60991fdf0477466f83b9cabee32a2f1b",
+  "sampled_process_average_cpu_cores": 1.359473197122863,
+  "sampled_process_cpu_seconds": 527.72,
+  "schema_version": 1,
+  "setup_cleanup": {
+    "removed_setup_bytes": 0,
+    "removed_setup_files": 0
+  },
+  "source_content_sha256": "c1f0de7126125adaa6e5bfaeda499003a141e5c20816eb98ec2f94d9bd67698c",
+  "source_receipt_sha256": "0756a963973f6493071add65cca1bbcba6f3c54854c99ec5dd5b0209a087c95e",
+  "started_at": "2026-11-02T14:43:02.419779+00:00",
+  "status": "failed",
+  "summary": {
+    "action": "phase",
+    "admission": {
+      "affinity_cpus": null,
+      "ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 110592,
+        "threads": 4
+      },
+      "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+      "final_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-28c83f5ba42b426f80325ec49692ff2f": 1,
+          "/root/autodl-tmp/lean-build/logs/remote-a8112534c0c342439c3f4e3309e460cb": 1,
+          "/root/autodl-tmp/lean-build/logs/remote-e0c8307e34384514adc46fce9eb2c00f": 2
+        },
+        "cpu_cores": 5.081324472057824,
+        "cpu_usage_usec": 2763931239788,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 5368709120,
+        "memory_current_bytes": 74327285760,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 0.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 52266348544
+      },
+      "initial_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-28c83f5ba42b426f80325ec49692ff2f": 1,
+          "/root/autodl-tmp/lean-build/logs/remote-a8112534c0c342439c3f4e3309e460cb": 1,
+          "/root/autodl-tmp/lean-build/logs/remote-e0c8307e34384514adc46fce9eb2c00f": 8
+        },
+        "cpu_cores": 13.144466548945287,
+        "cpu_usage_usec": 2760303759133,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 12348030976,
+        "memory_current_bytes": 86095970304,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 1.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 64223653888
+      },
+      "max_frontends_if_alone": 8,
+      "mode": "elastic",
+      "request": null
+    },
+    "artifacts": {
+      "build.log": "/root/autodl-tmp/lean-build/logs/remote-60991fdf0477466f83b9cabee32a2f1b/build.log",
+      "compiler-events.jsonl": "/root/autodl-tmp/lean-build/logs/remote-60991fdf0477466f83b9cabee32a2f1b/compiler-events.jsonl",
+      "receipt.json": "/root/autodl-tmp/lean-build/logs/remote-60991fdf0477466f83b9cabee32a2f1b/receipt.json"
+    },
+    "cgroup_memory_attribution": "whole observed cgroup; an OOM event alone does not identify its victim",
+    "cgroup_memory_events_delta": {
+      "high": 0,
+      "low": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "compiler_observation": "wrapper-events-only",
+    "compiler_scope_lease_modes": {
+      "supervisor-only": 1
+    },
+    "execution_seconds": 388.1797751635313,
+    "exit_code": 1,
+    "expected_source": "c1f0de7126125adaa6e5bfaeda499003a141e5c20816eb98ec2f94d9bd67698c",
+    "first_diagnostics": [],
+    "frontend_failed": 1,
+    "frontend_invocations": 1,
+    "frontend_observation": "wrapper starts only; arbitrary phase tools may bypass local compiler caps",
+    "frontend_peak": 1,
+    "frontend_succeeded": 0,
+    "group_closed": true,
+    "native_exit": 1,
+    "outcome": "execution_failure",
+    "peak_rss_bytes": 11145400320,
+    "plan": null,
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 110592,
+      "threads": 4
+    },
+    "reason": "",
+    "run": "remote-60991fdf0477466f83b9cabee32a2f1b",
+    "sampled_process_average_cpu_cores": 1.359473197122863,
+    "source_basis": "c1f0de7126125adaa6e5bfaeda499003a141e5c20816eb98ec2f94d9bd67698c",
+    "status": "failed",
+    "unwrapped_frontend_count": "unknown",
+    "wall_seconds": 388.8082949370146
+  },
+  "task_id": "jacobian-multiplication-degree-20261030",
+  "unfinished_compiler_records": [],
+  "waiting_for": null,
+  "wall_seconds": 388.8082949370146,
+  "worker_sha256": "7b1d09f535dc951f2f3ecae857f7b77b0ffc95f8f9e55352167a39b4387729a4",
+  "workspace": "/root/autodl-tmp/lean-build/workspaces/managed-740a809c6061-315a5e4a9466/lean"
+}

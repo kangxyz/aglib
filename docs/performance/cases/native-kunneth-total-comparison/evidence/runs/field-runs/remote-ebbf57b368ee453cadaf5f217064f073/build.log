@@ -1,0 +1,171 @@
+✖ [3469/3471] Building Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethComparison (105s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-ebbf57b368ee453cadaf5f217064f073/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean -o /root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.olean -i /root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.c --setup /root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.setup.json --json
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean:117:2: Unknown constant `DirectSum.tensorPiLinearMap_eq`
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean:126:17: Unknown identifier `structureExternalLinearMap_signed`
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean:128:2: Invalid field notation: Type of
+  hSigned
+is not known; cannot resolve field `trans`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `_root_.trans`
+  • `AddCon.trans`
+  • `AddEquiv.trans`
+  • `AlgEquiv.trans`
+  • `AntisymmRel.trans`
+  • `Associated.trans`
+  • `BEq.trans`
+  • `ComplexShape.trans`
+  • `Con.trans`
+  • `ContinuousAddEquiv.trans`
+  • `ContinuousMulEquiv.trans`
+  • `Eq.trans`
+  • `Equiv.trans`
+  • `Equivalence.trans`
+  • `FaithfulSMul.trans`
+  • `FaithfulVAdd.trans`
+  • `FiniteDimensional.trans`
+  • `HEq.trans`
+  • `Homeomorph.trans`
+  • `Homotopy.trans`
+  • `HomotopyEquiv.trans`
+  • `Iff.trans`
+  • `InitialSeg.trans`
+  • `Inseparable.trans`
+  • `IsAddConj.trans`
+  • `IsClosed.trans`
+  • `IsCofinal.trans`
+  • `IsCofinalFor.trans`
+  • `IsCoinitialFor.trans`
+  • `IsConj.trans`
+  • `IsFractionRing.trans`
+  • `IsOpen.trans`
+  • `IsTrans.trans`
+  • `LinearEquiv.trans`
+  • `MulEquiv.trans`
+  • `OrderAddMonoidIso.trans`
+  • `OrderIso.trans`
+  • `OrderMonoidIso.trans`
+  • `OrderRingIso.trans`
+  • `PartialEquiv.trans`
+  • `PartialEquivBEq.trans`
+  • `PrincipalSeg.trans`
+  • `RelEmbedding.trans`
+  • `RelIso.trans`
+  • `RightDvd.trans`
+  • `RingCon.trans`
+  • `RingEquiv.trans`
+  • `SModEq.trans`
+  • `SetRel.trans`
+  • `Setoid.trans`
+  • `Specializes.trans`
+  • `StarAlgEquiv.trans`
+  • `StarRingEquiv.trans`
+  • `Subtype.trans`
+  • `Trans.trans`
+  • `UniformEquiv.trans`
+  • `UnivLE.trans`
+  • `AddCommGroup.ModEq.trans`
+  • `AddConGen.Rel.trans`
+  • `AddSubgroup.IsFiniteRelIndex.trans`
+  • `AddValuation.IsEquiv.trans`
+  • `Algebra.FinitePresentation.trans`
+  • `Algebra.FiniteType.trans`
+  • `Algebra.HasGoingDown.trans`
+  • `Algebra.IsAlgebraic.trans`
+  • `Algebra.IsIntegral.trans`
+  • `Array.Perm.trans`
+  • `CategoryTheory.Equivalence.trans`
+  • `HasForget₂.trans`
+  • `Iso.trans`
+  • `Retract.trans`
+  • `Zigzag.trans`
+  • `CompositionSeries.Equivalent.trans`
+  • `ConGen.Rel.trans`
+  • `Dvd.dvd.trans`
+  • `Filter.EventuallyEq.trans`
+  • `Filter.EventuallyEqSet.trans`
+  • `Filter.EventuallyLE.trans`
+  • `Filter.EventuallySubset.trans`
+  • `Fin.cycleIcc.trans`
+  • `Finset.Subset.trans`
+  • `Finset.Superset.trans`
+  • `FreeAddGroup.Red.trans`
+  • `FreeGroup.Red.trans`
+  • `Function.Embedding.trans`
+  • `Function.Semiconj.trans`
+  • `HasSSubset.SSubset.trans`
+  • `HasSubset.Subset.trans`
+  • `Ideal.LiesOver.trans`
+  • `Int.ModEq.trans`
+  • `LE.le.trans`
+  • `LT.lt.trans`
+  • `List.IsInfix.trans`
+  • `List.IsPrefix.trans`
+  • `List.IsRotated.trans`
+  • `List.IsSuffix.trans`
+  • `List.Perm.trans`
+  • `List.Sublist.trans`
+  • `List.Subperm.trans`
+  • `List.Subset.trans`
+  • `Matrix.IsDetpBalanced.trans`
+  • `Module.FaithfullyFlat.trans`
+  • `Module.Finite.trans`
+  • `Module.Flat.trans`
+  • `Module.Free.trans`
+  • `Module.IsTorsionFree.trans`
+  • `Multiset.Rel.trans`
+  • `Multiset.Subset.trans`
+  • `Nat.ModEq.trans`
+  • `Prod.Lex.trans`
+  • `Quiver.Reachable.trans`
+  • `Relation.EqvGen.trans`
+  • `Relation.ReflTransGen.trans`
+  • `Relation.TransGen.trans`
+  • `Relator.BiTotal.trans`
+  • `Relator.LeftTotal.trans`
+  • `Relator.RightTotal.trans`
+  • `RingConGen.Rel.trans`
+  • `RingHom.IsIntegral.trans`
+  • `Set.EqOn.trans`
+  • `Set.Subset.trans`
+  • `Subgroup.IsFiniteRelIndex.trans`
+  • `Sum.LiftRel.trans`
+  • `Sym2.Rel.trans`
+  • `Valuation.IsEquiv.trans`
+  • `Vector.Perm.trans`
+  • `AddConGen.Rel.below.trans`
+  • `MorphismProperty.LeftFractionRel.trans`
+  • `MorphismProperty.RightFractionRel.trans`
+  • `ShortComplex.Homotopy.trans`
+  • `ShortComplex.HomotopyEquiv.trans`
+  • `CommRingCat.Colimits.Relation.trans`
+  • `ConGen.Rel.below.trans`
+  • `Equiv.Perm.SameCycle.trans`
+  • `Equiv.Perm.subtypeCongr.trans`
+  • `List.Perm.below.trans`
+  • `Relation.EqvGen.below.trans`
+  • `RingCat.Colimits.Relation.trans`
+  • `RingConGen.Rel.below.trans`
+  • `Std.DHashMap.Equiv.trans`
+  • `Std.Do.PredTrans.trans`
+  • `Std.HashMap.Equiv.trans`
+  • `Std.Iter.IsPlausibleIndirectOutput.trans`
+  • `Std.Iter.IsPlausibleIndirectSuccessorOf.trans`
+  • `Std.IterM.IsPlausibleIndirectOutput.trans`
+  • `Std.IterM.IsPlausibleIndirectSuccessorOf.trans`
+  • `CommRingCat.Colimits.Relation.below.trans`
+  • `Mathlib.Meta.NormNum.IsNatPowT.trans`
+  • `Mathlib.Tactic.TermCongr.CongrResult.trans`
+  • `RingCat.Colimits.Relation.below.trans`
+  • `Std.Do.ExceptConds.entails.trans`
+  • `Std.Do.PostCond.entails.trans`
+  • `Std.Do.SPred.bientails.trans`
+  • `Std.Do.SPred.entails.trans`
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean:1:0: The current module only contains private declarations.
+
+Consider adding `public section` at the beginning of the module, or selectively marking declarations as `public`. Mark a `def` with `@[expose]` if downstream code needs it to be definitionally equal to its body (e.g. for `unfold`). Alternatively, add `@[expose] public section` to mark every definition as exposed.
+
+Note: This linter can be disabled with `set_option linter.privateModule false`
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethComparison
+error: build failed

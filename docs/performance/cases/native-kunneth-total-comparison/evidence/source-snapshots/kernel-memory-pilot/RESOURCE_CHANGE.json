@@ -1,0 +1,38 @@
+{
+  "status": "controlled resource pilot; no mathematical proof PASS",
+  "original_profile": "/Users/kang/Documents/New project/tmp/inputs/lean-remote/aglib-jacobian-kunneth-field.json",
+  "pilot_profile": "/Users/kang/Documents/New project/tmp/inputs/lean-remote/aglib-jacobian-kunneth-field-kernel-memory.json",
+  "original_profile_sha256": "351ff7af740b754803ee49f0f2d6ad6e3700e429a9a5f52ac9c24dac94c77d3c",
+  "pilot_profile_sha256": "cb5d1cdd113d4be14038d6751e6ea2d63a028cee33edd0aea40a0b9ce0e2ed2c",
+  "changed_fields": {
+    "jobs": [
+      8,
+      1
+    ],
+    "lean_memory_mib": [
+      12800,
+      49152
+    ]
+  },
+  "unchanged": [
+    "host",
+    "workspace",
+    "workspace_owner",
+    "task_id",
+    "source_root",
+    "threads",
+    "rss_limit_mib",
+    "source",
+    "pins",
+    "mathematical hypotheses",
+    "one local400k source allowance"
+  ],
+  "native_failure": "remote-affb5b67806f4fe4b3d1bae8109d0746: kernel memory_budget; peak14370MB, no cgroup OOM",
+  "host_free_m_observation": {
+    "total_MiB": 515600,
+    "used_MiB": 62430,
+    "available_MiB": 406305,
+    "swap_MiB": 0
+  },
+  "basis": "PERFORMANCE Build-and-check costs: distinguish frontend caps, aggregate RSS/cgroup and serialized tail"
+}
