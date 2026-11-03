@@ -71,7 +71,16 @@ upstream production axiom auditor. Source guards do not replace transitive
 axiom coverage. Test modules are discovered by Lake's in-package test glob; no
 generated `AglibTest.lean` umbrella is required.
 
-The ordinary direct commands are:
+The local entry and its `--list` plan use the shared packaged full-lint adapter
+from `scripts/lean_tools/_lint/`, also used by CI. It retains all enabled checks
+and configured driver roots, with native fallback for unsupported configurations.
+The installed toolkit includes these assets from version 0.4.1; upgrade it from
+the selected checkout with `python3 -m pip install --upgrade /absolute/aglib/scripts`.
+Its preparation stage stabilizes the private checker before input observation,
+and the existing resource guard bounds its worker count. Declaration lint always
+runs; other native checks retain compatible-result reuse.
+
+The native commands remain available for direct diagnostics:
 
 ```sh
 lake build Aglib
@@ -82,7 +91,7 @@ lake --no-build lint Aglib -- --trace
 ```
 
 For selected remote phases, use the [shared native invocation guide](../scripts/README.md#native-check-invocation)
-and its command plan; group compatible required lint roots in one native call
+and its guarded command plan; group compatible required lint roots in one call
 and retain actual coverage when a root fails before others execute.
 
 Checker executables need prepared matching outputs. The native entry prepares

@@ -6,6 +6,8 @@ import subprocess
 import tempfile
 import unittest
 
+from lean_tools import lint
+
 SCRIPT = Path(__file__).resolve().parents[1] / 'check.sh'
 
 
@@ -16,7 +18,7 @@ class CheckScriptTests(unittest.TestCase):
         commands = [json.loads(line) for line in result.stdout.splitlines()]
         self.assertIn(['lake', '--rehash', 'build', 'Aglib'], commands)
         self.assertIn(['lake', 'test'], commands)
-        self.assertIn(['lake', '--no-build', 'lint', 'Aglib', '--', '--trace'], commands)
+        self.assertIn(lint.command(['Aglib']), commands)
         self.assertEqual(commands[-1], ['lake', 'env', '<pinned-axiom-audit>', '--root', 'Aglib'])
         self.assertEqual(len([c for c in commands if 'build' in c]), 2)
 
