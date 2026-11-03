@@ -1021,7 +1021,15 @@ class PublishedDependencyTransport(unittest.TestCase):
         self.releases.append(release)
         return release
 
-    def run_restore(self, *, offline=False):
+    def run_restore(self, *, offline=False, layered=False, reject_revision=""):
+        if layered:
+            helper = self.root / '.github/ci-cache/stage.py'
+            helper.parent.mkdir(parents=True, exist_ok=True)
+            helper.write_text('import json, os, pathlib, sys\n'
+                              'stage=pathlib.Path(sys.argv[sys.argv.index("--staging")+1])\n'
+                              'revision=json.loads((stage/"producer.json").read_text())["revision"]\n'
+                              'with open(os.environ["TRACE"], "a") as f: f.write("verify:"+revision+"\\n")\n'
+                              'sys.exit(17 if revision==os.environ["REJECT_REVISION"] else 0)\n')
         (self.root / 'lake-manifest.json').write_text(json.dumps({'packages': self.dependencies}))
         exact = next((r for r in self.releases if r['tag_name'] == 'lean-native-' + self.pin), None)
         (self.root / 'exact.json').write_text(json.dumps(exact))
@@ -1045,7 +1053,8 @@ lake() { printf 'lake:%s\n' "$4" >> "$TRACE"; }
                 'build', 'Restore published native dependency caches')['run']],
             cwd=self.root, env={**os.environ, 'RUNNER_TEMP': str(self.root), 'RUNNER_OS': 'Linux',
                                'RUNNER_ARCH': 'X64', 'TRACE': str(self.root / 'trace'),
-                               'FIXTURE': str(self.root), 'OFFLINE': str(int(offline))},
+                               'FIXTURE': str(self.root), 'OFFLINE': str(int(offline)),
+                               'LAYERED_CACHE': 'true' if layered else '', 'REJECT_REVISION': reject_revision},
             capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
         trace = (self.root / 'trace').read_text().splitlines() if (self.root / 'trace').exists() else []
@@ -1086,6 +1095,20 @@ lake() { printf 'lake:%s\n' "$4" >> "$TRACE"; }
                 self.assertIn('producer ' + self.seed + ' for pin ' + self.pin, output)
                 self.assertEqual([line for line in trace if line.startswith('lake:')], ['lake:Aglib'])
                 self.assertFalse((self.root / 'escape').exists())
+
+    def test_layered_seed_verification_skips_invalid_candidate_before_import(self):
+        self.release(self.pin)
+        self.release(self.seed)
+        original = {release['assets'][0]['name']: (self.root / release['assets'][0]['name']).read_bytes()
+                    for release in self.releases}
+        output, trace = self.run_restore(layered=True, reject_revision=self.pin)
+        self.assertIn('invalid native module archive', output)
+        self.assertIn('producer ' + self.seed, output)
+        self.assertEqual([line for line in trace if line.startswith(('verify:', 'lake:'))],
+                         ['verify:' + self.pin, 'verify:' + self.seed, 'lake:Aglib'])
+        for name, data in original.items():
+            self.assertEqual((self.root / name).read_bytes(), data)
+        self.assertFalse(any(' delete ' in line or ' upload ' in line for line in trace))
 
     def test_optional_download_outage_retains_ordinary_build_fallback(self):
         output, trace = self.run_restore(offline=True)
@@ -1556,18 +1579,24 @@ sleep() { printf 'sleep:%s\n' "$*" >> "$TRACE"; }
 
 
 class LayeredCacheIntegration(unittest.TestCase):
-    def test_capability_detection_preserves_legacy_and_promotion_callers(self):
+    def test_capability_detection_requires_both_helpers_and_preserves_legacy_and_promotion(self):
         select = step('build', 'Select layered cache support')
         self.assertEqual(select, step('test_lint', 'Select layered cache support'))
         with tempfile.TemporaryDirectory(prefix='ci-cache-capability-') as directory:
             root = Path(directory)
             helper = root / '.github/ci-cache/checkpoint.py'
-            for available, promotion, expected in ((False, '', False), (True, 'sealed', False),
-                                                     (True, '', True)):
+            for available, stage_available, promotion, expected in (
+                    (False, False, '', False), (True, True, 'sealed', False),
+                    (True, False, '', False), (True, True, '', True)):
                 if available:
                     helper.parent.mkdir(parents=True, exist_ok=True)
                     helper.write_text('import os\nwith open(os.environ["GITHUB_OUTPUT"], "a") as f: '
                                       'f.write("root_context=fixture\\n")\n')
+                stage_helper = helper.with_name('stage.py')
+                if stage_available:
+                    stage_helper.write_text('# stage capability fixture\n')
+                else:
+                    stage_helper.unlink(missing_ok=True)
                 output = root / 'output'; output.write_text('')
                 result = subprocess.run(['bash', '-eo', 'pipefail', '-c', select['run']], cwd=root,
                                         env={**os.environ, 'FIRST_CI_CACHE': promotion,
@@ -1575,6 +1604,127 @@ class LayeredCacheIntegration(unittest.TestCase):
                 self.assertEqual(result.returncode, 0, result.stderr)
                 self.assertEqual('layered=true' in output.read_text(), expected)
                 self.assertEqual('root_context=fixture' in output.read_text(), expected)
+
+    def test_actual_supported_preflight_routes_overrides_and_external_paths_to_legacy(self):
+        select = step('build', 'Select layered cache support')
+        with tempfile.TemporaryDirectory(prefix='ci-supported-mode-') as directory:
+            for kind, expected in (('standard', True), ('overrides', False),
+                                   ('external-path', False), ('custom-layout', False)):
+                root = Path(directory) / kind
+                helper = root / '.github/ci-cache/checkpoint.py'
+                helper.parent.mkdir(parents=True)
+                shutil.copyfile(ROOT / '.github/ci-cache/checkpoint.py', helper)
+                helper.with_name('stage.py').write_text('# stage capability fixture\n')
+                (root / 'lakefile.toml').write_text('name = "Fixture"\n')
+                (root / 'lean-toolchain').write_text('leanprover/lean4:v4.34.1\n')
+                manifest = {'packagesDir': '.lake/packages', 'packages': []}
+                if kind == 'external-path':
+                    manifest['packages'] = [{'name': 'External', 'type': 'path',
+                                             'dir': str(Path(directory) / 'outside-fixture')}]
+                if kind == 'custom-layout':
+                    manifest['packagesDir'] = 'custom-packages'
+                if kind == 'overrides':
+                    override = root / '.lake/package-overrides.json'
+                    override.parent.mkdir()
+                    override.write_text('{}\n')
+                (root / 'lake-manifest.json').write_text(json.dumps(manifest))
+                output = root / 'outputs'
+                output.write_text('')
+                result = subprocess.run(['bash', '-eo', 'pipefail', '-c', select['run']], cwd=root,
+                                        env={**os.environ, 'FIRST_CI_CACHE': '', 'GITHUB_OUTPUT': str(output)},
+                                        capture_output=True, text=True)
+                self.assertEqual(result.returncode, 0, (kind, result.stderr))
+                self.assertEqual('layered=true' in output.read_text(), expected, kind)
+                self.assertEqual('root_context=' in output.read_text(), expected, kind)
+                if not expected:
+                    self.assertIn('Checkpoint failed:', result.stderr)
+
+    def test_migration_introduced_override_fails_support_check_before_native_work(self):
+        revalidate = step('build', 'Revalidate layered support after migration restore')
+        self.assertFalse(revalidate.get('continue-on-error', False))
+        self.assertTrue(condition(revalidate['if'], {'steps.cache-mode.outputs.layered': 'true'}))
+        self.assertFalse(condition(revalidate['if'], {'steps.cache-mode.outputs.layered': ''}))
+        steps = JOBS['build']['steps']
+        old_restore = next(action for action in steps if action.get('id') == 'restore')
+        self.assertLess(steps.index(old_restore), steps.index(revalidate))
+        for name in ('Remove read-only restored archive hash sidecars', 'Configure Lean', 'Get Mathlib cache',
+                     'Apply optional compilation checkpoints', 'Build'):
+            self.assertLess(steps.index(revalidate), steps.index(step('build', name)))
+        with tempfile.TemporaryDirectory(prefix='ci-migration-override-') as directory:
+            root = Path(directory)
+            helper = root / '.github/ci-cache/checkpoint.py'
+            helper.parent.mkdir(parents=True)
+            shutil.copyfile(ROOT / '.github/ci-cache/checkpoint.py', helper)
+            (root / 'lakefile.toml').write_text('name = "Fixture"\n')
+            (root / 'lean-toolchain').write_text('leanprover/lean4:v4.34.1\n')
+            (root / 'lake-manifest.json').write_text('{"packages": []}\n')
+            before = subprocess.run(['bash', '-eo', 'pipefail', '-c', revalidate['run']], cwd=root,
+                                    capture_output=True, text=True)
+            self.assertEqual(before.returncode, 0, before.stderr)
+            override = root / '.lake/package-overrides.json'
+            override.parent.mkdir(); override.write_text('{}\n')
+            after = subprocess.run(['bash', '-eo', 'pipefail', '-c', revalidate['run']], cwd=root,
+                                   capture_output=True, text=True)
+            self.assertNotEqual(after.returncode, 0)
+            self.assertIn('package-overrides.json', after.stderr)
+
+    def test_materialized_guards_follow_acquisition_and_precede_checkpoint_overlays(self):
+        for job, previous, following in (
+                ('build', 'Restore published native dependency caches', 'Apply optional compilation checkpoints'),
+                ('test_lint', 'Fetch pinned dependency sources without compilation', 'Apply optional Test and tool checkpoints')):
+            actions = JOBS[job]['steps']
+            guard = step(job, 'Validate materialized layered dependencies')
+            self.assertEqual(guard['run'], 'python3 .github/ci-cache/checkpoint.py supported --root . --materialized')
+            self.assertFalse(guard.get('continue-on-error', False))
+            self.assertTrue(condition(guard['if'], {'steps.cache-mode.outputs.layered': 'true'}))
+            self.assertFalse(condition(guard['if'], {'steps.cache-mode.outputs.layered': ''}))
+            self.assertLess(actions.index(step(job, previous)), actions.index(guard))
+            self.assertLess(actions.index(guard), actions.index(step(job, following)))
+            if job == 'build':
+                self.assertLess(actions.index(step(job, 'Get Mathlib cache')), actions.index(guard))
+                self.assertLess(actions.index(guard), actions.index(step(job, 'Build')))
+            else:
+                self.assertLess(actions.index(guard), actions.index(step(job, "Overlay this run's complete dependency closure")))
+                self.assertLess(actions.index(guard), actions.index(step(job, 'Verify Build outputs without compilation')))
+
+    def test_materialized_guard_rejects_missing_custom_and_drifted_dependency_configs(self):
+        command = step('build', 'Validate materialized layered dependencies')['run']
+        with tempfile.TemporaryDirectory(prefix='ci-materialized-config-') as directory:
+            root = Path(directory)
+            helper = root / '.github/ci-cache/checkpoint.py'
+            helper.parent.mkdir(parents=True)
+            shutil.copyfile(ROOT / '.github/ci-cache/checkpoint.py', helper)
+            (root / 'lakefile.toml').write_text('name = "Fixture"\n')
+            (root / 'lean-toolchain').write_text('leanprover/lean4:v4.34.1\n')
+            manifest = root / 'lake-manifest.json'
+            manifest.write_text(json.dumps({'packages': [{'name': 'dependency', 'type': 'git',
+                                                         'url': 'https://example.invalid/dependency',
+                                                         'rev': 'a' * 40}]}))
+            def run(value):
+                return subprocess.run(['bash', '-eo', 'pipefail', '-c', value], cwd=root,
+                                      capture_output=True, text=True)
+            # Initial static selection can happen before source checkouts exist.
+            self.assertEqual(run('python3 .github/ci-cache/checkpoint.py supported --root .').returncode, 0)
+            missing = run(command)
+            self.assertNotEqual(missing.returncode, 0)
+            self.assertIn('not materialized', missing.stderr)
+            config = root / '.lake/packages/dependency/lakefile.toml'
+            config.parent.mkdir(parents=True)
+            config.write_text('name = "dependency"\n')
+            self.assertEqual(run(command).returncode, 0)
+            config.write_text('name = "dependency"\nbuildDir = "custom-build"\n')
+            custom = run(command)
+            self.assertNotEqual(custom.returncode, 0)
+            self.assertIn('custom generated build directory', custom.stderr)
+            manifest.write_text(json.dumps({'packages': [{'name': 'mathlib', 'type': 'git',
+                'url': 'https://github.com/leanprover-community/mathlib4',
+                'rev': 'd13f23b723b8a846827a245b89c10fc7d3f11612', 'configFile': 'lakefile.lean'}]}))
+            self.assertEqual(run('python3 .github/ci-cache/checkpoint.py supported --root .').returncode, 0)
+            known = root / '.lake/packages/mathlib/lakefile.lean'
+            known.parent.mkdir(parents=True); known.write_text('-- drifted known executable configuration\n')
+            drift = run(command)
+            self.assertNotEqual(drift.returncode, 0)
+            self.assertIn('known dependency configuration bytes changed', drift.stderr)
 
     def test_old_full_caches_are_only_read_only_migration_fallback(self):
         restore = next(item for item in JOBS['build']['steps'] if item.get('id') == 'restore')
@@ -1688,9 +1838,11 @@ class LayeredCacheIntegration(unittest.TestCase):
             self.assertLess(actions.index(quiesce), actions.index(pack))
             self.assertLess(actions.index(pack), actions.index(save))
             for outcome in ('success', 'failure', 'skipped', 'cancelled'):
-                values = {'steps.cache-mode.outputs.layered': 'true', 'steps.quiesce.outcome': outcome}
+                values = {'steps.cache-mode.outputs.layered': 'true', 'steps.quiesce.outcome': outcome,
+                          'steps.build.outcome': 'failure', 'steps.staging-quiesce.outcome': 'success'}
                 self.assertEqual(condition(pack['if'], values, success=False, cancelled=True), outcome == 'success')
-            values = {'steps.quiesce.outcome': 'success', f'steps.pack-{layer}.outcome': 'success',
+            values = {'steps.quiesce.outcome': 'success', 'steps.build.outcome': 'failure', 'steps.staging-quiesce.outcome': 'success',
+                      f'steps.pack-{layer}.outcome': 'success',
                       'steps.pack-dependencies.outputs.changed': 'true',
                       'steps.restore-dependencies.outputs.cache-matched-key': ''}
             self.assertTrue(condition(save['if'], values, success=False, cancelled=True))
@@ -1706,7 +1858,8 @@ class LayeredCacheIntegration(unittest.TestCase):
         self.assertNotIn('github.sha', save['with']['key'])
         for changed in ('true', 'false'):
             for matched in ('', 'immutable-prior-generation'):
-                values = {'steps.quiesce.outcome': 'success', 'steps.pack-dependencies.outcome': 'success',
+                values = {'steps.quiesce.outcome': 'success', 'steps.build.outcome': 'failure', 'steps.staging-quiesce.outcome': 'success',
+                          'steps.pack-dependencies.outcome': 'success',
                           'steps.pack-dependencies.outputs.changed': changed,
                           'steps.restore-dependencies.outputs.cache-matched-key': matched}
                 self.assertEqual(condition(save['if'], values, success=False), changed == 'true' or matched == '')
@@ -1731,6 +1884,98 @@ class LayeredCacheIntegration(unittest.TestCase):
         self.assertNotIn('lake build', tools)
         self.assertNotIn('lake lint', tools)
 
+    def test_root_and_tool_restore_prefer_current_branch_then_compatible_default_seed(self):
+        for job, layer in (('build', 'root'), ('test_lint', 'root'), ('test_lint', 'tools')):
+            restore = step(job, f'Restore optional {layer} checkpoint')['with']
+            prefixes = restore['restore-keys'].splitlines()
+            symbolic_context = '${{ steps.cache-mode.outputs.' + layer + '_context }}'
+            self.assertEqual(prefixes, [f'lean-layered-v1-{layer}-{symbolic_context}-${{{{ github.ref }}}}-',
+                                        f'lean-layered-v1-{layer}-{symbolic_context}-'])
+            prefixes = [prefix.replace(symbolic_context, 'compatible-context').replace(
+                '${{ github.ref }}', 'refs/heads/new-topic') for prefix in prefixes]
+            current = f'lean-layered-v1-{layer}-compatible-context-refs/heads/new-topic-old-run-1'
+            default = f'lean-layered-v1-{layer}-compatible-context-refs/heads/main-newer-run-1'
+            incompatible = f'lean-layered-v1-{layer}-different-manifest-refs/heads/main-newest-run-1'
+            # Candidate visibility is supplied by GitHub; prefix order chooses within it.
+            for visible, expected in (([default, current], current), ([default], default),
+                                      ([incompatible, default], default), ([incompatible], None)):
+                selected = next((key for prefix in prefixes for key in visible if key.startswith(prefix)), None)
+                self.assertEqual(selected, expected)
+
+    def test_unchanged_matched_tool_checkpoint_skips_upload_but_progress_keeps_fresh_key(self):
+        save = step('test_lint', 'Save completed tools checkpoint')
+        for changed in ('true', 'false'):
+            for matched in ('', 'existing-tool-generation'):
+                for quiesce in ('success', 'failure'):
+                    for packed in ('success', 'failure'):
+                        values = {'steps.quiesce.outcome': quiesce, 'steps.compiled.outcome': 'success',
+                                  'steps.pack-tools.outcome': packed,
+                                  'steps.pack-tools.outputs.changed': changed,
+                                  'steps.restore-tools.outputs.cache-matched-key': matched}
+                        expected = quiesce == 'success' and packed == 'success' and (changed == 'true' or matched == '')
+                        self.assertEqual(condition(save['if'], values, success=False, cancelled=True), expected)
+        for field in ('github.run_id', 'github.run_attempt'):
+            self.assertIn(field, save['with']['key'])
+
+    def test_checkpoint_admission_requires_real_build_attempt_or_verified_test_basis(self):
+        for job, layers in (('build', ('root', 'dependencies')), ('test_lint', ('root', 'tools'))):
+            for state in ('success', 'failure', 'skipped', 'cancelled', ''):
+                values = {'steps.cache-mode.outputs.layered': 'true', 'steps.quiesce.outcome': 'success',
+                          'steps.build.outcome': state, 'steps.compiled.outcome': state,
+                          'steps.staging-quiesce.outcome': 'success',
+                          'steps.pack-root.outcome': 'success', 'steps.pack-dependencies.outcome': 'success',
+                          'steps.pack-tools.outcome': 'success', 'steps.pack-dependencies.outputs.changed': 'true',
+                          'steps.pack-tools.outputs.changed': 'true',
+                          'steps.restore-dependencies.outputs.cache-matched-key': 'prior-useful-generation',
+                          'steps.restore-tools.outputs.cache-matched-key': 'prior-useful-generation'}
+                expected = state in ('success', 'failure') if job == 'build' else state == 'success'
+                for layer in layers:
+                    for verb in ('Pack', 'Save'):
+                        action = step(job, f'{verb} completed {layer} checkpoint')
+                        self.assertEqual(condition(action['if'], values, success=False, cancelled=True), expected,
+                                         (job, layer, verb, state))
+
+    def test_pre_overlay_failure_neither_overwrites_downloaded_archive_nor_saves_empty_generation(self):
+        with tempfile.TemporaryDirectory(prefix='ci-checkpoint-admission-') as directory:
+            root = Path(directory)
+            helper = root / '.github/ci-cache/checkpoint.py'
+            helper.parent.mkdir(parents=True)
+            # Model packing an early, config-only workspace if an admission guard fails.
+            helper.write_text('import pathlib, sys\n'
+                              'pathlib.Path(sys.argv[sys.argv.index("--output")+1]).write_bytes(b"empty config-only state")\n'
+                              'pathlib.Path("packer-ran").touch()\n')
+            for job, layers, state in (('build', ('root', 'dependencies'), 'skipped'),
+                                       ('test_lint', ('root', 'tools'), 'skipped'),
+                                       ('test_lint', ('root', 'tools'), 'failure')):
+                values = {'steps.cache-mode.outputs.layered': 'true', 'steps.quiesce.outcome': 'success',
+                          'steps.build.outcome': state, 'steps.compiled.outcome': state,
+                          'steps.staging-quiesce.outcome': 'success',
+                          'steps.pack-dependencies.outputs.changed': 'true', 'steps.pack-tools.outputs.changed': 'true',
+                          'steps.restore-dependencies.outputs.cache-matched-key': 'downloaded-dependencies',
+                          'steps.restore-tools.outputs.cache-matched-key': 'downloaded-tools'}
+                saved = []
+                for layer in layers:
+                    archive = root / f'layered-cache/{layer}.tar.zst'
+                    archive.parent.mkdir(exist_ok=True)
+                    archive.write_bytes(b'useful completed compilation from prior run')
+                    pack = step(job, f'Pack completed {layer} checkpoint')
+                    if condition(pack['if'], values, success=False):
+                        result = subprocess.run(['bash', '-eo', 'pipefail', '-c', pack['run']], cwd=root,
+                                                env={**os.environ, 'RUNNER_TEMP': directory,
+                                                     'LAKE_CACHE_DIR': str(root / 'native'),
+                                                     'GITHUB_OUTPUT': str(root / 'output')},
+                                                capture_output=True, text=True)
+                        self.assertEqual(result.returncode, 0, result.stderr)
+                        values[f'steps.pack-{layer}.outcome'] = 'success'
+                    else:
+                        values[f'steps.pack-{layer}.outcome'] = 'skipped'
+                    save = step(job, f'Save completed {layer} checkpoint')
+                    if condition(save['if'], values, success=False):
+                        saved.append(layer)
+                    self.assertEqual(archive.read_bytes(), b'useful completed compilation from prior run')
+                self.assertEqual(saved, [])
+                self.assertFalse((root / 'packer-ran').exists())
+
     def test_all_layer_archives_have_context_scoped_prefixes_and_no_broad_paths(self):
         for job in ('build', 'test_lint'):
             for action in JOBS[job]['steps']:
@@ -1742,6 +1987,79 @@ class LayeredCacheIntegration(unittest.TestCase):
                 self.assertTrue(action['with']['path'].endswith('.tar.zst'))
                 self.assertNotIn('/.lake', action['with']['path'])
                 self.assertNotIn('lake-native-cache', action['with']['path'])
+
+
+class NativeStageValidationIntegration(unittest.TestCase):
+    def test_repaired_stage_precedes_checkpoints_and_both_scope_stops_are_required(self):
+        actions = JOBS['build']['steps']
+        stage = step('build', 'Stage completed native outputs')
+        self.assertFalse(stage.get('continue-on-error', False))
+        original_stop = step('build', "Quiesce this job's native scopes before cache saving")
+        stage_stop = step('build', 'Quiesce native staging before checkpoints')
+        self.assertEqual(stage_stop['run'], original_stop['run'])
+        self.assertEqual(stage_stop['shell'], 'bash')
+        self.assertTrue(condition(stage_stop['if'], {'steps.cache-mode.outputs.layered': 'true'},
+                                  success=False, cancelled=True))
+        self.assertFalse(condition(stage_stop['if'], {'steps.cache-mode.outputs.layered': ''}, success=False))
+        self.assertLess(actions.index(original_stop), actions.index(stage))
+        self.assertLess(actions.index(stage), actions.index(stage_stop))
+        for layer in ('root', 'dependencies'):
+            for verb in ('Pack', 'Save'):
+                action = step('build', f'{verb} completed {layer} checkpoint')
+                self.assertLess(actions.index(stage_stop), actions.index(action))
+                for first_stop in ('success', 'failure'):
+                    for second_stop in ('success', 'failure'):
+                        values = {'steps.cache-mode.outputs.layered': 'true', 'steps.build.outcome': 'failure',
+                                  'steps.quiesce.outcome': first_stop, 'steps.staging-quiesce.outcome': second_stop,
+                                  f'steps.pack-{layer}.outcome': 'success',
+                                  'steps.pack-dependencies.outputs.changed': 'true',
+                                  'steps.restore-dependencies.outputs.cache-matched-key': 'older-generation',
+                                  'steps.stage.outcome': 'failure'}
+                        self.assertEqual(condition(action['if'], values, success=False, cancelled=True),
+                                         first_stop == second_stop == 'success')
+        self.assertNotIn('--build ', stage['run'])
+        self.assertNotIn('lake build', stage['run'])
+
+    def test_stage_helper_failure_blocks_handoff_and_success_packages_only_validated_stage(self):
+        for status in (0, 17):
+            with self.subTest(status=status), tempfile.TemporaryDirectory(prefix='ci-stage-validate-') as directory:
+                root = Path(directory)
+                helper = root / '.github/ci-cache/stage.py'
+                helper.parent.mkdir(parents=True)
+                helper.write_text('import json, os, pathlib, shutil, sys\n' +
+                    'pathlib.Path(os.environ["TRACE"]).write_text(json.dumps(sys.argv[1:]))\n'
+                    'stage=pathlib.Path(sys.argv[sys.argv.index("--staging")+1])\n'
+                    'stage.mkdir()\n'
+                    'shutil.copyfile(sys.argv[sys.argv.index("--mapping")+1],stage/"outputs.jsonl")\n'
+                    'pathlib.Path("repaired-working-archive").write_text("repaired derived archive")\n'
+                    'sys.exit(int(os.environ["PREPARE_STATUS"]))\n')
+                (root / 'outputs.jsonl').write_text('fresh successful root mappings')
+                (root / 'lean-toolchain').write_text('fixture\n')
+                (root / 'lakefile.toml').write_text('name = "Fixture"\n')
+                mock = 'lean() { printf "Lean fixture\\n"; }\nlake() { echo unexpected-direct-stage >&2; return 99; }\n'
+                result = subprocess.run(['bash', '-eo', 'pipefail', '-c', mock + step(
+                    'build', 'Stage completed native outputs')['run']], cwd=root,
+                    env={**os.environ, 'RUNNER_TEMP': directory, 'LAKE_CACHE_DIR': str(root / 'native'),
+                         'LAYERED_CACHE': 'true', 'BUILD_TARGETS': 'Aglib Essays', 'FIRST_CI_CACHE': '',
+                         'TRACE': str(root / 'trace'), 'PREPARE_STATUS': str(status),
+                         'GITHUB_OUTPUT': str(root / 'outputs'), 'RUNNER_OS': 'Linux', 'RUNNER_ARCH': 'X64',
+                         'GITHUB_REPOSITORY': 'fixture/project', 'GITHUB_SHA': '0123456'},
+                    capture_output=True, text=True)
+                self.assertEqual(result.returncode, status, result.stderr)
+                argv = json.loads((root / 'trace').read_text())
+                self.assertEqual(argv[0], 'prepare')
+                self.assertEqual([argv[index + 1] for index, arg in enumerate(argv) if arg == '--build-target'],
+                                 ['Aglib', 'Essays'])
+                self.assertEqual((root / 'repaired-working-archive').read_text(), 'repaired derived archive')
+                self.assertEqual((root / 'lake-native-cache.tar').exists(), status == 0)
+                self.assertEqual((root / 'outputs').exists(), status == 0)
+                if status == 0:
+                    self.assertEqual((root / 'outputs').read_text(), 'staged=true\n')
+                    with tarfile.open(root / 'lake-native-cache.tar') as archive:
+                        self.assertIn('./outputs.jsonl', archive.getnames())
+                        self.assertIn('./producer.json', archive.getnames())
+                else:
+                    self.assertFalse(publish(build='failure'))
 
 
 if __name__ == '__main__':

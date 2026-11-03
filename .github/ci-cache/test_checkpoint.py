@@ -10,6 +10,7 @@ import stat
 import tarfile
 import tempfile
 import unittest
+from unittest.mock import patch
 
 SPEC = importlib.util.spec_from_file_location('checkpoint', Path(__file__).with_name('checkpoint.py'))
 checkpoint = importlib.util.module_from_spec(SPEC)
@@ -70,6 +71,51 @@ class CheckpointTests(unittest.TestCase):
         self.assertEqual(test.read_text(), 'test native')
         self.assertEqual(source.read_text(), 'PROOF SOURCE\n')
 
+    def test_pack_hashes_snapshot_once_and_exact_tar_copy_once(self):
+        artifact = self.write('.lake/build/Root.olean', 'compiled body')
+        actual = checkpoint.file_hash
+        observations = []
+        def observed(path):
+            observations.append(path)
+            return actual(path)
+        with patch.object(checkpoint, 'file_hash', side_effect=observed):
+            archive, _ = self.pack('root')
+        self.assertEqual(observations.count(artifact), 1)
+        self.restore('root', archive)
+        self.assertEqual(artifact.read_text(), 'compiled body')
+
+    def test_mutation_or_copy_corruption_prevents_archive_publication(self):
+        for attack in ('file-write', 'mode-change', 'copied-data'):
+            with self.subTest(attack=attack):
+                artifact = self.write('.lake/build/Root.olean', 'compiled body')
+                os.chmod(artifact, 0o644)
+                target = self.base / ('rejected-' + attack + '.tar')
+                read = checkpoint.DigestingReader.read
+                mutated = False
+                def changed(reader, size=-1):
+                    nonlocal mutated
+                    if attack == 'copied-data' and not mutated:
+                        original = reader.source
+                        class CorruptingSource:
+                            def read(self, amount=-1):
+                                chunk = original.read(amount)
+                                return b'X' + chunk[1:] if chunk else chunk
+                        reader.source = CorruptingSource()
+                        mutated = True
+                    data = read(reader, size)
+                    if data and not mutated:
+                        mutated = True
+                        if attack == 'file-write':
+                            artifact.write_text('different body')
+                        elif attack == 'mode-change':
+                            os.chmod(artifact, 0o600)
+                    return data
+                with patch.object(checkpoint.DigestingReader, 'read', changed):
+                    self.invoke('pack', '--layer', 'root', '--output', str(target), code=1)
+                self.assertTrue(mutated)
+                self.assertFalse(target.exists())
+                self.assertFalse(target.with_name('partial-' + target.name).exists())
+
     def test_complete_dependencies_include_prior_restored_outputs_and_generation_stable(self):
         path = self.write('.lake/packages/dep/.lake/build/lib/lean/Dep.olean', 'old unpublished')
         self.write('.lake/packages/dep/.git/config', 'private source checkout git metadata')
@@ -124,6 +170,25 @@ class CheckpointTests(unittest.TestCase):
         self.restore('root', archive, code=1)
         self.assertEqual(outside.read_text(), 'SOURCE')
 
+    def test_restore_memoizes_parents_per_pass_but_rejects_parent_symlinks(self):
+        directory = self.root / '.lake/build/lib/lean/Bundle'
+        for i in range(80):
+            self.write(f'.lake/build/lib/lean/Bundle/{i}.olean', str(i))
+        archive, _ = self.pack('root')
+        actual = Path.is_symlink
+        calls = []
+        def observed(path):
+            calls.append(path)
+            return actual(path)
+        with patch.object(Path, 'is_symlink', observed):
+            self.restore('root', archive)
+        self.assertEqual(calls.count(directory), 2)  # Once per integrity/application pass.
+        outside = self.base / 'outside-source-directory'
+        directory.rename(outside)
+        directory.symlink_to(outside, target_is_directory=True)
+        self.restore('root', archive, code=1)
+        self.assertEqual((outside / '0.olean').read_text(), '0')
+
     def rewrite(self, archive, transform):
         with tarfile.open(archive) as source:
             members = [(m, source.extractfile(m).read()) for m in source]
@@ -164,6 +229,63 @@ class CheckpointTests(unittest.TestCase):
         self.write('lake-manifest.json', json.dumps({'packages': [
             {'name': 'dep', 'type': 'path', 'dir': str(self.base / 'external')}]}))
         self.invoke('pack', '--layer', 'dependencies', '--output', str(self.base / 'bad.tar'), code=1)
+
+    def test_capability_runs_before_dependency_materialization(self):
+        self.write('lake-manifest.json', json.dumps({'packages': [
+            {'name': 'hyphenated-dep', 'type': 'git', 'rev': 'fixed'},
+            {'name': 'localDep', 'type': 'path', 'dir': 'owned/local-package'}]}))
+        self.assertFalse((self.root / '.lake/packages/hyphenated-dep').exists())
+        self.assertFalse((self.root / 'owned/local-package').exists())
+        self.assertTrue(self.invoke('supported')['supported'])
+        self.invoke('supported', '--materialized', code=1)
+
+    def test_materialized_dependency_output_layout_is_checked_before_build(self):
+        self.write('.lake/packages/dep/lakefile.toml', 'name="dep"\n')
+        self.assertTrue(self.invoke('supported', '--materialized')['supported'])
+        self.write('.lake/packages/dep/lakefile.toml', 'name="dep"\nbuildDir="elsewhere"\n')
+        self.invoke('supported', '--materialized', code=1)
+        self.invoke('context', code=1)
+        self.write('.lake/packages/dep/lakefile.toml', 'name="dep"\n')
+        self.write('lakefile.toml', 'name="Root"\nbuildDir="elsewhere"\n')
+        self.invoke('supported', code=1)
+
+    def test_unknown_executable_dependency_config_does_not_gain_static_admission(self):
+        self.write('lake-manifest.json', json.dumps({'packages': [
+            {'name': 'dep', 'type': 'git', 'rev': 'fixed', 'configFile': 'lakefile.lean'}]}))
+        self.invoke('supported', code=1)
+
+    def test_unsupported_resolution_rejected_by_capability_and_all_operations(self):
+        artifact = self.write('.lake/build/Root.olean', 'compiled')
+        archive, _ = self.pack('root')
+        original = (self.root / 'lake-manifest.json').read_text()
+        cases = ('overrides', 'external-path', 'custom-layout', 'competing-lean', 'custom-subdir')
+        for case in cases:
+            with self.subTest(case=case):
+                (self.root / 'lake-manifest.json').write_text(original)
+                (self.root / 'lakefile.toml').write_text('name="Root"\n')
+                (self.root / 'lakefile.lean').unlink(missing_ok=True)
+                (self.root / '.lake/package-overrides.json').unlink(missing_ok=True)
+                if case == 'overrides':
+                    self.write('.lake/package-overrides.json', '[]\n')
+                elif case == 'external-path':
+                    self.write('lake-manifest.json', json.dumps({'packages': [
+                        {'name': 'dep', 'type': 'path', 'dir': str(self.base / 'outside')}]}))
+                elif case == 'custom-layout':
+                    self.write('lakefile.toml', 'name="Root"\npackagesDir=".lake/custom"\n')
+                elif case == 'competing-lean':
+                    self.write('lakefile.lean', 'import Lake\n')
+                else:
+                    value = json.loads(original)
+                    value['packages'][0]['subDir'] = 'other'
+                    self.write('lake-manifest.json', json.dumps(value))
+                artifact.write_text('current artifact must remain untouched')
+                self.invoke('supported', code=1)
+                self.invoke('context', code=1)
+                rejected = self.base / 'rejected.tar'
+                self.invoke('pack', '--layer', 'root', '--output', str(rejected), code=1)
+                self.assertFalse(rejected.exists())
+                self.restore('root', archive, code=1)
+                self.assertEqual(artifact.read_text(), 'current artifact must remain untouched')
 
     def test_only_lake_derived_setup_json_is_excluded_from_generation(self):
         self.write('.lake/build/ir/Root.setup.json', 'large disposable module setup')
