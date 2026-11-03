@@ -769,12 +769,12 @@ class NativeRunnerResources(unittest.TestCase):
         return eval(expression.replace('&&', ' and ').replace('||', ' or '),
                     {'__builtins__': {}}, {})
 
-    def test_only_explicit_main_ec2_dispatch_selects_trial_resources(self):
+    def test_main_push_and_manual_ec2_routing_preserve_hosted_exceptions(self):
         caller = yaml.safe_load((ROOT / '.github/workflows/ci.yml').read_text())
         dispatch = caller.get('on', caller.get(True))['workflow_dispatch']['inputs']
-        for name, options, default in (('runner-profile', ['hosted', 'ec2'], 'hosted'),
-                                       ('ec2-job-minutes', ['150', '90'], '150'),
-                                       ('ec2-build-lake-threads', ['4', '8'], '4')):
+        for name, options, default in (('runner-profile', ['hosted', 'ec2'], 'ec2'),
+                                       ('ec2-job-minutes', ['150', '90'], '90'),
+                                       ('ec2-build-lake-threads', ['4', '8'], '8')):
             self.assertEqual(dispatch[name]['type'], 'choice')
             self.assertEqual(dispatch[name]['default'], default)
             self.assertEqual(dispatch[name]['options'], options)
@@ -787,7 +787,7 @@ class NativeRunnerResources(unittest.TestCase):
                 for profile in ('', 'hosted', 'ec2'):
                     for minutes in ('', '150', '90', 'invalid'):
                         for threads in ('', '4', '8', 'invalid'):
-                            expected_ec2 = ref == 'refs/heads/main' and event == 'workflow_dispatch' and profile == 'ec2'
+                            expected_ec2 = ref == 'refs/heads/main' and (event == 'push' or (event == 'workflow_dispatch' and profile == 'ec2'))
                             values = {'github.ref': ref, 'github.event_name': event, 'inputs.runner-profile': profile,
                                       'inputs.ec2-job-minutes': minutes, 'inputs.ec2-build-lake-threads': threads}
                             names = ('native-memory-mib', 'lake-threads', 'lint-workers',
@@ -797,7 +797,8 @@ class NativeRunnerResources(unittest.TestCase):
                             self.assertEqual(json.loads(selected.pop('runner-labels')),
                                 ['self-hosted', 'linux', 'x64', 'aglib-ec2-pilot'] if expected_ec2 else ['ubuntu-24.04'])
                             self.assertEqual(selected, dict(zip(names,
-                                (57344, 4, 4, 90 if minutes == '90' else 150, 8 if threads == '8' else 4)
+                                (57344, 4, 4, 150 if event == 'workflow_dispatch' and minutes == '150' else 90,
+                                 4 if event == 'workflow_dispatch' and threads == '4' else 8)
                                 if expected_ec2 else (13824, 1, 2, 360, 0))))
 
     def test_build_runtime_override_is_production_step_only_and_preserves_fallback(self):

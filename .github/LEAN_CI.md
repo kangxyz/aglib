@@ -17,24 +17,29 @@ which retains `lake-threads`; a nonzero value overrides only the production
 Build step's Lake runtime pool. Other Build steps and all Test/lint steps retain
 `lake-threads`. Publish cache always retains its hosted runner and historical resources.
 
-Aglib's manual dispatch offers `runner-profile` choices `hosted` (default)
-and `ec2`. Only an explicit `ec2` dispatch on `main` selects the repo-only
-ephemeral EC2 pool using exactly
+Aglib routes automatic pushes to `main` to the repo-only ephemeral EC2 pool.
+Manual dispatch defaults to `runner-profile=ec2`; an explicit `hosted` choice
+uses GitHub-hosted resources. Pull requests, pushes to other branches and all
+non-main dispatches remain hosted. EC2 jobs use exactly
 `["self-hosted","linux","x64","aglib-ec2-pilot"]`, 57344 MiB aggregate native
-memory, four Lake runtime threads and four lint workers. EC2-only manual choices
-`ec2-job-minutes` (`150` by default, or `90`) set Build/Test limits, retaining a
-30-minute cache margin and thus a 120- or 60-minute compiler budget.
-`ec2-build-lake-threads` (`4` by default, or `8`) selects only production Build's
-Lake runtime pool. It does not specify frontend process concurrency or change
-the `-j4 -M12800` frontend arguments; other EC2 steps and Test/lint retain their
-existing runtime and worker settings. Missing or unexpected EC2 choice values
-fall back to 150 minutes and four Build Lake runtime threads. Pushes, pull
-requests, default dispatches and other branches retain the hosted defaults.
-The pool uses Ubuntu 24.04 Linux x86_64 on `m7i.4xlarge` (16 vCPUs, 64 GiB),
-allows at most one VM, and terminates each runner after one job. Build and Test
-therefore use separate ephemeral runners. The trial machine watchdog must allow
-175 minutes before running the full workflow; that infrastructure setting is
-managed separately from this template.
+memory, four Lake runtime threads outside production Build, and four lint workers.
+Automatic main pushes use 90-minute Build/Test limits and eight production Build
+Lake runtime threads. EC2-only manual choices `ec2-job-minutes` (`90` by default,
+or `150`) and `ec2-build-lake-threads` (`8` by default, or `4`) permit longer jobs
+or the smaller Build runtime pool. Missing or unexpected EC2 choice values use
+90 minutes and eight Build Lake runtime threads; automatic pushes ignore manual
+choices. The 30-minute cache margin leaves a 60- or 120-minute compiler budget.
+Lake runtime threads do not specify frontend process concurrency or change the
+`-j4 -M12800` frontend arguments. Other EC2 steps and Test/lint retain their
+existing runtime and worker settings; shared reusable workflow defaults remain
+hosted and unchanged.
+
+Automatic main pushes incur on-demand AWS charges. USD 5 is the current trial
+budget, not a billing hard cap. The pool uses Ubuntu 24.04 Linux x86_64 on
+`m7i.4xlarge` (16 vCPUs, 64 GiB), allows at most one VM, and terminates each runner
+after one job. Build and Test therefore use separate ephemeral runners. The
+machine watchdog must exceed the selected job limit plus bootstrap time; that
+infrastructure setting is managed separately from this template.
 
 Optional Actions caches can miss across hosted and EC2 runners because cache
 versions include raw path strings and their temporary directories differ.
