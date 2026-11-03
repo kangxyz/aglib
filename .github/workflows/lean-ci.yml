@@ -31,6 +31,12 @@ on:
       job-timeout-minutes:
         type: number
         default: 360
+      build-job-timeout-minutes:
+        type: number
+        default: 0
+      build-compiler-minutes:
+        type: number
+        default: 0
       first-ci-cache:
         type: string
         default: ''
@@ -66,7 +72,7 @@ jobs:
   build:
     name: Build
     runs-on: ${{ fromJSON(inputs.runner-labels) }}
-    timeout-minutes: ${{ inputs.job-timeout-minutes }}
+    timeout-minutes: ${{ inputs.build-job-timeout-minutes != 0 && inputs.build-job-timeout-minutes || inputs.job-timeout-minutes }}
     env: &native-resource-env
       CI_NATIVE_MEMORY_MIB: ${{ inputs.native-memory-mib }}
       CI_LAKE_THREADS: ${{ inputs.lake-threads }}
@@ -105,14 +111,30 @@ jobs:
         shell: bash
         env:
           JOB_TIMEOUT_MINUTES: ${{ inputs.job-timeout-minutes }}
+          BUILD_JOB_TIMEOUT_MINUTES: ${{ inputs.build-job-timeout-minutes }}
+          REQUESTED_COMPILER_MINUTES: ${{ inputs.build-compiler-minutes }}
         run: |
-          if ! [[ "$JOB_TIMEOUT_MINUTES" =~ ^[1-9][0-9]*$ ]] || ! test "$JOB_TIMEOUT_MINUTES" -gt 30; then
-            echo '::error::job-timeout-minutes must be a positive integer greater than 30.' >&2
+          job_minutes=${BUILD_JOB_TIMEOUT_MINUTES:-0}
+          if test "$job_minutes" = 0; then job_minutes=$JOB_TIMEOUT_MINUTES; fi
+          if ! [[ "$job_minutes" =~ ^[1-9][0-9]*$ ]] || ! test "$job_minutes" -gt 30; then
+            echo '::error::Effective Build job timeout must be a positive integer greater than 30.' >&2
             exit 2
           fi
-          compiler_minutes=$((JOB_TIMEOUT_MINUTES - 30))
+          budget_minutes=$((job_minutes - 30))
+          compiler_minutes=${REQUESTED_COMPILER_MINUTES:-0}
+          required_seconds=0
+          if test "$compiler_minutes" != 0; then
+            if ! [[ "$compiler_minutes" =~ ^[1-9][0-9]*$ ]] || ! test "$compiler_minutes" -le "$budget_minutes"; then
+              echo '::error::build-compiler-minutes must be 0 or a positive integer within the cache-safe Build budget.' >&2
+              exit 2
+            fi
+            required_seconds=$((compiler_minutes * 60))
+          else
+            compiler_minutes=$budget_minutes
+          fi
           echo "BUILD_COMPILER_MINUTES=$compiler_minutes" >> "$GITHUB_ENV"
-          echo "BUILD_DEADLINE=$(( $(date +%s) + compiler_minutes * 60 ))" >> "$GITHUB_ENV"
+          echo "BUILD_REQUIRED_COMPILER_SECONDS=$required_seconds" >> "$GITHUB_ENV"
+          echo "BUILD_DEADLINE=$(( $(date +%s) + budget_minutes * 60 ))" >> "$GITHUB_ENV"
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
@@ -122,7 +144,7 @@ jobs:
         shell: bash
         working-directory: ${{ inputs.package-directory }}
         env:
-          JOB_TIMEOUT_MINUTES: ${{ inputs.job-timeout-minutes }}
+          JOB_TIMEOUT_MINUTES: ${{ inputs.build-job-timeout-minutes != 0 && inputs.build-job-timeout-minutes || inputs.job-timeout-minutes }}
           CI_RESOURCE_RUNNER_LABELS: ${{ inputs.runner-labels }}
         run: |
           if test -f .github/ci-resource-monitor.py; then
@@ -368,11 +390,18 @@ jobs:
           fi
           rm -f "$RUNNER_TEMP/outputs.jsonl"
           remaining=$((BUILD_DEADLINE - $(date +%s)))
-          if test "$remaining" -le 0; then
+          compiler_seconds=$remaining
+          if test "${BUILD_REQUIRED_COMPILER_SECONDS:-0}" -gt 0; then
+            if test "$remaining" -lt "$BUILD_REQUIRED_COMPILER_SECONDS"; then
+              echo "::warning::Preparation exhausted the full $BUILD_COMPILER_MINUTES-minute compiler window within the cache-safe Build deadline. Compilation will not start; completed caches will still be saved where possible."
+              exit 124
+            fi
+            compiler_seconds=$BUILD_REQUIRED_COMPILER_SECONDS
+          elif test "$remaining" -le 0; then
             echo "::warning::The Build job has used its $BUILD_COMPILER_MINUTES-minute compiler budget. Cache saving will still be attempted; rerun this branch to resume from saved partial outputs."
             exit 124
           fi
-          if timeout --signal=INT --kill-after=60s "${remaining}s" lake build --rehash "${targets[@]}" -o "$RUNNER_TEMP/outputs.jsonl"; then
+          if timeout --signal=INT --kill-after=60s "${compiler_seconds}s" lake build --rehash "${targets[@]}" -o "$RUNNER_TEMP/outputs.jsonl"; then
             exit 0
           else
             status=$?

@@ -12,7 +12,12 @@ The reusable workflow defaults to GitHub-hosted Ubuntu 24.04. Optional
 `runner-labels` is a JSON array encoded as a string (default
 `["ubuntu-24.04"]`); `native-memory-mib` (13824), `lake-threads` (1) and
 `lint-workers` (2) select Build/Test resources. `job-timeout-minutes` defaults
-to 360 and sets both job limits. Optional `build-lake-threads` defaults to 0,
+to 360 and sets the base job limit. Optional `build-job-timeout-minutes` defaults
+to 0 (inherit that limit); `build-compiler-minutes` defaults to 0 (use the
+remaining cache-safe job budget). A positive compiler limit requests the full
+window starting when production Build begins, excluding preparation; insufficient
+remaining global budget refuses compilation rather than shortening that window.
+Optional `build-lake-threads` defaults to 0,
 which retains `lake-threads`; a nonzero value overrides only the production
 Build step's Lake runtime pool. Other Build steps and all Test/lint steps retain
 `lake-threads`. Publish cache always retains its hosted runner and historical resources.
@@ -23,12 +28,14 @@ uses GitHub-hosted resources. Pull requests, pushes to other branches and all
 non-main dispatches remain hosted. EC2 jobs use exactly
 `["self-hosted","linux","x64","aglib-ec2-pilot"]`, 57344 MiB aggregate native
 memory, four Lake runtime threads outside production Build, and four lint workers.
-Automatic main pushes use 90-minute Build/Test limits and eight production Build
-Lake runtime threads. EC2-only manual choices `ec2-job-minutes` (`90` by default,
-or `150`) and `ec2-build-lake-threads` (`8` by default, or `4`) permit longer jobs
-or the smaller Build runtime pool. Missing or unexpected EC2 choice values use
-90 minutes and eight Build Lake runtime threads; automatic pushes ignore manual
-choices. The 30-minute cache margin leaves a 60- or 120-minute compiler budget.
+Main EC2 runs use a 240-minute Build job with a full 180-minute production
+compiler window, a 30-minute preparation envelope and a 30-minute cache margin.
+The legacy-named `ec2-job-minutes` choice now selects the base/Test limit (`90`
+by default, or `150`), leaving Build's separate limit unchanged. Production Build
+uses eight Lake runtime threads by default; the EC2-only manual choice
+`ec2-build-lake-threads` permits `4` instead of `8`. Missing or unexpected EC2
+choices use a 90-minute base/Test limit and eight Build Lake runtime threads;
+automatic pushes ignore manual choices.
 Lake runtime threads do not specify frontend process concurrency or change the
 `-j4 -M12800` frontend arguments. Other EC2 steps and Test/lint retain their
 existing runtime and worker settings; shared reusable workflow defaults remain
@@ -38,8 +45,10 @@ Automatic main pushes incur on-demand AWS charges. USD 5 is the current trial
 budget, not a billing hard cap. The pool uses Ubuntu 24.04 Linux x86_64 on
 `m7i.4xlarge` (16 vCPUs, 64 GiB), allows at most one VM, and terminates each runner
 after one job. Build and Test therefore use separate ephemeral runners. The
-machine watchdog must exceed the selected job limit plus bootstrap time; that
-infrastructure setting is managed separately from this template.
+machine watchdog must allow 270 minutes to cover the 240-minute Build job plus
+bootstrap margin; that infrastructure setting is managed separately from this
+template. Running jobs use immutable workflow snapshots: these settings apply
+only to future runs and do not extend or interrupt an already running job.
 
 Optional Actions caches can miss across hosted and EC2 runners because cache
 versions include raw path strings and their temporary directories differ.
@@ -65,16 +74,21 @@ downloads from Reservoir/GitHub. This is separate from
   or an auditor, run generated-entry or text-style checks, or build `check-targets`.
   Its final report requires the production build to succeed; checker failures
   belong to Test and do not change Build's result. Production Build is not retried.
-  The first step validates `job-timeout-minutes` as an integer greater than 30
-  and records a compiler deadline that many minutes minus 30 after the Build job
-  starts (330 minutes by default), including checkout, cache restoration, setup
-  and dependency downloads.
-  Production Lake receives only the time remaining, through GNU `timeout` with
-  `SIGINT` and a sixty-second kill grace period. An already expired deadline
-  skips Lake; timeout exit 124 or forced-kill exit 137 fails Build, so Test and
-  Publish cache do not run. The job limit defaults to 360 minutes, reserving thirty
-  minutes for the existing cache save and partial-output staging. Cache saving
-  still runs after compiler failure or cutoff. On the layered path, bounded
+  The first step resolves the effective Build job limit, validates an integer
+  greater than 30, and records a global cache-safe deadline 30 minutes before
+  that limit (330 minutes after start by default). Preparation, including
+  checkout, cache restoration, setup and dependency downloads, consumes that
+  global budget. With `build-compiler-minutes=0`, production Lake receives the
+  remaining time, preserving legacy behavior. With an explicit positive compiler
+  limit, it receives exactly that many minutes starting at production Build;
+  the full requested window must fit before the global deadline or preparation
+  exhaustion fails Build before Lake starts. For EC2, preparation exceeding
+  30 minutes therefore refuses the full 180-minute compiler run.
+  GNU `timeout` uses `SIGINT` and a sixty-second kill grace period. An expired
+  deadline, insufficient full window, timeout exit 124 or forced-kill exit 137
+  fails Build, so Test and Publish cache do not run. The shared default job limit
+  remains 360 minutes. Cache saving still runs after compiler failure, preparation
+  exhaustion or cutoff. On the layered path, bounded
   native staging repairs derived archives before root checkpoint packing. Both completed
   root outputs and completed dependency outputs have independent always-run
   checkpoints on the layered path. A later run on the same branch restores

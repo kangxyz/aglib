@@ -462,7 +462,48 @@ class BuildJobBudget(unittest.TestCase):
                 self.assertIn('greater than 30', result.stderr)
                 self.assertFalse(environment_file.exists())
 
-    def run_build(self, *, deadline=20800, now=1000, compiler_status=0, timeout_status=0, compiler_minutes=330):
+    def test_explicit_compiler_window_excludes_preparation_and_refuses_shortening(self):
+        first = step('build', 'Set Build deadline')
+        with tempfile.TemporaryDirectory(prefix='lean-ci-full-window-') as directory:
+            environment_file = Path(directory) / 'github-env'
+            result = subprocess.run(['bash', '-eo', 'pipefail', '-c',
+                                     'date() { printf "1000\\n"; }\n' + first['run']],
+                env={**os.environ, 'GITHUB_ENV': str(environment_file), 'JOB_TIMEOUT_MINUTES': '90',
+                     'BUILD_JOB_TIMEOUT_MINUTES': '240', 'REQUESTED_COMPILER_MINUTES': '180'},
+                capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            exported = dict(line.split('=', 1) for line in environment_file.read_text().splitlines())
+            self.assertEqual(exported, {'BUILD_COMPILER_MINUTES': '180',
+                                       'BUILD_REQUIRED_COMPILER_SECONDS': '10800',
+                                       'BUILD_DEADLINE': str(1000 + 210 * 60)})
+        for preparation in (10 * 60, 30 * 60):
+            result, calls, partial = self.run_build(deadline=1000 + 210 * 60, now=1000 + preparation,
+                                                   compiler_minutes=180, required_seconds=10800)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn('timeout:--signal=INT --kill-after=60s 10800s lake build', calls[0])
+            self.assertTrue(partial)
+        for preparation in (31 * 60, 211 * 60):
+            result, calls, partial = self.run_build(deadline=1000 + 210 * 60, now=1000 + preparation,
+                                                   compiler_minutes=180, required_seconds=10800)
+            self.assertEqual(result.returncode, 124)
+            self.assertIn('Preparation exhausted the full 180-minute compiler window', result.stdout)
+            self.assertEqual(calls, [])
+            self.assertFalse(partial)
+            self.assert_failed_build_blocks_consumers(result.returncode)
+
+    def test_invalid_build_override_or_compiler_limit_fails_before_export(self):
+        for job, compiler in (('30', '180'), ('invalid', '180'), ('240', '-1'),
+                              ('240', '180.5'), ('240', '211'), ('240', 'invalid')):
+            with self.subTest(job=job, compiler=compiler), tempfile.TemporaryDirectory(prefix='lean-ci-budget-') as directory:
+                output = Path(directory) / 'github-env'
+                result = subprocess.run(['bash', '-eo', 'pipefail', '-c', step('build', 'Set Build deadline')['run']],
+                    env={**os.environ, 'GITHUB_ENV': str(output), 'JOB_TIMEOUT_MINUTES': '90',
+                         'BUILD_JOB_TIMEOUT_MINUTES': job, 'REQUESTED_COMPILER_MINUTES': compiler},
+                    capture_output=True, text=True)
+                self.assertEqual(result.returncode, 2, result.stderr)
+                self.assertFalse(output.exists())
+
+    def run_build(self, *, deadline=20800, now=1000, compiler_status=0, timeout_status=0, compiler_minutes=330, required_seconds=0):
         mock = r'''
 date() { printf '%s\n' "$FIXTURE_NOW"; }
 lake() {
@@ -488,6 +529,7 @@ timeout() {
                 cwd=root, env={**os.environ, 'BUILD_TARGETS': 'Aglib Quillen',
                                'BUILD_DEADLINE': str(deadline), 'FIXTURE_NOW': str(now),
                                'BUILD_COMPILER_MINUTES': str(compiler_minutes),
+                               'BUILD_REQUIRED_COMPILER_SECONDS': str(required_seconds),
                                'RUNNER_TEMP': '.', 'TRACE': str(trace), 'PARTIAL': str(root / 'completed'),
                                'COMPILER_STATUS': str(compiler_status), 'TIMEOUT_STATUS': str(timeout_status)},
                 capture_output=True, text=True)
@@ -746,12 +788,17 @@ class NativeRunnerResources(unittest.TestCase):
                          ['-M12800', '-j4'])
         self.assertEqual(self.inputs['runner-labels']['type'], 'string')
         self.assertEqual(json.loads(self.inputs['runner-labels']['default']), ['ubuntu-24.04'])
-        for name, default in (('native-memory-mib', 13824), ('lake-threads', 1), ('lint-workers', 2), ('job-timeout-minutes', 360), ('build-lake-threads', 0)):
+        for name, default in (('native-memory-mib', 13824), ('lake-threads', 1), ('lint-workers', 2), ('job-timeout-minutes', 360), ('build-lake-threads', 0), ('build-job-timeout-minutes', 0), ('build-compiler-minutes', 0)):
             self.assertEqual(self.inputs[name]['default'], default)
             self.assertIn(self.inputs[name]['type'], ('string', 'number'))
         for job in ('build', 'test_lint'):
             self.assertEqual(JOBS[job]['runs-on'], '${{ fromJSON(inputs.runner-labels) }}')
-            self.assertEqual(JOBS[job]['timeout-minutes'], '${{ inputs.job-timeout-minutes }}')
+            expected_timeout = ('${{ inputs.build-job-timeout-minutes != 0 && inputs.build-job-timeout-minutes || inputs.job-timeout-minutes }}'
+                                if job == 'build' else '${{ inputs.job-timeout-minutes }}')
+            self.assertEqual(JOBS[job]['timeout-minutes'], expected_timeout)
+            for base, override, expected in ((360, 0, 360), (90, 240, 240 if job == 'build' else 90)):
+                self.assertEqual(self.workflow_value(expected_timeout, {'inputs.job-timeout-minutes': base,
+                                                                     'inputs.build-job-timeout-minutes': override}), expected)
             for variable, name in self.resource_names.items():
                 self.assertEqual(JOBS[job]['env'][variable], '${{ inputs.' + name + ' }}')
         self.assertEqual(JOBS['upload_cache']['runs-on'], 'ubuntu-24.04')
@@ -791,15 +838,16 @@ class NativeRunnerResources(unittest.TestCase):
                             values = {'github.ref': ref, 'github.event_name': event, 'inputs.runner-profile': profile,
                                       'inputs.ec2-job-minutes': minutes, 'inputs.ec2-build-lake-threads': threads}
                             names = ('native-memory-mib', 'lake-threads', 'lint-workers',
-                                     'job-timeout-minutes', 'build-lake-threads')
+                                     'job-timeout-minutes', 'build-lake-threads',
+                                     'build-job-timeout-minutes', 'build-compiler-minutes')
                             selected = {name: self.workflow_value(settings[name], values)
                                         for name in ('runner-labels', *names)}
                             self.assertEqual(json.loads(selected.pop('runner-labels')),
                                 ['self-hosted', 'linux', 'x64', 'aglib-ec2-pilot'] if expected_ec2 else ['ubuntu-24.04'])
                             self.assertEqual(selected, dict(zip(names,
                                 (57344, 4, 4, 150 if event == 'workflow_dispatch' and minutes == '150' else 90,
-                                 4 if event == 'workflow_dispatch' and threads == '4' else 8)
-                                if expected_ec2 else (13824, 1, 2, 360, 0))))
+                                 4 if event == 'workflow_dispatch' and threads == '4' else 8, 240, 180)
+                                if expected_ec2 else (13824, 1, 2, 360, 0, 0, 0))))
 
     def test_build_runtime_override_is_production_step_only_and_preserves_fallback(self):
         production = step('build', 'Build')
@@ -923,7 +971,7 @@ class ResourceMonitorIntegration(unittest.TestCase):
                     result = subprocess.run(['bash', '-eo', 'pipefail', '-c', action['run']],
                                             cwd=directory, capture_output=True, text=True)
                     self.assertEqual(result.returncode, 0, result.stderr)
-            self.assertEqual(start['env']['JOB_TIMEOUT_MINUTES'], '${{ inputs.job-timeout-minutes }}')
+            self.assertEqual(start['env']['JOB_TIMEOUT_MINUTES'], JOBS[job]['timeout-minutes'])
             self.assertEqual(start['env']['CI_RESOURCE_RUNNER_LABELS'], '${{ inputs.runner-labels }}')
             for action in (stop, upload):
                 self.assertTrue(condition(action['if'], {}, success=False, cancelled=True))
