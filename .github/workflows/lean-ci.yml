@@ -22,6 +22,9 @@ on:
       lake-threads:
         type: number
         default: 1
+      build-lake-threads:
+        type: number
+        default: 0
       lint-workers:
         type: number
         default: 2
@@ -113,6 +116,18 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
+      - name: Start native resource sampler
+        continue-on-error: true
+        timeout-minutes: 1
+        shell: bash
+        working-directory: ${{ inputs.package-directory }}
+        env:
+          JOB_TIMEOUT_MINUTES: ${{ inputs.job-timeout-minutes }}
+          CI_RESOURCE_RUNNER_LABELS: ${{ inputs.runner-labels }}
+        run: |
+          if test -f .github/ci-resource-monitor.py; then
+            python3 .github/ci-resource-monitor.py start --minutes "$JOB_TIMEOUT_MINUTES"
+          fi
       - run: echo "LAKE_CACHE_DIR=$RUNNER_TEMP/lake-native-cache" >> "$GITHUB_ENV"
       - name: Select layered cache support
         id: cache-mode
@@ -343,6 +358,8 @@ jobs:
         id: build
         continue-on-error: true
         working-directory: ${{ inputs.package-directory }}
+        env:
+          CI_LAKE_THREADS: ${{ inputs.build-lake-threads != 0 && inputs.build-lake-threads || inputs.lake-threads }}
         run: |
           read -r -a targets <<< "$BUILD_TARGETS"
           if test "${#targets[@]}" -eq 0; then
@@ -523,6 +540,27 @@ jobs:
           path: ${{ runner.temp }}/build-dependencies.tar.zst
           if-no-files-found: error
           compression-level: 0
+      - name: Stop native resource sampler
+        if: ${{ always() }}
+        continue-on-error: true
+        timeout-minutes: 1
+        shell: bash
+        working-directory: ${{ inputs.package-directory }}
+        run: |
+          if test -f .github/ci-resource-monitor.py; then
+            python3 .github/ci-resource-monitor.py stop
+          fi
+      - name: Upload native resource observations
+        if: ${{ always() }}
+        continue-on-error: true
+        timeout-minutes: 1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: native-resources-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.job }}
+          path: ${{ runner.temp }}/lean-ci-resources/${{ github.run_id }}-${{ github.run_attempt }}-${{ github.job }}/resources.jsonl
+          if-no-files-found: ignore
+          compression-level: 6
+          retention-days: 7
       - name: Report Build result
         if: ${{ always() }}
         env:
@@ -543,6 +581,18 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
+      - name: Start native resource sampler
+        continue-on-error: true
+        timeout-minutes: 1
+        shell: bash
+        working-directory: ${{ inputs.package-directory }}
+        env:
+          JOB_TIMEOUT_MINUTES: ${{ inputs.job-timeout-minutes }}
+          CI_RESOURCE_RUNNER_LABELS: ${{ inputs.runner-labels }}
+        run: |
+          if test -f .github/ci-resource-monitor.py; then
+            python3 .github/ci-resource-monitor.py start --minutes "$JOB_TIMEOUT_MINUTES"
+          fi
       - run: echo "LAKE_CACHE_DIR=$RUNNER_TEMP/lake-native-cache" >> "$GITHUB_ENV"
       - name: Select layered cache support
         id: cache-mode
@@ -871,6 +921,27 @@ jobs:
         with:
           path: ${{ runner.temp }}/layered-cache/tools.tar.zst
           key: lean-layered-v1-tools-${{ steps.cache-mode.outputs.tools_context }}-${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Stop native resource sampler
+        if: ${{ always() }}
+        continue-on-error: true
+        timeout-minutes: 1
+        shell: bash
+        working-directory: ${{ inputs.package-directory }}
+        run: |
+          if test -f .github/ci-resource-monitor.py; then
+            python3 .github/ci-resource-monitor.py stop
+          fi
+      - name: Upload native resource observations
+        if: ${{ always() }}
+        continue-on-error: true
+        timeout-minutes: 1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: native-resources-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.job }}
+          path: ${{ runner.temp }}/lean-ci-resources/${{ github.run_id }}-${{ github.run_attempt }}-${{ github.job }}/resources.jsonl
+          if-no-files-found: ignore
+          compression-level: 6
+          retention-days: 7
       - name: Report Test, lint and axiom results
         if: ${{ always() }}
         env:

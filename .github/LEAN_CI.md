@@ -12,14 +12,23 @@ The reusable workflow defaults to GitHub-hosted Ubuntu 24.04. Optional
 `runner-labels` is a JSON array encoded as a string (default
 `["ubuntu-24.04"]`); `native-memory-mib` (13824), `lake-threads` (1) and
 `lint-workers` (2) select Build/Test resources. `job-timeout-minutes` defaults
-to 360 and sets both job limits. Publish cache always retains its hosted runner and historical resources.
+to 360 and sets both job limits. Optional `build-lake-threads` defaults to 0,
+which retains `lake-threads`; a nonzero value overrides only the production
+Build step's Lake runtime pool. Other Build steps and all Test/lint steps retain
+`lake-threads`. Publish cache always retains its hosted runner and historical resources.
 
 Aglib's manual dispatch offers `runner-profile` choices `hosted` (default)
 and `ec2`. Only an explicit `ec2` dispatch on `main` selects the repo-only
 ephemeral EC2 pool using exactly
 `["self-hosted","linux","x64","aglib-ec2-pilot"]`, 57344 MiB aggregate native
-memory, four Lake runtime threads and four lint workers. That trial uses
-150-minute Build/Test limits and a 120-minute compiler budget. Pushes, pull
+memory, four Lake runtime threads and four lint workers. EC2-only manual choices
+`ec2-job-minutes` (`150` by default, or `90`) set Build/Test limits, retaining a
+30-minute cache margin and thus a 120- or 60-minute compiler budget.
+`ec2-build-lake-threads` (`4` by default, or `8`) selects only production Build's
+Lake runtime pool. It does not specify frontend process concurrency or change
+the `-j4 -M12800` frontend arguments; other EC2 steps and Test/lint retain their
+existing runtime and worker settings. Missing or unexpected EC2 choice values
+fall back to 150 minutes and four Build Lake runtime threads. Pushes, pull
 requests, default dispatches and other branches retain the hosted defaults.
 The pool uses Ubuntu 24.04 Linux x86_64 on `m7i.4xlarge` (16 vCPUs, 64 GiB),
 allows at most one VM, and terminates each runner after one job. Build and Test
@@ -303,6 +312,44 @@ lint workers. The lint adapter still caps workers to the available CPUs.
 The available CPU count is logged separately. Lake's runtime setting does not
 promise a particular number of simultaneous compiler processes. Ordinary failure
 can still execute the existing cache saves; VM/runner teardown remains outside that guarantee. The retired manual cache-client workflow is no longer present.
+
+When the caller includes `.github/ci-resource-monitor.py`, Build and Test start
+an optional Python sampler immediately after checkout with explicit `shell: bash`,
+outside the native compilation scopes. It inherits Actions process tracking and
+also exits at the job's configured lifetime (at most 12 hours), a stop sentinel,
+or a 4 MiB output limit. It writes one scalar-only JSONL observation about every
+15 seconds under `$RUNNER_TEMP/lean-ci-resources/<run>-<attempt>-<job>/`.
+Cleanup requests a stop using that private directory, without signaling any PID.
+It runs after the existing cache saves and uploads a uniquely named
+`native-resources-<run>-<attempt>-<job>` artifact with seven-day retention. Start,
+stop and upload are best effort and never gate mathematical checks or publication;
+callers lacking the helper skip sampling. Runner teardown can prevent delivery.
+
+Samples distinguish host `MemTotal`/`MemAvailable` from native cgroup charges.
+They sum `memory.current`, `anon`, `file`, `inactive_file` and `file_mapped` only
+across this job's disjoint recorded scope roots; parent counters already include
+descendants, whose memory counters are never summed again. File counters overlap:
+`file_mapped` and `inactive_file` help describe charged file cache but do not
+measure a working set and must not be added to `file`. These are cgroup memory
+charges, not sums of process RSS. `native_memory_peak_max_bytes` is the largest
+individual live scope's kernel `memory.peak` observed at that sample, not the sum
+of scope peaks or a guaranteed whole-run maximum. Scalar readable-scope counts
+make missing metrics explicit. Host CPU busy percentage and native CPU-core use
+come from counter deltas; native deltas require a scope present in consecutive
+samples. Lean frontend concurrency counts live runner-owned `lean` executables
+in the scopes' recursive process membership, deduplicating PIDs; it counts
+processes, not runtime threads or CPU-runnable states. Short-lived processes and
+collected scopes between samples can be missed. The job summary reports observed
+coverage, and records no environment, command lines, source contents or secrets.
+For the exact `aglib-ec2-pilot` runner label only, the sampler also mirrors each
+scalar line with prefix `LEAN_CI_RESOURCE` to the existing regular, nonsymlink
+`/var/log/user-data.log`, using noninteractive `sudo tee -a` with a one-second
+timeout. The EC2 pool already collects that file in CloudWatch log group
+`/github-self-hosted-runners/aglib-ec2-pilot/user_data`, stream `<instance_id>`,
+so existing AWS log reads can observe future jobs live. The helper never creates
+or changes permissions on a root log, adds no services or permissions, and disables
+the mirror after an unavailable file, append failure or timeout. Hosted callers
+skip mirroring; artifact and summary delivery remain independent of it.
 
 The focused regression suite uses Python, PyYAML, tar and zstd:
 `PYTHONPATH=scripts python3 -m unittest discover -s scripts/tests -p test_lean_ci_workflow.py -v`.

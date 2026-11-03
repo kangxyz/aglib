@@ -10,6 +10,16 @@ on:
         type: choice
         options: [hosted, ec2]
         default: hosted
+      ec2-job-minutes:
+        description: EC2 only - job minutes including 30 minutes for cache cleanup
+        type: choice
+        options: ['150', '90']
+        default: '150'
+      ec2-build-lake-threads:
+        description: EC2 only - production Build Lake runtime threads, not frontend process count
+        type: choice
+        options: ['4', '8']
+        default: '4'
 
 permissions:
   contents: read
@@ -34,4 +44,5 @@ jobs:
       native-memory-mib: ${{ github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2' && github.ref == 'refs/heads/main' && 57344 || 13824 }}
       lake-threads: ${{ github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2' && github.ref == 'refs/heads/main' && 4 || 1 }}
       lint-workers: ${{ github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2' && github.ref == 'refs/heads/main' && 4 || 2 }}
-      job-timeout-minutes: ${{ github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2' && github.ref == 'refs/heads/main' && 150 || 360 }}
+      job-timeout-minutes: ${{ github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2' && github.ref == 'refs/heads/main' && (inputs.ec2-job-minutes == '90' && 90 || 150) || 360 }}
+      build-lake-threads: ${{ github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2' && github.ref == 'refs/heads/main' && (inputs.ec2-build-lake-threads == '8' && 8 || 4) || 0 }}
