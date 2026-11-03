@@ -1,0 +1,14 @@
+{
+  "frozen_path": "/private/tmp/r5-investigations/jacobian/root-comparison-evidence/d8c-producer-first-default/KunnethComparison.lean",
+  "frozen_sha256": "576fb3f48858f6395271d6581a7f4ed4e29b21f77c9115fa37213059f63ae0ed",
+  "probe_sha256": "bad16f02653b2492f45322d656f83ed2d3871c4184a6abc8117bf2bc03c3f2ca",
+  "probe_bytes": 5671,
+  "max_line_length": 93,
+  "only_inserted_lines": [
+    "set_option backward.defeqAttrib.useBackward true",
+    "set_option backward.isDefEq.respectTransparency false",
+    "set_option backward.isDefEq.respectTransparency.types false"
+  ],
+  "head": "7545acd876b4ebf73f067d532ffa75263c01e26c",
+  "target": "temporary Comparison module only; no production source write"
+}

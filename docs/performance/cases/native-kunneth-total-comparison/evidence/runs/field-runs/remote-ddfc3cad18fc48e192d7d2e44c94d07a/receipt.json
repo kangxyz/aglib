@@ -1,0 +1,499 @@
+{
+  "action": "plan",
+  "actor_executable": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+  "admission": {
+    "ceilings": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 1,
+      "lean_memory_mib": 24576,
+      "rss_limit_mib": 32768,
+      "threads": 4
+    },
+    "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+    "final_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-28c83f5ba42b426f80325ec49692ff2f": 1,
+        "/root/autodl-tmp/lean-build/logs/remote-8842b47c4bb94193869d2e319d71a0b4": 8,
+        "/root/autodl-tmp/lean-build/logs/remote-ac2b648d12aa4500b543915aed747ae6": 1
+      },
+      "cpu_cores": 12.504824727077906,
+      "cpu_usage_usec": 2795372111937,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 11811160064,
+      "memory_current_bytes": 73044500480,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 0.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 54086189056
+    },
+    "initial_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-28c83f5ba42b426f80325ec49692ff2f": 1,
+        "/root/autodl-tmp/lean-build/logs/remote-8842b47c4bb94193869d2e319d71a0b4": 8,
+        "/root/autodl-tmp/lean-build/logs/remote-ac2b648d12aa4500b543915aed747ae6": 1
+      },
+      "cpu_cores": 11.170215536728357,
+      "cpu_usage_usec": 2795321357211,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 12348030976,
+      "memory_current_bytes": 73621590016,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 1.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 54662594560
+    },
+    "max_frontends_if_alone": 1,
+    "mode": "elastic"
+  },
+  "allow_library_roots": false,
+  "cache_provenance": {
+    "configuration_sha256": {
+      "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+      "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852"
+    },
+    "environment": {
+      "LAKE_ARTIFACT_CACHE": "true",
+      "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+      "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+    },
+    "lookup": "native Lake traces/artifact cache; no per-dependency prior-hit claim"
+  },
+  "cgroup_average_cpu_cores": 12.164206555276147,
+  "cgroup_cpu_after": {
+    "nr_periods": 10753825,
+    "nr_throttled": 32119,
+    "system_usec": 224754425250,
+    "throttled_usec": 378038456,
+    "usage_usec": 2795372113918,
+    "user_usec": 2570617688668
+  },
+  "cgroup_cpu_attribution": "whole observed cgroup; may include unrelated activity",
+  "cgroup_cpu_before": {
+    "nr_periods": 10753783,
+    "nr_throttled": 32119,
+    "system_usec": 224750294803,
+    "throttled_usec": 378038456,
+    "usage_usec": 2795321402512,
+    "user_usec": 2570571107708
+  },
+  "cgroup_cpu_seconds_delta": 50.711406,
+  "cgroup_memory_events_after": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_before": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_delta": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "command": [
+    "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "--no-build",
+    "--rehash",
+    "--verbose",
+    "build",
+    "+Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethLinear.Basic",
+    "+Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.ExternalProduct.Graded",
+    "+Aglib.Algebra.Graded.TensorProduct.Comparison"
+  ],
+  "command_exit_code": 0,
+  "compiler_exit_codes": [],
+  "compiler_failed": 0,
+  "compiler_invocations": 0,
+  "compiler_observation": "wrapper-events-only",
+  "compiler_scope_lease_modes": {},
+  "compiler_scope_policy": "workspace descriptors or verified live supervisor; each compiler inherits its elastic claim",
+  "compiler_succeeded": 0,
+  "concurrency_basis": "compiler wrapper start/finish intervals, each holding one slot",
+  "configuration_boundary": {
+    "boundary": "static TOML plus SHA-guarded Lean 4.34.1 Mathlib/ProofWidgets adapters; ordinary stable olean trust",
+    "configuration_count": 10,
+    "issue_count": 0,
+    "issues": [],
+    "packages": [
+      {
+        "assigned_name": "[anonymous]",
+        "config": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/lakefile.toml",
+        "directory": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean",
+        "idx": 0,
+        "readiness": "static_toml",
+        "sha256": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852"
+      },
+      {
+        "assigned_name": "mathlib",
+        "config": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/mathlib/lakefile.lean",
+        "directory": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/mathlib",
+        "idx": 1,
+        "readiness": "verified_lean_olean",
+        "sha256": "274e720ccc7dbabeb9fbf362290dc7e5ed2c5175fbade0ef20cc19b1331affaf",
+        "trace": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/config/1/lakefile.olean.trace",
+        "trace_options": {},
+        "trace_sha256": "5fbae3a561068f5c8fd81a1e4e5083ea103e0eec8965b88770281a5e0991456b"
+      },
+      {
+        "assigned_name": "plausible",
+        "config": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/plausible/lakefile.toml",
+        "directory": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/plausible",
+        "idx": 2,
+        "readiness": "static_toml",
+        "sha256": "4147957012320a3afe8f041662202b7a3453c8a0df4311c1698da029a3b4834f"
+      },
+      {
+        "assigned_name": "LeanSearchClient",
+        "config": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/LeanSearchClient/lakefile.toml",
+        "directory": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/LeanSearchClient",
+        "idx": 3,
+        "readiness": "static_toml",
+        "sha256": "cb5d6c80c4ffd4b3be99294a911ebf2f6a2fee4eb9f840d96f0f813bd484c05d"
+      },
+      {
+        "assigned_name": "importGraph",
+        "config": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/importGraph/lakefile.toml",
+        "directory": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/importGraph",
+        "idx": 4,
+        "readiness": "static_toml",
+        "sha256": "a48a5617c553b9fb528d6da7d4e15b1a61fff3326d6eab6399176d9e22e2bb53"
+      },
+      {
+        "assigned_name": "proofwidgets",
+        "config": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/proofwidgets/lakefile.lean",
+        "directory": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/proofwidgets",
+        "idx": 5,
+        "readiness": "verified_lean_olean",
+        "sha256": "0a319fffbf511dab4c3307dc105f8e8fdb4f6160020995cef5f442061cc0abca",
+        "trace": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/config/5/lakefile.olean.trace",
+        "trace_options": {
+          "errorOnBuild": "ProofWidgets failed to reuse pre-built JS code. Please report this issue on the Lean Zulip."
+        },
+        "trace_sha256": "f47c11be19f0eb78ab6a2be7d98d1626fe53bf08aab72d088273467f9a0a7503"
+      },
+      {
+        "assigned_name": "aesop",
+        "config": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/aesop/lakefile.toml",
+        "directory": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/aesop",
+        "idx": 6,
+        "readiness": "static_toml",
+        "sha256": "054f79cdcc1a5e15d1856aac6bf3375cbe12de657926218962401efed2a08119"
+      },
+      {
+        "assigned_name": "Qq",
+        "config": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/Qq/lakefile.toml",
+        "directory": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/Qq",
+        "idx": 7,
+        "readiness": "static_toml",
+        "sha256": "42826e4e06221f41fcd863e19d937a0a68be7d54df90abd7800a3c09f4557a15"
+      },
+      {
+        "assigned_name": "batteries",
+        "config": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/batteries/lakefile.toml",
+        "directory": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/batteries",
+        "idx": 8,
+        "readiness": "static_toml",
+        "sha256": "acadcd8beb13a53a4ac9399e6706c829309d2380f338d13b037886666f978015"
+      },
+      {
+        "assigned_name": "Cli",
+        "config": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/Cli/lakefile.toml",
+        "directory": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean/.lake/packages/Cli",
+        "idx": 9,
+        "readiness": "static_toml",
+        "sha256": "188aaec6ddb57f411c11b95c3ece85ff26ab9ae8085371fee47e1dc855c4e186"
+      }
+    ],
+    "packages_truncated": false,
+    "supported": true
+  },
+  "diagnostics": {
+    "categories": {},
+    "first": [],
+    "observed_missing_count": 0,
+    "observed_missing_prefixes": {},
+    "observed_missing_prefixes_truncated": false,
+    "observed_missing_shortlist": []
+  },
+  "elapsed_seconds": 4.168903723359108,
+  "environment": {
+    "ELAN_HOME": "/root/autodl-tmp/lean-build/elan",
+    "LAKE_ARTIFACT_CACHE": "true",
+    "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+    "LAKE_OVERRIDE_LEAN": "1",
+    "LEAN_NUM_THREADS": "1",
+    "LEAN_SYSROOT": "/root/autodl-tmp/lean-build/logs/remote-ddfc3cad18fc48e192d7d2e44c94d07a/toolchain",
+    "R5_LEAN_REMOTE_PROFILE": "{\"jobs\": 1, \"lean\": \"/root/autodl-tmp/lean-build/logs/remote-ddfc3cad18fc48e192d7d2e44c94d07a/toolchain/bin/lean\", \"lean_memory_mib\": 24576, \"rss_limit_mib\": 32768, \"schema_version\": 1, \"threads\": 4}",
+    "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+  },
+  "exit_code": 0,
+  "expected_source": "13cd177e30fa0c0853371a4d6f09c79b6694697c56e9966d534199429be18a8c",
+  "failure_reason": null,
+  "finished_at": "2026-11-02T16:32:00.467061+00:00",
+  "forbid_compilation": true,
+  "forced_kill": false,
+  "git_head": null,
+  "group_closed": true,
+  "incomplete_compiler_events": 0,
+  "input_drift": [],
+  "input_sha256": {
+    "Aglib/Algebra/Graded/TensorProduct/Comparison.lean": "b42f9ee99a9507d53ada02b5b2ac9df1d87785d3f4e0f95e02a8f4c577077e15",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/ExternalProduct/Graded.lean": "68f0e969e732e0801dc7258a6574057a76af0f70c15f404c200fb8b6f0514b30",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethLinear/Basic.lean": "c07fb383c57b5e100f1ae1a27debe0609439490392a00131b04b8b5d0493fedc",
+    "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+    "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+  },
+  "lock_acquired_at": "2026-11-02T16:31:56.289669+00:00",
+  "locks": {
+    "cache_fetch_exclusive": null,
+    "legacy_shared_gate": "/root/autodl-tmp/lean-build/build.lock",
+    "workspace_exclusive": "/root/autodl-tmp/lean-build/locks/workspace-20f09446ada883b4d223b672f2487f732be5fb97ceb69e40f51c27a1cdd07377.lock"
+  },
+  "lowest_disk_free_bytes": 18666524672,
+  "modules": [
+    "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethLinear.Basic",
+    "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.ExternalProduct.Graded",
+    "Aglib.Algebra.Graded.TensorProduct.Comparison"
+  ],
+  "operation_id": "36907b00761840e9b140d999fe023233",
+  "outcome": "cache_ready",
+  "peak_compiler_concurrency": 0,
+  "peak_rss_bytes": 904192000,
+  "pgid": 726846,
+  "phase_label": null,
+  "pins": {
+    "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+    "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+    "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+  },
+  "plan": {
+    "missing_observation_complete": true,
+    "native_exit_code": 0,
+    "observed_missing_count": 0,
+    "observed_missing_prefixes": {},
+    "observed_missing_prefixes_truncated": false,
+    "observed_missing_shortlist": [],
+    "ready": true
+  },
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 1,
+    "lean_memory_mib": 24576,
+    "rss_limit_mib": 32768,
+    "threads": 4
+  },
+  "resource_accounting": {
+    "global": "sampled cgroup memory/CPU, startup and growth credits; no peak-envelope reservation",
+    "isolation": "cooperative sampled admission; no per-run kernel memory isolation or OOM guarantee",
+    "run": "frontend/job/thread ceilings, sampled owned-tree RSS cutoff, own-tree pressure retreat"
+  },
+  "resources": {
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "cgroup": "/sys/fs/cgroup",
+    "cgroup_limits": [
+      {
+        "cpu.max": "3200000 100000",
+        "memory.max": "128849018880",
+        "path": "/sys/fs/cgroup"
+      }
+    ],
+    "effective_cpus": 32.0,
+    "memory_bytes": 128849018880
+  },
+  "run_dir": "/root/autodl-tmp/lean-build/logs/remote-ddfc3cad18fc48e192d7d2e44c94d07a",
+  "sampled_process_average_cpu_cores": 1.0002629652094746,
+  "sampled_process_cpu_seconds": 4.17,
+  "schema_version": 1,
+  "setup_cleanup": {
+    "removed_setup_bytes": 0,
+    "removed_setup_files": 0
+  },
+  "source_content_sha256": "13cd177e30fa0c0853371a4d6f09c79b6694697c56e9966d534199429be18a8c",
+  "source_receipt_sha256": "3bad3cf132b0c15643681fb025ab4b487eca7d978b91941b85dd04f7824a8e44",
+  "started_at": "2026-11-02T16:31:55.829014+00:00",
+  "status": "succeeded",
+  "summary": {
+    "action": "plan",
+    "admission": {
+      "affinity_cpus": null,
+      "ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 1,
+        "lean_memory_mib": 24576,
+        "rss_limit_mib": 32768,
+        "threads": 4
+      },
+      "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+      "final_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-28c83f5ba42b426f80325ec49692ff2f": 1,
+          "/root/autodl-tmp/lean-build/logs/remote-8842b47c4bb94193869d2e319d71a0b4": 8,
+          "/root/autodl-tmp/lean-build/logs/remote-ac2b648d12aa4500b543915aed747ae6": 1
+        },
+        "cpu_cores": 12.504824727077906,
+        "cpu_usage_usec": 2795372111937,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 11811160064,
+        "memory_current_bytes": 73044500480,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 0.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 54086189056
+      },
+      "initial_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-28c83f5ba42b426f80325ec49692ff2f": 1,
+          "/root/autodl-tmp/lean-build/logs/remote-8842b47c4bb94193869d2e319d71a0b4": 8,
+          "/root/autodl-tmp/lean-build/logs/remote-ac2b648d12aa4500b543915aed747ae6": 1
+        },
+        "cpu_cores": 11.170215536728357,
+        "cpu_usage_usec": 2795321357211,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 12348030976,
+        "memory_current_bytes": 73621590016,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 1.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 54662594560
+      },
+      "max_frontends_if_alone": 1,
+      "mode": "elastic",
+      "request": null
+    },
+    "artifacts": {
+      "build.log": "/root/autodl-tmp/lean-build/logs/remote-ddfc3cad18fc48e192d7d2e44c94d07a/build.log",
+      "compiler-events.jsonl": "/root/autodl-tmp/lean-build/logs/remote-ddfc3cad18fc48e192d7d2e44c94d07a/compiler-events.jsonl",
+      "receipt.json": "/root/autodl-tmp/lean-build/logs/remote-ddfc3cad18fc48e192d7d2e44c94d07a/receipt.json"
+    },
+    "cgroup_memory_attribution": "whole observed cgroup; an OOM event alone does not identify its victim",
+    "cgroup_memory_events_delta": {
+      "high": 0,
+      "low": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "compiler_observation": "wrapper-events-only",
+    "compiler_scope_lease_modes": {},
+    "execution_seconds": 4.168903723359108,
+    "exit_code": 0,
+    "expected_source": "13cd177e30fa0c0853371a4d6f09c79b6694697c56e9966d534199429be18a8c",
+    "first_diagnostics": [],
+    "frontend_failed": 0,
+    "frontend_invocations": 0,
+    "frontend_observation": "worker-wrapper events, not Lake job totals or retained coverage",
+    "frontend_peak": 0,
+    "frontend_succeeded": 0,
+    "group_closed": true,
+    "native_exit": 0,
+    "outcome": "cache_ready",
+    "peak_rss_bytes": 904192000,
+    "plan": {
+      "missing_observation_complete": true,
+      "native_exit_code": 0,
+      "observed_missing_count": 0,
+      "observed_missing_prefixes": {},
+      "observed_missing_prefixes_truncated": false,
+      "observed_missing_shortlist": [],
+      "ready": true
+    },
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 1,
+      "lean_memory_mib": 24576,
+      "rss_limit_mib": 32768,
+      "threads": 4
+    },
+    "reason": "",
+    "run": "remote-ddfc3cad18fc48e192d7d2e44c94d07a",
+    "sampled_process_average_cpu_cores": 1.0002629652094746,
+    "source_basis": "13cd177e30fa0c0853371a4d6f09c79b6694697c56e9966d534199429be18a8c",
+    "status": "succeeded",
+    "unwrapped_frontend_count": null,
+    "wall_seconds": 4.63808012008667
+  },
+  "task_id": "jacobian-kunneth-field-20261030",
+  "unfinished_compiler_records": [],
+  "waiting_for": null,
+  "wall_seconds": 4.63808012008667,
+  "worker_sha256": "7b1d09f535dc951f2f3ecae857f7b77b0ffc95f8f9e55352167a39b4387729a4",
+  "workspace": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean"
+}

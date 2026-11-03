@@ -1,0 +1,75 @@
+{
+  "algorithm": "SHA-256",
+  "files": [
+    {
+      "bytes": 12311,
+      "path": "INDEX.json",
+      "sha256": "69151cc040d301a7c61f0e68f7562ee23a55b026d7877f2f2368a14f63ee2ec5"
+    },
+    {
+      "bytes": 5589,
+      "path": "INDEX.md",
+      "sha256": "a6bd50b2fe3d65b67be87708eee537c2268b0cb8b016b93b5783584acb8ce854"
+    },
+    {
+      "bytes": 1320,
+      "path": "runs/remote-4d4518db3ddd4c598a14a4d01bba9e85/build.log",
+      "sha256": "b122b829b12c49b1005d869dee70e887eb9421b06260ddf0b3fb21e84892dab6"
+    },
+    {
+      "bytes": 2174,
+      "path": "runs/remote-4d4518db3ddd4c598a14a4d01bba9e85/compiler-events.jsonl",
+      "sha256": "68f79e21bd4246484bb737054470b27de04b048ffdccbb6a69aca1d9f4236789"
+    },
+    {
+      "bytes": 14736,
+      "path": "runs/remote-4d4518db3ddd4c598a14a4d01bba9e85/receipt.json",
+      "sha256": "9efb2fd7bd3371989a6b6ba94e944b24e0ce7f622b1808cedfe4805d63d9a73d"
+    },
+    {
+      "bytes": 2054,
+      "path": "runs/remote-5b5fc8bb764f45edb0b9e05470e4b65e/build.log",
+      "sha256": "1634736d932ecfe2a6e9e79b3a362dbceb91e4375aed8ce3bd1e2cdf1c38ab23"
+    },
+    {
+      "bytes": 899,
+      "path": "runs/remote-5b5fc8bb764f45edb0b9e05470e4b65e/compiler-events.jsonl",
+      "sha256": "da218311296069bc6181ec0871339eb3aa706ffdd68402c442f9851af90ce085"
+    },
+    {
+      "bytes": 23259,
+      "path": "runs/remote-5b5fc8bb764f45edb0b9e05470e4b65e/receipt.json",
+      "sha256": "67f88ba20bf648f206e3f0de3ae8858d77d468cf340072d676fa003e6f7e4a53"
+    },
+    {
+      "bytes": 4287,
+      "path": "runs/remote-ec77f579a84d435ba48c3f4ff0e170e7/build.log",
+      "sha256": "566bcf603c4390b3ad0695043414c7776f5e3457e359a67a9097b8690a85b3ee"
+    },
+    {
+      "bytes": 2174,
+      "path": "runs/remote-ec77f579a84d435ba48c3f4ff0e170e7/compiler-events.jsonl",
+      "sha256": "1389e9649d96862593ae7b2d7d3e83f74d50980aba26f2322964150f498f0a38"
+    },
+    {
+      "bytes": 15359,
+      "path": "runs/remote-ec77f579a84d435ba48c3f4ff0e170e7/receipt.json",
+      "sha256": "9b000962f868e7c80f24e16511a01af46392816014b91fd8d0dc33f6b8e1b36c"
+    },
+    {
+      "bytes": 7526,
+      "path": "sources/current/H1.lean.txt",
+      "sha256": "c8eb3b35cf3e44b2320c94963377084d71c85e44c101aeca305256152fe7c6ef"
+    },
+    {
+      "bytes": 7768,
+      "path": "sources/isolated-1m-diagnostic/H1.lean.txt",
+      "sha256": "dfef97b7c92fb2414b7343af0e3ef0e1f288f1cd9604972e2200389fd70d63bf"
+    },
+    {
+      "bytes": 7514,
+      "path": "sources/old-400k-wrapper/H1-bare-function-wrapper-proposed.lean.txt",
+      "sha256": "036ab22b37ef44b790d3e17625fd45cf2b4d8bf1b54cf837bedd1de9a0086b04"
+    }
+  ]
+}
