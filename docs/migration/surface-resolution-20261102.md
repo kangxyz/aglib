@@ -75,7 +75,8 @@ records the source correspondence and successful production build.
 Full declaration lint and the existing pinned axiom audit remain pending.
 Both encountered a native loader read failure with the build host's mapping
 limit at 65,530; a subsequent actual audit sampled 65,532 mappings. The
-runtime limit adjustment was denied by the host. An isolated official
-Lean 4.34.1 build with `MMAP=OFF` is being prepared for the remaining checks.
-The mathematical source and dependency pins are unchanged. Kernel replay,
+runtime limit adjustment was denied by the host. The remaining checks need
+a suitable existing validation environment. The additional toolchain build
+was stopped; mathematical source, dependency pins and successful artifacts
+are preserved. Kernel replay,
 separate clients and CI workflow edits are outside this integration.
