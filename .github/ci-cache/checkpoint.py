@@ -135,6 +135,13 @@ def tree(path):
             entry = Path(current) / name
             if not stat.S_ISREG(entry.stat().st_mode):
                 raise ValueError('nonregular generated output: ' + str(entry))
+            # Lake4.34.1 regenerates this compiler input immediately before every
+            # real Lean/leanir invocation (Build/Actions.lean:54–56,99–101).
+            # It is neither an incremental output nor a native readiness input.
+            parts = entry.parts
+            if name.endswith('.setup.json') and any(
+                    parts[i:i + 3] == ('.lake', 'build', 'ir') for i in range(len(parts) - 2)):
+                continue
             yield entry
 
 

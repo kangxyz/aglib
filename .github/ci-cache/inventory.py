@@ -34,7 +34,7 @@ def category(relative, native=False):
 
 def file_kind(path):
     name = path.name
-    for suffix in ('.olean.private', '.olean.server', '.ir.sig', '.ltar.hash',
+    for suffix in ('.setup.json', '.olean.private', '.olean.server', '.ir.sig', '.ltar.hash',
                    '.olean', '.ilean', '.ltar', '.trace', '.hash', '.c', '.o', '.a', '.so'):
         if name.endswith(suffix):
             return suffix

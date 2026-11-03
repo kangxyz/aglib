@@ -165,6 +165,27 @@ class CheckpointTests(unittest.TestCase):
             {'name': 'dep', 'type': 'path', 'dir': str(self.base / 'external')}]}))
         self.invoke('pack', '--layer', 'dependencies', '--output', str(self.base / 'bad.tar'), code=1)
 
+    def test_only_lake_derived_setup_json_is_excluded_from_generation(self):
+        self.write('.lake/build/ir/Root.setup.json', 'large disposable module setup')
+        self.write('.lake/build/ir/keep.json', 'other JSON must remain')
+        self.write('.lake/build/lib/lean/Root.olean', 'compiled')
+        self.write('.lake/config/0/keep.setup.json', 'not a module compiler scaffold')
+        root, data = self.pack('root')
+        self.assertEqual(data['files'], 3)
+        names = [e['path'] for e in json.loads(Path(str(root) + '.json').read_text())['entries']]
+        self.assertNotIn('.lake/build/ir/Root.setup.json', names)
+        self.assertIn('.lake/build/ir/keep.json', names)
+        self.assertIn('.lake/config/0/keep.setup.json', names)
+        setup = self.write('.lake/packages/dep/.lake/build/ir/Dep.setup.json', 'old setup')
+        self.write('.lake/packages/dep/.lake/build/lib/lean/Dep.olean', 'compiled dep')
+        archive, previous = self.pack('dependencies')
+        self.assertEqual(previous['files'], 1)
+        self.restore('dependencies', archive)
+        setup.write_text('different regenerated scaffolding')
+        _, current = self.pack('dependencies')
+        self.assertFalse(current['changed'])
+        self.assertTrue(current['reused_archive'])
+
     def test_mandatory_dependency_overlay_is_complete_after_optional_tool_cache(self):
         path = self.write('.lake/packages/dep/.lake/build/Dep.olean', 'CURRENT Build')
         archive, _ = self.pack('dependencies')

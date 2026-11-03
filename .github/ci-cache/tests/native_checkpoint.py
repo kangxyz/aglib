@@ -88,6 +88,13 @@ class Probe:
                 '--output' if action == 'pack' else '--input', str(path)]
         return self.run(action + '-' + layer, [], command=argv)
 
+    def no_restored_setup(self):
+        paths = [str(p.relative_to(self.root)) for p in self.root.rglob('*.setup.json')
+                 if p.is_file() and ('build' in p.parts and 'ir' in p.parts)]
+        if paths:
+            raise RuntimeError('disposable module setup files were restored: ' + repr(paths))
+        self.rows.append({'label': 'no-restored-module-setup-json', 'omitted': True}); self.save()
+
     def artifacts(self):
         return {str(p.relative_to(self.root)): digest(p) for package in
                 (self.root, self.root / '.lake/packages/dep')
@@ -145,6 +152,7 @@ class Probe:
         self.checkpoint('restore', 'dependencies')
         self.run('current-root-LAST', ['cache', 'unstage', str(self.transfer / 'current-root-stage'),
                                        '--force-overwrite'])
+        self.no_restored_setup()
         before = self.artifacts()
         guard = self.forbid_frontends()
         self.run('no-build-cold-native-readiness', ['--no-build', '--rehash', 'build',
@@ -203,6 +211,7 @@ class Probe:
         self.slow()
         self.checkpoint('restore', 'root')
         self.checkpoint('restore', 'dependencies')
+        self.no_restored_setup()
         paths = [self.root / '.lake/build/lib/lean/Native/Good.olean',
                  self.root / '.lake/packages/dep/.lake/build/lib/lean/Dep.olean']
         before = [digest(p) for p in paths]
@@ -215,6 +224,8 @@ class Probe:
             raise RuntimeError('resume recompiled completed root/dependency work')
         if before != [digest(p) for p in paths]:
             raise RuntimeError('resume changed completed compiled bytes')
+        if not (self.root / '.lake/build/ir/Native/Slow.setup.json').is_file():
+            raise RuntimeError('unfinished module did not regenerate its setup input')
 
 
 def main():

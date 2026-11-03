@@ -72,7 +72,7 @@ def runner_arguments(command):
 
 def condition(expression, values, *, success=True, cancelled=False):
     """Evaluate this workflow's conditions, including implicit success()."""
-    values = {'inputs.first-ci-cache': '', **values}
+    values = {'inputs.first-ci-cache': '', 'steps.cache-mode.outputs.layered': '', **values}
     text = expression.removeprefix('${{').removesuffix('}}').strip()
     explicit_status = re.search(r'\b(always|cancelled|success|failure)\(', text)
     if not explicit_status and not success:
@@ -182,12 +182,13 @@ class WorkflowGates(unittest.TestCase):
             self.assertTrue(condition(step(job, name)['if'], values, success=False))
             self.assertTrue(condition(step(job, name)['if'], values, success=False, cancelled=True))
 
-    def test_each_job_restores_native_and_lake_cache_once_together(self):
+    def test_legacy_path_restores_native_and_lake_cache_once_together(self):
         for name in ('build', 'test_lint'):
             restores = [item for item in JOBS[name]['steps']
                         if item.get('uses', '').startswith('actions/cache/restore@')]
-            self.assertEqual(len(restores), 1, name)
-            paths = restores[0]['with']['path'].splitlines()
+            broad = [item for item in restores if '/.lake' in item['with']['path']]
+            self.assertEqual(len(broad), 1, name)
+            paths = broad[0]['with']['path'].splitlines()
             self.assertEqual(paths, ['${{ inputs.package-directory }}/.lake',
                                      '${{ runner.temp }}/lake-native-cache'])
         self.assertNotIn('native-key', [item.get('id') for item in JOBS['build']['steps']])
@@ -619,7 +620,7 @@ class DependencyRecoveryAndNativeResources(unittest.TestCase):
         upload = step('build', 'Upload native dependencies for Test')
         for action in (stage, upload):
             for outcome in ('success', 'failure', 'cancelled', 'skipped'):
-                self.assertEqual(condition(action['if'], {'steps.build.outcome': outcome}),
+                self.assertEqual(condition(action['if'], {'steps.build.outcome': outcome, 'steps.quiesce.outcome': 'success'}),
                                  outcome == 'success')
         self.assertEqual(upload['with']['name'], 'build-dependencies')
         self.assertTrue(upload['with']['overwrite'])
@@ -1258,7 +1259,7 @@ lake() {
             root = Path(directory)
             (root / 'lean-toolchain').write_text('leanprover/lean4:v4.34.1\n')
             environment = {**os.environ, 'TRACE': directory + '/trace', 'BUILD_TARGETS': 'Aglib',
-                           'LAKE_CACHE_DIR': directory + '/cache', 'CLONE_STATUS': '0',
+                           'LAKE_CACHE_DIR': directory + '/cache', 'RUNNER_TEMP': directory, 'CLONE_STATUS': '0',
                            'TOOL_REVISION': '46024e005996495c65ef609368e11ab39c4222e3',
                            'TOOL_BUILD_STATUS': '0'}
             for _ in range(2):
@@ -1277,6 +1278,65 @@ lake() {
                         ['bash', '-e', '-o', 'pipefail', '-c', mock + audit['run']],
                         cwd=root, env={**environment, **settings}, capture_output=True, text=True)
                     self.assertNotEqual(result.returncode, 0)
+
+    def test_build_only_auditor_cache_acquires_local_source_without_losing_outputs(self):
+        with tempfile.TemporaryDirectory(prefix='ci-auditor-build-only-') as directory:
+            root = Path(directory)
+            source = root / 'source'
+            source.mkdir()
+            subprocess.run(['git', 'init', '-q', str(source)], check=True)
+            (source / 'lakefile.toml').write_text('name = "fixture-auditor"\n')
+            (source / 'Main.lean').write_text('-- source fixture\n')
+            subprocess.run(['git', '-C', str(source), 'add', 'lakefile.toml', 'Main.lean'], check=True)
+            subprocess.run(['git', '-C', str(source), '-c', 'user.name=CI fixture',
+                            '-c', 'user.email=ci-fixture@example.invalid', 'commit', '-qm', 'fixture'], check=True)
+            subprocess.run(['git', '-C', str(source), 'tag', 'v0.1.2'], check=True)
+            revision = subprocess.check_output(['git', '-C', str(source), 'rev-parse', 'HEAD'], text=True).strip()
+            tool = root / 'cache/axiom-audit'
+            binary = tool / '.lake/build/bin/axiom-audit'
+            binary.parent.mkdir(parents=True)
+            binary.write_text('#!/bin/sh\nexit 0\n'); binary.chmod(0o755)
+            completed = tool / '.lake/build/ir/completed.o'
+            completed.parent.mkdir(); completed.write_bytes(b'restored native object')
+            before = completed.stat()
+            (root / 'lean-toolchain').write_text('leanprover/lean4:v4.34.1\n')
+            self.assertFalse((tool / '.git').exists())
+            command = step('test_lint', 'Audit production axioms')['run']
+            self.assertIn('test "$(git -C "$tool" rev-parse HEAD)" = 46024e005996495c65ef609368e11ab39c4222e3', command)
+            # Only the fixture's expected commit replaces the production pin in this test.
+            command = command.replace('46024e005996495c65ef609368e11ab39c4222e3', revision)
+            mock = r'''
+git() {
+  if test "$1" = clone; then
+    command git clone --quiet --depth 1 --branch v0.1.2 "$FIXTURE_SOURCE" "${@: -1}"
+  else
+    command git "$@"
+  fi
+}
+lake() {
+  if test "$1" = build; then
+    test -f Main.lean && test -f lakefile.toml
+    test "$(cat .lake/build/ir/completed.o)" = 'restored native object'
+  elif test "$1" = env; then
+    shift; "$@"
+  else
+    return 99
+  fi
+}
+'''
+            result = subprocess.run(['bash', '-eo', 'pipefail', '-c', mock + command], cwd=root,
+                                    env={**os.environ, 'RUNNER_TEMP': directory,
+                                         'LAKE_CACHE_DIR': str(root / 'cache'), 'BUILD_TARGETS': 'Aglib',
+                                         'FIXTURE_SOURCE': source.as_uri()}, capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(subprocess.check_output(['git', '-C', str(tool), 'rev-parse', 'HEAD'],
+                                                    text=True).strip(), revision)
+            self.assertEqual(completed.read_bytes(), b'restored native object')
+            self.assertEqual(completed.stat().st_ino, before.st_ino)
+            self.assertEqual(completed.stat().st_mtime_ns, before.st_mtime_ns)
+            self.assertEqual(binary.stat().st_mode & 0o777, 0o755)
+            self.assertEqual((tool / 'lean-toolchain').read_text(), (root / 'lean-toolchain').read_text())
+            self.assertEqual(list(root.glob('axiom-audit-source.*')), [])
 
     def test_build_artifact_contains_only_mathematical_outputs(self):
         upload = next(item for item in JOBS['build']['steps']
@@ -1493,6 +1553,195 @@ sleep() { printf 'sleep:%s\n' "$*" >> "$TRACE"; }
                 result, trace = self.run_setup(**settings)
                 self.assertNotEqual(result.returncode, 0)
                 self.assertEqual(trace.count('elan:which lake:'), 1)
+
+
+class LayeredCacheIntegration(unittest.TestCase):
+    def test_capability_detection_preserves_legacy_and_promotion_callers(self):
+        select = step('build', 'Select layered cache support')
+        self.assertEqual(select, step('test_lint', 'Select layered cache support'))
+        with tempfile.TemporaryDirectory(prefix='ci-cache-capability-') as directory:
+            root = Path(directory)
+            helper = root / '.github/ci-cache/checkpoint.py'
+            for available, promotion, expected in ((False, '', False), (True, 'sealed', False),
+                                                     (True, '', True)):
+                if available:
+                    helper.parent.mkdir(parents=True, exist_ok=True)
+                    helper.write_text('import os\nwith open(os.environ["GITHUB_OUTPUT"], "a") as f: '
+                                      'f.write("root_context=fixture\\n")\n')
+                output = root / 'output'; output.write_text('')
+                result = subprocess.run(['bash', '-eo', 'pipefail', '-c', select['run']], cwd=root,
+                                        env={**os.environ, 'FIRST_CI_CACHE': promotion,
+                                             'GITHUB_OUTPUT': str(output)}, capture_output=True, text=True)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertEqual('layered=true' in output.read_text(), expected)
+                self.assertEqual('root_context=fixture' in output.read_text(), expected)
+
+    def test_old_full_caches_are_only_read_only_migration_fallback(self):
+        restore = next(item for item in JOBS['build']['steps'] if item.get('id') == 'restore')
+        for layered in ('', 'true'):
+            for missing in (False, True):
+                for failed in (False, True):
+                    values = {'steps.cache-mode.outputs.layered': layered,
+                              'steps.restore-dependencies.outcome': 'failure' if failed else 'success',
+                              'steps.restore-root.outcome': 'success',
+                              'steps.restore-dependencies.outputs.cache-matched-key': '' if missing else 'dep',
+                              'steps.restore-root.outputs.cache-matched-key': 'root'}
+                    self.assertEqual(condition(restore['if'], values), layered != 'true' or missing or failed)
+        for job, name in (('build', 'Save compilation independently of Test and lint'),
+                          ('test_lint', 'Save completed Test compilation')):
+            self.assertFalse(condition(step(job, name)['if'], {
+                'steps.cache-mode.outputs.layered': 'true', 'steps.quiesce.outcome': 'success'},
+                success=False, cancelled=True))
+        warm = step('test_lint', 'Warm dependency and native compilation outputs')
+        self.assertFalse(condition(warm['if'], {'steps.cache-mode.outputs.layered': 'true'}))
+
+    def test_layered_dependency_transport_is_mandatory_even_for_warm_no_change_build(self):
+        for name in ("Download this run's dependencies on cache miss",
+                     "Restore this run's dependencies on cache miss"):
+            action = step('test_lint', name)
+            for status, key in (('success', 'old-but-warm'), ('success', ''), ('failure', 'partial')):
+                self.assertTrue(condition(action['if'], {
+                    'steps.cache-mode.outputs.layered': 'true', 'steps.restore-cache.outcome': status,
+                    'steps.restore-cache.outputs.cache-matched-key': key}))
+                self.assertFalse(action.get('continue-on-error', False))
+        with tempfile.TemporaryDirectory(prefix='ci-layered-handoff-') as directory:
+            root = Path(directory)
+            archive = root / 'layered-cache/dependencies.tar.zst'
+            archive.parent.mkdir()
+            archive.write_bytes(b'complete previously restored unpublished dependency, zero new compilation')
+            environment = {**os.environ, 'RUNNER_TEMP': directory, 'LAYERED_CACHE': 'true'}
+            stage = subprocess.run(['bash', '-eo', 'pipefail', '-c', step(
+                'build', 'Stage native dependencies for Test')['run']], env=environment,
+                capture_output=True, text=True)
+            self.assertEqual(stage.returncode, 0, stage.stderr)
+            transfer = root / 'build-dependencies.tar.zst'
+            self.assertEqual(archive.stat().st_ino, transfer.stat().st_ino)
+            download = root / 'build-dependencies'; download.mkdir()
+            transfer.rename(download / transfer.name)
+            restored = subprocess.run(['bash', '-eo', 'pipefail', '-c', step(
+                'test_lint', "Restore this run's dependencies on cache miss")['run']],
+                env={**environment, 'LAKE_CACHE_DIR': str(root / 'native')}, capture_output=True, text=True)
+            self.assertEqual(restored.returncode, 0, restored.stderr)
+            self.assertEqual((root / 'current-dependencies.tar.zst').read_bytes(), archive.read_bytes())
+            self.assertFalse(download.exists())
+
+    def test_layered_test_fetches_sources_without_building_the_mathlib_cache_tool(self):
+        source = step('test_lint', 'Fetch pinned dependency sources without compilation')
+        self.assertEqual(source['run'], 'lake env true')
+        for layered in ('', 'true'):
+            values = {'steps.cache-mode.outputs.layered': layered,
+                      'steps.restore-cache.outcome': 'failure',
+                      'steps.restore-cache.outputs.cache-matched-key': ''}
+            self.assertEqual(condition(source['if'], values), layered == 'true')
+            self.assertEqual(condition(step('test_lint', 'Recover Mathlib dependencies on cache miss')['if'],
+                                       values), layered != 'true')
+        steps = JOBS['test_lint']['steps']
+        self.assertLess(steps.index(source), steps.index(step('test_lint', 'Apply optional Test and tool checkpoints')))
+
+    def test_optional_restores_and_public_seeds_precede_authoritative_overlays(self):
+        steps = JOBS['test_lint']['steps']
+        current_dep = step('test_lint', "Overlay this run's complete dependency closure")
+        current_root = step('test_lint', "Restore this run's native Build outputs")
+        verify = step('test_lint', 'Verify Build outputs without compilation')
+        for name in ('Apply optional Test and tool checkpoints', 'Recover Mathlib dependencies on cache miss',
+                     'Fetch pinned dependency sources without compilation'):
+            self.assertLess(steps.index(step('test_lint', name)), steps.index(current_dep))
+        for action in steps:
+            if action.get('uses', '').startswith('actions/cache/restore@'):
+                self.assertLess(steps.index(action), steps.index(current_dep))
+        self.assertLess(steps.index(current_dep), steps.index(current_root))
+        self.assertLess(steps.index(current_root), steps.index(verify))
+        self.assertIn('--layer dependencies', current_dep['run'])
+        self.assertFalse(current_dep.get('continue-on-error', False))
+        self.assertIn('--no-build --rehash', verify['run'])
+        # No old cache may overwrite verified production files later in Test.
+        for action in steps[steps.index(current_root) + 1:]:
+            self.assertNotIn('checkpoint.py restore', action.get('run', ''))
+            self.assertFalse(action.get('uses', '').startswith('actions/cache/restore@'))
+
+    def test_bad_optional_checkpoint_does_not_prevent_current_authoritative_restore(self):
+        with tempfile.TemporaryDirectory(prefix='ci-layered-optional-') as directory:
+            root = Path(directory)
+            for layer in ('root', 'tools'):
+                archive = root / f'layered-cache/{layer}.tar.zst'
+                archive.parent.mkdir(exist_ok=True)
+                archive.write_text('optional invalid archive')
+            mock = 'python3() { printf "%s\\n" "$*" >> "$TRACE"; return 17; }\n'
+            result = subprocess.run(['bash', '-eo', 'pipefail', '-c', mock + step(
+                'test_lint', 'Apply optional Test and tool checkpoints')['run']], cwd=root,
+                env={**os.environ, 'RUNNER_TEMP': directory, 'LAKE_CACHE_DIR': str(root / 'native'),
+                     'TRACE': str(root / 'trace')}, capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            calls = (root / 'trace').read_text().splitlines()
+            self.assertEqual(len(calls), 2)
+            self.assertIn('--layer root', calls[0])
+            self.assertIn('--layer tools', calls[1])
+            self.assertEqual(result.stdout.count('::warning::'), 2)
+
+    def test_both_partial_layers_save_after_failure_or_timeout_without_publication(self):
+        actions = JOBS['build']['steps']
+        quiesce = step('build', "Quiesce this job's native scopes before cache saving")
+        for layer in ('root', 'dependencies'):
+            pack = step('build', f'Pack completed {layer} checkpoint')
+            save = step('build', f'Save completed {layer} checkpoint')
+            self.assertEqual(pack['shell'], 'bash')
+            self.assertLess(actions.index(quiesce), actions.index(pack))
+            self.assertLess(actions.index(pack), actions.index(save))
+            for outcome in ('success', 'failure', 'skipped', 'cancelled'):
+                values = {'steps.cache-mode.outputs.layered': 'true', 'steps.quiesce.outcome': outcome}
+                self.assertEqual(condition(pack['if'], values, success=False, cancelled=True), outcome == 'success')
+            values = {'steps.quiesce.outcome': 'success', f'steps.pack-{layer}.outcome': 'success',
+                      'steps.pack-dependencies.outputs.changed': 'true',
+                      'steps.restore-dependencies.outputs.cache-matched-key': ''}
+            self.assertTrue(condition(save['if'], values, success=False, cancelled=True))
+            self.assertNotIn('/.lake', save['with']['path'])
+            self.assertNotIn('lake-native-cache', save['with']['path'])
+        for build in ('failure', 'cancelled', 'skipped'):
+            self.assertFalse(publish(build=build))
+        self.assertIn('rm -f "$RUNNER_TEMP/outputs.jsonl"', step('build', 'Build')['run'])
+
+    def test_dependency_baselines_use_content_generations_and_save_only_changes_or_miss(self):
+        save = step('build', 'Save completed dependencies checkpoint')
+        self.assertIn('outputs.generation', save['with']['key'])
+        self.assertNotIn('github.sha', save['with']['key'])
+        for changed in ('true', 'false'):
+            for matched in ('', 'immutable-prior-generation'):
+                values = {'steps.quiesce.outcome': 'success', 'steps.pack-dependencies.outcome': 'success',
+                          'steps.pack-dependencies.outputs.changed': changed,
+                          'steps.restore-dependencies.outputs.cache-matched-key': matched}
+                self.assertEqual(condition(save['if'], values, success=False), changed == 'true' or matched == '')
+        self.assertNotIn('Pack completed dependencies checkpoint',
+                         [action.get('name') for action in JOBS['test_lint']['steps']])
+
+    def test_root_and_tool_generations_include_attempt_and_context_without_cross_job_collision(self):
+        build_root = step('build', 'Save completed root checkpoint')['with']['key']
+        test_root = step('test_lint', 'Save completed root checkpoint')['with']['key']
+        self.assertNotEqual(build_root, test_root)
+        for job, layer in (('build', 'root'), ('test_lint', 'root'), ('test_lint', 'tools')):
+            save = step(job, f'Save completed {layer} checkpoint')
+            key = save['with']['key']
+            for context in ('github.ref', 'github.run_id', 'github.run_attempt', f'{layer}_context'):
+                self.assertIn(context, key)
+            self.assertIn('always()', save['if'])
+            pack = step(job, f'Pack completed {layer} checkpoint')
+            self.assertLess(JOBS[job]['steps'].index(step(job, "Quiesce this job's native scopes before cache saving")),
+                            JOBS[job]['steps'].index(pack))
+        tools = step('test_lint', 'Pack completed tools checkpoint')['run']
+        self.assertIn('--layer tools', tools)
+        self.assertNotIn('lake build', tools)
+        self.assertNotIn('lake lint', tools)
+
+    def test_all_layer_archives_have_context_scoped_prefixes_and_no_broad_paths(self):
+        for job in ('build', 'test_lint'):
+            for action in JOBS[job]['steps']:
+                if not action.get('name', '').startswith('Restore optional '):
+                    continue
+                self.assertTrue(action['continue-on-error'])
+                self.assertIn('_context', action['with']['key'])
+                self.assertIn('_context', action['with']['restore-keys'])
+                self.assertTrue(action['with']['path'].endswith('.tar.zst'))
+                self.assertNotIn('/.lake', action['with']['path'])
+                self.assertNotIn('lake-native-cache', action['with']['path'])
 
 
 if __name__ == '__main__':
