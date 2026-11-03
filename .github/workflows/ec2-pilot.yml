@@ -1,0 +1,79 @@
+name: EC2 runner pilot
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: aglib-ec2-pilot
+  cancel-in-progress: false
+  queue: max
+
+jobs:
+  probe:
+    if: github.repository == 'kangxyz/aglib' && github.ref == 'refs/heads/main'
+    runs-on: [self-hosted, linux, x64, aglib-ec2-pilot]
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Check host resources and native scope support
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rev-parse HEAD
+          cat /etc/os-release
+          nproc
+          free -h
+          df -h /
+          python3 -c 'import tomllib; print("Python TOML support available")'
+          gh --version
+          zstd --version
+          sudo systemd-run --scope --quiet --collect \
+            --property=MemoryMax=256M --property=MemorySwapMax=0 /bin/true
+      - name: Measure GitHub endpoints
+        shell: bash
+        run: |
+          set -euo pipefail
+          for endpoint in \
+            https://github.com/kangxyz/aglib \
+            https://api.github.com/repos/kangxyz/aglib \
+            https://raw.githubusercontent.com/kangxyz/aglib/main/lean-toolchain; do
+            for sample in 1 2 3; do
+              curl --fail --silent --show-error --location \
+                --connect-timeout 15 --max-time 60 --output /dev/null \
+                --write-out "sample=$sample endpoint=$endpoint dns=%{time_namelookup}s tls=%{time_appconnect}s first_byte=%{time_starttransfer}s total=%{time_total}s\n" \
+                "$endpoint"
+            done
+          done
+      - name: Measure a fresh repository clone
+        shell: bash
+        run: |
+          set -euo pipefail
+          time git clone --depth 1 --single-branch --branch main \
+            https://github.com/kangxyz/aglib.git "$RUNNER_TEMP/aglib-network-probe"
+          git -C "$RUNNER_TEMP/aglib-network-probe" rev-parse HEAD
+      - name: Measure a bounded Lean release download
+        shell: bash
+        run: |
+          set -euo pipefail
+          version=$(sed -n 's|^leanprover/lean4:v\([0-9][0-9.]*\)$|\1|p' lean-toolchain)
+          test -n "$version"
+          curl --fail --silent --show-error --location \
+            --connect-timeout 20 --max-time 180 --range 0-16777215 \
+            --max-filesize 16777216 --output "$RUNNER_TEMP/lean-download-probe" \
+            --write-out 'release_http=%{http_code} bytes=%{size_download} seconds=%{time_total} bytes_per_second=%{speed_download}\n' \
+            "https://github.com/leanprover/lean4/releases/download/v$version/lean-$version-linux.tar.zst"
+      - name: Resolve the package toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --location --retry 2 \
+            https://elan.lean-lang.org/elan-init.sh -o "$RUNNER_TEMP/elan-init.sh"
+          bash "$RUNNER_TEMP/elan-init.sh" -y --default-toolchain none
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lake --version
