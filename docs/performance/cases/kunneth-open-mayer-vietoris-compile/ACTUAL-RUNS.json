@@ -1,0 +1,84 @@
+{
+  "scope": "Actual unprofiled child/coherent attempts; ONLY completed compiler events. Wholecoherent-v4stillpending.",
+  "runs": [
+    {
+      "name": "bundled-rows-v3b-B",
+      "run": "remote-78724de7debc4d30a4440a1db45a6700",
+      "source_content_sha256": "4a0c3f05e9426307336e577e68b4bef514e63d87b45f766a0a20fd51e9be4891",
+      "native_exit": 0,
+      "outcome": "native_build_completed",
+      "input_drift": [],
+      "modules": [
+        {
+          "source": "/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.lean",
+          "seconds": 6.157831162214279,
+          "exit_code": 0
+        },
+        {
+          "source": "/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Rows.lean",
+          "seconds": 191.38164477050304,
+          "exit_code": 0
+        }
+      ],
+      "receipt_sha256": "24c231902a3405528c998f29caea7bb471df29543b57f3613ee0b8e477eba19d"
+    },
+    {
+      "name": "coherent-v2",
+      "run": "remote-ac2b648d12aa4500b543915aed747ae6",
+      "source_content_sha256": "02a34731c582efd6260df62b529069057b18c6a70adf167f75e42485ac41684b",
+      "native_exit": 1,
+      "outcome": "heartbeat_budget",
+      "input_drift": [],
+      "modules": [
+        {
+          "source": "/root/autodl-tmp/lean-build/workspaces/managed-5a7469b38559-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.lean",
+          "seconds": 6.8635068237781525,
+          "exit_code": 0
+        },
+        {
+          "source": "/root/autodl-tmp/lean-build/workspaces/managed-5a7469b38559-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Rows.lean",
+          "seconds": 918.5169693678617,
+          "exit_code": 0
+        },
+        {
+          "source": "/root/autodl-tmp/lean-build/workspaces/managed-5a7469b38559-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Compatibility.lean",
+          "seconds": 1200.543436050415,
+          "exit_code": 1
+        }
+      ],
+      "receipt_sha256": "2542ba79186968845bab53476d2402e67a49631c7a5d5da825d696abf2a02e79"
+    },
+    {
+      "name": "bundled-rows-v3-B",
+      "run": "remote-99aa2ad60fe14ccfb71033f0dcac6063",
+      "source_content_sha256": "101659e9dda3b9c31e9b4ef4afdaa59b8e4bad45060f44d9bcc0cb0b39364860",
+      "native_exit": 1,
+      "outcome": "heartbeat_budget",
+      "input_drift": [],
+      "modules": [
+        {
+          "source": "/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.lean",
+          "seconds": 55.933815121650696,
+          "exit_code": 1
+        }
+      ],
+      "receipt_sha256": "2aa92980712c3f00e28e747e30c3859b742e41c8e093675705d680de2d9a3e62"
+    },
+    {
+      "name": "bundled-rows-v3a-B",
+      "run": "remote-5f0b792f2acc4d54a012a07fc60a3fb9",
+      "source_content_sha256": "be2d940eb2e101eb8ed3f5ebc265c4246d09ebcabd0e4d8e63e1f24158dfad4d",
+      "native_exit": 1,
+      "outcome": "source_elaboration",
+      "input_drift": [],
+      "modules": [
+        {
+          "source": "/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.lean",
+          "seconds": 7.671538725495338,
+          "exit_code": 1
+        }
+      ],
+      "receipt_sha256": "4073e7e34bce46be1f7a6ee4abc729783f4b950ade883676634eb816d376b8df"
+    }
+  ]
+}

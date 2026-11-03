@@ -1,0 +1,48 @@
+{
+  "source": "4707aaadf9432b2050204046021f2f6214e03366e9ba64fe1458d10e069a901c",
+  "results": [
+    {
+      "question": "Locate original native Mayer-Vietoris rows/exactness/middle-map cost after generic phase.",
+      "actual_source": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean",
+      "actual_sha": "bd06444b85d5aea9ee84ec4acb54bdc385a9bd078234e7adfd3cb15e594ad3c8",
+      "probe_sha": "e70e0c6f6594c5ba38de07d4d5398c2e43c1493cee737d1ac32f1041580ce074",
+      "setup_exit": 0,
+      "completion_claim": "Real-body rows417 bounded profiler only; no whole module CPP or speedup",
+      "setup_identity": {
+        "name": "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris",
+        "moduleName": null,
+        "isModule": true,
+        "options": {
+          "autoImplicit": false,
+          "warningAsError": true,
+          "weak.linter.mathlibStandardSet": true,
+          "weak.linter.style.longFile": 1500
+        }
+      },
+      "formation_exit": 124,
+      "outcome": "diagnostic_process_bound",
+      "elapsed_s": 303.1568077355623,
+      "command": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5s",
+        "300s",
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "env",
+        "/root/autodl-tmp/lean-build/logs/remote-452a220beb3a4ac29dcb6d46795184c4/toolchain/bin/lean",
+        "/root/autodl-tmp/lean-build/logs/remote-452a220beb3a4ac29dcb6d46795184c4/probe-0/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean",
+        "--setup",
+        "/root/autodl-tmp/lean-build/logs/remote-452a220beb3a4ac29dcb6d46795184c4/probe-0/setup.json",
+        "--json",
+        "-o",
+        "/root/autodl-tmp/lean-build/logs/remote-452a220beb3a4ac29dcb6d46795184c4/probe-0/probe.olean",
+        "-i",
+        "/root/autodl-tmp/lean-build/logs/remote-452a220beb3a4ac29dcb6d46795184c4/probe-0/probe.ilean",
+        "-Dtrace.profiler=true",
+        "-Dtrace.profiler.threshold=100"
+      ]
+    }
+  ],
+  "scope": "Real-body rows417 bounded profiler only; no whole module CPP or speedup"
+}

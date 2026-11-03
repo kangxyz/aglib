@@ -1,0 +1,51 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.RestrictionValues
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.RestrictionAssembly
+
+/-! # Restriction naturality of the original mixed-open maps -/
+
+@[expose] public noncomputable section
+
+set_option backward.defeqAttrib.useBackward true
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+
+open CategoryTheory CategoryTheory.Limits CategoryTheory.Abelian
+open MonoidalCategory CartesianMonoidalCategory AlgebraicGeometry TopologicalSpace Opposite
+open AlgebraicGeometry.Scheme.OverField AlgebraicGeometry.Scheme.Modules
+open scoped TensorProduct DirectSum
+
+universe u
+
+namespace AlgebraicGeometry.Scheme.Cohomology
+
+attribute [local instance] Over.cartesianMonoidalCategory
+
+variable {k : Type u} [Field k] (X Y : FScheme k)
+
+open KunnethOpenMayerVietoris
+
+/-- The whole original mixed Künneth map commutes with restriction. -/
+theorem structureOpenKunnethMap_restriction {U V : Y.left.Opens} (i : U ⟶ V) (n : ℕ) :
+    structureOpenKunnethMap X Y U n ∘ₗ structureOpenKunnethRestriction X Y i n =
+      structureOpenRestriction (X ⊗ Y) ((Opens.map (snd X Y).left.base).map i) n ∘ₗ
+        structureOpenKunnethMap X Y V n := by
+  have hNat := fun (s : HomologicalComplex₂.TotalDegree n) =>
+    structureExternalOpenTensor_restriction X Y i s.property
+  have h := DirectSum.linearMap_naturality_of_components
+    (structureOpenKunnethRestriction X Y i n)
+    (structureOpenKunnethMap X Y V n) (structureOpenKunnethMap X Y U n)
+    (structureOpenRestriction (X ⊗ Y) ((Opens.map (snd X Y).left.base).map i) n)
+    hNat
+    (fun s z => structureOpenKunnethRestriction_lof X Y i n s z)
+    (fun s z => structureOpenKunnethMap_lof X Y V n s z)
+    (fun s z => structureOpenKunnethMap_lof X Y U n s z)
+  exact h
+
+end AlgebraicGeometry.Scheme.Cohomology

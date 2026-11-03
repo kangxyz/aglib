@@ -1,0 +1,21 @@
+{
+  "phase": "coherent-v2",
+  "source_root": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/kunneth-mayer-optimization/aglib",
+  "head": "7545acd876b4ebf73f067d532ffa75263c01e26c",
+  "baseline_source": "4707aaadf9432b2050204046021f2f6214e03366e9ba64fe1458d10e069a901c",
+  "previous_failed_child_source": "ed20f5d732d25e9e311d5a4cae4d3b03469b16108a24922054149b8c2a24e105",
+  "files": {
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.lean": "1ac309308d831a30b497131a1e24ea751bffbc7112cb54ca711dd40c5b6d71fb",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Rows.lean": "63f8d402786f680ce914adc9f6e58725db75d618087f9c62eb123d834fa6fd6f",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Compatibility.lean": "f80035be17a9a8741199b2e0f69f4b0ac8dda1cb50ce0efc151932ba73b48de0",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean": "0fc2e8ea1ff5ebdfe3efb65dd25607f0838590a1f0fb4a3bb6fc1df0e2e658fb"
+  },
+  "targets": [
+    "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris"
+  ],
+  "changes": "Repair cross-namespace visibility of the original product-family equivalence in new exposed generic definition; expose its generator law. Stable generic exactness and difference laws, native rows specializing once, compatibility uses whole restriction squares for difference, unchanged signed boundary proof, original facade now glues imported rows/squares. Eight public signatures exactly retained.",
+  "acceptance": "Incremental actual children and actual facade CPP with enabled compiler/kernel/command lint; standard native caps, keep matching old deps and successful coverage. No aggregate-entry changes or broad rebuild.",
+  "signature_correspondence": "baseline/public-signatures.json: all8 byte-identical declaration signatures under same universe u; {k:Type u}[Field k](X Y:FScheme k). No hypotheses, universes, scalar action or map changes.",
+  "sign_boundary": "Original integer-to-field Koszul law, signed tensorBoundary and twice-occurring degree-p factor cancellation unchanged, no characteristic restriction.",
+  "retained_options": "Only original3 backward-defeq settings retained in native Rows and Compatibility; generic and facade use ordinary options. No budget/linter/compiler-check option added."
+}

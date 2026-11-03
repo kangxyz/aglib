@@ -1,0 +1,46 @@
+{
+  "source": "f8f5b6d21120fa1270f26a7ef8722b6171db9b65b205d04594a15b5485c42c91",
+  "results": [
+    {
+      "question": "Restored exact-original3filelocal policy v15 actualfailure60:0 whnf200000/67.916403s still leaves statementformation/body/finalchecking unknown. Locate actual private positive-degree stages before any further repair.",
+      "actual_source": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean",
+      "actual_sha": "126fb8ffe7d749e6b1efb8e32362b3fe66c1a825286110e5ef69e9b1f2ede235",
+      "probe_sha": "108b648fb5846a1736759cc23e70bd93b07d51c630ab4b88e9cb3173dc0704fd",
+      "setup_exit": 0,
+      "completion_claim": "Necessary v15 facade stage localization only; markers are progress, no production CPP or unique phase claim",
+      "setup_identity": {
+        "name": "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris",
+        "moduleName": null,
+        "isModule": true,
+        "options": {
+          "autoImplicit": false,
+          "warningAsError": true,
+          "weak.linter.mathlibStandardSet": true,
+          "weak.linter.style.longFile": 1500
+        }
+      },
+      "formation_exit": 124,
+      "outcome": "diagnostic_process_bound",
+      "elapsed_s": 93.20321045815945,
+      "command": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5s",
+        "90s",
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "env",
+        "/root/autodl-tmp/lean-build/logs/remote-e60422af7dbf477bb3d2f5004c70558c/toolchain/bin/lean",
+        "/root/autodl-tmp/lean-build/logs/remote-e60422af7dbf477bb3d2f5004c70558c/probe-0/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean",
+        "--setup",
+        "/root/autodl-tmp/lean-build/logs/remote-e60422af7dbf477bb3d2f5004c70558c/probe-0/setup.json",
+        "--json",
+        "-o",
+        "/root/autodl-tmp/lean-build/logs/remote-e60422af7dbf477bb3d2f5004c70558c/probe-0/probe.olean",
+        "-i",
+        "/root/autodl-tmp/lean-build/logs/remote-e60422af7dbf477bb3d2f5004c70558c/probe-0/probe.ilean"
+      ]
+    }
+  ],
+  "scope": "Necessary v15 facade stage localization only; markers are progress, no production CPP or unique phase claim"
+}

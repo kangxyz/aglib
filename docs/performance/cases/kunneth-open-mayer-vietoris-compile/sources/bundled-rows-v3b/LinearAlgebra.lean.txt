@@ -1,0 +1,371 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.Algebra.Homology.Kunneth.MayerVietoris
+public import Mathlib.LinearAlgebra.TensorProduct.Prod
+public import Mathlib.Algebra.Category.ModuleCat.Biproducts
+public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
+public import Mathlib.Algebra.Homology.ExactSequence
+
+/-! # Finite-support tensor distribution for the mixed-open Mayer–Vietoris ladder -/
+
+@[expose] public noncomputable section
+
+open CategoryTheory CategoryTheory.Limits
+open scoped TensorProduct DirectSum
+
+universe u r i a b c d
+
+namespace DirectSum
+
+/-- Canonical distribution of the original finite-support product family. -/
+def prodFamilyEquiv {R : Type r} [CommRing R] {ι : Type i}
+    (A : ι → Type a) (B : ι → Type b)
+    [∀ i, AddCommGroup (A i)] [∀ i, Module R (A i)]
+    [∀ i, AddCommGroup (B i)] [∀ i, Module R (B i)] :
+    (⨁ i, A i × B i) ≃ₗ[R] (⨁ i, A i) × (⨁ i, B i) := by
+  let f := DirectSum.lmap (fun i => LinearMap.fst R (A i) (B i))
+  let g := DirectSum.lmap (fun i => LinearMap.snd R (A i) (B i))
+  let l := DirectSum.lmap (fun i => LinearMap.inl R (A i) (B i))
+  let r := DirectSum.lmap (fun i => LinearMap.inr R (A i) (B i))
+  exact {
+    toFun := fun z => (f z, g z)
+    invFun := fun z => l z.1 + r z.2
+    left_inv := by
+      intro z
+      apply DFinsupp.ext
+      intro i
+      simp [f, g, l, r, DirectSum.lmap_apply]
+    right_inv := by
+      rintro ⟨z, w⟩
+      apply Prod.ext <;> apply DFinsupp.ext <;> intro i <;>
+        simp [f, g, l, r, DirectSum.lmap_apply]
+    map_add' := fun z w => Prod.ext (f.map_add z w) (g.map_add z w)
+    map_smul' := fun c z => Prod.ext (f.map_smul c z) (g.map_smul c z) }
+
+/-- The original finite-support product distribution retains each generator. -/
+theorem prodFamilyEquiv_lof {R : Type r} [CommRing R] {ι : Type i}
+    [DecidableEq ι] (A : ι → Type a) (B : ι → Type b)
+    [∀ i, AddCommGroup (A i)] [∀ i, Module R (A i)]
+    [∀ i, AddCommGroup (B i)] [∀ i, Module R (B i)]
+    (i : ι) (x : A i) (y : B i) :
+    prodFamilyEquiv (R := R) A B (lof R ι (fun i => A i × B i) i (x, y)) =
+      (lof R ι A i x, lof R ι B i y) := by
+  change ((lmap (fun i => LinearMap.fst R (A i) (B i)))
+      (lof R ι (fun i => A i × B i) i (x, y)),
+    (lmap (fun i => LinearMap.snd R (A i) (B i)))
+      (lof R ι (fun i => A i × B i) i (x, y))) = _
+  rw [lmap_lof, lmap_lof]
+  rfl
+
+end DirectSum
+
+namespace Kunneth.MayerVietoris
+
+private theorem biprodIsoProd_hom_fst_value {R : Type r} [CommRing R]
+    (A B : ModuleCat.{u} R) (x : (A ⊞ B : ModuleCat.{u} R)) :
+    ((ModuleCat.biprodIsoProd A B).hom x).1 =
+      (biprod.fst : (A ⊞ B : ModuleCat.{u} R) ⟶ A) x := by
+  have h : (ModuleCat.biprodIsoProd A B).hom ≫
+      ModuleCat.ofHom (LinearMap.fst R A B) =
+        (biprod.fst : (A ⊞ B : ModuleCat.{u} R) ⟶ A) := by
+    rw [← ModuleCat.biprodIsoProd_inv_comp_fst, ← Category.assoc,
+      Iso.hom_inv_id, Category.id_comp]
+  exact ConcreteCategory.congr_hom h x
+
+private theorem biprodIsoProd_hom_snd_value {R : Type r} [CommRing R]
+    (A B : ModuleCat.{u} R) (x : (A ⊞ B : ModuleCat.{u} R)) :
+    ((ModuleCat.biprodIsoProd A B).hom x).2 =
+      (biprod.snd : (A ⊞ B : ModuleCat.{u} R) ⟶ B) x := by
+  have h : (ModuleCat.biprodIsoProd A B).hom ≫
+      ModuleCat.ofHom (LinearMap.snd R A B) =
+        (biprod.snd : (A ⊞ B : ModuleCat.{u} R) ⟶ B) := by
+    rw [← ModuleCat.biprodIsoProd_inv_comp_snd, ← Category.assoc,
+      Iso.hom_inv_id, Category.id_comp]
+  exact ConcreteCategory.congr_hom h x
+
+/-- The chosen biproduct comparison evaluates an original lift componentwise. -/
+theorem biprodIsoProd_lift_value {R : Type r} [CommRing R]
+    (A B C : ModuleCat.{u} R) (f : C ⟶ A) (g : C ⟶ B) (x : C) :
+    (ModuleCat.biprodIsoProd A B).hom (biprod.lift f g x) = (f x, g x) := by
+  apply Prod.ext
+  · rw [biprodIsoProd_hom_fst_value]
+    exact ConcreteCategory.congr_hom (biprod.lift_fst f g) x
+  · rw [biprodIsoProd_hom_snd_value]
+    exact ConcreteCategory.congr_hom (biprod.lift_snd f g) x
+
+private theorem biprodIsoProd_desc_value {R : Type r} [CommRing R]
+    (A B C : ModuleCat.{u} R) (f : A ⟶ C) (g : B ⟶ C) (x : A) (y : B) :
+    biprod.desc f g ((ModuleCat.biprodIsoProd A B).inv (x, y)) = f x + g y := by
+  have h : (ModuleCat.biprodIsoProd A B).inv ≫ biprod.desc f g =
+      ModuleCat.ofHom (f.hom.comp (LinearMap.fst R A B) +
+        g.hom.comp (LinearMap.snd R A B)) := by
+    rw [biprod.desc_eq, Preadditive.comp_add, ← Category.assoc,
+      ModuleCat.biprodIsoProd_inv_comp_fst, ← Category.assoc,
+      ModuleCat.biprodIsoProd_inv_comp_snd]
+    rfl
+  have hValue := ConcreteCategory.congr_hom h (x, y)
+  change biprod.desc f g ((ModuleCat.biprodIsoProd A B).inv (x, y)) =
+    f x + g y at hValue
+  exact hValue
+
+/-- The original difference desc evaluates through the inverse biproduct comparison. -/
+theorem biprodIsoProd_desc_sub_inv_value {R : Type r} [CommRing R]
+    (A B C : ModuleCat.{u} R) (f : A ⟶ C) (g : B ⟶ C) (x : A) (y : B) :
+    biprod.desc f (-g) ((ModuleCat.biprodIsoProd A B).inv (x, y)) = f x - g y := by
+  have h := biprodIsoProd_desc_value A B C f (-g) x y
+  change biprod.desc f (-g) ((ModuleCat.biprodIsoProd A B).inv (x, y)) =
+    f x + -(g y) at h
+  simpa only [sub_eq_add_neg] using h
+
+/-- The original difference desc evaluates through the forward biproduct comparison. -/
+theorem biprodIsoProd_desc_sub_hom_value {R : Type r} [CommRing R]
+    (A B C : ModuleCat.{u} R) (f : A ⟶ C) (g : B ⟶ C)
+    (y : (A ⊞ B : ModuleCat.{u} R)) :
+    biprod.desc f (-g) y = f ((ModuleCat.biprodIsoProd A B).hom y).1 -
+      g ((ModuleCat.biprodIsoProd A B).hom y).2 := by
+  have h := biprodIsoProd_desc_sub_inv_value A B C f g
+    ((ModuleCat.biprodIsoProd A B).hom y).1 ((ModuleCat.biprodIsoProd A B).hom y).2
+  simp only [Prod.mk.eta] at h
+  have hCancel := ModuleCat.inv_hom_apply (ModuleCat.biprodIsoProd A B) y
+  have hMap := congrArg (fun z => biprod.desc f (-g) z) hCancel
+  exact hMap.symm.trans h
+
+/-- The original finite-support tensor family distributes over its categorical biproducts. -/
+def tensorBiprodFamilyEquiv {R : Type r} [CommRing R]
+    (M : ℕ → Type a) [∀ p, AddCommGroup (M p)] [∀ p, Module R (M p)]
+    (A B : ℕ → ModuleCat.{u} R) (n : ℕ) :
+    Kunneth.MayerVietoris.tensorSum (R := R) M
+        (fun q => (A q ⊞ B q : ModuleCat.{u} R)) n ≃ₗ[R]
+      Kunneth.MayerVietoris.tensorSum (R := R) M (fun q => A q) n ×
+        Kunneth.MayerVietoris.tensorSum (R := R) M (fun q => B q) n :=
+  (DirectSum.congrLinearEquiv (fun s : HomologicalComplex₂.TotalDegree n =>
+    (TensorProduct.congr (LinearEquiv.refl R (M s.val.1))
+      (Iso.toLinearEquiv (ModuleCat.biprodIsoProd (A s.val.2) (B s.val.2)))).trans
+        (TensorProduct.prodRight R R (M s.val.1) (A s.val.2) (B s.val.2)))).trans
+    (DirectSum.prodFamilyEquiv
+      (fun s : HomologicalComplex₂.TotalDegree n => M s.val.1 ⊗[R] A s.val.2)
+      (fun s : HomologicalComplex₂.TotalDegree n => M s.val.1 ⊗[R] B s.val.2))
+
+/-- The distribution retains each original tensor generator. -/
+theorem tensorBiprodFamilyEquiv_lof {R : Type r} [CommRing R]
+    (M : ℕ → Type a) [∀ p, AddCommGroup (M p)] [∀ p, Module R (M p)]
+    (A B : ℕ → ModuleCat.{u} R) (n : ℕ) (s : HomologicalComplex₂.TotalDegree n)
+    (x : M s.val.1) (y : (A s.val.2 ⊞ B s.val.2 : ModuleCat.{u} R)) :
+    tensorBiprodFamilyEquiv M A B n (DirectSum.lof R _ _ s (x ⊗ₜ[R] y)) =
+      (DirectSum.lof R _ _ s (x ⊗ₜ[R]
+          ((ModuleCat.biprodIsoProd (A s.val.2) (B s.val.2)).hom y).1),
+        DirectSum.lof R _ _ s (x ⊗ₜ[R]
+          ((ModuleCat.biprodIsoProd (A s.val.2) (B s.val.2)).hom y).2)) := by
+  simp only [tensorBiprodFamilyEquiv, LinearEquiv.trans_apply,
+    DirectSum.coe_congrLinearEquiv, DirectSum.lmap_lof, LinearEquiv.coe_toLinearMap,
+    TensorProduct.congr_tmul, LinearEquiv.refl_apply, TensorProduct.prodRight_tmul,
+    DirectSum.prodFamilyEquiv_lof]
+  rfl
+
+/-- The original tensor restriction pair becomes its two component tensor maps. -/
+theorem tensorBiprodFamilyEquiv_first {R : Type r} [CommRing R]
+    (M : ℕ → Type a) [∀ p, AddCommGroup (M p)] [∀ p, Module R (M p)]
+    (A B P : ℕ → ModuleCat.{u} R) (f : ∀ q, P q ⟶ A q) (g : ∀ q, P q ⟶ B q)
+    (n : ℕ) :
+    (tensorBiprodFamilyEquiv M A B n).toLinearMap ∘ₗ
+        Kunneth.MayerVietoris.tensorMap (R := R) M
+          (fun q => (biprod.lift (f q) (g q)).hom) n =
+      (Kunneth.MayerVietoris.tensorMap (R := R) M (fun q => (f q).hom) n).prod
+        (Kunneth.MayerVietoris.tensorMap (R := R) M (fun q => (g q).hom) n) := by
+  apply DirectSum.linearMap_ext
+  intro s
+  apply TensorProduct.ext'
+  intro x y
+  have hStart := Kunneth.MayerVietoris.tensorMap_lof (R := R) M
+    (fun q => (biprod.lift (f q) (g q)).hom) n s (x ⊗ₜ[R] y)
+  simp only [LinearMap.lTensor_tmul] at hStart
+  have hStartMap := congrArg (tensorBiprodFamilyEquiv M A B n) hStart
+  have hDist := tensorBiprodFamilyEquiv_lof M A B n s x
+    (biprod.lift (f s.val.2) (g s.val.2) y)
+  have hLift := biprodIsoProd_lift_value (A s.val.2) (B s.val.2) (P s.val.2)
+    (f s.val.2) (g s.val.2) y
+  have hLiftMap := congrArg
+    (fun z : (A s.val.2) × (B s.val.2) =>
+      (DirectSum.lof R (HomologicalComplex₂.TotalDegree n)
+          (fun t => M t.val.1 ⊗[R] A t.val.2) s (x ⊗ₜ[R] z.1),
+        DirectSum.lof R (HomologicalComplex₂.TotalDegree n)
+          (fun t => M t.val.1 ⊗[R] B t.val.2) s (x ⊗ₜ[R] z.2))) hLift
+  have hLeft := hStartMap.trans (hDist.trans hLiftMap)
+  have hF := Kunneth.MayerVietoris.tensorMap_lof (R := R) M
+    (fun q => (f q).hom) n s (x ⊗ₜ[R] y)
+  have hG := Kunneth.MayerVietoris.tensorMap_lof (R := R) M
+    (fun q => (g q).hom) n s (x ⊗ₜ[R] y)
+  simp only [LinearMap.lTensor_tmul] at hF hG
+  have hRight := congrArg₂ Prod.mk hF hG
+  have hFinal := hLeft.trans hRight.symm
+  simp only [LinearMap.comp_apply, LinearEquiv.coe_toLinearMap,
+    LinearMap.prod_apply, Function.prod_apply] at hFinal ⊢
+  exact hFinal
+
+end Kunneth.MayerVietoris
+
+namespace Kunneth.MayerVietoris
+
+
+/-- Extract the three exact pairs before specializing the six actual module objects. -/
+theorem functionExact_mk5 {R : Type r} [CommRing R]
+    {A B C D E F : ModuleCat.{u} R}
+    (f : A ⟶ B) (g : B ⟶ C) (δ : C ⟶ D) (f' : D ⟶ E) (g' : E ⟶ F)
+    (h : (ComposableArrows.mk₅ f g δ f' g').Exact) :
+    Function.Exact f.hom g.hom ∧ Function.Exact g.hom δ.hom ∧
+      Function.Exact δ.hom f'.hom := by
+  let S := ComposableArrows.mk₅ f g δ f' g'
+  have exact_pair (T : ShortComplex (ModuleCat.{u} R)) (hT : T.Exact) :
+      Function.Exact T.f.hom T.g.hom :=
+    LinearMap.exact_iff.mpr
+      ((ShortComplex.moduleCat_exact_iff_range_eq_ker T).mp hT).symm
+  exact ⟨exact_pair (S.sc h.toIsComplex 0 (by omega)) (h.exact 0 (by omega)),
+    exact_pair (S.sc h.toIsComplex 1 (by omega)) (h.exact 1 (by omega)),
+    exact_pair (S.sc h.toIsComplex 2 (by omega)) (h.exact 2 (by omega))⟩
+
+/-- The original tensor difference map distributes over the fixed biproduct equivalence. -/
+theorem tensorBiprodFamilyEquiv_second {R : Type r} [CommRing R]
+    (M : ℕ → Type a) [∀ p, AddCommGroup (M p)] [∀ p, Module R (M p)]
+    (A B C : ℕ → ModuleCat.{u} R) (f : ∀ q, A q ⟶ C q) (g : ∀ q, B q ⟶ C q)
+    (n : ℕ) :
+    Kunneth.MayerVietoris.tensorMap (R := R) M
+        (fun q => (biprod.desc (f q) (-(g q))).hom) n =
+      ((Kunneth.MayerVietoris.tensorMap (R := R) M (fun q => (f q).hom) n).comp
+          (LinearMap.fst R _ _) -
+        (Kunneth.MayerVietoris.tensorMap (R := R) M (fun q => (g q).hom) n).comp
+          (LinearMap.snd R _ _)).comp (tensorBiprodFamilyEquiv M A B n).toLinearMap := by
+  apply DirectSum.linearMap_ext
+  intro s
+  apply TensorProduct.ext'
+  intro x y
+  have hValue := biprodIsoProd_desc_sub_hom_value
+    (A s.val.2) (B s.val.2) (C s.val.2) (f s.val.2) (g s.val.2) y
+  have h := congrArg
+    (fun z => DirectSum.lof R (HomologicalComplex₂.TotalDegree n)
+      (fun t => M t.val.1 ⊗[R] C t.val.2) s (x ⊗ₜ[R] z)) hValue
+  simp only [TensorProduct.tmul_sub, map_sub] at h
+  simpa only [LinearMap.comp_apply, LinearMap.sub_apply, LinearEquiv.coe_toLinearMap,
+    tensorBiprodFamilyEquiv_lof, LinearMap.fst_apply, LinearMap.snd_apply,
+    Kunneth.MayerVietoris.tensorMap_lof, LinearMap.lTensor_tmul] using h
+
+/-- A whole difference square follows from its two original component squares. -/
+theorem biprod_difference_square {R : Type r} [CommRing R]
+    {D : Type d} {P : Type a} {Q : Type b} {L : Type c}
+    [AddCommGroup D] [Module R D] [AddCommGroup P] [Module R P]
+    [AddCommGroup Q] [Module R Q] [AddCommGroup L] [Module R L]
+    (A B C : ModuleCat.{u} R) (e : D ≃ₗ[R] P × Q)
+    (f : P →ₗ[R] A) (g : Q →ₗ[R] B) (h : L →ₗ[R] C)
+    (a : P →ₗ[R] L) (b : Q →ₗ[R] L) (r : A ⟶ C) (s : B ⟶ C)
+    (j : D →ₗ[R] L)
+    (hj : j = (a.comp (LinearMap.fst R P Q) -
+      b.comp (LinearMap.snd R P Q)).comp e.toLinearMap)
+    (ha : h.comp a = r.hom.comp f) (hb : h.comp b = s.hom.comp g) :
+    (biprod.desc r (-s)).hom.comp
+        ((Iso.toLinearEquiv (ModuleCat.biprodIsoProd A B)).symm.toLinearMap.comp
+          ((LinearMap.prodMap f g).comp e.toLinearMap)) =
+      h.comp j := by
+  apply LinearMap.ext
+  intro z
+  have hLeft := biprodIsoProd_desc_sub_inv_value A B C r s (f (e z).1) (g (e z).2)
+  have hA := LinearMap.congr_fun ha (e z).1
+  have hB := LinearMap.congr_fun hb (e z).2
+  have hRight := congrArg h (LinearMap.congr_fun hj z)
+  simp only [LinearMap.comp_apply, LinearMap.sub_apply, LinearEquiv.coe_toLinearMap,
+    LinearMap.fst_apply, LinearMap.snd_apply, map_sub] at hRight
+  exact hLeft.trans ((congrArg₂ (· - ·) hA.symm hB.symm).trans hRight.symm)
+
+
+/-- Construct the original coordinate map while retaining both original module families. -/
+def tensorModuleMap {R : Type r} [CommRing R]
+    (M : ℕ → ModuleCat.{a} R) (A B : ℕ → ModuleCat.{b} R)
+    (f : ∀ q, A q ⟶ B q) (n : ℕ) :
+    tensorSum (R := R) (fun p => M p) (fun q => A q) n →ₗ[R]
+      tensorSum (R := R) (fun p => M p) (fun q => B q) n :=
+  tensorMap (R := R) (fun p => M p) (fun q => (f q).hom) n
+
+/-- The original degree-zero map is injective through its native module arrow. -/
+theorem tensorModuleMap_zero_injective {R : Type r} [CommRing R]
+    (M : ℕ → ModuleCat.{a} R) [∀ p, Module.Flat R (M p)]
+    (A B : ℕ → ModuleCat.{b} R) (f : ∀ q, A q ⟶ B q)
+    (hzero : Function.Injective (f 0)) :
+    Function.Injective (tensorModuleMap M A B f 0) :=
+  tensorMap_zero_injective (R := R) (A := fun q => A q) (B := fun q => B q)
+    (fun p => M p) (fun q => (f q).hom) hzero
+
+/-- Flat original first modules preserve the complete original pair of native arrows. -/
+theorem tensorModuleMap_exact {R : Type r} [CommRing R]
+    (M : ℕ → ModuleCat.{a} R) [∀ p, Module.Flat R (M p)]
+    (A B C : ℕ → ModuleCat.{b} R) (f : ∀ q, A q ⟶ B q) (g : ∀ q, B q ⟶ C q)
+    (h : ∀ q, Function.Exact (f q).hom (g q).hom) (n : ℕ) :
+    Function.Exact (tensorModuleMap M A B f n) (tensorModuleMap M B C g n) :=
+  tensorMap_exact (R := R) (A := fun q => A q) (B := fun q => B q)
+    (C := fun q => C q)
+    (fun p => M p) (fun q => (f q).hom)
+    (fun q => (g q).hom) h n
+
+/-- The original tensor difference image is the original signed boundary kernel. -/
+theorem tensorModuleMap_boundary_exact {R : Type r} [CommRing R]
+    (M : ℕ → ModuleCat.{a} R) [∀ p, Module.Flat R (M p)]
+    (A B C : ℕ → ModuleCat.{b} R) (f : ∀ q, A q ⟶ B q)
+    (δ : ∀ q, B q ⟶ C (q + 1))
+    (h : ∀ q, Function.Exact (f q).hom (δ q).hom) (n : ℕ) :
+    Function.Exact (tensorModuleMap M A B f n)
+      (tensorBoundary (R := R) (A := fun q => B q) (B := fun q => C q)
+        (fun p => M p) (fun q => (δ q).hom) n) :=
+  tensorMap_tensorBoundary_exact (R := R) (A := fun q => A q) (B := fun q => B q)
+    (C := fun q => C q)
+    (fun p => M p)
+    (fun q => (f q).hom) (fun q => (δ q).hom) h n
+
+/-- The unchanged signed boundary image is the next original coordinate-map kernel. -/
+theorem boundary_tensorModuleMap_exact {R : Type r} [CommRing R]
+    (M : ℕ → ModuleCat.{a} R) [∀ p, Module.Flat R (M p)]
+    (A B C : ℕ → ModuleCat.{b} R) (δ : ∀ q, A q ⟶ B (q + 1))
+    (f : ∀ q, B q ⟶ C q)
+    (h : ∀ q, Function.Exact (δ q).hom (f (q + 1)).hom)
+    (hzero : Function.Injective (f 0)) (n : ℕ) :
+    Function.Exact
+      (tensorBoundary (R := R) (A := fun q => A q) (B := fun q => B q)
+        (fun p => M p) (fun q => (δ q).hom) n)
+      (tensorModuleMap M B C f (n + 1)) :=
+  tensorBoundary_tensorMap_exact (R := R) (A := fun q => A q) (B := fun q => B q)
+    (C := fun q => C q)
+    (fun p => M p)
+    (fun q => (δ q).hom) (fun q => (f q).hom) h hzero n
+
+/-- Distribute the same original tensor family before specializing either module family. -/
+def tensorModuleBiprodEquiv {R : Type r} [CommRing R]
+    (M : ℕ → ModuleCat.{a} R) (A B : ℕ → ModuleCat.{b} R) (n : ℕ) :
+    tensorSum (R := R) (fun p => M p)
+        (fun q => (A q ⊞ B q : ModuleCat.{b} R)) n ≃ₗ[R]
+      tensorSum (R := R) (fun p => M p) (fun q => A q) n ×
+        tensorSum (R := R) (fun p => M p) (fun q => B q) n :=
+  tensorBiprodFamilyEquiv (fun p => M p) A B n
+
+/-- The complete original restriction pair commutes with the chosen distribution. -/
+theorem tensorModuleBiprodEquiv_first {R : Type r} [CommRing R]
+    (M : ℕ → ModuleCat.{a} R) (A B P : ℕ → ModuleCat.{b} R)
+    (f : ∀ q, P q ⟶ A q) (g : ∀ q, P q ⟶ B q) (n : ℕ) :
+    (tensorModuleBiprodEquiv M A B n).toLinearMap.comp
+        (tensorModuleMap M P (fun q => (A q ⊞ B q : ModuleCat.{b} R))
+          (fun q => biprod.lift (f q) (g q)) n) =
+      (tensorModuleMap M P A f n).prod (tensorModuleMap M P B g n) :=
+  tensorBiprodFamilyEquiv_first (fun p => M p) A B P f g n
+
+/-- The complete original difference map commutes with the same chosen distribution. -/
+theorem tensorModuleBiprodEquiv_second {R : Type r} [CommRing R]
+    (M : ℕ → ModuleCat.{a} R) (A B C : ℕ → ModuleCat.{b} R)
+    (f : ∀ q, A q ⟶ C q) (g : ∀ q, B q ⟶ C q) (n : ℕ) :
+    tensorModuleMap M (fun q => (A q ⊞ B q : ModuleCat.{b} R)) C
+        (fun q => biprod.desc (f q) (-(g q))) n =
+      ((tensorModuleMap M A C f n).comp (LinearMap.fst R _ _) -
+        (tensorModuleMap M B C g n).comp (LinearMap.snd R _ _)).comp
+          (tensorModuleBiprodEquiv M A B n).toLinearMap :=
+  tensorBiprodFamilyEquiv_second (fun p => M p) A B C f g n
+
+end Kunneth.MayerVietoris

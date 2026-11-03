@@ -6,12 +6,12 @@ Authors: kangxyz
 module
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.AffineTrace
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.Restriction
-public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.Sections
-public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.Descent
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.SeparatedSections
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.SeparatedDescent
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.CoefficientMap
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.AffineModel
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.Residue
-public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.Local
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.SeparatedLocal
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.Gluing
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.Pullback
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.Affine
@@ -19,8 +19,8 @@ public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Locality
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Tensor
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Pullback
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Projection.Amplitude
-public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.Restriction
-public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.Naturality
+public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.SeparatedRestriction
+public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.SeparatedNaturality
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Restriction.Composition
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.Gluing
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.Affine.Locality
@@ -159,10 +159,10 @@ private def standardAffineTraceIso (R : Type u) [CommRing R] (ι : Type u)
   let := projectiveTopDifferentialCoefficients_isQuasicoherent R ι n e N
   let : ((((Scheme.Modules.pushforward (toSpec R ι)).rightDerived n).obj
       ((relativeTopDifferentialCoefficientsFunctor (toSpec R ι) n).obj N))).IsQuasicoherent :=
-    moduleHigherDirectImage_isQuasicoherent (toSpec R ι)
+    moduleHigherDirectImageAffine_isQuasicoherent_of_isSeparated (toSpec R ι)
       ((relativeTopDifferentialCoefficientsFunctor (toSpec R ι) n).obj N) n
   exact affineTraceModuleIso
-    ((moduleHigherDirectImageAffineSectionsLinearEquiv (toSpec R ι) _
+    ((moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated (toSpec R ι) _
       (injectiveResolution _) n).trans
         (projectiveAffineDifferentialTraceLinearEquiv R ι n e N)).toModuleIso
 private def standardAffineTraceHom (R : Type u) [CommRing R] (ι : Type u)
@@ -181,7 +181,7 @@ private theorem standardAffineTraceIso_sections (R : Type u) [CommRing R] (ι : 
     (n : ℕ) (e : ι ≃ Fin (n + 1)) (N : (Spec (.of R)).Modules) [N.IsQuasicoherent] :
     letI : Fintype ι := Fintype.ofEquiv (Fin (n + 1)) e.symm
     letI := projectiveTopDifferentialCoefficients_isQuasicoherent R ι n e N
-    affineTraceSectionsEquation (toSpec R ι)
+    affineTraceSectionsEquation_of_isSeparated (toSpec R ι)
       ((relativeTopDifferentialCoefficientsFunctor (toSpec R ι) n).obj N) N n
       (standardAffineTraceIso R ι n e N).hom
       (fun c => projectiveAffineDifferentialTraceLinearEquiv R ι n e N c) := by
@@ -190,8 +190,8 @@ private theorem standardAffineTraceIso_sections (R : Type u) [CommRing R] (ι : 
   intro x
   let M := (relativeTopDifferentialCoefficientsFunctor (toSpec R ι) n).obj N
   let : (((Scheme.Modules.pushforward (toSpec R ι)).rightDerived n).obj M).IsQuasicoherent :=
-    moduleHigherDirectImage_isQuasicoherent (toSpec R ι) M n
-  let E := ((moduleHigherDirectImageAffineSectionsLinearEquiv (toSpec R ι) M
+    moduleHigherDirectImageAffine_isQuasicoherent_of_isSeparated (toSpec R ι) M n
+  let E := ((moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated (toSpec R ι) M
     (injectiveResolution M) n).trans
       (projectiveAffineDifferentialTraceLinearEquiv R ι n e N)).toModuleIso
   change moduleSpecΓFunctor.map (affineTraceModuleIso E).hom x = E.hom x
@@ -200,14 +200,14 @@ private theorem standardAffineTraceHom_sections (R : Type u) [CommRing R] (ι : 
     (n : ℕ) (e : ι ≃ Fin (n + 1)) (N : (Spec (.of R)).Modules) [N.IsQuasicoherent] :
     letI : Fintype ι := Fintype.ofEquiv (Fin (n + 1)) e.symm
     letI := projectiveTopDifferentialCoefficients_isQuasicoherent R ι n e N
-    affineTraceSectionsEquation (toSpec R ι)
+    affineTraceSectionsEquation_of_isSeparated (toSpec R ι)
       ((relativeTopDifferentialCoefficientsFunctor (toSpec R ι) n).obj N) N n
       (standardAffineTraceHom R ι n e N)
       (fun c => projectiveAffineDifferentialTraceLinearEquiv R ι n e N c) := by
   let : Fintype ι := Fintype.ofEquiv (Fin (n + 1)) e.symm
   let := projectiveTopDifferentialCoefficients_isQuasicoherent R ι n e N
   exact (congrArg
-    (fun k => affineTraceSectionsEquation (toSpec R ι)
+    (fun k => affineTraceSectionsEquation_of_isSeparated (toSpec R ι)
       ((relativeTopDifferentialCoefficientsFunctor (toSpec R ι) n).obj N) N n k
       (fun c => projectiveAffineDifferentialTraceLinearEquiv R ι n e N c))
     (standardAffineTraceHom_eq R ι n e N)).mpr
@@ -224,7 +224,7 @@ private theorem standardAffineTraceIso_naturality (R : Type u) [CommRing R] (ι 
   let := projectiveTopDifferentialCoefficients_isQuasicoherent R ι n e N
   let := projectiveTopDifferentialCoefficients_isQuasicoherent R ι n e N'
   let : ((relativeHigherFunctor (toSpec R ι) n).obj N).IsQuasicoherent :=
-    moduleHigherDirectImage_isQuasicoherent (toSpec R ι)
+    moduleHigherDirectImageAffine_isQuasicoherent_of_isSeparated (toSpec R ι)
       ((relativeTopDifferentialCoefficientsFunctor (toSpec R ι) n).obj N) n
   apply affineHom_ext
   ext x
@@ -234,7 +234,7 @@ private theorem standardAffineTraceIso_naturality (R : Type u) [CommRing R] (ι 
   have h₀ := standardAffineTraceIso_sections R ι n e N x
   change _ = _ at h₁ h₀
   erw [h₁, h₀]
-  have hn := moduleHigherDirectImageAffineSectionsLinearEquiv_naturality (toSpec R ι)
+  have hn := moduleHigherDirectImageAffineSectionsLinearEquiv_naturality_of_isSeparated (toSpec R ι)
     (injectiveResolution ((relativeTopDifferentialCoefficientsFunctor (toSpec R ι) n).obj N))
     (injectiveResolution ((relativeTopDifferentialCoefficientsFunctor (toSpec R ι) n).obj N'))
     (v := (relativeTopDifferentialCoefficientsFunctor (toSpec R ι) n).map s) n x
@@ -314,7 +314,7 @@ private theorem relativeHigherRestrictionHom_of_raw_square
 private theorem affineTraceRestriction_of_equations
     {R A : Type u} [CommRing R] [CommRing A] {X W : Scheme.{u}}
     (i : W ⟶ X) (q : W ⟶ Spec (.of A)) (p : X ⟶ Spec (.of R)) (σ : R →+* A)
-    [QuasiCompact p] [QuasiSeparated p] [QuasiCompact q] [QuasiSeparated q]
+    [QuasiCompact p] [IsSeparated p] [QuasiCompact q] [IsSeparated q]
     [IsOpenImmersion i] [IsOpenImmersion (Spec.map (CommRingCat.ofHom σ))]
     (H : IsPullback i q p (Spec.map (CommRingCat.ofHom σ)))
     (M : X.Modules) [M.IsQuasicoherent] (M' : W.Modules) [M'.IsQuasicoherent]
@@ -329,19 +329,20 @@ private theorem affineTraceRestriction_of_equations
     (τA : Sheaf.H.{u + 1} (moduleAddSheaf W M') n →
       moduleSpecΓFunctor.obj
         ((Modules.restrictFunctor (Spec.map (CommRingCat.ofHom σ))).obj N))
-    (htR : affineTraceSectionsEquation p M N n tR τR)
-    (htA : affineTraceSectionsEquation q M'
+    (htR : affineTraceSectionsEquation_of_isSeparated p M N n tR τR)
+    (htA : affineTraceSectionsEquation_of_isSeparated q M'
       ((Modules.restrictFunctor (Spec.map (CommRingCat.ofHom σ))).obj N) n tA τA)
     (hopen : ∀ c, τA (moduleCohomologyMapAlong i β n c) =
       affineUnitSections (Spec.map (CommRingCat.ofHom σ)) N (τR c)) :
     rawTraceRestrictionSquare i q p (Spec.map (CommRingCat.ofHom σ)) H
       M M' N n C tR tA :=
-  affineTraceRestriction_of_sections i q p σ H M M' N n C β hβ tR tA τR τA htR htA hopen
+  affineTraceRestriction_of_sections_of_isSeparated
+    i q p σ H M M' N n C β hβ tR tA τR τA htR htA hopen
 
 private theorem affineTraceRestriction_of_coefficientEquation
     {R A : Type u} [CommRing R] [CommRing A] {X W : Scheme.{u}}
     (i : W ⟶ X) (q : W ⟶ Spec (.of A)) (p : X ⟶ Spec (.of R)) (σ : R →+* A)
-    [QuasiCompact p] [QuasiSeparated p] [QuasiCompact q] [QuasiSeparated q]
+    [QuasiCompact p] [IsSeparated p] [QuasiCompact q] [IsSeparated q]
     [IsOpenImmersion i] [IsOpenImmersion (Spec.map (CommRingCat.ofHom σ))]
     (H : IsPullback i q p (Spec.map (CommRingCat.ofHom σ)))
     (F : (Spec (.of R)).Modules ⥤ X.Modules)
@@ -365,8 +366,8 @@ private theorem affineTraceRestriction_of_coefficientEquation
       (G.obj ((Modules.restrictFunctor (Spec.map (CommRingCat.ofHom σ))).obj N))) n →
         moduleSpecΓFunctor.obj
           ((Modules.restrictFunctor (Spec.map (CommRingCat.ofHom σ))).obj N))
-    (htR : affineTraceSectionsEquation p (F.obj N) N n tR τR)
-    (htA : affineTraceSectionsEquation q
+    (htR : affineTraceSectionsEquation_of_isSeparated p (F.obj N) N n tR τR)
+    (htA : affineTraceSectionsEquation_of_isSeparated q
       (G.obj ((Modules.restrictFunctor (Spec.map (CommRingCat.ofHom σ))).obj N))
       ((Modules.restrictFunctor (Spec.map (CommRingCat.ofHom σ))).obj N) n tA τA)
     (hopen : ∀ c, τA (moduleCohomologyMapAlong i b n c) =
@@ -528,14 +529,14 @@ private theorem affineRelativeTraceHom_sections
     (n : ℕ) (e : ι ≃ Fin (n + 1)) (N : (Spec (.of A)).Modules) [N.IsQuasicoherent] :
     letI : Fintype ι := Fintype.ofEquiv (Fin (n + 1)) e.symm
     letI := projectiveTopDifferentialCoefficients_isQuasicoherent A ι n e N
-    traceModelSectionsEquation (toSpec A ι) (relativeHigherFunctor p n)
+    traceModelSectionsEquation_of_isSeparated (toSpec A ι) (relativeHigherFunctor p n)
       (relativeTopDifferentialCoefficientsFunctor (toSpec A ι) n) n
       (affineModelHigherIso R ι a p f h n) N
       (fun c => projectiveAffineDifferentialTraceLinearEquiv A ι n e N c)
       (affineRelativeTraceHom R ι a p f h n e N) := by
   let : Fintype ι := Fintype.ofEquiv (Fin (n + 1)) e.symm
   let := projectiveTopDifferentialCoefficients_isQuasicoherent A ι n e N
-  exact traceModelSections_of_standard (toSpec A ι) (relativeHigherFunctor p n)
+  exact traceModelSections_of_standard_of_isSeparated (toSpec A ι) (relativeHigherFunctor p n)
     (relativeTopDifferentialCoefficientsFunctor (toSpec A ι) n) n
     (affineModelHigherIso R ι a p f h n) N (standardAffineTraceIso A ι n e N)
     (fun c => projectiveAffineDifferentialTraceLinearEquiv A ι n e N c)
@@ -752,7 +753,7 @@ private theorem relativeAffineTraceLocal_sections (n : ℕ) (e : ι ≃ Fin (n +
     (N : Y.Modules) [N.IsQuasicoherent] :
     letI : Fintype ι := Fintype.ofEquiv (Fin (n + 1)) e.symm
     letI := projectiveTopDifferentialCoefficients_isQuasicoherent A ι n e (N.restrict j)
-    traceLocalSectionsEquation (toSpec A ι)
+    traceLocalSectionsEquation_of_isSeparated (toSpec A ι)
       (relativeTopDifferentialCoefficientsFunctor p n)
       ((Scheme.Modules.pushforward p).rightDerived n) (Modules.restrictFunctor j)
       (relativeTopDifferentialCoefficientsFunctor (pullback.snd p j) n)
@@ -766,7 +767,7 @@ private theorem relativeAffineTraceLocal_sections (n : ℕ) (e : ι ≃ Fin (n +
       (relativeAffineTraceLocal R ι a p f h n e j N) := by
   let : Fintype ι := Fintype.ofEquiv (Fin (n + 1)) e.symm
   let := projectiveTopDifferentialCoefficients_isQuasicoherent A ι n e (N.restrict j)
-  exact traceLocalSections_of_model (toSpec A ι)
+  exact traceLocalSections_of_model_of_isSeparated (toSpec A ι)
     (relativeTopDifferentialCoefficientsFunctor p n)
     ((Scheme.Modules.pushforward p).rightDerived n) (Modules.restrictFunctor j)
     (relativeTopDifferentialCoefficientsFunctor (pullback.snd p j) n)
@@ -1082,7 +1083,8 @@ theorem relativeProjectiveHigherTrace_affine [Y.IsSeparated]
     moduleSpecΓFunctor.map ((Modules.restrictFunctor j).map
       (relativeProjectiveHigherTrace R ι a p f h n e N)) x =
     projectiveAffineDifferentialTraceLinearEquiv A ι n e (N.restrict j)
-      (moduleHigherDirectImageAffineSectionsLinearEquiv (toSpec A ι) _ (injectiveResolution _) n
+      (moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated
+        (toSpec A ι) _ (injectiveResolution _) n
         (moduleSpecΓFunctor.map (relativeProjectiveAffineHigherIso R ι a p f h n j N).hom x)) := by
   cases A with
   | of A =>
@@ -1090,7 +1092,7 @@ theorem relativeProjectiveHigherTrace_affine [Y.IsSeparated]
     let := projectiveTopDifferentialCoefficients_isQuasicoherent A ι n e (N.restrict j)
     rw [relativeProjectiveHigherTrace_restrict]
     have hx := relativeAffineTraceLocal_sections R ι a p f h n e j N
-    dsimp -proj only [traceLocalSectionsEquation] at hx
+    dsimp -proj only [traceLocalSectionsEquation_of_isSeparated] at hx
     have hx' := hx x
     exact hx'
 /-- The original normalized trace on the actual derived differential-coefficient image. -/
@@ -1246,7 +1248,8 @@ theorem relativeProjectiveTrace_affine [Y.IsSeparated]
           (relativeProjectiveTrace R ι a p f h n e N) ≫
         (DerivedCategory.singleFunctorCompHomologyFunctorIso Y.Modules (n : ℤ)).hom.app N)) x =
       projectiveAffineDifferentialTraceLinearEquiv A ι n e (N.restrict j)
-        (moduleHigherDirectImageAffineSectionsLinearEquiv (toSpec A ι) _ (injectiveResolution _) n
+        (moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated
+          (toSpec A ι) _ (injectiveResolution _) n
           (moduleSpecΓFunctor.map
             (relativeProjectiveAffineHigherIso R ι a p f h n j N).hom x)) := by
   let : Fintype ι := Fintype.ofEquiv (Fin (n + 1)) e.symm

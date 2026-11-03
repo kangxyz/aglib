@@ -1,0 +1,101 @@
+/-
+Copyright (c) 2026 algebraic-geometry contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.SeparatedCohomology
+public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.CounitNaturality
+
+/-!
+# Original affine higher-image comparison and coefficient naturality
+
+The actual counit homology comparison is natural for the original complex
+maps. Native resolution lifts therefore give the original coefficient map
+under the affine higher-image and cohomology comparisons. All objects and
+structural actions remain the original ones.
+-/
+
+@[expose] public section
+
+noncomputable section
+
+set_option backward.defeqAttrib.useBackward true
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+
+open CategoryTheory CategoryTheory.Limits CategoryTheory.Abelian HomologicalComplex
+open AlgebraicGeometry TopologicalSpace Opposite
+
+namespace AlgebraicGeometry.Scheme.Cohomology
+
+universe u w
+
+variable {R : Type u} [CommRing R] {X : Scheme.{u}}
+  (f : X ⟶ Spec (CommRingCat.of R)) [QuasiCompact f] [IsSeparated f]
+  {M N : X.Modules} [M.IsQuasicoherent] [N.IsQuasicoherent]
+  (I : InjectiveResolution M) (J : InjectiveResolution N)
+  {v : M ⟶ N} (φ : InjectiveResolution.Hom I J v)
+
+attribute [local instance] affineCoefficientDerived
+
+/-- Derived-single sections through the same original counit constructor. -/
+def moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_of_isSeparated
+    (M : X.Modules) [M.IsQuasicoherent]
+    (I : InjectiveResolution M) (n : ℕ) :
+    let α := f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom
+    letI := moduleCohomologyModuleOfHom X α M n
+    moduleSpecΓFunctor.obj
+      ((DerivedCategory.Plus.homologyFunctor (Spec (CommRingCat.of R)).Modules (n : ℤ)).obj
+        ((Scheme.Modules.pushforward f).rightDerivedFunctorPlus.obj
+          ((DerivedCategory.Plus.singleFunctor X.Modules 0).obj M))) ≃ₗ[R]
+      Sheaf.H.{u + 1} (moduleAddSheaf X M) n :=
+  moduleDerivedPushforwardSingleAffineSectionsLinearEquivOfCounitQuasiIso f M I
+    (moduleResolutionPushforwardTildeCounit_quasiIso_of_isSeparated f M I) n
+
+/-- Naturality of the original comparison, using its original counit witness. -/
+@[reassoc]
+theorem moduleHigherDirectImageAffineIso_hom_naturality_of_isSeparated (n : ℕ) :
+    ((Scheme.Modules.pushforward f).rightDerived n).map v ≫
+        (moduleHigherDirectImageAffineIso_of_isSeparated f N J n).hom =
+      (moduleHigherDirectImageAffineIso_of_isSeparated f M I n).hom ≫
+        (tilde.functor (CommRingCat.of R)).map
+          (homologyMap ((moduleSpecΓFunctor.mapHomologicalComplex (.up ℤ)).map
+            (((Scheme.Modules.pushforward f).mapHomologicalComplex (.up ℤ)).map φ.hom'))
+              (n : ℤ)) :=
+  moduleHigherDirectImageAffineIso_hom_naturality_of_counit_quasiIso f I J
+    (moduleResolutionPushforwardTildeCounit_quasiIso_of_isSeparated f M I)
+    (moduleResolutionPushforwardTildeCounit_quasiIso_of_isSeparated f N J) φ n
+
+/-- Naturality of the original comparison, using its original counit witness. -/
+theorem moduleHigherDirectImageAffineSectionsLinearEquiv_naturality_of_isSeparated (n : ℕ)
+    (x : moduleSpecΓFunctor.obj (((Scheme.Modules.pushforward f).rightDerived n).obj M)) :
+    moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated f N J n
+        (moduleSpecΓFunctor.map (((Scheme.Modules.pushforward f).rightDerived n).map v) x) =
+      moduleCohomologyMapOfHom X
+        (f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom) v n
+        (moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated f M I n x) :=
+  moduleHigherDirectImageAffineSectionsLinearEquiv_naturality_of_counit_quasiIso f I J
+    (moduleResolutionPushforwardTildeCounit_quasiIso_of_isSeparated f M I)
+    (moduleResolutionPushforwardTildeCounit_quasiIso_of_isSeparated f N J) n x
+
+/-- Naturality of the original comparison, using its original counit witness. -/
+theorem moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_naturality_of_isSeparated (n : ℕ)
+    (x : moduleSpecΓFunctor.obj
+      ((DerivedCategory.Plus.homologyFunctor (Spec (CommRingCat.of R)).Modules (n : ℤ)).obj
+        ((Scheme.Modules.pushforward f).rightDerivedFunctorPlus.obj
+          ((DerivedCategory.Plus.singleFunctor X.Modules 0).obj M)))) :
+    moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_of_isSeparated f N J n
+        (moduleSpecΓFunctor.map
+          ((DerivedCategory.Plus.homologyFunctor (Spec (CommRingCat.of R)).Modules (n : ℤ)).map
+            ((Scheme.Modules.pushforward f).rightDerivedFunctorPlus.map
+              ((DerivedCategory.Plus.singleFunctor X.Modules 0).map v))) x) =
+      moduleCohomologyMapOfHom X
+        (f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom) v n
+        (moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_of_isSeparated f M I n x) :=
+  moduleDerivedPushforwardSingleAffineSectionsLinearEquiv_naturality_of_counit_quasiIso f I J
+    (moduleResolutionPushforwardTildeCounit_quasiIso_of_isSeparated f M I)
+    (moduleResolutionPushforwardTildeCounit_quasiIso_of_isSeparated f N J) n x
+
+end AlgebraicGeometry.Scheme.Cohomology

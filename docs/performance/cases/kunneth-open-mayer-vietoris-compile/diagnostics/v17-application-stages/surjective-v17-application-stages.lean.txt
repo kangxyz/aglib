@@ -1,0 +1,147 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.Compatibility
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.GluingFour
+
+/-!
+# The original positive-degree union map
+
+The original native rows, restrictions, difference maps and twice-occurring degree-p
+Koszul sign are assembled into the same unsigned target ladder in every characteristic.
+-/
+
+@[expose] public noncomputable section
+
+set_option backward.defeqAttrib.useBackward true
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+
+open CategoryTheory CategoryTheory.Limits CategoryTheory.Abelian
+open MonoidalCategory CartesianMonoidalCategory AlgebraicGeometry TopologicalSpace Opposite
+open AlgebraicGeometry.Scheme.OverField AlgebraicGeometry.Scheme.Modules
+open scoped TensorProduct DirectSum
+
+universe u
+
+namespace AlgebraicGeometry.Scheme.Cohomology
+
+attribute [local instance] Over.cartesianMonoidalCategory
+
+variable {k : Type u} [Field k] (X Y : FScheme k)
+
+open KunnethOpenMayerVietoris
+
+namespace KunnethOpenMayerVietoris
+
+run_cmd do
+  let markerPath := (← IO.getEnv "R5_MAYER_MARKER_FILE").getD ""
+  IO.FS.withFile (System.FilePath.mk markerPath) .append fun out => do
+    out.putStr "MAYER_PHASE BEFORE_SURJ\n"
+    out.flush
+
+/-- The original positive-degree union map is surjective by the right four-lemma argument. -/
+theorem structureOpenKunnethMap_surjective_sup_succ (U V : Y.left.Opens) (n : ℕ)
+    (hIntersection : Function.Surjective (structureOpenKunnethMap X Y (U ⊓ V) n))
+    (hMiddleNext : Function.Surjective (structureOpenMVMiddleMap X Y U V (n + 1)))
+    (hIntersectionNext : Function.Injective
+      (structureOpenKunnethMap X Y (U ⊓ V) (n + 1))) :
+    Function.Surjective (structureOpenKunnethMap X Y (U ⊔ V) (n + 1)) := by
+  run_tac do
+    let markerPath := (← IO.getEnv "R5_MAYER_MARKER_FILE").getD ""
+    IO.FS.withFile (System.FilePath.mk markerPath) .append fun out => do
+      out.putStr "MAYER_PHASE PROOF_ENTRY\n"
+      out.flush
+  let M := structureOriginalFirstModule X
+  let P := structureOpenModule Y
+  let B := fun q => (P U q ⊞ P V q : ModuleCat.{u + 1} k)
+  run_tac do
+    let markerPath := (← IO.getEnv "R5_MAYER_MARKER_FILE").getD ""
+    IO.FS.withFile (System.FilePath.mk markerPath) .append fun out => do
+      out.putStr "MAYER_PHASE BEFORE_OBJECTS\n"
+      out.flush
+  have hObjects := Kunneth.MayerVietoris.moduleFourLemmaSurjective
+    (Kunneth.MayerVietoris.tensorModuleSum M (P (U ⊓ V)) n)
+    (Kunneth.MayerVietoris.tensorModuleSum M (P (U ⊔ V)) (n + 1))
+    (Kunneth.MayerVietoris.tensorModuleSum M B (n + 1))
+    (Kunneth.MayerVietoris.tensorModuleSum M (P (U ⊓ V)) (n + 1))
+    (structureOpenModule (X ⊗ Y)
+      (((snd X Y).left ⁻¹ᵁ U) ⊓ ((snd X Y).left ⁻¹ᵁ V)) n)
+    (structureOpenModule (X ⊗ Y)
+      (((snd X Y).left ⁻¹ᵁ U) ⊔ ((snd X Y).left ⁻¹ᵁ V)) (n + 1))
+    (structureOpenModule (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U) (n + 1) ⊞
+      structureOpenModule (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ V) (n + 1))
+    (structureOpenModule (X ⊗ Y)
+      (((snd X Y).left ⁻¹ᵁ U) ⊓ ((snd X Y).left ⁻¹ᵁ V)) (n + 1))
+  run_tac do
+    let markerPath := (← IO.getEnv "R5_MAYER_MARKER_FILE").getD ""
+    IO.FS.withFile (System.FilePath.mk markerPath) .append fun out => do
+      out.putStr "MAYER_PHASE AFTER_OBJECTS\n"
+      out.flush
+  have hMaps := hObjects
+    (Kunneth.MayerVietoris.tensorBoundary (R := k) (structureCohomology k X)
+      (fun q => structureOpenMayerVietorisDelta Y U V q) n)
+    (structureOpenKunnethMVFirst X Y U V (n + 1))
+    (structureOpenKunnethMVSecond X Y U V (n + 1))
+    (structureOpenMayerVietorisDelta (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U)
+      ((snd X Y).left ⁻¹ᵁ V) n)
+    (structureOpenMVFirst (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U)
+      ((snd X Y).left ⁻¹ᵁ V) (n + 1))
+    (structureOpenMVSecond (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U)
+      ((snd X Y).left ⁻¹ᵁ V) (n + 1))
+    (structureOpenKunnethMap X Y (U ⊓ V) n)
+    (structureOpenKunnethMap X Y (U ⊔ V) (n + 1))
+    (structureOpenMVMiddleMap X Y U V (n + 1))
+    (structureOpenKunnethMap X Y (U ⊓ V) (n + 1))
+  run_tac do
+    let markerPath := (← IO.getEnv "R5_MAYER_MARKER_FILE").getD ""
+    IO.FS.withFile (System.FilePath.mk markerPath) .append fun out => do
+      out.putStr "MAYER_PHASE AFTER_MAPS\n"
+      out.flush
+  have hSquares := hMaps
+    (structureOpenKunnethMap_boundary X Y U V n).symm
+    (structureOpenKunnethMV_first_square X Y U V (n + 1))
+    (structureOpenKunnethMV_second_square X Y U V (n + 1))
+  run_tac do
+    let markerPath := (← IO.getEnv "R5_MAYER_MARKER_FILE").getD ""
+    IO.FS.withFile (System.FilePath.mk markerPath) .append fun out => do
+      out.putStr "MAYER_PHASE AFTER_SQUARES\n"
+      out.flush
+  have hExact := hSquares
+    (structureOpenKunnethMV_exact_first X Y U V (n + 1))
+    (structureOpenMV_exact_third (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U)
+      ((snd X Y).left ⁻¹ᵁ V) n)
+    (structureOpenMV_exact_first (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U)
+      ((snd X Y).left ⁻¹ᵁ V) (n + 1))
+  run_tac do
+    let markerPath := (← IO.getEnv "R5_MAYER_MARKER_FILE").getD ""
+    IO.FS.withFile (System.FilePath.mk markerPath) .append fun out => do
+      out.putStr "MAYER_PHASE AFTER_EXACTNESS\n"
+      out.flush
+  have hResult := hExact
+    hIntersection hMiddleNext hIntersectionNext
+  run_tac do
+    let markerPath := (← IO.getEnv "R5_MAYER_MARKER_FILE").getD ""
+    IO.FS.withFile (System.FilePath.mk markerPath) .append fun out => do
+      out.putStr "MAYER_PHASE AFTER_SIDE_FACTS\n"
+      out.flush
+  exact hResult
+  run_tac do
+    let markerPath := (← IO.getEnv "R5_MAYER_MARKER_FILE").getD ""
+    IO.FS.withFile (System.FilePath.mk markerPath) .append fun out => do
+      out.putStr "MAYER_PHASE AFTER_EXACT\n"
+      out.flush
+
+run_cmd do
+  let markerPath := (← IO.getEnv "R5_MAYER_MARKER_FILE").getD ""
+  IO.FS.withFile (System.FilePath.mk markerPath) .append fun out => do
+    out.putStr "MAYER_PHASE AFTER_DECL\n"
+    out.flush
+
+end KunnethOpenMayerVietoris
+
+end AlgebraicGeometry.Scheme.Cohomology

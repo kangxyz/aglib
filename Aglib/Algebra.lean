@@ -766,6 +766,7 @@ public import Aglib.Algebra.Homology.ShortComplex.LocalizationPullback
 public import Aglib.Algebra.Homology.ShortComplex.LocalizationPullbackComplex
 public import Aglib.Algebra.Homology.ShortComplex.MapHomology
 public import Aglib.Algebra.Homology.ShortComplex.MapHomology.Components
+public import Aglib.Algebra.Homology.ShortComplex.MappedPairIso
 public import Aglib.Algebra.Homology.ShortComplex.ModuleQuasiIso
 public import Aglib.Algebra.Homology.ShortComplex.ProductSequence
 public import Aglib.Algebra.Homology.ShortComplex.Regular

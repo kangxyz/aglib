@@ -1,0 +1,108 @@
+Independent ordinary affected review — final affine higher-stage candidate
+
+Verdict: ACCEPT final f94e43ca02bf427be2a016f4b0602789e01ba0fcf70e02f9eaa72fa332dc7edd.
+No new mathematical obligation was found. This reconciles the original 8a26
+assignment and the seven-binding follow-up in the same independent review.
+It is not CPP, performance, status or whole-integration acceptance; final native
+validation remains with the operator.
+
+AffineEtaleHigherDegree#AffineEtaleHigherFieldStage — ACCEPT as a transparent
+statement of the full original output. For the specified fields k,L, map r:V->Spec L,
+f:V->T, original coefficient M and class c, unfolding gives EXACTLY
+  E = separableClosure L (finiteField L (AlgebraicClosure L) s),
+  E finite over k,
+  Spec.algebraMap L E ; Spec.algebraMap k L etale,
+  cohomologyPullback (pullback.fst r (Spec.algebraMap L E) ; f) M q c = 0.
+The L-action is the existing E.algebra/Algebra.toModule. The k-action is explicitly
+restriction along the ORIGINAL k->L->E maps. For a in k and x in E it is
+(algebraMap L E (algebraMap k L a))*x. This is the canonical original tower action,
+not an action through an ambient SeparableClosure k or a new field embedding.
+The producer's IsScalarTower proof is rfl for this same composite map.
+No field/closure, Spec map, tensor/cohomology model, record or input certificate
+is replaced. The predicate retains every finite/etale/class-zero clause.
+
+AffineEtaleHigherDegree#exists_affine_finiteEtaleField_killing_coefficient_higher
+(private) — ACCEPT under its explicit finite/etale k->L, affine nonempty smooth
+relative-dimension-one geometrically connected V/L, finite constant coefficient,
+positive invertible annihilator, q>=2 and original presentation d,beta,hd inputs.
+It applies the unchanged affine constant producer7230 ONCE to the same V,r,A,d
+and obtains the same selected s, maximal L-separable E, finiteness over L,
+etaleness over L and constantRestriction zero. Module.Finite.trans gives
+finiteness over k using the specified composite action, and the two original
+etale field maps compose. CoefficientCompositeZero8229 receives the SAME
+pullback.fst r (Spec.algebraMap L E), f, M, c, d, beta, hd and returned hs. Its
+conclusion is exactly the literal original composite zero. The source Ext world
+eX remains independent of the standard u+2 coefficient/target worlds.
+
+AffineEtaleHigherDegree#exists_affine_finiteEtaleField_killing_bounded_higher
+— ACCEPT the original mathematical conclusion at final f94. For arbitrary field
+k, nonempty affine U/k smooth of relative dimension one and geometrically
+connected, F on Spec k killed by n>0 invertible in k, q>=2, and the original
+standard-u+2 class c, the internally produced finite Galois L and finite set s
+supply precisely the three unfolded claims above, with
+r=pullback.snd p (Spec.algebraMap k L),
+f=pullback.fst p (Spec.algebraMap k L), M=(inverseImage p).obj F.
+Both field stages and the original composite pullback are retained. This is a
+per-class finite-etale field refinement, not pointed neighborhood effacement,
+a uniform zero of the entire cohomology group, or smooth base change.
+
+Native premise discharge and correspondence
+
+All original public input hypotheses are byte-identical to accepted c517.
+The full @Fields.exists_finiteGalois_constant_class application and its witness
+extraction are also byte-identical: same k,F,n,hn,hF,U,p,q,c and standard u+2
+source/target instances. The same B structures, L,t,d,hd, constant trivialization,
+coefficient arrow a' and mapped unit hunitL are retained.
+
+The private producer's inputs are NOT new public assumptions. The produced
+finite-Galois L supplies finite k/L and the same finiteFieldCover etale map.
+V is the ORIGINAL pullback and r/f its original projections. Smooth relative
+dimension one is transported by the existing stable-base-change witness on that
+actual pullback. Its geometric connectedness and the nonempty one-point field
+base give the displayed ConnectedSpace, hence Nonempty V; affineness is preserved
+by this base change. These are the already accepted sibling witnesses, now
+supplied explicitly, not a new geometry certificate. All remaining group,
+annihilator, degree and presentation inputs are exactly the producer's originals.
+
+Unfolding the public Stage application restores the old E/field-map/zero formula.
+The source text is not byte-identical to c517: it adds an explicit canonical
+k-action and factors the whole conclusion through Stage. The selected field,
+L-action and composite base embedding remain the originals, with no new model
+or public premise. The predicate is a transparent def with the complete literal
+conjunction; neither its truth nor any zero is assumed by the public theorem.
+
+Follow-up identity
+
+Initial reviewed candidate:
+8a26d5fbd6a737b40f5b5e83370ccbdf70651a453d7b114b5743db307ead52ba.
+Final candidate:
+f94e43ca02bf427be2a016f4b0602789e01ba0fcf70e02f9eaa72fa332dc7edd.
+The exact delta is seven PROOF-local typed letI->let bindings. Their values are
+identical: E.algebra, both Algebra.toModule selections, the composite k-algebra,
+the rfl tower proof, hfinite and hetale. This includes data-valued Algebra/Module
+bindings, not just propositions; the data themselves are unchanged. The Stage
+predicate and every statement are byte-identical between 8a and f94. No global
+instance is registered. No additional review cycle or proof change is inferred
+from the style repair.
+
+Exact input/evidence boundary
+
+Actual CI:
+/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-generic-pullback-20261101
+HEAD: 6564f1ad588229d833b2cf87102237e7a4b32bfb.
+Source: Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.lean.
+Prior accepted input: c5177efa4a023b3eee7984e721e57998b02d3ef1054dd81767d62f3b1f11e885.
+
+identity-01.json contains the frozen complete 8a and final f94 source texts,
+actual packet hashes, source guards, retained review identity and exact relevant
+supplier hashes. Suppliers7230/555d/8229/043a/99bc and pinned Mathlib d13 match
+their existing boundaries. Only the two assigned review files were written;
+no source, compiler/test, kernel/client job, Git mutation or broader model/
+architecture review was performed. Final guards found no drift.
+
+The old c517 failure, the uncompleted ef1e statement-only probe and 8a's style-
+failed execution remain on their actual sources and scopes. None is CPP for
+f94, and no speedup or unique compiler cause is claimed. Prior Bidual f934
+acceptance is untouched and is not re-issued here. No earlier mathematical
+conclusion is retracted. Remaining new mathematical obligation in final f94:
+none; actual final CPP remains operator-owned.

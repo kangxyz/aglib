@@ -62,7 +62,7 @@ theorem relativeProjectiveHigherTrace_isIso_affine
   let : W.IsQuasicoherent :=
     projectiveTopDifferentialCoefficients_isQuasicoherent A ι n e (N.restrict (𝟙 (Spec A)))
   let E₁ := relativeProjectiveAffineHigherIso R ι a p f h n (𝟙 (Spec A)) N
-  let E₂ := moduleHigherDirectImageAffineSectionsLinearEquiv (toSpec A ι) W
+  let E₂ := moduleHigherDirectImageAffineSectionsLinearEquiv_of_isSeparated (toSpec A ι) W
     (injectiveResolution W) n
   let E₃ := projectiveAffineDifferentialTraceLinearEquiv A ι n e (N.restrict (𝟙 (Spec A)))
   have ht : (fun x => moduleSpecΓFunctor.map (J.map t) x) =

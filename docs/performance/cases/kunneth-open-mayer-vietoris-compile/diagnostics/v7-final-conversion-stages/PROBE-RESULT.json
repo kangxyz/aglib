@@ -1,0 +1,46 @@
+{
+  "source": "3c571cac2825f26ad1835b6484d7241284d1007833bcfb2859e73d9ba21ad2eb",
+  "results": [
+    {
+      "question": "v7 actual Restriction failed whnf200000 at declaration34:0 after48.174841s. Which actual source/tactic stages reach after hNat, generic equation, exact and declaration? Distinguish remaining component application from final declaration checking before next repair.",
+      "actual_source": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Restriction.lean",
+      "actual_sha": "446f7325cc3cbaae94c82fb09d98f27ae9614a7db93334ed7e3afb2db630a0ef",
+      "probe_sha": "792672da6154546f5195c710a9d00f3f4b1313f7e1fdf72954f9be3294ef26cc",
+      "setup_exit": 0,
+      "completion_claim": "Real-body changed Rows-v2 v4-original-public-prelude-file-markers bounded diagnostic only; no whole module CPP or speedup",
+      "setup_identity": {
+        "name": "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.Restriction",
+        "moduleName": null,
+        "isModule": true,
+        "options": {
+          "autoImplicit": false,
+          "warningAsError": true,
+          "weak.linter.mathlibStandardSet": true,
+          "weak.linter.style.longFile": 1500
+        }
+      },
+      "formation_exit": 1,
+      "outcome": "diagnostic_returned_nonzero",
+      "elapsed_s": 55.74241963028908,
+      "command": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5s",
+        "90s",
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "env",
+        "/root/autodl-tmp/lean-build/logs/remote-ad3d45e787db4fb5b50826db8aa6d2ed/toolchain/bin/lean",
+        "/root/autodl-tmp/lean-build/logs/remote-ad3d45e787db4fb5b50826db8aa6d2ed/probe-0/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Restriction.lean",
+        "--setup",
+        "/root/autodl-tmp/lean-build/logs/remote-ad3d45e787db4fb5b50826db8aa6d2ed/probe-0/setup.json",
+        "--json",
+        "-o",
+        "/root/autodl-tmp/lean-build/logs/remote-ad3d45e787db4fb5b50826db8aa6d2ed/probe-0/probe.olean",
+        "-i",
+        "/root/autodl-tmp/lean-build/logs/remote-ad3d45e787db4fb5b50826db8aa6d2ed/probe-0/probe.ilean"
+      ]
+    }
+  ],
+  "scope": "Real-body changed Rows-v2 v4-original-public-prelude-file-markers bounded diagnostic only; no whole module CPP or speedup"
+}

@@ -1,0 +1,23 @@
+{
+  "phase": "core-file-marker-control-v2",
+  "scratch_source_path": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/kunneth-mayer-optimization/probes/core-file-marker-control-v2.lean",
+  "scratch_source_sha256": "735e16464d7b34d0e5cdeeab6723c1f2c976e201a8ece2d7773055ef677387ac",
+  "probe_source": "/- Core-only run-owned append/flush observability control. -/\nmodule\npublic import Lean\n\nrun_cmd do\n  let markerPath := (\u2190 IO.getEnv \"R5_MAYER_MARKER_FILE\").getD \"\"\n  IO.FS.withFile (System.FilePath.mk markerPath) .append fun out => do\n    out.putStr \"MAYER_PHASE CORE_FILE_ENTRY_CONTROL\\n\"\n    out.flush\n\n/-- The file-observability control proves only True. -/\npublic theorem coreFileMarkerControl : True := True.intro\n",
+  "question": "Core literal control passed but stdout was captured in JSON severity information. Verify one root-authorized independent append+flush path before a long mathematical prefix.",
+  "evidence_boundary": "Tiny core IO control ONLY; no mathematical proof or import coverage. Do not rerun successful core1ebd. No profiler/Expr rendering/options changes.",
+  "command_flags": [
+    "--json",
+    "-j4",
+    "-M12800"
+  ],
+  "process_bound_seconds": 30,
+  "precondition": "Run once after current actual import32b8 as part of observability repair. Use native core-only setup/importLean only; NOT Compatibility setup.",
+  "runtime_environment": {
+    "R5_MAYER_MARKER_FILE": "Native must set this to a fresh absolute path inside this run-owned log directory outside source; record exact path and require absent/empty before launch."
+  },
+  "acceptance": "Actual compiler-start, exit0, and exact file content MAYER_PHASE CORE_FILE_ENTRY_CONTROL newline. Capture raw JSON and file bytes. This checks file observation only; command reachability does not identify kernel/proof phase.",
+  "outputs": "run-relative scratch only; native owns the marker file",
+  "pinned_api_source": "/Users/kang/.elan/toolchains/leanprover--lean4---v4.34.1/src/lean/Init/System/IO.lean",
+  "pinned_api_locators": "Handle.flush826; Handle.putStr869; IO.getEnv951; IO.FS.withFile970",
+  "repair": "Pre-execution source correction only: avoid polymorphic throw in CommandElabM; mandatory native environment/path guard supplies the nonempty absolute filename. Missing environment would fail IO opening empty path. Replaces pending aa86; do not run both."
+}

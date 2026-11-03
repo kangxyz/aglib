@@ -1,0 +1,379 @@
+{
+  "action": "phase",
+  "actor_executable": "/root/miniconda3/bin/python3.12",
+  "admission": {
+    "ceilings": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+    "final_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-00a6eb86a338410f812e62d182aed14d": 1,
+        "/root/autodl-tmp/lean-build/logs/remote-aa74903ca2674564a55489dcfe4bb88b": 8
+      },
+      "cpu_cores": 10.56308881429676,
+      "cpu_usage_usec": 2883926760916,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 10468982784,
+      "memory_current_bytes": 80509882368,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 0.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 59173769216
+    },
+    "initial_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-00a6eb86a338410f812e62d182aed14d": 1,
+        "/root/autodl-tmp/lean-build/logs/remote-aa74903ca2674564a55489dcfe4bb88b": 8
+      },
+      "cpu_cores": 9.180240894686687,
+      "cpu_usage_usec": 2883784096240,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 11005853696,
+      "memory_current_bytes": 79972675584,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 1.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 58642866176
+    },
+    "max_frontends_if_alone": 8,
+    "mode": "elastic"
+  },
+  "allow_library_roots": false,
+  "cache_provenance": {
+    "configuration_sha256": {
+      "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+      "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852"
+    },
+    "environment": {
+      "LAKE_ARTIFACT_CACHE": "true",
+      "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+      "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+    },
+    "lookup": "native Lake traces/artifact cache; no per-dependency prior-hit claim"
+  },
+  "cgroup_average_cpu_cores": 12.47298386584427,
+  "cgroup_cpu_after": {
+    "nr_periods": 10875407,
+    "nr_throttled": 32119,
+    "system_usec": 231395435381,
+    "throttled_usec": 378038456,
+    "usage_usec": 2883926765671,
+    "user_usec": 2652531330289
+  },
+  "cgroup_cpu_attribution": "whole observed cgroup; may include unrelated activity",
+  "cgroup_cpu_before": {
+    "nr_periods": 10875292,
+    "nr_throttled": 32119,
+    "system_usec": 231385543160,
+    "throttled_usec": 378038456,
+    "usage_usec": 2883784119559,
+    "user_usec": 2652398576398
+  },
+  "cgroup_cpu_seconds_delta": 142.646112,
+  "cgroup_memory_events_after": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_before": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_delta": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "command": [
+    "/root/miniconda3/bin/python3.12",
+    "-c",
+    "D={'run': 'remote-0be71bc4f99c45aba9c63a473b195d18', 'source': 'da5468373c5919a7e853287becb38b3a3158ffae70e7b7a9d4a555050eca4a8f', 'specs': [{'phase': 'root-core-only-marker-control-first', 'scratch_source_path': '/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/kunneth-mayer-optimization/probes/core-marker-control.lean', 'scratch_source_sha256': '906127b97972de94c5a7450aeb229677e62678b5a8e0d4c74717db85f37952fa', 'probe_source': '/- Core-only stdout-observability control, not a mathematical proof probe. -/\\nmodule\\npublic import Lean\\n\\nrun_cmd do\\n  let now \u2190 IO.monoMsNow\\n  let out \u2190 IO.getStdout\\n  out.putStr (\"MAYER_PHASE CORE_ENTRY_CONTROL \" + toString now + \"\\\\n\")\\n  out.flush\\n\\n/-- The logging control proves only True. -/\\npublic theorem coreMarkerControl : True := True.intro\\n', 'question': 'ROOTrequires firstcore-onlycontrol underSAME managedwrapper/loggingpath, NOcohomologyimports, tovalidatecompilerstart andobservableputStr+flush beforeactualCompatibilityimports control.', 'evidence_boundary': 'CoreLean4.34.1 IO/logging control ONLY; no Compatibility/proof/source/CPPcoverage. HeaderimportLeanONLY; DO NOT reuseCompatibility--setup/importArts because itloadscohomology. Usefreshcore-onlysetup orrecordednativeLeaninvocationwithno--setup, samewrapper/caps/json/logcapture. Compiler-start evidence mandatory; submission/0output aloneisnotphaseevidence.', 'command_flags': ['--json', '-j4', '-M12800'], 'process_bound_seconds': 30, 'outputs': 'run-relative scratchonly', 'precondition': 'RunSEQUENTIALLY BEFORE pendingactual-imports5706. Ifalready-runningimportscontrol, preserveitactualbasisandreturn; no duplicatevariants. SameBwrapper/loggingpath, no dependencybuilds.'}, {'phase': 'earlier-import-and-marker-control', 'actual_source_path': 'Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Compatibility.lean', 'actual_source_sha256': '93938f45f138efaafd558067aea0bbb8dc612445fefd3b5bd8af1df69477aab9', 'qualified_root': 'Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.Compatibility', 'scratch_source_path': '/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/kunneth-mayer-optimization/probes/compat-v4-import-marker-control.lean', 'scratch_source_sha256': '5706b6748a4367dabdb6013c807c1556a78ca197c718bd3998c79f4026ff2e1a', 'probe_source': '/-\\nCopyright (c) 2026 Aglib contributors. All rights reserved.\\nReleased under Apache 2.0 license as described in the file LICENSE.\\nAuthors: kangxyz\\n-/\\nmodule\\n\\npublic import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.Rows\\n\\n/- NONPRODUCTION marker/import control only; no Mayer\u2013Vietoris proof is asserted. -/\\nrun_cmd do\\n  let now \u2190 IO.monoMsNow\\n  let out \u2190 IO.getStdout\\n  out.putStr (\"MAYER_PHASE ENTRY_CONTROL \" + toString now + \"\\\\n\")\\n  out.flush\\n\\n/-- The control fixture proves only True. -/\\npublic theorem markerImportControl : True := True.intro\\n', 'question': 'Marked2f7 gavegenuine0stdout: withSAME imports/setup, doesENTRYimmediatelyafterimports executeandflush beforeANY math/context declarations? Validatemarkerpathandimportcost beforeinterpreting absence.', 'evidence_boundary': 'UNPROFILED NONPRODUCTION imports/marker control only. Sameactualv4Compatibilitysetup/importRows440/Linear566; no originalmathproof assertions, no newmodel/premise/productionchanges. TruefixtureonlyavoidsprivateModulelinter. No proofcoverage/performanceconclusionaboutcommonSourceEq. DirectputStr+flush, plainNatclock. 60s processbound; ifmarkerabsent butcontrolcloses0, stdoutpathmaybecaptured; iftimeout, import/controlboundarynotisolated.', 'command_flags': ['--json', '-j4', '-M12800'], 'process_bound_seconds': 60, 'precondition': 'ONEearlierpacketafterterminalmarked2f7; allothermathvariantsheld. SameBcachedcurrentproviders/no rebuild/resync. PleaseincludeactualRows/Linearartifactfilesizesasreadonlycontextifimport/controltimesout, not a new build.', 'outputs': 'runrelative scratch only', 'marker_api_source': 'https://raw.githubusercontent.com/leanprover/lean4/v4.34.1/src/Init/System/IO.lean', 'marker_api_locators': 'monoMsNow371; FS.Stream630-656; getStdout673'}]}\nfrom pathlib import Path\nimport os,json,hashlib,subprocess,time,sys\nw=Path.cwd();out=Path(os.environ['LEAN']).parents[2];m=json.loads((w.parent/'SOURCE.json').read_text());assert m['content_sha256']==D['source'];results=[]\nfor i,s in enumerate(D['specs']):\n d=out/('control-'+str(i));d.mkdir();f=d/('CoreMarkerControl.lean'if i==0 else'Compatibility.lean');f.write_text(s['probe_source']);assert hashlib.sha256(f.read_bytes()).hexdigest()==s['scratch_source_sha256'];t=time.monotonic();row={'question':s['question'],'probe_sha':s['scratch_source_sha256']}\n cmd=['timeout','--signal=TERM','--kill-after=5s',str(s['process_bound_seconds'])+'s',os.environ['LAKE'],'--no-build','env',os.environ['LEAN'],str(f),'--json','-j4','-M12800','-o',str(d/'control.olean'),'-i',str(d/'control.ilean')]\n if i==0:cmd += ['--root='+str(d)];row['setup_kind']='Recorded native invocation, import Lean ONLY, NO setup/importArts from Compatibility'\n else:\n  assert hashlib.sha256((w/s['actual_source_path']).read_bytes()).hexdigest()==s['actual_source_sha256'];q=subprocess.run([os.environ['LAKE'],'--no-build','setup-file',s['actual_source_path']],capture_output=True,text=True);row['setup_exit']=q.returncode;(d/'setup-stderr-1.log').write_text(q.stderr)\n  if q.returncode:row.update(outcome='matching_imports_unavailable',elapsed_s=time.monotonic()-t);results.append(row);break\n  a=json.loads(q.stdout);assert a.get('name')==s['qualified_root']and a.get('isModule')is True;(d/'setup-1.json').write_text(q.stdout);cmd += ['--setup',str(d/'setup-1.json')];row['setup_kind']='Fresh actual Compatibility939 setup with current566/440 providers'\n with(d/('stdout-'+str(i)+'.log')).open('w')as stream:r=subprocess.run(cmd,stdout=stream,stderr=subprocess.STDOUT)\n row.update(exit_code=r.returncode,elapsed_s=time.monotonic()-t,command=cmd);results.append(row);print(json.dumps(row),flush=True);(out/'CONTROL-PARTIAL.json').write_text(json.dumps({'source':D['source'],'results':results},indent=2))\n(out/'CONTROL-RESULT.json').write_text(json.dumps({'source':D['source'],'results':results,'boundary':'Ordered observability controls only; actual compiler starts/events required, no math CPP/phase attribution from missing output'},indent=2));sys.exit(0 if len(results)==2 and all(r.get('exit_code')==0 for r in results)else 1)\n"
+  ],
+  "command_exit_code": 1,
+  "compiler_exit_codes": [
+    1,
+    1
+  ],
+  "compiler_failed": 2,
+  "compiler_invocations": 2,
+  "compiler_observation": "wrapper-events-only",
+  "compiler_scope_lease_modes": {
+    "supervisor-only": 2
+  },
+  "compiler_scope_policy": "workspace descriptors or verified live supervisor; each compiler inherits its elastic claim",
+  "compiler_succeeded": 0,
+  "concurrency_basis": "compiler wrapper start/finish intervals, each holding one slot",
+  "diagnostics": {
+    "categories": {},
+    "first": [],
+    "observed_missing_count": 0,
+    "observed_missing_prefixes": {},
+    "observed_missing_prefixes_truncated": false,
+    "observed_missing_shortlist": []
+  },
+  "elapsed_seconds": 11.4364063590765,
+  "environment": {
+    "ELAN_HOME": "/root/autodl-tmp/lean-build/elan",
+    "LAKE_ARTIFACT_CACHE": "true",
+    "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+    "LAKE_OVERRIDE_LEAN": "1",
+    "LEAN_NUM_THREADS": "8",
+    "LEAN_SYSROOT": "/root/autodl-tmp/lean-build/logs/remote-0be71bc4f99c45aba9c63a473b195d18/toolchain",
+    "R5_LEAN_REMOTE_PROFILE": "{\"jobs\": 8, \"lean\": \"/root/autodl-tmp/lean-build/logs/remote-0be71bc4f99c45aba9c63a473b195d18/toolchain/bin/lean\", \"lean_memory_mib\": 12800, \"rss_limit_mib\": 65536, \"schema_version\": 1, \"threads\": 4}",
+    "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+  },
+  "exit_code": 1,
+  "expected_source": "da5468373c5919a7e853287becb38b3a3158ffae70e7b7a9d4a555050eca4a8f",
+  "failure_reason": null,
+  "finished_at": "2026-11-02T19:54:38.642237+00:00",
+  "forbid_compilation": false,
+  "forced_kill": false,
+  "git_head": null,
+  "group_closed": true,
+  "incomplete_compiler_events": 0,
+  "input_drift": [],
+  "input_sha256": {
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Compatibility.lean": "93938f45f138efaafd558067aea0bbb8dc612445fefd3b5bd8af1df69477aab9",
+    "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+    "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+  },
+  "lock_acquired_at": "2026-11-02T19:54:27.095531+00:00",
+  "locks": {
+    "cache_fetch_exclusive": null,
+    "legacy_shared_gate": "/root/autodl-tmp/lean-build/build.lock",
+    "workspace_exclusive": "/root/autodl-tmp/lean-build/locks/workspace-00a94ce7aa0bae8d259e921ec7f299f453ba66e862ccc46f20a9a7a8f474cc03.lock"
+  },
+  "lowest_disk_free_bytes": 15455539200,
+  "modules": [
+    "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.Compatibility"
+  ],
+  "operation_id": null,
+  "outcome": "execution_failure",
+  "peak_compiler_concurrency": 1,
+  "peak_rss_bytes": 2627194880,
+  "pgid": 813352,
+  "phase_executable_sha256": "0c05a22b0b180580a76437114a95cf138f67c8f46245acad26017c803b42b8c1",
+  "phase_label": "ordered-core-then-actual-import-controls",
+  "pins": {
+    "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+    "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+    "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+  },
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 8,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536,
+    "threads": 4
+  },
+  "resource_accounting": {
+    "global": "sampled cgroup memory/CPU, startup and growth credits; no peak-envelope reservation",
+    "isolation": "cooperative sampled admission; no per-run kernel memory isolation or OOM guarantee",
+    "run": "frontend/job/thread ceilings, sampled owned-tree RSS cutoff, own-tree pressure retreat"
+  },
+  "resources": {
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "cgroup": "/sys/fs/cgroup",
+    "cgroup_limits": [
+      {
+        "cpu.max": "3200000 100000",
+        "memory.max": "128849018880",
+        "path": "/sys/fs/cgroup"
+      }
+    ],
+    "effective_cpus": 32.0,
+    "memory_bytes": 128849018880
+  },
+  "run_dir": "/root/autodl-tmp/lean-build/logs/remote-0be71bc4f99c45aba9c63a473b195d18",
+  "sampled_process_average_cpu_cores": 0.9784542144324087,
+  "sampled_process_cpu_seconds": 11.19,
+  "schema_version": 1,
+  "setup_cleanup": {
+    "removed_setup_bytes": 0,
+    "removed_setup_files": 0
+  },
+  "source_content_sha256": "da5468373c5919a7e853287becb38b3a3158ffae70e7b7a9d4a555050eca4a8f",
+  "source_receipt_sha256": "38a0e04de8b6ae13762b87cdbd0828ed1bcaac787b252fcea5a96a7fe75bbc8f",
+  "started_at": "2026-11-02T19:54:26.462161+00:00",
+  "status": "failed",
+  "summary": {
+    "action": "phase",
+    "admission": {
+      "affinity_cpus": null,
+      "ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 65536,
+        "threads": 4
+      },
+      "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+      "final_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-00a6eb86a338410f812e62d182aed14d": 1,
+          "/root/autodl-tmp/lean-build/logs/remote-aa74903ca2674564a55489dcfe4bb88b": 8
+        },
+        "cpu_cores": 10.56308881429676,
+        "cpu_usage_usec": 2883926760916,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 10468982784,
+        "memory_current_bytes": 80509882368,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 0.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 59173769216
+      },
+      "initial_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-00a6eb86a338410f812e62d182aed14d": 1,
+          "/root/autodl-tmp/lean-build/logs/remote-aa74903ca2674564a55489dcfe4bb88b": 8
+        },
+        "cpu_cores": 9.180240894686687,
+        "cpu_usage_usec": 2883784096240,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 11005853696,
+        "memory_current_bytes": 79972675584,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 1.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 58642866176
+      },
+      "max_frontends_if_alone": 8,
+      "mode": "elastic",
+      "request": null
+    },
+    "artifacts": {
+      "build.log": "/root/autodl-tmp/lean-build/logs/remote-0be71bc4f99c45aba9c63a473b195d18/build.log",
+      "compiler-events.jsonl": "/root/autodl-tmp/lean-build/logs/remote-0be71bc4f99c45aba9c63a473b195d18/compiler-events.jsonl",
+      "receipt.json": "/root/autodl-tmp/lean-build/logs/remote-0be71bc4f99c45aba9c63a473b195d18/receipt.json"
+    },
+    "cgroup_memory_attribution": "whole observed cgroup; an OOM event alone does not identify its victim",
+    "cgroup_memory_events_delta": {
+      "high": 0,
+      "low": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "compiler_observation": "wrapper-events-only",
+    "compiler_scope_lease_modes": {
+      "supervisor-only": 2
+    },
+    "execution_seconds": 11.4364063590765,
+    "exit_code": 1,
+    "expected_source": "da5468373c5919a7e853287becb38b3a3158ffae70e7b7a9d4a555050eca4a8f",
+    "first_diagnostics": [],
+    "frontend_failed": 2,
+    "frontend_invocations": 2,
+    "frontend_observation": "wrapper starts only; arbitrary phase tools may bypass local compiler caps",
+    "frontend_peak": 1,
+    "frontend_succeeded": 0,
+    "group_closed": true,
+    "native_exit": 1,
+    "outcome": "execution_failure",
+    "peak_rss_bytes": 2627194880,
+    "plan": null,
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "reason": "",
+    "run": "remote-0be71bc4f99c45aba9c63a473b195d18",
+    "sampled_process_average_cpu_cores": 0.9784542144324087,
+    "source_basis": "da5468373c5919a7e853287becb38b3a3158ffae70e7b7a9d4a555050eca4a8f",
+    "status": "failed",
+    "unwrapped_frontend_count": "unknown",
+    "wall_seconds": 12.180112972855568
+  },
+  "task_id": "etale-incremental-smallblocks-20261027",
+  "unfinished_compiler_records": [],
+  "waiting_for": null,
+  "wall_seconds": 12.180112972855568,
+  "worker_sha256": "7b1d09f535dc951f2f3ecae857f7b77b0ffc95f8f9e55352167a39b4387729a4",
+  "workspace": "/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean"
+}

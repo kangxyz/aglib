@@ -1,0 +1,61 @@
+{
+  "source": "da5468373c5919a7e853287becb38b3a3158ffae70e7b7a9d4a555050eca4a8f",
+  "results": [
+    {
+      "probe_sha": "32b8ef458be2bac2e7005f2bff483da84d4e8d1cc9a8b951cbb3b844745e5826",
+      "question": "Marked2f7 gavegenuine0stdout: withSAME imports/setup, doesENTRYimmediatelyafterimports executeandflush beforeANY math/context declarations? Validatemarkerpathandimportcost beforeinterpreting absence.",
+      "setup_exit": 0,
+      "exit_code": 1,
+      "elapsed_s": 9.418670147657394,
+      "command": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5s",
+        "60s",
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "env",
+        "/root/autodl-tmp/lean-build/logs/remote-213db43f389b421084d7f6fe4f0f0d3e/toolchain/bin/lean",
+        "/root/autodl-tmp/lean-build/logs/remote-213db43f389b421084d7f6fe4f0f0d3e/control-0/Compatibility.lean",
+        "--json",
+        "-j4",
+        "-M12800",
+        "-o",
+        "/root/autodl-tmp/lean-build/logs/remote-213db43f389b421084d7f6fe4f0f0d3e/control-0/control.olean",
+        "-i",
+        "/root/autodl-tmp/lean-build/logs/remote-213db43f389b421084d7f6fe4f0f0d3e/control-0/control.ilean",
+        "--setup",
+        "/root/autodl-tmp/lean-build/logs/remote-213db43f389b421084d7f6fe4f0f0d3e/control-0/setup-0.json"
+      ]
+    },
+    {
+      "probe_sha": "aa86a9cd1a033994e28d3a2811b470dd8720e1dc9e50d9858c1c9208ae0e3d8f",
+      "question": "Core literal control passed but stdout was captured in JSON severity information. Verify one root-authorized independent append+flush path before a long mathematical prefix.",
+      "marker_path": "/root/autodl-tmp/lean-build/logs/remote-213db43f389b421084d7f6fe4f0f0d3e/direct-file-marker.log",
+      "marker_absent_before": true,
+      "exit_code": 1,
+      "elapsed_s": 3.395462855696678,
+      "command": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5s",
+        "30s",
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "env",
+        "/root/autodl-tmp/lean-build/logs/remote-213db43f389b421084d7f6fe4f0f0d3e/toolchain/bin/lean",
+        "/root/autodl-tmp/lean-build/logs/remote-213db43f389b421084d7f6fe4f0f0d3e/control-1/CoreFileMarkerControl.lean",
+        "--json",
+        "-j4",
+        "-M12800",
+        "-o",
+        "/root/autodl-tmp/lean-build/logs/remote-213db43f389b421084d7f6fe4f0f0d3e/control-1/control.olean",
+        "-i",
+        "/root/autodl-tmp/lean-build/logs/remote-213db43f389b421084d7f6fe4f0f0d3e/control-1/control.ilean",
+        "--root=/root/autodl-tmp/lean-build/logs/remote-213db43f389b421084d7f6fe4f0f0d3e/control-1"
+      ],
+      "marker_bytes": null
+    }
+  ],
+  "boundary": "Import and owned-file observability controls only, not math CPP"
+}

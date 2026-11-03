@@ -1,0 +1,13 @@
+{
+  "original_setup": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/mayer-v4-public-prelude-file-B/remote-runs/remote-4b131452926c421d972ed8905b91b430/setup-summary.json",
+  "original_sha256": "fb10d771abd7bcf254744ab631e1d05907fc7f813261d20d7c9eb950041bc2da",
+  "name": "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.Compatibility",
+  "isModule": true,
+  "options": {
+    "autoImplicit": false,
+    "warningAsError": true,
+    "weak.linter.mathlibStandardSet": true,
+    "weak.linter.style.longFile": 1500
+  },
+  "imports": null
+}

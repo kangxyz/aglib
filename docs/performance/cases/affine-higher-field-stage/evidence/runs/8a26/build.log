@@ -1,0 +1,61 @@
+✖ [8008/8008] Building Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.AffineEtaleHigherDegree (55s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-bbb44c32f5f140ec90c7a8c7ec3e683a/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.lean -o /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.olean -i /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.c --setup /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.lean:78:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.lean:79:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.lean:80:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.lean:81:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.lean:82:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.lean:83:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.lean:84:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.AffineEtaleHigherDegree
+error: build failed

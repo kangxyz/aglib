@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.Sections
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.Naturality
-public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.QuasiCoherent
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.DescentCore
 
 /-!
 # Affine descent of cohomologically normalized trace arrows
@@ -30,14 +30,6 @@ open AlgebraicGeometry.Scheme.Modules
 
 universe u
 namespace AlgebraicGeometry.Scheme.Cohomology.RelativeProjectiveTrace
-
-private theorem moduleFunctor_triple_apply
-    {B : Type u} [CommRing B] {D : Type*} [Category* D]
-    (F : D ⥤ ModuleCat.{u} B) {K L M N : D}
-    (r : K ⟶ L) (s : L ⟶ M) (t : M ⟶ N) (x : F.obj K) :
-    ModuleCat.Hom.hom (F.map (r ≫ s ≫ t)) x = F.map t (F.map s (F.map r x)) := by
-  rw [F.map_comp, F.map_comp]
-  rfl
 
 section
 variable {R A : Type u} [CommRing R] [CommRing A]
@@ -76,52 +68,12 @@ theorem affineTraceRestriction_of_sections
         (Spec.map (CommRingCat.ofHom σ)) H n).hom.app M ≫
       ((Scheme.Modules.pushforward q).rightDerived n).map C ≫ tA =
       (Modules.restrictFunctor (Spec.map (CommRingCat.ofHom σ))).map tR := by
-  let j := Spec.map (CommRingCat.ofHom σ)
-  let L := ((Scheme.Modules.pushforward p).rightDerived n).obj M
-  let r := (Scheme.Modules.higherDirectImageOpenRestrictionIso i q p j H n).hom.app M
-  let : L.IsQuasicoherent := moduleHigherDirectImage_isQuasicoherent p M n
-  apply affineRestrictHom_ext j (M := L)
-  intro x
-  let u := affineUnitSections j L x
-  let y := moduleSpecΓFunctor.map r u
-  let c := moduleHigherDirectImageAffineSectionsLinearEquiv p M (injectiveResolution M) n x
-  have hr := affineHigherOpenSections_unit i q p σ H M (injectiveResolution M)
-    (injectiveResolution ((Modules.restrictFunctor i).obj M)) n x
-  change moduleHigherDirectImageAffineSectionsLinearEquiv q
-      ((Modules.restrictFunctor i).obj M) (injectiveResolution _) n y =
-    moduleCohomologyMapAlong i ((restrictAdjunction i).unit.app M) n c at hr
-  have hn := moduleHigherDirectImageAffineSectionsLinearEquiv_naturality q
-    (injectiveResolution ((Modules.restrictFunctor i).obj M)) (injectiveResolution M')
-    (v := C) n y
-  have hco := moduleCohomologyMapAlong_homEquiv i M M' C n c
-  have hb : moduleCohomologyMapAlong i β n c =
-      Sheaf.H.map ((SheafOfModules.toSheaf W.ringCatSheaf).map C) n
-        (moduleCohomologyMapAlong i ((restrictAdjunction i).unit.app M) n c) := by
-    rw [hβ]
-    exact hco
-  calc
-    _ = τA (moduleHigherDirectImageAffineSectionsLinearEquiv q M' (injectiveResolution M') n
-        (moduleSpecΓFunctor.map (((Scheme.Modules.pushforward q).rightDerived n).map C) y)) := by
-      exact (moduleFunctor_triple_apply moduleSpecΓFunctor r
-        (((Scheme.Modules.pushforward q).rightDerived n).map C) tA u).trans
-          (htA (moduleSpecΓFunctor.map (((Scheme.Modules.pushforward q).rightDerived n).map C) y))
-    _ = τA (moduleCohomologyMapOfHom W
-        (q.appTop.hom.comp (Scheme.ΓSpecIso (.of A)).inv.hom) C n
-        (moduleHigherDirectImageAffineSectionsLinearEquiv q
-          ((Modules.restrictFunctor i).obj M) (injectiveResolution _) n y)) := congrArg τA hn
-    _ = τA (Sheaf.H.map ((SheafOfModules.toSheaf W.ringCatSheaf).map C) n
-        (moduleCohomologyMapAlong i ((restrictAdjunction i).unit.app M) n c)) := by
-      have hm := moduleCohomologyMapOfHom_apply W
-        (q.appTop.hom.comp (Scheme.ΓSpecIso (.of A)).inv.hom) C n
-        (moduleHigherDirectImageAffineSectionsLinearEquiv q
-          ((Modules.restrictFunctor i).obj M) (injectiveResolution _) n y)
-      exact congrArg τA (hm.trans
-        (congrArg (Sheaf.H.map ((SheafOfModules.toSheaf W.ringCatSheaf).map C) n) hr))
-    _ = τA (moduleCohomologyMapAlong i β n c) := congrArg τA hb.symm
-    _ = affineUnitSections j N (τR c) := hopen c
-    _ = affineUnitSections j N (moduleSpecΓFunctor.map tR x) :=
-      congrArg (affineUnitSections j N) (htR x).symm
-    _ = _ := affineUnitSections_naturality j tR x
+  let := moduleResolutionPushforwardTildeCounit_quasiIso p M (injectiveResolution M)
+  let := moduleResolutionPushforwardTildeCounit_quasiIso q M' (injectiveResolution M')
+  let := moduleResolutionPushforwardTildeCounit_quasiIso q
+    ((Modules.restrictFunctor i).obj M) (injectiveResolution _)
+  exact affineTraceRestriction_of_sections_of_counit_quasiIso i q p σ H M M' N n C β hβ
+    tR tA τR τA htR htA hopen
 
 end
 end AlgebraicGeometry.Scheme.Cohomology.RelativeProjectiveTrace

@@ -1,0 +1,93 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.Rows
+
+/-! # Original cup, tensor and coordinate restriction maps -/
+
+@[expose] public noncomputable section
+
+set_option backward.defeqAttrib.useBackward true
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+
+open CategoryTheory CategoryTheory.Limits CategoryTheory.Abelian
+open MonoidalCategory CartesianMonoidalCategory AlgebraicGeometry TopologicalSpace Opposite
+open AlgebraicGeometry.Scheme.OverField AlgebraicGeometry.Scheme.Modules
+open scoped TensorProduct DirectSum
+
+universe u
+
+namespace AlgebraicGeometry.Scheme.Cohomology
+
+attribute [local instance] Over.cartesianMonoidalCategory
+
+variable {k : Type u} [Field k] (X Y : FScheme k)
+
+open KunnethOpenMayerVietoris
+
+/-- Original restriction naturality of the original mixed cup. -/
+theorem structureExternalOpenCup_restriction {U V : Y.left.Opens} (i : U ⟶ V)
+    {p q n : ℕ} (h : p + q = n) (x : structureCohomology k X p)
+    (y : structureOpenCohomology Y V q) :
+    structureExternalOpenCup X Y U h x (structureOpenRestriction Y i q y) =
+      structureOpenRestriction (X ⊗ Y) ((Opens.map (snd X Y).left.base).map i) n
+        (structureExternalOpenCup X Y V h x y) := by
+  let xE := (structureExtLinearEquiv X p).symm x
+  let yE := (structureOpenExtLinearEquiv Y V q).symm y
+  have hx : structureExtLinearEquiv X p xE = x := LinearEquiv.apply_symm_apply _ _
+  have hy : structureOpenExtLinearEquiv Y V q yE = y := LinearEquiv.apply_symm_apply _ _
+  let a := (openFreeFunctor Y.left).map i
+  let iZ := (Opens.map (snd X Y).left.base).map i
+  have hYR := moduleOpenExtCohomologyMap_restriction Y.left i
+    (SheafOfModules.unit Y.left.ringCatSheaf) q yE
+  change structureOpenExtLinearEquiv Y U q ((Ext.mk₀ a).comp yE (Nat.zero_add q)) =
+    structureOpenRestriction Y i q (structureOpenExtLinearEquiv Y V q yE) at hYR
+  have hU := structureExternalOpenCup_apply X Y U h (structureExtLinearEquiv X p xE)
+    (structureOpenExtLinearEquiv Y U q ((Ext.mk₀ a).comp yE (Nat.zero_add q)))
+  have hV := structureExternalOpenCup_apply X Y V h (structureExtLinearEquiv X p xE)
+    (structureOpenExtLinearEquiv Y V q yE)
+  simp only [LinearEquiv.symm_apply_apply] at hU hV
+  have hRaw := structureExternalOpenExt_restriction X Y i h xE yE
+  have hMap := congrArg
+    (moduleOpenExtCohomologyMap (X ⊗ Y).left ((snd X Y).left ⁻¹ᵁ U)
+      (SheafOfModules.unit (X ⊗ Y).left.ringCatSheaf) n) hRaw
+  have hZR := moduleOpenExtCohomologyMap_restriction (X ⊗ Y).left iZ
+    (SheafOfModules.unit (X ⊗ Y).left.ringCatSheaf) n
+    (structureExternalOpenExt X Y V h xE yE)
+  change _ = structureOpenRestriction (X ⊗ Y) iZ n
+    (moduleOpenExtCohomologyMap (X ⊗ Y).left ((snd X Y).left ⁻¹ᵁ V)
+      (SheafOfModules.unit (X ⊗ Y).left.ringCatSheaf) n
+      (structureExternalOpenExt X Y V h xE yE)) at hZR
+  have hInput := congrArg (structureExternalOpenCup X Y U h
+    (structureExtLinearEquiv X p xE)) hYR
+  have hOutput := congrArg (structureOpenRestriction (X ⊗ Y) iZ n) hV
+  have hFinal := (hInput.symm.trans hU).trans ((hMap.trans hZR).trans hOutput.symm)
+  rw [hx, hy] at hFinal
+  exact hFinal
+
+/-- The whole original tensor restriction square. -/
+theorem structureExternalOpenTensor_restriction {U V : Y.left.Opens} (i : U ⟶ V)
+    {p q n : ℕ} (h : p + q = n) :
+    structureExternalOpenTensor X Y U h ∘ₗ
+        TensorProduct.map LinearMap.id (structureOpenRestriction Y i q) =
+      structureOpenRestriction (X ⊗ Y) ((Opens.map (snd X Y).left.base).map i) n ∘ₗ
+        structureExternalOpenTensor X Y V h := by
+  apply TensorProduct.ext'
+  intro x y
+  simp only [LinearMap.comp_apply, TensorProduct.map_tmul, LinearMap.id_apply,
+    structureExternalOpenTensor_tmul]
+  exact structureExternalOpenCup_restriction X Y i h x y
+
+/-- Coordinatewise original restriction on the original finite tensor antidiagonal. -/
+def structureOpenKunnethRestriction {U V : Y.left.Opens} (i : U ⟶ V) (n : ℕ) :
+    structureOpenKunnethSum X Y V n →ₗ[k] structureOpenKunnethSum X Y U n :=
+  Kunneth.MayerVietoris.tensorMap (R := k) (structureCohomology k X)
+    (fun q => structureOpenRestriction Y i q) n
+
+
+end AlgebraicGeometry.Scheme.Cohomology

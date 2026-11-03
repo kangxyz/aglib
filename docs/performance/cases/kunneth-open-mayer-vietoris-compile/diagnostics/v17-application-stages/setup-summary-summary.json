@@ -1,0 +1,13 @@
+{
+  "original": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/mayer-v17-surjective-application-localization-B/remote-runs/remote-cede8c8d4129488cb4115e8b245a5c3a/setup-summary.json",
+  "sha256": "7e14dcb204999e274ad5aa8d806a4742fde850912d1d6dbcc15c7909b90b8940",
+  "name": "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.GluingSurjective",
+  "isModule": true,
+  "options": {
+    "autoImplicit": false,
+    "warningAsError": true,
+    "weak.linter.mathlibStandardSet": true,
+    "weak.linter.style.longFile": 1500
+  },
+  "imports": null
+}

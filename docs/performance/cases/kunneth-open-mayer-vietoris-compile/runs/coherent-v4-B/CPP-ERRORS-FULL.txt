@@ -1,0 +1,157 @@
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Compatibility.lean:160:2: Type mismatch: After simplification, term
+  h
+ has type
+  @Eq
+    (Kunneth.MayerVietoris.tensorSum (fun p => ↑(structureOriginalFirstModule X p))
+        (fun q => ↑(structureOpenModule Y U q ⊞ structureOpenModule Y V q)) n →ₗ[k]
+      Kunneth.MayerVietoris.tensorSum (fun p => ↑(structureOriginalFirstModule X p))
+        (fun q => ↑(structureOpenModule Y (U ⊓ V) q)) n)
+    (Kunneth.MayerVietoris.tensorModuleMap (structureOriginalFirstModule X)
+      (fun q => structureOpenModule Y U q ⊞ structureOpenModule Y V q) (structureOpenModule Y (U ⊓ V))
+      (fun q =>
+        biprod.desc
+          ((moduleHPrimePresheaf (Over.left Y) (constants Y) (SheafOfModules.unit (Over.left Y).ringCatSheaf) q).map
+            (homOfLE ⋯).op)
+          (-(moduleHPrimePresheaf (Over.left Y) (constants Y) (SheafOfModules.unit (Over.left Y).ringCatSheaf) q).map
+              (homOfLE ⋯).op))
+      n)
+    ((Kunneth.MayerVietoris.tensorModuleMap (structureOriginalFirstModule X) (structureOpenModule Y U)
+            (structureOpenModule Y (U ⊓ V))
+            (fun q =>
+              (moduleHPrimePresheaf (Over.left Y) (constants Y) (SheafOfModules.unit (Over.left Y).ringCatSheaf) q).map
+                (homOfLE ⋯).op)
+            n ∘ₗ
+          LinearMap.fst k
+            (Kunneth.MayerVietoris.tensorSum (fun p => ↑(structureOriginalFirstModule X p))
+              (fun q => ↑(structureOpenModule Y U q)) n)
+            (Kunneth.MayerVietoris.tensorSum (fun p => ↑(structureOriginalFirstModule X p))
+              (fun q => ↑(structureOpenModule Y V q)) n) -
+        Kunneth.MayerVietoris.tensorModuleMap (structureOriginalFirstModule X) (structureOpenModule Y V)
+            (structureOpenModule Y (U ⊓ V))
+            (fun q =>
+              (moduleHPrimePresheaf (Over.left Y) (constants Y) (SheafOfModules.unit (Over.left Y).ringCatSheaf) q).map
+                (homOfLE ⋯).op)
+            n ∘ₗ
+          LinearMap.snd k
+            (Kunneth.MayerVietoris.tensorSum (fun p => ↑(structureOriginalFirstModule X p))
+              (fun q => ↑(structureOpenModule Y U q)) n)
+            (Kunneth.MayerVietoris.tensorSum (fun p => ↑(structureOriginalFirstModule X p))
+              (fun q => ↑(structureOpenModule Y V q)) n)) ∘ₗ
+      ↑(Kunneth.MayerVietoris.tensorModuleBiprodEquiv (structureOriginalFirstModule X) (structureOpenModule Y U)
+          (structureOpenModule Y V) n))
+but is expected to have type
+  @Eq
+    (Kunneth.MayerVietoris.tensorSum (fun p => ↑(structureOriginalFirstModule X p))
+        (fun q => ↑(structureOpenModule Y U q ⊞ structureOpenModule Y V q)) n →ₗ[k]
+      Kunneth.MayerVietoris.tensorSum (fun p => ↑(structureOriginalFirstModule X p))
+        (fun q => ↑(structureOpenModule Y (U ⊓ V) q)) n)
+    (Kunneth.MayerVietoris.tensorModuleMap (structureOriginalFirstModule X)
+      (fun q => structureOpenModule Y U q ⊞ structureOpenModule Y V q) (structureOpenModule Y (U ⊓ V))
+      (fun q =>
+        biprod.desc
+          ((moduleHPrimePresheaf (Over.left Y) (constants Y) (SheafOfModules.unit (Over.left Y).ringCatSheaf) q).map
+            (homOfLE ⋯).op)
+          (-(moduleHPrimePresheaf (Over.left Y) (constants Y) (SheafOfModules.unit (Over.left Y).ringCatSheaf) q).map
+              (homOfLE ⋯).op))
+      n)
+    ((Kunneth.MayerVietoris.tensorModuleMap (structureOriginalFirstModule X) (structureOpenModule Y U)
+            (structureOpenModule Y (U ⊓ V))
+            (fun q =>
+              (moduleHPrimePresheaf (Over.left Y) (constants Y) (SheafOfModules.unit (Over.left Y).ringCatSheaf) q).map
+                (homOfLE ⋯).op)
+            n ∘ₗ
+          LinearMap.fst k (structureOpenKunnethSum X Y U n) (structureOpenKunnethSum X Y V n) -
+        Kunneth.MayerVietoris.tensorModuleMap (structureOriginalFirstModule X) (structureOpenModule Y V)
+            (structureOpenModule Y (U ⊓ V))
+            (fun q =>
+              (moduleHPrimePresheaf (Over.left Y) (constants Y) (SheafOfModules.unit (Over.left Y).ringCatSheaf) q).map
+                (homOfLE ⋯).op)
+            n ∘ₗ
+          LinearMap.snd k (structureOpenKunnethSum X Y U n) (structureOpenKunnethSum X Y V n)) ∘ₗ
+      ↑(Kunneth.MayerVietoris.tensorModuleBiprodEquiv (structureOriginalFirstModule X) (structureOpenModule Y U)
+          (structureOpenModule Y V) n))
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  equivShrink ↦ 5614
+  Shrink ↦ 1732
+
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Compatibility.lean:187:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (structureOpenMVMiddleSourceEquiv X Y U V n) ((structureOpenKunnethMVFirst X Y U V n) z)
+in the target expression
+  ((structureOpenModule (X ⊗ Y) (Over.Hom.left (snd X Y) ⁻¹ᵁ U) n).biprodIsoProd
+          (structureOpenModule (X ⊗ Y) (Over.Hom.left (snd X Y) ⁻¹ᵁ V) n)).toLinearEquiv
+      ((structureOpenMVFirst (X ⊗ Y) (Over.Hom.left (snd X Y) ⁻¹ᵁ U) (Over.Hom.left (snd X Y) ⁻¹ᵁ V) n)
+        ((structureOpenKunnethMap X Y (U ⊔ V) n) z)) =
+    ((structureOpenKunnethMap X Y U n).prodMap (structureOpenKunnethMap X Y V n))
+      (↑(structureOpenMVMiddleSourceEquiv X Y U V n) ((structureOpenKunnethMVFirst X Y U V n) z))
+
+k : Type u
+inst✝ : Field k
+X Y : FScheme k
+U V : (Over.left Y).Opens
+n : ℕ
+z : structureOpenKunnethSum X Y (U ⊔ V) n
+hU :
+  (structureOpenKunnethMap X Y U n ∘ₗ structureOpenKunnethRestriction X Y (homOfLE ⋯) n) z =
+    (structureOpenRestriction (X ⊗ Y) ((Opens.map (Over.Hom.left (snd X Y)).base).map (homOfLE ⋯)) n ∘ₗ
+        structureOpenKunnethMap X Y (U ⊔ V) n)
+      z
+hV :
+  (structureOpenKunnethMap X Y V n ∘ₗ structureOpenKunnethRestriction X Y (homOfLE ⋯) n) z =
+    (structureOpenRestriction (X ⊗ Y) ((Opens.map (Over.Hom.left (snd X Y)).base).map (homOfLE ⋯)) n ∘ₗ
+        structureOpenKunnethMap X Y (U ⊔ V) n)
+      z
+hB :
+  (ConcreteCategory.hom
+        ((structureOpenModule (X ⊗ Y) (Over.Hom.left (snd X Y) ⁻¹ᵁ U) n).biprodIsoProd
+            (structureOpenModule (X ⊗ Y) (Over.Hom.left (snd X Y) ⁻¹ᵁ V) n)).hom)
+      ((structureOpenMVFirst (X ⊗ Y) (Over.Hom.left (snd X Y) ⁻¹ᵁ U) (Over.Hom.left (snd X Y) ⁻¹ᵁ V) n)
+        ((structureOpenKunnethMap X Y (U ⊔ V) n) z)) =
+    ((structureOpenRestriction (X ⊗ Y) (homOfLE ⋯) n) ((structureOpenKunnethMap X Y (U ⊔ V) n) z),
+      (structureOpenRestriction (X ⊗ Y) (homOfLE ⋯) n) ((structureOpenKunnethMap X Y (U ⊔ V) n) z))
+hSource :
+  (structureOpenMVMiddleSourceEquiv X Y U V n) ((structureOpenKunnethMVFirst X Y U V n) z) =
+    ((structureOpenKunnethRestriction X Y (homOfLE ⋯) n).prod (structureOpenKunnethRestriction X Y (homOfLE ⋯) n)) z
+⊢ ((structureOpenModule (X ⊗ Y) (Over.Hom.left (snd X Y) ⁻¹ᵁ U) n).biprodIsoProd
+          (structureOpenModule (X ⊗ Y) (Over.Hom.left (snd X Y) ⁻¹ᵁ V) n)).toLinearEquiv
+      ((structureOpenMVFirst (X ⊗ Y) (Over.Hom.left (snd X Y) ⁻¹ᵁ U) (Over.Hom.left (snd X Y) ⁻¹ᵁ V) n)
+        ((structureOpenKunnethMap X Y (U ⊔ V) n) z)) =
+    ((structureOpenKunnethMap X Y U n).prodMap (structureOpenKunnethMap X Y V n))
+      (↑(structureOpenMVMiddleSourceEquiv X Y U V n) ((structureOpenKunnethMVFirst X Y U V n) z))
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    (Over.left (X ⊗ Y)).ringCatSheaf
+  has type
+    TopCat.Sheaf RingCat ↑(Over.left (X ⊗ Y)).toPresheafedSpace
+  but is expected to have type
+    Sheaf (Opens.grothendieckTopology ↥(Over.left (X ⊗ Y))) RingCat
+  in the application
+    SheafOfModules.unit (Over.left (X ⊗ Y)).ringCatSheaf
+
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Compatibility.lean:184:35: This simp argument is unused:
+  LinearMap.prod_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [LinearMap.comp_apply, LinearEquiv.coe_toLinearMap, structureOpenKunnethFirstPair,
+    Function.prod_apply] at hSource
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Compatibility.lean:184:57: This simp argument is unused:
+  Function.prod_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [LinearMap.comp_apply, LinearEquiv.coe_toLinearMap, structureOpenKunnethFirstPair,
+    LinearMap.prod_apply] at hSource
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Compatibility.lean:217:5: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+
+error: build failed

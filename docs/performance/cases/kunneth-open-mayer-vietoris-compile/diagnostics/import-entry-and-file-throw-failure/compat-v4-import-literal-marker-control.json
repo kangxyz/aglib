@@ -1,0 +1,22 @@
+{
+  "phase": "compat-v4-import-literal-marker-control",
+  "actual_source_path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Compatibility.lean",
+  "actual_source_sha256": "93938f45f138efaafd558067aea0bbb8dc612445fefd3b5bd8af1df69477aab9",
+  "qualified_root": "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.Compatibility",
+  "scratch_source_path": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/kunneth-mayer-optimization/probes/compat-v4-import-literal-marker-control.lean",
+  "scratch_source_sha256": "32b8ef458be2bac2e7005f2bff483da84d4e8d1cc9a8b951cbb3b844745e5826",
+  "probe_source": "/-\nCopyright (c) 2026 Aglib contributors. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: kangxyz\n-/\nmodule\n\npublic import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.Rows\n\n/- NONPRODUCTION marker/import control only; no Mayer\u2013Vietoris proof is asserted. -/\nrun_cmd do\n  let out \u2190 IO.getStdout\n  out.putStr \"MAYER_PHASE ENTRY_CONTROL\\n\"\n  out.flush\n\n/-- The control fixture proves only True. -/\npublic theorem markerImportControl : True := True.intro\n",
+  "question": "Marked2f7 gavegenuine0stdout: withSAME imports/setup, doesENTRYimmediatelyafterimports executeandflush beforeANY math/context declarations? Validatemarkerpathandimportcost beforeinterpreting absence.",
+  "evidence_boundary": "UNPROFILED NONPRODUCTION imports/marker control only. Sameactualv4Compatibilitysetup/importRows440/Linear566; no originalmathproof assertions, no newmodel/premise/productionchanges. TruefixtureonlyavoidsprivateModulelinter. No proofcoverage/performanceconclusionaboutcommonSourceEq. DirectputStr+flush, plainNatclock. 60s processbound; ifmarkerabsent butcontrolcloses0, stdoutpathmaybecaptured; iftimeout, import/controlboundarynotisolated.",
+  "command_flags": [
+    "--json",
+    "-j4",
+    "-M12800"
+  ],
+  "process_bound_seconds": 60,
+  "precondition": "Run sequentially: core literal first30s; only if core exit0/observable marker run actual939 import literal60s. Same managed wrapper and pinned setup; no mathematical prefixes or provider builds.",
+  "outputs": "runrelative scratch only",
+  "marker_api_source": "https://raw.githubusercontent.com/leanprover/lean4/v4.34.1/src/Init/System/IO.lean",
+  "marker_api_locators": "monoMsNow371; FS.Stream630-656; getStdout673",
+  "repair": "Prior run remote-0be71bc4f99c45aba9c63a473b195d18 controls both actually started and failed quickly: invalid HAdd String String in marker. This new control uses ONLY a literal constant string, no clock/concatenation/Expr rendering. Prior phase remains failed."
+}

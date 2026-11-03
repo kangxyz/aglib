@@ -1,0 +1,17 @@
+{
+  "phase": "core-literal-marker-control",
+  "scratch_source_path": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/kunneth-mayer-optimization/probes/core-literal-marker-control.lean",
+  "scratch_source_sha256": "1ebd40655b7d8c5cdaf540c2b9323bbe8e26d3ce14cbff041d9038366b8e49ae",
+  "probe_source": "/- Core-only stdout-observability control, not a mathematical proof probe. -/\nmodule\npublic import Lean\n\nrun_cmd do\n  let out \u2190 IO.getStdout\n  out.putStr \"MAYER_PHASE CORE_ENTRY_CONTROL\\n\"\n  out.flush\n\n/-- The logging control proves only True. -/\npublic theorem coreMarkerControl : True := True.intro\n",
+  "question": "ROOTrequires firstcore-onlycontrol underSAME managedwrapper/loggingpath, NOcohomologyimports, tovalidatecompilerstart andobservableputStr+flush beforeactualCompatibilityimports control.",
+  "evidence_boundary": "CoreLean4.34.1 IO/logging control ONLY; no Compatibility/proof/source/CPPcoverage. HeaderimportLeanONLY; DO NOT reuseCompatibility--setup/importArts because itloadscohomology. Usefreshcore-onlysetup orrecordednativeLeaninvocationwithno--setup, samewrapper/caps/json/logcapture. Compiler-start evidence mandatory; submission/0output aloneisnotphaseevidence.",
+  "command_flags": [
+    "--json",
+    "-j4",
+    "-M12800"
+  ],
+  "process_bound_seconds": 30,
+  "outputs": "run-relative scratchonly",
+  "precondition": "Run sequentially: core literal first30s; only if core exit0/observable marker run actual939 import literal60s. Same managed wrapper and pinned setup; no mathematical prefixes or provider builds.",
+  "repair": "Prior run remote-0be71bc4f99c45aba9c63a473b195d18 controls both actually started and failed quickly: invalid HAdd String String in marker. This new control uses ONLY a literal constant string, no clock/concatenation/Expr rendering. Prior phase remains failed."
+}

@@ -1,0 +1,31 @@
+{
+  "accepted_family_frontend_seconds": {
+    "LinearAlgebra": 6.157831162214279,
+    "Rows": 191.38164477050304,
+    "RestrictionBasic": 100.09784580767155,
+    "Boundary": 280.9384481906891,
+    "RestrictionLinearAlgebra": 2.529537,
+    "RestrictionAssembly": 2.829854,
+    "RestrictionValues": 137.169008,
+    "Restriction": 130.726776,
+    "SourceEquations": 269.412019,
+    "FirstSquare": 101.693065,
+    "SecondSquare": 88.120485,
+    "Compatibility": 2.492779,
+    "GluingInjective": 81.066435,
+    "GluingSurjective": 45.321609,
+    "facade": 78.39142
+  },
+  "sum_separate_retained_frontends_seconds": 1518.328756931078,
+  "longest_family_frontend_seconds": 280.9384481906891,
+  "original_monolith_seconds": 2438.094314,
+  "actual_consumers_seconds": {
+    "StructureSheaf.Kunneth": 35.212268,
+    "existing_Mayer_test": 18.718337
+  },
+  "retired_generic_only_seconds": {
+    "Gluing": 2.593129,
+    "GluingFour": 2.296074
+  },
+  "boundary": "Sum of unprofiled frontend elapsed observations from separate compatible runs; not parallel DAG wall time or a controlled cold-speedup ratio. No original CPU/RSS/phase data. Final two import-only edits retain exact proof bodies, with their actual-main source check separately pending at handoff."
+}

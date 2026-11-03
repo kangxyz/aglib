@@ -1,0 +1,12 @@
+{
+  "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenAffine.lean",
+  "before_sha256": "b2f3df728c8076c207ecac837d00965d0ffbba703e9c46413e6323e29e4f8e1c",
+  "after_sha256": "9662af136374afeaeb842d08b47c9f46a43d8216497b5c21ce2bbec69a4cfa26",
+  "source_commit": "2f17670f9ade927deeb6ea21d1c50c67a9e7842d",
+  "optimizer11_unchanged": true,
+  "original185_unchanged": true,
+  "index_empty": true,
+  "native6fb9_input": "immutable old input unchanged; this prepares next consumer retry only",
+  "prior_coverage": "ready-consumer-repair CPP0/670.153s; preserve matching artifact",
+  "created_utc": "2026-11-02T20:46:57.761164+00:00"
+}

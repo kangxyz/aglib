@@ -1,0 +1,158 @@
+{
+  "question": "Original successful monolithic Mayer frontend observation and comparison conditions, not the whole run outcome.",
+  "run_id": "remote-e0c8307e34384514adc46fce9eb2c00f",
+  "source_content_sha256": "4707aaadf9432b2050204046021f2f6214e03366e9ba64fe1458d10e069a901c",
+  "module_sha256": "bd06444b85d5aea9ee84ec4acb54bdc385a9bd078234e7adfd3cb15e594ad3c8",
+  "module": "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris",
+  "frontend_seconds": 2438.0943137407303,
+  "frontend_exit": 0,
+  "events": [
+    {
+      "event": "waiting",
+      "time": "2026-11-02T13:54:10.600793+00:00",
+      "monotonic": 75877232.50804996,
+      "wrapper_pid": 678082,
+      "pgid": 671062,
+      "args": [
+        "/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean",
+        "-o",
+        "/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.olean",
+        "-i",
+        "/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.ilean",
+        "-c",
+        "/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.c",
+        "--setup",
+        "/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.setup.json",
+        "--json",
+        "-j4",
+        "-M12800"
+      ]
+    },
+    {
+      "event": "started",
+      "time": "2026-11-02T13:54:10.717120+00:00",
+      "monotonic": 75877232.62437947,
+      "wrapper_pid": 678082,
+      "pgid": 671062,
+      "compiler_pid": 678084,
+      "slot": 7,
+      "args": [
+        "/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean",
+        "-o",
+        "/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.olean",
+        "-i",
+        "/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.ilean",
+        "-c",
+        "/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.c",
+        "--setup",
+        "/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.setup.json",
+        "--json",
+        "-j4",
+        "-M12800"
+      ],
+      "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean",
+      "admission": {
+        "mode": "elastic"
+      },
+      "scope_lease_mode": "inherited"
+    },
+    {
+      "event": "finished",
+      "time": "2026-11-02T14:34:48.811428+00:00",
+      "monotonic": 75879670.71869321,
+      "wrapper_pid": 678082,
+      "pgid": 671062,
+      "compiler_pid": 678084,
+      "slot": 7,
+      "exit_code": 0
+    }
+  ],
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 8,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536,
+    "threads": 4
+  },
+  "pins": {
+    "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+    "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+    "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+  },
+  "parent_command": [
+    "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "--rehash",
+    "build",
+    "Aglib"
+  ],
+  "parent_run_exit": 130,
+  "parent_run_outcome": "cancelled",
+  "parent_peak_compiler_concurrency": 8,
+  "cache_provenance": {
+    "configuration_sha256": {
+      "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+      "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852"
+    },
+    "environment": {
+      "LAKE_ARTIFACT_CACHE": "true",
+      "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+      "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+    },
+    "lookup": "native Lake traces/artifact cache; no per-dependency prior-hit claim"
+  },
+  "resources": {
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "cgroup": "/sys/fs/cgroup",
+    "cgroup_limits": [
+      {
+        "cpu.max": "3200000 100000",
+        "memory.max": "128849018880",
+        "path": "/sys/fs/cgroup"
+      }
+    ],
+    "effective_cpus": 32.0,
+    "memory_bytes": 128849018880
+  },
+  "evidence_boundary": "Parent global build was later cancelled; this exact frontend completed exit0 beforehand. No per-frontend CPU/RSS or declaration phase profile was captured before its exit. It is not a matched controlled speedup baseline for later targeted/profiled runs. Preserve the original successful artifact; no unchanged full replay.",
+  "raw_receipt": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/ready-publication-native/remote-runs/remote-e0c8307e34384514adc46fce9eb2c00f/receipt.json",
+  "raw_receipt_sha256": "247a99203e9dc5b7248683468054fb2357bdb66421f1656eaef74bdd392dd411",
+  "raw_events": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/ready-publication-native/remote-runs/remote-e0c8307e34384514adc46fce9eb2c00f/compiler-events.jsonl",
+  "raw_events_sha256": "ae4121c9c2bfdef3f68ea582866ba1bb8f6880891191e06b1510acd7b8c91ff1"
+}

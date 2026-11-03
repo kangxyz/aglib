@@ -1,0 +1,44 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.LinearAlgebra
+public import Mathlib.Algebra.FiveLemma
+
+/-! # The original tensor modules and a whole module five-lemma telescope -/
+
+@[expose] public noncomputable section
+
+universe r a b
+
+namespace Kunneth.MayerVietoris
+
+/-- Canonical packaging of the existing tensor sum with its original module action. -/
+def tensorModuleSum {R : Type r} [CommRing R]
+    (M : ℕ → ModuleCat.{a} R) (A : ℕ → ModuleCat.{b} R) (n : ℕ) :
+    ModuleCat.{max a b} R :=
+  ModuleCat.of R (tensorSum (R := R) (fun p => M p) (fun q => A q) n)
+
+/-- Pin the original module objects for the complete five-lemma diagram before specialization. -/
+theorem moduleFiveLemma {R : Type r} [CommRing R]
+    (A B C D E : ModuleCat.{a} R) (A' B' C' D' E' : ModuleCat.{b} R)
+    (f₁ : A →ₗ[R] B) (f₂ : B →ₗ[R] C) (f₃ : C →ₗ[R] D) (f₄ : D →ₗ[R] E)
+    (g₁ : A' →ₗ[R] B') (g₂ : B' →ₗ[R] C') (g₃ : C' →ₗ[R] D') (g₄ : D' →ₗ[R] E')
+    (i₁ : A →ₗ[R] A') (i₂ : B →ₗ[R] B') (i₃ : C →ₗ[R] C')
+    (i₄ : D →ₗ[R] D') (i₅ : E →ₗ[R] E')
+    (hc₁ : g₁.comp i₁ = i₂.comp f₁) (hc₂ : g₂.comp i₂ = i₃.comp f₂)
+    (hc₃ : g₃.comp i₃ = i₄.comp f₃) (hc₄ : g₄.comp i₄ = i₅.comp f₄)
+    (hf₁ : Function.Exact f₁ f₂) (hf₂ : Function.Exact f₂ f₃)
+    (hf₃ : Function.Exact f₃ f₄) (hg₁ : Function.Exact g₁ g₂)
+    (hg₂ : Function.Exact g₂ g₃) (hg₃ : Function.Exact g₃ g₄)
+    (hi₁ : Function.Surjective i₁) (hi₂ : Function.Bijective i₂)
+    (hi₄ : Function.Bijective i₄) (hi₅ : Function.Injective i₅) :
+    Function.Bijective i₃ :=
+  LinearMap.bijective_of_surjective_of_bijective_of_bijective_of_injective
+    f₁ f₂ f₃ f₄ g₁ g₂ g₃ g₄ i₁ i₂ i₃ i₄ i₅
+    hc₁ hc₂ hc₃ hc₄ hf₁ hf₂ hf₃ hg₁ hg₂ hg₃ hi₁ hi₂ hi₄ hi₅
+
+end Kunneth.MayerVietoris

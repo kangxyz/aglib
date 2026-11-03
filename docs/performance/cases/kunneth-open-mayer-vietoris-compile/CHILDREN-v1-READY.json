@@ -1,0 +1,17 @@
+{
+  "phase": "children-v1",
+  "source_root": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/kunneth-mayer-optimization/aglib",
+  "head": "7545acd876b4ebf73f067d532ffa75263c01e26c",
+  "baseline_source": "4707aaadf9432b2050204046021f2f6214e03366e9ba64fe1458d10e069a901c",
+  "files": {
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.lean": "bd811668f253350f5d98a0416d8051396de970b89dde50c22a1f33c8612bf9c2",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Rows.lean": "63f8d402786f680ce914adc9f6e58725db75d618087f9c62eb123d834fa6fd6f",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean": "bd06444b85d5aea9ee84ec4acb54bdc385a9bd078234e7adfd3cb15e594ad3c8"
+  },
+  "targets": [
+    "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.LinearAlgebra",
+    "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.Rows"
+  ],
+  "changes": "New generic complete difference laws and mk5 exactness extraction before concrete specialization; original categorical objects/maps; native rows use extraction once. Original facade is still unchanged, not yet rewired. Old private generator/value lemmas that lose their sole consumer in new complete second-square route omitted from new Rows.",
+  "acceptance": "Incremental actual child CPP with command linters and kernel/compiler enabled; standard native profile; preserve successful child coverage. No facade or gluing closure in this partial phase."
+}

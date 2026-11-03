@@ -1,0 +1,382 @@
+{
+  "phase": "final-imports-after-v19-accepted-proof",
+  "source_root": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/kunneth-mayer-optimization/aglib",
+  "head": "7545acd876b4ebf73f067d532ffa75263c01e26c",
+  "baseline_source": "4707aaadf9432b2050204046021f2f6214e03366e9ba64fe1458d10e069a901c",
+  "inherited_afterimages": {
+    "count": 185,
+    "mismatches": 0,
+    "manifest": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/ready-publication/MANIFEST.json",
+    "manifest_sha256": "1e3bc7f020f83c1f7efac8ee92f558fec99e9a6bd04e9860854b7d6893c6f601"
+  },
+  "files": {
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Boundary.lean": "7fd67510756c64b5b52100045eb28c32359692421e9be48f5203d3bf41675c4a",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Compatibility.lean": "780620de462206d55167594c8e32d1799c48af13dc4d74636cf1ec2795777997",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/FirstSquare.lean": "3e6638f6211269cc47d98cc2edbeb29e64e542b7f53db2a50081409cab679549",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.lean": "566379b7b853911edcc4abade606c984c9544093010f57a43c17a57285d0c1b7",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Restriction.lean": "a805e1eb10a97a6a0113413f54b57b3d5af95e7eb94f2d371d25a7a7c41cb39b",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/RestrictionAssembly.lean": "03c4d65b7ff274f299a56010cb5c1c02c4ec703b5da4bc5ac0a210af02046663",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/RestrictionBasic.lean": "854bde203db65b2c86b8bf457eae99c4e5d00b98e3e1a06a45637af418434009",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/RestrictionLinearAlgebra.lean": "daea09a088d9035fb5391225b4ad543c62017784a0588c64b682420481fe309b",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/RestrictionValues.lean": "b8c3ffd1e93eb1eee4cddfe62b3f831024d548befbbcc0ae58b42f364f3205af",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Rows.lean": "440c4d1676b756b9f59ce6df055d8834cec97bba0adf9d9130966c147c72d92f",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/SecondSquare.lean": "d1f18546f2c6b1e9141cb179f751a95a6f6ecdc1c9a330a5037a5acb4797a31f",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/SourceEquations.lean": "40f5d42bef62468971728a2a92342a452c717fef7c891125c0cd76490c3c01eb",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean": "c983670ccee324ac957227c9725a600661f05e3b1b95453406dd78274766b49a",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/GluingInjective.lean": "83f786a704bebec4fd37bf7f4a1114a1e0b299dbf04a475d8744610629d16e7b",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/GluingSurjective.lean": "28a3e104800ac493e1512dfbdee6fb1c7ffc775ab39389a98e39ec5681eeb0e1"
+  },
+  "changed_children": [
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/SecondSquare.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/SourceEquations.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Boundary.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Restriction.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/RestrictionBasic.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/FirstSquare.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/RestrictionLinearAlgebra.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Compatibility.lean"
+  ],
+  "targets": [
+    "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris",
+    "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.Kunneth",
+    "AglibTest.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris"
+  ],
+  "retained_providers": {
+    "source": "4a0c3f05e9426307336e577e68b4bef514e63d87b45f766a0a20fd51e9be4891",
+    "run": "remote-78724de7debc4d30a4440a1db45a6700",
+    "LinearAlgebra": "566379b7 / CPP0 / 6.157831s",
+    "Rows": "440c4d16 / CPP0 / 191.381645s"
+  },
+  "public_correspondence": "All8 original public signatures remain byte-identical. Material text change: structureOpenKunnethMap_restriction proof body now specializes a complete generic law; entire8-declaration byte identity no longer claimed. Other7 original public declaration bodies retained. No new model, hypothesis, global instance, allowance, axiom/sorry, sign/degree/universe loss.",
+  "boundary": "Final15-source import-minimal candidate. Coherent v19 CPP is on exact pre-cleanup17source inputs; final2import-edge edits remain explicit for Root integration coverage. No programme/established/fullgate closure claim.",
+  "execution_condition": "Final proof/math frozen. Root owns actual-main adoption/Git/entries/configured final checks and any affected changed-import compilation within that integration; no new oldbaseline/provider replay or additional acceptance chain is created by this handback.",
+  "acceptance": "Coherent actual incremental CPP of all changed children, Compatibility/facade and the named actual Kunneth/test consumers, per-module unprofiled durations and source bindings. Root owns actual-main adoption, enrollment/final configured checks, Git and affected independent math review.",
+  "changes_from_v5": "Split original first3 public declarations unchanged into RestrictionBasic. Added complete generic whole DirectSum/tensor map naturality over the SAME original ModuleCat families, with independent ring/first/second/target carrier universes. Replaced only the fourth public proof body with one inferred complete producer application. Original public map definition, all8 signatures, actual arrows, opens, choices and both Koszul signs remain.",
+  "diagnostic_basis": {
+    "run": "remote-4b131452926c421d972ed8905b91b430",
+    "source": "Bda546/oldCompatibility939",
+    "probe_sha256": "7a82343c430880cb59557fa9bd5f4a5f39e21a00f3bf4de04ede11ed22d17b80",
+    "setup_exit": 0,
+    "process_exit": 124,
+    "elapsed_seconds": 183.767532,
+    "file_markers": [
+      "BEFORE_CUP",
+      "AFTER_CUP",
+      "AFTER_TENSOR",
+      "AFTER_RESTRICTION"
+    ],
+    "missing_marker": "AFTER_MAP",
+    "meaning": "Source progress through first3 declarations reached; fourth completion not observed. Not async kernel completion or unique-cause attribution. No unchanged183s replay."
+  },
+  "changes_from_v6": "Changed only RestrictionLinearAlgebra and Restriction. Complete generic DirectSum square now leaves the coordinate arrow implicit, inferred from the public original component naturality equation retained as hNat. Source and target families/linear actions are those of the original external tensor maps; no manually rebuilt component map or new cohomology model. Original public8 types/maps remain; only fourth proof body differs.",
+  "changed_for_next_cpp": [
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/GluingInjective.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/GluingSurjective.lean"
+  ],
+  "retained_partial_v6": {
+    "source": "6fb9f455ac5a4994147cb6a034e698d3fea86ec45a3756ef0d2c1a5603adc26d",
+    "run": "remote-507d97d3aefc4047aaea693a722d5a85",
+    "RestrictionBasic": {
+      "sha256": "854bde203db65b2c86b8bf457eae99c4e5d00b98e3e1a06a45637af418434009",
+      "exit": 0,
+      "reported_seconds": 100.1,
+      "basis": "native partial report; exact compiler-event time pending"
+    },
+    "former_RestrictionLinearAlgebra": {
+      "sha256": "7dcbb22d36bafe12ffc6121c9e7489aefd70488c0e5aa5476bc2aadb30994338",
+      "exit": 0,
+      "reported_seconds": 3.8,
+      "retention": "actual old generic law success remains v6 evidence; changed v7 generic needs new CPP"
+    },
+    "failed_Restriction": {
+      "sha256": "5b731ab59b1393ed10e775b25acd791fa0d2028d62fe591aa9cdb54d413140b8",
+      "line": 49,
+      "reported_seconds": 91.8,
+      "failure": "whnf heartbeat200000 when supplying public component naturality to manually bundled expected equation"
+    },
+    "healthy_B_branches": "Boundary and inherited old KunnethOpenAffine still running; preserve their actual source and process ownership."
+  },
+  "root_owned_consumer_afterimage": {
+    "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenAffine.lean",
+    "observed_sha256": "9662af136374afeaeb842d08b47c9f46a43d8216497b5c21ce2bbec69a4cfa26",
+    "basis": "Root-confirmed exact actual-main2f9662 afterimage; MAIN-CONSUMER-AFFINE-APPLIED.json. Not written by author; old6fb stays oldb2f."
+  },
+  "changes_from_v7": "Retain passed RLAdaea/Basic854b/Boundary7fd/Linear566/Rows440. Add generic whole-map assembly whose conclusion literally names supplied original F/K/L/g, proved from their canonical generator laws and the passed inferred-component DirectSum law. Add the original native restriction-generator value law. Native public fourth proof supplies the original whole maps and original component/generator laws; no conversion from rebuilt whole maps is left at final exact. The native source value proof unfolds only the two original map constructors and infers their stored coordinate family, avoiding a manually rebuilt native tensorMap application.",
+  "actual_v7": {
+    "source": "3c571cac2825f26ad1835b6484d7241284d1007833bcfb2859e73d9ba21ad2eb",
+    "run": "remote-3302029824ff414db9283638b2f35586",
+    "RLA_daea": {
+      "exit": 0,
+      "seconds": 2.529537,
+      "retained": true
+    },
+    "Restriction446f": {
+      "exit": 1,
+      "seconds": 48.174841,
+      "site": "declaration34:0 whnf200000"
+    }
+  },
+  "actual_v7_diagnostic": {
+    "source": "same3c571",
+    "run": "remote-ad3d45e787db4fb5b50826db8aa6d2ed",
+    "probe_sha": "792672da6154546f5195c710a9d00f3f4b1313f7e1fdf72954f9be3294ef26cc",
+    "setup_exit": 0,
+    "process_exit": 1,
+    "seconds": 55.74242,
+    "reached": [
+      "BEFORE_DECL",
+      "PROOF_ENTRY",
+      "AFTER_NATIVE_EQUATIONS",
+      "AFTER_GENERIC_EQUATION",
+      "AFTER_DECL"
+    ],
+    "not_reached": "AFTER_EXACT",
+    "boundary": "Final exact completion unobserved after both equations constructed. AFTER_DECL is error recovery/source progress, not proof acceptance or unique kernel-phase evidence. No repeat probe."
+  },
+  "changes_from_v8": "One-line Values repair only: after unfolding the original two map constructors, apply DirectSum.lmap_lof to the complete current equation, so its entire original indexed families and coordinate map are inferred from the goal before any isolated element argument. No new model, map, assumption, option or signature change.",
+  "actual_v8": {
+    "source": "a1e031aba0320687edf2b0a4694ba8c28bbc89f7f78e9eb136014307ea1a018f",
+    "run": "remote-00bf38dcb8a94a45a7d802a6141b1935",
+    "Assembly03c4d65b": {
+      "exit": 0,
+      "seconds": 2.829854,
+      "retained": true
+    },
+    "Values_e7e5": {
+      "exit": 1,
+      "seconds": 135.086553,
+      "site": "43:31 argument z expected ?m.86 s in DirectSum.lmap_lof ?m.92 s z"
+    },
+    "later_targets": "NOT RUN"
+  },
+  "changes_from_v9": "Only wrap the actual102-character SourceEquations83 line; Lean tokens/proofs/maps/types unchanged. Cheap length inspection of SourceEquations/FirstSquare/SecondSquare/Compatibility/facade found no other non-import line over100. Existing checks retained.",
+  "actual_v9": {
+    "source": "ad8e1d3bc8d656dc4aed90ee502b6e6daf629f12fb672a0f7c595865266606cc",
+    "run": "remote-3929d4cb988d40928e3b04e0fa105f97",
+    "Values_b8c3": {
+      "exit": 0,
+      "seconds": 137.169008,
+      "retained": true
+    },
+    "Restriction_a805": {
+      "exit": 0,
+      "seconds": 130.726776,
+      "retained": true
+    },
+    "SourceEquations3735": {
+      "exit": 1,
+      "seconds": 275.204008,
+      "only_reported_error": "83:100 line exceeds100 characters",
+      "boundary": "No other errors reported is not CPP0. Line-wrap source needs actual CPP."
+    },
+    "later_targets": "NOT RUN"
+  },
+  "changes_from_v10": "Only SecondSquare changes. Move the target-arrow equality and whole difference-square composition together into a variable-presheaf lemma whose conclusion keeps the supplied original middle map literal. Its value law is proved from the same chosen biprodIsoProd inverse cancellation, as in passed FirstSquare. All actual maps/presheaf/opens/module actions/source equivalence are unchanged; no new public premise or instance.",
+  "actual_v10": {
+    "source": "473acf8a",
+    "run": "remote-de225eaf461c4a8682c7df515ddf4194",
+    "SourceEquations40f5": {
+      "exit": 0,
+      "seconds": 269.412019,
+      "retained": true
+    },
+    "FirstSquare3e66": {
+      "exit": 0,
+      "seconds": 101.693065,
+      "retained": true
+    },
+    "SecondSquare8ae5": {
+      "exit": 1,
+      "seconds": 118.055862,
+      "site": "85:34 hTargetMap.trans h whnf200000"
+    },
+    "later_targets": "NOT RUN"
+  },
+  "changes_from_v11": "Facade private positive-degree proof only: retain source exact-third producer at inferred type and supply its exact original tensorBoundary constructor in the fivelemma telescope. This is definitionally the unchanged public structureOpenKunnethBoundary, with the same actual maps/actions/choice data and both Koszul signs. No new premise, instance, option or public signature/body change.",
+  "actual_v11": {
+    "source": "440e4f05c0849f7b49bc195108e46c25ecc728d23aa3e30996dbe8caf5f99282",
+    "run": "remote-289282ee4fa74319b4f9bff143efca02",
+    "SecondSquare_d1f": {
+      "exit": 0,
+      "seconds": 88.120485,
+      "retained": true
+    },
+    "Compatibility7806": {
+      "exit": 0,
+      "seconds": 2.492779,
+      "retained": true
+    },
+    "facade0fc": {
+      "exit": 1,
+      "seconds": 76.996011,
+      "only_error": "83:4 whnf200000 at source exact-third proof argument"
+    },
+    "actual_consumers": "NOT RUN"
+  },
+  "changes_from_v12": "Facade private positive-degree proof only: infer the entire original fivelemma application as hResult before checking it against the original public bijectivity goal. All arguments/exactness/maps and the producer-native original boundary head are unchanged. No new model, premise, instance, budget or option.",
+  "actual_v12": {
+    "source": "e403b1ea00f01e1434b7fe3ff22e2a3c44a313984e6e623b4ef1159932d3cd3e",
+    "run": "remote-4a371fecbf6247bdb231d6cdd77d23c0",
+    "facade_d52": {
+      "exit": 1,
+      "seconds": 69.958823,
+      "primary_error": "57:0 whnf200000",
+      "other_error": "99:8 kernel unknown private succ constant; potential cascade, no unique-cause claim"
+    },
+    "children": "all12 reused",
+    "actual_consumers": "NOT RUN"
+  },
+  "changes_from_v13": "Complete variable-ModuleCat fivelemma telescope and canonical original tensor-sum module package in focused Gluing child. Native positive-degree proof pins all ten existing source/target module objects before maps/exactness, using same structureOriginalFirstModule/native open families and actual biproducts. No new cohomology model, action, transport, premise, global instance or allowance; private application only, public8 unchanged.",
+  "actual_v13": {
+    "source": "3a923995c9bdc348c6f43770bbf7b3b2786be4b1766356993bf731b3edbd0728",
+    "run": "remote-9343884508fe4761b8d0f88fb52da638",
+    "facade_b525": {
+      "exit": 1,
+      "seconds": 70.132998,
+      "primary_error": "57:0 whnf200000",
+      "other_error": "100:8 unknown private succ constant, possible cascade"
+    },
+    "children": "all12 retained",
+    "actual_consumers": "NOT RUN"
+  },
+  "changes_from_v14": "Restore exactly the original bd064 monolith file-local3 backward elaboration options lost in the facade split: useBackward true, respectTransparency false, respectTransparency.types false. Imports do not inherit these. Proof bodies/objects/maps/actions/signatures and all13 already-passed child source hashes unchanged. This is baseline-input restoration, not a new budget/check allowance.",
+  "material_evidence_correction": "Prior facade v11-v14 failures remain actual source-bound failures under the missing original3 file-local policies. They do not test the original monolith elaboration policy; no unique kernel or body-representation cause follows from those70s failures. File/config hashes alone did not establish effective-option parity.",
+  "actual_v14": {
+    "source": "02ff621acc3fe4da25d4bc48dc21d4316c31a58cb774d950c7346dc7aefab10b",
+    "run": "remote-eae1566e48e941c5a43adff12e7cbe25",
+    "Gluing_d04f": {
+      "exit": 0,
+      "seconds": 2.593129,
+      "retained": true
+    },
+    "facade_2c9": {
+      "exit": 1,
+      "seconds": 72.835447,
+      "policy": "missing original3file-local settings",
+      "primary_error": "57:0 whnf200000",
+      "other_error": "118:8 unknown private succ constant, possiblecascade"
+    },
+    "actual_consumers": "NOT RUN"
+  },
+  "changes_from_v15": "Split the exact original fivelemma into the injectivity and surjectivity fourlemma arguments used by pinned Mathlib. Complete variable-module helpers and two independent native leaves fix the SAME original module objects/actions, arrows and necessary exactness facts. Parent private successor pairs the two literal function properties. Existing13 successful children unchanged; exact original3 native elaboration flags copied to both leaves. No new models/publicpremises/allowances.",
+  "actual_localization": {
+    "run": "remote-e60422af7dbf477bb3d2f5004c70558c",
+    "source": "f8f5/actual126f",
+    "probe": "108b648fb5846a1736759cc23e70bd93b07d51c630ab4b88e9cb3173dc0704fd",
+    "setup": 0,
+    "process": 124,
+    "seconds": 93.20321,
+    "reached": [
+      "BEFORE_SUCC",
+      "SUCC_PROOF_ENTRY",
+      "AFTER_VERTEX_FAMILIES",
+      "AFTER_SOURCE_EXACT",
+      "AFTER_SUCC"
+    ],
+    "not_reached": [
+      "AFTER_FIVE_LEMMA",
+      "AFTER_EXACT"
+    ],
+    "boundary": "Source progress only; AFTER_SUCC mayerrorrecovery; no uniquekernelclaim. Whole application remains boundary, not statementformation."
+  },
+  "changes_from_v16": "Native fourlemma interfaces now take only the three actual-map injectivity/surjectivity facts each consumes. Parent infers the two existing original middle-bijectivity producers once, then passes projections; original public\u2200degree assumptions retained unchanged. This removes full-family side hypotheses and nested native producer application from each already-pinned native telescope. Same objects/maps/exactness/actions/signs/options/limits; no new model or public premise.",
+  "actual_v16": {
+    "source": "a243bcd4355e038c434f66855aa4bb34b6306172afd527c1cec53d44b0425a6f",
+    "run": "remote-c0425db7dae44eaeb17552da3d714f24",
+    "GluingFour_ce8425": {
+      "exit": 0,
+      "seconds": 2.296074,
+      "retained": true
+    },
+    "Injective2fbd": {
+      "exit": 1,
+      "seconds": 34.274587,
+      "site": "41:0 whnf200000"
+    },
+    "Surjective4dc0": {
+      "exit": 1,
+      "seconds": 34.50071,
+      "site": "41:0 whnf200000"
+    },
+    "facade_consumers": "NOT RUN"
+  },
+  "changes_from_v17": "Only two nativeleaves: remove forced canonical ModuleCat vertex arguments and use existing Mathlib LinearMap fourlemma APIs on identical original arrows. Their full actual carrier/action data are inferred from those maps. Thin required sideproperties, inferredresult, original3flags, every square/exactness argument and parent assembly unchanged. Stable14providers are not edited.",
+  "actual_v17_localization": {
+    "source": "53bebe8b328919f7f371976c90e76787914ffae930c45530d04c84e2d3ddc1e3",
+    "run": "remote-cede8c8d4129488cb4115e8b245a5c3a",
+    "probe": "81d2ee43f8411f5767afc7835f70a6fcbadfdd7200afc97b3bed91abe45fe86c",
+    "exit": 1,
+    "elapsed_seconds": 38.367553,
+    "frontend_seconds": 33.370257,
+    "reached": [
+      "BEFORE_SURJ",
+      "PROOF_ENTRY",
+      "BEFORE_OBJECTS",
+      "AFTER_OBJECTS",
+      "AFTER_DECL"
+    ],
+    "not_reached": "AFTER_MAPS and later stages",
+    "boundary": "Actual maps not accepted against supplied modulevertices; AFTER_DECL mayerrorrecovery. No unique kernelcause. This motivates original-arrow endpoint inference, not another unchangedretry."
+  },
+  "changes_from_v18": "Use existing public structureOpenKunnethBoundary arrow so the actual boundary-square types match literally. Infer original boundarysquare once. Only injectivity needs sourceexact-second/third; bridge each topublicboundary by unfolding its single original definition and using original Rows proof. No new model/map/assumption/options; same target rows and all signs.",
+  "actual_v18": {
+    "source": "0b8ac915624812f26a017f4293fa3cd6672e4c5d19ff6f807f6522bb2f08ac01",
+    "run": "remote-0321c2968f1147a78fa78f1e0c36cd0d",
+    "Injective2357": {
+      "exit": 1,
+      "seconds": 31.863599,
+      "site": "41:0 whnf200000"
+    },
+    "Surjective0c6f": {
+      "exit": 1,
+      "seconds": 50.432133,
+      "site": "63:4 boundarysquare isDefEq200000"
+    },
+    "later": "NOT RUN"
+  },
+  "removed_unused_sources": [
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Gluing.lean",
+      "sha256": "d04f3570e519f225f1c0459cae7f6641112a19d1f86ce818ac5f5d44ae7805f1",
+      "retained_source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/kunneth-mayer-optimization/case-staging/sources/accepted-v19/Gluing.lean.txt"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/GluingFour.lean",
+      "sha256": "ce8425f9bde2c2d125babc252ce5c0769a8478a23f2a9baad4b8b273007fadee",
+      "retained_source": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/kunneth-mayer-optimization/case-staging/sources/accepted-v19/GluingFour.lean.txt"
+    }
+  ],
+  "final_import_only_changes": [
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/GluingInjective.lean",
+      "before_sha256": "656e9c7d24b7a23dc1424212bda3cfb8d598472ee0fad537f65b806c629764b8",
+      "after_sha256": "83f786a704bebec4fd37bf7f4a1114a1e0b299dbf04a475d8744610629d16e7b",
+      "change": "single public import replacement; declarations/proofs byte-identical"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/GluingSurjective.lean",
+      "before_sha256": "231507f12b4333f346e724f97c9c83d3ef342332f5551f512b71e97e07b2e74d",
+      "after_sha256": "28a3e104800ac493e1512dfbdee6fb1c7ffc775ab39389a98e39ec5681eeb0e1",
+      "change": "single public import replacement; declarations/proofs byte-identical"
+    }
+  ],
+  "accepted_v19_cpp": {
+    "source": "cb6b9d714387e950fc43dbf2639fbf40bdf1456be4972958b2ee7a6dce2ed093",
+    "run": "remote-f95cd274ee324d4685cbb2fa1f94e2ae",
+    "exit": 0,
+    "group_closed": true,
+    "fresh_frontends": {
+      "GluingSurjective2315": 45.321609,
+      "GluingInjective656e": 81.066435,
+      "facade_c983": 78.39142,
+      "actual_Kunneth": 35.212268,
+      "existing_Mayer_test": 18.718337
+    },
+    "retention": "Actual v19 proof bodies and full target graph passed; retained suppliers bound to earlier source/run records. Final two import edits are NOT relabeled as v19 source CPP."
+  },
+  "generic_disposition": {
+    "decision": "Omit Gluing and GluingFour from final candidate",
+    "evidence": "Source identifier search over production Aglib and AglibTest finds their four public declarations only at definitions. Neither file registers instances/simp/automation. Native proof bodies call only existing LinearMap fourlemma functions, now imported directly from Mathlib.Algebra.FiveLemma. This is not based merely on redundant imports.",
+    "body_preservation": "All native theorem statements and proof bodies byte-identical across final import edits. No mathematical repair after v19."
+  }
+}

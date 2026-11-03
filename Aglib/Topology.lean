@@ -38,6 +38,7 @@ public import Aglib.Topology.Sheaves.Cohomology.OpenTransfer.CompositionSquare
 public import Aglib.Topology.Sheaves.Cohomology.OpenTransfer.NormalizedScalarRestrictionSquare
 public import Aglib.Topology.Sheaves.Cohomology.OpenTransfer.RestrictionCoefficientSquare
 public import Aglib.Topology.Sheaves.Cohomology.OpenTransfer.RestrictionSquare
+public import Aglib.Topology.Sheaves.Cohomology.OpenTransfer.ScalarRestrictionSquare
 public import Aglib.Topology.Sheaves.Cohomology.Restriction
 public import Aglib.Topology.Sheaves.Cohomology.Restriction.Geometric
 public import Aglib.Topology.Sheaves.Cohomology.SectionCycles

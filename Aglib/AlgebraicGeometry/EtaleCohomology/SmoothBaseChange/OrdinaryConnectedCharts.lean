@@ -42,7 +42,7 @@ private theorem originalUnit_restriction_paste
       simp only [op_comp, Q.map_comp, Category.assoc]
 
 /-- Invertible original unit restrictions detect the literal mate component. -/
-private theorem originalMate_component_isIso_of_units
+theorem originalMate_component_isIso_of_units
     {C D E : Type*} [Category C] [Category D] [Category E]
     (R : C ⥤ D) (P : Cᵒᵖ ⥤ E) (Q : Dᵒᵖ ⥤ E) (β : P ⟶ R.op ⋙ Q)
     {U T : C} {V : D} {A : E} (a : T ⟶ U) (σ : R.obj U ⟶ V)
@@ -58,7 +58,7 @@ private theorem originalMate_component_isIso_of_units
 /-- Evaluate the original continuous-site horizontal unit square before
 specializing its site functors. The native pushforward section comparisons
 have identity components, so their original section carriers remain unchanged. -/
-private theorem originalContinuousSquare_unit_evaluation
+theorem originalContinuousSquare_unit_evaluation
     {C D C' D' E : Type*}
     [Category C] [Category D] [Category C'] [Category D'] [Category E]
     (J : GrothendieckTopology C) (K : GrothendieckTopology D)

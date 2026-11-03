@@ -1,0 +1,53 @@
+{
+  "context": "universe u; variable {k : Type u} [Field k] (X Y : FScheme k); local Over.cartesianMonoidalCategory",
+  "declarations": [
+    {
+      "kind": "theorem",
+      "name": "AlgebraicGeometry.Scheme.Cohomology.structureExternalOpenCup_restriction",
+      "signature": "theorem structureExternalOpenCup_restriction {U V : Y.left.Opens} (i : U ⟶ V)\n    {p q n : ℕ} (h : p + q = n) (x : structureCohomology k X p)\n    (y : structureOpenCohomology Y V q) :\n    structureExternalOpenCup X Y U h x (structureOpenRestriction Y i q y) =\n      structureOpenRestriction (X ⊗ Y) ((Opens.map (snd X Y).left.base).map i) n\n        (structureExternalOpenCup X Y V h x y)",
+      "original_line": 419
+    },
+    {
+      "kind": "theorem",
+      "name": "AlgebraicGeometry.Scheme.Cohomology.structureExternalOpenTensor_restriction",
+      "signature": "theorem structureExternalOpenTensor_restriction {U V : Y.left.Opens} (i : U ⟶ V)\n    {p q n : ℕ} (h : p + q = n) :\n    structureExternalOpenTensor X Y U h ∘ₗ\n        TensorProduct.map LinearMap.id (structureOpenRestriction Y i q) =\n      structureOpenRestriction (X ⊗ Y) ((Opens.map (snd X Y).left.base).map i) n ∘ₗ\n        structureExternalOpenTensor X Y V h",
+      "original_line": 459
+    },
+    {
+      "kind": "def",
+      "name": "AlgebraicGeometry.Scheme.Cohomology.structureOpenKunnethRestriction",
+      "signature": "def structureOpenKunnethRestriction {U V : Y.left.Opens} (i : U ⟶ V) (n : ℕ) :\n    structureOpenKunnethSum X Y V n →ₗ[k] structureOpenKunnethSum X Y U n",
+      "original_line": 472
+    },
+    {
+      "kind": "theorem",
+      "name": "AlgebraicGeometry.Scheme.Cohomology.structureOpenKunnethMap_restriction",
+      "signature": "theorem structureOpenKunnethMap_restriction {U V : Y.left.Opens} (i : U ⟶ V) (n : ℕ) :\n    structureOpenKunnethMap X Y U n ∘ₗ structureOpenKunnethRestriction X Y i n =\n      structureOpenRestriction (X ⊗ Y) ((Opens.map (snd X Y).left.base).map i) n ∘ₗ\n        structureOpenKunnethMap X Y V n",
+      "original_line": 478
+    },
+    {
+      "kind": "theorem",
+      "name": "AlgebraicGeometry.Scheme.Cohomology.structureExternalOpenCup_mayerVietoris_smul",
+      "signature": "theorem structureExternalOpenCup_mayerVietoris_smul (U V : Y.left.Opens)\n    {p q n : ℕ} (h : p + q = n) (x : structureCohomology k X p)\n    (y : structureOpenCohomology Y (U ⊓ V) q) :\n    structureExternalOpenCup X Y (U ⊔ V) (show p + (q + 1) = n + 1 by omega) x\n        (structureOpenMayerVietorisDelta Y U V q y) =\n      ((-1 : k) ^ p) • structureOpenMayerVietorisDelta (X ⊗ Y)\n        ((snd X Y).left ⁻¹ᵁ U) ((snd X Y).left ⁻¹ᵁ V) n\n        (structureExternalOpenCup X Y (U ⊓ V) h x y)",
+      "original_line": 602
+    },
+    {
+      "kind": "def",
+      "name": "AlgebraicGeometry.Scheme.Cohomology.structureOpenKunnethBoundary",
+      "signature": "def structureOpenKunnethBoundary (U V : Y.left.Opens) (n : ℕ) :\n    structureOpenKunnethSum X Y (U ⊓ V) n →ₗ[k]\n      structureOpenKunnethSum X Y (U ⊔ V) (n + 1)",
+      "original_line": 628
+    },
+    {
+      "kind": "theorem",
+      "name": "AlgebraicGeometry.Scheme.Cohomology.structureOpenKunnethMap_boundary",
+      "signature": "theorem structureOpenKunnethMap_boundary (U V : Y.left.Opens) (n : ℕ) :\n    structureOpenKunnethMap X Y (U ⊔ V) (n + 1) ∘ₗ structureOpenKunnethBoundary X Y U V n =\n      structureOpenMayerVietorisDelta (X ⊗ Y)\n          ((snd X Y).left ⁻¹ᵁ U) ((snd X Y).left ⁻¹ᵁ V) n ∘ₗ\n        structureOpenKunnethMap X Y (U ⊓ V) n",
+      "original_line": 635
+    },
+    {
+      "kind": "theorem",
+      "name": "AlgebraicGeometry.Scheme.Cohomology.structureOpenKunnethMap_bijective_sup",
+      "signature": "theorem structureOpenKunnethMap_bijective_sup (U V : Y.left.Opens)\n    (hU : ∀ n, Function.Bijective (structureOpenKunnethMap X Y U n))\n    (hV : ∀ n, Function.Bijective (structureOpenKunnethMap X Y V n))\n    (hI : ∀ n, Function.Bijective (structureOpenKunnethMap X Y (U ⊓ V) n)) :\n    ∀ n, Function.Bijective (structureOpenKunnethMap X Y (U ⊔ V) n)",
+      "original_line": 734
+    }
+  ]
+}

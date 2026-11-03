@@ -1,0 +1,18 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.Rows
+
+/- NONPRODUCTION marker/import control only; no Mayer–Vietoris proof is asserted. -/
+run_cmd do
+  let now ← IO.monoMsNow
+  let out ← IO.getStdout
+  out.putStr ("MAYER_PHASE ENTRY_CONTROL " + toString now + "\n")
+  out.flush
+
+/-- The control fixture proves only True. -/
+public theorem markerImportControl : True := True.intro

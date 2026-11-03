@@ -1,0 +1,149 @@
+{
+  "phase": "focused-compatibility-v9-whole-generator-inference",
+  "source_root": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/kunneth-mayer-optimization/aglib",
+  "head": "7545acd876b4ebf73f067d532ffa75263c01e26c",
+  "baseline_source": "4707aaadf9432b2050204046021f2f6214e03366e9ba64fe1458d10e069a901c",
+  "inherited_afterimages": {
+    "count": 185,
+    "mismatches": 0,
+    "manifest": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/ready-publication/MANIFEST.json",
+    "manifest_sha256": "1e3bc7f020f83c1f7efac8ee92f558fec99e9a6bd04e9860854b7d6893c6f601"
+  },
+  "files": {
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Boundary.lean": "7fd67510756c64b5b52100045eb28c32359692421e9be48f5203d3bf41675c4a",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Compatibility.lean": "780620de462206d55167594c8e32d1799c48af13dc4d74636cf1ec2795777997",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/FirstSquare.lean": "3e6638f6211269cc47d98cc2edbeb29e64e542b7f53db2a50081409cab679549",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.lean": "566379b7b853911edcc4abade606c984c9544093010f57a43c17a57285d0c1b7",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Restriction.lean": "a805e1eb10a97a6a0113413f54b57b3d5af95e7eb94f2d371d25a7a7c41cb39b",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/RestrictionAssembly.lean": "03c4d65b7ff274f299a56010cb5c1c02c4ec703b5da4bc5ac0a210af02046663",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/RestrictionBasic.lean": "854bde203db65b2c86b8bf457eae99c4e5d00b98e3e1a06a45637af418434009",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/RestrictionLinearAlgebra.lean": "daea09a088d9035fb5391225b4ad543c62017784a0588c64b682420481fe309b",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/RestrictionValues.lean": "b8c3ffd1e93eb1eee4cddfe62b3f831024d548befbbcc0ae58b42f364f3205af",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Rows.lean": "440c4d1676b756b9f59ce6df055d8834cec97bba0adf9d9130966c147c72d92f",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/SecondSquare.lean": "8ae52213015c7020fd10e855cf754f56914227e496a5cfec6116c57f5e70ce11",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/SourceEquations.lean": "37350b2df15ffb86410c32352356bcb226b4b4a7c72411eb491434cf3d636a31",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean": "0fc2e8ea1ff5ebdfe3efb65dd25607f0838590a1f0fb4a3bb6fc1df0e2e658fb"
+  },
+  "changed_children": [
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/SecondSquare.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/SourceEquations.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Boundary.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Restriction.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/RestrictionBasic.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/FirstSquare.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/RestrictionLinearAlgebra.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Compatibility.lean"
+  ],
+  "targets": [
+    "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris",
+    "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.Kunneth",
+    "AglibTest.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris"
+  ],
+  "retained_providers": {
+    "source": "4a0c3f05e9426307336e577e68b4bef514e63d87b45f766a0a20fd51e9be4891",
+    "run": "remote-78724de7debc4d30a4440a1db45a6700",
+    "LinearAlgebra": "566379b7 / CPP0 / 6.157831s",
+    "Rows": "440c4d16 / CPP0 / 191.381645s"
+  },
+  "public_correspondence": "All8 original public signatures remain byte-identical. Material text change: structureOpenKunnethMap_restriction proof body now specializes a complete generic law; entire8-declaration byte identity no longer claimed. Other7 original public declaration bodies retained. No new model, hypothesis, global instance, allowance, axiom/sorry, sign/degree/universe loss.",
+  "boundary": "v9 one-line Values repair uncompiled; prior actual v8 Assembly success retained. All original eight signatures/maps and both Koszul signs unchanged. No whole closure/performance claim until remaining actual graph passes.",
+  "execution_condition": "Current B idle/healthy. Direct ordinary incremental Values then ready Restriction/source/squares/facade/actualKunneth/test graph. Retain six passed provider artifacts including Assembly03c4d65b; no new profiling, fixtures, cache migration/recovery/export, old prefix or provider replay, broad umbrella, per-batch Root gate. Root9662 unchanged.",
+  "acceptance": "Coherent actual incremental CPP of all changed children, Compatibility/facade and the named actual Kunneth/test consumers, per-module unprofiled durations and source bindings. Root owns actual-main adoption, enrollment/final configured checks, Git and affected independent math review.",
+  "changes_from_v5": "Split original first3 public declarations unchanged into RestrictionBasic. Added complete generic whole DirectSum/tensor map naturality over the SAME original ModuleCat families, with independent ring/first/second/target carrier universes. Replaced only the fourth public proof body with one inferred complete producer application. Original public map definition, all8 signatures, actual arrows, opens, choices and both Koszul signs remain.",
+  "diagnostic_basis": {
+    "run": "remote-4b131452926c421d972ed8905b91b430",
+    "source": "Bda546/oldCompatibility939",
+    "probe_sha256": "7a82343c430880cb59557fa9bd5f4a5f39e21a00f3bf4de04ede11ed22d17b80",
+    "setup_exit": 0,
+    "process_exit": 124,
+    "elapsed_seconds": 183.767532,
+    "file_markers": [
+      "BEFORE_CUP",
+      "AFTER_CUP",
+      "AFTER_TENSOR",
+      "AFTER_RESTRICTION"
+    ],
+    "missing_marker": "AFTER_MAP",
+    "meaning": "Source progress through first3 declarations reached; fourth completion not observed. Not async kernel completion or unique-cause attribution. No unchanged183s replay."
+  },
+  "changes_from_v6": "Changed only RestrictionLinearAlgebra and Restriction. Complete generic DirectSum square now leaves the coordinate arrow implicit, inferred from the public original component naturality equation retained as hNat. Source and target families/linear actions are those of the original external tensor maps; no manually rebuilt component map or new cohomology model. Original public8 types/maps remain; only fourth proof body differs.",
+  "changed_for_next_cpp": [
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/RestrictionValues.lean"
+  ],
+  "retained_partial_v6": {
+    "source": "6fb9f455ac5a4994147cb6a034e698d3fea86ec45a3756ef0d2c1a5603adc26d",
+    "run": "remote-507d97d3aefc4047aaea693a722d5a85",
+    "RestrictionBasic": {
+      "sha256": "854bde203db65b2c86b8bf457eae99c4e5d00b98e3e1a06a45637af418434009",
+      "exit": 0,
+      "reported_seconds": 100.1,
+      "basis": "native partial report; exact compiler-event time pending"
+    },
+    "former_RestrictionLinearAlgebra": {
+      "sha256": "7dcbb22d36bafe12ffc6121c9e7489aefd70488c0e5aa5476bc2aadb30994338",
+      "exit": 0,
+      "reported_seconds": 3.8,
+      "retention": "actual old generic law success remains v6 evidence; changed v7 generic needs new CPP"
+    },
+    "failed_Restriction": {
+      "sha256": "5b731ab59b1393ed10e775b25acd791fa0d2028d62fe591aa9cdb54d413140b8",
+      "line": 49,
+      "reported_seconds": 91.8,
+      "failure": "whnf heartbeat200000 when supplying public component naturality to manually bundled expected equation"
+    },
+    "healthy_B_branches": "Boundary and inherited old KunnethOpenAffine still running; preserve their actual source and process ownership."
+  },
+  "root_owned_consumer_afterimage": {
+    "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenAffine.lean",
+    "observed_sha256": "9662af136374afeaeb842d08b47c9f46a43d8216497b5c21ce2bbec69a4cfa26",
+    "basis": "Root-confirmed exact actual-main2f9662 afterimage; MAIN-CONSUMER-AFFINE-APPLIED.json. Not written by author; old6fb stays oldb2f."
+  },
+  "changes_from_v7": "Retain passed RLAdaea/Basic854b/Boundary7fd/Linear566/Rows440. Add generic whole-map assembly whose conclusion literally names supplied original F/K/L/g, proved from their canonical generator laws and the passed inferred-component DirectSum law. Add the original native restriction-generator value law. Native public fourth proof supplies the original whole maps and original component/generator laws; no conversion from rebuilt whole maps is left at final exact. The native source value proof unfolds only the two original map constructors and infers their stored coordinate family, avoiding a manually rebuilt native tensorMap application.",
+  "actual_v7": {
+    "source": "3c571cac2825f26ad1835b6484d7241284d1007833bcfb2859e73d9ba21ad2eb",
+    "run": "remote-3302029824ff414db9283638b2f35586",
+    "RLA_daea": {
+      "exit": 0,
+      "seconds": 2.529537,
+      "retained": true
+    },
+    "Restriction446f": {
+      "exit": 1,
+      "seconds": 48.174841,
+      "site": "declaration34:0 whnf200000"
+    }
+  },
+  "actual_v7_diagnostic": {
+    "source": "same3c571",
+    "run": "remote-ad3d45e787db4fb5b50826db8aa6d2ed",
+    "probe_sha": "792672da6154546f5195c710a9d00f3f4b1313f7e1fdf72954f9be3294ef26cc",
+    "setup_exit": 0,
+    "process_exit": 1,
+    "seconds": 55.74242,
+    "reached": [
+      "BEFORE_DECL",
+      "PROOF_ENTRY",
+      "AFTER_NATIVE_EQUATIONS",
+      "AFTER_GENERIC_EQUATION",
+      "AFTER_DECL"
+    ],
+    "not_reached": "AFTER_EXACT",
+    "boundary": "Final exact completion unobserved after both equations constructed. AFTER_DECL is error recovery/source progress, not proof acceptance or unique kernel-phase evidence. No repeat probe."
+  },
+  "changes_from_v8": "One-line Values repair only: after unfolding the original two map constructors, apply DirectSum.lmap_lof to the complete current equation, so its entire original indexed families and coordinate map are inferred from the goal before any isolated element argument. No new model, map, assumption, option or signature change.",
+  "actual_v8": {
+    "source": "a1e031aba0320687edf2b0a4694ba8c28bbc89f7f78e9eb136014307ea1a018f",
+    "run": "remote-00bf38dcb8a94a45a7d802a6141b1935",
+    "Assembly03c4d65b": {
+      "exit": 0,
+      "seconds": 2.829854,
+      "retained": true
+    },
+    "Values_e7e5": {
+      "exit": 1,
+      "seconds": 135.086553,
+      "site": "43:31 argument z expected ?m.86 s in DirectSum.lmap_lof ?m.92 s z"
+    },
+    "later_targets": "NOT RUN"
+  }
+}

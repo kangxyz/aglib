@@ -148,3 +148,13 @@ Each source states the exact hypotheses, maps, and realization bounds of its int
 - [GenericCoverCoefficientZeroSpreading](GenericCoverCoefficientZeroSpreading.lean)
 - [GenericCoverZeroSpreading](GenericCoverZeroSpreading.lean)
 - [PrincipalLocalizationInjectiveAcyclic](PrincipalLocalizationInjectiveAcyclic.lean)
+
+## Whole-cover and coefficient spreading interfaces
+
+[PointedLimitCoverZero](PointedLimitCoverZero.lean),
+[WholeGenericCoverCoefficientZeroSpreading](WholeGenericCoverCoefficientZeroSpreading.lean)
+and [CoefficientGenericCoverZeroSpreading](CoefficientGenericCoverZeroSpreading.lean)
+record distinct limit-cover and coefficient-spreading interfaces. Their
+displayed zero, spreading, map and universe hypotheses remain attached to each
+result; a generic-open or finite-field zero does not by itself supply the
+whole-cover premise.

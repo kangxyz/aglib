@@ -1,0 +1,47 @@
+{
+  "boundary": "Complete bulk evidence is retained at these hash-bound task paths; no material deleted or raw trace relabeled.",
+  "files": [
+    {
+      "case_relative_path": "diagnostics/first244/formation.log",
+      "complete_retained_path": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/kunneth-mayer-optimization/case-staging/diagnostics/first244/formation.log",
+      "sha256": "aa8d6802638799e89d1d6677778559f8cc75e499032aeb9055d17897c0d654ea",
+      "bytes": 12306153,
+      "reason": "Bulk complete original trace/setup retained in assigned task scratch; compact case exports index, not redundant bulk."
+    },
+    {
+      "case_relative_path": "diagnostics/first244-inferred/formation.log",
+      "complete_retained_path": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/kunneth-mayer-optimization/case-staging/diagnostics/first244-inferred/formation.log",
+      "sha256": "4716d548f7ba2325d656bb190865a33d6f7acbc1c5d739a5f258cb29e3547298",
+      "bytes": 12524623,
+      "reason": "Bulk complete original trace/setup retained in assigned task scratch; compact case exports index, not redundant bulk."
+    },
+    {
+      "case_relative_path": "diagnostics/generic220/setup.json",
+      "complete_retained_path": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/kunneth-mayer-optimization/case-staging/diagnostics/generic220/setup.json",
+      "sha256": "5e4692ee28fbbea627c4a884914abc362d64d27fbdb4fa3a10cd816f9ce34a38",
+      "bytes": 2473852,
+      "reason": "Bulk complete original trace/setup retained in assigned task scratch; compact case exports index, not redundant bulk."
+    },
+    {
+      "case_relative_path": "diagnostics/rows417/formation.log",
+      "complete_retained_path": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/kunneth-mayer-optimization/case-staging/diagnostics/rows417/formation.log",
+      "sha256": "6362cf2bd16e8676eaa4af54ea6551fb411754317f0f08481eb26f76ccb4abac",
+      "bytes": 12701696,
+      "reason": "Bulk complete original trace/setup retained in assigned task scratch; compact case exports index, not redundant bulk."
+    },
+    {
+      "case_relative_path": "diagnostics/rows417/setup.json",
+      "complete_retained_path": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/kunneth-mayer-optimization/case-staging/diagnostics/rows417/setup.json",
+      "sha256": "5e4692ee28fbbea627c4a884914abc362d64d27fbdb4fa3a10cd816f9ce34a38",
+      "bytes": 2473852,
+      "reason": "Bulk complete original trace/setup retained in assigned task scratch; compact case exports index, not redundant bulk."
+    },
+    {
+      "case_relative_path": "diagnostics/value263/formation.log",
+      "complete_retained_path": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/kunneth-mayer-optimization/case-staging/diagnostics/value263/formation.log",
+      "sha256": "bc8f6a60a2e60a560f3f07151315e95f299307d9555fd5ab5dd17cf459d24bf0",
+      "bytes": 6250074,
+      "reason": "Bulk complete original trace/setup retained in assigned task scratch; compact case exports index, not redundant bulk."
+    }
+  ]
+}

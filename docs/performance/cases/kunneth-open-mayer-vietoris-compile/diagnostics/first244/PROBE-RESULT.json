@@ -1,0 +1,48 @@
+{
+  "source": "4707aaadf9432b2050204046021f2f6214e03366e9ba64fe1458d10e069a901c",
+  "results": [
+    {
+      "question": "Does checking the original structureOpenMVFirst definition already account for the bounded native-row stall? Cut at first definition before second, value proofs or exactness.",
+      "actual_source": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean",
+      "actual_sha": "bd06444b85d5aea9ee84ec4acb54bdc385a9bd078234e7adfd3cb15e594ad3c8",
+      "probe_sha": "b8fcd0272a85a22c9003e4df6736c3af6d7ceda3e28cad2dc34464f5dedc645f",
+      "setup_exit": 0,
+      "completion_claim": "Real-body first244 bounded profiler only; no whole module CPP or speedup",
+      "setup_identity": {
+        "name": "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris",
+        "moduleName": null,
+        "isModule": true,
+        "options": {
+          "autoImplicit": false,
+          "warningAsError": true,
+          "weak.linter.mathlibStandardSet": true,
+          "weak.linter.style.longFile": 1500
+        }
+      },
+      "formation_exit": 1,
+      "outcome": "diagnostic_returned_nonzero",
+      "elapsed_s": 83.20932811498642,
+      "command": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5s",
+        "180s",
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "env",
+        "/root/autodl-tmp/lean-build/logs/remote-a611079aace044e0b58ae3940ec5a18f/toolchain/bin/lean",
+        "/root/autodl-tmp/lean-build/logs/remote-a611079aace044e0b58ae3940ec5a18f/probe-0/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean",
+        "--setup",
+        "/root/autodl-tmp/lean-build/logs/remote-a611079aace044e0b58ae3940ec5a18f/probe-0/setup.json",
+        "--json",
+        "-o",
+        "/root/autodl-tmp/lean-build/logs/remote-a611079aace044e0b58ae3940ec5a18f/probe-0/probe.olean",
+        "-i",
+        "/root/autodl-tmp/lean-build/logs/remote-a611079aace044e0b58ae3940ec5a18f/probe-0/probe.ilean",
+        "-Dtrace.profiler=true",
+        "-Dtrace.profiler.threshold=100"
+      ]
+    }
+  ],
+  "scope": "Real-body first244 bounded profiler only; no whole module CPP or speedup"
+}

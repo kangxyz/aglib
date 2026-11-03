@@ -1,0 +1,13 @@
+{
+  "original": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/mayer-v15-succ-stage-localization-B/remote-runs/remote-e60422af7dbf477bb3d2f5004c70558c/setup-summary.json",
+  "sha256": "c802ba1503788d0ebd62fcb12c9cbc5468012ec7b9745ed3c1bf54a2ba2b7a00",
+  "name": "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris",
+  "isModule": true,
+  "options": {
+    "autoImplicit": false,
+    "warningAsError": true,
+    "weak.linter.mathlibStandardSet": true,
+    "weak.linter.style.longFile": 1500
+  },
+  "imports": null
+}

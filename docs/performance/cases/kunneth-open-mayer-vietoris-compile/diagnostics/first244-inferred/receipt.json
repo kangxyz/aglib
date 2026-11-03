@@ -1,0 +1,374 @@
+{
+  "action": "phase",
+  "actor_executable": "/root/miniconda3/bin/python3.12",
+  "admission": {
+    "ceilings": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+    "final_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-28c83f5ba42b426f80325ec49692ff2f": 1
+      },
+      "cpu_cores": 1.7966681579283945,
+      "cpu_usage_usec": 2770854066062,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 1610612736,
+      "memory_current_bytes": 61575626752,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 0.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 43537096704
+    },
+    "initial_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-28c83f5ba42b426f80325ec49692ff2f": 1
+      },
+      "cpu_cores": 2.106630367905881,
+      "cpu_usage_usec": 2770648448528,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 2147483648,
+      "memory_current_bytes": 61596581888,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 1.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 43551969280
+    },
+    "max_frontends_if_alone": 8,
+    "mode": "elastic"
+  },
+  "allow_library_roots": false,
+  "cache_provenance": {
+    "configuration_sha256": {
+      "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+      "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852"
+    },
+    "environment": {
+      "LAKE_ARTIFACT_CACHE": "true",
+      "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+      "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+    },
+    "lookup": "native Lake traces/artifact cache; no per-dependency prior-hit claim"
+  },
+  "cgroup_average_cpu_cores": 2.901886313766575,
+  "cgroup_cpu_after": {
+    "nr_periods": 10723163,
+    "nr_throttled": 32119,
+    "system_usec": 220581475843,
+    "throttled_usec": 378038456,
+    "usage_usec": 2770854066062,
+    "user_usec": 2550272590219
+  },
+  "cgroup_cpu_attribution": "whole observed cgroup; may include unrelated activity",
+  "cgroup_cpu_before": {
+    "nr_periods": 10722454,
+    "nr_throttled": 32119,
+    "system_usec": 220572625545,
+    "throttled_usec": 378038456,
+    "usage_usec": 2770648458832,
+    "user_usec": 2550075833286
+  },
+  "cgroup_cpu_seconds_delta": 205.60723,
+  "cgroup_memory_events_after": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_before": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_delta": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "command": [
+    "/root/miniconda3/bin/python3.12",
+    "-c",
+    "from pathlib import Path\nimport os,json,subprocess,hashlib,time,sys\nD={'run': 'remote-b2241f3858fc4ffd95928acbb5d7e36c', 'source': '4707aaadf9432b2050204046021f2f6214e03366e9ba64fe1458d10e069a901c', 'specs': [{'actual_source_path': 'Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean', 'actual_source_sha256': 'bd06444b85d5aea9ee84ec4acb54bdc385a9bd078234e7adfd3cb15e594ad3c8', 'qualified_root': 'Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris', 'scratch_source_path': 'Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean', 'scratch_source_sha256': '60d47e64d0bc5e58b4dc5ccc9de1d2987fdf49ee74739724479258105a3dc03a', 'probe_source': \"/-\\nCopyright (c) 2026 Aglib contributors. All rights reserved.\\nReleased under Apache 2.0 license as described in the file LICENSE.\\nAuthors: kangxyz\\n-/\\nmodule\\n\\npublic import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpen\\npublic import Aglib.Algebra.Homology.Kunneth.MayerVietoris\\npublic import Aglib.AlgebraicGeometry.Cohomology.MayerVietoris.Scalars.Zero\\npublic import Mathlib.Algebra.FiveLemma\\npublic import Mathlib.LinearAlgebra.TensorProduct.Prod\\npublic import Mathlib.Algebra.Homology.ShortComplex.ModuleCat\\npublic import Mathlib.Algebra.Category.ModuleCat.Biproducts\\n\\n/-!\\n# The original mixed-open Mayer\u2013Vietoris ladder\\n\\nBoth rows use the unchanged ambient schemes. The finite antidiagonal source\\nuses the original restriction and difference maps, and the boundary carries\\nthe degree-p Koszul factor. Its two occurrences cancel against the native\\nunsigned external-Ext boundary equation in every characteristic.\\n-/\\n\\n@[expose] public noncomputable section\\n\\nset_option backward.defeqAttrib.useBackward true\\nset_option backward.isDefEq.respectTransparency false\\nset_option backward.isDefEq.respectTransparency.types false\\n\\nopen CategoryTheory CategoryTheory.Limits CategoryTheory.Abelian\\nopen MonoidalCategory CartesianMonoidalCategory AlgebraicGeometry TopologicalSpace Opposite\\nopen AlgebraicGeometry.Scheme.OverField AlgebraicGeometry.Scheme.Modules\\nopen scoped TensorProduct DirectSum\\n\\nuniverse u\\n\\nuniverse r i a b\\n\\nnamespace DirectSum\\n\\n/-- Canonical distribution of the original finite-support product family. -/\\nprivate def prodFamilyEquiv {R : Type r} [CommRing R] {\u03b9 : Type i}\\n    (A : \u03b9 \u2192 Type a) (B : \u03b9 \u2192 Type b)\\n    [\u2200 i, AddCommGroup (A i)] [\u2200 i, Module R (A i)]\\n    [\u2200 i, AddCommGroup (B i)] [\u2200 i, Module R (B i)] :\\n    (\u2a01 i, A i \u00d7 B i) \u2243\u2097[R] (\u2a01 i, A i) \u00d7 (\u2a01 i, B i) := by\\n  let f := DirectSum.lmap (fun i => LinearMap.fst R (A i) (B i))\\n  let g := DirectSum.lmap (fun i => LinearMap.snd R (A i) (B i))\\n  let l := DirectSum.lmap (fun i => LinearMap.inl R (A i) (B i))\\n  let r := DirectSum.lmap (fun i => LinearMap.inr R (A i) (B i))\\n  exact {\\n    toFun := fun z => (f z, g z)\\n    invFun := fun z => l z.1 + r z.2\\n    left_inv := by\\n      intro z\\n      apply DFinsupp.ext\\n      intro i\\n      simp [f, g, l, r, DirectSum.lmap_apply]\\n    right_inv := by\\n      rintro \u27e8z, w\u27e9\\n      apply Prod.ext <;> apply DFinsupp.ext <;> intro i <;>\\n        simp [f, g, l, r, DirectSum.lmap_apply]\\n    map_add' := fun z w => Prod.ext (f.map_add z w) (g.map_add z w)\\n    map_smul' := fun c z => Prod.ext (f.map_smul c z) (g.map_smul c z) }\\n\\nprivate theorem prodFamilyEquiv_lof {R : Type r} [CommRing R] {\u03b9 : Type i}\\n    [DecidableEq \u03b9] (A : \u03b9 \u2192 Type a) (B : \u03b9 \u2192 Type b)\\n    [\u2200 i, AddCommGroup (A i)] [\u2200 i, Module R (A i)]\\n    [\u2200 i, AddCommGroup (B i)] [\u2200 i, Module R (B i)]\\n    (i : \u03b9) (x : A i) (y : B i) :\\n    prodFamilyEquiv (R := R) A B (lof R \u03b9 (fun i => A i \u00d7 B i) i (x, y)) =\\n      (lof R \u03b9 A i x, lof R \u03b9 B i y) := by\\n  change ((lmap (fun i => LinearMap.fst R (A i) (B i)))\\n      (lof R \u03b9 (fun i => A i \u00d7 B i) i (x, y)),\\n    (lmap (fun i => LinearMap.snd R (A i) (B i)))\\n      (lof R \u03b9 (fun i => A i \u00d7 B i) i (x, y))) = _\\n  rw [lmap_lof, lmap_lof]\\n  rfl\\n\\nend DirectSum\\n\\nnamespace ModuleCat\\n\\nprivate theorem biprodIsoProd_hom_fst_value {R : Type r} [CommRing R]\\n    (A B : ModuleCat.{u} R) (x : (A \u229e B : ModuleCat.{u} R)) :\\n    ((ModuleCat.biprodIsoProd A B).hom x).1 =\\n      (biprod.fst : (A \u229e B : ModuleCat.{u} R) \u27f6 A) x := by\\n  have h : (ModuleCat.biprodIsoProd A B).hom \u226b\\n      ModuleCat.ofHom (LinearMap.fst R A B) =\\n        (biprod.fst : (A \u229e B : ModuleCat.{u} R) \u27f6 A) := by\\n    rw [\u2190 ModuleCat.biprodIsoProd_inv_comp_fst, \u2190 Category.assoc,\\n      Iso.hom_inv_id, Category.id_comp]\\n  exact ConcreteCategory.congr_hom h x\\n\\nprivate theorem biprodIsoProd_hom_snd_value {R : Type r} [CommRing R]\\n    (A B : ModuleCat.{u} R) (x : (A \u229e B : ModuleCat.{u} R)) :\\n    ((ModuleCat.biprodIsoProd A B).hom x).2 =\\n      (biprod.snd : (A \u229e B : ModuleCat.{u} R) \u27f6 B) x := by\\n  have h : (ModuleCat.biprodIsoProd A B).hom \u226b\\n      ModuleCat.ofHom (LinearMap.snd R A B) =\\n        (biprod.snd : (A \u229e B : ModuleCat.{u} R) \u27f6 B) := by\\n    rw [\u2190 ModuleCat.biprodIsoProd_inv_comp_snd, \u2190 Category.assoc,\\n      Iso.hom_inv_id, Category.id_comp]\\n  exact ConcreteCategory.congr_hom h x\\n\\nprivate theorem biprodIsoProd_lift_value {R : Type r} [CommRing R]\\n    (A B C : ModuleCat.{u} R) (f : C \u27f6 A) (g : C \u27f6 B) (x : C) :\\n    (ModuleCat.biprodIsoProd A B).hom (biprod.lift f g x) = (f x, g x) := by\\n  apply Prod.ext\\n  \u00b7 rw [biprodIsoProd_hom_fst_value]\\n    exact ConcreteCategory.congr_hom (biprod.lift_fst f g) x\\n  \u00b7 rw [biprodIsoProd_hom_snd_value]\\n    exact ConcreteCategory.congr_hom (biprod.lift_snd f g) x\\n\\nprivate theorem biprodIsoProd_desc_value {R : Type r} [CommRing R]\\n    (A B C : ModuleCat.{u} R) (f : A \u27f6 C) (g : B \u27f6 C) (x : A) (y : B) :\\n    biprod.desc f g ((ModuleCat.biprodIsoProd A B).inv (x, y)) = f x + g y := by\\n  have h : (ModuleCat.biprodIsoProd A B).inv \u226b biprod.desc f g =\\n      ModuleCat.ofHom (f.hom.comp (LinearMap.fst R A B) +\\n        g.hom.comp (LinearMap.snd R A B)) := by\\n    rw [biprod.desc_eq, Preadditive.comp_add, \u2190 Category.assoc,\\n      ModuleCat.biprodIsoProd_inv_comp_fst, \u2190 Category.assoc,\\n      ModuleCat.biprodIsoProd_inv_comp_snd]\\n    rfl\\n  have hValue := ConcreteCategory.congr_hom h (x, y)\\n  change biprod.desc f g ((ModuleCat.biprodIsoProd A B).inv (x, y)) =\\n    f x + g y at hValue\\n  exact hValue\\n\\nprivate theorem biprodIsoProd_desc_sub_inv_value {R : Type r} [CommRing R]\\n    (A B C : ModuleCat.{u} R) (f : A \u27f6 C) (g : B \u27f6 C) (x : A) (y : B) :\\n    biprod.desc f (-g) ((ModuleCat.biprodIsoProd A B).inv (x, y)) = f x - g y := by\\n  have h := biprodIsoProd_desc_value A B C f (-g) x y\\n  change biprod.desc f (-g) ((ModuleCat.biprodIsoProd A B).inv (x, y)) =\\n    f x + -(g y) at h\\n  simpa only [sub_eq_add_neg] using h\\n\\nprivate theorem biprodIsoProd_desc_sub_hom_value {R : Type r} [CommRing R]\\n    (A B C : ModuleCat.{u} R) (f : A \u27f6 C) (g : B \u27f6 C)\\n    (y : (A \u229e B : ModuleCat.{u} R)) :\\n    biprod.desc f (-g) y = f ((ModuleCat.biprodIsoProd A B).hom y).1 -\\n      g ((ModuleCat.biprodIsoProd A B).hom y).2 := by\\n  have h := biprodIsoProd_desc_sub_inv_value A B C f g\\n    ((ModuleCat.biprodIsoProd A B).hom y).1 ((ModuleCat.biprodIsoProd A B).hom y).2\\n  simp only [Prod.mk.eta] at h\\n  have hCancel := ModuleCat.inv_hom_apply (ModuleCat.biprodIsoProd A B) y\\n  have hMap := congrArg (fun z => biprod.desc f (-g) z) hCancel\\n  exact hMap.symm.trans h\\n\\nprivate def tensorBiprodFamilyEquiv {R : Type r} [CommRing R]\\n    (M : \u2115 \u2192 Type a) [\u2200 p, AddCommGroup (M p)] [\u2200 p, Module R (M p)]\\n    (A B : \u2115 \u2192 ModuleCat.{u} R) (n : \u2115) :\\n    Kunneth.MayerVietoris.tensorSum (R := R) M\\n        (fun q => (A q \u229e B q : ModuleCat.{u} R)) n \u2243\u2097[R]\\n      Kunneth.MayerVietoris.tensorSum (R := R) M (fun q => A q) n \u00d7\\n        Kunneth.MayerVietoris.tensorSum (R := R) M (fun q => B q) n :=\\n  (DirectSum.congrLinearEquiv (fun s : HomologicalComplex\u2082.TotalDegree n =>\\n    (TensorProduct.congr (LinearEquiv.refl R (M s.val.1))\\n      (Iso.toLinearEquiv (ModuleCat.biprodIsoProd (A s.val.2) (B s.val.2)))).trans\\n        (TensorProduct.prodRight R R (M s.val.1) (A s.val.2) (B s.val.2)))).trans\\n    (DirectSum.prodFamilyEquiv\\n      (fun s : HomologicalComplex\u2082.TotalDegree n => M s.val.1 \u2297[R] A s.val.2)\\n      (fun s : HomologicalComplex\u2082.TotalDegree n => M s.val.1 \u2297[R] B s.val.2))\\n\\nprivate theorem tensorBiprodFamilyEquiv_lof {R : Type r} [CommRing R]\\n    (M : \u2115 \u2192 Type a) [\u2200 p, AddCommGroup (M p)] [\u2200 p, Module R (M p)]\\n    (A B : \u2115 \u2192 ModuleCat.{u} R) (n : \u2115) (s : HomologicalComplex\u2082.TotalDegree n)\\n    (x : M s.val.1) (y : (A s.val.2 \u229e B s.val.2 : ModuleCat.{u} R)) :\\n    tensorBiprodFamilyEquiv M A B n (DirectSum.lof R _ _ s (x \u2297\u209c[R] y)) =\\n      (DirectSum.lof R _ _ s (x \u2297\u209c[R]\\n          ((ModuleCat.biprodIsoProd (A s.val.2) (B s.val.2)).hom y).1),\\n        DirectSum.lof R _ _ s (x \u2297\u209c[R]\\n          ((ModuleCat.biprodIsoProd (A s.val.2) (B s.val.2)).hom y).2)) := by\\n  simp only [tensorBiprodFamilyEquiv, LinearEquiv.trans_apply,\\n    DirectSum.coe_congrLinearEquiv, DirectSum.lmap_lof, LinearEquiv.coe_toLinearMap,\\n    TensorProduct.congr_tmul, LinearEquiv.refl_apply, TensorProduct.prodRight_tmul,\\n    DirectSum.prodFamilyEquiv_lof]\\n  rfl\\n\\nprivate theorem tensorBiprodFamilyEquiv_first {R : Type r} [CommRing R]\\n    (M : \u2115 \u2192 Type a) [\u2200 p, AddCommGroup (M p)] [\u2200 p, Module R (M p)]\\n    (A B P : \u2115 \u2192 ModuleCat.{u} R) (f : \u2200 q, P q \u27f6 A q) (g : \u2200 q, P q \u27f6 B q)\\n    (n : \u2115) :\\n    (tensorBiprodFamilyEquiv M A B n).toLinearMap \u2218\u2097\\n        Kunneth.MayerVietoris.tensorMap (R := R) M\\n          (fun q => (biprod.lift (f q) (g q)).hom) n =\\n      (Kunneth.MayerVietoris.tensorMap (R := R) M (fun q => (f q).hom) n).prod\\n        (Kunneth.MayerVietoris.tensorMap (R := R) M (fun q => (g q).hom) n) := by\\n  apply DirectSum.linearMap_ext\\n  intro s\\n  apply TensorProduct.ext'\\n  intro x y\\n  have hStart := Kunneth.MayerVietoris.tensorMap_lof (R := R) M\\n    (fun q => (biprod.lift (f q) (g q)).hom) n s (x \u2297\u209c[R] y)\\n  simp only [LinearMap.lTensor_tmul] at hStart\\n  have hStartMap := congrArg (tensorBiprodFamilyEquiv M A B n) hStart\\n  have hDist := tensorBiprodFamilyEquiv_lof M A B n s x\\n    (biprod.lift (f s.val.2) (g s.val.2) y)\\n  have hLift := biprodIsoProd_lift_value (A s.val.2) (B s.val.2) (P s.val.2)\\n    (f s.val.2) (g s.val.2) y\\n  have hLiftMap := congrArg\\n    (fun z : (A s.val.2) \u00d7 (B s.val.2) =>\\n      (DirectSum.lof R (HomologicalComplex\u2082.TotalDegree n)\\n          (fun t => M t.val.1 \u2297[R] A t.val.2) s (x \u2297\u209c[R] z.1),\\n        DirectSum.lof R (HomologicalComplex\u2082.TotalDegree n)\\n          (fun t => M t.val.1 \u2297[R] B t.val.2) s (x \u2297\u209c[R] z.2))) hLift\\n  have hLeft := hStartMap.trans (hDist.trans hLiftMap)\\n  have hF := Kunneth.MayerVietoris.tensorMap_lof (R := R) M\\n    (fun q => (f q).hom) n s (x \u2297\u209c[R] y)\\n  have hG := Kunneth.MayerVietoris.tensorMap_lof (R := R) M\\n    (fun q => (g q).hom) n s (x \u2297\u209c[R] y)\\n  simp only [LinearMap.lTensor_tmul] at hF hG\\n  have hRight := congrArg\u2082 Prod.mk hF hG\\n  have hFinal := hLeft.trans hRight.symm\\n  simp only [LinearMap.comp_apply, LinearEquiv.coe_toLinearMap,\\n    LinearMap.prod_apply, Function.prod_apply] at hFinal \u22a2\\n  exact hFinal\\n\\nend ModuleCat\\n\\nnamespace AlgebraicGeometry.Scheme.Cohomology\\n\\nattribute [local instance] Over.cartesianMonoidalCategory\\n\\nvariable {k : Type u} [Field k] (X Y : FScheme k)\\n\\nprivate abbrev structureOpenModule (T : FScheme k) (U : T.left.Opens) (n : \u2115) :\\n    ModuleCat.{u + 1} k :=\\n  (moduleHPrimePresheaf T.left (constants T) (SheafOfModules.unit T.left.ringCatSheaf) n).obj\\n    (op U)\\n\\nprivate abbrev structureOpenMVMiddleFamily (U V : Y.left.Opens) (q : \u2115) : Type (u + 1) :=\\n  (structureOpenModule Y U q \u229e structureOpenModule Y V q : ModuleCat.{u + 1} k)\\n\\nprivate abbrev structureOpenMVMiddleSum (U V : Y.left.Opens) (n : \u2115) : Type (u + 1) :=\\n  Kunneth.MayerVietoris.tensorSum (R := k) (structureCohomology k X)\\n    (structureOpenMVMiddleFamily Y U V) n\\n\\nprivate def structureOpenMVFirst (U V : Y.left.Opens) (q : \u2115) :=\\n  (moduleMayerVietorisToBiprod Y.left (constants Y)\\n    (SheafOfModules.unit Y.left.ringCatSheaf) U V q).hom\\n\\n\\nend AlgebraicGeometry.Scheme.Cohomology\\n\", 'question': 'Candidate at located native-arrow boundary: infer original structureOpenMVFirst result directly from unchanged native moduleMayerVietorisToBiprod.hom, rather than ascribing its cohomology-carrier arrow type.', 'evidence_boundary': 'Changed-candidate real-body prefix only. Only first private definition result annotation is omitted; original .hom body, actual schemes/opens and all dictionaries retained. No public signature, budget, compiler/kernel check, linter or global option changes. Profile180s bound. Not production CPP or full-module speedup evidence.', 'command_flags': ['--json', '-j4', '-M12800', '-Dtrace.profiler=true', '-Dtrace.profiler.threshold=100'], 'outputs': 'scratch only; leave production outputs untouched', 'native_owner': 'etale-kunneth-mayer-4707-20261102', 'baseline_source_content_sha256': '4707aaadf9432b2050204046021f2f6214e03366e9ba64fe1458d10e069a901c', 'process_bound_seconds': 180, 'material_change': 'Omit private First result-type annotation; infer exact producer type.'}]}\nw=Path.cwd();out=Path('/root/autodl-tmp/lean-build/logs')/D['run'];manifest=w.parent/'SOURCE.json'\ndef guard():\n a=json.loads(manifest.read_text());assert a['content_sha256']==D['source']\n for s in D['specs']:assert hashlib.sha256((w/s['actual_source_path']).read_bytes()).hexdigest()==s['actual_source_sha256']\nguard();results=[]\nfor i,s in enumerate(D['specs']):\n d=out/('probe-'+str(i));d.mkdir();scratch=d/s['scratch_source_path'];scratch.parent.mkdir(parents=True);scratch.write_text(s['probe_source']);assert hashlib.sha256(scratch.read_bytes()).hexdigest()==s['scratch_source_sha256']\n t=time.monotonic();r=subprocess.run([os.environ['LAKE'],'--no-build','setup-file',s['actual_source_path']],capture_output=True,text=True);(d/'setup-stderr.log').write_text(r.stderr)\n row={'question':s['question'],'actual_source':s['actual_source_path'],'actual_sha':s['actual_source_sha256'],'probe_sha':s['scratch_source_sha256'],'setup_exit':r.returncode,'completion_claim':'Changed inferredFirst prefix bounded profiler only; no whole module CPP or speedup'}\n if r.returncode:\n  (d/'setup-stdout.log').write_text(r.stdout);row['outcome']='native_import_readiness_unavailable';row['elapsed_s']=time.monotonic()-t;results.append(row);continue\n a=json.loads(r.stdout);(d/'setup.json').write_text(r.stdout);summary={k:v for k,v in a.items() if k not in ['importArts','imports']};summary['imports']=a.get('imports');(d/'setup-summary.json').write_text(json.dumps(summary,indent=2))\n row['setup_identity']={k:a.get(k) for k in ['name','moduleName','isModule','options']};assert a.get('isModule')is True;assert a.get('name',a.get('moduleName'))==s['qualified_root']\n cmd=['timeout','--signal=TERM','--kill-after=5s','180s',os.environ['LAKE'],'--no-build','env',os.environ['LEAN'],str(scratch),'--setup',str(d/'setup.json'),'--json','-o',str(d/'probe.olean'),'-i',str(d/'probe.ilean')]\n cmd += ['-Dtrace.profiler=true','-Dtrace.profiler.threshold=100']\n with (d/'formation.log').open('w')as stream:q=subprocess.run(cmd,stdout=stream,stderr=subprocess.STDOUT)\n row.update(formation_exit=q.returncode,outcome='diagnostic_returned_zero'if q.returncode==0 else('diagnostic_process_bound'if q.returncode in[124,137]else'diagnostic_returned_nonzero'),elapsed_s=time.monotonic()-t,command=cmd);results.append(row);print(json.dumps(row),flush=True)\nguard();(out/'PROBE-RESULT.json').write_text(json.dumps({'source':D['source'],'results':results,'scope':'Changed inferredFirst prefix bounded profiler only; no whole module CPP or speedup'},indent=2));sys.exit(0 if all(r.get('formation_exit')==0 for r in results)else 1)\n"
+  ],
+  "command_exit_code": 1,
+  "compiler_exit_codes": [
+    1
+  ],
+  "compiler_failed": 1,
+  "compiler_invocations": 1,
+  "compiler_observation": "wrapper-events-only",
+  "compiler_scope_lease_modes": {
+    "supervisor-only": 1
+  },
+  "compiler_scope_policy": "workspace descriptors or verified live supervisor; each compiler inherits its elastic claim",
+  "compiler_succeeded": 0,
+  "concurrency_basis": "compiler wrapper start/finish intervals, each holding one slot",
+  "diagnostics": {
+    "categories": {},
+    "first": [],
+    "observed_missing_count": 0,
+    "observed_missing_prefixes": {},
+    "observed_missing_prefixes_truncated": false,
+    "observed_missing_shortlist": []
+  },
+  "elapsed_seconds": 70.85295830667019,
+  "environment": {
+    "ELAN_HOME": "/root/autodl-tmp/lean-build/elan",
+    "LAKE_ARTIFACT_CACHE": "true",
+    "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+    "LAKE_OVERRIDE_LEAN": "1",
+    "LEAN_NUM_THREADS": "8",
+    "LEAN_SYSROOT": "/root/autodl-tmp/lean-build/logs/remote-b2241f3858fc4ffd95928acbb5d7e36c/toolchain",
+    "R5_LEAN_REMOTE_PROFILE": "{\"jobs\": 8, \"lean\": \"/root/autodl-tmp/lean-build/logs/remote-b2241f3858fc4ffd95928acbb5d7e36c/toolchain/bin/lean\", \"lean_memory_mib\": 12800, \"rss_limit_mib\": 65536, \"schema_version\": 1, \"threads\": 4}",
+    "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+  },
+  "exit_code": 1,
+  "expected_source": "4707aaadf9432b2050204046021f2f6214e03366e9ba64fe1458d10e069a901c",
+  "failure_reason": null,
+  "finished_at": "2026-11-02T15:40:54.208402+00:00",
+  "forbid_compilation": false,
+  "forced_kill": false,
+  "git_head": null,
+  "group_closed": true,
+  "incomplete_compiler_events": 0,
+  "input_drift": [],
+  "input_sha256": {
+    "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean": "bd06444b85d5aea9ee84ec4acb54bdc385a9bd078234e7adfd3cb15e594ad3c8",
+    "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+    "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+  },
+  "lock_acquired_at": "2026-11-02T15:39:43.349465+00:00",
+  "locks": {
+    "cache_fetch_exclusive": null,
+    "legacy_shared_gate": "/root/autodl-tmp/lean-build/build.lock",
+    "workspace_exclusive": "/root/autodl-tmp/lean-build/locks/workspace-15aafafb93ce9c02d6c585fc75b52ea6031537405c1b8abb00901ecba6504b40.lock"
+  },
+  "lowest_disk_free_bytes": 20078161920,
+  "modules": [
+    "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris"
+  ],
+  "operation_id": null,
+  "outcome": "execution_failure",
+  "peak_compiler_concurrency": 1,
+  "peak_rss_bytes": 3136122880,
+  "pgid": 690580,
+  "phase_executable_sha256": "0c05a22b0b180580a76437114a95cf138f67c8f46245acad26017c803b42b8c1",
+  "phase_label": "mayer-first-inferred-comparison",
+  "pins": {
+    "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+    "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+    "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+  },
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 8,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536,
+    "threads": 4
+  },
+  "resource_accounting": {
+    "global": "sampled cgroup memory/CPU, startup and growth credits; no peak-envelope reservation",
+    "isolation": "cooperative sampled admission; no per-run kernel memory isolation or OOM guarantee",
+    "run": "frontend/job/thread ceilings, sampled owned-tree RSS cutoff, own-tree pressure retreat"
+  },
+  "resources": {
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "cgroup": "/sys/fs/cgroup",
+    "cgroup_limits": [
+      {
+        "cpu.max": "3200000 100000",
+        "memory.max": "128849018880",
+        "path": "/sys/fs/cgroup"
+      }
+    ],
+    "effective_cpus": 32.0,
+    "memory_bytes": 128849018880
+  },
+  "run_dir": "/root/autodl-tmp/lean-build/logs/remote-b2241f3858fc4ffd95928acbb5d7e36c",
+  "sampled_process_average_cpu_cores": 1.5649311284940606,
+  "sampled_process_cpu_seconds": 110.88,
+  "schema_version": 1,
+  "setup_cleanup": {
+    "removed_setup_bytes": 0,
+    "removed_setup_files": 0
+  },
+  "source_content_sha256": "4707aaadf9432b2050204046021f2f6214e03366e9ba64fe1458d10e069a901c",
+  "source_receipt_sha256": "ac4131049978712f70e2f480a7cd85105b27c861219cf4fc254f637f57b62c3e",
+  "started_at": "2026-11-02T15:39:42.861143+00:00",
+  "status": "failed",
+  "summary": {
+    "action": "phase",
+    "admission": {
+      "affinity_cpus": null,
+      "ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 65536,
+        "threads": 4
+      },
+      "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+      "final_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-28c83f5ba42b426f80325ec49692ff2f": 1
+        },
+        "cpu_cores": 1.7966681579283945,
+        "cpu_usage_usec": 2770854066062,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 1610612736,
+        "memory_current_bytes": 61575626752,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 0.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 43537096704
+      },
+      "initial_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-28c83f5ba42b426f80325ec49692ff2f": 1
+        },
+        "cpu_cores": 2.106630367905881,
+        "cpu_usage_usec": 2770648448528,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 2147483648,
+        "memory_current_bytes": 61596581888,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 1.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 43551969280
+      },
+      "max_frontends_if_alone": 8,
+      "mode": "elastic",
+      "request": null
+    },
+    "artifacts": {
+      "build.log": "/root/autodl-tmp/lean-build/logs/remote-b2241f3858fc4ffd95928acbb5d7e36c/build.log",
+      "compiler-events.jsonl": "/root/autodl-tmp/lean-build/logs/remote-b2241f3858fc4ffd95928acbb5d7e36c/compiler-events.jsonl",
+      "receipt.json": "/root/autodl-tmp/lean-build/logs/remote-b2241f3858fc4ffd95928acbb5d7e36c/receipt.json"
+    },
+    "cgroup_memory_attribution": "whole observed cgroup; an OOM event alone does not identify its victim",
+    "cgroup_memory_events_delta": {
+      "high": 0,
+      "low": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "compiler_observation": "wrapper-events-only",
+    "compiler_scope_lease_modes": {
+      "supervisor-only": 1
+    },
+    "execution_seconds": 70.85295830667019,
+    "exit_code": 1,
+    "expected_source": "4707aaadf9432b2050204046021f2f6214e03366e9ba64fe1458d10e069a901c",
+    "first_diagnostics": [],
+    "frontend_failed": 1,
+    "frontend_invocations": 1,
+    "frontend_observation": "wrapper starts only; arbitrary phase tools may bypass local compiler caps",
+    "frontend_peak": 1,
+    "frontend_succeeded": 0,
+    "group_closed": true,
+    "native_exit": 1,
+    "outcome": "execution_failure",
+    "peak_rss_bytes": 3136122880,
+    "plan": null,
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "reason": "",
+    "run": "remote-b2241f3858fc4ffd95928acbb5d7e36c",
+    "sampled_process_average_cpu_cores": 1.5649311284940606,
+    "source_basis": "4707aaadf9432b2050204046021f2f6214e03366e9ba64fe1458d10e069a901c",
+    "status": "failed",
+    "unwrapped_frontend_count": "unknown",
+    "wall_seconds": 71.34729166328907
+  },
+  "task_id": "etale-kunneth-mayer-4707-20261102",
+  "unfinished_compiler_records": [],
+  "waiting_for": null,
+  "wall_seconds": 71.34729166328907,
+  "worker_sha256": "7b1d09f535dc951f2f3ecae857f7b77b0ffc95f8f9e55352167a39b4387729a4",
+  "workspace": "/root/autodl-tmp/lean-build/workspaces/managed-5a7469b38559-315a5e4a9466/lean"
+}

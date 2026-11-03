@@ -1,0 +1,107 @@
+✔ [3500/3511] Built Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.RestrictionLinearAlgebra (4.3s)
+✔ [3501/3511] Built Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.RestrictionBasic (100s)
+✖ [3502/3511] Building Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.Restriction (92s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-507d97d3aefc4047aaea693a722d5a85/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Restriction.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Restriction.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Restriction.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Restriction.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Restriction.setup.json --json
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Restriction.lean:49:4: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+✔ [3506/3511] Built Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.Boundary (281s)
+✖ [3510/3511] Building Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenAffine (523s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-507d97d3aefc4047aaea693a722d5a85/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenAffine.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenAffine.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenAffine.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenAffine.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenAffine.setup.json --json
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenAffine.lean:114:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  moduleCoefficientPullback D.ι ((restrictAdjunction D.ι).unit.app M ≫ (pushforward D.ι).map ε)
+in the target expression
+  (ConcreteCategory.hom (moduleOpenRestrictionCoefficientSquare A D M ε n).f₂₄)
+      ((ConcreteCategory.hom (moduleOpenRestrictionCoefficientSquare A D M ε n).f₁₂) x) =
+    (ConcreteCategory.hom (moduleOpenRestrictionCoefficientSquare A D M ε n).f₃₄)
+      ((ConcreteCategory.hom (moduleOpenRestrictionCoefficientSquare A D M ε n).f₁₃) x)
+
+A : Scheme
+D : A.Opens
+n : ℕ
+x : ↑((moduleAddSheaf A (SheafOfModules.unit A.ringCatSheaf)).H' n D)
+M : A.Modules := SheafOfModules.unit A.ringCatSheaf
+ε : Modules.restrict (SheafOfModules.unit A.ringCatSheaf) D.ι ⟶ SheafOfModules.unit (↑D).ringCatSheaf :=
+  (restrictUnitIso D.ι).hom
+hPost :
+  (ConcreteCategory.hom (moduleOpenRestrictionCoefficientSquare A D M ε n).f₂₄)
+      ((ConcreteCategory.hom (moduleOpenRestrictionCoefficientSquare A D M ε n).f₁₂) x) =
+    (ConcreteCategory.hom (moduleOpenRestrictionCoefficientSquare A D M ε n).f₃₄)
+      ((ConcreteCategory.hom (moduleOpenRestrictionCoefficientSquare A D M ε n).f₁₃) x)
+hR :
+  (restrictAdjunction D.ι).unit.app (SheafOfModules.unit A.ringCatSheaf) ≫
+      (pushforward D.ι).map (restrictUnitIso D.ι).hom =
+    SheafOfModules.unitToPushforwardObjUnit (Hom.toRingCatSheafHom D.ι)
+hP :
+  (pullbackPushforwardAdjunction D.ι).unit.app (SheafOfModules.unit A.ringCatSheaf) ≫
+      (pushforward D.ι).map (pullbackUnitIso D.ι).hom =
+    SheafOfModules.unitToPushforwardObjUnit (Hom.toRingCatSheafHom D.ι)
+hφ :
+  (restrictAdjunction D.ι).unit.app (SheafOfModules.unit A.ringCatSheaf) ≫
+      (pushforward D.ι).map (restrictUnitIso D.ι).hom =
+    (pullbackPushforwardAdjunction D.ι).unit.app (SheafOfModules.unit A.ringCatSheaf) ≫
+      (pushforward D.ι).map (pullbackUnitIso D.ι).hom
+hCoef :
+  moduleCoefficientPullback D.ι ((restrictAdjunction D.ι).unit.app M ≫ (pushforward D.ι).map ε) =
+    structurePullbackMap D.ι
+⊢ (moduleOpenUnitNormalize A D n) x =
+    (sheafHPrimeTopAddEquiv (↑D) (moduleAddSheaf (↑D) (SheafOfModules.unit (↑D).ringCatSheaf)) n)
+      ((ConcreteCategory.hom
+          (((moduleAddSheaf (↑D) (SheafOfModules.unit (↑D).ringCatSheaf)).cohomologyPresheaf n).map (eqToHom ⋯).op))
+        ((ConcreteCategory.hom
+            ((zariskiCohomologyOpenMap D.ι (moduleAddSheaf A (SheafOfModules.unit A.ringCatSheaf))
+                  (moduleAddSheaf (↑D) (SheafOfModules.unit (↑D).ringCatSheaf)) (structurePullbackMap D.ι) n).app
+              (op D)))
+          x))
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenAffine.lean:162:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  moduleCoefficientPullback p (η ≫ (pushforward p).map ψ)
+in the target expression
+  (modulePostcompositionCohomologySquare p η ψ n).f₂₄ =
+    (modulePostcompositionCohomologySquare p η ψ n).f₁₃ ≫ (modulePostcompositionCohomologySquare p η ψ n).f₃₄
+
+A B : Scheme
+p : B ⟶ A
+inst✝ : Flat p
+D : A.Opens
+n : ℕ
+x : Ext (openFree A D) (SheafOfModules.unit A.ringCatSheaf) n
+M : A.Modules := SheafOfModules.unit A.ringCatSheaf
+N : B.Modules := (Modules.pullback p).obj M
+η : M ⟶ (pushforward p).obj N := (pullbackPushforwardAdjunction p).unit.app M
+ψ : N ⟶ SheafOfModules.unit B.ringCatSheaf := (pullbackUnitIso p).hom
+hPull :
+  (ConcreteCategory.hom
+        ((zariskiCohomologyOpenMap p (moduleAddSheaf A M) (moduleAddSheaf B ((Modules.pullback p).obj M))
+              ((modulePullbackAdditiveComparison p).app M) n).app
+          (op D)))
+      ((moduleOpenExtCohomologyMap A D M n) x) =
+    (moduleOpenExtCohomologyMap B (p ⁻¹ᵁ D) ((Modules.pullback p).obj M) n)
+      ((Ext.mk₀ (openFreePullbackIso p D).inv).comp (Ext.mapExactFunctor (Modules.pullback p) x) ⋯)
+hPost :
+  (moduleOpenExtCohomologyMap B (p ⁻¹ᵁ D) (SheafOfModules.unit B.ringCatSheaf) n)
+      (((Ext.mk₀ (openFreePullbackIso p D).inv).comp (Ext.mapExactFunctor (Modules.pullback p) x) ⋯).comp (Ext.mk₀ ψ)
+        ⋯) =
+    (ConcreteCategory.hom
+        (((Sheaf.cohomologyPresheafFunctor (Opens.grothendieckTopology ↥B) n).map
+              ((SheafOfModules.toSheaf B.ringCatSheaf).map ψ)).app
+          (op (p ⁻¹ᵁ D))))
+      ((moduleOpenExtCohomologyMap B (p ⁻¹ᵁ D) N n)
+        ((Ext.mk₀ (openFreePullbackIso p D).inv).comp (Ext.mapExactFunctor (Modules.pullback p) x) ⋯))
+hCoef :
+  (modulePostcompositionCohomologySquare p η ψ n).f₂₄ =
+    (modulePostcompositionCohomologySquare p η ψ n).f₁₃ ≫ (modulePostcompositionCohomologySquare p η ψ n).f₃₄
+hUnit : moduleCoefficientPullback p (η ≫ (pushforward p).map ψ) = structurePullbackMap p
+⊢ (ConcreteCategory.hom
+        ((zariskiCohomologyOpenMap p (moduleAddSheaf A (SheafOfModules.unit A.ringCatSheaf))
+              (moduleAddSheaf B (SheafOfModules.unit B.ringCatSheaf)) (structurePullbackMap p) n).app
+          (op D)))
+      ((moduleOpenExtCohomologyMap A D (SheafOfModules.unit A.ringCatSheaf) n) x) =
+    (moduleOpenExtCohomologyMap B (p ⁻¹ᵁ D) (SheafOfModules.unit B.ringCatSheaf) n)
+      (((Ext.mk₀ (openFreePullbackIso p D).inv).comp (Ext.mapExactFunctor (Modules.pullback p) x) ⋯).comp
+        (Ext.mk₀ (pullbackUnitIso p).hom) ⋯)
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.Restriction
+- Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenAffine
+error: build failed

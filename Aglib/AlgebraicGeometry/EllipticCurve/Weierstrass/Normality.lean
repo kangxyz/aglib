@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Geometry
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.BaseChange
-public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Normality
+public import Aglib.AlgebraicGeometry.Morphisms.Smooth.NormalBase
 public import Aglib.AlgebraicGeometry.Properties.Normal.Affine
 public import Aglib.RingTheory.IntegralClosure.PrimeAway
 public import Aglib.RingTheory.DiscreteValuationRing.FractionAway
@@ -39,14 +39,8 @@ namespace WeierstrassCurve.Projective
 domain coordinate ring is integrally closed. -/
 theorem coordinateRing_integrallyClosed_of_smoothSpec
     (k A : Type u) [Field k] [CommRing A] [IsDomain A] [Algebra k A]
-    (h : Smooth (Spec.map (CommRingCat.ofHom (algebraMap k A)))) : IsIntegrallyClosed A := by
-  let X := Spec (.of A)
-  let (x : X) : IsIntegrallyClosed (X.presheaf.stalk x) :=
-    (Scheme.smoothFieldNormality k X _ h x).2
-  let : Nonempty (⊤ : X.Opens) := ⟨⟨genericPoint X, trivial⟩⟩
-  let : IsIntegrallyClosed Γ(X, ⊤) :=
-    Scheme.isIntegrallyClosed_sections_of_isAffineOpen X ⊤ (isAffineOpen_top _)
-  exact IsIntegrallyClosed.of_equiv (Scheme.ΓSpecIso (.of A)).commRingCatIsoToRingEquiv
+    (h : Smooth (Spec.map (CommRingCat.ofHom (algebraMap k A)))) : IsIntegrallyClosed A :=
+  Scheme.isIntegrallyClosed_of_smoothSpec k A h
 
 /-- The original affine chart of a nonsingular field cubic is normal. -/
 theorem affineRing_integrallyClosed (k : Type u) [Field k]

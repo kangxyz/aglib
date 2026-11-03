@@ -1,0 +1,90 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.SourceEquations
+
+/-! # The difference square of the original mixed-open ladder -/
+
+@[expose] public noncomputable section
+
+set_option backward.defeqAttrib.useBackward true
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+
+open CategoryTheory CategoryTheory.Limits CategoryTheory.Abelian
+open MonoidalCategory CartesianMonoidalCategory AlgebraicGeometry TopologicalSpace Opposite
+open AlgebraicGeometry.Scheme.OverField AlgebraicGeometry.Scheme.Modules
+open scoped TensorProduct DirectSum
+
+universe u v r
+
+namespace AlgebraicGeometry.Scheme.Cohomology
+
+attribute [local instance] Over.cartesianMonoidalCategory
+
+variable {k : Type u} [Field k] (X Y : FScheme k)
+
+open KunnethOpenMayerVietoris
+
+namespace KunnethOpenMayerVietoris
+
+/-- Normalize the original preimage difference over a variable original presheaf. -/
+private theorem presheaf_preimage_difference {R : Type r} [CommRing R]
+    (Z T : Scheme.{u}) (f : Z ⟶ T) (P : Z.Opensᵒᵖ ⥤ ModuleCat.{v} R)
+    (U V : T.Opens) :
+    (biprod.desc
+      (P.map (homOfLE (show f ⁻¹ᵁ U ⊓ f ⁻¹ᵁ V ≤ f ⁻¹ᵁ U from inf_le_left)).op)
+      (-(P.map (homOfLE (show f ⁻¹ᵁ U ⊓ f ⁻¹ᵁ V ≤ f ⁻¹ᵁ V from inf_le_right)).op))).hom =
+    (biprod.desc
+      (P.map (((Opens.map f.base).map (homOfLE (inf_le_left : U ⊓ V ≤ U))).op))
+      (-(P.map (((Opens.map f.base).map (homOfLE (inf_le_right : U ⊓ V ≤ V))).op)))).hom := by
+  have hL : (Opens.map f.base).map (homOfLE (inf_le_left : U ⊓ V ≤ U)) =
+      homOfLE (show f ⁻¹ᵁ U ⊓ f ⁻¹ᵁ V ≤ f ⁻¹ᵁ U from inf_le_left) :=
+    Subsingleton.elim _ _
+  have hR : (Opens.map f.base).map (homOfLE (inf_le_right : U ⊓ V ≤ V)) =
+      homOfLE (show f ⁻¹ᵁ U ⊓ f ⁻¹ᵁ V ≤ f ⁻¹ᵁ V from inf_le_right) :=
+    Subsingleton.elim _ _
+  simp only [hL, hR]
+
+/-- The whole original difference square follows from its two original restrictions. -/
+theorem structureOpenKunnethMV_second_square (U V : Y.left.Opens) (n : ℕ) :
+    (structureOpenMVSecond (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U)
+        ((snd X Y).left ⁻¹ᵁ V) n).comp (structureOpenMVMiddleMap X Y U V n) =
+      (structureOpenKunnethMap X Y (U ⊓ V) n).comp
+        (structureOpenKunnethMVSecond X Y U V n) := by
+  have hU := structureOpenKunnethMap_restriction X Y
+    (homOfLE (inf_le_left : U ⊓ V ≤ U)) n
+  have hV := structureOpenKunnethMap_restriction X Y
+    (homOfLE (inf_le_right : U ⊓ V ≤ V)) n
+  have hTarget := presheaf_preimage_difference (X ⊗ Y).left Y.left (snd X Y).left
+    (moduleHPrimePresheaf (X ⊗ Y).left (constants (X ⊗ Y))
+      (SheafOfModules.unit (X ⊗ Y).left.ringCatSheaf) n) U V
+  have h := Kunneth.MayerVietoris.biprod_difference_square
+    (structureOpenModule (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U) n)
+    (structureOpenModule (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ V) n)
+    (structureOpenModule (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ (U ⊓ V)) n)
+    (structureOpenMVMiddleSourceEquiv X Y U V n)
+    (structureOpenKunnethMap X Y U n) (structureOpenKunnethMap X Y V n)
+    (structureOpenKunnethMap X Y (U ⊓ V) n)
+    (structureOpenKunnethRestriction X Y (homOfLE (inf_le_left : U ⊓ V ≤ U)) n)
+    (structureOpenKunnethRestriction X Y (homOfLE (inf_le_right : U ⊓ V ≤ V)) n)
+    ((moduleHPrimePresheaf (X ⊗ Y).left (constants (X ⊗ Y))
+      (SheafOfModules.unit (X ⊗ Y).left.ringCatSheaf) n).map
+      (((Opens.map (snd X Y).left.base).map (homOfLE (inf_le_left : U ⊓ V ≤ U))).op))
+    ((moduleHPrimePresheaf (X ⊗ Y).left (constants (X ⊗ Y))
+      (SheafOfModules.unit (X ⊗ Y).left.ringCatSheaf) n).map
+      (((Opens.map (snd X Y).left.base).map (homOfLE (inf_le_right : U ⊓ V ≤ V))).op))
+    (structureOpenKunnethMVSecond X Y U V n)
+    (structureOpenMVMiddleSourceEquiv_second X Y U V n) hU hV
+  have hTargetMap := congrArg
+    (fun d => d.comp (structureOpenMVMiddleMap X Y U V n)) hTarget
+  have hFinal := hTargetMap.trans h
+  exact hFinal
+
+end KunnethOpenMayerVietoris
+
+end AlgebraicGeometry.Scheme.Cohomology

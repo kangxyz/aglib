@@ -1,0 +1,164 @@
+{
+  "question": "Finish original mixed-open Mayer-Vietoris compatibility/facade with exact maps/actions/choices and measured affected-consumer CPP.",
+  "actual_runs": [
+    {
+      "run": "remote-507d97d3aefc4047aaea693a722d5a85",
+      "artifacts": "runs/focused-v6",
+      "receipt_sha256": "77664c9c28f9273cc63f0af94dab891dcb8f6eaa1eea4376e20e4ae8f23669a4",
+      "events_sha256": "fcccf4b7cedc9ec915c4765d9c051593213da6b30cc2172d81201d21ef63e5fb",
+      "modules": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/RestrictionLinearAlgebra.lean",
+          "frontend_seconds": 3.7960924357175827,
+          "exit": 0
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/RestrictionBasic.lean",
+          "frontend_seconds": 100.09784580767155,
+          "exit": 0
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Restriction.lean",
+          "frontend_seconds": 91.79918065667152,
+          "exit": 1
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Boundary.lean",
+          "frontend_seconds": 280.9384481906891,
+          "exit": 0
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenAffine.lean",
+          "frontend_seconds": 523.0251954346895,
+          "exit": 1
+        }
+      ],
+      "unfinished_events": 0
+    },
+    {
+      "run": "remote-3302029824ff414db9283638b2f35586",
+      "artifacts": "runs/focused-v7",
+      "receipt_sha256": "cc786b689a5bb89267450d7f693cda383912e707e60a3c80733f3e35fa7d3418",
+      "events_sha256": "4cdc17227dc379433f07341e68e540ce9ccc217cbe151626dab888c6a63daad6",
+      "modules": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/RestrictionLinearAlgebra.lean",
+          "frontend_seconds": 2.5295369029045105,
+          "exit": 0
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Restriction.lean",
+          "frontend_seconds": 48.17484137415886,
+          "exit": 1
+        }
+      ],
+      "unfinished_events": 0
+    }
+  ],
+  "diagnostic_v7": {
+    "run": "remote-ad3d45e787db4fb5b50826db8aa6d2ed",
+    "artifacts": "diagnostics/v7-final-conversion-stages",
+    "source": "3c571cac2825f26ad1835b6484d7241284d1007833bcfb2859e73d9ba21ad2eb",
+    "exit": 1,
+    "seconds": 55.74242,
+    "reached": [
+      "BEFORE_DECL",
+      "PROOF_ENTRY",
+      "AFTER_NATIVE_EQUATIONS",
+      "AFTER_GENERIC_EQUATION",
+      "AFTER_DECL"
+    ],
+    "not_reached": "AFTER_EXACT",
+    "boundary": "AFTER_DECL is error recovery, not acceptance; final exact completion unobserved after both equation constructions, no unique kernel cause."
+  },
+  "current_v8": {
+    "ready": "FOCUSED-v8-READY.json",
+    "status": "UNCAPTURED/UNRUN; held at real native disk-admission boundary",
+    "changed": [
+      "RestrictionAssembly03c4d65b",
+      "RestrictionValuese7e5f436",
+      "Restrictiona805e1eb"
+    ],
+    "retained": [
+      "Linear566 CPP0/6.157831s",
+      "Rows440 CPP0/191.381645s",
+      "Basic854b CPP0/100.097846s",
+      "Boundary7fd CPP0/280.938448s",
+      "RLAdaea CPP0/2.529537s"
+    ]
+  },
+  "consumer_afterimage": "Root-only exact KunnethOpenAffine9662 from actualmain2f, guard/previous coverage in MAIN-CONSUMER-AFFINE-APPLIED.json; oldb2f failure remains old6fb input.",
+  "remaining": "Actual v8 changed leaves, SourceEquations/FirstSquare/SecondSquare/Compatibility/facade, productionKunneth and existingMayer test; no whole cost/closure claim. Root owns final configured checks and affected independent review.",
+  "subsequent_actual_runs": [
+    {
+      "run": "remote-00bf38dcb8a94a45a7d802a6141b1935",
+      "artifacts": "runs/focused-v8",
+      "receipt_sha256": "f7ac4e45ce3f8df58e050e19e625f6e76dcd9ef6a9331ed409bc6c625cd9e642",
+      "events_sha256": "1731802682b115275e677c2cae428ab23e5d131b5fbb888e68eafa19799c451b",
+      "modules": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/RestrictionAssembly.lean",
+          "frontend_seconds": 2.829854339361191,
+          "exit": 0
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/RestrictionValues.lean",
+          "frontend_seconds": 135.0865529626608,
+          "exit": 1
+        }
+      ]
+    },
+    {
+      "run": "remote-3929d4cb988d40928e3b04e0fa105f97",
+      "artifacts": "runs/focused-v9",
+      "receipt_sha256": "5c85661228e34c9cfb1e79cb3c49a1df24944bee77e4cd228b9f6ce3cefbeae3",
+      "events_sha256": "233666c8e162fcbe3b8f5e844de46927ca89acc5c827225deb4695565b7295d0",
+      "modules": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/RestrictionValues.lean",
+          "frontend_seconds": 137.16900798678398,
+          "exit": 0
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Restriction.lean",
+          "frontend_seconds": 130.72677643597126,
+          "exit": 0
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/SourceEquations.lean",
+          "frontend_seconds": 275.20400816202164,
+          "exit": 1
+        }
+      ]
+    }
+  ],
+  "current_candidate": {
+    "ready": "FOCUSED-v10-READY.json",
+    "status": "v10 linewrap-only SourceEquations repair submitted; downstream closure pending",
+    "retained": [
+      "Linear566",
+      "Rows440",
+      "Basic854b",
+      "Boundary7fd",
+      "RLAdaea",
+      "Assembly03c",
+      "Valuesb8c3",
+      "Restrictiona805"
+    ],
+    "remaining": [
+      "SourceEquations40f5",
+      "FirstSquare3e66",
+      "SecondSquare8ae5",
+      "Compatibility7806",
+      "facade0fc",
+      "productionKunneth",
+      "existingMayer test"
+    ]
+  },
+  "material_updates": [
+    "Capacity recovered; original1GiB allowance was a planning buffer, hard10GiB reserve unchanged.",
+    "NativeValues e7e5 actual inference error repaired by whole-goal apply; b8c3 actualCPP0.",
+    "Native public restriction a805 actualCPP0; final conversion frontier resolved on literal whole-map interface.",
+    "SourceEquations3735 actualCPP1 only longLine102chars; v10 newline repair40f5 still needsCPP0, absence of other errors is not a pass."
+  ]
+}

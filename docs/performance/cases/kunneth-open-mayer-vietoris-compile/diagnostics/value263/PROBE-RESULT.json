@@ -1,0 +1,48 @@
+{
+  "source": "4707aaadf9432b2050204046021f2f6214e03366e9ba64fe1458d10e069a901c",
+  "results": [
+    {
+      "question": "Does the original Second definition plus native First_value proof already account for bounded row stall? Cut immediately before generic exactness extraction or native exactness proofs.",
+      "actual_source": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean",
+      "actual_sha": "bd06444b85d5aea9ee84ec4acb54bdc385a9bd078234e7adfd3cb15e594ad3c8",
+      "probe_sha": "8cce972d7e313566a8ca8e3175e85b52b6b9580c6e6c6073880ab3175fa3af9b",
+      "setup_exit": 0,
+      "completion_claim": "Real-body value263 bounded bisection only; no whole module CPP or speedup",
+      "setup_identity": {
+        "name": "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris",
+        "moduleName": null,
+        "isModule": true,
+        "options": {
+          "autoImplicit": false,
+          "warningAsError": true,
+          "weak.linter.mathlibStandardSet": true,
+          "weak.linter.style.longFile": 1500
+        }
+      },
+      "formation_exit": 1,
+      "outcome": "diagnostic_returned_nonzero",
+      "elapsed_s": 39.51538237929344,
+      "command": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5s",
+        "180s",
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "env",
+        "/root/autodl-tmp/lean-build/logs/remote-12db66e9e8b749c89bdaecb0312f0d58/toolchain/bin/lean",
+        "/root/autodl-tmp/lean-build/logs/remote-12db66e9e8b749c89bdaecb0312f0d58/probe-0/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean",
+        "--setup",
+        "/root/autodl-tmp/lean-build/logs/remote-12db66e9e8b749c89bdaecb0312f0d58/probe-0/setup.json",
+        "--json",
+        "-o",
+        "/root/autodl-tmp/lean-build/logs/remote-12db66e9e8b749c89bdaecb0312f0d58/probe-0/probe.olean",
+        "-i",
+        "/root/autodl-tmp/lean-build/logs/remote-12db66e9e8b749c89bdaecb0312f0d58/probe-0/probe.ilean",
+        "-Dtrace.profiler=true",
+        "-Dtrace.profiler.threshold=100"
+      ]
+    }
+  ],
+  "scope": "Real-body value263 bounded bisection only; no whole module CPP or speedup"
+}

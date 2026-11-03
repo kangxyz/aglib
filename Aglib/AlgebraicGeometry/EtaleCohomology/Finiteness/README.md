@@ -119,3 +119,12 @@ Each source states the exact hypotheses, maps, and realization bounds of its int
 - [HigherImageFiniteCogenerators](HigherImageFiniteCogenerators.lean)
 - [ProperConstantDegreeZero](ProperConstantDegreeZero.lean)
 - [ProperFromCurves](ProperFromCurves.lean)
+
+## Further relative-curve interfaces
+
+[ConstructibleConstantPrimary](ConstructibleConstantPrimary.lean),
+[RelativeCurveHigherVanishing](RelativeCurveHigherVanishing.lean) and
+[RelativeCurveCyclicHigherVanishing](RelativeCurveCyclicHigherVanishing.lean)
+state their own coefficient, geometry, degree and universe conditions. Their
+individual conclusions do not discharge the whole-fibre or whole-cover zero
+inputs of a broader base-change argument.

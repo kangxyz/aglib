@@ -1,0 +1,13 @@
+{
+  "original": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/mayer-v7-restriction-stages-B/remote-runs/remote-ad3d45e787db4fb5b50826db8aa6d2ed/setup-summary.json",
+  "sha256": "f3f39fbb6944393dd0e5b759367bee99f7b564884c702e06e1b811b8a85f067b",
+  "name": "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.Restriction",
+  "isModule": true,
+  "options": {
+    "autoImplicit": false,
+    "warningAsError": true,
+    "weak.linter.mathlibStandardSet": true,
+    "weak.linter.style.longFile": 1500
+  },
+  "imports": null
+}

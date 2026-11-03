@@ -1,0 +1,105 @@
+✖ [9562/9574] Building Aglib.RingTheory.LocalRing.ResidueField.Invariant (4.2s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-e63f38c0cd734762bc00914e9586403f/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/Aglib/RingTheory/LocalRing/ResidueField/Invariant.lean -o /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/RingTheory/LocalRing/ResidueField/Invariant.olean -i /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/RingTheory/LocalRing/ResidueField/Invariant.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/ir/Aglib/RingTheory/LocalRing/ResidueField/Invariant.c --setup /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/ir/Aglib/RingTheory/LocalRing/ResidueField/Invariant.setup.json --json
+error: Aglib/RingTheory/LocalRing/ResidueField/Invariant.lean:39:4: 'change' tactic failed, pattern
+  g • ((algebraMap R (ResidueField S)) r * z) = (algebraMap R (ResidueField S)) r * g • z
+is not definitionally equal to target
+  g • r • z = r • g • z
+error: Aglib/RingTheory/LocalRing/ResidueField/Invariant.lean:35:0: Definition `IsLocalRing.residueScalarCommClass` of class type is semireducible. Most type class instances should be instance-reducible, so consider marking this
+definition with `@[instance_reducible]`. If it is intentionally semireducible, this warning can be disabled with `set_option warn.classDefReducibility false`.
+error: Aglib/RingTheory/LocalRing/ResidueField/Invariant.lean:37:4: (kernel) declaration has metavariables 'IsLocalRing.residueScalarCommClass'
+error: Aglib/RingTheory/LocalRing/ResidueField/Invariant.lean:55:18: Unknown identifier `residue_smul`
+error: Aglib/RingTheory/LocalRing/ResidueField/Invariant.lean:66:4: 'change' tactic failed, pattern
+  g • ((algebraMap (ResidueField R) (ResidueField S)) r * z) = (algebraMap (ResidueField R) (ResidueField S)) r * g • z
+is not definitionally equal to target
+  g • r • z = r • g • z
+error: Aglib/RingTheory/LocalRing/ResidueField/Invariant.lean:63:0: Definition `IsLocalRing.residueFieldScalarCommClass` of class type is semireducible. Most type class instances should be instance-reducible, so consider marking this
+definition with `@[instance_reducible]`. If it is intentionally semireducible, this warning can be disabled with `set_option warn.classDefReducibility false`.
+error: Aglib/RingTheory/LocalRing/ResidueField/Invariant.lean:64:4: (kernel) declaration has metavariables 'IsLocalRing.residueFieldScalarCommClass'
+error: Aglib/RingTheory/LocalRing/ResidueField/Invariant.lean:91:44: Invalid field `toIsSeparable`: The environment does not contain `IsGalois.toIsSeparable`, so it is not possible to project the field `toIsSeparable` from an expression
+  residue_isGalois G hG
+of type
+  IsGalois (ResidueField R) (ResidueField S)
+✔ [9563/9574] Built Aglib.AlgebraicGeometry.EtaleCohomology.Localization.SmoothModuleInjectiveClassDetection (39s)
+✖ [9564/9574] Building Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.SeparatedRestriction (44s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-e63f38c0cd734762bc00914e9586403f/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/SeparatedRestriction.lean -o /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/SeparatedRestriction.olean -i /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/SeparatedRestriction.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/SeparatedRestriction.c --setup /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/SeparatedRestriction.setup.json --json
+error: Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/SeparatedRestriction.lean:50:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+error: Aglib/AlgebraicGeometry/Cohomology/DirectImage/Affine/SeparatedRestriction.lean:51:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+✖ [9565/9574] Building Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.SectionsCore (202s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-e63f38c0cd734762bc00914e9586403f/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Trace/SectionsCore.lean -o /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Trace/SectionsCore.olean -i /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Trace/SectionsCore.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Trace/SectionsCore.c --setup /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Trace/SectionsCore.setup.json --json
+error: Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Trace/SectionsCore.lean:124:0: Please, write a comment here or remove this line, but do not place empty lines within commands!
+Context:
+                                                                   ↓
+  ⏎      (((Scheme.Modules.pushforward p).rightDerived n).obj M)) :⏎⏎    moduleHigherDirectImageAffineSectionsLinearEquivOfCounitQuasiIso (R := A) q⏎
+
+Note: This linter can be disabled with `set_option linter.style.emptyLine false`
+error: Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Trace/SectionsCore.lean:139:0: Please, write a comment here or remove this line, but do not place empty lines within commands!
+Context:
+                                                    ↓
+  ⏎          (R := R) p M I inferInstance n x) := by⏎⏎  let F : (moduleSpecΓFunctor (R := .of A)).obj⏎
+
+Note: This linter can be disabled with `set_option linter.style.emptyLine false`
+✔ [9571/9574] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.FiniteSourceH1 (260s)
+✔ [9572/9574] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.FiniteH1 (150s)
+✖ [9573/9574] Building Aglib.AlgebraicGeometry.Modules.InternalHom.BidualNaturality (754s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-e63f38c0cd734762bc00914e9586403f/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Modules/InternalHom/BidualNaturality.lean -o /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Modules/InternalHom/BidualNaturality.olean -i /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Modules/InternalHom/BidualNaturality.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Modules/InternalHom/BidualNaturality.c --setup /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Modules/InternalHom/BidualNaturality.setup.json --json
+error: Aglib/AlgebraicGeometry/Modules/InternalHom/BidualNaturality.lean:58:4: (kernel) excessive memory consumption detected
+✖ [9574/9574] Building Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.AffineEtaleHigherDegree (1988s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-e63f38c0cd734762bc00914e9586403f/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.lean -o /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.olean -i /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.c --setup /root/autodl-tmp/lean-build/workspaces/managed-04aadc9d1e2f-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.lean:49:6: failed to synthesize
+  Algebra (SeparableClosure k) ↥(finiteField (↥L.toIntermediateField) (AlgebraicClosure ↥L.toIntermediateField) s)
+(deterministic) timeout at `typeclass`, maximum number of heartbeats (20000) has been reached
+
+Note: Use `set_option synthInstance.maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.lean:50:13: failed to synthesize
+  Algebra (SeparableClosure k) ↥(finiteField (↥L.toIntermediateField) (AlgebraicClosure ↥L.toIntermediateField) s)
+(deterministic) timeout at `typeclass`, maximum number of heartbeats (20000) has been reached
+
+Note: Use `set_option synthInstance.maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.lean:52:62: failed to synthesize
+  Algebra (SeparableClosure k) ↥(finiteField (↥L.toIntermediateField) (AlgebraicClosure ↥L.toIntermediateField) s)
+(deterministic) timeout at `typeclass`, maximum number of heartbeats (20000) has been reached
+
+Note: Use `set_option synthInstance.maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.lean:55:2: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.lean:35:0: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+Some required targets logged failures:
+- Aglib.RingTheory.LocalRing.ResidueField.Invariant
+- Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.SeparatedRestriction
+- Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.SectionsCore
+- Aglib.AlgebraicGeometry.Modules.InternalHom.BidualNaturality
+- Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.AffineEtaleHigherDegree
+error: build failed

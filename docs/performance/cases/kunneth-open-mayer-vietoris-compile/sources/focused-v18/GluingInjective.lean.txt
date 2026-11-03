@@ -1,0 +1,72 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.Compatibility
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.GluingFour
+
+/-!
+# The original positive-degree union map
+
+The original native rows, restrictions, difference maps and twice-occurring degree-p
+Koszul sign are assembled into the same unsigned target ladder in every characteristic.
+-/
+
+@[expose] public noncomputable section
+
+set_option backward.defeqAttrib.useBackward true
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+
+open CategoryTheory CategoryTheory.Limits CategoryTheory.Abelian
+open MonoidalCategory CartesianMonoidalCategory AlgebraicGeometry TopologicalSpace Opposite
+open AlgebraicGeometry.Scheme.OverField AlgebraicGeometry.Scheme.Modules
+open scoped TensorProduct DirectSum
+
+universe u
+
+namespace AlgebraicGeometry.Scheme.Cohomology
+
+attribute [local instance] Over.cartesianMonoidalCategory
+
+variable {k : Type u} [Field k] (X Y : FScheme k)
+
+open KunnethOpenMayerVietoris
+
+namespace KunnethOpenMayerVietoris
+
+/-- The original positive-degree union map is injective by the left four-lemma argument. -/
+theorem structureOpenKunnethMap_injective_sup_succ (U V : Y.left.Opens) (n : ℕ)
+    (hMiddle : Function.Surjective (structureOpenMVMiddleMap X Y U V n))
+    (hIntersection : Function.Injective (structureOpenKunnethMap X Y (U ⊓ V) n))
+    (hMiddleNext : Function.Injective (structureOpenMVMiddleMap X Y U V (n + 1))) :
+    Function.Injective (structureOpenKunnethMap X Y (U ⊔ V) (n + 1)) := by
+  have hSourceThird := structureOpenKunnethMV_exact_third X Y U V n
+  have hResult := LinearMap.injective_of_surjective_of_injective_of_injective
+    (structureOpenKunnethMVSecond X Y U V n)
+    (Kunneth.MayerVietoris.tensorBoundary (R := k) (structureCohomology k X)
+      (fun q => structureOpenMayerVietorisDelta Y U V q) n)
+    (structureOpenKunnethMVFirst X Y U V (n + 1))
+    (structureOpenMVSecond (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U) ((snd X Y).left ⁻¹ᵁ V) n)
+    (structureOpenMayerVietorisDelta (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U)
+      ((snd X Y).left ⁻¹ᵁ V) n)
+    (structureOpenMVFirst (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U)
+      ((snd X Y).left ⁻¹ᵁ V) (n + 1))
+    (structureOpenMVMiddleMap X Y U V n) (structureOpenKunnethMap X Y (U ⊓ V) n)
+    (structureOpenKunnethMap X Y (U ⊔ V) (n + 1))
+    (structureOpenMVMiddleMap X Y U V (n + 1))
+    (structureOpenKunnethMV_second_square X Y U V n)
+    (structureOpenKunnethMap_boundary X Y U V n).symm
+    (structureOpenKunnethMV_first_square X Y U V (n + 1))
+    (structureOpenKunnethMV_exact_second X Y U V n) hSourceThird
+    (structureOpenMV_exact_second (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U)
+      ((snd X Y).left ⁻¹ᵁ V) n)
+    hMiddle hIntersection hMiddleNext
+  exact hResult
+
+end KunnethOpenMayerVietoris
+
+end AlgebraicGeometry.Scheme.Cohomology

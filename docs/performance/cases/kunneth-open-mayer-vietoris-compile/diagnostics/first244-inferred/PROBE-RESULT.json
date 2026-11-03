@@ -1,0 +1,48 @@
+{
+  "source": "4707aaadf9432b2050204046021f2f6214e03366e9ba64fe1458d10e069a901c",
+  "results": [
+    {
+      "question": "Candidate at located native-arrow boundary: infer original structureOpenMVFirst result directly from unchanged native moduleMayerVietorisToBiprod.hom, rather than ascribing its cohomology-carrier arrow type.",
+      "actual_source": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean",
+      "actual_sha": "bd06444b85d5aea9ee84ec4acb54bdc385a9bd078234e7adfd3cb15e594ad3c8",
+      "probe_sha": "60d47e64d0bc5e58b4dc5ccc9de1d2987fdf49ee74739724479258105a3dc03a",
+      "setup_exit": 0,
+      "completion_claim": "Changed inferredFirst prefix bounded profiler only; no whole module CPP or speedup",
+      "setup_identity": {
+        "name": "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris",
+        "moduleName": null,
+        "isModule": true,
+        "options": {
+          "autoImplicit": false,
+          "warningAsError": true,
+          "weak.linter.mathlibStandardSet": true,
+          "weak.linter.style.longFile": 1500
+        }
+      },
+      "formation_exit": 1,
+      "outcome": "diagnostic_returned_nonzero",
+      "elapsed_s": 70.6842876970768,
+      "command": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5s",
+        "180s",
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "env",
+        "/root/autodl-tmp/lean-build/logs/remote-b2241f3858fc4ffd95928acbb5d7e36c/toolchain/bin/lean",
+        "/root/autodl-tmp/lean-build/logs/remote-b2241f3858fc4ffd95928acbb5d7e36c/probe-0/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean",
+        "--setup",
+        "/root/autodl-tmp/lean-build/logs/remote-b2241f3858fc4ffd95928acbb5d7e36c/probe-0/setup.json",
+        "--json",
+        "-o",
+        "/root/autodl-tmp/lean-build/logs/remote-b2241f3858fc4ffd95928acbb5d7e36c/probe-0/probe.olean",
+        "-i",
+        "/root/autodl-tmp/lean-build/logs/remote-b2241f3858fc4ffd95928acbb5d7e36c/probe-0/probe.ilean",
+        "-Dtrace.profiler=true",
+        "-Dtrace.profiler.threshold=100"
+      ]
+    }
+  ],
+  "scope": "Changed inferredFirst prefix bounded profiler only; no whole module CPP or speedup"
+}

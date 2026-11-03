@@ -1,0 +1,28 @@
+{
+  "status": "AffineEtaleHigherDegree actual-error candidate READY; uncompiled",
+  "actual_ci": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-generic-pullback-20261101",
+  "head": "6564f1ad588229d833b2cf87102237e7a4b32bfb",
+  "failure_source": "f5b101c53a913bcd419f65851b6ea5efecf6e52fbf77babfd0c8a653c2b62008",
+  "failure_run": "remote-e63f38c0cd734762bc00914e9586403f",
+  "diagnostics": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/main-coherent-140-D-build/remote-runs/remote-e63f38c0cd734762bc00914e9586403f/build.log",
+  "rows": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.lean",
+      "before_sha256": "7fa69a7625a06250940a36c47e56a29f05bed936982f3b3bd50ff2f23f0531f2",
+      "after_sha256": "c5177efa4a023b3eee7984e721e57998b02d3ef1054dd81767d62f3b1f11e885",
+      "ready_file": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/full-main-integration-prep/repair/batch-006-ready/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.lean"
+    }
+  ],
+  "actual_frontier": "Original lines49/50/52 each attempt Algebra (SeparableClosure k) (finiteField L (AlgebraicClosure L) s); line55/35 isDefEq200000 after the concrete coefficient-class application. The old run lasted1987.949259s and failed, not CPP.",
+  "repair": [
+    "At both original second-field E let-bindings, explicitly select its existing native E.algebra and Algebra.toModule dictionaries for L\u2192E. These are the constructor values of the pinned Mathlib IntermediateField shortcut instances, without their unsuccessful request for an unrelated ambient SC(k) algebra.",
+    "Infer the exact original fully explicit coefficient-class producer first, then destruct through ht after installing the original B additive/finite dictionaries, matching the already used AffineBoundedHigherDegree producer boundary."
+  ],
+  "correspondence": "Same k, finite-Galois L, finiteField L (AlgebraicClosure L) s, maximal separable E, native scalar action/field maps, literal composite pullback, coefficient arrow/trivialization/class, n/q hypotheses and standard u+2 Ext worlds. No alternate embedding, field, action, model, public premise, record, certificate, global instance, import, option, or budget change. Public conclusion retains the same three claims with its already selected native scalar dictionaries now explicit.",
+  "source_references": [
+    "Pinned Mathlib d13f23b723b8a846827a245b89c10fc7d3f11612 Mathlib/FieldTheory/IntermediateField/Basic.lean:442-454 (read-only local source)",
+    "ActualCI Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineBoundedHigherDegree.lean:88-94 (retained producer-application shape)"
+  ],
+  "preserved": "READY005 cheap3 and all previously accepted files remain untouched. Bidual2/Euler3/Root entries and pinned providers are outside edits.",
+  "next": "One changed native leaf/affected consumer check under standard limits; retain compatible CPP. Actual new feedback determines any remaining boundary. No unchanged33-minute replay or optional probe requested."
+}

@@ -27,3 +27,13 @@ it constructs the generic square from the original base changes. See the Lean
 statements for their exact maps, scalar towers and hypotheses. These are generic
 H1 results; they do not assert a nongeneric neighborhood zero, full C3 or C4,
 or smooth base change.
+
+## Further effacement interfaces
+
+[ClosureH1](ClosureH1.lean), [AffineBoundedHigherDegree](AffineBoundedHigherDegree.lean),
+[HigherDegree](HigherDegree.lean) and
+[GenericHigherClassEffacement](GenericHigherClassEffacement.lean) provide
+further interfaces in this family. Their exact coefficients, field extensions,
+maps, Ext worlds and zero hypotheses are stated in the source. In particular,
+a generic or field-stage zero does not supply a whole-limit-cover zero or a
+whole-fibre zero.

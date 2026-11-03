@@ -1,0 +1,48 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.Gluing
+
+/-! # The two original four-lemma arguments on fixed module objects -/
+
+@[expose] public section
+
+universe r a b
+
+namespace Kunneth.MayerVietoris
+
+/-- The injectivity half of the module five lemma with the original objects fixed. -/
+theorem moduleFourLemmaInjective {R : Type r} [CommRing R]
+    (A B C D : ModuleCat.{a} R) (A' B' C' D' : ModuleCat.{b} R)
+    (f₁ : A →ₗ[R] B) (f₂ : B →ₗ[R] C) (f₃ : C →ₗ[R] D)
+    (g₁ : A' →ₗ[R] B') (g₂ : B' →ₗ[R] C') (g₃ : C' →ₗ[R] D')
+    (i₁ : A →ₗ[R] A') (i₂ : B →ₗ[R] B') (i₃ : C →ₗ[R] C') (i₄ : D →ₗ[R] D')
+    (hc₁ : g₁.comp i₁ = i₂.comp f₁) (hc₂ : g₂.comp i₂ = i₃.comp f₂)
+    (hc₃ : g₃.comp i₃ = i₄.comp f₃)
+    (hf₁ : Function.Exact f₁ f₂) (hf₂ : Function.Exact f₂ f₃)
+    (hg₁ : Function.Exact g₁ g₂)
+    (hi₁ : Function.Surjective i₁) (hi₂ : Function.Injective i₂)
+    (hi₄ : Function.Injective i₄) : Function.Injective i₃ :=
+  LinearMap.injective_of_surjective_of_injective_of_injective
+    f₁ f₂ f₃ g₁ g₂ g₃ i₁ i₂ i₃ i₄ hc₁ hc₂ hc₃ hf₁ hf₂ hg₁ hi₁ hi₂ hi₄
+
+/-- The surjectivity half of the module five lemma with the original objects fixed. -/
+theorem moduleFourLemmaSurjective {R : Type r} [CommRing R]
+    (A B C D : ModuleCat.{a} R) (A' B' C' D' : ModuleCat.{b} R)
+    (f₁ : A →ₗ[R] B) (f₂ : B →ₗ[R] C) (f₃ : C →ₗ[R] D)
+    (g₁ : A' →ₗ[R] B') (g₂ : B' →ₗ[R] C') (g₃ : C' →ₗ[R] D')
+    (i₁ : A →ₗ[R] A') (i₂ : B →ₗ[R] B') (i₃ : C →ₗ[R] C') (i₄ : D →ₗ[R] D')
+    (hc₁ : g₁.comp i₁ = i₂.comp f₁) (hc₂ : g₂.comp i₂ = i₃.comp f₂)
+    (hc₃ : g₃.comp i₃ = i₄.comp f₃)
+    (hf₂ : Function.Exact f₂ f₃) (hg₁ : Function.Exact g₁ g₂)
+    (hg₂ : Function.Exact g₂ g₃)
+    (hi₁ : Function.Surjective i₁) (hi₃ : Function.Surjective i₃)
+    (hi₄ : Function.Injective i₄) : Function.Surjective i₂ :=
+  LinearMap.surjective_of_surjective_of_surjective_of_injective
+    f₁ f₂ f₃ g₁ g₂ g₃ i₁ i₂ i₃ i₄ hc₁ hc₂ hc₃ hf₂ hg₁ hg₂ hi₁ hi₃ hi₄
+
+end Kunneth.MayerVietoris

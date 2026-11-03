@@ -1,0 +1,128 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.Compatibility
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.Gluing
+
+/-!
+# The original mixed-open Mayer–Vietoris ladder
+
+The original native rows, restrictions, difference maps and twice-occurring degree-p
+Koszul sign are assembled into the same unsigned target ladder in every characteristic.
+-/
+
+@[expose] public noncomputable section
+
+
+open CategoryTheory CategoryTheory.Limits CategoryTheory.Abelian
+open MonoidalCategory CartesianMonoidalCategory AlgebraicGeometry TopologicalSpace Opposite
+open AlgebraicGeometry.Scheme.OverField AlgebraicGeometry.Scheme.Modules
+open scoped TensorProduct DirectSum
+
+universe u
+
+namespace AlgebraicGeometry.Scheme.Cohomology
+
+attribute [local instance] Over.cartesianMonoidalCategory
+
+variable {k : Type u} [Field k] (X Y : FScheme k)
+
+open KunnethOpenMayerVietoris
+
+/-- Bijectivity of the original mixed maps glues in degree zero by the native four lemma. -/
+private theorem structureOpenKunnethMap_bijective_sup_zero (U V : Y.left.Opens)
+    (hU : Function.Bijective (structureOpenKunnethMap X Y U 0))
+    (hV : Function.Bijective (structureOpenKunnethMap X Y V 0))
+    (hI : Function.Bijective (structureOpenKunnethMap X Y (U ⊓ V) 0)) :
+    Function.Bijective (structureOpenKunnethMap X Y (U ⊔ V) 0) := by
+  exact LinearMap.bijective_of_bijective_of_injective_of_left_exact
+    (structureOpenKunnethMVFirst X Y U V 0) (structureOpenKunnethMVSecond X Y U V 0)
+    (structureOpenMVFirst (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U) ((snd X Y).left ⁻¹ᵁ V) 0)
+    (structureOpenMVSecond (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U) ((snd X Y).left ⁻¹ᵁ V) 0)
+    (structureOpenKunnethMap X Y (U ⊔ V) 0) (structureOpenMVMiddleMap X Y U V 0)
+    (structureOpenKunnethMap X Y (U ⊓ V) 0)
+    (structureOpenKunnethMV_first_square X Y U V 0)
+    (structureOpenKunnethMV_second_square X Y U V 0)
+    (structureOpenKunnethMV_exact_first X Y U V 0)
+    (structureOpenMV_exact_first (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U) ((snd X Y).left ⁻¹ᵁ V) 0)
+    (structureOpenMVMiddleMap_bijective X Y U V 0 hU hV) hI.1
+    (structureOpenKunnethMV_first_zero_injective X Y U V)
+    (structureOpenMV_first_zero_injective (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U)
+      ((snd X Y).left ⁻¹ᵁ V))
+
+/-- Every positive union degree follows from the native five lemma on the actual signed ladder. -/
+private theorem structureOpenKunnethMap_bijective_sup_succ (U V : Y.left.Opens) (n : ℕ)
+    (hU : ∀ m, Function.Bijective (structureOpenKunnethMap X Y U m))
+    (hV : ∀ m, Function.Bijective (structureOpenKunnethMap X Y V m))
+    (hI : ∀ m, Function.Bijective (structureOpenKunnethMap X Y (U ⊓ V) m)) :
+    Function.Bijective (structureOpenKunnethMap X Y (U ⊔ V) (n + 1)) := by
+  let M := structureOriginalFirstModule X
+  let P := structureOpenModule Y
+  let B := fun q => (P U q ⊞ P V q : ModuleCat.{u + 1} k)
+  have hSourceThird := structureOpenKunnethMV_exact_third X Y U V n
+  have hResult := Kunneth.MayerVietoris.moduleFiveLemma
+    (Kunneth.MayerVietoris.tensorModuleSum M B n)
+    (Kunneth.MayerVietoris.tensorModuleSum M (P (U ⊓ V)) n)
+    (Kunneth.MayerVietoris.tensorModuleSum M (P (U ⊔ V)) (n + 1))
+    (Kunneth.MayerVietoris.tensorModuleSum M B (n + 1))
+    (Kunneth.MayerVietoris.tensorModuleSum M (P (U ⊓ V)) (n + 1))
+    (structureOpenModule (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U) n ⊞
+      structureOpenModule (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ V) n)
+    (structureOpenModule (X ⊗ Y)
+      (((snd X Y).left ⁻¹ᵁ U) ⊓ ((snd X Y).left ⁻¹ᵁ V)) n)
+    (structureOpenModule (X ⊗ Y)
+      (((snd X Y).left ⁻¹ᵁ U) ⊔ ((snd X Y).left ⁻¹ᵁ V)) (n + 1))
+    (structureOpenModule (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U) (n + 1) ⊞
+      structureOpenModule (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ V) (n + 1))
+    (structureOpenModule (X ⊗ Y)
+      (((snd X Y).left ⁻¹ᵁ U) ⊓ ((snd X Y).left ⁻¹ᵁ V)) (n + 1))
+    (structureOpenKunnethMVSecond X Y U V n)
+    (Kunneth.MayerVietoris.tensorBoundary (R := k) (structureCohomology k X)
+      (fun q => structureOpenMayerVietorisDelta Y U V q) n)
+    (structureOpenKunnethMVFirst X Y U V (n + 1))
+    (structureOpenKunnethMVSecond X Y U V (n + 1))
+    (structureOpenMVSecond (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U) ((snd X Y).left ⁻¹ᵁ V) n)
+    (structureOpenMayerVietorisDelta (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U)
+      ((snd X Y).left ⁻¹ᵁ V) n)
+    (structureOpenMVFirst (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U)
+      ((snd X Y).left ⁻¹ᵁ V) (n + 1))
+    (structureOpenMVSecond (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U)
+      ((snd X Y).left ⁻¹ᵁ V) (n + 1))
+    (structureOpenMVMiddleMap X Y U V n) (structureOpenKunnethMap X Y (U ⊓ V) n)
+    (structureOpenKunnethMap X Y (U ⊔ V) (n + 1))
+    (structureOpenMVMiddleMap X Y U V (n + 1))
+    (structureOpenKunnethMap X Y (U ⊓ V) (n + 1))
+    (structureOpenKunnethMV_second_square X Y U V n)
+    (structureOpenKunnethMap_boundary X Y U V n).symm
+    (structureOpenKunnethMV_first_square X Y U V (n + 1))
+    (structureOpenKunnethMV_second_square X Y U V (n + 1))
+    (structureOpenKunnethMV_exact_second X Y U V n)
+    hSourceThird
+    (structureOpenKunnethMV_exact_first X Y U V (n + 1))
+    (structureOpenMV_exact_second (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U)
+      ((snd X Y).left ⁻¹ᵁ V) n)
+    (structureOpenMV_exact_third (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U)
+      ((snd X Y).left ⁻¹ᵁ V) n)
+    (structureOpenMV_exact_first (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U)
+      ((snd X Y).left ⁻¹ᵁ V) (n + 1))
+    (structureOpenMVMiddleMap_bijective X Y U V n (hU n) (hV n)).2 (hI n)
+    (structureOpenMVMiddleMap_bijective X Y U V (n + 1) (hU (n + 1)) (hV (n + 1)))
+    (hI (n + 1)).1
+  exact hResult
+
+/-- The literal original mixed-open maps glue across an actual union, in all degrees. -/
+theorem structureOpenKunnethMap_bijective_sup (U V : Y.left.Opens)
+    (hU : ∀ n, Function.Bijective (structureOpenKunnethMap X Y U n))
+    (hV : ∀ n, Function.Bijective (structureOpenKunnethMap X Y V n))
+    (hI : ∀ n, Function.Bijective (structureOpenKunnethMap X Y (U ⊓ V) n)) :
+    ∀ n, Function.Bijective (structureOpenKunnethMap X Y (U ⊔ V) n) := by
+  intro n
+  cases n with
+  | zero => exact structureOpenKunnethMap_bijective_sup_zero X Y U V (hU 0) (hV 0) (hI 0)
+  | succ n => exact structureOpenKunnethMap_bijective_sup_succ X Y U V n hU hV hI
+
+end AlgebraicGeometry.Scheme.Cohomology

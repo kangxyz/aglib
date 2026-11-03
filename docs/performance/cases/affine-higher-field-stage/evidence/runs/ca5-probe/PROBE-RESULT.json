@@ -1,0 +1,46 @@
+{
+  "source": "e8fbad86c5a5a4e46467f13f4f4cc501fca12928dda4120d33261c9b80b4efbd",
+  "results": [
+    {
+      "question": "one ordinary statement-binder formation probe; no original proof or helper proof is checked",
+      "actual_source": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.lean",
+      "actual_sha": "ef1e578f2ed05c2418e2a46be90ffa584144bb452c85edf32f54c78355934eff",
+      "probe_sha": "ca5b60bd9220a3e86d50624020e63fdc98d5504da436bb6213402d488abc6638",
+      "setup_exit": 0,
+      "completion_claim": "Only repaired affine public statement-binder formation; no production proof/helper/kernel closure claimed",
+      "setup_identity": {
+        "name": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.AffineEtaleHigherDegree",
+        "moduleName": null,
+        "isModule": true,
+        "options": {
+          "autoImplicit": false,
+          "warningAsError": true,
+          "weak.linter.mathlibStandardSet": true,
+          "weak.linter.style.longFile": 1500
+        }
+      },
+      "formation_exit": 124,
+      "outcome": "diagnostic_process_bound",
+      "elapsed_s": 305.2651287615299,
+      "command": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5s",
+        "300s",
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "env",
+        "/root/autodl-tmp/lean-build/logs/remote-35e07cb56c484839b01c5729c862a491/toolchain/bin/lean",
+        "/root/autodl-tmp/lean-build/logs/remote-35e07cb56c484839b01c5729c862a491/probe-0/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.lean",
+        "--setup",
+        "/root/autodl-tmp/lean-build/logs/remote-35e07cb56c484839b01c5729c862a491/probe-0/setup.json",
+        "--json",
+        "-o",
+        "/root/autodl-tmp/lean-build/logs/remote-35e07cb56c484839b01c5729c862a491/probe-0/probe.olean",
+        "-i",
+        "/root/autodl-tmp/lean-build/logs/remote-35e07cb56c484839b01c5729c862a491/probe-0/probe.ilean"
+      ]
+    }
+  ],
+  "scope": "Only repaired affine public statement-binder formation; no production proof/helper/kernel closure claimed"
+}

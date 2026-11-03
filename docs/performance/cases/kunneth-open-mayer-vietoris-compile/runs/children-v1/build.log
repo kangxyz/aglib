@@ -1,0 +1,79 @@
+✖ [3495/3496] Building Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.LinearAlgebra (6.1s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-5a7469b38559-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-5a7469b38559-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-5a7469b38559-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-5a7469b38559-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-5a7469b38559-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-5a7469b38559-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-5a7469b38559-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-5a7469b38559-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-5a7469b38559-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-5a7469b38559-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-26a9761555424e7db1962c1cd4a73c3a/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-5a7469b38559-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.lean -o /root/autodl-tmp/lean-build/workspaces/managed-5a7469b38559-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.olean -i /root/autodl-tmp/lean-build/workspaces/managed-5a7469b38559-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-5a7469b38559-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.c --setup /root/autodl-tmp/lean-build/workspaces/managed-5a7469b38559-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.setup.json --json
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.lean:149:5: Unknown constant `DirectSum.prodFamilyEquiv`
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.lean:163:13: declaration uses `sorry`
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.lean:154:8: declaration uses `sorry`
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.lean:163:38: This simp argument is unused:
+  LinearEquiv.trans_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [tensorBiprodFamilyEquiv, DirectSum.coe_congrLinearEquiv, DirectSum.lmap_lof,
+    LinearEquiv.coe_toLinearMap, TensorProduct.congr_tmul, LinearEquiv.refl_apply, TensorProduct.prodRight_tmul,
+    DirectSum.prodFamilyEquiv_lof]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.lean:164:4: This simp argument is unused:
+  DirectSum.coe_congrLinearEquiv
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [tensorBiprodFamilyEquiv, LinearEquiv.trans_apply, DirectSum.lmap_lof, LinearEquiv.coe_toLinearMap,
+    TensorProduct.congr_tmul, LinearEquiv.refl_apply, TensorProduct.prodRight_tmul, DirectSum.prodFamilyEquiv_lof]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.lean:164:36: This simp argument is unused:
+  DirectSum.lmap_lof
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [tensorBiprodFamilyEquiv, LinearEquiv.trans_apply, DirectSum.coe_congrLinearEquiv,
+    LinearEquiv.coe_toLinearMap, TensorProduct.congr_tmul, LinearEquiv.refl_apply, TensorProduct.prodRight_tmul,
+    DirectSum.prodFamilyEquiv_lof]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.lean:164:56: This simp argument is unused:
+  LinearEquiv.coe_toLinearMap
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [tensorBiprodFamilyEquiv, LinearEquiv.trans_apply, DirectSum.coe_congrLinearEquiv,
+    DirectSum.lmap_lof, TensorProduct.congr_tmul, LinearEquiv.refl_apply, TensorProduct.prodRight_tmul,
+    DirectSum.prodFamilyEquiv_lof]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.lean:165:4: This simp argument is unused:
+  TensorProduct.congr_tmul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [tensorBiprodFamilyEquiv, LinearEquiv.trans_apply, DirectSum.coe_congrLinearEquiv,
+    DirectSum.lmap_lof, LinearEquiv.coe_toLinearMap, LinearEquiv.refl_apply, TensorProduct.prodRight_tmul,
+    DirectSum.prodFamilyEquiv_lof]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.lean:165:30: This simp argument is unused:
+  LinearEquiv.refl_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [tensorBiprodFamilyEquiv, LinearEquiv.trans_apply, DirectSum.coe_congrLinearEquiv,
+    DirectSum.lmap_lof, LinearEquiv.coe_toLinearMap, TensorProduct.congr_tmul, TensorProduct.prodRight_tmul,
+    DirectSum.prodFamilyEquiv_lof]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.lean:165:54: This simp argument is unused:
+  TensorProduct.prodRight_tmul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [tensorBiprodFamilyEquiv, LinearEquiv.trans_apply, DirectSum.coe_congrLinearEquiv,
+    DirectSum.lmap_lof, LinearEquiv.coe_toLinearMap, TensorProduct.congr_tmul, LinearEquiv.refl_apply,
+    DirectSum.prodFamilyEquiv_lof]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/LinearAlgebra.lean:166:4: This simp argument is unused:
+  DirectSum.prodFamilyEquiv_lof
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [tensorBiprodFamilyEquiv, LinearEquiv.trans_apply, DirectSum.coe_congrLinearEquiv,
+    DirectSum.lmap_lof, LinearEquiv.coe_toLinearMap, TensorProduct.congr_tmul, LinearEquiv.refl_apply,
+    TensorProduct.prodRight_tmul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.LinearAlgebra
+error: build failed

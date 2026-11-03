@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Curves.Picard.OpenDivisibility
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.UnitsQuotient
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Picard.KummerQuotient
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PrimeToCharacteristicVanishing
 
 /-!
@@ -16,7 +16,7 @@ For an open subscheme of a smooth proper geometrically connected curve over an a
 closed field, missing a closed point, `H^q(U, μ_n) = 0` for `q ≥ 2` and invertible `n`.
 The proof combines geometric Picard divisibility and the existing Kummer and broad-curve
 vanishing suppliers (Stacks, Tag 03RR; Milne, Lectures on Étale Cohomology v2.21,
-Proposition 14.12, p. 97). The general units/Picard exact sequence is imported from its owner.
+Proposition 14.12, p. 97). The original Picard Kummer boundary criterion is imported from its owner.
 -/
 
 @[expose] public noncomputable section

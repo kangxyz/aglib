@@ -1,0 +1,132 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import
+  Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.AffineEtaleHigherConstant
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.BoundedClassFiniteConstant
+public import Aglib.AlgebraicGeometry.EtaleCohomology.PullbackComposition
+public import
+  Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.CoefficientCompositeZero
+
+/-! # Actual finite-etale field refinement for higher affine classes
+
+The maximal separable subextension of the produced finite field stage retains
+zero of the original finite-constant class by the existing finite-pure
+comparison. Bounded coefficients use their original finite-constant class
+representative and original coefficient naturality. Both field stages and the
+literal composite pullback are retained. No pointed neighbourhood over a
+higher-dimensional base and no smooth base change theorem are asserted.
+-/
+
+@[expose] public noncomputable section
+
+open CategoryTheory CategoryTheory.Limits Opposite
+
+namespace AlgebraicGeometry.Scheme.EtaleCohomology.TwoFieldEffacement
+
+universe u eX
+
+attribute [local instance] hasSheafifyLarge HasExt.standard
+
+open FiniteEtale.FieldLimit
+
+/-- The original complete field-stage conclusion, with its scalar actions
+selected before the coefficient field is specialized. -/
+def AffineEtaleHigherFieldStage
+    (k L : Type u) [Field k] [Field L] [Algebra k L]
+    {V T : Scheme.{u}} (r : V ⟶ Spec (.of L)) (f : V ⟶ T)
+    [HasExt.{eX} (AbelianSheaf.{u, u + 1} T)]
+    (M : AbelianSheaf.{u, u + 1} T) (q : ℕ) (c : Sheaf.H.{eX} M q)
+    (s : Finset (AlgebraicClosure L)) : Prop :=
+  let E := separableClosure L (finiteField L (AlgebraicClosure L) s)
+  letI : Algebra L E := E.algebra
+  letI : Module L E := Algebra.toModule
+  letI : Algebra k E := ((algebraMap L E).comp (algebraMap k L)).toAlgebra
+  letI : Module k E := Algebra.toModule
+  Module.Finite k E ∧
+  Etale (Spec.algebraMap L E ≫ Spec.algebraMap k L) ∧
+  cohomologyPullback.{u, eX, u + 2}
+    (pullback.fst r (Spec.algebraMap L E) ≫ f) M q c = 0
+
+/-- Complete the original separable field stage and coefficient transport before
+specializing the coefficient field or the affine pullback. The base action is
+restriction along the original two field maps. -/
+private theorem exists_affine_finiteEtaleField_killing_coefficient_higher
+    (k L : Type u) [Field k] [Field L] [Algebra k L] [Module.Finite k L]
+    [Etale (Spec.algebraMap k L)]
+    (V : Scheme.{u}) [IsAffine V] [Nonempty V]
+    (r : V ⟶ Spec (.of L)) [SmoothOfRelativeDimension 1 r]
+    [GeometricallyConnected r]
+    {T : Scheme.{u}} [HasExt.{eX} (AbelianSheaf.{u, u + 1} T)]
+    (f : V ⟶ T) (M : AbelianSheaf.{u, u + 1} T)
+    (A : Type u) [AddCommGroup A] [Finite A]
+    (n : ℕ) (hn : 0 < n) (hkill : ∀ a : A, n • a = 0)
+    (hunit : IsUnit (n : L)) (q : ℕ) (hq : 2 ≤ q)
+    (c : Sheaf.H.{eX} M q)
+    (d : Sheaf.H.{u + 2} (ConstantFinite.coefficient A V) q)
+    (β : ConstantFinite.coefficient A V ⟶ (inverseImage f).obj M)
+    (hd : Sheaf.H.map β q d = cohomologyPullback.{u, eX, u + 2} f M q c) :
+    ∃ s : Finset (AlgebraicClosure L),
+      AffineEtaleHigherFieldStage.{u, eX} k L r f M q c s := by
+  obtain ⟨s, hfinite, hetale, hs⟩ := exists_affine_finiteEtaleField_killing_higher_constant
+    L V r A n hn hkill hunit q hq d
+  let E := separableClosure L (finiteField L (AlgebraicClosure L) s)
+  let : Algebra L E := E.algebra
+  let : Module L E := Algebra.toModule
+  let : Algebra k E := ((algebraMap L E).comp (algebraMap k L)).toAlgebra
+  let : Module k E := Algebra.toModule
+  let : IsScalarTower k L E := IsScalarTower.of_algebraMap_eq' rfl
+  let : Module.Finite L E := hfinite
+  let : Etale (Spec.algebraMap L E) := hetale
+  refine ⟨s, Module.Finite.trans L E, inferInstance, ?_⟩
+  exact cohomologyPullback_zero_of_constant_coefficient_composite.{u, eX}
+    (pullback.fst r (Spec.algebraMap L E)) f M A q c d β hd hs
+
+/-- An original bounded higher class on a smooth affine curve is killed by
+an actual finite-etale two-stage field refinement. The two stages are not
+flattened, and the class uses its original standard Ext realization. -/
+theorem exists_affine_finiteEtaleField_killing_bounded_higher
+    (k : Type u) [Field k] (U : Scheme.{u}) [IsAffine U] [Nonempty U]
+    (p : U ⟶ Spec (.of k)) [SmoothOfRelativeDimension 1 p]
+    [GeometricallyConnected p]
+    (F : AbelianSheaf.{u, u + 1} (Spec (.of k)))
+    (n : ℕ) (hn : 0 < n) (hF : n • 𝟙 F = 0) (hunit : IsUnit (n : k))
+    (q : ℕ) (hq : 2 ≤ q)
+    (c : Sheaf.H.{u + 2} ((inverseImage p).obj F) q) :
+    ∃ (L : FiniteGaloisIntermediateField k (SeparableClosure k))
+      (s : Finset (AlgebraicClosure L)),
+      AffineEtaleHigherFieldStage.{u, u + 2} k L
+        (pullback.snd p (Spec.algebraMap k L))
+        (pullback.fst p (Spec.algebraMap k L)) ((inverseImage p).obj F) q c s := by
+  have hclass := @Fields.exists_finiteGalois_constant_class.{u, u + 2, u + 2}
+    k inferInstance F n hn hF U p inferInstance inferInstance inferInstance
+      (fun _ => inferInstance) inferInstance q c
+  obtain ⟨M, a, _, _, L, B, hB, hfiniteB, hBn, ht⟩ := hclass
+  let := hB
+  let := hfiniteB
+  obtain ⟨t, d, hd⟩ := ht
+  let f := pullback.fst p (Spec.algebraMap k L)
+  let r := pullback.snd p (Spec.algebraMap k L)
+  let : SmoothOfRelativeDimension 1 r :=
+    (@MorphismProperty.IsStableUnderBaseChange.of_isPullback
+      Scheme.{u} _ (@SmoothOfRelativeDimension 1)
+      (smoothOfRelativeDimension_isStableUnderBaseChange 1))
+      (IsPullback.of_hasPullback p (Spec.algebraMap k L)) inferInstance
+  let : ConnectedSpace (pullback p (Spec.algebraMap k L) : Scheme.{u}) :=
+    GeometricallyConnected.connectedSpace_of_subsingleton r
+  let e := Fields.constantTrivializationAlongSquare p f r (Spec.algebraMap k L)
+    pullback.condition M (ConstantFinite.value B) t
+  let a' := e.inv ≫ (inverseImage f).map ((inverseImage p).map a)
+  have hunitL : IsUnit (n : L) := by
+    simpa only [map_natCast] using hunit.map (algebraMap k L)
+  let : Etale (Spec.algebraMap k L) :=
+    (FiniteEtale.FieldGalois.Arbitrary.finiteFieldCover k L).property.2
+  exact ⟨L, exists_affine_finiteEtaleField_killing_coefficient_higher.{u, u + 2}
+    k L (pullback p (Spec.algebraMap k L)) r f ((inverseImage p).obj F)
+    B n hn hBn hunitL q hq c d a' hd⟩
+
+end AlgebraicGeometry.Scheme.EtaleCohomology.TwoFieldEffacement

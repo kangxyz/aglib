@@ -1,0 +1,99 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.Restriction
+
+/-! # The original tensor restriction and difference equations -/
+
+@[expose] public noncomputable section
+
+set_option backward.defeqAttrib.useBackward true
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+
+open CategoryTheory CategoryTheory.Limits CategoryTheory.Abelian
+open MonoidalCategory CartesianMonoidalCategory AlgebraicGeometry TopologicalSpace Opposite
+open AlgebraicGeometry.Scheme.OverField AlgebraicGeometry.Scheme.Modules
+open scoped TensorProduct DirectSum
+
+universe u
+
+namespace AlgebraicGeometry.Scheme.Cohomology
+
+attribute [local instance] Over.cartesianMonoidalCategory
+
+variable {k : Type u} [Field k] (X Y : FScheme k)
+
+open KunnethOpenMayerVietoris
+
+namespace KunnethOpenMayerVietoris
+
+/-- The original two whole tensor restriction maps form the source pair. -/
+def structureOpenKunnethFirstPair (U V : Y.left.Opens) (n : ℕ) :
+    structureOpenKunnethSum X Y (U ⊔ V) n →ₗ[k]
+      structureOpenKunnethSum X Y U n × structureOpenKunnethSum X Y V n :=
+  (structureOpenKunnethRestriction X Y (homOfLE le_sup_left) n).prod
+    (structureOpenKunnethRestriction X Y (homOfLE le_sup_right) n)
+
+/-- The original restriction is the same coordinate map on the two original module families. -/
+private theorem structureOpenKunnethRestriction_eq_moduleMap {U V : Y.left.Opens}
+    (i : U ⟶ V) (n : ℕ) :
+    structureOpenKunnethRestriction X Y i n =
+      Kunneth.MayerVietoris.tensorModuleMap (R := k) (structureOriginalFirstModule X)
+        (structureOpenModule Y V) (structureOpenModule Y U)
+        (fun q => (moduleHPrimePresheaf Y.left (constants Y)
+          (SheafOfModules.unit Y.left.ringCatSheaf) q).map i.op) n := rfl
+
+/-- The chosen source distribution retains the original restriction pair. -/
+theorem structureOpenMVMiddleSourceEquiv_first (U V : Y.left.Opens) (n : ℕ) :
+    (structureOpenMVMiddleSourceEquiv X Y U V n).toLinearMap ∘ₗ
+        structureOpenKunnethMVFirst X Y U V n =
+      structureOpenKunnethFirstPair X Y U V n := by
+  have h := Kunneth.MayerVietoris.tensorModuleBiprodEquiv_first (R := k)
+    (structureOriginalFirstModule X)
+    (structureOpenModule Y U) (structureOpenModule Y V) (structureOpenModule Y (U ⊔ V))
+    (fun q => (moduleHPrimePresheaf Y.left (constants Y)
+      (SheafOfModules.unit Y.left.ringCatSheaf) q).map
+        (homOfLE (show U ≤ U ⊔ V from le_sup_left)).op)
+    (fun q => (moduleHPrimePresheaf Y.left (constants Y)
+      (SheafOfModules.unit Y.left.ringCatSheaf) q).map
+        (homOfLE (show V ≤ U ⊔ V from le_sup_right)).op) n
+  simpa only [structureOpenMVMiddleSourceEquiv, structureOpenKunnethMVFirst,
+    moduleMayerVietorisToBiprod, structureOpenKunnethFirstPair,
+    structureOpenKunnethRestriction_eq_moduleMap] using h
+
+/-- The whole original difference map distributes through the chosen source equivalence. -/
+theorem structureOpenMVMiddleSourceEquiv_second (U V : Y.left.Opens) (n : ℕ) :
+    structureOpenKunnethMVSecond X Y U V n =
+      ((structureOpenKunnethRestriction X Y (homOfLE (inf_le_left : U ⊓ V ≤ U)) n).comp
+          (LinearMap.fst k
+          (Kunneth.MayerVietoris.tensorSum (R := k)
+            (fun p => structureOriginalFirstModule X p) (fun q => structureOpenModule Y U q) n)
+          (Kunneth.MayerVietoris.tensorSum (R := k)
+            (fun p => structureOriginalFirstModule X p) (fun q => structureOpenModule Y V q) n)) -
+        (structureOpenKunnethRestriction X Y (homOfLE (inf_le_right : U ⊓ V ≤ V)) n).comp
+          (LinearMap.snd k
+          (Kunneth.MayerVietoris.tensorSum (R := k)
+            (fun p => structureOriginalFirstModule X p) (fun q => structureOpenModule Y U q) n)
+          (Kunneth.MayerVietoris.tensorSum (R := k)
+            (fun p => structureOriginalFirstModule X p) (fun q => structureOpenModule Y V q) n))).comp
+        (structureOpenMVMiddleSourceEquiv X Y U V n).toLinearMap := by
+  have h := Kunneth.MayerVietoris.tensorModuleBiprodEquiv_second (R := k)
+    (structureOriginalFirstModule X)
+    (structureOpenModule Y U) (structureOpenModule Y V) (structureOpenModule Y (U ⊓ V))
+    (fun q => (moduleHPrimePresheaf Y.left (constants Y)
+      (SheafOfModules.unit Y.left.ringCatSheaf) q).map
+        (homOfLE (show U ⊓ V ≤ U from inf_le_left)).op)
+    (fun q => (moduleHPrimePresheaf Y.left (constants Y)
+      (SheafOfModules.unit Y.left.ringCatSheaf) q).map
+        (homOfLE (show U ⊓ V ≤ V from inf_le_right)).op) n
+  simpa only [structureOpenMVMiddleSourceEquiv, structureOpenKunnethMVSecond,
+    moduleMayerVietorisFromBiprod, structureOpenKunnethRestriction_eq_moduleMap] using h
+
+end KunnethOpenMayerVietoris
+
+end AlgebraicGeometry.Scheme.Cohomology

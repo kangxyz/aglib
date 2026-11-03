@@ -27,3 +27,13 @@ Each source states the exact hypotheses, maps, and realization bounds of its int
 - [RootPointedRefinement](RootPointedRefinement.lean)
 - [SmoothSectionPurityStep](SmoothSectionPurityStep.lean)
 - [StalkBaseChange](StalkBaseChange.lean)
+
+## Pointed and neighborhood interfaces
+
+[GenericLocalPointedExtension](GenericLocalPointedExtension.lean),
+[GenericLocalWholePointedExtension](GenericLocalWholePointedExtension.lean),
+[GenericTargetNeighborhoodExtension](GenericTargetNeighborhoodExtension.lean)
+and [SmoothLocalWholePurity](SmoothLocalWholePurity.lean) are entry points for
+the corresponding written local and whole constructions. Each statement retains
+its own geometric, point and spreading hypotheses; consult the individual
+sources for the exact maps and conclusions.

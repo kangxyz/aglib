@@ -64,3 +64,12 @@ Each source states the exact hypotheses, maps, and realization bounds of its int
 - [ScalarRestrictionTriangleHom](ScalarRestrictionTriangleHom.lean)
 - [ScalarRestrictionTriangle](ScalarRestrictionTriangle.lean)
 - [ScalarRestriction](ScalarRestriction.lean)
+
+## Module class-detection interfaces
+
+[ModuleInjectiveCohomologyDetection](ModuleInjectiveCohomologyDetection.lean),
+[ModuleInjectiveClassDetection](ModuleInjectiveClassDetection.lean) and
+[SmoothModuleInjectiveClassDetection](SmoothModuleInjectiveClassDetection.lean)
+retain the displayed coefficient maps and independent worlds. The smooth
+detector still requires its original open and closed class-zero inputs and
+lower-degree vanishings; it does not itself provide those geometric inputs.

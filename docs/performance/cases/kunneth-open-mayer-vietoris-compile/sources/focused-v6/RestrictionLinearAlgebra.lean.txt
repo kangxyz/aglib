@@ -1,0 +1,41 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.LinearAlgebra
+
+/-! # Whole tensor-sum naturality over the original module families -/
+
+@[expose] public noncomputable section
+
+open CategoryTheory
+open scoped TensorProduct DirectSum
+
+universe r a b c d
+
+namespace Kunneth.MayerVietoris
+
+/-- Assemble the whole finite-antidiagonal square before specializing the module families. -/
+theorem tensorModuleMap_toModule {R : Type r} [CommRing R]
+    (M : ℕ → ModuleCat.{a} R) (A B : ℕ → ModuleCat.{b} R)
+    (f : ∀ q, A q ⟶ B q) (n : ℕ) (P : ModuleCat.{c} R) (Q : ModuleCat.{d} R)
+    (g : P →ₗ[R] Q)
+    (φ : ∀ s : HomologicalComplex₂.TotalDegree n, M s.val.1 ⊗[R] A s.val.2 →ₗ[R] P)
+    (ψ : ∀ s : HomologicalComplex₂.TotalDegree n, M s.val.1 ⊗[R] B s.val.2 →ₗ[R] Q)
+    (h : ∀ s, ψ s ∘ₗ TensorProduct.map LinearMap.id (f s.val.2).hom = g ∘ₗ φ s) :
+    (DirectSum.toModule R _ Q ψ).comp (tensorModuleMap M A B f n) =
+      g.comp (DirectSum.toModule R _ P φ) := by
+  classical
+  apply DirectSum.linearMap_ext
+  intro s
+  apply LinearMap.ext
+  intro z
+  have hValue := LinearMap.congr_fun (h s) z
+  simp only [LinearMap.comp_apply, tensorModuleMap, tensorMap_lof,
+    DirectSum.toModule_lof, LinearMap.lTensor] at hValue ⊢
+  exact hValue
+
+end Kunneth.MayerVietoris

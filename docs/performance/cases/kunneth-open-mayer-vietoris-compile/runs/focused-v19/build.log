@@ -1,0 +1,6 @@
+✔ [3513/3517] Built Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.GluingSurjective (45s)
+✔ [3514/3517] Built Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.GluingInjective (81s)
+✔ [3515/3517] Built Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris (78s)
+✔ [3516/3517] Built AglibTest.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris (19s)
+✔ [3517/3517] Built Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.Kunneth (35s)
+Build completed successfully (3517 jobs).

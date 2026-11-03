@@ -563,6 +563,8 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.SupportedFam
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.SupportedFamilyColimit
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.TupleBaseChange
 public import Aglib.CategoryTheory.Sites.SheafCohomology.CyclicSection
+public import Aglib.CategoryTheory.Sites.SheafCohomology.DiagramCoefficients
+public import Aglib.CategoryTheory.Sites.SheafCohomology.DiagramComposition
 public import Aglib.CategoryTheory.Sites.SheafCohomology.DiagramTransfer
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Global.Comparison
 public import Aglib.CategoryTheory.Sites.SheafCohomology.InternalExtComparison
@@ -671,6 +673,7 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.OverMap
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Restriction
 public import Aglib.CategoryTheory.Sites.SheafCohomology.SourceSection
 public import Aglib.CategoryTheory.Sites.SheafCohomology.SourceSection.Transport
+public import Aglib.CategoryTheory.Sites.SheafCohomology.SplitPairDetection
 public import Aglib.CategoryTheory.Sites.SheafCohomology.SplitTerminal
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Splitting
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Terminal.Comparison

@@ -1,0 +1,40 @@
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Restriction.lean:49:4: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+✔ [3506/3511] Built Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.Boundary (281s)
+✖ [3510/3511] Building Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenAffine (523s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-507d97d3aefc4047aaea693a722d5a85/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenAffine.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenAffine.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenAffine.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenAffine.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenAffine.setup.json --json
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenAffine.lean:114:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  moduleCoefficientPullback D.ι ((restrictAdjunction D.ι).unit.app M ≫ (pushforward D.ι).map ε)
+in the target expression
+  (ConcreteCategory.hom (moduleOpenRestrictionCoefficientSquare A D M ε n).f₂₄)
+
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenAffine.lean:114:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  moduleCoefficientPullback D.ι ((restrictAdjunction D.ι).unit.app M ≫ (pushforward D.ι).map ε)
+in the target expression
+  (ConcreteCategory.hom (moduleOpenRestrictionCoefficientSquare A D M ε n).f₂₄)
+      ((ConcreteCategory.hom (moduleOpenRestrictionCoefficientSquare A D M ε n).f₁₂) x) =
+    (ConcreteCategory.hom (moduleOpenRestrictionCoefficientSquare A D M ε n).f₃₄)
+      ((ConcreteCategory.hom (moduleOpenRestrictionCoefficientSquare A D M ε n).f₁₃) x)
+
+A : Scheme
+D : A.Opens
+n : ℕ
+x : ↑((moduleAddSheaf A (SheafOfModules.unit A.ringCatSheaf)).H' n D)
+
+error: Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenAffine.lean:162:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  moduleCoefficientPullback p (η ≫ (pushforward p).map ψ)
+in the target expression
+  (modulePostcompositionCohomologySquare p η ψ n).f₂₄ =
+    (modulePostcompositionCohomologySquare p η ψ n).f₁₃ ≫ (modulePostcompositionCohomologySquare p η ψ n).f₃₄
+
+A B : Scheme
+p : B ⟶ A
+inst✝ : Flat p
+D : A.Opens
+n : ℕ
+x : Ext (openFree A D) (SheafOfModules.unit A.ringCatSheaf) n
+
+error: build failed

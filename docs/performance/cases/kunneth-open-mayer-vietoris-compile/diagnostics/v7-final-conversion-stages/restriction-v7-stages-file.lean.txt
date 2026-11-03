@@ -1,0 +1,79 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.RestrictionBasic
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.RestrictionLinearAlgebra
+
+/-! # Restriction naturality of the original mixed-open maps -/
+
+@[expose] public noncomputable section
+
+set_option backward.defeqAttrib.useBackward true
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+
+open CategoryTheory CategoryTheory.Limits CategoryTheory.Abelian
+open MonoidalCategory CartesianMonoidalCategory AlgebraicGeometry TopologicalSpace Opposite
+open AlgebraicGeometry.Scheme.OverField AlgebraicGeometry.Scheme.Modules
+open scoped TensorProduct DirectSum
+
+universe u
+
+namespace AlgebraicGeometry.Scheme.Cohomology
+
+attribute [local instance] Over.cartesianMonoidalCategory
+
+variable {k : Type u} [Field k] (X Y : FScheme k)
+
+open KunnethOpenMayerVietoris
+
+run_cmd do
+  let markerPath := (← IO.getEnv "R5_MAYER_MARKER_FILE").getD ""
+  IO.FS.withFile (System.FilePath.mk markerPath) .append fun out => do
+    out.putStr "MAYER_PHASE BEFORE_DECL\n"
+    out.flush
+
+/-- The whole original mixed Künneth map commutes with restriction. -/
+theorem structureOpenKunnethMap_restriction {U V : Y.left.Opens} (i : U ⟶ V) (n : ℕ) :
+    structureOpenKunnethMap X Y U n ∘ₗ structureOpenKunnethRestriction X Y i n =
+      structureOpenRestriction (X ⊗ Y) ((Opens.map (snd X Y).left.base).map i) n ∘ₗ
+        structureOpenKunnethMap X Y V n := by
+  run_tac do
+    let markerPath := (← IO.getEnv "R5_MAYER_MARKER_FILE").getD ""
+    IO.FS.withFile (System.FilePath.mk markerPath) .append fun out => do
+      out.putStr "MAYER_PHASE PROOF_ENTRY\n"
+      out.flush
+  have hNat := fun (s : HomologicalComplex₂.TotalDegree n) =>
+    structureExternalOpenTensor_restriction X Y i s.property
+  run_tac do
+    let markerPath := (← IO.getEnv "R5_MAYER_MARKER_FILE").getD ""
+    IO.FS.withFile (System.FilePath.mk markerPath) .append fun out => do
+      out.putStr "MAYER_PHASE AFTER_NATIVE_EQUATIONS\n"
+      out.flush
+  have h := DirectSum.toModule_naturality_of_components
+    (fun s : HomologicalComplex₂.TotalDegree n => structureExternalOpenTensor X Y V s.property)
+    (fun s : HomologicalComplex₂.TotalDegree n => structureExternalOpenTensor X Y U s.property)
+    (structureOpenRestriction (X ⊗ Y) ((Opens.map (snd X Y).left.base).map i) n) hNat
+  run_tac do
+    let markerPath := (← IO.getEnv "R5_MAYER_MARKER_FILE").getD ""
+    IO.FS.withFile (System.FilePath.mk markerPath) .append fun out => do
+      out.putStr "MAYER_PHASE AFTER_GENERIC_EQUATION\n"
+      out.flush
+  exact h
+  run_tac do
+    let markerPath := (← IO.getEnv "R5_MAYER_MARKER_FILE").getD ""
+    IO.FS.withFile (System.FilePath.mk markerPath) .append fun out => do
+      out.putStr "MAYER_PHASE AFTER_EXACT\n"
+      out.flush
+
+run_cmd do
+  let markerPath := (← IO.getEnv "R5_MAYER_MARKER_FILE").getD ""
+  IO.FS.withFile (System.FilePath.mk markerPath) .append fun out => do
+    out.putStr "MAYER_PHASE AFTER_DECL\n"
+    out.flush
+
+end AlgebraicGeometry.Scheme.Cohomology

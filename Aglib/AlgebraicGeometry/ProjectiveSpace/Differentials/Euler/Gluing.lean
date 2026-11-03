@@ -5,7 +5,8 @@ Authors: kangxyz
 -/
 module
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Differentials.Euler.Overlap
-public import Aglib.AlgebraicGeometry.Modules.InternalHom.Gluing
+public import Aglib.AlgebraicGeometry.Modules.InternalHom.SectionGluing
+public import Aglib.Algebra.Homology.ShortComplex.MappedPairIso
 public import Aglib.AlgebraicGeometry.Modules.Locality.Exactness
 
 /-!
@@ -78,9 +79,11 @@ def eulerDifferentialChartHomSection (i : ι) :
     Γ(InternalHom.sheaf (ProjectiveSpace R ι)
       (Scheme.Modules.Differentials.relativeDifferentialSheaf (toSpec R ι)) (eulerMiddle R ι),
         (eulerPolynomialChart R ι i).opensRange) :=
-  InternalHom.restrictionHomEquiv (X := ProjectiveSpace R ι) (eulerPolynomialChart R ι i)
-    (Scheme.Modules.Differentials.relativeDifferentialSheaf (toSpec R ι)) (eulerMiddle R ι)
-    (eulerDifferentialOnPolynomialChart R ι i)
+  InternalHom.restrictionHomSections
+    (fun i : ι => Spec (CommRingCat.of (MvPolynomial {j : ι // j ≠ i} R)))
+    (eulerPolynomialChart R ι)
+    (Scheme.Modules.Differentials.relativeDifferentialSheaf (toSpec R ι))
+    (eulerMiddle R ι) (eulerDifferentialOnPolynomialChart R ι) i
 
 /-- The literal native overlap equation gives a matching family in the original actual Hom
 sheaf, with the original chart arrows as its sections. -/
@@ -90,29 +93,25 @@ theorem eulerDifferentialChartHomSection_compatible :
         (Scheme.Modules.Differentials.relativeDifferentialSheaf (toSpec R ι))
         (eulerMiddle R ι)).val.presheaf
       (fun i => (eulerPolynomialChart R ι i).opensRange)
-      (eulerDifferentialChartHomSection R ι) := by
-  intro i k
-  exact InternalHom.restrictionHomSections_overlap (X := ProjectiveSpace R ι)
-    (eulerPolynomialChart R ι i) (eulerPolynomialChart R ι k)
-    (Scheme.Modules.Differentials.relativeDifferentialSheaf (toSpec R ι)) (eulerMiddle R ι)
-    (eulerDifferentialOnPolynomialChart R ι i) (eulerDifferentialOnPolynomialChart R ι k)
-    (eulerDifferentialOnPolynomialChart_overlap R ι i k)
+      (eulerDifferentialChartHomSection R ι) :=
+  InternalHom.restrictionHomSections_compatible
+    (fun i : ι => Spec (CommRingCat.of (MvPolynomial {j : ι // j ≠ i} R)))
+    (eulerPolynomialChart R ι)
+    (Scheme.Modules.Differentials.relativeDifferentialSheaf (toSpec R ι))
+    (eulerMiddle R ι) (eulerDifferentialOnPolynomialChart R ι)
+    (eulerDifferentialOnPolynomialChart_compatible R ι)
 
 /-- The global section of the original Hom sheaf glued from the original actual chart arrows. -/
 def eulerDifferentialHomSection :
     Γ(InternalHom.sheaf (ProjectiveSpace R ι)
       (Scheme.Modules.Differentials.relativeDifferentialSheaf (toSpec R ι)) (eulerMiddle R ι),
-        (⊤ : (ProjectiveSpace R ι).Opens)) := by
-  let H := InternalHom.sheaf (ProjectiveSpace R ι)
-    (Scheme.Modules.Differentials.relativeDifferentialSheaf (toSpec R ι)) (eulerMiddle R ι)
-  let A : TopCat.Sheaf Ab (ProjectiveSpace R ι) := ⟨H.val.presheaf, H.isSheaf⟩
-  exact (A.existsUnique_gluing' (fun i => (eulerPolynomialChart R ι i).opensRange)
-    (⊤ : (ProjectiveSpace R ι).Opens) (fun _ => homOfLE le_top)
-    (InternalHom.restrictionRanges_cover (X := ProjectiveSpace R ι)
-      (fun i : ι => Spec (CommRingCat.of (MvPolynomial {j : ι // j ≠ i} R)))
-      (eulerPolynomialChart R ι) (eulerPolynomialChart_cover R ι)).ge
-    (eulerDifferentialChartHomSection R ι)
-    (eulerDifferentialChartHomSection_compatible R ι)).choose
+        (⊤ : (ProjectiveSpace R ι).Opens)) :=
+  InternalHom.gluedRestrictionHomSection
+    (fun i : ι => Spec (CommRingCat.of (MvPolynomial {j : ι // j ≠ i} R)))
+    (eulerPolynomialChart R ι)
+    (Scheme.Modules.Differentials.relativeDifferentialSheaf (toSpec R ι))
+    (eulerMiddle R ι) (eulerDifferentialOnPolynomialChart R ι)
+    (eulerPolynomialChart_cover R ι) (eulerDifferentialOnPolynomialChart_compatible R ι)
 
 /-- Original restriction of the glued Hom section recovers the original actual chart arrow. -/
 theorem eulerDifferentialHomSection_restrict (i : ι) :
@@ -120,17 +119,13 @@ theorem eulerDifferentialHomSection_restrict (i : ι) :
       (Scheme.Modules.Differentials.relativeDifferentialSheaf (toSpec R ι))
       (eulerMiddle R ι)).val.map (homOfLE
         (show (eulerPolynomialChart R ι i).opensRange ≤ ⊤ from le_top)).op
-      (eulerDifferentialHomSection R ι) = eulerDifferentialChartHomSection R ι i := by
-  let H := InternalHom.sheaf (ProjectiveSpace R ι)
-    (Scheme.Modules.Differentials.relativeDifferentialSheaf (toSpec R ι)) (eulerMiddle R ι)
-  let A : TopCat.Sheaf Ab (ProjectiveSpace R ι) := ⟨H.val.presheaf, H.isSheaf⟩
-  exact (A.existsUnique_gluing' (fun i => (eulerPolynomialChart R ι i).opensRange)
-    (⊤ : (ProjectiveSpace R ι).Opens) (fun _ => homOfLE le_top)
-    (InternalHom.restrictionRanges_cover (X := ProjectiveSpace R ι)
-      (fun i : ι => Spec (CommRingCat.of (MvPolynomial {j : ι // j ≠ i} R)))
-      (eulerPolynomialChart R ι) (eulerPolynomialChart_cover R ι)).ge
-    (eulerDifferentialChartHomSection R ι)
-    (eulerDifferentialChartHomSection_compatible R ι)).choose_spec.1 i
+      (eulerDifferentialHomSection R ι) = eulerDifferentialChartHomSection R ι i :=
+  InternalHom.gluedRestrictionHomSection_restrict
+    (fun i : ι => Spec (CommRingCat.of (MvPolynomial {j : ι // j ≠ i} R)))
+    (eulerPolynomialChart R ι)
+    (Scheme.Modules.Differentials.relativeDifferentialSheaf (toSpec R ι))
+    (eulerMiddle R ι) (eulerDifferentialOnPolynomialChart R ι)
+    (eulerPolynomialChart_cover R ι) (eulerDifferentialOnPolynomialChart_compatible R ι) i
 
 /-- The canonical actual global relative Euler differential arrow. -/
 def eulerDifferential :
@@ -199,23 +194,15 @@ def eulerShortComplex_restrictIso (i : ι) :
     (eulerShortComplex R ι).map
       (Scheme.Modules.restrictFunctor (eulerPolynomialChart R ι i)) ≅
         eulerShortComplexOnPolynomialChart R ι i :=
-  CategoryTheory.ShortComplex.isoMk
-    (Iso.refl ((Scheme.Modules.Differentials.relativeDifferentialSheaf (toSpec R ι)).restrict
-      (eulerPolynomialChart R ι i)))
-    (Iso.refl ((eulerMiddle R ι).restrict (eulerPolynomialChart R ι i)))
+  CategoryTheory.ShortComplex.mappedPairIso
+    (Scheme.Modules.restrictFunctor (eulerPolynomialChart R ι i))
+    (eulerDifferential R ι) (eulerAugmentation R ι)
+    (eulerDifferential_comp_augmentation R ι)
     (Scheme.Modules.restrictUnitIso (eulerPolynomialChart R ι i))
-    (by
-      change (𝟙 _) ≫ eulerDifferentialOnPolynomialChart R ι i =
-        (Scheme.Modules.restrictFunctor (eulerPolynomialChart R ι i)).map
-          (eulerDifferential R ι) ≫ 𝟙 _
-      rw [Category.id_comp, Category.comp_id, eulerDifferential_restrict])
-    (by
-      change (𝟙 _) ≫ eulerAugmentationOnPolynomialChart R ι i =
-        (Scheme.Modules.restrictFunctor (eulerPolynomialChart R ι i)).map
-          (eulerAugmentation R ι) ≫
-            (Scheme.Modules.restrictUnitIso (eulerPolynomialChart R ι i)).hom
-      rw [Category.id_comp]
-      rfl)
+    (eulerDifferentialOnPolynomialChart R ι i)
+    (eulerAugmentationOnPolynomialChart R ι i)
+    (eulerDifferentialOnPolynomialChart_comp_augmentation R ι i)
+    (eulerDifferential_restrict R ι i) rfl
 
 /-- The native actual relative Euler complex is short exact over every commutative ring, for
 arbitrary coordinate types, including the empty space and the one-coordinate space. -/

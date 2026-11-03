@@ -1,0 +1,11 @@
+/- Core-only stdout-observability control, not a mathematical proof probe. -/
+module
+public import Lean
+
+run_cmd do
+  let out ← IO.getStdout
+  out.putStr "MAYER_PHASE CORE_ENTRY_CONTROL\n"
+  out.flush
+
+/-- The logging control proves only True. -/
+public theorem coreMarkerControl : True := True.intro

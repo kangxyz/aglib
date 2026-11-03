@@ -1,0 +1,279 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris.Rows
+
+/-! # Restriction and signed boundary squares on the original mixed-open maps -/
+
+@[expose] public noncomputable section
+
+set_option backward.defeqAttrib.useBackward true
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+
+open CategoryTheory CategoryTheory.Limits CategoryTheory.Abelian
+open MonoidalCategory CartesianMonoidalCategory AlgebraicGeometry TopologicalSpace Opposite
+open AlgebraicGeometry.Scheme.OverField AlgebraicGeometry.Scheme.Modules
+open scoped TensorProduct DirectSum
+
+universe u
+
+namespace AlgebraicGeometry.Scheme.Cohomology
+
+attribute [local instance] Over.cartesianMonoidalCategory
+
+variable {k : Type u} [Field k] (X Y : FScheme k)
+
+open KunnethOpenMayerVietoris
+
+/-- Original restriction naturality of the original mixed cup. -/
+theorem structureExternalOpenCup_restriction {U V : Y.left.Opens} (i : U ⟶ V)
+    {p q n : ℕ} (h : p + q = n) (x : structureCohomology k X p)
+    (y : structureOpenCohomology Y V q) :
+    structureExternalOpenCup X Y U h x (structureOpenRestriction Y i q y) =
+      structureOpenRestriction (X ⊗ Y) ((Opens.map (snd X Y).left.base).map i) n
+        (structureExternalOpenCup X Y V h x y) := by
+  let xE := (structureExtLinearEquiv X p).symm x
+  let yE := (structureOpenExtLinearEquiv Y V q).symm y
+  have hx : structureExtLinearEquiv X p xE = x := LinearEquiv.apply_symm_apply _ _
+  have hy : structureOpenExtLinearEquiv Y V q yE = y := LinearEquiv.apply_symm_apply _ _
+  let a := (openFreeFunctor Y.left).map i
+  let iZ := (Opens.map (snd X Y).left.base).map i
+  have hYR := moduleOpenExtCohomologyMap_restriction Y.left i
+    (SheafOfModules.unit Y.left.ringCatSheaf) q yE
+  change structureOpenExtLinearEquiv Y U q ((Ext.mk₀ a).comp yE (Nat.zero_add q)) =
+    structureOpenRestriction Y i q (structureOpenExtLinearEquiv Y V q yE) at hYR
+  have hU := structureExternalOpenCup_apply X Y U h (structureExtLinearEquiv X p xE)
+    (structureOpenExtLinearEquiv Y U q ((Ext.mk₀ a).comp yE (Nat.zero_add q)))
+  have hV := structureExternalOpenCup_apply X Y V h (structureExtLinearEquiv X p xE)
+    (structureOpenExtLinearEquiv Y V q yE)
+  simp only [LinearEquiv.symm_apply_apply] at hU hV
+  have hRaw := structureExternalOpenExt_restriction X Y i h xE yE
+  have hMap := congrArg
+    (moduleOpenExtCohomologyMap (X ⊗ Y).left ((snd X Y).left ⁻¹ᵁ U)
+      (SheafOfModules.unit (X ⊗ Y).left.ringCatSheaf) n) hRaw
+  have hZR := moduleOpenExtCohomologyMap_restriction (X ⊗ Y).left iZ
+    (SheafOfModules.unit (X ⊗ Y).left.ringCatSheaf) n
+    (structureExternalOpenExt X Y V h xE yE)
+  change _ = structureOpenRestriction (X ⊗ Y) iZ n
+    (moduleOpenExtCohomologyMap (X ⊗ Y).left ((snd X Y).left ⁻¹ᵁ V)
+      (SheafOfModules.unit (X ⊗ Y).left.ringCatSheaf) n
+      (structureExternalOpenExt X Y V h xE yE)) at hZR
+  have hInput := congrArg (structureExternalOpenCup X Y U h
+    (structureExtLinearEquiv X p xE)) hYR
+  have hOutput := congrArg (structureOpenRestriction (X ⊗ Y) iZ n) hV
+  have hFinal := (hInput.symm.trans hU).trans ((hMap.trans hZR).trans hOutput.symm)
+  rw [hx, hy] at hFinal
+  exact hFinal
+
+/-- The whole original tensor restriction square. -/
+theorem structureExternalOpenTensor_restriction {U V : Y.left.Opens} (i : U ⟶ V)
+    {p q n : ℕ} (h : p + q = n) :
+    structureExternalOpenTensor X Y U h ∘ₗ
+        TensorProduct.map LinearMap.id (structureOpenRestriction Y i q) =
+      structureOpenRestriction (X ⊗ Y) ((Opens.map (snd X Y).left.base).map i) n ∘ₗ
+        structureExternalOpenTensor X Y V h := by
+  apply TensorProduct.ext'
+  intro x y
+  simp only [LinearMap.comp_apply, TensorProduct.map_tmul, LinearMap.id_apply,
+    structureExternalOpenTensor_tmul]
+  exact structureExternalOpenCup_restriction X Y i h x y
+
+/-- Coordinatewise original restriction on the original finite tensor antidiagonal. -/
+def structureOpenKunnethRestriction {U V : Y.left.Opens} (i : U ⟶ V) (n : ℕ) :
+    structureOpenKunnethSum X Y V n →ₗ[k] structureOpenKunnethSum X Y U n :=
+  Kunneth.MayerVietoris.tensorMap (R := k) (structureCohomology k X)
+    (fun q => structureOpenRestriction Y i q) n
+
+/-- The whole original mixed Künneth map commutes with restriction. -/
+theorem structureOpenKunnethMap_restriction {U V : Y.left.Opens} (i : U ⟶ V) (n : ℕ) :
+    structureOpenKunnethMap X Y U n ∘ₗ structureOpenKunnethRestriction X Y i n =
+      structureOpenRestriction (X ⊗ Y) ((Opens.map (snd X Y).left.base).map i) n ∘ₗ
+        structureOpenKunnethMap X Y V n := by
+  classical
+  apply DirectSum.linearMap_ext
+  intro s
+  apply LinearMap.ext
+  intro z
+  have h := LinearMap.congr_fun (structureExternalOpenTensor_restriction X Y i s.property) z
+  simp only [LinearMap.comp_apply, structureOpenKunnethRestriction,
+    Kunneth.MayerVietoris.tensorMap_lof, structureOpenKunnethMap_lof,
+    LinearMap.lTensor] at h ⊢
+  exact h
+
+namespace KunnethOpenMayerVietoris
+
+/-- The original two whole tensor restriction maps form the source pair. -/
+def structureOpenKunnethFirstPair (U V : Y.left.Opens) (n : ℕ) :
+    structureOpenKunnethSum X Y (U ⊔ V) n →ₗ[k]
+      structureOpenKunnethSum X Y U n × structureOpenKunnethSum X Y V n :=
+  (structureOpenKunnethRestriction X Y (homOfLE le_sup_left) n).prod
+    (structureOpenKunnethRestriction X Y (homOfLE le_sup_right) n)
+
+/-- The chosen source distribution retains the original restriction pair. -/
+theorem structureOpenMVMiddleSourceEquiv_first (U V : Y.left.Opens) (n : ℕ) :
+    (structureOpenMVMiddleSourceEquiv X Y U V n).toLinearMap ∘ₗ
+        structureOpenKunnethMVFirst X Y U V n =
+      structureOpenKunnethFirstPair X Y U V n := by
+  exact Kunneth.MayerVietoris.tensorBiprodFamilyEquiv_first (structureCohomology k X)
+    (structureOpenModule Y U) (structureOpenModule Y V) (structureOpenModule Y (U ⊔ V))
+    (fun q => (moduleHPrimePresheaf Y.left (constants Y)
+      (SheafOfModules.unit Y.left.ringCatSheaf) q).map
+        (homOfLE (show U ≤ U ⊔ V from le_sup_left)).op)
+    (fun q => (moduleHPrimePresheaf Y.left (constants Y)
+      (SheafOfModules.unit Y.left.ringCatSheaf) q).map
+        (homOfLE (show V ≤ U ⊔ V from le_sup_right)).op) n
+
+/-- The whole original difference map distributes through the chosen source equivalence. -/
+theorem structureOpenMVMiddleSourceEquiv_second (U V : Y.left.Opens) (n : ℕ) :
+    structureOpenKunnethMVSecond X Y U V n =
+      ((structureOpenKunnethRestriction X Y (homOfLE (inf_le_left : U ⊓ V ≤ U)) n).comp
+          (LinearMap.fst k _ _) -
+        (structureOpenKunnethRestriction X Y (homOfLE (inf_le_right : U ⊓ V ≤ V)) n).comp
+          (LinearMap.snd k _ _)).comp (structureOpenMVMiddleSourceEquiv X Y U V n).toLinearMap := by
+  exact Kunneth.MayerVietoris.tensorBiprodFamilyEquiv_second (structureCohomology k X)
+    (structureOpenModule Y U) (structureOpenModule Y V) (structureOpenModule Y (U ⊓ V))
+    (fun q => (moduleHPrimePresheaf Y.left (constants Y)
+      (SheafOfModules.unit Y.left.ringCatSheaf) q).map
+        (homOfLE (show U ⊓ V ≤ U from inf_le_left)).op)
+    (fun q => (moduleHPrimePresheaf Y.left (constants Y)
+      (SheafOfModules.unit Y.left.ringCatSheaf) q).map
+        (homOfLE (show U ⊓ V ≤ V from inf_le_right)).op) n
+
+/-- The whole first restriction square uses only the original mixed restrictions. -/
+theorem structureOpenKunnethMV_first_square (U V : Y.left.Opens) (n : ℕ) :
+    (structureOpenMVFirst (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U)
+        ((snd X Y).left ⁻¹ᵁ V) n).comp (structureOpenKunnethMap X Y (U ⊔ V) n) =
+      (structureOpenMVMiddleMap X Y U V n).comp
+        (structureOpenKunnethMVFirst X Y U V n) := by
+  apply LinearMap.ext
+  intro z
+  apply (CategoryTheory.Iso.toLinearEquiv (ModuleCat.biprodIsoProd
+    (structureOpenModule (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U) n)
+    (structureOpenModule (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ V) n))).injective
+  have hU := LinearMap.congr_fun
+    (structureOpenKunnethMap_restriction X Y (homOfLE (le_sup_left : U ≤ U ⊔ V)) n) z
+  have hV := LinearMap.congr_fun
+    (structureOpenKunnethMap_restriction X Y (homOfLE (le_sup_right : V ≤ U ⊔ V)) n) z
+  have hB := structureOpenMVFirst_value (X ⊗ Y)
+    ((snd X Y).left ⁻¹ᵁ U) ((snd X Y).left ⁻¹ᵁ V) n
+    (structureOpenKunnethMap X Y (U ⊔ V) n z)
+  have hSource := LinearMap.congr_fun
+    (structureOpenMVMiddleSourceEquiv_first X Y U V n) z
+  simp only [LinearMap.comp_apply, LinearEquiv.coe_toLinearMap,
+    structureOpenKunnethFirstPair, LinearMap.prod_apply, Function.prod_apply] at hSource
+  simp only [LinearMap.comp_apply, structureOpenMVMiddleMap,
+    LinearEquiv.coe_toLinearMap, LinearEquiv.apply_symm_apply] at hB ⊢
+  rw [hSource]
+  simp only [LinearMap.prodMap_apply]
+  exact hB.trans (Prod.ext hU.symm hV.symm)
+
+/-- The whole original difference square follows from its two original restrictions. -/
+theorem structureOpenKunnethMV_second_square (U V : Y.left.Opens) (n : ℕ) :
+    (structureOpenMVSecond (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U)
+        ((snd X Y).left ⁻¹ᵁ V) n).comp (structureOpenMVMiddleMap X Y U V n) =
+      (structureOpenKunnethMap X Y (U ⊓ V) n).comp
+        (structureOpenKunnethMVSecond X Y U V n) := by
+  exact Kunneth.MayerVietoris.biprod_difference_square
+    (structureOpenModule (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ U) n)
+    (structureOpenModule (X ⊗ Y) ((snd X Y).left ⁻¹ᵁ V) n)
+    (structureOpenModule (X ⊗ Y)
+      (((snd X Y).left ⁻¹ᵁ U) ⊓ ((snd X Y).left ⁻¹ᵁ V)) n)
+    (structureOpenMVMiddleSourceEquiv X Y U V n)
+    (structureOpenKunnethMap X Y U n) (structureOpenKunnethMap X Y V n)
+    (structureOpenKunnethMap X Y (U ⊓ V) n)
+    (structureOpenKunnethRestriction X Y (homOfLE (inf_le_left : U ⊓ V ≤ U)) n)
+    (structureOpenKunnethRestriction X Y (homOfLE (inf_le_right : U ⊓ V ≤ V)) n)
+    ((moduleHPrimePresheaf (X ⊗ Y).left (constants (X ⊗ Y))
+      (SheafOfModules.unit (X ⊗ Y).left.ringCatSheaf) n).map
+        (homOfLE (show ((snd X Y).left ⁻¹ᵁ U) ⊓ ((snd X Y).left ⁻¹ᵁ V) ≤
+          ((snd X Y).left ⁻¹ᵁ U) from inf_le_left)).op)
+    ((moduleHPrimePresheaf (X ⊗ Y).left (constants (X ⊗ Y))
+      (SheafOfModules.unit (X ⊗ Y).left.ringCatSheaf) n).map
+        (homOfLE (show ((snd X Y).left ⁻¹ᵁ U) ⊓ ((snd X Y).left ⁻¹ᵁ V) ≤
+          ((snd X Y).left ⁻¹ᵁ V) from inf_le_right)).op)
+    (structureOpenKunnethMVSecond X Y U V n)
+    (structureOpenMVMiddleSourceEquiv_second X Y U V n)
+    (structureOpenKunnethMap_restriction X Y (homOfLE (inf_le_left : U ⊓ V ≤ U)) n)
+    (structureOpenKunnethMap_restriction X Y (homOfLE (inf_le_right : U ⊓ V ≤ V)) n)
+
+end KunnethOpenMayerVietoris
+
+private theorem integer_koszul_smul {T : Type*} [AddCommGroup T] [Module k T]
+    (p : ℕ) (z : T) : ((-1 : ℤ) ^ p) • z = ((-1 : k) ^ p) • z := by
+  rw [← Int.cast_smul_eq_zsmul k]
+  simp only [Int.cast_pow, Int.cast_neg, Int.cast_one]
+
+/-- The original cup boundary law expressed with the identical structural field sign. -/
+theorem structureExternalOpenCup_mayerVietoris_smul (U V : Y.left.Opens)
+    {p q n : ℕ} (h : p + q = n) (x : structureCohomology k X p)
+    (y : structureOpenCohomology Y (U ⊓ V) q) :
+    structureExternalOpenCup X Y (U ⊔ V) (show p + (q + 1) = n + 1 by omega) x
+        (structureOpenMayerVietorisDelta Y U V q y) =
+      ((-1 : k) ^ p) • structureOpenMayerVietorisDelta (X ⊗ Y)
+        ((snd X Y).left ⁻¹ᵁ U) ((snd X Y).left ⁻¹ᵁ V) n
+        (structureExternalOpenCup X Y (U ⊓ V) h x y) := by
+  rw [structureExternalOpenCup_mayerVietoris, integer_koszul_smul (k := k)]
+
+/-- The unsigned homogeneous tensor square retains the original structural sign. -/
+private theorem structureExternalOpenTensor_boundary (U V : Y.left.Opens)
+    {p q n : ℕ} (h : p + q = n) :
+    structureExternalOpenTensor X Y (U ⊔ V) (show p + (q + 1) = n + 1 by omega) ∘ₗ
+        (structureOpenMayerVietorisDelta Y U V q).lTensor (structureCohomology k X p) =
+      ((-1 : k) ^ p) •
+        (structureOpenMayerVietorisDelta (X ⊗ Y)
+          ((snd X Y).left ⁻¹ᵁ U) ((snd X Y).left ⁻¹ᵁ V) n ∘ₗ
+            structureExternalOpenTensor X Y (U ⊓ V) h) := by
+  apply TensorProduct.ext'
+  intro x y
+  change structureExternalOpenCup X Y (U ⊔ V) _ x
+    (structureOpenMayerVietorisDelta Y U V q y) = _
+  exact structureExternalOpenCup_mayerVietoris_smul X Y U V h x y
+
+/-- The actual signed source boundary on the original finite antidiagonal. -/
+def structureOpenKunnethBoundary (U V : Y.left.Opens) (n : ℕ) :
+    structureOpenKunnethSum X Y (U ⊓ V) n →ₗ[k]
+      structureOpenKunnethSum X Y (U ⊔ V) (n + 1) :=
+  Kunneth.MayerVietoris.tensorBoundary (R := k) (structureCohomology k X)
+    (fun q => structureOpenMayerVietorisDelta Y U V q) n
+
+/-- The source Koszul sign cancels the native crossing sign in the whole boundary square. -/
+theorem structureOpenKunnethMap_boundary (U V : Y.left.Opens) (n : ℕ) :
+    structureOpenKunnethMap X Y (U ⊔ V) (n + 1) ∘ₗ structureOpenKunnethBoundary X Y U V n =
+      structureOpenMayerVietorisDelta (X ⊗ Y)
+          ((snd X Y).left ⁻¹ᵁ U) ((snd X Y).left ⁻¹ᵁ V) n ∘ₗ
+        structureOpenKunnethMap X Y (U ⊓ V) n := by
+  apply DirectSum.linearMap_ext
+  intro s
+  apply LinearMap.ext
+  intro z
+  have hs : s.val.1 + s.val.2 = n := s.property
+  let t := Kunneth.MayerVietoris.rightSuccessor n s
+  let d := (structureOpenMayerVietorisDelta Y U V s.val.2).lTensor
+    (structureCohomology k X s.val.1)
+  let sign : k := (-1 : k) ^ s.val.1
+  let T := structureExternalOpenTensor X Y (U ⊔ V)
+    (show s.val.1 + (s.val.2 + 1) = n + 1 by omega)
+  have hB := Kunneth.MayerVietoris.tensorBoundary_lof (R := k) (structureCohomology k X)
+    (fun q => structureOpenMayerVietorisDelta Y U V q) n s z
+  have hMap := congrArg (structureOpenKunnethMap X Y (U ⊔ V) (n + 1)) hB
+  have hLof := structureOpenKunnethMap_lof X Y (U ⊔ V) (n + 1) t (sign • d z)
+  have hSmul := T.map_smul sign (d z)
+  have hCell := LinearMap.congr_fun (structureExternalOpenTensor_boundary X Y U V s.property) z
+  change T (d z) = sign •
+    structureOpenMayerVietorisDelta (X ⊗ Y)
+      ((snd X Y).left ⁻¹ᵁ U) ((snd X Y).left ⁻¹ᵁ V) n
+      (structureExternalOpenTensor X Y (U ⊓ V) s.property z) at hCell
+  have hSign := congrArg (fun w => sign • w) hCell
+  rw [Kunneth.MayerVietoris.koszul_smul_smul (R := k)] at hSign
+  have hRight := congrArg (structureOpenMayerVietorisDelta (X ⊗ Y)
+    ((snd X Y).left ⁻¹ᵁ U) ((snd X Y).left ⁻¹ᵁ V) n)
+    (structureOpenKunnethMap_lof X Y (U ⊓ V) n s z)
+  have hFinal := hMap.trans (hLof.trans (hSmul.trans (hSign.trans hRight.symm)))
+  exact hFinal
+
+end AlgebraicGeometry.Scheme.Cohomology

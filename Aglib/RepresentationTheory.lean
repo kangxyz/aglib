@@ -10,6 +10,7 @@ module
 public import Aglib.RepresentationTheory.EquivariantQuotients
 public import Aglib.RepresentationTheory.FiniteModulePGroup
 public import Aglib.RepresentationTheory.FiniteOrbitSpan
+public import Aglib.RepresentationTheory.Invariants.Surjective
 public import Aglib.RepresentationTheory.PGroup
 public import Aglib.RepresentationTheory.PGroupInduction
 

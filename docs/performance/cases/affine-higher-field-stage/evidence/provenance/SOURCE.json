@@ -1,0 +1,145 @@
+{
+  "question": "Repair actual affine finite-etale higher bounded class leaf, preserving original fields, actions, maps, coefficient presentation and Ext worlds",
+  "authoringCheckout": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-generic-pullback-20261101",
+  "headGuard": "6564f1ad588229d833b2cf87102237e7a4b32bfb",
+  "ownedSource": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-generic-pullback-20261101/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.lean",
+  "originalSha256": "c5177efa4a023b3eee7984e721e57998b02d3ef1054dd81767d62f3b1f11e885",
+  "candidateSha256": "f94e43ca02bf427be2a016f4b0602789e01ba0fcf70e02f9eaa72fa332dc7edd",
+  "probe": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/affine-higher-main-repair/AffineEtaleHigherDegree.statement-probe.lean",
+    "sha256": "ca5b60bd9220a3e86d50624020e63fdc98d5504da436bb6213402d488abc6638",
+    "kind": "one ordinary statement-binder formation probe; no original proof or helper proof is checked",
+    "boundSeconds": 300,
+    "setup": "same actual module name, imports, isModule and native setup/options; no profiler/check suppression/budget increase",
+    "acceptance": "exit0 establishes only repaired public statement formation; then actual changed leaf CPP may launch directly",
+    "onFailure": "return exact result to author; do not repeat unchanged probe or old full leaf",
+    "result": {
+      "frozenSource": "e8fbad86c5a5a4e46467f13f4f4cc501fca12928dda4120d33261c9b80b4efbd",
+      "run": "remote-35e07cb56c484839b01c5729c862a491",
+      "setupExit": 0,
+      "formationExit": 124,
+      "boundSeconds": 300,
+      "elapsedSeconds": 305.265129,
+      "formationLog": "empty",
+      "directory": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/affine-ef1e-statement-300-D/remote-runs/remote-35e07cb56c484839b01c5729c862a491/",
+      "scope": "Only bounded noncompletion of full native statement; neither helper nor production proof was present/checked; no cause attribution",
+      "productionLaunched": false
+    }
+  },
+  "mathlib": {
+    "rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/FieldTheory/IntermediateField/Basic.lean",
+    "sha256": "1ddd696fbd51d9f38d6941e2761652bfe7fb88dccf1addab7b55e3a984d60d98",
+    "scope": "IntermediateField Basic405–454; selected actual manifest pin matched"
+  },
+  "suppliers": [
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-generic-pullback-20261101/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherConstant.lean",
+      "sha256": "7230e0c424a9c181125c56e8ba7d0d439c9207c8efd8bc3086b81347c7ca6e6a"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-generic-pullback-20261101/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineBoundedHigherDegree.lean",
+      "sha256": "555d45af1cf0c39a98746fd10e00e3102732694882b25c9ea0e22b794e06bad3"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-generic-pullback-20261101/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/CoefficientCompositeZero.lean",
+      "sha256": "8229ecd6f3773fcf980596d4094cf3dacddce030ce9a92568d19830e627f7bcc"
+    }
+  ],
+  "oldRun": {
+    "frozenSource": "e637574208c34a250543ec37c92da4deadda998ebd01e1ecf9b3389f71383df9",
+    "run": "remote-51ff334d31394499936b7c346ff080b0",
+    "exit": 1,
+    "seconds": 2325.70001,
+    "errors": [
+      "51:6 Algebra (SeparableClosure k) (finiteField L (AlgebraicClosure L) s) synthesis/synth20000",
+      "71:37 missing SmoothOfRelativeDimension 1 r",
+      "35:0 whnf200000"
+    ],
+    "directory": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/main-affine-higher-ready006-D/remote-runs/remote-51ff334d31394499936b7c346ff080b0"
+  },
+  "status": "Complete scoped actual CPP0; source fixed; no further affine repair/check requested",
+  "previousCandidateSha256": "8a26d5fbd6a737b40f5b5e83370ccbdf70651a453d7b114b5743db307ead52ba",
+  "statementBoundary": "Shared transparent AffineEtaleHigherFieldStage defined at variable fields and used on both producer/public sides; unfolding returns exactly ef1e tail",
+  "actualProduction": {
+    "candidateSha256": "8a26d5fbd6a737b40f5b5e83370ccbdf70651a453d7b114b5743db307ead52ba",
+    "frozenSource": "dc258e18de10c8566b45311ae8ede7d01a8c5ca8861e545d6a59e8acb0abc773",
+    "basis": "Exact ef1e frozen actual main/fa8 view plus this assigned source file only; unchanged three suppliers",
+    "runtimeDirectory": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/main-affine-stage-8a26-D",
+    "session": 65929,
+    "runId": "remote-bbb44c32f5f140ec90c7a8c7ec3e683a",
+    "status": "completed exit1; only seven style.haveILetI errors",
+    "profile": "unchanged ordinary native standard profile",
+    "reportedBy": "/root/resume_native_fresh",
+    "result": {
+      "exit": 1,
+      "seconds": 55.204979,
+      "errors": "Only lines78–84 style.haveILetI: goal is Prop; prefer let over letI",
+      "noReportedErrors": [
+        "synthesis",
+        "whnf",
+        "kernel"
+      ],
+      "directory": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/main-affine-stage-8a26-D/remote-runs/remote-bbb44c32f5f140ec90c7a8c7ec3e683a/"
+    }
+  },
+  "lastChange": "Only lines78–84 letI replaced with let; stage predicate, constructor values, maps, hypotheses and worlds unchanged",
+  "original7fa": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/full-main-integration-prep/repair/batch-006-before/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/TwoFieldEffacement/AffineEtaleHigherDegree.lean",
+    "sha256": "7fa69a7625a06250940a36c47e56a29f05bed936982f3b3bd50ff2f23f0531f2",
+    "sourceRecord": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/full-main-integration-prep/repair/READY-006.json",
+    "frozenSource": "f5b101c53a913bcd419f65851b6ea5efecf6e52fbf77babfd0c8a653c2b62008",
+    "run": "remote-e63f38c0cd734762bc00914e9586403f",
+    "seconds": 1987.949259,
+    "exit": 1,
+    "frontier": "Original lines49/50/52 each attempt Algebra (SeparableClosure k) (finiteField L (AlgebraicClosure L) s); line55/35 isDefEq200000 after the concrete coefficient-class application. The old run lasted1987.949259s and failed, not CPP.",
+    "diagnostics": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/main-coherent-140-D-build/remote-runs/remote-e63f38c0cd734762bc00914e9586403f/build.log",
+    "sourceHashIndependentlyChecked": true
+  },
+  "finalResult": {
+    "candidateSha256": "f94e43ca02bf427be2a016f4b0602789e01ba0fcf70e02f9eaa72fa332dc7edd",
+    "frozenSource": "5a7948ebebc1e3d0f8d8ef3c9309d81ede33df0a716d130bca145af7a764ce7e",
+    "run": "remote-1a2a5647acb94d36b30e695d861afbfc",
+    "exit": 0,
+    "groupClosed": true,
+    "compilerInvocations": 1,
+    "compilerSucceeded": 1,
+    "moduleElapsedSeconds": 56.77750776708126,
+    "receiptElapsedSeconds": 62.24123699963093,
+    "receiptWallSeconds": 62.681318029761314,
+    "command": [
+      "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+      "--rehash",
+      "build",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.AffineEtaleHigherDegree"
+    ],
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "pins": {
+      "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+      "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+      "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+      "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+      "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+      "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+    },
+    "nativeReceiptGitHead": "2f17670f9ade927deeb6ea21d1c50c67a9e7842d",
+    "authoringGitHead": "6564f1ad588229d833b2cf87102237e7a4b32bfb",
+    "sourceBasis": "actual selected main/fa8; source-content identity controls the native overlaid tree, distinct from authoring HEAD and older failed bundles",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/main-affine-finalstyle-f94e-D/remote-runs/remote-1a2a5647acb94d36b30e695d861afbfc/receipt.json",
+    "buildLog": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/main-affine-finalstyle-f94e-D/remote-runs/remote-1a2a5647acb94d36b30e695d861afbfc/build.log",
+    "compilerEvents": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/main-affine-finalstyle-f94e-D/remote-runs/remote-1a2a5647acb94d36b30e695d861afbfc/compiler-events.jsonl",
+    "scope": "Actual production public statement, transparent stage, complete variable-L producer and native proof; not only prior probe",
+    "consumerScope": "No direct source consumer beyond existing umbrella import; no added client or full umbrella check",
+    "remainingAffineGap": null,
+    "broaderBoundary": "Principal retains integration and documentation adoption; no claim about unrelated targets",
+    "performanceClaim": false,
+    "uniqueCauseClaim": false
+  }
+}

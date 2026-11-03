@@ -1,0 +1,230 @@
+{
+  "runs": [
+    {
+      "stage": "v10",
+      "run": "remote-de225eaf461c4a8682c7df515ddf4194",
+      "original": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/mayer-focused-v10-production-B/remote-runs/remote-de225eaf461c4a8682c7df515ddf4194",
+      "retained": "runs/focused-v10",
+      "receipt_sha256": "b9119235ec2be6905741e9ca49eb05b25afb39308f98c55ab4cd46bbd0eb2834",
+      "compiler_events_sha256": "300b303f07b30d5a7064f99d2ba3641eb3a725a199fa9018e388a83977d2238f",
+      "completed_frontends": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/SourceEquations.lean",
+          "seconds": 269.41201880574226,
+          "exit": 0
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/FirstSquare.lean",
+          "seconds": 101.69306480884552,
+          "exit": 0
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/SecondSquare.lean",
+          "seconds": 118.05586165189743,
+          "exit": 1
+        }
+      ],
+      "unfinished": 0
+    },
+    {
+      "stage": "v11",
+      "run": "remote-289282ee4fa74319b4f9bff143efca02",
+      "original": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/mayer-focused-v11-production-B/remote-runs/remote-289282ee4fa74319b4f9bff143efca02",
+      "retained": "runs/focused-v11",
+      "receipt_sha256": "b825edb85b230d205244fba6eda92bbf716034b20b626035e455b9b7b9f8787b",
+      "compiler_events_sha256": "1f3c271b13c98dc807b54830212d5fd6408c16f66c6f1044b5ea3b18eb3f1593",
+      "completed_frontends": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/SecondSquare.lean",
+          "seconds": 88.12048484385014,
+          "exit": 0
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Compatibility.lean",
+          "seconds": 2.492778569459915,
+          "exit": 0
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean",
+          "seconds": 76.99601137638092,
+          "exit": 1
+        }
+      ],
+      "unfinished": 0
+    },
+    {
+      "stage": "v12",
+      "run": "remote-4a371fecbf6247bdb231d6cdd77d23c0",
+      "original": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/mayer-focused-v12-production-B/remote-runs/remote-4a371fecbf6247bdb231d6cdd77d23c0",
+      "retained": "runs/focused-v12",
+      "receipt_sha256": "ee8c2ec28d95613468158fc6570646673a3f7a21c03608d734baac847e648770",
+      "compiler_events_sha256": "701bd1624522a690afeca7fd103fb7bcbe194d503a66bae9cccff70315ebf71b",
+      "completed_frontends": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean",
+          "seconds": 69.9588225632906,
+          "exit": 1
+        }
+      ],
+      "unfinished": 0
+    },
+    {
+      "stage": "v13",
+      "run": "remote-9343884508fe4761b8d0f88fb52da638",
+      "original": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/mayer-focused-v13-production-B/remote-runs/remote-9343884508fe4761b8d0f88fb52da638",
+      "retained": "runs/focused-v13",
+      "receipt_sha256": "5007f3bc9dfdcf12cb57ab0cb4ff815dc7951314769afef34b91d1a7503ef88c",
+      "compiler_events_sha256": "1ff06e5a2f3cc655225321f8bb852c7ef739c5e662bc542a260c900f48bc27c5",
+      "completed_frontends": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean",
+          "seconds": 70.13299816846848,
+          "exit": 1
+        }
+      ],
+      "unfinished": 0
+    },
+    {
+      "stage": "v14",
+      "run": "remote-eae1566e48e941c5a43adff12e7cbe25",
+      "original": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/mayer-focused-v14-production-B/remote-runs/remote-eae1566e48e941c5a43adff12e7cbe25",
+      "retained": "runs/focused-v14",
+      "receipt_sha256": "7e003fad0fa32f941810dc244290d9de5c4c28d7f6fd76a6ecd70dce719d1a99",
+      "compiler_events_sha256": "929f9e2d0f78e359b418f9ada698e2a2b509ca24bc95bcfbc06ef99ebc723bd8",
+      "completed_frontends": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/Gluing.lean",
+          "seconds": 2.593128517270088,
+          "exit": 0
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean",
+          "seconds": 72.8354472965002,
+          "exit": 1
+        }
+      ],
+      "unfinished": 0
+    },
+    {
+      "stage": "v15",
+      "run": "remote-8b87c8db3c4f49b1af6b449510678a1f",
+      "original": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/mayer-focused-v15-production-B/remote-runs/remote-8b87c8db3c4f49b1af6b449510678a1f",
+      "retained": "runs/focused-v15",
+      "receipt_sha256": "2ce76acfb4fe9833eb79cad8392309ee8aa7dfabeb8ae70a3780d35d2e115788",
+      "compiler_events_sha256": "d124e66452b9231b5682dcb9903898b96dc1a815f5d6266c2de5aabeda59ad11",
+      "completed_frontends": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean",
+          "seconds": 67.91640312969685,
+          "exit": 1
+        }
+      ],
+      "unfinished": 0
+    },
+    {
+      "stage": "v16",
+      "run": "remote-c0425db7dae44eaeb17552da3d714f24",
+      "original": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/mayer-focused-v16-production-B/remote-runs/remote-c0425db7dae44eaeb17552da3d714f24",
+      "retained": "runs/focused-v16",
+      "receipt_sha256": "48aa1f30747735b909d1ca6dd26cc385e93ea18a51a09460b7c751697aad0e05",
+      "compiler_events_sha256": "8783c36092ae709435be65d6882cba7b184e3e3a498fc274c3501553c41554f4",
+      "completed_frontends": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/GluingFour.lean",
+          "seconds": 2.2960740476846695,
+          "exit": 0
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/GluingInjective.lean",
+          "seconds": 34.274587005376816,
+          "exit": 1
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/GluingSurjective.lean",
+          "seconds": 34.500709637999535,
+          "exit": 1
+        }
+      ],
+      "unfinished": 0
+    },
+    {
+      "stage": "v17",
+      "run": "remote-76b778590a8640d7b0361f6992bdf471",
+      "original": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/mayer-focused-v17-production-B/remote-runs/remote-76b778590a8640d7b0361f6992bdf471",
+      "retained": "runs/focused-v17",
+      "receipt_sha256": "ecf6228b713df619c35c210d902f57b33f6b5b1abc2214299066436e1160613a",
+      "compiler_events_sha256": "8790b0f2789b2dacba3f58d47234f050ad9c17b5d388309a2ee2cf8c4a47936f",
+      "completed_frontends": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/GluingSurjective.lean",
+          "seconds": 35.990632489323616,
+          "exit": 1
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/GluingInjective.lean",
+          "seconds": 36.41312177479267,
+          "exit": 1
+        }
+      ],
+      "unfinished": 0
+    },
+    {
+      "stage": "v18",
+      "run": "remote-0321c2968f1147a78fa78f1e0c36cd0d",
+      "original": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/mayer-focused-v18-production-B/remote-runs/remote-0321c2968f1147a78fa78f1e0c36cd0d",
+      "retained": "runs/focused-v18",
+      "receipt_sha256": "38b5310641837fbd5b9261deb08a5745152d0d71968d7562f0a29e45bab24868",
+      "compiler_events_sha256": "5d189b012afa90302a2ccdc1a280d91fcee1ec881e790c5b63407802ccf6ea35",
+      "completed_frontends": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/GluingInjective.lean",
+          "seconds": 31.86359903216362,
+          "exit": 1
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/GluingSurjective.lean",
+          "seconds": 50.432133078575134,
+          "exit": 1
+        }
+      ],
+      "unfinished": 0
+    },
+    {
+      "stage": "v19",
+      "run": "remote-f95cd274ee324d4685cbb2fa1f94e2ae",
+      "original": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/runtime/mayer-focused-v19-production-B/remote-runs/remote-f95cd274ee324d4685cbb2fa1f94e2ae",
+      "retained": "runs/focused-v19",
+      "receipt_sha256": "471ee8f0b32d6448e8ef0c0d88b92f30feca1a78f7a076e5007087ad1a91b3b6",
+      "compiler_events_sha256": "47d0f8f9dcba17fdcd89374fbc66a626851fd2053f0eb40280fe89a2c0252643",
+      "completed_frontends": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/GluingSurjective.lean",
+          "seconds": 45.32160858809948,
+          "exit": 0
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris/GluingInjective.lean",
+          "seconds": 81.06643453240395,
+          "exit": 0
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean",
+          "seconds": 78.39142036437988,
+          "exit": 0
+        },
+        {
+          "path": "AglibTest/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean",
+          "seconds": 18.71833671629429,
+          "exit": 0
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/Kunneth.lean",
+          "seconds": 35.212268352508545,
+          "exit": 0
+        }
+      ],
+      "unfinished": 0
+    }
+  ],
+  "coverage": "Actual completed compiler events only; failures remain failures, retained providers keep original source/run. v19 full requested graph passed before final two import-only edits; finalmain integration covers those once."
+}

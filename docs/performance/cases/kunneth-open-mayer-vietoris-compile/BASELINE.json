@@ -1,0 +1,14 @@
+{
+  "source_root": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/kunneth-mayer-optimization/aglib",
+  "head": "7545acd876b4ebf73f067d532ffa75263c01e26c",
+  "branch": "codex/kunneth-mayer-optimization-20261102",
+  "baseline_manifest": "/Users/kang/Documents/New project/tmp/work/etale-c-integration-20261102/ready-publication/MANIFEST.json",
+  "baseline_dirty_paths": 185,
+  "expected_native_content_sha256": "4707aaadf9432b2050204046021f2f6214e03366e9ba64fe1458d10e069a901c",
+  "module_path": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean",
+  "module_sha256": "bd06444b85d5aea9ee84ec4acb54bdc385a9bd078234e7adfd3cb15e594ad3c8",
+  "observed_old_frontend_seconds": 2438.094314,
+  "measured_native_run": "remote-e0c8307e34384514adc46fce9eb2c00f",
+  "rule": "Exact measured mathematical baseline; no 3laterCIcompatibilityedits, experimentalGluing, H1orEuler source. SeparateRootGit; no nativecaches copiedlocally.",
+  "updated_utc": "2026-11-02T15:09:12.132708+00:00"
+}

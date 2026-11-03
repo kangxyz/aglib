@@ -1,0 +1,13 @@
+/- Core-only run-owned append/flush observability control. -/
+module
+public import Lean
+
+run_cmd do
+  let some markerPath ← IO.getEnv "R5_MAYER_MARKER_FILE"
+    | throw (IO.userError "Missing run-owned Mayer marker file")
+  IO.FS.withFile (System.FilePath.mk markerPath) .append fun out => do
+    out.putStr "MAYER_PHASE CORE_FILE_ENTRY_CONTROL\n"
+    out.flush
+
+/-- The file-observability control proves only True. -/
+public theorem coreFileMarkerControl : True := True.intro

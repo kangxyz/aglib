@@ -336,6 +336,12 @@ argument or localization-and-kernel producer over variables before specializing;
 coordinate helpers alone may leave the concrete conversion unchanged.
 [Surface-resolution cases and evidence](performance/surface-resolution-constructor-boundaries.md).
 
+**Share the full field-stage conclusion before specializing.** Define the original
+finite, etale and class-zero conclusion once over variable field and map inputs;
+construct it there and use the same transparent head at the native caller.
+Retain the original scalar actions, maps and independent worlds.
+[Affine higher-degree field-stage case](performance/cases/affine-higher-field-stage/README.md).
+
 **Paste whole section and coefficient families through the same constructor.**
 Construct the actual comparison from its original section transformation and
 coefficient transformation. Prove its whole composition, transport and
@@ -381,6 +387,8 @@ operators before applying them to the concrete pairing. The open-curve cases
 also retain the failed aggregate five-lemma applications and the successful
 separate native chases; they establish no matched speedup or exclusive cause.
 [Open-curve duality cases](performance/cases/open-curve-duality-laws/README.md).
+
+**Retain the proved boundary map literally.** Supply the original boundary arrow to both exactness branches; when needed, bridge exactness by unfolding its single original definition. After splitting a file, preserve its original file-local elaboration options in the affected new leaves. [Mixed-open Mayer–Vietoris case](performance/cases/kunneth-open-mayer-vietoris-compile/README.md).
 
 **Name repeated equation proofs before elaborating statement and body.** Use
 the same named degree/transport lemma with atomic arguments inside

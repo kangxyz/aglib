@@ -1,0 +1,48 @@
+{
+  "source": "4707aaadf9432b2050204046021f2f6214e03366e9ba64fe1458d10e069a901c",
+  "results": [
+    {
+      "question": "Locate original generic finite-support/biproduct tensor declaration cost.",
+      "actual_source": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean",
+      "actual_sha": "bd06444b85d5aea9ee84ec4acb54bdc385a9bd078234e7adfd3cb15e594ad3c8",
+      "probe_sha": "30ef4e4df7562c5328fb24c06aa22ade5f077b8d90c36472d0684032c0db086d",
+      "setup_exit": 0,
+      "completion_claim": "Real-body generic220 profiler only; no whole module CPP or speedup",
+      "setup_identity": {
+        "name": "Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris",
+        "moduleName": null,
+        "isModule": true,
+        "options": {
+          "autoImplicit": false,
+          "warningAsError": true,
+          "weak.linter.mathlibStandardSet": true,
+          "weak.linter.style.longFile": 1500
+        }
+      },
+      "formation_exit": 1,
+      "outcome": "diagnostic_returned_nonzero",
+      "elapsed_s": 42.02698189020157,
+      "command": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5s",
+        "300s",
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "env",
+        "/root/autodl-tmp/lean-build/logs/remote-0bf25ffb690f4617b1700cd0d5e17126/toolchain/bin/lean",
+        "/root/autodl-tmp/lean-build/logs/remote-0bf25ffb690f4617b1700cd0d5e17126/probe-0/Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethOpenMayerVietoris.lean",
+        "--setup",
+        "/root/autodl-tmp/lean-build/logs/remote-0bf25ffb690f4617b1700cd0d5e17126/probe-0/setup.json",
+        "--json",
+        "-o",
+        "/root/autodl-tmp/lean-build/logs/remote-0bf25ffb690f4617b1700cd0d5e17126/probe-0/probe.olean",
+        "-i",
+        "/root/autodl-tmp/lean-build/logs/remote-0bf25ffb690f4617b1700cd0d5e17126/probe-0/probe.ilean",
+        "-Dtrace.profiler=true",
+        "-Dtrace.profiler.threshold=100"
+      ]
+    }
+  ],
+  "scope": "Real-body generic220 profiler only; no whole module CPP or speedup"
+}
