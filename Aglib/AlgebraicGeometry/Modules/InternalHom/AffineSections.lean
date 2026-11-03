@@ -86,4 +86,12 @@ theorem affineGlobalHomEquiv_apply (R : CommRingCat.{u}) (M N : (Spec R).Modules
   rw [affineGlobalHomEquiv, Equiv.trans_apply, counitHomEquiv_apply]
   rfl
 
+/-- The inverse affine Hom comparison has exactly the supplied original section map. -/
+theorem affineGlobalHomEquiv_symm_apply (R : CommRingCat.{u}) (M N : (Spec R).Modules)
+    [M.IsQuasicoherent]
+    (q : moduleSpecΓFunctor.obj M →ₗ[R] moduleSpecΓFunctor.obj N) :
+    (moduleSpecΓFunctor.map ((affineGlobalHomEquiv R M N).symm q)).hom = q := by
+  exact (affineGlobalHomEquiv_apply R M N _).symm.trans
+    ((affineGlobalHomEquiv R M N).apply_symm_apply q)
+
 end AlgebraicGeometry.Scheme.Modules.InternalHom

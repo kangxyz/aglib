@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Finite.Trace
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.ScalarTorsion
-public import Aglib.AlgebraicGeometry.FunctionField.GenericFiber
+public import Aglib.AlgebraicGeometry.FunctionField.Finite
 public import Aglib.AlgebraicGeometry.Surfaces.Birational.FiniteDomination
 public import Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.Regular
 
@@ -69,15 +69,7 @@ private theorem finiteExtension_functionFieldMap_finite
     {X Y : Scheme.{u}} [IsIntegral X] [IsIntegral Y]
     (f : X ⟶ Y) [IsFinite f] [IsDominant f] :
     (functionFieldMap f).Finite := by
-  let q := pullback.snd f (Y.fromSpecStalk (genericPoint Y))
-  let : IsIso (Scheme.genericFibreMap f) := Scheme.genericFibreMap_isIso f
-  have hfinite : IsFinite (Scheme.genericFibreMap f ≫ q) := inferInstance
-  have hcomp : Scheme.genericFibreMap f ≫ q =
-      Spec.map (CommRingCat.ofHom (functionFieldMap f)) := by
-    dsimp only [q, Scheme.genericFibreMap]
-    exact pullback.lift_snd _ _ _
-  rw [hcomp] at hfinite
-  exact (IsFinite.SpecMap_iff _).mp hfinite
+  exact Scheme.functionFieldMap_finite f
 
 private theorem finiteExtension_structureScalar_comp
     {A : Type u} [CommRing A] {X Y : Scheme.{u}}

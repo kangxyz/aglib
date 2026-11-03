@@ -8,7 +8,6 @@ module
 public import Aglib.AlgebraicGeometry.Normalization.FunctionField
 public import Aglib.RingTheory.Excellent.Normalization
 public import Aglib.RingTheory.Excellent.FiniteNormalCompletion
-public import Aglib.AlgebraicGeometry.Normalization.FunctionField.Finiteness
 
 /-!
 # Finite generic normalization of quasi-excellent surfaces

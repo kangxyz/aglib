@@ -17,8 +17,7 @@ added to this comparison.
 
 ## Original localized quotient presentation
 
-[Localization/Quotient.lean](Localization/Quotient.lean) provides
-`quotientAwayRingEquiv I t`, the original ring equivalence
+`quotientAwayRingEquiv I t` is the original ring equivalence
 
     R_t / I R_t ≃+* (R/I)_[t].
 

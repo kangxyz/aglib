@@ -58,7 +58,7 @@ theorem saturatedPair_scaledBidualSquare :
     (pullback (Spec.map σ)).map φ ≫
       ((tensorSheafLeftUnit (Spec (.of S)) ((pullback (Spec.map σ)).obj L.val)).inv ≫
         (moduleTensorCoefficientMap (Spec (.of S))
-          (Scheme.Modules.affineMultiplication S (algebraMap R S x))).app
+          (affineMultiplication S (algebraMap R S x))).app
             ((pullback (Spec.map σ)).obj L.val) ≫
         (tensorSheafLeftUnit (Spec (.of S)) ((pullback (Spec.map σ)).obj L.val)).hom) := by
   let : ((pullback (Spec.map σ)).obj

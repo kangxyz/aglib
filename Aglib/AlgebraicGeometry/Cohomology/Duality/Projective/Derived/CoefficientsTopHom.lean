@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.TwistExt.Coefficients
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.TwistCohomology.Coefficients.Sections
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Derived.CoefficientsComparison
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Derived.TopHom
 public import Mathlib.LinearAlgebra.Contraction

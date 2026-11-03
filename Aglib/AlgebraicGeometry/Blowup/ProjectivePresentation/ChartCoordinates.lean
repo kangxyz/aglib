@@ -69,7 +69,7 @@ private theorem framedFamily_coefficient_of_triangle
     (i : ι) :
     pullbackSection t (pulledFramedFamily B D eD π i) ≫
       (chartFrameOfTriangle B a φ t hth).hom =
-        IdealFrames.affineMultiplication T (χ (AffineRow.generators I S D eD π i)) :=
+        Scheme.Modules.affineMultiplication T (χ (AffineRow.generators I S D eD π i)) :=
   framedFamily_coefficient_of_scalarExtension B a φ t htp hth.eq D eD π χ hχ i
 
 section ScalarChart
@@ -100,7 +100,7 @@ theorem scalarChart_original_row (i : ι) :
     pullbackSection (ScalarChartCoordinates.scalarChartToPullback I S a B)
         (pulledFramedFamily B D eD π i) ≫
       (scalarChartFrame (S := S) B a).hom =
-        IdealFrames.affineMultiplication T
+        Scheme.Modules.affineMultiplication T
           (ScalarChartCoordinates.scalarRatioLinearMap I S a
             (AffineRow.generators I S D eD π i)) := by
   refine framedFamily_coefficient_of_triangle
@@ -237,7 +237,7 @@ private theorem scalarChart_original_augmentation (a : I) (u : ι →₀ S)
   let U : (Spec (.of T)).Modules := Augmentation.unitModule T
   have hs (i : ι) : pulledFamily t s i ≫ e.hom = Augmentation.plainFamily c i :=
     (scalarChart_original_row B a D eD π i).trans
-      (IdealFrames.affineMultiplication_eq_unitMul T (c i))
+      (Scheme.Modules.affineMultiplication_eq_unitMul T (c i))
   let hplain : Epi (Sigma.desc (Augmentation.plainFamily c)) := by
     have he : (fun i => pulledFamily t s i ≫ e.hom) =
         Augmentation.plainFamily c := funext hs

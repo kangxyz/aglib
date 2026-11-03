@@ -48,8 +48,8 @@ process also failed; driver overhead alone did not account for the failure.
 A bounded sidecar-marker diagnostic retained every original declaration and
 located the frontier at `relativeAffineTraceLocal_square` (original line 963).
 The original source was then factored once into
-[historical Trace/AffineLocal](https://github.com/kangxyz/aglib/blob/5901a32bb9a4c91482ef2cf29de4a3ab61f954b8/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Trace/AffineLocal.lean)
-and [historical Trace/Core](https://github.com/kangxyz/aglib/blob/5901a32bb9a4c91482ef2cf29de4a3ab61f954b8/Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Trace/Core.lean).
+[Trace/AffineLocal](../../Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Trace/AffineLocal.lean)
+and [Trace/Core](../../Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Trace/Core.lean).
 This retained each implementation once, the same namespace, module options,
 standard derived-category instances and original public interfaces. The lower
 module passed, but the tail still failed. A second bounded diagnostic showed

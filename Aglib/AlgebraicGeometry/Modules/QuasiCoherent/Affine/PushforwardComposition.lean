@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.TildePullback.Composition
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.TildePullback
 
 /-! # Whole right-adjoint coherence of original affine pushforwards
 

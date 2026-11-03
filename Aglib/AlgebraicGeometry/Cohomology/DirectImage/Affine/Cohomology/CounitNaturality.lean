@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.SectionsCounit
+public import Aglib.AlgebraicGeometry.Modules.Complex.TildeNaturality
 
 /-!
 # Original counit comparison and coefficient naturality
@@ -91,30 +92,7 @@ private theorem affineCounitHomologyIso_naturality (R : CommRingCat.{u})
         (Scheme.Modules.Complex.tildeGlobalSectionsHomologyIso R d L i).hom =
       (Scheme.Modules.Complex.tildeGlobalSectionsHomologyIso R d K i).hom ≫
         homologyMap φ i := by
-  let C := (moduleSpecΓFunctor.mapHomologicalComplex d).obj K
-  let D := (moduleSpecΓFunctor.mapHomologicalComplex d).obj L
-  let z := (moduleSpecΓFunctor.mapHomologicalComplex d).map φ
-  let e₀ := (C.sc i).mapHomologyIso (tilde.functor R)
-  let e₁ := (D.sc i).mapHomologyIso (tilde.functor R)
-  have ht := ShortComplex.mapHomologyIso_inv_naturality
-    ((HomologicalComplex.shortComplexFunctor (ModuleCat.{u} R) d i).map z) (tilde.functor R)
-  change (tilde.functor R).map (homologyMap z i) ≫ e₁.inv =
-    e₀.inv ≫ homologyMap (((tilde.functor R).mapHomologicalComplex d).map z) i at ht
-  have hc := congrArg ((homologyFunctor (Spec R).Modules d i).map)
-    (Scheme.Modules.Complex.tildeGlobalSectionsCounit_naturality R d φ)
-  simp only [Functor.map_comp] at hc
-  change homologyMap (((tilde.functor R).mapHomologicalComplex d).map z) i ≫
-      homologyMap (Scheme.Modules.Complex.tildeGlobalSectionsCounit R d L) i =
-    homologyMap (Scheme.Modules.Complex.tildeGlobalSectionsCounit R d K) i ≫
-      homologyMap φ i at hc
-  simp only [Scheme.Modules.Complex.tildeGlobalSectionsHomologyIso_hom, Category.assoc]
-  change (tilde.functor R).map (homologyMap z i) ≫ e₁.inv ≫
-      homologyMap (Scheme.Modules.Complex.tildeGlobalSectionsCounit R d L) i =
-    e₀.inv ≫ homologyMap (Scheme.Modules.Complex.tildeGlobalSectionsCounit R d K) i ≫
-      homologyMap φ i
-  rw [← Category.assoc, ht]
-  simp only [Category.assoc]
-  exact congrArg (fun t => e₀.inv ≫ t) hc
+  exact Scheme.Modules.Complex.tildeGlobalSectionsHomologyIso_naturality R d φ i
 
 variable {R : Type u} [CommRing R] {X : Scheme.{u}}
   (f : X ⟶ Spec (CommRingCat.of R))

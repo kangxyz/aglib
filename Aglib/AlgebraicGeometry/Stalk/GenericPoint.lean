@@ -7,16 +7,22 @@ module
 
 public import Mathlib.AlgebraicGeometry.FunctionField
 public import Mathlib.AlgebraicGeometry.Stalk
+public import Mathlib.RingTheory.KrullDimension.Field
+public import Mathlib.Tactic.NormNum
 
 /-!
-# The original generic point in a spectrum of a stalk
+# Original generic points and dimensions of actual stalks
 
 For an integral scheme, its actual local-spectrum map sends the zero prime
 to the original generic point. No closed immersion, Noetherianity or
 dimension condition is used.
+An actual stalk of dimension two is not the generic field stalk; this
+companion requires only integrality and that original dimension equality.
 
 The implementation is moved unchanged from the former private helper in
 `Morphisms/ClosedImmersion/ComponentStalk.lean`, at HEAD 4447b30a.
+The public dimension-two theorem is moved unchanged from
+`Surfaces/Birational/Factorization.lean`, retaining its original name.
 -/
 
 @[expose] public noncomputable section
@@ -51,5 +57,14 @@ lemma fromSpecStalk_bot {C : Scheme.{u}} [IsIntegral C] (c : C) :
       _ = closure (Set.range (C.fromSpecStalk c)) := by rw [Set.image_univ]
       _ = Set.univ := hd.closure_range
   exact hg.eq (genericPoint_spec C)
+
+/-- An original stalk of dimension two cannot be the integral scheme's generic field stalk. -/
+theorem ne_genericPoint_of_stalk_dimension_two {X : Scheme.{u}} [IsIntegral X]
+    (x : X) (hd : ringKrullDim (X.presheaf.stalk x) = 2) : x ≠ genericPoint X := by
+  intro h
+  subst x
+  change ringKrullDim X.functionField = 2 at hd
+  rw [ringKrullDim_eq_zero_of_field] at hd
+  norm_num at hd
 
 end AlgebraicGeometry.Scheme

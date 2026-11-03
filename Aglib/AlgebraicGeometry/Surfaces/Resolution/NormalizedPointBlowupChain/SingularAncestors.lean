@@ -9,7 +9,6 @@ public import Aglib.AlgebraicGeometry.Surfaces.Resolution.NormalizedPointBlowupC
 public import Aglib.AlgebraicGeometry.Blowup.RegularPoint.Scheme
 public import Aglib.AlgebraicGeometry.Stalk.Restriction
 public import Aglib.AlgebraicGeometry.Surfaces.NormalPoints
-public import Aglib.AlgebraicGeometry.Blowup.RegularPoint.Scheme.LocalRegularity
 
 /-!
 # Singular ancestors on the original supported normalized chain

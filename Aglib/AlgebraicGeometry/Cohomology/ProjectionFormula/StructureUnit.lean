@@ -12,7 +12,6 @@ public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Pullback
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.RightUnit
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Composition.SingleUnit
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.SingleUnit.ShortExact
-public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ZeroComparison.UnitIsIso
 
 /-!
 # Projection formula and the original structural unit

@@ -17,7 +17,6 @@ public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Modules.Isomorphi
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.DerivedStructure.Basic
 public import Aglib.AlgebraicGeometry.Cohomology.ProjectionFormula.StructureUnit
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.SingleUnit.ShortExact
-public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ZeroComparison.UnitIsIso
 
 /-!
 # The original derived positive exceptional section

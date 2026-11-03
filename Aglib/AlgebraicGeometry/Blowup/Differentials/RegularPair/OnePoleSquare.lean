@@ -92,7 +92,7 @@ theorem saturatedPairOnePoleChartMap_unit :
     (saturatedPairExceptionalPositiveLine R x y).val
     (saturatedPairExceptionalPositiveFrame R x y)
     ((pullbackUnitIso f).inv ≫ (pullback f).map s)
-    (Scheme.Modules.affineMultiplication S (algebraMap R S x))
+    (affineMultiplication S (algebraMap R S x))
     (saturatedPair_exceptionalPositiveSection_frame R x y)
   exact postcomp_square _ _ _ _ _ _ _
     (saturatedPair_scaledBidualSquare Λ R K x y hx hy n L φ) hs
