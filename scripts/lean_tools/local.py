@@ -7,7 +7,7 @@ from pathlib import Path
 import subprocess
 import uuid
 
-from . import build
+from . import build, lint
 from .runtime import (CommandFailed, NativeRuntime, RuntimeFailure,
                       semantic_environment, semantic_toolchain)
 from .state import (CheckInputs, Progress, ReflectionGraph, TemporalInputs, check_binding,
@@ -88,10 +88,11 @@ def commands(root, production, check_targets=(), source_checks=()):
     return [*(source_command(check) for check in source_checks),
             ['lake', '--rehash', 'build', *production],
             ['lake', '--rehash', 'build', *TOOLS, *check_targets],
+            lint.command(prepare=True),
             *[['lake', '--no-build', 'exe', 'mathlib/mk_all', '--lib', name, '--check'] for name in production],
             ['lake', '--no-build', 'exe', 'mathlib/lint-style', *production],
             ['lake', 'test'],
-            ['lake', '--no-build', 'lint', *production, '--', '--trace'],
+            lint.command(production),
             *[['lake', 'env', '<pinned-axiom-audit>', '--root', name] for name in production]]
 
 
@@ -202,6 +203,13 @@ def _checks(root, production, check_targets, source_checks, native, progress, di
         source_helpers.append(str(parser))
     counter = 0
     accepted = []
+    # Packaged checker sources may live outside this checkout. Keep their live
+    # source guards across preparation as well as execution; generated private
+    # tool inputs are bound only after the preparation stage has created them.
+    if native:
+        for path in lint.source_inputs(root):
+            if path.is_file():
+                whole.hash_file(path)
 
     def attempt(name, action):
         try:
@@ -219,24 +227,31 @@ def _checks(root, production, check_targets, source_checks, native, progress, di
         def binding():
             with inputs.inspection():
                 paths = [*CONFIG, *raw]
+                reflected_roots = imports
+                if name == 'lint':
+                    paths += [*lint.source_inputs(root), *lint.generated_inputs(root)]
+                    reflected_roots = lint.import_roots(root, production)
                 for argument in command:
                     candidate = root / argument
                     if candidate.is_file():
                         paths.append(str(candidate))
+                paths = list(map(str, paths))
                 native_tools = [path for path in paths if '/.lake/build/bin/' in str(root / path)]
                 paths = [path for path in paths if path not in native_tools]
                 value = check_binding(root, name, (), command, paths,
                                       toolchain=semantic_toolchain(toolchain), hash_file=inputs.hash_file)
                 if enrollment is not None:
                     value['source_enrollment'] = enrollment
+                environment_names = ['ELAN_TOOLCHAIN', 'LEAN_OPTIONS', 'LEAN_OPTS', 'LEAN_ARGS',
+                    'LAKE_ARGS', 'LEAN_PATH', 'LEAN', 'LEAN_SYSROOT', 'LAKE_OVERRIDE_LEAN']
+                if name == 'lint':
+                    environment_names += ['CI_LINT_WORKERS', 'LEAN_ABORT_ON_PANIC']
                 value['environment'] = semantic_environment(
-                    {name: original_environment.get(name) for name in
-                     ('ELAN_TOOLCHAIN', 'LEAN_OPTIONS', 'LEAN_OPTS', 'LEAN_ARGS',
-                      'LAKE_ARGS', 'LEAN_PATH', 'LEAN', 'LEAN_SYSROOT', 'LAKE_OVERRIDE_LEAN')}, toolchain)
-                if imports and search_path:
+                    {key: original_environment.get(key) for key in environment_names}, toolchain)
+                if reflected_roots and search_path:
                     graph = ReflectionGraph(root, search_path,
                         semantic_toolchain(toolchain, installation=True), inputs)
-                    value['reflective_imports'] = graph.closure(imports)
+                    value['reflective_imports'] = graph.closure(reflected_roots)
                 else:
                     value['reflective_imports'] = None
                 if native_tools:
@@ -246,7 +261,10 @@ def _checks(root, production, check_targets, source_checks, native, progress, di
                     value['checker'] = inputs.native_hash_file(Path(command[2]))
                 return value
         before = binding()
-        reusable = not imports or before.get('reflective_imports') is not None
+        # Custom environment linters may consume external state that the import
+        # graph does not declare. Run the complete lint predicate every time;
+        # retain its input guards, but never consult or store a lint success.
+        reusable = name != 'lint' and (not imports or before.get('reflective_imports') is not None)
         record = progress_store.lookup(before) if reusable else None
         if record is not None:
             mode = 'reused_checks'
@@ -258,11 +276,18 @@ def _checks(root, production, check_targets, source_checks, native, progress, di
             if after != before:
                 raise ValueError('Native check inputs changed during execution: ' + name)
             inputs.assert_stable()
-            record = progress_store.save(before, receipt, command)
+            if name != 'lint':
+                record = progress_store.save(before, receipt, command)
             mode = 'performed_checks'
         if binding() != before:
             raise ValueError('Native check inputs changed while consuming success: ' + name)
         inputs.assert_stable()
+        if name == 'lint':
+            # --update owns this generated resolution output. It is not an
+            # immutable pre-action source, but late mutation remains guarded.
+            manifest = root / '.lake/lint-runner/lake-manifest.json'
+            if manifest.is_file():
+                inputs.native.hash_file(manifest)
         accepted.append(inputs.native)
         summary[mode].append(name)
         write_json(directory / 'result.json', summary)
@@ -296,6 +321,14 @@ def _checks(root, production, check_targets, source_checks, native, progress, di
         _run(runtime, ['lake', '--rehash', 'build', *production, '-o', str(mapping)], directory / 'build')
         tools = attempt('tools', lambda: _run(runtime,
             ['lake', '--rehash', 'build', *TOOLS, *check_targets], directory / 'tools'))
+        lint_ready = None
+        if tools is not None:
+            lint_ready = attempt('lint-preparation', lambda: _run(runtime,
+                lint.command(prepare=True), directory / 'lint-preparation'))
+        # Its later clone/build must not perturb the absent override-file guard
+        # on the common .lake parent. Only this existing owned target is created.
+        if not runtime.environment.get('LEAN_CI_AUDITOR_ROOT'):
+            (root / '.lake/axiom-audit').mkdir(parents=True, exist_ok=True)
         search = subprocess.check_output(['lake', 'env', 'printenv', 'LEAN_PATH'],
                                          cwd=root, env=runtime.environment, text=True).strip()
         search_path = [str((root / path).resolve()) for path in search.split(os.pathsep) if path]
@@ -321,11 +354,12 @@ def _checks(root, production, check_targets, source_checks, native, progress, di
                     imports=text_imports, raw=[*(path for name in production for path in production_sources(name)),
                                              *text_files, 'scripts/nolints-style.txt'])
             attempt('test', lambda: _run(runtime, ['lake', 'test'], directory / 'tests'))
-            execute('lint', ['lake', '--no-build', 'lint', *production, '--', '--trace'],
-                    imports=[*production, 'Batteries.Tactic.Lint'],
-                    raw=['scripts/nolints.json', 'scripts/nolints-style.txt',
-                         '.lake/packages/batteries/scripts/runLinter.lean',
-                         '.lake/packages/batteries/.lake/build/bin/runLinter'])
+            if lint_ready is not None:
+                execute('lint', lint.command(production),
+                        imports=[*production, 'Batteries.Tactic.Lint'],
+                        raw=['scripts/nolints.json', 'scripts/nolints-style.txt',
+                             '.lake/packages/batteries/scripts/runLinter.lean',
+                             '.lake/packages/batteries/.lake/build/bin/runLinter'])
         auditor = attempt('auditor', lambda: _prepare_auditor(root, runtime, directory / 'auditor', whole))
         if auditor is not None:
             for name in production:

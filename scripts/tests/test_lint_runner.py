@@ -15,7 +15,8 @@ import unittest
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[2]
-HELPER = ROOT / ".github/lint"
+HELPER = ROOT / "scripts/lean_tools/_lint"
+FIXTURES = ROOT / "scripts/tests/fixtures/lint"
 spec = importlib.util.spec_from_file_location("lint_preflight", HELPER / "preflight.py")
 preflight = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(preflight)
@@ -88,8 +89,8 @@ class NativeRunnerTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(dir=self.base.name)
         self.root = Path(self.temp.name)
-        shutil.copytree(HELPER / "tests/Fixture", self.root / "Fixture")
-        shutil.copyfile(HELPER / "tests/Fixture.lean", self.root / "Fixture.lean")
+        shutil.copytree(FIXTURES / "Fixture", self.root / "Fixture")
+        shutil.copyfile(FIXTURES / "Fixture.lean", self.root / "Fixture.lean")
         (self.root / "lean-toolchain").write_text("leanprover/lean4:v4.34.1\n")
         (self.root / "lakefile.toml").write_text(
             'name = "Fixture"\nlintDriver = "batteries/runLinter"\n'
@@ -158,6 +159,54 @@ class NativeRunnerTests(unittest.TestCase):
         suppressions.write_text("invalid JSON")
         self.native(1)
         self.batched(1)
+
+    def test_local_check_reruns_custom_linter_external_state(self):
+        from lean_tools import lint, local
+        from lean_tools.runtime import CommandFailed
+        from test_shared import FakeRuntime
+
+        self.append("Fixture/Left.lean", '\nopen Lean\n'
+            '/-- A custom linter whose input is outside the Lean graph. -/\n'
+            '@[env_linter] public meta def customExternalCheck : Batteries.Tactic.Lint.Linter where\n'
+            '  noErrorsFound := "ok"\n  errorsFound := "failed"\n'
+            '  test decl := do\n    if decl != `Fixture.leftValue then return none\n'
+            '    let state ← IO.FS.readFile "lint-external-state"\n'
+            '    if state == "fail" then return m!"external linter failure"\n'
+            '    return none\n')
+        external = self.root / "lint-external-state"
+        external.write_text("pass")
+        owner = self
+
+        class LintRuntime(FakeRuntime):
+            """Execute real lint; unrelated final-check phases use test receipts."""
+            def run(self, task, directory):
+                command = task['command']
+                if command in (lint.command(prepare=True), lint.command(['Fixture'])):
+                    result = subprocess.run(command, cwd=self.root, env=self.environment,
+                        text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=90)
+                    if command == lint.command(['Fixture']):
+                        owner.assertIn('using original full lintCore', result.stdout)
+                    if result.returncode:
+                        self.calls.append(command)
+                        raise CommandFailed(result.stdout, result.returncode)
+                return super().run(task, directory)
+
+        runtime = LintRuntime(self.root)
+        runtime.environment = self.env
+        auditor = self.root / '.lake/axiom-audit/.lake/build/bin/axiom-audit'
+        auditor.parent.mkdir(parents=True)
+        auditor.write_bytes(b'fixed synthetic auditor; unrelated to native lint')
+        with patch('lean_tools.local._prepare_auditor', return_value=auditor):
+            first = local.check(self.root, ['Fixture'], runtime=runtime)
+            self.assertIn('lint', first['performed_checks'])
+            # No Lean source, configuration or compiled input changes here.
+            external.write_text('fail')
+            with self.assertRaisesRegex(ValueError, 'external linter failure'):
+                local.check(self.root, ['Fixture'], runtime=runtime)
+        self.assertEqual(runtime.calls.count(lint.command(['Fixture'])), 2)
+        from lean_tools.state import read_json
+        records = (self.root / '.lake/native-checks/progress').glob('*.json')
+        self.assertNotIn('lint', [read_json(path)['binding']['kind'] for path in records])
 
     def test_global_auto_declaration_change_is_checked_again(self):
         self.append("Fixture/Left.lean", '\nnamespace N\n'
@@ -362,7 +411,7 @@ class NativeRunnerTests(unittest.TestCase):
         if not library.exists():
             library = library.with_suffix(".dylib")
         output = self.command([self.lake, "env", "lean", "--load-dynlib", str(library),
-            str(HELPER / "tests/PoolProbe.lean")], extra_env={"LEAN_PATH": str(compiled)})
+            str(FIXTURES / "PoolProbe.lean")], extra_env={"LEAN_PATH": str(compiled)})
         self.assertIn("pool-probe:", output)
 
     def test_worker_environment_and_unsupported_version_fallback(self):
@@ -383,6 +432,9 @@ class NativeRunnerTests(unittest.TestCase):
         self.assertEqual(record["threads"], str(min(4, available)))
         self.assertEqual(record["args"][0], "env")
         self.assertTrue(record["args"][1].endswith("/batchedLint"))
+        env["LEAN_TOOLS_LINT_MAX_THREADS"] = "1"
+        output = self.command(["bash", str(HELPER / "run.sh"), "Fixture"], extra_env=env)
+        self.assertEqual(json.loads(output.splitlines()[-1])["threads"], "1")
         env["TEST_LEAN_VERSION"] = "Lean (version 4.35.0, fixture)"
         output = self.command(["bash", str(HELPER / "run.sh"), "Fixture"], extra_env=env)
         record = json.loads(output)
