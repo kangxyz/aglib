@@ -42,7 +42,7 @@ jobs:
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         with:
           path: |
-            .lake
+            ./.lake
             ${{ runner.temp }}/lake-native-cache
           key: lean-Linux-X64-d791b020c21edcc7e9e22797f1d59fde59e8af8f675af62dc2f1fd7521bfef93-89d6106bc6c779e9737fee10c1c69f89008822de7c0ccaf47ee2412f3aae0bb2-1b737dca122694a54850316097a7ee87ddcbaead-41570180466-1-tests-1
           fail-on-cache-miss: true
