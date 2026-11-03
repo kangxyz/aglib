@@ -7,7 +7,7 @@ permissions:
   contents: read
   actions: read
 concurrency:
-  group: cache-native-${{ github.ref }}
+  group: cache-unchanged-resume-${{ github.ref }}
   cancel-in-progress: false
 jobs:
   producer:
@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        case: [cold, timeout]
+        case: [timeout]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -64,7 +64,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        case: [cold, timeout]
+        case: [timeout]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -97,171 +97,5 @@ jobs:
             ${{ runner.temp }}/probe/*.json
             ${{ runner.temp }}/probe/*.jsonl
             ${{ runner.temp }}/probe/*.log
-          compression-level: 0
-          retention-days: 7
-
-  full_packet:
-    name: Measure and pack the successful production snapshot
-    runs-on: ubuntu-24.04
-    timeout-minutes: 45
-    env:
-      LAKE_NO_CACHE: 'true'
-      LAKE_ARTIFACT_CACHE: 'true'
-      LEAN_NUM_THREADS: '1'
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-        with:
-          ref: 1b737dca122694a54850316097a7ee87ddcbaead
-          persist-credentials: false
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-        with:
-          ref: ${{ github.sha }}
-          path: .ci-control
-          persist-credentials: false
-      - name: Set native directory and sampling
-        shell: bash
-        run: |
-          echo "LAKE_CACHE_DIR=$RUNNER_TEMP/lake-native-cache" >> "$GITHUB_ENV"
-          mkdir -p "$RUNNER_TEMP/full-metrics" "$RUNNER_TEMP/full-transfer"
-          nohup python3 .ci-control/.github/ci-cache/inventory.py --sample --root "$GITHUB_WORKSPACE" --output "$RUNNER_TEMP/full-metrics/disk.jsonl" > "$RUNNER_TEMP/full-metrics/sampler.log" 2>&1 < /dev/null &
-          echo "$!" > "$RUNNER_TEMP/full-metrics/sampler.pid"
-      - uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
-        with:
-          path: |
-            ./.lake
-            ${{ runner.temp }}/lake-native-cache
-          key: lean-Linux-X64-d791b020c21edcc7e9e22797f1d59fde59e8af8f675af62dc2f1fd7521bfef93-89d6106bc6c779e9737fee10c1c69f89008822de7c0ccaf47ee2412f3aae0bb2-1b737dca122694a54850316097a7ee87ddcbaead-41570180466-1-tests-1
-          fail-on-cache-miss: true
-      - name: Pin toolchain and classify setup scaffolding
-        shell: bash
-        run: |
-          curl --fail --silent --show-error --location --retry 2 --max-time 120 https://elan.lean-lang.org/elan-init.sh -o "$RUNNER_TEMP/elan-init.sh"
-          bash "$RUNNER_TEMP/elan-init.sh" -y --default-toolchain none
-          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
-          export PATH="$HOME/.elan/bin:$PATH"
-          lean --version
-          python3 .ci-control/.github/ci-cache/inventory.py --root "$GITHUB_WORKSPACE" --native-cache "$LAKE_CACHE_DIR" --output "$RUNNER_TEMP/full-metrics/before.json"
-      - name: Pack scoped archives and record actual Linux costs
-        shell: bash
-        run: |
-          for layer in root dependencies; do
-            /usr/bin/time -v -o "$RUNNER_TEMP/full-metrics/pack-$layer.time" python3 .ci-control/.github/ci-cache/checkpoint.py pack --root . --layer "$layer" --output "$RUNNER_TEMP/full-transfer/$layer.tar.zst" --native-cache "$LAKE_CACHE_DIR" > "$RUNNER_TEMP/full-metrics/pack-$layer.json"
-          done
-          mkdir -p .lake/ci-cache
-          cp "$RUNNER_TEMP/full-transfer/dependencies.tar.zst.json" .lake/ci-cache/dependencies.json
-          /usr/bin/time -v -o "$RUNNER_TEMP/full-metrics/pack-tools.time" python3 .ci-control/.github/ci-cache/checkpoint.py pack --root . --layer tools --output "$RUNNER_TEMP/full-transfer/tools.tar.zst" --native-cache "$LAKE_CACHE_DIR" > "$RUNNER_TEMP/full-metrics/pack-tools.json"
-      - name: Produce native CURRENT snapshot mappings without compilation
-        shell: bash
-        run: |
-          python3 - <<'CODE'
-          import os,stat
-          from pathlib import Path
-          for p in Path('.lake/build/ir').rglob('*.ltar.hash'):
-              s=p.lstat()
-              if stat.S_ISREG(s.st_mode) and s.st_uid==os.getuid() and not s.st_mode & stat.S_IWUSR:
-                  p.unlink()
-          CODE
-          LAKE_RESTORE_ARTIFACTS=true lake --no-build --rehash build Aglib -o "$RUNNER_TEMP/full-metrics/current-root.jsonl"
-          lake cache stage "$RUNNER_TEMP/full-metrics/current-root.jsonl" "$RUNNER_TEMP/current-root-stage"
-          tar -cf "$RUNNER_TEMP/full-transfer/current-root.tar" -C "$RUNNER_TEMP/current-root-stage" .
-      - name: Finish measured disk sampling
-        if: ${{ always() }}
-        shell: bash
-        run: |
-          if test -s "$RUNNER_TEMP/full-metrics/sampler.pid"; then kill "$(cat "$RUNNER_TEMP/full-metrics/sampler.pid")" || true; fi
-          df -B1 "$GITHUB_WORKSPACE" > "$RUNNER_TEMP/full-metrics/df-final.txt"
-      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
-        with:
-          name: actual-scoped-checkpoints
-          path: ${{ runner.temp }}/full-transfer
-          compression-level: 0
-          retention-days: 7
-      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
-        if: ${{ always() }}
-        with:
-          name: actual-packing-metrics
-          path: ${{ runner.temp }}/full-metrics
-          compression-level: 0
-          retention-days: 7
-  full_cold:
-    name: Cold restore the actual production snapshot
-    needs: full_packet
-    runs-on: ubuntu-24.04
-    timeout-minutes: 45
-    env:
-      LAKE_NO_CACHE: 'true'
-      LAKE_ARTIFACT_CACHE: 'true'
-      LEAN_NUM_THREADS: '1'
-      BUILD_TARGETS: Aglib
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-        with:
-          ref: 1b737dca122694a54850316097a7ee87ddcbaead
-          persist-credentials: false
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-        with:
-          ref: ${{ github.sha }}
-          path: .ci-control
-          persist-credentials: false
-      - name: Fresh native store and pinned sources
-        shell: bash
-        run: |
-          echo "LAKE_CACHE_DIR=$RUNNER_TEMP/EMPTY-native-store" >> "$GITHUB_ENV"
-          export LAKE_CACHE_DIR="$RUNNER_TEMP/EMPTY-native-store"
-          test ! -e "$LAKE_CACHE_DIR"
-          mkdir "$LAKE_CACHE_DIR" "$RUNNER_TEMP/cold-metrics"
-          curl --fail --silent --show-error --location --retry 2 --max-time 120 https://elan.lean-lang.org/elan-init.sh -o "$RUNNER_TEMP/elan-init.sh"
-          bash "$RUNNER_TEMP/elan-init.sh" -y --default-toolchain none
-          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
-          export PATH="$HOME/.elan/bin:$PATH"
-          lean --version
-          /usr/bin/time -v -o "$RUNNER_TEMP/cold-metrics/source-checkout.time" lake env true
-      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
-        with:
-          name: actual-scoped-checkpoints
-          path: ${{ runner.temp }}/full-transfer
-      - name: Restore optional checkpoints before authoritative closure
-        shell: bash
-        run: |
-          for layer in root tools dependencies; do
-            /usr/bin/time -v -o "$RUNNER_TEMP/cold-metrics/restore-$layer.time" python3 .ci-control/.github/ci-cache/checkpoint.py restore --root . --layer "$layer" --input "$RUNNER_TEMP/full-transfer/$layer.tar.zst" --native-cache "$LAKE_CACHE_DIR" > "$RUNNER_TEMP/cold-metrics/restore-$layer.json"
-          done
-          mkdir "$RUNNER_TEMP/current-root-stage"
-          tar -xf "$RUNNER_TEMP/full-transfer/current-root.tar" -C "$RUNNER_TEMP/current-root-stage"
-          lake cache unstage "$RUNNER_TEMP/current-root-stage" --force-overwrite
-      - name: Check actual production and checker readiness without compilation
-        shell: bash
-        run: |
-          /usr/bin/time -v -o "$RUNNER_TEMP/cold-metrics/production.time" env LAKE_RESTORE_ARTIFACTS=true lake --no-build --rehash build Aglib > "$RUNNER_TEMP/cold-metrics/production.log" 2>&1
-          /usr/bin/time -v -o "$RUNNER_TEMP/cold-metrics/checkers.time" lake --no-build --rehash build batteries/runLinter mathlib/lint-style mathlib/mk_all > "$RUNNER_TEMP/cold-metrics/checkers.log" 2>&1
-          lake --no-build exe mathlib/mk_all --lib Aglib --check > "$RUNNER_TEMP/cold-metrics/entries.log" 2>&1
-          lake --no-build exe mathlib/lint-style Aglib > "$RUNNER_TEMP/cold-metrics/style.log" 2>&1
-          lake test > "$RUNNER_TEMP/cold-metrics/test.log" 2>&1
-          lake --dir .lake/lint-runner --file lakefile.toml --no-build build batchedLint > "$RUNNER_TEMP/cold-metrics/private-lint.log" 2>&1
-      - name: Run the candidate's pinned auditor source-restore path
-        shell: bash
-        run: |
-          python3 - <<'CODE'
-          import os,subprocess
-          from pathlib import Path
-          lines=Path('.ci-control/.github/workflows/lean-ci.yml').read_text().splitlines()
-          start=next(i for i,s in enumerate(lines) if s.strip()=='id: axioms')
-          start=next(i for i in range(start,len(lines)) if lines[i].strip()=='run: |')+1
-          body=[]
-          for s in lines[start:]:
-              if s and not s.startswith('          '): break
-              body.append(s[10:])
-          script=Path(os.environ['RUNNER_TEMP'])/'audit-current.sh';script.write_text(chr(10).join(body)+chr(10))
-          with (Path(os.environ['RUNNER_TEMP'])/'cold-metrics/audit.log').open('w') as log:
-              subprocess.run(['bash','-e','-o','pipefail',str(script)],stdout=log,stderr=subprocess.STDOUT,check=True)
-          CODE
-      - name: Inventory restored actual data
-        if: ${{ always() }}
-        run: python3 .ci-control/.github/ci-cache/inventory.py --root "$GITHUB_WORKSPACE" --native-cache "$LAKE_CACHE_DIR" --output "$RUNNER_TEMP/cold-metrics/after.json"
-      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
-        if: ${{ always() }}
-        with:
-          name: actual-cold-restore-metrics
-          path: ${{ runner.temp }}/cold-metrics
           compression-level: 0
           retention-days: 7

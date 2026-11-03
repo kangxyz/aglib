@@ -173,12 +173,22 @@ class Probe:
 
     def slow(self):
         self.write('Native/Slow.lean', 'module\npublic import Native.Good\nmeta import Lean.Elab.Command\n'
-            'run_cmd do\n  IO.FS.writeFile "slow-started" "started"\n  IO.sleep 60000\n'
+            'run_cmd do\n  IO.FS.writeFile "slow-started" "started"\n  IO.sleep 5000\n'
             'public def slowValue : Nat := 11\n')
         self.write('Native.lean', 'module\npublic import Native.Slow\n')
 
+    def source_hashes(self):
+        return {str(p.relative_to(self.root)): digest(p) for p in self.root.rglob('*')
+                if p.is_file() and (p.suffix == '.lean' or p.name in
+                    ('lakefile.toml', 'lean-toolchain', 'lake-manifest.json'))
+                and ('.lake' not in p.relative_to(self.root).parts or
+                     p.is_relative_to(self.root / '.lake/packages/dep') and
+                     '.lake' not in p.relative_to(self.root / '.lake/packages/dep').parts)}
+
     def timeout_produce(self):
         self.slow()
+        sources = self.source_hashes()
+        (self.transfer / 'timeout-source-hashes.json').write_text(json.dumps(sources, sort_keys=True) + '\n')
         marker = self.root / 'slow-started'
         log = self.work / 'interrupted-build.log'
         mapping = self.work / 'interrupted.jsonl'
@@ -205,10 +215,18 @@ class Probe:
         self.checkpoint('pack', 'dependencies')
         self.run('salvage-is-not-pass', ['--no-build', '--rehash', 'build', '+Native',
             '-o', str(self.work / 'salvaged.jsonl')], expected=3)
+        if sources != self.source_hashes():
+            raise RuntimeError('timeout producer changed source/configuration')
+        self.rows.append({'label': 'timeout-source-identity', 'hashes': sources,
+                          'unchanged': True}); self.save()
         shutil.copyfile(self.work / 'evidence.json', self.transfer / 'timeout-producer-evidence.json')
 
     def timeout_resume(self):
         self.slow()
+        sources = self.source_hashes()
+        expected = json.loads((self.transfer / 'timeout-source-hashes.json').read_text())
+        if sources != expected:
+            raise RuntimeError('resume source/configuration differs from interrupted producer')
         self.checkpoint('restore', 'root')
         self.checkpoint('restore', 'dependencies')
         self.no_restored_setup()
@@ -216,9 +234,8 @@ class Probe:
                  self.root / '.lake/packages/dep/.lake/build/lib/lean/Dep.olean']
         before = [digest(p) for p in paths]
         self.run('completed-scopes-ready', ['--no-build', '--rehash', 'build', '+Native.Good'])
-        # Retain the exact completed-source bytes, repair only unfinished Slow.
-        text = (self.root / 'Native/Slow.lean').read_text().replace('  IO.sleep 60000\n', '')
-        self.write('Native/Slow.lean', text)
+        # Resume the exact same source; the unfinished five-second computation
+        # completes normally. No proof, configuration or generated-entry repair.
         output = self.run('resume-only-unfinished', ['build', '--rehash', '+Native'])
         if 'Built Native.Good ' in output or 'Built Dep ' in output:
             raise RuntimeError('resume recompiled completed root/dependency work')
@@ -226,6 +243,10 @@ class Probe:
             raise RuntimeError('resume changed completed compiled bytes')
         if not (self.root / '.lake/build/ir/Native/Slow.setup.json').is_file():
             raise RuntimeError('unfinished module did not regenerate its setup input')
+        if sources != self.source_hashes():
+            raise RuntimeError('resume changed source/configuration')
+        self.rows.append({'label': 'unchanged-producer-resume-source-identity',
+                          'hashes': sources, 'unchanged': True}); self.save()
 
 
 def main():
