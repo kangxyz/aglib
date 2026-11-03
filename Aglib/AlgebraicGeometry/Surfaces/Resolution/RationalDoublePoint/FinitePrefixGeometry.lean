@@ -83,7 +83,7 @@ theorem singularPrefix_normal_and_dimensions (hX : NormalStalks X)
       exact Eq.mp (congrArg (fun a : SingularPrefix X x n =>
         ringKrullDim ((scheme a).presheaf.stalk (point a)) = 2) (truncate_refl q))
         (hdq n (Nat.le_refl n))
-    let c := pointBlowupChain_toBase hclosed q (fun m hm => hdq m hm.le)
+    let c := pointBlowupChainToBase hclosed q (fun m hm => hdq m hm.le)
     obtain ⟨hN, _, hR⟩ := singular_stalk_after_pointChain A hA hdA hRat f hff
       (toBase q) c hNq (point q) (point_eligible hx q)
     have hB : NormalStalks (datum q).Y :=
@@ -96,7 +96,7 @@ theorem singularPrefix_normal_and_dimensions (hX : NormalStalks X)
       have hmn : m ≤ n := Nat.le_of_lt_succ hm
       rw [truncate_succ hmn]
       exact hdq m hmn
-    let cp := pointBlowupChain_toBase hclosed p hanc
+    let cp := pointBlowupChainToBase hclosed p hanc
     have hdimP := (singular_stalk_after_pointChain A hA hdA hRat f hff
       (toBase p) cp hB (point p) (point_eligible hx p)).2.1
     refine ⟨hB, fun m hm => ?_⟩
@@ -120,7 +120,7 @@ theorem finite_singularSet_datum_of_rational_model (hX : NormalStalks X)
     exact Eq.mp (congrArg (fun a : SingularPrefix X x n =>
       ringKrullDim ((scheme a).presheaf.stalk (point a)) = 2) (truncate_refl p))
       (hdp n (Nat.le_refl n))
-  let c := pointBlowupChain_toBase hclosed p (fun m hm => hdp m hm.le)
+  let c := pointBlowupChainToBase hclosed p (fun m hm => hdp m hm.le)
   obtain ⟨hN, _, hR⟩ := singular_stalk_after_pointChain A hA hdA hRat f hff
     (toBase p) c hNp (point p) (point_eligible hx p)
   have hB : NormalStalks (datum p).Y :=

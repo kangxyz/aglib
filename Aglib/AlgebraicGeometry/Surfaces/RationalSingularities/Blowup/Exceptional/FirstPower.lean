@@ -31,6 +31,7 @@ namespace AlgebraicGeometry.Scheme.RationalSingularities.MaximalIdealBlowup
 variable (A : Type u) [CommRing A] [IsLocalRing A]
   [IsDomain A] [IsNoetherianRing A] [IsIntegrallyClosed A]
 
+/-- The field structure on the original maximal-ideal quotient. -/
 local instance exceptionalFirstPowerField : Field (A ⧸ maximalIdeal A) :=
   Ideal.Quotient.field (maximalIdeal A)
 

@@ -337,7 +337,7 @@ private theorem mapExterior_algebra_congr
 
 /-- The smaller chart retains the original coefficient map, not a selected algebra. -/
 theorem affinePrincipalCoefficient_eq (a : X ⟶ Spec Λ)
-    (j : Spec R ⟶ X) [IsOpenImmersion j] (t : R) :
+    (j : Spec R ⟶ X) (t : R) :
     Spec.preimage ((principalOpen R t ≫ j) ≫ a) =
       Spec.preimage (j ≫ a) ≫
         CommRingCat.ofHom (algebraMap R (Localization.Away t)) :=

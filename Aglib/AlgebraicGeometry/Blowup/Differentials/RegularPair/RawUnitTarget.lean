@@ -64,12 +64,12 @@ local notation "Q" => Subtype.val
 set_option backward.isDefEq.respectTransparency false in
 set_option backward.isDefEq.respectTransparency.types false in
 /-- The same original local raw map satisfies the intrinsic global coefficient/unit equation. -/
-theorem saturatedPair_onePoleRawTargetMap_unit :
+theorem saturatedPairOnePoleRawTargetMap_unit :
     let f : Spec (.of S) ⟶ canonicalBlowup I := chartMap B (firstGenerator I x y rfl)
-    let e := saturatedPair_chartBasePullbackIso R x y
+    let e := saturatedPairChartBasePullbackIso R x y
     e.hom.app M ≫ rawFormsPullback (Spec.map α) (Spec.map σ) n ≫
-        saturatedPair_onePoleRawTargetMap Λ R K x y hx hy n L φ =
-      (pullback f).map (pairIdeal_onePoleUnitMap Λ R I n L φ) := by
+        saturatedPairOnePoleRawTargetMap Λ R K x y hx hy n L φ =
+      (pullback f).map (pairIdealOnePoleUnitMap Λ R I n L φ) := by
   intro f e
   let s : SheafOfModules.unit (canonicalBlowup I).ringCatSheaf ⟶ Q :=
     cartierDualIdealSection (centreι B)
@@ -78,18 +78,18 @@ theorem saturatedPair_onePoleRawTargetMap_unit :
   let U := Invertible.pullbackLineBundle (Spec.map σ) L
   let t : (pullback f).obj (Invertible.tensorLineBundle (canonicalBlowup I) P N).val ≅
       (Invertible.tensorLineBundle (Spec (.of S)) U
-        (Invertible.pullbackLineBundle f N)).val := saturatedPair_onePoleTargetIso R x y L
-  have hr : saturatedPair_onePoleRawTargetMap Λ R K x y hx hy n L φ ≫ t.hom =
-      saturatedPair_onePoleRawMap Λ R K x y hx hy n L φ :=
-    recover_target (saturatedPair_onePoleRawMap Λ R K x y hx hy n L φ) t
+        (Invertible.pullbackLineBundle f N)).val := saturatedPairOnePoleTargetIso R x y L
+  have hr : saturatedPairOnePoleRawTargetMap Λ R K x y hx hy n L φ ≫ t.hom =
+      saturatedPairOnePoleRawMap Λ R K x y hx hy n L φ :=
+    recover_target (saturatedPairOnePoleRawMap Λ R K x y hx hy n L φ) t
   have hp := positiveSection_composedCoefficient_transport f (blowdown I) (Spec.map σ)
     (pairIdeal_chartBase_triangle R I x y rfl) L N M φ s
-  have ht := saturatedPair_onePoleTargetIso_hom R x y L
+  have ht := saturatedPairOnePoleTargetIso_hom R x y L
   have hn := e.hom.naturality φ
-  have hu := saturatedPair_onePoleRawMap_unit Λ R K x y hx hy n L φ
+  have hu := saturatedPairOnePoleRawMap_unit Λ R K x y hx hy n L φ
   apply (Iso.cancel_iso_hom_right _ _ t).mp
   simp only [Category.assoc, hr]
-  have hp' : (pullback f).map (pairIdeal_onePoleUnitMap Λ R I n L φ) ≫ t.hom =
+  have hp' : (pullback f).map (pairIdealOnePoleUnitMap Λ R I n L φ) ≫ t.hom =
       (pullback f).map ((pullback (blowdown I)).map φ) ≫ e.hom.app L.val ≫
         (positiveCartierTensorSection (Spec (.of S)) ((pullback f).obj Q)
           ((pullbackUnitIso f).inv ≫ (pullback f).map s)).app
@@ -97,8 +97,8 @@ theorem saturatedPair_onePoleRawTargetMap_unit :
         (tensorSheafBraiding (Spec (.of S)) ((pullback f).obj Q)
           ((pullback (Spec.map σ)).obj L.val)).hom := by
     have hcongr := congrArg (fun z =>
-      (pullback f).map (pairIdeal_onePoleUnitMap Λ R I n L φ) ≫ z) ht
-    dsimp only [f, e, s, P, N, U, t, pairIdeal_onePoleUnitMap,
+      (pullback f).map (pairIdealOnePoleUnitMap Λ R I n L φ) ≫ z) ht
+    dsimp only [f, e, s, P, N, U, t, pairIdealOnePoleUnitMap,
       AlgebraicGeometry.Scheme.Modules, inferInstance, Invertible.tensorLineBundle,
       Invertible.pullbackLineBundle, Subtype.val] at hp hcongr ⊢
     exact hcongr.trans hp

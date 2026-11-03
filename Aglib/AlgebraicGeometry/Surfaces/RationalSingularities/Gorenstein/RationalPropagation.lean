@@ -28,9 +28,11 @@ universe u
 
 namespace AlgebraicGeometry.Scheme.RationalSingularities
 
+/-- The standard derived-category instance for the original scheme module sheaves. -/
 local instance rationalPropagationSource (X : Scheme.{u}) :
     HasDerivedCategory.{u + 1} X.Modules := HasDerivedCategory.standard _
 
+/-- The standard derived-category instance for modules over the original coefficient ring. -/
 local instance rationalPropagationTarget (R : Type u) [CommRing R] :
     HasDerivedCategory.{u + 1} (ModuleCat.{u} R) := HasDerivedCategory.standard _
 

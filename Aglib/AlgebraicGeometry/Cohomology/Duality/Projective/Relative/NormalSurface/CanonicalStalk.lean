@@ -33,7 +33,7 @@ attribute [local instance] ClosedImmersionAffineQuotientChart.isOpenImmersion
 ambient-stalk Ext in the embedding degree. The original ambient coefficient is
 retained. The finite map here is the quotient chart, not the initial base map. -/
 def normalSurfaceCanonicalQuotientStalkExtLinearEquiv
-    (R : Type u) [CommRing R] [IsNoetherianRing R] (ι : Type u)
+    (R : Type u) [CommRing R] (ι : Type u)
     {X : Scheme.{u}} (i : X ⟶ ProjectiveSpace R ι) [IsClosedImmersion i]
     (n : ℕ) (e : ι ≃ Fin (n + 1))
     (A : CommRingCat.{u}) [IsNoetherianRing A]
@@ -68,7 +68,7 @@ def normalSurfaceCanonicalQuotientStalkExtLinearEquiv
 only through the actual open-stalk ring isomorphism, is the same ambient Ext.
 No finiteness of the original regular base map to this stalk is assumed. -/
 def normalSurfaceCanonicalOriginalStalkExtLinearEquiv
-    (R : Type u) [CommRing R] [IsNoetherianRing R] (ι : Type u)
+    (R : Type u) [CommRing R] (ι : Type u)
     {X : Scheme.{u}} (i : X ⟶ ProjectiveSpace R ι) [IsClosedImmersion i]
     (n : ℕ) (e : ι ≃ Fin (n + 1))
     (A : CommRingCat.{u}) [IsNoetherianRing A]

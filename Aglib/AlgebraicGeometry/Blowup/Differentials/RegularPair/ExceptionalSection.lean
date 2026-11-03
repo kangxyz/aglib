@@ -68,7 +68,7 @@ local notation "a" => firstGenerator I x y rfl
 local notation "c" => chartMap B a
 
 private theorem exceptionalPositiveFrame_inv_eq :
-    (saturatedPair_exceptionalPositiveFrame R x y).inv =
+    (saturatedPairExceptionalPositiveFrame R x y).inv =
       (dualPullbackFrame c (centreIdealLine I) (chartFrame B a)).inv := rfl
 
 private theorem exceptionalScalar_eq :
@@ -84,7 +84,7 @@ theorem saturatedPair_exceptionalPositiveSection_coordinate :
         (dualLineBundle (canonicalBlowup I) (centreIdealLine I)).val :=
       cartierDualIdealSection (centreι B)
     ((pullbackUnitIso f).inv ≫ (pullback f).map s) ≫
-      (saturatedPair_exceptionalPositiveFrame R x y).inv =
+      (saturatedPairExceptionalPositiveFrame R x y).inv =
     affineMultiplication S (algebraMap R S x) := by
   intro f s
   let e : SheafOfModules.unit (Spec (.of S)).ringCatSheaf ≅
@@ -104,11 +104,11 @@ theorem saturatedPair_exceptionalPositiveSection_frame :
       cartierDualIdealSection (centreι B)
     (pullbackUnitIso f).inv ≫ (pullback f).map s =
       affineMultiplication S (algebraMap R S x) ≫
-        (saturatedPair_exceptionalPositiveFrame R x y).hom := by
+        (saturatedPairExceptionalPositiveFrame R x y).hom := by
   intro f s
   let t := (pullbackUnitIso f).inv ≫
     (pullback f).map s
-  let e := saturatedPair_exceptionalPositiveFrame R x y
+  let e := saturatedPairExceptionalPositiveFrame R x y
   have hs : (t ≫ e.inv) ≫ e.hom = t :=
     (Category.assoc t e.inv e.hom).trans
       ((congrArg (fun q => t ≫ q) e.inv_hom_id).trans (Category.comp_id t))

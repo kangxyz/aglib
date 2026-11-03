@@ -69,7 +69,7 @@ every original local-blowup point. The original global support is transported
 through the native scalar-extension unit and geometric pullback-stalk iso. -/
 theorem localizedCanonical_mem_support
     (R : Type u) [CommRing R] [IsDomain R] [IsRegularLocalRing R]
-    (P : Scheme.{u}) [IsIntegral P] (x : P) (hx : IsClosed ({x} : Set P))
+    (P : Scheme.{u}) (x : P) (hx : IsClosed ({x} : Set P))
     [IsIntegral (pointBlowup P x)]
     (hdS : ringKrullDim (P.presheaf.stalk x) = 2)
     (ι : Type u) (j : pointBlowup P x ⟶ ProjectiveSpace R ι)

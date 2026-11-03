@@ -38,6 +38,7 @@ namespace AlgebraicGeometry.Scheme.Cohomology
 
 attribute [local instance] RingHomInvPair.of_ringEquiv
 
+/-- The standard derived-category instance for modules over the original coefficient ring. -/
 local instance canonicalStalkGorensteinDerived (B : Type u) [CommRing B] :
     HasDerivedCategory.{u + 1} (ModuleCat.{u} B) := HasDerivedCategory.standard _
 

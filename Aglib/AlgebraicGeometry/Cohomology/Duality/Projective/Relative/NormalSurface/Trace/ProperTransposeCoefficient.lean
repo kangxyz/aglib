@@ -29,6 +29,7 @@ universe u
 namespace AlgebraicGeometry.Scheme.Cohomology
 
 attribute [local instance] AlgebraicGeometry.Scheme.Modules.standardHasDerivedCategory
+/-- The standard derived-category instance for modules over the original coefficient ring. -/
 local instance properTransposeCoefficientModuleDerived (R : Type u) [CommRing R] :
     HasDerivedCategory.{u + 1} (ModuleCat.{u} R) := HasDerivedCategory.standard _
 

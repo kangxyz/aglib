@@ -28,6 +28,7 @@ universe u
 
 namespace AlgebraicGeometry.Scheme.Cohomology
 
+/-- The standard derived-category instance for the original scheme module sheaves. -/
 local instance supportedStructureDerived (X : Scheme.{u}) :
     HasDerivedCategory.{u + 1} X.Modules := HasDerivedCategory.standard _
 

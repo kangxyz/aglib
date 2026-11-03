@@ -32,8 +32,8 @@ The principal-open corollary identifies the actual normalization section
 map as localization, using its original affine preimage and the existing
 native `IsAffineOpen.isLocalization_basicOpen`. Combined with the preceding
 whole restriction square, it is the same closure localization, not a new
-construction. The localization assertion itself allows empty principal
-opens and makes no domain assertion about their zero section ring; the
+construction. The localization assertion itself allows empty `U` and empty
+principal opens, and makes no domain assertion about their zero section ring; the
 field-valued equivalences still require nonempty opens.
 
 No finite field extension, Nagata, normality of `X`, Noetherianity, surface,

@@ -171,7 +171,6 @@ theorem exceptionalStructuralH0_bijective
     (hd : ringKrullDim A = 2) (hA : IsNagataRing.{u, 0} A)
     (hRat : NormalModificationH1Vanishing A) (ι : Type u)
     (j : exceptionalCurve A hd ⟶ ProjectiveSpace (A ⧸ IsLocalRing.maximalIdeal A) ι)
-    [IsClosedImmersion j]
     (hj : j ≫ toSpec (A ⧸ IsLocalRing.maximalIdeal A) ι = exceptionalStructureMap A hd) :
     Function.Bijective (cmCurveSerreStructuralH0Map (A ⧸ IsLocalRing.maximalIdeal A) ι j) := by
   let E := exceptionalCurve A hd

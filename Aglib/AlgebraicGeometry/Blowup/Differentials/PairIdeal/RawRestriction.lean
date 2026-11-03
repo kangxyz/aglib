@@ -43,24 +43,24 @@ local notation "M" => moduleExteriorPower Y (relativeDifferentialSheaf (blowdown
 local notation "T" => centreTwistedPullbackLine I L
 
 /-- The original raw chart map now has a common original global source and target. -/
-def pairIdeal_onePoleRawRestrictionMap :
+def pairIdealOnePoleRawRestrictionMap :
     let f : Spec (.of S) ⟶ Y := chartMap B (firstGenerator I x y hI)
     let _ : IsOpenImmersion f := pairIdeal_chart_isOpenImmersion R I x y hI
     (Scheme.Modules.restrictFunctor f).obj M ⟶ (Scheme.Modules.restrictFunctor f).obj (T).val := by
   intro f hf
   let g : (Scheme.Modules.restrictFunctor f).obj M ⟶ (pullback f).obj (T).val :=
-    (pairIdeal_rawSourceIso Λ R I x y hI n).hom ≫
-      pairIdeal_onePoleRawTargetMap Λ R K I x y hI hx hy n L φ
+    (pairIdealRawSourceIso Λ R I x y hI n).hom ≫
+      pairIdealOnePoleRawTargetMap Λ R K I x y hI hx hy n L φ
   exact g ≫ (Scheme.Modules.restrictFunctorIsoPullback f).inv.app (T).val
 
 /-- The original raw restriction map is its original source/target composite followed by
  the inverse component of the same restriction/pullback comparison. -/
-theorem pairIdeal_onePoleRawRestrictionMap_eq :
+theorem pairIdealOnePoleRawRestrictionMap_eq :
     let f : Spec (.of S) ⟶ Y := chartMap B (firstGenerator I x y hI)
     let _ : IsOpenImmersion f := pairIdeal_chart_isOpenImmersion R I x y hI
-    pairIdeal_onePoleRawRestrictionMap Λ R K I x y hI hx hy n L φ =
-      ((pairIdeal_rawSourceIso Λ R I x y hI n).hom ≫
-        pairIdeal_onePoleRawTargetMap Λ R K I x y hI hx hy n L φ) ≫
+    pairIdealOnePoleRawRestrictionMap Λ R K I x y hI hx hy n L φ =
+      ((pairIdealRawSourceIso Λ R I x y hI n).hom ≫
+        pairIdealOnePoleRawTargetMap Λ R K I x y hI hx hy n L φ) ≫
         (Scheme.Modules.restrictFunctorIsoPullback f).inv.app (T).val := by
   intro f hf
   rfl

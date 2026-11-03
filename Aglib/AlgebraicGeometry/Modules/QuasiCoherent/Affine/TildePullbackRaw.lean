@@ -26,19 +26,19 @@ namespace AlgebraicGeometry.Scheme.Modules
 variable {R S T : CommRingCat.{u}}
 
 /-- The original tilde pullback hom with the literal raw scalar action as target. -/
-def tildePullbackHom_ringHom (f : R →+* S) :
+def tildePullbackHomRingHom (f : R →+* S) :
     tilde.functor R ⋙ pullback (Spec.map (CommRingCat.ofHom f : R ⟶ S)) ⟶
       ModuleCat.extendScalars f ⋙ tilde.functor S :=
   (tildePullbackIso (R := R) (S := S) (CommRingCat.ofHom f)).hom
 
 /-- The raw action view is the same native iso hom, not a new comparison. -/
-theorem tildePullbackHom_ringHom_eq (f : R →+* S) :
-    tildePullbackHom_ringHom (R := R) (S := S) f =
+theorem tildePullbackHomRingHom_eq (f : R →+* S) :
+    tildePullbackHomRingHom (R := R) (S := S) f =
       (tildePullbackIso (R := R) (S := S) (CommRingCat.ofHom f)).hom := by
   rfl
 
 /-- The complete original natural law with the same raw-view data. -/
-theorem tildePullbackHom_ringHom_comp (f : R →+* S) (g : S →+* T)
+theorem tildePullbackHomRingHom_comp (f : R →+* S) (g : S →+* T)
     (h : Spec.map (CommRingCat.ofHom (g.comp f) : R ⟶ T) =
       Spec.map (CommRingCat.ofHom g : S ⟶ T) ≫ Spec.map (CommRingCat.ofHom f : R ⟶ S)) :
     let φ : R ⟶ S := CommRingCat.ofHom f
@@ -46,17 +46,17 @@ theorem tildePullbackHom_ringHom_comp (f : R →+* S) (g : S →+* T)
     whiskerLeft (tilde.functor R) ((pullbackCongr h).hom ≫
         (pullbackComp (Spec.map ψ) (Spec.map φ)).inv) ≫
       (associator _ _ _).inv ≫
-        whiskerRight (tildePullbackHom_ringHom (R := R) (S := S) f) (pullback (Spec.map ψ)) ≫
+        whiskerRight (tildePullbackHomRingHom (R := R) (S := S) f) (pullback (Spec.map ψ)) ≫
       (associator _ _ _).hom ≫
-        whiskerLeft (ModuleCat.extendScalars f) (tildePullbackHom_ringHom (R := S) (S := T) g) =
-    (tildePullbackHom_ringHom (R := R) (S := T) (g.comp f)) ≫
+        whiskerLeft (ModuleCat.extendScalars f) (tildePullbackHomRingHom (R := S) (S := T) g) =
+    (tildePullbackHomRingHom (R := R) (S := T) (g.comp f)) ≫
       whiskerRight (ModuleCat.extendScalarsComp f g).hom (tilde.functor T) ≫
       (associator _ _ _).hom := by
-  simpa only [tildePullbackHom_ringHom_eq, CommRingCat.hom_ofHom] using
+  simpa only [tildePullbackHomRingHom_eq, CommRingCat.hom_ofHom] using
     (tildePullbackIso_ringHom_comp_hom_of_triangle (R := R) (S := S) (T := T) f g h)
 
 /-- The original component law transported through the same three raw-view identities. -/
-theorem tildePullbackHom_ringHom_comp_app (f : R →+* S) (g : S →+* T)
+theorem tildePullbackHomRingHom_comp_app (f : R →+* S) (g : S →+* T)
     (h : Spec.map (CommRingCat.ofHom (g.comp f) : R ⟶ T) =
       Spec.map (CommRingCat.ofHom g : S ⟶ T) ≫ Spec.map (CommRingCat.ofHom f : R ⟶ S))
     (N : ModuleCat.{u} R) :
@@ -72,12 +72,12 @@ theorem tildePullbackHom_ringHom_comp_app (f : R →+* S) (g : S →+* T)
           (f := Spec.map χ) (g := Spec.map ψ ≫ Spec.map φ) h).hom.app
           ((tilde.functor R).obj N) ≫
         (pullbackComp (Spec.map ψ) (Spec.map φ)).inv.app ((tilde.functor R).obj N) ≫
-        (pullback (Spec.map ψ)).map ((tildePullbackHom_ringHom (R := R) (S := S) f).app N) ≫
-        (tildePullbackHom_ringHom (R := S) (S := T) g).app
+        (pullback (Spec.map ψ)).map ((tildePullbackHomRingHom (R := R) (S := S) f).app N) ≫
+        (tildePullbackHomRingHom (R := S) (S := T) g).app
           ((ModuleCat.extendScalars f).obj N))
-      ((tildePullbackHom_ringHom (R := R) (S := T) (g.comp f)).app N ≫
+      ((tildePullbackHomRingHom (R := R) (S := T) (g.comp f)).app N ≫
         (tilde.functor T).map ((ModuleCat.extendScalarsComp f g).hom.app N)) := by
-  simpa only [tildePullbackHom_ringHom_eq] using
+  simpa only [tildePullbackHomRingHom_eq] using
     (tildePullbackIso_ringHom_comp_hom_app (R := R) (S := S) (T := T) f g h N)
 
 end AlgebraicGeometry.Scheme.Modules

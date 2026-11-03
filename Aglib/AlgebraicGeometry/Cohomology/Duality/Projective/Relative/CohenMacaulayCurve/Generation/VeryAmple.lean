@@ -194,7 +194,7 @@ open AlgebraicGeometry.ProjectiveSpace AlgebraicGeometry.Scheme.Modules
 /-- The original ordered projective differential coefficient under scalar
 extension. The same ordered determinant comparison is used on both sides;
 no basis or trivialization of the coefficient module is chosen. -/
-def cmCurveCoefficientAmbient_baseChangeIso
+def cmCurveCoefficientAmbientBaseChangeIso
     {R S : Type u} [Field R] [Field S] (σ : R →+* S)
     (ι : Type u) (n : ℕ) (e : ι ≃ Fin (n + 1)) (V : ModuleCat.{u} R) :
     (Scheme.Modules.pullback (ProjectiveSpace.map σ ι)).obj

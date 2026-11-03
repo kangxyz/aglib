@@ -107,11 +107,11 @@ private theorem existsUnique_pointRawMap_of_affinePair
   let q := Blowup.PointCover.localMap p B V
   let rChart : (Scheme.Modules.restrictFunctor q).obj MY ⟶
       (Scheme.Modules.restrictFunctor q).obj (TY).val :=
-    pairIdeal_rawOpenRestriction Λ Γ(X, V) K I x y hI hx hy hproper
+    pairIdealRawOpenRestriction Λ Γ(X, V) K I x y hI hx hy hproper
       X p hp a V.2.fromSpec ha hcentre n L φ
   have hChart : (Scheme.Modules.restrictFunctor q).map βraw ≫ rChart =
       (Scheme.Modules.restrictFunctor q).map t :=
-    pairIdeal_rawOpenRestriction_unit Λ Γ(X, V) K I x y hI hx hy hproper
+    pairIdealRawOpenRestriction_unit Λ Γ(X, V) K I x y hI hx hy hproper
       X p hp a V.2.fromSpec ha hcentre n L φ
   let Z := Blowup.PointCover.component p B V
   let c := Blowup.PointCover.componentMap p B V
@@ -195,31 +195,31 @@ theorem modelPoint_existsUnique_onePoleRawMap :
     hproperI K hTower
 
 /-- The same unique raw map, selected without any additional compatibility hypothesis. -/
-def modelPoint_onePoleRawMap : MY ⟶ (TY).val :=
+def modelPointOnePoleRawMap : MY ⟶ (TY).val :=
   (modelPoint_existsUnique_onePoleRawMap ρ β K hβ p hp hd n L φ).exists.choose
 
 /-- The selected raw map has the proved original exceptional-unit equation. -/
-theorem modelPoint_onePoleRawMap_unit :
-    rawFormsPullback a b n ≫ modelPoint_onePoleRawMap ρ β K hβ p hp hd n L φ = t :=
+theorem modelPointOnePoleRawMap_unit :
+    rawFormsPullback a b n ≫ modelPointOnePoleRawMap ρ β K hβ p hp hd n L φ = t :=
   (modelPoint_existsUnique_onePoleRawMap ρ β K hβ p hp hd n L φ).exists.choose_spec
 
 /-- Extend this raw map once to the actual bidual and the actual tensor line. -/
-def modelPoint_onePoleMap : dualSheaf Y (dualSheaf Y MY) ⟶ (TY).val :=
-  extendToBidualLine Y TY (modelPoint_onePoleRawMap ρ β K hβ p hp hd n L φ)
+def modelPointOnePoleMap : dualSheaf Y (dualSheaf Y MY) ⟶ (TY).val :=
+  extendToBidualLine Y TY (modelPointOnePoleRawMap ρ β K hβ p hp hd n L φ)
 
 /-- Original forward evaluation recovers the same raw map. -/
-theorem modelPoint_onePoleMap_evaluation :
-    bidualMap Y MY ≫ modelPoint_onePoleMap ρ β K hβ p hp hd n L φ =
-      modelPoint_onePoleRawMap ρ β K hβ p hp hd n L φ :=
-  extendToBidualLine_evaluation Y TY (modelPoint_onePoleRawMap ρ β K hβ p hp hd n L φ)
+theorem modelPointOnePoleMap_evaluation :
+    bidualMap Y MY ≫ modelPointOnePoleMap ρ β K hβ p hp hd n L φ =
+      modelPointOnePoleRawMap ρ β K hβ p hp hd n L φ :=
+  extendToBidualLine_evaluation Y TY (modelPointOnePoleRawMap ρ β K hβ p hp hd n L φ)
 
 /-- The single original bidual extension retains the original global unit equation. -/
-theorem modelPoint_onePoleMap_unit :
+theorem modelPointOnePoleMap_unit :
     rawFormsPullback a b n ≫ bidualMap Y MY ≫
-      modelPoint_onePoleMap ρ β K hβ p hp hd n L φ = t :=
+      modelPointOnePoleMap ρ β K hβ p hp hd n L φ = t :=
   (congrArg (fun z => rawFormsPullback a b n ≫ z)
-    (modelPoint_onePoleMap_evaluation ρ β K hβ p hp hd n L φ)).trans
-      (modelPoint_onePoleRawMap_unit ρ β K hβ p hp hd n L φ)
+    (modelPointOnePoleMap_evaluation ρ β K hβ p hp hd n L φ)).trans
+      (modelPointOnePoleRawMap_unit ρ β K hβ p hp hd n L φ)
 
 end OriginalModel
 

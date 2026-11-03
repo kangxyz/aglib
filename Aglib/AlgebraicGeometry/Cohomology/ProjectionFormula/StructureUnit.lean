@@ -33,6 +33,7 @@ universe u
 
 namespace AlgebraicGeometry.Scheme.Modules
 
+/-- The standard derived-category instance for the original scheme module sheaves. -/
 local instance structureUnitStandardDerived (X : Scheme.{u}) :
     HasDerivedCategory.{u + 1} X.Modules := HasDerivedCategory.standard _
 

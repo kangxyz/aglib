@@ -213,7 +213,7 @@ theorem normalizationSectionsEquivMapOfEq_restriction
 include hf in
 /-- The SAME original principal section restriction is localization, even if its open is empty. -/
 theorem normalizationSections_isLocalization_basicOpen_of_eq
-    (U : X.Opens) (hU : IsAffineOpen U) [Nonempty U] (t : Γ(X, U)) :
+    (U : X.Opens) (hU : IsAffineOpen U) (t : Γ(X, U)) :
     letI := (f.normalization.presheaf.map
       (homOfLE (f.fromNormalization.preimage_mono (X.basicOpen_le t))).op).hom.toAlgebra
     IsLocalization.Away (f.fromNormalization.app U t)

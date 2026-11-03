@@ -128,6 +128,7 @@ theorem exists_original_stalk_quadratic_relation
   exact ⟨α, a, b, p, u, v, d, e, z, hM, ha, hb0, hb1, hb2, hu, hv,
     hp, hgen, hpmin, hpcenter, hpres, hrel⟩
 
+/-- The original residue-field action on a maximal-ideal associated-graded component. -/
 local instance originalStalkComponentModule (R : Type u) [CommRing R] [IsLocalRing R]
     (n : ℕ) : Module (ResidueField R)
       (Ideal.associatedGradedQuotientGrading (maximalIdeal R) n) :=

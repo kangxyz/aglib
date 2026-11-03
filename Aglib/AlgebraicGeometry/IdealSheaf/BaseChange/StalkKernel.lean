@@ -37,7 +37,8 @@ namespace AlgebraicGeometry.Scheme.IdealSheafData
 
 variable {X Y : Scheme.{u}} (I : X.IdealSheafData) (f : Y ⟶ X) (y : Y)
 
-local instance : Algebra (X.presheaf.stalk (f y)) (Y.presheaf.stalk y) :=
+/-- The target-stalk algebra induced by the original morphism's stalk map. -/
+local instance carrierStalkAlgebra : Algebra (X.presheaf.stalk (f y)) (Y.presheaf.stalk y) :=
   (f.stalkMap y).hom.toAlgebra
 
 /-- The original pullback stalk, through the native scalar extension and the

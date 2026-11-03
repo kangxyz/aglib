@@ -62,7 +62,7 @@ omit [IsNoetherianRing R] in
 theorem existsUnique_pairIdeal_onePoleRawMap :
     ∃! κ : M ⟶ Subtype.val T,
       ∀ i : Bool, (Scheme.Modules.restrictFunctor (pairIdealChart I x y hI i)).map κ =
-        pairIdeal_onePoleRawFamily Λ R K I x y hI hx hy hproper n L φ i := by
+        pairIdealOnePoleRawFamily Λ R K I x y hI hx hy hproper n L φ i := by
   have hx0 : x ≠ 0 := by
     intro h
     exact one_ne_zero (hx (by simp [h]))
@@ -78,25 +78,25 @@ theorem existsUnique_pairIdeal_onePoleRawMap :
   let _ : IsOpenImmersion j :=
     Blowup.UnitLocus.unitChartMap_isOpenImmersion H (firstGenerator I x y hI)
   let β := rawFormsPullback (Spec.map α) (blowdown I) n
-  let t := pairIdeal_onePoleUnitMap Λ R I n L φ
-  let r := pairIdeal_onePoleRawFamily Λ R K I x y hI hx hy hproper n L φ
+  let t := pairIdealOnePoleUnitMap Λ R I n L φ
+  let r := pairIdealOnePoleRawFamily Λ R K I x y hI hx hy hproper n L φ
   let _ : IsIso ((pullback j).map β) :=
     ideal_rawPullback_unitChart_isIso Λ R I (firstGenerator I x y hI) n
-  have hr := pairIdeal_onePoleRawFamily_unit Λ R K I x y hI hx hy hproper n L φ
+  have hr := pairIdealOnePoleRawFamily_unit Λ R K I x y hI hx hy hproper n L φ
   exact existsUnique_restrictionHom_of_openUnitSquares j β T t
     (pairIdealChartScheme I x y hI) (pairIdealChart I x y hI)
     (pairIdealCharts_cover I x y hI) r hr
 
 /-- The unique global raw map selected by the original chart maps and original native gluing. -/
-def pairIdeal_onePoleRawMap : M ⟶ Subtype.val T :=
+def pairIdealOnePoleRawMap : M ⟶ Subtype.val T :=
   (existsUnique_pairIdeal_onePoleRawMap Λ R K I x y hI hx hy hproper n L φ).choose
 
 omit [IsNoetherianRing R] in
 /-- The actual global raw map restricts to every original local raw map. -/
-theorem pairIdeal_onePoleRawMap_restrict (i : Bool) :
+theorem pairIdealOnePoleRawMap_restrict (i : Bool) :
     (Scheme.Modules.restrictFunctor (pairIdealChart I x y hI i)).map
-        (pairIdeal_onePoleRawMap Λ R K I x y hI hx hy hproper n L φ) =
-      pairIdeal_onePoleRawFamily Λ R K I x y hI hx hy hproper n L φ i :=
+        (pairIdealOnePoleRawMap Λ R K I x y hI hx hy hproper n L φ) =
+      pairIdealOnePoleRawFamily Λ R K I x y hI hx hy hproper n L φ i :=
   (existsUnique_pairIdeal_onePoleRawMap Λ R K I x y hI hx hy hproper n L φ).choose_spec.1 i
 
 end AlgebraicGeometry.Scheme.Blowup.PairIdeal

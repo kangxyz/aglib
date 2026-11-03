@@ -52,43 +52,43 @@ local notation "N" => Subtype.val (Invertible.tensorLineBundle Y
   (Invertible.dualLineBundle Y (centreIdealLine I)))
 
 /-- The two actual raw maps on the proved full original chart cover, with no overlap premise. -/
-def pairIdeal_onePoleRawFamily (i : Bool) :
+def pairIdealOnePoleRawFamily (i : Bool) :
     (Scheme.Modules.restrictFunctor (pairIdealChart I x y hI i)).obj M ⟶
       (Scheme.Modules.restrictFunctor (pairIdealChart I x y hI i)).obj N := by
   cases i
   · have hs := IsSMulRegular.proper_pair_swap_of_isDomain x y hx hy (hI.symm ▸ hproper)
-    exact pairIdeal_onePoleRawRestrictionMap Λ R K I y x (Ideal.span_pair_comm.trans hI)
+    exact pairIdealOnePoleRawRestrictionMap Λ R K I y x (Ideal.span_pair_comm.trans hI)
       hs.1 hs.2 n L φ
-  · exact pairIdeal_onePoleRawRestrictionMap Λ R K I x y hI hx hy n L φ
+  · exact pairIdealOnePoleRawRestrictionMap Λ R K I x y hI hx hy n L φ
 
 /-- The true index is the original raw map on the first parameter chart. -/
-theorem pairIdeal_onePoleRawFamily_true :
-    pairIdeal_onePoleRawFamily Λ R K I x y hI hx hy hproper n L φ true =
-      pairIdeal_onePoleRawRestrictionMap Λ R K I x y hI hx hy n L φ := by
+theorem pairIdealOnePoleRawFamily_true :
+    pairIdealOnePoleRawFamily Λ R K I x y hI hx hy hproper n L φ true =
+      pairIdealOnePoleRawRestrictionMap Λ R K I x y hI hx hy n L φ := by
   rfl
 
 /-- The false index is the original reversed-chart raw map with the same derived pair. -/
-theorem pairIdeal_onePoleRawFamily_false :
-    pairIdeal_onePoleRawFamily Λ R K I x y hI hx hy hproper n L φ false =
+theorem pairIdealOnePoleRawFamily_false :
+    pairIdealOnePoleRawFamily Λ R K I x y hI hx hy hproper n L φ false =
       let hs := IsSMulRegular.proper_pair_swap_of_isDomain x y hx hy (hI.symm ▸ hproper)
-      pairIdeal_onePoleRawRestrictionMap Λ R K I y x (Ideal.span_pair_comm.trans hI)
+      pairIdealOnePoleRawRestrictionMap Λ R K I y x (Ideal.span_pair_comm.trans hI)
         hs.1 hs.2 n L φ := by
   rfl
 
 /-- Every original raw chart map satisfies the original coefficient/unit equation. -/
-theorem pairIdeal_onePoleRawFamily_unit :
+theorem pairIdealOnePoleRawFamily_unit :
     ∀ i : Bool, (Scheme.Modules.restrictFunctor (pairIdealChart I x y hI i)).map
         (rawFormsPullback (Spec.map (CommRingCat.ofHom (algebraMap Λ R))) (blowdown I) n) ≫
-        pairIdeal_onePoleRawFamily Λ R K I x y hI hx hy hproper n L φ i =
+        pairIdealOnePoleRawFamily Λ R K I x y hI hx hy hproper n L φ i =
       (Scheme.Modules.restrictFunctor (pairIdealChart I x y hI i)).map
-        (pairIdeal_onePoleUnitMap Λ R I n L φ) := by
+        (pairIdealOnePoleUnitMap Λ R I n L φ) := by
   intro i
   cases i
   · have hs := IsSMulRegular.proper_pair_swap_of_isDomain x y hx hy (hI.symm ▸ hproper)
-    rw [pairIdeal_onePoleRawFamily_false Λ R K I x y hI hx hy hproper n L φ]
-    exact pairIdeal_onePoleRawRestrictionMap_unit Λ R K I y x (Ideal.span_pair_comm.trans hI)
+    rw [pairIdealOnePoleRawFamily_false Λ R K I x y hI hx hy hproper n L φ]
+    exact pairIdealOnePoleRawRestrictionMap_unit Λ R K I y x (Ideal.span_pair_comm.trans hI)
       hs.1 hs.2 n L φ
-  · rw [pairIdeal_onePoleRawFamily_true Λ R K I x y hI hx hy hproper n L φ]
-    exact pairIdeal_onePoleRawRestrictionMap_unit Λ R K I x y hI hx hy n L φ
+  · rw [pairIdealOnePoleRawFamily_true Λ R K I x y hI hx hy hproper n L φ]
+    exact pairIdealOnePoleRawRestrictionMap_unit Λ R K I x y hI hx hy n L φ
 
 end AlgebraicGeometry.Scheme.Blowup.PairIdeal

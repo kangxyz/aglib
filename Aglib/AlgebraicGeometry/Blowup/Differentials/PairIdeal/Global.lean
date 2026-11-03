@@ -60,10 +60,10 @@ omit [IsNoetherianRing R] in
 set_option backward.isDefEq.respectTransparency false in
 set_option backward.isDefEq.respectTransparency.types false in
 /-- The uniquely glued original raw map has the original global coefficient/unit equation. -/
-theorem pairIdeal_onePoleRawMap_unit :
+theorem pairIdealOnePoleRawMap_unit :
     rawFormsPullback (Spec.map α) (blowdown I) n ≫
-        pairIdeal_onePoleRawMap Λ R K I x y hI hx hy hproper n L φ =
-      pairIdeal_onePoleUnitMap Λ R I n L φ := by
+        pairIdealOnePoleRawMap Λ R K I x y hI hx hy hproper n L φ =
+      pairIdealOnePoleUnitMap Λ R I n L φ := by
   have hx0 : x ≠ 0 := by
     intro h
     exact one_ne_zero (hx (by simp [h]))
@@ -73,30 +73,30 @@ theorem pairIdeal_onePoleRawMap_unit :
     pairIdealChart_nonempty R K I x y hI hx hy hproper true
   apply Invertible.hom_ext_of_nonempty_restrict (pairIdealChart I x y hI true) (Subtype.property T)
   rw [CategoryTheory.Functor.map_comp,
-    pairIdeal_onePoleRawMap_restrict Λ R K I x y hI hx hy hproper n L φ true]
-  exact pairIdeal_onePoleRawRestrictionMap_unit Λ R K I x y hI hx hy n L φ
+    pairIdealOnePoleRawMap_restrict Λ R K I x y hI hx hy hproper n L φ true]
+  exact pairIdealOnePoleRawRestrictionMap_unit Λ R K I x y hI hx hy n L φ
 
 /-- The single canonical bidual extension of the same uniquely glued original raw map. -/
-def pairIdeal_onePoleMap :
+def pairIdealOnePoleMap :
     Invertible.dualSheaf X (Invertible.dualSheaf X M) ⟶ Subtype.val T :=
-  Invertible.extendToBidualLine X T (pairIdeal_onePoleRawMap Λ R K I x y hI hx hy hproper n L φ)
+  Invertible.extendToBidualLine X T (pairIdealOnePoleRawMap Λ R K I x y hI hx hy hproper n L φ)
 
 omit [IsNoetherianRing R] in
 /-- Forward raw evaluation recovers the same original raw map, without any epi cancellation. -/
-theorem pairIdeal_onePoleMap_evaluation :
-    Invertible.bidualMap X M ≫ pairIdeal_onePoleMap Λ R K I x y hI hx hy hproper n L φ =
-      pairIdeal_onePoleRawMap Λ R K I x y hI hx hy hproper n L φ :=
+theorem pairIdealOnePoleMap_evaluation :
+    Invertible.bidualMap X M ≫ pairIdealOnePoleMap Λ R K I x y hI hx hy hproper n L φ =
+      pairIdealOnePoleRawMap Λ R K I x y hI hx hy hproper n L φ :=
   Invertible.extendToBidualLine_evaluation X T
-    (pairIdeal_onePoleRawMap Λ R K I x y hI hx hy hproper n L φ)
+    (pairIdealOnePoleRawMap Λ R K I x y hI hx hy hproper n L φ)
 
 omit [IsNoetherianRing R] in
 /-- The canonical extension retains the original global coefficient and exceptional-unit map. -/
-theorem pairIdeal_onePoleMap_unit :
+theorem pairIdealOnePoleMap_unit :
     rawFormsPullback (Spec.map α) (blowdown I) n ≫
-        Invertible.bidualMap X M ≫ pairIdeal_onePoleMap Λ R K I x y hI hx hy hproper n L φ =
-      pairIdeal_onePoleUnitMap Λ R I n L φ :=
+        Invertible.bidualMap X M ≫ pairIdealOnePoleMap Λ R K I x y hI hx hy hproper n L φ =
+      pairIdealOnePoleUnitMap Λ R I n L φ :=
   (congrArg (fun z => rawFormsPullback (Spec.map α) (blowdown I) n ≫ z)
-    (pairIdeal_onePoleMap_evaluation Λ R K I x y hI hx hy hproper n L φ)).trans
-      (pairIdeal_onePoleRawMap_unit Λ R K I x y hI hx hy hproper n L φ)
+    (pairIdealOnePoleMap_evaluation Λ R K I x y hI hx hy hproper n L φ)).trans
+      (pairIdealOnePoleRawMap_unit Λ R K I x y hI hx hy hproper n L φ)
 
 end AlgebraicGeometry.Scheme.Blowup.PairIdeal

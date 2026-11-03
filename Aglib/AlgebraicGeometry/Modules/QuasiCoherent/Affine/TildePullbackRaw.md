@@ -2,7 +2,7 @@
 
 Source: [TildePullbackRaw.lean](TildePullbackRaw.lean).
 
-`tildePullbackHom_ringHom f` has the literal scalar functor
+`tildePullbackHomRingHom f` has the literal scalar functor
 `ModuleCat.extendScalars f` in its target type. Its value is exactly the
 original `tildePullbackIso (CommRingCat.ofHom f)` hom on the original ring
 objects, certified by a reflexive identity equation. No new adjunction, iso,

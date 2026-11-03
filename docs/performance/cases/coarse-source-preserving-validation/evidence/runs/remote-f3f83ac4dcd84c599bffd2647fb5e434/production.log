@@ -1,0 +1,7 @@
+✔ [14308/14314] Built Aglib.AlgebraicGeometry.Normalization.FiniteFunctionField.ChartSectionsTransport (5.7s)
+✔ [14309/14314] Built Aglib.AlgebraicGeometry.Surfaces.Birational.NormalizedBlowupCover.ChartSections (9.7s)
+✔ [14310/14314] Built Aglib.AlgebraicGeometry.Surfaces.Birational.NormalizedBlowupCover.Trace.RawChart (177s)
+✔ [14311/14314] Built Aglib.AlgebraicGeometry.Surfaces.Birational.NormalizedBlowupCover.Trace.TargetGenericLocalization (28s)
+✔ [14312/14314] Built Aglib.AlgebraicGeometry (6.1s)
+✔ [14313/14314] Built Aglib (6.3s)
+Build completed successfully (14314 jobs).

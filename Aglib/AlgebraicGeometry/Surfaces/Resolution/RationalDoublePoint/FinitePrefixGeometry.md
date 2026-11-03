@@ -13,7 +13,7 @@ or infinite-path hypothesis is added.
 `singularPrefix_normal_and_dimensions` proves normality of each actual endpoint
 and dimension two at each actual truncation ancestor. It retains only these
 proved properties, not a second prefix or stored chain model. The original
-`pointBlowupChain_toBase` supplies the finite chain over its literal `toBase`.
+`pointBlowupChainToBase` supplies the finite chain over its literal `toBase`.
 
 `finite_singularSet_datum_of_rational_model` proves finiteness on the whole
 actual next blowup, even if the prefix has no singular child. The thin

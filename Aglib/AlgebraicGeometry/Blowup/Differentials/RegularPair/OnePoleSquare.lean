@@ -69,7 +69,7 @@ local notation "c" => chartMap B a
 
 /-- The original raw coefficient and the original exceptional section form
 the actual one-pole chart square, with the original structural unit. -/
-theorem saturatedPair_onePoleChartMap_unit :
+theorem saturatedPairOnePoleChartMap_unit :
     let f : Spec (.of S) ⟶ canonicalBlowup I := c
     let s : SheafOfModules.unit (canonicalBlowup I).ringCatSheaf ⟶
         (Invertible.dualLineBundle (canonicalBlowup I) (centreIdealLine I)).val :=
@@ -78,19 +78,19 @@ theorem saturatedPair_onePoleChartMap_unit :
       Invertible.bidualMap (Spec (.of S))
         (moduleExteriorPower (Spec (.of S))
           (relativeDifferentialSheaf (Spec.map σ ≫ Spec.map α)) n) ≫
-      saturatedPair_onePoleChartMap Λ R K x y hx hy n L φ =
+      saturatedPairOnePoleChartMap Λ R K x y hx hy n L φ =
     (pullback (Spec.map σ)).map φ ≫
       (positiveCartierTensorSection (Spec (.of S))
-        (saturatedPair_exceptionalPositiveLine R x y).val
+        (saturatedPairExceptionalPositiveLine R x y).val
         ((pullbackUnitIso f).inv ≫
           (pullback f).map s)).app
             ((pullback (Spec.map σ)).obj L.val) ≫
-      (tensorSheafBraiding (Spec (.of S)) (saturatedPair_exceptionalPositiveLine R x y).val
+      (tensorSheafBraiding (Spec (.of S)) (saturatedPairExceptionalPositiveLine R x y).val
         ((pullback (Spec.map σ)).obj L.val)).hom := by
   intro f s
   have hs := positiveSection_tensorFrame ((pullback (Spec.map σ)).obj L.val)
-    (saturatedPair_exceptionalPositiveLine R x y).val
-    (saturatedPair_exceptionalPositiveFrame R x y)
+    (saturatedPairExceptionalPositiveLine R x y).val
+    (saturatedPairExceptionalPositiveFrame R x y)
     ((pullbackUnitIso f).inv ≫ (pullback f).map s)
     (affineMultiplication S (algebraMap R S x))
     (saturatedPair_exceptionalPositiveSection_frame R x y)

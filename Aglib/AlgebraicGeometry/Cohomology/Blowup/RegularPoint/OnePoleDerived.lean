@@ -105,13 +105,13 @@ variable [IsRegularLocalRing (X.presheaf.stalk p)]
 
 /-- The original one-pole unit gives the ordinary coefficient square. Its source
 is the raw exterior module, and its only evaluation is the original forward map. -/
-theorem modelPoint_onePoleMap_coefficient :
+theorem modelPointOnePoleMap_coefficient :
     let P₀ : Scheme.Modules Y := (pullback b).obj L.val
     let Q₀ : Scheme.Modules Y := (dualLineBundle Y (pointIdealLine X p hp)).val
     let T₀ : Scheme.Modules Y :=
       (tensorLineBundle Y (pullbackLineBundle b L)
         (dualLineBundle Y (pointIdealLine X p hp))).val
-    let κ : DY ⟶ T₀ := modelPoint_onePoleMap ρ β K hβ p hp hd n L φ
+    let κ : DY ⟶ T₀ := modelPointOnePoleMap ρ β K hβ p hp hd n L φ
     let s : SheafOfModules.unit (Y).ringCatSheaf ⟶ Q₀ := exceptionalPositiveSection X p
     let RY : tensorSheaf Y P₀ (SheafOfModules.unit (Y).ringCatSheaf) ≅ P₀ :=
       (SheafOfModulesOfCommRing.tensorRightUnitIso (Y).sheaf).app P₀
@@ -124,7 +124,7 @@ theorem modelPoint_onePoleMap_coefficient :
   let T₀ : Scheme.Modules Y :=
     (tensorLineBundle Y (pullbackLineBundle b L)
       (dualLineBundle Y (pointIdealLine X p hp))).val
-  let κ : DY ⟶ T₀ := modelPoint_onePoleMap ρ β K hβ p hp hd n L φ
+  let κ : DY ⟶ T₀ := modelPointOnePoleMap ρ β K hβ p hp hd n L φ
   let s : SheafOfModules.unit (Y).ringCatSheaf ⟶ Q₀ := exceptionalPositiveSection X p
   let RY : tensorSheaf Y P₀ (SheafOfModules.unit (Y).ringCatSheaf) ≅ P₀ :=
     (SheafOfModulesOfCommRing.tensorRightUnitIso (Y).sheaf).app P₀
@@ -132,7 +132,7 @@ theorem modelPoint_onePoleMap_coefficient :
   have hκ : rawFormsPullback a b n ≫ bidualMap Y MY ≫ κ =
       (pullback b).map φ ≫ (positiveCartierTensorSection Y Q₀ s).app P₀ ≫
         (tensorSheafBraiding Y Q₀ P₀).hom :=
-    modelPoint_onePoleMap_unit ρ β K hβ p hp hd n L φ
+    modelPointOnePoleMap_unit ρ β K hβ p hp hd n L φ
   have hv : (positiveCartierTensorSection Y Q₀ s).app P₀ ≫
       (tensorSheafBraiding Y Q₀ P₀).hom = v := by
     have hRY : (MonoidalCategoryStruct.rightUnitor P₀ :
@@ -162,26 +162,26 @@ end Ordinary
 section Derived
 
 /-- The original one-pole arrow followed by the accepted coefficient-tensored rho. -/
-def modelPoint_onePoleDerivedMap :
+def modelPointOnePoleDerivedMap :
     (derivedPushforwardPlus b).obj ((SY).obj DY) ⟶ (SX).obj L.val := by
   let : IsRegularLocalRing (X.presheaf.stalk p) := hX p
   exact (derivedPushforwardPlus b).map
-      ((SY).map (modelPoint_onePoleMap ρ β K hβ p hp hd n L φ)) ≫
+      ((SY).map (modelPointOnePoleMap ρ β K hβ p hp hd n L φ)) ≫
     exceptionalPositiveTensorRho X hX p hp hd L.val
 
 /-- The original derived producer has its literal defining composite. The local
 regularity instance is exactly the one installed by that producer. -/
-private theorem modelPoint_onePoleDerivedMap_eq :
+private theorem modelPointOnePoleDerivedMap_eq :
     letI : IsRegularLocalRing (X.presheaf.stalk p) := hX p
-    modelPoint_onePoleDerivedMap ρ β K hβ hX p hp hd n L φ =
+    modelPointOnePoleDerivedMap ρ β K hβ hX p hp hd n L φ =
       (derivedPushforwardPlus b).map
-        ((SY).map (modelPoint_onePoleMap ρ β K hβ p hp hd n L φ)) ≫
+        ((SY).map (modelPointOnePoleMap ρ β K hβ p hp hd n L φ)) ≫
           exceptionalPositiveTensorRho X hX p hp hd L.val := by
   rfl
 
 /-- The original raw exterior coefficient is normalized by the same derived map.
 No pullback-bidual comparison or cancellation of bidual evaluation is used. -/
-theorem modelPoint_onePoleDerivedMap_coefficient :
+theorem modelPointOnePoleDerivedMap_coefficient :
     let A₀ : DerivedCategory.Plus X.Modules := (SX).obj MX
     let B₀ : DerivedCategory.Plus X.Modules := (SX).obj ((H).obj DY)
     let D₀ : DerivedCategory.Plus X.Modules :=
@@ -189,15 +189,15 @@ theorem modelPoint_onePoleDerivedMap_coefficient :
     let E₀ : DerivedCategory.Plus X.Modules := (SX).obj L.val
     let c : A₀ ⟶ B₀ := (SX).map (bidualFormsCoefficient a b n)
     let u : B₀ ⟶ D₀ := (H).rightDerivedSingleUnit DY
-    let ψ : D₀ ⟶ E₀ := modelPoint_onePoleDerivedMap ρ β K hβ hX p hp hd n L φ
+    let ψ : D₀ ⟶ E₀ := modelPointOnePoleDerivedMap ρ β K hβ hX p hp hd n L φ
     let f : A₀ ⟶ E₀ := (SX).map φ
     (show A₀ ⟶ E₀ from c ≫ u ≫ ψ) = f := by
   let : IsRegularLocalRing (X.presheaf.stalk p) := hX p
-  have hc := modelPoint_onePoleMap_coefficient ρ β K hβ p hp hd n L φ
+  have hc := modelPointOnePoleMap_coefficient ρ β K hβ p hp hd n L φ
   have hr := exceptionalPositiveTensorRho_unit X hX p hp hd L.val
-  have hψ := modelPoint_onePoleDerivedMap_eq ρ β K hβ hX p hp hd n L φ
+  have hψ := modelPointOnePoleDerivedMap_eq ρ β K hβ hX p hp hd n L φ
   exact singleUnit_coefficient_retraction (H) (bidualFormsCoefficient a b n) _ φ _ _
-    (modelPoint_onePoleDerivedMap ρ β K hβ hX p hp hd n L φ) hc.symm hr hψ
+    (modelPointOnePoleDerivedMap ρ β K hβ hX p hp hd n L φ) hc.symm hr hψ
 
 end Derived
 

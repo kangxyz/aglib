@@ -54,7 +54,7 @@ theorem saturatedPair_scaledBidualSquare :
       (Invertible.bidualMap (Spec (.of S))
           (moduleExteriorPower (Spec (.of S))
             (relativeDifferentialSheaf (Spec.map σ ≫ Spec.map α)) n) ≫
-        saturatedPair_scaledBidualMap Λ R K x y hx hy n L φ) =
+        saturatedPairScaledBidualMap Λ R K x y hx hy n L φ) =
     (pullback (Spec.map σ)).map φ ≫
       ((tensorSheafLeftUnit (Spec (.of S)) ((pullback (Spec.map σ)).obj L.val)).inv ≫
         (moduleTensorCoefficientMap (Spec (.of S))
@@ -72,7 +72,7 @@ theorem saturatedPair_scaledBidualSquare :
   apply ModuleCat.hom_ext
   apply LinearMap.ext
   intro p
-  exact (saturatedPair_scaledBidualMap_comp_apply Λ R K x y hx hy n L φ p).trans
+  exact (saturatedPairScaledBidualMap_comp_apply Λ R K x y hx hy n L φ p).trans
     (affine_tensor_unit_scalar ((pullback (Spec.map σ)).obj L.val) (algebraMap R S x)
       (moduleSpecΓFunctor.map ((pullback (Spec.map σ)).map φ) p)).symm
 

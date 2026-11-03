@@ -47,7 +47,7 @@ local notation "σ" => CommRingCat.ofHom (algebraMap R S)
 
 /-- The actual raw sheaf map into the original pulled-back line, constructed
 without an image-bound or generic-injectivity premise. -/
-def saturatedPair_scaledRawMap :
+def saturatedPairScaledRawMap :
     moduleExteriorPower (Spec (.of S))
       (relativeDifferentialSheaf (Spec.map σ ≫ Spec.map α)) n ⟶
     (pullback (Spec.map σ)).obj L.val := by
@@ -62,35 +62,35 @@ def saturatedPair_scaledRawMap :
       (X := moduleSpecΓFunctor.obj (moduleExteriorPower (Spec (.of S))
         (relativeDifferentialSheaf (Spec.map σ ≫ Spec.map α)) n))
       (Y := moduleSpecΓFunctor.obj ((pullback (Spec.map σ)).obj L.val))
-      (saturatedPair_scaledSections Λ R K x y hx hy n L φ))
+      (saturatedPairScaledSections Λ R K x y hx hy n L φ))
 
 /-- The actual sheaf map has exactly the original constructed section map. -/
-theorem saturatedPair_scaledRawMap_sections :
-    moduleSpecΓFunctor.map (saturatedPair_scaledRawMap Λ R K x y hx hy n L φ) =
+theorem saturatedPairScaledRawMap_sections :
+    moduleSpecΓFunctor.map (saturatedPairScaledRawMap Λ R K x y hx hy n L φ) =
       ModuleCat.ofHom
         (X := moduleSpecΓFunctor.obj (moduleExteriorPower (Spec (.of S))
           (relativeDifferentialSheaf (Spec.map σ ≫ Spec.map α)) n))
         (Y := moduleSpecΓFunctor.obj ((pullback (Spec.map σ)).obj L.val))
-        (saturatedPair_scaledSections Λ R K x y hx hy n L φ) := by
+        (saturatedPairScaledSections Λ R K x y hx hy n L φ) := by
   let : (moduleExteriorPower (Spec (.of S))
       (relativeDifferentialSheaf (Spec.map σ ≫ Spec.map α)) n).IsQuasicoherent :=
     (SheafOfModules.isQuasicoherent (Spec (.of S)).ringCatSheaf).prop_of_iso
       (targetRawFormsAffineIso α σ n).symm inferInstance
   let : ((pullback (Spec.map σ)).obj L.val).IsQuasicoherent :=
     Invertible.lineBundle_isQuasicoherent (Invertible.pullbackLineBundle (Spec.map σ) L)
-  unfold saturatedPair_scaledRawMap
+  unfold saturatedPairScaledRawMap
   exact affineSectionsMap_sections _
 
 /-- Original raw coefficient sections have their exact exceptional-coordinate
 normalization under the constructed ordinary sheaf morphism. -/
-theorem saturatedPair_scaledRawMap_comp_apply
+theorem saturatedPairScaledRawMap_comp_apply
     (p : moduleSpecΓFunctor.obj ((pullback (Spec.map σ)).obj
       (moduleExteriorPower (Spec (.of R)) (relativeDifferentialSheaf (Spec.map α)) n))) :
-    moduleSpecΓFunctor.map (saturatedPair_scaledRawMap Λ R K x y hx hy n L φ)
+    moduleSpecΓFunctor.map (saturatedPairScaledRawMap Λ R K x y hx hy n L φ)
       (moduleSpecΓFunctor.map (rawFormsPullback (Spec.map α) (Spec.map σ) n) p) =
     algebraMap R S x • (moduleSpecΓFunctor.map ((pullback (Spec.map σ)).map φ) p) :=
   (ConcreteCategory.congr_hom
-    (saturatedPair_scaledRawMap_sections Λ R K x y hx hy n L φ) _).trans
-      (saturatedPair_scaledSections_comp Λ R K x y hx hy n L φ p)
+    (saturatedPairScaledRawMap_sections Λ R K x y hx hy n L φ) _).trans
+      (saturatedPairScaledSections_comp Λ R K x y hx hy n L φ p)
 
 end AlgebraicGeometry.Scheme.Blowup.RegularPair

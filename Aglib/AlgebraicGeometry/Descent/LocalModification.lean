@@ -163,6 +163,7 @@ abbrev affineNeighborhoodStalkCocone (X : Scheme.{u}) (x : X) :
   (colimit.cocone ((OpenNhds.inclusion x).op ⋙ X.presheaf)).whisker
     (affineNeighborhoodInclusion X x).op
 
+/-- The original stalk is the colimit of the section rings of its affine neighborhoods. -/
 def affineNeighborhoodStalkCoconeIsColimit (X : Scheme.{u}) (x : X) :
     IsColimit (affineNeighborhoodStalkCocone X x) :=
   (Functor.Final.isColimitWhiskerEquiv (affineNeighborhoodInclusion X x).op
@@ -194,6 +195,7 @@ abbrev affineNeighborhoodCone (X : Scheme.{u}) (x : X) :
           ((congrArg (fun k : Γ(X, j.unop.unop.1.1) ⟶ X.presheaf.stalk x => Spec.map k)
             hg).symm.trans (Spec.map_comp _ _)) }
 
+/-- The original local spectrum is the limit of the spectra of its affine neighborhoods. -/
 def affineNeighborhoodConeIsLimit (X : Scheme.{u}) (x : X) :
     IsLimit (affineNeighborhoodCone X x) := by
   change IsLimit (Scheme.Spec.mapCone (affineNeighborhoodStalkCocone X x).op)
@@ -292,6 +294,7 @@ abbrev affineNeighborhoodOpenDiagram (X : Scheme.{u}) (x : X) (U : X.Opens) :
     apply (cancel_mono (affineNeighborhoodToBase X x _ ⁻¹ᵁ U).ι).mp
     simp [Category.assoc]
 
+/-- The componentwise open inclusions into the original affine-neighborhood diagram. -/
 abbrev affineNeighborhoodOpenDiagramι (X : Scheme.{u}) (x : X) (U : X.Opens) :
     affineNeighborhoodOpenDiagram X x U ⟶ affineNeighborhoodDiagram X x where
   app i := (affineNeighborhoodToBase X x i ⁻¹ᵁ U).ι
@@ -354,6 +357,8 @@ abbrev affineNeighborhoodOpenCone (X : Scheme.{u}) (x : X) (U : X.Opens) :
             rw [Category.assoc, Scheme.Hom.resLE_comp_ι,
               Scheme.Hom.resLE_comp_ι_assoc] }
 
+/-- The preimage of the chosen open in the local spectrum is the limit of its
+neighborhood restrictions. -/
 def affineNeighborhoodOpenConeIsLimit (X : Scheme.{u}) (x : X) (U : X.Opens) :
     IsLimit (affineNeighborhoodOpenCone X x U) := by
   let : IsConnected ((AffineNeighborhood X x)ᵒᵖᵒᵖ) := IsCofiltered.isConnected _
@@ -423,8 +428,11 @@ theorem exists_proper_affineNeighborhood_model_isIso (X : Scheme.{u})
 /-- Output of actual binary gluing, retaining the neighbourhood chart. -/
 structure GluedNeighborhood {X B Z : Scheme.{u}}
     (i : B ⟶ X) (U : X.Opens) (q : Z ⟶ B) where
+  /-- The global scheme obtained by gluing the neighborhood model to the unchanged open. -/
   Y : Scheme.{u}
+  /-- The structural morphism from the glued scheme to the original base. -/
   h : Y ⟶ X
+  /-- The map from the given neighborhood model to the glued scheme. -/
   j : Z ⟶ Y
   proper : IsProper h
   square : IsPullback j q h i
@@ -847,9 +855,12 @@ No integrality, normality, dimension or absolute separatedness is required. -/
 structure StalkReplacement {X T : Scheme.{u}}
     (x : X) (hx : IsClosed ({x} : Set X))
     (p : T ⟶ Spec (X.presheaf.stalk x)) where
+  /-- The global replacement scheme for the supplied stalk modification. -/
   Y : Scheme.{u}
+  /-- The structural morphism from the replacement to the original scheme. -/
   h : Y ⟶ X
   proper : IsProper h
+  /-- The comparison from the original stalk model to the global replacement. -/
   a : T ⟶ Y
   square : IsPullback a p h (X.fromSpecStalk x)
   isoRestriction : IsIso (h ∣_ pointComplement x hx)
@@ -904,12 +915,15 @@ geometric conditions are conclusions of `exists_localReplacement`. -/
 structure LocalReplacement {X T : Scheme.{u}} [IsIntegral X]
     (x : X) (hx : IsClosed ({x} : Set X))
     (p : T ⟶ Spec (X.presheaf.stalk x)) where
+  /-- The integral normal global replacement scheme. -/
   Y : Scheme.{u}
   integral : IsIntegral Y
   normal : NormalStalks Y
+  /-- The structural morphism from the global replacement to the original scheme. -/
   h : Y ⟶ X
   proper : IsProper h
   dominant : IsDominant h
+  /-- The comparison from the supplied stalk modification to the global replacement. -/
   a : T ⟶ Y
   square : IsPullback a p h (X.fromSpecStalk x)
   isoRestriction : IsIso (h ∣_ pointComplement x hx)

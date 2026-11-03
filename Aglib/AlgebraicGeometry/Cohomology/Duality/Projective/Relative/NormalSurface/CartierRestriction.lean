@@ -444,7 +444,7 @@ private theorem restriction_tensor_finitePresentation
     ((tensorRestrictionIso j M N).symm ≪≫ e).symm h
 
 private theorem restriction_quotient_finitePresentation
-    {E X : Scheme.{u}} [IsLocallyNoetherian X] (i : E ⟶ X) [IsClosedImmersion i]
+    {E X : Scheme.{u}} [IsLocallyNoetherian X] (i : E ⟶ X)
     (hI : IsLocallyRankOne X (idealModule i)) (M : X.Modules) [M.IsFinitePresentation] :
     (cartierRestrictionQuotient i M).IsFinitePresentation := by
   let L : LineBundle X := ⟨dualSheaf X (idealModule i), dualSheaf_locallyRankOne X _ hI⟩
@@ -804,7 +804,8 @@ public theorem restrictionOriginalCurveCM : ∀ x : E, IsClosed ({x} : Set E) �
   intro x hx
   exact restriction_closedStalk_parameter i hX hI x (hclosedDim x hx)
 
-omit [IsDomain R] [IsIntegral X] [IsDominant (jX ≫ toSpec R ιX)] in
+omit [IsDomain R] [IsIntegral X] [IsDominant (jX ≫ toSpec R ιX)]
+  [IsClosedImmersion i] in
 include eX hI in
 /-- Coherence of the actual Cartier quotient follows from the own canonical
 homology, the actual invertible ideal and ordinary geometric pullback. -/

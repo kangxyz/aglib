@@ -182,7 +182,7 @@ end Restriction
 /-- The original normalization section restriction over a principal base open
 is localization, through its actual affine preimage and section map. -/
 theorem normalizationSections_isLocalization_basicOpen
-    (U : X.Opens) (hU : IsAffineOpen U) [Nonempty U] (t : Γ(X, U)) :
+    (U : X.Opens) (hU : IsAffineOpen U) (t : Γ(X, U)) :
     letI := ((normalization X F).presheaf.map
       (homOfLE ((fromNormalization X F).preimage_mono (X.basicOpen_le t))).op).hom.toAlgebra
     IsLocalization.Away ((fromNormalization X F).app U t)

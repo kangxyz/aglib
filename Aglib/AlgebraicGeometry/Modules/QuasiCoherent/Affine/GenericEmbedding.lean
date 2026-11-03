@@ -69,6 +69,7 @@ theorem affineSectionsToFunctionField_injective [M.IsQuasicoherent]
 
 -- These local dictionaries expose the existing native structure-stalk
 -- scalar maps; they do not select a new ring or module localization.
+/-- The original affine section-to-stalk algebra structure. -/
 local instance stalkAlgebra (p : PrimeSpectrum A) : Algebra A ((Spec A).presheaf.stalk p) :=
   StructureSheaf.stalkAlgebra A p
 
@@ -76,6 +77,7 @@ local instance stalkLocalization (p : PrimeSpectrum A) :
     IsLocalization p.asIdeal.primeCompl ((Spec A).presheaf.stalk p) :=
   StructureSheaf.IsLocalization.to_stalk A p
 
+/-- The original function-field algebra over the selected stalk. -/
 local instance originalStalkFieldAlgebra (p : PrimeSpectrum A) :
     Algebra ((Spec A).presheaf.stalk p) (Spec A).functionField :=
   AlgebraicGeometry.stalkFunctionFieldAlgebra (Spec A) p
@@ -86,6 +88,7 @@ local instance stalkFunctionFieldTower (p : PrimeSpectrum A) :
   exact (congrArg CommRingCat.Hom.hom
     (StructureSheaf.toStalk_stalkSpecializes (genericPoint_specializes p))).symm
 
+/-- The original stalk-ring action on the scalar-restricted module stalk. -/
 local instance restrictedStalkModule (p : PrimeSpectrum A) :
     Module ((Spec A).presheaf.stalk p)
       ((ModuleCat.restrictScalars (StructureSheaf.toStalk A p).hom).obj

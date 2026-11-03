@@ -43,7 +43,7 @@ local notation "B" => Blowup.blowupDatum (Blowup.affineCenter R I)
 local notation "T" => centreTwistedPullbackLine I L
 
 /-- The sole raw chart map with the same original global target. -/
-def pairIdeal_onePoleRawTargetMap :
+def pairIdealOnePoleRawTargetMap :
     let f : Spec (.of S) ⟶ canonicalBlowup I := chartMap B (firstGenerator I x y hI)
     moduleExteriorPower (Spec (.of S))
       (relativeDifferentialSheaf
@@ -51,15 +51,15 @@ def pairIdeal_onePoleRawTargetMap :
           Spec.map (CommRingCat.ofHom (algebraMap Λ R)))) n ⟶
     (pullback f).obj (T).val := by
   subst I
-  exact saturatedPair_onePoleRawTargetMap Λ R K x y hx hy n L φ
+  exact saturatedPairOnePoleRawTargetMap Λ R K x y hx hy n L φ
 
 /-- The existing bidual target map is the extension of the same original raw target map. -/
-theorem pairIdeal_onePoleTargetMap_eq_extension :
+theorem pairIdealOnePoleTargetMap_eq_extension :
     let f : Spec (.of S) ⟶ canonicalBlowup I := chartMap B (firstGenerator I x y hI)
-    pairIdeal_onePoleTargetMap Λ R K I x y hI hx hy n L φ =
+    pairIdealOnePoleTargetMap Λ R K I x y hI hx hy n L φ =
       Invertible.extendToBidualLine (Spec (.of S)) (Invertible.pullbackLineBundle f T)
-        (pairIdeal_onePoleRawTargetMap Λ R K I x y hI hx hy n L φ) := by
+        (pairIdealOnePoleRawTargetMap Λ R K I x y hI hx hy n L φ) := by
   subst I
-  exact saturatedPair_onePoleTargetMap_eq_extension Λ R K x y hx hy n L φ
+  exact saturatedPairOnePoleTargetMap_eq_extension Λ R K x y hx hy n L φ
 
 end AlgebraicGeometry.Scheme.Blowup.PairIdeal

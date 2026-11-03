@@ -103,7 +103,7 @@ variable (ιX ιY : Type u)
 
 /-- The existing proper Serre transpose of the original one-pole derived map.
 The upstairs source is the original bidual, not an independently selected line. -/
-def modelPoint_onePoleCanonicalCoefficient :
+def modelPointOnePoleCanonicalCoefficient :
     letI : IsIntegral Y :=
       pointBlowup_isIntegral X p hp (ne_genericPoint_of_stalk_dimension_two p hd)
     DY ⟶ normalSurfaceCanonicalModule A ιY iY nY := by
@@ -112,15 +112,15 @@ def modelPoint_onePoleCanonicalCoefficient :
   exact normalSurfaceProperSerreTranspose A ιX ιY b iX iY hb
     hNX hXdim hNY hYdim nX nY eX eY hfinX hfinY L.val DY
     (pointCanonicalBidual_coherent ρ β p n)
-    (modelPoint_onePoleDerivedMap ρ β K hβ hX p hp hd n L φ) ΦX
+    (modelPointOnePoleDerivedMap ρ β K hβ hX p hp hd n L φ) ΦX
 
 /-- The actual raw coefficient square for a point step. Its derived premise is
 proved by the original one-pole map and coefficient-tensored exceptional rho. -/
-theorem modelPoint_onePoleCanonicalCoefficient_trace :
+theorem modelPointOnePoleCanonicalCoefficient_trace :
     letI : IsIntegral Y :=
       pointBlowup_isIntegral X p hp (ne_genericPoint_of_stalk_dimension_two p hd)
     bidualFormsCoefficient a b n ≫ (pushforward b).map
-      (modelPoint_onePoleCanonicalCoefficient ρ β K hβ hX p hp hd n L φ
+      (modelPointOnePoleCanonicalCoefficient ρ β K hβ hX p hp hd n L φ
         ιX ιY iX iY hb hNX hXdim hNY hYdim nX nY eX eY hfinX hfinY ΦX) ≫
       normalSurfaceProperCanonicalTrace A ιX ιY b iX iY hb
         hNX hXdim hNY hYdim nX nY eX eY hfinX hfinY = φ ≫ ΦX := by
@@ -130,7 +130,7 @@ theorem modelPoint_onePoleCanonicalCoefficient_trace :
     hNX hXdim hNY hYdim nX nY eX eY hfinX hfinY MX L.val DY
     (pointCanonicalRaw_coherent ρ β n) (pointCanonicalBidual_coherent ρ β p n)
     (bidualFormsCoefficient a b n) φ
-    (modelPoint_onePoleDerivedMap ρ β K hβ hX p hp hd n L φ)
-    (modelPoint_onePoleDerivedMap_coefficient ρ β K hβ hX p hp hd n L φ) ΦX
+    (modelPointOnePoleDerivedMap ρ β K hβ hX p hp hd n L φ)
+    (modelPointOnePoleDerivedMap_coefficient ρ β K hβ hX p hp hd n L φ) ΦX
 
 end AlgebraicGeometry.Scheme.Blowup.RegularPoint

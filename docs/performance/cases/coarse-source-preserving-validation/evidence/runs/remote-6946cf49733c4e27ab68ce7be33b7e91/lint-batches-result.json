@@ -1,0 +1,21 @@
+{
+  "source_digest": "f83e4561558ff9a7aa384c05978446c03bee6655e816001ad1e0718b2548fdba",
+  "status": "passed",
+  "plan_sha256": "6f850f21fd7180a7ece28fc5d1e2651606f76cabfb573e2fbbef87e0af00f66a",
+  "batches": [
+    {
+      "id": "batch-05",
+      "assigned_modules": 1414,
+      "exit_code": 0,
+      "seconds": 170.67177499830723,
+      "log": "/root/autodl-tmp/lean-build/logs/remote-6946cf49733c4e27ab68ce7be33b7e91/batch-05-lint.log",
+      "result": "/root/autodl-tmp/lean-build/logs/remote-6946cf49733c4e27ab68ce7be33b7e91/batch-05-lint.json",
+      "checkedModules": 1414,
+      "checkedDeclarations": 33012,
+      "declarationFindings": 0,
+      "environmentFindings": 0,
+      "textFindings": 0,
+      "deferredFailed": false
+    }
+  ]
+}

@@ -56,7 +56,7 @@ theorem pairIdeal_structure_locallyOfFiniteType :
   exact locallyOfFiniteType_comp (blowdown I) (Spec.map α)
 
 /-- The actual chart triangle and original raw restriction give the local source arrow. -/
-def pairIdeal_bidualSourceMapOfCoherent
+def pairIdealBidualSourceMapOfCoherent
     (hM : QuasiCoherent.affineLocallyFiniteType (canonicalBlowup I)
       (moduleExteriorPower (canonicalBlowup I)
         (relativeDifferentialSheaf (blowdown I ≫ Spec.map α)) n)) :
@@ -74,10 +74,10 @@ def pairIdeal_bidualSourceMapOfCoherent
     pairIdeal_blowup_isLocallyNoetherian R I
   exact bidualFormsAffineRestrictionMapOfCoherent (blowdown I ≫ Spec.map α) n hM f ≫
     Invertible.doubleDualMap (Spec (.of S))
-      (pairIdeal_rawChartCongruenceIso Λ R I x y hI n).hom
+      (pairIdealRawChartCongruenceIso Λ R I x y hI n).hom
 
 /-- The original finite-type interface supplies its original coherent source proof. -/
-def pairIdeal_bidualSourceMap :
+def pairIdealBidualSourceMap :
     let f : Spec (.of S) ⟶ canonicalBlowup I := chartMap B (firstGenerator I x y hI)
     let _ : IsOpenImmersion f := pairIdeal_chart_isOpenImmersion R I x y hI
     (show (canonicalBlowup I).Modules from
@@ -89,7 +89,7 @@ def pairIdeal_bidualSourceMap :
         (relativeDifferentialSheaf (Spec.map σ ≫ Spec.map α)) n)) := by
   let : LocallyOfFiniteType (blowdown I ≫ Spec.map α) :=
     pairIdeal_structure_locallyOfFiniteType Λ R I
-  exact pairIdeal_bidualSourceMapOfCoherent Λ R I x y hI n
+  exact pairIdealBidualSourceMapOfCoherent Λ R I x y hI n
     (rawForms_affineLocallyFiniteType (blowdown I ≫ Spec.map α) n)
 
 end AlgebraicGeometry.Scheme.Blowup.PairIdeal

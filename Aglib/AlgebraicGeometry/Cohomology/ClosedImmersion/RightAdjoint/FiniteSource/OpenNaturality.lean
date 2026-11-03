@@ -20,6 +20,7 @@ open CategoryTheory CategoryTheory.Limits
 universe u
 namespace AlgebraicGeometry.Scheme.Modules
 
+/-- The standard derived-category instance for the original scheme module sheaves. -/
 local instance openNaturalityStandard (Z : Scheme.{u}) :
     HasDerivedCategory.{u + 1} Z.Modules := HasDerivedCategory.standard _
 

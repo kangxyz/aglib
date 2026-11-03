@@ -1,0 +1,306 @@
+/-
+Copyright (c) 2020 Floris van Doorn. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Floris van Doorn, Robert Y. Lewis, Gabriel Ebner
+-/
+module
+
+public meta import Batteries.Tactic.Lint
+public meta import Lake.CLI.BuiltinLint
+meta import all Lake.CLI.BuiltinLint
+public meta import Mathlib.Tactic.Linter.Lint
+public meta import Mathlib.Tactic.Linter.Style
+public meta import Mathlib.Tactic.Linter.TacticDocumentation
+public meta import Mathlib.Tactic.SetNotationForOrder
+public meta import Batteries.Data.Array.Basic
+public meta import Lean.CoreM
+public meta import Lean.Environment
+public meta import Lean.Data.NameMap.Basic
+public meta import Lean.Data.Json.FromToJson
+public meta import Lean.Linter.EnvLinter
+public meta import Lean.Util.Path
+public meta import Lake.Util.Lift
+
+/-!
+Scratch native lint executable for Lean 4.34.1 and the assigned pinned providers.
+One import environment per coarse batch; declarations are assigned by actual module origin.
+The bounded Batteries scheduler below is copied unchanged from .github/lint/BatchedLint.lean.
+-/
+
+meta section
+
+open Lean Core Batteries.Tactic.Lint System
+
+namespace CoarseBatchLint
+
+def log (message : String) : IO Unit := do
+  IO.println message
+  (← IO.getStdout).flush
+
+def batchSize : Nat := 64
+
+/-- Fixed dedicated workers; only failed checks are retained. Worker state is discarded. -/
+def mapOnWorkers (jobs : Array α) (numWorkers : Nat) (f : α → CoreM β) :
+    CoreM (Array β) := do
+  let next ← IO.mkRef 0
+  let cancelTk? := (← read).cancelTk?
+  let numWorkers := min (max numWorkers 1) jobs.size
+  let tasks ← (Array.range numWorkers).mapM fun _ => do
+    EIO.asTask (prio := .dedicated) <|
+      (← Core.wrapAsync (cancelTk? := cancelTk?) fun _ => do
+        let mut done := #[]
+        repeat
+          Core.checkInterrupted
+          let i ← next.modifyGet fun i => (i, i + 1)
+          let some job := jobs[i]? | break
+          done := done.push (← f job)
+        return done) ()
+  tasks.flatMapM (MonadExcept.ofExcept ·.get)
+
+/-- Each check gets fresh Core/Meta state, a child name generator and its own heartbeat budget. -/
+def lintDecl (linter : NamedLinter) (decl : Name) (inIO : Bool) :
+    CoreM (Option MessageData) := do
+  let act : MetaM (Option MessageData) := do
+    let result ← linter.test decl
+    if inIO then
+      printTraces
+      (← IO.getStdout).flush
+    return result
+  let run ← Core.withCurrHeartbeats <|
+    Core.wrapAsync (fun _ => act.run' Lean.Elab.Command.mkMetaContext) (← read).cancelTk?
+  match ← (run ()).toBaseIO with
+  | .ok msg? => return msg?
+  | .error err =>
+      if err.isInterrupt then throw err
+      return some m!"LINTER FAILED:\n{err.toMessageData}"
+
+/-- Run the full declaration × linter predicate using upstream's batches of 64. -/
+def lintCoreBatched (decls : Array Name) (linters : Array NamedLinter)
+    (numWorkers : Nat) (currentModule : Option Name := none) (inIO := false) :
+    CoreM (Array (NamedLinter × Std.HashMap Name MessageData)) := do
+  traceLint s!"Running linters:\n  {"\n  ".intercalate <| linters.map (s!"{·.name}") |>.toList}"
+    inIO currentModule
+  if inIO then (← IO.getStdout).flush
+  let indexed := linters.zipIdx
+  let batches := if linters.isEmpty then #[] else
+    (Array.range ((decls.size + batchSize - 1) / batchSize)).map fun i =>
+      decls.extract (i * batchSize) ((i + 1) * batchSize)
+  let actualWorkers := min (max numWorkers 1) batches.size
+  if inIO then
+    log s!"[{currentModule.getD .anonymous}] full lint: backend=batched; {decls.size} declarations, {linters.size} linters, {actualWorkers} workers, batch={batchSize}"
+  let progress ← IO.mkRef (0, 0, 0)
+  let step := max 1 ((batches.size + 9) / 10)
+  let start ← IO.monoMsNow
+  let failures ← mapOnWorkers batches actualWorkers fun batch => do
+    let mut failures := #[]
+    for decl in batch do
+      Core.checkInterrupted
+      let ignored := (nolintAttr.getParam? (← getEnv) decl).getD #[]
+      for (linter, i) in indexed do
+        unless ignored.contains linter.name do
+          if let some msg ← lintDecl linter decl inIO then
+            failures := failures.push (i, decl, msg)
+    if inIO then
+      let (n, done, msgs) ← progress.modifyGet fun (n, done, msgs) =>
+        let p := (n + 1, done + batch.size, msgs + failures.size); (p, p)
+      if n % step == 0 || n == batches.size then
+        log s!"[{currentModule.getD .anonymous}] Linted {done}/{decls.size} declarations, {msgs} messages, {(← IO.monoMsNow) - start} ms"
+    return failures
+  let mut messages : Array (Std.HashMap Name MessageData) := .replicate linters.size {}
+  for (i, decl, msg) in failures.flatten do
+    messages := messages.modify i (·.insert decl msg)
+  let result ← (linters.zip messages).mapM fun (linter, msgs) => do
+    traceLint s!"{if msgs.isEmpty then "Passed!" else
+      s!"Failed with {msgs.size} messages (before nolints.json)."}"
+      inIO currentModule linter.name
+    if inIO then (← IO.getStdout).flush
+    pure (linter, msgs)
+  traceLint "Completed linting!" inIO currentModule
+  if inIO then (← IO.getStdout).flush
+  return result
+
+/-- The enabled set at the assigned provider pins; disabled linters remain disabled. -/
+def expectedChecks : Array Name := #[`checkType, `deprecatedNoSince, `defsWithUnderscore,
+  `docBlame, `impossibleInstance, `nonClassInstance, `simpComm, `simpNF, `structureInType,
+  `subsetDotNotationLinter, `synTaut, `tacticAlt, `tacticDocs, `unusedArguments,
+  `unusedHavesSuffices]
+
+structure Batch where
+  imports : Array String
+  assigned : Array String
+  /-- The pinned native registry is empty; an unexpected registration fails closed. -/
+  expectedEnvironmentLinters : Array String := #[]
+  deriving FromJson
+
+def providerImports : Array Name := #[`Batteries.Tactic.Lint, `Lean.Linter.EnvLinter,
+  `Mathlib.Tactic.Linter.Lint, `Mathlib.Tactic.Linter.Style,
+  `Mathlib.Tactic.Linter.TacticDocumentation, `Mathlib.Tactic.SetNotationForOrder]
+
+def nameSet (names : Array Name) : NameSet :=
+  names.foldl (fun s n => s.insert n) {}
+
+/-- Same constant-map enumeration as upstream getDeclsInPackage, with exact origins.
+No name-based test removes private, auxiliary, or automatically generated declarations. -/
+def assignedDecls (assigned : NameSet) : CoreM (Array Name) := do
+  let env ← getEnv
+  let localDecls := env.constants.map₂.foldl (init := #[]) fun ds n _ =>
+    if assigned.contains env.mainModule then ds.push n else ds
+  let origins := env.header.moduleNames.map (assigned.contains ·)
+  return env.constants.map₁.fold (init := localDecls) fun ds n _ =>
+    if origins[env.const2ModIdx[n]?.get!]! then ds.push n else ds
+
+/-- Native tests and option snapshots, using the existing bounded scheduler.
+Each check receives the same fresh Core/Meta state and heartbeat handling as Batteries. -/
+def lintNativeEnvironment (decls : Array Name)
+    (linters : Array Lean.Linter.EnvLinter.NamedEnvLinter) :
+    CoreM (Array (Lean.Linter.EnvLinter.NamedEnvLinter × Std.HashMap Name MessageData)) := do
+  let env ← getEnv
+  let jobs := (Array.range ((decls.size + batchSize - 1) / batchSize)).map fun i =>
+    decls.extract (i * batchSize) ((i + 1) * batchSize)
+  let failures ← mapOnWorkers jobs 2 fun batch => do
+    let mut failures := #[]
+    for decl in batch do
+      Core.checkInterrupted
+      for (linter, i) in linters.zipIdx do
+        if Lean.Linter.EnvLinter.isLinterEnabledFor env linter decl then
+          let adapter : NamedLinter := {
+            test := linter.test, noErrorsFound := linter.noErrorsFound,
+            errorsFound := linter.errorsFound, name := linter.optName,
+            declName := linter.declName }
+          if let some msg ← lintDecl adapter decl true then
+            failures := failures.push (i, decl, msg)
+    return failures
+  let mut messages : Array (Std.HashMap Name MessageData) := .replicate linters.size {}
+  for (i, decl, msg) in failures.flatten do
+    messages := messages.modify i (·.insert decl msg)
+  return linters.zip messages
+
+def requireSameNames (label : String) (actual expected : Array Name) : CoreM Unit := do
+  unless actual.size == expected.size && actual.all expected.contains do
+    throwError "{label} mismatch; actual={actual}; required={expected}"
+
+def runText (env : Environment) (assigned : NameSet) (roots : Array Name) : IO Nat := do
+  let mut count := 0
+  -- Reuse Lake's native collector. Package roots are deduplicated before collection.
+  for root in roots do
+    for (mod, entries) in Lake.BuiltinLint.collectTextLints env root do
+      if assigned.contains mod then
+        log s!"-- Text linter diagnostics in {mod}:"
+        for e in entries do
+          IO.print e.message.toString
+          count := count + 1
+  return count
+
+unsafe def runBatch (batch : Batch) (jsonOutput : Option FilePath) : IO UInt32 := do
+  let imports := batch.imports.map String.toName
+  let assignedNames := batch.assigned.map String.toName
+  unless !imports.isEmpty && !assignedNames.isEmpty do
+    throw <| IO.userError "imports and assigned must both be nonempty"
+  let assigned := nameSet assignedNames
+  unless assigned.size == assignedNames.size do
+    throw <| IO.userError "assigned modules must be distinct"
+  let mut roots : Array Name := #[]
+  for mod in assignedNames do
+    unless roots.contains mod.getRoot do roots := roots.push mod.getRoot
+  let start ← IO.monoMsNow
+  log s!"[coarse batch] importing {imports.size} roots for {assignedNames.size} assigned modules"
+  enableInitializersExecution
+  -- Private includes server-level persistent text logs and all private declarations,
+  -- and matches the maintained Batteries runner's default import level.
+  let env ← importModules ((imports ++ providerImports).map fun n => { module := n }) {}
+    (trustLevel := 1024) (loadExts := true) (level := .private)
+  for mod in assignedNames do
+    unless env.header.moduleNames.contains mod do
+      throw <| IO.userError s!"assigned module is absent from this batch's imports: {mod}"
+  log s!"[coarse batch] import elapsed={(← IO.monoMsNow) - start} ms"
+  let nolintsPath : FilePath := "scripts/nolints.json"
+  let nolints : Array (Name × Name) ← if ← nolintsPath.pathExists then
+    IO.ofExcept <| Json.parse (← IO.FS.readFile nolintsPath) >>= fromJson?
+  else pure #[]
+  let ctx : Core.Context := {
+    fileName := "", fileMap := default,
+    options := ({} : Options).setBool `trace.Batteries.Lint true }
+  let ((declCount, checkNames, nativeNames, declFindings, envFindings), _) ←
+      CoreM.toIO (ctx := ctx) (s := {env}) do
+    let decls ← assignedDecls assigned
+    let linters ← getChecks (slow := true) (runAlways := none) (runOnly := none)
+    let nativeLinters ← Lean.Linter.EnvLinter.getEnvLinters
+    let checkNames := linters.map (·.name)
+    let nativeNames := nativeLinters.map (·.optName)
+    log s!"[coarse batch] checked modules={assignedNames.size}; declarations={decls.size}"
+    log s!"[coarse batch] enabled declaration linters={checkNames}"
+    log s!"[coarse batch] enabled native environment linters={nativeNames}"
+    requireSameNames "declaration linters" checkNames expectedChecks
+    requireSameNames "native environment linters" nativeNames
+      (batch.expectedEnvironmentLinters.map String.toName)
+    let results ← lintCoreBatched decls linters 2 (some `CoarseBatch) true
+    let results := results.map fun (linter, msgs) =>
+      (linter, nolints.foldl (init := msgs) fun msgs (linter', decl') =>
+        if linter.name == linter' then msgs.erase decl' else msgs)
+    let declFindings : Nat := results.foldl (fun n r => n + r.2.size) (0 : Nat)
+    if declFindings > 0 then
+      let fmt ← formatLinterResults results decls (groupByFilename := true)
+        (useErrorFormat := true) "in coarse assigned batch" (runSlowLinters := true)
+        .medium linters.size
+      IO.print (← fmt.toString)
+    let nativeResults ← lintNativeEnvironment decls nativeLinters
+    let envFindings : Nat := nativeResults.foldl (fun n r => n + r.2.size) (0 : Nat)
+    if envFindings > 0 then
+      let fmt ← Lean.Linter.EnvLinter.formatLinterResults nativeResults decls
+        (groupByFilename := true) (useErrorFormat := true)
+        "in coarse assigned batch" nativeLinters.size
+      IO.print (← fmt.toString)
+    return ((decls.size, checkNames, nativeNames, declFindings, envFindings) :
+      Nat × Array Name × Array Name × Nat × Nat)
+  let textFindings ← runText env assigned roots
+  let linterOpts : Lean.Linter.LinterOptions := {
+    toOptions := {}, linterSets := (Lean.Linter.linterSetsExt.getState env).merged }
+  let args : Lake.BuiltinLint.Args := { mods := imports }
+  let sp ← getSrcSearchPath
+  -- Native API checks only assigned modules: mark every other imported module done.
+  let mut checked : NameSet := {}
+  for mod in env.header.moduleNames do
+    unless assigned.contains mod do checked := checked.insert mod
+  let mut deferredFailed := false
+  for root in roots do
+    let result ← Lake.BuiltinLint.runDeferredChecks args linterOpts sp env root checked
+    checked := result.checkedModules
+    match result.outcome with
+    | .reported failed => deferredFailed := deferredFailed || failed
+    | _ => throw <| IO.userError "unexpected native deferred-check outcome in report mode"
+  let failed := declFindings > 0 || envFindings > 0 || textFindings > 0 || deferredFailed
+  let code : UInt32 := if failed then 1 else 0
+  let result := Json.mkObj [
+    ("imports", toJson batch.imports), ("assigned", toJson batch.assigned),
+    ("checkedModules", toJson assignedNames.size), ("checkedDeclarations", toJson declCount),
+    ("enabledDeclarationLinters", toJson (checkNames.map toString)),
+    ("enabledEnvironmentLinters", toJson (nativeNames.map toString)),
+    ("nativeTextChecks", toJson "persisted source-enabled lint log; report mode; no overrides"),
+    ("nativeDeferredCheck", toJson "linter.doc.deferred; native captured source options"),
+    ("declarationFindings", toJson declFindings), ("environmentFindings", toJson envFindings),
+    ("textFindings", toJson textFindings), ("deferredFailed", toJson deferredFailed),
+    ("exitCode", toJson code.toNat)]
+  if let some file := jsonOutput then IO.FS.writeFile file (result.pretty ++ "\n")
+  log s!"[coarse batch] result={result.compress}"
+  log s!"[coarse batch] total elapsed={(← IO.monoMsNow) - start} ms; exit={code}"
+  return code
+
+end CoarseBatchLint
+
+public unsafe def CoarseBatchLint.run (args : List String) : IO Unit := do
+  let code ← try
+    let (input, output) ← match args with
+      | [input] => pure (input, none)
+      | [input, output] => pure (input, some (System.FilePath.mk output))
+      | _ => throw <| IO.userError "usage: coarse-batch-lint BATCH.json [RESULT.json]"
+    Lean.initSearchPath (← Lean.findSysroot)
+    let batch : CoarseBatchLint.Batch ← IO.ofExcept <|
+      Lean.Json.parse (← IO.FS.readFile input) >>= Lean.fromJson?
+    CoarseBatchLint.runBatch batch output
+  catch e =>
+    IO.eprintln s!"coarse-batch-lint: {e}"
+    pure 2
+  (← IO.getStdout).flush
+  (← IO.getStderr).flush
+  IO.Process.exit code.toUInt8
+

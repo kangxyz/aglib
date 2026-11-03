@@ -32,6 +32,7 @@ attribute [local instance] AlgebraicGeometry.Scheme.Modules.isQuasicoherent_unit
 
 namespace AlgebraicGeometry.Scheme.Cohomology
 
+/-- The standard derived-category instance for modules over the original coefficient ring. -/
 local instance cmCurveCoefficientSerreModuleDerived (A : Type u) [CommRing A] :
     HasDerivedCategory.{u + 1} (ModuleCat.{u} A) := HasDerivedCategory.standard _
 

@@ -1,0 +1,31 @@
+PLAN='/root/autodl-tmp/lean-build/checkpoints/aglib-surface-resolution-main-20261102/batch-validation/plan-18ab8f897c12720343ff1b11ced404cd92b5e3df8611df78eb9555eda7fee381.json'
+PLAN_SHA='18ab8f897c12720343ff1b11ced404cd92b5e3df8611df78eb9555eda7fee381'
+
+from pathlib import Path
+import os,json,subprocess,hashlib,time,concurrent.futures
+f=Path(PLAN);assert hashlib.sha256(f.read_bytes()).hexdigest()==PLAN_SHA
+plan=json.loads(f.read_text());assert plan['source_digest']=='176410f68cfa3594d81434b1e85921d98ee5ed53b65bc8a9fbeaa1f055f85a5d';root=Path.cwd();exe=root/'.lake/coarse-batch-lint-tool/.lake/build/bin/coarseBatchLint';assert exe.is_file();assert hashlib.sha256(exe.read_bytes()).hexdigest()=='5780ba3ac09621d48b0717eef95fe2324091e19463307e53dd22082c8a7a5d61'
+run=Path(os.environ.get('LEAN') or os.environ['LAKE_OVERRIDE_LEAN']).parents[2]
+env=dict(os.environ,LEAN_NUM_THREADS='2')
+for key in ['LEAN_PATH','LEAN_SRC_PATH']:env[key]=subprocess.check_output([env['LAKE'],'env','printenv',key],env=env,text=True).strip()
+print('BATCH_LINT_TOOL '+json.dumps({'exe':str(exe),'sha256':hashlib.sha256(exe.read_bytes()).hexdigest(),'batch_plan_sha256':PLAN_SHA,'parallel_batches':3,'workers_per_batch':2}),flush=True)
+rows=[]
+def execute(b):
+ input=run/(b['id']+'.json');result=run/(b['id']+'-lint.json');log=run/(b['id']+'-lint.log');input.write_text(json.dumps(b,indent=2)+'\n');start=time.monotonic()
+ with log.open('w') as out:r=subprocess.run([str(exe),str(input),str(result)],env=env,stdout=out,stderr=subprocess.STDOUT)
+ row={'id':b['id'],'assigned_modules':len(b['assigned']),'exit_code':r.returncode,'seconds':time.monotonic()-start,'log':str(log),'result':str(result)}
+ if result.exists():
+  d=json.loads(result.read_text())
+  row.update({k:d.get(k) for k in ['checkedModules','checkedDeclarations','declarationFindings','environmentFindings','textFindings','deferredFailed']})
+ (run/(b['id']+'-lint-status.json')).write_text(json.dumps(row,indent=2)+'\n')
+ print('LINT_BATCH '+json.dumps(row),flush=True)
+ if r.returncode:print('\n'.join(x for x in log.read_text(errors='replace').splitlines() if not x.startswith('[coarse batch] result='))[-16000:],flush=True)
+ return row
+with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
+ for f in concurrent.futures.as_completed([pool.submit(execute,b) for b in sorted(plan['batches'],key=lambda b: {'batch-06': 0, 'batch-01': 1, 'batch-05': 2, 'batch-02': 3, 'batch-04': 4, 'batch-03': 5, 'batch-07': 6}[b['id']])]):
+  rows.append(f.result());(run/'lint-batches-progress.json').write_text(json.dumps(rows,indent=2)+'\n')
+assert len(rows)==7
+summary={'source_digest':'176410f68cfa3594d81434b1e85921d98ee5ed53b65bc8a9fbeaa1f055f85a5d','status':'passed' if all(x['exit_code']==0 for x in rows) else 'failed','plan_sha256':PLAN_SHA,'batches':sorted(rows,key=lambda x:x['id'])}
+(run/'lint-batches-result.json').write_text(json.dumps(summary,indent=2)+'\n')
+print('LINT_BATCHES_RESULT '+json.dumps({'status':summary['status'],'batches':len(rows)}),flush=True)
+raise SystemExit(0 if summary['status']=='passed' else 1)

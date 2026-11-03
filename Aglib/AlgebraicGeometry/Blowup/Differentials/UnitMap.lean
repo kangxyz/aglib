@@ -51,7 +51,7 @@ local notation "M" => moduleExteriorPower (Spec (CommRingCat.of R))
   (relativeDifferentialSheaf (Spec.map (CommRingCat.ofHom (algebraMap Λ R)))) n
 
 /-- The same original exceptional section defines the intrinsic global unit-square target map. -/
-def pairIdeal_onePoleUnitMap :
+def pairIdealOnePoleUnitMap :
     (pullback (blowdown I)).obj M ⟶ (centreTwistedPullbackLine I L).val :=
   (pullback (blowdown I)).map φ ≫
     (positiveCartierTensorSection Y Q
@@ -63,11 +63,11 @@ def pairIdeal_onePoleUnitMap :
 set_option backward.isDefEq.respectTransparency false in
 set_option backward.isDefEq.respectTransparency.types false in
 /-- The original global right-hand side pulls back using the same section and tensor map. -/
-theorem pairIdeal_onePoleUnitMap_pullback {U : Scheme.{u}} (f : U ⟶ Y) :
+theorem pairIdealOnePoleUnitMap_pullback {U : Scheme.{u}} (f : U ⟶ Y) :
     let s : SheafOfModules.unit (canonicalBlowup I).ringCatSheaf ⟶ Q :=
       InternalHom.transpose Y
         (Scheme.Hom.idealInclusion (centreι (Blowup.blowupDatum (Blowup.affineCenter R I))))
-    (pullback f).map (pairIdeal_onePoleUnitMap Λ R I n L φ) ≫ pullbackTensorMap f P Q =
+    (pullback f).map (pairIdealOnePoleUnitMap Λ R I n L φ) ≫ pullbackTensorMap f P Q =
       (pullback f).map ((pullback (blowdown I)).map φ) ≫
         (positiveCartierTensorSection U ((pullback f).obj Q)
           ((pullbackUnitIso f).inv ≫ (pullback f).map s)).app ((pullback f).obj P) ≫

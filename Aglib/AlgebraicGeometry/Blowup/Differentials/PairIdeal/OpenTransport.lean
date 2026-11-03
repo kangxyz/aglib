@@ -59,7 +59,7 @@ local notation "Y" => pointBlowup X p
 local notation "Z" => canonicalBlowup I
 local notation "b" => pointBlowdown X p
 local notation "d" => blowdown I
-local notation "q" => pairIdeal_openComparison R I X p j hcentre
+local notation "q" => pairIdealOpenComparison R I X p j hcentre
 local notation "α" => Spec.map (CommRingCat.ofHom (algebraMap Λ R))
 local notation "M" => moduleExteriorPower X (relativeDifferentialSheaf a) n
 local notation "MY" => moduleExteriorPower Y (relativeDifferentialSheaf (b ≫ a)) n
@@ -71,47 +71,47 @@ local notation "PZ" => Functor.obj (pullback d) (Functor.obj (pullback j) L.val)
 local notation "TY" => tensorSheaf Y P QY
 local notation "Fj" => rawOpenBaseIso a α j ha n
 local notation "C" => pullbackComp q b ≪≫
-  pullbackCongr (pairIdeal_openComparison_triangle R I X p j hcentre) ≪≫
+  pullbackCongr (pairIdealOpenComparison_triangle R I X p j hcentre) ≪≫
     Iso.symm (pullbackComp d j)
-local notation "θ" => pairIdeal_openDualMap R I X p j hcentre hp
+local notation "θ" => pairIdealOpenDualMap R I X p j hcentre hp
 
 /-- The actual P06 raw map, followed by the original forward coefficient transport. -/
-def pairIdeal_rawOpenPullback : (pullback q).obj MY ⟶ (pullback q).obj TY := by
-  let _ : IsOpenImmersion q := pairIdeal_openComparison_isOpenImmersion R I X p j hcentre
+def pairIdealRawOpenPullback : (pullback q).obj MY ⟶ (pullback q).obj TY := by
+  let _ : IsOpenImmersion q := pairIdealOpenComparison_isOpenImmersion R I X p j hcentre
   let LR : LineBundle (Spec (.of R)) := pullbackLineBundle j L
   let φR : moduleExteriorPower (Spec (.of R)) (relativeDifferentialSheaf α) n ⟶ LR.val :=
     (Fj).inv ≫ (pullback j).map φ
   let S : (pullback q).obj MY ≅ moduleExteriorPower Z (relativeDifferentialSheaf (d ≫ α)) n :=
     rawOpenSourceIso a α j ha b d q
-    (pairIdeal_openComparison_triangle R I X p j hcentre) n
+    (pairIdealOpenComparison_triangle R I X p j hcentre) n
   let η : (show (Z).Modules from tensorSheaf Z PZ QZ) ⟶ (pullback q).obj TY :=
     tensorSheafMap Z ((C).app L.val).inv θ ≫ (pullbackTensorMapIso q P QY).inv
-  exact S.hom ≫ pairIdeal_onePoleRawMap Λ R K I x y hI hx hy hproper n LR φR ≫ η
+  exact S.hom ≫ pairIdealOnePoleRawMap Λ R K I x y hI hx hy hproper n LR φR ≫ η
 
 /-- The same transported raw map in the original native restriction coordinates. -/
-def pairIdeal_rawOpenRestriction :
-    let _ : IsOpenImmersion q := pairIdeal_openComparison_isOpenImmersion R I X p j hcentre
+def pairIdealRawOpenRestriction :
+    let _ : IsOpenImmersion q := pairIdealOpenComparison_isOpenImmersion R I X p j hcentre
     (MY).restrict q ⟶ (show (Y).Modules from TY).restrict q := by
-  let _ : IsOpenImmersion q := pairIdeal_openComparison_isOpenImmersion R I X p j hcentre
+  let _ : IsOpenImmersion q := pairIdealOpenComparison_isOpenImmersion R I X p j hcentre
   exact (Scheme.Modules.restrictFunctorIsoPullback q).hom.app MY ≫
-    pairIdeal_rawOpenPullback Λ R K I x y hI hx hy hproper X p hp a j ha hcentre n L φ ≫
+    pairIdealRawOpenPullback Λ R K I x y hI hx hy hproper X p hp a j ha hcentre n L φ ≫
       (Scheme.Modules.restrictFunctorIsoPullback q).inv.app TY
 
 /-- The local map has the original coefficient/positive-section equation in pullback coordinates. -/
-theorem pairIdeal_rawOpenPullback_unit :
+theorem pairIdealRawOpenPullback_unit :
     (pullback q).map (rawFormsPullback a b n) ≫
-        pairIdeal_rawOpenPullback Λ R K I x y hI hx hy hproper X p hp a j ha hcentre n L φ =
+        pairIdealRawOpenPullback Λ R K I x y hI hx hy hproper X p hp a j ha hcentre n L φ =
       (pullback q).map ((pullback b).map φ ≫
         (positiveCartierTensorSection Y QY
           (cartierDualIdealSection (pointExceptionalι X p))).app P ≫
             (tensorSheafBraiding Y QY P).hom) := by
-  let _ : IsOpenImmersion q := pairIdeal_openComparison_isOpenImmersion R I X p j hcentre
+  let _ : IsOpenImmersion q := pairIdealOpenComparison_isOpenImmersion R I X p j hcentre
   let LR : LineBundle (Spec (.of R)) := pullbackLineBundle j L
   let φR : moduleExteriorPower (Spec (.of R)) (relativeDifferentialSheaf α) n ⟶ LR.val :=
     (Fj).inv ≫ (pullback j).map φ
   let S : (pullback q).obj MY ≅ moduleExteriorPower Z (relativeDifferentialSheaf (d ≫ α)) n :=
     rawOpenSourceIso a α j ha b d q
-    (pairIdeal_openComparison_triangle R I X p j hcentre) n
+    (pairIdealOpenComparison_triangle R I X p j hcentre) n
   let sY := cartierDualIdealSection (pointExceptionalι X p)
   let sZ := cartierDualIdealSection
     (((Blowup.affineCenter R I).comap d).subschemeι)
@@ -121,8 +121,8 @@ theorem pairIdeal_rawOpenPullback_unit :
   let η : (show (Z).Modules from tensorSheaf Z PZ QZ) ⟶ (pullback q).obj TY :=
     tensorSheafMap Z ((C).app L.val).inv θ ≫ (pullbackTensorMapIso q P QY).inv
   have hs := rawOpenSourceIso_pullback a α j ha b d q
-    (pairIdeal_openComparison_triangle R I X p j hcentre) n
-  have hr := pairIdeal_onePoleRawMap_unit Λ R K I x y hI hx hy hproper n LR φR
+    (pairIdealOpenComparison_triangle R I X p j hcentre) n
+  have hr := pairIdealOnePoleRawMap_unit Λ R K I x y hI hx hy hproper n LR φR
   have hφ : (pullback d).map (Fj).hom ≫ (pullback d).map φR =
       (pullback d).map ((pullback j).map φ) := by
     let A₀ : (Spec (.of R)).Modules := (pullback j).obj M
@@ -146,7 +146,7 @@ theorem pairIdeal_rawOpenPullback_unit :
     let c : PZ ⟶ (pullback q).obj P := ((C).app L.val).inv
     let k : D₀ ⟶ E₀ := tensorSheafMap Z c θ
     have h := rightInsertion_pullback_transport q P QY PZ QZ c θ sY sZ
-      (pairIdeal_openDualMap_section R I X p j hcentre hp)
+      (pairIdealOpenDualMap_section R I X p j hcentre hp)
     have h₀ : iZ ≫ k = (c ≫ (pullback q).map iY) ≫ eT.hom := by
       calc
         (show PZ ⟶ E₀ from iZ ≫ k) =
@@ -177,7 +177,7 @@ theorem pairIdeal_rawOpenPullback_unit :
       ((pullback d).map ((pullback j).map φ)) eL.inv).symm.trans
         ((Iso.comp_inv_eq eL).mpr hn₁)
   have hr' : rawFormsPullback α d n ≫
-      pairIdeal_onePoleRawMap Λ R K I x y hI hx hy hproper n LR φR =
+      pairIdealOnePoleRawMap Λ R K I x y hI hx hy hproper n LR φR =
         (pullback d).map φR ≫ iZ := by
     exact hr.trans (congrArg (fun z => (pullback d).map φR ≫ z)
       (positiveSection_eq_rightInsertion Z PZ QZ sZ))
@@ -186,18 +186,18 @@ theorem pairIdeal_rawOpenPullback_unit :
     positiveSection_eq_rightInsertion Y P QY sY
   calc
     _ = (C).hom.app M ≫ (pullback d).map (Fj).hom ≫ rawFormsPullback α d n ≫
-        pairIdeal_onePoleRawMap Λ R K I x y hI hx hy hproper n LR φR ≫ η := by
+        pairIdealOnePoleRawMap Λ R K I x y hI hx hy hproper n LR φR ≫ η := by
       change (pullback q).map (rawFormsPullback a b n) ≫
-        (S.hom ≫ pairIdeal_onePoleRawMap Λ R K I x y hI hx hy hproper n LR φR ≫ η) = _
+        (S.hom ≫ pairIdealOnePoleRawMap Λ R K I x y hI hx hy hproper n LR φR ≫ η) = _
       simpa only [Category.assoc] using congrArg (fun z => z ≫
-        pairIdeal_onePoleRawMap Λ R K I x y hI hx hy hproper n LR φR ≫ η) hs
+        pairIdealOnePoleRawMap Λ R K I x y hI hx hy hproper n LR φR ≫ η) hs
     _ = (C).hom.app M ≫ (pullback d).map (Fj).hom ≫ (pullback d).map φR ≫ iZ ≫ η := by
       let A₀ : (Z).Modules := (pullback d).obj
         (moduleExteriorPower (Spec (.of R)) (relativeDifferentialSheaf α) n)
       let B₀ : (Z).Modules := moduleExteriorPower Z (relativeDifferentialSheaf (d ≫ α)) n
       let T₀ : (Z).Modules := tensorSheaf Z PZ QZ
       let V₀ : (Z).Modules := (pullback q).obj TY
-      let k : B₀ ⟶ T₀ := pairIdeal_onePoleRawMap Λ R K I x y hI hx hy hproper n LR φR
+      let k : B₀ ⟶ T₀ := pairIdealOnePoleRawMap Λ R K I x y hI hx hy hproper n LR φR
       have hstep : rawFormsPullback α d n ≫ k ≫ η = (pullback d).map φR ≫ iZ ≫ η :=
         (Category.assoc (rawFormsPullback α d n) k η).symm.trans
           ((congrArg (fun z : A₀ ⟶ T₀ => z ≫ η) hr').trans
@@ -223,28 +223,28 @@ theorem pairIdeal_rawOpenPullback_unit :
     _ = _ := congrArg (fun z => (pullback q).map ((pullback b).map φ ≫ z)) hiY.symm
 
 /-- The original native restriction has the proved local unit equation required by cover gluing. -/
-theorem pairIdeal_rawOpenRestriction_unit :
-    let _ : IsOpenImmersion q := pairIdeal_openComparison_isOpenImmersion R I X p j hcentre
+theorem pairIdealRawOpenRestriction_unit :
+    let _ : IsOpenImmersion q := pairIdealOpenComparison_isOpenImmersion R I X p j hcentre
     (Scheme.Modules.restrictFunctor q).map (rawFormsPullback a b n) ≫
-        pairIdeal_rawOpenRestriction Λ R K I x y hI hx hy hproper X p hp a j ha hcentre n L φ =
+        pairIdealRawOpenRestriction Λ R K I x y hI hx hy hproper X p hp a j ha hcentre n L φ =
       (Scheme.Modules.restrictFunctor q).map ((pullback b).map φ ≫
         (positiveCartierTensorSection Y QY
           (cartierDualIdealSection (pointExceptionalι X p))).app P ≫
             (tensorSheafBraiding Y QY P).hom) := by
-  let _ : IsOpenImmersion q := pairIdeal_openComparison_isOpenImmersion R I X p j hcentre
+  let _ : IsOpenImmersion q := pairIdealOpenComparison_isOpenImmersion R I X p j hcentre
   let e := Scheme.Modules.restrictFunctorIsoPullback q
-  have h := pairIdeal_rawOpenPullback_unit Λ R K I x y hI hx hy hproper X p hp
+  have h := pairIdealRawOpenPullback_unit Λ R K I x y hI hx hy hproper X p hp
     a j ha hcentre n L φ
   let β := rawFormsPullback a b n
   let t := (pullback b).map φ ≫
     (positiveCartierTensorSection Y QY
       (cartierDualIdealSection (pointExceptionalι X p))).app P ≫
         (tensorSheafBraiding Y QY P).hom
-  let r := pairIdeal_rawOpenPullback Λ R K I x y hI hx hy hproper X p hp
+  let r := pairIdealRawOpenPullback Λ R K I x y hI hx hy hproper X p hp
     a j ha hcentre n L φ
   calc
     _ = e.hom.app ((pullback b).obj M) ≫ (pullback q).map β ≫ r ≫ e.inv.app TY := by
-      simpa only [pairIdeal_rawOpenRestriction, e, β, r, Category.assoc] using
+      simpa only [pairIdealRawOpenRestriction, e, β, r, Category.assoc] using
         congrArg (fun z => z ≫ r ≫ e.inv.app TY) (e.hom.naturality β)
     _ = e.hom.app ((pullback b).obj M) ≫ (pullback q).map t ≫ e.inv.app TY := by
       simpa only [β, r, t, Category.assoc] using

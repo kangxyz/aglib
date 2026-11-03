@@ -8,6 +8,8 @@ A second thin theorem derives this common-fraction condition when the original
 compatible fraction-field extension has degree one. Neither result needs
 Noetherianity, localness, completeness, dimension, or normality of the upper ring.
 Integrality is the required algebraic hypothesis, not an assumed resolution.
+Both declarations take commutative rings with their field-valued fraction-ring
+structures; they do not require separate `IsDomain R` or `IsDomain A` premises.
 
 ## Verification
 

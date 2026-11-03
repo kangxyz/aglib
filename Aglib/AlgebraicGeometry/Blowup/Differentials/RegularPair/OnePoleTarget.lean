@@ -52,7 +52,7 @@ local notation "a" => firstGenerator I x y rfl
 local notation "c" => chartMap B a
 
 /-- The actual global one-pole target on the same constructed blowup. -/
-def saturatedPair_onePoleTarget : Invertible.LineBundle (canonicalBlowup I) :=
+def saturatedPairOnePoleTarget : Invertible.LineBundle (canonicalBlowup I) :=
   centreTwistedPullbackLine I L
 
 omit [IsDomain R] in
@@ -61,58 +61,58 @@ theorem saturatedPair_chartBase_triangle : c ≫ blowdown I = Spec.map σ :=
   pairIdeal_chartBase_triangle R I x y rfl
 
 /-- The original whole pullback comparison, before evaluation on a module. -/
-def saturatedPair_chartBasePullbackIso :
+def saturatedPairChartBasePullbackIso :
     let f : Spec (.of S) ⟶ canonicalBlowup I := c
     pullback (blowdown I) ⋙ pullback f ≅ pullback (Spec.map σ) :=
-  pairIdeal_chartBasePullbackIso R I x y rfl
+  pairIdealChartBasePullbackIso R I x y rfl
 
 /-- The original chart triangle identifies the actual pulled-back base line. -/
-def saturatedPair_chartBaseLineIso :
+def saturatedPairChartBaseLineIso :
     (pullback c).obj ((pullback (blowdown I)).obj L.val) ≅
       (pullback (Spec.map σ)).obj L.val :=
-  (saturatedPair_chartBasePullbackIso R x y).app L.val
+  (saturatedPairChartBasePullbackIso R x y).app L.val
 
 /-- The original global tensor line restricts to the constructed chart target. -/
-def saturatedPair_onePoleTargetIso :
-    (pullback c).obj (saturatedPair_onePoleTarget R x y L).val ≅
-      (saturatedPair_onePoleLine R x y L).val :=
+def saturatedPairOnePoleTargetIso :
+    (pullback c).obj (saturatedPairOnePoleTarget R x y L).val ≅
+      (saturatedPairOnePoleLine R x y L).val :=
   Invertible.PullbackTensor.Local.pullbackLineBundleTensorIso c
       (Invertible.pullbackLineBundle (blowdown I) L)
       (Invertible.dualLineBundle (canonicalBlowup I) (centreIdealLine I)) ≪≫
-    tensorSheafIso (Spec (.of S)) (saturatedPair_chartBaseLineIso R x y L) (Iso.refl _)
+    tensorSheafIso (Spec (.of S)) (saturatedPairChartBaseLineIso R x y L) (Iso.refl _)
 
 omit [IsDomain R] in
 /-- The original target comparison has the retained whole-comparison component. -/
-theorem saturatedPair_onePoleTargetIso_hom :
+theorem saturatedPairOnePoleTargetIso_hom :
     let f : Spec (.of S) ⟶ canonicalBlowup I := c
-    let e := saturatedPair_chartBasePullbackIso R x y
+    let e := saturatedPairChartBasePullbackIso R x y
     let P := Invertible.pullbackLineBundle (blowdown I) L
     let N := Invertible.dualLineBundle (canonicalBlowup I) (centreIdealLine I)
     let U := Invertible.pullbackLineBundle (Spec.map σ) L
     let t : (pullback f).obj (Invertible.tensorLineBundle (canonicalBlowup I) P N).val ≅
         (Invertible.tensorLineBundle (Spec (.of S)) U
-          (Invertible.pullbackLineBundle f N)).val := saturatedPair_onePoleTargetIso R x y L
+          (Invertible.pullbackLineBundle f N)).val := saturatedPairOnePoleTargetIso R x y L
     t.hom =
       (Invertible.PullbackTensor.Local.pullbackLineBundleTensorIso f P N ≪≫
         tensorSheafIso (Spec (.of S)) (e.app L.val) (Iso.refl _)).hom := by
   rfl
 
 /-- The same constructed map lands in the pullback of the original global target. -/
-def saturatedPair_onePoleTargetMap :
+def saturatedPairOnePoleTargetMap :
     Invertible.dualSheaf (Spec (.of S)) (Invertible.dualSheaf (Spec (.of S))
       (moduleExteriorPower (Spec (.of S))
         (relativeDifferentialSheaf (Spec.map σ ≫ Spec.map α)) n)) ⟶
-    (pullback c).obj (saturatedPair_onePoleTarget R x y L).val :=
-  saturatedPair_onePoleChartMap Λ R K x y hx hy n L φ ≫
-    (saturatedPair_onePoleTargetIso R x y L).inv
+    (pullback c).obj (saturatedPairOnePoleTarget R x y L).val :=
+  saturatedPairOnePoleChartMap Λ R K x y hx hy n L φ ≫
+    (saturatedPairOnePoleTargetIso R x y L).inv
 
 /-- The original target comparison recovers exactly the same chart map. -/
-theorem saturatedPair_onePoleTargetMap_compare :
-    saturatedPair_onePoleTargetMap Λ R K x y hx hy n L φ ≫
-      (saturatedPair_onePoleTargetIso R x y L).hom =
-    saturatedPair_onePoleChartMap Λ R K x y hx hy n L φ := by
-  let g := saturatedPair_onePoleChartMap Λ R K x y hx hy n L φ
-  let e := saturatedPair_onePoleTargetIso R x y L
+theorem saturatedPairOnePoleTargetMap_compare :
+    saturatedPairOnePoleTargetMap Λ R K x y hx hy n L φ ≫
+      (saturatedPairOnePoleTargetIso R x y L).hom =
+    saturatedPairOnePoleChartMap Λ R K x y hx hy n L φ := by
+  let g := saturatedPairOnePoleChartMap Λ R K x y hx hy n L φ
+  let e := saturatedPairOnePoleTargetIso R x y L
   exact (Category.assoc g e.inv e.hom).trans
     ((congrArg (fun t => g ≫ t) e.inv_hom_id).trans (Category.comp_id g))
 

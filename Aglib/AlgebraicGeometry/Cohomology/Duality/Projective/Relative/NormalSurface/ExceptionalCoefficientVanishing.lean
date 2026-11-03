@@ -33,6 +33,7 @@ universe u
 
 namespace AlgebraicGeometry.Scheme.RationalSingularities.MaximalIdealBlowup
 
+/-- The standard derived-category instance for modules over the original coefficient ring. -/
 local instance coefficientVanishingDerived (B : Type u) [CommRing B] :
     HasDerivedCategory.{u + 1} (ModuleCat.{u} B) := HasDerivedCategory.standard _
 
@@ -62,6 +63,7 @@ variable (A : Type u) [CommRing A] [IsDomain A] [IsLocalRing A]
     (hRat : NormalModificationH1Vanishing A)
     (M : (source A hdA).Modules) [M.IsFinitePresentation]
 
+/-- The field structure on the original maximal-ideal quotient. -/
 local instance coefficientVanishingResidueField : Field (A ⧸ IsLocalRing.maximalIdeal A) :=
   Ideal.Quotient.field _
 

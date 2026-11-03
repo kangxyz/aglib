@@ -1,0 +1,102 @@
+{
+  "source_digest": "f83e4561558ff9a7aa384c05978446c03bee6655e816001ad1e0718b2548fdba",
+  "status": "passed",
+  "plan_sha256": "6f850f21fd7180a7ece28fc5d1e2651606f76cabfb573e2fbbef87e0af00f66a",
+  "assigned_modules": 1414,
+  "import_only_entries": {
+    "Aglib.Data": {
+      "path": "Aglib/Data.lean",
+      "sha256": "9e4e613def16833d52de4a0fdf48c9493372d1577995ef0e442666ba62a04c86",
+      "reason": "Generated import-only entry with no declaration commands; existing generated-entry/source/style checks retained."
+    },
+    "Aglib.TopologicalGroup": {
+      "path": "Aglib/TopologicalGroup.lean",
+      "sha256": "e66ce34479f0147b3afe5fa042e009ce06021deee8f6601a0cab02eebca386b7",
+      "reason": "Generated import-only entry with no declaration commands; existing generated-entry/source/style checks retained."
+    },
+    "Aglib.GroupCohomology": {
+      "path": "Aglib/GroupCohomology.lean",
+      "sha256": "75a3f8f949fa2f0e76c5d6ec7e882187bc358bfd828db3f0be928a78a2faca05",
+      "reason": "Generated import-only entry with no declaration commands; existing generated-entry/source/style checks retained."
+    },
+    "Aglib.Analysis": {
+      "path": "Aglib/Analysis.lean",
+      "sha256": "42bdfd81535060c0732c2e61e40c947adf9ba8288faa755832dcb5411f163ee6",
+      "reason": "Generated import-only entry with no declaration commands; existing generated-entry/source/style checks retained."
+    },
+    "Aglib.Topology": {
+      "path": "Aglib/Topology.lean",
+      "sha256": "76917eee22ad0698eedab9b7c555dd30b028e5af1077c31adbd34bb4c13e53a2",
+      "reason": "Generated import-only entry with no declaration commands; existing generated-entry/source/style checks retained."
+    },
+    "Aglib.AlgebraicGeometry": {
+      "path": "Aglib/AlgebraicGeometry.lean",
+      "sha256": "029b8aa6f3d15011264cdc5e32c2b420ede38d6706230507d3bb6f2c0719301c",
+      "reason": "Generated import-only entry with no declaration commands; existing generated-entry/source/style checks retained."
+    },
+    "Aglib.LinearAlgebra": {
+      "path": "Aglib/LinearAlgebra.lean",
+      "sha256": "8bc72af607fae0a562bd3de7018112ea43c6f85fcf7739fa80889af70d57159a",
+      "reason": "Generated import-only entry with no declaration commands; existing generated-entry/source/style checks retained."
+    },
+    "Aglib.RepresentationTheory": {
+      "path": "Aglib/RepresentationTheory.lean",
+      "sha256": "0c0898be4e23d87352daba5bb099ce40b85d2dfec9b8fb9efcc82631fd96d8f2",
+      "reason": "Generated import-only entry with no declaration commands; existing generated-entry/source/style checks retained."
+    },
+    "Aglib.RingTheory": {
+      "path": "Aglib/RingTheory.lean",
+      "sha256": "356cfd942e832b3761e6e8a59d9c82ecf6ae8299918d084c5ad6f63da7531a0a",
+      "reason": "Generated import-only entry with no declaration commands; existing generated-entry/source/style checks retained."
+    },
+    "Aglib.CategoryTheory": {
+      "path": "Aglib/CategoryTheory.lean",
+      "sha256": "0657607485970a021f565e142e5777629b63b73c666ed6ef99b2e7070b884cf2",
+      "reason": "Generated import-only entry with no declaration commands; existing generated-entry/source/style checks retained."
+    },
+    "Aglib.KTheory": {
+      "path": "Aglib/KTheory.lean",
+      "sha256": "2e74c607ee2ea687dc270a4895e1819e5d218847be1c01de599b56a0f3cef8f6",
+      "reason": "Generated import-only entry with no declaration commands; existing generated-entry/source/style checks retained."
+    },
+    "Aglib.FieldTheory": {
+      "path": "Aglib/FieldTheory.lean",
+      "sha256": "de6e03ec7d4a2c9cadc56923c964aaa967469269b779f287c7f16c3ad1e37212",
+      "reason": "Generated import-only entry with no declaration commands; existing generated-entry/source/style checks retained."
+    },
+    "Aglib.Algebra": {
+      "path": "Aglib/Algebra.lean",
+      "sha256": "8d72950538758de294b27b7a08fc385b60a3e8bbb1f03e7d09c844a00d83bc03",
+      "reason": "Generated import-only entry with no declaration commands; existing generated-entry/source/style checks retained."
+    },
+    "Aglib.GroupTheory": {
+      "path": "Aglib/GroupTheory.lean",
+      "sha256": "8b1e8bb4cf7bc88318c08de2792da612e7664f4dc741e8f2a852c180b8ee9197",
+      "reason": "Generated import-only entry with no declaration commands; existing generated-entry/source/style checks retained."
+    },
+    "Aglib": {
+      "path": "Aglib.lean",
+      "sha256": "ef5be3ced8a276e4ed3c09f5ccd09496880a60d17211d26de051fb7f1e55d7e4",
+      "reason": "Generated import-only entry with no declaration commands; existing generated-entry/source/style checks retained."
+    }
+  },
+  "batches": [
+    {
+      "id": "batch-05",
+      "assigned_modules": 1414,
+      "imports": 74,
+      "exit_code": 0,
+      "seconds": 37.16674827039242,
+      "log": "/root/autodl-tmp/lean-build/logs/remote-6946cf49733c4e27ab68ce7be33b7e91/batch-05-axioms.log",
+      "command": [
+        "/root/autodl-tmp/lean-build/tools/axiom-audit-46024e005996/.lake/build/bin/axiom-audit",
+        "--root",
+        "Aglib",
+        "--modules",
+        "Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.Bidual,Aglib.AlgebraicGeometry.AbelianScheme.OverField.LineBundle.BaseChange,Aglib.AlgebraicGeometry.Cohomology.BaseChange.ResidueFieldPushforward,Aglib.AlgebraicGeometry.Cohomology.Blowup.RegularPoint.OnePoleCanonical,Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.CohenMacaulayCurve.Serre,Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.NormalSurface.LocalImageFrame,Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.NormalSurface.Trace.PointBlowupInverseLine,Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Smooth,Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace,Aglib.AlgebraicGeometry.Cohomology.Projective.FiniteModel.BaseChangePerfect,Aglib.AlgebraicGeometry.Cohomology.Projective.Grauert,Aglib.AlgebraicGeometry.Cohomology.Projective.Semicontinuity,Aglib.AlgebraicGeometry.Cohomology.Proper.CanonicalTraceAnnihilator,Aglib.AlgebraicGeometry.Cohomology.Proper.Grauert,Aglib.AlgebraicGeometry.Cohomology.Proper.H0Vanishing.FieldExtension,Aglib.AlgebraicGeometry.Curves.Jacobian.LineBundle,Aglib.AlgebraicGeometry.Curves.Jacobian.Projectivity,Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.Descent.FieldComparison,Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.IntrinsicCartier,Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.OrderedUniversal,Aglib.AlgebraicGeometry.Curves.Picard.DegreeZeroGenerators,Aglib.AlgebraicGeometry.Curves.PointDivisor.Products,Aglib.AlgebraicGeometry.Descent.LocalModification.ProjectiveSurfaceChain,Aglib.AlgebraicGeometry.EffectiveCartierDivisor.Relative.PositiveSectionIsomorphism,Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.GenusOneModel,Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.GroupCompatibility,Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.PointedGroup,Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.PointedVariableChange,Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.GenericCoverCoefficientZeroSpreading,Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.GenericCoverZeroSpreading,Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PrincipalLocalizationInjectiveAcyclic,Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericIsolatedNeighborhood,Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericUnitRestriction,Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekDirectImage,Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.StageCohomology,Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.CommonFieldCompositeZero,Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.AbelBoundary,Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.DimensionZeroModules,Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RelativeNormalizedPicard,Aglib.AlgebraicGeometry.EtaleCohomology.Localization.AbelianNaturality,Aglib.AlgebraicGeometry.EtaleCohomology.Localization.ClosedSummandDetection,Aglib.AlgebraicGeometry.EtaleCohomology.Localization.ModuleInjectiveRetract,Aglib.AlgebraicGeometry.EtaleCohomology.Localization.ModuleNaturality,Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.ModuleCohomologyNaturality,Aglib.AlgebraicGeometry.Group.CurveGenus,Aglib.AlgebraicGeometry.Group.MultiplicationFiniteDegree,Aglib.AlgebraicGeometry.Group.WeilPairing,Aglib.AlgebraicGeometry.HilbertScheme.IdealTwist.BaseChange,Aglib.AlgebraicGeometry.Morphisms.SpreadingOut,Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RootBaseChangedComponentChart,Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RootNativePoint,Aglib.AlgebraicGeometry.Picard.Representability.LocallyNoetherianBase,Aglib.AlgebraicGeometry.Spec.CompletionLocalRing.RegularModel,Aglib.AlgebraicGeometry.Spec.PowerSeriesHartogsCoverExtension,Aglib.AlgebraicGeometry.Spec.PowerSeriesSectionLifting,Aglib.AlgebraicGeometry.Surfaces.Birational.Cohomology,Aglib.AlgebraicGeometry.Surfaces.Birational.Factorization,Aglib.AlgebraicGeometry.Surfaces.Birational.NormalizedBlowupCover.Trace.TargetGenericLocalization,Aglib.AlgebraicGeometry.Surfaces.Birational.NormalizedPointDomination.Ideal,Aglib.AlgebraicGeometry.Surfaces.Birational.TraitDomination,Aglib.AlgebraicGeometry.Surfaces.Contraction.Proper,Aglib.AlgebraicGeometry.Surfaces.PowerNode.Comparison.CyclicFibre,Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.Blowup.Exceptional.FirstPower,Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.Completion,Aglib.AlgebraicGeometry.Surfaces.RationalSingularities.DerivedUnit.Supported,Aglib.AlgebraicGeometry.Surfaces.Resolution.CompletedIntermediateBranch,Aglib.AlgebraicGeometry.Surfaces.Resolution.Necessity,Aglib.AlgebraicGeometry.Surfaces.Resolution.NormalizedPointBlowupChain.FiniteBaseEmbedding,Aglib.AlgebraicGeometry.Surfaces.Resolution.NormalizedPointBlowupChain.ProjectiveStages,Aglib.AlgebraicGeometry.Surfaces.Resolution.NormalizedPointBlowupChain.SingularAncestors,Aglib.AlgebraicGeometry.Surfaces.Resolution.NormalizedPointBlowupChain.StepDerivedUnit,Aglib.AlgebraicGeometry.Surfaces.Resolution.RationalDomination,Aglib.AlgebraicGeometry.Surfaces.Resolution.RationalDoublePoint.NormalizedResolution,Aglib.AlgebraicGeometry.Surfaces.Resolution.RationalDoublePoint.QuadraticClassification",
+        "--json"
+      ]
+    }
+  ],
+  "predicate": "Pinned auditor, original three approved axioms, full private environments of actual batch imports; this invocation rechecks batch-05; matching batches are retained from the prior source."
+}

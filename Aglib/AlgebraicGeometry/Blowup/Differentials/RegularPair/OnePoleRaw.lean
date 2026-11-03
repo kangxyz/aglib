@@ -49,42 +49,42 @@ local notation "B" => Blowup.blowupDatum (Blowup.affineCenter R I)
 local notation "c" => chartMap B (firstGenerator I x y rfl)
 
 /-- The original raw map followed by the original inverse-ideal frame. -/
-def saturatedPair_onePoleRawMap :
+def saturatedPairOnePoleRawMap :
     moduleExteriorPower (Spec (.of S))
       (relativeDifferentialSheaf (Spec.map σ ≫ Spec.map α)) n ⟶
-    (saturatedPair_onePoleLine R x y L).val :=
-  saturatedPair_scaledRawMap Λ R K x y hx hy n L φ ≫
-    (saturatedPair_onePoleFrame R x y L).hom
+    (saturatedPairOnePoleLine R x y L).val :=
+  saturatedPairScaledRawMap Λ R K x y hx hy n L φ ≫
+    (saturatedPairOnePoleFrame R x y L).hom
 
 /-- The existing bidual chart map is exactly the extension of its original raw map. -/
-theorem saturatedPair_onePoleChartMap_eq_extension :
-    saturatedPair_onePoleChartMap Λ R K x y hx hy n L φ =
-    Invertible.extendToBidualLine (Spec (.of S)) (saturatedPair_onePoleLine R x y L)
-      (saturatedPair_onePoleRawMap Λ R K x y hx hy n L φ) :=
+theorem saturatedPairOnePoleChartMap_eq_extension :
+    saturatedPairOnePoleChartMap Λ R K x y hx hy n L φ =
+    Invertible.extendToBidualLine (Spec (.of S)) (saturatedPairOnePoleLine R x y L)
+      (saturatedPairOnePoleRawMap Λ R K x y hx hy n L φ) :=
   Invertible.extendToBidualLine_postcomp
-    (Invertible.pullbackLineBundle (Spec.map σ) L) (saturatedPair_onePoleLine R x y L)
-    (saturatedPair_scaledRawMap Λ R K x y hx hy n L φ)
-    (saturatedPair_onePoleFrame R x y L).hom
+    (Invertible.pullbackLineBundle (Spec.map σ) L) (saturatedPairOnePoleLine R x y L)
+    (saturatedPairScaledRawMap Λ R K x y hx hy n L φ)
+    (saturatedPairOnePoleFrame R x y L).hom
 
 /-- The same raw composite with the original common global target. -/
-def saturatedPair_onePoleRawTargetMap :
+def saturatedPairOnePoleRawTargetMap :
     moduleExteriorPower (Spec (.of S))
       (relativeDifferentialSheaf (Spec.map σ ≫ Spec.map α)) n ⟶
-    (pullback c).obj (saturatedPair_onePoleTarget R x y L).val :=
-  saturatedPair_onePoleRawMap Λ R K x y hx hy n L φ ≫
-    (saturatedPair_onePoleTargetIso R x y L).inv
+    (pullback c).obj (saturatedPairOnePoleTarget R x y L).val :=
+  saturatedPairOnePoleRawMap Λ R K x y hx hy n L φ ≫
+    (saturatedPairOnePoleTargetIso R x y L).inv
 
 /-- The original global-target map is the same canonical raw extension. -/
-theorem saturatedPair_onePoleTargetMap_eq_extension :
-    saturatedPair_onePoleTargetMap Λ R K x y hx hy n L φ =
+theorem saturatedPairOnePoleTargetMap_eq_extension :
+    saturatedPairOnePoleTargetMap Λ R K x y hx hy n L φ =
     Invertible.extendToBidualLine (Spec (.of S))
-      (Invertible.pullbackLineBundle c (saturatedPair_onePoleTarget R x y L))
-      (saturatedPair_onePoleRawTargetMap Λ R K x y hx hy n L φ) := by
-  have h := Invertible.extendToBidualLine_postcomp (saturatedPair_onePoleLine R x y L)
-    (Invertible.pullbackLineBundle c (saturatedPair_onePoleTarget R x y L))
-    (saturatedPair_onePoleRawMap Λ R K x y hx hy n L φ)
-    (saturatedPair_onePoleTargetIso R x y L).inv
-  exact (congrArg (fun t => t ≫ (saturatedPair_onePoleTargetIso R x y L).inv)
-    (saturatedPair_onePoleChartMap_eq_extension Λ R K x y hx hy n L φ)).trans h
+      (Invertible.pullbackLineBundle c (saturatedPairOnePoleTarget R x y L))
+      (saturatedPairOnePoleRawTargetMap Λ R K x y hx hy n L φ) := by
+  have h := Invertible.extendToBidualLine_postcomp (saturatedPairOnePoleLine R x y L)
+    (Invertible.pullbackLineBundle c (saturatedPairOnePoleTarget R x y L))
+    (saturatedPairOnePoleRawMap Λ R K x y hx hy n L φ)
+    (saturatedPairOnePoleTargetIso R x y L).inv
+  exact (congrArg (fun t => t ≫ (saturatedPairOnePoleTargetIso R x y L).inv)
+    (saturatedPairOnePoleChartMap_eq_extension Λ R K x y hx hy n L φ)).trans h
 
 end AlgebraicGeometry.Scheme.Blowup.RegularPair

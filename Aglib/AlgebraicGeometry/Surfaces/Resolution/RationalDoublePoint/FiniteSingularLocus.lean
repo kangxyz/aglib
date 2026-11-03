@@ -34,7 +34,7 @@ namespace AlgebraicGeometry.Scheme
 surface over a J-2 base form a finite subset of the original model. -/
 theorem finite_singularSet_inter_affine_of_isJ2Ring
     (A : Type u) [CommRing A] {X : Scheme.{u}} [IsIntegral X]
-    [IsLocallyNoetherian X] (f : X ⟶ Spec (.of A)) [LocallyOfFiniteType f]
+    (f : X ⟶ Spec (.of A)) [LocallyOfFiniteType f]
     (hA : IsJ2Ring.{u, 0} A) (hX : NormalStalks X)
     (hdim : topologicalKrullDim X ≤ 2) (U : X.Opens) (hU : IsAffineOpen U) :
     {x : X | x ∈ U ∧ ¬ IsRegularLocalRing (X.presheaf.stalk x)}.Finite := by

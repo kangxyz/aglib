@@ -30,6 +30,7 @@ universe u
 
 namespace AlgebraicGeometry.Scheme.Cohomology
 
+/-- The standard derived-category instance for modules over the original coefficient ring. -/
 local instance canonicalStalkActionDerived (B : Type u) [CommRing B] :
     HasDerivedCategory.{u + 1} (ModuleCat.{u} B) := HasDerivedCategory.standard _
 
@@ -68,6 +69,7 @@ def normalSurfaceCanonicalQuotientStalkSourceLinearEquiv :
   erw [ModuleCat.coinducedExtSourceModule_map_smul]
   exact E.map_smul r x
 
+omit [IsNoetherianRing R] in
 /-- The source-linear upgrade retains the original ambient-linear map as an
 additive equivalence, rather than selecting a different stalk identification. -/
 theorem normalSurfaceCanonicalQuotientStalkSourceLinearEquiv_toAddEquiv :

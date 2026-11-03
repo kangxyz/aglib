@@ -519,7 +519,7 @@ namespace AlgebraicGeometry.Scheme.Cohomology
 rational point, through the native pullback-composition comparison. -/
 theorem curveHyperplaneSection_pullback_point_eq_zero
     (k : Type u) [Field k] (ι : Type u) [Finite ι]
-    {C : Scheme.{u}} (j : C ⟶ ProjectiveSpace k ι) [IsClosedImmersion j]
+    {C : Scheme.{u}} (j : C ⟶ ProjectiveSpace k ι)
     (r : Spec (.of k) ⟶ C) (a : ι → k) (i : ι) (hi : a i ≠ 0) (c : ι →₀ k)
     (he : BinaryFormProduct.Field.point (RingHom.id k) a i hi = r ≫ j)
     (hc : Finsupp.linearCombination k a c = 0) :
@@ -646,7 +646,7 @@ theorem exists_regular_finite_hyperplane_through_rationalPoint
 pulled-back O(1), through the original ideal factor and bidual map. -/
 def curveHyperplaneDualIdealIso
     (k : Type u) [Field k] (ι : Type u) {C : Scheme.{u}}
-    (j : C ⟶ ProjectiveSpace k ι) [IsClosedImmersion j] (c : ι →₀ k)
+    (j : C ⟶ ProjectiveSpace k ι) (c : ι →₀ k)
     [Mono (curveHyperplaneIdealMap k ι j c)] :
     (curveHyperplaneLine k ι j).val ≅
       Invertible.dualSheaf C (Scheme.Hom.idealModule

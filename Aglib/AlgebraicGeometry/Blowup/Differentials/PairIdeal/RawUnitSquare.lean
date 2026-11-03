@@ -81,36 +81,36 @@ private theorem pairIdeal_rawRestrictionComponents_unit :
     let _ : IsOpenImmersion f := pairIdeal_chart_isOpenImmersion R I x y hI
     let β := rawFormsPullback (Spec.map α) (blowdown I) n
     let e := Scheme.Modules.restrictFunctorIsoPullback f
-    let src := pairIdeal_rawSourceIso Λ R I x y hI n
-    let tgt := pairIdeal_onePoleRawTargetMap Λ R K I x y hI hx hy n L φ
-    let t := pairIdeal_onePoleUnitMap Λ R I n L φ
+    let src := pairIdealRawSourceIso Λ R I x y hI n
+    let tgt := pairIdealOnePoleRawTargetMap Λ R K I x y hI hx hy n L φ
+    let t := pairIdealOnePoleUnitMap Λ R I n L φ
     (Scheme.Modules.restrictFunctor f).map β ≫
         ((src.hom ≫ tgt) ≫ e.inv.app (centreTwistedPullbackLine I L).val) =
       (Scheme.Modules.restrictFunctor f).map t := by
   intro f hf β e src tgt t
-  have hs := pairIdeal_rawSourceIso_pullback Λ R I x y hI n
-  have hu := pairIdeal_onePoleRawTargetMap_unit Λ R K I x y hI hx hy n L φ
+  have hs := pairIdealRawSourceIso_pullback Λ R I x y hI n
+  have hu := pairIdealOnePoleRawTargetMap_unit Λ R K I x y hI hx hy n L φ
   dsimp only [Functor.comp_obj] at hs hu
   have hp := square_of_functor_comparison_of_source_unit
     (N := (centreTwistedPullbackLine I L).val)
     (Scheme.Modules.restrictFunctor f) (pullback f) e β t src.hom tgt
-    ((pairIdeal_chartBasePullbackIso R I x y hI).hom.app _)
+    ((pairIdealChartBasePullbackIso R I x y hI).hom.app _)
     (rawFormsPullback (Spec.map α)
       (Spec.map (CommRingCat.ofHom (algebraMap R S))) n)
     hs hu
   exact hp
 
 /-- The actual local raw map satisfies the restriction of the original global unit square. -/
-theorem pairIdeal_onePoleRawRestrictionMap_unit :
+theorem pairIdealOnePoleRawRestrictionMap_unit :
     let f : Spec (.of S) ⟶ canonicalBlowup I := chartMap B (firstGenerator I x y hI)
     let _ : IsOpenImmersion f := pairIdeal_chart_isOpenImmersion R I x y hI
     (Scheme.Modules.restrictFunctor f).map (rawFormsPullback (Spec.map α) (blowdown I) n) ≫
-        pairIdeal_onePoleRawRestrictionMap Λ R K I x y hI hx hy n L φ =
-      (Scheme.Modules.restrictFunctor f).map (pairIdeal_onePoleUnitMap Λ R I n L φ) := by
+        pairIdealOnePoleRawRestrictionMap Λ R K I x y hI hx hy n L φ =
+      (Scheme.Modules.restrictFunctor f).map (pairIdealOnePoleUnitMap Λ R I n L φ) := by
   intro f hf
   let β := rawFormsPullback (Spec.map α) (blowdown I) n
   have hp := pairIdeal_rawRestrictionComponents_unit Λ R K I x y hI hx hy n L φ
-  have hr := pairIdeal_onePoleRawRestrictionMap_eq Λ R K I x y hI hx hy n L φ
+  have hr := pairIdealOnePoleRawRestrictionMap_eq Λ R K I x y hI hx hy n L φ
   exact (congrArg (fun z :
       (Scheme.Modules.restrictFunctor f).obj
           (moduleExteriorPower (canonicalBlowup I)

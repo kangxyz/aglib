@@ -122,6 +122,7 @@ Retain existing cases when refining key guidance in the main file.
 ## Additional validated cases
 
 - [Native loader fallback read failures: diagnosis and limits](loader-fallback-read-diagnosis.md)
+- [Coarse source-preserving validation under a mapping limit](cases/coarse-source-preserving-validation/README.md)
 - [Godement: complete generic construction and original native views](cases/godement-unit-insertion/README.md)
 - [Section pullback: retain the ordinary H1 functor](cases/section-h1-transport/README.md)
 

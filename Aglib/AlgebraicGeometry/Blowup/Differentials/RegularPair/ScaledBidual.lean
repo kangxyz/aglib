@@ -45,40 +45,40 @@ local notation "α" => CommRingCat.ofHom (algebraMap Λ R)
 local notation "σ" => CommRingCat.ofHom (algebraMap R S)
 
 /-- Extend the constructed scaled raw map to its actual source bidual. -/
-def saturatedPair_scaledBidualMap :
+def saturatedPairScaledBidualMap :
     Invertible.dualSheaf (Spec (.of S)) (Invertible.dualSheaf (Spec (.of S))
       (moduleExteriorPower (Spec (.of S))
         (relativeDifferentialSheaf (Spec.map σ ≫ Spec.map α)) n)) ⟶
     (pullback (Spec.map σ)).obj L.val :=
   Invertible.extendToBidualLine (Spec (.of S))
     (Invertible.pullbackLineBundle (Spec.map σ) L)
-    (saturatedPair_scaledRawMap Λ R K x y hx hy n L φ)
+    (saturatedPairScaledRawMap Λ R K x y hx hy n L φ)
 
 /-- The native extension agrees with the original scaled map on raw forms. -/
-theorem saturatedPair_scaledBidualMap_evaluation :
+theorem saturatedPairScaledBidualMap_evaluation :
     Invertible.bidualMap (Spec (.of S))
         (moduleExteriorPower (Spec (.of S))
           (relativeDifferentialSheaf (Spec.map σ ≫ Spec.map α)) n) ≫
-      saturatedPair_scaledBidualMap Λ R K x y hx hy n L φ =
-    saturatedPair_scaledRawMap Λ R K x y hx hy n L φ :=
+      saturatedPairScaledBidualMap Λ R K x y hx hy n L φ =
+    saturatedPairScaledRawMap Λ R K x y hx hy n L φ :=
   Invertible.extendToBidualLine_evaluation _ _ _
 
 /-- Original raw pullback sections retain exactly the original exceptional
 coordinate under bidual evaluation followed by the constructed map. -/
-theorem saturatedPair_scaledBidualMap_comp_apply
+theorem saturatedPairScaledBidualMap_comp_apply
     (p : moduleSpecΓFunctor.obj ((pullback (Spec.map σ)).obj
       (moduleExteriorPower (Spec (.of R)) (relativeDifferentialSheaf (Spec.map α)) n))) :
     moduleSpecΓFunctor.map
       (Invertible.bidualMap (Spec (.of S))
           (moduleExteriorPower (Spec (.of S))
             (relativeDifferentialSheaf (Spec.map σ ≫ Spec.map α)) n) ≫
-        saturatedPair_scaledBidualMap Λ R K x y hx hy n L φ)
+        saturatedPairScaledBidualMap Λ R K x y hx hy n L φ)
       (moduleSpecΓFunctor.map (rawFormsPullback (Spec.map α) (Spec.map σ) n) p) =
     algebraMap R S x • (moduleSpecΓFunctor.map ((pullback (Spec.map σ)).map φ) p) := by
   have h := congrArg (fun f => moduleSpecΓFunctor.map f)
-    (saturatedPair_scaledBidualMap_evaluation Λ R K x y hx hy n L φ)
+    (saturatedPairScaledBidualMap_evaluation Λ R K x y hx hy n L φ)
   exact (ConcreteCategory.congr_hom h
     (moduleSpecΓFunctor.map (rawFormsPullback (Spec.map α) (Spec.map σ) n) p)).trans
-      (saturatedPair_scaledRawMap_comp_apply Λ R K x y hx hy n L φ p)
+      (saturatedPairScaledRawMap_comp_apply Λ R K x y hx hy n L φ p)
 
 end AlgebraicGeometry.Scheme.Blowup.RegularPair

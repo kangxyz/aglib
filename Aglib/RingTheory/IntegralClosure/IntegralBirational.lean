@@ -23,7 +23,7 @@ namespace IsIntegrallyClosed
 /-- An original integral map into a domain with the same fraction field is
 bijective when the original base is integrally closed. -/
 theorem bijective_algebraMap_of_common_fractionRing
-    (R A K : Type*) [CommRing R] [IsDomain R] [CommRing A] [IsDomain A]
+    (R A K : Type*) [CommRing R] [CommRing A]
     [Field K] [Algebra R A] [Algebra R K] [Algebra A K]
     [IsScalarTower R A K] [IsFractionRing R K] [IsFractionRing A K]
     [IsIntegrallyClosed R] [Algebra.IsIntegral R A] :
@@ -43,7 +43,7 @@ theorem bijective_algebraMap_of_common_fractionRing
 /-- Degree one between the compatible original fraction fields gives bijectivity
 of the original integral coefficient map. -/
 theorem bijective_algebraMap_of_fraction_finrank_eq_one
-    (R A K L : Type*) [CommRing R] [IsDomain R] [CommRing A] [IsDomain A]
+    (R A K L : Type*) [CommRing R] [CommRing A]
     [Field K] [Field L] [Algebra R A] [Algebra R K] [Algebra R L]
     [Algebra A L] [Algebra K L] [IsScalarTower R A L] [IsScalarTower R K L]
     [IsFractionRing R K] [IsFractionRing A L]

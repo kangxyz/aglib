@@ -45,9 +45,9 @@ Cover applications, both are proved from the existing chart-restriction
 and original field-comparison laws, not added as public assumptions.
 
 The principal-localization law transports the original normalization's
-actual section localization. It does not need `G` or `E`, and the principal
-subopen may be empty. It asserts no field or domain structure on an empty
-open's zero section ring.
+actual section localization. It does not need `G`, `E` or a nonempty ambient
+open; the principal subopen may also be empty. It asserts no field or domain
+structure on an empty open's zero section ring.
 
 No finite extension, Nagata, Noetherian, normality of `X`, regularity,
 dimension, characteristic, differential basis or scalar bound is assumed.

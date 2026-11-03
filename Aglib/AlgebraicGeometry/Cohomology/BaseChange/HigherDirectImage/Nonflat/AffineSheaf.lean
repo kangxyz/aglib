@@ -73,8 +73,8 @@ theorem affineMapOfTilde_ringHom_eq_raw (f : R →+* S)
     affineMapOfTilde (R := R) (S := S) (CommRingCat.ofHom f) e d t =
       affineFunctorMap (tilde.functor R) (tilde.functor S)
         (ModuleCat.extendScalars f) (pullback (Spec.map (CommRingCat.ofHom f : R ⟶ S)))
-        (tildePullbackHom_ringHom (R := R) (S := S) f) e d t := by
-  simpa only [tildePullbackHom_ringHom_eq] using
+        (tildePullbackHomRingHom (R := R) (S := S) f) e d t := by
+  simpa only [tildePullbackHomRingHom_eq] using
     (affineMapOfTilde_ringHom_eq (R := R) (S := S) f e d t)
 
 /-- Explicitly typed associated-sheaf comparisons retain coefficient naturality. -/

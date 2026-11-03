@@ -588,6 +588,16 @@ mathematical conditions govern that choice.
   from a missing artifact; reserve slots for the terminal failure. The recorded
   diagnosis establishes neither a successful repair nor a unique map-limit cause.
   [Loader fallback diagnosis](performance/loader-fallback-read-diagnosis.md).
+- If a whole-root checker reaches the host mapping limit, retain the compiler,
+  pins and native predicates and partition actual producer modules into disjoint
+  coarse assignments. Import one private environment per batch, cover private
+  and generated declarations by actual origin, retain source options and
+  suppressions, and preserve separate import-only entry coverage. Reuse successful
+  batches only when their actual import inputs are unchanged. The
+  [coarse batching case](performance/cases/coarse-source-preserving-validation/README.md)
+  records the complete assignment plan, native check boundaries and successful
+  lint/audit union. This does not establish a pass of the original single
+  environment or a controlled speedup.
 - Build a large native coherence family from complete variable-input
   constructions, then specialize only the original-data view needed by each
   square. Keep stable producers and independent proofs in cached focused

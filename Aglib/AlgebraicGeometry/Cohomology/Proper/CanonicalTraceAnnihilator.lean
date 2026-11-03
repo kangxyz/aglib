@@ -35,6 +35,7 @@ namespace AlgebraicGeometry.Scheme.Cohomology
 
 attribute [local instance] AlgebraicGeometry.Scheme.Modules.standardHasDerivedCategory
 
+/-- The standard derived-category instance for modules over the original coefficient ring. -/
 local instance traceAnnihilatorModuleDerived (A : Type u) [CommRing A] :
     HasDerivedCategory.{u + 1} (ModuleCat.{u} A) := HasDerivedCategory.standard _
 

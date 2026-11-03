@@ -31,8 +31,8 @@ owned by [Properties/Regular/Affine](../../../Properties/Regular/Affine.md).
 The existing J-2 theorem supplies its finite ring-locus input and reuses that
 original stalk comparison, retaining its public statement.
 
-The affine theorem needs only locally Noetherian `X`; the whole-scheme
-theorem uses Noetherian `X` for its finite affine cover.
+The affine theorem has no local-Noetherianity premise on `X`; the whole-scheme
+theorem retains Noetherian `X` for its finite affine cover.
 The J-2 input is `IsJ2Ring.{u,0} A` for a commutative base ring.
 The complete-local specialization takes a commutative complete Noetherian
 local `A` of dimension at most two; `A` need not be a domain.

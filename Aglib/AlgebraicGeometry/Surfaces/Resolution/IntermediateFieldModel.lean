@@ -38,6 +38,7 @@ namespace AlgebraicGeometry.Scheme.IntermediateFieldModel
 
 universe u
 
+/-- The canonical coefficient algebra on the function field of the original affine spectrum. -/
 local instance originalSpecFieldAlgebra (C : Type u) [CommRing C] [IsDomain C] :
     Algebra C (Spec (.of C)).functionField :=
   AlgebraicGeometry.instAlgebraCarrierFunctionFieldSpec (.of C)

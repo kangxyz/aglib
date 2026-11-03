@@ -30,9 +30,11 @@ namespace AlgebraicGeometry.Scheme.RationalSingularities.MaximalIdealBlowup
 variable (A : Type u) [CommRing A] [IsLocalRing A]
     [IsDomain A] [IsNoetherianRing A] [IsIntegrallyClosed A]
 
+/-- The field structure on the original maximal-ideal quotient. -/
 local instance exceptionalClassificationResidueField : Field (A ⧸ maximalIdeal A) :=
   Ideal.Quotient.field (maximalIdeal A)
 
+/-- The structural residue-field action on cohomology of the original inverse exceptional line. -/
 local instance exceptionalClassificationCohomologyModule (hd : ringKrullDim A = 2) (n : ℕ) :
     Module (A ⧸ maximalIdeal A)
       (moduleCohomology (A ⧸ maximalIdeal A) (Over.mk (exceptionalStructureMap A hd))

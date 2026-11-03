@@ -1,0 +1,22 @@
+ℹ [9872/9977] Replayed AglibTest.CurveCore
+info: AglibTest/CurveCore.lean:68:0: AlgebraicGeometry.Scheme.OverField.Curve.Projectivity.exists_projectiveEmbedding.{u} {K : Type u} [Field K]
+  (X : FScheme K) [AlgebraicGeometry.IsIntegral (Over.left X)] [IsProper (Over.hom X)]
+  (hdim : topologicalKrullDim ↥(Over.left X) = 1) :
+  ∃ n i, IsClosedImmersion i ∧ i ≫ ProjectiveSpace.toSpec K (ULift.{u, 0} (Fin (n + 1))) = Over.hom X
+info: AglibTest/CurveCore.lean:69:0: AlgebraicGeometry.Scheme.OverField.Curve.RelativePicard.DegreeZeroPicardRepresentability.{u}
+  (hnormal : Scheme.SmoothFieldNormality) (hcomp : Scheme.NormalComponentsOpen) (hreg : Scheme.SmoothFieldRegularity)
+  (hclosed : Scheme.SmoothClosedPointDimension) (hdim : Scheme.SmoothFieldDimension)
+  (hprod : Picard.Degree.ProperCurveProductFormula) (htensor : Scheme.Modules.Invertible.ModuleTensorPullback) : Prop
+info: AglibTest/CurveCore.lean:70:0: AlgebraicGeometry.Scheme.OverField.Curve.genusOnePointedGroupLaw.{u} (hnormal : Scheme.SmoothFieldNormality)
+  (hcomp : Scheme.NormalComponentsOpen) (hreg : Scheme.SmoothFieldRegularity)
+  (hclosed : Scheme.SmoothClosedPointDimension) (hdim : Scheme.SmoothFieldDimension)
+  (hprod : Picard.Degree.ProperCurveProductFormula) (htensor : Scheme.Modules.Invertible.ModuleTensorPullback)
+  (hcartier : Abel.FiniteCartierIdealDegree) (hbase : Scheme.Hom.RelativeCartierIdealBaseChange)
+  (hdivisor : Scheme.Hom.SmoothRelativeDivisorIdeal) (hnorm : Picard.NormDegree.FiniteMorphismNormOrder)
+  (hgenus : Scheme.Cohomology.ProperStructureCohomologyBaseChange) (hrr : LineBundleRiemannRoch)
+  (hvanish : LineBundleHighDegreeVanishing) (hhigher : Scheme.Cohomology.NoetherianSheafCohomologyVanishing)
+  (hregular : Scheme.Modules.Invertible.FibrewiseRegularLineBundle)
+  (hlocal : Scheme.Modules.Invertible.SmoothRelativeCartierLocality)
+  (hrep : RelativePicard.DegreeZeroPicardRepresentability hnormal hcomp hreg hclosed hdim hprod htensor) {F : Type u}
+  [Field F] (X : FScheme F) (hX : Properties X) (hg : coherentGenus F X = 1) (o : 𝟙_ (FScheme F) ⟶ X) :
+  PointedGroupLaw X o

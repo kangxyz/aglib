@@ -72,11 +72,19 @@ Sections providers and retains its three original naturality proofs;
 [the import-repair case](../performance/cases/canonical-split-providers/README.md)
 records the source correspondence and successful production build.
 
-Full declaration lint and the existing pinned axiom audit remain pending.
-Both encountered a native loader read failure with the build host's mapping
-limit at 65,530; a subsequent actual audit sampled 65,532 mappings. The
-runtime limit adjustment was denied by the host. The remaining checks need
-a suitable existing validation environment. The additional toolchain build
-was stopped; mathematical source, dependency pins and successful artifacts
-are preserved. Kernel replay,
-separate clients and CI workflow edits are outside this integration.
+Production declaration lint and the pinned axiom audit now have successful
+coverage across seven coarse batches: 9357 implementation modules and 130278
+declarations, with no remaining findings or unapproved axioms. The 15 generated
+import-only entries retain native source, entry-generation and style coverage.
+Six successful batches retain their unchanged actual import closures; the
+repaired normalization-chart batch was rechecked on the final source. The
+[batching case](../performance/cases/coarse-source-preserving-validation/README.md)
+records exact inputs, checker predicates, runs and coverage.
+
+The original single-environment checks encountered the host mapping limit and
+did not pass. Coarse producer coverage resolves this integration's remaining
+checks while preserving the original toolchain and dependency pins. The final
+incremental production build, text style and in-package tests also passed.
+The source naming, docstring and unused-premise repairs stay within the migrated
+cohort and its direct consumers. Kernel replay, separate mathematical clients
+and CI workflow edits are outside this integration.

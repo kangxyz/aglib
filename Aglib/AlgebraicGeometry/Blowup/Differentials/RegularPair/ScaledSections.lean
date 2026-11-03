@@ -50,7 +50,7 @@ local notation "σ" => CommRingCat.ofHom (algebraMap R S)
 
 /-- The actual scaled inverse for the original raw pullback and original
 coefficient into the actual pulled-back line. No image/kernel premise is supplied. -/
-def saturatedPair_scaledSections :
+def saturatedPairScaledSections :
     moduleSpecΓFunctor.obj (moduleExteriorPower (Spec (.of S))
       (relativeDifferentialSheaf (Spec.map σ ≫ Spec.map α)) n) →ₗ[S]
     moduleSpecΓFunctor.obj ((pullback (Spec.map σ)).obj L.val) := by
@@ -69,13 +69,13 @@ def saturatedPair_scaledSections :
 
 /-- The constructed map has exactly the original exceptional-coordinate
 normalization on the original raw coefficient, not an unspecified scalar. -/
-theorem saturatedPair_scaledSections_comp
+theorem saturatedPairScaledSections_comp
     (p : moduleSpecΓFunctor.obj ((pullback (Spec.map σ)).obj
       (moduleExteriorPower (Spec (.of R)) (relativeDifferentialSheaf (Spec.map α)) n))) :
-    saturatedPair_scaledSections Λ R K x y hx hy n L φ
+    saturatedPairScaledSections Λ R K x y hx hy n L φ
       (moduleSpecΓFunctor.map (rawFormsPullback (Spec.map α) (Spec.map σ) n) p) =
     algebraMap R S x • (moduleSpecΓFunctor.map ((pullback (Spec.map σ)).map φ) p) := by
-  unfold saturatedPair_scaledSections
+  unfold saturatedPairScaledSections
   exact LinearMap.scaledImageLift_comp_apply _ _ _ _ _ p
 
 end AlgebraicGeometry.Scheme.Blowup.RegularPair

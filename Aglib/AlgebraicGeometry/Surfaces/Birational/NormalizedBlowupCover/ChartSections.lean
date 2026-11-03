@@ -280,7 +280,7 @@ omit [Algebra A B] in
 /-- The actual principal restriction is localization through its original pi coefficients.
 The principal subopen may be empty; no field or domain structure is asserted there. -/
 theorem normalizedChartSections_isLocalization_basicOpen
-    (U : X.Opens) (hU : IsAffineOpen U) [Nonempty U] (t : Γ(X, U)) :
+    (U : X.Opens) (hU : IsAffineOpen U) (t : Γ(X, U)) :
     letI := ((Cover.normalization β hβ s).presheaf.map
       (homOfLE ((Cover.pi β hβ s).preimage_mono (X.basicOpen_le t))).op).hom.toAlgebra
     IsLocalization.Away ((Cover.pi β hβ s).app U t)

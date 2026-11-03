@@ -50,38 +50,38 @@ local notation "B" => Blowup.blowupDatum (Blowup.affineCenter R I)
 local notation "c" => chartMap B (firstGenerator I x y rfl)
 
 /-- Original raw evaluation recovers exactly the same raw one-pole composite. -/
-theorem saturatedPair_onePoleChartMap_evaluation :
+theorem saturatedPairOnePoleChartMap_evaluation :
     Invertible.bidualMap (Spec (.of S))
       (moduleExteriorPower (Spec (.of S))
         (relativeDifferentialSheaf (Spec.map σ ≫ Spec.map α)) n) ≫
-      saturatedPair_onePoleChartMap Λ R K x y hx hy n L φ =
-        saturatedPair_onePoleRawMap Λ R K x y hx hy n L φ := by
-  have he := saturatedPair_onePoleChartMap_eq_extension Λ R K x y hx hy n L φ
+      saturatedPairOnePoleChartMap Λ R K x y hx hy n L φ =
+        saturatedPairOnePoleRawMap Λ R K x y hx hy n L φ := by
+  have he := saturatedPairOnePoleChartMap_eq_extension Λ R K x y hx hy n L φ
   exact (congrArg (fun t => Invertible.bidualMap (Spec (.of S))
     (moduleExteriorPower (Spec (.of S))
       (relativeDifferentialSheaf (Spec.map σ ≫ Spec.map α)) n) ≫ t) he).trans
         (Invertible.extendToBidualLine_evaluation (Spec (.of S))
-          (saturatedPair_onePoleLine R x y L)
-          (saturatedPair_onePoleRawMap Λ R K x y hx hy n L φ))
+          (saturatedPairOnePoleLine R x y L)
+          (saturatedPairOnePoleRawMap Λ R K x y hx hy n L φ))
 
 /-- The original raw arrow has the same original structural-unit/exceptional-section square. -/
-theorem saturatedPair_onePoleRawMap_unit :
+theorem saturatedPairOnePoleRawMap_unit :
     let f : Spec (.of S) ⟶ canonicalBlowup I := c
     let s : SheafOfModules.unit (canonicalBlowup I).ringCatSheaf ⟶
         (Invertible.dualLineBundle (canonicalBlowup I) (centreIdealLine I)).val :=
       cartierDualIdealSection (centreι B)
     rawFormsPullback (Spec.map α) (Spec.map σ) n ≫
-      saturatedPair_onePoleRawMap Λ R K x y hx hy n L φ =
+      saturatedPairOnePoleRawMap Λ R K x y hx hy n L φ =
     (pullback (Spec.map σ)).map φ ≫
       (positiveCartierTensorSection (Spec (.of S))
-        (saturatedPair_exceptionalPositiveLine R x y).val
+        (saturatedPairExceptionalPositiveLine R x y).val
         ((pullbackUnitIso f).inv ≫ (pullback f).map s)).app
           ((pullback (Spec.map σ)).obj L.val) ≫
-      (tensorSheafBraiding (Spec (.of S)) (saturatedPair_exceptionalPositiveLine R x y).val
+      (tensorSheafBraiding (Spec (.of S)) (saturatedPairExceptionalPositiveLine R x y).val
         ((pullback (Spec.map σ)).obj L.val)).hom := by
   intro f s
   exact (congrArg (fun t => rawFormsPullback (Spec.map α) (Spec.map σ) n ≫ t)
-    (saturatedPair_onePoleChartMap_evaluation Λ R K x y hx hy n L φ)).symm.trans
-      (saturatedPair_onePoleChartMap_unit Λ R K x y hx hy n L φ)
+    (saturatedPairOnePoleChartMap_evaluation Λ R K x y hx hy n L φ)).symm.trans
+      (saturatedPairOnePoleChartMap_unit Λ R K x y hx hy n L φ)
 
 end AlgebraicGeometry.Scheme.Blowup.RegularPair

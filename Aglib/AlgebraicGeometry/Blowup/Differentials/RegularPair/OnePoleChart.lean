@@ -55,49 +55,49 @@ local notation "c" => chartMap B a
 
 /-- The positive exceptional line is the pullback of the dual of the actual
 centre ideal on the same constructed blowup. -/
-def saturatedPair_exceptionalPositiveLine : Invertible.LineBundle (Spec (.of S)) :=
+def saturatedPairExceptionalPositiveLine : Invertible.LineBundle (Spec (.of S)) :=
   Invertible.pullbackLineBundle c
     (Invertible.dualLineBundle (canonicalBlowup I) (centreIdealLine I))
 
 /-- Its frame is obtained from the original denominator ideal frame by
 native dual evaluation, not by choosing a rational trivialization. -/
-def saturatedPair_exceptionalPositiveFrame :
+def saturatedPairExceptionalPositiveFrame :
     SheafOfModules.unit (Spec (.of S)).ringCatSheaf ≅
-      (saturatedPair_exceptionalPositiveLine R x y).val :=
+      (saturatedPairExceptionalPositiveLine R x y).val :=
   dualPullbackFrame c (centreIdealLine I) (chartFrame B a)
 
 /-- The actual local one-pole target keeps both original factors. -/
-def saturatedPair_onePoleLine : Invertible.LineBundle (Spec (.of S)) :=
+def saturatedPairOnePoleLine : Invertible.LineBundle (Spec (.of S)) :=
   Invertible.tensorLineBundle (Spec (.of S))
     (Invertible.pullbackLineBundle (Spec.map σ) L)
-    (saturatedPair_exceptionalPositiveLine R x y)
+    (saturatedPairExceptionalPositiveLine R x y)
 
 /-- Tensor the original pulled-back line with the actual inverse ideal frame. -/
-def saturatedPair_onePoleFrame :
-    (pullback (Spec.map σ)).obj L.val ≅ (saturatedPair_onePoleLine R x y L).val :=
+def saturatedPairOnePoleFrame :
+    (pullback (Spec.map σ)).obj L.val ≅ (saturatedPairOnePoleLine R x y L).val :=
   (tensorSheafLeftUnit (Spec (.of S)) ((pullback (Spec.map σ)).obj L.val)).symm ≪≫
-    tensorSheafIso (Spec (.of S)) (saturatedPair_exceptionalPositiveFrame R x y)
+    tensorSheafIso (Spec (.of S)) (saturatedPairExceptionalPositiveFrame R x y)
       (Iso.refl _) ≪≫
-    tensorSheafBraiding (Spec (.of S)) (saturatedPair_exceptionalPositiveLine R x y).val
+    tensorSheafBraiding (Spec (.of S)) (saturatedPairExceptionalPositiveLine R x y).val
       ((pullback (Spec.map σ)).obj L.val)
 
 /-- The actual local bidual map with one positive exceptional twist. -/
-def saturatedPair_onePoleChartMap :
+def saturatedPairOnePoleChartMap :
     Invertible.dualSheaf (Spec (.of S)) (Invertible.dualSheaf (Spec (.of S))
       (moduleExteriorPower (Spec (.of S))
         (relativeDifferentialSheaf (Spec.map σ ≫ Spec.map α)) n)) ⟶
-    (saturatedPair_onePoleLine R x y L).val :=
-  saturatedPair_scaledBidualMap Λ R K x y hx hy n L φ ≫
-    (saturatedPair_onePoleFrame R x y L).hom
+    (saturatedPairOnePoleLine R x y L).val :=
+  saturatedPairScaledBidualMap Λ R K x y hx hy n L φ ≫
+    (saturatedPairOnePoleFrame R x y L).hom
 
 /-- In the actual inverse-ideal frame, the constructed one-pole map has
 exactly the original scaled coefficient, with no replacement scalar. -/
-theorem saturatedPair_onePoleChartMap_coordinate :
-    saturatedPair_onePoleChartMap Λ R K x y hx hy n L φ ≫
-      (saturatedPair_onePoleFrame R x y L).inv =
-    saturatedPair_scaledBidualMap Λ R K x y hx hy n L φ := by
-  let f := saturatedPair_scaledBidualMap Λ R K x y hx hy n L φ
-  let e := saturatedPair_onePoleFrame R x y L
+theorem saturatedPairOnePoleChartMap_coordinate :
+    saturatedPairOnePoleChartMap Λ R K x y hx hy n L φ ≫
+      (saturatedPairOnePoleFrame R x y L).inv =
+    saturatedPairScaledBidualMap Λ R K x y hx hy n L φ := by
+  let f := saturatedPairScaledBidualMap Λ R K x y hx hy n L φ
+  let e := saturatedPairOnePoleFrame R x y L
   exact (Category.assoc f e.hom e.inv).trans
     ((congrArg (fun t => f ≫ t) e.hom_inv_id).trans (Category.comp_id f))
 

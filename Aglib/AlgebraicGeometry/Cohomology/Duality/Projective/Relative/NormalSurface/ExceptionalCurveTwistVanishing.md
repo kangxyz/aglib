@@ -26,4 +26,8 @@ supply the hypotheses of the original coefficient Serre twist vanishing.
 
 ## Shared original structural H0 law
 
+`exceptionalStructuralH0_bijective` uses the supplied structural triangle for
+`j`, without requiring `j` to be a closed immersion. The positive-twist
+vanishing theorem retains that embedding hypothesis.
+
 Direct consumers: [AlgebraicGeometry/Cohomology/Duality/Projective/Relative/NormalSurface/ExceptionalCoefficientVanishing](ExceptionalCoefficientVanishing.md).

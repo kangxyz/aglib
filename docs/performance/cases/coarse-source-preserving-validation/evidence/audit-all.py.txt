@@ -1,0 +1,35 @@
+PLAN='/root/autodl-tmp/lean-build/checkpoints/aglib-surface-resolution-main-20261102/batch-validation/plan-18ab8f897c12720343ff1b11ced404cd92b5e3df8611df78eb9555eda7fee381.json'
+PLAN_SHA='18ab8f897c12720343ff1b11ced404cd92b5e3df8611df78eb9555eda7fee381'
+AUDITOR_SHA='03ce70017a1ee8848c74541b00b29b40e471527ff7484e389b3623850dd08743'
+
+from pathlib import Path
+import os,json,subprocess,hashlib,time,concurrent.futures
+planfile=Path(PLAN);assert hashlib.sha256(planfile.read_bytes()).hexdigest()==PLAN_SHA
+plan=json.loads(planfile.read_text());assert plan['source_digest']=='176410f68cfa3594d81434b1e85921d98ee5ed53b65bc8a9fbeaa1f055f85a5d';assigned=[n for b in plan['batches'] for n in b['assigned']]
+assert len(assigned)==len(set(assigned))==plan['assigned_modules']
+audit=Path('/root/autodl-tmp/lean-build/tools/axiom-audit-46024e005996/.lake/build/bin/axiom-audit')
+assert hashlib.sha256(audit.read_bytes()).hexdigest()==AUDITOR_SHA
+run=Path(os.environ.get('LEAN') or os.environ['LAKE_OVERRIDE_LEAN']).parents[2]
+assert run.parent==Path('/root/autodl-tmp/lean-build/logs')
+env=dict(os.environ,LEAN_NUM_THREADS='1')
+for key in ['LEAN_PATH','LEAN_SRC_PATH']:
+ env[key]=subprocess.check_output([env['LAKE'],'env','printenv',key],env=env,text=True).strip()
+results=[]
+def execute(b):
+ start=time.monotonic();log=run/(b['id']+'-axioms.log')
+ cmd=[str(audit),'--root','Aglib','--modules',','.join(b['imports']),'--json']
+ with log.open('w') as out:r=subprocess.run(cmd,env=env,stdout=out,stderr=subprocess.STDOUT)
+ row={'id':b['id'],'assigned_modules':len(b['assigned']),'imports':len(b['imports']),'exit_code':r.returncode,'seconds':time.monotonic()-start,'log':str(log),'command':cmd}
+ (run/(b['id']+'-axioms-result.json')).write_text(json.dumps(row,indent=2)+'\n')
+ print('AUDIT_BATCH '+json.dumps({k:row[k] for k in ['id','assigned_modules','imports','exit_code','seconds','log']}),flush=True)
+ if r.returncode:print('\n'.join(log.read_text(errors='replace').splitlines()[-30:]),flush=True)
+ return row
+with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
+ for f in concurrent.futures.as_completed([pool.submit(execute,b) for b in plan['batches']]):
+  results.append(f.result())
+  (run/'audit-batches-progress.json').write_text(json.dumps(results,indent=2)+'\n')
+assert len(results)==7
+summary={'source_digest':'176410f68cfa3594d81434b1e85921d98ee5ed53b65bc8a9fbeaa1f055f85a5d','status':'passed' if all(x['exit_code']==0 for x in results) else 'failed','plan_sha256':PLAN_SHA,'assigned_modules':len(assigned),'import_only_entries':plan['import_only_entries'],'batches':sorted(results,key=lambda x:x['id']),'predicate':'Pinned auditor, original three approved axioms, full private environments of actual batch imports; union covers all producer implementations.'}
+(run/'audit-batches-result.json').write_text(json.dumps(summary,indent=2)+'\n')
+print('AUDIT_BATCHES_RESULT '+json.dumps({k:summary[k] for k in ['status','assigned_modules','plan_sha256']}),flush=True)
+raise SystemExit(0 if summary['status']=='passed' else 1)

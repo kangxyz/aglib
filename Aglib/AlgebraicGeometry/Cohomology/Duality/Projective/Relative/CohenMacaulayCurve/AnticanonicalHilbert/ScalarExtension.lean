@@ -52,7 +52,7 @@ private theorem cmCurveCohomology_subsingleton_fieldExtension
 private def cmCurveHyperplaneDualFieldExtensionIso
     (k K : Type u) [Field k] [Field K] [Algebra k K]
     (ι : Type u) {C : Scheme.{u}}
-    (j : C ⟶ ProjectiveSpace k ι) [IsClosedImmersion j] :
+    (j : C ⟶ ProjectiveSpace k ι) :
     let p := Limits.pullback.fst j (ProjectiveSpace.map (algebraMap k K) ι)
     let jK := Limits.pullback.snd j (ProjectiveSpace.map (algebraMap k K) ι)
     (Modules.pullback p).obj (dualLineBundle C (curveHyperplaneLine k ι j)).val ≅

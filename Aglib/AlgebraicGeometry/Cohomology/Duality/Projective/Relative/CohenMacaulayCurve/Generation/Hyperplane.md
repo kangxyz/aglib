@@ -75,5 +75,8 @@ The original `curveHyperplaneDualIdealIso` is now owned here, shared by
 canonical generation and the anticanonical Hilbert base-change consumer.
 Its single unchanged body uses the native zero-ideal line-bundle isomorphism,
 bidual map and internal-Hom comparison.
+This dual comparison and `curveHyperplaneSection_pullback_point_eq_zero` allow
+arbitrary `j`; the regular finite hyperplane construction retains its
+closed-immersion hypothesis.
 
 Direct consumers: [AlgebraicGeometry/Cohomology/Duality/Projective/Relative/CohenMacaulayCurve/AnticanonicalHilbert/Geometric](../AnticanonicalHilbert/Geometric.md).

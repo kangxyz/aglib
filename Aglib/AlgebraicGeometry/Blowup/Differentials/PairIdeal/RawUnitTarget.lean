@@ -53,16 +53,16 @@ local notation "M" => moduleExteriorPower (Spec (CommRingCat.of R))
 local notation "σ" => CommRingCat.ofHom (algebraMap R S)
 
 /-- The original raw target unit equation on the supplied ideal's chart. -/
-theorem pairIdeal_onePoleRawTargetMap_unit :
+theorem pairIdealOnePoleRawTargetMap_unit :
     let f : Spec (.of S) ⟶ canonicalBlowup I := chartMap B (firstGenerator I x y hI)
-    (pairIdeal_chartBasePullbackIso R I x y hI).hom.app M ≫
+    (pairIdealChartBasePullbackIso R I x y hI).hom.app M ≫
         rawFormsPullback (Spec.map α) (Spec.map σ) n ≫
-        pairIdeal_onePoleRawTargetMap Λ R K I x y hI hx hy n L φ =
-      (pullback f).map (pairIdeal_onePoleUnitMap Λ R I n L φ) := by
+        pairIdealOnePoleRawTargetMap Λ R K I x y hI hx hy n L φ =
+      (pullback f).map (pairIdealOnePoleUnitMap Λ R I n L φ) := by
   subst I
-  have h := saturatedPair_onePoleRawTargetMap_unit Λ R K x y hx hy n L φ
-  dsimp only [pairIdeal_onePoleRawTargetMap, saturatedPair_chartBasePullbackIso,
-    saturatedPair_onePoleTarget, Insert.insert, Singleton.singleton,
+  have h := saturatedPairOnePoleRawTargetMap_unit Λ R K x y hx hy n L φ
+  dsimp only [pairIdealOnePoleRawTargetMap, saturatedPairChartBasePullbackIso,
+    saturatedPairOnePoleTarget, Insert.insert, Singleton.singleton,
     Set.instInsert, Set.instSingletonSet] at h ⊢
   exact h
 

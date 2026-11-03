@@ -50,15 +50,15 @@ local notation "M" => moduleExteriorPower Y
 
 omit [LocallyOfFiniteType (Spec.map α)] in
 /-- The original chart source arrow preserves the original raw evaluation. -/
-theorem pairIdeal_bidualSourceMapOfCoherent_evaluation
+theorem pairIdealBidualSourceMapOfCoherent_evaluation
     (hM : QuasiCoherent.affineLocallyFiniteType (canonicalBlowup I)
       (moduleExteriorPower (canonicalBlowup I)
         (relativeDifferentialSheaf (blowdown I ≫ Spec.map α)) n)) :
     let f : Spec (.of S) ⟶ Y := chartMap B (firstGenerator I x y hI)
     let _ : IsOpenImmersion f := pairIdeal_chart_isOpenImmersion R I x y hI
     (Scheme.Modules.restrictFunctor f).map (Invertible.bidualMap Y M) ≫
-        pairIdeal_bidualSourceMapOfCoherent Λ R I x y hI n hM =
-      (pairIdeal_rawSourceIso Λ R I x y hI n).hom ≫
+        pairIdealBidualSourceMapOfCoherent Λ R I x y hI n hM =
+      (pairIdealRawSourceIso Λ R I x y hI n).hom ≫
         Invertible.bidualMap (Spec (.of S))
           (moduleExteriorPower (Spec (.of S))
             (relativeDifferentialSheaf (Spec.map σ ≫ Spec.map α)) n) := by
@@ -68,21 +68,21 @@ theorem pairIdeal_bidualSourceMapOfCoherent_evaluation
     (blowdown I ≫ Spec.map α) f n hM
     (moduleExteriorPower (Spec (.of S))
       (relativeDifferentialSheaf (Spec.map σ ≫ Spec.map α)) n)
-    (pairIdeal_rawChartCongruenceIso Λ R I x y hI n)
+    (pairIdealRawChartCongruenceIso Λ R I x y hI n)
 
 /-- The original finite-type interface supplies its original coherent source proof. -/
-theorem pairIdeal_bidualSourceMap_evaluation :
+theorem pairIdealBidualSourceMap_evaluation :
     let f : Spec (.of S) ⟶ Y := chartMap B (firstGenerator I x y hI)
     let _ : IsOpenImmersion f := pairIdeal_chart_isOpenImmersion R I x y hI
     (Scheme.Modules.restrictFunctor f).map (Invertible.bidualMap Y M) ≫
-        pairIdeal_bidualSourceMap Λ R I x y hI n =
-      (pairIdeal_rawSourceIso Λ R I x y hI n).hom ≫
+        pairIdealBidualSourceMap Λ R I x y hI n =
+      (pairIdealRawSourceIso Λ R I x y hI n).hom ≫
         Invertible.bidualMap (Spec (.of S))
           (moduleExteriorPower (Spec (.of S))
             (relativeDifferentialSheaf (Spec.map σ ≫ Spec.map α)) n) := by
   let : LocallyOfFiniteType (blowdown I ≫ Spec.map α) :=
     pairIdeal_structure_locallyOfFiniteType Λ R I
-  exact pairIdeal_bidualSourceMapOfCoherent_evaluation Λ R I x y hI n
+  exact pairIdealBidualSourceMapOfCoherent_evaluation Λ R I x y hI n
     (rawForms_affineLocallyFiniteType (blowdown I ≫ Spec.map α) n)
 
 end AlgebraicGeometry.Scheme.Blowup.PairIdeal

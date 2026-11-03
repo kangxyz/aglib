@@ -54,7 +54,7 @@ theorem pairIdeal_chartBase_triangle :
   exact (Blowup.affineAtlas B).triangle (firstGenerator I x y hI)
 
 /-- The original whole chart-base pullback comparison, with its literal chart carrier. -/
-def pairIdeal_chartBasePullbackIso :
+def pairIdealChartBasePullbackIso :
     let f : Spec (.of S) ⟶ canonicalBlowup I := chartMap B (firstGenerator I x y hI)
     pullback (blowdown I) ⋙ pullback f ≅ pullback (Spec.map σ) := by
   intro f
@@ -62,7 +62,7 @@ def pairIdeal_chartBasePullbackIso :
     pullbackCongr (pairIdeal_chartBase_triangle R I x y hI)
 
 /-- The single original chart-triangle congruence for the same raw exterior modules. -/
-def pairIdeal_rawChartCongruenceIso :
+def pairIdealRawChartCongruenceIso :
     let f : Spec (.of S) ⟶ canonicalBlowup I := chartMap B (firstGenerator I x y hI)
     moduleExteriorPower (Spec (.of S))
       (relativeDifferentialSheaf (f ≫ (blowdown I ≫ Spec.map α))) n ≅
@@ -77,7 +77,7 @@ def pairIdeal_rawChartCongruenceIso :
     (relativeDifferentialCongrIso (f ≫ (blowdown I ≫ Spec.map α)) ht)
 
 /-- The original raw source isomorphism on the supplied original ideal's chart. -/
-def pairIdeal_rawSourceIso :
+def pairIdealRawSourceIso :
     let f : Spec (.of S) ⟶ canonicalBlowup I := chartMap B (firstGenerator I x y hI)
     let _ : IsOpenImmersion f := pairIdeal_chart_isOpenImmersion R I x y hI
     (moduleExteriorPower (canonicalBlowup I)
@@ -86,7 +86,7 @@ def pairIdeal_rawSourceIso :
       (relativeDifferentialSheaf (Spec.map σ ≫ Spec.map α)) n := by
   intro f hf
   exact rawFormsOpenIso (blowdown I ≫ Spec.map α) f n ≪≫
-    pairIdeal_rawChartCongruenceIso Λ R I x y hI n
+    pairIdealRawChartCongruenceIso Λ R I x y hI n
 
 local notation "M" => moduleExteriorPower (canonicalBlowup I)
   (relativeDifferentialSheaf (blowdown I ≫ Spec.map α)) n
@@ -94,17 +94,17 @@ local notation "P" => moduleExteriorPower (Spec (CommRingCat.of R))
   (relativeDifferentialSheaf (Spec.map α)) n
 
 /-- The original whole raw source iso compares the actual restricted pullback map. -/
-theorem pairIdeal_rawSourceIso_pullback :
+theorem pairIdealRawSourceIso_pullback :
     let f : Spec (.of S) ⟶ canonicalBlowup I := chartMap B (firstGenerator I x y hI)
     let _ : IsOpenImmersion f := pairIdeal_chart_isOpenImmersion R I x y hI
-    let c := pairIdeal_chartBasePullbackIso R I x y hI
+    let c := pairIdealChartBasePullbackIso R I x y hI
     (pullback f).map (rawFormsPullback (Spec.map α) (blowdown I) n) ≫
         (Scheme.Modules.restrictFunctorIsoPullback f).inv.app M ≫
-        (pairIdeal_rawSourceIso Λ R I x y hI n).hom =
+        (pairIdealRawSourceIso Λ R I x y hI n).hom =
       c.hom.app P ≫ rawFormsPullback (Spec.map α) (Spec.map σ) n := by
   intro f hf c
-  simpa only [c, pairIdeal_chartBasePullbackIso, pairIdeal_rawSourceIso,
-    pairIdeal_rawChartCongruenceIso] using
+  simpa only [c, pairIdealChartBasePullbackIso, pairIdealRawSourceIso,
+    pairIdealRawChartCongruenceIso] using
     (rawFormsPullback_openTriangle_iso (Spec.map α) (blowdown I) f (Spec.map σ)
       (pairIdeal_chartBase_triangle R I x y hI) n)
 

@@ -39,7 +39,7 @@ variable (Λ R : Type u) (K : Type vK) [CommRing Λ] [CommRing R] [IsDomain R] [
     (relativeDifferentialSheaf (Spec.map (CommRingCat.ofHom (algebraMap Λ R)))) n ⟶ L.val)
 
 /-- The sole chart construction, transported to the supplied original centre ideal. -/
-def pairIdeal_onePoleTargetMap :
+def pairIdealOnePoleTargetMap :
     let S := Localization.Away.saturatedChart R I x
     let f : Spec (.of S) ⟶ canonicalBlowup I :=
       chartMap (Blowup.blowupDatum (Blowup.affineCenter R I)) (firstGenerator I x y hI)
@@ -51,6 +51,6 @@ def pairIdeal_onePoleTargetMap :
     (pullback f).obj
       (centreTwistedPullbackLine I L).val := by
   subst I
-  exact saturatedPair_onePoleTargetMap Λ R K x y hx hy n L φ
+  exact saturatedPairOnePoleTargetMap Λ R K x y hx hy n L φ
 
 end AlgebraicGeometry.Scheme.Blowup.PairIdeal

@@ -36,9 +36,11 @@ namespace AlgebraicGeometry.Scheme.RationalSingularities.MaximalIdealBlowup
 variable (A : Type u) [CommRing A] [IsLocalRing A]
   [IsDomain A] [IsNoetherianRing A] [IsIntegrallyClosed A]
 
+/-- The field structure on the original maximal-ideal quotient. -/
 local instance exceptionalFirstPowerResidueField : Field (A ⧸ maximalIdeal A) :=
   Ideal.Quotient.field (maximalIdeal A)
 
+/-- The original residue-field action on a maximal-ideal associated-graded component. -/
 local instance exceptionalFirstPowerComponentModule (r : ℕ) :
     Module (ResidueField A) (Ideal.associatedGradedQuotientGrading (maximalIdeal A) r) :=
   Submodule.module (Ideal.associatedGradedQuotientGrading (maximalIdeal A) r)

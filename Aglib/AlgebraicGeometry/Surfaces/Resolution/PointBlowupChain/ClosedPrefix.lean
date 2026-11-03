@@ -27,7 +27,7 @@ variable {eligible : (Y : Scheme.{u}) → Y → Prop} {X : Scheme.{u}} {x : X}
 
 /-- A finite prefix gives a native chain when its actual earlier centres have
 local dimension two. No infinite continuation or future regularity is assumed. -/
-def pointBlowupChain_toBase (hx : IsClosed ({x} : Set X))
+def pointBlowupChainToBase (hx : IsClosed ({x} : Set X))
     {n : ℕ} (p : Prefix eligible X x n)
     (hd : ∀ m (hm : m < n),
       ringKrullDim ((scheme (truncate (Nat.le_of_lt hm) p)).presheaf.stalk

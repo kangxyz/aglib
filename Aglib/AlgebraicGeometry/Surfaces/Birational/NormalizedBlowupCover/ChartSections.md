@@ -7,3 +7,6 @@ Separate arbitrary integral birational-model chart/fraction-field and extension 
 The public declarations are `modelFunctionFieldEquiv_extension`, `chartExtensionMap_eq`, `chartExtensionFieldEquiv`, `chartExtensionFieldEquiv_toRingEquiv`, `chartExtensionFieldEquiv_coe`, `coverPi_isAffineHom`, `coverChartFieldIso`, `normalizedChartSectionsEquiv`, `normalizedChartSectionsEquiv_coe`, `normalizedChartSectionsEquiv_coefficients`, `normalizedChartSectionsEquiv_val_comp`, `normalizedChartSectionsEquiv_restriction`, `normalizedChartSections_isLocalization_basicOpen`, `normalizedChart_coefficientBase`, `normalizedChartSectionsEquiv_coefficientBase`, `normalizedChartSectionsEquiv_coefficientBase_ambient`.
 
 They use the original objects and maps; relocation adds no mathematical premise or replacement realization.
+
+The principal-localization theorem also allows the ambient affine open and its
+principal subopen to be empty; it requires no `Nonempty U` instance.

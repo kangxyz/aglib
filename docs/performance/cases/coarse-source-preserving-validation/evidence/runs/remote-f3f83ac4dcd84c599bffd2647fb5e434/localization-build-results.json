@@ -1,0 +1,24 @@
+{
+  "source_digest": "f83e4561558ff9a7aa384c05978446c03bee6655e816001ad1e0718b2548fdba",
+  "checks": [
+    {
+      "label": "production",
+      "exit_code": 0,
+      "seconds": 260.4503581672907,
+      "log": "/root/autodl-tmp/lean-build/logs/remote-f3f83ac4dcd84c599bffd2647fb5e434/production.log"
+    },
+    {
+      "label": "native-style",
+      "exit_code": 0,
+      "seconds": 8.709192141890526,
+      "log": "/root/autodl-tmp/lean-build/logs/remote-f3f83ac4dcd84c599bffd2647fb5e434/native-style.log"
+    },
+    {
+      "label": "native-tests",
+      "exit_code": 0,
+      "seconds": 5.994291618466377,
+      "log": "/root/autodl-tmp/lean-build/logs/remote-f3f83ac4dcd84c599bffd2647fb5e434/native-tests.log"
+    }
+  ],
+  "status": "passed"
+}
