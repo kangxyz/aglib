@@ -1,0 +1,27 @@
+{
+  "run": "https://github.com/kangxyz/aglib/actions/runs/41653659657",
+  "job": "https://github.com/kangxyz/aglib/actions/runs/41653659657/job/125978144557",
+  "commit": "367929e8a6c427ceb10a3e685c9a6bd796754752",
+  "producer": "Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/KunnethComparison.lean",
+  "producer_sha256": "201d0796b1cccd70381de0c946531b88868345e4dccb4eb96f03a1ec335c2933",
+  "reported_utc": "2026-11-03T15:27:05Z",
+  "error": "50:7: (kernel) excessive memory consumption detected",
+  "frontend_reported_seconds": 327,
+  "actual_lean_flags": [
+    "-M12800",
+    "-j4"
+  ],
+  "aggregate_MemoryMax_MiB": 57344,
+  "build_compiler_window_minutes": 180,
+  "classification": "kernel memory failure while build window active; not timeout",
+  "boundary": "Aggregate scope and build window do not override the per-process Lean -M12800 flag. No OOM, minimum RAM, controlled comparison, unique cause, or broader acceptance conclusion is inferred.",
+  "earlier_pass": {
+    "source_content_sha256": "83094bb58b30fe6df1ff54aaa32d666ae220be1aabeebcde071daeda6e43a36b",
+    "run": "remote-9805fd8707bf4a4eb9d369b8c7d40d76",
+    "frontend_seconds": 676.5162240564823,
+    "profile": "jobs1, threads4, Lean M49152 MiB, aggregate RSS limit 65536 MiB",
+    "aggregate_observed_peak_bytes": 23208058880,
+    "aggregate_peak_boundary": "supervisor-observed aggregate owned processes across continuation, not per-module",
+    "scope": "distinct execution and source context; not a controlled comparison"
+  }
+}

@@ -130,3 +130,22 @@ observed frontend-memory ceiling, while the same400k proof still timed out.
 Only the later source-bound passes establish compilation of the stated
 comparison and value producers. Remaining coalgebra and H1 work, ordinary
 mathematical review and final native checks retain their own scope.
+
+## CI observation at `367929e8`
+
+[CI run 41653659657](https://github.com/kangxyz/aglib/actions/runs/41653659657),
+[job 125978144557](https://github.com/kangxyz/aglib/actions/runs/41653659657/job/125978144557),
+reported `(kernel) excessive memory consumption` at `KunnethComparison.lean:50:7`
+after 327 seconds, while its 180-minute build window remained active. The actual
+Lean invocation used `-M12800 -j4`; the aggregate scope had `MemoryMax=57344` MiB.
+The aggregate limit and time window did not override the single-process Lean flag.
+The producer SHA-256 was `201d0796b1cccd70381de0c946531b88868345e4dccb4eb96f03a1ec335c2933`,
+matching the retained passed source snapshot. See the [exact CI build log](evidence/ci-41653659657/build.log)
+and [diagnostic record](evidence/ci-41653659657/diagnostic.json).
+
+Separately, the `83094bb5` validation continuation passed this frontend in 676.516
+seconds with one job, four threads, `-M49152` and a 65536-MiB aggregate RSS limit.
+Its 21.61-GiB observed peak was for the supervisor's aggregate owned processes
+across the continuation, not this module alone. These different execution and
+source contexts are not a controlled comparison; the observations do not establish
+an OOM event or a minimum RAM requirement.

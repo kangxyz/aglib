@@ -305,6 +305,16 @@
       "bytes": 3662,
       "path": "source-snapshots/public-inferred-local400/TensorComparison.lean.txt",
       "sha256": "b42f9ee99a9507d53ada02b5b2ac9df1d87785d3f4e0f95e02a8f4c577077e15"
+    },
+    {
+      "bytes": 394929,
+      "path": "ci-41653659657/build.log",
+      "sha256": "0d603f4763849674f31f5b879636eab18c0dff2ac941f23bbff8fe5b2e478972"
+    },
+    {
+      "bytes": 1509,
+      "path": "ci-41653659657/diagnostic.json",
+      "sha256": "ecde7643c0669a37bcf666061b5a7425cb5f2989bfcc0d0ab1107dca08a84741"
     }
   ]
 }
