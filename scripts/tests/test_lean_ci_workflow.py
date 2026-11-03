@@ -427,7 +427,7 @@ class BuildJobBudget(unittest.TestCase):
         self.assertEqual(first['name'], 'Set Build deadline')
         self.assertEqual(first['shell'], 'bash')
         self.assertEqual(first['env']['JOB_TIMEOUT_MINUTES'], '${{ inputs.job-timeout-minutes }}')
-        for minutes, budget in ((360, 330), (150, 120), (31, 1)):
+        for minutes, budget in ((360, 330), (150, 120), (90, 60), (31, 1)):
             with self.subTest(minutes=minutes), tempfile.TemporaryDirectory(prefix='lean-ci-deadline-') as directory:
                 environment_file = Path(directory) / 'github-env'
                 result = subprocess.run(
@@ -746,7 +746,7 @@ class NativeRunnerResources(unittest.TestCase):
                          ['-M12800', '-j4'])
         self.assertEqual(self.inputs['runner-labels']['type'], 'string')
         self.assertEqual(json.loads(self.inputs['runner-labels']['default']), ['ubuntu-24.04'])
-        for name, default in (('native-memory-mib', 13824), ('lake-threads', 1), ('lint-workers', 2), ('job-timeout-minutes', 360)):
+        for name, default in (('native-memory-mib', 13824), ('lake-threads', 1), ('lint-workers', 2), ('job-timeout-minutes', 360), ('build-lake-threads', 0)):
             self.assertEqual(self.inputs[name]['default'], default)
             self.assertIn(self.inputs[name]['type'], ('string', 'number'))
         for job in ('build', 'test_lint'):
@@ -761,12 +761,23 @@ class NativeRunnerResources(unittest.TestCase):
             self.assertNotIn(variable, WORKFLOW.get('env', {}))
             self.assertNotIn('$' + variable, WORKFLOW['defaults']['run']['shell'])
 
+    @staticmethod
+    def workflow_value(expression, values):
+        expression = expression.removeprefix('${{').removesuffix('}}').strip()
+        expression = re.sub(r'(?:github|inputs)\.[\w-]+',
+                            lambda match: repr(values[match[0]]), expression)
+        return eval(expression.replace('&&', ' and ').replace('||', ' or '),
+                    {'__builtins__': {}}, {})
+
     def test_only_explicit_main_ec2_dispatch_selects_trial_resources(self):
         caller = yaml.safe_load((ROOT / '.github/workflows/ci.yml').read_text())
-        dispatch = caller.get('on', caller.get(True))['workflow_dispatch']['inputs']['runner-profile']
-        self.assertEqual(dispatch['type'], 'choice')
-        self.assertEqual(dispatch['default'], 'hosted')
-        self.assertEqual(dispatch['options'], ['hosted', 'ec2'])
+        dispatch = caller.get('on', caller.get(True))['workflow_dispatch']['inputs']
+        for name, options, default in (('runner-profile', ['hosted', 'ec2'], 'hosted'),
+                                       ('ec2-job-minutes', ['150', '90'], '150'),
+                                       ('ec2-build-lake-threads', ['4', '8'], '4')):
+            self.assertEqual(dispatch[name]['type'], 'choice')
+            self.assertEqual(dispatch[name]['default'], default)
+            self.assertEqual(dispatch[name]['options'], options)
         settings = caller['jobs']['lean']['with']
         self.assertEqual(settings['build-targets'], 'Aglib')
         self.assertEqual(caller['concurrency'], {'group': 'Aglib CI-${{ github.ref }}',
@@ -774,19 +785,40 @@ class NativeRunnerResources(unittest.TestCase):
         for ref in ('refs/heads/main', 'refs/heads/topic', 'refs/pull/1/merge'):
             for event in ('push', 'workflow_dispatch', 'pull_request'):
                 for profile in ('', 'hosted', 'ec2'):
-                    expected_ec2 = ref == 'refs/heads/main' and event == 'workflow_dispatch' and profile == 'ec2'
-                    values = {'github.ref': ref, 'github.event_name': event, 'inputs.runner-profile': profile}
-                    selected = {}
-                    names = ('native-memory-mib', 'lake-threads', 'lint-workers', 'job-timeout-minutes')
-                    for name in ('runner-labels', *names):
-                        expression = settings[name].removeprefix('${{').removesuffix('}}').strip()
-                        expression = re.sub(r'github\.(?:ref|event_name)|inputs\.runner-profile',
-                                            lambda match: repr(values[match[0]]), expression)
-                        selected[name] = eval(expression.replace('&&', ' and ').replace('||', ' or '),
-                                              {'__builtins__': {}}, {})
-                    self.assertEqual(json.loads(selected.pop('runner-labels')),
-                        ['self-hosted', 'linux', 'x64', 'aglib-ec2-pilot'] if expected_ec2 else ['ubuntu-24.04'])
-                    self.assertEqual(selected, dict(zip(names, (57344, 4, 4, 150) if expected_ec2 else (13824, 1, 2, 360))))
+                    for minutes in ('', '150', '90', 'invalid'):
+                        for threads in ('', '4', '8', 'invalid'):
+                            expected_ec2 = ref == 'refs/heads/main' and event == 'workflow_dispatch' and profile == 'ec2'
+                            values = {'github.ref': ref, 'github.event_name': event, 'inputs.runner-profile': profile,
+                                      'inputs.ec2-job-minutes': minutes, 'inputs.ec2-build-lake-threads': threads}
+                            names = ('native-memory-mib', 'lake-threads', 'lint-workers',
+                                     'job-timeout-minutes', 'build-lake-threads')
+                            selected = {name: self.workflow_value(settings[name], values)
+                                        for name in ('runner-labels', *names)}
+                            self.assertEqual(json.loads(selected.pop('runner-labels')),
+                                ['self-hosted', 'linux', 'x64', 'aglib-ec2-pilot'] if expected_ec2 else ['ubuntu-24.04'])
+                            self.assertEqual(selected, dict(zip(names,
+                                (57344, 4, 4, 90 if minutes == '90' else 150, 8 if threads == '8' else 4)
+                                if expected_ec2 else (13824, 1, 2, 360, 0))))
+
+    def test_build_runtime_override_is_production_step_only_and_preserves_fallback(self):
+        production = step('build', 'Build')
+        self.assertEqual(self.inputs['build-lake-threads']['type'], 'number')
+        for job in ('build', 'test_lint', 'upload_cache'):
+            for action in JOBS[job]['steps']:
+                if action is not production:
+                    self.assertNotIn('CI_LAKE_THREADS', action.get('env', {}))
+        for default, override, expected in ((1, 0, 1), (4, 0, 4), (4, 4, 4), (4, 8, 8)):
+            selected = self.workflow_value(production['env']['CI_LAKE_THREADS'],
+                                          {'inputs.build-lake-threads': override, 'inputs.lake-threads': default})
+            self.assertEqual(selected, expected)
+            # Exercise the actual .NET-formatted shell with the step's effective environment.
+            result, arguments = self.run_scope('build', CI_LAKE_THREADS=selected, CI_LINT_WORKERS=4)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn('LEAN_NUM_THREADS=' + str(expected), arguments)
+            self.assertIn('CI_LINT_WORKERS=4', arguments)
+            # Job-level defaults, shared with Test, do not read the Build-only input.
+            for job in ('build', 'test_lint'):
+                self.assertEqual(JOBS[job]['env']['CI_LAKE_THREADS'], '${{ inputs.lake-threads }}')
 
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory(prefix='native-resource-inputs-')

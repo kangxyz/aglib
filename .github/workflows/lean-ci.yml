@@ -22,6 +22,9 @@ on:
       lake-threads:
         type: number
         default: 1
+      build-lake-threads:
+        type: number
+        default: 0
       lint-workers:
         type: number
         default: 2
@@ -355,6 +358,8 @@ jobs:
         id: build
         continue-on-error: true
         working-directory: ${{ inputs.package-directory }}
+        env:
+          CI_LAKE_THREADS: ${{ inputs.build-lake-threads != 0 && inputs.build-lake-threads || inputs.lake-threads }}
         run: |
           read -r -a targets <<< "$BUILD_TARGETS"
           if test "${#targets[@]}" -eq 0; then
