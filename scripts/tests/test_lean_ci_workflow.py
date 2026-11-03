@@ -426,25 +426,43 @@ class BuildJobBudget(unittest.TestCase):
         first = JOBS['build']['steps'][0]
         self.assertEqual(first['name'], 'Set Build deadline')
         self.assertEqual(first['shell'], 'bash')
-        self.assertEqual(JOBS['build']['timeout-minutes'], 360)
-        with tempfile.TemporaryDirectory(prefix='lean-ci-deadline-') as directory:
-            environment_file = Path(directory) / 'github-env'
-            result = subprocess.run(
-                ['bash', '-e', '-o', 'pipefail', '-c',
-                 'date() { printf "1000\\n"; }\n' + first['run']],
-                env={**os.environ, 'GITHUB_ENV': str(environment_file)},
-                capture_output=True, text=True)
-            self.assertEqual(result.returncode, 0, result.stderr)
-            deadline = int(environment_file.read_text().strip().removeprefix('BUILD_DEADLINE='))
-            self.assertEqual(deadline - 1000, 330 * 60)
-        result, calls, partial = self.run_build(deadline=deadline, now=4600)
-        self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(calls, [
-            'timeout:--signal=INT --kill-after=60s 16200s lake build --rehash Aglib Quillen -o ./outputs.jsonl',
-            'lake:build --rehash Aglib Quillen -o ./outputs.jsonl'])
-        self.assertTrue(partial)
+        self.assertEqual(first['env']['JOB_TIMEOUT_MINUTES'], '${{ inputs.job-timeout-minutes }}')
+        for minutes, budget in ((360, 330), (150, 120), (31, 1)):
+            with self.subTest(minutes=minutes), tempfile.TemporaryDirectory(prefix='lean-ci-deadline-') as directory:
+                environment_file = Path(directory) / 'github-env'
+                result = subprocess.run(
+                    ['bash', '-e', '-o', 'pipefail', '-c',
+                     'date() { printf "1000\\n"; }\n' + first['run']],
+                    env={**os.environ, 'GITHUB_ENV': str(environment_file), 'JOB_TIMEOUT_MINUTES': str(minutes)},
+                    capture_output=True, text=True)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                exported = dict(line.split('=', 1) for line in environment_file.read_text().splitlines())
+                deadline = int(exported['BUILD_DEADLINE'])
+                self.assertEqual(deadline - 1000, budget * 60)
+                self.assertEqual(int(exported['BUILD_COMPILER_MINUTES']), budget)
+                result, calls, partial = self.run_build(deadline=deadline, now=1000, compiler_minutes=budget)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertEqual(calls, [
+                    f'timeout:--signal=INT --kill-after=60s {budget * 60}s lake build --rehash Aglib Quillen -o ./outputs.jsonl',
+                    'lake:build --rehash Aglib Quillen -o ./outputs.jsonl'])
+                self.assertTrue(partial)
+                result, calls, partial = self.run_build(deadline=deadline, now=deadline, compiler_minutes=budget)
+                self.assertEqual(result.returncode, 124)
+                self.assertIn(f'{budget}-minute compiler budget', result.stdout)
+                self.assertEqual(calls, [])
 
-    def run_build(self, *, deadline=20800, now=1000, compiler_status=0, timeout_status=0):
+    def test_invalid_job_timeout_fails_before_exporting_deadline(self):
+        for value in ('', '0', '30', '-1', '150.5', 'invalid'):
+            with self.subTest(value=value), tempfile.TemporaryDirectory(prefix='lean-ci-deadline-') as directory:
+                environment_file = Path(directory) / 'github-env'
+                result = subprocess.run(['bash', '-eo', 'pipefail', '-c', step('build', 'Set Build deadline')['run']],
+                    env={**os.environ, 'GITHUB_ENV': str(environment_file), 'JOB_TIMEOUT_MINUTES': value},
+                    capture_output=True, text=True)
+                self.assertEqual(result.returncode, 2)
+                self.assertIn('greater than 30', result.stderr)
+                self.assertFalse(environment_file.exists())
+
+    def run_build(self, *, deadline=20800, now=1000, compiler_status=0, timeout_status=0, compiler_minutes=330):
         mock = r'''
 date() { printf '%s\n' "$FIXTURE_NOW"; }
 lake() {
@@ -469,6 +487,7 @@ timeout() {
                 ['bash', '-e', '-o', 'pipefail', '-c', mock + step('build', 'Build')['run']],
                 cwd=root, env={**os.environ, 'BUILD_TARGETS': 'Aglib Quillen',
                                'BUILD_DEADLINE': str(deadline), 'FIXTURE_NOW': str(now),
+                               'BUILD_COMPILER_MINUTES': str(compiler_minutes),
                                'RUNNER_TEMP': '.', 'TRACE': str(trace), 'PARTIAL': str(root / 'completed'),
                                'COMPILER_STATUS': str(compiler_status), 'TIMEOUT_STATUS': str(timeout_status)},
                 capture_output=True, text=True)
@@ -715,6 +734,140 @@ os.execv(args[index],args[index:])
                 continue
             config = tomllib.loads((root / 'lakefile.toml').read_text())
             self.assertEqual(config['weakLeanArgs'], ['-M12800', f'-j{threads}'])
+
+
+class NativeRunnerResources(unittest.TestCase):
+    inputs = WORKFLOW.get('on', WORKFLOW.get(True))['workflow_call']['inputs']
+    resource_names = {'CI_NATIVE_MEMORY_MIB': 'native-memory-mib',
+                      'CI_LAKE_THREADS': 'lake-threads', 'CI_LINT_WORKERS': 'lint-workers'}
+
+    def test_reusable_defaults_and_publish_isolation(self):
+        self.assertEqual(tomllib.loads((ROOT / 'lakefile.toml').read_text())['weakLeanArgs'],
+                         ['-M12800', '-j4'])
+        self.assertEqual(self.inputs['runner-labels']['type'], 'string')
+        self.assertEqual(json.loads(self.inputs['runner-labels']['default']), ['ubuntu-24.04'])
+        for name, default in (('native-memory-mib', 13824), ('lake-threads', 1), ('lint-workers', 2), ('job-timeout-minutes', 360)):
+            self.assertEqual(self.inputs[name]['default'], default)
+            self.assertIn(self.inputs[name]['type'], ('string', 'number'))
+        for job in ('build', 'test_lint'):
+            self.assertEqual(JOBS[job]['runs-on'], '${{ fromJSON(inputs.runner-labels) }}')
+            self.assertEqual(JOBS[job]['timeout-minutes'], '${{ inputs.job-timeout-minutes }}')
+            for variable, name in self.resource_names.items():
+                self.assertEqual(JOBS[job]['env'][variable], '${{ inputs.' + name + ' }}')
+        self.assertEqual(JOBS['upload_cache']['runs-on'], 'ubuntu-24.04')
+        self.assertNotIn('defaults', JOBS['upload_cache'])
+        for variable in self.resource_names:
+            self.assertNotIn(variable, JOBS['upload_cache'].get('env', {}))
+            self.assertNotIn(variable, WORKFLOW.get('env', {}))
+            self.assertNotIn('$' + variable, WORKFLOW['defaults']['run']['shell'])
+
+    def test_only_explicit_main_ec2_dispatch_selects_trial_resources(self):
+        caller = yaml.safe_load((ROOT / '.github/workflows/ci.yml').read_text())
+        dispatch = caller.get('on', caller.get(True))['workflow_dispatch']['inputs']['runner-profile']
+        self.assertEqual(dispatch['type'], 'choice')
+        self.assertEqual(dispatch['default'], 'hosted')
+        self.assertEqual(dispatch['options'], ['hosted', 'ec2'])
+        settings = caller['jobs']['lean']['with']
+        self.assertEqual(settings['build-targets'], 'Aglib')
+        self.assertEqual(caller['concurrency'], {'group': 'Aglib CI-${{ github.ref }}',
+                                                'cancel-in-progress': False, 'queue': 'max'})
+        for ref in ('refs/heads/main', 'refs/heads/topic', 'refs/pull/1/merge'):
+            for event in ('push', 'workflow_dispatch', 'pull_request'):
+                for profile in ('', 'hosted', 'ec2'):
+                    expected_ec2 = ref == 'refs/heads/main' and event == 'workflow_dispatch' and profile == 'ec2'
+                    values = {'github.ref': ref, 'github.event_name': event, 'inputs.runner-profile': profile}
+                    selected = {}
+                    names = ('native-memory-mib', 'lake-threads', 'lint-workers', 'job-timeout-minutes')
+                    for name in ('runner-labels', *names):
+                        expression = settings[name].removeprefix('${{').removesuffix('}}').strip()
+                        expression = re.sub(r'github\.(?:ref|event_name)|inputs\.runner-profile',
+                                            lambda match: repr(values[match[0]]), expression)
+                        selected[name] = eval(expression.replace('&&', ' and ').replace('||', ' or '),
+                                              {'__builtins__': {}}, {})
+                    self.assertEqual(json.loads(selected.pop('runner-labels')),
+                        ['self-hosted', 'linux', 'x64', 'aglib-ec2-pilot'] if expected_ec2 else ['ubuntu-24.04'])
+                    self.assertEqual(selected, dict(zip(names, (57344, 4, 4, 150) if expected_ec2 else (13824, 1, 2, 360))))
+
+    def setUp(self):
+        self.temporary = tempfile.TemporaryDirectory(prefix='native-resource-inputs-')
+        self.addCleanup(self.temporary.cleanup)
+        self.root = Path(self.temporary.name)
+        binary = self.root / 'bin'
+        binary.mkdir()
+        (binary / 'getconf').write_text('#!/bin/sh\nif test "$1" = _PHYS_PAGES; then echo "$FIXTURE_PAGES"; else echo 4096; fi\n')
+        (binary / 'nproc').write_text('#!/bin/sh\necho 16\n')
+        (binary / 'sudo').write_text("""#!/usr/bin/env python3
+import json,os,sys
+args=sys.argv[1:]
+assert args[0:2] == ['--preserve-env','systemd-run']
+open(os.environ['TRACE'],'w').write(json.dumps(args))
+index=args.index('/usr/bin/env')
+os.execv(args[index],args[index:])
+""")
+        for file in binary.iterdir():
+            file.chmod(0o755)
+        self.script = self.root / 'native step.sh'
+        self.script.write_text('test "$VISIBLE_INPUT" = retained\n'
+                               'test "$LEAN_NUM_THREADS" = "$EXPECTED_THREADS"\n'
+                               'test "${CI_LINT_WORKERS:-}" = "$EXPECTED_LINT_WORKERS"\n'
+                               'exit "$STATUS"\n')
+
+    def run_scope(self, job, memory=65536, status=0, **resources):
+        shell = JOBS[job].get('defaults', WORKFLOW['defaults'])['run']['shell']
+        trace = self.root / 'trace'
+        trace.unlink(missing_ok=True)
+        environment = {key: value for key, value in os.environ.items()
+                       if key not in (*self.resource_names, 'LEAN_NUM_THREADS')}
+        if job != 'upload_cache':
+            environment.update({variable: str(self.inputs[name]['default'])
+                                for variable, name in self.resource_names.items()})
+        environment.update({key: str(value) for key, value in resources.items()})
+        environment.update({'PATH': str(self.root / 'bin') + ':' + os.environ['PATH'],
+                            'FIXTURE_PAGES': str(memory * 256), 'STATUS': str(status),
+                            'TRACE': str(trace), 'VISIBLE_INPUT': 'retained',
+                            'EXPECTED_THREADS': environment.get('CI_LAKE_THREADS', '1'),
+                            'EXPECTED_LINT_WORKERS': environment.get('CI_LINT_WORKERS', ''),
+                            'RUNNER_TEMP': str(self.root), 'GITHUB_RUN_ID': '123',
+                            'GITHUB_RUN_ATTEMPT': '2', 'GITHUB_JOB': job})
+        result = subprocess.run(runner_arguments(shell.replace('{0}', str(self.script))),
+                                cwd=self.root, env=environment, text=True, capture_output=True, timeout=5)
+        return result, json.loads(trace.read_text()) if trace.exists() else None
+
+    def test_native_inputs_memory_clamp_status_environment_and_scope_identity(self):
+        for job in ('build', 'test_lint', 'upload_cache'):
+            cases = [(16384, {}, 13824), (7168, {}, 5120)]
+            if job != 'upload_cache':
+                ec2 = dict(CI_NATIVE_MEMORY_MIB=57344, CI_LAKE_THREADS=4, CI_LINT_WORKERS=4)
+                cases += [(65536, ec2, 57344), (32768, ec2, 30720),
+                          (65536, {**ec2, 'CI_NATIVE_MEMORY_MIB': '9' * 40}, 63488)]
+            for memory, resources, expected in cases:
+                for status in (0, 7):
+                    with self.subTest(job=job, memory=memory, resources=resources, status=status):
+                        result, args = self.run_scope(job, memory, status, **resources)
+                        self.assertEqual(result.returncode, status, result.stderr)
+                        for argument in ('--scope', '--property=MemorySwapMax=0',
+                                         f'--property=MemoryMax={expected}M',
+                                         '--uid=' + str(os.getuid()), '--gid=' + str(os.getgid())):
+                            self.assertIn(argument, args)
+                        unit = f'lean-ci-123-2-{job}-' + hashlib.sha256(str(self.script).encode()).hexdigest()[:20] + '.scope'
+                        self.assertIn('--unit=' + unit, args)
+                        self.assertEqual((self.root / f'lean-ci-scopes/123-2-{job}' / unit).read_text().strip(), unit)
+
+    def test_invalid_resource_inputs_and_insufficient_ram_fail_before_scope_launch(self):
+        for job in ('build', 'test_lint'):
+            for variable in self.resource_names:
+                for value in ('', '0', '-1', '1.5', 'abc', '$(touch injected)'):
+                    with self.subTest(job=job, variable=variable, value=value):
+                        result, args = self.run_scope(job, **{variable: value})
+                        self.assertEqual(result.returncode, 2, result.stderr)
+                        self.assertIn('must be positive integers', result.stderr)
+                        self.assertIsNone(args)
+                        self.assertFalse((self.root / 'injected').exists())
+            for memory in (1024, 2048):
+                result, args = self.run_scope(job, memory)
+                self.assertEqual(result.returncode, 2, result.stderr)
+                self.assertIn('runner reserve', result.stderr)
+                self.assertIsNone(args)
 
 
 class NativeScopeQuiescence(unittest.TestCase):

@@ -13,6 +13,21 @@ on:
       check-targets:
         type: string
         default: ''
+      runner-labels:
+        type: string
+        default: '["ubuntu-24.04"]'
+      native-memory-mib:
+        type: number
+        default: 13824
+      lake-threads:
+        type: number
+        default: 1
+      lint-workers:
+        type: number
+        default: 2
+      job-timeout-minutes:
+        type: number
+        default: 360
       first-ci-cache:
         type: string
         default: ''
@@ -47,8 +62,35 @@ defaults:
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-24.04
-    timeout-minutes: 360
+    runs-on: ${{ fromJSON(inputs.runner-labels) }}
+    timeout-minutes: ${{ inputs.job-timeout-minutes }}
+    env: &native-resource-env
+      CI_NATIVE_MEMORY_MIB: ${{ inputs.native-memory-mib }}
+      CI_LAKE_THREADS: ${{ inputs.lake-threads }}
+      CI_LINT_WORKERS: ${{ inputs.lint-workers }}
+    defaults: &native-resource-defaults
+      run:
+        shell: >-
+          bash --noprofile --norc -e -o pipefail -c
+          "for ci_resource in \"$CI_NATIVE_MEMORY_MIB\" \"$CI_LAKE_THREADS\" \"$CI_LINT_WORKERS\"; do
+          if ! [[ \"$ci_resource\" =~ ^[1-9][0-9]*$ ]]; then
+          echo '::error::native-memory-mib, lake-threads and lint-workers must be positive integers.' >&2; exit 2; fi; done;
+          ci_available_mb=$(( $(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) / 1048576 - 2048 ));
+          if test \"$ci_available_mb\" -le 0; then
+          echo '::error::Physical RAM must exceed the 2048 MiB runner reserve.' >&2; exit 2; fi;
+          ci_memory_mb=$CI_NATIVE_MEMORY_MIB;
+          if test \"${#ci_memory_mb}\" -gt \"${#ci_available_mb}\" ||
+          test \"$ci_memory_mb\" -gt \"$ci_available_mb\"; then ci_memory_mb=$ci_available_mb; fi;
+          printf \"Native resources: group=%s MiB, Lake threads=%s, lint workers=%s, CPUs=%s\n\" \"$ci_memory_mb\" \"$CI_LAKE_THREADS\" \"$CI_LINT_WORKERS\" \"$(nproc)\";
+          scope_dir=\"$RUNNER_TEMP/lean-ci-scopes/$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB\";
+          scope=\"lean-ci-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB-$(printf '%s' \"$0\" | sha256sum | cut -c1-20).scope\";
+          mkdir -p \"$scope_dir\"; printf '%s\n' \"$scope\" > \"$scope_dir/$scope\";
+          exec sudo --preserve-env systemd-run --scope --quiet --collect
+          --unit=\"$scope\"
+          --uid=\"$(id -u)\" --gid=\"$(id -g)\"
+          --property=\"MemoryMax=$ci_memory_mb\"M --property=MemorySwapMax=0
+          /usr/bin/env \"PATH=$PATH\" \"LEAN_NUM_THREADS=$CI_LAKE_THREADS\" \"CI_LINT_WORKERS=$CI_LINT_WORKERS\"
+          /bin/bash --noprofile --norc -eo pipefail \"$0\"" "{0}"
     outputs:
       outcome: ${{ steps.build.outcome }}
       cache-key: ${{ steps.restore.outputs.cache-primary-key }}
@@ -56,7 +98,16 @@ jobs:
     steps:
       - name: Set Build deadline
         shell: bash
-        run: echo "BUILD_DEADLINE=$(( $(date +%s) + 330 * 60 ))" >> "$GITHUB_ENV"
+        env:
+          JOB_TIMEOUT_MINUTES: ${{ inputs.job-timeout-minutes }}
+        run: |
+          if ! [[ "$JOB_TIMEOUT_MINUTES" =~ ^[1-9][0-9]*$ ]] || ! test "$JOB_TIMEOUT_MINUTES" -gt 30; then
+            echo '::error::job-timeout-minutes must be a positive integer greater than 30.' >&2
+            exit 2
+          fi
+          compiler_minutes=$((JOB_TIMEOUT_MINUTES - 30))
+          echo "BUILD_COMPILER_MINUTES=$compiler_minutes" >> "$GITHUB_ENV"
+          echo "BUILD_DEADLINE=$(( $(date +%s) + compiler_minutes * 60 ))" >> "$GITHUB_ENV"
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
@@ -299,7 +350,7 @@ jobs:
           rm -f "$RUNNER_TEMP/outputs.jsonl"
           remaining=$((BUILD_DEADLINE - $(date +%s)))
           if test "$remaining" -le 0; then
-            echo '::warning::The Build job has used its 330-minute compiler budget. Cache saving will still be attempted; rerun this branch to resume from saved partial outputs.'
+            echo "::warning::The Build job has used its $BUILD_COMPILER_MINUTES-minute compiler budget. Cache saving will still be attempted; rerun this branch to resume from saved partial outputs."
             exit 124
           fi
           if timeout --signal=INT --kill-after=60s "${remaining}s" lake build --rehash "${targets[@]}" -o "$RUNNER_TEMP/outputs.jsonl"; then
@@ -482,7 +533,10 @@ jobs:
     name: Test, lint and axiom audit
     needs: build
     if: ${{ needs.build.result == 'success' }}
-    runs-on: ubuntu-24.04
+    runs-on: ${{ fromJSON(inputs.runner-labels) }}
+    timeout-minutes: ${{ inputs.job-timeout-minutes }}
+    env: *native-resource-env
+    defaults: *native-resource-defaults
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:

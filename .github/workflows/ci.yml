@@ -4,6 +4,12 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+    inputs:
+      runner-profile:
+        description: Runner profile for this manual CI trial
+        type: choice
+        options: [hosted, ec2]
+        default: hosted
 
 permissions:
   contents: read
@@ -23,3 +29,9 @@ jobs:
     with:
       package-directory: .
       build-targets: Aglib
+      # The repo-only autoscaler requires this complete label set.
+      runner-labels: ${{ github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2' && github.ref == 'refs/heads/main' && '["self-hosted","linux","x64","aglib-ec2-pilot"]' || '["ubuntu-24.04"]' }}
+      native-memory-mib: ${{ github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2' && github.ref == 'refs/heads/main' && 57344 || 13824 }}
+      lake-threads: ${{ github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2' && github.ref == 'refs/heads/main' && 4 || 1 }}
+      lint-workers: ${{ github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2' && github.ref == 'refs/heads/main' && 4 || 2 }}
+      job-timeout-minutes: ${{ github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2' && github.ref == 'refs/heads/main' && 150 || 360 }}

@@ -7,6 +7,32 @@ An optional `check-targets` string, empty by default, names extra helper targets
 that Test builds alongside its checker tools. It never changes Build's targets
 or mathematical artifact. For example, a caller can build `R5Lab Essays` in
 Build and supply `Checks` separately as a Test helper.
+
+The reusable workflow defaults to GitHub-hosted Ubuntu 24.04. Optional
+`runner-labels` is a JSON array encoded as a string (default
+`["ubuntu-24.04"]`); `native-memory-mib` (13824), `lake-threads` (1) and
+`lint-workers` (2) select Build/Test resources. `job-timeout-minutes` defaults
+to 360 and sets both job limits. Publish cache always retains its hosted runner and historical resources.
+
+Aglib's manual dispatch offers `runner-profile` choices `hosted` (default)
+and `ec2`. Only an explicit `ec2` dispatch on `main` selects the repo-only
+ephemeral EC2 pool using exactly
+`["self-hosted","linux","x64","aglib-ec2-pilot"]`, 57344 MiB aggregate native
+memory, four Lake runtime threads and four lint workers. That trial uses
+150-minute Build/Test limits and a 120-minute compiler budget. Pushes, pull
+requests, default dispatches and other branches retain the hosted defaults.
+The pool uses Ubuntu 24.04 Linux x86_64 on `m7i.4xlarge` (16 vCPUs, 64 GiB),
+allows at most one VM, and terminates each runner after one job. Build and Test
+therefore use separate ephemeral runners. The trial machine watchdog must allow
+175 minutes before running the full workflow; that infrastructure setting is
+managed separately from this template.
+
+Optional Actions caches can miss across hosted and EC2 runners because cache
+versions include raw path strings and their temporary directories differ.
+The existing migration restore remains available when a compatible cache exists;
+a miss falls back to the ordinary incremental/cold build and compatible upstream
+caches. Current-run dependency and root artifacts remain mandatory for Test.
+
 `LAKE_NO_CACHE=true` follows Mathlib by disabling automatic package build
 downloads from Reservoir/GitHub. This is separate from
 `LAKE_ARTIFACT_CACHE=true`, which keeps native project artifacts available.
@@ -25,12 +51,14 @@ downloads from Reservoir/GitHub. This is separate from
   or an auditor, run generated-entry or text-style checks, or build `check-targets`.
   Its final report requires the production build to succeed; checker failures
   belong to Test and do not change Build's result. Production Build is not retried.
-  The first step records a compiler deadline 330 minutes after the Build job
-  starts, including checkout, cache restoration, setup and dependency downloads.
+  The first step validates `job-timeout-minutes` as an integer greater than 30
+  and records a compiler deadline that many minutes minus 30 after the Build job
+  starts (330 minutes by default), including checkout, cache restoration, setup
+  and dependency downloads.
   Production Lake receives only the time remaining, through GNU `timeout` with
   `SIGINT` and a sixty-second kill grace period. An already expired deadline
   skips Lake; timeout exit 124 or forced-kill exit 137 fails Build, so Test and
-  Publish cache do not run. The job limit is 360 minutes, reserving about thirty
+  Publish cache do not run. The job limit defaults to 360 minutes, reserving thirty
   minutes for the existing cache save and partial-output staging. Cache saving
   still runs after compiler failure or cutoff. On the layered path, bounded
   native staging repairs derived archives before root checkpoint packing. Both completed
@@ -110,8 +138,9 @@ and at most three native toolchain-acquisition attempts handle transient failure
 Exhausted retries or failed Lean/Lake version checks fail setup. Both jobs run
 setup from the caller's Lake package directory.
 
-Necessary host adaptations are explicit: GitHub-hosted runners replace Mathlib's
-self-hosted pool; GitHub caches/releases replace its Azure backend; native
+Necessary host adaptations are explicit: selectable hosted or repo-only EC2
+runners replace Mathlib's self-hosted pool; GitHub caches/releases replace its
+Azure backend; native
 `lake cache stage` replaces its project-specific cache staging executable.
 Library and Test drivers live in Lake configuration. Generate each production
 entry with `lake exe mathlib/mk_all --lib <root>`. Both native lint commands
@@ -245,8 +274,10 @@ additional mathematical check. Build/Test/publication conditions are unchanged.
 
 Run steps use a native systemd scope, dropping back to the runner UID/GID and
 preserving its working directory, environment and selected toolchain. The
-historical aggregate allowance is 13824 MiB, reduced only when physical RAM
-minus a 2048 MiB runner/system reserve is smaller. Swap is disabled for that
+default aggregate allowance is 13824 MiB. Build/Test validate all three resource
+inputs as positive integers before opening a scope, and clamp the requested
+memory to physical RAM minus a 2048 MiB runner/system reserve. Hosts without
+that reserve fail before launching native work. Swap is disabled for that
 scope, and the Actions runner stays outside its combined memory limit. The
 scope gets a unique explicit name recorded under this run, attempt and job in
 `RUNNER_TEMP`. Before either cache save, an always-run step outside those scopes
@@ -266,10 +297,12 @@ The maintained libraries all use weak `-M12800 -j4` frontend arguments: a
 Existing pinned dependencies and the separate auditor retain their own compiler
 arguments; the aggregate scope also bounds those processes. These resource-only
 arguments do not change native build traces.
-Lake's runtime pool retains the historical `LEAN_NUM_THREADS=1`; the available
-CPU count is logged separately. This is not a promise of a particular number
-of simultaneous compiler processes. Ordinary failure can still execute the
-existing cache saves; VM/runner teardown remains outside that guarantee. The retired manual cache-client workflow is no longer present.
+Build/Test pass `lake-threads` as `LEAN_NUM_THREADS` and `lint-workers` as
+`CI_LINT_WORKERS`; defaults retain the historical runtime pool of one and two
+lint workers. The lint adapter still caps workers to the available CPUs.
+The available CPU count is logged separately. Lake's runtime setting does not
+promise a particular number of simultaneous compiler processes. Ordinary failure
+can still execute the existing cache saves; VM/runner teardown remains outside that guarantee. The retired manual cache-client workflow is no longer present.
 
 The focused regression suite uses Python, PyYAML, tar and zstd:
 `PYTHONPATH=scripts python3 -m unittest discover -s scripts/tests -p test_lean_ci_workflow.py -v`.
