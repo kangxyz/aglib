@@ -1,69 +1,101 @@
-name: CI cache Linux validation
-
+name: CI cache native Linux validation
 on:
   push:
-    branches: [codex/ci-cache-inventory-20261103]
+    branches: [codex/ci-cache-native-20261103]
   workflow_dispatch:
-
 permissions:
   contents: read
-
+  actions: read
 concurrency:
-  group: cache-inventory-${{ github.ref }}
+  group: cache-native-${{ github.ref }}
   cancel-in-progress: false
-
 jobs:
-  inventory:
-    name: Inventory the last successful Linux cache
+  producer:
+    name: Native producer (${{ matrix.case }})
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        case: [cold, timeout]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
-          ref: 1b737dca122694a54850316097a7ee87ddcbaead
           persist-credentials: false
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-        with:
-          ref: ${{ github.sha }}
-          path: .ci-control
-          persist-credentials: false
-      - name: Record Linux capacity and begin disk sampling
+      - name: Install exact Lean 4.34.1 without compilation caches
         shell: bash
         run: |
-          mkdir -p "$RUNNER_TEMP/cache-inventory"
-          df -B1 "$GITHUB_WORKSPACE" > "$RUNNER_TEMP/cache-inventory/df-before.txt"
-          df -i "$GITHUB_WORKSPACE" > "$RUNNER_TEMP/cache-inventory/inodes-before.txt"
-          uname -a > "$RUNNER_TEMP/cache-inventory/platform.txt"
-          nohup python3 .ci-control/.github/ci-cache/inventory.py --sample \
-            --root "$GITHUB_WORKSPACE" --output "$RUNNER_TEMP/cache-inventory/disk.jsonl" \
-            > "$RUNNER_TEMP/cache-inventory/sampler.log" 2>&1 < /dev/null &
-          echo "$!" > "$RUNNER_TEMP/cache-inventory/sampler.pid"
-      - name: Restore exact successful cache without running Lean or writing caches
-        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
-        with:
-          path: |
-            ./.lake
-            ${{ runner.temp }}/lake-native-cache
-          key: lean-Linux-X64-d791b020c21edcc7e9e22797f1d59fde59e8af8f675af62dc2f1fd7521bfef93-89d6106bc6c779e9737fee10c1c69f89008822de7c0ccaf47ee2412f3aae0bb2-1b737dca122694a54850316097a7ee87ddcbaead-41570180466-1-tests-1
-          fail-on-cache-miss: true
-      - name: Inventory logical bytes, allocated blocks and shared inodes
-        run: |
-          python3 .ci-control/.github/ci-cache/inventory.py \
-            --root "$GITHUB_WORKSPACE" --native-cache "$RUNNER_TEMP/lake-native-cache" \
-            --output "$RUNNER_TEMP/cache-inventory/inventory.json"
-      - name: Finish disk sampling
-        if: ${{ always() }}
+          curl --fail --silent --show-error --location --retry 2 --max-time 120 https://elan.lean-lang.org/elan-init.sh -o "$RUNNER_TEMP/elan-init.sh"
+          bash "$RUNNER_TEMP/elan-init.sh" -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+      - name: Check checkpoint integrity regressions
+        run: PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s .github/ci-cache -p test_checkpoint.py -v
+      - name: Produce actual native checkpoints
         shell: bash
+        env:
+          CASE: ${{ matrix.case }}
         run: |
-          if test -s "$RUNNER_TEMP/cache-inventory/sampler.pid"; then
-            kill "$(cat "$RUNNER_TEMP/cache-inventory/sampler.pid")" || true
-          fi
-          df -B1 "$GITHUB_WORKSPACE" > "$RUNNER_TEMP/cache-inventory/df-after.txt"
-          df -i "$GITHUB_WORKSPACE" > "$RUNNER_TEMP/cache-inventory/inodes-after.txt"
+          phase=produce
+          if test "$CASE" = timeout; then phase=timeout-produce; fi
+          timeout --kill-after=15s 8m python3 .github/ci-cache/tests/native_checkpoint.py "$phase" --work "$RUNNER_TEMP/probe" --transfer "$RUNNER_TEMP/transfer"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: native-checkpoint-${{ matrix.case }}
+          path: ${{ runner.temp }}/transfer
+          compression-level: 0
+          retention-days: 7
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: ${{ always() }}
         with:
-          name: linux-cache-inventory
-          path: ${{ runner.temp }}/cache-inventory
+          name: native-producer-evidence-${{ matrix.case }}
+          path: |
+            ${{ runner.temp }}/probe/*.json
+            ${{ runner.temp }}/probe/*.jsonl
+            ${{ runner.temp }}/probe/*.log
+          compression-level: 0
+          retention-days: 7
+  consumer:
+    name: Fresh Linux consumer (${{ matrix.case }})
+    needs: producer
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        case: [cold, timeout]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Install exact Lean without any Actions cache restore
+        shell: bash
+        run: |
+          curl --fail --silent --show-error --location --retry 2 --max-time 120 https://elan.lean-lang.org/elan-init.sh -o "$RUNNER_TEMP/elan-init.sh"
+          bash "$RUNNER_TEMP/elan-init.sh" -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
+        with:
+          name: native-checkpoint-${{ matrix.case }}
+          path: ${{ runner.temp }}/transfer
+      - name: Restore across fresh VMs and check actual incremental behavior
+        shell: bash
+        env:
+          CASE: ${{ matrix.case }}
+        run: |
+          phase=consume
+          if test "$CASE" = timeout; then phase=timeout-resume; fi
+          timeout --kill-after=15s 8m python3 .github/ci-cache/tests/native_checkpoint.py "$phase" --work "$RUNNER_TEMP/probe" --transfer "$RUNNER_TEMP/transfer"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: ${{ always() }}
+        with:
+          name: native-consumer-evidence-${{ matrix.case }}
+          path: |
+            ${{ runner.temp }}/probe/*.json
+            ${{ runner.temp }}/probe/*.jsonl
+            ${{ runner.temp }}/probe/*.log
           compression-level: 0
           retention-days: 7
