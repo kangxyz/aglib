@@ -58,7 +58,8 @@ The job descriptions below cover ordinary incremental mode;
   <production-roots>` scans the full import lists without automatic fixes.
   Both source checks collect feedback when checker preparation succeeds.
   Test also runs `lake test` and declaration lint. A caller containing
-  `.github/lint/run.sh` uses that CI adapter; other callers retain
+  `.github/lint/run.sh` forwards to the shared packaged adapter in
+  `scripts/lean_tools/_lint/`; other callers retain
   `lake --no-build lint <production-roots> -- --trace`. The adapter retains
   builtin lint and the configured Batteries declaration predicate, with bounded
   worker scheduling for the complete declaration set on every invocation.
@@ -271,14 +272,20 @@ this does not modify the public YAML or broaden mathematical acceptance.
 
 ## Declaration-lint execution
 
-The CI-only adapter in `.github/lint/` uses the package's existing toolchain and
-Batteries APIs. It backports the full-scope worker scheduler from
+The shared adapter in `scripts/lean_tools/_lint/` uses the package's existing
+toolchain and Batteries APIs. `.github/lint/run.sh` is its CI forwarding entry;
+local `scripts/check.sh`, installed `lean-tools check` and `--list` select the
+same packaged implementation. It backports the full-scope worker scheduler from
 [Batteries PR #2026](https://github.com/leanprover-community/batteries/pull/2026).
 The pinned old implementation creates a task for each declaration/linter pair;
 the adapter assigns batches of 64 declarations to a bounded worker pool and
 retains only reported failures. Every enabled linter, including slow linters,
 still checks the complete original declaration set in the full imported root
-environment. It does not filter changed modules or reuse lint results.
+environment. The adapter does not filter changed modules or cache lint results.
+The local toolkit also always executes declaration lint, including custom
+linters that may consume external state. Other checks retain their existing
+compatible-result reuse, as described in the
+[toolkit guide](../scripts/README.md#input-identity-and-reusable-results).
 
 Builtin lint remains a required check. The driver, root selection, suppression
 files and production options retain their native meaning. Native
@@ -293,8 +300,10 @@ linter implementations retain the pinned original full scheduler.
 The adapter is compiled as a small native executable package under
 `.lake/lint-runner`, requiring the already prepared Batteries package by path.
 It does not check out or build another copy of Aglib or Mathlib. Ordinary Lake
-compilation and the existing Actions cache reuse the executable; declaration
-checks themselves always run. The private tool build explicitly selects its
+compilation and the existing Actions cache reuse the executable; every adapter
+execution runs the declaration checks. Local checker preparation establishes
+the private generated sources and binary before observing lint inputs.
+The private tool build explicitly selects its
 generated TOML and refreshes only that tool's dependency resolution while keeping
 the package toolchain. Restored tool configuration or path entries cannot select
 a different executable or provider. The workflow passes `CI_LINT_NO_BUILD=true`
@@ -308,8 +317,12 @@ the imported environment is marked persistent only when there is exactly one
 resolved declaration-driver root; multiple roots keep ordinary release behavior.
 
 The adapter defaults to two workers, capped by the process's available CPUs.
-`CI_LINT_WORKERS` selects another positive count, with the same CPU cap. The
-worker setting applies only after preflight accepts the adapter. Build, Test
+`CI_LINT_WORKERS` selects another positive count, with the same CPU cap. The local
+guarded toolkit also enforces the admitted per-process thread budget, which can
+be lower than the compiler job count; its normal local budget permits one worker.
+The guard supplies that authoritative cap even if an inherited lint setting
+requests more workers. The worker setting applies only after preflight accepts
+the adapter. Build, Test
 and unsupported native fallbacks retain their existing resource settings and
 job scopes. Unsupported toolchains, provider
 versions or driver configurations execute the original configured

@@ -11,6 +11,8 @@ from pathlib import Path
 import subprocess
 import tempfile
 import unittest
+
+from lean_tools import lint
 from unittest.mock import patch
 
 from lean_tools import cli, local, resources
@@ -84,11 +86,25 @@ class NativeFixture(unittest.TestCase):
         self.root = self.scratch / 'package'
         self.root.mkdir()
         (self.root / 'lean-toolchain').write_text('leanprover/lean4:synthetic\n')
-        (self.root / 'lakefile.toml').write_text('name = "quartz"\ndefaultTargets = ["Quartz"]\n')
+        (self.root / 'lakefile.toml').write_text('name = "quartz"\ndefaultTargets = ["Quartz"]\n'
+            'lintDriver = "batteries/runLinter"\nlintDriverArgs = ["--no-build", "Quartz"]\n'
+            'builtinLint = true\n')
         native_fixture(self.root, 'Init')
         native_fixture(self.root, 'Quartz.Base')
         native_fixture(self.root, 'Quartz', ['Quartz.Base'])
         native_fixture(self.root, 'Batteries.Tactic.Lint')
+        native_fixture(self.root, 'Batteries.Data.Array.Basic')
+        self.batteries = self.root / '.lake/packages/batteries'
+        self.batteries.mkdir(parents=True)
+        write_json(self.root / 'lake-manifest.json', {'packages': [
+            {'type': 'path', 'name': 'batteries', 'dir': str(self.batteries)}]})
+        (self.batteries / 'lakefile.toml').write_text('name = "batteries"\n')
+        driver = self.batteries / 'scripts/runLinter.lean'
+        driver.parent.mkdir()
+        driver.write_text('import Batteries.Tactic.Lint\n')
+        binary = self.batteries / '.lake/build/bin/runLinter'
+        binary.parent.mkdir(parents=True)
+        binary.write_bytes(b'synthetic original lint executable')
         checker = self.root / 'scripts/check_sources.py'
         checker.parent.mkdir()
         checker.write_text('# synthetic source checker\n')
@@ -116,6 +132,9 @@ class NativeFixture(unittest.TestCase):
         self.addCleanup(patch.stopall)
         patch('lean_tools.local.subprocess.check_output', side_effect=self.check_output).start()
         patch('lean_tools.local._prepare_auditor', side_effect=self.prepare_auditor).start()
+        # Explicit synthetic executor/source admission, not native compilation
+        # evidence. Actual packaged-source recognition has separate native tests.
+        patch('lean_tools.lint.supported_provider', return_value=self.batteries).start()
 
     def check_output(self, command, **kwargs):
         if command == ['lake', 'env', 'printenv', 'LEAN_PATH']:
@@ -150,11 +169,12 @@ class NativeFlowTests(NativeFixture):
         self.assertEqual(calls[1][-2], '-o')
         self.assertEqual(calls[2], ['lake', '--rehash', 'build', 'batteries/runLinter',
                                   'mathlib/lint-style', 'mathlib/mk_all', 'AglibTest'])
-        self.assertEqual(calls[3:], [
+        self.assertEqual(calls[3], lint.command(prepare=True))
+        self.assertEqual(calls[4:], [
             ['lake', '--no-build', 'exe', 'mathlib/mk_all', '--lib', 'Quartz', '--check'],
             ['lake', '--no-build', 'exe', 'mathlib/lint-style', 'Quartz'],
             ['lake', 'test'],
-            ['lake', '--no-build', 'lint', 'Quartz', '--', '--trace'],
+            lint.command(['Quartz']),
             ['lake', 'env', str(self.auditor), '--root', 'Quartz']])
         self.assertEqual(result['status'], 'complete')
         self.assertEqual(self.runtime.compiler_calls, 1)
@@ -195,7 +215,7 @@ class NativeFlowTests(NativeFixture):
 
     def test_late_checker_native_mutation_prevents_success_and_output_export(self):
         artifact = self.root / '.lake/build/lib/lean/Batteries/Tactic/Lint.olean'
-        lint = ['lake', '--no-build', 'lint', 'Quartz', '--', '--trace']
+        lint_command = lint.command(['Quartz'])
         audit = ['lake', 'env', str(self.auditor), '--root', 'Quartz']
         self.outputs.write_text('previous compatible export\n')
 
@@ -206,7 +226,7 @@ class NativeFlowTests(NativeFixture):
         self.runtime.callback = mutate_later
         with self.assertRaises(ValueError):
             self.check(outputs=self.outputs)
-        self.assertEqual(self.runtime.calls.count(lint), 1)
+        self.assertEqual(self.runtime.calls.count(lint_command), 1)
         self.assertEqual(self.runtime.calls.count(audit), 1)
         self.assertEqual(self.outputs.read_text(), 'previous compatible export\n')
         self.assertEqual([summary['status'] for summary in self.summaries()], ['failed'])
@@ -218,7 +238,7 @@ class NativeFlowTests(NativeFixture):
         self.assertFalse(self.state.exists())
 
     def test_failed_check_never_exports_mapping_or_reports_complete(self):
-        self.runtime.fail = lambda command: command[:3] == ['lake', '--no-build', 'lint']
+        self.runtime.fail = lambda command: command == lint.command(['Quartz'])
         with self.assertRaisesRegex(ValueError, 'Synthetic native command failed'):
             self.check(outputs=self.outputs)
         self.assertFalse(self.outputs.exists())
@@ -296,7 +316,7 @@ class CommandInterfaceTests(unittest.TestCase):
         self.assertEqual(commands[0], list(CHECK))
         self.assertIn(['lake', 'test'], commands)
         self.assertEqual(commands[-1], ['lake', 'env', '<pinned-axiom-audit>', '--root', 'Quartz'])
-        self.assertEqual(len(commands), 8)
+        self.assertEqual(len(commands), 9)
 
     def test_cli_has_no_implicit_empty_production_success(self):
         with tempfile.TemporaryDirectory(dir='/private/tmp') as root, redirect_stderr(io.StringIO()):

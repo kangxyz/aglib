@@ -223,6 +223,9 @@ def run(command, *, cwd=None, env=None, receipt=None, sampler=group_processes, b
     else:
         budget = limits(environment, config=config) if budget is None else budget
         environment['LEAN_NUM_THREADS'] = str(budget['lean_threads'])
+    # A dedicated linter worker pool must obey the admitted per-process thread
+    # cap, which is distinct from a managed profile's number of compiler jobs.
+    environment['LEAN_TOOLS_LINT_MAX_THREADS'] = str(budget['lean_threads'])
     started = time.monotonic()
     # Probe monitoring permission before starting any potentially expensive work.
     sampler(os.getpgrp())

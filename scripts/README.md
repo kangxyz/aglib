@@ -4,7 +4,7 @@ One set of source, import, build, cache and verification tools lives in the inst
 `lean_tools` package. Install it once from the selected Aglib checkout:
 
 ```sh
-python3 -m pip install /absolute/path/to/aglib/scripts
+python3 -m pip install --upgrade /absolute/path/to/aglib/scripts
 lean-tools check --root /absolute/package
 lean-tools build --root /absolute/package --state /absolute/fresh/build Module.Name
 lean-tools run --root /absolute/package --receipt /absolute/command.json -- COMMAND
@@ -22,6 +22,9 @@ scheduler, frozen request or script-hash approval protocol is retained.
 The console command is `lean-tools`; the existing `lean-ci` command is an alias
 to the same function. The distribution keeps the installation name
 `lean-incremental-ci` so existing installations can be upgraded in place.
+Version 0.4.1 packages the full declaration-lint adapter, including its shell,
+Python and Lean sources. Installed tooling can use it from another checkout
+without that checkout containing `.github/lint/`.
 
 `check` selects Aglib, Quillen or Motivic policy from the package's Lake name;
 its explicit Python API still supports R5Lab and other callers. It uses the
@@ -85,12 +88,29 @@ Use the listed native command forms in the prepared execution workspace, resolvi
 executable and source paths there. The plan is descriptive: `<pinned-axiom-audit>`
 is resolved by the existing pinned preparation/guarded route, not a literal
 executable. Keep matching checker outputs and the admitted resource profile.
-The declaration-lint step is one configured
-`lake --no-build lint ... -- --trace` invocation, including its required production
-roots together. Reuse that entry instead of reconstructing per-root direct
-`batteries/runLinter` processes. Preserve the stock predicates, package options,
-suppression files and the library's required scope; a leaf diagnostic does not
-replace full-production coverage when required.
+The plan includes preparation of the packaged `_lint/run.sh` adapter with its
+internal `--prepare-only` flag, followed later by one full lint invocation with
+all required production roots together. Preparation builds the private native
+tool without running lint. The full invocation retains builtin lint, the
+configured declaration-driver roots, slow checks and suppression files. It uses
+the same bounded worker scheduler as CI; unsupported configurations execute
+`lake --no-build lint ... -- --trace` with the original roots and environment.
+
+The printed plan describes commands; resource admission comes from the guarded
+executor. For a selected lint phase in an already managed remote workspace, use
+the existing `run` command with the listed runner path and roots:
+
+```sh
+lean-tools run --root /absolute/package --receipt /absolute/lint.json -- \
+  bash /absolute/installed/lean_tools/_lint/run.sh Aglib
+```
+
+Keep the prepared managed compiler environment. The guard caps lint workers by
+the admitted per-process thread budget, independently of the number of compiler
+jobs. `CI_LINT_WORKERS` selects a positive requested count within that cap and
+the available CPUs. Unmanaged CI retains its two-worker default. Group the
+required roots in this one invocation; a leaf diagnostic does not replace
+full-production coverage when required.
 
 After an early failure, distinguish roots actually checked from roots not reached.
 Reuse compatible successes and rerun repaired or unexecuted scope; membership in
@@ -108,7 +128,13 @@ content, symlink, disappearance and import-shadowing changes remain guarded.
 Source/configuration observations retain strict temporal guards. Native evidence
 has CI's trusted-producer content-correspondence contract at observation
 boundaries; it does not certify uninterrupted absence of transient native writes.
-Moving these Python tools does not by itself invalidate compatible native checks.
+Declaration lint always runs: custom linters can read files or environment
+outside the Lean import graph. It neither looks up nor stores successful lint
+results. Its input guards still observe the packaged adapter sources, provider
+configuration and source, configured driver-root import closures, suppressions
+and prepared native checker bytes. Preparation establishes generated tool inputs
+before these observations; later mutation remains guarded through final export.
+Other checks retain their existing compatible-result reuse.
 No kernel replay, separate client validation or new acceptance chain is added;
 independent mathematical review and writing acceptance retain their requirements.
 

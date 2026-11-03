@@ -1,12 +1,14 @@
 """Compatible native-command retry tests using explicit synthetic execution."""
 import unittest
 
+from lean_tools import lint
+
 from test_shared import CHECK, NativeFixture
 
 
 class RetryTests(NativeFixture):
     def test_failure_retries_failed_work_and_reuses_earlier_compatible_successes(self):
-        self.runtime.fail = lambda command: command[:3] == ['lake', '--no-build', 'lint']
+        self.runtime.fail = lambda command: command == lint.command(['Quartz'])
         with self.assertRaisesRegex(ValueError, 'Native checks failed: lint'):
             self.check()
         self.runtime.fail = None
@@ -20,7 +22,7 @@ class RetryTests(NativeFixture):
     def test_native_hardlink_activity_during_lint_reaches_audit_and_reuses_results(self):
         artifact = self.root / '.lake/build/lib/lean/Quartz/Base.olean'
         def link_while_lint_runs(command):
-            if command[:3] == ['lake', '--no-build', 'lint']:
+            if command == lint.command(['Quartz']):
                 link = self.scratch / 'peer-workspace.olean'
                 import os
                 os.link(artifact, link)
@@ -31,9 +33,9 @@ class RetryTests(NativeFixture):
         self.runtime.callback = None
         self.runtime.calls.clear()
         second = self.check()
-        self.assertIn('lint', second['reused_checks'])
+        self.assertIn('lint', second['performed_checks'])
         self.assertIn('axioms-Quartz', second['reused_checks'])
-        self.assertNotIn(['lake', '--no-build', 'lint', 'Quartz', '--', '--trace'], self.runtime.calls)
+        self.assertIn(lint.command(['Quartz']), self.runtime.calls)
 
     def test_checker_preparation_and_test_failures_do_not_suppress_axiom_feedback(self):
         for target in ('tools', 'test'):
@@ -52,7 +54,7 @@ class RetryTests(NativeFixture):
         for reason in ('KeyboardInterrupt', 'owned process group unresolved'):
             with self.subTest(reason=reason):
                 def fail_at_lint(command):
-                    if command[:3] == ['lake', '--no-build', 'lint']:
+                    if command == lint.command(['Quartz']):
                         raise RuntimeFailure(reason)
                 self.runtime.callback = fail_at_lint
                 with self.assertRaisesRegex(RuntimeFailure, reason):
@@ -68,7 +70,7 @@ class RetryTests(NativeFixture):
         client.mkdir(parents=True)
         check = SourceCheck(CHECK, source_roots=(client,))
         def add_source(command):
-            if command[:3] == ['lake', '--no-build', 'lint']:
+            if command == lint.command(['Quartz']):
                 (client / 'New.lean').write_text('module\n')
         self.runtime.callback = add_source
         with self.assertRaises((InputDrift, ValueError)):
@@ -88,15 +90,13 @@ class RetryTests(NativeFixture):
     def test_unchanged_checks_reuse_exact_compatible_records(self):
         first = self.check()
         second = self.check()
-        self.assertEqual(second['reused_checks'], first['performed_checks'])
-        self.assertEqual(second['performed_checks'], [])
+        self.assertEqual(second['reused_checks'],
+                         [name for name in first['performed_checks'] if name != 'lint'])
+        self.assertEqual(second['performed_checks'], ['lint'])
         self.assertTrue(all(record['status'] == 'success' for record in self.records()))
         self.assertTrue(all(record['binding']['arguments'] == record['executed_command']
                             for record in self.records()))
-        lint = next(record for record in self.records() if record['binding']['kind'] == 'lint')
-        self.assertIsNotNone(lint['binding']['reflective_imports'])
-        self.assertEqual(lint['receipt']['exit_code'], 0)
-        self.assertTrue(lint['receipt']['owned_group_gone'])
+        self.assertNotIn('lint', [record['binding']['kind'] for record in self.records()])
 
     def test_unrelated_nonproduction_source_preserves_production_check_successes(self):
         unrelated = self.root / 'Unrelated.lean'
@@ -104,7 +104,7 @@ class RetryTests(NativeFixture):
         self.check()
         unrelated.write_text('module\ndef unrelated := 2\n')
         result = self.check()
-        required = {'entries-Quartz', 'text-style', 'lint', 'axioms-Quartz'}
+        required = {'entries-Quartz', 'text-style', 'axioms-Quartz'}
         self.assertTrue(required.issubset(result['reused_checks']))
         self.assertTrue(required.isdisjoint(result['performed_checks']))
 
@@ -112,19 +112,18 @@ class RetryTests(NativeFixture):
         self.check()
         artifact = self.root / '.lake/build/lib/lean/Batteries/Tactic/Lint.olean'
         audit = ['lake', 'env', str(self.auditor), '--root', 'Quartz']
-        # Force this final command to execute after an earlier reused lint result.
+        # Force this final command to execute after the fresh lint result.
         self.auditor.write_bytes(b'updated prepared auditor')
         self.runtime.calls.clear()
 
         def mutate_later(command):
             if command == audit:
-                artifact.write_bytes(b'mutated after earlier lint success was reused')
+                artifact.write_bytes(b'mutated after fresh lint success')
 
         self.runtime.callback = mutate_later
         with self.assertRaises(ValueError):
             self.check(outputs=self.outputs)
-        self.assertNotIn(['lake', '--no-build', 'lint', 'Quartz', '--', '--trace'],
-                         self.runtime.calls)
+        self.assertIn(lint.command(['Quartz']), self.runtime.calls)
         self.assertEqual(self.runtime.calls.count(audit), 1)
         self.assertFalse(self.outputs.exists())
         self.assertIn('failed', [summary['status'] for summary in self.summaries()])
@@ -145,12 +144,12 @@ class RetryTests(NativeFixture):
         added.write_text('module\ndef added := 1\n')
         addition = self.check()
         self.assertIn('entries-Quartz', addition['performed_checks'])
-        self.assertIn('lint', addition['reused_checks'])
+        self.assertIn('lint', addition['performed_checks'])
         self.assertIn('axioms-Quartz', addition['reused_checks'])
         existing.unlink()
         removal = self.check()
         self.assertIn('entries-Quartz', removal['performed_checks'])
-        self.assertIn('lint', removal['reused_checks'])
+        self.assertIn('lint', removal['performed_checks'])
         self.assertIn('axioms-Quartz', removal['reused_checks'])
 
     def test_changed_compiled_import_invalidates_native_checks_only(self):
@@ -166,7 +165,7 @@ class RetryTests(NativeFixture):
         (self.root / 'scripts/check_sources.py').write_text('# different checker\n')
         result = self.check()
         self.assertIn('source-0', result['performed_checks'])
-        self.assertIn('lint', result['reused_checks'])
+        self.assertIn('lint', result['performed_checks'])
         self.assertIn('axioms-Quartz', result['reused_checks'])
 
     def test_shared_source_parser_change_invalidates_source_guards_only(self):
@@ -176,33 +175,33 @@ class RetryTests(NativeFixture):
         self.check()
         parser.write_text('# changed source grammar\n')
         result = self.check()
-        self.assertEqual(result['performed_checks'], ['source-0'])
+        self.assertEqual(result['performed_checks'], ['source-0', 'lint'])
         self.assertEqual(result['reused_checks'], ['entries-Quartz', 'text-style',
-                                                   'lint', 'axioms-Quartz'])
+                                                   'axioms-Quartz'])
 
     def test_changed_mathlib_helper_source_invalidates_its_success(self):
         self.check()
         source = self.helper_sources['mk_all']
         source.write_text(source.read_text() + '-- changed checker implementation\n')
         result = self.check()
-        self.assertEqual(result['performed_checks'], ['entries-Quartz'])
+        self.assertEqual(result['performed_checks'], ['entries-Quartz', 'lint'])
         self.assertIn('text-style', result['reused_checks'])
-        self.assertIn('lint', result['reused_checks'])
+        self.assertIn('lint', result['performed_checks'])
 
     def test_changed_mathlib_helper_binary_invalidates_its_success(self):
         self.check()
         self.helper_binaries['lint-style'].write_bytes(b'changed style executable')
         result = self.check()
-        self.assertEqual(result['performed_checks'], ['text-style'])
+        self.assertEqual(result['performed_checks'], ['text-style', 'lint'])
         self.assertIn('entries-Quartz', result['reused_checks'])
-        self.assertIn('lint', result['reused_checks'])
+        self.assertIn('lint', result['performed_checks'])
 
     def test_changed_checker_native_import_invalidates_only_its_consumer(self):
         self.check()
         artifact = self.mathlib / '.lake/build/lib/lean/Mathlib/TextChecks.olean'
         artifact.write_bytes(b'changed compiled checker dependency')
         result = self.check()
-        self.assertEqual(result['performed_checks'], ['text-style'])
+        self.assertEqual(result['performed_checks'], ['text-style', 'lint'])
         self.assertIn('entries-Quartz', result['reused_checks'])
         self.assertIn('axioms-Quartz', result['reused_checks'])
 
@@ -210,8 +209,8 @@ class RetryTests(NativeFixture):
         self.check()
         self.auditor.write_bytes(b'different upstream auditor executable')
         result = self.check()
-        self.assertEqual(result['performed_checks'], ['axioms-Quartz'])
-        self.assertIn('lint', result['reused_checks'])
+        self.assertEqual(result['performed_checks'], ['lint', 'axioms-Quartz'])
+        self.assertNotIn('lint', result['reused_checks'])
 
     def test_changed_options_and_compiler_identity_invalidate_native_success(self):
         self.check()
