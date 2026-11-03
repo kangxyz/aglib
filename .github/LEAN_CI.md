@@ -304,6 +304,44 @@ The available CPU count is logged separately. Lake's runtime setting does not
 promise a particular number of simultaneous compiler processes. Ordinary failure
 can still execute the existing cache saves; VM/runner teardown remains outside that guarantee. The retired manual cache-client workflow is no longer present.
 
+When the caller includes `.github/ci-resource-monitor.py`, Build and Test start
+an optional Python sampler immediately after checkout with explicit `shell: bash`,
+outside the native compilation scopes. It inherits Actions process tracking and
+also exits at the job's configured lifetime (at most 12 hours), a stop sentinel,
+or a 4 MiB output limit. It writes one scalar-only JSONL observation about every
+15 seconds under `$RUNNER_TEMP/lean-ci-resources/<run>-<attempt>-<job>/`.
+Cleanup requests a stop using that private directory, without signaling any PID.
+It runs after the existing cache saves and uploads a uniquely named
+`native-resources-<run>-<attempt>-<job>` artifact with seven-day retention. Start,
+stop and upload are best effort and never gate mathematical checks or publication;
+callers lacking the helper skip sampling. Runner teardown can prevent delivery.
+
+Samples distinguish host `MemTotal`/`MemAvailable` from native cgroup charges.
+They sum `memory.current`, `anon`, `file`, `inactive_file` and `file_mapped` only
+across this job's disjoint recorded scope roots; parent counters already include
+descendants, whose memory counters are never summed again. File counters overlap:
+`file_mapped` and `inactive_file` help describe charged file cache but do not
+measure a working set and must not be added to `file`. These are cgroup memory
+charges, not sums of process RSS. `native_memory_peak_max_bytes` is the largest
+individual live scope's kernel `memory.peak` observed at that sample, not the sum
+of scope peaks or a guaranteed whole-run maximum. Scalar readable-scope counts
+make missing metrics explicit. Host CPU busy percentage and native CPU-core use
+come from counter deltas; native deltas require a scope present in consecutive
+samples. Lean frontend concurrency counts live runner-owned `lean` executables
+in the scopes' recursive process membership, deduplicating PIDs; it counts
+processes, not runtime threads or CPU-runnable states. Short-lived processes and
+collected scopes between samples can be missed. The job summary reports observed
+coverage, and records no environment, command lines, source contents or secrets.
+For the exact `aglib-ec2-pilot` runner label only, the sampler also mirrors each
+scalar line with prefix `LEAN_CI_RESOURCE` to the existing regular, nonsymlink
+`/var/log/user-data.log`, using noninteractive `sudo tee -a` with a one-second
+timeout. The EC2 pool already collects that file in CloudWatch log group
+`/github-self-hosted-runners/aglib-ec2-pilot/user_data`, stream `<instance_id>`,
+so existing AWS log reads can observe future jobs live. The helper never creates
+or changes permissions on a root log, adds no services or permissions, and disables
+the mirror after an unavailable file, append failure or timeout. Hosted callers
+skip mirroring; artifact and summary delivery remain independent of it.
+
 The focused regression suite uses Python, PyYAML, tar and zstd:
 `PYTHONPATH=scripts python3 -m unittest discover -s scripts/tests -p test_lean_ci_workflow.py -v`.
 Callers use the display name `GitHub CI` and retain each repository's existing

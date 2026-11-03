@@ -872,6 +872,44 @@ os.execv(args[index],args[index:])
                 self.assertIsNone(args)
 
 
+class ResourceMonitorIntegration(unittest.TestCase):
+    def test_diagnostics_are_optional_outside_scopes_and_follow_cache_saves(self):
+        for job in ('build', 'test_lint'):
+            actions = JOBS[job]['steps']
+            start = step(job, 'Start native resource sampler')
+            stop = step(job, 'Stop native resource sampler')
+            upload = step(job, 'Upload native resource observations')
+            checkout = next(action for action in actions if action.get('uses', '').startswith('actions/checkout@'))
+            self.assertEqual(actions.index(start), actions.index(checkout) + 1)
+            for action in (start, stop):
+                self.assertEqual(action['shell'], 'bash')
+                self.assertTrue(action['continue-on-error'])
+                self.assertEqual(action['timeout-minutes'], 1)
+                self.assertEqual(action['working-directory'], '${{ inputs.package-directory }}')
+                with tempfile.TemporaryDirectory(prefix='ci-no-resource-helper-') as directory:
+                    result = subprocess.run(['bash', '-eo', 'pipefail', '-c', action['run']],
+                                            cwd=directory, capture_output=True, text=True)
+                    self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(start['env']['JOB_TIMEOUT_MINUTES'], '${{ inputs.job-timeout-minutes }}')
+            self.assertEqual(start['env']['CI_RESOURCE_RUNNER_LABELS'], '${{ inputs.runner-labels }}')
+            for action in (stop, upload):
+                self.assertTrue(condition(action['if'], {}, success=False, cancelled=True))
+                self.assertTrue(action['continue-on-error'])
+            for action in actions:
+                if action.get('name', '').startswith(('Save ', 'Pack ')):
+                    self.assertLess(actions.index(action), actions.index(stop))
+            self.assertLess(actions.index(stop), actions.index(upload))
+            self.assertTrue(upload['uses'].startswith('actions/upload-artifact@'))
+            self.assertEqual(upload['with']['if-no-files-found'], 'ignore')
+            self.assertEqual(upload['with']['retention-days'], 7)
+            for field in ('github.run_id', 'github.run_attempt', 'github.job'):
+                self.assertIn(field, upload['with']['name'])
+                self.assertIn(field, upload['with']['path'])
+        self.assertEqual(JOBS['build']['steps'][0]['name'], 'Set Build deadline')
+        self.assertNotIn('Start native resource sampler',
+                         [action.get('name') for action in JOBS['upload_cache']['steps']])
+
+
 class NativeScopeQuiescence(unittest.TestCase):
     name = "Quiesce this job's native scopes before cache saving"
 
