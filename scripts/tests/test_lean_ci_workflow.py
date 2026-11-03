@@ -1363,7 +1363,8 @@ lake() {
 
     def test_build_artifact_contains_only_mathematical_outputs(self):
         upload = next(item for item in JOBS['build']['steps']
-                      if item.get('uses', '').startswith('actions/upload-artifact@'))
+                      if item.get('uses', '').startswith('actions/upload-artifact@')
+                      and item.get('with', {}).get('name') == 'cache-staging')
         self.assertEqual(upload['with']['path'], '${{ runner.temp }}/lake-native-cache.tar')
         self.assertNotIn('axiom', step('build', 'Stage completed native outputs')['run'])
         self.assertNotIn('axiom', step('test_lint', "Restore this run's native Build outputs")['run'])
@@ -2019,6 +2020,20 @@ class NativeStageValidationIntegration(unittest.TestCase):
                                          first_stop == second_stop == 'success')
         self.assertNotIn('--build ', stage['run'])
         self.assertNotIn('lake build', stage['run'])
+
+    def test_stage_diagnostics_upload_is_always_layered_and_does_not_gate_acceptance(self):
+        actions = JOBS['build']['steps']
+        upload = step('build', 'Upload native staging diagnostics')
+        self.assertTrue(upload['uses'].startswith('actions/upload-artifact@'))
+        self.assertTrue(upload['continue-on-error'])
+        self.assertEqual(upload['with'], {'name': 'native-stage-validation', 'overwrite': True,
+            'path': '${{ runner.temp }}/native-stage-validation.json', 'if-no-files-found': 'ignore',
+            'compression-level': 0, 'retention-days': 7})
+        self.assertTrue(condition(upload['if'], {'steps.cache-mode.outputs.layered': 'true'},
+                                  success=False, cancelled=True))
+        self.assertFalse(condition(upload['if'], {'steps.cache-mode.outputs.layered': ''}, success=False))
+        self.assertLess(actions.index(step('build', 'Quiesce native staging before checkpoints')), actions.index(upload))
+        self.assertLess(actions.index(upload), actions.index(step('build', 'Pack completed root checkpoint')))
 
     def test_stage_helper_failure_blocks_handoff_and_success_packages_only_validated_stage(self):
         for status in (0, 17):

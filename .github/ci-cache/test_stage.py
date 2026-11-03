@@ -19,6 +19,7 @@ class StageTests(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.base = Path(self.temp.name).resolve()
         self.root = self.base / 'root'; self.root.mkdir()
+        (self.root / 'lakefile.toml').write_text('name="Root"\n')
         self.native = self.base / 'native'; self.native.mkdir()
         self.payload = self.base / 'stage'; self.payload.mkdir()
         self.name = 'a' * 16 + '.ltar'
@@ -81,6 +82,48 @@ class StageTests(unittest.TestCase):
         self.assertEqual(olean.read_bytes(), b'valid compiled proof data')
         self.assertEqual(hashes[str(olean)], stage.sha(olean))
         self.assertFalse(bad.exists())
+
+    def test_stale_optional_metadata_locates_valid_working_archive_without_clearing_trace(self):
+        ir = self.root / '.lake/build/ir'; ir.mkdir(parents=True)
+        working = ir / 'Bad.ltar'; working.write_bytes(b'VALID working archive')
+        library = self.root / '.lake/build/lib/lean'; library.mkdir(parents=True)
+        trace = library / 'Bad.trace'
+        original = {'schemaVersion': '2025-09-10', 'depHash': 'b' * 16,
+                    'outputs': {'m': True, 'o': ['valid.olean'], 'i': 'valid.ilean',
+                                'c': 'valid.c', 'l': self.name}, 'log': ['keep'], 'inputs': ['keep']}
+        trace.write_text(json.dumps(original))
+        mapping = self.native / 'outputs/Root' / ('b' * 16 + '.json')
+        mapping.parent.mkdir(parents=True)
+        mapping.write_text(json.dumps({'schemaVersion': '2026-02-25', 'service': None,
+                                      'data': original['outputs']}))
+        olean = library / 'Bad.olean'; olean.write_bytes(b'compiled')
+        notes = []
+        stage.invalidate(self.root, self.native, self.payload, [self.name], notes)
+        self.assertFalse(working.exists())
+        expected = dict(original); expected['outputs'] = dict(original['outputs']); expected['outputs'].pop('l')
+        self.assertEqual(json.loads(trace.read_text()), expected)
+        self.assertEqual(json.loads(mapping.read_text())['data'], expected['outputs'])
+        self.assertEqual(olean.read_bytes(), b'compiled')
+        self.assertEqual(len(notes), 2)
+
+    def test_only_bad_pure_ltar_mapping_is_removed(self):
+        ir = self.root / '.lake/build/ir'; ir.mkdir(parents=True)
+        working = ir / 'Bad.ltar'; working.write_bytes(b'VALID archive to repack')
+        library = self.root / '.lake/build/lib/lean'; library.mkdir(parents=True)
+        trace = library / 'Bad.trace'
+        contents = json.dumps({'schemaVersion': '2025-09-10', 'depHash': 'b' * 16,
+                               'outputs': {'o': ['raw.olean'], 'i': 'raw.ilean', 'c': 'raw.c'},
+                               'log': ['preserved'], 'inputs': ['preserved']})
+        trace.write_text(contents)
+        directory = self.native / 'outputs/Root'; directory.mkdir(parents=True)
+        bad = directory / ('b' * 16 + '.json')
+        bad.write_text(json.dumps({'schemaVersion': '2026-02-25', 'data': self.name}))
+        other = directory / ('c' * 16 + '.json'); other.write_text('unrelated cache mapping')
+        stage.invalidate(self.root, self.native, self.payload, [self.name])
+        self.assertFalse(bad.exists())
+        self.assertFalse(working.exists())
+        self.assertEqual(trace.read_text(), contents)
+        self.assertEqual(other.read_text(), 'unrelated cache mapping')
 
     def test_metadata_guard_rejects_frontend(self):
         env = stage.metadata_guard(sys.executable, self.base)

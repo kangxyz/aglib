@@ -18,6 +18,8 @@ def main():
     parser.add_argument('--work', type=Path, required=True)
     parser.add_argument('--lake', default='lake')
     parser.add_argument('--corruption', choices=('truncated', 'hash-text'), default='truncated')
+    parser.add_argument('--stale-optional', action='store_true',
+                        help='keep working archive valid while trace/cache optional l fields are bad')
     args = parser.parse_args()
     work = args.work.absolute(); work.mkdir(parents=True, exist_ok=False)
     root = work / 'producer'; root.mkdir()
@@ -65,8 +67,20 @@ def main():
     bad_mapping = work / 'bad.jsonl'
     bad_mapping.write_text(json.dumps(archives[0]) + '\n' + json.dumps([dep_hash, bad_name]) + '\n')
     run('register-derived-only-bad-map', [args.lake, 'cache', 'add', str(bad_mapping)])
+    if args.stale_optional:
+        trace = root / '.lake/build/lib/lean/Probe.trace'
+        trace_data = json.loads(trace.read_text())
+        trace_data['outputs']['l'] = bad_name
+        trace.unlink(); trace.write_text(json.dumps(trace_data))
+        output = cache / 'outputs/StageProbe' / (dep_hash + '.json')
+        data = json.loads(output.read_text()); data['data'] = dict(trace_data['outputs'])
+        output.unlink(); output.write_text(json.dumps(data))
     warm_mapping = work / 'warm-export.jsonl'
     run('warm-export-still-succeeds', [args.lake, '--no-build', '--rehash', 'build', 'Probe', '-o', str(warm_mapping)])
+    if args.stale_optional:
+        # Native restoration may materialize the bad optional archive. Before
+        # repair reproduce the case whose byte-only invalidation found no match.
+        working.unlink(missing_ok=True); working.write_bytes(good)
     bad_stage = work / 'bad-stage'
     run('bad-stage-copy-succeeds', [args.lake, 'cache', 'stage', str(warm_mapping), str(bad_stage)])
     run('comments-only-is-insufficient', [str(prefix / 'bin/leantar'), '-k', str(bad_stage / bad_name)],
@@ -82,6 +96,8 @@ def main():
     data = json.loads(report.read_text())
     if not data['success'] or data['first']['bad_archives'] != [bad_name] or data['final']['bad_archives']:
         raise RuntimeError('selective repair did not close the corrupted transport')
+    if args.stale_optional and len(data['metadata_reference_edits']) < 2:
+        raise RuntimeError('stale trace/cache archive references were not removed')
     if any(hashlib.sha256(Path(p).read_bytes()).hexdigest() != h for p, h in compiled.items()):
         raise RuntimeError('repair changed valid compiled outputs')
     cold = work / 'consumer'; cold.mkdir()
@@ -91,7 +107,7 @@ def main():
     run('cold-unstage', [args.lake, 'cache', 'unstage', str(repaired), '--force-overwrite'], cwd=cold, environment=fresh)
     run('cold-no-build-readiness', [args.lake, '--no-build', '--rehash', 'build', 'Probe'], cwd=cold, environment=fresh)
     (work / 'evidence.json').write_text(json.dumps({'helper_sha256': hashlib.sha256(HELPER.read_bytes()).hexdigest(),
-        'corruption': args.corruption, 'bad_archive': bad_name,
+        'corruption': args.corruption, 'bad_archive': bad_name, 'stale_optional': args.stale_optional,
         'commands': rows, 'compiled_bytes_unchanged': True, 'repair_report': str(report)}, indent=2) + '\n')
     print(json.dumps({'result': 'passed', 'evidence': str(work / 'evidence.json')}))
 

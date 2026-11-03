@@ -12,6 +12,7 @@ from pathlib import Path
 import re
 import shutil
 import signal
+import stat
 import subprocess
 import sys
 import tempfile
@@ -31,7 +32,7 @@ def regular(path):
         raise ValueError('expected regular native stage file: ' + str(path))
 
 
-def read_map(path):
+def read_map(path, bindings=None):
     regular(path)
     rows = [json.loads(line) for line in path.read_text().splitlines()]
     if not rows or rows[0] != MAP_SCHEMA:
@@ -45,6 +46,8 @@ def read_map(path):
         if row[0] in seen:
             raise ValueError('duplicate native input mapping')
         seen.add(row[0])
+        if bindings is not None:
+            bindings[row[0]] = row[1]
         if row[1].endswith('.ltar'):
             archives.setdefault(row[1], row[0])
     if not archives:
@@ -141,25 +144,93 @@ def compiled_files(root, archive):
            [Path(str(ir) + suffix) for suffix in ('.c', '.bc')]
 
 
-def invalidate(root, native, stage, bad):
+def edit_metadata(path, data):
+    """Replace derived metadata without writing through a cache hardlink."""
+    regular(path)
+    if path.resolve() != path:
+        raise ValueError('derived metadata path is symlinked')
+    mode = stat.S_IMODE(path.stat().st_mode)
+    descriptor, name = tempfile.mkstemp(prefix='.ltar-repair-', dir=path.parent)
+    temporary = Path(name)
+    try:
+        with os.fdopen(descriptor, 'w') as output:
+            json.dump(data, output); output.write('\n')
+        os.chmod(temporary, mode)
+        os.replace(temporary, path)
+    finally:
+        temporary.unlink(missing_ok=True)
+
+
+def strip_bad_reference(data, field, bad):
+    """Only Lake4.34.1's optional ModuleOutputDescrs.l field is removed."""
+    value = data.get(field)
+    if isinstance(value, dict) and value.get('l') in bad:
+        cleaned = dict(value); cleaned.pop('l')
+        updated = dict(data); updated[field] = cleaned
+        return updated
+    if isinstance(value, str) and value in bad:
+        updated = dict(data); updated.pop(field)
+        return updated
+    return None
+
+
+def invalidate(root, native, stage, bad, metadata_changes=None):
     identities = {name: ((stage / name).stat().st_size, sha(stage / name)) for name in bad}
-    affected, compiled = [], {}
+    bindings = {}
+    read_map(stage / 'outputs.jsonl', bindings)
+    bad_inputs = {key for key, value in bindings.items() if value in bad}
+    affected, compiled, removed = set(), {}, []
+    changes = metadata_changes if metadata_changes is not None else []
     ir_directory = root / '.lake/build/ir'
     if ir_directory.resolve() != ir_directory:
         raise ValueError('working archive scope is symlinked')
+    library = root / '.lake/build/lib/lean'
+    for path in library.rglob('*.trace'):
+        regular(path)
+        data = json.loads(path.read_text())
+        if not isinstance(data, dict) or data.get('depHash') not in bad_inputs:
+            continue
+        if data.get('schemaVersion') != '2025-09-10':
+            raise ValueError('unsupported affected native trace schema')
+        # Input identity locates the module even if its working LTAR is GOOD
+        # but optional expanded-trace/cache metadata still names a bad archive.
+        archive = ir_directory / path.relative_to(library).with_suffix('.ltar')
+        affected.add(archive)
+        updated = strip_bad_reference(data, 'outputs', set(bad))
+        if updated is not None:
+            edit_metadata(path, updated)
+            changes.append({'path': str(path), 'removed': 'outputs.l or bad outputs string'})
+    import tomllib
+    scope = tomllib.loads((root / 'lakefile.toml').read_text())['name']
+    if not isinstance(scope, str) or '/' in scope or scope in ('', '.', '..'):
+        raise ValueError('unsupported root native-cache scope')
+    for key in bad_inputs:
+        path = native / 'outputs' / scope / (key + '.json')
+        if not path.exists():
+            continue
+        regular(path)
+        data = json.loads(path.read_text())
+        if data.get('schemaVersion') != '2026-02-25':
+            raise ValueError('unsupported affected native-cache output schema')
+        updated = strip_bad_reference(data, 'data', set(bad))
+        if updated is not None:
+            if isinstance(data.get('data'), str):
+                path.unlink(); removed.append(str(path))
+            else:
+                edit_metadata(path, updated)
+            changes.append({'path': str(path), 'removed': 'data.l or bad pure LTAR mapping'})
     for path in ir_directory.rglob('*.ltar'):
         regular(path)
         if path.resolve() != path:
             raise ValueError('working archive path is symlinked')
         if any(path.stat().st_size == size and sha(path) == fingerprint
                for size, fingerprint in identities.values()):
-            affected.append(path)
-            for file in compiled_files(root, path):
-                if file.is_file():
-                    regular(file)
-                    compiled[str(file)] = sha(file)
-    removed = []
-    for path in affected:
+            affected.add(path)
+    for path in sorted(affected):
+        for file in compiled_files(root, path):
+            if file.is_file():
+                regular(file)
+                compiled[str(file)] = sha(file)
         for derived in (path, Path(str(path) + '.hash')):
             if derived.exists():
                 regular(derived); derived.unlink(); removed.append(str(derived))
@@ -188,7 +259,7 @@ def metadata_guard(real, directory, environment=None):
                 LEAN=str(wrapper), LAKE_OVERRIDE_LEAN='true')
 
 
-def prepare(args, runner, leantar, real_lean, scratch):
+def prepare(args, runner, leantar, real_lean, scratch, report):
     if not args.build_target:
         raise ValueError('prepare requires the original production build targets')
     fresh = scratch / 'native-stage'
@@ -196,8 +267,13 @@ def prepare(args, runner, leantar, real_lean, scratch):
     first = validate(fresh, leantar, runner, scratch / 'first-validation')
     shutil.rmtree(scratch / 'first-validation')
     removed, compiled = [], {}
+    metadata_changes = []
     if first['bad_archives']:
-        removed, compiled = invalidate(args.root, args.native_cache, fresh, first['bad_archives'])
+        removed, compiled = invalidate(args.root, args.native_cache, fresh,
+                                       first['bad_archives'], metadata_changes)
+        report.update(first=first, removed_only_derived=removed,
+                      metadata_reference_edits=metadata_changes, compiled_sha256=compiled)
+        print(json.dumps({'selective_derived_repair': report}), flush=True)
         mapping = scratch / 'fresh-repaired-mappings.jsonl'
         runner.run(['lake', '--no-build', '--rehash', 'build', *args.build_target, '-o', str(mapping)],
                    environment=metadata_guard(real_lean, scratch, runner.environment))
@@ -223,6 +299,7 @@ def prepare(args, runner, leantar, real_lean, scratch):
         shutil.rmtree(args.staging)
     shutil.move(str(fresh), args.staging)
     return {'first': first, 'final': final, 'removed_only_derived': removed,
+            'metadata_reference_edits': metadata_changes,
             'compiled_sha256': compiled, 'compiled_bytes_unchanged': True}
 
 
@@ -264,7 +341,7 @@ def main(argv=None):
         with tempfile.TemporaryDirectory(prefix='ltar-verify-', dir=args.staging.parent) as temporary:
             scratch = Path(temporary)
             if args.action == 'prepare':
-                report.update(prepare(args, runner, leantar, real_lean, scratch))
+                report.update(prepare(args, runner, leantar, real_lean, scratch, report))
             else:
                 final = validate(args.staging, leantar, runner, scratch / 'validation')
                 report['final'] = final
