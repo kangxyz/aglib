@@ -31,8 +31,8 @@ shares the main workflow's queue and checks the runner's OS, disk, tooling
 and network. Its optional second job verifies the runner and workspace
 before enabling the production variable.
 
-The current one-job ephemeral pool uses the split transfer path until the
-host change is validated and the repository variable is enabled.
+When the repository variable is unset, Build and Test use the transfer path.
+Enable runner-local handoff only after the two-job EC2 probe succeeds.
 
 The normal workflow routes PRs to hosted runners. GitHub assigns self-hosted
 jobs by requested labels and groups. If external contributions expand, the
