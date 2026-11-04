@@ -42,7 +42,6 @@ jobs:
       # The repo-only autoscaler requires this complete label set.
       runner-labels: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2')) && '["self-hosted","linux","x64","aglib-ec2-pilot"]' || '["ubuntu-24.04"]' }}
       native-memory-mib: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2')) && 57344 || 13824 }}
-      lean-frontend-memory-mib: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2')) && 49152 || 0 }}
       lake-threads: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2')) && 4 || 1 }}
       lint-workers: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2')) && 4 || 2 }}
       job-timeout-minutes: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2')) && (github.event_name == 'workflow_dispatch' && inputs.ec2-job-minutes == '150' && 150 || 90) || 360 }}

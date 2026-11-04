@@ -19,9 +19,6 @@ on:
       native-memory-mib:
         type: number
         default: 13824
-      lean-frontend-memory-mib:
-        type: number
-        default: 0
       lake-threads:
         type: number
         default: 1
@@ -78,7 +75,6 @@ jobs:
     timeout-minutes: ${{ inputs.build-job-timeout-minutes != 0 && inputs.build-job-timeout-minutes || inputs.job-timeout-minutes }}
     env: &native-resource-env
       CI_NATIVE_MEMORY_MIB: ${{ inputs.native-memory-mib }}
-      CI_LEAN_FRONTEND_MEMORY_MIB: ${{ inputs.lean-frontend-memory-mib }}
       CI_LAKE_THREADS: ${{ inputs.lake-threads }}
       CI_LINT_WORKERS: ${{ inputs.lint-workers }}
     defaults: &native-resource-defaults
@@ -289,15 +285,6 @@ jobs:
           done
           echo '::error::Lean toolchain acquisition failed after 3 attempts.'
           exit 1
-      - name: Configure Lean frontend limits
-        if: ${{ inputs.lean-frontend-memory-mib != 0 }}
-        working-directory: ${{ inputs.package-directory }}
-        run: &configure-lean-frontend |
-          python3 .github/ci-lean-frontend.py configure \
-            --memory-mib "$CI_LEAN_FRONTEND_MEMORY_MIB" \
-            --aggregate-memory-mib "$CI_NATIVE_MEMORY_MIB" \
-            --lean "$(lean --print-prefix)/bin/lean" --runner-temp "$RUNNER_TEMP" \
-            --github-env "$GITHUB_ENV" --github-path "$GITHUB_PATH"
       - name: First-main native no-build readiness before cache tools or production build
         if: ${{ inputs.first-ci-cache != '' }}
         working-directory: ${{ inputs.package-directory }}
@@ -729,10 +716,6 @@ jobs:
           done
           echo '::error::Lean toolchain acquisition failed after 3 attempts.'
           exit 1
-      - name: Configure Lean frontend limits
-        if: ${{ inputs.lean-frontend-memory-mib != 0 }}
-        working-directory: ${{ inputs.package-directory }}
-        run: *configure-lean-frontend
       - name: First-main native no-build readiness before recovery or checker preparation
         if: ${{ inputs.first-ci-cache != '' }}
         working-directory: ${{ inputs.package-directory }}

@@ -36,37 +36,10 @@ uses eight Lake runtime threads by default; the EC2-only manual choice
 `ec2-build-lake-threads` permits `4` instead of `8`. Missing or unexpected EC2
 choices use a 90-minute base/Test limit and eight Build Lake runtime threads;
 automatic pushes ignore manual choices.
-Lake runtime threads alone do not specify frontend process concurrency or change
-the package's weak `-j4 -M12800` arguments. The opt-in wrapper below supplies the
-EC2 frontend override. Other EC2 steps and Test/lint retain their
+Lake runtime threads do not specify frontend process concurrency or change the
+`-j4 -M12800` frontend arguments. Other EC2 steps and Test/lint retain their
 existing runtime and worker settings; shared reusable workflow defaults remain
 hosted and unchanged.
-
-`lean-frontend-memory-mib` defaults to `0`, which leaves compiler selection and
-arguments unchanged. The EC2 selector sets it to `49152` in Build and Test.
-This opt-in also limits each job to one Lean compiler process at a time, inside
-the existing 57344 MiB aggregate scope. It does not change Lake runtime threads,
-the compiler's `-j4`, the 180-minute compiler window or the 240-minute Build limit.
-Setup rejects a frontend cap that does not fit below the effective aggregate
-after the existing physical-RAM-minus-2048-MiB clamp.
-
-After pinned Lean setup, `.github/ci-lean-frontend.py` creates a private toolchain
-overlay in the job's runner temporary directory. Pinned Lake's
-`LAKE_OVERRIDE_LEAN=1` and `LEAN_SYSROOT` select its wrapper; standard libraries,
-other binaries and configuration still come from the same installed toolchain.
-The wrapper replaces only `-M`/`--memory` arguments. Version, prefix and githash
-queries pass through unchanged. A single job-local flock descriptor is inherited
-by the real compiler through `exec`, so normal exit or termination releases its
-slot without deleting lock files or signaling saved process IDs. Other jobs have
-separate lock directories. `--run` control programs retain their argument semantics
-and do not hold the compiler lock; any compiler children acquire it normally.
-
-Lake may print the package's nominal `-M12800` weak argument in its trace; the
-wrapper reports the effective `-M49152` before executing the compiler. No Lake
-configuration or mathematical source is rewritten: weak resource arguments do
-not enter Lake's result trace, and compatible existing outputs remain reusable.
-The documented native Comparison pass used this 49152 MiB frontend envelope;
-the aggregate memory scope alone does not override a lower frontend limit.
 
 Automatic main pushes incur on-demand AWS charges. USD 5 is the current trial
 budget, not a billing hard cap. The pool uses Ubuntu 24.04 Linux x86_64 on

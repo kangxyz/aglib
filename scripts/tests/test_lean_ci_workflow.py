@@ -788,7 +788,7 @@ class NativeRunnerResources(unittest.TestCase):
                          ['-M12800', '-j4'])
         self.assertEqual(self.inputs['runner-labels']['type'], 'string')
         self.assertEqual(json.loads(self.inputs['runner-labels']['default']), ['ubuntu-24.04'])
-        for name, default in (('native-memory-mib', 13824), ('lean-frontend-memory-mib', 0), ('lake-threads', 1), ('lint-workers', 2), ('job-timeout-minutes', 360), ('build-lake-threads', 0), ('build-job-timeout-minutes', 0), ('build-compiler-minutes', 0)):
+        for name, default in (('native-memory-mib', 13824), ('lake-threads', 1), ('lint-workers', 2), ('job-timeout-minutes', 360), ('build-lake-threads', 0), ('build-job-timeout-minutes', 0), ('build-compiler-minutes', 0)):
             self.assertEqual(self.inputs[name]['default'], default)
             self.assertIn(self.inputs[name]['type'], ('string', 'number'))
         for job in ('build', 'test_lint'):
@@ -837,7 +837,7 @@ class NativeRunnerResources(unittest.TestCase):
                             expected_ec2 = ref == 'refs/heads/main' and (event == 'push' or (event == 'workflow_dispatch' and profile == 'ec2'))
                             values = {'github.ref': ref, 'github.event_name': event, 'inputs.runner-profile': profile,
                                       'inputs.ec2-job-minutes': minutes, 'inputs.ec2-build-lake-threads': threads}
-                            names = ('native-memory-mib', 'lean-frontend-memory-mib', 'lake-threads', 'lint-workers',
+                            names = ('native-memory-mib', 'lake-threads', 'lint-workers',
                                      'job-timeout-minutes', 'build-lake-threads',
                                      'build-job-timeout-minutes', 'build-compiler-minutes')
                             selected = {name: self.workflow_value(settings[name], values)
@@ -845,28 +845,9 @@ class NativeRunnerResources(unittest.TestCase):
                             self.assertEqual(json.loads(selected.pop('runner-labels')),
                                 ['self-hosted', 'linux', 'x64', 'aglib-ec2-pilot'] if expected_ec2 else ['ubuntu-24.04'])
                             self.assertEqual(selected, dict(zip(names,
-                                (57344, 49152, 4, 4, 150 if event == 'workflow_dispatch' and minutes == '150' else 90,
+                                (57344, 4, 4, 150 if event == 'workflow_dispatch' and minutes == '150' else 90,
                                  4 if event == 'workflow_dispatch' and threads == '4' else 8, 240, 180)
-                                if expected_ec2 else (13824, 0, 1, 2, 360, 0, 0, 0))))
-
-    def test_frontend_override_is_opt_in_and_precedes_build_and_test_compilation(self):
-        for job in ('build', 'test_lint'):
-            configure = step(job, 'Configure Lean frontend limits')
-            self.assertFalse(condition(configure['if'], {'inputs.lean-frontend-memory-mib': 0}))
-            self.assertTrue(condition(configure['if'], {'inputs.lean-frontend-memory-mib': 49152}))
-            self.assertEqual(JOBS[job]['env']['CI_LEAN_FRONTEND_MEMORY_MIB'],
-                             '${{ inputs.lean-frontend-memory-mib }}')
-            self.assertIn('--memory-mib "$CI_LEAN_FRONTEND_MEMORY_MIB"', configure['run'])
-            self.assertIn('--aggregate-memory-mib "$CI_NATIVE_MEMORY_MIB"', configure['run'])
-            self.assertIn('--lean "$(lean --print-prefix)/bin/lean"', configure['run'])
-            self.assertIn('--github-env "$GITHUB_ENV" --github-path "$GITHUB_PATH"', configure['run'])
-            actions = JOBS[job]['steps']
-            self.assertLess(actions.index(step(job, 'Configure Lean')), actions.index(configure))
-            next_compile = 'Get Mathlib cache' if job == 'build' else 'Prepare check tools'
-            self.assertLess(actions.index(configure), actions.index(step(job, next_compile)))
-        self.assertNotIn('CI_LEAN_FRONTEND_MEMORY_MIB', JOBS['upload_cache'].get('env', {}))
-        self.assertNotIn('Configure Lean frontend limits',
-                         [item.get('name') for item in JOBS['upload_cache']['steps']])
+                                if expected_ec2 else (13824, 1, 2, 360, 0, 0, 0))))
 
     def test_build_runtime_override_is_production_step_only_and_preserves_fallback(self):
         production = step('build', 'Build')
