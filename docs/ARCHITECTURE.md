@@ -23,20 +23,24 @@ The implemented graph decides precise dependencies. A reading order or book chap
 ## Complete abstraction, thin instances and minimal models
 
 Build the complete reusable construction, its operational maps and the laws
-needed by current consumers at the weakest sufficient mathematical layer.
-Categories and adjunctions own formal arguments; actual topoi and geometric
-morphisms provide intrinsic sheaf operations; sites provide presentations and
+needed by current consumers at the natural layer whose objects and hypotheses
+suffice. Start with existing Mathlib and Aglib interfaces and choose the
+formulation that expresses the argument directly with focused dependencies.
+A single actual use can justify extracting a reusable argument.
+Categories and adjunctions own formal arguments. Actual topoi and geometric
+morphisms provide intrinsic sheaf operations. Sites provide presentations and
 local calculations. Complexes and derived categories supply the operations
 that require them. Keep the original coefficient, size, exactness, acyclicity,
 boundedness and geometric hypotheses explicit.
 
 Define native instances through the same chosen constructors and maps. A thin
 instance supplies the original geometric data and proves exact carrier, action,
-map and unit/counit correspondence. Complete comparison, mate/base-change and
-descent arguments include their required coherence and final assembly. A
-native instance discharges newly introduced comparison or coherence inputs
-from the original data. Genuinely unsupplied mathematical premises retain
-their original stated scope.
+map and unit/counit correspondence. A reusable comparison, mate/base-change or
+descent theorem derives its whole conclusion, including the required coherence
+and final assembly, from separately established inputs such as component
+formulas or naturality. At the actual call, specialize it to the original maps
+and discharge its premises from the original data. Genuinely unsupplied
+mathematical premises retain their original stated scope.
 
 Prove whole comparison laws before evaluating them at an object, coefficient
 or degree. Where evaluation itself carries substantial implementation data,

@@ -23,6 +23,15 @@ Reuse actual compatible native build/check evidence and fill affected coverage.
 
 ## Normal task
 
+For a proof spanning mathematical layers, identify the
+[general declaration](ARCHITECTURE.md#complete-abstraction-thin-instances-and-minimal-models),
+its native caller and what the caller must prove. In the Künneth comparison,
+deriving the naturality of the total tensor map from its homogeneous component
+laws belongs with graded modules and tensor products. Compatibility of the
+actual scheme pullbacks with the external product belongs with scheme
+cohomology. Track compilation of the general theorem and its actual native use
+separately and reuse compatible results for each.
+
 In a prepared workspace, prove, compile the next coherent changed module and
 repair from its diagnostics. For example:
 
