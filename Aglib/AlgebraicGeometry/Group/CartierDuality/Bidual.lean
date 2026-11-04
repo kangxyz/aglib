@@ -96,8 +96,8 @@ theorem hopfBidualIso_inv_hom (A : CommHopfAlgCat.{u} k)
 
 /-- Naturality of the same native Hopf bidual evaluation. -/
 theorem hopfBidualIso_naturality {A B : CommHopfAlgCat.{u} k}
-    [Coalgebra.IsCocomm k A] [FiniteDimensional k A]
-    [Coalgebra.IsCocomm k B] [FiniteDimensional k B] (f : A ⟶ B) :
+    [FiniteDimensional k A]
+    [FiniteDimensional k B] (f : A ⟶ B) :
     f ≫ (hopfBidualIso B).hom =
       (hopfBidualIso A).hom ≫ CommHopfAlgCat.ofHom f.hom.dual.dual := by
   apply CommHopfAlgCat.hom_ext
@@ -106,8 +106,8 @@ theorem hopfBidualIso_naturality {A B : CommHopfAlgCat.{u} k}
 
 /-- Naturality of the original inverse of bidual evaluation. -/
 theorem hopfBidualIso_inv_naturality {A B : CommHopfAlgCat.{u} k}
-    [Coalgebra.IsCocomm k A] [FiniteDimensional k A]
-    [Coalgebra.IsCocomm k B] [FiniteDimensional k B] (f : A ⟶ B) :
+    [FiniteDimensional k A]
+    [FiniteDimensional k B] (f : A ⟶ B) :
     (hopfBidualIso A).inv ≫ f =
       CommHopfAlgCat.ofHom f.hom.dual.dual ≫ (hopfBidualIso B).inv := by
   apply (cancel_epi (hopfBidualIso A).hom).mp
@@ -127,7 +127,7 @@ theorem dual_hopfBidualIso_inv (A : CommHopfAlgCat.{u} k)
 /-- Transposing the whole original inverse-evaluation composite recovers the original Hopf map. -/
 theorem hopfBidualIso_dual_composite {A B : CommHopfAlgCat.{u} k}
     [Coalgebra.IsCocomm k A] [FiniteDimensional k A]
-    [Coalgebra.IsCocomm k B] [FiniteDimensional k B]
+    [FiniteDimensional k B]
     (q : CommHopfAlgCat.of k (Dual k A) ⟶ B) :
     CommHopfAlgCat.ofHom ((hopfBidualIso A).inv.hom.comp q.hom.dual).dual ≫
       (hopfBidualIso B).inv = q := by
@@ -137,14 +137,14 @@ theorem hopfBidualIso_dual_composite {A B : CommHopfAlgCat.{u} k}
 
 /-- Native bidual evaluation, with its original inverse, on the actual Spec groups. -/
 def specGroupBidualIso (A : CommHopfAlgCat.{u} k)
-    [Coalgebra.IsCocomm k A] [FiniteDimensional k A] :
+    [FiniteDimensional k A] :
     specGroup A ≅ specGroup (CommHopfAlgCat.of k (Dual k (Dual k A))) :=
   ((AlgebraicGeometry.hopfSpec (CommRingCat.of k)).mapIso
     (hopfBidualIso A).op).symm
 
 /-- The same Spec bidual comparison is the native image of inverse evaluation. -/
 theorem hopfSpec_hopfBidualIso_inv (A : CommHopfAlgCat.{u} k)
-    [Coalgebra.IsCocomm k A] [FiniteDimensional k A] :
+    [FiniteDimensional k A] :
     (AlgebraicGeometry.hopfSpec (CommRingCat.of k)).map (hopfBidualIso A).inv.op =
       (specGroupBidualIso A).hom := rfl
 
