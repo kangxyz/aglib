@@ -221,6 +221,14 @@ genus its scalar extension to an algebraically closed field is induced by an
 ample line bundle on the original scalar-extended Jacobian. A theta line
 bundle over the ground field remains a separate descent question.
 
+
+[WeilPairing/CupTrace](Jacobian/WeilPairing/CupTrace.lean) identifies the
+degree-zero roots class of the original Jacobian Weil value with the negative
+trace of the ordered Yoneda cup of the original inverse Kummer classes. The
+character slot comes first in the cup. The theorem uses algebraically closed
+constants, positive invertible level and the same supplied Picard
+representatives. A rational origin is chosen inside the proof.
+
 ## Additional source entry points
 
 Each source states the exact hypotheses, maps, and realization bounds of its interfaces.

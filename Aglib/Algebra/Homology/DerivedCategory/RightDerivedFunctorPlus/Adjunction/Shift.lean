@@ -30,6 +30,29 @@ set_option backward.isDefEq.respectTransparency false
 
 open CategoryTheory CategoryTheory.Limits
 
+namespace CategoryTheory.Functor
+
+variable (C : Type*) [Category* C] [Abelian C]
+
+/-- The original degreewise identity comparison commutes with shifts. -/
+theorem mapCochainComplexPlusIdIso_commShift :
+    NatTrans.CommShift (mapCochainComplexPlusIdIso C).hom ℤ := by
+  refine NatTrans.CommShift.of_comp_faithful (CochainComplex.Plus.ι C) (h := ?_)
+  have h :
+      Functor.whiskerRight (mapCochainComplexPlusIdIso C).hom
+          (CochainComplex.Plus.ι C) =
+        (𝟭 C).mapCochainComplexPlusCompι.hom ≫
+          Functor.whiskerLeft (CochainComplex.Plus.ι C)
+            (mapHomologicalComplexIdIso C (.up ℤ)).hom ≫
+          (CochainComplex.Plus.ι C).rightUnitor.hom ≫
+          (CochainComplex.Plus.ι C).leftUnitor.inv := by
+    ext K i
+    simp [mapCochainComplexPlusIdIso]
+  rw [h]
+  infer_instance
+
+end CategoryTheory.Functor
+
 namespace CategoryTheory
 
 section Complex
@@ -39,26 +62,10 @@ universe uA vA uB vB
 variable {A : Type uA} [Category.{vA} A] [Abelian A]
   {B : Type uB} [Category.{vB} B] [Abelian B]
 
-private theorem complexId_commShift :
-    NatTrans.CommShift (Functor.mapCochainComplexPlusIdIso A).hom ℤ := by
-  refine NatTrans.CommShift.of_comp_faithful (CochainComplex.Plus.ι A) (h := ?_)
-  have h :
-      Functor.whiskerRight (Functor.mapCochainComplexPlusIdIso A).hom
-          (CochainComplex.Plus.ι A) =
-        (𝟭 A).mapCochainComplexPlusCompι.hom ≫
-          Functor.whiskerLeft (CochainComplex.Plus.ι A)
-            (Functor.mapHomologicalComplexIdIso A (.up ℤ)).hom ≫
-          (CochainComplex.Plus.ι A).rightUnitor.hom ≫
-          (CochainComplex.Plus.ι A).leftUnitor.inv := by
-    ext K i
-    simp [Functor.mapCochainComplexPlusIdIso]
-  rw [h]
-  infer_instance
-
 private theorem complexAdjunction_commShift
     {L : A ⥤ B} {R : B ⥤ A} [L.Additive] [R.Additive] (adj : L ⊣ R) :
     adj.mapCochainComplexPlus.CommShift ℤ := by
-  have := complexId_commShift (A := A)
+  have := Functor.mapCochainComplexPlusIdIso_commShift A
   apply Adjunction.CommShift.mk'
   have h : adj.mapCochainComplexPlus.unit =
       (Functor.mapCochainComplexPlusIdIso A).inv ≫
@@ -169,6 +176,36 @@ theorem Adjunction.rightDerivedFunctorPlus_commShift (adj : L ⊣ R) :
       exact Category.assoc _ _ _
 
 end Derived
+
+namespace Functor
+
+variable (C : Type*) [Category* C] [Abelian C]
+variable [EnoughInjectives C] [HasDerivedCategory C]
+
+set_option backward.defeqAttrib.useBackward true in
+set_option backward.isDefEq.respectTransparency false in
+/-- The installed derived identity retains shift compatibility from its original unit. -/
+theorem rightDerivedFunctorPlusIdIso_commShift :
+    NatTrans.CommShift (rightDerivedFunctorPlusIdIso C).hom ℤ := by
+  have := mapCochainComplexPlusIdIso_commShift C
+  have : NatTrans.CommShift (rightDerivedIdentityComparison C).inv ℤ := by
+    dsimp only [rightDerivedIdentityComparison, Iso.trans_inv, Iso.symm_inv,
+      Functor.isoWhiskerRight_inv, Functor.isoWhiskerRight_hom]
+    infer_instance
+  apply commShift_of_rightDerived_factorization DerivedCategory.Plus.Q
+    (CochainComplex.Plus.quasiIso C) (𝟭 C).rightDerivedFunctorPlusUnit
+    (rightDerivedIdentityComparison C).inv
+  apply NatTrans.ext
+  funext K
+  dsimp only [NatTrans.comp_app, Functor.whiskerLeft_app]
+  rw [rightDerivedFunctorPlusIdIso_unit]
+  simp only [rightDerivedIdentityComparison, Iso.trans_inv, Iso.symm_inv,
+    Functor.isoWhiskerRight_inv, NatTrans.comp_app,
+    Functor.whiskerRight_app, Functor.leftUnitor_hom_app, Functor.rightUnitor_inv_app,
+    Category.comp_id]
+  exact (Category.comp_id _).symm
+
+end Functor
 
 section Mate
 

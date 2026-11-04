@@ -13,7 +13,9 @@ public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Exa
 
 open CategoryTheory CategoryTheory.Abelian
 
-private theorem homPlus_transport_degreeZero
+/-- The original shifted Ext morphism retains precomposition and postcomposition by
+degree-zero maps. -/
+theorem Ext.homPlus_transport_degreeZero
     {C : Type*} [Category* C] [Abelian C] [HasDerivedCategory C] [HasExt C]
     {A B C' D : C} (a : A ⟶ B) (b : C' ⟶ D) (p : ℕ) (x : Ext B C' p) :
     (((Ext.mk₀ a).comp x (zero_add p)).comp (Ext.mk₀ b) (add_zero p)).homPlus =
@@ -44,6 +46,20 @@ def rightDerivedFunctorPlusSingleIsoOfIso (q : ℤ) {M : C} {N : D}
 
 variable [HasExt C] [HasExt D] [Limits.PreservesFiniteLimits F] [Limits.PreservesFiniteColimits F]
 
+/-- Actual precomposition and postcomposition before and after exact forgetting. -/
+theorem mapExactFunctor_prePost_homPlus {A B : C} {A' B' : D}
+    (a : A' ⟶ F.obj A) (b : F.obj B ⟶ B') (q : ℕ) (x : Ext A B q) :
+    let S := DerivedCategory.Plus.singleFunctor D 0
+    let e := F.rightDerivedFunctorPlusSingleIso 0
+    (((Ext.mk₀ a).comp (x.mapExactFunctor F) (zero_add q)).comp
+        (Ext.mk₀ b) (add_zero q)).homPlus =
+      S.map a ≫ e.inv.app A ≫ x.homPlus.map F.rightDerivedFunctorPlus ≫
+        (e.hom.app B ≫ S.map b)⟦(q : ℤ)⟧' := by
+  intro S e
+  rw [Ext.homPlus_transport_degreeZero, ← F.rightDerivedFunctorPlusSingleIso_map_homPlus x]
+  simp only [Functor.map_comp, Category.assoc]
+  rfl
+
 /-- Exact inverse image on Ext, with its two original degree-zero transports,
 is the same shifted morphism in the original bounded-below derived category. -/
 theorem mapExactFunctor_transport_homPlus {A B : C} {A' B' : D}
@@ -53,7 +69,7 @@ theorem mapExactFunctor_transport_homPlus {A B : C} {A' B' : D}
       (F.rightDerivedFunctorPlusSingleIsoOfIso 0 a).inv ≫
         x.homPlus.map F.rightDerivedFunctorPlus ≫
           (F.rightDerivedFunctorPlusSingleIsoOfIso 0 b).hom⟦(p : ℤ)⟧' := by
-  rw [homPlus_transport_degreeZero, ← F.rightDerivedFunctorPlusSingleIso_map_homPlus x]
+  rw [Ext.homPlus_transport_degreeZero, ← F.rightDerivedFunctorPlusSingleIso_map_homPlus x]
   simp only [rightDerivedFunctorPlusSingleIsoOfIso, Iso.app_inv, Iso.app_hom, Iso.trans_inv,
     Iso.trans_hom, Functor.mapIso_inv, Functor.mapIso_hom, Functor.map_comp, Category.assoc]
 

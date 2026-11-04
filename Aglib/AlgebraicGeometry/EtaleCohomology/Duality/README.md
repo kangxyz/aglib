@@ -58,7 +58,8 @@ positive and invertible, including composite levels and one, with the displayed
 global-section level conditions and independent Ext universes. The public
 statement chooses no basis or root. Proper finite-locally-constant perfectness
 in complementary degrees is supplied below. General constructible perfectness, general purity, and SGA torsor,
-connecting, cup/Yoneda and Weil sign comparisons remain open.
+connecting and cup/Yoneda comparisons remain open. The original Jacobian Weil
+sign comparison is stated below.
 
 [PointPurity](PointPurity.lean) proves the original supported module Ext
 vanishes in degrees zero, one and above two for a closed point of an open in
@@ -122,7 +123,13 @@ assert a lower-shriek/direct-image isomorphism or a finite-trace pairing law.
 internal-Hom/source Ext laws and native evaluation, unit and trace comparisons.
 Target naturality, degree-zero and lifted-section laws retain their displayed
 acyclicity conditions, with independent Ext universes. Comparison with the
-source Čech, connecting, cup and SGA/Weil sign conventions remains open.
+source Čech and connecting conventions remains open.
+
+The original Jacobian Weil value is the negative trace of the ordered Yoneda
+cup of the original inverse Kummer classes, with the character slot first.
+This comparison uses the original normalized diagonal trace over algebraically
+closed constants at positive invertible level.
+[Original Jacobian Weil and signed cup trace](../../Curves/Jacobian/WeilPairing/CupTrace.lean).
 
 [FiniteTracePairing](FiniteTracePairing.lean) proves the whole original
 module-to-abelian transfer rectangle and the `r = 2, s = 0` pairing square

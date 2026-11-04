@@ -420,8 +420,8 @@ hypotheses. Its negative inverse is the canonical principal group
 isomorphism, with its underlying scheme isomorphism. For positive base
 genus, after an algebraically closed field extension, its scalar-extended
 morphism is induced by an ample line bundle on the scalar-extended original
-Jacobian. The coherent-H¹ bound remains open; no theta line bundle over
-the arbitrary ground field is asserted. [Milne JVs](REFERENCES.md#milne2021jacobianvarieties),
+Jacobian. The general coherent-H¹ bound applies to the same Jacobian.
+Descent of a theta line bundle over the arbitrary ground field remains open. [Milne JVs](REFERENCES.md#milne2021jacobianvarieties),
 5.1 and 6.6–6.11, remains a source locator with its actual hypotheses.
 
 Construct the Weil pairing first on the actual `n` kernels of an abelian
@@ -447,9 +447,13 @@ visible when selecting the proof chain.
 Finally compare the original Yoneda and cup pairings and the actual
 Abel–Jacobi/Kummer/Poincaré maps. [SGA 4½](REFERENCES.md#sga4half), [Arcata]
 VI (2.3.3), printed p. 70, gives the source formula
-`Tr(u cup f_0^*(vbar)) = -v(u)`. Its Cartier-dual/polarization identification,
-torsor conventions and boundary/cup/Yoneda signs must be matched to Aglib.
-No final formula identifying Aglib's pairing with `-e_n` is asserted.
+`Tr(u cup f_0^*(vbar)) = -v(u)`. For the original Jacobian over algebraically
+closed constants at positive invertible level, the degree-zero roots class
+of the original Weil value equals the negative trace of the ordered Yoneda
+cup. The character slot comes first in the cup, and the point slot comes
+second. The field root identification is the same one used in the cup.
+[Original Weil and signed cup trace](../Aglib/AlgebraicGeometry/Curves/Jacobian/WeilPairing/CupTrace.lean).
+The comparison with the source Čech convention remains open.
 
 ## Implementation and open boundary
 
@@ -477,9 +481,9 @@ close the planned programme.
 | B6–B7 | **Partial source supplied:** positive multiplication and its native kernel have rank `n^(2*g)` over every field; at unit levels geometric degree and torsion counts and noncanonical native-action basis existence are supplied through all-divisor counts. Proper roots and constant H¹ have cardinality `n^(2*g)` and noncanonical native-action bases over algebraically closed constants at positive invertible levels; the original open H¹ cardinality and noncanonical native-action bases for both coefficients are supplied for nonempty finite complement. |
 | D2–D6 | **Partial source supplied:** module trace and smaller-open compatibility, exact finite-module dualization, finite biduality, and constant-coefficient perfectness in degrees 0 and 2 with transposes, for finite complement including empty and positive invertible `n`. Original one-point module Ext purity and Kummer trace-one normalization are supplied; the original finite-lcc roots internal-Hom/Ext comparison is supplied under its field and level hypotheses; finite point-support roots Ext and its whole trace sum are supplied; both original proper and finite-complement open adjoints are bijective for every finite-lcc coefficient and `r ≤ 2`, with the displayed field, level and Ext-world hypotheses. General-coefficient purity and source Čech/connecting/cup comparisons remain open. The original finite proper/open pairing squares are supplied for all complementary degrees under their stated hypotheses. |
 | D7 | **Implemented:** the [original constructible curve duality](../Aglib/AlgebraicGeometry/EtaleCohomology/Duality/ConstructiblePerfectness.lean) for both adjoints in compact degrees `r ≤ 2`, with the actual open and finite closed complement, algebraically closed constants, positive invertible level and displayed Ext hypotheses. |
-| W1 | **Partial source supplied:** the same Poincaré pair and original line-bundle morphism, with locally Noetherian classification; an ample original `φ_L` is finite. Dual properness, smoothness, dimension, geometric integrality, projectivity and finite-flat surjectivity are conditional on the original coherent-H¹ inequality `finrank H¹(O_A) ≤ finrank Cotangent(unit_A)` and the displayed source assumptions. Conditional homogeneity and source multiplication laws hold when the actual dual component is proper and geometrically integral. The original bidual map and its naturality/line-bundle laws are supplied with a second representative; the coherent-H¹ inequality, unconditional dual geometry, bidual isomorphism, general dual homomorphisms and character descent remain open. |
-| W2–W3 | **Partial source supplied:** based positive-genus theta Cartier geometry, monicity, trivial scheme kernel and ampleness; principal isomorphism retains the original coherent-H¹ inequality. Genus zero has the separate any-field trivial-Jacobian theorem. The any-field Abel origin-change law and conditional principal-isomorphism independence are supplied. The origin-free canonical Abel dual map is an isomorphism over any field in every genus under the original coherent-H¹ and representative hypotheses; its negative inverse is the canonical principal group/scheme isomorphism. Positive-genus ampleness is supplied after algebraically closed field extension. The general coherent-H¹ theorem discharges the dimension premise. The based theta bundle induces the canonical principal map. The original Weil pairing is supplied with field-extension compatibility, alternation and geometric-point Galois equivariance. |
-| W4 | **Partial source supplied:** original internal-Hom/source Ext laws and native evaluation/unit/trace comparisons retain their stated acyclicity premises. The final original-map and sign comparison of Yoneda, cup, Kummer, Abel–Jacobi, Cartier and polarization constructions remains open. |
+| W1 | **Partial source supplied:** the same Poincaré pair and original line-bundle morphism, with locally Noetherian classification. The general coherent-H¹ inequality discharges the dimension premise in the [original dual geometry](../Aglib/AlgebraicGeometry/AbelianScheme/OverField/Dual/Geometry.lean) under its properness, smoothness, geometric integrality and ampleness hypotheses. The original bidual map and its naturality and line-bundle laws are supplied with a second representative. Bidual isomorphism, general dual homomorphisms and general character descent remain open. |
+| W2–W3 | **Partial source supplied:** based positive-genus theta Cartier geometry, monicity, trivial scheme kernel and ampleness, and the any-field Abel origin-change law. The [canonical Abel dual map](../Aglib/AlgebraicGeometry/Curves/Jacobian/Theta/CanonicalPrincipal.lean) is an isomorphism over any field in every genus with the displayed Picard representative hypotheses. Its negative inverse is the canonical principal group and scheme isomorphism. The based theta bundle induces the canonical principal map. Positive-genus ampleness is supplied after algebraically closed field extension. The original Weil pairing is supplied with field-extension compatibility, alternation and geometric-point Galois equivariance. |
+| W4 | **Implemented on original kernel points:** [the original Weil value and signed ordered cup trace](../Aglib/AlgebraicGeometry/Curves/Jacobian/WeilPairing/CupTrace.lean) agree over algebraically closed constants at positive invertible level. The proof uses the original marked Abel cover, inverse Kummer classes, relative trace and Cartier character. General source Čech and connecting comparisons retain their separate scope. |
 
 ## Work order and source obligations
 

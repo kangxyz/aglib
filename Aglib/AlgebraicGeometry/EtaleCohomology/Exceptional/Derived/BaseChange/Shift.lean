@@ -76,4 +76,44 @@ theorem moduleDerivedBaseChangeMap_commShift :
   exact mateEquiv_commShift (moduleDerivedAdjunction Λ f) (moduleDerivedAdjunction Λ f')
     (TwoSquare.mk _ _ _ _ (moduleDerivedInverseImageSquareIso Λ f f' g g' h).hom)
 
+
+universe wY
+
+/-- The original module inverse-image identity commutes with the installed shift. -/
+theorem moduleDerivedInverseImageIdIso_commShift
+    (X : Scheme.{u}) [HasDerivedCategory.{wX} (ModuleSheaf X Λ)] :
+    NatTrans.CommShift (moduleDerivedInverseImageIdIso Λ X).hom ℤ := by
+  have := Functor.rightDerivedFunctorPlusIso_commShift
+    (moduleInverseImage (𝟙 X) Λ) (moduleInverseImageIdIso Λ X)
+  have := Functor.rightDerivedFunctorPlusIdIso_commShift (ModuleSheaf X Λ)
+  change NatTrans.CommShift
+    (((moduleInverseImage (𝟙 X) Λ).rightDerivedFunctorPlusIso
+      (moduleInverseImageIdIso Λ X)).hom ≫
+        (Functor.rightDerivedFunctorPlusIdIso (ModuleSheaf X Λ)).hom) ℤ
+  infer_instance
+
+/-- The original section comparison of derived inverse image commutes with shifts. -/
+theorem moduleDerivedInverseImageSectionIso_commShift {X Y : Scheme.{u}}
+    [HasDerivedCategory.{wX} (ModuleSheaf X Λ)]
+    [HasDerivedCategory.{wY} (ModuleSheaf Y Λ)]
+    (p : Y ⟶ X) (o : X ⟶ Y) (ho : o ≫ p = 𝟙 X) :
+    NatTrans.CommShift ((moduleDerivedInverseImageCompIso Λ p o).symm ≪≫
+      eqToIso (congrArg (fun f : X ⟶ X => moduleDerivedInverseImage Λ f) ho) ≪≫
+      moduleDerivedInverseImageIdIso Λ X).hom ℤ := by
+  have := Functor.rightDerivedFunctorPlusIso_commShift
+    (moduleInverseImage (o ≫ p) Λ) (moduleInverseImageCompIso Λ p o)
+  have := Functor.rightDerivedFunctorPlusCompIsoOfPreservesHomology_commShift
+    (moduleInverseImage p Λ) (moduleInverseImage o Λ)
+  have : NatTrans.CommShift (moduleDerivedInverseImageCompIso Λ p o).hom ℤ := by
+    change NatTrans.CommShift
+      (((moduleInverseImage (o ≫ p) Λ).rightDerivedFunctorPlusIso
+        (moduleInverseImageCompIso Λ p o)).hom ≫
+          (Functor.rightDerivedFunctorPlusCompIsoOfPreservesHomology
+            (moduleInverseImage p Λ) (moduleInverseImage o Λ)).hom) ℤ
+    infer_instance
+  have := moduleDerivedInverseImageIdIso_commShift Λ X
+  have := moduleInverseImageEquality_commShift Λ ho
+  dsimp only [Iso.trans_hom, Iso.symm_hom]
+  infer_instance
+
 end AlgebraicGeometry.Scheme.EtaleCohomology
