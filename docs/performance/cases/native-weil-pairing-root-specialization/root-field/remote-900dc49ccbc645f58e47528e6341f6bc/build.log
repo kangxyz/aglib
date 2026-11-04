@@ -1,0 +1,53 @@
+{"candidate_sha256": "46c159a3b03776423e24e2458b65fc6a9192b06313bf3cd7f73d070130060ebe", "setup_sha256": "887c1a7fe85b3bb97a6f0a8ce7737c6ce3e3ea70cc26f3f5a100644d158d23eb", "sealed_basis": "1d158bf5e194e8e8040b95eb1469d14055a89b70c736cddc196b7a165e7ceffb", "baseline_sha256": "0ec0b9a3e8fed27dccb1905647d570a6724ff0abf31e3d81ac1f7f5dde1e73fb", "native_options": {"autoImplicit": false, "warningAsError": true, "weak.linter.mathlibStandardSet": true, "weak.linter.style.longFile": 1500}}
+group paste: group values
+group paste: roots values
+group paste: evaluation values
+group paste: tensor naturality
+group paste: Cartier projection
+group paste: supplier laws
+group paste: old pairing equality
+group paste: new pairing equality
+group paste: Cartier square
+group paste: evaluation naturality
+group paste: evaluation naturality normalized
+group paste: evaluation scalar extension
+group paste: roots inclusion square
+/root/autodl-tmp/lean-build/logs/remote-900dc49ccbc645f58e47528e6341f6bc/root-field-native-groups/RootFieldBaseChange.lean:191:2: error: Unused tactic linter: `trace "group paste: group values"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-900dc49ccbc645f58e47528e6341f6bc/root-field-native-groups/RootFieldBaseChange.lean:201:2: error: Unused tactic linter: `trace "group paste: roots values"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-900dc49ccbc645f58e47528e6341f6bc/root-field-native-groups/RootFieldBaseChange.lean:204:2: error: Unused tactic linter: `trace "group paste: evaluation values"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-900dc49ccbc645f58e47528e6341f6bc/root-field-native-groups/RootFieldBaseChange.lean:206:2: error: Unused tactic linter: `trace "group paste: tensor naturality"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-900dc49ccbc645f58e47528e6341f6bc/root-field-native-groups/RootFieldBaseChange.lean:208:2: error: Unused tactic linter: `trace "group paste: Cartier projection"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-900dc49ccbc645f58e47528e6341f6bc/root-field-native-groups/RootFieldBaseChange.lean:211:2: error: Unused tactic linter: `trace "group paste: supplier laws"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-900dc49ccbc645f58e47528e6341f6bc/root-field-native-groups/RootFieldBaseChange.lean:216:4: error: Unused tactic linter: `trace "group paste: old pairing equality"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-900dc49ccbc645f58e47528e6341f6bc/root-field-native-groups/RootFieldBaseChange.lean:218:4: error: Unused tactic linter: `trace "group paste: new pairing equality"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-900dc49ccbc645f58e47528e6341f6bc/root-field-native-groups/RootFieldBaseChange.lean:220:4: error: Unused tactic linter: `trace "group paste: Cartier square"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-900dc49ccbc645f58e47528e6341f6bc/root-field-native-groups/RootFieldBaseChange.lean:222:4: error: Unused tactic linter: `trace "group paste: evaluation naturality"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-900dc49ccbc645f58e47528e6341f6bc/root-field-native-groups/RootFieldBaseChange.lean:224:4: error: Unused tactic linter: `trace "group paste: evaluation naturality normalized"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-900dc49ccbc645f58e47528e6341f6bc/root-field-native-groups/RootFieldBaseChange.lean:226:4: error: Unused tactic linter: `trace "group paste: evaluation scalar extension"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-900dc49ccbc645f58e47528e6341f6bc/root-field-native-groups/RootFieldBaseChange.lean:228:4: error: Unused tactic linter: `trace "group paste: roots inclusion square"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`

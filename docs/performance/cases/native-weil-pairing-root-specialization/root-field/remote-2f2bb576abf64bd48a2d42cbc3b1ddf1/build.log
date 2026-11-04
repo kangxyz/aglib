@@ -1,0 +1,25 @@
+{"candidate_sha256": "655161c13c5a3a8237098d01d62585ac11c05b1d104bd2a884b784e32710bc89", "setup_sha256": "887c1a7fe85b3bb97a6f0a8ce7737c6ce3e3ea70cc26f3f5a100644d158d23eb", "sealed_basis": "1d158bf5e194e8e8040b95eb1469d14055a89b70c736cddc196b7a165e7ceffb", "baseline_sha256": "0ec0b9a3e8fed27dccb1905647d570a6724ff0abf31e3d81ac1f7f5dde1e73fb", "native_options": {"autoImplicit": false, "warningAsError": true, "weak.linter.mathlibStandardSet": true, "weak.linter.style.longFile": 1500}}
+group paste: body
+group paste: group values
+group paste: roots values
+group paste: evaluation values
+group paste: tensor naturality
+group paste: Cartier projection
+group paste: supplier laws
+group paste: old pairing equality
+group paste: new pairing equality
+group paste: Cartier square
+group paste: evaluation naturality
+group paste: evaluation naturality normalized
+group paste: evaluation scalar extension
+group paste: evaluation scalar extension normalized
+/root/autodl-tmp/lean-build/logs/remote-2f2bb576abf64bd48a2d42cbc3b1ddf1/root-field-native-groups/RootFieldBaseChange.lean:229:19: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/root/autodl-tmp/lean-build/logs/remote-2f2bb576abf64bd48a2d42cbc3b1ddf1/root-field-native-groups/RootFieldBaseChange.lean:156:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.

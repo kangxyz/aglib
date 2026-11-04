@@ -1,0 +1,402 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.WeilPairing
+public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.WeilPairing.DualKernelBaseChange
+public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.WeilPairing.CartierFieldBaseChange
+public import Aglib.AlgebraicGeometry.Group.CartierDuality.BaseChange.Evaluation
+public import Aglib.AlgebraicGeometry.Group.MultiplicativeGroup.RootsInclusion
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.Projective
+
+meta import Lean.Elab.Tactic
+
+/-! Scalar extension of the original root-valued Weil pairing. -/
+
+public noncomputable section
+
+open CategoryTheory CategoryTheory.Limits AlgebraicGeometry MonoidalCategory
+open Scheme.OverField Scheme.Group
+
+universe u
+
+namespace AlgebraicGeometry.Scheme.RelativePicard
+
+attribute [local instance] Over.cartesianMonoidalCategory
+
+private theorem rootTensor_identity_μ_natural {C D : Type*} [Category C] [Category D]
+    [MonoidalCategory C] [MonoidalCategory D] (F : C ⥤ D) [F.LaxMonoidal]
+    (G : C) {E L : C} (c : E ⟶ L) :
+    (𝟙 (F.obj G) ⊗ₘ F.map c) ≫ Functor.LaxMonoidal.μ F G L =
+      Functor.LaxMonoidal.μ F G E ≫ F.map (𝟙 G ⊗ₘ c) := by
+  have hid : F.map (𝟙 G) = 𝟙 (F.obj G) := F.map_id G
+  exact (congrArg (fun f : F.obj G ⟶ F.obj G =>
+    (f ⊗ₘ F.map c) ≫ Functor.LaxMonoidal.μ F G L) hid.symm).trans
+      (Functor.LaxMonoidal.μ_natural F (𝟙 G) c)
+
+private theorem rootPairing_baseChange_tensor {C D : Type*} [Category C] [Category D]
+    [MonoidalCategory C] [MonoidalCategory D] (F : C ⥤ D)
+    {G E L W M : C} {G' E' L' L₀ W' M' : D}
+    (u : F.obj G ⟶ G') (v : F.obj E ⟶ E') (c : E ⟶ L) (c' : E' ⟶ L')
+    (d : L' ⟶ L₀) (b : F.obj L ⟶ L₀)
+    (p : G ⊗ E ⟶ W) (p' : G' ⊗ E' ⟶ W')
+    (i : W ⟶ M) (i' : W' ⟶ M') [Mono i']
+    (r : F.obj W ⟶ W') (s : F.obj M ⟶ M')
+    (e : G ⊗ L ⟶ M) (e' : G' ⊗ L' ⟶ M') (e₀ : F.obj G ⊗ L₀ ⟶ M')
+    (μE : F.obj G ⊗ F.obj E ⟶ F.obj (G ⊗ E))
+    (μL : F.obj G ⊗ F.obj L ⟶ F.obj (G ⊗ L))
+    (hμ : (𝟙 (F.obj G) ⊗ₘ F.map c) ≫ μL = μE ≫ F.map (𝟙 G ⊗ₘ c))
+    (hp : p ≫ i = (𝟙 G ⊗ₘ c) ≫ e)
+    (hp' : p' ≫ i' = (𝟙 G' ⊗ₘ c') ≫ e')
+    (hc : v ≫ c' ≫ d = F.map c ≫ b)
+    (he : (u ⊗ₘ 𝟙 L') ≫ e' = (𝟙 (F.obj G) ⊗ₘ d) ≫ e₀)
+    (hb : (𝟙 (F.obj G) ⊗ₘ b) ≫ e₀ =
+      μL ≫ F.map e ≫ s)
+    (hr : r ≫ i' = F.map i ≫ s) :
+    (u ⊗ₘ v) ≫ p' = μE ≫ F.map p ≫ r := by
+  apply (cancel_mono i').mp
+  calc
+    _ = (u ⊗ₘ v) ≫ (𝟙 G' ⊗ₘ c') ≫ e' := by rw [Category.assoc, hp']
+    _ = (𝟙 (F.obj G) ⊗ₘ (v ≫ c')) ≫ (u ⊗ₘ 𝟙 L') ≫ e' := by
+      simp only [← Category.assoc, tensorHom_comp_tensorHom, Category.id_comp, Category.comp_id]
+    _ = (𝟙 (F.obj G) ⊗ₘ (v ≫ c')) ≫ (𝟙 (F.obj G) ⊗ₘ d) ≫ e₀ := by rw [he]
+    _ = (𝟙 (F.obj G) ⊗ₘ (v ≫ c' ≫ d)) ≫ e₀ := by
+      simp only [← Category.assoc, tensorHom_comp_tensorHom, Category.id_comp]
+    _ = (𝟙 (F.obj G) ⊗ₘ F.map c) ≫ (𝟙 (F.obj G) ⊗ₘ b) ≫ e₀ := by
+      rw [hc]
+      simp only [← Category.assoc, tensorHom_comp_tensorHom, Category.id_comp]
+    _ = (𝟙 (F.obj G) ⊗ₘ F.map c) ≫ μL ≫ F.map e ≫ s := by
+      rw [hb]
+    _ = μE ≫ F.map (𝟙 G ⊗ₘ c) ≫ F.map e ≫ s := by
+      simp only [← Category.assoc, hμ]
+    _ = μE ≫ F.map ((𝟙 G ⊗ₘ c) ≫ e) ≫ s := by
+      simp only [F.map_comp, Category.assoc]
+    _ = μE ≫ F.map (p ≫ i) ≫ s := by rw [hp]
+    _ = _ := by simp only [F.map_comp, Category.assoc, hr]
+
+section Evaluation
+
+variable {k : Type u} [Field k] (A : Grp (FScheme k))
+  (P : LocallyNoetherianOver (Spec (.of k))) [LocallyOfFiniteType P.obj.hom]
+  (R : ((locallyNoetherianOverInclusion (Spec (.of k))).op ⋙ (fppfPicardSheaf A.X.hom).obj ⋙
+    CategoryTheory.forget AddCommGrpCat.{u + 1}).RepresentableBy P)
+  [IsCommMonObj A.X] [IsHProjective A.X.hom] [GeometricallyIntegral A.X.hom]
+  [Smooth A.X.hom] [IsSeparated P.obj.hom]
+
+private theorem weilRoot_comp_inclusion_eq_eval (n : ℕ) (hn : 0 < n) :
+    let G := MultiplicationKernel.kernelGroup A n
+    let fin := Multiplication.kernelGroup_isFinite_of_pos A n hn
+    let comm := Kernel.isCommMonObj_group (MultiplicationKernel.multiplicationHom A n)
+    weilPairingMorphism A P R n hn ≫ MultiplicativeGroup.rootsInclusion (Base k) n =
+      (𝟙 G.X ⊗ₘ (multiplicationKernelCartierHom A P R n hn).hom.hom) ≫
+        @CartierDuality.evaluation k _ G fin comm :=
+  (weilPairingMorphism_comp_inclusion A P R n hn).trans (weilPairingEvaluation_eq A P R n hn)
+
+end Evaluation
+
+private theorem rootsInclusion_baseChange_over {k K : Type u} [Field k] [Field K]
+    (b : Base K ⟶ Base k) (n : ℕ) :
+    (MultiplicativeBaseChange.rootsBaseChangeIso b n).hom.hom.hom ≫
+        MultiplicativeGroup.rootsInclusion (Base K) n =
+      (Over.pullback b).map (MultiplicativeGroup.rootsInclusion (Base k) n) ≫
+        (MultiplicativeBaseChange.unitsBaseChangeIso b).hom.hom.hom := by
+  have h := congrArg (fun f => f.hom.hom)
+    (MultiplicativeGroup.rootsInclusionHom_baseChange b n)
+  simp only [Grp.comp_hom_hom] at h
+  change (MultiplicativeBaseChange.rootsBaseChangeIso b n).hom.hom.hom ≫
+      (MultiplicativeGroup.rootsInclusionHom (Base K) n).hom.hom =
+    (Over.pullback b).map (MultiplicativeGroup.rootsInclusionHom (Base k) n).hom.hom ≫
+      (MultiplicativeBaseChange.unitsBaseChangeIso b).hom.hom.hom at h
+  rw [MultiplicativeGroup.rootsInclusionHom_hom_hom,
+    MultiplicativeGroup.rootsInclusionHom_hom_hom] at h
+  dsimp only [MultiplicativeBaseChange.baseChangedGroup, Functor.mapGrp_obj_X,
+    MultiplicativeGroup.groupScheme, MultiplicativeGroup.rootsGroupScheme, Grp.toMon] at h ⊢
+  with_reducible exact h
+
+private theorem evaluation_naturality_on_pulled_scheme {k K : Type u} [Field k] [Field K]
+    (b : Base K ⟶ Base k) (G : Grp (FScheme k)) (H : Grp (FScheme K))
+    [IsFinite ((Over.pullback b).mapGrp.obj G).X.hom]
+    [IsCommMonObj ((Over.pullback b).mapGrp.obj G).X]
+    [IsFinite H.X.hom] [IsCommMonObj H.X] (u : (Over.pullback b).mapGrp.obj G ⟶ H) :
+    (u.hom.hom ⊗ₘ 𝟙 (CartierDuality.dualGroup H).X) ≫ CartierDuality.evaluation H =
+      (𝟙 ((Over.pullback b).obj G.X) ⊗ₘ (CartierDuality.dualMap u).hom.hom) ≫
+        CartierDuality.evaluation ((Over.pullback b).mapGrp.obj G) := by
+  have h := CartierDuality.evaluation_naturality (k := K) u
+  dsimp only [Functor.mapGrp, Grp.toMon] at h ⊢
+  with_reducible exact h
+
+private theorem evaluation_baseChange_on_pulled_scheme {k K : Type u} [Field k] [Field K]
+    (b : Base K ⟶ Base k) (G : Grp (FScheme k))
+    [IsFinite G.X.hom] [IsCommMonObj G.X] :
+    (𝟙 ((Over.pullback b).obj G.X) ⊗ₘ
+        (CartierDuality.dualGroupBaseChangeIso K G b).hom.hom.hom) ≫
+        CartierDuality.evaluation ((Over.pullback b).mapGrp.obj G) =
+      Functor.LaxMonoidal.μ (Over.pullback b) G.X (CartierDuality.dualGroup G).X ≫
+        (Over.pullback b).map (CartierDuality.evaluation G) ≫
+        (MultiplicativeBaseChange.unitsBaseChangeIso b).hom.hom.hom := by
+  have h := CartierDuality.dualGroupBaseChangeIso_evaluation K G b
+  dsimp only [Functor.mapGrp, Grp.toMon] at h ⊢
+  with_reducible exact h
+
+private theorem group_baseChange_square_underlying {C D : Type*} [Category C] [Category D]
+    [CartesianMonoidalCategory C] [CartesianMonoidalCategory D]
+    (F : C ⥤ D) [F.Monoidal]
+    {E L : Grp C} {E' L' L₀ : Grp D}
+    (v : F.mapGrp.obj E ⟶ E') (c : E ⟶ L) (c' : E' ⟶ L')
+    (d : L' ⟶ L₀) (b : F.mapGrp.obj L ⟶ L₀)
+    (h : v ≫ c' ≫ d = F.mapGrp.map c ≫ b) :
+    v.hom.hom ≫ c'.hom.hom ≫ d.hom.hom = F.map c.hom.hom ≫ b.hom.hom := by
+  exact congrArg (fun m : F.mapGrp.obj E ⟶ L₀ => m.hom.hom) h
+
+set_option backward.defeqAttrib.useBackward true in
+set_option backward.isDefEq.respectTransparency false in
+set_option backward.isDefEq.respectTransparency.types false in
+private theorem rootPairing_baseChange_on_groups_aux {k K : Type u} [Field k] [Field K]
+    (a : Base K ⟶ Base k)
+    (G E : Grp (FScheme k)) (GK EK : Grp (FScheme K))
+    [IsFinite G.X.hom] [IsCommMonObj G.X] [IsFinite GK.X.hom] [IsCommMonObj GK.X]
+    [IsFinite ((Over.pullback a).mapGrp.obj G).X.hom]
+    [IsCommMonObj ((Over.pullback a).mapGrp.obj G).X]
+    (u : (Over.pullback a).mapGrp.obj G ⟶ GK) (v : (Over.pullback a).mapGrp.obj E ⟶ EK)
+    (c : E ⟶ CartierDuality.dualGroup G) (cK : EK ⟶ CartierDuality.dualGroup GK)
+    (n : ℕ)
+    (p : G.X ⊗ E.X ⟶ MultiplicativeGroup.rootsScheme (Base k) n)
+    (pK : GK.X ⊗ EK.X ⟶ MultiplicativeGroup.rootsScheme (Base K) n)
+    (hc : v ≫ cK ≫ CartierDuality.dualMap u =
+      (Over.pullback a).mapGrp.map c ≫ (CartierDuality.dualGroupBaseChangeIso K G a).hom)
+    (hp : p ≫ MultiplicativeGroup.rootsInclusion (Base k) n =
+      (𝟙 G.X ⊗ₘ c.hom.hom) ≫ CartierDuality.evaluation G)
+    (hpK : pK ≫ MultiplicativeGroup.rootsInclusion (Base K) n =
+      (𝟙 GK.X ⊗ₘ cK.hom.hom) ≫ CartierDuality.evaluation GK) :
+    let F := Over.pullback a
+    let G₀ := F.mapGrp.obj G
+    let L := CartierDuality.dualGroup G
+    let L₀ := CartierDuality.dualGroup G₀
+    let b : F.mapGrp.obj L ⟶ L₀ := (CartierDuality.dualGroupBaseChangeIso K G a).hom
+    let M := MultiplicativeGroup.scheme (Base k)
+    let MK := MultiplicativeGroup.scheme (Base K)
+    let s : F.obj M ⟶ MK := (MultiplicativeBaseChange.unitsBaseChangeIso a).hom.hom.hom
+    let e : G.X ⊗ L.X ⟶ M := CartierDuality.evaluation G
+    let e₀ : F.obj G.X ⊗ L₀.X ⟶ MK := CartierDuality.evaluation G₀
+    let μL := Functor.LaxMonoidal.μ F G.X L.X
+    ((𝟙 (F.obj G.X) ⊗ₘ b.hom.hom) ≫ e₀ = μL ≫ F.map e ≫ s) →
+    (u.hom.hom ⊗ₘ v.hom.hom) ≫ pK =
+      Functor.LaxMonoidal.μ (Over.pullback a) G.X E.X ≫ (Over.pullback a).map p ≫
+        (MultiplicativeBaseChange.rootsBaseChangeIso a n).hom.hom.hom := by
+  intro F G₀ L L₀ b M MK s e e₀ μL hb
+  let LK := CartierDuality.dualGroup GK
+  let d : LK ⟶ L₀ := CartierDuality.dualMap u
+  let W := MultiplicativeGroup.rootsScheme (Base k) n
+  let WK := MultiplicativeGroup.rootsScheme (Base K) n
+  let i : W ⟶ M := MultiplicativeGroup.rootsInclusion (Base k) n
+  let iK : WK ⟶ MK := MultiplicativeGroup.rootsInclusion (Base K) n
+  let r : F.obj W ⟶ WK := (MultiplicativeBaseChange.rootsBaseChangeIso a n).hom.hom.hom
+  have hi : Mono iK := by
+    change Mono (equalizer.ι (MultiplicativeGroup.powerMap (Base K) n)
+      (MultiplicativeGroup.oneMap (Base K)))
+    infer_instance
+  let eK : GK.X ⊗ LK.X ⟶ MK := CartierDuality.evaluation GK
+  let μE := Functor.LaxMonoidal.μ F G.X E.X
+  have hμ := rootTensor_identity_μ_natural F G.X c.hom.hom
+  have hc₀ := group_baseChange_square_underlying F v c cK d b hc
+  have he := evaluation_naturality_on_pulled_scheme a G GK u
+  have hr := rootsInclusion_baseChange_over a n
+  refine @rootPairing_baseChange_tensor (FScheme k) (FScheme K) _ _ _ _ F
+    G.X E.X L.X W M GK.X EK.X LK.X L₀.X WK MK u.hom.hom v.hom.hom c.hom.hom
+    cK.hom.hom d.hom.hom b.hom.hom p pK i iK hi r s e eK e₀ μE μL hμ
+    ?_ ?_ ?_ ?_ ?_ ?_
+  · exact hp
+  · exact hpK
+  · exact hc₀
+  · dsimp only [F, G₀, LK, L₀, d, eK, e₀, Functor.mapGrp, Grp.toMon] at he ⊢
+    with_reducible exact he
+  · with_reducible exact hb
+  · exact hr
+
+set_option backward.defeqAttrib.useBackward true in
+set_option backward.isDefEq.respectTransparency false in
+set_option backward.isDefEq.respectTransparency.types false in
+private theorem rootPairing_baseChange_on_groups {k K : Type u} [Field k] [Field K]
+    (a : Base K ⟶ Base k)
+    (G E : Grp (FScheme k)) (GK EK : Grp (FScheme K))
+    [IsFinite G.X.hom] [IsCommMonObj G.X] [IsFinite GK.X.hom] [IsCommMonObj GK.X]
+    [IsFinite ((Over.pullback a).mapGrp.obj G).X.hom]
+    [IsCommMonObj ((Over.pullback a).mapGrp.obj G).X]
+    (u : (Over.pullback a).mapGrp.obj G ⟶ GK) (v : (Over.pullback a).mapGrp.obj E ⟶ EK)
+    (c : E ⟶ CartierDuality.dualGroup G) (cK : EK ⟶ CartierDuality.dualGroup GK)
+    (n : ℕ)
+    (p : G.X ⊗ E.X ⟶ MultiplicativeGroup.rootsScheme (Base k) n)
+    (pK : GK.X ⊗ EK.X ⟶ MultiplicativeGroup.rootsScheme (Base K) n)
+    (hc : v ≫ cK ≫ CartierDuality.dualMap u =
+      (Over.pullback a).mapGrp.map c ≫ (CartierDuality.dualGroupBaseChangeIso K G a).hom)
+    (hp : p ≫ MultiplicativeGroup.rootsInclusion (Base k) n =
+      (𝟙 G.X ⊗ₘ c.hom.hom) ≫ CartierDuality.evaluation G)
+    (hpK : pK ≫ MultiplicativeGroup.rootsInclusion (Base K) n =
+      (𝟙 GK.X ⊗ₘ cK.hom.hom) ≫ CartierDuality.evaluation GK) :
+    (u.hom.hom ⊗ₘ v.hom.hom) ≫ pK =
+      Functor.LaxMonoidal.μ (Over.pullback a) G.X E.X ≫ (Over.pullback a).map p ≫
+        (MultiplicativeBaseChange.rootsBaseChangeIso a n).hom.hom.hom := by
+  refine rootPairing_baseChange_on_groups_aux a G E GK EK u v c cK n p pK hc hp hpK ?_
+  have hb := evaluation_baseChange_on_pulled_scheme a G
+  dsimp only [Functor.mapGrp, Grp.toMon] at hb ⊢
+  with_reducible exact hb
+
+set_option backward.defeqAttrib.useBackward true in
+set_option backward.isDefEq.respectTransparency false in
+set_option backward.isDefEq.respectTransparency.types false in
+private theorem rootPairing_baseChange_with_dual_maps {k K : Type u} [Field k] [Field K]
+    (a : Base K ⟶ Base k)
+    (G E : Grp (FScheme k)) (GK EK : Grp (FScheme K))
+    [IsFinite G.X.hom] [IsCommMonObj G.X] [IsFinite GK.X.hom] [IsCommMonObj GK.X]
+    [IsFinite ((Over.pullback a).mapGrp.obj G).X.hom]
+    [IsCommMonObj ((Over.pullback a).mapGrp.obj G).X]
+    (u : (Over.pullback a).mapGrp.obj G ⟶ GK) (v : (Over.pullback a).mapGrp.obj E ⟶ EK)
+    (c : E ⟶ CartierDuality.dualGroup G) (cK : EK ⟶ CartierDuality.dualGroup GK)
+    (d : CartierDuality.dualGroup GK ⟶ CartierDuality.dualGroup ((Over.pullback a).mapGrp.obj G))
+    (b : (Over.pullback a).mapGrp.obj (CartierDuality.dualGroup G) ⟶
+      CartierDuality.dualGroup ((Over.pullback a).mapGrp.obj G))
+    (m : (Over.pullback a).mapGrp.obj E ⟶
+      (Over.pullback a).mapGrp.obj (CartierDuality.dualGroup G))
+    (n : ℕ)
+    (p : G.X ⊗ E.X ⟶ MultiplicativeGroup.rootsScheme (Base k) n)
+    (pK : GK.X ⊗ EK.X ⟶ MultiplicativeGroup.rootsScheme (Base K) n)
+    (hc : v ≫ cK ≫ d = m ≫ b)
+    (hp : p ≫ MultiplicativeGroup.rootsInclusion (Base k) n =
+      (𝟙 G.X ⊗ₘ c.hom.hom) ≫ CartierDuality.evaluation G)
+    (hpK : pK ≫ MultiplicativeGroup.rootsInclusion (Base K) n =
+      (𝟙 GK.X ⊗ₘ cK.hom.hom) ≫ CartierDuality.evaluation GK)
+    (hd : d = CartierDuality.dualMap u)
+    (hb : b = (CartierDuality.dualGroupBaseChangeIso K G a).hom)
+    (hm : m = (Over.pullback a).mapGrp.map c) :
+    (u.hom.hom ⊗ₘ v.hom.hom) ≫ pK =
+      Functor.LaxMonoidal.μ (Over.pullback a) G.X E.X ≫ (Over.pullback a).map p ≫
+        (MultiplicativeBaseChange.rootsBaseChangeIso a n).hom.hom.hom := by
+  subst d
+  subst b
+  subst m
+  exact rootPairing_baseChange_on_groups a G E GK EK u v c cK n p pK hc hp hpK
+
+variable {k : Type u} [Field k] (A : Grp (FScheme k))
+  (P : LocallyNoetherianOver (Spec (.of k))) [LocallyOfFiniteType P.obj.hom]
+  (R : ((locallyNoetherianOverInclusion (Spec (.of k))).op ⋙ (fppfPicardSheaf A.X.hom).obj ⋙
+    CategoryTheory.forget AddCommGrpCat.{u + 1}).RepresentableBy P)
+  [IsCommMonObj A.X] [IsHProjective A.X.hom] [GeometricallyIntegral A.X.hom]
+  [Smooth A.X.hom] [IsSeparated P.obj.hom]
+  (K : Type u) [Field K] [Algebra k K]
+
+local notation "scalar" => Spec.algebraMap k K
+local notation "F" => Over.pullback scalar
+local notation "AK" => Functor.obj (Functor.mapGrp F) A
+local notation "PK" => LocallyNoetherianOver.baseChange scalar P
+local notation "RK" => baseChangeRepresentableBy A.X.hom scalar P R
+
+local instance instWeilRootBCPicardLft : LocallyOfFiniteType (PK).obj.hom :=
+  inferInstanceAs (LocallyOfFiniteType (pullback.snd P.obj.hom scalar))
+local instance instWeilRootBCPicardSeparated : IsSeparated (PK).obj.hom :=
+  inferInstanceAs (IsSeparated (pullback.snd P.obj.hom scalar))
+local instance instWeilRootBCComm : IsCommMonObj (AK).X :=
+  MultiplicationKernel.baseChange_isCommMonObj scalar A
+local instance instWeilRootBCProjective : IsHProjective (AK).X.hom :=
+  inferInstanceAs (IsHProjective (pullback.snd A.X.hom scalar))
+local instance instWeilRootBCIntegral : GeometricallyIntegral (AK).X.hom :=
+  inferInstanceAs (GeometricallyIntegral (pullback.snd A.X.hom scalar))
+local instance instWeilRootBCSmooth : Smooth (AK).X.hom :=
+  inferInstanceAs (Smooth (pullback.snd A.X.hom scalar))
+
+set_option backward.defeqAttrib.useBackward true in
+set_option backward.isDefEq.respectTransparency false in
+set_option backward.isDefEq.respectTransparency.types false in
+set_option maxHeartbeats 500000 in
+-- Forming the native comparison maps and supplying the original Cartier square exhausts the
+-- default budget. The tensor identities are proved separately over variable finite groups.
+/-- Scalar extension of the original root-valued Weil pairing follows from the
+original scalar-extension square of its Cartier map. -/
+private theorem weilPairingMorphism_fieldBaseChange_of_cartier (n : ℕ) (hn : 0 < n) :
+    let G := MultiplicationKernel.kernelGroup A n
+    let GK := MultiplicationKernel.kernelGroup AK n
+    let G₀ := (F).mapGrp.obj G
+    let fin : IsFinite G.X.hom := Multiplication.kernelGroup_isFinite_of_pos A n hn
+    let comm : IsCommMonObj G.X :=
+      Kernel.isCommMonObj_group (MultiplicationKernel.multiplicationHom A n)
+    let finK : IsFinite GK.X.hom := Multiplication.kernelGroup_isFinite_of_pos AK n hn
+    let commK : IsCommMonObj GK.X :=
+      Kernel.isCommMonObj_group (MultiplicationKernel.multiplicationHom AK n)
+    let fin₀ : IsFinite G₀.X.hom := inferInstanceAs (IsFinite (pullback.snd G.X.hom scalar))
+    let comm₀ : IsCommMonObj G₀.X :=
+      @MultiplicationKernel.baseChange_isCommMonObj k K _ _ scalar G comm
+    let E := dualMultiplicationKernel A P R n
+    let EK := dualMultiplicationKernel AK PK RK n
+    let E₀ := (F).mapGrp.obj E
+    let L := @CartierDuality.dualGroup k _ G fin comm
+    let LK := @CartierDuality.dualGroup K _ GK finK commK
+    let L₀ := @CartierDuality.dualGroup K _ G₀ fin₀ comm₀
+    let u : G₀ ⟶ GK := (MultiplicationKernel.baseChangeIso scalar A n).hom
+    let v : E₀ ⟶ EK := (dualMultiplicationKernelBaseChangeIso A P R K n).hom
+    let c : E ⟶ L := multiplicationKernelCartierHom A P R n hn
+    let cK : EK ⟶ LK := multiplicationKernelCartierHom AK PK RK n hn
+    let d : LK ⟶ L₀ := @CartierDuality.dualMap K _ G₀ GK fin₀ finK comm₀ commK u
+    let b : (F).mapGrp.obj L ⟶ L₀ :=
+      (@CartierDuality.dualGroupBaseChangeIso k _ K _ G fin comm scalar).hom
+    let m : E₀ ⟶ (F).mapGrp.obj L := (F).mapGrp.map c
+    (v ≫ cK ≫ d = m ≫ b) →
+      (u.hom.hom ⊗ₘ v.hom.hom) ≫ weilPairingMorphism AK PK RK n hn =
+        Functor.LaxMonoidal.μ F G.X E.X ≫ (F).map (weilPairingMorphism A P R n hn) ≫
+          (MultiplicativeBaseChange.rootsBaseChangeIso scalar n).hom.hom.hom := by
+  intro G GK G₀ fin comm finK commK fin₀ comm₀ E EK E₀ L LK L₀ u v c cK d b m hc
+  let p : G.X ⊗ E.X ⟶ MultiplicativeGroup.rootsScheme (Base k) n :=
+    weilPairingMorphism A P R n hn
+  let pK : GK.X ⊗ EK.X ⟶ MultiplicativeGroup.rootsScheme (Base K) n :=
+    weilPairingMorphism AK PK RK n hn
+  have paste := @rootPairing_baseChange_with_dual_maps k K _ _ scalar G E GK EK fin comm finK commK
+    fin₀ comm₀
+  have pasteU := paste u v c cK
+  with_reducible
+    have pasteD := pasteU d
+  with_reducible
+    have pasteB := pasteD b
+  with_reducible
+    have pasteM := pasteB m
+  have pasteP := pasteM n p pK
+  have pasteC := pasteP (by
+    -- The local proof is the original square on the explicitly selected arrows.
+    -- Pass it directly to avoid repeating the elaborator's conversion.
+    run_tac Lean.Elab.Tactic.withMainContext do
+      let some h := (← Lean.getLCtx).findFromUserName? `hc
+        | throwError "Missing the original Cartier comparison"
+      (← Lean.Elab.Tactic.getMainGoal).assign h.toExpr)
+  have hp := weilRoot_comp_inclusion_eq_eval A P R n hn
+  dsimp only at hp
+  have hpK := weilRoot_comp_inclusion_eq_eval AK PK RK n hn
+  dsimp only at hpK
+  have pasteV := pasteC (by with_reducible exact hp) (by with_reducible exact hpK)
+  have hd : d = @CartierDuality.dualMap K _ G₀ GK fin₀ finK comm₀ commK u := rfl
+  have hb : b = (@CartierDuality.dualGroupBaseChangeIso k _ K _ G fin comm scalar).hom := rfl
+  have hm : m = (F).mapGrp.map c := rfl
+  have result := pasteV hd hb hm
+  dsimp only [p, pK] at result
+  with_reducible exact result
+
+set_option backward.defeqAttrib.useBackward true in
+set_option backward.isDefEq.respectTransparency false in
+set_option backward.isDefEq.respectTransparency.types false in
+/-- The original roots-valued pairing commutes with the original scalar-extension
+comparisons of both multiplication kernels and the roots scheme. -/
+theorem weilPairingMorphism_fieldBaseChange (n : ℕ) (hn : 0 < n) :
+    ((MultiplicationKernel.baseChangeIso scalar A n).hom.hom.hom ⊗ₘ
+        (dualMultiplicationKernelBaseChangeIso A P R K n).hom.hom.hom) ≫
+        weilPairingMorphism AK PK RK n hn =
+      Functor.LaxMonoidal.μ F (MultiplicationKernel.kernelGroup A n).X
+        (dualMultiplicationKernel A P R n).X ≫
+        (F).map (weilPairingMorphism A P R n hn) ≫
+        (MultiplicativeBaseChange.rootsBaseChangeIso scalar n).hom.hom.hom := by
+  have hc := multiplicationKernelCartierHom_fieldBaseChange A P R K n hn
+  dsimp only at hc
+  have paste := weilPairingMorphism_fieldBaseChange_of_cartier A P R K n hn
+  have h := paste (by with_reducible exact hc)
+  dsimp only at h
+  with_reducible exact h
+
+end AlgebraicGeometry.Scheme.RelativePicard

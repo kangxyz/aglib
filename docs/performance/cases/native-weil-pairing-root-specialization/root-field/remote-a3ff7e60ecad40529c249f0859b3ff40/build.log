@@ -1,0 +1,11 @@
+✔ [6025/6029] Built Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.WeilPairing.RootFieldBaseChange (139s)
+✔ [6026/6029] Built AglibTest.AlgebraicGeometry.AbelianScheme.OverField.Dual.WeilPairing.RootFieldBaseChange (4.5s)
+✔ [6028/6041] Built Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.WeilPairing.PrincipalKernelComparison (36s)
+✔ [6038/6041] Built Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.WeilPairing.Alternation (52s)
+✔ [6039/6041] Built Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.WeilPairing.FieldAlternation (45s)
+✔ [6040/6154] Built AglibTest.AlgebraicGeometry.AbelianScheme.OverField.Dual.WeilPairing.FieldAlternation (4.7s)
+✔ [6725/6728] Built Aglib.AlgebraicGeometry.Curves.Jacobian.WeilPairing.Alternation (9.4s)
+✔ [6726/6728] Built Aglib.AlgebraicGeometry.Curves.Jacobian.WeilPairing.FieldAlternation (8.4s)
+✔ [6728/6840] Built AglibTest.AlgebraicGeometry.Curves.Jacobian.WeilPairing.FieldAlternation (4.9s)
+✔ [6840/6840] Built AglibTest.AlgebraicGeometry.EtaleCohomology.CompactSupport.FieldSectionsEquivalence (3.8s)
+Build completed successfully (6840 jobs).

@@ -1,0 +1,4 @@
+{"candidate_sha256": "4dc740b5022a397a93c1421dea96f1e6ffe3d98863aee0293d7b099f3ff87524", "setup_sha256": "887c1a7fe85b3bb97a6f0a8ce7737c6ce3e3ea70cc26f3f5a100644d158d23eb", "sealed_basis": "1d158bf5e194e8e8040b95eb1469d14055a89b70c736cddc196b7a165e7ceffb", "baseline_sha256": "0ec0b9a3e8fed27dccb1905647d570a6724ff0abf31e3d81ac1f7f5dde1e73fb", "native_options": {"autoImplicit": false, "warningAsError": true, "weak.linter.mathlibStandardSet": true, "weak.linter.style.longFile": 1500}}
+/root/autodl-tmp/lean-build/logs/remote-6bd4dae1744e441b97fafba358c48097/root-field-native-groups/RootFieldBaseChange.lean:347:100: error: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`

@@ -1,0 +1,41 @@
+{"candidate_sha256": "66479b971e67bfccde73c2dd491a495b0aa9b5f8d38882a1925468d1f075ca4c", "setup_sha256": "887c1a7fe85b3bb97a6f0a8ce7737c6ce3e3ea70cc26f3f5a100644d158d23eb", "sealed_basis": "1d158bf5e194e8e8040b95eb1469d14055a89b70c736cddc196b7a165e7ceffb", "baseline_sha256": "0ec0b9a3e8fed27dccb1905647d570a6724ff0abf31e3d81ac1f7f5dde1e73fb", "native_options": {"autoImplicit": false, "warningAsError": true, "weak.linter.mathlibStandardSet": true, "weak.linter.style.longFile": 1500}}
+native staged: original arrows
+native staged: fields and groups
+native staged: original comparisons
+native staged: dual of primal comparison
+native staged: Cartier scalar comparison
+native staged: pulled back Cartier comparison
+native staged: original pairings
+native staged: Cartier equation
+native staged: both evaluation equations
+native staged: entire original proof
+/root/autodl-tmp/lean-build/logs/remote-b96f3a59ea614da3aecaa90e19dfd36a/root-field-native-groups/RootFieldBaseChange.lean:346:2: error: Unused tactic linter: `trace "native staged: original arrows"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-b96f3a59ea614da3aecaa90e19dfd36a/root-field-native-groups/RootFieldBaseChange.lean:351:2: error: Unused tactic linter: `trace "native staged: fields and groups"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-b96f3a59ea614da3aecaa90e19dfd36a/root-field-native-groups/RootFieldBaseChange.lean:353:2: error: Unused tactic linter: `trace "native staged: original comparisons"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-b96f3a59ea614da3aecaa90e19dfd36a/root-field-native-groups/RootFieldBaseChange.lean:356:2: error: Unused tactic linter: `trace "native staged: dual of primal comparison"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-b96f3a59ea614da3aecaa90e19dfd36a/root-field-native-groups/RootFieldBaseChange.lean:359:2: error: Unused tactic linter: `trace "native staged: Cartier scalar comparison"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-b96f3a59ea614da3aecaa90e19dfd36a/root-field-native-groups/RootFieldBaseChange.lean:362:2: error: Unused tactic linter: `trace "native staged: pulled back Cartier comparison"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-b96f3a59ea614da3aecaa90e19dfd36a/root-field-native-groups/RootFieldBaseChange.lean:364:2: error: Unused tactic linter: `trace "native staged: original pairings"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-b96f3a59ea614da3aecaa90e19dfd36a/root-field-native-groups/RootFieldBaseChange.lean:372:2: error: Unused tactic linter: `trace "native staged: Cartier equation"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-b96f3a59ea614da3aecaa90e19dfd36a/root-field-native-groups/RootFieldBaseChange.lean:378:2: error: Unused tactic linter: `trace "native staged: both evaluation equations"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/root/autodl-tmp/lean-build/logs/remote-b96f3a59ea614da3aecaa90e19dfd36a/root-field-native-groups/RootFieldBaseChange.lean:383:2: error: Unused tactic linter: `trace "native staged: entire original proof"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`

@@ -1,0 +1,67 @@
+from pathlib import Path
+from r5tools import lean_remote
+import base64
+import hashlib
+import sys
+import uuid
+
+scratch = Path("/private/tmp/r5-investigations/jacobian/weil-base-change/picard-kernel-characters")
+candidate = Path(sys.argv[1]).read_bytes()
+cfg = lean_remote.load_config(Path("tmp/inputs/lean-remote/aglib-jacobian-main-remaining-kernel-functoriality.json"))
+assert cfg["workspace"].endswith("/managed-740a809c6061-315a5e4a9466/lean")
+source = "1d158bf5e194e8e8040b95eb1469d14055a89b70c736cddc196b7a165e7ceffb"
+baseline = "0ec0b9a3e8fed27dccb1905647d570a6724ff0abf31e3d81ac1f7f5dde1e73fb"
+module = "Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.WeilPairing.RootFieldBaseChange"
+worker = lean_remote.deploy_worker(cfg)
+run = "remote-" + uuid.uuid4().hex
+run_dir = cfg["base"] + "/logs/" + run
+
+native = r"""
+from pathlib import Path
+import base64, hashlib, json, os, re, subprocess, sys
+module, source_digest, baseline_sha, candidate_sha, payload = sys.argv[1:]
+source = Path(module.replace(".", "/") + ".lean")
+source_bytes = source.read_bytes()
+assert hashlib.sha256(source_bytes).hexdigest() == baseline_sha
+manifest = json.loads((Path.cwd().parent / "SOURCE.json").read_bytes())
+assert manifest["content_sha256"] == source_digest
+candidate = base64.b64decode(payload, validate=True)
+assert hashlib.sha256(candidate).hexdigest() == candidate_sha
+imports = rb"^(?:public |private |meta )*import .+$"
+assert re.findall(imports, candidate, re.M) == re.findall(imports, source_bytes, re.M)
+root = Path(os.environ["LEAN"]).parents[2]
+scratch = root / "root-field-native-groups"
+scratch.mkdir()
+probe = scratch / source.name
+probe.write_bytes(candidate)
+p = subprocess.run([os.environ["LAKE"], "--no-build", "setup-file", str(source)],
+                   capture_output=True, text=True)
+if p.returncode:
+    print(p.stdout, p.stderr, flush=True)
+    raise SystemExit(p.returncode)
+setup = json.loads(p.stdout)
+assert setup["name"] == module and setup.get("isModule") is True
+config = scratch / "setup.json"
+config.write_text(p.stdout)
+print(json.dumps({"candidate_sha256": candidate_sha,
+                  "setup_sha256": hashlib.sha256(config.read_bytes()).hexdigest(),
+                  "sealed_basis": source_digest, "baseline_sha256": baseline_sha,
+                  "native_options": setup.get("options")}), flush=True)
+proc = subprocess.run([os.environ["LAKE"], "env", os.environ["LEAN"], "--setup", str(config), str(probe)])
+assert source.read_bytes() == source_bytes
+raise SystemExit(proc.returncode)
+"""
+command = ["python3", worker, "--base", cfg["base"], "--workspace", cfg["workspace"],
+           "--run-dir", run_dir, "--expected-source", source, "--task-id",
+           lean_remote.task_identity(cfg), "--jobs", "1", "--threads", "4",
+           "--lean-memory-mib", "49152", "--rss-limit-mib", "110592",
+           "--label", "root-field-native-groups", "phase", module,
+           "--command", "python3", "-c", native, module, source, baseline,
+           hashlib.sha256(candidate).hexdigest(), base64.b64encode(candidate).decode()]
+(scratch / "group-paste-run").write_text(run + "\n")
+print("Remote evidence: " + run_dir, flush=True)
+result = lean_remote.ssh(cfg, command, capture_output=True, text=True)
+print(result.stdout, flush=True)
+if result.stderr:
+    print(result.stderr, flush=True)
+raise SystemExit(result.returncode)

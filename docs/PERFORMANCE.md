@@ -307,6 +307,8 @@ preconditions: the [terminal-chart repair](performance/reindexed-direct-image-co
 required the original fixed-base natural isomorphism and retained its
 affine-stage/small-index scope and original section maps.
 
+[Scalar extension of the root-valued Weil pairing](performance/cases/native-weil-pairing-root-specialization/root-field/README.md) records the exact native comparison and the scoped conversion repair.
+
 ## Shared constructions and equations
 
 The [selected C/D integration case](performance/cases/selected-cd-integration-20261101/README.md) records source-matched native coverage and reuse of the documented whole-construction methods.

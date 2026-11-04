@@ -6,7 +6,13 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.Descent
+public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.Poincare.FieldBaseChange
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Isomorphism
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.QuasiCompactSeparated
+public import Aglib.AlgebraicGeometry.Curves.Genus.BaseChange
+public import Aglib.AlgebraicGeometry.Curves.PointDivisor.GraphBaseChange
+public import Aglib.AlgebraicGeometry.Picard.Scheme.SourceIso
+public import Aglib.AlgebraicGeometry.Picard.Scheme.IdentityComponentBaseChangeGroup
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.Theta.Descent.FieldComparison.GeometricPositive
 
 /-!
@@ -34,109 +40,6 @@ attribute [local instance] Over.cartesianMonoidalCategory
 open Abel.BoundedFamily
 
 variable {k : Type u} [Field k] {X : FScheme k} (hX : Properties X)
-
-set_option backward.defeqAttrib.useBackward true in
-set_option backward.isDefEq.respectTransparency false in
-set_option backward.isDefEq.respectTransparency.types false in
-private theorem graphIdealClass_fieldBaseChange
-    (K : Type u) [Field K] [Algebra k K]
-    (T : FScheme K) (s : T ⟶ fieldBaseChange K X) :
-    let b := Spec.map (CommRingCat.ofHom (algebraMap k K))
-    letI := hX.smooth
-    letI := hX.proper
-    letI : SmoothOfRelativeDimension 1 (pullback.snd X.hom b) :=
-      (curveProperties_baseChange hX K b).smooth
-    letI : IsProper (pullback.snd X.hom b) := (curveProperties_baseChange hX K b).proper
-    pullbackClass (familyBaseChangeIso X.hom b T).hom
-        (classOf _ (Hom.graphIdealLineBundle Hom.smoothRelativeDivisorIdeal
-          X.hom (T.hom ≫ b) (s.left ≫ pullback.fst X.hom b)
-          (by
-            rw [Category.assoc, pullback.condition, ← Category.assoc]
-            exact congrArg (fun v => v ≫ b)
-              (show s.left ≫ pullback.snd X.hom b = T.hom from s.w)))) =
-      classOf _ (Hom.graphIdealLineBundle Hom.smoothRelativeDivisorIdeal
-        (pullback.snd X.hom b) T.hom s.left s.w) := by
-  let b := Spec.map (CommRingCat.ofHom (algebraMap k K))
-  let := hX.smooth
-  let := hX.proper
-  let : SmoothOfRelativeDimension 1 (pullback.snd X.hom b) :=
-    (curveProperties_baseChange hX K b).smooth
-  let : IsProper (pullback.snd X.hom b) := (curveProperties_baseChange hX K b).proper
-  let e := familyBaseChangeIso X.hom b T
-  let Y := pullback X.hom (T.hom ≫ b)
-  let Y' := pullback (pullback.snd X.hom b) T.hom
-  let i : T.left ⟶ Y := Hom.graph X.hom (T.hom ≫ b)
-    (s.left ≫ pullback.fst X.hom b)
-    (by
-      rw [Category.assoc, pullback.condition, ← Category.assoc]
-      exact congrArg (fun v => v ≫ b)
-        (show s.left ≫ pullback.snd X.hom b = T.hom from s.w))
-  let i' : T.left ⟶ Y' := Hom.graph (pullback.snd X.hom b) T.hom s.left s.w
-  have he : i' ≫ e.hom = i := by
-    apply pullback.hom_ext
-    · simp only [Category.assoc, e, familyBaseChangeIso_hom_fst,
-        i, i', Hom.graph_fst, Hom.graph_fst_assoc]
-    · simp only [Category.assoc, e, familyBaseChangeIso_hom_snd,
-        i, i', Hom.graph_snd]
-  have h : (𝟙 T.left) ≫ i = i' ≫ e.hom := (Category.id_comp i).trans he.symm
-  have hfamily : IsPullback e.hom
-      (pullback.snd (pullback.snd X.hom b) T.hom)
-      (pullback.snd X.hom (T.hom ≫ b)) (𝟙 T.left) :=
-    IsPullback.of_horiz_isIso ⟨by
-      simpa only [Category.comp_id, e] using familyBaseChangeIso_hom_snd X.hom b T⟩
-  have hgraph : IsPullback (𝟙 T.left) i' i e.hom := IsPullback.of_horiz_isIso ⟨h⟩
-  have hi : IsClosedImmersion i := by dsimp [i]; infer_instance
-  have hrank : IsLocallyRankOne Y (Hom.idealModule i) :=
-    Hom.graphIdeal_isLocallyRankOne Hom.smoothRelativeDivisorIdeal X.hom (T.hom ≫ b)
-      (s.left ≫ pullback.fst X.hom b) _
-  have hflat : Flat (i ≫ pullback.snd X.hom (T.hom ≫ b)) := by
-    dsimp [i]
-    rw [Hom.graph_snd]
-    infer_instance
-  have hIso : IsIso (Hom.idealPullbackMap i i' e.hom (𝟙 T.left) h) :=
-    Hom.relativeCartierIdealBaseChange T.left T.left Y Y' T.left T.left
-      (pullback.snd X.hom (T.hom ≫ b)) (𝟙 T.left)
-      (pullback.snd (pullback.snd X.hom b) T.hom) e.hom i i' (𝟙 T.left) h
-      hfamily hgraph hi hrank hflat
-  let := hIso
-  exact Quotient.sound ⟨asIso (Hom.idealPullbackMap i i' e.hom (𝟙 T.left) h)⟩
-
-set_option backward.defeqAttrib.useBackward true in
-set_option backward.isDefEq.respectTransparency false in
-set_option backward.isDefEq.respectTransparency.types false in
-/-- The actual positive graph class commutes with the original family
-base-change isomorphism, including nonreduced and non-Noetherian tests. -/
-theorem positiveGraphClass_fieldBaseChange
-    (K : Type u) [Field K] [Algebra k K]
-    (T : FScheme K) (s : T ⟶ fieldBaseChange K X) :
-    let b := Spec.map (CommRingCat.ofHom (algebraMap k K))
-    letI := hX.smooth
-    letI := hX.proper
-    letI : SmoothOfRelativeDimension 1 (pullback.snd X.hom b) :=
-      (curveProperties_baseChange hX K b).smooth
-    letI : IsProper (pullback.snd X.hom b) := (curveProperties_baseChange hX K b).proper
-    pullbackClass (familyBaseChangeIso X.hom b T).hom
-        (classOf _ (Hom.positiveGraphLineBundle Hom.smoothRelativeDivisorIdeal
-          X.hom (T.hom ≫ b) (s.left ≫ pullback.fst X.hom b)
-          (by
-            rw [Category.assoc, pullback.condition, ← Category.assoc]
-            exact congrArg (fun v => v ≫ b)
-              (show s.left ≫ pullback.snd X.hom b = T.hom from s.w)))) =
-      classOf _ (Hom.positiveGraphLineBundle Hom.smoothRelativeDivisorIdeal
-        (pullback.snd X.hom b) T.hom s.left s.w) := by
-  let b := Spec.map (CommRingCat.ofHom (algebraMap k K))
-  let := hX.smooth
-  let := hX.proper
-  let : SmoothOfRelativeDimension 1 (pullback.snd X.hom b) :=
-    (curveProperties_baseChange hX K b).smooth
-  let : IsProper (pullback.snd X.hom b) := (curveProperties_baseChange hX K b).proper
-  change pullbackClass (familyBaseChangeIso X.hom b T).hom
-      (-classOf _ (Hom.graphIdealLineBundle Hom.smoothRelativeDivisorIdeal
-        X.hom (T.hom ≫ b) (s.left ≫ pullback.fst X.hom b) _)) =
-    -classOf _ (Hom.graphIdealLineBundle Hom.smoothRelativeDivisorIdeal
-      (pullback.snd X.hom b) T.hom s.left s.w)
-  rw [← PullbackTensor.Local.pullbackHom_apply, map_neg,
-    PullbackTensor.Local.pullbackHom_apply, graphIdealClass_fieldBaseChange hX K T s]
 
 variable (P : LocallyNoetherianOver (Spec (.of k)))
   (R : ((locallyNoetherianOverInclusion (Spec (.of k))).op ⋙
@@ -288,9 +191,7 @@ def jacobianScalarExtensionIso (K : Type u) [Field K] [Algebra k K] :
     fieldBaseChange K (picardIdentityComponent X.hom P R) ≅
       picardIdentityComponent (pullback.snd X.hom b)
         (LocallyNoetherianOver.baseChange b P) (baseChangeRepresentableBy X.hom b P R) := by
-  let := picardCommGrpObj X.hom P R
-  exact Over.isoMk (picardIdentityComponentBaseChangeIso X.hom P R K)
-    (picardIdentityComponentBaseChangeIso_hom_comp X.hom P R K)
+  exact picardIdentityComponentBaseChangeOverIso P R K
 
 set_option backward.defeqAttrib.useBackward true in
 set_option backward.isDefEq.respectTransparency false in
@@ -308,9 +209,7 @@ theorem jacobianScalarExtensionIso_hom_comp_inclusion
         picardIdentityComponentι (pullback.snd X.hom b)
           (LocallyNoetherianOver.baseChange b P) (baseChangeRepresentableBy X.hom b P R) =
       (Over.pullback b).map (picardIdentityComponentι X.hom P R) := by
-  let := picardCommGrpObj X.hom P R
-  apply Over.OverMorphism.ext
-  exact picardIdentityComponentBaseChangeIso_hom_ι P R K
+  exact picardIdentityComponentBaseChangeOverIso_hom_comp_inclusion P R K
 
 set_option backward.defeqAttrib.useBackward true in
 set_option backward.isDefEq.respectTransparency false in
@@ -609,30 +508,6 @@ theorem structureH1Le_nativeJacobian_fieldBaseChange
     Module.finrank K (Cotangent.Space η[B])
   exact hcoho.le.trans (hbase.trans hcot.ge)
 
-private def picardSourceSheafIso {A B : FScheme k} (e : A ≅ B) :
-    fppfPicardSheaf A.hom ≅ fppfPicardSheaf B.hom where
-  hom := fppfPicardPullback e.inv
-  inv := fppfPicardPullback e.hom
-  hom_inv_id := by
-    rw [← fppfPicardPullback_comp, Iso.hom_inv_id, fppfPicardPullback_id]
-  inv_hom_id := by
-    rw [← fppfPicardPullback_comp, Iso.inv_hom_id, fppfPicardPullback_id]
-
-/-- Source transport of the original representation on the SAME parameter
-object. No representing scheme is selected or replaced. -/
-private def picardSourceRepresentableBy {A B : FScheme k} (e : A ≅ B)
-    (Q : LocallyNoetherianOver (Spec (.of k)))
-    (RQ : ((locallyNoetherianOverInclusion (Spec (.of k))).op ⋙
-      (fppfPicardSheaf A.hom).obj ⋙
-        CategoryTheory.forget AddCommGrpCat.{u + 1}).RepresentableBy Q) :
-    ((locallyNoetherianOverInclusion (Spec (.of k))).op ⋙
-      (fppfPicardSheaf B.hom).obj ⋙
-        CategoryTheory.forget AddCommGrpCat.{u + 1}).RepresentableBy Q :=
-  RQ.ofIso (Functor.isoWhiskerLeft (locallyNoetherianOverInclusion (Spec (.of k))).op
-    (Functor.isoWhiskerRight
-      ((sheafToPresheaf (Scheme.fppfTopology.over (Spec (.of k))) AddCommGrpCat.{u + 1}).mapIso
-        (picardSourceSheafIso e)) (CategoryTheory.forget AddCommGrpCat.{u + 1})))
-
 private theorem picardIdentityComponentPullback_isIso_of_iso
     {A B : FScheme k} (e : A ≅ B)
     (PA : LocallyNoetherianOver (Spec (.of k))) [LocallyOfFiniteType PA.obj.hom]
@@ -656,182 +531,12 @@ private theorem picardIdentityComponentPullback_isIso_of_iso
           Iso.hom_inv_id, picardIdentityComponentPullback_id] }
   exact E.isIso_hom
 
-private theorem poincareClass_universalFppfClass
-    (A : FScheme k) [GrpObj A] [IsProper A.hom] [GeometricallyIntegral A.hom]
-    (Q : LocallyNoetherianOver (Spec (.of k))) [LocallyOfFiniteType Q.obj.hom]
-    (RQ : ((locallyNoetherianOverInclusion (Spec (.of k))).op ⋙
-      (fppfPicardSheaf A.hom).obj ⋙ CategoryTheory.forget AddCommGrpCat.{u + 1}).RepresentableBy Q)
-    {T : FScheme k} (t : T ⟶ picardIdentityComponent A.hom Q RQ) :
-    ((quotientProjection A.hom ≫ toFppfPicardSheaf A.hom).app (op T)).hom
-        (pullbackClass ((familyScheme A.hom).map t) (poincareClass A Q RQ)) =
-      ((fppfPicardSheaf A.hom).obj.map
-        (t ≫ picardIdentityComponentι A.hom Q RQ).op).hom (RQ.homEquiv (𝟙 Q)) := by
-  let D := picardIdentityComponent A.hom Q RQ
-  let TD : LocallyNoetherianOver (Spec (.of k)) :=
-    ⟨D, LocallyOfFiniteType.isLocallyNoetherian D.hom⟩
-  let q : PicardGroup (pullback A.hom D.hom) →+
-      (fppfPicardSheaf A.hom).obj.obj (op D) :=
-    ((quotientProjection A.hom ≫ toFppfPicardSheaf A.hom).app (op D)).hom
-  have hi : q (poincareClass A Q RQ) =
-      RQ.homEquiv (ObjectProperty.homMk (picardIdentityComponentι A.hom Q RQ) : TD ⟶ Q) := by
-    have H := poincarePullback_fppfClass A Q RQ (T := TD) (𝟙 D)
-    change q (classOf (pullback A.hom D.hom) (poincarePullback A Q RQ (𝟙 D)).bundle) =
-      RQ.homEquiv (ObjectProperty.homMk
-        (𝟙 D ≫ picardIdentityComponentι A.hom Q RQ) : TD ⟶ Q) at H
-    have hc : classOf (pullback A.hom D.hom) (poincarePullback A Q RQ (𝟙 D)).bundle =
-        poincareClass A Q RQ := Quotient.sound ⟨(poincarePullbackIdIso A Q RQ).iso⟩
-    rw [hc, Category.id_comp] at H
-    exact H
-  have hu : q (poincareClass A Q RQ) =
-      ((fppfPicardSheaf A.hom).obj.map (picardIdentityComponentι A.hom Q RQ).op).hom
-        (RQ.homEquiv (𝟙 Q)) := hi.trans
-      (RQ.homEquiv_eq (ObjectProperty.homMk
-        (picardIdentityComponentι A.hom Q RQ) : TD ⟶ Q))
-  have H := (NatTrans.naturality_apply
-    (quotientProjection A.hom ≫ toFppfPicardSheaf A.hom) t.op (poincareClass A Q RQ)).symm
-  change ((fppfPicardSheaf A.hom).obj.map t.op).hom (q (poincareClass A Q RQ)) =
-    ((quotientProjection A.hom ≫ toFppfPicardSheaf A.hom).app (op T)).hom
-      (pullbackClass ((familyScheme A.hom).map t) (poincareClass A Q RQ)) at H
-  rw [hu] at H
-  rw [op_comp, CategoryTheory.Functor.map_comp]
-  exact H.symm
-
 variable
     (Q : LocallyNoetherianOver (Spec (.of k)))
     (RQ : ((locallyNoetherianOverInclusion (Spec (.of k))).op ⋙
       (fppfPicardSheaf (picardIdentityComponent X.hom P R).hom).obj ⋙
         CategoryTheory.forget AddCommGrpCat.{u + 1}).RepresentableBy Q)
     [LocallyOfFiniteType Q.obj.hom]
-
-private theorem fppfPicardClass_fieldBaseChange
-    (A : FScheme k) (K : Type u) [Field K] [Algebra k K]
-    (T : FScheme K)
-    (c : PicardGroup (pullback A.hom
-      (T.hom ≫ Spec.map (CommRingCat.ofHom (algebraMap k K))))) :
-    let b := Spec.map (CommRingCat.ofHom (algebraMap k K))
-    ((fppfPicardSheafBaseChangeIso A.hom b).inv.app (op T)).hom
-        (((quotientProjection A.hom ≫ toFppfPicardSheaf A.hom).app
-          (op ((Over.map b).obj T))).hom c) =
-      ((quotientProjection (pullback.snd A.hom b) ≫
-        toFppfPicardSheaf (pullback.snd A.hom b)).app (op T)).hom
-          (pullbackClass (familyBaseChangeIso A.hom b T).hom c) := by
-  let b := Spec.map (CommRingCat.ofHom (algebraMap k K))
-  let e := fppfPicardSheafBaseChangeIso A.hom b
-  let q0 : PicardGroup (pullback A.hom (T.hom ≫ b)) →+
-      (fppfPicardSheaf A.hom).obj.obj (op ((Over.map b).obj T)) :=
-    ((quotientProjection A.hom ≫ toFppfPicardSheaf A.hom).app
-      (op ((Over.map b).obj T))).hom
-  let q1 : PicardGroup (pullback (pullback.snd A.hom b) T.hom) →+
-      (fppfPicardSheaf (pullback.snd A.hom b)).obj.obj (op T) :=
-    ((quotientProjection (pullback.snd A.hom b) ≫
-      toFppfPicardSheaf (pullback.snd A.hom b)).app (op T)).hom
-  apply (e.app (op T)).addCommGroupIsoToAddEquiv.injective
-  have hi := fppfPicardSheafBaseChangeIso_hom_app_inv_app_apply A.hom b (q0 c)
-  have H := fppfPicardSheafBaseChangeIso_hom_app_toFppfPicardSheaf_mk A.hom b (op T)
-    (pullbackClass (familyBaseChangeIso A.hom b T).hom c)
-  change ((fppfPicardSheafBaseChangeIso A.hom b).hom.app (op T)).hom
-      (q1 (pullbackClass (familyBaseChangeIso A.hom b T).hom c)) =
-    q0 (pullbackClass (familyBaseChangeIso A.hom b T).inv
-      (pullbackClass (familyBaseChangeIso A.hom b T).hom c)) at H
-  rw [← pullbackClass_comp, Iso.inv_hom_id, pullbackClass_id] at H
-  have hfinal := hi.trans H.symm
-  change ((fppfPicardSheafBaseChangeIso A.hom b).hom.app (op T)).hom
-      (((fppfPicardSheafBaseChangeIso A.hom b).inv.app (op T)).hom (q0 c)) =
-    ((fppfPicardSheafBaseChangeIso A.hom b).hom.app (op T)).hom
-      (q1 (pullbackClass (familyBaseChangeIso A.hom b T).hom c))
-  exact hfinal
-
-private theorem poincareClass_representedFppfClass
-    (A : FScheme k) [GrpObj A] [IsProper A.hom] [GeometricallyIntegral A.hom]
-    (Q : LocallyNoetherianOver (Spec (.of k))) [LocallyOfFiniteType Q.obj.hom]
-    (RQ : ((locallyNoetherianOverInclusion (Spec (.of k))).op ⋙
-      (fppfPicardSheaf A.hom).obj ⋙ CategoryTheory.forget AddCommGrpCat.{u + 1}).RepresentableBy Q)
-    {T : LocallyNoetherianOver (Spec (.of k))}
-    (t : T.obj ⟶ picardIdentityComponent A.hom Q RQ) :
-    ((quotientProjection A.hom ≫ toFppfPicardSheaf A.hom).app (op T.obj)).hom
-        (pullbackClass ((familyScheme A.hom).map t) (poincareClass A Q RQ)) =
-      RQ.homEquiv (ObjectProperty.homMk
-        (t ≫ picardIdentityComponentι A.hom Q RQ) : T ⟶ Q) :=
-  (poincareClass_universalFppfClass A Q RQ t).trans
-    (RQ.homEquiv_eq (ObjectProperty.homMk
-      (t ≫ picardIdentityComponentι A.hom Q RQ) : T ⟶ Q)).symm
-
-set_option backward.defeqAttrib.useBackward true in
-set_option backward.isDefEq.respectTransparency false in
-set_option backward.isDefEq.respectTransparency.types false in
-private theorem poincareClass_fieldBaseChange
-    (A : FScheme k) [GrpObj A] [IsProper A.hom] [GeometricallyIntegral A.hom]
-    (Q : LocallyNoetherianOver (Spec (.of k))) [LocallyOfFiniteType Q.obj.hom]
-    (RQ : ((locallyNoetherianOverInclusion (Spec (.of k))).op ⋙
-      (fppfPicardSheaf A.hom).obj ⋙ CategoryTheory.forget AddCommGrpCat.{u + 1}).RepresentableBy Q)
-    (K : Type u) [Field K] [Algebra k K]
-    (T : LocallyNoetherianOver (Spec (.of K)))
-    (t : T.obj ⟶ fieldBaseChange K (picardIdentityComponent A.hom Q RQ)) :
-    let b := Spec.map (CommRingCat.ofHom (algebraMap k K))
-    let A' := fieldBaseChange K A
-    let Q' := LocallyNoetherianOver.baseChange b Q
-    let RQ' := baseChangeRepresentableBy A.hom b Q RQ
-    let e := Over.isoMk (picardIdentityComponentBaseChangeIso A.hom Q RQ K)
-      (picardIdentityComponentBaseChangeIso_hom_comp A.hom Q RQ K)
-    let d := ((Over.mapPullbackAdj b).homEquiv T.obj
-      (picardIdentityComponent A.hom Q RQ)).symm t
-    letI : GrpObj A' := by
-      change GrpObj ((Over.pullback b).obj A)
-      exact Functor.grpObjObj (F := Over.pullback b) (G := A)
-    letI : IsProper A'.hom := by
-      change IsProper (pullback.snd A.hom b)
-      infer_instance
-    letI : GeometricallyIntegral A'.hom := by
-      change GeometricallyIntegral (pullback.snd A.hom b)
-      infer_instance
-    ((fppfPicardSheafBaseChangeIso A.hom b).inv.app (op T.obj)).hom
-      (((quotientProjection A.hom ≫ toFppfPicardSheaf A.hom).app
-        (op ((Over.map b).obj T.obj))).hom
-          (pullbackClass ((familyScheme A.hom).map d) (poincareClass A Q RQ))) =
-    ((quotientProjection A'.hom ≫ toFppfPicardSheaf A'.hom).app (op T.obj)).hom
-      (pullbackClass ((familyScheme A'.hom).map (t ≫ e.hom)) (poincareClass A' Q' RQ')) := by
-  let b := Spec.map (CommRingCat.ofHom (algebraMap k K))
-  let A' := fieldBaseChange K A
-  let Q' := LocallyNoetherianOver.baseChange b Q
-  let RQ' := baseChangeRepresentableBy A.hom b Q RQ
-  let D := picardIdentityComponent A.hom Q RQ
-  let e : fieldBaseChange K D ≅ picardIdentityComponent A'.hom Q' RQ' :=
-    Over.isoMk (picardIdentityComponentBaseChangeIso A.hom Q RQ K)
-      (picardIdentityComponentBaseChangeIso_hom_comp A.hom Q RQ K)
-  let d : ((LocallyNoetherianOver.map b).obj T).obj ⟶ D :=
-    ((Over.mapPullbackAdj b).homEquiv T.obj D).symm t
-  let : GrpObj A' := by
-    change GrpObj ((Over.pullback b).obj A)
-    exact Functor.grpObjObj (F := Over.pullback b) (G := A)
-  let : IsProper A'.hom := by change IsProper (pullback.snd A.hom b); infer_instance
-  let : GeometricallyIntegral A'.hom := by
-    change GeometricallyIntegral (pullback.snd A.hom b)
-    infer_instance
-  have ht : ((Over.mapPullbackAdj b).homEquiv T.obj Q.obj).symm
-      ((t ≫ e.hom) ≫ picardIdentityComponentι A'.hom Q' RQ') =
-      d ≫ picardIdentityComponentι A.hom Q RQ := by
-    have hc : e.hom ≫ picardIdentityComponentι A'.hom Q' RQ' =
-        (Over.pullback b).map (picardIdentityComponentι A.hom Q RQ) := by
-      apply Over.OverMorphism.ext
-      exact picardIdentityComponentBaseChangeIso_hom_ι Q RQ K
-    rw [Category.assoc, hc]
-    exact (Over.mapPullbackAdj b).homEquiv_naturality_right_symm t _
-  have H := baseChangeRepresentableBy_homEquiv A.hom b Q RQ (T := T)
-    (ObjectProperty.homMk
-      ((t ≫ e.hom) ≫ picardIdentityComponentι A'.hom Q' RQ') : T ⟶ Q')
-  change RQ'.homEquiv (ObjectProperty.homMk
-      ((t ≫ e.hom) ≫ picardIdentityComponentι A'.hom Q' RQ') : T ⟶ Q') =
-    ((fppfPicardSheafBaseChangeIso A.hom b).inv.app (op T.obj)).hom
-      (RQ.homEquiv (ObjectProperty.homMk
-        (((Over.mapPullbackAdj b).homEquiv T.obj Q.obj).symm
-          ((t ≫ e.hom) ≫ picardIdentityComponentι A'.hom Q' RQ')) :
-            (LocallyNoetherianOver.map b).obj T ⟶ Q)) at H
-  rw [ht] at H
-  have h0 := poincareClass_representedFppfClass A Q RQ
-    (T := (LocallyNoetherianOver.map b).obj T) d
-  have h1 := poincareClass_representedFppfClass A' Q' RQ' (T := T) (t ≫ e.hom)
-  exact (congrArg ((fppfPicardSheafBaseChangeIso A.hom b).inv.app (op T.obj)).hom h0).trans
-    (H.symm.trans h1.symm)
 
 omit [IsSeparated P.obj.hom] in
 set_option backward.defeqAttrib.useBackward true in
@@ -1321,30 +1026,6 @@ theorem canonicalThetaPrincipalIso_hom
       ι[picardIdentityComponent X.hom P R] ≫
         (asIso (canonicalAbelDualMorphism hX P R Q RQ hH1)).inv := rfl
 
-private theorem isMonHom_of_mono_comp
-    {C : Type*} [Category C] [MonoidalCategory C]
-    {A B E : C} [MonObj A] [MonObj B] [MonObj E]
-    (f : A ⟶ B) (g : B ⟶ E) [Mono g] [IsMonHom g] [IsMonHom (f ≫ g)] :
-    IsMonHom f where
-  one_hom := by
-    apply (cancel_mono g).mp
-    simp only [Category.assoc, IsMonHom.one_hom]
-  mul_hom := by
-    apply (cancel_mono g).mp
-    simp only [Category.assoc, IsMonHom.mul_hom, tensorHom_comp_tensorHom_assoc]
-
-private theorem isMonHom_map_of_grpObj_eq
-    {C E : Type*} [Category C] [Category E]
-    [CartesianMonoidalCategory C] [CartesianMonoidalCategory E]
-    (F : C ⥤ E) [F.Monoidal] {G H : C} [GrpObj G] [GrpObj H]
-    (f : G ⟶ H) [IsMonHom f] (M : GrpObj (F.obj H))
-    (h : M = Functor.grpObjObj (F := F) (G := H)) :
-    letI : GrpObj (F.obj G) := Functor.grpObjObj (F := F) (G := G)
-    letI : GrpObj (F.obj H) := M
-    IsMonHom (F.map f) := by
-  cases h
-  infer_instance
-
 omit [IsSeparated P.obj.hom] in
 set_option backward.defeqAttrib.useBackward true in
 set_option backward.isDefEq.respectTransparency false in
@@ -1359,27 +1040,112 @@ private theorem jacobianScalarExtensionIso_isMonHom
     letI := picardCommGrpObj (pullback.snd X.hom b)
       (LocallyNoetherianOver.baseChange b P) (baseChangeRepresentableBy X.hom b P R)
     IsMonHom (jacobianScalarExtensionIso P R K).hom := by
+  exact picardIdentityComponentBaseChangeOverIso_isMonHom P R K
+
+set_option backward.defeqAttrib.useBackward true in
+set_option backward.isDefEq.respectTransparency false in
+set_option backward.isDefEq.respectTransparency.types false in
+/-- After geometric field extension, the original canonical principal
+isomorphism is induced by the original theta class for the given origin. -/
+theorem canonicalThetaPrincipalIso_geometricTheta
+    (hH1 : letI := picardCommGrpObj X.hom P R
+      Module.finrank k (structureCohomology k (picardIdentityComponent X.hom P R) 1) ≤
+        Module.finrank k (Cotangent.Space η[picardIdentityComponent X.hom P R]))
+    (K : Type u) [Field K] [Algebra k K] [IsAlgClosed K]
+    (u : 𝟙_ (FScheme K) ⟶ fieldBaseChange K X) (hg : 0 < coherentGenus k X) :
+    letI := picardCommGrpObj X.hom P R
+    let b := Spec.map (CommRingCat.ofHom (algebraMap k K))
+    let J := picardIdentityComponent X.hom P R
+    let A := fieldBaseChange K J
+    let Q' := LocallyNoetherianOver.baseChange b Q
+    let RQA := baseChangeRepresentableBy J.hom b Q RQ
+    let scalarGroup : GrpObj A := Functor.grpObjObj (F := Over.pullback b) (G := J)
+    letI : GrpObj A := scalarGroup
+    letI : IsProper J.hom := isProper_identityComponentOver hX P R
+    letI : GeometricallyIntegral J.hom := geometricallyIntegral_identityComponentOver hX P R
+    letI : IsProper A.hom := by change IsProper (pullback.snd J.hom b); infer_instance
+    letI : GeometricallyIntegral A.hom := by
+      change GeometricallyIntegral (pullback.snd J.hom b); infer_instance
+    let eD := Over.isoMk (picardIdentityComponentBaseChangeIso J.hom Q RQ K)
+      (picardIdentityComponentBaseChangeIso_hom_comp J.hom Q RQ K)
+    let X' := fieldBaseChange K X
+    let hX' := curveProperties_baseChange hX K b
+    let P' := LocallyNoetherianOver.baseChange b P
+    let R' := baseChangeRepresentableBy X.hom b P R
+    letI : LocallyOfFiniteType P'.obj.hom := inferInstanceAs
+      (LocallyOfFiniteType (pullback.snd P.obj.hom b))
+    letI : IsSeparated P'.obj.hom := inferInstanceAs (IsSeparated (pullback.snd P.obj.hom b))
+    let e := jacobianScalarExtensionIso P R K
+    let hg' : 0 < coherentGenus K X' :=
+      (coherentGenus_arbitraryBaseChange properStructureCohomologyBaseChange X hX K b).symm ▸ hg
+    (Over.pullback b).map (canonicalThetaPrincipalIso hX P R Q RQ hH1).hom ≫ eD.hom =
+      lineBundleClassMorphismIdentityComponent A Q' RQA
+        (classOf A.left (pullbackLineBundle e.hom.left
+          (thetaLineBundle hX' u.left u.w P' R' hg'))) := by
+  intro b J A Q' RQA scalarGroup eD
   let := picardCommGrpObj X.hom P R
-  let b := Spec.map (CommRingCat.ofHom (algebraMap k K))
+  let : GrpObj A := scalarGroup
+  let : IsProper J.hom := isProper_identityComponentOver hX P R
+  let : GeometricallyIntegral J.hom := geometricallyIntegral_identityComponentOver hX P R
+  let : IsProper A.hom := by change IsProper (pullback.snd J.hom b); infer_instance
+  let : GeometricallyIntegral A.hom := by
+    change GeometricallyIntegral (pullback.snd J.hom b); infer_instance
   let F := Over.pullback b
-  let J := picardIdentityComponent X.hom P R
+  let X' := fieldBaseChange K X
+  let hX' := curveProperties_baseChange hX K b
+  let := hX.proper
+  have hg' : 0 < coherentGenus K X' := by
+    let : Module.Free k (structureCohomology k X 1) := Module.Free.of_divisionRing k _
+    have H := (LinearEquiv.ofBijective (structureCohomologyBaseChangeMap K X 1)
+      (structureCohomologyBaseChangeMap_bijective_of_isProper K X 1)).finrank_eq
+    change 0 < Module.finrank K (structureCohomology K X' 1)
+    rw [← H, Module.finrank_baseChange]
+    exact hg
   let P' := LocallyNoetherianOver.baseChange b P
   let R' := baseChangeRepresentableBy X.hom b P R
-  let := picardCommGrpObj (pullback.snd X.hom b) P' R'
-  let : GrpObj (fieldBaseChange K J) := by
-    change GrpObj ((Over.pullback b).obj J)
-    exact Functor.grpObjObj (F := F) (G := J)
-  let j := picardIdentityComponentι X.hom P R
-  let j' := picardIdentityComponentι (pullback.snd X.hom b) P' R'
-  let : IsMonHom j := isMonHom_picardIdentityComponentι X.hom P R
-  have hj := isMonHom_map_of_grpObj_eq F j
-    (picardCommGrpObj (pullback.snd X.hom b) P' R').toGrpObj
-    (picardCommGrpObj_baseChange_toGrpObj X.hom b P R)
-  have hcomp : IsMonHom ((jacobianScalarExtensionIso P R K).hom ≫ j') := by
-    rw [jacobianScalarExtensionIso_hom_comp_inclusion]
-    exact hj
-  let := hcomp
-  exact isMonHom_of_mono_comp (jacobianScalarExtensionIso P R K).hom j'
+  let B := picardIdentityComponent X'.hom P' R'
+  let : GrpObj B := grpObjPicardIdentityComponent X'.hom P' R'
+  let e : A ≅ B := jacobianScalarExtensionIso P R K
+  let RQB := picardSourceRepresentableBy e Q' RQA
+  let := picardCommGrpObj X'.hom P' R'
+  let : IsSeparated P'.obj.hom := by
+    change IsSeparated (pullback.snd P.obj.hom b); infer_instance
+  let : IsSeparated Q'.obj.hom := by
+    change IsSeparated (pullback.snd Q.obj.hom b); infer_instance
+  let := hX'.smooth
+  let := hX'.proper
+  let : GeometricallyIntegral X'.hom := hX'.isGeometricallyIntegral
+  let f : X' ⟶ A := geometricAbelLift hX P R K u
+  let m := canonicalAbelDualMorphism hX P R Q RQ hH1
+  let p : A ⟶ fieldBaseChange K (picardIdentityComponent J.hom Q RQ) :=
+    F.map (canonicalThetaPrincipalIso hX P R Q RQ hH1).hom
+  let := isIso_canonicalAbelDualMorphism hX P R Q RQ hH1
+  let := jacobianScalarExtensionIso_isMonHom P R K
+  let := isIso_geometricAbelPullback hX P R Q RQ hH1 K u
+  have hM := canonicalAbelDualMorphism_fieldComparison hX P R Q RQ hH1 K u
+  have hNeg : (canonicalThetaPrincipalIso hX P R Q RQ hH1).hom ≫ m = ι[J] := by
+    rw [canonicalThetaPrincipalIso_hom]
+    exact (Category.assoc _ _ _).trans
+      ((congrArg (ι[J] ≫ ·) (asIso m).inv_hom_id).trans (Category.comp_id _))
+  have hp := (F.map_comp _ _).symm.trans (congrArg F.map hNeg)
+  have hInv : F.map ι[J] ≫ e.hom = e.hom ≫ ι[B] := GrpObj.inv_hom e.hom
+  have H := geometricTheta_of_originalAbelPullback (k := K) (X := X')
+    hX' u P' R' A Q' RQA RQB e
+    (jacobianScalarExtensionIso_isMonHom P R K) f
+    (geometricAbelLift_comp_native hX P R K u) (p ≫ eD.hom)
+  have hpull : (p ≫ eD.hom) ≫
+      picardIdentityComponentPullback (X := X') (Y := A) P' R' Q' RQA f =
+        e.hom ≫ ι[B] := by
+    calc
+      _ = p ≫ (F.map m ≫ e.hom) := by rw [Category.assoc, ← hM]
+      _ = F.map ι[J] ≫ e.hom := by rw [← Category.assoc, hp]
+      _ = e.hom ≫ ι[B] := hInv
+  -- Both component presentations use the same original represented group.
+  dsimp only [B, picardIdentityComponent, grpObjPicardIdentityComponent, FScheme, Base]
+    at H hpull
+  have hFinal := H hpull hg'
+  dsimp only [p, F] at hFinal
+  exact hFinal
 
 set_option backward.defeqAttrib.useBackward true in
 set_option backward.isDefEq.respectTransparency false in
@@ -1415,67 +1181,31 @@ theorem canonicalThetaPrincipalIso_geometricPositive
   let : GrpObj A := scalarGroup
   let : IsProper J.hom := isProper_identityComponentOver hX P R
   let : GeometricallyIntegral J.hom := geometricallyIntegral_identityComponentOver hX P R
-  let : IsProper A.hom := by change IsProper (pullback.snd J.hom b); infer_instance
-  let : GeometricallyIntegral A.hom := by
-    change GeometricallyIntegral (pullback.snd J.hom b); infer_instance
-  let F := Over.pullback b
+  let : IsProper A.hom := inferInstanceAs (IsProper (pullback.snd J.hom b))
+  let : GeometricallyIntegral A.hom := inferInstanceAs
+    (GeometricallyIntegral (pullback.snd J.hom b))
   let X' := fieldBaseChange K X
   let hX' := curveProperties_baseChange hX K b
-  let := hX.proper
-  have hg' : 0 < coherentGenus K X' := by
-    let : Module.Free k (structureCohomology k X 1) := Module.Free.of_divisionRing k _
-    have H := (LinearEquiv.ofBijective (structureCohomologyBaseChangeMap K X 1)
-      (structureCohomologyBaseChangeMap_bijective_of_isProper K X 1)).finrank_eq
-    change 0 < Module.finrank K (structureCohomology K X' 1)
-    rw [← H, Module.finrank_baseChange]
-    exact hg
   let P' := LocallyNoetherianOver.baseChange b P
   let R' := baseChangeRepresentableBy X.hom b P R
-  let B := picardIdentityComponent X'.hom P' R'
-  let : GrpObj B := grpObjPicardIdentityComponent X'.hom P' R'
-  let e : A ≅ B := jacobianScalarExtensionIso P R K
+  let : LocallyOfFiniteType P'.obj.hom := inferInstanceAs
+    (LocallyOfFiniteType (pullback.snd P.obj.hom b))
+  let : IsSeparated P'.obj.hom := inferInstanceAs (IsSeparated (pullback.snd P.obj.hom b))
+  let : LocallyOfFiniteType Q'.obj.hom := inferInstanceAs
+    (LocallyOfFiniteType (pullback.snd Q.obj.hom b))
+  let : IsSeparated Q'.obj.hom := inferInstanceAs (IsSeparated (pullback.snd Q.obj.hom b))
+  let e := jacobianScalarExtensionIso P R K
   let RQB := picardSourceRepresentableBy e Q' RQA
-  let := picardCommGrpObj X'.hom P' R'
-  let : IsSeparated P'.obj.hom := by
-    change IsSeparated (pullback.snd P.obj.hom b); infer_instance
-  let : IsSeparated Q'.obj.hom := by
-    change IsSeparated (pullback.snd Q.obj.hom b); infer_instance
-  let := hX'.smooth
-  let := hX'.proper
   let : GeometricallyIntegral X'.hom := hX'.isGeometricallyIntegral
-  have : Surjective X'.hom := inferInstance
+  let : LocallyOfFiniteType X'.hom := curveProperties_locallyOfFiniteType hX'
+  let : Surjective X'.hom := inferInstance
   obtain ⟨o, ho⟩ := Scheme.Hom.exists_lift_spec_of_isAlgClosed X'.hom K (𝟙 _)
   let u : 𝟙_ (FScheme K) ⟶ X' := Over.homMk o ho
-  let f : X' ⟶ A := geometricAbelLift hX P R K u
-  let m := canonicalAbelDualMorphism hX P R Q RQ hH1
-  let p : A ⟶ fieldBaseChange K (picardIdentityComponent J.hom Q RQ) :=
-    F.map (canonicalThetaPrincipalIso hX P R Q RQ hH1).hom
-  let := isIso_canonicalAbelDualMorphism hX P R Q RQ hH1
-  let := jacobianScalarExtensionIso_isMonHom P R K
-  let := isIso_geometricAbelPullback hX P R Q RQ hH1 K u
-  have hM := canonicalAbelDualMorphism_fieldComparison hX P R Q RQ hH1 K u
-  have hNeg : (canonicalThetaPrincipalIso hX P R Q RQ hH1).hom ≫ m = ι[J] := by
-    rw [canonicalThetaPrincipalIso_hom]
-    exact (Category.assoc _ _ _).trans
-      ((congrArg (ι[J] ≫ ·) (asIso m).inv_hom_id).trans (Category.comp_id _))
-  have hp := (F.map_comp _ _).symm.trans (congrArg F.map hNeg)
-  have hInv : F.map ι[J] ≫ e.hom = e.hom ≫ ι[B] := GrpObj.inv_hom e.hom
-  have H := geometricPositive_of_originalAbelPullback (k := K) (X := X')
-    hX' u P' R' A Q' RQA RQB e
-    (jacobianScalarExtensionIso_isMonHom P R K) f
-    (geometricAbelLift_comp_native hX P R K u) (p ≫ eD.hom)
-  have hpull : (p ≫ eD.hom) ≫
-      picardIdentityComponentPullback (X := X') (Y := A) P' R' Q' RQA f =
-        e.hom ≫ ι[B] := by
-    calc
-      _ = p ≫ (F.map m ≫ e.hom) := by rw [Category.assoc, ← hM]
-      _ = F.map ι[J] ≫ e.hom := by rw [← Category.assoc, hp]
-      _ = e.hom ≫ ι[B] := hInv
-  -- Both component presentations use the same original represented group.
-  dsimp only [B, picardIdentityComponent, grpObjPicardIdentityComponent, FScheme, Base]
-    at H hpull
-  have hFinal := H hpull hg'
-  dsimp only [p, F] at hFinal
-  exact hFinal
+  let hg' : 0 < coherentGenus K X' :=
+    (coherentGenus_arbitraryBaseChange properStructureCohomologyBaseChange X hX K b).symm ▸ hg
+  let θ := thetaLineBundle hX' o ho P' R' hg'
+  refine ⟨pullbackLineBundle e.hom.left θ,
+    (thetaLineBundle_isAmple hX' o ho P' R' Q' RQB hg').pullback_of_isAffineHom e.hom.left, ?_⟩
+  exact canonicalThetaPrincipalIso_geometricTheta hX P R Q RQ hH1 K u hg
 
 end AlgebraicGeometry.Scheme.OverField.Curve
