@@ -343,6 +343,7 @@ public import Aglib.Algebra.Homology.DerivedCategory.Ext.ChangeUniverse
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.CogeneratorComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Cokernel
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.CompositeComparison
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.Concentration
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Effacement
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.EffacementComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Equivalence
@@ -353,6 +354,7 @@ public import Aglib.Algebra.Homology.DerivedCategory.Ext.LinearEquiv
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.PairingBiproduct
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.PairingComposition
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.PairingZero
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.PerfectnessExact
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Quotient
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.ScalarTransfer
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.ShortExactComparison
@@ -2961,6 +2963,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteStrati
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteStratification.Representable
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.GenericDetection
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.GenericDetection.Represented
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.GenericOpen
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ArtinSections
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.Basic
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ClosureCharts
@@ -3023,6 +3026,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.Gene
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.Images
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.InternalHom
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.LocallyConstant
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.PointPresentation
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.Pullback
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.PullbackAffine
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.PullbackLocality
@@ -3244,6 +3248,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.KummerResidueExtens
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.KummerResidueNaturality
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.LowDegree
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.OnePointRestriction
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.OpenBasis
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.OpenRank
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PointSupportedClosedUnit
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PointSupportedFactor
@@ -3287,6 +3292,8 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.CompactSupportPair
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantCoefficients
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantOnePerfectness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantPerfectness
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.Constructible.FiniteSupport
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstructiblePerfectness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.FinitePushforward
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.FiniteTracePairing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.FiniteTracePairing.Compatibility
@@ -3300,6 +3307,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekDirectI
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.OpenPerfectness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PairingRestriction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PairingTranspose
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PerfectnessExact
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PointPurity
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PointPurity.Finite
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PointRemoval

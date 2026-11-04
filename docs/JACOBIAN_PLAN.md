@@ -252,7 +252,7 @@ coefficients, under the stated curve and positive invertible-level hypotheses.
 The open square uses the actual Cartesian finite étale restriction and finite
 dominant completion, which may ramify at the boundary. The [open finite-locally-constant pairing](../Aglib/AlgebraicGeometry/EtaleCohomology/Duality/OpenPerfectness.lean)
 is perfect in all degrees `r ≤ 2` under its displayed finite-complement and
-field/level hypotheses. General constructible perfectness remains open. See [duality](../Aglib/AlgebraicGeometry/EtaleCohomology/Duality/README.md).
+field/level hypotheses. The [constructible theorem](../Aglib/AlgebraicGeometry/EtaleCohomology/Duality/ConstructiblePerfectness.lean) extends both original adjoints to constructible coefficients under the displayed curve, finite-complement and level conditions.
 
 The selected native route studies the transpose
 `ψ^s(F) : Ext^s(F, μ_n) → H_c^(2-s)(F)^∨`. Use a source short exact
@@ -320,8 +320,10 @@ proves the original roots and constant H¹ cardinality
 nonempty, `k` is algebraically closed and `n` is positive and invertible.
 Its original restriction injectivity, unsigned localization-boundary
 exactness and boundary image `ker(SUM)` also allow empty `D`. Level one,
-composite levels and genus zero are included; no splitting or basis is
-asserted. [Stacks](REFERENCES.md#stacksproject), 0C1Z and 0AMB, gives
+composite levels and genus zero are included. For nonempty `D`, the
+[open basis theorem](../Aglib/AlgebraicGeometry/EtaleCohomology/Curves/OpenBasis.lean)
+uses the original boundary and proper basis to give noncanonical bases
+for roots and constant H¹ over `ZMod n`. [Stacks](REFERENCES.md#stacksproject), 0C1Z and 0AMB, gives
 source locators with their actual hypotheses retained.
 
 The original Picard sheaf and supplied representative admit contravariant
@@ -470,9 +472,9 @@ close the planned programme.
 | B2 | **Source supplied:** same `P,R,J` smoothness, geometric integrality and `dim J = g` over every field, through the original cotangent/H1 comparison. |
 | B3–B4 | **Field source supplied:** normalized and rigidified families, projective geometrically integral group cube, square and multiplication laws; the unrestricted relative cube remains open. |
 | B5 | **Source supplied over every field:** same `P,R,J` projectivity and positive multiplication rank `n^(2*g)`. |
-| B6–B7 | **Partial source supplied:** positive multiplication and its native kernel have rank `n^(2*g)` over every field; at unit levels geometric degree and torsion counts and noncanonical native-action basis existence are supplied through all-divisor counts. Proper roots and constant H¹ have cardinality `n^(2*g)` and noncanonical native-action bases over algebraically closed constants at positive invertible levels; the original open H¹ cardinality is supplied for nonempty finite complement; an open basis remains open. |
+| B6–B7 | **Partial source supplied:** positive multiplication and its native kernel have rank `n^(2*g)` over every field; at unit levels geometric degree and torsion counts and noncanonical native-action basis existence are supplied through all-divisor counts. Proper roots and constant H¹ have cardinality `n^(2*g)` and noncanonical native-action bases over algebraically closed constants at positive invertible levels; the original open H¹ cardinality and noncanonical native-action bases for both coefficients are supplied for nonempty finite complement. |
 | D2–D6 | **Partial source supplied:** module trace and smaller-open compatibility, exact finite-module dualization, finite biduality, and constant-coefficient perfectness in degrees 0 and 2 with transposes, for finite complement including empty and positive invertible `n`. Original one-point module Ext purity and Kummer trace-one normalization are supplied; the original finite-lcc roots internal-Hom/Ext comparison is supplied under its field and level hypotheses; finite point-support roots Ext and its whole trace sum are supplied; both original proper and finite-complement open adjoints are bijective for every finite-lcc coefficient and `r ≤ 2`, with the displayed field, level and Ext-world hypotheses. General-coefficient purity and source Čech/connecting/cup comparisons remain open. The original finite proper/open pairing squares are supplied for all complementary degrees under their stated hypotheses. |
-| D7 | **Open:** constructible devissage/local comparison, with the unchecked Milne EC reference and alternative Artin route kept explicit. |
+| D7 | **Implemented:** the [original constructible curve duality](../Aglib/AlgebraicGeometry/EtaleCohomology/Duality/ConstructiblePerfectness.lean) for both adjoints in compact degrees `r ≤ 2`, with the actual open and finite closed complement, algebraically closed constants, positive invertible level and displayed Ext hypotheses. |
 | W1 | **Partial source supplied:** the same Poincaré pair and original line-bundle morphism, with locally Noetherian classification; an ample original `φ_L` is finite. Dual properness, smoothness, dimension, geometric integrality, projectivity and finite-flat surjectivity are conditional on the original coherent-H¹ inequality `finrank H¹(O_A) ≤ finrank Cotangent(unit_A)` and the displayed source assumptions. Conditional homogeneity and source multiplication laws hold when the actual dual component is proper and geometrically integral. The original bidual map and its naturality/line-bundle laws are supplied with a second representative; the coherent-H¹ inequality, unconditional dual geometry, bidual isomorphism, general dual homomorphisms and character descent remain open. |
 | W2–W3 | **Partial source supplied:** based positive-genus theta Cartier geometry, monicity, trivial scheme kernel and ampleness; principal isomorphism retains the original coherent-H¹ inequality. Genus zero has the separate any-field trivial-Jacobian theorem. The any-field Abel origin-change law and conditional principal-isomorphism independence are supplied. The origin-free canonical Abel dual map is an isomorphism over any field in every genus under the original coherent-H¹ and representative hypotheses; its negative inverse is the canonical principal group/scheme isomorphism. Positive-genus ampleness is supplied after algebraically closed field extension. The general coherent-H¹ bound, ground-field theta bundle and general Weil pairing remain open. |
 | W4 | **Partial source supplied:** original internal-Hom/source Ext laws and native evaluation/unit/trace comparisons retain their stated acyclicity premises. The final original-map and sign comparison of Yoneda, cup, Kummer, Abel–Jacobi, Cartier and polarization constructions remains open. |
