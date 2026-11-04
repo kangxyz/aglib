@@ -93,7 +93,7 @@ theorem structureExternalAssociativityInputs_totalPullback :
       DirectSum.lmap (structureExternalAssociativityInputs X Y Z).pullback := rfl
 
 /-- The whole tensor associativity diagram is the original external-cup associativity. -/
-abbrev structureExternalLinearMap_assoc :=
+abbrev structureExternalLinearMapAssoc :=
   let input := @structureExternalAssociativityInputs k ‹Field k› X Y Z
   let pullback := structureCohomologyAlgebraPullbackLinear (originalAssociatorHom X Y Z)
   let hp := structureExternalAssociativityInputs_totalPullback X Y Z
@@ -101,5 +101,9 @@ abbrev structureExternalLinearMap_assoc :=
     (structureExternalLinearMap X Y) (structureExternalLinearMap (X ⊗ Y) Z)
     (structureExternalLinearMap Y Z) (structureExternalLinearMap X (Y ⊗ Z))
     pullback rfl rfl rfl rfl hp
+
+/-- The associativity equation for the original total external product. -/
+theorem structureExternalLinearMap_assoc : type_of% (structureExternalLinearMapAssoc X Y Z) :=
+  structureExternalLinearMapAssoc X Y Z
 
 end AlgebraicGeometry.Scheme.Cohomology

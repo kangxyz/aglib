@@ -146,17 +146,29 @@ theorem structureExternalLinearMap_point_right_diagram (X Y : FScheme k)
           p q (p + (q + 1)) rfl x y
 
 /-- The left point law in terms of the original total linear maps. -/
-abbrev structureExternalLinearMap_point_left (X Y : FScheme k)
+abbrev structureExternalLinearMapPointLeft (X Y : FScheme k)
     [IsProper X.hom] [GeometricallyIntegral X.hom] (e : 𝟙_ (FScheme k) ⟶ X) :=
   let diagram := structureExternalLinearMap_point_left_diagram X Y e
   DirectSum.tensorPointLeftDiagramWithTotals diagram (structureExternalLinearMap X Y)
     (structureCohomologyAlgebraPullbackLinear (lift (toUnit Y ≫ e) (𝟙 Y))) rfl rfl
 
 /-- The right point law in terms of the original total linear maps. -/
-abbrev structureExternalLinearMap_point_right (X Y : FScheme k)
+abbrev structureExternalLinearMapPointRight (X Y : FScheme k)
     [IsProper Y.hom] [GeometricallyIntegral Y.hom] (e : 𝟙_ (FScheme k) ⟶ Y) :=
   let diagram := structureExternalLinearMap_point_right_diagram X Y e
   DirectSum.tensorPointRightDiagramWithTotals diagram (structureExternalLinearMap X Y)
     (structureCohomologyAlgebraPullbackLinear (lift (𝟙 X) (toUnit X ≫ e))) rfl rfl
+
+/-- The left point equation for the original total external product. -/
+theorem structureExternalLinearMap_point_left (X Y : FScheme k)
+    [IsProper X.hom] [GeometricallyIntegral X.hom] (e : 𝟙_ (FScheme k) ⟶ X) :
+    type_of% (structureExternalLinearMapPointLeft X Y e) :=
+  structureExternalLinearMapPointLeft X Y e
+
+/-- The right point equation for the original total external product. -/
+theorem structureExternalLinearMap_point_right (X Y : FScheme k)
+    [IsProper Y.hom] [GeometricallyIntegral Y.hom] (e : 𝟙_ (FScheme k) ⟶ Y) :
+    type_of% (structureExternalLinearMapPointRight X Y e) :=
+  structureExternalLinearMapPointRight X Y e
 
 end AlgebraicGeometry.Scheme.Cohomology

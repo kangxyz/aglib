@@ -75,8 +75,7 @@ theorem structureCohomologyComul_mul (a b : structureCohomologyAlgebra G) :
 
 omit [GeometricallyIntegral G.hom] in
 /-- Degree one has exactly its two original possible tensor bidegrees. -/
-theorem structureCohomologyComul_degreeOne [GeometricallyIntegral G.hom]
-    (x : structureCohomologyGrade G 1) :
+theorem structureCohomologyComul_degreeOne (x : structureCohomologyGrade G 1) :
     DirectSum.InversePullbackDegreeOneSupport
       (M := structureCohomology k G) (P := structureCohomology k (G ⊗ G))
       (structureExternalLinearEquiv G G) (structureCohomologyAlgebraPullbackLinear μ[G]) x := by

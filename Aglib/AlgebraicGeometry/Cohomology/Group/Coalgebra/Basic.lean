@@ -36,9 +36,9 @@ variable [IsProper G.hom] [GeometricallyIntegral G.hom]
 /-- The native coalgebra uses the original Kunneth inverse and augmentation. -/
 @[instance_reducible, instance]
 def structureCohomologyCoalgebra :=
-  let h := structureCohomologyCoalgebra_coassoc G
-  let hL := structureCohomologyCoalgebra_leftCounit G
-  let hR := structureCohomologyCoalgebra_rightCounit G
+  let h := structureCohomologyCoalgebraCoassoc G
+  let hL := structureCohomologyCoalgebraLeftCounit G
+  let hR := structureCohomologyCoalgebraRightCounit G
   Coalgebra.ofCoassocAndCounit h (structureCohomologyAugmentationLinear G) hL hR
 
 /-- The actual comultiplication is the original multiplication pullback followed by κ inverse. -/

@@ -45,8 +45,8 @@ def structureCohomologyMultiplicationDiagram :
   assoc := group_multiplication_pullback_assoc G
 
 /-- Coassociativity for the original multiplication pullback and Kunneth inverse. -/
-abbrev structureCohomologyCoalgebra_coassoc :=
-  let h := structureCohomologyCoalgebra_assoc_diagram G
+abbrev structureCohomologyCoalgebraCoassoc :=
+  let h := structureCohomologyCoalgebraAssocDiagram G
   let hL := structureCohomologyCoalgebra_mul_left_diagram G
   let hR := structureCohomologyCoalgebra_mul_right_diagram G
   let multiplication := structureCohomologyMultiplicationDiagram G
@@ -56,7 +56,7 @@ abbrev structureCohomologyCoalgebra_coassoc :=
     hL hR rfl rfl rfl rfl
 
 /-- The left counit equation for the original augmentation. -/
-abbrev structureCohomologyCoalgebra_leftCounit :=
+abbrev structureCohomologyCoalgebraLeftCounit :=
   let hPoint := structureCohomologyCoalgebra_point_left_diagram G
   let hUnit := group_multiplication_pullback_unit_left G
   LinearEquiv.left_counit_of_product_diagram (structureExternalLinearEquiv G G)
@@ -65,7 +65,7 @@ abbrev structureCohomologyCoalgebra_leftCounit :=
     (structureCohomologyAlgebraPullbackLinear (lift (toUnit G ≫ η[G]) (𝟙 G))) hPoint hUnit
 
 /-- The right counit equation for the original augmentation. -/
-abbrev structureCohomologyCoalgebra_rightCounit :=
+abbrev structureCohomologyCoalgebraRightCounit :=
   let hPoint := structureCohomologyCoalgebra_point_right_diagram G
   let hUnit := group_multiplication_pullback_unit_right G
   LinearEquiv.right_counit_of_product_diagram (structureExternalLinearEquiv G G)

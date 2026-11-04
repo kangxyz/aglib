@@ -34,10 +34,16 @@ attribute [local instance] Over.cartesianMonoidalCategory
 variable {k : Type u} [Field k]
 
 /-- The entire original total operator has flat geometric naturality. -/
-abbrev structureExternalLinearMap_naturality
+abbrev structureExternalLinearMapNaturality
     {X₀ X₁ Y₀ Y₁ : FScheme k} (f : X₀ ⟶ X₁) (g : Y₀ ⟶ Y₁)
     [Flat f.left] [Flat g.left] :=
   let h := structureExternalNaturalityInputs_mapIdentifications f g
   DirectSum.NaturalityInputs.diagramOfMapIdentifications h
+
+/-- The naturality equation for the original total external product. -/
+theorem structureExternalLinearMap_naturality
+    {X₀ X₁ Y₀ Y₁ : FScheme k} (f : X₀ ⟶ X₁) (g : Y₀ ⟶ Y₁)
+    [Flat f.left] [Flat g.left] : type_of% (structureExternalLinearMapNaturality f g) :=
+  structureExternalLinearMapNaturality f g
 
 end AlgebraicGeometry.Scheme.Cohomology

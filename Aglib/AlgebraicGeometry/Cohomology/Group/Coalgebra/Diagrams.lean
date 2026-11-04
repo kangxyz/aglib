@@ -51,12 +51,18 @@ local instance : IsProper (G ⊗ G).hom := by
 
 omit [GrpObj G] [GeometricallyIntegral G.hom] in
 /-- The selected total comparison satisfies the original whole associativity diagram. -/
-abbrev structureCohomologyCoalgebra_assoc_diagram :=
-  let h := structureExternalLinearMap_assoc G G G
+abbrev structureCohomologyCoalgebraAssocDiagram :=
+  let h := structureExternalLinearMapAssoc G G G
   let hC := structureExternalLinearEquiv_toLinearMap G G
   let hD := structureExternalLinearEquiv_toLinearMap (G ⊗ G) G
   let hE := structureExternalLinearEquiv_toLinearMap G (G ⊗ G)
   LinearEquiv.comparison_assoc hC hD hE h
+
+omit [GrpObj G] [GeometricallyIntegral G.hom] in
+/-- The associativity diagram for the chosen cohomology comparison. -/
+theorem structureCohomologyCoalgebra_assoc_diagram :
+    type_of% (structureCohomologyCoalgebraAssocDiagram G) :=
+  structureCohomologyCoalgebraAssocDiagram G
 
 omit [GeometricallyIntegral G.hom] in
 /-- Multiplication pullback obeys the original left external-product diagram. -/
@@ -66,7 +72,7 @@ theorem structureCohomologyCoalgebra_mul_left_diagram :
       (structureExternalLinearEquiv (G ⊗ G) G).toLinearMap ∘ₗ
         (structureCohomologyAlgebraPullbackLinear μ[G]).rTensor
           (structureCohomologyAlgebra G) := by
-  have h := structureExternalLinearMap_naturality μ[G] (𝟙 G)
+  have h := structureExternalLinearMapNaturality μ[G] (𝟙 G)
   simpa only [structureExternalLinearEquiv_toLinearMap,
     structureCohomologyAlgebraPullbackLinear_id, LinearMap.rTensor,
     LinearMap.comp_assoc] using h
@@ -83,7 +89,7 @@ theorem structureCohomologyCoalgebra_mul_right_diagram :
           (structureCohomologyAlgebra G) := by
   have h := congrArg
     (fun f => structureCohomologyAlgebraPullbackLinear (α_ G G G).hom ∘ₗ f)
-    (structureExternalLinearMap_naturality (𝟙 G) μ[G])
+    (structureExternalLinearMapNaturality (𝟙 G) μ[G])
   simpa only [structureExternalLinearEquiv_toLinearMap,
     structureCohomologyAlgebraPullbackLinear_id, LinearMap.lTensor,
     LinearMap.comp_assoc] using h
@@ -96,7 +102,7 @@ theorem structureCohomologyCoalgebra_point_left_diagram :
         (structureCohomologyAugmentationLinear G).rTensor
           (structureCohomologyAlgebra G) := by
   simpa only [structureExternalLinearEquiv_toLinearMap] using
-    structureExternalLinearMap_point_left G G η[G]
+    structureExternalLinearMapPointLeft G G η[G]
 
 /-- Evaluation at the actual identity is the original right counit diagram. -/
 theorem structureCohomologyCoalgebra_point_right_diagram :
@@ -106,6 +112,6 @@ theorem structureCohomologyCoalgebra_point_right_diagram :
         (structureCohomologyAugmentationLinear G).lTensor
           (structureCohomologyAlgebra G) := by
   simpa only [structureExternalLinearEquiv_toLinearMap] using
-    structureExternalLinearMap_point_right G G η[G]
+    structureExternalLinearMapPointRight G G η[G]
 
 end AlgebraicGeometry.Scheme.Cohomology
