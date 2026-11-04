@@ -382,9 +382,8 @@ Independent mathematical review retains its governing requirements. This workflo
 adds no kernel replay, separate client checks or extra acceptance stages.
 
 Local `scripts/check.sh` calls the unified toolkit documented in
-[development](../docs/DEVELOPMENT.md#local-verification-and-ci). The three
-libraries' tools live in that one package. Its check set and independent axiom
-feedback use these same native mechanisms with existing local source guards.
+[development](../docs/DEVELOPMENT.md#local-verification-and-ci). Aglib's local
+check set and independent axiom feedback use these same native mechanisms.
 Shared-artifact ctime changes trigger content rechecking rather than a new
 validation attempt. The old Python
 CI/baseline/frozen-request protocols and duplicate custom auditor are retired;

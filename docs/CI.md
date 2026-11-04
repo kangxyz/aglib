@@ -3,8 +3,7 @@
 Local `bash scripts/check.sh` delegates to the shared native CLI. The public
 workflow uses ordinary Lake commands described in [the workflow guide](../.github/LEAN_CI.md).
 Both use production build, in-package Test, native `mk_all`, text style,
-production lint and the pinned upstream production axiom auditor. Local source
-layout, placeholders and source-option guards remain available in that entry.
+production lint and the pinned upstream production axiom auditor.
 The [development guide](DEVELOPMENT.md#local-verification-and-ci) owns commands.
 
 Lake decides native artifact applicability from source/import/options/toolchain

@@ -159,7 +159,7 @@ def check(root, production, *, check_targets=(), source_checks=(), base=None, he
         raise ValueError('--full cannot be combined with a Git range')
     commands(root, production, check_targets, source_checks)
     changes = None if full else changed_paths(root, base, head)
-    native = not source_only and not documentation_only(changes)
+    native = not source_only and (not source_checks or not documentation_only(changes))
     if source_only and outputs:
         raise ValueError('--source-only cannot export checked native outputs')
     state = Path(state).resolve() if state else root / '.lake/native-checks'

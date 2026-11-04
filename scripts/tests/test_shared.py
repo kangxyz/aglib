@@ -191,6 +191,14 @@ class NativeFlowTests(NativeFixture):
         self.assertEqual(self.runtime.compiler_calls, 0)
         self.assertFalse(self.outputs.exists())
 
+    def test_documentation_diff_without_source_policy_runs_native_checks(self):
+        with patch.object(local, 'changed_paths', return_value=['docs/guide.md']):
+            result = self.check(source_checks=())
+        self.assertTrue(result['native'])
+        self.assertNotIn(list(CHECK), self.runtime.calls)
+        self.assertIn(['lake', 'test'], self.runtime.calls)
+        self.assertIn(lint.command(['Quartz']), self.runtime.calls)
+
     def test_clean_or_full_requests_keep_native_checks(self):
         for full in (False, True):
             with self.subTest(full=full), patch.object(local, 'changed_paths', return_value=[]):

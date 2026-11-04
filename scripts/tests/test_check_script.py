@@ -30,13 +30,13 @@ class CheckScriptTests(unittest.TestCase):
             python = binary / 'python3'
             python.write_text('#!/bin/sh\nprintf "%s\\n" "$*" "$PYTHONPATH" > "$TRACE"\nexit 19\n')
             python.chmod(0o755)
-            result = subprocess.run(['bash', str(entry), '--base', 'accepted', '--source-only'],
+            result = subprocess.run(['bash', str(entry), '--base', 'accepted', '--list'],
                 env={**os.environ, 'PATH': str(binary) + ':' + os.environ['PATH'],
                      'PYTHONPATH': '/unchanged/remote/profile', 'TRACE': str(root / 'trace')})
             self.assertEqual(result.returncode, 19)
             log = (root / 'trace').read_text()
             self.assertIn('scripts/lean_tools/__main__.py check --root', log)
-            self.assertIn('--base accepted --source-only', log)
+            self.assertIn('--base accepted --list', log)
             self.assertTrue(log.rstrip().endswith('/unchanged/remote/profile'))
 
 

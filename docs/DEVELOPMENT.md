@@ -2,7 +2,7 @@
 
 Run from the package root with the committed `lean-toolchain`, `lakefile.toml`
 and `lake-manifest.json`. Keep dependency upgrades explicit and separate from
-ordinary proof work. Production imports use Mathlib and precise lower Aglib leaves.
+ordinary proof work. Prefer focused imports from Mathlib and lower Aglib modules.
 
 ## Mathematical trust
 
@@ -52,24 +52,22 @@ The local entry uses the same native mechanisms as the public workflow:
 ```sh
 bash scripts/check.sh
 bash scripts/check.sh --base ACCEPTED_COMMIT
-bash scripts/check.sh --source-only
+bash scripts/check.sh --list
 ```
 
 `--head`, `--full`, `--progress`, `--state` (or `--receipt-dir`), `--outputs` and
-`--list` are native CLI options. A nonempty documentation-only change selects
-source checks; clean/full native selection uses the package production roots.
-`--list` describes commands without executing them. Keep progress/state outside
+`--list` are native CLI options. Checks use the package production roots,
+including on documentation-only changes. `--list` describes commands without
+executing them. Keep progress/state outside
 source deliverables. Compatible successful checks survive failures and resumed
 work on unchanged inputs. The entry uses no GitHub accepted-baseline lookup,
 recipe-hash admission, frozen request, replay or independent-client lifecycle.
 
-The wrapper retains source layout/import/cycle, placeholder and source-option
-checks. Native `mk_all` owns production entry generation and checking. The native
-sequence builds production and package tests, checks generated entries and text
-style, runs full-production builtin/declaration lint, and invokes the pinned
-upstream production axiom auditor. Source guards do not replace transitive
-axiom coverage. Test modules are discovered by Lake's in-package test glob; no
-generated `AglibTest.lean` umbrella is required.
+Lake resolves imports and builds production. Native `mk_all` owns production
+entry generation and checking. The remaining checks cover text style, in-package
+tests, full-production builtin and declaration lint, and the pinned upstream
+production axiom auditor. Lake discovers test modules through the in-package test
+glob.
 
 The local entry and its `--list` plan use the shared packaged full-lint adapter
 from `scripts/lean_tools/_lint/`, also used by CI. It retains all enabled checks
@@ -126,10 +124,8 @@ a successful check. Real source/input changes still fail the relevant check.
 The local native check set and independent axiom feedback follow CI; hosted job
 transport and runner limits remain hosted concerns.
 
-Mathlib's standard `maxHeartbeats` is 200000. Retained overrides must be positive,
-finite and declaration-local, with an adjacent explanation. Do not use unlimited
-`0`, global raises or new blanket allowances. Existing source guards retain the
-option, import, naming and author-credit predicates.
+Mathlib's standard `maxHeartbeats` is 200000. Keep necessary overrides positive,
+finite and declaration-local, with an adjacent explanation.
 
 ## Incremental cache and publication
 

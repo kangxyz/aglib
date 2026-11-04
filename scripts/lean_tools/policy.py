@@ -6,72 +6,16 @@ import re
 import sys
 
 from .library import configuration, profile
-from .source import (IDENT, MODULE, client_sources, import_cycles, is_import_surface,
-                     lean_imports, module_path, source_modules,
-                     strip_comments_and_strings, uses_module_system)
+from .source import (client_sources, import_cycles, is_import_surface, lean_imports,
+                     source_modules, strip_comments_and_strings)
 
 
 def forbidden_import(name, data):
     parts = [part.strip('«»') for part in name.split('.')]
     folded = [part.casefold() for part in parts]
-    if (parts[0] in data.get('forbidden_roots_exact', ())
+    return (parts[0] in data.get('forbidden_roots_exact', ())
             or folded[0] in data.get('forbidden_roots_folded', ())
-            or any(part in data.get('forbidden_components', ()) for part in folded)):
-        return True
-    if folded[0] != data['production'].casefold():
-        return False
-    for index, part in enumerate(folded[1:], 1):
-        if part not in data.get('domain_components', ()):
-            continue
-        prefix = '.'.join(folded[:index + 1])
-        whole = '.'.join(folded)
-        if not any(prefix == allowed and
-                   (subtree is None or whole == allowed or whole == subtree or whole.startswith(subtree + '.'))
-                   for allowed, subtree in data.get('domain_exceptions', ())):
-            return True
-    return False
-
-
-def source_options(relative, source, data, clean=None):
-    if not any(data.get(key) for key in ('require_authors', 'fixed_options', 'local_heartbeats', 'source_assumptions')):
-        return []
-    errors = []
-    header = source.split('-/', 1)[0]
-    if data.get('require_authors') and header.startswith('/-\nCopyright (c) ') and not any(
-            line.startswith('Authors: ') and line.removeprefix('Authors: ').strip()
-            for line in header.splitlines()):
-        errors.append(f'{relative}:1: copyright header needs nonempty Authors credit')
-    clean = strip_comments_and_strings(source) if clean is None else clean
-    tokens = list(re.finditer(MODULE.pattern + r'|[0-9]\w*|\S', clean))
-    for index, match in enumerate(tokens[:-2]):
-        if match.group() != 'set_option':
-            continue
-        option, value = tokens[index + 1].group(), tokens[index + 2].group()
-        line = source.count('\n', 0, match.start()) + 1
-        if data.get('fixed_options', {}).get(option) == value:
-            wanted = 'false' if value == 'true' else 'true'
-            errors.append(f'{relative}:{line}: {option} must remain {wanted}')
-        components = [part.strip('«»') for part in re.findall(IDENT, option)]
-        if data.get('local_heartbeats') and 'maxHeartbeats' in components:
-            if re.fullmatch(r'(?:0+|0[xXbBoO]0+)', value.replace('_', '')):
-                errors.append(f'{relative}:{line}: heartbeat budgets must be positive and finite (zero means unlimited)')
-            scope = tokens[index + 3] if index + 3 < len(tokens) else None
-            if scope is None or scope.group() != 'in':
-                errors.append(f'{relative}:{line}: heartbeat overrides must be declaration-local')
-            elif not source[scope.end():].lstrip().startswith(('--', '/-')):
-                errors.append(f'{relative}:{line}: local heartbeat modification needs an explanatory comment after in')
-    if data.get('source_assumptions'):
-        introducers = {'def', 'abbrev', 'theorem', 'lemma', 'opaque', 'structure',
-                       'class', 'inductive', 'constant', 'namespace'}
-        names = {index + 1 for index, token in enumerate(tokens[:-1]) if token.group() in introducers}
-        for index, match in enumerate(tokens):
-            assumption = match.group() == 'constant' and index not in names
-            unsafe = (match.group() == 'unsafe' and index + 1 < len(tokens)
-                      and tokens[index + 1].group() in {'def', 'opaque'})
-            if assumption or unsafe:
-                errors.append(f'{relative}:{source.count(chr(10), 0, match.start()) + 1}: '
-                              'unsupported source assumption or unsafe implementation')
-    return errors
+            or any(part in data.get('forbidden_components', ()) for part in folded))
 
 
 def check_configuration(root):
@@ -123,6 +67,8 @@ def check_sources(root, checks=('layout', 'tokens', 'policy'), *, generated=Fals
     from .imports import generator_owned, check_generated
     root, checks = Path(root), set(checks)
     data = profile(root)
+    if 'source_tokens' not in data:
+        raise ValueError(f'{data["package"]} uses native CI checks. Run lean-tools check.')
     production, test = data['production'], data['production'] + 'Test'
     sources, clients = source_modules(root), client_sources(root)
     texts = {name: path.read_text() for name, path in sources.items()}
@@ -158,7 +104,6 @@ def check_sources(root, checks=('layout', 'tokens', 'policy'), *, generated=Fals
                     errors.append(f'{relative}:{line}: namespace _root_ does not escape '
                                   'enclosing namespaces; close and reopen namespaces instead')
             if library:
-                errors.extend(source_options(relative, source, data, clean))
                 pattern = data.get('production_components')
                 if pattern:
                     invalid = [part for part in name.split('.') if not re.fullmatch(pattern, part)]
@@ -167,18 +112,6 @@ def check_sources(root, checks=('layout', 'tokens', 'policy'), *, generated=Fals
                                       '([A-Z][A-Za-z0-9_]*): ' + ', '.join(invalid))
         if 'layout' not in checks:
             continue
-        if library and data.get('modern_headers'):
-            if not uses_module_system(source):
-                errors.append(f'Production source lacks modern module header: {relative}')
-            if not is_import_surface(source) and not re.search(
-                    r'@\[\s*expose\s*\]\s*public\s+(?:noncomputable\s+)?section\b', clean):
-                errors.append(f'Production implementation lacks exposed public section: {relative}')
-            for match in re.finditer(r'^[ \t]*(?:(?:private|meta)[ \t]+)*import\b', clean, re.M):
-                end = clean.find('\n', match.start())
-                line = clean[match.start():end if end >= 0 else None].strip()
-                if data.get('private_imports', {}).get(str(relative)) != line:
-                    errors.append(f'Production import lacks public modifier: {relative}: '
-                                  f'line {source.count(chr(10), 0, match.start()) + 1}')
         key = ('client:' if client else '') + name
         if not client or data.get('strict_client'):
             graph[key] = {('client:' if client else '') + item
@@ -210,8 +143,6 @@ def check_sources(root, checks=('layout', 'tokens', 'policy'), *, generated=Fals
                 if candidate and (name == candidate or name.startswith(candidate + '.')) and prefix == production and not (
                         imported == candidate or imported.startswith(candidate + '.')):
                     errors.append(f'{name}: candidate imports host module {imported}; local dependencies must stay within {candidate}')
-            elif library and data.get('production_import_roots') and prefix not in data['production_import_roots']:
-                errors.append(f'Forbidden library import in {relative}: {imported}')
             elif data.get('external_roots') and prefix not in data['external_roots']:
                 errors.append(f'{name}: unknown external import root {imported}')
             mode = data.get('broad_facades')
@@ -228,7 +159,6 @@ def check_sources(root, checks=('layout', 'tokens', 'policy'), *, generated=Fals
             errors.extend(f'Generator-owned facade has no corresponding directory: {path.relative_to(root)}'
                 for name, path in sources.items() if name not in {production, test}
                 and generator_owned(texts[name], data) and not path.with_suffix('').is_dir())
-        if generated and data['generation'] != 'explicit':
             errors.extend(check_generated(root, sources=sources, texts=texts))
     return errors, len(sources) + len(clients)
 

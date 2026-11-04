@@ -58,13 +58,17 @@ class ToolkitCliTests(unittest.TestCase):
                     '--bootstrap-cache', '--', 'lake', 'build', 'Aglib']), 1)
             run.assert_not_called()
 
-    def test_source_only_cannot_report_success_with_no_selected_source_policy(self):
+    def test_aglib_check_rejects_retired_source_only_mode(self):
         with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
-            (root / 'lakefile.toml').write_text('name = "Other"\ndefaultTargets = ["Other"]\n')
+            self.package(directory)
             with patch('lean_tools.local.check') as check:
                 self.assertEqual(main(['check', '--root', directory, '--source-only']), 1)
             check.assert_not_called()
+
+    def test_aglib_standalone_source_check_is_retired(self):
+        with tempfile.TemporaryDirectory() as directory:
+            self.package(directory)
+            self.assertEqual(main(['source', '--root', directory, '--only', 'layout']), 1)
 
     def test_check_does_not_rebind_the_native_python_environment(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -73,6 +77,7 @@ class ToolkitCliTests(unittest.TestCase):
             with patch('lean_tools.local.check', return_value={'status': 'complete'}) as check:
                 self.assertEqual(main(['check', '--root', directory], environment=environment), 0)
             self.assertEqual(check.call_args.kwargs['environment'], environment)
+            self.assertEqual(check.call_args.kwargs['source_checks'], ())
             self.assertEqual(check.call_args.kwargs['production'] if 'production' in check.call_args.kwargs
                              else check.call_args.args[1], ['Aglib'])
 

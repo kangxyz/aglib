@@ -26,15 +26,16 @@ Version 0.4.1 packages the full declaration-lint adapter, including its shell,
 Python and Lean sources. Installed tooling can use it from another checkout
 without that checkout containing `.github/lint/`.
 
-`check` selects Aglib, Quillen or Motivic policy from the package's Lake name;
-its explicit Python API still supports R5Lab and other callers. It uses the
+`check` selects package settings from the Lake name. Its explicit Python API
+also supports R5Lab and other callers. It uses the
 same production build, checker preparation, generated-entry, text-style,
 in-package Test, declaration lint and pinned production axiom audit as CI.
 Ordinary check failures retain compatible successes and collect independent
 axiom feedback. Failed Build or a real source/input change cannot produce a
-successful final result. `--list` prints the commands, `--source-only` limits the
-request to existing source guards, and `--base`/`--head`, `--progress`, `--state`
-and `--outputs` retain their existing meanings. `--full` does not force rebuilding.
+successful final result. `--list` prints the commands. Quillen and Motivic also
+use their configured source checks and support `--source-only`.
+`--base`/`--head`, `--progress`, `--state` and `--outputs` retain their existing
+meanings. `--full` does not force rebuilding.
 Hosted cache transport and runner/job limits remain in the public workflow.
 Library roots, dependency boundaries, accepted pins, generated-file formats and
 resource-variable aliases are data in `library.py`. The implementation is
@@ -55,7 +56,7 @@ Every command selects library data from `--root PACKAGE`.
 
 | Command | Operation |
 | --- | --- |
-| `lean-tools source --root PACKAGE` | Existing source boundaries, placeholders, source options, generated entries and accepted pins |
+| `lean-tools source --root PACKAGE` | Configured Quillen and Motivic source checks |
 | `lean-tools source --root PACKAGE --only layout` | Source graph and dependency boundaries |
 | `lean-tools source --root PACKAGE --only tokens` | Existing source-token predicates |
 | `lean-tools imports --root PACKAGE [--check]` | Enrolled topic facades; native `mathlib/mk_all` owns production roots |
@@ -138,8 +139,7 @@ Other checks retain their existing compatible-result reuse.
 No kernel replay, separate client validation or new acceptance chain is added;
 independent mathematical review and writing acceptance retain their requirements.
 
-All Python tests, including the three libraries' migrated policy/tool tests,
-live under `scripts/tests/`:
+Python tests for the shared tooling live under `scripts/tests/`:
 
 ```sh
 PYTHONPATH=scripts python3 -m unittest discover -s scripts/tests

@@ -648,10 +648,9 @@ descent of F6 are also on Aglib `main` (9819d40, d4202b1, 8fc143f).
       A review found no blocking gap; its repair is applied.
   - The values of Mathlib's `map` use the formula class `BaseChangeMkQFormula`,
     because Mathlib does not expose `baseChangeMkQ`. The instance is supplied by
-    `RingTheory/Grassmannian/BaseChangeFormula`. That leaf is the only one
-    allowed a private `import all`, as a one-file exception in
-    `scripts/check_library_layout.py`. Remove both once Mathlib exposes
-    `baseChangeMkQ`.
+    `RingTheory/Grassmannian/BaseChangeFormula`. That leaf uses `import all`
+    to access the private definition. Once Mathlib exposes `baseChangeMkQ`,
+    the instance can be proved from the public API.
   - An independent statement review found the slice corresponding; its
     documentation repairs are applied.
   - Done for `E` finite locally free of constant rank `n` on any scheme `S` (`Grassmannian/LocallyFree`):

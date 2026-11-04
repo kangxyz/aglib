@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# The package owns the native commands and Aglib source policy.
+# Run the package's native CI checks locally.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 exec python3 scripts/lean_tools/__main__.py check --root "$PWD" "$@"

@@ -99,11 +99,9 @@ premise.
 
 [BaseChangeFormula](BaseChangeFormula.lean) supplies the instance
 `baseChangeMkQFormula : BaseChangeMkQFormula R M` for every ring and module, so importing it
-makes the results above unconditional. It is the only leaf that uses `import all`
-(of `Mathlib.RingTheory.Grassmannian`), as a documented one-file exception in
-`scripts/check_library_layout.py`. Delete the leaf and the exception once Mathlib exposes
-`baseChangeMkQ` or publishes `baseChangeMkQ_tmul`; the instance can then be proved from the
-public API.
+makes the results above unconditional. It uses `import all Mathlib.RingTheory.Grassmannian`
+to access the private definition. Once Mathlib exposes `baseChangeMkQ` or publishes
+`baseChangeMkQ_tmul`, the instance can be proved from the public API.
 
 `Covering.lean` contains the general helper `baseChange_localization_bijective_iff`
 (`g.baseChange (Localization S)` is bijective exactly when `LocalizedModule.map S g` is), and
