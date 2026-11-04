@@ -5,8 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.Kunneth
-public import Aglib.Algebra.Graded.TensorProduct
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethLinear.Factorization
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethLinear.DegreeForward
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethLinear.TotalInverse
 
 /-!
 # The one total comparison on the original Kunneth carriers
@@ -34,50 +35,12 @@ attribute [local instance] Over.cartesianMonoidalCategory
 
 variable {k : Type u} [Field k] (X Y : FScheme k)
 
-/-- Canonical native distribution, with the original total-degree fibers. -/
-def structureTensorTotalSourceEquiv :
-    (structureCohomologyAlgebra X ⊗[k] structureCohomologyAlgebra Y) ≃ₗ[k]
-      ⨁ n, structureKunnethSum X Y n :=
-  DirectSum.tensorFiberEquiv (R := k) (structureCohomology k X) (structureCohomology k Y)
-    (ComplexShape.π (ComplexShape.up ℕ) (ComplexShape.up ℕ) (ComplexShape.up ℕ))
-
-/-- The direct sum of the original degreewise Kunneth operators. -/
-def structureExternalLinearMap :
-    (structureCohomologyAlgebra X ⊗[k] structureCohomologyAlgebra Y) →ₗ[k]
-      structureCohomologyAlgebra (X ⊗ Y) :=
-  DirectSum.mapAfterEquiv (F := structureKunnethSum X Y)
-    (structureTensorTotalSourceEquiv X Y) (structureKunnethMap X Y)
-
-theorem structureExternalLinearMap_factorization :
-    DirectSum.MapFactorization (structureExternalLinearMap X Y)
-      (structureTensorTotalSourceEquiv X Y) (structureKunnethMap X Y) := by
-  exact DirectSum.mapAfterEquiv_factorization
-    (structureTensorTotalSourceEquiv X Y) (structureKunnethMap X Y)
-
 variable [QuasiCompact X.hom] [QuasiSeparated X.hom]
   [QuasiCompact Y.hom] [QuasiSeparated Y.hom]
 
-/-- The proved ORIGINAL degree map, with its one degreewise inverse. -/
-def structureKunnethDegreeEquiv (n : ℕ) :
-    structureKunnethSum X Y n ≃ₗ[k] structureCohomology k (X ⊗ Y) n :=
-  LinearEquiv.ofBijective (structureKunnethMap X Y n) (structureKunnethMap_bijective X Y n)
-
-/-- Its forward map is literally the original degreewise operator. -/
-theorem structureKunnethDegreeEquiv_toLinearMap (n : ℕ) :
-    (structureKunnethDegreeEquiv X Y n).toLinearMap = structureKunnethMap X Y n := rfl
-
-/-- The complete shared construction uses exactly the original inverse family and fibers. -/
-def structureExternalLinearEquiv :
-    (structureCohomologyAlgebra X ⊗[k] structureCohomologyAlgebra Y) ≃ₗ[k]
-      structureCohomologyAlgebra (X ⊗ Y) :=
-  DirectSum.equivAfterEquiv (structureTensorTotalSourceEquiv X Y)
-    (structureKunnethDegreeEquiv X Y)
-
-/-- The whole forward operator remains the original total Kunneth map. -/
+/-- The whole forward operator is the original total Kunneth map. -/
 theorem structureExternalLinearEquiv_toLinearMap :
-    (structureExternalLinearEquiv X Y).toLinearMap = structureExternalLinearMap X Y := by
-  exact DirectSum.equivAfterEquiv_toLinearMap_of
-    (structureTensorTotalSourceEquiv X Y) (structureKunnethDegreeEquiv X Y)
-    (structureKunnethMap X Y) (structureKunnethDegreeEquiv_toLinearMap X Y)
+    (structureExternalLinearEquiv X Y).toLinearMap = structureExternalLinearMap X Y :=
+  rfl
 
 end AlgebraicGeometry.Scheme.Cohomology

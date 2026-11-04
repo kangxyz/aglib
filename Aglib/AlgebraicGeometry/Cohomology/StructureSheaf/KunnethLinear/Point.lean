@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethLinear.Values
 public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.ExternalProduct.Point
 public import Aglib.AlgebraicGeometry.Cohomology.Group.Augmentation
+public import Aglib.Algebra.Graded.TensorProduct.PointMaps
 
 /-!
 # Whole point laws for the original total Kunneth operator
@@ -34,79 +35,128 @@ attribute [local instance] Over.cartesianMonoidalCategory
 
 variable {k : Type u} [Field k]
 
-private theorem augmentationLinear_inclusion_zero (X : FScheme k)
-    [IsProper X.hom] [GeometricallyIntegral X.hom] (x : structureCohomology k X 0) :
-    structureCohomologyAugmentationLinear X (structureCohomologyInclusion X 0 x) =
-      (structureH0ScalarEquiv X).symm x := by
-  change (structureH0ScalarEquiv X).symm
-    (structureCohomologyComponent X 0 (structureCohomologyInclusion X 0 x)) = _
-  rw [structureCohomologyComponent_inclusion]
-
-private theorem augmentationLinear_inclusion_succ (X : FScheme k)
-    [IsProper X.hom] [GeometricallyIntegral X.hom] (p : ℕ)
-    (x : structureCohomology k X (p + 1)) :
-    structureCohomologyAugmentationLinear X (structureCohomologyInclusion X (p + 1) x) = 0 := by
-  change (structureH0ScalarEquiv X).symm
-    ((DirectSum.of (structureCohomology k X) (p + 1) x) 0) = 0
-  rw [DirectSum.of_eq_of_ne (p + 1) 0 x (by omega), map_zero]
-
-set_option maxHeartbeats 1000000 in
--- The original whole point diagram requires a finite local allowance when
--- comparing its tensor and pullback values; the point is never made flat.
 /-- The complete left point diagram uses the original augmentation and no flat point. -/
-theorem structureExternalLinearMap_point_left (X Y : FScheme k)
+theorem structureExternalLinearMap_point_left_diagram (X Y : FScheme k)
     [IsProper X.hom] [GeometricallyIntegral X.hom] (e : 𝟙_ (FScheme k) ⟶ X) :
-    structureCohomologyAlgebraPullbackLinear (lift (toUnit Y ≫ e) (𝟙 Y)) ∘ₗ
-        structureExternalLinearMap X Y =
-      (TensorProduct.lid k (structureCohomologyAlgebra Y)).toLinearMap ∘ₗ
-        (structureCohomologyAugmentationLinear X).rTensor (structureCohomologyAlgebra Y) := by
-  apply DirectSum.tensorDirectSum_ext (structureCohomology k X) (structureCohomology k Y)
-  intro p q x y
-  simp only [LinearMap.comp_apply, LinearMap.rTensor, TensorProduct.map_tmul,
-    LinearMap.id_apply]
-  cases p with
-  | zero =>
-    rw [structureExternalLinearMap_tmul X Y (Nat.zero_add q),
-      structureCohomologyAlgebraPullbackLinear_inclusion,
-      structureExternalCup_point_left_zero X Y e, augmentationLinear_inclusion_zero,
-      LinearMap.map_smul]
-    exact (TensorProduct.lid_tmul
-      (structureCohomologyInclusion Y q y) ((structureH0ScalarEquiv X).symm x)).symm
-  | succ p =>
-    rw [structureExternalLinearMap_tmul X Y rfl,
-      structureCohomologyAlgebraPullbackLinear_inclusion,
-      structureExternalCup_point_left_succ X Y e rfl,
-      map_zero, augmentationLinear_inclusion_succ]
-    rw [TensorProduct.zero_tmul]
-    exact ((TensorProduct.lid k (structureCohomologyAlgebra Y)).toLinearMap.map_zero).symm
+    @DirectSum.tensorPointLeftDiagram k
+      ‹Field k›
+      (structureCohomology k X) (structureCohomology k Y)
+      (structureCohomology k (X ⊗ Y))
+      (fun n => (inferInstance :
+        AddCommGroup (structureCohomology k X n)).toAddCommMonoid)
+      (structureCohomologyModule X)
+      (fun n => (inferInstance :
+        AddCommGroup (structureCohomology k Y n)).toAddCommMonoid)
+      (structureCohomologyModule Y)
+      (fun n => (inferInstance :
+        AddCommGroup (structureCohomology k (X ⊗ Y) n)).toAddCommMonoid)
+      (structureCohomologyModule (X ⊗ Y))
+      (@structureExternalCup k ‹Field k› X Y)
+      (@structureCohomologyPullbackLinear k ‹Field k› Y (X ⊗ Y)
+      (lift (C := FScheme k) (T := Y) (X := X) (Y := Y) (toUnit Y ≫ e) (𝟙 Y)))
+      (structureCohomologyAugmentationLinear X) := by
+  refine @DirectSum.tensorPointLeftDiagramOfValues k
+    ‹Field k›
+    (structureCohomology k X) (structureCohomology k Y)
+    (structureCohomology k (X ⊗ Y))
+    (fun n => (inferInstance :
+      AddCommGroup (structureCohomology k X n)).toAddCommMonoid)
+    (structureCohomologyModule X)
+    (fun n => (inferInstance :
+      AddCommGroup (structureCohomology k Y n)).toAddCommMonoid)
+    (structureCohomologyModule Y)
+    (fun n => (inferInstance :
+      AddCommGroup (structureCohomology k (X ⊗ Y) n)).toAddCommMonoid)
+    (structureCohomologyModule (X ⊗ Y))
+    (@structureExternalCup k ‹Field k› X Y)
+    (@structureCohomologyPullbackLinear k ‹Field k› Y (X ⊗ Y)
+      (lift (C := FScheme k) (T := Y) (X := X) (Y := Y) (toUnit Y ≫ e) (𝟙 Y)))
+    (structureCohomologyAugmentationLinear X)
+    (fun x => (structureH0ScalarEquiv X).symm x)
+    (fun _ => rfl) ?_ ?_
+  · as_aux_lemma =>
+      let kField : Field k := ‹Field k›
+      have hProper : IsProper X.hom := ‹IsProper X.hom›
+      have hIntegral : GeometricallyIntegral X.hom :=
+        ‹GeometricallyIntegral X.hom›
+      exact fun (n : ℕ) (x : structureCohomology k X 0)
+          (y : structureCohomology k Y n) =>
+        @structureExternalCup_point_left_zero k kField X Y
+          hProper hIntegral e n x y
+  · as_aux_lemma =>
+      let kField : Field k := ‹Field k›
+      exact fun (p q : ℕ) (x : structureCohomology k X (p + 1))
+          (y : structureCohomology k Y (q)) =>
+        @structureExternalCup_point_left_succ k kField X Y e
+          p q (p + 1 + q) rfl x y
 
-set_option maxHeartbeats 1000000 in
--- The symmetric whole point diagram has the same measured native conversion cost.
 /-- The complete right point diagram is the original other counit diagram. -/
-theorem structureExternalLinearMap_point_right (X Y : FScheme k)
+theorem structureExternalLinearMap_point_right_diagram (X Y : FScheme k)
     [IsProper Y.hom] [GeometricallyIntegral Y.hom] (e : 𝟙_ (FScheme k) ⟶ Y) :
-    structureCohomologyAlgebraPullbackLinear (lift (𝟙 X) (toUnit X ≫ e)) ∘ₗ
-        structureExternalLinearMap X Y =
-      (TensorProduct.rid k (structureCohomologyAlgebra X)).toLinearMap ∘ₗ
-        (structureCohomologyAugmentationLinear Y).lTensor (structureCohomologyAlgebra X) := by
-  apply DirectSum.tensorDirectSum_ext (structureCohomology k X) (structureCohomology k Y)
-  intro p q x y
-  simp only [LinearMap.comp_apply, LinearMap.lTensor, TensorProduct.map_tmul,
-    LinearMap.id_apply]
-  cases q with
-  | zero =>
-    rw [structureExternalLinearMap_tmul X Y (Nat.add_zero p),
-      structureCohomologyAlgebraPullbackLinear_inclusion,
-      structureExternalCup_point_right_zero X Y e, augmentationLinear_inclusion_zero,
-      LinearMap.map_smul]
-    exact (TensorProduct.rid_tmul
-      (structureCohomologyInclusion X p x) ((structureH0ScalarEquiv Y).symm y)).symm
-  | succ q =>
-    rw [structureExternalLinearMap_tmul X Y rfl,
-      structureCohomologyAlgebraPullbackLinear_inclusion,
-      structureExternalCup_point_right_succ X Y e rfl,
-      map_zero, augmentationLinear_inclusion_succ]
-    rw [TensorProduct.tmul_zero]
-    exact ((TensorProduct.rid k (structureCohomologyAlgebra X)).toLinearMap.map_zero).symm
+    @DirectSum.tensorPointRightDiagram k
+      ‹Field k›
+      (structureCohomology k X) (structureCohomology k Y)
+      (structureCohomology k (X ⊗ Y))
+      (fun n => (inferInstance :
+        AddCommGroup (structureCohomology k X n)).toAddCommMonoid)
+      (structureCohomologyModule X)
+      (fun n => (inferInstance :
+        AddCommGroup (structureCohomology k Y n)).toAddCommMonoid)
+      (structureCohomologyModule Y)
+      (fun n => (inferInstance :
+        AddCommGroup (structureCohomology k (X ⊗ Y) n)).toAddCommMonoid)
+      (structureCohomologyModule (X ⊗ Y))
+      (@structureExternalCup k ‹Field k› X Y)
+      (@structureCohomologyPullbackLinear k ‹Field k› X (X ⊗ Y)
+      (lift (C := FScheme k) (T := X) (X := X) (Y := Y) (𝟙 X) (toUnit X ≫ e)))
+      (structureCohomologyAugmentationLinear Y) := by
+  refine @DirectSum.tensorPointRightDiagramOfValues k
+    ‹Field k›
+    (structureCohomology k X) (structureCohomology k Y)
+    (structureCohomology k (X ⊗ Y))
+    (fun n => (inferInstance :
+      AddCommGroup (structureCohomology k X n)).toAddCommMonoid)
+    (structureCohomologyModule X)
+    (fun n => (inferInstance :
+      AddCommGroup (structureCohomology k Y n)).toAddCommMonoid)
+    (structureCohomologyModule Y)
+    (fun n => (inferInstance :
+      AddCommGroup (structureCohomology k (X ⊗ Y) n)).toAddCommMonoid)
+    (structureCohomologyModule (X ⊗ Y))
+    (@structureExternalCup k ‹Field k› X Y)
+    (@structureCohomologyPullbackLinear k ‹Field k› X (X ⊗ Y)
+      (lift (C := FScheme k) (T := X) (X := X) (Y := Y) (𝟙 X) (toUnit X ≫ e)))
+    (structureCohomologyAugmentationLinear Y)
+    (fun y => (structureH0ScalarEquiv Y).symm y)
+    (fun _ => rfl) ?_ ?_
+  · as_aux_lemma =>
+      let kField : Field k := ‹Field k›
+      have hProper : IsProper Y.hom := ‹IsProper Y.hom›
+      have hIntegral : GeometricallyIntegral Y.hom :=
+        ‹GeometricallyIntegral Y.hom›
+      exact fun (n : ℕ) (x : structureCohomology k X n)
+          (y : structureCohomology k Y 0) =>
+        @structureExternalCup_point_right_zero k kField X Y
+          hProper hIntegral e n x y
+  · as_aux_lemma =>
+      let kField : Field k := ‹Field k›
+      exact fun (p q : ℕ) (x : structureCohomology k X (p))
+          (y : structureCohomology k Y (q + 1)) =>
+        @structureExternalCup_point_right_succ k kField X Y e
+          p q (p + (q + 1)) rfl x y
+
+/-- The left point law in terms of the original total linear maps. -/
+abbrev structureExternalLinearMap_point_left (X Y : FScheme k)
+    [IsProper X.hom] [GeometricallyIntegral X.hom] (e : 𝟙_ (FScheme k) ⟶ X) :=
+  let diagram := structureExternalLinearMap_point_left_diagram X Y e
+  DirectSum.tensorPointLeftDiagramWithTotals diagram (structureExternalLinearMap X Y)
+    (structureCohomologyAlgebraPullbackLinear (lift (toUnit Y ≫ e) (𝟙 Y))) rfl rfl
+
+/-- The right point law in terms of the original total linear maps. -/
+abbrev structureExternalLinearMap_point_right (X Y : FScheme k)
+    [IsProper Y.hom] [GeometricallyIntegral Y.hom] (e : 𝟙_ (FScheme k) ⟶ Y) :=
+  let diagram := structureExternalLinearMap_point_right_diagram X Y e
+  DirectSum.tensorPointRightDiagramWithTotals diagram (structureExternalLinearMap X Y)
+    (structureCohomologyAlgebraPullbackLinear (lift (𝟙 X) (toUnit X ≫ e))) rfl rfl
 
 end AlgebraicGeometry.Scheme.Cohomology

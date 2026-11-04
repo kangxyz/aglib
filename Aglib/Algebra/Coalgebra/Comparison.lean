@@ -25,6 +25,25 @@ universe u a b l
 
 namespace LinearEquiv
 
+/-- Transport associativity along the given forward identifications. -/
+theorem comparison_assoc
+    {R : Type u} [CommSemiring R]
+    {A : Type a} [AddCommMonoid A] [Module R A]
+    {B : Type b} [AddCommMonoid B] [Module R B]
+    {C : Type l} [AddCommMonoid C] [Module R C]
+    {D : Type*} [AddCommMonoid D] [Module R D]
+    {E : A ⊗[R] A ≃ₗ[R] B} {E₁ : B ⊗[R] A ≃ₗ[R] C} {E₂ : A ⊗[R] B ≃ₗ[R] D}
+    {L : A ⊗[R] A →ₗ[R] B} {L₁ : B ⊗[R] A →ₗ[R] C} {L₂ : A ⊗[R] B →ₗ[R] D}
+    {a : D →ₗ[R] C}
+    (hE : E.toLinearMap = L) (hE₁ : E₁.toLinearMap = L₁) (hE₂ : E₂.toLinearMap = L₂)
+    (h : L₁ ∘ₗ L.rTensor A =
+      a ∘ₗ L₂ ∘ₗ L.lTensor A ∘ₗ (TensorProduct.assoc R A A A).toLinearMap) :
+    E₁.toLinearMap ∘ₗ E.toLinearMap.rTensor A =
+      (a ∘ₗ E₂.toLinearMap) ∘ₗ E.toLinearMap.lTensor A ∘ₗ
+        (TensorProduct.assoc R A A A).toLinearMap := by
+  simp only [hE, hE₁, hE₂, LinearMap.comp_assoc]
+  exact h
+
 /-- A whole original product diagram proves coassociativity before any realization. -/
 theorem coassoc_of_product_diagram
     {R : Type u} [CommSemiring R]
@@ -234,5 +253,32 @@ theorem ofTensorComparison_comul :
 theorem ofTensorComparison_counit :
     (ofTensorComparison C D E u uL uR e pointL pointR
       hcoh hL hR hu hpointL hpointR hunitL hunitR).counit = e := rfl
+
+end Coalgebra
+
+namespace Coalgebra
+
+/-- Assemble the original coalgebra with its comparisons inferred from associativity. -/
+@[instance_reducible]
+def ofTensorComparisonFromAssoc
+    {R : Type u} [CommSemiring R]
+    {A : Type a} [AddCommMonoid A] [Module R A]
+    {B : Type b} [AddCommMonoid B] [Module R B]
+    {L : Type l} [AddCommMonoid L] [Module R L]
+    {C : A ⊗[R] A ≃ₗ[R] B} {D : B ⊗[R] A ≃ₗ[R] L} {E : A ⊗[R] B →ₗ[R] L}
+    (hcoh : D.toLinearMap ∘ₗ C.toLinearMap.rTensor A =
+      E ∘ₗ C.toLinearMap.lTensor A ∘ₗ (TensorProduct.assoc R A A A).toLinearMap)
+    (u : A →ₗ[R] B) (uL uR : B →ₗ[R] L)
+    (e : A →ₗ[R] R) (pointL pointR : B →ₗ[R] A)
+    (hL : uL ∘ₗ C.toLinearMap = D.toLinearMap ∘ₗ u.rTensor A)
+    (hR : uR ∘ₗ C.toLinearMap = E ∘ₗ u.lTensor A)
+    (hu : uL ∘ₗ u = uR ∘ₗ u)
+    (hpointL : pointL ∘ₗ C.toLinearMap =
+      (TensorProduct.lid R A).toLinearMap ∘ₗ e.rTensor A)
+    (hpointR : pointR ∘ₗ C.toLinearMap =
+      (TensorProduct.rid R A).toLinearMap ∘ₗ e.lTensor A)
+    (hunitL : pointL ∘ₗ u = LinearMap.id) (hunitR : pointR ∘ₗ u = LinearMap.id) :
+    Coalgebra R A :=
+  ofTensorComparison C D E u uL uR e pointL pointR hcoh hL hR hu hpointL hpointR hunitL hunitR
 
 end Coalgebra

@@ -24,55 +24,7 @@ open CategoryTheory MonoidalCategory CartesianMonoidalCategory AlgebraicGeometry
 open AlgebraicGeometry.Scheme.OverField
 open scoped TensorProduct DirectSum
 
-universe u m n p
-
-namespace DirectSum
-
-variable {R : Type u} [CommSemiring R]
-  {M : ℕ → Type m} {N : ℕ → Type n}
-  [∀ i, AddCommMonoid (M i)] [∀ i, Module R (M i)]
-  [∀ j, AddCommMonoid (N j)] [∀ j, Module R (N j)]
-
-/-- Evaluate the original degree-one source support at one class before any
-cohomology family or degreewise inverse is specialized. -/
-theorem equivAfterEquiv_symm_degreeOne_apply_of_source
-    {P : ℕ → Type p} [∀ i, AddCommMonoid (P i)] [∀ i, Module R (P i)]
-    (E : ((⨁ i, M i) ⊗[R] ⨁ j, N j) ≃ₗ[R]
-      ⨁ d, ⨁ t : HomologicalComplex₂.TotalDegree d,
-        M t.val.1 ⊗[R] N t.val.2)
-    (hE : E = tensorFiberEquiv (R := R) M N
-      (ComplexShape.π (ComplexShape.up ℕ) (ComplexShape.up ℕ) (ComplexShape.up ℕ)))
-    (e : ∀ d, (⨁ t : HomologicalComplex₂.TotalDegree d,
-      M t.val.1 ⊗[R] N t.val.2) ≃ₗ[R] P d)
-    (C : ((⨁ i, M i) ⊗[R] ⨁ j, N j) ≃ₗ[R] ⨁ d, P d)
-    (hC : C = equivAfterEquiv E e) (z : P 1) :
-    TensorProduct.map
-        (lof R ℕ M 0 ∘ₗ DFinsupp.lapply 0)
-        (lof R ℕ N 1 ∘ₗ DFinsupp.lapply 1)
-        (C.symm (lof R ℕ P 1 z)) +
-      TensorProduct.map
-        (lof R ℕ M 1 ∘ₗ DFinsupp.lapply 1)
-        (lof R ℕ N 0 ∘ₗ DFinsupp.lapply 0)
-        (C.symm (lof R ℕ P 1 z)) =
-      C.symm (lof R ℕ P 1 z) := by
-  subst C
-  subst E
-  have hSource := tensorFiberEquiv_symm_degreeOne (R := R) M N
-    (ComplexShape.π (ComplexShape.up ℕ) (ComplexShape.up ℕ) (ComplexShape.up ℕ)) rfl
-  have hWhole := equivAfterEquiv_symm_support
-    (tensorFiberEquiv (R := R) M N
-      (ComplexShape.π (ComplexShape.up ℕ) (ComplexShape.up ℕ) (ComplexShape.up ℕ)))
-    e 1
-    (TensorProduct.map (lof R ℕ M 0 ∘ₗ DFinsupp.lapply 0)
-      (lof R ℕ N 1 ∘ₗ DFinsupp.lapply 1))
-    (TensorProduct.map (lof R ℕ M 1 ∘ₗ DFinsupp.lapply 1)
-      (lof R ℕ N 0 ∘ₗ DFinsupp.lapply 0)) hSource
-  have hValue := LinearMap.congr_fun hWhole z
-  simp only [LinearMap.add_apply, LinearMap.comp_apply,
-    LinearEquiv.coe_toLinearMap] at hValue
-  exact hValue
-
-end DirectSum
+universe u
 
 namespace AlgebraicGeometry.Scheme.Cohomology
 

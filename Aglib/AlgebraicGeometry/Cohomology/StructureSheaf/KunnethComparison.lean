@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.Algebra.Graded.TensorProduct.Comparison
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethComparison.Signed
 public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethLinear.Basic
 public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.ExternalProduct.Graded
 
@@ -39,29 +39,17 @@ theorem structureKunnethMap_component (p q : ℕ) :
           (fun s => structureCohomology k X s.val.1 ⊗[k]
             structureCohomology k Y s.val.2) ⟨(p, q), rfl⟩ =
       structureExternalTensor X Y (p := p) (q := q) rfl := by
-  apply LinearMap.ext
-  intro z
-  exact structureKunnethMap_lof X Y (p + q) ⟨(p, q), rfl⟩ z
-
-set_option maxHeartbeats 1000000 in
--- The same native cohomology comparison exceeds 400000 heartbeats in kernel
--- checking. Keep this finite larger allowance local to the original proof.
-/-- Whole equality from the original signed value and original degreewise kappa. -/
-abbrev structureExternalLinearMap_signed :=
-  let hSigned := fun (p q : ℕ) =>
-    structureExternalAlgebraMap_tensor X Y (p := p) (q := q) rfl
-  let hOriginal := structureExternalLinearMap_factorization X Y
-  DirectSum.tensorPiLinearMap_eq hSigned hOriginal rfl
-    (structureKunnethMap_component X Y)
+  unfold structureKunnethMap
+  apply DirectSum.toModule_comp_lof_eq
 
 variable [QuasiCompact X.hom] [QuasiSeparated X.hom]
   [QuasiCompact Y.hom] [QuasiSeparated Y.hom]
 
-/-- The one chosen inverse of the original degreewise kappa has the signed map
-as its complete forward linear operator. -/
+/-- The one chosen inverse retains the signed map as its complete forward operator. -/
 abbrev structureExternalAlgebraMap_linear :=
   let hSigned := structureExternalLinearMap_signed X Y
   let hChosen := structureExternalLinearEquiv_toLinearMap X Y
-  hSigned.trans hChosen.symm
+  DirectSum.ExternalSignedTotalEq.of_chosen (L := structureExternalLinearMap X Y)
+    hSigned (structureExternalLinearEquiv X Y) hChosen
 
 end AlgebraicGeometry.Scheme.Cohomology
