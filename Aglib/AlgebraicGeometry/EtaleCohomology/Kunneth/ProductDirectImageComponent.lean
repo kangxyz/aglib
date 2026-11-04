@@ -34,7 +34,7 @@ variable {k : Type u} [Field k] [IsAlgClosed k] {Y : FScheme k} (hY : Curve.Prop
 
 /-- Each original product component is the original regraded adjunct of the
 pullback of the corresponding original right-factor basis class. -/
-abbrev properCurveProductConstantDirectImageMap_component_value :=
+abbrev properCurveProductConstantDirectImageMapComponentValue :=
   fun i : ProperCurveGradeIndex (coherentGenus k Y) =>
     let Λ := ULift.{u + 1} (ZMod n)
     let S := Base k
@@ -54,7 +54,7 @@ abbrev properCurveProductConstantDirectImageMap_component_value :=
     let b := properCurveConstantModuleExtBasis hY n hn hunit d i.2
     let y := constantModuleExtPullback.{u, wEY, wEZ} n q d b
     let hx := properCurveConstantDirectImageSplitComponent_hom_value hY n hn hunit i
-    let h := constantModuleExtPullback_shiftedMateValue g p f q sq.w.symm n d b
+    let h := constantModuleExtPullbackShiftedMateValue g p f q sq.w.symm n d b
     let e' := (moduleInverseImage p Λ).rightDerivedFunctorPlusSingleIsoOfIso 0
       (moduleUnitInverseImageIso p n)
     let u := (moduleInverseImage f Λ).rightDerivedFunctorPlusSingleIsoOfIso 0

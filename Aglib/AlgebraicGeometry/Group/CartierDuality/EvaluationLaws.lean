@@ -34,12 +34,13 @@ namespace AlgebraicGeometry.Scheme.Group.CartierDuality
 
 universe u
 
+/-- The original Spec functor retains its braided structure for evaluation laws. -/
 local instance instBraidedAlgSpecEvaluationLaws (K : Type u) [CommRing K] :
     (AlgebraicGeometry.algSpec (CommRingCat.of K)).Braided :=
   AlgebraicGeometry.braidedAlgSpec
 
 private theorem coevaluationUnit_naturality {k : Type u} [Field k]
-    {A B : CommHopfAlgCat.{u} k} [Coalgebra.IsCocomm k A] [Coalgebra.IsCocomm k B]
+    {A B : CommHopfAlgCat.{u} k} [Coalgebra.IsCocomm k A]
     [FiniteDimensional k A] [FiniteDimensional k B] (f : A ⟶ B) :
     Units.map (Algebra.TensorProduct.map f.hom.toAlgHom
         (AlgHom.id k (Dual k A))).toMonoidHom (HopfAlgebra.coevaluationUnit k A) =
@@ -1030,6 +1031,7 @@ theorem evaluationOverDual_eq_universal :
   apply Over.OverMorphism.ext
   exact (universalCharacter_evaluation_map (k := k) G).symm
 
+/-- The multiplicative group on the dual scheme has its original group-object structure. -/
 local instance instGrpObjGmOverDual :
     GrpObj (MultiplicativeGroup.scheme (dualGroup (k := k) G).X.left) :=
   (MultiplicativeGroup.groupScheme (dualGroup (k := k) G).X.left).grp
@@ -1225,6 +1227,7 @@ private theorem evaluationOverPrimal_eq_character :
   apply Over.OverMorphism.ext
   exact (secondCharacterOriginal_evaluation_map G).symm
 
+/-- The multiplicative group on the original scheme has its native group-object structure. -/
 local instance instGrpObjGmOverPrimal : GrpObj (MultiplicativeGroup.scheme G.X.left) :=
   (MultiplicativeGroup.groupScheme G.X.left).grp
 

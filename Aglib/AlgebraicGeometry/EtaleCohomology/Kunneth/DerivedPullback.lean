@@ -102,13 +102,13 @@ variable {X S X' S' : Scheme.{u}}
   [HasExt.{wEX'} (ModuleSheaf X' (ULift.{u + 1} (ZMod n)))]
 
 /-- The original shifted exchange carries the original pulled-back Ext class. -/
-abbrev constantModuleExtPullback_shiftedMateValue
+abbrev constantModuleExtPullbackShiftedMateValue
     (q : ℕ) (x : constantModuleExt.{u, wEX} n X q) :=
   let Λ := ULift.{u + 1} (ZMod n)
   let β := moduleDerivedBaseChangeMap Λ f f' g g' h
   let adj₁ := moduleDerivedAdjunction Λ f
   let adj₂ := moduleDerivedAdjunction Λ f'
-  let r := moduleDerivedBaseChangeMap_constantRawShiftedValue f f' g g' h n x.homPlus
+  let r := moduleDerivedBaseChangeMapConstantRawShiftedValue f f' g g' h n x.homPlus
   let hy := constantModuleExtPullback_homPlus_singleTransport g' n q x
   ShiftedMateValue.target_eq adj₁ adj₂ β r hy
 

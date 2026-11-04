@@ -19,8 +19,8 @@ info: 'AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.constantModuleExtPu
 #print axioms constantModuleExtPullback_homPlus
 
 /--
-info: 'AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.constantModuleExtPullback_shiftedMateValue'
+info: 'AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.constantModuleExtPullbackShiftedMateValue'
   depends on axioms: [propext, Classical.choice, Quot.sound]
 -/
 #guard_msgs (whitespace := lax) in
-#print axioms constantModuleExtPullback_shiftedMateValue
+#print axioms constantModuleExtPullbackShiftedMateValue

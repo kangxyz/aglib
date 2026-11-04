@@ -62,7 +62,7 @@ theorem ker_eq_comap_of_isPullback_of_flat {W : Scheme.{u}} {a : W ⟶ X} {j : W
   exact ker_pullback_snd_eq_comap_of_flat f g
 
 /-- The canonical map between the original images in a flat Cartesian square. -/
-def imageBaseChangeMap_of_isPullback_of_flat {W : Scheme.{u}} {a : W ⟶ X} {j : W ⟶ T}
+def imageBaseChangeMapOfIsPullbackOfFlat {W : Scheme.{u}} {a : W ⟶ X} {j : W ⟶ T}
     (g : T ⟶ Y) [Flat g] (H : IsPullback a j f g) : j.image ⟶ f.image :=
   j.ker.subschemeMap f.ker g (IdealSheafData.le_map_iff_comap_le.mpr
     (ker_eq_comap_of_isPullback_of_flat f g H).symm.le)
@@ -72,27 +72,27 @@ def imageBaseChangeMap_of_isPullback_of_flat {W : Scheme.{u}} {a : W ⟶ X} {j :
 theorem imageBaseChangeMap_of_isPullback_of_flat_imageι
     {W : Scheme.{u}} {a : W ⟶ X} {j : W ⟶ T}
     (g : T ⟶ Y) [Flat g] (H : IsPullback a j f g) :
-    imageBaseChangeMap_of_isPullback_of_flat f g H ≫ f.imageι = j.imageι ≫ g :=
+    imageBaseChangeMapOfIsPullbackOfFlat f g H ≫ f.imageι = j.imageι ≫ g :=
   IdealSheafData.subschemeMap_subschemeι _ _ _ _
 
 /-- The actual image inclusions form a Cartesian square after flat base change. -/
 theorem isPullback_imageι_of_isPullback_of_flat {W : Scheme.{u}} {a : W ⟶ X} {j : W ⟶ T}
     (g : T ⟶ Y) [Flat g] (H : IsPullback a j f g) :
-    IsPullback j.imageι (imageBaseChangeMap_of_isPullback_of_flat f g H) g f.imageι := by
+    IsPullback j.imageι (imageBaseChangeMapOfIsPullbackOfFlat f g H) g f.imageι := by
   apply isPullback_of_isClosedImmersion
   · exact (imageBaseChangeMap_of_isPullback_of_flat_imageι f g H).symm
   · simpa only [imageι, IdealSheafData.ker_subschemeι] using
       (ker_eq_comap_of_isPullback_of_flat f g H).symm
 
 /-- The comparison identifies the original image with its actual flat pullback. -/
-def imageBaseChangeIso_of_flat (g : T ⟶ Y) [Flat g] :
+def imageBaseChangeIsoOfFlat (g : T ⟶ Y) [Flat g] :
     (pullback.snd f g).image ≅ pullback g f.imageι :=
   (isPullback_imageι_of_isPullback_of_flat f g (IsPullback.of_hasPullback f g)).isoPullback
 
 /-- The comparison preserves the actual inclusion of the original image. -/
 @[reassoc (attr := simp)]
 theorem imageBaseChangeIso_of_flat_hom_fst (g : T ⟶ Y) [Flat g] :
-    (imageBaseChangeIso_of_flat f g).hom ≫ pullback.fst g f.imageι =
+    (imageBaseChangeIsoOfFlat f g).hom ≫ pullback.fst g f.imageι =
       (pullback.snd f g).imageι :=
   (isPullback_imageι_of_isPullback_of_flat f g (IsPullback.of_hasPullback f g)).isoPullback_hom_fst
 

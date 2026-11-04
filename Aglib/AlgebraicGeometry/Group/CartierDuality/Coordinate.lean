@@ -40,7 +40,9 @@ open AlgebraicGeometry.Scheme.OverField (FScheme Base)
 
 variable {k : Type u} [Field k]
 
-local instance : (AlgebraicGeometry.algSpec (CommRingCat.of k)).Braided :=
+/-- The native Spec functor retains its braided structure for coordinate comparisons. -/
+local instance instBraidedAlgSpecCoordinate :
+    (AlgebraicGeometry.algSpec (CommRingCat.of k)).Braided :=
   AlgebraicGeometry.braidedAlgSpec
 
 /-- The existing affine global-sections algebra with its original base and scheme explicit. -/

@@ -43,7 +43,7 @@ theorem geometricTheta_of_originalAbelPullback
     [LocallyOfFiniteType P.obj.hom] [IsSeparated P.obj.hom]
     (A : FScheme k) [GrpObj A] [IsProper A.hom] [GeometricallyIntegral A.hom]
     (Q : LocallyNoetherianOver (Spec (.of k)))
-    [LocallyOfFiniteType Q.obj.hom] [IsSeparated Q.obj.hom]
+    [LocallyOfFiniteType Q.obj.hom]
     (RQA : ((locallyNoetherianOverInclusion (Spec (.of k))).op ⋙
       (fppfPicardSheaf A.hom).obj ⋙
         CategoryTheory.forget AddCommGrpCat.{u + 1}).RepresentableBy Q)

@@ -12,8 +12,8 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.BaseCh
 open AlgebraicGeometry.Scheme.EtaleCohomology
 
 /--
-info: 'AlgebraicGeometry.Scheme.EtaleCohomology.moduleDerivedBaseChangeMap_constantRawShiftedValue'
+info: 'AlgebraicGeometry.Scheme.EtaleCohomology.moduleDerivedBaseChangeMapConstantRawShiftedValue'
   depends on axioms: [propext, Classical.choice, Quot.sound]
 -/
 #guard_msgs (whitespace := lax) in
-#print axioms moduleDerivedBaseChangeMap_constantRawShiftedValue
+#print axioms moduleDerivedBaseChangeMapConstantRawShiftedValue

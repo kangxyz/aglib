@@ -29,7 +29,7 @@ set_option maxHeartbeats 650000 in
 -- The independently checked cube and four legs leave a costly conversion of
 -- the original abelian square at the final argument.
 /-- The original unit transports commute with the original module inverse-image square. -/
-abbrev moduleUnitInverseImageIso_square_reflected {X S X' S' : Scheme.{u}}
+abbrev moduleUnitInverseImageIsoSquareReflected {X S X' S' : Scheme.{u}}
     (f : X ⟶ S) (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
     (h : f' ≫ g = g' ≫ f) (n : ℕ) :=
   let Λ := ULift.{u + 1} (ZMod n)

@@ -30,9 +30,11 @@ universe u wS wX wE
 attribute [local instance] hasSheafifyLarge hasSheafifyModules
   CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard
 
+/-- The indices of the proper-curve cohomology basis in degrees zero through two. -/
 abbrev ProperCurveGradeIndex (genus : ℕ) :=
   Σ q : Fin 3, Fin (properCurveConstantRank genus q.val)
 
+/-- The integer cohomological degree of a proper-curve basis index. -/
 def properCurveGradeDegree {genus : ℕ} (i : ProperCurveGradeIndex genus) : ℤ :=
   (i.1.val : ℤ)
 

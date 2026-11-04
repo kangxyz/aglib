@@ -216,7 +216,7 @@ theorem poincareKernelCharacter_mul {T : LocallyNoetherianOver (Spec (.of k))}
 variable [IsFinite q.hom.hom.left] [IsCommMonObj (Kernel.group q).X]
 
 private theorem sectionsUnitsEquiv_restrictCharacter (G : Grp (FScheme k))
-    [IsFinite G.X.hom] [IsCommMonObj G.X] {T U : FScheme k} (r : U ⟶ T)
+    {T U : FScheme k} (r : U ⟶ T)
     (c : (Over.pullback T.hom).mapGrp.obj G ⟶ MultiplicativeGroup.groupScheme T.left) :
     MultiplicativeGroup.sectionsUnitsEquiv U.left ((Over.pullback U.hom).mapGrp.obj G).X
         (restrictCharacter G r c).hom.hom =
@@ -233,6 +233,7 @@ private theorem sectionsUnitsEquiv_restrictCharacter (G : Grp (FScheme k))
   rw [restrictCharacter_coordinates, MultiplicativeGroup.affineHomUnits_comp, hbase]
   rfl
 
+omit [IsFinite q.hom.hom.left] [IsCommMonObj (Kernel.group q).X] in
 /-- The original character of the same Poincare pair commutes with every
 parameter pullback, including arbitrary nonreduced or non-Noetherian tests. -/
 theorem poincareKernelCharacter_naturality {T U : FScheme k} (r : U ⟶ T)

@@ -41,7 +41,7 @@ local notation "H" => moduleInverseImage g' Λ
 
 /-- The original module exchange on original single adjuncts retains the
 given underived normalization. -/
-abbrev moduleDerivedBaseChangeMap_originalSingleAdjunct
+abbrev moduleDerivedBaseChangeMapOriginalSingleAdjunct
     {I : ModuleSheaf S Λ} {J : ModuleSheaf X Λ}
     {I' : ModuleSheaf S' Λ} {J' : ModuleSheaf X' Λ}
     (e : (L₁).obj I ≅ J) (e' : (L₂).obj I' ≅ J')
@@ -70,10 +70,10 @@ variable {X S X' S' : Scheme.{u}}
   [HasDerivedCategory.{wX'} (ModuleSheaf X' (ULift.{u + 1} (ZMod n)))]
 
 /-- The original finite-level exchange preserves the original constant unit adjunct. -/
-abbrev moduleDerivedBaseChangeMap_constantUnitAdjunct :=
-  moduleDerivedBaseChangeMap_originalSingleAdjunct (ULift.{u + 1} (ZMod n)) f f' g g' h
+abbrev moduleDerivedBaseChangeMapConstantUnitAdjunct :=
+  moduleDerivedBaseChangeMapOriginalSingleAdjunct (ULift.{u + 1} (ZMod n)) f f' g g' h
     (moduleUnitInverseImageIso f n) (moduleUnitInverseImageIso f' n)
     (moduleUnitInverseImageIso g n) (moduleUnitInverseImageIso g' n)
-    (moduleUnitInverseImageIso_square_reflected f f' g g' h n)
+    (moduleUnitInverseImageIsoSquareReflected f f' g g' h n)
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

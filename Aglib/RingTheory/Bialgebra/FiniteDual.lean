@@ -131,7 +131,6 @@ def evalBialgEquiv : A ≃ₐc[k] Dual k (Dual k A) where
 @[simp]
 theorem evalBialgEquiv_apply (a : A) (f : Dual k A) : evalBialgEquiv k A a f = f a := rfl
 
-@[simp]
 theorem evalBialgEquiv_toLinearEquiv :
     (evalBialgEquiv k A).toLinearEquiv = Module.evalEquiv k A := rfl
 

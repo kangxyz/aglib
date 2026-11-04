@@ -12,8 +12,8 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.M
 open AlgebraicGeometry.Scheme.EtaleCohomology
 
 /--
-info: 'AlgebraicGeometry.Scheme.EtaleCohomology.moduleUnitInverseImageIso_square_reflected'
+info: 'AlgebraicGeometry.Scheme.EtaleCohomology.moduleUnitInverseImageIsoSquareReflected'
   depends on axioms: [propext, Classical.choice, Quot.sound]
 -/
 #guard_msgs (whitespace := lax) in
-#print axioms moduleUnitInverseImageIso_square_reflected
+#print axioms moduleUnitInverseImageIsoSquareReflected

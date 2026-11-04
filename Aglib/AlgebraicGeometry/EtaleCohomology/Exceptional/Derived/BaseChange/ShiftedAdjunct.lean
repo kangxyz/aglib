@@ -48,7 +48,7 @@ local notation "adj₂" => moduleDerivedAdjunction Λ f'
 
 /-- Naturality transports the original shifted arrow through the original
 module exchange from the specified unit adjunct. -/
-abbrev moduleDerivedBaseChangeMap_rawShiftedValue
+abbrev moduleDerivedBaseChangeMapRawShiftedValue
     {I : A} {J K : B} {I' : C} {J' K' : D}
     (e : (L₁).obj I ≅ J) (e' : (L₂).obj I' ≅ J')
     (u : (U).obj I ≅ I') (v : (V).obj J ≅ J') (t : (V).obj K ≅ K')
@@ -70,7 +70,7 @@ variable {X S X' S' : Scheme.{u}}
   [HasDerivedCategory.{wX'} (ModuleSheaf X' (ULift.{u + 1} (ZMod n)))]
 
 /-- The original finite-level exchange on a shifted map between the original units. -/
-abbrev moduleDerivedBaseChangeMap_constantRawShiftedValue {q : ℤ}
+abbrev moduleDerivedBaseChangeMapConstantRawShiftedValue {q : ℤ}
     (x :
       let Λ := ULift.{u + 1} (ZMod n)
       let J := (DerivedCategory.Plus.singleFunctor (ModuleSheaf X Λ) 0).obj (moduleUnit X Λ)
@@ -84,7 +84,7 @@ abbrev moduleDerivedBaseChangeMap_constantRawShiftedValue {q : ℤ}
     (moduleUnitInverseImageIso g n)
   let v := (moduleInverseImage g' Λ).rightDerivedFunctorPlusSingleIsoOfIso 0
     (moduleUnitInverseImageIso g' n)
-  moduleDerivedBaseChangeMap_rawShiftedValue Λ f f' g g' h e e' u v v
-    (moduleDerivedBaseChangeMap_constantUnitAdjunct f f' g g' h n) x
+  moduleDerivedBaseChangeMapRawShiftedValue Λ f f' g g' h e e' u v v
+    (moduleDerivedBaseChangeMapConstantUnitAdjunct f f' g g' h n) x
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

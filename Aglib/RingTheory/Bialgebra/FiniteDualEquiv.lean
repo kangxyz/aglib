@@ -39,11 +39,9 @@ def dual (e : A ≃ₐc[k] B) : Dual k B ≃ₐc[k] Dual k A where
 @[simp]
 theorem dual_apply (e : A ≃ₐc[k] B) (f : Dual k B) (a : A) : e.dual f a = f (e a) := rfl
 
-@[simp]
 theorem dual_toLinearEquiv (e : A ≃ₐc[k] B) :
     e.dual.toLinearEquiv = e.toLinearEquiv.dualMap := rfl
 
-@[simp]
 theorem dual_toBialgHom (e : A ≃ₐc[k] B) : e.dual.toBialgHom = e.toBialgHom.dual := by
   ext f a
   rfl

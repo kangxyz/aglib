@@ -31,9 +31,11 @@ universe u
 
 variable {k : Type u} [CommRing k]
 
+/-- The native braided Spec structure used for products of affine schemes. -/
 local instance instBraidedAlgSpecUnits : (AlgebraicGeometry.algSpec (CommRingCat.of k)).Braided :=
   AlgebraicGeometry.braidedAlgSpec
 
+/-- The original multiplicative group law on the target of a represented unit. -/
 local instance instCommGrpObjSpecUnits :
     CommGrpObj (MultiplicativeGroup.scheme (Spec (CommRingCat.of k))) :=
   MultiplicativeGroup.commGroup (Spec (CommRingCat.of k))

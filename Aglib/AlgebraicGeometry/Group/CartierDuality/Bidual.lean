@@ -75,21 +75,21 @@ theorem hopfSpec_specGroupDualIso_hom {A B : CommHopfAlgCat.{u} k}
 
 /-- The original bidual evaluation as an isomorphism between native Hopf objects. -/
 def hopfBidualIso (A : CommHopfAlgCat.{u} k)
-    [Coalgebra.IsCocomm k A] [FiniteDimensional k A] :
+    [FiniteDimensional k A] :
     A ≅ CommHopfAlgCat.of k (Dual k (Dual k A)) :=
   (CommHopfAlgCat.ofIsoSelf A).symm ≪≫
     CommHopfAlgCat.isoMk (Module.Dual.evalBialgEquiv k A)
 
 @[simp]
 theorem hopfBidualIso_hom_hom (A : CommHopfAlgCat.{u} k)
-    [Coalgebra.IsCocomm k A] [FiniteDimensional k A] :
+    [FiniteDimensional k A] :
     (hopfBidualIso A).hom.hom = (Module.Dual.evalBialgEquiv k A).toBialgHom := by
   ext a f
   rfl
 
 @[simp]
 theorem hopfBidualIso_inv_hom (A : CommHopfAlgCat.{u} k)
-    [Coalgebra.IsCocomm k A] [FiniteDimensional k A] :
+    [FiniteDimensional k A] :
     (hopfBidualIso A).inv.hom = (Module.Dual.evalBialgEquiv k A).symm.toBialgHom := by
   ext f
   rfl

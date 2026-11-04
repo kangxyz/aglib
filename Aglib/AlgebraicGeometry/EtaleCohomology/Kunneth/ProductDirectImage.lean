@@ -76,7 +76,7 @@ abbrev properCurveProductConstantDirectImageMap :=
     (bc ≫ R.map e.hom)
 
 /-- The actual product splitting is invertible by the original proper exchange. -/
-abbrev properCurveProductConstantDirectImageMap_isIso :=
+abbrev properCurveProductConstantDirectImageMapIsIso :=
   let Λ := ULift.{u + 1} (ZMod n)
   let p := pullback.fst f Y.hom
   let q := pullback.snd f Y.hom

@@ -12,8 +12,8 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Kunneth.ProductDirectImage
 open AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients
 
 /--
-info: 'AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.properCurveProductConstantDirectImageMap_isIso'
+info: 'AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.properCurveProductConstantDirectImageMapIsIso'
   depends on axioms: [propext, Classical.choice, Quot.sound]
 -/
 #guard_msgs (whitespace := lax) in
-#print axioms properCurveProductConstantDirectImageMap_isIso
+#print axioms properCurveProductConstantDirectImageMapIsIso

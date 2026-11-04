@@ -35,6 +35,7 @@ open AlgebraicGeometry.Scheme.OverField (FScheme Base)
 
 variable {k : Type u} [Field k]
 
+/-- The native braided Spec structure used to express Cartier evaluation in tensor coordinates. -/
 local instance instBraidedAlgSpecEvaluation :
     (AlgebraicGeometry.algSpec (CommRingCat.of k)).Braided :=
   AlgebraicGeometry.braidedAlgSpec

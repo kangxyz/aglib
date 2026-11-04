@@ -24,20 +24,22 @@ universe u wS wY wX wZ wEX wEY wEZ
 attribute [local instance] hasSheafifyLarge hasSheafifyModules
   CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard moduleSheafExtZModModule
 
-variable {k : Type u} [Field k] [IsAlgClosed k] {Y : FScheme k} (hY : Curve.Properties Y)
+variable {k : Type u} [Field k] [hAlg : IsAlgClosed k] {Y : FScheme k} (hY : Curve.Properties Y)
   (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : k))
   {X : Scheme.{u}} (f : X ⟶ Base k)
-  [HasDerivedCategory.{wS} (ModuleSheaf (Base k) (ULift.{u + 1} (ZMod n)))]
-  [HasDerivedCategory.{wY} (ModuleSheaf Y.left (ULift.{u + 1} (ZMod n)))]
-  [HasDerivedCategory.{wX} (ModuleSheaf X (ULift.{u + 1} (ZMod n)))]
-  [HasDerivedCategory.{wZ} (ModuleSheaf (pullback f Y.hom) (ULift.{u + 1} (ZMod n)))]
+  [dS : HasDerivedCategory.{wS} (ModuleSheaf (Base k) (ULift.{u + 1} (ZMod n)))]
+  [dY : HasDerivedCategory.{wY} (ModuleSheaf Y.left (ULift.{u + 1} (ZMod n)))]
+  [dX : HasDerivedCategory.{wX} (ModuleSheaf X (ULift.{u + 1} (ZMod n)))]
+  [dZ : HasDerivedCategory.{wZ} (ModuleSheaf (pullback f Y.hom) (ULift.{u + 1} (ZMod n)))]
   [HasExt.{wEX} (ModuleSheaf X (ULift.{u + 1} (ZMod n)))]
   [HasExt.{wEY} (ModuleSheaf Y.left (ULift.{u + 1} (ZMod n)))]
   [HasExt.{wEZ} (ModuleSheaf (pullback f Y.hom) (ULift.{u + 1} (ZMod n)))]
 
+include hY hn hunit hAlg dS dY dX dZ in
 /-- The original ordered Künneth map is bijective in every total degree
 with a proper smooth curve factor over an algebraically closed field. -/
-abbrev constantModuleExtKunnethMap_bijective_properCurve (d : ℕ) :=
+theorem constantModuleExtKunnethMap_bijective_properCurve (d : ℕ) :
+    Function.Bijective (constantModuleExtKunnethMap.{u, wEX, wEY, wEZ} n f Y.hom d) :=
   let Λ := ULift.{u + 1} (ZMod n)
   let Z := pullback f Y.hom
   let p := pullback.fst f Y.hom
@@ -53,7 +55,7 @@ abbrev constantModuleExtKunnethMap_bijective_properCurve (d : ℕ) :=
     rfl
   let B := constantModuleExt.{u, wEY} n Y.left
   let basis := properCurveConstantModuleExtBasis hY n hn hunit
-  let hm := properCurveProductConstantDirectImageMap_isIso hY n hn hunit f
+  let hm := properCurveProductConstantDirectImageMapIsIso hY n hn hunit f
   let adj := moduleDerivedAdjunction Λ p
   let : adj.CommShift ℤ :=
     Adjunction.rightDerivedFunctorPlus_commShift (moduleInverseImageAdjunction p Λ)
@@ -68,6 +70,6 @@ abbrev constantModuleExtKunnethMap_bijective_properCurve (d : ℕ) :=
       (constantModuleExtExternalProduct_apply n f Y.hom a.val (d - a.val) d (by omega) x y)
   Ext.bijective_orderedProduct_of_graded_components adj U V n d 3 e rank hrank
     B basis hm (fun a => x a) (fun a => y a) (constantModuleExtPullback_homPlus_singleTransport p n)
-    (properCurveProductConstantDirectImageMap_component_value hY n hn hunit f) K hK
+    (properCurveProductConstantDirectImageMapComponentValue hY n hn hunit f) K hK
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients

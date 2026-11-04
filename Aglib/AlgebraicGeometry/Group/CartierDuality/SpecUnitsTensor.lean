@@ -34,10 +34,12 @@ private theorem comp_tensorHom_mul {C : Type*} [Category C] [CartesianMonoidalCa
 
 variable {k : Type u} [CommRing k]
 
+/-- The native braided Spec structure used in the tensor-coordinate calculation. -/
 local instance instBraidedAlgSpecUnitsTensor :
     (AlgebraicGeometry.algSpec (CommRingCat.of k)).Braided :=
   AlgebraicGeometry.braidedAlgSpec
 
+/-- The original multiplicative group law used to multiply the two represented unit maps. -/
 local instance instCommGrpObjSpecUnitsTensor :
     CommGrpObj (MultiplicativeGroup.scheme (Spec (CommRingCat.of k))) :=
   MultiplicativeGroup.commGroup _

@@ -31,10 +31,12 @@ universe u
 
 variable {R : Type u} [CommRing R]
 
+/-- The native braided Spec structure used for Hopf algebra characters. -/
 local instance instBraidedAlgSpecCharacters :
     (AlgebraicGeometry.algSpec (CommRingCat.of R)).Braided :=
   AlgebraicGeometry.braidedAlgSpec
 
+/-- The original multiplicative group law on the target of the represented characters. -/
 local instance instCommGrpObjCharacters :
     CommGrpObj (MultiplicativeGroup.scheme (Spec (CommRingCat.of R))) :=
   MultiplicativeGroup.commGroup _
