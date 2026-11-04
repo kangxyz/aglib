@@ -441,6 +441,10 @@ public import Aglib.Algebra.Homology.DerivedCategory.Plus.ExactDerivedContractio
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.ExactDerivedContractionNaturality
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.ExactDerivedContractionPresentation
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.Ext
+public import Aglib.Algebra.Homology.DerivedCategory.Plus.ExtTransport
+public import Aglib.Algebra.Homology.DerivedCategory.Plus.GradedAdjointCoordinates
+public import Aglib.Algebra.Homology.DerivedCategory.Plus.GradedBiproductExt
+public import Aglib.Algebra.Homology.DerivedCategory.Plus.GradedProduct
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.HomologyIsIso
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.InjectiveComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.InjectiveComparisonExact
@@ -479,6 +483,7 @@ public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Adj
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Adjunction.Postcomposition
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Adjunction.PullbackCoherence
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Adjunction.Shift
+public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Adjunction.SingleAdjunct
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Adjunction.SingleCounit
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Adjunction.Transport
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Adjunction.TransportLeft
@@ -538,6 +543,7 @@ public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Bas
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ResolutionRepresentatives
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ResolutionSectionChase
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ResolutionTransport
+public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.SingleAdjunct
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.SingleCoherence
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.SingleSquare
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.SquarePasting
@@ -2849,12 +2855,15 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.CartesianGe
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Cohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.CurveRoots
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.DerivedGeometricStalk
+public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.FieldDirectImageCohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.FieldSections
+public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.FieldSectionsEquivalence
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.FiniteComplement
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.FinitePushforward
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.GeometricStalk
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.GlobalSections
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.GlobalSectionsUnderlying
+public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.GlobalSectionsUnit
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.HigherDirectImage
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Localization
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.OpenLocalization
@@ -3449,7 +3458,9 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.E
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.Exactness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.GeometricFunctors
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ModuleUnitInverseImage
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ModuleUnitSquare
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ModuleUnitUnderlying
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ModuleUnitUnderlyingMap
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.NativeAdjunctionUnderlying
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.Pullback
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ScalarRestriction
@@ -3541,6 +3552,9 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactificati
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.ToTargetAlgebra
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.ToTargetWhole
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.BaseChange
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.BaseChange.Shift
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.BaseChange.ShiftedAdjunct
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.BaseChange.SingleAdjunct
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.BaseChangeCompositeUnit
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.BaseChangeIdentity
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.BaseChangeOverComparison
@@ -3595,6 +3609,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.OpenTo
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.OpenTorsion
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.OpenTripleComparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange.ZMod
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperNormalizationComparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.TorsionPreservation
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.TorsionRange
@@ -3943,6 +3958,8 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.CoinductionCoeffici
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.CoinductionCohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.ConstantH2
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.CoverEffacement
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.DerivedFreeSplit
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.DerivedUnit
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.DimensionShift
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.EtaleUnit
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiberCokernel
@@ -4351,6 +4368,13 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.SectionPullback
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Torsor
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.UnitZeroLocus
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.UnitsQuotient
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kunneth.ConstantMap
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kunneth.DerivedPullback
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kunneth.ProductDirectImage
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kunneth.ProductDirectImageComponent
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kunneth.ProperCurve
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kunneth.ProperCurveCoordinates
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kunneth.ProperCurveDirectImageSplit
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Localization.AbelianNaturality
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Localization.AbelianShortExact
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Localization.ClosedPointLift
@@ -7437,6 +7461,7 @@ public import Aglib.CategoryTheory.Adjunction.PastedRectangleSource
 public import Aglib.CategoryTheory.Adjunction.PresheafPullback
 public import Aglib.CategoryTheory.Adjunction.PresheafPullbackNaturality
 public import Aglib.CategoryTheory.Adjunction.RefinementOuterComparison
+public import Aglib.CategoryTheory.Adjunction.ShiftedHom
 public import Aglib.CategoryTheory.Adjunction.SquareCoefficient
 public import Aglib.CategoryTheory.Adjunction.TripleBaseChange
 public import Aglib.CategoryTheory.Adjunction.TripleComposition
@@ -7495,6 +7520,7 @@ public import Aglib.CategoryTheory.Functor.ComparisonPasting.LocalizationVertice
 public import Aglib.CategoryTheory.Functor.CompositionAssociativityTransfer
 public import Aglib.CategoryTheory.Functor.CompositionChoice
 public import Aglib.CategoryTheory.Functor.CompositionCube
+public import Aglib.CategoryTheory.Functor.CompositionCubeUnit
 public import Aglib.CategoryTheory.Functor.CompositionCubeWhole
 public import Aglib.CategoryTheory.Functor.CompositionExchangeIso
 public import Aglib.CategoryTheory.Functor.CompositionExchangeTransport
@@ -7724,6 +7750,9 @@ public import Aglib.CategoryTheory.Preadditive.ScalarDiagram
 public import Aglib.CategoryTheory.Preadditive.ScalarDiagram.Transfer
 public import Aglib.CategoryTheory.PresentationColimit
 public import Aglib.CategoryTheory.Pseudofunctor.PresheafHomSource
+public import Aglib.CategoryTheory.Shift.AdjunctValue
+public import Aglib.CategoryTheory.Shift.AdjunctionTransport
+public import Aglib.CategoryTheory.Shift.BiproductTransport
 public import Aglib.CategoryTheory.Sites.ConstantRestriction
 public import Aglib.CategoryTheory.Sites.ConstantRestriction.Cohomology
 public import Aglib.CategoryTheory.Sites.ConstantRestriction.TerminalValues
@@ -8464,6 +8493,7 @@ public import Aglib.LinearAlgebra.Matrix.SelectedMinorRows
 public import Aglib.LinearAlgebra.Matrix.SquareZeroLift
 public import Aglib.LinearAlgebra.Multilinear.Span
 public import Aglib.LinearAlgebra.SemilinearConjugate
+public import Aglib.LinearAlgebra.TensorProduct.Antidiagonal
 public import Aglib.LinearAlgebra.TensorProduct.Basis
 public import Aglib.LinearAlgebra.TensorProduct.DualEvaluation
 public import Aglib.LinearAlgebra.TensorProduct.DualEvaluationFiniteLength

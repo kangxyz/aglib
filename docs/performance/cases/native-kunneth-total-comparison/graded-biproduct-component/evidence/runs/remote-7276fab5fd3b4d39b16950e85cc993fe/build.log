@@ -1,0 +1,9 @@
+✔ [996/998] Built Aglib.CategoryTheory.Shift.BiproductTransport (2.1s)
+✔ [997/1010] Built AglibTest.CategoryTheory.Shift.BiproductTransport (1.8s)
+✔ [8838/8842] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kunneth.ProductDirectImage (13s)
+✔ [8839/8844] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kunneth.ProductDirectImageComponent (9.2s)
+✔ [8841/8848] Built AglibTest.AlgebraicGeometry.EtaleCohomology.Kunneth.ProductDirectImage (4.6s)
+✔ [8842/8848] Built AglibTest.AlgebraicGeometry.EtaleCohomology.Kunneth.ProductDirectImageComponent (4.5s)
+✔ [8847/8848] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kunneth.ProperCurve (24s)
+✔ [8848/8848] Built AglibTest.AlgebraicGeometry.EtaleCohomology.Kunneth.ProperCurve (4.4s)
+Build completed successfully (8848 jobs).

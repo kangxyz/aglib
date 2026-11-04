@@ -1,0 +1,145 @@
+{
+  "algorithm": "SHA-256",
+  "files": [
+    {
+      "bytes": 2105,
+      "path": "README.md",
+      "sha256": "7cc5aae3603605bf14c9a693089e7412c0820be27422584c614677e93915f9e5"
+    },
+    {
+      "bytes": 19629,
+      "path": "evidence/INDEX.json",
+      "sha256": "fb5e0d104cdbf23e2ccf65160c262518f4c4e7c7696c8570be54ecd92ec632b0"
+    },
+    {
+      "bytes": 3539,
+      "path": "evidence/pins/lake-manifest.json",
+      "sha256": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2"
+    },
+    {
+      "bytes": 1164,
+      "path": "evidence/pins/lakefile.toml",
+      "sha256": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852"
+    },
+    {
+      "bytes": 25,
+      "path": "evidence/pins/lean-toolchain",
+      "sha256": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+    },
+    {
+      "bytes": 783,
+      "path": "evidence/runs/remote-7276fab5fd3b4d39b16950e85cc993fe/build.log",
+      "sha256": "eb39573756e7727c4b806226021d0ab688eb1eff90125ae333577b84bd1d4acb"
+    },
+    {
+      "bytes": 18957,
+      "path": "evidence/runs/remote-7276fab5fd3b4d39b16950e85cc993fe/compiler-events.jsonl",
+      "sha256": "ee05767be1c4654fa8fb56de2f9ad4bc97c73a5d9ae74a2c55d53db6e63f0cc1"
+    },
+    {
+      "bytes": 13794,
+      "path": "evidence/runs/remote-7276fab5fd3b4d39b16950e85cc993fe/receipt.json",
+      "sha256": "7cd6061a0754cc304b5de4038d23f25ca01d02638edc312d3dc91f823c1d17d2"
+    },
+    {
+      "bytes": 43991,
+      "path": "evidence/runs/remote-914b088501544a90b70d5efb0ba0ae45/build.log",
+      "sha256": "d39f6f44b52bec04a993e3c4c5c7567adaf8da8a653645d540c8fb9a44dae5ed"
+    },
+    {
+      "bytes": 1144,
+      "path": "evidence/runs/remote-914b088501544a90b70d5efb0ba0ae45/compiler-events.jsonl",
+      "sha256": "d1f70285c222cdb9f3039af7c9e45593630f1e92ac13a0650f9df62b47b0ffd7"
+    },
+    {
+      "bytes": 20422,
+      "path": "evidence/runs/remote-914b088501544a90b70d5efb0ba0ae45/receipt.json",
+      "sha256": "b735af141316145404b702d0fdb51b02aa9efa8911b41480443e04010ddb5d6d"
+    },
+    {
+      "bytes": 11944,
+      "path": "evidence/runs/remote-b4f4808dccea4580b5993b0e3175f9b9/build.log",
+      "sha256": "89732c75172b9ac49eed92800b9b87240bf56bc98b69fa85025405fe1c686c41"
+    },
+    {
+      "bytes": 1143,
+      "path": "evidence/runs/remote-b4f4808dccea4580b5993b0e3175f9b9/compiler-events.jsonl",
+      "sha256": "877520ced9dfcbf986ba93c10977e389f3cfeffbb9d354c2cda4f1633efb7b9b"
+    },
+    {
+      "bytes": 21200,
+      "path": "evidence/runs/remote-b4f4808dccea4580b5993b0e3175f9b9/receipt.json",
+      "sha256": "e19d0513cb885f32715fdfbf949af0ac606b9883a28481679753482d813d4413"
+    },
+    {
+      "bytes": 19801,
+      "path": "evidence/runs/remote-d4b2bc57db9640a89acb317c837da0b2/build.log",
+      "sha256": "828fbbc66cdf5654cfef77198b4625837b5100d4919f1d96d3b6cf8ac285b3b5"
+    },
+    {
+      "bytes": 1144,
+      "path": "evidence/runs/remote-d4b2bc57db9640a89acb317c837da0b2/compiler-events.jsonl",
+      "sha256": "902d81f69e800fa34f03e77be7eedc9b303d6901aed1f149751d5146ec118bbc"
+    },
+    {
+      "bytes": 21873,
+      "path": "evidence/runs/remote-d4b2bc57db9640a89acb317c837da0b2/receipt.json",
+      "sha256": "553b9016128e66caab5e875cdf310e969ed3996a9c0a5e04364fd9e0acb2eb6d"
+    },
+    {
+      "bytes": 4877,
+      "path": "evidence/sources/canonical-input-probes.lean.txt",
+      "sha256": "15f6eafdc4577d9018c9844a933293e9b03757f6f0becb4b763fcd2d9ea03417"
+    },
+    {
+      "bytes": 4830,
+      "path": "evidence/sources/native/Aglib-AlgebraicGeometry-EtaleCohomology-Kunneth-ProductDirectImage.lean.txt",
+      "sha256": "043eb57565d9220e5d2720dae2600b6a5550e8e02331f317914fa4bb5adc6b56"
+    },
+    {
+      "bytes": 3869,
+      "path": "evidence/sources/native/Aglib-AlgebraicGeometry-EtaleCohomology-Kunneth-ProductDirectImageComponent.lean.txt",
+      "sha256": "eef43901eb462ad09b4cbcac47d46fed0624ee2cf7f9463aaa54d228ed759d12"
+    },
+    {
+      "bytes": 3396,
+      "path": "evidence/sources/native/Aglib-AlgebraicGeometry-EtaleCohomology-Kunneth-ProperCurve.lean.txt",
+      "sha256": "ddad17d3d8e98c0d8ff4c06084516c27a80385f0e4ec56756464350f6d6d355f"
+    },
+    {
+      "bytes": 3707,
+      "path": "evidence/sources/native/Aglib-CategoryTheory-Shift-BiproductTransport.lean.txt",
+      "sha256": "6f691f0556d1c69a5da1e0967d9ffbfb12ad745e6919c839fb86b0cf201ac4d2"
+    },
+    {
+      "bytes": 642,
+      "path": "evidence/sources/native/AglibTest-AlgebraicGeometry-EtaleCohomology-Kunneth-ProductDirectImage.lean.txt",
+      "sha256": "ce8cc107766a843fa031d9795f0aa1e8389b3db44d63917f64a5c38409e2825d"
+    },
+    {
+      "bytes": 663,
+      "path": "evidence/sources/native/AglibTest-AlgebraicGeometry-EtaleCohomology-Kunneth-ProductDirectImageComponent.lean.txt",
+      "sha256": "a19eef3add6959588cb177848c5e538bbd48f0d62c565c7f32b3ac08c8114a14"
+    },
+    {
+      "bytes": 624,
+      "path": "evidence/sources/native/AglibTest-AlgebraicGeometry-EtaleCohomology-Kunneth-ProperCurve.lean.txt",
+      "sha256": "84f570562661290a564a1b6a238559a74c5c36d070513e9dae9ea811d193e732"
+    },
+    {
+      "bytes": 540,
+      "path": "evidence/sources/native/AglibTest-CategoryTheory-Shift-BiproductTransport.lean.txt",
+      "sha256": "b904f5ab672f2309caf2288c46175fc810519c3cb3174f22df21c89166a65dc2"
+    },
+    {
+      "bytes": 5121,
+      "path": "evidence/sources/product-canonical-heads.lean.txt",
+      "sha256": "57c40795270e6a59bfc14123b31bcd66a443e5c496409ba97eaf32e25542743c"
+    },
+    {
+      "bytes": 6059,
+      "path": "evidence/sources/product-shared-biproduct.lean.txt",
+      "sha256": "4aeaee0a6ec214c409bcaccd2cdfae56a36c7e4507b62fcab89b9abba2b35132"
+    }
+  ]
+}

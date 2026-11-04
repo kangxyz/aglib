@@ -1,0 +1,432 @@
+{"candidate": "/root/autodl-tmp/lean-build/logs/remote-d4b2bc57db9640a89acb317c837da0b2/candidate/ConditionalFieldAlternation.lean", "sha256": "4aeaee0a6ec214c409bcaccd2cdfae56a36c7e4507b62fcab89b9abba2b35132", "source": "acf00f504cf90fafad70c5da8f04e07b6979ab4c64fe8b1d31304bde93325721"}
+[diag] Diagnostics
+  [reduction] unfolded declarations (max: 3772, num: 58):
+    [reduction] SheafOfModules.forget ↦ 3772
+    [reduction] Classical.choose ↦ 1324
+    [reduction] Classical.indefiniteDescription ↦ 1324
+    [reduction] Zero.zero ↦ 1253
+    [reduction] OfNat.ofNat ↦ 1250
+    [reduction] Functor.leftAdjoint ↦ 846
+    [reduction] constantSheaf ↦ 832
+    [reduction] presheafToSheaf ↦ 832
+    [reduction] ModuleCat.Sheaf.ConstantRing.constantRing ↦ 832
+    [reduction] constantRing ↦ 820
+    [reduction] Add.add ↦ 600
+    [reduction] HAdd.hAdd ↦ 600
+    [reduction] Functor.objPreimage ↦ 468
+    [reduction] Functor.essImage.witness ↦ 468
+    [reduction] Quiver.Hom ↦ 376
+    [reduction] HomologicalComplex.single ↦ 328
+    [reduction] Functor.FullyFaithful.homEquiv ↦ 244
+    [reduction] SheafOfModules.fullyFaithfulForget ↦ 208
+    [reduction] MorphismProperty.Q' ↦ 184
+    [reduction] MorphismProperty.HasLocalization.L ↦ 184
+    [reduction] HSMul.hSMul ↦ 160
+    [reduction] SMul.smul ↦ 160
+    [reduction] MorphismProperty ↦ 151
+    [reduction] DFunLike.coe ↦ 136
+    [reduction] DerivedCategory.Q ↦ 136
+    [reduction] SingleFunctors.lift ↦ 134
+    [reduction] DerivedCategory.Plus.singleFunctors ↦ 134
+    [reduction] CategoryStruct.comp ↦ 128
+    [reduction] EquivLike.coe ↦ 116
+    [reduction] instCategoryDerivedCategory._aux_5 ↦ 95
+    [reduction] MorphismProperty.HasLocalization.hD ↦ 95
+    [reduction] HasShift.shift ↦ 80
+    [reduction] ZSMul.zsmul ↦ 72
+    [reduction] MorphismProperty.Q ↦ 68
+    [reduction] Paths.of ↦ 60
+    [reduction] Equiv.trans ↦ 56
+    [reduction] Functor.asEquivalence ↦ 52
+    [reduction] Localization.functorEquivalence ↦ 52
+    [reduction] Localization.lift ↦ 52
+    [reduction] DerivedCategory.Qh ↦ 48
+    [reduction] HomologicalComplexUpToQuasiIso.Qh ↦ 48
+    [reduction] Functor.leftKanExtension ↦ 40
+    [reduction] Functor.rightDerivedFunctorPlus ↦ 40
+    [reduction] Functor.totalRightDerived ↦ 40
+    [reduction] getColimitCocone ↦ 40
+    [reduction] colimit.cocone ↦ 40
+    [reduction] DerivedCategory.homologyFunctor ↦ 32
+    [reduction] HomologicalComplexUpToQuasiIso.homologyFunctor ↦ 32
+    [reduction] LT.lt ↦ 32
+    [reduction] NatCast.natCast ↦ 32
+    [reduction] Functor.commShiftIso ↦ 32
+    [reduction] Localization.Preadditive.homEquiv ↦ 32
+    [reduction] DerivedCategory.Plus.homologyFunctor ↦ 28
+    [reduction] equivShrink ↦ 24
+    [reduction] Localization.homEquiv ↦ 24
+    [reduction] Ext.homEquiv ↦ 24
+    [reduction] Localization.SmallHom.equiv ↦ 24
+    [reduction] Localization.SmallShiftedHom.equiv ↦ 24
+  [reduction] unfolded reducible declarations (max: 14263, num: 84):
+    [reduction] Functor.obj ↦ 14263
+    [reduction] PresheafOfModules.obj ↦ 6428
+    [reduction] ModuleCat.isAddCommGroup ↦ 3904
+    [reduction] SheafOfModules.val ↦ 3736
+    [reduction] Int.casesOn ↦ 3552
+    [reduction] Decidable.casesOn ↦ 2976
+    [reduction] ObjectProperty.FullSubcategory.obj ↦ 2496
+    [reduction] ModuleSheaf ↦ 2206
+    [reduction] RingCat.ring ↦ 1576
+    [reduction] SingleFunctors.functor ↦ 1334
+    [reduction] Subtype.val ↦ 1324
+    [reduction] Exists.choose ↦ 1314
+    [reduction] HasDerivedCategory ↦ 810
+    [reduction] CochainComplex.singleFunctors ↦ 804
+    [reduction] DerivedCategory.Plus ↦ 699
+    [reduction] HomologicalComplex.X ↦ 684
+    [reduction] Quotient.as ↦ 624
+    [reduction] inferInstance ↦ 525
+    [reduction] CochainComplex.singleFunctor ↦ 524
+    [reduction] ModuleCat.carrier ↦ 520
+    [reduction] ModuleCat.isModule ↦ 348
+    [reduction] Equiv.invFun ↦ 346
+    [reduction] DerivedCategory.singleFunctor ↦ 272
+    [reduction] HomologicalComplexUpToQuasiIso.Q ↦ 272
+    [reduction] Function.Injective.addCommGroup ↦ 258
+    [reduction] Function.Injective.addGroup ↦ 258
+    [reduction] Function.Injective.subNegMonoid ↦ 258
+    [reduction] Equiv.addCommGroup ↦ 242
+    [reduction] Function.Injective.addMonoid ↦ 222
+    [reduction] Function.Injective.addZeroClass ↦ 214
+    [reduction] Functor.FullyFaithful.preimage ↦ 208
+    [reduction] Equiv.toFun ↦ 198
+    [reduction] Equiv.zero ↦ 198
+    [reduction] ObjectProperty ↦ 197
+    [reduction] ProperCurveGradeIndex ↦ 194
+    [reduction] Base ↦ 180
+    [reduction] DerivedCategory.Plus.singleFunctor ↦ 178
+    [reduction] Sheaf ↦ 137
+    [reduction] moduleDerivedInverseImage ↦ 135
+    [reduction] Equivalence.inverse ↦ 132
+    [reduction] FScheme ↦ 119
+    [reduction] RingCat.carrier ↦ 116
+    [reduction] HasExt ↦ 106
+    [reduction] CochainComplex ↦ 95
+    [reduction] moduleDerivedDirectImage ↦ 91
+    [reduction] constantModuleExt ↦ 87
+    [reduction] Localization.HasSmallLocalizedShiftedHom ↦ 80
+    [reduction] CategoryTheory.Functor.map ↦ 76
+    [reduction] HomologicalComplex.d ↦ 72
+    [reduction] Comma.left ↦ 62
+    [reduction] Over.left ↦ 62
+    [reduction] AddCommGrpCat.carrier ↦ 60
+    [reduction] Prefunctor.obj ↦ 60
+    [reduction] ShiftMkCore.F ↦ 60
+    [reduction] pullback ↦ 59
+    [reduction] moduleUnit ↦ 49
+    [reduction] ModuleCat.Sheaf.ConstantRing.moduleUnit ↦ 49
+    [reduction] Equiv.smul ↦ 46
+    [reduction] outParam ↦ 44
+    [reduction] Nonempty.some ↦ 44
+    [reduction] Over.hom ↦ 42
+    [reduction] AddEquiv.toEquiv ↦ 40
+    [reduction] LinearMap.toAddHom ↦ 40
+    [reduction] Adjunction.unit ↦ 40
+    [reduction] Comma.right ↦ 40
+    [reduction] initial ↦ 40
+    [reduction] StructuredArrow.right ↦ 40
+    [reduction] Cocone.pt ↦ 40
+    [reduction] ColimitCocone.cocone ↦ 40
+    [reduction] FunLike ↦ 36
+    [reduction] SheafOfModules.Hom.val ↦ 36
+    [reduction] HasPullback ↦ 34
+    [reduction] Iso.inv ↦ 32
+    [reduction] NatTrans.app ↦ 32
+    [reduction] Fin.val ↦ 30
+    [reduction] Hom.toLRSHom ↦ 30
+    [reduction] Hom.toLRSHom' ↦ 30
+    [reduction] ShiftedHom ↦ 25
+    [reduction] toSheafify ↦ 24
+    [reduction] LinearEquiv.invFun ↦ 24
+    [reduction] LinearEquiv.toAddEquiv ↦ 24
+    [reduction] LinearEquiv.toLinearMap ↦ 24
+    [reduction] Iso.hom ↦ 24
+    [reduction] ModuleCat.Sheaf.ConstantRing.constantRingUnit ↦ 24
+  [type_class] used instances (max: 34, num: 1):
+    [type_class] SheafOfModules.instCategory ↦ 34
+  [type_class] max synth pending failures (maxSynthPendingDepth: 1), use `set_option maxSynthPendingDepth <limit>`
+    [type_class] ℤ → Category.{?u.325, u + 1} X.Etale
+    [type_class] ℤ → HasDerivedCategory (ModuleSheaf X Λ)
+    [type_class] ℤ → Category.{?u.330, u + 1} X.Etale
+    [type_class] ℤ → ℤ → Abelian (ModuleSheaf (Base k) Λ)
+    [type_class] ℤ → Abelian (ModuleSheaf X Λ)
+    [type_class] ℤ → Abelian (ModuleSheaf (Base k) Λ)
+    [type_class] ℤ → HasDerivedCategory (ModuleSheaf (Base k) Λ)
+    [type_class] ℤ → Category.{?u.325, u + 1} (Base k).Etale
+    [type_class] ℤ → Category.{?u.327, u + 1} X.Etale
+    [type_class] ℤ → Category.{?u.325, u + 1} X.Etale
+    [type_class] ℤ → Category.{?u.320, u + 2} (ModuleSheaf (Base k) Λ)
+    [type_class] ℤ → Abelian (ModuleSheaf X Λ)
+    [type_class] ℤ → Abelian (ModuleSheaf (Base k) Λ)
+    [type_class] ℤ → Category.{?u.327, u + 1} (Base k).Etale
+    [type_class] ℤ → HasDerivedCategory (ModuleSheaf X Λ)
+    [type_class] ℤ → HasDerivedCategory (ModuleSheaf X Λ)
+    [type_class] ℤ → ℤ → Abelian (ModuleSheaf X Λ)
+    [type_class] ℤ → HasDerivedCategory (ModuleSheaf (Base k) Λ)
+    [type_class] ℤ → HasDerivedCategory (ModuleSheaf (Base k) Λ)
+    [type_class] ℤ → Category.{?u.326, u + 2} (ModuleSheaf (Base k) Λ)
+    [type_class] ℤ → Category.{?u.320, u + 2} (ModuleSheaf (Base k) Λ)
+    [type_class] ℤ → Category.{?u.320, u + 2} (ModuleSheaf X Λ)
+    [type_class] ℤ → Category.{?u.320, u + 2} (ModuleSheaf X Λ)
+    [type_class] ℤ → ℤ → HasDerivedCategory (ModuleSheaf X Λ)
+    [type_class] ℤ → Category.{?u.330, u + 1} (Base k).Etale
+    [type_class] ℤ → Category.{?u.325, u + 1} (Base k).Etale
+    [type_class] ℤ → Abelian (ModuleSheaf (Base k) Λ)
+    [type_class] ℤ → ℤ → HasDerivedCategory (ModuleSheaf (Base k) Λ)
+    [type_class] ℤ → Category.{?u.322, u + 2} (ModuleSheaf X Λ)
+    [type_class] ℤ → Abelian (ModuleSheaf (Base k) Λ)
+    [type_class] ℤ → HasDerivedCategory (ModuleSheaf X Λ)
+    [type_class] ℤ → Category.{?u.331, u + 1} (Base k).Etale
+    [type_class] ℤ → Abelian (ModuleSheaf X Λ)
+    [type_class] ℤ → Category.{?u.327, u + 2} (ModuleSheaf (Base k) Λ)
+    [type_class] ℤ → HasDerivedCategory (ModuleSheaf (Base k) Λ)
+    [type_class] ℤ → ℤ → Category.{?u.328, u + 2} (ModuleSheaf (Base k) Λ)
+    [type_class] ℤ → Abelian (ModuleSheaf X Λ)
+    [type_class] ℤ → Abelian (ModuleSheaf X Λ)
+    [type_class] ℤ → Abelian (ModuleSheaf (Base k) Λ)
+    [type_class] ℤ → HasDerivedCategory (ModuleSheaf (Base k) Λ)
+    [type_class] ℤ → Category.{?u.326, u + 2} (ModuleSheaf X Λ)
+    [type_class] ℤ → Category.{?u.322, u + 2} (ModuleSheaf (Base k) Λ)
+    [type_class] ℤ → Category.{?u.331, u + 1} X.Etale
+    [type_class] ℤ → Category.{?u.327, u + 2} (ModuleSheaf X Λ)
+    [type_class] ℤ → HasDerivedCategory (ModuleSheaf X Λ)
+    [type_class] ℤ → ℤ → Category.{?u.328, u + 2} (ModuleSheaf X Λ)
+  [def_eq] heuristic for solving `f a =?= f b` (max: 419, num: 39):
+    [def_eq] SheafOfModules.instCategory ↦ 419
+    [def_eq] ite ↦ 410
+    [def_eq] Preadditive.preadditiveHasZeroMorphisms ↦ 355
+    [def_eq] constantRing ↦ 333
+    [def_eq] HomologicalComplex.instCategory ↦ 281
+    [def_eq] SheafOfModules.instPreadditive ↦ 279
+    [def_eq] SheafOfModules.instAbelian ↦ 262
+    [def_eq] instCategoryDerivedCategory ↦ 238
+    [def_eq] DerivedCategory.instPreadditive ↦ 203
+    [def_eq] DerivedCategory.instHasShiftInt ↦ 201
+    [def_eq] HomologicalComplex.quasiIso ↦ 189
+    [def_eq] DerivedCategory.instPretriangulated ↦ 177
+    [def_eq] Triangulated.TStructure.plus ↦ 139
+    [def_eq] DerivedCategory ↦ 137
+    [def_eq] ObjectProperty.FullSubcategory.category ↦ 135
+    [def_eq] DerivedCategory.TStructure.t ↦ 131
+    [def_eq] instCategoryEtale ↦ 119
+    [def_eq] RingCat.instRingObjForgetRingHomCarrier ↦ 108
+    [def_eq] Functor.comp ↦ 92
+    [def_eq] Scheme.Etale ↦ 72
+    [def_eq] smallEtaleTopology ↦ 72
+    [def_eq] Exists.choose ↦ 59
+    [def_eq] DerivedCategory.Q ↦ 56
+    [def_eq] RingHom.id ↦ 54
+    [def_eq] Functor.category ↦ 49
+    [def_eq] Functor.obj ↦ 48
+    [def_eq] shiftFunctor ↦ 47
+    [def_eq] Functor.rightDerivedFunctorPlus ↦ 40
+    [def_eq] MorphismProperty.instCategoryLocalization._aux_5 ↦ 36
+    [def_eq] Quiver.Hom ↦ 28
+    [def_eq] moduleInverseImage ↦ 27
+    [def_eq] AddMonoidHom.instFunLike ↦ 26
+    [def_eq] ModuleCat.Sheaf.ConstantRing.constantRing ↦ 25
+    [def_eq] ObjectProperty.FullSubcategory.category._aux_1 ↦ 25
+    [def_eq] Iso.trans ↦ 24
+    [def_eq] Preadditive.fullSubcategory ↦ 24
+    [def_eq] SheafOfModules.liftedUnit ↦ 23
+    [def_eq] Functor.objObjPreimageIso ↦ 22
+    [def_eq] Int.instDecidableEq ↦ 21
+  [reduction] Axioms (possibly imported non-exposed defs) that were tried to be unfolded (max: 1412, num: 1):
+    [reduction] Classical.choice ↦ 1412
+  [kernel] unfolded declarations (max: 9990, num: 193):
+    [kernel] PresheafOfModules.obj ↦ 9990
+    [kernel] SubNegMonoid.toAddMonoid ↦ 6804
+    [kernel] AddGroup.toSubNegMonoid ↦ 6776
+    [kernel] AddCommGroup.toAddGroup ↦ 6774
+    [kernel] ModuleCat.isAddCommGroup ↦ 6532
+    [kernel] Add.add ↦ 5367
+    [kernel] HAdd.hAdd ↦ 5367
+    [kernel] AddMonoid.toAdd ↦ 4370
+    [kernel] Functor.obj ↦ 4358
+    [kernel] HMul.hMul ↦ 2286
+    [kernel] Mul.mul ↦ 2286
+    [kernel] SheafOfModules.val ↦ 2278
+    [kernel] Ring.toSemiring ↦ 2234
+    [kernel] instHAdd ↦ 2218
+    [kernel] OfNat.ofNat ↦ 2038
+    [kernel] AddCommGroup.toAddCommMonoid ↦ 1956
+    [kernel] Quiver.Hom ↦ 1947
+    [kernel] ModuleCat.carrier ↦ 1940
+    [kernel] ModuleCat.isModule ↦ 1940
+    [kernel] ModuleCat.Hom.hom' ↦ 1760
+    [kernel] CategoryStruct.comp ↦ 1688
+    [kernel] HomologicalComplex.X ↦ 1652
+    [kernel] inferInstance ↦ 1551
+    [kernel] HSMul.hSMul ↦ 1266
+    [kernel] SMul.smul ↦ 1266
+    [kernel] AddMonoid.toZero ↦ 1160
+    [kernel] PresheafOfModules.Hom.app ↦ 1056
+    [kernel] Preadditive.homGroup ↦ 942
+    [kernel] instHSMul ↦ 913
+    [kernel] Semiring.toMonoid ↦ 898
+    [kernel] Semiring.toAddCommMonoid ↦ 896
+    [kernel] SheafOfModules.Hom.val ↦ 748
+    [kernel] NegZeroClass.toZero ↦ 692
+    [kernel] SubNegZeroMonoid.toNegZeroClass ↦ 692
+    [kernel] SubNegZeroMonoid.toSubNegMonoid ↦ 692
+    [kernel] SubtractionCommMonoid.toSubtractionMonoid ↦ 692
+    [kernel] HasZeroMorphisms.zero ↦ 686
+    [kernel] AddCommMonoid.toAddMonoid ↦ 684
+    [kernel] NatCast.natCast ↦ 683
+    [kernel] Monoid.toMul ↦ 674
+    [kernel] Semiring.toNatCast ↦ 673
+    [kernel] Equiv.invFun ↦ 631
+    [kernel] ZSMul.zsmul ↦ 592
+    [kernel] CategoryTheory.Functor.map ↦ 520
+    [kernel] Category.toCategoryStruct ↦ 508
+    [kernel] AddZeroClass.toZero ↦ 470
+    [kernel] Equiv.toFun ↦ 466
+    [kernel] Function.Injective.subNegMonoid ↦ 464
+    [kernel] Equiv.addCommGroup ↦ 462
+    [kernel] Function.Injective.addCommGroup ↦ 462
+    [kernel] Function.Injective.addGroup ↦ 462
+    [kernel] Int.casesOn ↦ 451
+    [kernel] SubNegMonoid.toZSMul ↦ 449
+    [kernel] ZSMul.toSMul ↦ 449
+    [kernel] Functor.FullyFaithful.preimage ↦ 420
+    [kernel] PresheafOfModules.instAddCommGroupHom ↦ 404
+    [kernel] SheafOfModules.instAddCommGroupHom ↦ 404
+    [kernel] Functor.FullyFaithful.homEquiv ↦ 404
+    [kernel] CategoryStruct.toQuiver ↦ 395
+    [kernel] ModuleCat.moduleCategory ↦ 375
+    [kernel] Decidable.casesOn ↦ 362
+    [kernel] Zero.toOfNat0 ↦ 362
+    [kernel] Zero.zero ↦ 362
+    [kernel] ModuleCat.of ↦ 356
+    [kernel] ModuleCat.RestrictScalars.obj' ↦ 356
+    [kernel] ite ↦ 355
+    [kernel] PresheafOfModules.map ↦ 352
+    [kernel] AddMonoid.toAddZeroClass ↦ 273
+    [kernel] AddZeroClass.toAddZero ↦ 269
+    [kernel] Int.add.match_1 ↦ 267
+    [kernel] HomologicalComplex.d ↦ 264
+    [kernel] Function.Injective.addMonoid ↦ 249
+    [kernel] AddZero.toZero ↦ 242
+    [kernel] RingCat.carrier ↦ 234
+    [kernel] SingleFunctors.functor ↦ 231
+    [kernel] RingCat.ring ↦ 229
+    [kernel] Equiv.smul ↦ 228
+    [kernel] instHMul ↦ 227
+    [kernel] Monoid.toOne ↦ 227
+    [kernel] Semiring.toNonAssocSemiring ↦ 226
+    [kernel] Equiv.zero ↦ 224
+    [kernel] Units.instSMul ↦ 224
+    [kernel] Function.Injective.addZeroClass ↦ 224
+    [kernel] AddCommGroup.toDivisionAddCommMonoid ↦ 222
+    [kernel] RingCat.instRingObjForgetRingHomCarrier ↦ 222
+    [kernel] SubtractionMonoid.toSubNegMonoid ↦ 222
+    [kernel] SubtractionMonoid.toSubNegZeroMonoid ↦ 222
+    [kernel] Int.decEq ↦ 205
+    [kernel] Int.instDecidableEq ↦ 205
+    [kernel] ObjectProperty.FullSubcategory.obj ↦ 205
+    [kernel] toPreadditive ↦ 187
+    [kernel] PresheafOfModules.instZeroHom ↦ 180
+    [kernel] zsmulRec ↦ 132
+    [kernel] zpowRec.match_1 ↦ 132
+    [kernel] NSMul.nsmul ↦ 130
+    [kernel] ModuleCat.restrictScalars ↦ 128
+    [kernel] Functor.comp ↦ 125
+    [kernel] DerivedCategory.Plus ↦ 107
+    [kernel] HomologicalComplex.Hom.f ↦ 100
+    [kernel] Quotient.as ↦ 92
+    [kernel] ModuleSheaf ↦ 92
+    [kernel] HasDerivedCategory ↦ 90
+    [kernel] Opposite.unop ↦ 88
+    [kernel] DFunLike.coe ↦ 84
+    [kernel] DerivedCategory.singleFunctor ↦ 83
+    [kernel] RingCat.Hom.hom' ↦ 82
+    [kernel] ConcreteCategory.hom ↦ 78
+    [kernel] RingCat.Hom.hom ↦ 78
+    [kernel] shiftFunctor ↦ 76
+    [kernel] Function.comp ↦ 76
+    [kernel] ShiftMkCore.F ↦ 76
+    [kernel] EquivLike.coe ↦ 72
+    [kernel] ObjectProperty.lift ↦ 69
+    [kernel] HomologicalComplex.single ↦ 67
+    [kernel] Nat.casesOn ↦ 66
+    [kernel] Int.add ↦ 62
+    [kernel] List.rec ↦ 62
+    [kernel] abelianOfAdjunction ↦ 57
+    [kernel] Int.rec ↦ 57
+    [kernel] SheafOfModules.instAbelian ↦ 57
+    [kernel] ofCoimageImageComparisonIsIso ↦ 57
+    [kernel] Classical.choose ↦ 56
+    [kernel] Exists.choose ↦ 56
+    [kernel] Subtype.val ↦ 56
+    [kernel] Classical.indefiniteDescription ↦ 54
+    [kernel] shiftMonoidalFunctor ↦ 51
+    [kernel] Discrete.functor ↦ 51
+    [kernel] HasShift.shift ↦ 51
+    [kernel] HomologicalComplexUpToQuasiIso.Q ↦ 49
+    [kernel] EquivLike.toFunLike ↦ 48
+    [kernel] Localization.Preadditive.addCommGroup ↦ 48
+    [kernel] Equiv.instEquivLike ↦ 46
+    [kernel] Localization.Preadditive.homEquiv ↦ 46
+    [kernel] MorphismProperty.Q' ↦ 45
+    [kernel] MorphismProperty.HasLocalization.L ↦ 45
+    [kernel] Iso.hom ↦ 42
+    [kernel] Iso.inv ↦ 42
+    [kernel] moduleDerivedInverseImage ↦ 42
+    [kernel] AddSemigroup.toAdd ↦ 41
+    [kernel] Preadditive.preadditiveHasZeroMorphisms ↦ 41
+    [kernel] hasShiftMk ↦ 40
+    [kernel] HPow.hPow ↦ 40
+    [kernel] Pow.pow ↦ 40
+    [kernel] Functor.commShiftIso ↦ 40
+    [kernel] CochainComplex.shiftFunctor ↦ 36
+    [kernel] List.casesOn ↦ 36
+    [kernel] ULift.down ↦ 36
+    [kernel] DerivedCategory.Q ↦ 33
+    [kernel] Equivalence.inverse ↦ 33
+    [kernel] Prefunctor.obj ↦ 32
+    [kernel] CochainComplex.singleFunctors ↦ 31
+    [kernel] DerivedCategory.singleFunctors ↦ 31
+    [kernel] SheafOfModules.instPreadditive ↦ 31
+    [kernel] SingleFunctors.postcomp ↦ 31
+    [kernel] Equiv.add ↦ 30
+    [kernel] Comma.right ↦ 30
+    [kernel] Functor.leftAdjoint ↦ 30
+    [kernel] Functor.leftKanExtension ↦ 30
+    [kernel] Functor.rightDerivedFunctorPlus ↦ 30
+    [kernel] Functor.totalRightDerived ↦ 30
+    [kernel] colimit ↦ 30
+    [kernel] getColimitCocone ↦ 30
+    [kernel] initial ↦ 30
+    [kernel] StructuredArrow.right ↦ 30
+    [kernel] Cocone.pt ↦ 30
+    [kernel] ColimitCocone.cocone ↦ 30
+    [kernel] colimit.cocone ↦ 30
+    [kernel] AddZeroClass.toAdd ↦ 29
+    [kernel] Neg.neg ↦ 27
+    [kernel] SingleFunctors.lift ↦ 27
+    [kernel] DerivedCategory.Plus.singleFunctors ↦ 27
+    [kernel] HSub.hSub ↦ 26
+    [kernel] Sub.sub ↦ 26
+    [kernel] Functor.objPreimage ↦ 26
+    [kernel] Localization.lift ↦ 26
+    [kernel] DerivedCategory.Plus.singleFunctor ↦ 26
+    [kernel] Functor.essImage.witness ↦ 26
+    [kernel] SheafOfModules.forget ↦ 25
+    [kernel] ModuleCat.Sheaf.ConstantRing.constantRing ↦ 25
+    [kernel] ShiftedHom ↦ 24
+    [kernel] moduleDerivedDirectImage ↦ 24
+    [kernel] AddZero.toAdd ↦ 23
+    [kernel] Sheaf ↦ 23
+    [kernel] inducedFunctor ↦ 23
+    [kernel] ObjectProperty.ι ↦ 23
+    [kernel] Function.Injective.addSemigroup ↦ 23
+    [kernel] PresheafOfModules.instCategory ↦ 22
+    [kernel] SheafOfModules.fullyFaithfulForget ↦ 22
+    [kernel] SheafOfModules.instCategory ↦ 22
+    [kernel] constantRing ↦ 22
+    [kernel] Functor.asEquivalence ↦ 21
+    [kernel] Functor.inv ↦ 21
+    [kernel] Localization.functorEquivalence ↦ 21
+  use `set_option diagnostics.threshold <num>` to control threshold for reporting counters

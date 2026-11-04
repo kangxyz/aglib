@@ -1,0 +1,105 @@
+import Aglib.AlgebraicGeometry.EtaleCohomology.Kunneth.ProductDirectImageComponent
+import Aglib.CategoryTheory.Shift.AdjunctValue
+
+open CategoryTheory CategoryTheory.Abelian CategoryTheory.Limits
+
+noncomputable section
+
+
+namespace AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients
+
+universe u wS wX wS' wX'
+
+attribute [local instance] hasSheafifyLarge hasSheafifyModules
+  CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard
+
+variable (Λ : Type (u + 1)) [Ring Λ] {X S X' S' : Scheme.{u}}
+  (f : X ⟶ S) (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
+  (h : f' ≫ g = g' ≫ f)
+  [HasDerivedCategory.{wS} (ModuleSheaf S Λ)]
+  [HasDerivedCategory.{wX} (ModuleSheaf X Λ)]
+  [HasDerivedCategory.{wS'} (ModuleSheaf S' Λ)]
+  [HasDerivedCategory.{wX'} (ModuleSheaf X' Λ)]
+
+local notation "A" => DerivedCategory.Plus (ModuleSheaf S Λ)
+local notation "B" => DerivedCategory.Plus (ModuleSheaf X Λ)
+local notation "C" => DerivedCategory.Plus (ModuleSheaf S' Λ)
+local notation "D" => DerivedCategory.Plus (ModuleSheaf X' Λ)
+local notation "L₁" => moduleDerivedInverseImage Λ f
+local notation "L₂" => moduleDerivedInverseImage Λ f'
+local notation "R₁" => moduleDerivedDirectImage Λ f
+local notation "R₂" => moduleDerivedDirectImage Λ f'
+local notation "U" => moduleDerivedInverseImage Λ g
+local notation "V" => moduleDerivedInverseImage Λ g'
+local notation "adj₁" => moduleDerivedAdjunction Λ f
+local notation "adj₂" => moduleDerivedAdjunction Λ f'
+local notation "β" => moduleDerivedBaseChangeMap Λ f f' g g' h
+
+/-- The original module exchange carries the specified original regraded component. -/
+abbrev moduleDerivedBaseChangeMap_regradedValue
+    {I Iq : A} {J K : B} {I' Iq' : C} {J' K' : D}
+    (e : (L₁).obj I ≅ J) (e' : (L₂).obj I' ≅ J')
+    (u : (U).obj I ≅ I') (t : (V).obj K ≅ K')
+    {q : ℤ} (x : ShiftedHom J K q) (y : ShiftedHom J' K' q)
+    (hs : ShiftedMateValue adj₁ adj₂ β e e' u t x y)
+    (η : I⟦-q⟧ ≅ Iq) (η' : I'⟦-q⟧ ≅ Iq')
+    {c : Iq ⟶ (R₁).obj K} (hc : RegradedComponentValue adj₁ e η x c)
+    {m : Iq' ⟶ (R₂).obj K'}
+    (hm : TransportedComponentValue U ((U).shiftedSingleIsoOfIso q η η' u)
+      c ((β).app K ≫ (R₂).map t.hom) m) :=
+  regradedComponent_of_shiftedMateValue adj₁ adj₂ β e e' u t x y hs η η' hc hm
+
+end AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients
+
+namespace AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients
+
+open Scheme.OverField Scheme.OverField.Curve
+
+universe u wS wY wX wZ wEY wEZ
+
+attribute [local instance] hasSheafifyLarge hasSheafifyModules
+  CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard
+
+variable {k : Type u} [Field k] [IsAlgClosed k] {Y : FScheme k} (hY : Curve.Properties Y)
+  (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : k))
+  {X : Scheme.{u}} (f : X ⟶ Base k)
+  [HasDerivedCategory.{wS} (ModuleSheaf (Base k) (ULift.{u + 1} (ZMod n)))]
+  [HasDerivedCategory.{wY} (ModuleSheaf Y.left (ULift.{u + 1} (ZMod n)))]
+  [HasDerivedCategory.{wX} (ModuleSheaf X (ULift.{u + 1} (ZMod n)))]
+  [HasDerivedCategory.{wZ} (ModuleSheaf (pullback f Y.hom) (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wEY} (ModuleSheaf Y.left (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wEZ} (ModuleSheaf (pullback f Y.hom) (ULift.{u + 1} (ZMod n)))]
+
+/-- Each original product component is the original regraded adjunct of the
+pullback of the corresponding original right-factor basis class. -/
+set_option diagnostics true in
+abbrev properCurveProductConstantDirectImageMap_component_value :=
+  fun i : ProperCurveGradeIndex (coherentGenus k Y) =>
+    let Λ := ULift.{u + 1} (ZMod n)
+    let S := Base k
+    let p := pullback.fst f Y.hom
+    let q := pullback.snd f Y.hom
+    let g := Y.hom
+    let sq := (IsPullback.of_hasPullback f Y.hom).flip
+    let e := (moduleInverseImage g Λ).rightDerivedFunctorPlusSingleIsoOfIso 0
+      (moduleUnitInverseImageIso g n)
+    let v := (moduleInverseImage q Λ).rightDerivedFunctorPlusSingleIsoOfIso 0
+      (moduleUnitInverseImageIso q n)
+    let d := i.1.val
+    let η := ((DerivedCategory.Plus.singleFunctors (ModuleSheaf S Λ)).shiftIso
+      (-(d : ℤ)) (d : ℤ) 0 (by omega)).app (moduleUnit S Λ)
+    let η' := ((DerivedCategory.Plus.singleFunctors (ModuleSheaf X Λ)).shiftIso
+      (-(d : ℤ)) (d : ℤ) 0 (by omega)).app (moduleUnit X Λ)
+    let b := properCurveConstantModuleExtBasis hY n hn hunit d i.2
+    let y := constantModuleExtPullback.{u, wEY, wEZ} n q d b
+    let hx := properCurveConstantDirectImageSplitComponent_hom_value hY n hn hunit i
+    let h := constantModuleExtPullback_shiftedMateValue g p f q sq.w.symm n d b
+    let e' := (moduleInverseImage p Λ).rightDerivedFunctorPlusSingleIsoOfIso 0
+      (moduleUnitInverseImageIso p n)
+    let u := (moduleInverseImage f Λ).rightDerivedFunctorPlusSingleIsoOfIso 0
+      (moduleUnitInverseImageIso f n)
+    moduleDerivedBaseChangeMap_regradedValue Λ g p f q sq.w.symm e e' u v
+      b.homPlus y.homPlus h η η' hx
+      (properCurveProductConstantDirectImageMap_component hY n hn hunit f i)
+
+end AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients

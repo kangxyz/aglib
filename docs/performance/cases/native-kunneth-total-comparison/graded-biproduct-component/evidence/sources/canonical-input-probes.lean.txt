@@ -1,0 +1,128 @@
+import Aglib.AlgebraicGeometry.EtaleCohomology.Kunneth.ProductDirectImageComponent
+
+open CategoryTheory CategoryTheory.Abelian CategoryTheory.Limits
+noncomputable section
+
+namespace AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients
+
+open Scheme.OverField Scheme.OverField.Curve
+
+universe u wS wY wX wZ wEY wEZ
+
+attribute [local instance] hasSheafifyLarge hasSheafifyModules
+  CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard
+
+variable {k : Type u} [Field k] [IsAlgClosed k] {Y : FScheme k} (hY : Curve.Properties Y)
+  (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : k))
+  {X : Scheme.{u}} (f : X ⟶ Base k)
+  [HasDerivedCategory.{wS} (ModuleSheaf (Base k) (ULift.{u + 1} (ZMod n)))]
+  [HasDerivedCategory.{wY} (ModuleSheaf Y.left (ULift.{u + 1} (ZMod n)))]
+  [HasDerivedCategory.{wX} (ModuleSheaf X (ULift.{u + 1} (ZMod n)))]
+  [HasDerivedCategory.{wZ} (ModuleSheaf (pullback f Y.hom) (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wEY} (ModuleSheaf Y.left (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wEZ} (ModuleSheaf (pullback f Y.hom) (ULift.{u + 1} (ZMod n)))]
+
+set_option diagnostics true in
+abbrev shiftInput :=
+  fun i : ProperCurveGradeIndex (coherentGenus k Y) =>
+    let Λ := ULift.{u + 1} (ZMod n)
+    let p := pullback.fst f Y.hom
+    let q := pullback.snd f Y.hom
+    let g := Y.hom
+    let sq := (IsPullback.of_hasPullback f Y.hom).flip
+    let e := (moduleInverseImage g Λ).rightDerivedFunctorPlusSingleIsoOfIso 0
+      (moduleUnitInverseImageIso g n)
+    let v := (moduleInverseImage q Λ).rightDerivedFunctorPlusSingleIsoOfIso 0
+      (moduleUnitInverseImageIso q n)
+    let d := i.1.val
+
+
+    let b := properCurveConstantModuleExtBasis hY n hn hunit d i.2
+    let y := constantModuleExtPullback.{u, wEY, wEZ} n q d b
+    let e' := (moduleInverseImage p Λ).rightDerivedFunctorPlusSingleIsoOfIso 0
+      (moduleUnitInverseImageIso p n)
+    let u := (moduleInverseImage f Λ).rightDerivedFunctorPlusSingleIsoOfIso 0
+      (moduleUnitInverseImageIso f n)
+    let ad := moduleDerivedAdjunction Λ g
+    let ad' := moduleDerivedAdjunction Λ p
+    let β := moduleDerivedBaseChangeMap Λ g p f q sq.w.symm
+
+
+
+
+    let hv : ShiftedMateValue ad ad' β e e' u v b.homPlus y.homPlus :=
+      constantModuleExtPullback_shiftedMateValue g p f q sq.w.symm n d b
+    hv
+
+set_option diagnostics true in
+abbrev fieldInput :=
+  fun i : ProperCurveGradeIndex (coherentGenus k Y) =>
+    let Λ := ULift.{u + 1} (ZMod n)
+    let S := Base k
+
+
+    let g := Y.hom
+
+    let e := (moduleInverseImage g Λ).rightDerivedFunctorPlusSingleIsoOfIso 0
+      (moduleUnitInverseImageIso g n)
+
+    let d := i.1.val
+    let η := ((DerivedCategory.Plus.singleFunctors (ModuleSheaf S Λ)).shiftIso
+      (-(d : ℤ)) (d : ℤ) 0 (by omega)).app (moduleUnit S Λ)
+
+    let b := properCurveConstantModuleExtBasis hY n hn hunit d i.2
+
+
+
+    let ad := moduleDerivedAdjunction Λ g
+
+
+
+
+
+    let c := moduleFieldDerivedFreeSplitComponent k Λ properCurveGradeDegree
+      (properCurveConstantDirectImage (X := Y) n)
+      (properCurveConstantDirectImageGradedBasis hY n hn hunit) i
+
+    let hv : RegradedComponentValue ad e η b.homPlus c :=
+      properCurveConstantDirectImageSplitComponent_hom_value hY n hn hunit i
+    hv
+
+set_option diagnostics true in
+abbrev productInput :=
+  fun i : ProperCurveGradeIndex (coherentGenus k Y) =>
+    let Λ := ULift.{u + 1} (ZMod n)
+    let S := Base k
+    let p := pullback.fst f Y.hom
+    let q := pullback.snd f Y.hom
+    let g := Y.hom
+    let sq := (IsPullback.of_hasPullback f Y.hom).flip
+
+    let v := (moduleInverseImage q Λ).rightDerivedFunctorPlusSingleIsoOfIso 0
+      (moduleUnitInverseImageIso q n)
+    let d := i.1.val
+    let η := ((DerivedCategory.Plus.singleFunctors (ModuleSheaf S Λ)).shiftIso
+      (-(d : ℤ)) (d : ℤ) 0 (by omega)).app (moduleUnit S Λ)
+    let η' := ((DerivedCategory.Plus.singleFunctors (ModuleSheaf X Λ)).shiftIso
+      (-(d : ℤ)) (d : ℤ) 0 (by omega)).app (moduleUnit X Λ)
+
+    let u := (moduleInverseImage f Λ).rightDerivedFunctorPlusSingleIsoOfIso 0
+      (moduleUnitInverseImageIso f n)
+
+
+    let β := moduleDerivedBaseChangeMap Λ g p f q sq.w.symm
+    let U := moduleDerivedInverseImage Λ f
+    let R := moduleDerivedDirectImage Λ p
+    let K := (DerivedCategory.Plus.singleFunctor (ModuleSheaf Y.left Λ) 0).obj
+      (moduleUnit Y.left Λ)
+    let c := moduleFieldDerivedFreeSplitComponent k Λ properCurveGradeDegree
+      (properCurveConstantDirectImage (X := Y) n)
+      (properCurveConstantDirectImageGradedBasis hY n hn hunit) i
+
+    let m := biproduct.ι _ i ≫ properCurveProductConstantDirectImageMap hY n hn hunit f
+    let hv : TransportedComponentValue U (U.shiftedSingleIsoOfIso d η η' u) c
+        (β.app K ≫ R.map v.hom) m :=
+      properCurveProductConstantDirectImageMap_component hY n hn hunit f i
+    hv
+
+end AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients

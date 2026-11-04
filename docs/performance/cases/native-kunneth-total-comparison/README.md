@@ -149,3 +149,5 @@ Its 21.61-GiB observed peak was for the supervisor's aggregate owned processes
 across the continuation, not this module alone. These different execution and
 source contexts are not a controlled comparison; the observations do not establish
 an OOM event or a minimum RAM requirement.
+
+The [graded biproduct component follow-up](graded-biproduct-component/README.md) records the native proper-curve étale Künneth comparison and its exact producer and test evidence.

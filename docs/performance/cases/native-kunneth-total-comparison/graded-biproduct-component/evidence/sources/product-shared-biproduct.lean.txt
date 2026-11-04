@@ -1,0 +1,116 @@
+import Aglib.AlgebraicGeometry.EtaleCohomology.Kunneth.ProductDirectImageComponent
+import Aglib.CategoryTheory.Shift.AdjunctValue
+
+open CategoryTheory CategoryTheory.Abelian CategoryTheory.Limits
+
+noncomputable section
+
+open scoped DirectSum
+
+namespace CategoryTheory
+
+open Limits
+
+/-- Transport a finite sum map through the original functor and component comparisons. -/
+def Functor.transportBiproduct {A C : Type*} [Category* A] [Category* C]
+    [HasZeroMorphisms A] [HasZeroMorphisms C] {I : Type}
+    (F : A ⥤ C) [F.PreservesZeroMorphisms] (P : I → A) (Q : I → C)
+    [HasBiproduct P] [HasBiproduct Q] [PreservesBiproduct P F]
+    (a : ∀ i, F.obj (P i) ≅ Q i) {K : A} {W : C}
+    (m : (⨁ P) ⟶ K) (w : F.obj K ⟶ W) : (⨁ Q) ⟶ W :=
+  (biproduct.mapIso a).inv ≫ (F.mapBiproduct P).inv ≫ F.map m ≫ w
+
+/-- Regrading evaluates the original transported biproduct component in one step. -/
+theorem regradedComponent_of_shiftedMateValue_biproduct
+    {A B C D : Type*} [Category* A] [Category* B] [Category* C] [Category* D]
+    [HasShift A ℤ] [HasShift B ℤ] [HasShift C ℤ] [HasShift D ℤ]
+    [HasZeroMorphisms A] [HasZeroMorphisms C]
+    {L₁ : A ⥤ B} {R₁ : B ⥤ A} {L₂ : C ⥤ D} {R₂ : D ⥤ C}
+    {U : A ⥤ C} {V : B ⥤ D}
+    [R₁.CommShift ℤ] [R₂.CommShift ℤ] [U.CommShift ℤ] [U.PreservesZeroMorphisms]
+    (adj₁ : L₁ ⊣ R₁) (adj₂ : L₂ ⊣ R₂) (β : R₁ ⋙ U ⟶ V ⋙ R₂)
+    {I₀ : A} {J K : B} {I₀' : C} {J' K' : D}
+    (e : L₁.obj I₀ ≅ J) (e' : L₂.obj I₀' ≅ J') (u : U.obj I₀ ≅ I₀') (t : V.obj K ≅ K')
+    {d : ℤ} (x : ShiftedHom J K d) (y : ShiftedHom J' K' d)
+    (hs : ShiftedMateValue adj₁ adj₂ β e e' u t x y)
+    {I : Type} (P : I → A) (Q : I → C) (i : I)
+    [HasBiproduct P] [HasBiproduct Q] [PreservesBiproduct P U]
+    (a : ∀ j, U.obj (P j) ≅ Q j) (η : I₀⟦-d⟧ ≅ P i) (η' : I₀'⟦-d⟧ ≅ Q i)
+    (ha : a i = U.shiftedSingleIsoOfIso d η η' u)
+    (c : ∀ j, P j ⟶ R₁.obj K)
+    (hc : RegradedComponentValue adj₁ e η x (c i))
+    (m : (⨁ P) ⟶ R₁.obj K) (hm : m = biproduct.desc c) :
+    RegradedComponentValue adj₂ e' η' y
+      (biproduct.ι Q i ≫ U.transportBiproduct P Q a m (β.app K ≫ R₂.map t.hom)) := by
+  let w := β.app K ≫ R₂.map t.hom
+  have ht := biproduct.mapIso_inv_mapBiproduct_inv_map_desc_ι U P Q a c m hm w i
+  rw [ha] at ht
+  apply regradedComponent_of_shiftedMateValue adj₁ adj₂ β e e' u t x y hs η η' hc
+  simpa only [Functor.transportBiproduct, Category.assoc] using ht
+
+end CategoryTheory
+
+
+namespace AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients
+
+open Scheme.OverField Scheme.OverField.Curve
+
+universe u wS wY wX wZ wEY wEZ
+
+attribute [local instance] hasSheafifyLarge hasSheafifyModules
+  CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard
+
+variable {k : Type u} [Field k] [IsAlgClosed k] {Y : FScheme k} (hY : Curve.Properties Y)
+  (n : ℕ) (hn : 0 < n) (hunit : IsUnit (n : k))
+  {X : Scheme.{u}} (f : X ⟶ Base k)
+  [HasDerivedCategory.{wS} (ModuleSheaf (Base k) (ULift.{u + 1} (ZMod n)))]
+  [HasDerivedCategory.{wY} (ModuleSheaf Y.left (ULift.{u + 1} (ZMod n)))]
+  [HasDerivedCategory.{wX} (ModuleSheaf X (ULift.{u + 1} (ZMod n)))]
+  [HasDerivedCategory.{wZ} (ModuleSheaf (pullback f Y.hom) (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wEY} (ModuleSheaf Y.left (ULift.{u + 1} (ZMod n)))]
+  [HasExt.{wEZ} (ModuleSheaf (pullback f Y.hom) (ULift.{u + 1} (ZMod n)))]
+
+set_option diagnostics true in
+/-- Each original product component is the original regraded adjunct of the
+pullback of the corresponding original right-factor basis class. -/
+abbrev properCurveProductConstantDirectImageMap_component_value :=
+  fun i : ProperCurveGradeIndex (coherentGenus k Y) =>
+    let Λ := ULift.{u + 1} (ZMod n)
+    let S := Base k
+    let p := pullback.fst f Y.hom
+    let q := pullback.snd f Y.hom
+    let g := Y.hom
+    let sq := (IsPullback.of_hasPullback f Y.hom).flip
+    let e := (moduleInverseImage g Λ).rightDerivedFunctorPlusSingleIsoOfIso 0
+      (moduleUnitInverseImageIso g n)
+    let v := (moduleInverseImage q Λ).rightDerivedFunctorPlusSingleIsoOfIso 0
+      (moduleUnitInverseImageIso q n)
+    let d := i.1.val
+    let η := ((DerivedCategory.Plus.singleFunctors (ModuleSheaf S Λ)).shiftIso
+      (-(d : ℤ)) (d : ℤ) 0 (by omega)).app (moduleUnit S Λ)
+    let η' := ((DerivedCategory.Plus.singleFunctors (ModuleSheaf X Λ)).shiftIso
+      (-(d : ℤ)) (d : ℤ) 0 (by omega)).app (moduleUnit X Λ)
+    let b := properCurveConstantModuleExtBasis hY n hn hunit d i.2
+    let y := constantModuleExtPullback.{u, wEY, wEZ} n q d b
+    let hx := properCurveConstantDirectImageSplitComponent_hom_value hY n hn hunit i
+    let h := constantModuleExtPullback_shiftedMateValue g p f q sq.w.symm n d b
+    let e' := (moduleInverseImage p Λ).rightDerivedFunctorPlusSingleIsoOfIso 0
+      (moduleUnitInverseImageIso p n)
+    let u := (moduleInverseImage f Λ).rightDerivedFunctorPlusSingleIsoOfIso 0
+      (moduleUnitInverseImageIso f n)
+    let I := ProperCurveGradeIndex (coherentGenus k Y)
+    let P := moduleFieldDerivedFreeSplitUnits k Λ (properCurveGradeDegree (genus :=
+      coherentGenus k Y))
+    let Q (j : I) := (DerivedCategory.Plus.singleFunctor (ModuleSheaf X Λ)
+      (properCurveGradeDegree j)).obj (moduleUnit X Λ)
+    let a (j : I) := properCurveProductUnitGradeIso f n (properCurveGradeDegree j)
+    let K := properCurveConstantDirectImage (X := Y) n
+    let c := moduleFieldDerivedFreeSplitComponent k Λ properCurveGradeDegree K
+      (properCurveConstantDirectImageGradedBasis hY n hn hunit)
+    regradedComponent_of_shiftedMateValue_biproduct
+      (moduleDerivedAdjunction Λ g) (moduleDerivedAdjunction Λ p)
+      (moduleDerivedBaseChangeMap Λ g p f q sq.w.symm) e e' u v b.homPlus y.homPlus h
+      P Q i a η η' rfl c hx (properCurveConstantDirectImageSplitIso hY n hn hunit).hom
+      (properCurveConstantDirectImageSplitIso_hom hY n hn hunit)
+
+end AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients

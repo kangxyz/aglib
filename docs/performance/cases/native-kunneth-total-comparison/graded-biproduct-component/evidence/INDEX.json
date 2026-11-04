@@ -1,0 +1,350 @@
+{
+  "candidate_sources": [
+    {
+      "bytes": 5121,
+      "original_path": "/private/tmp/r5-investigations/jacobian/resume-20261104/root/E5ProductCanonicalHeads.lean",
+      "path": "evidence/sources/product-canonical-heads.lean.txt",
+      "role": "product-canonical-heads exact candidate source",
+      "sha256": "57c40795270e6a59bfc14123b31bcd66a443e5c496409ba97eaf32e25542743c"
+    },
+    {
+      "bytes": 4877,
+      "original_path": "/private/tmp/r5-investigations/jacobian/resume-20261104/root/E5CanonicalInputProbes.lean",
+      "path": "evidence/sources/canonical-input-probes.lean.txt",
+      "role": "canonical-input-probes exact candidate source",
+      "sha256": "15f6eafdc4577d9018c9844a933293e9b03757f6f0becb4b763fcd2d9ea03417"
+    },
+    {
+      "bytes": 6059,
+      "original_path": "/private/tmp/r5-investigations/jacobian/resume-20261104/root/E5ProductSharedBiproduct.lean",
+      "path": "evidence/sources/product-shared-biproduct.lean.txt",
+      "role": "product-shared-biproduct exact candidate source",
+      "sha256": "4aeaee0a6ec214c409bcaccd2cdfae56a36c7e4507b62fcab89b9abba2b35132"
+    }
+  ],
+  "checkout": {
+    "head": "367929e8a6c427ceb10a3e685c9a6bd796754752",
+    "path": "/Users/kang/Documents/New project/tmp/work/jacobian/main-ready-5901"
+  },
+  "common_source_content_sha256": "acf00f504cf90fafad70c5da8f04e07b6979ab4c64fe8b1d31304bde93325721",
+  "mathematical_boundary": "This is a fixed evidence inventory, not a proof or mathematical acceptance verdict.",
+  "native_package_run": {
+    "coverage_boundary": "This is a source-bound package run including the final ProperCurve theorem and its axiom-guard mirror. These are separate from the isolated scratch candidate runs above; no speedup inference is made.",
+    "elapsed_seconds": 75.24729982018471,
+    "exit_code": 0,
+    "files": [
+      {
+        "bytes": 13794,
+        "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-7276fab5fd3b4d39b16950e85cc993fe/recovery-qhfy431p/receipt.json",
+        "path": "evidence/runs/remote-7276fab5fd3b4d39b16950e85cc993fe/receipt.json",
+        "role": "native run receipt.json",
+        "sha256": "7cd6061a0754cc304b5de4038d23f25ca01d02638edc312d3dc91f823c1d17d2"
+      },
+      {
+        "bytes": 783,
+        "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-7276fab5fd3b4d39b16950e85cc993fe/recovery-qhfy431p/build.log",
+        "path": "evidence/runs/remote-7276fab5fd3b4d39b16950e85cc993fe/build.log",
+        "role": "native run build.log",
+        "sha256": "eb39573756e7727c4b806226021d0ab688eb1eff90125ae333577b84bd1d4acb"
+      },
+      {
+        "bytes": 18957,
+        "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-7276fab5fd3b4d39b16950e85cc993fe/recovery-qhfy431p/compiler-events.jsonl",
+        "path": "evidence/runs/remote-7276fab5fd3b4d39b16950e85cc993fe/compiler-events.jsonl",
+        "role": "native run compiler-events.jsonl",
+        "sha256": "ee05767be1c4654fa8fb56de2f9ad4bc97c73a5d9ae74a2c55d53db6e63f0cc1"
+      }
+    ],
+    "frontend_failed": 0,
+    "frontend_invocations": 8,
+    "frontend_succeeded": 8,
+    "group_closed": true,
+    "label": "native integrated producer component and final proper-curve consumer",
+    "original_directory": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-7276fab5fd3b4d39b16950e85cc993fe/recovery-qhfy431p",
+    "outcome": "native_build_completed",
+    "pins": [
+      {
+        "bytes": 25,
+        "original_path": "/Users/kang/Documents/New project/tmp/work/jacobian/main-ready-5901/lean-toolchain",
+        "path": "evidence/pins/lean-toolchain",
+        "role": "native run pin/configuration",
+        "sha256": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+      },
+      {
+        "bytes": 3539,
+        "original_path": "/Users/kang/Documents/New project/tmp/work/jacobian/main-ready-5901/lake-manifest.json",
+        "path": "evidence/pins/lake-manifest.json",
+        "role": "native run pin/configuration",
+        "sha256": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2"
+      },
+      {
+        "bytes": 1164,
+        "original_path": "/Users/kang/Documents/New project/tmp/work/jacobian/main-ready-5901/lakefile.toml",
+        "path": "evidence/pins/lakefile.toml",
+        "role": "native run pin/configuration",
+        "sha256": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852"
+      }
+    ],
+    "receipt_sha256": "7cd6061a0754cc304b5de4038d23f25ca01d02638edc312d3dc91f823c1d17d2",
+    "run_id": "remote-7276fab5fd3b4d39b16950e85cc993fe",
+    "selected_targets": [
+      {
+        "build_log_time": "2.1s",
+        "module": "Aglib.CategoryTheory.Shift.BiproductTransport",
+        "result": "pass"
+      },
+      {
+        "build_log_time": "1.8s",
+        "module": "AglibTest.CategoryTheory.Shift.BiproductTransport",
+        "result": "pass"
+      },
+      {
+        "build_log_time": "13s",
+        "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Kunneth.ProductDirectImage",
+        "result": "pass"
+      },
+      {
+        "build_log_time": "9.2s",
+        "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Kunneth.ProductDirectImageComponent",
+        "result": "pass"
+      },
+      {
+        "build_log_time": "4.6s",
+        "module": "AglibTest.AlgebraicGeometry.EtaleCohomology.Kunneth.ProductDirectImage",
+        "result": "pass"
+      },
+      {
+        "build_log_time": "4.5s",
+        "module": "AglibTest.AlgebraicGeometry.EtaleCohomology.Kunneth.ProductDirectImageComponent",
+        "result": "pass"
+      },
+      {
+        "build_log_time": "24s",
+        "declaration": "constantModuleExtKunnethMap_bijective_properCurve",
+        "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Kunneth.ProperCurve",
+        "result": "pass"
+      },
+      {
+        "build_log_time": "4.4s",
+        "declaration": "#print axioms constantModuleExtKunnethMap_bijective_properCurve",
+        "module": "AglibTest.AlgebraicGeometry.EtaleCohomology.Kunneth.ProperCurve",
+        "result": "pass"
+      }
+    ],
+    "source_content_sha256": "02eb965fbd71bf73891d5f5706eb8535435e9522e6d194151017ddb3ee66d734",
+    "source_snapshots": [
+      {
+        "bytes": 3707,
+        "original_path": "/Users/kang/Documents/New project/tmp/work/jacobian/main-ready-5901/Aglib/CategoryTheory/Shift/BiproductTransport.lean",
+        "path": "evidence/sources/native/Aglib-CategoryTheory-Shift-BiproductTransport.lean.txt",
+        "receipt_input_sha256": null,
+        "repository_path": "Aglib/CategoryTheory/Shift/BiproductTransport.lean",
+        "role": "BiproductTransport production source snapshot",
+        "sha256": "6f691f0556d1c69a5da1e0967d9ffbfb12ad745e6919c839fb86b0cf201ac4d2"
+      },
+      {
+        "bytes": 540,
+        "original_path": "/Users/kang/Documents/New project/tmp/work/jacobian/main-ready-5901/AglibTest/CategoryTheory/Shift/BiproductTransport.lean",
+        "path": "evidence/sources/native/AglibTest-CategoryTheory-Shift-BiproductTransport.lean.txt",
+        "receipt_input_sha256": "b904f5ab672f2309caf2288c46175fc810519c3cb3174f22df21c89166a65dc2",
+        "repository_path": "AglibTest/CategoryTheory/Shift/BiproductTransport.lean",
+        "role": "BiproductTransport test source snapshot",
+        "sha256": "b904f5ab672f2309caf2288c46175fc810519c3cb3174f22df21c89166a65dc2"
+      },
+      {
+        "bytes": 4830,
+        "original_path": "/Users/kang/Documents/New project/tmp/work/jacobian/main-ready-5901/Aglib/AlgebraicGeometry/EtaleCohomology/Kunneth/ProductDirectImage.lean",
+        "path": "evidence/sources/native/Aglib-AlgebraicGeometry-EtaleCohomology-Kunneth-ProductDirectImage.lean.txt",
+        "receipt_input_sha256": null,
+        "repository_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Kunneth/ProductDirectImage.lean",
+        "role": "ProductDirectImage production source snapshot",
+        "sha256": "043eb57565d9220e5d2720dae2600b6a5550e8e02331f317914fa4bb5adc6b56"
+      },
+      {
+        "bytes": 642,
+        "original_path": "/Users/kang/Documents/New project/tmp/work/jacobian/main-ready-5901/AglibTest/AlgebraicGeometry/EtaleCohomology/Kunneth/ProductDirectImage.lean",
+        "path": "evidence/sources/native/AglibTest-AlgebraicGeometry-EtaleCohomology-Kunneth-ProductDirectImage.lean.txt",
+        "receipt_input_sha256": "ce8cc107766a843fa031d9795f0aa1e8389b3db44d63917f64a5c38409e2825d",
+        "repository_path": "AglibTest/AlgebraicGeometry/EtaleCohomology/Kunneth/ProductDirectImage.lean",
+        "role": "ProductDirectImage test source snapshot",
+        "sha256": "ce8cc107766a843fa031d9795f0aa1e8389b3db44d63917f64a5c38409e2825d"
+      },
+      {
+        "bytes": 3869,
+        "original_path": "/Users/kang/Documents/New project/tmp/work/jacobian/main-ready-5901/Aglib/AlgebraicGeometry/EtaleCohomology/Kunneth/ProductDirectImageComponent.lean",
+        "path": "evidence/sources/native/Aglib-AlgebraicGeometry-EtaleCohomology-Kunneth-ProductDirectImageComponent.lean.txt",
+        "receipt_input_sha256": null,
+        "repository_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Kunneth/ProductDirectImageComponent.lean",
+        "role": "ProductDirectImageComponent production source snapshot",
+        "sha256": "eef43901eb462ad09b4cbcac47d46fed0624ee2cf7f9463aaa54d228ed759d12"
+      },
+      {
+        "bytes": 663,
+        "original_path": "/Users/kang/Documents/New project/tmp/work/jacobian/main-ready-5901/AglibTest/AlgebraicGeometry/EtaleCohomology/Kunneth/ProductDirectImageComponent.lean",
+        "path": "evidence/sources/native/AglibTest-AlgebraicGeometry-EtaleCohomology-Kunneth-ProductDirectImageComponent.lean.txt",
+        "receipt_input_sha256": "a19eef3add6959588cb177848c5e538bbd48f0d62c565c7f32b3ac08c8114a14",
+        "repository_path": "AglibTest/AlgebraicGeometry/EtaleCohomology/Kunneth/ProductDirectImageComponent.lean",
+        "role": "ProductDirectImageComponent test source snapshot",
+        "sha256": "a19eef3add6959588cb177848c5e538bbd48f0d62c565c7f32b3ac08c8114a14"
+      },
+      {
+        "bytes": 3396,
+        "original_path": "/Users/kang/Documents/New project/tmp/work/jacobian/main-ready-5901/Aglib/AlgebraicGeometry/EtaleCohomology/Kunneth/ProperCurve.lean",
+        "path": "evidence/sources/native/Aglib-AlgebraicGeometry-EtaleCohomology-Kunneth-ProperCurve.lean.txt",
+        "receipt_input_sha256": null,
+        "repository_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Kunneth/ProperCurve.lean",
+        "role": "ProperCurve production-final-consumer source snapshot",
+        "sha256": "ddad17d3d8e98c0d8ff4c06084516c27a80385f0e4ec56756464350f6d6d355f"
+      },
+      {
+        "bytes": 624,
+        "original_path": "/Users/kang/Documents/New project/tmp/work/jacobian/main-ready-5901/AglibTest/AlgebraicGeometry/EtaleCohomology/Kunneth/ProperCurve.lean",
+        "path": "evidence/sources/native/AglibTest-AlgebraicGeometry-EtaleCohomology-Kunneth-ProperCurve.lean.txt",
+        "receipt_input_sha256": "84f570562661290a564a1b6a238559a74c5c36d070513e9dae9ea811d193e732",
+        "repository_path": "AglibTest/AlgebraicGeometry/EtaleCohomology/Kunneth/ProperCurve.lean",
+        "role": "ProperCurve test-axiom-mirror source snapshot",
+        "sha256": "84f570562661290a564a1b6a238559a74c5c36d070513e9dae9ea811d193e732"
+      }
+    ],
+    "status": "succeeded",
+    "wall_seconds": 75.67411917448044
+  },
+  "native_source_identity": {
+    "exit_code": 0,
+    "frontends": "8/8",
+    "receipt_sha256": "7cd6061a0754cc304b5de4038d23f25ca01d02638edc312d3dc91f823c1d17d2",
+    "source_content_sha256": "02eb965fbd71bf73891d5f5706eb8535435e9522e6d194151017ddb3ee66d734",
+    "status": "succeeded"
+  },
+  "runs": [
+    {
+      "elapsed_seconds": 143.88853016495705,
+      "exit_code": 1,
+      "files": [
+        {
+          "bytes": 21200,
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-b4f4808dccea4580b5993b0e3175f9b9/receipt.json",
+          "path": "evidence/runs/remote-b4f4808dccea4580b5993b0e3175f9b9/receipt.json",
+          "role": "product-canonical-heads receipt.json",
+          "sha256": "e19d0513cb885f32715fdfbf949af0ac606b9883a28481679753482d813d4413"
+        },
+        {
+          "bytes": 11944,
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-b4f4808dccea4580b5993b0e3175f9b9/build.log",
+          "path": "evidence/runs/remote-b4f4808dccea4580b5993b0e3175f9b9/build.log",
+          "role": "product-canonical-heads build.log",
+          "sha256": "89732c75172b9ac49eed92800b9b87240bf56bc98b69fa85025405fe1c686c41"
+        },
+        {
+          "bytes": 1143,
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-b4f4808dccea4580b5993b0e3175f9b9/compiler-events.jsonl",
+          "path": "evidence/runs/remote-b4f4808dccea4580b5993b0e3175f9b9/compiler-events.jsonl",
+          "role": "product-canonical-heads compiler-events.jsonl",
+          "sha256": "877520ced9dfcbf986ba93c10977e389f3cfeffbb9d354c2cda4f1633efb7b9b"
+        }
+      ],
+      "first_diagnostics": [
+        "/root/autodl-tmp/lean-build/logs/remote-b4f4808dccea4580b5993b0e3175f9b9/candidate/ConditionalFieldAlternation.lean:74:67: error: unexpected token 'set_option'; expected 'lemma'",
+        "/root/autodl-tmp/lean-build/logs/remote-b4f4808dccea4580b5993b0e3175f9b9/candidate/ConditionalFieldAlternation.lean:76:7: error: (kernel) deterministic timeout"
+      ],
+      "frontend_failed": 1,
+      "frontend_invocations": 1,
+      "frontend_succeeded": 0,
+      "group_closed": true,
+      "label": "product-canonical-heads",
+      "original_directory": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-b4f4808dccea4580b5993b0e3175f9b9",
+      "outcome": "source_syntax",
+      "receipt_sha256": "e19d0513cb885f32715fdfbf949af0ac606b9883a28481679753482d813d4413",
+      "run_id": "remote-b4f4808dccea4580b5993b0e3175f9b9",
+      "source_content_sha256": "acf00f504cf90fafad70c5da8f04e07b6979ab4c64fe8b1d31304bde93325721",
+      "status": "failed"
+    },
+    {
+      "elapsed_seconds": 121.56246887147427,
+      "exit_code": 1,
+      "files": [
+        {
+          "bytes": 20422,
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-914b088501544a90b70d5efb0ba0ae45/receipt.json",
+          "path": "evidence/runs/remote-914b088501544a90b70d5efb0ba0ae45/receipt.json",
+          "role": "canonical-input-probes receipt.json",
+          "sha256": "b735af141316145404b702d0fdb51b02aa9efa8911b41480443e04010ddb5d6d"
+        },
+        {
+          "bytes": 43991,
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-914b088501544a90b70d5efb0ba0ae45/build.log",
+          "path": "evidence/runs/remote-914b088501544a90b70d5efb0ba0ae45/build.log",
+          "role": "canonical-input-probes build.log",
+          "sha256": "d39f6f44b52bec04a993e3c4c5c7567adaf8da8a653645d540c8fb9a44dae5ed"
+        },
+        {
+          "bytes": 1144,
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-914b088501544a90b70d5efb0ba0ae45/compiler-events.jsonl",
+          "path": "evidence/runs/remote-914b088501544a90b70d5efb0ba0ae45/compiler-events.jsonl",
+          "role": "canonical-input-probes compiler-events.jsonl",
+          "sha256": "d1f70285c222cdb9f3039af7c9e45593630f1e92ac13a0650f9df62b47b0ffd7"
+        }
+      ],
+      "first_diagnostics": [
+        "/root/autodl-tmp/lean-build/logs/remote-914b088501544a90b70d5efb0ba0ae45/candidate/ConditionalFieldAlternation.lean:38:0: error: Please, write a comment here or remove this line, but do not place empty lines within commands!"
+      ],
+      "frontend_failed": 1,
+      "frontend_invocations": 1,
+      "frontend_succeeded": 0,
+      "group_closed": true,
+      "label": "canonical-input-probes",
+      "original_directory": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-914b088501544a90b70d5efb0ba0ae45",
+      "outcome": "execution_failure",
+      "receipt_sha256": "b735af141316145404b702d0fdb51b02aa9efa8911b41480443e04010ddb5d6d",
+      "run_id": "remote-914b088501544a90b70d5efb0ba0ae45",
+      "source_content_sha256": "acf00f504cf90fafad70c5da8f04e07b6979ab4c64fe8b1d31304bde93325721",
+      "status": "failed"
+    },
+    {
+      "elapsed_seconds": 12.777489200234413,
+      "exit_code": 0,
+      "files": [
+        {
+          "bytes": 21873,
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-d4b2bc57db9640a89acb317c837da0b2/receipt.json",
+          "path": "evidence/runs/remote-d4b2bc57db9640a89acb317c837da0b2/receipt.json",
+          "role": "product-shared-biproduct receipt.json",
+          "sha256": "553b9016128e66caab5e875cdf310e969ed3996a9c0a5e04364fd9e0acb2eb6d"
+        },
+        {
+          "bytes": 19801,
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-d4b2bc57db9640a89acb317c837da0b2/build.log",
+          "path": "evidence/runs/remote-d4b2bc57db9640a89acb317c837da0b2/build.log",
+          "role": "product-shared-biproduct build.log",
+          "sha256": "828fbbc66cdf5654cfef77198b4625837b5100d4919f1d96d3b6cf8ac285b3b5"
+        },
+        {
+          "bytes": 1144,
+          "original_path": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-d4b2bc57db9640a89acb317c837da0b2/compiler-events.jsonl",
+          "path": "evidence/runs/remote-d4b2bc57db9640a89acb317c837da0b2/compiler-events.jsonl",
+          "role": "product-shared-biproduct compiler-events.jsonl",
+          "sha256": "902d81f69e800fa34f03e77be7eedc9b303d6901aed1f149751d5146ec118bbc"
+        }
+      ],
+      "first_diagnostics": [],
+      "frontend_failed": 0,
+      "frontend_invocations": 1,
+      "frontend_succeeded": 1,
+      "group_closed": true,
+      "label": "product-shared-biproduct",
+      "original_directory": "/Users/kang/Documents/New project/tmp/output/remote-lean-setup/aglib-jacobian-kunneth-field-runs/remote-d4b2bc57db9640a89acb317c837da0b2",
+      "outcome": "owned_phase_completed",
+      "receipt_sha256": "553b9016128e66caab5e875cdf310e969ed3996a9c0a5e04364fd9e0acb2eb6d",
+      "run_id": "remote-d4b2bc57db9640a89acb317c837da0b2",
+      "source_content_sha256": "acf00f504cf90fafad70c5da8f04e07b6979ab4c64fe8b1d31304bde93325721",
+      "status": "succeeded"
+    }
+  ],
+  "scope_boundary": [
+    "The canonical-head attempt reports an option-placement syntax error and a kernel timeout.",
+    "The canonical-input probes report style diagnostics on the first two probes and a kernel timeout on the product/third input; full log retained.",
+    "The shared-biproduct direct scratch candidate passed as one frontend.",
+    "The final ProperCurve consumer is now included in the passing native package run as a distinct target from the isolated E5 component candidates."
+  ],
+  "title": "E5 graded biproduct component: source-bound diagnostic evidence"
+}

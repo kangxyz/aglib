@@ -1,0 +1,375 @@
+{
+  "action": "phase",
+  "actor_executable": "/root/miniconda3/bin/python3.12",
+  "admission": {
+    "ceilings": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 1,
+      "lean_memory_mib": 49152,
+      "rss_limit_mib": 110592,
+      "threads": 4
+    },
+    "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+    "final_observation": {
+      "active_compilers_by_run": {},
+      "cpu_cores": 0.45085188791633296,
+      "cpu_usage_usec": 3317911084952,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 268435456,
+      "memory_current_bytes": 59468591104,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 0.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 43599708160
+    },
+    "initial_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-1240bf8673ec426882912cc2936ffcb8": 1,
+        "/root/autodl-tmp/lean-build/logs/remote-3299b444e07c4254ac4fe14752514208": 1
+      },
+      "cpu_cores": 3.1677023561181237,
+      "cpu_usage_usec": 3317887663532,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 3489660928,
+      "memory_current_bytes": 60505120768,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 1.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 44634034176
+    },
+    "max_frontends_if_alone": 1,
+    "mode": "elastic"
+  },
+  "allow_library_roots": false,
+  "cache_provenance": {
+    "configuration_sha256": {
+      "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+      "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852"
+    },
+    "environment": {
+      "LAKE_ARTIFACT_CACHE": "true",
+      "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+      "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+    },
+    "lookup": "native Lake traces/artifact cache; no per-dependency prior-hit claim"
+  },
+  "cgroup_average_cpu_cores": 1.831863101834638,
+  "cgroup_cpu_after": {
+    "nr_periods": 12145570,
+    "nr_throttled": 32120,
+    "system_usec": 260133170122,
+    "throttled_usec": 378038514,
+    "usage_usec": 3317911084952,
+    "user_usec": 3057777914830
+  },
+  "cgroup_cpu_attribution": "whole observed cgroup; may include unrelated activity",
+  "cgroup_cpu_before": {
+    "nr_periods": 12145443,
+    "nr_throttled": 32120,
+    "system_usec": 260127724107,
+    "throttled_usec": 378038514,
+    "usage_usec": 3317887678341,
+    "user_usec": 3057759954233
+  },
+  "cgroup_cpu_seconds_delta": 23.406611,
+  "cgroup_memory_events_after": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_before": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_delta": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "command": [
+    "/root/miniconda3/bin/python3.12",
+    "-c",
+    "\nfrom pathlib import Path\nimport base64,hashlib,json,os,subprocess,sys\nexpected,digest,data=sys.argv[1:]\nbasis=json.loads((Path.cwd().parent/'SOURCE.json').read_text())\nassert basis['content_sha256']==expected\np=Path(os.environ['LEAN']).parents[2]/'candidate'\np.mkdir()\nq=p/'ConditionalFieldAlternation.lean'\nsource=base64.b64decode(data,validate=True)\nassert hashlib.sha256(source).hexdigest()==digest\nq.write_bytes(source)\nprint(json.dumps({'candidate':str(q),'sha256':digest,'source':expected}),flush=True)\n# New standalone scratch proof only; this is not normal package acceptance.\nproc=subprocess.run([os.environ['LAKE'],'env',os.environ['LEAN'],'-DautoImplicit=false',\n '-DwarningAsError=true','-Dweak.linter.mathlibStandardSet=true','-Dweak.linter.style.longFile=1500',str(q)])\nraise SystemExit(proc.returncode)\n",
+    "acf00f504cf90fafad70c5da8f04e07b6979ab4c64fe8b1d31304bde93325721",
+    "4aeaee0a6ec214c409bcaccd2cdfae56a36c7e4507b62fcab89b9abba2b35132",
+    "aW1wb3J0IEFnbGliLkFsZ2VicmFpY0dlb21ldHJ5LkV0YWxlQ29ob21vbG9neS5LdW5uZXRoLlByb2R1Y3REaXJlY3RJbWFnZUNvbXBvbmVudAppbXBvcnQgQWdsaWIuQ2F0ZWdvcnlUaGVvcnkuU2hpZnQuQWRqdW5jdFZhbHVlCgpvcGVuIENhdGVnb3J5VGhlb3J5IENhdGVnb3J5VGhlb3J5LkFiZWxpYW4gQ2F0ZWdvcnlUaGVvcnkuTGltaXRzCgpub25jb21wdXRhYmxlIHNlY3Rpb24KCm9wZW4gc2NvcGVkIERpcmVjdFN1bQoKbmFtZXNwYWNlIENhdGVnb3J5VGhlb3J5CgpvcGVuIExpbWl0cwoKLy0tIFRyYW5zcG9ydCBhIGZpbml0ZSBzdW0gbWFwIHRocm91Z2ggdGhlIG9yaWdpbmFsIGZ1bmN0b3IgYW5kIGNvbXBvbmVudCBjb21wYXJpc29ucy4gLS8KZGVmIEZ1bmN0b3IudHJhbnNwb3J0Qmlwcm9kdWN0IHtBIEMgOiBUeXBlKn0gW0NhdGVnb3J5KiBBXSBbQ2F0ZWdvcnkqIENdCiAgICBbSGFzWmVyb01vcnBoaXNtcyBBXSBbSGFzWmVyb01vcnBoaXNtcyBDXSB7SSA6IFR5cGV9CiAgICAoRiA6IEEg4qWkIEMpIFtGLlByZXNlcnZlc1plcm9Nb3JwaGlzbXNdIChQIDogSSDihpIgQSkgKFEgOiBJIOKGkiBDKQogICAgW0hhc0JpcHJvZHVjdCBQXSBbSGFzQmlwcm9kdWN0IFFdIFtQcmVzZXJ2ZXNCaXByb2R1Y3QgUCBGXQogICAgKGEgOiDiiIAgaSwgRi5vYmogKFAgaSkg4omFIFEgaSkge0sgOiBBfSB7VyA6IEN9CiAgICAobSA6ICjiqIEgUCkg4p+2IEspICh3IDogRi5vYmogSyDin7YgVykgOiAo4qiBIFEpIOKftiBXIDo9CiAgKGJpcHJvZHVjdC5tYXBJc28gYSkuaW52IOKJqyAoRi5tYXBCaXByb2R1Y3QgUCkuaW52IOKJqyBGLm1hcCBtIOKJqyB3CgovLS0gUmVncmFkaW5nIGV2YWx1YXRlcyB0aGUgb3JpZ2luYWwgdHJhbnNwb3J0ZWQgYmlwcm9kdWN0IGNvbXBvbmVudCBpbiBvbmUgc3RlcC4gLS8KdGhlb3JlbSByZWdyYWRlZENvbXBvbmVudF9vZl9zaGlmdGVkTWF0ZVZhbHVlX2JpcHJvZHVjdAogICAge0EgQiBDIEQgOiBUeXBlKn0gW0NhdGVnb3J5KiBBXSBbQ2F0ZWdvcnkqIEJdIFtDYXRlZ29yeSogQ10gW0NhdGVnb3J5KiBEXQogICAgW0hhc1NoaWZ0IEEg4oSkXSBbSGFzU2hpZnQgQiDihKRdIFtIYXNTaGlmdCBDIOKEpF0gW0hhc1NoaWZ0IEQg4oSkXQogICAgW0hhc1plcm9Nb3JwaGlzbXMgQV0gW0hhc1plcm9Nb3JwaGlzbXMgQ10KICAgIHtM4oKBIDogQSDipaQgQn0ge1LigoEgOiBCIOKlpCBBfSB7TOKCgiA6IEMg4qWkIER9IHtS4oKCIDogRCDipaQgQ30KICAgIHtVIDogQSDipaQgQ30ge1YgOiBCIOKlpCBEfQogICAgW1LigoEuQ29tbVNoaWZ0IOKEpF0gW1LigoIuQ29tbVNoaWZ0IOKEpF0gW1UuQ29tbVNoaWZ0IOKEpF0gW1UuUHJlc2VydmVzWmVyb01vcnBoaXNtc10KICAgIChhZGrigoEgOiBM4oKBIOKKoyBS4oKBKSAoYWRq4oKCIDogTOKCgiDiiqMgUuKCgikgKM6yIDogUuKCgSDii5kgVSDin7YgViDii5kgUuKCgikKICAgIHtJ4oKAIDogQX0ge0ogSyA6IEJ9IHtJ4oKAJyA6IEN9IHtKJyBLJyA6IER9CiAgICAoZSA6IEzigoEub2JqIEnigoAg4omFIEopIChlJyA6IEzigoIub2JqIEnigoAnIOKJhSBKJykgKHUgOiBVLm9iaiBJ4oKAIOKJhSBJ4oKAJykgKHQgOiBWLm9iaiBLIOKJhSBLJykKICAgIHtkIDog4oSkfSAoeCA6IFNoaWZ0ZWRIb20gSiBLIGQpICh5IDogU2hpZnRlZEhvbSBKJyBLJyBkKQogICAgKGhzIDogU2hpZnRlZE1hdGVWYWx1ZSBhZGrigoEgYWRq4oKCIM6yIGUgZScgdSB0IHggeSkKICAgIHtJIDogVHlwZX0gKFAgOiBJIOKGkiBBKSAoUSA6IEkg4oaSIEMpIChpIDogSSkKICAgIFtIYXNCaXByb2R1Y3QgUF0gW0hhc0JpcHJvZHVjdCBRXSBbUHJlc2VydmVzQmlwcm9kdWN0IFAgVV0KICAgIChhIDog4oiAIGosIFUub2JqIChQIGopIOKJhSBRIGopICjOtyA6IEnigoDin6YtZOKfpyDiiYUgUCBpKSAozrcnIDogSeKCgCfin6YtZOKfpyDiiYUgUSBpKQogICAgKGhhIDogYSBpID0gVS5zaGlmdGVkU2luZ2xlSXNvT2ZJc28gZCDOtyDOtycgdSkKICAgIChjIDog4oiAIGosIFAgaiDin7YgUuKCgS5vYmogSykKICAgIChoYyA6IFJlZ3JhZGVkQ29tcG9uZW50VmFsdWUgYWRq4oKBIGUgzrcgeCAoYyBpKSkKICAgIChtIDogKOKogSBQKSDin7YgUuKCgS5vYmogSykgKGhtIDogbSA9IGJpcHJvZHVjdC5kZXNjIGMpIDoKICAgIFJlZ3JhZGVkQ29tcG9uZW50VmFsdWUgYWRq4oKCIGUnIM63JyB5CiAgICAgIChiaXByb2R1Y3QuzrkgUSBpIOKJqyBVLnRyYW5zcG9ydEJpcHJvZHVjdCBQIFEgYSBtICjOsi5hcHAgSyDiiasgUuKCgi5tYXAgdC5ob20pKSA6PSBieQogIGxldCB3IDo9IM6yLmFwcCBLIOKJqyBS4oKCLm1hcCB0LmhvbQogIGhhdmUgaHQgOj0gYmlwcm9kdWN0Lm1hcElzb19pbnZfbWFwQmlwcm9kdWN0X2ludl9tYXBfZGVzY1/OuSBVIFAgUSBhIGMgbSBobSB3IGkKICBydyBbaGFdIGF0IGh0CiAgYXBwbHkgcmVncmFkZWRDb21wb25lbnRfb2Zfc2hpZnRlZE1hdGVWYWx1ZSBhZGrigoEgYWRq4oKCIM6yIGUgZScgdSB0IHggeSBocyDOtyDOtycgaGMKICBzaW1wYSBvbmx5IFtGdW5jdG9yLnRyYW5zcG9ydEJpcHJvZHVjdCwgQ2F0ZWdvcnkuYXNzb2NdIHVzaW5nIGh0CgplbmQgQ2F0ZWdvcnlUaGVvcnkKCgpuYW1lc3BhY2UgQWxnZWJyYWljR2VvbWV0cnkuU2NoZW1lLkV0YWxlQ29ob21vbG9neS5Db2VmZmljaWVudHMKCm9wZW4gU2NoZW1lLk92ZXJGaWVsZCBTY2hlbWUuT3ZlckZpZWxkLkN1cnZlCgp1bml2ZXJzZSB1IHdTIHdZIHdYIHdaIHdFWSB3RVoKCmF0dHJpYnV0ZSBbbG9jYWwgaW5zdGFuY2VdIGhhc1NoZWFmaWZ5TGFyZ2UgaGFzU2hlYWZpZnlNb2R1bGVzCiAgQ2F0ZWdvcnlUaGVvcnkuVG9yc2lvblpNb2QuUmluZ2VkLmFiV0VxdWFsc0xvY2FsbHlCaWplY3RpdmVTdGFuZGFyZAoKdmFyaWFibGUge2sgOiBUeXBlIHV9IFtGaWVsZCBrXSBbSXNBbGdDbG9zZWQga10ge1kgOiBGU2NoZW1lIGt9IChoWSA6IEN1cnZlLlByb3BlcnRpZXMgWSkKICAobiA6IOKElSkgKGhuIDogMCA8IG4pIChodW5pdCA6IElzVW5pdCAobiA6IGspKQogIHtYIDogU2NoZW1lLnt1fX0gKGYgOiBYIOKftiBCYXNlIGspCiAgW0hhc0Rlcml2ZWRDYXRlZ29yeS57d1N9IChNb2R1bGVTaGVhZiAoQmFzZSBrKSAoVUxpZnQue3UgKyAxfSAoWk1vZCBuKSkpXQogIFtIYXNEZXJpdmVkQ2F0ZWdvcnkue3dZfSAoTW9kdWxlU2hlYWYgWS5sZWZ0IChVTGlmdC57dSArIDF9IChaTW9kIG4pKSldCiAgW0hhc0Rlcml2ZWRDYXRlZ29yeS57d1h9IChNb2R1bGVTaGVhZiBYIChVTGlmdC57dSArIDF9IChaTW9kIG4pKSldCiAgW0hhc0Rlcml2ZWRDYXRlZ29yeS57d1p9IChNb2R1bGVTaGVhZiAocHVsbGJhY2sgZiBZLmhvbSkgKFVMaWZ0Lnt1ICsgMX0gKFpNb2QgbikpKV0KICBbSGFzRXh0Lnt3RVl9IChNb2R1bGVTaGVhZiBZLmxlZnQgKFVMaWZ0Lnt1ICsgMX0gKFpNb2QgbikpKV0KICBbSGFzRXh0Lnt3RVp9IChNb2R1bGVTaGVhZiAocHVsbGJhY2sgZiBZLmhvbSkgKFVMaWZ0Lnt1ICsgMX0gKFpNb2QgbikpKV0KCnNldF9vcHRpb24gZGlhZ25vc3RpY3MgdHJ1ZSBpbgovLS0gRWFjaCBvcmlnaW5hbCBwcm9kdWN0IGNvbXBvbmVudCBpcyB0aGUgb3JpZ2luYWwgcmVncmFkZWQgYWRqdW5jdCBvZiB0aGUKcHVsbGJhY2sgb2YgdGhlIGNvcnJlc3BvbmRpbmcgb3JpZ2luYWwgcmlnaHQtZmFjdG9yIGJhc2lzIGNsYXNzLiAtLwphYmJyZXYgcHJvcGVyQ3VydmVQcm9kdWN0Q29uc3RhbnREaXJlY3RJbWFnZU1hcF9jb21wb25lbnRfdmFsdWUgOj0KICBmdW4gaSA6IFByb3BlckN1cnZlR3JhZGVJbmRleCAoY29oZXJlbnRHZW51cyBrIFkpID0+CiAgICBsZXQgzpsgOj0gVUxpZnQue3UgKyAxfSAoWk1vZCBuKQogICAgbGV0IFMgOj0gQmFzZSBrCiAgICBsZXQgcCA6PSBwdWxsYmFjay5mc3QgZiBZLmhvbQogICAgbGV0IHEgOj0gcHVsbGJhY2suc25kIGYgWS5ob20KICAgIGxldCBnIDo9IFkuaG9tCiAgICBsZXQgc3EgOj0gKElzUHVsbGJhY2sub2ZfaGFzUHVsbGJhY2sgZiBZLmhvbSkuZmxpcAogICAgbGV0IGUgOj0gKG1vZHVsZUludmVyc2VJbWFnZSBnIM6bKS5yaWdodERlcml2ZWRGdW5jdG9yUGx1c1NpbmdsZUlzb09mSXNvIDAKICAgICAgKG1vZHVsZVVuaXRJbnZlcnNlSW1hZ2VJc28gZyBuKQogICAgbGV0IHYgOj0gKG1vZHVsZUludmVyc2VJbWFnZSBxIM6bKS5yaWdodERlcml2ZWRGdW5jdG9yUGx1c1NpbmdsZUlzb09mSXNvIDAKICAgICAgKG1vZHVsZVVuaXRJbnZlcnNlSW1hZ2VJc28gcSBuKQogICAgbGV0IGQgOj0gaS4xLnZhbAogICAgbGV0IM63IDo9ICgoRGVyaXZlZENhdGVnb3J5LlBsdXMuc2luZ2xlRnVuY3RvcnMgKE1vZHVsZVNoZWFmIFMgzpspKS5zaGlmdElzbwogICAgICAoLShkIDog4oSkKSkgKGQgOiDihKQpIDAgKGJ5IG9tZWdhKSkuYXBwIChtb2R1bGVVbml0IFMgzpspCiAgICBsZXQgzrcnIDo9ICgoRGVyaXZlZENhdGVnb3J5LlBsdXMuc2luZ2xlRnVuY3RvcnMgKE1vZHVsZVNoZWFmIFggzpspKS5zaGlmdElzbwogICAgICAoLShkIDog4oSkKSkgKGQgOiDihKQpIDAgKGJ5IG9tZWdhKSkuYXBwIChtb2R1bGVVbml0IFggzpspCiAgICBsZXQgYiA6PSBwcm9wZXJDdXJ2ZUNvbnN0YW50TW9kdWxlRXh0QmFzaXMgaFkgbiBobiBodW5pdCBkIGkuMgogICAgbGV0IHkgOj0gY29uc3RhbnRNb2R1bGVFeHRQdWxsYmFjay57dSwgd0VZLCB3RVp9IG4gcSBkIGIKICAgIGxldCBoeCA6PSBwcm9wZXJDdXJ2ZUNvbnN0YW50RGlyZWN0SW1hZ2VTcGxpdENvbXBvbmVudF9ob21fdmFsdWUgaFkgbiBobiBodW5pdCBpCiAgICBsZXQgaCA6PSBjb25zdGFudE1vZHVsZUV4dFB1bGxiYWNrX3NoaWZ0ZWRNYXRlVmFsdWUgZyBwIGYgcSBzcS53LnN5bW0gbiBkIGIKICAgIGxldCBlJyA6PSAobW9kdWxlSW52ZXJzZUltYWdlIHAgzpspLnJpZ2h0RGVyaXZlZEZ1bmN0b3JQbHVzU2luZ2xlSXNvT2ZJc28gMAogICAgICAobW9kdWxlVW5pdEludmVyc2VJbWFnZUlzbyBwIG4pCiAgICBsZXQgdSA6PSAobW9kdWxlSW52ZXJzZUltYWdlIGYgzpspLnJpZ2h0RGVyaXZlZEZ1bmN0b3JQbHVzU2luZ2xlSXNvT2ZJc28gMAogICAgICAobW9kdWxlVW5pdEludmVyc2VJbWFnZUlzbyBmIG4pCiAgICBsZXQgSSA6PSBQcm9wZXJDdXJ2ZUdyYWRlSW5kZXggKGNvaGVyZW50R2VudXMgayBZKQogICAgbGV0IFAgOj0gbW9kdWxlRmllbGREZXJpdmVkRnJlZVNwbGl0VW5pdHMgayDOmyAocHJvcGVyQ3VydmVHcmFkZURlZ3JlZSAoZ2VudXMgOj0KICAgICAgY29oZXJlbnRHZW51cyBrIFkpKQogICAgbGV0IFEgKGogOiBJKSA6PSAoRGVyaXZlZENhdGVnb3J5LlBsdXMuc2luZ2xlRnVuY3RvciAoTW9kdWxlU2hlYWYgWCDOmykKICAgICAgKHByb3BlckN1cnZlR3JhZGVEZWdyZWUgaikpLm9iaiAobW9kdWxlVW5pdCBYIM6bKQogICAgbGV0IGEgKGogOiBJKSA6PSBwcm9wZXJDdXJ2ZVByb2R1Y3RVbml0R3JhZGVJc28gZiBuIChwcm9wZXJDdXJ2ZUdyYWRlRGVncmVlIGopCiAgICBsZXQgSyA6PSBwcm9wZXJDdXJ2ZUNvbnN0YW50RGlyZWN0SW1hZ2UgKFggOj0gWSkgbgogICAgbGV0IGMgOj0gbW9kdWxlRmllbGREZXJpdmVkRnJlZVNwbGl0Q29tcG9uZW50IGsgzpsgcHJvcGVyQ3VydmVHcmFkZURlZ3JlZSBLCiAgICAgIChwcm9wZXJDdXJ2ZUNvbnN0YW50RGlyZWN0SW1hZ2VHcmFkZWRCYXNpcyBoWSBuIGhuIGh1bml0KQogICAgcmVncmFkZWRDb21wb25lbnRfb2Zfc2hpZnRlZE1hdGVWYWx1ZV9iaXByb2R1Y3QKICAgICAgKG1vZHVsZURlcml2ZWRBZGp1bmN0aW9uIM6bIGcpIChtb2R1bGVEZXJpdmVkQWRqdW5jdGlvbiDOmyBwKQogICAgICAobW9kdWxlRGVyaXZlZEJhc2VDaGFuZ2VNYXAgzpsgZyBwIGYgcSBzcS53LnN5bW0pIGUgZScgdSB2IGIuaG9tUGx1cyB5LmhvbVBsdXMgaAogICAgICBQIFEgaSBhIM63IM63JyByZmwgYyBoeCAocHJvcGVyQ3VydmVDb25zdGFudERpcmVjdEltYWdlU3BsaXRJc28gaFkgbiBobiBodW5pdCkuaG9tCiAgICAgIChwcm9wZXJDdXJ2ZUNvbnN0YW50RGlyZWN0SW1hZ2VTcGxpdElzb19ob20gaFkgbiBobiBodW5pdCkKCmVuZCBBbGdlYnJhaWNHZW9tZXRyeS5TY2hlbWUuRXRhbGVDb2hvbW9sb2d5LkNvZWZmaWNpZW50cwo="
+  ],
+  "command_exit_code": 0,
+  "compiler_exit_codes": [
+    0
+  ],
+  "compiler_failed": 0,
+  "compiler_invocations": 1,
+  "compiler_observation": "wrapper-events-only",
+  "compiler_scope_lease_modes": {
+    "supervisor-only": 1
+  },
+  "compiler_scope_policy": "workspace descriptors or verified live supervisor; each compiler inherits its elastic claim",
+  "compiler_succeeded": 1,
+  "concurrency_basis": "compiler wrapper start/finish intervals, each holding one slot",
+  "diagnostics": {
+    "categories": {},
+    "first": [],
+    "observed_missing_count": 0,
+    "observed_missing_prefixes": {},
+    "observed_missing_prefixes_truncated": false,
+    "observed_missing_shortlist": []
+  },
+  "elapsed_seconds": 12.777489200234413,
+  "environment": {
+    "ELAN_HOME": "/root/autodl-tmp/lean-build/elan",
+    "LAKE_ARTIFACT_CACHE": "true",
+    "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+    "LAKE_OVERRIDE_LEAN": "1",
+    "LEAN_NUM_THREADS": "1",
+    "LEAN_SYSROOT": "/root/autodl-tmp/lean-build/logs/remote-d4b2bc57db9640a89acb317c837da0b2/toolchain",
+    "R5_LEAN_REMOTE_PROFILE": "{\"jobs\": 1, \"lean\": \"/root/autodl-tmp/lean-build/logs/remote-d4b2bc57db9640a89acb317c837da0b2/toolchain/bin/lean\", \"lean_memory_mib\": 49152, \"rss_limit_mib\": 110592, \"schema_version\": 1, \"threads\": 4}",
+    "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+  },
+  "exit_code": 0,
+  "expected_source": "acf00f504cf90fafad70c5da8f04e07b6979ab4c64fe8b1d31304bde93325721",
+  "failure_reason": null,
+  "finished_at": "2026-11-04T08:02:31.589153+00:00",
+  "forbid_compilation": false,
+  "forced_kill": false,
+  "git_head": null,
+  "group_closed": true,
+  "incomplete_compiler_events": 0,
+  "input_drift": [],
+  "input_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Kunneth/ProductDirectImageComponent.lean": "38e67e9be759f6e1b86bbaf8145f7d07e001e72e7cc4f9dc5be02399596bbd3b",
+    "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+    "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+  },
+  "lock_acquired_at": "2026-11-04T08:02:18.802939+00:00",
+  "locks": {
+    "cache_fetch_exclusive": null,
+    "legacy_shared_gate": "/root/autodl-tmp/lean-build/build.lock",
+    "workspace_exclusive": "/root/autodl-tmp/lean-build/locks/workspace-20f09446ada883b4d223b672f2487f732be5fb97ceb69e40f51c27a1cdd07377.lock"
+  },
+  "lowest_disk_free_bytes": 23454969856,
+  "modules": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Kunneth.ProductDirectImageComponent"
+  ],
+  "operation_id": null,
+  "outcome": "owned_phase_completed",
+  "peak_compiler_concurrency": 1,
+  "peak_rss_bytes": 6487703552,
+  "pgid": 337153,
+  "phase_executable_sha256": "0c05a22b0b180580a76437114a95cf138f67c8f46245acad26017c803b42b8c1",
+  "phase_label": "jacobian-new-leaf-type-probe",
+  "pins": {
+    "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+    "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+    "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+  },
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 1,
+    "lean_memory_mib": 49152,
+    "rss_limit_mib": 110592,
+    "threads": 4
+  },
+  "resource_accounting": {
+    "global": "sampled cgroup memory/CPU, startup and growth credits; no peak-envelope reservation",
+    "isolation": "cooperative sampled admission; no per-run kernel memory isolation or OOM guarantee",
+    "run": "frontend/job/thread ceilings, sampled owned-tree RSS cutoff, own-tree pressure retreat"
+  },
+  "resources": {
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "cgroup": "/sys/fs/cgroup",
+    "cgroup_limits": [
+      {
+        "cpu.max": "3200000 100000",
+        "memory.max": "128849018880",
+        "path": "/sys/fs/cgroup"
+      }
+    ],
+    "effective_cpus": 32.0,
+    "memory_bytes": 128849018880
+  },
+  "run_dir": "/root/autodl-tmp/lean-build/logs/remote-d4b2bc57db9640a89acb317c837da0b2",
+  "sampled_process_average_cpu_cores": 0.959499930532133,
+  "sampled_process_cpu_seconds": 12.26,
+  "schema_version": 1,
+  "setup_cleanup": {
+    "removed_setup_bytes": 0,
+    "removed_setup_files": 0
+  },
+  "source_content_sha256": "acf00f504cf90fafad70c5da8f04e07b6979ab4c64fe8b1d31304bde93325721",
+  "source_receipt_sha256": "253eb62c62b32f9508da27b8b209b7a3b2760534976a724fed277a6d1f19b6b7",
+  "started_at": "2026-11-04T08:02:18.311047+00:00",
+  "status": "succeeded",
+  "summary": {
+    "action": "phase",
+    "admission": {
+      "affinity_cpus": null,
+      "ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 1,
+        "lean_memory_mib": 49152,
+        "rss_limit_mib": 110592,
+        "threads": 4
+      },
+      "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+      "final_observation": {
+        "active_compilers_by_run": {},
+        "cpu_cores": 0.45085188791633296,
+        "cpu_usage_usec": 3317911084952,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 268435456,
+        "memory_current_bytes": 59468591104,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 0.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 43599708160
+      },
+      "initial_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-1240bf8673ec426882912cc2936ffcb8": 1,
+          "/root/autodl-tmp/lean-build/logs/remote-3299b444e07c4254ac4fe14752514208": 1
+        },
+        "cpu_cores": 3.1677023561181237,
+        "cpu_usage_usec": 3317887663532,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 3489660928,
+        "memory_current_bytes": 60505120768,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 1.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 44634034176
+      },
+      "max_frontends_if_alone": 1,
+      "mode": "elastic",
+      "request": null
+    },
+    "artifacts": {
+      "build.log": "/root/autodl-tmp/lean-build/logs/remote-d4b2bc57db9640a89acb317c837da0b2/build.log",
+      "compiler-events.jsonl": "/root/autodl-tmp/lean-build/logs/remote-d4b2bc57db9640a89acb317c837da0b2/compiler-events.jsonl",
+      "receipt.json": "/root/autodl-tmp/lean-build/logs/remote-d4b2bc57db9640a89acb317c837da0b2/receipt.json"
+    },
+    "cgroup_memory_attribution": "whole observed cgroup; an OOM event alone does not identify its victim",
+    "cgroup_memory_events_delta": {
+      "high": 0,
+      "low": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "compiler_observation": "wrapper-events-only",
+    "compiler_scope_lease_modes": {
+      "supervisor-only": 1
+    },
+    "execution_seconds": 12.777489200234413,
+    "exit_code": 0,
+    "expected_source": "acf00f504cf90fafad70c5da8f04e07b6979ab4c64fe8b1d31304bde93325721",
+    "first_diagnostics": [],
+    "frontend_failed": 0,
+    "frontend_invocations": 1,
+    "frontend_observation": "wrapper starts only; arbitrary phase tools may bypass local compiler caps",
+    "frontend_peak": 1,
+    "frontend_succeeded": 1,
+    "group_closed": true,
+    "native_exit": 0,
+    "outcome": "owned_phase_completed",
+    "peak_rss_bytes": 6487703552,
+    "plan": null,
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 1,
+      "lean_memory_mib": 49152,
+      "rss_limit_mib": 110592,
+      "threads": 4
+    },
+    "reason": "",
+    "run": "remote-d4b2bc57db9640a89acb317c837da0b2",
+    "sampled_process_average_cpu_cores": 0.959499930532133,
+    "source_basis": "acf00f504cf90fafad70c5da8f04e07b6979ab4c64fe8b1d31304bde93325721",
+    "status": "succeeded",
+    "unwrapped_frontend_count": "unknown",
+    "wall_seconds": 13.278139665722847
+  },
+  "task_id": "jacobian-kunneth-field-20261030",
+  "unfinished_compiler_records": [],
+  "waiting_for": null,
+  "wall_seconds": 13.278139665722847,
+  "worker_sha256": "7b1d09f535dc951f2f3ecae857f7b77b0ffc95f8f9e55352167a39b4387729a4",
+  "workspace": "/root/autodl-tmp/lean-build/workspaces/managed-7febc2cd9691-315a5e4a9466/lean"
+}
