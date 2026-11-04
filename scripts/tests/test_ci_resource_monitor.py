@@ -146,7 +146,8 @@ class ResourceSampler(unittest.TestCase):
         with patch.object(monitor.os, 'kill', side_effect=AssertionError('PID signaling is forbidden')):
             monitor.stop(directory, summary)
         self.assertTrue((directory / 'stop').exists())
-        self.assertIn('sampled coverage, not whole-run maxima', summary.read_text())
+        self.assertIn('## Resource observations\n\n| Metric | Observed value |', summary.read_text())
+        self.assertIn('sampled intervals', summary.read_text())
         output = directory / 'resources.jsonl'
         previous_size = output.stat().st_size
         (directory / 'stop').unlink()

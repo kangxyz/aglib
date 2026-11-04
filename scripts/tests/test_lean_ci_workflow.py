@@ -72,7 +72,13 @@ def runner_arguments(command):
 
 def condition(expression, values, *, success=True, cancelled=False):
     """Evaluate this workflow's conditions, including implicit success()."""
-    values = {'inputs.first-ci-cache': '', 'steps.cache-mode.outputs.layered': '', **values}
+    values = {
+        'inputs.first-ci-cache': '', 'steps.cache-mode.outputs.layered': '',
+        'needs.build.outputs.local-handoff': '', 'needs.build.outputs.root-generation': '',
+        'steps.handoff-mode.outputs.enabled': '', 'steps.lean-setup-local.outcome': '',
+        'steps.pack-root.outputs.generation': '', 'steps.build.outputs.attempted': 'true',
+        **values,
+    }
     text = expression.removeprefix('${{').removesuffix('}}').strip()
     explicit_status = re.search(r'\b(always|cancelled|success|failure)\(', text)
     if not explicit_status and not success:
@@ -115,7 +121,7 @@ class WorkflowGates(unittest.TestCase):
 
     def test_build_report_requires_only_the_mathematical_build(self):
         self.assertEqual(step('build', 'Report Build result')['env'],
-                         {'RESULT': '${{ steps.build.outcome }}'})
+                         {'RESULT': '${{ steps.build.outcome }}', 'STAGED': '${{ steps.stage.outputs.staged }}'})
         self.assertEqual(report(('build', 'Report Build result'),
                                 {'RESULT': 'success', 'TOOLS': 'failure',
                                  'IMPORTS': 'failure', 'STYLE': 'failure', 'AXIOMS': 'failure'}), 0)
@@ -448,7 +454,7 @@ class BuildJobBudget(unittest.TestCase):
                 self.assertTrue(partial)
                 result, calls, partial = self.run_build(deadline=deadline, now=deadline, compiler_minutes=budget)
                 self.assertEqual(result.returncode, 124)
-                self.assertIn(f'{budget}-minute compiler budget', result.stdout)
+                self.assertIn('No new compilation checkpoint', result.stdout)
                 self.assertEqual(calls, [])
 
     def test_invalid_job_timeout_fails_before_exporting_deadline(self):
@@ -462,34 +468,14 @@ class BuildJobBudget(unittest.TestCase):
                 self.assertIn('greater than 30', result.stderr)
                 self.assertFalse(environment_file.exists())
 
-    def test_explicit_compiler_window_excludes_preparation_and_refuses_shortening(self):
-        first = step('build', 'Set Build deadline')
-        with tempfile.TemporaryDirectory(prefix='lean-ci-full-window-') as directory:
-            environment_file = Path(directory) / 'github-env'
-            result = subprocess.run(['bash', '-eo', 'pipefail', '-c',
-                                     'date() { printf "1000\\n"; }\n' + first['run']],
-                env={**os.environ, 'GITHUB_ENV': str(environment_file), 'JOB_TIMEOUT_MINUTES': '90',
-                     'BUILD_JOB_TIMEOUT_MINUTES': '240', 'REQUESTED_COMPILER_MINUTES': '180'},
-                capture_output=True, text=True)
-            self.assertEqual(result.returncode, 0, result.stderr)
-            exported = dict(line.split('=', 1) for line in environment_file.read_text().splitlines())
-            self.assertEqual(exported, {'BUILD_COMPILER_MINUTES': '180',
-                                       'BUILD_REQUIRED_COMPILER_SECONDS': '10800',
-                                       'BUILD_DEADLINE': str(1000 + 210 * 60)})
-        for preparation in (10 * 60, 30 * 60):
-            result, calls, partial = self.run_build(deadline=1000 + 210 * 60, now=1000 + preparation,
-                                                   compiler_minutes=180, required_seconds=10800)
-            self.assertEqual(result.returncode, 0, result.stderr)
-            self.assertIn('timeout:--signal=INT --kill-after=60s 10800s lake build', calls[0])
-            self.assertTrue(partial)
-        for preparation in (31 * 60, 211 * 60):
-            result, calls, partial = self.run_build(deadline=1000 + 210 * 60, now=1000 + preparation,
-                                                   compiler_minutes=180, required_seconds=10800)
-            self.assertEqual(result.returncode, 124)
-            self.assertIn('Preparation exhausted the full 180-minute compiler window', result.stdout)
-            self.assertEqual(calls, [])
-            self.assertFalse(partial)
-            self.assert_failed_build_blocks_consumers(result.returncode)
+    def test_compiler_limit_is_capped_by_remaining_safe_time(self):
+        for minutes, expected in ((10, 180 * 60), (31, 179 * 60), (209, 60)):
+            with self.subTest(preparation_minutes=minutes):
+                result, calls, partial = self.run_build(deadline=1000 + 210 * 60,
+                                                       now=1000 + minutes * 60, compiler_minutes=180)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertIn(f'timeout:--signal=INT --kill-after=60s {expected}s lake build', calls[0])
+                self.assertTrue(partial)
 
     def test_invalid_build_override_or_compiler_limit_fails_before_export(self):
         for job, compiler in (('30', '180'), ('invalid', '180'), ('240', '-1'),
@@ -503,7 +489,7 @@ class BuildJobBudget(unittest.TestCase):
                 self.assertEqual(result.returncode, 2, result.stderr)
                 self.assertFalse(output.exists())
 
-    def run_build(self, *, deadline=20800, now=1000, compiler_status=0, timeout_status=0, compiler_minutes=330, required_seconds=0):
+    def run_build(self, *, deadline=20800, now=1000, compiler_status=0, timeout_status=0, compiler_minutes=330):
         mock = r'''
 date() { printf '%s\n' "$FIXTURE_NOW"; }
 lake() {
@@ -529,11 +515,14 @@ timeout() {
                 cwd=root, env={**os.environ, 'BUILD_TARGETS': 'Aglib Quillen',
                                'BUILD_DEADLINE': str(deadline), 'FIXTURE_NOW': str(now),
                                'BUILD_COMPILER_MINUTES': str(compiler_minutes),
-                               'BUILD_REQUIRED_COMPILER_SECONDS': str(required_seconds),
+                               'GITHUB_OUTPUT': str(root / 'build-outputs'),
                                'RUNNER_TEMP': '.', 'TRACE': str(trace), 'PARTIAL': str(root / 'completed'),
                                'COMPILER_STATUS': str(compiler_status), 'TIMEOUT_STATUS': str(timeout_status)},
                 capture_output=True, text=True)
-            return result, trace.read_text().splitlines() if trace.exists() else [], (root / 'completed').exists()
+            calls = trace.read_text().splitlines() if trace.exists() else []
+            marker = root / 'build-outputs'
+            self.assertEqual(marker.read_text() if marker.exists() else '', 'attempted=true\n' if calls else '')
+            return result, calls, (root / 'completed').exists()
 
     def test_expired_budget_never_invokes_lake_or_timeout(self):
         for now in (20800, 20801):
@@ -542,8 +531,7 @@ timeout() {
                 self.assertEqual(result.returncode, 124)
                 self.assertEqual(calls, [])
                 self.assertFalse(partial)
-                self.assertIn('330-minute compiler budget', result.stdout)
-                self.assertIn('rerun this branch', result.stdout)
+                self.assertIn('No new compilation checkpoint', result.stdout)
                 self.assert_failed_build_blocks_consumers(result.returncode)
 
     def test_success_and_compile_errors_are_unchanged_without_retry(self):
@@ -622,7 +610,8 @@ timeout() {
                 ['bash', '-e', '-o', 'pipefail', '-c',
                  'date() { printf "1000\\n"; }\n' + step('build', 'Build')['run']],
                 cwd=root, env={**os.environ, 'PATH': directory + os.pathsep + os.environ['PATH'],
-                               'BUILD_TARGETS': 'Aglib', 'BUILD_DEADLINE': '1001', 'RUNNER_TEMP': directory},
+                               'BUILD_TARGETS': 'Aglib', 'BUILD_DEADLINE': '1001', 'BUILD_COMPILER_MINUTES': '180',
+                               'GITHUB_OUTPUT': str(root / 'build-outputs'), 'RUNNER_TEMP': directory},
                 capture_output=True, text=True, timeout=10)
             self.assertEqual(result.returncode, 124, result.stderr)
             self.assertEqual((root / 'completed-module').read_text(), 'completed before cutoff')
@@ -811,7 +800,7 @@ class NativeRunnerResources(unittest.TestCase):
     @staticmethod
     def workflow_value(expression, values):
         expression = expression.removeprefix('${{').removesuffix('}}').strip()
-        expression = re.sub(r'(?:github|inputs)\.[\w-]+',
+        expression = re.sub(r'(?:github|inputs|vars)\.[\w-]+',
                             lambda match: repr(values[match[0]]), expression)
         return eval(expression.replace('&&', ' and ').replace('||', ' or '),
                     {'__builtins__': {}}, {})
@@ -819,12 +808,10 @@ class NativeRunnerResources(unittest.TestCase):
     def test_main_push_and_manual_ec2_routing_preserve_hosted_exceptions(self):
         caller = yaml.safe_load((ROOT / '.github/workflows/ci.yml').read_text())
         dispatch = caller.get('on', caller.get(True))['workflow_dispatch']['inputs']
-        for name, options, default in (('runner-profile', ['hosted', 'ec2'], 'ec2'),
-                                       ('ec2-job-minutes', ['150', '90'], '90'),
-                                       ('ec2-build-lake-threads', ['4', '8'], '8')):
-            self.assertEqual(dispatch[name]['type'], 'choice')
-            self.assertEqual(dispatch[name]['default'], default)
-            self.assertEqual(dispatch[name]['options'], options)
+        self.assertEqual(set(dispatch), {'runner-profile'})
+        self.assertEqual(dispatch['runner-profile']['type'], 'choice')
+        self.assertEqual(dispatch['runner-profile']['default'], 'ec2')
+        self.assertEqual(dispatch['runner-profile']['options'], ['hosted', 'ec2'])
         settings = caller['jobs']['lean']['with']
         self.assertEqual(settings['build-targets'], 'Aglib')
         self.assertEqual(caller['concurrency'], {'group': 'Aglib CI-${{ github.ref }}',
@@ -832,22 +819,20 @@ class NativeRunnerResources(unittest.TestCase):
         for ref in ('refs/heads/main', 'refs/heads/topic', 'refs/pull/1/merge'):
             for event in ('push', 'workflow_dispatch', 'pull_request'):
                 for profile in ('', 'hosted', 'ec2'):
-                    for minutes in ('', '150', '90', 'invalid'):
-                        for threads in ('', '4', '8', 'invalid'):
-                            expected_ec2 = ref == 'refs/heads/main' and (event == 'push' or (event == 'workflow_dispatch' and profile == 'ec2'))
-                            values = {'github.ref': ref, 'github.event_name': event, 'inputs.runner-profile': profile,
-                                      'inputs.ec2-job-minutes': minutes, 'inputs.ec2-build-lake-threads': threads}
-                            names = ('native-memory-mib', 'lake-threads', 'lint-workers',
-                                     'job-timeout-minutes', 'build-lake-threads',
-                                     'build-job-timeout-minutes', 'build-compiler-minutes')
-                            selected = {name: self.workflow_value(settings[name], values)
-                                        for name in ('runner-labels', *names)}
-                            self.assertEqual(json.loads(selected.pop('runner-labels')),
-                                ['self-hosted', 'linux', 'x64', 'aglib-ec2-pilot'] if expected_ec2 else ['ubuntu-24.04'])
-                            self.assertEqual(selected, dict(zip(names,
-                                (57344, 4, 4, 150 if event == 'workflow_dispatch' and minutes == '150' else 90,
-                                 4 if event == 'workflow_dispatch' and threads == '4' else 8, 240, 180)
-                                if expected_ec2 else (13824, 1, 2, 360, 0, 0, 0))))
+                    for reuse in ('', 'true'):
+                        expected_ec2 = ref == 'refs/heads/main' and (
+                            event == 'push' or (event == 'workflow_dispatch' and profile == 'ec2'))
+                        values = {'github.ref': ref, 'github.event_name': event, 'inputs.runner-profile': profile,
+                                  'vars.AGLIB_EC2_SHARED_HOST': reuse}
+                        names = ('native-memory-mib', 'lake-threads', 'lint-workers', 'job-timeout-minutes',
+                                 'build-job-timeout-minutes', 'build-compiler-minutes', 'reuse-build-host')
+                        selected = {name: self.workflow_value(settings[name], values)
+                                    for name in ('runner-labels', *names)}
+                        self.assertEqual(json.loads(selected.pop('runner-labels')),
+                            ['self-hosted', 'linux', 'x64', 'aglib-ec2-pilot'] if expected_ec2 else ['ubuntu-24.04'])
+                        self.assertEqual(selected, dict(zip(names, (57344, 8, 8, 90, 240, 180, reuse == 'true')
+                                                            if expected_ec2 else (13824, 1, 2, 360, 0, 0, False))))
+        self.assertNotIn('build-lake-threads', settings)
 
     def test_build_runtime_override_is_production_step_only_and_preserves_fallback(self):
         production = step('build', 'Build')
@@ -1128,7 +1113,8 @@ class CheckerBoundaryAndLintTimeout(unittest.TestCase):
             ['bash', '-e', '-o', 'pipefail', '-c', 'lake() { printf "%s\\n" "$*"; }\n'
              'timeout() { shift 3; "$@"; }\n' + build['run']],
             env={**os.environ, 'BUILD_TARGETS': 'R5Lab Essays', 'CHECK_TARGETS': 'Checks',
-                 'BUILD_DEADLINE': '2000000000', 'RUNNER_TEMP': '/fixture'}, capture_output=True, text=True)
+                 'BUILD_DEADLINE': '2000000000', 'BUILD_COMPILER_MINUTES': '180',
+                 'GITHUB_OUTPUT': '/dev/null', 'RUNNER_TEMP': '/fixture'}, capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(result.stdout.splitlines(), ['build --rehash R5Lab Essays -o /fixture/outputs.jsonl'])
 
@@ -1472,6 +1458,111 @@ gh() {
                 self.assertIn('--prerelease', commands[1])
 
 
+class SameHostHandoff(unittest.TestCase):
+    def test_two_jobs_and_publication_still_require_both_results(self):
+        self.assertEqual(JOBS['test_lint']['needs'], 'build')
+        self.assertEqual(JOBS['test_lint']['runs-on'], JOBS['build']['runs-on'])
+        self.assertEqual(JOBS['test_lint']['env'], JOBS['build']['env'])
+        self.assertEqual(set(JOBS['upload_cache']['needs']), {'build', 'test_lint'})
+        for outcome in ('failure', 'cancelled', 'skipped'):
+            self.assertFalse(publish(tests=outcome))
+
+    def test_same_host_skips_cross_runner_setup_and_transfer(self):
+        same_host = {'needs.build.outputs.local-handoff': 'true'}
+        for name in ('Configure Lean', 'Fetch pinned dependency sources without compilation',
+                     'Restore optional root checkpoint', 'Restore optional tools checkpoint',
+                     "Download this run's dependencies on cache miss", "Download this run's Build outputs"):
+            values = {**same_host, 'steps.cache-mode.outputs.layered': 'true',
+                      'steps.restore-cache.outcome': 'skipped', 'steps.restore-cache.outputs.cache-matched-key': ''}
+            self.assertFalse(condition(step('test_lint', name)['if'], values), name)
+        for name in ('Stage native dependencies for Test', 'Upload native dependencies for Test'):
+            self.assertFalse(condition(step('build', name)['if'], {
+                'steps.handoff-mode.outputs.enabled': 'true', 'steps.build.outcome': 'success',
+                'steps.quiesce.outcome': 'success'}))
+        stage_upload = next(item for item in JOBS['build']['steps']
+                            if item.get('with', {}).get('name') == 'cache-staging')
+        self.assertFalse(condition(stage_upload['if'], {
+            'steps.handoff-mode.outputs.enabled': 'true', 'steps.stage.outputs.staged': 'true'}))
+        publish_upload = step('test_lint', 'Upload verified native outputs for publication')
+        values = {**same_host, 'github.event_name': 'push', 'github.ref': 'refs/heads/main',
+                  'github.event.repository.default_branch': 'main'}
+        self.assertTrue(condition(publish_upload['if'], values))
+        self.assertFalse(condition(publish_upload['if'], values, success=False))
+        checks = JOBS['test_lint']['steps']
+        report = checks.index(step('test_lint', 'Report Test, lint and axiom results'))
+        identity = checks.index(step('test_lint', 'Check publication archive identity'))
+        self.assertLess(report, identity)
+        self.assertLess(identity, checks.index(publish_upload))
+        self.assertTrue(condition(step('test_lint', 'Claim the same-host Build workspace')['if'], same_host))
+
+    def test_handoff_binds_runner_revision_and_workflow_attempt(self):
+        with tempfile.TemporaryDirectory(prefix='ci-host-handoff-') as directory:
+            root = Path(directory).resolve()
+            runner_temp = root / 'runner-temp'
+            runner_temp.mkdir()
+            (runner_temp / 'lake-native-cache.tar').write_bytes(b'current production stage')
+            handoff = root / '.lake/ci-host-handoff'
+            handoff.mkdir(parents=True)
+            bin_dir = root / 'lean bin'
+            bin_dir.mkdir()
+            for name in ('lean', 'lake'):
+                path = bin_dir / name
+                path.write_text('#!/bin/sh\nexit 0\n')
+                path.chmod(0o755)
+            env = {**os.environ, 'RUNNER_TEMP': str(runner_temp),
+                   'PATH': str(bin_dir) + os.pathsep + os.environ['PATH'],
+                   'GITHUB_REPOSITORY': 'test/fixture', 'GITHUB_SHA': 'a' * 40,
+                   'GITHUB_RUN_ID': '100', 'GITHUB_RUN_ATTEMPT': '1',
+                   'HOST_RUNNER': 'i-host', 'BUILD_RUNNER': 'i-host',
+                   'GITHUB_PATH': str(root / 'path'), 'GITHUB_ENV': str(root / 'env'),
+                   'GITHUB_OUTPUT': str(root / 'output')}
+            seal = subprocess.run(['bash', '-eo', 'pipefail', '-c',
+                                   step('build', 'Seal the workspace for same-host Test')['run']],
+                                  cwd=root, env=env, capture_output=True, text=True)
+            self.assertEqual(seal.returncode, 0, seal.stderr)
+            claim = 'git() { printf "%s\\n" "$GITHUB_SHA"; }\n' + step(
+                'test_lint', 'Claim the same-host Build workspace')['run']
+            for mismatch in ({'HOST_RUNNER': 'i-replacement'}, {'GITHUB_SHA': 'b' * 40},
+                             {'GITHUB_RUN_ID': '101'}, {'GITHUB_RUN_ATTEMPT': '2'}, {}):
+                with self.subTest(mismatch=mismatch):
+                    result = subprocess.run(['bash', '-eo', 'pipefail', '-c', claim], cwd=root,
+                                            env={**env, **mismatch}, capture_output=True, text=True)
+                    self.assertEqual(result.returncode == 0, not mismatch, result.stderr)
+                    self.assertEqual((root / 'env').exists(), not mismatch)
+            self.assertEqual((root / 'path').read_text(), str(bin_dir) + '\n')
+            self.assertEqual((root / 'env').read_text(), f'LAKE_CACHE_DIR={handoff}/native-cache\n')
+            archive = handoff / 'lake-native-cache.tar'
+            self.assertEqual(archive.read_bytes(), b'current production stage')
+            digest = hashlib.sha256(archive.read_bytes()).hexdigest()
+            self.assertEqual((root / 'output').read_text(), f'stage-sha={digest}\n')
+            verify = step('test_lint', 'Check publication archive identity')['run']
+            for contents, matches in ((b'current production stage', True), (b'changed stage', False)):
+                archive.write_bytes(contents)
+                checked = subprocess.run(['bash', '-eo', 'pipefail', '-c', verify], cwd=root,
+                                         env={**env, 'BUILD_STAGE_SHA': digest},
+                                         capture_output=True, text=True)
+                self.assertEqual(checked.returncode == 0, matches)
+
+    def test_failed_preparation_does_not_publish_a_new_checkpoint(self):
+        values = {'steps.build.outcome': 'failure', 'steps.build.outputs.attempted': '',
+                  'steps.quiesce.outcome': 'success', 'steps.staging-quiesce.outcome': 'success',
+                  'steps.pack-root.outcome': 'success', 'steps.pack-dependencies.outcome': 'success',
+                  'steps.pack-dependencies.outputs.changed': 'true',
+                  'steps.restore-dependencies.outputs.cache-matched-key': 'previous'}
+        for name in ('Stage completed native outputs', 'Save compilation independently of Test and lint',
+                     'Pack completed root checkpoint', 'Save completed root checkpoint',
+                     'Pack completed dependencies checkpoint', 'Save completed dependencies checkpoint'):
+            for layered in ('', 'true'):
+                self.assertFalse(condition(step('build', name)['if'], {
+                    **values, 'steps.cache-mode.outputs.layered': layered}, success=False), name)
+
+    def test_rejected_same_host_workspace_is_never_cached(self):
+        values = {'needs.build.outputs.local-handoff': 'true', 'steps.lean-setup-local.outcome': 'failure',
+                  'steps.cache-mode.outputs.layered': '', 'steps.quiesce.outcome': 'success'}
+        for name in ('Save completed Test compilation', 'Stop native resource sampler'):
+            self.assertFalse(condition(step('test_lint', name)['if'], values, success=False), name)
+
+
 class CurrentArtifactTransfer(unittest.TestCase):
     def test_current_run_artifact_and_native_completeness_are_mandatory(self):
         steps = JOBS['test_lint']['steps']
@@ -1483,7 +1574,10 @@ class CurrentArtifactTransfer(unittest.TestCase):
                                           'path': '${{ runner.temp }}/lake-native-cache'})
         for item in (download, restore, verify):
             self.assertFalse(item.get('continue-on-error', False))
-            self.assertNotIn('if', item)
+        for item in (download, restore):
+            self.assertTrue(condition(item['if'], {}))
+            self.assertFalse(condition(item['if'], {'needs.build.outputs.local-handoff': 'true'}))
+        self.assertNotIn('if', verify)
         self.assertLess(steps.index(download), steps.index(restore))
         self.assertLess(steps.index(restore), steps.index(verify))
         self.assertLess(steps.index(verify), steps.index(step('test_lint', 'Test')))
@@ -1806,7 +1900,8 @@ sleep() { printf 'sleep:%s\n' "$*" >> "$TRACE"; }
 
     def test_both_jobs_use_same_self_contained_mathlib_setup(self):
         setup = step('build', 'Configure Lean')
-        self.assertEqual(setup, step('test_lint', 'Configure Lean'))
+        self.assertEqual({**setup, 'if': "${{ needs.build.outputs.local-handoff != 'true' }}"},
+                         step('test_lint', 'Configure Lean'))
         self.assertNotIn('uses', setup)
         self.assertFalse(setup.get('continue-on-error', False))
         self.assertEqual(setup['working-directory'], '${{ inputs.package-directory }}')

@@ -93,40 +93,13 @@ again. There is no separate local cache producer/consumer acceptance workflow.
 
 ## Shared CI protocol
 
-Routine CI uses the [native reusable workflow](../.github/workflows/lean-ci.yml).
-Build restores the current toolchain/manifest first, then the same toolchain
-across manifest changes. Legacy exact-manifest and OS/architecture prefixes
-also recover existing cache generations during the key-format migration.
-Restored files are candidates: the ordinary `lake build --rehash` evaluates
-current sources, imports, options and compiler identity before reusing outputs.
-Ordinary runs retain their normal immutable cache saves. Test restores this run's
-Build outputs and retains its existing checks. If the optional Actions restore
-misses or fails, Test restores Build's same-run native `artifacts/` and
-`outputs/` snapshot, then obtains pinned Mathlib artifacts before overlaying the
-mandatory current-run root archive. This includes unpublished dependency outputs
-compiled by Build. The snapshot excludes package checkouts and working build
-directories; streamed zstd compression avoids an uncompressed tar copy, and a
-warm Test does not download it. Test keeps the same no-build production
-verification. The Mathlib command is shared with Build through a YAML alias.
-Quillen and Motivic pin this workflow independently of their mathematical
-dependencies.
-
-Build and Test also import published native caches for their own root package
-and resolved `kangxyz/*` Git dependencies, including inherited dependencies.
-The existing release protocol prefers the requested producer, then compatible
-recent seeds. Root mappings use root `unstage`; dependency mappings retain their
-named package selectors. Actual producer and consumer revisions stay distinct;
-current Lake inputs decide reuse.
-
-Manual Aglib runs can select `native-root-producer`, `native-root-asset` and
-`native-root-sha256` with `native-cache-only=true`. This requires a warm native
-seed and matching root/test outputs; a miss fails without compilation. Configured
-checks stay unchanged. Strict mode suppresses Build's duplicate cache save and
-saves one complete Test cache only after all checks pass, under a 10 GB compressed
-file cap. Ordinary runs retain their incremental behavior. The
-[workflow guide](../.github/LEAN_CI.md#native-root-seeds-and-cache-only-runs)
-owns transport and save details. Cache transport adds no mathematical acceptance
-stage and does not itself prove runtime compatibility or delivery.
+The [Lean CI guide](../.github/LEAN_CI.md#cache-boundaries) owns hosted
+checkpoint formats, same-run handoff and publication. Restored outputs are
+candidates for Lake's current-source validation. Separate Build and Test jobs
+can share a workspace on a provisioned EC2 runner. The cross-runner path uses
+the current run's dependency closure and native production stage before
+verification. Quillen and Motivic pin the shared workflow independently of
+their mathematical dependencies.
 
 The [legacy composite action](../.github/actions/lake-cache/action.yml) and its
 adjacent adapter below remain available for explicitly selected compatibility

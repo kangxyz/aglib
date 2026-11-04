@@ -240,14 +240,19 @@ def stop(directory, summary=None):
                 values = [row[name] for row in rows if row.get(count) and row.get(name) is not None]
                 return f'{max(values) / 1048576:.0f} MiB' if values else 'unavailable'
             with summary.open('a') as stream:
-                stream.write('\nResource observations (sampled coverage, not whole-run maxima): '
-                             f'{len(rows)} samples; max simultaneous Lean processes '
-                             f'{maximum("lean_frontends")}; max sampled native cgroup memory.current '
-                             f'{memory_maximum("native_memory_current_bytes", "native_memory_readable_scopes")}; '
-                             f'max observed individual cgroup memory.peak '
-                             f'{memory_maximum("native_memory_peak_max_bytes", "native_peaks_readable_scopes")}. '
-                             'Anon, file, inactive_file, file_mapped and host MemAvailable are separate JSONL fields; '
-                             'file counters overlap and are not RSS or a measured working set.\n')
+                stream.write(
+                    '\n## Resource observations\n\n'
+                    '| Metric | Observed value |\n'
+                    '| --- | ---: |\n'
+                    f'| Samples | {len(rows)} |\n'
+                    f'| Simultaneous Lean processes | {maximum("lean_frontends")} |\n'
+                    '| Sampled cgroup memory charge | '
+                    f'{memory_maximum("native_memory_current_bytes", "native_memory_readable_scopes")} |\n'
+                    '| Observed peak of an individual cgroup | '
+                    f'{memory_maximum("native_memory_peak_max_bytes", "native_peaks_readable_scopes")} |\n\n'
+                    'These observations cover the sampled intervals. The JSONL artifact records '
+                    'anonymous memory, overlapping file-cache counters and available host memory separately.\n'
+                )
 
 
 def main():

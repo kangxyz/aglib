@@ -2,12 +2,17 @@ name: EC2 runner pilot
 
 on:
   workflow_dispatch:
+    inputs:
+      verify-handoff:
+        type: boolean
+        default: false
+        description: Verify workspace continuity across two jobs
 
 permissions:
   contents: read
 
 concurrency:
-  group: aglib-ec2-pilot
+  group: Aglib CI-${{ github.ref }}
   cancel-in-progress: false
   queue: max
 
@@ -16,6 +21,8 @@ jobs:
     if: github.repository == 'kangxyz/aglib' && github.ref == 'refs/heads/main'
     runs-on: [self-hosted, linux, x64, aglib-ec2-pilot]
     timeout-minutes: 25
+    outputs:
+      host-runner: ${{ runner.name }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -77,3 +84,27 @@ jobs:
           export PATH="$HOME/.elan/bin:$PATH"
           lean --version
           lake --version
+      - name: Leave a workspace marker for the second job
+        if: ${{ inputs.verify-handoff }}
+        run: |
+          grep -Fxq 'aglib-ci-shared-host-v1' /etc/aglib-ci-runner-mode
+          sudo systemctl restart aglib-pilot-expiry.timer
+          printf '%s\n' "$GITHUB_RUN_ID" "$GITHUB_RUN_ATTEMPT" > .same-host-probe
+
+  handoff:
+    name: Verify runner-local handoff
+    needs: probe
+    if: ${{ inputs.verify-handoff }}
+    runs-on: [self-hosted, linux, x64, aglib-ec2-pilot]
+    timeout-minutes: 5
+    steps:
+      - name: Check the runner and workspace from the first job
+        shell: bash
+        env:
+          HOST_RUNNER: ${{ runner.name }}
+          BUILD_RUNNER: ${{ needs.probe.outputs.host-runner }}
+        run: |
+          test "$HOST_RUNNER" = "$BUILD_RUNNER"
+          cmp .same-host-probe <(printf '%s\n' "$GITHUB_RUN_ID" "$GITHUB_RUN_ATTEMPT")
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          rm -f .same-host-probe
