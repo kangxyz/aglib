@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Coefficients.ModuleInverseImageFaithful
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.CohomologyPullback
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.SurjectivePullback
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.Underlying
@@ -38,22 +39,6 @@ universe u eY eY'
 
 attribute [local instance] hasSheafifyLarge hasSheafifyModules
 
-/-- Faithfulness descends from the original abelian inverse image through
-its actual native constant-ring comparison. -/
-theorem moduleInverseImage_faithful_of_surjective
-    {T' T : Scheme.{u}} (f : T' ⟶ T) [Surjective f]
-    (Λ : Type (u + 1)) [Ring Λ] :
-    (moduleInverseImage f Λ).Faithful := by
-  let : (inverseImage f).Faithful :=
-    Proper.Reduction.inverseImage_faithful_of_surjective f
-  let : (SheafOfModules.toSheaf (constantRing T Λ) ⋙ inverseImage f).Faithful :=
-    inferInstance
-  let : (moduleInverseImage f Λ ⋙
-      SheafOfModules.toSheaf (constantRing T' Λ)).Faithful :=
-    Functor.Faithful.of_iso (moduleInverseImageUnderlyingIso Λ f).symm
-  exact Functor.Faithful.of_comp (moduleInverseImage f Λ)
-    (SheafOfModules.toSheaf (constantRing T' Λ))
-
 /-- The arbitrary-ring native module version uses the common faithful
 adjunction construction, without converting through a second ZMod model. -/
 theorem exists_moduleInjective_directImage_retract
@@ -62,7 +47,7 @@ theorem exists_moduleInjective_directImage_retract
     ∃ J : ModuleSheaf T' Λ, Injective J ∧
       Nonempty (Retract I ((moduleDirectImage f Λ).obj J)) := by
   let : (moduleInverseImage f Λ).Faithful :=
-    moduleInverseImage_faithful_of_surjective f Λ
+    moduleInverseImage_faithful_of_surjective_map f Λ
   let : EnoughInjectives (ModuleSheaf T' Λ) :=
     SheafOfModules.enoughInjectivesLarge.{u + 1, u, 0} (constantRing T' Λ)
   exact CategoryTheory.Adjunction.exists_injective_rightAdjoint_retract

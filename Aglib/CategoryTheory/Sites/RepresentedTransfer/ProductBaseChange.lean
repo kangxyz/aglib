@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.CategoryTheory.Sites.RepresentedTransfer.ProductProjectionNaturality
 public import Aglib.CategoryTheory.Sites.RepresentedTransfer.OverProducts
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.BinaryProducts
 
@@ -29,19 +30,6 @@ variable {C : Type c} [Category.{h} C] [HasPullbacks C]
   {X : C} {Y : D}
   [HasBinaryProducts (P.Over ⊤ X)] [HasBinaryProducts (Q.Over ⊤ Y)]
   (F : P.Over ⊤ X ⥤ Q.Over ⊤ Y) [PreservesLimitsOfShape (Discrete WalkingPair) F]
-
-omit [HasBinaryProducts (P.Over ⊤ X)] in
-@[reassoc]
-theorem productTest_map_fst (V : P.Over ⊤ X) {U W : P.Over ⊤ X} (a : U ⟶ W) :
-    (productTest P V).map a ≫ productFst P V W = productFst P V U ≫ a :=
-  (mapPullbackAdj P ⊤ V.hom V.prop trivial).counit.naturality a
-
-omit [HasBinaryProducts (P.Over ⊤ X)] in
-@[reassoc]
-theorem productTest_map_snd (V : P.Over ⊤ X) {U W : P.Over ⊤ X} (a : U ⟶ W) :
-    (productTest P V).map a ≫ productSnd P V W = productSnd P V U := by
-  apply MorphismProperty.Over.Hom.ext
-  exact pullback.lift_snd _ _ _
 
 /-- Original product-test transport, characterized by both projections. -/
 def productBaseChangeIso (V U : P.Over ⊤ X) :

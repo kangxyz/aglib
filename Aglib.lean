@@ -2977,6 +2977,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Coefficients.DerivedCohomo
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Coefficients.DerivedSliceCohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Coefficients.ModuleCohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Coefficients.ModuleCohomologyPullback
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Coefficients.ModuleInverseImageFaithful
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Cohomology.SliceComparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.BoundedBelow
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.CartesianGeometricFiber
@@ -8300,6 +8301,7 @@ public import Aglib.CategoryTheory.Sites.Representable.SectionComparisonValues
 public import Aglib.CategoryTheory.Sites.RepresentedTransfer.OverProducts
 public import Aglib.CategoryTheory.Sites.RepresentedTransfer.ProductBaseChange
 public import Aglib.CategoryTheory.Sites.RepresentedTransfer.ProductFamily
+public import Aglib.CategoryTheory.Sites.RepresentedTransfer.ProductProjectionNaturality
 public import Aglib.CategoryTheory.Sites.SectionsAdditive
 public import Aglib.CategoryTheory.Sites.SheafCohomology.BasisAcyclicity.AllCovers
 public import Aglib.CategoryTheory.Sites.SheafCohomology.BasisAcyclicity.Basic

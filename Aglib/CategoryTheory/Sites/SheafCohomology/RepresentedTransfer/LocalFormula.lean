@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.CategoryTheory.Sites.RepresentedTransfer.ProductProjectionNaturality
 public import Aglib.CategoryTheory.Sites.SheafCohomology.RepresentedTransfer.Trace
 public import Mathlib.CategoryTheory.Preadditive.FunctorCategory
 
@@ -46,19 +47,6 @@ theorem productGraph_fst {V U : P.Over ⊤ X} (f : V ⟶ U) :
 theorem productGraph_snd {V U : P.Over ⊤ X} (f : V ⟶ U) :
     productGraph P f ≫ productSnd P U V = f :=
   BinaryFan.IsLimit.lift_snd (productFanIsLimit P U V) (𝟙 V) f
-
-/-- The original first projection is natural in the varying product factor. -/
-@[reassoc]
-theorem productTest_map_fst (V : P.Over ⊤ X) {U W : P.Over ⊤ X} (f : U ⟶ W) :
-    (productTest P V).map f ≫ productFst P V W = productFst P V U ≫ f := by
-  exact (mapPullbackAdj P ⊤ V.hom V.prop trivial).counit.naturality f
-
-/-- Mapping the varying factor preserves the original second projection. -/
-@[reassoc]
-theorem productTest_map_snd (V : P.Over ⊤ X) {U W : P.Over ⊤ X} (f : U ⟶ W) :
-    (productTest P V).map f ≫ productSnd P V W = productSnd P V U := by
-  apply MorphismProperty.Over.Hom.ext
-  exact pullback.lift_snd _ _ _
 
 /-- The diagonal followed by the terminal product map is the original inverse
 terminal comparison. -/
