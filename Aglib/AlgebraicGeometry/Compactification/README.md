@@ -47,3 +47,7 @@ common refinements, Cartesian open squares, normalized base change and
 composition towers. Native Nagata supplies nonemptiness/cofilteredness for
 separated finite-type maps over qcqs targets. Derived refinement coherence
 does not by itself prove invertibility or compactification independence.
+
+[FinitePresentationQCQS](FinitePresentationQCQS.lean) gives an actual
+finitely presented compactification of a separated, quasi-compact, locally
+finitely presented morphism over a quasi-compact quasi-separated base.

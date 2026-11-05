@@ -75,3 +75,7 @@ explicit output `Nonempty (Scheme.AffineBinaryCover M.X)`.
 Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
 
 - [MorphismSections](MorphismSections.lean)
+
+[StandardSmoothAffineModel](StandardSmoothAffineModel.lean) descends a
+standard-smooth algebra along a finite-coefficient approximation and gives
+the corresponding affine pullback isomorphism over the original ring.
