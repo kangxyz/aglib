@@ -28,7 +28,7 @@ universe u r
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable {R : Type r} [CommRing R]
+variable {R : Type r} [Ring R]
 
 /-- An actual dense affine open and a finite etale surjective cover on which
 the original native module coefficient becomes constant. -/

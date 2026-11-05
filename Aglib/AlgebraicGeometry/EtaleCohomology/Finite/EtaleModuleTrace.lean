@@ -35,7 +35,7 @@ universe u r c h
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable (R : Type r) [CommRing R] {X : Scheme.{u}} (Y : Scheme.FiniteEtale X)
+variable (R : Type r) [Ring R] {X : Scheme.{u}} (Y : Scheme.FiniteEtale X)
 
 /-- Actual finite-etale trace, natural in module coefficients, with its exact
 original module adjunction unit and actual constant finite-flat rank. -/

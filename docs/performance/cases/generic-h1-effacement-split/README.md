@@ -9,3 +9,7 @@ The current main-provider v4c `c8f0d5b3` and its companions passed A39 on native
 Affine and Generic remain slow at about 23 and 26 minutes respectively. Different provider, source and cache contexts make these observations unsuitable as a matched whole-build comparison against the monolith or v3; no causal speedup or compiler cause is asserted. CPP on this selected input does not establish whole integration acceptance. The ordinary review is separately bound to the fixed source and does not establish performance closure.
 
 Evidence is indexed in `MANIFEST.json`. Complete available run logs, receipts and events are stored once by content hash, along with changed historical source snapshots and diagnostic records. Identical live-source snapshots are identified by hash rather than copied. Diagnostic records keep their own status and input identities: buffered output, interrupted, invalid or unrun probes are not production results. No new diagnostic was run for this case.
+
+The [whole normal-open follow-up](normal-whole-open/README.md) records a
+separate later frontend whose dependent zero transport is checked at a
+selected coefficient-field boundary.

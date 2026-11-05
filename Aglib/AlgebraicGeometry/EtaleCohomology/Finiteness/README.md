@@ -128,3 +128,16 @@ Each source states the exact hypotheses, maps, and realization bounds of its int
 state their own coefficient, geometry, degree and universe conditions. Their
 individual conclusions do not discharge the whole-fibre or whole-cover zero
 inputs of a broader base-change argument.
+
+## Proper direct images for finitely presented morphisms
+
+[ProperModuleFinitePresentation](ProperModuleFinitePresentation.lean) proves
+constructibility of the higher direct images for a proper, locally finitely
+presented morphism over an arbitrary base. The coefficient ring is
+left Noetherian and is annihilated by a positive integer.
+[ProperModuleDerivedFinitePresentation](ProperModuleDerivedFinitePresentation.lean)
+gives the corresponding bounded-below constructible functor.
+[ProperModuleBoundedFinitePresentation](ProperModuleBoundedFinitePresentation.lean)
+gives the bounded version over a quasi-compact base.
+[ProperModuleLocallyBounded](ProperModuleLocallyBounded.lean) proves bounded
+constructibility after every quasi-compact base restriction.

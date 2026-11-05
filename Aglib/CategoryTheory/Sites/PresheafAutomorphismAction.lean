@@ -37,7 +37,7 @@ end CategoryTheory.Aut
 
 namespace CategoryTheory.Presheaf
 
-variable {C : Type u} [Category.{v} C] {R : Type r} [CommRing R]
+variable {C : Type u} [Category.{v} C] {R : Type r} [Ring R]
   (P : Cᵒᵖ ⥤ ModuleCat.{w} R) {U : C} {G : Type g} [Group G]
   (action : G →* Aut U)
 
@@ -110,7 +110,7 @@ end CategoryTheory.Presheaf
 
 namespace CategoryTheory.Adjunction
 
-variable {R : Type r} [CommRing R] {D : Type u} [Category.{v} D]
+variable {R : Type r} [Ring R] {D : Type u} [Category.{v} D]
   {C : ModuleCat.{w} R ⥤ D} {S : D ⥤ ModuleCat.{w} R} (adj : C ⊣ S)
   {M M' : ModuleCat.{w} R} {A A' : D} (e : A ≅ C.obj M) (e' : A' ≅ C.obj M')
   (a : A ⟶ A') (j : M ⟶ M')

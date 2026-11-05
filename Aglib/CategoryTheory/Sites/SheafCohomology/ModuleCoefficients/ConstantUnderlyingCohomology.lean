@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.CategoryTheory.Linear.ModuleValuedTransform
+public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.NoncommutativeConstantComparison
 public import Aglib.CategoryTheory.Sites.Linear
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.ConstantScalars
 public import Mathlib.RingTheory.Finiteness.Basic
@@ -15,8 +15,9 @@ public import Mathlib.RingTheory.Finiteness.Basic
 
 The native constant-module underlying-sheaf comparison induces a natural linear
 isomorphism on the original cohomology groups. Both actions are the original
-coefficient actions: compatibility uses actual linearity of the constant-sheaf
-functor and naturality of the underlying comparison at scalar endomorphisms.
+coefficient actions: compatibility uses naturality of the original comparison
+in transformations of the whole underlying coefficient functor. Noncentral
+scalars are additive maps, not asserted to be module-linear.
 No action is identified merely because the additive carriers agree.
 -/
 
@@ -29,7 +30,7 @@ namespace ModuleCat.Sheaf
 universe u v r e
 
 variable {C : Type u} [Category.{v} C] (J : GrothendieckTopology C)
-  (R : Type r) [CommRing R]
+  (R : Type r) [Ring R]
   [HasSheafify J AddCommGrpCat.{max u v}]
   [HasExt.{e} (Sheaf J AddCommGrpCat.{max u v})]
 
@@ -40,10 +41,7 @@ linear for the actual actions on both sides and natural in the coefficient modul
 def constantUnderlyingCohomologyIso (q : ℕ) :
     constantSheaf J (ModuleCat.{max u v} R) ⋙ cohomology J R q ≅
       constantCohomology J R q :=
-  Functor.moduleValuedCompIso R (constantSheaf J (ModuleCat.{max u v} R))
-      (underlying R J ⋙ CategoryTheory.Sheaf.functorH J q) ≪≫
-    Functor.moduleValuedNatIso R
-      (Functor.isoWhiskerRight (constantUnderlyingIso R J) (CategoryTheory.Sheaf.functorH J q))
+  constantUnderlyingCohomologyOfRingIso J R q
 
 /-- The linear comparison's forward map is literally the original cohomology map
 of the native constant-module underlying-sheaf isomorphism. -/

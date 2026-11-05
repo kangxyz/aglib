@@ -36,7 +36,7 @@ theorem constantModuleSheaf_h1_finite_of_prime_nsmul
     [HasExt.{e} (AbelianSheaf.{u, u + 1} X.left)]
     [HasColimitsOfSize.{u + 1, u + 1} AddCommGrpCat.{e}]
     (p : ℕ) [Fact p.Prime] (hunit : IsUnit (p : k))
-    (Λ : Type l) [CommRing Λ] (M : ModuleCat.{u + 1} Λ) [Module.Finite Λ M]
+    (Λ : Type l) [Ring Λ] (M : ModuleCat.{u + 1} Λ) [Module.Finite Λ M]
     (hM : ∀ x : M, p • x = 0) :
     Module.Finite Λ ((ModuleCat.Sheaf.cohomology X.left.smallEtaleTopology Λ 1).obj
       ((constantSheaf X.left.smallEtaleTopology (ModuleCat.{u + 1} Λ)).obj M)) :=

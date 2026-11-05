@@ -31,7 +31,7 @@ namespace ModuleCat.Sheaf.ConstantRing
 universe u v r w g a b
 
 variable {C : Type u} [Category.{v} C] (J : GrothendieckTopology C)
-  {R : Type r} [CommRing R] (F : Sheaf J (ModuleCat.{w} R))
+  {R : Type r} [Ring R] (F : Sheaf J (ModuleCat.{w} R))
   {T U V : C} {G : Type g} [Group G] (action : G →* Aut U)
   (q : U ⟶ T) (hq : Sieve.ofArrows (fun _ : Unit => U) (fun _ => q) ∈ J T)
   (p₁ p₂ : V ⟶ U) (hp : IsPullback p₁ p₂ q q)

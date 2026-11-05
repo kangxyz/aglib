@@ -8,7 +8,7 @@ module
 public import Aglib.CategoryTheory.Sites.PresheafAutomorphismAction
 public import Mathlib.CategoryTheory.Sites.Sheaf
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Defs
-public import Mathlib.RepresentationTheory.Invariants
+public import Aglib.RepresentationTheory.InvariantSubmodule
 
 /-! # Original linear section descent from a covering graph family
 
@@ -30,13 +30,13 @@ namespace ModuleCat.Sheaf.ConstantRing
 universe u v r w g
 
 variable {C : Type u} [Category.{v} C] {J : GrothendieckTopology C}
-  {R : Type r} [CommRing R] (F : CategoryTheory.Sheaf J (ModuleCat.{w} R))
+  {R : Type r} [Ring R] (F : CategoryTheory.Sheaf J (ModuleCat.{w} R))
   {T U V : C} {G : Type g} [Group G] (action : G →* Aut U)
 
 /-- The original restriction has invariant image when the actual action preserves the cover. -/
 theorem sectionRestriction_invariant (q : U ⟶ T)
     (hq : ∀ σ : G, (action σ).hom ≫ q = q) (s : F.obj.obj (op T)) :
-    F.obj.map q.op s ∈ (Presheaf.restrictionRepresentation F.obj action).invariants := by
+    F.obj.map q.op s ∈ (Presheaf.restrictionRepresentation F.obj action).invariantSubmodule := by
   intro σ
   change F.obj.map (action σ).inv.op (F.obj.map q.op s) = _
   rw [← ModuleCat.comp_apply, ← Functor.map_comp, ← op_comp]
@@ -50,7 +50,7 @@ theorem sectionRestriction_invariant (q : U ⟶ T)
 def invariantRestriction (q : U ⟶ T)
     (hq : ∀ σ : G, (action σ).hom ≫ q = q) :
     F.obj.obj (op T) ⟶
-      ModuleCat.of R (Presheaf.restrictionRepresentation F.obj action).invariants :=
+      ModuleCat.of R (Presheaf.restrictionRepresentation F.obj action).invariantSubmodule :=
   ModuleCat.ofHom (LinearMap.codRestrict _ (F.obj.map q.op).hom
     (sectionRestriction_invariant F action q hq))
 
@@ -58,7 +58,7 @@ def invariantRestriction (q : U ⟶ T)
 theorem invariantRestriction_subtype (q : U ⟶ T)
     (hq : ∀ σ : G, (action σ).hom ≫ q = q) :
     invariantRestriction F action q hq ≫
-      ModuleCat.ofHom (Presheaf.restrictionRepresentation F.obj action).invariants.subtype =
+      ModuleCat.ofHom (Presheaf.restrictionRepresentation F.obj action).invariantSubmodule.subtype =
         F.obj.map q.op := rfl
 
 /-- Sheaf separatedness on the actual graph cover turns invariance into overlap equality. -/
@@ -115,9 +115,10 @@ theorem invariantSectionDescend_restriction {E : ModuleCat.{w} R}
 
 /-- The original invariant inclusion is fixed under the original forward restrictions. -/
 theorem invariantSections_subtype_fixed (σ : G) :
-    ModuleCat.ofHom (Presheaf.restrictionRepresentation F.obj action).invariants.subtype ≫
+    ModuleCat.ofHom (Presheaf.restrictionRepresentation F.obj action).invariantSubmodule.subtype ≫
       F.obj.map (action σ).hom.op =
-        ModuleCat.ofHom (Presheaf.restrictionRepresentation F.obj action).invariants.subtype := by
+        ModuleCat.ofHom
+          (Presheaf.restrictionRepresentation F.obj action).invariantSubmodule.subtype := by
   ext s
   change F.obj.map (action σ).hom.op s.val = s.val
   have h := s.property σ⁻¹
@@ -127,10 +128,10 @@ theorem invariantSections_subtype_fixed (σ : G) :
 /-- Original restriction and native amalgamation are inverse on the actual invariant module. -/
 def invariantSectionsIso (haction : ∀ σ : G, (action σ).hom ≫ q = q) :
     F.obj.obj (op T) ≅
-      ModuleCat.of R (Presheaf.restrictionRepresentation F.obj action).invariants where
+      ModuleCat.of R (Presheaf.restrictionRepresentation F.obj action).invariantSubmodule where
   hom := invariantRestriction F action q haction
   inv := invariantSectionDescend F action q hq p₁ p₂ hp overlap
-    (ModuleCat.ofHom (Presheaf.restrictionRepresentation F.obj action).invariants.subtype)
+    (ModuleCat.ofHom (Presheaf.restrictionRepresentation F.obj action).invariantSubmodule.subtype)
     (invariantSections_subtype_fixed F action)
   hom_inv_id := by
     apply F.property.hom_ext_ofArrows (fun _ : Unit => q) hq
@@ -144,7 +145,8 @@ def invariantSectionsIso (haction : ∀ σ : G, (action σ).hom ≫ q = q) :
     ext s
     exact ConcreteCategory.congr_hom
       (invariantSectionDescend_restriction F action q hq p₁ p₂ hp overlap
-        (ModuleCat.ofHom (Presheaf.restrictionRepresentation F.obj action).invariants.subtype)
+        (ModuleCat.ofHom
+          (Presheaf.restrictionRepresentation F.obj action).invariantSubmodule.subtype)
         (invariantSections_subtype_fixed F action)) s
 
 end Descent

@@ -33,7 +33,7 @@ variable {k : Type u} [Field k] [IsSepClosed k] (Y : FScheme k) [IsProper Y.hom]
   [HasExt.{e} (AbelianSheaf.{u, u + 1} Y.left)]
   [HasColimitsOfSize.{u + 1, u + 1} AddCommGrpCat.{e}]
   (p : ℕ) [Fact p.Prime] [CharP k p]
-  (Λ : Type l) [CommRing Λ]
+  (Λ : Type l) [Ring Λ]
 
 /-- Prime-killed constant modules obtain the native `ZMod p` action, commuting
 with the original coefficient action, and hence have finite original cohomology. -/

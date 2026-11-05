@@ -199,3 +199,14 @@ Each source states the exact hypotheses, maps, and realization bounds of its int
 
 - [FieldRecognition](FieldRecognition.lean)
 - [StrictLocalFiniteSections](StrictLocalFiniteSections.lean)
+
+## Strong Serre property on a Noetherian scheme
+
+[Noetherian/StrongSerre](Noetherian/StrongSerre.lean) shows that constructible
+finite-type module sheaves form a Serre class on a Noetherian scheme over a
+left Noetherian ring. Its subobject and quotient statements concern all
+monomorphisms into, and epimorphisms out of, an original constructible
+sheaf. [Noetherian/DominantDetection](Noetherian/DominantDetection.lean)
+detects maps to finite-type locally constant modules along dominant
+pullback using the closed zero loci in
+[Noetherian/ZeroLocus](Noetherian/ZeroLocus.lean).

@@ -24,7 +24,7 @@ universe u r
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable (R : Type r) [CommRing R]
+variable (R : Type r) [Ring R]
 
 /-- The original precomposition restriction of module sheaves to an etale chart. -/
 abbrev moduleEtaleRestriction {X S : Scheme.{u}} (f : S ⟶ X) [Etale f] :

@@ -30,7 +30,7 @@ universe u r
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable {R : Type r} [CommRing R]
+variable {R : Type r} [Ring R]
 
 /-- Every constructible native module sheaf on an integral scheme becomes
 constant on an actual connected Galois finite etale cover of a dense affine open. -/

@@ -75,7 +75,7 @@ theorem finite_constantCohomology (q : ℕ) (M : ModuleCat.{max u v} R)
     [PreservesColimitsOfShape (Discrete (Module.Free.ChooseBasisIndex R M))
       (constantCohomology J R q)]
     [Module.Finite R ((constantCohomology J R q).obj (liftedUnit.{0, max u v} R))]
-    (Λ : Type l) [CommRing Λ] [Module Λ M] [SMulCommClass Λ R M]
+    (Λ : Type l) [Ring Λ] [Module Λ M] [SMulCommClass Λ R M]
     [Module.Finite Λ M] :
     Module.Finite Λ ((constantCohomology J Λ q).obj (ModuleCat.of Λ M)) := by
   let : Module Λ ((constantCohomology J R q).obj M) :=

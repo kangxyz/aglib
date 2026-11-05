@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.Algebra.Category.ModuleCat.Sheaf.UnderlyingExact
+public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.NoncommutativeFiniteExact
 public import Aglib.Algebra.Module.FiniteExact
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.ConstantScalars
 public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
@@ -29,7 +29,7 @@ namespace ModuleCat.Sheaf
 universe u v r e
 
 variable {C : Type u} [Category.{v} C] (J : GrothendieckTopology C)
-  (R : Type r) [CommRing R]
+  (R : Type r) [Ring R]
   [HasSheafify J AddCommGrpCat.{max u v}]
   [HasExt.{e} (Sheaf J AddCommGrpCat.{max u v})]
 
@@ -40,8 +40,7 @@ short exact sequence of actual module sheaves. -/
 theorem cohomology_exact (S : ShortComplex (Sheaf J (ModuleCat.{max u v} R)))
     (hS : S.ShortExact) (q : ℕ) :
     Function.Exact ((cohomology J R q).map S.f).hom ((cohomology J R q).map S.g).hom :=
-  (ShortComplex.ab_exact_iff_function_exact _).mp
-    (CategoryTheory.Sheaf.H.longSequence_exact₂' (hS.map_of_exact (underlying R J)) q)
+  cohomologyOfRing_exact J R S hS q
 
 /-- Finite outer original cohomology modules imply a finite middle module,
 retaining the actual coefficient-ring action and unchanged original carriers. -/

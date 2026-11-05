@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Vanishing.ModificationCone
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Vanishing.ModificationBound
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Vanishing.ProperRelativeCurves
 public import Aglib.AlgebraicGeometry.RationalMap.ProjectiveLineGeometricFibres
 
@@ -81,13 +81,11 @@ theorem subsingleton_H_of_isTorsion_of_proper_integral_dimension_step
     have he := IsHomeomorph.topologicalKrullDim_eq _
       (ProjectiveLine.TwoChart.twoChartLineIsoProjectiveP1 k).hom.homeomorph.isHomeomorph
     exact he.symm.trans (OverField.Curve.Projectivity.twoChartLine_topologicalKrullDim k)
-  have hY : ((derivedGlobalSections Y).obj
-      ((singleFunctor (AbelianSheaf.{u, u + 1} Y) 0).obj G)).IsLE ((N : ℤ) + 2) := by
-    have h := isLE_derivedGlobalSections_single_of_leray g G N 2 hRg
-      (fun n _ r hr => subsingleton_H_of_isTorsion_of_proper_curve
+  have hY (r : ℕ) (hr : N + 2 < r) : Subsingleton (Sheaf.H.{u + 2} G r) := by
+    apply subsingleton_H_of_leray_bounds g G N 2 hRg
+      (fun n _ s hs => subsingleton_H_of_isTorsion_of_proper_curve
         (ProjectiveLine.structureMap k) hline ((higherDirectImage g n).obj G)
-          (higherDirectImage_isTorsion g n G hG) r hr)
-    simpa only [Nat.cast_ofNat, add_comm] using h
+          (higherDirectImage_isTorsion g n G hG) s hs) r (by omega)
   obtain ⟨Z, i, hi, hcomp, hdimZ⟩ :=
     U.ι.exists_closedComplement_topologicalKrullDim_le d hdim
   let : IsClosedImmersion i := hi
@@ -100,26 +98,10 @@ theorem subsingleton_H_of_isTorsion_of_proper_integral_dimension_step
   have hRb (n : ℕ) (hn : 2 < n) : IsZero ((higherDirectImage b n).obj G) :=
     isZero_higherDirectImage_obj_of_geometricFibres_dimension_le_one b
       (fun K _ _ η => hbfib K η) G hG n hn
-  obtain ⟨Q, v, w, hT, hQge, hQle, hQtorsion, hQsupport⟩ :=
-    exists_derivedImageSingleUnit_cone b U.ι i hcomp F hF 2 hRb
-  let T := Triangle.mk (derivedImageSingleUnit b F) v w
-  let : Q.IsGE (-1) := hQge
-  let : Q.IsLE 2 := hQle
-  let : ((derivedGlobalSections X).obj T.obj₂).IsLE ((N : ℤ) + 2) := by
-    let : ((derivedGlobalSections Y).obj
-        ((singleFunctor (AbelianSheaf.{u, u + 1} Y) 0).obj G)).IsLE ((N : ℤ) + 2) := hY
-    let E : (derivedGlobalSections Y).obj
-        ((singleFunctor (AbelianSheaf.{u, u + 1} Y) 0).obj G) ≅
-          (derivedGlobalSections X).obj T.obj₂ :=
-      ((derivedDirectImageGlobalSectionsIso b).app
-        ((singleFunctor (AbelianSheaf.{u, u + 1} Y) 0).obj G)).symm
-    exact TStructure.t.isLE_of_iso E ((N : ℤ) + 2)
-  let : ((derivedGlobalSections X).obj T.obj₃).IsLE ((N : ℤ) + 2) := by
-    apply isLE_derivedGlobalSections_of_closedSupport_homology_H i Q (-1) 2 N
-    · exact fun n _ _ => hQsupport n
-    · intro n _ _ r hr
-      exact hsmall k Z (i ≫ p) hdimZ _ ((hQtorsion n).inverseImage i) r hr
-  exact subsingleton_H_of_triangle_bounds (X := X) T hT F (Iso.refl _)
-    ((N : ℤ) + 2) ((N : ℤ) + 2) q (by omega) (by omega)
+  let : Subsingleton (Sheaf.H.{u + 2} F q) :=
+    subsingleton_H_of_modification_bounds b U.ι i hcomp F hF 2 (N + 2) N hRb hY
+      (fun H hH r hr => hsmall k Z (i ≫ p) hdimZ H hH r hr) q (by omega) (by omega)
+  let E : Sheaf.H.{e} F q ≃ Sheaf.H.{u + 2} F q := CategoryTheory.Abelian.Ext.chgUniv
+  exact E.injective.subsingleton
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Vanishing

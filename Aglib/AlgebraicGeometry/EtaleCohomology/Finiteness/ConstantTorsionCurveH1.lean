@@ -34,7 +34,7 @@ attribute [local instance] hasSheafifyLarge
 variable {k : Type u} [Field k] [IsSepClosed k] (X : FScheme k) (hX : Properties X)
   [HasExt.{e} (AbelianSheaf.{u, u + 1} X.left)]
   [HasColimitsOfSize.{u + 1, u + 1} AddCommGrpCat.{e}]
-  (Λ : Type l) [CommRing Λ]
+  (Λ : Type l) [Ring Λ]
 
 include hX
 

@@ -28,7 +28,7 @@ universe u r
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable {R : Type r} [CommRing R]
+variable {R : Type r} [Ring R]
 
 /-- A dense affine open with an actual connected Galois finite etale
 trivialization of the original finite-type module coefficient. -/

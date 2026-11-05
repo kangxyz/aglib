@@ -29,7 +29,7 @@ universe u r
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable {R : Type r} [CommRing R]
+variable {R : Type r} [Ring R]
 
 /-- Finitely many affine etale charts produce a downstairs partition from
 their original constructible module pullbacks, rather than presupposing it. -/

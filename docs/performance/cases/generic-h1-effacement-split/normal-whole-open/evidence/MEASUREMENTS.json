@@ -1,0 +1,36 @@
+{
+  "baseline": {
+    "run": "remote-83554647ef974852a7d18f1f16658ec2",
+    "displayed_module_seconds": 2130.0,
+    "exit_code": 0,
+    "group_closed": true,
+    "expected_source": "a12bd9aad8148e994dcc72f1cc77b86356b4914582f39d9ff353620a76785295",
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 110592,
+      "threads": 4
+    }
+  },
+  "retained": {
+    "run": "remote-db3e14b1918e424282f3d5e673a09e4c",
+    "displayed_module_seconds": 274.0,
+    "exit_code": 0,
+    "group_closed": true,
+    "expected_source": "e134436b0e159c6fd7682c8a8c51b628bccd77926cd8961bd854afee7b3452ab",
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 6,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 110592,
+      "threads": 4
+    }
+  },
+  "dependency_comparison": {
+    "root": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1NormalWholeOpenEffacement",
+    "local_dependency_count": 3948,
+    "different_source_inputs": [],
+    "pin_differences": []
+  }
+}

@@ -30,7 +30,7 @@ universe u r
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable {R : Type r} [CommRing R] {X : Scheme.{u}}
+variable {R : Type r} [Ring R] {X : Scheme.{u}}
   {F F' : ModuleSheaf R X} (Y : Scheme.FiniteEtale X)
 
 /-- An actual original sheaf map intertwines restriction along inverse deck maps. -/

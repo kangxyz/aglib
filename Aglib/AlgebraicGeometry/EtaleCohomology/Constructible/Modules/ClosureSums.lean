@@ -31,7 +31,7 @@ universe u r
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 attribute [local instance] Abelian.hasFiniteBiproducts
 
-variable {R : Type r} [CommRing R]
+variable {R : Type r} [Ring R]
 
 local instance closureSumsHasModuleLimits : HasLimitsOfSize.{u + 1, u + 1} (ModuleCat.{u + 1} R) :=
   ModuleCat.hasLimitsOfSize.{u + 1, u + 1, u + 1, r}

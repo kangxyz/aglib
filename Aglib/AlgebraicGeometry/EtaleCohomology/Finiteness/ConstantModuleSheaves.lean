@@ -32,7 +32,7 @@ variable {k : Type u} [Field k] [IsSepClosed k] (Y : FScheme k) [IsProper Y.hom]
   [HasExt.{e} (AbelianSheaf.{u, u + 1} Y.left)]
   [HasColimitsOfSize.{u + 1, u + 1} AddCommGrpCat.{e}]
   (p : ℕ) [Fact p.Prime] [CharP k p]
-  (Λ : Type l) [CommRing Λ]
+  (Λ : Type l) [Ring Λ]
 
 /-- Prime-killed finite modules have finite original cohomology when regarded as
 actual native constant module sheaves. The coefficient ring need not be Noetherian. -/

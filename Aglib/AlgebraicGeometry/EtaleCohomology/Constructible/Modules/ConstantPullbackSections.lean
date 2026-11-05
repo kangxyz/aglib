@@ -29,7 +29,7 @@ universe u r
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable (R : Type r) [CommRing R] {X S : Scheme.{u}}
+variable (R : Type r) [Ring R] {X S : Scheme.{u}}
 
 /-- Actual direct-image global sections with the original terminal transport. -/
 def moduleDirectImageGlobalSectionsIso (f : S ⟶ X) :

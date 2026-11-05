@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.MixedCharacteristicCurveR1
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.HigherImageFiniteCogenerators
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.FiniteConstantImageProperty
 public import Aglib.Algebra.Category.Grp.FiniteProperty
 
 /-! # Fixed-degree finite-constant R1 for proper relative curves
@@ -28,49 +28,6 @@ universe u
 
 attribute [local instance] hasSheafifyLarge HasDerivedCategory.standard
 
-private abbrev coefficientFunctor (X : Scheme.{u}) :
-    AddCommGrpCat.{u} ⥤ AbelianSheaf.{u, u + 1} X :=
-  AddCommGrpCat.uliftFunctor.{u + 1, u} ⋙
-    constantSheaf X.smallEtaleTopology AddCommGrpCat.{u + 1}
-
-private instance coefficientFunctor_additive (X : Scheme.{u}) :
-    (coefficientFunctor X).Additive := by
-  dsimp [coefficientFunctor, constantSheaf]
-  infer_instance
-
-private instance coefficientFunctor_preservesFiniteLimits (X : Scheme.{u}) :
-    PreservesFiniteLimits (coefficientFunctor X) := by
-  dsimp [coefficientFunctor, constantSheaf]
-  infer_instance
-
-private abbrev constantImageProperty {X S : Scheme.{u}} (f : X ⟶ S) :
-    ObjectProperty AddCommGrpCat.{u} :=
-  let Q : ObjectProperty (AbelianSheaf.{u, u + 1} S) := Constructible.IsConstructible
-  Q.inverseImage (coefficientFunctor X ⋙ higherDirectImage f 1)
-
-private instance constantImageProperty_iso {X S : Scheme.{u}} (f : X ⟶ S) :
-    (constantImageProperty f).IsClosedUnderIsomorphisms := by
-  dsimp [constantImageProperty]
-  infer_instance
-
-private instance constantImageProperty_products {X S : Scheme.{u}} (f : X ⟶ S) :
-    (constantImageProperty f).IsClosedUnderFiniteProducts := by
-  let Q : ObjectProperty (AbelianSheaf.{u, u + 1} S) := Constructible.IsConstructible
-  let : Q.IsClosedUnderIsomorphisms := inferInstance
-  let : Q.IsClosedUnderFiniteProducts := by
-    constructor
-    intro J _
-    apply ObjectProperty.IsClosedUnderLimitsOfShape.mk'
-    rintro _ ⟨E, hE⟩
-    exact Q.prop_of_iso (Pi.isoLimit E)
-      (Constructible.FiniteCogenerators.isConstructible_finiteProduct
-        (fun j : J => E.obj ⟨j⟩) (fun j => hE ⟨j⟩))
-  constructor
-  intro J _
-  change (Q.inverseImage (coefficientFunctor X ⋙ higherDirectImage f 1)).IsClosedUnderLimitsOfShape
-    (Discrete J)
-  infer_instance
-
 /-- Finite constants with a positive invertible annihilator have constructible
 original first higher image under a proper relative curve. -/
 theorem finiteConstantHigherDirectImage_R1_isConstructible_of_relativeCurve
@@ -83,7 +40,7 @@ theorem finiteConstantHigherDirectImage_R1_isConstructible_of_relativeCurve
     Constructible.IsConstructible ((higherDirectImage f 1).obj
       (ConstantFinite.coefficient A X)) := by
   classical
-  let P := constantImageProperty f
+  let P := FiniteConstantImage.property f 1
   apply AddCommGrpCat.prop_of_finite_of_cyclic_divisors_of_finiteProducts P N ?_ A hN
   intro m hm hmN
   have hunit : IsUnit (m : Γ(S, ⊤)) :=
@@ -107,7 +64,7 @@ theorem finiteConstantHigherDirectImage_R1_isConstructible_of_relativeCurve_unre
   obtain ⟨I, hI, p, hp, r, ⟨e⟩⟩ := AddCommGroup.equiv_directSum_zmod_of_finite A
   let := hI
   apply AddCommGrpCat.prop_of_zmod_directSum_equiv_of_finiteProducts
-    (constantImageProperty f) (fun i => p i ^ r i) e
+    (FiniteConstantImage.property f 1) (fun i => p i ^ r i) e
   intro i
   exact cyclicPrimePowerHigherDirectImage_R1_isConstructible_of_relativeCurve f hdim
     (p i) (hp i) (r i)

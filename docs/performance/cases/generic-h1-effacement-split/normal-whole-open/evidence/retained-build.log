@@ -1,0 +1,84 @@
+✔ [8227/8227] Built Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1NormalWholeOpenEffacement (274s)
+Build completed successfully (8227 jobs).
+No update necessary
+Generated entry check exit 0
+warning: nolints file could not be read; treating as empty: scripts/nolints-style.txt
+Text style check exit 0
+Approved-axiom audit on selected import environment
+axiom-audit: audited 47802 declaration(s) under 'Aglib'; all within the allowlist [propext, Classical.choice, Quot.sound].
+Approved-axiom audit exit 0
+Native lint on changed modules and their original non-umbrella consumers
+[coarse batch] importing 1 roots for 1 assigned modules
+[coarse batch] import elapsed=7222 ms
+[coarse batch] checked modules=1; declarations=39
+[coarse batch] enabled declaration linters=#[checkType, defsWithUnderscore, deprecatedNoSince, docBlame, impossibleInstance, nonClassInstance, simpComm, simpNF, structureInType, subsetDotNotationLinter, synTaut, tacticAlt, tacticDocs, unusedArguments, unusedHavesSuffices]
+[coarse batch] enabled native environment linters=#[]
+[CoarseBatch] Running linters:
+  checkType
+  defsWithUnderscore
+  deprecatedNoSince
+  docBlame
+  impossibleInstance
+  nonClassInstance
+  simpComm
+  simpNF
+  structureInType
+  subsetDotNotationLinter
+  synTaut
+  tacticAlt
+  tacticDocs
+  unusedArguments
+  unusedHavesSuffices
+[CoarseBatch] full lint: backend=batched; 39 declarations, 15 linters, 1 workers, batch=64
+[CoarseBatch] Linted 39/39 declarations, 0 messages, 3649 ms
+[CoarseBatch] - checkType: Passed!
+[CoarseBatch] - defsWithUnderscore: Passed!
+[CoarseBatch] - deprecatedNoSince: Passed!
+[CoarseBatch] - docBlame: Passed!
+[CoarseBatch] - impossibleInstance: Passed!
+[CoarseBatch] - nonClassInstance: Passed!
+[CoarseBatch] - simpComm: Passed!
+[CoarseBatch] - simpNF: Passed!
+[CoarseBatch] - structureInType: Passed!
+[CoarseBatch] - subsetDotNotationLinter: Passed!
+[CoarseBatch] - synTaut: Passed!
+[CoarseBatch] - tacticAlt: Passed!
+[CoarseBatch] - tacticDocs: Passed!
+[CoarseBatch] - unusedArguments: Passed!
+[CoarseBatch] - unusedHavesSuffices: Passed!
+[CoarseBatch] Completed linting!
+[coarse batch] result={"assigned":["Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1NormalWholeOpenEffacement"],"checkedDeclarations":39,"checkedModules":1,"declarationFindings":0,"deferredFailed":false,"enabledDeclarationLinters":["checkType","defsWithUnderscore","deprecatedNoSince","docBlame","impossibleInstance","nonClassInstance","simpComm","simpNF","structureInType","subsetDotNotationLinter","synTaut","tacticAlt","tacticDocs","unusedArguments","unusedHavesSuffices"],"enabledEnvironmentLinters":[],"environmentFindings":0,"exitCode":0,"imports":["Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1NormalWholeOpenEffacement"],"nativeDeferredCheck":"linter.doc.deferred; native captured source options","nativeTextChecks":"persisted source-enabled lint log; report mode; no overrides","textFindings":0}
+[coarse batch] total elapsed=11592 ms; exit=0
+{"textFindings": 0,
+ "nativeTextChecks":
+ "persisted source-enabled lint log; report mode; no overrides",
+ "nativeDeferredCheck": "linter.doc.deferred; native captured source options",
+ "imports":
+ ["Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1NormalWholeOpenEffacement"],
+ "exitCode": 0,
+ "environmentFindings": 0,
+ "enabledEnvironmentLinters": [],
+ "enabledDeclarationLinters":
+ ["checkType",
+  "defsWithUnderscore",
+  "deprecatedNoSince",
+  "docBlame",
+  "impossibleInstance",
+  "nonClassInstance",
+  "simpComm",
+  "simpNF",
+  "structureInType",
+  "subsetDotNotationLinter",
+  "synTaut",
+  "tacticAlt",
+  "tacticDocs",
+  "unusedArguments",
+  "unusedHavesSuffices"],
+ "deferredFailed": false,
+ "declarationFindings": 0,
+ "checkedModules": 1,
+ "checkedDeclarations": 39,
+ "assigned":
+ ["Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.GenericH1NormalWholeOpenEffacement"]}
+
+Scoped lint exit 0

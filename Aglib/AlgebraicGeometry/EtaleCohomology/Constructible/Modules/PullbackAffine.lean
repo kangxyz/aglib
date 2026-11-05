@@ -30,7 +30,7 @@ universe u r
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable {R : Type r} [CommRing R]
+variable {R : Type r} [Ring R]
 
 /-- Pull back the original actual partition and its finite-type module
 restrictions. Compactness and quasi-compactness are the hypotheses of the

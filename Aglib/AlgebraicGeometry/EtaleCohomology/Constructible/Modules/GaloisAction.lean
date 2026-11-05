@@ -31,7 +31,7 @@ universe u r
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable {R : Type r} [CommRing R] {X : Scheme.{u}}
+variable {R : Type r} [Ring R] {X : Scheme.{u}}
 
 /-- The original module of sections on the actual finite-etale object. -/
 abbrev finiteEtaleSections (F : ModuleSheaf R X) (Y : Scheme.FiniteEtale X) :

@@ -29,7 +29,7 @@ universe u r
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
   ModuleCat.Sheaf.forget_preservesSheafification
 
-variable (R : Type r) [CommRing R]
+variable (R : Type r) [Ring R]
 
 /-- Original global sections with the original constant-ring module structure. -/
 abbrev moduleGlobalSections (X : Scheme.{u}) : ModuleSheaf R X ⥤ ModuleCat.{u + 1} R :=

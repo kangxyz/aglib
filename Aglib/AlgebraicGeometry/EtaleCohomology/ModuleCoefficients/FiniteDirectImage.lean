@@ -34,7 +34,7 @@ universe u r wX wS
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
   ModuleCat.Sheaf.cohomologyModule
 
-variable (R : Type r) [CommRing R] {X S : Scheme.{u}}
+variable (R : Type r) [Ring R] {X S : Scheme.{u}}
   [HasExt.{wX} (AbelianSheaf.{u, u + 1} X)]
   [HasExt.{wS} (AbelianSheaf.{u, u + 1} S)]
   (f : X ⟶ S) [IsFinite f]
@@ -49,24 +49,21 @@ def finiteModuleCohomologyDirectImageLinearEquiv (F : ModuleSheaf R X) (q : ℕ)
       ((moduleDirectImageUnderlyingIso R f).app F)).addCommGroupIsoToAddEquiv.trans
         (finiteCohomologyDirectImageAddEquiv f ((moduleUnderlying R X).obj F) q)
   map_smul' r x := by
+    let aX := (ModuleCat.Sheaf.underlyingScalar X.smallEtaleTopology R r).app F
+    let aS := (ModuleCat.Sheaf.underlyingScalar S.smallEtaleTopology R r).app
+      ((moduleDirectImage R f).obj F)
     change finiteCohomologyDirectImageAddEquiv f ((moduleUnderlying R X).obj F) q
         (Sheaf.H.map ((moduleDirectImageUnderlyingIso R f).hom.app F) q
-          (Sheaf.H.map ((moduleUnderlying R S).map
-            (r • 𝟙 ((moduleDirectImage R f).obj F))) q x)) =
-      Sheaf.H.map ((moduleUnderlying R X).map (r • 𝟙 F)) q
+          (Sheaf.H.map aS q x)) =
+      Sheaf.H.map aX q
         (finiteCohomologyDirectImageAddEquiv f ((moduleUnderlying R X).obj F) q
           (Sheaf.H.map ((moduleDirectImageUnderlyingIso R f).hom.app F) q x))
-    have hscalar : (moduleDirectImage R f).map (r • 𝟙 F) =
-        r • 𝟙 ((moduleDirectImage R f).obj F) := rfl
-    have h : (moduleUnderlying R S).map (r • 𝟙 ((moduleDirectImage R f).obj F)) ≫
-          (moduleDirectImageUnderlyingIso R f).hom.app F =
-        (moduleDirectImageUnderlyingIso R f).hom.app F ≫
-          (directImage f).map ((moduleUnderlying R X).map (r • 𝟙 F)) := by
-      simpa only [Functor.comp_map, hscalar] using
-        (moduleDirectImageUnderlyingIso R f).hom.naturality (r • 𝟙 F)
+    have h : aS ≫ (moduleDirectImageUnderlyingIso R f).hom.app F =
+        (moduleDirectImageUnderlyingIso R f).hom.app F ≫ (directImage f).map aX := by
+      ext U x
+      rfl
     rw [← Sheaf.H.map_comp_apply, h, Sheaf.H.map_comp_apply]
-    exact finiteCohomologyDirectImageAddEquiv_naturality f
-      ((moduleUnderlying R X).map (r • 𝟙 F)) q _
+    exact finiteCohomologyDirectImageAddEquiv_naturality f aX q _
 
 /-- The linear equivalence retains the existing finite comparison and the native
 underlying direct-image isomorphism, with no replacement cohomology map. -/

@@ -25,7 +25,7 @@ universe u r
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable {R : Type r} [CommRing R] {X : Scheme.{u}}
+variable {R : Type r} [Ring R] {X : Scheme.{u}}
 
 /-- Finite quotient generators lift on actual etale charts, without a local
 splitting or a free module in an enlarged value universe. -/

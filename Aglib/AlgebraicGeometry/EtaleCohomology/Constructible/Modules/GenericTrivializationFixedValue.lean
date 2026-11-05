@@ -27,7 +27,7 @@ universe u r
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable {R : Type r} [CommRing R] {X : Scheme.{u}} [ConnectedSpace X]
+variable {R : Type r} [Ring R] {X : Scheme.{u}} [ConnectedSpace X]
 
 /-- A Galois refinement retaining the prescribed original module value. -/
 structure GaloisRefinedConstantTrivialization (F : ModuleSheaf R X)

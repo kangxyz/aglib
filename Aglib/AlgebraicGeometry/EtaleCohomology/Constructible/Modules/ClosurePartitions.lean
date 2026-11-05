@@ -25,7 +25,7 @@ universe u r
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable {R : Type r} [CommRing R]
+variable {R : Type r} [Ring R]
 
 /-- Actual geometric refinement preserves the original finite-type module
 restrictions through the native inverse-image composition comparison. -/

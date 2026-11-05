@@ -28,7 +28,7 @@ universe u r v
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable {R : Type r} [CommRing R]
+variable {R : Type r} [Ring R]
 
 /-- Finiteness and local constancy on an entire pulled-back source survive
 an actual refinement through the literal source comparison map. -/

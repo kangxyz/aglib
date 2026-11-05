@@ -27,7 +27,7 @@ universe u r
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable {R : Type r} [CommRing R] {X : Scheme.{u}}
+variable {R : Type r} [Ring R] {X : Scheme.{u}}
 
 /-- A local unit equation gives an isomorphism of the original inverse-image
 arrow with an actual constant module arrow on that chart. -/

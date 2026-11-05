@@ -1,0 +1,12 @@
+{
+  "MEASUREMENTS.json": "79b3631ee20a6d415e121fe4218850663b4bc6350b57b12e2acaae2d9c5fc6c4",
+  "baseline-build.log": "7d359e9522ab54714306a591447c2b0887a975d2e89494a80dcc338368476e8b",
+  "baseline-compiler-events.jsonl": "5c0b6dd3c2ae50d1ad2f837783720384a3dcb9da5e7466f5a8052b726f8b8a4b",
+  "baseline-source.lean.txt": "9461fbc7e5b004fc549099fc765cdc7ff70d0e6b19d103dfb7030ef58eba480c",
+  "explicit-motive.log": "af01944da63184aeb0e63c83b7db8219923d28df8c5921203eabd3b07ca51351",
+  "retained-build.log": "d19b1caa6a0f4f33516e51977d7bb5c83cf8491e741524b5b2649e2cf7520a75",
+  "retained-compiler-events.jsonl": "8d8d5f97319625673fe6162cce2887954a20fe77baf46ce06955f3700ef49d21",
+  "retained-source.lean.txt": "3da7599e43ad038e5f4fb3317a3deaee7607fc0a62c6febe237e687b59b7db0c",
+  "selected-field.log": "fee61e97c1755c67dd1ec0d49cb25b97a4427de0cdd4b12a6bf29ff4b3628217",
+  "single-application.log": "2fabad995b33c32ffec816e207b92caa634ff8d40a06584eac6b47c7ce270b8a"
+}

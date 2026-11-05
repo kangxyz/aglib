@@ -30,7 +30,7 @@ universe u r
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable {R : Type r} [CommRing R] [IsNoetherianRing R]
+variable {R : Type r} [Ring R] [IsNoetherianRing R]
 
 local instance {X S : Scheme.{u}} (f : S ⟶ X) :
     (moduleInverseImage R f).IsLeftAdjoint :=

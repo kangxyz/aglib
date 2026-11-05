@@ -35,7 +35,7 @@ universe u r
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable (R : Type r) [CommRing R] {X : Scheme.{u}} (U : X.Etale)
+variable (R : Type r) [Ring R] {X : Scheme.{u}} (U : X.Etale)
   (a : freeAbelianSheaf.{u + 1} (Scheme.smallEtaleTopology X) (etaleTerminal X) ⟶
     freeAbelianSheaf.{u + 1} (Scheme.smallEtaleTopology X) U)
 
@@ -43,9 +43,6 @@ variable (R : Type r) [CommRing R] {X : Scheme.{u}} (U : X.Etale)
 abbrev etaleModuleProductSheaf : ModuleSheaf R X ⥤ ModuleSheaf R X :=
   moduleEtaleRestriction R (X := X) (S := U.left) U.hom ⋙
     moduleDirectImage R (X := X) (S := U.left) U.hom
-
-instance etaleModuleProductSheaf_linear : (etaleModuleProductSheaf R U).Linear R where
-  map_smul _ _ := rfl
 
 /-- The existing native direct-image comparisons identify the original
 underlying module product coefficient with the original abelian one. -/
@@ -56,12 +53,25 @@ def etaleModuleProductUnderlyingIso :
     U.left.smallEtaleTopology (siteEtalePostcompose (X := X) (S := U.left) U.hom)
     (siteBaseChange (X := X) (S := U.left) U.hom)
 
+/-- Continuous original images retain literal sectionwise left multiplication. -/
+theorem etaleModuleProductUnderlyingIso_scalar
+    (F : ModuleSheaf R X) (a : R) :
+    (ModuleCat.Sheaf.underlyingScalar X.smallEtaleTopology R a).app
+        ((etaleModuleProductSheaf R U).obj F) ≫
+      (etaleModuleProductUnderlyingIso R U).hom.app F =
+    (etaleModuleProductUnderlyingIso R U).hom.app F ≫
+      (etaleProductSheaf U).map
+        ((ModuleCat.Sheaf.underlyingScalar X.smallEtaleTopology R a).app F) := by
+  ext V x
+  rfl
+
 /-- The actual abelian represented trace is linear for every constant scalar ring. -/
 def etaleRepresentedModuleRestrictionTrace :
     etaleModuleProductSheaf R U ⟶ 𝟭 (ModuleSheaf R X) :=
   ModuleCat.Sheaf.traceOfUnderlying.{u + 1, u, r} R X.smallEtaleTopology
     (etaleModuleProductSheaf R U) (etaleProductSheaf U)
-    (etaleModuleProductUnderlyingIso R U) (etaleRepresentedRestrictionTrace U a)
+    (etaleModuleProductUnderlyingIso R U)
+    (etaleModuleProductUnderlyingIso_scalar R U) (etaleRepresentedRestrictionTrace U a)
 
 /-- Forgetting the linear trace gives exactly the original abelian trace after
 its native source comparison. -/
@@ -100,7 +110,8 @@ theorem etaleRepresentedModuleRestrictionTrace_rank (n : ℕ)
         (etaleRepresentedModuleRestrictionTrace R U a).app F = n • 𝟙 F := by
   exact ModuleCat.Sheaf.traceOfUnderlying_rank.{u + 1, u, r} R X.smallEtaleTopology
     (etaleModuleProductSheaf R U) (etaleProductSheaf U)
-    (etaleModuleProductUnderlyingIso R U) (etaleRepresentedRestrictionTrace U a)
+    (etaleModuleProductUnderlyingIso R U)
+    (etaleModuleProductUnderlyingIso_scalar R U) (etaleRepresentedRestrictionTrace U a)
     ((siteEtalePostcomposeAdj (X := X) (S := U.left) U.hom).sheafPushforwardContinuous
       (E := ModuleCat.{u + 1} R) U.left.smallEtaleTopology X.smallEtaleTopology).unit
     ((siteEtalePostcomposeAdj (X := X) (S := U.left) U.hom).sheafPushforwardContinuous

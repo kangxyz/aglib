@@ -38,7 +38,7 @@ namespace AlgebraicGeometry.Scheme.EtaleCohomology.Constructible.Modules
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable {R : Type r} [CommRing R] {X : Scheme.{u}} [ConnectedSpace X]
+variable {R : Type r} [Ring R] {X : Scheme.{u}} [ConnectedSpace X]
   (Y : Scheme.FiniteEtale X) [PreGaloisCategory.IsGalois Y] [Surjective Y.obj.hom]
   [ConnectedSpace Y.obj.left] [CompactSpace Y.obj.left] [QuasiSeparatedSpace Y.obj.left]
 
@@ -172,7 +172,7 @@ variable {k : Type u} [Field k] [IsSepClosed k] (X : FScheme k) [IsProper X.hom]
   [HasExt.{e} (AbelianSheaf.{u, u + 1} X.left)]
   [HasColimitsOfSize.{u + 1, u + 1} AddCommGrpCat.{e}]
   (p : ℕ) [Fact p.Prime] [CharP k p]
-  (R : Type r) [CommRing R] [IsNoetherianRing R]
+  (R : Type r) [Ring R] [IsNoetherianRing R]
 
 /-- An actual p-group Galois trivialization by a finite prime-killed original
 module gives finite original module cohomology in every degree on a proper

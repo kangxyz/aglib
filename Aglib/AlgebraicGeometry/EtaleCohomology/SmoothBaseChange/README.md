@@ -72,3 +72,12 @@ Each source states the exact hypotheses, maps, and realization bounds of its int
 
 - [ModuleInjectiveTests](ModuleInjectiveTests.lean)
 - [OrdinaryCartesian](OrdinaryCartesian.lean)
+
+## Smooth base change for base-invertible torsion
+
+[SmoothExchange](SmoothExchange.lean) proves invertibility of the original
+higher base-change maps in every degree for quasi-compact quasi-separated
+morphisms, smooth base change and base-invertible torsion abelian coefficients.
+It gives the corresponding exchange on bounded-below complexes when each
+homology sheaf satisfies that torsion condition. The four derived-category
+realizations are independent.

@@ -26,7 +26,7 @@ universe u v r
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable (R : Type r) [CommRing R]
+variable (R : Type r) [Ring R]
 
 local instance coverConservativityHasFiniteLimits : HasFiniteLimits (ModuleCat.{u + 1} R) where
   out _ _ _ := ModuleCat.hasLimitsOfShape.{0, 0, u + 1, r}

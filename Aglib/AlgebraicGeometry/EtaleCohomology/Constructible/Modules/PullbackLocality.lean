@@ -28,7 +28,7 @@ universe u r v
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable {R : Type r} [CommRing R]
+variable {R : Type r} [Ring R]
 
 /-- Glue finite-type module restrictions on actual finite local partitions
 along a finite retrocompact open cover. -/

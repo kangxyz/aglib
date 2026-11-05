@@ -27,7 +27,7 @@ universe u r
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable {R : Type r} [CommRing R]
+variable {R : Type r} [Ring R]
 
 /-- Actual affine source neighborhoods mapping into actual affine target
 opens produce a global partition of the inverse image on a qcqs source. -/

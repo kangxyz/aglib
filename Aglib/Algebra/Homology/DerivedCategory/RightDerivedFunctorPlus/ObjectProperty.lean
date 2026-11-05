@@ -36,7 +36,9 @@ variable {A : Type u} [Category.{v} A] [Abelian A] [EnoughInjectives A]
   (F : A ⥤ B) [F.Additive]
   (P : ObjectProperty B) [P.ContainsZero] [P.IsClosedUnderIsomorphisms]
 
-private theorem property_single_homology_of_rightDerived
+/-- The original natural-degree property extends to every integer degree
+using the actual single-object comparison and negative homology vanishing. -/
+theorem property_single_homology_of_rightDerived
     (M : A) (hM : ∀ n : ℕ, P ((F.rightDerived n).obj M)) (i : ℤ) :
     P ((DerivedCategory.Plus.homologyFunctor B i).obj
       (F.rightDerivedFunctorPlus.obj ((DerivedCategory.Plus.singleFunctor A 0).obj M))) := by
@@ -77,5 +79,62 @@ theorem rightDerived_property_of_shortExact
       (DerivedCategory.HomologySequence.exact₃ T hT (n : ℤ) ((n : ℤ) + 1) rfl)
       (hright ((n : ℤ) - 1)) (hleft n) (hright n) (hleft ((n : ℤ) + 1))
   exact P.prop_of_iso ((F.rightDerivedSingleHomologyIso n).app S.X₂).symm hmiddle
+
+/-- The left coefficient of a short exact sequence has the all-degree weak-Serre
+property when the middle and right coefficients do. This includes degree zero
+through actual negative homology, not a fictitious predecessor degree. -/
+theorem rightDerived_property_left_of_shortExact
+    (S : ShortComplex A) (hS : S.ShortExact)
+    (h₂ : ∀ n : ℕ, P ((F.rightDerived n).obj S.X₂))
+    (h₃ : ∀ n : ℕ, P ((F.rightDerived n).obj S.X₃)) (n : ℕ) :
+    P ((F.rightDerived n).obj S.X₁) := by
+  let T := DerivedCategory.Plus.ι.mapTriangle.obj
+    (F.rightDerivedFunctorPlus.mapTriangle.obj hS.singleTrianglePlus)
+  have hT : T ∈ distTriang (DerivedCategory B) :=
+    DerivedCategory.Plus.ι.map_distinguished _
+      (F.rightDerivedFunctorPlus.map_distinguished _ hS.singleTrianglePlus_distinguished)
+  have hmiddle (i : ℤ) : P ((DerivedCategory.homologyFunctor B i).obj T.obj₂) :=
+    property_single_homology_of_rightDerived F P S.X₂ h₂ i
+  have hright (i : ℤ) : P ((DerivedCategory.homologyFunctor B i).obj T.obj₃) :=
+    property_single_homology_of_rightDerived F P S.X₃ h₃ i
+  have hleft : P ((DerivedCategory.homologyFunctor B (n : ℤ)).obj T.obj₁) :=
+    P.prop_middle_of_exact_five
+      ((DerivedCategory.homologyFunctor B ((n : ℤ) - 1)).map T.mor₂)
+      (DerivedCategory.HomologySequence.δ T ((n : ℤ) - 1) (n : ℤ) (by omega))
+      ((DerivedCategory.homologyFunctor B (n : ℤ)).map T.mor₁)
+      ((DerivedCategory.homologyFunctor B (n : ℤ)).map T.mor₂)
+      (DerivedCategory.HomologySequence.exact₃ T hT ((n : ℤ) - 1) (n : ℤ) (by omega))
+      (DerivedCategory.HomologySequence.exact₁ T hT ((n : ℤ) - 1) (n : ℤ) (by omega))
+      (DerivedCategory.HomologySequence.exact₂ T hT (n : ℤ))
+      (hmiddle ((n : ℤ) - 1)) (hright ((n : ℤ) - 1)) (hmiddle n) (hright n)
+  exact P.prop_of_iso ((F.rightDerivedSingleHomologyIso n).app S.X₁).symm hleft
+
+/-- The right coefficient has the all-degree weak-Serre property when the
+left and middle coefficients do, using the same original triangle maps. -/
+theorem rightDerived_property_right_of_shortExact
+    (S : ShortComplex A) (hS : S.ShortExact)
+    (h₁ : ∀ n : ℕ, P ((F.rightDerived n).obj S.X₁))
+    (h₂ : ∀ n : ℕ, P ((F.rightDerived n).obj S.X₂)) (n : ℕ) :
+    P ((F.rightDerived n).obj S.X₃) := by
+  let T := DerivedCategory.Plus.ι.mapTriangle.obj
+    (F.rightDerivedFunctorPlus.mapTriangle.obj hS.singleTrianglePlus)
+  have hT : T ∈ distTriang (DerivedCategory B) :=
+    DerivedCategory.Plus.ι.map_distinguished _
+      (F.rightDerivedFunctorPlus.map_distinguished _ hS.singleTrianglePlus_distinguished)
+  have hleft (i : ℤ) : P ((DerivedCategory.homologyFunctor B i).obj T.obj₁) :=
+    property_single_homology_of_rightDerived F P S.X₁ h₁ i
+  have hmiddle (i : ℤ) : P ((DerivedCategory.homologyFunctor B i).obj T.obj₂) :=
+    property_single_homology_of_rightDerived F P S.X₂ h₂ i
+  have hright : P ((DerivedCategory.homologyFunctor B (n : ℤ)).obj T.obj₃) :=
+    P.prop_middle_of_exact_five
+      ((DerivedCategory.homologyFunctor B (n : ℤ)).map T.mor₁)
+      ((DerivedCategory.homologyFunctor B (n : ℤ)).map T.mor₂)
+      (DerivedCategory.HomologySequence.δ T (n : ℤ) ((n : ℤ) + 1) rfl)
+      ((DerivedCategory.homologyFunctor B ((n : ℤ) + 1)).map T.mor₁)
+      (DerivedCategory.HomologySequence.exact₂ T hT (n : ℤ))
+      (DerivedCategory.HomologySequence.exact₃ T hT (n : ℤ) ((n : ℤ) + 1) rfl)
+      (DerivedCategory.HomologySequence.exact₁ T hT (n : ℤ) ((n : ℤ) + 1) rfl)
+      (hleft n) (hmiddle n) (hleft ((n : ℤ) + 1)) (hmiddle ((n : ℤ) + 1))
+  exact P.prop_of_iso ((F.rightDerivedSingleHomologyIso n).app S.X₃).symm hright
 
 end CategoryTheory.Functor

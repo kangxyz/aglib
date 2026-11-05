@@ -36,7 +36,7 @@ universe u r eX eY
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable (R : Type r) [CommRing R] {X S : Scheme.{u}}
+variable (R : Type r) [Ring R] {X S : Scheme.{u}}
 
 /-- A literal annihilator of the chosen constant value annihilates the original
 sheaf, by faithful actual inverse image along the surjective etale map. -/

@@ -180,3 +180,7 @@ only. It adds no matched wall/RSS/energy speedup, timing attribution,
 performance-cause claim, new mathematical verdict, whole-library/downstream
 closure or standalone final-check result. No new Lean execution, benchmark,
 profile, audit or repeated pure check was performed for this addendum.
+
+The [fibre-product maps follow-up](fibre-product-maps/README.md) records
+the analogous separation of the abelian restriction law from scalar
+presheaf assembly.

@@ -29,7 +29,7 @@ namespace ModuleCat.Sheaf
 universe u v r e
 
 variable {C : Type u} [Category.{v} C] (J : GrothendieckTopology C)
-  (R : Type r) [CommRing R]
+  (R : Type r) [Ring R]
   [HasSheafify J AddCommGrpCat.{max u v}]
   [HasExt.{e} (Sheaf J AddCommGrpCat.{max u v})]
 

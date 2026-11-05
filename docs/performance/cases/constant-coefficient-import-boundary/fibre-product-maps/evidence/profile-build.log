@@ -1,0 +1,91 @@
+Native setup keys ['dynlibs', 'importArts', 'isModule', 'name', 'options', 'package', 'plugins'] options {'autoImplicit': False, 'warningAsError': True, 'weak.linter.mathlibStandardSet': True, 'weak.linter.style.longFile': 1500}
+started original-profile-markers
+original-profile-markers 0 682.11
+original-profile-markers import took 2.36s
+original-profile-markers interpretation of _private.Mathlib.Tactic.Linter.Header.0.Mathlib.Linter.Style.Header.headerLinter._lam_1._boxed took 132ms
+original-profile-markers typeclass inference of CategoryTheory.Abelian took 133ms
+original-profile-markers tactic execution of Lean.Parser.Tactic.exact took 273ms
+original-profile-markers tactic execution of Lean.Parser.Tactic.change took 402ms
+original-profile-markers tactic execution of Lean.Parser.Tactic.rewriteSeq took 645ms
+original-profile-markers tactic execution of Lean.Parser.Tactic.change took 546ms
+original-profile-markers tactic execution of Lean.Parser.Tactic.rewriteSeq took 1.42s
+original-profile-markers elaboration took 777ms
+original-profile-markers type checking took 31.2s
+original-profile-markers type checking took 21.1s
+original-profile-markers type checking took 49.1s
+original-profile-markers type checking took 2.95s
+original-profile-markers type checking took 30.3s
+original-profile-markers tactic execution of Lean.Parser.Tactic.change took 794ms
+original-profile-markers tactic execution of Lean.Parser.Tactic.rewriteSeq took 1.37s
+original-profile-markers type checking took 15.6s
+original-profile-markers profile boundary: large functor
+original-profile-markers typeclass inference of CategoryTheory.Abelian took 125ms
+original-profile-markers type checking took 119ms
+original-profile-markers typeclass inference of CategoryTheory.Abelian took 123ms
+original-profile-markers type checking took 8.44s
+original-profile-markers typeclass inference of CategoryTheory.Abelian took 123ms
+original-profile-markers typeclass inference of Add took 196ms
+original-profile-markers elaboration took 630ms
+original-profile-markers elaboration took 2.39s
+original-profile-markers type checking took 27.8s
+original-profile-markers typeclass inference of CategoryTheory.Abelian took 124ms
+original-profile-markers type checking took 8.09s
+original-profile-markers typeclass inference of CategoryTheory.Abelian took 125ms
+original-profile-markers profile boundary: small functor
+original-profile-markers typeclass inference of CategoryTheory.Abelian took 125ms
+original-profile-markers typeclass inference of CategoryTheory.Abelian took 114ms
+original-profile-markers elaboration took 234ms
+original-profile-markers tactic execution of Lean.Parser.Tactic.change took 458ms
+original-profile-markers tactic execution of Lean.Parser.Tactic.exact took 1.51s
+original-profile-markers type checking took 74.8s
+original-profile-markers elaboration took 420ms
+original-profile-markers tactic execution of Lean.Parser.Tactic.refine took 117ms
+original-profile-markers type checking took 10.6s
+original-profile-markers profile boundary: coefficient comparison
+original-profile-markers typeclass inference of CategoryTheory.Abelian took 118ms
+original-profile-markers type checking took 11.5s
+original-profile-markers elaboration took 267ms
+original-profile-markers elaboration took 1.4s
+original-profile-markers type checking took 102s
+original-profile-markers elaboration took 255ms
+original-profile-markers tactic execution of Lean.Parser.Tactic.exact took 373ms
+original-profile-markers type checking took 12.1s
+original-profile-markers profile boundary: class value
+original-profile-markers typeclass inference of CategoryTheory.Abelian took 124ms
+original-profile-markers typeclass inference of CategoryTheory.HasExt took 112ms
+original-profile-markers process pre-definitions took 250ms
+original-profile-markers elaboration took 25s
+original-profile-markers type checking took 7.95s
+original-profile-markers type checking took 19.7s
+original-profile-markers type checking took 8s
+original-profile-markers type checking took 16.1s
+original-profile-markers type checking took 2.06s
+original-profile-markers type checking took 34.4s
+original-profile-markers type checking took 4.01s
+original-profile-markers type checking took 35.1s
+original-profile-markers type checking took 4.03s
+original-profile-markers type checking took 77.7s
+original-profile-markers profile boundary: resolution naturality
+original-profile-markers typeclass inference took 271ms
+original-profile-markers typeclass inference of CategoryTheory.Abelian took 122ms
+original-profile-markers tactic execution of Lean.Parser.Tactic.change took 226ms
+original-profile-markers elaboration took 398ms
+original-profile-markers type checking took 11.7s
+original-profile-markers profile boundary: higher image naturality
+original-profile-markers typeclass inference of CategoryTheory.Abelian took 120ms
+original-profile-markers typeclass inference of CategoryTheory.Abelian took 119ms
+original-profile-markers typeclass inference of CategoryTheory.HasWeakSheafify took 109ms
+original-profile-markers elaboration took 535ms
+original-profile-markers typeclass inference of CategoryTheory.HasWeakSheafify took 111ms
+original-profile-markers elaboration took 848ms
+original-profile-markers typeclass inference of CategoryTheory.Abelian took 121ms
+original-profile-markers typeclass inference of CategoryTheory.HasWeakSheafify took 107ms
+original-profile-markers elaboration took 639ms
+original-profile-markers type checking took 11.7s
+original-profile-markers profile boundary: sheafification comparison
+original-profile-markers typeclass inference of CategoryTheory.Abelian took 117ms
+original-profile-markers typeclass inference of CategoryTheory.Abelian took 117ms
+original-profile-markers typeclass inference of CategoryTheory.HasWeakSheafify took 105ms
+original-profile-markers elaboration took 119ms
+original-profile-markers typeclass inference of CategoryTheory.HasWeakSheafify took 108ms
+original-profile-markers elaboration took 635ms

@@ -482,6 +482,15 @@ bounded repair for the inspected rule, not a scheduling convention for all
 constructor lemmas.
 [PBC constructor-rule order](performance/pbc-original-map-and-finite-model-boundaries.md#simplify-the-retained-constructor-rule-before-its-arguments).
 
+**Transport the dependent cohomology type inside the selected-field proof.**
+When a generic existence proof returns an actual arrow and a zero class,
+pass that arrow, its comparison equation and the original proof to the
+stage lemma. Check the comparison before specializing the coefficient
+field to the produced carrier. This keeps the existential assembler from
+elaborating another native zero statement and preserves the public type.
+The [normal-open H1 follow-up](performance/cases/generic-h1-effacement-split/normal-whole-open/README.md)
+records bounded failures and the measured native repair.
+
 **Preserve the consumer's reduction interface.** A local constructor may retain
 component formulas by beta/zeta reduction; an independently applied helper can
 introduce new instance-proof conversions. Expose the equations the actual API
@@ -596,6 +605,11 @@ mathematical conditions govern that choice.
   compiled with Affine and Generic still taking about 23 and 26 minutes. Different
   source and provider contexts do not establish a matched total-time improvement;
   distinguish fresh frontends from reused artifacts.
+- Keep coefficient restriction naturality below scalar enrichment when the
+  abelian functor needs only that equation. Independent map and value
+  providers can then compile separately before the whole comparison is
+  assembled. The [fibre-product case](performance/cases/constant-coefficient-import-boundary/fibre-product-maps/README.md)
+  records the changed graph and scoped module times.
 - Use focused dependency owners for independent interfaces. Batch necessary
   edits to widely imported providers, and preserve unaffected consumers.
 - When introducing split providers, compare their declarations with the existing

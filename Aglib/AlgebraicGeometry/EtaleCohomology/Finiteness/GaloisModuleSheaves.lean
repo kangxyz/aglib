@@ -43,7 +43,7 @@ variable {k : Type u} [Field k] [IsSepClosed k] (X : FScheme k) [IsProper X.hom]
   [ConnectedSpace X.left]
   [HasExt.{e} (AbelianSheaf.{u, u + 1} X.left)]
   (p : ℕ) [Fact p.Prime] [CharP k p]
-  (R : Type r) [CommRing R] [IsNoetherianRing R]
+  (R : Type r) [Ring R] [IsNoetherianRing R]
 
 /-- Every supplied actual finite Galois trivialization by a finitely generated
 literal module killed by the characteristic gives finite original module

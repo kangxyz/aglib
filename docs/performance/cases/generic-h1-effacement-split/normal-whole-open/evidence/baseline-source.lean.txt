@@ -1,0 +1,225 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import
+  Aglib.AlgebraicGeometry.EtaleCohomology.Fields.TwoFieldEffacement.NormalWholeCoefficientOpen
+
+/-! # Internally produced whole-source normal H1 effacement
+
+The original generic H1 producer supplies its actual fields, marked cover,
+order bound and original class zero. Canonical finite normalization and whole
+marked extension retain those choices, yielding a global source cover and
+section together with coefficient principal-open zero. No source prime,
+source restriction, generic-zero witness or local-zero producer is an input.
+The result still precedes connected section-component restriction and support
+induction; it is not asserted to be final target-point vanishing.
+-/
+
+@[expose] public noncomputable section
+
+open CategoryTheory CategoryTheory.Limits CategoryTheory.PreGaloisCategory
+open AlgebraicGeometry.Scheme.FiniteEtale
+
+namespace AlgebraicGeometry.Scheme.EtaleCohomology.TwoFieldEffacement
+
+universe u eX
+attribute [local instance] hasSheafifyLarge HasExt.standard
+
+variable (A B k K : Type u) [CommRing A] [IsDomain A] [CommRing B] [IsDomain B]
+  [IsNoetherianRing A] [IsIntegrallyClosed A] [IsNoetherianRing B] [IsIntegrallyClosed B]
+  [Field k] [Field K]
+  [Algebra A B] [Algebra A k] [IsFractionRing A k]
+  [Algebra A K] [Algebra B K] [IsFractionRing B K] [Algebra k K]
+  [IsScalarTower A B K] [IsScalarTower A k K]
+  {X : Scheme.{u}} (p : X ⟶ Spec (.of A))
+  (σ : Spec (.of A) ⟶ X) (hσ : σ ≫ p = 𝟙 _)
+
+section SelectedStage
+
+variable (L F E : Type u) [Field L] [Field F] [Field E]
+  [Algebra K L] [Module.Finite K L] [Algebra.IsSeparable K L]
+  [Algebra k L] [IsScalarTower k K L]
+  [Algebra k F] [Module.Finite k F]
+  [Algebra L E] [Module.Finite L E] [Algebra k E] [IsScalarTower k L E]
+  (a : F →ₐ[k] E)
+  (Z : FiniteEtale (pullback (pullback.snd p (Spec.algebraMap A k))
+    (Spec.algebraMap k (separableClosure k F))))
+  (z : Fiber (separableSourcePoint k F (pullback.snd p (Spec.algebraMap A k))
+    (normalModelSection p σ hσ (Spec.algebraMap A k))
+    (normalModelSection_over p σ hσ (Spec.algebraMap A k))) Z)
+  [HasExt.{eX} (AbelianSheaf.{u, u + 1} (pullback p (Spec.algebraMap A B)))]
+  (M : AbelianSheaf.{u, u + 1} (Spec (.of B)))
+  (c : Sheaf.H.{eX} ((inverseImage (pullback.snd p (Spec.algebraMap A B))).obj M) 1)
+
+/-- The actual separable-stage normal models retain the original ambient
+fields and cover; no inseparable ambient field is silently replaced in a map. -/
+def GenericH1NormalWholeOpenStageResult : Prop := by
+  let F₀ := separableClosure k F
+  let E₀ := separableClosure L E
+  letI : Algebra K E₀ := ((algebraMap L E₀).comp (algebraMap K L)).toAlgebra
+  letI : IsScalarTower K L E₀ := IsScalarTower.of_algebraMap_eq' rfl
+  letI : IsScalarTower k K E₀ := IsScalarTower.of_algebraMap_eq fun x =>
+    (IsScalarTower.algebraMap_apply k L E₀ x).trans
+      (congrArg (algebraMap L E₀) (IsScalarTower.algebraMap_apply k K L x))
+  letI : Algebra A F₀ := ((algebraMap k F₀).comp (algebraMap A k)).toAlgebra
+  letI : IsScalarTower A k F₀ := IsScalarTower.of_algebraMap_eq' rfl
+  letI : Algebra A E₀ := ((algebraMap k E₀).comp (algebraMap A k)).toAlgebra
+  letI : IsScalarTower A k E₀ := IsScalarTower.of_algebraMap_eq' rfl
+  letI : Algebra B E₀ := ((algebraMap K E₀).comp (algebraMap B K)).toAlgebra
+  letI : IsScalarTower B K E₀ := IsScalarTower.of_algebraMap_eq' rfl
+  letI : IsScalarTower A B E₀ := by
+    apply IsScalarTower.of_algebraMap_eq
+    intro x
+    change algebraMap k E₀ (algebraMap A k x) =
+      algebraMap K E₀ (algebraMap B K (algebraMap A B x))
+    rw [IsScalarTower.algebraMap_apply k K E₀,
+      ← IsScalarTower.algebraMap_apply A k K, IsScalarTower.algebraMap_apply A B K]
+  letI : Module.Finite K E₀ := Module.Finite.trans L E₀
+  letI : Algebra.IsSeparable K E₀ := Algebra.IsSeparable.trans K L E₀
+  exact LiteralNormalWholeCoefficientOpen A B k K F₀ E₀ (separableSourceMap k F L E a)
+    p σ hσ Z z ((inverseImage (pullback.snd p (Spec.algebraMap A B))).obj M) 1 c
+
+local instance [GeometricallyConnected p] :
+    ConnectedSpace (pullback (pullback.snd p (Spec.algebraMap A k)) (Spec.algebraMap k
+      (separableClosure k F)) : Scheme.{u}) :=
+  GeometricallyConnected.connectedSpace_of_subsingleton
+    (pullback.snd (pullback.snd p (Spec.algebraMap A k)) (Spec.algebraMap k (separableClosure k F)))
+
+/-- Consume the actual generic-stage zero and its original two projection laws. -/
+private theorem generic_H1_normal_whole_open_stage
+    [QuasiCompact p] [QuasiSeparated p] [Smooth p] [GeometricallyConnected p]
+    [IsGalois Z] (N : ℕ) (hN : 0 < N) (hunit : IsUnit (N : A))
+    (hcard : Nat.card (Aut Z) ∣ N)
+    (hc : cohomologyPullback.{u, eX, u + 2}
+      (((baseChange (pullback.fst
+        (pullback.snd (pullback.snd p (Spec.algebraMap A k)) (Spec.algebraMap k (separableClosure
+          k F)))
+        (Spec.map (CommRingCat.ofHom (separableSourceMap k F L E a).toRingHom)))).obj Z).obj.hom ≫
+          originalGenericH1ClassMap A B k K L F E p a) ((inverseImage (pullback.snd p
+            (Spec.algebraMap A B))).obj M) 1 c = 0) :
+    GenericH1NormalWholeOpenStageResult A B k K p σ hσ L F E a Z z M c := by
+  let F₀ := separableClosure k F
+  let E₀ := separableClosure L E
+  let : Algebra K E₀ := ((algebraMap L E₀).comp (algebraMap K L)).toAlgebra
+  let : IsScalarTower K L E₀ := IsScalarTower.of_algebraMap_eq' rfl
+  let : IsScalarTower k K E₀ := IsScalarTower.of_algebraMap_eq fun x =>
+    (IsScalarTower.algebraMap_apply k L E₀ x).trans
+      (congrArg (algebraMap L E₀) (IsScalarTower.algebraMap_apply k K L x))
+  let : Algebra A F₀ := ((algebraMap k F₀).comp (algebraMap A k)).toAlgebra
+  let : IsScalarTower A k F₀ := IsScalarTower.of_algebraMap_eq' rfl
+  let : Algebra A E₀ := ((algebraMap k E₀).comp (algebraMap A k)).toAlgebra
+  let : IsScalarTower A k E₀ := IsScalarTower.of_algebraMap_eq' rfl
+  let : Algebra B E₀ := ((algebraMap K E₀).comp (algebraMap B K)).toAlgebra
+  let : IsScalarTower B K E₀ := IsScalarTower.of_algebraMap_eq' rfl
+  let : IsScalarTower A B E₀ := by
+    apply IsScalarTower.of_algebraMap_eq
+    intro x
+    change algebraMap k E₀ (algebraMap A k x) =
+      algebraMap K E₀ (algebraMap B K (algebraMap A B x))
+    rw [IsScalarTower.algebraMap_apply k K E₀,
+      ← IsScalarTower.algebraMap_apply A k K, IsScalarTower.algebraMap_apply A B K]
+  let : Module.Finite K E₀ := Module.Finite.trans L E₀
+  let : Algebra.IsSeparable K E₀ := Algebra.IsSeparable.trans K L E₀
+  have hB : originalGenericH1ClassMap A B k K L F E p a ≫ (pullback.snd p (Spec.algebraMap A B)) =
+      pullback.snd (pullback.snd (pullback.snd p (Spec.algebraMap A k)) (Spec.algebraMap k F₀))
+        (Spec.map (CommRingCat.ofHom (separableSourceMap k F L E a).toRingHom)) ≫
+          Spec.algebraMap B E₀ := by
+    have ht : Spec.algebraMap L E₀ ≫ Spec.algebraMap K L ≫ Spec.algebraMap B K =
+        Spec.algebraMap B E₀ := by
+      simp only [Spec.algebraMap, ← Spec.map_comp]
+      rfl
+    simpa only [ht] using originalGenericH1ClassMap_coefficient A B k K L F E p a
+  exact normalWholeCoefficientOpen_of_generic_zero A B k K F₀ E₀
+    (separableSourceMap k F L E a) p σ hσ Z z ((inverseImage (pullback.snd p (Spec.algebraMap A
+      B))).obj M) 1 c
+    N hN hunit hcard (originalGenericH1ClassMap A B k K L F E p a)
+    (originalGenericH1ClassMap_source A B k K L F E p a) hB hc
+
+end SelectedStage
+
+/-- Produce the generic H1 effacement internally and retain the same finite
+normal models, whole cover, full point and original-class open zero. -/
+theorem exists_generic_H1_normal_whole_coefficient_open
+    [QuasiCompact p] [QuasiSeparated p] [SmoothOfRelativeDimension 1 p]
+    [GeometricallyConnected p] [IsAffine (pullback p (Spec.algebraMap A k))]
+    [HasExt.{eX} (AbelianSheaf.{u, u + 1} (pullback p (Spec.algebraMap A B)))]
+    (M : AbelianSheaf.{u, u + 1} (Spec (.of B)))
+    (n : ℕ) (hn : 0 < n) (hM : n • 𝟙 M = 0) (hunit : IsUnit (n : A))
+    (c : Sheaf.H.{eX} ((inverseImage (pullback.snd p (Spec.algebraMap A B))).obj M) 1) :
+    ∃ (L : FiniteGaloisIntermediateField K (SeparableClosure K))
+      (C : Type u) (_ : AddCommGroup C) (_ : Finite C),
+      letI : Algebra k L := ((algebraMap K L).comp (algebraMap k K)).toAlgebra
+      letI : IsScalarTower k K L := IsScalarTower.of_algebraMap_eq' rfl
+      (∀ v : C, n • v = 0) ∧
+      ∃ (F : IntermediateField k (AlgebraicClosure k))
+        (E : Type u) (_ : Field E) (_ : Algebra L E),
+        letI : Algebra k E := ((algebraMap L E).comp (algebraMap k L)).toAlgebra
+        letI : IsScalarTower k L E := IsScalarTower.of_algebraMap_eq' rfl
+        ∃ (hF : Module.Finite k F) (hE : Module.Finite L E),
+          letI : Module.Finite k F := hF
+          letI : Module.Finite L E := hE
+          ∃ (jE : E →ₐ[L] AlgebraicClosure L) (a : F →ₐ[k] E),
+            jE.toRingHom.comp a.toRingHom =
+              ((Geometrically.commonClosureEmbedding k L).comp F.val).toRingHom ∧
+            letI : ConnectedSpace
+                (pullback (pullback.snd p (Spec.algebraMap A k)) (Spec.algebraMap k
+                  (separableClosure k F)) : Scheme.{u}) :=
+              GeometricallyConnected.connectedSpace_of_subsingleton
+                (pullback.snd (pullback.snd p (Spec.algebraMap A k)) (Spec.algebraMap k
+                  (separableClosure k F)))
+            ∃ Z : FiniteEtale (pullback (pullback.snd p (Spec.algebraMap A k)) (Spec.algebraMap k
+              (separableClosure k F))),
+              IsGalois Z ∧ Nat.card (Aut Z) ∣ n ^ Group.rank (Multiplicative C) ∧
+              ∃ z : Fiber (separableSourcePoint k F (pullback.snd p (Spec.algebraMap A k))
+                (normalModelSection p σ hσ (Spec.algebraMap A k)) (normalModelSection_over p σ hσ
+                (Spec.algebraMap A k))) Z,
+                GenericH1NormalWholeOpenStageResult A B k K p σ hσ L F E a Z z M c := by
+  have hunitk : IsUnit (n : k) := by
+    simpa only [map_natCast] using hunit.map (algebraMap A k)
+  obtain ⟨L, C, hC, hCF, hkill, Hstage⟩ :=
+    exists_family_generic_pointed_H1_effacement A B k K p (normalModelSection p σ hσ
+      (Spec.algebraMap A k)) (normalModelSection_over p σ hσ (Spec.algebraMap A k))
+      M n hn hM hunitk c
+  let : AddCommGroup C := hC
+  let : Finite C := hCF
+  let : Algebra k L := ((algebraMap K L).comp (algebraMap k K)).toAlgebra
+  let : IsScalarTower k K L := IsScalarTower.of_algebraMap_eq' rfl
+  obtain ⟨F, E, hFieldE, hLE, Hfields⟩ := Hstage
+  let : Field E := hFieldE
+  let : Algebra L E := hLE
+  let : Algebra k E := ((algebraMap L E).comp (algebraMap k L)).toAlgebra
+  let : IsScalarTower k L E := IsScalarTower.of_algebraMap_eq' rfl
+  obtain ⟨hfinF, hfinE, jE, a, ha, Z, hG, hcard, z, hz, hc⟩ := Hfields
+  let : Module.Finite k F := hfinF
+  let : Module.Finite L E := hfinE
+  let : ConnectedSpace (pullback (pullback.snd p (Spec.algebraMap A k)) (Spec.algebraMap k
+    (separableClosure k F)) : Scheme.{u}) :=
+    GeometricallyConnected.connectedSpace_of_subsingleton
+      (pullback.snd (pullback.snd p (Spec.algebraMap A k)) (Spec.algebraMap k (separableClosure k
+        F)))
+  let : IsGalois Z := hG
+  let zF : Fiber (separableSourcePoint k F (pullback.snd p (Spec.algebraMap A k))
+    (normalModelSection p σ hσ (Spec.algebraMap A k)) (normalModelSection_over p σ hσ
+    (Spec.algebraMap A k))) Z := Over.homMk z hz
+  have hc' : cohomologyPullback.{u, eX, u + 2}
+      (((baseChange (pullback.fst
+        (pullback.snd (pullback.snd p (Spec.algebraMap A k)) (Spec.algebraMap k (separableClosure
+          k F)))
+        (Spec.map (CommRingCat.ofHom (separableSourceMap k F L E a).toRingHom)))).obj Z).obj.hom ≫
+          originalGenericH1ClassMap A B k K L F E p a) ((inverseImage (pullback.snd p
+            (Spec.algebraMap A B))).obj M) 1 c = 0 := by
+    exact original_class_zero_of_map_law (𝟙 _) _ _
+      (by simp only [originalGenericH1ClassMap, Category.id_comp, Category.assoc])
+      ((inverseImage (pullback.snd p (Spec.algebraMap A B))).obj M) 1 c hc
+  refine ⟨L, C, hC, hCF, hkill, F, E, hFieldE, hLE, hfinF, hfinE,
+    jE, a, ha, Z, hG, hcard, zF, ?_⟩
+  let : Smooth p := SmoothOfRelativeDimension.smooth 1 p
+  exact generic_H1_normal_whole_open_stage A B k K p σ hσ L F E a Z zF M c
+    (n ^ Group.rank (Multiplicative C)) (pow_pos hn _)
+    (by simpa only [Nat.cast_pow] using hunit.pow (Group.rank (Multiplicative C))) hcard hc'
+
+end AlgebraicGeometry.Scheme.EtaleCohomology.TwoFieldEffacement

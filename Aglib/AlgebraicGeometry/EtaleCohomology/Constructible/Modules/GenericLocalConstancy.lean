@@ -30,7 +30,7 @@ universe u r
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable {R : Type r} [CommRing R]
+variable {R : Type r} [Ring R]
 
 /-- Constructible module coefficients on an integral scheme are finite-type
 locally constant on an actual dense affine open, with their original restriction. -/

@@ -59,7 +59,7 @@ theorem constantModule_h1_finite_of_smooth_proper_curve
     (M : ModuleCat.{u + 1} (ZMod p))
     [HasColimitsOfShape (Finset (Discrete (Module.Free.ChooseBasisIndex (ZMod p) M)))
       AddCommGrpCat.{e}]
-    (Λ : Type l) [CommRing Λ] [Module Λ M] [SMulCommClass Λ (ZMod p) M]
+    (Λ : Type l) [Ring Λ] [Module Λ M] [SMulCommClass Λ (ZMod p) M]
     [Module.Finite Λ M] :
     Module.Finite Λ ((ModuleCat.Sheaf.constantCohomology X.left.smallEtaleTopology Λ 1).obj
       (ModuleCat.of Λ M)) := by
@@ -78,7 +78,7 @@ theorem constantModule_h1_finite_of_smooth_proper_curve
 constant H1. No Noetherian or finite-underlying-group hypothesis is required. -/
 theorem constantModule_h1_finite_of_prime_nsmul
     [HasColimitsOfSize.{u + 1, u + 1} AddCommGrpCat.{e}]
-    (Λ : Type l) [CommRing Λ] (M : ModuleCat.{u + 1} Λ) [Module.Finite Λ M]
+    (Λ : Type l) [Ring Λ] (M : ModuleCat.{u + 1} Λ) [Module.Finite Λ M]
     (hM : ∀ x : M, p • x = 0) :
     Module.Finite Λ ((ModuleCat.Sheaf.constantCohomology X.left.smallEtaleTopology Λ 1).obj M) := by
   have h : ∀ (V : ModuleCat.{u + 1} (ZMod p)), ∀ [Module Λ V],

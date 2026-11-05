@@ -32,7 +32,7 @@ namespace CategoryTheory.FiniteGroupAction
 section isomorphism through the actual constant unit and trivialization. -/
 structure ModuleCoverData.{uc, vc, rc, wc, gc, ac, bc}
     {C : Type uc} [Category.{vc} C] (J : GrothendieckTopology C)
-    (R : Type rc) [CommRing R] (G : Type gc) [Group G]
+    (R : Type rc) [Ring R] (G : Type gc) [Group G]
     (D : Type ac) [Category.{bc} D] [HasSheafify J (ModuleCat.{wc} R)] where
   /-- The original terminal test object. -/
   terminal : C
@@ -97,7 +97,7 @@ structure ModuleCoverData.{uc, vc, rc, wc, gc, ac, bc}
         (sectionComparison F).hom = F.obj.map arrow.op
 
 variable {C : Type u} [Category.{v} C] (J : GrothendieckTopology C)
-  (R : Type r) [CommRing R] (G : Type g) [Group G]
+  (R : Type r) [Ring R] (G : Type g) [Group G]
   (D : Type a) [Category.{b} D] [HasSheafify J (ModuleCat.{w} R)]
 
 

@@ -41,7 +41,7 @@ theorem constantModule_cohomology_finite_of_proper
     (q : ℕ) (M : ModuleCat.{u + 1} (ZMod p))
     [HasColimitsOfShape (Finset (Discrete (Module.Free.ChooseBasisIndex (ZMod p) M)))
       AddCommGrpCat.{e}]
-    (Λ : Type l) [CommRing Λ] [Module Λ M] [SMulCommClass Λ (ZMod p) M]
+    (Λ : Type l) [Ring Λ] [Module Λ M] [SMulCommClass Λ (ZMod p) M]
     [Module.Finite Λ M] :
     Module.Finite Λ ((ModuleCat.Sheaf.constantCohomology Y.left.smallEtaleTopology Λ q).obj
       (ModuleCat.of Λ M)) := by

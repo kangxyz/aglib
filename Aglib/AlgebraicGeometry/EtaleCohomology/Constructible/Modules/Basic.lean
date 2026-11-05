@@ -27,7 +27,7 @@ universe u r
 
 attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 
-variable {R : Type r} [CommRing R]
+variable {R : Type r} [Ring R]
 
 /-- An existing actual locally closed partition with finite-type locally
 constant module restriction on each original stratum. -/

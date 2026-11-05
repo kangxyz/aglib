@@ -1,0 +1,299 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.Algebra.Category.Grp.ResizeNaturality
+public import Aglib.Algebra.Category.Grp.DiagramValueNaturality
+public import Aglib.CategoryTheory.Adjunction.UnitComparison
+public import Aglib.CategoryTheory.NatTrans.ComponentFactorization
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ConstantModulePresheaf
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductStalk
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.OriginalPresheafCoefficients
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.OriginalResolutionValues
+
+/-!
+# Coefficient functoriality of original fibre-product cohomology
+
+The existing small fibre-product cohomology presheaves form an additive
+functor in the original abelian coefficient. Its objects are unchanged;
+coefficient maps are the original inverse-image cohomology maps resized by
+the same group equivalences. The original sheafification isomorphisms are
+natural for these maps and retain the original whole sheafification unit.
+Source, slice and fibre-product Ext universes remain independent.
+-/
+
+@[expose] public noncomputable section
+
+set_option backward.defeqAttrib.useBackward true
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+
+open CategoryTheory CategoryTheory.Limits Opposite
+
+universe u w s e
+
+namespace AlgebraicGeometry.Scheme.EtaleCohomology
+
+attribute [local instance] hasSheafifyLarge
+
+variable {X S : Scheme.{u}} (f : X ⟶ S)
+  [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
+  [∀ U : S.Etale, HasExt.{s} (Sheaf ((Scheme.smallEtaleTopology X).over
+    ((siteBaseChange f).obj U)) AddCommGrpCat.{u + 1})]
+  [∀ U : S.Etale, HasExt.{e} (AbelianSheaf.{u, u + 1} (pullback U.hom f))]
+  (q : ℕ)
+
+/-- The original fibre-product diagrams, functorial in the unchanged abelian coefficient. -/
+def Stalk.originalFibreProductCohomologyFunctor :
+    AbelianSheaf.{u, u + 1} X ⥤ S.Etaleᵒᵖ ⥤ AddCommGrpCat.{e} where
+  obj F := Stalk.originalFibreProductCohomologyPresheaf f F q
+  map g := {
+    app := fun U => AddCommGrpCat.ofHom
+      (Sheaf.H.map ((inverseImage (pullback.snd U.unop.hom f)).map g) q)
+    naturality := by
+      intro U V a
+      ext x
+      exact (fibreProductCohomologyRestriction_coefficientMap f a.unop g q x).symm }
+  map_id F := by
+    ext U x
+    change Sheaf.H.map ((inverseImage (pullback.snd U.unop.hom f)).map (𝟙 F)) q x = x
+    rw [CategoryTheory.Functor.map_id, Sheaf.H.map_id_apply]
+  map_comp g h := by
+    ext U x
+    change Sheaf.H.map ((inverseImage (pullback.snd U.unop.hom f)).map (g ≫ h)) q x =
+      Sheaf.H.map ((inverseImage (pullback.snd U.unop.hom f)).map h) q
+        (Sheaf.H.map ((inverseImage (pullback.snd U.unop.hom f)).map g) q x)
+    rw [CategoryTheory.Functor.map_comp, Sheaf.H.map_comp_apply]
+
+/-- The original coefficient maps are additive before any resizing. -/
+instance Stalk.originalFibreProductCohomologyFunctor_additive :
+    (Stalk.originalFibreProductCohomologyFunctor.{u, w, s, e} f q).Additive where
+  map_add := by
+    intro F G g h
+    ext U x
+    change Sheaf.H.map ((inverseImage (pullback.snd U.unop.hom f)).map (g + h)) q x =
+      Sheaf.H.map ((inverseImage (pullback.snd U.unop.hom f)).map g) q x +
+        Sheaf.H.map ((inverseImage (pullback.snd U.unop.hom f)).map h) q x
+    rw [CategoryTheory.Functor.map_add, Sheaf.H.map_add_apply]
+
+/-- Reuse the original smallness family over both coefficient and diagram indices. -/
+local instance originalFibreProductCohomologyFunctor_small :
+    ∀ (F : AbelianSheaf.{u, u + 1} X) (U : S.Etaleᵒᵖ),
+      Small.{u + 1}
+        (((Stalk.originalFibreProductCohomologyFunctor.{u, w, s, e} f q).obj F).obj U) :=
+  fun F U => inferInstanceAs (Small.{u + 1}
+    ((Stalk.originalFibreProductCohomologyPresheaf.{u, w, s, e} f F q).obj U))
+
+/-- The original coefficient map on the unchanged small fibre-product presheaves. -/
+def smallFibreProductCohomologyCoefficientMap
+    {F G : AbelianSheaf.{u, u + 1} X} (g : F ⟶ G) :
+    smallFibreProductCohomologyPresheaf f F q ⟶
+      smallFibreProductCohomologyPresheaf f G q :=
+  resizeAdditiveDiagramMap.{u + 1}
+    ((Stalk.originalFibreProductCohomologyFunctor.{u, w, s, e} f q).map g)
+
+/-- The coefficient map on an original class is precisely the original cohomology map. -/
+theorem smallFibreProductCohomologyCoefficientMap_app_shrink
+    {F G : AbelianSheaf.{u, u + 1} X} (g : F ⟶ G) (U : S.Etale)
+    (x : Sheaf.H.{e} ((inverseImage (pullback.snd U.hom f)).obj F) q) :
+    (smallFibreProductCohomologyCoefficientMap f q g).app (op U)
+        (Shrink.addEquiv.{u + 1, e}.symm x) =
+      Shrink.addEquiv.{u + 1, e}.symm
+        (Sheaf.H.map ((inverseImage (pullback.snd U.hom f)).map g) q x) :=
+  resizeAdditiveDiagramMapOfHom_app_shrink.{u + 1, e, e}
+    (P := Stalk.originalFibreProductCohomologyPresheaf.{u, w, s, e} f F q)
+    (Q := Stalk.originalFibreProductCohomologyPresheaf.{u, w, s, e} f G q)
+    (fun V => Sheaf.H.map ((inverseImage (pullback.snd V.unop.hom f)).map g) q)
+    (fun {V W} (a : V ⟶ W) y =>
+      (fibreProductCohomologyRestriction_coefficientMap f a.unop g q y).symm)
+    (op U) x
+
+/-- The existing small presheaves, with their actual original coefficient maps. -/
+def smallFibreProductCohomologyFunctor :
+    AbelianSheaf.{u, u + 1} X ⥤ S.Etaleᵒᵖ ⥤ AddCommGrpCat.{u + 1} :=
+  resizeAdditiveDiagramFunctor.{u + 1}
+    (Stalk.originalFibreProductCohomologyFunctor.{u, w, s, e} f q)
+
+/-- The original coefficient functor is additive on the same resized groups. -/
+instance smallFibreProductCohomologyFunctor_additive :
+    (smallFibreProductCohomologyFunctor f q).Additive :=
+  inferInstanceAs ((resizeAdditiveDiagramFunctor.{u + 1}
+    (Stalk.originalFibreProductCohomologyFunctor.{u, w, s, e} f q)).Additive)
+
+/-- The existing fibre-product unit retains the original represented-cohomology value. -/
+theorem fibreProductCohomologyToHigherDirectImage_apply_shrink
+    (F : AbelianSheaf.{u, u + 1} X) (U : S.Etale)
+    (x : Sheaf.H.{e} ((inverseImage (pullback.snd U.hom f)).obj F) q) :
+    (fibreProductCohomologyToHigherDirectImage f F q).app (op U)
+        (Shrink.addEquiv.{u + 1, e}.symm x) =
+      (originalCohomologyToHigherDirectImage f F q).app (op U)
+        (Shrink.addEquiv.{u + 1, w}.symm
+          ((fibreProductCohomologyEquiv.{u, w, s, e} f U F q).symm x)) := by
+  change (originalCohomologyToHigherDirectImage f F q).app (op U)
+      ((smallFibreProductOriginalIso f F q).hom.app (op U)
+        (Shrink.addEquiv.{u + 1, e}.symm x)) = _
+  apply congrArg ((originalCohomologyToHigherDirectImage f F q).app (op U))
+  exact resizeAdditiveDiagramIsoOfAddEquiv_hom_app_shrink.{u + 1, e, w}
+    (P := Stalk.originalFibreProductCohomologyPresheaf.{u, w, s, e} f F q)
+    (Q := originalCohomologyPresheaf.{u, w} f F q)
+    (fun V => (fibreProductCohomologyEquiv.{u, w, s, e} f V.unop F q).symm)
+    (fun {V W} (a : V ⟶ W) y =>
+      fibreProductCohomologyRestriction_original f F q a.unop y) (op U) x
+
+/-- The original fibre-product unit commutes with coefficients on every original class. -/
+theorem fibreProductCohomologyToHigherDirectImage_coefficient_shrink
+    {F G : AbelianSheaf.{u, u + 1} X} (g : F ⟶ G) (U : S.Etale)
+    (x : Sheaf.H.{e} ((inverseImage (pullback.snd U.hom f)).obj F) q) :
+    (fibreProductCohomologyToHigherDirectImage f G q).app (op U)
+        (Shrink.addEquiv.{u + 1, e}.symm
+          (Sheaf.H.map ((inverseImage (pullback.snd U.hom f)).map g) q x)) =
+      (((higherDirectImage f q).map g).hom.app (op U))
+        ((fibreProductCohomologyToHigherDirectImage f F q).app (op U)
+          (Shrink.addEquiv.{u + 1, e}.symm x)) := by
+  have hF := fibreProductCohomologyToHigherDirectImage_apply_shrink.{u, w, s, e}
+    f q F U x
+  have hG := fibreProductCohomologyToHigherDirectImage_apply_shrink.{u, w, s, e}
+    f q G U (Sheaf.H.map ((inverseImage (pullback.snd U.hom f)).map g) q x)
+  have hc := fibreProductCohomologyToHigherDirectImage_coefficient.{u, w, s, e}
+    f U g q x
+  exact hG.trans (hc.symm.trans
+    (congrArg (((higherDirectImage f q).map g).hom.app (op U)) hF.symm))
+
+/-- The unchanged composite comparison with the original resolution diagram. -/
+def fibreProductCohomologyResolutionIso (F : AbelianSheaf.{u, u + 1} X) :
+    smallFibreProductCohomologyPresheaf f F q ≅
+      (resolutionCohomologyPresheaf f q).obj F :=
+  smallFibreProductOriginalIso f F q ≪≫ smallOriginalCohomologyResolutionIso f F q
+
+/-- The existing first comparison retains its original Shrink values. -/
+theorem smallFibreProductOriginalIso_apply_shrink
+    (F : AbelianSheaf.{u, u + 1} X) (U : S.Etale)
+    (x : Sheaf.H.{e} ((inverseImage (pullback.snd U.hom f)).obj F) q) :
+    (smallFibreProductOriginalIso f F q).hom.app (op U)
+        (Shrink.addEquiv.{u + 1, e}.symm x) =
+      (Shrink.addEquiv.{u + 1, w}
+        (α := (originalCohomologyPresheaf.{u, w} f F q).obj (op U))).symm
+        ((fibreProductCohomologyEquiv.{u, w, s, e} f U F q).symm x) :=
+  resizeAdditiveDiagramIsoOfAddEquiv_hom_app_shrink.{u + 1, e, w}
+    (P := Stalk.originalFibreProductCohomologyPresheaf.{u, w, s, e} f F q)
+    (Q := originalCohomologyPresheaf.{u, w} f F q)
+    (fun V => (fibreProductCohomologyEquiv.{u, w, s, e} f V.unop F q).symm)
+    (fun {V W} (a : V ⟶ W) y =>
+      fibreProductCohomologyRestriction_original f F q a.unop y) (op U) x
+
+/-- Inverse comparison compatibility on original classes, without either unit map. -/
+theorem fibreProductCohomologyEquiv_symm_coefficient
+    {F G : AbelianSheaf.{u, u + 1} X} (g : F ⟶ G) (U : S.Etale)
+    (x : Sheaf.H.{e} ((inverseImage (pullback.snd U.hom f)).obj F) q) :
+    (fibreProductCohomologyEquiv.{u, w, s, e} f U G q).symm
+        (Sheaf.H.map ((inverseImage (pullback.snd U.hom f)).map g) q x) =
+      ((fibreProductCohomologyEquiv.{u, w, s, e} f U F q).symm x).comp
+        (CategoryTheory.Abelian.Ext.mk₀ g) (Nat.add_zero q) := by
+  let EF := fibreProductCohomologyEquiv.{u, w, s, e} f U F q
+  let EG := fibreProductCohomologyEquiv.{u, w, s, e} f U G q
+  let y := EF.symm x
+  have hn := fibreProductCohomologyEquiv_naturality.{u, w, s, e} f U g q y
+  exact ((EG.symm_apply_apply
+      (y.comp (CategoryTheory.Abelian.Ext.mk₀ g) (Nat.add_zero q))).symm.trans
+    ((congrArg EG.symm hn).trans
+      (congrArg (fun z => EG.symm
+        (Sheaf.H.map ((inverseImage (pullback.snd U.hom f)).map g) q z))
+        (EF.apply_symm_apply x)))).symm
+
+/-- Assemble the two original comparisons before applying the higher-image unit. -/
+def fibreProductCohomologyResolutionNatTrans :
+    smallFibreProductCohomologyFunctor f q ⟶ resolutionCohomologyPresheaf f q :=
+  additiveDiagramNatTransOfTwoComparisons
+    (smallFibreProductCohomologyFunctor f q) (resolutionCohomologyPresheaf f q)
+    (fun F => smallOriginalCohomologyPresheaf f F q)
+    (fun F U => Sheaf.H.{e} ((inverseImage (pullback.snd U.unop.hom f)).obj F) q)
+    (fun F U => Sheaf.LargeCohomology.H.{w, u + 1, u, u + 1}
+      (smallEtaleTopology X) F q ((siteBaseChange f).obj U.unop))
+    (fun F U => (Shrink.addEquiv.{u + 1, e}
+      (α := Sheaf.H.{e} ((inverseImage (pullback.snd U.unop.hom f)).obj F) q)).symm)
+    (fun F U => (Shrink.addEquiv.{u + 1, w}
+      (α := (originalCohomologyPresheaf.{u, w} f F q).obj U)).symm)
+    (fun F U => (Shrink.addEquiv.{u + 1, e}
+      (α := Sheaf.H.{e} ((inverseImage (pullback.snd U.unop.hom f)).obj F) q)).symm.surjective)
+    (fun {_ _} g U x =>
+      Sheaf.H.map ((inverseImage (pullback.snd U.unop.hom f)).map g) q x)
+    (fun {_ _} g U y => ((resolutionCohomologyPresheaf f q).map g).app U y)
+    (fun {_ _} g _ y => y.comp (CategoryTheory.Abelian.Ext.mk₀ g) (Nat.add_zero q))
+    (fun {_ _} g U x =>
+      smallFibreProductCohomologyCoefficientMap_app_shrink.{u, w, s, e} f q g U.unop x)
+    (fun {_ _} _ _ _ => rfl)
+    (fun F => (smallFibreProductOriginalIso f F q).hom)
+    (fun F => (smallOriginalCohomologyResolutionIso f F q).hom)
+    (fun F U => (fibreProductCohomologyEquiv.{u, w, s, e} f U.unop F q).symm)
+    (fun F U => originalCohomologyResolutionEquiv f U.unop F q)
+    (fun F U x => smallFibreProductOriginalIso_apply_shrink.{u, w, s, e} f q F U.unop x)
+    (fun F U x => smallOriginalCohomologyResolutionIso_apply_shrink f F q U.unop x)
+    (fun {_ _} g U x =>
+      fibreProductCohomologyEquiv_symm_coefficient.{u, w, s, e} f q g U.unop x)
+    (fun {_ _} g U x => originalCohomologyResolutionEquiv_naturality f U.unop g q x)
+
+/-- The original higher-image unit is natural by its original resolution factorization. -/
+def fibreProductCohomologyToHigherDirectImageNatTrans :
+    smallFibreProductCohomologyFunctor f q ⟶
+      higherDirectImage f q ⋙ sheafToPresheaf S.smallEtaleTopology AddCommGrpCat.{u + 1} :=
+  natTransOfComponentFactorization (fibreProductCohomologyResolutionNatTrans f q)
+    (resolutionCohomologyToHigherDirectImage f q)
+    (fun F => fibreProductCohomologyToHigherDirectImage f F q) (by
+      intro F
+      change (smallFibreProductOriginalIso f F q).hom ≫
+          ((smallOriginalCohomologyResolutionIso f F q).hom ≫
+            (resolutionCohomologyToHigherDirectImage f q).app F) =
+        ((smallFibreProductOriginalIso f F q).hom ≫
+          (smallOriginalCohomologyResolutionIso f F q).hom) ≫
+            (resolutionCohomologyToHigherDirectImage f q).app F
+      exact (Category.assoc _ _ _).symm)
+
+/-- The existing sheafification isomorphisms commute with all original coefficient maps. -/
+theorem fibreProductCohomologySheafificationIso_naturality
+    {F G : AbelianSheaf.{u, u + 1} X} (g : F ⟶ G) :
+    (presheafToSheaf S.smallEtaleTopology AddCommGrpCat.{u + 1}).map
+        ((smallFibreProductCohomologyFunctor f q).map g) ≫
+        (fibreProductCohomologySheafificationIso f G q).hom =
+      (fibreProductCohomologySheafificationIso f F q).hom ≫
+        (higherDirectImage f q).map g :=
+  Adjunction.comparison_naturality_of_unit
+    (sheafificationAdjunction S.smallEtaleTopology AddCommGrpCat.{u + 1})
+    (smallFibreProductCohomologyFunctor f q) (higherDirectImage f q)
+    (fibreProductCohomologyToHigherDirectImageNatTrans f q)
+    (fun F => fibreProductCohomologySheafificationIso f F q)
+    (fun F => fibreProductCohomologyToHigherDirectImage_unit f F q) g
+
+/-- Sheafifying the original coefficient functor gives the original higher direct image. -/
+def fibreProductCohomologySheafificationNatIso :
+    smallFibreProductCohomologyFunctor f q ⋙
+        presheafToSheaf S.smallEtaleTopology AddCommGrpCat.{u + 1} ≅
+      higherDirectImage f q :=
+  Adjunction.comparisonNatIsoOfUnit
+    (sheafificationAdjunction S.smallEtaleTopology AddCommGrpCat.{u + 1})
+    (smallFibreProductCohomologyFunctor f q) (higherDirectImage f q)
+    (fibreProductCohomologyToHigherDirectImageNatTrans f q)
+    (fun F => fibreProductCohomologySheafificationIso f F q)
+    (fun F => fibreProductCohomologyToHigherDirectImage_unit f F q)
+
+/-- The complete natural comparison retains the same original sheafification unit. -/
+theorem fibreProductCohomologySheafificationNatIso_unit :
+    (Functor.rightUnitor (smallFibreProductCohomologyFunctor f q)).inv ≫
+      Functor.whiskerLeft (smallFibreProductCohomologyFunctor f q)
+        (toSheafification S.smallEtaleTopology AddCommGrpCat.{u + 1}) ≫
+      (Functor.associator (smallFibreProductCohomologyFunctor f q)
+        (presheafToSheaf S.smallEtaleTopology AddCommGrpCat.{u + 1})
+        (sheafToPresheaf S.smallEtaleTopology AddCommGrpCat.{u + 1})).inv ≫
+      Functor.whiskerRight (fibreProductCohomologySheafificationNatIso f q).hom
+        (sheafToPresheaf S.smallEtaleTopology AddCommGrpCat.{u + 1}) =
+      fibreProductCohomologyToHigherDirectImageNatTrans f q :=
+  Adjunction.comparisonNatIsoOfUnit_unit
+    (sheafificationAdjunction S.smallEtaleTopology AddCommGrpCat.{u + 1})
+    (smallFibreProductCohomologyFunctor f q) (higherDirectImage f q)
+    (fibreProductCohomologyToHigherDirectImageNatTrans f q)
+    (fun F => fibreProductCohomologySheafificationIso f F q)
+    (fun F => fibreProductCohomologyToHigherDirectImage_unit f F q)
+
+end AlgebraicGeometry.Scheme.EtaleCohomology
