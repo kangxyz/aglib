@@ -474,7 +474,7 @@ def validate_metadata(data, args, checked_parents=None):
     entries = data.get('entries')
     if not isinstance(entries, list) or data.get('generation') != digest([semantic(e) for e in entries]):
         raise ValueError('invalid checkpoint generation')
-    scopes = allowed_scopes(args.root, args.layer, args.native_cache)
+    scopes = set(allowed_scopes(args.root, args.layer, args.native_cache))
     names = set()
     for e in entries:
         if e.get('area') not in ('workspace', 'native') or type(e.get('size')) is not int or e['size'] < 0:
@@ -490,8 +490,8 @@ def validate_metadata(data, args, checked_parents=None):
         names.add(key)
         base = args.root if e['area'] == 'workspace' else args.native_cache
         path = contained(base, e['path'], checked_parents)
-        if not any(area == e['area'] and (path == scope or path.is_relative_to(scope))
-                   for area, scope in scopes):
+        if (e['area'], path) not in scopes and not any(
+                (e['area'], parent) in scopes for parent in path.parents):
             raise ValueError('checkpoint entry outside generated scopes')
     return entries
 
