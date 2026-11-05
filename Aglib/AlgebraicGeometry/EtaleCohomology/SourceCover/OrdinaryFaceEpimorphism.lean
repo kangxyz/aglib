@@ -24,7 +24,6 @@ variable {X S X' S' : Scheme.{u}}
   (f : X ⟶ S) (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
   (H : IsPullback g' f' f g)
 
-set_option diagnostics true in
 /-- The original source-chart comparison is epi by raw-chart ordinary exchange. -/
 theorem sourceEtaleOrdinaryComparison_epi [Smooth g] (U : X.Etale)
     (n : ℕ) (hn : 0 < n) (F : AbelianSheaf.{u, u + 1} X) (hF : n • 𝟙 F = 0) : type_of% (
