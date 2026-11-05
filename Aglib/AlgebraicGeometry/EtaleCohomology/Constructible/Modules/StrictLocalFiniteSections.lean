@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ModuleStalkProduct
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ConnectedTorsionSections
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.StalkFiniteness
 public import Mathlib.Algebra.Category.ModuleCat.Products
 public import Mathlib.LinearAlgebra.Pi
