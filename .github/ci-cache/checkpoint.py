@@ -6,7 +6,8 @@ are compilation accelerators from trusted producers, never successful-check
 receipts. No source checkout, Git state or whole Lake content store is copied.
 """
 import argparse
-from contextlib import contextmanager
+import errno
+from contextlib import contextmanager, ExitStack
 import hashlib
 import io
 import json
@@ -348,12 +349,19 @@ def archive_stream(path, writing):
                         raise ValueError('checkpoint zstd compression failed')
         else:
             process = subprocess.Popen(['zstd', '-q', '-d', '-c', str(path)], stdout=subprocess.PIPE)
+            body_failed = False
             try:
                 yield process.stdout
+                # Tar iteration can stop before the decoder emits all padding/footer bytes.
+                while process.stdout.read(1024 * 1024):
+                    pass
+            except BaseException:
+                body_failed = True
+                raise
             finally:
                 process.stdout.close()
                 code = process.wait()
-                if code:
+                if code and not body_failed:
                     raise ValueError('checkpoint zstd decompression failed')
     else:
         with path.open('wb' if writing else 'rb') as stream:
@@ -496,8 +504,8 @@ def validate_metadata(data, args, checked_parents=None):
     return entries
 
 
-def restore(args):
-    """Validate the entire archive before any overlay; atomically replace files.
+def restore_two_pass(args):
+    """Validate declared archive members before overlay; atomically replace files.
 
     No tar extraction API is used. Under the required quiescent/trusted CI
     boundary, parent ancestry is checked once per pass; lexical scope and each
@@ -561,6 +569,99 @@ def restore(args):
         write_json(args.metadata, metadata)
     emit({'layer': args.layer, 'generation': metadata['generation'],
           'files': len(metadata['entries']), 'restored': True}, args.github_output)
+
+
+class StagingUnavailable(Exception):
+    """Capacity or rename-domain limitations require the two-pass path."""
+
+
+
+def restore(args):
+    """Stage and verify once before publishing generated files.
+
+    Staging uses private directories on each destination area's filesystem.
+    Capacity rejection or a cross-mount publication selects the two-pass
+    path. A manifest/member/decoder validation error or failed staging write
+    leaves the current generated outputs intact.
+    """
+
+    try:
+        with ExitStack() as staging:
+            directories = {}
+            metadata = None
+            with archive_stream(args.input, False) as stream, tarfile.open(fileobj=stream, mode='r|') as archive:
+                members = iter(archive)
+                header = next(members, None)
+                if header is None or header.name != 'checkpoint.json' or not header.isreg() or header.size > 256 * 1024**2:
+                    raise ValueError('missing/oversized checkpoint manifest')
+                metadata = json.loads(archive.extractfile(header).read())
+                entries = validate_metadata(metadata, args, set())
+                requirements = {}
+                for area in sorted({entry['area'] for entry in entries}):
+                    base = args.root if area == 'workspace' else args.native_cache
+                    base.mkdir(parents=True, exist_ok=True)
+                    device = base.stat().st_dev
+                    space = os.statvfs(base)
+                    block = space.f_frsize or space.f_bsize
+                    required_bytes = sum(((entry['size'] + block - 1) // block * block + 256)
+                                         for entry in entries if entry['area'] == area)
+                    required_files = sum(entry['area'] == area for entry in entries)
+                    total = requirements.setdefault(device, {
+                        'space': space, 'bytes': 0, 'files': 0})
+                    total['bytes'] += required_bytes
+                    total['files'] += required_files
+                for total in requirements.values():
+                    space = total['space']
+                    # Reserve directory/manifest overhead beyond rounded payload blocks.
+                    if space.f_bavail * (space.f_frsize or space.f_bsize) < total['bytes'] + 512 * 1024**2:
+                        raise StagingUnavailable('not enough temporary bytes')
+                    if 0 <= space.f_favail < total['files'] + 64:
+                        raise StagingUnavailable('not enough temporary inodes')
+                for area in sorted({entry['area'] for entry in entries}):
+                    base = args.root if area == 'workspace' else args.native_cache
+                    directories[area] = Path(staging.enter_context(
+                        tempfile.TemporaryDirectory(prefix='.checkpoint-stage-', dir=base)))
+                for index, entry in enumerate(entries):
+                    member = next(members, None)
+                    expected = 'payload/' + entry['area'] + '/' + entry['path']
+                    if member is None or not member.isreg() or member.name != expected or member.size != entry['size']:
+                        raise ValueError('missing, nonregular or unexpected checkpoint member')
+                    source = archive.extractfile(member)
+                    hasher = hashlib.sha256()
+                    temporary = directories[entry['area']] / str(index)
+                    with temporary.open('xb') as output:
+                        while chunk := source.read(1024 * 1024):
+                            hasher.update(chunk)
+                            output.write(chunk)
+                    if hasher.hexdigest() != entry['sha256']:
+                        raise ValueError('checkpoint content hash mismatch')
+                    os.chmod(temporary, entry['mode'])
+                    os.utime(temporary, ns=(entry['mtime_ns'], entry['mtime_ns']))
+                if next(members, None) is not None:
+                    raise ValueError('unexpected extra checkpoint member')
+            archive_sha256 = file_hash(args.input)
+            if metadata['context'] != contexts(args.root)[args.layer + '_context']:
+                raise ValueError('checkpoint context changed during restore')
+            checked_parents = set()
+            for index, entry in enumerate(entries):
+                base = args.root if entry['area'] == 'workspace' else args.native_cache
+                target = contained(base, entry['path'], checked_parents)
+                target.parent.mkdir(parents=True, exist_ok=True)
+                try:
+                    os.replace(directories[entry['area']] / str(index), target)
+                except OSError as error:
+                    if error.errno == errno.EXDEV:
+                        raise StagingUnavailable('destination crosses a mount boundary') from error
+                    raise
+            write_json(args.root / '.lake/ci-cache' / (args.layer + '.json'),
+                       dict(metadata, archive_sha256=archive_sha256))
+            if args.metadata:
+                write_json(args.metadata, metadata)
+            emit({'layer': args.layer, 'generation': metadata['generation'],
+                  'files': len(entries), 'restored': True}, args.github_output)
+    except StagingUnavailable as error:
+        print(f'Staged restore unavailable ({error}); using two-pass restore.', file=sys.stderr)
+        return restore_two_pass(args)
 
 
 def main(argv=None):

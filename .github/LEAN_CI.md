@@ -184,11 +184,25 @@ can cause Actions cache misses even with matching key prefixes.
 Layered checkpoints stream compressed working outputs and exclude checkouts
 and the global content store. They omit reconstructible `*.setup.json` files
 under the generated `ir` directories and retain traces, hashes and other
-generated files. [checkpoint.py](ci-cache/checkpoint.py) verifies the archive
-manifest, paths, sizes and content hashes before overlay, then rechecks content
-during per-file atomic replacement. The replacement avoids mutating existing
-cache hardlinks. A matching dependency generation can reuse the already
-validated compressed archive.
+generated files. [checkpoint.py](ci-cache/checkpoint.py) checks the archive
+manifest and destination paths, then decompresses and verifies each file into
+private staging directories on the workspace and native-cache filesystems.
+The manifest, declared member order and sizes, file hashes and decompressor
+exit status must pass before any generated output is replaced. Tar iteration
+uses Python's logical end-of-archive handling. Publication uses per-file atomic
+replacement, which breaks existing cache hardlinks.
+
+Staging admission groups payload requirements by filesystem, rounds file sizes
+to allocation blocks and checks free bytes and inodes. It reserves another
+512 MiB for directory and manifest overhead. A layer can temporarily require
+another copy of its expanded outputs when replacing an existing warm build.
+Insufficient staging capacity selects the existing two-pass streaming restore.
+An atomic rename across a mount boundary also retries through that path, whose
+temporary files live beside each destination. This includes same-device bind
+mounts. A manifest/member/decoder validation error or failed staging write
+aborts before publication and cleans the private temporary directories. A
+matching dependency generation can reuse the already validated compressed
+archive.
 
 The preflight requires both checkpoint helpers and a supported Lean 4.34.1
 layout. The root uses the standard TOML and generated-directory layout.
