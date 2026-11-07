@@ -15,6 +15,8 @@ the verified production archive after both jobs succeed on a default-branch push
 | Manual dispatch on `main` with `runner-profile=ec2` (default) | EC2 | Skipped |
 | PR, push to another branch, or any other manual dispatch | GitHub-hosted Ubuntu 24.04 | Skipped |
 
+GitHub-hosted Build and Test request four declaration lint workers.
+
 The EC2 autoscaler matches the exact label set `self-hosted, linux, x64,
 aglib-ec2-pilot` and caps the pool at one on-demand instance. Aglib gives Build
 and Test 57,344 MiB (56 GiB) per native scope, eight Lake runtime threads, and
@@ -57,7 +59,7 @@ when tightening admission.
 | `runner-labels` | `["ubuntu-24.04"]` | JSON array encoded as a string for Build and Test |
 | `reuse-build-host` | `false` | Requests runner-local handoff for an eligible layered checkout |
 | `native-memory-mib` | `13824` | Requested aggregate memory limit per native scope |
-| `lake-threads` / `lint-workers` | `1` / `2` | Lake runtime threads and requested declaration lint workers |
+| `lake-threads` / `lint-workers` | `1` / `4` | Lake runtime threads and requested declaration lint workers |
 | `build-lake-threads` | `0` | Inherits `lake-threads`. A positive override applies only to the production Build step |
 | `job-timeout-minutes` | `360` | Test job limit and default Build job limit |
 | `build-job-timeout-minutes` | `0` | Inherits the job limit. A positive value sets the Build job limit |

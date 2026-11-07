@@ -33,7 +33,7 @@ jobs:
       runner-labels: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2')) && '["self-hosted","linux","x64","aglib-ec2-pilot"]' || '["ubuntu-24.04"]' }}
       native-memory-mib: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2')) && 57344 || 13824 }}
       lake-threads: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2')) && 8 || 1 }}
-      lint-workers: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2')) && 8 || 2 }}
+      lint-workers: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2')) && 8 || 4 }}
       job-timeout-minutes: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2')) && 90 || 360 }}
       reuse-build-host: ${{ vars.AGLIB_EC2_SHARED_HOST == 'true' && github.ref == 'refs/heads/main' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2')) }}
       build-job-timeout-minutes: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.runner-profile == 'ec2')) && 240 || 0 }}

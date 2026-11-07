@@ -30,7 +30,7 @@ on:
         default: 0
       lint-workers:
         type: number
-        default: 2
+        default: 4
       job-timeout-minutes:
         type: number
         default: 360

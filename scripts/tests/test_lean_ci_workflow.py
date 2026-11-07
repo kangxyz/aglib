@@ -777,7 +777,7 @@ class NativeRunnerResources(unittest.TestCase):
                          ['-M12800', '-j4'])
         self.assertEqual(self.inputs['runner-labels']['type'], 'string')
         self.assertEqual(json.loads(self.inputs['runner-labels']['default']), ['ubuntu-24.04'])
-        for name, default in (('native-memory-mib', 13824), ('lake-threads', 1), ('lint-workers', 2), ('job-timeout-minutes', 360), ('build-lake-threads', 0), ('build-job-timeout-minutes', 0), ('build-compiler-minutes', 0)):
+        for name, default in (('native-memory-mib', 13824), ('lake-threads', 1), ('lint-workers', 4), ('job-timeout-minutes', 360), ('build-lake-threads', 0), ('build-job-timeout-minutes', 0), ('build-compiler-minutes', 0)):
             self.assertEqual(self.inputs[name]['default'], default)
             self.assertIn(self.inputs[name]['type'], ('string', 'number'))
         for job in ('build', 'test_lint'):
@@ -831,7 +831,7 @@ class NativeRunnerResources(unittest.TestCase):
                         self.assertEqual(json.loads(selected.pop('runner-labels')),
                             ['self-hosted', 'linux', 'x64', 'aglib-ec2-pilot'] if expected_ec2 else ['ubuntu-24.04'])
                         self.assertEqual(selected, dict(zip(names, (57344, 8, 8, 90, 240, 180, reuse == 'true')
-                                                            if expected_ec2 else (13824, 1, 2, 360, 0, 0, False))))
+                                                            if expected_ec2 else (13824, 1, 4, 360, 0, 0, False))))
         self.assertNotIn('build-lake-threads', settings)
 
     def test_build_runtime_override_is_production_step_only_and_preserves_fallback(self):
