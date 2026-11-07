@@ -9,6 +9,8 @@ on:
 permissions:
   contents: read
   actions: read
+env:
+  LEAN_NUM_THREADS: '4'
 concurrency:
   group: checkpoint-tests-${{ github.ref }}
   cancel-in-progress: false

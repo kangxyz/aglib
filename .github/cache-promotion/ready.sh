@@ -3,6 +3,9 @@ set -euo pipefail
 git diff --exit-code 88bab48f8801b48464fe6cce9881c21713001009 HEAD -- '*.lean' lean-toolchain lake-manifest.json lakefile.toml
 export LAKE_NO_CACHE=true LAKE_ARTIFACT_CACHE=true LAKE_RESTORE_ARTIFACTS=true
 export LAKE_CACHE_DIR="$RUNNER_TEMP/lake-native-cache" LEAN_NUM_THREADS=1
+if test "${RUNNER_ENVIRONMENT:-}" = github-hosted; then
+  export LEAN_NUM_THREADS=4
+fi
 export PATH="$HOME/.elan/bin:$PATH"
 # Every native readiness invocation rejects compilation. Availability only:
 # these are not new runs of Test/lint/axiom predicates.

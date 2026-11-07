@@ -37,8 +37,8 @@ class Probe:
         self.transfer.mkdir(parents=True, exist_ok=True)
         self.rows = []
         self.env = dict(os.environ, LAKE_NO_CACHE='true', LAKE_ARTIFACT_CACHE='true',
-                        LAKE_RESTORE_ARTIFACTS='true', LAKE_CACHE_DIR=str(self.cache),
-                        LEAN_NUM_THREADS='2')
+                        LAKE_RESTORE_ARTIFACTS='true', LAKE_CACHE_DIR=str(self.cache))
+        self.env.setdefault('LEAN_NUM_THREADS', '2')
         self.lake = args.lake
         self.write('lean-toolchain', 'leanprover/lean4:v4.34.1\n')
         self.write('lakefile.toml', 'name="checkpointProbe"\nenableArtifactCache=true\n'

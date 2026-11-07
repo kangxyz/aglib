@@ -736,7 +736,7 @@ os.execv(args[index],args[index:])
 ''')
             for file in binary.iterdir(): file.chmod(0o755)
             script = root / 'native step.sh'
-            script.write_text('test "$VISIBLE_INPUT" = retained\ntest "$LEAN_NUM_THREADS" = 1\nexit "$STATUS"\n')
+            script.write_text('test "$VISIBLE_INPUT" = retained\ntest "$LEAN_NUM_THREADS" = 4\nexit "$STATUS"\n')
             for memory, expected in ((16384, 13824), (7168, 5120)):
                 for status in (0, 7):
                     result = subprocess.run(runner_arguments(shell.format(script)), cwd=root,
@@ -777,7 +777,7 @@ class NativeRunnerResources(unittest.TestCase):
                          ['-M12800', '-j4'])
         self.assertEqual(self.inputs['runner-labels']['type'], 'string')
         self.assertEqual(json.loads(self.inputs['runner-labels']['default']), ['ubuntu-24.04'])
-        for name, default in (('native-memory-mib', 13824), ('lake-threads', 1), ('lint-workers', 4), ('job-timeout-minutes', 360), ('build-lake-threads', 0), ('build-job-timeout-minutes', 0), ('build-compiler-minutes', 0)):
+        for name, default in (('native-memory-mib', 13824), ('lake-threads', 4), ('lint-workers', 4), ('job-timeout-minutes', 360), ('build-lake-threads', 0), ('build-job-timeout-minutes', 0), ('build-compiler-minutes', 0)):
             self.assertEqual(self.inputs[name]['default'], default)
             self.assertIn(self.inputs[name]['type'], ('string', 'number'))
         for job in ('build', 'test_lint'):
@@ -831,7 +831,7 @@ class NativeRunnerResources(unittest.TestCase):
                         self.assertEqual(json.loads(selected.pop('runner-labels')),
                             ['self-hosted', 'linux', 'x64', 'aglib-ec2-pilot'] if expected_ec2 else ['ubuntu-24.04'])
                         self.assertEqual(selected, dict(zip(names, (57344, 8, 8, 90, 240, 180, reuse == 'true')
-                                                            if expected_ec2 else (13824, 1, 4, 360, 0, 0, False))))
+                                                            if expected_ec2 else (13824, 4, 4, 360, 0, 0, False))))
         self.assertNotIn('build-lake-threads', settings)
 
     def test_build_runtime_override_is_production_step_only_and_preserves_fallback(self):
@@ -891,7 +891,7 @@ os.execv(args[index],args[index:])
         environment.update({'PATH': str(self.root / 'bin') + ':' + os.environ['PATH'],
                             'FIXTURE_PAGES': str(memory * 256), 'STATUS': str(status),
                             'TRACE': str(trace), 'VISIBLE_INPUT': 'retained',
-                            'EXPECTED_THREADS': environment.get('CI_LAKE_THREADS', '1'),
+                            'EXPECTED_THREADS': environment.get('CI_LAKE_THREADS', '4'),
                             'EXPECTED_LINT_WORKERS': environment.get('CI_LINT_WORKERS', ''),
                             'RUNNER_TEMP': str(self.root), 'GITHUB_RUN_ID': '123',
                             'GITHUB_RUN_ATTEMPT': '2', 'GITHUB_JOB': job})
